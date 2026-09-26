@@ -1,267 +1,347 @@
 {
   "version": 1,
-  "updated": "2026-09-25",
+  "updated": "2026-09-26",
   "retention_days": 56,
   "source": "HAFAS (ÖBB Scotty) StationBoard, rail classes; see scripts/update_oebb_station_lines.py",
   "stations": {
     "11": {
       "lines": {
-        "S60": "2026-09-25"
+        "S60": "2026-09-26"
       },
       "name": "Achau",
       "hafas_ext_id": "1131701",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Achau",
+      "hafas_classes": 96,
+      "hafas_distance_m": 35
     },
     "15": {
       "lines": {
-        "REX1": "2026-09-25"
+        "REX1": "2026-09-26"
       },
       "name": "Angern",
       "hafas_ext_id": "1130803",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Angern/March",
+      "hafas_classes": 80,
+      "hafas_distance_m": 57
     },
     "17": {
       "lines": {
-        "REX4": "2026-09-25",
-        "REX41": "2026-09-25",
-        "S4": "2026-09-25"
+        "REX4": "2026-09-26",
+        "REX41": "2026-09-26",
+        "S4": "2026-09-26"
       },
       "name": "Absdorf-Hippersdorf",
       "hafas_ext_id": "1232110",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Absdorf b.Tulln-Hippersdorf Bahnhof",
+      "hafas_classes": 112,
+      "hafas_distance_m": 2
     },
     "100": {
       "lines": {
-        "R40": "2026-09-25",
-        "REX41": "2026-09-25",
-        "S40": "2026-09-25"
+        "R40": "2026-09-26",
+        "REX41": "2026-09-26",
+        "S40": "2026-09-26"
       },
       "name": "St.Andrä-Wördern",
       "hafas_ext_id": "1132142",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "St.Andrä-Wördern",
+      "hafas_classes": 114,
+      "hafas_distance_m": 141
     },
     "115": {
       "lines": {
-        "R3": "2026-09-25",
-        "S1": "2026-09-25",
-        "S2": "2026-09-25",
-        "S3": "2026-09-25",
-        "S80": "2026-09-25"
+        "R3": "2026-09-26",
+        "S1": "2026-09-26",
+        "S2": "2026-09-26",
+        "S3": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Wien Atzgersdorf",
       "hafas_ext_id": "1192304",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Atzgersdorf (Wien)",
+      "hafas_classes": 112,
+      "hafas_distance_m": 32
     },
     "143": {
       "lines": {
-        "REX7": "2026-09-25"
+        "REX7": "2026-09-26"
       },
       "name": "Bad Deutsch Altenburg",
       "hafas_ext_id": "1130702",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Bad Deutsch Altenburg",
+      "hafas_classes": 82,
+      "hafas_distance_m": 56
     },
     "145": {
       "lines": {
-        "REX1": "2026-09-25"
+        "REX1": "2026-09-26"
       },
       "name": "Bernhardsthal",
       "hafas_ext_id": "1131604",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Bernhardsthal",
+      "hafas_classes": 80,
+      "hafas_distance_m": 61
     },
     "148": {
       "lines": {
-        "S1": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25",
-        "S80": "2026-09-25"
+        "S1": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Pfaffstätten",
       "hafas_ext_id": "1130625",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Pfaffstätten",
+      "hafas_classes": 624,
+      "hafas_distance_m": 34
     },
     "149": {
       "lines": {
-        "CJX9": "2026-09-25",
-        "R3": "2026-09-25",
-        "REX1": "2026-09-25",
-        "REX3": "2026-09-25",
-        "REX92": "2026-09-25",
-        "REX93": "2026-09-25",
-        "S1": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25",
-        "S80": "2026-09-25"
+        "CJX9": "2026-09-26",
+        "R3": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX3": "2026-09-26",
+        "REX92": "2026-09-26",
+        "REX93": "2026-09-26",
+        "S1": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Baden",
       "hafas_ext_id": "1230601",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Baden b.Wien Bahnhof",
+      "hafas_classes": 4720,
+      "hafas_distance_m": 1
     },
     "172": {
       "lines": {
-        "R62": "2026-09-25",
-        "REX6": "2026-09-25",
-        "REX62": "2026-09-25",
-        "REX63": "2026-09-25",
-        "REX64": "2026-09-25",
-        "S60": "2026-09-25"
+        "R62": "2026-09-26",
+        "REX6": "2026-09-26",
+        "REX62": "2026-09-26",
+        "REX63": "2026-09-26",
+        "REX64": "2026-09-26",
+        "S60": "2026-09-26"
       },
       "name": "Bruck an der Leitha",
-      "hafas_ext_id": "1130704",
-      "checked": "2026-09-25"
+      "hafas_ext_id": "1230712",
+      "checked": "2026-09-26",
+      "hafas_name": "Bruck/Leitha Bahnhof",
+      "hafas_classes": 112,
+      "hafas_distance_m": 27
     },
     "252": {
       "lines": {
-        "R3": "2026-09-25",
-        "S1": "2026-09-25",
-        "S2": "2026-09-25",
-        "S3": "2026-09-25",
-        "S80": "2026-09-25"
+        "R3": "2026-09-26",
+        "S1": "2026-09-26",
+        "S2": "2026-09-26",
+        "S3": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Brunn am Gebirge",
       "hafas_ext_id": "1131704",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Brunn/Gebirge",
+      "hafas_classes": 112,
+      "hafas_distance_m": 15
     },
     "253": {
       "lines": {
-        "R3": "2026-09-25",
-        "REX1": "2026-09-25",
-        "REX3": "2026-09-25",
-        "S1": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25",
-        "S80": "2026-09-25"
+        "R3": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX3": "2026-09-26",
+        "S1": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Bad Vöslau",
       "hafas_ext_id": "1130603",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Bad Vöslau",
+      "hafas_classes": 112,
+      "hafas_distance_m": 27
     },
     "254": {
       "lines": {
-        "S1": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25",
-        "S80": "2026-09-25"
+        "S1": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Kottingbrunn",
       "hafas_ext_id": "1130618",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Kottingbrunn",
+      "hafas_classes": 2160,
+      "hafas_distance_m": 21
     },
     "263": {
-      "lines": {},
-      "name": "Wien Zentralfriedhof"
+      "lines": {
+        "REX7": "2026-09-26",
+        "S7": "2026-09-26"
+      },
+      "name": "Wien Zentralfriedhof",
+      "hafas_ext_id": "1291105",
+      "hafas_name": "Wien Zentralfriedhof Bahnhst",
+      "hafas_classes": 98,
+      "hafas_distance_m": 19,
+      "checked": "2026-09-26"
     },
     "299": {
       "lines": {
-        "REX1": "2026-09-25"
+        "REX1": "2026-09-26"
       },
       "name": "Drösing",
       "hafas_ext_id": "1130810",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Drösing",
+      "hafas_classes": 80,
+      "hafas_distance_m": 94
     },
     "301": {
       "lines": {
-        "REX1": "2026-09-25"
+        "REX1": "2026-09-26"
       },
       "name": "Dürnkrut",
       "hafas_ext_id": "1130811",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Dürnkrut",
+      "hafas_classes": 80,
+      "hafas_distance_m": 98
     },
     "309": {
       "lines": {
-        "REX6": "2026-09-25",
-        "REX65": "2026-09-25",
-        "REX92": "2026-09-25",
-        "S60": "2026-09-25"
+        "REX6": "2026-09-26",
+        "REX65": "2026-09-26",
+        "REX92": "2026-09-26",
+        "S60": "2026-09-26"
       },
       "name": "Ebreichsdorf",
       "hafas_ext_id": "1130607",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Ebreichsdorf",
+      "hafas_classes": 2162,
+      "hafas_distance_m": 47
     },
     "325": {
       "lines": {
-        "REX6": "2026-09-25",
-        "REX65": "2026-09-25"
+        "REX6": "2026-09-26",
+        "REX65": "2026-09-26"
       },
       "name": "Ebenfurth",
       "hafas_ext_id": "1132304",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Ebenfurth",
+      "hafas_classes": 114,
+      "hafas_distance_m": 31
     },
     "353": {
       "lines": {
-        "S80": "2026-09-25"
+        "S80": "2026-09-26"
       },
       "name": "Wien Praterkai",
       "hafas_ext_id": "1290202",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Praterkai Bahnhst",
+      "hafas_classes": 96,
+      "hafas_distance_m": 36
     },
     "398": {
       "lines": {
-        "R1": "2026-09-25",
-        "R3": "2026-09-25",
-        "REX1": "2026-09-25",
-        "REX2": "2026-09-25",
-        "REX3": "2026-09-25",
-        "S1": "2026-09-25",
-        "S2": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25"
+        "R1": "2026-09-26",
+        "R3": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX2": "2026-09-26",
+        "REX3": "2026-09-26",
+        "S1": "2026-09-26",
+        "S2": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26"
       },
       "name": "Wien Floridsdorf",
       "hafas_ext_id": "1192101",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Floridsdorf (Wien)",
+      "hafas_classes": 2930,
+      "hafas_distance_m": 34
     },
     "399": {
       "lines": {
-        "CJX9": "2026-09-25",
-        "R1": "2026-09-25",
-        "REX1": "2026-09-25",
-        "REX2": "2026-09-25",
-        "S1": "2026-09-25",
-        "S2": "2026-09-25"
+        "CJX9": "2026-09-26",
+        "R1": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX2": "2026-09-26",
+        "S1": "2026-09-26",
+        "S2": "2026-09-26"
       },
       "name": "Wien Siemensstraße",
       "hafas_ext_id": "1292105",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Siemensstraße Bahnhst",
+      "hafas_classes": 2160,
+      "hafas_distance_m": 61
     },
     "400": {
       "lines": {
-        "R3": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25"
+        "R3": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26"
       },
       "name": "Wien Brünner Straße",
       "hafas_ext_id": "1292106",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Brünner Straße Bahnhst",
+      "hafas_classes": 624,
+      "hafas_distance_m": 98
     },
     "402": {
       "lines": {
-        "REX7": "2026-09-25"
+        "REX7": "2026-09-26"
       },
       "name": "Fischamend",
       "hafas_ext_id": "1132402",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Fischamend",
+      "hafas_classes": 114,
+      "hafas_distance_m": 7
     },
     "462": {
       "lines": {
-        "R3": "2026-09-25",
-        "R95": "2026-09-25",
-        "REX1": "2026-09-25",
-        "REX3": "2026-09-25",
-        "S1": "2026-09-25",
-        "S3": "2026-09-25"
+        "R3": "2026-09-26",
+        "R95": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX3": "2026-09-26",
+        "S1": "2026-09-26",
+        "S3": "2026-09-26"
       },
       "name": "Felixdorf",
       "hafas_ext_id": "1132307",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Felixdorf",
+      "hafas_classes": 114,
+      "hafas_distance_m": 31
     },
     "468": {
       "lines": {
-        "R3": "2026-09-25",
-        "S3": "2026-09-25"
+        "R3": "2026-09-26",
+        "S3": "2026-09-26"
       },
       "name": "Wiener Neustadt Nord",
       "hafas_ext_id": "1230403",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wr.Neustadt Nord Bahnhst",
+      "hafas_classes": 114,
+      "hafas_distance_m": 34
     },
     "528": {
       "lines": {
@@ -269,1090 +349,1438 @@
         "S7": "2026-09-25"
       },
       "name": "Flughafen Wien",
-      "hafas_ext_id": "1193001",
-      "checked": "2026-09-25"
+      "hafas_ext_id": "1332474",
+      "checked": "2026-09-26",
+      "hafas_name": "Flughafen Wien Busterminal",
+      "hafas_classes": 1090,
+      "hafas_distance_m": 15
     },
     "547": {
       "lines": {
-        "R1": "2026-09-25",
-        "REX1": "2026-09-25",
-        "S1": "2026-09-25"
+        "R1": "2026-09-26",
+        "REX1": "2026-09-26",
+        "S1": "2026-09-26"
       },
       "name": "Gänserndorf",
       "hafas_ext_id": "1130817",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Gänserndorf",
+      "hafas_classes": 114,
+      "hafas_distance_m": 115
     },
     "570": {
       "lines": {
-        "REX2": "2026-09-25",
-        "S2": "2026-09-25"
+        "REX2": "2026-09-26",
+        "S2": "2026-09-26"
       },
       "name": "Gerasdorf",
       "hafas_ext_id": "1232410",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Gerasdorf b.Wien Bahnhst",
+      "hafas_classes": 2162,
+      "hafas_distance_m": 19
     },
     "626": {
       "lines": {
-        "CJX9": "2026-09-25",
-        "REX3": "2026-09-25"
+        "CJX9": "2026-09-26",
+        "REX3": "2026-09-26"
       },
       "name": "Gloggnitz",
       "hafas_ext_id": "1131810",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Gloggnitz",
+      "hafas_classes": 114,
+      "hafas_distance_m": 60
     },
     "642": {
       "lines": {
-        "REX6": "2026-09-25",
-        "REX62": "2026-09-25",
-        "REX63": "2026-09-25",
-        "REX64": "2026-09-25",
-        "S60": "2026-09-25"
+        "REX6": "2026-09-26",
+        "REX62": "2026-09-26",
+        "REX63": "2026-09-26",
+        "REX64": "2026-09-26",
+        "S60": "2026-09-26"
       },
       "name": "Gramatneusiedl",
       "hafas_ext_id": "1132405",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Gramatneusiedl",
+      "hafas_classes": 2162,
+      "hafas_distance_m": 81
     },
     "654": {
       "lines": {
-        "REX6": "2026-09-25",
-        "REX62": "2026-09-25",
-        "S60": "2026-09-25"
+        "REX6": "2026-09-26",
+        "REX62": "2026-09-26",
+        "S60": "2026-09-26"
       },
       "name": "Götzendorf",
       "hafas_ext_id": "1230701",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Götzendorf/Leitha Bahnhof",
+      "hafas_classes": 112,
+      "hafas_distance_m": 93
     },
     "655": {
       "lines": {
-        "S60": "2026-09-25"
+        "S60": "2026-09-26"
       },
       "name": "Sarasdorf",
       "hafas_ext_id": "1130756",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Sarasdorf",
+      "hafas_classes": 96,
+      "hafas_distance_m": 13
     },
     "656": {
       "lines": {
-        "S60": "2026-09-25"
+        "S60": "2026-09-26"
       },
       "name": "Wilfleinsdorf",
       "hafas_ext_id": "1130751",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wilfleinsdorf",
+      "hafas_classes": 96,
+      "hafas_distance_m": 7
     },
     "711": {
       "lines": {
-        "REX7": "2026-09-25",
-        "S7": "2026-09-25"
+        "REX7": "2026-09-26",
+        "S7": "2026-09-26"
       },
       "name": "Schwechat",
       "hafas_ext_id": "1132419",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Schwechat",
+      "hafas_classes": 114,
+      "hafas_distance_m": 0
     },
     "713": {
       "lines": {
-        "REX7": "2026-09-25",
-        "S7": "2026-09-25"
+        "REX7": "2026-09-26",
+        "S7": "2026-09-26"
       },
       "name": "Mannswörth",
       "hafas_ext_id": "1132427",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Mannswörth",
+      "hafas_classes": 96,
+      "hafas_distance_m": 9
     },
     "741": {
       "lines": {
-        "R95": "2026-09-25"
+        "R95": "2026-09-26"
       },
       "name": "Möllersdorf Aspangbahn",
       "hafas_ext_id": "1230620",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Möllersdorf Aspangbahn Bahnhst",
+      "hafas_classes": 18,
+      "hafas_distance_m": 141
     },
     "777": {
       "lines": {
-        "REX7": "2026-09-25"
+        "REX7": "2026-09-26"
       },
       "name": "Hainburg an der Donau Personenbahnhof",
-      "hafas_ext_id": "8100266",
-      "checked": "2026-09-25"
+      "hafas_ext_id": "1130710",
+      "checked": "2026-09-26",
+      "hafas_name": "Hainburg/Donau",
+      "hafas_classes": 82,
+      "hafas_distance_m": 5
     },
     "779": {
       "lines": {
-        "R1": "2026-09-25",
-        "REX1": "2026-09-25",
-        "REX2": "2026-09-25",
-        "REX3": "2026-09-25",
-        "S1": "2026-09-25",
-        "S2": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25",
-        "S45": "2026-09-25"
+        "R1": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX2": "2026-09-26",
+        "REX3": "2026-09-26",
+        "S1": "2026-09-26",
+        "S2": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26",
+        "S45": "2026-09-26"
       },
       "name": "Wien Handelskai",
       "hafas_ext_id": "1292001",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Handelskai Bahnhst (U)",
+      "hafas_classes": 370,
+      "hafas_distance_m": 64
     },
     "804": {
       "lines": {
-        "CJX5": "2026-09-25",
-        "REX50": "2026-09-25",
-        "REX51": "2026-09-25",
-        "S45": "2026-09-25",
-        "S50": "2026-09-25"
+        "CJX5": "2026-09-26",
+        "REX50": "2026-09-26",
+        "REX51": "2026-09-26",
+        "S45": "2026-09-26",
+        "S50": "2026-09-26"
       },
       "name": "Wien Hütteldorf",
       "hafas_ext_id": "1191401",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Hütteldorf (Wien)",
+      "hafas_classes": 4479,
+      "hafas_distance_m": 114
     },
     "805": {
       "lines": {
-        "S50": "2026-09-25"
+        "S50": "2026-09-26"
       },
       "name": "Wien Hadersdorf",
-      "hafas_ext_id": "1191402",
-      "checked": "2026-09-25"
+      "hafas_ext_id": "1291402",
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Hadersdorf Bahnhst",
+      "hafas_classes": 96,
+      "hafas_distance_m": 7
     },
     "806": {
       "lines": {},
       "name": "Wien Speising",
       "hafas_ext_id": "1191303",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Speising (Wien)",
+      "hafas_classes": 578,
+      "hafas_distance_m": 131
     },
     "807": {
       "lines": {
-        "S50": "2026-09-25"
+        "S50": "2026-09-26"
       },
       "name": "Wien Weidlingau",
       "hafas_ext_id": "1191403",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Weidlingau (Wien)",
+      "hafas_classes": 96,
+      "hafas_distance_m": 10
     },
     "808": {
       "lines": {
-        "S50": "2026-09-25"
+        "S50": "2026-09-26"
       },
       "name": "Purkersdorf Sanatorium",
       "hafas_ext_id": "8101342",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Purkersdorf b.Wien Sanatorium Bahnhst",
+      "hafas_classes": 96,
+      "hafas_distance_m": 79
     },
     "820": {
       "lines": {
-        "R44": "2026-09-25",
-        "REX4": "2026-09-25"
+        "R44": "2026-09-26",
+        "REX4": "2026-09-26"
       },
       "name": "Hadersdorf am Kamp",
       "hafas_ext_id": "1131315",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Hadersdorf/Kamp",
+      "hafas_classes": 82,
+      "hafas_distance_m": 10
     },
     "835": {
       "lines": {},
       "name": "Himberg",
       "hafas_ext_id": "1232420",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Himberg b.Wien Bahnhof",
+      "hafas_classes": 48,
+      "hafas_distance_m": 72
     },
     "850": {
       "lines": {
-        "REX7": "2026-09-25"
+        "REX7": "2026-09-26"
       },
       "name": "Haslau an der Donau",
       "hafas_ext_id": "1130761",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Haslau/Donau",
+      "hafas_classes": 16,
+      "hafas_distance_m": 41
     },
     "856": {
       "lines": {
-        "S60": "2026-09-25"
+        "S60": "2026-09-26"
       },
       "name": "Hennersdorf",
       "hafas_ext_id": "1231706",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Hennersdorf b.Wien Bahnhst",
+      "hafas_classes": 96,
+      "hafas_distance_m": 17
     },
     "857": {
       "lines": {
-        "S45": "2026-09-25"
+        "S45": "2026-09-26"
       },
       "name": "Wien Hernals",
       "hafas_ext_id": "1191701",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Hernals (Wien)",
+      "hafas_classes": 608,
+      "hafas_distance_m": 28
     },
     "901": {
       "lines": {
-        "R40": "2026-09-25",
-        "REX4": "2026-09-25",
-        "REX41": "2026-09-25",
-        "S40": "2026-09-25",
-        "S45": "2026-09-25"
+        "R40": "2026-09-26",
+        "REX4": "2026-09-26",
+        "REX41": "2026-09-26",
+        "S40": "2026-09-26",
+        "S45": "2026-09-26"
       },
       "name": "Wien Heiligenstadt",
       "hafas_ext_id": "1191901",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Heiligenstadt (Wien)",
+      "hafas_classes": 2928,
+      "hafas_distance_m": 42
     },
     "902": {
       "lines": {
-        "S45": "2026-09-25"
+        "S45": "2026-09-26"
       },
       "name": "Wien Oberdöbling",
       "hafas_ext_id": "1291904",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Oberdöbling Bahnhst",
+      "hafas_classes": 608,
+      "hafas_distance_m": 35
     },
     "903": {
       "lines": {
-        "S45": "2026-09-25"
+        "S45": "2026-09-26"
       },
       "name": "Wien Krottenbachstraße",
       "hafas_ext_id": "1291902",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Krottenbachstraße Bahnhst",
+      "hafas_classes": 2144,
+      "hafas_distance_m": 46
     },
     "904": {
       "lines": {
-        "S45": "2026-09-25"
+        "S45": "2026-09-26"
       },
       "name": "Wien Gersthof",
       "hafas_ext_id": "1191801",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Gersthof (Wien)",
+      "hafas_classes": 608,
+      "hafas_distance_m": 17
     },
     "912": {
       "lines": {
-        "REX50": "2026-09-25",
-        "REX51": "2026-09-25"
+        "REX50": "2026-09-26",
+        "REX51": "2026-09-26"
       },
       "name": "Maria Anzbach",
       "hafas_ext_id": "1131921",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Maria Anzbach",
+      "hafas_classes": 112,
+      "hafas_distance_m": 2
     },
     "914": {
       "lines": {
-        "REX50": "2026-09-25",
-        "REX51": "2026-09-25"
+        "REX50": "2026-09-26",
+        "REX51": "2026-09-26"
       },
       "name": "Neulengbach Stadt",
       "hafas_ext_id": "8101280",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Neulengbach Stadt Bahnhst",
+      "hafas_classes": 112,
+      "hafas_distance_m": 2
     },
     "934": {
       "lines": {
-        "S60": "2026-09-25"
+        "S60": "2026-09-26"
       },
       "name": "Wien Blumental",
       "hafas_ext_id": "1292302",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Blumental Bahnhst",
+      "hafas_classes": 96,
+      "hafas_distance_m": 444
     },
     "956": {
       "lines": {
-        "R3": "2026-09-25",
-        "REX3": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25"
+        "R3": "2026-09-26",
+        "REX3": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26"
       },
       "name": "Wien Jedlersdorf",
       "hafas_ext_id": "1192103",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Jedlersdorf (Wien)",
+      "hafas_classes": 114,
+      "hafas_distance_m": 146
     },
     "959": {
       "lines": {
-        "R3": "2026-09-25",
-        "REX3": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25"
+        "R3": "2026-09-26",
+        "REX3": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26"
       },
       "name": "Langenzersdorf",
       "hafas_ext_id": "1131214",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Langenzersdorf",
+      "hafas_classes": 112,
+      "hafas_distance_m": 63
     },
     "960": {
       "lines": {
-        "R3": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25"
+        "R3": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26"
       },
       "name": "Bisamberg",
       "hafas_ext_id": "1131201",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Bisamberg",
+      "hafas_classes": 114,
+      "hafas_distance_m": 8
     },
     "1019": {
       "lines": {
-        "R40": "2026-09-25",
-        "S40": "2026-09-25"
+        "R40": "2026-09-26",
+        "S40": "2026-09-26"
       },
       "name": "Klosterneuburg-Weidling",
       "hafas_ext_id": "1232413",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Klosterneuburg-Weidling Bahnhof",
+      "hafas_classes": 114,
+      "hafas_distance_m": 60
     },
     "1020": {
       "lines": {
-        "R40": "2026-09-25",
-        "S40": "2026-09-25"
+        "R40": "2026-09-26",
+        "S40": "2026-09-26"
       },
       "name": "Klosterneuburg-Kierling",
       "hafas_ext_id": "1232414",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Klosterneuburg-Kierling Bahnhof",
+      "hafas_classes": 114,
+      "hafas_distance_m": 19
     },
     "1066": {
       "lines": {
-        "R3": "2026-09-25",
-        "REX3": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25"
+        "R3": "2026-09-26",
+        "REX3": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26"
       },
       "name": "Korneuburg",
       "hafas_ext_id": "1131213",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Korneuburg",
+      "hafas_classes": 114,
+      "hafas_distance_m": 13
     },
     "1074": {
       "lines": {
-        "R3": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25"
+        "R3": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26"
       },
       "name": "Spillern",
       "hafas_ext_id": "1131227",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Spillern",
+      "hafas_classes": 114,
+      "hafas_distance_m": 60
     },
     "1076": {
-      "lines": {},
-      "name": "Krems a.d.Donau"
+      "lines": {
+        "R44": "2026-09-26",
+        "REX4": "2026-09-26",
+        "REX44": "2026-09-26"
+      },
+      "name": "Krems a.d.Donau",
+      "hafas_ext_id": "1130101",
+      "hafas_name": "Krems/Donau",
+      "hafas_classes": 82,
+      "hafas_distance_m": 10,
+      "checked": "2026-09-26"
     },
     "1103": {
       "lines": {
-        "REX6": "2026-09-25"
+        "REX6": "2026-09-26"
       },
       "name": "Kittsee",
       "hafas_ext_id": "1110711",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Kittsee",
+      "hafas_classes": 114,
+      "hafas_distance_m": 24
     },
     "1113": {
       "lines": {
-        "R40": "2026-09-25",
-        "S40": "2026-09-25"
+        "R40": "2026-09-26",
+        "S40": "2026-09-26"
       },
       "name": "Kritzendorf",
       "hafas_ext_id": "1132459",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Kritzendorf",
+      "hafas_classes": 114,
+      "hafas_distance_m": 1
     },
     "1131": {
       "lines": {
-        "REX2": "2026-09-25",
-        "S2": "2026-09-25"
+        "REX2": "2026-09-26",
+        "S2": "2026-09-26"
       },
       "name": "Laa a.d.Thaya",
       "hafas_ext_id": "1231607",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Laa/Thaya Bahnhof",
+      "hafas_classes": 114,
+      "hafas_distance_m": 54
     },
     "1161": {
       "lines": {
-        "R3": "2026-09-25",
-        "R96": "2026-09-25",
-        "REX1": "2026-09-25",
-        "REX3": "2026-09-25",
-        "S1": "2026-09-25",
-        "S3": "2026-09-25",
-        "S80": "2026-09-25"
+        "R3": "2026-09-26",
+        "R96": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX3": "2026-09-26",
+        "S1": "2026-09-26",
+        "S3": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Leobersdorf",
       "hafas_ext_id": "1130620",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Leobersdorf",
+      "hafas_classes": 2162,
+      "hafas_distance_m": 65
     },
     "1205": {
       "lines": {
-        "R3": "2026-09-25",
-        "REX1": "2026-09-25",
-        "REX3": "2026-09-25",
-        "S1": "2026-09-25",
-        "S2": "2026-09-25",
-        "S3": "2026-09-25",
-        "S80": "2026-09-25"
+        "R3": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX3": "2026-09-26",
+        "S1": "2026-09-26",
+        "S2": "2026-09-26",
+        "S3": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Wien Liesing",
-      "hafas_ext_id": "1192301",
-      "checked": "2026-09-25"
+      "hafas_ext_id": "1292303",
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Liesing Bahnhof",
+      "hafas_classes": 2160,
+      "hafas_distance_m": 18
     },
     "1206": {
       "lines": {
-        "S1": "2026-09-25",
-        "S2": "2026-09-25",
-        "S3": "2026-09-25",
-        "S80": "2026-09-25"
+        "S1": "2026-09-26",
+        "S2": "2026-09-26",
+        "S3": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Perchtoldsdorf",
       "hafas_ext_id": "1131719",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Perchtoldsdorf",
+      "hafas_classes": 96,
+      "hafas_distance_m": 42
     },
     "1266": {
       "lines": {
-        "CJX9": "2026-09-25",
-        "R1": "2026-09-25",
-        "REX1": "2026-09-25",
-        "REX2": "2026-09-25",
-        "S1": "2026-09-25",
-        "S2": "2026-09-25"
+        "CJX9": "2026-09-26",
+        "R1": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX2": "2026-09-26",
+        "S1": "2026-09-26",
+        "S2": "2026-09-26"
       },
       "name": "Wien Leopoldau",
       "hafas_ext_id": "1292103",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Leopoldau Bahnhst (U)",
+      "hafas_classes": 370,
+      "hafas_distance_m": 0
     },
     "1290": {
       "lines": {
-        "R95": "2026-09-25"
+        "R95": "2026-09-26"
       },
       "name": "Laxenburg-Biedermannsdorf",
       "hafas_ext_id": "1232422",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Laxenburg-Biedermannsdorf Bahnhof",
+      "hafas_classes": 16,
+      "hafas_distance_m": 31
     },
     "1318": {
       "lines": {
-        "R81": "2026-09-25",
-        "REX8": "2026-09-25",
-        "REX81": "2026-09-25",
-        "S1": "2026-09-25"
+        "R81": "2026-09-26",
+        "REX8": "2026-09-26",
+        "REX81": "2026-09-26",
+        "S1": "2026-09-26"
       },
       "name": "Marchegg",
       "hafas_ext_id": "1130835",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Marchegg",
+      "hafas_classes": 114,
+      "hafas_distance_m": 110
     },
     "1319": {
       "lines": {
-        "REX7": "2026-09-25"
+        "REX7": "2026-09-26"
       },
       "name": "Maria Ellend",
       "hafas_ext_id": "1130711",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Maria Ellend/Donau",
+      "hafas_classes": 82,
+      "hafas_distance_m": 90
     },
     "1341": {
       "lines": {
-        "R95": "2026-09-25"
+        "R95": "2026-09-26"
       },
       "name": "Maria Lanzendorf",
       "hafas_ext_id": "1132411",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Maria Lanzendorf",
+      "hafas_classes": 82,
+      "hafas_distance_m": 32
     },
     "1348": {
       "lines": {
-        "R3": "2026-09-25",
-        "S1": "2026-09-25",
-        "S2": "2026-09-25",
-        "S3": "2026-09-25",
-        "S80": "2026-09-25"
+        "R3": "2026-09-26",
+        "S1": "2026-09-26",
+        "S2": "2026-09-26",
+        "S3": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Wien Hetzendorf",
       "hafas_ext_id": "1191202",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Hetzendorf (Wien)",
+      "hafas_classes": 624,
+      "hafas_distance_m": 0
     },
     "1349": {
       "lines": {
-        "CJX9": "2026-09-25",
-        "R3": "2026-09-25",
-        "REX1": "2026-09-25",
-        "REX3": "2026-09-25",
-        "S1": "2026-09-25",
-        "S3": "2026-09-25",
-        "S80": "2026-09-25"
+        "CJX9": "2026-09-26",
+        "R3": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX3": "2026-09-26",
+        "S1": "2026-09-26",
+        "S3": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Wien Matzleinsdorfer Platz",
       "hafas_ext_id": "1290501",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Matzleinsdorfer Platz Bahnhst",
+      "hafas_classes": 626,
+      "hafas_distance_m": 29
     },
     "1351": {
       "lines": {},
       "name": "Wien Quartier Belvedere",
       "hafas_ext_id": "8101473",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Quartier Belvedere Bahnhst",
+      "hafas_classes": 608,
+      "hafas_distance_m": 66
     },
     "1352": {
       "lines": {},
       "name": "Wien Rennweg",
       "hafas_ext_id": "1290303",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Rennweg Bahnhst",
+      "hafas_classes": 626,
+      "hafas_distance_m": 97
     },
     "1370": {
       "lines": {
-        "REX2": "2026-09-25",
-        "S2": "2026-09-25"
+        "REX2": "2026-09-26",
+        "S2": "2026-09-26"
       },
       "name": "Mistelbach",
       "hafas_ext_id": "1131633",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Mistelbach/Zaya",
+      "hafas_classes": 114,
+      "hafas_distance_m": 114
     },
     "1371": {
       "lines": {},
       "name": "Siebenhirten",
-      "hafas_ext_id": "1192310",
       "checked": "2026-09-25"
     },
     "1377": {
       "lines": {
-        "R3": "2026-09-25",
-        "REX1": "2026-09-25",
-        "REX3": "2026-09-25",
-        "S1": "2026-09-25",
-        "S2": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25",
-        "S80": "2026-09-25"
+        "R3": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX3": "2026-09-26",
+        "S1": "2026-09-26",
+        "S2": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Mödling",
       "hafas_ext_id": "1131717",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Mödling",
+      "hafas_classes": 4208,
+      "hafas_distance_m": 27
     },
     "1379": {
       "lines": {
-        "R3": "2026-09-25",
-        "S1": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25",
-        "S80": "2026-09-25"
+        "R3": "2026-09-26",
+        "S1": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Gumpoldskirchen",
       "hafas_ext_id": "1131709",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Gumpoldskirchen",
+      "hafas_classes": 112,
+      "hafas_distance_m": 25
     },
     "1410": {
       "lines": {
-        "CJX9": "2026-09-25",
-        "R3": "2026-09-25",
-        "REX1": "2026-09-25",
-        "REX3": "2026-09-25",
-        "REX6": "2026-09-25",
-        "REX65": "2026-09-25",
-        "REX92": "2026-09-25",
-        "S1": "2026-09-25",
-        "S2": "2026-09-25",
-        "S3": "2026-09-25",
-        "S60": "2026-09-25",
-        "S80": "2026-09-25"
+        "CJX9": "2026-09-26",
+        "R3": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX3": "2026-09-26",
+        "REX6": "2026-09-26",
+        "REX65": "2026-09-26",
+        "REX92": "2026-09-26",
+        "S1": "2026-09-26",
+        "S2": "2026-09-26",
+        "S3": "2026-09-26",
+        "S60": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Wien Meidling",
       "hafas_ext_id": "1191201",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Meidling (Wien)",
+      "hafas_classes": 4991,
+      "hafas_distance_m": 140
     },
     "1469": {
       "lines": {
-        "S60": "2026-09-25"
+        "S60": "2026-09-26"
       },
       "name": "Münchendorf",
       "hafas_ext_id": "1131718",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Münchendorf",
+      "hafas_classes": 96,
+      "hafas_distance_m": 25
     },
     "1499": {
       "lines": {
-        "CJX9": "2026-09-25",
-        "R3": "2026-09-25",
-        "R92": "2026-09-25",
-        "R97": "2026-09-25",
-        "R98": "2026-09-25",
-        "REX1": "2026-09-25",
-        "REX3": "2026-09-25",
-        "REX92": "2026-09-25",
-        "REX93": "2026-09-25",
-        "REX97": "2026-09-25",
-        "S1": "2026-09-25",
-        "S3": "2026-09-25"
+        "CJX9": "2026-09-26",
+        "R3": "2026-09-26",
+        "R92": "2026-09-26",
+        "R97": "2026-09-26",
+        "R98": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX3": "2026-09-26",
+        "REX92": "2026-09-26",
+        "REX93": "2026-09-26",
+        "REX97": "2026-09-26",
+        "S1": "2026-09-26",
+        "S3": "2026-09-26"
       },
       "name": "Wiener Neustadt Hauptbahnhof",
       "hafas_ext_id": "8100516",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wr.Neustadt Hbf",
+      "hafas_classes": 6271,
+      "hafas_distance_m": 25
     },
     "1534": {
       "lines": {
-        "S40": "2026-09-25"
+        "S40": "2026-09-26"
       },
       "name": "Wien Nußdorf",
       "hafas_ext_id": "1191902",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Nußdorf (Wien)",
+      "hafas_classes": 544,
+      "hafas_distance_m": 58
     },
     "1543": {
       "lines": {
-        "REX1": "2026-09-25"
+        "REX1": "2026-09-26"
       },
       "name": "Hohenau",
       "hafas_ext_id": "1230811",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Hohenau/March Bahnhof",
+      "hafas_classes": 80,
+      "hafas_distance_m": 32
     },
     "1558": {
       "lines": {
-        "REX50": "2026-09-25",
-        "REX51": "2026-09-25"
+        "REX50": "2026-09-26",
+        "REX51": "2026-09-26"
       },
       "name": "Neulengbach",
       "hafas_ext_id": "1131926",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Neulengbach",
+      "hafas_classes": 112,
+      "hafas_distance_m": 6
     },
     "1568": {
       "lines": {
-        "REX63": "2026-09-25",
-        "REX64": "2026-09-25"
+        "REX63": "2026-09-26",
+        "REX64": "2026-09-26"
       },
       "name": "Neusiedl am See",
       "hafas_ext_id": "1110713",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Neusiedl am See",
+      "hafas_classes": 114,
+      "hafas_distance_m": 24
     },
     "1584": {
       "lines": {
-        "R1": "2026-09-25",
-        "REX1": "2026-09-25",
-        "REX2": "2026-09-25",
-        "REX3": "2026-09-25",
-        "S1": "2026-09-25",
-        "S2": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25"
+        "R1": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX2": "2026-09-26",
+        "REX3": "2026-09-26",
+        "S1": "2026-09-26",
+        "S2": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26"
       },
       "name": "Wien Praterstern",
       "hafas_ext_id": "1290201",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Praterstern Bahnhof (U)",
+      "hafas_classes": 2930,
+      "hafas_distance_m": 66
     },
     "1585": {
       "lines": {
-        "R1": "2026-09-25",
-        "REX1": "2026-09-25",
-        "REX2": "2026-09-25",
-        "REX3": "2026-09-25",
-        "S1": "2026-09-25",
-        "S2": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25"
+        "R1": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX2": "2026-09-26",
+        "REX3": "2026-09-26",
+        "S1": "2026-09-26",
+        "S2": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26"
       },
       "name": "Wien Traisengasse",
       "hafas_ext_id": "1292002",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Traisengasse Bahnhst",
+      "hafas_classes": 624,
+      "hafas_distance_m": 91
     },
     "1617": {
       "lines": {
-        "R3": "2026-09-25",
-        "REX3": "2026-09-25",
-        "S3": "2026-09-25"
+        "R3": "2026-09-26",
+        "REX3": "2026-09-26",
+        "S3": "2026-09-26"
       },
       "name": "Hollabrunn",
       "hafas_ext_id": "1131022",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Hollabrunn",
+      "hafas_classes": 2162,
+      "hafas_distance_m": 1
     },
     "1620": {
       "lines": {
-        "S45": "2026-09-25"
+        "S45": "2026-09-26"
       },
       "name": "Wien Ottakring",
       "hafas_ext_id": "1191601",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Ottakring (Wien)",
+      "hafas_classes": 864,
+      "hafas_distance_m": 81
     },
     "1621": {
-      "lines": {},
-      "name": "Wien Breitensee"
+      "lines": {
+        "S45": "2026-09-26"
+      },
+      "name": "Wien Breitensee",
+      "hafas_ext_id": "1291404",
+      "hafas_name": "Wien Breitensee Bahnhst",
+      "hafas_classes": 608,
+      "hafas_distance_m": 136,
+      "checked": "2026-09-26"
     },
     "1660": {
       "lines": {
-        "R62": "2026-09-25",
-        "REX6": "2026-09-25",
-        "REX62": "2026-09-25",
-        "REX63": "2026-09-25",
-        "REX64": "2026-09-25"
+        "R62": "2026-09-26",
+        "REX6": "2026-09-26",
+        "REX62": "2026-09-26",
+        "REX63": "2026-09-26",
+        "REX64": "2026-09-26"
       },
       "name": "Parndorf",
       "hafas_ext_id": "1110717",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Parndorf",
+      "hafas_classes": 114,
+      "hafas_distance_m": 30
     },
     "1669": {
       "lines": {
-        "CJX5": "2026-09-25",
-        "R44": "2026-09-25",
-        "R52": "2026-09-25",
-        "R54": "2026-09-25",
-        "R55": "2026-09-25",
-        "REX44": "2026-09-25",
-        "REX50": "2026-09-25",
-        "REX51": "2026-09-25",
-        "RR56": "2026-09-25",
-        "S40": "2026-09-25"
+        "CJX5": "2026-09-26",
+        "R44": "2026-09-26",
+        "R52": "2026-09-26",
+        "R54": "2026-09-26",
+        "R55": "2026-09-26",
+        "REX44": "2026-09-26",
+        "REX50": "2026-09-26",
+        "REX51": "2026-09-26",
+        "RR56": "2026-09-26",
+        "S40": "2026-09-26"
       },
       "name": "St. Pölten Hauptbahnhof",
       "hafas_ext_id": "8100008",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "St.Pölten Hbf",
+      "hafas_classes": 4223,
+      "hafas_distance_m": 49
     },
     "1685": {
       "lines": {
-        "REX7": "2026-09-25"
+        "REX7": "2026-09-26"
       },
       "name": "Petronell-Carnuntum",
       "hafas_ext_id": "1130718",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Petronell-Carnuntum",
+      "hafas_classes": 80,
+      "hafas_distance_m": 17
     },
     "1718": {
       "lines": {
-        "REX50": "2026-09-25",
-        "REX51": "2026-09-25",
-        "S50": "2026-09-25"
+        "REX50": "2026-09-26",
+        "REX51": "2026-09-26",
+        "S50": "2026-09-26"
       },
       "name": "Tullnerbach-Pressbaum",
       "hafas_ext_id": "1232403",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Tullnerbach-Pressbaum Bahnhof",
+      "hafas_classes": 112,
+      "hafas_distance_m": 2
     },
     "1719": {
       "lines": {
-        "REX50": "2026-09-25",
-        "REX51": "2026-09-25",
-        "S50": "2026-09-25"
+        "REX50": "2026-09-26",
+        "REX51": "2026-09-26",
+        "S50": "2026-09-26"
       },
       "name": "Pressbaum",
       "hafas_ext_id": "1132415",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Pressbaum",
+      "hafas_classes": 112,
+      "hafas_distance_m": 35
     },
     "1741": {
       "lines": {
-        "CJX9": "2026-09-25",
-        "R91": "2026-09-25",
-        "REX3": "2026-09-25"
+        "CJX9": "2026-09-26",
+        "R91": "2026-09-26",
+        "REX3": "2026-09-26"
       },
       "name": "Payerbach-Reichenau",
       "hafas_ext_id": "1231805",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Payerbach-Reichenau an der Rax Bahnhof",
+      "hafas_classes": 114,
+      "hafas_distance_m": 1
     },
     "1762": {
       "lines": {
-        "REX51": "2026-09-25"
+        "REX51": "2026-09-26"
       },
       "name": "Pottenbrunn",
       "hafas_ext_id": "1130208",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Pottenbrunn",
+      "hafas_classes": 80,
+      "hafas_distance_m": 2
     },
     "1797": {
       "lines": {
-        "S45": "2026-09-25",
-        "S50": "2026-09-25"
+        "S45": "2026-09-26",
+        "S50": "2026-09-26"
       },
       "name": "Wien Penzing",
       "hafas_ext_id": "1191406",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Penzing (Wien)",
+      "hafas_classes": 32,
+      "hafas_distance_m": 29
     },
     "1811": {
       "lines": {
-        "R81": "2026-09-25",
-        "REX81": "2026-09-25"
+        "R81": "2026-09-26",
+        "REX81": "2026-09-26"
       },
       "name": "Raasdorf",
       "hafas_ext_id": "1130849",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Raasdorf",
+      "hafas_classes": 112,
+      "hafas_distance_m": 28
     },
     "1813": {
       "lines": {
-        "R81": "2026-09-25",
-        "REX81": "2026-09-25"
+        "R81": "2026-09-26",
+        "REX81": "2026-09-26"
       },
       "name": "Glinzendorf",
       "hafas_ext_id": "1130819",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Glinzendorf",
+      "hafas_classes": 112,
+      "hafas_distance_m": 50
     },
     "1832": {
       "lines": {
-        "REX7": "2026-09-25"
+        "REX7": "2026-09-26"
       },
       "name": "Regelsbrunn",
       "hafas_ext_id": "1130753",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Regelsbrunn",
+      "hafas_classes": 82,
+      "hafas_distance_m": 3
     },
     "1833": {
       "lines": {
-        "REX7": "2026-09-25"
+        "REX7": "2026-09-26"
       },
       "name": "Wildungsmauer",
       "hafas_ext_id": "1130754",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wildungsmauer",
+      "hafas_classes": 82,
+      "hafas_distance_m": 44
     },
     "1904": {
       "lines": {
-        "S50": "2026-09-25"
+        "S50": "2026-09-26"
       },
       "name": "Rekawinkel",
       "hafas_ext_id": "1132425",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Rekawinkel",
+      "hafas_classes": 96,
+      "hafas_distance_m": 35
     },
     "1905": {
       "lines": {
-        "REX50": "2026-09-25",
-        "REX51": "2026-09-25",
-        "S50": "2026-09-25"
+        "REX50": "2026-09-26",
+        "REX51": "2026-09-26",
+        "S50": "2026-09-26"
       },
       "name": "Eichgraben-Altlengbach",
       "hafas_ext_id": "1231904",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Eichgraben NÖ-Altlengbach Bahnhst",
+      "hafas_classes": 112,
+      "hafas_distance_m": 6
     },
     "1950": {
       "lines": {
-        "R81": "2026-09-25",
-        "REX8": "2026-09-25",
-        "REX81": "2026-09-25"
+        "R81": "2026-09-26",
+        "REX8": "2026-09-26",
+        "REX81": "2026-09-26"
       },
       "name": "Siebenbrunn-Leopoldsdorf",
       "hafas_ext_id": "1230802",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Siebenbrunn im Marchfeld-Leopoldsdorf Bahnhof",
+      "hafas_classes": 112,
+      "hafas_distance_m": 61
     },
     "1952": {
       "lines": {
-        "R81": "2026-09-25",
-        "REX81": "2026-09-25"
+        "R81": "2026-09-26",
+        "REX81": "2026-09-26"
       },
       "name": "Untersiebenbrunn",
       "hafas_ext_id": "1130858",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Untersiebenbrunn",
+      "hafas_classes": 112,
+      "hafas_distance_m": 72
     },
     "1969": {
       "lines": {
-        "R3": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25"
+        "R3": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26"
       },
       "name": "Wien Strebersdorf",
       "hafas_ext_id": "1192102",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Strebersdorf (Wien)",
+      "hafas_classes": 626,
+      "hafas_distance_m": 30
     },
     "1995": {
       "lines": {
-        "R81": "2026-09-25",
-        "REX8": "2026-09-25",
-        "REX81": "2026-09-25"
+        "R81": "2026-09-26",
+        "REX8": "2026-09-26",
+        "REX81": "2026-09-26"
       },
       "name": "Schönfeld-Lassee",
       "hafas_ext_id": "1230815",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Schönfeld im Marchfeld-Lassee Bahnhof",
+      "hafas_classes": 112,
+      "hafas_distance_m": 121
     },
     "1998": {
       "lines": {
-        "R95": "2026-09-25",
-        "REX6": "2026-09-25",
-        "REX62": "2026-09-25",
-        "REX63": "2026-09-25",
-        "REX64": "2026-09-25",
-        "S60": "2026-09-25"
+        "R95": "2026-09-26",
+        "REX6": "2026-09-26",
+        "REX62": "2026-09-26",
+        "REX63": "2026-09-26",
+        "REX64": "2026-09-26",
+        "S60": "2026-09-26"
       },
       "name": "Wien Grillgasse",
       "hafas_ext_id": "1291106",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Grillgasse Bahnhst",
+      "hafas_classes": 114,
+      "hafas_distance_m": 109
     },
     "2095": {
       "lines": {
-        "R81": "2026-09-25",
-        "S80": "2026-09-25"
+        "R81": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Wien Erzherzog Karl-Straße",
       "hafas_ext_id": "1292206",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Erzherzog-Karl-Straße Bahnhst",
+      "hafas_classes": 2672,
+      "hafas_distance_m": 45
     },
     "2096": {
       "lines": {
-        "R81": "2026-09-25",
-        "S80": "2026-09-25"
+        "R81": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Wien Hirschstetten",
-      "hafas_ext_id": "1192203",
-      "checked": "2026-09-25"
+      "hafas_ext_id": "1292201",
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Hirschstetten Bahnhst",
+      "hafas_classes": 112,
+      "hafas_distance_m": 18
     },
     "2140": {
       "lines": {
-        "R3": "2026-09-25",
-        "REX3": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25"
+        "R3": "2026-09-26",
+        "REX3": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26"
       },
       "name": "Stockerau",
       "hafas_ext_id": "1131230",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Stockerau",
+      "hafas_classes": 114,
+      "hafas_distance_m": 20
     },
     "2145": {
       "lines": {
-        "R1": "2026-09-25",
-        "REX1": "2026-09-25",
-        "S1": "2026-09-25"
+        "R1": "2026-09-26",
+        "REX1": "2026-09-26",
+        "S1": "2026-09-26"
       },
       "name": "Wien Süßenbrunn",
       "hafas_ext_id": "1292203",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Süßenbrunn Bahnhst",
+      "hafas_classes": 2162,
+      "hafas_distance_m": 57
     },
     "2199": {
       "lines": {
-        "R95": "2026-09-25"
+        "R95": "2026-09-26"
       },
       "name": "Tattendorf",
       "hafas_ext_id": "1130636",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Tattendorf",
+      "hafas_classes": 82,
+      "hafas_distance_m": 10
     },
     "2208": {
       "lines": {
-        "R95": "2026-09-25"
+        "R95": "2026-09-26"
       },
       "name": "Teesdorf",
       "hafas_ext_id": "1130637",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Teesdorf",
+      "hafas_classes": 82,
+      "hafas_distance_m": 20
     },
     "2218": {
       "lines": {
-        "R95": "2026-09-25"
+        "R95": "2026-09-26"
       },
       "name": "Traiskirchen Aspangbahn",
       "hafas_ext_id": "8101640",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Traiskirchen Aspangbahn Bahnhof",
+      "hafas_classes": 82,
+      "hafas_distance_m": 13
     },
     "2220": {
       "lines": {
-        "R95": "2026-09-25"
+        "R95": "2026-09-26"
       },
       "name": "Trumau",
       "hafas_ext_id": "1130641",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Trumau",
+      "hafas_classes": 82,
+      "hafas_distance_m": 33
     },
     "2232": {
       "lines": {
-        "CJX9": "2026-09-25",
-        "REX3": "2026-09-25"
+        "CJX9": "2026-09-26",
+        "REX3": "2026-09-26"
       },
       "name": "Ternitz",
       "hafas_ext_id": "1131839",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Ternitz",
+      "hafas_classes": 114,
+      "hafas_distance_m": 73
     },
     "2233": {
       "lines": {
-        "CJX9": "2026-09-25",
-        "REX3": "2026-09-25"
+        "CJX9": "2026-09-26",
+        "REX3": "2026-09-26"
       },
       "name": "Pottschach",
       "hafas_ext_id": "1131851",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Pottschach",
+      "hafas_classes": 114,
+      "hafas_distance_m": 73
     },
     "2262": {
       "lines": {
-        "REX4": "2026-09-25",
-        "REX41": "2026-09-25",
-        "S40": "2026-09-25"
+        "REX4": "2026-09-26",
+        "REX41": "2026-09-26",
+        "S40": "2026-09-26"
       },
       "name": "Tulln an der Donau",
       "hafas_ext_id": "1132135",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Tulln/Donau",
+      "hafas_classes": 114,
+      "hafas_distance_m": 31
     },
     "2269": {
       "lines": {
-        "S40": "2026-09-25"
+        "S40": "2026-09-26"
       },
       "name": "Tulln Stadt",
       "hafas_ext_id": "8101692",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Tulln/Donau Stadt Bahnhst",
+      "hafas_classes": 98,
+      "hafas_distance_m": 5
     },
     "2290": {
       "lines": {
-        "REX51": "2026-09-25",
-        "S50": "2026-09-25"
+        "REX51": "2026-09-26",
+        "S50": "2026-09-26"
       },
       "name": "Purkersdorf Zentrum",
-      "hafas_ext_id": "1232402",
-      "checked": "2026-09-25"
+      "hafas_ext_id": "1132416",
+      "checked": "2026-09-26",
+      "hafas_name": "Purkersdorf b.Wien",
+      "hafas_classes": 112,
+      "hafas_distance_m": 2
     },
     "2396": {
       "lines": {
-        "S80": "2026-09-25"
+        "S80": "2026-09-26"
       },
       "name": "Wien Haidestraße",
       "hafas_ext_id": "1291102",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Haidestraße Bahnhst",
+      "hafas_classes": 96,
+      "hafas_distance_m": 105
     },
     "2444": {
       "lines": {
-        "R40": "2026-09-25",
-        "REX4": "2026-09-25",
-        "REX41": "2026-09-25",
-        "S40": "2026-09-25"
+        "R40": "2026-09-26",
+        "REX4": "2026-09-26",
+        "REX41": "2026-09-26",
+        "S40": "2026-09-26"
       },
       "name": "Wien Franz-Josefs-Bahnhof",
       "hafas_ext_id": "8100446",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Franz-Josefs-Bahnhof",
+      "hafas_classes": 624,
+      "hafas_distance_m": 129
     },
     "2446": {
       "lines": {
-        "R40": "2026-09-25",
-        "REX4": "2026-09-25",
-        "REX41": "2026-09-25",
-        "S40": "2026-09-25"
+        "R40": "2026-09-26",
+        "REX4": "2026-09-26",
+        "REX41": "2026-09-26",
+        "S40": "2026-09-26"
       },
       "name": "Wien Spittelau",
       "hafas_ext_id": "1290901",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Spittelau Bahnhst (U)",
+      "hafas_classes": 2928,
+      "hafas_distance_m": 73
     },
     "2447": {
       "lines": {
-        "R1": "2026-09-25",
-        "REX1": "2026-09-25",
-        "S1": "2026-09-25"
+        "R1": "2026-09-26",
+        "REX1": "2026-09-26",
+        "S1": "2026-09-26"
       },
       "name": "Deutsch Wagram",
-      "hafas_ext_id": "1130808",
-      "checked": "2026-09-25"
+      "hafas_ext_id": "1230804",
+      "checked": "2026-09-26",
+      "hafas_name": "Deutsch Wagram Bahnhof",
+      "hafas_classes": 114,
+      "hafas_distance_m": 18
     },
     "2448": {
       "lines": {
-        "S1": "2026-09-25"
+        "S1": "2026-09-26"
       },
       "name": "Helmahof",
-      "hafas_ext_id": "1135802",
-      "checked": "2026-09-25"
+      "hafas_ext_id": "1230805",
+      "checked": "2026-09-26",
+      "hafas_name": "Helmahof Bahnhst",
+      "hafas_classes": 98,
+      "hafas_distance_m": 19
     },
     "2449": {
       "lines": {
-        "R1": "2026-09-25",
-        "REX1": "2026-09-25",
-        "S1": "2026-09-25"
+        "R1": "2026-09-26",
+        "REX1": "2026-09-26",
+        "S1": "2026-09-26"
       },
       "name": "Strasshof an der Nordbahn",
       "hafas_ext_id": "1130856",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Strasshof/Nordbahn",
+      "hafas_classes": 114,
+      "hafas_distance_m": 68
     },
     "2493": {
       "lines": {
-        "REX7": "2026-09-25"
+        "REX7": "2026-09-26"
       },
       "name": "Wolfsthal",
       "hafas_ext_id": "1130728",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wolfsthal",
+      "hafas_classes": 82,
+      "hafas_distance_m": 14
     },
     "2497": {
       "lines": {
-        "REX2": "2026-09-25",
-        "S2": "2026-09-25"
+        "REX2": "2026-09-26",
+        "S2": "2026-09-26"
       },
       "name": "Wolkersdorf",
       "hafas_ext_id": "1131655",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wolkersdorf im Weinviertel",
+      "hafas_classes": 114,
+      "hafas_distance_m": 1
     },
     "2499": {
       "lines": {
-        "S60": "2026-09-25"
+        "S60": "2026-09-26"
       },
       "name": "Wampersdorf",
-      "hafas_ext_id": "1130662",
-      "checked": "2026-09-25"
+      "hafas_ext_id": "8100342",
+      "checked": "2026-09-26",
+      "hafas_name": "Wampersdorf Bahnhof",
+      "hafas_classes": 114,
+      "hafas_distance_m": 1
     },
     "2501": {
       "lines": {
-        "REX6": "2026-09-25"
+        "REX6": "2026-09-26"
       },
       "name": "Pottendorf-Landegg",
       "hafas_ext_id": "1230607",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Pottendorf-Landegg Bahnhst",
+      "hafas_classes": 114,
+      "hafas_distance_m": 66
     },
     "2511": {
       "lines": {
-        "CJX5": "2026-09-25",
-        "REX50": "2026-09-25",
-        "REX51": "2026-09-25",
-        "S50": "2026-09-25"
+        "CJX5": "2026-09-26",
+        "REX50": "2026-09-26",
+        "REX51": "2026-09-26",
+        "S50": "2026-09-26"
       },
       "name": "Wien Westbahnhof",
       "hafas_ext_id": "1291501",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Westbahnhof (U)",
+      "hafas_classes": 7039,
+      "hafas_distance_m": 90
     },
     "2548": {
       "lines": {
-        "R95": "2026-09-25",
-        "S60": "2026-09-25"
+        "R95": "2026-09-26",
+        "S60": "2026-09-26"
       },
       "name": "Kledering",
       "hafas_ext_id": "1132450",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Kledering",
+      "hafas_classes": 114,
+      "hafas_distance_m": 94
     },
     "2578": {
       "lines": {
-        "S60": "2026-09-25"
+        "S60": "2026-09-26"
       },
       "name": "Lanzendorf-Rannersdorf",
       "hafas_ext_id": "1232408",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Lanzendorf b.Wien-Rannersdorf Bahnhst",
+      "hafas_classes": 98,
+      "hafas_distance_m": 3
     },
     "900100": {
       "lines": {},
@@ -1361,191 +1789,245 @@
     "900101": {
       "lines": {},
       "name": "Wien Karlsplatz",
-      "hafas_ext_id": "1390461",
       "checked": "2026-09-25"
     },
     "900102": {
       "lines": {},
       "name": "Wien Mitte-Landstraße",
       "hafas_ext_id": "1290302",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Mitte-Landstraße Bahnhof (U)",
+      "hafas_classes": 890,
+      "hafas_distance_m": 147
     },
     "900103": {
       "lines": {},
       "name": "Wien Schottentor",
-      "hafas_ext_id": "1390164",
       "checked": "2026-09-25"
     },
     "900104": {
       "lines": {},
       "name": "Wien Stephansplatz",
-      "hafas_ext_id": "1390167",
       "checked": "2026-09-25"
     },
     "900105": {
       "lines": {
-        "REX7": "2026-09-25",
-        "S7": "2026-09-25"
+        "REX7": "2026-09-26",
+        "S7": "2026-09-26"
       },
       "name": "Wien Kaiserebersdorf",
-      "hafas_ext_id": "1191103",
-      "checked": "2026-09-25"
+      "hafas_ext_id": "1291101",
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Kaiserebersdorf Bahnhst",
+      "hafas_classes": 112,
+      "hafas_distance_m": 35
     },
     "900106": {
       "lines": {
-        "S1": "2026-09-25",
-        "S3": "2026-09-25",
-        "S4": "2026-09-25",
-        "S80": "2026-09-25"
+        "S1": "2026-09-26",
+        "S3": "2026-09-26",
+        "S4": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Guntramsdorf Bahnhof",
       "hafas_ext_id": "8100846",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Guntramsdorf Thallern Bahnhst",
+      "hafas_classes": 112,
+      "hafas_distance_m": 26
     },
     "900107": {
       "lines": {
-        "R95": "2026-09-25"
+        "R95": "2026-09-26"
       },
       "name": "Guntramsdorf-Kaiserau",
       "hafas_ext_id": "1331775",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Guntramsdorf Kaiserau Bahnhst",
+      "hafas_classes": 18,
+      "hafas_distance_m": 66
     },
     "900108": {
       "lines": {
-        "REX7": "2026-09-25"
+        "REX7": "2026-09-26"
       },
       "name": "Hainburg Kulturfabrik",
       "hafas_ext_id": "8100958",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Hainburg/Donau Kulturfabrik Bahnhst",
+      "hafas_classes": 82,
+      "hafas_distance_m": 22
     },
     "900109": {
       "lines": {
-        "REX7": "2026-09-25"
+        "REX7": "2026-09-26"
       },
       "name": "Hainburg Ungartor",
       "hafas_ext_id": "8100959",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Hainburg/Donau Ungartor Bahnhst",
+      "hafas_classes": 82,
+      "hafas_distance_m": 1
     },
     "900110": {
       "lines": {
-        "CJX9": "2026-09-25",
-        "REX3": "2026-09-25"
+        "CJX9": "2026-09-26",
+        "REX3": "2026-09-26"
       },
       "name": "Neunkirchen NÖ",
       "hafas_ext_id": "1131818",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Neunkirchen NÖ",
+      "hafas_classes": 112,
+      "hafas_distance_m": 1
     },
     "900111": {
       "lines": {
-        "R95": "2026-09-25"
+        "R95": "2026-09-26"
       },
       "name": "Oberwaltersdorf",
       "hafas_ext_id": "1130623",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Oberwaltersdorf",
+      "hafas_classes": 82,
+      "hafas_distance_m": 7
     },
     "900112": {
       "lines": {
-        "S60": "2026-09-25"
+        "S60": "2026-09-26"
       },
       "name": "Trautmannsdorf an der Leitha",
-      "hafas_ext_id": "1130726",
-      "checked": "2026-09-25"
+      "hafas_ext_id": "1230709",
+      "checked": "2026-09-26",
+      "hafas_name": "Trautmannsdorf/Leitha Bahnhof",
+      "hafas_classes": 32,
+      "hafas_distance_m": 18
     },
     "1240760": {
       "lines": {
-        "R3": "2026-09-25",
-        "R95": "2026-09-25",
-        "S1": "2026-09-25",
-        "S3": "2026-09-25"
+        "R3": "2026-09-26",
+        "R95": "2026-09-26",
+        "S1": "2026-09-26",
+        "S3": "2026-09-26"
       },
       "name": "Sollenau",
       "hafas_ext_id": "1132327",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Sollenau",
+      "hafas_classes": 114,
+      "hafas_distance_m": 59
     },
     "1240762": {
       "lines": {
-        "R62": "2026-09-25",
-        "REX6": "2026-09-25",
-        "REX62": "2026-09-25",
-        "REX63": "2026-09-25",
-        "REX64": "2026-09-25"
+        "R62": "2026-09-26",
+        "REX6": "2026-09-26",
+        "REX62": "2026-09-26",
+        "REX63": "2026-09-26",
+        "REX64": "2026-09-26"
       },
       "name": "Parndorf Ort",
       "hafas_ext_id": "8100515",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Parndorf Ort Bahnhst",
+      "hafas_classes": 112,
+      "hafas_distance_m": 3
     },
     "1251757": {
       "lines": {
-        "REX7": "2026-09-25",
-        "S7": "2026-09-25"
+        "REX7": "2026-09-26",
+        "S7": "2026-09-26"
       },
       "name": "Wien St. Marx",
       "hafas_ext_id": "1190302",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "St.Marx (Wien)",
+      "hafas_classes": 610,
+      "hafas_distance_m": 90
     },
     "1251761": {
       "lines": {
-        "REX7": "2026-09-25",
-        "S7": "2026-09-25"
+        "REX7": "2026-09-26",
+        "S7": "2026-09-26"
       },
       "name": "Wien Geiselbergstraße",
       "hafas_ext_id": "1291104",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Geiselbergstraße Bahnhst",
+      "hafas_classes": 610,
+      "hafas_distance_m": 72
     },
     "1945177": {
       "lines": {
-        "REX2": "2026-09-25",
-        "S2": "2026-09-25"
+        "REX2": "2026-09-26",
+        "S2": "2026-09-26"
       },
       "name": "Mistelbach Stadt",
       "hafas_ext_id": "8102007",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Mistelbach/Zaya Stadt Bahnhst",
+      "hafas_classes": 114,
+      "hafas_distance_m": 52
     },
     "2968384": {
       "lines": {
-        "S50": "2026-09-25"
+        "S50": "2026-09-26"
       },
       "name": "Wien Wolf in der Au",
       "hafas_ext_id": "1291405",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Wolf in der Au Bahnhst",
+      "hafas_classes": 96,
+      "hafas_distance_m": 11
     },
     "4384321": {
       "lines": {
-        "CJX5": "2026-09-25",
-        "S40": "2026-09-25"
+        "CJX5": "2026-09-26",
+        "S40": "2026-09-26"
       },
       "name": "Tullnerfeld",
       "hafas_ext_id": "1232120",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Tullnerfeld Bahnhof",
+      "hafas_classes": 127,
+      "hafas_distance_m": 21
     },
     "4407597": {
       "lines": {
-        "R81": "2026-09-25",
-        "REX1": "2026-09-25",
-        "REX8": "2026-09-25",
-        "REX81": "2026-09-25",
-        "S80": "2026-09-25"
+        "R81": "2026-09-26",
+        "REX1": "2026-09-26",
+        "REX8": "2026-09-26",
+        "REX81": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Wien Stadlau",
-      "hafas_ext_id": "1192208",
-      "checked": "2026-09-25"
+      "hafas_ext_id": "1292204",
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Stadlau Bahnhst (U)",
+      "hafas_classes": 2416,
+      "hafas_distance_m": 66
     },
     "4741048": {
       "lines": {},
       "name": "Wien Simmering",
       "hafas_ext_id": "1191101",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Simmering (Wien)",
+      "hafas_classes": 880,
+      "hafas_distance_m": 36
     },
     "4773541": {
       "lines": {
-        "R81": "2026-09-25",
-        "REX8": "2026-09-25",
-        "REX81": "2026-09-25",
-        "S80": "2026-09-25"
+        "R81": "2026-09-26",
+        "REX8": "2026-09-26",
+        "REX81": "2026-09-26",
+        "S80": "2026-09-26"
       },
       "name": "Wien Aspern Nord",
       "hafas_ext_id": "1292207",
-      "checked": "2026-09-25"
+      "checked": "2026-09-26",
+      "hafas_name": "Wien Aspern Nord Bahnhst (U)",
+      "hafas_classes": 2928,
+      "hafas_distance_m": 44
     }
   }
 }
