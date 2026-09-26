@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 26 Sep 2026 13:00:43 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 13:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[22A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">64d88f357882396c9a5115dd6d0b7d9e1930c8e1858a79ead8d4acacc349f4f4</guid>
+      <pubDate>Sat, 26 Sep 2026 13:13:00 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 13:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 13:13:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 26.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 26.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[12: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,61 +41,6 @@
       <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Am 26.09.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Am 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[14A: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e94432c96ceb2bf714fdb2aeb039719615f03e39a59552cafb0d232ee11539fc</guid>
-      <pubDate>Sat, 26 Sep 2026 12:12:30 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 12:12:30 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 12:12:30 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 13:11:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung [Am 26.09.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung<br/>[Am 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0c6fac2a8f34464f42aa5982eb08b79eef732903ec1dc89348c10739df0b8093</guid>
-      <pubDate>Sat, 26 Sep 2026 11:24:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 11:24:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 11:24:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa</guid>
-      <pubDate>Sat, 26 Sep 2026 11:15:26 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 11:15:26 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 12:02:04 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 13:01:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung [Am 26.09.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung<br/>[Am 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b</guid>
-      <pubDate>Sat, 26 Sep 2026 09:46:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 09:46:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 09:46:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919</guid>
-      <pubDate>Sat, 26 Sep 2026 11:14:59 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 09:33:47 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 12:01:34 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 13:01:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung [Am 26.09.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung<br/>[Am 26.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
@@ -118,6 +74,50 @@
       <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
       <description>Der 26E hat nicht die gleichen Kapazitäten wie eine Straßenbahn. [25.09.2026 – 12.12.2026]</description>
       <content:encoded><![CDATA[Der 26E hat nicht die gleichen Kapazitäten wie eine Straßenbahn.<br/>[25.09.2026 – 12.12.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: ÖBB-Ersatzbus]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
+      <pubDate>Sat, 26 Sep 2026 05:00:21 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 05:00:28 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 05:00:21 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:00:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf [Am 26.09.2026]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Am 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[74A: Einstieg Leberstraße vor S-Bahn-Gebäude]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e</guid>
+      <pubDate>Fri, 25 Sep 2026 00:00:29 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 00:00:29 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Grund: Bauarbeiten. [25.09.2026 – 26.09.2026]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[25.09.2026 – 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
+      <pubDate>Fri, 25 Sep 2026 00:00:29 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 00:00:29 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Grund: Bauarbeiten. [25.09.2026 – 26.09.2026]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[25.09.2026 – 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A/N65/N66: Arthaberplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1d0ceb907a55f1c18e718c2a733505fd71b2504c90bdec3ef3210c2f644856ec</guid>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 24 Sep 2026 11:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 24 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 11:11:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 7A in Richtung Meidling Hauptstraße U sowie der Linien N65 und N66 in Richtung Liesing S Haltestelle: Arthaberplatz Von: Arthaberplatz vor … [24.09.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 7A in Richtung Meidling Hauptstraße U sowie der Linien N65 und N66 in Richtung Liesing S Haltestelle: Arthaberplatz Von: Arthaberplatz vor …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
