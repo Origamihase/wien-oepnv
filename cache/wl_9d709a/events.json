@@ -698,42 +698,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40: Fahrtbehinderung Falschparker",
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
-    "pubDate": "2026-09-26T14:04:00+02:00",
-    "starts_at": "2026-09-26T14:05:16+02:00",
-    "ends_at": "2026-09-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=40|D=2026-09-26|TK=falschparker"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Fahrtbehinderung Falschparker",
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
-    "pubDate": "2026-09-26T14:04:00+02:00",
-    "starts_at": "2026-09-26T14:05:16+02:00",
-    "ends_at": "2026-09-26T23:55:00+02:00",
-    "_identity": "wl|störung|L=41|D=2026-09-26|TK=falschparker"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42/9: Falschparker Umleitung bis Gersthof über Linien 42 und 9",
-    "description": "Falschparker\nUmleitung bis Gersthof < über Linien 42 und 9",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d0306412af66249baa2e50a703d32bf283d9f6320fd3f4faaa25f07a5180723d",
-    "pubDate": "2026-09-26T14:07:46+02:00",
-    "starts_at": "2026-09-26T14:07:46+02:00",
-    "ends_at": "2026-09-26T15:07:00+02:00",
-    "_identity": "wl|störung|L=42,9|D=2026-09-26|TK=falschparker umleitung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "46/49/52: Gleisbauarbeiten",
     "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -742,6 +706,42 @@
     "starts_at": "2026-09-18T04:30:00+02:00",
     "ends_at": "2026-10-31T01:00:00+01:00",
     "_identity": "wl|störung|L=46,49,52|D=2026-09-18|TK=46 49 52 gleisbauarbeiten"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Züge halte bei Linie 18, Richtung Burggasse",
+    "description": "Züge halte bei\nLinie 18, Richtung Burggasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e45a951e066bdfa63b377fb4324e56471a027f0f502ac3ecc464348610dfc1cd",
+    "pubDate": "2026-09-26T15:10:51+02:00",
+    "starts_at": "2026-09-26T15:10:51+02:00",
+    "ends_at": "2026-09-26T23:59:59+02:00",
+    "_identity": "wl|störung|L=62|D=2026-09-26|TK=züge halte bei linie 18 richtung burggasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: ÖBB Bauarbeiten Betrieb ab Kliebergasse",
+    "description": "ÖBB Bauarbeiten\nBetrieb ab Kliebergasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f1211a449fbf3c33db7148e88a4aa9b4640e76ef8b9024ed6420214ef195eae8",
+    "pubDate": "2026-09-26T15:10:21+02:00",
+    "starts_at": "2026-09-26T15:10:21+02:00",
+    "ends_at": "2026-09-26T23:59:59+02:00",
+    "_identity": "wl|störung|L=62|D=2026-09-26|TK=öbb bauarbeiten betrieb ab kliebergasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: ÖBB Bauarbeiten Kein Betrieb",
+    "description": "ÖBB Bauarbeiten\nKein Betrieb",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6a1dca08aeb9e7b41cb4335d0f1d1f13d36847df0e83b73b6b2f2c6ddba9e385",
+    "pubDate": "2026-09-26T15:11:47+02:00",
+    "starts_at": "2026-09-26T15:11:51+02:00",
+    "ends_at": "2026-09-26T23:59:59+02:00",
+    "_identity": "wl|störung|L=62|D=2026-09-26|TK=öbb bauarbeiten kein betrieb"
   },
   {
     "source": "Wiener Linien",
@@ -778,6 +778,18 @@
     "starts_at": "2026-09-25T00:00:29+02:00",
     "ends_at": "2026-09-26T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-09-25|TK=einstieg leberstrasse vor s bahn gebäude"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fahrtbehinderung Falschparker",
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2026-09-26T15:02:00+02:00",
+    "starts_at": "2026-09-26T15:06:26+02:00",
+    "ends_at": "2026-09-26T23:55:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-09-26|TK=falschparker"
   },
   {
     "source": "Wiener Linien",

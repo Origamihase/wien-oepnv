@@ -7,8 +7,52 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 26 Sep 2026 15:00:51 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 15:31:24 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[62: ÖBB construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6a1dca08aeb9e7b41cb4335d0f1d1f13d36847df0e83b73b6b2f2c6ddba9e385</guid>
+      <pubDate>Sat, 26 Sep 2026 15:11:47 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 15:31:24 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 15:11:51 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>No holding [On 26.09.2026]</description>
+      <content:encoded><![CDATA[No holding<br/>[On 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: Train stops at line 18, direction Burggasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e45a951e066bdfa63b377fb4324e56471a027f0f502ac3ecc464348610dfc1cd</guid>
+      <pubDate>Sat, 26 Sep 2026 15:10:51 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 15:31:24 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 15:10:51 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 26.09.2026]</description>
+      <content:encoded><![CDATA[[On 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: ÖBB construction works service from Kliebergasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f1211a449fbf3c33db7148e88a4aa9b4640e76ef8b9024ed6420214ef195eae8</guid>
+      <pubDate>Sat, 26 Sep 2026 15:10:21 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 15:31:24 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 15:10:21 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>[On 26.09.2026]</description>
+      <content:encoded><![CDATA[[On 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[9: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
+      <pubDate>Sat, 26 Sep 2026 15:02:00 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 15:02:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 15:06:26 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [On 26.09.2026]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[12A: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,17 +65,6 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[On 26.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[42/9: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d0306412af66249baa2e50a703d32bf283d9f6320fd3f4faaa25f07a5180723d</guid>
-      <pubDate>Sat, 26 Sep 2026 14:07:46 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 14:07:46 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 14:07:46 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 15:07:00 +0200</ext:ends_at>
-      <description>Diversion to Gersthof over lines 42 and 9. diversion to Gersthof &amp;lt; over lines 42 and 9 [On 26.09.2026]</description>
-      <content:encoded><![CDATA[Diversion to Gersthof over lines 42 and 9. diversion to Gersthof &lt; over lines 42 and 9<br/>[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[22A: Delays]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">64d88f357882396c9a5115dd6d0b7d9e1930c8e1858a79ead8d4acacc349f4f4</guid>
@@ -41,28 +74,6 @@
       <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: traffic accident. [On 26.09.2026]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa</guid>
-      <pubDate>Sat, 26 Sep 2026 14:04:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 11:15:26 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 14:05:16 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 26.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919</guid>
-      <pubDate>Sat, 26 Sep 2026 14:04:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 09:33:47 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 14:05:16 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 26.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 26 Sep 2026 23:00:00 +0200</ext:ends_at>
       <description>Bhf. Hütteldorf [On 26.09.2026]</description>
       <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Boarding Leberstraße before S-Bahn building]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e</guid>
-      <pubDate>Fri, 25 Sep 2026 00:00:29 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 00:00:29 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Reason: construction works. [25.09.2026 – 26.09.2026]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[25.09.2026 – 26.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
