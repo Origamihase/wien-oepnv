@@ -5,6 +5,15 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Stufe 2: Diagnose für Bahnhöfe ohne Linien (2026-09-26)**: Der zweite
+  Lauf ordnete 157 von 162 Bahnhöfen einem Bahn-Halt zu; 151 haben Linien.
+  Wien Mitte-Landstraße, Rennweg, Quartier Belvedere, Simmering und
+  Himberg sind richtig zugeordnet, ihre Abfahrtstafeln liefern aber keine
+  Linie; für Wien Hauptbahnhof und Siebenhirten fand sich kein Bahn-Halt.
+  `scripts/update_oebb_station_lines.py` schreibt dafür jetzt Diagnose ins
+  Log: alle `LocMatch`-Kandidaten mit Klassen und Abstand, und je
+  Zeitfenster Abfahrten, Produkte und deren Linienfelder. Daten und
+  Verhalten sonst unverändert.
 * **Stufe 2: ÖBB-Bahnhöfe werden dem richtigen HAFAS-Halt zugeordnet (2026-09-26)**:
   Der erste Lauf (158 von 162 Bahnhöfen mit Antwort, 794 Anfragen, keine
   Fehler) nahm je Bahnhof den ersten HAFAS-Treffer nach Namen im Umkreis

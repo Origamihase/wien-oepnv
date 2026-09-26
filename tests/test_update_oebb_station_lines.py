@@ -359,3 +359,47 @@ def test_main_refuses_an_output_outside_the_repository(tmp_path: Path) -> None:
     # the script keeps the InvalidPathError of the copy it imported first.
     with pytest.raises(Exception, match="outside allowed directories"):
         ul.main(["--output", str(tmp_path / "x.json"), "--limit", "1"])
+
+
+def test_describe_candidates_lists_what_hafas_offered() -> None:
+    (station,) = ul.select_stations([HUETTELDORF])
+    no_coords = {"name": "Irgendwo", "extId": "1", "pCls": 64}
+    text = ul.describe_candidates(_loc_match(TRAM_HUETTELDORF, no_coords, "junk"), station)
+    assert text.startswith("Wien Hütteldorf (Straßenbahn) (1391999, pCls 576, ")
+    assert " m); Irgendwo (1, pCls 64, ?)" in text
+    bool_coords = {**TRAM_HUETTELDORF, "crd": {"x": True, "y": 48197391}}
+    assert ul.describe_candidates(_loc_match(bool_coords), station).endswith("pCls 576, ?)")
+    assert ul.describe_candidates(_loc_match(), station) == "no candidates"
+    assert ul.describe_candidates(_loc_match(err="FAIL"), station) == "no candidates"
+
+
+def test_board_summary() -> None:
+    assert ul.board_summary(_board([], err="FAIL")) == "failed"
+    assert ul.board_summary({"svcResL": [{"err": "OK", "res": {}}]}) == "jny 0, prod 0"
+    summary = ul.board_summary(_board([S45, RJ820], journeys=2))
+    assert summary == "jny 2, prod 2: S 45 [S/45/at:obb:vor|S45:], RJ 820 [RJ//]"
+    many = ul.board_summary(_board([S45] * 9))
+    assert many.startswith("jny 3, prod 9: ") and many.count("S 45") == ul.MAX_LOGGED_PRODUCTS
+
+
+def test_an_unresolved_station_logs_the_candidates(caplog: pytest.LogCaptureFixture) -> None:
+    post = _post(_loc_match(TRAM_HUETTELDORF), pytest.fail)
+    with caplog.at_level("INFO", logger="oebb_station_lines"):
+        ul.refresh(ul.select_stations([HUETTELDORF]), {}, date(2026, 9, 27), post=post, pause=0)
+    assert "No rail stop within 800 m for Wien Hütteldorf; candidates: Wien Hütteldorf (Straßenbahn)" in caplog.text
+
+
+def test_boards_without_a_line_are_logged(caplog: pytest.LogCaptureFixture) -> None:
+    state: dict[str, Any] = {"804": dict(RESOLVED)}
+    post = _post(None, _board([RJ820], journeys=4))
+    with caplog.at_level("INFO", logger="oebb_station_lines"):
+        ul.refresh(ul.select_stations([HUETTELDORF]), state, date(2026, 9, 27), post=post, pause=0)
+    assert "No line on the boards of Wien Hütteldorf: 29.09. 06h jny 4, prod 1: RJ 820 [RJ//]" in caplog.text
+    assert caplog.text.count(" | ") == 3  # four windows
+
+
+def test_boards_with_lines_log_nothing_extra(caplog: pytest.LogCaptureFixture) -> None:
+    state: dict[str, Any] = {"804": dict(RESOLVED)}
+    with caplog.at_level("INFO", logger="oebb_station_lines"):
+        ul.refresh(ul.select_stations([HUETTELDORF]), state, date(2026, 9, 27), post=_post(None, _board([S45])), pause=0)
+    assert "No line on the boards" not in caplog.text
