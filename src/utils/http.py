@@ -29,6 +29,7 @@ import requests
 from requests.adapters import HTTPAdapter
 from requests.hooks import dispatch_hook
 from requests.structures import CaseInsensitiveDict
+from requests.utils import get_environ_proxies, select_proxy
 from urllib3.connection import HTTPSConnection, HTTPConnection
 from urllib3.connectionpool import HTTPSConnectionPool, HTTPConnectionPool
 from urllib3.poolmanager import PoolManager
@@ -669,6 +670,10 @@ class TimeoutHTTPAdapter(HTTPAdapter):  # type: ignore[misc]
     def send(self, request: requests.PreparedRequest, **kwargs: Any) -> requests.Response:
         if kwargs.get("timeout") is None:
             kwargs["timeout"] = self.timeout if self.timeout is not None else DEFAULT_TIMEOUT
+        # Security: the proxy ``requests`` is about to use, decided before a
+        # byte leaves; an untrusted host fails closed (PROXY_TRUSTED_HOSTS).
+        if request.url and select_proxy(request.url, kwargs.get("proxies") or {}) is not None:
+            _require_trusted_proxy_host(request.url)
         return super().send(request, **kwargs)
 
 
@@ -1108,7 +1113,8 @@ def session_with_retries(
     if session.trust_env and proxies_configured:
         log.warning(
             "Security: Proxy configuration detected in environment. "
-            "DNS Rebinding protection (verify_response_ip) may be bypassed."
+            "Requests through the proxy are limited to PROXY_TRUSTED_HOSTS; "
+            "other hosts fail closed (DNS Rebinding protection)."
         )
 
     return session
@@ -1614,6 +1620,52 @@ def validate_public_feed_url(
     return None
 
 
+# Behind a proxy the proxy resolves the hostname itself: for a tunnelled
+# HTTPS request neither the pinned IP nor the peer-IP check (DNS-rebinding
+# protection) holds, and the peer is the proxy. Requests through a proxy are
+# therefore limited to the upstreams the project uses; any other host fails
+# closed (audit 2026-09-17, B.3). A literal, safe IP stays allowed: the proxy
+# connects to exactly that address (the pinned plain-HTTP path). Production
+# workflows set no proxy; this guards developer machines and sandboxes.
+# A new upstream must be added here.
+PROXY_TRUSTED_HOSTS: frozenset[str] = frozenset({
+    "api.github.com",  # src/feed/reporting.py
+    "data.oebb.at",  # scripts/update_station_directory.py
+    "data.wien.gv.at",  # scripts/update_baustellen_cache.py
+    "fahrplan.oebb.at",  # src/providers/oebb.py, src/places/hafas_client.py
+    "overpass-api.de",  # src/places/osm_client.py
+    "overpass.kumi.systems",  # src/places/osm_client.py
+    "places.googleapis.com",  # src/places/client.py
+    "raw.githubusercontent.com",  # scripts/sync_hafas_profile.py
+    "routenplaner.verkehrsauskunft.at",  # src/providers/vor.py, Stammstrecke monitor
+    "www.wienerlinien.at",  # src/providers/wl_fetch.py, scripts/update_wl_stations.py
+})
+
+
+def _require_trusted_proxy_host(url: str) -> None:
+    """Raise ``ValueError`` unless *url* may be fetched through a proxy.
+
+    Allowed are the hosts of :data:`PROXY_TRUSTED_HOSTS` and literal, safe IPs.
+    """
+    host = (urlparse(url).hostname or "").rstrip(".")
+    if host in PROXY_TRUSTED_HOSTS or is_ip_safe(host):
+        return
+    raise ValueError(
+        f"Security: {_sanitize_url_for_error(url)} is not a trusted host for "
+        "requests through a proxy (DNS Rebinding protection)"
+    )
+
+
+def _proxy_for(url: str) -> str | None:
+    """The environment proxy ``requests`` would use for *url*, or ``None``.
+
+    Respects ``NO_PROXY`` and the scheme-specific variables, as ``requests``
+    does for a session that trusts the environment.
+    """
+    proxy = select_proxy(url, get_environ_proxies(url))
+    return proxy if isinstance(proxy, str) else None
+
+
 def verify_response_ip(response: requests.Response) -> None:
     """Verify that the response connection was made to a safe IP (DNS Rebinding protection)."""
     # Guard Clause for Mocks (Task 4)
@@ -1639,8 +1691,11 @@ def verify_response_ip(response: requests.Response) -> None:
             "Validation of mock connection skipped: %s", sanitize_log_arg(str(exc))
         )
 
-    # Proxy Compatibility (Task C): Bypass check if explicit proxy env vars are set
-    if any(k in os.environ for k in ("HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "http_proxy", "https_proxy", "all_proxy")):
+    # Behind a proxy the peer is the proxy, not the upstream: the peer-IP
+    # check cannot hold, so the host must be trusted instead (fail closed).
+    request_url = getattr(getattr(response, "request", None), "url", None)
+    if isinstance(request_url, str) and _proxy_for(request_url) is not None:
+        _require_trusted_proxy_host(request_url)
         return
 
     try:
