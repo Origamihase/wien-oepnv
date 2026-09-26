@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 26 Sep 2026 18:01:26 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 18:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U4/U6: Betriebsstörung]]></title>
+      <title><![CDATA[U4/U6: Service disruption]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">6cf95fe5cc66cffaf751fc9a315a5015b41795353c72e8d8ebf484f21b0a5c70</guid>
       <pubDate>Sat, 26 Sep 2026 17:59:00 +0200</pubDate>
       <ext:first_seen>Sat, 26 Sep 2026 17:59:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 26 Sep 2026 17:59:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 26.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 26.09.2026]]]></content:encoded>
+      <description>Irregular intervals in both directions. Reason: service disruption. [On 26.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[On 26.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[18: Rescue operation]]></title>
@@ -26,7 +26,7 @@
       <guid isPermaLink="false">421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723</guid>
       <pubDate>Sat, 26 Sep 2026 16:56:00 +0200</pubDate>
       <ext:first_seen>Sat, 26 Sep 2026 16:58:34 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 17:02:35 +0200</ext:starts_at>
+      <ext:starts_at>Sat, 26 Sep 2026 16:56:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [On 26.09.2026]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
@@ -38,17 +38,6 @@
       <pubDate>Sat, 26 Sep 2026 16:56:00 +0200</pubDate>
       <ext:first_seen>Sat, 26 Sep 2026 16:58:04 +0200</ext:first_seen>
       <ext:starts_at>Sat, 26 Sep 2026 16:56:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 26.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d</guid>
-      <pubDate>Sat, 26 Sep 2026 16:49:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 16:49:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 16:49:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [On 26.09.2026]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
@@ -87,17 +76,6 @@
       <content:encoded><![CDATA[[On 26.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[9: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
-      <pubDate>Sat, 26 Sep 2026 16:53:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 15:02:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 17:19:08 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 26.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
@@ -118,6 +96,28 @@
       <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Busse halten Amerlingstraße 8-10. Betrieb nur zwischen Hauptbahnhof S U und Neubaugasse U. Weichen Sie ersatzweise auf die Linien U3, 5, 12, 46, 52 und 48A aus. [Am 26.09.2026]</description>
       <content:encoded><![CDATA[Busse halten Amerlingstraße 8-10. Betrieb nur zwischen Hauptbahnhof S U und Neubaugasse U. Weichen Sie ersatzweise auf die Linien U3, 5, 12, 46, 52 und 48A aus.<br/>[Am 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26E: Track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dac4be805e97a1ee16cc914e8b4797565e65f97545fca29a6e2a1cbb7fe0bf00</guid>
+      <pubDate>Fri, 25 Sep 2026 08:55:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 09:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 08:55:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
+      <description>The capacities of the replacement line 26E are not comparable to those of a tram. [25.09.2026 – 12.12.2026]</description>
+      <content:encoded><![CDATA[The capacities of the replacement line 26E are not comparable to those of a tram.<br/>[25.09.2026 – 12.12.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: ÖBB-replacement bus]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
+      <pubDate>Sat, 26 Sep 2026 05:00:21 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 05:00:28 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 05:00:21 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:00:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf [On 26.09.2026]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[On 26.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
