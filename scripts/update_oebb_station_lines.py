@@ -18,12 +18,14 @@ A closure lasting longer than that — the operator notes that some run for
 years — still hides its line. The stage-3 check must therefore never read
 "HAFAS has no S80 at Hütteldorf" as proof that the S80 does not stop there.
 
-Per station and run: one ``LocMatch`` the first time (the HAFAS station id
-is kept; see :func:`pick_rail_location` for which hit counts), then two windows
-(06:00–09:00 and 15:00–18:00) on each date, rail classes only, in the
-request form ``public-transport/hafas-client`` uses for ÖBB (probe runs of
-2026-09-25). Requests are paced; five consecutive failures stop the run
-and keep what was collected. Writes ``data/oebb_station_lines.json`` only.
+Per station and run: one ``LocMatch`` the first time, and again on every
+run while the station has no line (the HAFAS station id is kept; see
+:func:`pick_rail_location` for which hit counts and :func:`short_name` for
+the second query), then two windows (06:00–09:00 and 15:00–18:00) on each
+date, rail classes only, in the request form ``public-transport/hafas-client``
+uses for ÖBB (probe runs of 2026-09-25). Requests are paced; five
+consecutive failures stop the run and keep what was collected. Writes
+``data/oebb_station_lines.json`` only.
 """
 
 from __future__ import annotations
@@ -35,7 +37,7 @@ import sys
 import time
 import math
 from collections.abc import Callable, Mapping, Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date, timedelta
 from itertools import product
 from logging import DEBUG, INFO, getLogger
@@ -71,6 +73,11 @@ MAX_JOURNEYS = 400
 # ÖBB rail product classes (hafas-client p/oebb/products.js): ICE/RJ, IC/EC,
 # D/EN, R/REX, S-Bahn.
 RAIL_CLASSES = 1 | 2 | 4 | 8 | 16 | 32 | 4096
+# R/REX and S-Bahn: only these trains carry line numbers (S45, REX7, CJX9), so
+# a stop counts only if it serves one of them. The Flughafen Wien bus terminal
+# (pCls 1090: IC/EC, bus and 1024, no R/REX or S-Bahn) was chosen over the
+# station in the run of 2026-09-26; its boards showed only "CAT by bus".
+LOCAL_RAIL_CLASSES = 16 | 32
 BOARD_MAX_BYTES = 5 * 1024 * 1024
 PAUSE_SECONDS = 0.5
 MAX_CONSECUTIVE_FAILURES = 5
@@ -88,6 +95,7 @@ MAX_STATE_BYTES = 5 * 1024 * 1024
 # ``at:obb:vor|S45:`` → ``S45``
 _LINE_ID_RE = re.compile(r"\|([A-Z]{1,4}\d{1,3}):?$")
 _LINE_TOKEN_RE = re.compile(r"^[A-Z]{1,4}\d{1,3}$")
+_HAUPTBAHNHOF_RE = re.compile(r"\bHauptbahnhof\b")
 
 
 @dataclass(frozen=True)
@@ -259,14 +267,14 @@ def _coordinates(location: Mapping[str, Any]) -> tuple[float, float] | None:
 
 
 def _rail_candidate(location: object) -> tuple[str, str, int, float, float] | None:
-    """``(extId, name, pCls, lat, lon)`` of a rail-serving candidate, else ``None``."""
+    """``(extId, name, pCls, lat, lon)`` of a candidate served by R/REX or S-Bahn, else ``None``."""
     if not isinstance(location, dict):
         return None
     ext_id = location.get("extId")
     classes = location.get("pCls")
     if not isinstance(ext_id, str) or not ext_id.strip():
         return None
-    if not isinstance(classes, int) or isinstance(classes, bool) or not classes & RAIL_CLASSES:
+    if not isinstance(classes, int) or isinstance(classes, bool) or not classes & LOCAL_RAIL_CLASSES:
         return None
     position = _coordinates(location)
     if position is None:
@@ -275,13 +283,13 @@ def _rail_candidate(location: object) -> tuple[str, str, int, float, float] | No
 
 
 def pick_rail_location(payload: object, station: Station) -> RailLocation | None:
-    """The nearest ``LocMatch`` candidate that serves rail, within 800 m.
+    """The nearest ``LocMatch`` candidate served by R/REX or S-Bahn, within 800 m.
 
-    The first run (2026-09-25) took HAFAS's top hit by name. For some
-    stations that is the tram or U-Bahn stop of the same name: Wien
-    Mitte-Landstraße, Rennweg and Quartier Belvedere got empty rail boards
-    although S-Bahn trains stop there. A candidate counts only if its product
-    classes (``pCls``) include rail.
+    The first run (2026-09-25) took HAFAS's top hit by name, which can be the
+    tram or U-Bahn stop of the same name; a candidate now counts only if its
+    product classes (``pCls``) include R/REX or S-Bahn
+    (:data:`LOCAL_RAIL_CLASSES`). Any rail class was not enough: it let the
+    Flughafen Wien bus terminal win over the station (2026-09-26).
     """
     res = _answer(payload)
     if res is None or station.latitude is None or station.longitude is None:
@@ -303,8 +311,9 @@ def pick_rail_location(payload: object, station: Station) -> RailLocation | None
 def describe_candidates(payload: object, station: Station) -> str:
     """Every ``LocMatch`` candidate as ``name (extId, pCls, distance)``, for the log.
 
-    Logged when no candidate qualifies, so the next run shows what HAFAS
-    offered (2026-09-26: nothing for "Wien Hauptbahnhof" and "Siebenhirten").
+    Logged when no candidate qualifies (2026-09-26: nothing for "Wien
+    Hauptbahnhof" and "Siebenhirten"), and when the chosen stop's boards
+    yield no line (Simmering and Himberg, whose boards were empty).
     """
     res = _answer(payload)
     match = res.get("match") if res else None
@@ -351,14 +360,32 @@ def board_summary(payload: object) -> str:
     return f"jny {count}, prod {len(products)}" + (": " + ", ".join(shown) if shown else "")
 
 
-def _is_resolved(entry: Mapping[str, Any]) -> bool:
-    """Resolved by :func:`pick_rail_location` (it records ``hafas_classes``).
+def short_name(name: str) -> str | None:
+    """HAFAS's abbreviation of *name*, if it has one: ``Wien Hauptbahnhof`` → ``Wien Hbf``.
 
-    Ids from the first run, which took the top hit by name, lack it and are
-    resolved again once.
+    Queried when the full name finds no rail stop. On 2026-09-26 ``LocMatch``
+    for "Wien Hauptbahnhof" offered Meidling, Floridsdorf, Hütteldorf and the
+    airport, but not the Hauptbahnhof, which ÖBB calls "Wien Hbf".
+    """
+    short = _HAUPTBAHNHOF_RE.sub("Hbf", name)
+    return short if short != name else None
+
+
+def _is_resolved(entry: Mapping[str, Any]) -> bool:
+    """Resolved by the current rule of :func:`pick_rail_location`.
+
+    Ids from the first run lack ``hafas_classes``; the second run accepted any
+    rail class. Such ids are resolved again once.
     """
     ext_id = entry.get("hafas_ext_id")
-    return isinstance(ext_id, str) and bool(ext_id) and isinstance(entry.get("hafas_classes"), int)
+    classes = entry.get("hafas_classes")
+    return (
+        isinstance(ext_id, str)
+        and bool(ext_id)
+        and isinstance(classes, int)
+        and not isinstance(classes, bool)
+        and bool(classes & LOCAL_RAIL_CLASSES)
+    )
 
 
 Post = Callable[..., object]
@@ -395,8 +422,9 @@ class RefreshResult:
     aborted: bool = False
 
 
-def _resolve(station: Station, entry: dict[str, Any], answer: object) -> bool:
+def _resolve(station: Station, entry: dict[str, Any], answer: object, query: str) -> bool:
     """Record the rail stop *answer* offers; ``False`` (and forget any old id) if none."""
+    label = _clean(station.name if query == station.name else f"{station.name} (as {query})")
     location = pick_rail_location(answer, station)
     if location is None:
         for key in ("hafas_ext_id", "hafas_name", "hafas_classes", "hafas_distance_m"):
@@ -404,7 +432,7 @@ def _resolve(station: Station, entry: dict[str, Any], answer: object) -> bool:
         LOGGER.info(
             "No rail stop within %d m for %s; candidates: %s",
             int(MAX_MATCH_DISTANCE_M),
-            _clean(station.name),
+            label,
             describe_candidates(answer, station),
         )
         return False
@@ -414,13 +442,68 @@ def _resolve(station: Station, entry: dict[str, Any], answer: object) -> bool:
     entry["hafas_distance_m"] = round(location.distance_m)
     LOGGER.info(
         "%s → %s (%s, pCls %d, %d m)",
-        _clean(station.name),
+        label,
         _clean(location.name),
         _clean(location.ext_id),
         location.classes,
         round(location.distance_m),
     )
     return True
+
+
+def _locate(
+    station: Station, entry: dict[str, Any], post: Post, pause: float, failures: _FailureRun
+) -> tuple[object, bool]:
+    """``LocMatch`` for *station*, then for its :func:`short_name`; the stop goes into *entry*.
+
+    Returns the last answer and whether the run must stop. A failed request
+    leaves *entry* as it was and is not followed by the short name.
+    """
+    answer: object = None
+    for query in (station.name, short_name(station.name)):
+        if query is None:
+            break
+        answer = _call(post, loc_match_request(query, LOC_MATCH_CANDIDATES), pause, station.name)
+        answered = _answer(answer) is not None
+        if failures.record(answered):
+            return answer, True
+        if not answered or _resolve(station, entry, answer, query):
+            break
+    return answer, False
+
+
+@dataclass
+class _Boards:
+    """What the sample boards of one station showed."""
+
+    seen: set[str] = field(default_factory=set)
+    answered: bool = False
+    aborted: bool = False
+    summaries: list[str] = field(default_factory=list)
+
+
+def _sample_boards(
+    station: Station, ext_id: str, dates: Sequence[date], post: Post, pause: float, failures: _FailureRun
+) -> _Boards:
+    """Request every sample window of *station*; stop early when the run must stop."""
+    boards = _Boards()
+    for day, (start, minutes) in product(dates, SAMPLE_WINDOWS):
+        board = _call(
+            post,
+            board_request(ext_id, day, start, minutes),
+            pause,
+            station.name,
+            max_bytes=BOARD_MAX_BYTES,
+        )
+        lines = lines_from_board(board)
+        boards.summaries.append(f"{day:%d.%m.} {start[:2]}h {board_summary(board)}")
+        if failures.record(lines is not None):
+            boards.aborted = True
+            break
+        if lines is not None:
+            boards.answered = True
+            boards.seen |= lines
+    return boards
 
 
 def refresh(
@@ -442,43 +525,38 @@ def refresh(
     for station in stations:
         entry = state.setdefault(station.bst_id, {"lines": {}})
         entry["name"] = station.name
-        if not _is_resolved(entry):
-            answer = _call(post, loc_match_request(station.name, LOC_MATCH_CANDIDATES), pause, station.name)
-            if failures.record(_answer(answer) is not None):
+        answer: object = None
+        # A station without a line is looked up again: the log then lists
+        # what HAFAS offers, and a better stop is picked up once it exists.
+        if not _is_resolved(entry) or not entry.get("lines"):
+            answer, stop = _locate(station, entry, post, pause, failures)
+            if stop:
                 result.aborted = True
                 break
-            if not _resolve(station, entry, answer):
-                result.unresolved += 1
+            if not _is_resolved(entry):
+                if _answer(answer) is None:
+                    result.failed += 1
+                else:
+                    result.unresolved += 1
                 continue
 
-        seen: set[str] = set()
-        answered = False
-        summaries: list[str] = []
-        for day, (start, minutes) in product(dates, SAMPLE_WINDOWS):
-            board = _call(
-                post,
-                board_request(entry["hafas_ext_id"], day, start, minutes),
-                pause,
-                station.name,
-                max_bytes=BOARD_MAX_BYTES,
-            )
-            lines = lines_from_board(board)
-            summaries.append(f"{day:%d.%m.} {start[:2]}h {board_summary(board)}")
-            if failures.record(lines is not None):
-                result.aborted = True
-                break
-            if lines is not None:
-                answered = True
-                seen |= lines
-        if result.aborted:
+        boards = _sample_boards(station, entry["hafas_ext_id"], dates, post, pause, failures)
+        if boards.aborted:
+            result.aborted = True
             break
-        if not answered:
+        if not boards.answered:
             result.failed += 1
             continue
-        if not seen:
-            LOGGER.info("No line on the boards of %s: %s", _clean(station.name), " | ".join(summaries))
+        if not boards.seen:
+            candidates = "" if _answer(answer) is None else f"; candidates: {describe_candidates(answer, station)}"
+            LOGGER.info(
+                "No line on the boards of %s: %s%s",
+                _clean(station.name),
+                " | ".join(boards.summaries),
+                candidates,
+            )
         known = entry.get("lines")
-        entry["lines"] = merge_lines(known if isinstance(known, dict) else {}, seen, today)
+        entry["lines"] = merge_lines(known if isinstance(known, dict) else {}, boards.seen, today)
         entry["checked"] = today.isoformat()
         result.checked += 1
     if result.aborted:
