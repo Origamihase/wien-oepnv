@@ -386,6 +386,31 @@ def reset_circuit_breakers() -> Iterator[None]:
 STUB_PUBLIC_IP = "140.82.121.6"
 
 
+_PROXY_VARIABLES = (
+    "HTTP_PROXY",
+    "HTTPS_PROXY",
+    "ALL_PROXY",
+    "NO_PROXY",
+    "http_proxy",
+    "https_proxy",
+    "all_proxy",
+    "no_proxy",
+)
+
+
+@pytest.fixture(autouse=True)
+def _without_host_proxy(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Run every test without the host's proxy variables.
+
+    Behind a proxy the HTTP layer admits trusted hosts only
+    (``PROXY_TRUSTED_HOSTS``, audit 2026-09-17, B.3). Tests that need a proxy
+    set it themselves, so the suite gives the same result on the CI runners
+    (no proxy) and in a sandbox with one.
+    """
+    for name in _PROXY_VARIABLES:
+        monkeypatch.delenv(name, raising=False)
+
+
 @pytest.fixture
 def stub_public_dns(monkeypatch: pytest.MonkeyPatch) -> str:
     """Resolve every hostname to :data:`STUB_PUBLIC_IP` without real DNS.

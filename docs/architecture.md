@@ -174,8 +174,36 @@ flowchart TD
 | `_compute_read_timeout` | Slowloris auf der Body-Read-Seite |
 | `read_response_safe` | Payload-Größen-Cap (MAX_PAYLOAD_SIZE = 10 MB) |
 | `_sanitize_exception_msg` | Sensible URLs lecken in Fehlertexte und Logs |
+| `PROXY_TRUSTED_HOSTS` (in `TimeoutHTTPAdapter.send` und `verify_response_ip`) | DNS-Rebinding hinter einem Proxy: Der Proxy löst den Hostnamen selbst auf, IP-Pinning und Peer-Prüfung greifen dann nicht |
 
 Das 2026-05-07-Audit hat diese Angriffsfläche geschlossen.
+
+**Hinter einem Proxy (seit 2026-09-26, Audit vom 17.09., B.3).** Ist für eine
+Anfrage ein Proxy im Spiel (`HTTP_PROXY`, `HTTPS_PROXY`, `ALL_PROXY`, unter
+Beachtung von `NO_PROXY`), löst der Proxy den Hostnamen selbst auf. Für
+getunneltes HTTPS halten dann weder die gepinnte IP noch die Prüfung der
+verbundenen IP; die Gegenstelle ist der Proxy. Früher wurde die Prüfung in
+diesem Fall still übersprungen. Jetzt gilt:
+
+- Durch einen Proxy gehen nur Anfragen an die Hosts in `PROXY_TRUSTED_HOSTS`
+  (`src/utils/http.py`) oder an eine literale, sichere IP. Die gepinnte
+  HTTP-Anfrage adressiert die geprüfte IP, der Proxy verbindet genau dorthin.
+- Jeder andere Host wird abgewiesen, bevor ein Byte gesendet wird
+  (`TimeoutHTTPAdapter.send`, gilt für alle Sessions aus
+  `session_with_retries` und für `request_safe`). `verify_response_ip` prüft
+  dasselbe nach der Antwort, etwa für den Places-Client.
+- Die Liste nennt genau die Upstreams des Projekts: Wiener Linien, ÖBB
+  (Fahrplan und Daten), VAO, Stadt Wien (Baustellen), Overpass,
+  Google Places, GitHub-API und `raw.githubusercontent.com`. Ein Test
+  gleicht sie mit den im Code konfigurierten Hosts ab, in beide Richtungen.
+  Ein neuer Upstream muss dort eingetragen werden.
+- Die Produktions-Workflows setzen keinen Proxy. Betroffen sind
+  Entwicklungsrechner und Sandboxes. GitHub-Enterprise-Hosts aus
+  `FEED_GITHUB_ENTERPRISE_HOSTS` stehen nicht auf der Liste und scheitern
+  hinter einem Proxy.
+- `tests/conftest.py` entfernt die Proxy-Variablen des Rechners für jeden
+  Test. So liefert die Suite auf den CI-Runnern und in einer Sandbox mit
+  Proxy dasselbe Ergebnis; Tests, die einen Proxy brauchen, setzen ihn selbst.
 
 ---
 

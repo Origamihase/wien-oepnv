@@ -5,6 +5,16 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Sicherheit: kein stilles Fail-Open mehr hinter einem Proxy (2026-09-26)**:
+  Bisher übersprang `verify_response_ip` die DNS-Rebinding-Prüfung, sobald
+  eine Proxy-Variable gesetzt war (Audit vom 17.09., B.3). Jetzt gehen
+  Anfragen durch einen Proxy nur an die Hosts in `PROXY_TRUSTED_HOSTS` oder
+  an eine literale, sichere IP; jeder andere Host wird vor dem Senden
+  abgewiesen (`TimeoutHTTPAdapter.send`) und nach der Antwort erneut geprüft
+  (`verify_response_ip`). `NO_PROXY` wird beachtet. Ein Test gleicht die
+  Liste mit den konfigurierten Upstreams ab. `tests/conftest.py` entfernt
+  die Proxy-Variablen des Rechners, damit die Suite überall gleich läuft.
+  Die Produktions-Workflows setzen keinen Proxy.
 * **Linien-Prüfung: allgemeine Regeln statt Einträge je Bahnhof, Sammlung
   der Auffälligkeiten (2026-09-26)**: Stufe 2 merkt sich eine Linie jetzt
   drei Jahre nach der letzten Sichtung statt 56 Tage, damit lange Sperren
