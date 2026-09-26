@@ -1464,7 +1464,12 @@ _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
 #       in the glossary. The N31 prose was re-translated under epoch 16 and
 #       cached as "Stop stop on line N31 towards Schwedenplatz U"; only a
 #       bump evicts it, the source digest is unchanged.
-_TRANSLATION_CACHE_EPOCH = 17
+#  18 — three glossary phrases (audit 2026-09-25, A.3 and A.9, and the
+#       ÖBB replacement bus). Cached under 17: "S80: ÖBB-replacement bus",
+#       "Removing traffic restrictions: St. Pölten Hauptbahnhof", and label
+#       records reading "until expected end of November". The source digests
+#       are unchanged, so only a bump evicts them.
+_TRANSLATION_CACHE_EPOCH = 18
 
 # Static lookup for German → English time-line prefixes used inside the
 # bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
@@ -1755,11 +1760,21 @@ _GLOSSARY_BASE: dict[str, str] = {
     "voraussichtlich": "expected",
     "voraussichtliche Dauer": "expected duration",
     "voraussichtliches Ende": "expected end",
+    # As one phrase, or "bis" and "expected" meet: the model rendered
+    # "bis voraussichtlich 11:00 Uhr" as "to expected 11:00" (ÖBB, audit
+    # 2026-09-25, A.3), and the label record as "until expected end of
+    # November 2026". "approx." is the record's own word for "etwa".
+    "bis voraussichtlich": "until approx.",
     "bis auf Weiteres": "until further notice",
     # --- Replacement services ---------------------------------------
     "Schienenersatzverkehr": "rail replacement service",
     "Ersatzverkehr": "replacement service",
     "Ersatzbus": "replacement bus",
+    # WL's wording for the ÖBB rail replacement bus. Split up, "ÖBB" stays a
+    # masked brand and "Ersatzbus" a glossary term, and the German hyphen
+    # survives between them: "S80: ÖBB-replacement bus" (2026-09-26).
+    "ÖBB-Ersatzbus": "ÖBB replacement bus",
+    "ÖBB-Ersatzbusse": "ÖBB replacement buses",
     # --- Emergencies / events ---------------------------------------
     "Polizeieinsatz": "police operation",
     "Rettungseinsatz": "rescue operation",
@@ -1921,6 +1936,11 @@ _GLOSSARY_BY_SOURCE: dict[str, dict[str, str]] = {
         # (``docs/archive/audits/audit-2026-09-07.md``).
         "Bahnhst.": "station",
         "Bahnhst": "station",
+        # All-clear titles. The model read the noun as an action,
+        # "Removing traffic restrictions: St. Pölten Hauptbahnhof"; ÖBB
+        # announces a state (audit 2026-09-25, A.9).
+        "Aufhebung Verkehrseinschränkung": "traffic restriction lifted",
+        "Aufhebung Streckenunterbrechung": "line closure lifted",
     },
     # Road construction sites (Stadt Wien open-data Baustellen feed).
     # Talks about lane closures and routing in road-traffic vocabulary
@@ -3188,6 +3208,15 @@ _DAY_PERIOD_RE: re.Pattern[str] = re.compile(
 )
 
 
+# Inside a record "bis voraussichtlich" is "bis etwa": the value rules then
+# render "until approx." and capitalise it at the start of a value
+# ("Duration: Until approx. 22:00"). The glossary phrase would win first and
+# leave it small (audit 2026-09-25, A.3).
+_RECORD_BIS_VORAUSSICHTLICH_RE: re.Pattern[str] = re.compile(
+    r"(?<!\w)(bis)\s+voraussichtlich(?!\w)", re.IGNORECASE
+)
+
+
 def _gloss_record_values(text: str, label_placeholders: frozenset[str]) -> str:
     """Put the values of a glossed label record into English, without a model.
 
@@ -3230,6 +3259,7 @@ def _render_label_record(
     done. Same two passes the model path uses, minus the model, so the
     rendering is deterministic and the addresses cannot move.
     """
+    record = _RECORD_BIS_VORAUSSICHTLICH_RE.sub(r"\1 etwa", record)
     glossed, glossary_mapping = _apply_domain_glossary(
         _normalise_for_translation(record), source=source, category=category
     )
@@ -3711,6 +3741,51 @@ def _capitalise_sentence_start(text: str) -> str:
     if not text or not text[0].islower():
         return text
     return text[0].upper() + text[1:]
+
+
+def _glossary_term_after_stop_pattern() -> re.Pattern[str]:
+    """Every lower-case glossary value, right after a sentence end."""
+    values = set(_GLOSSARY_BASE.values())
+    for overlay in (*_GLOSSARY_BY_SOURCE.values(), *_GLOSSARY_BY_CATEGORY.values()):
+        values.update(overlay.values())
+    # Only the first letter changes, so the order of the terms is irrelevant;
+    # sorted for a stable pattern.
+    terms = sorted(v for v in values if v[:1].islower())
+    return re.compile(r"(?<=[.!?]\s)(?:" + "|".join(map(re.escape, terms)) + r")(?!\w)")
+
+
+_GLOSSARY_TERM_AFTER_STOP_RE: re.Pattern[str] = _glossary_term_after_stop_pattern()
+# The period of an abbreviation ends no sentence: "Meidlinger Hauptstr. ggü.
+# 197" came back as "Hauptstr. opp 197" and must not become "Opp".
+_ABBREVIATION_BEFORE_RE: re.Pattern[str] = re.compile(
+    r"(?:\w*str|(?<!\w)(?:approx|ca|bzw|nr|ggü|opp))\.\s$", re.IGNORECASE
+)
+
+
+def _capitalise_glossary_after_stop(text: str) -> str:
+    """Upper-case a glossary term that opens a sentence inside an EN text.
+
+    Glossary values are lower-case because the same words occur
+    mid-sentence, and :func:`_capitalise_sentence_start` reaches only the
+    start of the whole text. A German sentence that opens with the term keeps
+    it small in the middle of the English one (audit 2026-09-25, A.4)::
+
+        … in both directions via track 2. expected duration: 10:10 …
+        … over lines 42 and 9. diversion to Gersthof …
+
+    115 cached values carried ". expected". Only glossary values are raised,
+    so an ordinary word ("approx. every") stays as the model wrote it, and
+    not after an abbreviation ("Hauptstr. opp 197"). Applied at render time:
+    cached values need no epoch bump.
+    """
+
+    def _raise(match: re.Match[str]) -> str:
+        term = match.group(0)
+        if _ABBREVIATION_BEFORE_RE.search(text, 0, match.start()):
+            return term
+        return term[0].upper() + term[1:]
+
+    return _GLOSSARY_TERM_AFTER_STOP_RE.sub(_raise, text)
 
 
 def _drop_unpaired_quote(text: str) -> str:
@@ -6386,9 +6461,13 @@ def _apply_lang_overlay(
     title_en = _WHITESPACE_RE.sub(" ", title_en).strip()
     # Applied after the cap and the whitespace collapse so it acts on the
     # string that actually ships, not on an intermediate one.
-    title_en = _capitalise_title_body(_drop_unpaired_quote(title_en))
-    summary_en = _capitalise_sentence_start(
-        _drop_unpaired_quote(_truncate_summary_180(_sanitize_text(summary_raw)))
+    title_en = _capitalise_glossary_after_stop(
+        _capitalise_title_body(_drop_unpaired_quote(title_en))
+    )
+    summary_en = _capitalise_glossary_after_stop(
+        _capitalise_sentence_start(
+            _drop_unpaired_quote(_truncate_summary_180(_sanitize_text(summary_raw)))
+        )
     )
     time_line_en = _translate_time_line_en(time_line_de)
     desc_text_truncated_en, desc_html_en = _compose_description(

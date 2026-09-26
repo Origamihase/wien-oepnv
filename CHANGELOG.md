@@ -5,6 +5,15 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **EN-Feed: vier Glossar-Fehler behoben (2026-09-26)**: „bis
+  voraussichtlich“ wird zu „until approx.“ statt „to expected“ bzw. „until
+  expected“ (A.3); ein Glossar-Begriff am Satzanfang mitten im Text wird
+  großgeschrieben, „… track 2. Expected duration“ (A.4, beim Rendern, auch
+  für gecachte Werte); ÖBB-Entwarnungen heißen „Traffic restriction
+  lifted“ bzw. „Line closure lifted“ statt „Removing traffic restrictions“
+  (A.9); „ÖBB-Ersatzbus“ wird zu „ÖBB replacement bus“ ohne deutschen
+  Bindestrich. Übersetzungs-Epoche 18, damit die betroffenen Einträge neu
+  übersetzt werden. Der deutsche Feed ändert sich nicht.
 * **Sicherheit: kein stilles Fail-Open mehr hinter einem Proxy (2026-09-26)**:
   Bisher übersprang `verify_response_ip` die DNS-Rebinding-Prüfung, sobald
   eine Proxy-Variable gesetzt war (Audit vom 17.09., B.3). Jetzt gehen

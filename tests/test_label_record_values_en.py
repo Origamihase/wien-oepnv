@@ -74,7 +74,7 @@ def _render(record: str) -> str:
             DE_N31,
             "Stop: Stammersdorf From: Brünnerstraße opposite 262 closed without "
             "replacement Duration: From 30 September 2026, approx. 13:00, until "
-            "expected May 2027 Reason: pipeline works",
+            "approx. May 2027 Reason: pipeline works",
         ),
         (
             DE_64A,
@@ -86,7 +86,7 @@ def _render(record: str) -> str:
             DE_72A,
             "Stop: Kraftwerk Simmering From: 1. Haidequerstraße 2 To: 1. "
             "Haidequerstraße 510 Duration: From 22 September 2026, approx. 08:00 "
-            "until expected end of October 2027 Reason: construction works",
+            "until approx. end of October 2027 Reason: construction works",
         ),
     ],
 )
@@ -113,6 +113,9 @@ def test_the_live_records_render_in_english(record: str, expected: str) -> None:
         # The truncated live shape: the ellipsis counts like a digit.
         ("Ab …", "From …"),
         ("12. März 2026, ca. 06:00 Uhr", "12 March 2026, approx. 06:00"),
+        # "bis voraussichtlich" was "until expected" (audit 2026-09-25, A.3).
+        ("bis voraussichtlich 22:00 Uhr", "Until approx. 22:00"),
+        ("Ab 23. September 2026 bis voraussichtlich Ende November 2026.", "From 23 September 2026 until approx. end of November 2026."),
     ],
 )
 def test_duration_shapes(value: str, expected: str) -> None:
