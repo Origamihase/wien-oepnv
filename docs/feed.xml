@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 26 Sep 2026 08:01:12 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 08:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[13A: Rettungseinsatz]]></title>
@@ -35,12 +35,12 @@
       <title><![CDATA[10: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">8b481d00f597d403fd733652ccb119b371560c14fdfc76dab913cf850ab4d9f9</guid>
-      <pubDate>Sat, 26 Sep 2026 07:53:42 +0200</pubDate>
+      <pubDate>Sat, 26 Sep 2026 07:52:00 +0200</pubDate>
       <ext:first_seen>Sat, 26 Sep 2026 07:53:42 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 07:55:42 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 08:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung [Am 26.09.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung<br/>[Am 26.09.2026]]]></content:encoded>
+      <ext:starts_at>Sat, 26 Sep 2026 08:05:13 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Betrieb ab Penzinger Straße. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.09.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Penzinger Straße. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2: Schadhafter Zug]]></title>
@@ -76,6 +76,28 @@
       <content:encoded><![CDATA[Fahrtbehinderung<br/>[Am 26.09.2026]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[2: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1599f7368b98b8995e7d2a59ae58dc796cdfebfdae457301df80ae7184776ac3</guid>
+      <pubDate>Sat, 26 Sep 2026 07:42:00 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 07:42:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 07:42:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">73357b6320dfec1f26a86c63469d119b40e8f17ed69fcf1491dd8ae09deab193</guid>
+      <pubDate>Sat, 26 Sep 2026 07:42:00 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 07:42:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 07:42:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 26.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
@@ -96,28 +118,6 @@
       <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Busse halten bei der Linie 14A. Die Linie 13A fährt derzeit nur zwischen Hauptbahnhof S U und Neubaugasse U. Weichen Sie ersatzweise auf die Linien U3, 5, 12, 46, 52 und 48A aus. [Am 26.09.2026]</description>
       <content:encoded><![CDATA[Busse halten bei der Linie 14A. Die Linie 13A fährt derzeit nur zwischen Hauptbahnhof S U und Neubaugasse U. Weichen Sie ersatzweise auf die Linien U3, 5, 12, 46, 52 und 48A aus.<br/>[Am 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26E: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dac4be805e97a1ee16cc914e8b4797565e65f97545fca29a6e2a1cbb7fe0bf00</guid>
-      <pubDate>Fri, 25 Sep 2026 08:55:00 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 09:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 08:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
-      <description>Der 26E hat nicht die gleichen Kapazitäten wie eine Straßenbahn. [25.09.2026 – 12.12.2026]</description>
-      <content:encoded><![CDATA[Der 26E hat nicht die gleichen Kapazitäten wie eine Straßenbahn.<br/>[25.09.2026 – 12.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S80: ÖBB-Ersatzbus]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Sat, 26 Sep 2026 05:00:21 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 05:00:28 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 05:00:21 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:00:00 +0200</ext:ends_at>
-      <description>Bhf. Hütteldorf [Am 26.09.2026]</description>
-      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Am 26.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
