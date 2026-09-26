@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 26 Sep 2026 22:00:53 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 22:28:45 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U4: Police operation]]></title>
@@ -21,37 +21,15 @@
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[62: ÖBB construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6a1dca08aeb9e7b41cb4335d0f1d1f13d36847df0e83b73b6b2f2c6ddba9e385</guid>
-      <pubDate>Sat, 26 Sep 2026 15:11:47 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 15:31:24 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 15:11:51 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>No holding [On 26.09.2026]</description>
-      <content:encoded><![CDATA[No holding<br/>[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Trains stop at line 18, direction Burggasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e45a951e066bdfa63b377fb4324e56471a027f0f502ac3ecc464348610dfc1cd</guid>
-      <pubDate>Sat, 26 Sep 2026 15:10:51 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 15:31:24 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 15:10:51 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 26.09.2026]</description>
-      <content:encoded><![CDATA[[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: ÖBB construction works service from Kliebergasse]]></title>
+      <title><![CDATA[62: ÖBB Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">f1211a449fbf3c33db7148e88a4aa9b4640e76ef8b9024ed6420214ef195eae8</guid>
       <pubDate>Sat, 26 Sep 2026 15:10:21 +0200</pubDate>
       <ext:first_seen>Sat, 26 Sep 2026 15:31:24 +0200</ext:first_seen>
       <ext:starts_at>Sat, 26 Sep 2026 15:10:21 +0200</ext:starts_at>
       <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[On 26.09.2026]</description>
-      <content:encoded><![CDATA[[On 26.09.2026]]]></content:encoded>
+      <description>Betrieb ab Kliebergasse; Züge halte bei Linie 18, Richtung Burggasse; Kein Betrieb. [Am 26.09.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Kliebergasse; Züge halte bei Linie 18, Richtung Burggasse; Kein Betrieb.<br/>[Am 26.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Reason: construction works. [25.09.2026 – 26.09.2026]</description>
       <content:encoded><![CDATA[Reason: construction works.<br/>[25.09.2026 – 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A/N65/N66: Arthaberplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1d0ceb907a55f1c18e718c2a733505fd71b2504c90bdec3ef3210c2f644856ec</guid>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 24 Sep 2026 11:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 24 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 11:11:00 +0200</ext:ends_at>
+      <description>Stop relocation of line 7A towards Meidling Hauptstraße U and lines N65 and N66 towards Liesing S Stop: Arthaberplatz From: Arthaberplatz before … [24.09.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[Stop relocation of line 7A towards Meidling Hauptstraße U and lines N65 and N66 towards Liesing S Stop: Arthaberplatz From: Arthaberplatz before …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N66/N68R: Quellenplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">31d6ac9f73525f3feaa44bb3eb6fdafe467567211114f38f99f0fbe41a2e441e</guid>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 24 Sep 2026 11:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 24 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 15:00:00 +0200</ext:ends_at>
+      <description>Haltestellenverlegung der Linie N66 in Richtung Oper, Karlsplatz und der Rufbuslinie N68 in Richtung Oberlaa U Haltestelle: Quellenplatz Von: Quellenplatz 4 im Zuge … [24.09.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie N66 in Richtung Oper, Karlsplatz und der Rufbuslinie N68 in Richtung Oberlaa U Haltestelle: Quellenplatz Von: Quellenplatz 4 im Zuge …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
