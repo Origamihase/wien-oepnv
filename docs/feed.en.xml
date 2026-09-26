@@ -7,40 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 26 Sep 2026 19:01:20 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 19:31:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U4/U6: Service disruption]]></title>
+      <title><![CDATA[57A: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6cf95fe5cc66cffaf751fc9a315a5015b41795353c72e8d8ebf484f21b0a5c70</guid>
-      <pubDate>Sat, 26 Sep 2026 17:59:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 17:59:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 17:59:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">d735177cc6e0c032bea05c9936fbbc2b7922b9a27c7090d9edb0f0dee69f67b3</guid>
+      <pubDate>Sat, 26 Sep 2026 19:21:00 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 19:21:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 19:21:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: service disruption. [On 26.09.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723</guid>
-      <pubDate>Sat, 26 Sep 2026 16:56:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 16:58:34 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 16:56:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 26.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[6: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4</guid>
-      <pubDate>Sat, 26 Sep 2026 16:56:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 16:58:04 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 16:56:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 26.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
+      <description>Irregular intervals in both directions. Reason: traffic accident. [On 26.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[On 26.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62: ÖBB construction works]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Sat, 26 Sep 2026 23:00:00 +0200</ext:ends_at>
       <description>Bhf. Hütteldorf [On 26.09.2026]</description>
       <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[On 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[74A: Boarding Leberstraße before S-Bahn building]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e</guid>
+      <pubDate>Fri, 25 Sep 2026 00:00:29 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 00:00:29 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Reason: construction works. [25.09.2026 – 26.09.2026]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[25.09.2026 – 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Buses stop Pasettistraße before Hellwagstraße (for line 5A)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
+      <pubDate>Fri, 25 Sep 2026 00:00:29 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 00:00:29 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Reason: construction works. [25.09.2026 – 26.09.2026]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[25.09.2026 – 26.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
