@@ -81,6 +81,8 @@ LOC_MATCH_CANDIDATES = 8
 MAX_MATCH_DISTANCE_M = 800.0
 # HAFAS coordinates are integers in millionths of a degree.
 _HAFAS_COORD_SCALE = 1_000_000.0
+# Products shown per board when a station's boards yield no line.
+MAX_LOGGED_PRODUCTS = 5
 MAX_STATE_BYTES = 5 * 1024 * 1024
 
 # ``at:obb:vor|S45:`` → ``S45``
@@ -240,16 +242,10 @@ class RailLocation:
     distance_m: float
 
 
-def _rail_candidate(location: object) -> tuple[str, str, int, float, float] | None:
-    """``(extId, name, pCls, lat, lon)`` of a rail-serving candidate, else ``None``."""
-    if not isinstance(location, dict):
-        return None
-    ext_id = location.get("extId")
-    classes = location.get("pCls")
+def _coordinates(location: Mapping[str, Any]) -> tuple[float, float] | None:
+    """``(lat, lon)`` of a HAFAS location, ``None`` unless valid WGS84."""
     coords = location.get("crd")
-    if not isinstance(ext_id, str) or not ext_id.strip() or not isinstance(coords, dict):
-        return None
-    if not isinstance(classes, int) or isinstance(classes, bool) or not classes & RAIL_CLASSES:
+    if not isinstance(coords, dict):
         return None
     x, y = coords.get("x"), coords.get("y")
     if not isinstance(x, int | float) or not isinstance(y, int | float):
@@ -259,7 +255,23 @@ def _rail_candidate(location: object) -> tuple[str, str, int, float, float] | No
     lat, lon = y / _HAFAS_COORD_SCALE, x / _HAFAS_COORD_SCALE
     if not (math.isfinite(lat) and math.isfinite(lon) and -90 <= lat <= 90 and -180 <= lon <= 180):
         return None
-    return ext_id.strip(), str(location.get("name", "")), classes, lat, lon
+    return lat, lon
+
+
+def _rail_candidate(location: object) -> tuple[str, str, int, float, float] | None:
+    """``(extId, name, pCls, lat, lon)`` of a rail-serving candidate, else ``None``."""
+    if not isinstance(location, dict):
+        return None
+    ext_id = location.get("extId")
+    classes = location.get("pCls")
+    if not isinstance(ext_id, str) or not ext_id.strip():
+        return None
+    if not isinstance(classes, int) or isinstance(classes, bool) or not classes & RAIL_CLASSES:
+        return None
+    position = _coordinates(location)
+    if position is None:
+        return None
+    return ext_id.strip(), str(location.get("name", "")), classes, *position
 
 
 def pick_rail_location(payload: object, station: Station) -> RailLocation | None:
@@ -286,6 +298,57 @@ def pick_rail_location(payload: object, station: Station) -> RailLocation | None
         if distance <= MAX_MATCH_DISTANCE_M and (best is None or distance < best.distance_m):
             best = RailLocation(ext_id, name, classes, distance)
     return best
+
+
+def describe_candidates(payload: object, station: Station) -> str:
+    """Every ``LocMatch`` candidate as ``name (extId, pCls, distance)``, for the log.
+
+    Logged when no candidate qualifies, so the next run shows what HAFAS
+    offered (2026-09-26: nothing for "Wien Hauptbahnhof" and "Siebenhirten").
+    """
+    res = _answer(payload)
+    match = res.get("match") if res else None
+    locations = match.get("locL") if isinstance(match, dict) else None
+    parts: list[str] = []
+    for location in locations if isinstance(locations, list) else []:
+        if not isinstance(location, dict):
+            continue
+        position = _coordinates(location)
+        distance = "?"
+        if position is not None and station.latitude is not None and station.longitude is not None:
+            meters = calculate_distance_meters(station.latitude, station.longitude, *position)
+            distance = f"{round(meters)} m" if math.isfinite(meters) else "?"
+        parts.append(
+            f"{_clean(location.get('name'))} ({_clean(location.get('extId'))}, "
+            f"pCls {_clean(location.get('pCls'))}, {distance})"
+        )
+    return "; ".join(parts) or "no candidates"
+
+
+def board_summary(payload: object) -> str:
+    """``jny 12, prod 3: S 45 [S/45/at:obb:vor|S45:], …`` for the log.
+
+    Logged when a station's boards answer but yield no line (2026-09-26: Wien
+    Mitte-Landstraße, Rennweg, Quartier Belvedere, Simmering, Himberg, all
+    matched to a rail stop with the S-Bahn class).
+    """
+    res = _answer(payload)
+    if res is None:
+        return "failed"
+    journeys = res.get("jnyL")
+    common = res.get("common")
+    products = common.get("prodL") if isinstance(common, dict) else None
+    products = products if isinstance(products, list) else []
+    shown: list[str] = []
+    for item in products[:MAX_LOGGED_PRODUCTS]:
+        if not isinstance(item, dict):
+            continue
+        context = item.get("prodCtx")
+        context = context if isinstance(context, dict) else {}
+        fields = "/".join(_clean(str(context.get(key, "")).strip()) for key in ("catOut", "line", "lineId"))
+        shown.append(f"{_clean(item.get('name', ''))} [{fields}]")
+    count = len(journeys) if isinstance(journeys, list) else 0
+    return f"jny {count}, prod {len(products)}" + (": " + ", ".join(shown) if shown else "")
 
 
 def _is_resolved(entry: Mapping[str, Any]) -> bool:
@@ -332,12 +395,18 @@ class RefreshResult:
     aborted: bool = False
 
 
-def _resolve(station: Station, entry: dict[str, Any], location: RailLocation | None) -> bool:
-    """Record *location* for *station*; ``False`` (and forget any old id) if none."""
+def _resolve(station: Station, entry: dict[str, Any], answer: object) -> bool:
+    """Record the rail stop *answer* offers; ``False`` (and forget any old id) if none."""
+    location = pick_rail_location(answer, station)
     if location is None:
         for key in ("hafas_ext_id", "hafas_name", "hafas_classes", "hafas_distance_m"):
             entry.pop(key, None)
-        LOGGER.info("No rail stop within %d m for %s", int(MAX_MATCH_DISTANCE_M), _clean(station.name))
+        LOGGER.info(
+            "No rail stop within %d m for %s; candidates: %s",
+            int(MAX_MATCH_DISTANCE_M),
+            _clean(station.name),
+            describe_candidates(answer, station),
+        )
         return False
     entry["hafas_ext_id"] = location.ext_id
     entry["hafas_name"] = location.name
@@ -378,12 +447,13 @@ def refresh(
             if failures.record(_answer(answer) is not None):
                 result.aborted = True
                 break
-            if not _resolve(station, entry, pick_rail_location(answer, station)):
+            if not _resolve(station, entry, answer):
                 result.unresolved += 1
                 continue
 
         seen: set[str] = set()
         answered = False
+        summaries: list[str] = []
         for day, (start, minutes) in product(dates, SAMPLE_WINDOWS):
             board = _call(
                 post,
@@ -393,6 +463,7 @@ def refresh(
                 max_bytes=BOARD_MAX_BYTES,
             )
             lines = lines_from_board(board)
+            summaries.append(f"{day:%d.%m.} {start[:2]}h {board_summary(board)}")
             if failures.record(lines is not None):
                 result.aborted = True
                 break
@@ -404,6 +475,8 @@ def refresh(
         if not answered:
             result.failed += 1
             continue
+        if not seen:
+            LOGGER.info("No line on the boards of %s: %s", _clean(station.name), " | ".join(summaries))
         known = entry.get("lines")
         entry["lines"] = merge_lines(known if isinstance(known, dict) else {}, seen, today)
         entry["checked"] = today.isoformat()

@@ -420,10 +420,15 @@ schreibt ausschließlich `data/oebb_station_lines.json`:
   dessen Produktklassen (`pCls`) Bahn enthalten und der höchstens 800 m
   entfernt liegt. Gespeichert werden ID, HAFAS-Name, Klassen und Abstand.
   Der erste Lauf (2026-09-25) nahm den ersten Treffer nach Namen mit 2 km
-  Radius; dabei landeten Wien Mitte-Landstraße, Rennweg und Quartier
-  Belvedere vermutlich auf der gleichnamigen Straßenbahn- bzw.
-  U-Bahn-Haltestelle, ihre Bahn-Abfahrtstafeln blieben leer. IDs ohne
-  gespeicherte Klassen werden deshalb einmal neu ermittelt.
+  Radius; IDs ohne gespeicherte Klassen werden einmal neu ermittelt. Das
+  brachte Breitensee, Zentralfriedhof und Krems a.d. Donau ihre Linien.
+  Wien Mitte-Landstraße, Rennweg und Quartier Belvedere dagegen waren
+  schon im ersten Lauf dem Bahnhof zugeordnet (gleiche IDs, S-Bahn-Klasse,
+  unter 150 m); ihre Abfahrtstafeln liefern trotzdem keine Linie, Ursache
+  offen. Für solche Fälle schreibt das Skript Diagnose ins Log: ohne
+  Bahn-Halt alle `LocMatch`-Kandidaten (`describe_candidates`), bei Tafeln
+  ohne Linie je Zeitfenster Abfahrten, Produkte und deren `catOut`/`line`/
+  `lineId` (`board_summary`).
 - Je Bahnhof und Lauf vier `StationBoard`-Anfragen: nächster Dienstag und
   der Dienstag fünf Wochen später, jeweils 06:00–09:00 und 15:00–18:00,
   nur Bahnklassen (Filter 4159), `maxJny` 400. Ohne `maxJny` lieferte
