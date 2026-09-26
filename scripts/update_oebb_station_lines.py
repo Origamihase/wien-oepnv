@@ -23,7 +23,9 @@ run while the station has no line (the HAFAS station id is kept; see
 :func:`pick_rail_location` for which hit counts and :func:`short_name` for
 the second query), then two windows (06:00–09:00 and 15:00–18:00) on each
 date, rail classes only, in the request form ``public-transport/hafas-client``
-uses for ÖBB (probe runs of 2026-09-25). Requests are paced; five
+uses for ÖBB (probe runs of 2026-09-25). If those boards show no line, the
+other stops at the same place get the same four requests
+(:func:`same_place_stops`). Requests are paced; five
 consecutive failures stop the run and keep what was collected. Writes
 ``data/oebb_station_lines.json`` only.
 """
@@ -86,6 +88,14 @@ MAX_CONSECUTIVE_FAILURES = 5
 # S-Bahn station, Stephansplatz 1.1 km from Wien Mitte.
 LOC_MATCH_CANDIDATES = 8
 MAX_MATCH_DISTANCE_M = 800.0
+# HAFAS lists one station as several stops at the same coordinates, and only
+# one of them may carry the departures: "Simmering (Wien)" and "Wien Simmering
+# Bahnhof (U)", "Himberg b.Wien Bahnhof" and "Himberg b.Wien" (2026-09-26,
+# each pair at the same distance, the first one with empty boards). When the
+# chosen stop shows no line, up to two others within 50 m of it are tried.
+# 50 m, not more: Quartier Belvedere lies 526 m from Wien Hbf.
+SAME_PLACE_M = 50.0
+MAX_SAME_PLACE_STOPS = 2
 # HAFAS coordinates are integers in millionths of a degree.
 _HAFAS_COORD_SCALE = 1_000_000.0
 # Products shown per board when a station's boards yield no line.
@@ -251,6 +261,8 @@ class RailLocation:
     name: str
     classes: int
     distance_m: float
+    latitude: float
+    longitude: float
 
 
 def _coordinates(location: Mapping[str, Any]) -> tuple[float, float] | None:
@@ -285,24 +297,25 @@ def _rail_candidate(location: object) -> tuple[str, str, int, float, float] | No
     return ext_id.strip(), str(location.get("name", "")), classes, *position
 
 
-def pick_rail_location(
+def rail_locations(
     payload: object, station: Station, name_part: str | None = None
-) -> RailLocation | None:
-    """The nearest ``LocMatch`` candidate served by R/REX or S-Bahn, within 800 m.
+) -> list[RailLocation]:
+    """The ``LocMatch`` candidates served by R/REX or S-Bahn within 800 m, nearest first.
 
     The first run (2026-09-25) took HAFAS's top hit by name, which can be the
     tram or U-Bahn stop of the same name; a candidate now counts only if its
     product classes (``pCls``) include R/REX or S-Bahn
     (:data:`LOCAL_RAIL_CLASSES`). Any rail class was not enough: it let the
     Flughafen Wien bus terminal win over the station (2026-09-26). With
-    *name_part*, a candidate must also carry it in its name.
+    *name_part*, a candidate must also carry it in its name. Ties keep
+    HAFAS's order.
     """
     res = _answer(payload)
     if res is None or station.latitude is None or station.longitude is None:
-        return None
+        return []
     match = res.get("match")
     locations = match.get("locL") if isinstance(match, dict) else None
-    best: RailLocation | None = None
+    found: list[RailLocation] = []
     for location in locations if isinstance(locations, list) else []:
         candidate = _rail_candidate(location)
         if candidate is None:
@@ -311,9 +324,32 @@ def pick_rail_location(
         if name_part is not None and name_part.casefold() not in name.casefold():
             continue
         distance = calculate_distance_meters(station.latitude, station.longitude, lat, lon)
-        if distance <= MAX_MATCH_DISTANCE_M and (best is None or distance < best.distance_m):
-            best = RailLocation(ext_id, name, classes, distance)
-    return best
+        if distance <= MAX_MATCH_DISTANCE_M:
+            found.append(RailLocation(ext_id, name, classes, distance, lat, lon))
+    return sorted(found, key=lambda location: location.distance_m)
+
+
+def pick_rail_location(
+    payload: object, station: Station, name_part: str | None = None
+) -> RailLocation | None:
+    """The nearest of :func:`rail_locations`, ``None`` if there is none."""
+    locations = rail_locations(payload, station, name_part)
+    return locations[0] if locations else None
+
+
+def same_place_stops(payload: object, station: Station, ext_id: str) -> list[RailLocation]:
+    """Other :func:`rail_locations` within :data:`SAME_PLACE_M` of the stop *ext_id*."""
+    locations = rail_locations(payload, station)
+    chosen = next((location for location in locations if location.ext_id == ext_id), None)
+    if chosen is None:
+        return []
+    return [
+        location
+        for location in locations
+        if location.ext_id != ext_id
+        and calculate_distance_meters(chosen.latitude, chosen.longitude, location.latitude, location.longitude)
+        <= SAME_PLACE_M
+    ][:MAX_SAME_PLACE_STOPS]
 
 
 def describe_candidates(payload: object, station: Station) -> str:
@@ -447,19 +483,25 @@ def _resolve(station: Station, entry: dict[str, Any], answer: object, query: str
             describe_candidates(answer, station),
         )
         return False
+    _store(entry, location)
+    LOGGER.info("%s → %s", label, _describe(location))
+    return True
+
+
+def _store(entry: dict[str, Any], location: RailLocation) -> None:
+    """Record *location* as the station's HAFAS stop."""
     entry["hafas_ext_id"] = location.ext_id
     entry["hafas_name"] = location.name
     entry["hafas_classes"] = location.classes
     entry["hafas_distance_m"] = round(location.distance_m)
-    LOGGER.info(
-        "%s → %s (%s, pCls %d, %d m)",
-        label,
-        _clean(location.name),
-        _clean(location.ext_id),
-        location.classes,
-        round(location.distance_m),
+
+
+def _describe(location: RailLocation) -> str:
+    """``Wien Hbf (U) (1290401, pCls 6015, 292 m)`` for the log."""
+    return (
+        f"{_clean(location.name)} ({_clean(location.ext_id)}, "
+        f"pCls {location.classes}, {round(location.distance_m)} m)"
     )
-    return True
 
 
 def _locate(
@@ -493,6 +535,40 @@ class _Boards:
     summaries: list[str] = field(default_factory=list)
 
 
+def _try_same_place(
+    station: Station,
+    entry: dict[str, Any],
+    answer: object,
+    boards: _Boards,
+    dates: Sequence[date],
+    post: Post,
+    pause: float,
+    failures: _FailureRun,
+) -> tuple[_Boards, list[str]]:
+    """Boards without a line: try the other stops at the chosen stop's place.
+
+    The first one whose boards show a line goes into *entry* and its boards
+    are returned; otherwise *boards*. Also returns the stops tried in vain.
+    """
+    tried: list[str] = []
+    for other in same_place_stops(answer, station, entry["hafas_ext_id"]):
+        trial = _sample_boards(station, other.ext_id, dates, post, pause, failures)
+        if trial.aborted:
+            return trial, tried
+        if trial.seen:
+            LOGGER.info(
+                "%s: no line at %s (%s), lines at %s",
+                _clean(station.name),
+                _clean(entry.get("hafas_name")),
+                _clean(entry["hafas_ext_id"]),
+                _describe(other),
+            )
+            _store(entry, other)
+            return trial, tried
+        tried.append(f"{_clean(other.name)} ({_clean(other.ext_id)})")
+    return boards, tried
+
+
 def _sample_boards(
     station: Station, ext_id: str, dates: Sequence[date], post: Post, pause: float, failures: _FailureRun
 ) -> _Boards:
@@ -515,6 +591,14 @@ def _sample_boards(
             boards.answered = True
             boards.seen |= lines
     return boards
+
+
+def _log_no_line(station: Station, answer: object, boards: _Boards, tried: Sequence[str]) -> None:
+    """Board summaries, and the candidates when this run looked the station up."""
+    details = "" if _answer(answer) is None else f"; candidates: {describe_candidates(answer, station)}"
+    if tried:
+        details += f"; also without a line: {', '.join(tried)}"
+    LOGGER.info("No line on the boards of %s: %s%s", _clean(station.name), " | ".join(boards.summaries), details)
 
 
 def refresh(
@@ -552,6 +636,9 @@ def refresh(
                 continue
 
         boards = _sample_boards(station, entry["hafas_ext_id"], dates, post, pause, failures)
+        tried: list[str] = []
+        if not boards.aborted and boards.answered and not boards.seen:
+            boards, tried = _try_same_place(station, entry, answer, boards, dates, post, pause, failures)
         if boards.aborted:
             result.aborted = True
             break
@@ -559,13 +646,7 @@ def refresh(
             result.failed += 1
             continue
         if not boards.seen:
-            candidates = "" if _answer(answer) is None else f"; candidates: {describe_candidates(answer, station)}"
-            LOGGER.info(
-                "No line on the boards of %s: %s%s",
-                _clean(station.name),
-                " | ".join(boards.summaries),
-                candidates,
-            )
+            _log_no_line(station, answer, boards, tried)
         known = entry.get("lines")
         entry["lines"] = merge_lines(known if isinstance(known, dict) else {}, boards.seen, today)
         entry["checked"] = today.isoformat()

@@ -431,6 +431,15 @@ schreibt ausschließlich `data/oebb_station_lines.json`:
   Gespeichert werden ID, HAFAS-Name, Klassen und Abstand.
   Zuordnungen nach älteren Regeln werden einmal neu ermittelt, ein
   Bahnhof ohne Linie bei jedem Lauf.
+- Derselbe Ort, mehrere Halte: HAFAS führt manche Bahnhöfe als mehrere
+  Halte mit denselben Koordinaten, und nur einer davon trägt die
+  Abfahrten („Simmering (Wien)“ und „Wien Simmering Bahnhof (U)“,
+  „Himberg b.Wien Bahnhof“ und „Himberg b.Wien“; gewählt war jeweils der
+  mit leeren Tafeln). Zeigen die Tafeln des gewählten Halts keine Linie,
+  werden bis zu zwei weitere R/REX- oder S-Bahn-Halte im Umkreis von 50 m
+  um ihn abgefragt (`same_place_stops`); der erste mit Linien wird
+  gespeichert. Nicht weiter: Quartier Belvedere liegt 526 m vom
+  Hauptbahnhof.
 - Diagnose im Log: jede Zuordnung mit Name, Klassen und Abstand; ohne
   Bahn-Halt alle `LocMatch`-Kandidaten (`describe_candidates`); bei Tafeln
   ohne Linie je Zeitfenster Abfahrten, Produkte und deren `catOut`/`line`/

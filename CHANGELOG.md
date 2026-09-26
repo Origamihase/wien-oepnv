@@ -5,6 +5,13 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Stufe 2: Halte am selben Ort (2026-09-26)**: Der vierte Lauf ordnete den
+  Hauptbahnhof zu („Wien Hbf (U)“, 17 Linien) und den Flughafen dem Bahnhof
+  (S7, REX7); 152 Bahnhöfe haben Linien. Simmering und Himberg blieben leer:
+  HAFAS führt dort je zwei Halte mit denselben Koordinaten, gewählt war der
+  ohne Abfahrten. Zeigt der gewählte Halt keine Linie, fragt
+  `scripts/update_oebb_station_lines.py` jetzt bis zu zwei weitere Halte im
+  Umkreis von 50 m ab und speichert den ersten mit Linien.
 * **Stufe 2: Hauptbahnhof, Flughafen und Bahnhöfe ohne Linie (2026-09-26)**:
   Der Diagnose-Lauf zeigte drei Dinge. Wien Mitte-Landstraße, Rennweg und
   Quartier Belvedere sind zu Recht leer: Die Stammstrecke ist zwischen
