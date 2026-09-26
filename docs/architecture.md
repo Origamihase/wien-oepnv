@@ -1101,7 +1101,11 @@ Nicht jeder Text gehört in ein NMT-Modell:
   wirkende Wortliste für die kleine Grammatik hinter `Dauer:` und
   `Nach:` (Datumspräposition an eine Ziffer gebunden, Monatsnamen, „etwa",
   „bis auf Widerruf", „Meter in Richtung"). Nicht im Glossar, weil „ab",
-  „bis", „vor", „nach" in Prosa gewöhnliches Deutsch sind.
+  „bis", „vor", „nach" in Prosa gewöhnliches Deutsch sind. „bis
+  voraussichtlich“ wird im Record vorher zu „bis etwa“ und damit „until
+  approx.“, am Wertanfang groß („Duration: Until approx. 22:00“); in Prosa
+  greift der Glossar-Eintrag „bis voraussichtlich“ → „until approx.“
+  (seit 2026-09-26, Audit vom 25.09., A.3; vorher „until expected“).
 * **Nicht-übersetzbarer Inhalt.** `_is_non_translatable_content` erkennt
   maskierte Texte, in denen nach dem Maskieren nichts mehr steht, was ein
   Modell übersetzen könnte. Das sind reine Linien- und Stationsfolgen, seit
@@ -1205,6 +1209,11 @@ Nach dem Modelllauf wird nicht blind vertraut:
 * `_capitalise_sentence_start` hebt den ersten Buchstaben von Titelrumpf
   und Beschreibung an: Glossar-Substantive sind klein, weil sie auch
   mitten im Satz stehen; am Satzanfang liest sich das als Tippfehler.
+* `_capitalise_glossary_after_stop` tut dasselbe für einen Glossar-Begriff,
+  der mitten im Text einen Satz beginnt („track 2. Expected duration:
+  10:10“, Audit vom 25.09., A.4). Nur Glossar-Werte, nie nach einer
+  Abkürzung („Hauptstr. opp 197“, „ca.“, „approx.“). Wirkt beim Rendern,
+  also auch auf gecachte Werte, ohne Epochensprung.
 * Ein gecachter EN-Wert wird vor dem Ausliefern geprüft
   (`_cached_translation_defect`): ein Rest-Platzhalter oder ein Datum des
   deutschen Quelltexts, das im Englischen fehlt, macht den Treffer zum
