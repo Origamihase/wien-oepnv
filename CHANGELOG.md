@@ -5,6 +5,14 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Testmeldungen der Anbieter kommen nicht mehr in den Feed (2026-09-26)**:
+  Am 23.09. standen zwei Testmeldungen der Wiener Linien je einen Zyklus im
+  deutschen Feed („71/72: Dies ist eine Testmeldung“, „62: F57f Test“) und
+  belegten einen der zehn Plätze auf den Info-Displays. `_drop_test_messages`
+  in `src/build_feed.py` verwirft sie gleich nach dem Einsammeln, für alle
+  Quellen: Titel oder Text enthält „Testmeldung“, oder Titel bzw. Text sind
+  höchstens fünf Wörter lang und enthalten das Wort „Test“. Rückschau über
+  488 Feed- und 952 Cache-Meldungen: nur diese beiden getroffen.
 * **Stufe 3 der Linien-Prüfung: Bericht über den deutschen Feed (2026-09-26)**:
   Neu `scripts/check_feed_lines.py`, als letzter Schritt von
   `update-cycle.yml`. Für jede Meldung mit Linien-Präfix prüft es, ob es die
