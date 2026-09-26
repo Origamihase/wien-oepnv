@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 26 Sep 2026 15:31:24 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 16:00:43 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[42: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
+      <pubDate>Sat, 26 Sep 2026 15:54:00 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 15:54:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 15:55:01 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction towards Schottentor U. Expected Duration: 16:20. Reason: illegally parked vehicle in the area of Kreuzgasse. [On 26.09.2026]</description>
+      <content:encoded><![CDATA[Service obstruction towards Schottentor U. Expected Duration: 16:20. Reason: illegally parked vehicle in the area of Kreuzgasse.<br/>[On 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Service disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4</guid>
+      <pubDate>Sat, 26 Sep 2026 15:39:00 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 15:39:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 15:39:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [On 26.09.2026]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[62: ÖBB construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -46,34 +68,12 @@
       <title><![CDATA[9: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
-      <pubDate>Sat, 26 Sep 2026 15:02:00 +0200</pubDate>
+      <pubDate>Sat, 26 Sep 2026 15:02:25 +0200</pubDate>
       <ext:first_seen>Sat, 26 Sep 2026 15:02:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 26 Sep 2026 15:06:26 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 26.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">75e9cdbc4576e94fd8403d3bb53fd7f0c241ca05e419063e677c764a9f1e8d35</guid>
-      <pubDate>Sat, 26 Sep 2026 14:35:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 14:35:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 14:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident. [On 26.09.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[On 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[22A: Delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">64d88f357882396c9a5115dd6d0b7d9e1930c8e1858a79ead8d4acacc349f4f4</guid>
-      <pubDate>Sat, 26 Sep 2026 13:13:00 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 13:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 26 Sep 2026 13:13:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident. [On 26.09.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[On 26.09.2026]]]></content:encoded>
+      <ext:ends_at>Sat, 26 Sep 2026 16:06:00 +0200</ext:ends_at>
+      <description>Service obstruction [On 26.09.2026]</description>
+      <content:encoded><![CDATA[Service obstruction<br/>[On 26.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
