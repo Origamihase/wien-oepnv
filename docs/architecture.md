@@ -467,6 +467,42 @@ schreibt ausschließlich `data/oebb_station_lines.json`:
   darf ein Fehlen deshalb nie als Beweis lesen und braucht für solche
   Fälle eine gepflegte Liste der planmäßigen Linien.
 
+**Linien-Prüfung des Feeds (Stufe 3, seit 2026-09-26).**
+`scripts/check_feed_lines.py` läuft als letzter Schritt von
+`update-cycle.yml` (`continue-on-error`, 2 Minuten, nach dem Veröffentlichen)
+und prüft `docs/feed.xml`. Nur Bericht: Das Skript liest Dateien, schreibt
+nichts und ändert nie eine Meldung.
+
+- Geprüft werden Meldungen mit Linien-Präfix (`7A/N65/N66: …`). Erstens:
+  Gibt es die Linie? Bekannt sind die Linien der Wiener Linien
+  (`data/wienerlinien-ogd-linien.csv`, alle `wl_lines`), die HAFAS-Linien
+  aus `data/oebb_station_lines.json` und die gepflegten Linien aus
+  `data/planned_station_lines.json`. Eine Ersatzlinie `<Linie>E` zählt,
+  wenn `<Linie>` bekannt ist. Zweitens: Bedient eine der Linien die
+  Bahnhöfe, die Titel oder Beschreibung nennen?
+- Nur ÖBB-Bahnhöfe werden geprüft. Wiener-Linien-Meldungen nennen oft
+  vorübergehende Haltestellen einer anderen Linie („37A: Busse halten
+  Pasettistraße … (bei Linie 5A)“). Die Linien eines Bahnhofs sind seine
+  HAFAS-Linien, seine gepflegten Linien, seine `wl_lines` und die
+  `wl_lines` der Wiener-Linien-Haltestellen im Umkreis von 200 m. Eine
+  Haltestelle in diesem Umkreis gilt als Teil des Bahnhofs; weiter nicht,
+  „Hauptbahnhof Ost“ liegt 354 m von Quartier Belvedere und näher an ihm
+  als am Hauptbahnhof.
+- Namen werden aus Stationsnamen und Aliasen gesucht, der längste zuerst
+  („Meidling Hauptstraße“ ist nicht der Bahnhof Meidling). Kürzel unter
+  vier Zeichen, reine Nummern, allgemeine Wörter („Hauptbahnhof“) und
+  mehrdeutige Namen zählen nicht, ebenso ein Name direkt nach „Richtung“:
+  Er nennt das Ziel, keinen Halt.
+- Die gepflegte Liste nennt je Bahnhof Linien, die HAFAS wegen einer
+  Baustelle nicht zeigt, mit Grund und Enddatum (`until`, `null` = offen).
+  Abgelaufene Einträge zählen nicht mehr und stehen als Warnung im Log.
+- Befunde lauten „not confirmed“, nie „falsch“, und stehen im Log des
+  Schritts. Rückschau über 678 Stände des Feeds (482 verschiedene
+  Meldungen, 432 mit Präfix): drei Befunde, alle berechtigt. „1: Bhf.
+  Hütteldorf ÖBB-Ersatzbus für 80“ (der Anlass der Prüfung), „71/72: Dies
+  ist eine Testmeldung“ (keine Linie 72) und „66A: Demonstration Betrieb
+  ab Quartier Belvedere“.
+
 **Warum Google Places die Notfall-Stufe ist:**
 
 - Nachdem OSM und HAFAS gelaufen sind, filtert

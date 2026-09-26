@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "description": "Lines that serve an ÖBB station according to the plan but that HAFAS does not show at the moment, mostly because of construction. Used only by the report-only line check (stage 3, scripts/check_feed_lines.py). An entry applies up to and including 'until'; null means the end is open. Expired entries are ignored and logged so they get reviewed.",
+  "stations": [
+    {
+      "bst_id": "900102",
+      "name": "Wien Mitte-Landstraße",
+      "lines": ["S1", "S2", "S3", "S4", "S7", "REX1", "REX3", "REX7"],
+      "until": "2027-10-31",
+      "reason": "Stammstrecke Praterstern – Hauptbahnhof/St. Marx closed (Wiener Linien: 'S-Bahn-Stammstrecke (Phase 2)', 2026-09-07 to October 2027). REX1 and REX3 stop on both sides of the closure even at small stations (Traisengasse, Matzleinsdorfer Platz); REX7 stops at St. Marx."
+    },
+    {
+      "bst_id": "1352",
+      "name": "Wien Rennweg",
+      "lines": ["S1", "S2", "S3", "S4", "S7", "REX1", "REX3", "REX7"],
+      "until": "2027-10-31",
+      "reason": "Stammstrecke Praterstern – Hauptbahnhof/St. Marx closed (Phase 2, 2026-09-07 to October 2027); see Wien Mitte-Landstraße."
+    },
+    {
+      "bst_id": "1351",
+      "name": "Wien Quartier Belvedere",
+      "lines": ["S1", "S2", "S3", "S4", "REX1", "REX3"],
+      "until": "2027-10-31",
+      "reason": "Stammstrecke Praterstern – Hauptbahnhof closed (Phase 2, 2026-09-07 to October 2027). The S7 turns off at Rennweg towards St. Marx and does not serve Quartier Belvedere."
+    },
+    {
+      "bst_id": "804",
+      "name": "Wien Hütteldorf",
+      "lines": ["S80"],
+      "until": null,
+      "reason": "Verbindungsbahn: rail replacement bus for the S80 (Wiener Linien: 'ÖBB-Ersatzbus für 80'). End open."
+    },
+    {
+      "bst_id": "806",
+      "name": "Wien Speising",
+      "lines": ["S80"],
+      "until": null,
+      "reason": "Verbindungsbahn: HAFAS shows only the rail replacement bus BusSV910 (2026-09-26). End open."
+    },
+    {
+      "bst_id": "835",
+      "name": "Himberg",
+      "lines": ["S60"],
+      "until": "2026-12-12",
+      "reason": "HAFAS shows no departures at either stop (sample dates 2026-09-29 and 2026-11-03), cause open; the neighbours Lanzendorf-Rannersdorf and Gramatneusiedl have the S60. Review at the timetable change."
+    }
+  ]
+}
