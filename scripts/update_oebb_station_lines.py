@@ -96,6 +96,9 @@ MAX_STATE_BYTES = 5 * 1024 * 1024
 _LINE_ID_RE = re.compile(r"\|([A-Z]{1,4}\d{1,3}):?$")
 _LINE_TOKEN_RE = re.compile(r"^[A-Z]{1,4}\d{1,3}$")
 _HAUPTBAHNHOF_RE = re.compile(r"\bHauptbahnhof\b")
+# ÖBB's abbreviation. A stop found by the short name must carry it: Quartier
+# Belvedere lies 526 m from Wien Hauptbahnhof, inside the match radius.
+SHORT_FORM = "Hbf"
 
 
 @dataclass(frozen=True)
@@ -282,14 +285,17 @@ def _rail_candidate(location: object) -> tuple[str, str, int, float, float] | No
     return ext_id.strip(), str(location.get("name", "")), classes, *position
 
 
-def pick_rail_location(payload: object, station: Station) -> RailLocation | None:
+def pick_rail_location(
+    payload: object, station: Station, name_part: str | None = None
+) -> RailLocation | None:
     """The nearest ``LocMatch`` candidate served by R/REX or S-Bahn, within 800 m.
 
     The first run (2026-09-25) took HAFAS's top hit by name, which can be the
     tram or U-Bahn stop of the same name; a candidate now counts only if its
     product classes (``pCls``) include R/REX or S-Bahn
     (:data:`LOCAL_RAIL_CLASSES`). Any rail class was not enough: it let the
-    Flughafen Wien bus terminal win over the station (2026-09-26).
+    Flughafen Wien bus terminal win over the station (2026-09-26). With
+    *name_part*, a candidate must also carry it in its name.
     """
     res = _answer(payload)
     if res is None or station.latitude is None or station.longitude is None:
@@ -302,6 +308,8 @@ def pick_rail_location(payload: object, station: Station) -> RailLocation | None
         if candidate is None:
             continue
         ext_id, name, classes, lat, lon = candidate
+        if name_part is not None and name_part.casefold() not in name.casefold():
+            continue
         distance = calculate_distance_meters(station.latitude, station.longitude, lat, lon)
         if distance <= MAX_MATCH_DISTANCE_M and (best is None or distance < best.distance_m):
             best = RailLocation(ext_id, name, classes, distance)
@@ -365,9 +373,12 @@ def short_name(name: str) -> str | None:
 
     Queried when the full name finds no rail stop. On 2026-09-26 ``LocMatch``
     for "Wien Hauptbahnhof" offered Meidling, Floridsdorf, Hütteldorf and the
-    airport, but not the Hauptbahnhof, which ÖBB calls "Wien Hbf".
+    airport, but not the Hauptbahnhof, which ÖBB calls "Wien Hbf". The town
+    stays in the query, and the 800 m radius around the station's own
+    coordinates rules out every other Hauptbahnhof (St. Pölten lies 56 km
+    away); a hit must also be named "… Hbf" (:data:`SHORT_FORM`).
     """
-    short = _HAUPTBAHNHOF_RE.sub("Hbf", name)
+    short = _HAUPTBAHNHOF_RE.sub(SHORT_FORM, name)
     return short if short != name else None
 
 
@@ -425,7 +436,7 @@ class RefreshResult:
 def _resolve(station: Station, entry: dict[str, Any], answer: object, query: str) -> bool:
     """Record the rail stop *answer* offers; ``False`` (and forget any old id) if none."""
     label = _clean(station.name if query == station.name else f"{station.name} (as {query})")
-    location = pick_rail_location(answer, station)
+    location = pick_rail_location(answer, station, None if query == station.name else SHORT_FORM)
     if location is None:
         for key in ("hafas_ext_id", "hafas_name", "hafas_classes", "hafas_distance_m"):
             entry.pop(key, None)

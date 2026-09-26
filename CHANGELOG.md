@@ -10,7 +10,9 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   Quartier Belvedere sind zu Recht leer: Die Stammstrecke ist zwischen
   Praterstern und Hauptbahnhof/St. Marx vom 07.09.2026 bis Oktober 2027
   gesperrt. „Wien Hauptbahnhof“ findet in HAFAS den Hauptbahnhof nicht;
-  jetzt folgt eine zweite Anfrage als „Wien Hbf“. Der Flughafen war dem
+  jetzt folgt eine zweite Anfrage als „Wien Hbf“. Deren Treffer muss „Hbf“
+  heißen und höchstens 800 m entfernt liegen, ein anderer Hauptbahnhof oder
+  Quartier Belvedere (526 m) zählt nicht. Der Flughafen war dem
   Busterminal zugeordnet (Klassen ohne R/REX und S-Bahn); jetzt zählt nur
   ein Halt mit R/REX oder S-Bahn. Bahnhöfe ohne Linie werden bei jedem
   Lauf neu zugeordnet, und ihre Kandidaten stehen im Log (Simmering,

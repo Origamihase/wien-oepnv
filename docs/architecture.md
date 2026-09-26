@@ -424,7 +424,11 @@ schreibt ausschließlich `data/oebb_station_lines.json`:
   Findet der volle Name keinen Bahn-Halt, folgt eine zweite Anfrage mit
   der ÖBB-Abkürzung (`short_name`: „Wien Hauptbahnhof“ → „Wien Hbf“);
   „Wien Hauptbahnhof“ lieferte nur Meidling, Floridsdorf, Hütteldorf und
-  den Flughafen. Gespeichert werden ID, HAFAS-Name, Klassen und Abstand.
+  den Flughafen. Der Ort bleibt in der Anfrage, und der 800-m-Umkreis um
+  die eigenen Koordinaten schließt jeden anderen Hauptbahnhof aus
+  (St. Pölten: 56 km). Ein Treffer der zweiten Anfrage muss außerdem „Hbf“
+  im Namen tragen: Quartier Belvedere liegt 526 m vom Hauptbahnhof.
+  Gespeichert werden ID, HAFAS-Name, Klassen und Abstand.
   Zuordnungen nach älteren Regeln werden einmal neu ermittelt, ein
   Bahnhof ohne Linie bei jedem Lauf.
 - Diagnose im Log: jede Zuordnung mit Name, Klassen und Abstand; ohne

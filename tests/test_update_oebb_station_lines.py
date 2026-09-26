@@ -377,6 +377,37 @@ def test_the_hauptbahnhof_is_found_by_its_short_name(caplog: pytest.LogCaptureFi
     assert "Wien Hauptbahnhof (as Wien Hbf) → Wien Hbf (U) (1290401, pCls 4991, " in caplog.text
 
 
+def test_another_towns_hauptbahnhof_is_never_taken() -> None:
+    # "Wien Hbf" keeps the town, and the radius is measured from Wien
+    # Hauptbahnhof's own coordinates: St. Pölten Hbf, 56 km away, never counts.
+    st_poelten = _loc("St.Pölten Hbf", "1130165", 4991, 48.2079, 15.6243)
+    queries: list[str] = []
+    post = _loc_match_by_name(
+        {"Wien Hauptbahnhof": _loc_match(MEIDLING), "Wien Hbf": _loc_match(st_poelten)}, queries
+    )
+    state: dict[str, Any] = {}
+    result = ul.refresh(ul.select_stations([HAUPTBAHNHOF]), state, date(2026, 9, 27), post=post, pause=0)
+    assert result.unresolved == 1
+    assert "hafas_ext_id" not in state["900100"]
+
+
+def test_under_the_short_name_only_a_hbf_counts() -> None:
+    # Quartier Belvedere lies 526 m from Wien Hauptbahnhof, inside the radius.
+    # Found by "Wien Hbf" without the Hbf itself, it must not become the Hbf.
+    belvedere = _loc("Wien Quartier Belvedere Bahnhst", "8101473", 608, 48.1909, 16.3771)
+    queries: list[str] = []
+    post = _loc_match_by_name(
+        {"Wien Hauptbahnhof": _loc_match(MEIDLING), "Wien Hbf": _loc_match(belvedere)}, queries
+    )
+    state: dict[str, Any] = {}
+    result = ul.refresh(ul.select_stations([HAUPTBAHNHOF]), state, date(2026, 9, 27), post=post, pause=0)
+    assert result.unresolved == 1
+    assert "hafas_ext_id" not in state["900100"]
+    # The full name is not held to it: there the name already matched.
+    (station,) = ul.select_stations([HAUPTBAHNHOF])
+    assert ul.pick_rail_location(_loc_match(belvedere), station) is not None
+
+
 def test_the_short_name_is_not_queried_after_a_match_or_a_failure() -> None:
     queries: list[str] = []
     post = _loc_match_by_name({"Wien Hauptbahnhof": _loc_match(HBF)}, queries)
