@@ -5303,6 +5303,41 @@ _ALL_CLEAR_TITLE_RE = re.compile(
 )
 
 
+# Wiener Linien published two test messages on 2026-09-23 that reached the
+# German feed for one cycle each: "71/72: Dies ist eine Testmeldung" ("Dies
+# ist ein Test") and "62: F57f Test" ("F57 f Test"). On a display with ten
+# slots each took the place of a real disruption (audit 2026-09-26).
+_TEST_MESSAGE_RE = re.compile(r"\btestmeldung(?:en)?\b", re.IGNORECASE)
+_TEST_WORD_RE = re.compile(r"\btest\b", re.IGNORECASE)
+# A text this short that says "Test" is a test. A real message that mentions
+# one says more ("Test-Fahrten der neuen Straßenbahn zwischen … und …"), and
+# "Haltestelle" or "Testbetrieb" never match the word.
+MAX_TEST_TEXT_WORDS = 5
+
+
+def _is_test_message(item: FeedItem) -> bool:
+    """Whether ``item`` is a provider's test message rather than a disruption."""
+    title = str(item.get("title") or "")
+    text = html_to_text(str(item.get("description") or ""))
+    if _TEST_MESSAGE_RE.search(title) or _TEST_MESSAGE_RE.search(text):
+        return True
+    return any(
+        _TEST_WORD_RE.search(part) is not None and len(part.split()) <= MAX_TEST_TEXT_WORDS
+        for part in (title, text)
+    )
+
+
+def _drop_test_messages(items: list[FeedItem]) -> list[FeedItem]:
+    """Remove providers' test messages before they can take a slot."""
+    kept: list[FeedItem] = []
+    for item in items:
+        if _is_test_message(item):
+            log.warning("Testmeldung verworfen: %s", sanitize_log_arg(str(item.get("title") or "")))
+        else:
+            kept.append(item)
+    return kept
+
+
 def _is_all_clear(item: FeedItem) -> bool:
     """Whether ``item`` reports the end of a disruption rather than one."""
     return bool(_ALL_CLEAR_TITLE_RE.match(str(item.get("title") or "")))
@@ -6890,6 +6925,7 @@ def lint() -> int:
     try:
         items = _invoke_collect_items(report)
         raw_count = len(items)
+        items = _drop_test_messages(items)
 
         filtered_items, _ = _drop_old_items(items, now, state)
         filtered_count = len(filtered_items)
@@ -7053,6 +7089,7 @@ def main() -> int:
             raw_count,
             collect_duration,
         )
+        items = _drop_test_messages(items)
 
         filter_start = perf_counter()
         # Before the age filter: it reads the same first_seen.
