@@ -447,7 +447,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "13A: Veranstaltung Busse halten Amerlingstraße 8-10",
-    "description": "Die Linie 13A fährt derzeit nur zwischen Hauptbahnhof S U und Neubaugasse U. Weichen Sie ersatzweise auf die Linien U3, 5, 12, 46, 52 und 48A aus. Voraussichtliche Dauer: ca. 22 Uhr. Grund: Veranstaltung im Bereich Neubaugasse.",
+    "description": "Linie 13A: Betrieb nur zwischen Hauptbahnhof S U und Neubaugasse U. Weichen Sie ersatzweise auf die Linien U3, 5, 12, 46, 52 und 48A aus. Voraussichtliche Dauer: ca. 22 Uhr. Grund: Veranstaltung im Bereich Neubaugasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "75e60c1e1fa31d4ad5ba13db92bbee5a4346e5ee92d500dd0022673f0c665745",
     "pubDate": "2026-09-26T04:30:00+02:00",
@@ -662,18 +662,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37: Züge halten Währigner Gürtel 164",
-    "description": "Züge halten\nWährigner Gürtel 164",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e3f4c29d3289dac4f6ec38b1e983749adcb4e094557f3c310b527b123faa268f",
-    "pubDate": "2026-09-26T16:23:01+02:00",
-    "starts_at": "2026-09-26T16:23:01+02:00",
-    "ends_at": "2026-09-26T17:33:00+02:00",
-    "_identity": "wl|störung|L=37|D=2026-09-26|TK=züge halten währigner gürtel 164"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "3A: 3A Netzänderung Betrieb ab Riemergasse",
     "description": "3A Netzänderung\nBetrieb ab Riemergasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -710,12 +698,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "62: Rettungseinsatz",
     "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d",
     "pubDate": "2026-09-26T16:49:00+02:00",
-    "starts_at": "2026-09-26T17:02:05+02:00",
+    "starts_at": "2026-09-26T16:49:00+02:00",
     "ends_at": "2026-09-26T23:55:00+02:00",
     "_identity": "wl|störung|L=62|D=2026-09-26|TK=rettungseinsatz"
   },
@@ -770,12 +758,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "6: Rettungseinsatz",
     "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
     "pubDate": "2026-09-26T16:56:00+02:00",
-    "starts_at": "2026-09-26T17:02:04+02:00",
+    "starts_at": "2026-09-26T16:56:00+02:00",
     "ends_at": "2026-09-26T23:55:00+02:00",
     "_identity": "wl|störung|L=6|D=2026-09-26|TK=rettungseinsatz"
   },
@@ -838,6 +826,18 @@
     "starts_at": "2026-09-23T00:00:29+02:00",
     "ends_at": "2026-09-26T23:59:59+02:00",
     "_identity": "wl|störung|L=N49|D=2026-09-23|TK=betrieb ab schweglerstrasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4/U6: Betriebsstörung",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "6cf95fe5cc66cffaf751fc9a315a5015b41795353c72e8d8ebf484f21b0a5c70",
+    "pubDate": "2026-09-26T17:59:00+02:00",
+    "starts_at": "2026-09-26T17:59:00+02:00",
+    "ends_at": "2026-09-26T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4,U6|D=2026-09-26|TK=u4 u6 betriebsstörung"
   },
   {
     "source": "Wiener Linien",
