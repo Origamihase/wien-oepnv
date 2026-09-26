@@ -99,6 +99,7 @@ sequenceDiagram
 - **Der Hinweis auf Apex-Phase-1** ist entscheidend: Ohne gedeckelte `wait()`-Timeouts würde die Schleife gegen `perf_counter()` busy-spinnen.
 - **`request_safe`** ist die Security-State-Machine — siehe Diagramm §2.
 - **`deduplicate_fuzzy`** ist Apex-Phase-2-Territorium: Der parallele `merged_cache` reduziert das O(n²)-Regex-Reparsing auf O(n).
+- **Vor dem Altersfilter** verwirft `_drop_test_messages` Testmeldungen der Anbieter („Testmeldung“, oder ein Titel bzw. Text von höchstens fünf Wörtern mit dem Wort „Test“; Anlass: zwei WL-Testmeldungen am 23.09.2026). Sie belegten sonst einen der zehn Plätze.
 - **Nach der Dedupe** entscheidet die Reihenfolge, was die zehn Plätze bekommt: Sortierung nach `first_seen` (neueste zuerst; eine wiederkehrende WL-Meldung bekommt vorher über `_restart_recurring_occurrences` den Beginn ihres aktuellen Auftretens, die WL-GUID enthält kein Datum), dann `_defer_repeated_route_titles` (von wortgleichen ÖBB-Titeln bleibt nur das früheste Zeitfenster vorn), `_apply_topic_budget` (höchstens `MAX_ITEMS_PER_TOPIC` je Ursachenwort und Tag) und `_defer_all_clear_items` (ÖBB-Entwarnungen „Aufhebung …“ ganz nach hinten, Betreiberentscheidung 2026-09-25). Die Regeln löschen nichts, sie stellen hinter das Feld — siehe `docs/development.md`, „Reihenfolge im Feed".
 
 ---
@@ -459,11 +460,13 @@ schreibt ausschließlich `data/oebb_station_lines.json`:
 - **Grenze:** Die Datei beschreibt, was derzeit fährt, nicht das geplante
   Netz. Baustellen über Jahre verstecken eine Linie auch vor dem zweiten
   Stichtag und der Frist. Belegt: keine S80 in Hütteldorf und Speising
-  (Schienenersatzverkehr auf der Verbindungsbahn); keine Linie in Wien
-  Mitte-Landstraße, Rennweg und Quartier Belvedere, weil die Stammstrecke
-  zwischen Praterstern und Hauptbahnhof/St. Marx vom 07.09.2026 bis
-  Oktober 2027 gesperrt ist (Wiener Linien, „S-Bahn-Stammstrecke
-  (Phase 2)“; in Wien Mitte fährt „CAT by bus“). Die Prüfung in Stufe 3
+  (Schienenersatzverkehr auf der Verbindungsbahn bis Ende 2027); keine
+  Linie in Wien Mitte-Landstraße, Rennweg und Quartier Belvedere, weil die
+  Stammstrecke zwischen Praterstern und Hauptbahnhof/St. Marx vom
+  07.09.2026 bis Ende Oktober 2027 gesperrt ist (ÖBB-Folder „Sperren S-Bahn
+  Wien Stammstrecke 2026/27“, SNNB-Anhang 2.5.1; in Wien Mitte fährt „CAT
+  by bus“); keine Linie in Himberg, dessen Bahnhof umgebaut wird
+  (ÖBB-Rahmenplan: Inbetriebnahme 2026). Die Prüfung in Stufe 3
   darf ein Fehlen deshalb nie als Beweis lesen und braucht für solche
   Fälle eine gepflegte Liste der planmäßigen Linien.
 
@@ -494,8 +497,12 @@ nichts und ändert nie eine Meldung.
   mehrdeutige Namen zählen nicht, ebenso ein Name direkt nach „Richtung“:
   Er nennt das Ziel, keinen Halt.
 - Die gepflegte Liste nennt je Bahnhof Linien, die HAFAS wegen einer
-  Baustelle nicht zeigt, mit Grund und Enddatum (`until`, `null` = offen).
-  Abgelaufene Einträge zählen nicht mehr und stehen als Warnung im Log.
+  Baustelle nicht zeigt, mit Grund, Quelle und Enddatum (`until`, `null` =
+  offen). Die Enddaten stammen aus den ÖBB-Unterlagen: SNNB-Anhang 2.5.1
+  „Übersichtsdarstellung zu ausgewählten baubedingten
+  Betriebseinschränkungen 2027“ (Stand 02.06.2026), Folder „Sperren S-Bahn
+  Wien Stammstrecke 2026/27“ (Mai 2026), Rahmenplan 2027–2032. Abgelaufene
+  Einträge zählen nicht mehr und stehen als Warnung im Log.
 - Befunde lauten „not confirmed“, nie „falsch“, und stehen im Log des
   Schritts. Rückschau über 678 Stände des Feeds (482 verschiedene
   Meldungen, 432 mit Präfix): drei Befunde, alle berechtigt. „1: Bhf.
