@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 26 Sep 2026 19:31:02 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 20:01:06 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[13A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0</guid>
+      <pubDate>Sat, 26 Sep 2026 19:48:00 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 19:48:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 19:48:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 26.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 26.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682</guid>
+      <pubDate>Sat, 26 Sep 2026 19:40:00 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 19:40:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 26 Sep 2026 19:40:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 26 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in Richtung Hütteldorf. Grund: Betriebsstörung. [Am 26.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Hütteldorf. Grund: Betriebsstörung.<br/>[Am 26.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[57A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Sat, 26 Sep 2026 23:00:00 +0200</ext:ends_at>
       <description>Bhf. Hütteldorf [Am 26.09.2026]</description>
       <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Am 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Einstieg Leberstraße vor S-Bahn-Gebäude]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e</guid>
-      <pubDate>Fri, 25 Sep 2026 00:00:29 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 00:00:29 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Grund: Bauarbeiten. [25.09.2026 – 26.09.2026]</description>
-      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[25.09.2026 – 26.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
-      <pubDate>Fri, 25 Sep 2026 00:00:29 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 00:00:29 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 26 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Grund: Bauarbeiten. [25.09.2026 – 26.09.2026]</description>
-      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[25.09.2026 – 26.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
