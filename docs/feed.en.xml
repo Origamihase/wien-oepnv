@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 28 Sep 2026 01:01:09 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 01:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N20: Buses stop at main carriageway, Bessemerstraße1-3]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2465b8f495aa09c30a1900425c8f402136474c4599d6f3677d4f46d051c9c4ae</guid>
+      <pubDate>Mon, 28 Sep 2026 01:30:17 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 01:16:15 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 01:16:15 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 04:52:00 +0200</ext:ends_at>
+      <description>Reason: track construction works. [On 28.09.2026]</description>
+      <content:encoded><![CDATA[Reason: track construction works.<br/>[On 28.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N66: Buses stop Salvatorianerplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,17 +41,6 @@
       <ext:ends_at>Mon, 28 Sep 2026 05:05:00 +0200</ext:ends_at>
       <description>Buses stop at Neilreichgasse20-22 construction works Buses stop at QuellenstraßeXX189 [On 28.09.2026]</description>
       <content:encoded><![CDATA[Buses stop at Neilreichgasse20-22 construction works Buses stop at QuellenstraßeXX189<br/>[On 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N43: Contamination]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">16bc18f10872a15de43e0f32dc3d486bcf5daebebdeab4716deea7d835ea3820</guid>
-      <pubDate>Mon, 28 Sep 2026 00:45:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 00:45:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 00:45:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 01:12:00 +0200</ext:ends_at>
-      <description>Currently, the N43 line has different intervals in both directions. Reason: contamination. [On 28.09.2026]</description>
-      <content:encoded><![CDATA[Currently, the N43 line has different intervals in both directions. Reason: contamination.<br/>[On 28.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62: ÖBB construction works]]></title>
