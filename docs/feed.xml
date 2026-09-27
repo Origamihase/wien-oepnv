@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 27 Sep 2026 21:30:43 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 27 Sep 2026 22:00:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[16A/17A/67A: Störung an einem Bahnübergang]]></title>
+      <title><![CDATA[11A: Veranstaltung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ad2d35f918fc04f39824aee23d3dfcb4c9f72988bfa895f37557d4f7741967d8</guid>
-      <pubDate>Sun, 27 Sep 2026 21:00:00 +0200</pubDate>
-      <ext:first_seen>Sun, 27 Sep 2026 21:30:43 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 27 Sep 2026 21:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 27 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Linie 67A: Unregelmäßige in beiden Richtungen. [Am 27.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Linie 67A: Unregelmäßige in beiden Richtungen.<br/>[Am 27.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">1e2e4e4ea39385aaa45298257c6677b6355ea0d3e1b022967a74444fec1e3277</guid>
+      <pubDate>Sun, 27 Sep 2026 14:47:00 +0200</pubDate>
+      <ext:first_seen>Sun, 27 Sep 2026 22:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 27 Sep 2026 15:06:16 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 27 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Betrieb ab Sturgasse. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 27.09.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Sturgasse. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 27.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[5B: Verunreinigung]]></title>
@@ -32,28 +32,6 @@
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Am 27.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[12: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">26a21acc1d4fab48dbd2fd7503f157f41c0c4c98637681af21c297ad64c7b746</guid>
-      <pubDate>Sun, 27 Sep 2026 20:57:00 +0200</pubDate>
-      <ext:first_seen>Sun, 27 Sep 2026 21:01:35 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 27 Sep 2026 20:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 27 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in Richtung Josefstädter Straße U. Grund: Verkehrsüberlastung. [Am 27.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Josefstädter Straße U. Grund: Verkehrsüberlastung.<br/>[Am 27.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[78A: Veranstaltung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0da571ea94dad1d6b305a1acfd148798a4de884cf565a05deee42b6a0acff9ee</guid>
-      <pubDate>Sun, 27 Sep 2026 17:29:00 +0200</pubDate>
-      <ext:first_seen>Sun, 27 Sep 2026 21:01:35 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 27 Sep 2026 17:29:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 27 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Veranstaltung. [Am 27.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Veranstaltung.<br/>[Am 27.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[Wien Floridsdorf ↔ Wien Praterstern]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;915165</guid>
@@ -63,6 +41,17 @@
       <ext:ends_at>Sun, 27 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Wegen einer Weichenstörung waren zwischen Wien Floridsdorf Bahnhof (U) und Wien Praterstern Bahnhof (U) bis 20:03 Uhr nur eingeschränkt Fahrten möglich. [Am 27.09.2026]</description>
       <content:encoded><![CDATA[Wegen einer Weichenstörung waren zwischen Wien Floridsdorf Bahnhof (U) und Wien Praterstern Bahnhof (U) bis 20:03 Uhr nur eingeschränkt Fahrten möglich.<br/>[Am 27.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[18: Veranstaltung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d2995b04c903bb084f2bfb47e72067defed09d1b288eaf3deecb9883a85cd47e</guid>
+      <pubDate>Sun, 27 Sep 2026 14:29:13 +0200</pubDate>
+      <ext:first_seen>Sun, 27 Sep 2026 14:29:13 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 27 Sep 2026 14:47:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 27 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Betrieb ab Schlachthausgasse. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 27.09.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Schlachthausgasse. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 27.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
@@ -112,6 +101,17 @@
       <title><![CDATA[74A: Einstieg Leberstraße vor S-Bahn-Gebäude]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e</guid>
+      <pubDate>Fri, 25 Sep 2026 00:00:29 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 00:00:29 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 27 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Grund: Bauarbeiten. [25.09.2026 – 27.09.2026]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[25.09.2026 – 27.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
       <pubDate>Fri, 25 Sep 2026 00:00:29 +0200</pubDate>
       <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
       <ext:starts_at>Fri, 25 Sep 2026 00:00:29 +0200</ext:starts_at>
