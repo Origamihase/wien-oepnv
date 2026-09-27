@@ -16,6 +16,10 @@ silently:
 
 The pattern follows ``test_vor_ci_quota_gate.py::
 test_architecture_doc_lists_the_ci_consumer``, which pins §7 the same way.
+
+The rules for what the German feed shows (ticker titles, one incident one
+slot, …) stood in §8 until 2026-09-27 and now form the subsection "Titel und
+Beschreibung im deutschen Feed" of §1; check 1 covers them there too.
 """
 
 from __future__ import annotations
@@ -46,6 +50,32 @@ def _section() -> str:
 def _named_symbols(section: str) -> list[str]:
     """Every ``_private_name`` the section puts in backticks."""
     return sorted(set(re.findall(r"`(_[A-Za-z_]+)`", section)))
+
+
+_FEED_RULES_HEADING = "### Titel und Beschreibung im deutschen Feed"
+_FEED_RULES_END = "## 2. Die `request_safe`-Security-State-Machine"
+
+
+def _feed_rules() -> str:
+    text = _DOC.read_text(encoding="utf-8")
+    assert _FEED_RULES_HEADING in text, "§1 lost its German-feed rules"
+    start = text.index(_FEED_RULES_HEADING)
+    end = text.index(_FEED_RULES_END)
+    assert start < end, "the German-feed rules must stay in §1"
+    return text[start:end]
+
+
+def test_the_feed_rules_name_symbols_at_all() -> None:
+    assert len(_named_symbols(_feed_rules())) >= 10
+
+
+@pytest.mark.parametrize("symbol", _named_symbols(_feed_rules()))
+def test_every_symbol_of_the_feed_rules_still_exists(symbol: str) -> None:
+    source = _SOURCE.read_text(encoding="utf-8")
+    assert symbol in source, (
+        f"architecture.md §1 (German-feed rules) names {symbol!r}, which no "
+        "longer exists in src/build_feed.py — rename the reference or drop it"
+    )
 
 
 def test_the_section_names_symbols_at_all() -> None:

@@ -5,6 +5,21 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Dokumentation geprüft (2026-09-27)**: Die Regeln dafür, was im
+  deutschen Feed steht (Ticker-Titel, „Ein Vorfall, ein Platz“,
+  „Fahrtbehinderung <Ursache>“, „ÖBB-Ersatzbus“), stehen jetzt in
+  `docs/architecture.md` §1 statt im Übersetzungskapitel, und das
+  Ablaufdiagramm zeigt die WL-Zusammenlegung. Korrigiert:
+  - die Herkunft der Secrets (systemd Credentials, Docker Secrets,
+    Umgebung);
+  - die Liste der Prüfungen von `python -m src.cli checks` und der
+    Pre-Commit-Hooks;
+  - die Testzahl.
+
+  Neu beschrieben: die Test-Isolation, `health-check.yml` samt
+  `scripts/health_check.py`, `probe-hafas-lines.yml` und die
+  Claude-Workflows. Befunde und offene Punkte stehen im Audit vom 27.09.,
+  Update 12:20.
 * **Betrieb: Quota-Pre-Flight im manuellen Full Refresh, Test-Isolation
   (2026-09-27)**: `manual-full-refresh.yml` prüft vor der
   Stammstrecken-Abfrage das VAO-Tagesbudget wie `update-cycle.yml` und

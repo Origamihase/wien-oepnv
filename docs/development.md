@@ -593,6 +593,9 @@ Die wichtigsten GitHub Actions:
 - `manual-full-refresh.yml` – `workflow_dispatch`-only-Komplettlauf für Disaster-Recovery. Führt sequenziell alles aus, was sonst auf mehrere Cron-Schedules verteilt ist: WL-/ÖBB-/Baustellen-Cache-Refresh, VOR-Secret-Validation, VAO-Pre-flight und Stammstrecke-`/departureBoard`-Tick (übersprungen, wenn das Tagesbudget ausgeschöpft ist), vollständiger Stations-Refresh (OSM/HAFAS/Google-Kaskade + WL-OGD-Merge inkl. Re-Validierung), Feed-Build und Statistik-/README-Regeneration — und committet alles in einem einzigen Commit. Teilt die `external-api-fetch`-Concurrency-Lane mit `update-cycle.yml`.
 - `test.yml` & `test-vor-api.yml` – führen die vollständige Test-Suite bzw. VOR-spezifische Integrationstests aus; `test.yml` läuft bei jedem Push sowie Pull Request und stellt die kontinuierliche Testabdeckung sicher.
 - `mypy-strict.yml`, `bandit.yml`, `codeql.yml`, `complexity-gate.yml`, `seo-guard.yml` – ergänzende Qualitäts-Gates (strikte Typprüfung, Security-Lint, CodeQL-Scan, Komplexitäts-Baseline, SEO/Sitemap-Pflege).
+- `health-check.yml` – alle 6 Stunden und per `workflow_dispatch`, unabhängig vom Feed-Build: `scripts/health_check.py` startet die echten Cache-Updater (WL, ÖBB, Baustellen) als Live-Probe und prüft, ob `docs/feed.xml` (`<lastBuildDate>`) und `data/stations_last_run.json` frisch sind. Ein roter Lauf löst die Mail von GitHub aus; auf den Feed-Build wirkt er nicht. Die Stammstrecke wird wegen des VAO-Tagesbudgets nicht live geprüft.
+- `probe-hafas-lines.yml` – nur `workflow_dispatch`: Diagnose für Stufe 2 der Linien-Prüfung (`scripts/probe_hafas_lines.py`, siehe unten).
+- `claude.yml`, `claude-code-review.yml` – Claude-Code-Integration: Antworten auf `@claude` in Issues und Pull Requests bzw. automatische Review jedes Pull Requests. Ihr Workflow-Token hat nur Leserechte (`contents: read`).
 
 Der `update-cycle.yml`-Job committet alle Cache-, Feed- und Statistik-Outputs in einem einzigen Commit; ein direkter `needs:`-Trigger zwischen Workflows ist damit unnötig. Eigenständige `update-<provider>-cache.yml`-Workflows gibt es seit der DAG-zu-Single-Job-Migration (2026-05-09) nicht mehr — alle Cache-Fetcher (`update_wl_cache.py`, `update_oebb_cache.py`, `update_baustellen_cache.py`) sind Schritte innerhalb von `update-cycle.yml`. Wer einzelne Cache-Fetcher außerhalb des Cycles manuell auslösen will, ruft das jeweilige Skript per `python -m src.cli cache update <provider>` direkt auf oder triggert den vollständigen `manual-full-refresh.yml`-Job.
 
@@ -640,6 +643,7 @@ benötigt werden (z. B. `--no-download` für die WL-OGD-CSVs).
 | `verify_google_places_access.py` | Health-Check der Google-Places-Schlüssel (deckt FieldMask-/PERMISSION_DENIED-Fälle auf). CLI: `python -m src.cli tokens verify google-places`. |
 | `check_vor_auth.py` | Prüft den vollständigen Auth-Pfad (`VorAuth`) inklusive Header. CLI: `python -m src.cli tokens verify vor-auth`. |
 | `check_overpass_status.py` | OSM-Mirror-Smoke-Test mit `out count`-Query; setzt `WIEN_OEPNV_OSM_ENRICH=0` im CI, falls der Mirror down ist. |
+| `health_check.py` | Eigenständige Gesundheitsprüfung für `health-check.yml`: Live-Probe der Quellen über die echten Cache-Updater und Frische von `docs/feed.xml` und `data/stations_last_run.json`. Schwellen per Umgebungsvariable einstellbar (Konstanten im Skript). |
 | `preflight_quota_check.py` | Hard-Gate für `update-cycle.yml` und `manual-full-refresh.yml`: bricht **vor** jeder API-Anfrage ab, wenn das persistierte Tagesbudget bereits ausgeschöpft ist. Stdlib-only, eigene Exit-Codes. |
 | `scan_secrets.py` | Repository-Scan via `src.utils.secret_scanner`. CLI: `python -m src.cli security scan`. |
 | `configure_feed.py` | Interaktiver Konfigurations-Assistent (schreibt `.env`). CLI: `python -m src.cli config wizard`. |
@@ -649,7 +653,7 @@ benötigt werden (z. B. `--no-download` für die WL-OGD-CSVs).
 
 | Skript | Aufgabe |
 | --- | --- |
-| `run_static_checks.py` | Dispatcher für `ruff check`, `mypy --strict`, `pip-audit` und den Secret-Scanner; CI-äquivalent. CLI: `python -m src.cli checks`. |
+| `run_static_checks.py` | Dispatcher für `ruff check`, `mypy --strict`, `bandit`, den Secret-Scanner, das C901-Gate (`check_complexity.py`), das i18n-Gate (`check_i18n_coverage.py`) und `pip-audit`; CI-äquivalent. CLI: `python -m src.cli checks`. |
 | `check_complexity.py` | C901-Komplexitäts-Gate (Threshold 15, Allowlist `.c901-baseline.txt`). |
 | `regen_c901_baseline.sh` | Regeneriert die Baseline nach gezielten Refactors; lokal ausführen, Diff committen. |
 | `regen_mypy_baseline.sh` | Regeneriert `.mypy-baseline.txt` (gleiche Mechanik wie c901). |
@@ -665,7 +669,15 @@ Das öffentliche Live-Dashboard (`docs/site.html`) ist zweisprachig: **Deutsch i
 
 ## Entwicklung & Qualitätssicherung
 
-- **Tests**: `python -m pytest` führt über 3700 Unit- und Integrationstests in rund 480 Modulen unter `tests/` aus.
+- **Tests**: `python -m pytest` führt über 10 000 Unit- und Integrationstests in rund 580 Modulen unter `tests/` aus (Stand 2026-09-27).
+- **Test-Isolation**: Autouse-Fixtures in `tests/conftest.py` halten jeden Test von echten Dateien und der Umgebung fern:
+  - `isolate_stats_writes` und `isolate_episode_starts_writes` leiten die Statistik-Ledger und `cache/stammstrecke/episode_starts.json` nach `tmp_path` um.
+  - `reset_vor_request_count` tut das für den VAO-Zähler.
+  - `reset_build_feed_state` und `reset_circuit_breakers` setzen Modulzustand zurück.
+  - `_without_host_proxy` entfernt Proxy-Variablen, damit die Suite in einer Sandbox mit Proxy dasselbe Ergebnis liefert wie in der CI (`PROXY_TRUSTED_HOSTS`).
+  - `_health_report_stays_untouched` lässt jeden Test scheitern, der `docs/feed-health.*` anlegt oder ändert (Audit 2026-09-25, A.7).
+
+  Tests, die `main()` ausführen, leiten `OUT_PATH`, `STATE_FILE`, `FEED_HEALTH_PATH` und `FEED_HEALTH_JSON_PATH` nach `tmp_path` um. Sie patchen am Modulobjekt (`patch.object(bf, …)`), nicht über den String-Pfad `"src.build_feed.…"`: Einige Tests laden das Modul neu, und der String-Patch träfe dann ein anderes Modul als das, dessen `main()` läuft.
 - **Kontinuierliche Tests**: Die GitHub Action `test.yml` automatisiert die im Audit empfohlene regelmäßige Testausführung und bricht Builds bei fehlschlagender Test-Suite ab.
 - **Statische Analyse & Typprüfung**: `ruff check` (Stil/Konsistenz, Regelgruppen `E`, `F`, `S`, `B`, `UP` — siehe `pyproject.toml`) und `mypy --strict` (vollständige Typabdeckung über `src/`, `tests/` und `scripts/`, derzeit 0 Errors) laufen identisch zur CI via `python -m src.cli checks`. Optional lassen sich über `--fix` Ruff-Autofixes aktivieren oder zusätzliche Argumente an Ruff durchreichen. Ein zusätzlicher `mypy-strict.yml`-Workflow setzt das Allowlist-Gate auf Pull Requests durch.
 - **Pre-Commit-Hooks**: `.pre-commit-config.yaml` aktiviert lokale Checks bei jedem `git commit`: Ruff, `mypy --strict`, Bandit, der eigene Secret-Scanner (`scripts/scan_secrets.py`), das C901-Komplexitäts-Gate (`scripts/check_complexity.py`), der Site-Asset-Drift-Check (`site-assets-minified` → `scripts/optimize_site_assets.py --check`), das Dashboard-i18n-Gate (`i18n-coverage` → `scripts/check_i18n_coverage.py`) sowie Whitespace-/Merge-Conflict-/YAML-/TOML-/JSON-/Large-File-Hygiene. Einmalig nach dem Klonen `pre-commit install` ausführen — Details in [`CONTRIBUTING.md`](../CONTRIBUTING.md).
@@ -718,7 +730,7 @@ Sicherheits-Gates: Der Reporter validiert das Repo-Slug gegen GitHubs Naming-Gra
 
 ## Authentifizierung & Sicherheit
 
-- **Secrets**: Pflicht- und optionale Variablen (`VOR_ACCESS_ID`, `VOR_BASE_URL`, `VOR_VERSION` / `VOR_VERSIONS`, `GOOGLE_ACCESS_ID`, …) sind im Tabellenblock [„Konfiguration des Feed-Builds"](#konfiguration-des-feed-builds) gelistet. Sie werden ausschließlich über Umgebungsvariablen bereitgestellt und niemals im Repository abgelegt; das Skript `src/utils/secret_scanner.py` schützt proaktiv vor versehentlich eingecheckten Geheimnissen. In `.github/workflows/update-cycle.yml` werden diese Werte als Build-Secrets durchgereicht.
+- **Secrets**: Pflicht- und optionale Variablen (`VOR_ACCESS_ID`, `VOR_BASE_URL`, `VOR_VERSION` / `VOR_VERSIONS`, `GOOGLE_ACCESS_ID`, …) sind im Tabellenblock [„Konfiguration des Feed-Builds"](#konfiguration-des-feed-builds) gelistet. Sie liegen nie im Repository. Die Zugangsdaten `VOR_ACCESS_ID`/`VAO_ACCESS_ID`, `GOOGLE_ACCESS_ID`/`GOOGLE_MAPS_API_KEY` und `FEED_GITHUB_TOKEN`/`GITHUB_TOKEN` liest `read_secret` (`src/utils/env.py`) in dieser Reihenfolge: systemd Credentials (`$CREDENTIALS_DIRECTORY/<Name>`), Docker Secrets (`/run/secrets/<Name>`), Umgebungsvariable (auch aus den `.env`-Dateien, siehe `WIEN_OEPNV_ENV_FILES`); alle übrigen Werte kommen aus der Umgebung; das Skript `src/utils/secret_scanner.py` schützt proaktiv vor versehentlich eingecheckten Geheimnissen. In `.github/workflows/update-cycle.yml` werden diese Werte als Build-Secrets durchgereicht.
 - **SSRF-Schutz**: Externe Netzwerkanfragen laufen über `fetch_content_safe` (in `src/utils/http.py`). Diese Funktion verhindert Server-Side Request Forgery, indem sie DNS-Rebinding blockiert, private IP-Adressen (Localhost, internes Netzwerk) ablehnt und DNS-Timeouts erzwingt.
 - **Dateisystem**: Schreibvorgänge nutzen `atomic_write`, um Datenkorruption bei Abstürzen zu vermeiden. Pfadeingaben werden strikt validiert (`resolve_env_path` / `validate_path` aus `src/feed/config.py`), um Path-Traversal-Angriffe zu verhindern. Schreibzugriffe sind auf `docs/`, `data/` und `log/` beschränkt.
 - **Logging-Sicherheit**: Kontrollzeichen in Logs werden maskiert, um Log-Injection-Attacken zu unterbinden.

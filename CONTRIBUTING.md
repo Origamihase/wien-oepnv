@@ -31,7 +31,9 @@ Das Projekt benötigt **Python 3.11+**.
    pre-commit install
    ```
    Das aktiviert lokale Checks bei jedem `git commit` (ruff, mypy `--strict`,
-   Secret-Scan, Whitespace-Hygiene). Manuell für alle Dateien ausführen:
+   Bandit, Secret-Scan, C901-Komplexitäts-Gate, Site-Asset-Drift, i18n-Gate
+   sowie Whitespace-, Merge-Konflikt-, YAML-/TOML-/JSON- und
+   Dateigrößen-Hygiene; siehe `.pre-commit-config.yaml`). Manuell für alle Dateien ausführen:
    ```bash
    pre-commit run --all-files
    ```
@@ -47,7 +49,9 @@ python -m pytest
 ```
 
 ### Code-Style und Typprüfung
-Wir nutzen `ruff` für Linting und `mypy` für Typprüfung.
+Wir nutzen `ruff` für Linting und `mypy` für Typprüfung. `checks` führt
+zusätzlich Bandit, den Secret-Scanner, das C901-Gate, das i18n-Gate und
+`pip-audit` aus.
 ```bash
 python -m src.cli checks --fix
 ```
