@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 27 Sep 2026 16:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 27 Sep 2026 16:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[22A: Delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">64d88f357882396c9a5115dd6d0b7d9e1930c8e1858a79ead8d4acacc349f4f4</guid>
+      <pubDate>Sun, 27 Sep 2026 16:06:00 +0200</pubDate>
+      <ext:first_seen>Sun, 27 Sep 2026 16:06:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 27 Sep 2026 16:06:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 27 Sep 2026 16:40:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: service disruption. [On 27.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[On 27.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Floridsdorf ↔ Wien Praterstern]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -38,7 +49,7 @@
       <pubDate>Sun, 27 Sep 2026 14:38:00 +0200</pubDate>
       <ext:first_seen>Sun, 27 Sep 2026 14:38:00 +0200</ext:first_seen>
       <ext:starts_at>Sun, 27 Sep 2026 14:38:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 27 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Sun, 27 Sep 2026 16:30:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: defective vehicle. [On 27.09.2026]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[On 27.09.2026]]]></content:encoded>
     </item>
@@ -101,17 +112,6 @@
       <title><![CDATA[74A: Boarding Leberstraße before S-Bahn building]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e</guid>
-      <pubDate>Fri, 25 Sep 2026 00:00:29 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 00:00:29 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 27 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Reason: construction works. [25.09.2026 – 27.09.2026]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[25.09.2026 – 27.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Buses stop Pasettistraße before Hellwagstraße (for line 5A)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
       <pubDate>Fri, 25 Sep 2026 00:00:29 +0200</pubDate>
       <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
       <ext:starts_at>Fri, 25 Sep 2026 00:00:29 +0200</ext:starts_at>
