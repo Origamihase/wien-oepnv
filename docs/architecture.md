@@ -993,10 +993,11 @@ Zwei zusammenwirkende Mechanismen schützen das Budget:
    jedem `/departureBoard`-Call wird über
    `vor_provider.save_request_count` ein Quota-Slot reserviert; ein
    Lauf, der das Tagesbudget reißen würde, raised `_QuotaExceeded`
-   *vor* dem Network-Call. Defense-in-Depth: `update-cycle.yml`
-   schaltet den Step zusätzlich über
-   `scripts/preflight_quota_check.py --check vor --margin 1` vor jedem
-   Tick aus, sobald der persistierte Counter keinen Slot mehr lässt.
+   *vor* dem Network-Call. Defense-in-Depth: `update-cycle.yml` und
+   `manual-full-refresh.yml` (seit 2026-09-27, Audit A.6) schalten den
+   Step zusätzlich über
+   `scripts/preflight_quota_check.py --check vor --margin 1` aus, sobald
+   der persistierte Counter keinen Slot mehr lässt.
 
 Mit 48 von 100 Calls/Tag bleibt komfortabel ein Puffer von ca. 52
 Calls für Operator-Direktaufrufe (`workflow_dispatch` auf
@@ -1272,6 +1273,18 @@ Nach dem Modelllauf wird nicht blind vertraut:
   Verankert auf der Form der Nonce selbst (8–32 Hex-Zeichen), nicht auf dem
   laxeren Muster der `XENT`/`XGLO`-Varianten — ein nacktes `ENT`/`GLO` ist
   sonst ein gewöhnliches Wortfragment.
+* **Zweiter Versuch mit frischer Nonce (seit 2026-09-27, Audit A.5).**
+  Scheitert ein Feld an einem verstümmelten oder verlorenen Platzhalter,
+  läuft das Modell noch einmal, diesmal unter einer frisch gewürfelten
+  Nonce (`_model_pass`). Ob das Modell einen Platzhalter verstümmelt, hängt
+  von der Nonce ab, und eine schlechte Nonce trifft mehrere Texte eines
+  Laufs. Am 26.09. um 17:01 scheiterten so drei Zusammenfassungen,
+  darunter WLs Standardsatz, den andere Läufe übersetzt hatten. Die frische
+  Nonce sieht nur das Modell: Masken und Zuordnung behalten die Nonce des
+  Laufs, und intakte Platzhalter der Antwort werden zurückgesetzt, bevor
+  geprüft und demaskiert wird. Ein Fehler der Pipeline selbst löst keinen
+  zweiten Versuch aus. Nach zwei gescheiterten Durchläufen bleibt das Feld
+  deutsch wie bisher. Die Logzeilen nennen die Nonce jedes Durchlaufs.
 
 ### Betrieb
 

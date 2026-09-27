@@ -3282,6 +3282,113 @@ def _join_record(translated: str, record_en: str) -> str:
     return f"{translated} {record_en}"
 
 
+def _with_nonce(text: str, old: str, new: str) -> str:
+    """*text* with every intact ``old``-nonce placeholder under nonce *new*."""
+    if old == new:
+        return text
+    return re.sub("(XENT|XGLO)" + re.escape(old) + r"(X\d+X)", r"\g<1>" + new + r"\g<2>", text)
+
+
+def _model_pass(
+    pipe: Any,
+    masked_text: str,
+    mapping: dict[str, str],
+    ident: str,
+    nonce: str,
+) -> tuple[str | None, bool]:
+    """One model pass over *masked_text*, its placeholders shown under *nonce*.
+
+    Returns the unmasked English and ``False``; ``None`` and ``True`` when the
+    model mangled or dropped a placeholder, which another nonce may avoid; and
+    ``None`` and ``False`` on any other failure. The masks and *mapping* keep
+    the build's nonce: only the model sees *nonce*, and its intact placeholders
+    are mapped back before anything is checked or unmasked. A placeholder the
+    model mangled matches neither nonce and fails the residual check.
+    """
+    try:
+        # ``truncation=True`` enforces the model's input cap (512 tokens
+        # for opus-mt-de-en) BEFORE Marian asserts and crashes the
+        # whole feed build. Without it, a single long disruption text
+        # would abort the EN-feed pass for every item that follows.
+        result = pipe(
+            _with_nonce(masked_text, _PLACEHOLDER_NONCE, nonce), max_length=512, truncation=True
+        )
+    except Exception as exc:
+        log.warning(
+            "Translation failed for identity %s — pipeline raised %s: %s",
+            sanitize_log_arg(ident or "<unknown>"),
+            type(exc).__name__,
+            sanitize_log_arg(str(exc)),
+        )
+        return None, False
+    translated = _translation_text(result, ident)
+    if translated is None:
+        return None, False
+    translated = _normalise_placeholder_debris(
+        _with_nonce(translated, nonce, _PLACEHOLDER_NONCE)
+    )
+    dropped = _entities_dropped_by_translation(masked_text, translated, mapping)
+    if dropped:
+        # The sentence that came back is missing a station, a line or a house
+        # number the source carried. Discarding it costs an English rendering;
+        # keeping it ships a confident statement of the wrong fact. Same
+        # verdict and same fallback as the residual-sentinel check below.
+        log.warning(
+            "Translation for identity %s dropped %d verbatim entit%s (%s) "
+            "under nonce %s; discarding this pass.",
+            sanitize_log_arg(ident or "<unknown>"),
+            len(dropped),
+            "y" if len(dropped) == 1 else "ies",
+            sanitize_log_arg(", ".join(sorted(dropped)[:5])),
+            nonce,
+        )
+        return None, True
+    unmasked = _drop_article_before_street(
+        _drop_article_before_line(
+            _fix_glossary_articles(_unmask_entities(translated, mapping), mapping)
+        )
+    )
+    if _RESIDUAL_PLACEHOLDER_RE.search(unmasked):
+        # The model mangled a placeholder so badly the exact-nonce unmask could
+        # not restore it (dropped/translated nonce chars, lower-cased prefix,
+        # truncated index). Treat the pass as FAILED: after a second failed pass
+        # the caller does not cache it and falls back to the German source — a
+        # raw sentinel must never reach subscribers.
+        log.warning(
+            "Translation for identity %s left a residual placeholder under "
+            "nonce %s; discarding this pass.",
+            sanitize_log_arg(ident or "<unknown>"),
+            nonce,
+        )
+        return None, True
+    return unmasked, False
+
+
+def _translation_text(result: Any, ident: str) -> str | None:
+    """The ``translation_text`` of a pipeline *result*, ``None`` when unusable."""
+    if not isinstance(result, list) or not result:
+        log.warning(
+            "Translation failed for identity %s — empty/invalid result shape.",
+            sanitize_log_arg(ident or "<unknown>"),
+        )
+        return None
+    first = result[0]
+    if not isinstance(first, dict):
+        log.warning(
+            "Translation failed for identity %s — result[0] not a dict.",
+            sanitize_log_arg(ident or "<unknown>"),
+        )
+        return None
+    translated = first.get("translation_text")
+    if not isinstance(translated, str) or not translated.strip():
+        log.warning(
+            "Translation failed for identity %s — translator returned empty text.",
+            sanitize_log_arg(ident or "<unknown>"),
+        )
+        return None
+    return translated
+
+
 def _translate_text_attempt(
     text: str,
     ident: str = "",
@@ -3364,76 +3471,25 @@ def _translate_text_attempt(
         return _join_record(
             _unmask_entities(masked_text, combined_mapping), record_en
         )
-    try:
-        # ``truncation=True`` enforces the model's input cap (512 tokens
-        # for opus-mt-de-en) BEFORE Marian asserts and crashes the
-        # whole feed build. Without it, a single long disruption text
-        # would abort the EN-feed pass for every item that follows.
-        result = pipe(masked_text, max_length=512, truncation=True)
-    except Exception as exc:
-        log.warning(
-            "Translation failed for identity %s — pipeline raised %s: %s",
-            sanitize_log_arg(ident or "<unknown>"),
-            type(exc).__name__,
-            sanitize_log_arg(str(exc)),
-        )
-        return None
-    if not isinstance(result, list) or not result:
-        log.warning(
-            "Translation failed for identity %s — empty/invalid result shape.",
-            sanitize_log_arg(ident or "<unknown>"),
-        )
-        return None
-    first = result[0]
-    if not isinstance(first, dict):
-        log.warning(
-            "Translation failed for identity %s — result[0] not a dict.",
-            sanitize_log_arg(ident or "<unknown>"),
-        )
-        return None
-    translated = first.get("translation_text")
-    if not isinstance(translated, str) or not translated.strip():
-        log.warning(
-            "Translation failed for identity %s — translator returned empty text.",
-            sanitize_log_arg(ident or "<unknown>"),
-        )
-        return None
-    translated = _normalise_placeholder_debris(translated)
-    dropped = _entities_dropped_by_translation(
-        masked_text, translated, combined_mapping
+    unmasked, placeholder_failure = _model_pass(
+        pipe, masked_text, combined_mapping, ident, _PLACEHOLDER_NONCE
     )
-    if dropped:
-        # The sentence that came back is missing a station, a line or a house
-        # number the source carried. Discarding it costs an English rendering;
-        # keeping it ships a confident statement of the wrong fact. Same
-        # verdict and same fallback as the residual-sentinel check below.
-        log.warning(
-            "Translation for identity %s dropped %d verbatim entit%s (%s); "
-            "discarding and falling back to source.",
+    if placeholder_failure:
+        # The model mangled or dropped a placeholder. Whether it does depends on
+        # the nonce's SentencePiece split, and a bad nonce hits several texts of
+        # a build: 2026-09-26 17:01 (nonce ``c3ed7873665b7570``) lost three
+        # summaries, among them WL's stock sentence, which other builds had
+        # translated for other lines. One more pass under a fresh nonce.
+        nonce = secrets.token_hex(8)
+        log.info(
+            "Retrying translation for identity %s under a fresh placeholder nonce (%s).",
             sanitize_log_arg(ident or "<unknown>"),
-            len(dropped),
-            "y" if len(dropped) == 1 else "ies",
-            sanitize_log_arg(", ".join(sorted(dropped)[:5])),
+            nonce,
         )
-        return None
-    unmasked = _drop_article_before_street(
-        _drop_article_before_line(
-            _fix_glossary_articles(
-                _unmask_entities(translated, combined_mapping), combined_mapping
-            )
+        unmasked, _placeholder_failure = _model_pass(
+            pipe, masked_text, combined_mapping, ident, nonce
         )
-    )
-    if _RESIDUAL_PLACEHOLDER_RE.search(unmasked):
-        # The model mangled a placeholder so badly the exact-nonce unmask could
-        # not restore it (dropped/translated nonce chars, lower-cased prefix,
-        # truncated index). Treat the whole translation as FAILED so the caller
-        # does not cache it and falls back to the German source — a raw sentinel
-        # must never reach subscribers.
-        log.warning(
-            "Translation for identity %s left a residual placeholder; "
-            "discarding and falling back to source.",
-            sanitize_log_arg(ident or "<unknown>"),
-        )
+    if unmasked is None:
         return None
     return _join_record(unmasked, record_en)
 

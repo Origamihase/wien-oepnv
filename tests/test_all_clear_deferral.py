@@ -108,9 +108,9 @@ def test_main_fills_a_free_slot_with_the_all_clear() -> None:
          patch.object(bf, "_make_rss", side_effect=fake_make_rss), \
          patch.object(bf, "_save_state", MagicMock()), \
          patch.object(bf, "atomic_write", MagicMock()), \
-         patch("src.build_feed.validate_path", MagicMock()), \
-         patch("src.build_feed.write_feed_health_report", MagicMock()), \
-         patch("src.build_feed.write_feed_health_json", MagicMock()):
+         patch.object(bf, "validate_path", MagicMock()), \
+         patch.object(bf, "write_feed_health_report", MagicMock()), \
+         patch.object(bf, "write_feed_health_json", MagicMock()):
         assert bf.main() == 0
 
     # Behind the disruption, but still in the feed: a slot was free.

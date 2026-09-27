@@ -200,6 +200,8 @@ def test_the_pass_is_wired_into_the_build(monkeypatch: pytest.MonkeyPatch, tmp_p
     monkeypatch.setattr(bf, "validate_path", lambda path, name: path)
     monkeypatch.setattr(bf.feed_config, "OUT_PATH", out_file)
     monkeypatch.setattr(bf.feed_config, "STATE_FILE", tmp_path / "state.json")
+    monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_PATH", tmp_path / "feed-health.md")
+    monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_JSON_PATH", tmp_path / "feed-health.json")
     monkeypatch.setattr(bf.feed_config, "MAX_ITEMS", 10)
     monkeypatch.setattr(bf, "_save_state", lambda state: None)
     monkeypatch.setattr(bf, "_load_state", lambda: {})

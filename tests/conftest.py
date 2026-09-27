@@ -411,6 +411,35 @@ def _without_host_proxy(monkeypatch: pytest.MonkeyPatch) -> None:
         monkeypatch.delenv(name, raising=False)
 
 
+_HEALTH_REPORTS = (root / "docs" / "feed-health.md", root / "docs" / "feed-health.json")
+
+
+def _stamp(path: Path) -> tuple[int, int] | None:
+    try:
+        stat = path.stat()
+    except FileNotFoundError:
+        return None
+    return stat.st_mtime_ns, stat.st_size
+
+
+@pytest.fixture(autouse=True)
+def _health_report_stays_untouched() -> Iterator[None]:
+    """Fail a test that writes the feed health report into the real ``docs/``.
+
+    Three tests that ran ``main()`` redirected ``OUT_PATH`` and ``STATE_FILE``
+    but not ``FEED_HEALTH_PATH`` / ``FEED_HEALTH_JSON_PATH``, and every suite
+    run rewrote ``docs/feed-health.*`` with a ``/tmp/pytest-…`` feed path
+    (audit 2026-09-24, update 19:16; A.7 of 2026-09-25). Git ignores the
+    files, so nothing showed up in a diff.
+    """
+    before = [_stamp(path) for path in _HEALTH_REPORTS]
+    yield
+    assert [_stamp(path) for path in _HEALTH_REPORTS] == before, (
+        "the test wrote docs/feed-health.*; point feed_config.FEED_HEALTH_PATH "
+        "and FEED_HEALTH_JSON_PATH at tmp_path"
+    )
+
+
 @pytest.fixture
 def stub_public_dns(monkeypatch: pytest.MonkeyPatch) -> str:
     """Resolve every hostname to :data:`STUB_PUBLIC_IP` without real DNS.

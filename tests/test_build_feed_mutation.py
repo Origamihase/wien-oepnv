@@ -24,9 +24,9 @@ def test_build_feed_mutation() -> None:
 
         with patch.object(bf, "_summarize_duplicates", side_effect=mock_summarize):
             # To avoid hitting actual paths
-            with patch("src.build_feed.validate_path", MagicMock()), \
-                 patch("src.build_feed.write_feed_health_report", MagicMock()), \
-                 patch("src.build_feed.write_feed_health_json", MagicMock()):
+            with patch.object(bf, "validate_path", MagicMock()), \
+                 patch.object(bf, "write_feed_health_report", MagicMock()), \
+                 patch.object(bf, "write_feed_health_json", MagicMock()):
                 bf.main()
 
         # The user-facing contract is that ``_summarize_duplicates`` observes
