@@ -5,6 +5,28 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Betrieb: Quota-Pre-Flight im manuellen Full Refresh, Test-Isolation
+  (2026-09-27)**: `manual-full-refresh.yml` prüft vor der
+  Stammstrecken-Abfrage das VAO-Tagesbudget wie `update-cycle.yml` und
+  überspringt die Abfrage, wenn es ausgeschöpft ist (Audit vom 25.09., A.6).
+  Tests, die `main()` ausführen, schrieben den Health-Report in das echte
+  `docs/`: drei, weil sie die Pfade nicht umleiteten, und vier weitere in
+  der vollen Suite, weil sie die Writer über den String-Pfad patchten und
+  ein früherer Test das Modul neu geladen hatte. Die drei leiten die Pfade
+  jetzt um, alle fünf Tests mit String-Patch patchen mit `patch.object`,
+  und ein Wächter in `tests/conftest.py` lässt jeden Test scheitern, der es
+  wieder tut (A.7).
+  Veraltete Kommentare, der Health-Report werde veröffentlicht, sind
+  korrigiert: `.gitignore` schließt ihn aus.
+* **EN-Feed: zweiter Übersetzungsversuch mit frischer Nonce (2026-09-27)**:
+  Scheitert ein Feld, weil das Modell einen Platzhalter verstümmelt oder
+  verloren hat, läuft es einmal mehr unter einer frisch gewürfelten Nonce
+  (Audit vom 25.09., A.5). Am 26.09. um 17:01 blieben mit der Nonce
+  `c3ed7873665b7570` drei Zusammenfassungen deutsch, darunter WLs
+  Standardsatz, den andere Läufe übersetzt hatten. Masken und Zuordnung
+  behalten die Nonce des Laufs; nur das Modell sieht die neue. Die Logzeilen
+  eines gescheiterten Durchlaufs nennen jetzt dessen Nonce. Der deutsche
+  Feed ändert sich nicht.
 * **WL-Zusammenlegung: ausführliche Meldung und Beginn korrigiert (2026-09-27)**:
   Die Zusammenlegung vom 26.09. erkannte die ausführliche WL-Meldung am
   Präfix „Linie 48A:“, das der Feed beim Lesen des Caches schon entfernt

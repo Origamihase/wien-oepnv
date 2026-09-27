@@ -562,7 +562,8 @@ jobs:
       #     hiccup can never push corruption over the last-good feed.
       #   * ``git add -A`` — stage every workspace output (caches, CSV
       #     ledgers, quota counter, feed XMLs, first_seen state,
-      #     statistik.md, README, feed-health, any future output).
+      #     statistik.md, README, any future output). The feed-health
+      #     reports stay out: ``.gitignore`` excludes them.
       #   * no changes -> clean no-op (exit 0).
       #   * push with up to 4 attempts and exponential backoff (2/4/8 s).
       #     The first push reconciles implicitly; on a non-fast-forward

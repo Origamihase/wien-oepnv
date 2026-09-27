@@ -98,6 +98,8 @@ def test_main_runs_without_network(
     monkeypatch.setattr(build_feed, "validate_path", lambda path, name: path)
     monkeypatch.setattr(build_feed.feed_config, "OUT_PATH", out_file)
     monkeypatch.setattr(build_feed.feed_config, "STATE_FILE", state_file)
+    monkeypatch.setattr(build_feed.feed_config, "FEED_HEALTH_PATH", tmp_path / "feed-health.md")
+    monkeypatch.setattr(build_feed.feed_config, "FEED_HEALTH_JSON_PATH", tmp_path / "feed-health.json")
     monkeypatch.setattr(build_feed, "_save_state", lambda state: None)
     monkeypatch.setattr(build_feed, "_load_state", lambda: {})
 

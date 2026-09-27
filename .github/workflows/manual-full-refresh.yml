@@ -157,7 +157,21 @@ jobs:
       # and concurrent persistence would book the same physical train
       # under two different ledger keys, producing duplicate CSV rows
       # at finalisation.
+      #
+      # Gated like ``update-cycle.yml`` (audit 2026-09-25, A.6): the
+      # pre-flight reads the persisted VAO daily counter
+      # (``data/vor_request_count.json``) and the poll is skipped when it
+      # would breach the 100/day cap. ``_charge_one_request`` in the script
+      # stays the second layer. ``continue-on-error``: the pre-flight exits 1
+      # on an exhausted budget; the gate decides, and the refresh goes on
+      # without the poll. ``--margin 1`` = the one ``/departureBoard`` call.
+      - name: VAO quota pre-flight
+        id: vor_preflight
+        continue-on-error: true
+        run: python scripts/preflight_quota_check.py --check vor --margin 1
+
       - name: Refresh Stammstrecke status
+        if: ${{ steps.vor_preflight.outputs.quota_ok == 'true' }}
         run: python scripts/update_stammstrecke_hbf.py
 
       # ----- 2) Stationsverzeichnis aktualisieren -----

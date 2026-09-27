@@ -110,6 +110,41 @@ def test_vor_smoke_test_is_quota_gated() -> None:
     assert "verify_vor_access_id.py" in text
 
 
+def _stammstrecke_workflows() -> list[Path]:
+    """Workflows that run the Stammstrecke monitor, the VAO consumer."""
+    return [
+        path
+        for path in sorted(WORKFLOW_DIR.glob("*.yml"))
+        if "run: python scripts/update_stammstrecke_hbf.py"
+        in _strip_comments(path.read_text(encoding="utf-8"))
+    ]
+
+
+def test_both_stammstrecke_workflows_are_found() -> None:
+    assert {path.name for path in _stammstrecke_workflows()} == {
+        "manual-full-refresh.yml",
+        "update-cycle.yml",
+    }
+
+
+@pytest.mark.parametrize("workflow", _stammstrecke_workflows(), ids=lambda p: p.name)
+def test_the_stammstrecke_poll_is_quota_gated(workflow: Path) -> None:
+    """The poll runs after the pre-flight and only when it reports budget.
+
+    Audit 2026-09-25, A.6: ``manual-full-refresh.yml`` polled without the
+    pre-flight that ``update-cycle.yml`` runs.
+    """
+    text = _strip_comments(workflow.read_text(encoding="utf-8"))
+    preflight = text.find("run: python scripts/preflight_quota_check.py --check vor")
+    poll = text.find("run: python scripts/update_stammstrecke_hbf.py")
+    assert preflight != -1, f"{workflow.name} polls the VAO without the pre-flight"
+    assert preflight < poll, f"{workflow.name} runs the pre-flight after the poll"
+    poll_step = text[text.rfind("- name:", 0, poll):poll]
+    assert "if: ${{ steps.vor_preflight.outputs.quota_ok == 'true' }}" in poll_step, (
+        f"{workflow.name} polls even when the pre-flight reports no budget"
+    )
+
+
 def test_vor_smoke_test_path_filter_is_narrow() -> None:
     """The trigger must not match every script in the repo.
 

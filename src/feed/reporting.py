@@ -775,10 +775,11 @@ def build_feed_health_payload(
     # CVE-2021-42574 attack-byte union (BiDi marks, ZWSP family, BOM,
     # variation selectors, Tag block, C0/C1 controls) from the path
     # bytes. With ``json.dump(..., ensure_ascii=False)`` the bytes
-    # would otherwise survive as raw UTF-8 in the published
-    # ``docs/feed-health.json`` artefact (committed to ``main`` by the
-    # ``update-cycle.yml`` cron tick, served on GitHub Pages, consumed
-    # by SIEMs / LLM-driven downstream services). The companion
+    # would otherwise survive as raw UTF-8 in the
+    # ``docs/feed-health.json`` artefact that every build writes and any
+    # local reader of it consumes. (The file is git-ignored: it is not
+    # committed and not served on GitHub Pages; ``docs/development.md``.)
+    # The companion
     # Markdown sink (``render_feed_health_markdown`` line 593) already
     # routes ``feed_path`` through :func:`src.utils.text.safe_markdown_codespan`;
     # this scrub mirrors the same defence at the JSON-sink boundary.
@@ -831,10 +832,10 @@ def write_feed_health_json(
     # established in Round 1485 at
     # :func:`src.places.merge.write_stations` and extended in
     # Round 1487 to the five sibling ``data/stations.json``
-    # writers + :func:`src.utils.cache.write_cache`. This is the
-    # highest-impact sibling: ``docs/feed-health.json`` is the
-    # public, GitHub-Pages-served, machine-readable companion of
-    # the Markdown sink, consumed by external SIEM dashboards.
+    # writers + :func:`src.utils.cache.write_cache`.
+    # ``docs/feed-health.json`` is the machine-readable companion of
+    # the Markdown sink, written by every build (git-ignored, so not
+    # committed and not served on GitHub Pages).
     # The payload carries ``providers[i]["duration"]`` (the
     # ``float | None`` value of :attr:`ProviderReport.duration`)
     # and ``durations`` (the ``dict[str, float]`` slot of
