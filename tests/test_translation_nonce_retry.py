@@ -33,7 +33,8 @@ from typing import Any
 import pytest
 
 import src.build_feed as build_feed
-from src.build_feed import _PLACEHOLDER_NONCE, _translate_text_attempt
+
+_PLACEHOLDER_NONCE = build_feed._PLACEHOLDER_NONCE
 
 # 60A on 2026-09-26 17:01, one of the three summaries that failed.
 SUMMARY = "Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz."
@@ -68,7 +69,7 @@ def _mangles_the_build_nonce(text: str) -> str:
 
 def test_a_bad_nonce_gets_a_second_pass(monkeypatch: pytest.MonkeyPatch) -> None:
     calls = _install(monkeypatch, _mangles_the_build_nonce)
-    out = _translate_text_attempt(SUMMARY, ident="60A")
+    out = build_feed._translate_text_attempt(SUMMARY, ident="60A")
     assert len(calls) == 2
     assert _nonces(calls[0]) == {_PLACEHOLDER_NONCE}
     (fresh,) = _nonces(calls[1])
@@ -80,7 +81,7 @@ def test_a_bad_nonce_gets_a_second_pass(monkeypatch: pytest.MonkeyPatch) -> None
 
 def test_a_good_nonce_needs_one_pass(monkeypatch: pytest.MonkeyPatch) -> None:
     calls = _install(monkeypatch, lambda text: "EN " + text)
-    out = _translate_text_attempt(SUMMARY, ident="60A")
+    out = build_feed._translate_text_attempt(SUMMARY, ident="60A")
     assert len(calls) == 1
     assert out is not None and "Reason:" in out
 
@@ -88,7 +89,7 @@ def test_a_good_nonce_needs_one_pass(monkeypatch: pytest.MonkeyPatch) -> None:
 def test_two_bad_passes_fall_back(monkeypatch: pytest.MonkeyPatch) -> None:
     # A model that mangles every nonce: two passes, then the German source.
     calls = _install(monkeypatch, lambda text: "EN " + text.replace("XGLO", "XGLo"))
-    assert _translate_text_attempt(SUMMARY, ident="60A") is None
+    assert build_feed._translate_text_attempt(SUMMARY, ident="60A") is None
     assert len(calls) == 2
 
 
@@ -99,7 +100,7 @@ def test_a_dropped_entity_gets_a_second_pass(monkeypatch: pytest.MonkeyPatch) ->
         return "EN " + text
 
     calls = _install(monkeypatch, _drops_under_the_build_nonce)
-    out = _translate_text_attempt(WITH_ENTITIES, ident="62")
+    out = build_feed._translate_text_attempt(WITH_ENTITIES, ident="62")
     assert len(calls) == 2
     assert out is not None
     assert "18" in out and "Burggasse" in out
@@ -113,7 +114,7 @@ def test_a_pipeline_error_is_not_retried(monkeypatch: pytest.MonkeyPatch) -> Non
         raise RuntimeError("model crashed")
 
     monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: _pipe)
-    assert _translate_text_attempt(SUMMARY, ident="60A") is None
+    assert build_feed._translate_text_attempt(SUMMARY, ident="60A") is None
     assert len(calls) == 1
 
 
@@ -125,7 +126,7 @@ def test_a_doubled_closing_x_under_the_fresh_nonce_is_repaired(monkeypatch: pyte
         return "EN " + re.sub(r"(XENT[0-9a-f]{16}X\d+X)", r"\1X", text)
 
     calls = _install(monkeypatch, _model)
-    out = _translate_text_attempt(WITH_ENTITIES, ident="62")
+    out = build_feed._translate_text_attempt(WITH_ENTITIES, ident="62")
     assert len(calls) == 2
     assert out is not None
     assert "18X" not in out and "BurggasseX" not in out
