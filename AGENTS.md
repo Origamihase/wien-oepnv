@@ -73,13 +73,14 @@ python -m src.cli [command]
 ```
 Wichtige Befehle:
 - `python -m src.cli feed build`: Erzeugt den Feed lokal.
-- `python -m src.cli checks`: Führt `ruff` (Linter) und `mypy` (Type-Checker) aus.
+- `python -m src.cli checks`: Führt `ruff` (Linter), `mypy` (Type-Checker), `bandit`, den Secret-Scanner, das C901-Komplexitäts-Gate, das i18n-Gate des Dashboards und `pip-audit` aus (`scripts/run_static_checks.py`).
 - `python -m pytest`: Führt die Test-Suite aus (kein eigenes `cli tests`-Subkommando).
 
 ### Testing
 - Framework: `pytest`
 - Ausführung: `pytest` (im Root-Verzeichnis).
 - **Regel:** Vor jedem Commit müssen alle Tests bestehen. Neue Features oder Bugfixes müssen durch Tests abgedeckt sein.
+- Tests, die `main()` ausführen, leiten `OUT_PATH`, `STATE_FILE` und die beiden `FEED_HEALTH*`-Pfade nach `tmp_path` um und patchen mit `patch.object(bf, …)` statt über den String-Pfad `"src.build_feed.…"`. Autouse-Fixtures in `tests/conftest.py` wachen darüber (`docs/development.md`, „Test-Isolation“).
 
 ### Statische Analyse
 - **Ruff**: Für Linting und Code-Formatierung.

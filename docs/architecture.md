@@ -88,6 +88,8 @@ sequenceDiagram
     Dedupe->>Dedupe: deduplicate_fuzzy
     Note over Dedupe: Apex-Phase-2 paralleler<br/>Token-Cache, O(n)-Regex
     Dedupe-->>Build: deduplizierte Items
+    Build->>Build: _merge_wl_ticker_clusters
+    Note over Build: ein WL-Vorfall, ein Platz
     Build->>RSS: _make_rss + atomic_write
     RSS-->>Cron: docs/feed.xml
 ```
@@ -100,7 +102,102 @@ sequenceDiagram
 - **`request_safe`** ist die Security-State-Machine — siehe Diagramm §2.
 - **`deduplicate_fuzzy`** ist Apex-Phase-2-Territorium: Der parallele `merged_cache` reduziert das O(n²)-Regex-Reparsing auf O(n).
 - **Vor dem Altersfilter** verwirft `_drop_test_messages` Testmeldungen der Anbieter („Testmeldung“, oder ein Titel bzw. Text von höchstens fünf Wörtern mit dem Wort „Test“; Anlass: zwei WL-Testmeldungen am 23.09.2026). Sie belegten sonst einen der zehn Plätze.
-- **Nach der Dedupe** entscheidet die Reihenfolge, was die zehn Plätze bekommt: Sortierung nach `first_seen` (neueste zuerst; eine wiederkehrende WL-Meldung bekommt vorher über `_restart_recurring_occurrences` den Beginn ihres aktuellen Auftretens, die WL-GUID enthält kein Datum), dann `_defer_repeated_route_titles` (von wortgleichen ÖBB-Titeln bleibt nur das früheste Zeitfenster vorn), `_apply_topic_budget` (höchstens `MAX_ITEMS_PER_TOPIC` je Ursachenwort und Tag) und `_defer_all_clear_items` (ÖBB-Entwarnungen „Aufhebung …“ ganz nach hinten, Betreiberentscheidung 2026-09-25). Die Regeln löschen nichts, sie stellen hinter das Feld — siehe `docs/development.md`, „Reihenfolge im Feed".
+- **Nach der Dedupe** legt `_merge_wl_ticker_clusters` die WL-Störungen eines Vorfalls zu einem Eintrag zusammen (seit 2026-09-26; unten, „Titel und Beschreibung im deutschen Feed“). Danach entscheidet die Reihenfolge, was die zehn Plätze bekommt: Sortierung nach `first_seen` (neueste zuerst; eine wiederkehrende WL-Meldung bekommt vorher über `_restart_recurring_occurrences` den Beginn ihres aktuellen Auftretens, die WL-GUID enthält kein Datum), dann `_defer_repeated_route_titles` (von wortgleichen ÖBB-Titeln bleibt nur das früheste Zeitfenster vorn), `_apply_topic_budget` (höchstens `MAX_ITEMS_PER_TOPIC` je Ursachenwort und Tag) und `_defer_all_clear_items` (ÖBB-Entwarnungen „Aufhebung …“ ganz nach hinten, Betreiberentscheidung 2026-09-25). Die Regeln löschen nichts, sie stellen hinter das Feld — siehe `docs/development.md`, „Reihenfolge im Feed".
+
+### Titel und Beschreibung im deutschen Feed
+
+Diese Regeln entscheiden, was ein Eintrag im deutschen Feed zeigt. Sie
+laufen vor jeder Übersetzung; der EN-Feed übersetzt ihr Ergebnis (§8). Der
+Feed läuft auf Info-Displays mit zehn Plätzen (`AGENTS.md`, „Priorität der
+Ausgaben“): Ein Titel muss für sich stehen, und ein doppelter Eintrag
+verdrängt eine andere Störung.
+
+* **Ticker-Titel: Ursache oben, Folge darunter (seit 2026-09-25).** Bei
+  einer WL-Störung behält der Titel nur Linie und Ursache, die Folge wandert
+  an den Anfang der Beschreibung (`_finish_reason_title`):
+  `14A: Rettungseinsatz` über `Betrieb ab Laxenburger Straße / Gudrunstraße
+  [Am 25.09.2026]`. Die Ursache findet `_reason_and_fragment` auf zwei Wegen:
+  über `_TITLE_REASON_WORDS` oder, für Ursachen außerhalb der Liste
+  („Schadhafter Zug“, „Signalstörung“, „PKW im Gleis“), über den Anfang der
+  Folge (`_CONSEQUENCE_START_RE`: „Betrieb ab/nur/über“, „Kein Betrieb“,
+  „Züge/Busse halten“, „Umleitung“). Davor dürfen höchstens drei Wörter ohne
+  Ziffer stehen. Nennt die Beschreibung die Folge schon, bleibt sie, wie sie
+  ist. Wiederholt sie nur Ursache und Folge, ersetzt die Folge sie. Sonst
+  steht die Folge vorn, und gekürzt wird hinter dem letzten passenden Satz
+  (`_last_sentence_end`). Den Strich behalten Hinweise, deren zweite Hälfte
+  ein Ort ist (`D: Gleisbauarbeiten – Althanstraße`), sowie Ticker, deren
+  kurzer Titel unter den sichtbaren Items doppelt wäre. WL schickt zu einem
+  Vorfall oft mehrere Ticker (`49: Gleisschaden`, `… Betrieb ab
+  Urban-Loritz-Platz`, `… Betrieb ab Hütteldorfer Straße`), und drei gleiche
+  Zeilen auf dem Display wären schlechter als drei lange
+  (`_short_title_collisions`, entschieden in `_make_rss` für DE und EN
+  gemeinsam). Trägt ein anderes sichtbares Item den kurzen Titel schon als
+  eigenen, bleiben alle lang. Sonst wird der am höchsten platzierte Ticker
+  kurz, die übrigen bleiben lang. Seit 2026-09-26 kommen solche Gruppen
+  meist gar nicht mehr so weit (nächster Punkt).
+* **Ein Vorfall, ein Platz (seit 2026-09-26, Betreiberentscheidung).** Am
+  26.09. belegte die Linie 62 drei der zehn Plätze mit drei Tickern aus 86
+  Sekunden („ÖBB Bauarbeiten Betrieb ab Kliebergasse“, „Züge halte bei
+  Linie 18, Richtung Burggasse“, „ÖBB Bauarbeiten Kein Betrieb“). Rückschau
+  über 693 Feed-Stände: 242 mit einer solchen Gruppe, zusammen 485 Plätze.
+  `_merge_wl_ticker_clusters` legt WL-Störungen derselben Linien, die
+  innerhalb von `WL_TICKER_CLUSTER_SECONDS` (600 s) nach der ersten
+  erscheinen, zu einem Eintrag zusammen, nach der Duplikatprüfung und vor
+  Sortierung und Platzvergabe (`main` und `lint`):
+  - Ausführliche Meldung (seit 2026-09-27): Sagt eine ausführliche
+    WL-Meldung der Gruppe mehr als den Standardsatz, steht sie mit Titel
+    und Text so, wie sie allein erschiene; die Kurzmeldungen der Gruppe
+    belegen keinen eigenen Platz. Erkannt wird sie an ihren Sätzen
+    (`_is_long_message`: Der Text endet mit einem Punkt; im WL-Cache vom
+    September gilt das für alle 504 Texte in Sätzen und für keine der 247
+    Kurzmeldungen). Das Präfix „Linie 48A:“ taugt dafür nicht, weil
+    `_post_filter_wl` es beim Lesen des Caches entfernt und manche
+    Meldungen es nie hatten. Anlass: Am 27.09. stand „48A: Falschparker“
+    über „Grund: Fremder Verkehrsunfall“, und angehängte Kurzmeldungen
+    schoben den zweiten Satz einer ausführlichen Meldung über die
+    180 Zeichen.
+  - Sonst ist der Titel Linie und die häufigste Ursache der Gruppe; ohne
+    Ursache der Titel der ersten Meldung. Die Ursache kommt aus dem Titel
+    (`_reason_and_fragment`), aus einer ausführlichen Meldung mit dem
+    Standardsatz oder aus der ersten Zeile der Tafel („Gleisbauarbeiten /
+    Betrieb ab Johnstraße U“).
+  - Beschreibung: alle Folgen in der Reihenfolge, in der WL sie
+    veröffentlicht hat, mit „;“ zu einem Satz verbunden, weil die
+    Beschreibung höchstens zwei Sätze übernimmt. Eine andere Ursache behält
+    WLs Wortlaut („Fahrtbehinderung wegen Rettungseinsatz“). Was der Titel
+    oder eine andere Meldung der Gruppe schon sagt, fällt weg; WLs
+    Standardsatz „Nach einer Fahrtbehinderung …“ weicht allem Konkreten.
+  - Der Eintrag behält GUID, Identität und Beginn der zuerst
+    veröffentlichten Meldung und bekommt das späteste Ende; ein offenes Ende
+    bleibt offen. Nicht der früheste Beginn: WL verwendet manchmal eine alte
+    Tafel-Meldung für einen neuen Vorfall, und am 27.09. stand deshalb
+    „23.09.2026 – 27.09.2026“ über einem Schaden vom selben Morgen.
+  - `62: ÖBB Bauarbeiten` über „Betrieb ab Kliebergasse; Züge halte bei
+    Linie 18, Richtung Burggasse; Kein Betrieb.“
+  - Grenzen: Andere Linienmengen („62/18“), Hinweise und andere Quellen
+    bleiben getrennt. Um Mitternacht veröffentlicht WL die Meldungen des
+    Tages neu, dann können zwei Ereignisse einer Linie in einen Eintrag
+    fallen; die Beschreibung ist auf 180 Zeichen begrenzt. Die
+    Störungsstatistik zählt einen zusammengelegten Vorfall einmal.
+* **„Fahrtbehinderung <Ursache>“ (seit 2026-09-25).** WL setzt die Art der
+  Behinderung vor die Ursache („11A: Fahrtbehinderung Verkehrsunfall“,
+  „31: Fahrtbehinderung wegen Polizeieinsatz“; 106 Titel seit Juni).
+  Betreiberentscheidung (Audit A.13): Die Ursache kommt in den Titel
+  („11A: Verkehrsunfall“), „Fahrtbehinderung“ füllt eine sonst leere
+  Beschreibung. Eine eigene Beschreibung von WL bleibt unverändert, weil sie
+  mehr sagt (`_HINDRANCE_RE` in `_reason_and_fragment`). Folgt auf die
+  Ursache noch eine Folge, gewinnt die Folge die Beschreibung. Die lange
+  Form bei Kollisionen lautet `18: Fahrtbehinderung – Verkehrsunfall`;
+  „fahrtbehinderung“ steht dafür in `_INCIDENT_REASON_WORDS`.
+* **„ÖBB-Ersatzbus für <80“ (seit 2026-09-25).** Die Anzeigetafeln der WL
+  zeigen das S-Bahn-Logo als Zeichen, das in den Daten als „<“ ankommt.
+  Die Meldung „Bhf. Hütteldorf / ÖBB-Ersatzbus für <80“ kam täglich mit
+  `relatedLines` „1“ und erschien als „1: Bhf. Hütteldorf ÖBB-Ersatzbus für
+  80“. Die Straßenbahn 1 fährt nicht nach Hütteldorf; gemeint ist die S80.
+  `_attribute_obb_replacement_bus` (in `_post_filter_wl`) setzt die
+  S-Bahn-Linie aus dem Text als Linie ein und legt den Ort in die
+  Beschreibung: `S80: ÖBB-Ersatzbus` über „Bhf. Hütteldorf“. Das gilt nur für
+  die Wiener S-Bahn-Nummern (1, 2, 3, 4, 7, 40, 45, 50, 60, 80).
 
 ---
 
@@ -1126,92 +1223,10 @@ Nicht jeder Text gehört in ein NMT-Modell:
   (geplante Arbeiten und Veranstaltungen plus Störungsursachen wie
   `Fremdunfall`); ein Wort, das nur der Trenner kennt, schickte den Strich
   wieder ins Modell.
-* **Ticker-Titel: Ursache oben, Folge darunter (seit 2026-09-25).** Bei
-  einer WL-Störung behält der Titel nur Linie und Ursache, die Folge wandert
-  an den Anfang der Beschreibung (`_finish_reason_title`):
-  `14A: Rettungseinsatz` über `Betrieb ab Laxenburger Straße / Gudrunstraße
-  [Am 25.09.2026]`. Die Ursache findet `_reason_and_fragment` auf zwei Wegen:
-  über `_TITLE_REASON_WORDS` oder, für Ursachen außerhalb der Liste
-  („Schadhafter Zug“, „Signalstörung“, „PKW im Gleis“), über den Anfang der
-  Folge (`_CONSEQUENCE_START_RE`: „Betrieb ab/nur/über“, „Kein Betrieb“,
-  „Züge/Busse halten“, „Umleitung“). Davor dürfen höchstens drei Wörter ohne
-  Ziffer stehen. Nennt die Beschreibung die Folge schon, bleibt sie, wie sie
-  ist. Wiederholt sie nur Ursache und Folge, ersetzt die Folge sie. Sonst
-  steht die Folge vorn, und gekürzt wird hinter dem letzten passenden Satz
-  (`_last_sentence_end`). Den Strich behalten Hinweise, deren zweite Hälfte
-  ein Ort ist (`D: Gleisbauarbeiten – Althanstraße`), sowie Ticker, deren
-  kurzer Titel unter den sichtbaren Items doppelt wäre. WL schickt zu einem
-  Vorfall oft mehrere Ticker (`49: Gleisschaden`, `… Betrieb ab
-  Urban-Loritz-Platz`, `… Betrieb ab Hütteldorfer Straße`), und drei gleiche
-  Zeilen auf dem Display wären schlechter als drei lange
-  (`_short_title_collisions`, entschieden in `_make_rss` für DE und EN
-  gemeinsam). Trägt ein anderes sichtbares Item den kurzen Titel schon als
-  eigenen, bleiben alle lang. Sonst wird der am höchsten platzierte Ticker
-  kurz, die übrigen bleiben lang. Seit 2026-09-26 kommen solche Gruppen
-  meist gar nicht mehr so weit (nächster Punkt).
-* **Ein Vorfall, ein Platz (seit 2026-09-26, Betreiberentscheidung).** Am
-  26.09. belegte die Linie 62 drei der zehn Plätze mit drei Tickern aus 86
-  Sekunden („ÖBB Bauarbeiten Betrieb ab Kliebergasse“, „Züge halte bei
-  Linie 18, Richtung Burggasse“, „ÖBB Bauarbeiten Kein Betrieb“). Rückschau
-  über 693 Feed-Stände: 242 mit einer solchen Gruppe, zusammen 485 Plätze.
-  `_merge_wl_ticker_clusters` legt WL-Störungen derselben Linien, die
-  innerhalb von `WL_TICKER_CLUSTER_SECONDS` (600 s) nach der ersten
-  erscheinen, zu einem Eintrag zusammen, nach der Duplikatprüfung und vor
-  Sortierung und Platzvergabe (`main` und `lint`):
-  - Ausführliche Meldung (seit 2026-09-27): Sagt eine ausführliche
-    WL-Meldung der Gruppe mehr als den Standardsatz, steht sie mit Titel
-    und Text so, wie sie allein erschiene; die Kurzmeldungen der Gruppe
-    belegen keinen eigenen Platz. Erkannt wird sie an ihren Sätzen
-    (`_is_long_message`: Der Text endet mit einem Punkt; im WL-Cache vom
-    September gilt das für alle 504 Texte in Sätzen und für keine der 247
-    Kurzmeldungen). Das Präfix „Linie 48A:“ taugt dafür nicht, weil
-    `_post_filter_wl` es beim Lesen des Caches entfernt und manche
-    Meldungen es nie hatten. Anlass: Am 27.09. stand „48A: Falschparker“
-    über „Grund: Fremder Verkehrsunfall“, und angehängte Kurzmeldungen
-    schoben den zweiten Satz einer ausführlichen Meldung über die
-    180 Zeichen.
-  - Sonst ist der Titel Linie und die häufigste Ursache der Gruppe; ohne
-    Ursache der Titel der ersten Meldung. Die Ursache kommt aus dem Titel
-    (`_reason_and_fragment`), aus einer ausführlichen Meldung mit dem
-    Standardsatz oder aus der ersten Zeile der Tafel („Gleisbauarbeiten /
-    Betrieb ab Johnstraße U“).
-  - Beschreibung: alle Folgen in der Reihenfolge, in der WL sie
-    veröffentlicht hat, mit „;“ zu einem Satz verbunden, weil die
-    Beschreibung höchstens zwei Sätze übernimmt. Eine andere Ursache behält
-    WLs Wortlaut („Fahrtbehinderung wegen Rettungseinsatz“). Was der Titel
-    oder eine andere Meldung der Gruppe schon sagt, fällt weg; WLs
-    Standardsatz „Nach einer Fahrtbehinderung …“ weicht allem Konkreten.
-  - Der Eintrag behält GUID, Identität und Beginn der zuerst
-    veröffentlichten Meldung und bekommt das späteste Ende; ein offenes Ende
-    bleibt offen. Nicht der früheste Beginn: WL verwendet manchmal eine alte
-    Tafel-Meldung für einen neuen Vorfall, und am 27.09. stand deshalb
-    „23.09.2026 – 27.09.2026“ über einem Schaden vom selben Morgen.
-  - `62: ÖBB Bauarbeiten` über „Betrieb ab Kliebergasse; Züge halte bei
-    Linie 18, Richtung Burggasse; Kein Betrieb.“
-  - Grenzen: Andere Linienmengen („62/18“), Hinweise und andere Quellen
-    bleiben getrennt. Um Mitternacht veröffentlicht WL die Meldungen des
-    Tages neu, dann können zwei Ereignisse einer Linie in einen Eintrag
-    fallen; die Beschreibung ist auf 180 Zeichen begrenzt. Die
-    Störungsstatistik zählt einen zusammengelegten Vorfall einmal.
-* **„Fahrtbehinderung <Ursache>“ (seit 2026-09-25).** WL setzt die Art der
-  Behinderung vor die Ursache („11A: Fahrtbehinderung Verkehrsunfall“,
-  „31: Fahrtbehinderung wegen Polizeieinsatz“; 106 Titel seit Juni).
-  Betreiberentscheidung (Audit A.13): Die Ursache kommt in den Titel
-  („11A: Verkehrsunfall“), „Fahrtbehinderung“ füllt eine sonst leere
-  Beschreibung. Eine eigene Beschreibung von WL bleibt unverändert, weil sie
-  mehr sagt (`_HINDRANCE_RE` in `_reason_and_fragment`). Folgt auf die
-  Ursache noch eine Folge, gewinnt die Folge die Beschreibung. Die lange
-  Form bei Kollisionen lautet `18: Fahrtbehinderung – Verkehrsunfall`;
-  „fahrtbehinderung“ steht dafür in `_INCIDENT_REASON_WORDS`.
-* **„ÖBB-Ersatzbus für <80“ (seit 2026-09-25).** Die Anzeigetafeln der WL
-  zeigen das S-Bahn-Logo als Zeichen, das in den Daten als „<“ ankommt.
-  Die Meldung „Bhf. Hütteldorf / ÖBB-Ersatzbus für <80“ kam täglich mit
-  `relatedLines` „1“ und erschien als „1: Bhf. Hütteldorf ÖBB-Ersatzbus für
-  80“. Die Straßenbahn 1 fährt nicht nach Hütteldorf; gemeint ist die S80.
-  `_attribute_obb_replacement_bus` (in `_post_filter_wl`) setzt die
-  S-Bahn-Linie aus dem Text als Linie ein und legt den Ort in die
-  Beschreibung: `S80: ÖBB-Ersatzbus` über „Bhf. Hütteldorf“. Das gilt nur für
-  die Wiener S-Bahn-Nummern (1, 2, 3, 4, 7, 40, 45, 50, 60, 80).
+Wie Titel und Beschreibung im deutschen Feed entstehen (Ticker-Titel,
+„Ein Vorfall, ein Platz“, „Fahrtbehinderung <Ursache>“, „ÖBB-Ersatzbus“),
+steht in §1 unter „Titel und Beschreibung im deutschen Feed“. Der EN-Feed
+übersetzt das Ergebnis.
 
 ### Die Platzhalter
 
