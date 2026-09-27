@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 27 Sep 2026 12:31:41 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 27 Sep 2026 13:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U2: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
+      <pubDate>Sun, 27 Sep 2026 12:53:00 +0200</pubDate>
+      <ext:first_seen>Sun, 27 Sep 2026 12:53:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 27 Sep 2026 12:53:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 27 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Line U2 currently runs between stations Hardeggasse and Donauspital in both directions via track 1. Duration: 13:15. Reason: rescue operation im … [On 27.09.2026]</description>
+      <content:encoded><![CDATA[Line U2 currently runs between stations Hardeggasse and Donauspital in both directions via track 1. Duration: 13:15. Reason: rescue operation im …<br/>[On 27.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 31 May 2027 11:11:00 +0200</ext:ends_at>
       <description>Stop closure of line N31 towards Schwedenplatz U Stop: Stammersdorf From: Brünnerstraße opposite 262 closed without replacement Duration: From 30 September … [23.09.2026 – 31.05.2027]</description>
       <content:encoded><![CDATA[Stop closure of line N31 towards Schwedenplatz U Stop: Stammersdorf From: Brünnerstraße opposite 262 closed without replacement Duration: From 30 September …<br/>[23.09.2026 – 31.05.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Folding ramps out of service on 27.09.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">aa349c99b725b7354f26a3bd3546353bf0a484c4156d7642515ed8ae14d68e51</guid>
-      <pubDate>Wed, 23 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 23 Sep 2026 14:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 23 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 27 Sep 2026 22:00:00 +0200</ext:ends_at>
-      <description>Due to the high passenger volume associated with an event, the folding ramps of the U2 underground trains cannot be extended. [23.09.2026 – 27.09.2026]</description>
-      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the U2 underground trains cannot be extended.<br/>[23.09.2026 – 27.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
