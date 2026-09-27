@@ -245,19 +245,19 @@ def test_the_title_cause_is_not_repeated() -> None:
 
 MORNING = datetime(2026, 9, 27, 3, 26, tzinfo=UTC)  # 05:26 in Vienna
 MORNING_END = datetime(2026, 9, 27, 21, 55, tzinfo=UTC)
-
-
-@pytest.mark.parametrize(
-    "long_text",
-    [
-        # Live 2026-09-27 05:31: the feed read "48A: Falschparker" over this text.
-        "Linie 48A: Fahrtbehinderung in Richtung Klinik Penzing. Voraussichtliche Dauer: 06:00 Uhr. "
-        "Grund: Fremder Verkehrsunfall im Bereich Lerchenfelder Gürtel # Koppstraße .",
-        # Some long messages never carry the label.
-        "Die Linie 48A wird in Richtung Klinik Penzing umgeleitet. Voraussichtliche Dauer: 06:00 Uhr. "
-        "Grund: Fremder Verkehrsunfall im Bereich Lerchenfelder Gürtel.",
-    ],
+# Live 2026-09-27 05:31: the feed read "48A: Falschparker" over this text.
+LONG_48A = (
+    "Linie 48A: Fahrtbehinderung in Richtung Klinik Penzing. Voraussichtliche Dauer: 06:00 Uhr. "
+    "Grund: Fremder Verkehrsunfall im Bereich Lerchenfelder Gürtel # Koppstraße ."
 )
+# Some long messages never carry the label.
+LONG_48A_UNLABELLED = (
+    "Die Linie 48A wird in Richtung Klinik Penzing umgeleitet. Voraussichtliche Dauer: 06:00 Uhr. "
+    "Grund: Fremder Verkehrsunfall im Bereich Lerchenfelder Gürtel."
+)
+
+
+@pytest.mark.parametrize("long_text", [LONG_48A, LONG_48A_UNLABELLED])
 @pytest.mark.parametrize("ticker_offset", [17, -60])  # 48A: the ticker 17 s later; 69A on 24.09.: a minute earlier
 def test_a_long_message_stands_as_it_would_alone(long_text: str, ticker_offset: int) -> None:
     long_message = _wl("48A: Fremder Verkehrsunfall", long_text, start=MORNING, ends_at=MORNING_END, guid="7da5c613")
