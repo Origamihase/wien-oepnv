@@ -6030,10 +6030,10 @@ def _is_wl_ticker(item: FeedItem) -> bool:
 #
 # Nothing a ticker says is dropped unless another one of the group, or the
 # title, already says it; WL's stock sentence gives way to anything concrete.
+# A long message that says more than the stock sentence stands as it would
+# alone, and its tickers take no slot of their own (2026-09-27).
 WL_TICKER_CLUSTER_SECONDS = 600
 
-# WL's long message (``stoerunglang``) opens its text with the line label.
-_LONG_MESSAGE_RE = re.compile(r"^Linien?\s+[^:]{1,60}:\s*")
 _WL_STOCK_SENTENCE_RE = re.compile(
     r"^Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen\.?$", re.IGNORECASE
 )
@@ -6047,7 +6047,7 @@ class _TickerPart(NamedTuple):
     cause: str  # "" when it names none
     body: str  # the title without the line prefix, as WL wrote it
     consequence: str  # "" for a message that only names its cause
-    extra: str  # text beyond the title (a long message's sentence)
+    extra: str  # text beyond the title (a long message's sentences)
 
 
 def _ticker_prefix(title: str) -> str:
@@ -6056,23 +6056,39 @@ def _ticker_prefix(title: str) -> str:
     return title[: match.start(1)] if match else ""
 
 
+def _ticker_text(item: FeedItem) -> str:
+    """*item*'s description as one line, without the display's arrows.
+
+    The arrows ("Hütteldorfer Straße > mit Linie 46") point, they say nothing.
+    """
+    return " ".join(
+        word for word in html_to_text(str(item.get("description") or "")).split() if word not in ("<", ">")
+    )
+
+
+def _is_long_message(text: str) -> bool:
+    """WL's long message (``stoerunglang``) is written in sentences.
+
+    A display ticker is one or two board lines without a full stop. The
+    ``Linie 48A:`` label cannot mark the long message: ``_post_filter_wl``
+    strips it when the feed reads the cache, and some long messages never
+    had it ("Die Linie U1 fährt derzeit …"). WL cache, September 2026: all
+    504 texts in sentences end in a full stop, none of 247 tickers does.
+    """
+    return text.endswith(".")
+
+
 def _ticker_part(item: FeedItem) -> _TickerPart:
     """Split one WL disruption into cause, consequence and further text."""
     title = _rendered_title(item)
     prefix = _ticker_prefix(title)
     body = title[len(prefix):].strip()
-    # The display's arrows ("Hütteldorfer Straße > mit Linie 46") point, they say nothing.
-    text = " ".join(
-        word for word in html_to_text(str(item.get("description") or "")).split() if word not in ("<", ">")
-    )
-    long_text = _LONG_MESSAGE_RE.match(text)
-    if long_text is not None:
-        split = _reason_and_fragment(title)
-        extra = text[long_text.end():].strip()
-        if split is not None:
-            return _TickerPart(split[0][len(_ticker_prefix(split[0])):], body, split[1], extra)
-        return _TickerPart(body, body, "", extra)
+    text = _ticker_text(item)
     split = _reason_and_fragment(title)
+    if _is_long_message(text):
+        if split is not None:
+            return _TickerPart(split[0][len(_ticker_prefix(split[0])):], body, split[1], text)
+        return _TickerPart(body, body, "", text)
     if split is not None:
         return _TickerPart(split[0][len(_ticker_prefix(split[0])):], body, split[1], "")
     shown = text
@@ -6136,7 +6152,7 @@ def _ticker_clusters(items: Sequence[FeedItem]) -> list[list[int]]:
         when = _ticker_time(item)
         if not prefix or when is None:
             continue
-        long_first = 0 if _LONG_MESSAGE_RE.match(html_to_text(str(item.get("description") or ""))) else 1
+        long_first = 0 if _is_long_message(_ticker_text(item)) else 1
         by_lines[prefix].append((when, long_first, str(item.get("guid") or ""), index))
     clusters: list[list[int]] = []
     for members in by_lines.values():
@@ -6150,16 +6166,56 @@ def _ticker_clusters(items: Sequence[FeedItem]) -> list[list[int]]:
     return [cluster for cluster in clusters if len(cluster) > 1]
 
 
-def _merged_ticker(members: Sequence[FeedItem]) -> FeedItem:
-    """One item for the WL disruptions *members* (publication order, lead first)."""
-    parts = [_ticker_part(member) for member in members]
+def _telling_long_message(members: Sequence[FeedItem]) -> FeedItem | None:
+    """The first of *members* that is a long message saying more than the stock sentence."""
+    for member in members:
+        text = _ticker_text(member)
+        if _is_long_message(text) and not _WL_STOCK_SENTENCE_RE.match(text):
+            return member
+    return None
+
+
+def _chosen_cause(parts: Sequence[_TickerPart]) -> str:
+    """The most frequent cause, the earliest on a tie; casefolded, "" for none."""
     counts: dict[str, int] = defaultdict(int)
     for part in parts:
         if part.cause:
             counts[part.cause.casefold()] += 1
     order = [part.cause.casefold() for part in parts if part.cause]
-    chosen = max(counts, key=lambda cause: (counts[cause], -order.index(cause)), default="")
+    return max(counts, key=lambda cause: (counts[cause], -order.index(cause)), default="")
+
+
+def _span_group(merged: FeedItem, members: Sequence[FeedItem]) -> None:
+    """Give *merged* the time span of its group.
+
+    The start stays the lead's: WL can reuse an old ticker for a new
+    incident, and its start must not spread to the group (25 on 2026-09-27:
+    a breakdown that morning under "23.09.2026 – 27.09.2026").
+    """
+    ends = [e for e in (m.get("ends_at") for m in members) if isinstance(e, datetime)]
+    # An open end of one member keeps the incident open.
+    merged["ends_at"] = max(ends, key=_to_utc) if len(ends) == len(members) else None
+    published = [p for p in (m.get("pubDate") for m in members) if isinstance(p, datetime)]
+    if published:
+        merged["pubDate"] = min(published, key=_to_utc)
+
+
+def _merged_ticker(members: Sequence[FeedItem]) -> FeedItem:
+    """One item for the WL disruptions *members* (publication order, lead first)."""
     lead = members[0]
+    merged = cast(FeedItem, dict(lead))
+    _span_group(merged, members)
+    long_message = _telling_long_message(members)
+    if long_message is not None:
+        # WL's own text stands as it would alone; the tickers abbreviate it.
+        # Joined to it they put a second cause beside it (48A on 2026-09-27:
+        # "Falschparker" over "Grund: Fremder Verkehrsunfall") or pushed its
+        # second sentence past the 180 characters.
+        merged["title"] = str(long_message.get("title") or "")
+        merged["description"] = str(long_message.get("description") or "")
+        return merged
+    parts = [_ticker_part(member) for member in members]
+    chosen = _chosen_cause(parts)
     lead_title = _rendered_title(lead)
     if chosen:
         cause = next(part.cause for part in parts if part.cause.casefold() == chosen)
@@ -6175,21 +6231,11 @@ def _merged_ticker(members: Sequence[FeedItem]) -> FeedItem:
         if part.extra:
             candidates.append(part.extra)
     messages = _distinct_messages(candidates, title)
-    merged = cast(FeedItem, dict(lead))
     merged["title"] = title
     # One sentence: the summary keeps at most two (``_SENTENCE_SPLIT_RE``), and
     # three short consequences would lose the third. The 180-character cap
     # still applies; the order is WL's.
     merged["description"] = "; ".join(m.rstrip(" .") for m in messages) + ("." if messages else "")
-    starts = [s for s in (m.get("starts_at") for m in members) if isinstance(s, datetime)]
-    if starts:
-        merged["starts_at"] = min(starts, key=_to_utc)
-    ends = [e for e in (m.get("ends_at") for m in members) if isinstance(e, datetime)]
-    # An open end of one member keeps the incident open.
-    merged["ends_at"] = max(ends, key=_to_utc) if len(ends) == len(members) else None
-    published = [p for p in (m.get("pubDate") for m in members) if isinstance(p, datetime)]
-    if published:
-        merged["pubDate"] = min(published, key=_to_utc)
     return merged
 
 

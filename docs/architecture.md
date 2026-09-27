@@ -1157,19 +1157,34 @@ Nicht jeder Text gehört in ein NMT-Modell:
   innerhalb von `WL_TICKER_CLUSTER_SECONDS` (600 s) nach der ersten
   erscheinen, zu einem Eintrag zusammen, nach der Duplikatprüfung und vor
   Sortierung und Platzvergabe (`main` und `lint`):
-  - Titel: Linie und die häufigste Ursache der Gruppe; ohne Ursache der
-    Titel der ersten Meldung. Die Ursache kommt aus dem Titel
-    (`_reason_and_fragment`), aus einem Langtext („Linie 37: …“) oder aus
-    der ersten Zeile der Tafel („Gleisbauarbeiten / Betrieb ab Johnstraße U“).
+  - Ausführliche Meldung (seit 2026-09-27): Sagt eine ausführliche
+    WL-Meldung der Gruppe mehr als den Standardsatz, steht sie mit Titel
+    und Text so, wie sie allein erschiene; die Kurzmeldungen der Gruppe
+    belegen keinen eigenen Platz. Erkannt wird sie an ihren Sätzen
+    (`_is_long_message`: Der Text endet mit einem Punkt; im WL-Cache vom
+    September gilt das für alle 504 Texte in Sätzen und für keine der 247
+    Kurzmeldungen). Das Präfix „Linie 48A:“ taugt dafür nicht, weil
+    `_post_filter_wl` es beim Lesen des Caches entfernt und manche
+    Meldungen es nie hatten. Anlass: Am 27.09. stand „48A: Falschparker“
+    über „Grund: Fremder Verkehrsunfall“, und angehängte Kurzmeldungen
+    schoben den zweiten Satz einer ausführlichen Meldung über die
+    180 Zeichen.
+  - Sonst ist der Titel Linie und die häufigste Ursache der Gruppe; ohne
+    Ursache der Titel der ersten Meldung. Die Ursache kommt aus dem Titel
+    (`_reason_and_fragment`), aus einer ausführlichen Meldung mit dem
+    Standardsatz oder aus der ersten Zeile der Tafel („Gleisbauarbeiten /
+    Betrieb ab Johnstraße U“).
   - Beschreibung: alle Folgen in der Reihenfolge, in der WL sie
     veröffentlicht hat, mit „;“ zu einem Satz verbunden, weil die
     Beschreibung höchstens zwei Sätze übernimmt. Eine andere Ursache behält
     WLs Wortlaut („Fahrtbehinderung wegen Rettungseinsatz“). Was der Titel
     oder eine andere Meldung der Gruppe schon sagt, fällt weg; WLs
     Standardsatz „Nach einer Fahrtbehinderung …“ weicht allem Konkreten.
-  - Der Eintrag behält GUID und Identität der zuerst veröffentlichten
-    Meldung, den frühesten Beginn und das späteste Ende; ein offenes Ende
-    bleibt offen.
+  - Der Eintrag behält GUID, Identität und Beginn der zuerst
+    veröffentlichten Meldung und bekommt das späteste Ende; ein offenes Ende
+    bleibt offen. Nicht der früheste Beginn: WL verwendet manchmal eine alte
+    Tafel-Meldung für einen neuen Vorfall, und am 27.09. stand deshalb
+    „23.09.2026 – 27.09.2026“ über einem Schaden vom selben Morgen.
   - `62: ÖBB Bauarbeiten` über „Betrieb ab Kliebergasse; Züge halte bei
     Linie 18, Richtung Burggasse; Kein Betrieb.“
   - Grenzen: Andere Linienmengen („62/18“), Hinweise und andere Quellen

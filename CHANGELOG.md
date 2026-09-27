@@ -5,6 +5,17 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **WL-Zusammenlegung: ausführliche Meldung und Beginn korrigiert (2026-09-27)**:
+  Die Zusammenlegung vom 26.09. erkannte die ausführliche WL-Meldung am
+  Präfix „Linie 48A:“, das der Feed beim Lesen des Caches schon entfernt
+  hat. Live stand deshalb „48A: Falschparker“ über „Grund: Fremder
+  Verkehrsunfall“. Jetzt wird sie an ihren Sätzen erkannt; sagt sie mehr
+  als den Standardsatz, steht sie so, wie sie allein erschiene, und die
+  Kurzmeldungen der Gruppe belegen keinen eigenen Platz. Der Eintrag
+  übernimmt den Beginn der zuerst veröffentlichten Meldung statt des
+  frühesten, sonst stand über einem Schaden vom 27.09. „23.09.2026 –
+  27.09.2026“ (die Wiener Linien hatten eine alte Tafel-Meldung
+  wiederverwendet).
 * **Ein WL-Vorfall belegt nur noch einen Platz im Feed (2026-09-26)**: Die
   Wiener Linien schicken je Folge einer Störung eine eigene
   Anzeigetafel-Meldung; am 26.09. belegte die Linie 62 so drei der zehn
