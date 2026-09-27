@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 27 Sep 2026 22:00:53 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 27 Sep 2026 22:31:30 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U4: Delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
+      <pubDate>Sun, 27 Sep 2026 22:04:00 +0200</pubDate>
+      <ext:first_seen>Sun, 27 Sep 2026 22:04:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 27 Sep 2026 22:04:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 27 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [On 27.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[On 27.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[11A: Event]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -48,10 +59,10 @@
       <guid isPermaLink="false">d2995b04c903bb084f2bfb47e72067defed09d1b288eaf3deecb9883a85cd47e</guid>
       <pubDate>Sun, 27 Sep 2026 14:29:13 +0200</pubDate>
       <ext:first_seen>Sun, 27 Sep 2026 14:29:13 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 27 Sep 2026 14:47:00 +0200</ext:starts_at>
+      <ext:starts_at>Sun, 27 Sep 2026 14:44:45 +0200</ext:starts_at>
       <ext:ends_at>Sun, 27 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Service from Schlachthausgasse. After a service obstruction there are different intervals. [On 27.09.2026]</description>
-      <content:encoded><![CDATA[Service from Schlachthausgasse. After a service obstruction there are different intervals.<br/>[On 27.09.2026]]]></content:encoded>
+      <description>Service from Schlachthausgasse [On 27.09.2026]</description>
+      <content:encoded><![CDATA[Service from Schlachthausgasse<br/>[On 27.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
@@ -101,17 +112,6 @@
       <title><![CDATA[74A: Boarding Leberstraße before S-Bahn building]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e</guid>
-      <pubDate>Fri, 25 Sep 2026 00:00:29 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 00:00:29 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 27 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Reason: construction works. [25.09.2026 – 27.09.2026]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[25.09.2026 – 27.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Buses stop Pasettistraße before Hellwagstraße (for line 5A)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
       <pubDate>Fri, 25 Sep 2026 00:00:29 +0200</pubDate>
       <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
       <ext:starts_at>Fri, 25 Sep 2026 00:00:29 +0200</ext:starts_at>
