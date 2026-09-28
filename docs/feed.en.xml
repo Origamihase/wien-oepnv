@@ -7,8 +7,52 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 28 Sep 2026 18:01:04 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 18:31:04 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[D: Fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9d8f985bc8579e324b3ff7171376491cc6897d598e2c963ea5326ebed6084769</guid>
+      <pubDate>Mon, 28 Sep 2026 18:12:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 18:31:04 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 18:17:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service from Schwarzenbergplatz. After a service obstruction there are different intervals. [On 28.09.2026]</description>
+      <content:encoded><![CDATA[Service from Schwarzenbergplatz. After a service obstruction there are different intervals.<br/>[On 28.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71: Fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e32ccd6a0a749ef3b07a82d3180da76bf31bc078e19e26a7a5ca5f1a98cd7189</guid>
+      <pubDate>Mon, 28 Sep 2026 18:12:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 18:31:04 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 18:18:30 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service from Schwarzenbergplatz. After a service obstruction there are different intervals. [On 28.09.2026]</description>
+      <content:encoded><![CDATA[Service from Schwarzenbergplatz. After a service obstruction there are different intervals.<br/>[On 28.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0</guid>
+      <pubDate>Mon, 28 Sep 2026 18:27:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 18:27:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 18:27:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: rescue operation. [On 28.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[On 28.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">97800f58b200adebe0c450744e0d6f8b2bc1a5f38d009c3714aecfef15fad8a7</guid>
+      <pubDate>Mon, 28 Sep 2026 18:12:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 18:12:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 18:18:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service from Resselgasse. After a service obstruction there are different intervals. [On 28.09.2026]</description>
+      <content:encoded><![CDATA[Service from Resselgasse. After a service obstruction there are different intervals.<br/>[On 28.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: Defective vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +61,8 @@
       <ext:first_seen>Mon, 28 Sep 2026 17:56:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 28 Sep 2026 17:56:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction in both directions. Duration: 19:00. Reason: defective vehicle im Haltestellenbereich Schottentor. [On 28.09.2026]</description>
-      <content:encoded><![CDATA[Service obstruction in both directions. Duration: 19:00. Reason: defective vehicle im Haltestellenbereich Schottentor.<br/>[On 28.09.2026]]]></content:encoded>
+      <description>The U2 line does not currently operate between Rathaus and Schottenring. [On 28.09.2026]</description>
+      <content:encoded><![CDATA[The U2 line does not currently operate between Rathaus and Schottenring.<br/>[On 28.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[59A: Traffic congestion]]></title>
@@ -74,50 +118,6 @@
       <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals direction Oper, Karlsplatz U. Reason: traffic accident. [On 28.09.2026]</description>
       <content:encoded><![CDATA[Irregular intervals direction Oper, Karlsplatz U. Reason: traffic accident.<br/>[On 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[47B: Running event at 04.10.2027]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6864a29848e360090798645174eb08bfd5e2d1138aeba3ffff926596908e52a6</guid>
-      <pubDate>Mon, 28 Sep 2026 13:30:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 13:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 13:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
-      <description>The 47B buses will be redirected due to a running event near the Allianz Stadium. [28.09.2026 – 04.10.2026]</description>
-      <content:encoded><![CDATA[The 47B buses will be redirected due to a running event near the Allianz Stadium.<br/>[28.09.2026 – 04.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
-      <pubDate>Mon, 28 Sep 2026 04:40:13 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:40:13 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 04:40:13 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 01:00:00 +0200</ext:ends_at>
-      <description>Reason: construction works. [28.09.2026 – 29.09.2026]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">67078944a93bdf102ba6646e545b32c2ab8c76bf5f5efe8750a1c24d9ac26e08</guid>
-      <pubDate>Mon, 28 Sep 2026 04:00:07 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 04:00:07 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Trains keep in loop, Wipplingerstr 39; service from Augasse; service from Börse. [On 28.09.2026]</description>
-      <content:encoded><![CDATA[Trains keep in loop, Wipplingerstr 39; service from Augasse; service from Börse.<br/>[On 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Replacement service]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6f11b9f2989f7ded86ce2e256372b0c9d235d8bccee56c31a7edc035dbad8893</guid>
-      <pubDate>Mon, 28 Sep 2026 00:00:06 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 00:00:06 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Buses stop at N71 [On 28.09.2026]</description>
-      <content:encoded><![CDATA[Buses stop at N71<br/>[On 28.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
