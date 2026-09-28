@@ -7,40 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 29 Sep 2026 00:30:58 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 01:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[59A: Corrupted overhead line]]></title>
+      <title><![CDATA[N66: Buses stop Salvatorianerplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9b868b9f56e6ba9cca42065a64d7c183e608adacb027dbf8f42f95c2012b5cc1</guid>
-      <pubDate>Mon, 28 Sep 2026 23:54:05 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 00:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 23:54:05 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 00:53:00 +0200</ext:ends_at>
-      <description>Service obstruction; overhead line service from Hans-Mandl-Berufsschule. [28.09.2026 – 29.09.2026]</description>
-      <content:encoded><![CDATA[Service obstruction; overhead line service from Hans-Mandl-Berufsschule.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">24aa68a100b6cf9da31697ad90c76566903c00e84cace4ff88a183b77a6b231c</guid>
+      <pubDate>Tue, 29 Sep 2026 01:00:13 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 01:00:13 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 01:00:13 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 04:20:00 +0200</ext:ends_at>
+      <description>Reason: construction works. [On 29.09.2026]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[On 29.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[62A: Overhead-line fault]]></title>
+      <title><![CDATA[N6: Buses stop Neilreichgasse20-22, Quellenstraße 189]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0e734f7e0bcbbfe261f177dd01a9cacc8356c59ccc00cc517c2cbe07ffe8fa82</guid>
-      <pubDate>Mon, 28 Sep 2026 23:43:06 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 00:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 23:43:06 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 01:00:00 +0200</ext:ends_at>
-      <description>Service from Schedifkaplatz [28.09.2026 – 29.09.2026]</description>
-      <content:encoded><![CDATA[Service from Schedifkaplatz<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Overhead-line fault]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1dc7b9f301cf230d6a81dad4059e15727cd85d281dcbe733acf9c7a9166cf0f3</guid>
-      <pubDate>Mon, 28 Sep 2026 23:40:04 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 00:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 23:40:06 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 01:17:00 +0200</ext:ends_at>
-      <description>Service obstruction Corrupted overhead line; service from Hofwiesengasse; service from Eichenstraße. [28.09.2026 – 29.09.2026]</description>
-      <content:encoded><![CDATA[Service obstruction Corrupted overhead line; service from Hofwiesengasse; service from Eichenstraße.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">65ba91c9ad3212cf9699f4930b16f23c05c678ab5cf7575ab4e562f2f003cfbc</guid>
+      <pubDate>Tue, 29 Sep 2026 00:55:13 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 00:55:13 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 00:55:13 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 05:05:00 +0200</ext:ends_at>
+      <description>Buses stop at Neilreichgasse20-22 construction works Buses stop at QuellenstraßeXX189 [On 29.09.2026]</description>
+      <content:encoded><![CDATA[Buses stop at Neilreichgasse20-22 construction works Buses stop at QuellenstraßeXX189<br/>[On 29.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[47B: Running event at 04.10.2027]]></title>
@@ -52,17 +41,6 @@
       <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
       <description>The 47B buses will be redirected due to a running event near the Allianz Stadium. [28.09.2026 – 04.10.2026]</description>
       <content:encoded><![CDATA[The 47B buses will be redirected due to a running event near the Allianz Stadium.<br/>[28.09.2026 – 04.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
-      <pubDate>Mon, 28 Sep 2026 04:40:13 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:40:13 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 04:40:13 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 01:00:00 +0200</ext:ends_at>
-      <description>Reason: construction works. [28.09.2026 – 29.09.2026]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: Track construction works]]></title>
@@ -87,17 +65,6 @@
       <content:encoded><![CDATA[Buses stop at N71<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[62: ÖBB construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">421c812b010f527d8c6de96551f937085e6d36f6d828b4c0336bd5672eb2be2b</guid>
-      <pubDate>Mon, 28 Sep 2026 00:00:09 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 15:10:51 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 00:00:09 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Trains stop at line 18, direction Burggasse; No operation; service from Kliebergasse. [28.09.2026 – 29.09.2026]</description>
-      <content:encoded><![CDATA[Trains stop at line 18, direction Burggasse; No operation; service from Kliebergasse.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[26E: Track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">dac4be805e97a1ee16cc914e8b4797565e65f97545fca29a6e2a1cbb7fe0bf00</guid>
@@ -118,6 +85,39 @@
       <ext:ends_at>Tue, 29 Sep 2026 04:59:00 +0200</ext:ends_at>
       <description>Bhf. Hütteldorf [On 29.09.2026]</description>
       <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[On 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[74A: Boarding Leberstraße before S-Bahn building]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:10 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 00:00:10 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Reason: construction works. [28.09.2026 – 29.09.2026]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Buses stop Pasettistraße before Hellwagstraße (for line 5A)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:10 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 00:00:10 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Reason: construction works. [28.09.2026 – 29.09.2026]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A/N65/N66: Arthaberplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1d0ceb907a55f1c18e718c2a733505fd71b2504c90bdec3ef3210c2f644856ec</guid>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 24 Sep 2026 11:30:51 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 24 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 11:11:00 +0200</ext:ends_at>
+      <description>Stop relocation of line 7A towards Meidling Hauptstraße U and lines N65 and N66 towards Liesing S Stop: Arthaberplatz From: Arthaberplatz before … [24.09.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[Stop relocation of line 7A towards Meidling Hauptstraße U and lines N65 and N66 towards Liesing S Stop: Arthaberplatz From: Arthaberplatz before …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
