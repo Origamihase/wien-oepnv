@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 28 Sep 2026 18:31:04 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 19:01:16 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[71: Fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e32ccd6a0a749ef3b07a82d3180da76bf31bc078e19e26a7a5ca5f1a98cd7189</guid>
+      <pubDate>Mon, 28 Sep 2026 18:18:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 18:31:04 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 18:18:30 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 19:18:00 +0200</ext:ends_at>
+      <description>Service from Schwarzenbergplatz [On 28.09.2026]</description>
+      <content:encoded><![CDATA[Service from Schwarzenbergplatz<br/>[On 28.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[D: Fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,17 +27,6 @@
       <pubDate>Mon, 28 Sep 2026 18:12:00 +0200</pubDate>
       <ext:first_seen>Mon, 28 Sep 2026 18:31:04 +0200</ext:first_seen>
       <ext:starts_at>Mon, 28 Sep 2026 18:17:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service from Schwarzenbergplatz. After a service obstruction there are different intervals. [On 28.09.2026]</description>
-      <content:encoded><![CDATA[Service from Schwarzenbergplatz. After a service obstruction there are different intervals.<br/>[On 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71: Fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e32ccd6a0a749ef3b07a82d3180da76bf31bc078e19e26a7a5ca5f1a98cd7189</guid>
-      <pubDate>Mon, 28 Sep 2026 18:12:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 18:31:04 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 18:18:30 +0200</ext:starts_at>
       <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Service from Schwarzenbergplatz. After a service obstruction there are different intervals. [On 28.09.2026]</description>
       <content:encoded><![CDATA[Service from Schwarzenbergplatz. After a service obstruction there are different intervals.<br/>[On 28.09.2026]]]></content:encoded>
@@ -71,7 +71,7 @@
       <pubDate>Mon, 28 Sep 2026 17:32:00 +0200</pubDate>
       <ext:first_seen>Mon, 28 Sep 2026 17:32:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 28 Sep 2026 17:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Mon, 28 Sep 2026 18:59:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: traffic congestion. [On 28.09.2026]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[On 28.09.2026]]]></content:encoded>
     </item>
@@ -82,7 +82,7 @@
       <pubDate>Mon, 28 Sep 2026 17:32:00 +0200</pubDate>
       <ext:first_seen>Mon, 28 Sep 2026 17:32:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 28 Sep 2026 17:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Mon, 28 Sep 2026 18:59:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: traffic congestion. [On 28.09.2026]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[On 28.09.2026]]]></content:encoded>
     </item>
@@ -109,15 +109,15 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[On 28.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[3A: Traffic accident]]></title>
+      <title><![CDATA[47B: Running event at 04.10.2027]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d0ca726f4f3064439e34273bfe62cd8cb00619d515176ac7f96f9e089a05e6ac</guid>
-      <pubDate>Mon, 28 Sep 2026 16:14:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 16:14:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 16:14:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals direction Oper, Karlsplatz U. Reason: traffic accident. [On 28.09.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals direction Oper, Karlsplatz U. Reason: traffic accident.<br/>[On 28.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">6864a29848e360090798645174eb08bfd5e2d1138aeba3ffff926596908e52a6</guid>
+      <pubDate>Mon, 28 Sep 2026 13:30:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 13:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 13:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
+      <description>The 47B buses will be redirected due to a running event near the Allianz Stadium. [28.09.2026 – 04.10.2026]</description>
+      <content:encoded><![CDATA[The 47B buses will be redirected due to a running event near the Allianz Stadium.<br/>[28.09.2026 – 04.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
