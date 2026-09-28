@@ -410,42 +410,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Stromstörung Betrieb ab Absberggasse",
-    "description": "Stromstörung\nBetrieb ab Absberggasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "942abec00fc981a2845ed9a1e82adc888bdb02abc5acc5c5ffd20de261d3d975",
-    "pubDate": "2026-09-28T20:39:47+02:00",
-    "starts_at": "2026-09-28T20:39:47+02:00",
-    "ends_at": "2026-09-28T21:39:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-09-28|TK=stromstörung betrieb ab absberggasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Stromstörung Betrieb ab Quellenplatz",
-    "description": "Stromstörung\nBetrieb ab Quellenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ddcbcf9e09c6edb25c426aaa7a33474edec95ee2fe7a9a5a09e07357755d2b93",
-    "pubDate": "2026-09-28T20:39:47+02:00",
-    "starts_at": "2026-09-28T20:39:47+02:00",
-    "ends_at": "2026-09-28T21:39:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-09-28|TK=stromstörung betrieb ab quellenplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Stromstörung Einstieg bei Linie O (Richtung Raxstraße)",
-    "description": "Stromstörung\nEinstieg bei Linie O (Richtung Raxstraße)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9abf42639873175f89c5567bdfd91c61a442b850e6c136882da37a8b6253de12",
-    "pubDate": "2026-09-28T20:40:17+02:00",
-    "starts_at": "2026-09-28T20:40:17+02:00",
-    "ends_at": "2026-09-28T21:39:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-09-28|TK=stromstörung einstieg bei linie o richtung raxstrasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -470,6 +434,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "15A: Fremder Verkehrsunfall",
+    "description": "Die Linie 15A wird in Richtung Enkplatz U, Grillgasse zwischen Gußriegelstraße und Grenzackerstraße über Neilreichgasse - Sahulkastraße - Laxenburger Straße umgeleitet. Die Haltestelle Raxstraße kann dadurch nicht eingehalten werden. Voraussichtliche Dauer: 22:15 Uhr. Grund: Fremder Verkehrsunfall im Bereich Raxstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8465c4a863695aeea5f77f0199c4bf034c7c302614acab16428cdb62511f8686",
+    "pubDate": "2026-09-28T21:45:00+02:00",
+    "starts_at": "2026-09-28T21:45:00+02:00",
+    "ends_at": "2026-09-28T23:55:00+02:00",
+    "_identity": "wl|störung|L=15A|D=2026-09-28|TK=15a fremder verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "15A: Fremdunfall Betrieb ab Grenzackerstraße",
+    "description": "Fremdunfall\nBetrieb ab Grenzackerstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c3e0f6af5c9a3e26dc5b445dc3bb59561ec401a215aff7a769babfa9479802c8",
+    "pubDate": "2026-09-28T21:47:54+02:00",
+    "starts_at": "2026-09-28T21:47:54+02:00",
+    "ends_at": "2026-09-28T22:47:00+02:00",
+    "_identity": "wl|störung|L=15A|D=2026-09-28|TK=fremdunfall betrieb ab grenzackerstrasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -490,18 +478,6 @@
     "starts_at": "2026-09-28T05:00:13+02:00",
     "ends_at": "2026-09-28T23:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-09-28|TK=bhf hütteldorf öbb ersatzbus für 80"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "22A/84A: Verkehrsunfall",
-    "description": "Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Linie 84A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d0e8f5ddbb5c90017c7d34af381c3073b3ddef3b35ef2cd9e9bf1c3b4b7dcc9b",
-    "pubDate": "2026-09-28T20:30:00+02:00",
-    "starts_at": "2026-09-28T20:30:00+02:00",
-    "ends_at": "2026-09-28T23:55:00+02:00",
-    "_identity": "wl|störung|L=22A,84A|D=2026-09-28|TK=84a 22a verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -766,42 +742,6 @@
     "starts_at": "2026-09-28T20:36:00+02:00",
     "ends_at": "2026-09-28T23:55:00+02:00",
     "_identity": "wl|störung|L=6|D=2026-09-28|TK=6 stromstörung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Fahrtbehinderung Stromstörung",
-    "description": "Fahrtbehinderung\nStromstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0d5da10de45e7decbdcbd602a2e9d4b4c67ac4515c305e45a9ccce5b5aa02b48",
-    "pubDate": "2026-09-28T20:38:17+02:00",
-    "starts_at": "2026-09-28T20:38:17+02:00",
-    "ends_at": "2026-09-28T21:37:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-09-28|TK=fahrtbehinderung stromstörung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Stromstörung Betrieb ab Quellenplatz",
-    "description": "Stromstörung\nBetrieb ab Quellenplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a009c6418c91986a05a7a2b520d29f5b019455191441409b2f33daf4a6bb5c6e",
-    "pubDate": "2026-09-28T20:38:47+02:00",
-    "starts_at": "2026-09-28T20:38:47+02:00",
-    "ends_at": "2026-09-28T21:38:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-09-28|TK=stromstörung betrieb ab quellenplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Stromstörung Einstieg bei Linie O (Richtung Raxstraße)",
-    "description": "Stromstörung\nEinstieg bei Linie O (Richtung Raxstraße)",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "01cd0018e5f327a9bc34628b9b035fb5818b0462b48f58f0ec0b86540839f3cd",
-    "pubDate": "2026-09-28T20:39:17+02:00",
-    "starts_at": "2026-09-28T20:39:17+02:00",
-    "ends_at": "2026-09-28T21:38:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-09-28|TK=stromstörung einstieg bei linie o richtung raxstrasse"
   },
   {
     "source": "Wiener Linien",
