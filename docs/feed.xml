@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 28 Sep 2026 03:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 04:01:10 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[D: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">67078944a93bdf102ba6646e545b32c2ab8c76bf5f5efe8750a1c24d9ac26e08</guid>
+      <pubDate>Mon, 28 Sep 2026 04:00:07 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 04:00:07 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse; Betrieb ab Börse. [Am 28.09.2026]</description>
+      <content:encoded><![CDATA[Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse; Betrieb ab Börse.<br/>[Am 28.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N71: Ersatzverkehr]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6f11b9f2989f7ded86ce2e256372b0c9d235d8bccee56c31a7edc035dbad8893</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:06 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 00:00:06 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Busse halten bei Haltestelle N71 [Am 28.09.2026]</description>
+      <content:encoded><![CDATA[Busse halten bei Haltestelle N71<br/>[Am 28.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N20: Busse halten auf der Hauptfahrbahn, Bessemerstraße 1-3]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Mon, 28 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Grund: Bauarbeiten. [Am 28.09.2026]</description>
       <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Am 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A/N65/N66: Arthaberplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1d0ceb907a55f1c18e718c2a733505fd71b2504c90bdec3ef3210c2f644856ec</guid>
-      <pubDate>Thu, 24 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 24 Sep 2026 11:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 24 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 11:11:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 7A in Richtung Meidling Hauptstraße U sowie der Linien N65 und N66 in Richtung Liesing S Haltestelle: Arthaberplatz Von: Arthaberplatz vor … [24.09.2026 – 02.10.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 7A in Richtung Meidling Hauptstraße U sowie der Linien N65 und N66 in Richtung Liesing S Haltestelle: Arthaberplatz Von: Arthaberplatz vor …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N66/N68R: Quellenplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">31d6ac9f73525f3feaa44bb3eb6fdafe467567211114f38f99f0fbe41a2e441e</guid>
-      <pubDate>Thu, 24 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 24 Sep 2026 11:30:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 24 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 15:00:00 +0200</ext:ends_at>
-      <description>Haltestellenverlegung der Linie N66 in Richtung Oper, Karlsplatz und der Rufbuslinie N68 in Richtung Oberlaa U Haltestelle: Quellenplatz Von: Quellenplatz 4 im Zuge … [24.09.2026 – 02.10.2026]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie N66 in Richtung Oper, Karlsplatz und der Rufbuslinie N68 in Richtung Oberlaa U Haltestelle: Quellenplatz Von: Quellenplatz 4 im Zuge …<br/>[24.09.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

@@ -65,7 +65,7 @@
     },
     "total": 1862
   },
-  "generated_at": "2026-09-28T03:31:03+02:00",
+  "generated_at": "2026-09-28T04:01:25+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 1.03,
@@ -142,7 +142,7 @@
       "01": 88,
       "02": 23,
       "03": 20,
-      "04": 76,
+      "04": 78,
       "05": 110,
       "06": 84,
       "07": 91,
@@ -166,7 +166,7 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 178,
       "VOR/VAO": 11,
-      "Wiener Linien": 2782,
+      "Wiener Linien": 2784,
       "ÖBB": 266
     },
     "by_weekday": {
@@ -174,11 +174,11 @@
       "Do": 520,
       "Fr": 502,
       "Mi": 505,
-      "Mo": 443,
+      "Mo": 445,
       "Sa": 398,
       "So": 402
     },
-    "total": 3237
+    "total": 3239
   },
   "year": 2026
 }
