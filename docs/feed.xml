@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 28 Sep 2026 15:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 16:01:07 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U2: Rettungseinsatz]]></title>
+      <title><![CDATA[10: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
-      <pubDate>Mon, 28 Sep 2026 13:59:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 13:59:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 13:59:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">16c51ee2b2984d45bbd71989ff3d0d66e0985c8e3f7cd97f24dd849e4de65737</guid>
+      <pubDate>Mon, 28 Sep 2026 15:38:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 16:01:07 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 15:45:16 +0200</ext:starts_at>
       <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 28.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 28.09.2026]]]></content:encoded>
+      <description>Betrieb ab Hütteldorfer Straße U. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 28.09.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Hütteldorfer Straße U. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 28.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[50A: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d8237ec6ad4aa37e360bd01d080083b93bf5aad5bba8399c6b4e72de49b31dd8</guid>
+      <pubDate>Mon, 28 Sep 2026 15:52:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 15:52:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 15:52:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 17:00:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 28.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 28.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Verspätungen]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 28 Sep 2026 23:00:00 +0200</ext:ends_at>
       <description>Bhf. Hütteldorf [Am 28.09.2026]</description>
       <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Am 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Einstieg Leberstraße vor S-Bahn-Gebäude]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e</guid>
-      <pubDate>Mon, 28 Sep 2026 00:00:10 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 00:00:10 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Grund: Bauarbeiten. [Am 28.09.2026]</description>
-      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Am 28.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
