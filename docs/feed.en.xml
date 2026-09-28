@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 28 Sep 2026 08:31:02 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 09:01:08 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[O: Delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">178cf2e06d6bf9e3207e789e31504019ebfed19bf91191929c7996b4b8b6d1a7</guid>
+      <pubDate>Mon, 28 Sep 2026 08:52:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 08:52:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 08:52:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [On 28.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[On 28.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[58B: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Tue, 29 Sep 2026 01:00:00 +0200</ext:ends_at>
       <description>Reason: construction works. [28.09.2026 – 29.09.2026]</description>
       <content:encoded><![CDATA[Reason: construction works.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">67078944a93bdf102ba6646e545b32c2ab8c76bf5f5efe8750a1c24d9ac26e08</guid>
-      <pubDate>Mon, 28 Sep 2026 04:00:07 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 04:00:07 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Trains keep in loop, Wipplingerstr 39; service from Augasse; service from Börse. [On 28.09.2026]</description>
-      <content:encoded><![CDATA[Trains keep in loop, Wipplingerstr 39; service from Augasse; service from Börse.<br/>[On 28.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
