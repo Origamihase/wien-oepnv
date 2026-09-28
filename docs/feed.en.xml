@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 28 Sep 2026 17:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 18:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U2: Service disruption]]></title>
+      <title><![CDATA[U2: Defective vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4</guid>
-      <pubDate>Mon, 28 Sep 2026 17:05:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 17:05:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 17:05:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104</guid>
+      <pubDate>Mon, 28 Sep 2026 17:56:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 17:56:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 17:56:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 28.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 28.09.2026]]]></content:encoded>
+      <description>Service obstruction in both directions. Duration: 19:00. Reason: defective vehicle im Haltestellenbereich Schottentor. [On 28.09.2026]</description>
+      <content:encoded><![CDATA[Service obstruction in both directions. Duration: 19:00. Reason: defective vehicle im Haltestellenbereich Schottentor.<br/>[On 28.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[59A: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5</guid>
+      <pubDate>Mon, 28 Sep 2026 17:32:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 17:32:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 17:32:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic congestion. [On 28.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[On 28.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d22f8a5721cb328952fc07b28fc40f91ea591ee68bafe657d779bd5fbff1b8bc</guid>
+      <pubDate>Mon, 28 Sep 2026 17:32:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 17:32:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 17:32:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic congestion. [On 28.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[On 28.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Service disruption]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Mon, 28 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Buses stop at N71 [On 28.09.2026]</description>
       <content:encoded><![CDATA[Buses stop at N71<br/>[On 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: ÖBB construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">421c812b010f527d8c6de96551f937085e6d36f6d828b4c0336bd5672eb2be2b</guid>
-      <pubDate>Mon, 28 Sep 2026 00:00:09 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 15:10:51 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 00:00:09 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Trains stop at line 18, direction Burggasse; No operation; service from Kliebergasse. [On 28.09.2026]</description>
-      <content:encoded><![CDATA[Trains stop at line 18, direction Burggasse; No operation; service from Kliebergasse.<br/>[On 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26E: Track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dac4be805e97a1ee16cc914e8b4797565e65f97545fca29a6e2a1cbb7fe0bf00</guid>
-      <pubDate>Fri, 25 Sep 2026 08:55:00 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 09:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 08:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
-      <description>The capacities of the replacement line 26E are not comparable to those of a tram. [25.09.2026 – 12.12.2026]</description>
-      <content:encoded><![CDATA[The capacities of the replacement line 26E are not comparable to those of a tram.<br/>[25.09.2026 – 12.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
