@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 28 Sep 2026 16:01:07 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 16:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[O: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d</guid>
+      <pubDate>Mon, 28 Sep 2026 16:18:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 16:18:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 16:18:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic congestion. [On 28.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[On 28.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[3A: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d0ca726f4f3064439e34273bfe62cd8cb00619d515176ac7f96f9e089a05e6ac</guid>
+      <pubDate>Mon, 28 Sep 2026 16:14:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 16:14:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 16:14:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals direction Oper, Karlsplatz U. Reason: traffic accident. [On 28.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals direction Oper, Karlsplatz U. Reason: traffic accident.<br/>[On 28.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[10: Fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Mon, 28 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Trains stop at line 18, direction Burggasse; No operation; service from Kliebergasse. [On 28.09.2026]</description>
       <content:encoded><![CDATA[Trains stop at line 18, direction Burggasse; No operation; service from Kliebergasse.<br/>[On 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26E: Track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dac4be805e97a1ee16cc914e8b4797565e65f97545fca29a6e2a1cbb7fe0bf00</guid>
-      <pubDate>Fri, 25 Sep 2026 08:55:00 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 09:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 08:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
-      <description>The capacities of the replacement line 26E are not comparable to those of a tram. [25.09.2026 – 12.12.2026]</description>
-      <content:encoded><![CDATA[The capacities of the replacement line 26E are not comparable to those of a tram.<br/>[25.09.2026 – 12.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S80: ÖBB replacement bus]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Mon, 28 Sep 2026 05:00:13 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 05:00:28 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 05:00:13 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:00:00 +0200</ext:ends_at>
-      <description>Bhf. Hütteldorf [On 28.09.2026]</description>
-      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[On 28.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
