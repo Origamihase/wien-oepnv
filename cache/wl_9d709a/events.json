@@ -434,6 +434,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
+    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
+    "pubDate": "2026-09-29T00:30:11+02:00",
+    "starts_at": "2026-09-29T00:30:11+02:00",
+    "ends_at": "2026-09-29T04:59:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-09-29|TK=bhf hütteldorf öbb ersatzbus für 80"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "25: Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
     "description": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -668,7 +680,7 @@
     "guid": "0e734f7e0bcbbfe261f177dd01a9cacc8356c59ccc00cc517c2cbe07ffe8fa82",
     "pubDate": "2026-09-28T23:43:06+02:00",
     "starts_at": "2026-09-28T23:43:06+02:00",
-    "ends_at": "2026-09-29T00:42:00+02:00",
+    "ends_at": "2026-09-29T01:00:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-09-28|TK=oberleitungsgebr betrieb ab schedifkaplatz"
   },
   {
@@ -686,14 +698,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Oberleitungsgebr Betrieb ab Bhf. Meidling, Dörfelstraße",
-    "description": "Oberleitungsgebr\nBetrieb ab Bhf. Meidling, Dörfelstraße <>",
+    "title": "62: Oberleitungsgebr Betrieb ab Eichenstraße",
+    "description": "Oberleitungsgebr\nBetrieb ab Eichenstraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "aba09e5463b841456577f3609c3cd9dfcb77dff693e10d111877e98cfa145b59",
-    "pubDate": "2026-09-28T23:40:06+02:00",
+    "guid": "f7a8ec8a32b20757f2348395dde331117114175e846a1a7ca7643f1e5aa713db",
+    "pubDate": "2026-09-28T23:40:04+02:00",
     "starts_at": "2026-09-28T23:42:04+02:00",
-    "ends_at": "2026-09-29T00:40:00+02:00",
-    "_identity": "wl|störung|L=62|D=2026-09-28|TK=oberleitungsgebr betrieb ab bhf meidling dörfelstrasse"
+    "ends_at": "2026-09-29T01:17:00+02:00",
+    "_identity": "wl|störung|L=62|D=2026-09-28|TK=oberleitungsgebr betrieb ab eichenstrasse"
   },
   {
     "source": "Wiener Linien",
@@ -703,8 +715,8 @@
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "c3606b02adb64c7781a371b24e6ee83eb9209384e2bcafe10a250ae321f87c61",
     "pubDate": "2026-09-28T23:40:04+02:00",
-    "starts_at": "2026-09-28T23:40:06+02:00",
-    "ends_at": "2026-09-29T00:41:00+02:00",
+    "starts_at": "2026-09-29T00:18:09+02:00",
+    "ends_at": "2026-09-29T01:17:00+02:00",
     "_identity": "wl|störung|L=62|D=2026-09-28|TK=oberleitungsgebr betrieb ab hofwiesengasse"
   },
   {
@@ -830,26 +842,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "LB: Oberleitungsgebr Betrieb ab Bhf. Meidling, Dörfelstraße",
-    "description": "Oberleitungsgebr\nBetrieb ab Bhf. Meidling, Dörfelstraße <>",
+    "title": "LB: Oberleitungsgebr Betrieb ab Matzleinsdorfer Platz",
+    "description": "Oberleitungsgebr\nBetrieb ab Matzleinsdorfer Platz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f95002887be5f81662e4dcea4e2d707785c304876064059778b80e5cdc0ecee9",
+    "guid": "c066765a89236d676e647d88a1a37358f552ac726298f7eda626e03e521e5497",
     "pubDate": "2026-09-28T23:47:36+02:00",
-    "starts_at": "2026-09-28T23:47:36+02:00",
-    "ends_at": "2026-09-29T00:46:00+02:00",
-    "_identity": "wl|störung|L=LB|D=2026-09-28|TK=oberleitungsgebr betrieb ab bhf meidling dörfelstrasse"
+    "starts_at": "2026-09-29T00:16:39+02:00",
+    "ends_at": "2026-09-29T01:16:00+02:00",
+    "_identity": "wl|störung|L=LB|D=2026-09-28|TK=oberleitungsgebr betrieb ab matzleinsdorfer platz"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "LB: Oberleitungsgebr Betrieb ab Bhf. Meidling, Schedifkaplatz",
-    "description": "Oberleitungsgebr\nBetrieb ab Bhf. Meidling, Schedifkaplatz <>",
+    "title": "LB: Oberleitungsgebr Betrieb ab Schedifkaplatz",
+    "description": "Oberleitungsgebr\nBetrieb ab Schedifkaplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "de31ca4690ed53ed1b78b3886aae4057847915f4c99343d8cacd860513b4bac5",
+    "guid": "fc73650de60ce94cdb2f0d61c2eb682e35cc559cb8721835396621f24262af40",
     "pubDate": "2026-09-28T23:47:36+02:00",
-    "starts_at": "2026-09-28T23:47:36+02:00",
-    "ends_at": "2026-09-29T00:47:00+02:00",
-    "_identity": "wl|störung|L=LB|D=2026-09-28|TK=oberleitungsgebr betrieb ab bhf meidling schedifkaplatz"
+    "starts_at": "2026-09-29T00:17:09+02:00",
+    "ends_at": "2026-09-29T01:16:00+02:00",
+    "_identity": "wl|störung|L=LB|D=2026-09-28|TK=oberleitungsgebr betrieb ab schedifkaplatz"
   },
   {
     "source": "Wiener Linien",

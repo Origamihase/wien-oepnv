@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 29 Sep 2026 00:00:55 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 00:30:58 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[59A: Beschädigte Oberleitung]]></title>
@@ -27,7 +27,7 @@
       <pubDate>Mon, 28 Sep 2026 23:43:06 +0200</pubDate>
       <ext:first_seen>Tue, 29 Sep 2026 00:00:55 +0200</ext:first_seen>
       <ext:starts_at>Mon, 28 Sep 2026 23:43:06 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 00:42:00 +0200</ext:ends_at>
+      <ext:ends_at>Tue, 29 Sep 2026 01:00:00 +0200</ext:ends_at>
       <description>Betrieb ab Schedifkaplatz [28.09.2026 – 29.09.2026]</description>
       <content:encoded><![CDATA[Betrieb ab Schedifkaplatz<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
     </item>
@@ -38,9 +38,9 @@
       <pubDate>Mon, 28 Sep 2026 23:40:04 +0200</pubDate>
       <ext:first_seen>Tue, 29 Sep 2026 00:00:55 +0200</ext:first_seen>
       <ext:starts_at>Mon, 28 Sep 2026 23:40:06 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 00:41:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung Beschädigte Oberleitung; Betrieb ab Hofwiesengasse; Betrieb ab Bhf. Meidling, Dörfelstraße. [28.09.2026 – 29.09.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung Beschädigte Oberleitung; Betrieb ab Hofwiesengasse; Betrieb ab Bhf. Meidling, Dörfelstraße.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
+      <ext:ends_at>Tue, 29 Sep 2026 01:17:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung Beschädigte Oberleitung; Betrieb ab Hofwiesengasse; Betrieb ab Eichenstraße. [28.09.2026 – 29.09.2026]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung Beschädigte Oberleitung; Betrieb ab Hofwiesengasse; Betrieb ab Eichenstraße.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[47B: Laufveranstaltung am 04.10.2027]]></title>
@@ -109,15 +109,15 @@
       <content:encoded><![CDATA[Die Kapazitäten der Ersatzlinie 26E sind nicht mit denen einer Straßenbahn vergleichbar.<br/>[25.09.2026 – 12.12.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[74A: Einstieg Leberstraße vor S-Bahn-Gebäude]]></title>
+      <title><![CDATA[S80: ÖBB-Ersatzbus]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e</guid>
-      <pubDate>Mon, 28 Sep 2026 00:00:10 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 00:00:10 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Grund: Bauarbeiten. [28.09.2026 – 29.09.2026]</description>
-      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
+      <pubDate>Tue, 29 Sep 2026 00:30:11 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 05:00:28 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 00:30:11 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 04:59:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf [Am 29.09.2026]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Am 29.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
