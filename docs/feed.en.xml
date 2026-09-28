@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 28 Sep 2026 13:01:09 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 13:31:02 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[47B: Running event at 04.10.2027]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6864a29848e360090798645174eb08bfd5e2d1138aeba3ffff926596908e52a6</guid>
+      <pubDate>Mon, 28 Sep 2026 13:30:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 13:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 13:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
+      <description>The 47B buses will be redirected due to a running event near the Allianz Stadium. [28.09.2026 – 04.10.2026]</description>
+      <content:encoded><![CDATA[The 47B buses will be redirected due to a running event near the Allianz Stadium.<br/>[28.09.2026 – 04.10.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[20A: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -24,23 +35,12 @@
       <title><![CDATA[43: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">de57d7fc844121db03d0e532febfd7d62faf7f8cc5ced1951f3e1470fcd4d6c8</guid>
-      <pubDate>Mon, 28 Sep 2026 12:15:26 +0200</pubDate>
+      <pubDate>Mon, 28 Sep 2026 11:59:00 +0200</pubDate>
       <ext:first_seen>Mon, 28 Sep 2026 11:59:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 28 Sep 2026 11:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service from Rosensteingasse. After a service obstruction there are different intervals. [On 28.09.2026]</description>
-      <content:encoded><![CDATA[Service from Rosensteingasse. After a service obstruction there are different intervals.<br/>[On 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Interlocking failure]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d264cf297118f15193acf542540f7ba8a223f20092400da6f3686e026fb42613</guid>
-      <pubDate>Mon, 28 Sep 2026 11:28:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 11:28:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 11:28:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: interlocking failure [On 28.09.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: interlocking failure<br/>[On 28.09.2026]]]></content:encoded>
+      <ext:ends_at>Mon, 28 Sep 2026 13:45:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [On 28.09.2026]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 28.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
