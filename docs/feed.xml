@@ -7,29 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 28 Sep 2026 20:31:05 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 21:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[84A: Verkehrsunfall]]></title>
+      <title><![CDATA[11: Stromstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5d702aa13277ee935b7d4f0b9d4455572013ee81e209df9b678bbff8032d361f</guid>
+      <guid isPermaLink="false">942abec00fc981a2845ed9a1e82adc888bdb02abc5acc5c5ffd20de261d3d975</guid>
+      <pubDate>Mon, 28 Sep 2026 20:39:47 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 21:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 20:39:47 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 21:39:00 +0200</ext:ends_at>
+      <description>Betrieb ab Absberggasse; Betrieb ab Quellenplatz; Einstieg bei Linie O (Richtung Raxstraße). [Am 28.09.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Absberggasse; Betrieb ab Quellenplatz; Einstieg bei Linie O (Richtung Raxstraße).<br/>[Am 28.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[6: Stromstörung & Stromstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0d5da10de45e7decbdcbd602a2e9d4b4c67ac4515c305e45a9ccce5b5aa02b48</guid>
+      <pubDate>Mon, 28 Sep 2026 20:38:47 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 21:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 20:38:17 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 21:38:00 +0200</ext:ends_at>
+      <description>Betrieb ab Quellenplatz; Stromstörung Einstieg bei Linie O (Richtung Raxstraße). [Am 28.09.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Quellenplatz; Stromstörung Einstieg bei Linie O (Richtung Raxstraße).<br/>[Am 28.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[22A/84A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d0e8f5ddbb5c90017c7d34af381c3073b3ddef3b35ef2cd9e9bf1c3b4b7dcc9b</guid>
       <pubDate>Mon, 28 Sep 2026 20:30:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 20:30:00 +0200</ext:first_seen>
+      <ext:first_seen>Mon, 28 Sep 2026 21:00:49 +0200</ext:first_seen>
       <ext:starts_at>Mon, 28 Sep 2026 20:30:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 28.09.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104</guid>
-      <pubDate>Mon, 28 Sep 2026 17:56:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 17:56:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 17:56:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 20:38:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 28.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 28.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[47B: Laufveranstaltung am 04.10.2027]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 28 Sep 2026 23:00:00 +0200</ext:ends_at>
       <description>Bhf. Hütteldorf [Am 28.09.2026]</description>
       <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Am 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Einstieg Leberstraße vor S-Bahn-Gebäude]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e</guid>
-      <pubDate>Mon, 28 Sep 2026 00:00:10 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 00:00:10 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Grund: Bauarbeiten. [Am 28.09.2026]</description>
-      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Am 28.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
