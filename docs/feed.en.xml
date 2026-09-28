@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 28 Sep 2026 13:31:02 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 14:01:22 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U2: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
+      <pubDate>Mon, 28 Sep 2026 13:59:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 13:59:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 13:59:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: rescue operation. [On 28.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[On 28.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U1: Delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
+      <pubDate>Mon, 28 Sep 2026 13:34:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 13:34:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 13:34:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [On 28.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[On 28.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[47B: Running event at 04.10.2027]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,28 +41,6 @@
       <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
       <description>The 47B buses will be redirected due to a running event near the Allianz Stadium. [28.09.2026 – 04.10.2026]</description>
       <content:encoded><![CDATA[The 47B buses will be redirected due to a running event near the Allianz Stadium.<br/>[28.09.2026 – 04.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[20A: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1d0b92f0a1c96c3a03b383d97d13863111f54690bf9149ac1273cbb457788459</guid>
-      <pubDate>Mon, 28 Sep 2026 12:31:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 12:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 12:31:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident in the Kaisermühlen-VIC U. [On 28.09.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident in the Kaisermühlen-VIC U.<br/>[On 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">de57d7fc844121db03d0e532febfd7d62faf7f8cc5ced1951f3e1470fcd4d6c8</guid>
-      <pubDate>Mon, 28 Sep 2026 11:59:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 11:59:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 11:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 13:45:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 28.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 28.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
