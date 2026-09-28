@@ -7,51 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 28 Sep 2026 19:01:16 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 19:31:05 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[71: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e32ccd6a0a749ef3b07a82d3180da76bf31bc078e19e26a7a5ca5f1a98cd7189</guid>
-      <pubDate>Mon, 28 Sep 2026 18:18:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 18:31:04 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 18:18:30 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 19:18:00 +0200</ext:ends_at>
-      <description>Betrieb ab Schwarzenbergplatz [Am 28.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Schwarzenbergplatz<br/>[Am 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9d8f985bc8579e324b3ff7171376491cc6897d598e2c963ea5326ebed6084769</guid>
-      <pubDate>Mon, 28 Sep 2026 18:12:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 18:31:04 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 18:17:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb ab Schwarzenbergplatz. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 28.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Schwarzenbergplatz. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0</guid>
-      <pubDate>Mon, 28 Sep 2026 18:27:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 18:27:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 18:27:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 28.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 28.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[1: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">97800f58b200adebe0c450744e0d6f8b2bc1a5f38d009c3714aecfef15fad8a7</guid>
       <pubDate>Mon, 28 Sep 2026 18:12:00 +0200</pubDate>
       <ext:first_seen>Mon, 28 Sep 2026 18:12:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 18:18:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb ab Resselgasse. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 28.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Resselgasse. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 28.09.2026]]]></content:encoded>
+      <ext:starts_at>Mon, 28 Sep 2026 18:12:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 20:01:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 28.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 28.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U2: Schadhaftes Fahrzeug]]></title>
@@ -65,50 +32,6 @@
       <content:encoded><![CDATA[Die Linie U2 fährt derzeit nicht zwischen Rathaus und Schottenring.<br/>[Am 28.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[59A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5</guid>
-      <pubDate>Mon, 28 Sep 2026 17:32:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 17:32:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 17:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 18:59:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 28.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d22f8a5721cb328952fc07b28fc40f91ea591ee68bafe657d779bd5fbff1b8bc</guid>
-      <pubDate>Mon, 28 Sep 2026 17:32:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 17:32:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 17:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 18:59:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 28.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f</guid>
-      <pubDate>Mon, 28 Sep 2026 16:53:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 16:53:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 16:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung im Haltestellenbereich Ottakring. [Am 28.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung im Haltestellenbereich Ottakring.<br/>[Am 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[O: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d</guid>
-      <pubDate>Mon, 28 Sep 2026 16:18:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 16:18:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 16:18:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 28 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 28.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 28.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[47B: Laufveranstaltung am 04.10.2027]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">6864a29848e360090798645174eb08bfd5e2d1138aeba3ffff926596908e52a6</guid>
@@ -118,6 +41,83 @@
       <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
       <description>Wegen einer Laufveranstaltung im Nahbereich des Allianz Stadions werden die Busse der Linie 47B umgeleitet. [28.09.2026 – 04.10.2026]</description>
       <content:encoded><![CDATA[Wegen einer Laufveranstaltung im Nahbereich des Allianz Stadions werden die Busse der Linie 47B umgeleitet.<br/>[28.09.2026 – 04.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Mon, 28 Sep 2026 04:40:13 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 04:40:13 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 04:40:13 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 01:00:00 +0200</ext:ends_at>
+      <description>Grund: Bauarbeiten. [28.09.2026 – 29.09.2026]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[D: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">67078944a93bdf102ba6646e545b32c2ab8c76bf5f5efe8750a1c24d9ac26e08</guid>
+      <pubDate>Mon, 28 Sep 2026 04:00:07 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 04:00:07 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse; Betrieb ab Börse. [Am 28.09.2026]</description>
+      <content:encoded><![CDATA[Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse; Betrieb ab Börse.<br/>[Am 28.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N71: Ersatzverkehr]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6f11b9f2989f7ded86ce2e256372b0c9d235d8bccee56c31a7edc035dbad8893</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:06 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 00:00:06 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Busse halten bei Haltestelle N71 [Am 28.09.2026]</description>
+      <content:encoded><![CDATA[Busse halten bei Haltestelle N71<br/>[Am 28.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: ÖBB Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">421c812b010f527d8c6de96551f937085e6d36f6d828b4c0336bd5672eb2be2b</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:09 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 15:10:51 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 00:00:09 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Züge halten bei Linie 18, Richtung Burggasse; Kein Betrieb; Betrieb ab Kliebergasse. [Am 28.09.2026]</description>
+      <content:encoded><![CDATA[Züge halten bei Linie 18, Richtung Burggasse; Kein Betrieb; Betrieb ab Kliebergasse.<br/>[Am 28.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26E: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dac4be805e97a1ee16cc914e8b4797565e65f97545fca29a6e2a1cbb7fe0bf00</guid>
+      <pubDate>Fri, 25 Sep 2026 08:55:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 09:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 08:55:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
+      <description>Die Kapazitäten der Ersatzlinie 26E sind nicht mit denen einer Straßenbahn vergleichbar. [25.09.2026 – 12.12.2026]</description>
+      <content:encoded><![CDATA[Die Kapazitäten der Ersatzlinie 26E sind nicht mit denen einer Straßenbahn vergleichbar.<br/>[25.09.2026 – 12.12.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: ÖBB-Ersatzbus]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
+      <pubDate>Mon, 28 Sep 2026 05:00:13 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 05:00:28 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 05:00:13 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:00:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf [Am 28.09.2026]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Am 28.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[74A: Einstieg Leberstraße vor S-Bahn-Gebäude]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:10 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 00:00:10 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 28 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Grund: Bauarbeiten. [Am 28.09.2026]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Am 28.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
