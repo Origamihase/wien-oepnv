@@ -291,7 +291,7 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "N31: Stammersdorf ersatzlos aufgelassen",
-    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenauflassung der Linie N31 in Richtung Schwedenplatz U</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stammersdorf&nbsp;</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Br&uuml;nnerstra&szlig;e gegen&uuml;ber 262</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Ersatzlos aufgelassen</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 30. September 2026, etwa 13:00 Uhr, bis voraussichtlich Mai 2027</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rohrleitungsarbeiten</span></p>",
+    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenauflassung der Linie N31 in Richtung Schwedenplatz U</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stammersdorf&nbsp;</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Br&uuml;nner Stra&szlig;e gegen&uuml;ber 262</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Ersatzlos aufgelassen</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 30. September 2026, etwa 13:00 Uhr, bis voraussichtlich Mai 2027</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rohrleitungsarbeiten</span></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "c6414f05e0d7316905e3faa36cf0ae3462bb94b5012ef094ee688e0b738e70df",
     "pubDate": "2026-09-23T00:00:00+02:00",
@@ -406,6 +406,30 @@
     "starts_at": "2026-09-28T00:00:08+02:00",
     "ends_at": "2026-09-28T23:59:59+02:00",
     "_identity": "wl|störung|L=12A|D=2026-09-28|TK=betrieb ab schweglerstrasse 19 21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Schadhafter PKW",
+    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9bfc09400cbab037ba3921881e740e24b07301b7269331389dfd1fb1718c8618",
+    "pubDate": "2026-09-28T11:03:00+02:00",
+    "starts_at": "2026-09-28T11:03:00+02:00",
+    "ends_at": "2026-09-28T23:55:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2026-09-28|TK=13a schadhafter pkw"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Fahrtbehinderung Schadhafter Pkw",
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1bda8432157ff4df3afe6245ec0a3ee4c72122c29edc59c17781904341654a66",
+    "pubDate": "2026-09-28T11:07:19+02:00",
+    "starts_at": "2026-09-28T11:07:19+02:00",
+    "ends_at": "2026-09-28T12:06:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2026-09-28|TK=fahrtbehinderung schadhafter pkw"
   },
   {
     "source": "Wiener Linien",
@@ -650,6 +674,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5: Fahrtbehinderung Falschparker",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
+    "pubDate": "2026-09-28T11:15:00+02:00",
+    "starts_at": "2026-09-28T11:17:20+02:00",
+    "ends_at": "2026-09-28T12:16:00+02:00",
+    "_identity": "wl|störung|L=5|D=2026-09-28|TK=falschparker"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62: Züge halten bei Linie 18, Richtung Burggasse",
     "description": "Züge halten bei\nLinie 18, Richtung Burggasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -818,14 +854,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Rettungseinsatz",
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "U1: Stellwerksstörung",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stellwerksstörung",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
-    "pubDate": "2026-09-28T07:34:00+02:00",
-    "starts_at": "2026-09-28T07:34:00+02:00",
+    "guid": "d264cf297118f15193acf542540f7ba8a223f20092400da6f3686e026fb42613",
+    "pubDate": "2026-09-28T11:28:00+02:00",
+    "starts_at": "2026-09-28T11:28:00+02:00",
     "ends_at": "2026-09-28T23:55:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2026-09-28|TK=rettungseinsatz"
+    "_identity": "wl|störung|L=U1|D=2026-09-28|TK=u1 stellwerksstörung"
   },
   {
     "source": "Wiener Linien",
