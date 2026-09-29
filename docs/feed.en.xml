@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 30 Sep 2026 00:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 30 Sep 2026 01:01:09 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N66: Buses stop at Laxenburger Straße 66, Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">de5bef89066edfd6daf8bb406b5f2613576237d70d044a50c26d82c0751168da</guid>
+      <pubDate>Wed, 30 Sep 2026 01:00:28 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 01:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 01:00:27 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 30 Sep 2026 05:00:00 +0200</ext:ends_at>
+      <description>Reason: construction works. [On 30.09.2026]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[On 30.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N65: Buses stop at Laxenburger Straße 66]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">46039872a85000ac66dcb55f28e868aade146322b5be31154e1c47fa0d40f94a</guid>
+      <pubDate>Wed, 30 Sep 2026 01:00:27 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 01:01:09 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 01:00:27 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 30 Sep 2026 05:00:00 +0200</ext:ends_at>
+      <description>Reason: construction works. [On 30.09.2026]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[On 30.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N6: Buses stop Neilreichgasse20-22, Quellenstraße 189]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">65ba91c9ad3212cf9699f4930b16f23c05c678ab5cf7575ab4e562f2f003cfbc</guid>
+      <pubDate>Wed, 30 Sep 2026 00:55:27 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 00:55:27 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 00:55:27 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 30 Sep 2026 05:05:00 +0200</ext:ends_at>
+      <description>Buses stop at Neilreichgasse20-22 construction works Buses stop at QuellenstraßeXX189 [On 30.09.2026]</description>
+      <content:encoded><![CDATA[Buses stop at Neilreichgasse20-22 construction works Buses stop at QuellenstraßeXX189<br/>[On 30.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N29: Delays]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,39 +52,6 @@
       <ext:ends_at>Wed, 30 Sep 2026 04:45:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: service disruption. [On 30.09.2026]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[On 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Contamination]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0888c1d875334376a10ad60bd733b6a5f43fd3920cb8605cfdea62f9236bbc97</guid>
-      <pubDate>Tue, 29 Sep 2026 23:56:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 23:56:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 23:56:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 01:00:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: contamination. [29.09.2026 – 30.09.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[29.09.2026 – 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Buses stop at Laxenburger Straße 66]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">35f178eee322da59d290f9e66ca5dc127c582dbc622f6759ce6caadbc778c468</guid>
-      <pubDate>Tue, 29 Sep 2026 07:13:12 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 07:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 07:13:12 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 00:45:00 +0200</ext:ends_at>
-      <description>Reason: construction works. [29.09.2026 – 30.09.2026]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[29.09.2026 – 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
-      <pubDate>Tue, 29 Sep 2026 04:40:28 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 04:40:28 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 04:40:28 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 01:00:00 +0200</ext:ends_at>
-      <description>Reason: construction works. [29.09.2026 – 30.09.2026]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[29.09.2026 – 30.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[47B: Running event at 04.10.2027]]></title>
