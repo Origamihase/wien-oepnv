@@ -7,10 +7,21 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 29 Sep 2026 17:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 17:31:00 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[4A/7A/10A/16A: Traffic congestion]]></title>
+      <title><![CDATA[13A: Fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">11c860f3f02e4dd83a6557e082cdea5c1a1bc33e5b21562974041148aead9260</guid>
+      <pubDate>Tue, 29 Sep 2026 17:18:00 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 17:18:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 17:19:12 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [On 29.09.2026]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10A/16A/4A/7A: Traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">9654ad71070ed2c364a10d375245cc738e840d87025d60cd0ad7df39ebf0ab3f</guid>
       <pubDate>Tue, 29 Sep 2026 15:38:00 +0200</pubDate>
@@ -30,17 +41,6 @@
       <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: defective vehicle. [On 29.09.2026]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[On 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7</guid>
-      <pubDate>Tue, 29 Sep 2026 16:25:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 16:25:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 16:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 29.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 29.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46A/46B: Fire-brigade operation]]></title>
@@ -79,9 +79,9 @@
       <title><![CDATA[6: Foreign traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">67f6f340526dbbc6c28a07268bd4d4da5596272e34d03f234305749a96c6a33a</guid>
-      <pubDate>Tue, 29 Sep 2026 14:02:00 +0200</pubDate>
+      <pubDate>Tue, 29 Sep 2026 17:13:12 +0200</pubDate>
       <ext:first_seen>Tue, 29 Sep 2026 14:02:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 14:02:00 +0200</ext:starts_at>
+      <ext:starts_at>Tue, 29 Sep 2026 17:10:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [On 29.09.2026]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 29.09.2026]]]></content:encoded>
