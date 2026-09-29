@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 29 Sep 2026 21:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 22:01:18 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[27: Signal disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d181af5e303219e8a9902182bf958920050b8c374b8def743f51143ee197aff3</guid>
-      <pubDate>Tue, 29 Sep 2026 21:22:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 21:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 21:22:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 22:00:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: signal disruption. [On 29.09.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: signal disruption.<br/>[On 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[O: Contamination]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dc7342a90fe1d05d98efc9491edf8888b79ca9c35e7d9cbc57a2361ba1a35f43</guid>
-      <pubDate>Tue, 29 Sep 2026 20:52:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 20:52:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 20:52:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: contamination. [On 29.09.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[On 29.09.2026]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[7A: Buses stop at Laxenburger Straße 66]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +96,28 @@
       <ext:ends_at>Tue, 29 Sep 2026 23:00:00 +0200</ext:ends_at>
       <description>Bhf. Hütteldorf [On 29.09.2026]</description>
       <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[On 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[74A: Boarding Leberstraße before S-Bahn building]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:10 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 00:00:10 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Reason: construction works. [28.09.2026 – 29.09.2026]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37A: Buses stop Pasettistraße before Hellwagstraße (for line 5A)]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:10 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 00:00:10 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Reason: construction works. [28.09.2026 – 29.09.2026]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
