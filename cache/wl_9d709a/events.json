@@ -398,26 +398,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Betrieb ab Johnstraße U",
-    "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
+    "title": "O/10A/12A/35A/63A: Verkehrsüberlastung",
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "841dbfcb84e5d0e577c206ee51d7dc0f582e9a3a807869fcbdb3e7654ad99643",
-    "pubDate": "2026-09-28T00:00:08+02:00",
-    "starts_at": "2026-09-28T00:00:08+02:00",
-    "ends_at": "2026-09-29T23:59:59+02:00",
-    "_identity": "wl|störung|L=12A|D=2026-09-28|TK=betrieb ab johnstrasse u"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12A: Betrieb ab Schweglerstraße 19-21",
-    "description": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ca51ff9a0bc16a53883dfb140775b92521f7650658e94d4729934cdb43721549",
-    "pubDate": "2026-09-28T00:00:08+02:00",
-    "starts_at": "2026-09-28T00:00:08+02:00",
-    "ends_at": "2026-09-29T23:59:59+02:00",
-    "_identity": "wl|störung|L=12A|D=2026-09-28|TK=betrieb ab schweglerstrasse 19 21"
+    "guid": "eaec8adfcca16cb723c5887006c436ca9efb979da327a1ec1b8ded008f812019",
+    "pubDate": "2026-09-29T08:00:00+02:00",
+    "starts_at": "2026-09-29T08:00:00+02:00",
+    "ends_at": "2026-09-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=10A,12A,35A,63A,O|D=2026-09-29|TK=12a 35a 63a 10a o verkehrsüberlastung"
   },
   {
     "source": "Wiener Linien",
@@ -838,6 +826,18 @@
     "starts_at": "2026-09-28T00:00:06+02:00",
     "ends_at": "2026-09-29T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-09-28|TK=ersatzverkehr"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Rettungseinsatz",
+    "description": "Die Linie U4 fährt derzeit in der Station Margaretengürtel in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 08:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Margaretengürtel.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a",
+    "pubDate": "2026-09-29T08:18:00+02:00",
+    "starts_at": "2026-09-29T08:18:00+02:00",
+    "ends_at": "2026-09-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-09-29|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",

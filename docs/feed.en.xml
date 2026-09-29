@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 29 Sep 2026 08:01:03 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 08:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[O/10A/12A/35A/63A: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">eaec8adfcca16cb723c5887006c436ca9efb979da327a1ec1b8ded008f812019</guid>
+      <pubDate>Tue, 29 Sep 2026 08:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 08:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 08:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic congestion. [On 29.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[On 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a</guid>
+      <pubDate>Tue, 29 Sep 2026 08:18:00 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 08:18:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 08:18:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>The U4 line is currently operating at Margaretengürtel station in both directions via 1. Duration: 08:45. Reason: rescue operation im Haltestellenbereich … [On 29.09.2026]</description>
+      <content:encoded><![CDATA[The U4 line is currently operating at Margaretengürtel station in both directions via 1. Duration: 08:45. Reason: rescue operation im Haltestellenbereich …<br/>[On 29.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[52/60: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Tue, 29 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Buses stop at N71 [28.09.2026 – 29.09.2026]</description>
       <content:encoded><![CDATA[Buses stop at N71<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: ÖBB construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">421c812b010f527d8c6de96551f937085e6d36f6d828b4c0336bd5672eb2be2b</guid>
-      <pubDate>Mon, 28 Sep 2026 00:00:09 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 15:10:51 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 00:00:09 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Trains stop at line 18, direction Burggasse; No operation; service from Kliebergasse. [28.09.2026 – 29.09.2026]</description>
-      <content:encoded><![CDATA[Trains stop at line 18, direction Burggasse; No operation; service from Kliebergasse.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26E: Track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dac4be805e97a1ee16cc914e8b4797565e65f97545fca29a6e2a1cbb7fe0bf00</guid>
-      <pubDate>Fri, 25 Sep 2026 08:55:00 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 09:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 08:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
-      <description>The capacities of the replacement line 26E are not comparable to those of a tram. [25.09.2026 – 12.12.2026]</description>
-      <content:encoded><![CDATA[The capacities of the replacement line 26E are not comparable to those of a tram.<br/>[25.09.2026 – 12.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
