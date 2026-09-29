@@ -662,6 +662,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "59A: Verkehrsüberlastung",
+    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
+    "pubDate": "2026-09-29T10:26:00+02:00",
+    "starts_at": "2026-09-29T10:26:00+02:00",
+    "ends_at": "2026-09-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=59A|D=2026-09-29|TK=59a verkehrsüberlastung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62: Züge halten bei Linie 18, Richtung Burggasse",
     "description": "Züge halten bei\nLinie 18, Richtung Burggasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -848,20 +860,8 @@
     "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
     "pubDate": "2026-09-29T09:20:00+02:00",
     "starts_at": "2026-09-29T09:20:00+02:00",
-    "ends_at": "2026-09-29T23:55:00+02:00",
+    "ends_at": "2026-09-29T10:30:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-09-29|TK=u3 verspätungen"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Rettungseinsatz",
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a",
-    "pubDate": "2026-09-29T08:18:00+02:00",
-    "starts_at": "2026-09-29T08:18:00+02:00",
-    "ends_at": "2026-09-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-09-29|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
