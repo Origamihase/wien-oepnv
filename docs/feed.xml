@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 29 Sep 2026 16:01:15 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 16:30:57 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7</guid>
+      <pubDate>Tue, 29 Sep 2026 16:25:00 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 16:25:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 16:25:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Die Linie U1 fährt derzeit in der Station Großfeldsiedlung in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 16:40 Uhr. Grund: Schadhaftes Fahrzeug im … [Am 29.09.2026]</description>
+      <content:encoded><![CDATA[Die Linie U1 fährt derzeit in der Station Großfeldsiedlung in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 16:40 Uhr. Grund: Schadhaftes Fahrzeug im …<br/>[Am 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
+      <pubDate>Tue, 29 Sep 2026 16:04:00 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 16:04:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 16:04:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Spittelau. [Am 29.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Spittelau.<br/>[Am 29.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -93,31 +115,9 @@
       <pubDate>Tue, 29 Sep 2026 14:19:00 +0200</pubDate>
       <ext:first_seen>Tue, 29 Sep 2026 14:19:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 29 Sep 2026 14:19:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Tue, 29 Sep 2026 16:28:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker. [Am 29.09.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.<br/>[Am 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[6: Fremder Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">67f6f340526dbbc6c28a07268bd4d4da5596272e34d03f234305749a96c6a33a</guid>
-      <pubDate>Tue, 29 Sep 2026 14:02:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 14:02:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 14:02:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Busse halten Laxenburger Straße 66]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">35f178eee322da59d290f9e66ca5dc127c582dbc622f6759ce6caadbc778c468</guid>
-      <pubDate>Tue, 29 Sep 2026 07:13:12 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 07:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 07:13:12 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 00:45:00 +0200</ext:ends_at>
-      <description>Grund: Bauarbeiten. [29.09.2026 – 30.09.2026]</description>
-      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[29.09.2026 – 30.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
