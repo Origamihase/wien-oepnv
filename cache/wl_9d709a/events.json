@@ -626,6 +626,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "38: Verunreinigung",
+    "description": "Linie 38: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "41ef2f441b36cf9b86d33ea984915d0d1b23359809c8899da043e7143237a68f",
+    "pubDate": "2026-09-29T11:41:00+02:00",
+    "starts_at": "2026-09-29T11:41:00+02:00",
+    "ends_at": "2026-09-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=38|D=2026-09-29|TK=38 verunreinigung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "3A: 3A Netzänderung Betrieb ab Riemergasse",
     "description": "3A Netzänderung\nBetrieb ab Riemergasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -650,6 +662,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "40: Schadhaftes Fahrzeug",
+    "description": "Linie 40: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f563448e7fb71558e6eef46dca2bf47130d05fc4cbb4ec67d362ce9b66884713",
+    "pubDate": "2026-09-29T11:38:00+02:00",
+    "starts_at": "2026-09-29T11:38:00+02:00",
+    "ends_at": "2026-09-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=40|D=2026-09-29|TK=40 schadhaftes fahrzeug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "46/49/52: Gleisbauarbeiten",
     "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -658,18 +682,6 @@
     "starts_at": "2026-09-18T04:30:00+02:00",
     "ends_at": "2026-10-31T01:00:00+01:00",
     "_identity": "wl|störung|L=46,49,52|D=2026-09-18|TK=46 49 52 gleisbauarbeiten"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "59A: Verkehrsüberlastung",
-    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
-    "pubDate": "2026-09-29T10:26:00+02:00",
-    "starts_at": "2026-09-29T10:26:00+02:00",
-    "ends_at": "2026-09-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=59A|D=2026-09-29|TK=59a verkehrsüberlastung"
   },
   {
     "source": "Wiener Linien",
@@ -718,30 +730,6 @@
     "starts_at": "2026-09-29T04:40:28+02:00",
     "ends_at": "2026-09-30T01:00:00+02:00",
     "_identity": "wl|störung|L=66A|D=2026-09-29|TK=busse halten salvatorianerplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Rettungseinsatz Einstieg bei Linie 18 Richtung Burggasse",
-    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
-    "pubDate": "2026-09-29T10:52:00+02:00",
-    "starts_at": "2026-09-29T10:56:05+02:00",
-    "ends_at": "2026-09-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-09-29|TK=rettungseinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Rettungseinatz Umleitung von Quellenplatz bis Matzleinsdorfer Platz",
-    "description": "Rettungseinatz\nUmleitung von Quellenplatz bis Matzleinsdorfer Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ddfa904cfc2ce8c19b1dd67283667d1d174ce0e24cc6d51c25b850b50f782c9d",
-    "pubDate": "2026-09-29T10:55:05+02:00",
-    "starts_at": "2026-09-29T10:55:05+02:00",
-    "ends_at": "2026-09-29T11:54:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-09-29|TK=umleitung"
   },
   {
     "source": "Wiener Linien",
@@ -862,18 +850,6 @@
     "starts_at": "2026-09-28T00:00:06+02:00",
     "ends_at": "2026-09-29T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-09-28|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Verkehrsüberlastung",
-    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung im Bereich .",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d",
-    "pubDate": "2026-09-29T08:00:00+02:00",
-    "starts_at": "2026-09-29T08:00:00+02:00",
-    "ends_at": "2026-09-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=O|D=2026-09-29|TK=o verkehrsüberlastung"
   },
   {
     "source": "Wiener Linien",
