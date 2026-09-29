@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 29 Sep 2026 16:30:57 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 17:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[4A/7A/10A/16A: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9654ad71070ed2c364a10d375245cc738e840d87025d60cd0ad7df39ebf0ab3f</guid>
+      <pubDate>Tue, 29 Sep 2026 15:38:00 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 17:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 15:38:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic congestion. [On 29.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[On 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">139846b83acf18a69b923dc1f1f93aa6551cf6b0381d73ccb6f04a94a1059ba6</guid>
+      <pubDate>Tue, 29 Sep 2026 16:54:00 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 16:54:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 16:54:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [On 29.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[On 29.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Defective vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,50 +38,6 @@
       <pubDate>Tue, 29 Sep 2026 16:25:00 +0200</pubDate>
       <ext:first_seen>Tue, 29 Sep 2026 16:25:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 29 Sep 2026 16:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Line U1 currently operates at station Großfeldsiedlung in both directions via track 1. Duration: 16:40. Reason: defective vehicle im … [On 29.09.2026]</description>
-      <content:encoded><![CDATA[Line U1 currently operates at station Großfeldsiedlung in both directions via track 1. Duration: 16:40. Reason: defective vehicle im …<br/>[On 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
-      <pubDate>Tue, 29 Sep 2026 16:04:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 16:04:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 16:04:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle in the stop area Spittelau. [On 29.09.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle in the stop area Spittelau.<br/>[On 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
-      <pubDate>Tue, 29 Sep 2026 15:40:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 15:40:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 15:40:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: rescue operation in the stop area Stadion. [On 29.09.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation in the stop area Stadion.<br/>[On 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc</guid>
-      <pubDate>Tue, 29 Sep 2026 15:38:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 15:38:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 15:38:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic congestion. [On 29.09.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[On 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27: Current disturbance]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">24ca313ff60b8a81b9235dfdfbb099fcfeec9b4c1e5b3462f3d4f1d733230a49</guid>
-      <pubDate>Tue, 29 Sep 2026 15:32:33 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 15:29:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 15:29:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [On 29.09.2026]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 29.09.2026]]]></content:encoded>
@@ -74,17 +52,6 @@
       <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>The 46B currently operates only between Ottakring SU and Predigtstuhl. The 46A currently operates only between Ottakring SU and Predigtstuhl. [On 29.09.2026]</description>
       <content:encoded><![CDATA[The 46B currently operates only between Ottakring SU and Predigtstuhl. The 46A currently operates only between Ottakring SU and Predigtstuhl.<br/>[On 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e</guid>
-      <pubDate>Tue, 29 Sep 2026 14:33:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 14:43:26 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 14:33:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 29.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 29.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[71: Rescue operation]]></title>
@@ -109,15 +76,48 @@
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 29.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[13A: Illegally parked vehicle]]></title>
+      <title><![CDATA[6: Foreign traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d</guid>
-      <pubDate>Tue, 29 Sep 2026 14:19:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 14:19:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 14:19:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 16:28:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: illegally parked vehicle. [On 29.09.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: illegally parked vehicle.<br/>[On 29.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">67f6f340526dbbc6c28a07268bd4d4da5596272e34d03f234305749a96c6a33a</guid>
+      <pubDate>Tue, 29 Sep 2026 14:02:00 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 14:02:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 14:02:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [On 29.09.2026]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[18: Fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">21c3ce36e6e832d351eaa39befee7dfc66ba32c5288ed8907a4cd7ecc35b7eb3</guid>
+      <pubDate>Tue, 29 Sep 2026 07:06:43 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 07:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 07:06:43 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 20:05:00 +0200</ext:ends_at>
+      <description>Service obstruction [On 29.09.2026]</description>
+      <content:encoded><![CDATA[Service obstruction<br/>[On 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Tue, 29 Sep 2026 04:40:28 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 04:40:28 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 04:40:28 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 30 Sep 2026 01:00:00 +0200</ext:ends_at>
+      <description>Reason: construction works. [29.09.2026 – 30.09.2026]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[29.09.2026 – 30.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[47B: Running event at 04.10.2027]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6864a29848e360090798645174eb08bfd5e2d1138aeba3ffff926596908e52a6</guid>
+      <pubDate>Mon, 28 Sep 2026 13:30:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 13:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 13:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
+      <description>The 47B buses will be redirected due to a running event near the Allianz Stadium. [28.09.2026 – 04.10.2026]</description>
+      <content:encoded><![CDATA[The 47B buses will be redirected due to a running event near the Allianz Stadium.<br/>[28.09.2026 – 04.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
