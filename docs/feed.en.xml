@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 29 Sep 2026 21:01:03 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 21:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[27: Signal disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d181af5e303219e8a9902182bf958920050b8c374b8def743f51143ee197aff3</guid>
+      <pubDate>Tue, 29 Sep 2026 21:22:00 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 21:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 21:22:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 22:00:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: signal disruption. [On 29.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: signal disruption.<br/>[On 29.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[O: Contamination]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: contamination. [On 29.09.2026]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[On 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[42: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
-      <pubDate>Tue, 29 Sep 2026 20:02:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 20:02:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 20:02:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 21:01:00 +0200</ext:ends_at>
-      <description>Service obstruction [On 29.09.2026]</description>
-      <content:encoded><![CDATA[Service obstruction<br/>[On 29.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Buses stop at Laxenburger Straße 66]]></title>
