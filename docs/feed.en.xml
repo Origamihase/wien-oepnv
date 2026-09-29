@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 29 Sep 2026 06:30:57 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 07:01:21 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U1: Service disruption]]></title>
+      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Hauptbahnhof]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;915623</guid>
+      <pubDate>Tue, 29 Sep 2026 06:58:20 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 07:01:21 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Due to an overhead-line fault between Vienna Hbf (U) and Wien Meidling train station (U) train journeys until approx. 10:00 are only limited. [On 29.09.2026]</description>
+      <content:encoded><![CDATA[Due to an overhead-line fault between Vienna Hbf (U) and Wien Meidling train station (U) train journeys until approx. 10:00 are only limited.<br/>[On 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U1: Defective vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a</guid>
-      <pubDate>Tue, 29 Sep 2026 06:24:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 06:24:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 06:24:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7</guid>
+      <pubDate>Tue, 29 Sep 2026 06:40:00 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 06:40:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 06:40:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Line U1 currently runs between stations Keplerplatz and South Tyrolean square in both directions via track 2. Expected duration: 06:50 … [On 29.09.2026]</description>
-      <content:encoded><![CDATA[Line U1 currently runs between stations Keplerplatz and South Tyrolean square in both directions via track 2. Expected duration: 06:50 …<br/>[On 29.09.2026]]]></content:encoded>
+      <description>The U1 line currently operates at Reumannplatz station in both directions via 2 track. Duration: 07:10. Reason: defective vehicle im … [On 29.09.2026]</description>
+      <content:encoded><![CDATA[The U1 line currently operates at Reumannplatz station in both directions via 2 track. Duration: 07:10. Reason: defective vehicle im …<br/>[On 29.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
@@ -101,17 +112,6 @@
       <title><![CDATA[74A: Boarding Leberstraße before S-Bahn building]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e</guid>
-      <pubDate>Mon, 28 Sep 2026 00:00:10 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 00:00:10 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Reason: construction works. [28.09.2026 – 29.09.2026]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Buses stop Pasettistraße before Hellwagstraße (for line 5A)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
       <pubDate>Mon, 28 Sep 2026 00:00:10 +0200</pubDate>
       <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
       <ext:starts_at>Mon, 28 Sep 2026 00:00:10 +0200</ext:starts_at>
