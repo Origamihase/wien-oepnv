@@ -722,6 +722,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "6: Rettungseinsatz Einstieg bei Linie 18 Richtung Burggasse",
+    "description": "Linie 6: Umleitung in Richtung Burggasse, Stadthalle U zwischen Quellenplatz und Matzleinsdorfer Platz S über Hauptbahnhof S U. Voraussichtliche Dauer: 11:30 Uhr. Grund: Rettungseinsatz im Bereich Quellenstraße # Knöllgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
+    "pubDate": "2026-09-29T10:52:00+02:00",
+    "starts_at": "2026-09-29T10:56:05+02:00",
+    "ends_at": "2026-09-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-09-29|TK=rettungseinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Rettungseinatz Umleitung von Quellenplatz bis Matzleinsdorfer Platz",
+    "description": "Rettungseinatz\nUmleitung von Quellenplatz bis Matzleinsdorfer Platz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ddfa904cfc2ce8c19b1dd67283667d1d174ce0e24cc6d51c25b850b50f782c9d",
+    "pubDate": "2026-09-29T10:55:05+02:00",
+    "starts_at": "2026-09-29T10:55:05+02:00",
+    "ends_at": "2026-09-29T11:54:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-09-29|TK=umleitung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -850,18 +874,6 @@
     "starts_at": "2026-09-29T08:00:00+02:00",
     "ends_at": "2026-09-29T23:55:00+02:00",
     "_identity": "wl|störung|L=O|D=2026-09-29|TK=o verkehrsüberlastung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-09-29T09:20:00+02:00",
-    "starts_at": "2026-09-29T09:20:00+02:00",
-    "ends_at": "2026-09-29T10:30:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-09-29|TK=u3 verspätungen"
   },
   {
     "source": "Wiener Linien",
