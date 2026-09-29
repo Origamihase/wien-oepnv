@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 29 Sep 2026 18:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 19:00:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[1: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8</guid>
+      <pubDate>Tue, 29 Sep 2026 18:45:21 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 18:44:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 18:44:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[43: Verunreinigung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -43,17 +54,6 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[11: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">139846b83acf18a69b923dc1f1f93aa6551cf6b0381d73ccb6f04a94a1059ba6</guid>
-      <pubDate>Tue, 29 Sep 2026 16:54:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 16:54:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 16:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 18:46:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 29.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[11A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">42fd134123a418e9ad9efe9206b8aec78f4828e1289887cd32b9a179ab2ed7cd</guid>
@@ -61,39 +61,6 @@
       <ext:first_seen>Tue, 29 Sep 2026 14:28:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 29 Sep 2026 14:28:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[6: Fremder Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">67f6f340526dbbc6c28a07268bd4d4da5596272e34d03f234305749a96c6a33a</guid>
-      <pubDate>Tue, 29 Sep 2026 17:10:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 14:02:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 17:10:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 18:37:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46A: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2a429e74ae1f5f012de5968697087aafab8a1e12dcf14c33b002bac3e3edbbc7</guid>
-      <pubDate>Tue, 29 Sep 2026 13:57:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 14:01:18 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 13:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 18:29:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46B: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e285723909f5a44c2525e2686922d7ecad40dfb16ec411a33897acab94922adb</guid>
-      <pubDate>Tue, 29 Sep 2026 13:57:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 14:01:18 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 13:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 18:29:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.09.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.09.2026]]]></content:encoded>
     </item>
@@ -118,6 +85,39 @@
       <ext:ends_at>Wed, 30 Sep 2026 01:00:00 +0200</ext:ends_at>
       <description>Grund: Bauarbeiten. [29.09.2026 – 30.09.2026]</description>
       <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[29.09.2026 – 30.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[47B: Laufveranstaltung am 04.10.2027]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6864a29848e360090798645174eb08bfd5e2d1138aeba3ffff926596908e52a6</guid>
+      <pubDate>Mon, 28 Sep 2026 13:30:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 13:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 13:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
+      <description>Wegen einer Laufveranstaltung im Nahbereich des Allianz Stadions werden die Busse der Linie 47B umgeleitet. [28.09.2026 – 04.10.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Laufveranstaltung im Nahbereich des Allianz Stadions werden die Busse der Linie 47B umgeleitet.<br/>[28.09.2026 – 04.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[D: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">67078944a93bdf102ba6646e545b32c2ab8c76bf5f5efe8750a1c24d9ac26e08</guid>
+      <pubDate>Mon, 28 Sep 2026 04:00:07 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 04:00:07 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse; Betrieb ab Börse. [28.09.2026 – 29.09.2026]</description>
+      <content:encoded><![CDATA[Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse; Betrieb ab Börse.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N71: Ersatzverkehr]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6f11b9f2989f7ded86ce2e256372b0c9d235d8bccee56c31a7edc035dbad8893</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:06 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 00:00:06 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Busse halten bei Haltestelle N71 [28.09.2026 – 29.09.2026]</description>
+      <content:encoded><![CDATA[Busse halten bei Haltestelle N71<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
