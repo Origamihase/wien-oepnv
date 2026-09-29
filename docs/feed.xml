@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 29 Sep 2026 15:30:53 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 16:01:15 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U2: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
+      <pubDate>Tue, 29 Sep 2026 15:40:00 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 15:40:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 15:40:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Stadion. [Am 29.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Stadion.<br/>[Am 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc</guid>
+      <pubDate>Tue, 29 Sep 2026 15:38:00 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 15:38:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 15:38:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 29.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 29.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[27: Stromstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">24ca313ff60b8a81b9235dfdfbb099fcfeec9b4c1e5b3462f3d4f1d733230a49</guid>
-      <pubDate>Tue, 29 Sep 2026 15:29:00 +0200</pubDate>
+      <pubDate>Tue, 29 Sep 2026 15:32:33 +0200</pubDate>
       <ext:first_seen>Tue, 29 Sep 2026 15:29:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 29 Sep 2026 15:29:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie 27 fährt derzeit nur zwischen Floridsdorf S U und Nordbrücke. Voraussichtliche Dauer: Nicht absehbar. [Am 29.09.2026]</description>
-      <content:encoded><![CDATA[Die Linie 27 fährt derzeit nur zwischen Floridsdorf S U und Nordbrücke. Voraussichtliche Dauer: Nicht absehbar.<br/>[Am 29.09.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46A/46B: Feuerwehreinsatz]]></title>
@@ -32,26 +54,15 @@
       <content:encoded><![CDATA[Die Linie 46B fährt derzeit nur zwischen Ottakring SU und Predigtstuhl. Die Linie 46A fährt derzeit nur zwischen Ottakring SU und Predigtstuhl.<br/>[Am 29.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a29e671a85c2a6d60f93348738aed861f0787ecaeb052980186da61232ad65c7</guid>
-      <pubDate>Tue, 29 Sep 2026 14:55:26 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 14:52:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 14:55:26 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 15:55:00 +0200</ext:ends_at>
-      <description>Betrieb ab Gersthof [Am 29.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Gersthof<br/>[Am 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[11: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e</guid>
       <pubDate>Tue, 29 Sep 2026 14:33:00 +0200</pubDate>
       <ext:first_seen>Tue, 29 Sep 2026 14:43:26 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 14:45:28 +0200</ext:starts_at>
+      <ext:starts_at>Tue, 29 Sep 2026 14:33:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Einstieg in der Grillgasse beim 15A. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.09.2026]</description>
-      <content:encoded><![CDATA[Einstieg in der Grillgasse beim 15A. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.09.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[71: Rettungseinsatz]]></title>
@@ -59,10 +70,10 @@
       <guid isPermaLink="false">2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c</guid>
       <pubDate>Tue, 29 Sep 2026 14:33:00 +0200</pubDate>
       <ext:first_seen>Tue, 29 Sep 2026 14:39:56 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 14:42:26 +0200</ext:starts_at>
+      <ext:starts_at>Tue, 29 Sep 2026 14:33:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Einstieg in der Grillgasse beim 15A. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.09.2026]</description>
-      <content:encoded><![CDATA[Einstieg in der Grillgasse beim 15A. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.09.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A: Rettungseinsatz]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 30 Sep 2026 00:45:00 +0200</ext:ends_at>
       <description>Grund: Bauarbeiten. [29.09.2026 – 30.09.2026]</description>
       <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[29.09.2026 – 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">21c3ce36e6e832d351eaa39befee7dfc66ba32c5288ed8907a4cd7ecc35b7eb3</guid>
-      <pubDate>Tue, 29 Sep 2026 07:06:43 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 07:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 07:06:43 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 20:05:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung [Am 29.09.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung<br/>[Am 29.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

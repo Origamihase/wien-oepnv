@@ -410,12 +410,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Rettungseinsatz Einstieg in der Grillgasse beim 15A",
+    "title": "11: Rettungseinsatz",
     "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e",
     "pubDate": "2026-09-29T14:33:00+02:00",
-    "starts_at": "2026-09-29T14:45:28+02:00",
+    "starts_at": "2026-09-29T14:33:00+02:00",
     "ends_at": "2026-09-29T23:55:00+02:00",
     "_identity": "wl|störung|L=11|D=2026-09-29|TK=rettungseinsatz"
   },
@@ -651,13 +651,25 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "27: Stromstörung",
-    "description": "Die Linie 27 fährt derzeit nur zwischen Floridsdorf S U und Nordbrücke. Voraussichtliche Dauer: Nicht absehbar. Grund: Stromstörung im Bereich Prager Straße 120.",
+    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "24ca313ff60b8a81b9235dfdfbb099fcfeec9b4c1e5b3462f3d4f1d733230a49",
     "pubDate": "2026-09-29T15:29:00+02:00",
     "starts_at": "2026-09-29T15:29:00+02:00",
     "ends_at": "2026-09-29T23:55:00+02:00",
     "_identity": "wl|störung|L=27|D=2026-09-29|TK=27 stromstörung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "deee1babf5dc7b811f812928e2030700a354c24599a97fdb5fb4b755a5527310",
+    "pubDate": "2026-09-29T15:32:33+02:00",
+    "starts_at": "2026-09-29T15:32:33+02:00",
+    "ends_at": "2026-09-29T16:32:00+02:00",
+    "_identity": "wl|störung|L=27|D=2026-09-29|TK=fahrtbehinderung wegen stromstörung"
   },
   {
     "source": "Wiener Linien",
@@ -698,18 +710,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40: Polizeieinsatz Betrieb ab Gersthof",
-    "description": "Polizeieinsatz\nBetrieb ab Gersthof <",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a29e671a85c2a6d60f93348738aed861f0787ecaeb052980186da61232ad65c7",
-    "pubDate": "2026-09-29T14:55:26+02:00",
-    "starts_at": "2026-09-29T14:55:26+02:00",
-    "ends_at": "2026-09-29T15:55:00+02:00",
-    "_identity": "wl|störung|L=40|D=2026-09-29|TK=polizeieinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "46/49/52: Gleisbauarbeiten",
     "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -723,7 +723,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "46A/46B: Feuerwehreinsatz",
-    "description": "Die Linie 46B fährt derzeit nur zwischen Ottakring SU und Predigtstuhl. Die Linie 46A fährt derzeit nur zwischen Ottakring SU und Predigtstuhl. Voraussichtliche Dauer: 16:00 Uhr. Grund: Feuerwehreinsatz im Bereich Wilhelminenstraße # Kempfengerngasse.",
+    "description": "Die Linie 46B fährt derzeit nur zwischen Ottakring SU und Predigtstuhl. Die Linie 46A fährt derzeit nur zwischen Ottakring SU und Predigtstuhl. Voraussichtliche Dauer: Nicht absehbar. Grund: Feuerwehreinsatz im Bereich Wilhelminenstraße # Kempfengerngasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "5e3e15190c9cabfdbdaec3137e32fcff862966b6817bf1b3f60f78c39de0dab6",
     "pubDate": "2026-09-29T13:57:00+02:00",
@@ -794,12 +794,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Rettungseinsatz Einstieg in der Grillgasse beim 15A",
+    "title": "71: Rettungseinsatz",
     "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c",
     "pubDate": "2026-09-29T14:33:00+02:00",
-    "starts_at": "2026-09-29T14:42:26+02:00",
+    "starts_at": "2026-09-29T14:33:00+02:00",
     "ends_at": "2026-09-29T23:55:00+02:00",
     "_identity": "wl|störung|L=71|D=2026-09-29|TK=rettungseinsatz"
   },
@@ -814,6 +814,18 @@
     "starts_at": "2026-09-28T00:00:10+02:00",
     "ends_at": "2026-09-29T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-09-28|TK=einstieg leberstrasse vor s bahn gebäude"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Verkehrsüberlastung",
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc",
+    "pubDate": "2026-09-29T15:38:00+02:00",
+    "starts_at": "2026-09-29T15:38:00+02:00",
+    "ends_at": "2026-09-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=7A|D=2026-09-29|TK=7a verkehrsüberlastung"
   },
   {
     "source": "Wiener Linien",
@@ -922,6 +934,18 @@
     "starts_at": "2026-09-28T00:00:06+02:00",
     "ends_at": "2026-09-29T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-09-28|TK=ersatzverkehr"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Rettungseinsatz",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Stadion.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
+    "pubDate": "2026-09-29T15:40:00+02:00",
+    "starts_at": "2026-09-29T15:40:00+02:00",
+    "ends_at": "2026-09-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-09-29|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
