@@ -7,14 +7,14 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 29 Sep 2026 08:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 09:01:16 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[O/10A/12A/35A/63A: Verkehrsüberlastung]]></title>
+      <title><![CDATA[O/10A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">eaec8adfcca16cb723c5887006c436ca9efb979da327a1ec1b8ded008f812019</guid>
+      <guid isPermaLink="false">2874f5399e7e63786521499327f712d7f13fac80f0b11639a6714bd1c9af5944</guid>
       <pubDate>Tue, 29 Sep 2026 08:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 08:30:48 +0200</ext:first_seen>
+      <ext:first_seen>Tue, 29 Sep 2026 09:01:16 +0200</ext:first_seen>
       <ext:starts_at>Tue, 29 Sep 2026 08:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 29.09.2026]</description>
@@ -28,19 +28,8 @@
       <ext:first_seen>Tue, 29 Sep 2026 08:18:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 29 Sep 2026 08:18:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie U4 fährt derzeit in der Station Margaretengürtel in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 08:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich … [Am 29.09.2026]</description>
-      <content:encoded><![CDATA[Die Linie U4 fährt derzeit in der Station Margaretengürtel in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 08:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich …<br/>[Am 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[52/60: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">62cacf47ff052b1a47ec7b79ccee5d5957ad047dc98502a93ff45d9629b17bd9</guid>
-      <pubDate>Tue, 29 Sep 2026 07:27:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 07:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 07:27:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 29.09.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 29.09.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Busse halten Laxenburger Straße 66]]></title>
@@ -57,12 +46,12 @@
       <title><![CDATA[18: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">21c3ce36e6e832d351eaa39befee7dfc66ba32c5288ed8907a4cd7ecc35b7eb3</guid>
-      <pubDate>Tue, 29 Sep 2026 06:59:00 +0200</pubDate>
+      <pubDate>Tue, 29 Sep 2026 07:06:43 +0200</pubDate>
       <ext:first_seen>Tue, 29 Sep 2026 07:30:53 +0200</ext:first_seen>
       <ext:starts_at>Tue, 29 Sep 2026 07:06:43 +0200</ext:starts_at>
       <ext:ends_at>Tue, 29 Sep 2026 20:05:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 29.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 29.09.2026]]]></content:encoded>
+      <description>Fahrtbehinderung [Am 29.09.2026]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung<br/>[Am 29.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Wien Hauptbahnhof]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Tue, 29 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Busse halten bei Haltestelle N71 [28.09.2026 – 29.09.2026]</description>
       <content:encoded><![CDATA[Busse halten bei Haltestelle N71<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: ÖBB Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">421c812b010f527d8c6de96551f937085e6d36f6d828b4c0336bd5672eb2be2b</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:09 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 15:10:51 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 00:00:09 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Züge halten bei Linie 18, Richtung Burggasse; Kein Betrieb; Betrieb ab Kliebergasse. [28.09.2026 – 29.09.2026]</description>
+      <content:encoded><![CDATA[Züge halten bei Linie 18, Richtung Burggasse; Kein Betrieb; Betrieb ab Kliebergasse.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
