@@ -674,18 +674,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38: Verunreinigung",
-    "description": "Linie 38: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "41ef2f441b36cf9b86d33ea984915d0d1b23359809c8899da043e7143237a68f",
-    "pubDate": "2026-09-29T11:41:00+02:00",
-    "starts_at": "2026-09-29T11:41:00+02:00",
-    "ends_at": "2026-09-29T12:28:00+02:00",
-    "_identity": "wl|störung|L=38|D=2026-09-29|TK=38 verunreinigung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "3A: 3A Netzänderung Betrieb ab Riemergasse",
     "description": "3A Netzänderung\nBetrieb ab Riemergasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -706,18 +694,6 @@
     "starts_at": "2026-09-28T00:00:08+02:00",
     "ends_at": "2026-09-29T23:59:59+02:00",
     "_identity": "wl|störung|L=3A|D=2026-09-28|TK=busse halten kärntner ring 5"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40: Schadhaftes Fahrzeug",
-    "description": "Linie 40: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f563448e7fb71558e6eef46dca2bf47130d05fc4cbb4ec67d362ce9b66884713",
-    "pubDate": "2026-09-29T11:38:00+02:00",
-    "starts_at": "2026-09-29T11:38:00+02:00",
-    "ends_at": "2026-09-29T12:28:00+02:00",
-    "_identity": "wl|störung|L=40|D=2026-09-29|TK=40 schadhaftes fahrzeug"
   },
   {
     "source": "Wiener Linien",
@@ -788,7 +764,7 @@
     "guid": "e7c762209790ccc1458fc85a3ab1e457323e911dc03795bf462a2f2d1fc322e2",
     "pubDate": "2026-09-29T12:13:00+02:00",
     "starts_at": "2026-09-29T12:13:00+02:00",
-    "ends_at": "2026-09-29T23:55:00+02:00",
+    "ends_at": "2026-09-29T12:59:00+02:00",
     "_identity": "wl|störung|L=6|D=2026-09-29|TK=6 verunreinigung"
   },
   {
@@ -910,18 +886,6 @@
     "starts_at": "2026-09-28T00:00:06+02:00",
     "ends_at": "2026-09-29T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-09-28|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Rettungseinsatz",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Keplerplatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
-    "pubDate": "2026-09-29T12:07:00+02:00",
-    "starts_at": "2026-09-29T12:07:00+02:00",
-    "ends_at": "2026-09-29T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-09-29|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
