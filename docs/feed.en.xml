@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 29 Sep 2026 17:31:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 18:00:53 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[39A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b74cd55e07015a732b2763d5b9037500b1e34b202c8733ad8e0033dcf79e9f06</guid>
+      <pubDate>Tue, 29 Sep 2026 17:32:00 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 17:32:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 17:32:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 29.09.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[31A: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9b3b9554d6b4a14e102d9dc1c24aad5b257fba0af00467f4c2651f24320baa99</guid>
+      <pubDate>Tue, 29 Sep 2026 17:31:00 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 17:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 17:31:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic congestion. [On 29.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[On 29.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[13A: Fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -41,17 +63,6 @@
       <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: defective vehicle. [On 29.09.2026]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[On 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46A/46B: Fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5e3e15190c9cabfdbdaec3137e32fcff862966b6817bf1b3f60f78c39de0dab6</guid>
-      <pubDate>Tue, 29 Sep 2026 13:57:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 15:01:09 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 13:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>The 46B currently operates only between Ottakring SU and Predigtstuhl. The 46A currently operates only between Ottakring SU and Predigtstuhl. [On 29.09.2026]</description>
-      <content:encoded><![CDATA[The 46B currently operates only between Ottakring SU and Predigtstuhl. The 46A currently operates only between Ottakring SU and Predigtstuhl.<br/>[On 29.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[71: Rescue operation]]></title>
@@ -87,37 +98,26 @@
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 29.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[18: Fire-brigade operation]]></title>
+      <title><![CDATA[46A: Fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">21c3ce36e6e832d351eaa39befee7dfc66ba32c5288ed8907a4cd7ecc35b7eb3</guid>
-      <pubDate>Tue, 29 Sep 2026 07:06:43 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 07:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 07:06:43 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 20:05:00 +0200</ext:ends_at>
-      <description>Service obstruction [On 29.09.2026]</description>
-      <content:encoded><![CDATA[Service obstruction<br/>[On 29.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">2a429e74ae1f5f012de5968697087aafab8a1e12dcf14c33b002bac3e3edbbc7</guid>
+      <pubDate>Tue, 29 Sep 2026 13:57:00 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 14:01:18 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 13:57:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [On 29.09.2026]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 29.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
+      <title><![CDATA[46B: Fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
-      <pubDate>Tue, 29 Sep 2026 04:40:28 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 04:40:28 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 04:40:28 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 01:00:00 +0200</ext:ends_at>
-      <description>Reason: construction works. [29.09.2026 – 30.09.2026]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[29.09.2026 – 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[47B: Running event at 04.10.2027]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6864a29848e360090798645174eb08bfd5e2d1138aeba3ffff926596908e52a6</guid>
-      <pubDate>Mon, 28 Sep 2026 13:30:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 13:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 13:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
-      <description>The 47B buses will be redirected due to a running event near the Allianz Stadium. [28.09.2026 – 04.10.2026]</description>
-      <content:encoded><![CDATA[The 47B buses will be redirected due to a running event near the Allianz Stadium.<br/>[28.09.2026 – 04.10.2026]]]></content:encoded>
+      <guid isPermaLink="false">e285723909f5a44c2525e2686922d7ecad40dfb16ec411a33897acab94922adb</guid>
+      <pubDate>Tue, 29 Sep 2026 13:57:00 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 14:01:18 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 13:57:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [On 29.09.2026]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 29.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
