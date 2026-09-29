@@ -398,6 +398,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11A: Fahrtbehinderung Gleisbauarbeiten",
+    "description": "Fahrtbehinderung\nGleisbauarbeiten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a9af7e95801980b0a986e0c40488e3d0d693493c8a78bf06f768a6772e1706af",
+    "pubDate": "2026-09-29T12:15:43+02:00",
+    "starts_at": "2026-09-29T12:15:44+02:00",
+    "ends_at": "2026-09-29T13:15:00+02:00",
+    "_identity": "wl|störung|L=11A|D=2026-09-29|TK=fahrtbehinderung gleisbauarbeiten"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -430,6 +442,42 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13|TK=haltestelle stadionbrücke im rahmen des strassenbahn neubaus der linie 18 aufgelassen bitte auf nahegelegene haltestellen ausweichen"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Betrieb ab Ernst-Happel-Stadion",
+    "description": "Gleisbauarbeiten\nBetrieb ab Ernst-Happel-Stadion",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b3bccf16a4264786718d914fff18761e4533420dc30e99f44d17a498317bc292",
+    "pubDate": "2026-09-29T12:07:00+02:00",
+    "starts_at": "2026-09-29T12:12:44+02:00",
+    "ends_at": "2026-09-29T13:12:00+02:00",
+    "_identity": "wl|störung|L=18|D=2026-09-29|TK=betrieb ab ernst happel stadion"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Einstieg gegenüber",
+    "description": "Gleisbauarbeiten\nEinstieg gegenüber",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0891d08a106f2d3b35591f981917eca9a537a5923e49f142b79b2f263d965bd6",
+    "pubDate": "2026-09-29T12:12:44+02:00",
+    "starts_at": "2026-09-29T12:12:44+02:00",
+    "ends_at": "2026-09-29T13:12:00+02:00",
+    "_identity": "wl|störung|L=18|D=2026-09-29|TK=einstieg gegenüber"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Fahrtbehinderung Gleisbauarbeiten",
+    "description": "Fahrtbehinderung\nGleisbauarbeiten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "bb4852393008806fd1c422309fdd99063a01171556e4c7251f2367a1f1029e17",
+    "pubDate": "2026-09-29T12:10:43+02:00",
+    "starts_at": "2026-09-29T12:10:44+02:00",
+    "ends_at": "2026-09-29T13:13:00+02:00",
+    "_identity": "wl|störung|L=18|D=2026-09-29|TK=fahrtbehinderung gleisbauarbeiten"
   },
   {
     "source": "Wiener Linien",
@@ -632,7 +680,7 @@
     "guid": "41ef2f441b36cf9b86d33ea984915d0d1b23359809c8899da043e7143237a68f",
     "pubDate": "2026-09-29T11:41:00+02:00",
     "starts_at": "2026-09-29T11:41:00+02:00",
-    "ends_at": "2026-09-29T23:55:00+02:00",
+    "ends_at": "2026-09-29T12:28:00+02:00",
     "_identity": "wl|störung|L=38|D=2026-09-29|TK=38 verunreinigung"
   },
   {
@@ -668,7 +716,7 @@
     "guid": "f563448e7fb71558e6eef46dca2bf47130d05fc4cbb4ec67d362ce9b66884713",
     "pubDate": "2026-09-29T11:38:00+02:00",
     "starts_at": "2026-09-29T11:38:00+02:00",
-    "ends_at": "2026-09-29T23:55:00+02:00",
+    "ends_at": "2026-09-29T12:28:00+02:00",
     "_identity": "wl|störung|L=40|D=2026-09-29|TK=40 schadhaftes fahrzeug"
   },
   {
@@ -730,6 +778,18 @@
     "starts_at": "2026-09-29T04:40:28+02:00",
     "ends_at": "2026-09-30T01:00:00+02:00",
     "_identity": "wl|störung|L=66A|D=2026-09-29|TK=busse halten salvatorianerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Verunreinigung",
+    "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e7c762209790ccc1458fc85a3ab1e457323e911dc03795bf462a2f2d1fc322e2",
+    "pubDate": "2026-09-29T12:13:00+02:00",
+    "starts_at": "2026-09-29T12:13:00+02:00",
+    "ends_at": "2026-09-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-09-29|TK=6 verunreinigung"
   },
   {
     "source": "Wiener Linien",
@@ -850,6 +910,18 @@
     "starts_at": "2026-09-28T00:00:06+02:00",
     "ends_at": "2026-09-29T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-09-28|TK=ersatzverkehr"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Rettungseinsatz",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Keplerplatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
+    "pubDate": "2026-09-29T12:07:00+02:00",
+    "starts_at": "2026-09-29T12:07:00+02:00",
+    "ends_at": "2026-09-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-09-29|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
