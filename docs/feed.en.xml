@@ -7,40 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 29 Sep 2026 13:01:03 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 13:31:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[11A: Track construction works]]></title>
+      <title><![CDATA[7A: Police operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a9af7e95801980b0a986e0c40488e3d0d693493c8a78bf06f768a6772e1706af</guid>
-      <pubDate>Tue, 29 Sep 2026 12:15:43 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 12:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 12:15:44 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 13:15:00 +0200</ext:ends_at>
-      <description>Service obstruction [On 29.09.2026]</description>
-      <content:encoded><![CDATA[Service obstruction<br/>[On 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: Track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b3bccf16a4264786718d914fff18761e4533420dc30e99f44d17a498317bc292</guid>
-      <pubDate>Tue, 29 Sep 2026 12:07:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 12:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 12:12:44 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 13:13:00 +0200</ext:ends_at>
-      <description>Service from Ernst-Happel-Stadion; service obstruction. [On 29.09.2026]</description>
-      <content:encoded><![CDATA[Service from Ernst-Happel-Stadion; service obstruction.<br/>[On 29.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[6: Contamination]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e7c762209790ccc1458fc85a3ab1e457323e911dc03795bf462a2f2d1fc322e2</guid>
-      <pubDate>Tue, 29 Sep 2026 12:13:00 +0200</pubDate>
-      <ext:first_seen>Tue, 29 Sep 2026 12:13:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 12:13:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 29 Sep 2026 12:59:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: contamination. [On 29.09.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[On 29.09.2026]]]></content:encoded>
+      <guid isPermaLink="false">64c168750858c631c7a91ad91fc35cce1827e9d8a3c84eff3d5bc5adb3221722</guid>
+      <pubDate>Tue, 29 Sep 2026 13:20:00 +0200</pubDate>
+      <ext:first_seen>Tue, 29 Sep 2026 13:20:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 13:20:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: police operation. [On 29.09.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: police operation.<br/>[On 29.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Buses stop at Laxenburger Straße 66]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Tue, 29 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Trains stop at line 18, direction Burggasse; No operation; service from Kliebergasse. [28.09.2026 – 29.09.2026]</description>
       <content:encoded><![CDATA[Trains stop at line 18, direction Burggasse; No operation; service from Kliebergasse.<br/>[28.09.2026 – 29.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26E: Track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dac4be805e97a1ee16cc914e8b4797565e65f97545fca29a6e2a1cbb7fe0bf00</guid>
+      <pubDate>Fri, 25 Sep 2026 08:55:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 09:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 08:55:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
+      <description>The capacities of the replacement line 26E are not comparable to those of a tram. [25.09.2026 – 12.12.2026]</description>
+      <content:encoded><![CDATA[The capacities of the replacement line 26E are not comparable to those of a tram.<br/>[25.09.2026 – 12.12.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: ÖBB replacement bus]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
+      <pubDate>Tue, 29 Sep 2026 05:00:29 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 05:00:28 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 29 Sep 2026 05:00:29 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 29 Sep 2026 23:00:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf [On 29.09.2026]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[On 29.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

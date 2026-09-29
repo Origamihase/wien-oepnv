@@ -398,18 +398,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A: Fahrtbehinderung Gleisbauarbeiten",
-    "description": "Fahrtbehinderung\nGleisbauarbeiten",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a9af7e95801980b0a986e0c40488e3d0d693493c8a78bf06f768a6772e1706af",
-    "pubDate": "2026-09-29T12:15:43+02:00",
-    "starts_at": "2026-09-29T12:15:44+02:00",
-    "ends_at": "2026-09-29T13:15:00+02:00",
-    "_identity": "wl|störung|L=11A|D=2026-09-29|TK=fahrtbehinderung gleisbauarbeiten"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -442,42 +430,6 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13|TK=haltestelle stadionbrücke im rahmen des strassenbahn neubaus der linie 18 aufgelassen bitte auf nahegelegene haltestellen ausweichen"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Betrieb ab Ernst-Happel-Stadion",
-    "description": "Gleisbauarbeiten\nBetrieb ab Ernst-Happel-Stadion",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b3bccf16a4264786718d914fff18761e4533420dc30e99f44d17a498317bc292",
-    "pubDate": "2026-09-29T12:07:00+02:00",
-    "starts_at": "2026-09-29T12:12:44+02:00",
-    "ends_at": "2026-09-29T13:12:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-09-29|TK=betrieb ab ernst happel stadion"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Einstieg gegenüber",
-    "description": "Gleisbauarbeiten\nEinstieg gegenüber",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0891d08a106f2d3b35591f981917eca9a537a5923e49f142b79b2f263d965bd6",
-    "pubDate": "2026-09-29T12:12:44+02:00",
-    "starts_at": "2026-09-29T12:12:44+02:00",
-    "ends_at": "2026-09-29T13:12:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-09-29|TK=einstieg gegenüber"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Fahrtbehinderung Gleisbauarbeiten",
-    "description": "Fahrtbehinderung\nGleisbauarbeiten",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bb4852393008806fd1c422309fdd99063a01171556e4c7251f2367a1f1029e17",
-    "pubDate": "2026-09-29T12:10:43+02:00",
-    "starts_at": "2026-09-29T12:10:44+02:00",
-    "ends_at": "2026-09-29T13:13:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-09-29|TK=fahrtbehinderung gleisbauarbeiten"
   },
   {
     "source": "Wiener Linien",
@@ -758,18 +710,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Verunreinigung",
-    "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e7c762209790ccc1458fc85a3ab1e457323e911dc03795bf462a2f2d1fc322e2",
-    "pubDate": "2026-09-29T12:13:00+02:00",
-    "starts_at": "2026-09-29T12:13:00+02:00",
-    "ends_at": "2026-09-29T12:59:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-09-29|TK=6 verunreinigung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -790,6 +730,18 @@
     "starts_at": "2026-09-29T07:13:12+02:00",
     "ends_at": "2026-09-30T00:45:00+02:00",
     "_identity": "wl|störung|L=7A|D=2026-09-29|TK=busse halten laxenburger strasse 66"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Polizeieinsatz",
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "64c168750858c631c7a91ad91fc35cce1827e9d8a3c84eff3d5bc5adb3221722",
+    "pubDate": "2026-09-29T13:20:00+02:00",
+    "starts_at": "2026-09-29T13:20:00+02:00",
+    "ends_at": "2026-09-29T23:55:00+02:00",
+    "_identity": "wl|störung|L=7A|D=2026-09-29|TK=polizeieinsatz"
   },
   {
     "source": "Wiener Linien",
