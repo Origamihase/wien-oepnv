@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 30 Sep 2026 05:00:56 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 30 Sep 2026 05:31:47 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[7A: Buses stop at Laxenburger Straße 66]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">35f178eee322da59d290f9e66ca5dc127c582dbc622f6759ce6caadbc778c468</guid>
+      <pubDate>Wed, 30 Sep 2026 05:10:21 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 05:10:21 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 05:10:21 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 01 Oct 2026 00:45:00 +0200</ext:ends_at>
+      <description>Reason: construction works. [30.09.2026 – 01.10.2026]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[30.09.2026 – 01.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4</guid>
+      <pubDate>Wed, 30 Sep 2026 05:06:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 05:06:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 05:06:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [On 30.09.2026]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 30.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +41,6 @@
       <ext:ends_at>Thu, 01 Oct 2026 01:00:00 +0200</ext:ends_at>
       <description>Reason: construction works. [30.09.2026 – 01.10.2026]</description>
       <content:encoded><![CDATA[Reason: construction works.<br/>[30.09.2026 – 01.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N6: Buses stop Neilreichgasse20-22, Quellenstraße 189]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">65ba91c9ad3212cf9699f4930b16f23c05c678ab5cf7575ab4e562f2f003cfbc</guid>
-      <pubDate>Wed, 30 Sep 2026 00:55:27 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 00:55:27 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 00:55:27 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 05:05:00 +0200</ext:ends_at>
-      <description>Buses stop at Neilreichgasse20-22 construction works Buses stop at QuellenstraßeXX189 [On 30.09.2026]</description>
-      <content:encoded><![CDATA[Buses stop at Neilreichgasse20-22 construction works Buses stop at QuellenstraßeXX189<br/>[On 30.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[47B: Running event at 04.10.2027]]></title>
@@ -101,17 +112,6 @@
       <title><![CDATA[74A: Boarding Leberstraße before S-Bahn building]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e</guid>
-      <pubDate>Mon, 28 Sep 2026 00:00:10 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 00:00:10 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Reason: construction works. [28.09.2026 – 30.09.2026]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[28.09.2026 – 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37A: Buses stop Pasettistraße before Hellwagstraße (for line 5A)]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c</guid>
       <pubDate>Mon, 28 Sep 2026 00:00:10 +0200</pubDate>
       <ext:first_seen>Fri, 25 Sep 2026 00:00:29 +0200</ext:first_seen>
       <ext:starts_at>Mon, 28 Sep 2026 00:00:10 +0200</ext:starts_at>
