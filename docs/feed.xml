@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 30 Sep 2026 19:31:46 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 30 Sep 2026 20:00:46 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[9: Schadhafter PKW]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">76de9cc1b5edd02fbae4cd391a8ef96b7bf7ab1862a3b8f6273e61af0affaf1d</guid>
+      <pubDate>Wed, 30 Sep 2026 19:02:43 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 20:00:46 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 19:02:47 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Betrieb ab Johann-Nepomuk-Berger-Platz. [Am 30.09.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Johann-Nepomuk-Berger-Platz.<br/>[Am 30.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Stadlau]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;916063</guid>
-      <pubDate>Wed, 30 Sep 2026 19:03:11 +0200</pubDate>
+      <pubDate>Wed, 30 Sep 2026 19:39:53 +0200</pubDate>
       <ext:first_seen>Wed, 30 Sep 2026 19:31:46 +0200</ext:first_seen>
       <ext:starts_at>Wed, 30 Sep 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 30 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Wegen einer Weichenstörung sind in Wien Stadlau Bahnhst (U) Zugfahrten bis voraussichtlich 19:30 Uhr nur eingeschränkt möglich. [Am 30.09.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Weichenstörung sind in Wien Stadlau Bahnhst (U) Zugfahrten bis voraussichtlich 19:30 Uhr nur eingeschränkt möglich.<br/>[Am 30.09.2026]]]></content:encoded>
+      <description>Wegen einer Weichenstörung sind in Wien Stadlau Bahnhst (U) Zugfahrten bis voraussichtlich 19:50 Uhr nur eingeschränkt möglich. [Am 30.09.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Weichenstörung sind in Wien Stadlau Bahnhst (U) Zugfahrten bis voraussichtlich 19:50 Uhr nur eingeschränkt möglich.<br/>[Am 30.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[5: Schadhafter PKW]]></title>
@@ -52,17 +63,6 @@
       <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 30.09.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9: Schadhafter PKW]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">201d29e8c544566afa85f7d705a9499ec8429ced2324e27a1b61ec5c0cfc8862</guid>
-      <pubDate>Wed, 30 Sep 2026 18:52:43 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 18:52:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 18:52:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb nur zwischen Gersthof S und Johann-Nepomuk-Berger-Platz. [Am 30.09.2026]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Gersthof S und Johann-Nepomuk-Berger-Platz.<br/>[Am 30.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[O: Rettungseinsatz]]></title>
@@ -109,12 +109,12 @@
       <content:encoded><![CDATA[Wegen einer Demonstration kommt es zu Einschränkungen beim öffentlichen Verkehr.<br/>[30.09.2026 – 01.10.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[7A: Verkehrsüberlastung]]></title>
+      <title><![CDATA[10A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc</guid>
-      <pubDate>Wed, 30 Sep 2026 17:42:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 17:42:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 17:42:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">132db5055970153595938fe1ef3cafd5080b443df40d6dfbacef3df29fdcd405</guid>
+      <pubDate>Wed, 30 Sep 2026 16:37:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 16:37:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 16:37:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 30.09.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 30.09.2026]]]></content:encoded>
