@@ -662,30 +662,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "48A: Gasrohrgebrechen",
-    "description": "Linie 48A: Betrieb nur zwischen Parlament, U Volkstheater und Joachimsthalerplatz. Die Busse fahren ab Pfenninggeldgasse über die Spetterbrücke - Wernhardtstraße zum Joachimsthalerplatz. Um Ottakring S U zu erreichen fahren Sie bitte weiter in die Gegenrichtung. Zwischen Joachimsthalerplatz und Klinik Penzing wurde ein Pendelbusverkehr eingerichtet, dieser hält am Joachimsthalerplatz in der Abfahrtshaltestelle der Linie 46. Aufgrund der Bauarbeiten werden die Busse über über die Breitenseer Straße umgeleitet und können die Haltestellen Klinik Ottakring und Waidäckergasse nicht einhalten! Voraussichtliche Dauer: Betriebsschluss. Grund: Gasrohrgebrechen im Bereich Flötzersteig.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3387d8dbca374bec4aee4170d550468b4dadbe0e839ef24a9be85ee625c517de",
-    "pubDate": "2026-09-30T21:47:00+02:00",
-    "starts_at": "2026-09-30T21:47:00+02:00",
-    "ends_at": "2026-10-01T01:00:00+02:00",
-    "_identity": "wl|störung|L=48A|D=2026-09-30|TK=48a gasrohrgebrechen"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "48A: Gasrohrgebrechen Shuttlebus eingerichtet, Abfahrtsstelle: Haltestelle Linie 46!",
-    "description": "Gasrohrgebrechen\nShuttlebus eingerichtet, Abfahrtsstelle: Haltestelle Linie 46!",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8eb2c7be7a922bdd482f34bd7fdcb1108fc1444071d68fb773add62c75929871",
-    "pubDate": "2026-10-01T00:00:12+02:00",
-    "starts_at": "2026-10-01T00:00:12+02:00",
-    "ends_at": "2026-10-01T01:00:00+02:00",
-    "_identity": "wl|störung|L=48A|D=2026-10-01|TK=gasrohrgebrechen shuttlebus eingerichtet abfahrtsstelle haltestelle linie 46"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62: Züge halten bei Linie 18, Richtung Burggasse",
     "description": "Züge halten bei\nLinie 18, Richtung Burggasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -722,18 +698,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "66A: Busse halten Salvatorianerplatz",
-    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417",
-    "pubDate": "2026-09-30T04:40:20+02:00",
-    "starts_at": "2026-09-30T04:40:20+02:00",
-    "ends_at": "2026-10-01T01:00:00+02:00",
-    "_identity": "wl|störung|L=66A|D=2026-09-30|TK=busse halten salvatorianerplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -742,18 +706,6 @@
     "starts_at": "2026-10-01T00:00:16+02:00",
     "ends_at": "2026-10-01T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-10-01|TK=einstieg leberstrasse vor s bahn gebäude"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7A: Busse halten Laxenburger Straße 66",
-    "description": "Bauarbeiten\nBusse halten Laxenburger Straße 66",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "35f178eee322da59d290f9e66ca5dc127c582dbc622f6759ce6caadbc778c468",
-    "pubDate": "2026-09-30T05:10:21+02:00",
-    "starts_at": "2026-09-30T05:10:21+02:00",
-    "ends_at": "2026-10-01T00:45:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2026-09-30|TK=busse halten laxenburger strasse 66"
   },
   {
     "source": "Wiener Linien",
@@ -818,6 +770,90 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N49: Betrieb ab Johnstraße U",
+    "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1963f82ac93d144e418b1738c647d7dac8d1d5dd078a20877ba74368c0ae79ae",
+    "pubDate": "2026-10-01T01:00:22+02:00",
+    "starts_at": "2026-10-01T01:00:22+02:00",
+    "ends_at": "2026-10-01T04:50:00+02:00",
+    "_identity": "wl|störung|L=N49|D=2026-10-01|TK=betrieb ab johnstrasse u"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N49: Betrieb ab Schweglerstraße",
+    "description": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2bb63e86a6366d616958e9c07d55e93631da5aea27e8aba60ef218fd8f38dca9",
+    "pubDate": "2026-10-01T01:00:22+02:00",
+    "starts_at": "2026-10-01T01:00:22+02:00",
+    "ends_at": "2026-10-01T05:00:00+02:00",
+    "_identity": "wl|störung|L=N49|D=2026-10-01|TK=betrieb ab schweglerstrasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N65: Busse halten Laxenburger Straße 66",
+    "description": "Bauarbeiten\nBusse halten Laxenburger Straße 66",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "46039872a85000ac66dcb55f28e868aade146322b5be31154e1c47fa0d40f94a",
+    "pubDate": "2026-10-01T01:00:20+02:00",
+    "starts_at": "2026-10-01T01:00:20+02:00",
+    "ends_at": "2026-10-01T05:00:00+02:00",
+    "_identity": "wl|störung|L=N65|D=2026-10-01|TK=busse halten laxenburger strasse 66"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N66: Busse halten Laxenburger Straße 66",
+    "description": "Bauarbeiten\nBusse halten Laxenburger Straße 66",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "de5bef89066edfd6daf8bb406b5f2613576237d70d044a50c26d82c0751168da",
+    "pubDate": "2026-10-01T01:00:20+02:00",
+    "starts_at": "2026-10-01T01:00:20+02:00",
+    "ends_at": "2026-10-01T05:00:00+02:00",
+    "_identity": "wl|störung|L=N66|D=2026-10-01|TK=busse halten laxenburger strasse 66"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N66: Busse halten Salvatorianerplatz",
+    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "24aa68a100b6cf9da31697ad90c76566903c00e84cace4ff88a183b77a6b231c",
+    "pubDate": "2026-10-01T01:00:22+02:00",
+    "starts_at": "2026-10-01T01:00:22+02:00",
+    "ends_at": "2026-10-01T04:20:00+02:00",
+    "_identity": "wl|störung|L=N66|D=2026-10-01|TK=busse halten salvatorianerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N6: Busse halten Neilreichgasse 20-22",
+    "description": "Bauarbeiten Busse halten Neilreichgasse 20-22",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "65ba91c9ad3212cf9699f4930b16f23c05c678ab5cf7575ab4e562f2f003cfbc",
+    "pubDate": "2026-10-01T00:55:19+02:00",
+    "starts_at": "2026-10-01T00:55:19+02:00",
+    "ends_at": "2026-10-01T05:05:00+02:00",
+    "_identity": "wl|störung|L=N6|D=2026-10-01|TK=busse halten neilreichgasse 20 22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N6: Busse halten Quellenstraße 189",
+    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "702d63d7625c3038f025628d02f9115371cb86897a042af3fea6ba3fa90b5500",
+    "pubDate": "2026-10-01T00:54:19+02:00",
+    "starts_at": "2026-10-01T00:54:19+02:00",
+    "ends_at": "2026-10-01T05:04:00+02:00",
+    "_identity": "wl|störung|L=N6|D=2026-10-01|TK=busse halten quellenstrasse 189"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N71: Ersatzverkehr Busse halten bei Haltestelle N71",
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -826,6 +862,18 @@
     "starts_at": "2026-10-01T00:00:13+02:00",
     "ends_at": "2026-10-01T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-01|TK=ersatzverkehr"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Schadhaftes Fahrzeug",
+    "description": "Linie U6: Fahrtbehinderung in beiden Richtungen. Die jeweils letzte Fahrt pro Richtung verspätet sich um etwa 25 Minuten. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Neue Donau.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
+    "pubDate": "2026-10-01T00:47:00+02:00",
+    "starts_at": "2026-10-01T00:47:00+02:00",
+    "ends_at": "2026-10-01T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-10-01|TK=u6 schadhaftes fahrzeug"
   },
   {
     "source": "Wiener Linien",
