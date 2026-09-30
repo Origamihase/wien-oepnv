@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 30 Sep 2026 07:00:54 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 30 Sep 2026 07:31:07 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U4: Police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a</guid>
+      <pubDate>Wed, 30 Sep 2026 07:24:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 07:24:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 07:24:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Line U4 currently does not operate between Kettenbrückengasse and Pilgramgasse. Duration: 07:40. Reason: police operation im Haltestellenbereich Pilgramgasse. [On 30.09.2026]</description>
+      <content:encoded><![CDATA[Line U4 currently does not operate between Kettenbrückengasse and Pilgramgasse. Duration: 07:40. Reason: police operation im Haltestellenbereich Pilgramgasse.<br/>[On 30.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[O: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,28 +28,6 @@
       <ext:first_seen>Wed, 30 Sep 2026 06:58:00 +0200</ext:first_seen>
       <ext:starts_at>Wed, 30 Sep 2026 07:00:05 +0200</ext:starts_at>
       <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Bruno-Marek-Allee. Duration: 07:20. Reason: rescue operation im Haltestellenbereich Fasangasse. [On 30.09.2026]</description>
-      <content:encoded><![CDATA[Service obstruction towards Bruno-Marek-Allee. Duration: 07:20. Reason: rescue operation im Haltestellenbereich Fasangasse.<br/>[On 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[52: Trains stop on lines 6 and 18]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
-      <pubDate>Tue, 29 Sep 2026 14:53:56 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 06:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 29 Sep 2026 14:53:56 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>[29.09.2026 – 30.09.2026]</description>
-      <content:encoded><![CDATA[[29.09.2026 – 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e1715d10748fce73b172c45e54dd3e25af3065fc6c95c6e107df041384e060fc</guid>
-      <pubDate>Wed, 30 Sep 2026 05:53:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 05:53:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 05:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 07:01:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [On 30.09.2026]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 30.09.2026]]]></content:encoded>
     </item>
@@ -98,17 +87,6 @@
       <content:encoded><![CDATA[Buses stop at N71<br/>[28.09.2026 – 30.09.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[49: Track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">123f3ec41d37c82b1cb680b6e9f1c83a2bac197e145422c4289e2bcd81173f3d</guid>
-      <pubDate>Mon, 28 Sep 2026 00:00:08 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 00:00:08 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 00:00:08 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Service from Hütteldorfer Straße with line 46; service from Urban-Loritz-Platz with line 52. [28.09.2026 – 30.09.2026]</description>
-      <content:encoded><![CDATA[Service from Hütteldorfer Straße with line 46; service from Urban-Loritz-Platz with line 52.<br/>[28.09.2026 – 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[62: ÖBB construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">421c812b010f527d8c6de96551f937085e6d36f6d828b4c0336bd5672eb2be2b</guid>
@@ -118,6 +96,28 @@
       <ext:ends_at>Wed, 30 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Trains stop at line 18, direction Burggasse; No operation; service from Kliebergasse. [28.09.2026 – 30.09.2026]</description>
       <content:encoded><![CDATA[Trains stop at line 18, direction Burggasse; No operation; service from Kliebergasse.<br/>[28.09.2026 – 30.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26E: Track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dac4be805e97a1ee16cc914e8b4797565e65f97545fca29a6e2a1cbb7fe0bf00</guid>
+      <pubDate>Fri, 25 Sep 2026 08:55:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 09:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 08:55:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
+      <description>The capacities of the replacement line 26E are not comparable to those of a tram. [25.09.2026 – 12.12.2026]</description>
+      <content:encoded><![CDATA[The capacities of the replacement line 26E are not comparable to those of a tram.<br/>[25.09.2026 – 12.12.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: ÖBB replacement bus]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
+      <pubDate>Wed, 30 Sep 2026 05:00:19 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 05:00:28 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 05:00:19 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 30 Sep 2026 23:00:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf [On 30.09.2026]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[On 30.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
