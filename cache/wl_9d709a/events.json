@@ -614,14 +614,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "36B/36A: Feuerwehreinsatz",
-    "description": "Linie 36B: Fahrtbehinderung in Richtung Leopoldau S U. Linie 36A: Fahrtbehinderung in Richtung Carabelligasse. Voraussichtliche Dauer: 13:35 Uhr. Grund: Feuerwehreinsatz im Bereich Dunantgasse 2.",
+    "title": "36A: Feuerwehreinsatz",
+    "description": "Linie 36A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "81e79bf225c78197d8f5823c587ae5e63b30d211216ec3e13db4cc4ca44e6591",
+    "guid": "a0eb67943824956ea19b6021dee617f3eb4bb9ca6ee22e9137d7029bb447797a",
     "pubDate": "2026-09-30T13:18:00+02:00",
     "starts_at": "2026-09-30T13:18:00+02:00",
     "ends_at": "2026-09-30T23:55:00+02:00",
-    "_identity": "wl|störung|L=36A,36B|D=2026-09-30|TK=feuerwehreinsatz"
+    "_identity": "wl|störung|L=36A|D=2026-09-30|TK=feuerwehreinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "36B: Feuerwehreinsatz",
+    "description": "Linie 36B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4cef41de20ffbeef4eb12e125ea27ca808cd23567039ec4f7933904bc796e761",
+    "pubDate": "2026-09-30T13:18:00+02:00",
+    "starts_at": "2026-09-30T13:18:00+02:00",
+    "ends_at": "2026-09-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=36B|D=2026-09-30|TK=feuerwehreinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -742,30 +754,6 @@
     "starts_at": "2026-09-30T05:10:21+02:00",
     "ends_at": "2026-10-01T00:45:00+02:00",
     "_identity": "wl|störung|L=7A|D=2026-09-30|TK=busse halten laxenburger strasse 66"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9A: Feuerwehreinsatz",
-    "description": "Linie 9A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "8215e8ddaeeb8bea8ffb2c5747ffe43e3e9c91406d23ee310391a705c5df13b3",
-    "pubDate": "2026-09-30T12:12:00+02:00",
-    "starts_at": "2026-09-30T12:12:00+02:00",
-    "ends_at": "2026-09-30T13:50:00+02:00",
-    "_identity": "wl|störung|L=9A|D=2026-09-30|TK=feuerwehreinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Falschparker",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-09-30T12:16:00+02:00",
-    "starts_at": "2026-09-30T12:16:00+02:00",
-    "ends_at": "2026-09-30T13:40:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-09-30|TK=falschparker"
   },
   {
     "source": "Wiener Linien",

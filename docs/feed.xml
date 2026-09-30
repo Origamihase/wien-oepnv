@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 30 Sep 2026 13:31:03 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 30 Sep 2026 14:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[36B/36A: Feuerwehreinsatz]]></title>
+      <title><![CDATA[36B: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">81e79bf225c78197d8f5823c587ae5e63b30d211216ec3e13db4cc4ca44e6591</guid>
+      <guid isPermaLink="false">4cef41de20ffbeef4eb12e125ea27ca808cd23567039ec4f7933904bc796e761</guid>
       <pubDate>Wed, 30 Sep 2026 13:18:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 13:31:03 +0200</ext:first_seen>
+      <ext:first_seen>Wed, 30 Sep 2026 14:00:59 +0200</ext:first_seen>
       <ext:starts_at>Wed, 30 Sep 2026 13:18:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Leopoldau S U. Linie 36A: Fahrtbehinderung in Richtung Carabelligasse. [Am 30.09.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Leopoldau S U. Linie 36A: Fahrtbehinderung in Richtung Carabelligasse.<br/>[Am 30.09.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 30.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 30.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[36A: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a0eb67943824956ea19b6021dee617f3eb4bb9ca6ee22e9137d7029bb447797a</guid>
+      <pubDate>Wed, 30 Sep 2026 13:18:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 14:00:59 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 13:18:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 30.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 30.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Verspätungen]]></title>
@@ -30,28 +41,6 @@
       <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Stellwerksstörung. [Am 30.09.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Stellwerksstörung.<br/>[Am 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9A: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8215e8ddaeeb8bea8ffb2c5747ffe43e3e9c91406d23ee310391a705c5df13b3</guid>
-      <pubDate>Wed, 30 Sep 2026 12:12:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 12:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 12:12:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 13:50:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 30.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
-      <pubDate>Wed, 30 Sep 2026 12:16:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 12:16:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 12:16:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 13:40:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 30.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 30.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46/47A/47B: Veranstaltung am 04.10.2026]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 30 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Busse halten bei Haltestelle N71 [28.09.2026 – 30.09.2026]</description>
       <content:encoded><![CDATA[Busse halten bei Haltestelle N71<br/>[28.09.2026 – 30.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: ÖBB Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">421c812b010f527d8c6de96551f937085e6d36f6d828b4c0336bd5672eb2be2b</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:09 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 15:10:51 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 00:00:09 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 30 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Züge halten bei Linie 18, Richtung Burggasse; Kein Betrieb; Betrieb ab Kliebergasse. [28.09.2026 – 30.09.2026]</description>
+      <content:encoded><![CDATA[Züge halten bei Linie 18, Richtung Burggasse; Kein Betrieb; Betrieb ab Kliebergasse.<br/>[28.09.2026 – 30.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
