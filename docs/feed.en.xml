@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 30 Sep 2026 06:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 30 Sep 2026 07:00:54 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[O: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">011d5e8498133bc00e1bdf3e9fc71ce953ee78ab3f1b6b1f28b0860bcee4fb84</guid>
+      <pubDate>Wed, 30 Sep 2026 06:58:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 06:58:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 07:00:05 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction towards Bruno-Marek-Allee. Duration: 07:20. Reason: rescue operation im Haltestellenbereich Fasangasse. [On 30.09.2026]</description>
+      <content:encoded><![CDATA[Service obstruction towards Bruno-Marek-Allee. Duration: 07:20. Reason: rescue operation im Haltestellenbereich Fasangasse.<br/>[On 30.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[52: Trains stop on lines 6 and 18]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -26,7 +37,7 @@
       <guid isPermaLink="false">e1715d10748fce73b172c45e54dd3e25af3065fc6c95c6e107df041384e060fc</guid>
       <pubDate>Wed, 30 Sep 2026 05:53:00 +0200</pubDate>
       <ext:first_seen>Wed, 30 Sep 2026 05:53:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 05:55:01 +0200</ext:starts_at>
+      <ext:starts_at>Wed, 30 Sep 2026 05:53:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 30 Sep 2026 07:01:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [On 30.09.2026]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 30.09.2026]]]></content:encoded>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 30 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Trains stop at line 18, direction Burggasse; No operation; service from Kliebergasse. [28.09.2026 – 30.09.2026]</description>
       <content:encoded><![CDATA[Trains stop at line 18, direction Burggasse; No operation; service from Kliebergasse.<br/>[28.09.2026 – 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26E: Track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dac4be805e97a1ee16cc914e8b4797565e65f97545fca29a6e2a1cbb7fe0bf00</guid>
-      <pubDate>Fri, 25 Sep 2026 08:55:00 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 09:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 08:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
-      <description>The capacities of the replacement line 26E are not comparable to those of a tram. [25.09.2026 – 12.12.2026]</description>
-      <content:encoded><![CDATA[The capacities of the replacement line 26E are not comparable to those of a tram.<br/>[25.09.2026 – 12.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
