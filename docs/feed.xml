@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 30 Sep 2026 06:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 30 Sep 2026 06:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[52: Züge halten bei Linien 6 und 18]]></title>
@@ -27,9 +27,9 @@
       <pubDate>Wed, 30 Sep 2026 05:53:00 +0200</pubDate>
       <ext:first_seen>Wed, 30 Sep 2026 05:53:00 +0200</ext:first_seen>
       <ext:starts_at>Wed, 30 Sep 2026 05:55:01 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Umleitung in Richtung Parlament, U Volkstheater zwischen Ottakring S U und Schmerlingplatz, Volkstheater U über die Strecke der Linien 44 und 2. Voraussichtliche Dauer: 06:30 … [Am 30.09.2026]</description>
-      <content:encoded><![CDATA[Umleitung in Richtung Parlament, U Volkstheater zwischen Ottakring S U und Schmerlingplatz, Volkstheater U über die Strecke der Linien 44 und 2. Voraussichtliche Dauer: 06:30 …<br/>[Am 30.09.2026]]]></content:encoded>
+      <ext:ends_at>Wed, 30 Sep 2026 07:01:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 30.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 30.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Busse halten Laxenburger Straße 66]]></title>
@@ -41,17 +41,6 @@
       <ext:ends_at>Thu, 01 Oct 2026 00:45:00 +0200</ext:ends_at>
       <description>Grund: Bauarbeiten. [30.09.2026 – 01.10.2026]</description>
       <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[30.09.2026 – 01.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4</guid>
-      <pubDate>Wed, 30 Sep 2026 05:06:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 05:06:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 05:06:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 30.09.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 30.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 30 Sep 2026 23:59:59 +0200</ext:ends_at>
       <description>Züge halten bei Linie 18, Richtung Burggasse; Kein Betrieb; Betrieb ab Kliebergasse. [28.09.2026 – 30.09.2026]</description>
       <content:encoded><![CDATA[Züge halten bei Linie 18, Richtung Burggasse; Kein Betrieb; Betrieb ab Kliebergasse.<br/>[28.09.2026 – 30.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26E: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dac4be805e97a1ee16cc914e8b4797565e65f97545fca29a6e2a1cbb7fe0bf00</guid>
+      <pubDate>Fri, 25 Sep 2026 08:55:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 09:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 08:55:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
+      <description>Die Kapazitäten der Ersatzlinie 26E sind nicht mit denen einer Straßenbahn vergleichbar. [25.09.2026 – 12.12.2026]</description>
+      <content:encoded><![CDATA[Die Kapazitäten der Ersatzlinie 26E sind nicht mit denen einer Straßenbahn vergleichbar.<br/>[25.09.2026 – 12.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
