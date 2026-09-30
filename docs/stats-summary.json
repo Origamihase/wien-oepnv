@@ -1,7 +1,7 @@
 {
   "ausfaelle": {
     "by_direction": {
-      "Meidling": 950,
+      "Meidling": 951,
       "Praterstern": 916
     },
     "by_hour": {
@@ -13,7 +13,7 @@
       "05": 72,
       "06": 78,
       "07": 112,
-      "08": 132,
+      "08": 133,
       "09": 89,
       "10": 83,
       "11": 69,
@@ -43,7 +43,7 @@
       "REX2277": 1,
       "REX3": 195,
       "REX92": 3,
-      "S1": 401,
+      "S1": 402,
       "S2": 300,
       "S27016": 1,
       "S28044": 1,
@@ -58,19 +58,19 @@
       "Di": 288,
       "Do": 321,
       "Fr": 367,
-      "Mi": 299,
+      "Mi": 300,
       "Mo": 280,
       "Sa": 151,
       "So": 160
     },
-    "total": 1866
+    "total": 1867
   },
-  "generated_at": "2026-09-30T08:01:02+02:00",
+  "generated_at": "2026-09-30T08:31:11+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 1.03,
     "by_direction": {
-      "Meidling": 5729,
+      "Meidling": 5730,
       "Praterstern": 3831
     },
     "by_hour_avg": {
@@ -82,7 +82,7 @@
       "05": 1.11,
       "06": 0.88,
       "07": 0.85,
-      "08": 1.14,
+      "08": 1.15,
       "09": 1.01,
       "10": 1.01,
       "11": 0.69,
@@ -112,13 +112,13 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-09-30T07:55:00+02:00",
+          "last_seen": "2026-09-30T08:25:00+02:00",
           "peer_rows_since": 0,
           "rows_in_window": 1194
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 1879,
+          "peer_rows_since": 1880,
           "rows_in_window": 0
         }
       },
@@ -127,14 +127,14 @@
       "window_days": 30
     },
     "live": {
-      "avg_delay_minutes": 0.0,
+      "avg_delay_minutes": 3.5,
       "observations": 2,
       "window_minutes": 60
     },
     "max_delay_minutes": 395.33,
     "threshold_exceedances": 124,
     "threshold_minutes": 9.0,
-    "total_observations": 9560
+    "total_observations": 9561
   },
   "stoerungen": {
     "by_hour": {
