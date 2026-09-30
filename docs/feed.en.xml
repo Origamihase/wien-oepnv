@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 30 Sep 2026 16:01:23 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 30 Sep 2026 16:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[2/10: Traffic accident]]></title>
+      <title><![CDATA[10: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">448cb71d9ebc9529c2cd71593928a8434447191b472775425bc1975848ec68c4</guid>
-      <pubDate>Wed, 30 Sep 2026 15:50:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 16:01:23 +0200</ext:first_seen>
+      <guid isPermaLink="false">61b24b179dc99eec46268642e5c4452102c4449a15d1457fb096c76204442f5f</guid>
+      <pubDate>Wed, 30 Sep 2026 15:52:55 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 15:50:00 +0200</ext:first_seen>
       <ext:starts_at>Wed, 30 Sep 2026 15:50:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Friedrich-Engels-Platz. Line 10: service obstruction0X towards Unter St. Veit, Hummelgasse. [On 30.09.2026]</description>
-      <content:encoded><![CDATA[Service obstruction towards Friedrich-Engels-Platz. Line 10: service obstruction0X towards Unter St. Veit, Hummelgasse.<br/>[On 30.09.2026]]]></content:encoded>
+      <description>After a service obstruction there are different intervals. [On 30.09.2026]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 30.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc</guid>
+      <pubDate>Wed, 30 Sep 2026 15:51:55 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 15:50:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 15:50:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [On 30.09.2026]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 30.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[O: Traffic accident]]></title>
@@ -43,17 +54,6 @@
       <content:encoded><![CDATA[Due to construction works, from 02.11.2026 to 03.11.2026 between Wien Franz-Josefs-Bahnhof0X and St.Andrä-Wördern train station no R 40 train.<br/>[31.10.2026 – 04.11.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[62: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8c9b2f06082b865070bcbe91b5a5c9af65a5b959cee850e5fe9386874c8fbfb1</guid>
-      <pubDate>Wed, 30 Sep 2026 15:20:22 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 15:20:22 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 15:20:25 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 16:19:00 +0200</ext:ends_at>
-      <description>Service obstruction [On 30.09.2026]</description>
-      <content:encoded><![CDATA[Service obstruction<br/>[On 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[63A: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">256dd0cdb2b1c0eb23186e5c51158dfe6e5a1b6abe24847907b9a52340324733</guid>
@@ -63,28 +63,6 @@
       <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: traffic accident. [On 30.09.2026]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[On 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[36B: Fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4cef41de20ffbeef4eb12e125ea27ca808cd23567039ec4f7933904bc796e761</guid>
-      <pubDate>Wed, 30 Sep 2026 13:18:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 14:00:59 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 13:18:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 30.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[36A: Fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a0eb67943824956ea19b6021dee617f3eb4bb9ca6ee22e9137d7029bb447797a</guid>
-      <pubDate>Wed, 30 Sep 2026 13:18:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 14:00:59 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 13:18:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 30.09.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 30.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46/47A/47B: Event on 04.10.2026]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Thu, 01 Oct 2026 00:45:00 +0200</ext:ends_at>
       <description>Reason: construction works. [30.09.2026 – 01.10.2026]</description>
       <content:encoded><![CDATA[Reason: construction works.<br/>[30.09.2026 – 01.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Wed, 30 Sep 2026 04:40:20 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 04:40:20 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 04:40:20 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 01 Oct 2026 01:00:00 +0200</ext:ends_at>
+      <description>Reason: construction works. [30.09.2026 – 01.10.2026]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[30.09.2026 – 01.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[D: Track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">67078944a93bdf102ba6646e545b32c2ab8c76bf5f5efe8750a1c24d9ac26e08</guid>
+      <pubDate>Mon, 28 Sep 2026 04:00:07 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 04:00:07 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 30 Sep 2026 23:59:59 +0200</ext:ends_at>
+      <description>Trains keep in loop, Wipplingerstr 39; service from Augasse; service from Börse. [28.09.2026 – 30.09.2026]</description>
+      <content:encoded><![CDATA[Trains keep in loop, Wipplingerstr 39; service from Augasse; service from Börse.<br/>[28.09.2026 – 30.09.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
