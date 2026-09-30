@@ -446,18 +446,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Schadhaftes Fahrzeug",
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9211cb3d8ce68889c7066532dfb5410be52f492f45bf8c859a2229f0a241d27f",
-    "pubDate": "2026-09-30T10:40:00+02:00",
-    "starts_at": "2026-09-30T10:40:00+02:00",
-    "ends_at": "2026-09-30T11:59:00+02:00",
-    "_identity": "wl|störung|L=18|D=2026-09-30|TK=18 schadhaftes fahrzeug"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -471,12 +459,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "1: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b",
-    "pubDate": "2026-09-30T11:44:00+02:00",
+    "pubDate": "2026-09-30T11:42:00+02:00",
     "starts_at": "2026-09-30T11:59:05+02:00",
-    "ends_at": "2026-09-30T12:58:00+02:00",
+    "ends_at": "2026-09-30T23:55:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-09-30|TK=rettungseinsatz"
   },
   {
@@ -758,6 +746,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "9A: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Linie 9A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8215e8ddaeeb8bea8ffb2c5747ffe43e3e9c91406d23ee310391a705c5df13b3",
+    "pubDate": "2026-09-30T12:12:00+02:00",
+    "starts_at": "2026-09-30T12:14:05+02:00",
+    "ends_at": "2026-09-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=9A|D=2026-09-30|TK=feuerwehreinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fahrtbehinderung Falschparker",
+    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 12:35 Uhr. Grund: Falschparker im Bereich Hormayrgasse 43.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2026-09-30T12:16:00+02:00",
+    "starts_at": "2026-09-30T12:27:38+02:00",
+    "ends_at": "2026-09-30T23:55:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-09-30|TK=falschparker"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "D: Betrieb ab Augasse",
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -838,18 +850,6 @@
     "starts_at": "2026-09-28T00:00:06+02:00",
     "ends_at": "2026-09-30T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-09-28|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Schadhaftes Fahrzeug",
-    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a3ccf7c2ad3270af3ce0b5bff574b7e68e073f01c1a9bf875ba6186e69760114",
-    "pubDate": "2026-09-30T10:40:00+02:00",
-    "starts_at": "2026-09-30T10:40:00+02:00",
-    "ends_at": "2026-09-30T12:15:00+02:00",
-    "_identity": "wl|störung|L=O|D=2026-09-30|TK=o schadhaftes fahrzeug"
   },
   {
     "source": "Wiener Linien",
