@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 30 Sep 2026 15:31:22 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 30 Sep 2026 16:01:23 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[2/10: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">448cb71d9ebc9529c2cd71593928a8434447191b472775425bc1975848ec68c4</guid>
+      <pubDate>Wed, 30 Sep 2026 15:50:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 16:01:23 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 15:50:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Friedrich-Engels-Platz. Linie 10: Fahrtbehinderung in Richtung Unter St. Veit, Hummelgasse. [Am 30.09.2026]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Friedrich-Engels-Platz. Linie 10: Fahrtbehinderung in Richtung Unter St. Veit, Hummelgasse.<br/>[Am 30.09.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[O: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ecd5f95a17857dc93a63349472e98b39e10391574ac70ec7b83eaf44b2f51e5a</guid>
+      <pubDate>Wed, 30 Sep 2026 15:44:56 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 15:44:56 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 15:48:56 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 30 Sep 2026 16:48:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 30.09.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 30.09.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[REX 41: Wien Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern / Wien Franz-Josefs-Bahnhof ↔ Wien Heiligenstadt / Wien Franz-Josefs-Bahnhof ↔ Wien Nußdorf]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -41,17 +63,6 @@
       <ext:ends_at>Wed, 30 Sep 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 30.09.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 30.09.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Oberdöbling ↔ Wien Heiligenstadt]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;915999</guid>
-      <pubDate>Wed, 30 Sep 2026 14:37:57 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 14:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 30 Sep 2026 23:59:59 +0200</ext:ends_at>
-      <description>Wegen Personen im Gleisbereich waren zwischen Oberdöbling (Wien) und Heiligenstadt (Wien) bis 14:35 Uhr keine Fahrten möglich. [Am 30.09.2026]</description>
-      <content:encoded><![CDATA[Wegen Personen im Gleisbereich waren zwischen Oberdöbling (Wien) und Heiligenstadt (Wien) bis 14:35 Uhr keine Fahrten möglich.<br/>[Am 30.09.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[36B: Feuerwehreinsatz]]></title>
@@ -105,17 +116,6 @@
       <ext:first_seen>Wed, 30 Sep 2026 05:10:21 +0200</ext:first_seen>
       <ext:starts_at>Wed, 30 Sep 2026 05:10:21 +0200</ext:starts_at>
       <ext:ends_at>Thu, 01 Oct 2026 00:45:00 +0200</ext:ends_at>
-      <description>Grund: Bauarbeiten. [30.09.2026 – 01.10.2026]</description>
-      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[30.09.2026 – 01.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
-      <pubDate>Wed, 30 Sep 2026 04:40:20 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 04:40:20 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 04:40:20 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 01:00:00 +0200</ext:ends_at>
       <description>Grund: Bauarbeiten. [30.09.2026 – 01.10.2026]</description>
       <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[30.09.2026 – 01.10.2026]]]></content:encoded>
     </item>
