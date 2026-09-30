@@ -662,14 +662,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "59A: Verunreinigung",
-    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "title": "48A: Gasrohrgebrechen",
+    "description": "Linie 48A: Betrieb nur zwischen Parlament, U Volkstheater und Joachimsthalerplatz. Die Busse fahren ab Pfenninggeldgasse über die Spetterbrücke - Wernhardtstraße zum Joachimsthalerplatz. Um Ottakring S U zu erreichen fahren Sie bitte weiter in die Gegenrichtung. Zwischen Joachimsthalerplatz und Klinik Penzing wurde ein Pendelbusverkehr eingerichtet, dieser hält am Joachimsthalerplatz in der Abfahrtshaltestelle der Linie 46. Aufgrund der Bauarbeiten werden die Busse über über die Breitenseer Straße umgeleitet und können die Haltestellen Klinik Ottakring und Waidäckergasse nicht einhalten! Voraussichtliche Dauer: Betriebsschluss. Grund: Gasrohrgebrechen im Bereich Flötzersteig.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "89c7e98b8f27d48cb03c0d0017ab220e860d6d3673e2506ba1f48f6d2eb5a555",
-    "pubDate": "2026-09-30T20:37:00+02:00",
-    "starts_at": "2026-09-30T20:37:00+02:00",
-    "ends_at": "2026-09-30T21:51:00+02:00",
-    "_identity": "wl|störung|L=59A|D=2026-09-30|TK=59a verunreinigung"
+    "guid": "3387d8dbca374bec4aee4170d550468b4dadbe0e839ef24a9be85ee625c517de",
+    "pubDate": "2026-09-30T21:45:01+02:00",
+    "starts_at": "2026-09-30T21:47:00+02:00",
+    "ends_at": "2026-10-01T01:00:00+02:00",
+    "_identity": "wl|störung|L=48A|D=2026-09-30|TK=48a gasrohrgebrechen"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "48A: Gasrohrgebrechen Shuttlebus eingerichtet, Abfahrtsstelle: Haltestelle Linie 46!",
+    "description": "Gasrohrgebrechen\nShuttlebus eingerichtet, Abfahrtsstelle: Haltestelle Linie 46!",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "8eb2c7be7a922bdd482f34bd7fdcb1108fc1444071d68fb773add62c75929871",
+    "pubDate": "2026-09-30T21:47:59+02:00",
+    "starts_at": "2026-09-30T21:47:59+02:00",
+    "ends_at": "2026-09-30T23:59:59+02:00",
+    "_identity": "wl|störung|L=48A|D=2026-09-30|TK=gasrohrgebrechen shuttlebus eingerichtet abfahrtsstelle haltestelle linie 46"
   },
   {
     "source": "Wiener Linien",
