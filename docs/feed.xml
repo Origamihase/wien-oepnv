@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 01 Oct 2026 14:30:56 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 15:01:13 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1/D/71: Verspätungen]]></title>
+      <title><![CDATA[1/71: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9d3e58ebe1335fb6dba836b4570fc33678a5f3ac821dcbea92caaa81d7dcc3c2</guid>
+      <guid isPermaLink="false">9d7a03a1454ceac8474f4095635a076c8615e8f8afdade5ec28c70c5f03db04a</guid>
       <pubDate>Thu, 01 Oct 2026 14:24:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 14:30:56 +0200</ext:first_seen>
+      <ext:first_seen>Thu, 01 Oct 2026 15:01:13 +0200</ext:first_seen>
       <ext:starts_at>Thu, 01 Oct 2026 14:24:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Stefan-Fadinger-Platz. Linie D: Fahrtbehinderung in Richtung Absberggasse; Linie 71: Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Stefan-Fadinger-Platz. Linie D: Fahrtbehinderung in Richtung Absberggasse; Linie 71: Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse.<br/>[Am 01.10.2026]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 01.10.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[69A: Verkehrsunfall]]></title>
@@ -28,41 +28,8 @@
       <ext:first_seen>Thu, 01 Oct 2026 14:14:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 01 Oct 2026 14:14:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie 69A wird in beiden Richtungen zwischen Am Kanal, Hasenleitengasse und Florian-Hedorfer-Straße über die Simmeringer Hauptstraße umgeleitet. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Die Linie 69A wird in beiden Richtungen zwischen Am Kanal, Hasenleitengasse und Florian-Hedorfer-Straße über die Simmeringer Hauptstraße umgeleitet.<br/>[Am 01.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[22A: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">edfb46a3756a0ab75a9ed9f7470b62a6f1dedbb0fae2794ad66ad85eeff23bcb</guid>
-      <pubDate>Thu, 01 Oct 2026 13:38:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 14:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 13:38:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 01.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8b481d00f597d403fd733652ccb119b371560c14fdfc76dab913cf850ab4d9f9</guid>
-      <pubDate>Thu, 01 Oct 2026 13:19:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 13:24:05 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 13:19:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789</guid>
-      <pubDate>Thu, 01 Oct 2026 13:19:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 13:22:02 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 13:19:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.10.2026]]]></content:encoded>
+      <description>Betrieb ab Florian-Hedorfer-Straße; Betrieb ab Am Kanal, Hasenleitengasse. [Am 01.10.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Florian-Hedorfer-Straße; Betrieb ab Am Kanal, Hasenleitengasse.<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Busse halten Laxenburger Straße 66]]></title>
@@ -98,6 +65,17 @@
       <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[05.10.2026 – 11.11.2026]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[D: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7ac7f5d0f84b8fde05436e0369f9bb0d7137bda05a0c19e4423d991c7e19d99b</guid>
+      <pubDate>Mon, 28 Sep 2026 04:30:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 18:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 28 Sep 2026 04:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 07 Nov 2026 01:00:00 +0100</ext:ends_at>
+      <description>Kein Betrieb zwischen Börse und Augasse. Weichen Sie ersatzweise auf die Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A. aus. Grund: Gleisbauarbeiten im Bereich Althanstraße. [28.09.2026 – 07.11.2026]</description>
+      <content:encoded><![CDATA[Kein Betrieb zwischen Börse und Augasse. Weichen Sie ersatzweise auf die Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A. aus. Grund: Gleisbauarbeiten im Bereich Althanstraße.<br/>[28.09.2026 – 07.11.2026]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[D/1/2/71/1A/3A: D, 1, 2, 71, 1A, 3A]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">02bcf717ba40c84b0080293bcc911c618e2b10f6aacfea97643d33c3a16f6263</guid>
@@ -118,6 +96,28 @@
       <ext:ends_at>Wed, 04 Nov 2026 23:59:59 +0100</ext:ends_at>
       <description>Wegen Bauarbeiten können von 02.11.2026 bis 03.11.2026 zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren. [31.10.2026 – 04.11.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können von 02.11.2026 bis 03.11.2026 zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren.<br/>[31.10.2026 – 04.11.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46/47A/47B: Veranstaltung am 04.10.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c2bb5f86d94aef7a1f6955caa3f47b2970089dc4432d9db0f98ffd41cb8ccb65</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 12:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
+      <description>Wegen einer Veranstaltung im Bereich Allianz Stadion kommt es zu folgenden Verkehrsmaßnahmen. [30.09.2026 – 04.10.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Veranstaltung im Bereich Allianz Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[30.09.2026 – 04.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29B/N25: Adolf-Loos-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2e0949e212b98b31a226dddab6b40d0f6c06edb1c250ee7ddaac3c840bc8e962</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 11:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 11:11:00 +0100</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet. [30.09.2026 – 31.12.2026]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet.<br/>[30.09.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
