@@ -5,6 +5,17 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Deutscher Feed: ausführliche WL-Meldung behält die Folgen ihrer Kurzmeldungen (2026-10-01)**:
+  Eine ausführliche Meldung steht weiter für ihre Kurzmeldungen. Was
+  Kurzmeldungen derselben Ursache (oder ohne Ursache) zusätzlich sagen,
+  bleibt jetzt erhalten, innerhalb des 10-Minuten-Fensters und darüber
+  hinaus (`_with_consequences`): „64A: Verkehrsunfall“ über „Betrieb ab
+  Mühlbreiten. Unregelmäßige Intervalle …“, bei der 48A „Shuttlebus
+  eingerichtet, Abfahrtsstelle: Haltestelle Linie 46!“. Die Zuordnung
+  `_claimed_by_long_messages`, die solche Kurzmeldungen außerhalb des
+  Fensters verwarf, entfällt; „Eine Linie, ein Platz“ deckt sie ab. Ein
+  bloßes „Fahrtbehinderung“ hängt nie mehr an (auch ein Fehler aus #1909).
+  Audit vom 01.10., offener Punkt 1 (Update 20:04).
 * **Deutscher Feed: ÖBB-Präfix nennt alle betroffenen Linien (2026-10-01)**:
   Live stand „REX 41: Wien Franz-Josefs-Bahnhof ↔ …“ über „… keine R
   40-Züge fahren“. Die Meldung betrifft R 40, REX 41, REX 4 und S 40; `R`

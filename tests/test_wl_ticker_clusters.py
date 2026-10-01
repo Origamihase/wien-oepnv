@@ -31,14 +31,16 @@ Mutations checked against this file (each one caught, by the test named):
 * the earliest start of the group wins → ``test_the_start_stays_the_leads``.
 * a ticker leads on a tie with the long message → ``test_a_long_message_absorbs_what_the_tickers_repeat``.
 
-A long message claims its tickers outside the window (2026-10-01):
+A long message and its tickers outside the window (2026-10-01): they share
+one entry, and what the tickers add stays (one line, one slot; see
+``tests/test_wl_one_line_one_slot.py``):
 
-* no claim → ``test_a_long_message_claims_its_tickers_outside_the_window``.
-* the cause is not compared → ``test_another_cause_is_not_claimed``.
+* no joining → ``test_a_long_message_joins_its_tickers_outside_the_window``.
+* the cause is not compared → ``test_another_cause_of_the_line_is_listed_beside_it``.
 * the lines are not compared → ``test_another_line_keeps_its_slot``.
 * the validity is not compared → ``test_tickers_after_the_long_message_ended_keep_their_slot``.
-* a cause glued to the consequence is missed → ``test_a_cause_glued_to_the_consequence_is_claimed_too``.
-* a stock-sentence long message claims too → ``test_the_stock_sentence_claims_nothing``.
+* a cause glued to the consequence is missed → ``test_a_cause_glued_to_the_consequence_is_joined_too``.
+* a stock-sentence long message stands for its tickers → ``test_the_stock_sentence_gives_way``.
 """
 
 from __future__ import annotations
@@ -377,7 +379,7 @@ def test_main_merges_before_the_slots_are_filled() -> None:
     assert rendered[0] == ["62: ÖBB Bauarbeiten"]
 
 
-# --- A long message claims its tickers outside the window (2026-10-01) -----
+# --- A long message joins its tickers outside the window (2026-10-01) ------
 #
 # Live 2026-09-30 21:01 to 2026-10-01 10:31: "D: Gleisbauarbeiten" twice in
 # one feed, the long message beside its tickers, 30 minutes apart. The
@@ -420,14 +422,22 @@ D_INCIDENT = [
 ]
 
 
-def test_a_long_message_claims_its_tickers_outside_the_window() -> None:
+def test_a_long_message_joins_its_tickers_outside_the_window() -> None:
     (item,) = _built(D_INCIDENT)
     assert (item["guid"], item["title"]) == ("7ac7f5d0", "D: Gleisbauarbeiten")
-    assert str(item["description"]).startswith("Kein Betrieb zwischen Börse und Augasse.")
+    # The loop the tickers name stays, in the measure's sentence; "Betrieb ab
+    # Augasse, Börse" is in the measure already.
+    assert str(item["description"]).startswith(
+        "Kein Betrieb zwischen Börse und Augasse; Züge halten in Schleife, Wipplingerstr 39. Weichen Sie"
+    )
+    # "39." ends no sentence the summary sees: as a sentence of its own the
+    # loop took the advice with it out of the 180 characters.
+    xml = bf._make_rss([item], D_LONG + timedelta(hours=1), {}, lang="de")
+    assert "Kein Betrieb zwischen Börse und Augasse; Züge halten in Schleife, Wipplingerstr 39. Weichen Sie" in xml
     assert (item["starts_at"], item["ends_at"]) == (D_LONG, D_LONG_END)
 
 
-def test_a_cause_glued_to_the_consequence_is_claimed_too() -> None:
+def test_a_cause_glued_to_the_consequence_is_joined_too() -> None:
     # 48A on 2026-10-01: the long message at 21:47, the ticker republished at midnight.
     long_start = datetime(2026, 9, 30, 19, 47, tzinfo=UTC)
     end = datetime(2026, 9, 30, 23, 0, tzinfo=UTC)
@@ -448,7 +458,13 @@ def test_a_cause_glued_to_the_consequence_is_claimed_too() -> None:
             guid="8eb2c7be",
         ),
     ]
-    assert [item["guid"] for item in _built(items)] == ["3387d8db"]
+    (item,) = _built(items)
+    assert item["guid"] == "3387d8db"
+    # The shuttle stays, without the cause glued in front of it.
+    assert item["description"] == (
+        "Betrieb nur zwischen Parlament, U Volkstheater und Joachimsthalerplatz; "
+        "Shuttlebus eingerichtet, Abfahrtsstelle: Haltestelle Linie 46! Grund: Gasrohrgebrechen im Bereich Flötzersteig."
+    )
 
 
 FIRE_D = _wl(
@@ -458,11 +474,6 @@ FIRE_D = _wl(
     ends_at=D_TICKERS_END,
     guid="9d8f98",
 )
-
-
-def test_another_cause_is_not_claimed() -> None:
-    items = _read([D_INCIDENT[-1], FIRE_D])
-    assert bf._claimed_by_long_messages(items, bf._ticker_groups(items)) == set()
 
 
 def test_another_cause_of_the_line_is_listed_beside_it() -> None:
@@ -499,7 +510,7 @@ def test_tickers_after_the_long_message_ended_keep_their_slot() -> None:
     assert len(_merge([D_INCIDENT[-1], ticker])) == 2
 
 
-def test_the_stock_sentence_claims_nothing() -> None:
+def test_the_stock_sentence_gives_way() -> None:
     stock = _wl(
         "D: Gleisbauarbeiten",
         "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
@@ -507,8 +518,6 @@ def test_the_stock_sentence_claims_nothing() -> None:
         ends_at=D_LONG_END,
         guid="stock",
     )
-    items = _read([*D_INCIDENT[:-1], stock])
-    assert bf._claimed_by_long_messages(items, bf._ticker_groups(items)) == set()
     # One cause, one line: one incident, and the stock sentence gives way.
     assert [(it["title"], it["description"]) for it in _built([*D_INCIDENT[:-1], stock])] == [
         ("D: Gleisbauarbeiten", "Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.")
