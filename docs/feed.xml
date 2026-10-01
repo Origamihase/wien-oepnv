@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 01 Oct 2026 23:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 00:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[80A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dbf255f4864fa810267d36e958e84cdee6c8bc0adf8bb00a3e708ca0ae65cc69</guid>
+      <pubDate>Thu, 01 Oct 2026 23:59:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 23:59:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 23:59:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 01:00:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [01.10.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[01.10.2026 – 02.10.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[9: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">f70728020da97caa07e51eff2736191c9f68e1ac73881b3b2ca28860486dd22d</guid>
-      <pubDate>Thu, 01 Oct 2026 23:07:33 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 23:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 23:08:31 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Betrieb ab Johann-Nepomuk-Berger-Platz. Kein Betrieb zwischen Johann-Nepomuk-Berger-Platz und Rosensteingasse. Weichen Sie ersatzweise auf die Linien 2 und 10A aus. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Johann-Nepomuk-Berger-Platz. Kein Betrieb zwischen Johann-Nepomuk-Berger-Platz und Rosensteingasse. Weichen Sie ersatzweise auf die Linien 2 und 10A aus.<br/>[Am 01.10.2026]]]></content:encoded>
+      <pubDate>Thu, 01 Oct 2026 23:57:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 23:57:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 23:57:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 00:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz. [01.10.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz.<br/>[01.10.2026 – 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[18: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9d5d830296db380d998cfac3ef2dc6b284f418d9c2fcaf12d004818d82b4f105</guid>
+      <pubDate>Thu, 01 Oct 2026 23:55:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 23:55:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 01:15:00 +0200</ext:ends_at>
+      <description>Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U. Voraussichtliche Dauer: 00:45 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Ludwig-Koeßler-Platz. [01.10.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U. Voraussichtliche Dauer: 00:45 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Ludwig-Koeßler-Platz.<br/>[01.10.2026 – 02.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Rennweg von 33A bis 37]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Thu, 31 Dec 2026 11:11:00 +0100</ext:ends_at>
       <description>Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet. [30.09.2026 – 31.12.2026]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet.<br/>[30.09.2026 – 31.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">67078944a93bdf102ba6646e545b32c2ab8c76bf5f5efe8750a1c24d9ac26e08</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:14 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:14 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.<br/>[Am 01.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Ersatzverkehr]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6f11b9f2989f7ded86ce2e256372b0c9d235d8bccee56c31a7edc035dbad8893</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:13 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:13 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Busse halten bei Haltestelle N71 [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Busse halten bei Haltestelle N71<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
