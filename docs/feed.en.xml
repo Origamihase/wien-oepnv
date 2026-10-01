@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 01 Oct 2026 14:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 14:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[1/D/71: Delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9d3e58ebe1335fb6dba836b4570fc33678a5f3ac821dcbea92caaa81d7dcc3c2</guid>
+      <pubDate>Thu, 01 Oct 2026 14:24:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 14:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 14:24:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction towards Stefan-Fadinger-Platz. Line D: service obstruction towards Absberggasse; Line 71: service obstruction towards Kaiserebersdorf, Zinnergasse. [On 01.10.2026]</description>
+      <content:encoded><![CDATA[Service obstruction towards Stefan-Fadinger-Platz. Line D: service obstruction towards Absberggasse; Line 71: service obstruction towards Kaiserebersdorf, Zinnergasse.<br/>[On 01.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[69A: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0fc85d27689d90831656e0a962f5ee55294a7b1a7fac9f6b82c5a3b2f65b4ae1</guid>
+      <pubDate>Thu, 01 Oct 2026 14:15:38 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 14:14:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 14:14:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Line 69A is redirected in both directions between Am Kanal, Hasenleitengasse and Florian-Hedorfer-Straße via the Simmeringer Hauptstraße. [On 01.10.2026]</description>
+      <content:encoded><![CDATA[Line 69A is redirected in both directions between Am Kanal, Hasenleitengasse and Florian-Hedorfer-Straße via the Simmeringer Hauptstraße.<br/>[On 01.10.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[22A: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -26,7 +48,7 @@
       <guid isPermaLink="false">8b481d00f597d403fd733652ccb119b371560c14fdfc76dab913cf850ab4d9f9</guid>
       <pubDate>Thu, 01 Oct 2026 13:19:00 +0200</pubDate>
       <ext:first_seen>Thu, 01 Oct 2026 13:24:05 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 13:30:33 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 01 Oct 2026 13:19:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [On 01.10.2026]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 01.10.2026]]]></content:encoded>
@@ -37,40 +59,7 @@
       <guid isPermaLink="false">911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789</guid>
       <pubDate>Thu, 01 Oct 2026 13:19:00 +0200</pubDate>
       <ext:first_seen>Thu, 01 Oct 2026 13:22:02 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 13:31:05 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 01.10.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 01.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46A: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2bb1b4a8f8fee82afdf26f8751d91135f6933d25a8bf9289c48af7c77247bbc2</guid>
-      <pubDate>Thu, 01 Oct 2026 12:34:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 12:34:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 12:34:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident. [On 01.10.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[On 01.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c</guid>
-      <pubDate>Thu, 01 Oct 2026 12:20:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 12:20:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 12:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 01.10.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 01.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e</guid>
-      <pubDate>Thu, 01 Oct 2026 12:20:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 12:20:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 12:20:00 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 01 Oct 2026 13:19:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [On 01.10.2026]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 01.10.2026]]]></content:encoded>
@@ -109,15 +98,26 @@
       <content:encoded><![CDATA[Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected.<br/>[05.10.2026 – 11.11.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[D: Gleisbauarbeiten]]></title>
+      <title><![CDATA[D/1/2/71/1A/3A: D, 1, 2, 71, 1A, 3A]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7ac7f5d0f84b8fde05436e0369f9bb0d7137bda05a0c19e4423d991c7e19d99b</guid>
-      <pubDate>Mon, 28 Sep 2026 04:30:00 +0200</pubDate>
+      <guid isPermaLink="false">02bcf717ba40c84b0080293bcc911c618e2b10f6aacfea97643d33c3a16f6263</guid>
+      <pubDate>Wed, 30 Sep 2026 18:00:00 +0200</pubDate>
       <ext:first_seen>Wed, 30 Sep 2026 18:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 04:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 07 Nov 2026 01:00:00 +0100</ext:ends_at>
-      <description>Kein Betrieb zwischen Börse und Augasse. Weichen Sie ersatzweise auf die Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A. aus. Grund: Gleisbauarbeiten im Bereich Althanstraße. [28.09.2026 – 07.11.2026]</description>
-      <content:encoded><![CDATA[Kein Betrieb zwischen Börse und Augasse. Weichen Sie ersatzweise auf die Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A. aus. Grund: Gleisbauarbeiten im Bereich Althanstraße.<br/>[28.09.2026 – 07.11.2026]]]></content:encoded>
+      <ext:starts_at>Wed, 30 Sep 2026 18:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 01 Oct 2026 21:00:00 +0200</ext:ends_at>
+      <description>Because of a demonstration there are restrictions on public transport. [30.09.2026 – 01.10.2026]</description>
+      <content:encoded><![CDATA[Because of a demonstration there are restrictions on public transport.<br/>[30.09.2026 – 01.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[REX 41: Wien Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern / Wien Franz-Josefs-Bahnhof ↔ Wien Heiligenstadt / Wien Franz-Josefs-Bahnhof ↔Wien Nußdorf]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;915701</guid>
+      <pubDate>Wed, 30 Sep 2026 14:07:02 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 15:31:22 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 31 Oct 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 04 Nov 2026 23:59:59 +0100</ext:ends_at>
+      <description>Due to construction works, from 02.11.2026 to 03.11.2026 between Wien Franz-Josefs-Bahnhof0X and St.Andrä-Wördern train station no R 40 train. [31.10.2026 – 04.11.2026]</description>
+      <content:encoded><![CDATA[Due to construction works, from 02.11.2026 to 03.11.2026 between Wien Franz-Josefs-Bahnhof0X and St.Andrä-Wördern train station no R 40 train.<br/>[31.10.2026 – 04.11.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
