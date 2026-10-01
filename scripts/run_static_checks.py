@@ -92,8 +92,9 @@ def main() -> int:
     #
     # The ``--ignore-vuln`` allowlist captures advisories that affect the
     # ``transformers`` package on the ``>=4.41,<5`` line shipped with the
-    # bilingual feed (Round 2026-05). All listed IDs apply to features we do
-    # NOT exercise in this project:
+    # bilingual feed (Round 2026-05). All listed IDs but one apply to
+    # features we do NOT exercise in this project; the exception,
+    # CVE-2026-80047, follows below:
     #
     # * The feed builder loads exactly ONE model
     #   (``Helsinki-NLP/opus-mt-de-en``) via the inline shorthand task name
@@ -107,6 +108,25 @@ def main() -> int:
     #   on an ephemeral runner with no inbound network surface and the
     #   single output is the sanitised RSS XML (``_sanitize_text`` strips
     #   the canonical Trojan-Source / zero-width family before write).
+    #
+    # CVE-2026-80047 (GHSA-x9r9-c232-4q39, 4.49.0 to 5.8.1, no fixed
+    # release on 2026-10-01) is different: we DO run the affected code.
+    # ``from_pretrained`` calls ``load_custom_generate()`` on every model
+    # load, which writes a repo's ``custom_generate/generate.py`` into
+    # ``~/.cache/huggingface/modules`` before the ``trust_remote_code``
+    # check. Accepted because:
+    #
+    # * the only repo we load is ``Helsinki-NLP/opus-mt-de-en``; a write
+    #   needs that repo itself to be compromised and to gain the file;
+    # * the written file is never executed: execution stays behind
+    #   ``trust_remote_code``, which we never set;
+    # * the cache it would land in is the monthly ``actions/cache`` entry
+    #   of ``~/.cache/huggingface`` on ephemeral runners, never a
+    #   developer machine.
+    #
+    # The model load logs the commit of the revision it loaded, so the
+    # model can be pinned to it; once pinned, a later push to the repo
+    # cannot reach the build at all (audit 2026-10-01).
     #
     # Re-evaluate whenever ``transformers`` bumps to a version that
     # publishes fixes for these IDs on the 4.x line, or when the project
@@ -125,6 +145,7 @@ def main() -> int:
         "PYSEC-2026-2289",
         "PYSEC-2026-2290",
         "CVE-2026-9856",
+        "CVE-2026-80047",
     )
     pip_audit_cmd = [
         "pip-audit",
