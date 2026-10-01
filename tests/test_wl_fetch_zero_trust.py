@@ -115,7 +115,7 @@ def test_best_ts_survives_truthy_non_dict_time(non_dict_field: Any) -> None:
     not raise out of ``_best_ts`` — that would propagate out of ``fetch_events``
     and disable the WL cache refresh entirely."""
     obj = {"time": non_dict_field, "updated": "2026-01-01T00:00:00Z"}
-    # Falls back to ``updated`` because ``time.start`` / ``time.end`` are
+    # Falls back to ``updated`` because ``time.start`` is
     # unreachable when ``time`` collapses to ``{}``.
     result = _best_ts(obj)
     assert result is not None
