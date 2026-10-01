@@ -7,18 +7,62 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 01 Oct 2026 07:01:20 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 07:31:10 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[64B/67B/66A: Traffic accident]]></title>
+      <title><![CDATA[67B/66A: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">77cf2ae6f14c953f6292dd0d46ae194ff32a85273ec358391f649b9b48c7b056</guid>
-      <pubDate>Thu, 01 Oct 2026 06:52:26 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 07:01:20 +0200</ext:first_seen>
+      <guid isPermaLink="false">1811b63cd3ea04644256731abcf6cf44b97ddff768e787822928c6bbca521fa5</guid>
+      <pubDate>Thu, 01 Oct 2026 07:21:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 07:31:10 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 07:21:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic accident. [On 01.10.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[On 01.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[64B: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c3ced36eb891653abe6d4973efc3de0e5b198819c31e566921beef1d46368901</guid>
+      <pubDate>Thu, 01 Oct 2026 06:54:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 07:31:10 +0200</ext:first_seen>
       <ext:starts_at>Thu, 01 Oct 2026 06:54:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Currently, operation is not possible. [On 01.10.2026]</description>
-      <content:encoded><![CDATA[Currently, operation is not possible.<br/>[On 01.10.2026]]]></content:encoded>
+      <description>Currently, operation is not possible. Duration: 08:00. Reason: traffic accident in the area of Anton-Baumgartner-Straße / Erlaaer Schleife. [On 01.10.2026]</description>
+      <content:encoded><![CDATA[Currently, operation is not possible. Duration: 08:00. Reason: traffic accident in the area of Anton-Baumgartner-Straße / Erlaaer Schleife.<br/>[On 01.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
+      <pubDate>Thu, 01 Oct 2026 07:26:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 07:26:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 07:26:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [On 01.10.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[On 01.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
+      <pubDate>Thu, 01 Oct 2026 07:15:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 07:15:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 07:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [On 01.10.2026]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 01.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[64A: Traffic accident & traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2b43b2cf270ad0eb82141dcac02a8b63277141db79e08f4221106b9f3fd4836e</guid>
+      <pubDate>Thu, 01 Oct 2026 07:03:27 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 07:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 07:01:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service from Mühlbreiten. Irregular intervals in both directions. Reason: traffic accident. [On 01.10.2026]</description>
+      <content:encoded><![CDATA[Service from Mühlbreiten. Irregular intervals in both directions. Reason: traffic accident.<br/>[On 01.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Buses stop at Laxenburger Straße 66]]></title>
@@ -74,50 +118,6 @@
       <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
       <description>Due to an event in the area of Allianz Stadion the following transport measures are taken. [30.09.2026 – 04.10.2026]</description>
       <content:encoded><![CDATA[Due to an event in the area of Allianz Stadion the following transport measures are taken.<br/>[30.09.2026 – 04.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29B/N25: Adolf-Loos-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2e0949e212b98b31a226dddab6b40d0f6c06edb1c250ee7ddaac3c840bc8e962</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 11:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 11:11:00 +0100</ext:ends_at>
-      <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected. [30.09.2026 – 31.12.2026]</description>
-      <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected.<br/>[30.09.2026 – 31.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">67078944a93bdf102ba6646e545b32c2ab8c76bf5f5efe8750a1c24d9ac26e08</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:14 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:14 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Trains keep in loop, Wipplingerstr 39; service from Augasse; service from Börse. [On 01.10.2026]</description>
-      <content:encoded><![CDATA[Trains keep in loop, Wipplingerstr 39; service from Augasse; service from Börse.<br/>[On 01.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Replacement service]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6f11b9f2989f7ded86ce2e256372b0c9d235d8bccee56c31a7edc035dbad8893</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:13 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:13 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Buses stop at N71 [On 01.10.2026]</description>
-      <content:encoded><![CDATA[Buses stop at N71<br/>[On 01.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: ÖBB construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6a1dca08aeb9e7b41cb4335d0f1d1f13d36847df0e83b73b6b2f2c6ddba9e385</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:18 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 15:31:24 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:19 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>No operation; trains stop on line 18, direction Burggasse; service from Kliebergasse. [On 01.10.2026]</description>
-      <content:encoded><![CDATA[No operation; trains stop on line 18, direction Burggasse; service from Kliebergasse.<br/>[On 01.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
