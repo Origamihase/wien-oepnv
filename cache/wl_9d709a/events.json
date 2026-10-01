@@ -410,18 +410,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A: Verkehrsüberlastung",
-    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9d0a7e4b9b87021faced5a5e0994d1adbea3b271fc48868ad2b14e038ee2871b",
-    "pubDate": "2026-10-01T09:15:00+02:00",
-    "starts_at": "2026-10-01T09:15:00+02:00",
-    "ends_at": "2026-10-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=11A|D=2026-10-01|TK=11a verkehrsüberlastung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -674,30 +662,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "59A: Verkehrsüberlastung",
-    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
-    "pubDate": "2026-10-01T08:58:00+02:00",
-    "starts_at": "2026-10-01T08:58:00+02:00",
-    "ends_at": "2026-10-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=59A|D=2026-10-01|TK=59a verkehrsüberlastung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Verkehrsüberlastung",
-    "description": "Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "08e61c125855aaa8e72bedc583a0371a48ce4c3e4d16af18872e566ea043e1b3",
-    "pubDate": "2026-10-01T07:52:00+02:00",
-    "starts_at": "2026-10-01T07:52:00+02:00",
-    "ends_at": "2026-10-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=60|D=2026-10-01|TK=60 verkehrsüberlastung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62: Züge halten bei Linie 18, Richtung Burggasse",
     "description": "Züge halten bei\nLinie 18, Richtung Burggasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -734,14 +698,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "67B/66A: Verkehrsunfall",
-    "description": "Linie 67B: Unregelmäßige Intervalle in beiden Richtungen. Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "title": "66A: Busse halten Salvatorianerplatz",
+    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1811b63cd3ea04644256731abcf6cf44b97ddff768e787822928c6bbca521fa5",
-    "pubDate": "2026-10-01T07:21:00+02:00",
-    "starts_at": "2026-10-01T07:21:00+02:00",
+    "guid": "f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417",
+    "pubDate": "2026-10-01T04:40:13+02:00",
+    "starts_at": "2026-10-01T04:40:13+02:00",
+    "ends_at": "2026-10-02T01:00:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2026-10-01|TK=busse halten salvatorianerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Rettungseinsatz",
+    "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107",
+    "pubDate": "2026-10-01T09:52:00+02:00",
+    "starts_at": "2026-10-01T09:52:00+02:00",
     "ends_at": "2026-10-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=66A,67B|D=2026-10-01|TK=66a 67b verkehrsunfall"
+    "_identity": "wl|störung|L=66A|D=2026-10-01|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -838,18 +814,6 @@
     "starts_at": "2026-10-01T00:00:13+02:00",
     "ends_at": "2026-10-01T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-01|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Verkehrsüberlastung",
-    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d",
-    "pubDate": "2026-10-01T09:26:00+02:00",
-    "starts_at": "2026-10-01T09:26:00+02:00",
-    "ends_at": "2026-10-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=O|D=2026-10-01|TK=o verkehrsüberlastung"
   },
   {
     "source": "Wiener Linien",
