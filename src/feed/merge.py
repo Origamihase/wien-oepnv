@@ -601,12 +601,13 @@ def _merge_validity(target: dict[str, Any], source: dict[str, Any]) -> None:
     """
     starts = [s for s in (target.get("starts_at"), source.get("starts_at")) if isinstance(s, datetime)]
     ends = [target.get("ends_at"), source.get("ends_at")]
+    known_ends = [e for e in ends if isinstance(e, datetime)]
     try:
         if starts:
             target["starts_at"] = min(starts)
-        if all(isinstance(e, datetime) for e in ends):
-            target["ends_at"] = max(ends)
-        elif any(e is None for e in ends) and any(isinstance(e, datetime) for e in ends):
+        if len(known_ends) == 2:
+            target["ends_at"] = max(known_ends)
+        elif known_ends and None in ends:
             target["ends_at"] = None
     except TypeError:
         pass
