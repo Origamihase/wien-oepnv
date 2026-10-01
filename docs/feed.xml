@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 01 Oct 2026 22:25:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 22:30:57 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Rennweg von 33A bis 37]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">65573981646b35911098f80f5060d16369450fbc04c8d50c90d9db3a086b9b29</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 22:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
+      <description>Die Arbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Derlinke Fahrstreifen in Fahrtrichtung stadteinwärts wird gesperrt. [30.09.2026 – 15.11.2026]</description>
+      <content:encoded><![CDATA[Die Arbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Derlinke Fahrstreifen in Fahrtrichtung stadteinwärts wird gesperrt.<br/>[30.09.2026 – 15.11.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[60: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">adbc205fada2fc64ad22e011c50abe7d99265772e9404e3b8c41ed5b0dfc70d9</guid>
       <pubDate>Thu, 01 Oct 2026 20:57:00 +0200</pubDate>
       <ext:first_seen>Thu, 01 Oct 2026 20:57:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 21:16:50 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 01 Oct 2026 20:57:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 01 Oct 2026 22:56:00 +0200</ext:ends_at>
-      <description>Züge halten bei Li. 62 Richtung Lainz. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Züge halten bei Li. 62 Richtung Lainz. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.10.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 01.10.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Busse halten Laxenburger Straße 66]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 01 Oct 2026 23:59:59 +0200</ext:ends_at>
       <description>Busse halten bei Haltestelle N71 [Am 01.10.2026]</description>
       <content:encoded><![CDATA[Busse halten bei Haltestelle N71<br/>[Am 01.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: ÖBB Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6a1dca08aeb9e7b41cb4335d0f1d1f13d36847df0e83b73b6b2f2c6ddba9e385</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:18 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 15:31:24 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:19 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Kein Betrieb; Züge halten bei Linie 18, Richtung Burggasse; Betrieb ab Kliebergasse. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Kein Betrieb; Züge halten bei Linie 18, Richtung Burggasse; Betrieb ab Kliebergasse.<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
