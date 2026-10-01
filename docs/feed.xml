@@ -7,29 +7,51 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 01 Oct 2026 18:01:07 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 18:31:14 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[O: Verspätungen]]></title>
+      <title><![CDATA[51B: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">178cf2e06d6bf9e3207e789e31504019ebfed19bf91191929c7996b4b8b6d1a7</guid>
-      <pubDate>Thu, 01 Oct 2026 17:36:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 17:36:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 17:36:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">3ca4e174b2601f942cc4891628b3c2ba72d5ce7986af40a5b3e2c2b22467ff69</guid>
+      <pubDate>Thu, 01 Oct 2026 18:25:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 18:31:14 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 18:25:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Am 01.10.2026]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 01.10.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[66A: Verkehrsüberlastung]]></title>
+      <title><![CDATA[1A: Demonstration]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f2cbc6549fef70caa0f51c5227108c1fa69f01446f6e45fbf2428f34f3c9ccc9</guid>
-      <pubDate>Thu, 01 Oct 2026 16:46:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 16:46:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 16:46:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">d8fe6fd0955a0fc75185b8b41c44d447371100b92c53bcc73cae08c5fc350ae4</guid>
+      <pubDate>Thu, 01 Oct 2026 18:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 18:31:14 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 18:02:01 +0200</ext:starts_at>
       <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 01.10.2026]]]></content:encoded>
+      <description>Kein Betrieb. Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich Innere Stadt. [Am 01.10.2026]</description>
+      <content:encoded><![CDATA[Kein Betrieb. Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich Innere Stadt.<br/>[Am 01.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[3A: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">969183453a1471d23feb3836e17ffc4d679e0facf90c89fc62f25e3d883968e0</guid>
+      <pubDate>Thu, 01 Oct 2026 18:17:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 18:17:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 18:18:32 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Betrieb ab Hoher Markt. Betrieb nur zwischen Oper, Karlsplatz U und Hoher Markt. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich Innere Stadt. [Am 01.10.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Hoher Markt. Betrieb nur zwischen Oper, Karlsplatz U und Hoher Markt. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich Innere Stadt.<br/>[Am 01.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[O: Schadhafter Zug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a3ccf7c2ad3270af3ce0b5bff574b7e68e073f01c1a9bf875ba6186e69760114</guid>
+      <pubDate>Thu, 01 Oct 2026 18:02:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 18:02:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 18:02:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Schadhaftes Fahrzeug; Betrieb ab Fasangasse, über Li. 71+18; Züge halten bei Li. 18 Richtung Burggasse, Stadthalle. [Am 01.10.2026]</description>
+      <content:encoded><![CDATA[Schadhaftes Fahrzeug; Betrieb ab Fasangasse, über Li. 71+18; Züge halten bei Li. 18 Richtung Burggasse, Stadthalle.<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[18: Gleisschaden]]></title>
@@ -38,20 +60,20 @@
       <pubDate>Thu, 01 Oct 2026 16:25:00 +0200</pubDate>
       <ext:first_seen>Thu, 01 Oct 2026 16:25:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 01 Oct 2026 16:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 01 Oct 2026 18:44:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 01.10.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[7A/15A: Verkehrsüberlastung]]></title>
+      <title><![CDATA[7A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">716ca2469bc88f4e87c32201fcc81a0af5d920f88df0270accf855e8eb3e0b1b</guid>
+      <guid isPermaLink="false">d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc</guid>
       <pubDate>Thu, 01 Oct 2026 15:50:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 16:01:05 +0200</ext:first_seen>
+      <ext:first_seen>Thu, 01 Oct 2026 15:50:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 01 Oct 2026 15:50:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 01.10.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 01.10.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[13A: Polizeieinsatz]]></title>
@@ -63,6 +85,17 @@
       <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 01.10.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Busse halten Laxenburger Straße 66]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">35f178eee322da59d290f9e66ca5dc127c582dbc622f6759ce6caadbc778c468</guid>
+      <pubDate>Thu, 01 Oct 2026 05:10:13 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 05:10:13 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 05:10:13 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 00:45:00 +0200</ext:ends_at>
+      <description>Grund: Bauarbeiten. [01.10.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[01.10.2026 – 02.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
@@ -85,39 +118,6 @@
       <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
       <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [05.10.2026 – 11.11.2026]</description>
       <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[05.10.2026 – 11.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7ac7f5d0f84b8fde05436e0369f9bb0d7137bda05a0c19e4423d991c7e19d99b</guid>
-      <pubDate>Mon, 28 Sep 2026 04:30:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 18:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 28 Sep 2026 04:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 07 Nov 2026 01:00:00 +0100</ext:ends_at>
-      <description>Kein Betrieb zwischen Börse und Augasse. Weichen Sie ersatzweise auf die Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A. aus. Grund: Gleisbauarbeiten im Bereich Althanstraße. [28.09.2026 – 07.11.2026]</description>
-      <content:encoded><![CDATA[Kein Betrieb zwischen Börse und Augasse. Weichen Sie ersatzweise auf die Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A. aus. Grund: Gleisbauarbeiten im Bereich Althanstraße.<br/>[28.09.2026 – 07.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D/1/2/71/1A/3A: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">02bcf717ba40c84b0080293bcc911c618e2b10f6aacfea97643d33c3a16f6263</guid>
-      <pubDate>Wed, 30 Sep 2026 18:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 18:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 18:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 21:00:00 +0200</ext:ends_at>
-      <description>Wegen einer Demonstration kommt es zu Einschränkungen beim öffentlichen Verkehr. [30.09.2026 – 01.10.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Demonstration kommt es zu Einschränkungen beim öffentlichen Verkehr.<br/>[30.09.2026 – 01.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[REX 41: Wien Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern / Tulln an der Donau / Wien Heiligenstadt / Wien Nußdorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;915701</guid>
-      <pubDate>Wed, 30 Sep 2026 14:07:02 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 15:31:22 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 31 Oct 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Wed, 04 Nov 2026 23:59:59 +0100</ext:ends_at>
-      <description>Wegen Bauarbeiten können von 02.11.2026 bis 03.11.2026 zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren. [31.10.2026 – 04.11.2026]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können von 02.11.2026 bis 03.11.2026 zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren.<br/>[31.10.2026 – 04.11.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
