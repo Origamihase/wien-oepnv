@@ -1,4 +1,5 @@
 from types import TracebackType
+from datetime import UTC, datetime, timedelta
 from typing import Any, Literal
 
 import pytest
@@ -131,3 +132,46 @@ def test_monthname_advance_notice_sets_starts_at(monkeypatch: pytest.MonkeyPatch
     assert ev["pubDate"].year == 2026
     assert ev["pubDate"].month == 1
     assert ev["pubDate"].day == 10
+
+
+@pytest.mark.parametrize("kind", ["traffic_infos", "news"])
+def test_missing_start_does_not_take_the_end(
+    monkeypatch: pytest.MonkeyPatch, kind: str
+) -> None:
+    # Without ``time.start`` the end used to become the start: the item
+    # looked like it had not begun and stayed out of the feed until it ended.
+    end = datetime.now(UTC) + timedelta(days=60)
+    updated = datetime.now(UTC) - timedelta(days=1)
+    event = _base_event(
+        title="Gleisschaden",
+        description="Umleitung: Kein Betrieb zwischen A und B.",
+        time={"end": end.isoformat()},
+        updated=updated.isoformat(),
+        relatedLines=["5"],
+    )
+    _setup_fetch(monkeypatch, **{kind: [event]})
+
+    events = fetch_events()
+    assert len(events) == 1
+    ev = events[0]
+    assert ev["starts_at"] == updated
+    assert ev["pubDate"] == updated
+    assert ev["ends_at"] == end
+
+
+def test_missing_start_without_publication_stays_open(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    end = datetime.now(UTC) + timedelta(days=60)
+    event = _base_event(
+        title="Gleisschaden",
+        description="Kein Betrieb zwischen A und B.",
+        time={"end": end.isoformat()},
+        relatedLines=["5"],
+    )
+    _setup_fetch(monkeypatch, traffic_infos=[event])
+
+    events = fetch_events()
+    assert len(events) == 1
+    assert events[0]["starts_at"] is None
+    assert events[0]["ends_at"] == end

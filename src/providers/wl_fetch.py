@@ -222,11 +222,18 @@ def _coerce_dict(value: Any) -> dict[str, Any]:
 
 
 def _best_ts(obj: dict[str, Any]) -> datetime | None:
+    """The start of a WL item: ``time.start``, else when WL published it.
+
+    ``time.end`` is no candidate. As the start of an item without
+    ``time.start`` it made ``_is_active`` see a disruption that had not
+    begun yet, and the item stayed out of the feed until it ended
+    (``time.end`` 31.12. → dropped until 31.12.). Without any of these the
+    start stays open and the time line reads "Bis …".
+    """
     t = _coerce_dict(obj.get("time"))
     attrs = _coerce_dict(obj.get("attributes"))
     for cand in (
         _iso(t.get("start")),
-        _iso(t.get("end")),
         _iso(obj.get("updated")),
         _iso(obj.get("timestamp")),
         _iso(attrs.get("lastUpdate")),

@@ -1,5 +1,6 @@
 import re
 import string
+from datetime import datetime
 from typing import Any
 
 # Line-prefix grammar tolerant of two real-world spellings:
@@ -587,6 +588,32 @@ def _promote_newer_dates(target: dict[str, Any], source: dict[str, Any]) -> None
             target[date_key] = source_date
 
 
+def _merge_validity(target: dict[str, Any], source: dict[str, Any]) -> None:
+    """Give *target* the validity of both items: earliest start, latest end.
+
+    The merged item stands for both reports, so it must stay in the feed as
+    long as either is valid. Keeping only the survivor's span dropped the
+    other one's: a WL notice ending 02.10. absorbed the disruption of the
+    same works ending 07.11. and took it out of the feed on 02.10.
+    An open end of either keeps the merged item open, as in
+    ``build_feed._span_group``. Values that are not ``datetime`` are left
+    alone; a naive/aware mix cannot be ordered and keeps the survivor's.
+    """
+    starts = [s for s in (target.get("starts_at"), source.get("starts_at")) if isinstance(s, datetime)]
+    ends = [target.get("ends_at"), source.get("ends_at")]
+    known_ends = [e for e in ends if isinstance(e, datetime)]
+    try:
+        start = min(starts) if starts else target.get("starts_at")
+        end = max(known_ends) if len(known_ends) == 2 else target.get("ends_at")
+    except TypeError:
+        # Naive and aware datetimes cannot be ordered: keep the survivor's span.
+        return
+    if known_ends and None in ends:
+        end = None
+    target["starts_at"] = start
+    target["ends_at"] = end
+
+
 def _compute_overlap_cache(
     title: str,
 ) -> tuple[set[str], str, str, set[str]]:
@@ -889,6 +916,7 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
                             existing_copy["description"] = desc2
 
                     _promote_newer_dates(existing_copy, item)
+                    _merge_validity(existing_copy, item)
 
                     # 4. Preserve survivor's GUID and ``_identity``.
                     # Pre-fix the peer-merge rehashed ``guid = sha256(new_title)``
@@ -916,11 +944,6 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     # comparisons against this slot must use the merged
                     # title's parse, not the pre-merge one.
                     merged_cache[idx] = _compute_overlap_cache(new_title)
-
-                    # We might also want to merge start/end times?
-                    # The requirement doesn't specify. Let's keep existing (usually "better" item).
-                    # Actually, if we merge A into B, B is the "merged_item".
-                    # We keep B's base properties.
 
                     merged = True
                     break

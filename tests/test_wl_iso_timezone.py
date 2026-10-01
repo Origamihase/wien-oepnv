@@ -38,10 +38,12 @@ def test_best_ts_survives_malformed_timestamp_fields() -> None:
     """One bad field must not abort timestamp resolution for the item."""
     obj = {
         "time": {"start": "not-a-date", "end": "2024-07-01T12:00:00"},
+        "updated": "2024-06-01T12:00:00",
     }
     ts = _best_ts(obj)
     assert ts is not None
     assert ts.tzinfo == UTC
+    assert ts.month == 6  # ``updated``, never ``time.end``
 
 
 def test_best_ts_all_malformed_returns_none() -> None:
