@@ -303,8 +303,12 @@ def _clean_description(text: str) -> str:
 # classifies ``S40: Wien Franz-Josefs-Bahnhof`` (with the line prefix
 # still glued on) as "not in Vienna" — the prefix breaks the
 # station_info lookup — and swaps the endpoints.
+#
+# Several lines share the prefix when a message disrupts several
+# (``R 40/REX 41/REX 4/S 40: …``, see :func:`_affected_lines`).
+_LINE_CODE = r"(?:REX|RJX|RJ|EC|ICE|IC|WB|NJ|CJX|S-Bahn|S|U-Bahn|U|R|D)\s*\d+[A-Za-z]?"
 _LEADING_LINE_PREFIX_RE = re.compile(
-    r"^\s*((?:REX|RJX|RJ|EC|ICE|IC|WB|NJ|CJX|S-Bahn|S|U-Bahn|U|R|D)\s*\d+[A-Za-z]?)\s*:\s*",
+    rf"^\s*({_LINE_CODE}(?:\s*/\s*{_LINE_CODE})*)\s*:\s*",
     re.IGNORECASE,
 )
 
@@ -1609,12 +1613,11 @@ def _is_poor_title(t: str) -> bool:
 # The colon is MANDATORY (``:\s*``, not ``:?\s*``) so a colonless title that
 # happens to start with a token + digit (``"R 5 Wien Hbf"``, ``"D 100 Wien"``)
 # is NOT misparsed as line-prefixed. Pre-fix the optional colon glued an
-# imaginary prefix onto such titles, mangling the downstream rebuild. The
-# companion :data:`_LEADING_LINE_PREFIX_RE` already requires the colon.
-_LINE_PREFIX_RE = re.compile(
-    r"^\s*((?:REX|RJX|RJ|EC|ICE|IC|WB|NJ|CJX|S-Bahn|S|U-Bahn|U|R|D)\s*\d+[A-Za-z]?)\s*:\s*",
-    re.IGNORECASE,
-)
+# imaginary prefix onto such titles, mangling the downstream rebuild. It is
+# the pattern of :data:`_LEADING_LINE_PREFIX_RE`, several lines included:
+# ``_post_filter_oebb`` re-derives a cached ``R 40/REX 41: …`` title, and a
+# prefix it did not recognise would be put in front a second time.
+_LINE_PREFIX_RE = _LEADING_LINE_PREFIX_RE
 
 
 def _extract_line_prefix(title: str) -> tuple[str, str]:
@@ -1833,8 +1836,12 @@ def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") ->
 # ``U3: Wien Ottakring <=> Hütteldorfer Straße`` (which were silently
 # prepended as the title prefix and produced wrong titles like
 # ``U3: Wien Westbahnhof ↔ St. Pölten`` for an S-Bahn disruption).
+#
+# ``R`` and ``CJX`` count too: "keine R 40-Züge" was missed on 2026-10-01,
+# and the second line of the message, "REX 41", became the prefix of a
+# message about four lines (audit 2026-10-01, open point 3).
 _LINE_TOKEN_RE = re.compile(
-    r"\b((?:REX|S(?:-Bahn)?|U)\s*\d+)\s*[-\s]Z[üu]g",
+    r"\b((?:REX|CJX|S(?:-Bahn)?|U|R)\s*\d+)\s*[-\s]Z[üu]g",
     re.IGNORECASE,
 )
 
@@ -1852,6 +1859,22 @@ def _normalize_line_token(token: str) -> str:
     """
     cleaned = re.sub(r"\s+", " ", token).strip()
     return re.sub(r"^([A-Za-z][A-Za-z-]*)(\d)", r"\1 \2", cleaned)
+
+
+def _affected_lines(desc: str) -> str:
+    """Every line *desc* says is disrupted, in the order it names them.
+
+    ``R 40/REX 41/REX 4/S 40`` for the Franz-Josefs-Bahn works of November
+    2026. One of four in front of the route read as if only that line
+    were affected. In the ÖBB cache since September 3 of 45 messages
+    named several lines (``REX 50/REX 51/S 50``, ``REX 6/REX 65``).
+    """
+    lines: list[str] = []
+    for match in _LINE_TOKEN_RE.finditer(desc):
+        line = _normalize_line_token(match.group(1))
+        if line.casefold() not in {known.casefold() for known in lines}:
+            lines.append(line)
+    return "/".join(lines)
 
 
 def _derive_guid(raw_guid: str, title: str, link: str) -> str:
@@ -1878,15 +1901,10 @@ def _apply_route_title(title: str, desc: str) -> str:
     occasionally lists alternative U-Bahn routes by name, and a naive
     "first line token in description" match prepended those alternative
     line codes as a bogus title prefix). When the description identifies
-    an affected line, it overrides any existing title prefix; otherwise
-    the title's own prefix is kept.
+    affected lines, they override any existing title prefix, all of them
+    (:func:`_affected_lines`); otherwise the title's own prefix is kept.
     """
-    desc_line_match = _LINE_TOKEN_RE.search(desc)
-    desc_line = (
-        _normalize_line_token(desc_line_match.group(1))
-        if desc_line_match
-        else ""
-    )
+    desc_line = _affected_lines(desc)
     existing_line_prefix, _ = _extract_line_prefix(title)
     # Prefer the description-sourced affected line when it disagrees with
     # the cached title prefix (older cache items occasionally carry a

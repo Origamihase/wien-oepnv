@@ -303,11 +303,22 @@ verdrängt eine andere Störung.
   der Titel.
 * **ÖBB-Strecken von einem Knoten (seit 2026-10-01).** Nennt eine Meldung
   drei oder mehr Strecken, die alle an einem Bahnhof beginnen, steht der
-  Bahnhof einmal vorn (`_try_star_routes`): „REX 41: Wien
+  Bahnhof einmal vorn (`_try_star_routes`): „R 40/REX 41/REX 4/S 40: Wien
   Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern / Tulln an der Donau / Wien
   Heiligenstadt / Wien Nußdorf“ statt viermal „Wien Franz-Josefs-Bahnhof ↔
   …“. Strecken, die eine Kette bilden, bleiben eine Kette
   (`_try_chain_routes`).
+* **ÖBB: alle betroffenen Linien vorn (seit 2026-10-01).** Das Präfix
+  nennt jede Linie, die die Beschreibung als ausfallend nennt („keine R
+  40-Züge“, „die REX 41-Züge … können nicht fahren“), in ihrer Reihenfolge
+  und jede einmal (`_affected_lines`). Bis dahin stand nur die erste davon
+  vorn, und `R` kannte das Muster nicht: Über „… keine R 40-Züge fahren“
+  stand „REX 41: …“, die zweite von vier Linien. Im ÖBB-Cache seit September
+  nannten 3 von 45 Meldungen mehrere Linien; eine nannte nur die R 95 und
+  hatte kein Präfix. Ausweichverbindungen der Wiener Linien („Linie U4“)
+  stehen ohne „-Züge“ und zählen nicht. `_extract_line_prefix` erkennt ein
+  solches Präfix wieder, sonst setzte `_post_filter_oebb` es beim Lesen des
+  Caches ein zweites Mal davor.
 
 ---
 
