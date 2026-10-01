@@ -838,6 +838,11 @@ def _station_lookup() -> dict[str, StationInfo]:
     return {key: record for key, (record, _) in mapping.items()}
 
 
+# A slash standing for "an der"/"am" between two words, as in "Bruck/Leitha"
+# or "Neusiedl/See" (see ``_candidate_values``).
+_SLASH_QUALIFIER_RE = re.compile(r"(?<=[A-Za-zÄÖÜäöüß])/(?=[A-ZÄÖÜ][a-zäöüß])")
+
+
 def _candidate_values(value: str) -> list[str]:
     """Generate possible textual variants for *value* supplied by the caller."""
 
@@ -870,6 +875,14 @@ def _candidate_values(value: str) -> list[str]:
             extras.append(re.sub(r"\bBhf\b", "Bahnhof", variant, flags=re.IGNORECASE))
         if re.search(r"\bBf\b", variant, re.IGNORECASE):
             extras.append(re.sub(r"\bBf\b", "Bahnhof", variant, flags=re.IGNORECASE))
+        # ÖBB writes "an der"/"am" as a slash: "Bruck/Leitha", "Tulln/Donau".
+        # The directory knows "Bruck an der Leitha", so a route Wien ↔
+        # Bruck/Leitha classified as Wien ↔ unknown and the ÖBB message was
+        # dropped. Tried after every other variant, so a name that resolves
+        # as written keeps its station.
+        if _SLASH_QUALIFIER_RE.search(variant):
+            extras.append(_SLASH_QUALIFIER_RE.sub(" an der ", variant))
+            extras.append(_SLASH_QUALIFIER_RE.sub(" am ", variant))
 
     for extra in extras:
         cleaned = re.sub(r"\s{2,}", " ", extra.strip())

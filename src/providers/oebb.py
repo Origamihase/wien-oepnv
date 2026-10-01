@@ -461,7 +461,7 @@ def _clean_title_keep_places(t: str) -> str:
         if not segment:
             continue
 
-        canon = canonical_name(segment)
+        canon = canonical_name(_without_transfer_markers(segment))
         if not canon:
             cleaned = _clean_endpoint(segment)
             canon = canonical_name(cleaned)
@@ -597,7 +597,16 @@ _ZWISCHEN_PLAIN_RE = re.compile(
     # Intermediate-via marker — ends the captured endpoint at the via stop
     # so "Mödling über Wiener Neudorf" yields b="Mödling". ``zu|zur`` ends it
     # at the dominant ÖBB closer "kommt es zwischen X und Y zu <…>" (bug b1).
-    r"zu|zur|[üu]ber|via"
+    r"zu|zur|[üu]ber|via|"
+    # ÖBB's disruption wording "sind zwischen X und Y Zugfahrten derzeit nur
+    # eingeschränkt möglich". Not a boundary before: 11 endpoints of the
+    # cache history ran on into it ("Wien Meidling Bahnhof (U) Zugfahrten"),
+    # resolved to no station, and the strict route check then dropped any
+    # such message whose title was not a route itself. The replacement-bus
+    # closers ("… Bahnhst eingerichtet") stay unbounded on purpose: a bus
+    # route is the alternative, not the disruption, and must not reach the
+    # title.
+    r"Zugfahrten|Zugverkehr|Z[üu]ge|derzeit"
     r")\b"
     r"|[,;!?]"  # Plain sentence punctuation (period excluded — see above)
     r"|[—–]"  # German em-/en-dash often introduces a side remark
@@ -676,6 +685,22 @@ _BAHNHOF_TRAILING_END_RE = re.compile(
 )
 _PARENS_TRAILING_RE = re.compile(r"\s*\(\s*[A-Za-z]\d*\s*\)\s*$")
 
+
+def _without_transfer_markers(name: str) -> str:
+    """Drop ÖBB's trailing transfer markers: ``Wien Meidling Bahnhof (U)`` → ``Wien Meidling Bahnhof``.
+
+    ``(U)``/``(S)`` say which lines stop there; no station alias carries
+    them. Looked up with the marker, ``Wien Meidling Bahnhof (U)`` resolved
+    to the Wiener-Linien stop ``Wien Bhf. Meidling (WL)`` through its alias
+    ``Wien Bhf. Meidling U`` — Hütteldorf, Atzgersdorf and five more ÖBB
+    stations in Vienna likewise.
+    """
+    while True:
+        stripped = _PARENS_TRAILING_RE.sub("", name).strip()
+        if stripped == name:
+            return name
+        name = stripped
+
 # ``im``/``am`` sit in the boundary alternations above as time prepositions
 # ("… und Felixdorf Bahnhof am 10.02.2026"), so a place name carrying one —
 # "Baumgarten im Bgld-Schattendorf", "Brunn am Gebirge", "Neusiedl am See" —
@@ -716,12 +741,7 @@ def _normalize_endpoint_name(name: str) -> str:
     cleaned = html.unescape(name)
     cleaned = re.sub(r"<[^>]+>", " ", cleaned)
     cleaned = re.sub(r"\s{2,}", " ", cleaned).strip()
-    # Iteratively strip trailing parens like (U), (S), (R)
-    while True:
-        new = _PARENS_TRAILING_RE.sub("", cleaned).strip()
-        if new == cleaned:
-            break
-        cleaned = new
+    cleaned = _without_transfer_markers(cleaned)
     # Strip a single trailing Bahnhof/Hbf/Bf suffix (only at the end, so we
     # don't mangle names like "Wiener Neustadt Hauptbahnhof" → "Wiener Neustadt"
     # — which is actually what we want for lookup).
@@ -740,7 +760,12 @@ def _normalize_endpoint_name(name: str) -> str:
     # ``"St. Pölten"`` first → resolves → truncation succeeds.
     # The single-period ``"St. Pölten"`` case still works (the only
     # split candidate is ``"St"`` which doesn't resolve → no change).
-    if ". " in cleaned:
+    # A name that resolves as a whole has no sentence boundary to cut:
+    # ``"Wien Bhf. Meidling"`` would otherwise lose ``". Meidling"``, and
+    # ``"Wien Bhf"`` resolves to Wien Hauptbahnhof. That turned the ÖBB
+    # title ``Wien Hbf (U) ↔ Wien Meidling Bahnhof (U)`` into
+    # ``Wien Hauptbahnhof ↔ Wien Hauptbahnhof`` (feed, 2026-09-29).
+    if ". " in cleaned and station_info(cleaned) is None:
         parts = cleaned.split(". ")
         for split_at in range(len(parts) - 1, 0, -1):
             candidate = ". ".join(parts[:split_at]).strip()
@@ -1702,6 +1727,29 @@ def _try_chain_routes(canonical_routes: list[tuple[str, str]]) -> list[str] | No
     return chain
 
 
+def _try_star_routes(canonical_routes: list[tuple[str, str]]) -> tuple[str, list[str]] | None:
+    """Return ``(hub, others)`` when every route starts or ends at one station.
+
+    A star does not chain, and the ``" / "`` renderer repeated the hub in
+    every segment. Published 2026-09-30 for 36 versions, 144 characters::
+
+        REX 41: Wien Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern / Wien
+            Franz-Josefs-Bahnhof ↔ Wien Heiligenstadt / Wien
+            Franz-Josefs-Bahnhof ↔ Wien Nußdorf
+
+    With the hub named once it reads ``Wien Franz-Josefs-Bahnhof ↔
+    St.Andrä-Wördern / Wien Heiligenstadt / Wien Nußdorf``. The others keep
+    the order of the description.
+    """
+    if len(canonical_routes) < 3:
+        return None
+    shared = set(canonical_routes[0]).intersection(*(set(pair) for pair in canonical_routes[1:]))
+    if len(shared) != 1:
+        return None
+    (hub,) = shared
+    return hub, [b if a == hub else a for a, b in canonical_routes]
+
+
 def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") -> str:
     """Build a clean ``A ↔ B`` title from extracted route(s).
 
@@ -1760,8 +1808,11 @@ def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") ->
     title_body: str
     if len(canonical_pairs) >= 2:
         chain = _try_chain_routes(canonical_pairs)
+        star = _try_star_routes(canonical_pairs)
         if chain is not None:
             title_body = " ↔ ".join(chain)
+        elif star is not None:
+            title_body = f"{star[0]} ↔ " + " / ".join(star[1])
         else:
             title_body = " / ".join(f"{a} ↔ {b}" for a, b in canonical_pairs)
     else:

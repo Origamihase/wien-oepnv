@@ -2562,8 +2562,20 @@ _RESIDUAL_PLACEHOLDER_RE: re.Pattern[str] = re.compile(
 # what keeps two adjacent placeholders safe: in
 # ``…X4XXENT<nonce>X5X`` the ``X`` that opens the next placeholder is
 # followed by ``ENT``, so the lookahead fails and the pair is left alone.
+#
+# The model also repeats a placeholder's index. Published 2026-09-30 16:01
+# to 2026-10-01 11:01, ``docs/feed.en.xml``, 35 versions::
+#
+#     DE: zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof …
+#     EN: between Wien Franz-Josefs-Bahnhof0X and St.Andrä-Wördern …
+#
+# and once "Line 10: service obstruction0X towards Unter St. Veit". Both
+# placeholders carry index 0 (``XENT…X0X``, ``XGLO…X0X``); the model
+# returned ``…X0X0X``, the unmask restored ``…X0X`` and left ``0X`` behind,
+# which no guard sees. Only the placeholder's own index is absorbed — the
+# shape both cases show.
 _PLACEHOLDER_DEBRIS_RE: re.Pattern[str] = re.compile(
-    "((?:XENT|XGLO)" + _PLACEHOLDER_NONCE + r"X\d+X)X+(?![A-Za-z0-9])"
+    "((?:XENT|XGLO)" + _PLACEHOLDER_NONCE + r"X(\d+)X)(?:X+|(?:\2X)+)(?![A-Za-z0-9])"
 )
 
 # Any word character. Used to tell a verbatim entity that MUST survive
@@ -2573,7 +2585,7 @@ _MASK_WORD_CHAR_RE: re.Pattern[str] = re.compile(r"\w")
 
 
 def _normalise_placeholder_debris(text: str) -> str:
-    """Strip the surplus ``X`` from placeholders the model doubled.
+    """Strip the surplus ``X`` or repeated index from placeholders the model doubled.
 
     Idempotent, so it is safe to apply on both the translation path and
     inside :func:`_unmask_entities`.
@@ -6087,7 +6099,9 @@ def _is_wl_ticker(item: FeedItem) -> bool:
 # Nothing a ticker says is dropped unless another one of the group, or the
 # title, already says it; WL's stock sentence gives way to anything concrete.
 # A long message that says more than the stock sentence stands as it would
-# alone, and its tickers take no slot of their own (2026-09-27).
+# alone, and its tickers take no slot of their own (2026-09-27) — also when
+# they fall outside its window but share its lines, its cause and part of its
+# validity (``_claimed_by_long_messages``, 2026-10-01).
 WL_TICKER_CLUSTER_SECONDS = 600
 
 _WL_STOCK_SENTENCE_RE = re.compile(
@@ -6198,28 +6212,33 @@ def _ticker_time(item: FeedItem) -> datetime | None:
     return _to_utc(when) if isinstance(when, datetime) else None
 
 
-def _ticker_clusters(items: Sequence[FeedItem]) -> list[list[int]]:
-    """Indices of WL disruptions that report one incident, two or more each."""
+def _ticker_lines(item: FeedItem) -> str:
+    """``62: ÖBB Bauarbeiten`` → ``62`` (casefolded, empty without a line prefix)."""
+    return _ticker_prefix(_rendered_title(item)).strip().rstrip(":").casefold()
+
+
+def _ticker_groups(items: Sequence[FeedItem]) -> list[list[int]]:
+    """Indices of WL disruptions by incident: one line set, one publication window."""
     by_lines: dict[str, list[tuple[datetime, int, str, int]]] = defaultdict(list)
     for index, item in enumerate(items):
         if not _is_wl_ticker(item):
             continue
-        prefix = _ticker_prefix(_rendered_title(item)).strip().rstrip(":").casefold()
+        prefix = _ticker_lines(item)
         when = _ticker_time(item)
         if not prefix or when is None:
             continue
         long_first = 0 if _is_long_message(_ticker_text(item)) else 1
         by_lines[prefix].append((when, long_first, str(item.get("guid") or ""), index))
-    clusters: list[list[int]] = []
+    groups: list[list[int]] = []
     for members in by_lines.values():
         members.sort()
         start: datetime | None = None
         for when, _long_first, _guid, index in members:
             if start is None or (when - start).total_seconds() > WL_TICKER_CLUSTER_SECONDS:
-                clusters.append([])
+                groups.append([])
                 start = when
-            clusters[-1].append(index)
-    return [cluster for cluster in clusters if len(cluster) > 1]
+            groups[-1].append(index)
+    return groups
 
 
 def _telling_long_message(members: Sequence[FeedItem]) -> FeedItem | None:
@@ -6295,11 +6314,78 @@ def _merged_ticker(members: Sequence[FeedItem]) -> FeedItem:
     return merged
 
 
+def _group_span(members: Sequence[FeedItem]) -> tuple[datetime, datetime | None] | None:
+    """Earliest start and latest end of *members* in UTC; an open end stays open."""
+    starts = [_to_utc(s) for s in (m.get("starts_at") or m.get("pubDate") for m in members) if isinstance(s, datetime)]
+    if not starts:
+        return None
+    ends = [e for e in (m.get("ends_at") for m in members) if isinstance(e, datetime)]
+    return min(starts), (max(_to_utc(e) for e in ends) if len(ends) == len(members) else None)
+
+
+def _spans_meet(a: tuple[datetime, datetime | None], b: tuple[datetime, datetime | None]) -> bool:
+    """Whether two validity spans overlap; ``None`` is an open end."""
+    return (b[1] is None or a[0] <= b[1]) and (a[1] is None or b[0] <= a[1])
+
+
+def _names_cause(parts: Sequence[_TickerPart], cause: str) -> bool:
+    """Whether tickers name *cause*: as their cause, or glued in front of a consequence.
+
+    "48A: Gasrohrgebrechen Shuttlebus eingerichtet, …" carries its cause
+    without a split the cause detection knows.
+    """
+    chosen = _chosen_cause(parts)
+    if chosen:
+        return chosen == cause
+    return any(part.body.casefold().startswith(f"{cause} ") for part in parts)
+
+
+def _claimed_by_long_messages(items: Sequence[FeedItem], groups: Sequence[list[int]]) -> set[int]:
+    """Tickers whose incident a long message of another publication window reports.
+
+    WL's long message can come long after the tickers, or the tickers are
+    republished at midnight: D on 2026-09-30, tickers 04:00:07, long message
+    04:30, both titled "D: Gleisbauarbeiten", side by side in 10 feed
+    versions; 48A on 2026-10-01, long message 21:47, ticker 00:00:12. Same
+    lines, same cause, overlapping validity: the tickers take no slot, as
+    they would not within the window.
+    """
+    reports: list[tuple[str, str, tuple[datetime, datetime | None]]] = []
+    for group in groups:
+        members = [items[index] for index in group]
+        long_message = _telling_long_message(members)
+        span = _group_span(members)
+        cause = _ticker_part(long_message).cause.casefold() if long_message is not None else ""
+        if cause and span is not None:
+            reports.append((_ticker_lines(members[0]), cause, span))
+    claimed: set[int] = set()
+    for group in groups:
+        members = [items[index] for index in group]
+        span = _group_span(members)
+        if _telling_long_message(members) is not None or span is None:
+            continue
+        parts = [_ticker_part(member) for member in members]
+        lines = _ticker_lines(members[0])
+        if any(
+            lines == r_lines and _spans_meet(span, r_span) and _names_cause(parts, r_cause)
+            for r_lines, r_cause, r_span in reports
+        ):
+            claimed.update(group)
+            log.info(
+                "WL-Kurzmeldungen der ausführlichen Meldung zugeordnet: %s",
+                sanitize_log_arg(" | ".join(_rendered_title(member) for member in members)),
+            )
+    return claimed
+
+
 def _merge_wl_ticker_clusters(items: list[FeedItem]) -> list[FeedItem]:
     """Join the WL disruptions of one incident into one item (see above)."""
+    groups = _ticker_groups(items)
     replaced: dict[int, FeedItem] = {}
-    dropped: set[int] = set()
-    for cluster in _ticker_clusters(items):
+    dropped = _claimed_by_long_messages(items, groups)
+    for cluster in groups:
+        if len(cluster) < 2 or cluster[0] in dropped:
+            continue
         members = [items[index] for index in cluster]
         replaced[cluster[0]] = _merged_ticker(members)
         dropped.update(cluster[1:])

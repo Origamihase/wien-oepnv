@@ -30,6 +30,15 @@ Mutations checked against this file (each one caught, by the test named):
 * a long message with only the stock sentence stands alone → ``test_the_most_frequent_cause_names_the_item``.
 * the earliest start of the group wins → ``test_the_start_stays_the_leads``.
 * a ticker leads on a tie with the long message → ``test_a_long_message_absorbs_what_the_tickers_repeat``.
+
+A long message claims its tickers outside the window (2026-10-01):
+
+* no claim → ``test_a_long_message_claims_its_tickers_outside_the_window``.
+* the cause is not compared → ``test_another_cause_keeps_its_slot``.
+* the lines are not compared → ``test_another_line_keeps_its_slot``.
+* the validity is not compared → ``test_tickers_after_the_long_message_ended_keep_their_slot``.
+* a cause glued to the consequence is missed → ``test_a_cause_glued_to_the_consequence_is_claimed_too``.
+* a stock-sentence long message claims too → ``test_the_stock_sentence_claims_nothing``.
 """
 
 from __future__ import annotations
@@ -354,3 +363,123 @@ def test_main_merges_before_the_slots_are_filled() -> None:
          patch.object(bf, "write_feed_health_json", MagicMock()):
         assert bf.main() == 0
     assert rendered[0] == ["62: ÖBB Bauarbeiten"]
+
+
+# --- A long message claims its tickers outside the window (2026-10-01) -----
+#
+# Live 2026-09-30 21:01 to 2026-10-01 10:31: "D: Gleisbauarbeiten" twice in
+# one feed, the long message beside its tickers, 30 minutes apart. The
+# shapes are the cache entries of that night.
+
+D_TICKERS = datetime(2026, 9, 28, 2, 0, 7, tzinfo=UTC)  # 04:00:07 in Vienna
+D_TICKERS_END = datetime(2026, 9, 30, 21, 59, 59, tzinfo=UTC)
+D_LONG = datetime(2026, 9, 28, 2, 30, tzinfo=UTC)  # 04:30 in Vienna
+D_LONG_END = datetime(2026, 11, 7, 0, 0, tzinfo=UTC)
+LONG_D = (
+    "Linie D: Kein Betrieb zwischen Börse und Augasse. Weichen Sie ersatzweise auf die Linien "
+    "S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A. aus. Grund: Gleisbauarbeiten im Bereich Althanstraße."
+)
+
+
+def _d_ticker(title: str, description: str, guid: str) -> FeedItem:
+    return _wl(
+        title,
+        description,
+        start=D_TICKERS,
+        ends_at=D_TICKERS_END,
+        guid=guid,
+        identity=f"wl|störung|L=D|D=2026-09-28|TK={guid}",
+    )
+
+
+D_INCIDENT = [
+    _d_ticker("D: Betrieb ab Augasse", "Gleisbauarbeiten\nBetrieb ab Augasse", "77d3c63c"),
+    _d_ticker("D: Betrieb ab Börse", "Gleisbauarbeiten\nBetrieb ab Börse", "90216ce9"),
+    _d_ticker("D: Züge halten in Schleife", "Züge halten in\nSchleife", "67078944"),
+    _d_ticker("D: Züge halten Wipplingerstr 39", "Züge halten\nWipplingerstr 39", "c56c71bc"),
+    _wl(
+        "D: Gleisbauarbeiten",
+        LONG_D,
+        start=D_LONG,
+        ends_at=D_LONG_END,
+        guid="7ac7f5d0",
+        identity="wl|störung|L=D|D=2026-09-28|TK=d gleisbauarbeiten",
+    ),
+]
+
+
+def test_a_long_message_claims_its_tickers_outside_the_window() -> None:
+    (item,) = _built(D_INCIDENT)
+    assert (item["guid"], item["title"]) == ("7ac7f5d0", "D: Gleisbauarbeiten")
+    assert str(item["description"]).startswith("Kein Betrieb zwischen Börse und Augasse.")
+    assert (item["starts_at"], item["ends_at"]) == (D_LONG, D_LONG_END)
+
+
+def test_a_cause_glued_to_the_consequence_is_claimed_too() -> None:
+    # 48A on 2026-10-01: the long message at 21:47, the ticker republished at midnight.
+    long_start = datetime(2026, 9, 30, 19, 47, tzinfo=UTC)
+    end = datetime(2026, 9, 30, 23, 0, tzinfo=UTC)
+    items = [
+        _wl(
+            "48A: Gasrohrgebrechen",
+            "Linie 48A: Betrieb nur zwischen Parlament, U Volkstheater und Joachimsthalerplatz. "
+            "Grund: Gasrohrgebrechen im Bereich Flötzersteig.",
+            start=long_start,
+            ends_at=end,
+            guid="3387d8db",
+        ),
+        _wl(
+            "48A: Gasrohrgebrechen Shuttlebus eingerichtet, Abfahrtsstelle: Haltestelle Linie 46!",
+            "Gasrohrgebrechen\nShuttlebus eingerichtet, Abfahrtsstelle: Haltestelle Linie 46!",
+            start=datetime(2026, 9, 30, 22, 0, 12, tzinfo=UTC),
+            ends_at=end,
+            guid="8eb2c7be",
+        ),
+    ]
+    assert [item["guid"] for item in _built(items)] == ["3387d8db"]
+
+
+def test_another_cause_keeps_its_slot() -> None:
+    fire = _wl(
+        "D: Feuerwehreinsatz Betrieb ab Schwarzenbergplatz",
+        "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz",
+        start=D_LONG + timedelta(hours=8),
+        ends_at=D_TICKERS_END,
+        guid="9d8f98",
+    )
+    titles = sorted(str(item["title"]) for item in _built([D_INCIDENT[-1], fire]))
+    assert titles == ["D: Feuerwehreinsatz Betrieb ab Schwarzenbergplatz", "D: Gleisbauarbeiten"]
+
+
+def test_another_line_keeps_its_slot() -> None:
+    ticker = _wl(
+        "D/1: Betrieb ab Augasse",
+        "Gleisbauarbeiten\nBetrieb ab Augasse",
+        start=D_TICKERS,
+        ends_at=D_TICKERS_END,
+        guid="d1",
+    )
+    assert len(_built([D_INCIDENT[-1], ticker])) == 2
+
+
+def test_tickers_after_the_long_message_ended_keep_their_slot() -> None:
+    later = D_LONG_END + timedelta(hours=2)
+    ticker = _wl(
+        "D: Betrieb ab Augasse",
+        "Gleisbauarbeiten\nBetrieb ab Augasse",
+        start=later,
+        ends_at=later + timedelta(hours=8),
+        guid="later",
+    )
+    assert len(_merge([D_INCIDENT[-1], ticker])) == 2
+
+
+def test_the_stock_sentence_claims_nothing() -> None:
+    stock = _wl(
+        "D: Gleisbauarbeiten",
+        "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+        start=D_LONG,
+        ends_at=D_LONG_END,
+        guid="stock",
+    )
+    assert len(_built([*D_INCIDENT[:-1], stock])) == 2

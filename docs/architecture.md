@@ -156,6 +156,17 @@ verdrängt eine andere Störung.
     über „Grund: Fremder Verkehrsunfall“, und angehängte Kurzmeldungen
     schoben den zweiten Satz einer ausführlichen Meldung über die
     180 Zeichen.
+  - Kurzmeldungen außerhalb des Fensters (seit 2026-10-01):
+    `_claimed_by_long_messages` nimmt einer Gruppe ohne eigene ausführliche
+    Meldung den Platz, wenn eine solche Meldung derselben Linien dieselbe
+    Ursache nennt und ihre Gültigkeit sich mit der Gruppe überschneidet.
+    Die Ursache darf in der Kurzmeldung auch vor der Folge stehen
+    („Gasrohrgebrechen Shuttlebus eingerichtet“). Anlass: Am 30.09. kamen
+    die Kurzmeldungen der Linie D um 04:00, die ausführliche Meldung um
+    04:30; „D: Gleisbauarbeiten“ stand bis zum 01.10. zweimal im Feed.
+    Bei der 48A kam die Kurzmeldung um Mitternacht neu, die ausführliche
+    Meldung um 21:47. Rückschau über 736 Cache-Stände: genau diese zwei
+    Fälle.
   - Sonst ist der Titel Linie und die häufigste Ursache der Gruppe; ohne
     Ursache der Titel der ersten Meldung. Die Ursache kommt aus dem Titel
     (`_reason_and_fragment`), aus einer ausführlichen Meldung mit dem
@@ -198,6 +209,20 @@ verdrängt eine andere Störung.
   S-Bahn-Linie aus dem Text als Linie ein und legt den Ort in die
   Beschreibung: `S80: ÖBB-Ersatzbus` über „Bhf. Hütteldorf“. Das gilt nur für
   die Wiener S-Bahn-Nummern (1, 2, 3, 4, 7, 40, 45, 50, 60, 80).
+* **Kein Titel aus Liniennummern (seit 2026-10-01).** WL betitelte den
+  Hinweis zur Demonstration am 01.10. mit „D, 1, 2, 71, 1A, 3A“; im Feed
+  stand „D/1/2/71/1A/3A: D, 1, 2, 71, 1A, 3A“. Besteht ein Titel nur aus
+  Linien, nimmt `_title_or_heading` die Überschrift der Beschreibung
+  (`<h2>Demonstration</h2>`), ungekürzt: `_tidy_title_wl` hielte
+  „Gleisbauarbeiten“ vor einem Ort für ein Etikett. Ohne Überschrift bleibt
+  der Titel.
+* **ÖBB-Strecken von einem Knoten (seit 2026-10-01).** Nennt eine Meldung
+  drei oder mehr Strecken, die alle an einem Bahnhof beginnen, steht der
+  Bahnhof einmal vorn (`_try_star_routes`): „REX 41: Wien
+  Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern / Tulln an der Donau / Wien
+  Heiligenstadt / Wien Nußdorf“ statt viermal „Wien Franz-Josefs-Bahnhof ↔
+  …“. Strecken, die eine Kette bilden, bleiben eine Kette
+  (`_try_chain_routes`).
 
 ---
 
@@ -855,6 +880,33 @@ Verzeichnisses bleiben als ÖBB-Endpunkt grundsätzlich auflösbar — einige
 tragen Namen, die auch S-Bahn-Halte sein könnten, ein pauschaler
 Ausschluss könnte echte Meldungen verwerfen.
 
+Derselbe Weg führte am 2026-09-13, 09-17 und 09-29 zu **Wien Hauptbahnhof
+statt Wien Meidling**. ÖBB schreibt „Wien Meidling Bahnhof (U)“; mit dem
+Umsteigezeichen „(U)“ traf die Suche den Alias „Wien Bhf. Meidling U“ der
+WL-Haltestelle „Wien Bhf. Meidling (WL)“. `_normalize_endpoint_name` hielt
+den Punkt in „Bhf.“ dann für ein Satzende und kürzte auf „Wien Bhf“, das
+zum Hauptbahnhof auflöst. Im Feed standen „Wien Hauptbahnhof ↔ Wien
+Hauptbahnhof“ und „Wien Hauptbahnhof ↔ Tullnerfeld“. Seither sucht
+`_clean_title_keep_places` ohne Umsteigezeichen (`_without_transfer_markers`;
+kein Alias des Verzeichnisses endet auf eines), und ein Name, der als
+Ganzes auflöst, wird nicht am Punkt gekürzt. Betroffen waren sieben
+Wiener Bahnhöfe mit einer Haltestelle „Wien Bhf. X“. Dazu endet die
+Beschreibungsroute jetzt vor ÖBBs Störungswortlaut („… Bahnhof (U)
+Zugfahrten derzeit nur eingeschränkt möglich“): 11 Endpunkte der
+Cache-Historie liefen hinein, lösten nicht auf, und eine Meldung ohne
+Route im Titel wäre verworfen worden.
+
+**Schrägstrich statt „an der“.** ÖBB schreibt „Bruck/Leitha“ und
+„Tulln/Donau“; das Verzeichnis kennt „Bruck an der Leitha“ und „Tulln an
+der Donau“. Eine Route Wien ↔ Bruck/Leitha galt als Wien ↔ unbekannt, und
+die strenge Routenprüfung verwarf die Meldung. Der Cache kann solche Fälle
+nicht zeigen, weil eine verworfene Meldung nie gespeichert wird. Seit
+2026-10-01 versucht `_candidate_values` (`src/utils/stations.py`) für
+„X/Y“ zusätzlich „X an der Y“ und „X am Y“, nach allen anderen Varianten;
+ein Name, der wie geschrieben auflöst, behält seinen Bahnhof. Betroffen
+waren fünf Pendler-Bahnhöfe: Bruck an der Leitha, Tulln an der Donau,
+Brunn am Gebirge, Neusiedl am See und Hadersdorf am Kamp.
+
 Der Name-Eindeutigkeits-Vertrag aus PR #1452 bleibt davon unberührt —
 duplizierte `PlatformText`-Werte sind weiterhin legitim und werden
 weiterhin nicht erzwungen.
@@ -1260,7 +1312,10 @@ Buchstaben, weil der SentencePiece-Tokenizer sonst dazu neigt, es zu zerlegen.
 Nach dem Modelllauf wird nicht blind vertraut:
 
 * `_normalise_placeholder_debris` repariert Platzhalter, die das Modell
-  verdoppelt hat (`X4XX` → `X4X`).
+  verdoppelt hat (`X4XX` → `X4X`), und seit 2026-10-01 auch einen
+  wiederholten eigenen Index (`X0X0X` → `X0X`). Der hatte vom 30.09. bis
+  01.10. „Wien Franz-Josefs-Bahnhof0X“ und „service obstruction0X“ in den
+  EN-Feed gebracht, an keinem Wächter vorbei sichtbar.
 * `_entities_dropped_by_translation` verwirft die Übersetzung, wenn das
   Modell eine wortgleiche Entität **verloren** hat — lieber deutsch als eine
   englische Meldung, in der eine Haltestelle fehlt.
