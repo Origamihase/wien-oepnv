@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 01 Oct 2026 08:00:52 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 08:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[12A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d22f8a5721cb328952fc07b28fc40f91ea591ee68bafe657d779bd5fbff1b8bc</guid>
+      <pubDate>Thu, 01 Oct 2026 08:08:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 08:08:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 08:08:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 01.10.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 01.10.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[60: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -50,8 +61,8 @@
       <ext:first_seen>Thu, 01 Oct 2026 07:31:10 +0200</ext:first_seen>
       <ext:starts_at>Thu, 01 Oct 2026 06:54:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 08:00 Uhr. Grund: Verkehrsunfall im Bereich Anton-Baumgartner-Straße / Erlaaer Schleife. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 08:00 Uhr. Grund: Verkehrsunfall im Bereich Anton-Baumgartner-Straße / Erlaaer Schleife.<br/>[Am 01.10.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 01.10.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U4: Verspätungen]]></title>
@@ -76,15 +87,15 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[64A: Verkehrsunfall & Verkehrsunfall]]></title>
+      <title><![CDATA[64A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">2b43b2cf270ad0eb82141dcac02a8b63277141db79e08f4221106b9f3fd4836e</guid>
-      <pubDate>Thu, 01 Oct 2026 07:03:27 +0200</pubDate>
+      <pubDate>Thu, 01 Oct 2026 07:01:00 +0200</pubDate>
       <ext:first_seen>Thu, 01 Oct 2026 07:01:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 01 Oct 2026 07:01:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb ab Mühlbreiten. Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Mühlbreiten. Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 01.10.2026]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Am 01.10.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Busse halten Laxenburger Straße 66]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 07 Nov 2026 01:00:00 +0100</ext:ends_at>
       <description>Kein Betrieb zwischen Börse und Augasse. Weichen Sie ersatzweise auf die Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A. aus. Grund: Gleisbauarbeiten im Bereich Althanstraße. [28.09.2026 – 07.11.2026]</description>
       <content:encoded><![CDATA[Kein Betrieb zwischen Börse und Augasse. Weichen Sie ersatzweise auf die Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A. aus. Grund: Gleisbauarbeiten im Bereich Althanstraße.<br/>[28.09.2026 – 07.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D/1/2/71/1A/3A: D, 1, 2, 71, 1A, 3A]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">02bcf717ba40c84b0080293bcc911c618e2b10f6aacfea97643d33c3a16f6263</guid>
-      <pubDate>Wed, 30 Sep 2026 18:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 18:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 18:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 21:00:00 +0200</ext:ends_at>
-      <description>Wegen einer Demonstration kommt es zu Einschränkungen beim öffentlichen Verkehr. [30.09.2026 – 01.10.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Demonstration kommt es zu Einschränkungen beim öffentlichen Verkehr.<br/>[30.09.2026 – 01.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
