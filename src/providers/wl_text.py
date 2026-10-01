@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import html
 import re
 from datetime import date, datetime, UTC
 from zoneinfo import ZoneInfo
@@ -182,7 +183,10 @@ _MONTHS_DE: dict[str, int] = {
 }
 
 # ``ab DD.MM.[YYYY]`` — numeric form (trailing dot after the month is
-# mandatory, matching the legacy pattern).
+# mandatory, matching the legacy pattern). ``am`` counts too: a title like
+# ``Veranstaltung am 04.10.2026`` names the one day the notice is about,
+# while WL's ``time.start`` is the publication day (2026-09-30), and the
+# feed read ``[30.09.2026 – 04.10.2026]`` for a two-hour event.
 _DATE_NUMERIC_RE = re.compile(
     # The 4-digit alternative is tried BEFORE the 2-digit one (ordered
     # alternation) so "2026" captures all four digits. A 2-digit year like
@@ -190,7 +194,7 @@ _DATE_NUMERIC_RE = re.compile(
     # instead of being captured as None and routed through the
     # nearest-occurrence year heuristic (which can resolve to the wrong year
     # when the title's "ab" date lies in the past relative to the API start).
-    r"ab\s+(\d{1,2})\.(\d{1,2})\.(\d{4}|\d{2})?",
+    r"\ba[bm]\s+(\d{1,2})\.(\d{1,2})\.(\d{4}|\d{2})?",
     re.IGNORECASE,
 )
 # ``ab DD. <Monat> [YYYY]`` — spelled-out form WL uses for advance
@@ -198,7 +202,7 @@ _DATE_NUMERIC_RE = re.compile(
 # shape entirely, so those start dates silently fell back to the API
 # publication date.
 _DATE_MONTHNAME_RE = re.compile(
-    r"ab\s+(\d{1,2})\.?\s*("
+    r"\ba[bm]\s+(\d{1,2})\.?\s*("
     + "|".join(re.escape(m) for m in _MONTHS_DE)
     + r")\b(?:\s+(\d{4}))?",
     re.IGNORECASE | re.UNICODE,
@@ -275,7 +279,7 @@ def _resolve_missing_year(month: int, day: int, reference_date: datetime) -> int
 def extract_date_from_title(
     title: str, reference_date: datetime | None = None
 ) -> datetime | None:
-    """Extract an ``ab <Datum>`` start date from a Wiener-Linien title.
+    """Extract an ``ab``/``am <Datum>`` start date from a Wiener-Linien title.
 
     Recognises both the numeric ``ab DD.MM.[YYYY]`` and the spelled-out
     ``ab DD. <Monat> [YYYY]`` forms (incl. the Austrian ``Jänner`` /
@@ -301,6 +305,58 @@ def extract_date_from_title(
         if year is None:
             return None
 
+    try:
+        return datetime(year, month, day, tzinfo=_VIENNA_TZ)
+    except ValueError:
+        return None
+
+
+# The "Zeitraum:" section of a WL notice names the real start; ``time.start``
+# is the publication day. On 2026-10-01, 7 of 34 notices began later than
+# their ``starts_at``, among them "29B/N25: Adolf-Loos-Gasse" (published
+# 30.09., "Ab Montag, 05. Oktober 2026") in the feed as
+# "[30.09.2026 – 31.12.2026]". The first date after the heading is the
+# start: "Ab Samstag, 12. September 2026, Betriebsbeginn (Nacht von 11. auf
+# 12. September) …", "Von 08. September 2026 bis Ende Oktober 2026",
+# "Montag, 3. August 2026, bis Ende September 2026".
+_PERIOD_HEADING_RE = re.compile(r"Zeitraum\s*:", re.IGNORECASE)
+_PERIOD_DATE_RE = re.compile(
+    r"\b(\d{1,2})\.\s*(?:(\d{1,2})\.(\d{4}|\d{2})?|("
+    + "|".join(re.escape(m) for m in _MONTHS_DE)
+    + r")\b(?:\s+(\d{4}))?)",
+    re.IGNORECASE | re.UNICODE,
+)
+# How far behind the heading the start may stand; beyond it the text has
+# moved on to the measures and their own dates.
+_PERIOD_WINDOW = 120
+
+
+def extract_start_from_description(
+    description: str, reference_date: datetime | None = None
+) -> datetime | None:
+    """The start date in the "Zeitraum:" section of a WL notice, or ``None``.
+
+    Midnight Europe/Vienna, like :func:`extract_date_from_title`; a missing
+    year resolves the same way. ``None`` without the heading or without a
+    date right behind it.
+    """
+    if not description:
+        return None
+    text = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", description[:20000])).split())
+    heading = _PERIOD_HEADING_RE.search(text)
+    if heading is None:
+        return None
+    match = _PERIOD_DATE_RE.search(text[heading.end() : heading.end() + _PERIOD_WINDOW])
+    if match is None:
+        return None
+    day_str, month_num, year_num, month_word, year_word = match.groups()
+    day = int(day_str)
+    month = int(month_num) if month_num else _MONTHS_DE[month_word.lower()]
+    year = _expand_two_digit_year(year_num) if month_num else (int(year_word) if year_word else None)
+    if year is None:
+        year = _resolve_missing_year(month, day, reference_date or datetime.now(UTC))
+        if year is None:
+            return None
     try:
         return datetime(year, month, day, tzinfo=_VIENNA_TZ)
     except ValueError:
@@ -410,4 +466,5 @@ __all__ = [
     "_title_core",
     "_topic_key_from_title",
     "extract_date_from_title",
+    "extract_start_from_description",
 ]

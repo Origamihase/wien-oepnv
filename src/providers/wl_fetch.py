@@ -43,6 +43,7 @@ from .wl_text import (
     _title_core,
     _topic_key_from_title,
     extract_date_from_title,
+    extract_start_from_description,
 )
 
 # Basis-URL aus Secret/ENV, Fallback: OGD-Endpoint
@@ -320,6 +321,39 @@ def _is_active(start: datetime | None, end: datetime | None, now: datetime) -> b
     if end and end < (now - timedelta(minutes=ENDS_AT_GRACE_MINUTES)):
         return False
     return True
+
+
+def _effective_start(
+    title_raw: str,
+    desc_raw: str,
+    start: datetime | None,
+    end: datetime | None,
+    now: datetime,
+) -> datetime | None:
+    """When the measure of a WL item begins, for ``starts_at``.
+
+    WL's ``time.start`` is when a message is published and valid, not when
+    the measure begins. The title (``ab``/``am`` a date) names the begin,
+    else the "Zeitraum:" section of the description. Either only moves the
+    start later, never earlier: an earlier date is a phase already running.
+    A date from the description that lies past the end is not taken (the
+    first date behind the heading is then not the start).
+    Both dates are anchored to Europe/Vienna midnight, so the API start
+    is projected to Vienna before comparing calendar days — otherwise the
+    decision drifts by one near midnight UTC.
+    """
+    reference = start or now
+    named = extract_date_from_title(title_raw, reference_date=reference)
+    if named is None:
+        named = extract_start_from_description(desc_raw, reference_date=reference)
+        if named is not None and end and named > end:
+            return start
+    if named is None:
+        return start
+    if start and named.date() <= start.astimezone(_VIENNA_TZ).date():
+        return start
+    return named
+
 
 def _intervals_overlap(
     start_a: datetime | None,
@@ -976,20 +1010,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             start = _iso(tinfo.get("start")) or _best_ts(ti)
             end = _iso(tinfo.get("end"))
 
-            # Check for date in title to override starts_at
-            title_date = extract_date_from_title(title_raw, reference_date=start or now)
-
-            real_start = start
-            if title_date:
-                # If we found a date in the title, we prioritize it if:
-                # 1. We don't have a start date from API.
-                # 2. Or the title date is later than the API start date (suggesting future event published early).
-                # ``title_date`` is anchored to Europe/Vienna midnight, so the
-                # API ``start`` (UTC-aware) must be projected to Vienna before
-                # comparing calendar days — otherwise the day-boundary decision
-                # drifts by one near midnight UTC.
-                if not start or title_date.date() > start.astimezone(_VIENNA_TZ).date():
-                    real_start = title_date
+            real_start = _effective_start(title_raw, desc_raw, start, end, now)
 
             # We check activity based on the API start time (publication/validity start),
             # NOT the event start time extracted from the title.
@@ -1070,17 +1091,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             start = _iso(tinfo.get("start")) or _best_ts(poi)
             end = _iso(tinfo.get("end"))
 
-            # Check for date in title to override starts_at
-            title_date = extract_date_from_title(title_raw, reference_date=start or now)
-
-            real_start = start
-            if title_date:
-                # ``title_date`` is anchored to Europe/Vienna midnight, so the
-                # API ``start`` (UTC-aware) must be projected to Vienna before
-                # comparing calendar days — otherwise the day-boundary decision
-                # drifts by one near midnight UTC.
-                if not start or title_date.date() > start.astimezone(_VIENNA_TZ).date():
-                    real_start = title_date
+            real_start = _effective_start(title_raw, desc_raw, start, end, now)
 
             if not _is_active(start, end, now):
                 continue
