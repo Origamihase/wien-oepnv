@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import calendar
 import html
 import re
 from datetime import date, datetime, UTC
@@ -331,6 +332,15 @@ _PERIOD_DATE_RE = re.compile(
 _PERIOD_WINDOW = 120
 
 
+def _period_text(description: str) -> str | None:
+    """The plain text behind the "Zeitraum:" heading, ``None`` without one."""
+    if not description:
+        return None
+    text = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", description[:20000])).split())
+    heading = _PERIOD_HEADING_RE.search(text)
+    return text[heading.end() :] if heading else None
+
+
 def extract_start_from_description(
     description: str, reference_date: datetime | None = None
 ) -> datetime | None:
@@ -340,13 +350,8 @@ def extract_start_from_description(
     year resolves the same way. ``None`` without the heading or without a
     date right behind it.
     """
-    if not description:
-        return None
-    text = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", description[:20000])).split())
-    heading = _PERIOD_HEADING_RE.search(text)
-    if heading is None:
-        return None
-    match = _PERIOD_DATE_RE.search(text[heading.end() : heading.end() + _PERIOD_WINDOW])
+    period = _period_text(description)
+    match = _PERIOD_DATE_RE.search(period[:_PERIOD_WINDOW]) if period else None
     if match is None:
         return None
     day_str, month_num, year_num, month_word, year_word = match.groups()
@@ -359,6 +364,85 @@ def extract_start_from_description(
             return None
     try:
         return datetime(year, month, day, tzinfo=_VIENNA_TZ)
+    except ValueError:
+        return None
+
+
+# The end in the same section: "bis voraussichtlich Ende Oktober 2026",
+# "bis Ende 2026", "bis Sonntag, 6. September 2026", "bis 31.10.2026",
+# "bis Oktober 2027". Only up to "Maßnahme", where the section ends: "bis
+# 05:00 Uhr" of a nightly window or a detour "bis Schottenring" must not
+# pass for an end date. "auf Dauer von etwa sechs Wochen" or "bis etwa
+# Mitte November" name no day and give ``None``.
+_MONTHS_ALT = "|".join(re.escape(m) for m in _MONTHS_DE)
+_PERIOD_END_RE = re.compile(
+    r"\bbis\s+(?:(?:voraussichtlich|etwa|ca\.|circa)\s+)*"
+    r"(?:(?:Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag),?\s+)?"
+    r"(?:Ende\s+(?:(?P<end_month>" + _MONTHS_ALT + r")\b(?:\s+(?P<end_month_year>\d{4}))?"
+    r"|(?P<end_year>\d{4}))"
+    r"|(?P<day>\d{1,2})\.\s*(?:(?P<month_num>\d{1,2})\.(?P<year_num>\d{4}|\d{2})?"
+    r"|(?P<month_word>" + _MONTHS_ALT + r")\b(?:\s+(?P<year_word>\d{4}))?)"
+    r"|(?P<bare_month>" + _MONTHS_ALT + r")\s+(?P<bare_year>\d{4}))",
+    re.IGNORECASE | re.UNICODE,
+)
+_PERIOD_SECTION_END_RE = re.compile(r"Maßnahme|Ersatz:", re.IGNORECASE)
+_PHASE_RE = re.compile(r"\bPhase\b", re.IGNORECASE)
+_PERIOD_END_WINDOW = 200
+
+
+def _last_day(year: int, month: int) -> int:
+    return calendar.monthrange(year, month)[1]
+
+
+def _end_day(g: dict[str, str | None], reference: datetime) -> tuple[int, int, int] | None:
+    """``(year, month, day)`` of the last day an ``_PERIOD_END_RE`` match names."""
+    if g["end_year"]:
+        return int(g["end_year"]), 12, 31
+    month_name = g["bare_month"] or g["end_month"]
+    if month_name:
+        month = _MONTHS_DE[month_name.lower()]
+        year_str = g["bare_year"] or g["end_month_year"]
+        year = int(year_str) if year_str else _resolve_missing_year(month, 1, reference)
+        return None if year is None else (year, month, _last_day(year, month))
+    day = int(g["day"] or 0)
+    if g["month_num"]:
+        month = int(g["month_num"])
+        year = _expand_two_digit_year(g["year_num"])
+    else:
+        month = _MONTHS_DE[(g["month_word"] or "").lower()]
+        year = int(g["year_word"]) if g["year_word"] else None
+    if year is None:
+        year = _resolve_missing_year(month, day, reference)
+    return None if year is None else (year, month, day)
+
+
+def extract_end_from_description(
+    description: str, reference_date: datetime | None = None
+) -> datetime | None:
+    """The end date in the "Zeitraum:" section of a WL notice, or ``None``.
+
+    23:59 Europe/Vienna of the named day, or of the month's or year's last
+    day for "Ende <Monat>" / "Ende <Jahr>" / "<Monat> <Jahr>"; WL's own
+    exact ends read 23:59 too. A missing year resolves against
+    *reference_date* like the start.
+    """
+    period = _period_text(description)
+    if not period:
+        return None
+    section = period[:_PERIOD_END_WINDOW]
+    cut = _PERIOD_SECTION_END_RE.search(section)
+    section = section[: cut.start()] if cut else section
+    if _PHASE_RE.search(section):
+        return None  # "Phase 1: … bis 6. September 2026. Phase 2: …" – the first end is not the end
+    match = _PERIOD_END_RE.search(section)
+    if match is None:
+        return None
+    named = _end_day(match.groupdict(), reference_date or datetime.now(UTC))
+    if named is None:
+        return None
+    year, month, day = named
+    try:
+        return datetime(year, month, day, 23, 59, tzinfo=_VIENNA_TZ)
     except ValueError:
         return None
 
@@ -466,5 +550,6 @@ __all__ = [
     "_title_core",
     "_topic_key_from_title",
     "extract_date_from_title",
+    "extract_end_from_description",
     "extract_start_from_description",
 ]

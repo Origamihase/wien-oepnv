@@ -43,6 +43,7 @@ from .wl_text import (
     _title_core,
     _topic_key_from_title,
     extract_date_from_title,
+    extract_end_from_description,
     extract_start_from_description,
 )
 
@@ -321,6 +322,34 @@ def _is_active(start: datetime | None, end: datetime | None, now: datetime) -> b
     if end and end < (now - timedelta(minutes=ENDS_AT_GRACE_MINUTES)):
         return False
     return True
+
+
+# WL closes 23 of 34 notices (2026-10-01) at exactly 11:11, mostly a year
+# after publication or on 11.11. — an end set by hand, not a date that was
+# known. "44A: Kurzführung" ended "Ende September 2026" by its text and by
+# its ``time.end`` on 22.07.2027, so the finished notice stayed a candidate
+# for the ten feed slots.
+_PLACEHOLDER_END = (11, 11)
+
+
+def _effective_end(
+    desc_raw: str, end: datetime | None, start: datetime | None
+) -> datetime | None:
+    """WL's ``time.end``, or the end its "Zeitraum:" names instead of an 11:11 one.
+
+    Only an end at 11:11 Europe/Vienna gives way; every other end, and an
+    open one, stays. The text's end counts only when it does not lie
+    before the start.
+    """
+    if end is None:
+        return None
+    local = end.astimezone(_VIENNA_TZ)
+    if (local.hour, local.minute) != _PLACEHOLDER_END:
+        return end
+    named = extract_end_from_description(desc_raw, reference_date=start or end)
+    if named is None or (start is not None and named < start):
+        return end
+    return named
 
 
 def _effective_start(
@@ -1008,7 +1037,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
 
             tinfo = _coerce_dict(ti.get("time"))
             start = _iso(tinfo.get("start")) or _best_ts(ti)
-            end = _iso(tinfo.get("end"))
+            end = _effective_end(desc_raw, _iso(tinfo.get("end")), start)
 
             real_start = _effective_start(title_raw, desc_raw, start, end, now)
 
@@ -1089,7 +1118,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
 
             tinfo = _coerce_dict(poi.get("time"))
             start = _iso(tinfo.get("start")) or _best_ts(poi)
-            end = _iso(tinfo.get("end"))
+            end = _effective_end(desc_raw, _iso(tinfo.get("end")), start)
 
             real_start = _effective_start(title_raw, desc_raw, start, end, now)
 
