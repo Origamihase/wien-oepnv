@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 02 Oct 2026 01:12:02 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 01:31:03 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N20: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2465b8f495aa09c30a1900425c8f402136474c4599d6f3677d4f46d051c9c4ae</guid>
+      <pubDate>Fri, 02 Oct 2026 01:16:16 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 01:16:16 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 01:16:16 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 04:52:00 +0200</ext:ends_at>
+      <description>Busse halten auf der Hauptfahrbahn, Bessemerstraße 1-3. [Am 02.10.2026]</description>
+      <content:encoded><![CDATA[Busse halten auf der Hauptfahrbahn, Bessemerstraße 1-3.<br/>[Am 02.10.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N6: Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Fri, 02 Oct 2026 05:05:00 +0200</ext:ends_at>
       <description>Busse halten Quellenstraße 189, Neilreichgasse 20-22. [Am 02.10.2026]</description>
       <content:encoded><![CDATA[Busse halten Quellenstraße 189, Neilreichgasse 20-22.<br/>[Am 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29B: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e08fca74bbbfa884110051dc7bc40d93b89cdd2720d23a71f2600ed32e997d6a</guid>
-      <pubDate>Fri, 02 Oct 2026 00:42:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 01:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 00:42:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 01:15:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Floridsdorf S U. Voraussichtliche Dauer: 01:10 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Uhlirzgasse. [Am 02.10.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Floridsdorf S U. Voraussichtliche Dauer: 01:10 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Uhlirzgasse.<br/>[Am 02.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N49: Gleisbauarbeiten]]></title>
@@ -63,17 +63,6 @@
       <ext:ends_at>Fri, 02 Oct 2026 05:00:00 +0200</ext:ends_at>
       <description>Busse halten Laxenburger Straße 66, Salvatorianerplatz. [Am 02.10.2026]</description>
       <content:encoded><![CDATA[Busse halten Laxenburger Straße 66, Salvatorianerplatz.<br/>[Am 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9: Schadhafter Pkw]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">16b072dd40df82c56241e536ecbe7c613c73c73d601afdcf8db1b49fe92c3fe9</guid>
-      <pubDate>Fri, 02 Oct 2026 00:11:37 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 00:11:37 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 00:17:40 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 01:17:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung [Am 02.10.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung<br/>[Am 02.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Rennweg von 33A bis 37]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
       <description>Wegen einer Veranstaltung im Bereich Allianz Stadion kommt es zu folgenden Verkehrsmaßnahmen. [Am 04.10.2026]</description>
       <content:encoded><![CDATA[Wegen einer Veranstaltung im Bereich Allianz Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[Am 04.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29B/N25: Adolf-Loos-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2e0949e212b98b31a226dddab6b40d0f6c06edb1c250ee7ddaac3c840bc8e962</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 11:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 11:11:00 +0100</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet. [05.10.2026 – 31.12.2026]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet.<br/>[05.10.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

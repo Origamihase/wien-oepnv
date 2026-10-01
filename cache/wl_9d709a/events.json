@@ -20,7 +20,7 @@
     "guid": "4d20323a45c5f784149198df09d52463b04b928a70b7f9fb5dfa920ffd875b32",
     "pubDate": "2026-08-18T00:00:00+02:00",
     "starts_at": "2026-09-15T00:00:00+02:00",
-    "ends_at": "2026-11-30T11:11:00+01:00",
+    "ends_at": "2026-11-30T23:59:00+01:00",
     "_identity": "wl|hinweis|L=12A,N49|D=2026-09-15|TK=12a n49 gleisbauarbeiten märzstrasse"
   },
   {
@@ -32,7 +32,7 @@
     "guid": "35707eaf37f60d497a76706cff4fd2d6991ac408a3d2c957dfeb031ff69d4a34",
     "pubDate": "2026-07-08T10:00:00+02:00",
     "starts_at": "2026-08-03T00:00:00+02:00",
-    "ends_at": "2027-01-01T11:11:00+01:00",
+    "ends_at": "2026-11-30T23:59:00+01:00",
     "_identity": "wl|hinweis|L=16A,N65|D=2026-08-03|TK=16a n65 u6e strassenbauarbeiten am schöpfwerk"
   },
   {
@@ -106,18 +106,6 @@
     "starts_at": "2026-05-21T08:30:00+02:00",
     "ends_at": "2027-08-31T11:11:00+02:00",
     "_identity": "wl|hinweis|L=37A|D=2026-05-21|TK=37a bauarbeiten"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "44A: Kurzführung",
-    "description": "<h2>Bauarbeiten</h2> <p>Wegen Instandsetzungsarbeiten in der R&ouml;ntgengasse wird die Linie 44A kurzgef&uuml;hrt.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 3. August 2026, bis Ende September 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie 44A:</strong><br />Kein Betrieb zwischen Heuberg und Mitterberg.</p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "922b4af1b9331fff9893d877fea6430921e2756178e2670f0d01bb4f89a4e096",
-    "pubDate": "2026-07-22T00:00:00+02:00",
-    "starts_at": "2026-08-03T00:00:00+02:00",
-    "ends_at": "2027-07-22T11:11:00+02:00",
-    "_identity": "wl|hinweis|L=44A|D=2026-08-03|TK=kurzführung"
   },
   {
     "source": "Wiener Linien",
@@ -284,7 +272,7 @@
     "guid": "1c0944c7ba72cc6ec5dbef5498f0536cdeebf208be76b4556119ca563f709087",
     "pubDate": "2026-08-20T00:00:00+02:00",
     "starts_at": "2026-09-02T00:00:00+02:00",
-    "ends_at": "2027-04-30T11:11:00+02:00",
+    "ends_at": "2027-04-30T23:59:00+02:00",
     "_identity": "wl|hinweis|L=74A|D=2026-09-02|TK=74a bauarbeiten"
   },
   {
@@ -332,7 +320,7 @@
     "guid": "56120f290569772124420487a0363d6016a3d90ca83cc5dffef0021e22bb6206",
     "pubDate": "2026-09-08T00:00:00+02:00",
     "starts_at": "2026-09-11T00:00:00+02:00",
-    "ends_at": "2027-09-08T11:11:00+02:00",
+    "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|hinweis|L=N20|D=2026-09-11|TK=n20 gleisbauarbeiten"
   },
   {
@@ -368,7 +356,7 @@
     "guid": "834111bf377fab939eabd14bd1e7f1ba0989eafb655507b367cdbfc64a3c5fe4",
     "pubDate": "2026-09-10T00:00:00+02:00",
     "starts_at": "2026-09-12T00:00:00+02:00",
-    "ends_at": "2027-09-10T11:11:00+02:00",
+    "ends_at": "2026-10-31T23:59:00+01:00",
     "_identity": "wl|hinweis|L=N71|D=2026-09-12|TK=umleitung"
   },
   {
@@ -626,18 +614,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29B: Feuerwehreinsatz",
-    "description": "Linie 29B: Fahrtbehinderung in Richtung Floridsdorf S U. Voraussichtliche Dauer: 01:10 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Uhlirzgasse.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e08fca74bbbfa884110051dc7bc40d93b89cdd2720d23a71f2600ed32e997d6a",
-    "pubDate": "2026-10-02T00:42:00+02:00",
-    "starts_at": "2026-10-02T00:42:00+02:00",
-    "ends_at": "2026-10-02T01:15:00+02:00",
-    "_identity": "wl|störung|L=29B|D=2026-10-02|TK=feuerwehreinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -734,18 +710,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Fahrtbehinderung Schadhafter Pkw",
-    "description": "Fahrtbehinderung\nSchadhafter Pkw",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "16b072dd40df82c56241e536ecbe7c613c73c73d601afdcf8db1b49fe92c3fe9",
-    "pubDate": "2026-10-02T00:11:37+02:00",
-    "starts_at": "2026-10-02T00:17:40+02:00",
-    "ends_at": "2026-10-02T01:17:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-10-02|TK=fahrtbehinderung schadhafter pkw"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "D: Gleisbauarbeiten",
     "description": "Linie D: Kein Betrieb zwischen Börse und Augasse. Weichen Sie ersatzweise auf die Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A. aus. Grund: Gleisbauarbeiten im Bereich Althanstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -802,6 +766,30 @@
     "starts_at": "2026-10-01T00:00:14+02:00",
     "ends_at": "2026-10-02T23:59:59+02:00",
     "_identity": "wl|störung|L=D|D=2026-10-01|TK=züge halten wipplingerstr 39"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N20: Busse halten auf der Hauptfahrbahn",
+    "description": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2465b8f495aa09c30a1900425c8f402136474c4599d6f3677d4f46d051c9c4ae",
+    "pubDate": "2026-10-02T01:16:16+02:00",
+    "starts_at": "2026-10-02T01:16:16+02:00",
+    "ends_at": "2026-10-02T04:52:00+02:00",
+    "_identity": "wl|störung|L=N20|D=2026-10-02|TK=busse halten auf der hauptfahrbahn"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N20: Busse halten Bessemerstraße 1-3",
+    "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f3142d4f32419f4772ec66186ea9d3101fb32548016973434774ef3660ca4236",
+    "pubDate": "2026-10-02T01:30:18+02:00",
+    "starts_at": "2026-10-02T01:30:18+02:00",
+    "ends_at": "2026-10-02T04:35:00+02:00",
+    "_identity": "wl|störung|L=N20|D=2026-10-02|TK=busse halten bessemerstrasse 1 3"
   },
   {
     "source": "Wiener Linien",
