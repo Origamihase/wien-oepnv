@@ -1368,9 +1368,12 @@ Modell-Revision (`_model_revision`). Anlass ist CVE-2026-80047:
 `custom_generate/generate.py` aus dem Modell-Repository in den Cache, bevor
 `trust_remote_code` geprüft wird. Ausgeführt wird sie nicht. Die Meldung
 steht mit Begründung auf der Ausnahmeliste von `pip-audit`
-(`scripts/run_static_checks.py`). Mit dem geloggten Commit lässt sich das
-Modell auf diese Revision festlegen; dann erreicht ein späterer Push in das
-Repository den Build nicht mehr.
+(`scripts/run_static_checks.py`). Seit 2026-10-01 lädt der Feed das Modell
+fest in der Revision, die der Update-Zyklus an diesem Tag um 17:01 geloggt
+hat (`_TRANSLATION_MODEL_REVISION`); ein späterer Push in das Repository
+erreicht den Build nicht mehr. Die Übersetzungen ändern sich dadurch nicht,
+deshalb bleibt die Epoche des Übersetzungs-Caches. Wer auf eine neuere
+Revision wechselt, ändert die Konstante und erhöht die Epoche.
 
 `torch` steht **absichtlich nicht** in `requirements.txt` — es ist ein
 mehrere hundert MB schweres Backend, das nur der EN-Pfad braucht. Beide

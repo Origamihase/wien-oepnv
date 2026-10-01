@@ -124,9 +124,9 @@ def main() -> int:
     #   of ``~/.cache/huggingface`` on ephemeral runners, never a
     #   developer machine.
     #
-    # The model load logs the commit of the revision it loaded, so the
-    # model can be pinned to it; once pinned, a later push to the repo
-    # cannot reach the build at all (audit 2026-10-01).
+    # The model is pinned to the revision it loaded on 2026-10-01
+    # (``_TRANSLATION_MODEL_REVISION`` in ``src/build_feed.py``), so a later
+    # push to the repo cannot reach the build at all (audit 2026-10-01).
     #
     # Re-evaluate whenever ``transformers`` bumps to a version that
     # publishes fixes for these IDs on the 4.x line, or when the project
