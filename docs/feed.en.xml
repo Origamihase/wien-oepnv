@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 01 Oct 2026 18:45:38 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 19:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[42: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
+      <pubDate>Thu, 01 Oct 2026 18:51:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 18:51:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 18:59:37 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction towards Antonigasse. Duration: 19:30. Reason: illegally parked vehicle in the area of Kreuzgasse. [On 01.10.2026]</description>
+      <content:encoded><![CDATA[Service obstruction towards Antonigasse. Duration: 19:30. Reason: illegally parked vehicle in the area of Kreuzgasse.<br/>[On 01.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60: Defective car & defective car service from Anschützgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">eb0220c8ef7f3244966779ffeb71846a32bc1560ec4d2fb47fb20f95b4beea7a</guid>
+      <pubDate>Thu, 01 Oct 2026 18:51:06 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 18:50:36 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 18:50:36 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 01 Oct 2026 19:50:00 +0200</ext:ends_at>
+      <description>Service obstruction [On 01.10.2026]</description>
+      <content:encoded><![CDATA[Service obstruction<br/>[On 01.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
+      <pubDate>Thu, 01 Oct 2026 18:40:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 18:40:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 18:40:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Line U6 currently runs between stations Niederhofstraße and Längenfeldgasse in both directions via track 2. Expected duration: 19:15XX… [On 01.10.2026]</description>
+      <content:encoded><![CDATA[Line U6 currently runs between stations Niederhofstraße and Längenfeldgasse in both directions via track 2. Expected duration: 19:15XX…<br/>[On 01.10.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[51B: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -54,17 +87,6 @@
       <content:encoded><![CDATA[Defective vehicle; service from Fasangasse, via Li. 71+18; trains stop at Li. 18 towards Burggasse, city hall.<br/>[On 01.10.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[18: Track damage]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ff9b04f319fc22e039949597fa16e852577d197b36d235e28063c6b3c9562f16</guid>
-      <pubDate>Thu, 01 Oct 2026 16:25:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 16:25:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 16:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 18:44:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 01.10.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 01.10.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[7A: Traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc</guid>
@@ -96,28 +118,6 @@
       <ext:ends_at>Fri, 02 Oct 2026 00:45:00 +0200</ext:ends_at>
       <description>Reason: construction works. [01.10.2026 – 02.10.2026]</description>
       <content:encoded><![CDATA[Reason: construction works.<br/>[01.10.2026 – 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
-      <pubDate>Thu, 01 Oct 2026 04:40:13 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 04:40:13 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 04:40:13 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 01:00:00 +0200</ext:ends_at>
-      <description>Reason: construction works. [01.10.2026 – 02.10.2026]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[01.10.2026 – 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Diversion because of crane works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
-      <description>Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected. [05.10.2026 – 11.11.2026]</description>
-      <content:encoded><![CDATA[Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected.<br/>[05.10.2026 – 11.11.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
