@@ -2889,6 +2889,19 @@ def _entities_dropped_by_translation(
     return dropped
 
 
+def _model_revision(pipe: Any) -> str:
+    """The commit of the model revision *pipe* loaded, or ``"unbekannt"``.
+
+    Logged so the model can be pinned to the revision the feed actually
+    uses: ``transformers`` 4.49 to 5.8.1 writes a repo's
+    ``custom_generate/generate.py`` into the cache on every load, before the
+    ``trust_remote_code`` check (CVE-2026-80047, audit 2026-10-01). A pinned
+    revision keeps a later push to the repo out of the build.
+    """
+    commit = getattr(getattr(getattr(pipe, "model", None), "config", None), "_commit_hash", None)
+    return str(sanitize_log_arg(commit)) if isinstance(commit, str) and commit else "unbekannt"
+
+
 def _get_translation_pipeline() -> Any:
     """Lazily instantiate the German → English translation pipeline.
 
@@ -2923,9 +2936,10 @@ def _get_translation_pipeline() -> Any:
         # with the nonce the model saw. It is worthless outside this process,
         # and every source text of this run was fetched before this point.
         log.info(
-            "Übersetzungs-Pipeline %s geladen (Platzhalter-Nonce dieses "
-            "Builds: %s).",
+            "Übersetzungs-Pipeline %s geladen (Revision %s, Platzhalter-Nonce "
+            "dieses Builds: %s).",
             _TRANSLATION_MODEL_NAME,
+            _model_revision(_TRANSLATION_STATE["pipeline"]),
             _PLACEHOLDER_NONCE,
         )
     except Exception as exc:
