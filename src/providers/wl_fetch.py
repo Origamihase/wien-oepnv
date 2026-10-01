@@ -1236,21 +1236,20 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             ):
                 b["pubDate"] = ev["pubDate"]
 
-            # For starts_at, if we have different items merging, what to do?
-            # If the events are really the same, they should have the same start.
-            # But if one has a corrected start, we might want that.
-            # However, logic above only updates pubDate.
-            # If I want to update starts_at, I should probably take the one from the "better" title item?
-            # Or just update it if ev["starts_at"] > b["starts_at"]?
-            # Actually, `starts_at` is usually the event start.
-            # If we merge, we assume they are the same event.
-            # If one item has the corrected date (from title) and the other doesn't,
-            # we should prefer the corrected one.
-            # The corrected one is likely LATER than the uncorrected one (which defaults to pubDate/api-start).
-            if ev["starts_at"] and (
-                not b["starts_at"] or ev["starts_at"] > b["starts_at"]
+            # A notice (Hinweis) spans its phases and starts at the earliest
+            # of them, like the end below and the fuzzy merge
+            # (``_merge_validity``). The latest start turned
+            # "11: Gleisbauarbeiten" (01.09.–15.10.) plus "… ab 20.10.2026"
+            # into works that only begin on 20.10. while the first phase
+            # was running. Disruptions keep the latest start: WL reuses old
+            # display tickers for a new incident, and their stale start
+            # would date it back (docs/architecture.md, 27.09.). An unknown
+            # start never erases a known one.
+            es, bs = ev["starts_at"], b["starts_at"]
+            if es and (
+                not bs or (es < bs if b["category"] == "Hinweis" else es > bs)
             ):
-                b["starts_at"] = ev["starts_at"]
+                b["starts_at"] = es
 
             be, ee = b["ends_at"], ev["ends_at"]
             b["ends_at"] = None if (be is None or ee is None) else max(be, ee)
