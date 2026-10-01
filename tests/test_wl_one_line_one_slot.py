@@ -315,10 +315,10 @@ def test_a_synonym_ticker_keeps_what_the_long_message_does_not_say() -> None:
     ]
     (item,) = _built(items)
     assert (item["guid"], item["title"]) == ("b98153df", "60: Schadhaftes Fahrzeug")
-    # The long message says what riders have to do; its measure keeps the
-    # first place, the ticker follows before the advice.
+    # The long message says what riders have to do; the ticker joins its
+    # measure's sentence, before the advice.
     assert str(item["description"]).startswith(
-        "Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse. "
+        "Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse; "
         "Züge halten bei der Linie 62 Fahrtrichtung Lainz. Weichen Sie ersatzweise"
     )
     xml = bf._make_rss([item], _at("2026-09-22T10:01:00+02:00"), {}, lang="de")

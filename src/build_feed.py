@@ -6124,10 +6124,10 @@ def _is_wl_ticker(item: FeedItem) -> bool:
 #
 # Nothing a ticker says is dropped unless another one of the group, or the
 # title, already says it; WL's stock sentence gives way to anything concrete.
-# A long message that says more than the stock sentence stands as it would
-# alone, and its tickers take no slot of their own (2026-09-27) — also when
-# they fall outside its window but share its lines, its cause and part of its
-# validity (``_claimed_by_long_messages``, 2026-10-01).
+# A long message that says more than the stock sentence stands, and its
+# tickers take no slot of their own (2026-09-27). What tickers of its cause,
+# or of none, announce beyond its text is kept (``_with_consequences``,
+# 2026-10-01); a ticker of another cause stays out of it.
 WL_TICKER_CLUSTER_SECONDS = 600
 
 _WL_STOCK_SENTENCE_RE = re.compile(
@@ -6366,12 +6366,16 @@ def _merged_ticker(members: Sequence[FeedItem]) -> FeedItem:
     _span_group(merged, members)
     long_message = _telling_long_message(members)
     if long_message is not None:
-        # WL's own text stands as it would alone; the tickers abbreviate it.
-        # Joined to it they put a second cause beside it (48A on 2026-09-27:
-        # "Falschparker" over "Grund: Fremder Verkehrsunfall") or pushed its
-        # second sentence past the 180 characters.
-        merged["title"] = str(long_message.get("title") or "")
-        merged["description"] = str(long_message.get("description") or "")
+        # WL's own text stands. A ticker of another cause stays out: beside
+        # the text it read as a second cause (48A on 2026-09-27: "Falschparker"
+        # over "Grund: Fremder Verkehrsunfall"). Tickers of the same cause, or
+        # of none, keep what the text does not say (``_with_consequences``):
+        # "Betrieb ab Mühlbreiten" of 64A on 2026-10-01 stood nowhere else.
+        cause = _cause_key(_ticker_part(long_message).cause)
+        same = [m for m in members if m is not long_message and _cause_key(_ticker_part(m).cause) in ("", cause)]
+        stands = _with_consequences(long_message, same) if same else long_message
+        merged["title"] = str(stands.get("title") or "")
+        merged["description"] = str(stands.get("description") or "")
         return merged
     parts = [_ticker_part(member) for member in members]
     chosen = _chosen_cause(parts)
@@ -6412,60 +6416,6 @@ def _spans_meet(a: tuple[datetime, datetime | None], b: tuple[datetime, datetime
     return (b[1] is None or a[0] <= b[1]) and (a[1] is None or b[0] <= a[1])
 
 
-def _names_cause(parts: Sequence[_TickerPart], cause: str) -> bool:
-    """Whether tickers name *cause*: as their cause, or glued in front of a consequence.
-
-    "48A: Gasrohrgebrechen Shuttlebus eingerichtet, …" carries its cause
-    without a split the cause detection knows. Only the very cause: a
-    claimed ticker is dropped, and a synonym's ticker can announce what the
-    long message does not (60 on 2026-09-22: "Schadhafter Zug / Züge halten
-    bei der Linie 62" beside "Schadhaftes Fahrzeug"). Those join the long
-    message in ``_incident_entry``, which keeps what they announce.
-    """
-    chosen = _chosen_cause(parts)
-    if chosen:
-        return chosen == cause
-    return any(part.body.casefold().startswith(f"{cause} ") for part in parts)
-
-
-def _claimed_by_long_messages(items: Sequence[FeedItem], groups: Sequence[list[int]]) -> set[int]:
-    """Tickers whose incident a long message of another publication window reports.
-
-    WL's long message can come long after the tickers, or the tickers are
-    republished at midnight: D on 2026-09-30, tickers 04:00:07, long message
-    04:30, both titled "D: Gleisbauarbeiten", side by side in 10 feed
-    versions; 48A on 2026-10-01, long message 21:47, ticker 00:00:12. Same
-    lines, same cause, overlapping validity: the tickers take no slot, as
-    they would not within the window.
-    """
-    reports: list[tuple[str, str, tuple[datetime, datetime | None]]] = []
-    for group in groups:
-        members = [items[index] for index in group]
-        long_message = _telling_long_message(members)
-        span = _group_span(members)
-        cause = _ticker_part(long_message).cause.casefold() if long_message is not None else ""
-        if cause and span is not None:
-            reports.append((_ticker_lines(members[0]), cause, span))
-    claimed: set[int] = set()
-    for group in groups:
-        members = [items[index] for index in group]
-        span = _group_span(members)
-        if _telling_long_message(members) is not None or span is None:
-            continue
-        parts = [_ticker_part(member) for member in members]
-        lines = _ticker_lines(members[0])
-        if any(
-            lines == r_lines and _spans_meet(span, r_span) and _names_cause(parts, r_cause)
-            for r_lines, r_cause, r_span in reports
-        ):
-            claimed.update(group)
-            log.info(
-                "WL-Kurzmeldungen der ausführlichen Meldung zugeordnet: %s",
-                sanitize_log_arg(" | ".join(_rendered_title(member) for member in members)),
-            )
-    return claimed
-
-
 # --- One line, one slot (operator decision 2026-10-01) ---------------------
 #
 # "Mehrere Störungsmeldungen zur selben Linie sollte so gut wie möglich
@@ -6476,8 +6426,9 @@ def _claimed_by_long_messages(items: Sequence[FeedItem], groups: Sequence[list[i
 # "Busse halten Salvatorianerplatz" (Bauarbeiten, 01.10.–02.10.). Over the
 # 236 feed versions since 2026-09-27, 112 had a line in more than one entry.
 #
-# So after the windows and the long messages' claims, the WL disruptions of
-# the same lines whose validity meets (``_line_runs``) become one entry:
+# So after the windows, the WL disruptions of the same lines whose validity
+# meets (``_line_runs``) become one entry; this also brings a long message
+# and its tickers of another window together:
 #
 # * one cause, WL's synonyms counted (``_CAUSE_SYNONYMS``): one incident,
 #   merged as above; a long message stands for it, and what the other
@@ -6504,17 +6455,15 @@ def _group_cause(members: Sequence[FeedItem]) -> str:
     return _chosen_cause([_ticker_part(member) for member in members])
 
 
-def _line_runs(items: Sequence[FeedItem], groups: Sequence[list[int]], claimed: set[int]) -> list[list[list[int]]]:
+def _line_runs(items: Sequence[FeedItem], groups: Sequence[list[int]]) -> list[list[list[int]]]:
     """*groups* of the same lines whose validity meets, transitively.
 
-    A claimed group takes no part; a group with a sentence for a cause, or
-    without a span, stands as a run of its own.
+    A group with a sentence for a cause, or without a span, stands as a run
+    of its own.
     """
     by_lines: dict[str, list[tuple[datetime, datetime | None, list[int]]]] = defaultdict(list)
     runs: list[list[list[int]]] = []
     for group in groups:
-        if group[0] in claimed:
-            continue
         members = [items[index] for index in group]
         span = _group_span(members)
         if span is None or len(_group_cause(members).split()) > _MAX_LISTED_WORDS:
@@ -6571,51 +6520,93 @@ _LONG_MESSAGE_TAIL_RE = re.compile(r"\s+(?:Weichen Sie|Voraussichtliche Dauer|Gr
 
 # What a rider has to do, as WL's texts say it.
 _RIDER_CONSEQUENCE_RE = re.compile(
-    r"\b(?:Kein Betrieb|Betrieb (?:ab|nur|über|zwischen|bis)|Züge halten|Busse halten|Umleitung|umgeleitet)\b",
+    r"\b(?:Kein Betrieb|Betrieb (?:ab|nur|über|zwischen|bis)|Züge halten|Busse halten|hält|Umleitung|umgeleitet"
+    r"|Ersatzbus|Shuttlebus|Einstieg|benützen|benutzen|ausweichen)\b",
     re.IGNORECASE,
 )
+# A negation says nothing a text in other words does not: "Kein Betrieb"
+# beside "Derzeit ist ein Betrieb nicht möglich" (1A on 2026-09-22).
+_NEGATIONS: frozenset[str] = frozenset({"kein", "keine", "keinen", "nicht"})
+
+
+def _as_sentence(text: str) -> str:
+    """*text* with a full stop, unless it ends in one of its own ("… Linie 46!")."""
+    return text if text.endswith((".", "!", "?")) else f"{text}."
+
+
+def _said_already(message: str, said: frozenset[str]) -> bool:
+    """Whether every word of *message* that carries meaning is among *said*.
+
+    Words of up to three letters carry none here: "Betrieb ab
+    Hofwiesengasse" adds nothing to "Betrieb nur zwischen Westbahnhof S U
+    und Hofwiesengasse" (60 on 2026-09-22). A longer or shorter form counts
+    from five letters on: "Verspätung" is in "Verspätungen".
+    """
+    return all(
+        token in said
+        or any(len(token) >= 5 and len(word) >= 5 and (word.startswith(token) or token.startswith(word)) for word in said)
+        for token in _message_tokens(message)
+        if len(token) > 3 and token not in _NEGATIONS
+    )
 
 
 def _with_consequences(entry: FeedItem, members: Sequence[FeedItem]) -> FeedItem:
     """*entry* with what *members* announce and its own text does not.
 
-    Tickers of another window are not claimed by a long message of a
-    synonym, or of no cause at all; standing for the incident, the long
-    message would drop them with their stops. Where its text says what a
-    rider has to do, its measure keeps the first place and the tickers
-    follow it, before the advice (60 on 2026-09-22: "Betrieb nur zwischen
-    Westbahnhof S U und Hofwiesengasse. Züge halten bei der Linie 62
-    Fahrtrichtung Lainz. Weichen Sie …"). Where it does not, they come
-    first (26E from 2026-09-25: "Busse halten Satzingerweg 41, …; Ersatzbus
-    hält Karl-Waldbrunner-Platz …" before "Die Kapazitäten der Ersatzlinie
-    26E …").
+    A long message stands for its incident, within its window and beyond;
+    without this it would drop the tickers of the same cause, or of none,
+    with their stops. A bare "Fahrtbehinderung" adds nothing. Where its
+    measure says what a rider has to do, the tickers join its sentence
+    (60 on 2026-09-22: "Betrieb nur zwischen Westbahnhof S U und
+    Hofwiesengasse; Züge halten bei der Linie 62 Fahrtrichtung Lainz.
+    Weichen Sie …"). Where it does not, they come first (26E from
+    2026-09-25: "Busse halten Satzingerweg 41, …; Ersatzbus hält
+    Karl-Waldbrunner-Platz …" before "Die Kapazitäten der Ersatzlinie
+    26E …"). What tells a rider nothing to do comes last.
     """
     text = _ticker_text(entry)
     said = _message_tokens(f"{_rendered_title(entry)} {text}")
-    candidates = [part.consequence or part.body for part in map(_ticker_part, members)]
-    messages = [m for m in _distinct_messages(candidates, _rendered_title(entry)) if not _message_tokens(m) <= said]
+    cause = _ticker_part(entry).cause.casefold()
+    # The cause glued in front ("Gasrohrgebrechen Shuttlebus eingerichtet, …")
+    # and WL's display markup ("**Verspätung**") say nothing.
+    candidates = [
+        _without_cause(part.consequence or part.body, cause).replace("*", "").strip()
+        for part in map(_ticker_part, members)
+    ]
+    messages = [
+        m for m in _distinct_messages(candidates, _rendered_title(entry))
+        if m.casefold() != _HINDRANCE.casefold() and not _said_already(m, said)
+    ]
     if not messages:
         return entry
-    announced = "; ".join(m.rstrip(" .") for m in _shared_openings(messages)) + "."
-    merged = cast(FeedItem, dict(entry))
-    if not _RIDER_CONSEQUENCE_RE.search(text):
-        merged["description"] = f"{announced} {text}"
-        return merged
-    # Behind the measure, before the advice, expected end and cause.
+    rider = [m.rstrip(" .") for m in _shared_openings(messages) if _RIDER_CONSEQUENCE_RE.search(m)]
+    rest = [m.rstrip(" .") for m in messages if not _RIDER_CONSEQUENCE_RE.search(m)]
     tail = _LONG_MESSAGE_TAIL_RE.search(text)
     cut = tail.start() if tail else len(text)
-    merged["description"] = f"{text[:cut].rstrip()} {announced}{text[cut:]}"
+    measure = text[:cut].rstrip()
+    if rider and _RIDER_CONSEQUENCE_RE.search(measure):
+        # In the measure's own sentence, before the advice, expected end and
+        # cause: the summary keeps two sentences, and "Wipplingerstr 39." ends
+        # none it can see (D on 2026-09-30).
+        text = f"{measure.rstrip('.')}; {_as_sentence('; '.join(rider))}{text[cut:]}"
+    elif rider:
+        text = f"{_as_sentence('; '.join(rider))} {text}"
+    if rest:
+        # What tells a rider nothing to do ("Derzeit längere Wartezeiten!")
+        # must not push the text's own cause or end out of the summary.
+        text = f"{text} {_as_sentence('; '.join(rest))}"
+    merged = cast(FeedItem, dict(entry))
+    merged["description"] = text
     return merged
 
 
 def _incident_entry(items: Sequence[FeedItem], groups: Sequence[list[int]]) -> tuple[int, FeedItem]:
     """The entry of one incident and the index it takes.
 
-    A long message stands for its incident, as within its window and as
-    with its claims (``_claimed_by_long_messages``); of several, the
-    newest. What the groups without a long message announce beyond its
-    text is kept (``_with_consequences``). Otherwise all messages of the
-    incident are merged as one window would be.
+    A long message stands for its incident, as within its window; of
+    several, the newest. What the groups without a long message announce
+    beyond its text is kept (``_with_consequences``). Otherwise all
+    messages of the incident are merged as one window would be.
     """
     telling = [group for group in groups if _telling_long_message([items[index] for index in group]) is not None]
     if not telling:
@@ -6678,13 +6669,13 @@ def _incident_sentences(listed: Sequence[tuple[str, str]]) -> list[str]:
         if detail and not (concrete and _WL_STOCK_SENTENCE_RE.match(f"{detail}."))
     ]
     if not kept:
-        return [f"{label}." for label, _ in listed]
-    while len(" ".join(f"{label}: {'; '.join(parts)}." for label, parts in kept)) > 180:
+        return [_as_sentence(label) for label, _ in listed]
+    while len(" ".join(_as_sentence(f"{label}: {'; '.join(parts)}") for label, parts in kept)) > 180:
         longest = max(kept, key=lambda entry: len("; ".join(entry[1])))
         if len(longest[1]) < 2:
             break
         longest[1].pop()
-    return [f"{label}: {'; '.join(parts)}." for label, parts in kept]
+    return [_as_sentence(f"{label}: {'; '.join(parts)}") for label, parts in kept]
 
 
 def _combined_incidents(entries: Sequence[FeedItem]) -> FeedItem:
@@ -6717,8 +6708,8 @@ def _merge_wl_ticker_clusters(items: list[FeedItem]) -> list[FeedItem]:
     """Join the WL disruptions of one incident, and of one line, into one item (see above)."""
     groups = _ticker_groups(items)
     replaced: dict[int, FeedItem] = {}
-    dropped = _claimed_by_long_messages(items, groups)
-    for run in _line_runs(items, groups, dropped):
+    dropped: set[int] = set()
+    for run in _line_runs(items, groups):
         members = [index for group in run for index in group]
         if len(members) < 2:
             continue

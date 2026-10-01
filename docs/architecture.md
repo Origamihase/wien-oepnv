@@ -146,8 +146,14 @@ verdrängt eine andere Störung.
   Sortierung und Platzvergabe (`main` und `lint`):
   - Ausführliche Meldung (seit 2026-09-27): Sagt eine ausführliche
     WL-Meldung der Gruppe mehr als den Standardsatz, steht sie mit Titel
-    und Text so, wie sie allein erschiene; die Kurzmeldungen der Gruppe
-    belegen keinen eigenen Platz. Erkannt wird sie an ihren Sätzen
+    und Text für die Gruppe; die Kurzmeldungen belegen keinen eigenen
+    Platz. Was Kurzmeldungen derselben Ursache (oder ohne Ursache)
+    ankündigen und ihr Text nicht nennt, bleibt (`_with_consequences`, seit
+    2026-10-01, Regeln unten bei „Eine Linie, ein Platz“). „Betrieb ab
+    Mühlbreiten“ der 64A vom 01.10. stand sonst nirgends: „64A:
+    Verkehrsunfall“ über „Betrieb ab Mühlbreiten. Unregelmäßige Intervalle
+    in beiden Richtungen. Grund: Verkehrsunfall.“ Eine Kurzmeldung anderer
+    Ursache bleibt draußen. Erkannt wird sie an ihren Sätzen
     (`_is_long_message`: Der Text endet mit einem Punkt; im WL-Cache vom
     September gilt das für alle 504 Texte in Sätzen und für keine der 247
     Kurzmeldungen). Das Präfix „Linie 48A:“ taugt dafür nicht, weil
@@ -156,17 +162,18 @@ verdrängt eine andere Störung.
     über „Grund: Fremder Verkehrsunfall“, und angehängte Kurzmeldungen
     schoben den zweiten Satz einer ausführlichen Meldung über die
     180 Zeichen.
-  - Kurzmeldungen außerhalb des Fensters (seit 2026-10-01):
-    `_claimed_by_long_messages` nimmt einer Gruppe ohne eigene ausführliche
-    Meldung den Platz, wenn eine solche Meldung derselben Linien dieselbe
-    Ursache nennt und ihre Gültigkeit sich mit der Gruppe überschneidet.
-    Die Ursache darf in der Kurzmeldung auch vor der Folge stehen
-    („Gasrohrgebrechen Shuttlebus eingerichtet“). Anlass: Am 30.09. kamen
-    die Kurzmeldungen der Linie D um 04:00, die ausführliche Meldung um
-    04:30; „D: Gleisbauarbeiten“ stand bis zum 01.10. zweimal im Feed.
-    Bei der 48A kam die Kurzmeldung um Mitternacht neu, die ausführliche
-    Meldung um 21:47. Rückschau über 736 Cache-Stände: genau diese zwei
-    Fälle.
+  - Kurzmeldungen außerhalb des Fensters (seit 2026-10-01): Sie kommen
+    über „Eine Linie, ein Platz“ (unten) zu ihrer ausführlichen Meldung
+    und behalten, was sie zusätzlich sagen. Anlass: Am 30.09. kamen die
+    Kurzmeldungen der Linie D um 04:00, die ausführliche Meldung um 04:30;
+    „D: Gleisbauarbeiten“ stand bis zum 01.10. zweimal im Feed. Jetzt
+    steht dort einmal „Kein Betrieb zwischen Börse und Augasse; Züge
+    halten in Schleife, Wipplingerstr 39. Weichen Sie …“. Bei der 48A kam
+    die Kurzmeldung um Mitternacht neu, die ausführliche Meldung um 21:47;
+    jetzt steht „Shuttlebus eingerichtet, Abfahrtsstelle: Haltestelle
+    Linie 46!“ hinter ihrer Maßnahme. Bis zum Abend des 01.10. verwarf
+    eine eigene Zuordnung zur ausführlichen Meldung diese Kurzmeldungen
+    samt ihrem Inhalt.
   - Sonst ist der Titel Linie und die häufigste Ursache der Gruppe; ohne
     Ursache der Titel der ersten Meldung. Die Ursache kommt aus dem Titel
     (`_reason_and_fragment`), aus einer ausführlichen Meldung mit dem
@@ -202,7 +209,7 @@ verdrängt eine andere Störung.
   „66A: Rettungseinsatz“ stand neben „66A: Busse halten
   Salvatorianerplatz“. Seit 27.09. hatten 112 von 236 Feed-Ständen eine
   Linie in mehr als einem Eintrag.
-  - Nach den Fenstern und den Zuordnungen zur ausführlichen Meldung legt
+  - Nach den Fenstern legt
     `_merge_wl_ticker_clusters` die WL-Störungen derselben Linien
     zusammen, deren Gültigkeit sich überschneidet, auch über mehrere
     Schritte (`_line_runs`).
@@ -211,18 +218,33 @@ verdrängt eine andere Störung.
     16:37, über das 10-Minuten-Fenster hinaus. Steht eine ausführliche
     Meldung darin, steht sie für den Vorfall, von mehreren die neueste
     (`_incident_entry`). Was die übrigen Kurzmeldungen ankündigen und ihr
-    Text nicht nennt, bleibt (`_with_consequences`). Sagt ihr Text selbst,
-    was Fahrgäste tun müssen („Kein Betrieb“, „Betrieb ab/nur/…“, „Züge
-    halten“, „Busse halten“, „Umleitung“), behält seine Maßnahme den ersten
-    Platz und die Kurzmeldungen folgen ihr, vor „Weichen Sie …“. Beispiel
-    60 am 22.09.: „Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse.
-    Züge halten bei der Linie 62 Fahrtrichtung Lainz. Weichen Sie …“ Sonst
-    kommen sie zuerst:
-    Die Haltestellen des Ersatzbusses 26E stehen seit dem 25.09. neben
-    „26E: Gleisbauarbeiten“ („Die Kapazitäten der Ersatzlinie 26E …“) und
-    wären sonst verschwunden. Die Zuordnung zur ausführlichen Meldung
-    (`_claimed_by_long_messages`, oben) bleibt bei der genau gleichen
-    Ursache, denn sie verwirft die Kurzmeldungen.
+    Text nicht nennt, bleibt (`_with_consequences`), nach diesen Regeln:
+    - Was Fahrgäste tun müssen („Kein Betrieb“, „Betrieb ab/nur/…“, „Züge
+      halten“, „Busse halten“, „Umleitung“, „Ersatzbus“, „Shuttlebus“,
+      „Einstieg“, „benützen“, „ausweichen“), steht vorn. Nennt der Text
+      selbst eine Maßnahme, hängt es mit „; “ an deren Satz, vor „Weichen
+      Sie …“ und vor „Voraussichtliche Dauer“. Beispiel 60 am 22.09.:
+      „Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse; Züge halten
+      bei der Linie 62 Fahrtrichtung Lainz. Weichen Sie …“. Ein eigener
+      Satz ginge verloren, wenn die Kurzmeldung auf eine Hausnummer endet:
+      Hinter „Wipplingerstr 39.“ erkennt die Zusammenfassung keine
+      Satzgrenze und nahm bei der Linie D samt der Folge auch „Weichen Sie
+      …“ mit. Ohne eigene Maßnahme steht es als erster Satz davor; so
+      stehen die Haltestellen des Ersatzbusses 26E seit dem 25.09. neben
+      „26E: Gleisbauarbeiten“ („Die Kapazitäten der Ersatzlinie 26E …“)
+      und wären sonst verschwunden.
+    - Was Fahrgästen nichts zu tun gibt („Derzeit längere Wartezeiten!“),
+      kommt ans Ende. Vorn nahm es bei der N29 am 30.09. den zweiten Satz
+      der Zusammenfassung und damit die Ursache.
+    - Ein bloßes „Fahrtbehinderung“ hängt nie an. Als gesagt gilt eine
+      Folge, deren Wörter ab vier Buchstaben der Text schon hat („Betrieb
+      ab Hofwiesengasse“ neben „Betrieb nur zwischen Westbahnhof S U und
+      Hofwiesengasse“). Eine längere oder kürzere Form zählt ab fünf
+      Buchstaben mit („Verspätung“ in „Verspätungen“). Verneinungen zählen
+      nicht als Wort: „Kein Betrieb“ ist neben „Derzeit ist ein Betrieb
+      nicht möglich“ gesagt (1A am 22.09.).
+    - Eine vorangestellte Ursache („Gasrohrgebrechen Shuttlebus …“) und
+      WLs Tafel-Auszeichnung („\*\*Umleitung\*\*“) fallen weg.
   - Gleiche Ursache heißt auch WLs Synonym (`_CAUSE_SYNONYMS`): Im selben
     Fenster schrieb WL seit September 14-mal „Schadhafter Zug“ neben
     „Schadhaftes Fahrzeug“, 9-mal „Fremdunfall“ oder „Verkehrsunfall“ neben
@@ -263,12 +285,9 @@ verdrängt eine andere Störung.
     bei gleicher Ursache („1A: Demonstration“, „3A: Demonstration“).
     Vorfälle ohne gemeinsame Gültigkeit bleiben getrennt.
   - Grenzen: Die Beschreibung übernimmt zwei Sätze; bei drei Ursachen mit
-    eigener Folge nennt nur der Titel die dritte. Innerhalb ihres Fensters
-    steht die ausführliche Meldung wie bisher für ihre Kurzmeldungen:
-    „Betrieb ab Mühlbreiten“ der 64A vom 01.10. steht nicht mehr im Feed,
-    vorher stand es unter „64A: Verkehrsunfall & Verkehrsunfall“.
-    Erscheinen zwei Vorfälle im selben Lauf zum ersten Mal, zählt die
-    Störungsstatistik nur den neueren.
+    eigener Folge nennt nur der Titel die dritte. Erscheinen zwei Vorfälle
+    im selben Lauf zum ersten Mal, zählt die Störungsstatistik nur den
+    neueren.
   - Rückschau über 750 Cache-Stände seit 12.09. (Kurzmeldungen, ÖBB und
     Baustellen, nur Duplikatprüfung und Zusammenlegung): 1.727 Einträge
     weniger. In keinem Stand stehen mehr Einträge als vorher. Paare
