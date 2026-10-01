@@ -603,14 +603,15 @@ def _merge_validity(target: dict[str, Any], source: dict[str, Any]) -> None:
     ends = [target.get("ends_at"), source.get("ends_at")]
     known_ends = [e for e in ends if isinstance(e, datetime)]
     try:
-        if starts:
-            target["starts_at"] = min(starts)
-        if len(known_ends) == 2:
-            target["ends_at"] = max(known_ends)
-        elif known_ends and None in ends:
-            target["ends_at"] = None
+        start = min(starts) if starts else target.get("starts_at")
+        end = max(known_ends) if len(known_ends) == 2 else target.get("ends_at")
     except TypeError:
-        pass
+        # Naive and aware datetimes cannot be ordered: keep the survivor's span.
+        return
+    if known_ends and None in ends:
+        end = None
+    target["starts_at"] = start
+    target["ends_at"] = end
 
 
 def _compute_overlap_cache(

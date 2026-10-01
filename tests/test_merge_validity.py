@@ -72,3 +72,14 @@ def test_unorderable_datetimes_keep_the_survivor_span() -> None:
 
     assert merged[0]["starts_at"] == _d("2026-09-15T00:00+02:00")
     assert merged[0]["ends_at"] == _d("2026-10-02T03:00+02:00")
+
+
+def test_unorderable_end_keeps_the_whole_survivor_span() -> None:
+    disruption = _disruption()
+    disruption["starts_at"] = _d("2026-09-01T00:00+02:00")
+    disruption["ends_at"] = datetime(2026, 12, 1)  # naive
+
+    merged = deduplicate_fuzzy([disruption, _notice()])
+
+    assert merged[0]["starts_at"] == _d("2026-09-15T00:00+02:00")
+    assert merged[0]["ends_at"] == _d("2026-10-02T03:00+02:00")
