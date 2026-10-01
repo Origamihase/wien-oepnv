@@ -5,6 +5,13 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Sicherheit: Übersetzungsmodell auf eine Revision festgelegt (2026-10-01)**:
+  Der Feed lädt `Helsinki-NLP/opus-mt-de-en` fest in der Revision
+  `1a922f3b`, die der Update-Zyklus am 01.10. um 17:01 geloggt hat
+  (`_TRANSLATION_MODEL_REVISION`). Ein späterer Push in das
+  Modell-Repository erreicht den Build nicht mehr (CVE-2026-80047,
+  Schritt 2). Die Übersetzungen ändern sich nicht. Audit vom 01.10., Update
+  17:17.
 * **Sicherheit: CVE-2026-80047 in `transformers` bewertet (2026-10-01)**:
   `pip-audit` meldet für `transformers` 4.57.6 eine neue Schwachstelle ohne
   korrigierte Version. `load_custom_generate()` schreibt eine Code-Datei

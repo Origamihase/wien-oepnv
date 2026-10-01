@@ -1350,6 +1350,14 @@ def _sanitize_text(s: str) -> str:
 # ``global`` declaration through a circuit-breaker assignment).
 _TRANSLATION_STATE: dict[str, Any] = {"pipeline": None, "load_failed": False}
 _TRANSLATION_MODEL_NAME = "Helsinki-NLP/opus-mt-de-en"
+# The model revision the feed loads (CVE-2026-80047, audit 2026-10-01).
+# ``transformers`` 4.49 to 5.8.1 writes a repo's ``custom_generate/generate.py``
+# into the cache on every load, before the ``trust_remote_code`` check; pinned,
+# a later push to the repo cannot reach the build. This is the commit the
+# update cycle of 2026-10-01 17:01 logged (``_model_revision``), so the
+# translations do not change and the translation cache keeps its epoch. To
+# move to a newer revision, change it here and bump the epoch below.
+_TRANSLATION_MODEL_REVISION = "1a922f3b32a8e809e17a47d4b32142d8105924e5"
 
 # Translation-cache epoch. EN translations are cached per disruption
 # identity in ``state[ident]["translations"]["en"]`` and persisted
@@ -2941,7 +2949,7 @@ def _get_translation_pipeline() -> Any:
         # transformers package is loaded without overload metadata
         # (the import-untyped branch via ``ignore_missing_imports``).
         _TRANSLATION_STATE["pipeline"] = pipeline(  # type: ignore[call-overload, unused-ignore]
-            "translation_de_to_en", model=_TRANSLATION_MODEL_NAME,
+            "translation_de_to_en", model=_TRANSLATION_MODEL_NAME, revision=_TRANSLATION_MODEL_REVISION,
         )
         # The nonce is logged so a build whose translations fail on residual
         # placeholders (see ``_RESIDUAL_PLACEHOLDER_RE``) can be correlated
