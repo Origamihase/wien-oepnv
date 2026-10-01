@@ -662,6 +662,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "60: Verkehrsüberlastung",
+    "description": "Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "08e61c125855aaa8e72bedc583a0371a48ce4c3e4d16af18872e566ea043e1b3",
+    "pubDate": "2026-10-01T07:52:00+02:00",
+    "starts_at": "2026-10-01T07:52:00+02:00",
+    "ends_at": "2026-10-01T23:55:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-10-01|TK=60 verkehrsüberlastung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62A: Verkehrsüberlastung",
+    "description": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0e50534c2dc186411bb463df57ba54fcd37a1c8fe596bee601eb49b894bd1a9a",
+    "pubDate": "2026-10-01T07:51:00+02:00",
+    "starts_at": "2026-10-01T07:51:00+02:00",
+    "ends_at": "2026-10-01T23:55:00+02:00",
+    "_identity": "wl|störung|L=62A|D=2026-10-01|TK=62a verkehrsüberlastung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62: Züge halten bei Linie 18, Richtung Burggasse",
     "description": "Züge halten bei\nLinie 18, Richtung Burggasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",

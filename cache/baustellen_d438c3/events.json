@@ -2,6 +2,90 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
+    "title": "Matzleinsdorfer Platz 3-4 bis 5",
+    "description": "Im Zuge des U-Bahnbaus ist seit 28. März 2022, 09:00 Uhr die Rechtsabbiegespur in Richtung 5. Bezirk auf der Abfahrtsrampe des Margaretengürtels vom Hauptbahnhof kommend zum Matzleinsdorfer Platz gesperrt. Die Umleitung des Verkehrs in Richtung 5. Bezirk erfolgt über die Hollgasse. Seit 10. Jänner 2023 wird der Verkehr von der Reinprechtsdorfer Straße bzw. Wiedner Hauptstraße kommend in Richtung Matzleinsdorfer Platz nunmehr rechts an dem neu in der Mitte der öffentlichen Verkehrsfläche eingerichteten Baustellenbereich vorbeigeführt. Die bisherige Verkehrssituation (zwei Fahrspuren in Richtung Margaretengürtel) bleibt unverändert. Ab 29. August 2024, 22:00 Uhr wird in der Unterführung am Matzleinsdorfer Platz die Fahrbahnhälfte im Zuge des Margaretengürtels in Richtung Hauptbahnhof für den Verkehr wieder freigegeben. Der Linksabbiegeverkehr von der Triester Straße bzw. Gudrunstraße kommend zum Margaretengürtel in Richtung Eichenstraße wird dann wieder über das Brückentragwerk und nicht mehr über die Nebenfahrbahn des Margaretengürtels geführt. NEU:Im Zeitraum vom 6. Juli 2025, 22:00 Uhr bis zum 21. Juli 2025 wird in der Unterführung am Matzleinsdorfer Platz in Fahrtrichtung zum 12. Bezirk eine Fahrspur gesperrt. \nBeginn: 27.03.2022 00:00 Uhr \nGeplant bis: 31.12.2028 00:00 Uhr \nMaßnahme: U-Bahnbau \nBezirk: 5",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "01827c2071d3a2115c6ba3380e4228d45f219fc84924123049b6f1567bf6151f",
+    "pubDate": "2022-03-27T00:00:00+01:00",
+    "starts_at": "2022-03-27T00:00:00+01:00",
+    "ends_at": "2028-12-31T00:00:00+01:00",
+    "context": {
+      "district": "5",
+      "measure": "U-Bahnbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.18132585,
+        "lon": 16.35857299
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Rechte Wienzeile von Kreuzung Ramperstorffergasse bis Kreuzung Pilgramgasse und Pilgrambrücke",
+    "description": "Für den Neubau der U-Bahnstation der U2 Pilgramgasse wird die Rechte Wienzeile von der Ramperstorffergasse bis zur Pilgramgasse für den Fahrzeugverkehr gesperrt. Die Umleitungsstrecke wird über die Schönbrunner Straße und Pilgramgasse geführt. \nBeginn: 28.02.2021 00:00 Uhr \nGeplant bis: 31.05.2028 00:00 Uhr \nMaßnahme: U-Bahnbau \nBezirk: 5",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "2a2f6a28055adadb67a81e014f4e60e61cd5da5950c66d3f4358ba440b8ff4a4",
+    "pubDate": "2021-02-28T00:00:00+01:00",
+    "starts_at": "2021-02-28T00:00:00+01:00",
+    "ends_at": "2028-05-31T00:00:00+02:00",
+    "context": {
+      "district": "5",
+      "measure": "U-Bahnbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.19126723,
+        "lon": 16.35412942
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Vordere Zollamtsstraße von Marxergasse und Kleine Marxerbrücke bis Unbenannte Verkehrsfläche und Rad…",
+    "description": "Aufgrund der Sanierung der Tunneldecke der U4-Trasse bzw. der dafür erforderlichen Vorarbeiten im Fahrbahnbereich sowie der Instandsetzung von Schächten durch die Wiener Netze - Bereich Fernwärme wird die Vordere Zollamtsstraße im Abschnitt von der Kleine Marxerbrücke bis und in Richtung zur Radetzkybrücke als provisorische Einbahn bei Aufrechterhaltung von zwei Fahrspuren geführt. Die Fahrtrichtung zum Heumarkt wird über die Uraniastraße und den Stubenring umgeleitet. Der Radweg wird über die Schallautzerstraße bzw. den Stubenring umgeleitet. NEU: Ab 28.09.2026 ist in Fahrtrichtung Heumarkt der äußerst rechte Fahrstreifen gesperrt.Die restlichen Fahrstreifen werden aufrechtgehalten. Der Geh- und Radweg auf Seiten des Wienflusses von Marxerstraße bis Zollamtssteg bleibt weiterhin gesperrt. Der Radweg wird über die Schallautzerstraße bzw. den Stubenring umgeleitet. \nBeginn: 01.02.2026 00:00 Uhr \nGeplant bis: 30.11.2026 00:00 Uhr \nMaßnahme: Gleisbau \nBezirk: 3",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "35a2bf6293387737ed920111491ea53c3fd0c9e8f0003d6e2a69287d3ff60605",
+    "pubDate": "2026-02-01T00:00:00+01:00",
+    "starts_at": "2026-02-01T00:00:00+01:00",
+    "ends_at": "2026-11-30T00:00:00+01:00",
+    "context": {
+      "district": "3",
+      "measure": "Gleisbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.20826196,
+        "lon": 16.38409278
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Neilreichgasse von Gudrunstraße bis Davidgasse",
+    "description": "Eine Zufahrt zu den genehmigten Stellplätzen ist möglich.Die Buslinie 7A wird in diesen Zeitraum über die Rothenhofgasse Sonnleithengasse - Davidgasse umgeleitet. Bauphase 1 von 2 (23.06.2026 bis 28.08.2026):Die Arbeiten erfolgen bei Sperre der Neilreichgasse von Gudrunstraße bis Buchengasse. Für die Arbeiten im Plateau Neilreichgasse und Quellenstraße wird die Quellenstraße von Eckertgasse bis Karmaschgasse für den Fahrzeugverkehr gesperrt.Eine Zufahrt bis zum gesperrten Bereich und zu den genehmigten Stellplätzen ist möglich.Die Umleitung in Fahrtrichtung Laxenburger Straße erfolgt über: Sonnleithnergasse - Buchengasse - Herzgasse.Die Umleitung in Fahrtrichtung Triester Straße erfolgt über: Eckertgasse - Pernerstorfergasse - Karmaschgasse. Bauphase 2 von 2 (31.08.2026 bis 13.10.2026): Die Arbeiten erfolgen im Abschnitt Buchengasse bis Davidgasse. Hierfür wird die Neilreichgasse von Buchengasse bis und in Richtung Rothenhofgasse als Einbahn geführt. \nBeginn: 22.06.2026 00:00 Uhr \nGeplant bis: 13.10.2026 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 10",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "390a7b339a05827f2515e0fadb8ac9e49bb9f6152829a8e207851f8597d6caa3",
+    "pubDate": "2026-06-22T00:00:00+02:00",
+    "starts_at": "2026-06-22T00:00:00+02:00",
+    "ends_at": "2026-10-13T00:00:00+02:00",
+    "context": {
+      "district": "10",
+      "measure": "Straßenbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.17881979,
+        "lon": 16.36603404
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
     "title": "Burggasse 67",
     "description": "DieHaltestelle des betroffenen öffentlichen Verkehrsmittels wird von Burggasse ONr.67 nach Burggasse ONr. Derrechte Fahrstreifen wird in Fahrtrichtung stadteinwärts gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten. DerFußgänger- und Radverkehr kann aufrecht gehalten werden. 69 verlegt. \nBeginn: 27.07.2026 00:00 Uhr \nGeplant bis: 02.10.2026 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 7",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -38,6 +122,27 @@
       "coordinates": {
         "lat": 48.18713245,
         "lon": 16.35496596
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Kirchengasse 1 bis 30",
+    "description": "Im Kreuzungsbereich Lindengasse / Kirchengasse sowie in derKirchengasse auf Höhe ON 1 und ON 20-22 werden für die U-Bahn-StationSchächte gegraben. Die Zufahrt zuden verschiedenen Objekten wird jeweils stichartig als Sackgasse möglich sein. Detaillierte Informationen über das Bauvorhaben U2 / U5 können über die Ombudsstelle des jeweils betroffenen U-Bahnabschnittes eingeholt werden. \nBeginn: 28.02.2021 00:00 Uhr \nGeplant bis: 31.12.2029 00:00 Uhr \nMaßnahme: U-Bahnbau \nBezirk: 7",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "46dc2d817267cc4c619fb1eeaca8c0a99a4256a94f9e98957f75fbf16c9d9990",
+    "pubDate": "2021-02-28T00:00:00+01:00",
+    "starts_at": "2021-02-28T00:00:00+01:00",
+    "ends_at": "2029-12-31T00:00:00+01:00",
+    "context": {
+      "district": "7",
+      "measure": "U-Bahnbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.19980248,
+        "lon": 16.35274158
       }
     }
   },
@@ -86,6 +191,27 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
+    "title": "Landstraßer Hauptstraße von Emmerich-Teuber-Platz und Juchgasse und Apostelgasse bis Schlachthausgas…",
+    "description": "Es wird lediglich die bestehende Bushaltestelle bei der Rabengasse örtlich verlegt. Die Straßenbauarbeiten (Radwegherstellung, Baumpflanzungen, etc.) im gegenständlichen Bereich der Landstraßer Hauptstraße werden in mehreren Bauphasen ausgeführt. In der ersten Bauphase, die bis Ende August 2026 andauert, gibt es für den Fließverkehr keine Behinderungen. Für die nachfolgenden Bauphasen werden gesonderte Meldungen ausgesandt. NEU: Bauphase 2 (01.09.2026 bis 11.04.2027):Die Landstraßer Hauptstraße wird von Oberzellergasse bis und in Fahrtrichtung Schlachthausgasse zur Einbahn. Die Umleitung in Fahrtrichtung stadteinwärts erfolgt über: Schlachthausgasse - Rennweg - Oberzellergasse - Landstraßer Hauptstraße. \nBeginn: 09.03.2026 00:00 Uhr \nGeplant bis: 31.08.2027 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 3",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "77ecfa8c145f0fb89b2a84c30fa61795de3084ee5d25a4ce28b47faf3655d261",
+    "pubDate": "2026-03-09T00:00:00+01:00",
+    "starts_at": "2026-03-09T00:00:00+01:00",
+    "ends_at": "2027-08-31T00:00:00+02:00",
+    "context": {
+      "district": "3",
+      "measure": "Straßenbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.19676823,
+        "lon": 16.39587332
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
     "title": "Universitätsstraße Kreuzung Landesgerichtsstraße und Garnisongasse",
     "description": "Die Verkehrsmaßnahmen werden - auch in den Straßenzügen des untergeordneten Straßennetzes - größtenteils von den U-Bahn Bauarbeiten übernommen. In der Garnisongasse wird die Einbahn im Abschnitt von der Universitätsstraße bis zur Frankgasse in Richtung Universitätsstraße belassen. In den Sommermonaten Juli / August 2026 wird in der Universitätsstraße auf eine Dauer von 4 Wochen in Fahrtrichtung stadtauswärts eine Linksabbiegespur zur Landesgerichtstraße gesperrt, um den Radweg während der Bauarbeiten rund um das neue Aufnahmegebäude der U-Bahn provisorisch verlegen zu können. \nBeginn: 03.05.2026 00:00 Uhr \nGeplant bis: 18.12.2026 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 9",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -122,6 +248,69 @@
       "coordinates": {
         "lat": 48.21513596,
         "lon": 16.36507792
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Siebenbrunnengasse von Kreuzung Siebenbrunnenplatz und Reinprechtsdorfer Straße bis 44",
+    "description": "Detaillierte Informationen über das Bauvorhaben U2 / U5 können über die Ombudsstelle des jeweils betroffenen U-Bahnabschnittes eingeholt werden. Die Siebenbrunnengasse wird zwischen der Reinprechtsdorfer Straße und der Spengergasse bei gleichzeitigerAufhebung der Einbahn im gegenständlichen Bereich für den Fahrzeugverkehr gesperrt, wobei die Zufahrt in die Siebenbrunnengasse von Seite der Spengergasse bis hin zu ON 44 gestattet ist. Die Stöbergasse wird auch zwischen der Högelmüllergasse und der Siebenbrunnengasse als Sackgasse ausgebildet. \nBeginn: 28.02.2021 00:00 Uhr \nGeplant bis: 31.12.2026 00:00 Uhr \nMaßnahme: U-Bahnbau \nBezirk: 5",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "c23e9fcd31f0b5c81ae56632461a961320b249457d28a05de3a0da660ef3e770",
+    "pubDate": "2021-02-28T00:00:00+01:00",
+    "starts_at": "2021-02-28T00:00:00+01:00",
+    "ends_at": "2026-12-31T00:00:00+01:00",
+    "context": {
+      "district": "5",
+      "measure": "U-Bahnbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.18571978,
+        "lon": 16.35392481
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Mariahilfer Straße von Stiftgasse bis Erika-Weinzierl-Platz und Kirchengasse",
+    "description": "Detaillierte Informationen über das Bauvorhaben U2 / U5 können über die Ombudsstelle des jeweils betroffenen U-Bahnabschnittes eingeholt werden. seit 12. Juni 2023 wird die Fahrbahn in der Mariahilfer Straße zwischen der Stiftgasse und der Kirchengasse im Gegenverkehr geführt. Die Zu- und Abfahrt für AnrainerInnen und Lieferanten in die Kirchengasse wird über eine Einbahnregelung (ausgenommen Baufahrzeuge) über die Mariahilfer Straße - Kirchengasse - Lindengasse und Stiftgasse geregelt. \nBeginn: 28.02.2021 00:00 Uhr \nGeplant bis: 31.12.2029 00:00 Uhr \nMaßnahme: Gleisbau \nBezirk: 6",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "e9411861ff5e1ad756c381a89e5d2634bd096f9ab7b34bdd106bedb2424da7d7",
+    "pubDate": "2021-02-28T00:00:00+01:00",
+    "starts_at": "2021-02-28T00:00:00+01:00",
+    "ends_at": "2029-12-31T00:00:00+01:00",
+    "context": {
+      "district": "6",
+      "measure": "Gleisbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.20033132,
+        "lon": 16.35591759
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Favoritenstraße von Kreuzung Landgutgasse bis Kreuzung Keplerplatz und Keplergasse",
+    "description": "Die Instandsetzungs- und Umgestaltungarbeiten in der Fußgängerzone Favoritenstraße werden nach den derzeit laufenden Abdichtungsarbeiten der Wiener Linien GmbH & Co KG an der Decke des U Bahn-Bauwerks bei Freihaltung entsprechend breiter Flächen für den FußgängerInnen- bzw. Lieferverkehr durchgeführt. Die Zufahrt für Ladetätigkeiten wird von Montag bis Samstag (werktags) von 06:00 Uhr bis 13:00 Uhr auf einer Seite der Favoritenstraße wie bereits während der Arbeiten der Wiener Linien GmbH & Co KG einseitig aufrechterhalten. \nBeginn: 19.04.2026 00:00 Uhr \nGeplant bis: 15.11.2026 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 10",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "ff1c6fe5e560dee012dd61ae90260ee393fc994fa3d2e40f63659785dbc5d10f",
+    "pubDate": "2026-04-19T00:00:00+02:00",
+    "starts_at": "2026-04-19T00:00:00+02:00",
+    "ends_at": "2026-11-15T00:00:00+01:00",
+    "context": {
+      "district": "10",
+      "measure": "Straßenbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.18121198,
+        "lon": 16.37537409
       }
     }
   }
