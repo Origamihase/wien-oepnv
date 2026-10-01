@@ -30,6 +30,8 @@ class FeedItem(TypedDict):
     _calculated_dedupe_key: NotRequired[str]
     _calculated_recency: NotRequired[datetime]
     _calculated_end: NotRequired[datetime]
+    # WL incidents one entry lists (``_combined_incidents`` in build_feed).
+    _wl_incidents: NotRequired[int]
 
 
 @runtime_checkable

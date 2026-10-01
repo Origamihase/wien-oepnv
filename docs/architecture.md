@@ -102,7 +102,7 @@ sequenceDiagram
 - **`request_safe`** ist die Security-State-Machine — siehe Diagramm §2.
 - **`deduplicate_fuzzy`** ist Apex-Phase-2-Territorium: Der parallele `merged_cache` reduziert das O(n²)-Regex-Reparsing auf O(n).
 - **Vor dem Altersfilter** verwirft `_drop_test_messages` Testmeldungen der Anbieter („Testmeldung“, oder ein Titel bzw. Text von höchstens fünf Wörtern mit dem Wort „Test“; Anlass: zwei WL-Testmeldungen am 23.09.2026). Sie belegten sonst einen der zehn Plätze.
-- **Nach der Dedupe** legt `_merge_wl_ticker_clusters` die WL-Störungen eines Vorfalls zu einem Eintrag zusammen (seit 2026-09-26; unten, „Titel und Beschreibung im deutschen Feed“). Danach entscheidet die Reihenfolge, was die zehn Plätze bekommt: Sortierung nach `first_seen` (neueste zuerst; eine wiederkehrende WL-Meldung bekommt vorher über `_restart_recurring_occurrences` den Beginn ihres aktuellen Auftretens, die WL-GUID enthält kein Datum), dann `_defer_repeated_route_titles` (von wortgleichen ÖBB-Titeln bleibt nur das früheste Zeitfenster vorn), `_apply_topic_budget` (höchstens `MAX_ITEMS_PER_TOPIC` je Ursachenwort und Tag) und `_defer_all_clear_items` (ÖBB-Entwarnungen „Aufhebung …“ ganz nach hinten, Betreiberentscheidung 2026-09-25). Die Regeln löschen nichts, sie stellen hinter das Feld — siehe `docs/development.md`, „Reihenfolge im Feed".
+- **Nach der Dedupe** legt `_merge_wl_ticker_clusters` die WL-Störungen eines Vorfalls zu einem Eintrag zusammen (seit 2026-09-26), und seit 2026-10-01 auch die einer Linie, deren Gültigkeit sich überschneidet (unten, „Titel und Beschreibung im deutschen Feed“). `deduplicate_fuzzy` lässt zwei WL-Störungen derselben Linien deshalb in Ruhe (`_may_merge`); WL-Störungen sich überschneidender, verschiedener Linien („40/41“ und „40“) führt es weiter selbst zusammen. Danach entscheidet die Reihenfolge, was die zehn Plätze bekommt: Sortierung nach `first_seen` (neueste zuerst; eine wiederkehrende WL-Meldung bekommt vorher über `_restart_recurring_occurrences` den Beginn ihres aktuellen Auftretens, die WL-GUID enthält kein Datum), dann `_defer_repeated_route_titles` (von wortgleichen ÖBB-Titeln bleibt nur das früheste Zeitfenster vorn), `_apply_topic_budget` (höchstens `MAX_ITEMS_PER_TOPIC` je Ursachenwort und Tag) und `_defer_all_clear_items` (ÖBB-Entwarnungen „Aufhebung …“ ganz nach hinten, Betreiberentscheidung 2026-09-25). Die Regeln löschen nichts, sie stellen hinter das Feld — siehe `docs/development.md`, „Reihenfolge im Feed".
 
 ### Titel und Beschreibung im deutschen Feed
 
@@ -178,6 +178,10 @@ verdrängt eine andere Störung.
     WLs Wortlaut („Fahrtbehinderung wegen Rettungseinsatz“). Was der Titel
     oder eine andere Meldung der Gruppe schon sagt, fällt weg; WLs
     Standardsatz „Nach einer Fahrtbehinderung …“ weicht allem Konkreten.
+    Folgen mit denselben zwei ersten Wörtern nennen diese einmal
+    (`_shared_openings`, seit 2026-10-01): „Busse halten Bessemerstraße 1-3,
+    auf Hauptfahrbahn, Hoßplatz 11“. Eine Folge mit eigenem Komma bleibt für
+    sich, sonst läse sich ihr zweiter Teil als weitere Haltestelle.
   - Der Eintrag behält GUID, Identität und Beginn der zuerst
     veröffentlichten Meldung und bekommt das späteste Ende; ein offenes Ende
     bleibt offen. Nicht der früheste Beginn: WL verwendet manchmal eine alte
@@ -186,10 +190,91 @@ verdrängt eine andere Störung.
   - `62: ÖBB Bauarbeiten` über „Betrieb ab Kliebergasse; Züge halte bei
     Linie 18, Richtung Burggasse; Kein Betrieb.“
   - Grenzen: Andere Linienmengen („62/18“), Hinweise und andere Quellen
-    bleiben getrennt. Um Mitternacht veröffentlicht WL die Meldungen des
-    Tages neu, dann können zwei Ereignisse einer Linie in einen Eintrag
-    fallen; die Beschreibung ist auf 180 Zeichen begrenzt. Die
+    bleiben getrennt. Die Beschreibung ist auf 180 Zeichen begrenzt. Die
     Störungsstatistik zählt einen zusammengelegten Vorfall einmal.
+* **Eine Linie, ein Platz (seit 2026-10-01, Betreiberentscheidung).**
+  „Wenn mehrere unterschiedliche Linien betroffen sind, soll die Störung
+  auch angezeigt werden. Mehrere Störungsmeldungen zur selben Linie sollte
+  so gut wie möglich zusammengefasst werden.“ Anlass: Am 01.10. stand
+  „60: Schadhafter Pkw & Schadhafter Pkw Betrieb ab Anschützgasse“ im Feed.
+  `deduplicate_fuzzy` hatte zwei Kurzmeldungen der Linie 60 vor der
+  WL-Zusammenlegung mit „&“ verbunden (21 solche Titel seit 12.09.). Und
+  „66A: Rettungseinsatz“ stand neben „66A: Busse halten
+  Salvatorianerplatz“. Seit 27.09. hatten 112 von 236 Feed-Ständen eine
+  Linie in mehr als einem Eintrag.
+  - Nach den Fenstern und den Zuordnungen zur ausführlichen Meldung legt
+    `_merge_wl_ticker_clusters` die WL-Störungen derselben Linien
+    zusammen, deren Gültigkeit sich überschneidet, auch über mehrere
+    Schritte (`_line_runs`).
+  - Eine Ursache: ein Vorfall, wie oben zusammengelegt. Beispiel: Die vier
+    Kurzmeldungen der Linie 18 vom 01.10. kamen um 16:25, 16:31, 16:33 und
+    16:37, über das 10-Minuten-Fenster hinaus. Steht eine ausführliche
+    Meldung darin, steht sie für den Vorfall, von mehreren die neueste
+    (`_incident_entry`). Was die übrigen Kurzmeldungen ankündigen und ihr
+    Text nicht nennt, bleibt (`_with_consequences`). Sagt ihr Text selbst,
+    was Fahrgäste tun müssen („Kein Betrieb“, „Betrieb ab/nur/…“, „Züge
+    halten“, „Busse halten“, „Umleitung“), behält seine Maßnahme den ersten
+    Platz und die Kurzmeldungen folgen ihr, vor „Weichen Sie …“. Beispiel
+    60 am 22.09.: „Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse.
+    Züge halten bei der Linie 62 Fahrtrichtung Lainz. Weichen Sie …“ Sonst
+    kommen sie zuerst:
+    Die Haltestellen des Ersatzbusses 26E stehen seit dem 25.09. neben
+    „26E: Gleisbauarbeiten“ („Die Kapazitäten der Ersatzlinie 26E …“) und
+    wären sonst verschwunden. Die Zuordnung zur ausführlichen Meldung
+    (`_claimed_by_long_messages`, oben) bleibt bei der genau gleichen
+    Ursache, denn sie verwirft die Kurzmeldungen.
+  - Gleiche Ursache heißt auch WLs Synonym (`_CAUSE_SYNONYMS`): Im selben
+    Fenster schrieb WL seit September 14-mal „Schadhafter Zug“ neben
+    „Schadhaftes Fahrzeug“, 9-mal „Fremdunfall“ oder „Verkehrsunfall“ neben
+    „Fremder Verkehrsunfall“, 6-mal „Beschädigte Oberleitung“ neben
+    „Oberleitungsgebrechen“. Nur was WL so nebeneinander schrieb:
+    „Bauarbeiten“ und „Gleisbauarbeiten“ können zwei Baustellen sein
+    („12A: Bauarbeiten, Gleisbauarbeiten“ über „Bauarbeiten: Busse halten
+    Linke Wienzeile 110. Gleisbauarbeiten: Betrieb ab Johnstraße U,
+    Schweglerstraße 19-21.“).
+  - Mehrere Ursachen: ein Eintrag, der jede nennt, der neueste Vorfall
+    zuerst und mit dessen GUID, damit ein neuer Vorfall den Feed weiter
+    anführt (`_combined_incidents`). Je Vorfall ein Satz „Ursache: Folge.“
+    (`_incident_sentences`). Das ist die Maßnahme, mit der die
+    ausführliche Meldung beginnt, vor „Weichen Sie …“, „Voraussichtliche
+    Dauer“ und „Grund:“ (`_LONG_MESSAGE_TAIL_RE`; die Satztrennung sieht das
+    Satzende hinter „Stephansplatz U.“ nicht). Sie sagt mehr als die Tafel
+    („Betrieb nur zwischen St. Marx S und Landstraße S U“ statt „Betrieb ab
+    Landstraße“). Dahinter steht die Folge der Tafel, wenn sie Neues sagt
+    („Busse halten bei der Linie 14A“); ein bloßes „Fahrtbehinderung“ sagt
+    nichts Neues, und WLs Standardsatz weicht der Folge. Ohne ausführliche
+    Meldung ist es die Folge der Tafel. Eine Ursache ohne Folge, oder mit
+    dem Standardsatz neben etwas Konkretem, nennt nur der Titel. Über 180 Zeichen gibt die längste
+    Angabe zuerst ihre letzte Folge ab. Ein solcher Titel gilt nicht als
+    Kurzmeldung (`_is_wl_ticker`), wird also nicht in Ursache und Folge
+    geteilt:
+
+    ```
+    66A: Rettungseinsatz, Bauarbeiten
+    Rettungseinsatz: Unregelmäßige Intervalle in beiden Richtungen. Bauarbeiten: Busse halten Salvatorianerplatz. [01.10.2026 – 02.10.2026]
+    ```
+
+  - Eine Meldung ohne eigene Ursache geht zum Vorfall, der ihr zeitlich
+    am nächsten veröffentlicht wurde.
+  - Ausnahmen: Eine Ursache von mehr als `_MAX_LISTED_WORDS` (6) Wörtern
+    ist ein Satz. Die Meldung „18: Haltestelle Stadionbrücke … aufgelassen.
+    Bitte …“, seit Juli im Cache, behält ihren Eintrag und schließt sich
+    keinem Vorfall an. Verschiedene Linienmengen bleiben getrennt, auch
+    bei gleicher Ursache („1A: Demonstration“, „3A: Demonstration“).
+    Vorfälle ohne gemeinsame Gültigkeit bleiben getrennt.
+  - Grenzen: Die Beschreibung übernimmt zwei Sätze; bei drei Ursachen mit
+    eigener Folge nennt nur der Titel die dritte. Innerhalb ihres Fensters
+    steht die ausführliche Meldung wie bisher für ihre Kurzmeldungen:
+    „Betrieb ab Mühlbreiten“ der 64A vom 01.10. steht nicht mehr im Feed,
+    vorher stand es unter „64A: Verkehrsunfall & Verkehrsunfall“.
+    Erscheinen zwei Vorfälle im selben Lauf zum ersten Mal, zählt die
+    Störungsstatistik nur den neueren.
+  - Rückschau über 750 Cache-Stände seit 12.09. (Kurzmeldungen, ÖBB und
+    Baustellen, nur Duplikatprüfung und Zusammenlegung): 1.727 Einträge
+    weniger. In keinem Stand stehen mehr Einträge als vorher. Paare
+    derselben Linie: 4.931 statt 6.958. WL-Titel mit „&“: 126 statt 292. Die
+    126 sind ein Hinweis der 63A vom 15. bis 17.09., den `deduplicate_fuzzy`
+    mit einer Störung verband.
 * **„Fahrtbehinderung <Ursache>“ (seit 2026-09-25).** WL setzt die Art der
   Behinderung vor die Ursache („11A: Fahrtbehinderung Verkehrsunfall“,
   „31: Fahrtbehinderung wegen Polizeieinsatz“; 106 Titel seit Juni).
