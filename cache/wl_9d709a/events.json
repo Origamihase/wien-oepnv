@@ -410,18 +410,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/71: Verspätungen",
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9d7a03a1454ceac8474f4095635a076c8615e8f8afdade5ec28c70c5f03db04a",
-    "pubDate": "2026-10-01T14:24:00+02:00",
-    "starts_at": "2026-10-01T14:24:00+02:00",
-    "ends_at": "2026-10-01T23:55:00+02:00",
-    "_identity": "wl|störung|L=1,71|D=2026-10-01|TK=1 71 verspätungen"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -454,6 +442,18 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13|TK=haltestelle stadionbrücke im rahmen des strassenbahn neubaus der linie 18 aufgelassen bitte auf nahegelegene haltestellen ausweichen"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
+    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
+    "pubDate": "2026-10-01T05:00:13+02:00",
+    "starts_at": "2026-10-01T05:00:13+02:00",
+    "ends_at": "2026-10-01T23:00:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-10-01|TK=bhf hütteldorf öbb ersatzbus für 80"
   },
   {
     "source": "Wiener Linien",
@@ -718,42 +718,6 @@
     "starts_at": "2026-10-01T14:14:00+02:00",
     "ends_at": "2026-10-01T23:55:00+02:00",
     "_identity": "wl|störung|L=69A|D=2026-10-01|TK=69a verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "69A: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4fdbb07cec28e7761cde8d3419840d8f7746e56281c9209250f4699fd7e17d53",
-    "pubDate": "2026-10-01T14:15:38+02:00",
-    "starts_at": "2026-10-01T14:15:44+02:00",
-    "ends_at": "2026-10-01T15:15:00+02:00",
-    "_identity": "wl|störung|L=69A|D=2026-10-01|TK=fahrtbehinderung verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "69A: Verkehrsunfall Betrieb ab Am Kanal, Hasenleitengasse",
-    "description": "Verkehrsunfall\nBetrieb ab Am Kanal, Hasenleitengasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d93f2d0d04f56b0b4c8f6f258b65058570ab867aa7a0e66ad215f419fde376e9",
-    "pubDate": "2026-10-01T14:15:39+02:00",
-    "starts_at": "2026-10-01T14:15:39+02:00",
-    "ends_at": "2026-10-01T15:19:00+02:00",
-    "_identity": "wl|störung|L=69A|D=2026-10-01|TK=verkehrsunfall betrieb ab am kanal hasenleitengasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "69A: Verkehrsunfall Betrieb ab Florian-Hedorfer-Straße",
-    "description": "Verkehrsunfall\nBetrieb ab Florian-Hedorfer-Straße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bd4acd0758bdb0af94e844c3c0d101516973054ef32f30482a5baa3dc44fb0ba",
-    "pubDate": "2026-10-01T14:15:39+02:00",
-    "starts_at": "2026-10-01T14:15:39+02:00",
-    "ends_at": "2026-10-01T15:20:00+02:00",
-    "_identity": "wl|störung|L=69A|D=2026-10-01|TK=verkehrsunfall betrieb ab florian hedorfer strasse"
   },
   {
     "source": "Wiener Linien",
