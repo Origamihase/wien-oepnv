@@ -7,29 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 01 Oct 2026 19:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 19:30:57 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[38A: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">361d72bca0cc84100f7195fc89fc1a03d6a8b18b8fa4cc578267b3f69d263e62</guid>
+      <pubDate>Thu, 01 Oct 2026 19:28:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 19:28:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 19:28:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Kahlenberg. Voraussichtliche Dauer: 20:00 Uhr. Grund: Falschparker im Bereich Sandgasse. [Am 01.10.2026]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Kahlenberg. Voraussichtliche Dauer: 20:00 Uhr. Grund: Falschparker im Bereich Sandgasse.<br/>[Am 01.10.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[42: Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
       <pubDate>Thu, 01 Oct 2026 18:51:00 +0200</pubDate>
       <ext:first_seen>Thu, 01 Oct 2026 18:51:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 18:59:37 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 01 Oct 2026 19:10:52 +0200</ext:starts_at>
       <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 19:30 Uhr. Grund: Falschparker im Bereich Kreuzgasse. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 19:30 Uhr. Grund: Falschparker im Bereich Kreuzgasse.<br/>[Am 01.10.2026]]]></content:encoded>
+      <description>Betrieb über Li. 40+9. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 01.10.2026]</description>
+      <content:encoded><![CDATA[Betrieb über Li. 40+9. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[60: Schadhafter Pkw & Schadhafter Pkw Betrieb ab Anschützgasse]]></title>
+      <title><![CDATA[60: Schadhafter PKW & Fahrtbehinderung Schadhafter Pkw, Pkw Betrieb ab Anschützgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">eb0220c8ef7f3244966779ffeb71846a32bc1560ec4d2fb47fb20f95b4beea7a</guid>
+      <guid isPermaLink="false">ca37a3c3365726d1c449c7aa2c37e1b237568b270cf6b0e362c5e0777696d40b</guid>
       <pubDate>Thu, 01 Oct 2026 18:51:06 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 18:50:36 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 18:50:36 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 19:50:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung<br/>[Am 01.10.2026]]]></content:encoded>
+      <ext:first_seen>Thu, 01 Oct 2026 18:48:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 18:48:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. Schadhafter Pkw Betrieb ab Anschützgasse [Am 01.10.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. Schadhafter Pkw Betrieb ab Anschützgasse<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Rettungseinsatz]]></title>
@@ -39,19 +50,8 @@
       <ext:first_seen>Thu, 01 Oct 2026 18:40:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 01 Oct 2026 18:40:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie U6 fährt derzeit zwischen den Stationen Niederhofstraße und Längenfeldgasse in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 19:15 … [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Die Linie U6 fährt derzeit zwischen den Stationen Niederhofstraße und Längenfeldgasse in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 19:15 …<br/>[Am 01.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[51B: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3ca4e174b2601f942cc4891628b3c2ba72d5ce7986af40a5b3e2c2b22467ff69</guid>
-      <pubDate>Thu, 01 Oct 2026 18:25:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 18:31:14 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 18:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Am 01.10.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 01.10.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1A: Demonstration]]></title>
@@ -60,9 +60,9 @@
       <pubDate>Thu, 01 Oct 2026 18:00:00 +0200</pubDate>
       <ext:first_seen>Thu, 01 Oct 2026 18:31:14 +0200</ext:first_seen>
       <ext:starts_at>Thu, 01 Oct 2026 18:02:01 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Kein Betrieb. Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich Innere Stadt. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Kein Betrieb. Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich Innere Stadt.<br/>[Am 01.10.2026]]]></content:encoded>
+      <ext:ends_at>Thu, 01 Oct 2026 21:00:00 +0200</ext:ends_at>
+      <description>Kein Betrieb. Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 21:00 Uhr. Grund: Demonstration im Bereich Innere Stadt. [Am 01.10.2026]</description>
+      <content:encoded><![CDATA[Kein Betrieb. Derzeit ist ein Betrieb nicht möglich. Voraussichtliche Dauer: 21:00 Uhr. Grund: Demonstration im Bereich Innere Stadt.<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[3A: Demonstration]]></title>
@@ -76,15 +76,15 @@
       <content:encoded><![CDATA[Betrieb ab Hoher Markt. Betrieb nur zwischen Oper, Karlsplatz U und Hoher Markt. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich Innere Stadt.<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[O: Schadhafter Zug]]></title>
+      <title><![CDATA[O: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">a3ccf7c2ad3270af3ce0b5bff574b7e68e073f01c1a9bf875ba6186e69760114</guid>
       <pubDate>Thu, 01 Oct 2026 18:02:00 +0200</pubDate>
       <ext:first_seen>Thu, 01 Oct 2026 18:02:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 01 Oct 2026 18:02:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Schadhaftes Fahrzeug; Betrieb ab Fasangasse, über Li. 71+18; Züge halten bei Li. 18 Richtung Burggasse, Stadthalle. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Schadhaftes Fahrzeug; Betrieb ab Fasangasse, über Li. 71+18; Züge halten bei Li. 18 Richtung Burggasse, Stadthalle.<br/>[Am 01.10.2026]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 01.10.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Verkehrsüberlastung]]></title>
@@ -98,17 +98,6 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.10.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[13A: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71</guid>
-      <pubDate>Thu, 01 Oct 2026 15:43:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 15:43:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 15:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 01 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 01.10.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 01.10.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[7A: Busse halten Laxenburger Straße 66]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">35f178eee322da59d290f9e66ca5dc127c582dbc622f6759ce6caadbc778c468</guid>
@@ -116,6 +105,17 @@
       <ext:first_seen>Thu, 01 Oct 2026 05:10:13 +0200</ext:first_seen>
       <ext:starts_at>Thu, 01 Oct 2026 05:10:13 +0200</ext:starts_at>
       <ext:ends_at>Fri, 02 Oct 2026 00:45:00 +0200</ext:ends_at>
+      <description>Grund: Bauarbeiten. [01.10.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[01.10.2026 – 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Thu, 01 Oct 2026 04:40:13 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 04:40:13 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 04:40:13 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 01:00:00 +0200</ext:ends_at>
       <description>Grund: Bauarbeiten. [01.10.2026 – 02.10.2026]</description>
       <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[01.10.2026 – 02.10.2026]]]></content:encoded>
     </item>
