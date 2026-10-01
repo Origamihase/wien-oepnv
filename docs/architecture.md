@@ -1362,6 +1362,16 @@ Die `transformers`-Pipeline wird **lazy** geladen
 (`_get_translation_pipeline`), damit CLI-Kommandos ohne Übersetzungsbedarf
 kein PyTorch anfassen.
 
+Die Logzeile des Ladens nennt seit 2026-10-01 den Commit der geladenen
+Modell-Revision (`_model_revision`). Anlass ist CVE-2026-80047:
+`transformers` 4.49 bis 5.8.1 schreibt bei jedem `from_pretrained` eine
+`custom_generate/generate.py` aus dem Modell-Repository in den Cache, bevor
+`trust_remote_code` geprüft wird. Ausgeführt wird sie nicht. Die Meldung
+steht mit Begründung auf der Ausnahmeliste von `pip-audit`
+(`scripts/run_static_checks.py`). Mit dem geloggten Commit lässt sich das
+Modell auf diese Revision festlegen; dann erreicht ein späterer Push in das
+Repository den Build nicht mehr.
+
 `torch` steht **absichtlich nicht** in `requirements.txt` — es ist ein
 mehrere hundert MB schweres Backend, das nur der EN-Pfad braucht. Beide
 feed-schreibenden Workflows installieren es deshalb getrennt und CPU-only,

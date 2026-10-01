@@ -65,12 +65,12 @@
     },
     "total": 1868
   },
-  "generated_at": "2026-10-01T12:31:45+02:00",
+  "generated_at": "2026-10-01T16:31:40+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 1.02,
     "by_direction": {
-      "Meidling": 5774,
+      "Meidling": 5781,
       "Praterstern": 3831
     },
     "by_hour_avg": {
@@ -86,11 +86,11 @@
       "09": 1.0,
       "10": 1.0,
       "11": 0.68,
-      "12": 0.78,
+      "12": 0.77,
       "13": 0.67,
       "14": 0.81,
       "15": 1.37,
-      "16": 1.01,
+      "16": 1.0,
       "17": 1.24,
       "18": 1.15,
       "19": 1.18,
@@ -101,7 +101,7 @@
     },
     "by_weekday_avg": {
       "Di": 1.1,
-      "Do": 1.02,
+      "Do": 1.01,
       "Fr": 0.97,
       "Mi": 1.28,
       "Mo": 1.37,
@@ -112,13 +112,13 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-10-01T12:17:00+02:00",
+          "last_seen": "2026-10-01T16:25:00+02:00",
           "peer_rows_since": 0,
-          "rows_in_window": 1190
+          "rows_in_window": 1189
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 1924,
+          "peer_rows_since": 1931,
           "rows_in_window": 0
         }
       },
@@ -134,7 +134,7 @@
     "max_delay_minutes": 395.33,
     "threshold_exceedances": 124,
     "threshold_minutes": 9.0,
-    "total_observations": 9605
+    "total_observations": 9612
   },
   "stoerungen": {
     "by_hour": {
@@ -152,9 +152,9 @@
       "11": 177,
       "12": 227,
       "13": 217,
-      "14": 206,
-      "15": 220,
-      "16": 214,
+      "14": 208,
+      "15": 221,
+      "16": 215,
       "17": 156,
       "18": 187,
       "19": 131,
@@ -166,19 +166,19 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 178,
       "VOR/VAO": 11,
-      "Wiener Linien": 2842,
+      "Wiener Linien": 2846,
       "ÖBB": 273
     },
     "by_weekday": {
       "Di": 489,
-      "Do": 528,
+      "Do": 532,
       "Fr": 502,
       "Mi": 526,
       "Mo": 459,
       "Sa": 398,
       "So": 402
     },
-    "total": 3304
+    "total": 3308
   },
   "year": 2026
 }

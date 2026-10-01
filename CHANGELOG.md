@@ -5,6 +5,15 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Sicherheit: CVE-2026-80047 in `transformers` bewertet (2026-10-01)**:
+  `pip-audit` meldet für `transformers` 4.57.6 eine neue Schwachstelle ohne
+  korrigierte Version. `load_custom_generate()` schreibt eine Code-Datei
+  aus dem Modell-Repository in den Cache, bevor `trust_remote_code` geprüft
+  wird; ausgeführt wird sie nicht. Der Pfad läuft bei jedem Laden unseres
+  Modells mit. Die Meldung steht mit Begründung auf der Ausnahmeliste in
+  `scripts/run_static_checks.py`. Die Logzeile beim Laden nennt jetzt den
+  Commit der geladenen Modell-Revision, damit das Modell im nächsten
+  Schritt darauf festgelegt werden kann. Audit vom 01.10., Update 13:20.
 * **Deutscher Feed: Fehler aus der Feed-Historie (2026-10-01)**: Befunde im
   Audit vom 01.10.
   - **Rang 1, Duplikat:** WL-Kurzmeldungen außerhalb des 10-Minuten-Fensters
