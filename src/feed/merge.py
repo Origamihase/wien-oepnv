@@ -529,6 +529,33 @@ def _join_merged_names(ex_name: str, name: str) -> str:
     return _collapse_common_prefix(ex_name, name) or f"{ex_name} & {name}"
 
 
+def _is_wl_disruption(item: dict[str, Any]) -> bool:
+    """A Wiener-Linien disruption (``Störung``), not a notice (``Hinweis``)."""
+    return (
+        str(item.get("source") or "").strip().casefold() == "wiener linien"
+        and str(item.get("category") or "").strip().casefold() == "störung"
+    )
+
+
+def _may_merge(line_overlap: float, existing: dict[str, Any], item: dict[str, Any]) -> bool:
+    """Whether two items with *line_overlap* may merge here at all.
+
+    Two Wiener-Linien disruptions of the same lines never do:
+    ``_merge_wl_ticker_clusters`` in ``build_feed`` joins them, cause in the
+    title and every consequence in the description. Joined here first, the
+    WL merge never saw them and the two titles stood side by side —
+    ``64A: Verkehrsunfall & Verkehrsunfall``, ``60: Schadhafter Pkw &
+    Schadhafter Pkw Betrieb ab Anschützgasse`` (both 2026-10-01; 21 such
+    titles since 2026-09-12, every one of a single line). Disruptions of
+    overlapping but different lines still merge here (``40/41: Betrieb ab
+    Gersthof`` with ``40: Falschparker Betrieb ab Gersthof``): the WL merge
+    only joins equal line sets.
+    """
+    if line_overlap <= 0.3:
+        return False
+    return line_overlap < 1.0 or not (_is_wl_disruption(existing) and _is_wl_disruption(item))
+
+
 def _calculate_line_overlap(lines1: set[str], lines2: set[str]) -> float:
     if not lines1 or not lines2:
         return 0.0
@@ -661,7 +688,7 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
             line_overlap = _calculate_line_overlap(lines, ex_lines)
 
             # Optimization: Check lines first (cheaper)
-            if line_overlap > 0.3:
+            if _may_merge(line_overlap, existing, item):
                 if _has_significant_overlap_cached(
                     norm_name, ex_norm_name, tokens, ex_tokens,
                     plat, _platform_numbers(ex_name),

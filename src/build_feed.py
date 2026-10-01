@@ -6090,11 +6090,15 @@ def _is_wl_ticker(item: FeedItem) -> bool:
 
     Notices (``Hinweis``) put a place behind the cause, not a consequence
     (``D: Gleisbauarbeiten Althanstraße``). ÖBB and the Stammstrecke
-    monitor file under ``Störung`` too, but their titles are routes.
+    monitor file under ``Störung`` too, but their titles are routes. An
+    entry listing several incidents of one line (:func:`_combined_incidents`)
+    is no ticker either: its title is a list of causes, not cause and
+    consequence.
     """
     return (
         str(item.get("source") or "").strip().casefold() == "wiener linien"
         and str(item.get("category") or "").strip().casefold() == "störung"
+        and not item.get("_wl_incidents")
     )
 
 
@@ -6218,6 +6222,34 @@ def _distinct_messages(candidates: Sequence[str], title: str) -> list[str]:
     return concrete or kept
 
 
+def _shared_openings(messages: Sequence[str]) -> list[str]:
+    """Consequences that open with the same two words name the opening once.
+
+    ``Busse halten Bessemerstraße 1-3; Busse halten auf Hauptfahrbahn`` reads
+    ``Busse halten Bessemerstraße 1-3, auf Hauptfahrbahn``. Until 2026-10-01
+    ``deduplicate_fuzzy`` wrote that list when it joined two tickers first
+    (``_collapse_common_prefix``); the WL merge joins them now. A
+    consequence with a comma of its own ("Züge halten bei Li. 18 Richtung
+    Burggasse, Stadthalle") stays apart: a list inside the list would read
+    as one more stop.
+    """
+    openings: dict[str, int] = {}
+    joined: list[str] = []
+    for message in messages:
+        words = message.split()
+        opening = " ".join(words[:2]).casefold()
+        if len(words) < 3 or "," in message or any(ch.isdigit() for ch in opening):
+            joined.append(message)
+            continue
+        index = openings.get(opening)
+        if index is None:
+            openings[opening] = len(joined)
+            joined.append(message)
+        else:
+            joined[index] = f"{joined[index]}, {' '.join(words[2:])}"
+    return joined
+
+
 def _without_cause(text: str, cause: str) -> str:
     """Drop the title's cause from the front of a consequence the split missed.
 
@@ -6239,6 +6271,14 @@ def _ticker_lines(item: FeedItem) -> str:
     return _ticker_prefix(_rendered_title(item)).strip().rstrip(":").casefold()
 
 
+def _publication_key(items: Sequence[FeedItem], index: int) -> tuple[datetime, int, str, int]:
+    """WL's publication order: time, a long message before tickers of the same second, GUID."""
+    item = items[index]
+    when = _ticker_time(item) or datetime.min.replace(tzinfo=UTC)
+    long_first = 0 if _is_long_message(_ticker_text(item)) else 1
+    return when, long_first, str(item.get("guid") or ""), index
+
+
 def _ticker_groups(items: Sequence[FeedItem]) -> list[list[int]]:
     """Indices of WL disruptions by incident: one line set, one publication window."""
     by_lines: dict[str, list[tuple[datetime, int, str, int]]] = defaultdict(list)
@@ -6246,11 +6286,9 @@ def _ticker_groups(items: Sequence[FeedItem]) -> list[list[int]]:
         if not _is_wl_ticker(item):
             continue
         prefix = _ticker_lines(item)
-        when = _ticker_time(item)
-        if not prefix or when is None:
+        if not prefix or _ticker_time(item) is None:
             continue
-        long_first = 0 if _is_long_message(_ticker_text(item)) else 1
-        by_lines[prefix].append((when, long_first, str(item.get("guid") or ""), index))
+        by_lines[prefix].append(_publication_key(items, index))
     groups: list[list[int]] = []
     for members in by_lines.values():
         members.sort()
@@ -6270,6 +6308,30 @@ def _telling_long_message(members: Sequence[FeedItem]) -> FeedItem | None:
         if _is_long_message(text) and not _WL_STOCK_SENTENCE_RE.match(text):
             return member
     return None
+
+
+# WL names one incident differently on the display and in the long message.
+# Within one publication window, cache since September: "Schadhafter Zug"
+# beside "Schadhaftes Fahrzeug" 14 times, "Fremdunfall" or "Verkehrsunfall"
+# beside "Fremder Verkehrsunfall" 9, "Beschädigte Oberleitung" beside
+# "Oberleitungsgebrechen" 6, "Schadhafter Bus" beside "Schadhaftes
+# Fahrzeug" once. Only what WL wrote side by side; "Bauarbeiten" and
+# "Gleisbauarbeiten" can be two sites and stay apart.
+_CAUSE_SYNONYMS: dict[str, str] = {
+    "schadhafter zug": "schadhaftes fahrzeug",
+    "schadhafter bus": "schadhaftes fahrzeug",
+    "fremdunfall": "fremder verkehrsunfall",
+    "verkehrsunfall": "fremder verkehrsunfall",
+    "beschädigte oberleitung": "oberleitungsgebrechen",
+    "oberleitungsgebr": "oberleitungsgebrechen",
+    "rettungseinatz": "rettungseinsatz",
+}
+
+
+def _cause_key(cause: str) -> str:
+    """*cause* for comparison: casefolded, one space, WL's synonyms resolved."""
+    key = " ".join(cause.casefold().split())
+    return _CAUSE_SYNONYMS.get(key, key)
 
 
 def _chosen_cause(parts: Sequence[_TickerPart]) -> str:
@@ -6321,13 +6383,13 @@ def _merged_ticker(members: Sequence[FeedItem]) -> FeedItem:
         title = lead_title
     candidates: list[str] = []
     for part in parts:
-        if part.cause and part.cause.casefold() != chosen:
+        if part.cause and _cause_key(part.cause) != _cause_key(chosen):
             candidates.append(part.body)  # WL's wording keeps the other cause with its consequence
         elif part.consequence:
             candidates.append(_without_cause(part.consequence, chosen))
         if part.extra:
             candidates.append(part.extra)
-    messages = _distinct_messages(candidates, title)
+    messages = _shared_openings(_distinct_messages(candidates, title))
     merged["title"] = title
     # One sentence: the summary keeps at most two (``_SENTENCE_SPLIT_RE``), and
     # three short consequences would lose the third. The 180-character cap
@@ -6354,7 +6416,11 @@ def _names_cause(parts: Sequence[_TickerPart], cause: str) -> bool:
     """Whether tickers name *cause*: as their cause, or glued in front of a consequence.
 
     "48A: Gasrohrgebrechen Shuttlebus eingerichtet, …" carries its cause
-    without a split the cause detection knows.
+    without a split the cause detection knows. Only the very cause: a
+    claimed ticker is dropped, and a synonym's ticker can announce what the
+    long message does not (60 on 2026-09-22: "Schadhafter Zug / Züge halten
+    bei der Linie 62" beside "Schadhaftes Fahrzeug"). Those join the long
+    message in ``_incident_entry``, which keeps what they announce.
     """
     chosen = _chosen_cause(parts)
     if chosen:
@@ -6400,21 +6466,269 @@ def _claimed_by_long_messages(items: Sequence[FeedItem], groups: Sequence[list[i
     return claimed
 
 
+# --- One line, one slot (operator decision 2026-10-01) ---------------------
+#
+# "Mehrere Störungsmeldungen zur selben Linie sollte so gut wie möglich
+# zusammengefasst werden"; where different lines are affected, each keeps its
+# entry. An incident above ends with its publication window. On 2026-10-01
+# the four tickers of 18's "Gleisschaden" came at 16:25, 16:31, 16:33 and
+# 16:37, and 66A stood twice for an afternoon: "Rettungseinsatz" over
+# "Busse halten Salvatorianerplatz" (Bauarbeiten, 01.10.–02.10.). Over the
+# 236 feed versions since 2026-09-27, 112 had a line in more than one entry.
+#
+# So after the windows and the long messages' claims, the WL disruptions of
+# the same lines whose validity meets (``_line_runs``) become one entry:
+#
+# * one cause, WL's synonyms counted (``_CAUSE_SYNONYMS``): one incident,
+#   merged as above; a long message stands for it, and what the other
+#   tickers announce beyond its text is kept (``_incident_entry``). A
+#   disruption without a cause joins the incident published nearest to it;
+# * several causes: one entry naming each, the newest first, under the GUID
+#   of the newest, so a new incident still opens the feed::
+#
+#     66A: Rettungseinsatz, Bauarbeiten
+#     Rettungseinsatz: Unregelmäßige Intervalle in beiden Richtungen. Bauarbeiten: Busse halten Salvatorianerplatz.
+#
+# A cause longer than _MAX_LISTED_WORDS words is a sentence, not a cause to
+# list: 18's "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der
+# Linie 18 aufgelassen. Bitte …", a disruption in the cache since July, keeps
+# its own entry and joins no other.
+_MAX_LISTED_WORDS = 6
+
+
+def _group_cause(members: Sequence[FeedItem]) -> str:
+    """The cause the entry of a group names, casefolded; "" for none."""
+    long_message = _telling_long_message(members)
+    if long_message is not None:
+        return _ticker_part(long_message).cause.casefold()
+    return _chosen_cause([_ticker_part(member) for member in members])
+
+
+def _line_runs(items: Sequence[FeedItem], groups: Sequence[list[int]], claimed: set[int]) -> list[list[list[int]]]:
+    """*groups* of the same lines whose validity meets, transitively.
+
+    A claimed group takes no part; a group with a sentence for a cause, or
+    without a span, stands as a run of its own.
+    """
+    by_lines: dict[str, list[tuple[datetime, datetime | None, list[int]]]] = defaultdict(list)
+    runs: list[list[list[int]]] = []
+    for group in groups:
+        if group[0] in claimed:
+            continue
+        members = [items[index] for index in group]
+        span = _group_span(members)
+        if span is None or len(_group_cause(members).split()) > _MAX_LISTED_WORDS:
+            runs.append([group])
+            continue
+        by_lines[_ticker_lines(members[0])].append((span[0], span[1], group))
+    for entries in by_lines.values():
+        entries.sort(key=lambda entry: entry[0])
+        run: list[list[int]] = []
+        reach: datetime | None = None
+        for start, end, group in entries:
+            if run and (reach is None or start <= reach):
+                run.append(group)
+                reach = None if reach is None or end is None else max(reach, end)
+                continue
+            if run:
+                runs.append(run)
+            run, reach = [group], end
+        runs.append(run)
+    return runs
+
+
+def _run_incidents(items: Sequence[FeedItem], run: Sequence[list[int]]) -> list[list[list[int]]]:
+    """The incidents of *run*: its groups by cause, WL's synonyms counted.
+
+    A group without a cause joins the incident published nearest to it.
+    """
+    incidents: dict[str, list[list[int]]] = {}
+    causeless: list[list[int]] = []
+    for group in run:
+        cause = _cause_key(_group_cause([items[index] for index in group]))
+        if cause:
+            incidents.setdefault(cause, []).append(group)
+        else:
+            causeless.append(group)
+    if not incidents:
+        return [causeless] if causeless else []
+    for group in causeless:
+        when = _publication_key(items, group[0])[0]
+        nearest = min(
+            incidents.values(),
+            key=lambda groups: min(abs((_publication_key(items, other[0])[0] - when).total_seconds()) for other in groups),
+        )
+        nearest.append(group)
+    return list(incidents.values())
+
+
+# A WL long message names the measure first, then the advice, the expected
+# end and the cause: "Betrieb nur zwischen Schottenring U und Stephansplatz U.
+# Voraussichtliche Dauer: 14:45 Uhr. Grund: Polizeieinsatz …". The sentence
+# split cannot see the end behind "U.", these openings can.
+_LONG_MESSAGE_TAIL_RE = re.compile(r"\s+(?:Weichen Sie|Voraussichtliche Dauer|Grund:)")
+
+
+# What a rider has to do, as WL's texts say it.
+_RIDER_CONSEQUENCE_RE = re.compile(
+    r"\b(?:Kein Betrieb|Betrieb (?:ab|nur|über|zwischen|bis)|Züge halten|Busse halten|Umleitung|umgeleitet)\b",
+    re.IGNORECASE,
+)
+
+
+def _with_consequences(entry: FeedItem, members: Sequence[FeedItem]) -> FeedItem:
+    """*entry* with what *members* announce and its own text does not.
+
+    Tickers of another window are not claimed by a long message of a
+    synonym, or of no cause at all; standing for the incident, the long
+    message would drop them with their stops. Where its text says what a
+    rider has to do, its measure keeps the first place and the tickers
+    follow it, before the advice (60 on 2026-09-22: "Betrieb nur zwischen
+    Westbahnhof S U und Hofwiesengasse. Züge halten bei der Linie 62
+    Fahrtrichtung Lainz. Weichen Sie …"). Where it does not, they come
+    first (26E from 2026-09-25: "Busse halten Satzingerweg 41, …; Ersatzbus
+    hält Karl-Waldbrunner-Platz …" before "Die Kapazitäten der Ersatzlinie
+    26E …").
+    """
+    text = _ticker_text(entry)
+    said = _message_tokens(f"{_rendered_title(entry)} {text}")
+    candidates = [part.consequence or part.body for part in map(_ticker_part, members)]
+    messages = [m for m in _distinct_messages(candidates, _rendered_title(entry)) if not _message_tokens(m) <= said]
+    if not messages:
+        return entry
+    announced = "; ".join(m.rstrip(" .") for m in _shared_openings(messages)) + "."
+    merged = cast(FeedItem, dict(entry))
+    if not _RIDER_CONSEQUENCE_RE.search(text):
+        merged["description"] = f"{announced} {text}"
+        return merged
+    # Behind the measure, before the advice, expected end and cause.
+    tail = _LONG_MESSAGE_TAIL_RE.search(text)
+    cut = tail.start() if tail else len(text)
+    merged["description"] = f"{text[:cut].rstrip()} {announced}{text[cut:]}"
+    return merged
+
+
+def _incident_entry(items: Sequence[FeedItem], groups: Sequence[list[int]]) -> tuple[int, FeedItem]:
+    """The entry of one incident and the index it takes.
+
+    A long message stands for its incident, as within its window and as
+    with its claims (``_claimed_by_long_messages``); of several, the
+    newest. What the groups without a long message announce beyond its
+    text is kept (``_with_consequences``). Otherwise all messages of the
+    incident are merged as one window would be.
+    """
+    telling = [group for group in groups if _telling_long_message([items[index] for index in group]) is not None]
+    if not telling:
+        members = sorted((index for group in groups for index in group), key=lambda i: _publication_key(items, i))
+        if len(members) == 1:
+            return members[0], items[members[0]]
+        return members[0], _merged_ticker([items[index] for index in members])
+    chosen = max(telling, key=lambda group: _publication_key(items, group[0]))
+    entry = items[chosen[0]] if len(chosen) == 1 else _merged_ticker([items[index] for index in chosen])
+    others = [items[index] for group in groups if group not in telling for index in group]
+    return chosen[0], _with_consequences(entry, others) if others else entry
+
+
+def _incident_start(entry: FeedItem) -> datetime:
+    when = entry.get("starts_at") or entry.get("pubDate")
+    return _to_utc(when) if isinstance(when, datetime) else datetime.min.replace(tzinfo=UTC)
+
+
+def _listed_incident(entry: FeedItem) -> tuple[str, str]:
+    """Label and detail of one incident in a combined entry.
+
+    ``Demonstration`` and ``Betrieb nur zwischen St. Marx S und Landstraße S
+    U; Betrieb ab Landstraße`` — the measure a long message opens with,
+    without the advice, the expected end and the "Grund: …" the label
+    already says (``_LONG_MESSAGE_TAIL_RE``), then the consequence the
+    display names where it adds to that ("Busse halten bei der Linie 14A");
+    a bare "Fahrtbehinderung" beside a measure adds nothing. "" when
+    nothing is left.
+    """
+    part = _ticker_part(entry)
+    label = part.cause or part.body
+    sentences = [s.strip() for s in _SENTENCE_SPLIT_RE.split(_LONG_MESSAGE_TAIL_RE.split(part.extra, maxsplit=1)[0])]
+    reason = f"grund: {label.casefold()}"
+    measure = next((s for s in sentences if s and s.rstrip(" .").casefold() != reason), "").rstrip(" .")
+    consequence = part.consequence.strip().rstrip(" .")
+    if consequence and _WL_STOCK_SENTENCE_RE.match(f"{measure}."):
+        measure = ""  # WL's stock sentence gives way to anything concrete
+    details = [measure] if measure else []
+    if consequence and not (
+        measure and (consequence.casefold() == _HINDRANCE.casefold() or _message_tokens(consequence) <= _message_tokens(measure))
+    ):
+        details.append(consequence)
+    return label, "; ".join(d for d in details if d.casefold() != label.casefold())
+
+
+def _incident_sentences(listed: Sequence[tuple[str, str]]) -> list[str]:
+    """One sentence per incident that says more than its label, within 180 characters.
+
+    The summary keeps two sentences and 180 characters. An incident that
+    only has its label (or WL's stock sentence beside something concrete)
+    is named by the title and takes no sentence; over the budget, the
+    longest detail gives up its last consequence first (62 on 2026-09-28:
+    "ÖBB Bauarbeiten: Züge halten bei Linie 18, Richtung Burggasse; Kein
+    Betrieb" beside "Oberleitungsgebrechen: …").
+    """
+    concrete = any(detail and not _WL_STOCK_SENTENCE_RE.match(f"{detail}.") for _, detail in listed)
+    kept = [
+        (label, detail.split("; "))
+        for label, detail in listed
+        if detail and not (concrete and _WL_STOCK_SENTENCE_RE.match(f"{detail}."))
+    ]
+    if not kept:
+        return [f"{label}." for label, _ in listed]
+    while len(" ".join(f"{label}: {'; '.join(parts)}." for label, parts in kept)) > 180:
+        longest = max(kept, key=lambda entry: len("; ".join(entry[1])))
+        if len(longest[1]) < 2:
+            break
+        longest[1].pop()
+    return [f"{label}: {'; '.join(parts)}." for label, parts in kept]
+
+
+def _combined_incidents(entries: Sequence[FeedItem]) -> FeedItem:
+    """One entry for different incidents of the same lines, newest first (see above)."""
+    lead = entries[0]
+    merged = cast(FeedItem, dict(lead))
+    listed = [_listed_incident(entry) for entry in entries]
+    merged["title"] = _ticker_prefix(_rendered_title(lead)) + ", ".join(label for label, _ in listed)
+    merged["description"] = " ".join(_incident_sentences(listed))
+    ends = [e for e in (entry.get("ends_at") for entry in entries) if isinstance(e, datetime)]
+    merged["ends_at"] = max(ends, key=_to_utc) if len(ends) == len(entries) else None
+    merged["_wl_incidents"] = len(entries)
+    return merged
+
+
+def _merged_run(items: Sequence[FeedItem], run: Sequence[list[int]]) -> tuple[int, FeedItem]:
+    """The entry for *run* and the index it takes."""
+    incidents = [_incident_entry(items, groups) for groups in _run_incidents(items, run)]
+    if len(incidents) == 1:
+        return incidents[0]
+    ordered = sorted(
+        incidents,
+        key=lambda incident: (_incident_start(incident[1]), str(incident[1].get("guid") or "")),
+        reverse=True,
+    )
+    return ordered[0][0], _combined_incidents([entry for _, entry in ordered])
+
+
 def _merge_wl_ticker_clusters(items: list[FeedItem]) -> list[FeedItem]:
-    """Join the WL disruptions of one incident into one item (see above)."""
+    """Join the WL disruptions of one incident, and of one line, into one item (see above)."""
     groups = _ticker_groups(items)
     replaced: dict[int, FeedItem] = {}
     dropped = _claimed_by_long_messages(items, groups)
-    for cluster in groups:
-        if len(cluster) < 2 or cluster[0] in dropped:
+    for run in _line_runs(items, groups, dropped):
+        members = [index for group in run for index in group]
+        if len(members) < 2:
             continue
-        members = [items[index] for index in cluster]
-        replaced[cluster[0]] = _merged_ticker(members)
-        dropped.update(cluster[1:])
+        place, entry = _merged_run(items, run)
+        replaced[place] = entry
+        dropped.update(index for index in members if index != place)
         log.info(
             "WL-Kurzmeldungen zusammengelegt: %s ← %s",
-            sanitize_log_arg(replaced[cluster[0]]["title"]),
-            sanitize_log_arg(" | ".join(_rendered_title(member) for member in members)),
+            sanitize_log_arg(entry["title"]),
+            sanitize_log_arg(" | ".join(_rendered_title(items[index]) for index in sorted(members))),
         )
     if not dropped:
         return items

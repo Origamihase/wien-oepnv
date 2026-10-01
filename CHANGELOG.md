@@ -5,6 +5,25 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Deutscher Feed: eine Linie, ein Platz (2026-10-01, Betreiberentscheidung)**:
+  „Mehrere Störungsmeldungen zur selben Linie sollte so gut wie möglich
+  zusammengefasst werden“; verschiedene Linien behalten ihre Einträge.
+  - **Rang 2, verstümmelter Titel:** `deduplicate_fuzzy` verbindet zwei
+    WL-Störungen derselben Linien nicht mehr mit „&“ (`_may_merge`); die
+    WL-Zusammenlegung übernimmt sie. Live am 01.10.: „60: Schadhafter Pkw &
+    Schadhafter Pkw Betrieb ab Anschützgasse“, jetzt „60: Schadhafter Pkw“
+    über „Fahrtbehinderung; Betrieb ab Anschützgasse.“
+  - **Rang 1, Plätze:** WL-Störungen derselben Linien, deren Gültigkeit
+    sich überschneidet, werden ein Eintrag. Bei einer Ursache ist das ein
+    Vorfall über das 10-Minuten-Fenster hinaus, WLs Synonyme eingeschlossen
+    („Schadhafter Zug“ und „Schadhaftes Fahrzeug“). Mehrere Ursachen stehen
+    in einem Eintrag, die neueste zuerst und mit deren GUID: „66A:
+    Rettungseinsatz, Bauarbeiten“. Rückschau über 750 Cache-Stände: 1.727
+    Einträge weniger und kein Stand mit mehr Einträgen.
+  - Folgen mit gleichem Anfang nennen ihn einmal: „Busse halten
+    Bessemerstraße 1-3, auf Hauptfahrbahn, Hoßplatz 11“.
+  - Audit vom 01.10., Update 20:04; `docs/architecture.md` §1, „Eine Linie,
+    ein Platz“.
 * **Sicherheit: Übersetzungsmodell auf eine Revision festgelegt (2026-10-01)**:
   Der Feed lädt `Helsinki-NLP/opus-mt-de-en` fest in der Revision
   `1a922f3b`, die der Update-Zyklus am 01.10. um 17:01 geloggt hat

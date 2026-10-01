@@ -16,7 +16,7 @@ Falschparker" over "Grund: Fremder Verkehrsunfall".
 
 Mutations checked against this file (each one caught, by the test named):
 
-* the window is widened tenfold → ``test_a_ticker_eleven_minutes_later_stays_apart``.
+* the window is widened tenfold → ``test_another_cause_eleven_minutes_later_is_listed_beside_it``.
 * the first cause wins instead of the most frequent → ``test_the_most_frequent_cause_names_the_item``.
 * the coverage check is dropped → ``test_a_long_message_absorbs_what_the_tickers_repeat``.
 * the stock sentence stays beside concrete consequences → ``test_the_most_frequent_cause_names_the_item``.
@@ -34,7 +34,7 @@ Mutations checked against this file (each one caught, by the test named):
 A long message claims its tickers outside the window (2026-10-01):
 
 * no claim → ``test_a_long_message_claims_its_tickers_outside_the_window``.
-* the cause is not compared → ``test_another_cause_keeps_its_slot``.
+* the cause is not compared → ``test_another_cause_is_not_claimed``.
 * the lines are not compared → ``test_another_line_keeps_its_slot``.
 * the validity is not compared → ``test_tickers_after_the_long_message_ended_keep_their_slot``.
 * a cause glued to the consequence is missed → ``test_a_cause_glued_to_the_consequence_is_claimed_too``.
@@ -141,10 +141,20 @@ def test_the_feed_shows_all_three_consequences() -> None:
     assert "Betrieb ab Kliebergasse; Züge halte bei Linie 18, Richtung Burggasse; Kein Betrieb." in xml
 
 
-def test_a_ticker_eleven_minutes_later_stays_apart() -> None:
+def test_a_ticker_eleven_minutes_later_joins_its_incident() -> None:
+    # The window ends, the incident does not: same line, same cause, the
+    # validity meets (one line, one slot, 2026-10-01).
     later = _wl("62: ÖBB Bauarbeiten Betrieb ab Oper", "ÖBB Bauarbeiten\nBetrieb ab Oper", 11 * 60)
-    titles = [title for title, _ in _merged([*LINE_62, later])]
-    assert titles == ["62: ÖBB Bauarbeiten", "62: ÖBB Bauarbeiten Betrieb ab Oper"]
+    assert _merged([*LINE_62, later]) == [
+        ("62: ÖBB Bauarbeiten", "Betrieb ab Kliebergasse, Oper; Züge halte bei Linie 18, Richtung Burggasse; Kein Betrieb.")
+    ]
+
+
+def test_another_cause_eleven_minutes_later_is_listed_beside_it() -> None:
+    # Inside the window the most frequent cause would name the item alone.
+    later = _wl("62: Fahrtbehinderung Verkehrsunfall", "Fahrtbehinderung\nVerkehrsunfall", 11 * 60, guid="later")
+    (item,) = _merge([*LINE_62, later])
+    assert (item["guid"], item["title"]) == ("later", "62: Verkehrsunfall, ÖBB Bauarbeiten")
 
 
 @pytest.mark.parametrize(
@@ -203,9 +213,11 @@ def test_the_most_frequent_cause_names_the_item() -> None:
     assert _merged(items) == [
         (
             "6: Fremdunfall",
-            # Another cause keeps WL's wording; the stock sentence gives way.
-            "Fremder Verkehrsunfall; Fahrtbehinderung wegen Rettungseinsatz; Betrieb ab Matzleinsdorfer Platz; "
-            "Betrieb ab Quellenplatz; Züge halten bei der Linie O.",
+            # Another cause keeps WL's wording; WL's synonym of the title's
+            # cause ("Fremder Verkehrsunfall") says nothing new; the stock
+            # sentence gives way.
+            "Fahrtbehinderung wegen Rettungseinsatz; Betrieb ab Matzleinsdorfer Platz, Quellenplatz; "
+            "Züge halten bei der Linie O.",
         )
     ]
 
@@ -217,7 +229,7 @@ def test_without_any_cause_the_first_ticker_keeps_its_title() -> None:
         _wl("26E: Busse halten Hoßplatz 11", "Busse halten Hoßplatz 11", 2),
     ]
     assert _merged(items) == [
-        ("26E: Busse halten Bessemerstraße 1-3", "Busse halten auf Hauptfahrbahn; Busse halten Hoßplatz 11.")
+        ("26E: Busse halten Bessemerstraße 1-3", "Busse halten auf Hauptfahrbahn, Hoßplatz 11.")
     ]
 
 
@@ -226,7 +238,7 @@ def test_the_display_line_above_the_title_is_the_cause() -> None:
         _wl("12A: Betrieb ab Johnstraße U", "Gleisbauarbeiten\nBetrieb ab Johnstraße U"),
         _wl("12A: Betrieb ab Schweglerstraße 19-21", "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21"),
     ]
-    assert _merged(items) == [("12A: Gleisbauarbeiten", "Betrieb ab Johnstraße U; Betrieb ab Schweglerstraße 19-21.")]
+    assert _merged(items) == [("12A: Gleisbauarbeiten", "Betrieb ab Johnstraße U, Schweglerstraße 19-21.")]
 
 
 def test_an_arrow_does_not_hide_the_cause() -> None:
@@ -237,7 +249,7 @@ def test_an_arrow_does_not_hide_the_cause() -> None:
     assert _merged(items) == [
         (
             "49: Gleisbauarbeiten",
-            "Betrieb ab Hütteldorfer Straße mit Linie 46; Betrieb ab Urban-Loritz-Platz mit Linie 52.",
+            "Betrieb ab Hütteldorfer Straße mit Linie 46, Urban-Loritz-Platz mit Linie 52.",
         )
     ]
 
@@ -439,16 +451,29 @@ def test_a_cause_glued_to_the_consequence_is_claimed_too() -> None:
     assert [item["guid"] for item in _built(items)] == ["3387d8db"]
 
 
-def test_another_cause_keeps_its_slot() -> None:
-    fire = _wl(
-        "D: Feuerwehreinsatz Betrieb ab Schwarzenbergplatz",
-        "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz",
-        start=D_LONG + timedelta(hours=8),
-        ends_at=D_TICKERS_END,
-        guid="9d8f98",
+FIRE_D = _wl(
+    "D: Feuerwehreinsatz Betrieb ab Schwarzenbergplatz",
+    "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz",
+    start=D_LONG + timedelta(hours=8),
+    ends_at=D_TICKERS_END,
+    guid="9d8f98",
+)
+
+
+def test_another_cause_is_not_claimed() -> None:
+    items = _read([D_INCIDENT[-1], FIRE_D])
+    assert bf._claimed_by_long_messages(items, bf._ticker_groups(items)) == set()
+
+
+def test_another_cause_of_the_line_is_listed_beside_it() -> None:
+    # Operator decision 2026-10-01: one line, one slot. The newer incident leads.
+    (item,) = _built([D_INCIDENT[-1], FIRE_D])
+    assert (item["guid"], item["title"], item["description"]) == (
+        "9d8f98",
+        "D: Feuerwehreinsatz, Gleisbauarbeiten",
+        "Feuerwehreinsatz: Betrieb ab Schwarzenbergplatz. Gleisbauarbeiten: Kein Betrieb zwischen Börse und Augasse.",
     )
-    titles = sorted(str(item["title"]) for item in _built([D_INCIDENT[-1], fire]))
-    assert titles == ["D: Feuerwehreinsatz Betrieb ab Schwarzenbergplatz", "D: Gleisbauarbeiten"]
+    assert item["ends_at"] == D_LONG_END
 
 
 def test_another_line_keeps_its_slot() -> None:
@@ -482,4 +507,9 @@ def test_the_stock_sentence_claims_nothing() -> None:
         ends_at=D_LONG_END,
         guid="stock",
     )
-    assert len(_built([*D_INCIDENT[:-1], stock])) == 2
+    items = _read([*D_INCIDENT[:-1], stock])
+    assert bf._claimed_by_long_messages(items, bf._ticker_groups(items)) == set()
+    # One cause, one line: one incident, and the stock sentence gives way.
+    assert [(it["title"], it["description"]) for it in _built([*D_INCIDENT[:-1], stock])] == [
+        ("D: Gleisbauarbeiten", "Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.")
+    ]
