@@ -19,7 +19,8 @@ test_architecture_doc_lists_the_ci_consumer``, which pins §7 the same way.
 
 The rules for what the German feed shows (ticker titles, one incident one
 slot, …) stood in §8 until 2026-09-27 and now form the subsection "Titel und
-Beschreibung im deutschen Feed" of §1; check 1 covers them there too.
+Beschreibung im deutschen Feed" of §1; check 1 covers them there too,
+against all of ``src/``, because some of the rules live in the providers.
 """
 
 from __future__ import annotations
@@ -71,10 +72,12 @@ def test_the_feed_rules_name_symbols_at_all() -> None:
 
 @pytest.mark.parametrize("symbol", _named_symbols(_feed_rules()))
 def test_every_symbol_of_the_feed_rules_still_exists(symbol: str) -> None:
-    source = _SOURCE.read_text(encoding="utf-8")
+    # The rules span the providers too (``_title_or_heading`` in
+    # ``wl_fetch.py``, ``_try_star_routes`` in ``oebb.py``).
+    source = "\n".join(path.read_text(encoding="utf-8") for path in sorted((REPO_ROOT / "src").rglob("*.py")))
     assert symbol in source, (
         f"architecture.md §1 (German-feed rules) names {symbol!r}, which no "
-        "longer exists in src/build_feed.py — rename the reference or drop it"
+        "longer exists in src/ — rename the reference or drop it"
     )
 
 

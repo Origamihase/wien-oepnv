@@ -26,6 +26,7 @@ from ..utils.stations import canonical_name, display_name
 from ..feed.config import ENDS_AT_GRACE_MINUTES
 
 from .wl_lines import (
+    LINE_CODE_RE,
     _detect_line_pairs_from_text,
     _ensure_line_prefix,
     _line_display_from_pairs,
@@ -172,6 +173,35 @@ def _iso(s: object) -> datetime | None:
     if not dt.tzinfo:
         dt = dt.replace(tzinfo=UTC)
     return cast('datetime | None', dt)
+
+
+# A title that only lists lines says nothing the line prefix does not. The
+# demonstration notice of 2026-10-01 was titled "D, 1, 2, 71, 1A, 3A" and
+# stood in the feed as "D/1/2/71/1A/3A: D, 1, 2, 71, 1A, 3A"; its
+# description opened with "<h2>Demonstration</h2>".
+_LINE_LIST_SEPARATORS_RE = re.compile(r"[\s,;/&+]+|\bund\b", re.IGNORECASE)
+_HEADING_RE = re.compile(r"<h2[^>]*>(.*?)</h2>", re.IGNORECASE | re.DOTALL)
+
+
+def _title_or_heading(title_raw: str, desc: str) -> str:
+    """WL's tidied title, or the description's heading when the title only lists lines.
+
+    ``_tidy_title_wl`` strips leading/trailing dashes/colons, so a source
+    title of only punctuation ("---") tidies to "" — then
+    ``_ensure_line_prefix`` would render just the line codes ("U1/U2") with
+    no description. Such a title falls back to the heading, else to a
+    generic label. The heading keeps its first word: ``_tidy_title_wl``
+    would strip "Gleisbauarbeiten" from "Gleisbauarbeiten Märzstraße" as a
+    label, and there it is the cause.
+    """
+    title = _tidy_title_wl(title_raw)
+    if title and _LINE_LIST_SEPARATORS_RE.sub("", LINE_CODE_RE.sub("", title)):
+        return title
+    match = _HEADING_RE.search(desc)
+    # Unescape before the tag strip, so entity-encoded tags go too.
+    text = re.sub(r"<[^>]+>", " ", html.unescape(match.group(1))) if match else ""
+    heading = re.sub(r"[<>«»‹›]+", "", " ".join(text.split())).strip(" -–—:/")
+    return heading or title or "Meldung"
 
 
 def _coerce_dict(value: Any) -> dict[str, Any]:
@@ -920,13 +950,10 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                 continue
 
             title_raw = str(ti.get("title") or ti.get("name") or "Meldung").strip()
-            # ``_tidy_title_wl`` strips leading/trailing dashes/colons, so a
-            # source title of only punctuation ("---") tidies to "" — then
-            # ``_ensure_line_prefix`` would render just the line codes
-            # ("U1/U2") with no description. Fall back to a generic label so
-            # the title stays informative (mirrors the line-640 fallback).
-            title = _tidy_title_wl(title_raw) or "Meldung"
+            # Neither an empty nor a lines-only title reaches the feed (see
+            # ``_title_or_heading``).
             desc_raw = str(ti.get("description") or "").strip()
+            title = _title_or_heading(title_raw, desc_raw)
             # Do NOT strip HTML here, we need to preserve links (Task 3)
             desc = desc_raw
             # Facility check is TITLE-driven (mirrors the ÖBB sibling
@@ -1020,13 +1047,10 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             title_raw = str(
                 poi.get("title") or poi.get("name") or "Hinweis"
             ).strip()
-            # ``_tidy_title_wl`` strips leading/trailing dashes/colons, so a
-            # source title of only punctuation ("---") tidies to "" — then
-            # ``_ensure_line_prefix`` would render just the line codes
-            # ("U1/U2") with no description. Fall back to a generic label so
-            # the title stays informative (mirrors the line-640 fallback).
-            title = _tidy_title_wl(title_raw) or "Meldung"
+            # Neither an empty nor a lines-only title reaches the feed (see
+            # ``_title_or_heading``).
             desc_raw = str(poi.get("description") or "").strip()
+            title = _title_or_heading(title_raw, desc_raw)
             # Do NOT strip HTML here, we need to preserve links (Task 3)
             desc = desc_raw
             # Title-driven facility check (see the trafficInfo branch above):

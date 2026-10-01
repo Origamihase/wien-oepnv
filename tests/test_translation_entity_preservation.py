@@ -127,6 +127,46 @@ def test_the_repair_is_idempotent() -> None:
     assert _normalise_placeholder_debris(once) == once
 
 
+# ---------------- repaired: the repeated index ----------------
+#
+# Published 2026-09-30 16:01 to 2026-10-01 11:01, 35 versions of
+# ``docs/feed.en.xml``: "between Wien Franz-Josefs-Bahnhof0X and
+# St.Andrä-Wördern", and once "Line 10: service obstruction0X". Both
+# placeholders carry index 0; the model returned ``…X0X0X``.
+
+DE_REX_41 = "zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge"
+
+
+def test_the_repeated_index_after_an_entity_is_repaired() -> None:
+    masked, mapping = _mask_entities(DE_REX_41)
+    ph = _placeholder_for(mapping, "Wien Franz-Josefs-Bahnhof")
+    index = ph.rsplit("X", 2)[-2]
+
+    out = _unmask_entities(masked.replace(ph, f"{ph}{index}X"), mapping)
+    assert out == DE_REX_41
+    assert "Bahnhof0X" not in out
+
+
+def test_the_repeated_index_after_a_glossary_term_is_repaired() -> None:
+    text = "Linie 10: Fahrtbehinderung in Richtung Unter St. Veit"
+    processed, glossary = build_feed._apply_domain_glossary(text, source="Wiener Linien", category="Störung")
+    masked, entities = _mask_entities(processed)
+    mapping = {**glossary, **entities}
+    ph = next(k for k in glossary)
+    index = ph.rsplit("X", 2)[-2]
+
+    out = _unmask_entities(masked.replace(ph, f"{ph}{index}X{index}X"), mapping)
+    assert "obstruction0X" not in out and "obstruction" in out
+
+
+def test_another_index_after_a_placeholder_is_not_absorbed() -> None:
+    # Only the repetition the model produced is debris; a following
+    # placeholder or any other index stays as it is.
+    masked, mapping = _mask_entities(DE_LINES)
+    glued = _placeholder_for(mapping, "12A") + "7X "
+    assert _normalise_placeholder_debris(glued) == glued
+
+
 # ---------------- rejected: the dropped entity ----------------
 
 

@@ -14,6 +14,28 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   `scripts/run_static_checks.py`. Die Logzeile beim Laden nennt jetzt den
   Commit der geladenen Modell-Revision, damit das Modell im nächsten
   Schritt darauf festgelegt werden kann. Audit vom 01.10., Update 13:20.
+* **Deutscher Feed: Fehler aus der Feed-Historie (2026-10-01)**: Befunde im
+  Audit vom 01.10.
+  - **Rang 1, Duplikat:** WL-Kurzmeldungen außerhalb des 10-Minuten-Fensters
+    belegen keinen eigenen Platz mehr, wenn eine ausführliche Meldung
+    derselben Linien dieselbe Ursache nennt und gleichzeitig gilt
+    (`_claimed_by_long_messages`). „D: Gleisbauarbeiten“ stand vom 30.09.
+    bis 01.10. zweimal im Feed.
+  - **Rang 1, verworfene Meldungen:** ÖBB-Strecken nach „Bruck/Leitha“,
+    „Tulln/Donau“ und drei weiteren Pendler-Bahnhöfen in Schrägstrich-Form
+    galten als unbekannt, die Meldung fiel weg. `station_info` versucht
+    jetzt „an der“/„am“. Die Beschreibungsroute endet vor „Zugfahrten“;
+    unter einem Titel ohne Route wären sonst 15 von 73 ÖBB-Meldungen der
+    Historie weggefallen.
+  - **Rang 2, Titel:** „Wien Hauptbahnhof ↔ Wien Hauptbahnhof“ (29.09.) und
+    „Wien Hauptbahnhof ↔ Tullnerfeld“ (13.09., 17.09.) meinten Wien
+    Meidling: „Wien Meidling Bahnhof (U)“ traf eine WL-Haltestelle, deren
+    „Bhf.“ dann als Satzende gekürzt wurde. Ein WL-Titel nur aus Linien
+    („D/1/2/71/1A/3A: D, 1, 2, 71, 1A, 3A“) nimmt die Überschrift der
+    Beschreibung („Demonstration“). Strecken von einem Knoten nennen ihn
+    einmal (REX 41: 144 → 109 Zeichen).
+  - **Rang 3, EN:** ein wiederholter Platzhalter-Index
+    („Wien Franz-Josefs-Bahnhof0X“) wird repariert.
 * **Dokumentation geprüft (2026-09-27)**: Die Regeln dafür, was im
   deutschen Feed steht (Ticker-Titel, „Ein Vorfall, ein Platz“,
   „Fahrtbehinderung <Ursache>“, „ÖBB-Ersatzbus“), stehen jetzt in

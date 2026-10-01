@@ -62,6 +62,17 @@ class TestRouteCanonicalDedup:
             ("Wien Hbf", "Wiener Neustadt"),
         ]
         title = _format_route_title(routes)
+        # Since 2026-10-01 a hub shared by all routes is named once
+        # (``_try_star_routes``); every destination stays.
+        assert title == "Wien Hauptbahnhof ↔ Mödling / Baden / Wiener Neustadt Hauptbahnhof"
+
+    def test_distinct_routes_without_a_hub_kept(self) -> None:
+        routes = [
+            ("Wien Hbf", "Mödling"),
+            ("Wien Meidling", "Baden"),
+            ("Wien Floridsdorf", "Stockerau"),
+        ]
+        title = _format_route_title(routes)
         assert title.count("↔") == 3
 
     def test_orientation_swap_does_not_create_duplicate(self) -> None:
