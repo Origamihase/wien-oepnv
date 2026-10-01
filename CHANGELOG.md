@@ -5,6 +5,12 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Deutscher Feed: ÖBB-Präfix nennt alle betroffenen Linien (2026-10-01)**:
+  Live stand „REX 41: Wien Franz-Josefs-Bahnhof ↔ …“ über „… keine R
+  40-Züge fahren“. Die Meldung betrifft R 40, REX 41, REX 4 und S 40; `R`
+  fehlte im Muster, und nur die erste erkannte Linie kam ins Präfix. Jetzt:
+  „R 40/REX 41/REX 4/S 40: …“ (`_affected_lines`); eine Meldung nur zur R 95
+  bekommt „R 95: …“. Audit vom 01.10., offener Punkt 3.
 * **Deutscher Feed: eine Linie, ein Platz (2026-10-01, Betreiberentscheidung)**:
   „Mehrere Störungsmeldungen zur selben Linie sollte so gut wie möglich
   zusammengefasst werden“; verschiedene Linien behalten ihre Einträge.

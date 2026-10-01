@@ -189,9 +189,10 @@ class TestApplyRouteTitleEndToEnd:
             "keine REX 50-Züge fahren."
         )
         out = _apply_route_title(title, desc)
-        # The wrong U3 prefix must be gone, replaced by the actual S 50.
+        # The wrong U3 prefix must be gone, replaced by the lines the
+        # description says are disrupted, all of them (2026-10-01).
         assert "U3:" not in out
-        assert out.startswith("S 50:")
+        assert out.startswith("S 50/REX 50:")
         # And the multi-route body collapses into a single chain.
         # Three "↔" separators for a 4-node chain.
         assert out.count("↔") == 3

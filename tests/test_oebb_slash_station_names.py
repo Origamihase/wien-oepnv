@@ -104,8 +104,9 @@ def test_a_route_to_bruck_leitha_reaches_the_feed() -> None:
 
 
 def test_a_star_names_its_hub_once() -> None:
+    # The message disrupts four lines; all of them lead (2026-10-01).
     assert oebb._apply_route_title("REX 41: Bauarbeiten", _REX_41) == (
-        "REX 41: Wien Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern / Tulln an der Donau / "
+        "R 40/REX 41/REX 4/S 40: Wien Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern / Tulln an der Donau / "
         "Wien Heiligenstadt / Wien Nußdorf"
     )
 
