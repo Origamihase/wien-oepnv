@@ -1494,7 +1494,14 @@ Nach dem Modelllauf wird nicht blind vertraut:
 * Ein gecachter EN-Wert wird vor dem Ausliefern geprüft
   (`_cached_translation_defect`): ein Rest-Platzhalter oder ein Datum des
   deutschen Quelltexts, das im Englischen fehlt, macht den Treffer zum
-  Miss — gezielt für dieses Feld, ohne Epochensprung.
+  Miss — gezielt für dieses Feld, ohne Epochensprung. Seit 2026-10-02 zählt
+  auch ein Rest, den die Rückersetzung hinterlassen hat
+  (`_CACHED_DEBRIS_RE`): ein `X` oder ein Index, der an einem Wort klebt
+  („Bahnhof0X“, „accidentX“, „Line 18X“), oder ein verstümmeltes Präfix
+  („XGLAB…X0X“), sofern der deutsche Text das Wort nicht selbst enthält.
+  Die Reparatur vom 01.10. griff nur für neue Übersetzungen; am 02.10.
+  zeigte der EN-Feed noch „Wien Franz-Josefs-Bahnhof0X“ aus dem Cache, der
+  44 solche Felder hielt.
 * Übrig gebliebene Platzhalter (`_RESIDUAL_PLACEHOLDER_RE`) lassen das Feld
   scheitern — und damit das Item deutsch bleiben. Das schließt eine
   Platzhalter-Form ein, der das Modell das führende `X` genommen hat

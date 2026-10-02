@@ -3640,13 +3640,33 @@ def _translate_time_line_en(time_line: str) -> str:
     return time_line
 
 
+# What a placeholder leaves behind once its unmask half-worked: an ``X`` or a
+# repeated index glued to a word ("Franz-Josefs-Bahnhof0X", "traffic
+# accidentX", "Line 18X") or a prefix the model mangled ("XGLABc73c…X0X").
+# :data:`_PLACEHOLDER_DEBRIS_RE` repairs fresh output since 2026-10-01, but
+# values cached before kept the debris and were served from the cache:
+# ``docs/feed.en.xml`` still read "between Wien Franz-Josefs-Bahnhof0X and
+# St.Andrä-Wördern" on 2026-10-02, with 44 such fields in the cache (fund D).
+# An ``X`` counts only behind a lowercase letter or a digit, so "REX" stays
+# alone, and only when the German source does not carry the same token.
+_CACHED_DEBRIS_RE: re.Pattern[str] = re.compile(
+    r"[A-Za-zÄÖÜäöüß0-9]*(?:[a-zäöüß]|\d)X(?![A-Za-z0-9])|XG[A-Za-z]{2}[0-9a-f]{8,}\w*"
+)
+
+
+def _placeholder_debris(source: str, cached: str) -> bool:
+    """Whether *cached* carries placeholder debris the German *source* does not."""
+    return any(match.group(0) not in source for match in _CACHED_DEBRIS_RE.finditer(cached))
+
+
 def _cached_translation_defect(source: str, cached: str) -> str | None:
     """Return why a persisted EN value must not be served, or ``None``.
 
     Two defects can sit in ``data/first_seen.json`` as a cached *success*:
 
     * a residual placeholder — the model mangled a sentinel so badly that
-      the exact-nonce unmask could not restore it (2026-06-01);
+      the exact-nonce unmask could not restore it (2026-06-01), or the
+      unmask restored it and left debris behind (:data:`_CACHED_DEBRIS_RE`);
     * a calendar date the German source carries that the cached English
       does not — the day used to be masked alone and the model dropped the
       period, giving ``on 2709.2026`` for ``am 27.09.2026`` (published
@@ -3657,7 +3677,7 @@ def _cached_translation_defect(source: str, cached: str) -> str | None:
 
     Either way :func:`_cached_translation` treats the hit as a miss.
     """
-    if _RESIDUAL_PLACEHOLDER_RE.search(cached):
+    if _RESIDUAL_PLACEHOLDER_RE.search(cached) or _placeholder_debris(source, cached):
         return "residual placeholder"
     if set(_DATE_ENTITY_RE.findall(source)) - set(_DATE_ENTITY_RE.findall(cached)):
         return "missing or mangled date"
