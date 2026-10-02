@@ -424,6 +424,16 @@ verdrängt eine andere Störung.
   until 11.11.]“), die Daten bleiben. `ext:starts_at` und `ext:ends_at`
   ändern sich nicht.
 
+  Ein Ende nach Mitternacht bis einschließlich 05:00 zählt zum Betriebstag
+  davor (`_last_service_day`, `_SERVICE_DAY_LAST_END`). WL beendet
+  Nachtarbeiten „bis 01:00“ oder „bis 04:30“, dem Betriebsbeginn; „66A:
+  Busse halten Salvatorianerplatz“ (Ende 03.10. 01:00) las sich am
+  Freitagabend „[Bis Sa 03.10.]“, als gälte sie den ganzen Samstag, jetzt
+  „[Heute]“. Genau 00:00 bleibt auf seinem Datum: So schreiben datumsgenaue
+  Quellen (Stadt-Wien-Baustellen) ihren letzten Tag. Der Tag fällt nie vor
+  den des Beginns und, solange das Ende noch bevorsteht, nie vor heute: Um
+  00:30 steht bei der 66A weiter „[Heute]“.
+
 ### Zeitraum einer WL-Meldung: Plausibilitätsprüfung (seit 2026-10-02)
 
 Wiener Linien nennen den Zeitraum einer Meldung bis zu dreimal: in
