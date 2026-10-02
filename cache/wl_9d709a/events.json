@@ -450,9 +450,9 @@
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
-    "pubDate": "2026-10-02T00:30:09+02:00",
-    "starts_at": "2026-10-02T00:30:09+02:00",
-    "ends_at": "2026-10-02T04:59:00+02:00",
+    "pubDate": "2026-10-02T05:00:05+02:00",
+    "starts_at": "2026-10-02T05:00:05+02:00",
+    "ends_at": "2026-10-02T23:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-10-02|TK=bhf hütteldorf öbb ersatzbus für 80"
   },
   {
@@ -698,6 +698,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "66A: Busse halten Salvatorianerplatz",
+    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417",
+    "pubDate": "2026-10-02T04:40:05+02:00",
+    "starts_at": "2026-10-02T04:40:05+02:00",
+    "ends_at": "2026-10-03T01:00:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2026-10-02|TK=busse halten salvatorianerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -766,78 +778,6 @@
     "starts_at": "2026-10-01T00:00:14+02:00",
     "ends_at": "2026-10-02T23:59:59+02:00",
     "_identity": "wl|störung|L=D|D=2026-10-01|TK=züge halten wipplingerstr 39"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N20: Busse halten auf der Hauptfahrbahn",
-    "description": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2465b8f495aa09c30a1900425c8f402136474c4599d6f3677d4f46d051c9c4ae",
-    "pubDate": "2026-10-02T01:16:16+02:00",
-    "starts_at": "2026-10-02T01:16:16+02:00",
-    "ends_at": "2026-10-02T04:52:00+02:00",
-    "_identity": "wl|störung|L=N20|D=2026-10-02|TK=busse halten auf der hauptfahrbahn"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N20: Busse halten Bessemerstraße 1-3",
-    "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f3142d4f32419f4772ec66186ea9d3101fb32548016973434774ef3660ca4236",
-    "pubDate": "2026-10-02T01:30:18+02:00",
-    "starts_at": "2026-10-02T01:30:18+02:00",
-    "ends_at": "2026-10-02T04:35:00+02:00",
-    "_identity": "wl|störung|L=N20|D=2026-10-02|TK=busse halten bessemerstrasse 1 3"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N49: Betrieb ab Johnstraße U",
-    "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1963f82ac93d144e418b1738c647d7dac8d1d5dd078a20877ba74368c0ae79ae",
-    "pubDate": "2026-10-02T01:00:13+02:00",
-    "starts_at": "2026-10-02T01:00:13+02:00",
-    "ends_at": "2026-10-02T04:50:00+02:00",
-    "_identity": "wl|störung|L=N49|D=2026-10-02|TK=betrieb ab johnstrasse u"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N49: Betrieb ab Schweglerstraße",
-    "description": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2bb63e86a6366d616958e9c07d55e93631da5aea27e8aba60ef218fd8f38dca9",
-    "pubDate": "2026-10-02T01:00:13+02:00",
-    "starts_at": "2026-10-02T01:00:13+02:00",
-    "ends_at": "2026-10-02T05:00:00+02:00",
-    "_identity": "wl|störung|L=N49|D=2026-10-02|TK=betrieb ab schweglerstrasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N65: Busse halten Laxenburger Straße 66",
-    "description": "Bauarbeiten\nBusse halten Laxenburger Straße 66",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "46039872a85000ac66dcb55f28e868aade146322b5be31154e1c47fa0d40f94a",
-    "pubDate": "2026-10-02T01:00:12+02:00",
-    "starts_at": "2026-10-02T01:00:12+02:00",
-    "ends_at": "2026-10-02T05:00:00+02:00",
-    "_identity": "wl|störung|L=N65|D=2026-10-02|TK=busse halten laxenburger strasse 66"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N66: Busse halten Laxenburger Straße 66",
-    "description": "Bauarbeiten\nBusse halten Laxenburger Straße 66",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "de5bef89066edfd6daf8bb406b5f2613576237d70d044a50c26d82c0751168da",
-    "pubDate": "2026-10-02T01:00:12+02:00",
-    "starts_at": "2026-10-02T01:00:12+02:00",
-    "ends_at": "2026-10-02T05:00:00+02:00",
-    "_identity": "wl|störung|L=N66|D=2026-10-02|TK=busse halten laxenburger strasse 66"
   },
   {
     "source": "Wiener Linien",
