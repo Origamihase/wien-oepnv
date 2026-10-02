@@ -199,6 +199,15 @@ verdrängt eine andere Störung.
   - Grenzen: Andere Linienmengen („62/18“), Hinweise und andere Quellen
     bleiben getrennt. Die Beschreibung ist auf 180 Zeichen begrenzt. Die
     Störungsstatistik zählt einen zusammengelegten Vorfall einmal.
+  - Eine Ausnahme bei den Linienmengen (seit 2026-10-02): Zwei
+    Kurzmeldungen verschiedener Linien mit gleichem Titeltext und gleichem
+    Text im selben Fenster verbinden ihre Gruppen (`_join_twin_groups`).
+    Der Eintrag steht unter allen Linien; eine Folge, die nur ein Teil der
+    Linien meldet, behält deren Kürzel. Anlass: Am 02.10. um 01:00:12 kam
+    „Busse halten Laxenburger Straße 66“ für N65 und für N66 und belegte
+    zwei der zehn Plätze. Jetzt steht dort „N65/N66: Bauarbeiten“ über
+    „Busse halten Laxenburger Straße 66; N66: Busse halten
+    Salvatorianerplatz.“ Gruppen mit ausführlicher Meldung bleiben getrennt.
 * **Eine Linie, ein Platz (seit 2026-10-01, Betreiberentscheidung).**
   „Wenn mehrere unterschiedliche Linien betroffen sind, soll die Störung
   auch angezeigt werden. Mehrere Störungsmeldungen zur selben Linie sollte

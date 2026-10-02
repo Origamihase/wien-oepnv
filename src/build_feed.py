@@ -35,7 +35,7 @@ from dateutil import parser
 
 from .feed_types import FeedItem
 from .feed import config as feed_config
-from .feed.merge import deduplicate_fuzzy
+from .feed.merge import _natural_keys, deduplicate_fuzzy
 from .feed.logging import configure_logging
 from .feed.providers import (
     iter_providers,
@@ -6298,7 +6298,103 @@ def _ticker_groups(items: Sequence[FeedItem]) -> list[list[int]]:
                 groups.append([])
                 start = when
             groups[-1].append(index)
-    return groups
+    return _join_twin_groups(items, groups)
+
+
+# --- One ticker, several lines (2026-10-02) ----------------------------------
+#
+# WL sends the same display ticker once per line. On 2026-10-02 at 01:00:12
+# "N65: Busse halten Laxenburger Straße 66" and "N66: Busse halten
+# Laxenburger Straße 66" came in the same second; grouped by line, the stop
+# stood in two of the ten slots, once as "N65: Busse halten Laxenburger
+# Straße 66" and once inside "N66: Bauarbeiten". Two tickers of different
+# lines with the same title body and the same text, published within
+# WL_TICKER_CLUSTER_SECONDS, now join their groups: one entry under all
+# their lines. Nothing is lost, the texts are equal; a consequence that only
+# some of the lines announced keeps their label::
+#
+#     N65/N66: Bauarbeiten
+#     Busse halten Laxenburger Straße 66; N66: Busse halten Salvatorianerplatz.
+#
+# Groups with a long message stay as they are: its title and text speak for
+# one line set.
+
+
+def _twin_key(item: FeedItem) -> str:
+    """What two tickers of different lines must share to be one: body and text."""
+    return f"{_ticker_part(item).body.casefold()}\n{_ticker_text(item).casefold()}"
+
+
+def _ticker_line_tokens(item: FeedItem) -> list[str]:
+    """``N65/N66: …`` → ``["N65", "N66"]``."""
+    return [token.strip() for token in _ticker_prefix(_rendered_title(item)).strip().rstrip(":").split("/") if token.strip()]
+
+
+def _join_twin_groups(items: Sequence[FeedItem], groups: list[list[int]]) -> list[list[int]]:
+    """*groups* with those joined that share a ticker of another line (see above)."""
+    owner = {index: number for number, group in enumerate(groups) for index in group}
+    has_long = {number for number, group in enumerate(groups) if any(_is_long_message(_ticker_text(items[i])) for i in group)}
+    parent = list(range(len(groups)))
+
+    def root(number: int) -> int:
+        while parent[number] != number:
+            number = parent[number]
+        return number
+
+    by_key: dict[str, list[tuple[datetime, int, str, int]]] = defaultdict(list)
+    for index, number in owner.items():
+        if number not in has_long:
+            by_key[_twin_key(items[index])].append(_publication_key(items, index))
+    for twins in by_key.values():
+        twins.sort()
+        for (when, _l, _g, first), (later, _l2, _g2, second) in zip(twins, twins[1:], strict=False):
+            if (later - when).total_seconds() <= WL_TICKER_CLUSTER_SECONDS and _ticker_lines(items[first]) != _ticker_lines(items[second]):
+                parent[root(owner[second])] = root(owner[first])
+    if all(parent[number] == number for number in range(len(groups))):
+        return groups
+    joined: dict[int, list[int]] = {}
+    for number, group in enumerate(groups):
+        joined.setdefault(root(number), []).extend(group)
+    return [sorted(group, key=lambda index: _publication_key(items, index)) for group in joined.values()]
+
+
+def _union_prefix(members: Sequence[FeedItem]) -> str | None:
+    """``N65/N66: `` for members of several line sets, ``None`` for one set."""
+    if len({_ticker_lines(member) for member in members}) < 2:
+        return None
+    tokens: dict[str, str] = {}
+    for member in members:
+        for token in _ticker_line_tokens(member):
+            tokens.setdefault(token.casefold(), token)
+    return "/".join(sorted(tokens.values(), key=_natural_keys)) + ": "
+
+
+def _group_lines_key(members: Sequence[FeedItem]) -> str:
+    """The line set a group stands for: its union for joined twins (see above)."""
+    union = _union_prefix(members)
+    return union.rstrip(": ").casefold() if union else _ticker_lines(members[0])
+
+
+def _twin_labels(members: Sequence[FeedItem], union: str | None) -> tuple[list[FeedItem], list[str]]:
+    """*members* with each twin set once, and the line label each message keeps.
+
+    A message all lines of the union announced needs no label; one only some
+    of them announced is prefixed with those (``N66: ``).
+    """
+    if union is None:
+        return list(members), [""] * len(members)
+    all_lines = {token.casefold() for token in union.rstrip(": ").split("/")}
+    shown: dict[str, tuple[FeedItem, dict[str, str]]] = {}
+    for member in members:
+        _item, lines = shown.setdefault(_twin_key(member), (member, {}))
+        for token in _ticker_line_tokens(member):
+            lines.setdefault(token.casefold(), token)
+    kept = [item for item, _lines in shown.values()]
+    labels = [
+        "" if set(lines) == all_lines else "/".join(sorted(lines.values(), key=_natural_keys)) + ": "
+        for _item, lines in shown.values()
+    ]
+    return kept, labels
 
 
 def _telling_long_message(members: Sequence[FeedItem]) -> FeedItem | None:
@@ -6377,20 +6473,23 @@ def _merged_ticker(members: Sequence[FeedItem]) -> FeedItem:
         merged["title"] = str(stands.get("title") or "")
         merged["description"] = str(stands.get("description") or "")
         return merged
-    parts = [_ticker_part(member) for member in members]
+    union = _union_prefix(members)
+    shown, labels = _twin_labels(members, union)
+    parts = [_ticker_part(member) for member in shown]
     chosen = _chosen_cause(parts)
     lead_title = _rendered_title(lead)
+    prefix = union or _ticker_prefix(lead_title)
     if chosen:
         cause = next(part.cause for part in parts if part.cause.casefold() == chosen)
-        title = f"{_ticker_prefix(lead_title)}{cause}"
+        title = f"{prefix}{cause}"
     else:
-        title = lead_title
+        title = f"{prefix}{lead_title[len(_ticker_prefix(lead_title)):]}"
     candidates: list[str] = []
-    for part in parts:
+    for part, label in zip(parts, labels, strict=True):
         if part.cause and _cause_key(part.cause) != _cause_key(chosen):
-            candidates.append(part.body)  # WL's wording keeps the other cause with its consequence
+            candidates.append(label + part.body)  # WL's wording keeps the other cause with its consequence
         elif part.consequence:
-            candidates.append(_without_cause(part.consequence, chosen))
+            candidates.append(label + _without_cause(part.consequence, chosen))
         if part.extra:
             candidates.append(part.extra)
     messages = _shared_openings(_distinct_messages(candidates, title))
@@ -6469,7 +6568,7 @@ def _line_runs(items: Sequence[FeedItem], groups: Sequence[list[int]]) -> list[l
         if span is None or len(_group_cause(members).split()) > _MAX_LISTED_WORDS:
             runs.append([group])
             continue
-        by_lines[_ticker_lines(members[0])].append((span[0], span[1], group))
+        by_lines[_group_lines_key(members)].append((span[0], span[1], group))
     for entries in by_lines.values():
         entries.sort(key=lambda entry: entry[0])
         run: list[list[int]] = []
