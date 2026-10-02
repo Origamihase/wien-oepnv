@@ -18,7 +18,7 @@
   <link rel="alternate" type="application/rss+xml" title="Wien ÖPNV Feed" href="feed.xml">
   <link rel="alternate" type="application/rss+xml" title="Vienna Public Transport Feed (English)" href="feed.en.xml">
   <link rel="icon" type="image/svg+xml" href="assets/site-favicon.svg">
-  <link rel="stylesheet" href="assets/site.min.css?v=1161dcae1570">
+  <link rel="stylesheet" href="assets/site.min.css?v=6ae8eea18457">
   <!-- Audit E.3: the statistics panels used to fetch three raw yearly CSVs
        (~705 KB and growing) from raw.githubusercontent.com, which is why this
        head used to warm a cross-origin socket. They now read one ~3 KB
@@ -171,6 +171,16 @@
           – <code>data/stats/stammstrecke_<span data-year-label>–</span>.csv</code>.
         </p>
 
+        <!-- Coverage caveat, filled by ``renderCoverageNotice`` in site.js when
+             one Stammstrecke direction has stopped reporting while the other
+             still does. Hidden (and emptied) whenever coverage is complete, so
+             it disappears on its own once the closed direction returns. Text is
+             built in JS because it carries the affected direction and the date
+             it was last seen — see COVERAGE_TEXT_DE/EN. It sits here under
+             "Aktuelle Meldungen", above the live tile, because it is a current
+             notice; the statistics section further down is covered by it too. -->
+        <p class="coverage-notice" id="stammstrecke-coverage" role="status" hidden></p>
+
         <!-- Accessible name was previously overridden by ``aria-label`` and
              excluded the dynamic value ("1,5 min") rendered into
              ``#stammstrecke-live-avg``. axe / Lighthouse flagged this as
@@ -255,14 +265,6 @@
           – <code>data/stats/stammstrecke_<span data-year-label>–</span>.csv</code>.
         </p>
       </header>
-
-      <!-- Coverage caveat, filled by ``renderCoverageNotice`` in site.js when
-           one Stammstrecke direction has stopped reporting while the other
-           still does. Hidden (and emptied) whenever coverage is complete, so
-           it disappears on its own once the closed direction returns. Text is
-           built in JS because it carries the affected direction and the date
-           it was last seen — see COVERAGE_TEXT_DE/EN. -->
-      <p class="coverage-notice" id="stammstrecke-coverage" role="status" hidden></p>
 
       <div class="kpis" id="stammstrecke-kpis" role="group" aria-label="Kennzahlen Stammstrecke" data-i18n-aria-label="aria-stammstrecke-kpis">
         <article class="kpi skeleton"></article>
