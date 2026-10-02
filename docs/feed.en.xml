@@ -7,40 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 02 Oct 2026 19:00:54 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 19:31:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[5/O: Demonstration]]></title>
+      <title><![CDATA[42: Fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5b2908831d91f1c6b6b49ab88bdd23ebbdee165b022c066291a66ba3a36b0d50</guid>
+      <guid isPermaLink="false">b34f0fda952402f692c12635a1908e2a423bbcc6bd0a2e557312f0f76484d5b3</guid>
+      <pubDate>Fri, 02 Oct 2026 19:08:58 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 19:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 19:10:59 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 20:10:00 +0200</ext:ends_at>
+      <description>Service obstruction [On 02.10.2026]</description>
+      <content:encoded><![CDATA[Service obstruction<br/>[On 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[O: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b9ec30b1b387ebda58668481fc03c388a1ae44ed7c8274124fa855fd364ec90f</guid>
       <pubDate>Fri, 02 Oct 2026 18:21:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 18:30:56 +0200</ext:first_seen>
+      <ext:first_seen>Fri, 02 Oct 2026 19:31:02 +0200</ext:first_seen>
       <ext:starts_at>Fri, 02 Oct 2026 18:21:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: demonstration. [On 02.10.2026]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: demonstration.<br/>[On 02.10.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40: Illegally parked vehicle]]></title>
+      <title><![CDATA[18: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919</guid>
-      <pubDate>Fri, 02 Oct 2026 18:03:52 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 18:03:52 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 18:05:53 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 19:04:00 +0200</ext:ends_at>
-      <description>Service from Währinger Straße U [On 02.10.2026]</description>
-      <content:encoded><![CDATA[Service from Währinger Straße U<br/>[On 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa</guid>
-      <pubDate>Fri, 02 Oct 2026 18:03:52 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 18:03:52 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 18:03:52 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 19:03:00 +0200</ext:ends_at>
-      <description>Service obstruction [On 02.10.2026]</description>
-      <content:encoded><![CDATA[Service obstruction<br/>[On 02.10.2026]]]></content:encoded>
+      <guid isPermaLink="false">2aa1df2c9f4ae19df070aff6c202cb045b5e46393e05c8496bd4773beeb1745f</guid>
+      <pubDate>Fri, 02 Oct 2026 19:07:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 19:07:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 19:07:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 20:09:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [On 02.10.2026]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 02.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Defective vehicle]]></title>
@@ -49,7 +49,7 @@
       <pubDate>Fri, 02 Oct 2026 17:54:00 +0200</pubDate>
       <ext:first_seen>Fri, 02 Oct 2026 17:54:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 02 Oct 2026 17:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 02 Oct 2026 19:30:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [On 02.10.2026]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 02.10.2026]]]></content:encoded>
     </item>
