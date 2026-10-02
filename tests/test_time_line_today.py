@@ -53,6 +53,39 @@ def test_time_line(start: datetime | None, end: datetime | None, expected: str) 
     assert _line(start, end) == expected
 
 
+@pytest.mark.parametrize(
+    ("start", "end", "expected"),
+    [
+        # 66A: Busse halten Salvatorianerplatz, WL's end 03.10. 01:00 read
+        # "Bis Sa 03.10." on Friday evening, as if valid all Saturday.
+        (_at(2026, 10, 2, 4, 40), _at(2026, 10, 3, 1), "Heute"),
+        # 46/49/52: Gleisbauarbeiten until 31.10. 04:30, the start of service.
+        (_at(2026, 9, 18, 4, 30), _at(2026, 10, 31, 4, 30), "Bis 30.10."),
+        # D: Gleisbauarbeiten Althanstraße until 07.11. 03:00.
+        (_at(2026, 9, 28), _at(2026, 11, 7, 3), "Bis 06.11."),
+        # Up to 05:00 inclusive; later the new day is a service day of its own.
+        (_at(2026, 10, 1), _at(2026, 10, 4, 5), "Bis Sa 03.10."),
+        (_at(2026, 10, 1), _at(2026, 10, 4, 5, 1), "Bis So 04.10."),
+        # Midnight stays on its date: date-only sources write the last day so.
+        (_at(2026, 9, 30), _at(2026, 11, 15), "Bis 15.11."),
+        # A night ahead: Sunday evening into Monday is one day, Sunday.
+        (_at(2026, 10, 4, 20), _at(2026, 10, 5, 1), "Am So 04.10."),
+        # Night works that begin after midnight keep the start's day.
+        (_at(2026, 10, 5, 0, 30), _at(2026, 10, 5, 4, 30), "Am Mo 05.10."),
+    ],
+)
+def test_an_end_in_the_early_night_belongs_to_the_day_before(
+    start: datetime, end: datetime, expected: str
+) -> None:
+    assert _line(start, end) == expected
+
+
+def test_after_midnight_a_night_end_still_reads_today() -> None:
+    # 66A at 00:30 on Saturday: the item runs for another half hour.
+    night = _at(2026, 10, 3, 0, 30)
+    assert _line(_at(2026, 10, 2, 4, 40), _at(2026, 10, 3, 1), night) == "Heute"
+
+
 def test_a_long_running_item_keeps_a_near_end() -> None:
     # N8: Thaliastraße U, running since 24.07.2024: the span from the start
     # exceeds 540 days, the distance from today does not.

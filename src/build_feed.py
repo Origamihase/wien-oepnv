@@ -20,7 +20,7 @@ from concurrent.futures import (
     TimeoutError,
     wait,
 )
-from datetime import date, datetime, timedelta, UTC
+from datetime import date, datetime, time, timedelta, UTC
 from email.utils import format_datetime
 from functools import lru_cache
 from pathlib import Path
@@ -1291,18 +1291,46 @@ _WEEKDAYS_DE: tuple[str, ...] = ("Mo", "Di", "Mi", "Do", "Fr", "Sa", "So")
 _TIME_LINE_WEEKDAY_DAYS = 6
 
 
-def _time_line_day(when: datetime, today: date) -> str:
-    """``when``'s day for the time line: "05.10.", "Mo 05.10.", "05.10.2027".
+# An end after midnight up to this clock time belongs to the service day
+# before: WL closes night works "until 01:00" or "until 04:30", the start of
+# service. Midnight itself stays on its date, it is how date-only sources
+# (Stadt Wien construction sites) write their last day.
+_SERVICE_DAY_LAST_END = time(5, 0)
+
+
+def _time_line_day(day: date, today: date) -> str:
+    """``day`` for the time line: "05.10.", "Mo 05.10.", "05.10.2027".
 
     The year appears only when it is not the current one, the weekday only
     for the coming week (see ``_TIME_LINE_WEEKDAY_DAYS``).
     """
-    text = f"{when:%d.%m.}"
-    if when.year != today.year:
-        text += f"{when:%Y}"
-    if 0 <= (when.date() - today).days <= _TIME_LINE_WEEKDAY_DAYS:
-        text = f"{_WEEKDAYS_DE[when.weekday()]} {text}"
+    text = f"{day:%d.%m.}"
+    if day.year != today.year:
+        text += f"{day:%Y}"
+    if 0 <= (day - today).days <= _TIME_LINE_WEEKDAY_DAYS:
+        text = f"{_WEEKDAYS_DE[day.weekday()]} {text}"
     return text
+
+
+def _last_service_day(
+    start_local: datetime | None, end_local: datetime, now_local: datetime
+) -> date:
+    """The last day ``end_local`` still affects, for a reader at ``now_local``.
+
+    "66A: Busse halten Salvatorianerplatz" ended 03.10. at 01:00 and read
+    "Bis Sa 03.10." on Friday evening, as if valid all Saturday. An end in
+    the early night (see ``_SERVICE_DAY_LAST_END``) counts toward the day
+    before. That day is never before the start's own day, and never before
+    today while the end is still ahead: read at 00:30, the item ends "Heute".
+    """
+    day = end_local.date()
+    if time(0, 0) < end_local.time() <= _SERVICE_DAY_LAST_END:
+        day -= timedelta(days=1)
+    if start_local is not None:
+        day = max(day, start_local.date())
+    if end_local >= now_local:
+        day = max(day, now_local.date())
+    return day
 
 
 def _plausible_end(
@@ -1355,36 +1383,40 @@ def format_local_times(
     "Heute" is relative: the feed is rebuilt every 30 minutes, and an item
     that ended yesterday has left the feed by the first build after
     midnight. No clock time appears: WL's own ends for incidents are often
-    exactly one hour after the start, a default rather than a forecast.
+    exactly one hour after the start, a default rather than a forecast. An
+    end in the early night belongs to the service day before
+    (:func:`_last_service_day`).
     """
     now_local = _to_utc(now).astimezone(_VIENNA_TZ) if now else datetime.now(_VIENNA_TZ)
     today = now_local.date()
     start_local = _to_utc(start).astimezone(_VIENNA_TZ) if isinstance(start, datetime) else None
     end_local = _to_utc(end).astimezone(_VIENNA_TZ) if isinstance(end, datetime) else None
     end_local = _plausible_end(start_local, end_local, now_local)
-    return _time_line_text(start_local, end_local, today).replace(" ", _NNBSP)
+    start_day = start_local.date() if start_local is not None else None
+    end_day = _last_service_day(start_local, end_local, now_local) if end_local is not None else None
+    return _time_line_text(start_day, end_day, today).replace(" ", _NNBSP)
 
 
-def _time_line_text(start_local: datetime | None, end_local: datetime | None, today: date) -> str:
+def _time_line_text(start_day: date | None, end_day: date | None, today: date) -> str:
     """The words of :func:`format_local_times`, joined with plain spaces."""
 
-    if start_local is not None and start_local.date() > today:
-        first = _time_line_day(start_local, today)
-        if end_local is None:
+    if start_day is not None and start_day > today:
+        first = _time_line_day(start_day, today)
+        if end_day is None:
             return f"Ab {first}"
-        if end_local.date() == start_local.date():
+        if end_day == start_day:
             return f"Am {first}"
-        return f"Ab {first} bis {_time_line_day(end_local, today)}"
-    if end_local is not None:
-        if end_local.date() == today:
+        return f"Ab {first} bis {_time_line_day(end_day, today)}"
+    if end_day is not None:
+        if end_day == today:
             return "Heute"
-        if start_local is not None and start_local.date() == end_local.date():
-            return f"Am {_time_line_day(end_local, today)}"
-        return f"Bis {_time_line_day(end_local, today)}"
-    if start_local is not None:
-        if start_local.date() == today:
+        if start_day is not None and start_day == end_day:
+            return f"Am {_time_line_day(end_day, today)}"
+        return f"Bis {_time_line_day(end_day, today)}"
+    if start_day is not None:
+        if start_day == today:
             return "Seit heute"
-        return f"Seit {_time_line_day(start_local, today)}"
+        return f"Seit {_time_line_day(start_day, today)}"
     return ""
 
 # Entfernt XML-unerlaubte Kontrollzeichen (außer \t, \n, \r) PLUS the
