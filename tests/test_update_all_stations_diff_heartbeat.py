@@ -449,3 +449,28 @@ def test_last_run_sidecar_persists_every_validation_category() -> None:
         "validation categories missing from the last-run sidecar: "
         f"{sorted(categories - persisted)}"
     )
+
+
+def test_compute_diff_keys_wl_entries_by_diva() -> None:
+    """A WL rename of one DIVA whose old name another DIVA keeps is a rename.
+
+    2026-10-02: WL renamed DIVA 60201237 from "Siebensterngasse" to
+    "Kirchengasse" while DIVA 60200678 was already "Kirchengasse". Keyed by
+    name, both twins collapsed and the report listed two bogus 200-300 m
+    coordinate shifts and no rename.
+    """
+    before = [
+        {"name": "Wien Kirchengasse (WL)", "wl_diva": "60200678", "latitude": 48.199674, "longitude": 16.352869},
+        {"name": "Wien Siebensterngasse (WL)", "wl_diva": "60201088", "latitude": 48.201716, "longitude": 16.34906},
+        {"name": "Wien Siebensterngasse (WL)", "wl_diva": "60201237", "latitude": 48.202301, "longitude": 16.351749},
+    ]
+    after = [dict(before[0]), dict(before[1]), {**before[2], "name": "Wien Kirchengasse (WL)"}]
+
+    diff = wrapper._compute_diff(before, after)
+
+    assert diff["renamed"] == [
+        ("diva:60201237", "Wien Siebensterngasse (WL)", "Wien Kirchengasse (WL)")
+    ]
+    assert diff["coord_shifted"] == []
+    assert diff["added"] == []
+    assert diff["removed"] == []
