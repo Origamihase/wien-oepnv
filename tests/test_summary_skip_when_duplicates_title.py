@@ -137,7 +137,7 @@ class TestCategoryWordOnBothSides:
         assert out.strip().startswith("[")
         short, out = _format(title, desc)
         assert short == "40/41/9/42: Veranstaltung"
-        assert out.startswith("Linien 40 und 41 Umleitung über Linien 9 und 42 [")
+        assert out.startswith("Linien 40 und 41 Umleitung über Linien 9 und 42. [")
 
     def test_the_shortest_case(self) -> None:
         title = "2A: Veranstaltung Kein Betrieb"
@@ -147,7 +147,7 @@ class TestCategoryWordOnBothSides:
         # Not "Grund: Veranstaltung." either — the headline says it already.
         assert "Grund" not in out
         short, out = _format(title, desc)
-        assert (short, out) == ("2A: Veranstaltung", "Kein Betrieb [Seit\u202f06.05.]")
+        assert (short, out) == ("2A: Veranstaltung", "Kein Betrieb. [Seit\u202f06.05.]")
 
     def test_demonstration_too_it_is_not_one_word(self) -> None:
         title = "71: Demonstration Umleitung bis St. Marx über Linie D und 18"
@@ -157,7 +157,7 @@ class TestCategoryWordOnBothSides:
         assert "Grund" not in out
         short, out = _format(title, desc)
         assert short == "71: Demonstration"
-        assert out.startswith("Umleitung bis St. Marx über Linie D und 18 [")
+        assert out.startswith("Umleitung bis St. Marx über Linie D und 18. [")
         assert "Grund" not in out
 
     def test_the_reason_rescue_is_untouched(self) -> None:
@@ -206,7 +206,7 @@ class TestCategoryWordOnBothSides:
         # Betrieb" is part of the consequence — the summary would only
         # repeat both.
         short, out = _format(title, desc)
-        assert (short, out) == ("13A: Betriebsstörung", "Kein Betrieb ab 10 Uhr [Seit\u202f06.05.]")
+        assert (short, out) == ("13A: Betriebsstörung", "Kein Betrieb ab 10 Uhr. [Seit\u202f06.05.]")
 
 
 class TestMergeJoinerOnOneSideOnly:

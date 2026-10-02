@@ -62,12 +62,12 @@ def test_the_published_item_shows_no_arrow_and_no_repeat() -> None:
     # Published since 2026-09-25: title "74A: Demonstration", the consequence
     # underneath, once. ``split_reason=False`` is the colliding-title path.
     title, desc = "74A: Demonstration Betrieb ab Landstraße", "Demonstration\nBetrieb ab Landstraße < >"
-    assert _render(title, desc) == "Betrieb ab Landstraße [Am\u202f19.09.]"
+    assert _render(title, desc) == "Betrieb ab Landstraße. [Am\u202f19.09.]"
     assert _render(title, desc, split_reason=False) == "[Am\u202f19.09.]"
 
 
 def test_a_bare_repeat_without_the_reason_word_is_dropped() -> None:
-    assert _render("1A: Veranstaltung Kein Betrieb", "Kein Betrieb") == "Kein Betrieb [Am\u202f19.09.]"
+    assert _render("1A: Veranstaltung Kein Betrieb", "Kein Betrieb") == "Kein Betrieb. [Am\u202f19.09.]"
     assert _render("1A: Veranstaltung Kein Betrieb", "Kein Betrieb", split_reason=False) == "[Am\u202f19.09.]"
 
 

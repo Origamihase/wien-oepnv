@@ -36,6 +36,7 @@ Mutations checked against this file (each one caught, by the test named):
 from __future__ import annotations
 
 from datetime import UTC, datetime
+from functools import partial
 from typing import Any, cast
 
 import src.build_feed as bf
@@ -164,13 +165,21 @@ def test_two_causes_of_line_66a_share_one_slot() -> None:
     assert not bf._is_wl_ticker(item)
 
 
-def test_the_feed_shows_both_causes() -> None:
+def test_the_feed_shows_both_causes(monkeypatch: pytest.MonkeyPatch) -> None:
+    # The time line is relative to the day it is rendered on; pin it to the
+    # moment the feed is built here. Unpinned, the expected "[Heute]" only
+    # held on 2026-10-02 and the test failed on main from 2026-10-03 on.
+    monkeypatch.setattr(
+        bf,
+        "format_local_times",
+        partial(bf.format_local_times, now=datetime.fromisoformat("2026-10-01T10:01:00+02:00")),
+    )
     xml = bf._make_rss(_built([SALVATORIANERPLATZ, RESCUE_66A]), _at("2026-10-01T10:01:00+02:00"), {}, lang="de")
     assert xml.count("<item>") == 1
     assert "<![CDATA[66A: Rettungseinsatz, Bauarbeiten]]>" in xml
     assert (
         "Rettungseinsatz: Unregelmäßige Intervalle in beiden Richtungen. "
-        "Bauarbeiten: Busse halten Salvatorianerplatz. [Heute]"
+        "Bauarbeiten: Busse halten Salvatorianerplatz. [Bis\u202fFr\u202f02.10.]"
     ) in xml
 
 
