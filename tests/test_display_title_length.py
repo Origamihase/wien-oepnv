@@ -36,6 +36,7 @@ def test_a_sentence_title_keeps_what_it_reports() -> None:
         "category": "Störung",
         "title": f"18: {_STADIONBRUECKE}",
         "description": _STADIONBRUECKE,
+        "link": "https://www.wienerlinien.at/ogd_realtime",
     }
     assert _display_title(item) == "18: Haltestelle Stadionbrücke aufgelassen"
     # The item itself keeps its title: dedupe and merges compare it.
@@ -86,7 +87,7 @@ def test_abbreviations_are_no_sentence_end() -> None:
 
 def test_other_sources_keep_their_title() -> None:
     long_route = "R 40/REX 41/REX 4/S 40: Wien Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern / Tulln an der Donau"
-    item: FeedItem = {"source": "ÖBB", "title": long_route, "description": long_route}
+    item: FeedItem = {"source": "ÖBB", "title": long_route, "description": long_route, "link": ""}
     assert _display_title(item) == long_route
 
 
@@ -117,5 +118,6 @@ def test_a_baustellen_title_is_shown_compact() -> None:
         "source": "Stadt Wien – Baustellen",
         "title": "U2: Rechte Wienzeile von Kreuzung Ramperstorffergasse bis Kreuzung Pilgramgasse und Pilgrambrücke",
         "description": "Für den Neubau der U-Bahnstation der U2 Pilgramgasse wird die Rechte Wienzeile gesperrt.",
+        "link": "",
     }
     assert _display_title(item) == "U2: Rechte Wienzeile von Ramperstorffergasse bis Pilgramgasse"
