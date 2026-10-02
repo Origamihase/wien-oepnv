@@ -5,7 +5,9 @@ from __future__ import annotations
 
 import logging
 import sys
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -14,11 +16,28 @@ if str(REPO_ROOT) not in sys.path:
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.providers.wiener_linien import fetch_events  # noqa: E402  (import after path setup)
+from src.providers.wl_plausibility import collected_corrections, record_corrections  # noqa: E402
 from src.utils.cache import DataDegradationError, write_cache  # noqa: E402
 from src.utils.serialize import serialize_for_cache  # noqa: E402
 
 
 logger = logging.getLogger("update_wl_cache")
+
+# Contradictions between the sources of a WL item and how they were settled
+# (see ``src/providers/wl_plausibility.py``). Committed with the cache.
+PLAUSIBILITY_ANOMALIES = REPO_ROOT / "data" / "wl_plausibility_anomalies.json"
+
+
+def record_plausibility_anomalies(path: Path = PLAUSIBILITY_ANOMALIES) -> None:
+    """Keep this fetch's plausibility corrections in *path*; never fails the run."""
+    try:
+        today = datetime.now(ZoneInfo("Europe/Vienna")).date()
+        new = record_corrections(path, collected_corrections(), today)
+    except OSError as exc:
+        logger.warning("WL-Plausibilitätssammlung nicht geschrieben (%s).", type(exc).__name__)
+        return
+    if new:
+        logger.info("WL-Plausibilität: %d neue Auffälligkeit(en) gesammelt.", new)
 
 
 def configure_logging() -> None:
@@ -41,6 +60,8 @@ def main() -> int:
             "Failed to fetch Wiener Linien events; keeping existing cache.",
         )
         return 1
+
+    record_plausibility_anomalies()
 
     # Defensive: fetch_events() is annotated list[...], so mypy --strict
     # sees this runtime contract guard as unreachable. Keep it regardless —

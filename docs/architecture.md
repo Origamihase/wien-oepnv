@@ -339,6 +339,43 @@ verdrängt eine andere Störung.
   solches Präfix wieder, sonst setzte `_post_filter_oebb` es beim Lesen des
   Caches ein zweites Mal davor.
 
+### Zeitraum einer WL-Meldung: Plausibilitätsprüfung (seit 2026-10-02)
+
+Wiener Linien nennen den Zeitraum einer Meldung bis zu dreimal: in
+`time.start`/`time.end`, als „ab“/„am“-Datum im Titel und im Abschnitt
+„Zeitraum:“ der Beschreibung. Ein Tippfehler steht meist nur an einer
+Stelle. Anlass: „47B: Laufveranstaltung am 04.10.2027“ (Text und `time.end`:
+04.10.2026) schob den Beginn ein Jahr hinter das Ende, der deutsche Feed
+zeigte „[Ab 04.10.2027]“ für einen Lauf am selben Sonntag.
+
+`src/providers/wl_plausibility.py` wägt die Angaben gegeneinander ab, in
+dieser Reihenfolge:
+
+1. **Mehrheit bei Widerspruch.** Titel- und Textdatum mit gleichem Tag und
+   Monat, aber anderem Jahr: Es gilt das Jahr näher an der Veröffentlichung
+   (`year_conflict`).
+2. **Harte Grenzen.** Ein Beginn nach dem Ende wird vom Ende überstimmt
+   (`begin_after_end`). Ein Beginn mehr als 365 Tage nach der
+   Veröffentlichung zählt nur, wenn eine zweite Angabe ihn bestätigt
+   (`unconfirmed_lead`). Längster echter Vorlauf im Cache vom 02.10.: 88
+   Tage (Stammstrecke Phase 2).
+3. **Im Zweifel konservativ.** Was offen bleibt, fällt auf `time.start`
+   zurück. Eine Meldung wird wegen eines Widerspruchs nie versteckt; ein
+   `time.start` nach `time.end` wird nur gemeldet
+   (`source_start_after_end`).
+4. **Jede Korrektur wird gesammelt.** Sie steht als Warnung im Log, und
+   `scripts/update_wl_cache.py` führt sie in
+   `data/wl_plausibility_anomalies.json` (gleiches Format wie
+   `data/feed_line_anomalies.json`: `kind`, `title`, `detail`,
+   `first_seen`, `last_seen`, `days_seen`). Die Datei entsteht erst mit der
+   ersten Korrektur.
+
+Die bisherigen Regeln gelten unverändert und zählen nicht als Korrektur:
+Ein 11:11-Ende weicht dem Ende aus „Zeitraum:“, ein Beginndatum verschiebt
+den Start nur nach hinten, und ein Textdatum hinter dem Ende ist das Datum
+einer späteren Phase. Was die Prüfung nicht sehen kann: eine Angabe, die an
+allen Stellen gleich falsch ist.
+
 ---
 
 ## 2. Die `request_safe`-Security-State-Machine

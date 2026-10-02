@@ -34,17 +34,14 @@ from .wl_lines import (
     _make_line_pairs_from_related,
     _merge_line_pairs,
 )
+from .wl_plausibility import note_corrections, plausible_end, plausible_start, reset_corrections
 from .wl_text import (
     KW_EXCLUDE,
     KW_RESTRICTION,
-    _VIENNA_TZ,
     _is_facility_only,
     _tidy_title_wl,
     _title_core,
     _topic_key_from_title,
-    extract_date_from_title,
-    extract_end_from_description,
-    extract_start_from_description,
 )
 
 # Basis-URL aus Secret/ENV, Fallback: OGD-Endpoint
@@ -324,32 +321,14 @@ def _is_active(start: datetime | None, end: datetime | None, now: datetime) -> b
     return True
 
 
-# WL closes 23 of 34 notices (2026-10-01) at exactly 11:11, mostly a year
-# after publication or on 11.11. — an end set by hand, not a date that was
-# known. "44A: Kurzführung" ended "Ende September 2026" by its text and by
-# its ``time.end`` on 22.07.2027, so the finished notice stayed a candidate
-# for the ten feed slots.
-_PLACEHOLDER_END = (11, 11)
-
-
 def _effective_end(
     desc_raw: str, end: datetime | None, start: datetime | None
 ) -> datetime | None:
     """WL's ``time.end``, or the end its "Zeitraum:" names instead of an 11:11 one.
 
-    Only an end at 11:11 Europe/Vienna gives way; every other end, and an
-    open one, stays. The text's end counts only when it does not lie
-    before the start.
+    See :func:`wl_plausibility.plausible_end`.
     """
-    if end is None:
-        return None
-    local = end.astimezone(_VIENNA_TZ)
-    if (local.hour, local.minute) != _PLACEHOLDER_END:
-        return end
-    named = extract_end_from_description(desc_raw, reference_date=start or end)
-    if named is None or (start is not None and named < start):
-        return end
-    return named
+    return plausible_end(desc_raw, end, start)
 
 
 def _effective_start(
@@ -361,27 +340,14 @@ def _effective_start(
 ) -> datetime | None:
     """When the measure of a WL item begins, for ``starts_at``.
 
-    WL's ``time.start`` is when a message is published and valid, not when
-    the measure begins. The title (``ab``/``am`` a date) names the begin,
-    else the "Zeitraum:" section of the description. Either only moves the
-    start later, never earlier: an earlier date is a phase already running.
-    A date from the description that lies past the end is not taken (the
-    first date behind the heading is then not the start).
-    Both dates are anchored to Europe/Vienna midnight, so the API start
-    is projected to Vienna before comparing calendar days — otherwise the
-    decision drifts by one near midnight UTC.
+    The sources of the item (``time.start``/``time.end``, the title date,
+    the "Zeitraum:" section) are weighed by
+    :func:`wl_plausibility.plausible_start`; every contradiction it settles
+    is logged and collected for ``data/wl_plausibility_anomalies.json``.
     """
-    reference = start or now
-    named = extract_date_from_title(title_raw, reference_date=reference)
-    if named is None:
-        named = extract_start_from_description(desc_raw, reference_date=reference)
-        if named is not None and end and named > end:
-            return start
-    if named is None:
-        return start
-    if start and named.date() <= start.astimezone(_VIENNA_TZ).date():
-        return start
-    return named
+    effective, corrections = plausible_start(title_raw, desc_raw, start, end, now)
+    note_corrections(title_raw, corrections)
+    return effective
 
 
 def _intervals_overlap(
@@ -1007,6 +973,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
     # below the cap pass through unchanged.
     timeout = min(timeout, MAX_WL_FETCH_TIMEOUT)
     now = datetime.now(UTC)
+    reset_corrections()
     raw: list[dict[str, Any]] = []
 
     with session_with_retries(WL_USER_AGENT, raise_on_status=False) as session:
