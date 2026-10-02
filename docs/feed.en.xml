@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 02 Oct 2026 18:30:56 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 19:00:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[5/O: Demonstration]]></title>
@@ -65,17 +65,6 @@
       <content:encoded><![CDATA[Construction works in the area of Wildbadgasse is redirected to line 20A.<br/>[13.10.2026 – 14.10.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U2: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
-      <pubDate>Fri, 02 Oct 2026 14:03:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 14:03:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 14:03:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 02.10.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 04 Nov 2026 23:59:59 +0100</ext:ends_at>
       <description>Due to construction works, from 02.11.2026 to 03.11.2026 between Wien Franz-Josefs-Bahnhof and St.Andrä-Wördern station, no R 40 trains can be operated. [31.10.2026 – 04.11.2026]</description>
       <content:encoded><![CDATA[Due to construction works, from 02.11.2026 to 03.11.2026 between Wien Franz-Josefs-Bahnhof and St.Andrä-Wördern station, no R 40 trains can be operated.<br/>[31.10.2026 – 04.11.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46/47A/47B: Event on 04.10.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c2bb5f86d94aef7a1f6955caa3f47b2970089dc4432d9db0f98ffd41cb8ccb65</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 12:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 04 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
+      <description>Due to an event in the area of Allianz Stadion the following transport measures are taken. [On 04.10.2026]</description>
+      <content:encoded><![CDATA[Due to an event in the area of Allianz Stadion the following transport measures are taken.<br/>[On 04.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
