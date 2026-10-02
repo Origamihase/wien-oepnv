@@ -88,7 +88,7 @@ def test_today_is_the_vienna_day() -> None:
     ],
 )
 def test_time_line_in_english(german: str, english: str) -> None:
-    assert bf._translate_time_line_en(german) == english.replace(" ", NNBSP)
+    assert bf._translate_time_line_en(german) == english
 
 
 def test_the_line_never_breaks() -> None:

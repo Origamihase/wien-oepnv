@@ -1680,6 +1680,10 @@ _TIME_WORDS_DE_TO_EN: dict[str, str] = {
 }
 
 
+# One word of a bracketed time line: no space, no bracket.
+_TIME_LINE_WORD_RE = re.compile(r"[^\s\[\]]+")
+
+
 # ---------------- Entity preservation (proper-noun masking) ----------------
 #
 # The Helsinki opus-mt-de-en model translates German to English by
@@ -3812,16 +3816,12 @@ def _translate_time_line_en(time_line: str) -> str:
     ``time_line`` is the bracketed form emitted by
     :func:`_format_item_content` — e.g. ``[Seit 05.01.]``, ``[Heute]`` or
     ``[Ab Mo 05.10. bis 11.11.]`` (``[From Mon 05.10. until 11.11.]``).
-    Dates and anything else unknown pass through unchanged; the words stay
-    joined by NARROW NO-BREAK SPACE, as in German.
+    Dates, anything else unknown and the spaces between the words (NARROW
+    NO-BREAK SPACE from ``format_local_times``) pass through unchanged.
     """
-    if not time_line:
-        return time_line
-    stripped = time_line.strip().strip("[]").strip()
-    if not stripped:
-        return time_line
-    words = [_TIME_WORDS_DE_TO_EN.get(word, word) for word in stripped.split()]
-    return f"[{_NNBSP.join(words)}]"
+    return _TIME_LINE_WORD_RE.sub(
+        lambda match: _TIME_WORDS_DE_TO_EN.get(match.group(0), match.group(0)), time_line
+    )
 
 
 # What a placeholder leaves behind once its unmask half-worked: an ``X`` or a
