@@ -422,18 +422,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Fahrtbehinderung Falschparker",
-    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d",
-    "pubDate": "2026-10-02T13:30:28+02:00",
-    "starts_at": "2026-10-02T13:32:00+02:00",
-    "ends_at": "2026-10-02T23:55:00+02:00",
-    "_identity": "wl|störung|L=13A|D=2026-10-02|TK=falschparker"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "16A: Verkehrsüberlastung",
     "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -698,6 +686,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5B: Verkehrsüberlastung",
+    "description": "Linie 5B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e55e4c55db9e80a5fe1558a44e4df1f020f86f204466795652f84a0c8c8d062a",
+    "pubDate": "2026-10-02T14:18:00+02:00",
+    "starts_at": "2026-10-02T14:18:00+02:00",
+    "ends_at": "2026-10-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=5B|D=2026-10-02|TK=5b verkehrsüberlastung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62: Züge halten bei Linie 18, Richtung Burggasse",
     "description": "Züge halten bei\nLinie 18, Richtung Burggasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -740,7 +740,7 @@
     "guid": "8c9b2f06082b865070bcbe91b5a5c9af65a5b959cee850e5fe9386874c8fbfb1",
     "pubDate": "2026-10-02T12:55:35+02:00",
     "starts_at": "2026-10-02T13:51:10+02:00",
-    "ends_at": "2026-10-02T23:55:00+02:00",
+    "ends_at": "2026-10-02T14:53:00+02:00",
     "_identity": "wl|störung|L=62|D=2026-10-02|TK=falschparker"
   },
   {
@@ -842,14 +842,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Schadhaftes Fahrzeug",
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "U2: Rettungseinsatz",
+    "description": "Die Linie U2 fährt derzeit zwischen den Stationen Taborstraße und Schottenring in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 14:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Taborstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104",
-    "pubDate": "2026-10-02T13:23:00+02:00",
-    "starts_at": "2026-10-02T13:23:00+02:00",
+    "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
+    "pubDate": "2026-10-02T14:03:00+02:00",
+    "starts_at": "2026-10-02T14:03:00+02:00",
     "ends_at": "2026-10-02T23:55:00+02:00",
-    "_identity": "wl|störung|L=U2|D=2026-10-02|TK=u2 schadhaftes fahrzeug"
+    "_identity": "wl|störung|L=U2|D=2026-10-02|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",

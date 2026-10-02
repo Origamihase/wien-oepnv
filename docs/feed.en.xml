@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 02 Oct 2026 14:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 14:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[5B: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e55e4c55db9e80a5fe1558a44e4df1f020f86f204466795652f84a0c8c8d062a</guid>
+      <pubDate>Fri, 02 Oct 2026 14:18:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 14:18:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 14:18:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic congestion. [On 02.10.2026]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[On 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
+      <pubDate>Fri, 02 Oct 2026 14:03:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 14:03:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 14:03:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Line U2 currently runs between stations Taborstraße and Schottenring in both directions via track 2. Duration: 14:30. Reason: rescue operation im … [On 02.10.2026]</description>
+      <content:encoded><![CDATA[Line U2 currently runs between stations Taborstraße and Schottenring in both directions via track 2. Duration: 14:30. Reason: rescue operation im …<br/>[On 02.10.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[22A: Traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -52,28 +74,6 @@
       <ext:ends_at>Fri, 02 Oct 2026 14:42:00 +0200</ext:ends_at>
       <description>Service obstruction [On 02.10.2026]</description>
       <content:encoded><![CDATA[Service obstruction<br/>[On 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d</guid>
-      <pubDate>Fri, 02 Oct 2026 13:30:28 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 13:28:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 13:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: illegally parked vehicle. [On 02.10.2026]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: illegally parked vehicle.<br/>[On 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104</guid>
-      <pubDate>Fri, 02 Oct 2026 13:23:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 13:23:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 13:23:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 02.10.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 02.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62: Illegally parked vehicle, ÖBB construction works]]></title>
