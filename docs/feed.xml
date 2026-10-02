@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 02 Oct 2026 16:07:48 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 16:31:05 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[11: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">caa99a4405c9e9d694c00ed55cb1e3ef3d62a8ffbb96ac554bb8ac74ceb13819</guid>
+      <pubDate>Fri, 02 Oct 2026 16:06:10 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 16:31:05 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 16:06:10 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 17:06:00 +0200</ext:ends_at>
+      <description>Betrieb ab Quellenplatz; Züge halten bei Linie O, Richtung Raxstraße. [Am 02.10.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Quellenplatz; Züge halten bei Linie O, Richtung Raxstraße.<br/>[Am 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[6: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ae49fb91e0d145a88af8a0d24ea89b13fb07332436e1d4b9f3978293b6e0b7cd</guid>
+      <pubDate>Fri, 02 Oct 2026 16:05:10 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 16:31:05 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 16:05:10 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 17:04:00 +0200</ext:ends_at>
+      <description>Betrieb ab Reumannplatz; Züge halten Favoritenstraße. [Am 02.10.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Reumannplatz; Züge halten Favoritenstraße.<br/>[Am 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[20A: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d541da730008a50f7d13d1231355ba02134695bfdd0469c8f90d4ab1ab9eaf30</guid>
+      <pubDate>Fri, 02 Oct 2026 16:05:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 16:31:05 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Oct 2026 17:00:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet. [13.10.2026 – 14.10.2026]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet.<br/>[13.10.2026 – 14.10.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[14A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +52,6 @@
       <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Fahrtbehinderung in Richtung Neubaugasse U. Voraussichtliche Dauer: 16:10 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Keplerplatz U. [Am 02.10.2026]</description>
       <content:encoded><![CDATA[Fahrtbehinderung in Richtung Neubaugasse U. Voraussichtliche Dauer: 16:10 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Keplerplatz U.<br/>[Am 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[6: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a83ae3699a9b82dcf9428c717cb575d1a819b46187a6ebc8493ee1bdb8344194</guid>
-      <pubDate>Fri, 02 Oct 2026 15:20:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 15:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 15:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 02.10.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 02.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Polizeieinsatz]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Wed, 04 Nov 2026 23:59:59 +0100</ext:ends_at>
       <description>Wegen Bauarbeiten können von 02.11.2026 bis 03.11.2026 zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren. [31.10.2026 – 04.11.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können von 02.11.2026 bis 03.11.2026 zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren.<br/>[31.10.2026 – 04.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46/47A/47B: Veranstaltung am 04.10.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c2bb5f86d94aef7a1f6955caa3f47b2970089dc4432d9db0f98ffd41cb8ccb65</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 12:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 04 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
-      <description>Wegen einer Veranstaltung im Bereich Allianz Stadion kommt es zu folgenden Verkehrsmaßnahmen. [Am 04.10.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Veranstaltung im Bereich Allianz Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[Am 04.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29B/N25: Adolf-Loos-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2e0949e212b98b31a226dddab6b40d0f6c06edb1c250ee7ddaac3c840bc8e962</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 11:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 11:11:00 +0100</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet. [05.10.2026 – 31.12.2026]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet.<br/>[05.10.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>

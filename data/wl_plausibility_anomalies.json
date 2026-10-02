@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "description": "Contradictions between the sources of a Wiener-Linien item (time fields, title date, 'Zeitraum:' text) and how src/providers/wl_plausibility.py settled them: year_conflict, begin_after_end, unconfirmed_lead, source_start_after_end. One record per kind and WL title; days in Europe/Vienna.",
+  "anomalies": [
+    {
+      "kind": "year_conflict",
+      "title": "47B: Laufveranstaltung am 04.10.2027",
+      "first_seen": "2026-10-02",
+      "last_seen": "2026-10-02",
+      "days_seen": 1,
+      "detail": "Titel 04.10.2027, Zeitraum 04.10.2026; gilt 04.10.2026 (näher an der Veröffentlichung)"
+    }
+  ]
+}
