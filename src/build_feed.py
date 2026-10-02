@@ -5473,10 +5473,13 @@ _ALL_CLEAR_TITLE_RE = re.compile(
 # ist ein Test") and "62: F57f Test" ("F57 f Test"). On a display with ten
 # slots each took the place of a real disruption (audit 2026-09-26).
 _TEST_MESSAGE_RE = re.compile(r"\btestmeldung(?:en)?\b", re.IGNORECASE)
-_TEST_WORD_RE = re.compile(r"\btest\b", re.IGNORECASE)
+_TEST_WORD_RE = re.compile(r"(?<![\w-])test(?![\w-])", re.IGNORECASE)
 # A text this short that says "Test" is a test. A real message that mentions
 # one says more ("Test-Fahrten der neuen Straßenbahn zwischen … und …"), and
-# "Haltestelle" or "Testbetrieb" never match the word.
+# "Haltestelle" or "Testbetrieb" never match the word. Neither does a
+# compound with a hyphen: "U2: Test-Fahrten neuer Züge" and "D:
+# Covid-Test-Straße Haltestelle verlegt" are four words each and real
+# (fund C, 2026-10-02); a bare "\b" took the hyphen for a word end.
 MAX_TEST_TEXT_WORDS = 5
 
 
