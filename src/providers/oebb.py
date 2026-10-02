@@ -39,8 +39,10 @@ from ..utils.stations import (
     is_in_vienna,
     station_by_oebb_id,
     station_info,
+    station_lines,
     text_has_vienna_connection,
 )
+from ..utils.geo import calculate_distance_meters
 from ..utils.http import (
     fetch_content_safe,
     parse_retry_after,
@@ -1753,6 +1755,84 @@ def _try_star_routes(canonical_routes: list[tuple[str, str]]) -> tuple[str, list
     return hub, [b if a == hub else a for a, b in canonical_routes]
 
 
+# How much longer the way from A to B via a station X may be than the direct
+# distance A–B for X to still count as lying on the stretch A ↔ B. The
+# Franz-Josefs-Bahn bends north along the Danube before it turns west: Wien
+# Nußdorf adds 11 % to Wien Franz-Josefs-Bahnhof ↔ Tulln an der Donau, the
+# most of any station on that line in the cache.
+_CORRIDOR_DETOUR_FACTOR = 1.2
+
+
+def _lies_on_route(
+    point: StationInfo | None, start: StationInfo | None, end: StationInfo | None
+) -> bool:
+    """``True`` if *point* is a station on the way between *start* and *end*.
+
+    Two conditions, both required: the detour via *point* stays within
+    :data:`_CORRIDOR_DETOUR_FACTOR` of the direct distance, and one ÖBB line
+    serves all three stations (:func:`station_lines`). The second rules out
+    a station of another line that merely lies in the same direction —
+    Flughafen Wien lies straight between Wien Hauptbahnhof and Bruck an der
+    Leitha, but no line runs through all three. Unknown coordinates or
+    lines count as "not on the way".
+    """
+    if point is None or start is None or end is None:
+        return False
+    coords: list[tuple[float, float]] = []
+    for info in (point, start, end):
+        if info.latitude is None or info.longitude is None:
+            return False
+        coords.append((info.latitude, info.longitude))
+    (p_lat, p_lon), (s_lat, s_lon), (e_lat, e_lon) = coords
+    direct = calculate_distance_meters(s_lat, s_lon, e_lat, e_lon)
+    if not direct > 0:
+        return False
+    via = calculate_distance_meters(s_lat, s_lon, p_lat, p_lon) + calculate_distance_meters(
+        p_lat, p_lon, e_lat, e_lon
+    )
+    if via > direct * _CORRIDOR_DETOUR_FACTOR:
+        return False
+    return bool(
+        station_lines(point.name) & station_lines(start.name) & station_lines(end.name)
+    )
+
+
+def _drop_contained_routes(
+    pairs: list[tuple[str, str]], infos: dict[str, StationInfo | None]
+) -> list[tuple[str, str]]:
+    """Drop every route that is a part of another route of the same message.
+
+    ÖBB lists each affected line with its own stretch. The Franz-Josefs-Bahn
+    works of November 2026 named four, all starting at Wien Franz-Josefs-
+    Bahnhof and ending at St.Andrä-Wördern, Tulln an der Donau, Wien
+    Heiligenstadt and Wien Nußdorf, and the title listed all four ends
+    (125 characters on a display read from a distance). Every one of them
+    lies on the way to Tulln an der Donau, so the title is that one
+    stretch, ``Wien Franz-Josefs-Bahnhof ↔ Tulln an der Donau``; the
+    description keeps each line's own stretch.
+
+    A route is part of another when each of its ends is an end of the
+    other or lies on the way between them (:func:`_lies_on_route`).
+    Routes that are not part of another one stay as they are.
+    """
+    if len(pairs) < 2:
+        return pairs
+
+    def part_of(inner: tuple[str, str], outer: tuple[str, str]) -> bool:
+        ends = {name.casefold() for name in outer}
+        return all(
+            name.casefold() in ends
+            or _lies_on_route(infos.get(name), infos.get(outer[0]), infos.get(outer[1]))
+            for name in inner
+        )
+
+    return [
+        pair
+        for pair in pairs
+        if not any(other is not pair and part_of(pair, other) for other in pairs)
+    ]
+
+
 def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") -> str:
     """Build a clean ``A ↔ B`` title from extracted route(s).
 
@@ -1778,6 +1858,7 @@ def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") ->
     # Step 1: canonicalise every endpoint pair and dedup case-insensitively.
     canonical_pairs: list[tuple[str, str]] = []
     seen_canon: set[tuple[str, str]] = set()
+    infos: dict[str, StationInfo | None] = {}
     for raw_a, raw_b in routes:
         info_a = station_info(raw_a)
         info_b = station_info(raw_b)
@@ -1789,6 +1870,8 @@ def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") ->
         name_b = display_name(name_b)
         name_a = _expand_station_abbreviations(name_a)
         name_b = _expand_station_abbreviations(name_b)
+        infos.setdefault(name_a, info_a)
+        infos.setdefault(name_b, info_b)
 
         # Vienna endpoint always goes first when only one side is in Vienna.
         a_in_vienna = bool(info_a and info_a.in_vienna)
@@ -1807,7 +1890,10 @@ def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") ->
     if not canonical_pairs:
         return ""
 
-    # Step 2: try to render multi-route titles as a single chain.
+    # Step 2: a stretch that is part of another one is not repeated.
+    canonical_pairs = _drop_contained_routes(canonical_pairs, infos)
+
+    # Step 3: try to render multi-route titles as a single chain.
     title_body: str
     if len(canonical_pairs) >= 2:
         chain = _try_chain_routes(canonical_pairs)

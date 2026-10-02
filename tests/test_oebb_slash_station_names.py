@@ -104,14 +104,18 @@ def test_a_route_to_bruck_leitha_reaches_the_feed() -> None:
 
 
 def test_a_star_names_its_hub_once() -> None:
-    # The message disrupts four lines; all of them lead (2026-10-01).
+    # The message disrupts four lines; all of them lead (2026-10-01). Their
+    # stretches all lie on the way to Tulln an der Donau (2026-10-02).
     assert oebb._apply_route_title("REX 41: Bauarbeiten", _REX_41) == (
-        "R 40/REX 41/REX 4/S 40: Wien Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern / Tulln an der Donau / "
-        "Wien Heiligenstadt / Wien Nußdorf"
+        "R 40/REX 41/REX 4/S 40: Wien Franz-Josefs-Bahnhof ↔ Tulln an der Donau"
     )
+    # Ends that lie in different directions from the hub stay a star.
+    assert oebb._format_route_title(
+        [("Wien Hbf", "Mödling"), ("Wien Hbf", "Flughafen Wien"), ("Wien Hbf", "Wien Floridsdorf")]
+    ) == "Wien Hauptbahnhof ↔ Mödling / Flughafen Wien / Wien Floridsdorf"
 
 
 def test_two_routes_from_one_hub_still_chain() -> None:
-    assert oebb._format_route_title([("Wien Meidling", "Mödling"), ("Wien Meidling", "Baden")]) == (
-        "Baden ↔ Wien Meidling ↔ Mödling"
+    assert oebb._format_route_title([("Wien Meidling", "Mödling"), ("Wien Meidling", "Wien Floridsdorf")]) == (
+        "Wien Floridsdorf ↔ Wien Meidling ↔ Mödling"
     )

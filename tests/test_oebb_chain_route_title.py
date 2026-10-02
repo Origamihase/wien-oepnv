@@ -134,18 +134,25 @@ class TestChainRouteCollapse:
 
 
 class TestFormatRouteTitleChain:
-    def test_corridor_renders_as_chain(self) -> None:
-        # User's exact requested output.
+    def test_corridor_renders_as_its_outer_stretch(self) -> None:
+        # Wien Hütteldorf and Tullnerbach-Pressbaum lie on the way from
+        # Wien Westbahnhof to St. Pölten; the title names that one stretch
+        # (2026-10-02). It read "St. Pölten Hauptbahnhof ↔ Wien Westbahnhof
+        # ↔ Wien Hütteldorf ↔ Tullnerbach-Pressbaum" before, as if the
+        # line ran from St. Pölten to Wien and back out to Pressbaum.
         routes = [
             ("Wien Westbahnhof", "Wien Hütteldorf"),
             ("Wien Hütteldorf", "Tullnerbach-Pressbaum"),
             ("Wien Westbahnhof", "St. Pölten Hauptbahnhof"),
         ]
         out = _format_route_title(routes, "S 50")
-        assert out == (
-            "S 50: St. Pölten Hauptbahnhof ↔ Wien Westbahnhof"
-            " ↔ Wien Hütteldorf ↔ Tullnerbach-Pressbaum"
-        )
+        assert out == "S 50: Wien Westbahnhof ↔ St. Pölten Hauptbahnhof"
+
+    def test_branches_still_render_as_chain(self) -> None:
+        # Mödling does not lie between Wien Meidling and Wien Floridsdorf,
+        # nor Floridsdorf between Meidling and Mödling.
+        out = _format_route_title([("Wien Meidling", "Mödling"), ("Wien Floridsdorf", "Wien Meidling")])
+        assert out == "Wien Floridsdorf ↔ Wien Meidling ↔ Mödling"
 
     def test_disjoint_routes_keep_slash_format(self) -> None:
         routes = [
@@ -193,10 +200,9 @@ class TestApplyRouteTitleEndToEnd:
         # description says are disrupted, all of them (2026-10-01).
         assert "U3:" not in out
         assert out.startswith("S 50/REX 50:")
-        # And the multi-route body collapses into a single chain.
-        # Three "↔" separators for a 4-node chain.
-        assert out.count("↔") == 3
-        assert " / " not in out
+        # And the multi-route body collapses into the one stretch all
+        # three segments lie on.
+        assert out == "S 50/REX 50: Wien Westbahnhof ↔ St. Pölten Hauptbahnhof"
 
     def test_normalisation_preserves_correct_existing_prefix(self) -> None:
         # When the cached title's prefix already agrees with the

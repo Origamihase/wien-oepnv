@@ -38,10 +38,9 @@ FRANZ_JOSEFS_BAHN = (
     "<b>Wiener Linien</b> zu nutzen:<br><b>Linie Tram D</b> zwischen <b>Wien Franz-Josefs-Bahnhof</b> "
     "und <b>Wien Nußdorf Bahnhst</b><br><b>Linie U4</b> zwischen <b>Wien Heiligenstadt</b>"
 )
-FJB_TITLE = (
-    "R 40/REX 41/REX 4/S 40: Wien Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern / Tulln an der Donau / "
-    "Wien Heiligenstadt / Wien Nußdorf"
-)
+# Every stretch of the four lines lies on the way to Tulln an der Donau
+# (``_drop_contained_routes``, 2026-10-02).
+FJB_TITLE = "R 40/REX 41/REX 4/S 40: Wien Franz-Josefs-Bahnhof ↔ Tulln an der Donau"
 
 
 def test_the_four_lines_of_the_franz_josefs_bahn_lead() -> None:
