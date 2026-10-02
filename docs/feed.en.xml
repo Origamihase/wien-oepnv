@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 02 Oct 2026 10:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 11:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[14A: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">45135f0f9023593102b885c7d89c0c028d3a4d83421c93a8a39180b147612974</guid>
+      <pubDate>Fri, 02 Oct 2026 10:47:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 10:47:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 10:47:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service from Laxenburger Straße/ Gudrunstraße. Line 14A currently runs only between Neubaugasse U and Laxenburger Straße / Gudrunstraße. [On 02.10.2026]</description>
+      <content:encoded><![CDATA[Service from Laxenburger Straße/ Gudrunstraße. Line 14A currently runs only between Neubaugasse U and Laxenburger Straße / Gudrunstraße.<br/>[On 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A: Traffic accident, track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">75e9cdbc4576e94fd8403d3bb53fd7f0c241ca05e419063e677c764a9f1e8d35</guid>
+      <pubDate>Fri, 02 Oct 2026 10:44:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 10:44:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 10:44:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Traffic accident: irregular intervals in both directions. Track construction works: service from Johnstraße U, Schweglerstraße 19-21. [On 02.10.2026]</description>
+      <content:encoded><![CDATA[Traffic accident: irregular intervals in both directions. Track construction works: service from Johnstraße U, Schweglerstraße 19-21.<br/>[On 02.10.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Praterstern ↔ Wien Floridsdorf]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Thu, 31 Dec 2026 11:11:00 +0100</ext:ends_at>
       <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected. [05.10.2026 – 31.12.2026]</description>
       <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected.<br/>[05.10.2026 – 31.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[47B: Running event at 04.10.2027]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6864a29848e360090798645174eb08bfd5e2d1138aeba3ffff926596908e52a6</guid>
-      <pubDate>Mon, 28 Sep 2026 13:30:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 13:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 04 Oct 2027 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
-      <description>The 47B buses will be redirected due to a running event near the Allianz Stadium. [From 04.10.2027]</description>
-      <content:encoded><![CDATA[The 47B buses will be redirected due to a running event near the Allianz Stadium.<br/>[From 04.10.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">67078944a93bdf102ba6646e545b32c2ab8c76bf5f5efe8750a1c24d9ac26e08</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:14 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:14 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Trains keep in loop, Wipplingerstr 39; service from Augasse, Börse. [01.10.2026 – 02.10.2026]</description>
-      <content:encoded><![CDATA[Trains keep in loop, Wipplingerstr 39; service from Augasse, Börse.<br/>[01.10.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
