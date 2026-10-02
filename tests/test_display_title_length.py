@@ -15,9 +15,11 @@ from src.build_feed import (
     _DISPLAY_TITLE_TARGET,
     _format_item_content,
     _mark_house_numbers,
+    _section_collisions,
     _compact_baustellen_section,
     _compact_line_prefix,
     _display_title,
+    _display_title_parts,
     _shorten_wl_sentence_title,
 )
 from src.feed_types import FeedItem
@@ -104,26 +106,85 @@ def test_a_long_section_drops_crossing_and_second_names() -> None:
 
 
 def test_a_section_stops_shortening_once_it_fits() -> None:
-    title = "U2: Wienzeile von Kreuzung Ramperstorffergasse bis Kreuzung Pilgramgasse und Brücke"
+    title = "U2: Wienzeile von Kreuzung Kaigasse bis Kreuzung Bachgasse und Steg"
     out = _compact_baustellen_section(title)
-    assert out == "U2: Wienzeile von Ramperstorffergasse bis Pilgramgasse und Brücke"
+    assert out == "U2: Wienzeile von Kaigasse bis Bachgasse und Steg"
     assert len(out) <= _DISPLAY_TITLE_TARGET
 
 
 def test_a_short_section_is_left_alone() -> None:
-    title = "Bacherplatz von Kreuzung Arbeitergasse bis Gasse und Spengergasse"
+    title = "Platz von Kreuzung Hofgasse bis Gasse und Weg"
     assert len(title) <= _DISPLAY_TITLE_TARGET
     assert _compact_baustellen_section(title) == title
 
 
-def test_a_baustellen_title_is_shown_compact() -> None:
+_LANDSTRASSER: FeedItem = {
+    "source": "Stadt Wien – Baustellen",
+    "title": "Landstraßer Hauptstraße von Emmerich-Teuber-Platz und Juchgasse bis Schlachthausgasse",
+    "description": "Es wird lediglich die bestehende Bushaltestelle bei der Rabengasse örtlich verlegt.",
+    "link": "",
+}
+
+
+def test_a_long_section_moves_into_the_description() -> None:
+    # Target 50, operator request 2026-10-02 ("70 Zeichen … sollte echt ne Ausnahme sein").
+    assert _display_title_parts(_LANDSTRASSER) == (
+        "Landstraßer Hauptstraße",
+        "Von Emmerich-Teuber-Platz und Juchgasse bis Schlachthausgasse",
+    )
     item: FeedItem = {
         "source": "Stadt Wien – Baustellen",
-        "title": "U2: Rechte Wienzeile von Kreuzung Ramperstorffergasse bis Kreuzung Pilgramgasse und Pilgrambrücke",
-        "description": "Für den Neubau der U-Bahnstation der U2 Pilgramgasse wird die Rechte Wienzeile gesperrt.",
+        "title": "Universitätsstraße Kreuzung Landesgerichtsstraße und Garnisongasse",
+        "description": "",
         "link": "",
     }
-    assert _display_title(item) == "U2: Rechte Wienzeile von Ramperstorffergasse bis Pilgramgasse"
+    assert _display_title_parts(item) == ("Universitätsstraße", "Kreuzung Landesgerichtsstraße und Garnisongasse")
+    # "Kreuzung" in front of an end goes in the lead too.
+    item = {
+        "source": "Stadt Wien – Baustellen",
+        "title": "U2: Rechte Wienzeile von Kreuzung Ramperstorffergasse bis Kreuzung Pilgramgasse und Pilgrambrücke",
+        "description": "",
+        "link": "",
+    }
+    assert _display_title_parts(item) == (
+        "U2: Rechte Wienzeile",
+        "Von Ramperstorffergasse bis Pilgramgasse und Pilgrambrücke",
+    )
+
+
+def test_the_section_opens_the_rendered_description() -> None:
+    vienna = ZoneInfo("Europe/Vienna")
+    formatted = _format_item_content(
+        _LANDSTRASSER, "landstrasser", datetime(2026, 3, 9, tzinfo=vienna), datetime(2027, 8, 31, tzinfo=vienna)
+    )
+    assert formatted.title_out == "Landstraßer Hauptstraße"
+    assert formatted.desc_text_truncated.startswith(
+        "Von Emmerich-Teuber-Platz und Juchgasse bis Schlachthausgasse: Es wird lediglich die bestehende Bushaltestelle"
+    )
+
+
+def test_two_sites_on_one_street_keep_their_sections() -> None:
+    other: FeedItem = dict(_LANDSTRASSER)  # type: ignore[assignment]
+    other["title"] = "Landstraßer Hauptstraße von Rochusgasse und Weyrgasse bis Kardinal-Nagl-Platz"
+    assert _section_collisions([_LANDSTRASSER, other]) == {0, 1}
+    assert _section_collisions([_LANDSTRASSER]) == set()
+    assert _display_title(_LANDSTRASSER, drop_section=False) == (
+        "Landstraßer Hauptstraße von Emmerich-Teuber-Platz bis Schlachthausgasse"
+    )
+
+
+def test_a_spelled_out_start_leaves_a_wl_title() -> None:
+    # The time line says "[Ab 07.04.2026]" already.
+    item: FeedItem = {
+        "source": "Wiener Linien",
+        "title": "56A/56B/58A/58B: Bauarbeiten Maxingstraße ab 07. April 2026",
+        "description": "Bauarbeiten",
+        "link": "",
+        "starts_at": datetime(2026, 4, 7, tzinfo=ZoneInfo("Europe/Vienna")),
+    }
+    assert _display_title(item) == "56A/56B/58A/58B: Bauarbeiten Maxingstraße"
+    del item["starts_at"]
+    assert _display_title(item) == "56A/56B/58A/58B: Bauarbeiten Maxingstraße ab 07. April 2026"
 
 
 def test_an_oebb_line_list_is_written_without_spaces() -> None:

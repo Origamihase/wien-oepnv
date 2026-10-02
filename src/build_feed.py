@@ -68,6 +68,7 @@ from .utils.locking import file_lock
 from .utils.logging import sanitize_log_arg
 from .utils.stats import append_disruption_row, extract_location_name
 from .providers.baustellen import REFERRAL_BOILERPLATE_RE
+from .providers.wl_text import _MONTHS_DE
 from .utils.text import html_to_text, repair_glued_words, truncate_html
 
 
@@ -450,12 +451,13 @@ def _strip_trailing_directional_marker(summary: str) -> str:
 # merge: those compare titles, and a shortened title would change what they
 # see — "18: Haltestelle Stadionbrücke aufgelassen" reads as a short cause
 # and ``_line_runs`` joined it with that evening's "18: Gleisschaden".
-# 70 is where
-# the longest titles of the feed history on 2026-10-02 split: ÖBB route
-# titles with two or three lines end below it (``REX 50/REX 51/S 50: Wien
-# Westbahnhof ↔ St. Pölten Hauptbahnhof``, 62), the rewritten sentences and
-# street sections above it.
-_DISPLAY_TITLE_TARGET = 70
+# 50, operator request 2026-10-02 ("70 Zeichen … sollte echt ne Ausnahme
+# sein"): of the 68 titles in the feed that evening the median had 33
+# characters and three in four at most 41; above 50 stood the Baustellen
+# with a "von … bis …" section, two ÖBB titles of several lines and one WL
+# notice. The section moves into the description
+# (:func:`_baustellen_display`); ÖBB route titles are not shortened.
+_DISPLAY_TITLE_TARGET = 50
 
 # A sentence end inside a WL title: three lowercase letters, a full stop,
 # exclamation or question mark, then a capital. Abbreviations WL writes in
@@ -878,25 +880,98 @@ def _compact_line_prefix(title: str) -> str:
     return _SPACED_LINE_PREFIX_RE.sub(lambda match: match.group(0).replace(" ", ""), title, count=1)
 
 
-def _display_title(item: FeedItem) -> str:
-    """The title *item* is shown with.
+# The section of a Baustellen title: "von A bis B" or "Kreuzung A und B"
+# behind the street.
+_SECTION_TAIL_RE: re.Pattern[str] = re.compile(r"\s+((?:von|Kreuzung)\s+\S.*)$")
+
+
+def _baustellen_display(title: str, *, drop_section: bool) -> tuple[str, str]:
+    """Title and description lead of a Stadt Wien Baustelle as shown.
+
+    The section is compacted (:func:`_compact_baustellen_section`) and its
+    house numbers marked (:func:`_mark_house_numbers`). Still longer than
+    :data:`_DISPLAY_TITLE_TARGET`, the title keeps the street and the
+    section opens the description, as a label in front of its first
+    sentence so the 180-character summary keeps both::
+
+        Landstraßer Hauptstraße
+        Von Emmerich-Teuber-Platz und Juchgasse und Apostelgasse bis
+        Schlachthausgasse: Es wird lediglich die bestehende Bushaltestelle …
+
+    The lead is there even when the description names the places too: the
+    feed shows only its first sentences ("U2/U5: Bacherplatz" names
+    Arbeitergasse and Schwarzhorngasse in its third). ``drop_section=False`` keeps the
+    section in the title: another visible item would read the same
+    (:func:`_section_collisions`).
+    """
+    marked = _mark_house_numbers(title)
+    compact = _mark_house_numbers(_compact_baustellen_section(title))
+    if not drop_section or len(compact) <= _DISPLAY_TITLE_TARGET:
+        return compact, ""
+    match = _SECTION_TAIL_RE.search(marked)
+    head = marked[: match.start()] if match else ""
+    if match is None or not head.split(": ", 1)[-1].strip():
+        return compact, ""
+    section = _SECTION_CROSSING_RE.sub(r"\1 ", match.group(1))
+    return head, f"{section[0].upper()}{section[1:]}"
+
+
+# ``ab 07. April 2026``: the start WL writes into a notice title. The item's
+# time line says it (``[Ab 07.04.2026]``); the numeric form ``ab 14.09.26``
+# is dropped at fetch time already (``_AB_DATE_RE`` in ``wl_text``).
+_WL_SPELLED_START_RE: re.Pattern[str] = re.compile(
+    r"\s+ab\s+\d{1,2}\.\s*(?:" + "|".join(_MONTHS_DE) + r")(?:\s+\d{4})?(?=\s*$)",
+    re.IGNORECASE,
+)
+
+
+def _display_title_parts(item: FeedItem, *, drop_section: bool = True) -> tuple[str, str]:
+    """The title *item* is shown with, and a lead for its description.
 
     Applied when the item is rendered, after every dedupe and merge (see
-    :data:`_DISPLAY_TITLE_TARGET`). WL titles written as sentences go
-    through :func:`_shorten_wl_sentence_title`, Stadt Wien Baustellen
-    through :func:`_compact_baustellen_section` and
-    :func:`_mark_house_numbers`, ÖBB titles through
-    :func:`_compact_line_prefix`; every other title as is.
+    :data:`_DISPLAY_TITLE_TARGET`). WL titles lose a spelled-out start date
+    when the item has a start, and a title written as sentences goes
+    through :func:`_shorten_wl_sentence_title`; Stadt Wien Baustellen go
+    through :func:`_baustellen_display`, ÖBB titles through
+    :func:`_compact_line_prefix`; every other title as is. The lead is ""
+    unless text moved from the title into the description.
     """
     title = str(item.get("title") or "Mitteilung")
+    description = str(item.get("description") or "")
     source = str(item.get("source") or "").strip().casefold()
     if source == "wiener linien":
-        return _shorten_wl_sentence_title(title, str(item.get("description") or ""))
+        if item.get("starts_at"):
+            title = _WL_SPELLED_START_RE.sub("", title)
+        return _shorten_wl_sentence_title(title, description), ""
     if source.startswith("stadt wien"):
-        return _mark_house_numbers(_compact_baustellen_section(title))
+        return _baustellen_display(title, drop_section=drop_section)
     if source in {"öbb", "oebb"}:
-        return _compact_line_prefix(title)
-    return title
+        return _compact_line_prefix(title), ""
+    return title, ""
+
+
+def _display_title(item: FeedItem, *, drop_section: bool = True) -> str:
+    """The title *item* is shown with (see :func:`_display_title_parts`)."""
+    return _display_title_parts(item, drop_section=drop_section)[0]
+
+
+def _section_collisions(items: Sequence[FeedItem]) -> set[int]:
+    """Indices in *items* whose Baustelle keeps its section in the title.
+
+    Without the section two sites on one street would read the same on the
+    display; both keep it, like :func:`_short_title_collisions` does for WL
+    tickers.
+    """
+    short = [_display_title(item).casefold() for item in items]
+    full = [_display_title(item, drop_section=False).casefold() for item in items]
+    counts: dict[str, int] = {}
+    for key in short:
+        counts[key] = counts.get(key, 0) + 1
+    return {
+        index
+        for index, (key, whole) in enumerate(zip(short, full, strict=True))
+        if key != whole and counts[key] > 1
+    }
 
 
 def _baustellen_title_names_station(title: str, label: str) -> bool:
@@ -7718,8 +7793,9 @@ def _format_item_content(
     lang: str = "de",
     state: dict[str, dict[str, Any]] | None = None,
     split_reason: bool = True,
+    drop_section: bool = True,
 ) -> FormattedContent:
-    raw_title = _display_title(it)
+    raw_title, title_lead = _display_title_parts(it, drop_section=drop_section)
     raw_desc  = it.get("description") or ""
     link = _resolve_item_link(it.get("link"), ident)
 
@@ -7744,6 +7820,8 @@ def _format_item_content(
     # Task: Strict 2-line Layout (Summary + Timeframe)
     # Line 1: Concise plain text summary (no HTML artifacts)
     summary = html_to_text(raw_desc, collapse_newlines=True)
+    if title_lead:
+        summary = f"{title_lead}: {summary}" if summary.strip() else f"{title_lead}."
     summary = _sanitize_text(summary).strip()
     # Upstream prose sometimes arrives with the spaces between words
     # missing — the Stadt-Wien OGD Baustellen descriptions lost their
@@ -7957,6 +8035,7 @@ def _emit_item(
     *,
     lang: str = "de",
     split_reason: bool = True,
+    drop_section: bool = True,
 ) -> tuple[str, ET.Element, dict[str, str]]:
     """Convert a normalized item dictionary into an RSS <item> element and CDATA replacements.
 
@@ -7970,6 +8049,9 @@ def _emit_item(
         split_reason: Whether a WL ticker title may shrink to its cause
             (see :func:`_finish_reason_title`); ``False`` for an item whose
             short title another visible item already has.
+        drop_section: Whether a long Baustellen title may move its section
+            into the description (see :func:`_baustellen_display`); ``False``
+            when another visible item would then read the same.
 
     Returns:
         A tuple containing:
@@ -7992,6 +8074,7 @@ def _emit_item(
         lang=lang,
         state=state,
         split_reason=split_reason,
+        drop_section=drop_section,
     )
 
     if not isinstance(pubDate, datetime) and feed_config.FRESH_PUBDATE_WINDOW_MIN > 0:
@@ -8183,9 +8266,15 @@ def _make_rss(
     # Decided on the visible items together, from the German titles, so DE
     # and EN shorten the same items.
     keep_long = _short_title_collisions(shown)
+    keep_section = _section_collisions(shown)
     for index, it in enumerate(shown):
         _ident, elem, repl = _emit_item(
-            it, now, state, lang=lang, split_reason=index not in keep_long
+            it,
+            now,
+            state,
+            lang=lang,
+            split_reason=index not in keep_long,
+            drop_section=index not in keep_section,
         )
         channel.append(elem)
         item_replacements.update(repl)

@@ -352,8 +352,9 @@ verdrängt eine andere Störung.
   Luftlinie dazwischen liegt. Die einzelnen Strecken stehen weiter in der
   Beschreibung. In 441 ÖBB-Cache-Ständen der Historie änderte das 11 Titel
   und keine Zahl der Einträge nach `deduplicate_fuzzy`.
-* **Anzeigelänge des Titels (seit 2026-10-02).** Über 70 Zeichen
-  (`_DISPLAY_TITLE_TARGET`) wird ein Titel an seinen eigenen Fugen gekürzt,
+* **Anzeigelänge des Titels (seit 2026-10-02).** Über 50 Zeichen
+  (`_DISPLAY_TITLE_TARGET`; zuerst 70, auf Betreiberwunsch gesenkt: im Feed
+  vom 02.10. Median 33, drei Viertel ≤ 41) wird ein Titel an seinen eigenen Fugen gekürzt,
   nie abgeschnitten. Das geschieht erst beim Rendern (`_display_title` in
   `_format_item_content`), nach Dedupe und Merges, die Titel vergleichen:
   Früher gekürzt, las sich „18: Haltestelle Stadionbrücke aufgelassen“ wie
@@ -369,7 +370,20 @@ verdrängt eine andere Störung.
     jeder zweite Name an einem Ende (`_compact_baustellen_section`): „U2:
     Rechte Wienzeile von Ramperstorffergasse bis Pilgramgasse“ statt „… von
     Kreuzung Ramperstorffergasse bis Kreuzung Pilgramgasse und
-    Pilgrambrücke“.
+    Pilgrambrücke“. Ist der Titel dann noch über 50, behält er die Straße,
+    und der Abschnitt steht vor dem ersten Satz der Beschreibung
+    (`_baustellen_display`): „Landstraßer Hauptstraße“, darunter „Von
+    Emmerich-Teuber-Platz und Juchgasse und Apostelgasse bis
+    Schlachthausgasse: Es wird …“. Hätten zwei sichtbare Baustellen dann
+    denselben Titel, behalten beide den Abschnitt (`_section_collisions`).
+  * WL: „ab 07. April 2026“ am Titelende fällt weg, wenn die Meldung einen
+    Beginn hat; die Zeitzeile nennt ihn. Die Ziffernform „ab 14.09.26“ fiel
+    schon beim Abruf weg.
+  * Bewusste Ausnahmen über 50: ÖBB-Strecken mit mehreren Linien („R40/REX41/
+    REX4/S40: Wien Franz-Josefs-Bahnhof ↔ Tulln an der Donau“, 66) und
+    „66A/N66: Grenzackerstraße Richtung Reumannplatz bzw. Oper, Karlsplatz“
+    (69), deren Richtung sie von der Gegenrichtung „66A/N66:
+    Grenzackerstraße“ unterscheidet.
 * **Linien und Hausnummern im Titel (seit 2026-10-02).** Ebenfalls beim
   Rendern (`_display_title`):
   * ÖBB: Die Linienliste vor dem Doppelpunkt steht ohne Leerzeichen
