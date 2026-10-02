@@ -36,6 +36,7 @@ Mutations checked against this file (each one caught, by the test named):
 from __future__ import annotations
 
 from datetime import UTC, datetime
+from functools import partial
 from typing import Any, cast
 
 import src.build_feed as bf
@@ -164,8 +165,11 @@ def test_two_causes_of_line_66a_share_one_slot() -> None:
     assert not bf._is_wl_ticker(item)
 
 
-def test_the_feed_shows_both_causes() -> None:
-    xml = bf._make_rss(_built([SALVATORIANERPLATZ, RESCUE_66A]), _at("2026-10-01T10:01:00+02:00"), {}, lang="de")
+def test_the_feed_shows_both_causes(monkeypatch: pytest.MonkeyPatch) -> None:
+    now = _at("2026-10-01T10:01:00+02:00")
+    # Read on the day itself: the end 02.10. 01:00 belongs to 01.10.
+    monkeypatch.setattr(bf, "format_local_times", partial(bf.format_local_times, now=now))
+    xml = bf._make_rss(_built([SALVATORIANERPLATZ, RESCUE_66A]), now, {}, lang="de")
     assert xml.count("<item>") == 1
     assert "<![CDATA[66A: Rettungseinsatz, Bauarbeiten]]>" in xml
     assert (
