@@ -376,6 +376,17 @@ den Start nur nach hinten, und ein Textdatum hinter dem Ende ist das Datum
 einer späteren Phase. Was die Prüfung nicht sehen kann: eine Angabe, die an
 allen Stellen gleich falsch ist.
 
+Nennt „Zeitraum:“ kein Ende, sondern eine Dauer („auf Dauer von etwa sechs
+Wochen“, seit 2026-10-02), gilt statt eines 11:11-Endes der Start aus dem
+Text plus Dauer plus Puffer, auf 23:59 des Tags. Der Puffer ist die halbe
+Dauer, mindestens eine Woche (`MIN_DURATION_BUFFER`): WL schreibt „etwa“,
+und eine Baustelle, die länger dauert, soll nicht aus dem Feed fallen,
+solange WL sie noch ausliefert. Die Rechnung verkürzt ein 11:11-Ende nur,
+sie verlängert es nie. Anlass: „65A/66A“ (ab 12.08., „etwa zwei Wochen“)
+stand am 02.10. noch mit Ende 31.08.2027 im Cache; 29B/N25 endet jetzt am
+07.12. statt 31.12., 36A/36B am 12.11. statt 16.09.2027, 63A behält sein
+11.11.
+
 ---
 
 ## 2. Die `request_safe`-Security-State-Machine

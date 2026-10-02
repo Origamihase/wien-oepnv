@@ -5,7 +5,7 @@ from __future__ import annotations
 import calendar
 import html
 import re
-from datetime import date, datetime, UTC
+from datetime import date, datetime, timedelta, UTC
 from zoneinfo import ZoneInfo
 
 _VIENNA_TZ = ZoneInfo("Europe/Vienna")
@@ -416,6 +416,21 @@ def _end_day(g: dict[str, str | None], reference: datetime) -> tuple[int, int, i
     return None if year is None else (year, month, day)
 
 
+def _period_section(description: str) -> str | None:
+    """The "Zeitraum:" section up to its measures, ``None`` without one or with phases.
+
+    "Phase 1: … bis 6. September 2026. Phase 2: …" – the first end is not
+    the end, and a duration would only be the first phase's.
+    """
+    period = _period_text(description)
+    if not period:
+        return None
+    section = period[:_PERIOD_END_WINDOW]
+    cut = _PERIOD_SECTION_END_RE.search(section)
+    section = section[: cut.start()] if cut else section
+    return None if _PHASE_RE.search(section) else section
+
+
 def extract_end_from_description(
     description: str, reference_date: datetime | None = None
 ) -> datetime | None:
@@ -426,14 +441,9 @@ def extract_end_from_description(
     exact ends read 23:59 too. A missing year resolves against
     *reference_date* like the start.
     """
-    period = _period_text(description)
-    if not period:
+    section = _period_section(description)
+    if section is None:
         return None
-    section = period[:_PERIOD_END_WINDOW]
-    cut = _PERIOD_SECTION_END_RE.search(section)
-    section = section[: cut.start()] if cut else section
-    if _PHASE_RE.search(section):
-        return None  # "Phase 1: … bis 6. September 2026. Phase 2: …" – the first end is not the end
     match = _PERIOD_END_RE.search(section)
     if match is None:
         return None
@@ -446,6 +456,41 @@ def extract_end_from_description(
     except ValueError:
         return None
 
+
+
+# A duration instead of an end: "Ab Montag, 05. Oktober 2026, etwa 06:30 Uhr
+# auf Dauer von etwa sechs Wochen" (29B/N25), "Von Montag, 05. Oktober 2026,
+# auf Dauer von etwa vier Wochen, täglich von 20:00 Uhr bis 05:00 Uhr" (63A).
+# Four notices on 2026-10-02, all with an 11:11 end.
+_NUMBER_WORDS = {
+    "einen": 1, "einer": 1, "eine": 1, "ein": 1, "zwei": 2, "drei": 3, "vier": 4,
+    "fünf": 5, "sechs": 6, "sieben": 7, "acht": 8, "neun": 9, "zehn": 10, "elf": 11, "zwölf": 12,
+}
+_UNIT_DAYS = {"tag": 1, "woche": 7, "monat": 30}
+_PERIOD_DURATION_RE = re.compile(
+    r"\b(?:Dauer\s+von|für)\s+(?:(?:etwa|ca\.|circa|rund|ungefähr|voraussichtlich)\s+)?"
+    r"(?P<count>\d{1,2}|" + "|".join(_NUMBER_WORDS) + r")\s+"
+    r"(?P<unit>Tag(?:e|en)?|Woche(?:n)?|Monat(?:e|en)?)\b",
+    re.IGNORECASE | re.UNICODE,
+)
+
+
+def extract_duration_from_description(description: str) -> timedelta | None:
+    """The duration the "Zeitraum:" section names ("auf Dauer von etwa sechs Wochen"), or ``None``.
+
+    Days, weeks and months (30 days), as a number or a word up to
+    "zwölf". ``None`` without the heading, with phases or without a
+    duration before the measures.
+    """
+    section = _period_section(description)
+    match = _PERIOD_DURATION_RE.search(section) if section else None
+    if match is None:
+        return None
+    count_str = match.group("count").lower()
+    count = int(count_str) if count_str.isdigit() else _NUMBER_WORDS[count_str]
+    unit = match.group("unit").lower()
+    days = next(per_unit for name, per_unit in _UNIT_DAYS.items() if unit.startswith(name))
+    return timedelta(days=count * days) if count > 0 else None
 
 # ---------------- „Kernbegriff/Topic“ für Dedupe ----------------
 
@@ -550,6 +595,7 @@ __all__ = [
     "_title_core",
     "_topic_key_from_title",
     "extract_date_from_title",
+    "extract_duration_from_description",
     "extract_end_from_description",
     "extract_start_from_description",
 ]

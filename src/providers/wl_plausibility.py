@@ -25,9 +25,9 @@ The rules, in this order:
    ``data/wl_plausibility_anomalies.json``. Nothing is changed silently.
 
 The established rules stay as they were and are no correction: an 11:11
-end gives way to the end "Zeitraum:" names (:func:`plausible_end`), a begin
-date only moves the start later, and a text date past the end is not the
-start but a later phase's date.
+end gives way to the end "Zeitraum:" names, or to the one its duration
+gives (:func:`plausible_end`), a begin date only moves the start later, and
+a text date past the end is not the start but a later phase's date.
 
 What this cannot see: a date that is equally wrong in every source.
 """
@@ -38,7 +38,7 @@ import json
 import logging
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
@@ -48,6 +48,7 @@ from ..utils.logging import sanitize_log_arg
 from ..utils.serialize import scrub_trojan_source_primitives
 from .wl_text import (
     extract_date_from_title,
+    extract_duration_from_description,
     extract_end_from_description,
     extract_start_from_description,
 )
@@ -85,19 +86,46 @@ class Correction:
     detail: str
 
 
+# "auf Dauer von etwa sechs Wochen" names no end, only a duration from the
+# start the text gives. Four notices on 2026-10-02 read so, all with an
+# 11:11 end; "65A/66A" (from 12.08., "etwa zwei Wochen") was still listed
+# with 31.08.2027. WL writes "etwa", and a measure that runs over must not
+# leave the feed while WL still lists it, so the end gets a buffer: half the
+# duration, at least a week.
+MIN_DURATION_BUFFER = timedelta(days=7)
+
+
+def _duration_end(desc_raw: str, reference: datetime) -> datetime | None:
+    """23:59 Europe/Vienna of the text's start plus its duration and the buffer."""
+    duration = extract_duration_from_description(desc_raw)
+    if duration is None:
+        return None
+    begin = extract_start_from_description(desc_raw, reference_date=reference)
+    if begin is None:
+        return None
+    last = (begin + duration + max(MIN_DURATION_BUFFER, duration / 2)).date()
+    return datetime(last.year, last.month, last.day, 23, 59, tzinfo=_VIENNA_TZ)
+
+
 def plausible_end(desc_raw: str, end: datetime | None, start: datetime | None) -> datetime | None:
-    """WL's ``time.end``, or the end its "Zeitraum:" names instead of an 11:11 one.
+    """WL's ``time.end``, or the end its "Zeitraum:" gives instead of an 11:11 one.
 
     Only an end at 11:11 Europe/Vienna gives way; every other end, and an
-    open one, stays. The text's end counts only when it does not lie
-    before the start.
+    open one, stays. A named end takes its place; without one, a duration
+    from the text's start plus a buffer (:data:`MIN_DURATION_BUFFER`), but
+    only to shorten the end, never to extend it. The text's end counts only
+    when it does not lie before the start.
     """
     if end is None:
         return None
     local = end.astimezone(_VIENNA_TZ)
     if (local.hour, local.minute) != PLACEHOLDER_END:
         return end
-    named = extract_end_from_description(desc_raw, reference_date=start or end)
+    reference = start or end
+    named = extract_end_from_description(desc_raw, reference_date=reference)
+    if named is None:
+        estimated = _duration_end(desc_raw, reference)
+        named = estimated if estimated is not None and estimated < end else None
     if named is None or (start is not None and named < start):
         return end
     return named
@@ -315,6 +343,7 @@ __all__ = [
     "CORRECTION_KINDS",
     "Correction",
     "MAX_LEAD_DAYS",
+    "MIN_DURATION_BUFFER",
     "PLACEHOLDER_END",
     "SOURCE_START_AFTER_END",
     "UNCONFIRMED_LEAD",
