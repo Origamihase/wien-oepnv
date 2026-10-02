@@ -211,10 +211,19 @@ def _load_stations(path: Path) -> list[Mapping[str, Any]]:
 
 
 def _station_key(entry: Mapping[str, Any]) -> str:
-    """Stable identity key for diff matching: bst_id if present, else name."""
+    """Stable identity key for diff matching: bst_id, else wl_diva, else name.
+
+    WL-only entries carry no bst_id, and their names are not unique (several
+    DIVAs share a display name, e.g. two "Wien Kirchengasse (WL)"). Keying
+    them by name collapsed such twins into one dict slot, so a WL rename of
+    one DIVA showed up as a large coordinate shift instead of a rename.
+    """
     bst_id = entry.get("bst_id")
     if bst_id is not None and str(bst_id).strip():
         return f"bst:{str(bst_id).strip()}"
+    wl_diva = entry.get("wl_diva")
+    if wl_diva is not None and str(wl_diva).strip():
+        return f"diva:{str(wl_diva).strip()}"
     name = str(entry.get("name") or "<unnamed>").strip()
     return f"name:{name}"
 
