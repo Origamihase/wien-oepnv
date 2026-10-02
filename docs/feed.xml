@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 02 Oct 2026 08:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 09:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[12A: Verunreinigung, Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">20413cfe1c2c4864089baad214c87f1f0e6ae6651edcb0fd3f56520de0b9eb5d</guid>
+      <pubDate>Fri, 02 Oct 2026 08:59:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 08:59:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 08:59:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Verunreinigung: Unregelmäßige Intervalle in beiden Richtungen. Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21. [Am 02.10.2026]</description>
+      <content:encoded><![CDATA[Verunreinigung: Unregelmäßige Intervalle in beiden Richtungen. Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21.<br/>[Am 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
+      <pubDate>Fri, 02 Oct 2026 08:59:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 08:59:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 08:59:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Westbahnhof. [Am 02.10.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Westbahnhof.<br/>[Am 02.10.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[9A: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,19 +39,8 @@
       <ext:first_seen>Fri, 02 Oct 2026 08:11:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 02 Oct 2026 08:13:53 +0200</ext:starts_at>
       <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb ab Pohlgasse. Umleitung zwischen Pohlgasse und Bahnhof Meidling über die Ruckergasse und die Eichenstraße. [Am 02.10.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Pohlgasse. Umleitung zwischen Pohlgasse und Bahnhof Meidling über die Ruckergasse und die Eichenstraße.<br/>[Am 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[4A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c56de491edf41d83da857f489a91726653fbe3100222ed7e7ce91bebf0b5453c</guid>
-      <pubDate>Fri, 02 Oct 2026 08:05:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 08:05:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 08:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 08:30:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 02.10.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 02.10.2026]]]></content:encoded>
+      <description>Betrieb ab Pohlgasse. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 02.10.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Pohlgasse. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 02.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[64B: Rettungseinsatz]]></title>
@@ -48,8 +59,8 @@
       <guid isPermaLink="false">a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0</guid>
       <pubDate>Fri, 02 Oct 2026 07:35:00 +0200</pubDate>
       <ext:first_seen>Fri, 02 Oct 2026 07:35:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 07:37:22 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:starts_at>Fri, 02 Oct 2026 07:35:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 08:57:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 02.10.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 02.10.2026]]]></content:encoded>
     </item>
@@ -85,17 +96,6 @@
       <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>Die Arbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Derlinke Fahrstreifen in Fahrtrichtung stadteinwärts wird gesperrt. [30.09.2026 – 15.11.2026]</description>
       <content:encoded><![CDATA[Die Arbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Derlinke Fahrstreifen in Fahrtrichtung stadteinwärts wird gesperrt.<br/>[30.09.2026 – 15.11.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Rettungseinsatz, Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106</guid>
-      <pubDate>Fri, 02 Oct 2026 07:14:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 07:21:19 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Rettungseinsatz: Fahrtbehinderung. Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse. [Am 02.10.2026]</description>
-      <content:encoded><![CDATA[Rettungseinsatz: Fahrtbehinderung. Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.<br/>[Am 02.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[63A: Umleitung wegen Kranarbeiten]]></title>
