@@ -416,14 +416,19 @@ verdrängt eine andere Störung.
   den Punkt, der fehlt. Eine erste Überschrift, deren Wörter alle schon im
   Titel stehen („Bauarbeiten S80“ unter „S80: Bauarbeiten“), fällt weg; ein
   einzelnes Wort (`<h2>Gleisbauarbeiten</h2>`) bleibt den bisherigen
-  Regeln. Beginnt der Text mit einer Überschrift oder einem Feld, gilt die
+  Regeln, und eine Überschrift ohne Text dahinter bleibt stehen. Zwei
+  Ausnahmen vom Punkt: Endet ein Absatz auf ein Funktionswort („… der damit
+  einhergehenden“) oder beginnt der nächste klein („prov. Einbahnführung
+  …“), läuft der Satz weiter; ein Etikett mit Doppelpunkt („Maßnahmen:“)
+  gehört zum nächsten Absatz und steht nie allein am Ende. Absätze mit
+  „Zeitraum:“ und „Dauer:“ fallen in jedem mehrteiligen Text weg, denn die
+  Zeitzeile nennt die Daten schon, und sie nahmen den Maßnahmen den Platz.
+  Beginnt der Text mit einer Überschrift oder einem Feld, gilt die
   Zwei-Sätze-Regel nicht, sonst stünde „Haltestelle: Stammersdorf.“ ohne
-  die neue Lage da; dann fallen auch „Zeitraum:“ und „Dauer:“ weg, die die
-  Zeitzeile schon nennt. Endet die Kürzung auf 180 Zeichen genau hinter
-  einem Satz, steht kein „…“ dahinter (`_truncate_summary_180`), so wie
-  die Zwei-Sätze-Regel ganze Sätze ohne Zeichen weglässt. Die Folge einer
-  Kurzmeldung steht immer als Satz mit Punkt da („Busse halten bei
-  Haltestelle N71.“).
+  die neue Lage da: gezeigt werden die Felder bis zum ersten ganzen Satz,
+  danach greift die 180-Zeichen-Grenze. Die Folge einer Kurzmeldung steht
+  immer als Satz mit Punkt da („Busse halten bei Haltestelle N71.“), und
+  ein doppelter Punkt aus der Quelle („umgeleitet..“) wird einer.
 * **Verklebte Wörter (seit 2026-10-02).** Die Baustellentexte der Stadt
   Wien kamen mit Wörtern ohne Leerzeichen in den Feed („Derlinke
   Fahrstreifen“, „Außerhalbder Arbeitszeit“, „zuden“). Zwei Stellen: Der

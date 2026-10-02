@@ -640,9 +640,9 @@ _GLUED_WORD_RE = re.compile(
 # article, and a function word after a street/stop noun or an ``-ung``
 # noun. Checked over 16 362 distinct texts (both feeds' published history
 # and every provider cache), the rule fires on 23 places, all of them the
-# shapes listed above, and on nothing else. ``zu`` only takes ``den``/``der``, so ``zudem``
-# stays whole; ``indem``, ``beiden`` and ``derzeit`` never match because
-# their halves are not on the lists.
+# shapes listed above, and on nothing else. ``zu`` only takes
+# ``den``/``der``, so ``zudem`` stays whole; ``indem``, ``beiden`` and
+# ``derzeit`` never match because their halves are not on the lists.
 _GLUED_LOWER_RE = re.compile(
     r"\b(?:[Dd]er|[Dd]ie|[Dd]as)(?=(?:link|recht|äußer|inner|mittler)e[nr]?\b)"
     r"|\b(?:[Aa]ußerhalb|[Ii]nnerhalb)(?=(?:der|den|dem|des|die|das)\b)"

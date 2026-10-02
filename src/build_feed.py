@@ -1645,9 +1645,9 @@ _WHITESPACE_RE = re.compile(r"\s+")
 _WHITESPACE_CLEANUP_RE = re.compile(r"[ \t\r\f\v]+")
 
 # The line-break members of ``_CONTROL_RE`` (vertical tab, form feed,
-# NEXT LINE, line / paragraph separator) are line breaks in upstream text. Deleting them glues two words into one, so they
-# become a space first — see ``_SEPARATOR_PRIMITIVES_RE`` in
-# :mod:`src.utils.serialize`.
+# NEXT LINE, line / paragraph separator) are line breaks in upstream text.
+# Deleting them glues two words into one, so they become a space first —
+# see ``_SEPARATOR_PRIMITIVES_RE`` in :mod:`src.utils.serialize`.
 _SEPARATOR_CONTROL_RE = re.compile(r"[\x0b\x0c\x85\u2028\u2029]")
 
 
@@ -2965,7 +2965,6 @@ def _normalise_placeholder_debris(text: str) -> str:
     """
     text = _PLACEHOLDER_LEADING_X_RE.sub(_leading_x_replacement, text)
     return _PLACEHOLDER_DEBRIS_RE.sub(r"\1", text)
-
 
 
 # German clock-time suffix. ``15:13 Uhr`` has no English equivalent —
@@ -7403,53 +7402,97 @@ def _reason_only_summary(category_word: str) -> str:
 #     … Schwedenplatz U Haltestelle: Stammersdorf Von: Brünner Straße
 #     gegenüber 262 Ersatzlos aufgelassen Dauer: Ab 30. September …
 #
-# A block that ends without punctuation gets the full stop it stands for; a
-# leading block whose words the title already carries all of ("U1: Starke
-# Nachfrage", "Bauarbeiten S80" under "S80: Bauarbeiten") is the heading
-# repeated and goes. A single word is left alone: that is WL's category
-# heading ("<h2>Gleisbauarbeiten</h2>"), which
-# :func:`_strip_summary_category_prefix` and :func:`_reason_only_summary`
-# already handle as a bare word.
+# A block that ends without punctuation gets the full stop it stands for —
+# unless the sentence plainly goes on in the next block: WL also breaks
+# paragraphs inside a sentence ("… der damit einhergehenden" / "prov.
+# Einbahnführung …"), so a next block that opens lower-case, or a block
+# that ends on a function word, is joined without one. A leading block
+# whose words the title already carries all of ("U1: Starke Nachfrage",
+# "Bauarbeiten S80" under "S80: Bauarbeiten") is the heading repeated and
+# goes. A single word is left alone: that is WL's category heading
+# ("<h2>Gleisbauarbeiten</h2>"), which :func:`_strip_summary_category_prefix`
+# and :func:`_reason_only_summary` already handle as a bare word.
 _BLOCK_TERMINAL_PUNCT = ".!?:;,…"
 _WORD_RE = re.compile(r"\w+")
+_CONTINUING_WORDS: frozenset[str] = frozenset({
+    "der", "die", "das", "den", "dem", "des", "ein", "eine", "einen", "einem",
+    "einer", "und", "oder", "sowie", "bzw", "in", "im", "an", "am", "auf",
+    "aus", "bei", "beim", "mit", "nach", "von", "vom", "vor", "zu", "zum",
+    "zur", "für", "über", "unter", "zwischen", "bis", "ab", "wegen", "durch",
+})
 
-
-# The dates of a notice are already the time line under it; a ``Zeitraum:``
-# or ``Dauer:`` field repeats them in longer words and, in a field-built
-# text, takes the room the stop's new location needs.
+# The dates of a notice are the time line under it. A ``Zeitraum:`` or
+# ``Dauer:`` block repeats them in longer words, and as its own sentence it
+# took the second-sentence slot from the measures ("77A: … Zeitraum: 22.
+# August 2026, ca. 15:00 Uhr bis Betriebsschluss.") or, in a field-built
+# text, the room the stop's new location needs.
 _DATE_FIELD_RE = re.compile(r"(?:Zeitraum|Dauer):")
+_DOUBLED_FULL_STOP_RE = re.compile(r"(?<!\.)\.\.(?!\.)")
+
+
+def _join_continued_blocks(blocks: list[str]) -> list[str]:
+    """Join a block to the next one where the sentence plainly goes on."""
+    joined: list[str] = []
+    for block in blocks:
+        if joined:
+            previous = joined[-1]
+            last_words = _WORD_RE.findall(previous)
+            continues = not previous.endswith(tuple(_BLOCK_TERMINAL_PUNCT)) and (
+                block[:1].islower()
+                or (last_words and last_words[-1].casefold() in _CONTINUING_WORDS)
+            )
+            # A label ("Maßnahmen:", "Zeitraum:") belongs to the block it
+            # introduces — but not to a date field that follows it, which
+            # :func:`_close_blocks` drops on its own.
+            introduces = previous.endswith(":") and not _DATE_FIELD_RE.match(block)
+            if continues or introduces:
+                joined[-1] = f"{previous} {block}"
+                continue
+        joined.append(block)
+    return joined
 
 
 def _close_blocks(text: str, raw_title: str) -> tuple[str, bool]:
     """Turn :data:`BLOCK_END_MARK` into sentence ends.
 
     The flag says whether the text opens with a heading or a field — a
-    block that carried no punctuation of its own — and continues after it.
-    Such a text says little in its first two sentences ("Pantucekgasse -
-    Früherer Betriebsschluss.", "Haltestelle: Stammersdorf."), so the
-    caller skips the two-sentence rule and lets the 180-character cut
-    decide; its date fields are dropped here for the reason above.
+    block without punctuation of its own — and goes on after it. Such a
+    text says little in its first two sentences ("Pantucekgasse - Früherer
+    Betriebsschluss.", "Haltestelle: Stammersdorf."), so it is cut here
+    instead of by the two-sentence rule: every leading heading or field,
+    then the first block that is a sentence. The 180-character cut still
+    applies after that.
     """
     if BLOCK_END_MARK not in text:
         return text, False
     title_words = {w.casefold() for w in _WORD_RE.findall(raw_title or "")}
-    blocks: list[str] = []
-    fragment_led = False
-    for raw_block in text.split(BLOCK_END_MARK):
-        block = raw_block.strip(" •")
-        words = _WORD_RE.findall(block)
-        if not words:
-            continue
-        if not blocks and {w.casefold() for w in words} <= title_words:
-            continue
-        if len(words) > 1 and not block.endswith(tuple(_BLOCK_TERMINAL_PUNCT)):
-            block += "."
-            fragment_led = fragment_led or not blocks
-        blocks.append(block)
-    fragment_led = fragment_led and len(blocks) > 1
-    if fragment_led:
-        blocks = [block for block in blocks if not _DATE_FIELD_RE.match(block)]
-    return " ".join(blocks), fragment_led
+    found = _join_continued_blocks([
+        block
+        for block in (raw.strip(" •") for raw in text.split(BLOCK_END_MARK))
+        if _WORD_RE.search(block)
+    ])
+    # Only a heading with text behind it is dropped: a lone block is the
+    # whole description, and the duplicate checks downstream decide on it.
+    if len(found) > 1 and {w.casefold() for w in _WORD_RE.findall(found[0])} <= title_words:
+        found = found[1:]
+    if len(found) > 1:
+        kept = [block for block in found if not _DATE_FIELD_RE.match(block)]
+        # A label that stood before a date field now meets its own text.
+        found = _join_continued_blocks(kept) if kept else found
+    closed: list[tuple[str, bool]] = []
+    for block in found:
+        fragment = len(_WORD_RE.findall(block)) > 1 and not block.endswith(
+            tuple(_BLOCK_TERMINAL_PUNCT)
+        )
+        closed.append((f"{block}." if fragment else block, fragment))
+    if len(closed) < 2 or not closed[0][1]:
+        return " ".join(block for block, _ in closed), False
+    shown: list[str] = []
+    for block, fragment in closed:
+        shown.append(block)
+        if not fragment:
+            break
+    return " ".join(shown), True
 
 
 def _strip_summary_category_prefix(summary: str, raw_title: str) -> str:
@@ -7593,11 +7636,6 @@ def _trim_truncation_tail(truncated: str) -> str:
 _WL_REFERRAL_BOILERPLATE_RE: re.Pattern[str] = REFERRAL_BOILERPLATE_RE
 
 
-# A word of two or more characters and a full stop — "aufgelassen.",
-# "6A-6B." — but not the single-letter "U." of a station name.
-_SENTENCE_END_RE = re.compile(r"\w{2}[.!?]$")
-
-
 def _truncate_summary_180(summary: str) -> str:
     """Hard-limit ``summary`` to 180 characters with TV-friendly tail cleanup."""
     if len(summary) <= 180:
@@ -7608,13 +7646,7 @@ def _truncate_summary_180(summary: str) -> str:
         last_open = truncated.rfind("(")
         if last_open >= 0:
             truncated = truncated[:last_open].rstrip(_TRUNCATION_PUNCT_STRIP)
-    truncated = truncated.rstrip(_TRUNCATION_PUNCT_STRIP)
-    # The cut landed on a sentence end: show the sentence, not ". …". Whole
-    # sentences that do not fit are dropped without a mark elsewhere too
-    # (the two-sentence rule in :func:`_format_item_content`).
-    if _SENTENCE_END_RE.search(truncated):
-        return truncated
-    return truncated + " …"
+    return truncated.rstrip(_TRUNCATION_PUNCT_STRIP) + " …"
 
 
 def _compose_description(summary: str, time_line: str) -> tuple[str, str]:
@@ -7959,6 +7991,11 @@ def _format_item_content(
     # translation pipeline readable German instead of run-together
     # tokens the NMT model has never seen.
     summary = repair_glued_words(summary)
+    # A sentence ends with one full stop, an abbreviation at the end of a
+    # sentence included (Duden). WL typed two ("… wird die Linie 12A
+    # umgeleitet.. Maßnahmen: …", three notices since July 2026); an
+    # ellipsis (three or more) stays.
+    summary = _DOUBLED_FULL_STOP_RE.sub(".", summary)
     # Drop the "ask Wiener Linien" referral before the sentence split, or it
     # takes sentence one and the 180-char budget with it. Keep the referral
     # when it is all the description has: a useless sentence still beats an

@@ -1,7 +1,7 @@
 """Passenger read-through of the live feed, 2026-10-02.
 
 Every current item of ``docs/feed.xml`` and ``docs/feed.en.xml`` was read
-the way a rider reads an info display. Five classes of defects came out of
+the way a rider reads an info display. Four classes of defects came out of
 it, each fixed where it arises rather than for the one item that showed it:
 
 * Words glued together in the Stadt-Wien roadworks texts ("Derlinke
@@ -11,9 +11,13 @@ it, each fixed where it arises rather than for the one item that showed it:
 * WL notice paragraphs and headings running into each other without a
   sentence end ("U1: Starke Nachfrage Die U1 wird …", "… Schwedenplatz U
   Haltestelle: Stammersdorf Von: …").
-* A truncated summary ending on ". …" after a complete sentence.
 * A ticker consequence shown without its full stop ("Busse halten bei
   Haltestelle N71").
+
+The paragraph rule also drops the ``Zeitraum:``/``Dauer:`` paragraph (the
+time line carries the dates), never leaves a label like ``Maßnahmen:``
+without its text, and leaves a sentence WL broke over two paragraphs
+whole. A doubled full stop from the source becomes one.
 """
 
 from __future__ import annotations
@@ -226,20 +230,56 @@ def test_prose_paragraphs_keep_the_two_sentence_rule() -> None:
     )
 
 
-# ---------------- truncation and ticker sentences ----------------
+def test_a_sentence_broken_over_two_paragraphs_gets_no_full_stop_inside() -> None:
+    _, desc = _format(
+        "93A/98A: Bauarbeiten Oberdorfstraße",
+        "<p>Wegen Stra&szlig;enbauarbeiten in der Oberdorfstra&szlig;e und der damit "
+        "einhergehenden</p> <p>prov. Einbahnf&uuml;hrung werden die Busse umgeleitet.</p>",
+    )
+    assert desc.startswith(
+        "Wegen Straßenbauarbeiten in der Oberdorfstraße und der damit einhergehenden prov. "
+        "Einbahnführung werden die Busse umgeleitet."
+    )
+    assert "einhergehenden." not in desc
 
 
-def test_cut_on_a_sentence_end_shows_no_ellipsis() -> None:
-    text = ("x" * 140) + " Haltestelle: Wittelsbachstraße. Von: " + "Lange Straße " * 20
-    assert build_feed._truncate_summary_180(text).endswith(" Haltestelle: Wittelsbachstraße.")
+def test_the_period_paragraph_gives_way_to_the_measures() -> None:
+    _, desc = _format(
+        "37A: Bauarbeiten",
+        "<p>Wegen Bauarbeiten im Bereich Donaueschingenstra&szlig;e wird die Linie 37A "
+        "umgeleitet.</p> <p><strong>Zeitraum:</strong></p> <p>Phase 1: Ab Samstag, 4. Juli "
+        "2026.</p> <p><strong>Ma&szlig;nahmen:</strong></p> <p>Linie 37A: Umleitung &uuml;ber "
+        "die Brigittenauer L&auml;nde.</p>",
+    )
+    assert "Zeitraum" not in desc
+    assert "Phase 1" not in desc
+    assert "Linie 37A: Umleitung über die Brigittenauer Lände." in desc
 
 
-def test_cut_mid_sentence_keeps_the_ellipsis() -> None:
-    assert build_feed._truncate_summary_180("Wort " * 60).endswith(" …")
+def test_a_label_is_never_left_dangling() -> None:
+    _, desc = _format(
+        "43/44: Demonstration",
+        "<h2>Demonstration</h2> <p>Wegen einer Demonstration kommt es zu "
+        "Verkehrsma&szlig;nahmen</p> <p><strong>Zeitraum:</strong> Samstag, 04. Juli 2026, "
+        "von etwa 15:00 Uhr bis 20:00 Uhr.</p> <p><strong>Ma&szlig;nahmen:</strong></p> "
+        "<ul><li>Linie 43: Betrieb nur zwischen Dornbach und Alser Stra&szlig;e U.</li></ul>",
+    )
+    assert desc.startswith(
+        "Wegen einer Demonstration kommt es zu Verkehrsmaßnahmen. Linie 43: Betrieb nur "
+        "zwischen Dornbach und Alser Straße U. ["
+    )
 
 
-def test_station_marker_is_not_a_sentence_end() -> None:
-    assert not build_feed._SENTENCE_END_RE.search("Schwedenplatz U.")
+def test_a_doubled_full_stop_is_one() -> None:
+    _, desc = _format(
+        "N54: Kabelarbeiten",
+        "<p>Wegen Kabelarbeiten in der Phillipsgasse wird die Rufbuslinie N54 umgeleitet..</p>",
+    )
+    assert desc.startswith("Wegen Kabelarbeiten in der Phillipsgasse wird die Rufbuslinie N54 "
+                           "umgeleitet. [")
+
+
+# ---------------- ticker sentences ----------------
 
 
 def test_ticker_consequence_ends_with_a_full_stop() -> None:
