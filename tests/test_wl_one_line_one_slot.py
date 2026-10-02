@@ -41,6 +41,10 @@ from typing import Any, cast
 import src.build_feed as bf
 from src.feed.merge import deduplicate_fuzzy
 from src.feed_types import FeedItem
+import pytest
+
+# Rendered time lines name no year and no "Heute" relative to a fixed day.
+pytestmark = pytest.mark.usefixtures("time_line_today")
 
 
 def _at(text: str) -> datetime:
@@ -166,7 +170,7 @@ def test_the_feed_shows_both_causes() -> None:
     assert "<![CDATA[66A: Rettungseinsatz, Bauarbeiten]]>" in xml
     assert (
         "Rettungseinsatz: Unregelmäßige Intervalle in beiden Richtungen. "
-        "Bauarbeiten: Busse halten Salvatorianerplatz. [01.10.2026\u202f–\u202f02.10.2026]"
+        "Bauarbeiten: Busse halten Salvatorianerplatz. [Heute]"
     ) in xml
 
 

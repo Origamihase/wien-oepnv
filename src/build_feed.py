@@ -1282,6 +1282,8 @@ def _fmt_rfc2822(dt: datetime) -> str:
         return local_dt.strftime("%a, %d %b %Y %H:%M:%S %z")
 
 
+# Joins the words of a time line so a display never breaks it in two.
+_NNBSP = "\u202f"
 # Weekday abbreviations for the time line, Monday first like ``weekday()``.
 _WEEKDAYS_DE: tuple[str, ...] = ("Mo", "Di", "Mi", "Do", "Fr", "Sa", "So")
 # Within this many days from today a date carries its weekday ("Mo 05.10.").
@@ -1335,6 +1337,9 @@ def format_local_times(
 ) -> str:
     """The time line of an item, phrased for someone reading it today.
 
+    Words are joined with NARROW NO-BREAK SPACE (U+202F), never a plain
+    space: the line must not wrap in the middle on a display.
+
     The display question is "does this apply now, and until when?", so the
     line says what matters for today instead of two full dates (operator
     decision 2026-10-02)::
@@ -1342,7 +1347,7 @@ def format_local_times(
         Heute                    running, ends today
         Bis Sa 03.10.            running, ends later (start is past, irrelevant)
         Seit 30.09.              running, no end
-        Am So 04.10.             one future day
+        Am So 04.10.             one day, not today
         Ab Mo 05.10. bis 11.11.  begins later
         Ab Mo 05.10.             begins later, no end
         Bis 16.11.               no start
@@ -1357,6 +1362,11 @@ def format_local_times(
     start_local = _to_utc(start).astimezone(_VIENNA_TZ) if isinstance(start, datetime) else None
     end_local = _to_utc(end).astimezone(_VIENNA_TZ) if isinstance(end, datetime) else None
     end_local = _plausible_end(start_local, end_local, now_local)
+    return _time_line_text(start_local, end_local, today).replace(" ", _NNBSP)
+
+
+def _time_line_text(start_local: datetime | None, end_local: datetime | None, today: date) -> str:
+    """The words of :func:`format_local_times`, joined with plain spaces."""
 
     if start_local is not None and start_local.date() > today:
         first = _time_line_day(start_local, today)
@@ -1368,6 +1378,8 @@ def format_local_times(
     if end_local is not None:
         if end_local.date() == today:
             return "Heute"
+        if start_local is not None and start_local.date() == end_local.date():
+            return f"Am {_time_line_day(end_local, today)}"
         return f"Bis {_time_line_day(end_local, today)}"
     if start_local is not None:
         if start_local.date() == today:
@@ -3800,7 +3812,8 @@ def _translate_time_line_en(time_line: str) -> str:
     ``time_line`` is the bracketed form emitted by
     :func:`_format_item_content` — e.g. ``[Seit 05.01.]``, ``[Heute]`` or
     ``[Ab Mo 05.10. bis 11.11.]`` (``[From Mon 05.10. until 11.11.]``).
-    Dates and anything else unknown pass through unchanged.
+    Dates and anything else unknown pass through unchanged; the words stay
+    joined by NARROW NO-BREAK SPACE, as in German.
     """
     if not time_line:
         return time_line
@@ -3808,7 +3821,7 @@ def _translate_time_line_en(time_line: str) -> str:
     if not stripped:
         return time_line
     words = [_TIME_WORDS_DE_TO_EN.get(word, word) for word in stripped.split()]
-    return f"[{' '.join(words)}]"
+    return f"[{_NNBSP.join(words)}]"
 
 
 # What a placeholder leaves behind once its unmask half-worked: an ``X`` or a

@@ -15,6 +15,13 @@ from src.feed import config as feed_config
 
 VIENNA = ZoneInfo("Europe/Vienna")
 NOW = datetime(2026, 10, 2, 20, 0, tzinfo=VIENNA)
+# The words are joined with NARROW NO-BREAK SPACE so a display never splits
+# the line; the expectations below are written with plain spaces.
+NNBSP = "\u202f"
+
+
+def _line(start: datetime | None, end: datetime | None, now: datetime = NOW) -> str:
+    return bf.format_local_times(start, end, now).replace(NNBSP, " ")
 
 
 def _at(year: int, month: int, day: int, hour: int = 0, minute: int = 0) -> datetime:
@@ -43,28 +50,28 @@ def _at(year: int, month: int, day: int, hour: int = 0, minute: int = 0) -> date
     ],
 )
 def test_time_line(start: datetime | None, end: datetime | None, expected: str) -> None:
-    assert bf.format_local_times(start, end, NOW) == expected
+    assert _line(start, end) == expected
 
 
 def test_a_long_running_item_keeps_a_near_end() -> None:
     # N8: Thaliastraße U, running since 24.07.2024: the span from the start
     # exceeds 540 days, the distance from today does not.
-    assert bf.format_local_times(_at(2024, 7, 24), _at(2026, 11, 16), NOW) == "Bis 16.11."
+    assert _line(_at(2024, 7, 24), _at(2026, 11, 16)) == "Bis 16.11."
 
 
 def test_an_absurdly_far_end_is_dropped(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(feed_config, "ABSOLUTE_MAX_AGE_DAYS", 540)
-    assert bf.format_local_times(_at(2021, 2, 28), _at(2029, 12, 31), NOW) == "Seit 28.02.2021"
+    assert _line(_at(2021, 2, 28), _at(2029, 12, 31)) == "Seit 28.02.2021"
 
 
 def test_an_end_before_the_start_is_dropped() -> None:
-    assert bf.format_local_times(_at(2027, 10, 4), _at(2026, 10, 4, 13), NOW) == "Ab 04.10.2027"
+    assert _line(_at(2027, 10, 4), _at(2026, 10, 4, 13)) == "Ab 04.10.2027"
 
 
 def test_today_is_the_vienna_day() -> None:
     # 22:30 UTC on 02.10. is 00:30 on 03.10. in Vienna.
     late = datetime(2026, 10, 2, 22, 30, tzinfo=UTC)
-    assert bf.format_local_times(_at(2026, 10, 2), _at(2026, 10, 3, 23, 59), late) == "Heute"
+    assert _line(_at(2026, 10, 2), _at(2026, 10, 3, 23, 59), late) == "Heute"
 
 
 @pytest.mark.parametrize(
@@ -81,7 +88,13 @@ def test_today_is_the_vienna_day() -> None:
     ],
 )
 def test_time_line_in_english(german: str, english: str) -> None:
-    assert bf._translate_time_line_en(german) == english
+    assert bf._translate_time_line_en(german) == english.replace(" ", NNBSP)
+
+
+def test_the_line_never_breaks() -> None:
+    line = bf.format_local_times(_at(2026, 10, 5), _at(2026, 11, 11), NOW)
+    assert " " not in line
+    assert " " not in bf._translate_time_line_en(f"[{line}]")
 
 
 def test_every_german_word_has_an_english_one() -> None:

@@ -48,8 +48,9 @@ def test_format_local_times_end_before_start_future(
     with caplog.at_level(logging.WARNING):
         result = build_feed.format_local_times(start, end)
 
-    # Since start is in the future, it should use 'Ab ...'
-    assert result == "Ab 05.01.2023"
+    # Since start is in the future, it should use 'Ab ...' (in the coming
+    # week with its weekday, inside the current year without it).
+    assert result == "Ab\u202fDo\u202f05.01."
 
     # Verify the warning was logged
     warnings = [record.getMessage() for record in caplog.records if record.levelname == "WARNING"]
@@ -79,7 +80,7 @@ def test_format_local_times_end_before_start_past(
         result = build_feed.format_local_times(start, end)
 
     # Since start is in the past, it should use 'Seit ...'
-    assert result == "Seit 05.01.2023"
+    assert result == "Seit\u202f05.01."
 
     # Verify the warning was logged
     warnings = [record.getMessage() for record in caplog.records if record.levelname == "WARNING"]
@@ -108,12 +109,9 @@ def test_format_local_times_long_range_keeps_end(
     with caplog.at_level(logging.WARNING):
         result = build_feed.format_local_times(start, end)
 
-    # Renders as a range (start … end), not the single-date "Seit …" form,
-    # so the explicit end date is preserved. (The separator between the
-    # dates uses narrow no-break spaces around an en-dash, so assert on the
-    # two date boundaries rather than the exact glyphs.)
-    assert result.startswith("01.01.2026")
-    assert result.endswith("02.10.2026")
-    assert not result.startswith("Seit")
+    # The item already runs, so the line names its end ("Bis …"), not the
+    # single-date "Seit …" form: the explicit end date is preserved. (Words
+    # are joined with narrow no-break spaces.)
+    assert result == "Bis\u202f02.10."
     warnings = [record.getMessage() for record in caplog.records if record.levelname == "WARNING"]
     assert not any("Setze Enddatum auf None" in message for message in warnings)

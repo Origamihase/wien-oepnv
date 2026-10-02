@@ -55,6 +55,9 @@ import src.build_feed as bf
 from src.feed.merge import deduplicate_fuzzy
 from src.feed_types import FeedItem
 
+# Rendered time lines name no year and no "Heute" relative to a fixed day.
+pytestmark = pytest.mark.usefixtures("time_line_today")
+
 T0 = datetime(2026, 9, 26, 13, 10, 21, tzinfo=UTC)  # 15:10:21 in Vienna
 END = datetime(2026, 9, 26, 21, 59, 59, tzinfo=UTC)
 
@@ -340,7 +343,7 @@ def test_the_start_stays_the_leads() -> None:
     (item,) = _built(items)
     assert (item["title"], item["starts_at"]) == ("25: Schadhaftes Fahrzeug", breakdown)
     xml = bf._make_rss([item], breakdown + timedelta(minutes=13), {}, lang="de")
-    assert "[Am 27.09.2026]" in xml
+    assert "[Am\u202f27.09.]" in xml
 
 
 def test_an_open_end_stays_open() -> None:

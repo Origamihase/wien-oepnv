@@ -237,6 +237,27 @@ def reset_build_feed_state() -> None:
     reset_registry(with_defaults=True)
 
 
+@pytest.fixture
+def time_line_today(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Render time lines as on 2026-10-02, 12:00 Vienna, whatever today is.
+
+    The time line names no year inside the current one and says "Heute" for
+    today (``format_local_times``). Tests that compare a whole rendered item
+    with fixed dates would otherwise change their expected text at midnight
+    or on New Year.
+    """
+    from datetime import datetime
+    from functools import partial
+    from zoneinfo import ZoneInfo
+
+    import src.build_feed as build_feed
+
+    today = datetime(2026, 10, 2, 12, 0, tzinfo=ZoneInfo("Europe/Vienna"))
+    monkeypatch.setattr(
+        build_feed, "format_local_times", partial(build_feed.format_local_times, now=today)
+    )
+
+
 @pytest.fixture(autouse=True)
 def isolate_stats_writes(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
     """Redirect ``src.utils.stats`` CSV appends to a per-test tmp directory.

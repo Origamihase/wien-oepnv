@@ -28,6 +28,9 @@ from src import build_feed
 from src.build_feed import _separate_reason_word
 from src.feed_types import FeedItem
 
+# Rendered time lines name no year and no "Heute" relative to a fixed day.
+pytestmark = pytest.mark.usefixtures("time_line_today")
+
 
 def _format(raw_title: str, raw_desc: str, *, split_reason: bool = True) -> tuple[str, str]:
     item = cast(
@@ -120,11 +123,11 @@ def test_the_duplicate_check_still_empties_the_restated_ticker() -> None:
     title, desc = _format("1A: Veranstaltung Kein Betrieb", "Veranstaltung\nKein Betrieb", split_reason=False)
 
     assert title == "1A: Veranstaltung – Kein Betrieb"
-    assert desc == "[Am 19.09.2026]"
+    assert desc == "[Am\u202f19.09.]"
 
     title, desc = _format("1A: Veranstaltung Kein Betrieb", "Veranstaltung\nKein Betrieb")
 
-    assert (title, desc) == ("1A: Veranstaltung", "Kein Betrieb [Am 19.09.2026]")
+    assert (title, desc) == ("1A: Veranstaltung", "Kein Betrieb [Am\u202f19.09.]")
 
 
 def test_the_published_item_end_to_end() -> None:
