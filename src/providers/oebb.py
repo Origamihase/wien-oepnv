@@ -2097,7 +2097,7 @@ def _parse_period(desc: str) -> tuple[datetime | None, datetime | None]:
 
     A single date means a one-day disruption: start and end fall on the
     same day, which :func:`build_feed.format_local_times` renders as
-    ``"Am TT.MM.JJJJ"``.
+    ``"Am TT.MM."`` (``"Heute"`` on the day itself).
     """
     match = _PERIOD_PREFIX_RE.match(desc or "")
     if not match:

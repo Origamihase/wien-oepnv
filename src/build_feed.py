@@ -20,7 +20,7 @@ from concurrent.futures import (
     TimeoutError,
     wait,
 )
-from datetime import datetime, timedelta, UTC
+from datetime import date, datetime, timedelta, UTC
 from email.utils import format_datetime
 from functools import lru_cache
 from pathlib import Path
@@ -1282,47 +1282,97 @@ def _fmt_rfc2822(dt: datetime) -> str:
         return local_dt.strftime("%a, %d %b %Y %H:%M:%S %z")
 
 
-def format_local_times(
-    start: datetime | None, end: datetime | None
-) -> str:
-    """Format a time range (start, end) into a localized string (e.g. 'Seit 01.01.2023')."""
-    start_local: datetime | None = None
-    end_local: datetime | None = None
+# Weekday abbreviations for the time line, Monday first like ``weekday()``.
+_WEEKDAYS_DE: tuple[str, ...] = ("Mo", "Di", "Mi", "Do", "Fr", "Sa", "So")
+# Within this many days from today a date carries its weekday ("Mo 05.10.").
+# Further out the weekday no longer helps anyone plan the next few days.
+_TIME_LINE_WEEKDAY_DAYS = 6
 
-    if isinstance(start, datetime):
-        start_local = _to_utc(start).astimezone(_VIENNA_TZ)
-    if isinstance(end, datetime):
-        end_local = _to_utc(end).astimezone(_VIENNA_TZ)
 
-    # Guard against absurd end dates, but keep legitimate multi-month
-    # disruptions: cap the start→end span at the configured absolute item
-    # horizon (ABSOLUTE_MAX_AGE_DAYS, default 540) instead of a hard-coded
-    # 180 days, so a real long-running range still renders as a range
-    # instead of collapsing to "Seit …".
+def _time_line_day(when: datetime, today: date) -> str:
+    """``when``'s day for the time line: "05.10.", "Mo 05.10.", "05.10.2027".
+
+    The year appears only when it is not the current one, the weekday only
+    for the coming week (see ``_TIME_LINE_WEEKDAY_DAYS``).
+    """
+    text = f"{when:%d.%m.}"
+    if when.year != today.year:
+        text += f"{when:%Y}"
+    if 0 <= (when.date() - today).days <= _TIME_LINE_WEEKDAY_DAYS:
+        text = f"{_WEEKDAYS_DE[when.weekday()]} {text}"
+    return text
+
+
+def _plausible_end(
+    start_local: datetime | None, end_local: datetime | None, now_local: datetime
+) -> datetime | None:
+    """``end_local``, or ``None`` when it lies before the start or absurdly far out.
+
+    "Absurdly far" is more than ``ABSOLUTE_MAX_AGE_DAYS`` (default 540) past
+    today, or past the start when that is still ahead. Measured from the
+    start alone, a long-running item lost a near, plausible end: "N8:
+    Thaliastraße U" read "Seit 24.07.2024" on 2026-10-02 although WL named
+    16.11.2026.
+    """
+    if end_local is None:
+        return None
+    if start_local is not None and end_local < start_local:
+        log.warning("Enddatum liegt vor Startdatum")
+        return None
+    anchor = max(start_local, now_local) if start_local is not None else now_local
     max_span_days = feed_config.ABSOLUTE_MAX_AGE_DAYS
-    if start_local and end_local and (end_local - start_local).days > max_span_days:
+    if (end_local - anchor).days > max_span_days:
         log.warning(
-            "Enddatum liegt mehr als %s Tage nach Startdatum. Setze Enddatum auf None.",
+            "Enddatum liegt mehr als %s Tage nach Beginn bzw. heute. Setze Enddatum auf None.",
             max_span_days,
         )
-        end_local = None
+        return None
+    return end_local
 
-    today = datetime.now(_VIENNA_TZ)
 
-    if start_local:
-        if end_local:
-            if end_local < start_local:
-                log.warning("Enddatum liegt vor Startdatum")
-                end_local = None
-            elif start_local.date() == end_local.date():
-                return f"Am {start_local:%d.%m.%Y}"
-            else:
-                return f"{start_local:%d.%m.%Y} – {end_local:%d.%m.%Y}"
-        if start_local.date() > today.date():
-            return f"Ab {start_local:%d.%m.%Y}"
-        return f"Seit {start_local:%d.%m.%Y}"
-    if end_local:
-        return f"Bis {end_local:%d.%m.%Y}"
+def format_local_times(
+    start: datetime | None, end: datetime | None, now: datetime | None = None
+) -> str:
+    """The time line of an item, phrased for someone reading it today.
+
+    The display question is "does this apply now, and until when?", so the
+    line says what matters for today instead of two full dates (operator
+    decision 2026-10-02)::
+
+        Heute                    running, ends today
+        Bis Sa 03.10.            running, ends later (start is past, irrelevant)
+        Seit 30.09.              running, no end
+        Am So 04.10.             one future day
+        Ab Mo 05.10. bis 11.11.  begins later
+        Ab Mo 05.10.             begins later, no end
+        Bis 16.11.               no start
+
+    "Heute" is relative: the feed is rebuilt every 30 minutes, and an item
+    that ended yesterday has left the feed by the first build after
+    midnight. No clock time appears: WL's own ends for incidents are often
+    exactly one hour after the start, a default rather than a forecast.
+    """
+    now_local = _to_utc(now).astimezone(_VIENNA_TZ) if now else datetime.now(_VIENNA_TZ)
+    today = now_local.date()
+    start_local = _to_utc(start).astimezone(_VIENNA_TZ) if isinstance(start, datetime) else None
+    end_local = _to_utc(end).astimezone(_VIENNA_TZ) if isinstance(end, datetime) else None
+    end_local = _plausible_end(start_local, end_local, now_local)
+
+    if start_local is not None and start_local.date() > today:
+        first = _time_line_day(start_local, today)
+        if end_local is None:
+            return f"Ab {first}"
+        if end_local.date() == start_local.date():
+            return f"Am {first}"
+        return f"Ab {first} bis {_time_line_day(end_local, today)}"
+    if end_local is not None:
+        if end_local.date() == today:
+            return "Heute"
+        return f"Bis {_time_line_day(end_local, today)}"
+    if start_local is not None:
+        if start_local.date() == today:
+            return "Seit heute"
+        return f"Seit {_time_line_day(start_local, today)}"
     return ""
 
 # Entfernt XML-unerlaubte Kontrollzeichen (außer \t, \n, \r) PLUS the
@@ -1595,17 +1645,26 @@ _TRANSLATION_MODEL_REVISION = "1a922f3b32a8e809e17a47d4b32142d8105924e5"
 #       are unchanged, so only a bump evicts them.
 _TRANSLATION_CACHE_EPOCH = 18
 
-# Static lookup for German → English time-line prefixes used inside the
-# bracketed ``[…]`` timeframe (see ``format_local_times``). Translating
-# these via the ML model would be wasteful — every disruption shares
-# the same four prefixes — and slow (each translate call hits the
-# tokenizer). The dictionary mapping mirrors the prefixes emitted by
-# ``format_local_times`` in :mod:`src.build_feed`.
-_TIME_PREFIX_DE_TO_EN: dict[str, str] = {
+# Static lookup for the German words of the bracketed ``[…]`` time line (see
+# ``format_local_times``). Translating these via the ML model would be
+# wasteful — every item shares the same handful of words — and slow (each
+# translate call hits the tokenizer). The mapping mirrors every word
+# ``format_local_times`` emits; dates pass through unchanged.
+_TIME_WORDS_DE_TO_EN: dict[str, str] = {
     "Seit": "Since",
     "Bis": "Until",
     "Ab": "From",
     "Am": "On",
+    "bis": "until",
+    "Heute": "Today",
+    "heute": "today",
+    "Mo": "Mon",
+    "Di": "Tue",
+    "Mi": "Wed",
+    "Do": "Thu",
+    "Fr": "Fri",
+    "Sa": "Sat",
+    "So": "Sun",
 }
 
 
@@ -3736,24 +3795,20 @@ def _attempt_for_field(field: str) -> Callable[..., str | None]:
 
 
 def _translate_time_line_en(time_line: str) -> str:
-    """Swap a leading German time-line prefix (e.g. ``Seit``) for English.
+    """Swap the German words of a time line for English, word by word.
 
     ``time_line`` is the bracketed form emitted by
-    :func:`_format_item_content` — e.g. ``[Seit 05.01.2026]`` or
-    ``[05.01.2026 – 06.01.2026]``. Date-range strings without a
-    German prefix word pass through unchanged.
+    :func:`_format_item_content` — e.g. ``[Seit 05.01.]``, ``[Heute]`` or
+    ``[Ab Mo 05.10. bis 11.11.]`` (``[From Mon 05.10. until 11.11.]``).
+    Dates and anything else unknown pass through unchanged.
     """
     if not time_line:
         return time_line
     stripped = time_line.strip().strip("[]").strip()
     if not stripped:
         return time_line
-    for de_prefix, en_prefix in _TIME_PREFIX_DE_TO_EN.items():
-        if stripped == de_prefix:
-            return f"[{en_prefix}]"
-        if stripped.startswith(f"{de_prefix} "):
-            return f"[{en_prefix} {stripped[len(de_prefix) + 1:]}]"
-    return time_line
+    words = [_TIME_WORDS_DE_TO_EN.get(word, word) for word in stripped.split()]
+    return f"[{' '.join(words)}]"
 
 
 # What a placeholder leaves behind once its unmask half-worked: an ``X`` or a
@@ -5640,6 +5695,45 @@ def _drop_test_messages(items: list[FeedItem]) -> list[FeedItem]:
         else:
             kept.append(item)
     return kept
+
+
+def _starts_after(item: FeedItem, last_day: date) -> bool:
+    """Whether ``item`` begins on a Vienna day after *last_day*."""
+    start = _parse_datetime(item.get("starts_at"))
+    if not isinstance(start, datetime):
+        return False
+    return _to_utc(start).astimezone(_VIENNA_TZ).date() > last_day
+
+
+def _defer_upcoming_items(
+    items: list[FeedItem], now: datetime, preview_days: int
+) -> list[FeedItem]:
+    """Let an announced item take only a slot nothing running needs.
+
+    The feed sorts newest first, and an announcement is new the day it
+    appears. On 2026-10-02 at 18:00 five of the ten slots held items that had
+    not begun — "20A: Bauarbeiten" from 13.10., the R 40 closure from 31.10.
+    — while "N71: Ersatzverkehr" and "62: ÖBB Bauarbeiten", both valid that
+    evening, stood on places 11 and 12. On a display someone reads in
+    passing, what applies now comes first.
+
+    Every item that begins after the Vienna day *preview_days* from today
+    moves behind the field, in its original order — after the items
+    :func:`_apply_topic_budget` moved back, before the all-clears. Nothing is
+    dropped: with fewer running items the announcement still fills a slot,
+    and from *preview_days* before its start it holds its normal place. An
+    item without a start is never deferred.
+    """
+    last_day = _to_utc(now).astimezone(_VIENNA_TZ).date() + timedelta(days=preview_days)
+    deferred = [item for item in items if _starts_after(item, last_day)]
+    if not deferred:
+        return items
+    log.info(
+        "Angekündigte Meldungen: %d hinter das Feld gestellt (Beginn nach %s).",
+        len(deferred),
+        last_day.strftime("%d.%m.%Y"),
+    )
+    return [item for item in items if not _starts_after(item, last_day)] + deferred
 
 
 def _is_all_clear(item: FeedItem) -> bool:
@@ -8308,6 +8402,9 @@ def main() -> int:
         items = _defer_repeated_route_titles(items)
         # One event must not take every slot — see ``_apply_topic_budget``.
         items = _apply_topic_budget(items, feed_config.MAX_ITEMS_PER_TOPIC)
+        # What applies now comes before what is only announced — see
+        # ``_defer_upcoming_items``.
+        items = _defer_upcoming_items(items, now_utc, feed_config.UPCOMING_PREVIEW_DAYS)
         # An all-clear only fills a slot nothing else needs — see
         # ``_defer_all_clear_items``.
         items = _defer_all_clear_items(items)

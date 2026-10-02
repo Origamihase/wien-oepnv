@@ -5,6 +5,21 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Deutscher Feed: Was jetzt gilt, steht vorn, und die Zeitzeile sagt, was für heute zählt (2026-10-02, Betreiberentscheidung)**:
+  - **Rang 1, verdrängte Meldungen:** Am 02.10. um 18:00 belegten fünf der
+    zehn Plätze Meldungen, die noch nicht begonnen hatten („20A:
+    Bauarbeiten“ ab 13.10., die R 40 ab 31.10.); „N71: Ersatzverkehr“ und
+    „62: ÖBB Bauarbeiten“, beide an diesem Abend gültig, standen auf 11 und
+    12. `_defer_upcoming_items` stellt jetzt alles hinter das Feld, was erst
+    nach `UPCOMING_PREVIEW_DAYS` (Standard 3) Wiener Kalendertagen beginnt.
+    Gelöscht wird nichts.
+  - **Zeitzeile:** „[01.10.2026 – 02.10.2026]“ wird „[Heute]“,
+    „[30.09.2026 – 15.11.2026]“ wird „[Bis 15.11.]“, „[05.10.2026 –
+    11.11.2026]“ wird „[Ab Mo 05.10. bis 11.11.]“. Jahr nur außerhalb des
+    laufenden, Wochentag nur in den nächsten sieben Tagen, keine Uhrzeit.
+    Ein fernes Ende zählt ab heute statt ab dem Beginn („N8: Thaliastraße U“
+    zeigt „[Bis 16.11.]“ statt „[Seit 24.07.2024]“). EN übersetzt Wort für
+    Wort („[From Mon 05.10. until 11.11.]“).
 * **Deutscher Feed: ausführliche WL-Meldung behält die Folgen ihrer Kurzmeldungen (2026-10-01)**:
   Eine ausführliche Meldung steht weiter für ihre Kurzmeldungen. Was
   Kurzmeldungen derselben Ursache (oder ohne Ursache) zusätzlich sagen,
