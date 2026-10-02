@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 02 Oct 2026 09:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 10:00:56 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wiener Neustadt Hauptbahnhof]]></title>
@@ -32,17 +32,6 @@
       <content:encoded><![CDATA[Due to an interlocking fault am Bahnhof, no journeys are possible between Wien Praterstern station (U) and Wien Floridsdorf station (U).<br/>[On 02.10.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[12A: Contamination, track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">20413cfe1c2c4864089baad214c87f1f0e6ae6651edcb0fd3f56520de0b9eb5d</guid>
-      <pubDate>Fri, 02 Oct 2026 08:59:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 08:59:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 08:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Contamination: irregular intervals in both directions. Track construction works: service from Johnstraße U, Schweglerstraße 19-21. [On 02.10.2026]</description>
-      <content:encoded><![CDATA[Contamination: irregular intervals in both directions. Track construction works: service from Johnstraße U, Schweglerstraße 19-21.<br/>[On 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[U3: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
@@ -52,28 +41,6 @@
       <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: rescue operation in the stop area Westbahnhof. [On 02.10.2026]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation in the stop area Westbahnhof.<br/>[On 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9A: Fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8215e8ddaeeb8bea8ffb2c5747ffe43e3e9c91406d23ee310391a705c5df13b3</guid>
-      <pubDate>Fri, 02 Oct 2026 08:11:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 08:11:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 08:11:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 02.10.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64B: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">13f55294e5168f0c6d38da2f82758bdebe5379d52defb48fa9b9eff0dc931b14</guid>
-      <pubDate>Fri, 02 Oct 2026 07:43:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 08:01:26 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 07:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [On 02.10.2026]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 02.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Buses stop at Laxenburger Straße 66]]></title>
@@ -118,6 +85,39 @@
       <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
       <description>Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected. [05.10.2026 – 11.11.2026]</description>
       <content:encoded><![CDATA[Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected.<br/>[05.10.2026 – 11.11.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[R 40/REX 41/REX 4/S 40: Wien Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern / Tulln an der Donau / Wien Heiligenstadt / Wien Nußdorf]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;915701</guid>
+      <pubDate>Wed, 30 Sep 2026 14:07:02 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 15:31:22 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 31 Oct 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 04 Nov 2026 23:59:59 +0100</ext:ends_at>
+      <description>Due to construction works, from 02.11.2026 to 03.11.2026 between Wien Franz-Josefs-Bahnhof0X and St.Andrä-Wördern train station no R 40 train. [31.10.2026 – 04.11.2026]</description>
+      <content:encoded><![CDATA[Due to construction works, from 02.11.2026 to 03.11.2026 between Wien Franz-Josefs-Bahnhof0X and St.Andrä-Wördern train station no R 40 train.<br/>[31.10.2026 – 04.11.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46/47A/47B: Event on 04.10.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c2bb5f86d94aef7a1f6955caa3f47b2970089dc4432d9db0f98ffd41cb8ccb65</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 12:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 04 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
+      <description>Due to an event in the area of Allianz Stadion the following transport measures are taken. [On 04.10.2026]</description>
+      <content:encoded><![CDATA[Due to an event in the area of Allianz Stadion the following transport measures are taken.<br/>[On 04.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29B/N25: Adolf-Loos-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2e0949e212b98b31a226dddab6b40d0f6c06edb1c250ee7ddaac3c840bc8e962</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 11:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 11:11:00 +0100</ext:ends_at>
+      <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected. [05.10.2026 – 31.12.2026]</description>
+      <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected.<br/>[05.10.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
