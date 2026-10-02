@@ -14,7 +14,9 @@ from zoneinfo import ZoneInfo
 from src.build_feed import (
     _DISPLAY_TITLE_TARGET,
     _format_item_content,
+    _mark_house_numbers,
     _compact_baustellen_section,
+    _compact_line_prefix,
     _display_title,
     _shorten_wl_sentence_title,
 )
@@ -88,7 +90,8 @@ def test_abbreviations_are_no_sentence_end() -> None:
 def test_other_sources_keep_their_title() -> None:
     long_route = "R 40/REX 41/REX 4/S 40: Wien Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern / Tulln an der Donau"
     item: FeedItem = {"source": "ÖBB", "title": long_route, "description": long_route, "link": ""}
-    assert _display_title(item) == long_route
+    # Not shortened; only the line list loses its spaces.
+    assert _display_title(item) == long_route.replace("R 40/REX 41/REX 4/S 40", "R40/REX41/REX4/S40")
 
 
 def test_a_long_section_drops_crossing_and_second_names() -> None:
@@ -121,3 +124,42 @@ def test_a_baustellen_title_is_shown_compact() -> None:
         "link": "",
     }
     assert _display_title(item) == "U2: Rechte Wienzeile von Ramperstorffergasse bis Pilgramgasse"
+
+
+def test_an_oebb_line_list_is_written_without_spaces() -> None:
+    # Operator request 2026-10-02: "R40/REX41/REX4/S40" like U6 or S1/S2.
+    item: FeedItem = {
+        "source": "ÖBB",
+        "title": "R 40/REX 41/REX 4/S 40: Wien Franz-Josefs-Bahnhof ↔ Tulln an der Donau",
+        "description": "Keine R 40-Züge.",
+        "link": "",
+    }
+    assert _display_title(item) == "R40/REX41/REX4/S40: Wien Franz-Josefs-Bahnhof ↔ Tulln an der Donau"
+    assert _compact_line_prefix("S 45: Wien Hütteldorf ↔ Wien Handelskai") == "S45: Wien Hütteldorf ↔ Wien Handelskai"
+    assert _compact_line_prefix("Aufhebung Verkehrseinschränkung: S 45: Wien Handelskai") == (
+        "Aufhebung Verkehrseinschränkung: S45: Wien Handelskai"
+    )
+    # A route without a line, and the station names, stay as they are.
+    assert _compact_line_prefix("Wien Hauptbahnhof ↔ Wien Westbahnhof") == "Wien Hauptbahnhof ↔ Wien Westbahnhof"
+
+
+def test_house_numbers_read_as_an_address() -> None:
+    # "Rennweg von 33A bis 37" read as the bus 33A and the tram 37 (2026-10-02).
+    item: FeedItem = {
+        "source": "Stadt Wien – Baustellen", "title": "Rennweg von 33A bis 37", "description": "", "link": ""
+    }
+    assert _display_title(item) == "Rennweg 33A–37"
+    assert _mark_house_numbers("U2/U5: Kirchengasse 1 bis 30") == "U2/U5: Kirchengasse 1–30"
+    assert _mark_house_numbers("Rasumofskygasse von 1 bis 2") == "Rasumofskygasse 1–2"
+    assert _mark_house_numbers("Siebenbrunnengasse von Siebenbrunnenplatz bis 44") == (
+        "Siebenbrunnengasse von Siebenbrunnenplatz bis Nr. 44"
+    )
+
+
+def test_streets_and_number_spans_of_their_own_stay() -> None:
+    for title in (
+        "Matzleinsdorfer Platz 3-4 bis 5",
+        "Neilreichgasse von Gudrunstraße bis Davidgasse",
+        "Schottenring 11",
+    ):
+        assert _mark_house_numbers(title) == title

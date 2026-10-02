@@ -370,6 +370,16 @@ verdrängt eine andere Störung.
     Rechte Wienzeile von Ramperstorffergasse bis Pilgramgasse“ statt „… von
     Kreuzung Ramperstorffergasse bis Kreuzung Pilgramgasse und
     Pilgrambrücke“.
+* **Linien und Hausnummern im Titel (seit 2026-10-02).** Ebenfalls beim
+  Rendern (`_display_title`):
+  * ÖBB: Die Linienliste vor dem Doppelpunkt steht ohne Leerzeichen
+    (`_compact_line_prefix`): „R40/REX41/REX4/S40: …“ statt „R 40/REX 41/REX
+    4/S 40: …“, wie WL („U6“) und der Stammstrecken-Monitor („S1/S2“). Die
+    Beschreibung bleibt im Wortlaut der ÖBB (Betreiberwunsch).
+  * Baustellen: Hausnummern stehen als Adresse (`_mark_house_numbers`).
+    „Rennweg von 33A bis 37“ las sich am Fernseher wie Bus 33A und
+    Straßenbahn 37; jetzt „Rennweg 33A–37“, ebenso „Kirchengasse 1–30“. Eine
+    einzelne Nummer an einem Abschnittsende wird „bis Nr. 44“.
 * **ÖBB: alle betroffenen Linien vorn (seit 2026-10-01).** Das Präfix
   nennt jede Linie, die die Beschreibung als ausfallend nennt („keine R
   40-Züge“, „die REX 41-Züge … können nicht fahren“), in ihrer Reihenfolge

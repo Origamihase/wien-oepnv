@@ -832,19 +832,70 @@ def _compact_baustellen_section(title: str) -> str:
     return _SECTION_SECOND_NAME_RE.sub(r"\1 \2", title)
 
 
-def _display_title(item: FeedItem) -> str:
-    """The title *item* is shown with: shortened at its seams when too long.
+# A house number as Stadt Wien writes it in a Baustellen title: ``33A``,
+# ``1``, ``189``. Not ``3-4`` (a span of its own) and not a line code: in
+# these titles a number after "von" or "bis" is always an address.
+_HOUSE_NUMBER = r"\d{1,4}[A-Za-z]?"
+_HOUSE_NUMBER_SPAN_RE: re.Pattern[str] = re.compile(
+    rf"(?:\bvon\s+)?(?<![\w-])({_HOUSE_NUMBER})\s+bis\s+({_HOUSE_NUMBER})(?![\w-])"
+)
+# "bis 5" after a number is the end of an address span (``Matzleinsdorfer
+# Platz 3-4 bis 5``), not a house number on its own.
+_HOUSE_NUMBER_END_RE: re.Pattern[str] = re.compile(
+    rf"(?<!\d\s)\b(von|bis)\s+({_HOUSE_NUMBER})(?![\w-])"
+)
 
-    See :data:`_DISPLAY_TITLE_TARGET`. WL titles written as sentences go
+
+def _mark_house_numbers(title: str) -> str:
+    """Write the house numbers of a Baustellen title as an address.
+
+    Published 2026-10-02 on the info displays: ``Rennweg von 33A bis 37``,
+    read from a distance as the bus 33A and the tram 37. A span of two
+    house numbers becomes the address form ``Rennweg 33A–37`` (also
+    ``Kirchengasse 1 bis 30`` → ``Kirchengasse 1–30``); a single house
+    number at one end of a section gets "Nr." (``Siebenbrunnengasse von
+    Siebenbrunnenplatz bis Nr. 44``).
+    """
+    title = _HOUSE_NUMBER_SPAN_RE.sub(r"\1–\2", title)
+    return _HOUSE_NUMBER_END_RE.sub(r"\1 Nr. \2", title)
+
+
+# The line list in front of an ÖBB title, as ``_normalize_line_token``
+# renders it: ``R 40/REX 41/REX 4/S 40: …``.
+_SPACED_LINE_PREFIX_RE: re.Pattern[str] = re.compile(
+    r"(?:^|(?<=:\s))(?:[A-Z]{1,4}\s\d{1,3}/)*[A-Z]{1,4}\s\d{1,3}(?=:\s)"
+)
+
+
+def _compact_line_prefix(title: str) -> str:
+    """``R 40/REX 41/REX 4/S 40: …`` → ``R40/REX41/REX4/S40: …``.
+
+    The way WL lines (``U6``, ``N66``) and the Stammstrecke monitor
+    (``S1/S2/S3``) are written; operator request 2026-10-02. Only the list
+    in front of the colon changes (also behind an all-clear label), the
+    description keeps ÖBB's text.
+    """
+    return _SPACED_LINE_PREFIX_RE.sub(lambda match: match.group(0).replace(" ", ""), title, count=1)
+
+
+def _display_title(item: FeedItem) -> str:
+    """The title *item* is shown with.
+
+    Applied when the item is rendered, after every dedupe and merge (see
+    :data:`_DISPLAY_TITLE_TARGET`). WL titles written as sentences go
     through :func:`_shorten_wl_sentence_title`, Stadt Wien Baustellen
-    through :func:`_compact_baustellen_section`; every other title as is.
+    through :func:`_compact_baustellen_section` and
+    :func:`_mark_house_numbers`, ÖBB titles through
+    :func:`_compact_line_prefix`; every other title as is.
     """
     title = str(item.get("title") or "Mitteilung")
     source = str(item.get("source") or "").strip().casefold()
     if source == "wiener linien":
         return _shorten_wl_sentence_title(title, str(item.get("description") or ""))
     if source.startswith("stadt wien"):
-        return _compact_baustellen_section(title)
+        return _mark_house_numbers(_compact_baustellen_section(title))
+    if source in {"öbb", "oebb"}:
+        return _compact_line_prefix(title)
     return title
 
 
