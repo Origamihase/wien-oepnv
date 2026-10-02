@@ -417,22 +417,15 @@ verdrängt eine andere Störung.
   40 WL-Cache-Ständen bis 02.10. endeten 18 von 44 Störungen mit einer
   Uhrzeit am selben Tag genau eine Stunde nach ihrem Beginn („42:
   Feuerwehreinsatz“ 19:10 bis 20:10). Das sieht nach WLs Standardwert aus,
-  nicht nach einer Prognose. Ein sehr fernes Ende (mehr als `ABSOLUTE_MAX_AGE_DAYS` nach heute
+  nicht nach einer Prognose. Datum und Wochentag sind immer die realen des
+  Kalenders nach Wiener Zeit (Europe/Vienna): Ein Ende am 03.10. um 01:00
+  heißt „Bis Sa 03.10.“. Eine Verschiebung auf den Betriebstag davor (#1927)
+  hat der Betreiber am 2026-10-02 verworfen. Ein sehr fernes Ende (mehr als `ABSOLUTE_MAX_AGE_DAYS` nach heute
   bzw. nach einem künftigen Beginn) fällt weg; gemessen ab dem Beginn verlor
   „N8: Thaliastraße U“ (seit 24.07.2024) sein Ende 16.11.2026. Der EN-Feed
   tauscht die Wörter einzeln aus (`_TIME_WORDS_DE_TO_EN`: „[From Mon 05.10.
   until 11.11.]“), die Daten bleiben. `ext:starts_at` und `ext:ends_at`
   ändern sich nicht.
-
-  Ein Ende nach Mitternacht bis einschließlich 05:00 zählt zum Betriebstag
-  davor (`_last_service_day`, `_SERVICE_DAY_LAST_END`). WL beendet
-  Nachtarbeiten „bis 01:00“ oder „bis 04:30“, dem Betriebsbeginn; „66A:
-  Busse halten Salvatorianerplatz“ (Ende 03.10. 01:00) las sich am
-  Freitagabend „[Bis Sa 03.10.]“, als gälte sie den ganzen Samstag, jetzt
-  „[Heute]“. Genau 00:00 bleibt auf seinem Datum: So schreiben datumsgenaue
-  Quellen (Stadt-Wien-Baustellen) ihren letzten Tag. Der Tag fällt nie vor
-  den des Beginns und, solange das Ende noch bevorsteht, nie vor heute: Um
-  00:30 steht bei der 66A weiter „[Heute]“.
 
 ### Zeitraum einer WL-Meldung: Plausibilitätsprüfung (seit 2026-10-02)
 

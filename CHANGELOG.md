@@ -5,14 +5,11 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
-* **Deutscher Feed: Ein Ende in der Nacht zählt zum Tag davor (2026-10-02)**:
-  „66A: Busse halten Salvatorianerplatz“ endet laut WL am 03.10. um 01:00
-  und zeigte am Freitagabend „[Bis Sa 03.10.]“, als gälte die Verlegung den
-  ganzen Samstag. Ein Ende nach Mitternacht bis einschließlich 05:00 zählt
-  jetzt zum Betriebstag davor: „[Heute]“; die Gleisbauarbeiten der 46/49/52
-  (bis 31.10. 04:30) zeigen „[Bis 30.10.]“, die der D (bis 07.11. 01:00
-  bzw. 03:00) „[Bis 06.11.]“. Genau 00:00 bleibt auf seinem Datum
-  (Stadt-Wien-Baustellen schreiben so ihren letzten Tag).
+* **Deutscher Feed: Die Zeitzeile zeigt das Kalenderdatum (2026-10-02, Betreiberentscheidung)**:
+  Die Regel aus #1927, nach der ein Ende zwischen 00:00 und 05:00 zum
+  Betriebstag davor zählte, ist zurückgenommen. Datum und Wochentag sind
+  wieder die realen nach Wiener Zeit (Europe/Vienna): „66A: Busse halten
+  Salvatorianerplatz“, laut WL bis 03.10. 01:00, zeigt „[Bis Sa 03.10.]“.
 * **Deutscher Feed: Was jetzt gilt, steht vorn, und die Zeitzeile sagt, was für heute zählt (2026-10-02, Betreiberentscheidung)**:
   - **Rang 1, verdrängte Meldungen:** Am 02.10. um 18:00 belegten fünf der
     zehn Plätze Meldungen, die noch nicht begonnen hatten („20A:
