@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 02 Oct 2026 13:00:59 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 13:31:01 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[13A: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d</guid>
+      <pubDate>Fri, 02 Oct 2026 13:28:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 13:28:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 13:30:28 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction towards Hauptbahnhof S U. Expected Duration: 13.50. Reason: illegally parked vehicle in the area of Lederergasse 25. [On 02.10.2026]</description>
+      <content:encoded><![CDATA[Service obstruction towards Hauptbahnhof S U. Expected Duration: 13.50. Reason: illegally parked vehicle in the area of Lederergasse 25.<br/>[On 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104</guid>
+      <pubDate>Fri, 02 Oct 2026 13:23:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 13:23:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 13:23:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction towards Karlsplatz. Duration: 13:30. Reason: defective vehicle im Haltestellenbereich Stadlau. [On 02.10.2026]</description>
+      <content:encoded><![CDATA[Service obstruction towards Karlsplatz. Duration: 13:30. Reason: defective vehicle im Haltestellenbereich Stadlau.<br/>[On 02.10.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[62: Rescue operation, ÖBB construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +39,8 @@
       <ext:first_seen>Fri, 02 Oct 2026 12:53:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 02 Oct 2026 12:59:05 +0200</ext:starts_at>
       <ext:ends_at>Fri, 02 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Rescue operation: service obstruction in the direction of Lainz, Wolkersbergenstraße. ÖBB construction works: No operation; trains stop at line 18 in the direction of … [On 02.10.2026]</description>
-      <content:encoded><![CDATA[Rescue operation: service obstruction in the direction of Lainz, Wolkersbergenstraße. ÖBB construction works: No operation; trains stop at line 18 in the direction of …<br/>[On 02.10.2026]]]></content:encoded>
+      <description>Rescue operation: service obstruction. ÖBB construction works: No operation; trains stop at line 18, direction Burggasse; service from Kliebergasse. [On 02.10.2026]</description>
+      <content:encoded><![CDATA[Rescue operation: service obstruction. ÖBB construction works: No operation; trains stop at line 18, direction Burggasse; service from Kliebergasse.<br/>[On 02.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[14A: Traffic accident]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Thu, 31 Dec 2026 11:11:00 +0100</ext:ends_at>
       <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected. [05.10.2026 – 31.12.2026]</description>
       <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected.<br/>[05.10.2026 – 31.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[47B: Running event at 04.10.2027]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6864a29848e360090798645174eb08bfd5e2d1138aeba3ffff926596908e52a6</guid>
-      <pubDate>Mon, 28 Sep 2026 13:30:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 13:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 04 Oct 2027 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
-      <description>The 47B buses will be redirected due to a running event near the Allianz Stadium. [From 04.10.2027]</description>
-      <content:encoded><![CDATA[The 47B buses will be redirected due to a running event near the Allianz Stadium.<br/>[From 04.10.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">67078944a93bdf102ba6646e545b32c2ab8c76bf5f5efe8750a1c24d9ac26e08</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:14 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:14 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Trains keep in loop, Wipplingerstr 39; service from Augasse, Börse. [01.10.2026 – 02.10.2026]</description>
-      <content:encoded><![CDATA[Trains keep in loop, Wipplingerstr 39; service from Augasse, Börse.<br/>[01.10.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
