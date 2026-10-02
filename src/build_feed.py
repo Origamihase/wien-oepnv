@@ -69,7 +69,12 @@ from .utils.logging import sanitize_log_arg
 from .utils.stats import append_disruption_row, extract_location_name
 from .providers.baustellen import REFERRAL_BOILERPLATE_RE
 from .providers.wl_text import _MONTHS_DE
-from .utils.text import html_to_text, repair_glued_words, truncate_html
+from .utils.text import (
+    BLOCK_END_MARK,
+    html_to_text,
+    repair_glued_words,
+    truncate_html,
+)
 
 
 __all__ = ["RunReport", "ThreadPoolExecutor", "feed_config"]
@@ -1639,8 +1644,15 @@ _SENTENCE_END_RE = re.compile(r"[.!?…](?=\s|$)")
 _WHITESPACE_RE = re.compile(r"\s+")
 _WHITESPACE_CLEANUP_RE = re.compile(r"[ \t\r\f\v]+")
 
+# The line-break members of ``_CONTROL_RE`` (vertical tab, form feed,
+# NEXT LINE, line / paragraph separator) are line breaks in upstream text. Deleting them glues two words into one, so they
+# become a space first — see ``_SEPARATOR_PRIMITIVES_RE`` in
+# :mod:`src.utils.serialize`.
+_SEPARATOR_CONTROL_RE = re.compile(r"[\x0b\x0c\x85\u2028\u2029]")
+
+
 def _sanitize_text(s: str) -> str:
-    return _CONTROL_RE.sub("", s or "")
+    return _CONTROL_RE.sub("", _SEPARATOR_CONTROL_RE.sub(" ", s or ""))
 
 
 # ---------------- Translation engine (Helsinki-NLP/opus-mt-de-en) ----------------
@@ -1781,7 +1793,12 @@ _TRANSLATION_MODEL_REVISION = "1a922f3b32a8e809e17a47d4b32142d8105924e5"
 #       "Removing traffic restrictions: St. Pölten Hauptbahnhof", and label
 #       records reading "until expected end of November". The source digests
 #       are unchanged, so only a bump evicts them.
-_TRANSLATION_CACHE_EPOCH = 18
+#  19 — an ``X`` the model put in front of a placeholder now becomes the
+#       space it replaced (``_PLACEHOLDER_LEADING_X_RE``). The D notice
+#       was cached under 18 as "WipplingerstrX39; service fromXAugasse"
+#       and stood second in the EN feed on 2026-10-02; the source digest
+#       is unchanged, so only a bump evicts it.
+_TRANSLATION_CACHE_EPOCH = 19
 
 # Static lookup for the German words of the bracketed ``[…]`` time line (see
 # ``format_local_times``). Translating these via the ML model would be
@@ -2903,19 +2920,52 @@ _PLACEHOLDER_DEBRIS_RE: re.Pattern[str] = re.compile(
     "((?:XENT|XGLO)" + _PLACEHOLDER_NONCE + r"X(\d+)X)(?:X+|(?:\2X)+)(?![A-Za-z0-9])"
 )
 
+# An ``X`` the model put IN FRONT of a placeholder, in place of the space.
+#
+# Published 2026-10-02 23:42, ``docs/feed.en.xml``, item 2 of 10::
+#
+#     DE: … Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.
+#     EN: … Trains keep in loop, WipplingerstrX39; service fromXAugasse, Börse.
+#
+# Each stray ``X`` sits exactly where the German has a space before a
+# masked entity: the model returned ``…X0XXXENT…X1X`` and
+# ``fromXXENT…X2X``. The unmask restores both placeholders and leaves the
+# surplus ``X`` glued between them; :data:`_PLACEHOLDER_DEBRIS_RE` only
+# looks AFTER a placeholder and :data:`_RESIDUAL_PLACEHOLDER_RE` only sees
+# a prefix or an index, so both guards pass it.
+#
+# Repaired like its sibling: the stray run becomes the space it replaced
+# when a word or placeholder precedes it, and vanishes otherwise. The
+# lookbehinds keep the CLOSING ``X`` of a preceding placeholder (``X0X``)
+# out of the match, so only the surplus is touched.
+_PLACEHOLDER_LEADING_X_RE: re.Pattern[str] = re.compile(
+    r"(?<!X\d)(?<!X\d\d)(?<!X\d\d\d)X+"
+    r"(?=(?:XENT|XGLO)" + _PLACEHOLDER_NONCE + r"X\d+X)"
+)
+
 # Any word character. Used to tell a verbatim entity that MUST survive
 # translation (``14A``, ``Justgasse``, the house number ``2``) from a masked
 # punctuation glyph (``…``, ``–``) that the model may legitimately drop.
 _MASK_WORD_CHAR_RE: re.Pattern[str] = re.compile(r"\w")
 
 
+def _leading_x_replacement(match: re.Match[str]) -> str:
+    start = match.start()
+    return " " if start and match.string[start - 1].isalnum() else ""
+
+
 def _normalise_placeholder_debris(text: str) -> str:
     """Strip the surplus ``X`` or repeated index from placeholders the model doubled.
+
+    Also turns an ``X`` glued in front of a placeholder back into the space
+    it replaced (see :data:`_PLACEHOLDER_LEADING_X_RE`).
 
     Idempotent, so it is safe to apply on both the translation path and
     inside :func:`_unmask_entities`.
     """
+    text = _PLACEHOLDER_LEADING_X_RE.sub(_leading_x_replacement, text)
     return _PLACEHOLDER_DEBRIS_RE.sub(r"\1", text)
+
 
 
 # German clock-time suffix. ``15:13 Uhr`` has no English equivalent —
@@ -6348,7 +6398,7 @@ def _finish_reason_title(
     # of such a summary says nothing the consequence does not.
     rest = _drop_category_word(summary, _title_body(short_title))
     if not rest or rest.casefold() in fragment.casefold():
-        return short_title, _truncate_summary_180(fragment)
+        return short_title, _truncate_summary_180(_as_sentence(fragment))
     # "Fahrtbehinderung" says less than any description WL writes ("Nach
     # einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.");
     # it only fills an empty one.
@@ -6366,8 +6416,7 @@ def _lead_with_fragment(fragment: str, uncut_summary: str) -> str:
     behind the last sentence that fits (:func:`_last_sentence_end`); only
     when none does is it cut mid-sentence as before.
     """
-    text = fragment if fragment.endswith((".", "!", "?", "…")) else f"{fragment}."
-    text = f"{text} {uncut_summary}"
+    text = f"{_as_sentence(fragment)} {uncut_summary}"
     if len(text) > 180:
         end = _last_sentence_end(text, 180, start=len(fragment))
         if end is not None:
@@ -7001,8 +7050,14 @@ _NEGATIONS: frozenset[str] = frozenset({"kein", "keine", "keinen", "nicht"})
 
 
 def _as_sentence(text: str) -> str:
-    """*text* with a full stop, unless it ends in one of its own ("… Linie 46!")."""
-    return text if text.endswith((".", "!", "?")) else f"{text}."
+    """*text* with a full stop, unless it ends in one of its own ("… Linie 46!").
+
+    Also closes a ticker's consequence in both branches of
+    :func:`_finish_reason_title`; only the one with more text behind it
+    used to, so the feed showed "Betrieb ab Schwedenplatz U." under one
+    ticker and "Busse halten bei Haltestelle N71" under the next.
+    """
+    return text if text.endswith((".", "!", "?", "…")) else f"{text}."
 
 
 def _said_already(message: str, said: frozenset[str]) -> bool:
@@ -7339,6 +7394,64 @@ def _reason_only_summary(category_word: str) -> str:
     return f"Grund: {category_word.rstrip('.,;:')}."
 
 
+# A paragraph end is a sentence end. WL builds its notices from paragraphs
+# and headings, and the plain-text conversion turned every boundary into a
+# bare space, so a heading or a field ran straight into the next one::
+#
+#     U1: Starke Nachfrage Die U1 wird aufgrund der ÖBB S-Bahn-Sperre …
+#     Bauarbeiten Wien Stammstrecke Phase 2 Zeitraum: Ab Montag, …
+#     … Schwedenplatz U Haltestelle: Stammersdorf Von: Brünner Straße
+#     gegenüber 262 Ersatzlos aufgelassen Dauer: Ab 30. September …
+#
+# A block that ends without punctuation gets the full stop it stands for; a
+# leading block whose words the title already carries all of ("U1: Starke
+# Nachfrage", "Bauarbeiten S80" under "S80: Bauarbeiten") is the heading
+# repeated and goes. A single word is left alone: that is WL's category
+# heading ("<h2>Gleisbauarbeiten</h2>"), which
+# :func:`_strip_summary_category_prefix` and :func:`_reason_only_summary`
+# already handle as a bare word.
+_BLOCK_TERMINAL_PUNCT = ".!?:;,…"
+_WORD_RE = re.compile(r"\w+")
+
+
+# The dates of a notice are already the time line under it; a ``Zeitraum:``
+# or ``Dauer:`` field repeats them in longer words and, in a field-built
+# text, takes the room the stop's new location needs.
+_DATE_FIELD_RE = re.compile(r"(?:Zeitraum|Dauer):")
+
+
+def _close_blocks(text: str, raw_title: str) -> tuple[str, bool]:
+    """Turn :data:`BLOCK_END_MARK` into sentence ends.
+
+    The flag says whether the text opens with a heading or a field — a
+    block that carried no punctuation of its own — and continues after it.
+    Such a text says little in its first two sentences ("Pantucekgasse -
+    Früherer Betriebsschluss.", "Haltestelle: Stammersdorf."), so the
+    caller skips the two-sentence rule and lets the 180-character cut
+    decide; its date fields are dropped here for the reason above.
+    """
+    if BLOCK_END_MARK not in text:
+        return text, False
+    title_words = {w.casefold() for w in _WORD_RE.findall(raw_title or "")}
+    blocks: list[str] = []
+    fragment_led = False
+    for raw_block in text.split(BLOCK_END_MARK):
+        block = raw_block.strip(" •")
+        words = _WORD_RE.findall(block)
+        if not words:
+            continue
+        if not blocks and {w.casefold() for w in words} <= title_words:
+            continue
+        if len(words) > 1 and not block.endswith(tuple(_BLOCK_TERMINAL_PUNCT)):
+            block += "."
+            fragment_led = fragment_led or not blocks
+        blocks.append(block)
+    fragment_led = fragment_led and len(blocks) > 1
+    if fragment_led:
+        blocks = [block for block in blocks if not _DATE_FIELD_RE.match(block)]
+    return " ".join(blocks), fragment_led
+
+
 def _strip_summary_category_prefix(summary: str, raw_title: str) -> str:
     """Remove a leading category H2 word that duplicates the title body
     or signals an HTML-heading leak.
@@ -7480,6 +7593,11 @@ def _trim_truncation_tail(truncated: str) -> str:
 _WL_REFERRAL_BOILERPLATE_RE: re.Pattern[str] = REFERRAL_BOILERPLATE_RE
 
 
+# A word of two or more characters and a full stop — "aufgelassen.",
+# "6A-6B." — but not the single-letter "U." of a station name.
+_SENTENCE_END_RE = re.compile(r"\w{2}[.!?]$")
+
+
 def _truncate_summary_180(summary: str) -> str:
     """Hard-limit ``summary`` to 180 characters with TV-friendly tail cleanup."""
     if len(summary) <= 180:
@@ -7490,7 +7608,13 @@ def _truncate_summary_180(summary: str) -> str:
         last_open = truncated.rfind("(")
         if last_open >= 0:
             truncated = truncated[:last_open].rstrip(_TRUNCATION_PUNCT_STRIP)
-    return truncated.rstrip(_TRUNCATION_PUNCT_STRIP) + " …"
+    truncated = truncated.rstrip(_TRUNCATION_PUNCT_STRIP)
+    # The cut landed on a sentence end: show the sentence, not ". …". Whole
+    # sentences that do not fit are dropped without a mark elsewhere too
+    # (the two-sentence rule in :func:`_format_item_content`).
+    if _SENTENCE_END_RE.search(truncated):
+        return truncated
+    return truncated + " …"
 
 
 def _compose_description(summary: str, time_line: str) -> tuple[str, str]:
@@ -7819,7 +7943,10 @@ def _format_item_content(
 
     # Task: Strict 2-line Layout (Summary + Timeframe)
     # Line 1: Concise plain text summary (no HTML artifacts)
-    summary = html_to_text(raw_desc, collapse_newlines=True)
+    summary, fragment_led = _close_blocks(
+        html_to_text(raw_desc, collapse_newlines=True, mark_block_ends=True),
+        raw_title,
+    )
     if title_lead:
         summary = f"{title_lead}: {summary}" if summary.strip() else f"{title_lead}."
     summary = _sanitize_text(summary).strip()
@@ -7888,7 +8015,7 @@ def _format_item_content(
         for s in _SENTENCE_SPLIT_RE.split(summary)
         if s.strip()
     ]
-    if sentences:
+    if sentences and not fragment_led:
         short_summary = sentences[0]
         # Append the second sentence whenever the combined length still
         # fits below the 180-char hard limit applied below. Without this

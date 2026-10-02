@@ -250,7 +250,9 @@ def test_dangling_label_is_dropped_at_the_truncation_point() -> None:
     # Pre-fix the feed published "… Zentralfriedhof. Grund …" — a label
     # announcing a reason that the cut had already swallowed.
     assert "Grund" not in out
-    assert out.endswith("Zentralfriedhof. …")
+    # Since 2026-10-02 a cut behind a whole sentence carries no "…" (the
+    # two-sentence rule drops whole sentences without a mark too).
+    assert out.endswith("Zentralfriedhof.")
 
 
 def test_label_with_its_value_intact_is_kept() -> None:

@@ -102,7 +102,7 @@ class TestTrailingDirectionalMarkerStripped:
         # title, once, and without the marker.
         short, out = _format(title, desc)
         assert short == "2: Veranstaltung"
-        assert out.startswith("Betrieb ab Ring, Volkstheater [")
+        assert out.startswith("Betrieb ab Ring, Volkstheater. [")
         assert ">" not in out
 
     def test_thaliastrasse_marker_strip_enables_dedup(self) -> None:

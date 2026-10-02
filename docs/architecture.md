@@ -406,6 +406,36 @@ verdrängt eine andere Störung.
   solches Präfix wieder, sonst setzte `_post_filter_oebb` es beim Lesen des
   Caches ein zweites Mal davor.
 
+* **Absatzende ist Satzende (seit 2026-10-02).** WL baut ausführliche
+  Meldungen aus Absätzen und Überschriften. Die Umwandlung in Text machte
+  aus jeder Grenze ein Leerzeichen, und Überschrift und Felder liefen
+  ineinander: „U1: Starke Nachfrage Die U1 wird …“, „… Schwedenplatz U
+  Haltestelle: Stammersdorf Von: Brünner Straße gegenüber 262 …“
+  (16 von 69 Meldungen am 02.10.). `html_to_text(mark_block_ends=True)`
+  markiert jetzt das Ende jedes Absatzes, und `_close_blocks` setzt dort
+  den Punkt, der fehlt. Eine erste Überschrift, deren Wörter alle schon im
+  Titel stehen („Bauarbeiten S80“ unter „S80: Bauarbeiten“), fällt weg; ein
+  einzelnes Wort (`<h2>Gleisbauarbeiten</h2>`) bleibt den bisherigen
+  Regeln. Beginnt der Text mit einer Überschrift oder einem Feld, gilt die
+  Zwei-Sätze-Regel nicht, sonst stünde „Haltestelle: Stammersdorf.“ ohne
+  die neue Lage da; dann fallen auch „Zeitraum:“ und „Dauer:“ weg, die die
+  Zeitzeile schon nennt. Endet die Kürzung auf 180 Zeichen genau hinter
+  einem Satz, steht kein „…“ dahinter (`_truncate_summary_180`), so wie
+  die Zwei-Sätze-Regel ganze Sätze ohne Zeichen weglässt. Die Folge einer
+  Kurzmeldung steht immer als Satz mit Punkt da („Busse halten bei
+  Haltestelle N71.“).
+* **Verklebte Wörter (seit 2026-10-02).** Die Baustellentexte der Stadt
+  Wien kamen mit Wörtern ohne Leerzeichen in den Feed („Derlinke
+  Fahrstreifen“, „Außerhalbder Arbeitszeit“, „zuden“). Zwei Stellen: Der
+  Cache-Schreiber (`scrub_trojan_source_primitives`) und `_sanitize_text`
+  löschten Zeilenumbruch-Steuerzeichen (vertikaler Tab, U+2028 …) ersatzlos;
+  sie werden jetzt zu einem Leerzeichen. Ob die Quelle selbst schon
+  verklebt liefert, lässt sich aus der Sandbox nicht prüfen (kein Zugriff
+  auf `data.wien.gv.at`); deshalb erkennt `repair_glued_words` die Form
+  auch im Text: Artikel vor Fahrstreifen-Adjektiv, Präposition vor Artikel,
+  Funktionswort hinter „-straße/-gasse/-stelle/-platz/-ung“. Über 16 362
+  Texte aus Feed- und Cache-Historie trifft die Regel 23 Stellen, alle
+  verklebt; „zudem“, „indem“, „beiden“, „derzeit“ bleiben ganz.
 * **Zeitzeile: was für heute zählt (seit 2026-10-02, Betreiberentscheidung).**
   Wer vor dem Display steht, fragt: Gilt das jetzt, und wie lange noch?
   `format_local_times` antwortet darauf statt mit zwei vollen Daten:
@@ -1567,6 +1597,10 @@ Nach dem Modelllauf wird nicht blind vertraut:
   wiederholten eigenen Index (`X0X0X` → `X0X`). Der hatte vom 30.09. bis
   01.10. „Wien Franz-Josefs-Bahnhof0X“ und „service obstruction0X“ in den
   EN-Feed gebracht, an keinem Wächter vorbei sichtbar.
+* Seit 2026-10-02 auch ein `X`, das das Modell **vor** einen Platzhalter
+  setzt (`_PLACEHOLDER_LEADING_X_RE`): Es wird zum Leerzeichen, das es
+  ersetzt hat. Es hatte „WipplingerstrX39; service fromXAugasse“ auf Platz 2
+  des EN-Feeds gebracht; Epoche 19 räumt den Cache.
 * `_entities_dropped_by_translation` verwirft die Übersetzung, wenn das
   Modell eine wortgleiche Entität **verloren** hat — lieber deutsch als eine
   englische Meldung, in der eine Haltestelle fehlt.

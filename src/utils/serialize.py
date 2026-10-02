@@ -78,6 +78,19 @@ _TROJAN_SOURCE_PRIMITIVES_RE = re.compile(
     r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 
+# The members of the union above that act as line breaks — vertical tab,
+# form feed, NEXT LINE and the line / paragraph separators. Upstream text
+# uses them that way: Word writes a manual line break (Shift+Enter) as a
+# vertical tab, rich-text editors write U+2028. Deleting one glues the
+# words on either side together. The cached Stadt-Wien roadworks texts
+# carry exactly that damage ("Derlinke Fahrstreifen", "Außerhalbder
+# Arbeitszeit", "zuden Objekten"); whether this scrub or the source
+# dropped those breaks cannot be told from the cache alone, so
+# :func:`src.utils.text.repair_glued_words` repairs the shape as well.
+# Replacing the separators with a plain space removes the primitive just
+# as completely and keeps the words apart.
+_SEPARATOR_PRIMITIVES_RE = re.compile(r"[\x0b\x0c\x85\u2028\u2029]")
+
 
 def scrub_trojan_source_primitives(
     value: Any,
@@ -120,7 +133,9 @@ def scrub_trojan_source_primitives(
     if _depth > max_depth:
         raise RecursionError(f"Maximum recursion depth {max_depth} exceeded")
     if isinstance(value, str):
-        return _TROJAN_SOURCE_PRIMITIVES_RE.sub("", value)
+        return _TROJAN_SOURCE_PRIMITIVES_RE.sub(
+            "", _SEPARATOR_PRIMITIVES_RE.sub(" ", value)
+        )
     if isinstance(value, dict):
         return {
             (
