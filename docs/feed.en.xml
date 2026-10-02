@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 03 Oct 2026 01:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 03 Oct 2026 01:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U3: Contamination]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6</guid>
+      <pubDate>Sat, 03 Oct 2026 01:03:00 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 01:03:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 03 Oct 2026 01:03:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: contamination. [Today]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Today]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N66: Buses stop Salvatorianerplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -32,17 +43,6 @@
       <content:encoded><![CDATA[Buses stop at Quellenstraße 189, Neilreichgasse 20-22.<br/>[Today]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[D: Defective vehicle, track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">479d81556bc68dbdee0680cddad02646b0c604865221d4ea576921f46f65d96c</guid>
-      <pubDate>Fri, 02 Oct 2026 22:32:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 22:32:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 22:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 03 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Track construction works: Trains keep in loop, Wipplingerstr 39; service from Augasse, Börse. [Today]</description>
-      <content:encoded><![CDATA[Track construction works: Trains keep in loop, Wipplingerstr 39; service from Augasse, Börse.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[71: Defective vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">6386a0a1443709a811da286faca3c110f82cb450fccefa41edfcc91b1f2e483b</guid>
@@ -50,17 +50,6 @@
       <ext:first_seen>Fri, 02 Oct 2026 22:32:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 02 Oct 2026 22:32:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 03 Oct 2026 01:28:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Today]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">73357b6320dfec1f26a86c63469d119b40e8f17ed69fcf1491dd8ae09deab193</guid>
-      <pubDate>Fri, 02 Oct 2026 22:32:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 22:32:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 22:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 03 Oct 2026 01:02:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [Today]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Today]]]></content:encoded>
     </item>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sat, 03 Oct 2026 23:59:59 +0200</ext:ends_at>
       <description>Buses stop at N71 [Today]</description>
       <content:encoded><![CDATA[Buses stop at N71<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: ÖBB construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6a1dca08aeb9e7b41cb4335d0f1d1f13d36847df0e83b73b6b2f2c6ddba9e385</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 15:31:24 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 00:00:19 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 03 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>No operation; trains stop on line 18, direction Burggasse; service from Kliebergasse. [Today]</description>
+      <content:encoded><![CDATA[No operation; trains stop on line 18, direction Burggasse; service from Kliebergasse.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
