@@ -464,7 +464,10 @@ def compute_stammstrecke_events(
     once an episode aged past 6 h, making the build-feed state lookup
     miss the prior entry every cycle and re-publishing the disruption
     as brand-new. When the trigger gate STOPS firing for a direction
-    the persisted entry is cleared (episode ended). Pass a custom
+    the persisted entry is cleared (episode ended). A persisted start is
+    only carried while the current episode reaches back to the start of
+    the lookback window; an episode that begins inside it, after a gap,
+    is a new one and pins its own start. Pass a custom
     *episode_starts_path* in tests.
 
     Used by :func:`src.feed.providers.read_cache_stammstrecke` as the
@@ -557,7 +560,17 @@ def compute_stammstrecke_events(
         # writes, hand edit) we trust the earlier of the two. The first
         # cycle of a fresh episode has no persisted entry and just pins
         # ``computed_start``.
+        # A persisted start belongs to THIS episode only while the episode
+        # reaches back to the start of the lookback window: only then can it
+        # have begun before the window. An episode that begins inside the
+        # window, after a gap, is a new one. Without this check a start kept
+        # across a ledger gap (the ``not observations`` branch above keeps
+        # it on purpose) was inherited by the next, unrelated episode: its
+        # "[Seit …]" date and GUID were the previous day's (fund E,
+        # 2026-10-02; the ledger had one such gap, 7:45 h on 2026-08-06).
         persisted = persisted_starts.get(direction.target_label)
+        if persisted is not None and computed_start - (current - episode_lookback) > EPISODE_GAP_TOLERANCE:
+            persisted = None
         if persisted is not None and persisted <= computed_start:
             episode_start = persisted
         else:

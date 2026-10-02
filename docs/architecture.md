@@ -201,6 +201,15 @@ verdrängt eine andere Störung.
   - Grenzen: Andere Linienmengen („62/18“), Hinweise und andere Quellen
     bleiben getrennt. Die Beschreibung ist auf 180 Zeichen begrenzt. Die
     Störungsstatistik zählt einen zusammengelegten Vorfall einmal.
+  - Eine Ausnahme bei den Linienmengen (seit 2026-10-02): Zwei
+    Kurzmeldungen verschiedener Linien mit gleichem Titeltext und gleichem
+    Text im selben Fenster verbinden ihre Gruppen (`_join_twin_groups`).
+    Der Eintrag steht unter allen Linien; eine Folge, die nur ein Teil der
+    Linien meldet, behält deren Kürzel. Anlass: Am 02.10. um 01:00:12 kam
+    „Busse halten Laxenburger Straße 66“ für N65 und für N66 und belegte
+    zwei der zehn Plätze. Jetzt steht dort „N65/N66: Bauarbeiten“ über
+    „Busse halten Laxenburger Straße 66; N66: Busse halten
+    Salvatorianerplatz.“ Gruppen mit ausführlicher Meldung bleiben getrennt.
 * **Eine Linie, ein Platz (seit 2026-10-01, Betreiberentscheidung).**
   „Wenn mehrere unterschiedliche Linien betroffen sind, soll die Störung
   auch angezeigt werden. Mehrere Störungsmeldungen zur selben Linie sollte
@@ -1498,7 +1507,14 @@ Nach dem Modelllauf wird nicht blind vertraut:
 * Ein gecachter EN-Wert wird vor dem Ausliefern geprüft
   (`_cached_translation_defect`): ein Rest-Platzhalter oder ein Datum des
   deutschen Quelltexts, das im Englischen fehlt, macht den Treffer zum
-  Miss — gezielt für dieses Feld, ohne Epochensprung.
+  Miss — gezielt für dieses Feld, ohne Epochensprung. Seit 2026-10-02 zählt
+  auch ein Rest, den die Rückersetzung hinterlassen hat
+  (`_CACHED_DEBRIS_RE`): ein `X` oder ein Index, der an einem Wort klebt
+  („Bahnhof0X“, „accidentX“, „Line 18X“), oder ein verstümmeltes Präfix
+  („XGLAB…X0X“), sofern der deutsche Text das Wort nicht selbst enthält.
+  Die Reparatur vom 01.10. griff nur für neue Übersetzungen; am 02.10.
+  zeigte der EN-Feed noch „Wien Franz-Josefs-Bahnhof0X“ aus dem Cache, der
+  44 solche Felder hielt.
 * Übrig gebliebene Platzhalter (`_RESIDUAL_PLACEHOLDER_RE`) lassen das Feld
   scheitern — und damit das Item deutsch bleiben. Das schließt eine
   Platzhalter-Form ein, der das Modell das führende `X` genommen hat

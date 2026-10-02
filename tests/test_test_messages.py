@@ -50,6 +50,10 @@ def test_test_messages_are_recognised(title: str, description: str) -> None:
         ("U4: Stromstörung", "Fahrtbehinderung in Richtung Hütteldorf. Grund: Stromstörung im Haltestellenbereich Heiligenstadt."),
         ("D: Testbetrieb", "Testbetrieb der neuen Flexity-Straßenbahnen"),
         ("D: Hinweis", "Test-Fahrten der neuen Straßenbahn zwischen Nußdorf und Hauptbahnhof ab Montag"),
+        # Short compounds with a hyphen are no test (fund C, 2026-10-02).
+        ("U2: Test-Fahrten neuer Züge", "Test-Fahrten neuer Züge"),
+        ("D: Covid-Test-Straße Haltestelle verlegt", "Busse halten Ring 5"),
+        ("13A: Bus-Test", "Probefahrt Bus-Test"),
         ("Wien Hütteldorf ↔ Wien Hauptbahnhof", "Wegen Bauarbeiten fahren einige Fernverkehrszüge mit geänderten Fahrzeiten."),
         ("", ""),
     ],
