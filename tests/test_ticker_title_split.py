@@ -116,7 +116,9 @@ def test_a_notice_keeps_its_place_in_the_title() -> None:
 def test_only_wiener_linien_tickers() -> None:
     item = _item("REX 1: Schadhafter Zug Betrieb ab Wien Meidling", "x", source="ÖBB")
     title, _ = _format(item)
-    assert title == "REX 1: Schadhafter Zug Betrieb ab Wien Meidling"
+    # Not split into cause and consequence; the line list only loses its
+    # space (``_compact_line_prefix``, 2026-10-02).
+    assert title == "REX1: Schadhafter Zug Betrieb ab Wien Meidling"
 
 
 # ---------------- what the description becomes ----------------

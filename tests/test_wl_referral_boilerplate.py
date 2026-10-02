@@ -159,7 +159,9 @@ def test_the_published_frauenstiftgasse_summary_says_what_happens() -> None:
         title="Frauenstiftgasse von Baumergasse bis Brünner Straße",
     )
     assert "Auskunft der Wiener Linien" not in out
-    assert out.startswith("Bauphase 1")
+    # The title (51 characters) gives its section to the description
+    # (``_baustellen_display``, 2026-10-02); the first sentence follows it.
+    assert out.startswith("Von Baumergasse bis Brünner Straße: Bauphase 1")
 
 
 def test_a_referral_in_second_place_frees_the_slot_behind_it() -> None:
