@@ -20,6 +20,9 @@ import pytest
 import src.build_feed as bf
 from src.feed_types import FeedItem
 
+# Rendered time lines name no year and no "Heute" relative to a fixed day.
+pytestmark = pytest.mark.usefixtures("time_line_today")
+
 LIVE = {
     "source": "Wiener Linien",
     "category": "Störung",
@@ -51,7 +54,7 @@ def test_the_live_item_as_published() -> None:
     end = datetime(2026, 9, 25, 21, 0, tzinfo=UTC)
     formatted = bf._format_item_content(cast(FeedItem, item), ident="t", starts_at=start, ends_at=end)
     assert formatted.title_out == "S80: ÖBB-Ersatzbus"
-    assert formatted.desc_text_truncated == "Bhf. Hütteldorf [Am 25.09.2026]"
+    assert formatted.desc_text_truncated == "Bhf. Hütteldorf [Am\u202f25.09.]"
 
 
 @pytest.mark.parametrize(

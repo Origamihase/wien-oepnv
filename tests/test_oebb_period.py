@@ -32,6 +32,11 @@ from datetime import UTC, datetime
 
 from src.build_feed import format_local_times
 from src.providers.oebb import _build_item_from_xml, _parse_period
+from zoneinfo import ZoneInfo
+
+# The time lines below are read on this day: no year inside 2026, a weekday
+# for the coming week.
+NOW = datetime(2026, 10, 2, 12, 0, tzinfo=ZoneInfo("Europe/Vienna"))
 
 
 def _item(description: str, *, title: str = "Bauarbeiten: Wien Hbf - Gramatneusiedl") -> ET.Element:
@@ -67,7 +72,7 @@ def test_parse_period_reads_a_single_day() -> None:
     assert start is not None and end is not None
     assert start.date() == end.date()
     # A single day renders as "Am …" — see format_local_times.
-    assert format_local_times(start, end) == "Am 01.11.2026"
+    assert format_local_times(start, end, NOW) == "Am\u202f01.11."
 
 
 def test_parse_period_returns_nothing_without_a_prefix() -> None:
@@ -105,16 +110,16 @@ def test_three_closures_on_one_route_become_distinguishable() -> None:
             )
         )
         assert built is not None
-        lines.append(format_local_times(built["starts_at"], built["ends_at"]))
+        lines.append(format_local_times(built["starts_at"], built["ends_at"], NOW))
 
-    # ``format_local_times`` joins a range with NARROW NO-BREAK SPACE (U+202F)
-    # around the en dash, on purpose: the period must not wrap mid-range on a
-    # display. Spelled out here so nobody "fixes" it to a plain space.
+    # ``format_local_times`` joins its words with NARROW NO-BREAK SPACE
+    # (U+202F), on purpose: the period must not wrap mid-range on a display.
+    # Spelled out here so nobody "fixes" it to a plain space.
     nnbsp = "\u202f"
     assert lines == [
-        f"03.10.2026{nnbsp}–{nnbsp}05.10.2026",
-        f"31.10.2026{nnbsp}–{nnbsp}30.11.2026",
-        f"05.12.2026{nnbsp}–{nnbsp}07.12.2026",
+        f"Ab{nnbsp}Sa{nnbsp}03.10.{nnbsp}bis{nnbsp}Mo{nnbsp}05.10.",
+        f"Ab{nnbsp}31.10.{nnbsp}bis{nnbsp}30.11.",
+        f"Ab{nnbsp}05.12.{nnbsp}bis{nnbsp}07.12.",
     ]
     assert len(set(lines)) == 3, "die drei Sperren müssen unterscheidbar sein"
 

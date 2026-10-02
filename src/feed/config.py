@@ -22,6 +22,7 @@ from ..config.defaults import (
     DEFAULT_FRESH_PUBDATE_WINDOW_MIN,
     DEFAULT_MAX_ITEMS,
     DEFAULT_MAX_ITEMS_PER_TOPIC,
+    DEFAULT_UPCOMING_PREVIEW_DAYS,
     DEFAULT_MAX_ITEM_AGE_DAYS,
     DEFAULT_OUT_PATH,
     DEFAULT_PAGES_BASE_URL,
@@ -191,6 +192,12 @@ MAX_CACHE_MAX_AGE_HOURS = 8760
 # whose constructor overflows at large magnitudes).
 MAX_FRESH_PUBDATE_WINDOW_MIN = 1440
 
+# Hard upper bound on ``UPCOMING_PREVIEW_DAYS``: how far ahead an announced
+# item may begin and still keep its place among the running ones. A year is
+# more than any display needs and keeps ``timedelta(days=N)`` far from its
+# overflow (same env-cap family as above).
+MAX_UPCOMING_PREVIEW_DAYS = 365
+
 
 class InvalidPathError(ValueError):
     """Raised when a configured path is outside the permitted directories."""
@@ -351,6 +358,7 @@ DESCRIPTION_CHAR_LIMIT: int = DEFAULT_DESCRIPTION_CHAR_LIMIT
 FRESH_PUBDATE_WINDOW_MIN: int = DEFAULT_FRESH_PUBDATE_WINDOW_MIN
 MAX_ITEMS: int = DEFAULT_MAX_ITEMS
 MAX_ITEMS_PER_TOPIC: int = DEFAULT_MAX_ITEMS_PER_TOPIC
+UPCOMING_PREVIEW_DAYS: int = DEFAULT_UPCOMING_PREVIEW_DAYS
 MAX_ITEM_AGE_DAYS: int = DEFAULT_MAX_ITEM_AGE_DAYS
 ABSOLUTE_MAX_AGE_DAYS: int = DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS
 ENDS_AT_GRACE_MINUTES: int = DEFAULT_ENDS_AT_GRACE_MINUTES
@@ -365,7 +373,7 @@ def _load_from_env() -> None:
     global LOG_LEVEL, LOG_FORMAT, LOG_DIR_PATH, LOG_MAX_BYTES, LOG_BACKUP_COUNT
     global OUT_PATH, FEED_HEALTH_PATH, FEED_HEALTH_JSON_PATH, FEED_TITLE, FEED_LINK, PAGES_BASE_URL, FEED_DESC, FEED_TTL
     global TITLE_CHAR_LIMIT, DESCRIPTION_CHAR_LIMIT, FRESH_PUBDATE_WINDOW_MIN, MAX_ITEMS
-    global MAX_ITEMS_PER_TOPIC
+    global MAX_ITEMS_PER_TOPIC, UPCOMING_PREVIEW_DAYS
     global MAX_ITEM_AGE_DAYS, ABSOLUTE_MAX_AGE_DAYS, ENDS_AT_GRACE_MINUTES
     global PROVIDER_TIMEOUT, PROVIDER_MAX_WORKERS, STATE_FILE, STATE_RETENTION_DAYS
     global CACHE_MAX_AGE_HOURS
@@ -452,6 +460,12 @@ def _load_from_env() -> None:
     MAX_ITEMS = max(get_int_env("MAX_ITEMS", DEFAULT_MAX_ITEMS), 0)
     MAX_ITEMS_PER_TOPIC = max(
         get_int_env("MAX_ITEMS_PER_TOPIC", DEFAULT_MAX_ITEMS_PER_TOPIC), 0
+    )
+    # Capped like the other day counts: ``timedelta(days=N)`` overflows on a
+    # huge value and would halt the build.
+    UPCOMING_PREVIEW_DAYS = min(
+        max(get_int_env("UPCOMING_PREVIEW_DAYS", DEFAULT_UPCOMING_PREVIEW_DAYS), 0),
+        MAX_UPCOMING_PREVIEW_DAYS,
     )
     MAX_ITEM_AGE_DAYS = max(
         get_int_env("MAX_ITEM_AGE_DAYS", DEFAULT_MAX_ITEM_AGE_DAYS), 0
@@ -571,6 +585,7 @@ __all__ = [
     "MAX_LOG_BYTES",
     "MAX_PROVIDER_TIMEOUT",
     "MAX_STATE_RETENTION_DAYS",
+    "MAX_UPCOMING_PREVIEW_DAYS",
     "OUT_PATH",
     "PAGES_BASE_URL",
     "PROVIDER_MAX_WORKERS",
@@ -579,6 +594,7 @@ __all__ = [
     "STATE_FILE",
     "STATE_RETENTION_DAYS",
     "TITLE_CHAR_LIMIT",
+    "UPCOMING_PREVIEW_DAYS",
     "build_paths",
     "build_settings",
     "get_bool_env",

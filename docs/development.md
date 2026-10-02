@@ -158,6 +158,7 @@ schreibt. Die wichtigsten Parameter:
 | `PAGES_BASE_URL`         | Basis-URL der GitHub-Pages-Site für absolute Permalinks (Standard `https://origamihase.github.io/wien-oepnv`). Wird gegen die Pages-Host-Allow-List validiert; abweichende Werte fallen auf den Standard zurück. |
 | `MAX_ITEMS`              | Anzahl der Einträge im Feed (Standard 10).                                      |
 | `MAX_ITEMS_PER_TOPIC`    | Höchstens so viele Einträge je Ursachenwort und Tag in den vorderen Plätzen; weitere rutschen hinter das Feld (Standard 3, 0 schaltet ab). Ohne eigene Variable gilt zusätzlich: Von mehreren ÖBB-Einträgen mit wortgleichem Titel (eine Strecke, mehrere Bauphasen) behält nur der mit dem frühesten Zeitfenster seinen Platz. |
+| `UPCOMING_PREVIEW_DAYS`  | Was später als so viele Wiener Kalendertage nach heute beginnt, rückt hinter alles, was schon gilt (Standard 3, höchstens 365). 0 lässt nur heute Beginnendes vorn. |
 | `FEED_TTL`               | Cache-Hinweis für Clients in Minuten (Standard 15).                             |
 | `MAX_ITEM_AGE_DAYS`      | Maximales Alter von Meldungen aus den Caches (Standard 365).                    |
 | `ABSOLUTE_MAX_AGE_DAYS`  | Harte Altersgrenze für Meldungen (Standard 540).                                |
@@ -231,8 +232,8 @@ bis zum neuen Beginn da und behalten ihren Platz. ÖBB, Baustellen und
 Stammstrecke bleiben unberührt, denn dort ist `pubDate` kein Beginn eines
 Auftretens.
 
-Danach greifen drei Regeln, die Plätze freihalten, ohne etwas zu
-löschen. Alle drei stellen Items nur hinter das Feld, von wo sie nachrücken:
+Danach greifen vier Regeln, die Plätze freihalten, ohne etwas zu
+löschen. Alle vier stellen Items nur hinter das Feld, von wo sie nachrücken:
 
 1. `_defer_repeated_route_titles`: Von mehreren ÖBB-Items mit wortgleichem
    Titel (dieselbe Strecke in mehreren Bauphasen, z. B. dreimal
@@ -241,7 +242,16 @@ löschen. Alle drei stellen Items nur hinter das Feld, von wo sie nachrücken:
    verschiedene Maßnahmen.
 2. `_apply_topic_budget`: höchstens `MAX_ITEMS_PER_TOPIC` Einträge je
    Ursachenwort und Tag in den vorderen Plätzen.
-3. `_defer_all_clear_items`: Entwarnungen der ÖBB („Aufhebung
+3. `_defer_upcoming_items`: Was erst nach `UPCOMING_PREVIEW_DAYS` Tagen ab
+   heute (Wiener Kalendertag, Standard 3) beginnt, steht hinter allem, was
+   gilt oder bald beginnt. Betreiberentscheidung vom 02.10.2026: Am 02.10.
+   um 18:00 belegten fünf der zehn Plätze Meldungen, die noch nicht
+   begonnen hatten („20A: Bauarbeiten“ ab 13.10., die Sperre der R 40 ab
+   31.10.), während „N71: Ersatzverkehr“ und „62: ÖBB Bauarbeiten“, beide
+   an diesem Abend gültig, auf den Plätzen 11 und 12 standen. Die Umleitung
+   ab Montag bleibt am Freitag vorn, die Sperre in vier Wochen rückt nach,
+   sobald ein Platz frei ist.
+4. `_defer_all_clear_items`: Entwarnungen der ÖBB („Aufhebung
    Verkehrseinschränkung: …“, „Aufhebung Streckenunterbrechung: …“) stehen
    hinter allen anderen Items. Betreiberentscheidung vom 25.09.2026: Eine
    laufende Störung ist wichtiger als eine Entwarnung. Eine Entwarnung ist

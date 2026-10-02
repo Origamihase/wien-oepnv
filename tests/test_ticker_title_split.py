@@ -25,6 +25,9 @@ import pytest
 import src.build_feed as bf
 from src.feed_types import FeedItem
 
+# Rendered time lines name no year and no "Heute" relative to a fixed day.
+pytestmark = pytest.mark.usefixtures("time_line_today")
+
 START = datetime(2026, 9, 25, 13, 59, tzinfo=UTC)
 END = datetime(2026, 9, 25, 14, 58, tzinfo=UTC)
 
@@ -52,7 +55,7 @@ def test_the_live_item_as_the_operator_asked() -> None:
         )
     )
     assert title == "14A: Rettungseinsatz"
-    assert desc == "Betrieb ab Laxenburger Straße / Gudrunstraße [Am 25.09.2026]"
+    assert desc == "Betrieb ab Laxenburger Straße / Gudrunstraße [Am\u202f25.09.]"
 
 
 def test_the_default_is_the_published_behaviour() -> None:
@@ -129,7 +132,7 @@ def test_a_summary_with_its_own_content_follows_the_consequence_in_whole_sentenc
         )
     )
     assert title == "13A: Veranstaltung"
-    body = desc.removesuffix(" [Am 25.09.2026]")
+    body = desc.removesuffix(" [Am\u202f25.09.]")
     assert body.startswith("Busse halten bei der Linie 14A. Betrieb nur zwischen Hauptbahnhof")
     # Cut behind a sentence, not in the middle of the next one.
     assert body.endswith("48A aus."), body
@@ -146,14 +149,14 @@ def test_a_summary_that_already_names_the_consequence_is_left_alone() -> None:
 
 def test_a_summary_that_repeats_cause_and_consequence_gives_way() -> None:
     title, desc = _format(_item("O: Schadhafter Zug Betrieb ab Quartier Belvedere", "Schadhafter Zug\nBetrieb ab Quartier Belvedere"))
-    assert (title, desc) == ("O: Schadhafter Zug", "Betrieb ab Quartier Belvedere [Am 25.09.2026]")
+    assert (title, desc) == ("O: Schadhafter Zug", "Betrieb ab Quartier Belvedere [Am\u202f25.09.]")
 
 
 def test_a_summary_with_part_of_the_consequence_gives_way() -> None:
     # Not the title verbatim, so the duplicate check keeps it; with the
     # cause in the title, "Kein Betrieb" says nothing the consequence does not.
     title, desc = _format(_item("13A: Betriebsstörung Kein Betrieb ab 10 Uhr", "Betriebsstörung\nKein Betrieb"))
-    assert (title, desc) == ("13A: Betriebsstörung", "Kein Betrieb ab 10 Uhr [Am 25.09.2026]")
+    assert (title, desc) == ("13A: Betriebsstörung", "Kein Betrieb ab 10 Uhr [Am\u202f25.09.]")
 
 
 @pytest.mark.parametrize(
@@ -276,7 +279,7 @@ def test_no_cause_behind_the_hindrance(title: str) -> None:
 
 def test_the_live_item_of_1735() -> None:
     title, desc = _format(_item("11A: Fahrtbehinderung Verkehrsunfall", "Fahrtbehinderung\nVerkehrsunfall"))
-    assert (title, desc) == ("11A: Verkehrsunfall", "Fahrtbehinderung [Am 25.09.2026]")
+    assert (title, desc) == ("11A: Verkehrsunfall", "Fahrtbehinderung [Am\u202f25.09.]")
 
 
 def test_a_description_of_its_own_is_not_prefixed_with_the_hindrance() -> None:
@@ -287,7 +290,7 @@ def test_a_description_of_its_own_is_not_prefixed_with_the_hindrance() -> None:
         )
     )
     assert title == "31: Polizeieinsatz"
-    assert desc == "Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 25.09.2026]"
+    assert desc == "Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am\u202f25.09.]"
     title, desc = _format(
         _item("12A: Fahrtbehinderung Falschparker", "Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.")
     )

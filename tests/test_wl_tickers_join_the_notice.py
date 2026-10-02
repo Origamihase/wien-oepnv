@@ -26,6 +26,10 @@ from unittest.mock import MagicMock, patch
 import src.build_feed as bf
 from src.feed.merge import deduplicate_fuzzy
 from src.feed_types import FeedItem
+import pytest
+
+# Rendered time lines name no year and no "Heute" relative to a fixed day.
+pytestmark = pytest.mark.usefixtures("time_line_today")
 
 NOTICE_D = (
     "<h2>Gleisbauarbeiten</h2> <p>Wegen Gleisbauarbeiten in der Althanstra&szlig;e wird die Linie D "
@@ -110,8 +114,8 @@ def test_the_tickers_of_line_d_go_up_in_the_notice() -> None:
     # The notice spans the works, not the tickers' day.
     assert (item["starts_at"], item["ends_at"]) == (items[0]["starts_at"], items[0]["ends_at"])
     xml = bf._make_rss([item], DAY + timedelta(hours=8), {}, lang="de")
-    assert "[Am 01.10.2026]" not in xml
-    assert "28.09.2026" in xml
+    assert "[Am\u202f01.10.]" not in xml
+    assert "[Bis\u202f07.11.]" in xml
 
 
 def test_tickers_without_a_long_message_go_up_in_the_notice_too() -> None:

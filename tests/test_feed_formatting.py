@@ -3,6 +3,10 @@ from typing import Any
 
 from src.build_feed import _emit_item
 from src.feed_types import FeedItem
+import pytest
+
+# Rendered time lines name no year and no "Heute" relative to a fixed day.
+pytestmark = pytest.mark.usefixtures("time_line_today")
 
 def test_emit_item_formatting_html_stripping() -> None:
     # Setup
@@ -138,8 +142,8 @@ def test_emit_item_timeframe_formatting() -> None:
     assert desc_elem is not None
     inner_content = desc_elem.text or ""
 
-    # Check date formatting
-    # Should contain dates
-    assert "01.01.2023" in inner_content
+    # Check date formatting: the item already ran, so the line names its end
+    # (with the year, outside the current one).
+    assert "02.01.2023" in inner_content
     assert "[" in inner_content
     assert "]" in inner_content
