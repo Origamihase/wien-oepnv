@@ -68,6 +68,26 @@ def test_an_end_before_the_start_is_dropped() -> None:
     assert _line(_at(2027, 10, 4), _at(2026, 10, 4, 13)) == "Ab 04.10.2027"
 
 
+@pytest.mark.parametrize(
+    ("start", "end", "expected"),
+    [
+        # 66A: Busse halten Salvatorianerplatz, WL end 03.10. 01:00: the
+        # calendar day and its real weekday (operator decision 2026-10-02).
+        (_at(2026, 10, 2, 4, 40), _at(2026, 10, 3, 1), "Bis Sa 03.10."),
+        (_at(2026, 9, 28), _at(2026, 11, 7, 3), "Bis 07.11."),
+        (_at(2026, 10, 5, 22), _at(2026, 10, 6, 4), "Ab Mo 05.10. bis Di 06.10."),
+    ],
+)
+def test_a_night_end_keeps_its_calendar_day(start: datetime, end: datetime, expected: str) -> None:
+    assert _line(start, end) == expected
+
+
+def test_the_weekday_is_the_vienna_one() -> None:
+    # 23:30 UTC on 02.10. is 01:30 on Saturday 03.10. in Vienna.
+    end = datetime(2026, 10, 2, 23, 30, tzinfo=UTC)
+    assert _line(_at(2026, 10, 2, 4, 40), end) == "Bis Sa 03.10."
+
+
 def test_today_is_the_vienna_day() -> None:
     # 22:30 UTC on 02.10. is 00:30 on 03.10. in Vienna.
     late = datetime(2026, 10, 2, 22, 30, tzinfo=UTC)

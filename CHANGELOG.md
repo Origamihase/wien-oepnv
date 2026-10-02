@@ -5,6 +5,11 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Deutscher Feed: Die Zeitzeile zeigt das Kalenderdatum (2026-10-02, Betreiberentscheidung)**:
+  Die Regel aus #1927, nach der ein Ende zwischen 00:00 und 05:00 zum
+  Betriebstag davor zählte, ist zurückgenommen. Datum und Wochentag sind
+  wieder die realen nach Wiener Zeit (Europe/Vienna): „66A: Busse halten
+  Salvatorianerplatz“, laut WL bis 03.10. 01:00, zeigt „[Bis Sa 03.10.]“.
 * **Deutscher Feed: Was jetzt gilt, steht vorn, und die Zeitzeile sagt, was für heute zählt (2026-10-02, Betreiberentscheidung)**:
   - **Rang 1, verdrängte Meldungen:** Am 02.10. um 18:00 belegten fünf der
     zehn Plätze Meldungen, die noch nicht begonnen hatten („20A:
