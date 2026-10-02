@@ -338,6 +338,38 @@ verdrängt eine andere Störung.
   Heiligenstadt / Wien Nußdorf“ statt viermal „Wien Franz-Josefs-Bahnhof ↔
   …“. Strecken, die eine Kette bilden, bleiben eine Kette
   (`_try_chain_routes`).
+* **ÖBB: Teilstrecken gehen in der Gesamtstrecke auf (seit 2026-10-02).**
+  Liegt eine Strecke einer Meldung ganz auf einer anderen derselben Meldung,
+  nennt der Titel nur die längere (`_drop_contained_routes`). Ein Bahnhof
+  liegt „auf dem Weg“, wenn der Umweg über ihn höchstens 20 % länger ist als
+  die Luftlinie (`_CORRIDOR_DETOUR_FACTOR`) und eine ÖBB-Linie alle drei
+  Bahnhöfe bedient (`station_lines`, aus `data/oebb_station_lines.json`).
+  So wurde der Titel oben (125 Zeichen) zu „R 40/REX 41/REX 4/S 40: Wien
+  Franz-Josefs-Bahnhof ↔ Tulln an der Donau“ (70) und „REX 50/REX 51/S 50:
+  Wien Hütteldorf ↔ Wien Westbahnhof ↔ St. Pölten Hauptbahnhof“ zu „… Wien
+  Westbahnhof ↔ St. Pölten Hauptbahnhof“. Die Linienbedingung hält
+  Flughafen Wien neben Bruck an der Leitha im Titel, obwohl er auf der
+  Luftlinie dazwischen liegt. Die einzelnen Strecken stehen weiter in der
+  Beschreibung. In 441 ÖBB-Cache-Ständen der Historie änderte das 11 Titel
+  und keine Zahl der Einträge nach `deduplicate_fuzzy`.
+* **Anzeigelänge des Titels (seit 2026-10-02).** Über 70 Zeichen
+  (`_DISPLAY_TITLE_TARGET`) wird ein Titel an seinen eigenen Fugen gekürzt,
+  nie abgeschnitten. Das geschieht erst beim Rendern (`_display_title` in
+  `_format_item_content`), nach Dedupe und Merges, die Titel vergleichen:
+  Früher gekürzt, las sich „18: Haltestelle Stadionbrücke aufgelassen“ wie
+  eine kurze Ursache, und `_line_runs` legte die Meldung mit „18:
+  Gleisschaden“ zusammen.
+  * WL: Ein Titel aus ganzen Sätzen behält den ersten Satz, und ist der
+    noch zu lang, fällt dessen Begründung („im Rahmen …“, „zur …“,
+    „wegen …“) vor dem Partizip weg (`_shorten_wl_sentence_title`): „18:
+    Haltestelle Stadionbrücke aufgelassen“ statt
+    137 Zeichen. Nur wenn die Beschreibung jedes weggenommene Wort enthält;
+    sie erscheint dann vollständig, weil sie den Titel nicht mehr wiederholt.
+  * Baustellen: Im Abschnitt „von … bis …“ fällt zuerst „Kreuzung“ weg, dann
+    jeder zweite Name an einem Ende (`_compact_baustellen_section`): „U2:
+    Rechte Wienzeile von Ramperstorffergasse bis Pilgramgasse“ statt „… von
+    Kreuzung Ramperstorffergasse bis Kreuzung Pilgramgasse und
+    Pilgrambrücke“.
 * **ÖBB: alle betroffenen Linien vorn (seit 2026-10-01).** Das Präfix
   nennt jede Linie, die die Beschreibung als ausfallend nennt („keine R
   40-Züge“, „die REX 41-Züge … können nicht fahren“), in ihrer Reihenfolge

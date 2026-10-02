@@ -27,6 +27,7 @@ __all__ = [
     "nearest_rail_station",
     "station_by_oebb_id",
     "station_info",
+    "station_lines",
     "text_has_vienna_connection",
 ]
 
@@ -67,6 +68,9 @@ class StationInfo(NamedTuple):
     source: str | None = None
 
 _STATIONS_PATH = Path(__file__).resolve().parents[2] / "data" / "stations.json"
+_STATION_LINES_PATH = (
+    Path(__file__).resolve().parents[2] / "data" / "oebb_station_lines.json"
+)
 _VIENNA_POLYGON_PATH = Path(__file__).resolve().parents[2] / "data" / "LANDESGRENZEOGD.json"
 
 # Security: defense-in-depth byte-size caps on the on-disk stations and
@@ -90,6 +94,7 @@ _VIENNA_POLYGON_PATH = Path(__file__).resolve().parents[2] / "data" / "LANDESGRE
 # runner's standard 1 GiB cgroup limit.
 MAX_STATIONS_FILE_BYTES = 50 * 1024 * 1024
 MAX_VIENNA_POLYGON_FILE_BYTES = 50 * 1024 * 1024
+MAX_STATION_LINES_FILE_BYTES = 50 * 1024 * 1024
 
 Coordinate = tuple[float, float]
 Ring = tuple[Coordinate, ...]
@@ -943,6 +948,47 @@ def station_info(name: str) -> StationInfo | None:
         if info:
             return info
     return None
+
+
+@lru_cache(maxsize=1)
+def _station_lines_by_name() -> dict[str, frozenset[str]]:
+    """Lines per station from :mod:`data/oebb_station_lines.json`.
+
+    Keyed on the normalised station name; the lines are the HAFAS line
+    codes seen at the station (``REX41``, ``S40``, …). A missing or
+    unreadable file yields an empty mapping.
+    """
+
+    payload = _read_capped_json(
+        _STATION_LINES_PATH,
+        MAX_STATION_LINES_FILE_BYTES,
+        label="Station lines",
+    )
+    stations = payload.get("stations") if isinstance(payload, dict) else None
+    if not isinstance(stations, dict):
+        return {}
+    result: dict[str, frozenset[str]] = {}
+    for entry in stations.values():
+        if not isinstance(entry, dict):
+            continue
+        name = entry.get("name")
+        lines = entry.get("lines")
+        if not isinstance(name, str) or not isinstance(lines, dict):
+            continue
+        key = _normalize_token(name)
+        if key:
+            result[key] = result.get(key, frozenset()) | frozenset(
+                line for line in lines if isinstance(line, str)
+            )
+    return result
+
+
+def station_lines(name: str) -> frozenset[str]:
+    """Return the ÖBB lines that stop at station *name* (empty if unknown)."""
+
+    info = station_info(name)
+    canonical = info.name if info else name
+    return _station_lines_by_name().get(_normalize_token(canonical), frozenset())
 
 
 def is_in_vienna(lat: object, lon: object | None = None) -> bool:

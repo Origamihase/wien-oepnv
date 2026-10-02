@@ -49,22 +49,21 @@ class TestRouteCanonicalDedup:
             ("Wien Westbahnhof", "St.Pölten"),
         ]
         title = _format_route_title(routes, "S 50")
-        # 3 unique routes → 3 ↔ separators
-        assert title.count("↔") == 3
-        # ensure the duplicate is gone
-        assert title.count("St. Pölten Hauptbahnhof") == 1
+        # 3 unique routes, all on the way from Wien Westbahnhof to
+        # St. Pölten → one stretch (``_drop_contained_routes``).
+        assert title == "S 50: Wien Westbahnhof ↔ St. Pölten Hauptbahnhof"
 
     def test_distinct_routes_kept(self) -> None:
         # Defence: when routes are genuinely different, all are kept.
         routes = [
             ("Wien Hbf", "Mödling"),
-            ("Wien Hbf", "Baden"),
-            ("Wien Hbf", "Wiener Neustadt"),
+            ("Wien Hbf", "Flughafen Wien"),
+            ("Wien Hbf", "Wien Floridsdorf"),
         ]
         title = _format_route_title(routes)
         # Since 2026-10-01 a hub shared by all routes is named once
         # (``_try_star_routes``); every destination stays.
-        assert title == "Wien Hauptbahnhof ↔ Mödling / Baden / Wiener Neustadt Hauptbahnhof"
+        assert title == "Wien Hauptbahnhof ↔ Mödling / Flughafen Wien / Wien Floridsdorf"
 
     def test_distinct_routes_without_a_hub_kept(self) -> None:
         routes = [

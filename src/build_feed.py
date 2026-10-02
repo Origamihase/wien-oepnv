@@ -439,6 +439,71 @@ def _strip_trailing_directional_marker(summary: str) -> str:
     return summary.rstrip(_TRAILING_DIRECTIONAL_CHARS)
 
 
+# ---- Display-length titles ----------------------------------------------------
+#
+# The German feed runs on Full-HD info displays (EasySignage), read from a
+# distance, one title at a time. A title beyond this many characters wraps
+# into a block the eye has to work through; WL notices and Stadt Wien
+# Baustellen above it are shortened at their own seams below — never cut —
+# and whatever leaves the title is still in the description. Both happen
+# when the item is rendered (:func:`_display_title`), after every dedupe and
+# merge: those compare titles, and a shortened title would change what they
+# see — "18: Haltestelle Stadionbrücke aufgelassen" reads as a short cause
+# and ``_line_runs`` joined it with that evening's "18: Gleisschaden".
+# 70 is where
+# the longest titles of the feed history on 2026-10-02 split: ÖBB route
+# titles with two or three lines end below it (``REX 50/REX 51/S 50: Wien
+# Westbahnhof ↔ St. Pölten Hauptbahnhof``, 62), the rewritten sentences and
+# street sections above it.
+_DISPLAY_TITLE_TARGET = 70
+
+# A sentence end inside a WL title: three lowercase letters, a full stop,
+# exclamation or question mark, then a capital. Abbreviations WL writes in
+# titles (``Bhf.``, ``Str.``, ``ggü. 197``) have fewer lowercase letters or
+# no capital after them.
+_WL_SENTENCE_END_RE = re.compile(r"(?<=[a-zäöüß]{3})[.!?]\s+(?=[A-ZÄÖÜ])")
+_WL_LINE_PREFIX_HEAD_RE = re.compile(r"^\S{1,40}:\s+")
+# The reason in "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus
+# der Linie 18 aufgelassen": from the causal preposition up to the closing
+# participle (and an adverb in front of it, which stays).
+_WL_REASON_CLAUSE_RE = re.compile(
+    r"\s+(?:im\s+Rahmen|im\s+Zuge|zur|zum|wegen|aufgrund|infolge)\s+.+?"
+    r"(?=\s+(?:(?:dauerhaft|vorübergehend|ersatzlos|kurzfristig)\s+)?"
+    r"(?:aufgelassen|gesperrt|verlegt|eingestellt|umgeleitet|unterbrochen)$)",
+    re.IGNORECASE,
+)
+
+
+def _shorten_wl_sentence_title(title: str, description: str) -> str:
+    """A WL title written as whole sentences keeps only what it reports.
+
+    Published 2026-10-02 with the date as the only description, because WL
+    sent the same text as title and description and the duplicate check
+    emptied the latter::
+
+        18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der
+        Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.
+
+    The title keeps its first sentence; when that is still longer than
+    :data:`_DISPLAY_TITLE_TARGET`, the reason clause goes too
+    (``18: Haltestelle Stadionbrücke aufgelassen``). Both only when the
+    description already says every word that leaves the title, so nothing
+    is lost; the description then reads in full, because it no longer
+    repeats the title.
+    """
+    head_match = _WL_LINE_PREFIX_HEAD_RE.match(title)
+    head = head_match.group(0) if head_match else ""
+    body = title[len(head):].strip()
+    if " ".join(body.split()).casefold() not in " ".join(description.split()).casefold():
+        return title
+    shortened = _WL_SENTENCE_END_RE.split(body, maxsplit=1)[0].rstrip(".!? ")
+    if len(head) + len(shortened) > _DISPLAY_TITLE_TARGET:
+        shortened = _WL_REASON_CLAUSE_RE.sub("", shortened, count=1)
+    if shortened == body or len(shortened.split()) < 2:
+        return title
+    return f"{head}{shortened}"
+
+
 # WL's display boards show the S-Bahn logo as a glyph that reaches the data as
 # "<": "Bhf. Hütteldorf / ÖBB-Ersatzbus für <80", published daily since
 # 2026-09-12 with ``relatedLines`` "1". Tram line 1 does not serve Hütteldorf
@@ -730,6 +795,57 @@ def _repair_baustellen_title(title: str, description: str) -> str:
             repaired = repaired[: cut.start(1)] + word
     repaired = _UNNAMED_AREA_LEADING_RE.sub(r"\1 ", repaired)
     return _UNNAMED_AREA_TRAILING_RE.sub("", repaired)
+
+
+# A section "von A bis B" in a Baustellen title, as Stadt Wien writes it:
+# ``Rechte Wienzeile von Kreuzung Ramperstorffergasse bis Kreuzung
+# Pilgramgasse und Pilgrambrücke``. "Kreuzung" says what a cross-street
+# name already says, and a second name joined with "und" marks the same
+# end of the section once more.
+_SECTION_CROSSING_RE: re.Pattern[str] = re.compile(r"\b(von|bis)\s+Kreuzung\s+")
+_SECTION_SECOND_NAME_RE: re.Pattern[str] = re.compile(
+    r"\b(von|bis)\s+([^,]+?)\s+und\s+[^,]+?(?=\s+bis\b|,|$)"
+)
+
+
+def _compact_baustellen_section(title: str) -> str:
+    """Shorten the "von … bis …" section of a long Baustellen title.
+
+    Published 2026-10-02 on the info displays, 97 and 85 characters::
+
+        U2: Rechte Wienzeile von Kreuzung Ramperstorffergasse bis Kreuzung
+        Pilgramgasse und Pilgrambrücke
+        U4: Vordere Zollamtsstraße von Marxergasse und Kleine Marxerbrücke
+        bis Radetzkybrücke
+
+    Only a title longer than :data:`_DISPLAY_TITLE_TARGET` is touched, in
+    two steps that each stop once it fits: "Kreuzung" in front of an end
+    goes, then every name after the first at one end
+    (``U2: Rechte Wienzeile von Ramperstorffergasse bis Pilgramgasse``).
+    The street and both ends stay; the description describes the site.
+    """
+    if len(title) <= _DISPLAY_TITLE_TARGET:
+        return title
+    title = _SECTION_CROSSING_RE.sub(r"\1 ", title)
+    if len(title) <= _DISPLAY_TITLE_TARGET:
+        return title
+    return _SECTION_SECOND_NAME_RE.sub(r"\1 \2", title)
+
+
+def _display_title(item: FeedItem) -> str:
+    """The title *item* is shown with: shortened at its seams when too long.
+
+    See :data:`_DISPLAY_TITLE_TARGET`. WL titles written as sentences go
+    through :func:`_shorten_wl_sentence_title`, Stadt Wien Baustellen
+    through :func:`_compact_baustellen_section`; every other title as is.
+    """
+    title = str(item.get("title") or "Mitteilung")
+    source = str(item.get("source") or "").strip().casefold()
+    if source == "wiener linien":
+        return _shorten_wl_sentence_title(title, str(item.get("description") or ""))
+    if source.startswith("stadt wien"):
+        return _compact_baustellen_section(title)
+    return title
 
 
 def _baustellen_title_names_station(title: str, label: str) -> bool:
@@ -7445,7 +7561,7 @@ def _format_item_content(
     state: dict[str, dict[str, Any]] | None = None,
     split_reason: bool = True,
 ) -> FormattedContent:
-    raw_title = it.get("title") or "Mitteilung"
+    raw_title = _display_title(it)
     raw_desc  = it.get("description") or ""
     link = _resolve_item_link(it.get("link"), ident)
 
