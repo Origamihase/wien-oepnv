@@ -410,6 +410,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "14A: Verkehrsunfall",
+    "description": "Linie 14A: Fahrtbehinderung in Richtung Neubaugasse U. Voraussichtliche Dauer: 16:10 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Keplerplatz U.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "45135f0f9023593102b885c7d89c0c028d3a4d83421c93a8a39180b147612974",
+    "pubDate": "2026-10-02T15:39:00+02:00",
+    "starts_at": "2026-10-02T15:39:00+02:00",
+    "ends_at": "2026-10-02T23:55:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2026-10-02|TK=14a verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3906e11c18aa9333980e1532d7e8005bacd160684c6330d6142359502ccfc2a5",
+    "pubDate": "2026-10-02T15:47:42+02:00",
+    "starts_at": "2026-10-02T15:50:12+02:00",
+    "ends_at": "2026-10-02T16:49:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2026-10-02|TK=fahrtbehinderung fremder verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -706,18 +730,6 @@
     "starts_at": "2026-10-01T00:00:16+02:00",
     "ends_at": "2026-10-02T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-10-01|TK=einstieg leberstrasse vor s bahn gebäude"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7A: Verkehrsüberlastung",
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc",
-    "pubDate": "2026-10-02T15:24:00+02:00",
-    "starts_at": "2026-10-02T15:24:00+02:00",
-    "ends_at": "2026-10-02T23:55:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2026-10-02|TK=7a verkehrsüberlastung"
   },
   {
     "source": "Wiener Linien",
