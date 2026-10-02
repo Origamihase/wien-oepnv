@@ -209,7 +209,9 @@ Ursache, die Beschreibung sammelt alle Folgen („62: ÖBB Bauarbeiten“ über
 „Betrieb ab Kliebergasse; Züge halte bei Linie 18, Richtung Burggasse; Kein
 Betrieb.“). Sagt eine ausführliche Meldung der Gruppe mehr als WLs
 Standardsatz, steht stattdessen sie, so wie allein (Details in
-`docs/architecture.md`). Tests dazu lesen die Meldungen wie der Feed, über
+`docs/architecture.md`). Zeigt ein solcher Eintrag nur die Baustelle eines
+WL-Hinweises (gleiche Ursache, Linien, Zeitraum und eine gemeinsame Straße),
+geht er in diesem Hinweis auf (`_absorb_works_tickers`). Tests dazu lesen die Meldungen wie der Feed, über
 `_post_filter_wl`. Danach sortiert der Build die
 Items nach `first_seen` (neueste zuerst; Gleichstand: Störung vor Baustelle,
 dann `pubDate`).

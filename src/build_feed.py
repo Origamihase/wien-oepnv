@@ -6726,6 +6726,116 @@ def _merge_wl_ticker_clusters(items: list[FeedItem]) -> list[FeedItem]:
     return [replaced.get(index, item) for index, item in enumerate(items) if index not in dropped]
 
 
+# --- Display tickers of planned works (2026-10-02) --------------------------
+#
+# WL announces planned works as a notice (``Hinweis``) and shows them on the
+# displays as tickers ("Gleisbauarbeiten / Betrieb ab Johnstraße U"). On
+# 2026-10-01 the fuzzy merge took the long message "D: Gleisbauarbeiten"
+# into the notice "D: Gleisbauarbeiten Althanstraße"; the four tickers were
+# left to the WL merge and stood beside the notice as "D: Gleisbauarbeiten
+# [Am 01.10.2026]" for works from 28.09. to 07.11. "12A", "25", "N20",
+# "N49", "37A" and "74A" did the same, in each of the 68 WL cache versions
+# of 30.09.–02.10. WL republishes the tickers every night with a new
+# identity, so they took a front slot every day; "D: Gleisbauarbeiten"
+# stood in 53 of 94 German feed versions, its notice in none of them.
+#
+# Running the WL merge before the fuzzy merge removed them too, but took a
+# rescue operation on D (02.10. 05:31, joined with the tickers into "D:
+# Rettungseinsatz, Gleisbauarbeiten") into the notice as well: "D:
+# Gleisbauarbeiten Althanstraße & Rettungseinsatz, Gleisbauarbeiten". So
+# only one incident's entry goes up in a notice, and only when the notice
+# names its cause, covers its lines, spans its validity and names a street
+# of it. The street keeps two sites of one cause apart: "66A: Busse halten
+# Salvatorianerplatz" (Bauarbeiten, 02.10.) is not the notice "65A/66A:
+# Inzersdorfer Straße # Leibnizgasse" (Bauarbeiten too).
+_WORKS_SPAN_SLACK = timedelta(days=1)
+_HEADING_RE = re.compile(r"^\s*<h2[^>]*>(.*?)</h2>", re.IGNORECASE | re.DOTALL)
+_STREET_SUFFIXES = "straße|str|gasse|platz|weg|allee|ring|kai|brücke|zeile|markt|steig|gürtel|lände"
+_STREET_RE = re.compile(
+    rf"\b[A-ZÄÖÜ][\w\-]*(?i:{_STREET_SUFFIXES})\b"
+    rf"|\b[A-ZÄÖÜ][\w\-]*er(?=\s+(?i:{_STREET_SUFFIXES})\b)",
+    re.UNICODE,
+)
+
+
+def _streets(text: str) -> set[str]:
+    """The street names in *text*, casefolded ("Schweglerstraße", "Donaufelder" of "Donaufelder Straße")."""
+    return {match.group(0).casefold() for match in _STREET_RE.finditer(text)}
+
+
+def _is_wl_notice(item: FeedItem) -> bool:
+    return (
+        str(item.get("source") or "").strip().casefold() == "wiener linien"
+        and str(item.get("category") or "").strip().casefold() == "hinweis"
+    )
+
+
+def _notice_names_cause(notice: FeedItem, cause: str) -> bool:
+    """Whether the title or the ``<h2>`` heading of *notice* names *cause* (a ``_cause_key``)."""
+    title = _rendered_title(notice)
+    body = title[len(_ticker_prefix(title)):]
+    heading = _HEADING_RE.match(str(notice.get("description") or ""))
+    for text in (body, html_to_text(heading.group(1)) if heading else ""):
+        if f" {cause} " in f" {_cause_key(text)} ":
+            return True
+    return False
+
+
+def _shares_a_street(item: FeedItem, notice: FeedItem) -> bool:
+    named = _streets(f"{_rendered_title(item)} {_ticker_text(item)}")
+    return bool(named & _streets(f"{_rendered_title(notice)} {html_to_text(str(notice.get('description') or ''))}"))
+
+
+def _within(inner: FeedItem, outer: FeedItem) -> bool:
+    """Whether the validity of *inner* lies in that of *outer*, give or take a day."""
+    span, works = _group_span([inner]), _group_span([outer])
+    if span is None or works is None:
+        return False
+    if span[0] < works[0] - _WORKS_SPAN_SLACK:
+        return False
+    if works[1] is None:
+        return True
+    return span[1] is not None and span[1] <= works[1] + _WORKS_SPAN_SLACK
+
+
+def _works_shown(item: FeedItem, notices: Sequence[FeedItem]) -> FeedItem | None:
+    """The notice whose planned works the WL disruption *item* only shows, if any."""
+    if not _is_wl_ticker(item):
+        return None
+    cause = _cause_key(_ticker_part(item).cause)
+    lines = set(_ticker_lines(item).split("/")) - {""}
+    if not cause or not lines:
+        return None
+    for notice in notices:
+        if (
+            lines <= set(_ticker_lines(notice).split("/"))
+            and _notice_names_cause(notice, cause)
+            and _within(item, notice)
+            and _shares_a_street(item, notice)
+        ):
+            return notice
+    return None
+
+
+def _absorb_works_tickers(items: list[FeedItem]) -> list[FeedItem]:
+    """Drop the WL disruptions that only show a notice's planned works (see above)."""
+    notices = [item for item in items if _is_wl_notice(item)]
+    if not notices:
+        return items
+    kept: list[FeedItem] = []
+    for item in items:
+        works = _works_shown(item, notices)
+        if works is None:
+            kept.append(item)
+            continue
+        log.info(
+            "WL-Kurzmeldung in den Hinweis aufgenommen: %s → %s",
+            sanitize_log_arg(_rendered_title(item)),
+            sanitize_log_arg(_rendered_title(works)),
+        )
+    return kept
+
+
 def _reason_only_summary(category_word: str) -> str:
     """Rettet den Grund, wenn sonst ein leerer Rumpf übrig bliebe.
 
@@ -7730,10 +7840,12 @@ def lint() -> int:
         duplicates_removed = sum(summary.count - 1 for summary in duplicate_summaries)
 
         deduped_items = _dedupe_items(list(filtered_items))
-        deduped_items = _merge_wl_ticker_clusters(
-            cast(
-                list[FeedItem],
-                deduplicate_fuzzy(cast(list[dict[str, Any]], deduped_items)),
+        deduped_items = _absorb_works_tickers(
+            _merge_wl_ticker_clusters(
+                cast(
+                    list[FeedItem],
+                    deduplicate_fuzzy(cast(list[dict[str, Any]], deduped_items)),
+                )
             )
         )
         deduped_count = len(deduped_items)
@@ -7941,8 +8053,9 @@ def main() -> int:
                 len(deduped),
             )
 
-        # One WL incident, one slot — see ``_merge_wl_ticker_clusters``.
-        items = _merge_wl_ticker_clusters(fuzzy_deduped)
+        # One WL incident, one slot — see ``_merge_wl_ticker_clusters``; the
+        # display tickers of planned works go up in their notice.
+        items = _absorb_works_tickers(_merge_wl_ticker_clusters(fuzzy_deduped))
         deduped_count = len(items)
         duplicates_removed = sum(summary.count - 1 for summary in duplicate_summaries)
         if not items:
