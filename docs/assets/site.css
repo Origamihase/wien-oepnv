@@ -792,6 +792,8 @@ code {
   line-height: 1.45;
 }
 .coverage-notice[hidden] { display: none; }
+/* Under "Aktuelle Meldungen" it follows the sub line directly. */
+.section__header .coverage-notice { margin: 0.6rem 0 0.15rem; }
 
 .kpis {
   display: grid;
