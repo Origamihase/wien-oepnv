@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 02 Oct 2026 11:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 11:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[88B: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3c21d2495a78e4e46aaaee0da58b885b1c3b88c9577171599c8419a3a41f24d6</guid>
+      <pubDate>Fri, 02 Oct 2026 11:01:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 11:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 11:01:55 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Raphael-Donner-Allee. [Am 02.10.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Raphael-Donner-Allee.<br/>[Am 02.10.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[14A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +28,8 @@
       <ext:first_seen>Fri, 02 Oct 2026 10:47:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 02 Oct 2026 10:47:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb ab Laxenburger Straße/ Gudrunstraße. Die Linie 14A fährt derzeit nur zwischen Neubaugasse U und Laxenburger Straße / Gudrunstraße. [Am 02.10.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Laxenburger Straße/ Gudrunstraße. Die Linie 14A fährt derzeit nur zwischen Neubaugasse U und Laxenburger Straße / Gudrunstraße.<br/>[Am 02.10.2026]]]></content:encoded>
+      <description>Betrieb ab Laxenburger Straße/ Gudrunstraße. [Am 02.10.2026]</description>
+      <content:encoded><![CDATA[Betrieb ab Laxenburger Straße/ Gudrunstraße.<br/>[Am 02.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12A: Verkehrsunfall, Gleisbauarbeiten]]></title>
@@ -30,28 +41,6 @@
       <ext:ends_at>Fri, 02 Oct 2026 23:59:59 +0200</ext:ends_at>
       <description>Verkehrsunfall: Unregelmäßige Intervalle in beiden Richtungen. Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21. [Am 02.10.2026]</description>
       <content:encoded><![CDATA[Verkehrsunfall: Unregelmäßige Intervalle in beiden Richtungen. Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21.<br/>[Am 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Praterstern ↔ Wien Floridsdorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;916493</guid>
-      <pubDate>Fri, 02 Oct 2026 10:07:19 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 09:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Wegen einer Stellwerkstörung am Bahnhof waren zwischen Wien Praterstern Bahnhof (U) und Wien Floridsdorf Bahnhof (U) bis 10:00 Uhr keine Fahrten möglich. [Am 02.10.2026]</description>
-      <content:encoded><![CDATA[Wegen einer Stellwerkstörung am Bahnhof waren zwischen Wien Praterstern Bahnhof (U) und Wien Floridsdorf Bahnhof (U) bis 10:00 Uhr keine Fahrten möglich.<br/>[Am 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Busse halten Laxenburger Straße 66]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">35f178eee322da59d290f9e66ca5dc127c582dbc622f6759ce6caadbc778c468</guid>
-      <pubDate>Fri, 02 Oct 2026 05:10:08 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 05:10:08 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 05:10:08 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 11:11:00 +0200</ext:ends_at>
-      <description>Grund: Bauarbeiten. [Am 02.10.2026]</description>
-      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Am 02.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 31 Dec 2026 11:11:00 +0100</ext:ends_at>
       <description>Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet. [05.10.2026 – 31.12.2026]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet.<br/>[05.10.2026 – 31.12.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[47B: Laufveranstaltung am 04.10.2027]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6864a29848e360090798645174eb08bfd5e2d1138aeba3ffff926596908e52a6</guid>
+      <pubDate>Mon, 28 Sep 2026 13:30:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 13:31:02 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 04 Oct 2027 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
+      <description>Wegen einer Laufveranstaltung im Nahbereich des Allianz Stadions werden die Busse der Linie 47B umgeleitet. [Ab 04.10.2027]</description>
+      <content:encoded><![CDATA[Wegen einer Laufveranstaltung im Nahbereich des Allianz Stadions werden die Busse der Linie 47B umgeleitet.<br/>[Ab 04.10.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
