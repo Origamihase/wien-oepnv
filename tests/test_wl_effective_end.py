@@ -71,8 +71,9 @@ def test_open_end_stays_open() -> None:
 
 def test_placeholder_stays_without_a_named_end() -> None:
     placeholder = datetime(2027, 7, 22, 11, 11, tzinfo=VIENNA)
-    text = "Zeitraum: Ab 3. August 2026 auf Dauer von etwa sechs Wochen."
+    text = "Zeitraum: Ab 3. August 2026 bis etwa Mitte November 2026."
     assert _effective_end(text, placeholder, START) == placeholder
+    # a duration gives an end of its own (tests/test_wl_duration_end.py)
 
 
 def test_text_end_before_the_start_is_not_taken() -> None:
