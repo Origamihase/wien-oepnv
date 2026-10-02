@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 02 Oct 2026 17:01:55 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 17:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[7A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">be8d2380781f3f47e357b9d6eb7d4a923aff0407f16a0b34798f79852945fd54</guid>
+      <pubDate>Fri, 02 Oct 2026 17:01:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 17:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 17:01:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Wienerbergbrücke. [Am 02.10.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Wienerbergbrücke.<br/>[Am 02.10.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[46: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -32,28 +43,6 @@
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet.<br/>[13.10.2026 – 14.10.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[6: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0db792f9373b33394ac9cbd54fe89c56f58770700c324d59539bd75f7e841cff</guid>
-      <pubDate>Fri, 02 Oct 2026 16:03:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 16:03:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 16:03:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb ab Reumannplatz; Züge halten Favoritenstraße. [Am 02.10.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Reumannplatz; Züge halten Favoritenstraße.<br/>[Am 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e8e33c76113077bad68986b313e50b4fb03e2a76a6eda7c74d06c76b1a1f1f46</guid>
-      <pubDate>Fri, 02 Oct 2026 16:03:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 16:03:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 16:03:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb ab Quellenplatz; Züge halten bei Linie O, Richtung Raxstraße. [Am 02.10.2026]</description>
-      <content:encoded><![CDATA[Betrieb ab Quellenplatz; Züge halten bei Linie O, Richtung Raxstraße.<br/>[Am 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[14A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">45135f0f9023593102b885c7d89c0c028d3a4d83421c93a8a39180b147612974</guid>
@@ -63,17 +52,6 @@
       <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Fahrtbehinderung in Richtung Neubaugasse U. Voraussichtliche Dauer: 16:10 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Keplerplatz U. [Am 02.10.2026]</description>
       <content:encoded><![CDATA[Fahrtbehinderung in Richtung Neubaugasse U. Voraussichtliche Dauer: 16:10 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Keplerplatz U.<br/>[Am 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182</guid>
-      <pubDate>Fri, 02 Oct 2026 15:11:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 15:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 15:11:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 17:00:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 02.10.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 02.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U2: Rettungseinsatz]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Fri, 02 Oct 2026 23:59:59 +0200</ext:ends_at>
       <description>Betrieb ab Hütteldorfer Straße mit Linie 46, Urban-Loritz-Platz mit Linie 52. [01.10.2026 – 02.10.2026]</description>
       <content:encoded><![CDATA[Betrieb ab Hütteldorfer Straße mit Linie 46, Urban-Loritz-Platz mit Linie 52.<br/>[01.10.2026 – 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52: Züge halten bei Linien 6 und 18]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:14 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 00:00:14 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>[01.10.2026 – 02.10.2026]</description>
+      <content:encoded><![CDATA[[01.10.2026 – 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[63A: Umleitung wegen Kranarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
+      <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [05.10.2026 – 11.11.2026]</description>
+      <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[05.10.2026 – 11.11.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
