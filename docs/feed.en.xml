@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 02 Oct 2026 07:31:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 08:01:26 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[64B: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">13f55294e5168f0c6d38da2f82758bdebe5379d52defb48fa9b9eff0dc931b14</guid>
+      <pubDate>Fri, 02 Oct 2026 07:43:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 08:01:26 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 07:43:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Currently, operation is not possible. Duration: 08:10. Reason: rescue operation im Haltestellenbereich Steinsee. [On 02.10.2026]</description>
+      <content:encoded><![CDATA[Currently, operation is not possible. Duration: 08:10. Reason: rescue operation im Haltestellenbereich Steinsee.<br/>[On 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0</guid>
+      <pubDate>Fri, 02 Oct 2026 07:35:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 07:35:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 07:37:22 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [On 02.10.2026]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[On 02.10.2026]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[7A: Buses stop at Laxenburger Straße 66]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -43,15 +65,15 @@
       <content:encoded><![CDATA[The work takes place in the period from 20:00 to 05:00. The left lane in the direction of the city is closed.<br/>[30.09.2026 – 15.11.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[D: Rescue operation]]></title>
+      <title><![CDATA[D: Rescue operation, track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:14 +0200</pubDate>
+      <pubDate>Fri, 02 Oct 2026 07:14:00 +0200</pubDate>
       <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
       <ext:starts_at>Fri, 02 Oct 2026 07:21:19 +0200</ext:starts_at>
       <ext:ends_at>Fri, 02 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Trains keep in loop, Wipplingerstr 39. Service obstruction towards Augasse. Duration: 07:40. Reason: rescue operation im Haltestellenbereich Grinzinger Straße. [On 02.10.2026]</description>
-      <content:encoded><![CDATA[Trains keep in loop, Wipplingerstr 39. Service obstruction towards Augasse. Duration: 07:40. Reason: rescue operation im Haltestellenbereich Grinzinger Straße.<br/>[On 02.10.2026]]]></content:encoded>
+      <description>Rescue operation: service obstruction. Track construction works: Trains keep in loop, Wipplingerstr 39; service from Augasse, Börse. [On 02.10.2026]</description>
+      <content:encoded><![CDATA[Rescue operation: service obstruction. Track construction works: Trains keep in loop, Wipplingerstr 39; service from Augasse, Börse.<br/>[On 02.10.2026]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[63A: Diversion because of crane works]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Thu, 31 Dec 2026 11:11:00 +0100</ext:ends_at>
       <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected. [05.10.2026 – 31.12.2026]</description>
       <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected.<br/>[05.10.2026 – 31.12.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[47B: Running event at 04.10.2027]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6864a29848e360090798645174eb08bfd5e2d1138aeba3ffff926596908e52a6</guid>
-      <pubDate>Mon, 28 Sep 2026 13:30:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 13:31:02 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 04 Oct 2027 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
-      <description>The 47B buses will be redirected due to a running event near the Allianz Stadium. [From 04.10.2027]</description>
-      <content:encoded><![CDATA[The 47B buses will be redirected due to a running event near the Allianz Stadium.<br/>[From 04.10.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Replacement service]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6f11b9f2989f7ded86ce2e256372b0c9d235d8bccee56c31a7edc035dbad8893</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:13 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:13 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Buses stop at N71 [01.10.2026 – 02.10.2026]</description>
-      <content:encoded><![CDATA[Buses stop at N71<br/>[01.10.2026 – 02.10.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
