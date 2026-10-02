@@ -1332,6 +1332,36 @@ def _plausible_end(
     return end_local
 
 
+# An end in the small hours belongs to the operating day before it: WL ends
+# a measure "bis Betriebsschluss" at 01:00 of the next calendar day.
+_SERVICE_DAY_END_HOUR = 5
+
+
+def _service_day_end(
+    start_local: datetime | None, end_local: datetime | None, today: date
+) -> datetime | None:
+    """``end_local`` moved to the operating day it closes.
+
+    An end after midnight and before ``_SERVICE_DAY_END_HOUR`` counts as the
+    evening before: "66A: Busse halten Salvatorianerplatz" ended on
+    03.10.2026 at 01:00, and the line read "Bis Sa 03.10." on the evening of
+    Friday 02.10. as if the stop stayed moved all Saturday. Exactly 00:00 is
+    left alone (a date without a clock time), and so is an end the shift
+    would put before the start or before today: just after midnight, an
+    item ending at 01:00 still ends "Heute".
+    """
+    if end_local is None or end_local.hour >= _SERVICE_DAY_END_HOUR:
+        return end_local
+    if end_local.hour == 0 and end_local.minute == 0:
+        return end_local
+    evening = (end_local - timedelta(days=1)).replace(hour=23, minute=59, second=0, microsecond=0)
+    if evening.date() < today:
+        return end_local
+    if start_local is not None and evening < start_local:
+        return end_local
+    return evening
+
+
 def format_local_times(
     start: datetime | None, end: datetime | None, now: datetime | None = None
 ) -> str:
@@ -1352,6 +1382,9 @@ def format_local_times(
         Ab Mo 05.10.             begins later, no end
         Bis 16.11.               no start
 
+    An end before 05:00 closes the operating day before it
+    (:func:`_service_day_end`).
+
     "Heute" is relative: the feed is rebuilt every 30 minutes, and an item
     that ended yesterday has left the feed by the first build after
     midnight. No clock time appears: WL's own ends for incidents are often
@@ -1362,6 +1395,7 @@ def format_local_times(
     start_local = _to_utc(start).astimezone(_VIENNA_TZ) if isinstance(start, datetime) else None
     end_local = _to_utc(end).astimezone(_VIENNA_TZ) if isinstance(end, datetime) else None
     end_local = _plausible_end(start_local, end_local, now_local)
+    end_local = _service_day_end(start_local, end_local, today)
     return _time_line_text(start_local, end_local, today).replace(" ", _NNBSP)
 
 

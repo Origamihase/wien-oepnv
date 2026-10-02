@@ -68,6 +68,35 @@ def test_an_end_before_the_start_is_dropped() -> None:
     assert _line(_at(2027, 10, 4), _at(2026, 10, 4, 13)) == "Ab 04.10.2027"
 
 
+@pytest.mark.parametrize(
+    ("start", "end", "expected"),
+    [
+        # 66A: Busse halten Salvatorianerplatz, ends 03.10. 01:00 (Betriebsschluss).
+        (_at(2026, 10, 2, 4, 40), _at(2026, 10, 3, 1), "Heute"),
+        # D: Gleisbauarbeiten Althanstraße, works until 07.11. 03:00.
+        (_at(2026, 9, 28), _at(2026, 11, 7, 3), "Bis 06.11."),
+        # Night works after a later evening: one night, one day.
+        (_at(2026, 10, 5, 22), _at(2026, 10, 6, 4), "Am Mo 05.10."),
+        # 05:00 opens the next operating day.
+        (_at(2026, 9, 28), _at(2026, 11, 7, 5), "Bis 07.11."),
+        # Exactly midnight is a date without a clock time.
+        (_at(2026, 10, 13), _at(2026, 10, 14), "Ab 13.10. bis 14.10."),
+        # Works that begin after midnight keep their own day.
+        (_at(2026, 10, 7, 0, 30), _at(2026, 10, 7, 4), "Am Mi 07.10."),
+    ],
+)
+def test_an_end_in_the_small_hours_closes_the_day_before(
+    start: datetime, end: datetime, expected: str
+) -> None:
+    assert _line(start, end) == expected
+
+
+def test_just_after_midnight_a_night_end_is_still_today() -> None:
+    # 00:30 on 03.10.: the end at 01:00 is today, not "Bis 02.10.".
+    late = _at(2026, 10, 3, 0, 30)
+    assert _line(_at(2026, 10, 2, 4, 40), _at(2026, 10, 3, 1), late) == "Heute"
+
+
 def test_today_is_the_vienna_day() -> None:
     # 22:30 UTC on 02.10. is 00:30 on 03.10. in Vienna.
     late = datetime(2026, 10, 2, 22, 30, tzinfo=UTC)

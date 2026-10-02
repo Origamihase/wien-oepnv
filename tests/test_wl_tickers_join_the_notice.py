@@ -115,7 +115,8 @@ def test_the_tickers_of_line_d_go_up_in_the_notice() -> None:
     assert (item["starts_at"], item["ends_at"]) == (items[0]["starts_at"], items[0]["ends_at"])
     xml = bf._make_rss([item], DAY + timedelta(hours=8), {}, lang="de")
     assert "[Am\u202f01.10.]" not in xml
-    assert "[Bis\u202f07.11.]" in xml
+    # The works end on 07.11. at 03:00, which closes the operating day of 06.11.
+    assert "[Bis\u202f06.11.]" in xml
 
 
 def test_tickers_without_a_long_message_go_up_in_the_notice_too() -> None:
