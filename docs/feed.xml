@@ -7,26 +7,37 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 02 Oct 2026 15:01:08 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 15:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[7A: Verspätungen]]></title>
+      <title><![CDATA[6: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">214cec6cae971effd21b47b0b3859b88354324a6fc53301d0ac43a41c2f9bb78</guid>
-      <pubDate>Fri, 02 Oct 2026 14:44:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 14:44:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 14:44:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">a83ae3699a9b82dcf9428c717cb575d1a819b46187a6ebc8493ee1bdb8344194</guid>
+      <pubDate>Fri, 02 Oct 2026 15:20:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 15:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 15:20:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Am 02.10.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Am 02.10.2026]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 02.10.2026]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 02.10.2026]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[5B: Verkehrsüberlastung]]></title>
+      <title><![CDATA[U3: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e55e4c55db9e80a5fe1558a44e4df1f020f86f204466795652f84a0c8c8d062a</guid>
-      <pubDate>Fri, 02 Oct 2026 14:18:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 14:18:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 14:18:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182</guid>
+      <pubDate>Fri, 02 Oct 2026 15:11:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 15:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 15:11:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 02.10.2026]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 02.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc</guid>
+      <pubDate>Fri, 02 Oct 2026 15:24:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 15:24:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 02 Oct 2026 15:24:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 02.10.2026]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 02.10.2026]]]></content:encoded>
@@ -39,39 +50,6 @@
       <ext:first_seen>Fri, 02 Oct 2026 14:03:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 02 Oct 2026 14:03:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 02.10.2026]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[22A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">058b4c8d1bcd5de597f6cab7230653901d4005a4a0eeb390c31a784c8b083aea</guid>
-      <pubDate>Fri, 02 Oct 2026 13:58:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 13:58:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 13:58:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 02.10.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">08f8f9d0c414c51fe010c32727e4eaf8cc098f2c840c0b9f9cbd2fc85b0426e7</guid>
-      <pubDate>Fri, 02 Oct 2026 13:58:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 13:58:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 13:58:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 14:59:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Am 02.10.2026]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Am 02.10.2026]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22</guid>
-      <pubDate>Fri, 02 Oct 2026 13:47:00 +0200</pubDate>
-      <ext:first_seen>Fri, 02 Oct 2026 13:47:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 02 Oct 2026 13:47:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 02 Oct 2026 14:59:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Am 02.10.2026]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Am 02.10.2026]]]></content:encoded>
     </item>
@@ -118,6 +96,28 @@
       <ext:ends_at>Wed, 04 Nov 2026 23:59:59 +0100</ext:ends_at>
       <description>Wegen Bauarbeiten können von 02.11.2026 bis 03.11.2026 zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren. [31.10.2026 – 04.11.2026]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können von 02.11.2026 bis 03.11.2026 zwischen Wien Franz-Josefs-Bahnhof und St.Andrä-Wördern Bahnhof keine R 40-Züge fahren.<br/>[31.10.2026 – 04.11.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46/47A/47B: Veranstaltung am 04.10.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c2bb5f86d94aef7a1f6955caa3f47b2970089dc4432d9db0f98ffd41cb8ccb65</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 12:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 04 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
+      <description>Wegen einer Veranstaltung im Bereich Allianz Stadion kommt es zu folgenden Verkehrsmaßnahmen. [Am 04.10.2026]</description>
+      <content:encoded><![CDATA[Wegen einer Veranstaltung im Bereich Allianz Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[Am 04.10.2026]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29B/N25: Adolf-Loos-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2e0949e212b98b31a226dddab6b40d0f6c06edb1c250ee7ddaac3c840bc8e962</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 11:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 11:11:00 +0100</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet. [05.10.2026 – 31.12.2026]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet.<br/>[05.10.2026 – 31.12.2026]]]></content:encoded>
     </item>
   </channel>
 </rss>
