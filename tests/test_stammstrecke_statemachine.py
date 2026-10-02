@@ -229,6 +229,38 @@ def test_single_recovered_tick_does_not_reset_episode_identity(
     assert recovered[0]["guid"] == true_guid
 
 
+def test_new_episode_after_a_ledger_gap_does_not_inherit_the_old_start(
+    tmp_path: Path,
+) -> None:
+    """Fund E (2026-10-02): an empty lookback keeps the persisted start on
+    purpose, so a start survived a ledger gap. The next, unrelated episode
+    then took it over: "[Seit <previous day>]" and the previous GUID. An
+    episode that begins inside the lookback window, after a gap, is new.
+    """
+    starts_path = tmp_path / "episode_starts.json"
+    first = datetime(2026, 10, 1, 17, 0, tzinfo=VIENNA_TZ)
+    rows = [(first, "Meidling", 12.0), (first + timedelta(minutes=30), "Meidling", 14.0)]
+    _write_obs_ledger(tmp_path, year=2026, rows=rows)
+    old = _patched_compute(now=first + timedelta(minutes=31), stats_dir=tmp_path, starts_path=starts_path)
+    assert len(old) == 1
+
+    # Eight hours without a single row: nothing fires, the start is kept.
+    gap = _patched_compute(now=first + timedelta(hours=8), stats_dir=tmp_path, starts_path=starts_path)
+    assert gap == []
+    assert "Meidling" in sm._load_episode_starts(starts_path)
+
+    # Next afternoon a new delay begins.
+    second = datetime(2026, 10, 2, 16, 0, tzinfo=VIENNA_TZ)
+    rows += [(second, "Meidling", 11.0), (second + timedelta(minutes=30), "Meidling", 13.0)]
+    _write_obs_ledger(tmp_path, year=2026, rows=rows)
+    new = _patched_compute(now=second + timedelta(minutes=31), stats_dir=tmp_path, starts_path=starts_path)
+    assert len(new) == 1
+    assert new[0]["first_seen"] == second.isoformat()
+    assert new[0]["guid"] != old[0]["guid"]
+    assert "[Seit 02.10.2026]" in new[0]["description"]
+    assert sm._load_episode_starts(starts_path)["Meidling"] == second
+
+
 def test_load_save_round_trip_preserves_timezone(tmp_path: Path) -> None:
     """A persisted aware datetime must round-trip without losing its offset."""
     path = tmp_path / "episode_starts.json"
