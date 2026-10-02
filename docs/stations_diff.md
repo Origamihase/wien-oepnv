@@ -1,6 +1,6 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-09-27T06:18:57+00:00_
+_Erzeugt am: 2026-10-02T16:30:28+00:00_
 
 **Stationen: 2244 → 2244 (Δ +0)**
 
@@ -16,6 +16,7 @@ _Keine._
 
 _Keine._
 
-## Koordinaten verschoben (≥ 100 m) (0)
+## Koordinaten verschoben (≥ 100 m) (2)
 
-_Keine._
+- `name:Wien Kirchengasse (WL)` — Wien Kirchengasse \(WL\) (304 m)
+- `name:Wien Siebensterngasse (WL)` — Wien Siebensterngasse \(WL\) (210 m)

@@ -36,7 +36,8 @@ LineID;LineText;SortingHelp;Realtime;MeansOfTransport
 170;O;202;1;ptTram
 399;LB;204;1;ptTramWLB
 825;25BR;225;1;ptRufBus
-844;844;244;0;ptRufBus
+844;44BR;244;0;ptRufBus
+849;49BR;249;0;ptRufBus
 401;1A;401;1;ptBusCity
 402;2A;402;1;ptBusCity
 403;3A;403;1;ptBusCity
@@ -145,7 +146,6 @@ LineID;LineText;SortingHelp;Realtime;MeansOfTransport
 243;43B;543;1;ptBusCity
 246;46B;546;1;ptBusCity
 247;47B;547;1;ptBusCity
-849;849;549;0;ptRufBus
 250;50B;550;1;ptBusCity
 251;51B;551;1;ptBusCity
 252;52B;552;1;ptBusCity
