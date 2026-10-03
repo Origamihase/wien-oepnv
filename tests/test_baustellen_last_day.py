@@ -17,7 +17,14 @@ _VIENNA = ZoneInfo("Europe/Vienna")
 
 
 def _item(source: str, end: datetime) -> FeedItem:
-    return {"source": source, "title": "Atzgersdorfer Straße", "guid": f"g-{source}", "ends_at": end}
+    return {
+        "source": source,
+        "title": "Atzgersdorfer Straße",
+        "description": "Atzgersdorfer Straße.",
+        "link": "",
+        "guid": f"g-{source}",
+        "ends_at": end,
+    }
 
 
 def _kept(item: FeedItem, now: datetime) -> bool:
