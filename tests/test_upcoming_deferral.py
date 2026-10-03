@@ -95,3 +95,18 @@ def test_main_fills_free_slots_with_announcements() -> None:
 
     # Behind the running item, but still in the feed: a slot was free.
     assert rendered[0] == ["N71: Ersatzverkehr", "20A: Bauarbeiten"]
+
+
+def test_by_default_an_announcement_leads_from_the_day_before() -> None:
+    # Audit 2026-10-03: with three days, announcements took 1,442 slots in
+    # 1,083 of 3,875 feed versions since 15.07., each time while a running
+    # item stood on place 11 or later.
+    assert bf.feed_config.UPCOMING_PREVIEW_DAYS == 1
+    friday = datetime(2026, 10, 2, 20, 0, tzinfo=VIENNA)
+    sunday = datetime(2026, 10, 4, 20, 0, tzinfo=VIENNA)
+    monday_detour = _item("29B/N25: Adolf-Loos-Gasse", datetime(2026, 10, 5, tzinfo=VIENNA))
+    running = _item("N71: Ersatzverkehr", datetime(2026, 10, 1, tzinfo=VIENNA))
+
+    days = bf.feed_config.UPCOMING_PREVIEW_DAYS
+    assert bf._defer_upcoming_items([monday_detour, running], friday, days) == [running, monday_detour]
+    assert bf._defer_upcoming_items([monday_detour, running], sunday, days) == [monday_detour, running]

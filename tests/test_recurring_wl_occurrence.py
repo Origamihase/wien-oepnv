@@ -224,3 +224,44 @@ def test_main_orders_a_recurring_incident_first() -> None:
 
     assert rendered[0] == ["94A: Verkehrsunfall", "72A: Kraftwerk Simmering"]
     assert "last_seen" in saved[0]["g94"] and "last_seen" in saved[0]["g72"]
+
+
+# --- A planned measure re-issued after its nightly pause (2026-10-03) --------
+#
+# "66A: Busse halten Salvatorianerplatz" runs 04:40 to 01:00 every day; last
+# seen 00:31, re-issued 04:40. Under the two-hour gap it counted as new every
+# morning and stood in front in 370 of 387 feed versions since 26.09.
+
+_NIGHT_PUB = datetime(2026, 10, 3, 2, 40, 27, tzinfo=UTC)  # 04:40 Vienna
+_NIGHT_FIRST = datetime(2026, 8, 28, 3, 1, tzinfo=UTC)
+
+
+def _measure(description: str) -> FeedItem:
+    item = _item("66A: Busse halten Salvatorianerplatz", "g66", _NIGHT_PUB)
+    item["description"] = description
+    return item
+
+
+def test_a_planned_measure_keeps_its_place_across_the_night() -> None:
+    state = {"g66": _entry(_NIGHT_FIRST, last_seen=datetime(2026, 10, 2, 22, 31, tzinfo=UTC))}
+    moved = bf._restart_recurring_occurrences(
+        [_measure("Bauarbeiten\nBusse halten Salvatorianerplatz")], state, _NIGHT_PUB + timedelta(minutes=20)
+    )
+    assert moved == 0
+    assert state["g66"]["first_seen"] == _NIGHT_FIRST.isoformat()
+
+
+def test_a_planned_measure_back_after_two_days_is_a_new_occurrence() -> None:
+    state = {"g66": _entry(_NIGHT_FIRST, last_seen=_NIGHT_PUB - timedelta(hours=37))}
+    moved = bf._restart_recurring_occurrences(
+        [_measure("Bauarbeiten\nBusse halten Salvatorianerplatz")], state, _NIGHT_PUB + timedelta(minutes=20)
+    )
+    assert moved == 1
+    assert state["g66"]["first_seen"] == _NIGHT_PUB.isoformat()
+
+
+def test_an_incident_after_the_night_is_still_a_new_occurrence() -> None:
+    item = _item("U4: Rettungseinsatz", "gu4", _NIGHT_PUB)
+    state = {"gu4": _entry(_NIGHT_FIRST, last_seen=datetime(2026, 10, 2, 22, 31, tzinfo=UTC))}
+    moved = bf._restart_recurring_occurrences([item], state, _NIGHT_PUB + timedelta(minutes=20))
+    assert moved == 1

@@ -20,7 +20,7 @@ from concurrent.futures import (
     TimeoutError,
     wait,
 )
-from datetime import date, datetime, timedelta, UTC
+from datetime import date, datetime, time, timedelta, UTC
 from email.utils import format_datetime
 from functools import lru_cache
 from pathlib import Path
@@ -5413,6 +5413,29 @@ def _invoke_collect_items(report: RunReport) -> list[FeedItem]:
     return _collect_items(report=report)
 
 
+def _valid_until(item: FeedItem) -> datetime | None:
+    """The moment *item* stops being valid, from its ``ends_at``.
+
+    Stadt Wien delivers construction ends as a date ("2026-09-04Z"), read as
+    Vienna midnight of that day. The time line takes such an end as the day
+    ("Bis Fr 04.09."), so the works still apply on it; dropped at that
+    midnight, every construction site left the feed at the start of its last
+    day (all 13 that ran to their end between July and October 2026, one of
+    them from place 3). Such an end counts until the next Vienna midnight.
+    Every other end stands as given.
+    """
+    ends_at = item.get("ends_at")
+    if not isinstance(ends_at, datetime):
+        return None
+    if not str(item.get("source") or "").strip().casefold().startswith("stadt wien"):
+        return ends_at
+    local = _to_utc(ends_at).astimezone(_VIENNA_TZ)
+    if local.time() != time(0, 0):
+        return ends_at
+    next_day = local.date() + timedelta(days=1)
+    return datetime(next_day.year, next_day.month, next_day.day, tzinfo=_VIENNA_TZ)
+
+
 def _drop_old_items(
     items: list[FeedItem],
     now: datetime,
@@ -5424,7 +5447,9 @@ def _drop_old_items(
 
     1. **Ungültig → sofort raus:** ein ``ends_at`` in der Vergangenheit
        (über die ``ENDS_AT_GRACE_MINUTES`` hinaus) bedeutet, die Störung ist
-       behoben → die Meldung macht sofort Platz.
+       behoben → die Meldung macht sofort Platz. Ein reines Enddatum der
+       Stadt-Wien-Baustellen gilt bis zum Ende dieses Tages
+       (:func:`_valid_until`).
     2. **Alter → FIFO nach ``first_seen``:** das Alter zählt ab dem
        Auftauchen im Feed (``first_seen`` aus dem State), NICHT ab dem
        Quell-Startdatum. So fällt ein aktiver Langläufer nicht wegen eines
@@ -5442,8 +5467,9 @@ def _drop_old_items(
         ident, state_entry = _lookup_state(it, state)
 
         ends_at = it.get("ends_at")
-        if isinstance(ends_at, datetime):
-            if _to_utc(ends_at) < now_utc - timedelta(minutes=feed_config.ENDS_AT_GRACE_MINUTES):
+        valid_until = _valid_until(it)
+        if valid_until is not None:
+            if _to_utc(valid_until) < now_utc - timedelta(minutes=feed_config.ENDS_AT_GRACE_MINUTES):
                 dropped.add(ident)
                 continue
 
@@ -5584,6 +5610,13 @@ def _parse_first_seen(
 # :func:`_restart_recurring_occurrences`. Four update cycles: a message that
 # drops out of one or two fetches is still the same occurrence.
 _OCCURRENCE_GAP = timedelta(hours=2)
+# A planned measure (:data:`_PLANNED_DISRUPTION_RE`) pauses longer: WL issues
+# "66A: Busse halten Salvatorianerplatz" every night for 04:40 to 01:00, a
+# night line's stop only for the night. Under the two hours above it counted
+# as new every morning: since 2026-09-26 such a measure stood in front in
+# 370 of 387 German feed versions, 441 slots (66A alone 286), although it
+# had been in the feed since 28.08. Unplanned incidents keep the two hours.
+_PLANNED_OCCURRENCE_GAP = timedelta(hours=36)
 
 
 def _restart_recurring_occurrences(
@@ -5607,8 +5640,10 @@ def _restart_recurring_occurrences(
     keep their place ("man kennt die Meldung schon"). ``last_seen`` tells the
     two apart — stamped here on every build for every WL item with an entry:
 
-    * last seen within ``_OCCURRENCE_GAP`` before the new start → the same
-      message continues, ``first_seen`` stays;
+    * last seen within ``_OCCURRENCE_GAP`` before the new start — within
+      ``_PLANNED_OCCURRENCE_GAP`` for a planned measure, which WL re-issues
+      after its nightly pause — → the same message continues,
+      ``first_seen`` stays;
     * last seen earlier, or never (entries from before ``last_seen``
       existed) → a new occurrence, ``first_seen`` moves to the ``pubDate``.
 
@@ -5634,8 +5669,10 @@ def _restart_recurring_occurrences(
         if first_seen is not None and isinstance(pub, datetime):
             pub_utc = _to_utc(pub)
             last_seen = _parse_state_time(entry, "last_seen")
+            text = f"{it.get('title') or ''} {html_to_text(str(it.get('description') or ''))}"
+            gap = _PLANNED_OCCURRENCE_GAP if _PLANNED_DISRUPTION_RE.search(text) else _OCCURRENCE_GAP
             if first_seen < pub_utc <= now_utc and (
-                last_seen is None or last_seen < pub_utc - _OCCURRENCE_GAP
+                last_seen is None or last_seen < pub_utc - gap
             ):
                 entry["first_seen"] = pub_utc.isoformat()
                 restarted += 1
@@ -6848,8 +6885,16 @@ def _ticker_groups(items: Sequence[FeedItem]) -> list[list[int]]:
 #     N65/N66: Bauarbeiten
 #     Busse halten Laxenburger Straße 66; N66: Busse halten Salvatorianerplatz.
 #
-# Groups with a long message stay as they are: its title and text speak for
-# one line set.
+# A group with a long message joins only a group that says exactly the same,
+# message for message (2026-10-03). WL sends its long message once per line
+# too: "6: Schadhaftes Fahrzeug" and "18: Schadhaftes Fahrzeug", both
+# "Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen."
+# in the same minute, and four such messages for 16A, 17A, 67A and 67B
+# ("Störung an einem Bahnübergang"). Replayed over the 3,875 German feed
+# versions since 2026-07-15, such twins stood in 540 of them and took 808
+# slots that other disruptions lacked; 9 are left. Where the groups differ
+# in any message, the long message speaks for its own line set and the
+# groups stay apart.
 
 
 def _twin_key(item: FeedItem) -> str:
@@ -6877,6 +6922,11 @@ def _join_twin_groups(items: Sequence[FeedItem], groups: list[list[int]]) -> lis
     for index, number in owner.items():
         if number not in has_long:
             by_key[_twin_key(items[index])].append(_publication_key(items, index))
+    for number in has_long:
+        # A group with a long message joins only a group that says exactly
+        # the same, message for message (see below).
+        signature = "\n\n".join(sorted({_twin_key(items[index]) for index in groups[number]}))
+        by_key[f"long\n{signature}"].append(_publication_key(items, groups[number][0]))
     for twins in by_key.values():
         twins.sort()
         for (when, _l, _g, first), (later, _l2, _g2, second) in zip(twins, twins[1:], strict=False):
@@ -7002,7 +7052,10 @@ def _merged_ticker(members: Sequence[FeedItem]) -> FeedItem:
         cause = _cause_key(_ticker_part(long_message).cause)
         same = [m for m in members if m is not long_message and _cause_key(_ticker_part(m).cause) in ("", cause)]
         stands = _with_consequences(long_message, same) if same else long_message
-        merged["title"] = str(stands.get("title") or "")
+        union = _union_prefix(members)
+        title = str(stands.get("title") or "")
+        # Twins of several lines (see ``_join_twin_groups``) stand under all of them.
+        merged["title"] = f"{union}{title[len(_ticker_prefix(title)):]}" if union else title
         merged["description"] = str(stands.get("description") or "")
         return merged
     union = _union_prefix(members)

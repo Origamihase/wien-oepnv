@@ -5,6 +5,37 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Deutscher Feed: Wer die zehn Plätze bekommt (2026-10-03, Audit über die Cache-Historie)**:
+  Alle 3.875 Feed-Stände seit 15.07. mit dem Code von `main` aus Cache und
+  State des jeweiligen Stands nachgebaut (Abgleich mit dem veröffentlichten
+  Feed: 33 der letzten 40 Stände identisch, der Rest durch Änderungen seit
+  dem Build) und die zehn Plätze nach Ursache ausgezählt.
+  - **Rang 1, Doppelte:** WL schickt auch die ausführliche Meldung einmal je
+    Linie („6: Schadhaftes Fahrzeug“ und „18: Schadhaftes Fahrzeug“, gleicher
+    Text, gleiche Minute; viermal „Störung an einem Bahnübergang“ für 16A,
+    17A, 67A, 67B). Das nahm in 540 Ständen 808 Plätze. Gruppen, die Meldung
+    für Meldung dasselbe sagen, verbinden sich jetzt auch mit ausführlicher
+    Meldung (`_join_twin_groups`): „6/18: Schadhaftes Fahrzeug“. Danach
+    bleiben 9 solche Plätze.
+  - **Rang 1, fälschlich verworfen:** Eine Baustelle der Stadt Wien mit
+    reinem Enddatum fiel um 00:10 ihres letzten Tages aus dem Feed, die
+    Zeitzeile hatte „Bis Fr 04.09.“ gezeigt (alle 13 Baustellen, die bis zu
+    ihrem Ende liefen). Sie gilt jetzt bis zum Ende dieses Tages
+    (`_valid_until`).
+  - **Reihenfolge, Empfehlung an den Betreiber:** Ankündigungen rücken ab dem
+    Vortag ihres Beginns vor statt drei Tage vorher
+    (`UPCOMING_PREVIEW_DAYS` 3 → 1). Mit drei Tagen belegten sie 1.442
+    Plätze in 1.083 Ständen, jedes Mal mit einer laufenden Meldung auf
+    Platz 11 oder dahinter.
+  - **Reihenfolge, Empfehlung an den Betreiber:** Eine geplante WL-Maßnahme,
+    die WL nach der Nachtpause neu ausgibt („66A: Busse halten
+    Salvatorianerplatz“, täglich 04:40 bis 01:00), behält ihr erstes
+    Auftreten, wenn sie binnen 36 Stunden wiederkommt
+    (`_PLANNED_OCCURRENCE_GAP`). Mit 2 h zählte sie jeden Morgen als neu und
+    stand seit 26.09. in 370 von 387 Ständen vorn. Störungen wie ein
+    Rettungseinsatz zählen weiter nach 2 h als neu.
+  - Tests: `tests/test_wl_twin_tickers.py`, `tests/test_baustellen_last_day.py`,
+    `tests/test_upcoming_deferral.py`, `tests/test_recurring_wl_occurrence.py`.
 * **Deutscher Feed: Eine Störung sagt, seit wann sie läuft (2026-10-03, Betreiberwunsch)**:
   „86A/87A/95A: Fahrtbehinderung wegen Rettungseinsatz“ zeigten „[Heute]“;
   jetzt steht „[Seit 10:37]“ da, die Minute, in der WL den Einsatz
