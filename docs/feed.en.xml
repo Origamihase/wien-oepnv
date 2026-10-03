@@ -7,8 +7,52 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 03 Oct 2026 15:01:21 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 03 Oct 2026 15:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[65A/66A: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">666808c11992ba865259285be7f44696b3a48c882c9d193f6f98fbb09a69904a</guid>
+      <pubDate>Sat, 03 Oct 2026 15:23:00 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 15:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 03 Oct 2026 15:23:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Line 65A is diverted towards Inzersdorf, Zetschegasse between Reumannplatz U and Laxenburger Straße / Troststraße via Davidgasse and Laxenburger Straße. [Since 15:23]</description>
+      <content:encoded><![CDATA[Line 65A is diverted towards Inzersdorf, Zetschegasse between Reumannplatz U and Laxenburger Straße / Troststraße via Davidgasse and Laxenburger Straße.<br/>[Since 15:23]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[38A: Event]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">91597bdb176c0e173ef6566b189f88ea5e372b3dca854adf3add6eebf2339ef1</guid>
+      <pubDate>Sat, 03 Oct 2026 15:20:00 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 15:30:52 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 03 Oct 2026 15:20:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: event. [Today]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: event.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29A: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7c8f87684407b28b956fd7680a32a002f13b981f0a4885354696cee22dbc327e</guid>
+      <pubDate>Sat, 03 Oct 2026 15:27:00 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 15:27:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 03 Oct 2026 15:27:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 15:27]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 15:27]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[D: Traffic accident, track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">99d97a77a399286ca28d0b822ce176ae2d28f6c5a979031093f6afc6f33d065e</guid>
+      <pubDate>Sat, 03 Oct 2026 15:07:00 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 15:07:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 03 Oct 2026 15:07:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 03 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Traffic accident: irregular intervals in both directions. Track construction works: Trains keep in loop, Wipplingerstr 39; service from Augasse, Börse. [Today]</description>
+      <content:encoded><![CDATA[Traffic accident: irregular intervals in both directions. Track construction works: Trains keep in loop, Wipplingerstr 39; service from Augasse, Börse.<br/>[Today]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[43A: Event]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -54,28 +98,6 @@
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 13:39]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[74A: Illegally parked vehicle, construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8d20a26de6080e578fe1d01b08d442eadd6f1e2bcd73ec6735a855352cc9adc8</guid>
-      <pubDate>Sat, 03 Oct 2026 13:08:00 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 13:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 03 Oct 2026 13:08:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 03 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Construction works: boarding Leberstraße before S-Bahn building. [Today]</description>
-      <content:encoded><![CDATA[Construction works: boarding Leberstraße before S-Bahn building.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
-      <pubDate>Sat, 03 Oct 2026 04:40:27 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 03 Oct 2026 04:40:27 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 01:00:00 +0200</ext:ends_at>
-      <description>Reason: construction works. [Until Sun 04.10.]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[Until Sun 04.10.]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[Rennweg 33A–37]]></title>
       <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
       <guid isPermaLink="false">65573981646b35911098f80f5060d16369450fbc04c8d50c90d9db3a086b9b29</guid>
@@ -96,28 +118,6 @@
       <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
       <description>Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected. [From Mon 05.10. until 11.11.]</description>
       <content:encoded><![CDATA[Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected.<br/>[From Mon 05.10. until 11.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46/47A/47B: Event on 04.10.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c2bb5f86d94aef7a1f6955caa3f47b2970089dc4432d9db0f98ffd41cb8ccb65</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 12:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 04 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
-      <description>Due to an event in the area of Alliance Stadion, the following transport measures are taken. [On Sun 04.10.]</description>
-      <content:encoded><![CDATA[Due to an event in the area of Alliance Stadion, the following transport measures are taken.<br/>[On Sun 04.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29B/N25: Adolf-Loos-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2e0949e212b98b31a226dddab6b40d0f6c06edb1c250ee7ddaac3c840bc8e962</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 11:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are being redirected. [From Mon 05.10. until 07.12.]</description>
-      <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are being redirected.<br/>[From Mon 05.10. until 07.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
