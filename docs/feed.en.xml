@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 03 Oct 2026 15:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 03 Oct 2026 16:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[60A: Police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f42bfc1b46935341e2e8a8a4cbc02855df833e32d533d3687e940ff1889be70d</guid>
+      <pubDate>Sat, 03 Oct 2026 15:51:00 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 15:51:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 03 Oct 2026 15:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: police operation. [Since 15:51]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: police operation.<br/>[Since 15:51]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[65A/66A: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -61,30 +72,8 @@
       <ext:first_seen>Sat, 03 Oct 2026 15:01:21 +0200</ext:first_seen>
       <ext:starts_at>Sat, 03 Oct 2026 13:44:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>The 43A line is redirected locally. The fault lasts expected to 16. The reason for this is an event in the area of of Höhenstraße. [Today]</description>
-      <content:encoded><![CDATA[The 43A line is redirected locally. The fault lasts expected to 16. The reason for this is an event in the area of of Höhenstraße.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9A: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">210b08a061991185eeff2755a4bd167b6c9a20d1703d1c621da74ef84d96a1b5</guid>
-      <pubDate>Sat, 03 Oct 2026 14:57:00 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 14:57:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 03 Oct 2026 14:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: rescue operation. [Since 14:57]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 14:57]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26A: Delays, construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7f9a2af401b97e330d7ac59be04b75db63099ba28a23d02de44b605e1ec65a5b</guid>
-      <pubDate>Sat, 03 Oct 2026 14:54:00 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 14:54:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 03 Oct 2026 14:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 03 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Delays: irregular intervals in both directions. Construction works: Buses stop Erzherzog-Karl-Straße 78. [Today]</description>
-      <content:encoded><![CDATA[Delays: irregular intervals in both directions. Construction works: Buses stop Erzherzog-Karl-Straße 78.<br/>[Today]]]></content:encoded>
+      <description>After a service obstruction there are different intervals. [Today]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[13A: Fire-brigade operation]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
       <description>Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected. [From Mon 05.10. until 11.11.]</description>
       <content:encoded><![CDATA[Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected.<br/>[From Mon 05.10. until 11.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46/47A/47B: Event on 04.10.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c2bb5f86d94aef7a1f6955caa3f47b2970089dc4432d9db0f98ffd41cb8ccb65</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 12:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 04 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
+      <description>Due to an event in the area of Alliance Stadion, the following transport measures are taken. [On Sun 04.10.]</description>
+      <content:encoded><![CDATA[Due to an event in the area of Alliance Stadion, the following transport measures are taken.<br/>[On Sun 04.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

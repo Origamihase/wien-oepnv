@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 03 Oct 2026 15:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 03 Oct 2026 16:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[60A: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f42bfc1b46935341e2e8a8a4cbc02855df833e32d533d3687e940ff1889be70d</guid>
+      <pubDate>Sat, 03 Oct 2026 15:51:00 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 15:51:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 03 Oct 2026 15:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Seit 15:51]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Seit 15:51]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[65A/66A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -61,30 +72,8 @@
       <ext:first_seen>Sat, 03 Oct 2026 15:01:21 +0200</ext:first_seen>
       <ext:starts_at>Sat, 03 Oct 2026 13:44:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie 43A wird örtlich umgeleitet. Die Störung dauert voraussichtlich bis 16 Uhr. Grund dafür ist eine Veranstaltung im Bereich der Höhenstraße. [Heute]</description>
-      <content:encoded><![CDATA[Die Linie 43A wird örtlich umgeleitet. Die Störung dauert voraussichtlich bis 16 Uhr. Grund dafür ist eine Veranstaltung im Bereich der Höhenstraße.<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9A: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">210b08a061991185eeff2755a4bd167b6c9a20d1703d1c621da74ef84d96a1b5</guid>
-      <pubDate>Sat, 03 Oct 2026 14:57:00 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 14:57:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 03 Oct 2026 14:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit 14:57]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 14:57]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26A: Verspätungen, Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7f9a2af401b97e330d7ac59be04b75db63099ba28a23d02de44b605e1ec65a5b</guid>
-      <pubDate>Sat, 03 Oct 2026 14:54:00 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 14:54:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 03 Oct 2026 14:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 03 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Verspätungen: Unregelmäßige Intervalle in beiden Richtungen. Bauarbeiten: Busse halten Erzherzog-Karl-Straße 78. [Heute]</description>
-      <content:encoded><![CDATA[Verspätungen: Unregelmäßige Intervalle in beiden Richtungen. Bauarbeiten: Busse halten Erzherzog-Karl-Straße 78.<br/>[Heute]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Heute]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[13A: Feuerwehreinsatz]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
       <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [Ab Mo 05.10. bis 11.11.]</description>
       <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[Ab Mo 05.10. bis 11.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46/47A/47B: Veranstaltung am 04.10.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c2bb5f86d94aef7a1f6955caa3f47b2970089dc4432d9db0f98ffd41cb8ccb65</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 12:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 04 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
+      <description>Wegen einer Veranstaltung im Bereich Allianz Stadion kommt es zu folgenden Verkehrsmaßnahmen. [Am So 04.10.]</description>
+      <content:encoded><![CDATA[Wegen einer Veranstaltung im Bereich Allianz Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[Am So 04.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
