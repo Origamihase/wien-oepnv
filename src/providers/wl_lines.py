@@ -56,7 +56,23 @@ def _display_line(s: str) -> str:
 # Multi-letter words without digits (``ACHTUNG``, ``INFORMATION``,
 # ``HINWEIS``, ``LINIE``) still fail both shapes, so the original
 # false-positive guard stays intact.
-_STRICT_LINE_TOKEN_RE = re.compile(r"^(?:[A-Z]{0,4}\d{1,3}[A-Z]?|[A-Z])$")
+#
+# Two codes WL itself puts into ``relatedLines`` fit neither shape, and
+# ``_post_filter_wl`` drops every Störung whose prefix fails this gate
+# (filter audit 2026-10-03, WL cache since 15.07.):
+#
+#   3. ``LB`` (until June 2026 ``WLB``) — the Badner Bahn. None of its 15
+#      disruptions since 15.07. reached the feed, and with them went the
+#      trams sharing the incident: ``1/18/62/LB: Signalstörung`` (10.09.),
+#      ``59A/62/62A/LB: Beschädigte Oberleitung`` (29.09., line 62 not
+#      running).
+#   4. a Rufbus variant with a second letter after the digits (``44BR``,
+#      ``86AR``, next to ``N68R``) — ``[A-Z]R?`` admits exactly that ``R``.
+#      So far it only came with Hinweise, which this gate does not drop;
+#      a Störung carrying it would have vanished the same way.
+_STRICT_LINE_TOKEN_RE = re.compile(
+    r"^(?:[A-Z]{0,4}\d{1,3}(?:[A-Z]R?)?|[A-Z]|W?LB)$"
+)
 
 
 # Präfix-Erkennung/Entfernung:

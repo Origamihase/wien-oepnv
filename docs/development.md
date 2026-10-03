@@ -199,7 +199,9 @@ Vorher, gleich nach dem Einsammeln, verwirft `_drop_test_messages`
 Testmeldungen der Anbieter: Titel oder Text enthält „Testmeldung“, oder
 Titel bzw. Text sind höchstens fünf Wörter lang und enthalten das Wort
 „Test“ (ein Bindestrich gehört zum Wort: „Test-Fahrten“ ist keine
-Testmeldung). Anlass: Zwei Testmeldungen der Wiener Linien standen am 23.09.2026
+Testmeldung). Seit 2026-10-03 auch „Testfall“, „Testtext“ und ein Text
+beliebiger Länge, der nach dem Linienpräfix nur aus „Test“ besteht
+(„Test Test Tes Test Test Test“). Anlass: Zwei Testmeldungen der Wiener Linien standen am 23.09.2026
 je einen Zyklus im Feed („71/72: Dies ist eine Testmeldung“, „62: F57f
 Test“). In 488 Meldungen des Feeds und 952 der Caches trifft die Regel nur
 diese beiden; „Haltestelle“ oder „Testbetrieb“ enthalten das Wort nicht.
@@ -325,6 +327,8 @@ Der Meldungsfeed sammelt offizielle Störungs- und Hinweisinformationen der Wien
 - **Quelle**: Realtime-Störungs-Endpoint (`WL_RSS_URL`, Default: `https://www.wienerlinien.at/ogd_realtime`).
 - **Cache**: `cache/wl/events.json`.
 - **Titel-Präfix**: Der Feed-Build parst gecachte Titel bei jedem Lauf neu (`_post_filter_wl`) und setzt die Linien aus `relatedLines` als `L1/L2:`-Präfix davor (`src/providers/wl_lines.py`). Wiederholt der Titeltext die Linienliste selbst (`4A. 80A, N29: …`, `N66, Rufbus N68: …`), wird sie in das Präfix gefaltet — Trenner `/`, `+`, `,` und `.` mit folgendem Leerraum, damit `13.10:` keine Linienliste ist; `Rufbus N68` im Text und `N68R` aus `relatedLines` gelten als eine Linie.
+- **Störung ohne Linie**: `_post_filter_wl` verwirft eine Störung, deren Titel keine erkennbare Linie trägt (`Sperre Bahnsteig Richtung Siebenhirten`). Als Linie gilt ein Code mit Ziffer (`13A`, `N66`, auch die Rufbus-Form `44BR`), ein einzelner Buchstabe (`D`) oder seit 2026-10-03 die Badner Bahn `LB` (bis Juni 2026 `WLB`). Vorher fiel jede Badner-Bahn-Störung samt den Straßenbahnen desselben Vorfalls aus dem Feed: 15 verschiedene Störungstitel seit 15.07., darunter `1/18/62/LB: Signalstörung` am 10.09.
+- **Sammel- und Teilmeldungen**: Nach der Bündelung entfernt der Provider eine Meldung für mehrere Linien, wenn jede ihrer Linien eine eigene Meldung derselben Kategorie mit überlappendem Zeitraum hat (E), und eine Meldung, deren Linien in einer solchen Meldung für mehr Linien stecken (F) — seit 2026-10-03 nur noch, wenn jedes Wort ihres Titels (ohne die Liniennummern) im Text der anderen steht oder sie (nur bei F) in Titel bzw. erster Zeile deren Thema nennt („37: Betrieb ab Nußdorfer Straße“ mit „Gleisbauarbeiten“ neben „5/12/37/…: Gleisbauarbeiten“). Vorher zählten nur Linien, Kategorie und Zeitraum: „2A: Bauarbeiten Renngasse“ fehlte zehn Tage, solange die Regenbogenparade auf 2A angekündigt war; seit April traf das 108 Meldungen.
 
 ### ÖBB
 

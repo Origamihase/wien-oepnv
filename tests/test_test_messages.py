@@ -34,6 +34,10 @@ def _item(title: str, description: str = "", source: str = "Wiener Linien") -> F
         ("U1: Störung", "TEST"),
         ("Test", ""),
         ("12A: Hinweis", "Bitte ignorieren, das ist eine Testmeldung der Leitstelle zur Überprüfung."),
+        # Filterprüfung 2026-10-03: weitere Formen aus der WL-Cache-Historie.
+        ("38: Testfall", "Fahrtbehinderung in beiden Richtungen. Grund: Testfall im Bereich ."),
+        ("WLB: Testtext GSC200 Test für LB / WLB und Lauftext", "Testtext GSC200 Test für LB / WLB und Lauftext"),
+        ("Test Test Tes Test Test Test", "Test Test Tes Test Test Test"),
     ],
 )
 def test_test_messages_are_recognised(title: str, description: str) -> None:
@@ -55,6 +59,8 @@ def test_test_messages_are_recognised(title: str, description: str) -> None:
         ("D: Covid-Test-Straße Haltestelle verlegt", "Busse halten Ring 5"),
         ("13A: Bus-Test", "Probefahrt Bus-Test"),
         ("Wien Hütteldorf ↔ Wien Hauptbahnhof", "Wegen Bauarbeiten fahren einige Fernverkehrszüge mit geänderten Fahrzeiten."),
+        # A long text with "Test" among other words stays (only a run of "Test" goes).
+        ("U3: Hinweis", "Test der Lautsprecher am Stephansplatz heute zwischen 10 und 11 Uhr"),
         ("", ""),
     ],
 )

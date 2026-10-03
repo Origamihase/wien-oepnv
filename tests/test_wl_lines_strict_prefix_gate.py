@@ -138,3 +138,20 @@ def test_no_prefix_at_all_passes_through() -> None:
     body, lines = _extract_prefix_lines("Betrieb ab Gersthof")
     assert lines == []
     assert body == "Betrieb ab Gersthof"
+
+
+def test_badner_bahn_and_rufbus_codes_are_lines() -> None:
+    """Filterprüfung 2026-10-03: ``LB``/``WLB`` (Badner Bahn) und ``44BR``
+    (Rufbus) stehen so in ``relatedLines``; ohne sie fiel jede Störung der
+    Badner Bahn samt den Straßenbahnen desselben Vorfalls aus dem Feed."""
+    for title, expected in (
+        ("LB: Fahrtbehinderung Verkehrsunfall", ["LB"]),
+        ("WLB: Fahrtbehinderung Verkehrsunfall", ["WLB"]),
+        ("1/18/62/LB: Signalstörung", ["1", "18", "62", "LB"]),
+        ("44BR: Umleitung", ["44BR"]),
+    ):
+        body, lines = _extract_prefix_lines(title)
+        assert lines == expected, (title, lines)
+        assert body == title.split(": ", 1)[1]
+    # Other two-letter words still are no line.
+    assert _extract_prefix_lines("OK: Betrieb läuft")[1] == []
