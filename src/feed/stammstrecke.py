@@ -328,12 +328,12 @@ def _episode_start(
     ends across a dip solely when that widened gap exceeds
     :data:`EPISODE_GAP_TOLERANCE` (i.e. the dip, a genuine data gap, or
     the two combined, outlasted one tolerated missed observation). This
-    keeps the ``[Seit DD.MM.YYYY]`` label and the item GUID stable
+    keeps the time line's "[Seit …]" and the item GUID stable
     across the momentary recoveries that punctuate a sustained
     disruption rather than resetting them on every transient dip. The
     trigger decision in :func:`compute_stammstrecke_events` is
     independent of this function — bridging here changes only the
-    displayed episode-start date and the GUID, never whether an event
+    displayed episode start and the GUID, never whether an event
     fires.
     """
     above_threshold = [
@@ -411,11 +411,13 @@ def _build_event(
     """Construct the FeedItem dict for *direction*'s current episode."""
     iso_now = now.isoformat()
     iso_first_seen = episode_start.isoformat()
+    # No "[Seit …]" of its own: the feed's time line says since when the
+    # episode runs ("[Seit 18:57]", ``format_local_times``), and the item
+    # read "… Richtung Praterstern [Seit 09.08.2026]" over "[Seit 09.08.2026]".
     description = (
         f"Durchschnittliche Verspätung von "
         f"{_format_minutes(avg_delay_minutes)} min "
-        f"in Richtung {direction.target_label} "
-        f"[Seit {episode_start.strftime('%d.%m.%Y')}]"
+        f"in Richtung {direction.target_label}"
     )
     identity = f"{direction.identity_prefix}|{iso_first_seen}"
     guid = make_guid(direction.identity_prefix, iso_first_seen)
@@ -457,7 +459,7 @@ def compute_stammstrecke_events(
     ``episode_start`` persistence: the per-direction start is loaded
     from / persisted to *episode_starts_path* (default
     :data:`EPISODE_STARTS_PATH`). The persisted value pins the
-    rendered ``[Seit DD.MM.YYYY]`` label, the GUID and the
+    rendered "[Seit …]" of the time line, the GUID and the
     ``_identity`` across feed builds so an episode lasting longer than
     :data:`EPISODE_LOOKBACK` does not drift its identity every cycle —
     pre-fix the sliding lookback window advanced the returned start
@@ -537,7 +539,7 @@ def compute_stammstrecke_events(
             # wider episode_lookback window; clearing the persisted start here
             # would wipe the true ``first_seen``, change the GUID, and
             # re-publish the ongoing disruption as brand-new (jumping the
-            # rendered ``[Seit DD.MM.YYYY]`` date). Gate the clear on the SAME
+            # rendered "[Seit …]" of the time line). Gate the clear on the SAME
             # gap tolerance ``_episode_start`` uses so the two windows agree.
             if not _has_recent_exceedance(direction_obs, current):
                 persisted_starts.pop(direction.target_label, None)
@@ -566,7 +568,7 @@ def compute_stammstrecke_events(
         # window, after a gap, is a new one. Without this check a start kept
         # across a ledger gap (the ``not observations`` branch above keeps
         # it on purpose) was inherited by the next, unrelated episode: its
-        # "[Seit …]" date and GUID were the previous day's (fund E,
+        # "[Seit …]" and GUID were the previous day's (fund E,
         # 2026-10-02; the ledger had one such gap, 7:45 h on 2026-08-06).
         persisted = persisted_starts.get(direction.target_label)
         if persisted is not None and computed_start - (current - episode_lookback) > EPISODE_GAP_TOLERANCE:

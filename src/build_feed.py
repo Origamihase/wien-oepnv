@@ -1465,7 +1465,11 @@ def _plausible_end(
 
 
 def format_local_times(
-    start: datetime | None, end: datetime | None, now: datetime | None = None
+    start: datetime | None,
+    end: datetime | None,
+    now: datetime | None = None,
+    *,
+    since: datetime | None = None,
 ) -> str:
     """The time line of an item, phrased for someone reading it today.
 
@@ -1486,15 +1490,122 @@ def format_local_times(
 
     "Heute" is relative: the feed is rebuilt every 30 minutes, and an item
     that ended yesterday has left the feed by the first build after
-    midnight. No clock time appears: WL's own ends for incidents are often
-    exactly one hour after the start, a default rather than a forecast.
+    midnight. No clock time for an end: WL's own ends for incidents are
+    often exactly one hour after the start, a default rather than a forecast.
+
+    ``since`` is the begin of an unplanned disruption (see
+    :func:`_incident_since`). When it lies earlier today, the line says
+    when it began, so a reader can tell how old the incident is (operator
+    wish 2026-10-03)::
+
+        Seit 10:37               incident since 10:37 today, ends today or open
+
+    An incident that began on an earlier day, or that its source expects to
+    last beyond today, keeps the lines above.
     """
     now_local = _to_utc(now).astimezone(_VIENNA_TZ) if now else datetime.now(_VIENNA_TZ)
     today = now_local.date()
     start_local = _to_utc(start).astimezone(_VIENNA_TZ) if isinstance(start, datetime) else None
     end_local = _to_utc(end).astimezone(_VIENNA_TZ) if isinstance(end, datetime) else None
     end_local = _plausible_end(start_local, end_local, now_local)
+    since_local = _to_utc(since).astimezone(_VIENNA_TZ) if isinstance(since, datetime) else None
+    if (
+        since_local is not None
+        and since_local.date() == today
+        and since_local <= now_local
+        and (end_local is None or end_local.date() == today)
+    ):
+        return f"Seit {since_local:%H:%M}".replace(" ", _NNBSP)
     return _time_line_text(start_local, end_local, today).replace(" ", _NNBSP)
+
+
+# A disruption that is planned rather than an incident: an event, a
+# demonstration, works, a state visit, a drill, a relocated stop. Its time
+# line stays "Heute" — the hour it began tells a reader nothing (operator
+# wish 2026-10-03). The words are the planned causes among the 2,324 WL
+# disruptions cached from July to October 2026 ("Laufveranstaltung",
+# "Gleisbauarbeiten", "Kranarbeiten", "Arbeiten am Stellwerk",
+# "Polizeiübung", "Haltestellenverlegung", "Netzänderung" included); ÖBB
+# names its planned closures "Bauarbeiten".
+_PLANNED_DISRUPTION_RE: re.Pattern[str] = re.compile(
+    r"veranstaltung|demonstration|kundgebung|arbeiten\b|staatsbesuch|übung\b"
+    r"|verlegung\b|netzänderung",
+    re.IGNORECASE,
+)
+
+
+def _scheduled_clock(when: datetime) -> bool:
+    """Whether ``when`` sits on a full hour, the mark of a scheduled entry.
+
+    WL's system switches pre-entered measures on at the full hour, a few
+    seconds late ("12: Betrieb ab Franz-Josefs-Bahnhof" 04:00:16, "N41:
+    Busse halten …" 01:00:15), and display tickers reused for a new
+    incident keep such a start from days before ("10A: Fahrtbehinderung"
+    with 09.07. 00:00:25 on 11.07.). An incident begins on a full hour about
+    once in sixty; it then keeps its previous line.
+    """
+    return _to_utc(when).astimezone(_VIENNA_TZ).minute == 0
+
+
+# Sources whose start is measured, not entered by hand: the Stammstrecke
+# monitor (``src.feed.stammstrecke.EVENT_SOURCE``) dates an episode by the
+# first delayed departure, and a departure at the full hour is no schedule.
+_MEASURED_SOURCES: frozenset[str] = frozenset({"VOR/VAO"})
+
+
+def _incident_since(it: FeedItem, starts_at: datetime | None) -> datetime | None:
+    """When the unplanned disruption ``it`` began, or ``None``.
+
+    Every source files its disruptions under "Störung": WL ``trafficInfos``,
+    ÖBB and the Stammstrecke monitor. Planned ones
+    (:data:`_PLANNED_DISRUPTION_RE`) and reports of a disruption that is
+    already over (:func:`_reports_past_disruption`) do not qualify.
+
+    One WL item often bundles several WL messages about the incident.
+    ``pubDate`` is the earliest of them, ``starts_at`` the latest
+    (``wl_fetch`` keeps the latest so a reused stale ticker cannot date the
+    item back). On 2026-10-03 "86A/87A/95A: Fahrtbehinderung wegen
+    Rettungseinsatz" carried ``pubDate`` 10:37:00 — the minute WL entered
+    the incident — and per-line tickers from 10:42:44 to 10:54:13 as
+    ``starts_at``. The earliest time is the begin, as long as it is from the
+    same Vienna day and not a scheduled full hour (:func:`_scheduled_clock`),
+    the marks of the stale tickers seen since July. ÖBB's ``starts_at`` is
+    the minute it published the message, with a ``pubDate`` no earlier. The
+    Stammstrecke monitor's is the first delayed departure it measured
+    (:data:`_MEASURED_SOURCES`).
+    """
+    if it.get("category") != "Störung" or not isinstance(starts_at, datetime):
+        return None
+    text = f"{it.get('title') or ''} {html_to_text(str(it.get('description') or ''))}"
+    if _PLANNED_DISRUPTION_RE.search(text) or _reports_past_disruption(it, text):
+        return None
+    if it.get("source") in _MEASURED_SOURCES:
+        return starts_at
+    pub_date = _parse_datetime(it.get("pubDate"))
+    since = starts_at
+    if (
+        isinstance(pub_date, datetime)
+        and pub_date <= starts_at
+        and _to_utc(pub_date).astimezone(_VIENNA_TZ).date()
+        == _to_utc(starts_at).astimezone(_VIENNA_TZ).date()
+        and not _scheduled_clock(pub_date)
+    ):
+        since = pub_date
+    return None if _scheduled_clock(since) else since
+
+
+# ÖBB reports a disruption that is already over in the past tense: "Wegen
+# eines Polizeieinsatzes waren in Mödling Bahnhof bis 19:55 Uhr keine Fahrten
+# möglich", published 19:57. 60 of the 193 ÖBB disruptions cached since July
+# are such reports or an "Aufhebung"; "Seit 19:57" would claim the opposite.
+_PAST_DISRUPTION_RE: re.Pattern[str] = re.compile(
+    r"\bwaren\b.{0,160}?\bbis\s+\d{1,2}[:.]\d{2}\s*Uhr"
+)
+
+
+def _reports_past_disruption(it: FeedItem, text: str) -> bool:
+    """Whether ``it`` reports the end of a disruption rather than a running one."""
+    return _is_all_clear(it) or _PAST_DISRUPTION_RE.search(text) is not None
 
 
 def _time_line_text(start_local: datetime | None, end_local: datetime | None, today: date) -> str:
@@ -8104,6 +8215,7 @@ def _format_item_content(
     time_line = format_local_times(
         starts_at if isinstance(starts_at, datetime) else None,
         ends_at if isinstance(ends_at, datetime) else None,
+        since=_incident_since(it, starts_at),
     )
     time_line = _sanitize_text(time_line)
     time_line = _WHITESPACE_CLEANUP_RE.sub(" ", time_line).strip()
