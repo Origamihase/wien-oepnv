@@ -139,6 +139,14 @@ class Check:
     ok: bool
     summary: str  # short one-liner shown after the name
     detail: str = ""  # optional extra line (e.g. the upstream error text)
+    # A note is shown and annotated as a warning but never turns the run red.
+    note: bool = False
+
+
+def _mark(c: Check) -> str:
+    if not c.ok:
+        return "❌"
+    return "ℹ️" if c.note else "✅"
 
 
 def _extract_count(output: str) -> int | None:
@@ -341,7 +349,7 @@ def check_stations(now: datetime) -> Check:
 
 
 def check_stammstrecke_directions(now: datetime) -> Check:
-    """Fail when one Stammstrecke direction has gone silent while the other reports.
+    """Note when one Stammstrecke direction has gone silent while the other reports.
 
     Audit B.1/B.2: the northbound direction stopped producing delay rows on
     2026-08-14 and no check noticed for 30 days. The feed-freshness probe above
@@ -357,6 +365,14 @@ def check_stammstrecke_directions(now: datetime) -> Check:
     (measured maxima 7.8 h / 11.5 h between rows during healthy operation), so
     a plain "last row older than N hours" rule either false-alarms or has to be
     set so high it stops being useful. See that module for the measurements.
+
+    A silent direction is a note, not a failure (operator decision 2026-10-03):
+    Praterstern has been silent since 2026-08-14 because of a closure that
+    runs until the end of October 2027, and the check turned every run red from
+    2026-09-13 on, so the failure e-mail every 6 h no longer told a real outage
+    apart from the known closure. The note stays in the log, the job summary
+    and as a ``::warning`` annotation. Only a check that cannot run at all
+    still fails.
     """
     name = "Stammstrecke-Richtungen"
     try:
@@ -390,9 +406,10 @@ def check_stammstrecke_directions(now: datetime) -> Check:
     if silent:
         return Check(
             name,
-            ok=False,
+            ok=True,
+            note=True,
             summary=(
-                f"FEHLER — Richtung {', '.join(silent)} ohne Messwerte in den "
+                f"HINWEIS — Richtung {', '.join(silent)} ohne Messwerte in den "
                 f"letzten {_fmt_age(window_h * 3600)}, Gegenrichtung liefert"
             ),
             detail=(
@@ -431,7 +448,7 @@ def _render_plain(now: datetime, sources: list[Check], outputs: list[Check]) -> 
         rows.append(title)
         width = max(len(c.name) for c in checks)
         for c in checks:
-            mark = "✅" if c.ok else "❌"
+            mark = _mark(c)
             rows.append(f"  {mark} {c.name.ljust(width)}  {c.summary}")
             if c.detail:
                 rows.append(f"      └─ {c.detail}")
@@ -462,7 +479,7 @@ def _render_markdown(now: datetime, sources: list[Check], outputs: list[Check]) 
         "| :----: | ------- | -------- |",
     ]
     for c in sources + outputs:
-        mark = "✅" if c.ok else "❌"
+        mark = _mark(c)
         cell = c.summary + (f"<br>↳ `{c.detail}`" if c.detail else "")
         lines.append(f"| {mark} | **{c.name}** | {cell} |")
     return "\n".join(lines) + "\n"
@@ -487,6 +504,10 @@ def main() -> int:
     for c in failed:
         msg = c.summary + (f" — {c.detail}" if c.detail else "")
         print(f"::error title=Health: {c.name}::{msg}")
+    for c in all_checks:
+        if c.ok and c.note:
+            msg = c.summary + (f" — {c.detail}" if c.detail else "")
+            print(f"::warning title=Health: {c.name}::{msg}")
 
     summary_path = os.getenv("GITHUB_STEP_SUMMARY")
     if summary_path:
