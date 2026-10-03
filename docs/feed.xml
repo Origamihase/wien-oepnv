@@ -7,51 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 03 Oct 2026 17:41:26 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 03 Oct 2026 18:30:52 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U4: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
-      <pubDate>Sat, 03 Oct 2026 17:26:00 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 17:26:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 03 Oct 2026 17:26:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 17:26]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 17:26]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: Schadhafter Zug]]></title>
+      <title><![CDATA[5/12: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e51951a503565e36ead67df34b39b4610182b9b9dcc9afc61af74e08f8698c87</guid>
       <pubDate>Sat, 03 Oct 2026 16:47:00 +0200</pubDate>
       <ext:first_seen>Sat, 03 Oct 2026 16:47:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 03 Oct 2026 16:47:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb ab Lange Gasse, Lerchenfelder Straße; Züge halten bei Linien 43 und 44. [Seit 16:47]</description>
-      <content:encoded><![CDATA[Betrieb ab Lange Gasse, Lerchenfelder Straße; Züge halten bei Linien 43 und 44.<br/>[Seit 16:47]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12: Schadhafter Zug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f37ac9d780139dd8d71f16d421347f46e6132e81bedba6f8e24a961524205866</guid>
-      <pubDate>Sat, 03 Oct 2026 16:47:00 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 16:47:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 03 Oct 2026 16:47:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb ab Lange Gasse; Züge halten bei Linien 43 und 44. [Seit 16:47]</description>
-      <content:encoded><![CDATA[Betrieb ab Lange Gasse; Züge halten bei Linien 43 und 44.<br/>[Seit 16:47]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: Verunreinigung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6</guid>
-      <pubDate>Sat, 03 Oct 2026 16:43:00 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 16:43:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 03 Oct 2026 16:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Seit 16:43]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Seit 16:43]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 16:47]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 16:47]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Verkehrsunfall, Bauarbeiten]]></title>
@@ -61,8 +28,8 @@
       <ext:first_seen>Sat, 03 Oct 2026 15:23:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 03 Oct 2026 15:23:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 04 Oct 2026 01:00:00 +0200</ext:ends_at>
-      <description>Verkehrsunfall: Umleitung über Davidgasse - Laxenburger Straße. Bauarbeiten: Busse halten Salvatorianerplatz. [Bis So 04.10.]</description>
-      <content:encoded><![CDATA[Verkehrsunfall: Umleitung über Davidgasse - Laxenburger Straße. Bauarbeiten: Busse halten Salvatorianerplatz.<br/>[Bis So 04.10.]]]></content:encoded>
+      <description>Bauarbeiten: Busse halten Salvatorianerplatz. [Bis So 04.10.]</description>
+      <content:encoded><![CDATA[Bauarbeiten: Busse halten Salvatorianerplatz.<br/>[Bis So 04.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Rennweg 33A–37]]></title>
@@ -118,6 +85,39 @@
       <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet. [Ab Mo 05.10. bis 07.12.]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet.<br/>[Ab Mo 05.10. bis 07.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N71: Ersatzverkehr]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6f11b9f2989f7ded86ce2e256372b0c9d235d8bccee56c31a7edc035dbad8893</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:13 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 00:00:13 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 03 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Busse halten bei Haltestelle N71. [Heute]</description>
+      <content:encoded><![CDATA[Busse halten bei Haltestelle N71.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: ÖBB Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6a1dca08aeb9e7b41cb4335d0f1d1f13d36847df0e83b73b6b2f2c6ddba9e385</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 15:31:24 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 00:00:19 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 03 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Kein Betrieb; Züge halten bei Linie 18, Richtung Burggasse; Betrieb ab Kliebergasse. [Heute]</description>
+      <content:encoded><![CDATA[Kein Betrieb; Züge halten bei Linie 18, Richtung Burggasse; Betrieb ab Kliebergasse.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26E: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dac4be805e97a1ee16cc914e8b4797565e65f97545fca29a6e2a1cbb7fe0bf00</guid>
+      <pubDate>Fri, 25 Sep 2026 08:55:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 09:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 08:55:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
+      <description>Busse halten Satzingerweg 41, Bessemerstraße 1-3, auf Hauptfahrbahn, Hoßplatz 11; Ersatzbus hält Karl-Waldbrunner-Platz vor Schloßhofer Straße. [Bis 12.12.]</description>
+      <content:encoded><![CDATA[Busse halten Satzingerweg 41, Bessemerstraße 1-3, auf Hauptfahrbahn, Hoßplatz 11; Ersatzbus hält Karl-Waldbrunner-Platz vor Schloßhofer Straße.<br/>[Bis 12.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
