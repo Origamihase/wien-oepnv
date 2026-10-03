@@ -5,6 +5,16 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Deutscher Feed: Vorlauf über das Wochenende (2026-10-03, Betreiberentscheidung „Wochenende mit“)**:
+  Ankündigungen rücken weiter ab dem Vortag ihres Beginns vor, freitags und
+  samstags aber schon alles, was bis einschließlich Montag beginnt
+  (`_preview_last_day`). Wer die Anzeige nur werktags sieht, liest die
+  Umleitung ab Montag so noch am Freitag. Nachgerechnet über die 3.875
+  Feed-Stände seit 15.07.: Ankündigungen belegen 1.064 Plätze, während
+  Laufendes auf Platz 11 oder dahinter stand (nur Vortag: 472, drei Tage:
+  1.442). Von den 1.442 Plätzen der drei Tage fielen 827 auf Freitag und
+  Samstag; die Regel gibt diese fast alle wieder an Ankündigungen (825).
+  Tests: `tests/test_upcoming_deferral.py`.
 * **Deutscher Feed: Wer die zehn Plätze bekommt (2026-10-03, Audit über die Cache-Historie)**:
   Alle 3.875 Feed-Stände seit 15.07. mit dem Code von `main` aus Cache und
   State des jeweiligen Stands nachgebaut (Abgleich mit dem veröffentlichten

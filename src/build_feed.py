@@ -6042,6 +6042,20 @@ def _starts_after(item: FeedItem, last_day: date) -> bool:
     return _to_utc(start).astimezone(_VIENNA_TZ).date() > last_day
 
 
+def _preview_last_day(today: date, preview_days: int) -> date:
+    """The last Vienna day whose announcements keep their normal place.
+
+    *preview_days* after *today*, but on a Friday and a Saturday at least the
+    coming Monday (operator decision 2026-10-03, "Wochenende mit"): a detour
+    from Monday must stand in front on Friday, for anyone who sees the
+    display only on workdays. ``preview_days`` 0 keeps today only.
+    """
+    last_day = today + timedelta(days=preview_days)
+    if preview_days > 0 and today.weekday() in (4, 5):  # Friday, Saturday
+        last_day = max(last_day, today + timedelta(days=7 - today.weekday()))
+    return last_day
+
+
 def _defer_upcoming_items(
     items: list[FeedItem], now: datetime, preview_days: int
 ) -> list[FeedItem]:
@@ -6058,10 +6072,11 @@ def _defer_upcoming_items(
     moves behind the field, in its original order — after the items
     :func:`_apply_topic_budget` moved back, before the all-clears. Nothing is
     dropped: with fewer running items the announcement still fills a slot,
-    and from *preview_days* before its start it holds its normal place. An
+    and from *preview_days* before its start it holds its normal place, from
+    Friday on for one that begins on Monday (:func:`_preview_last_day`). An
     item without a start is never deferred.
     """
-    last_day = _to_utc(now).astimezone(_VIENNA_TZ).date() + timedelta(days=preview_days)
+    last_day = _preview_last_day(_to_utc(now).astimezone(_VIENNA_TZ).date(), preview_days)
     deferred = [item for item in items if _starts_after(item, last_day)]
     if not deferred:
         return items
