@@ -9,12 +9,13 @@ Planned measures keep "[Heute]".
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any
+from typing import Any, cast
 
 import pytest
 from zoneinfo import ZoneInfo
 
 import src.build_feed as bf
+from src.feed_types import FeedItem
 
 VIENNA = ZoneInfo("Europe/Vienna")
 NOW = datetime(2026, 10, 3, 11, 20, tzinfo=VIENNA)
@@ -41,7 +42,7 @@ def _wl(title: str, pub: datetime | None, start: datetime | None, **extra: Any) 
 
 def _line(item: dict[str, Any], now: datetime = NOW) -> str:
     start, end = item.get("starts_at"), item.get("ends_at")
-    since = bf._incident_since(item, start)
+    since = bf._incident_since(cast(FeedItem, item), start)
     return bf.format_local_times(start, end, now, since=since).replace(NNBSP, " ")
 
 
@@ -225,5 +226,5 @@ def test_the_rendered_item_carries_the_line(monkeypatch: pytest.MonkeyPatch) -> 
 
     monkeypatch.setattr(bf, "format_local_times", partial(bf.format_local_times, now=NOW))
     item = _wl("87A: Fahrtbehinderung wegen Rettungseinsatz", _at(3, 10, 37), _at(3, 10, 54, 13))
-    content = bf._format_item_content(item, "ident", item["starts_at"], item["ends_at"])  # type: ignore[arg-type]
+    content = bf._format_item_content(cast(FeedItem, item), "ident", item["starts_at"], item["ends_at"])
     assert f"[Seit{NNBSP}10:37]" in content.desc_html
