@@ -4571,7 +4571,9 @@ def _translate_title_attempt(
 
 def _attempt_for_field(field: str) -> Callable[..., str | None]:
     """The translation attempt a cached field goes through: titles may split."""
-    return _translate_title_attempt if field == "title" else _translate_text_attempt
+    if field == "title":
+        return _translate_title_attempt
+    return _translate_text_attempt
 
 
 def _translate_time_line_en(time_line: str) -> str:

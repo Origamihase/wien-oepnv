@@ -108,7 +108,7 @@ def test_a_known_reason_renders_without_the_model(monkeypatch: Any) -> None:
 def test_the_stop_area_is_english(monkeypatch: Any) -> None:
     """Published 2026-10-03 10:23: "Reason: rescue operation im
     Haltestellenbereich Taubstummengasse"."""
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: _echo())
+    monkeypatch.setattr(build_feed, "_get_translation_pipeline", _echo)
     out = _render_label_record(
         "Voraussichtliche Dauer: 12:30 Uhr. Grund: Rettungseinsatz im "
         "Haltestellenbereich Taubstummengasse.",
