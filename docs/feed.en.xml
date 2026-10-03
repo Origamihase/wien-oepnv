@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 04 Oct 2026 00:04:27 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 00:16:00 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U2: Contamination]]></title>
@@ -54,7 +54,7 @@
       <content:encoded><![CDATA[The work takes place in the period from 20:00 to 05:00. The left lane in the direction of the city is closed.<br/>[Until 15.11.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[52: Trains stop at lines 6 and 18]]></title>
+      <title><![CDATA[52: Trains stop for lines 6 and 18]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:14 +0200</pubDate>
@@ -72,8 +72,8 @@
       <ext:first_seen>Thu, 01 Oct 2026 00:00:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
-      <description>Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected. [From Mon 05.10. until 11.11.]</description>
-      <content:encoded><![CDATA[Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected.<br/>[From Mon 05.10. until 11.11.]]]></content:encoded>
+      <description>Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse line 63A is redirected. [From Mon 05.10. until 11.11.]</description>
+      <content:encoded><![CDATA[Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse line 63A is redirected.<br/>[From Mon 05.10. until 11.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46/47A/47B: Event on 04.10.2026]]></title>
@@ -83,8 +83,8 @@
       <ext:first_seen>Wed, 30 Sep 2026 12:01:03 +0200</ext:first_seen>
       <ext:starts_at>Sun, 04 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
-      <description>Due to an event in the area of Alliance Stadion, the following transport measures are taken. [Today]</description>
-      <content:encoded><![CDATA[Due to an event in the area of Alliance Stadion, the following transport measures are taken.<br/>[Today]]]></content:encoded>
+      <description>Due to an event in the area of Allianz Stadion the following transport measures are taken. [Today]</description>
+      <content:encoded><![CDATA[Due to an event in the area of Allianz Stadion the following transport measures are taken.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[29B/N25: Adolf-Loos-Gasse]]></title>
@@ -105,8 +105,8 @@
       <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
       <ext:starts_at>Thu, 01 Oct 2026 00:00:13 +0200</ext:starts_at>
       <ext:ends_at>Sun, 04 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Buses stop at N71. [Today]</description>
-      <content:encoded><![CDATA[Buses stop at N71.<br/>[Today]]]></content:encoded>
+      <description>Buses stop at the stop of line N71. [Today]</description>
+      <content:encoded><![CDATA[Buses stop at the stop of line N71.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62: ÖBB construction works]]></title>
@@ -116,8 +116,8 @@
       <ext:first_seen>Sat, 26 Sep 2026 15:31:24 +0200</ext:first_seen>
       <ext:starts_at>Thu, 01 Oct 2026 00:00:19 +0200</ext:starts_at>
       <ext:ends_at>Sun, 04 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>No operation; trains stop at line 18, direction Burggasse; service from Kliebergasse. [Today]</description>
-      <content:encoded><![CDATA[No operation; trains stop at line 18, direction Burggasse; service from Kliebergasse.<br/>[Today]]]></content:encoded>
+      <description>No service; trains stop for line 18, direction Burggasse; service from Kliebergasse. [Today]</description>
+      <content:encoded><![CDATA[No service; trains stop for line 18, direction Burggasse; service from Kliebergasse.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
