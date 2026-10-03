@@ -5,6 +5,20 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Englischer Feed: ÖBB-Vorlage nimmt nur Stationsnamen in ihre Felder (2026-10-03, vierte Nachprüfung)**:
+  Die ÖBB-Sätze, die seit dem EN-Audit (unten) aus ihren Feldern gesetzt
+  werden, gegen alle 317 ÖBB-„Wegen“-Sätze des deutschen Feeds seit Juli
+  gerechnet. Bei 10 der 286 erkannten Sätzen landete eine Abweichung von der
+  Vorlage im Stationsfeld und stand deutsch im englischen Satz („… and
+  Gramatneusiedl Bahnhof Zugfahrten bis voraussichtlich 27.08.2026, 23:59
+  Uhr.“, „… at Wien Hbf (U) bzw Wien Meidling Zugfahrten erneut.“); bei 5
+  weiteren blieb „Bahnhof“ vor der Gemeinde in Klammern stehen. Die Vorlage
+  kennt jetzt Datum vor der Uhrzeit, „voraussichtlich bis“ und
+  „[in <Gemeinde>]“; ein Stationsfeld mit Ziffer oder Wörtern wie
+  „Zugfahrten“, „bis“, „bzw“ gilt als Abweichung, der Satz geht dann als
+  Ganzes durchs Modell (4 Sätze). Keine neue Übersetzungs-Epoche: Unter
+  Epoche 20 ist keiner dieser Sätze im Cache. Doku: `docs/architecture.md`
+  („ÖBB-Sätze nach Vorlage“). Tests: `tests/test_en_audit_2026_10_03.py`.
 * **Englischer Feed: Prüfung aller DE/EN-Paare (EN-Audit 2026-10-03)**: Alle
   6.561 Stände von `docs/feed.en.xml` seit 20.05. Meldung für Meldung neben
   den deutschen gelegt (4.957 Paare). Behoben, jeweils als Klasse:
