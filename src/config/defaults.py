@@ -44,8 +44,9 @@ DEFAULT_FRESH_PUBDATE_WINDOW_MIN = 5
 DEFAULT_MAX_ITEMS = 10
 # Höchstens so viele Items je Ursachenwort und Tag in den Top-N (0 = aus).
 DEFAULT_MAX_ITEMS_PER_TOPIC = 3
-# Was später als so viele Tage nach heute beginnt, rückt hinter das Feld.
-DEFAULT_UPCOMING_PREVIEW_DAYS = 3
+# Was später als so viele Tage nach heute beginnt, rückt hinter das Feld
+# (1: eine Ankündigung steht ab dem Vortag ihres Beginns vorn).
+DEFAULT_UPCOMING_PREVIEW_DAYS = 1
 DEFAULT_MAX_ITEM_AGE_DAYS = 365
 DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS = 540
 DEFAULT_ENDS_AT_GRACE_MINUTES = 10

@@ -82,3 +82,43 @@ def test_a_group_with_a_long_message_is_not_joined() -> None:
     titles = [title for title, _ in _shown([_N65, _N66, long_message])]
     assert any(title.startswith("N65:") for title in titles)
     assert not any(title.startswith("N65/N66") for title in titles)
+
+
+# --- Long messages sent once per line (2026-10-03) ---------------------------
+
+_STOCK = "Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen."
+
+
+def _long(line: str, cause: str, guid: str, start: str = "2026-07-19T11:11:30+02:00", text: str = _STOCK) -> FeedItem:
+    return _wl(f"{line}: {cause}", f"Linie {line}: {text}", guid, start, "2026-07-19T12:41:00+02:00")
+
+
+def test_the_same_long_message_of_two_lines_takes_one_slot() -> None:
+    shown = _shown([_long("6", "Schadhaftes Fahrzeug", "a1"), _long("18", "Schadhaftes Fahrzeug", "b2", "2026-07-19T11:11:45+02:00")])
+    assert shown == [("6/18: Schadhaftes Fahrzeug", _STOCK)]
+
+
+def test_four_lines_of_one_level_crossing_take_one_slot() -> None:
+    lines = ["67B", "16A", "67A", "17A"]
+    shown = _shown([_long(line, "Störung an einem Bahnübergang", f"g{n}") for n, line in enumerate(lines)])
+    assert shown == [("16A/17A/67A/67B: Störung an einem Bahnübergang", _STOCK)]
+
+
+def test_long_messages_with_different_texts_stay_apart() -> None:
+    shown = _shown([
+        _long("44", "Schadhaftes Fahrzeug", "c3", text="Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug."),
+        _long("60", "Schadhaftes Fahrzeug", "d4", text="Verspätungen in beiden Richtungen. Grund: Schadhaftes Fahrzeug."),
+    ])
+    assert sorted(title for title, _ in shown) == ["44: Schadhaftes Fahrzeug", "60: Schadhaftes Fahrzeug"]
+
+
+def test_the_same_long_message_outside_the_window_stays_apart() -> None:
+    shown = _shown([_long("6", "Verkehrsunfall", "e5"), _long("18", "Verkehrsunfall", "f6", "2026-07-19T11:31:30+02:00")])
+    assert sorted(title for title, _ in shown) == ["18: Verkehrsunfall", "6: Verkehrsunfall"]
+
+
+def test_a_long_message_twin_with_a_ticker_only_one_line_sent_stays_apart() -> None:
+    ticker = _wl("6: Betrieb ab Westbahnhof", "Schadhaftes Fahrzeug\nBetrieb ab Westbahnhof",
+                 "g7", "2026-07-19T11:12:00+02:00", "2026-07-19T12:41:00+02:00")
+    shown = _shown([_long("6", "Schadhaftes Fahrzeug", "a1"), ticker, _long("18", "Schadhaftes Fahrzeug", "b2")])
+    assert sorted(title.split(":")[0] for title, _ in shown) == ["18", "6"]
