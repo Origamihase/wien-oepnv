@@ -522,7 +522,13 @@ verdrängt eine andere Störung.
     der 33 ÖBB-Störungen vom 12.09. bis 02.10.). Das früheste `pubDate`
     steht daher im State-Eintrag der Meldung als `first_published`; ein
     Eintrag von vor diesem Feld beginnt beim früheren von `pubDate` und
-    `first_seen`. Baustellen heißen „Bauarbeiten“. ÖBB meldet eine beendete Störung in der
+    `first_seen`. Die Regel der vollen Stunde gilt für ÖBB nicht: Sie
+    erkennt von WL vorab eingetragene Maßnahmen, ÖBB veröffentlicht von
+    Hand. Die beiden ÖBB-Störungen seit Juli, die zur vollen Stunde
+    erschienen, waren echte Vorfälle; „Wien Meidling ↔ Wien Liesing“
+    (Polizeieinsatz, veröffentlicht 03.10. 20:00:01, „bis voraussichtlich
+    20:30 Uhr keine Fahrten“) zeigte bis zur Korrektur vom selben Abend
+    „[Heute]“ statt „[Seit 20:00]“. Baustellen heißen „Bauarbeiten“. ÖBB meldet eine beendete Störung in der
     Vergangenheit („Wegen eines Polizeieinsatzes waren in Mödling Bahnhof
     bis 19:55 Uhr keine Fahrten möglich“, veröffentlicht 19:57) oder als
     „Aufhebung …“ (`_is_all_clear`); 60 der 193 ÖBB-Störungen seit Juli.
@@ -1368,7 +1374,8 @@ Soft-Fail-Pfad.
 Drei Append-only-CSV-Ledger unter `data/stats/` fangen jede relevante
 Beobachtung ein, sobald sie auftritt. Sie bedienen **zwei Konsumenten**
 mit unterschiedlichen Fenstern: das tägliche Markdown-Dashboard
-(`docs/statistik.md`, 30-Tage-Fenster) plus die vier README-STATS-
+(`docs/statistik.md`, Kalenderjahr; das abgeschlossene Vorjahr steht in
+`docs/statistik-<Vorjahr>.md`) plus die vier README-STATS-
 Marker (`STATS:STAMMSTRECKE[_LIVE]` und `STATS:AUSFAELLE[_LIVE]`,
 60-Min- und 30-Tage-Snapshots), sowie den RSS-Feed selbst
 (Stammstrecken-Sektion, 1-Stunden-Fenster — siehe

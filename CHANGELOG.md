@@ -5,6 +5,16 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Deutscher Feed: ÖBB-Störung zur vollen Stunde zeigt ihr „[Seit …]“ (2026-10-03, dritte Nachprüfung)**:
+  „Wien Meidling ↔ Wien Liesing“ (Polizeieinsatz, veröffentlicht 20:00:01,
+  „bis voraussichtlich 20:30 Uhr keine Fahrten“) stand eine Stunde lang mit
+  „[Heute]“ im Feed, die erste ÖBB-Störung seit der Korrektur vom Nachmittag (unten). Die Regel
+  der vollen Stunde, die von WL vorab eingetragene Maßnahmen erkennt, galt auch
+  für die erste ÖBB-Veröffentlichung; ÖBB veröffentlicht von Hand, und beide
+  ÖBB-Störungen seit Juli zur vollen Stunde waren echte Vorfälle. Für ÖBB gilt
+  sie nicht mehr. WL und Stammstrecke unverändert. Doku: `docs/statistik.md`
+  zeigt das Kalenderjahr, nicht 30 Tage (`docs/architecture.md` §6,
+  `docs/development.md`, `docs/reference/stammstrecke_provider_logic.md`). Tests: `tests/test_time_line_incident_since.py`.
 * **Zeitumstellung bis 2040, Jahreswechsel, Schaltjahre (Prüfung 2026-10-03)**:
   Echte Feed-Läufe auf jede Zeitumstellung bis 2040, jeden Silvester 2026 bis
   2040 und die Schalttage 2028 bis 2040 verschoben (49 Szenarien, deutscher und

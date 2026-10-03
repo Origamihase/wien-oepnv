@@ -1620,8 +1620,8 @@ def _incident_since(
     minute it first published the message, ``first_published``
     (:func:`_first_published`): its ``starts_at`` is the date the
     message's validity begins (00:00, since 2026-09-12), and its
-    ``pubDate`` moves on with every update. The Stammstrecke monitor's
-    begin is the first delayed departure it measured
+    ``pubDate`` moves on with every update; a full hour counts there too.
+    The Stammstrecke monitor's begin is the first delayed departure it measured
     (:data:`_MEASURED_SOURCES`).
     """
     if it.get("category") != "Störung" or not isinstance(starts_at, datetime):
@@ -1633,8 +1633,12 @@ def _incident_since(
         return starts_at
     pub_date = _parse_datetime(it.get("pubDate"))
     if it.get("source") == _OEBB_SOURCE and isinstance(pub_date, datetime):
-        published = first_published or pub_date
-        return None if _scheduled_clock(published) else published
+        # No full-hour rule here: it marks WL's pre-entered measures, and
+        # ÖBB publishes by hand. The two ÖBB disruptions since July first
+        # published on a full hour were real incidents ("Wien Meidling ↔ Wien
+        # Liesing", Polizeieinsatz, 03.10.2026 20:00:01), and that one read
+        # "Heute" while the line was closed.
+        return first_published or pub_date
     since = starts_at
     if (
         isinstance(pub_date, datetime)
