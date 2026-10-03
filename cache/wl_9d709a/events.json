@@ -374,18 +374,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Rettungseinsatz",
-    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e",
-    "pubDate": "2026-10-03T19:03:00+02:00",
-    "starts_at": "2026-10-03T19:03:00+02:00",
-    "ends_at": "2026-10-03T23:55:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-10-03|TK=rettungseinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -406,6 +394,18 @@
     "starts_at": "2026-10-01T00:00:16+02:00",
     "ends_at": "2026-10-03T23:59:59+02:00",
     "_identity": "wl|störung|L=12A|D=2026-10-01|TK=betrieb ab schweglerstrasse 19 21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Fahrtbehinderung Falschparker",
+    "description": "Linie 13A: Fahrtbehinderung in Richtung Alser Straße, Skodagasse. Voraussichtliche Dauer: 20:25 Uhr. Grund: Falschparker im Bereich Kellermanngasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d",
+    "pubDate": "2026-10-03T19:55:00+02:00",
+    "starts_at": "2026-10-03T19:56:54+02:00",
+    "ends_at": "2026-10-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2026-10-03|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
@@ -626,38 +626,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "46: Polizeieinsatz",
-    "description": "Linie 46: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "title": "46/49/52: Gleisbauarbeiten",
+    "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "17245375550a341367d59df402e880c1611e9fbb35634da6ea980f6f056c6c9b",
-    "pubDate": "2026-10-03T18:57:00+02:00",
-    "starts_at": "2026-10-03T18:57:00+02:00",
-    "ends_at": "2026-10-03T19:30:00+02:00",
-    "_identity": "wl|störung|L=46|D=2026-10-03|TK=polizeieinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Betrieb ab Hütteldorfer Straße mit Linie 46",
-    "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "123f3ec41d37c82b1cb680b6e9f1c83a2bac197e145422c4289e2bcd81173f3d",
-    "pubDate": "2026-10-01T00:00:16+02:00",
-    "starts_at": "2026-10-01T00:00:16+02:00",
-    "ends_at": "2026-10-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=49|D=2026-10-01|TK=betrieb ab hütteldorfer strasse mit linie 46"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Betrieb ab Urban-Loritz-Platz mit Linie 52",
-    "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b30bec21ad9ff445d41e824ead3b5402c2dd1cdd63d6210037adf1f7e4d8b5f4",
-    "pubDate": "2026-10-01T00:00:16+02:00",
-    "starts_at": "2026-10-01T00:00:16+02:00",
-    "ends_at": "2026-10-03T23:59:59+02:00",
-    "_identity": "wl|störung|L=49|D=2026-10-01|TK=betrieb ab urban loritz platz mit linie 52"
+    "guid": "9e98111115d4b66f72ae6549bfe4ea7fb6f5a28c0bdbf6c6fa58cdb95cad6ca7",
+    "pubDate": "2026-09-18T04:30:00+02:00",
+    "starts_at": "2026-09-18T04:30:00+02:00",
+    "ends_at": "2026-10-31T01:00:00+01:00",
+    "_identity": "wl|störung|L=46,49,52|D=2026-09-18|TK=46 49 52 gleisbauarbeiten"
   },
   {
     "source": "Wiener Linien",

@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 03 Oct 2026 19:40:05 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 03 Oct 2026 20:01:08 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[11: Rescue operation]]></title>
+      <title><![CDATA[Wien Meidling ↔ Wien Liesing]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;916772</guid>
+      <pubDate>Sat, 03 Oct 2026 20:00:01 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 20:01:08 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 03 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 03 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Due to a police operation, no journeys are possible between Wien Meidling Station (U) and Wien Liesing Station until approx. 20:30. [Today]</description>
+      <content:encoded><![CDATA[Due to a police operation, no journeys are possible between Wien Meidling Station (U) and Wien Liesing Station until approx. 20:30.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e</guid>
-      <pubDate>Sat, 03 Oct 2026 19:03:00 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 19:03:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 03 Oct 2026 19:03:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d</guid>
+      <pubDate>Sat, 03 Oct 2026 19:55:00 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 19:55:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 03 Oct 2026 19:56:54 +0200</ext:starts_at>
       <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: rescue operation. [Since 19:03]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 19:03]]]></content:encoded>
+      <description>Fahrtbehinderung in Richtung Alser Straße, Skodagasse. Voraussichtliche Dauer: 20:25 Uhr. Grund: Falschparker im Bereich Kellermanngasse. [Seit 19:55]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Alser Straße, Skodagasse. Voraussichtliche Dauer: 20:25 Uhr. Grund: Falschparker im Bereich Kellermanngasse.<br/>[Seit 19:55]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
@@ -41,17 +52,6 @@
       <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>The work takes place in the period from 20:00 to 05:00. The left lane in the direction of the city is closed. [Until 15.11.]</description>
       <content:encoded><![CDATA[The work takes place in the period from 20:00 to 05:00. The left lane in the direction of the city is closed.<br/>[Until 15.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[49: Track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">123f3ec41d37c82b1cb680b6e9f1c83a2bac197e145422c4289e2bcd81173f3d</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:16 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 00:00:16 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:16 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 03 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Service from Hütteldorfer Straße with line 46, Urban-Loritz-Platz with line 52. [Today]</description>
-      <content:encoded><![CDATA[Service from Hütteldorfer Straße with line 46, Urban-Loritz-Platz with line 52.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[52: Trains stop at lines 6 and 18]]></title>
