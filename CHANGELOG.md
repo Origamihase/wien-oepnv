@@ -5,6 +5,18 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Deutscher Feed: ÖBB-Störungen zeigen ihr „[Seit …]“ (2026-10-03, Nachprüfung von #1930 bis #1934)**:
+  Die Seit-Zeit aus #1931 kam bei ÖBB nie an. `_incident_since` las die
+  Uhrzeit aus `starts_at`, doch der ÖBB-Provider setzt dort seit 12.09. den
+  Gültigkeitstag (00:00), und 00:00 zeigt keine Uhrzeit. Alle 29 Stände
+  laufender, heute endender ÖBB-Störungen vom 12.09. bis 02.10. lasen
+  „[Heute]“ statt zum Beispiel „[Seit 15:48]“. Der Beginn ist jetzt die erste Veröffentlichung der
+  Meldung (`_first_published`), gemerkt im State als `first_published`,
+  weil ÖBB eine Meldung bei jeder Aktualisierung mit neuem `pubDate`
+  veröffentlicht (21 der 33 Meldungen); sonst würde die Störung mit jeder
+  Aktualisierung jünger. „Reparaturarbeiten“ gelten nicht mehr als geplant
+  („Wegen Reparaturarbeiten nach einem Unfall“), sie folgen auf einen
+  Vorfall. Tests: `tests/test_time_line_incident_since.py`.
 * **Deutscher Feed: Filterprüfung (2026-10-03)**: Jede Filterstufe gegen die
   WL-, ÖBB- und Baustellen-Caches seit 15.07. geprüft und alle 3.878 Feed-Stände
   mit altem und neuem Code nachgebaut (State fortgeschrieben).
@@ -81,7 +93,8 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   ÖBB, Stammstrecke), die heute begonnen hat und heute endet oder kein Ende
   hat. Geplantes (Veranstaltung, Demonstration, Arbeiten, Staatsbesuch,
   Übung, verlegte Haltestelle), Maßnahmen, die WL zur vollen Stunde
-  einschaltet, ÖBB-Datumsbeginne (00:00) und Meldungen über eine schon
+  einschaltet, ÖBB-Datumsbeginne (00:00; korrigiert, siehe oben: bei ÖBB
+  zählt die erste Veröffentlichung) und Meldungen über eine schon
   beendete Störung („… waren bis 19:55 Uhr keine Fahrten möglich“,
   „Aufhebung …“) behalten ihre Zeile. Über die Cache-Stände seit Juli ändern
   sich 1 918 von 2 529 WL- und 75 von 193 ÖBB-Zeitzeilen. Die
