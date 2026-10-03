@@ -7,29 +7,51 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 03 Oct 2026 16:42:38 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 03 Oct 2026 17:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[5/12: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d4e34f09d4feef2c9a3d0b25bc620ab6468efd635b84d9e7f803ea88c87e5d21</guid>
+      <pubDate>Sat, 03 Oct 2026 16:47:00 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 17:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 03 Oct 2026 16:47:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>No operation between Lange Gasse and Lerchenfelder Straße. Continue from Lange Gasse to Alser Straße U, Zimmermannplatz. [Since 16:47]</description>
+      <content:encoded><![CDATA[No operation between Lange Gasse and Lerchenfelder Straße. Continue from Lange Gasse to Alser Straße U, Zimmermannplatz.<br/>[Since 16:47]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Contamination]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6</guid>
+      <pubDate>Sat, 03 Oct 2026 16:43:00 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 16:43:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 03 Oct 2026 16:43:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: contamination. [Since 16:43]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 16:43]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[54B: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">518e50e52bcd8fe86420940b2497c8f99a035c70ac0c632c0c933e21da092058</guid>
+      <pubDate>Sat, 03 Oct 2026 16:41:00 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 16:41:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 03 Oct 2026 16:41:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 03 Oct 2026 17:00:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [Since 16:41]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 16:41]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[9: Fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">f70728020da97caa07e51eff2736191c9f68e1ac73881b3b2ca28860486dd22d</guid>
-      <pubDate>Sat, 03 Oct 2026 16:12:00 +0200</pubDate>
+      <pubDate>Sat, 03 Oct 2026 16:12:41 +0200</pubDate>
       <ext:first_seen>Sat, 03 Oct 2026 16:12:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 03 Oct 2026 16:14:11 +0200</ext:starts_at>
       <ext:ends_at>Sat, 03 Oct 2026 17:13:00 +0200</ext:ends_at>
-      <description>Service from Johann-Nepomuk-Berger-Platz. After a service obstruction different intervals occur. [Since 16:12]</description>
-      <content:encoded><![CDATA[Service from Johann-Nepomuk-Berger-Platz. After a service obstruction different intervals occur.<br/>[Since 16:12]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29A: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7c8f87684407b28b956fd7680a32a002f13b981f0a4885354696cee22dbc327e</guid>
-      <pubDate>Sat, 03 Oct 2026 15:27:00 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 15:27:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 03 Oct 2026 15:27:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 15:27]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 15:27]]]></content:encoded>
+      <description>Service from Johann-Nepomuk-Berger-Platz. [Since 16:12]</description>
+      <content:encoded><![CDATA[Service from Johann-Nepomuk-Berger-Platz.<br/>[Since 16:12]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Traffic accident, construction works]]></title>
@@ -41,17 +63,6 @@
       <ext:ends_at>Sun, 04 Oct 2026 01:00:00 +0200</ext:ends_at>
       <description>Traffic accident: diversion via Davidgasse - Laxenburger Straße. Construction works: Buses stop at Salvatorianerplatz. [Until Sun 04.10.]</description>
       <content:encoded><![CDATA[Traffic accident: diversion via Davidgasse - Laxenburger Straße. Construction works: Buses stop at Salvatorianerplatz.<br/>[Until Sun 04.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[65A: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">91604c6736684f0d22451554a67ed8dcf423dac3128aa0c83b7bcf4f50344a36</guid>
-      <pubDate>Sat, 03 Oct 2026 15:23:00 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 15:23:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 03 Oct 2026 15:23:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Since 15:23]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 15:23]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Rescue operation]]></title>
@@ -76,6 +87,17 @@
       <content:encoded><![CDATA[The work takes place in the period from 20:00 to 05:00. The left lane in the direction of the city is closed.<br/>[Until 15.11.]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[52: Trains stop at lines 6 and 18]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:14 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 00:00:14 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 03 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Today]</description>
+      <content:encoded><![CDATA[[Today]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[63A: Diversion because of crane works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
@@ -96,28 +118,6 @@
       <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
       <description>Due to an event in the area of Alliance Stadion, the following transport measures are taken. [On Sun 04.10.]</description>
       <content:encoded><![CDATA[Due to an event in the area of Alliance Stadion, the following transport measures are taken.<br/>[On Sun 04.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29B/N25: Adolf-Loos-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2e0949e212b98b31a226dddab6b40d0f6c06edb1c250ee7ddaac3c840bc8e962</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 11:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are being redirected. [From Mon 05.10. until 07.12.]</description>
-      <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are being redirected.<br/>[From Mon 05.10. until 07.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Replacement service]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6f11b9f2989f7ded86ce2e256372b0c9d235d8bccee56c31a7edc035dbad8893</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:13 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:13 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 03 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Buses stop at N71. [Today]</description>
-      <content:encoded><![CDATA[Buses stop at N71.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
