@@ -8,7 +8,7 @@ Planned measures keep "[Heute]".
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Any, cast
 
 import pytest
@@ -144,13 +144,96 @@ def _oebb(description: str, start: datetime, title: str = "Wien Meidling ↔ Wie
     }
 
 
+_OEBB_RESCUE = (
+    "03.10.2026<br/><br/>Wegen eines Rettungseinsatzes sind zwischen <b>Wien Meidling "
+    "Bahnhof (U)</b> und <b>Wien Liesing Bahnhof</b> derzeit keine Fahrten möglich."
+)
+
+
 def test_an_oebb_disruption_says_since_when() -> None:
-    item = _oebb(
-        "03.10.2026<br/><br/>Wegen eines Rettungseinsatzes sind zwischen <b>Wien Meidling "
-        "Bahnhof (U)</b> und <b>Wien Liesing Bahnhof</b> derzeit keine Fahrten möglich.",
-        _at(3, 10, 59, 12),
-    )
+    item = _oebb(_OEBB_RESCUE, _at(3, 10, 59, 12))
     assert _line(item) == "Seit 10:59"
+
+
+def _oebb_as_fetched(pub: datetime) -> dict[str, Any]:
+    # Since 2026-09-12 the provider takes start and end from the period ÖBB
+    # puts in front of the text ("03.10.2026"): 00:00 to 23:59:59.
+    item = _oebb(_OEBB_RESCUE, _at(3, 0))
+    item.update(pubDate=pub, ends_at=_at(3, 23, 59, 59))
+    return item
+
+
+def _oebb_line(item: dict[str, Any], entry: dict[str, Any] | None, now: datetime = NOW) -> str:
+    since = bf._incident_since(
+        cast(FeedItem, item), item["starts_at"], bf._first_published(cast(FeedItem, item), entry)
+    )
+    return bf.format_local_times(item["starts_at"], item["ends_at"], now, since=since).replace(NNBSP, " ")
+
+
+def test_an_oebb_disruption_dated_by_its_period_says_since_when() -> None:
+    # The provider's start is the date (00:00); the clock is the publication.
+    # Before the fix every ÖBB disruption since 12.09.2026 read "Heute".
+    assert _oebb_line(_oebb_as_fetched(_at(3, 10, 59, 12)), None) == "Seit 10:59"
+
+
+def test_an_oebb_update_keeps_the_first_publication() -> None:
+    # "Wien Floridsdorf ↔ Wien Praterstern" (27.09.2026): ÖBB re-published
+    # the message at 15:48, 17:26 and 20:07 under one GUID.
+    entry: dict[str, Any] = {"first_seen": _at(3, 9, 0, 30).isoformat()}
+    first = _oebb_as_fetched(_at(3, 8, 48, 11))
+    assert _oebb_line(first, entry, _at(3, 9, 0, 30)) == "Seit 08:48"
+    update = _oebb_as_fetched(_at(3, 10, 26, 29))
+    assert _oebb_line(update, entry) == "Seit 08:48"
+    assert entry["first_published"] == _at(3, 8, 48, 11).astimezone(UTC).isoformat()
+
+
+def test_an_oebb_entry_from_before_the_field_starts_at_its_first_sight() -> None:
+    # The build first saw the message at 09:31; it now carries an update.
+    entry: dict[str, Any] = {"first_seen": _at(3, 9, 31, 4).isoformat()}
+    assert _oebb_line(_oebb_as_fetched(_at(3, 10, 26, 29)), entry) == "Seit 09:31"
+
+
+def test_an_oebb_message_from_an_earlier_day_keeps_its_line() -> None:
+    entry: dict[str, Any] = {"first_published": _at(2, 22, 10).isoformat()}
+    assert _oebb_line(_oebb_as_fetched(_at(3, 10, 26, 29)), entry) == "Heute"
+
+
+def test_other_sources_keep_no_first_publication() -> None:
+    entry: dict[str, Any] = {"first_seen": _at(3, 9).isoformat()}
+    item = _wl("87A: Rettungseinsatz", _at(3, 10, 37), _at(3, 10, 54, 13))
+    assert bf._first_published(cast(FeedItem, item), entry) is None
+    assert "first_published" not in entry
+
+
+def test_the_rendered_oebb_item_keeps_its_first_publication(monkeypatch: pytest.MonkeyPatch) -> None:
+    from functools import partial
+
+    monkeypatch.setattr(bf, "format_local_times", partial(bf.format_local_times, now=NOW))
+    state: dict[str, dict[str, Any]] = {"oebb": {"first_seen": _at(3, 9, 0, 30).isoformat()}}
+    for pub in (_at(3, 8, 48, 11), _at(3, 10, 26, 29)):
+        item = _oebb_as_fetched(pub)
+        content = bf._format_item_content(
+            cast(FeedItem, item), "oebb", item["starts_at"], item["ends_at"], state=state
+        )
+        assert f"[Seit{NNBSP}08:48]" in content.desc_html
+
+
+@pytest.mark.parametrize(
+    "description",
+    [
+        (
+            "Wegen Reparaturarbeiten nach einem Unfall sind zwischen Wien Hbf (U) und "
+            "Gramatneusiedl Bahnhof Zugfahrten nur eingeschränkt möglich."
+        ),
+        (
+            "Der Treppenabgang Webgasse ist gesperrt. Grund dafür sind dringende "
+            "Reperaturarbeiten an den Treppen."
+        ),
+    ],
+)
+def test_repairs_after_an_incident_are_not_planned(description: str) -> None:
+    item = _wl("U3: Betriebsstörung", _at(3, 10, 57), _at(3, 10, 57), description=description)
+    assert _line(item) == "Seit 10:57"
 
 
 @pytest.mark.parametrize(
@@ -186,7 +269,8 @@ def test_oebb_works_keep_their_line() -> None:
     )
     item["ends_at"] = _at(5, 23, 59, 59)
     assert _line(item) == "Bis Mo 05.10."
-    # A date-only start (00:00) is no clock time either.
+    # A date-only start (00:00) is no clock time, and neither is a
+    # publication on the full hour.
     item["description"] = "Wegen eines Schadens am Gleis sind Zugfahrten eingeschränkt."
     item["ends_at"] = _at(3, 23, 59, 59)
     assert _line(item) == "Heute"
@@ -211,8 +295,6 @@ def test_the_stammstrecke_episode_says_since_when_even_at_the_full_hour() -> Non
 
 def test_the_clock_is_vienna_time() -> None:
     # 08:37 UTC is 10:37 in Vienna (CEST).
-    from datetime import UTC
-
     pub = datetime(2026, 10, 3, 8, 37, tzinfo=UTC)
     item = _wl("86A: Fahrtbehinderung wegen Rettungseinsatz", pub, _at(3, 10, 42, 44))
     assert _line(item) == "Seit 10:37"

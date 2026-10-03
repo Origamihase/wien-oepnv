@@ -1527,9 +1527,12 @@ def format_local_times(
 # disruptions cached from July to October 2026 ("Laufveranstaltung",
 # "Gleisbauarbeiten", "Kranarbeiten", "Arbeiten am Stellwerk",
 # "Polizeiübung", "Haltestellenverlegung", "Netzänderung" included); ÖBB
-# names its planned closures "Bauarbeiten".
+# names its planned closures "Bauarbeiten". Repairs are the consequence of
+# an incident, not a plan: "Wegen Reparaturarbeiten nach einem Unfall"
+# (ÖBB, 27.08.2026), "dringende Reperaturarbeiten an den Treppen" (WL,
+# "U3: Betriebsstörung", 17.09.2026) keep their "Seit".
 _PLANNED_DISRUPTION_RE: re.Pattern[str] = re.compile(
-    r"veranstaltung|demonstration|kundgebung|arbeiten\b|staatsbesuch|übung\b"
+    r"veranstaltung|demonstration|kundgebung|(?<!rep[ae]ratur)arbeiten\b|staatsbesuch|übung\b"
     r"|verlegung\b|netzänderung",
     re.IGNORECASE,
 )
@@ -1553,8 +1556,41 @@ def _scheduled_clock(when: datetime) -> bool:
 # first delayed departure, and a departure at the full hour is no schedule.
 _MEASURED_SOURCES: frozenset[str] = frozenset({"VOR/VAO"})
 
+_OEBB_SOURCE = "ÖBB"
 
-def _incident_since(it: FeedItem, starts_at: datetime | None) -> datetime | None:
+
+def _first_published(it: FeedItem, entry: dict[str, Any] | None) -> datetime | None:
+    """The minute ÖBB first published the message ``it``, kept in ``entry``.
+
+    ÖBB re-publishes a message under the same GUID with every update, and
+    the ``pubDate`` moves with it: "Wien Floridsdorf ↔ Wien Praterstern"
+    (Weichenstörung, 27.09.2026) came at 15:48, 17:26 and 20:07, as did 21
+    of the 33 ÖBB disruptions cached from 12.09. to 02.10.2026. The earliest
+    ``pubDate`` seen is stored in the item's state entry as
+    ``first_published``. An entry from before that field starts from the
+    earlier of ``pubDate`` and ``first_seen``: the build saw the message no
+    earlier than ÖBB published it. ``None`` for other sources.
+    """
+    if it.get("source") != _OEBB_SOURCE:
+        return None
+    pub = _parse_datetime(it.get("pubDate"))
+    if not isinstance(pub, datetime):
+        return None
+    earliest = _to_utc(pub)
+    if entry is None:
+        return earliest
+    known = _parse_state_time(entry, "first_published")
+    if known is None:
+        known = _parse_state_time(entry, "first_seen")
+    if known is not None and known < earliest:
+        earliest = known
+    entry["first_published"] = earliest.isoformat()
+    return earliest
+
+
+def _incident_since(
+    it: FeedItem, starts_at: datetime | None, first_published: datetime | None = None
+) -> datetime | None:
     """When the unplanned disruption ``it`` began, or ``None``.
 
     Every source files its disruptions under "Störung": WL ``trafficInfos``,
@@ -1570,9 +1606,12 @@ def _incident_since(it: FeedItem, starts_at: datetime | None) -> datetime | None
     the incident — and per-line tickers from 10:42:44 to 10:54:13 as
     ``starts_at``. The earliest time is the begin, as long as it is from the
     same Vienna day and not a scheduled full hour (:func:`_scheduled_clock`),
-    the marks of the stale tickers seen since July. ÖBB's ``starts_at`` is
-    the minute it published the message, with a ``pubDate`` no earlier. The
-    Stammstrecke monitor's is the first delayed departure it measured
+    the marks of the stale tickers seen since July. ÖBB's begin is the
+    minute it first published the message, ``first_published``
+    (:func:`_first_published`): its ``starts_at`` is the date the
+    message's validity begins (00:00, since 2026-09-12), and its
+    ``pubDate`` moves on with every update. The Stammstrecke monitor's
+    begin is the first delayed departure it measured
     (:data:`_MEASURED_SOURCES`).
     """
     if it.get("category") != "Störung" or not isinstance(starts_at, datetime):
@@ -1583,6 +1622,9 @@ def _incident_since(it: FeedItem, starts_at: datetime | None) -> datetime | None
     if it.get("source") in _MEASURED_SOURCES:
         return starts_at
     pub_date = _parse_datetime(it.get("pubDate"))
+    if it.get("source") == _OEBB_SOURCE and isinstance(pub_date, datetime):
+        published = first_published or pub_date
+        return None if _scheduled_clock(published) else published
     since = starts_at
     if (
         isinstance(pub_date, datetime)
@@ -8303,7 +8345,9 @@ def _format_item_content(
     time_line = format_local_times(
         starts_at if isinstance(starts_at, datetime) else None,
         ends_at if isinstance(ends_at, datetime) else None,
-        since=_incident_since(it, starts_at),
+        since=_incident_since(
+            it, starts_at, _first_published(it, state.get(ident) if state is not None else None)
+        ),
     )
     time_line = _sanitize_text(time_line)
     time_line = _WHITESPACE_CLEANUP_RE.sub(" ", time_line).strip()

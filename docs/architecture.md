@@ -511,9 +511,18 @@ verdrängt eine andere Störung.
     vollen Stunde beginnt, zeigt weiter „[Heute]“. Die Beginne passen zur
     Beobachtung: 2 038 der 2 324 WL-Störungen seit Juli tauchten binnen 35
     Minuten nach ihrem `starts_at` im Feed auf (Takt 30 Minuten).
-  - **ÖBB:** `starts_at` ist die Minute, in der ÖBB die Meldung
-    veröffentlicht hat. Baustellen beginnen um 00:00 (reines Datum) und
-    heißen „Bauarbeiten“. ÖBB meldet eine beendete Störung in der
+  - **ÖBB:** Der Beginn ist die Minute, in der ÖBB die Meldung zum ersten
+    Mal veröffentlicht hat (`_first_published`). `starts_at` taugt dafür
+    nicht: Seit 2026-09-12 ist es der Tag, ab dem die Meldung gilt (00:00,
+    aus dem Zeitraum vor dem Text, „03.10.2026<br/><br/>Wegen …“), und bis
+    zur Korrektur vom 2026-10-03 zeigte deshalb keine ÖBB-Störung ein
+    „[Seit …]“. Auch `pubDate` allein taugt nicht: ÖBB veröffentlicht die
+    Meldung bei jeder Aktualisierung unter derselben GUID neu („Wien
+    Floridsdorf ↔ Wien Praterstern“ am 27.09. um 15:48, 17:26 und 20:07; 21
+    der 33 ÖBB-Störungen vom 12.09. bis 02.10.). Das früheste `pubDate`
+    steht daher im State-Eintrag der Meldung als `first_published`; ein
+    Eintrag von vor diesem Feld beginnt beim früheren von `pubDate` und
+    `first_seen`. Baustellen heißen „Bauarbeiten“. ÖBB meldet eine beendete Störung in der
     Vergangenheit („Wegen eines Polizeieinsatzes waren in Mödling Bahnhof
     bis 19:55 Uhr keine Fahrten möglich“, veröffentlicht 19:57) oder als
     „Aufhebung …“ (`_is_all_clear`); 60 der 193 ÖBB-Störungen seit Juli.
@@ -526,7 +535,9 @@ verdrängt eine andere Störung.
   - **Geplant** heißt `_PLANNED_DISRUPTION_RE` in Titel oder Beschreibung:
     Veranstaltung, Demonstration, Kundgebung, „…arbeiten“, Staatsbesuch,
     „…übung“, „…verlegung“, Netzänderung, die geplanten Ursachen unter den
-    WL-Störungen seit Juli. Stadt-Wien-Baustellen sind keine Störungen.
+    WL-Störungen seit Juli. „Reparaturarbeiten“ (auch WLs „Reperaturarbeiten“)
+    zählen nicht dazu, sie folgen auf einen Vorfall („Wegen Reparaturarbeiten
+    nach einem Unfall“, ÖBB 27.08.). Stadt-Wien-Baustellen sind keine Störungen.
 
 ### Zeitraum einer WL-Meldung: Plausibilitätsprüfung (seit 2026-10-02)
 

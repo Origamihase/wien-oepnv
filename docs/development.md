@@ -203,8 +203,9 @@ Testmeldung). Seit 2026-10-03 auch „Testfall“, „Testtext“ und ein Text
 beliebiger Länge, der nach dem Linienpräfix nur aus „Test“ besteht
 („Test Test Tes Test Test Test“). Anlass: Zwei Testmeldungen der Wiener Linien standen am 23.09.2026
 je einen Zyklus im Feed („71/72: Dies ist eine Testmeldung“, „62: F57f
-Test“). In 488 Meldungen des Feeds und 952 der Caches trifft die Regel nur
-diese beiden; „Haltestelle“ oder „Testbetrieb“ enthalten das Wort nicht.
+Test“). In 488 Meldungen des Feeds und 952 der Caches traf die erste Fassung
+nur diese beiden; „Haltestelle“ oder „Testbetrieb“ enthalten das Wort nicht.
+Die heutige Regel trifft in der ganzen Cache-Historie 26 Titel, alle Tests.
 
 Nach Altersfilter und beiden Dedupe-Stufen legt `_merge_wl_ticker_clusters`
 die WL-Störungen eines Vorfalls zusammen: dieselben Linien, veröffentlicht
