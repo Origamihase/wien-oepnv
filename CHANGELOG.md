@@ -5,6 +5,18 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Zeitumstellung bis 2040, Jahreswechsel, Schaltjahre (Prüfung 2026-10-03)**:
+  Echte Feed-Läufe auf jede Zeitumstellung bis 2040, jeden Silvester 2026 bis
+  2040 und die Schalttage 2028 bis 2040 verschoben (49 Szenarien, deutscher und
+  englischer Feed); bis auf die verschobenen Daten unverändert. Behoben: Ein
+  WL-Ende ohne Jahr („Ab 01. Mai 2026 bis Ende Dezember“) wurde unabhängig vom
+  Beginn auf das nächstgelegene Datum gelegt und konnte vor dem Beginn landen;
+  es ist jetzt der erste solche Tag ab dem Beginn im Text.
+  `generate_markdown_stats.py` nimmt das Jahr aus `--now-iso` statt von der
+  Uhr der Maschine. Neu: Jahresarchiv der Statistik, der erste Dashboard-Lauf
+  eines Jahres schreibt das ganze Vorjahr samt Silvester nach
+  `docs/statistik-<Vorjahr>.md`. Details: `docs/architecture.md` („Folgejahre,
+  Jahreswechsel, Schaltjahre“). Tests: `tests/test_calendar_years.py`.
 * **Zeitumstellung am 25.10.2026 (Prüfung 2026-10-03)**: Die echte Nacht vom
   26./27.09. in die Nacht des 25.10. verschoben und durch den Wechsel gespielt,
   dazu die Umstellung auf Sommerzeit. Zeitpunkte werden jetzt in UTC verglichen

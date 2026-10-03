@@ -581,6 +581,39 @@ verdrängt eine andere Störung.
     WL unverändert.
   - Die Statistik-Spalte `hour` zählt am 25.10. die Stunde 02 doppelt; das ist
     die reale Wiener Stunde und bleibt so.
+* **Folgejahre, Jahreswechsel, Schaltjahre (geprüft 2026-10-03 bis 2040).**
+  Dieselbe echte Septembernacht auf jede Umstellung bis 2040 verschoben (letzter
+  Sonntag im Oktober und März, darunter Jahre mit dem 25. und dem 31.), dazu
+  echte Nächte gleichen Wochentags auf jeden Silvester 2026 bis 2040, eine
+  echte Woche über den Jahreswechsel 2026/27 und über den 29.02.2028 sowie die
+  Schalttage 2032, 2036 und 2040: 49 Szenarien, 1 854 Feed-Läufe, deutscher
+  und englischer Feed. Verschoben wird nach der Wiener Uhrzeit (Datum plus N
+  Tage), ein Lauf in der doppelten Stunde läuft zweimal. Bis auf die
+  verschobenen Daten stimmten alle Läufe mit dem Original überein: Jahr in der
+  Zeitzeile nur außerhalb des laufenden Jahres („[Bis 08.01.2027]“ am 31.12.,
+  „[Bis 08.01.]“ ab 01.01.), Wochentag nur bis sechs Tage voraus und richtig,
+  „[Seit 31.12.2026]“ für eine Störung von Silvester nach Mitternacht.
+  Gefunden und behoben:
+  - **WL-Ende ohne Jahr:** WL schreibt das Jahr oft nur beim Beginn („Ab
+    24. August 2026, etwa 06:00 Uhr, bis 07. September“). Das Ende wurde
+    unabhängig davon auf das nächstgelegene Datum gelegt; „Ab 01. Mai 2026
+    bis Ende Dezember“ las sich als Dezember 2025, und das Ende ging verloren.
+    Ein Ende ohne Jahr ist jetzt der erste solche Tag ab dem Beginn im Text
+    (`_end_day`), auch über den Jahreswechsel („Ab 28. Dezember 2026 bis
+    06. Jänner“). In den 228 Texten mit Ende seit Juli änderte sich nichts.
+  - **Statistik-Jahr:** `scripts/generate_markdown_stats.py` las das Jahr beim
+    Einlesen der Argumente von der Uhr der Maschine; ein Lauf mit `--now-iso`
+    in einem anderen Jahr wertete das falsche Jahr aus. Es folgt jetzt der
+    Laufzeit.
+  - **Statistik-Seite am Jahreswechsel:** `docs/statistik.md` wird nur beim
+    Lauf zwischen 00:00 und 00:29 neu geschrieben und zeigt das Kalenderjahr.
+    Ihr letzter Stand eines Jahres entstand am 31.12. gegen 00:15, ohne
+    Silvester, und am 01.01. ersetzte sie ein fast leeres neues Jahr. Jetzt
+    schreibt der erste Dashboard-Lauf eines neuen Jahres zusätzlich das ganze
+    Vorjahr samt 31.12. nach `docs/statistik-<Vorjahr>.md` (Michaels Wahl
+    „Jahresarchiv“, 2026-10-03). Die Seite wird danach nie mehr angefasst;
+    fällt der Lauf am 01.01. aus, schreibt sie der nächste.
+  Tests: `tests/test_calendar_years.py`.
 
 ### Zeitraum einer WL-Meldung: Plausibilitätsprüfung (seit 2026-10-02)
 
@@ -618,6 +651,11 @@ Ein 11:11-Ende weicht dem Ende aus „Zeitraum:“, ein Beginndatum verschiebt
 den Start nur nach hinten, und ein Textdatum hinter dem Ende ist das Datum
 einer späteren Phase. Was die Prüfung nicht sehen kann: eine Angabe, die an
 allen Stellen gleich falsch ist.
+
+Ein Ende ohne Jahr („Ab 24. August 2026 … bis 07. September“) ist der erste
+solche Tag ab dem Beginn im Text, auch über den Jahreswechsel; ohne Beginn
+im Text das Datum, das der Veröffentlichung am nächsten liegt (seit
+2026-10-03).
 
 Nennt „Zeitraum:“ kein Ende, sondern eine Dauer („auf Dauer von etwa sechs
 Wochen“, seit 2026-10-02), gilt statt eines 11:11-Endes der Start aus dem

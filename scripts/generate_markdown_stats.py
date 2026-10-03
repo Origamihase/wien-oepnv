@@ -1778,6 +1778,47 @@ def write_dashboard(
         fh.write(markdown)
 
 
+def write_year_archive(
+    *,
+    now: datetime,
+    year: int,
+    stats_dir: Path | None,
+    output_path: Path,
+) -> Path | None:
+    """Keep the finished previous year as ``statistik-<Vorjahr>.md`` next to *output_path*.
+
+    The dashboard is re-rendered once a day, shortly after midnight, and
+    shows the calendar year. Its last render of a year therefore ran on
+    31.12. at about 00:15, without New Year's Eve, and on 01.01. an almost
+    empty new year replaced it. The first dashboard run of a new year now
+    also writes the whole previous year, 31.12. included, to an archive
+    page that is never touched again (decision 2026-10-03, "Jahresarchiv").
+    A missed or late 01.01. tick does not matter: the archive is written
+    by whichever dashboard run first finds it missing. Nothing is written
+    for an explicit ``--year`` other than the current one, or when the
+    previous year has no rows at all. Returns the path written, if any.
+    """
+    if year != now.year:
+        return None
+    previous = year - 1
+    archive = output_path.with_name(f"{output_path.stem}-{previous}{output_path.suffix}")
+    if archive.exists():
+        return None
+    sm_rows, st_rows, au_rows = collect_year_data(previous, stats_dir=stats_dir)
+    if not (sm_rows or st_rows or au_rows):
+        return None
+    markdown = render_markdown(
+        year=previous,
+        generated_at=now,
+        stammstrecke=aggregate_stammstrecke(sm_rows),
+        stoerungen=aggregate_stoerungen(st_rows),
+        ausfaelle=aggregate_ausfaelle(au_rows),
+    )
+    write_dashboard(markdown, output_path=archive)
+    LOGGER.info("Jahresarchiv geschrieben: %s.", sanitize_log_arg(str(archive)))
+    return archive
+
+
 def main(argv: list[str] | None = None) -> int:
     """CLI entry point.
 
@@ -1794,8 +1835,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--year",
         type=int,
-        default=datetime.now(VIENNA_TZ).year,
-        help="Calendar year to aggregate (default: current Vienna year).",
+        default=None,
+        help=(
+            "Calendar year to aggregate (default: the Vienna year of the "
+            "run time, i.e. of --now-iso when given)."
+        ),
     )
     parser.add_argument(
         "--stats-dir",
@@ -1898,6 +1942,11 @@ def main(argv: list[str] | None = None) -> int:
             now = now.astimezone(VIENNA_TZ)
     else:
         now = datetime.now(VIENNA_TZ)
+    # Resolved after ``now``, not as an argparse default evaluated at parse
+    # time: a run replayed with ``--now-iso 2027-01-01T00:15`` must cover
+    # 2027, not the year of the machine clock.
+    if args.year is None:
+        args.year = now.year
 
     sm_rows, st_rows, au_rows = collect_year_data(
         args.year, stats_dir=args.stats_dir
@@ -2029,6 +2078,16 @@ def main(argv: list[str] | None = None) -> int:
             sanitize_log_arg(str(args.output)),
             len(markdown.encode("utf-8")),
         )
+        try:
+            write_year_archive(
+                now=now, year=args.year, stats_dir=args.stats_dir, output_path=args.output
+            )
+        except OSError as exc:
+            LOGGER.error(
+                "Konnte Jahresarchiv nicht schreiben: %s",
+                sanitize_log_arg(str(exc)),
+            )
+            return 1
 
     if args.skip_readme:
         return 0
@@ -2141,6 +2200,7 @@ __all__ = [
     "render_readme_stammstrecke_block",
     "render_weekday_bars",
     "write_dashboard",
+    "write_year_archive",
 ]
 
 

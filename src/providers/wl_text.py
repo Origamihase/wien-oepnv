@@ -394,15 +394,45 @@ def _last_day(year: int, month: int) -> int:
     return calendar.monthrange(year, month)[1]
 
 
-def _end_day(g: dict[str, str | None], reference: datetime) -> tuple[int, int, int] | None:
-    """``(year, month, day)`` of the last day an ``_PERIOD_END_RE`` match names."""
+def _first_year_from(month: int, day: int | None, begin: date) -> int | None:
+    """The first year in which ``day.month.`` (or the month's last day) is not before *begin*.
+
+    ``None`` when the day exists in none of the next eight years (only a
+    29.02. could be missing, and every fourth year has one).
+    """
+    for year in range(begin.year, begin.year + 9):
+        try:
+            last = date(year, month, day if day is not None else _last_day(year, month))
+        except ValueError:
+            continue
+        if last >= begin:
+            return year
+    return None
+
+
+def _end_day(
+    g: dict[str, str | None], reference: datetime, begin: date | None = None
+) -> tuple[int, int, int] | None:
+    """``(year, month, day)`` of the last day an ``_PERIOD_END_RE`` match names.
+
+    WL often writes the year only at the start: "Ab 24. August 2026, etwa
+    06:00 Uhr, bis 07. September", "Ab Montag, 28. Dezember 2026 bis
+    Mittwoch, 06. Jänner". An end without a year is then the first such
+    day on or after that start (*begin*), across the turn of the year too.
+    Without a start in the text it is the occurrence nearest *reference*.
+    """
     if g["end_year"]:
         return int(g["end_year"]), 12, 31
     month_name = g["bare_month"] or g["end_month"]
     if month_name:
         month = _MONTHS_DE[month_name.lower()]
         year_str = g["bare_year"] or g["end_month_year"]
-        year = int(year_str) if year_str else _resolve_missing_year(month, 1, reference)
+        if year_str:
+            year: int | None = int(year_str)
+        elif begin is not None:
+            year = _first_year_from(month, None, begin)
+        else:
+            year = _resolve_missing_year(month, 1, reference)
         return None if year is None else (year, month, _last_day(year, month))
     day = int(g["day"] or 0)
     if g["month_num"]:
@@ -412,7 +442,10 @@ def _end_day(g: dict[str, str | None], reference: datetime) -> tuple[int, int, i
         month = _MONTHS_DE[(g["month_word"] or "").lower()]
         year = int(g["year_word"]) if g["year_word"] else None
     if year is None:
-        year = _resolve_missing_year(month, day, reference)
+        if begin is not None:
+            year = _first_year_from(month, day, begin)
+        else:
+            year = _resolve_missing_year(month, day, reference)
     return None if year is None else (year, month, day)
 
 
@@ -438,8 +471,9 @@ def extract_end_from_description(
 
     23:59 Europe/Vienna of the named day, or of the month's or year's last
     day for "Ende <Monat>" / "Ende <Jahr>" / "<Monat> <Jahr>"; WL's own
-    exact ends read 23:59 too. A missing year resolves against
-    *reference_date* like the start.
+    exact ends read 23:59 too. A missing year makes it the first such day
+    on or after the section's start (see :func:`_end_day`); without a start
+    it resolves against *reference_date* like the start.
     """
     section = _period_section(description)
     if section is None:
@@ -447,7 +481,9 @@ def extract_end_from_description(
     match = _PERIOD_END_RE.search(section)
     if match is None:
         return None
-    named = _end_day(match.groupdict(), reference_date or datetime.now(UTC))
+    reference = reference_date or datetime.now(UTC)
+    begin = extract_start_from_description(description, reference_date=reference)
+    named = _end_day(match.groupdict(), reference, begin.date() if begin else None)
     if named is None:
         return None
     year, month, day = named
