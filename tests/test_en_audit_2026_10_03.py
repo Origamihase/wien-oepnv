@@ -335,14 +335,20 @@ def test_oebb_template_variants_from_the_feed(
 @pytest.mark.parametrize(
     "german",
     [
-        "Wegen einer Stellwerkstörung am Bahnhof sind in Wien Hbf (U) bzw Wien "
-        "Meidling Zugfahrten erneut nur eingeschränkt möglich.",
-        "Wegen eines Schadens am Gleis sind zwischen Wien Meidling Bahnhof (U) und "
-        "Liesing (Wien) Zugfahrten voraussichtlich 22:00 Uhr nur eingeschränkt "
-        "möglich.",
-        "Wegen Bauarbeiten können zwischen Wien Hütteldorf Bahnhof (U) und Wien "
-        "Handelskai Bahnhst (U) am 01.11.2026 (von 01:10 Uhr bis 04:10 Uhr) keine "
-        "S45-Züge fahren.",
+        (
+            "Wegen einer Stellwerkstörung am Bahnhof sind in Wien Hbf (U) bzw Wien "
+            "Meidling Zugfahrten erneut nur eingeschränkt möglich."
+        ),
+        (
+            "Wegen eines Schadens am Gleis sind zwischen Wien Meidling Bahnhof (U) und "
+            "Liesing (Wien) Zugfahrten voraussichtlich 22:00 Uhr nur eingeschränkt "
+            "möglich."
+        ),
+        (
+            "Wegen Bauarbeiten können zwischen Wien Hütteldorf Bahnhof (U) und Wien "
+            "Handelskai Bahnhst (U) am 01.11.2026 (von 01:10 Uhr bis 04:10 Uhr) keine "
+            "S45-Züge fahren."
+        ),
     ],
 )
 def test_a_variant_without_template_never_lands_in_a_station_slot(
