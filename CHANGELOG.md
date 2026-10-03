@@ -5,6 +5,27 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Englischer Feed: Prüfung aller DE/EN-Paare (EN-Audit 2026-10-03)**: Alle
+  6.561 Stände von `docs/feed.en.xml` seit 20.05. Meldung für Meldung neben
+  den deutschen gelegt (4.957 Paare). Behoben, jeweils als Klasse:
+  WL-Ursachen ohne Glossar-Eintrag („Fremder Verkehrsunfall“ als „foreign“,
+  „external“ oder deutsch; „Stromstörung“ als „current disturbance“;
+  „Weichenschaden“ als „Soft damage“; „im Haltestellenbereich“ deutsch);
+  der `Grund:` eines Label-Records blieb bei jedem unbekannten Wort deutsch,
+  weil der Record nie das Modell sah, jetzt rendert ihn das Glossar oder
+  das Modell; „Voraussichtliche Dauer:“ ist ein Label („Expected duration:“
+  statt mal „Duration:“, mal „Expected Duration:“); volle Stunden („13 Uhr“)
+  wurden zur bloßen Zahl („Expected Duration: 13.“), jetzt „13:00“;
+  Eigennamen übersetzt („Südtiroler Platz“ → „South Tyrolean square“,
+  „Währinger Gürtel“ → „moving belt“, „Schloßhofer“ → „Schlosshofer“,
+  „Allianz Stadion“ → „Alliance Stadion“, „Wien Hbf“ → „Vienna Hbf“,
+  „Burggasse, Stadthalle“ → „city hall“, „Haltestelle N71“ → „N71“);
+  ÖBB-Sätze verloren das Verb („… to 23:48 were not possible.“), jetzt aus
+  ihren Feldern gesetzt; die WL-Empfehlung „Weichen Sie ersatzweise auf die
+  Linien … aus“ ließ Straßenbahn D am 01.10. 49 Läufe lang deutsch stehen.
+  Übersetzungs-Epoche 20 räumt den Cache. Details: `docs/architecture.md`
+  („Was am Modell vorbeigeht“, „Die Platzhalter“). Tests:
+  `tests/test_en_audit_2026_10_03.py`.
 * **Deutscher Feed: ÖBB-Störung zur vollen Stunde zeigt ihr „[Seit …]“ (2026-10-03, dritte Nachprüfung)**:
   „Wien Meidling ↔ Wien Liesing“ (Polizeieinsatz, veröffentlicht 20:00:01,
   „bis voraussichtlich 20:30 Uhr keine Fahrten“) stand eine Stunde lang mit

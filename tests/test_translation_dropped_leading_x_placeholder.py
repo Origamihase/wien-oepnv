@@ -134,8 +134,10 @@ def test_translate_text_attempt_fails_closed_on_the_leaked_shape(
         return [{"translation_text": _CAPTURED_LEAK}]
 
     monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: corrupting_pipeline)
+    # "N6: Busse halten …" is fully glossed since the EN audit of 2026-10-03
+    # and never reaches a model; an untranslated word keeps the model in play.
     result = build_feed._translate_text_attempt(
-        "N6: Busse halten Neilreichgasse 20-22, Quellenstraße 189", ident="n6"
+        "N6: Busse warten Neilreichgasse 20-22, Quellenstraße 189", ident="n6"
     )
     assert result is None
 
@@ -182,7 +184,7 @@ def test_the_item_falls_back_to_german_instead_of_leaking(
     item = cast(
         FeedItem,
         {
-            "title": "N6: Busse halten Neilreichgasse 20-22, Quellenstraße 189",
+            "title": "N6: Busse warten Neilreichgasse 20-22, Quellenstraße 189",
             "description": "Ersatzverkehr eingerichtet.",
             "source": "Wiener Linien",
             "category": "Störung",
@@ -200,4 +202,4 @@ def test_the_item_falls_back_to_german_instead_of_leaking(
     )
     # Falls back to the German source verbatim — never the raw placeholder.
     assert "ENT" not in formatted.title_cdata
-    assert formatted.title_cdata == "N6: Busse halten Neilreichgasse 20-22, Quellenstraße 189"
+    assert formatted.title_cdata == "N6: Busse warten Neilreichgasse 20-22, Quellenstraße 189"

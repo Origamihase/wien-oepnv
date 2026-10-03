@@ -118,26 +118,21 @@ def test_ordinary_german_is_not_swallowed(phrase: str) -> None:
     )
 
 
-def test_free_standing_street_names_are_a_documented_gap() -> None:
-    """``Mariahilfer Straße`` stays unshielded, on purpose.
+def test_free_standing_street_names_are_shielded() -> None:
+    """``Mariahilfer Straße`` is shielded since the EN audit of 2026-10-03.
 
-    Shielding it needs a branch for a bare suffix after an attribute —
-    ``<Wort> Straße`` — because the suffix does not sit on the name's own
-    word. Any head broad enough to catch ``Mariahilfer``, ``Donaufelder``
-    and ``Schloßhofer`` (they share only the ``-er`` ending, and the set is
-    productive) also catches German determiners: ``Dieser Platz``, ``Jeder
-    Weg``. That branch would need an exclusion list of its own.
-
-    The trade is not worth it here. These names are unshielded today and
-    demonstrably NOT broken — the model passes them through unchanged
-    because it does not know the attribute, and no item in either feed
-    shows one altered. Closing a latent hole by opening a live
-    over-capture is the wrong direction; the case belongs in the station
-    directory (which already covers ``Hütteldorfer Straße`` and
-    ``Matzleinsdorfer Platz``), not in this heuristic.
+    This was once a documented gap, on the claim that such names pass the
+    model unchanged. The audit of every published DE/EN pair refuted it:
+    "Südtiroler Platz" → "South Tyrolean square", "Währinger Gürtel" →
+    "moving belt", "Schloßhofer Straße" → "Schlosshofer Straße". The
+    feared over-capture (``Dieser Platz``, ``Jeder Weg``) is a closed word
+    class and excluded by name; ``test_a_bare_suffix_never_stands_on_its_own``
+    below still guards it.
     """
-    assert _unprotected("Mariahilfer Straße") == "Mariahilfer Straße"
-    assert _unprotected("Donaufelder Straße") == "Donaufelder Straße"
+    assert _unprotected("Mariahilfer Straße") == "□"
+    assert _unprotected("Donaufelder Straße") == "□"
+    assert _unprotected("Südtiroler Platz") == "□"
+    assert _unprotected("Währinger Gürtel") == "□"
 
 
 def test_a_bare_suffix_never_stands_on_its_own() -> None:
