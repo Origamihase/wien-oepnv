@@ -20,53 +20,68 @@ def _make_event(title: str, lines: list[str]) -> dict[str, Any]:
     }
 
 
-def test_aggregate_removed_when_all_singles_present(monkeypatch: pytest.MonkeyPatch) -> None:
-    aggregate = _make_event("Aggregate", ["U1", "U2"])
-    single1 = _make_event("Single1", ["U1"])
-    single2 = _make_event("Single2", ["U2"])
-
+def _run(
+    monkeypatch: pytest.MonkeyPatch,
+    traffic: list[dict[str, Any]],
+    news: list[dict[str, Any]] | None = None,
+) -> list[dict[str, Any]]:
     monkeypatch.setattr(
-        wl_fetch,
-        "_fetch_traffic_infos",
-        lambda timeout=20, session=None: [aggregate, single1, single2],
+        wl_fetch, "_fetch_traffic_infos", lambda timeout=20, session=None: traffic
     )
     monkeypatch.setattr(
-        wl_fetch, "_fetch_news", lambda timeout=20, session=None: []
+        wl_fetch, "_fetch_news", lambda timeout=20, session=None: news or []
     )
-
-    items = wl_fetch.fetch_events()
-    titles = [it["title"] for it in items]
-
-    assert "U1: Single1" in titles
-    assert "U2: Single2" in titles
-    assert "U1/U2: Aggregate" not in titles
+    return wl_fetch.fetch_events()
 
 
-def test_aggregate_retained_when_single_missing(monkeypatch: pytest.MonkeyPatch) -> None:
-    # This test checks behavior when NOT all singles are present.
-    # Previously, it expected both Aggregate and Single1 to be present.
-    # With the new subset removal logic, Single1 (subset of Aggregate) is considered redundant and removed.
-    # The Aggregate remains because Single2 is missing, so Aggregate is "better" than just Single1.
+def test_aggregate_removed_when_singles_say_the_same(monkeypatch: pytest.MonkeyPatch) -> None:
+    aggregate = _make_event("Verkehrsunfall", ["U1", "U2"])
+    single1 = _make_event("Verkehrsunfall Betrieb ab Karlsplatz", ["U1"])
+    single2 = _make_event("Verkehrsunfall Betrieb ab Schottenring", ["U2"])
 
-    aggregate = _make_event("Aggregate", ["U1", "U2"])
-    single1 = _make_event("Single1", ["U1"])
+    titles = [it["title"] for it in _run(monkeypatch, [aggregate, single1, single2])]
 
-    monkeypatch.setattr(
-        wl_fetch,
-        "_fetch_traffic_infos",
-        lambda timeout=20, session=None: [aggregate, single1],
-    )
-    monkeypatch.setattr(
-        wl_fetch, "_fetch_news", lambda timeout=20, session=None: []
-    )
+    assert "U1: Verkehrsunfall Betrieb ab Karlsplatz" in titles
+    assert "U2: Verkehrsunfall Betrieb ab Schottenring" in titles
+    assert "U1/U2: Verkehrsunfall" not in titles
 
-    items = wl_fetch.fetch_events()
-    titles = [it["title"] for it in items]
 
-    assert "U1/U2: Aggregate" in titles
-    # Single1 is removed because it is a subset of Aggregate
-    assert "U1: Single1" not in titles
-    assert len(items) == 1
+def test_aggregate_kept_when_singles_tell_something_else(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Regression 2026-10-03: E fragte nur nach Linien, nie nach dem Inhalt.
+
+    „1: Rettungseinsatz“ und „2: Falschparker“ sind keine Teilmeldungen einer
+    Demonstration auf denselben Linien; die Demonstration bleibt.
+    """
+    aggregate = _make_event("Demonstration", ["U1", "U2"])
+    single1 = _make_event("Rettungseinsatz", ["U1"])
+    single2 = _make_event("Falschparker", ["U2"])
+
+    titles = [it["title"] for it in _run(monkeypatch, [aggregate, single1, single2])]
+
+    assert sorted(titles) == ["U1/U2: Demonstration", "U1: Rettungseinsatz", "U2: Falschparker"]
+
+
+def test_subset_removed_when_aggregate_says_the_same(monkeypatch: pytest.MonkeyPatch) -> None:
+    aggregate = _make_event("Verkehrsunfall", ["U1", "U2"])
+    single1 = _make_event("Verkehrsunfall", ["U1"])
+
+    items = _run(monkeypatch, [aggregate, single1])
+
+    assert [it["title"] for it in items] == ["U1/U2: Verkehrsunfall"]
+
+
+def test_subset_kept_when_it_says_something_else(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Regression 2026-10-03: „2A: Bauarbeiten Renngasse“ verschwand zehn Tage
+    lang, solange die Regenbogenparade auf 2A angekündigt war."""
+    parade = _make_event("Regenbogenparade 2026", ["1", "2", "2A"])
+    works = _make_event("Bauarbeiten Renngasse", ["2A"])
+
+    titles = sorted(it["title"] for it in _run(monkeypatch, [parade, works]))
+
+    # Der Titel wird gekürzt („Bauarbeiten“ wandert in die Kategorie).
+    assert titles == ["1/2/2A: Regenbogenparade 2026", "2A: Renngasse"]
 
 
 def _make_news(title: str, lines: list[str]) -> dict[str, Any]:
@@ -112,3 +127,19 @@ def test_aggregate_retained_when_only_other_category_singles_cover_lines(
     assert "Störung" in categories, categories
     assert categories.count("Hinweis") == 2
     assert len(items) == 3
+
+
+def test_display_ticker_of_works_removed_beside_works_notice(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Die Anzeigetafel-Kurzmeldung nennt das Thema der Baustellenmeldung
+    in ihrer ersten Zeile; sie sagt mit anderen Worten dasselbe und fällt
+    weiter weg, auch wenn ihr Titel Wörter enthält, die dort fehlen."""
+    works = _make_event("Gleisbauarbeiten", ["5", "12", "37"])
+    works["description"] = "Umleitung in beiden Richtungen über Spittelau."
+    ticker = _make_event("Betrieb ab Nußdorfer Straße", ["37"])
+    ticker["description"] = "Gleisbauarbeiten\nBetrieb ab Nußdorfer Straße"
+
+    titles = [it["title"] for it in _run(monkeypatch, [works, ticker])]
+
+    assert titles == ["5/12/37: Gleisbauarbeiten"]

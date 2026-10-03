@@ -960,6 +960,151 @@ def _fold_display_tickers(buckets: dict[str, dict[str, Any]]) -> None:
         )
 
 
+# ---------------- Sammel- und Teilmeldungen (E, F) ----------------
+#
+# Zwei ältere Regeln räumen nach der Bündelung noch einmal auf: E entfernt
+# eine Meldung für mehrere Linien, wenn jede ihrer Linien eine eigene Meldung
+# hat; F entfernt eine Meldung, deren Linien in einer anderen Meldung
+# derselben Kategorie stecken (2025-12-24, Anlass „Silvesterlauf“ neben
+# „Silvesterpfad“). Beide fragten nur nach Linien, Kategorie und Zeitraum,
+# nie nach dem Inhalt. Die Filterprüfung vom 2026-10-03 fand in der
+# WL-Cache-Historie seit April 108 Meldungen, die verschwanden, während eine
+# solche „Obermenge“ lief, und danach unverändert wiederkamen, obwohl sie
+# etwas anderes sagten:
+#
+#   * „2A: Bauarbeiten Renngasse“ zehn Tage lang, solange die Regenbogenparade
+#     („1/1A/2/2A/31/3A/59A/71/74A/D: Regenbogenparade 2026“) angekündigt war;
+#   * „77A: Umleitung wegen Veranstaltungen“ drei Wochen neben
+#     „77A/80A: Ende der Gleisbauarbeiten“;
+#   * „N8: Nußdorfer Straße U“ (Haltestellenverlegung) neben der Verlegung
+#     „59A/N8: Dörfelstraße“;
+#   * „11A: Gleisbauarbeiten Stadion U“ neben „11A/18: Veranstaltung am
+#     12.09.2026“.
+#
+# Eine Meldung, die etwas anderes sagt, ist keine Doppelung. Seither fällt
+# eine Meldung nur noch, wenn die andere sie inhaltlich abdeckt: Jedes Wort
+# ihres Titels (ohne die eigenen Liniennummern) steht schon dort — die Frage,
+# die auch ``_fold_display_tickers`` stellt —, oder, nur bei F, sie nennt das
+# Thema der anderen (``_same_topic``). Das Zweite hält die
+# Anzeigetafel-Kurzmeldungen großer Baustellen draußen, die F bisher zu Recht
+# entfernte: Ohne diese Bedingung kämen „5: Betrieb ab Franz-Josefs-Bahnhof“,
+# „12: …“ und „37: Betrieb ab Nußdorfer Straße“ neben
+# „5/12/37/38/40/41/42: Gleisbauarbeiten“ jede Nacht neu nach vorn.
+# „Silvesterlauf“ und „Silvesterpfad“ fasst heute ``deduplicate_fuzzy`` im
+# Feed-Bau zusammen (``tests/test_feed_merge.py``).
+
+
+_H2_RE = re.compile(r"<h2[^>]*>(.*?)</h2>", re.IGNORECASE | re.DOTALL)
+
+
+def _lead_line(desc: str) -> str:
+    """Worum es in *desc* geht: die ``<h2>``-Überschrift oder die erste Zeile.
+
+    Bei einer Anzeigetafel-Kurzmeldung steht dort die Ursache
+    (``"Gleisbauarbeiten\nBetrieb ab Franz-Josefs-Bahnhof"``), bei einer
+    ausführlichen Meldung die Überschrift.
+    """
+    match = _H2_RE.search(desc or "")
+    if match:
+        return match.group(1)
+    return (desc or "").split("\n", 1)[0]
+
+
+def _says_nothing_beyond(item: dict[str, Any], others: Sequence[dict[str, Any]]) -> bool:
+    """True, wenn der Titel von *item* ganz in den Texten von *others* steht."""
+    text = " ".join(str(other.get("_text", "")) for other in others)
+    return _covered_by(item.get("_title_tokens") or frozenset(), text)
+
+
+def _same_topic(item: dict[str, Any], other: dict[str, Any]) -> bool:
+    """True, wenn *item* das Thema von *other* nennt.
+
+    Thema sind die Wörter im Titel von *other* ohne Liniennummern, Zahlen
+    und Wörter unter fünf Buchstaben (``Gleisbauarbeiten``,
+    ``Regenbogenparade``); gesucht wird im Titel und in der ersten Zeile
+    bzw. Überschrift von *item* (:func:`_lead_line`).
+    """
+    topic = {
+        tok for tok in other.get("_title_tokens") or frozenset()
+        if len(tok) >= 5 and tok.isalpha()
+    }
+    return bool(topic & (item.get("_lead_tokens") or frozenset()))
+
+
+def _drop_covered_aggregates(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """E) Meldung für mehrere Linien entfernen, wenn die Einzelmeldungen sie abdecken.
+
+    Abdecken heißt: Jede ihrer Linien hat eine Einzelmeldung derselben
+    Kategorie mit überlappendem Zeitraum, und diese Einzelmeldungen sagen
+    zusammen alles, was ihr Titel sagt. Ohne den Kategorie-Schlüssel löschte
+    ein Hinweis je Linie eine echte Störung; ohne die Zeitprüfung löschten
+    zeitlich getrennte Einzelmeldungen ein Aggregat für einen dritten
+    Zeitraum; ohne den Wortvergleich löschte „1: Rettungseinsatz“ neben
+    „2: Falschparker“ die Meldung „1/2: Demonstration“.
+    """
+    singles: dict[tuple[Any, str], list[dict[str, Any]]] = {}
+    for it in items:
+        ls = it.get("_lines_set") or set()
+        if len(ls) == 1:
+            singles.setdefault((it.get("category"), next(iter(ls))), []).append(it)
+
+    kept: list[dict[str, Any]] = []
+    for it in items:
+        ls = it.get("_lines_set") or set()
+        if len(ls) >= 2:
+            covering = [
+                [
+                    single
+                    for single in singles.get((it.get("category"), ln), [])
+                    if _intervals_overlap(
+                        it.get("starts_at"), it.get("ends_at"),
+                        single.get("starts_at"), single.get("ends_at"),
+                    )
+                ]
+                for ln in ls
+            ]
+            if all(covering) and _says_nothing_beyond(
+                it, [single for group in covering for single in group]
+            ):
+                continue
+        kept.append(it)
+    return kept
+
+
+def _drop_covered_subsets(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """F) Meldung entfernen, die eine Meldung für mehr Linien schon ganz enthält.
+
+    Die andere Meldung trägt eine echte Obermenge der Linien, dieselbe
+    Kategorie und einen überlappenden Zeitraum, und entweder enthält ihr
+    Text jedes Wort aus dem Titel der kleineren (:func:`_says_nothing_beyond`)
+    oder die kleinere nennt ihr Thema (:func:`_same_topic`). Das Zweite
+    trifft die Anzeigetafel-Kurzmeldungen einer Baustelle
+    („37: Betrieb ab Nußdorfer Straße“ mit „Gleisbauarbeiten“ in der ersten
+    Zeile neben „5/12/37/38/40/41/42: Gleisbauarbeiten“): Sie sagen mit
+    anderen Worten, was die Baustellenmeldung ausführlich sagt.
+    """
+    removed: set[int] = set()
+    for i, item_a in enumerate(items):
+        lines_a = item_a.get("_lines_set") or set()
+        if not lines_a:
+            continue
+        for j, item_b in enumerate(items):
+            if i == j or j in removed:
+                continue
+            lines_b = item_b.get("_lines_set") or set()
+            if not (lines_a < lines_b and item_a.get("category") == item_b.get("category")):
+                continue
+            if not _intervals_overlap(
+                item_a.get("starts_at"), item_a.get("ends_at"),
+                item_b.get("starts_at"), item_b.get("ends_at"),
+            ):
+                continue
+            if _says_nothing_beyond(item_a, [item_b]) or _same_topic(item_a, item_b):
+                removed.add(i)
+                break
+    return [it for i, it in enumerate(items) if i not in removed]
+
+
 # ---------------- Public API ----------------
 
 def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
@@ -1289,81 +1434,24 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                 "ends_at": b["ends_at"],
                 "_identity": b["_identity"],  # stabil für first_seen
                 "_lines_set": lines_tok,  # für Sammel-vs.-Einzel
+                # Für E) und F): was die Meldung über ihre Linien hinaus sagt,
+                # und alles, was sie sagt.
+                "_title_tokens": _content_tokens(b["title"])
+                - {tok.casefold() for tok in lines_tok},
+                "_text": f"{title_final} {desc}",
+                "_lead_tokens": _content_tokens(f"{b['title']} {_lead_line(desc)}"),
             }
         )
 
-    # E) Sammel-vs.-Einzel: Aggregat entfernen, wenn *alle* Linien als Einzel
-    #    vorliegen — aber nur innerhalb DERSELBEN Kategorie UND nur, wenn das
-    #    Einzelitem zeitlich überlappt. Ohne den Kategorie-Schlüssel löscht
-    #    z. B. ein Hinweis-Einzelitem (U1) + ein Hinweis-Einzelitem (U2) ein
-    #    echtes Störungs-Aggregat {U1,U2}, obwohl keine Einzel-*Störung* diese
-    #    Linien abdeckt. Ohne die Zeitprüfung löschen zeitlich DISJUNKTE,
-    #    unverwandte Einzelmeldungen (U1 für Zeitraum P1, U2 für P2) ein echtes
-    #    Aggregat für einen dritten Zeitraum P3 — die Störungsmeldung verschwände
-    #    still aus dem Feed. Spiegelt die Kategorie- *und* Zeit-Prüfung in F).
-    single_line_intervals: dict[tuple[Any, str], list[tuple[Any, Any]]] = {}
-    for it in items:
-        ls = it.get("_lines_set") or set()
-        if len(ls) == 1:
-            ln = next(iter(ls))
-            single_line_intervals.setdefault((it.get("category"), ln), []).append(
-                (it.get("starts_at"), it.get("ends_at"))
-            )
-
-    filtered: list[dict[str, Any]] = []
-    for it in items:
-        ls = it.get("_lines_set") or set()
-        cat = it.get("category")
-        if len(ls) >= 2 and all(
-            any(
-                _intervals_overlap(it.get("starts_at"), it.get("ends_at"), s, e)
-                for (s, e) in single_line_intervals.get((cat, ln), [])
-            )
-            for ln in ls
-        ):
-            continue  # Aggregat raus (gleiche Kategorie + Zeitüberlappung)
-        filtered.append(it)
-
-    # F) Subset-Bereinigung: Eintrag entfernen, wenn ein anderer Eintrag eine Obermenge der Linien abdeckt
-    #    und zeitlich überlappt.
-    items_to_remove = set()
-    for i, item_a in enumerate(filtered):
-        if i in items_to_remove:
-            continue
-        lines_a = item_a.get("_lines_set") or set()
-        if not lines_a:
-            continue
-
-        for j, item_b in enumerate(filtered):
-            if i == j:
-                continue
-            if j in items_to_remove:
-                continue
-
-            lines_b = item_b.get("_lines_set") or set()
-            if not lines_b:
-                continue
-
-            # Wenn A eine ECHTE Teilmenge von B ist
-            if lines_a.issubset(lines_b) and len(lines_a) < len(lines_b):
-                # Check category match
-                if item_a.get("category") != item_b.get("category"):
-                     continue
-
-                # Check time overlap
-                if _intervals_overlap(
-                    item_a.get("starts_at"), item_a.get("ends_at"),
-                    item_b.get("starts_at"), item_b.get("ends_at")
-                ):
-                    items_to_remove.add(i)
-                    break
-
-    final_filtered = [it for i, it in enumerate(filtered) if i not in items_to_remove]
-    filtered = final_filtered
+    # E) Sammel-vs.-Einzel und F) Subset-Bereinigung (Begründung an den Helfern)
+    filtered = _drop_covered_subsets(_drop_covered_aggregates(items))
 
     # Aufräumen interner Felder + Sortierung
     for it in filtered:
         it.pop("_lines_set", None)
+        it.pop("_title_tokens", None)
+        it.pop("_text", None)
+        it.pop("_lead_tokens", None)
 
     filtered.sort(
         key=lambda x: (0, x["pubDate"]) if x["pubDate"] else (1, x["guid"])

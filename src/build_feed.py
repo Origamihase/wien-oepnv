@@ -200,12 +200,13 @@ _MERGE_JOINER_RE = re.compile(r"\s+&\s+")
 # summary and avoids it being copied verbatim into the description
 # during cross-line dedup-merge. The line-token shape mirrors
 # ``_STRICT_LINE_TOKEN_RE`` in ``src/providers/wl_lines.py``: either a
-# digit-bearing code (``[A-Z]{0,4}\d{1,3}[A-Z]?``) or a single bare
-# uppercase letter (WL tram ``D``). Pure multi-letter German words
+# digit-bearing code (``[A-Z]{0,4}\d{1,3}[A-Z]?``, plus the Rufbus ``R``
+# of ``44BR``), a single bare uppercase letter (WL tram ``D``) or the
+# Badner Bahn ``LB``/``WLB``. Pure multi-letter German words
 # (``Achtung``, ``Information``, ``Hinweis``) cannot match either
 # shape so generic prefixes and time markers like ``17:30 Uhr…``
 # stay untouched.
-_WL_DESC_LINE_TOKEN = r"(?:[A-Z]{0,4}\d{1,3}[A-Z]?|[A-Z])"  # nosec B105  # noqa: S105 — regex fragment, not a secret
+_WL_DESC_LINE_TOKEN = r"(?:[A-Z]{0,4}\d{1,3}(?:[A-Z]R?)?|[A-Z]|W?LB)"  # nosec B105  # noqa: S105 — regex fragment, not a secret
 _WL_DESC_LINIE_PREFIX_RE = re.compile(
     rf"^\s*Linien?\s+(?:{_WL_DESC_LINE_TOKEN})"
     rf"(?:\s*[/+,]\s*(?:{_WL_DESC_LINE_TOKEN})){{0,20}}\s*:\s+",
@@ -6000,8 +6001,20 @@ _ALL_CLEAR_TITLE_RE = re.compile(
 # German feed for one cycle each: "71/72: Dies ist eine Testmeldung" ("Dies
 # ist ein Test") and "62: F57f Test" ("F57 f Test"). On a display with ten
 # slots each took the place of a real disruption (audit 2026-09-26).
-_TEST_MESSAGE_RE = re.compile(r"\btestmeldung(?:en)?\b", re.IGNORECASE)
+#
+# The filter audit of 2026-10-03 replayed every cached WL item since
+# September 2025 and found three more shapes that WL's test entries take:
+# the compounds "Testfall" ("38: Testfall", "40: Testfall", "72A: Testfall"
+# with "Grund: Testfall im Bereich .") and "Testtext" ("WLB: Testtext GSC200
+# Test für LB / WLB und Lauftext"), and a run of "Test" longer than five
+# words ("Test Test Tes Test Test Test"). Neither compound is a word a real
+# notice uses; "Testbetrieb" and "Testfahrt" stay out of the list.
+_TEST_MESSAGE_RE = re.compile(
+    r"\btest(?:meldung(?:en)?|f(?:a|ä)lle?|texte?)\b", re.IGNORECASE
+)
 _TEST_WORD_RE = re.compile(r"(?<![\w-])test(?![\w-])", re.IGNORECASE)
+# "Tes" in "Test Test Tes Test" is a typo of the same word.
+_TEST_RUN_WORD_RE = re.compile(r"^tes?t?$", re.IGNORECASE)
 # A text this short that says "Test" is a test. A real message that mentions
 # one says more ("Test-Fahrten der neuen Straßenbahn zwischen … und …"), and
 # "Haltestelle" or "Testbetrieb" never match the word. Neither does a
@@ -6018,9 +6031,16 @@ def _is_test_message(item: FeedItem) -> bool:
     if _TEST_MESSAGE_RE.search(title) or _TEST_MESSAGE_RE.search(text):
         return True
     return any(
-        _TEST_WORD_RE.search(part) is not None and len(part.split()) <= MAX_TEST_TEXT_WORDS
+        _TEST_WORD_RE.search(part) is not None
+        and (len(part.split()) <= MAX_TEST_TEXT_WORDS or _only_test_words(part))
         for part in (title, text)
     )
+
+
+def _only_test_words(text: str) -> bool:
+    """Whether ``text`` says nothing but "Test", after an optional line prefix."""
+    words = re.findall(r"[^\W\d_]+", text.split(":", 1)[-1])
+    return bool(words) and all(_TEST_RUN_WORD_RE.match(w) for w in words)
 
 
 def _drop_test_messages(items: list[FeedItem]) -> list[FeedItem]:

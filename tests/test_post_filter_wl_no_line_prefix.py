@@ -75,6 +75,18 @@ class TestStoerungWithoutLinePrefixDropped:
         out = _post_filter_wl(items)
         assert len(out) == 1
 
+    def test_badner_bahn_prefix_kept(self) -> None:
+        # Filterprüfung 2026-10-03: ``LB`` (früher ``WLB``) ist die
+        # Badner Bahn; ohne sie im Gate fiel jede ihrer Störungen weg,
+        # auch zusammen mit Straßenbahnlinien desselben Vorfalls.
+        for title in (
+            "LB: Fahrtbehinderung Verkehrsunfall",
+            "WLB: Fahrtbehinderung Verkehrsunfall",
+            "1/18/62/LB: Signalstörung",
+        ):
+            out = _post_filter_wl([{"title": title, "category": "Störung"}])
+            assert [it["title"] for it in out] == [title]
+
     def test_hinweis_without_prefix_kept(self) -> None:
         # Only Störung is dropped — Hinweis items can have unusual
         # title shapes without a line prefix and should be left alone.

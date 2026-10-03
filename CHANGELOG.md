@@ -5,6 +5,32 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Deutscher Feed: Filterprüfung (2026-10-03)**: Jede Filterstufe gegen die
+  WL-, ÖBB- und Baustellen-Caches seit 15.07. geprüft und alle 3.878 Feed-Stände
+  mit altem und neuem Code nachgebaut (State fortgeschrieben).
+  - **Badner Bahn fehlte ganz:** `_post_filter_wl` verwirft eine Störung ohne
+    erkennbare Linie, und `LB` (bis Juni 2026 `WLB`) galt nicht als Linie. So
+    fielen alle 15 Badner-Bahn-Störungen seit 15.07. weg, samt Straßenbahnen
+    desselben Vorfalls (`1/18/62/LB: Signalstörung`, 10.09.). Das Linien-Gate
+    kennt jetzt `LB`/`WLB` und die Rufbus-Form `44BR`. Nachgerechnet: 213 Plätze
+    für Badner-Bahn-Meldungen, keine Doppelten; die nächtlichen Tafelmeldungen der
+    Sommerbaustelle gehen weiter in deren Hinweis auf, sobald er erscheint.
+  - **Testmeldungen:** Auch „Testfall“ („38: Testfall“, „72A: Testfall“),
+    „Testtext“ und beliebig lange „Test Test Tes Test …“ gelten als Testmeldung.
+    In der ganzen Cache-Historie trifft die Regel 26 Titel, alle Tests.
+  - **WL-Sammel- und Teilmeldungen (E, F in `wl_fetch`):** Beide Regeln
+    entfernten eine Meldung allein nach Linien, Kategorie und Zeitraum. Seit
+    April verschwanden so 108 Meldungen, die etwas anderes sagten („2A:
+    Bauarbeiten Renngasse“ zehn Tage neben der Regenbogenparade, „11A:
+    Gleisbauarbeiten Stadion U“ neben einer Veranstaltung). Jetzt fällt eine
+    Meldung nur, wenn die andere sie inhaltlich abdeckt oder (F) sie deren Thema
+    nennt; das hält die Anzeigetafel-Kurzmeldungen großer Baustellen weiter
+    draußen. Nachgerechnet: 640 Plätze in 643 Feed-Ständen gehen an solche
+    Meldungen. Tests: `tests/test_wl_aggregate_removal.py`.
+  - Ohne Änderung: WL-Störungen ohne jede Linie (67 seit 15.07., 46 ohne andere
+    Meldung zum selben Vorfall) bleiben draußen, bis der Betreiber entscheidet;
+    Baustellen, die die WL schon melden, Build-Dedupe und Fuzzy-Merge zeigten
+    keine fälschlich verworfenen Meldungen.
 * **Deutscher Feed: Vorlauf über das Wochenende (2026-10-03, Betreiberentscheidung „Wochenende mit“)**:
   Ankündigungen rücken weiter ab dem Vortag ihres Beginns vor, freitags und
   samstags aber schon alles, was bis einschließlich Montag beginnt
