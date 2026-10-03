@@ -208,18 +208,23 @@ def test_health_check_note_keeps_the_run_green(
     capsys: pytest.CaptureFixture[str],
 ) -> None:
     """main() exits 0 with only the note, and annotates it as a warning."""
-    import scripts.health_check as hc
+    # ``from``-style only: this file already imports ``scripts.health_check``
+    # that way, and mixing both styles trips CodeQL's
+    # py/import-and-import-from. Patching goes through the dotted path.
+    from scripts.health_check import Check, check_stammstrecke_directions
+    from scripts.health_check import main as health_check_main
 
     _write_ledger(stats_dir, _ticks(NOW, 8, "Meidling"))
-    note = hc.check_stammstrecke_directions(NOW)
-    healthy = hc.Check("Quelle", ok=True, summary="OK")
-    monkeypatch.setattr(hc, "check_source", lambda *_a, **_kw: healthy)
-    monkeypatch.setattr(hc, "check_feed_freshness", lambda _now: healthy)
-    monkeypatch.setattr(hc, "check_stations", lambda _now: healthy)
-    monkeypatch.setattr(hc, "check_stammstrecke_directions", lambda _now: note)
+    note = check_stammstrecke_directions(NOW)
+    healthy = Check("Quelle", ok=True, summary="OK")
+    target = "scripts.health_check"
+    monkeypatch.setattr(f"{target}.check_source", lambda *_a, **_kw: healthy)
+    monkeypatch.setattr(f"{target}.check_feed_freshness", lambda _now: healthy)
+    monkeypatch.setattr(f"{target}.check_stations", lambda _now: healthy)
+    monkeypatch.setattr(f"{target}.check_stammstrecke_directions", lambda _now: note)
     monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
 
-    assert hc.main() == 0
+    assert health_check_main() == 0
     out = capsys.readouterr().out
     assert "::warning title=Health: Stammstrecke-Richtungen::HINWEIS" in out
     assert "::error" not in out
