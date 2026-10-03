@@ -64,7 +64,9 @@ DE_49A = (
 
 
 def _render(record: str) -> str:
-    return _render_label_record(record, source=None, category=None)
+    rendered = _render_label_record(record, source=None, category=None)
+    assert rendered is not None
+    return rendered
 
 
 # ---------------- the split ----------------

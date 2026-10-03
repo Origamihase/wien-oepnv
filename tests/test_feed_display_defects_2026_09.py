@@ -291,7 +291,9 @@ def test_clock_suffix_dropped_before_translation() -> None:
         _normalise_for_translation("Wr. Neustadt Hbf bis 15:13 Uhr")
         == "Wr. Neustadt Hbf bis 15:13"
     )
-    assert _normalise_for_translation("um 9 Uhr") == "um 9"
+    # A bare hour becomes a clock time (EN audit 2026-10-03): a bare "9" read
+    # as a number ("Expected Duration: 13.").
+    assert _normalise_for_translation("um 9 Uhr") == "um 9:00"
 
 
 def test_clock_suffix_normalisation_leaves_other_uses_alone() -> None:

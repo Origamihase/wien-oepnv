@@ -1637,7 +1637,7 @@ flowchart TD
     Cache{"_cached_translation<br/>Treffer?"}
     Digest["Quell-Fingerprint geprüft<br/>(_SOURCE_DIGEST_KEY)"]
     Split["_split_label_record<br/>Prosa | Label-Record"]
-    Record["_render_label_record<br/>OHNE Modell"]
+    Record["_render_label_record<br/>Tabelle OHNE Modell,<br/>Grund nur bei unbekanntem Wort"]
     Norm["_normalise_for_translation"]
     Glo["_apply_domain_glossary<br/>XGLO-Platzhalter"]
     Mask["_mask_entities<br/>XENT-Platzhalter"]
@@ -1707,13 +1707,34 @@ Nicht jeder Text gehört in ein NMT-Modell:
   approx.“, am Wertanfang groß („Duration: Until approx. 22:00“); in Prosa
   greift der Glossar-Eintrag „bis voraussichtlich“ → „until approx.“
   (seit 2026-09-26, Audit vom 25.09., A.3; vorher „until expected“).
+  Seit dem EN-Audit vom 2026-10-03 gehört ein „Voraussichtliche“ vor dem
+  ersten Label zum Record („Expected duration:“; vorher blieb es als letztes
+  Wort der Prosa stehen und wurde verschluckt oder einzeln übersetzt), und
+  ein abschließendes `Grund:` wird eigens behandelt: Kennt das Glossar jedes
+  Wort, entsteht es ohne Modell („Reason: third-party traffic accident in the
+  stop area of Broßmannplatz.“), sonst geht nur dieser kurze Satz durchs
+  Modell. Vorher blieb jedes unbekannte Ursachenwort deutsch, weil der Record
+  das Modell nie sah („Reason: Tiere im Gleis im Haltestellenbereich …“).
+* **ÖBB-Sätze nach Vorlage.** ÖBB schreibt Störungen fast immer in einem
+  Satz mit festen Feldern: „Wegen <Ursache> sind|waren zwischen <A> und
+  <B>|in <A> [Zugfahrten] [bis [voraussichtlich] <Zeit> Uhr|derzeit] keine
+  Fahrten|nur eingeschränkt möglich.“ (407 der 455 ÖBB-„Wegen“-Sätze seit
+  Mai). `_translate_oebb_templates` setzt solche Sätze aus den Feldern
+  zusammen („Due to a police operation, no trains can run between …
+  until approx. 20:30.“); nur „Wegen <Ursache>“ geht als kurze Phrase durchs
+  Modell, Stationsnamen bleiben wie ÖBB sie schreibt, nur ein nachgestelltes
+  „Bahnhof“/„Bahnhst“ wird „station“. Vorher verlor das Modell regelmäßig das
+  Verb am Satzende („… to 23:48 were not possible.“). Sätze ohne Vorlage
+  nehmen den normalen Weg.
 * **Nicht-übersetzbarer Inhalt.** `_is_non_translatable_content` erkennt
   maskierte Texte, in denen nach dem Maskieren nichts mehr steht, was ein
   Modell übersetzen könnte. Das sind reine Linien- und Stationsfolgen, seit
   2026-09-25 auch Linie plus Glossar-Begriff: „94A: Verkehrsunfall“ →
   `XENT…: XGLO…` → „94A: traffic accident“. Ein Glossar-Platzhalter steht
   bereits für den englischen Begriff. Solche Texte gehen nicht mehr ans
-  Modell, das sie je nach Nonce verstümmelte.
+  Modell, das sie je nach Nonce verstümmelte. Die Umsteige-Kennungen hinter
+  einem Haltestellennamen („Meidling Hauptstraße U“, „S U“) zählen dabei
+  nicht als Wort (seit 2026-10-03).
 * **Der Gedankenstrich der Ticker-Titel.** `_separate_reason_word` schreibt
   `31: Demonstration – Betrieb ab Wallensteinstraße`. Der Strich ist ein
   geschütztes Zeichen und stünde im Modell als Platzhalter zwischen zwei
@@ -1737,6 +1758,11 @@ Zwei Sorten, bewusst unterscheidbar:
 
 * `XENT<nonce>X<n>X` — **Entitäten** (Marken, Stationsnamen, Kalenderdaten
   wie `27.09.2026`, Linienkennungen, Straßennamen, geschützte Symbole).
+  Seit dem EN-Audit vom 2026-10-03 auch freistehende Straßennamen mit einem
+  Ortsadjektiv auf „-er“ („Südtiroler Platz“, vorher „South Tyrolean
+  square“; Determinative wie „Dieser Platz“ ausgenommen), Hauptbahnhöfe in
+  ÖBB-Kurzform („Wien Hbf“, vorher „Vienna Hbf“) und WL-Haltestellen in der
+  Komma-Form der Echtzeittexte („Burggasse, Stadthalle“, vorher „city hall“).
   Werden nach dem Modelllauf **wortgleich** zurückgesetzt. Ein Datum wird
   **vor** den Linienkennungen maskiert: sonst wäre nur sein Tag ein
   Platzhalter, der am Punkt klebt, und das Modell verliert den Punkt

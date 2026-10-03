@@ -1967,7 +1967,17 @@ _TRANSLATION_MODEL_REVISION = "1a922f3b32a8e809e17a47d4b32142d8105924e5"
 #       was cached under 18 as "WipplingerstrX39; service fromXAugasse"
 #       and stood second in the EN feed on 2026-10-02; the source digest
 #       is unchanged, so only a bump evicts it.
-_TRANSLATION_CACHE_EPOCH = 19
+#  20 — EN audit 2026-10-03: WL's reason vocabulary in the glossary
+#       ("Fremder Verkehrsunfall", "Stromstörung", "im Haltestellenbereich",
+#       …), the reason of a label record rendered or translated instead of
+#       left German, "Voraussichtliche Dauer:" as one label, bare-hour
+#       clock times, freestanding "-er" street names, WL's comma stop names
+#       and ``<Ort> Hbf`` shielded, ÖBB's templated sentences rendered from
+#       their slots. Cached under 19 among others: "Reason: Fremder traffic
+#       accident in the area of Hernalser Hauptstraße", "Alliance Stadion",
+#       "Schlosshofer Straße"; the source digests are unchanged, so only a
+#       bump evicts them.
+_TRANSLATION_CACHE_EPOCH = 20
 
 # Static lookup for the German words of the bracketed ``[…]`` time line (see
 # ``format_local_times``). Translating these via the ML model would be
@@ -2171,6 +2181,9 @@ _GLOSSARY_BASE: dict[str, str] = {
     "Signalstörung": "signal disruption",
     "Weichenstörung": "switch fault",
     "Stellwerksstörung": "interlocking failure",
+    # ÖBB spells it without the linking s; the model said "interlocking
+    # fault", "interlocking disturbance" (EN audit 2026-10-03).
+    "Stellwerkstörung": "interlocking failure",
     "Oberleitungsstörung": "overhead-line fault",
     # Spelled out from the WL ticker stub "Oberleitungsgebr" by
     # ``_TICKER_ABBREVIATIONS``; same fault, Austrian wording.
@@ -2248,6 +2261,9 @@ _GLOSSARY_BASE: dict[str, str] = {
     "Haltestellenauflassungen": "stop closures",
     "Haltestellenauflassung": "stop closure",
     **{f"{de}:": f"{en}:" for de, en in _FIELD_LABEL_EN.items()},
+    # The qualified label WL's incident template opens its record with (see
+    # ``_split_label_record``), one capitalised label like the others.
+    "voraussichtliche Dauer:": "Expected duration:",
     # Spelled-out sibling of the ``ggü.`` entry above. WL uses both forms in
     # relocation addresses ("Anzengruberstraße gegenüber 77a"); only the
     # abbreviation was covered, so the model had to guess at the long form —
@@ -2310,6 +2326,13 @@ _GLOSSARY_BASE: dict[str, str] = {
     # as a surname. ``Klapprampensperre`` means the wheelchair ramps cannot
     # be extended, which "lock" does not convey.
     "Fremdunfall": "third-party accident",
+    # The long form of the same WL reason, and the most frequent reason the
+    # glossary did not know: 185 WL titles since July. The model guessed a
+    # new adjective every time, "foreign", "external", "other", "stranger",
+    # "Foreigner", and a label record kept it German ("Reason: Fremder
+    # traffic accident", 2026-10-03 11:31, under epoch 19).
+    "Fremder Verkehrsunfall": "third-party traffic accident",
+    "Fremdem Verkehrsunfall": "third-party traffic accident",
     "Falschparker": "illegally parked vehicle",
     "Verunreinigung": "contamination",
     "Wasserrohrgebrechen": "burst water pipe",
@@ -2318,8 +2341,41 @@ _GLOSSARY_BASE: dict[str, str] = {
     # model said "Traffic disturbance".
     "Verkehrsstörung": "traffic disruption",
     "Verkehrsüberlastung": "traffic congestion",
+    # The rest of WL's reason vocabulary the glossary lacked, measured over
+    # the DE/EN pairs of every published feed since 2026-05-20 (EN audit
+    # 2026-10-03). Count of WL titles, then what the model made of it:
+    #
+    #   Stromstörung                    55  "current disturbance",
+    #                                       "Current Disruption"
+    #   Beschädigte Oberleitung         47  "Corrupted overhead line"
+    #   Störung an einem Bahnübergang   21  "Interference at a level crossing"
+    #   Weichenschaden                  15  "Soft damage"
+    #   Gasrohrgebrechen                 8  "gas pipe fractures"
+    #   Fahrleitungsgebrechen            3  dropped ("service obstruction")
+    #
+    # In a label record ("Grund: Stromstörung im Haltestellenbereich …")
+    # nothing renders an unknown term, so it stayed German there as well.
+    "Stromstörung": "power failure",
+    "Stromstörungen": "power failures",
+    "Beschädigte Oberleitung": "damaged overhead line",
+    "Störung an einem Bahnübergang": "level crossing fault",
+    "Weichenschaden": "switch damage",
+    "Gasrohrgebrechen": "burst gas pipe",
+    "Fahrleitungsgebrechen": "overhead-line fault",
+    "Wasserrohrbruch": "burst water pipe",
+    "Tiere im Gleis": "animals on the track",
+    "Fahrzeug im Gleis": "vehicle on the track",
+    "Gegenstand im Gleis": "object on the track",
+    "Gegenstände im Gleis": "objects on the track",
+    "Gegenstand auf der Fahrleitung": "object on the overhead line",
+    "Witterung": "weather conditions",
+    "Vandalismus": "vandalism",
     "Staatsbesuch": "state visit",
     "Veranstaltung": "event",
+    # A stadium's name, not a word: "Alliance Stadion" (2026-10-03) and
+    # "Allianz Stadium". Kept as one name, the genitive folded in.
+    "Allianz Stadion": "Allianz Stadion",
+    "Allianz Stadions": "Allianz Stadion",
     "Demonstration": "demonstration",
     # --- State / mode adjectives ------------------------------------
     "Schadhaftes Fahrzeug": "defective vehicle",
@@ -2373,6 +2429,13 @@ _GLOSSARY_BASE: dict[str, str] = {
     # the bare noun.
     "im Bereich": "in the area of",
     "Bereich": "area",
+    # The stop-side sibling, in 1 of 3 WL incident reasons. In a label record
+    # it stayed German ("Reason: rescue operation im Haltestellenbereich
+    # Taubstummengasse", 2026-10-03 10:23); as prose the model said "in the
+    # stop area X", "in the X stop area" or dropped the noun ("traffic
+    # accident in the Kaisermühlen-VIC U").
+    "im Haltestellenbereich": "in the stop area of",
+    "Haltestellenbereich": "stop area",
     # Vienna's numbered districts. Marian renders the bare noun as "Area" or
     # "District" depending on the surrounding sentence — the SAME stop text
     # came out as "in direction 21. District" and, after the sentence was
@@ -2393,6 +2456,27 @@ _GLOSSARY_BASE: dict[str, str] = {
     "Eingeschränkter Betrieb": "restricted service",
     # --- Compound idioms specific to ÖBB/WL ticker text ------------
     "Betrieb ab": "service from",
+    # WL's ticker verbs. The model rendered "Kein Betrieb" as "No holding"
+    # (2026-09-26), "Züge halten in Schleife" as "Trains keep in loop"
+    # (still in the feed on 2026-10-03) and "Fahrtbehinderung wegen …" with
+    # "because of", "for" or "due to" from one build to the next.
+    "Kein Betrieb": "no service",
+    "Betrieb nur zwischen": "service only between",
+    "Fahrtbehinderung wegen": "service obstruction due to",
+    "Züge halten in Schleife": "trains stop in the loop",
+    "Züge halten": "trains stop",
+    "Züge halte": "trains stop",
+    "Busse halten": "buses stop",
+    "Ersatzbus hält": "replacement bus stops",
+    "Haltestelle aufgelassen": "stop closed",
+    "bei Haltestelle der Linie": "at the stop of line",
+    "Bussteig": "bus platform",
+    # WL's stock referral. ``_normalise_for_translation`` drops the "aus"
+    # that closes it, so the line list is the end of the sentence; the model
+    # used to lose a line of a long list and fail the whole item back to
+    # German (tram D, 49 builds on 2026-10-01).
+    "Weichen Sie ersatzweise auf die Linien": "alternatively use lines",
+    "Weichen Sie ersatzweise auf die Linie": "alternatively use line",
     # --- Street-addressing abbreviations ----------------------------
     # "ggü." (gegenüber) is the Baustellen-feed shorthand for
     # "opposite house number N" (e.g. "Simonygasse ggü. 2B"). Marian
@@ -2447,6 +2531,12 @@ _GLOSSARY_BY_SOURCE: dict[str, dict[str, str]] = {
         # (``docs/archive/audits/audit-2026-09-07.md``).
         "Bahnhst.": "station",
         "Bahnhst": "station",
+        # Where an ÖBB cause happened. The model left "am Bahnhof" German:
+        # "Due to an interlocking fault am Bahnhof" (2026-10-02).
+        "am Bahnhof": "at the station",
+        "am Gleis": "on the track",
+        "am Zug": "on the train",
+        "auf der Strecke": "on the line",
         # All-clear titles. The model read the noun as an action,
         # "Removing traffic restrictions: St. Pölten Hauptbahnhof"; ÖBB
         # announces a state (audit 2026-09-25, A.9).
@@ -2596,16 +2686,12 @@ def _norm_metadata(value: Any) -> str | None:
 # ebendiesem Zufallsgrund; ``tests/test_street_name_masking.py`` prüft
 # deshalb direkt hier.
 #
-# Der Adjektiv-Kopf ist bewusst eine GESCHLOSSENE Liste. Die naheliegende
-# Verallgemeinerung — ein beliebiges vorangestelltes Wort auf ``-er``, das
-# auch ``Mariahilfer Straße`` und ``Donaufelder Straße`` fassen würde —
-# zieht deutsche Determinative mit herein (``Dieser Platz``, ``Jeder
-# Weg``) und bräuchte ihrerseits eine Ausschlussliste. Diese freistehenden
-# Namen sind heute ungeschützt, aber nachweislich NICHT kaputt: Sie
-# durchlaufen das Modell unverändert, weil es das Attribut nicht kennt.
-# Ein latentes Loch mit einer neuen Übergriffs-Klasse zu schließen wäre
-# ein schlechter Tausch — der Fall gehört ins Verzeichnis, nicht in diese
-# Heuristik.
+# Der Adjektiv-Kopf ist bewusst eine GESCHLOSSENE Liste. Freistehende Namen
+# mit einem Wort auf ``-er`` davor (``Mariahilfer Straße``) fasst seit dem
+# EN-Audit vom 2026-10-03 ein eigener Zweig, ``_STREET_ER_NAME`` unten, mit
+# einer Ausschlussliste für die Determinative (``Dieser Platz``, ``Jeder
+# Weg``). Die frühere Annahme, solche Namen kämen unverändert durchs Modell,
+# hat der Vergleich aller veröffentlichten DE/EN-Paare widerlegt.
 #: Suffixe, die ein Wort als Straßen-/Platznamen ausweisen.
 _STREET_SUFFIX_CORE = (
     r"[Ss]traße|[Ss]trasse|[Gg]asse|[Pp]latz|[Bb]rücke|[Bb]rucke"
@@ -2628,9 +2714,43 @@ _STREET_NAME_BODY = (
     r"[A-ZÄÖÜ][A-Za-zÄÖÜäöüß\-.]{1,30}(?:" + _STREET_SUFFIX_CORE + r")\b"
     r"|[A-ZÄÖÜ][A-Za-zÄÖÜäöüß\-]{1,30}[Ss]tr\b\.?"
 )
+#: Ein freistehender Straßenname mit einem Ortsadjektiv auf ``-er`` davor:
+#: ``Mariahilfer Straße``, ``Südtiroler Platz``, ``Währinger Gürtel``,
+#: ``Simmeringer Hauptstraße``. Die Annahme oben, solche Namen kämen heil
+#: durchs Modell, hat der EN-Audit vom 2026-10-03 widerlegt: ``Südtiroler
+#: Platz`` → "South Tyrolean square" (2026-09-29), ``Währinger Gürtel`` →
+#: "moving belt" (2026-09-26), ``Schloßhofer Straße`` → "Schlosshofer
+#: Straße" (2026-10-03); 41 solche Namen erreichten das Modell ungeschützt.
+#: Die befürchteten Determinative sind eine geschlossene Wortklasse und hier
+#: vollständig ausgeschlossen, ebenso die großgeschriebenen Adverbien und
+#: Präpositionen auf ``-er``, die einen Satz eröffnen können.
+_STREET_WORD = (
+    r"(?:Straße|Strasse|Gasse|Platz|Gürtel|Ring|Allee|Weg|Brücke|Kai|Lände"
+    r"|Zeile|Markt|Damm|Berg|Anger|Promenade|Graben|Steig)\b|Str\."
+)
+_STREET_ER_EXCLUDED = (
+    r"Der|Dieser|Jener|Jeder|Welcher|Mancher|Solcher|Aller|Keiner|Einer"
+    r"|Meiner|Deiner|Seiner|Ihrer|Unser|Unserer|Euer|Eurer|Anderer|Weiterer"
+    r"|Erster|Zweiter|Dritter|Letzter|Nächster|Über|Unter|Hinter|Wieder"
+    r"|Weiter|Aber|Oder|Außer|Gegenüber|Hier|Seither|Bisher|Vorher|Nachher"
+    r"|Daher|Leider|Später|Immer|Mehr|Sehr|Wer|Er|Ihr"
+)
+_STREET_ER_NAME = (
+    r"(?!(?:" + _STREET_ER_EXCLUDED + r")\s)[A-ZÄÖÜ][a-zäöüß]+er\s+"
+    r"(?:" + _STREET_NAME_BODY + r"|" + _STREET_WORD + r")"
+)
 _STREET_SUFFIX_RE: re.Pattern[str] = re.compile(
     r"\b(?:" + _STREET_ATTRIBUTE + r")\s+(?:" + _STREET_NAME_BODY + r")"
-    r"|\b(?:" + _STREET_NAME_BODY + r")"
+    r"|\b" + _STREET_ER_NAME
+    + r"|\b(?:" + _STREET_NAME_BODY + r")"
+)
+
+# A main station as ÖBB writes it: ``Wien Hbf``, ``St.Pölten Hbf``,
+# ``Wr.Neustadt Hbf``. The directory knows the long forms only, so the model
+# saw the short ones and turned 96 ``Wien Hbf`` into "Vienna Hbf" while the
+# same item kept "Wien Meidling" (EN audit 2026-10-03).
+_MAIN_STATION_RE: re.Pattern[str] = re.compile(
+    r"(?<![\w.])(?:[A-ZÄÖÜ][a-zäöüß]{1,4}\.\s?)?[A-ZÄÖÜ][A-Za-zÄÖÜäöüß-]+ Hbf\b"
 )
 
 # WL numbers the gates of the Zentralfriedhof and addresses the stops
@@ -2729,6 +2849,13 @@ _ALIAS_NOISE_RE: re.Pattern[str] = re.compile(
 # the END so a parenthetical that is genuinely part of a name (none
 # exist today, but defensively) mid-string is left intact.
 _STATION_PAREN_SUFFIX_RE: re.Pattern[str] = re.compile(r"\s*\([^)]*\)\s*$")
+# The hyphen between the two named parts of a stop (``Burggasse-Stadthalle``,
+# ``Währinger Straße-Volksoper``): a word of four letters or more on either
+# side. Only names with a single hyphen get a comma form, so
+# ``Franz-Josefs-Bahnhof`` and other hyphenated names stay whole.
+_STATION_PART_HYPHEN_RE: re.Pattern[str] = re.compile(
+    r"(?<=[a-zäöüß]{4})-(?=[A-ZÄÖÜ][a-zäöüß]{3})"
+)
 
 # Aliases must look like a clean, short ``Wien X`` station name to be
 # eligible for inclusion. Length cap keeps the regex bounded; the
@@ -2738,6 +2865,24 @@ _STATION_PAREN_SUFFIX_RE: re.Pattern[str] = re.compile(r"\s*\([^)]*\)\s*$")
 _ALIAS_CLEAN_RE: re.Pattern[str] = re.compile(
     r"^[A-Za-zÄÖÜäöüß][A-Za-zÄÖÜäöüß. \-]{6,28}$"
 )
+
+
+def _station_comma_forms(variants: set[str]) -> set[str]:
+    """The comma forms WL's realtime texts use for two-part stop names.
+
+    The directory writes ``Burggasse-Stadthalle``, a WL notice "Richtung
+    Burggasse, Stadthalle". Without this form only the street half was
+    shielded and the model rendered the rest, "Burggasse, city hall"
+    (2026-10-01, EN audit 2026-10-03).
+    """
+    forms: set[str] = set()
+    for variant in variants:
+        if variant.count("-") != 1:
+            continue
+        comma_form = _STATION_PART_HYPHEN_RE.sub(", ", variant)
+        if comma_form != variant:
+            forms.add(comma_form)
+    return forms
 
 
 @lru_cache(maxsize=1)
@@ -2827,6 +2972,7 @@ def _station_entity_pattern() -> re.Pattern[str] | None:
         if stripped.lower().startswith("wien "):
             variants.add(stripped[5:].strip())
             variants.add(clean[5:].strip())
+        variants |= _station_comma_forms(variants)
         for variant in variants:
             if (
                 len(variant) >= 4
@@ -2964,6 +3110,7 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
     # would mask the digit alone and leave the ``Tor`` noun exposed to
     # the translator — exactly the half-masked state that produced
     # "4. Gate".
+    working = _MAIN_STATION_RE.sub(_replace, working)
     working = _GATE_SUFFIX_RE.sub(_replace, working)
     working = _DATE_ENTITY_RE.sub(_replace, working)
     working = _LINE_ENTITY_RE.sub(_replace, working)
@@ -3151,6 +3298,32 @@ _CLOCK_SUFFIX_RE: re.Pattern[str] = re.compile(
     r"(?<=\d)(?<!\d\d\d)\s*Uhr\b|(?<=\d\d:\d\d)\s*Uhr\b"
 )
 
+# A clock time WL writes as a bare hour ("Voraussichtliche Dauer: 13 Uhr") or
+# with a period ("13.50 Uhr"). Dropping only the "Uhr" left a bare number the
+# English reader cannot take for a time: "Expected Duration: 13." and "The
+# fault lasts expected to 16." (2026-10-03, under epoch 19). Written as
+# ``13:00`` / ``13:50`` first, the time survives as a time. Anchored on the
+# "Uhr", so a date ("02.11.2026") and a house number are untouched.
+_HOUR_ONLY_CLOCK_RE: re.Pattern[str] = re.compile(
+    r"(?<![\d.:])(\d{1,2})(?:\.(\d{2}))?(?=\s*Uhr\b)"
+)
+
+# WL's stock referral closes on a separable "aus": "Weichen Sie ersatzweise
+# auf die Linien U3, 5, 12 und 48A aus." The glossary renders the opening
+# phrase; dropping the "aus" makes the line list the end of the sentence, so
+# nothing is left for the model to re-attach around a list of placeholders.
+_ALTERNATIVE_LINES_AUS_RE: re.Pattern[str] = re.compile(
+    r"\b(Weichen Sie ersatzweise auf die Linien? [^!?]+?)\.?\s+aus\b"
+)
+
+# "Busse halten bei Haltestelle N71": the stop named after a line. The model
+# dropped the noun ("Buses stop at N71", in the feed on 2026-10-03), which
+# reads as if the buses stopped at the line. Written out as "Haltestelle der
+# Linie", the glossary renders it whole.
+_STOP_OF_LINE_RE: re.Pattern[str] = re.compile(
+    r"\bbei (?:der )?Haltestelle (?=(?:U[1-6]|N\d{1,2}|\d{1,3}[A-Z]{0,2})\b(?![./-]\w))"
+)
+
 
 def _normalise_for_translation(text: str) -> str:
     """Strip German-only surface forms the NMT model cannot render.
@@ -3161,6 +3334,11 @@ def _normalise_for_translation(text: str) -> str:
     """
     if not text:
         return text
+    text = _HOUR_ONLY_CLOCK_RE.sub(
+        lambda m: f"{m.group(1)}:{m.group(2) or '00'}", text
+    )
+    text = _ALTERNATIVE_LINES_AUS_RE.sub(r"\1", text)
+    text = _STOP_OF_LINE_RE.sub("bei Haltestelle der Linie ", text)
     return _CLOCK_SUFFIX_RE.sub("", text)
 
 
@@ -3534,8 +3712,17 @@ def _is_non_translatable_content(masked_text: str) -> bool:
     """
     if not masked_text.strip():
         return False
-    remaining = _UNMASK_PLACEHOLDER_RE.sub("", masked_text)
+    remaining = _STATION_MODE_MARKER_RE.sub(
+        "", _UNMASK_PLACEHOLDER_RE.sub(" ", masked_text)
+    )
     return not any(ch.isalpha() for ch in remaining)
+
+
+# WL's interchange markers behind a stop name ("Meidling Hauptstraße U",
+# "Hauptbahnhof S U", "Ottakring SU"). They are not German and stay as they
+# are; counted as a word, they sent "Reason: traffic accident in the stop area
+# of Meidling Hauptstraße U." to the model for nothing (EN audit 2026-10-03).
+_STATION_MODE_MARKER_RE: re.Pattern[str] = re.compile(r"(?<!\w)(?:S ?U|U|S)(?!\w)")
 
 
 # Fields whose correct English translation IS the German source, verified by
@@ -3703,7 +3890,20 @@ def _split_label_record(text: str) -> tuple[str, str]:
     if len(matches) < _MIN_LABELS_FOR_RECORD:
         return text, ""
     cut = matches[0].start()
+    # WL's incident template opens its record with a qualified label,
+    # "Voraussichtliche Dauer: 10:10 Uhr. Grund: …". Cut at "Dauer:" alone,
+    # the qualifier stayed behind as the last word of the prose, and the model
+    # either dropped it ("Duration: 10:10", 52 published descriptions) or
+    # rendered it on its own ("Expected Duration: 10:10", 41). It belongs to
+    # the label, which the glossary renders whole.
+    qualifier = _LABEL_QUALIFIER_RE.search(text, 0, cut)
+    if qualifier is not None:
+        cut = qualifier.start()
     return text[:cut].rstrip(), text[cut:].strip()
+
+
+# The adjective in front of a record's first label (see ``_split_label_record``).
+_LABEL_QUALIFIER_RE: re.Pattern[str] = re.compile(r"(?<!\w)[Vv]oraussichtliche\s+$")
 
 
 # What ``_render_label_record`` still left German once the labels and the
@@ -3734,6 +3934,13 @@ _RECORD_VALUE_RULES: tuple[tuple[str, str, bool], ...] = (
     (r"Dauer unbekannt", "duration unknown", False),
     (r"Nicht absehbar", "not foreseeable", False),
     (r"in Richtung", "towards", False),
+    # A relocation's distance, measured as the third gap of the EN audit
+    # 2026-10-03: "Approx. 30 metres gegen die Fahrtrichtung" and a value
+    # ending "auf Dauer" stayed German.
+    (r"gegen die Fahrtrichtung", "against the direction of travel", False),
+    (r"in Fahrtrichtung", "in the direction of travel", False),
+    (r"auf Dauer", "permanently", False),
+    (r"gegen", "against", False),
     (r"im Zuge", "along", False),
     (r"provisorische Haltestelle", "temporary stop", False),
     (r"Nebenfahrbahn", "service road", False),
@@ -3806,7 +4013,52 @@ def _gloss_record_values(text: str, label_placeholders: frozenset[str]) -> str:
     return _DAY_PERIOD_RE.sub(r"\1", _RECORD_VALUE_RE.sub(_replace, text))
 
 
+# The reason of a record: WL's incident template ends with it ("Grund:
+# Fremder Verkehrsunfall im Haltestellenbereich Broßmannplatz."). Unlike the
+# rest of the record it is prose, and nothing deterministic renders a reason
+# the glossary does not know: 54 of 60 such reasons since July stayed partly
+# German in the EN feed ("Reason: Tiere im Gleis im Haltestellenbereich
+# Reumannplatz"). See ``_render_label_record``.
+_REASON_LABEL_RE: re.Pattern[str] = re.compile(r"(?<!\w)Grund:\s")
+
+
 def _render_label_record(
+    record: str, *, source: str | None, category: str | None
+) -> str | None:
+    """Render a label record to English: the table without, the reason with the model.
+
+    Everything up to a closing ``Grund:`` goes through
+    :func:`_render_record_table`. The reason is rendered the same way when the
+    glossary and the masks leave no German word in it; otherwise it goes
+    through the model as the short sentence it is, and a failure there fails
+    the record (``None``), like any other failed translation.
+    """
+    reason = _REASON_LABEL_RE.search(record)
+    if reason is None or _LABEL_RECORD_RE.search(record, reason.end()):
+        return _render_record_table(record, source=source, category=category)
+    table = record[: reason.start()].rstrip()
+    reason_de = record[reason.start():].strip()
+    table_en = (
+        _render_record_table(table, source=source, category=category) if table else ""
+    )
+    glossed, glossary_mapping = _apply_domain_glossary(
+        _normalise_for_translation(reason_de), source=source, category=category
+    )
+    masked, entity_mapping = _mask_entities(glossed)
+    if _is_non_translatable_content(masked):
+        reason_en: str | None = _unmask_entities(
+            masked, {**glossary_mapping, **entity_mapping}
+        )
+    else:
+        reason_en = _translate_text_attempt(
+            reason_de, source=source, category=category
+        )
+    if reason_en is None:
+        return None
+    return _join_record(table_en, reason_en)
+
+
+def _render_record_table(
     record: str, *, source: str | None, category: str | None
 ) -> str:
     """Render a label record to English WITHOUT the NMT model.
@@ -3958,12 +4210,173 @@ def _translation_text(result: Any, ident: str) -> str | None:
     return translated
 
 
+# ÖBB's disruption notices are written from a closed grammar: 455 of the 474
+# distinct ÖBB sentences published since 2026-05-20 open with "Wegen", and
+# almost all of them are one sentence with five slots::
+#
+#     Wegen <Ursache> sind|waren zwischen <A> und <B> | in <A> [Zugfahrten]
+#     [bis [voraussichtlich] <hh:mm> Uhr | derzeit]
+#     keine Fahrten | nur eingeschränkt [Fahrten] möglich.
+#
+# The model handled the verb at the end badly, and the meaning went with it
+# (EN audit 2026-10-03, all from the feed)::
+#
+#     Due to a police operation between Wien Hernals station and Wien
+#     Hütteldorf Station (U) to 23:48 were not possible.
+#     Due to a switch fault in Wien Stadlau station (U) Train journeys until
+#     approx. 21:30 are only limited.
+#     … between Wien Franz-Josefs-Bahnhof and St.Andrä-Wördern train station
+#     no R 40 train.
+#
+# The sentence is rendered from its slots instead; only the cause ("Wegen
+# eines Polizeieinsatzes") still goes through the model, as the short phrase
+# it is. The station names stay as ÖBB writes them, like every other name in
+# the EN feed; only the trailing "Bahnhof"/"Bahnhst" becomes "station", as the
+# glossary has rendered it since 2026-09-07.
+_OEBB_RESTRICTION_RE: re.Pattern[str] = re.compile(
+    r"Wegen (?P<cause>.+?) (?P<tense>sind|waren) "
+    r"(?:zwischen (?P<a>.+?) und (?P<b>.+?)|in (?P<at>.+?)|im Bereich (?P<area>.+?))"
+    r"(?: Zugfahrten)?"
+    r"(?: bis (?P<expected>voraussichtlich )?(?P<time>\d{1,2}:\d{2})(?: Uhr)?"
+    r"| (?P<now>derzeit))?"
+    r" (?:(?P<none>keine Fahrten|nicht)|nur eingeschränkt(?: Fahrten)?) möglich\."
+)
+# The planned-works variant: "Wegen Bauarbeiten können [von D bis D]
+# zwischen A und B [von D bis D] keine R 40-Züge fahren."
+_OEBB_NO_TRAINS_RE: re.Pattern[str] = re.compile(
+    r"Wegen (?P<cause>.+?) können"
+    r"(?: von (?P<d1>\d{2}\.\d{2}\.\d{4}) bis (?P<d2>\d{2}\.\d{2}\.\d{4}))?"
+    r" zwischen (?P<a>.+?) und (?P<b>.+?)"
+    r"(?: von (?P<d3>\d{2}\.\d{2}\.\d{4}) bis (?P<d4>\d{2}\.\d{2}\.\d{4}))?"
+    r" keine (?P<trains>[A-Z]{1,3} ?\d{1,3})-Züge fahren\."
+)
+_OEBB_SENTENCE_SPLIT_RE: re.Pattern[str] = re.compile(r"(?<=[.!])\s+(?=[A-ZÄÖÜ])")
+_OEBB_STATION_SUFFIX_RE: re.Pattern[str] = re.compile(
+    r" (?:Bahnhof|Bahnhst\.?)(?=(?: \(U\))?$)"
+)
+
+
+def _oebb_station_en(name: str) -> str:
+    """An ÖBB station name for the EN feed: verbatim, "Bahnhof" → "station"."""
+    return _OEBB_STATION_SUFFIX_RE.sub(" station", name.strip())
+
+
+def _oebb_cause_en(
+    cause: str, ident: str, source: str | None, category: str | None
+) -> str | None:
+    """English for "Wegen <cause>", without the comma the sentence adds."""
+    english = _translate_text_attempt(
+        f"Wegen {cause}", ident, source=source, category=category, oebb_templates=False
+    )
+    if english is None:
+        return None
+    return _capitalise_sentence_start(english.strip().rstrip(".,;:"))
+
+
+def _render_oebb_sentence(
+    sentence: str, ident: str, source: str | None, category: str | None
+) -> str | None:
+    """Render one templated ÖBB sentence; ``""`` when it has no template."""
+    sentence = _HOUR_ONLY_CLOCK_RE.sub(
+        lambda m: f"{m.group(1)}:{m.group(2) or '00'}", sentence
+    )
+    match = _OEBB_RESTRICTION_RE.fullmatch(sentence)
+    if match is not None:
+        cause = _oebb_cause_en(match["cause"], ident, source, category)
+        if cause is None:
+            return None
+        past = match["tense"] == "waren"
+        if match["none"]:
+            core = "no trains could run" if past else "no trains can run"
+        else:
+            core = (
+                "trains could only run to a limited extent"
+                if past
+                else "trains can only run to a limited extent"
+            )
+        if match["at"]:
+            place = f"at {_oebb_station_en(match['at'])}"
+        elif match["area"]:
+            place = f"in the area of {_oebb_station_en(match['area'])}"
+        else:
+            place = (
+                f"between {_oebb_station_en(match['a'])}"
+                f" and {_oebb_station_en(match['b'])}"
+            )
+        if match["time"]:
+            when = f" until {'approx. ' if match['expected'] else ''}{match['time']}"
+        elif match["now"]:
+            when = " at present"
+        else:
+            when = ""
+        return f"{cause}, {core} {place}{when}."
+    match = _OEBB_NO_TRAINS_RE.fullmatch(sentence)
+    if match is not None:
+        cause = _oebb_cause_en(match["cause"], ident, source, category)
+        if cause is None:
+            return None
+        first, last = (match["d1"], match["d2"]) if match["d1"] else (match["d3"], match["d4"])
+        dates = f" from {first} to {last}" if first else ""
+        return (
+            f"{cause}, no {match['trains']} trains can run between "
+            f"{_oebb_station_en(match['a'])} and {_oebb_station_en(match['b'])}{dates}."
+        )
+    return ""
+
+
+def _translate_oebb_templates(
+    text: str, ident: str, source: str | None, category: str | None
+) -> str | None:
+    """Translate an ÖBB text whose sentences follow ÖBB's templates.
+
+    Returns the text unchanged (the caller's cue for the ordinary path) when
+    no sentence has a template. Otherwise each templated sentence is rendered
+    from its slots and every run of other sentences goes through the ordinary
+    path; a failure anywhere fails the whole text (``None``).
+    """
+    sentences = _OEBB_SENTENCE_SPLIT_RE.split(text.strip())
+    parts: list[str] = []
+    prose: list[str] = []
+    templated = False
+
+    def _flush() -> bool:
+        if not prose:
+            return True
+        english = _translate_text_attempt(
+            " ".join(prose), ident, source=source, category=category,
+            oebb_templates=False,
+        )
+        prose.clear()
+        if english is None:
+            return False
+        parts.append(english)
+        return True
+
+    for sentence in sentences:
+        rendered = _render_oebb_sentence(sentence, ident, source, category)
+        if rendered is None:
+            return None
+        if not rendered:
+            prose.append(sentence)
+            continue
+        templated = True
+        if not _flush():
+            return None
+        parts.append(rendered)
+    if not templated:
+        return text
+    if not _flush():
+        return None
+    return " ".join(parts)
+
+
 def _translate_text_attempt(
     text: str,
     ident: str = "",
     *,
     source: str | None = None,
     category: str | None = None,
+    oebb_templates: bool = True,
 ) -> str | None:
     """Translate ``text`` from German to English with entity preservation.
 
@@ -3999,8 +4412,13 @@ def _translate_text_attempt(
     pipe = _get_translation_pipeline()
     if pipe is None:
         return None
+    if oebb_templates and source == "ÖBB":
+        templated = _translate_oebb_templates(text, ident, source, category)
+        if templated != text:
+            return templated
     # A trailing ``Label: value`` record is a table, not prose. Split it off
-    # and render it without the model (see ``_render_label_record``); only the
+    # and render it without the model (see ``_render_label_record``; only a
+    # closing reason the glossary cannot render still needs it); only the
     # prose in front of it goes through Marian. Untouched for the 154 of 157
     # published descriptions that carry fewer than two labels.
     prose, label_record = _split_label_record(text)
@@ -4009,6 +4427,8 @@ def _translate_text_attempt(
         if label_record
         else ""
     )
+    if record_en is None:
+        return None
     if not prose:
         # Nothing but the record — there is no prose left to translate.
         return record_en
@@ -4151,7 +4571,9 @@ def _translate_title_attempt(
 
 def _attempt_for_field(field: str) -> Callable[..., str | None]:
     """The translation attempt a cached field goes through: titles may split."""
-    return _translate_title_attempt if field == "title" else _translate_text_attempt
+    if field == "title":
+        return _translate_title_attempt
+    return _translate_text_attempt
 
 
 def _translate_time_line_en(time_line: str) -> str:

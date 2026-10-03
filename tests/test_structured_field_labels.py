@@ -161,7 +161,7 @@ def test_the_qualified_duration_still_wins() -> None:
     "Duration:".
     """
     out = _glossed("voraussichtliche Dauer: 2 Stunden")
-    assert "expected duration" in out
+    assert "Expected duration:" in out
     assert "voraussichtliche" not in out
 
 

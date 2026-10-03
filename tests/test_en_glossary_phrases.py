@@ -54,7 +54,11 @@ def test_bis_voraussichtlich_is_one_phrase() -> None:
     ("german", "english"),
     [
         ("Die Sperre dauert voraussichtlich zwei Wochen.", "expected"),
-        ("Voraussichtliche Dauer: 22:00", "expected duration"),
+        # As a label it is one capitalised label since the EN audit of
+        # 2026-10-03 (``"voraussichtliche Dauer:"``); "expected duration"
+        # without the colon stays lower case.
+        ("Voraussichtliche Dauer: 22:00", "Expected duration:"),
+        ("die voraussichtliche Dauer beträgt", "expected duration"),
         ("voraussichtliches Ende: 22:00", "expected end"),
     ],
 )
