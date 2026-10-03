@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 03 Oct 2026 12:23:53 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 03 Oct 2026 13:01:17 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[42: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
+      <pubDate>Sat, 03 Oct 2026 12:26:00 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 12:26:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 03 Oct 2026 12:35:43 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [Since 12:26]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 12:26]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A: Delays, track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b4c2e5634daffb2953a449e1106154bca73bdb498b00ff9111c29ce9d41ff3ae</guid>
+      <pubDate>Sat, 03 Oct 2026 12:03:00 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 12:03:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 03 Oct 2026 12:03:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 03 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Delays: irregular intervals in both directions. Track construction works: service from Johnstraße U, Schweglerstraße 19-21. [Today]</description>
+      <content:encoded><![CDATA[Delays: irregular intervals in both directions. Track construction works: service from Johnstraße U, Schweglerstraße 19-21.<br/>[Today]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +39,8 @@
       <ext:first_seen>Sat, 03 Oct 2026 11:59:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 03 Oct 2026 11:59:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 03 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Oberlaa. Duration: 12:30. Reason: rescue operation im Haltestellenbereich Taubstummengasse. [Since 11:59]</description>
-      <content:encoded><![CDATA[Service obstruction towards Oberlaa. Duration: 12:30. Reason: rescue operation im Haltestellenbereich Taubstummengasse.<br/>[Since 11:59]]]></content:encoded>
+      <description>After a service obstruction there are different intervals. [Since 11:59]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 11:59]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Sat, 03 Oct 2026 23:59:59 +0200</ext:ends_at>
       <description>No operation; trains stop at line 18, direction Burggasse; service from Kliebergasse. [Today]</description>
       <content:encoded><![CDATA[No operation; trains stop at line 18, direction Burggasse; service from Kliebergasse.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26E: Track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">dac4be805e97a1ee16cc914e8b4797565e65f97545fca29a6e2a1cbb7fe0bf00</guid>
-      <pubDate>Fri, 25 Sep 2026 08:55:00 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 09:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 25 Sep 2026 08:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
-      <description>Buses stop at Satzingerweg 41, Bessemerstraße 1-3, main carriageway, Hoßplatz 11; replacement bus stops at Karl-Waldbrunner-Platz in front of Schlosshofer Straße. [Until 12.12.]</description>
-      <content:encoded><![CDATA[Buses stop at Satzingerweg 41, Bessemerstraße 1-3, main carriageway, Hoßplatz 11; replacement bus stops at Karl-Waldbrunner-Platz in front of Schlosshofer Straße.<br/>[Until 12.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S80: ÖBB replacement bus]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Sat, 03 Oct 2026 05:00:25 +0200</pubDate>
-      <ext:first_seen>Fri, 25 Sep 2026 05:00:28 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 03 Oct 2026 05:00:25 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 03 Oct 2026 23:00:00 +0200</ext:ends_at>
-      <description>Bhf. Hütteldorf [Today]</description>
-      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>

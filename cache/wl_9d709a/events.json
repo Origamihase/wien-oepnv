@@ -398,6 +398,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12A: Verspätungen",
+    "description": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b4c2e5634daffb2953a449e1106154bca73bdb498b00ff9111c29ce9d41ff3ae",
+    "pubDate": "2026-10-03T12:03:00+02:00",
+    "starts_at": "2026-10-03T12:03:00+02:00",
+    "ends_at": "2026-10-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=12A|D=2026-10-03|TK=12a verspätungen"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -614,6 +626,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "42: Fahrtbehinderung Falschparker",
+    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
+    "pubDate": "2026-10-03T12:26:00+02:00",
+    "starts_at": "2026-10-03T12:35:43+02:00",
+    "ends_at": "2026-10-03T23:55:00+02:00",
+    "_identity": "wl|störung|L=42|D=2026-10-03|TK=falschparker"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "46/49/52: Gleisbauarbeiten",
     "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -759,7 +783,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U1: Rettungseinsatz",
-    "description": "Linie U1: Fahrtbehinderung in Richtung Oberlaa. Voraussichtliche Dauer: 12:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Taubstummengasse.",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
     "pubDate": "2026-10-03T11:59:00+02:00",
