@@ -1451,12 +1451,14 @@ def _plausible_end(
     """
     if end_local is None:
         return None
-    if start_local is not None and end_local < start_local:
+    # Compared in UTC: two datetimes in the same zone compare by wall clock
+    # (see :func:`format_local_times`).
+    if start_local is not None and _to_utc(end_local) < _to_utc(start_local):
         log.warning("Enddatum liegt vor Startdatum")
         return None
-    anchor = max(start_local, now_local) if start_local is not None else now_local
+    anchor = max(start_local, now_local, key=_to_utc) if start_local is not None else now_local
     max_span_days = feed_config.ABSOLUTE_MAX_AGE_DAYS
-    if (end_local - anchor).days > max_span_days:
+    if (_to_utc(end_local) - _to_utc(anchor)).days > max_span_days:
         log.warning(
             "Enddatum liegt mehr als %s Tage nach Beginn bzw. heute. Setze Enddatum auf None.",
             max_span_days,
@@ -1503,6 +1505,14 @@ def format_local_times(
 
     An incident that began on an earlier day, or that its source expects to
     last beyond today, keeps the lines above.
+
+    Days and clock times are Vienna's, the order of two moments is not:
+    Python compares two datetimes in the same zone by their wall clock and
+    ignores the offset. In the hour that repeats when summer time ends
+    (25.10.2026, 02:00 to 03:00 twice), an accident at 02:26 summer time
+    read as later than the build at 02:01 winter time, 35 minutes after it,
+    and the line fell back to "Heute" (a real night shifted onto that date).
+    Moments are therefore compared in UTC.
     """
     now_local = _to_utc(now).astimezone(_VIENNA_TZ) if now else datetime.now(_VIENNA_TZ)
     today = now_local.date()
@@ -1513,7 +1523,7 @@ def format_local_times(
     if (
         since_local is not None
         and since_local.date() == today
-        and since_local <= now_local
+        and _to_utc(since_local) <= _to_utc(now_local)
         and (end_local is None or end_local.date() == today)
     ):
         return f"Seit {since_local:%H:%M}".replace(" ", _NNBSP)

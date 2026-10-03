@@ -21,7 +21,7 @@ import logging
 import os
 import re
 import time
-from datetime import datetime, UTC
+from datetime import datetime, timedelta, timezone, UTC
 from zoneinfo import ZoneInfo
 from email.utils import parsedate_to_datetime
 from itertools import pairwise
@@ -1599,9 +1599,37 @@ def _get_text(elem: ET.Element | None, tag: str) -> str:
 def _parse_dt_rfc2822(s: str) -> datetime | None:
     try:
         dt = parsedate_to_datetime(s)
-        return dt if dt.tzinfo else dt.replace(tzinfo=UTC)
+        return _vienna_wall_clock(dt) if dt.tzinfo else dt.replace(tzinfo=UTC)
     except Exception:
         return None
+
+
+def _vienna_wall_clock(dt: datetime) -> datetime:
+    """``dt`` with the Vienna offset its wall clock had, when ÖBB sent the other one.
+
+    ÖBB stamps every ``pubDate`` with the offset valid at the time of the
+    fetch, not at the time of publication. At the first fetch after the
+    clocks went forward on 2026-03-29, all 30 running messages kept their
+    wall clock and switched from +01:00 to +02:00 ("27 Mar 2026 11:42:37"), and
+    all 38 winter messages cached since then, up to October, carry +02:00
+    ("19 Dec 2025 10:07:13 +0200"). Read as given, such a time is an hour off
+    in the other season, so a message from 23:30 or 00:30 lands on the
+    neighbouring day. The wall clock is what ÖBB recorded; it is read as
+    Europe/Vienna time. A stamp whose offset fits its wall clock stays as
+    it is, which also keeps the given offset in the hour that repeats when
+    summer time ends, the only case where the offset is needed. Offsets
+    other than Vienna's (+00:00 in tests) are left alone.
+    """
+    offset = dt.utcoffset()
+    if offset not in _VIENNA_OFFSETS:
+        return dt
+    wall = dt.replace(tzinfo=None)
+    fitting = {wall.replace(tzinfo=_OEBB_TZ, fold=fold).utcoffset() for fold in (0, 1)}
+    if offset in fitting:
+        return dt
+    corrected = wall.replace(tzinfo=_OEBB_TZ).utcoffset()
+    return dt if corrected is None else wall.replace(tzinfo=timezone(corrected))
+
 
 def _is_poor_title(t: str) -> bool:
     return not t or not any(c.isalnum() for c in t) or t == "-"
@@ -2057,6 +2085,8 @@ def _resolve_poor_title(title: str, link: str, guid: str, desc: str) -> str:
 
 
 _OEBB_TZ = ZoneInfo("Europe/Vienna")
+# Central European Time and Central European Summer Time.
+_VIENNA_OFFSETS = frozenset({timedelta(hours=1), timedelta(hours=2)})
 
 # ÖBB stellt jeder Beschreibung den Gültigkeitszeitraum voran:
 #

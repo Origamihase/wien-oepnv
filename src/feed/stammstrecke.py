@@ -37,7 +37,7 @@ import logging
 from collections import defaultdict
 from collections.abc import Mapping
 from dataclasses import dataclass
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from statistics import mean
 from typing import Any, Final
@@ -394,7 +394,7 @@ def _has_recent_exceedance(
     the narrow ``feed_window`` trigger gate fail does NOT wipe the persisted
     ``first_seen`` / GUID of a still-running disruption.
     """
-    cutoff = now - EPISODE_GAP_TOLERANCE
+    cutoff = _coerce_aware(now).astimezone(UTC) - EPISODE_GAP_TOLERANCE
     return any(
         obs.delay_minutes > DELAY_THRESHOLD_MINUTES and obs.timestamp >= cutoff
         for obs in observations
@@ -476,6 +476,11 @@ def compute_stammstrecke_events(
     canonical entry point.
     """
     current = now if now is not None else datetime.now(VIENNA_TZ)
+    # Windows are subtracted in UTC. ``current`` is a Vienna datetime, and
+    # ``current - feed_window`` would move its wall clock: on 25.10.2026 the
+    # 1 h window would span two hours from 02:00 to 04:00 winter time, on
+    # 28.03.2027 none at all from 03:00 to 04:00 summer time.
+    current_utc = _coerce_aware(current).astimezone(UTC)
     starts_path = episode_starts_path or EPISODE_STARTS_PATH
     persisted_starts = _load_episode_starts(starts_path)
     observations = read_recent_stammstrecke_observations(
@@ -507,7 +512,7 @@ def compute_stammstrecke_events(
             # outside the registry without updating this consumer.
             continue
         by_direction[canonical.target_label].append(obs)
-    feed_window_start = current - feed_window
+    feed_window_start = current_utc - feed_window
     events: list[dict[str, Any]] = []
     # Process directions in registry order so two simultaneous events
     # surface in a stable order across feed builds.
@@ -571,7 +576,7 @@ def compute_stammstrecke_events(
         # "[Seit …]" and GUID were the previous day's (fund E,
         # 2026-10-02; the ledger had one such gap, 7:45 h on 2026-08-06).
         persisted = persisted_starts.get(direction.target_label)
-        if persisted is not None and computed_start - (current - episode_lookback) > EPISODE_GAP_TOLERANCE:
+        if persisted is not None and computed_start - (current_utc - episode_lookback) > EPISODE_GAP_TOLERANCE:
             persisted = None
         if persisted is not None and persisted <= computed_start:
             episode_start = persisted

@@ -106,7 +106,7 @@ import sys
 from collections.abc import Iterable, Iterator, Mapping
 from contextlib import ExitStack, contextmanager
 from dataclasses import dataclass
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any, Final
 from zoneinfo import ZoneInfo
@@ -1245,7 +1245,34 @@ def _leg_departure_delay_minutes(leg: Mapping[str, Any]) -> float | None:
     elif rt_date_explicit is None and (actual - scheduled) > timedelta(hours=12):
         actual = actual - timedelta(days=1)
 
-    return (actual - scheduled).total_seconds() / 60.0
+    return _elapsed_minutes(scheduled, actual)
+
+
+def _elapsed_minutes(scheduled: datetime, actual: datetime) -> float:
+    """Minutes from *scheduled* to *actual*, both VAO times in Vienna.
+
+    VAO gives local wall-clock times. Subtracting two datetimes in the same
+    zone subtracts their wall clocks, so a train due 01:55 that left ten
+    minutes late on the morning the clocks go forward (28.03.2027, its
+    real time reading 03:05) counted as 70 minutes late. The minutes are
+    therefore taken between the two moments in UTC. A time in the hour
+    that repeats when summer time ends (02:00 to 03:00 on 25.10.2026) says
+    neither which of the two hours it means, so there the wall clocks
+    are subtracted as before, which is right whenever both times fall in
+    the same hour of the two.
+    """
+    if _ambiguous_local(scheduled) or _ambiguous_local(actual):
+        return (actual - scheduled).total_seconds() / 60.0
+    return (actual.astimezone(UTC) - scheduled.astimezone(UTC)).total_seconds() / 60.0
+
+
+def _ambiguous_local(when: datetime) -> bool:
+    """Whether *when*'s wall clock in Vienna repeats or is skipped by a clock change."""
+    local = when.astimezone(VIENNA_TZ).replace(tzinfo=None)
+    return (
+        local.replace(tzinfo=VIENNA_TZ, fold=0).utcoffset()
+        != local.replace(tzinfo=VIENNA_TZ, fold=1).utcoffset()
+    )
 
 
 @dataclass(frozen=True)

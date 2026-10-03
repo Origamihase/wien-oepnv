@@ -5,6 +5,19 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Zeitumstellung am 25.10.2026 (Prüfung 2026-10-03)**: Die echte Nacht vom
+  26./27.09. in die Nacht des 25.10. verschoben und durch den Wechsel gespielt,
+  dazu die Umstellung auf Sommerzeit. Zeitpunkte werden jetzt in UTC verglichen
+  und Stunden in UTC abgezogen: In der doppelten Stunde zeigte eine Störung von
+  02:26 Sommerzeit um 02:01 Winterzeit „[Heute]“ statt „[Seit 02:26]“
+  (`format_local_times`, `_plausible_end`); das Ein-Stunden-Fenster der
+  Stammstrecke umfasste am 25.10. zwei Stunden und war am Morgen der
+  Sommerzeit-Umstellung eine Stunde lang leer; der Monitor zählte einen Zug,
+  der um 01:55 fällig war und um 03:05 Sommerzeit fuhr, 70 statt 10 Minuten
+  verspätet. ÖBB-`pubDate` tragen den Offset des Abrufs statt den der
+  Veröffentlichung (alle 38 Wintermeldungen seit 29.03. mit +02:00); die Uhrzeit
+  gilt jetzt als Wiener Ortszeit. Details: `docs/architecture.md`
+  („Zeitumstellung“). Tests: `tests/test_clock_change.py`.
 * **Deutscher Feed: ÖBB-Störungen zeigen ihr „[Seit …]“ (2026-10-03, Nachprüfung von #1930 bis #1934)**:
   Die Seit-Zeit aus #1931 kam bei ÖBB nie an. `_incident_since` las die
   Uhrzeit aus `starts_at`, doch der ÖBB-Provider setzt dort seit 12.09. den
