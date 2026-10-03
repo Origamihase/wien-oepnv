@@ -26,6 +26,15 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   Übersetzungs-Epoche 20 räumt den Cache. Details: `docs/architecture.md`
   („Was am Modell vorbeigeht“, „Die Platzhalter“). Tests:
   `tests/test_en_audit_2026_10_03.py`.
+* **Health check: stille Stammstrecken-Richtung nur noch als Hinweis (2026-10-03)**:
+  Der Health check war seit 13.09. bei jedem Lauf rot (alle 6 Stunden eine
+  Fehler-Mail), weil Richtung Praterstern wegen der bekannten Sperre seit 14.08.
+  keine Messwerte liefert (`docs/archive/audits/audit-2026-09-26.md`). Eine echte
+  Störung hätte genauso ausgesehen. Betreiberentscheidung: Der Hinweis auf der
+  Website genügt; der Richtungs-Check schreibt eine stille Richtung nur noch als
+  Hinweis (ℹ️, `::warning`) und lässt den Lauf grün. Rot bleibt er nur, wenn
+  die Prüfung selbst nicht laufen kann. Doku: `docs/development.md`. Tests:
+  `tests/test_stammstrecke_direction_health.py`.
 * **Deutscher Feed: ÖBB-Störung zur vollen Stunde zeigt ihr „[Seit …]“ (2026-10-03, dritte Nachprüfung)**:
   „Wien Meidling ↔ Wien Liesing“ (Polizeieinsatz, veröffentlicht 20:00:01,
   „bis voraussichtlich 20:30 Uhr keine Fahrten“) stand eine Stunde lang mit
