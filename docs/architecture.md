@@ -1725,7 +1725,16 @@ Nicht jeder Text gehört in ein NMT-Modell:
   Modell, Stationsnamen bleiben wie ÖBB sie schreibt, nur ein nachgestelltes
   „Bahnhof“/„Bahnhst“ wird „station“. Vorher verlor das Modell regelmäßig das
   Verb am Satzende („… to 23:48 were not possible.“). Sätze ohne Vorlage
-  nehmen den normalen Weg.
+  nehmen den normalen Weg. Die Vorlage kennt auch ein Datum vor der Uhrzeit
+  („bis voraussichtlich 27.08.2026, 23:59 Uhr“), die Wortfolge
+  „voraussichtlich bis“ und die Gemeinde in eckigen Klammern hinter dem
+  Bahnhof („Hinterstoder Bahnhof [in St.Pankraz]“). Ein Stationsfeld enthält
+  nur einen Namen: Steht darin eine Ziffer oder ein Wort wie „Zugfahrten“,
+  „bis“, „bzw“ oder „am“ (`_OEBB_SLOT_NOT_A_NAME_RE`), weicht der Satz von
+  der Vorlage ab und nimmt ebenfalls den normalen Weg. Vorher landete jede
+  Abweichung nach der zweiten Station im Stationsfeld, Deutsch mitten im
+  englischen Satz („… and Gramatneusiedl Bahnhof Zugfahrten bis
+  voraussichtlich 27.08.2026, 23:59 Uhr.“; vierte Nachprüfung 2026-10-03).
 * **Nicht-übersetzbarer Inhalt.** `_is_non_translatable_content` erkennt
   maskierte Texte, in denen nach dem Maskieren nichts mehr steht, was ein
   Modell übersetzen könnte. Das sind reine Linien- und Stationsfolgen, seit

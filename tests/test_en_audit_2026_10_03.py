@@ -297,6 +297,83 @@ def test_oebb_sentences_are_rendered_from_their_slots(
     assert all(text.startswith("Wegen ") for text in cause_stub)
 
 
+@pytest.mark.parametrize(
+    ("german", "english"),
+    [
+        # Real feed sentences (fourth check 2026-10-03): the date in front of
+        # the time and "voraussichtlich bis" belonged in the station slot.
+        (
+            "Wegen eines Unfalles sind zwischen Wien Hbf (U) und Gramatneusiedl "
+            "Bahnhof Zugfahrten bis voraussichtlich 27.08.2026, 23:59 Uhr nur "
+            "eingeschränkt möglich.",
+            "trains can only run to a limited extent between Wien Hbf (U) and "
+            "Gramatneusiedl station until approx. 27.08.2026, 23:59.",
+        ),
+        (
+            "Wegen eines Schadens am Gleis sind zwischen Wien Hetzendorf Bahnhst und "
+            "Wien Atzgersdorf Bahnhst Zugfahrten voraussichtlich bis 13:00 Uhr nur "
+            "eingeschränkt möglich.",
+            "trains can only run to a limited extent between Wien Hetzendorf "
+            "station and Wien Atzgersdorf station until approx. 13:00.",
+        ),
+        (
+            "Wegen einer Stellwerkstörung am Bahnhof waren in Hinterstoder Bahnhof "
+            "[in St.Pankraz] bis 16:30 Uhr keine Fahrten möglich.",
+            "no trains could run at Hinterstoder station [in St.Pankraz] until 16:30.",
+        ),
+    ],
+)
+def test_oebb_template_variants_from_the_feed(
+    cause_stub: list[str], german: str, english: str
+) -> None:
+    """Everything after the cause comes from the slots (the stub knows few causes)."""
+    out = build_feed._translate_text_attempt(german, source=_OEBB)
+    assert out is not None and out.split(", ", 1)[1] == english
+    assert all(text.startswith("Wegen ") for text in cause_stub)
+
+
+@pytest.mark.parametrize(
+    "german",
+    [
+        (
+            "Wegen einer Stellwerkstörung am Bahnhof sind in Wien Hbf (U) bzw Wien "
+            "Meidling Zugfahrten erneut nur eingeschränkt möglich."
+        ),
+        (
+            "Wegen eines Schadens am Gleis sind zwischen Wien Meidling Bahnhof (U) und "
+            "Liesing (Wien) Zugfahrten voraussichtlich 22:00 Uhr nur eingeschränkt "
+            "möglich."
+        ),
+        (
+            "Wegen Bauarbeiten können zwischen Wien Hütteldorf Bahnhof (U) und Wien "
+            "Handelskai Bahnhst (U) am 01.11.2026 (von 01:10 Uhr bis 04:10 Uhr) keine "
+            "S45-Züge fahren."
+        ),
+    ],
+)
+def test_a_variant_without_template_never_lands_in_a_station_slot(
+    cause_stub: list[str], german: str
+) -> None:
+    """Off-template sentences go to the model whole, not German inside an English frame."""
+    assert build_feed._render_oebb_sentence(german, "x", _OEBB, None) == ""
+    build_feed._translate_text_attempt(german, source=_OEBB)
+    # One model call with the whole sentence (masked), not just the cause.
+    assert len(cause_stub) == 1
+    assert cause_stub[0].endswith(("möglich.", "fahren."))
+
+
+def test_a_station_name_with_in_der_is_still_a_name(cause_stub: list[str]) -> None:
+    out = build_feed._translate_text_attempt(
+        "Wegen eines Rettungseinsatzes waren zwischen Wien Wolf in der Au Bahnhst "
+        "und Wien Hadersdorf Bahnhst bis 14:55 Uhr keine Fahrten möglich.",
+        source=_OEBB,
+    )
+    assert out is not None and out.endswith(
+        "no trains could run between Wien Wolf in der Au station and Wien "
+        "Hadersdorf station until 14:55."
+    )
+
+
 def test_oebb_template_mixed_with_prose(cause_stub: list[str]) -> None:
     out = build_feed._translate_text_attempt(
         "Wegen einer Weichenstörung sind in St.Pölten Hbf derzeit keine Fahrten "

@@ -4215,7 +4215,8 @@ def _translation_text(result: Any, ident: str) -> str | None:
 # almost all of them are one sentence with five slots::
 #
 #     Wegen <Ursache> sind|waren zwischen <A> und <B> | in <A> [Zugfahrten]
-#     [bis [voraussichtlich] <hh:mm> Uhr | derzeit]
+#     [bis [voraussichtlich] | voraussichtlich bis] [<TT.MM.JJJJ>,] <hh:mm> Uhr
+#     | derzeit]
 #     keine Fahrten | nur eingeschränkt [Fahrten] möglich.
 #
 # The model handled the verb at the end badly, and the meaning went with it
@@ -4237,7 +4238,9 @@ _OEBB_RESTRICTION_RE: re.Pattern[str] = re.compile(
     r"Wegen (?P<cause>.+?) (?P<tense>sind|waren) "
     r"(?:zwischen (?P<a>.+?) und (?P<b>.+?)|in (?P<at>.+?)|im Bereich (?P<area>.+?))"
     r"(?: Zugfahrten)?"
-    r"(?: bis (?P<expected>voraussichtlich )?(?P<time>\d{1,2}:\d{2})(?: Uhr)?"
+    r"(?: (?:bis (?P<expected>voraussichtlich )?|(?P<expected_first>voraussichtlich) bis )"
+    r"(?:(?P<date>\d{2}\.\d{2}\.\d{4}),? )?"
+    r"(?P<time>\d{1,2}:\d{2})(?: Uhr)?"
     r"| (?P<now>derzeit))?"
     r" (?:(?P<none>keine Fahrten|nicht)|nur eingeschränkt(?: Fahrten)?) möglich\."
 )
@@ -4250,9 +4253,26 @@ _OEBB_NO_TRAINS_RE: re.Pattern[str] = re.compile(
     r"(?: von (?P<d3>\d{2}\.\d{2}\.\d{4}) bis (?P<d4>\d{2}\.\d{2}\.\d{4}))?"
     r" keine (?P<trains>[A-Z]{1,3} ?\d{1,3})-Züge fahren\."
 )
+# A place slot holds a station name and nothing else. The slots are lazy, so
+# a sentence that varies the template anywhere after the second station still
+# matched, and the variation landed in the station slot, German inside the
+# English frame (fourth check 2026-10-03, 10 of 286 templated ÖBB sentences in
+# the feed since July; five more kept "Bahnhof" before a bracketed
+# municipality): "… between Wien Hbf (U) and Gramatneusiedl Bahnhof
+# Zugfahrten bis voraussichtlich 27.08.2026, 23:59 Uhr.", "… at Wien Hbf (U)
+# bzw Wien Meidling Zugfahrten erneut.", "… and Wien Handelskai Bahnhst (U) am
+# 01.11.2026 (von 01:10 Uhr bis 04:10 Uhr).". A slot with a digit or one of
+# these words is no station name; such a sentence takes the ordinary path.
+# "in der" stays allowed ("Wien Wolf in der Au"), and so does ÖBB's bracketed
+# municipality ("Hinterstoder Bahnhof [in St.Pankraz]"), which reads the same
+# in English.
+_OEBB_SLOT_NOT_A_NAME_RE: re.Pattern[str] = re.compile(
+    r"\d|\b(?:und|bzw|sowie|oder|bis|von|ab|am|um|für|nach|Uhr"
+    r"|voraussichtlich|derzeit|erneut|noch|Zugfahrten|Fahrten|Züge)\b"
+)
 _OEBB_SENTENCE_SPLIT_RE: re.Pattern[str] = re.compile(r"(?<=[.!])\s+(?=[A-ZÄÖÜ])")
 _OEBB_STATION_SUFFIX_RE: re.Pattern[str] = re.compile(
-    r" (?:Bahnhof|Bahnhst\.?)(?=(?: \(U\))?$)"
+    r" (?:Bahnhof|Bahnhst\.?)(?=(?: \(U\))?(?: \[[^\]]*\])?$)"
 )
 
 
@@ -4273,6 +4293,13 @@ def _oebb_cause_en(
     return _capitalise_sentence_start(english.strip().rstrip(".,;:"))
 
 
+def _oebb_slots_are_names(match: re.Match[str], *slots: str) -> bool:
+    """Whether every filled place slot of *match* is a bare station name."""
+    return not any(
+        match[slot] and _OEBB_SLOT_NOT_A_NAME_RE.search(match[slot]) for slot in slots
+    )
+
+
 def _render_oebb_sentence(
     sentence: str, ident: str, source: str | None, category: str | None
 ) -> str | None:
@@ -4281,7 +4308,7 @@ def _render_oebb_sentence(
         lambda m: f"{m.group(1)}:{m.group(2) or '00'}", sentence
     )
     match = _OEBB_RESTRICTION_RE.fullmatch(sentence)
-    if match is not None:
+    if match is not None and _oebb_slots_are_names(match, "a", "b", "at", "area"):
         cause = _oebb_cause_en(match["cause"], ident, source, category)
         if cause is None:
             return None
@@ -4304,14 +4331,18 @@ def _render_oebb_sentence(
                 f" and {_oebb_station_en(match['b'])}"
             )
         if match["time"]:
-            when = f" until {'approx. ' if match['expected'] else ''}{match['time']}"
+            day = f"{match['date']}, " if match["date"] else ""
+            expected = match["expected"] or match["expected_first"]
+            when = (
+                f" until {'approx. ' if expected else ''}{day}{match['time']}"
+            )
         elif match["now"]:
             when = " at present"
         else:
             when = ""
         return f"{cause}, {core} {place}{when}."
     match = _OEBB_NO_TRAINS_RE.fullmatch(sentence)
-    if match is not None:
+    if match is not None and _oebb_slots_are_names(match, "a", "b"):
         cause = _oebb_cause_en(match["cause"], ident, source, category)
         if cause is None:
             return None
