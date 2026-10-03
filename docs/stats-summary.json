@@ -1,7 +1,7 @@
 {
   "ausfaelle": {
     "by_direction": {
-      "Meidling": 953,
+      "Meidling": 954,
       "Praterstern": 916
     },
     "by_hour": {
@@ -9,7 +9,7 @@
       "01": 10,
       "02": 3,
       "03": 1,
-      "04": 33,
+      "04": 34,
       "05": 72,
       "06": 78,
       "07": 112,
@@ -51,7 +51,7 @@
       "S28449": 1,
       "S28700": 1,
       "S28809": 1,
-      "S3": 246,
+      "S3": 247,
       "S4": 149
     },
     "by_weekday": {
@@ -60,17 +60,17 @@
       "Fr": 367,
       "Mi": 300,
       "Mo": 280,
-      "Sa": 151,
+      "Sa": 152,
       "So": 160
     },
-    "total": 1869
+    "total": 1870
   },
-  "generated_at": "2026-10-03T04:31:05+02:00",
+  "generated_at": "2026-10-03T05:01:03+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 1.02,
     "by_direction": {
-      "Meidling": 5843,
+      "Meidling": 5844,
       "Praterstern": 3831
     },
     "by_hour_avg": {
@@ -112,13 +112,13 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-10-03T04:13:00+02:00",
+          "last_seen": "2026-10-03T04:55:00+02:00",
           "peer_rows_since": 0,
           "rows_in_window": 1194
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 1993,
+          "peer_rows_since": 1994,
           "rows_in_window": 0
         }
       },
@@ -134,7 +134,7 @@
     "max_delay_minutes": 395.33,
     "threshold_exceedances": 125,
     "threshold_minutes": 9.0,
-    "total_observations": 9674
+    "total_observations": 9675
   },
   "stoerungen": {
     "by_hour": {
