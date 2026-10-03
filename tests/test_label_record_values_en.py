@@ -64,7 +64,9 @@ DE_72A = (
 
 
 def _render(record: str) -> str:
-    return _render_label_record(record, source="Wiener Linien", category="Hinweis")
+    rendered = _render_label_record(record, source="Wiener Linien", category="Hinweis")
+    assert rendered is not None
+    return rendered
 
 
 @pytest.mark.parametrize(
