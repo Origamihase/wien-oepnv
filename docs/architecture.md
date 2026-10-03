@@ -538,6 +538,49 @@ verdrängt eine andere Störung.
     WL-Störungen seit Juli. „Reparaturarbeiten“ (auch WLs „Reperaturarbeiten“)
     zählen nicht dazu, sie folgen auf einen Vorfall („Wegen Reparaturarbeiten
     nach einem Unfall“, ÖBB 27.08.). Stadt-Wien-Baustellen sind keine Störungen.
+* **Zeitumstellung (geprüft 2026-10-03 für den 25.10.2026 und den 28.03.2027).**
+  Tage, Wochentage und Uhrzeiten sind die von Europe/Vienna; der 25-Stunden-Tag
+  des 25.10. ist ein Tag („[Heute]“ bis 23:59 Winterzeit). Die Reihenfolge
+  zweier Zeitpunkte und jedes Rechnen mit Stunden laufen in UTC: Python
+  vergleicht und subtrahiert zwei Zeiten derselben Zone nach der Wanduhr und
+  übergeht den Offset. Geprüft mit der echten Nacht vom 26./27.09.2026, um vier
+  Wochen in die Nacht des 25.10. verschoben (33 Feed-Läufe, State fortgeschrieben,
+  freezegun mit erhaltenem `fold`), und um 26 Wochen in die des 28.03.2027;
+  Reihenfolge, Altersgrenzen, Vorlauf und Zeitzeilen stimmten bis auf diese
+  Stellen:
+  - **Zeitzeile:** In der doppelten Stunde (02:00 bis 03:00) las sich der
+    48A-Unfall von 02:26 Sommerzeit um 02:01 Winterzeit, 35 Minuten danach, als
+    „noch nicht begonnen“ und zeigte „[Heute]“ statt „[Seit 02:26]“; umgekehrt
+    hätte ein Unfall von 02:40 Winterzeit um 02:50 Sommerzeit schon „[Seit
+    02:40]“ gezeigt. `format_local_times` und `_plausible_end` vergleichen
+    jetzt in UTC. Die Uhrzeit bleibt die echte Wiener Uhrzeit des Beginns,
+    ohne Zusatz für Sommer- oder Winterzeit.
+  - **Stammstrecke:** `current - FEED_WINDOW` verschob die Wanduhr: am 25.10.
+    reichte das Ein-Stunden-Fenster von 02:00 bis 04:00 Winterzeit zwei Stunden
+    zurück, am Morgen der Umstellung auf Sommerzeit war es von 03:00 bis 04:00
+    leer, eine laufende Verspätung verschwand und konnte ihren gemerkten Beginn
+    verlieren.
+    Die Fenster in `compute_stammstrecke_events`, `_has_recent_exceedance` und
+    `read_recent_stammstrecke_observations` werden in UTC abgezogen. Der Monitor
+    rechnet die Verspätung aus den Wiener Ortszeiten der VAO ebenfalls in UTC
+    (`_elapsed_minutes`): Ein Zug, fällig 01:55, der zehn Minuten später um
+    03:05 Sommerzeit fuhr, zählte als 70 Minuten verspätet. Eine VAO-Zeit in
+    der doppelten Stunde sagt nicht, welche der beiden gemeint ist; dort
+    rechnet der Monitor weiter mit der Wanduhr, richtig, solange beide Zeiten
+    in derselben der zwei Stunden liegen.
+  - **ÖBB-`pubDate`:** ÖBB versieht jede Veröffentlichungszeit mit dem Offset
+    zum Zeitpunkt des Abrufs. Beim ersten Abruf nach dem 29.03.2026 wechselten
+    alle laufenden Meldungen bei gleicher Uhrzeit von +01:00 auf +02:00, und
+    alle 38 Wintermeldungen im Cache tragen seither +02:00 („19 Dec 2025
+    10:07:13 +0200“). Ab dem 25.10. trügen Sommermeldungen +01:00. `oebb.
+    _vienna_wall_clock` liest die Uhrzeit als Wiener Ortszeit, wenn der Offset
+    nicht zu ihr passt; in der doppelten Stunde passen beide und der gesendete
+    gilt. WL lieferte im März Sommerzeiten ebenfalls mit dem Winter-Offset,
+    seit Mai aber durchgehend richtige Offsets (kein falscher unter rund 7 000
+    Zeitstempeln der anderen Jahreszeit in jedem 20. Cache-Stand); daher bleibt
+    WL unverändert.
+  - Die Statistik-Spalte `hour` zählt am 25.10. die Stunde 02 doppelt; das ist
+    die reale Wiener Stunde und bleibt so.
 
 ### Zeitraum einer WL-Meldung: Plausibilitätsprüfung (seit 2026-10-02)
 

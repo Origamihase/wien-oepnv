@@ -204,6 +204,7 @@ from scripts.update_stammstrecke_status import (  # noqa: E402
     _build_session,
     _canonical_line_name,
     _charge_one_request,
+    _elapsed_minutes,
     _finalize_departed,
     _ledger_lock,
     _load_pending_trips,
@@ -714,7 +715,7 @@ def _departure_delay_minutes(dep: Mapping[str, Any]) -> float | None:
     elif rt_date_explicit is None and (actual - scheduled) > timedelta(hours=12):
         actual = actual - timedelta(days=1)
 
-    return (actual - scheduled).total_seconds() / 60.0
+    return _elapsed_minutes(scheduled, actual)
 
 
 @dataclass(frozen=True)

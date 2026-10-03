@@ -31,7 +31,7 @@ import math
 import os
 import re
 from dataclasses import dataclass
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any, Final
 from zoneinfo import ZoneInfo
@@ -815,7 +815,10 @@ def read_recent_stammstrecke_observations(
     # against the always-aware ``parsed.timestamp`` below — the docstring promises
     # this function never raises and degrades to "no observations" instead.
     now = to_vienna(now)
-    cutoff = now - window
+    # Subtract in UTC: ``now - window`` on a Vienna datetime moves the wall
+    # clock, so across a clock change the window would be an hour too long
+    # or, on the last Sunday in March, empty from 03:00 to 04:00.
+    cutoff = now.astimezone(UTC) - window
     folder = stats_dir if stats_dir is not None else DEFAULT_STATS_DIR
     # Read every calendar year the window spans, not just its two
     # boundaries: a window wider than one full year (no current caller
