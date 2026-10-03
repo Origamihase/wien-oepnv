@@ -40,10 +40,14 @@ def _utc(day: int, hour: int, minute: int = 0, *, month: int = 10, year: int = 2
     return datetime(year, month, day, hour, minute, tzinfo=UTC)
 
 
+def _local(when: datetime) -> datetime:
+    """*when* in Vienna time, as the feed passes it."""
+    return when.astimezone(VIENNA)
+
+
 def _line(start: datetime, end: datetime | None, now: datetime, since: datetime | None) -> str:
-    local = lambda when: when.astimezone(VIENNA)  # noqa: E731 - as the feed passes them
     return bf.format_local_times(
-        local(start), local(end) if end else None, local(now), since=local(since) if since else None
+        _local(start), _local(end) if end else None, _local(now), since=_local(since) if since else None
     ).replace(NNBSP, " ")
 
 
