@@ -157,8 +157,10 @@ def test_an_oebb_disruption_says_since_when() -> None:
     "description",
     [
         # Published 19:57 about a closure that ended 19:55 (04.07.2026).
-        "04.07.2026<br/><br/>Wegen eines Polizeieinsatzes <b>waren</b> in Mödling Bahnhof "
-        "<b>bis </b><b>19:55 Uhr</b> keine Fahrten möglich.",
+        (
+            "04.07.2026<br/><br/>Wegen eines Polizeieinsatzes <b>waren</b> in Mödling Bahnhof "
+            "<b>bis </b><b>19:55 Uhr</b> keine Fahrten möglich."
+        ),
         # The abbreviation's period does not end the search.
         "Wegen eines Polizeieinsatzes waren in Wr.Neustadt Hbf bis 21:18 Uhr keine Fahrten möglich.",
     ],
