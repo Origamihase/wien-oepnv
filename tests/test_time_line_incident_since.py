@@ -269,11 +269,19 @@ def test_oebb_works_keep_their_line() -> None:
     )
     item["ends_at"] = _at(5, 23, 59, 59)
     assert _line(item) == "Bis Mo 05.10."
-    # A date-only start (00:00) is no clock time, and neither is a
-    # publication on the full hour.
-    item["description"] = "Wegen eines Schadens am Gleis sind Zugfahrten eingeschränkt."
-    item["ends_at"] = _at(3, 23, 59, 59)
-    assert _line(item) == "Heute"
+
+
+def test_an_oebb_disruption_published_on_the_full_hour_says_since_when() -> None:
+    # "Wien Meidling ↔ Wien Liesing" (03.10.2026): published 20:00:01, the
+    # line closed until about 20:30. The full-hour rule is WL's; with it the
+    # running closure read "Heute".
+    item = _oebb_as_fetched(_at(3, 20, 0, 1))
+    item["description"] = (
+        "03.10.2026<br/><br/>Wegen eines Polizeieinsatzes sind zwischen <b>Wien Meidling "
+        "Bahnhof (U)</b> und <b>Wien Liesing Bahnhof</b> bis voraussichtlich <b>20:30 Uhr "
+        "keine Fahrten</b> möglich."
+    )
+    assert _oebb_line(item, None, _at(3, 20, 1, 29)) == "Seit 20:00"
 
 
 def test_the_stammstrecke_episode_says_since_when_even_at_the_full_hour() -> None:
