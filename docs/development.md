@@ -158,7 +158,7 @@ schreibt. Die wichtigsten Parameter:
 | `PAGES_BASE_URL`         | Basis-URL der GitHub-Pages-Site für absolute Permalinks (Standard `https://origamihase.github.io/wien-oepnv`). Wird gegen die Pages-Host-Allow-List validiert; abweichende Werte fallen auf den Standard zurück. |
 | `MAX_ITEMS`              | Anzahl der Einträge im Feed (Standard 10).                                      |
 | `MAX_ITEMS_PER_TOPIC`    | Höchstens so viele Einträge je Ursachenwort und Tag in den vorderen Plätzen; weitere rutschen hinter das Feld (Standard 3, 0 schaltet ab). Ohne eigene Variable gilt zusätzlich: Von mehreren ÖBB-Einträgen mit wortgleichem Titel (eine Strecke, mehrere Bauphasen) behält nur der mit dem frühesten Zeitfenster seinen Platz. |
-| `UPCOMING_PREVIEW_DAYS`  | Was später als so viele Wiener Kalendertage nach heute beginnt, rückt hinter alles, was schon gilt (Standard 1: ab dem Vortag des Beginns vorn; höchstens 365). 0 lässt nur heute Beginnendes vorn. |
+| `UPCOMING_PREVIEW_DAYS`  | Was später als so viele Wiener Kalendertage nach heute beginnt, rückt hinter alles, was schon gilt (Standard 1: ab dem Vortag des Beginns vorn, freitags und samstags bis einschließlich Montag; höchstens 365). 0 lässt nur heute Beginnendes vorn. |
 | `FEED_TTL`               | Cache-Hinweis für Clients in Minuten (Standard 15).                             |
 | `MAX_ITEM_AGE_DAYS`      | Maximales Alter von Meldungen aus den Caches (Standard 365).                    |
 | `ABSOLUTE_MAX_AGE_DAYS`  | Harte Altersgrenze für Meldungen (Standard 540).                                |
@@ -259,9 +259,12 @@ löschen. Alle vier stellen Items nur hinter das Feld, von wo sie nachrücken:
    drei Tage Vorlauf. Nachgerechnet über 3.875 Feed-Stände seit 15.07.
    belegten Ankündigungen mit Beginn in ein bis drei Tagen so 1.442 Plätze
    in 1.083 Ständen, jedes Mal mit einer laufenden Meldung auf Platz 11 oder
-   dahinter (Audit und Betreiberentscheidung 2026-10-03). Seitdem steht eine Ankündigung ab dem Vortag
-   ihres Beginns vorn: die Umleitung ab Montag am Sonntag, die Sperre in
-   vier Wochen rückt nach, sobald ein Platz frei ist.
+   dahinter (Audit und Betreiberentscheidung 2026-10-03). Seitdem steht eine
+   Ankündigung ab dem Vortag ihres Beginns vorn, freitags und samstags
+   außerdem alles, was bis einschließlich Montag beginnt
+   (`_preview_last_day`, Betreiberentscheidung „Wochenende mit“): Wer die
+   Anzeige nur werktags sieht, liest die Umleitung ab Montag noch am Freitag.
+   Die Sperre in vier Wochen rückt nach, sobald ein Platz frei ist.
 4. `_defer_all_clear_items`: Entwarnungen der ÖBB („Aufhebung
    Verkehrseinschränkung: …“, „Aufhebung Streckenunterbrechung: …“) stehen
    hinter allen anderen Items. Betreiberentscheidung vom 25.09.2026: Eine

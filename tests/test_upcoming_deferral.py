@@ -102,11 +102,39 @@ def test_by_default_an_announcement_leads_from_the_day_before() -> None:
     # 1,083 of 3,875 feed versions since 15.07., each time while a running
     # item stood on place 11 or later.
     assert bf.feed_config.UPCOMING_PREVIEW_DAYS == 1
-    friday = datetime(2026, 10, 2, 20, 0, tzinfo=VIENNA)
-    sunday = datetime(2026, 10, 4, 20, 0, tzinfo=VIENNA)
-    monday_detour = _item("29B/N25: Adolf-Loos-Gasse", datetime(2026, 10, 5, tzinfo=VIENNA))
+    tuesday = datetime(2026, 10, 6, 20, 0, tzinfo=VIENNA)
+    wednesday = datetime(2026, 10, 7, 20, 0, tzinfo=VIENNA)
+    thursday_works = _item("20A: Bauarbeiten", datetime(2026, 10, 8, tzinfo=VIENNA))
     running = _item("N71: Ersatzverkehr", datetime(2026, 10, 1, tzinfo=VIENNA))
 
     days = bf.feed_config.UPCOMING_PREVIEW_DAYS
-    assert bf._defer_upcoming_items([monday_detour, running], friday, days) == [running, monday_detour]
-    assert bf._defer_upcoming_items([monday_detour, running], sunday, days) == [monday_detour, running]
+    assert bf._defer_upcoming_items([thursday_works, running], tuesday, days) == [running, thursday_works]
+    assert bf._defer_upcoming_items([thursday_works, running], wednesday, days) == [thursday_works, running]
+
+
+def test_on_friday_and_saturday_monday_already_leads() -> None:
+    # Operator decision 2026-10-03 ("Wochenende mit"): a detour from Monday
+    # stands in front on Friday, for anyone who sees the display on workdays.
+    monday_detour = _item("29B/N25: Adolf-Loos-Gasse", datetime(2026, 10, 5, tzinfo=VIENNA))
+    tuesday_works = _item("20A: Bauarbeiten", datetime(2026, 10, 6, tzinfo=VIENNA))
+    running = _item("N71: Ersatzverkehr", datetime(2026, 10, 1, tzinfo=VIENNA))
+    items = [monday_detour, tuesday_works, running]
+
+    for day in (2, 3, 4):  # Friday, Saturday, Sunday
+        now = datetime(2026, 10, day, 20, 0, tzinfo=VIENNA)
+        assert [it["title"] for it in bf._defer_upcoming_items(items, now, 1)] == [
+            "29B/N25: Adolf-Loos-Gasse",
+            "N71: Ersatzverkehr",
+            "20A: Bauarbeiten",
+        ]
+    thursday = datetime(2026, 10, 1, 20, 0, tzinfo=VIENNA)
+    assert bf._defer_upcoming_items(items, thursday, 1) == [running, monday_detour, tuesday_works]
+
+
+def test_the_weekend_rule_needs_a_preview() -> None:
+    friday = datetime(2026, 10, 2, 20, 0, tzinfo=VIENNA)
+    monday_detour = _item("29B/N25: Adolf-Loos-Gasse", datetime(2026, 10, 5, tzinfo=VIENNA))
+    running = _item("N71: Ersatzverkehr", datetime(2026, 10, 1, tzinfo=VIENNA))
+    assert bf._defer_upcoming_items([monday_detour, running], friday, 0) == [running, monday_detour]
+    # A longer preview is never shortened by the weekend rule.
+    assert bf._preview_last_day(friday.date(), 5) == friday.date() + timedelta(days=5)
