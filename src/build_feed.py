@@ -73,6 +73,7 @@ from .utils.text import (
     BLOCK_END_MARK,
     html_to_text,
     repair_glued_words,
+    repair_saint_abbreviation,
     truncate_html,
 )
 
@@ -7429,6 +7430,15 @@ _CONTINUING_WORDS: frozenset[str] = frozenset({
 _DATE_FIELD_RE = re.compile(r"(?:Zeitraum|Dauer):")
 _DOUBLED_FULL_STOP_RE = re.compile(r"(?<!\.)\.\.(?!\.)")
 
+# WL ticker texts built from fields whose value was empty: the stop symbol
+# stripped from "Enkplatz U, Grillgasse" left "Enkplatz , Grillgasse", and a
+# missing place left "Grund: Verkehrsunfall im Bereich ." or "Voraussichtliche
+# Dauer: 12:15 Uhr .". A space in front of a comma, semicolon or full stop is
+# never right in German; a place clause with no place says nothing.
+_SPACE_BEFORE_PUNCT_RE = re.compile(r"(?<=\S)[ \t]+(?=[,;](?:\s|$)|\.(?:\s|$))")
+_SPACE_BEFORE_COMMA_RE = re.compile(r"(?<=\S)[ \t]+(?=[,;](?:\s|$))")
+_EMPTY_PLACE_RE = re.compile(r"\s+im\s+(?:Haltestellenbereich|Bereich)(?=\s*\.(?:\s|$))")
+
 
 def _join_continued_blocks(blocks: list[str]) -> list[str]:
     """Join a block to the next one where the sentence plainly goes on."""
@@ -7953,6 +7963,11 @@ def _format_item_content(
 ) -> FormattedContent:
     raw_title, title_lead = _display_title_parts(it, drop_section=drop_section)
     raw_desc  = it.get("description") or ""
+    # Before any comparison: "Ring , Volkstheater U" in the title and
+    # "Ring, Volkstheater U" in the text are one sentence, not two.
+    raw_title = repair_saint_abbreviation(_SPACE_BEFORE_COMMA_RE.sub("", raw_title))
+    title_lead = repair_saint_abbreviation(_SPACE_BEFORE_COMMA_RE.sub("", title_lead))
+    raw_desc = _SPACE_BEFORE_COMMA_RE.sub("", raw_desc)
     link = _resolve_item_link(it.get("link"), ident)
 
     raw_guid = it.get("guid") or ident
@@ -7996,6 +8011,7 @@ def _format_item_content(
     # umgeleitet.. Maßnahmen: …", three notices since July 2026); an
     # ellipsis (three or more) stays.
     summary = _DOUBLED_FULL_STOP_RE.sub(".", summary)
+    summary = _SPACE_BEFORE_PUNCT_RE.sub("", _EMPTY_PLACE_RE.sub("", summary))
     # Drop the "ask Wiener Linien" referral before the sentence split, or it
     # takes sentence one and the 180-char budget with it. Keep the referral
     # when it is all the description has: a useless sentence still beats an

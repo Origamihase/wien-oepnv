@@ -103,7 +103,7 @@ sequenceDiagram
 - **Der Hinweis auf Apex-Phase-1** ist entscheidend: Ohne gedeckelte `wait()`-Timeouts würde die Schleife gegen `perf_counter()` busy-spinnen.
 - **`request_safe`** ist die Security-State-Machine — siehe Diagramm §2.
 - **`deduplicate_fuzzy`** ist Apex-Phase-2-Territorium: Der parallele `merged_cache` reduziert das O(n²)-Regex-Reparsing auf O(n).
-- **Vor dem Altersfilter** verwirft `_drop_test_messages` Testmeldungen der Anbieter („Testmeldung“, oder ein Titel bzw. Text von höchstens fünf Wörtern mit dem Wort „Test“; Anlass: zwei WL-Testmeldungen am 23.09.2026). Sie belegten sonst einen der zehn Plätze.
+- **Vor dem Altersfilter** verwirft `_drop_test_messages` Testmeldungen der Anbieter („Testmeldung“, oder ein Titel bzw. Text von höchstens fünf Wörtern mit dem Wort „Test“, wobei ein Bindestrich zum Wort gehört und „Test-Fahrten“ nicht trifft; Anlass: zwei WL-Testmeldungen am 23.09.2026). Sie belegten sonst einen der zehn Plätze.
 - **Nach der Dedupe** legt `_merge_wl_ticker_clusters` die WL-Störungen eines Vorfalls zu einem Eintrag zusammen (seit 2026-09-26), und seit 2026-10-01 auch die einer Linie, deren Gültigkeit sich überschneidet (unten, „Titel und Beschreibung im deutschen Feed“). `deduplicate_fuzzy` lässt zwei WL-Störungen derselben Linien deshalb in Ruhe (`_may_merge`); WL-Störungen sich überschneidender, verschiedener Linien („40/41“ und „40“) führt es weiter selbst zusammen. Anschließend gehen die Anzeigetafel-Meldungen einer Baustelle in deren Hinweis auf (`_absorb_works_tickers`, seit 2026-10-02): eine WL-Störung mit genau einem Vorfall, deren Ursache der Hinweis im Titel oder in der `<h2>`-Überschrift nennt, deren Linien er abdeckt, deren Gültigkeit in seiner liegt (± 1 Tag) und von deren Straßen er eine nennt. Anlass: „D: Gleisbauarbeiten [Am 01.10.2026]“ für Arbeiten vom 28.09. bis 07.11., ebenso 12A, 25, N20, N49, 37A und 74A in allen 68 WL-Cache-Ständen vom 30.09. bis 02.10.; WL veröffentlicht die Tafel-Meldungen jede Nacht neu, sie belegten so täglich einen vorderen Platz. Die Straße hält zwei Baustellen derselben Ursache auseinander („66A: Busse halten Salvatorianerplatz“ ist nicht der Hinweis „65A/66A: Inzersdorfer Straße“). Den WL-Merge einfach vor `deduplicate_fuzzy` zu ziehen hätte die Reste auch entfernt, nahm aber am 02.10. einen Rettungseinsatz der Linie D mit in den Hinweis. Danach entscheidet die Reihenfolge, was die zehn Plätze bekommt: Sortierung nach `first_seen` (neueste zuerst; eine wiederkehrende WL-Meldung bekommt vorher über `_restart_recurring_occurrences` den Beginn ihres aktuellen Auftretens, die WL-GUID enthält kein Datum), dann `_defer_repeated_route_titles` (von wortgleichen ÖBB-Titeln bleibt nur das früheste Zeitfenster vorn), `_apply_topic_budget` (höchstens `MAX_ITEMS_PER_TOPIC` je Ursachenwort und Tag), `_defer_upcoming_items` (was erst nach `UPCOMING_PREVIEW_DAYS` Tagen beginnt, rückt hinter alles Laufende, Betreiberentscheidung 2026-10-02) und `_defer_all_clear_items` (ÖBB-Entwarnungen „Aufhebung …“ ganz nach hinten, Betreiberentscheidung 2026-09-25). Die Regeln löschen nichts, sie stellen hinter das Feld — siehe `docs/development.md`, „Reihenfolge im Feed".
 
 ### Titel und Beschreibung im deutschen Feed
@@ -441,6 +441,17 @@ verdrängt eine andere Störung.
   Funktionswort hinter „-straße/-gasse/-stelle/-platz/-ung“. Über 16 362
   Texte aus Feed- und Cache-Historie trifft die Regel 23 Stellen, alle
   verklebt; „zudem“, „indem“, „beiden“, „derzeit“ bleiben ganz.
+* **St.-Abkürzung, Leerzeichen vor Satzzeichen, Ortsangabe ohne Ort (seit
+  2026-10-03).** Die Nachprüfung der Änderungen vom 02.10. rendert alle
+  2.126 verschiedenen Meldungen der Cache-Historie neu und fand drei
+  Formen übrig. ÖBB schreibt „St.Pölten Hbf“ ohne Leerzeichen, während der
+  Titel derselben Meldung „St. Pölten Hauptbahnhof“ hieß;
+  `repair_saint_abbreviation` setzt es in Titel und Text („St.“ vor
+  Großbuchstabe, sonst nichts). Ein Leerzeichen vor Komma oder Semikolon
+  („Betrieb ab Enkplatz , Grillgasse“) fällt in `_format_item_content` vor
+  jedem Vergleich weg, sonst unterschieden sich Titel-Folge und Text und
+  derselbe Satz stand zweimal; ein Leerzeichen vor einem Punkt („12:15
+  Uhr .“) und „im Bereich .“ ohne Ort fallen aus der Beschreibung.
 * **Zeitzeile: was für heute zählt (seit 2026-10-02, Betreiberentscheidung).**
   Wer vor dem Display steht, fragt: Gilt das jetzt, und wie lange noch?
   `format_local_times` antwortet darauf statt mit zwei vollen Daten:

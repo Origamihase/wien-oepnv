@@ -652,6 +652,19 @@ _GLUED_LOWER_RE = re.compile(
 )
 
 
+# ``St.Pölten Hbf``, ``St.Andrä-Wördern``, ``St.Marx``: ÖBB writes the
+# abbreviation of "Sankt" without the space the German form needs (and
+# without which the title of the same notice, "St. Pölten Hauptbahnhof",
+# disagrees with its description). The capital after the full stop is
+# the signal; ``St`` is the only abbreviation ÖBB glues to a name.
+_GLUED_SAINT_RE = re.compile(r"\bSt\.(?=[A-ZÄÖÜ])")
+
+
+def repair_saint_abbreviation(text: str) -> str:
+    """``St.Pölten`` -> ``St. Pölten`` (see :data:`_GLUED_SAINT_RE`)."""
+    return _GLUED_SAINT_RE.sub("St. ", text)
+
+
 def repair_glued_words(text: str) -> str:
     """Insert the spaces an upstream feed dropped between words.
 
@@ -664,5 +677,6 @@ def repair_glued_words(text: str) -> str:
         return text
     repaired = _GLUED_SENTENCE_RE.sub(" ", text)
     repaired = _GLUED_BRACKET_RE.sub(" ", repaired)
+    repaired = repair_saint_abbreviation(repaired)
     repaired = _GLUED_LOWER_RE.sub(r"\g<0> ", repaired)
     return _GLUED_WORD_RE.sub(" ", repaired)

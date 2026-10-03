@@ -5,6 +5,33 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Feed-Texte: St.-Abkürzung, Leerzeichen vor Satzzeichen, Ortsangabe ohne Ort (2026-10-03, Nachprüfung der Änderungen vom 02.10.)**:
+  Alle 2.126 verschiedenen Meldungen aus der Cache-Historie (WL, ÖBB, Stadt
+  Wien) neu gerendert und gegen den Stand von `main` verglichen; 23
+  Meldungen ändern sich, alle gewollt.
+  - **Rang 2, verstümmelte Texte:** ÖBB schreibt „St.Pölten Hbf“,
+    „St.Andrä-Wördern“, „St.Marx“ ohne Leerzeichen; der Titel derselben
+    Meldung hieß „St. Pölten Hauptbahnhof“. `repair_saint_abbreviation`
+    (`src/utils/text.py`) setzt das Leerzeichen in Titel und Text; nur
+    „St.“ vor einem Großbuchstaben, „Last.Ende“ bleibt unberührt.
+  - **Rang 1 und 2, WL-Kurzmeldungen:** Ein Leerzeichen vor Komma oder
+    Semikolon („Betrieb ab Enkplatz , Grillgasse“) entfällt vor jedem
+    Vergleich. In einer Meldung machte es Titel-Folge und Text ungleich, und
+    derselbe Satz stand zweimal („Betrieb ab Ring , Volkstheater U. Betrieb
+    ab Ring, Volkstheater U“). Ein Leerzeichen vor einem Punkt („12:15
+    Uhr .“) entfällt ebenso, und „im Bereich .“ ohne Ort fällt ganz weg
+    (`_SPACE_BEFORE_COMMA_RE`, `_SPACE_BEFORE_PUNCT_RE`, `_EMPTY_PLACE_RE`).
+  - Tests: `tests/test_feed_text_hygiene_2026_10_03.py`.
+* **Deutscher Feed: verklebte Wörter, Absatzenden, EN-Platzhalterreste (2026-10-02, Fahrgast-Durchlauf, #1929)**:
+  Zeilenumbruch-Steuerzeichen (VT, FF, NEL, U+2028/2029) werden im
+  Cache-Scrub und in `_sanitize_text` zu einem Leerzeichen statt gelöscht;
+  `repair_glued_words` erkennt auch „Derlinke“, „Außerhalbder“, „zuden“.
+  WL-Absatzenden sind Satzenden (`html_to_text(mark_block_ends=True)`,
+  `_close_blocks`): Überschrift und Felder laufen nicht mehr ineinander, eine
+  Überschrift, die den Titel wiederholt, und „Zeitraum:“/„Dauer:“-Absätze
+  entfallen, die Folge einer Kurzmeldung endet mit Punkt, ein doppelter Punkt
+  aus der Quelle wird einer. EN: ein `X` vor einem Platzhalter wird wieder das
+  Leerzeichen („WipplingerstrX39“ → „Wipplingerstr 39“), Übersetzungs-Epoche 19.
 * **Deutscher Feed: Die Zeitzeile zeigt das Kalenderdatum (2026-10-02, Betreiberentscheidung)**:
   Die Regel aus #1927, nach der ein Ende zwischen 00:00 und 05:00 zum
   Betriebstag davor zählte, ist zurückgenommen. Datum und Wochentag sind
@@ -25,6 +52,44 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
     Ein fernes Ende zählt ab heute statt ab dem Beginn („N8: Thaliastraße U“
     zeigt „[Bis 16.11.]“ statt „[Seit 24.07.2024]“). EN übersetzt Wort für
     Wort („[From Mon 05.10. until 11.11.]“).
+* **Deutscher Feed: kürzere Titel, Ziel 50 Zeichen (2026-10-02, Betreiberwunsch, #1923, #1925)**:
+  Ein Titel über 50 Zeichen wird beim Rendern an seinen Fugen gekürzt
+  (`_display_title`), nie abgeschnitten, und erst nach Dedupe und Merges.
+  ÖBB: eine Strecke, die auf einer anderen derselben Meldung liegt, wird
+  nicht mehr aufgeführt (`_drop_contained_routes`); Linienlisten stehen ohne
+  Leerzeichen („R40/REX41/REX4/S40“). Baustellen: Hausnummern als Adresse
+  („Rennweg 33A–37“); ein Titel über 50 Zeichen behält die Straße, der
+  Abschnitt steht als Etikett vor der Beschreibung. Ein WL-Titel verliert ein
+  ausgeschriebenes Startdatum („ab 07. April 2026“), die Zeitzeile nennt es.
+* **WL: Anzeigetafel-Meldungen einer Baustelle gehen im Hinweis auf (2026-10-02, #1920)**:
+  „D: Gleisbauarbeiten [Am 01.10.2026]“ stand für Arbeiten bis 07.11. im Feed;
+  12A, 25, N20, N49, 37A und 74A ebenso, jede Nacht neu. `_absorb_works_tickers`
+  nimmt eine WL-Störung mit einem Vorfall in den Hinweis auf, wenn er ihre
+  Ursache nennt, ihre Linien abdeckt, ihre Gültigkeit umfasst und eine ihrer
+  Straßen nennt.
+* **WL: Dauerangabe statt 11:11-Ende, mit Puffer (2026-10-02, #1919)**:
+  Nennt „Zeitraum:“ nur eine Dauer („etwa sechs Wochen“), ersetzt Start plus
+  Dauer plus Puffer (halbe Dauer, mindestens eine Woche) ein 11:11-Ende von WL.
+  Die Rechnung verkürzt nur, sie verlängert nie.
+* **Fehlersuche vom 02.10. (2026-10-02, #1918)**: Eine Anzeigetafel-Meldung,
+  die WL je Linie sendet („N65“, „N66“), belegt einen Platz statt zwei. Ein
+  Bindestrich-Kompositum mit „Test“ („Test-Fahrten“) ist keine Testmeldung.
+  EN: Platzhalterreste im Cache gelten als Cache-Fehlgriff, das Feld wird neu
+  übersetzt. Stammstrecke: eine neue Episode nach einer Lücke im Ledger
+  bekommt ihren eigenen Beginn.
+* **WL: Plausibilitätsprüfung für den Zeitraum (2026-10-02, #1916)**: Die drei
+  Zeitangaben einer WL-Meldung (`time.*`, „ab“/„am“ im Titel, „Zeitraum:“)
+  werden gegeneinander abgewogen (`src/providers/wl_plausibility.py`);
+  Korrekturen landen in `data/wl_plausibility_anomalies.json`. Ein
+  Tippfehler wie „am 04.10.2027“ schob eine Meldung ein Jahr in die Zukunft.
+* **WL: Zeitraum-Befunde (2026-10-01/02, #1912–#1915)**: Ein Hinweis beginnt
+  laut „am“ im Titel oder „Zeitraum:“, nicht am Veröffentlichungstag; ein
+  11:11-Ende weicht dem Ende aus „Zeitraum:“; ein gebündelter Hinweis beginnt
+  beim frühesten Beginn seiner Phasen; der Fuzzy-Merge behält die Gültigkeit
+  beider Meldungen; ohne `time.start` gilt das Ende nicht mehr als Beginn.
+* **Stations-Diff-Bericht und Dashboard (2026-10-02, #1921, #1922)**: WL-Einträge
+  werden per DIVA statt per Name zugeordnet (acht Namen gehören zwei DIVAs);
+  der Abdeckungshinweis steht im Kopf von „Aktuelle Meldungen“.
 * **Deutscher Feed: ausführliche WL-Meldung behält die Folgen ihrer Kurzmeldungen (2026-10-01)**:
   Eine ausführliche Meldung steht weiter für ihre Kurzmeldungen. Was
   Kurzmeldungen derselben Ursache (oder ohne Ursache) zusätzlich sagen,
