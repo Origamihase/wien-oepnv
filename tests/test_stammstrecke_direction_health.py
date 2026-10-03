@@ -184,15 +184,47 @@ def test_rows_outside_the_window_do_not_count(stats_dir: Path) -> None:
 # --- health_check integration ----------------------------------------------
 
 
-def test_health_check_fails_on_silent_direction(stats_dir: Path) -> None:
+def test_health_check_notes_silent_direction_without_failing(stats_dir: Path) -> None:
+    """A silent direction is a note, never a red run (decision 2026-10-03).
+
+    The known closure Hbf - Praterstern made every run red from 2026-09-13 on,
+    so the failure mail no longer told a real outage apart from it.
+    """
     from scripts.health_check import check_stammstrecke_directions
 
     _write_ledger(stats_dir, _ticks(NOW, 8, "Meidling"))
 
     check = check_stammstrecke_directions(NOW)
-    assert check.ok is False
+    assert check.ok is True
+    assert check.note is True
+    assert check.summary.startswith("HINWEIS")
     assert "Praterstern" in check.summary
     assert "Meidling=8" in check.detail
+
+
+def test_health_check_note_keeps_the_run_green(
+    stats_dir: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """main() exits 0 with only the note, and annotates it as a warning."""
+    import scripts.health_check as hc
+
+    _write_ledger(stats_dir, _ticks(NOW, 8, "Meidling"))
+    note = hc.check_stammstrecke_directions(NOW)
+    healthy = hc.Check("Quelle", ok=True, summary="OK")
+    monkeypatch.setattr(hc, "check_source", lambda *_a, **_kw: healthy)
+    monkeypatch.setattr(hc, "check_feed_freshness", lambda _now: healthy)
+    monkeypatch.setattr(hc, "check_stations", lambda _now: healthy)
+    monkeypatch.setattr(hc, "check_stammstrecke_directions", lambda _now: note)
+    monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
+
+    assert hc.main() == 0
+    out = capsys.readouterr().out
+    assert "::warning title=Health: Stammstrecke-Richtungen::HINWEIS" in out
+    assert "::error" not in out
+    assert "ℹ️" in out
+    assert "Alles gesund" in out
 
 
 def test_health_check_passes_when_both_report(stats_dir: Path) -> None:
@@ -227,10 +259,12 @@ def test_health_check_window_is_env_tunable(
         + [(NOW - timedelta(hours=9), "Praterstern")],
     )
 
-    assert check_stammstrecke_directions(NOW).ok is False
+    assert check_stammstrecke_directions(NOW).note is True
 
     monkeypatch.setenv("HEALTH_STAMMSTRECKE_WINDOW_HOURS", "12")
-    assert check_stammstrecke_directions(NOW).ok is True
+    check = check_stammstrecke_directions(NOW)
+    assert check.ok is True
+    assert check.note is False
 
 
 def test_health_check_is_registered_in_the_report() -> None:
@@ -322,7 +356,7 @@ def test_monitor_degradation_never_fails_the_tick(
     The workflow runs the monitor under ``bash -e``, so a non-zero exit would
     stop the feed build every 30 minutes for the whole duration of a known
     closure. Collection has to keep running while half the corridor is down;
-    the alarm is health_check's job.
+    health_check repeats it as a note.
     """
     import scripts.update_stammstrecke_hbf as hbf
 

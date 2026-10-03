@@ -1337,9 +1337,9 @@ def main() -> int:
     # would abort the ``Refresh Stammstrecke status`` step (the workflow runs
     # it under ``bash -e``) and with it the rest of the cycle — so a known,
     # weeks-long closure would stop the feed build every 30 minutes. Data
-    # collection must keep running precisely while half the corridor is down;
-    # the alarm belongs in ``scripts/health_check.py``, which exists to go red
-    # and is polled by ``health-check.yml`` every 6 h.
+    # collection must keep running precisely while half the corridor is down.
+    # ``scripts/health_check.py`` repeats the finding as a note every 6 h, and
+    # the website shows the coverage gap to readers.
     _ = degraded_directions
     return 0
 
