@@ -22,12 +22,12 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
     Zeitzeile hatte „Bis Fr 04.09.“ gezeigt (alle 13 Baustellen, die bis zu
     ihrem Ende liefen). Sie gilt jetzt bis zum Ende dieses Tages
     (`_valid_until`).
-  - **Reihenfolge, Empfehlung an den Betreiber:** Ankündigungen rücken ab dem
+  - **Reihenfolge, Betreiberentscheidung 2026-10-03:** Ankündigungen rücken ab dem
     Vortag ihres Beginns vor statt drei Tage vorher
     (`UPCOMING_PREVIEW_DAYS` 3 → 1). Mit drei Tagen belegten sie 1.442
     Plätze in 1.083 Ständen, jedes Mal mit einer laufenden Meldung auf
     Platz 11 oder dahinter.
-  - **Reihenfolge, Empfehlung an den Betreiber:** Eine geplante WL-Maßnahme,
+  - **Reihenfolge, Betreiberentscheidung 2026-10-03:** Eine geplante WL-Maßnahme,
     die WL nach der Nachtpause neu ausgibt („66A: Busse halten
     Salvatorianerplatz“, täglich 04:40 bis 01:00), behält ihr erstes
     Auftreten, wenn sie binnen 36 Stunden wiederkommt

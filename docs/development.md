@@ -235,7 +235,7 @@ verlegte Haltestelle usw.) pausieren länger, etwa „66A: Busse halten
 Salvatorianerplatz“ jede Nacht von 01:00 bis 04:40; für sie gilt
 `_PLANNED_OCCURRENCE_GAP` (36 h). Mit 2 h zählte 66A jeden Morgen als neu
 und stand seit 26.09. in 370 von 387 Feed-Ständen vorn, obwohl es seit
-28.08. im Feed war (Audit 2026-10-03). ÖBB, Baustellen und
+28.08. im Feed war (Audit und Betreiberentscheidung 2026-10-03). ÖBB, Baustellen und
 Stammstrecke bleiben unberührt, denn dort ist `pubDate` kein Beginn eines
 Auftretens.
 
@@ -259,7 +259,7 @@ löschen. Alle vier stellen Items nur hinter das Feld, von wo sie nachrücken:
    drei Tage Vorlauf. Nachgerechnet über 3.875 Feed-Stände seit 15.07.
    belegten Ankündigungen mit Beginn in ein bis drei Tagen so 1.442 Plätze
    in 1.083 Ständen, jedes Mal mit einer laufenden Meldung auf Platz 11 oder
-   dahinter (Audit 2026-10-03). Seitdem steht eine Ankündigung ab dem Vortag
+   dahinter (Audit und Betreiberentscheidung 2026-10-03). Seitdem steht eine Ankündigung ab dem Vortag
    ihres Beginns vorn: die Umleitung ab Montag am Sonntag, die Sperre in
    vier Wochen rückt nach, sobald ein Platz frei ist.
 4. `_defer_all_clear_items`: Entwarnungen der ÖBB („Aufhebung
