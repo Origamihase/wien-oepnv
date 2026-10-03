@@ -563,7 +563,7 @@ verdrängt eine andere Störung.
     Die Fenster in `compute_stammstrecke_events`, `_has_recent_exceedance` und
     `read_recent_stammstrecke_observations` werden in UTC abgezogen. Der Monitor
     rechnet die Verspätung aus den Wiener Ortszeiten der VAO ebenfalls in UTC
-    (`_elapsed_minutes`): Ein Zug, fällig 01:55, der zehn Minuten später um
+    (`scripts/update_stammstrecke_status.py`): Ein Zug, fällig 01:55, der zehn Minuten später um
     03:05 Sommerzeit fuhr, zählte als 70 Minuten verspätet. Eine VAO-Zeit in
     der doppelten Stunde sagt nicht, welche der beiden gemeint ist; dort
     rechnet der Monitor weiter mit der Wanduhr, richtig, solange beide Zeiten
