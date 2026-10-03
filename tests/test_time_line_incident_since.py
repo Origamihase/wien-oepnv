@@ -221,10 +221,14 @@ def test_the_rendered_oebb_item_keeps_its_first_publication(monkeypatch: pytest.
 @pytest.mark.parametrize(
     "description",
     [
-        "Wegen Reparaturarbeiten nach einem Unfall sind zwischen Wien Hbf (U) und "
-        "Gramatneusiedl Bahnhof Zugfahrten nur eingeschränkt möglich.",
-        "Der Treppenabgang Webgasse ist gesperrt. Grund dafür sind dringende "
-        "Reperaturarbeiten an den Treppen.",
+        (
+            "Wegen Reparaturarbeiten nach einem Unfall sind zwischen Wien Hbf (U) und "
+            "Gramatneusiedl Bahnhof Zugfahrten nur eingeschränkt möglich."
+        ),
+        (
+            "Der Treppenabgang Webgasse ist gesperrt. Grund dafür sind dringende "
+            "Reperaturarbeiten an den Treppen."
+        ),
     ],
 )
 def test_repairs_after_an_incident_are_not_planned(description: str) -> None:
