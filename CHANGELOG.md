@@ -5,6 +5,21 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Deutscher Feed: Eine Störung sagt, seit wann sie läuft (2026-10-03, Betreiberwunsch)**:
+  „86A/87A/95A: Fahrtbehinderung wegen Rettungseinsatz“ zeigten „[Heute]“;
+  jetzt steht „[Seit 10:37]“ da, die Minute, in der WL den Einsatz
+  eingetragen hat (`pubDate`, die früheste der gebündelten WL-Meldungen).
+  `starts_at` (10:42 bis 10:54) ist die jüngste davon, die Kurzmeldung der
+  einzelnen Linie, und bleibt unverändert. Das gilt für jede Störung (WL,
+  ÖBB, Stammstrecke), die heute begonnen hat und heute endet oder kein Ende
+  hat. Geplantes (Veranstaltung, Demonstration, Arbeiten, Staatsbesuch,
+  Übung, verlegte Haltestelle), Maßnahmen, die WL zur vollen Stunde
+  einschaltet, ÖBB-Datumsbeginne (00:00) und Meldungen über eine schon
+  beendete Störung („… waren bis 19:55 Uhr keine Fahrten möglich“,
+  „Aufhebung …“) behalten ihre Zeile. Über die Cache-Stände seit Juli ändern
+  sich 1 918 von 2 529 WL- und 75 von 193 ÖBB-Zeitzeilen. Die
+  Stammstrecken-Meldung trägt ihr eigenes „[Seit 09.08.2026]“ nicht mehr in
+  der Beschreibung, das stand doppelt über der Zeitzeile. EN: „[Since 10:37]“.
 * **Feed-Texte: St.-Abkürzung, Leerzeichen vor Satzzeichen, Ortsangabe ohne Ort (2026-10-03, Nachprüfung der Änderungen vom 02.10.)**:
   Alle 2.126 verschiedenen Meldungen aus der Cache-Historie (WL, ÖBB, Stadt
   Wien) neu gerendert und gegen den Stand von `main` verglichen; 23

@@ -257,7 +257,7 @@ def test_new_episode_after_a_ledger_gap_does_not_inherit_the_old_start(
     assert len(new) == 1
     assert new[0]["first_seen"] == second.isoformat()
     assert new[0]["guid"] != old[0]["guid"]
-    assert "[Seit 02.10.2026]" in new[0]["description"]
+    assert new[0]["starts_at"] == second.isoformat()
     assert sm._load_episode_starts(starts_path)["Meidling"] == second
 
 

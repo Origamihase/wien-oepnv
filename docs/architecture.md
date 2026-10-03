@@ -459,7 +459,8 @@ verdrängt eine andere Störung.
   zählt nicht), „[Seit 30.09.]“ (läuft ohne Ende), „[Am So 04.10.]“ (ein
   künftiger Tag), „[Ab Mo 05.10. bis 11.11.]“ (beginnt später). Das Jahr
   steht nur, wenn es nicht das laufende ist, der Wochentag nur in den
-  nächsten sieben Tagen. Eine Uhrzeit steht bewusst nicht da: In den
+  nächsten sieben Tagen. Eine Uhrzeit für das Ende steht bewusst nicht da
+  (den Beginn einer Störung nennt der nächste Punkt): In den
   40 WL-Cache-Ständen bis 02.10. endeten 18 von 44 Störungen mit einer
   Uhrzeit am selben Tag genau eine Stunde nach ihrem Beginn („42:
   Feuerwehreinsatz“ 19:10 bis 20:10). Das sieht nach WLs Standardwert aus,
@@ -472,6 +473,49 @@ verdrängt eine andere Störung.
   tauscht die Wörter einzeln aus (`_TIME_WORDS_DE_TO_EN`: „[From Mon 05.10.
   until 11.11.]“), die Daten bleiben. `ext:starts_at` und `ext:ends_at`
   ändern sich nicht.
+* **Zeitzeile einer Störung: „[Seit 10:37]“ (seit 2026-10-03,
+  Betreiberwunsch „Störung bitte mit Zeitangabe“).** Bei einer Störung will
+  der Leser abschätzen, wie alt die Meldung ist. `_incident_since` liefert
+  den Beginn einer ungeplanten Störung (Kategorie „Störung“: WL-`trafficInfos`,
+  ÖBB, Stammstrecke), `format_local_times` zeigt ihn als Uhrzeit, wenn er
+  heute liegt und die Störung heute endet oder kein Ende hat. Sonst bleiben
+  die Zeilen oben.
+  - **WL:** Ein Eintrag bündelt oft mehrere WL-Meldungen desselben
+    Einsatzes: `pubDate` ist die früheste, `starts_at` die jüngste
+    (`wl_fetch` nimmt die jüngste, damit eine wiederverwendete alte
+    Kurzmeldung nichts zurückdatiert). Am 03.10. trugen „86A/87A/95A:
+    Fahrtbehinderung wegen Rettungseinsatz“ `pubDate` 10:37:00, die von WL
+    eingetragene Minute, und die Kurzmeldungen der Linien von 10:42:44 bis
+    10:54:13 als `starts_at`. Der Beginn ist daher `pubDate`, wenn es am
+    selben Wiener Tag liegt und nicht auf einer vollen Stunde; sonst
+    `starts_at`. Von den 18 Bündeln seit Juli, deren früheste Meldung mehr
+    als eine Stunde vor der jüngsten lag, trugen 12 eines dieser Merkmale,
+    alle aus einem alten Stand („10A: Fahrtbehinderung“ mit 09.07. 00:00:25
+    am 11.07.); bei den übrigen dürfte die früheste Meldung der echte
+    Beginn sein („66A: Feuerwehreinsatz“ 13:43:00, jüngste Meldung
+    15:06:30). Vorab eingetragene Maßnahmen schaltet WL zur vollen Stunde
+    ein, wenige Sekunden später („12: Betrieb ab Franz-Josefs-Bahnhof“
+    04:00:16), ohne dass der Titel die Ursache nennt; ein Beginn auf einer
+    vollen Stunde zeigt deshalb keine Uhrzeit. Ein Einsatz, der zufällig zur
+    vollen Stunde beginnt, zeigt weiter „[Heute]“. Die Beginne passen zur
+    Beobachtung: 2 038 der 2 324 WL-Störungen seit Juli tauchten binnen 35
+    Minuten nach ihrem `starts_at` im Feed auf (Takt 30 Minuten).
+  - **ÖBB:** `starts_at` ist die Minute, in der ÖBB die Meldung
+    veröffentlicht hat. Baustellen beginnen um 00:00 (reines Datum) und
+    heißen „Bauarbeiten“. ÖBB meldet eine beendete Störung in der
+    Vergangenheit („Wegen eines Polizeieinsatzes waren in Mödling Bahnhof
+    bis 19:55 Uhr keine Fahrten möglich“, veröffentlicht 19:57) oder als
+    „Aufhebung …“ (`_is_all_clear`); 60 der 193 ÖBB-Störungen seit Juli.
+    Sie behalten ihre Zeile (`_reports_past_disruption`), „[Seit 19:57]“
+    behauptete das Gegenteil.
+  - **Stammstrecke:** Der Beginn ist die erste gemessene verspätete
+    Abfahrt, auch zur vollen Stunde (`_MEASURED_SOURCES`). Die Beschreibung
+    trägt kein eigenes „[Seit …]“ mehr; sie las sich „… in Richtung
+    Praterstern [Seit 09.08.2026]“ über der Zeitzeile „[Seit 09.08.2026]“.
+  - **Geplant** heißt `_PLANNED_DISRUPTION_RE` in Titel oder Beschreibung:
+    Veranstaltung, Demonstration, Kundgebung, „…arbeiten“, Staatsbesuch,
+    „…übung“, „…verlegung“, Netzänderung, die geplanten Ursachen unter den
+    WL-Störungen seit Juli. Stadt-Wien-Baustellen sind keine Störungen.
 
 ### Zeitraum einer WL-Meldung: Plausibilitätsprüfung (seit 2026-10-02)
 
