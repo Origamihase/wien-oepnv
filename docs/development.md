@@ -198,7 +198,8 @@ Alle Pfade werden durch `resolve_env_path` (in `src/feed/config.py`) auf `docs/`
 Vorher, gleich nach dem Einsammeln, verwirft `_drop_test_messages`
 Testmeldungen der Anbieter: Titel oder Text enthält „Testmeldung“, oder
 Titel bzw. Text sind höchstens fünf Wörter lang und enthalten das Wort
-„Test“. Anlass: Zwei Testmeldungen der Wiener Linien standen am 23.09.2026
+„Test“ (ein Bindestrich gehört zum Wort: „Test-Fahrten“ ist keine
+Testmeldung). Anlass: Zwei Testmeldungen der Wiener Linien standen am 23.09.2026
 je einen Zyklus im Feed („71/72: Dies ist eine Testmeldung“, „62: F57f
 Test“). In 488 Meldungen des Feeds und 952 der Caches trifft die Regel nur
 diese beiden; „Haltestelle“ oder „Testbetrieb“ enthalten das Wort nicht.
