@@ -5,6 +5,25 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Dashboard auf dem Handy: Kopfzeile zweizeilig, DE | EN wieder erreichbar (2026-10-04)**:
+  Die Kopfzeile von `site.html` hatte keine Handy-Darstellung. Unter rund
+  1000 CSS-px stapelte die Navigation ihre Links senkrecht, die mitlaufende
+  Kopfzeile war auf jedem Handy 232 px hoch (ein Drittel eines 667-px-Schirms,
+  an jeder Scrollposition), und unter rund 530 px lag der Sprachumschalter
+  rechts außerhalb des Bildschirms, wo `html { overflow-x: clip }` ihn
+  abschnitt: Die englische Fassung war auf dem Handy nicht wählbar. Bis
+  767 px ist die Kopfzeile jetzt zweizeilig (Marke, Wetter, DE | EN oben,
+  die Navigation als eine waagrecht wischbare Zeile darunter), 87 px hoch;
+  unter 400 px steht „Wien ÖPNV“ zweizeilig ohne Untertitel, unter 360 px
+  nur das Logo. Sprungmarken landen unter der höheren Kopfzeile
+  (`scroll-margin-top`). Dazu zwei Kleinigkeiten derselben Seite: Der
+  Skip-Link ragte als dunkler 2-px-Streifen oben ins Bild (feste
+  `top: -2.5rem` kürzer als der Link), und auf Handys sprang die
+  Meldungsliste um eine Zeile, sobald der Datenstand den Platzhalter „–“
+  ersetzte (die Zeile reserviert jetzt ihre geladene Höhe). Gemessen mit
+  Playwright-Geräteemulation (320–1024 px, DE/EN, hell/dunkel) und Lighthouse
+  Mobil: Leistung 97–100 vorher wie nachher, 155 KiB, 11 Anfragen; CLS
+  0,018. Wächter: `tests/test_site_css_mobile_header.py`.
 * **WL: alle Haltestellenverlegungen und -auflassungen im Feed (2026-10-04, Betreiberentscheidung „Alle aufnehmen“)**:
   Eine solche Meldung kam nur durch, wenn ihr Grund auf „…arbeiten“ endete
   (13 der 37 Meldungen des Laufs von 14:00 UTC). Jetzt kommen alle: Der
