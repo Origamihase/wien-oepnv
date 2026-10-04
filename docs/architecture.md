@@ -416,6 +416,19 @@ verdrängt eine andere Störung.
   stehen ohne „-Züge“ und zählen nicht. `_extract_line_prefix` erkennt ein
   solches Präfix wieder, sonst setzte `_post_filter_oebb` es beim Lesen des
   Caches ein zweites Mal davor.
+* **WL: eine geschriebene Linienliste steht nur einmal (seit 2026-10-04).**
+  Schreibt WL die Linien ohne Doppelpunkt oder mit einem Namen aus zwei
+  Wörtern, erkannte der Präfix-Leser sie nicht, und der Titel nannte sie
+  zweimal: „16A/N65: 16A, N65 Grohnergasse“, „N25: N25, SEV U1: Kaisermühlen,
+  V.I.C.“, „1/18/62/LB: 1, 18, 62, Badner Bahn: Signalstörung“ (10.09.),
+  „3A: 3A Netzänderung Betrieb ab Riemergasse“ (04.10.).
+  `_strip_written_line_list` (`src/providers/wl_lines.py`) nimmt eine solche
+  Liste in das Präfix. Mit Doppelpunkt muss jeder Name ohne Leerzeichen ein
+  Liniencode sein („Badner Bahn“ ist `LB`, „SEV U1“ wird `SEVU1` wie „REX 41“
+  `REX41`); ohne Doppelpunkt nur, wenn jeder Name eine Linie der Meldung ist
+  („U1 Klapprampensperre“ bei einer U1-Meldung, nie „25 Jahre …“ bei einer
+  ohne Linie 25). Bleibt danach nichts übrig oder folgt eine Einheit („5
+  Minuten …“), bleibt der Titel, wie er war.
 
 * **Absatzende ist Satzende (seit 2026-10-02).** WL baut ausführliche
   Meldungen aus Absätzen und Überschriften. Die Umwandlung in Text machte
@@ -673,6 +686,19 @@ sie verlängert es nie. Anlass: „65A/66A“ (ab 12.08., „etwa zwei Wochen“
 stand am 02.10. noch mit Ende 31.08.2027 im Cache; 29B/N25 endet jetzt am
 07.12. statt 31.12., 36A/36B am 12.11. statt 16.09.2027, 63A behält sein
 11.11.
+
+Eine Haltestellenverlegung oder -auflassung nennt ihren Zeitraum unter
+„Dauer:“ statt „Zeitraum:“ („Dauer: Ab 05. Oktober 2026, etwa 07:00 Uhr für
+etwa zwei Wochen“); alle 37 solchen Meldungen der Rohdaten vom 2026-10-04
+tun das, keine hat „Zeitraum:“. Seit 2026-10-04 gilt „Dauer:“ dort als
+Überschrift des Zeitraums (`_period_text`), mit denselben Regeln. Anlass:
+„26E/N20: Fultonstraße“, am 28.09. für den 05.10. veröffentlicht, stand mit
+„[Bis 28.09.2027]“ (11:11-Ende) im Feed-Nachbau; jetzt „[Ab Mo 05.10. bis
+26.10.]“. 27 der 37 Meldungen beginnen dadurch später (der Tag aus dem Text
+statt der Veröffentlichung), sechs enden früher (27A, 60A und 76A Ende
+Oktober 2026 statt im Herbst 2027). Nur dort: Vier WL-Störungen schreiben „Dauer:“ vor
+eine Uhrzeit oder „Bis 30.10.2026 Betriebsschluss“, das die Beginnregel für
+einen Beginn am 30.10. hielte.
 
 ### Rohdaten und Verwürfe des Abrufs (seit 2026-10-04)
 

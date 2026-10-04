@@ -68,7 +68,7 @@ from .utils.locking import file_lock
 from .utils.logging import sanitize_log_arg
 from .utils.stats import append_disruption_row, extract_location_name
 from .providers.baustellen import REFERRAL_BOILERPLATE_RE
-from .providers.wl_text import _MONTHS_DE
+from .providers.wl_text import _MONTHS_DE, STOP_NOTICE_LEAD_RE
 from .utils.text import (
     BLOCK_END_MARK,
     html_to_text,
@@ -6645,6 +6645,35 @@ def _defer_all_clear_items(items: list[FeedItem]) -> list[FeedItem]:
     return [item for item in items if not _is_all_clear(item)] + deferred
 
 
+def _initial_first_seen(item: FeedItem, now_utc: datetime) -> datetime:
+    """The ``first_seen`` an item gets when the build sees it for the first time.
+
+    Normally ``now``: the item has just appeared. A Wiener-Linien stop
+    relocation or closure ("Haltestellenverlegung …", "Haltestellenauflassung
+    …") starts from when WL published it (``pubDate``, WL's ``time.start``)
+    instead. Since 2026-10-04 every such notice reaches the feed (operator
+    decision "Alle aufnehmen"); before, the fetch dropped 24 of 37 (Update run
+    of 2026-10-04 14:00 UTC).
+    Counted as new, those 24 — some running since 2023 — would all have led
+    the feed at once and filled its ten places. Each takes the place it
+    would have had if the fetch had never dropped it: a notice published on
+    28.09. for 05.10. ("26E/N20: Fultonstraße") sorts as seen on 28.09., and
+    :func:`_defer_upcoming_items` still holds it back until the day before.
+    A notice WL publishes from now on is new as before.
+    """
+    if item.get("source") != "Wiener Linien" or str(item.get("category") or "").casefold() != "hinweis":
+        return now_utc
+    published = _parse_datetime(item.get("pubDate"))
+    if not isinstance(published, datetime):
+        return now_utc
+    published_utc = _to_utc(published)
+    if published_utc >= now_utc:
+        return now_utc
+    if not STOP_NOTICE_LEAD_RE.match(html_to_text(str(item.get("description") or ""))[:200]):
+        return now_utc
+    return published_utc
+
+
 def _recency_sort_key(
     item: FeedItem, state: dict[str, dict[str, Any]], now_utc: datetime
 ) -> tuple[float, int, float, str]:
@@ -6672,7 +6701,7 @@ def _recency_sort_key(
        (otherwise items tying on all of the above would shuffle between builds).
     """
     _, entry = _lookup_state(item, state)
-    first_seen = _parse_first_seen(entry, now_utc) or now_utc
+    first_seen = _parse_first_seen(entry, None) or _initial_first_seen(item, now_utc)
     pub = _parse_datetime(item.get("pubDate"))
     pub_ts = pub.timestamp() if isinstance(pub, datetime) else float("-inf")
     # Clamp a future pubDate to now: a bogus future publication date must not
@@ -6817,7 +6846,7 @@ def _update_item_state(it: FeedItem, now: datetime, state: dict[str, dict[str, A
     ident, st = _lookup_state(it, state)
     is_strictly_new = not st
     if not st:
-        st = {"first_seen": _to_utc(now).isoformat()}
+        st = {"first_seen": _initial_first_seen(it, _to_utc(now)).isoformat()}
     state[ident] = st
     # Legacy-key migration cleanup: ``_lookup_state`` returns the modern
     # guid-shaped key in ``ident``, but on a guid-key miss it falls back

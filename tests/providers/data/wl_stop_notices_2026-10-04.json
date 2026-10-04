@@ -1,0 +1,977 @@
+{
+ "source": "data/raw/wl/newsList.json, Update run 2026-10-04 14:00 UTC (commit 1f6c5298): every stop relocation and closure, verbatim",
+ "pois": [
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 73A in Richtung Landwehrstra&szlig;e</span></u></strong><u></u></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Geringergasse</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Kaiserebersdorfer Stra&szlig;e 40-42</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">Kaiserebersdorfer Stra&szlig;e 28-38</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp; von 20.11.2023, ca. 10:00 Uhr bis voraussichtlich Ende Oktober 2026</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Hausabbruch und Neubau</span></p>",
+   "id": "N20260209-2738",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260209-2738",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "73A"
+   ],
+   "relatedStops": [
+    2156
+   ],
+   "time": {
+    "end": "2026-10-31T11:11:00.000+0100",
+    "start": "2023-11-15T15:40:00.000+0100",
+    "validFrom": "2026-02-09T23:00:00.000+0100"
+   },
+   "title": "73A: Geringergasse ab 20.11.2023"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie N8 in Richtung Alterlaa U</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Thaliastra&szlig;e U</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Lerchenfelder G&uuml;rtel 35</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Lerchenfelder G&uuml;rtel 41</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp; Ab 20. Juli 2024,&nbsp;</span></span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">Dauer derzeit unbekannt</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Bauarbeiten</span></p>",
+   "id": "N20260209-3501",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260209-3501",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "N8"
+   ],
+   "relatedStops": [
+    5668
+   ],
+   "time": {
+    "end": "2026-11-16T11:11:00.000+0100",
+    "start": "2024-07-19T09:52:00.000+0200",
+    "validFrom": "2026-02-09T23:00:00.000+0100"
+   },
+   "title": "N8: Thaliastraße U ab 24.07.2024"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 5A in Richtung Griegstra&szlig;e,&nbsp;</span></u></strong><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">5B in Richtung Heiligenstadt S U und N31 in Richtung Stammersdorf</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Obere Augartenstra&szlig;e&nbsp;</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Untere Augartenstra&szlig;e 40</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">Untere Augartenstra&szlig;e 42</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;30. September 2025, etwa 18:00 Uhr auf Dauer von etwa einem Jahr</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Dachgeschossausbau&nbsp;</span></p>",
+   "id": "N20260209-4631",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260209-4631",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "5A",
+    "5B",
+    "N31"
+   ],
+   "relatedStops": [
+    2399,
+    2754
+   ],
+   "time": {
+    "end": "2026-11-01T11:11:00.000+0100",
+    "start": "2025-09-25T13:00:00.000+0200",
+    "validFrom": "2026-02-09T23:00:00.000+0100"
+   },
+   "title": "5A, 5B, N31: Obere Augartenstraße"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 27A in Richtung Kagran U</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Panethgasse, Sebaldgasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Panethgasse 8 nach Einfahrt</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Panethgasse gegen&uuml;ber 63, 20 Meter in Fahrtrichtung Kagran</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;13. November 2025, etwa 07:00 Uhr bis etwa Ende Oktober 2026</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Unbekannt</span></p>",
+   "id": "N20260209-4915",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260209-4915",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "27A"
+   ],
+   "relatedStops": [
+    3038
+   ],
+   "time": {
+    "end": "2027-11-10T11:11:00.000+0100",
+    "start": "2025-11-10T12:10:00.000+0100",
+    "validFrom": "2026-02-09T23:00:00.000+0100"
+   },
+   "title": "27A: Panethgasse, Sebaldgasse"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 61A in Richtung V&ouml;sendorf-Siebenhirten</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Eitnergasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Herziggasse 10</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Herziggasse 8</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 03. Dezember 2025, etwa 09:00 Uhr bis etwa Fr&uuml;hjahr 2027</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Hausbau</span></p>",
+   "id": "N20260209-4985",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260209-4985",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "61A"
+   ],
+   "relatedStops": [
+    2768
+   ],
+   "time": {
+    "end": "2026-12-03T11:11:00.000+0100",
+    "start": "2025-12-03T09:00:00.000+0100",
+    "validFrom": "2026-02-09T23:00:00.000+0100"
+   },
+   "title": "61A: Eitnergasse"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 54A in Richtung H&ouml;rndlwald</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Wlassakstra&szlig;e</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Joseph-Lister-Gasse 2</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> J</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">oseph-Lister-Gasse 6-8</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 20. Februar 2026, etwa 07:00 Uhr, Dauer unbekannt</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Hausbau</span></p>",
+   "id": "N20260210-5248",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260210-5248",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "54A"
+   ],
+   "relatedStops": [
+    8962
+   ],
+   "time": {
+    "end": "2027-02-20T11:11:00.000+0100",
+    "start": "2026-02-10T06:00:00.000+0100",
+    "validFrom": "2026-02-16T07:00:00.000+0100"
+   },
+   "title": "54B: Wlassakstraße"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 1A in Richtung Stephansplatz U</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Habsburgergasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Habsburgergasse 9 nach Stallburggasse</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Habsburgergasse 3</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 19. J&auml;nner 2026, etwa 08:00 Uhr f&uuml;r etwa ein Jahr</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Haussanierung</span></p>",
+   "id": "N20260211-5254",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260211-5254",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "1A"
+   ],
+   "relatedStops": [
+    2945
+   ],
+   "time": {
+    "end": "2028-01-13T11:11:00.000+0100",
+    "start": "2026-01-13T15:10:00.000+0100",
+    "validFrom": "2026-02-11T21:58:00.000+0100"
+   },
+   "title": "1A: Habsburgergasse"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 57A in Richtung Burgring</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Haus des Meeres</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Gumpendorfer Stra&szlig;e nach Kopernikusgasse</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Gumpendorfer Stra&szlig;e 63a</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 02. M&auml;rz 2026, etwa 10:00 Uhr f&uuml;r ca. 1 Jahr</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Hausbau</span></p>",
+   "id": "N20260224-5338",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260224-5338",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "57A"
+   ],
+   "relatedStops": [
+    1590
+   ],
+   "time": {
+    "end": "2028-02-24T11:11:00.000+0100",
+    "start": "2026-02-24T10:00:00.000+0100",
+    "validFrom": "2026-02-24T09:39:00.000+0100"
+   },
+   "title": "57A: Haus des Meeres"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 93A&nbsp;</span></u></strong><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">in Richtung Kagran U</span></u></strong><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">, 96A&nbsp;</span></u></strong><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">in Richtung Erzherzog-Karl-Stra&szlig;e S </span></u></strong><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">und Rufbus N91 in Richtung Donaustadtbr&uuml;cke U</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Schillwasserweg</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Kanalstra&szlig;e 65</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">Kanalstra&szlig;e</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\"> 59-61</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 20. April 2026, etwa 07:00 Uhr, Dauer unbekannt</span></p>",
+   "id": "N20260325-5566",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260325-5566",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "93A",
+    "96A"
+   ],
+   "relatedStops": [
+    8602
+   ],
+   "time": {
+    "end": "2027-07-31T11:11:00.000+0200",
+    "start": "2026-03-25T00:00:00.000+0100",
+    "validFrom": "2026-03-25T13:58:00.000+0100"
+   },
+   "title": "93A, 96A, Rufbus N91: Schillwasserweg"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien N25 und SEV U1 in Richtung Schwedenplatz U bzw. Oberlaa</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kaiserm&uuml;hlen, V.I.C.</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Wagramer Stra&szlig;e 5-9</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Wagramer Stra&szlig;e gg&uuml;. 8 (etwa 30 Meter Richtung Ampel)</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 19. Mai 2025, etwa 08:00 Uhr, Dauer unbekannt</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stra&szlig;enbau</span></p>",
+   "id": "N20260513-5839",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260513-5839",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "N25"
+   ],
+   "relatedStops": [
+    5520
+   ],
+   "time": {
+    "end": "2027-05-19T11:11:00.000+0200",
+    "start": "2026-05-13T18:30:00.000+0200",
+    "validFrom": "2026-05-13T09:14:00.000+0200"
+   },
+   "title": "N25, SEV U1: Kaisermühlen, V.I.C."
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U und N66 in Richtung Oper, Karlsplatz U</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Grenzackerstra&szlig;e</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Laxenburger Stra&szlig;e 145, Nebenfahrbahn nach Raxstra&szlig;e</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Laxenburger Stra&szlig;e 143</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 26. Mai 2026, etwa 09:45 Uhr, auf unbestimmte Zeit</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kabelarbeiten</span></p>",
+   "id": "N20260520-5854",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260520-5854",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "66A",
+    "N66"
+   ],
+   "relatedStops": [
+    1974
+   ],
+   "time": {
+    "end": "2026-11-11T11:11:00.000+0100",
+    "start": "2026-05-25T00:00:00.000+0200",
+    "validFrom": "2026-05-20T14:23:00.000+0200"
+   },
+   "title": "66A, N66: Grenzackerstraße Richtung Reumannplatz bzw. Oper, Karlsplatz"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 76A in Richtung Albern, bzw. 76B in Richtung Albern</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Mannsw&ouml;rther Stra&szlig;e</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Mannsw&ouml;rther Stra&szlig;e 82</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Mannsw&ouml;rther Stra&szlig;e 88</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 29. Mai 2026, etwa 11:00 Uhr, bis voraussichtlich Ende Oktober 2026</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kabelarbeiten</span></p>",
+   "id": "N20260529-5870",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260529-5870",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "76A",
+    "76B"
+   ],
+   "relatedStops": [
+    2606
+   ],
+   "time": {
+    "end": "2027-11-11T11:11:00.000+0100",
+    "start": "2026-05-29T00:00:00.000+0200",
+    "validFrom": "2026-05-29T05:43:00.000+0200"
+   },
+   "title": "76A, 76B: Mannswörther Straße"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 26A in Richtung Gro&szlig;-Enzersdorf und N20 in Richtung E&szlig;ling, Stadtgrenze</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Siebeckstra&szlig;e</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Donaustadtstra&szlig;e nach Wagramer Stra&szlig;e</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Donaustadtstra&szlig;e 12</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 26. Juni 2026, etwa 09:00 Uhr f&uuml;r etwa 1,5 Jahre</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Hausbau</span></p>",
+   "id": "N20260610-5908",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260610-5908",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "26A",
+    "N20"
+   ],
+   "relatedStops": [
+    1506
+   ],
+   "time": {
+    "end": "2029-06-10T11:11:00.000+0200",
+    "start": "2026-06-10T15:30:00.000+0200",
+    "validFrom": "2026-06-10T15:27:00.000+0200"
+   },
+   "title": "26A, N20: Siebeckstraße"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 60A in Richtung Alterlaa U</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Bhf. Atzgersdorf S, Knotzenbachgasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Knotzenbachgasse gegen&uuml;ber 40 vor Parkanlage</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Knotzenbachgasse 35-45, vor Dirmhirngasse</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 01. Juli 2026, etwa 12:00 Uhr bis voraussichtlich Ende Oktober 2026</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rohrleitungsarbeiten</span></p>",
+   "id": "N20260623-5935",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260623-5935",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "60A"
+   ],
+   "relatedStops": [
+    1734
+   ],
+   "time": {
+    "end": "2027-10-31T11:11:00.000+0100",
+    "start": "2026-06-23T00:00:00.000+0200",
+    "validFrom": "2026-06-23T10:04:00.000+0200"
+   },
+   "title": "60A: Bhf. Atzgersdorf S, Knotzenbachgasse"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 38A in Richtung Leopoldsberg</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Fernsprechamt Heiligenstadt</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Grinzinger Stra&szlig;e 101-109</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">Grinzinger Stra&szlig;e gegen&uuml;ber 88</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp; 07. Juli 2026, etwa 12:00 Uhr auf derzeit unbekannte Zeit</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Hausneubau</span></p>",
+   "id": "N20260625-5942",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260625-5942",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "38A"
+   ],
+   "relatedStops": [
+    828
+   ],
+   "time": {
+    "end": "2027-12-31T11:11:00.000+0100",
+    "start": "2026-06-25T00:00:00.000+0200",
+    "validFrom": "2026-06-25T14:11:00.000+0200"
+   },
+   "title": "38A: Fernsprechamt Heiligenstadt"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 66A und N66 in Richtung Liesing S</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Grenzackerstra&szlig;e&nbsp;</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Laxenburger Stra&szlig;e 104 nach Raxstra&szlig;e</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> etwa 30 Meter in Richtung Sahulkastra&szlig;e</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 13. Juli 2026, etwa 07:30 Uhr, Dauer unbekannt</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rohrleitungsarbeiten</span></p>",
+   "id": "N20260629-5946",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260629-5946",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "66A",
+    "N66"
+   ],
+   "relatedStops": [
+    1941
+   ],
+   "time": {
+    "end": "2027-07-13T11:11:00.000+0200",
+    "start": "2026-06-29T00:00:00.000+0200",
+    "validFrom": "2026-06-29T14:00:00.000+0200"
+   },
+   "title": "66A, N66: Grenzackerstraße ab 13.07.2026"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 12A in Richtung Schmelz, Gablenzgasse</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> L&auml;ngenfeldgasse U</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stiegerbr&uuml;cke vor Linke Wienzeile</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> L&auml;ngenfeldgasse 1 (nach Hauseinfahrt)</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 03. Juli 2026, etwa 17:00 Uhr bis voraussichtlich Dezember 2027</span></p>\r\n<p class=\"MsoNormal\">&nbsp;</p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie N8 in Richtung Handelskai S U</span></u></strong></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">L&auml;ngenfeldgasse U</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;</span></span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">Stiegerbr&uuml;cke vor Linke Wienzeile</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">L&auml;ngenfeldgasse 1 (nach Hauseinfahrt)</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">03. Juli 2026, etwa 17:00 Uhr&nbsp;</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">bis voraussichtlich Dezember 2027</span></p>\r\n<p class=\"MsoNormal\">&nbsp;</p>",
+   "id": "N20260701-5989",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260701-5989",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "12A",
+    "N8"
+   ],
+   "relatedStops": [
+    3130
+   ],
+   "time": {
+    "end": "2027-12-31T11:11:00.000+0100",
+    "start": "2026-07-01T00:00:00.000+0200",
+    "validFrom": "2026-07-01T15:48:00.000+0200"
+   },
+   "title": "12A, N8: Längenfeldgasse U"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenauflassung der Linie 95B in Richtung Bahnhof Hausfeldstra&szlig;e U</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Amongasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Aspernstra&szlig;e nach Plankenmaisstra&szlig;e</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Ersatzlos aufgelassen</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 03. Juli 2026, etwa 20:00 Uhr, Dauer unbekannt.</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stra&szlig;enbau</span></p>",
+   "id": "N20260702-5991",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260702-5991",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "95B"
+   ],
+   "time": {
+    "end": "2027-07-02T11:11:00.000+0200",
+    "start": "2026-07-02T00:00:00.000+0200",
+    "validFrom": "2026-07-02T08:47:00.000+0200"
+   },
+   "title": "95B: Amongasse"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 29A in Richtung Gro&szlig;feldsiedlung</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Serpentingasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Leopoldauer Stra&szlig;e 132-134</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Leopoldauer Stra&szlig;e 126-128</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 24. August 2026, etwa 07:00 Uhr&nbsp;</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Baustelleneinrichtung</span></p>",
+   "id": "N20260813-6092",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260813-6092",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "29A"
+   ],
+   "relatedStops": [
+    1132
+   ],
+   "time": {
+    "end": "2026-12-13T11:11:00.000+0100",
+    "start": "2026-08-13T00:00:00.000+0200",
+    "validFrom": "2026-08-13T14:05:00.000+0200"
+   },
+   "title": "29A: Serpentingasse"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 16A in Richtung Hetzendorf S</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Wagner-Sch&ouml;nkirch-Gasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> S&uuml;drandstra&szlig;e vor&nbsp;</span></span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">Wagner-Sch&ouml;nkirch-Gasse</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> ca. 30 Meter in Richtung Gro&szlig;marktstra&szlig;e</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 20. August 2026, 07:00 Uhr</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stra&szlig;enbauarbeiten</span></p>",
+   "id": "N20260814-6094",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260814-6094",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "16A"
+   ],
+   "relatedStops": [
+    2008
+   ],
+   "time": {
+    "end": "2027-08-14T11:11:00.000+0200",
+    "start": "2026-08-14T08:00:00.000+0200",
+    "validFrom": "2026-08-14T07:54:00.000+0200"
+   },
+   "title": "16A: Wagner-Schönkirch-Gasse"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 31A in Richtung Kagraner Platz U</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kagraner Friedhof</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Eipeldauer Stra&szlig;e vor Wagramer Stra&szlig;e</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Eipeldauer Stra&szlig;e 52 bis 54&nbsp;</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 19. August 2026, etwa 08:00 Uhr&nbsp;</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stra&szlig;enbauarbeiten</span></p>",
+   "id": "N20260817-6129",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260817-6129",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "31A"
+   ],
+   "relatedStops": [
+    2665
+   ],
+   "time": {
+    "end": "2027-08-17T11:11:00.000+0200",
+    "start": "2026-08-17T00:00:00.000+0200",
+    "validFrom": "2026-08-17T09:07:00.000+0200"
+   },
+   "title": "31A: Kagraner Friedhof "
+  },
+  {
+   "description": "<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 4A in Richtung Wittelsbachstra&szlig;e</span></u></strong></p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rasumofskygasse</span></p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Marxergasse 35</span></span></p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Marxergasse 37-39</span></p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 27. August 2026, ca. 07:00 Uhr&nbsp;</span></p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Grabungsarbeiten</span></p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\">&nbsp;</p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\">&nbsp;</p>",
+   "id": "N20260821-6143",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260821-6143",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "4A"
+   ],
+   "relatedStops": [
+    1485
+   ],
+   "time": {
+    "end": "2027-08-21T11:11:00.000+0200",
+    "start": "2026-08-21T00:00:00.000+0200",
+    "validFrom": "2026-08-21T07:13:00.000+0200"
+   },
+   "title": "4A: Rasumofskygasse"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 49A und 50B in Richtung Wolfersberg bzw. Auhof</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> H&uuml;ttergasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Anzengruberstra&szlig;e gegen&uuml;ber 77a</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong> <span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">H&uuml;ttergasse 6A-6B</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 31. August 2026, etwa 08:00 Uhr, Dauer unbekannt</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rohrleitungsarbeiten</span></p>",
+   "id": "N20260825-6151",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260825-6151",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "49A",
+    "50B"
+   ],
+   "relatedStops": [
+    3262
+   ],
+   "time": {
+    "end": "2027-08-25T11:11:00.000+0200",
+    "start": "2026-08-25T00:00:00.000+0200",
+    "validFrom": "2026-08-25T15:41:00.000+0200"
+   },
+   "title": "49A, 50B: Hüttergasse"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 22A, 95A, N23 und Rufbus N24 in Richtung Kagran U, Gro&szlig;er Bieberhaufen bzw. Kagraner Platz U</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Hirschstetten Ort</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Hirschstettner Stra&szlig;e 97</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">Hirschstettner Stra&szlig;e 95</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 31. August 2026, 09:00 Uhr, Dauer unbekannt</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Hausbau</span></p>",
+   "id": "N20260831-6161",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260831-6161",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "22A",
+    "95A",
+    "N23"
+   ],
+   "relatedStops": [
+    1085,
+    2739
+   ],
+   "time": {
+    "end": "2027-08-31T11:11:00.000+0200",
+    "start": "2026-08-31T09:00:00.000+0200",
+    "validFrom": "2026-08-31T09:06:00.000+0200"
+   },
+   "title": "22A, 95A, N23, Rufbus N24: Hirschstetten Ort"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 3A in Richtung Schottenring U</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Oper, Karlsplatz</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> K&auml;rntner Ring, Nebenfahrbahn vor K&auml;rntner Stra&szlig;e</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> K&auml;rntner Ring 5, Nebenfahrbahn</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 07. September 2026, etwa 06:00 Uhr, voraussichtlich bis Dezember 2027</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Haussanierung</span></p>",
+   "id": "N20260831-6162",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260831-6162",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "3A"
+   ],
+   "time": {
+    "end": "2027-12-31T11:11:00.000+0100",
+    "start": "2026-08-31T00:00:00.000+0200",
+    "validFrom": "2026-08-31T13:58:00.000+0200"
+   },
+   "title": "3A: Oper, Karlsplatz"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 3A in Richtung Oper, Karlsplatz</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Schellinggasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Schellinggasse 14</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Schellinggasse 16</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 07. September 2026, etwa 06:00 Uhr, bis 05. Oktober 2026, etwa 07:00 Uhr</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Haussanierung</span></p>",
+   "id": "N20260831-6163",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260831-6163",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "2A",
+    "3A"
+   ],
+   "time": {
+    "end": "2026-10-05T07:00:00.000+0200",
+    "start": "2026-08-31T00:00:00.000+0200",
+    "validFrom": "2026-08-31T14:05:00.000+0200"
+   },
+   "title": "3A: Schellinggasse"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenauflassung der Linie 78A in Richtung Lusthaus</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Marathonweg</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 05. September 2026 Betriebsbeginn, bis auf weiteres.</span></p>",
+   "id": "N20260831-6164",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260831-6164",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "78A"
+   ],
+   "relatedStops": [
+    614
+   ],
+   "time": {
+    "end": "2027-08-31T11:11:00.000+0200",
+    "start": "2026-08-31T00:00:00.000+0200",
+    "validFrom": "2026-08-31T16:40:00.000+0200"
+   },
+   "title": "78A: Marathonweg"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 48A in Richtung Parlament, U Volkstheater</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Neubaugasse, Burggasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Burggasse vor Neubaugasse</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Burggasse 69</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 08. September 2026, etwa 06:00 Uhr f&uuml;r etwa sechs Wochen</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Umbau der Haltestelle</span></p>",
+   "id": "N20260831-6165",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260831-6165",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "48A"
+   ],
+   "relatedStops": [
+    1434
+   ],
+   "time": {
+    "end": "2027-08-31T11:11:00.000+0200",
+    "start": "2026-08-31T16:55:00.000+0200",
+    "validFrom": "2026-08-31T16:50:00.000+0200"
+   },
+   "title": "48A: Neubaugasse, Burggasse"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 74A in Richtung St. Marx S</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rabengasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Landstra&szlig;er Hauptstra&szlig;e&nbsp;</span></span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">146</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Landstra&szlig;er Hauptstra&szlig;e 140-142</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 01. September 2026, etwa 18:00 Uhr</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Spontangebrechen</span></p>",
+   "id": "N20260901-6167",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260901-6167",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "74A"
+   ],
+   "relatedStops": [
+    283
+   ],
+   "time": {
+    "end": "2027-09-01T11:11:00.000+0200",
+    "start": "2026-09-01T16:30:00.000+0200",
+    "validFrom": "2026-09-01T16:18:00.000+0200"
+   },
+   "title": "74A: Rabengasse"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 4A in Richtung Wittelsbachstra&szlig;e, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstra&szlig;e</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Wittelsbachstra&szlig;e</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Sch&uuml;ttelstra&szlig;e 43-45</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Sch&uuml;ttelstra&szlig;e 41</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 22. September 2026, etwa 10:00 Uhr bis voraussichtlich Ende 2026</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rohrleitungsarbeiten</span></span></p>",
+   "id": "N20260916-6187",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260916-6187",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "4A",
+    "80A",
+    "N29"
+   ],
+   "relatedStops": [
+    2114
+   ],
+   "time": {
+    "end": "2026-12-31T23:59:00.000+0100",
+    "start": "2026-09-16T00:00:00.000+0200",
+    "validFrom": "2026-09-16T07:47:00.000+0200"
+   },
+   "title": "4A, 80A, N29: Wittelsbachstraße"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 72A in Richtung Hasenleiten</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kraftwerk Simmering</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 1. Haidequerstra&szlig;e 2</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">1. Haidequerstra&szlig;e 510</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 22. September 2026, etwa 08:00 Uhr auf Dauer von etwa drei Monaten</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kabelarbeiten</span></p>",
+   "id": "N20260918-6191",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260918-6191",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "72A"
+   ],
+   "relatedStops": [
+    442
+   ],
+   "time": {
+    "end": "2027-09-18T11:11:00.000+0200",
+    "start": "2026-09-18T00:00:00.000+0200",
+    "validFrom": "2026-09-18T14:06:00.000+0200"
+   },
+   "title": "72A: Kraftwerk Simmering"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 12A in Richtung Eichenstra&szlig;e/L&auml;ngenfeldgasse</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Geibelgasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Mariahilfer Stra&szlig;e 189</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Arnsteingasse 35</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> dauerhafte Verlegung ab 23</span><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">. September 2026 Betriebsbeginn</span></p>",
+   "id": "N20260918-6192",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260918-6192",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "12A"
+   ],
+   "relatedStops": [
+    3159
+   ],
+   "time": {
+    "end": "2026-10-18T23:59:00.000+0200",
+    "start": "2026-09-18T00:00:00.000+0200",
+    "validFrom": "2026-09-18T14:11:00.000+0200"
+   },
+   "title": "12A: Geibelgasse Richtung Eichenstraße, neuer Standort"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> An den Steinfeldern</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Perfektastra&szlig;e 89</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> etwa 20 Meter in Richtung Eduard-Kittenberger-Gasse</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> ab 22. September 2026, etwa 08:30 Uhr, auf derzeit unbestimmte Zeit</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stra&szlig;enbauarbeiten</span></p>",
+   "id": "N20260921-6196",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260921-6196",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "64A"
+   ],
+   "relatedStops": [
+    1825
+   ],
+   "time": {
+    "end": "2027-09-21T11:11:00.000+0200",
+    "start": "2026-09-21T00:00:00.000+0200",
+    "validFrom": "2026-09-21T16:15:00.000+0200"
+   },
+   "title": "64A: An den Steinfeldern"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 16A in Richtung Hetzendorf S bzw. N65 in Richtung Liesing</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Am Sch&ouml;pfwerk, Eibesbrunnergasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Am Sch&ouml;pfwerk 40</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Am Sch&ouml;pfwerk 34-36</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 29. September 2026, 07:00 Uhr</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stra&szlig;enbau</span></p>",
+   "id": "N20260922-6200",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260922-6200",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "16A"
+   ],
+   "relatedStops": [
+    5819
+   ],
+   "time": {
+    "end": "2027-09-29T11:11:00.000+0200",
+    "start": "2026-09-22T12:40:00.000+0200",
+    "validFrom": "2026-09-22T12:38:00.000+0200"
+   },
+   "title": "16A, N65: Am Schöpfwerk, Eibesbrunnergasse"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenauflassung der Linie N31 in Richtung Schwedenplatz U</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stammersdorf&nbsp;</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Br&uuml;nner Stra&szlig;e gegen&uuml;ber 262</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Ersatzlos aufgelassen</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 30. September 2026, etwa 13:00 Uhr, bis voraussichtlich Mai 2027</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rohrleitungsarbeiten</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span> Bitte verwenden Sie die Endhaltestelle im Bereich der Stra&szlig;enbahnendstation</span></p>",
+   "id": "N20260923-6203",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260923-6203",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "N31"
+   ],
+   "relatedStops": [
+    5549
+   ],
+   "time": {
+    "end": "2027-05-31T11:11:00.000+0200",
+    "start": "2026-09-23T00:00:00.000+0200",
+    "validFrom": "2026-09-23T14:24:00.000+0200"
+   },
+   "title": "N31: Stammersdorf ersatzlos aufgelassen"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 26E in Richtung Josef-Baumann-Gasse und Linie N20 in Richtung E&szlig;ling, Stadtgrenze</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Fultonstra&szlig;e</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Donaufelder Stra&szlig;e 48</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong> <span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">Donaufelder Stra&szlig;e 40-42</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 05. Oktober 2026, etwa 07:00 Uhr f&uuml;r etwa zwei Wochen</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Gleisbau</span></p>",
+   "id": "N20260928-6210",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20260928-6210",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "26E",
+    "N20"
+   ],
+   "relatedStops": [
+    2373,
+    2371
+   ],
+   "time": {
+    "end": "2027-09-28T11:11:00.000+0200",
+    "start": "2026-09-28T15:45:00.000+0200",
+    "validFrom": "2026-09-28T15:21:00.000+0200"
+   },
+   "title": "26E, N20: Fultonstraße"
+  },
+  {
+   "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 16A in Richtung Hetzendorf S bzw. N65 in Richtung Liesing</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Grohnergasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Otto-Probst-Stra&szlig;e vor Grohnergasse</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> etwa 20 m gegen die Fahrtrichtung</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 01. Oktober 2026, 10:00 Uhr</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rohrgebrechen</span></p>",
+   "id": "N20261001-6214",
+   "location": {
+    "properties": {
+     "attributes": {},
+     "coordName": "WGS84",
+     "type": "news"
+    },
+    "type": "Feature"
+   },
+   "name": "N20261001-6214",
+   "refPoiCategoryId": 13296,
+   "relatedLines": [
+    "16A",
+    "N65"
+   ],
+   "relatedStops": [
+    2451
+   ],
+   "time": {
+    "end": "2026-10-05T11:11:00.000+0200",
+    "start": "2026-10-01T00:00:00.000+0200",
+    "validFrom": "2026-10-01T08:04:00.000+0200"
+   },
+   "title": "16A, N65 Grohnergasse"
+  }
+ ]
+}
