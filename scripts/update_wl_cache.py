@@ -16,6 +16,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.providers.wiener_linien import fetch_events  # noqa: E402  (import after path setup)
+from src.providers.wl_fetch import SourceIncompleteError, fallback_parts  # noqa: E402
 from src.providers.wl_plausibility import collected_corrections, record_corrections  # noqa: E402
 from src.utils.cache import DataDegradationError, write_cache  # noqa: E402
 from src.utils.serialize import serialize_for_cache  # noqa: E402
@@ -55,6 +56,9 @@ def main() -> int:
     configure_logging()
     try:
         items = fetch_events()
+    except SourceIncompleteError as exc:
+        logger.warning("%s; keeping existing cache.", exc)
+        return 1
     except Exception:  # pragma: no cover - defensive
         logger.exception(
             "Failed to fetch Wiener Linien events; keeping existing cache.",
@@ -93,6 +97,16 @@ def main() -> int:
             len(serialized_items),
         )
         return 1
+    partial = fallback_parts()
+    if partial:
+        # Exit 3 = cache written, but part of it from the last good answer
+        # (``src/providers/wl_fetch.py``, "Ausfall eines Teils der Quelle").
+        logger.warning(
+            "Updated Wiener Linien cache with %d events; %s from the last good answer.",
+            len(serialized_items),
+            ", ".join(partial),
+        )
+        return 3
     logger.info("Updated Wiener Linien cache with %d events.", len(serialized_items))
     return 0
 

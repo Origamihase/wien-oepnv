@@ -18,9 +18,15 @@ It runs two complementary kinds of checks:
 
      * ``0`` → source delivered usable data.
      * ``1`` → unreachable / empty / malformed / degraded.
-     * ``2`` → (Baustellen only) live WFS failed, cache fell back to bundled
-       demo data — i.e. the live source is effectively down. Treated as a
-       failure here so this otherwise-silent fallback gets surfaced.
+     * ``2`` → (Baustellen only) live WFS failed in a checkout without a
+       cache, which fell back to bundled demo data — i.e. the live source is
+       effectively down. Treated as a failure here so this otherwise-silent
+       fallback gets surfaced. With a cache in place a failed WFS is ``1``.
+     * ``3`` → (WL / Baustellen) one part of the source (a WL list, a WFS
+       layer) gave no usable answer; the cache was refreshed with that part
+       from its last good answer. Never seen here in practice: the health
+       check runs without ``RAW_CAPTURE``, so the updater has no last good
+       answer to read and reports ``1`` instead.
 
    The updaters write into the ephemeral runner checkout's ``cache/`` dir;
    nothing is committed (the workflow has ``contents: read``).
@@ -247,6 +253,14 @@ def check_source(name: str, script: str) -> Check:
             ok=False,
             summary="FEHLER — Live-Quelle nicht erreichbar, "
             "Cache nutzt FALLBACK-Demodaten",
+            detail=_extract_reason(output),
+        )
+    if rc == 3:  # WL / Baustellen: one part of the source failed.
+        return Check(
+            name,
+            ok=False,
+            summary="FEHLER — Teil der Quelle ohne brauchbare Antwort, "
+            "aus der letzten guten Antwort ergänzt",
             detail=_extract_reason(output),
         )
     return Check(

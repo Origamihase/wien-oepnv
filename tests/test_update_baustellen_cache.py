@@ -244,6 +244,8 @@ def test_main_uses_fallback_when_remote_fails(
     monkeypatch.setattr(update_baustellen_cache, "write_cache", capture_cache)
     # Stub the network diagnostic so the fallback path stays offline.
     monkeypatch.setattr(update_baustellen_cache, "_log_endpoint_diagnostic", lambda *a, **k: None)
+    # The demo sample is only for a checkout without a cache.
+    monkeypatch.setattr(update_baustellen_cache, "_cache_exists", lambda: False)
     monkeypatch.setenv("BAUSTELLEN_FALLBACK_PATH", str(SAMPLE_PATH))
     caplog.set_level(logging.WARNING, logger="update_baustellen_cache")
 
@@ -260,6 +262,26 @@ def test_main_uses_fallback_when_remote_fails(
         for record in caplog.records
         if record.name == "update_baustellen_cache"
     )
+
+
+def test_main_keeps_an_existing_cache_when_remote_fails(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A failed live fetch never writes the demo sample over a real cache.
+
+    The 20 % guard of ``write_cache`` let the two sample sites through
+    whenever the cache held ten or fewer, so every real construction site
+    vanished from the feed for the length of the outage.
+    """
+    calls: list[Any] = []
+    monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", lambda url, timeout: None)
+    monkeypatch.setattr(update_baustellen_cache, "write_cache", lambda *a: calls.append(a))
+    monkeypatch.setattr(update_baustellen_cache, "_log_endpoint_diagnostic", lambda *a, **k: None)
+    monkeypatch.setattr(update_baustellen_cache, "_cache_exists", lambda: True)
+    monkeypatch.setenv("BAUSTELLEN_FALLBACK_PATH", str(SAMPLE_PATH))
+
+    assert update_baustellen_cache.main() == 1
+    assert calls == []
 
 
 def test_with_output_format_rewrites_only_the_token() -> None:

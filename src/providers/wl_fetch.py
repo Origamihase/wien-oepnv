@@ -20,7 +20,7 @@ from dateutil import parser as dtparser
 
 from ..utils.files import loads_finite
 from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
-from ..utils import raw_capture
+from ..utils import raw_capture, source_shape
 from ..utils.ids import make_guid
 from ..utils.logging import sanitize_log_arg
 from ..utils.stations import canonical_name, display_name
@@ -700,24 +700,105 @@ def _raw_snapshot(data: dict[str, Any], key: str) -> dict[str, Any]:
     return snapshot
 
 
+# ---------------- Ausfall eines Teils der Quelle ----------------
+#
+# WL liefert in zwei Listen: ``trafficInfoList`` (Störungen) und
+# ``newsList`` (Hinweise). Fiel eine davon aus, ging der Abruf früher mit
+# der anderen allein durch: Am echten Stand vom 2026-10-04 16:01 UTC
+# verschwanden ohne Störungsliste alle fünf laufenden Störungen aus den
+# zehn Plätzen des deutschen Feeds, ohne Hinweisliste vier Hinweise — mit
+# Exit-Code 0, also ohne Warnung und mit grünem Health check. Dasselbe bei
+# einer Antwort, der ein Feld fehlt (``src/utils/source_shape.py``).
+#
+# Jetzt gilt eine Liste nur, wenn sie da ist und ihre Felder trägt, und eine
+# leere nur, wenn auch die letzte gute Antwort (fast) leer war. Sonst
+# kommt sie aus ihrer letzten guten Antwort (``data/raw/wl/``), die andere
+# bleibt frisch; der Abruf meldet das (``fallback_parts``, Exit-Code 3 im
+# Cache-Updater). Fehlt auch die letzte gute Antwort oder fallen beide
+# Listen aus, scheitert der Abruf, und der Cache bleibt wie er ist — wie
+# bisher bei einem vollständigen Ausfall.
+
+_WL_REQUIRED = {
+    "title": (source_shape.has("title"), source_shape.MIN_RECORDS),
+    "description": (source_shape.has("description"), source_shape.MIN_RECORDS),
+    "time": (source_shape.has("time"), source_shape.MIN_RECORDS),
+    # Nicht jede Störung nennt eine Linie (69 von 80 am 2026-10-04).
+    "relatedLines": (source_shape.has("relatedLines"), 10),
+}
+
+_fallback_parts: list[str] = []
+
+
+class SourceIncompleteError(RuntimeError):
+    """A part of the WL source gave no usable answer and has no last good one."""
+
+
+def fallback_parts() -> list[str]:
+    """The WL lists the last ``fetch_events`` took from their last good answer."""
+    return list(_fallback_parts)
+
+
+def _usable_items(data: Any, key: str, name: str) -> list[dict[str, Any]] | None:
+    """The items of a WL answer, or ``None`` when the answer is not usable."""
+    if not isinstance(data, dict):
+        return None
+    inner = data.get("data")
+    if not isinstance(inner, dict) or not isinstance(inner.get(key), list):
+        return None
+    items = _extract_wl_items(data, key)
+    missing = source_shape.missing_fields(items, _WL_REQUIRED)
+    if missing:
+        log.warning(
+            "WL %s: Feld(er) %s fehlen in allen %d Einträgen – Antwort unbrauchbar.",
+            name,
+            ", ".join(missing),
+            len(items),
+        )
+        return None
+    return items
+
+
+def _list_items(name: str, key: str, data: dict[str, Any]) -> list[dict[str, Any]]:
+    """The items of list *name*: fresh when usable, else from its last good answer.
+
+    An empty list counts as no answer when the last good one held at least
+    ``source_shape.MIN_RECORDS`` items: both lists carry long-running
+    notices and were never empty, so an empty one is a server in trouble.
+    """
+    items = _usable_items(data, key, name)
+    if items:
+        raw_capture.write_snapshot("wl", name, _raw_snapshot(data, key))
+        return items
+    last = _usable_items(raw_capture.read_snapshot("wl", name), key, name)
+    if items is not None and (last is None or len(last) < source_shape.MIN_RECORDS):
+        raw_capture.write_snapshot("wl", name, _raw_snapshot(data, key))
+        return items
+    if last is None:
+        raise SourceIncompleteError(f"WL {name}: keine brauchbare Antwort")
+    log.warning(
+        "WL %s: %s – letzte gute Antwort (%d Einträge) verwendet.",
+        name,
+        "leere Liste" if items is not None else "keine brauchbare Antwort",
+        len(last),
+    )
+    _fallback_parts.append(name)
+    return last
+
+
 def _fetch_traffic_infos(
     timeout: int = 20, session: requests.Session | None = None
 ) -> Iterable[dict[str, Any]]:
     # explizit KEINE Facility-Feeds
     params = [("name", "stoerunglang"), ("name", "stoerungkurz")]
     data = _get_json("trafficInfoList", params=params, timeout=timeout, session=session)
-    if data:
-        raw_capture.write_snapshot("wl", "trafficInfoList", _raw_snapshot(data, "trafficInfos"))
-    return _extract_wl_items(data, "trafficInfos")
+    return _list_items("trafficInfoList", "trafficInfos", data)
 
 
 def _fetch_news(
     timeout: int = 20, session: requests.Session | None = None
 ) -> Iterable[dict[str, Any]]:
     data = _get_json("newsList", timeout=timeout, session=session)
-    if data:
-        raw_capture.write_snapshot("wl", "newsList", _raw_snapshot(data, "pois"))
-    return _extract_wl_items(data, "pois")
+    return _list_items("newsList", "pois", data)
 
 
 # ---------------- Anzeigetafel-Doppel („stoerungkurz“) ----------------
@@ -1190,6 +1271,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
     now = datetime.now(UTC)
     reset_corrections()
     raw_capture.reset_drops("wl")
+    _fallback_parts.clear()
     raw: list[dict[str, Any]] = []
 
     with session_with_retries(WL_USER_AGENT, raise_on_status=False) as session:
@@ -1446,7 +1528,13 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                 if x not in b["extras"]:
                     b["extras"].append(x)
 
-    raw_capture.write_drops("wl")
+    if len(_fallback_parts) >= 2:
+        # Beide Listen aus der letzten guten Antwort: Das ist ein Ausfall der
+        # ganzen Quelle, der Cache bleibt stehen (Begründung oben).
+        raise SourceIncompleteError("WL: beide Listen ohne brauchbare Antwort")
+    if not _fallback_parts:
+        # Die Verwürfe einer alten Antwort sagen nichts über diesen Abruf.
+        raw_capture.write_drops("wl")
 
     # Anzeigetafel-Kurzmeldungen in die ausführliche Meldung derselben
     # Störung übernehmen (Begründung am Helfer).
@@ -1541,4 +1629,4 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
     return filtered
 
 
-__all__ = ["fetch_events"]
+__all__ = ["SourceIncompleteError", "fallback_parts", "fetch_events"]

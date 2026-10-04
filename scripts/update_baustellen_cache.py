@@ -35,12 +35,13 @@ if str(REPO_ROOT) not in sys.path:
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.providers.baustellen import is_transit_relevant, oepnv_lead  # noqa: E402
 from utils import raw_capture  # noqa: E402
-from utils.cache import DataDegradationError, write_cache  # noqa: E402
+from utils.cache import DataDegradationError, cache_modified_at, write_cache  # noqa: E402
 from utils.files import loads_finite, read_capped_json  # noqa: E402
 from utils.http import fetch_content_safe, session_with_retries, validate_http_url  # noqa: E402
 from utils.ids import make_guid  # noqa: E402
 from utils.logging import sanitize_log_arg  # noqa: E402
 from utils.serialize import serialize_for_cache  # noqa: E402
+from utils.source_shape import MIN_RECORDS, missing_fields  # noqa: E402
 
 # Security cap against wide-but-flat JSON size-bomb attacks on the
 # bundled fallback geojson. The depth-bomb catch alone misses
@@ -536,6 +537,11 @@ def _resolve_fallback_path(candidate: str | None) -> Path:
 
 
 def _iter_features(payload: dict[str, Any]) -> Iterable[dict[str, Any]]:
+    return _feature_list(payload) or []
+
+
+def _feature_list(payload: dict[str, Any]) -> list[dict[str, Any]] | None:
+    """The features of a WFS answer, or ``None`` when it carries no feature list."""
     if payload.get("type") == "FeatureCollection":
         features: Any = payload.get("features")
     elif "features" in payload:
@@ -559,7 +565,7 @@ def _iter_features(payload: dict[str, Any]) -> Iterable[dict[str, Any]]:
     # ``scripts/update_wl_stations.py``, ``src/providers/vor.py``) so the
     # documented ``return None`` / ``return []`` fallback runs instead.
     if not isinstance(features, list):
-        return []
+        return None
     return [f for f in features if isinstance(f, dict)]
 
 
@@ -930,32 +936,135 @@ def _collect_events(payload: dict[str, Any]) -> list[dict[str, Any]]:
     return events
 
 
+# ---------------- Ausfall eines Teils der Quelle ----------------
+#
+# Die Baustellen kommen aus zwei WFS-Layern (Linien und Punkte). Fiel einer
+# aus, ging der Abruf früher mit dem anderen allein durch: Am echten Stand
+# vom 2026-10-04 schrumpfte der Cache ohne Linien-Layer von 15 auf 5
+# Baustellen, mit Exit-Code 0. Dasselbe bei einer Antwort, der ein Feld
+# fehlt (``src/utils/source_shape.py``): ohne Datumsfelder belegten
+# Baustellen neun der zehn Plätze. Jetzt kommt ein unbrauchbarer oder leerer
+# Layer (wenn seine letzte gute Antwort nicht auch leer war) aus
+# seiner letzten guten Antwort (``data/raw/baustellen/``), Exit-Code 3. Fehlt
+# die oder fallen alle Layer aus, bleibt der Cache stehen.
+
+_LAYER_MIN = MIN_RECORDS
+
+
+def _properties(feature: dict[str, Any]) -> dict[str, Any]:
+    properties = feature.get("properties")
+    return properties if isinstance(properties, dict) else {}
+
+
+def _feature_position(feature: dict[str, Any]) -> tuple[float, float] | None:
+    geometry = feature.get("geometry")
+    return _first_lonlat(geometry.get("coordinates")) if isinstance(geometry, dict) else None
+
+
+_LAYER_REQUIRED = {
+    "Beginn": (lambda f: _parse_range(_properties(f))[0] is not None, _LAYER_MIN),
+    "Ende": (lambda f: _parse_range(_properties(f))[1] is not None, _LAYER_MIN),
+    "Text": (lambda f: _first_match(_properties(f), INFO_KEYS) is not None, _LAYER_MIN),
+    "Lage": (lambda f: _feature_position(f) is not None, _LAYER_MIN),
+}
+
+_fallback_layers: list[str] = []
+
+
+def _usable_layer(payload: Any, name: str) -> bool:
+    """True when *payload* is a WFS answer with features in the expected shape."""
+    if not isinstance(payload, dict):
+        return False
+    features = _feature_list(payload)
+    if features is None:
+        LOGGER.warning("Baustellen: Layer %s ohne Feature-Liste – Antwort unbrauchbar.", name)
+        return False
+    missing = missing_fields(features, _LAYER_REQUIRED)
+    if missing:
+        LOGGER.warning(
+            "Baustellen: Layer %s – Angabe(n) %s fehlen in allen %d Einträgen – Antwort unbrauchbar.",
+            name,
+            ", ".join(missing),
+            len(features),
+        )
+        return False
+    return True
+
+
+def _from_snapshot(snapshot: Any) -> dict[str, Any] | None:
+    """A raw snapshot (``_raw_snapshot``) back in the shape of a WFS answer.
+
+    The snapshot keeps of each geometry only its first position, which is
+    all the cache uses (``_first_lonlat``).
+    """
+    if not isinstance(snapshot, dict) or not isinstance(snapshot.get("features"), list):
+        return None
+    features: list[Any] = []
+    for feature in snapshot["features"]:
+        if not isinstance(feature, dict):
+            continue
+        record = dict(feature)
+        geometry = feature.get("geometry")
+        if isinstance(geometry, dict) and "first_position" in geometry:
+            position = geometry.get("first_position")
+            record["geometry"] = {
+                "type": geometry.get("type"),
+                "coordinates": [position] if position is not None else None,
+            }
+        features.append(record)
+    return {"type": "FeatureCollection", "features": features}
+
+
 def _fetch_layers(data_url: str, timeout: int) -> list[dict[str, Any]] | None:
     """Fetch every Baustellen feature type and return the merged events.
 
     For each type name the GeoJSON ``outputFormat`` is negotiated (the
     configured token first, then the common server-specific variants),
-    stopping at the first that returns a parseable GeoJSON object. Returns
-    ``None`` only when NO layer could be fetched (the caller then falls
-    back to the bundled sample); a partial success (one of two layers)
-    still returns the events it got.
+    stopping at the first that returns a parseable GeoJSON object. A layer
+    without a usable answer comes from its last good one (see above).
+    Returns ``None`` when a layer has neither, or when no layer answered:
+    the caller then keeps the cache.
     """
+    _fallback_layers.clear()
     merged: list[dict[str, Any]] = []
-    any_success = False
     for typename in _BAUSTELLEN_TYPENAMES:
+        layer = typename.rsplit(":", 1)[-1]
         layer_url = _with_typename(data_url, typename)
         payload = None
         for output_format in _OUTPUT_FORMAT_CANDIDATES:
             payload = _fetch_remote(_with_output_format(layer_url, output_format), timeout)
             if payload is not None:
                 break
-        if payload is None:
+        live = payload if payload is not None and _usable_layer(payload, layer) else None
+        last = _from_snapshot(raw_capture.read_snapshot("baustellen", layer))
+        if last is not None and not _usable_layer(last, layer):
+            last = None
+        if live is not None and (
+            _feature_list(live) or last is None or len(_feature_list(last) or []) < _LAYER_MIN
+        ):
+            # An empty layer counts only when its last good answer was
+            # (nearly) empty too: both layers always list long-running sites.
+            raw_capture.write_snapshot("baustellen", layer, _raw_snapshot(live))
+            used = live
+        elif last is not None:
+            LOGGER.warning(
+                "Baustellen: Layer %s %s – letzte gute Antwort verwendet.",
+                layer,
+                "leer" if live is not None else "nicht abrufbar",
+            )
+            _fallback_layers.append(layer)
+            used = last
+        else:
             LOGGER.warning("Baustellen: Layer %s nicht abrufbar.", typename)
-            continue
-        any_success = True
-        raw_capture.write_snapshot("baustellen", typename.rsplit(":", 1)[-1], _raw_snapshot(payload))
-        merged.extend(_collect_events(payload))
-    return merged if any_success else None
+            return None
+        merged.extend(_collect_events(used))
+    if len(_fallback_layers) == len(_BAUSTELLEN_TYPENAMES):
+        return None
+    return merged
+
+
+def _cache_exists() -> bool:
+    return cache_modified_at("baustellen") is not None
 
 
 def main() -> int:
@@ -982,6 +1091,15 @@ def main() -> int:
     raw_capture.reset_drops("baustellen")
     events = _fetch_layers(data_url, timeout)
     used_fallback = False
+    if events is None and _cache_exists():
+        # The bundled demo sample is for a checkout without a cache. Written
+        # over a real cache it replaced every real construction site with two
+        # from 2025 whenever the cache held ten or fewer (the 20 % guard of
+        # ``write_cache`` let 2 of 10 through).
+        LOGGER.warning(
+            "Baustellen: Live-Abruf fehlgeschlagen – bestehender Cache bleibt stehen."
+        )
+        return 1
     if events is None:
         used_fallback = True
         # Every layer was refused — capture WHY (the OGC exception body)
@@ -1008,8 +1126,9 @@ def main() -> int:
             relevant.append(event)
         else:
             raw_capture.note_drop("baustellen", "ohne ÖPNV-Bezug", event.get("title"))
-    if not used_fallback:
-        # The drops of the bundled demo sample say nothing about the source.
+    if not used_fallback and not _fallback_layers:
+        # The drops of the bundled demo sample or of a last good answer say
+        # nothing about this fetch.
         raw_capture.write_drops("baustellen")
     skipped = len(events) - len(relevant)
     if skipped:
@@ -1057,6 +1176,14 @@ def main() -> int:
             len(relevant),
         )
         return 2
+    if _fallback_layers:
+        # Exit 3 = cache written, but a layer came from its last good answer.
+        LOGGER.warning(
+            "Baustellen: Cache mit %d Einträgen aktualisiert; %s aus der letzten guten Antwort.",
+            len(relevant),
+            ", ".join(_fallback_layers),
+        )
+        return 3
     LOGGER.info("Baustellen: Cache mit %d Einträgen aktualisiert.", len(relevant))
     return 0
 
