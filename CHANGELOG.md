@@ -5,6 +5,17 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Update-Lauf checkt nur noch den letzten Stand aus (2026-10-04)**:
+  `update-cycle.yml` lud alle ~30 Minuten die ganze Git-Historie
+  (`fetch-depth: 0`, 55 MB, wachsend mit jeder committeten Cache- und
+  Ledger-Version); jetzt `fetch-depth: 1` (6,6 MB, unabhängig von der Länge
+  der Historie). Der Rebase vor dem Push braucht nur den ausgecheckten
+  Commit als Basis, ein paralleler Push wird weiter sauber eingespielt
+  (mit zwei flachen Clones getestet). Die Frische-Prüfung des Backup-Crons
+  vertieft den Clone selbst um 50 Commits und wertet einen Treffer auf der
+  flachen Grenze als „unbekannt“ (der Lauf findet statt), weil ein
+  Grenz-Commit scheinbar jede Datei anlegt. Tests:
+  `tests/test_update_cycle_shallow_checkout.py`.
 * **Englischer Feed: ÖBB-Vorlage nimmt nur Stationsnamen in ihre Felder (2026-10-03, vierte Nachprüfung)**:
   Die ÖBB-Sätze, die seit dem EN-Audit (unten) aus ihren Feldern gesetzt
   werden, gegen alle 317 ÖBB-„Wegen“-Sätze des deutschen Feeds seit Juli
