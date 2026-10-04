@@ -674,6 +674,32 @@ stand am 02.10. noch mit Ende 31.08.2027 im Cache; 29B/N25 endet jetzt am
 07.12. statt 31.12., 36A/36B am 12.11. statt 16.09.2027, 63A behält sein
 11.11.
 
+### Rohdaten und Verwürfe des Abrufs (seit 2026-10-04)
+
+Die Caches unter `cache/` halten nur, was den Abruf überlebt hat. Ob eine
+Meldung bei der Quelle überhaupt ankam und wo sie verschwand, ließ sich
+deshalb nachträglich nicht klären, und eine Rohantwort lässt sich später
+nicht mehr abholen. Mit `RAW_CAPTURE=1` (gesetzt nur im Fetcher-Schritt von
+`update-cycle.yml`) schreibt jeder Abruf nach `data/raw/<quelle>/`:
+
+* je Antwort einen **Stand** (`write_snapshot` in
+  `src/utils/raw_capture.py`): WL `trafficInfoList` und `newsList`, ÖBB-RSS,
+  je Baustellen-WFS-Layer;
+* `verworfen.json`: jede Meldung, die der Abruf verwarf, mit Grund.
+
+Die Dateien werden überschrieben, die Git-Historie ist das Archiv. Drei
+Regeln halten die Deltas klein: stabile Textform (sortierte Schlüssel, ein
+Wert pro Zeile, Listen in fester Reihenfolge), keine Felder, die sich bei
+jedem Aufruf ändern (WL `serverTime`, ÖBB `lastBuildDate`, Baustellen
+`OBJECTID`, Feature-`id` und Antwortkopf), und kein Schreiben ohne
+inhaltliche Änderung. Von Baustellen-Geometrien bleibt nur Typ und erste
+Position, mehr nutzt der Cache nicht. Gemessen am 2026-10-03 an einem Monat
+echter Historie: so kostet eine Quelle rund 1 MB Pack pro Monat; gzip-Dateien
+hätten das Repo 1,6- bis 146-mal stärker wachsen lassen, eine Datei pro Lauf
+das Arbeitsverzeichnis um 140 MB im Monat. Ein Fehler beim Schreiben bricht
+keinen Abruf ab, eine Datei über 4 MB wird nur gemeldet. Dateiliste und
+Abfragebeispiele: `data/raw/README.md`.
+
 ---
 
 ## 2. Die `request_safe`-Security-State-Machine
