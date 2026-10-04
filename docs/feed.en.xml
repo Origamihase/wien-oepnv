@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 04 Oct 2026 09:01:08 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 09:31:04 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[60: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789</guid>
+      <pubDate>Sun, 04 Oct 2026 09:27:00 +0200</pubDate>
+      <ext:first_seen>Sun, 04 Oct 2026 09:27:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 04 Oct 2026 09:27:03 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction towards Rodaun. Expected duration: 09:50. Reason: rescue operation in the stop area of Jagdschloßgasse. [Since 09:27]</description>
+      <content:encoded><![CDATA[Service obstruction towards Rodaun. Expected duration: 09:50. Reason: rescue operation in the stop area of Jagdschloßgasse.<br/>[Since 09:27]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[24A: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -32,26 +43,15 @@
       <content:encoded><![CDATA[Due to damage on the track, trains can only run to a limited extent between Wien Liesing station and Wien Meidling station (U) until approx. 09:15.<br/>[Since 08:26]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[11: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e8e33c76113077bad68986b313e50b4fb03e2a76a6eda7c74d06c76b1a1f1f46</guid>
-      <pubDate>Sun, 04 Oct 2026 07:12:00 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 07:12:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 04 Oct 2026 07:12:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Kaiserebersdorf, Zinnergasse. Expected duration: 07:35. Reason: traffic accident in the stop area of Frödenplatz. [Since 07:12]</description>
-      <content:encoded><![CDATA[Service obstruction towards Kaiserebersdorf, Zinnergasse. Expected duration: 07:35. Reason: traffic accident in the stop area of Frödenplatz.<br/>[Since 07:12]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[37: Fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">546c2dbd1dbedc1c66032fa3dfc63a6a64a17e0e033fa403f3c7795c08583db6</guid>
-      <pubDate>Sun, 04 Oct 2026 04:46:00 +0200</pubDate>
+      <pubDate>Sun, 04 Oct 2026 04:49:17 +0200</pubDate>
       <ext:first_seen>Sun, 04 Oct 2026 05:00:55 +0200</ext:first_seen>
       <ext:starts_at>Sun, 04 Oct 2026 04:50:47 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Trains stop for Währinger Gürtel 164. After a service obstruction different intervals occur. [Since 04:46]</description>
-      <content:encoded><![CDATA[Trains stop for Währinger Gürtel 164. After a service obstruction different intervals occur.<br/>[Since 04:46]]]></content:encoded>
+      <ext:ends_at>Sun, 04 Oct 2026 12:30:00 +0200</ext:ends_at>
+      <description>Trains stop at Währinger Gürtel 164. [Since 04:49]</description>
+      <content:encoded><![CDATA[Trains stop at Währinger Gürtel 164.<br/>[Since 04:49]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>

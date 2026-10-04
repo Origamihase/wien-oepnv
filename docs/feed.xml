@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 04 Oct 2026 09:01:08 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 09:31:04 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[60: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789</guid>
+      <pubDate>Sun, 04 Oct 2026 09:27:00 +0200</pubDate>
+      <ext:first_seen>Sun, 04 Oct 2026 09:27:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 04 Oct 2026 09:27:03 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Rodaun. Voraussichtliche Dauer: 09:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Jagdschloßgasse. [Seit 09:27]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Rodaun. Voraussichtliche Dauer: 09:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Jagdschloßgasse.<br/>[Seit 09:27]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[24A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -32,26 +43,15 @@
       <content:encoded><![CDATA[Wegen eines Schadens am Gleis sind zwischen Wien Liesing Bahnhof und Wien Meidling Bahnhof (U) Zugfahrten bis voraussichtlich 09:15 Uhr nur eingeschränkt möglich.<br/>[Seit 08:26]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[11: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e8e33c76113077bad68986b313e50b4fb03e2a76a6eda7c74d06c76b1a1f1f46</guid>
-      <pubDate>Sun, 04 Oct 2026 07:12:00 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 07:12:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 04 Oct 2026 07:12:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. Voraussichtliche Dauer: 07:35 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Frödenplatz. [Seit 07:12]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. Voraussichtliche Dauer: 07:35 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Frödenplatz.<br/>[Seit 07:12]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[37: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">546c2dbd1dbedc1c66032fa3dfc63a6a64a17e0e033fa403f3c7795c08583db6</guid>
-      <pubDate>Sun, 04 Oct 2026 04:46:00 +0200</pubDate>
+      <pubDate>Sun, 04 Oct 2026 04:49:17 +0200</pubDate>
       <ext:first_seen>Sun, 04 Oct 2026 05:00:55 +0200</ext:first_seen>
       <ext:starts_at>Sun, 04 Oct 2026 04:50:47 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Züge halten bei Währinger Gürtel 164. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 04:46]</description>
-      <content:encoded><![CDATA[Züge halten bei Währinger Gürtel 164. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 04:46]]]></content:encoded>
+      <ext:ends_at>Sun, 04 Oct 2026 12:30:00 +0200</ext:ends_at>
+      <description>Züge halten bei Währinger Gürtel 164. [Seit 04:49]</description>
+      <content:encoded><![CDATA[Züge halten bei Währinger Gürtel 164.<br/>[Seit 04:49]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
