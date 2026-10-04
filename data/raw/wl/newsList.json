@@ -6,7 +6,7 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-2738, N20260209-3501, N20260209-3802, N20260209-4631, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260701-5989, N20260702-5991, N20260708-6004, N20260722-6034, N20260805-6064, N20260806-6072, N20260813-6092, N20260808-6085, N20260808-6083, N20260808-6084, N20260814-6094, N20260817-6131, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6163, N20260831-6164, N20260831-6162, N20260831-6161, N20260831-6165, N20260901-6167, N20260903-6175, N20260908-6177, N20260910-6180, N20260911-6181, N20260915-6185, N20260916-6187, N20260916-6188, N20260918-6192, N20260918-6191, N20260921-6196, N20260922-6200, N20260923-6203, N20260928-6209, N20260928-6208, N20260928-6210, N20260930-6212, N20260930-6211, N20261001-6214, N20260421-5703, N20261002-6215"
+    "trafficInfoNameList": "N20260209-0049, N20260209-2738, N20260209-3501, N20260209-3802, N20260209-4631, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260701-5989, N20260702-5991, N20260708-6004, N20260722-6034, N20260805-6064, N20260806-6072, N20260813-6092, N20260808-6085, N20260808-6083, N20260808-6084, N20260814-6094, N20260817-6131, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6163, N20260831-6164, N20260831-6162, N20260831-6161, N20260831-6165, N20260901-6167, N20260903-6175, N20260908-6177, N20260910-6180, N20260911-6181, N20260915-6185, N20260916-6187, N20260916-6188, N20260918-6192, N20260918-6191, N20260921-6196, N20260922-6200, N20260923-6203, N20260928-6209, N20260928-6210, N20260930-6211, N20261001-6214, N20260421-5703, N20261002-6215"
    },
    {
     "id": -1,
@@ -2339,29 +2339,6 @@
     "title": "N31: Stammersdorf ersatzlos aufgelassen"
    },
    {
-    "description": "<h2>Veranstaltung</h2>\r\n<p>Wegen einer Laufveranstaltung im Nahbereich des Allianz Stadions werden die Busse der Linie 47B umgeleitet.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Sonntag, 4. Oktober 2026 zwischen etwa 11:30 und 13:00 Uhr.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie 47B Richtung Bhf. H&uuml;tteldorf S U:</strong><br />Umleitung ab Rosentalgasse # Linzer Stra&szlig;e &uuml;ber Linzer Stra&szlig;e - Bergmillergasse - Kei&szlig;lergasse.</p>\r\n<p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:</span><br />- Rettichgasse (Linzer Stra&szlig;e gegen&uuml;ber 394)<br />- Bahnhofstra&szlig;e (Bahnhofstra&szlig;e vor 2a)</p>\r\n<p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Bergmillergasse (Bergmillergasse 8, Haltestelle der Linie N8)</p>\r\n<p><strong>Linie 47B in Richtung H&uuml;ttelberg:</strong><br />Umleitung ab Bahnhof H&uuml;tteldorf S U &uuml;ber Kei&szlig;lergasse - Bergmillergasse - Linzer Stra&szlig;e - Rosentalgasse.</p>\r\n<p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:</span><br />- Cossmanngasse (Deutschordenstra&szlig;e 14)<br />- Deutschordenstra&szlig;e (Deutschordenstra&szlig;e 38-40)<br />- Bahnhofstra&szlig;e (Linzer Stra&szlig;e 360)<br />- Rettichgasse (Linzer Stra&szlig;e 394, Haltestelle der Linie 49)</p>\r\n<p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Bergmillergasse (Bergmillergasse 5, Haltestelle der Linien 43B, 49A, 50A, 50B, 52A, 52B)</p>",
-    "id": "N20260928-6208",
-    "location": {
-     "properties": {
-      "attributes": {},
-      "coordName": "WGS84",
-      "type": "news"
-     },
-     "type": "Feature"
-    },
-    "name": "N20260928-6208",
-    "refPoiCategoryId": 13296,
-    "relatedLines": [
-     "47B"
-    ],
-    "time": {
-     "end": "2026-10-04T13:00:00.000+0200",
-     "start": "2026-09-28T13:30:00.000+0200",
-     "validFrom": "2026-09-28T13:18:00.000+0200"
-    },
-    "title": "47B: Laufveranstaltung am 04.10.2026"
-   },
-   {
     "description": "<h2>Laufveranstaltung</h2>\r\n<p>Wegen des LCC-Herbstmarathons in der Prater Hauptallee wird die Linie 18 kurz gef&uuml;hrt.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Sonntag, 11. Oktober 2026, 09:00 Uhr bis 16:30 Uhr.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie 18:</strong><br />Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U.</p>",
     "id": "N20260928-6209",
     "location": {
@@ -2439,95 +2416,6 @@
      "validFrom": "2026-09-30T10:31:00.000+0200"
     },
     "title": "29B, N25: Adolf-Loos-Gasse"
-   },
-   {
-    "description": "<h2>Veranstaltung</h2>\r\n<p>Wegen einer Veranstaltung im Bereich Allianz Stadion kommt es zu folgenden Verkehrsma&szlig;nahmen.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Am 04. Oktober 2026, ab etwa 11:30 Uhr bis 04. Oktober 2026, etwa 13:00 Uhr.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie 47B in Richtung Bahnhof H&uuml;tteldorf S U:</strong><br />Umleitung ab Rosentalgasse # Linzer Stra&szlig;e &uuml;ber Linzer Stra&szlig;e &ndash; Bergmillergasse &ndash; Kei&szlig;lergasse.</p>\r\n<p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:</span><br />- Rettichgasse (Linzer Stra&szlig;e gegen&uuml;ber 394)<br />- Bahnhofstra&szlig;e (Bahnhofstra&szlig;e vor 2a)</p>\r\n<p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Bergmillergasse (Bergmillergasse 8)</p>\r\n<p><strong>Linie 47B in Richtung H&uuml;ttelberg:</strong><br />Umleitung ab Bahnhof H&uuml;tteldorf S U &uuml;ber Kei&szlig;lergasse &ndash; Bergmillergasse &ndash; Linzer Stra&szlig;e &ndash; Rosentalgasse.</p>\r\n<p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:</span><br />- Cossmanngasse (Deutschordenstra&szlig;e 14)<br />- Deutschordenstra&szlig;e (Deutschordenstra&szlig;e 38-40)<br />- Bahnhofstra&szlig;e (Linzer Stra&szlig;e 360)<br />- Rettichgasse (Linzer Stra&szlig;e 394)</p>\r\n<p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Bergmillergasse (Bergmillergasse 5)</p>\r\n<p><strong>Beachten Sie:</strong></p>\r\n<div style=\"font-family: 'Segoe UI'; font-size: 14px; line-height: 20px;\">Die Linien 46 (Ersatz f&uuml;r 49) und 47A werden w&auml;hrend des Laufbetriebs auf der Linzer Stra&szlig;e kurzzeitig verhalten.</div>",
-    "id": "N20260930-6212",
-    "location": {
-     "properties": {
-      "attributes": {},
-      "coordName": "WGS84",
-      "type": "news"
-     },
-     "type": "Feature"
-    },
-    "name": "N20260930-6212",
-    "refPoiCategoryId": 13296,
-    "relatedLines": [
-     "46",
-     "47A",
-     "47B"
-    ],
-    "relatedStops": [
-     564,
-     565,
-     1375,
-     1376,
-     1377,
-     1378,
-     1379,
-     1380,
-     1381,
-     1382,
-     1383,
-     1384,
-     1385,
-     585,
-     586,
-     1386,
-     1387,
-     1388,
-     1389,
-     1390,
-     1391,
-     1392,
-     1393,
-     1394,
-     1395,
-     2635,
-     7551,
-     2458,
-     2273,
-     2274,
-     2275,
-     2646,
-     2262,
-     2263,
-     2264,
-     2265,
-     2266,
-     2267,
-     2268,
-     2269,
-     2281,
-     2294,
-     2295,
-     2296,
-     1456,
-     2270,
-     2271,
-     2272,
-     1460,
-     3230,
-     3231,
-     3232,
-     3234,
-     3235,
-     3236,
-     5697,
-     1464,
-     3237,
-     3238,
-     3239,
-     3241,
-     1459
-    ],
-    "time": {
-     "end": "2026-10-04T13:00:00.000+0200",
-     "start": "2026-09-30T00:00:00.000+0200",
-     "validFrom": "2026-09-30T11:33:00.000+0200"
-    },
-    "title": "47B: Veranstaltung am 04.10.2026"
    },
    {
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 16A in Richtung Hetzendorf S bzw. N65 in Richtung Liesing</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Grohnergasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Otto-Probst-Stra&szlig;e vor Grohnergasse</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> etwa 20 m gegen die Fahrtrichtung</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 01. Oktober 2026, 10:00 Uhr</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rohrgebrechen</span></p>",

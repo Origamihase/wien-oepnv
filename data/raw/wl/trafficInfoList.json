@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261004-0011, I20260925-0011, I20260922-0032, I20260909-0007"
+    "trafficInfoNameList": "I20260917-0012, I20261004-0012-F01, I20261004-0012, I20260925-0011, I20260922-0032, I20260909-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R36-152, R2378-627, R1150-0, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R45-136, R19-136, R1476-149, R318-437, R293-474, R2923-403, R2917-0, R2025-671, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R2558-125, R4843-162, R1754-162, R1753-162, R1752-162, R1751-162, R1710-162, R1715-162, R1714-162, R1713-162, R1712-162, R1711-162, R1709-162, R1756-162, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R117-136, R118-136, R2345-127, R2380-627, R2379-627, R2373-126, R1150-0, R2372-627, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R36-152, R45-136, R19-136, R130-136, R119-136, R100-136, R101-136, R102-136, R103-136, R116-136, R115-136, R1476-149, R318-437, R293-474, R2558-125, R2923-403, R2917-0, R2025-671, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R4843-162, R1709-162, R1714-162, R1713-162, R1712-162, R1711-162, R1756-162, R1754-162, R1753-162, R1752-162, R1751-162, R1710-162, R1715-162, R1974-466, R500-101, R663-413, R662-413, R688-413, R668-413, R665-413, R682-413, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,36 +203,72 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "47B": "ptBusCity"
+      "13A": "ptBusCity"
      }
     },
-    "description": "Die Linie 47B wird in Richtung Bahnhof Hütteldorf SU zwischen Rosentalgasse und Bahnhof Hütteldorf SU über Bergmillergasse umgeleitet. Voraussichtliche Dauer: 13:00 Uhr. Grund: Veranstaltung im Bereich Keißlergasse.",
-    "descriptionHTML": "Die Linie 47B wird in Richtung Bahnhof Hütteldorf SU zwischen Rosentalgasse und Bahnhof Hütteldorf SU über Bergmillergasse umgeleitet.<br> <br>Voraussichtliche Dauer: 13:00 Uhr.<br><br>Grund: Veranstaltung im Bereich Keißlergasse.",
-    "location": "Keißlergasse",
-    "name": "I20261004-0011",
+    "description": "Linie 13A: Fahrtbehinderung in Richtung Hauptbahnhof S U. Voraussichtliche Dauer: 13:10 Uhr. Grund: Rettungseinsatz im Bereich Lederergasse 25.",
+    "descriptionHTML": "Linie 13A:<br>Fahrtbehinderung in Richtung Hauptbahnhof S U.<br> <br>Voraussichtliche Dauer: 13:10 Uhr.<br><br>Grund: Rettungseinsatz im Bereich Lederergasse 25.",
+    "location": "Lederergasse 25",
+    "name": "I20261004-0012",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "47B"
+     "13A"
     ],
     "relatedLinesDetails": [
      [
       {
-       "lineId": "247",
-       "lineName": "47B",
+       "lineId": "413",
+       "lineName": "13A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-04T12:56:00.000+0200",
+     "end": "2026-10-04T12:58:00.000+0200",
+     "lastUpdate": "2026-10-04T12:58:00.000+0200",
+     "resume": "2026-10-04T12:58:00.000+0200",
+     "start": "2026-10-04T12:55:00.000+0200"
+    },
+    "title": "13A: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "13A": "ptBusCity"
+     }
+    },
+    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Lederergasse 25",
+    "name": "I20261004-0012-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "413",
+       "lineName": "13A",
        "vehicleType": "ptBusCity"
       }
      ]
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-04T11:39:00.000+0200",
+     "created": "2026-10-04T12:58:00.000+0200",
      "end": "2026-10-04T23:55:00.000+0200",
-     "lastUpdate": "2026-10-04T11:39:00.000+0200",
-     "start": "2026-10-04T11:37:00.000+0200"
+     "lastUpdate": "2026-10-04T12:58:00.000+0200",
+     "resume": "2026-10-04T12:58:00.000+0200",
+     "start": "2026-10-04T12:55:00.000+0200"
     },
-    "title": "47B: Veranstaltung"
+    "title": "13A: Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1355,6 +1391,114 @@
      "start": "2026-10-01T00:00:13.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R662-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     662
+    ],
+    "time": {
+     "end": "2026-10-04T13:53:00.000+0200",
+     "start": "2026-10-04T12:53:58.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R663-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     663
+    ],
+    "time": {
+     "end": "2026-10-04T13:53:00.000+0200",
+     "start": "2026-10-04T12:53:58.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R665-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     665
+    ],
+    "time": {
+     "end": "2026-10-04T13:56:00.000+0200",
+     "start": "2026-10-04T12:56:28.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R668-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     668
+    ],
+    "time": {
+     "end": "2026-10-04T13:56:00.000+0200",
+     "start": "2026-10-04T12:56:28.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R682-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     682
+    ],
+    "time": {
+     "end": "2026-10-04T13:56:00.000+0200",
+     "start": "2026-10-04T12:56:28.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R688-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     688
+    ],
+    "time": {
+     "end": "2026-10-04T13:56:00.000+0200",
+     "start": "2026-10-04T12:56:28.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",

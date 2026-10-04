@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 04 Oct 2026 12:30:39 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 13:00:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[13A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0</guid>
+      <pubDate>Sun, 04 Oct 2026 12:53:58 +0200</pubDate>
+      <ext:first_seen>Sun, 04 Oct 2026 12:53:58 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 04 Oct 2026 12:56:28 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Hauptbahnhof S U. Voraussichtliche Dauer: 13:10 Uhr. Grund: Rettungseinsatz im Bereich Lederergasse 25. [Seit 12:53]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Hauptbahnhof S U. Voraussichtliche Dauer: 13:10 Uhr. Grund: Rettungseinsatz im Bereich Lederergasse 25.<br/>[Seit 12:53]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -52,17 +63,6 @@
       <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
       <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [Ab Mo 05.10. bis 11.11.]</description>
       <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[Ab Mo 05.10. bis 11.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46/47A/47B: Veranstaltung am 04.10.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c2bb5f86d94aef7a1f6955caa3f47b2970089dc4432d9db0f98ffd41cb8ccb65</guid>
-      <pubDate>Sun, 04 Oct 2026 11:37:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 12:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 04 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Wegen einer Veranstaltung im Bereich Allianz Stadion kommt es zu folgenden Verkehrsmaßnahmen. [Heute]</description>
-      <content:encoded><![CDATA[Wegen einer Veranstaltung im Bereich Allianz Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[29B/N25: Adolf-Loos-Gasse]]></title>
