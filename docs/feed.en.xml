@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 04 Oct 2026 19:12:04 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 19:26:44 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[15A: Fire-brigade operation]]></title>
@@ -32,7 +32,7 @@
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 17:42]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U6: Neue Donau, no stopping direction Floridsdorf]]></title>
+      <title><![CDATA[U6: Neue Donau, no stop towards Floridsdorf]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">747d54fbd4c0aad685b21596a0c44cb67d41165e556ee43b1bc3e8636920f551</guid>
       <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
@@ -43,7 +43,7 @@
       <content:encoded><![CDATA[Refurbishing the platform Due to the renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station …<br/>[Until 31.12.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
+      <title><![CDATA[66A: Buses stop at Salvatorianerplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
       <pubDate>Sun, 04 Oct 2026 04:40:23 +0200</pubDate>
@@ -65,7 +65,7 @@
       <content:encoded><![CDATA[The work takes place in the period from 20:00 to 05:00. The left lane in the direction of the city is closed.<br/>[Until 15.11.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[52: Trains stop for lines 6 and 18]]></title>
+      <title><![CDATA[52: Trains stop at the stops of lines 6 and 18]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:14 +0200</pubDate>
@@ -83,19 +83,19 @@
       <ext:first_seen>Thu, 01 Oct 2026 00:00:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 01 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 05 Oct 2026 11:11:00 +0200</ext:ends_at>
-      <description>Stop relocation of line 16A towards Hetzendorf and N65 towards Liesing. Stop: Grohnergasse. From: Otto-Probst-Straße before Grohnergasse. To: Approx. … [Until Mon 05.10.]</description>
-      <content:encoded><![CDATA[Stop relocation of line 16A towards Hetzendorf and N65 towards Liesing. Stop: Grohnergasse. From: Otto-Probst-Straße before Grohnergasse. To: Approx. …<br/>[Until Mon 05.10.]]]></content:encoded>
+      <description>Stop relocation of line 16A towards Hetzendorf S and N65 towards Liesing. Stop: Grohnergasse. From: Otto-Probst-Straße before Grohnergasse. To: Approx. … [Until Mon 05.10.]</description>
+      <content:encoded><![CDATA[Stop relocation of line 16A towards Hetzendorf S and N65 towards Liesing. Stop: Grohnergasse. From: Otto-Probst-Straße before Grohnergasse. To: Approx. …<br/>[Until Mon 05.10.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[63A: Diversion because of crane works]]></title>
+      <title><![CDATA[63A: Umleitung wegen Kranarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0200</pubDate>
       <ext:first_seen>Thu, 01 Oct 2026 00:00:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
-      <description>Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse line 63A is redirected. [From Mon 05.10. until 11.11.]</description>
-      <content:encoded><![CDATA[Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse line 63A is redirected.<br/>[From Mon 05.10. until 11.11.]]]></content:encoded>
+      <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [Ab Mo 05.10. bis 11.11.]</description>
+      <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[Ab Mo 05.10. bis 11.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[29B/N25: Adolf-Loos-Gasse]]></title>
@@ -105,8 +105,8 @@
       <ext:first_seen>Wed, 30 Sep 2026 11:30:57 +0200</ext:first_seen>
       <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are being redirected. [From Mon 05.10. until 07.12.]</description>
-      <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are being redirected.<br/>[From Mon 05.10. until 07.12.]]]></content:encoded>
+      <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected. [From Mon 05.10. until 07.12.]</description>
+      <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected.<br/>[From Mon 05.10. until 07.12.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[26E/N20: Fultonstraße]]></title>
