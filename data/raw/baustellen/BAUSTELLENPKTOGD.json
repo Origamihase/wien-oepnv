@@ -1,0 +1,464 @@
+{
+ "features": [
+  {
+   "geometry": {
+    "first_position": [
+     16.44148065,
+     48.2102296
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Asfinag Service Center",
+    "ANSPRECHPERSON_TEL": "Tel.: 0800 400 12 400",
+    "ANTRAGSTELLER": "ASFINAG",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "A22 (Donauuferautobahn) von km 1.500 bis km 4.000 inkl. aller Rampen in diesem Bereich",
+    "BEZIRK": 22,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-04Z",
+    "OBJEKT_ENDE": "2026-10-22Z",
+    "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 23:00 bis 05:00 Uhr. Es werden wechselweise mehrere Fahrstreifen in beide Fahrtrichtungen je nach Erfordernis gesperrt. Mindestens ein Fahrstreifen bleibt aufrecht. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.Nähere Informationen finden Sie unter: routenplaner.asfinag.at",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.41956776,
+     48.19056011
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Poststelle",
+    "ANSPRECHPERSON_TEL": "Tel.: 01/4000-96915",
+    "ANTRAGSTELLER": "MA29",
+    "BEHINDERUNGSART": "Brückenbau",
+    "BEZEICHNUNG": "A4 (Ostautobahn) RFB Schwechat von km 0.300 bis km 0.450",
+    "BEZIRK": 11,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-01Z",
+    "OBJEKT_ENDE": "2026-10-09Z",
+    "PRESSETEXT": "Die Instandsetzungsarbeiten an der Tragwerksuntersicht des Gaswerksteges erfolgen in der Nacht von Freitag, 02.10.2026 auf Samstag, 03.10.2026 in der Zeit von 22:00 Uhr bis 7:00 Uhr, in der Nacht von Samstag, 03.10.2026 auf Sonntag, 04.10.2026 in der Zeit von 22:00 Uhr bis 09:00 Uhr, in der Nacht von Sonntag, 04.10.2026 auf Montag 05.10.2026 in der Zeit von 22:00 Uhr bis 5:00 Uhr sowie in den Nächten von Montag, 05.10.2026 bis Freitag, 09.10.2026 in der Zeit von 22:00 Uhr bis 5:00 Uhr. Während der Arbeitszeit werden die beiden rechten Fahrstreifen auf der Autobahn A4 in Fahrtrichtung stadtauswärts (Flughafen) gesperrt. Der äußerst linke Fahrstreifen bleibt aufrecht. Die Abfahrtsrampe der A23 von Süden kommend in Fahrtrichtung Flughafen (Rampe A4R3) wird gesperrt. Von Süden kommend wird empfohlen großräumig über die S1 auszuweichen. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.4190058,
+     48.19083531
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Asfinag Service Center",
+    "ANSPRECHPERSON_TEL": "Tel.: 0800 400 12 400",
+    "ANTRAGSTELLER": null,
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "A4 (Ostautobahn) von Knoten Prater bis Landesgrenze (beide Richtungsfahrbahnen)",
+    "BEZIRK": 2,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2024-07-23Z",
+    "OBJEKT_ENDE": "2026-12-14Z",
+    "PRESSETEXT": "Die Generalinstandsetzung der A4 (Ostautobahn) wird in beiden Fahrtrichtungen bei Aufrechterhaltung von je 2 Fahrspuren mit einer Mindestbreite von je 3,00 m, sowie eine Temporeduktion im Baustellenbereich auf 60 km/h durchgeführt. In vereinzelten Nächten, jeweils im Zeitraum von 22:00 Uhr bis 05:00 Uhr verbleiben je nach Erfordernis ein oder zwei Fahrstreifen mit einer Breite von mindestens 3,50 m für den Fließverkehr. Zusätzlich werden nach Bedarf auch die Rampen von der A23, sowohl vom Süden als auch vom Norden kommend, auf die A4 Richtung Ungarn gesperrt. Weiters werden auch bei Bedarf die im Wiener Abschnitt betroffenen Auf- und Abfahrten der A4 in einzelnen Nächten im Zeitraum von 22:00 Uhr bis 05:00 Uhr gesperrt. Sollten Detailinformationen dazu gewünscht werden, wird auf die Homepage der ASFINAG verwiesen. ",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.35496596,
+     48.18713245
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundentelefon Wiener Linien",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-7909/100",
+    "ANTRAGSTELLER": "Wiener Linien GmbH & Co KG",
+    "BEHINDERUNGSART": "U-Bahnbau",
+    "BEZEICHNUNG": "Bacherplatz von Arbeitergasse bis Schwarzhorngasse",
+    "BEZIRK": 5,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2021-02-28Z",
+    "OBJEKT_ENDE": "2028-12-31Z",
+    "PRESSETEXT": "Der Bacherplatz wird im Zuge der Spengergasse zwischen der Arbeitergasse und der Schwarzhorngasse gesperrt. Aus diesem Grund werden die Spengergasse zwischen der Schwarzhorngasse und der Margaretenstraße und die Schwarzhorngasse zwischen der Spengergasse und der Reinprechtsdorfer Straße bei Aufhebung der bestehenden Einbahnregelungen als Sackgassen ausgebildet. Detaillierte Informationen über das Bauvorhaben U2 / U5 können über die Ombudsstelle des jeweils betroffenen U-Bahnabschnittes eingeholt werden.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.28541147,
+     48.14733017
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Gerhard Baumann",
+    "ANSPRECHPERSON_TEL": "Tel.: 050128/32740",
+    "ANTRAGSTELLER": "Wiener Netze - Bereich Fernwärme",
+    "BEHINDERUNGSART": "Rohrlegung",
+    "BEZEICHNUNG": "Endresstraße von 24-26 bis ggü. 24-26",
+    "BEZIRK": 23,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-06-28Z",
+    "OBJEKT_ENDE": "2026-11-27Z",
+    "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. ImBaustellenbereich wird ein Fahrstreifen mit einer Restfahrbahn von 3,00 mfreigehalten und der Verkehr wechselweise mittels Verkehrszeichen durchgeschleust. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.44969991,
+     48.23123461
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Erzherzog-Karl-Straße Kreuzung Polgarstraße bis Smolagasse",
+    "BEZIRK": 22,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-08-23Z",
+    "OBJEKT_ENDE": "2026-10-05Z",
+    "PRESSETEXT": "Die Arbeiten werden in zwei Bauabschnitten durchgeführt. Bauabschnitt 1 (24.08.2026 bis 06.09.2026): Die Nebenfahrbahn der Erzherzog-Karl-Straße wird im Bereich zwischen Polgarstraße und Smolagasse gesperrt. Die Zufahrt zur Sport & Fun Halle Donaustadt ist möglich.Nähere Informationen zur Umleitung sowie Haltestellenverlegung der betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen. Bauabschnitt 2 (07.09.2026 bis 05.10.2026): Der rechte Fahrstreifen der Erzherzog-Karl-Straße in Fahrtrichtung stadtauswärts wird gesperrt. Die restlichen Fahrstreifen werden aufrechtgehalten. Ein Fahrstreifen in der Polgarstraße wird gesperrt.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.32544707,
+     48.24010387
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Felix-Dahn-Straße Kreuzung Hartäckerstraße und Antelweg",
+    "BEZIRK": 19,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-05Z",
+    "OBJEKT_ENDE": "2026-10-16Z",
+    "PRESSETEXT": "Die Hartäckerstraße wird von Felix-Dahn-Straße in Richtung Dänenstraße als Einbahn geführt. Die Felix-Dahn-Straße wird zwischen Peter-Jordan-Straße und Hartäckerstraße in Richtung Hartäckerstraße als Einbahn geführt. Der Fahrzeugverkehr kommend vom 19. Bezirk in Richtung 18. Bezirk wird über die Felix-Dahn-Straße Hartäckerstraße Dänenstraße Peter-Jordan-Straße geführt.Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.36833104,
+     48.16499445
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Gerhard Baumann",
+    "ANSPRECHPERSON_TEL": "Tel.: 050128/32740",
+    "ANTRAGSTELLER": "Wiener Netze - Bereich Fernwärme",
+    "BEHINDERUNGSART": "Rohrlegung",
+    "BEZEICHNUNG": "Grenzackerstraße Kreuzung Laxenburger Straße und Raxstraße",
+    "BEZIRK": 10,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-07-12Z",
+    "OBJEKT_ENDE": "2026-10-31Z",
+    "PRESSETEXT": "Die Arbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Es wird abschnittsweise ein Fahrstreifen in Fahrtrichtung stadtauswärts sowie in Fahrtrichtung stadteinwärts gesperrt. Die restlichen Fahrstreifen werden aufrechtgehalten. Bei einzelnen Sperren des Linksabbiege-Fahrstreifens in Richtung Triester Straße erfolgt eine Umleitung über die Neilreichgasse sowie Sahulkastraße. Außerhalb der Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.29486264,
+     48.18947432
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Poststelle Wien Kanal",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000-30030",
+    "ANTRAGSTELLER": "Wienkanal",
+    "BEHINDERUNGSART": "Kanalbau",
+    "BEZEICHNUNG": "Hietzinger Kai Kreuzung Hietzinger Kai und Braunschweiggasse",
+    "BEZIRK": 13,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-07-29Z",
+    "OBJEKT_ENDE": "2026-11-13Z",
+    "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 19:00 bis 05:00 Uhr. Derlinke Fahrstreifen wird in Fahrtrichtung stadteinwärts gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.35527809,
+     48.20977459
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundentelefon Wiener Linien",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-7909/100",
+    "ANTRAGSTELLER": "Wiener Linien GmbH & Co KG",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Landesgerichtsstraße 6 bis Felderstraße",
+    "BEZIRK": 1,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-09-14Z",
+    "OBJEKT_ENDE": "2026-11-01Z",
+    "PRESSETEXT": "Die Arbeiten werden in der Zeit von 09:00 Uhr bis 15:00 Uhr und von 19:00 Uhr bis 06:00 Uhr durchgeführt. Der rechte Fahrstreifen wird in Fahrtrichtung 9. Bezirk gesperrt. Die restlichen Fahrstreifen werden aufrechtgehalten. Außerhalb der Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.35384203,
+     48.19469403
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Poststelle Wien Kanal",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000-30030",
+    "ANTRAGSTELLER": "Wienkanal",
+    "BEHINDERUNGSART": "Kanalbau",
+    "BEZEICHNUNG": "Linke Wienzeile 90-92",
+    "BEZIRK": 6,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-05-19Z",
+    "OBJEKT_ENDE": "2026-12-18Z",
+    "PRESSETEXT": "Zur Einrichtung einerBaustellenfläche für Arbeiten im Wienfluss werden ab 20.05.2026 Bauarbeiten imBereich der Linken Wienzeile O.Nr. 86 96 durchgeführt. Zum Zwecke derOberflächenfreimachung erfolgt in der ersten Bauphase die Entfernung derVerkehrsinsel vor der Liegenschaft O.Nr. 90 92 (BP Tankstelle) ohneEinschränkungen für den Fließverkehr auf der Linken Wienzeile. In der Nacht von01.06.2026 auf 02.06.2026 erfolgen Bodenmarkierungsarbeiten für die bisJahresende 2026 andauernde Verkehrsführung auf der Linken Wienzeile imBaustellenbereich.<br>Ab 02.06.2026 wirdder Verkehr mittels zweispurigem Fahrbahnverschwenk an der Baustellevorbeigeführt.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.37418492,
+     48.20008633
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Privater Bauträger",
+    "ANSPRECHPERSON_TEL": null,
+    "ANTRAGSTELLER": "Privater Bauträger",
+    "BEHINDERUNGSART": "Baustelleneinrichtung für Hochbau",
+    "BEZEICHNUNG": "Lothringerstraße 3 bis 5",
+    "BEZIRK": 1,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2025-02-02Z",
+    "OBJEKT_ENDE": "2027-12-31Z",
+    "PRESSETEXT": "Für Be- und Entladetätigkeiten im Zuge der Kernsanierung des Gebäudes in Wien 1, Lothringerstraße ON 3-5 bzw. Schwarzenbergplatz ON 15 wird die rechte Fahrspur in der Lothringerstraße ab ca. 30 m nach dem Schwarzenbergplatz bis ca. 20 m vor der Canovagasse gesperrt. Die Absperrung erfolgt mittels Betonleitwänden. Es verbleiben 2 Fahrspuren im gegenständlichen Bereich aufrecht. Der Geh- und Radweg wird mittels Passagengerüst überbaut und wird durch das Bauvorhaben nicht behindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.35865714,
+     48.18122698
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundentelefon Wiener Linien",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-7909/100",
+    "ANTRAGSTELLER": null,
+    "BEHINDERUNGSART": "U-Bahnbau",
+    "BEZEICHNUNG": "Matzleinsdorfer Platz unter Tragwerk ÖBB",
+    "BEZIRK": 10,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2021-03-14Z",
+    "OBJEKT_ENDE": "2028-12-31Z",
+    "PRESSETEXT": "Zur Verbesserung und Erhöhung der Sicherungsmaßnahmen während der Tunnelvortriebarbeiten des U-Bahnbaus wird unter dem Brückentragwerk der ÖBB eine der beiden Linksabbiegespuren in Fahrtrichtung zur Gudrunstraße gesperrt. Der bestehende Radweg unter dem Brückentragwerk wird gesperrt und es wird ein neuer Ersatzgeh- und -radweg geschaffen.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.27625048,
+     48.24015908
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Neuwaldegger Straße 59 bis in Richtung 14. Bezirk bis Höhe Hanslteich",
+    "BEZIRK": 17,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-09-20Z",
+    "OBJEKT_ENDE": "2026-12-23Z",
+    "PRESSETEXT": "ImBaustellenbereich wird ein Fahrstreifen freigehalten und der Verkehr wechselweise mittels Ampel durchgeschleust.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.35573154,
+     48.16720727
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Raxstraße von 40 bis 44",
+    "BEZIRK": 10,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-09-21Z",
+    "OBJEKT_ENDE": "2026-11-20Z",
+    "PRESSETEXT": "Ein Fahrstreifen je Fahrtrichtung bleibt aufrecht. Die rechte Nebenfahrbahn in Fahrtrichtung Triester Straße wird gesperrt. DerFußgänger- und Radverkehr kann aufrecht gehalten werden.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.42189748,
+     48.27593991
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Ruthnergasse Kreuzung Justgasse",
+    "BEZIRK": 21,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-09-20Z",
+    "OBJEKT_ENDE": "2026-10-16Z",
+    "PRESSETEXT": "ImBaustellenbereich wird ein Fahrstreifen freigehalten und der Verkehr wechselweise mittels Personal während der Spitzenzeiten oder Verkehrszeichen durchgeschleust. Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.36507792,
+     48.21513596
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Gerhard Baumann",
+    "ANSPRECHPERSON_TEL": "Tel.: 050128/32740",
+    "ANTRAGSTELLER": "Wiener Netze - Bereich Fernwärme",
+    "BEHINDERUNGSART": "Rohrlegung",
+    "BEZEICHNUNG": "Schottenring 11",
+    "BEZIRK": 1,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-08-02Z",
+    "OBJEKT_ENDE": "2026-11-30Z",
+    "PRESSETEXT": "Die Arbeiten erfolgen in der Nebenfahrbahn in der Nacht in der betriebslosen Zeit des betroffenen öffentlichen Verkehrsmittels sowie von Freitag 15:00 Uhr bis Montag 05:00 Uhr.Im Baustellenbereich wird ein Fahrstreifen mit einer Restfahrbahn von 3,50 m freigehalten. DerFußgängerverkehr kann aufrecht gehalten werden. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.35639409,
+     48.21462972
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": null,
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Universitätsstraße Kreuzung Landesgerichtsstraße und Garnisongasse",
+    "BEZIRK": 9,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-05-03Z",
+    "OBJEKT_ENDE": "2026-12-18Z",
+    "PRESSETEXT": "Die Verkehrsmaßnahmen werden - auch in den Straßenzügen des untergeordneten Straßennetzes - größtenteils von den U-Bahn Bauarbeiten übernommen. In der Garnisongasse wird die Einbahn im Abschnitt von der Universitätsstraße bis zur Frankgasse in Richtung Universitätsstraße belassen. In den Sommermonaten Juli / August 2026 wird in der Universitätsstraße auf eine Dauer von 4 Wochen in Fahrtrichtung stadtauswärts eine Linksabbiegespur zur Landesgerichtstraße gesperrt, um den Radweg während der Bauarbeiten rund um das neue Aufnahmegebäude der U-Bahn provisorisch verlegen zu können.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.35818048,
+     48.20613115
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundentelefon Wiener Linien",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-7909/100",
+    "ANTRAGSTELLER": null,
+    "BEHINDERUNGSART": "U-Bahnbau",
+    "BEZEICHNUNG": "Volksgartenstraße 2",
+    "BEZIRK": 1,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2021-02-28Z",
+    "OBJEKT_ENDE": "2029-12-31Z",
+    "PRESSETEXT": "Zur Abwicklung des Baustellenverkehrs für den U-Bahnbau wird In der Volksgartenstraße zwischen der Hansenstraße und der Museumstraße eine Fahrspur gesperrt. Detaillierte Informationen über das Bauvorhaben U2 / U5 können über die Ombudsstelle des jeweils betroffenen U-Bahnabschnittes eingeholt werden.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.25804707,
+     48.19735528
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Poststelle Wien Kanal",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000-30030",
+    "ANTRAGSTELLER": "Wienkanal",
+    "BEHINDERUNGSART": "Kanalbau",
+    "BEZEICHNUNG": "Wientalstraße Kreuzung Rußpekgasse und Hütteldorfer Brücke",
+    "BEZIRK": 13,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-08-24Z",
+    "OBJEKT_ENDE": "2027-12-31Z",
+    "PRESSETEXT": "Im Bereich der Wientalstraße nach der Kreuzung Rußpekgasse werden zwei Fahrstreifen mit jeweils einer Breite von 3,50 m aufrecht gehalten.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  }
+ ]
+}
