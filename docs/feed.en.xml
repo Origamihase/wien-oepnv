@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 04 Oct 2026 18:00:40 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 18:01:20 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[15A: Fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b99ae27d5cdba47e5435448e323cf7cb9838fd9cde50ad5a9f9b8c7c6a3d1b47</guid>
+      <pubDate>Sun, 04 Oct 2026 17:47:00 +0200</pubDate>
+      <ext:first_seen>Sun, 04 Oct 2026 18:01:20 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 04 Oct 2026 17:50:27 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service from Eibesbrunnergasse. [Since 17:47]</description>
+      <content:encoded><![CDATA[Service from Eibesbrunnergasse.<br/>[Since 17:47]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[6/18: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">aacc39f83fe170f26c07ccc402e213333a35b8dff67f135ce2ceafae46631d10</guid>
+      <pubDate>Sun, 04 Oct 2026 17:42:00 +0200</pubDate>
+      <ext:first_seen>Sun, 04 Oct 2026 17:42:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 04 Oct 2026 17:42:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction direction Burggasse, Stadthalle U. Expected duration: 18:10. Reason: defective vehicle in the stop area of Mariahilfer Gürtel. [Since 17:42]</description>
+      <content:encoded><![CDATA[Service obstruction direction Burggasse, Stadthalle U. Expected duration: 18:10. Reason: defective vehicle in the stop area of Mariahilfer Gürtel.<br/>[Since 17:42]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U6: Neue Donau, no stopping direction Floridsdorf]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +41,6 @@
       <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Refurbishing the platform Due to the renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station … [Until 31.12.]</description>
       <content:encoded><![CDATA[Refurbishing the platform Due to the renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station …<br/>[Until 31.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723</guid>
-      <pubDate>Sun, 04 Oct 2026 15:31:00 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 15:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 04 Oct 2026 15:31:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: rescue operation. [Since 15:31]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 15:31]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[48A: Traffic accident]]></title>
@@ -76,6 +87,17 @@
       <content:encoded><![CDATA[[Today]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[16A/N65: Grohnergasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">33962c839be0c5f5a8a30f98612a6e490df403ecb5eb3dc4a8369b78e9bff90a</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 11:11:00 +0200</ext:ends_at>
+      <description>Stop relocation of line 16A towards Hetzendorf and N65 towards Liesing. Stop: Grohnergasse. From: Otto-Probst-Straße before Grohnergasse. To: Approx. … [Until Mon 05.10.]</description>
+      <content:encoded><![CDATA[Stop relocation of line 16A towards Hetzendorf and N65 towards Liesing. Stop: Grohnergasse. From: Otto-Probst-Straße before Grohnergasse. To: Approx. …<br/>[Until Mon 05.10.]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[63A: Diversion because of crane works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
@@ -96,28 +118,6 @@
       <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are being redirected. [From Mon 05.10. until 07.12.]</description>
       <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are being redirected.<br/>[From Mon 05.10. until 07.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Replacement service]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6f11b9f2989f7ded86ce2e256372b0c9d235d8bccee56c31a7edc035dbad8893</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:13 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:13 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Buses stop at the stop of line N71. [Today]</description>
-      <content:encoded><![CDATA[Buses stop at the stop of line N71.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: ÖBB construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6a1dca08aeb9e7b41cb4335d0f1d1f13d36847df0e83b73b6b2f2c6ddba9e385</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:18 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 15:31:24 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:19 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>No service; trains stop for line 18, direction Burggasse; service from Kliebergasse. [Today]</description>
-      <content:encoded><![CDATA[No service; trains stop for line 18, direction Burggasse; service from Kliebergasse.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>

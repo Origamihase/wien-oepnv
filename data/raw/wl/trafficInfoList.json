@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261004-0015, I20260925-0011, I20260922-0032, I20260909-0007, I20261004-0014"
+    "trafficInfoNameList": "I20261004-0020, I20260917-0012, I20261004-0019-F01, I20261004-0019-F02, I20260925-0011, I20261004-0019, I20260922-0032, I20260909-0007, I20261004-0014"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R36-152, R2378-627, R1150-0, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R45-136, R19-136, R1476-149, R318-437, R293-474, R2923-403, R2917-0, R2025-671, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R2558-125, R4843-162, R1754-162, R1753-162, R1752-162, R1751-162, R1710-162, R1715-162, R1714-162, R1713-162, R1712-162, R1711-162, R1709-162, R1756-162, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R130-136, R19-136, R1150-0, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R36-152, R45-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R119-136, R118-136, R1476-149, R318-437, R293-474, R2558-125, R2923-403, R2917-0, R2025-671, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R4843-162, R1756-162, R1754-162, R1753-162, R1752-162, R1751-162, R1710-162, R1715-162, R1714-162, R1713-162, R1712-162, R1709-162, R1711-162, R1974-466, R500-101, R483-0, R481-0, R814-415, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -238,12 +238,93 @@
    {
     "attributes": {
      "relatedLineTypes": {
+      "18": "ptTram",
+      "6": "ptTram"
+     }
+    },
+    "description": "Linie 6: Fahrtbehinderung in Richtung Burggasse, Stadthalle U. Linie 18: Fahrtbehinderung in Richtung Burggasse, Stadthalle U. Voraussichtliche Dauer: 18:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Mariahilfer Gürtel.",
+    "descriptionHTML": "Linie 6:<br>Fahrtbehinderung in Richtung Burggasse, Stadthalle U.<br>Linie 18:<br>Fahrtbehinderung in Richtung Burggasse, Stadthalle U.<br> <br>Voraussichtliche Dauer: 18:10 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Mariahilfer Gürtel.",
+    "name": "I20261004-0019",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "6",
+     "18"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "106",
+       "lineName": "6",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "118",
+       "lineName": "18",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     482
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-04T17:43:00.000+0200",
+     "end": "2026-10-04T17:58:00.000+0200",
+     "lastUpdate": "2026-10-04T17:58:00.000+0200",
+     "resume": "2026-10-04T17:58:00.000+0200",
+     "start": "2026-10-04T17:42:00.000+0200"
+    },
+    "title": "6, 18: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "6": "ptTram"
+     }
+    },
+    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261004-0019-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "106",
+       "lineName": "6",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     482
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-04T17:58:00.000+0200",
+     "end": "2026-10-04T23:55:00.000+0200",
+     "lastUpdate": "2026-10-04T17:58:00.000+0200",
+     "resume": "2026-10-04T17:58:00.000+0200",
+     "start": "2026-10-04T17:42:00.000+0200"
+    },
+    "title": "6: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
       "18": "ptTram"
      }
     },
-    "description": "Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "Linie 18:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Rettungseinsatz.",
-    "name": "I20261004-0015",
+    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261004-0019-F02",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
@@ -259,15 +340,52 @@
       }
      ]
     ],
+    "relatedStops": [
+     482
+    ],
     "status": "active",
     "time": {
-     "created": "2026-10-04T15:32:00.000+0200",
+     "created": "2026-10-04T17:58:00.000+0200",
      "end": "2026-10-04T23:55:00.000+0200",
-     "lastUpdate": "2026-10-04T15:32:00.000+0200",
-     "resume": "2026-10-04T15:31:00.000+0200",
-     "start": "2026-10-04T15:31:00.000+0200"
+     "lastUpdate": "2026-10-04T17:58:00.000+0200",
+     "resume": "2026-10-04T17:58:00.000+0200",
+     "start": "2026-10-04T17:42:00.000+0200"
     },
-    "title": "18: Rettungseinsatz"
+    "title": "18: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "15A": "ptBusCity"
+     }
+    },
+    "description": "Die Linie 15A wird in beiden Richtungen zwischen Eibesbrunnergasse und Stefan-Fadinger-Platz über Köglergasse - Kundratstraße - Triester Straße umgeleitet. Voraussichtliche Dauer: 18:30 Uhr. Grund: Feuerwehreinsatz im Bereich Wienerbergstraße 7.",
+    "descriptionHTML": "Die Linie 15A wird in beiden Richtungen zwischen Eibesbrunnergasse und Stefan-Fadinger-Platz über Köglergasse - Kundratstraße - Triester Straße umgeleitet.<br> <br>Voraussichtliche Dauer: 18:30 Uhr.<br><br>Grund: Feuerwehreinsatz im Bereich Wienerbergstraße 7.",
+    "location": "Wienerbergstraße 7",
+    "name": "I20261004-0020",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "15A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "415",
+       "lineName": "15A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-04T17:51:00.000+0200",
+     "end": "2026-10-04T23:55:00.000+0200",
+     "lastUpdate": "2026-10-04T17:52:00.000+0200",
+     "start": "2026-10-04T17:47:00.000+0200"
+    },
+    "title": "15A: Feuerwehreinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1341,6 +1459,36 @@
     "title": "Züge halten\nWipplingerstr 39"
    },
    {
+    "description": "Fahrtbehinderung\nSchadhafter Zug\n\n",
+    "name": "R481-0",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     481
+    ],
+    "time": {
+     "end": "2026-10-04T18:43:00.000+0200",
+     "start": "2026-10-04T17:43:32.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug\n\n"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Zug\n\n",
+    "name": "R483-0",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     483
+    ],
+    "time": {
+     "end": "2026-10-04T18:43:00.000+0200",
+     "start": "2026-10-04T17:43:32.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug\n\n"
+   },
+   {
     "description": "ÖBB Bauarbeiten\nKein Betrieb",
     "name": "R4843-162",
     "owner": "WL",
@@ -1390,6 +1538,24 @@
      "start": "2026-10-01T00:00:13.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "description": "Feuerwehreinsatz\nBetrieb ab Eibesbrunnergasse",
+    "name": "R814-415",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "15A"
+    ],
+    "relatedStops": [
+     814
+    ],
+    "time": {
+     "end": "2026-10-04T23:00:00.000+0200",
+     "start": "2026-10-04T17:50:27.000+0200"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Eibesbrunnergasse"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
