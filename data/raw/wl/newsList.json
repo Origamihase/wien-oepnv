@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1016949, ftazW_1351716, ftazW_1016567, ftazW_444, ftazW_1031289, ftazW_1017115, ftazW_445, ftazW_1017116, ftazW_1031290, ftazW_1351715, ftazW_769, ftazW_770, ftazW_1351709"
+    "trafficInfoNameList": "ftazW_1016949, ftazW_1351716, ftazW_1016567, ftazW_444, ftazW_1031289, ftazW_1017115, ftazW_445, ftazW_1017116, ftazW_1031290, ftazW_1351715, ftazW_769, ftazW_770, ftazW_1351709, ftazW_510"
    }
   ],
   "poiCategoryGroups": [
@@ -2853,6 +2853,39 @@
      "start": "2026-10-06T01:15:00.000+0200"
     },
     "title": "Johnstraße"
+   },
+   {
+    "attributes": {
+     "ausBis": "08.10.2026 00:45",
+     "ausVon": "07.10.2026 20:45",
+     "location": "U6 Mittelbahnsteig - Ausgang Pasettistraße",
+     "rbls": [
+      4642,
+      4649
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Dresdner Straße",
+     "status": "geplante Wartung",
+     "towards": "U6 beide Richtungen"
+    },
+    "description": "U6 Mittelbahnsteig - Ausgang Pasettistraße",
+    "name": "ftazW_510",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4642,
+     4649
+    ],
+    "time": {
+     "end": "2026-10-08T00:45:00.000+0200",
+     "start": "2026-10-07T20:45:00.000+0200"
+    },
+    "title": "Dresdner Straße"
    },
    {
     "attributes": {

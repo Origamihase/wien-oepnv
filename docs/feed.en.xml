@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 05 Oct 2026 00:49:07 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 01:00:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[66A: Level crossing fault, construction works]]></title>
+      <title><![CDATA[41/42: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">873f3f26f02ed2d6e998e67dbf505d00a96e1d4910bcd8b5a2e135bfdff1d82a</guid>
+      <pubDate>Mon, 05 Oct 2026 00:47:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 01:00:53 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 00:47:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction towards Pötzleinsdorf. Line 42: service obstruction towards Antonigasse. [Since 00:47]</description>
+      <content:encoded><![CDATA[Service obstruction towards Pötzleinsdorf. Line 42: service obstruction towards Antonigasse.<br/>[Since 00:47]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Level crossing fault]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e35d5468b5da55f276b19ba1039b1f3b32b81aaef2c30d0cce6d60d93536f166</guid>
       <pubDate>Sun, 04 Oct 2026 23:17:00 +0200</pubDate>
       <ext:first_seen>Sun, 04 Oct 2026 23:17:00 +0200</ext:first_seen>
       <ext:starts_at>Sun, 04 Oct 2026 23:17:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Construction works: buses stop at Salvatorianerplatz. [Today]</description>
-      <content:encoded><![CDATA[Construction works: buses stop at Salvatorianerplatz.<br/>[Today]]]></content:encoded>
+      <description>After a service obstruction there are different intervals. [Today]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Neue Donau, no stop towards Floridsdorf]]></title>
@@ -30,6 +41,28 @@
       <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Refurbishing the platform Due to the renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station … [Until 31.12.]</description>
       <content:encoded><![CDATA[Refurbishing the platform Due to the renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station …<br/>[Until 31.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N66: Buses stop at Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">24aa68a100b6cf9da31697ad90c76566903c00e84cace4ff88a183b77a6b231c</guid>
+      <pubDate>Mon, 05 Oct 2026 01:00:23 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 01:00:05 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 01:00:23 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 04:20:00 +0200</ext:ends_at>
+      <description>Reason: construction works. [Today]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N6: Construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">702d63d7625c3038f025628d02f9115371cb86897a042af3fea6ba3fa90b5500</guid>
+      <pubDate>Mon, 05 Oct 2026 00:54:13 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 00:54:02 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 00:54:13 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 05:05:00 +0200</ext:ends_at>
+      <description>Buses stop at Quellenstraße 189, Neilreichgasse 20-22. [Today]</description>
+      <content:encoded><![CDATA[Buses stop at Quellenstraße 189, Neilreichgasse 20-22.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Rennweg 33A–37]]></title>
@@ -85,39 +118,6 @@
       <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected. [Until 07.12.]</description>
       <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected.<br/>[Until 07.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26E/N20: Fultonstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8360905f480d6715f571ad6ca70aa298b8c553200665d5153e2d69632338a199</guid>
-      <pubDate>Mon, 28 Sep 2026 15:45:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 15:45:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Stop relocation of line 26E towards Josef-Baumann-Gasse and line N20 towards Eßling, Stadtgrenze. Stop: Fultonstraße. From: Donaufelder Straße … [Until 26.10.]</description>
-      <content:encoded><![CDATA[Stop relocation of line 26E towards Josef-Baumann-Gasse and line N20 towards Eßling, Stadtgrenze. Stop: Fultonstraße. From: Donaufelder Straße …<br/>[Until 26.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Replacement service]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6f11b9f2989f7ded86ce2e256372b0c9d235d8bccee56c31a7edc035dbad8893</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:13 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:13 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Buses stop at the stop of line N71. [Today]</description>
-      <content:encoded><![CDATA[Buses stop at the stop of line N71.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: ÖBB construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6a1dca08aeb9e7b41cb4335d0f1d1f13d36847df0e83b73b6b2f2c6ddba9e385</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:18 +0200</pubDate>
-      <ext:first_seen>Sat, 26 Sep 2026 15:31:24 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:19 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>No service; trains stop at the stop of line 18, direction Burggasse; service from Kliebergasse. [Today]</description>
-      <content:encoded><![CDATA[No service; trains stop at the stop of line 18, direction Burggasse; service from Kliebergasse.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
