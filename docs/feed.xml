@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 04 Oct 2026 18:01:20 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 18:30:40 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[15A: Feuerwehreinsatz]]></title>
@@ -23,13 +23,13 @@
     <item>
       <title><![CDATA[6/18: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">aacc39f83fe170f26c07ccc402e213333a35b8dff67f135ce2ceafae46631d10</guid>
+      <guid isPermaLink="false">4281aa32ed45a54c560c823ba6cd35e8febae67fca71fa894a80ce4b806088d3</guid>
       <pubDate>Sun, 04 Oct 2026 17:42:00 +0200</pubDate>
       <ext:first_seen>Sun, 04 Oct 2026 17:42:00 +0200</ext:first_seen>
       <ext:starts_at>Sun, 04 Oct 2026 17:42:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Burggasse, Stadthalle U. Voraussichtliche Dauer: 18:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Mariahilfer Gürtel. [Seit 17:42]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Burggasse, Stadthalle U. Voraussichtliche Dauer: 18:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Mariahilfer Gürtel.<br/>[Seit 17:42]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:42]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:42]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Neue Donau, kein Halt Richtung Floridsdorf]]></title>
@@ -41,17 +41,6 @@
       <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Bahnsteigsanierung Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der … [Bis 31.12.]</description>
       <content:encoded><![CDATA[Bahnsteigsanierung Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der …<br/>[Bis 31.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">00b15b6969938db3d2a3979ffcf1966869591a5c68663ff5373d31c8041e5033</guid>
-      <pubDate>Sun, 04 Oct 2026 14:50:00 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 14:50:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 04 Oct 2026 14:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 14:50]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 14:50]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet. [Ab Mo 05.10. bis 07.12.]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet.<br/>[Ab Mo 05.10. bis 07.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26E/N20: Fultonstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8360905f480d6715f571ad6ca70aa298b8c553200665d5153e2d69632338a199</guid>
+      <pubDate>Mon, 28 Sep 2026 15:45:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 15:45:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Haltestellenverlegung der Linie 26E in Richtung Josef-Baumann-Gasse und Linie N20 in Richtung Eßling, Stadtgrenze. Haltestelle: Fultonstraße. Von: Donaufelder Straße … [Ab Mo 05.10. bis 26.10.]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linie 26E in Richtung Josef-Baumann-Gasse und Linie N20 in Richtung Eßling, Stadtgrenze. Haltestelle: Fultonstraße. Von: Donaufelder Straße …<br/>[Ab Mo 05.10. bis 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

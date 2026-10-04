@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 04 Oct 2026 18:01:20 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 18:30:40 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[15A: Fire-brigade operation]]></title>
@@ -23,13 +23,13 @@
     <item>
       <title><![CDATA[6/18: Defective vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">aacc39f83fe170f26c07ccc402e213333a35b8dff67f135ce2ceafae46631d10</guid>
+      <guid isPermaLink="false">4281aa32ed45a54c560c823ba6cd35e8febae67fca71fa894a80ce4b806088d3</guid>
       <pubDate>Sun, 04 Oct 2026 17:42:00 +0200</pubDate>
       <ext:first_seen>Sun, 04 Oct 2026 17:42:00 +0200</ext:first_seen>
       <ext:starts_at>Sun, 04 Oct 2026 17:42:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction direction Burggasse, Stadthalle U. Expected duration: 18:10. Reason: defective vehicle in the stop area of Mariahilfer Gürtel. [Since 17:42]</description>
-      <content:encoded><![CDATA[Service obstruction direction Burggasse, Stadthalle U. Expected duration: 18:10. Reason: defective vehicle in the stop area of Mariahilfer Gürtel.<br/>[Since 17:42]]]></content:encoded>
+      <description>After a service obstruction there are different intervals. [Since 17:42]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 17:42]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Neue Donau, no stopping direction Floridsdorf]]></title>
@@ -41,17 +41,6 @@
       <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Refurbishing the platform Due to the renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station … [Until 31.12.]</description>
       <content:encoded><![CDATA[Refurbishing the platform Due to the renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station …<br/>[Until 31.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">00b15b6969938db3d2a3979ffcf1966869591a5c68663ff5373d31c8041e5033</guid>
-      <pubDate>Sun, 04 Oct 2026 14:50:00 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 14:50:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 04 Oct 2026 14:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 14:50]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 14:50]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are being redirected. [From Mon 05.10. until 07.12.]</description>
       <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are being redirected.<br/>[From Mon 05.10. until 07.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26E/N20: Fultonstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8360905f480d6715f571ad6ca70aa298b8c553200665d5153e2d69632338a199</guid>
+      <pubDate>Mon, 28 Sep 2026 15:45:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 15:45:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Stop relocation of line 26E towards Josef-Baumann-Gasse and line N20 towards Eßling, Stadtgrenze. Stop: Fultonstraße. From: Donaufelder Straße … [From Mon 05.10. until 26.10.]</description>
+      <content:encoded><![CDATA[Stop relocation of line 26E towards Josef-Baumann-Gasse and line N20 towards Eßling, Stadtgrenze. Stop: Fultonstraße. From: Donaufelder Straße …<br/>[From Mon 05.10. until 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
