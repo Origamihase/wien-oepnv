@@ -120,17 +120,21 @@ jobs:
         id: checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
-          # Need full history so ``git pull --rebase --autostash`` can
-          # cleanly stitch our commit onto whatever the parallel
-          # ``update-stations.yml`` (Sundays) pushed during this run.
-          fetch-depth: 0
+          # Shallow on purpose: the full history is ~55 MB and grows with
+          # every committed cache/ledger version, while the tip alone is
+          # ~7 MB and stays flat. ``git pull --rebase --autostash`` in the
+          # publish step only needs the checkout commit as merge base (it
+          # is present), so a concurrent push from ``update-stations.yml``
+          # / ``seo-guard.yml`` still replays cleanly. The backup-cron
+          # freshness gate below deepens the history itself when it needs it.
+          fetch-depth: 1
         continue-on-error: true
 
       - name: Check out repository (attempt 2/2 — runs only if attempt 1 hit checkout#2351)
         if: steps.checkout.outcome == 'failure'
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
       # Configure the bot git identity once, up front, so every later
       # git-writing step shares it (today: the commit/push at the end).
@@ -157,8 +161,12 @@ jobs:
       # Signal: the commit time of ``data/vor_request_count.json`` /
       # ``docs/feed.xml`` — the counter is rewritten on every VAO poll and
       # the feed on every content change, so "most recent commit touching
-      # either" tracks the last real tick (full history is present via the
-      # ``fetch-depth: 0`` checkout). The 35-min window sits just above
+      # either" tracks the last real tick. The checkout is shallow, so the
+      # gate first deepens it by 50 commits (one backup tick per hour, well
+      # under a megabyte); if the newest commit touching either file is
+      # still the shallow boundary, its commit time says nothing about the
+      # file (a boundary commit "adds" every path), so the gate treats the
+      # age as unknown and runs. The 35-min window sits just above
       # IFTTT's ~30-min cadence (drift headroom) so a slightly-late IFTTT
       # tick is not misread as an outage; a true outage is caught by the
       # next hourly tick. Unknown / parse-fail defaults to "run" (fail safe).
@@ -172,7 +180,14 @@ jobs:
             echo "should_run=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          last=$(git log -1 --format=%ct -- data/vor_request_count.json docs/feed.xml 2>/dev/null || echo 0)
+          git fetch --no-tags --quiet --deepen=50 origin "${GITHUB_REF_NAME}" 2>/dev/null \
+            || echo "Could not deepen the shallow checkout; deciding from the commits present."
+          last=0
+          last_commit=$(git log -1 --format=%H -- data/vor_request_count.json docs/feed.xml 2>/dev/null || true)
+          shallow_file=$(git rev-parse --git-path shallow)
+          if [ -n "${last_commit}" ] && ! { [ -f "${shallow_file}" ] && grep -qx "${last_commit}" "${shallow_file}"; }; then
+            last=$(git log -1 --format=%ct "${last_commit}" 2>/dev/null || echo 0)
+          fi
           last=${last:-0}
           now=$(date +%s)
           age=$(( now - last ))
