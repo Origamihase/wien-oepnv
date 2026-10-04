@@ -1,8 +1,11 @@
 import contextlib
+import fcntl
+import hashlib
 import json
 import os
 import shutil
 import sys
+import tempfile
 import zipfile
 from pathlib import Path
 from collections.abc import Iterator
@@ -29,6 +32,12 @@ if str(root) not in sys.path:
 _STRECKENDATEN_DIR = root / "data" / "streckendaten"
 _STRECKENDATEN_ARCHIVE = _STRECKENDATEN_DIR / "streckendaten_notfallmanagement.zip"
 _STRECKENDATEN_GEOJSON = _STRECKENDATEN_DIR / "streckendaten_notfallmanagement.geojson"
+
+
+
+def _path_digest(path: Path) -> str:
+    return hashlib.sha256(str(path).encode("utf-8")).hexdigest()[:16]
+
 
 _SAMPLE_STRECKENDATEN = {
     "type": "FeatureCollection",
@@ -186,35 +195,83 @@ def _cleanup_created_paths(paths: list[Path]) -> None:
             directory.rmdir()
 
 
+# The dataset sits at a fixed path the code reads, so pytest-xdist workers
+# share it. Each worker runs this session fixture: unguarded, one worker read
+# the sample archive while another was still writing it (``BadZipFile``) or
+# deleted it at its teardown while the others were still testing; every test
+# on those workers then failed in setup (4,190 errors in one
+# ``-n 4 -p randomly`` run, 2026-10-04). A file lock serialises setup and
+# teardown, and a count of the workers using the dataset leaves the cleanup
+# to the last one. Serial runs (CI) take the same path with a count of one.
+_STRECKENDATEN_LOCK = Path(tempfile.gettempdir()) / f"wien-oepnv-streckendaten-{_path_digest(_STRECKENDATEN_DIR)}"
+
+
+@contextlib.contextmanager
+def _streckendaten_lock() -> Iterator[dict[str, Any]]:
+    """Hold the cross-process lock; yield the shared bookkeeping, saved on exit."""
+    lock_path = _STRECKENDATEN_LOCK.with_suffix(".lock")
+    state_path = _STRECKENDATEN_LOCK.with_suffix(".json")
+    with lock_path.open("a+") as handle:
+        fcntl.flock(handle, fcntl.LOCK_EX)
+        try:
+            try:
+                shared: dict[str, Any] = json.loads(state_path.read_text(encoding="utf-8"))
+            except (OSError, ValueError):
+                shared = {"users": 0}
+            yield shared
+            if shared["users"] > 0:
+                state_path.write_text(json.dumps(shared), encoding="utf-8")
+            else:
+                with contextlib.suppress(OSError):
+                    state_path.unlink()
+        finally:
+            fcntl.flock(handle, fcntl.LOCK_UN)
+
+
 @pytest.fixture(scope="session")
 def streckendaten_dataset() -> Iterator[Path]:
-    (
-        archive_path,
-        archive_existed,
-        geojson_existed,
-        dir_existed,
-        extracted_paths,
-    ) = _ensure_streckendaten_dataset()
-
-    keep_flag = os.getenv("KEEP_STRECKENDATEN_DATASET", "").strip().lower()
-    keep_created = keep_flag in {"1", "true", "yes"}
+    with _streckendaten_lock() as shared:
+        if shared["users"] == 0:
+            (
+                _archive_path,
+                archive_existed,
+                geojson_existed,
+                dir_existed,
+                extracted_paths,
+            ) = _ensure_streckendaten_dataset()
+            shared["created"] = {
+                "archive_existed": archive_existed,
+                "geojson_existed": geojson_existed,
+                "dir_existed": dir_existed,
+                "extracted": [str(path) for path in extracted_paths],
+            }
+        shared["users"] += 1
 
     try:
-        yield archive_path
+        yield _STRECKENDATEN_ARCHIVE
     finally:
-        if not keep_created:
-            if not archive_existed and archive_path.exists():
-                archive_path.unlink()
-            if not geojson_existed:
-                _cleanup_created_paths(extracted_paths)
-            if not dir_existed and _STRECKENDATEN_DIR.exists():
-                shutil.rmtree(_STRECKENDATEN_DIR, ignore_errors=True)
-            elif _STRECKENDATEN_DIR.exists():
-                try:
-                    next(_STRECKENDATEN_DIR.iterdir())
-                except StopIteration:
-                    with contextlib.suppress(OSError):
-                        _STRECKENDATEN_DIR.rmdir()
+        with _streckendaten_lock() as shared:
+            shared["users"] -= 1
+            created = shared.get("created", {})
+            keep_flag = os.getenv("KEEP_STRECKENDATEN_DATASET", "").strip().lower()
+            if shared["users"] <= 0 and keep_flag not in {"1", "true", "yes"}:
+                _remove_created_streckendaten(created)
+
+
+def _remove_created_streckendaten(created: dict[str, Any]) -> None:
+    archive_path = _STRECKENDATEN_ARCHIVE
+    if not created.get("archive_existed", True) and archive_path.exists():
+        archive_path.unlink()
+    if not created.get("geojson_existed", True):
+        _cleanup_created_paths([Path(path) for path in created.get("extracted", [])])
+    if not created.get("dir_existed", True) and _STRECKENDATEN_DIR.exists():
+        shutil.rmtree(_STRECKENDATEN_DIR, ignore_errors=True)
+    elif _STRECKENDATEN_DIR.exists():
+        try:
+            next(_STRECKENDATEN_DIR.iterdir())
+        except StopIteration:
+            with contextlib.suppress(OSError):
+                _STRECKENDATEN_DIR.rmdir()
 
 
 @pytest.fixture(scope="session", autouse=True)

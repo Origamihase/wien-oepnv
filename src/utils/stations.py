@@ -847,6 +847,18 @@ def _station_lookup() -> dict[str, StationInfo]:
 # or "Neusiedl/See" (see ``_candidate_values``).
 _SLASH_QUALIFIER_RE = re.compile(r"(?<=[A-Za-zÄÖÜäöüß])/(?=[A-ZÄÖÜ][a-zäöüß])")
 
+# The river, region or state ÖBB appends to a place name the directory knows
+# bare: "Mistelbach/Zaya", "Wolkersdorf im Weinviertel", "Traisen NÖ",
+# "Wolfsberg in Ktn" (see ``station_info``). Only at the end of the name
+# (before an optional "Bahnhof"), so a pair like "Wien Westbahnhof/Wien Hbf"
+# keeps both parts.
+_PLACE_QUALIFIER_RE = re.compile(
+    r"(?:(?<=[A-Za-zäöüß])/[A-ZÄÖÜ][a-zäöüß]+"
+    r"|\s+im\s+[A-ZÄÖÜ][a-zäöüß]+"
+    r"|\s+(?:NÖ|OÖ|in\s+(?:Stmk|Ktn|Tirol|Osttirol|Vlbg|Bgld)))"
+    r"(?=(?:\s+(?:Bahnhof|Bahnhst|Hbf|Bf))?\s*$)"
+)
+
 
 def _candidate_values(value: str) -> list[str]:
     """Generate possible textual variants for *value* supplied by the caller."""
@@ -940,12 +952,27 @@ def station_info(name: str) -> StationInfo | None:
     if not lookup:
         return None
 
-    for candidate in _candidate_values(name):
+    candidates = _candidate_values(name)
+    for candidate in candidates:
         key = _normalize_token(candidate)
         if not key:
             continue
         info = lookup.get(key)
         if info:
+            return info
+    # Last resort: the place name without the qualifier ÖBB appends. On
+    # 2026-10-04 "Wien Leopoldau => Mistelbach/Zaya" (S2 Schienenersatzverkehr)
+    # was dropped as Wien ↔ unknown although Mistelbach is a Pendler station;
+    # no ÖBB message naming Mistelbach or Wolkersdorf ("im Weinviertel") had
+    # reached the feed since July. A qualified name lies outside Vienna, so a
+    # bare name that lands on a Vienna station is no match: "Baumgarten im
+    # Burgenland" must not become the Wiener-Linien stop Baumgarten.
+    for candidate in candidates:
+        bare = _PLACE_QUALIFIER_RE.sub("", candidate)
+        if bare == candidate:
+            continue
+        info = lookup.get(_normalize_token(bare))
+        if info and not info.in_vienna:
             return info
     return None
 

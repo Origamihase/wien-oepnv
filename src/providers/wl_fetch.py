@@ -804,6 +804,19 @@ _WORD_SPLIT_RE = re.compile(r"[^\w]+", re.UNICODE)
 _HTML_TAG_RE = re.compile(r"<[^>]+>")
 
 
+def _gate_text(*parts: str) -> str:
+    """The text the keyword gates (``KW_EXCLUDE``, ``KW_RESTRICTION``) read.
+
+    WL sends the news descriptions as HTML with the umlauts as entities
+    ("wird die Linie 18 kurz gef&uuml;hrt", "Einschr&auml;nkung"). Read raw,
+    no keyword with an umlaut could match in a description, only in the
+    plain-text title; "18: LCC-Herbstmarathon am 11.10.2026" was dropped
+    for that reason (2026-10-04). Tags become spaces so "<h2>Sperre</h2>"
+    stays a word of its own.
+    """
+    return " ".join(html.unescape(_HTML_TAG_RE.sub(" ", " ".join(parts))).split())
+
+
 def _content_tokens(text: str) -> frozenset[str]:
     """Kleingeschriebene Wortmenge von *text*, Satzzeichen entfernt.
 
@@ -1187,7 +1200,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                 raw_capture.note_drop("wl", "außerhalb des Zeitraums", title_raw)
                 continue
 
-            blob_for_relevance = " ".join([title_raw, desc_raw])
+            blob_for_relevance = _gate_text(title_raw, desc_raw)
             if KW_EXCLUDE.search(blob_for_relevance) and not KW_RESTRICTION.search(
                 blob_for_relevance
             ):
@@ -1269,14 +1282,12 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                 raw_capture.note_drop("wl", "außerhalb des Zeitraums", title_raw)
                 continue
 
-            text_for_filter = " ".join(
-                [
-                    title_raw,
-                    str(poi.get("subtitle") or ""),
-                    desc_raw,
-                    str(attrs.get("status") or ""),
-                    str(attrs.get("state") or ""),
-                ]
+            text_for_filter = _gate_text(
+                title_raw,
+                str(poi.get("subtitle") or ""),
+                desc_raw,
+                str(attrs.get("status") or ""),
+                str(attrs.get("state") or ""),
             )
             if not KW_RESTRICTION.search(text_for_filter):
                 raw_capture.note_drop("wl", "kein Einschränkungs-Stichwort", title_raw)
