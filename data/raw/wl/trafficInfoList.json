@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261004-0012-F01, I20261004-0012, I20260925-0011, I20260922-0032, I20260909-0007"
+    "trafficInfoNameList": "I20260917-0012, I20260925-0011, I20260922-0032, I20260909-0007, I20261004-0013-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R117-136, R118-136, R2345-127, R2380-627, R2379-627, R2373-126, R1150-0, R2372-627, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R36-152, R45-136, R19-136, R130-136, R119-136, R100-136, R101-136, R102-136, R103-136, R116-136, R115-136, R1476-149, R318-437, R293-474, R2558-125, R2923-403, R2917-0, R2025-671, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R4843-162, R1709-162, R1714-162, R1713-162, R1712-162, R1711-162, R1756-162, R1754-162, R1753-162, R1752-162, R1751-162, R1710-162, R1715-162, R1974-466, R500-101, R663-413, R662-413, R688-413, R668-413, R665-413, R682-413, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R103-136, R115-136, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R1150-0, R2372-627, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R100-136, R102-136, R101-136, R1476-149, R318-437, R293-474, R2558-125, R2923-403, R2917-0, R2025-671, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R4843-162, R1710-162, R1715-162, R1709-162, R1711-162, R1712-162, R1713-162, R1714-162, R1756-162, R1754-162, R1753-162, R1752-162, R1751-162, R1974-466, R500-101, R662-413, R663-413, R668-413, R688-413, R682-413, R665-413, R2866-495, R2867-495, R3005-495, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,72 +203,39 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "13A": "ptBusCity"
+      "95A": "ptBusCity"
      }
     },
-    "description": "Linie 13A: Fahrtbehinderung in Richtung Hauptbahnhof S U. Voraussichtliche Dauer: 13:10 Uhr. Grund: Rettungseinsatz im Bereich Lederergasse 25.",
-    "descriptionHTML": "Linie 13A:<br>Fahrtbehinderung in Richtung Hauptbahnhof S U.<br> <br>Voraussichtliche Dauer: 13:10 Uhr.<br><br>Grund: Rettungseinsatz im Bereich Lederergasse 25.",
-    "location": "Lederergasse 25",
-    "name": "I20261004-0012",
+    "description": "Linie 95A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 95A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261004-0013-F01",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "13A"
+     "95A"
     ],
     "relatedLinesDetails": [
      [
       {
-       "lineId": "413",
-       "lineName": "13A",
+       "lineId": "495",
+       "lineName": "95A",
        "vehicleType": "ptBusCity"
       }
      ]
     ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-04T12:56:00.000+0200",
-     "end": "2026-10-04T12:58:00.000+0200",
-     "lastUpdate": "2026-10-04T12:58:00.000+0200",
-     "resume": "2026-10-04T12:58:00.000+0200",
-     "start": "2026-10-04T12:55:00.000+0200"
-    },
-    "title": "13A: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "13A": "ptBusCity"
-     }
-    },
-    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Lederergasse 25",
-    "name": "I20261004-0012-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "413",
-       "lineName": "13A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
+    "relatedStops": [
+     5704
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-04T12:58:00.000+0200",
+     "created": "2026-10-04T13:23:00.000+0200",
      "end": "2026-10-04T23:55:00.000+0200",
-     "lastUpdate": "2026-10-04T12:58:00.000+0200",
-     "resume": "2026-10-04T12:58:00.000+0200",
-     "start": "2026-10-04T12:55:00.000+0200"
+     "lastUpdate": "2026-10-04T13:23:00.000+0200",
+     "resume": "2026-10-04T13:23:00.000+0200",
+     "start": "2026-10-04T13:10:00.000+0200"
     },
-    "title": "13A: Rettungseinsatz"
+    "title": "95A: Polizeieinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1237,6 +1204,42 @@
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
    },
    {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2866-495",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "95A"
+    ],
+    "relatedStops": [
+     2866
+    ],
+    "time": {
+     "end": "2026-10-04T14:19:00.000+0200",
+     "start": "2026-10-04T13:20:13.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2867-495",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "95A"
+    ],
+    "relatedStops": [
+     2867
+    ],
+    "time": {
+     "end": "2026-10-04T14:19:00.000+0200",
+     "start": "2026-10-04T13:20:13.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
     "description": "3A Netzänderung\nBetrieb ab Riemergasse",
     "name": "R2917-0",
     "owner": "WL",
@@ -1286,6 +1289,24 @@
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R3005-495",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "95A"
+    ],
+    "relatedStops": [
+     3005
+    ],
+    "time": {
+     "end": "2026-10-04T14:19:00.000+0200",
+     "start": "2026-10-04T13:20:14.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
