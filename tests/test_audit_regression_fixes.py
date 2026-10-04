@@ -180,6 +180,8 @@ def test_baustellen_main_survives_data_degradation(
     monkeypatch.setattr(
         update_baustellen_cache, "_log_endpoint_diagnostic", lambda *a, **k: None
     )
+    # The demo sample is only used in a checkout without a cache.
+    monkeypatch.setattr(update_baustellen_cache, "_cache_exists", lambda: False)
     monkeypatch.setenv("BAUSTELLEN_FALLBACK_PATH", str(SAMPLE_PATH))
     caplog.set_level(logging.WARNING, logger="update_baustellen_cache")
 

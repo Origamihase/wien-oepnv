@@ -177,7 +177,8 @@ def test_wl_snapshot_and_drops(raw_root: Path, monkeypatch: pytest.MonkeyPatch) 
 def test_wl_failed_call_keeps_the_last_snapshot(raw_root: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     raw_capture.write_snapshot("wl", "newsList", {"kept": True})
     monkeypatch.setattr(wl_fetch, "_get_json", lambda path, **kwargs: {})
-    wl_fetch.fetch_events()
+    with pytest.raises(wl_fetch.SourceIncompleteError):
+        wl_fetch.fetch_events()
     assert _read(raw_root / "wl" / "newsList.json") == {"kept": True}
 
 

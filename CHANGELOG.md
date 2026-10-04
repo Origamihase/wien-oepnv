@@ -24,6 +24,34 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   Playwright-Geräteemulation (320–1024 px, DE/EN, hell/dunkel) und Lighthouse
   Mobil: Leistung 97–100 vorher wie nachher, 155 KiB, 11 Anfragen; CLS
   0,018. Wächter: `tests/test_site_css_mobile_header.py`.
+* **Ausfall einer Quelle: Teilausfälle, kaputte Antworten, Demo-Baustellen (2026-10-04)**:
+  Geprüft, indem veränderte Kopien der echten Rohdaten vom 04.10. 16:01 UTC
+  (19 Ausfallarten) durch die echten Cache-Updater und den Feed-Build liefen.
+  Ein vollständiger Ausfall war schon richtig (Cache bleibt, Feed unverändert,
+  `first_seen` bleibt, der nächste gute Abruf stellt den Feed exakt wieder
+  her). Drei Fehlerklassen behoben: (1) **Teilausfall**: Fiel eine der zwei
+  WL-Listen oder einer der zwei Baustellen-Layer aus, wurde der Rest als
+  vollständiger Cache geschrieben, mit Exit-Code 0 und grünem Health check;
+  ohne `trafficInfoList` fehlten alle fünf laufenden Störungen auf den zehn
+  Plätzen, ohne `newsList` vier Hinweise, ohne Linien-Layer zehn von 15
+  Baustellen. Ein ausgefallener oder leerer Teil (wenn er vorher nicht auch
+  leer war) kommt jetzt aus seiner letzten guten Antwort unter `data/raw/`
+  (`raw_capture.read_snapshot`), Exit-Code 3; ohne letzte gute Antwort oder
+  wenn alle Teile ausfallen, bleibt der Cache stehen. (2) **Antwort in anderer
+  Form**: Fehlte ein Feld in allen Einträgen, lief der Abruf mit Ersatzwerten
+  weiter – WL ohne `title` zeigte „15A: I20261004-0020“ auf allen zehn
+  Plätzen, WL ohne `time` stempelte alten Meldungen `first_seen` und ließ fünf
+  Plätze auch nach der nächsten guten Antwort falsch, ÖBB ohne `description`
+  brachte sechs Baumeldungen aus dem Weinviertel, Baustellen ohne Datum neun
+  Plätze. Solche Antworten gelten jetzt als unbrauchbar
+  (`src/utils/source_shape.py`). (3) **Demo-Baustellen**: Ein ganz
+  gescheiterter WFS schrieb die zwei Beispiel-Baustellen von 2025 über einen
+  Cache mit zehn oder weniger Einträgen (heute 15); das Beispiel gilt nur noch
+  ohne Cache. Mit dem neuen Code ergibt jeder der Fälle den Feed des guten
+  Abrufs. Tests: `tests/test_source_outage.py`. Doku: `docs/architecture.md`
+  („Ausfall einer Quelle“), `docs/development.md`, `data/raw/README.md`;
+  Workflow-Warnung für Exit-Code 3 in `update-cycle.yml`, eigener Text im
+  Health check.
 * **WL: alle Haltestellenverlegungen und -auflassungen im Feed (2026-10-04, Betreiberentscheidung „Alle aufnehmen“)**:
   Eine solche Meldung kam nur durch, wenn ihr Grund auf „…arbeiten“ endete
   (13 der 37 Meldungen des Laufs von 14:00 UTC). Jetzt kommen alle: Der

@@ -25,6 +25,15 @@ pack or the working tree. Three rules keep the deltas small:
 Capture is off by default, so tests, local builds and the health check
 never write here. Nothing in this module may fail a fetch: every error is
 logged and swallowed.
+
+A snapshot is written only for a response the fetch could use, so it is
+always the **last good answer** of that part of the source. When one part
+of a source fails while the others answer (one of the two WL lists, one of
+the two Baustellen layers), the fetch takes that part from its snapshot
+(``read_snapshot``) instead of losing its notices; see
+``docs/architecture.md``, "Ausfall einer Quelle". Reading follows the same
+switch as writing: without ``RAW_CAPTURE`` nothing keeps the snapshots
+current, so nothing is read either.
 """
 
 from __future__ import annotations
@@ -36,7 +45,7 @@ import re
 from pathlib import Path
 from typing import Any
 
-from .files import atomic_write, read_capped_bytes
+from .files import atomic_write, read_capped_bytes, read_capped_json
 from .serialize import scrub_trojan_source_primitives
 
 log = logging.getLogger(__name__)
@@ -100,6 +109,22 @@ def write_snapshot(source: str, name: str, payload: Any) -> None:
         log.warning("Rohdaten %s/%s nicht geschrieben (%s).", source, name, type(exc).__name__)
 
 
+def read_snapshot(source: str, name: str) -> Any | None:
+    """The last good answer kept as ``data/raw/<source>/<name>.json``, or ``None``.
+
+    ``None`` as well when capture is off: then the file is not kept
+    current, and an old answer must not come back as if it were new.
+    """
+    if not capture_enabled():
+        return None
+    try:
+        path = _target(source, name)
+    except ValueError as exc:
+        log.warning("Rohdaten %s/%s nicht lesbar (%s).", source, name, type(exc).__name__)
+        return None
+    return read_capped_json(path, MAX_SNAPSHOT_BYTES, label="raw snapshot", logger=log)
+
+
 def reset_drops(source: str) -> None:
     """Start a fresh drop list for *source* (call at the start of a fetch)."""
     _drops[source] = set()
@@ -157,6 +182,7 @@ __all__ = [
     "collected_drops",
     "content_key",
     "note_drop",
+    "read_snapshot",
     "render",
     "reset_drops",
     "sorted_records",

@@ -51,7 +51,7 @@ from ..utils.http import (
     validate_http_url,
 )
 from ..utils.logging import sanitize_log_arg
-from ..utils import raw_capture
+from ..utils import raw_capture, source_shape
 
 from defusedxml import ElementTree as ET # XXE Mitigation applied
 
@@ -2220,6 +2220,17 @@ def _raw_snapshot(channel: ET.Element) -> dict[str, Any]:
     return {"items": raw_capture.sorted_records(items, "guid", "link", "title")}
 
 
+def _has_identity(record: Any) -> bool:
+    return source_shape.has("guid")(record) or source_shape.has("link")(record)
+
+
+_OEBB_REQUIRED = {
+    "title": (source_shape.has("title"), source_shape.MIN_RECORDS),
+    "description": (source_shape.has("description"), source_shape.MIN_RECORDS),
+    "guid/link": (_has_identity, source_shape.MIN_RECORDS),
+}
+
+
 def fetch_events(timeout: int = 25) -> list[FeedItem]:
     # Security: clamp ``timeout`` to ``MAX_OEBB_FETCH_TIMEOUT`` to defeat the
     # Slowloris vector documented at the constant declaration above. Without
@@ -2236,7 +2247,23 @@ def fetch_events(timeout: int = 25) -> list[FeedItem]:
     if channel is None:
         return []
 
-    raw_capture.write_snapshot("oebb", "rss", _raw_snapshot(channel))
+    snapshot = _raw_snapshot(channel)
+    if not snapshot["items"]:
+        # The nationwide feed never runs empty; keep the last good snapshot.
+        log.warning("ÖBB RSS: Antwort ohne Einträge – Cache bleibt stehen.")
+        return []
+    missing = source_shape.missing_fields(snapshot["items"], _OEBB_REQUIRED)
+    if missing:
+        # A renamed or dropped field breaks the Vienna filter instead of the
+        # fetch (``src/utils/source_shape.py``): treat the answer like an
+        # unreachable feed, so the cache keeps its last good state.
+        log.warning(
+            "ÖBB RSS: Feld(er) %s fehlen in allen %d Einträgen – Antwort unbrauchbar.",
+            ", ".join(missing),
+            len(snapshot["items"]),
+        )
+        return []
+    raw_capture.write_snapshot("oebb", "rss", snapshot)
     raw_capture.reset_drops("oebb")
     out: list[FeedItem] = []
     for item in channel.findall("item"):
