@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260925-0011, I20260922-0032, I20260909-0007, I20261004-0025-F01, I20261004-0025"
+    "trafficInfoNameList": "I20260917-0012, I20260925-0011, I20260922-0032, I20260909-0007, I20261004-0025-F01"
    },
    {
     "id": 3,
@@ -206,41 +206,6 @@
       "66A": "ptBusCity"
      }
     },
-    "description": "Die Linie 66A wird in beiden Richtungen zwischen Klingerstraße und Schwarzenhaidestraße über die Gutheil-Schoder-Straße umgeleitet. Voraussichtliche Dauer: 23:50 Uhr. Grund: Störung an einem Bahnübergang im Bereich Purkytgasse.",
-    "descriptionHTML": "Die Linie 66A wird in beiden Richtungen zwischen Klingerstraße und Schwarzenhaidestraße über die Gutheil-Schoder-Straße umgeleitet.<br> <br>Voraussichtliche Dauer: 23:50 Uhr.<br><br>Grund: Störung an einem Bahnübergang im Bereich Purkytgasse.",
-    "location": "Purkytgasse",
-    "name": "I20261004-0025",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "466",
-       "lineName": "66A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-04T23:19:00.000+0200",
-     "end": "2026-10-04T23:27:00.000+0200",
-     "lastUpdate": "2026-10-04T23:27:00.000+0200",
-     "resume": "2026-10-04T23:27:00.000+0200",
-     "start": "2026-10-04T23:17:00.000+0200"
-    },
-    "title": "66A: Störung an einem Bahnübergang"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "66A": "ptBusCity"
-     }
-    },
     "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "location": "Purkytgasse",
@@ -283,7 +248,7 @@
      100
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -301,7 +266,7 @@
      101
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -319,7 +284,7 @@
      102
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -337,7 +302,7 @@
      103
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -355,7 +320,7 @@
      115
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -370,7 +335,7 @@
      1150
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten\nFrauenstiftgasse 7\n\n\n"
@@ -388,7 +353,7 @@
      116
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -406,7 +371,7 @@
      117
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -424,7 +389,7 @@
      118
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -442,7 +407,7 @@
      119
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Züge halten in\nSchleife"
@@ -460,7 +425,7 @@
      130
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -478,7 +443,7 @@
      1445
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
@@ -496,7 +461,7 @@
      1446
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
@@ -514,7 +479,7 @@
      1447
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
@@ -532,7 +497,7 @@
      1448
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
@@ -550,7 +515,7 @@
      1448
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Johnstraße U "
@@ -568,7 +533,7 @@
      1449
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
@@ -586,7 +551,7 @@
      1472
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
@@ -604,7 +569,7 @@
      1473
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
@@ -622,7 +587,7 @@
      1474
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
@@ -640,7 +605,7 @@
      1474
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21"
@@ -658,7 +623,7 @@
      1475
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
@@ -676,7 +641,7 @@
      1476
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
@@ -694,7 +659,7 @@
      1508
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78"
@@ -712,7 +677,7 @@
      1709
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:19.000+0200"
     },
     "title": "ÖBB Bauarbeiten\nBetrieb ab Kliebergasse"
@@ -730,7 +695,7 @@
      1710
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:19.000+0200"
     },
     "title": "ÖBB Bauarbeiten\nBetrieb ab Kliebergasse"
@@ -748,7 +713,7 @@
      1711
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:19.000+0200"
     },
     "title": "ÖBB Bauarbeiten\nBetrieb ab Kliebergasse"
@@ -766,7 +731,7 @@
      1712
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:19.000+0200"
     },
     "title": "ÖBB Bauarbeiten\nBetrieb ab Kliebergasse"
@@ -784,7 +749,7 @@
      1713
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:19.000+0200"
     },
     "title": "ÖBB Bauarbeiten\nBetrieb ab Kliebergasse"
@@ -802,7 +767,7 @@
      1714
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:19.000+0200"
     },
     "title": "ÖBB Bauarbeiten\nBetrieb ab Kliebergasse"
@@ -820,7 +785,7 @@
      1715
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:19.000+0200"
     },
     "title": "Züge halten bei\nLinie 18, Richtung Burggasse"
@@ -838,7 +803,7 @@
      1751
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:19.000+0200"
     },
     "title": "ÖBB Bauarbeiten\nKein Betrieb"
@@ -856,7 +821,7 @@
      1752
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:19.000+0200"
     },
     "title": "ÖBB Bauarbeiten\nKein Betrieb"
@@ -874,7 +839,7 @@
      1753
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:19.000+0200"
     },
     "title": "ÖBB Bauarbeiten\nKein Betrieb"
@@ -892,7 +857,7 @@
      1754
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:19.000+0200"
     },
     "title": "ÖBB Bauarbeiten\nKein Betrieb"
@@ -910,7 +875,7 @@
      1756
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:19.000+0200"
     },
     "title": "ÖBB Bauarbeiten\nKein Betrieb"
@@ -928,7 +893,7 @@
      19
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -961,7 +926,7 @@
      2025
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
@@ -979,7 +944,7 @@
      2343
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
@@ -997,7 +962,7 @@
      2343
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Ersatzbus\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
@@ -1015,7 +980,7 @@
      2345
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Züge halten bei\nLinie 31"
@@ -1033,7 +998,7 @@
      2359
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
@@ -1051,7 +1016,7 @@
      2370
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
@@ -1069,7 +1034,7 @@
      2371
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
@@ -1087,7 +1052,7 @@
      2372
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
@@ -1105,7 +1070,7 @@
      2372
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Busse halten auf\nHauptfahrbahn"
@@ -1123,7 +1088,7 @@
      2373
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Züge halten\nDonaufelder Straße 175-177"
@@ -1141,7 +1106,7 @@
      2373
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Züge halten in\nTokiostraße"
@@ -1159,7 +1124,7 @@
      2373
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Linie 25 in\nTokiostraße benützen"
@@ -1177,7 +1142,7 @@
      2378
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Busse halten\nSatzingerweg 41"
@@ -1195,7 +1160,7 @@
      2379
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Busse halten\nBessemerstraße 1-3"
@@ -1213,7 +1178,7 @@
      2380
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Busse halten\nHoßplatz 11"
@@ -1231,7 +1196,7 @@
      2558
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
@@ -1246,7 +1211,7 @@
      2917
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "3A Netzänderung\nBetrieb ab Riemergasse"
@@ -1264,7 +1229,7 @@
      2923
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Busse halten\nKärntner Ring 5"
@@ -1282,7 +1247,7 @@
      293
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
@@ -1300,7 +1265,7 @@
      318
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
@@ -1318,7 +1283,7 @@
      36
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Züge halten\nbei Linien 6 und 18"
@@ -1336,7 +1301,7 @@
      45
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
@@ -1354,7 +1319,7 @@
      4843
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:18.000+0200"
     },
     "title": "ÖBB Bauarbeiten\nKein Betrieb"
@@ -1369,7 +1334,7 @@
      5815
     ],
     "time": {
-     "end": "2026-10-04T23:59:59.000+0200",
+     "end": "2026-10-05T23:59:59.000+0200",
      "start": "2026-10-01T00:00:13.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
