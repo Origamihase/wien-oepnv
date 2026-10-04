@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 04 Oct 2026 16:30:37 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 17:00:52 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U6: Neue Donau, no stopping direction Floridsdorf]]></title>
@@ -19,28 +19,6 @@
       <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Refurbishing the platform Due to the renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station … [Until 31.12.]</description>
       <content:encoded><![CDATA[Refurbishing the platform Due to the renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station …<br/>[Until 31.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
-      <pubDate>Sun, 04 Oct 2026 16:19:00 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 16:19:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 04 Oct 2026 16:19:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 16:19]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 16:19]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
-      <pubDate>Sun, 04 Oct 2026 15:34:49 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 15:34:49 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 04 Oct 2026 15:34:50 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 16:34:00 +0200</ext:ends_at>
-      <description>Service obstruction. [Since 15:34]</description>
-      <content:encoded><![CDATA[Service obstruction.<br/>[Since 15:34]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[18: Rescue operation]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are being redirected. [From Mon 05.10. until 07.12.]</description>
       <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are being redirected.<br/>[From Mon 05.10. until 07.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N71: Replacement service]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6f11b9f2989f7ded86ce2e256372b0c9d235d8bccee56c31a7edc035dbad8893</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:13 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 00:00:13 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Buses stop at the stop of line N71. [Today]</description>
+      <content:encoded><![CDATA[Buses stop at the stop of line N71.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: ÖBB construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6a1dca08aeb9e7b41cb4335d0f1d1f13d36847df0e83b73b6b2f2c6ddba9e385</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 15:31:24 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 00:00:19 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>No service; trains stop for line 18, direction Burggasse; service from Kliebergasse. [Today]</description>
+      <content:encoded><![CDATA[No service; trains stop for line 18, direction Burggasse; service from Kliebergasse.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
