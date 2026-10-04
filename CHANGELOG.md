@@ -5,6 +5,35 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **WL: alle Haltestellenverlegungen und -auflassungen im Feed (2026-10-04, Betreiberentscheidung „Alle aufnehmen“)**:
+  Eine solche Meldung kam nur durch, wenn ihr Grund auf „…arbeiten“ endete
+  (13 der 37 Meldungen des Laufs von 14:00 UTC). Jetzt kommen alle: Der
+  Stichwort-Filter kennt „verleg“ und „auflass“/„aufgelassen“. Dabei kamen
+  drei weitere Fehler ans Licht, jeweils als Klasse behoben: (1) Die Regeln E
+  und F entfernten eine Verlegung, deren Haltestelle eine andere Meldung als
+  Richtung nennt („3A: Oper, Karlsplatz“ wegen „… in Richtung Oper,
+  Karlsplatz“ bei Schellinggasse); sie entfernen eine Verlegung jetzt nur
+  noch für eine Meldung derselben Haltestelle (`_covers_stop_notice`).
+  (2) Verlegungen nennen ihren Zeitraum unter „Dauer:“, das nur „Zeitraum:“
+  kannte: „26E/N20: Fultonstraße“ (ab 05.10., etwa zwei Wochen) hätte „[Bis
+  28.09.2027]“ gezeigt, jetzt „[Ab Mo 05.10. bis 26.10.]“; 27 von 37 beginnen
+  am Tag aus dem Text, sechs enden früher. Nur in Verlegungen, denn
+  Störungen schreiben „Dauer: Bis 30.10.2026 Betriebsschluss“.
+  (3) Schreibt WL die Linienliste ohne Doppelpunkt oder mit einem Namen aus
+  zwei Wörtern, stand sie doppelt im Titel: „16A/N65: 16A, N65
+  Grohnergasse“, „N25: N25, SEV U1: …“, „1/18/62/LB: 1, 18, 62, Badner Bahn:
+  Signalstörung“ (10.09.), „3A: 3A Netzänderung …“ (04.10.)
+  (`_strip_written_line_list`). Damit 24 neue Meldungen, manche seit 2023
+  gültig, nicht alle zehn Plätze auf einmal belegen, zählt eine Verlegung,
+  die der Build zum ersten Mal sieht, ab ihrer Veröffentlichung bei WL
+  (`_initial_first_seen`). Feed-Nachbau über die zehn echten Läufe vom
+  04.10. (09:31–14:00 UTC): zwei Verlegungen unter den ersten zehn
+  („16A/N65: Grohnergasse“ bis Mo 05.10., „26E/N20: Fultonstraße“ ab Mo
+  05.10.), dafür rückten je Lauf eine oder zwei andere auf Platz 11 und 12,
+  meist „62: ÖBB Bauarbeiten“ und „26E: Gleisbauarbeiten“; sonst gleich. Tests: `tests/test_wl_stop_notices.py`
+  mit allen 37 echten Meldungen. Doku: `docs/development.md` (WL-Filter,
+  Sammel- und Teilmeldungen, Reihenfolge im Feed), `docs/architecture.md`
+  (Linienliste, „Dauer:“).
 * **Fünfte Prüfung: fälschlich verworfene Meldungen aus den Rohdaten (2026-10-04)**:
   Die Rohdaten des Abrufs (`data/raw/`, seit dem Vormittag) zeigten erstmals,
   was WL und ÖBB beim Abruf verlieren. Zwei Fehlerklassen behoben:

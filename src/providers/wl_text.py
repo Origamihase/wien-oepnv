@@ -45,6 +45,12 @@ KW_RESTRICTION = re.compile(
         | teilbetrieb    # partial service
         | pendelverkehr  # shuttle service
         | kurzstrecke    # short route
+        # Stop relocations and closures count since 2026-10-04 (operator
+        # decision "Alle aufnehmen"). Before, one passed only when its
+        # reason happened to end in "-arbeiten" ("Kabelarbeiten": 16 in,
+        # "Hausbau", "Straßenbau", "Gleisbau": 24 out).
+        | verleg         # stop moved (Haltestellenverlegung, verlegt)
+        | auflass        # stop closed (Haltestellenauflassung)
     )\w*\b
     # The same measures as a verb. A WL news item states its measure in a
     # sentence, and the roots above are nouns: "18: LCC-Herbstmarathon am
@@ -58,6 +64,7 @@ KW_RESTRICTION = re.compile(
     | \bdurchf(?:ahr|ähr|aehr)\w*                 # station passed without stop
     | \bkein(?:en)?\s+(?:halt|betrieb)\b          # no stop / no service
     | \beingestellt\b                             # service suspended
+    | \baufgelassen\b                             # stop closed
     | \bentf(?:ällt|aellt|allen)\b                # stop/trip cancelled
     """,
     re.IGNORECASE | re.VERBOSE,
@@ -334,6 +341,16 @@ def extract_date_from_title(
 # 12. September) …", "Von 08. September 2026 bis Ende Oktober 2026",
 # "Montag, 3. August 2026, bis Ende September 2026".
 _PERIOD_HEADING_RE = re.compile(r"Zeitraum\s*:", re.IGNORECASE)
+# A stop relocation or closure names its period under "Dauer:" instead
+# ("Haltestelle: Fultonstraße / Von: … / Nach: … / Dauer: Ab 05. Oktober
+# 2026, etwa 07:00 Uhr für etwa zwei Wochen / Grund: Gleisbau"); all 37 such
+# notices in the raw data of 2026-10-04 do, none has "Zeitraum:". Without
+# it "26E/N20: Fultonstraße", published 28.09., read "[Bis 28.09.2027]" (the
+# 11:11 end) a week before it began. Only there: four Störungen use
+# "Dauer:" for a clock time or "Bis 30.10.2026 Betriebsschluss", which the
+# start rule would take for a begin.
+STOP_NOTICE_LEAD_RE = re.compile(r"^\s*Haltestellen(?:verlegung|auflassung)\b", re.IGNORECASE)
+_STOP_PERIOD_HEADING_RE = re.compile(r"\bDauer\s*:", re.IGNORECASE)
 _PERIOD_DATE_RE = re.compile(
     r"\b(\d{1,2})\.\s*(?:(\d{1,2})\.(\d{4}|\d{2})?|("
     + "|".join(re.escape(m) for m in _MONTHS_DE)
@@ -346,11 +363,13 @@ _PERIOD_WINDOW = 120
 
 
 def _period_text(description: str) -> str | None:
-    """The plain text behind the "Zeitraum:" heading, ``None`` without one."""
+    """The plain text behind the "Zeitraum:" heading (a stop notice's "Dauer:"), ``None`` without one."""
     if not description:
         return None
     text = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", description[:20000])).split())
     heading = _PERIOD_HEADING_RE.search(text)
+    if heading is None and STOP_NOTICE_LEAD_RE.match(text):
+        heading = _STOP_PERIOD_HEADING_RE.search(text)
     return text[heading.end() :] if heading else None
 
 

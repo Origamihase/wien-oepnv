@@ -1047,6 +1047,38 @@ def _lead_line(desc: str) -> str:
     return (desc or "").split("\n", 1)[0]
 
 
+_STOP_NOTICE_RE = re.compile(
+    r"^\s*Haltestellen(?:verlegung|auflassung)\b.*?\bHaltestelle:\s*(.{1,80}?)\s+(?:Von|Nach|Dauer|Ersatzlos)\b",
+    re.IGNORECASE | re.DOTALL,
+)
+
+
+def _stop_of_notice(description: str) -> str | None:
+    """The stop a WL relocation or closure notice is about, or ``None``.
+
+    WL writes these notices in one form ("Haltestellenverlegung der Linie 3A
+    in Richtung Oper, Karlsplatz / Haltestelle: Schellinggasse / Von: …").
+    """
+    match = _STOP_NOTICE_RE.search(_gate_text(description[:4000]))
+    return " ".join(match.group(1).casefold().split()) if match else None
+
+
+def _covers_stop_notice(item: dict[str, Any], others: Sequence[dict[str, Any]]) -> bool:
+    """False if *item* is a stop notice that none of *others* is about.
+
+    The title of a relocation or closure is just its stop ("3A: Oper,
+    Karlsplatz"), and other notices name that stop as a direction ("in
+    Richtung Oper, Karlsplatz"): by word count alone (E, F) the relocation
+    of Schellinggasse removed the one of Oper, Karlsplatz, and "12A:
+    Geibelgasse" the one of "12A, N8: Längenfeldgasse U" (raw data
+    2026-10-04). Only a notice about the same stop covers a stop notice.
+    """
+    stop = item.get("_stop")
+    if not stop:
+        return True
+    return any(other.get("_stop") == stop for other in others)
+
+
 def _says_nothing_beyond(item: dict[str, Any], others: Sequence[dict[str, Any]]) -> bool:
     """True, wenn der Titel von *item* ganz in den Texten von *others* steht."""
     text = " ".join(str(other.get("_text", "")) for other in others)
@@ -1100,9 +1132,8 @@ def _drop_covered_aggregates(items: list[dict[str, Any]]) -> list[dict[str, Any]
                 ]
                 for ln in ls
             ]
-            if all(covering) and _says_nothing_beyond(
-                it, [single for group in covering for single in group]
-            ):
+            flat = [single for group in covering for single in group]
+            if all(covering) and _says_nothing_beyond(it, flat) and _covers_stop_notice(it, flat):
                 continue
         kept.append(it)
     return kept
@@ -1136,7 +1167,9 @@ def _drop_covered_subsets(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 item_b.get("starts_at"), item_b.get("ends_at"),
             ):
                 continue
-            if _says_nothing_beyond(item_a, [item_b]) or _same_topic(item_a, item_b):
+            if (
+                _says_nothing_beyond(item_a, [item_b]) or _same_topic(item_a, item_b)
+            ) and _covers_stop_notice(item_a, [item_b]):
                 removed.add(i)
                 break
     return [it for i, it in enumerate(items) if i not in removed]
@@ -1486,6 +1519,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                 - {tok.casefold() for tok in lines_tok},
                 "_text": f"{title_final} {desc}",
                 "_lead_tokens": _content_tokens(f"{b['title']} {_lead_line(desc)}"),
+                "_stop": _stop_of_notice(desc),
             }
         )
 
@@ -1498,6 +1532,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
         it.pop("_title_tokens", None)
         it.pop("_text", None)
         it.pop("_lead_tokens", None)
+        it.pop("_stop", None)
 
     filtered.sort(
         key=lambda x: (0, x["pubDate"]) if x["pubDate"] else (1, x["guid"])

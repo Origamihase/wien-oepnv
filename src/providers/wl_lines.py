@@ -292,6 +292,70 @@ def _strip_existing_line_block(title: str) -> str:
     return body
 
 
+# Line lists the prefix reader above does not take, because WL wrote them
+# without the colon or with a line name of two words. Each one rendered the
+# list twice (WL cache and raw data 07.09.–04.10.2026):
+#
+#   ``16A, N65 Grohnergasse``                → ``16A/N65: 16A, N65 Grohnergasse``
+#   ``3A Netzänderung …`` (line from text)   → ``3A: 3A Netzänderung …``
+#   ``U1 Klapprampensperre am 13.09.2026``   → ``U1: U1 Klapprampensperre …``
+#   ``1, 18, 62, Badner Bahn: Signalstörung`` → ``1/18/62/LB: 1, 18, 62, Badner Bahn: …``
+#   ``N25, SEV U1: Kaisermühlen, V.I.C.``    → ``N25: N25, SEV U1: …``
+#
+# With the colon every name must read as a line code once written without
+# spaces (``Badner Bahn`` is ``LB``, ``SEV U1`` becomes ``SEVU1`` like
+# ``REX 41`` → ``REX41``). Without the colon the list is only a list when
+# every name is a line the item already has (*known*): ``U1 Klapprampensperre``
+# for a U1 item, never ``25 Jahre …`` for one without line 25.
+_WRITTEN_LINE_NAME = (
+    r"(?:(?i:Rufbus)\s+[A-Za-z0-9]+|(?i:Badner)\s+(?i:Bahn)|SEV\s+[A-Za-z0-9]+|[A-Za-z0-9]+)"
+)
+_WRITTEN_LIST_SEP_RE = re.compile(r"\s*[,/+]\s*|\s+und\s+|\s+(?=Rufbus\b)", re.IGNORECASE)
+_WRITTEN_LIST_WITH_COLON_RE = re.compile(
+    rf"^\s*({_WRITTEN_LINE_NAME}(?:(?:\s*[,/+]\s*|\s+und\s+|\s+(?=(?i:Rufbus)\b)){_WRITTEN_LINE_NAME})*)"
+    r"\s*:(?:\s+|$)"
+)
+_WRITTEN_LIST_BARE_RE = re.compile(
+    rf"^\s*({_WRITTEN_LINE_NAME}(?:(?:\s*[,/+]\s*|\s+und\s+){_WRITTEN_LINE_NAME})*)\s+(?!(?i:und|oder|bzw)\b)"
+)
+
+
+def _written_line_code(name: str, known: set[str]) -> str:
+    """The line code of one name in a written list (``Badner Bahn`` → ``LB``)."""
+    words = name.split()
+    if len(words) == 2 and words[0].casefold() == "badner":
+        return "LB"
+    code = _clean_line_token(name)
+    if words[0].casefold() == "rufbus" and f"{code}R" in known:
+        return f"{code}R"
+    return code
+
+
+def _strip_written_line_list(body: str, known: list[str]) -> tuple[str, list[str]]:
+    """Remove a line list WL wrote at the start of *body*; ``(rest, its lines)``.
+
+    See the comment above. *body* stays as it is when no list matches, when
+    nothing would remain of it, or when the rest opens with a unit noun
+    (``5 Minuten …``, as in :func:`_strip_redundant_line_token`).
+    """
+    known_set = {_clean_line_token(k) for k in known if k}
+    for pattern, needs_known in ((_WRITTEN_LIST_WITH_COLON_RE, False), (_WRITTEN_LIST_BARE_RE, True)):
+        match = pattern.match(body)
+        if not match:
+            continue
+        names = [n for n in _WRITTEN_LIST_SEP_RE.split(match.group(1)) if n.strip()]
+        codes = [_written_line_code(n, known_set) for n in names]
+        if not codes or not all(_STRICT_LINE_TOKEN_RE.match(c) for c in codes):
+            continue
+        if needs_known and not all(c in known_set for c in codes):
+            continue
+        rest = body[match.end():].strip()
+        if not rest or _REDUNDANT_LINE_UNIT_RE.match(rest):
+            continue
+        return rest, codes
+    return body, []
+
+
 def _ensure_line_prefix(title: str, lines_disp: list[str]) -> str:
     """Sorgt für „L1/L2: …“. Entfernt vorhandene Präfixe zuerst.
 
@@ -308,6 +372,8 @@ def _ensure_line_prefix(title: str, lines_disp: list[str]) -> str:
         title = title[:500]
 
     body, existing_lines = _extract_prefix_lines(title)
+    body, written_lines = _strip_written_line_list(body, [*lines_disp, *existing_lines])
+    existing_lines = [*existing_lines, *written_lines]
 
     if not lines_disp and not existing_lines:
         return title
