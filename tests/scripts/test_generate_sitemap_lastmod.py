@@ -77,10 +77,17 @@ def test_git_lastmod_map_ignores_paths_outside_repo(tmp_path: Path) -> None:
     assert generate_sitemap._git_lastmod_map([outsider]) == {}
 
 
+def _utc_today() -> _dt.date:
+    # The resolver clamps to today's UTC date. ``date.today()`` is the
+    # machine's local date and differs from it for part of every day east
+    # or west of UTC (in Vienna between 00:00 and 01:00/02:00 local time).
+    return _dt.datetime.now(_dt.UTC).date()
+
+
 def test_resolve_lastmod_falls_back_to_mtime(tmp_repo: Path) -> None:
     page = tmp_repo / "docs" / "x.md"
     page.write_text("x", encoding="utf-8")
-    today = _dt.date.today().isoformat()
+    today = _utc_today().isoformat()
 
     # No git timestamp → mtime (just written ≈ now) → at most today.
     assert generate_sitemap._resolve_lastmod(page, None) <= today
@@ -89,11 +96,11 @@ def test_resolve_lastmod_falls_back_to_mtime(tmp_repo: Path) -> None:
 def test_resolve_lastmod_clamps_future_dates(tmp_repo: Path) -> None:
     page = tmp_repo / "docs" / "x.md"
     page.write_text("x", encoding="utf-8")
-    future = (_dt.date.today() + _dt.timedelta(days=400)).isoformat()
+    future = (_utc_today() + _dt.timedelta(days=400)).isoformat()
 
     resolved = generate_sitemap._resolve_lastmod(page, f"{future}T00:00:00+00:00")
 
-    assert resolved == _dt.date.today().isoformat()
+    assert resolved == _utc_today().isoformat()
 
 
 def test_collect_entries_uses_single_git_process(tmp_repo: Path) -> None:

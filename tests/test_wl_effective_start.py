@@ -134,6 +134,15 @@ def test_fetch_events_takes_the_begin_from_the_description(monkeypatch: pytest.M
     monkeypatch.setattr(wl_fetch, "_fetch_news", lambda *a, **kw: [news])
     monkeypatch.setattr(wl_fetch, "session_with_retries", lambda *a, **kw: _Session())
 
+    class _Clock(datetime):
+        """``fetch_events`` drops a notice after its end, 31.12.2026."""
+
+        @classmethod
+        def now(cls, tz: Any = None) -> _Clock:
+            return cls.fromtimestamp(NOW.timestamp(), tz)
+
+    monkeypatch.setattr(wl_fetch, "datetime", _Clock)
+
     (event,) = wl_fetch.fetch_events()
 
     assert event["starts_at"] == _day(10, 5)

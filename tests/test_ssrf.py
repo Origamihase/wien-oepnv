@@ -1,7 +1,6 @@
 from typing import Any
 import pytest
 from src.utils.http import validate_http_url, fetch_content_safe
-import socket
 import requests
 
 def test_validate_http_url_valid() -> None:
@@ -23,22 +22,36 @@ def test_validate_http_url_private_ip_literal() -> None:
     assert validate_http_url("http://169.254.1.1") is None # Link-local
     assert validate_http_url("http://[::1]") is None
 
-def test_validate_http_url_domain_resolving_to_localhost(monkeypatch: pytest.MonkeyPatch) -> None:
-    # Mock socket.getaddrinfo to simulate a domain resolving to localhost
-    def mock_getaddrinfo(host: Any, port: Any, proto: int = 0, flags: int = 0) -> Any:
-        if host == "localtest.me":
-            return [(socket.AF_INET, socket.SOCK_STREAM, 6, '', ('127.0.0.1', 80))]
-        raise socket.gaierror("Name or service not known")
+def _resolving(monkeypatch: pytest.MonkeyPatch, answers: dict[str, str]) -> None:
+    """Let the DNS answer *answers* (host -> IPv4) and nothing for other names.
 
-    monkeypatch.setattr(socket, "getaddrinfo", mock_getaddrinfo)
+    The HTTP layer resolves through dnspython, not ``socket.getaddrinfo``:
+    the mocks of ``getaddrinfo`` these tests used before were never called,
+    and the tests passed on the real DNS (test-suite audit 2026-10-04).
+    """
+    import dns.resolver
+
+    def _resolve(self: Any, qname: Any, rdtype: Any = "A", *args: Any, **kwargs: Any) -> Any:
+        ip = answers.get(str(qname).rstrip("."))
+        if ip is None:
+            raise dns.resolver.NXDOMAIN
+        if str(rdtype).upper().endswith("AAAA"):
+            raise dns.resolver.NoAnswer
+        return [type("A", (), {"address": ip})()]
+
+    monkeypatch.setattr(dns.resolver.Resolver, "resolve", _resolve)
+
+
+def test_validate_http_url_domain_resolving_to_localhost(monkeypatch: pytest.MonkeyPatch) -> None:
+    # "localtest.me" is on the name blocklist and never reaches the DNS;
+    # an ordinary name that resolves to localhost must be rejected too.
+    _resolving(monkeypatch, {"intranet.example.org": "127.0.0.1"})
 
     assert validate_http_url("http://localtest.me") is None
+    assert validate_http_url("http://intranet.example.org") is None
 
 def test_validate_http_url_dns_failure(monkeypatch: pytest.MonkeyPatch) -> None:
-    def mock_getaddrinfo_fail(host: Any, port: Any, proto: int = 0, flags: int = 0) -> Any:
-         raise socket.gaierror("Name or service not known")
-
-    monkeypatch.setattr(socket, "getaddrinfo", mock_getaddrinfo_fail)
+    _resolving(monkeypatch, {})
     # Should return None if DNS fails
     assert validate_http_url("http://nonexistent.example.com") is None
 
@@ -60,16 +73,9 @@ def test_fetch_content_safe_validates_url(monkeypatch: pytest.MonkeyPatch) -> No
     with pytest.raises(ValueError, match="Unsafe or invalid URL"):
         fetch_content_safe(session, "http://127.0.0.1")
 
-    # Mock validation failure for a "valid looking" domain that resolves to private IP
-    def mock_getaddrinfo(host: Any, port: Any, proto: int = 0, flags: int = 0) -> Any:
-        if host == "evil.internal":
-            return [(socket.AF_INET, socket.SOCK_STREAM, 6, '', ('192.168.1.5', 80))]
-        # For valid domains, we need to return something valid so validate_http_url passes
-        if host == "good.example.com":
-             return [(socket.AF_INET, socket.SOCK_STREAM, 6, '', ('93.184.216.34', 80))]
-        raise socket.gaierror("Name or service not known")
+    # A "valid looking" domain that resolves to a private IP.
+    _resolving(monkeypatch, {"evil.example.net": "192.168.1.5", "good.example.com": "93.184.216.34"})
+    assert validate_http_url("http://good.example.com") == "http://good.example.com"
 
-    monkeypatch.setattr(socket, "getaddrinfo", mock_getaddrinfo)
-
-    with pytest.raises(ValueError, match="Unsafe or invalid URL"):
-         fetch_content_safe(session, "http://evil.internal")
+    with pytest.raises(ValueError, match="No safe IP resolved"):
+         fetch_content_safe(session, "http://evil.example.net")

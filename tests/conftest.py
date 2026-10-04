@@ -6,11 +6,21 @@ import sys
 import zipfile
 from pathlib import Path
 from collections.abc import Iterator
+from typing import Any
 
 from urllib import error as urllib_error
 from urllib import request as urllib_request
 
 import pytest
+from hypothesis import settings as hypothesis_settings
+
+# Hypothesis' per-example deadline (200 ms) measured the first example of a
+# property test together with the lazy build of the station and brand
+# patterns (about 0.6 s): two tests without ``deadline=None`` failed whenever
+# they happened to run first (test-suite audit 2026-10-04). Hangs are
+# caught by pytest-timeout.
+hypothesis_settings.register_profile("wien-oepnv", deadline=None)
+hypothesis_settings.load_profile("wien-oepnv")
 
 root = Path(__file__).resolve().parents[1]
 if str(root) not in sys.path:
@@ -210,6 +220,103 @@ def streckendaten_dataset() -> Iterator[Path]:
 @pytest.fixture(scope="session", autouse=True)
 def _ensure_streckendaten(streckendaten_dataset: Path) -> Iterator[None]:  # noqa: PT005
     yield
+
+
+@pytest.fixture(autouse=True)
+def _restore_replaced_modules() -> Iterator[None]:
+    """Undo what a test did to modules: re-imports and reloads.
+
+    Thirty-one test files import ``src.build_feed`` afresh (some with
+    ``src.feed.config``) by popping it from ``sys.modules``, and twelve call
+    ``importlib.reload``. Both stayed for the rest of the session. After a
+    re-import every test module collected before still held the original:
+    the fixtures in this file (``reset_build_feed_state``,
+    ``time_line_today``) reset and patched the copy, not the module those
+    tests call. A reload replaces the module's classes, so a test holding
+    ``GooglePlacesError`` from its import no longer caught the error the
+    client raised. The outcome depended on the order and on today's date
+    (test-suite audit 2026-10-04: 21 tests failed in shuffled runs, 14 more
+    with the clock set to New Year). Modules a test imports for the first
+    time stay.
+    """
+    import importlib
+
+    before = dict(sys.modules)
+    namespaces: dict[int, tuple[Any, dict[str, Any]]] = {}
+    real_reload = importlib.reload
+
+    def _reload(module: Any) -> Any:
+        namespaces.setdefault(id(module), (module, dict(vars(module))))
+        return real_reload(module)
+
+    importlib.reload = _reload
+    try:
+        yield
+    finally:
+        importlib.reload = real_reload
+        for module, namespace in namespaces.values():
+            vars(module).clear()
+            vars(module).update(namespace)
+        for name, module in before.items():
+            if sys.modules.get(name) is module:
+                continue
+            sys.modules[name] = module
+            parent_name, _, child = name.rpartition(".")
+            parent = sys.modules.get(parent_name) if parent_name else None
+            if parent is not None:
+                with contextlib.suppress(AttributeError, TypeError):
+                    setattr(parent, child, module)
+
+
+@pytest.fixture(autouse=True)
+def _feed_config_stays() -> Iterator[None]:
+    """Restore every value of ``src.feed.config`` a test changed.
+
+    ``refresh_from_env()`` re-reads the whole configuration from the
+    environment. A test that sets ``MAX_ITEMS=-5`` and refreshes left
+    ``MAX_ITEMS`` at 0 after monkeypatch had restored the variable, and the
+    next test that rendered a feed got no items (test-suite audit
+    2026-10-04, shuffled run). Values set with ``monkeypatch.setattr`` were
+    restored already; this covers the refresh.
+    """
+    from src.feed import config as feed_config
+
+    before = dict(vars(feed_config))
+    yield
+    namespace = vars(feed_config)
+    for name, value in before.items():
+        if namespace.get(name) is not value:
+            namespace[name] = value
+
+
+@pytest.fixture(autouse=True)
+def _root_logger_stays_clean() -> Iterator[None]:
+    """Undo what a test did to the root logger: handlers, formatters, level.
+
+    Script entry points install their own sanitising handler on the root
+    logger (``_configure_safe_logging``, ``setup_script_logging``), once per
+    process; when a test ran one, a later test of the installation found
+    nothing to install and failed. ``configure_logging`` puts a
+    ``SafeFormatter`` on every handler already there, pytest's capture
+    handler included, which lives for the whole session: ``SafeFormatter``
+    formats a copy of the record, so from then on no record in
+    ``caplog.records`` had a ``message`` (test-suite audit 2026-10-04, both
+    in shuffled runs only). pytest's own handlers stay attached.
+    """
+    import logging
+
+    root = logging.getLogger()
+    before = [(handler, handler.formatter, handler.level) for handler in root.handlers]
+    level = root.level
+    yield
+    kept = {handler for handler, _, _ in before}
+    for handler in list(root.handlers):
+        if handler not in kept and not type(handler).__module__.startswith("_pytest"):
+            root.removeHandler(handler)
+    for handler, formatter, handler_level in before:
+        handler.setFormatter(formatter)
+        handler.setLevel(handler_level)
+    root.setLevel(level)
 
 
 @pytest.fixture(autouse=True)
@@ -459,6 +566,32 @@ def _health_report_stays_untouched() -> Iterator[None]:
         "the test wrote docs/feed-health.*; point feed_config.FEED_HEALTH_PATH "
         "and FEED_HEALTH_JSON_PATH at tmp_path"
     )
+
+
+@pytest.fixture(autouse=True)
+def _no_real_dns(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Answer every DNS query of a test with :data:`STUB_PUBLIC_IP`.
+
+    The HTTP layer resolves every hostname itself (``_resolve_hostname_safe``,
+    dnspython) before it accepts a URL, and ``src.feed.config`` does so for
+    the public feed URL at import. Unstubbed, 23 tests asked the real DNS for
+    third-party names (``example.com``, ``safe.com``, ``data.wien.gv.at``):
+    they failed without a network, and their outcome depended on zones the
+    project does not control (test-suite audit 2026-10-04). Every name now
+    resolves to one public IPv4 address, the answer the CI runners get for
+    the hosts in question; nothing leaves the machine. A test that needs
+    another answer patches ``dns.resolver.Resolver.resolve`` or
+    ``_resolve_hostname_safe`` itself, which takes precedence.
+    """
+    import dns.resolver
+    from types import SimpleNamespace
+
+    def _resolve(self: Any, qname: Any, rdtype: Any = "A", *args: Any, **kwargs: Any) -> Any:
+        if str(rdtype).upper().endswith("AAAA"):
+            raise dns.resolver.NoAnswer
+        return [SimpleNamespace(address=STUB_PUBLIC_IP)]
+
+    monkeypatch.setattr(dns.resolver.Resolver, "resolve", _resolve)
 
 
 @pytest.fixture

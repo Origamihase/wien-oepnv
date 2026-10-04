@@ -18,17 +18,23 @@ def test_vienna_stations_regex_excludes_digits() -> None:
     regex_func = stations_module._vienna_stations_regex
     regex_func.cache_clear()
 
-    with patch("src.utils.stations._station_entries", return_value=mock_data):
-        regex = regex_func()
+    # The cache must not keep the regex of the mock data: "Umbau bei
+    # Karlsplatz." no longer counted as Vienna in every later test
+    # (test-suite audit 2026-10-04, shuffled run).
+    try:
+        with patch("src.utils.stations._station_entries", return_value=mock_data):
+            regex = regex_func()
+    finally:
+        regex_func.cache_clear()
 
-        # "Test Alias" should match
-        assert regex.search("Test Alias")
+    # "Test Alias" should match
+    assert regex.search("Test Alias")
 
-        # "Wien Test" should match
-        assert regex.search("Wien Test")
+    # "Wien Test" should match
+    assert regex.search("Wien Test")
 
-        # "51" should NOT match (after fix)
-        assert not regex.search("51")
+    # "51" should NOT match (after fix)
+    assert not regex.search("51")
 
-        # "123" should NOT match (after fix)
-        assert not regex.search("123")
+    # "123" should NOT match (after fix)
+    assert not regex.search("123")
