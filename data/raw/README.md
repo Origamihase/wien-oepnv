@@ -19,7 +19,16 @@ Health-Check schreiben hier nichts.
 | `oebb/rss.json` | [`src/providers/oebb.py`](../../src/providers/oebb.py) | alle `<item>` des ÖBB-RSS mit jedem Kindelement als Text, nach `guid` sortiert; der Kanal-Kopf (`lastBuildDate`) fehlt |
 | `oebb/verworfen.json` | ebenda | ÖBB-Meldungen, die der Wien-Filter verwarf |
 | `baustellen/BAUSTELLENLINOGD.json`, `baustellen/BAUSTELLENPKTOGD.json` | [`scripts/update_baustellen_cache.py`](../../scripts/update_baustellen_cache.py) | je WFS-Layer alle Features mit ihren Properties ohne `OBJECTID`, von der Geometrie nur Typ und erste Position (`first_position`), nach `OGD_ID` bzw. Titel sortiert; Antwortkopf und Feature-`id` fehlen |
-| `baustellen/verworfen.json` | ebenda | Baustellen ohne ÖPNV-Bezug oder ohne Titel und Straße; nur nach einem Live-Abruf, nie nach dem Fallback-Sample |
+| `baustellen/verworfen.json` | ebenda | Baustellen ohne ÖPNV-Bezug oder ohne Titel und Straße; nur nach einem vollständigen Live-Abruf, nie nach dem Fallback-Sample oder einer letzten guten Antwort |
+
+Ein Stand wird nur für eine brauchbare Antwort geschrieben, er ist also
+immer die **letzte gute Antwort** dieses Teils der Quelle. Fällt ein Teil aus
+(eine WL-Liste, ein Baustellen-Layer), liest der Abruf ihn von hier, statt
+seine Meldungen zu verlieren (`docs/architecture.md`, „Ausfall einer
+Quelle“); die `verworfen.json` dieser Quelle bleibt dann unverändert. Ein
+Stand, der sich über mehrere Läufe nicht ändert, kann deshalb auch heißen,
+dass die Quelle in dieser Zeit ausfiel; das zeigt das Workflow-Log
+(Warnung mit Exit-Code 1 oder 3).
 
 Jede Datei wird bei jedem Lauf überschrieben, und nur wenn sich ihr Inhalt
 geändert hat. Die Git-Historie ist das Archiv:

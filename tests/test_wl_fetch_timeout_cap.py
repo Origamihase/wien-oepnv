@@ -27,6 +27,10 @@ import src.providers.wl_fetch as wl_fetch
 from src.providers.wl_fetch import MAX_WL_FETCH_TIMEOUT, fetch_events
 
 
+# A usable WL answer with no notices (both lists share the envelope).
+_EMPTY_ANSWER: dict[str, Any] = {"data": {"trafficInfos": [], "pois": []}}
+
+
 def test_max_wl_fetch_timeout_matches_provider_timeout_ceiling() -> None:
     # The cap matches ``feed_config.MAX_PROVIDER_TIMEOUT`` (25 seconds), the
     # orchestrator-level Slowloris ceiling, so no legitimate orchestrator-
@@ -51,7 +55,7 @@ def test_fetch_events_clamps_huge_timeout_to_cap(
         session: Any = None,
     ) -> dict[str, Any]:
         recorded["timeout"] = timeout
-        return {}
+        return _EMPTY_ANSWER
 
     monkeypatch.setattr(wl_fetch, "_get_json", fake_get_json)
 
@@ -74,7 +78,7 @@ def test_fetch_events_at_cap_passes_cap_through(
         session: Any = None,
     ) -> dict[str, Any]:
         recorded["timeout"] = timeout
-        return {}
+        return _EMPTY_ANSWER
 
     monkeypatch.setattr(wl_fetch, "_get_json", fake_get_json)
 
@@ -97,7 +101,7 @@ def test_fetch_events_below_cap_passes_through(
         session: Any = None,
     ) -> dict[str, Any]:
         recorded["timeout"] = timeout
-        return {}
+        return _EMPTY_ANSWER
 
     monkeypatch.setattr(wl_fetch, "_get_json", fake_get_json)
 
@@ -121,7 +125,7 @@ def test_fetch_events_default_timeout_unchanged(
         session: Any = None,
     ) -> dict[str, Any]:
         recorded["timeout"] = timeout
-        return {}
+        return _EMPTY_ANSWER
 
     monkeypatch.setattr(wl_fetch, "_get_json", fake_get_json)
 

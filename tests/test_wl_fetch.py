@@ -5,6 +5,7 @@ from typing import Any, Literal
 
 import pytest
 
+from src.providers import wl_fetch
 from src.providers.wl_fetch import _stop_names_from_related, fetch_events
 
 
@@ -89,10 +90,11 @@ def test_fetch_events_handles_invalid_json(
 
     monkeypatch.setattr("src.providers.wl_fetch.fetch_content_safe", fake_fetch_content_safe)
 
-    with caplog.at_level(logging.WARNING):
-        events = fetch_events(timeout=0)
+    # Invalid JSON is no usable answer: without a last good one the fetch
+    # fails, and the cache updater keeps the cache.
+    with caplog.at_level(logging.WARNING), pytest.raises(wl_fetch.SourceIncompleteError):
+        fetch_events(timeout=0)
 
-    assert events == []
     # With fetch_content_safe, invalid JSON will result in json.loads failing, which is caught.
     # The message includes "Ungültige JSON-Antwort" or "Antwort ... zu groß oder ungültig" or the new consolidated message
     assert any(
