@@ -36,7 +36,7 @@ import re
 from pathlib import Path
 from typing import Any
 
-from .files import atomic_write
+from .files import atomic_write, read_capped_bytes
 from .serialize import scrub_trojan_source_primitives
 
 log = logging.getLogger(__name__)
@@ -81,11 +81,10 @@ def _write_if_changed(path: Path, text: str) -> bool:
             MAX_SNAPSHOT_BYTES,
         )
         return False
-    try:
-        if path.read_bytes() == encoded:
-            return False
-    except OSError:
-        pass
+    # The previous version is at most MAX_SNAPSHOT_BYTES (larger ones are
+    # never written); anything bigger or unreadable just gets replaced.
+    if read_capped_bytes(path, MAX_SNAPSHOT_BYTES, label="raw snapshot", logger=log) == encoded:
+        return False
     with atomic_write(path, mode="w", encoding="utf-8", permissions=0o644) as handle:
         handle.write(text)
     return True
@@ -137,13 +136,17 @@ def sorted_records(records: list[Any], *keys: str) -> list[Any]:
                 if value not in (None, ""):
                     ident = str(value)
                     break
-        try:
-            body = json.dumps(record, ensure_ascii=False, sort_keys=True, default=str)
-        except (TypeError, ValueError):
-            body = repr(record)
-        return ident, body
+        return ident, content_key(record)
 
     return sorted(records, key=sort_key)
+
+
+def content_key(record: Any) -> str:
+    """A deterministic text for *record*, used only as an in-memory sort key."""
+    try:
+        return json.dumps(record, sort_keys=True, default=str, allow_nan=False)
+    except (TypeError, ValueError):
+        return repr(record)
 
 
 __all__ = [
@@ -152,6 +155,7 @@ __all__ = [
     "RAW_ROOT",
     "capture_enabled",
     "collected_drops",
+    "content_key",
     "note_drop",
     "render",
     "reset_drops",

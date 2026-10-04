@@ -899,7 +899,7 @@ def _raw_snapshot(payload: dict[str, Any]) -> dict[str, Any]:
                 "first_position": _first_lonlat(geometry.get("coordinates")),
             }
         features.append(record)
-    features.sort(key=lambda f: (_raw_sort_key(f), json.dumps(f, sort_keys=True, default=str)))
+    features.sort(key=lambda f: (_raw_sort_key(f), raw_capture.content_key(f)))
     return {"features": features}
 
 
