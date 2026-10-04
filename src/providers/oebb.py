@@ -25,6 +25,7 @@ from datetime import datetime, timedelta, timezone, UTC
 from zoneinfo import ZoneInfo
 from email.utils import parsedate_to_datetime
 from itertools import pairwise
+from typing import Any
 from urllib.parse import urlparse
 
 import requests
@@ -50,6 +51,7 @@ from ..utils.http import (
     validate_http_url,
 )
 from ..utils.logging import sanitize_log_arg
+from ..utils import raw_capture
 
 from defusedxml import ElementTree as ET # XXE Mitigation applied
 
@@ -2200,6 +2202,24 @@ def _build_item_from_xml(item: ET.Element) -> FeedItem | None:
     }
 
 
+def _raw_snapshot(channel: ET.Element) -> dict[str, Any]:
+    """The RSS items as kept in ``data/raw/oebb/`` (``src/utils/raw_capture.py``).
+
+    Every child element of every ``<item>`` as text, items ordered by
+    ``guid``. The channel header (``lastBuildDate`` and friends) is left
+    out: it changes on every call and says nothing about the notices.
+    """
+    items: list[dict[str, str]] = []
+    for item in channel.findall("item"):
+        record: dict[str, str] = {}
+        for child in item:
+            tag = child.tag if isinstance(child.tag, str) else str(child.tag)
+            text = child.text or ""
+            record[tag] = f"{record[tag]}\n{text}" if tag in record else text
+        items.append(record)
+    return {"items": raw_capture.sorted_records(items, "guid", "link", "title")}
+
+
 def fetch_events(timeout: int = 25) -> list[FeedItem]:
     # Security: clamp ``timeout`` to ``MAX_OEBB_FETCH_TIMEOUT`` to defeat the
     # Slowloris vector documented at the constant declaration above. Without
@@ -2216,11 +2236,16 @@ def fetch_events(timeout: int = 25) -> list[FeedItem]:
     if channel is None:
         return []
 
+    raw_capture.write_snapshot("oebb", "rss", _raw_snapshot(channel))
+    raw_capture.reset_drops("oebb")
     out: list[FeedItem] = []
     for item in channel.findall("item"):
         feed_item = _build_item_from_xml(item)
         if feed_item is not None:
             out.append(feed_item)
+        else:
+            raw_capture.note_drop("oebb", "nicht Wien-relevant", _get_text(item, "title"))
+    raw_capture.write_drops("oebb")
 
     log.info("ÖBB: %d Items nach Region/Titel-Kosmetik", len(out))
     return out

@@ -43,6 +43,18 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   halten sie jetzt an der Kante. Doku: `docs/development.md`
   („Test-Isolation“). Tests: `tests/conftest.py`,
   `tests/test_display_title_length.py`.
+* **Rohdaten und Verwürfe des Abrufs werden mitgeschrieben (2026-10-04)**:
+  Die Caches hielten nur, was den Abruf überlebt hatte; ob eine Meldung bei
+  WL, ÖBB oder Stadt Wien überhaupt ankam und wo sie verschwand, ließ sich
+  nachträglich nicht klären. Der Update-Lauf schreibt jetzt mit
+  `RAW_CAPTURE=1` je Quelle die Rohantwort und `verworfen.json` (Meldung und
+  Grund) nach `data/raw/<quelle>/`. Die Dateien werden überschrieben, nur bei
+  inhaltlicher Änderung, in stabiler Textform und ohne Felder, die sich bei
+  jedem Aufruf ändern; die Git-Historie ist das Archiv. Komprimieren wurde
+  verworfen: gemessen an einem Monat echter Historie wäre das Repo mit
+  gzip-Dateien 1,6- bis 146-mal stärker gewachsen. Doku: `data/raw/README.md`,
+  `docs/architecture.md` („Rohdaten und Verwürfe des Abrufs“). Tests:
+  `tests/test_raw_capture.py`.
 * **Update-Lauf checkt nur noch den letzten Stand aus (2026-10-04)**:
   `update-cycle.yml` lud alle ~30 Minuten die ganze Git-Historie
   (`fetch-depth: 0`, 55 MB, wachsend mit jeder committeten Cache- und

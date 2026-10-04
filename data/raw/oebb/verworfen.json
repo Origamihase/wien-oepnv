@@ -1,0 +1,624 @@
+{
+ "verworfen": [
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten (Tauernsperre) - Schienenersatzverkehr: Bischofshofen Bahnhof &#60;=&#62; Bad Gastein Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Ausfall/Haltausfall/Schienenersatzverkehr/geänderte Fahrzeiten: Klagenfurt Hbf &#60;=&#62; Villach Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Ausfall/Schienenersatzverkehr/geänderte Fahrzeiten: Schwarzach im Pongau-St.Veit Bahnhof &#60;=&#62; Bischofshofen Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Ausfall/Umleitung/Halte entfallen/geänderte Fahrzeiten: Schwarzach im Pongau-St.Veit Bahnhof &#60;=&#62; Bad Gastein Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Geänderte Fahrzeiten/Ausfall: Salzburg Hbf &#60;=&#62; Schwarzach im Pongau-St.Veit Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/Teilausfall/geänderte Fahrzeiten: Deutsch Wagram Bahnhof &#60;=&#62; Gänserndorf Bahnhof/Marchegg Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/Teilausfall/geänderte Fahrzeiten: Innsbruck Hbf &#60;=&#62; Mittenwald"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/Umleitung/Haltausfall/geänderte Fahrzeiten: Linz/Donau Hbf &#60;=&#62; Wels Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten/Haltausfall: Villach Hbf &#60;=&#62; Pusarnitz Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten/Teilausfall: Linz/Donau Hbf &#60;=&#62; St.Nikola-Struden Bahnhst"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Amstetten NÖ Bahnhof &#60;=&#62; St.Valentin Bahnhof/Waidhofen/Ybbs Bahnhof/Ybbs/Donau Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Amstetten NÖ Bahnhof / Waidhofen/Ybbs Bahnhof &#60;=&#62; Kleinreifling Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Attnang-Puchheim Bahnhof &#60;=&#62; Ried im Innkreis Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Attnang-Puchheim Bahnhof/Vöcklabruck Bahnhof &#60;=&#62; Kammer/Attersee-Schörfling Bahnhst"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Bad Fischau-Brunn/Schneebergbahn Bahnhof &#60;=&#62; Puchberg am Schneeberg Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Bischofshofen Bahnhof &#60;=&#62; Bad Gastein Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Bleiburg &#60;=&#62; Klagenfurt Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Bleiburg Bahnhof &#60;=&#62; Prevalje"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Bruck/Mur Bahnhof &#60;=&#62; Frohnleiten Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Bruck/Mur Bahnhof &#60;=&#62; Mürzzuschlag Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Bruck/Mur Bahnhof =&#62; Graz Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Ebenfurth Bahnhof &#60;=&#62; Baumgarten im Bgld-Schattendorf Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Eisenstadt Schule Bahnhst &#60;=&#62; Wulkaprodersdorf Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Felixdorf Bahnhof &#60;=&#62; Wr.Neustadt Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Friedburg Bahnhof &#60;=&#62; Braunau/Inn Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Friedburg Bahnhof =&#62; Braunau/Inn Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Gleisdorf Bahnhof &#60;=&#62; Weiz Zentrum"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Graz Hbf &#60;=&#62; Gleisdorf Bahnhof/Fehring Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Graz Hbf &#60;=&#62; Spielfeld-Straß in Stmk Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Greifenburg-Weißensee Bahnhof &#60;=&#62; Lienz in Osttirol Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Hartberg Bahnhof &#60;=&#62; Fehring Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Hermagor Bahnhof &#60;=&#62; Arnoldstein Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Hieflau Bahnhof &#60;=&#62; Selzthal Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Klagenfurt Hbf &#60;=&#62; Weizelsdorf Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Krems/Donau Bahnhof &#60;=&#62; Herzogenburg Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Leoben Hbf &#60;=&#62; Kapfenberg Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Leobersdorf Bahnhof &#60;=&#62; Weissenbach/Triesting-Neuhaus Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Lieboch Bahnhof &#60;=&#62; Köflach Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Lieboch Bahnhof &#60;=&#62; Wies-Eibiswald Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Liezen Bahnhof &#60;=&#62; Kleinreifling Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Linz/Donau Hbf &#60;=&#62; Summerau Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Linz/Donau Urfahr Bahnhof &#60;=&#62; Aigen-Schlägl Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Lochau-Hörbranz Bahnhof &#60;=&#62; Lindau (Bodensee) Insel"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Mittersill Bahnhof &#60;=&#62; Krimml Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Neusiedl am See Bahnhof &#60;=&#62; Eisenstadt Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Prambachkirchen-Bad Weinberg Bahnhof &#60;=&#62; Peuerbach Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Pöchlarn Bahnhof &#60;=&#62; Scheibbs Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Ried im Innkreis Bahnhof &#60;=&#62; Schärding Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: San Candido/Innichen &#60;=&#62; Sillian Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Spielfeld-Straß in Stmk Bahnhof &#60;=&#62; Bad Radkersburg Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Spittal/Drau-Millstätter See Bahnhof &#60;=&#62; Lienz in Osttirol Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: St.Johann im Pongau Bahnhof &#60;=&#62; Schwarzach im Pongau-St.Veit Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: St.Pölten Hbf &#60;=&#62; Hainfeld NÖ Bahnhof/Schrambach Bahnhst"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: St.Pölten Hbf &#60;=&#62; Schrambach Bahnhst/Hainfeld NÖ Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: St.Valentin Bahnhof &#60;=&#62; St.Nikola-Struden Bahnhst"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: St.Veit/Glan Bahnhof &#60;=&#62; Villach Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Stainach-Irdning Bahnhof &#60;=&#62; Schladming Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Steeg/Hallstätter See-Gosau Bahnhof &#60;=&#62; Stainach-Irdning Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Stockerau Bahnhof &#60;=&#62; Znojmo"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Unterretzbach Bahnhst &#60;=&#62; Znojmo"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Villach Hbf &#60;=&#62; Sattendorf Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Vorchdorf-Eggenberg Bahnhof &#60;=&#62; Kirchham b.Vorchdorf Sportplatz Bahnhst"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Waizenkirchen Bahnhof &#60;=&#62; Peuerbach Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Wampersdorf Bahnhof &#60;=&#62; Neufeld/Leitha Bahnhof /Wulkaprodersdorf Bahnhof &#60;=&#62; Eisenstadt Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Wampersdorf Bahnhof &#60;=&#62; Wr.Neustadt Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Wels Hbf &#60;=&#62; Grünau im Almtal Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Werndorf Bahnhof &#60;=&#62; Leibnitz Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Wien Leopoldau Bahnhst (U) =&#62; Mistelbach/Zaya Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Wolfsberg in Ktn Bahnhof &#60;=&#62; St.Paul im Lavanttal Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Wolkersdorf im Weinviertel Bahnhof &#60;=&#62; Laa/Thaya Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Wr.Neustadt Hbf &#60;=&#62; Gutenstein Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Wr.Neustadt Hbf &#60;=&#62; Hartberg Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Wr.Neustadt Hbf &#60;=&#62; Mattersburg Bahnhof/Loipersbach im Bgld-Schattendorf Bahnhof/Baumgarten im Bgld-Schattendorf Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Wulkaprodersdorf Bahnhof &#60;=&#62; Eisenstadt Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Zell am See Bahnhof &#60;=&#62; Fürth im Pinzgau-Kaprun Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Ötztal Bahnhof &#60;=&#62; Landeck-Zams Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/kein Halt in Radstadt Bahnhof/geänderte Fahrzeiten: Ötztal Bahnhof &#60;=&#62; Bludenz Bahnhof/Sargans/Zürich HB"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr/vorverlegte Abfahrtszeit: St.Pölten Hbf &#60;=&#62; Traisen NÖ Bahnhof [in Scheiblmühl]"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr: Eisenstadt Schulzentrum/Eisenstadt Bahnhof &#60;=&#62; Wulkaprodersdorf Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr: Föderlach Bahnhof &#60;=&#62; Villach Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr: Linz/Donau Hbf &#60;=&#62; Wels Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr: Lochau-Hörbranz Bahnhof &#60;=&#62; Lindau (Bodensee) Insel"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr: Neusiedl am See Bahnhof &#60;=&#62; Wulkaprodersdorf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr: Obereggendorf Bahnhof &#60;=&#62; Wr.Neustadt Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr: Payerbach-Reichenau an der Rax Bahnhof &#60;=&#62; Mürzzuschlag Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr: St.Pölten Hbf &#60;=&#62; Mariazell Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr: Steindorf/Ossiacher See Bahnhst &#60;=&#62; Sattendorf Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Teilausfall: Villach Hbf &#60;=&#62; Jesenice(SLO)"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Teilausfall: Wolkersdorf im Weinviertel Bahnhof &#60;=&#62; Laa/Thaya Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Umleitung/Halte entfallen/Ersatzverkehr/Teilausfall/geänderte Fahrzeiten: Bruck/Mur Bahnhof &#60;=&#62; Klagenfurt Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Umleitung/Halte entfallen/Ersatzverkehr/geänderte Fahrzeiten: -"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Umleitung/Halte entfallen/Ersatzverkehr/geänderte Fahrzeiten: Salzburg Hbf &#60;=&#62; Feldkirch Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Umleitung/Halte entfallen/Schienenersatzverkehr: Kühnsdorf-Klopeiner See Bahnhof &#60;=&#62; St.Paul im Lavanttal Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Umleitung/Halte entfallen/Schienenersatzverkehr: St.Veit/Glan Bahnhof &#60;=&#62; Villach Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Umstieg in Ceské Velenice/geänderte Fahrzeiten: Ceské Velenice"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Zugausfall/Halt entfällt: Klagenfurt Hbf &#60;=&#62; Villach Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Zugausfall/Haltausfall/geänderte Fahrzeiten: Bruck/Mur Bahnhof &#60;=&#62; Graz Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Zugausfall/geänderte Fahrzeiten: Gänserndorf Bahnhof &#60;=&#62; Breclav"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Zugausfall/geänderte Fahrzeiten: Hohenau/March Bahnhof &#60;=&#62; Bernhardsthal Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Zugausfall: Klagenfurt Hbf &#60;=&#62; Villach Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Zugausfall: München Hbf &#60;=&#62; Lindau (Bodensee) Reutin Bahnhof /Zürich HB"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Zugausfall: Neumarkt im Hausruckkreis-Kallham Bahnhof &#60;=&#62; Ried im Innkreis Bahnhof / Braunau/Inn Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Zugausfall: Salzburg Hbf &#60;=&#62; München Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Zugausfall: Salzburg Hbf &#60;=&#62; Werfen Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - geänderte Fahrzeiten/vorverlegte Abfahrtszeit: Linz/Donau Hbf &#60;=&#62; Passau Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - geänderte Fahrzeiten: Bludenz Bahnhof &#60;=&#62; Lindau (Bodensee) Insel"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - geänderte Fahrzeiten: Bruck/Mur Bahnhof &#60;=&#62; Graz Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - geänderte Fahrzeiten: Bruck/Mur Bahnhof =&#62; Villach Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - geänderte Fahrzeiten: Bruck/Mur Bahnhof =&#62; Wr.Neustadt Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - geänderte Fahrzeiten: Golling/Salzach-Abtenau Bahnhof &#60;=&#62; Schwarzach im Pongau-St.Veit Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - geänderte Fahrzeiten: Klagenfurt Hbf &#60;=&#62; Maria Saal Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - geänderte Fahrzeiten: Salzburg Hbf &#60;=&#62; Linz/Donau Hbf / Wien Hbf (U)"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - geänderte Fahrzeiten: Schwarzach im Pongau-St.Veit Bahnhof &#60;=&#62; Saalfelden Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - geänderte Fahrzeiten: Villach Hbf =&#62; Bischofshofen Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - geänderte Fahrzeiten: Wien Hbf (U) &#60;=&#62; Tarvisio Boscoverde"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - geänderte Fahrzeiten: Wien Hbf (U) =&#62; Breclav"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - geänderte Fahrzeiten: Wörgl Hbf &#60;=&#62; Saalfelden Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - kein Halt in Himberg b.Wien Bahnhof: Himberg b.Wien Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - kein Halt in Kitzbühel Hahnenkamm Bahnhof, Brixen im Thale Bahnhof, Westendorf in Tirol Bahnhof und Hopfgarten im Brixental Berglift Bahnhst/geänderte Fahrzeiten: St.Johann in Tirol Bahn"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - kein Halt in Lind-Rosegg Bahnhst und Föderlach Bahnhof: Lind-Rosegg Bahnhst &#60;=&#62; Föderlach Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - vorverlegte Abfahrtszeit: Wien Hbf (U) - Bratislava Petrzalka Stanica/Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - vorverlegte Fahrzeiten: Salzburg Süd Bahnhst =&#62; Saalfelden Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten in Italien - Zugausfall/geänderte Fahrzeiten/Halt entfällt: Innsbruck Hbf &#60;=&#62; Bolzano/Bozen"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten/Haltausfall/Teilausfall/geänderte Fahrzeiten: Feldkirch Bahnhof &#60;=&#62; Buchs SG"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "DB-Bauarbeiten - Schienenersatzverkehr/Zugausfall/geänderte Fahrzeiten: Schärding Bahnhof &#60;=&#62; Passau Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "DB-Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Lochau-Hörbranz Bahnhof &#60;=&#62; Lindau (Bodensee) Insel"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "DB-Bauarbeiten - Umleitung/Haltausfall/Schienenersatzverkehr: Salzburg Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "DB-Bauarbeiten - Zugausfall/geänderte Fahrzeiten: -"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "DB-Bauarbeiten - Zugausfall: München Hbf =&#62; Zürich HB"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "DB-Bauarbeiten - Zugausfall: Salzburg Hbf =&#62; München Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "MAV-Bauarbeiten - geänderte Fahrzeiten: Wien Westbahnhof/Wien Hbf (U) &#60;=&#62; Budapest-Kelenföld"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Reparaturarbeiten des Personenlift in Jenbach Bahnhof - Bahnsteig 2/3: Jenbach Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Reparaturarbeiten des Personenlift in Jenbach Bahnhof - Bahnsteig 4: Jenbach Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Reparaturarbeiten des Personenliftes in Wels Hbf - Bahnhofshalle: Wels Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "SZ-Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Villach Hbf &#60;=&#62; Jesenice(SLO)/Lesce-Bled"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "SZ-Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Villach Hbf &#60;=&#62; Lesce-Bled"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "SZ-Bauarbeiten - Umleitung/Ersatzverkehr/Halte entfallen: Zidani Most - Schwarzach im Pongau-St.Veit Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Technische Störung des Personenlift in Flughafen Wien Bahnhof - Mittelbahnsteig 1/2: Flughafen Wien Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Technische Störung des Personenlift in Innsbruck Hbf - Bahnsteig 2/3: Innsbruck Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Technische Störung des Personenlift in Innsbruck Hbf - Bahnsteig 6/7: Innsbruck Hbf"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Technische Störung des Personenlift in Kuchl Garnei Bahnhst -Gleis 2: Kuchl Garnei Bahnhst"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Technische Störung des Personenlift in Lauterach in Vlbg Bahnhof - Inselbahnsteig: Lauterach in Vlbg Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Technische Störung des Personenlift in Silberwald Bahnhst - Bahnsteig 2: Silberwald Bahnhst"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Technische Störung des Personenlift in Tullnerfeld Bahnhof - Bahnsteig 1/2: Tullnerfeld Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Technische Störung des Personenlift in Wartberg/Krems Bahnhof - Hausbahnsteig: Wartberg/Krems Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Technische Störung des Personenlift in Wartberg/Krems Bahnhof - Inselbahnsteig: Wartberg/Krems Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Technische Störung des Personenlift in Wien Leopoldau Bahnhst (U) - Bahnsteig 1/2 - Richtung Wien Süßenbrunn, Zugang Thayagasse: Wien Leopoldau Bahnhst (U)"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Technische Störung des Personenlift in Wolfurt Bahnhst Bstg 2: Wolfurt Bahnhst"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Technische Störung des Personenlift in Zell am See Bahnhof - Bahnsteig 2/3: Zell am See Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Update 1 (04.10.2026 12:55) Verkehrseinschränkung: Gramatneusiedl Bahnhof - Götzendorf/Leitha Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Update 1 (19.08.2026 07:30) DB-Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Garmisch-Partenkirchen &#60;=&#62; Pfronten Steinach"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Update 1 (21.09.2026 14:35) Bauarbeiten - Umleitung/Haltausfall/geänderte Fahrzeiten: Feldkirch Bahnhof &#60;=&#62; Zürich HB"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Update 1 (26.08.2026 08:32) Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Innsbruck Hbf &#60;=&#62; Scharnitz Bahnhof /Seefeld in Tirol Bahnhof/Mittenwald"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Update 1 (30.09.2026 12:56) Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Gratwein-Gratkorn Bahnhof &#60;=&#62; Peggau-Deutschfeistritz Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Update 4 (28.09.2026 07:29) DB-Bauarbeiten - Zugausfall: Bregenz Bahnhof =&#62; Lindau (Bodensee) Reutin Bahnhof"
+  }
+ ]
+}
