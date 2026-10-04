@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 04 Oct 2026 08:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 09:01:08 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[24A: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3541adaecb9b2789804fffc053a3ad43e3431fa1b81f452662b2e107aff22bf1</guid>
+      <pubDate>Sun, 04 Oct 2026 08:48:00 +0200</pubDate>
+      <ext:first_seen>Sun, 04 Oct 2026 08:48:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 04 Oct 2026 08:48:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 08:48]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 08:48]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Liesing ↔ Wien Meidling]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -39,8 +50,8 @@
       <ext:first_seen>Sun, 04 Oct 2026 05:00:55 +0200</ext:first_seen>
       <ext:starts_at>Sun, 04 Oct 2026 04:50:47 +0200</ext:starts_at>
       <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Trains stop for Währinger Gürtel 164. Service only between Schottentor U and Nußdorfer Straße U. Alternatively use lines D, 38, 10A, 38A, 39A. [Since 04:46]</description>
-      <content:encoded><![CDATA[Trains stop for Währinger Gürtel 164. Service only between Schottentor U and Nußdorfer Straße U. Alternatively use lines D, 38, 10A, 38A, 39A.<br/>[Since 04:46]]]></content:encoded>
+      <description>Trains stop for Währinger Gürtel 164. After a service obstruction different intervals occur. [Since 04:46]</description>
+      <content:encoded><![CDATA[Trains stop for Währinger Gürtel 164. After a service obstruction different intervals occur.<br/>[Since 04:46]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Buses stop Salvatorianerplatz]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are being redirected. [From Mon 05.10. until 07.12.]</description>
       <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are being redirected.<br/>[From Mon 05.10. until 07.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Replacement service]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6f11b9f2989f7ded86ce2e256372b0c9d235d8bccee56c31a7edc035dbad8893</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:13 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:13 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Buses stop at the stop of line N71. [Today]</description>
-      <content:encoded><![CDATA[Buses stop at the stop of line N71.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
