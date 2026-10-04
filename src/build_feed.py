@@ -6808,8 +6808,8 @@ def _is_current_incident(
     Operator decision 2026-10-04: "Aktuelle Störungen sollen oberste
     Priorität haben. Vorangekündigte Baustellen sollen eine niedrigere
     Priorität haben." The FIFO sort alone let a fresh announcement or a
-    notice newly let through the filter stand above running incidents: on
-    2026-10-03 at 15:01 "43A: Veranstaltung" stood above "9A:
+    notice newly let through the filter stand above running incidents
+    (replayed builds, Vienna time): on 2026-10-03 at 15:01 "43A: Veranstaltung" stood above "9A:
     Rettungseinsatz", on 2026-10-04 at 16:30 "U6: Neue Donau, kein Halt"
     above four incidents (U1, 9, 18, 48A).
 

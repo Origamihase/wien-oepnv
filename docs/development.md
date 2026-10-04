@@ -231,7 +231,7 @@ gilt in beiden Gruppen dieselbe Sortierung. Ohne diese Stufe stand am
 16:30 „U6: Neue Donau, kein Halt“ vor vier laufenden Störungen. Die 24 h
 halten Langläufer, die wie Störungen klingen, in der normalen Reihenfolge
 („18: Haltestelle Stadionbrücke … aufgelassen“ seit 13.07., der täglich
-neue „S80: ÖBB-Ersatzbus“ seit 25.09.). Im Nachbau von 36 Feed-Ständen (Fr
+neue „S80: ÖBB-Ersatzbus“ seit 25.09.). Im Nachbau von 36 Feed-Ständen (Wiener Zeit, Fr
 02.10. 07:00–18:30, Sa 03.10. 15:00 bis So 04.10. 22:30) änderte sich in 14
 nur die Reihenfolge innerhalb der zehn Plätze, keine Meldung kam dazu oder
 fiel heraus. Eine neue Meldung zählt mit `first_seen` = jetzt, eine
@@ -279,9 +279,9 @@ zehn Plätze, die ÖBB-Sperre Hbf–Gramatneusiedl (gesehen 08.07., gültig
 03.–05.10.) stand am 04.10. auf Platz 49. Was erst ab seinem Beginn in den
 Daten steht, bekommt kein `announced_start`; WL-Maßnahmen, die jede Nacht neu
 ausgegeben werden („66A: Busse halten Salvatorianerplatz“), behalten so
-ihren Platz. Im Nachbau Fr 02.10. 21:00 bis Sa 03.10. 10:30 (33 Stände, State
-weitergetragen) änderte sich nur eines: die ÖBB-Sperre stand ab Samstag
-00:00 auf Platz 1 bis 4. Mi 30.09. 20:00 bis Do 01.10. 11:30 (32 Stände)
+ihren Platz. Im Nachbau (Wiener Zeit) Fr 02.10. 21:00 bis Sa 03.10. 10:30 (33 Stände, State
+weitergetragen) änderte diese Regel nur eines: die ÖBB-Sperre stand ab
+Samstag 00:00 auf Platz 1 bis 4, auch mit der Störungsstufe davor. Mi 30.09. 20:00 bis Do 01.10. 11:30 (32 Stände)
 blieb unverändert.
 
 Danach greifen vier Regeln, die Plätze freihalten, ohne etwas zu

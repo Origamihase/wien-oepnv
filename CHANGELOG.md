@@ -27,7 +27,7 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   Störungen; danach altert es wie jedes andere. Was erst ab seinem Beginn in den Daten steht, bleibt unberührt,
   so behalten die nächtlich neu ausgegebenen WL-Maßnahmen (66A) ihren Platz.
   Die Vortag-Regel (`_defer_upcoming_items`) bleibt. Nachbau mit
-  weitergetragenem State: Fr 21:00 bis Sa 10:30 nur die ÖBB-Sperre neu auf
+  weitergetragenem State (Wiener Zeit): Fr 21:00 bis Sa 10:30 durch diese Regel nur die ÖBB-Sperre neu auf
   Platz 1–4 ab Samstag 00:00, Mi 20:00 bis Do 11:30 unverändert.
   Wächter: `tests/test_announced_start.py`.
 * **Dashboard auf dem Handy: Kopfzeile zweizeilig, DE | EN wieder erreichbar (2026-10-04)**:
