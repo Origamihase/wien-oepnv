@@ -13,7 +13,7 @@
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R103-136, R115-136, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R1150-0, R2372-627, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R100-136, R102-136, R101-136, R1476-149, R318-437, R293-474, R2558-125, R2923-403, R2917-0, R2025-671, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R4843-162, R1711-162, R1709-162, R1713-162, R1710-162, R1715-162, R1714-162, R1712-162, R1756-162, R1754-162, R1753-162, R1752-162, R1751-162, R1974-466, R215-137, R199-137, R216-137, R207-137, R203-137, R201-137, R208-137, R500-101, R146-0, R187-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R36-152, R2378-627, R1150-0, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R45-136, R19-136, R1476-149, R318-437, R293-474, R2923-403, R2917-0, R2025-671, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R2558-125, R4843-162, R1754-162, R1753-162, R1752-162, R1751-162, R1710-162, R1715-162, R1714-162, R1713-162, R1712-162, R1711-162, R1709-162, R1756-162, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -538,21 +538,6 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
    },
    {
-    "description": "Fahrtbehinderung\nVerkehrsunfall\n\n",
-    "name": "R146-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     146
-    ],
-    "time": {
-     "end": "2026-10-04T12:09:00.000+0200",
-     "start": "2026-10-04T11:09:54.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall\n\n"
-   },
-   {
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
     "name": "R1472-149",
     "owner": "WL",
@@ -895,21 +880,6 @@
     "title": "ÖBB Bauarbeiten\nKein Betrieb"
    },
    {
-    "description": "Fahrtbehinderung\nVerkehrsunfall\n\n",
-    "name": "R187-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     187
-    ],
-    "time": {
-     "end": "2026-10-04T12:09:00.000+0200",
-     "start": "2026-10-04T11:09:54.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall\n\n"
-   },
-   {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -946,42 +916,6 @@
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R199-137",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     199
-    ],
-    "time": {
-     "end": "2026-10-04T12:30:00.000+0200",
-     "start": "2026-10-04T04:49:17.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Nußdorfer Straße",
-    "name": "R201-137",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     201
-    ],
-    "time": {
-     "end": "2026-10-04T12:30:00.000+0200",
-     "start": "2026-10-04T04:49:47.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Nußdorfer Straße"
-   },
-   {
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "name": "R2025-671",
     "owner": "WL",
@@ -995,96 +929,6 @@
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Nußdorfer Straße",
-    "name": "R203-137",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     203
-    ],
-    "time": {
-     "end": "2026-10-04T12:30:00.000+0200",
-     "start": "2026-10-04T04:49:47.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Nußdorfer Straße"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Nußdorfer Straße",
-    "name": "R207-137",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     207
-    ],
-    "time": {
-     "end": "2026-10-04T12:30:00.000+0200",
-     "start": "2026-10-04T04:49:47.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Nußdorfer Straße"
-   },
-   {
-    "description": "Feuerwehreinsatz\nZüge halten bei Währinger Gürtel 164",
-    "name": "R208-137",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     208
-    ],
-    "time": {
-     "end": "2026-10-04T12:30:00.000+0200",
-     "start": "2026-10-04T04:50:47.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nZüge halten bei Währinger Gürtel 164"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R215-137",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     215
-    ],
-    "time": {
-     "end": "2026-10-04T12:30:00.000+0200",
-     "start": "2026-10-04T04:49:17.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R216-137",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     216
-    ],
-    "time": {
-     "end": "2026-10-04T12:30:00.000+0200",
-     "start": "2026-10-04T04:49:17.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
    },
    {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
