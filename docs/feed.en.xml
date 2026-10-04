@@ -7,29 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 04 Oct 2026 10:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 11:01:16 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[60: Defective train, rescue operation]]></title>
+      <title><![CDATA[57A: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2ac5fae7e3f48a67607975b18dba585c5ef50bbf2cc22863a26b7cf93ff0890</guid>
+      <pubDate>Sun, 04 Oct 2026 10:36:00 +0200</pubDate>
+      <ext:first_seen>Sun, 04 Oct 2026 10:36:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 04 Oct 2026 10:44:41 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [Since 10:36]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 10:36]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60: Defective train]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">4ebfcdeecb63555a7d3eeda6e1144843992faaa428a94f9ee9f79f89dc91e33f</guid>
       <pubDate>Sun, 04 Oct 2026 10:08:07 +0200</pubDate>
       <ext:first_seen>Sun, 04 Oct 2026 10:08:07 +0200</ext:first_seen>
       <ext:starts_at>Sun, 04 Oct 2026 10:08:07 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Defective train: service obstruction. Rescue operation: service obstruction. [Since 10:08]</description>
-      <content:encoded><![CDATA[Defective train: service obstruction. Rescue operation: service obstruction.<br/>[Since 10:08]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Liesing ↔ Wien Meidling]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;916875</guid>
-      <pubDate>Sun, 04 Oct 2026 10:13:01 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 08:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 04 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Due to damage on the track, trains can only run to a limited extent between Wien Liesing station and Wien Meidling station (U) until approx. 10:20. [Since 08:26]</description>
-      <content:encoded><![CDATA[Due to damage on the track, trains can only run to a limited extent between Wien Liesing station and Wien Meidling station (U) until approx. 10:20.<br/>[Since 08:26]]]></content:encoded>
+      <ext:ends_at>Sun, 04 Oct 2026 11:07:00 +0200</ext:ends_at>
+      <description>Service obstruction. [Since 10:08]</description>
+      <content:encoded><![CDATA[Service obstruction.<br/>[Since 10:08]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[37: Fire-brigade operation]]></title>
