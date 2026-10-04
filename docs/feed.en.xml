@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 04 Oct 2026 20:00:50 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 20:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[9/42: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
+      <pubDate>Sun, 04 Oct 2026 20:03:00 +0200</pubDate>
+      <ext:first_seen>Sun, 04 Oct 2026 20:03:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 04 Oct 2026 20:05:46 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [Since 20:03]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 20:03]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[15A: Fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">b99ae27d5cdba47e5435448e323cf7cb9838fd9cde50ad5a9f9b8c7c6a3d1b47</guid>
-      <pubDate>Sun, 04 Oct 2026 17:47:00 +0200</pubDate>
+      <pubDate>Sun, 04 Oct 2026 17:50:27 +0200</pubDate>
       <ext:first_seen>Sun, 04 Oct 2026 18:01:20 +0200</ext:first_seen>
       <ext:starts_at>Sun, 04 Oct 2026 17:50:27 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service from Eibesbrunnergasse. After a service obstruction there are different intervals. [Since 17:47]</description>
-      <content:encoded><![CDATA[Service from Eibesbrunnergasse. After a service obstruction there are different intervals.<br/>[Since 17:47]]]></content:encoded>
+      <ext:ends_at>Sun, 04 Oct 2026 23:00:00 +0200</ext:ends_at>
+      <description>Service from Eibesbrunnergasse. [Since 17:50]</description>
+      <content:encoded><![CDATA[Service from Eibesbrunnergasse.<br/>[Since 17:50]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Neue Donau, no stop towards Floridsdorf]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Stop relocation of line 26E towards Josef-Baumann-Gasse and line N20 towards Eßling, Stadtgrenze. Stop: Fultonstraße. From: Donaufelder Straße … [From Mon 05.10. until 26.10.]</description>
       <content:encoded><![CDATA[Stop relocation of line 26E towards Josef-Baumann-Gasse and line N20 towards Eßling, Stadtgrenze. Stop: Fultonstraße. From: Donaufelder Straße …<br/>[From Mon 05.10. until 26.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Replacement service]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6f11b9f2989f7ded86ce2e256372b0c9d235d8bccee56c31a7edc035dbad8893</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:13 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:13 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Buses stop at the stop of line N71. [Today]</description>
-      <content:encoded><![CDATA[Buses stop at the stop of line N71.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
