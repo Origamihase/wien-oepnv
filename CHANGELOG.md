@@ -5,6 +5,31 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Feed-Reihenfolge: Aktuelle Störungen zuerst (2026-10-04)**: Laufende,
+  ungeplante Störungen („[Seit hh:mm]“, seit höchstens 24 h im Feed,
+  `_is_current_incident`) stehen jetzt vor allem anderen, auch vor neuen
+  Ankündigungen, Baustellen und Hinweisen. Vorher sortierte allein
+  `first_seen`: am 03.10. um 15:01 stand „43A: Veranstaltung“ vor „9A:
+  Rettungseinsatz“, am 04.10. um 16:30 „U6: Neue Donau, kein Halt“ vor vier
+  laufenden Störungen. Nachbau von 36 Feed-Ständen: in 14 nur andere
+  Reihenfolge innerhalb der zehn Plätze, keine Meldung mehr oder weniger.
+  Betreiberentscheidung („Aktuelle Störungen sollen oberste Priorität
+  haben“). Wächter: `tests/test_current_incidents.py`.
+* **Feed-Reihenfolge: Angekündigtes steht an seinem ersten Tag vor älterem Geplanten (2026-10-04)**:
+  Der Feed sortiert nach `first_seen`, und eine Ankündigung ist lange vor
+  ihrem Beginn bekannt. An ihrem ersten Tag zählte sie deshalb als Wochen
+  alt: Die S-Bahn-Stammstrecke Phase 2 (gesehen 10.06.) stand am 07.09. auf
+  keinem der zehn Plätze, die ÖBB-Sperre Wien Hbf–Gramatneusiedl (gesehen
+  08.07., gültig 03.–05.10.) am 04.10. auf Platz 49 von 94. Jetzt merkt sich
+  der Build den Beginn jedes Items, solange er bevorsteht (State-Feld
+  `announced_start`, `_note_announced_starts`), und sortiert es ab diesem
+  Beginn wie eine neue Meldung (`_sort_moment`), aber hinter den aktuellen
+  Störungen; danach altert es wie jedes andere. Was erst ab seinem Beginn in den Daten steht, bleibt unberührt,
+  so behalten die nächtlich neu ausgegebenen WL-Maßnahmen (66A) ihren Platz.
+  Die Vortag-Regel (`_defer_upcoming_items`) bleibt. Nachbau mit
+  weitergetragenem State (Wiener Zeit): Fr 21:00 bis Sa 10:30 durch diese Regel nur die ÖBB-Sperre neu auf
+  Platz 1–4 ab Samstag 00:00, Mi 20:00 bis Do 11:30 unverändert.
+  Wächter: `tests/test_announced_start.py`.
 * **Dashboard auf dem Handy: Kopfzeile zweizeilig, DE | EN wieder erreichbar (2026-10-04)**:
   Die Kopfzeile von `site.html` hatte keine Handy-Darstellung. Unter rund
   1000 CSS-px stapelte die Navigation ihre Links senkrecht, die mitlaufende

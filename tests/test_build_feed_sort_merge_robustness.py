@@ -49,11 +49,11 @@ def test_recency_sort_clamps_future_pubdate(monkeypatch: pytest.MonkeyPatch) -> 
     k_now = build_feed._recency_sort_key({"pubDate": now.isoformat(), "guid": "n"}, {}, now)
     k_past = build_feed._recency_sort_key({"pubDate": past, "guid": "p"}, {}, now)
 
-    # The future pubDate is clamped to now, so its pubDate tiebreaker (index 2,
+    # The future pubDate is clamped to now, so its pubDate tiebreaker (index 3,
     # ``-pub_ts``) equals the current item's instead of ranking ahead of it.
-    assert k_future[2] == k_now[2]
+    assert k_future[3] == k_now[3]
     # A genuine past pubDate still sorts AFTER now (a larger ``-pub_ts``).
-    assert k_past[2] > k_now[2]
+    assert k_past[3] > k_now[3]
 
 
 class _FakeReport:

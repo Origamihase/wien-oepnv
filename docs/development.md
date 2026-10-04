@@ -220,7 +220,21 @@ WL-Hinweises (gleiche Ursache, Linien, Zeitraum und eine gemeinsame Straße),
 geht er in diesem Hinweis auf (`_absorb_works_tickers`). Tests dazu lesen die Meldungen wie der Feed, über
 `_post_filter_wl`. Danach sortiert der Build die
 Items nach `first_seen` (neueste zuerst; Gleichstand: Störung vor Baustelle,
-dann `pubDate`). Eine neue Meldung zählt mit `first_seen` = jetzt, eine
+dann `pubDate`). Davor stehen immer die aktuellen Störungen
+(`_is_current_incident`, Betreiberentscheidung vom 2026-10-04: „Aktuelle
+Störungen sollen oberste Priorität haben. Vorangekündigte Baustellen sollen
+eine niedrigere Priorität haben.“): ungeplante Störungen, deren Zeitzeile
+„[Seit hh:mm]“ zeigt (`_incident_since`), die begonnen haben und seit
+höchstens `_CURRENT_INCIDENT_WINDOW` (24 h) im Feed stehen. Untereinander
+gilt in beiden Gruppen dieselbe Sortierung. Ohne diese Stufe stand am
+03.10. um 15:01 „43A: Veranstaltung“ vor „9A: Rettungseinsatz“, am 04.10. um
+16:30 „U6: Neue Donau, kein Halt“ vor vier laufenden Störungen. Die 24 h
+halten Langläufer, die wie Störungen klingen, in der normalen Reihenfolge
+(„18: Haltestelle Stadionbrücke … aufgelassen“ seit 13.07., der täglich
+neue „S80: ÖBB-Ersatzbus“ seit 25.09.). Im Nachbau von 36 Feed-Ständen (Wiener Zeit, Fr
+02.10. 07:00–18:30, Sa 03.10. 15:00 bis So 04.10. 22:30) änderte sich in 14
+nur die Reihenfolge innerhalb der zehn Plätze, keine Meldung kam dazu oder
+fiel heraus. Eine neue Meldung zählt mit `first_seen` = jetzt, eine
 WL-Haltestellenverlegung oder -auflassung dagegen ab ihrer Veröffentlichung
 bei WL (`pubDate`, `_initial_first_seen`, seit 2026-10-04): Mit „Alle
 aufnehmen“ kamen auf einen Schlag 24 solche Meldungen dazu, manche seit 2023
@@ -251,6 +265,24 @@ und stand seit 26.09. in 370 von 387 Feed-Ständen vorn, obwohl es seit
 28.08. im Feed war (Audit und Betreiberentscheidung 2026-10-03). ÖBB, Baustellen und
 Stammstrecke bleiben unberührt, denn dort ist `pubDate` kein Beginn eines
 Auftretens.
+
+Angekündigte Maßnahmen zählen ab ihrem Beginn als neu
+(`_note_announced_starts`, `_sort_moment`, seit 2026-10-04), stehen aber wie
+alles Geplante hinter den aktuellen Störungen: Solange der Beginn (`starts_at`) eines Items mit
+State-Eintrag noch bevorsteht, merkt sich der Build ihn im State-Feld
+`announced_start` (ein verschobener Beginn überschreibt ihn). Ist er
+erreicht, sortiert das Item mit diesem Zeitpunkt statt mit seinem
+`first_seen` und altert danach wie jedes andere. Vorher stand eine Wochen
+früher angekündigte Sperre schon an ihrem ersten Tag hinten: die
+S-Bahn-Stammstrecke Phase 2 (gesehen 10.06.) war am 07.09. auf keinem der
+zehn Plätze, die ÖBB-Sperre Hbf–Gramatneusiedl (gesehen 08.07., gültig
+03.–05.10.) stand am 04.10. auf Platz 49. Was erst ab seinem Beginn in den
+Daten steht, bekommt kein `announced_start`; WL-Maßnahmen, die jede Nacht neu
+ausgegeben werden („66A: Busse halten Salvatorianerplatz“), behalten so
+ihren Platz. Im Nachbau (Wiener Zeit) Fr 02.10. 21:00 bis Sa 03.10. 10:30 (33 Stände, State
+weitergetragen) änderte diese Regel nur eines: die ÖBB-Sperre stand ab
+Samstag 00:00 auf Platz 1 bis 4, auch mit der Störungsstufe davor. Mi 30.09. 20:00 bis Do 01.10. 11:30 (32 Stände)
+blieb unverändert.
 
 Danach greifen vier Regeln, die Plätze freihalten, ohne etwas zu
 löschen. Alle vier stellen Items nur hinter das Feld, von wo sie nachrücken:
