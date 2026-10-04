@@ -34,6 +34,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.providers.baustellen import is_transit_relevant, oepnv_lead  # noqa: E402
+from utils import raw_capture  # noqa: E402
 from utils.cache import DataDegradationError, write_cache  # noqa: E402
 from utils.files import loads_finite, read_capped_json  # noqa: E402
 from utils.http import fetch_content_safe, session_with_retries, validate_http_url  # noqa: E402
@@ -866,11 +867,64 @@ def _feature_to_event(feature: dict[str, Any]) -> ConstructionEvent | None:
     )
 
 
+# Feature fields that change without the site changing: ArcGIS row numbers
+# (see the GUID note in ``_feature_to_event``) and the WFS response header.
+_RAW_VOLATILE_PROPERTIES = frozenset({"OBJECTID"})
+
+
+def _raw_snapshot(payload: dict[str, Any]) -> dict[str, Any]:
+    """One WFS layer as kept in ``data/raw/baustellen/`` (``src/utils/raw_capture.py``).
+
+    Every feature's properties as delivered, minus the row number that the
+    upstream re-indexes, and of its geometry only the type and the first
+    position (the only part the cache uses, ``_first_lonlat``): a full
+    line geometry would dominate the file without telling anything about
+    the notice. The response header (``timeStamp``, ``numberMatched``, …)
+    and the volatile feature ``id`` are left out.
+    """
+    features: list[dict[str, Any]] = []
+    for feature in _iter_features(payload):
+        properties = feature.get("properties")
+        record: dict[str, Any] = {
+            "properties": {
+                k: v for k, v in properties.items() if k not in _RAW_VOLATILE_PROPERTIES
+            }
+            if isinstance(properties, dict)
+            else properties,
+        }
+        geometry = feature.get("geometry")
+        if isinstance(geometry, dict):
+            record["geometry"] = {
+                "type": geometry.get("type"),
+                "first_position": _first_lonlat(geometry.get("coordinates")),
+            }
+        features.append(record)
+    features.sort(key=lambda f: (_raw_sort_key(f), json.dumps(f, sort_keys=True, default=str)))
+    return {"features": features}
+
+
+def _raw_sort_key(feature: dict[str, Any]) -> str:
+    properties = feature.get("properties")
+    if not isinstance(properties, dict):
+        return ""
+    for key in ("OGD_ID", *TITLE_KEYS, *STREET_KEYS):
+        value = properties.get(key)
+        if value not in (None, ""):
+            return str(value)
+    return ""
+
+
 def _collect_events(payload: dict[str, Any]) -> list[dict[str, Any]]:
     events: list[dict[str, Any]] = []
     for feature in _iter_features(payload):
         event = _feature_to_event(feature)
         if not event:
+            properties = feature.get("properties")
+            raw_capture.note_drop(
+                "baustellen",
+                "ohne Titel und Straße",
+                properties.get("OGD_ID") if isinstance(properties, dict) else None,
+            )
             continue
         events.append(serialize_for_cache(event.to_item()))
     return events
@@ -899,6 +953,7 @@ def _fetch_layers(data_url: str, timeout: int) -> list[dict[str, Any]] | None:
             LOGGER.warning("Baustellen: Layer %s nicht abrufbar.", typename)
             continue
         any_success = True
+        raw_capture.write_snapshot("baustellen", typename.rsplit(":", 1)[-1], _raw_snapshot(payload))
         merged.extend(_collect_events(payload))
     return merged if any_success else None
 
@@ -924,6 +979,7 @@ def main() -> int:
                 "Baustellen: Ungültiger Timeout-Wert %s – verwende Standard",
                 sanitize_log_arg(timeout_raw),
             )
+    raw_capture.reset_drops("baustellen")
     events = _fetch_layers(data_url, timeout)
     used_fallback = False
     if events is None:
@@ -946,7 +1002,15 @@ def main() -> int:
     # mentions public transport (stop / line / bus / tram / metro). The
     # upstream feed is "verkehrswirksam" but still includes pure car-traffic
     # works, which would bury the ÖPNV signal the feed exists to carry.
-    relevant = [event for event in events if is_transit_relevant(event)]
+    relevant = []
+    for event in events:
+        if is_transit_relevant(event):
+            relevant.append(event)
+        else:
+            raw_capture.note_drop("baustellen", "ohne ÖPNV-Bezug", event.get("title"))
+    if not used_fallback:
+        # The drops of the bundled demo sample say nothing about the source.
+        raw_capture.write_drops("baustellen")
     skipped = len(events) - len(relevant)
     if skipped:
         LOGGER.info(

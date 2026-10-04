@@ -20,6 +20,7 @@ from dateutil import parser as dtparser
 
 from ..utils.files import loads_finite
 from ..utils.http import session_with_retries, validate_http_url, fetch_content_safe
+from ..utils import raw_capture
 from ..utils.ids import make_guid
 from ..utils.logging import sanitize_log_arg
 from ..utils.stations import canonical_name, display_name
@@ -680,12 +681,33 @@ def _extract_wl_items(data: dict[str, Any], key: str) -> list[dict[str, Any]]:
     return [item for item in items if isinstance(item, dict)]
 
 
+def _raw_snapshot(data: dict[str, Any], key: str) -> dict[str, Any]:
+    """The WL response as kept in ``data/raw/wl/`` (``src/utils/raw_capture.py``).
+
+    Everything WL sent, minus the ``serverTime`` that changes on every
+    call, with the item list in a stable order.
+    """
+    snapshot = dict(data)
+    message = snapshot.get("message")
+    if isinstance(message, dict):
+        snapshot["message"] = {k: v for k, v in message.items() if k != "serverTime"}
+    inner = snapshot.get("data")
+    if isinstance(inner, dict) and isinstance(inner.get(key), list):
+        snapshot["data"] = {
+            **inner,
+            key: raw_capture.sorted_records(inner[key], "name", "title"),
+        }
+    return snapshot
+
+
 def _fetch_traffic_infos(
     timeout: int = 20, session: requests.Session | None = None
 ) -> Iterable[dict[str, Any]]:
     # explizit KEINE Facility-Feeds
     params = [("name", "stoerunglang"), ("name", "stoerungkurz")]
     data = _get_json("trafficInfoList", params=params, timeout=timeout, session=session)
+    if data:
+        raw_capture.write_snapshot("wl", "trafficInfoList", _raw_snapshot(data, "trafficInfos"))
     return _extract_wl_items(data, "trafficInfos")
 
 
@@ -693,6 +715,8 @@ def _fetch_news(
     timeout: int = 20, session: requests.Session | None = None
 ) -> Iterable[dict[str, Any]]:
     data = _get_json("newsList", timeout=timeout, session=session)
+    if data:
+        raw_capture.write_snapshot("wl", "newsList", _raw_snapshot(data, "pois"))
     return _extract_wl_items(data, "pois")
 
 
@@ -1119,6 +1143,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
     timeout = min(timeout, MAX_WL_FETCH_TIMEOUT)
     now = datetime.now(UTC)
     reset_corrections()
+    raw_capture.reset_drops("wl")
     raw: list[dict[str, Any]] = []
 
     with session_with_retries(WL_USER_AGENT, raise_on_status=False) as session:
@@ -1129,6 +1154,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             if _is_inactive_status(
                 ti.get("status"), attrs.get("status"), attrs.get("state")
             ):
+                raw_capture.note_drop("wl", "Status inaktiv", ti.get("title") or ti.get("name"))
                 continue
 
             title_raw = str(ti.get("title") or ti.get("name") or "Meldung").strip()
@@ -1145,6 +1171,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             # whose description also notes an out-of-service lift). Only a
             # facility-only TITLE drops the item.
             if _is_facility_only(title_raw):
+                raw_capture.note_drop("wl", "nur Aufzug/Fahrtreppe", title_raw)
                 continue
 
             tinfo = _coerce_dict(ti.get("time"))
@@ -1157,12 +1184,14 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             # NOT the event start time extracted from the title.
             # This ensures advance notices (Vorankündigungen) are shown.
             if not _is_active(start, end, now):
+                raw_capture.note_drop("wl", "außerhalb des Zeitraums", title_raw)
                 continue
 
             blob_for_relevance = " ".join([title_raw, desc_raw])
             if KW_EXCLUDE.search(blob_for_relevance) and not KW_RESTRICTION.search(
                 blob_for_relevance
             ):
+                raw_capture.note_drop("wl", "Ausschluss-Stichwort ohne Einschränkung", title_raw)
                 continue
 
             rel_lines = _as_list(ti.get("relatedLines") or attrs.get("relatedLines"))
@@ -1207,6 +1236,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             if _is_inactive_status(
                 poi.get("status"), attrs.get("status"), attrs.get("state")
             ):
+                raw_capture.note_drop("wl", "Status inaktiv", poi.get("title") or poi.get("name"))
                 continue
 
             # Mirror the TrafficInfo branch's title fallback so a POI
@@ -1226,6 +1256,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             # a facility word in the description / subtitle is only a
             # side-mention and must not drop a genuine line disruption.
             if _is_facility_only(title_raw):
+                raw_capture.note_drop("wl", "nur Aufzug/Fahrtreppe", title_raw)
                 continue
 
             tinfo = _coerce_dict(poi.get("time"))
@@ -1235,6 +1266,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             real_start = _effective_start(title_raw, desc_raw, start, end, now)
 
             if not _is_active(start, end, now):
+                raw_capture.note_drop("wl", "außerhalb des Zeitraums", title_raw)
                 continue
 
             text_for_filter = " ".join(
@@ -1247,6 +1279,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                 ]
             )
             if not KW_RESTRICTION.search(text_for_filter):
+                raw_capture.note_drop("wl", "kein Einschränkungs-Stichwort", title_raw)
                 continue
 
             rel_lines = _as_list(poi.get("relatedLines") or attrs.get("relatedLines"))
@@ -1368,6 +1401,8 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             for x in ev["extras"]:
                 if x not in b["extras"]:
                     b["extras"].append(x)
+
+    raw_capture.write_drops("wl")
 
     # Anzeigetafel-Kurzmeldungen in die ausführliche Meldung derselben
     # Störung übernehmen (Begründung am Helfer).

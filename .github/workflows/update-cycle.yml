@@ -375,6 +375,11 @@ jobs:
         # to leave 7 min of the job's 10-min budget for VAO + feed
         # build + commit. Healthy ticks finish this step in ~30s.
         timeout-minutes: 3
+        env:
+          # Keep what each source delivered and what its fetch dropped in
+          # ``data/raw/<source>/`` (``src/utils/raw_capture.py``); committed
+          # by ``git add -A`` below, the git history is the archive.
+          RAW_CAPTURE: '1'
         run: |
           set +e
 
