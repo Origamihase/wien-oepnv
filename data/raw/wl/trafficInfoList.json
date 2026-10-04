@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260925-0011, I20260922-0032, I20260909-0007, I20261004-0024-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260925-0011, I20260922-0032, I20260909-0007, I20261004-0025-F01, I20261004-0025"
    },
    {
     "id": 3,
@@ -203,39 +203,72 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U4": "ptMetro"
+      "66A": "ptBusCity"
      }
     },
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261004-0024-F01",
+    "description": "Die Linie 66A wird in beiden Richtungen zwischen Klingerstraße und Schwarzenhaidestraße über die Gutheil-Schoder-Straße umgeleitet. Voraussichtliche Dauer: 23:50 Uhr. Grund: Störung an einem Bahnübergang im Bereich Purkytgasse.",
+    "descriptionHTML": "Die Linie 66A wird in beiden Richtungen zwischen Klingerstraße und Schwarzenhaidestraße über die Gutheil-Schoder-Straße umgeleitet.<br> <br>Voraussichtliche Dauer: 23:50 Uhr.<br><br>Grund: Störung an einem Bahnübergang im Bereich Purkytgasse.",
+    "location": "Purkytgasse",
+    "name": "I20261004-0025",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "U4"
+     "66A"
     ],
     "relatedLinesDetails": [
      [
       {
-       "lineId": "304",
-       "lineName": "U4",
-       "vehicleType": "ptMetro"
+       "lineId": "466",
+       "lineName": "66A",
+       "vehicleType": "ptBusCity"
       }
      ]
     ],
-    "relatedStops": [
-     4415
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-04T23:19:00.000+0200",
+     "end": "2026-10-04T23:27:00.000+0200",
+     "lastUpdate": "2026-10-04T23:27:00.000+0200",
+     "resume": "2026-10-04T23:27:00.000+0200",
+     "start": "2026-10-04T23:17:00.000+0200"
+    },
+    "title": "66A: Störung an einem Bahnübergang"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "66A": "ptBusCity"
+     }
+    },
+    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Purkytgasse",
+    "name": "I20261004-0025-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "66A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "466",
+       "lineName": "66A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-04T22:44:00.000+0200",
-     "end": "2026-10-04T23:55:00.000+0200",
-     "lastUpdate": "2026-10-04T22:44:00.000+0200",
-     "resume": "2026-10-04T22:44:00.000+0200",
-     "start": "2026-10-04T22:37:00.000+0200"
+     "created": "2026-10-04T23:27:00.000+0200",
+     "end": "2026-10-05T23:55:00.000+0200",
+     "lastUpdate": "2026-10-04T23:27:00.000+0200",
+     "resume": "2026-10-04T23:27:00.000+0200",
+     "start": "2026-10-04T23:17:00.000+0200"
     },
-    "title": "U4: Rettungseinsatz"
+    "title": "66A: Störung an einem Bahnübergang"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
