@@ -6263,6 +6263,59 @@ def _restart_recurring_occurrences(
     return restarted
 
 
+def _note_announced_starts(
+    items: Sequence[FeedItem], state: dict[str, dict[str, Any]], now: datetime
+) -> int:
+    """Remember the start of every item seen before it begins.
+
+    The feed sorts by ``first_seen``, and an announcement is seen long before
+    it applies: "S1/S2/S3/S4/S7: S-Bahn-Stammstrecke (Phase 2)" since 10.06.
+    for 07.09.2026, the ÖBB closure "Wien Hauptbahnhof ↔ Gramatneusiedl"
+    since 08.07. for 03.10.2026. On its first day each counted as months old
+    and stood behind every newer notice: the Stammstrecke closure held none
+    of the ten slots on 07.09., the ÖBB closure stood on place 49 on 04.10.
+
+    For every item with a state entry whose ``starts_at`` lies in the future
+    this stores that start as ``announced_start`` (a postponed start
+    overwrites it). :func:`_sort_moment` then counts the item as new from
+    that start (operator decision 2026-10-04, "Ab Beginn vorn"). The start is
+    taken only while it is still ahead, so a measure WL re-issues every night
+    with a fresh validity ("66A: Busse halten Salvatorianerplatz", starts at
+    04:40 each morning, seen from 04:40) never gets one and keeps its place
+    (:data:`_PLANNED_OCCURRENCE_GAP`).
+
+    Returns the number of entries written.
+    """
+    now_utc = _to_utc(now)
+    noted = 0
+    for it in items:
+        start = _parse_datetime(it.get("starts_at"))
+        if not isinstance(start, datetime) or _to_utc(start) <= now_utc:
+            continue
+        _, entry = _lookup_state(it, state)
+        if entry is None:
+            continue
+        value = _to_utc(start).isoformat()
+        if entry.get("announced_start") != value:
+            entry["announced_start"] = value
+            noted += 1
+    return noted
+
+
+def _sort_moment(entry: dict[str, Any] | None, first_seen: datetime, now_utc: datetime) -> datetime:
+    """The moment an item counts as new for the feed order.
+
+    ``first_seen``, or the ``announced_start`` stored by
+    :func:`_note_announced_starts` once it has come: an announced measure
+    leads on the day it begins and then ages like any other item. Before
+    its start :func:`_defer_upcoming_items` decides its place.
+    """
+    announced = _parse_state_time(entry, "announced_start")
+    if announced is not None and first_seen < announced <= now_utc:
+        return announced
+    return first_seen
+
+
 def _summarize_duplicates(items: Sequence[FeedItem]) -> list[DuplicateSummary]:
     groups: dict[str, list[FeedItem]] = {}
     for it in items:
@@ -6749,7 +6802,8 @@ def _recency_sort_key(
 
     Sorts by the persisted (guid-stable) ``first_seen`` descending. An item
     not yet in the state counts as just-appeared (``now``) so genuinely new
-    disruptions lead. No-longer-valid items are already removed upstream by
+    disruptions lead. An announced measure counts from its start once that
+    has come (:func:`_sort_moment`). No-longer-valid items are already removed upstream by
     :func:`_drop_old_items`, so the visible Top-N are the newest still-valid
     disruptions; older ones fall off the bottom as fresher ones arrive.
 
@@ -6770,6 +6824,7 @@ def _recency_sort_key(
     """
     _, entry = _lookup_state(item, state)
     first_seen = _parse_first_seen(entry, None) or _initial_first_seen(item, now_utc)
+    first_seen = _sort_moment(entry, first_seen, now_utc)
     pub = _parse_datetime(item.get("pubDate"))
     pub_ts = pub.timestamp() if isinstance(pub, datetime) else float("-inf")
     # Clamp a future pubDate to now: a bogus future publication date must not
@@ -6916,6 +6971,7 @@ def _update_item_state(it: FeedItem, now: datetime, state: dict[str, dict[str, A
     if not st:
         st = {"first_seen": _initial_first_seen(it, _to_utc(now)).isoformat()}
     state[ident] = st
+    _note_announced_starts([it], state, now)
     # Legacy-key migration cleanup: ``_lookup_state`` returns the modern
     # guid-shaped key in ``ident``, but on a guid-key miss it falls back
     # to the legacy ``_identity_for_item`` entry to migrate forward. Pre-
@@ -9478,6 +9534,7 @@ def main() -> int:
         filter_start = perf_counter()
         # Before the age filter: it reads the same first_seen.
         _restart_recurring_occurrences(items, state, now)
+        _note_announced_starts(items, state, now)
         items, dropped_ids = _drop_old_items(items, now, state)
         filter_duration = perf_counter() - filter_start
         filtered_count = len(items)

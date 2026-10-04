@@ -252,6 +252,24 @@ und stand seit 26.09. in 370 von 387 Feed-Ständen vorn, obwohl es seit
 Stammstrecke bleiben unberührt, denn dort ist `pubDate` kein Beginn eines
 Auftretens.
 
+Angekündigte Maßnahmen zählen ab ihrem Beginn als neu
+(`_note_announced_starts`, `_sort_moment`, Betreiberentscheidung „Ab Beginn
+vorn“ vom 2026-10-04): Solange der Beginn (`starts_at`) eines Items mit
+State-Eintrag noch bevorsteht, merkt sich der Build ihn im State-Feld
+`announced_start` (ein verschobener Beginn überschreibt ihn). Ist er
+erreicht, sortiert das Item mit diesem Zeitpunkt statt mit seinem
+`first_seen` und altert danach wie jedes andere. Vorher stand eine Wochen
+früher angekündigte Sperre schon an ihrem ersten Tag hinten: die
+S-Bahn-Stammstrecke Phase 2 (gesehen 10.06.) war am 07.09. auf keinem der
+zehn Plätze, die ÖBB-Sperre Hbf–Gramatneusiedl (gesehen 08.07., gültig
+03.–05.10.) stand am 04.10. auf Platz 49. Was erst ab seinem Beginn in den
+Daten steht, bekommt kein `announced_start`; WL-Maßnahmen, die jede Nacht neu
+ausgegeben werden („66A: Busse halten Salvatorianerplatz“), behalten so
+ihren Platz. Im Nachbau Fr 02.10. 21:00 bis Sa 03.10. 10:30 (33 Stände, State
+weitergetragen) änderte sich nur eines: die ÖBB-Sperre stand ab Samstag
+00:00 auf Platz 1 bis 4. Mi 30.09. 20:00 bis Do 01.10. 11:30 (32 Stände)
+blieb unverändert.
+
 Danach greifen vier Regeln, die Plätze freihalten, ohne etwas zu
 löschen. Alle vier stellen Items nur hinter das Feld, von wo sie nachrücken:
 
