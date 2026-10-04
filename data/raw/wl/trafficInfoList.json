@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261004-0026, I20260925-0011, I20260922-0032, I20260909-0007, I20261004-0025-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260925-0011, I20260922-0032, I20260909-0007, I20261004-0026-F01, I20261004-0026-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R101-136, R102-136, R2345-127, R2380-627, R2379-627, R2373-126, R1150-0, R2372-627, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R100-136, R103-136, R1476-149, R318-437, R293-474, R2558-125, R2923-403, R2917-0, R2025-671, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R4843-162, R1714-162, R1715-162, R1752-162, R1751-162, R1710-162, R1709-162, R1711-162, R1712-162, R1713-162, R1756-162, R1754-162, R1753-162, R500-101, R1338-142, R1336-142, R190-141, R177-141, R193-141, R192-141, R189-141, R407-506, R402-506, R1448-549, R1474-549, R1974-566, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R101-136, R100-136, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R1150-0, R2372-627, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R102-136, R103-136, R1476-149, R318-437, R293-474, R2558-125, R2923-403, R2917-0, R2025-671, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R4843-162, R1751-162, R1710-162, R1709-162, R1711-162, R1753-162, R1756-162, R1754-162, R1752-162, R1712-162, R1713-162, R1714-162, R1715-162, R500-101, R1338-142, R1336-142, R192-141, R189-141, R177-141, R193-141, R190-141, R407-506, R402-506, R1448-549, R1474-549, R1974-566, R2372-520, R2378-520, R2379-520, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,54 +203,17 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "66A": "ptBusCity"
-     }
-    },
-    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Purkytgasse",
-    "name": "I20261004-0025-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "466",
-       "lineName": "66A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-04T23:27:00.000+0200",
-     "end": "2026-10-05T23:55:00.000+0200",
-     "lastUpdate": "2026-10-04T23:27:00.000+0200",
-     "resume": "2026-10-04T23:27:00.000+0200",
-     "start": "2026-10-04T23:17:00.000+0200"
-    },
-    "title": "66A: Störung an einem Bahnübergang"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "41": "ptTram",
       "42": "ptTram"
      }
     },
-    "description": "Linie 41: Fahrtbehinderung in Richtung Pötzleinsdorf. Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 01:15 Uhr. Grund: Verkehrsunfall im Bereich Währinger Straße.",
-    "descriptionHTML": "Linie 41:<br>Fahrtbehinderung in Richtung Pötzleinsdorf.<br>Linie 42:<br>Fahrtbehinderung in Richtung Antonigasse.<br> <br>Voraussichtliche Dauer: 01:15 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Währinger Straße.",
+    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "location": "Währinger Straße",
-    "name": "I20261004-0026",
+    "name": "I20261004-0026-F01",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "41",
      "42"
     ],
     "relatedLinesDetails": [
@@ -259,7 +222,37 @@
        "lineId": "142",
        "lineName": "42",
        "vehicleType": "ptTram"
-      },
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-05T01:04:00.000+0200",
+     "end": "2026-10-05T23:55:00.000+0200",
+     "lastUpdate": "2026-10-05T01:04:00.000+0200",
+     "resume": "2026-10-05T01:04:00.000+0200",
+     "start": "2026-10-05T00:47:00.000+0200"
+    },
+    "title": "42: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "41": "ptTram"
+     }
+    },
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Währinger Straße",
+    "name": "I20261004-0026-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedLinesDetails": [
+     [
       {
        "lineId": "141",
        "lineName": "41",
@@ -269,12 +262,13 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-05T00:49:00.000+0200",
+     "created": "2026-10-05T01:04:00.000+0200",
      "end": "2026-10-05T23:55:00.000+0200",
-     "lastUpdate": "2026-10-05T00:59:00.000+0200",
+     "lastUpdate": "2026-10-05T01:04:00.000+0200",
+     "resume": "2026-10-05T01:04:00.000+0200",
      "start": "2026-10-05T00:47:00.000+0200"
     },
-    "title": "42, 41: Verkehrsunfall"
+    "title": "41: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1261,6 +1255,24 @@
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
    },
    {
+    "description": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn",
+    "name": "R2372-520",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N20"
+    ],
+    "relatedStops": [
+     2372
+    ],
+    "time": {
+     "end": "2026-10-05T04:52:00.000+0200",
+     "start": "2026-10-05T01:16:21.000+0200"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn"
+   },
+   {
     "description": "Busse halten auf\nHauptfahrbahn",
     "name": "R2372-627",
     "owner": "WL",
@@ -1333,6 +1345,24 @@
     "title": "Linie 25 in\nTokiostraße benützen"
    },
    {
+    "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
+    "name": "R2378-520",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N20"
+    ],
+    "relatedStops": [
+     2378
+    ],
+    "time": {
+     "end": "2026-10-05T04:35:00.000+0200",
+     "start": "2026-10-05T01:30:22.000+0200"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3"
+   },
+   {
     "description": "Busse halten\nSatzingerweg 41",
     "name": "R2378-627",
     "owner": "WL",
@@ -1349,6 +1379,24 @@
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Busse halten\nSatzingerweg 41"
+   },
+   {
+    "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
+    "name": "R2379-520",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N20"
+    ],
+    "relatedStops": [
+     2379
+    ],
+    "time": {
+     "end": "2026-10-05T04:35:00.000+0200",
+     "start": "2026-10-05T01:30:22.000+0200"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3"
    },
    {
     "description": "Busse halten\nBessemerstraße 1-3",

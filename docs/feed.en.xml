@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 05 Oct 2026 01:00:53 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 01:30:44 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[41/42: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">873f3f26f02ed2d6e998e67dbf505d00a96e1d4910bcd8b5a2e135bfdff1d82a</guid>
+      <guid isPermaLink="false">b8938e94c70221081d94c1f9627e29d1273108203a2ba78ea9d9eaa80416cb92</guid>
       <pubDate>Mon, 05 Oct 2026 00:47:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 01:00:53 +0200</ext:first_seen>
+      <ext:first_seen>Mon, 05 Oct 2026 00:47:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 05 Oct 2026 00:47:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Pötzleinsdorf. Line 42: service obstruction towards Antonigasse. [Since 00:47]</description>
-      <content:encoded><![CDATA[Service obstruction towards Pötzleinsdorf. Line 42: service obstruction towards Antonigasse.<br/>[Since 00:47]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Level crossing fault]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e35d5468b5da55f276b19ba1039b1f3b32b81aaef2c30d0cce6d60d93536f166</guid>
-      <pubDate>Sun, 04 Oct 2026 23:17:00 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 23:17:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 04 Oct 2026 23:17:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Today]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Today]]]></content:encoded>
+      <description>After a service obstruction there are different intervals. [Since 00:47]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 00:47]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Neue Donau, no stop towards Floridsdorf]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected. [Until 07.12.]</description>
       <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected.<br/>[Until 07.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26E/N20: Fultonstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8360905f480d6715f571ad6ca70aa298b8c553200665d5153e2d69632338a199</guid>
+      <pubDate>Mon, 28 Sep 2026 15:45:00 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 15:45:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Stop relocation of line 26E towards Josef-Baumann-Gasse and line N20 towards Eßling, Stadtgrenze. Stop: Fultonstraße. From: Donaufelder Straße … [Until 26.10.]</description>
+      <content:encoded><![CDATA[Stop relocation of line 26E towards Josef-Baumann-Gasse and line N20 towards Eßling, Stadtgrenze. Stop: Fultonstraße. From: Donaufelder Straße …<br/>[Until 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1016949, ftazW_1351716, ftazW_1016567, ftazW_444, ftazW_1031289, ftazW_1017115, ftazW_445, ftazW_1017116, ftazW_1031290, ftazW_1351715, ftazW_769, ftazW_770, ftazW_1351709, ftazW_510"
+    "trafficInfoNameList": "ftazW_1016567, ftazW_444, ftazW_1031289, ftazW_1017115, ftazW_445, ftazW_1017116, ftazW_1031290, ftazW_1351715, ftazW_769, ftazW_770, ftazW_1351709, ftazW_510"
    }
   ],
   "poiCategoryGroups": [
@@ -2533,39 +2533,6 @@
    },
    {
     "attributes": {
-     "ausBis": "05.10.2026 05:15",
-     "ausVon": "05.10.2026 01:15",
-     "location": "U1 Bahnsteig Richtung Oberlaa - Zwischengeschoss Zugang U2 - Ausgang Lassallestraße",
-     "rbls": [
-      4112
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2",
-      "U1"
-     ],
-     "station": "Praterstern",
-     "status": "geplante Wartung",
-     "towards": "U1 Oberlaa"
-    },
-    "description": "U1 Bahnsteig Richtung Oberlaa - Zwischengeschoss Zugang U2 - Ausgang Lassallestraße",
-    "name": "ftazW_1016949",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2",
-     "U1"
-    ],
-    "relatedStops": [
-     4112
-    ],
-    "time": {
-     "end": "2026-10-05T05:15:00.000+0200",
-     "start": "2026-10-05T01:15:00.000+0200"
-    },
-    "title": "Praterstern"
-   },
-   {
-    "attributes": {
      "ausBis": "06.10.2026 00:45",
      "ausVon": "05.10.2026 20:45",
      "location": "U1 Mittelbahnsteig - Ausgang Rennbahnweg",
@@ -2759,39 +2726,6 @@
     "time": {
      "end": "2026-10-06T05:15:00.000+0200",
      "start": "2026-10-06T01:15:00.000+0200"
-    },
-    "title": "Alaudagasse"
-   },
-   {
-    "attributes": {
-     "ausBis": "05.10.2026 05:15",
-     "ausVon": "05.10.2026 01:15",
-     "location": "beide Fahrtrichtungen - Ausgang Per Albin Hansson Siedlung",
-     "rbls": [
-      4136,
-      4131
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Alaudagasse",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "beide Fahrtrichtungen - Ausgang Per Albin Hansson Siedlung",
-    "name": "ftazW_1351716",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4136,
-     4131
-    ],
-    "time": {
-     "end": "2026-10-05T05:15:00.000+0200",
-     "start": "2026-10-05T01:15:00.000+0200"
     },
     "title": "Alaudagasse"
    },
