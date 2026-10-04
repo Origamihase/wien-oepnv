@@ -1977,7 +1977,12 @@ _TRANSLATION_MODEL_REVISION = "1a922f3b32a8e809e17a47d4b32142d8105924e5"
 #       accident in the area of Hernalser Hauptstraße", "Alliance Stadion",
 #       "Schlosshofer Straße"; the source digests are unchanged, so only a
 #       bump evicts them.
-_TRANSLATION_CACHE_EPOCH = 20
+#  21 — WL's stop tickers (Jules audits 2026-10-02 and 2026-10-04): a place
+#       after "Busse/Züge halten" gets "at", the stop of another line is
+#       written out ("Trains stop for lines 6 and 18" before). Cached under
+#       20: "66A: Buses stop Salvatorianerplatz"; the source digests are
+#       unchanged, so only a bump evicts it.
+_TRANSLATION_CACHE_EPOCH = 21
 
 # Static lookup for the German words of the bracketed ``[…]`` time line (see
 # ``format_local_times``). Translating these via the ML model would be
@@ -2467,9 +2472,23 @@ _GLOSSARY_BASE: dict[str, str] = {
     "Züge halten": "trains stop",
     "Züge halte": "trains stop",
     "Busse halten": "buses stop",
+    "Ersatzbusse halten": "replacement buses stop",
     "Ersatzbus hält": "replacement bus stops",
+    # The place forms ``_normalise_stop_verbs`` writes ("Busse halten an
+    # Salvatorianerplatz", "Züge halten bei den Haltestellen der Linien 6
+    # und 18"); the model left the preposition out or picked "for".
+    "Züge halten an": "trains stop at",
+    # "Züge halten nicht in der Station Hietzing" came out of the plain
+    # "Züge halten" entry as "trains stop nicht …", which the model may
+    # read either way.
+    "Züge halten nicht": "trains do not stop",
+    "Busse halten nicht": "buses do not stop",
+    "Busse halten an": "buses stop at",
+    "Ersatzbusse halten an": "replacement buses stop at",
+    "Ersatzbus hält an": "replacement bus stops at",
     "Haltestelle aufgelassen": "stop closed",
     "bei Haltestelle der Linie": "at the stop of line",
+    "bei den Haltestellen der Linien": "at the stops of lines",
     "Bussteig": "bus platform",
     # WL's stock referral. ``_normalise_for_translation`` drops the "aus"
     # that closes it, so the line list is the end of the sentence; the model
@@ -3325,6 +3344,54 @@ _STOP_OF_LINE_RE: re.Pattern[str] = re.compile(
 )
 
 
+# WL's stop tickers name where the vehicles stop: a place right after the
+# verb ("66A: Busse halten Salvatorianerplatz"), "bei" and a place, or "bei"
+# and the stop of another line ("52: Züge halten bei Linien 6 und 18").
+# The model rendered each with whatever preposition came to it, from one
+# build to the next ("Buses stop Salvatorianerplatz" in 72 of the EN states
+# sampled since 2026-09-01, "Buses stop at Salvatorianerplatz" in others,
+# "Trains stop for lines 6 and 18", "Trains stop for Währinger Gürtel 164",
+# "Buses stop on line 14A"; Jules audits 2026-10-02 and 2026-10-04). The
+# German is rewritten into the forms the glossary renders whole: a place
+# takes "an" ("buses stop at"), another line's stop is written out as
+# "bei Haltestelle der Linie". Every other word after the verb ("in", "auf",
+# "vor", "nach", "gegenüber", "Richtung", …) is left to the model, which
+# renders those prepositions itself.
+_STOP_VERB = r"\b(?i:(Busse|Züge|Ersatzbusse) halten?|(Ersatzbus) hält)"
+_STOP_AT_LINES_RE: re.Pattern[str] = re.compile(
+    _STOP_VERB + r" (?:(?i:bei) )?(?:den )?(?i:Linien) (?=[A-Z0-9])"
+)
+_STOP_AT_LINE_RE: re.Pattern[str] = re.compile(
+    _STOP_VERB + r" (?:(?i:bei) )?(?:der )?(?i:Linie) (?=[A-Z0-9])"
+)
+# A capitalised word after the verb is a place unless it is a preposition
+# at the start of a ticker line ("Busse halten Auf der Hauptfahrbahn").
+_STOP_AT_PLACE_RE: re.Pattern[str] = re.compile(
+    _STOP_VERB
+    + r" (?:bei (?!(?i:der |den )?(?i:Haltestellen?|Linien?)\b)"
+    + r"|(?=[A-ZÄÖÜ])(?!(?i:Auf|Am|An|Bei|Beim|Im|In|Vor|Nach|Hinter|Neben|Gegenüber"
+    + r"|Ggü|Vis|Richtung|Fahrtrichtung|Haltestellen?|Linien?|Nicht)\b))"
+)
+
+
+def _stop_verb(match: re.Match[str]) -> str:
+    """``"Busse halten"`` / ``"Ersatzbus hält"`` with the typo ``halte`` repaired."""
+    if match.group(1):
+        return f"{match.group(1)} halten"
+    return f"{match.group(2)} hält"
+
+
+def _normalise_stop_verbs(text: str) -> str:
+    """Rewrite WL's stop tickers into the forms the glossary renders whole."""
+    text = _STOP_AT_LINES_RE.sub(
+        lambda m: f"{_stop_verb(m)} bei den Haltestellen der Linien ", text
+    )
+    text = _STOP_AT_LINE_RE.sub(
+        lambda m: f"{_stop_verb(m)} bei Haltestelle der Linie ", text
+    )
+    return _STOP_AT_PLACE_RE.sub(lambda m: f"{_stop_verb(m)} an ", text)
+
+
 def _normalise_for_translation(text: str) -> str:
     """Strip German-only surface forms the NMT model cannot render.
 
@@ -3339,6 +3406,7 @@ def _normalise_for_translation(text: str) -> str:
     )
     text = _ALTERNATIVE_LINES_AUS_RE.sub(r"\1", text)
     text = _STOP_OF_LINE_RE.sub("bei Haltestelle der Linie ", text)
+    text = _normalise_stop_verbs(text)
     return _CLOCK_SUFFIX_RE.sub("", text)
 
 

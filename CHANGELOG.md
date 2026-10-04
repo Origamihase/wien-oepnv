@@ -24,6 +24,21 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   Playwright-Geräteemulation (320–1024 px, DE/EN, hell/dunkel) und Lighthouse
   Mobil: Leistung 97–100 vorher wie nachher, 155 KiB, 11 Anfragen; CLS
   0,018. Wächter: `tests/test_site_css_mobile_header.py`.
+* **EN: Halte-Meldungen der WL mit Präposition (2026-10-04, Jules-Audits vom 02. und 04.10.)**:
+  Der englische Feed zeigte „66A: Buses stop Salvatorianerplatz“ und „52:
+  Trains stop for lines 6 and 18“; das Modell wählte die Präposition nach
+  „Busse/Züge halten“ in jedem Lauf neu („at“, keine, „for“, „on“). Vor dem
+  Glossar schreibt `_normalise_stop_verbs` die Formen jetzt um: ein Ort
+  direkt nach dem Verb oder nach „bei“ wird „… stop at <Ort>“, die
+  Haltestelle einer anderen Linie „… stop at the stop(s) of line(s)“, auch
+  mit „der“/„den“, ohne „bei“ und in WL-Schreibvarianten („halte“, „LInie“).
+  „in“, „auf“, „am“, „vor“, „nach“, „gegenüber“, „Richtung“ bleiben beim
+  Modell. „Züge halten nicht“ heißt „trains do not stop“ (vorher „trains
+  stop nicht …“). Geprüft an allen 348 „halten“-Formen der WL-Cache-Historie
+  seit März. Jules' Vorschlag („Busse halten“ → „buses stop at“) hätte bei
+  „bei“, „auf“, „in“ doppelte Präpositionen ergeben und wurde nicht
+  übernommen. Übersetzungs-Epoche 21. Nur EN; der deutsche Feed bleibt
+  unverändert. Tests: `tests/test_en_stop_verbs.py`.
 * **Ausfall einer Quelle: Teilausfälle, kaputte Antworten, Demo-Baustellen (2026-10-04)**:
   Geprüft, indem veränderte Kopien der echten Rohdaten vom 04.10. 16:01 UTC
   (19 Ausfallarten) durch die echten Cache-Updater und den Feed-Build liefen.
