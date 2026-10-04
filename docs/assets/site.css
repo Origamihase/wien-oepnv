@@ -145,15 +145,19 @@ code {
 /* Skip-Link */
 .skip-link {
   position: absolute;
-  left: 1rem; top: -2.5rem;
+  /* Parked above the viewport by its own height plus a margin. The former
+   * fixed ``top: -2.5rem`` was ~2 px shorter than the link (line-height 1.6
+   * + padding), so a dark sliver of it showed at the top edge of the page. */
+  left: 1rem; top: 0.75rem;
+  transform: translateY(calc(-100% - 1rem));
   background: var(--c-brand);
   color: var(--c-brand-ink);
   padding: 0.5rem 0.85rem;
   border-radius: 8px;
   z-index: 1000;
-  transition: top 0.15s ease;
+  transition: transform 0.15s ease;
 }
-.skip-link:focus { top: 0.75rem; }
+.skip-link:focus { transform: none; }
 
 /* Container */
 .container {
@@ -440,11 +444,72 @@ code {
 }
 .hero__meta a { color: inherit; text-decoration-color: var(--c-border-strong); }
 .hero__meta a:hover { color: var(--c-accent); }
+/* On phones the "Datenstand" line wraps once site.js swaps the "–"
+ * placeholder for the full stamp ("04.10.2026, 18:49 Uhr
+ * (Europe/Vienna)"), one line more than before. That pushed the feed list
+ * down while it was already in view (Lighthouse mobile CLS 0.055 once the
+ * two-row header brought it above the fold). Reserving the loaded height
+ * keeps it still; the ``em`` value is the fallback for engines without the
+ * ``lh`` unit. */
+@media (max-width: 699px) {
+  .hero__meta { min-height: 3.2em; min-height: 2lh; }
+}
+@media (max-width: 389px) {
+  .hero__meta { min-height: 4.8em; min-height: 3lh; }
+}
 
 /* Sections */
 .section {
   margin: clamp(2rem, 5vw, 3.5rem) 0;
   scroll-margin-top: calc(var(--header-h) + 16px);
+}
+
+/* Narrow screens (phones, small tablets): the one-row header needs ~1000 CSS
+ * px (brand + four nav links + RSS + weather + DE | EN). Below that the nav
+ * used to stack its links vertically, the sticky header grew to 232 px (a
+ * third of a phone screen, on every scroll position) and, below ~530 px, the
+ * DE | EN switch was pushed off-screen — ``html { overflow-x: clip }`` cut it
+ * off, so the English version could not be chosen on a phone at all.
+ * Two rows instead: brand + weather + language on top, the nav as one
+ * horizontally scrollable line below. ``order`` only moves the nav visually;
+ * the DOM (and so the tab order) stays brand, nav, weather, language. */
+@media (max-width: 767px) {
+  .site-header__inner {
+    flex-wrap: wrap;
+    row-gap: 0;
+    min-height: 0;
+    padding-block: 0.45rem 0.2rem;
+  }
+  .site-nav {
+    order: 3;
+    flex: 1 0 100%;
+    min-width: 0;
+  }
+  .site-nav ul {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    /* Align the first link's text with the brand mark above it. */
+    margin-inline: -0.7rem;
+  }
+  .site-nav ul::-webkit-scrollbar { display: none; }
+  .site-nav a { white-space: nowrap; }
+  /* Anchor jumps land below the taller two-row sticky header. */
+  .section { scroll-margin-top: 7rem; }
+}
+/* Phones narrower than 400 CSS px cannot fit the one-line brand name, its
+ * subtitle, weather and language switch in one row: the name goes on two
+ * lines ("Wien" / "ÖPNV") without the "Live-Dashboard" subtitle. Below
+ * 360 px (320 px phones) only the logo mark stays; the link keeps its
+ * accessible name through ``aria-label`` either way. */
+@media (max-width: 399px) {
+  .brand { gap: 0.55rem; }
+  .brand__name { width: min-content; }
+  .brand__sub { display: none; }
+}
+@media (max-width: 359px) {
+  .brand__text { display: none; }
 }
 .section__header {
   margin-bottom: clamp(1rem, 3vw, 1.5rem);
