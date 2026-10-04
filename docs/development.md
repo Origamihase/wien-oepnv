@@ -708,6 +708,13 @@ Das öffentliche Live-Dashboard (`docs/site.html`) ist zweisprachig: **Deutsch i
   - `reset_build_feed_state` und `reset_circuit_breakers` setzen Modulzustand zurück.
   - `_without_host_proxy` entfernt Proxy-Variablen, damit die Suite in einer Sandbox mit Proxy dasselbe Ergebnis liefert wie in der CI (`PROXY_TRUSTED_HOSTS`).
   - `_health_report_stays_untouched` lässt jeden Test scheitern, der `docs/feed-health.*` anlegt oder ändert (Audit 2026-09-25, A.7).
+  - `_no_real_dns` beantwortet jede DNS-Abfrage mit einer festen öffentlichen Adresse (`STUB_PUBLIC_IP`); kein Test fragt das echte DNS. Wer eine andere Antwort braucht, patcht `dns.resolver.Resolver.resolve` oder `_resolve_hostname_safe` selbst.
+  - `_restore_replaced_modules` setzt nach jedem Test die Module zurück, die er aus `sys.modules` entfernt oder ersetzt hat (31 Dateien laden `src.build_feed` neu), und stellt den Inhalt jedes Moduls wieder her, das er mit `importlib.reload` neu geladen hat. Sonst griffen `reset_build_feed_state` und `time_line_today` für den Rest des Laufs ins Leere, und Tests hielten Klassen, die das Modul nicht mehr wirft.
+  - `_feed_config_stays` stellt jeden Wert von `src.feed.config` wieder her, den ein Test (etwa über `refresh_from_env()`) geändert hat.
+  - `_root_logger_stays_clean` entfernt Handler, die ein Test am Root-Logger hinterlässt, und stellt Formatter und Level der übrigen wieder her (`configure_logging` setzt einen `SafeFormatter` auch auf pytests Capture-Handler).
+  - Hypothesis läuft ohne Zeitlimit pro Beispiel (Profil `wien-oepnv`); Hänger fängt `pytest-timeout`.
+
+  Die Suite besteht in beliebiger Reihenfolge, ohne Netz, in jeder Zeitzone des Rechners und mit jedem heutigen Datum (Prüfung 2026-10-04: Zufallsreihenfolge mit `pytest-randomly`, Lauf ohne Netz per `unshare -rn`, Uhr mit `time-machine` auf beide Zeitumstellungen, Silvester, Neujahr, Schalttag 2028 und 2030 gestellt, `TZ` auf New York und Kiribati). Ausnahme beim verstellten Datum: Tests, die Dateien schreiben und deren Alter am Dateisystem messen (Cache-Bereinigung), oder Unterprozesse starten, sehen die echte Uhr des Dateisystems bzw. des Unterprozesses.
 
   Tests, die `main()` ausführen, leiten `OUT_PATH`, `STATE_FILE`, `FEED_HEALTH_PATH` und `FEED_HEALTH_JSON_PATH` nach `tmp_path` um. Sie patchen am Modulobjekt (`patch.object(bf, …)`), nicht über den String-Pfad `"src.build_feed.…"`: Einige Tests laden das Modul neu, und der String-Patch träfe dann ein anderes Modul als das, dessen `main()` läuft.
 - **Kontinuierliche Tests**: Die GitHub Action `test.yml` automatisiert die im Audit empfohlene regelmäßige Testausführung und bricht Builds bei fehlschlagender Test-Suite ab.

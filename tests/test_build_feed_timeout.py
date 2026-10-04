@@ -13,7 +13,12 @@ def test_collect_items_timeout_zero() -> None:
     mock_fetch.__name__ = "dummy_provider"
     report = MagicMock(spec=RunReport)
 
+    # ``init_providers`` would register the dummy as a cache loader, and a
+    # cache loader runs without a timeout. The test passed in the full suite
+    # only while a re-imported ``src.build_feed`` kept the reset fixture from
+    # reaching this module (test-suite audit 2026-10-04).
     with patch.object(bf, "feed_config", mock_feed_config), \
+         patch.object(bf, "_PROVIDERS_INITIALIZED", True), \
          patch.object(bf, "PROVIDERS", [("DUMMY_ENABLE", mock_fetch)]), \
          patch.object(bf, "DEFAULT_PROVIDERS", ("DUMMY_ENABLE",)), \
          patch("src.build_feed.ThreadPoolExecutor") as mock_executor_cls:

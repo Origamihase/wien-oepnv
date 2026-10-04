@@ -9,7 +9,7 @@ incident, and their stale start must not date it back.
 
 from __future__ import annotations
 
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from types import TracebackType
 from typing import Any, Literal
 from zoneinfo import ZoneInfo
@@ -94,9 +94,17 @@ def test_unknown_start_keeps_the_known_one(monkeypatch: pytest.MonkeyPatch) -> N
 
 
 def test_disruption_keeps_the_latest_start(monkeypatch: pytest.MonkeyPatch) -> None:
-    now = datetime.now(VIENNA).replace(microsecond=0)
-    reused = _notice("Schadhafter Zug", now - timedelta(days=4), now + timedelta(hours=2))
-    new = _notice("Schadhafter Zug", now - timedelta(hours=1), now + timedelta(hours=2))
+    # Hours are subtracted in UTC: Vienna wall-clock arithmetic named a time
+    # that does not exist on the morning summer time begins (03:33 minus one
+    # hour is "02:33"), and the test failed there (test-suite audit
+    # 2026-10-04, clock set to 28.03.2027).
+    now = datetime.now(UTC).replace(microsecond=0)
+
+    def _vienna(moment: datetime) -> datetime:
+        return moment.astimezone(VIENNA)
+
+    reused = _notice("Schadhafter Zug", _vienna(now - timedelta(days=4)), _vienna(now + timedelta(hours=2)))
+    new = _notice("Schadhafter Zug", _vienna(now - timedelta(hours=1)), _vienna(now + timedelta(hours=2)))
     for order in ([reused, new], [new, reused]):
         (event,) = _fetch(monkeypatch, [], traffic_infos=order)
         assert event["category"] == "Störung"

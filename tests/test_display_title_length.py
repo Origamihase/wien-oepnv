@@ -224,3 +224,52 @@ def test_streets_and_number_spans_of_their_own_stay() -> None:
         "Schottenring 11",
     ):
         assert _mark_house_numbers(title) == title
+
+
+# --- the target itself: 50 characters (operator decision 2026-10-02) -------
+#
+# The tests above measure against ``_DISPLAY_TITLE_TARGET`` and passed with
+# any value of it: set to 60, the whole suite stayed green except one
+# Baustellen description (test-suite audit 2026-10-04). These pin the
+# decided length at its edge, 50 characters kept as they are, 51 shortened.
+
+
+def _baustelle(title: str) -> FeedItem:
+    return {"source": "Stadt Wien – Baustellen", "title": title, "description": "Es wird gearbeitet.", "link": ""}
+
+
+def test_a_wl_sentence_title_of_50_characters_keeps_its_reason() -> None:
+    text = "Haltestelle Kagran wegen einer Demo aufgelassen. Bitte ausweichen."
+    out = _shorten_wl_sentence_title(f"2: {text}", text)
+    assert out == "2: Haltestelle Kagran wegen einer Demo aufgelassen"
+    assert len(out) == 50
+
+
+def test_a_wl_sentence_title_of_51_characters_loses_its_reason() -> None:
+    text = "Haltestelle Rathaus wegen einer Demo aufgelassen. Bitte ausweichen."
+    assert len("2: Haltestelle Rathaus wegen einer Demo aufgelassen") == 51
+    assert _shorten_wl_sentence_title(f"2: {text}", text) == "2: Haltestelle Rathaus aufgelassen"
+
+
+def test_a_baustellen_section_of_50_characters_keeps_its_crossing() -> None:
+    title = "Burggasse von Kreuzung Neubaugasse bis Kenyongasse"
+    assert len(title) == 50
+    assert _compact_baustellen_section(title) == title
+
+
+def test_a_baustellen_section_of_51_characters_drops_its_crossing() -> None:
+    title = "Burggasse von Kreuzung Neubaugasse bis Zieglergasse"
+    assert len(title) == 51
+    assert _compact_baustellen_section(title) == "Burggasse von Neubaugasse bis Zieglergasse"
+
+
+def test_a_baustellen_title_of_50_characters_keeps_its_section() -> None:
+    title = "Rennweg von Sechskrügelgasse bis Schlachthausgasse"
+    assert len(title) == 50
+    assert _display_title_parts(_baustelle(title)) == (title, "")
+
+
+def test_a_baustellen_title_of_51_characters_moves_its_section() -> None:
+    title = "Landstraßer Hauptstraße von Juchgasse bis Weyrgasse"
+    assert len(title) == 51
+    assert _display_title_parts(_baustelle(title)) == ("Landstraßer Hauptstraße", "Von Juchgasse bis Weyrgasse")

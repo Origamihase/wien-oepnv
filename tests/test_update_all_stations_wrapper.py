@@ -87,8 +87,14 @@ def _restore_wrapper_outputs() -> Iterator[None]:
                 # the pre-test state bit-for-bit.
                 if path.exists():
                     path.unlink()
-            else:
-                path.write_bytes(original)
+            elif path.read_bytes() != original:
+                # Only rewrite a file that changed, and replace it in one
+                # step: a plain ``write_bytes`` truncates first, and a test
+                # in another xdist worker reading ``data/stations.json`` at
+                # that moment saw an empty file (test-suite audit 2026-10-04).
+                staging = path.with_name(f".{path.name}.restore")
+                staging.write_bytes(original)
+                os.replace(staging, path)
 
 
 def _wrapper_args_for(tmp_path: Path) -> tuple[Path, list[str]]:
@@ -235,6 +241,34 @@ def test_wrapper_preserves_stations_json_on_atomic_write_failure(
     )
 
 
+_OFFLINE_SITECUSTOMIZE = """\
+import socket
+
+
+def _offline(*args, **kwargs):
+    raise OSError("network disabled by tests/test_update_all_stations_wrapper.py")
+
+
+socket.getaddrinfo = _offline
+socket.create_connection = _offline
+socket.socket.connect = _offline
+socket.socket.connect_ex = _offline
+socket.socket.sendto = _offline
+"""
+
+
+def _tracked_state() -> str:
+    """``git status`` of the tracked files under ``cache/`` and ``data/``."""
+    result = subprocess.run(  # noqa: S603  # nosec B603
+        ["git", "status", "--porcelain", "--untracked-files=no", "--", "cache", "data"],  # noqa: S607
+        capture_output=True,
+        text=True,
+        cwd=REPO_ROOT,
+        check=True,
+    )
+    return result.stdout
+
+
 @pytest.mark.timeout(180)
 def test_wrapper_atomic_on_success(tmp_path: Path) -> None:
     """Bei Erfolg ist data/stations.json nach dem Lauf valide.
@@ -281,8 +315,19 @@ def test_wrapper_atomic_on_success(tmp_path: Path) -> None:
     # this timing-sensitive wrapper test. The pass is exercised in
     # isolation by ``tests/test_at_coordinate_consensus.py``.
     env["WIEN_OEPNV_AT_RECONCILE"] = "0"
+    # No network at all. The flags above leave the provider cache refreshes
+    # (``update_oebb_cache.py``, ``update_wl_cache.py``), the ÖBB workbook
+    # and the WL OGD downloads in place: on a machine with a network the test
+    # fetched live WL and ÖBB data and rewrote ``cache/*/events.json`` and
+    # ``data/`` in the working tree (test-suite audit 2026-10-04). Every
+    # sub-script falls back to its committed file when a fetch fails.
+    offline = tmp_path / "offline"
+    offline.mkdir()
+    (offline / "sitecustomize.py").write_text(_OFFLINE_SITECUSTOMIZE, encoding="utf-8")
+    env["PYTHONPATH"] = os.pathsep.join(filter(None, [str(offline), env.get("PYTHONPATH")]))
 
     target_stations, wrapper_args = _wrapper_args_for(tmp_path)
+    tracked_before = _tracked_state()
 
     # Run the wrapper without modifications — should succeed if main is clean.
     result = subprocess.run(  # noqa: S603  # nosec B603
@@ -298,13 +343,11 @@ def test_wrapper_atomic_on_success(tmp_path: Path) -> None:
         env=env,
     )
 
-    # Note: this test requires network access for some sub-scripts.
-    # In Sandbox without network, it will likely fail at sub-script level.
-    if result.returncode != 0:
-        pytest.skip(
-            f"update_all_stations.py konnte nicht laufen (vermutlich Network-Restriktion in Sandbox): "
-            f"{result.stderr[:500]}"
-        )
+    # Offline, every sub-script runs on its committed files, so a non-zero
+    # exit is a failure of the pipeline. (The test used to skip here and
+    # could not fail.)
+    assert result.returncode == 0, result.stderr[-2000:]
+    assert _tracked_state() == tracked_before, "the run changed tracked files"
 
     # If it succeeded, validate the result is still valid JSON
     after = target_stations.read_text(encoding="utf-8")

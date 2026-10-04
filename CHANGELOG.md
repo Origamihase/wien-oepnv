@@ -5,6 +5,47 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Test-Suite: besteht in jeder Reihenfolge, ohne Netz und an jedem Datum (Prüfung 2026-10-04)**:
+  Die volle Suite (11.002 Tests, seriell grün; jetzt 11.008) zusätzlich in Zufallsreihenfolge
+  (`pytest-randomly`), ohne Netz (`unshare -rn`), mit verstellter Uhr
+  (`time-machine`: beide Zeitumstellungen, Silvester, Neujahr, Schalttag 2028,
+  2030) und mit `TZ` New York und Kiribati laufen lassen und 29 Regeln des
+  Audits gezielt verfälscht. Behoben, jeweils als Klasse:
+  31 Testdateien laden `src.build_feed` neu und ließen die Kopie in
+  `sys.modules` stehen; danach setzten `reset_build_feed_state` und
+  `time_line_today` die Kopie zurück statt des Moduls, das die übrigen Tests
+  aufrufen. 14 Tests mit fester Zeitzeile hingen so am heutigen Datum (rot ab
+  Neujahr), einer bestand nur dank Zustand eines früheren Tests
+  (`test_collect_items_timeout_zero`). Zwölf Dateien rufen
+  `importlib.reload` auf und ersetzten damit Klassen und Nonce des Moduls
+  für alle späteren Tests (`GooglePlacesError` wurde nicht mehr gefangen,
+  Platzhalter passten nicht mehr zum Muster); `_restore_replaced_modules`
+  stellt Module und ihren Inhalt nach jedem Test wieder her. Ein Test mit
+  `MAX_ITEMS=-5` und `refresh_from_env()` ließ `MAX_ITEMS` auf 0 stehen
+  (`_feed_config_stays`). `configure_logging` setzte einen `SafeFormatter`
+  auf pytests Capture-Handler, danach fehlte jedem Log-Record in
+  `caplog.records` das Feld `message`. 23 Tests fragten das echte DNS
+  (`example.com`, `safe.com`, `data.wien.gv.at`) und scheiterten ohne Netz;
+  `_no_real_dns` beantwortet jede Abfrage fest. Drei SSRF-Tests mockten
+  `socket.getaddrinfo`, das der Code nicht benutzt, und bestanden über das
+  echte DNS; sie patchen jetzt den Resolver. Der Stationsupdate-Test lief mit
+  echtem Netz, holte WL- und ÖBB-Daten und schrieb `cache/*/events.json` ins
+  Arbeitsverzeichnis, und übersprang sich bei jedem Fehler; er läuft jetzt
+  offline und scheitert, statt sich zu überspringen. Weiter: ein Test ließ den
+  Stations-Regex der Testdaten im Cache stehen, Handler am Root-Logger
+  blieben über Tests hinweg (`_root_logger_stays_clean`), zwei Hypothesis-Tests scheiterten an der
+  200-ms-Frist des ersten Beispiels, ein Test rechnete „vor einer Stunde“ in
+  Wiener Wanduhrzeit (rot am Morgen der Sommerzeit-Umstellung), ein Test
+  verfiel am 31.12.2026, ein Sitemap-Test verglich das UTC-Datum des Codes
+  mit dem lokalen Datum der Maschine (rot in Wien zwischen Mitternacht und
+  1/2 Uhr). Der Stationsupdate-Test schrieb nach jedem Test
+  `data/stations.json` neu (erst leeren, dann schreiben); ein paralleler Test
+  las dabei eine leere Datei. Er ersetzt die Datei jetzt nur bei Änderung und
+  in einem Schritt. Die 50-Zeichen-Grenze der Titel war nur relativ
+  geprüft (mit 60 blieb die Suite bis auf einen Test grün); sechs Tests
+  halten sie jetzt an der Kante. Doku: `docs/development.md`
+  („Test-Isolation“). Tests: `tests/conftest.py`,
+  `tests/test_display_title_length.py`.
 * **Rohdaten und Verwürfe des Abrufs werden mitgeschrieben (2026-10-04)**:
   Die Caches hielten nur, was den Abruf überlebt hatte; ob eine Meldung bei
   WL, ÖBB oder Stadt Wien überhaupt ankam und wo sie verschwand, ließ sich
