@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261004-0020-F01, I20260917-0012, I20261004-0019-F01, I20261004-0019-F02, I20260925-0011, I20260922-0032, I20260909-0007"
+    "trafficInfoNameList": "I20261004-0020-F01, I20260917-0012, I20260925-0011, I20260922-0032, I20260909-0007"
    },
    {
     "id": 3,
@@ -199,80 +199,6 @@
      "start": "2026-09-25T08:55:00.000+0200"
     },
     "title": "26E: Gleisbauarbeiten"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "6": "ptTram"
-     }
-    },
-    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261004-0019-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "106",
-       "lineName": "6",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     482
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-04T17:58:00.000+0200",
-     "end": "2026-10-04T23:55:00.000+0200",
-     "lastUpdate": "2026-10-04T17:58:00.000+0200",
-     "resume": "2026-10-04T17:58:00.000+0200",
-     "start": "2026-10-04T17:42:00.000+0200"
-    },
-    "title": "6: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "18": "ptTram"
-     }
-    },
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261004-0019-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "118",
-       "lineName": "18",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     482
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-04T17:58:00.000+0200",
-     "end": "2026-10-04T23:55:00.000+0200",
-     "lastUpdate": "2026-10-04T17:58:00.000+0200",
-     "resume": "2026-10-04T17:58:00.000+0200",
-     "start": "2026-10-04T17:42:00.000+0200"
-    },
-    "title": "18: Schadhaftes Fahrzeug"
    },
    {
     "attributes": {
