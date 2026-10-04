@@ -5,6 +5,31 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Fünfte Prüfung: fälschlich verworfene Meldungen aus den Rohdaten (2026-10-04)**:
+  Die Rohdaten des Abrufs (`data/raw/`, seit dem Vormittag) zeigten erstmals,
+  was WL und ÖBB beim Abruf verlieren. Zwei Fehlerklassen behoben:
+  (1) Der Stichwort-Filter der WL-Hinweise (`newsList`) las die Beschreibung
+  als HTML, in dem WL Umlaute als Entities schreibt („kurz gef&uuml;hrt“),
+  und kannte die Maßnahmen nur als Substantiv. „18: LCC-Herbstmarathon am
+  11.10.2026“ (Linie 18 kurz geführt) und „U6: Neue Donau, kein Halt
+  Richtung Floridsdorf“ (seit 14.09. bis Jahresende, die einzige Meldung mit
+  Linie dazu) fehlten im Feed. Der Filter liest jetzt den Text ohne HTML
+  (`_gate_text`) und kennt die Verben („kurz geführt“, „umgeleitet“,
+  „durchfahren“, „kein Halt“, „kein Betrieb“, „eingestellt“, „entfällt“).
+  Über alle 78 Hinweise der Rohdaten ändern sich genau diese zwei.
+  (2) ÖBB schreibt Orte mit Zusatz („Mistelbach/Zaya“, „Wolkersdorf im
+  Weinviertel“, „Traisen NÖ“), das Verzeichnis kennt die bloßen Orte; eine
+  Route Wien ↔ Mistelbach galt als Wien ↔ unbekannt, die S2-Meldung „Wien
+  Leopoldau ↔ Mistelbach“ (Schienenersatzverkehr 25.10./01.11.) fiel weg.
+  `station_info` versucht zuletzt den Ort ohne Zusatz und nimmt ihn nur
+  außerhalb Wiens. Über alle Namen der Rohdaten und alle Aliase ändern sich
+  nur qualifizierte Namen; die 80 ÖBB-Meldungen im Cache seit Juli bleiben
+  gleich. Außerdem: Mit `pytest -n 4` teilten sich die Worker das
+  Streckendaten-Sample, einer löschte es, während andere noch liefen
+  (4.190 Fehler in einem Lauf); ein Dateilock und ein Zähler lassen jetzt den
+  letzten aufräumen. Tests: `tests/test_wl_news_gate_plain_text.py`,
+  `tests/test_oebb_qualified_place_names.py`. Doku: `docs/development.md`
+  (WL- und ÖBB-Filter, Test-Isolation), `docs/architecture.md` („Ortszusatz“).
 * **Test-Suite: besteht in jeder Reihenfolge, ohne Netz und an jedem Datum (Prüfung 2026-10-04)**:
   Die volle Suite (11.002 Tests, seriell grün; jetzt 11.008) zusätzlich in Zufallsreihenfolge
   (`pytest-randomly`), ohne Netz (`unshare -rn`), mit verstellter Uhr

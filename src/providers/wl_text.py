@@ -46,6 +46,19 @@ KW_RESTRICTION = re.compile(
         | pendelverkehr  # shuttle service
         | kurzstrecke    # short route
     )\w*\b
+    # The same measures as a verb. A WL news item states its measure in a
+    # sentence, and the roots above are nouns: "18: LCC-Herbstmarathon am
+    # 11.10.2026" ("wird die Linie 18 kurz geführt") and "U6: Neue Donau,
+    # kein Halt Richtung Floridsdorf" ("wird ... durchfahren", only notice
+    # with a line for that closure) were both dropped at the news gate
+    # (raw data ``data/raw/wl/verworfen.json``, 2026-10-04), while
+    # "47B: Laufveranstaltung" passed on an incidental "Umleitung".
+    | \bkurz\s*ge(?:führt|fuehrt)\b               # short service
+    | \bumgeleitet\b                              # detoured
+    | \bdurchf(?:ahr|ähr|aehr)\w*                 # station passed without stop
+    | \bkein(?:en)?\s+(?:halt|betrieb)\b          # no stop / no service
+    | \beingestellt\b                             # service suspended
+    | \bentf(?:ällt|aellt|allen)\b                # stop/trip cancelled
     """,
     re.IGNORECASE | re.VERBOSE,
 )

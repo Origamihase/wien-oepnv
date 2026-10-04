@@ -1383,6 +1383,20 @@ ein Name, der wie geschrieben auflöst, behält seinen Bahnhof. Betroffen
 waren fünf Pendler-Bahnhöfe: Bruck an der Leitha, Tulln an der Donau,
 Brunn am Gebirge, Neusiedl am See und Hadersdorf am Kamp.
 
+**Ortszusatz.** ÖBB hängt manchen Orten Fluss, Region oder Bundesland an:
+„Mistelbach/Zaya“, „Wolkersdorf im Weinviertel“, „Traisen NÖ“, „Wolfsberg
+in Ktn“. Das Verzeichnis kennt die bloßen Orte. Die Rohdaten des
+Update-Laufs zeigten am 2026-10-04 „Wien Leopoldau Bahnhst (U) =>
+Mistelbach/Zaya Bahnhof“ (S2, Schienenersatzverkehr) als verworfen; seit
+Juli hatte keine ÖBB-Meldung zu Mistelbach oder Wolkersdorf den Cache
+erreicht. `station_info` versucht deshalb nach allen anderen Varianten den
+Namen ohne diesen Zusatz am Namensende (`_PLACE_QUALIFIER_RE`) und nimmt das
+Ergebnis nur, wenn der Bahnhof außerhalb Wiens liegt: ein Ort mit Zusatz
+liegt nie in Wien, und „Baumgarten im Burgenland“ darf nicht die
+WL-Haltestelle Baumgarten werden. Über alle Namen der ÖBB-Rohdaten und alle
+Aliase des Verzeichnisses ändern sich nur die qualifizierten Namen; die 80
+ÖBB-Meldungen im Cache seit Juli behalten ihre Entscheidung.
+
 Der Name-Eindeutigkeits-Vertrag aus PR #1452 bleibt davon unberührt —
 duplizierte `PlatformText`-Werte sind weiterhin legitim und werden
 weiterhin nicht erzwungen.
