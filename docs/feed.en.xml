@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 04 Oct 2026 06:31:07 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 07:01:14 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[5: Rescue operation]]></title>
@@ -17,30 +17,8 @@
       <ext:first_seen>Sun, 04 Oct 2026 06:09:00 +0200</ext:first_seen>
       <ext:starts_at>Sun, 04 Oct 2026 06:24:54 +0200</ext:starts_at>
       <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Praterstern S U. Expected duration: 06:30. Reason: rescue operation in the area of Kaiserstraße 49. [Since 06:09]</description>
-      <content:encoded><![CDATA[Service obstruction towards Praterstern S U. Expected duration: 06:30. Reason: rescue operation in the area of Kaiserstraße 49.<br/>[Since 06:09]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Animals on the track]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d508c150afc70829f95e57a120c6d4437e9b7a65cc36b2b364370cc0c2e0691c</guid>
-      <pubDate>Sun, 04 Oct 2026 05:52:00 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 05:52:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 04 Oct 2026 05:52:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: animals on the track. [Since 05:52]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: animals on the track.<br/>[Since 05:52]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: Police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ded38e51a87168b5dec5fa7cf47e1322d71a9fc82b58c76e54b10b9190810f6c</guid>
-      <pubDate>Sun, 04 Oct 2026 05:12:00 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 05:12:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 04 Oct 2026 05:12:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: police operation. [Since 05:12]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: police operation.<br/>[Since 05:12]]]></content:encoded>
+      <description>After a service obstruction there are different intervals. [Since 06:09]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 06:09]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[37: Fire-brigade operation]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are being redirected. [From Mon 05.10. until 07.12.]</description>
       <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are being redirected.<br/>[From Mon 05.10. until 07.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N71: Replacement service]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6f11b9f2989f7ded86ce2e256372b0c9d235d8bccee56c31a7edc035dbad8893</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:13 +0200</pubDate>
+      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 00:00:13 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Buses stop at the stop of line N71. [Today]</description>
+      <content:encoded><![CDATA[Buses stop at the stop of line N71.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: ÖBB construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6a1dca08aeb9e7b41cb4335d0f1d1f13d36847df0e83b73b6b2f2c6ddba9e385</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 15:31:24 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 00:00:19 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>No service; trains stop for line 18, direction Burggasse; service from Kliebergasse. [Today]</description>
+      <content:encoded><![CDATA[No service; trains stop for line 18, direction Burggasse; service from Kliebergasse.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
