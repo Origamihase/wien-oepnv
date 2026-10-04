@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261004-0015, I20261004-0017, I20260925-0011, I20260922-0032, I20260909-0007, I20261004-0014"
+    "trafficInfoNameList": "I20260917-0012, I20261004-0015, I20261004-0018, I20260925-0011, I20260922-0032, I20260909-0007, I20261004-0014"
    },
    {
     "id": 3,
@@ -275,9 +275,9 @@
       "U1": "ptMetro"
      }
     },
-    "description": "Die Linie U1 fährt derzeit in der Station Alaudagasse in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 16:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Alaudagasse.",
-    "descriptionHTML": "Die Linie U1 fährt derzeit in der Station Alaudagasse in beiden Richtungen über Gleis 2.<br> <br>Voraussichtliche Dauer: 16:20 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Alaudagasse.",
-    "name": "I20261004-0017",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261004-0018",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
@@ -293,17 +293,15 @@
       }
      ]
     ],
-    "relatedStops": [
-     4136
-    ],
     "status": "active",
     "time": {
-     "created": "2026-10-04T15:49:00.000+0200",
+     "created": "2026-10-04T16:20:00.000+0200",
      "end": "2026-10-04T23:55:00.000+0200",
-     "lastUpdate": "2026-10-04T15:49:00.000+0200",
-     "start": "2026-10-04T15:48:00.000+0200"
+     "lastUpdate": "2026-10-04T16:20:00.000+0200",
+     "resume": "2026-10-04T16:19:00.000+0200",
+     "start": "2026-10-04T16:19:00.000+0200"
     },
-    "title": "U1: Rettungseinsatz"
+    "title": "U1: Verspätungen"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",

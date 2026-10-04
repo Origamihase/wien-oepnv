@@ -38,6 +38,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "18: LCC-Herbstmarathon am 11.10.2026",
+    "description": "<h2>Laufveranstaltung</h2> <p>Wegen des LCC-Herbstmarathons in der Prater Hauptallee wird die Linie 18 kurz gef&uuml;hrt.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Sonntag, 11. Oktober 2026, 09:00 Uhr bis 16:30 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie 18:</strong><br />Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U.</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "daa1fa725b6871207d859b871146acfe9897adaf53769abeed930afb4c8730db",
+    "pubDate": "2026-09-28T00:00:00+02:00",
+    "starts_at": "2026-10-11T00:00:00+02:00",
+    "ends_at": "2026-10-11T16:30:00+02:00",
+    "_identity": "wl|hinweis|L=18|D=2026-10-11|TK=18 lcc herbstmarathon am 11 10 2026"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "20A: Bauarbeiten",
     "description": "<h2>Bauarbeiten</h2> <p>Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Dienstag, 13. Oktober 2026, etwa 07:00 Uhr, bis Mittwoch, 14. Oktober 2026 etwa 17:00 Uhr</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 20A in Richtung Kaiserm&uuml;hlen-VIC U bzw. Alte Donau U<br /></strong>Umleitung ab Kugelfanggasse # Warhanekgasse &uuml;ber Warhanekgasse &ndash; Arbeiterstrandbadstra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>- Wildbadgasse (Wildbadgasse 1)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>- Wildbadgasse (Arbeiterstrandbadstra&szlig;e 104-108)</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -358,6 +370,18 @@
     "starts_at": "2026-09-07T04:30:00+02:00",
     "ends_at": "2026-11-30T23:59:00+01:00",
     "_identity": "wl|hinweis|L=U1|D=2026-09-07|TK=u1 starke nachfrage"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "U6: Neue Donau, kein Halt Richtung Floridsdorf",
+    "description": "<h2>Bahnsteigsanierung</h2> <p>Wegen Sanierung des Bahnsteigs h&auml;lt die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein.<br />Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 14. September 2026 bis Ende 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br />Die Station Neue Donau U wird in Richtung Floridsdorf U durchfahren.</p> <p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />Aus Richtung Siebenhirten U kommend fahren Sie weiter bis Floridsdorf U und ab dort mit dem n&auml;chsten Zug zur&uuml;ck zur Station Neue Donau U.</p> <p><span style=\"text-decoration: underline;\"><strong>Hinweis:</strong></span><br />Fallweise ist ein eingleisiger Betrieb in der Station Neue Donau U ab 22:00 Uhr notwendig. Die Station Neue Donau U wird dann in beiden Richtungen eingehalten.</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "747d54fbd4c0aad685b21596a0c44cb67d41165e556ee43b1bc3e8636920f551",
+    "pubDate": "2026-08-13T12:00:00+02:00",
+    "starts_at": "2026-09-14T00:00:00+02:00",
+    "ends_at": "2026-12-31T23:59:00+01:00",
+    "_identity": "wl|hinweis|L=U6|D=2026-09-14|TK=u6 neue donau kein halt richtung floridsdorf"
   },
   {
     "source": "Wiener Linien",
@@ -794,14 +818,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Rettungseinsatz",
-    "description": "Die Linie U1 fährt derzeit in der Station Alaudagasse in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 16:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Alaudagasse.",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
-    "pubDate": "2026-10-04T15:48:00+02:00",
-    "starts_at": "2026-10-04T15:48:00+02:00",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-10-04T16:19:00+02:00",
+    "starts_at": "2026-10-04T16:19:00+02:00",
     "ends_at": "2026-10-04T23:55:00+02:00",
-    "_identity": "wl|störung|L=U1|D=2026-10-04|TK=rettungseinsatz"
+    "_identity": "wl|störung|L=U1|D=2026-10-04|TK=u1 verspätungen"
   },
   {
     "source": "Wiener Linien",
