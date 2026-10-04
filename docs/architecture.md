@@ -1842,6 +1842,17 @@ Nicht jeder Text gehört in ein NMT-Modell:
   Abweichung nach der zweiten Station im Stationsfeld, Deutsch mitten im
   englischen Satz („… and Gramatneusiedl Bahnhof Zugfahrten bis
   voraussichtlich 27.08.2026, 23:59 Uhr.“; vierte Nachprüfung 2026-10-03).
+* **Halte-Meldungen der WL.** Nach „Busse/Züge halten“ und „Ersatzbus hält“
+  wählte das Modell die Präposition in jedem Lauf neu („Buses stop
+  Salvatorianerplatz“, „Trains stop for lines 6 and 18“). Seit 2026-10-04
+  (Jules-Audits vom 02. und 04.10., Epoche 21) schreibt
+  `_normalise_stop_verbs` den deutschen Text vorher um: Ein Ort direkt nach
+  dem Verb oder nach „bei“ bekommt „an“, das Glossar macht daraus „… stop
+  at“; die Haltestelle einer anderen Linie („bei [der] Linie 18“, „Linien 6
+  und 18“) wird „bei Haltestelle der Linie“ bzw. „bei den Haltestellen der
+  Linien“ („at the stop(s) of line(s)“). Eine eigene Präposition („in“,
+  „auf“, „am“, „vor“, „nach“, „gegenüber“, „Richtung“) bleibt dem Modell.
+  „Züge/Busse halten nicht“ ist „… do not stop“.
 * **Nicht-übersetzbarer Inhalt.** `_is_non_translatable_content` erkennt
   maskierte Texte, in denen nach dem Maskieren nichts mehr steht, was ein
   Modell übersetzen könnte. Das sind reine Linien- und Stationsfolgen, seit
