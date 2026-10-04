@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 04 Oct 2026 11:31:22 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 12:01:29 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[40/41: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b8938e94c70221081d94c1f9627e29d1273108203a2ba78ea9d9eaa80416cb92</guid>
-      <pubDate>Sun, 04 Oct 2026 11:09:00 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 11:09:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 04 Oct 2026 11:09:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 11:09]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 11:09]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[57A: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2ac5fae7e3f48a67607975b18dba585c5ef50bbf2cc22863a26b7cf93ff0890</guid>
-      <pubDate>Sun, 04 Oct 2026 10:36:40 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 10:36:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 04 Oct 2026 10:44:41 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 11:44:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung. [Seit 10:36]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 10:36]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[37: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -90,10 +68,10 @@
       <title><![CDATA[46/47A/47B: Veranstaltung am 04.10.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">c2bb5f86d94aef7a1f6955caa3f47b2970089dc4432d9db0f98ffd41cb8ccb65</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <pubDate>Sun, 04 Oct 2026 11:37:00 +0200</pubDate>
       <ext:first_seen>Wed, 30 Sep 2026 12:01:03 +0200</ext:first_seen>
       <ext:starts_at>Sun, 04 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 04 Oct 2026 13:00:00 +0200</ext:ends_at>
+      <ext:ends_at>Sun, 04 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Wegen einer Veranstaltung im Bereich Allianz Stadion kommt es zu folgenden Verkehrsmaßnahmen. [Heute]</description>
       <content:encoded><![CDATA[Wegen einer Veranstaltung im Bereich Allianz Stadion kommt es zu folgenden Verkehrsmaßnahmen.<br/>[Heute]]]></content:encoded>
     </item>
@@ -118,6 +96,28 @@
       <ext:ends_at>Sun, 04 Oct 2026 23:59:59 +0200</ext:ends_at>
       <description>Busse halten bei Haltestelle N71. [Heute]</description>
       <content:encoded><![CDATA[Busse halten bei Haltestelle N71.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: ÖBB Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6a1dca08aeb9e7b41cb4335d0f1d1f13d36847df0e83b73b6b2f2c6ddba9e385</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Sat, 26 Sep 2026 15:31:24 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 00:00:19 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 04 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Kein Betrieb; Züge halten bei Linie 18, Richtung Burggasse; Betrieb ab Kliebergasse. [Heute]</description>
+      <content:encoded><![CDATA[Kein Betrieb; Züge halten bei Linie 18, Richtung Burggasse; Betrieb ab Kliebergasse.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26E: Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">dac4be805e97a1ee16cc914e8b4797565e65f97545fca29a6e2a1cbb7fe0bf00</guid>
+      <pubDate>Fri, 25 Sep 2026 08:55:00 +0200</pubDate>
+      <ext:first_seen>Fri, 25 Sep 2026 09:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 25 Sep 2026 08:55:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 12 Dec 2026 23:55:00 +0100</ext:ends_at>
+      <description>Busse halten Satzingerweg 41, Bessemerstraße 1-3, auf Hauptfahrbahn, Hoßplatz 11; Ersatzbus hält Karl-Waldbrunner-Platz vor Schloßhofer Straße. [Bis 12.12.]</description>
+      <content:encoded><![CDATA[Busse halten Satzingerweg 41, Bessemerstraße 1-3, auf Hauptfahrbahn, Hoßplatz 11; Ersatzbus hält Karl-Waldbrunner-Platz vor Schloßhofer Straße.<br/>[Bis 12.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
