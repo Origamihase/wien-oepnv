@@ -38,7 +38,10 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   Wiener Wanduhrzeit (rot am Morgen der Sommerzeit-Umstellung), ein Test
   verfiel am 31.12.2026, ein Sitemap-Test verglich das UTC-Datum des Codes
   mit dem lokalen Datum der Maschine (rot in Wien zwischen Mitternacht und
-  1/2 Uhr). Die 50-Zeichen-Grenze der Titel war nur relativ
+  1/2 Uhr). Der Stationsupdate-Test schrieb nach jedem Test
+  `data/stations.json` neu (erst leeren, dann schreiben); ein paralleler Test
+  las dabei eine leere Datei. Er ersetzt die Datei jetzt nur bei Änderung und
+  in einem Schritt. Die 50-Zeichen-Grenze der Titel war nur relativ
   geprüft (mit 60 blieb die Suite bis auf einen Test grün); sechs Tests
   halten sie jetzt an der Kante. Doku: `docs/development.md`
   („Test-Isolation“). Tests: `tests/conftest.py`,

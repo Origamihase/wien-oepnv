@@ -87,8 +87,14 @@ def _restore_wrapper_outputs() -> Iterator[None]:
                 # the pre-test state bit-for-bit.
                 if path.exists():
                     path.unlink()
-            else:
-                path.write_bytes(original)
+            elif path.read_bytes() != original:
+                # Only rewrite a file that changed, and replace it in one
+                # step: a plain ``write_bytes`` truncates first, and a test
+                # in another xdist worker reading ``data/stations.json`` at
+                # that moment saw an empty file (test-suite audit 2026-10-04).
+                staging = path.with_name(f".{path.name}.restore")
+                staging.write_bytes(original)
+                os.replace(staging, path)
 
 
 def _wrapper_args_for(tmp_path: Path) -> tuple[Path, list[str]]:
