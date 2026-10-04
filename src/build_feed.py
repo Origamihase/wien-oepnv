@@ -6278,8 +6278,8 @@ def _note_announced_starts(
     For every item with a state entry whose ``starts_at`` lies in the future
     this stores that start as ``announced_start`` (a postponed start
     overwrites it). :func:`_sort_moment` then counts the item as new from
-    that start (operator decision 2026-10-04, "Ab Beginn vorn"). The start is
-    taken only while it is still ahead, so a measure WL re-issues every night
+    that start, behind the current incidents (:func:`_is_current_incident`).
+    The start is taken only while it is still ahead, so a measure WL re-issues every night
     with a fresh validity ("66A: Busse halten Salvatorianerplatz", starts at
     04:40 each morning, seen from 04:40) never gets one and keeps its place
     (:data:`_PLANNED_OCCURRENCE_GAP`).
@@ -6795,10 +6795,48 @@ def _initial_first_seen(item: FeedItem, now_utc: datetime) -> datetime:
     return published_utc
 
 
+# How long an unplanned disruption counts as current for the feed order —
+# see :func:`_is_current_incident`.
+_CURRENT_INCIDENT_WINDOW = timedelta(hours=24)
+
+
+def _is_current_incident(
+    item: FeedItem, entry: dict[str, Any] | None, first_seen: datetime, now_utc: datetime
+) -> bool:
+    """Whether ``item`` is an unplanned disruption that is happening now.
+
+    Operator decision 2026-10-04: "Aktuelle Störungen sollen oberste
+    Priorität haben. Vorangekündigte Baustellen sollen eine niedrigere
+    Priorität haben." The FIFO sort alone let a fresh announcement or a
+    notice newly let through the filter stand above running incidents: on
+    2026-10-03 at 15:01 "43A: Veranstaltung" stood above "9A:
+    Rettungseinsatz", on 2026-10-04 at 16:30 "U6: Neue Donau, kein Halt"
+    above four incidents (U1, 9, 18, 48A).
+
+    An incident is what the time line shows as "[Seit hh:mm]"
+    (:func:`_incident_since`: category "Störung", not planned, not reported
+    as over) and has begun. It counts as current for
+    ``_CURRENT_INCIDENT_WINDOW`` after it entered the feed: long-running
+    items that read like incidents ("18: Haltestelle Stadionbrücke …
+    aufgelassen" since 13.07., the daily "S80: ÖBB-Ersatzbus" since 25.09.)
+    stay in the normal order.
+    """
+    if first_seen < now_utc - _CURRENT_INCIDENT_WINDOW:
+        return False
+    start = _parse_datetime(item.get("starts_at"))
+    if not isinstance(start, datetime) or _to_utc(start) > now_utc:
+        return False
+    published = _first_published(item, dict(entry) if entry else None)
+    return _incident_since(item, start, published) is not None
+
+
 def _recency_sort_key(
     item: FeedItem, state: dict[str, dict[str, Any]], now_utc: datetime
-) -> tuple[float, int, float, str]:
+) -> tuple[int, float, int, float, str]:
     """FIFO-by-``first_seen`` ordering for the feed: newest-appeared first.
+
+    Current incidents (:func:`_is_current_incident`) come before everything
+    else; within each of the two groups the rules below apply.
 
     Sorts by the persisted (guid-stable) ``first_seen`` descending. An item
     not yet in the state counts as just-appeared (``now``) so genuinely new
@@ -6832,7 +6870,8 @@ def _recency_sort_key(
     pub_ts = min(pub_ts, now_utc.timestamp())
     guid_val = item.get("guid")
     guid_str = str(guid_val) if guid_val else _identity_for_item(item)
-    return (-first_seen.timestamp(), _category_feed_rank(item), -pub_ts, guid_str)
+    tier = 0 if _is_current_incident(item, entry, first_seen, now_utc) else 1
+    return (tier, -first_seen.timestamp(), _category_feed_rank(item), -pub_ts, guid_str)
 
 
 def _build_canonical_link(candidate: Any, ident: str) -> str:

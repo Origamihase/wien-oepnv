@@ -4,7 +4,7 @@ Live case 2026-10-04: the ÖBB closure "Wien Hauptbahnhof ↔ Gramatneusiedl"
 (03.10.–05.10.2026) had been in the data since 08.07. and stood on place 49
 of the sorted feed on its second day; the S-Bahn-Stammstrecke closure
 (Phase 2, seen since 10.06.) held none of the ten slots on 07.09., its first
-day. Operator decision 2026-10-04, "Ab Beginn vorn".
+day.
 """
 
 from __future__ import annotations

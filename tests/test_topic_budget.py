@@ -238,7 +238,7 @@ def test_the_budget_is_wired_into_the_build(monkeypatch: pytest.MonkeyPatch, tmp
     monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_JSON_PATH", tmp_path / "feed-health.json")
     monkeypatch.setattr(bf.feed_config, "MAX_ITEMS", 10)
     monkeypatch.setattr(bf.feed_config, "MAX_ITEMS_PER_TOPIC", 3)
-    monkeypatch.setattr(bf, "_save_state", lambda state: None)
+    monkeypatch.setattr(bf, "_save_state", lambda state, **_: None)
     monkeypatch.setattr(bf, "_load_state", lambda: {})
     monkeypatch.setattr(bf, "refresh_from_env", lambda: None)
 
@@ -248,14 +248,16 @@ def test_the_budget_is_wired_into_the_build(monkeypatch: pytest.MonkeyPatch, tmp
     assert channel is not None
     titles = [it.findtext("title") or "" for it in channel.findall("item")]
     assert len(titles) == 10
-    # Three of the event in front, then the three others, then — because
-    # slots are left — the deferred tickers in their original order.
-    assert all("Demonstration" in t for t in titles[:3]), titles
-    assert titles[3:6] == [
+    # The three others are current incidents and lead (operator decision
+    # 2026-10-04, ``_is_current_incident``; a demonstration is planned), then
+    # three of the event, then — because slots are left — the deferred
+    # tickers in their original order.
+    assert titles[:3] == [
         "25: Ersatzbus ab Josef-Baumann-Gasse",
         "12A: Betrieb ab Johnstraße U",
         "N49: Betrieb ab Schweglerstraße",
     ], titles
+    assert all("Demonstration" in t for t in titles[3:6]), titles
     # Short titles since 2026-09-25: the consequence ("Betrieb ab Ort …")
     # moves into the description, each line keeps its own title. The
     # ordering contract of this test is unaffected by that.
