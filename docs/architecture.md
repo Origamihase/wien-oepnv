@@ -726,6 +726,47 @@ das Arbeitsverzeichnis um 140 MB im Monat. Ein Fehler beim Schreiben bricht
 keinen Abruf ab, eine Datei über 4 MB wird nur gemeldet. Dateiliste und
 Abfragebeispiele: `data/raw/README.md`.
 
+### Ausfall einer Quelle (seit 2026-10-04)
+
+Gemessen, indem veränderte Kopien der echten Rohdaten vom 2026-10-04
+16:01 UTC durch die echten Cache-Updater und den Feed-Build liefen. Fällt
+eine Quelle **ganz** aus (keine Verbindung, HTTP-Fehler, kein JSON/XML),
+bleibt ihr Cache stehen, der Feed zeigt ihren letzten Stand, `first_seen`
+bleibt erhalten, und der nächste gute Abruf stellt genau den Feed von
+vorher wieder her. Drei Fälle liefen dagegen durch:
+
+* **Teilausfall.** WL liefert in zwei Listen, die Baustellen in zwei
+  WFS-Layern. Fiel eine aus, schrieb der Updater den Rest als vollständigen
+  Cache (Exit-Code 0): ohne `trafficInfoList` verschwanden alle fünf
+  laufenden Störungen aus den zehn Plätzen, ohne `newsList` vier Hinweise,
+  ohne Linien-Layer zehn von fünfzehn Baustellen.
+* **Antwort in anderer Form.** Fehlt ein Feld in allen Einträgen, läuft der
+  Abruf mit Ersatzwerten weiter: WL ohne `title` zeigte interne Kennungen
+  („15A: I20261004-0020“) auf allen zehn Plätzen, WL ohne `time` brachte alte
+  Meldungen nach oben und stempelte ihr `first_seen`, sodass fünf der zehn
+  Plätze auch nach der nächsten guten Antwort falsch blieben; ÖBB ohne
+  `description` ließ sechs Baumeldungen aus dem Weinviertel durch,
+  Baustellen ohne Datum belegten neun Plätze.
+* **Demo-Baustellen.** Schlug der WFS ganz fehl, schrieb der Updater die
+  beiden Beispiel-Baustellen aus `data/samples/baustellen_sample.geojson`
+  (von 2025) in den Cache, sobald dieser zehn oder weniger hielt (die
+  20-%-Sperre von `write_cache` ließ 2 von 10 durch).
+
+Seither gilt eine Antwort nur, wenn sie ihre Liste trägt und kein Pflichtfeld
+in **allen** Einträgen fehlt (`src/utils/source_shape.py`; WL `title`,
+`description`, `time`, ab zehn Einträgen `relatedLines`; ÖBB `title`,
+`description`, `guid`/`link`; Baustellen Beginn, Ende, Text, Lage; geprüft
+ab drei Einträgen); eine leere WL-Liste oder ein leerer Layer zählt nicht,
+wenn die letzte gute Antwort mindestens drei Einträge hatte (beide Listen
+und beide Layer führen immer Langläufer). Ein unbrauchbarer Teil kommt aus
+seiner letzten guten Antwort unter `data/raw/` (`read_snapshot`), der Rest bleibt frisch, der
+Updater endet mit Exit-Code 3 und der Workflow meldet das als Warnung. Fehlt
+die letzte gute Antwort (ohne `RAW_CAPTURE`, also auch im Health-Check) oder
+fallen alle Teile aus, bleibt der Cache stehen (Exit-Code 1); der Health-Check
+wird in beiden Fällen rot. Die Demo-Baustellen gibt es nur noch für einen
+Checkout ohne Cache (Exit-Code 2). Nachgespielt mit dem neuen Code: jeder der
+Fälle oben ergibt genau den Feed des guten Abrufs.
+
 ---
 
 ## 2. Die `request_safe`-Security-State-Machine

@@ -416,7 +416,9 @@ jobs:
             echo "::group::${name} fetcher (exit ${rc})"
             cat "$log_dir/${name}.log"
             echo "::endgroup::"
-            if [ "$rc" -ne 0 ]; then
+            if [ "$rc" -eq 3 ]; then
+              echo "::warning title=${name} cache fetcher::part of the source gave no usable answer (exit 3) — cache refreshed, that part taken from its last good answer in data/raw/."
+            elif [ "$rc" -ne 0 ]; then
               echo "::warning title=${name} cache fetcher::non-zero exit (${rc}) — last committed cache will be used by feed build."
             fi
           }
