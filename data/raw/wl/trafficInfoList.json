@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261005-0037, I20260925-0011, I20260922-0032, I20261005-0013, I20260909-0007"
+    "trafficInfoNameList": "I20260917-0012, I20260925-0011, I20260922-0032, I20261005-0013, I20260909-0007"
    },
    {
     "id": 3,
@@ -233,40 +233,6 @@
      "start": "2026-10-05T08:30:00.000+0200"
     },
     "title": "44A: Betriebsstörung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "67B": "ptBusCity"
-     }
-    },
-    "description": "Linie 67B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie 67B:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261005-0037",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "67B"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "267",
-       "lineName": "67B",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-05T20:18:00.000+0200",
-     "end": "2026-10-05T23:55:00.000+0200",
-     "lastUpdate": "2026-10-05T20:18:00.000+0200",
-     "resume": "2026-10-05T20:18:00.000+0200",
-     "start": "2026-10-05T20:18:00.000+0200"
-    },
-    "title": "67B: Schadhaftes Fahrzeug"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
