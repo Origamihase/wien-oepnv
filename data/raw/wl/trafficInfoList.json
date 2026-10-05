@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261005-0041-F01, I20261005-0042-F01, I20261005-0042, I20260925-0011, I20260922-0032, I20261005-0043-F01, I20260909-0007, I20261005-0043"
+    "trafficInfoNameList": "I20260917-0012, I20261005-0041-F01, I20261005-0042-F01, I20261005-0044, I20260925-0011, I20260922-0032, I20261005-0043-F01, I20260909-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1974-466, R2343-626, R2343-125, R2378-627, R2380-627, R2379-627, R2345-127, R2372-627, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R318-437, R293-474, R2917-0, R2923-403, R2025-671, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R36-152, R19-136, R45-136, R5815-671, R1445-149, R1508-426, R1448-412, R1474-412, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R1150-0, R1350-143, R1348-143, R1349-143, R1351-143, R223-143, R224-143, R222-143, R221-143, R220-143, R1345-143, R237-143, R217-143, R218-143, R219-143, R234-143, R235-143, R236-143, R531-109, R533-109, R526-109, R532-109, R530-109, R223-109, R556-109, R1476-109, R1475-109, R715-407, R2579-407, R2569-407, R720-407, R719-407, R718-407, R717-407, R709-407, R721-407, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2373-126, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2378-627, R2372-627, R2345-127, R2380-627, R2379-627, R2372-125, R2373-125, R2373-127, R293-474, R318-437, R2923-403, R2917-0, R2025-671, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R19-136, R36-152, R130-136, R45-136, R5815-671, R1474-412, R1508-426, R1448-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R1150-0, R1348-143, R1349-143, R1350-143, R1351-143, R224-143, R223-143, R222-143, R221-143, R220-143, R1345-143, R217-143, R218-143, R219-143, R237-143, R236-143, R235-143, R234-143, R532-109, R533-109, R531-109, R530-109, R526-109, R223-109, R556-109, R1476-109, R1475-109, R715-407, R2579-407, R2569-407, R719-407, R709-407, R721-407, R720-407, R717-407, R718-407, R500-101, R407-506, R402-506, R1448-549, R1474-549, R1974-566, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -241,41 +241,6 @@
       "9": "ptTram"
      }
     },
-    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 00:45 Uhr. Grund: Falschparker im Bereich Hormayrgasse.",
-    "descriptionHTML": "Linie 9:<br>Fahrtbehinderung in Richtung Westbahnhof S U.<br> <br>Voraussichtliche Dauer: 00:45 Uhr.<br><br>Grund: Falschparker im Bereich Hormayrgasse.",
-    "location": "Hormayrgasse",
-    "name": "I20261005-0042",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "109",
-       "lineName": "9",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-06T00:15:00.000+0200",
-     "end": "2026-10-06T00:29:00.000+0200",
-     "lastUpdate": "2026-10-06T00:29:00.000+0200",
-     "resume": "2026-10-06T00:29:00.000+0200",
-     "start": "2026-10-06T00:14:00.000+0200"
-    },
-    "title": "9: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "9": "ptTram"
-     }
-    },
     "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "location": "Hormayrgasse",
@@ -304,43 +269,6 @@
      "start": "2026-10-06T00:14:00.000+0200"
     },
     "title": "9: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "7A": "ptBusCity"
-     }
-    },
-    "description": "Linie 7A: Fahrtbehinderung in Richtung Reumannplatz U. Voraussichtliche Dauer: 00:50 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Arthaberplatz.",
-    "descriptionHTML": "Linie 7A:<br>Fahrtbehinderung in Richtung Reumannplatz U.<br> <br>Voraussichtliche Dauer: 00:50 Uhr.<br><br>Grund: Feuerwehreinsatz im Haltestellenbereich Arthaberplatz.",
-    "name": "I20261005-0043",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "7A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "407",
-       "lineName": "7A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "relatedStops": [
-     715
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-06T00:21:00.000+0200",
-     "end": "2026-10-06T00:29:00.000+0200",
-     "lastUpdate": "2026-10-06T00:29:00.000+0200",
-     "resume": "2026-10-06T00:29:00.000+0200",
-     "start": "2026-10-06T00:20:00.000+0200"
-    },
-    "title": "7A: Feuerwehreinsatz"
    },
    {
     "attributes": {
@@ -378,6 +306,40 @@
      "start": "2026-10-06T00:20:00.000+0200"
     },
     "title": "7A: Feuerwehreinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "N49": "ptBusNight"
+     }
+    },
+    "description": "Derzeit kommt es bei der Linie N49 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Derzeit kommt es bei der Linie N49 in beiden Richtungen zu unterschiedlichen Intervallen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261005-0044",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "N49"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "549",
+       "lineName": "N49",
+       "vehicleType": "ptBusNight"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-06T00:39:00.000+0200",
+     "end": "2026-10-06T23:55:00.000+0200",
+     "lastUpdate": "2026-10-06T00:39:00.000+0200",
+     "resume": "2026-10-06T00:38:00.000+0200",
+     "start": "2026-10-06T00:38:00.000+0200"
+    },
+    "title": "N49: Verspätungen"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -755,6 +717,24 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Johnstraße U "
    },
    {
+    "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U ",
+    "name": "R1448-549",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N49"
+    ],
+    "relatedStops": [
+     1448
+    ],
+    "time": {
+     "end": "2026-10-06T04:50:00.000+0200",
+     "start": "2026-10-06T01:00:02.000+0200"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Johnstraße U "
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
     "name": "R1449-149",
     "owner": "WL",
@@ -843,6 +823,24 @@
      "start": "2026-10-06T00:00:25.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21"
+   },
+   {
+    "description": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße ",
+    "name": "R1474-549",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N49"
+    ],
+    "relatedStops": [
+     1474
+    ],
+    "time": {
+     "end": "2026-10-06T05:00:00.000+0200",
+     "start": "2026-10-06T01:00:02.000+0200"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße "
    },
    {
     "description": "Fahrtbehinderung\nFalschparker",
@@ -954,19 +952,19 @@
    },
    {
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
-    "name": "R1974-466",
+    "name": "R1974-566",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "66A"
+     "N66"
     ],
     "relatedStops": [
      1974
     ],
     "time": {
-     "end": "2026-10-06T01:00:00.000+0200",
-     "start": "2026-10-05T04:40:13.000+0200"
+     "end": "2026-10-06T04:20:00.000+0200",
+     "start": "2026-10-06T01:00:15.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
@@ -1611,6 +1609,42 @@
      "start": "2026-10-06T00:00:18.000+0200"
     },
     "title": "Züge halten\nbei Linien 6 und 18"
+   },
+   {
+    "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
+    "name": "R402-506",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     402
+    ],
+    "time": {
+     "end": "2026-10-06T05:05:00.000+0200",
+     "start": "2026-10-06T00:55:05.000+0200"
+    },
+    "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
+   },
+   {
+    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
+    "name": "R407-506",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     407
+    ],
+    "time": {
+     "end": "2026-10-06T05:04:00.000+0200",
+     "start": "2026-10-06T00:54:05.000+0200"
+    },
+    "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
    },
    {
     "description": "Züge halten\nWipplingerstr 39",
