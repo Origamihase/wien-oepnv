@@ -6,7 +6,7 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-2738, N20260209-3501, N20260209-3802, N20260209-4631, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260701-5989, N20260702-5991, N20260708-6004, N20260722-6034, N20260805-6064, N20260806-6072, N20260813-6092, N20260808-6085, N20260808-6084, N20260808-6083, N20260817-6131, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260831-6165, N20260901-6167, N20260903-6175, N20260908-6177, N20260910-6180, N20260911-6181, N20260915-6185, N20260916-6187, N20260916-6188, N20260918-6192, N20260918-6191, N20260921-6196, N20260922-6200, N20260923-6203, N20260928-6209, N20260928-6210, N20260930-6211, N20260421-5703, N20261002-6215, N20261005-6220, N20261005-6223, N20261005-6216, N20261005-6217, N20261005-6218, N20261005-6219, N20261005-6221, N20261005-6222"
+    "trafficInfoNameList": "N20260209-0049, N20260209-2738, N20260209-3501, N20260209-3802, N20260209-4631, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260701-5989, N20260702-5991, N20260708-6004, N20260722-6034, N20260805-6064, N20260806-6072, N20260813-6092, N20260808-6085, N20260808-6084, N20260808-6083, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260831-6165, N20260901-6167, N20260903-6175, N20260908-6177, N20260910-6180, N20260911-6181, N20260915-6185, N20260916-6187, N20260916-6188, N20260918-6192, N20260918-6191, N20260921-6196, N20260922-6200, N20260923-6203, N20260928-6209, N20260928-6210, N20260930-6211, N20260421-5703, N20261002-6215, N20261005-6223, N20261005-6216, N20261005-6217, N20261005-6218, N20261005-6219, N20261005-6221, N20261005-6222"
    },
    {
     "id": -1,
@@ -1190,59 +1190,6 @@
      "validFrom": "2026-08-17T09:07:00.000+0200"
     },
     "title": "31A: Kagraner Friedhof "
-   },
-   {
-    "description": "<h2>Netz&auml;nderung</h2>\r\n<p>Die Linie 57A bekommt eine neue Haltestelle.&nbsp;</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Zeitpunkt:</strong></span><br />Ab 05. September 2026.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie 57A:</strong></p>\r\n<p><span style=\"text-decoration: underline;\">Haltestelle Richtung Rudolfsheim, Ansch&uuml;tzgasse:</span><br />- Gfrornergasse (Gumpendorfer Stra&szlig;e 126-128)</p>\r\n<p><span style=\"text-decoration: underline;\">Haltestelle Richtung Burgring:</span><br />- Gfrornergasse (Gumpendorfer Stra&szlig;e 139-141)</p>",
-    "id": "N20260817-6131",
-    "location": {
-     "properties": {
-      "attributes": {},
-      "coordName": "WGS84",
-      "type": "news"
-     },
-     "type": "Feature"
-    },
-    "name": "N20260817-6131",
-    "refPoiCategoryId": 13296,
-    "relatedLines": [
-     "57A"
-    ],
-    "relatedStops": [
-     1569,
-     1570,
-     1571,
-     1573,
-     1574,
-     1575,
-     1576,
-     1577,
-     1578,
-     1579,
-     1581,
-     1582,
-     1589,
-     1593,
-     2722,
-     773,
-     1580,
-     1583,
-     1584,
-     1585,
-     1586,
-     1587,
-     1588,
-     1590,
-     1592,
-     1594,
-     2723,
-     5619
-    ],
-    "time": {
-     "end": "2026-10-05T23:59:00.000+0200",
-     "start": "2026-08-17T00:00:00.000+0200",
-     "validFrom": "2026-08-17T10:00:00.000+0200"
-    },
-    "title": "57A: Errichtung einer Haltestelle"
    },
    {
     "description": "<h2>Gleisbauarbeiten</h2>\r\n<p>Wegen Gleisbauarbeiten im Bereich M&auml;rzstra&szlig;e und Huglgasse werden die Linien 12A und N49 umgeleitet.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab 15. September 2026, etwa 00:30 Uhr, bis voraussichtlich Ende November 2026.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 12A in Richtung Eichenstra&szlig;e:<br /></strong>Umleitung ab&nbsp;<span lang=\"DE\" style=\"font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: DE; mso-fareast-language: DE-AT; mso-bidi-language: AR-SA;\">H&uuml;tteldorfer Stra&szlig;e # Huglgasse &uuml;ber H&uuml;tteldorfer Stra&szlig;e &ndash; Schweglerstra&szlig;e </span>zur Stammstrecke.</p>\r\n<p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>- Huglgasse (Huglgasse 7)<br />- Schweglerstra&szlig;e (M&auml;rzstra&szlig;e 49 nach St&auml;ttermayergasse)</p>\r\n<p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:<br /></span>- Schweglerstra&szlig;e (Schweglerstra&szlig;e 19-21)<br /><br /></p>\r\n<p><strong>Linie 12A in Richtung Schmelz, Gablenzgasse:<br /></strong>Umleitung ab&nbsp;<span lang=\"DE\" style=\"font-size: 12pt; font-family: Arial, sans-serif;\"><span lang=\"DE\" style=\"font-size: 12pt;\">Schweglerstra&szlig;e # Goldschlagstra&szlig;e &uuml;ber </span><span lang=\"DE\" style=\"font-size: 12pt;\">Schweglerstra&szlig;e &ndash; H&uuml;tteldorfer Stra&szlig;e</span>&nbsp;</span>zur Stammstrecke.</p>\r\n<p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>- Schweglerstra&szlig;e (Goldschlagstra&szlig;e 54 nach St&auml;ttermayergasse)<br />- Huglgasse (Huglgasse nach M&auml;rzstra&szlig;e)</p>\r\n<p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:<br /></span>- Schweglerstra&szlig;e (Schweglerstra&szlig;e 20-22)</p>\r\n<p><strong>Linie N49 in Richtung H&uuml;tteldorf, Bujattigasse:<br /></strong>Umleitung ab&nbsp;<span lang=\"DE\" style=\"font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: DE; mso-fareast-language: DE-AT; mso-bidi-language: AR-SA;\">M&auml;rzstra&szlig;e # Schweglerstra&szlig;e &uuml;ber Schweglerstra&szlig;e &ndash; H&uuml;tteldorfer Stra&szlig;e</span>&nbsp;zur Stammstrecke.</p>\r\n<p><span style=\"text-decoration: underline;\">Ersatzlos aufgelassene Haltestelle:<br /></span>- Huglgasse (Huglgasse 24-26 nach M&auml;rzstra&szlig;e)</p>\r\n<p><strong>Linie N49 in Richtung Oper, Karlsplatz:<br /></strong>Umleitung ab&nbsp;<span lang=\"DE\" style=\"font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: DE; mso-fareast-language: DE-AT; mso-bidi-language: AR-SA; mso-bidi-font-weight: bold;\">H&uuml;tteldorfer Stra&szlig;e # Huglgasse &uuml;ber </span><span lang=\"DE\" style=\"font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: DE; mso-fareast-language: DE-AT; mso-bidi-language: AR-SA;\">H&uuml;tteldorfer Stra&szlig;e &ndash; Schweglerstra&szlig;e &ndash; M&auml;rzstra&szlig;e </span>zur Stammstrecke.</p>\r\n<p><span style=\"text-decoration: underline;\">Ersatzlos aufgelassene Haltestelle:<br /></span>- Huglgasse (Huglgasse 7 vor Kardinal-Rauscher-Platz)</p>",
@@ -2501,26 +2448,6 @@
      "validFrom": "2026-10-05T15:34:00.000+0200"
     },
     "title": "66A, N66: Liesing, Schulzentrum"
-   },
-   {
-    "description": "<h2>Bauarbeiten</h2>\r\n<p>Wegen Rohrlegungsarbeiten in der Anzengruberstra&szlig;e werden die Linien 49A und 50B umgeleitet.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Mittwoch, 07. Oktober 2026, etwa 07:00 Uhr f&uuml;r voraussichtlich drei Monate.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie 49A in Richtung Wolfersberg, Sch&ouml;ffelplatz,</strong><br /><strong>Linie 50B in Richtung Auhof:</strong><br />Umleitung ab Glossystra&szlig;e # Riedstra&szlig;e &uuml;ber Riedstra&szlig;e - Andreas-Lechner-Stra&szlig;e zur Anzengruberstra&szlig;e.</p>\r\n<p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:</span><br />- Josef-Ressel-Stra&szlig;e (Josef-Ressel-Stra&szlig;e 19)<br /><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Josef-Ressel-Stra&szlig;e (Glossystra&szlig;e 1)</p>\r\n<p><strong>Linie 49A in Richtung Bhf. H&uuml;tteldorf S U:</strong><br />Umleitung ab Anzengruberstra&szlig;e # Andreas-Lechner-Stra&szlig;e &uuml;ber Andreas-Lechner-Stra&szlig;e - Riedstra&szlig;e.</p>\r\n<p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:</span><br />- Josef-Ressel-Stra&szlig;e (Anzengruberstra&szlig;e 47)<br /><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Josef-Ressel-Stra&szlig;e (Riedstra&szlig;e 49)</p>",
-    "id": "N20261005-6220",
-    "location": {
-     "properties": {
-      "attributes": {},
-      "coordName": "WGS84",
-      "type": "news"
-     },
-     "type": "Feature"
-    },
-    "name": "N20261005-6220",
-    "refPoiCategoryId": 13296,
-    "time": {
-     "end": "2026-10-05T23:59:00.000+0200",
-     "start": "2026-10-05T00:00:00.000+0200",
-     "validFrom": "2026-10-05T15:39:00.000+0200"
-    },
-    "title": "49A, 50B: Bauarbeiten Anzengruberstraße ab 07.10.2026"
    },
    {
     "description": "<h2>Aufgangssperre</h2>\r\n<p>Wegen Sanierungsarbeiten wird in der Station Nestroyplatz ein Aufgang gesperrt.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Von Montag, 12. Oktober 2026, 04:30 Uhr bis 30. November 2026, 04:30 Uhr.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br />Gesperrt werden in der Station Nestroyplatz der Aufgang und die Rolltreppe Weintraubengasse (Praterstra&szlig;e 33 gegen&uuml;ber).</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />Bitte ben&uuml;tzen Sie die anderen Aufg&auml;nge dieser Station.</p>",
