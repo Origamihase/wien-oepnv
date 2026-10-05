@@ -7,51 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 05 Oct 2026 10:00:33 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 10:30:41 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[60: Police operation]]></title>
+      <title><![CDATA[U6: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">adbc205fada2fc64ad22e011c50abe7d99265772e9404e3b8c41ed5b0dfc70d9</guid>
-      <pubDate>Mon, 05 Oct 2026 09:18:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 09:30:43 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 09:29:45 +0200</ext:starts_at>
+      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
+      <pubDate>Mon, 05 Oct 2026 10:24:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 10:24:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 10:24:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service from Anschützgasse. After a service obstruction there are different intervals. [Since 09:18]</description>
-      <content:encoded><![CDATA[Service from Anschützgasse. After a service obstruction there are different intervals.<br/>[Since 09:18]]]></content:encoded>
+      <description>Line U6 currently does not operate between Westbahnhof and Längenfeldgasse. [Since 10:24]</description>
+      <content:encoded><![CDATA[Line U6 currently does not operate between Westbahnhof and Längenfeldgasse.<br/>[Since 10:24]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[10: Police operation]]></title>
+      <title><![CDATA[10/60: Police operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">381829f20deab888a50e0846e6431dbf3ea0d5a796a28663625e48630c13c686</guid>
       <pubDate>Mon, 05 Oct 2026 09:18:00 +0200</pubDate>
       <ext:first_seen>Mon, 05 Oct 2026 09:30:15 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 09:31:22 +0200</ext:starts_at>
+      <ext:starts_at>Mon, 05 Oct 2026 09:18:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service from Penzinger Straße. After a service obstruction there are different intervals. [Since 09:18]</description>
-      <content:encoded><![CDATA[Service from Penzinger Straße. After a service obstruction there are different intervals.<br/>[Since 09:18]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4</guid>
-      <pubDate>Mon, 05 Oct 2026 09:10:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 09:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 09:10:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Since 09:10]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 09:10]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: Service disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f</guid>
-      <pubDate>Mon, 05 Oct 2026 09:05:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 09:05:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 09:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: service disruption in the stop area of Landstraße. [Since 09:05]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption in the stop area of Landstraße.<br/>[Since 09:05]]]></content:encoded>
+      <description>After a service obstruction there are different intervals. [Since 09:18]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 09:18]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44A: Service disruption]]></title>
@@ -76,17 +54,6 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 08:05]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U1: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945</guid>
-      <pubDate>Mon, 05 Oct 2026 07:53:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 07:53:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 07:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Since 07:53]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 07:53]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[22A: Defective vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">ceb7edc1cfe88cf7c5e71cdcc659b084525522b795c8c9186e0465333a83a398</guid>
@@ -96,6 +63,17 @@
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 07:02]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 07:02]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Döblinger Friedhof]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">627870b759e3f3a09d810891178ef7bb5fd8766a4951e9e88fdd4b55aefe9cae</guid>
+      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Stop relocation of line 40A towards Schottentor. Stop: Döblinger Friedhof. From: Hartäckerstraße 65. To: Approx. 50 metres towards Borkowskigasse. … [Until 26.10.]</description>
+      <content:encoded><![CDATA[Stop relocation of line 40A towards Schottentor. Stop: Döblinger Friedhof. From: Hartäckerstraße 65. To: Approx. 50 metres towards Borkowskigasse. …<br/>[Until 26.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Neue Donau, no stop towards Floridsdorf]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Tue, 06 Oct 2026 01:00:00 +0200</ext:ends_at>
       <description>Reason: construction works. [Until Tue 06.10.]</description>
       <content:encoded><![CDATA[Reason: construction works.<br/>[Until Tue 06.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Rennweg 33A–37]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">65573981646b35911098f80f5060d16369450fbc04c8d50c90d9db3a086b9b29</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 22:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
+      <description>The work takes place in the period from 20:00 to 05:00. The left lane in the direction of the city is closed. [Until 15.11.]</description>
+      <content:encoded><![CDATA[The work takes place in the period from 20:00 to 05:00. The left lane in the direction of the city is closed.<br/>[Until 15.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52: Trains stop at the stops of lines 6 and 18]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:14 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 00:00:14 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Today]</description>
+      <content:encoded><![CDATA[[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>

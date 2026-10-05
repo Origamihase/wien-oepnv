@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261005-0006, I20260917-0012, I20261005-0012, I20261005-0010-F01, I20261005-0014, I20261005-0015-F01, I20260925-0011, I20260922-0032, I20261005-0011, I20261005-0013, I20260909-0007, I20261005-0016-F01, I20261005-0016-F02"
+    "trafficInfoNameList": "I20261005-0006, I20260917-0012, I20261005-0012, I20261005-0017, I20260925-0011, I20260922-0032, I20261005-0011, I20261005-0013, I20260909-0007, I20261005-0016-F01, I20261005-0016-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R101-136, R100-136, R2345-127, R2380-627, R2379-627, R2373-126, R1150-0, R2372-627, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R102-136, R103-136, R1476-149, R318-437, R293-474, R2558-125, R2923-403, R2917-0, R2025-671, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R4843-162, R1709-162, R1712-162, R1713-162, R1714-162, R1715-162, R1710-162, R1751-162, R1752-162, R1753-162, R1754-162, R1756-162, R1711-162, R1974-466, R500-101, R1560-160, R1559-160, R1561-160, R1562-160, R577-160, R574-160, R576-160, R1535-160, R1537-160, R1536-160, R572-160, R571-110, R572-110, R1597-110, R1610-110, R1599-110, R1598-110, R574-110, R576-110, R1605-110, R1603-110, R1602-110, R1601-110, R1604-110, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R101-136, R100-136, R2345-127, R2380-627, R1150-0, R2372-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R102-136, R103-136, R1476-149, R318-437, R293-474, R2558-125, R2923-403, R2917-0, R2025-671, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R4843-162, R1756-162, R1754-162, R1753-162, R1752-162, R1751-162, R1710-162, R1711-162, R1709-162, R1715-162, R1714-162, R1713-162, R1712-162, R1974-466, R500-101, R1356-444, R1349-444, R1357-444, R1350-444, R8894-444, R8895-444, R8873-444, R8869-444, R8879-444, R8880-444, R8881-444, R8882-444, R8883-444, R8889-444, R8890-444, R8891-444, R8892-444, R8893-444, R8878-444, R8877-444, R8876-444, R8875-444, R8874-444, R8872-444, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -237,43 +237,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261005-0010-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "301",
-       "lineName": "U1",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4181
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-05T08:16:00.000+0200",
-     "end": "2026-10-05T23:55:00.000+0200",
-     "lastUpdate": "2026-10-05T08:16:00.000+0200",
-     "resume": "2026-10-05T08:16:00.000+0200",
-     "start": "2026-10-05T07:53:00.000+0200"
-    },
-    "title": "U1: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "63A": "ptBusCity"
      }
     },
@@ -376,79 +339,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung im Haltestellenbereich Landstraße.",
-    "descriptionHTML": "Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Betriebsstörung im Haltestellenbereich Landstraße.",
-    "name": "I20261005-0014",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "303",
-       "lineName": "U3",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4913
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-05T09:06:00.000+0200",
-     "end": "2026-10-05T23:55:00.000+0200",
-     "lastUpdate": "2026-10-05T09:06:00.000+0200",
-     "start": "2026-10-05T09:05:00.000+0200"
-    },
-    "title": "U3: Betriebsstörung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261005-0015-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "304",
-       "lineName": "U4",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4407
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-05T09:15:00.000+0200",
-     "end": "2026-10-05T23:55:00.000+0200",
-     "lastUpdate": "2026-10-05T09:15:00.000+0200",
-     "resume": "2026-10-05T09:15:00.000+0200",
-     "start": "2026-10-05T09:10:00.000+0200"
-    },
-    "title": "U4: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "10": "ptTram"
      }
     },
@@ -519,6 +409,42 @@
      "start": "2026-10-05T09:18:00.000+0200"
     },
     "title": "60: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Die Linie U6 fährt derzeit nicht zwischen Westbahnhof und Längenfeldgasse. Weichen Sie ersatzweise auf die Linien U4, 6,18 aus. Voraussichtliche Dauer: 11:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Gumpendorfer Straße.",
+    "descriptionHTML": "Die Linie U6 fährt derzeit nicht zwischen Westbahnhof und Längenfeldgasse.<br> <br>Weichen Sie ersatzweise auf die Linien U4, 6,18 aus.<br><br>Voraussichtliche Dauer: 11:30 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Gumpendorfer Straße.",
+    "name": "I20261005-0017",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4618
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-05T10:25:00.000+0200",
+     "end": "2026-10-05T23:55:00.000+0200",
+     "lastUpdate": "2026-10-05T10:28:00.000+0200",
+     "start": "2026-10-05T10:24:00.000+0200"
+    },
+    "title": "U6: Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -714,6 +640,78 @@
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R1349-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     1349
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:37.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R1350-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     1350
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:37.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R1356-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     1356
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:37.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R1357-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     1357
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:37.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -948,294 +946,6 @@
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78"
-   },
-   {
-    "description": "Polizeieinsatz\nBetrieb ab Hietzing U",
-    "name": "R1535-160",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1535
-    ],
-    "time": {
-     "end": "2026-10-05T10:28:00.000+0200",
-     "start": "2026-10-05T09:29:22.000+0200"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Hietzing U"
-   },
-   {
-    "description": "Polizeieinsatz\nBetrieb ab Hietzing U",
-    "name": "R1536-160",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1536
-    ],
-    "time": {
-     "end": "2026-10-05T10:28:00.000+0200",
-     "start": "2026-10-05T09:29:22.000+0200"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Hietzing U"
-   },
-   {
-    "description": "Polizeieinsatz\nBetrieb ab Hietzing U",
-    "name": "R1537-160",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1537
-    ],
-    "time": {
-     "end": "2026-10-05T10:28:00.000+0200",
-     "start": "2026-10-05T09:29:22.000+0200"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Hietzing U"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1559-160",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1559
-    ],
-    "time": {
-     "end": "2026-10-05T10:17:00.000+0200",
-     "start": "2026-10-05T09:18:21.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1560-160",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1560
-    ],
-    "time": {
-     "end": "2026-10-05T10:17:00.000+0200",
-     "start": "2026-10-05T09:18:21.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1561-160",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1561
-    ],
-    "time": {
-     "end": "2026-10-05T10:17:00.000+0200",
-     "start": "2026-10-05T09:18:21.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1562-160",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1562
-    ],
-    "time": {
-     "end": "2026-10-05T10:17:00.000+0200",
-     "start": "2026-10-05T09:18:21.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1597-110",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     1597
-    ],
-    "time": {
-     "end": "2026-10-05T10:29:00.000+0200",
-     "start": "2026-10-05T09:30:22.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1598-110",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     1598
-    ],
-    "time": {
-     "end": "2026-10-05T10:29:00.000+0200",
-     "start": "2026-10-05T09:30:22.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1599-110",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     1599
-    ],
-    "time": {
-     "end": "2026-10-05T10:29:00.000+0200",
-     "start": "2026-10-05T09:30:22.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Polizeieinsatz\nBetrieb ab Penzinger Straße",
-    "name": "R1601-110",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     1601
-    ],
-    "time": {
-     "end": "2026-10-05T10:30:00.000+0200",
-     "start": "2026-10-05T09:31:22.000+0200"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Penzinger Straße"
-   },
-   {
-    "description": "Polizeieinsatz\nBetrieb ab Penzinger Straße",
-    "name": "R1602-110",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     1602
-    ],
-    "time": {
-     "end": "2026-10-05T10:30:00.000+0200",
-     "start": "2026-10-05T09:31:22.000+0200"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Penzinger Straße"
-   },
-   {
-    "description": "Polizeieinsatz\nBetrieb ab Penzinger Straße",
-    "name": "R1603-110",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     1603
-    ],
-    "time": {
-     "end": "2026-10-05T10:30:00.000+0200",
-     "start": "2026-10-05T09:31:22.000+0200"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Penzinger Straße"
-   },
-   {
-    "description": "Polizeieinsatz\nBetrieb ab Penzinger Straße",
-    "name": "R1604-110",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     1604
-    ],
-    "time": {
-     "end": "2026-10-05T10:30:00.000+0200",
-     "start": "2026-10-05T09:31:22.000+0200"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Penzinger Straße"
-   },
-   {
-    "description": "Polizeieinsatz\nBetrieb ab Penzinger Straße",
-    "name": "R1605-110",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     1605
-    ],
-    "time": {
-     "end": "2026-10-05T10:30:00.000+0200",
-     "start": "2026-10-05T09:31:22.000+0200"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Penzinger Straße"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1610-110",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     1610
-    ],
-    "time": {
-     "end": "2026-10-05T10:29:00.000+0200",
-     "start": "2026-10-05T09:30:22.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "description": "ÖBB Bauarbeiten\nBetrieb ab Kliebergasse",
@@ -1916,150 +1626,6 @@
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R571-110",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     571
-    ],
-    "time": {
-     "end": "2026-10-05T10:29:00.000+0200",
-     "start": "2026-10-05T09:30:15.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R572-110",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     572
-    ],
-    "time": {
-     "end": "2026-10-05T10:29:00.000+0200",
-     "start": "2026-10-05T09:30:15.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Polizeieinsatz\nBetrieb ab Hietzing U",
-    "name": "R572-160",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     572
-    ],
-    "time": {
-     "end": "2026-10-05T10:28:00.000+0200",
-     "start": "2026-10-05T09:29:45.000+0200"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Hietzing U"
-   },
-   {
-    "description": "Polizeieinsatz\nBetrieb ab Penzinger Straße",
-    "name": "R574-110",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     574
-    ],
-    "time": {
-     "end": "2026-10-05T10:30:00.000+0200",
-     "start": "2026-10-05T09:31:15.000+0200"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Penzinger Straße"
-   },
-   {
-    "description": "Polizeieinsatz\nBetrieb ab Anschützgasse",
-    "name": "R574-160",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     574
-    ],
-    "time": {
-     "end": "2026-10-05T10:28:00.000+0200",
-     "start": "2026-10-05T09:28:45.000+0200"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Anschützgasse"
-   },
-   {
-    "description": "Polizeieinsatz\nBetrieb ab Penzinger Straße",
-    "name": "R576-110",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     576
-    ],
-    "time": {
-     "end": "2026-10-05T10:30:00.000+0200",
-     "start": "2026-10-05T09:31:15.000+0200"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Penzinger Straße"
-   },
-   {
-    "description": "Polizeieinsatz\nBetrieb ab Anschützgasse",
-    "name": "R576-160",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     576
-    ],
-    "time": {
-     "end": "2026-10-05T10:28:00.000+0200",
-     "start": "2026-10-05T09:28:45.000+0200"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Anschützgasse"
-   },
-   {
-    "description": "Polizeieinsatz\nBetrieb ab Anschützgasse",
-    "name": "R577-160",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     577
-    ],
-    "time": {
-     "end": "2026-10-05T10:28:00.000+0200",
-     "start": "2026-10-05T09:18:44.000+0200"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Anschützgasse"
-   },
-   {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "name": "R5815-671",
     "owner": "WL",
@@ -2073,6 +1639,366 @@
      "start": "2026-10-01T00:00:13.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8869-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8869
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8872-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8872
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8873-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8873
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8874-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8874
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8875-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8875
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8876-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8876
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8877-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8877
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8878-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8878
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8879-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8879
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8880-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8880
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8881-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8881
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8882-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8882
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8883-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8883
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8889-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8889
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8890-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8890
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8891-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8891
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8892-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8892
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8893-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8893
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:54.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8894-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8894
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:51.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
+   },
+   {
+    "description": "Fahrplanaushang\nbitte beachten",
+    "name": "R8895-444",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44A"
+    ],
+    "relatedStops": [
+     8895
+    ],
+    "time": {
+     "end": "2026-10-05T23:59:59.000+0200",
+     "start": "2026-10-05T10:27:51.000+0200"
+    },
+    "title": "Fahrplanaushang\nbitte beachten"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
