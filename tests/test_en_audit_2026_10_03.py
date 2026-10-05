@@ -391,8 +391,11 @@ def test_oebb_templates_are_oebb_only(cause_stub: list[str]) -> None:
     text = (
         "Wegen einer Weichenstörung sind in St.Pölten Hbf derzeit keine Fahrten möglich."
     )
-    build_feed._translate_text_attempt(text, source=_WL)
-    assert len(cause_stub) == 1 and "keine Fahrten" in cause_stub[0]
+    out = build_feed._translate_text_attempt(text, source=_WL)
+    # WL's own "Wegen …" rendering may try first (the stub leaves "Deshalb"
+    # German, so it falls back); ÖBB's frame never applies.
+    assert out is not None and "no trains can run" not in out
+    assert cause_stub[-1].startswith("Wegen ") and "keine Fahrten" in cause_stub[-1]
 
 
 def test_a_failed_cause_fails_the_text(monkeypatch: Any) -> None:

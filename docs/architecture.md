@@ -1867,6 +1867,20 @@ Nicht jeder Text gehört in ein NMT-Modell:
   Abweichung nach der zweiten Station im Stationsfeld, Deutsch mitten im
   englischen Satz („… and Gramatneusiedl Bahnhof Zugfahrten bis
   voraussichtlich 27.08.2026, 23:59 Uhr.“; vierte Nachprüfung 2026-10-03).
+* **WL-Sätze mit „Wegen …“ (seit 2026-10-05).** WL schreibt Ursachen wie
+  ÖBB vor den Hauptsatz („Wegen Bauarbeiten im Bereich Wildbadgasse wird die
+  Linie 20A umgeleitet.“), und das Modell verlor daran den Sinn
+  („Construction works in the area of Wildbadgasse is redirected to line
+  20A.“, 3 sinnentstellte Sätze seit Juli; nach der Textänderung bei U6 Neue
+  Donau fiel der Grund ganz weg). Die Hauptsätze sind freie Prosa, Felder
+  gibt es nicht: `_render_wl_because_sentence` übersetzt die Ursache als
+  kurze Phrase (wie bei ÖBB) und den Hauptsatz als eigenen Satz, eröffnet
+  mit „Deshalb“, damit das Verb an zweiter Stelle bleibt. Das „Therefore,“
+  des Modells fällt weg, die Ursache tritt an seine Stelle („Due to
+  construction works in the area of Wildbadgasse, line 20A is diverted.“).
+  Beginnt das Modell den Hauptsatz anders oder enthält die Ursache ein Komma
+  (244 von 255 WL-„Wegen“-Sätzen seit Juli passen), geht der Satz wie bisher
+  als Ganzes durchs Modell. Epoche 22.
 * **Halte-Meldungen der WL.** Nach „Busse/Züge halten“ und „Ersatzbus hält“
   wählte das Modell die Präposition in jedem Lauf neu („Buses stop
   Salvatorianerplatz“, „Trains stop for lines 6 and 18“). Seit 2026-10-04

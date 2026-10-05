@@ -5,6 +5,16 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Englischer Feed: WL-Sätze mit „Wegen …“ (2026-10-05)**: Nach der
+  Textänderung bei „U6: Neue Donau“ wurde der Satz neu übersetzt und verlor
+  seinen Grund („The U6 station stops at Neue Donau U …“). Kein Einzelfall:
+  Seit Juli erschienen 3 WL-Sätze nach dem Muster „Wegen X wird Linie Y
+  umgeleitet“ sinnentstellt („Construction works in the area of Wildbadgasse
+  is redirected to line 20A.“). `_render_wl_because_sentence` übersetzt
+  Ursache und Hauptsatz getrennt, den Hauptsatz mit „Deshalb“ eröffnet;
+  passt die Antwort des Modells nicht in diese Form, bleibt es beim
+  bisherigen Weg. Betreiberentscheidung „Absichern“. Epoche 22 (alle
+  englischen Texte werden einmal neu übersetzt).
 * **Haltestellenverlegungen: Hausnummern und zwei Richtungen (2026-10-05)**:
   Nachprüfung von „neue Lage zuerst, mit Pfeil“ über 17.467 verschiedene
   Meldungen seit Juli (WL, ÖBB, Baustellen) mit altem und neuem Code. Zwei
