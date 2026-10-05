@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 05 Oct 2026 08:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 09:00:38 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[44A: Service disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c35ae9ad6b542c284deedaf83b46bffc7bc9ccdf464981103a7defed6ec3536a</guid>
+      <pubDate>Mon, 05 Oct 2026 08:30:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 09:00:38 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 08:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: service disruption. [Since 08:30]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[Since 08:30]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[12A/63A: Traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Tue, 06 Oct 2026 01:00:00 +0200</ext:ends_at>
       <description>Reason: construction works. [Until Tue 06.10.]</description>
       <content:encoded><![CDATA[Reason: construction works.<br/>[Until Tue 06.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Rennweg 33A–37]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">65573981646b35911098f80f5060d16369450fbc04c8d50c90d9db3a086b9b29</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 22:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
-      <description>The work takes place in the period from 20:00 to 05:00. The left lane in the direction of the city is closed. [Until 15.11.]</description>
-      <content:encoded><![CDATA[The work takes place in the period from 20:00 to 05:00. The left lane in the direction of the city is closed.<br/>[Until 15.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

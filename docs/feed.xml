@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 05 Oct 2026 08:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 09:00:38 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[44A: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c35ae9ad6b542c284deedaf83b46bffc7bc9ccdf464981103a7defed6ec3536a</guid>
+      <pubDate>Mon, 05 Oct 2026 08:30:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 09:00:38 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 08:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Seit 08:30]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 08:30]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[12A/63A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Tue, 06 Oct 2026 01:00:00 +0200</ext:ends_at>
       <description>Grund: Bauarbeiten. [Bis Di 06.10.]</description>
       <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Bis Di 06.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Rennweg 33A–37]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">65573981646b35911098f80f5060d16369450fbc04c8d50c90d9db3a086b9b29</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 22:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 30 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
-      <description>Die Arbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Der linke Fahrstreifen in Fahrtrichtung stadteinwärts wird gesperrt. [Bis 15.11.]</description>
-      <content:encoded><![CDATA[Die Arbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Der linke Fahrstreifen in Fahrtrichtung stadteinwärts wird gesperrt.<br/>[Bis 15.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
