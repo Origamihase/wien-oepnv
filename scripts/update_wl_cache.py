@@ -18,6 +18,7 @@ from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.providers.wiener_linien import fetch_events  # noqa: E402  (import after path setup)
 from src.providers.wl_fetch import SourceIncompleteError, fallback_parts  # noqa: E402
 from src.providers.wl_plausibility import collected_corrections, record_corrections  # noqa: E402
+from src.providers import wl_resolved  # noqa: E402
 from src.utils.cache import DataDegradationError, write_cache  # noqa: E402
 from src.utils.serialize import serialize_for_cache  # noqa: E402
 
@@ -27,6 +28,9 @@ logger = logging.getLogger("update_wl_cache")
 # Contradictions between the sources of a WL item and how they were settled
 # (see ``src/providers/wl_plausibility.py``). Committed with the cache.
 PLAUSIBILITY_ANOMALIES = REPO_ROOT / "data" / "wl_plausibility_anomalies.json"
+# Display tickers of incidents WL marked resolved, dropped until WL removes
+# them (see ``src/providers/wl_resolved.py``). Committed with the cache.
+RESOLVED_TICKERS = REPO_ROOT / "data" / "wl_resolved_tickers.json"
 
 
 def record_plausibility_anomalies(path: Path = PLAUSIBILITY_ANOMALIES) -> None:
@@ -39,6 +43,23 @@ def record_plausibility_anomalies(path: Path = PLAUSIBILITY_ANOMALIES) -> None:
         return
     if new:
         logger.info("WL-Plausibilität: %d neue Auffälligkeit(en) gesammelt.", new)
+
+
+def load_resolved_tickers(path: Path = RESOLVED_TICKERS) -> None:
+    """Remember the tickers of closed incidents from the last run; never fails the run."""
+    try:
+        wl_resolved.load_memory(path)
+    except (OSError, ValueError) as exc:
+        logger.warning("WL-Kurzmeldungen erledigter Störungen nicht gelesen (%s).", type(exc).__name__)
+        wl_resolved.forget()
+
+
+def save_resolved_tickers(path: Path = RESOLVED_TICKERS) -> None:
+    """Keep the tickers of closed incidents for the next run; never fails the run."""
+    try:
+        wl_resolved.save_memory(path)
+    except OSError as exc:
+        logger.warning("WL-Kurzmeldungen erledigter Störungen nicht geschrieben (%s).", type(exc).__name__)
 
 
 def configure_logging() -> None:
@@ -54,6 +75,7 @@ def main() -> int:
     """Entry point for refreshing the Wiener Linien cache."""
 
     configure_logging()
+    load_resolved_tickers()
     try:
         items = fetch_events()
     except SourceIncompleteError as exc:
@@ -66,6 +88,7 @@ def main() -> int:
         return 1
 
     record_plausibility_anomalies()
+    save_resolved_tickers()
 
     # Defensive: fetch_events() is annotated list[...], so mypy --strict
     # sees this runtime contract guard as unreachable. Keep it regardless —
