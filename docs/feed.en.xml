@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 05 Oct 2026 14:00:42 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 14:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[12/5: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">452ea077d26d994e779db36fd962bb3ffcf0d4420ef0b80400da3d67c2d5c866</guid>
+      <pubDate>Mon, 05 Oct 2026 14:18:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 14:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 14:18:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: illegally parked vehicle. [Since 14:18]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: illegally parked vehicle.<br/>[Since 14:18]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U6: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected. [Until 07.12.]</description>
       <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected.<br/>[Until 07.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26E/N20: Fultonstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8360905f480d6715f571ad6ca70aa298b8c553200665d5153e2d69632338a199</guid>
-      <pubDate>Mon, 28 Sep 2026 15:45:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 15:45:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Stop relocation of line 26E towards Josef-Baumann-Gasse and line N20 towards Eßling, Stadtgrenze. Stop: Fultonstraße. From: Donaufelder Straße … [Until 26.10.]</description>
-      <content:encoded><![CDATA[Stop relocation of line 26E towards Josef-Baumann-Gasse and line N20 towards Eßling, Stadtgrenze. Stop: Fultonstraße. From: Donaufelder Straße …<br/>[Until 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

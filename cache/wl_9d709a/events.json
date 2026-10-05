@@ -674,6 +674,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12/5: Falschparker",
+    "description": "Linie 5: Unregelmäßige Intervalle in beiden Richtungen. Linie 12: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "452ea077d26d994e779db36fd962bb3ffcf0d4420ef0b80400da3d67c2d5c866",
+    "pubDate": "2026-10-05T14:18:00+02:00",
+    "starts_at": "2026-10-05T14:18:00+02:00",
+    "ends_at": "2026-10-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=12,5|D=2026-10-05|TK=falschparker"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",

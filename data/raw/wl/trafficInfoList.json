@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261005-0020-F01, I20260925-0011, I20260922-0032, I20261005-0013, I20260909-0007"
+    "trafficInfoNameList": "I20260917-0012, I20261005-0020-F01, I20261005-0025, I20260925-0011, I20260922-0032, I20261005-0013, I20260909-0007"
    },
    {
     "id": 3,
@@ -270,6 +270,48 @@
      "start": "2026-10-05T11:12:00.000+0200"
     },
     "title": "U6: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "12": "ptTram",
+      "5": "ptTram"
+     }
+    },
+    "description": "Linie 5: Unregelmäßige Intervalle in beiden Richtungen. Linie 12: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "descriptionHTML": "Linie 5:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 12:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Falschparker.",
+    "location": "Florianigassee",
+    "name": "I20261005-0025",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12",
+     "5"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "112",
+       "lineName": "12",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "105",
+       "lineName": "5",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-05T14:23:00.000+0200",
+     "end": "2026-10-05T23:55:00.000+0200",
+     "lastUpdate": "2026-10-05T14:23:00.000+0200",
+     "resume": "2026-10-05T14:18:00.000+0200",
+     "start": "2026-10-05T14:18:00.000+0200"
+    },
+    "title": "12, 5: Falschparker"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
