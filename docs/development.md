@@ -157,7 +157,7 @@ schreibt. Die wichtigsten Parameter:
 | `FEED_LINK`              | Referenz-URL (nur http/https, Standard: GitHub-Repository).                     |
 | `PAGES_BASE_URL`         | Basis-URL der GitHub-Pages-Site für absolute Permalinks (Standard `https://origamihase.github.io/wien-oepnv`). Wird gegen die Pages-Host-Allow-List validiert; abweichende Werte fallen auf den Standard zurück. |
 | `MAX_ITEMS`              | Anzahl der Einträge im Feed (Standard 10).                                      |
-| `MAX_ITEMS_PER_TOPIC`    | Höchstens so viele Einträge je Ursachenwort und Tag in den vorderen Plätzen; weitere rutschen hinter das Feld (Standard 3, 0 schaltet ab). Ohne eigene Variable gilt zusätzlich: Von mehreren ÖBB-Einträgen mit wortgleichem Titel (eine Strecke, mehrere Bauphasen) behält nur der mit dem frühesten Zeitfenster seinen Platz. |
+| `MAX_ITEMS_PER_TOPIC`    | Höchstens so viele Einträge je Ursachenwort und Tag in den vorderen Plätzen; weitere rutschen hinter das Feld (Standard 3, 0 schaltet ab). Ohne eigene Variable gilt zusätzlich: Von mehreren ÖBB-Einträgen mit wortgleichem Titel (eine Strecke, mehrere Bauphasen) behält nur der mit dem frühesten Zeitfenster seinen Platz, eine laufende Störung auf dieser Strecke geht vor. |
 | `UPCOMING_PREVIEW_DAYS`  | Was später als so viele Wiener Kalendertage nach heute beginnt, rückt hinter alles, was schon gilt (Standard 1: ab dem Vortag des Beginns vorn, freitags und samstags bis einschließlich Montag; höchstens 365). 0 lässt nur heute Beginnendes vorn. |
 | `FEED_TTL`               | Cache-Hinweis für Clients in Minuten (Standard 15).                             |
 | `MAX_ITEM_AGE_DAYS`      | Maximales Alter von Meldungen aus den Caches (Standard 365).                    |
@@ -291,7 +291,12 @@ löschen. Alle vier stellen Items nur hinter das Feld, von wo sie nachrücken:
    Titel (dieselbe Strecke in mehreren Bauphasen, z. B. dreimal
    `Wien Hauptbahnhof ↔ Gramatneusiedl`) bleibt nur das mit dem frühesten
    Zeitfenster vorn. Zusammengeführt wird nicht — die Phasen sind
-   verschiedene Maßnahmen.
+   verschiedene Maßnahmen. Seit 2026-10-05 behält eine laufende Störung
+   (`_is_current_incident`) den Platz ihres Titels: ÖBB benennt eine
+   Störung wie eine Bauphase nach der Strecke, und eine laufende Bauphase
+   hat immer das frühere Fenster. Ein Unfall zwischen Wien Hbf und Wien
+   Westbahnhof wäre sonst neben den Bauarbeiten dort (11.09. bis
+   01.11.2026) hinter das Feld gerutscht. Seit Juli kam das noch nicht vor.
 2. `_apply_topic_budget`: höchstens `MAX_ITEMS_PER_TOPIC` Einträge je
    Ursachenwort und Tag in den vorderen Plätzen.
 3. `_defer_upcoming_items`: Was erst nach `UPCOMING_PREVIEW_DAYS` Tagen ab
@@ -381,10 +386,10 @@ Der Meldungsfeed sammelt offizielle Störungs- und Hinweisinformationen der Wien
   3. Innerhalb von Wien (alle Störungen).
 - **Umsetzung**: Der Provider implementiert einen **strengen Geo-Filter** (`_is_relevant`):
   - Nennt die Meldung Strecken („zwischen A und B“, „A ↔ B“), muss mindestens eine davon Wien ↔ Wien oder Wien ↔ Pendlerbahnhof sein; Wien ↔ fern, Pendler ↔ Pendler und Strecken mit unbekanntem Endpunkt fallen weg.
-  - Ohne erkennbare Strecke reicht ein Wiener oder Pendler-Bahnhof im Text, solange kein ferner Bahnhof mitgenannt ist; zuletzt prüft eine Text-Heuristik auf Wien-Bezug (U-Bahn usw.).
+  - Ohne erkennbare Strecke reicht ein Wiener oder Pendler-Bahnhof im Text, solange kein ferner Bahnhof mitgenannt ist (so kommen „Polizeieinsatz in Mödling Bahnhof“ oder „Weichenstörung in Hollabrunn Bahnhof“ in den Feed, Anforderung 1); zuletzt prüft eine Text-Heuristik auf Wien-Bezug (U-Bahn usw.).
+  - Bahnhöfe im Text sucht ein gleitendes Fenster über bis zu vier Wörter (`_find_stations_in_text`). Ein solches Bruchstück zählt seit 2026-10-05 nur über einen Stationsnamen oder Text-Alias mit mindestens drei Buchstaben, nie über einen Code oder eine ID (`station_named_in_text` in `src/utils/stations.py`). Vorher wurde „Stellwerkstörung am Bahnhof“ zur WL-Haltestelle „Am Bahnhof“, die Zugnummer „1730“ zur WL-Haltestellen-ID von „Klinik Hietzing“ und „Update 2 (…)“ zur Haltestelle „Venediger Au“; so kamen Störungen in Wolfurt, Ebensee, Hinterstoder, Telfs-Pfaffenhofen und Lind-Rosegg als Wien-Meldungen in den Feed (sechs seit Juli). Dieselbe Regel gilt für den Titel-Check `_title_has_unknown_endpoint` und für die Ortssuche der Statistik.
   - Bahnhofsnamen löst `station_info` (`src/utils/stations.py`) auch in ÖBB-Schreibweise auf: „Bruck/Leitha“ als „Bruck an der Leitha“, und seit 2026-10-04 einen Ortsnamen mit Fluss-, Regions- oder Landeszusatz („Mistelbach/Zaya“, „Wolkersdorf im Weinviertel“, „Traisen NÖ“) als den bloßen Ort, sofern dieser außerhalb Wiens liegt. Vorher galt „Wien Leopoldau ↔ Mistelbach/Zaya“ (S2) als Wien ↔ unbekannt und fiel weg.
-  - Meldungen, die *nur* Pendlerbahnhöfe (ohne Wien-Bezug) oder *nur* ferne Bahnhöfe erwähnen, werden verworfen.
-  - Dies stellt sicher, dass "Störungen im Bereich Mödling" ohne Wien-Bezug (z. B. Richtung Süden) nicht einfließen, solange keine Auswirkung auf die Wien-Verbindung explizit genannt ist (siehe [data/stations.json](../data/stations.json) für Definitionen von `in_vienna` und `pendler`).
+  - Meldungen, die *nur* ferne Bahnhöfe erwähnen, werden verworfen, ebenso eine Strecke zwischen zwei Pendlerbahnhöfen („Pfaffstätten ↔ Bad Vöslau“, siehe [data/stations.json](../data/stations.json) für Definitionen von `in_vienna` und `pendler`). Ein einzelner Pendlerbahnhof ohne Strecke genügt dagegen (oben).
   - Mit `OEBB_ONLY_VIENNA=1` lässt sich der Fallback auf reine Pendler-Bahnhof-Routen abschalten — siehe [`docs/reference/oebb_provider_logic.md`](reference/oebb_provider_logic.md).
 - **Quelle**: Offizielle ÖBB-Störungsinformationen (RSS-Feed; Default-URL via `OEBB_RSS_URL` überschreibbar, validiert gegen die `fahrplan.oebb.at`-Allow-List).
 - **Cache**: `cache/oebb/events.json`.

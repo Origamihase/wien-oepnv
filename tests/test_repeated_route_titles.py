@@ -21,6 +21,9 @@ Mutations checked against this file (each one caught, by the test named):
   ``test_other_sources_are_left_alone``.
 * the pass is not wired into ``main()`` →
   ``test_the_pass_is_wired_into_the_build``.
+* a current incident does not hold the slot →
+  ``test_a_current_incident_holds_the_slot`` and
+  ``test_a_disruption_beside_running_works_leads_the_build``.
 """
 
 from __future__ import annotations
@@ -118,6 +121,21 @@ def test_datetime_values_work_like_strings() -> None:
     items[0]["starts_at"] = datetime(2026, 12, 5, tzinfo=UTC)
     items[1]["starts_at"] = datetime(2026, 10, 3, tzinfo=UTC)
     assert _guids(_defer_repeated_route_titles(items)) == ["early", "late"]
+
+
+def test_a_current_incident_holds_the_slot() -> None:
+    # ÖBB names a disruption by its route, like a construction phase. The
+    # works between Wien Hbf and Wien Westbahnhof run from 11.09.; an
+    # accident there today starts later, so the earliest window would have
+    # sent the accident behind the field.
+    works = _item("Wien Hauptbahnhof ↔ Wien Westbahnhof", "works", "2026-09-11T00:00:00+02:00")
+    accident = _item("Wien Hauptbahnhof ↔ Wien Westbahnhof", "accident", "2026-10-05T00:00:00+02:00")
+    other = _item("S 45: Wien Hütteldorf ↔ Wien Handelskai", "s45", "2026-11-01T01:10:00+01:00")
+    items = [accident, other, works]
+    out = _defer_repeated_route_titles(items, is_current=lambda it: it is accident)
+    assert _guids(out) == ["accident", "s45", "works"]
+    # Without a current incident the earliest window keeps the slot.
+    assert _guids(_defer_repeated_route_titles(items)) == ["s45", "works", "accident"]
 
 
 @pytest.mark.parametrize("source", ["Wiener Linien", "Stadt Wien – Baustellen", ""])
@@ -218,3 +236,91 @@ def test_the_pass_is_wired_into_the_build(monkeypatch: pytest.MonkeyPatch, tmp_p
     assert titles.count(_ROUTE) == 1, titles
     assert "phase-oct" in guids, guids
     assert all(f"wl{n}" in guids for n in range(1, 10)), guids
+
+
+def test_a_disruption_beside_running_works_leads_the_build(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """Through ``main()``: nine WL items, running works and an accident on one route.
+
+    The works began 24 days ago, the accident 20 minutes ago. Before, the
+    works held the route's slot by their earlier window and the accident
+    went behind the field, out of the ten; now it leads the feed.
+    """
+    bf = _import_build_feed(monkeypatch)
+    now = datetime.now(UTC)
+    route = "Wien Hauptbahnhof ↔ Wien Westbahnhof"
+
+    def stamp(minutes: int) -> str:
+        return (now - timedelta(minutes=minutes)).isoformat()
+
+    wl = [
+        {
+            "source": "Wiener Linien",
+            "category": "Störung",
+            "title": f"{n}A: Umleitung Ort {n}",
+            "description": f"Linie {n}A: Umleitung wegen Bauarbeiten.",
+            "guid": f"wl{n}",
+            "link": "",
+            "pubDate": stamp(60 + n),
+            "starts_at": stamp(60 + n),
+            "ends_at": (now + timedelta(days=30)).isoformat(),
+        }
+        for n in range(1, 10)
+    ]
+    works = {
+        "source": "ÖBB",
+        "category": "Störung",
+        "title": route,
+        "description": (
+            "Wegen Bauarbeiten können zwischen Wien Hbf (U) und Wien Westbahnhof (U) "
+            "keine Fernverkehrszüge fahren."
+        ),
+        "guid": "works",
+        "link": "",
+        "pubDate": stamp(24 * 24 * 60),
+        "starts_at": stamp(24 * 24 * 60),
+        "ends_at": (now + timedelta(days=27)).isoformat(),
+    }
+    accident = {
+        "source": "ÖBB",
+        "category": "Störung",
+        "title": route,
+        "description": (
+            "Wegen eines Unfalls sind zwischen Wien Hbf (U) und Wien Westbahnhof (U) "
+            "Zugfahrten derzeit nur eingeschränkt möglich."
+        ),
+        "guid": "accident",
+        "link": "",
+        "pubDate": stamp(20),
+        "starts_at": stamp(20),
+        "ends_at": (now + timedelta(hours=20)).isoformat(),
+    }
+
+    def fake_read_cache(provider: str) -> list[dict[str, Any]]:
+        if provider == "wl":
+            return wl
+        if provider == "oebb":
+            return [works, accident]
+        return []
+
+    monkeypatch.setattr(bf, "read_cache", fake_read_cache)
+    out_file = tmp_path / "feed.xml"
+    monkeypatch.setattr(bf, "validate_path", lambda path, name: path)
+    monkeypatch.setattr(bf.feed_config, "OUT_PATH", out_file)
+    monkeypatch.setattr(bf.feed_config, "STATE_FILE", tmp_path / "state.json")
+    monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_PATH", tmp_path / "feed-health.md")
+    monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_JSON_PATH", tmp_path / "feed-health.json")
+    monkeypatch.setattr(bf.feed_config, "MAX_ITEMS", 10)
+    monkeypatch.setattr(bf, "_save_state", lambda state: None)
+    monkeypatch.setattr(bf, "_load_state", lambda: {})
+    monkeypatch.setattr(bf, "refresh_from_env", lambda: None)
+
+    assert bf.main() == 0
+
+    channel = ET.parse(out_file).getroot().find("channel")
+    assert channel is not None
+    guids = [it.findtext("guid") or "" for it in channel.findall("item")]
+    assert len(guids) == 10
+    assert guids[0] == "accident", guids
+    assert "works" not in guids, guids

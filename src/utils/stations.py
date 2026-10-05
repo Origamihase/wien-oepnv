@@ -28,6 +28,7 @@ __all__ = [
     "station_by_oebb_id",
     "station_info",
     "station_lines",
+    "station_named_in_text",
     "text_has_vienna_connection",
 ]
 
@@ -972,6 +973,91 @@ def station_info(name: str) -> StationInfo | None:
         if bare == candidate:
             continue
         info = lookup.get(_normalize_token(bare))
+        if info and not info.in_vienna:
+            return info
+    return None
+
+
+@lru_cache(maxsize=1)
+def _name_keys() -> frozenset[str]:
+    """Lookup keys some station carries as its name or a text alias.
+
+    The keys of :func:`_station_lookup` minus the identity-only ones: the
+    ``bst_code``, ``wl_diva``, ``vor_id`` and WL ``stop_id`` of a station
+    (``"Gn"``, ``"1730"``) name it in a data field, never in a sentence.
+    """
+    keys: set[str] = set()
+    for entry in _station_entries():
+        name = str(entry.get("name", "")).strip()
+        if not name:
+            continue
+        extras: list[str] = []
+        aliases_field = entry.get("aliases")
+        if isinstance(aliases_field, list):
+            extras.extend(str(alias).strip() for alias in aliases_field if alias is not None)
+        stops_field = entry.get("wl_stops")
+        if isinstance(stops_field, list):
+            extras.extend(
+                str(stop.get("name")).strip()
+                for stop in stops_field
+                if isinstance(stop, dict) and stop.get("name") is not None
+            )
+        for alias, _ in _iter_aliases_with_strength(
+            name, None, identity_extras=None, text_extras=[e for e in extras if e]
+        ):
+            key = _normalize_token(alias)
+            if key:
+                keys.add(key)
+    return frozenset(keys)
+
+
+# A key with fewer letters is a code or a fragment, not a name a sentence
+# would use ("am" from the WL stop "Am Bahnhof", "Hbf am" after the
+# normalisation drops "Hbf").
+_MIN_NAME_KEY_LETTERS = 3
+
+
+def _names_a_station(key: str) -> bool:
+    return (
+        key in _name_keys()
+        and len(re.sub(r"[^a-z]", "", key)) >= _MIN_NAME_KEY_LETTERS
+    )
+
+
+@lru_cache(maxsize=4096)
+def station_named_in_text(fragment: str) -> StationInfo | None:
+    """:func:`station_info` for a fragment cut out of a sentence.
+
+    A scan that slides a window over a message text hands every run of
+    words to the directory, and the directory also knows stations by their
+    codes and IDs and by names that shrink to a single short word once
+    "Bahnhof" is dropped. ``station_info`` resolves such a fragment like a
+    name: "Stellwerkstörung am Bahnhof" ("am" → the WL stop "Am Bahnhof"),
+    "S4-Züge 4212 und 1730 (REX1)" (the WL stop ID 1730), "Update 2
+    (12.09.2026 23:15)" ("2"). Until 2026-10-05 that made ÖBB disruptions
+    in Wolfurt, Ebensee, Hinterstoder, Telfs and Lind-Rosegg count as
+    Vienna and put them into the feed (six since July).
+
+    Here a fragment only matches through a key some station carries as
+    its name or a text alias, with at least three letters. Everything
+    else is as in :func:`station_info`.
+    """
+    lookup = _station_lookup()
+    if not lookup:
+        return None
+    candidates = _candidate_values(fragment)
+    for candidate in candidates:
+        key = _normalize_token(candidate)
+        if key and _names_a_station(key):
+            info = lookup.get(key)
+            if info:
+                return info
+    for candidate in candidates:
+        bare = _PLACE_QUALIFIER_RE.sub("", candidate)
+        if bare == candidate:
+            continue
+        key = _normalize_token(bare)
+        info = lookup.get(key) if _names_a_station(key) else None
         if info and not info.in_vienna:
             return info
     return None
