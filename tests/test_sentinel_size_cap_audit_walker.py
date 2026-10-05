@@ -107,6 +107,8 @@ def _audit_module(path: Path) -> list[tuple[int, str]]:
         return findings
 
     for node in ast.walk(tree):
+        if not isinstance(node, ast.Call):
+            continue
         banned = _is_banned_read_call(node)
         if banned is None:
             continue
@@ -169,7 +171,7 @@ def test_walker_recognises_read_text() -> None:
     findings = [
         node.lineno
         for node in ast.walk(tree)
-        if _is_banned_read_call(node) == "read_text"
+        if isinstance(node, ast.Call) and _is_banned_read_call(node) == "read_text"
     ]
     assert findings == [3], "Walker must flag bare path.read_text() calls"
 
@@ -181,7 +183,7 @@ def test_walker_recognises_read_bytes() -> None:
     findings = [
         node.lineno
         for node in ast.walk(tree)
-        if _is_banned_read_call(node) == "read_bytes"
+        if isinstance(node, ast.Call) and _is_banned_read_call(node) == "read_bytes"
     ]
     assert findings == [3], "Walker must flag bare path.read_bytes() calls"
 
@@ -200,7 +202,7 @@ def test_walker_ignores_handle_read_with_bound() -> None:
     findings = [
         node.lineno
         for node in ast.walk(tree)
-        if _is_banned_read_call(node) is not None
+        if isinstance(node, ast.Call) and _is_banned_read_call(node) is not None
     ]
     assert findings == [], (
         "Walker must NOT flag bounded handle.read(n) — that's the "
@@ -220,7 +222,7 @@ def test_walker_ignores_unrelated_calls() -> None:
     findings = [
         node.lineno
         for node in ast.walk(tree)
-        if _is_banned_read_call(node) is not None
+        if isinstance(node, ast.Call) and _is_banned_read_call(node) is not None
     ]
     assert findings == [], (
         "Walker must NOT produce false positives on unrelated "

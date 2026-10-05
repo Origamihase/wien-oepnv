@@ -17,6 +17,14 @@ updates:
       prefix: "chore(ci)"
       include: "scope"
     open-pull-requests-limit: 5
+    # CodeQL ``init``, ``analyze`` und ``upload-sarif`` stammen aus einem
+    # Repository und müssen auf demselben Stand laufen. Einzeln geöffnet
+    # (#1773 hob nur ``analyze``) wird der CodeQL-Check rot; die Gruppe
+    # bündelt sie in einem PR.
+    groups:
+      codeql-action:
+        patterns:
+          - "github/codeql-action*"
 
   # pip: aktualisiert Python-Dependencies (requirements.txt, requirements-dev.txt,
   # pyproject.toml) im selben monatlichen Schedule wie github-actions.

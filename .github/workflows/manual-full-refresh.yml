@@ -57,14 +57,14 @@ jobs:
       # Two attempts; remove once v6.0.3+ is pinned.
       - name: Check out repository (attempt 1/2)
         id: checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           fetch-depth: 0
         continue-on-error: true
 
       - name: Check out repository (attempt 2/2 — runs only if attempt 1 hit checkout#2351)
         if: steps.checkout.outcome == 'failure'
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           fetch-depth: 0
 
@@ -91,7 +91,7 @@ jobs:
           echo "month=$(date -u +'%Y-%m')" >> "$GITHUB_OUTPUT"
 
       - name: Cache Hugging Face hub
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ~/.cache/huggingface
           key: huggingface-${{ runner.os }}-${{ steps.hf-cache-key.outputs.month }}
@@ -280,7 +280,7 @@ jobs:
       # trigger regenerates the same output. See
       # ``docs/archive/audits/audit-2026-09-12-force-push-history-loss.md``.
       - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
+        uses: stefanzweifel/git-auto-commit-action@4a55954c782fc1ea30b9056cd3e7a2b40ca8887d # v7.2.0
         with:
           commit_message: 'chore: full project refresh (manual trigger) [skip ci]'
           add_options: '-A'
