@@ -74,6 +74,48 @@ class TestUnitsStillSplit:
         assert html_to_text(before) == after
 
 
+class TestHouseNumberSuffixStaysCompact:
+    """A single lowercase letter after a number is a house-number suffix.
+
+    Since 2026-10-05 a WL stop relocation leads with its addresses
+    ("Wienerbergstraße 27b-27c → Wienerbergstraße 27a"); the split
+    rendered them as "27 b-27 c" in the visible text of the German feed.
+    """
+
+    @pytest.mark.parametrize(
+        "text",
+        [
+            "Wienerbergstraße 27b-27c",
+            "Liesinger Platz 2a, Bussteig B",
+            "Anzengruberstraße gegenüber 77a",
+            "Gumpendorfer Straße 63a",
+            "Bauphase 1a von 4",
+        ],
+    )
+    def test_suffix_unchanged(self, text: str) -> None:
+        assert html_to_text(text) == text
+
+    def test_relocation_fields_from_the_wl_source(self) -> None:
+        # Real WL markup (15A/7A/N62: Eibesbrunnergasse, 05.10.2026),
+        # inline styles shortened.
+        html = (
+            '<p class="MsoNormal"><strong><u><span>Von:</span></u></strong>'
+            "<span> Wienerbergstra&szlig;e 27b-27c</span></p> "
+            '<p class="MsoNormal"><strong><u><span>Nach:</span></u></strong>'
+            "<span> Wienerbergstra&szlig;e 27a</span></p>"
+        )
+        assert html_to_text(html, collapse_newlines=True) == (
+            "Von: Wienerbergstraße 27b-27c • Nach: Wienerbergstraße 27a"
+        )
+
+    @pytest.mark.parametrize(
+        "before,after",
+        [("2,5m", "2,5 m"), ("5h", "5 h"), ("3t", "3 t")],
+    )
+    def test_one_letter_units_still_split(self, before: str, after: str) -> None:
+        assert html_to_text(before) == after
+
+
 class TestEdgeCases:
     def test_multi_digit_with_letter_suffix(self) -> None:
         # ÖBB regional service codes like ``REX 51`` arrive

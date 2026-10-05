@@ -5,6 +5,32 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Englischer Feed: WL-Sätze mit „Wegen …“ (2026-10-05)**: Nach der
+  Textänderung bei „U6: Neue Donau“ wurde der Satz neu übersetzt und verlor
+  seinen Grund („The U6 station stops at Neue Donau U …“). Kein Einzelfall:
+  Seit Juli erschienen 3 WL-Sätze nach dem Muster „Wegen X wird Linie Y
+  umgeleitet“ sinnentstellt („Construction works in the area of Wildbadgasse
+  is redirected to line 20A.“). `_render_wl_because_sentence` übersetzt
+  Ursache und Hauptsatz getrennt, den Hauptsatz mit „Deshalb“ eröffnet;
+  passt die Antwort des Modells nicht in diese Form, bleibt es beim
+  bisherigen Weg. Betreiberentscheidung „Absichern“. Epoche 22 (alle
+  englischen Texte werden einmal neu übersetzt).
+* **Haltestellenverlegungen: Hausnummern und zwei Richtungen (2026-10-05)**:
+  Nachprüfung von „neue Lage zuerst, mit Pfeil“ über 17.467 verschiedene
+  Meldungen seit Juli (WL, ÖBB, Baustellen) mit altem und neuem Code. Zwei
+  Fehler, beide im Live-Feed von 16:31 Uhr (MESZ) bei „15A/7A/N62:
+  Eibesbrunnergasse“: (1) „Wienerbergstraße 27 b-27 c“. `html_to_text`
+  setzte vor jeden einzelnen Kleinbuchstaben nach einer Ziffer ein
+  Leerzeichen; das traf Hausnummern („27b“, „2a“, „63a“, „77a“, nach DIN
+  5008 ohne Leerzeichen), die mit dem Pfeil vorn sichtbar wurden. Getrennt
+  werden nur noch Einheiten aus einem Buchstaben („2 m“, „5 h“); 10
+  Beschreibungen ändern sich, nur um diese Leerzeichen. (2) Eine Meldung
+  mit zwei Richtungen und verschiedenen Orten behielt ihre Reihenfolge, die
+  neue Lage stand hinter drei Linien und ihren Richtungen und fiel der
+  180-Zeichen-Grenze zum Opfer („… Karlsplatz (U). Wienerbergstraße 27 b-27
+  c → …“). Jetzt steht jeder Pfeil vor seiner Richtung; 4 Verlegungstexte
+  ändern sich. Reihenfolge, Auswahl und Schlüssel der Feed-Einträge bleiben
+  in 12 nachgebauten Läufen seit 21.09. gleich.
 * **Rebuild nach einem Merge baut aus den aktuellen Caches (2026-10-05)**:
   `build-feed.yml` checkte den gepushten Commit aus. Die Concurrency-Gruppe
   hält den Job zurück, bis ein laufender Update-Tick gepusht hat; danach

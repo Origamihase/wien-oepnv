@@ -1982,7 +1982,12 @@ _TRANSLATION_MODEL_REVISION = "1a922f3b32a8e809e17a47d4b32142d8105924e5"
 #       written out ("Trains stop for lines 6 and 18" before). Cached under
 #       20: "66A: Buses stop Salvatorianerplatz"; the source digests are
 #       unchanged, so only a bump evicts it.
-_TRANSLATION_CACHE_EPOCH = 21
+#  22 — WL's "Wegen <Ursache> <Verb> …" sentences rendered as cause plus
+#       main clause (``_render_wl_because_sentence``). Cached under 21: "The
+#       U6 station stops at Neue Donau U only in the direction of
+#       Siebenhirten U.", the cause dropped; the source digest is unchanged,
+#       so only a bump evicts it.
+_TRANSLATION_CACHE_EPOCH = 22
 
 # Static lookup for the German words of the bracketed ``[…]`` time line (see
 # ``format_local_times``). Translating these via the ML model would be
@@ -4423,16 +4428,89 @@ def _render_oebb_sentence(
     return ""
 
 
-def _translate_oebb_templates(
-    text: str, ident: str, source: str | None, category: str | None
-) -> str | None:
-    """Translate an ÖBB text whose sentences follow ÖBB's templates.
+# WL writes its causes the same way ÖBB does, "Wegen <Ursache>" in front of
+# the main clause, and the model lost the sense on it in the same way. From
+# the EN feed since July (DE/EN pairs, check of 2026-10-05)::
+#
+#     Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet.
+#     Construction works in the area of Wildbadgasse is redirected to line 20A.
+#     Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau
+#     U nur in Richtung Siebenhirten U ein.
+#     The U6 station stops at Neue Donau U only in the direction of
+#     Siebenhirten U.
+#
+# Unlike ÖBB's, WL's main clauses are free prose, so there are no slots: the
+# cause goes through the model as the short phrase it is (like ÖBB's), and
+# the main clause behind it as a sentence of its own, opened with "Deshalb"
+# so the verb stays in second place ("Deshalb wird die Linie 20A
+# umgeleitet."). The model's "Therefore," is dropped and the cause put in its
+# place. When the model opens the main clause any other way, or the cause
+# holds a comma (a relative clause, where the first verb need not be the
+# main verb), the sentence goes through the model whole, as before.
+_WL_BECAUSE_RE: re.Pattern[str] = re.compile(
+    r"Wegen (?P<cause>[^,]+?) (?P<verb>wird|werden|kommt|kommen|hält|halten|muss|müssen"
+    r"|kann|können|ist|sind|fährt|fahren|verkehrt|verkehren|bleibt|bleiben"
+    r"|entfällt|entfallen|gibt|endet|enden|beginnt|beginnen) (?P<rest>.+[.!…])"
+)
+_WL_THEREFORE_EN_RE: re.Pattern[str] = re.compile(
+    r"(?:Therefore|That is why|This is why|For this reason|Hence|Thus|As a result"
+    r"|Consequently|Accordingly|So)\b,?\s+",
+    re.IGNORECASE,
+)
+# The first word of the main clause gets a small letter behind the cause only
+# when it is an ordinary word; a name ("Neue Donau", "U6") keeps its spelling.
+_WL_MAIN_CLAUSE_SMALL_WORDS: frozenset[str] = frozenset({
+    "the", "line", "lines", "bus", "buses", "tram", "trams", "train", "trains",
+    "there", "it", "a", "an", "this", "these", "passengers", "you", "in", "on",
+    "at", "between", "from", "only", "no", "all",
+})
 
-    Returns the text unchanged (the caller's cue for the ordinary path) when
-    no sentence has a template. Otherwise each templated sentence is rendered
-    from its slots and every run of other sentences goes through the ordinary
-    path; a failure anywhere fails the whole text (``None``).
+
+def _render_wl_because_sentence(
+    sentence: str, ident: str, source: str | None, category: str | None
+) -> str | None:
+    """Render one WL "Wegen …" sentence; ``""`` when it takes the ordinary path."""
+    match = _WL_BECAUSE_RE.fullmatch(sentence)
+    if match is None:
+        return ""
+    main = _translate_text_attempt(
+        f"Deshalb {match['verb']} {match['rest']}", ident,
+        source=source, category=category, oebb_templates=False,
+    )
+    if main is None:
+        return None
+    lead = _WL_THEREFORE_EN_RE.match(main.strip())
+    if lead is None:
+        return ""
+    main = main.strip()[lead.end():]
+    if not main:
+        return ""
+    first = main.split(" ", 1)[0]
+    if first.casefold() in _WL_MAIN_CLAUSE_SMALL_WORDS:
+        main = main[0].lower() + main[1:]
+    cause = _oebb_cause_en(match["cause"], ident, source, category)
+    if cause is None:
+        return None
+    return f"{cause}, {main}"
+
+
+def _translate_oebb_templates(
+    text: str,
+    ident: str,
+    source: str | None,
+    category: str | None,
+    render: Callable[[str, str, str | None, str | None], str | None] | None = None,
+) -> str | None:
+    """Translate a text whose sentences follow an operator's templates.
+
+    *render* renders one sentence (:func:`_render_oebb_sentence` unless
+    given, :func:`_render_wl_because_sentence` for WL). Returns the text
+    unchanged (the caller's cue for the ordinary path) when no sentence has
+    a template. Otherwise each templated sentence is rendered and every run
+    of other sentences goes through the ordinary path; a failure anywhere
+    fails the whole text (``None``).
     """
+    render = render or _render_oebb_sentence
     sentences = _OEBB_SENTENCE_SPLIT_RE.split(text.strip())
     parts: list[str] = []
     prose: list[str] = []
@@ -4452,7 +4530,7 @@ def _translate_oebb_templates(
         return True
 
     for sentence in sentences:
-        rendered = _render_oebb_sentence(sentence, ident, source, category)
+        rendered = render(sentence, ident, source, category)
         if rendered is None:
             return None
         if not rendered:
@@ -4513,6 +4591,12 @@ def _translate_text_attempt(
         return None
     if oebb_templates and source == "ÖBB":
         templated = _translate_oebb_templates(text, ident, source, category)
+        if templated != text:
+            return templated
+    if oebb_templates and source == "Wiener Linien":
+        templated = _translate_oebb_templates(
+            text, ident, source, category, render=_render_wl_because_sentence
+        )
         if templated != text:
             return templated
     # A trailing ``Label: value`` record is a table, not prose. Split it off
@@ -8383,6 +8467,9 @@ _RELOCATION_FROM = "Von:"
 _RELOCATION_TO = "Nach:"
 _RELOCATION_STOP = "Haltestelle:"
 _RELOCATION_ARROW = "→"
+# A field of the notice ("Haltestelle:", "Grund:"); any other block is a
+# direction line ("Haltestellenverlegung der Linie 17A in Richtung …").
+_RELOCATION_FIELD_RE = re.compile(r"[^\W\d]+:\s")
 
 
 def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
@@ -8394,21 +8481,36 @@ def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
     lead = list(dict.fromkeys(
         b for b in blocks if b.startswith((_RELOCATION_FROM, _RELOCATION_TO))
     ))
-    # Several stops or both directions in one notice: each "Von:"/"Nach:"
-    # belongs to the direction above it, so the order stays and only the
-    # repeated stop line goes.
-    several = len(lead) > 2
     rest = [
         b
         for b in blocks
-        if (several or not b.startswith((_RELOCATION_FROM, _RELOCATION_TO)))
-        and not (
+        if not (
             b.startswith(_RELOCATION_STOP)
             and {w.casefold() for w in _WORD_RE.findall(b[len(_RELOCATION_STOP):])}
             <= title_words
         )
     ]
-    return _relocation_arrows(rest if several else lead + rest)
+    if len(lead) <= 2:
+        return _relocation_arrows(
+            lead + [b for b in rest if not b.startswith((_RELOCATION_FROM, _RELOCATION_TO))]
+        )
+    # Several stops or both directions in one notice: each "Von:"/"Nach:"
+    # belongs to the direction above it, so it moves in front of that
+    # direction, not of the whole text. "15A/7A/N62: Eibesbrunnergasse" kept
+    # its order until 05.10.2026 and ended on the TV with "Wienerbergstraße
+    # 27b-27c → …": the first new place stood behind three lines and their
+    # directions.
+    ordered: list[str] = []
+    group_start = 0
+    for block in rest:
+        if block.startswith((_RELOCATION_FROM, _RELOCATION_TO)):
+            ordered.insert(group_start, block)
+            group_start += 1
+            continue
+        if not _RELOCATION_FIELD_RE.match(block):
+            group_start = len(ordered)
+        ordered.append(block)
+    return _relocation_arrows(ordered)
 
 
 def _relocation_arrows(blocks: list[str]) -> list[str]:

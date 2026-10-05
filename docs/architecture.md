@@ -461,8 +461,13 @@ verdrängt eine andere Störung.
   „Haltestelle:“, das nur den Titel wiederholt, fällt weg (seit 2026-10-05,
   Betreiberentscheidung „Von/Nach zuerst“, `_relocation_first`: vorher
   fehlte bei 46 von 139 Verlegungen das „Nach:“). Nennt eine Meldung zwei
-  Richtungen mit verschiedenen Orten, bleibt die Reihenfolge, damit jeder
-  Ort bei seiner Richtung steht. Die Folge einer Kurzmeldung steht
+  Richtungen mit verschiedenen Orten, steht jeder Pfeil vor seiner
+  Richtung, damit jeder Ort bei seiner Richtung bleibt (seit 2026-10-05
+  abends; bis dahin blieb dort die Reihenfolge, und „15A/7A/N62:
+  Eibesbrunnergasse“ endete auf dem TV mit „Wienerbergstraße 27b-27c →
+  …“). Hausnummern behalten ihren Buchstaben („27b“, „2a“, DIN 5008):
+  `html_to_text` trennt nur noch Einheiten aus einem Buchstaben („2 m“,
+  „5 h“) ab, „27 b-27 c“ stand mit dem Pfeil sichtbar im Feed. Die Folge einer Kurzmeldung steht
   immer als Satz mit Punkt da („Busse halten bei Haltestelle N71.“), und
   ein doppelter Punkt aus der Quelle („umgeleitet..“) wird einer.
 * **Verklebte Wörter (seit 2026-10-02).** Die Baustellentexte der Stadt
@@ -1812,8 +1817,10 @@ Kommentar bei der Konstante in `src/build_feed.py` und ist dort zu ergänzen.
 Nicht jeder Text gehört in ein NMT-Modell:
 
 * **Label-Records.** Endet der Text auf mindestens
-  `_MIN_LABELS_FOR_RECORD` (= 2) `Label: Wert`-Paare — die WL-Haltestellen-
-  verlegungen mit `Haltestelle:` / `Von:` / `Nach:` / `Dauer:` —, trennt
+  `_MIN_LABELS_FOR_RECORD` (= 2) `Label: Wert`-Paare — bis 2026-10-05 vor
+  allem die WL-Haltestellenverlegungen mit `Haltestelle:` / `Von:` /
+  `Nach:` / `Dauer:`, seither der WL-Störungsschluss „Voraussichtliche
+  Dauer: … Grund: …“ —, trennt
   `_split_label_record` sie ab und `_render_label_record` setzt sie **ohne
   Modell** aus dem Glossar zusammen. Nur die Prosa davor geht durch Marian.
   Ein Modell, das eine Tabelle als Satz liest, erfindet Zusammenhänge.
@@ -1834,6 +1841,12 @@ Nicht jeder Text gehört in ein NMT-Modell:
   stop area of Broßmannplatz.“), sonst geht nur dieser kurze Satz durchs
   Modell. Vorher blieb jedes unbekannte Ursachenwort deutsch, weil der Record
   das Modell nie sah („Reason: Tiere im Gleis im Haltestellenbereich …“).
+  Seit 2026-10-05 stehen „Von:“ und „Nach:“ einer Verlegung als
+  „Donaufelder Straße 48 → Donaufelder Straße 40-42“ im deutschen Text
+  (`_relocation_first`). Der Pfeil wird wie jeder Pfeil maskiert
+  (`_PRESERVED_SYMBOLS_RE`), die Orte gehen aber als Prosa durchs Modell,
+  nicht mehr durch die Record-Regeln oben; fällt dabei ein Ort weg, greift
+  der Entitäten-Wächter, und die Meldung bleibt im EN-Feed deutsch.
 * **ÖBB-Sätze nach Vorlage.** ÖBB schreibt Störungen fast immer in einem
   Satz mit festen Feldern: „Wegen <Ursache> sind|waren zwischen <A> und
   <B>|in <A> [Zugfahrten] [bis [voraussichtlich] <Zeit> Uhr|derzeit] keine
@@ -1854,6 +1867,20 @@ Nicht jeder Text gehört in ein NMT-Modell:
   Abweichung nach der zweiten Station im Stationsfeld, Deutsch mitten im
   englischen Satz („… and Gramatneusiedl Bahnhof Zugfahrten bis
   voraussichtlich 27.08.2026, 23:59 Uhr.“; vierte Nachprüfung 2026-10-03).
+* **WL-Sätze mit „Wegen …“ (seit 2026-10-05).** WL schreibt Ursachen wie
+  ÖBB vor den Hauptsatz („Wegen Bauarbeiten im Bereich Wildbadgasse wird die
+  Linie 20A umgeleitet.“), und das Modell verlor daran den Sinn
+  („Construction works in the area of Wildbadgasse is redirected to line
+  20A.“, 3 sinnentstellte Sätze seit Juli; nach der Textänderung bei U6 Neue
+  Donau fiel der Grund ganz weg). Die Hauptsätze sind freie Prosa, Felder
+  gibt es nicht: `_render_wl_because_sentence` übersetzt die Ursache als
+  kurze Phrase (wie bei ÖBB) und den Hauptsatz als eigenen Satz, eröffnet
+  mit „Deshalb“, damit das Verb an zweiter Stelle bleibt. Das „Therefore,“
+  des Modells fällt weg, die Ursache tritt an seine Stelle („Due to
+  construction works in the area of Wildbadgasse, line 20A is diverted.“).
+  Beginnt das Modell den Hauptsatz anders oder enthält die Ursache ein Komma
+  (244 von 255 WL-„Wegen“-Sätzen seit Juli passen), geht der Satz wie bisher
+  als Ganzes durchs Modell. Epoche 22.
 * **Halte-Meldungen der WL.** Nach „Busse/Züge halten“ und „Ersatzbus hält“
   wählte das Modell die Präposition in jedem Lauf neu („Buses stop
   Salvatorianerplatz“, „Trains stop for lines 6 and 18“). Seit 2026-10-04
