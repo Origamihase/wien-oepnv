@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 05 Oct 2026 20:00:48 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 20:30:44 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[11A: Rescue operation]]></title>
+      <title><![CDATA[67B: Defective vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">42fd134123a418e9ad9efe9206b8aec78f4828e1289887cd32b9a179ab2ed7cd</guid>
-      <pubDate>Mon, 05 Oct 2026 19:03:11 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 19:03:11 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 19:03:18 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 20:02:00 +0200</ext:ends_at>
-      <description>Service obstruction. [Since 19:03]</description>
-      <content:encoded><![CDATA[Service obstruction.<br/>[Since 19:03]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71</guid>
-      <pubDate>Mon, 05 Oct 2026 18:53:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 18:53:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 18:53:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">62f5efa82ee5ce8c722c11227510f5b839ed6075f903c8cacd1f759972adf092</guid>
+      <pubDate>Mon, 05 Oct 2026 20:18:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 20:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 20:18:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Since 18:53]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 18:53]]]></content:encoded>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 20:18]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 20:18]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44A: Service disruption]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>The work takes place in the period from 20:00 to 05:00. The left lane towards the city is closed. [Until 15.11.]</description>
       <content:encoded><![CDATA[The work takes place in the period from 20:00 to 05:00. The left lane towards the city is closed.<br/>[Until 15.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52: Trains stop at the stops of lines 6 and 18]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:14 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 01 Oct 2026 00:00:14 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Today]</description>
+      <content:encoded><![CDATA[[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
