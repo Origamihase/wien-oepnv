@@ -24,6 +24,10 @@ Die folgende Matrix veranschaulicht, wann eine Verbindung als "Wien-relevant" ei
 | **Pendlerbahnhof** | **Pendlerbahnhof** | ❌ **Verworfen** | Strecke außerhalb Wiens ohne direkten Wien-Bezug. |
 | **Pendlerbahnhof**| **Unbekannt** | ❌ **Verworfen** | Wenn mindestens eine Station bekannt ist, *muss* zwingend auch eine in Wien liegen (Asymmetrischer Pendler-Check). |
 
+Nennt die Meldung **keine** Strecke, genügt ein Wiener oder Pendlerbahnhof im Text („Polizeieinsatz in Mödling Bahnhof“), solange kein ferner Bahnhof mitgenannt ist und der Titel keinen unbekannten zweiten Endpunkt trägt (`_title_has_unknown_endpoint`); zuletzt prüft `text_has_vienna_connection` auf einen Wien-Bezug.
+
+Die Bahnhöfe im Text sucht `_find_stations_in_text` mit einem gleitenden Fenster über bis zu vier Wörter. Ein solches Bruchstück zählt nur, wenn es über einen Stationsnamen oder Text-Alias mit mindestens drei Buchstaben auflöst (`station_named_in_text`, seit 2026-10-05), nie über einen `bst_code`, eine `wl_diva`, `vor_id` oder WL-`stop_id`. `station_info` löst dagegen auch Codes und IDs auf und streicht „Bahnhof“, „Hbf“ und „(U)“ vor dem Nachschlagen; im Fließtext wurde daraus „am Bahnhof“ → WL-Haltestelle „Am Bahnhof“, die Zugnummer „1730“ → „Klinik Hietzing“, „Update 2 (…)“ → „Venediger Au“, und Störungen in Wolfurt, Ebensee, Hinterstoder, Telfs-Pfaffenhofen und Lind-Rosegg kamen als Wien-Meldungen in den Feed.
+
 *Hinweis:* Wenn der strikte Modus über die Umgebungsvariable `OEBB_ONLY_VIENNA` aktiviert ist, werden Pendlerbahnhöfe ignoriert und **jeder** bekannte Endpunkt muss explizit in Wien liegen. Zwei zusätzliche Schärfungen gelten ausschließlich in diesem Modus:
 
 * Das bloße Arealwort „Wien"/„Vienna" wird **nicht** mehr zu einer Flaggschiff-Station (z. B. „Wien Hauptbahnhof") kanonisiert. So sät eine generische „ab/bis Wien"-Meldung keine Phantom-Station mehr (Bug `b10`).
@@ -34,8 +38,8 @@ Im Standardmodus (Flag aus) bleibt beides unverändert.
 ## Warnung für zukünftige Entwickler (Tech-Debt)
 Aktuell gibt es im Projekt zwei separate Stellen, an denen Schlüsselwörter für Kategorien und Liniencodes gepflegt werden — beide leben in `src/providers/oebb.py`:
 
-1. Die Menge `NON_LOCATION_PREFIXES` (siehe Definition ab Zeile ~251) — wird von `_is_category` ausgewertet, um Titel-Tokens als Kategorien (vs. echte Ortsnamen) zu erkennen.
-2. Der reguläre Ausdruck `base_pattern` innerhalb der Funktion `_strip_oebb_prefixes` (siehe Definition ab Zeile ~428) — entfernt führende Linien-/Störungspräfixe iterativ aus dem Titel.
+1. Die Menge `NON_LOCATION_PREFIXES` — wird von `_is_category` ausgewertet, um Titel-Tokens als Kategorien (vs. echte Ortsnamen) zu erkennen.
+2. Der reguläre Ausdruck `base_pattern` innerhalb der Funktion `_strip_oebb_prefixes` — entfernt führende Linien-/Störungspräfixe iterativ aus dem Titel.
 
 **Achtung:** Wenn in Zukunft neue Kategorien, Störungsarten oder Liniencodes der ÖBB hinzugefügt werden müssen, muss sichergestellt werden, dass diese an **beiden** Stellen ergänzt werden. Eine Divergenz dieser Listen führt zu inkonsistentem Parsing und potenziellen Fehlern bei der Stationserkennung.
 

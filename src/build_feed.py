@@ -6703,7 +6703,9 @@ def _repeated_route_title_key(item: FeedItem) -> str | None:
     return title or None
 
 
-def _defer_repeated_route_titles(items: list[FeedItem]) -> list[FeedItem]:
+def _defer_repeated_route_titles(
+    items: list[FeedItem], is_current: Callable[[FeedItem], bool] | None = None
+) -> list[FeedItem]:
     """Give one slot to each ÖBB title, held by its earliest time window.
 
     ÖBB titles are the route and nothing else, so one route closed in three
@@ -6725,6 +6727,14 @@ def _defer_repeated_route_titles(items: list[FeedItem]) -> list[FeedItem]:
     move behind the field, in their original order — exactly like
     :func:`_apply_topic_budget`. Nothing is dropped: once the first phase
     has ended it leaves the feed and the next one holds the slot.
+
+    A current incident (*is_current*, :func:`_is_current_incident`) holds
+    the slot instead, the first one in the sorted order. ÖBB names a
+    disruption by its route like a construction phase, and a phase that is
+    running started earlier than any disruption today: an accident between
+    Wien Hbf and Wien Westbahnhof would have gone behind the field next to
+    the works there (11.09. to 01.11.2026), against the operator decision of
+    2026-10-04 that current disruptions come first.
     """
     groups: dict[str, list[int]] = {}
     for index, item in enumerate(items):
@@ -6739,7 +6749,8 @@ def _defer_repeated_route_titles(items: list[FeedItem]) -> list[FeedItem]:
     deferred_indices: set[int] = set()
     for members in groups.values():
         if len(members) > 1:
-            lead = min(members, key=window_start)
+            current = [m for m in members if is_current is not None and is_current(items[m])]
+            lead = current[0] if current else min(members, key=window_start)
             deferred_indices.update(m for m in members if m != lead)
     if not deferred_indices:
         return items
@@ -9864,10 +9875,14 @@ def main() -> int:
         else:
             log.debug("Sortiere %d Items nach Priorität (first_seen, neueste zuerst).", len(items))
         now_utc = _to_utc(now)
-        items.sort(key=lambda it: _recency_sort_key(it, state, now_utc))
+        sort_keys = {id(it): _recency_sort_key(it, state, now_utc) for it in items}
+        items.sort(key=lambda it: sort_keys[id(it)])
         # One route must not stand in the feed once per construction phase —
-        # see ``_defer_repeated_route_titles``.
-        items = _defer_repeated_route_titles(items)
+        # see ``_defer_repeated_route_titles``; a current incident keeps its
+        # place (tier 0 of the sort key).
+        items = _defer_repeated_route_titles(
+            items, is_current=lambda it: sort_keys[id(it)][0] == 0
+        )
         # One event must not take every slot — see ``_apply_topic_budget``.
         items = _apply_topic_budget(items, feed_config.MAX_ITEMS_PER_TOPIC)
         # What applies now comes before what is only announced — see

@@ -38,7 +38,7 @@ from zoneinfo import ZoneInfo
 
 from src.utils.files import read_capped_text
 from src.utils.logging import sanitize_log_arg
-from src.utils.stations import display_name, station_info
+from src.utils.stations import display_name, station_info, station_named_in_text
 
 LOGGER = logging.getLogger("utils.stats")
 
@@ -529,7 +529,7 @@ def _normalise_location(value: str) -> str:
     return cleaned
 
 
-def _resolve_via_directory(candidate: str) -> str | None:
+def _resolve_via_directory(candidate: str, *, fragment: bool = False) -> str | None:
     """Return the *display* name when *candidate* resolves via the station
     directory, ``None`` otherwise.
 
@@ -545,7 +545,10 @@ def _resolve_via_directory(candidate: str) -> str | None:
     cleaned = _normalise_location(candidate)
     if not cleaned:
         return None
-    info = station_info(cleaned)
+    # A *fragment* is a run of words the sliding-window scan cut out of a
+    # sentence; it only matches through a station name, never through a code
+    # or ID (:func:`station_named_in_text`).
+    info = station_named_in_text(cleaned) if fragment else station_info(cleaned)
     if info is None:
         return None
     return display_name(info.name)
@@ -592,7 +595,7 @@ def _scan_for_directory_station(haystack: str) -> str | None:
                 alpha = re.sub(r"[^A-Za-zÄÖÜäöüß]", "", chunk)
                 if len(alpha) < 3:
                     continue
-            resolved = _resolve_via_directory(chunk.rstrip(".:,;"))
+            resolved = _resolve_via_directory(chunk.rstrip(".:,;"), fragment=True)
             if resolved:
                 return resolved
     return None

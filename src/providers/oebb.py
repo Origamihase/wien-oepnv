@@ -41,6 +41,7 @@ from ..utils.stations import (
     station_by_oebb_id,
     station_info,
     station_lines,
+    station_named_in_text,
     text_has_vienna_connection,
 )
 from ..utils.geo import calculate_distance_meters
@@ -1259,11 +1260,11 @@ def _title_has_unknown_endpoint(title: str) -> bool:
                 token_norm = chunk_clean.casefold().rstrip(".:,;")
                 if token_norm in _GENERIC_STATION_TOKENS:
                     continue
-            canon = canonical_name(chunk_clean)
-            if not canon:
+            # A fragment of the title, not a name (``station_named_in_text``).
+            info = station_named_in_text(chunk_clean)
+            if info is None:
                 continue
-            info = station_info(chunk_clean)
-            if info and (info.in_vienna or info.pendler):
+            if info.in_vienna or info.pendler:
                 has_relevant_station = True
             for j in range(idx, idx + size):
                 used[j] = True
@@ -1527,9 +1528,12 @@ def _find_stations_in_text(blob: str) -> list[str]:
                     continue
                 if len(chunk_alpha) < 3:
                     continue
-            canon = canonical_name(chunk)
-            if canon:
-                found.add(canon)
+            # Only a name, never a code or a fragment, counts as a mention:
+            # "Stellwerkstörung am Bahnhof" is no WL stop "Am Bahnhof"
+            # (``station_named_in_text``).
+            info = station_named_in_text(chunk)
+            if info is not None:
+                found.add(info.name)
 
     # Filter out shorter overlapping matches
     sorted_found = sorted(list(found), key=len, reverse=True)

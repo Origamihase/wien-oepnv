@@ -3,6 +3,21 @@ from typing import Any
 from unittest.mock import MagicMock, patch
 from src.providers.oebb import fetch_events
 from defusedxml import ElementTree as ET
+from src.utils.stations import StationInfo
+
+
+def _named_like(canon: MagicMock) -> Any:
+    """The text scan asks ``station_named_in_text``; answer it from the mocked ``canonical_name``."""
+
+    def lookup(fragment: str) -> StationInfo | None:
+        name = canon(fragment)
+        if not name:
+            return None
+        return StationInfo(
+            name=name, in_vienna=True, pendler=False
+        )
+
+    return lookup
 
 # Mock XML structure
 def mock_xml_response(items: list[dict[str, Any]]) -> str:
@@ -60,7 +75,8 @@ def test_oebb_title_fallback_id(
     mock_fetch.return_value = root
 
     # Run
-    events = fetch_events()
+    with patch("src.providers.oebb.station_named_in_text", _named_like(mock_canon)):
+        events = fetch_events()
 
     # Verify
     assert len(events) == 1
@@ -101,7 +117,8 @@ def test_oebb_title_fallback_text(
     root = ET.fromstring(mock_xml_response(items))
     mock_fetch.return_value = root
 
-    events = fetch_events()
+    with patch("src.providers.oebb.station_named_in_text", _named_like(mock_canon)):
+        events = fetch_events()
 
     assert len(events) == 1
     assert events[0]["title"] == "Text-Station"
@@ -130,7 +147,8 @@ def test_oebb_title_fallback_truncation(
     root = ET.fromstring(mock_xml_response(items))
     mock_fetch.return_value = root
 
-    events = fetch_events()
+    with patch("src.providers.oebb.station_named_in_text", _named_like(mock_canon)):
+        events = fetch_events()
 
     assert len(events) == 1
     # Check truncation (plain text)

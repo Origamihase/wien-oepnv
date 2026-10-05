@@ -5,6 +5,36 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **ÖBB: Störungen aus ganz Österreich nicht mehr als Wien-Meldung
+  (2026-10-05)**: Die ÖBB-Prüfung fand sechs Meldungen seit Juli, die mit
+  Wien nichts zu tun hatten und im deutschen Feed standen, die meisten auf
+  Platz 1: Stellwerkstörungen in Wolfurt, Ebensee/Traunsee, zweimal
+  Hinterstoder und Telfs-Pfaffenhofen, dazu ein S4-Haltausfall in
+  Lind-Rosegg und Föderlach. Die Bahnhofssuche im Text gab jedes
+  Wortbruchstück an das Verzeichnis, und das kennt Stationen auch unter
+  Codes, IDs und Namen, die ohne „Bahnhof“ zu einem kurzen Wort schrumpfen:
+  „Stellwerkstörung am Bahnhof“ wurde zur WL-Haltestelle „Am Bahnhof“, die
+  Zugnummer „1730“ zur WL-Haltestellen-ID von „Klinik Hietzing“.
+  `station_named_in_text` (`src/utils/stations.py`) nimmt ein Bruchstück
+  nur noch über einen Stationsnamen oder Text-Alias mit mindestens drei
+  Buchstaben; das gilt für die ÖBB-Filter und für die Ortssuche der
+  Statistik. Nachgespielt über alle 439 ÖBB-Cache-Stände seit Juli und alle
+  38 Rohdaten-Stände seit 04.10.: genau diese sechs Meldungen fallen weg;
+  sechs Feed-Läufe vom 05.10. bleiben gleich.
+* **ÖBB: eine laufende Störung behält den Platz ihres Titels
+  (2026-10-05)**: Von wortgleichen ÖBB-Titeln blieb nur das früheste
+  Zeitfenster vorn (`_defer_repeated_route_titles`). ÖBB benennt eine
+  Störung aber wie eine Bauphase nach der Strecke, und eine laufende Bauphase
+  hat immer das frühere Fenster: Ein Unfall zwischen Wien Hbf und Wien
+  Westbahnhof wäre neben den Bauarbeiten dort (11.09. bis 01.11.) hinter das
+  Feld gerutscht, gegen die Betreiberentscheidung vom 04.10., dass aktuelle
+  Störungen vorgehen. Jetzt hält eine laufende Störung den Platz. Seit Juli
+  ist der Fall noch nicht eingetreten.
+* **Doku: ÖBB-Filter (2026-10-05)**: `docs/development.md` behauptete,
+  Meldungen mit nur einem Pendlerbahnhof würden verworfen; der Code nimmt
+  sie auf („Polizeieinsatz in Mödling Bahnhof“), verworfen wird nur eine
+  Strecke zwischen zwei Pendlerbahnhöfen. Korrigiert, dazu die
+  Bahnhofssuche im Text in `docs/reference/oebb_provider_logic.md`.
 * **WL: erledigte Störungen sofort aus dem Feed (2026-10-05)**: WL markiert
   eine beendete Störung mit `"status": "resolved"` und liefert sie noch
   einen Abruf lang mit. Der Statusfilter kannte das Wort nicht, also stand
