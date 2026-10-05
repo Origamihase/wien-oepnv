@@ -8368,6 +8368,47 @@ def _join_continued_blocks(blocks: list[str]) -> list[str]:
     return joined
 
 
+# A WL stop relocation is a list of fields: the lines and their directions,
+# "Haltestelle:", "Von:", "Nach:", "Dauer:", "Grund:". What a rider needs is
+# where the stop went, and that came fourth: on the TV on 05.10.2026 slide 10
+# read "Haltestellenverlegung der Linie 26E in Richtung Josef-Baumann-Gasse
+# und Linie N20 in Richtung Eßling, Stadtgrenze. Haltestelle: Fultonstraße.
+# Von: Donaufelder Straße …" and the 180-character cut took "Nach: Donaufelder
+# Straße 40-42". 46 of 139 relocations cached since July lost their "Nach:"
+# that way. "Von:" and "Nach:" now lead, the directions follow, and a
+# "Haltestelle:" that only repeats the title goes (operator decision
+# 2026-10-05, "Von/Nach zuerst"). A cut then shortens the directions.
+_RELOCATION_FROM = "Von:"
+_RELOCATION_TO = "Nach:"
+_RELOCATION_STOP = "Haltestelle:"
+
+
+def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
+    """Put a relocation's ``Von:`` and ``Nach:`` fields in front."""
+    if not any(block.startswith(_RELOCATION_TO) for block in blocks):
+        return blocks
+    # One notice can list the same stop for two lines ("12A" and "N8" at
+    # Längenfeldgasse U): their "Von:" and "Nach:" are the same words.
+    lead = list(dict.fromkeys(
+        b for b in blocks if b.startswith((_RELOCATION_FROM, _RELOCATION_TO))
+    ))
+    # Several stops or both directions in one notice: each "Von:"/"Nach:"
+    # belongs to the direction above it, so the order stays and only the
+    # repeated stop line goes.
+    several = len(lead) > 2
+    rest = [
+        b
+        for b in blocks
+        if (several or not b.startswith((_RELOCATION_FROM, _RELOCATION_TO)))
+        and not (
+            b.startswith(_RELOCATION_STOP)
+            and {w.casefold() for w in _WORD_RE.findall(b[len(_RELOCATION_STOP):])}
+            <= title_words
+        )
+    ]
+    return rest if several else lead + rest
+
+
 def _close_blocks(text: str, raw_title: str) -> tuple[str, bool]:
     """Turn :data:`BLOCK_END_MARK` into sentence ends.
 
@@ -8401,6 +8442,7 @@ def _close_blocks(text: str, raw_title: str) -> tuple[str, bool]:
         kept = [block for block in found if not _DATE_FIELD_RE.match(block)]
         # A label that stood before a date field now meets its own text.
         found = _join_continued_blocks(kept) if kept else found
+    found = _relocation_first(found, title_words)
     closed: list[tuple[str, bool]] = []
     for block in found:
         fragment = len(_WORD_RE.findall(block)) > 1 and not block.endswith(

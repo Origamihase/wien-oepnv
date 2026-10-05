@@ -321,3 +321,70 @@ def test_ticker_consequence_ends_with_a_full_stop() -> None:
     )
     assert title == "N71: Ersatzverkehr"
     assert desc.startswith("Busse halten bei Haltestelle N71. [")
+
+
+def _relocation(*sections: tuple[str, str, str, str]) -> str:
+    html = []
+    for heading, stop, origin, target in sections:
+        html.append(
+            f"<p><strong><u>{heading}</u></strong></p>"
+            f"<p><strong><u>Haltestelle:</u></strong> {stop}</p>"
+            f"<p><strong><u>Von:</u></strong> {origin}</p>"
+            f"<p><strong><u>Nach:</u></strong> {target}</p>"
+            "<p><strong><u>Dauer:</u></strong> Ab 05. Oktober 2026, etwa 07:00 Uhr f&uuml;r etwa "
+            "zwei Wochen</p><p><strong><u>Grund:</u></strong> Gleisbau</p>"
+        )
+    return " ".join(html)
+
+
+def test_relocation_shows_where_the_stop_went_first() -> None:
+    # TV 05.10.2026, slide 10: the cut ended at "Von: Donaufelder Straße …".
+    _, desc = _format(
+        "26E/N20: Fultonstraße",
+        _relocation((
+            "Haltestellenverlegung der Linie 26E in Richtung Josef-Baumann-Gasse und Linie "
+            "N20 in Richtung E&szlig;ling, Stadtgrenze",
+            "Fultonstra&szlig;e",
+            "Donaufelder Stra&szlig;e 48",
+            "Donaufelder Stra&szlig;e 40-42",
+        )),
+    )
+    assert desc.startswith(
+        "Von: Donaufelder Straße 48. Nach: Donaufelder Straße 40-42. "
+        "Haltestellenverlegung der Linie 26E in Richtung Josef-Baumann-Gasse"
+    )
+    assert "Haltestelle: Fultonstraße" not in desc
+
+
+def test_relocation_for_two_lines_at_one_place_names_it_once() -> None:
+    _, desc = _format(
+        "12A/N8: Längenfeldgasse U",
+        _relocation(
+            ("Haltestellenverlegung der Linie 12A in Richtung Schmelz, Gablenzgasse",
+             "L&auml;ngenfeldgasse U", "Stiegerbr&uuml;cke vor Linke Wienzeile",
+             "L&auml;ngenfeldgasse 1"),
+            ("Haltestellenverlegung der Linie N8 in Richtung Handelskai S U",
+             "L&auml;ngenfeldgasse U", "Stiegerbr&uuml;cke vor Linke Wienzeile",
+             "L&auml;ngenfeldgasse 1"),
+        ),
+    )
+    assert desc.startswith(
+        "Von: Stiegerbrücke vor Linke Wienzeile. Nach: Längenfeldgasse 1. Haltestellenverlegung"
+    )
+    assert desc.count("Nach:") == 1
+
+
+def test_relocation_in_both_directions_keeps_each_direction_with_its_place() -> None:
+    _, desc = _format(
+        "34A/N20: Am Spitz",
+        _relocation(
+            ("Haltestellenverlegung der Linie 34A in Richtung Floridsdorf S U",
+             "Am Spitz", "Am Spitz 1", "Am Spitz, Gleisk&ouml;rper"),
+            ("Haltestellenverlegung der Linie N20 in Richtung Strebersdorf",
+             "Am Spitz", "Am Spitz 16", "Am Spitz, Gleisk&ouml;rper"),
+        ),
+    )
+    assert desc.startswith(
+        "Haltestellenverlegung der Linie 34A in Richtung Floridsdorf S U. Von: Am Spitz 1."
+    )
+    assert "Haltestelle:" not in desc

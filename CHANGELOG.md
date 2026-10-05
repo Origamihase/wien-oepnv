@@ -5,6 +5,16 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Haltestellenverlegungen: „Von“ und „Nach“ zuerst (2026-10-05)**: Auf dem
+  TV endete „26E/N20: Fultonstraße“ mit „Von: Donaufelder Straße …“. Die
+  neue Lage („Nach: Donaufelder Straße 40-42“) fiel der 180-Zeichen-Grenze
+  zum Opfer, weil Linien, Richtungen und ein „Haltestelle:“, das nur den
+  Titel wiederholt, davor standen. `_relocation_first` stellt „Von:“ und
+  „Nach:“ nach vorn und lässt das wiederholte „Haltestelle:“ weg; eine
+  Meldung mit zwei Richtungen und verschiedenen Orten behält ihre
+  Reihenfolge. Nachbau über 2.339 WL-Meldungen seit Juli: „Nach:“ sichtbar
+  in 138 statt 93 von 139 Verlegungen, alle anderen Meldungen unverändert.
+  Betreiberentscheidung „Von/Nach zuerst“.
 * **Keine Überschrift mehr vor dem Text ohne Satzende (2026-10-05)**: Auf
   der TV-Vorschau stand „Bahnsteigsanierung Wegen Sanierung des Bahnsteigs
   hält die Linie U6 …“, und der zweite Satz brach bei „mit der …“ ab. Eine
