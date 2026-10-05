@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 05 Oct 2026 12:00:51 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 12:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[3: Rettungseinsatz]]></title>
+      <title><![CDATA[36B/30A/36A: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f31eb7908922229f7ef5a3da18a1c5682d71ecf0913c4ff4e56994507be49822</guid>
-      <pubDate>Mon, 05 Oct 2026 11:17:42 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 11:17:42 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 11:17:59 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 12:17:00 +0200</ext:ends_at>
-      <description>Betrieb ab Zentralfriedhof 3. Tor. [Seit 11:17]</description>
-      <content:encoded><![CDATA[Betrieb ab Zentralfriedhof 3. Tor.<br/>[Seit 11:17]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">17348702007ee0800eafbce7d382472c59ee068fa21a4c44fc1f6a6f3ab14d79</guid>
-      <pubDate>Mon, 05 Oct 2026 11:14:13 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 11:14:13 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 11:14:13 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 12:13:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung. [Seit 11:14]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 11:14]]]></content:encoded>
+      <guid isPermaLink="false">07c3e54f1710ac9b7c4cb6dad391aeccd92638cadeea2d42b25900b0954a3c4f</guid>
+      <pubDate>Mon, 05 Oct 2026 12:13:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 12:13:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 12:13:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Jedlesee, Bellgasse. Linie 30A: Fahrtbehinderung in Richtung Stammersdorf, Freiheitsplatz. [Seit 12:13]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Jedlesee, Bellgasse. Linie 30A: Fahrtbehinderung in Richtung Stammersdorf, Freiheitsplatz.<br/>[Seit 12:13]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[38A: Falschparker]]></title>
@@ -37,13 +26,13 @@
       <guid isPermaLink="false">361d72bca0cc84100f7195fc89fc1a03d6a8b18b8fa4cc578267b3f69d263e62</guid>
       <pubDate>Mon, 05 Oct 2026 11:13:00 +0200</pubDate>
       <ext:first_seen>Mon, 05 Oct 2026 11:13:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 11:29:45 +0200</ext:starts_at>
+      <ext:starts_at>Mon, 05 Oct 2026 11:13:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 11:13]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 11:13]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[11/71/U6: Rettungseinsatz]]></title>
+      <title><![CDATA[U6: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
       <pubDate>Mon, 05 Oct 2026 11:12:00 +0200</pubDate>
@@ -118,6 +107,17 @@
       <ext:ends_at>Mon, 05 Oct 2026 23:59:59 +0200</ext:ends_at>
       <description>[Heute]</description>
       <content:encoded><![CDATA[[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[63A: Umleitung wegen Kranarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
+      <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [Bis 11.11.]</description>
+      <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[Bis 11.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
