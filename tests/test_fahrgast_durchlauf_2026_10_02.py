@@ -350,7 +350,7 @@ def test_relocation_shows_where_the_stop_went_first() -> None:
         )),
     )
     assert desc.startswith(
-        "Von: Donaufelder Straße 48. Nach: Donaufelder Straße 40-42. "
+        "Donaufelder Straße 48 → Donaufelder Straße 40-42. "
         "Haltestellenverlegung der Linie 26E in Richtung Josef-Baumann-Gasse"
     )
     assert "Haltestelle: Fultonstraße" not in desc
@@ -369,9 +369,9 @@ def test_relocation_for_two_lines_at_one_place_names_it_once() -> None:
         ),
     )
     assert desc.startswith(
-        "Von: Stiegerbrücke vor Linke Wienzeile. Nach: Längenfeldgasse 1. Haltestellenverlegung"
+        "Stiegerbrücke vor Linke Wienzeile → Längenfeldgasse 1. Haltestellenverlegung"
     )
-    assert desc.count("Nach:") == 1
+    assert desc.count("→") == 1
 
 
 def test_relocation_in_both_directions_keeps_each_direction_with_its_place() -> None:
@@ -385,6 +385,7 @@ def test_relocation_in_both_directions_keeps_each_direction_with_its_place() -> 
         ),
     )
     assert desc.startswith(
-        "Haltestellenverlegung der Linie 34A in Richtung Floridsdorf S U. Von: Am Spitz 1."
+        "Haltestellenverlegung der Linie 34A in Richtung Floridsdorf S U. Am Spitz 1 → Am Spitz, "
+        "Gleiskörper."
     )
     assert "Haltestelle:" not in desc

@@ -455,7 +455,9 @@ verdrängt eine andere Störung.
   Zwei-Sätze-Regel nicht, sonst stünde „Haltestelle: Stammersdorf.“ ohne
   die neue Lage da: gezeigt werden die Felder bis zum ersten ganzen Satz,
   danach greift die 180-Zeichen-Grenze. Bei einer Haltestellenverlegung
-  stehen „Von:“ und „Nach:“ vorn, dann die Linien mit ihren Richtungen; ein
+  steht der Weg der Haltestelle vorn, als „Donaufelder Straße 48 →
+  Donaufelder Straße 40-42“ statt „Von: … Nach: …“ (Betreiberwunsch, spart
+  Zeichen), dann die Linien mit ihren Richtungen; ein
   „Haltestelle:“, das nur den Titel wiederholt, fällt weg (seit 2026-10-05,
   Betreiberentscheidung „Von/Nach zuerst“, `_relocation_first`: vorher
   fehlte bei 46 von 139 Verlegungen das „Nach:“). Nennt eine Meldung zwei

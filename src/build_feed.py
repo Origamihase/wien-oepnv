@@ -8375,12 +8375,14 @@ def _join_continued_blocks(blocks: list[str]) -> list[str]:
 # und Linie N20 in Richtung Eßling, Stadtgrenze. Haltestelle: Fultonstraße.
 # Von: Donaufelder Straße …" and the 180-character cut took "Nach: Donaufelder
 # Straße 40-42". 46 of 139 relocations cached since July lost their "Nach:"
-# that way. "Von:" and "Nach:" now lead, the directions follow, and a
-# "Haltestelle:" that only repeats the title goes (operator decision
-# 2026-10-05, "Von/Nach zuerst"). A cut then shortens the directions.
+# that way. "Von:" and "Nach:" now lead as "Donaufelder Straße 48 →
+# Donaufelder Straße 40-42", the directions follow, and a "Haltestelle:" that
+# only repeats the title goes (operator decision 2026-10-05, "Von/Nach
+# zuerst", then the arrow). A cut then shortens the directions.
 _RELOCATION_FROM = "Von:"
 _RELOCATION_TO = "Nach:"
 _RELOCATION_STOP = "Haltestelle:"
+_RELOCATION_ARROW = "→"
 
 
 def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
@@ -8406,7 +8408,29 @@ def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
             <= title_words
         )
     ]
-    return rest if several else lead + rest
+    return _relocation_arrows(rest if several else lead + rest)
+
+
+def _relocation_arrows(blocks: list[str]) -> list[str]:
+    """``Von: A`` and the ``Nach: B`` right after it become ``A → B``.
+
+    Shorter on the display, and the line above already says it is a
+    relocation (operator wish 2026-10-05).
+    """
+    joined: list[str] = []
+    for block in blocks:
+        if (
+            joined
+            and block.startswith(_RELOCATION_TO)
+            and joined[-1].startswith(_RELOCATION_FROM)
+        ):
+            origin = joined[-1][len(_RELOCATION_FROM):].strip().rstrip(".")
+            target = block[len(_RELOCATION_TO):].strip()
+            if origin and target:
+                joined[-1] = f"{origin} {_RELOCATION_ARROW} {target}"
+                continue
+        joined.append(block)
+    return joined
 
 
 def _close_blocks(text: str, raw_title: str) -> tuple[str, bool]:
