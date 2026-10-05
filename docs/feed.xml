@@ -7,18 +7,51 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 06 Oct 2026 00:00:56 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 00:30:44 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[44A: Fahrplanaushang bitte beachten]]></title>
+      <title><![CDATA[7A: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">671cc0c195d21d4fcb1c89c63b69ded89beaf3904ba0827a164bc22c70777036</guid>
-      <pubDate>Tue, 06 Oct 2026 00:00:18 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 00:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 00:00:28 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 00:30:00 +0200</ext:ends_at>
-      <description>[Heute]</description>
-      <content:encoded><![CDATA[[Heute]]]></content:encoded>
+      <guid isPermaLink="false">9becacea1654bfc407293a2a456a751c52933fcf146171a292db6763482941ae</guid>
+      <pubDate>Tue, 06 Oct 2026 00:20:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 00:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 00:20:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 00:20]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 00:20]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: ÖBB-Ersatzbus]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
+      <pubDate>Tue, 06 Oct 2026 00:30:03 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 00:30:03 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 04:59:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf [Seit 00:30]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Seit 00:30]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[9: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
+      <pubDate>Tue, 06 Oct 2026 00:14:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 00:14:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 00:14:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 00:14]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 00:14]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[43: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cc281c6508ba062820ee6ec97a11514a795c1ba829397c43d3f8f6719026c771</guid>
+      <pubDate>Tue, 06 Oct 2026 00:03:28 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 00:03:28 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 00:04:33 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 00:03]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 00:03]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[15A/7A/N62: Eibesbrunnergasse beide Fahrtrichtungen]]></title>
@@ -85,39 +118,6 @@
       <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>Die Arbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Der linke Fahrstreifen in Fahrtrichtung stadteinwärts wird gesperrt. [Bis 15.11.]</description>
       <content:encoded><![CDATA[Die Arbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Der linke Fahrstreifen in Fahrtrichtung stadteinwärts wird gesperrt.<br/>[Bis 15.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[52: Züge halten bei Linien 6 und 18]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
-      <pubDate>Tue, 06 Oct 2026 00:00:18 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 00:00:18 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Heute]</description>
-      <content:encoded><![CDATA[[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Umleitung wegen Kranarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
-      <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [Bis 11.11.]</description>
-      <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[Bis 11.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29B/N25: Adolf-Loos-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2e0949e212b98b31a226dddab6b40d0f6c06edb1c250ee7ddaac3c840bc8e962</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 11:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet. [Bis 07.12.]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet.<br/>[Bis 07.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
