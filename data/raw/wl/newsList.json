@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1016567, ftazW_444, ftazW_1031289, ftazW_1017115, ftazW_445, ftazW_1017116, ftazW_1031290, ftazW_1351715, ftazW_769, ftazW_770, ftazW_1351709, ftazW_510, ftazW_511"
+    "trafficInfoNameList": "ftazW_445, ftazW_1017116, ftazW_1031290, ftazW_1351715, ftazW_769, ftazW_770, ftazW_1351709, ftazW_510, ftazW_511"
    }
   ],
   "poiCategoryGroups": [
@@ -2603,80 +2603,6 @@
    },
    {
     "attributes": {
-     "ausBis": "06.10.2026 00:45",
-     "ausVon": "05.10.2026 20:45",
-     "location": "6 Bahnsteig Richtung Geiereckstraße, 18 Bahnsteig Richtung Schlachthausgasse, 62 und Badner Bahn Bahnsteig Richtung Oper, Karlsplatz - Ausgang Matzleinsdorfer Platz",
-     "rbls": [
-      851,
-      851,
-      400
-     ],
-     "reason": "",
-     "relatedLines": [
-      "18",
-      "62",
-      "6",
-      "LB"
-     ],
-     "station": "Matzleinsdorfer Platz",
-     "status": "geplante Wartung",
-     "towards": "WLB Baden, 6 Burggasse-Stadthalle, 18 Burggasse-Stadthalle, 62 Kärntner Ring, Oper/Karlsplatz U"
-    },
-    "description": "6 Bahnsteig Richtung Geiereckstraße, 18 Bahnsteig Richtung Schlachthausgasse, 62 und Badner Bahn Bahnsteig Richtung Oper, Karlsplatz - Ausgang Matzleinsdorfer Platz",
-    "name": "ftazW_1016567",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "18",
-     "62",
-     "6",
-     "LB"
-    ],
-    "relatedStops": [
-     851,
-     851,
-     400
-    ],
-    "time": {
-     "end": "2026-10-06T00:45:00.000+0200",
-     "start": "2026-10-05T20:45:00.000+0200"
-    },
-    "title": "Matzleinsdorfer Platz"
-   },
-   {
-    "attributes": {
-     "ausBis": "06.10.2026 00:45",
-     "ausVon": "05.10.2026 20:45",
-     "location": "U1 Mittelbahnsteig - Ausgang Rennbahnweg",
-     "rbls": [
-      4182,
-      4187
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Rennbahnweg",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "U1 Mittelbahnsteig - Ausgang Rennbahnweg",
-    "name": "ftazW_1017115",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4182,
-     4187
-    ],
-    "time": {
-     "end": "2026-10-06T00:45:00.000+0200",
-     "start": "2026-10-05T20:45:00.000+0200"
-    },
-    "title": "Rennbahnweg"
-   },
-   {
-    "attributes": {
      "ausBis": "06.10.2026 05:15",
      "ausVon": "06.10.2026 01:15",
      "location": "U1 Mittelbahnsteig - Ausgang Wagramerstraße",
@@ -2707,39 +2633,6 @@
      "start": "2026-10-06T01:15:00.000+0200"
     },
     "title": "Rennbahnweg"
-   },
-   {
-    "attributes": {
-     "ausBis": "06.10.2026 00:45",
-     "ausVon": "05.10.2026 20:45",
-     "location": "U2 Mittelbahnsteig - Ausgang Aspernstraße",
-     "rbls": [
-      4251,
-      4272
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Aspernstraße",
-     "status": "geplante Wartung",
-     "towards": "U2 beide Richtungen"
-    },
-    "description": "U2 Mittelbahnsteig - Ausgang Aspernstraße",
-    "name": "ftazW_1031289",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4251,
-     4272
-    ],
-    "time": {
-     "end": "2026-10-06T00:45:00.000+0200",
-     "start": "2026-10-05T20:45:00.000+0200"
-    },
-    "title": "Aspernstraße"
    },
    {
     "attributes": {
@@ -2839,39 +2732,6 @@
      "start": "2026-10-06T01:15:00.000+0200"
     },
     "title": "Alaudagasse"
-   },
-   {
-    "attributes": {
-     "ausBis": "06.10.2026 00:45",
-     "ausVon": "05.10.2026 20:45",
-     "location": "U3 Mittelbahnsteig - Passage Aufgang Hütteldorfer Straße",
-     "rbls": [
-      4926,
-      4925
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Johnstraße",
-     "status": "geplante Wartung",
-     "towards": "U3 beide Richtungen"
-    },
-    "description": "U3 Mittelbahnsteig - Passage Aufgang Hütteldorfer Straße",
-    "name": "ftazW_444",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4926,
-     4925
-    ],
-    "time": {
-     "end": "2026-10-06T00:45:00.000+0200",
-     "start": "2026-10-05T20:45:00.000+0200"
-    },
-    "title": "Johnstraße"
    },
    {
     "attributes": {
