@@ -8310,9 +8310,15 @@ def _reason_only_summary(category_word: str) -> str:
 # that ends on a function word, is joined without one. A leading block
 # whose words the title already carries all of ("U1: Starke Nachfrage",
 # "Bauarbeiten S80" under "S80: Bauarbeiten") is the heading repeated and
-# goes. A single word is left alone: that is WL's category heading
-# ("<h2>Gleisbauarbeiten</h2>"), which :func:`_strip_summary_category_prefix`
-# and :func:`_reason_only_summary` already handle as a bare word.
+# goes. A single word is WL's category heading ("<h2>Gleisbauarbeiten</h2>").
+# A word of :data:`_CATEGORY_PREFIX_WORDS` is left alone, because
+# :func:`_strip_summary_category_prefix` and :func:`_reason_only_summary`
+# handle it as a bare word. Any other heading word ran into the text on the
+# TV ("Bahnsteigsanierung Wegen Sanierung des Bahnsteigs hält …", U6 Neue
+# Donau, 05.10.2026; 11 heading words since July, "Laufsportveranstaltung",
+# "Netzänderung", "Kanalgebrechen" among them), so it goes like the
+# repeated heading: the text behind it says what happens, mostly opening
+# with "Wegen …" and the cause itself.
 _BLOCK_TERMINAL_PUNCT = ".!?:;,…"
 _WORD_RE = re.compile(r"\w+")
 _CONTINUING_WORDS: frozenset[str] = frozenset({
@@ -8384,6 +8390,12 @@ def _close_blocks(text: str, raw_title: str) -> tuple[str, bool]:
     # Only a heading with text behind it is dropped: a lone block is the
     # whole description, and the duplicate checks downstream decide on it.
     if len(found) > 1 and {w.casefold() for w in _WORD_RE.findall(found[0])} <= title_words:
+        found = found[1:]
+    if (
+        len(found) > 1
+        and len(_WORD_RE.findall(found[0])) == 1
+        and found[0].casefold() not in _CATEGORY_PREFIX_WORDS
+    ):
         found = found[1:]
     if len(found) > 1:
         kept = [block for block in found if not _DATE_FIELD_RE.match(block)]

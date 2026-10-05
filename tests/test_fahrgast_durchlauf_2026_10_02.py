@@ -216,6 +216,37 @@ def test_single_word_category_heading_is_left_to_the_category_strip() -> None:
     assert desc.startswith("Wegen Gleisbauarbeiten kommt es zu einer Umleitung der Linie N71.")
 
 
+def test_single_word_heading_outside_the_category_list_is_dropped() -> None:
+    # TV preview 05.10.2026, slide 7: "Bahnsteigsanierung Wegen Sanierung …",
+    # and the cut sentence behind it ("… mit der …") fits once it is gone.
+    _, desc = _format(
+        "U6: Neue Donau, kein Halt Richtung Floridsdorf",
+        "<h2>Bahnsteigsanierung</h2>\r\n<p>Wegen Sanierung des Bahnsteigs h&auml;lt die "
+        "Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein.<br />Sie "
+        "erreichen die Station Neue Donau mit der U6 von Floridsdorf.</p>\r\n<p><span "
+        'style="text-decoration: underline;"><strong>Zeitraum:</strong></span><br />'
+        "Montag, 14. September 2026 bis Ende 2026.</p>",
+    )
+    assert desc.startswith(
+        "Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in "
+        "Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von "
+        "Floridsdorf."
+    )
+
+
+@pytest.mark.parametrize(
+    ("heading", "text"),
+    [
+        ("Laufsportveranstaltung", "Wegen des Erste Bank Vienna Night Run 2026 kommt es zu Verkehrseinschränkungen."),
+        ("Netzänderung", "Die Linie 78A bekommt eine neue Linienführung."),
+        ("Kanalgebrechen", "Wegen dringender Sanierungsarbeiten wird die Linie N20 umgeleitet."),
+    ],
+)
+def test_single_word_heading_never_runs_into_the_text(heading: str, text: str) -> None:
+    _, desc = _format("1: Hinweis", f"<h2>{heading}</h2> <p>{text}</p>")
+    assert desc.startswith(text)
+
+
 def test_prose_paragraphs_keep_the_two_sentence_rule() -> None:
     _, desc = _format(
         "63A: Umleitung wegen Kranarbeiten",
