@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261005-0004, I20261005-0006, I20261005-0008, I20260917-0012, I20261005-0012, I20261005-0010-F01, I20261005-0014, I20261005-0015-F01, I20261005-0016, I20260925-0011, I20260922-0032, I20261005-0011, I20261005-0013, I20260909-0007"
+    "trafficInfoNameList": "I20261005-0006, I20260917-0012, I20261005-0012, I20261005-0010-F01, I20261005-0014, I20261005-0015-F01, I20260925-0011, I20260922-0032, I20261005-0011, I20261005-0013, I20260909-0007, I20261005-0016-F01, I20261005-0016-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R101-136, R100-136, R1150-0, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R102-136, R103-136, R1476-149, R318-437, R293-474, R2558-125, R2923-403, R2917-0, R2025-671, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R4843-162, R1709-162, R1711-162, R1712-162, R1713-162, R1714-162, R1715-162, R1756-162, R1710-162, R1751-162, R1753-162, R1754-162, R1752-162, R1974-466, R500-101, R1559-160, R1562-160, R1561-160, R1560-160, R577-160, R574-160, R576-160, R1537-160, R1535-160, R1536-160, R572-160, R572-110, R571-110, R1598-110, R1610-110, R1597-110, R1599-110, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R101-136, R100-136, R2345-127, R2380-627, R2379-627, R2373-126, R1150-0, R2372-627, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R102-136, R103-136, R1476-149, R318-437, R293-474, R2558-125, R2923-403, R2917-0, R2025-671, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R4843-162, R1709-162, R1712-162, R1713-162, R1714-162, R1715-162, R1710-162, R1751-162, R1752-162, R1753-162, R1754-162, R1756-162, R1711-162, R1974-466, R500-101, R1560-160, R1559-160, R1561-160, R1562-160, R577-160, R574-160, R576-160, R1535-160, R1537-160, R1536-160, R572-160, R571-110, R572-110, R1597-110, R1610-110, R1599-110, R1598-110, R574-110, R576-110, R1605-110, R1603-110, R1602-110, R1601-110, R1604-110, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,40 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "63A": "ptBusCity"
-     }
-    },
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
-    "name": "I20261005-0004",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "63A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "463",
-       "lineName": "63A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-05T06:25:00.000+0200",
-     "end": "2026-10-05T23:55:00.000+0200",
-     "lastUpdate": "2026-10-05T06:25:00.000+0200",
-     "resume": "2026-10-05T06:25:00.000+0200",
-     "start": "2026-10-05T06:25:00.000+0200"
-    },
-    "title": "63A: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "22A": "ptBusCity"
      }
     },
@@ -267,40 +233,6 @@
      "start": "2026-10-05T07:02:00.000+0200"
     },
     "title": "22A: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "31A": "ptBusCity"
-     }
-    },
-    "description": "Linie 31A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.",
-    "descriptionHTML": "Linie 31A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Signalstörung.",
-    "name": "I20261005-0008",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "31A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "431",
-       "lineName": "31A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-05T07:08:00.000+0200",
-     "end": "2026-10-05T23:55:00.000+0200",
-     "lastUpdate": "2026-10-05T07:08:00.000+0200",
-     "resume": "2026-10-05T07:08:00.000+0200",
-     "start": "2026-10-05T07:08:00.000+0200"
-    },
-    "title": "31A: Signalstörung"
    },
    {
     "attributes": {
@@ -517,19 +449,17 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "10": "ptTram",
-      "60": "ptTram"
+      "10": "ptTram"
      }
     },
-    "description": "Linie 10: Betrieb nur zwischen Dornbach und Linzer Straße. Weiterfahrt bis Bahnhof Rudolfsheim. Linie 60: Kein Betrieb zwischen Penzinger Straße und Anschützgasse. Voraussichtliche Dauer: 09:50 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Schloss Schönbrunn.",
-    "descriptionHTML": "Linie 10:<br>Betrieb nur zwischen Dornbach und Linzer Straße. Weiterfahrt bis Bahnhof Rudolfsheim.<br>Linie 60:<br>Kein Betrieb zwischen Penzinger Straße und Anschützgasse.<br> <br>Voraussichtliche Dauer: 09:50 Uhr.<br><br>Grund: Polizeieinsatz im Haltestellenbereich Schloss Schönbrunn.",
-    "name": "I20261005-0016",
+    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261005-0016-F01",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "10",
-     "60"
+     "10"
     ],
     "relatedLinesDetails": [
      [
@@ -537,7 +467,39 @@
        "lineId": "110",
        "lineName": "10",
        "vehicleType": "ptTram"
-      },
+      }
+     ]
+    ],
+    "relatedStops": [
+     572
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-05T09:33:00.000+0200",
+     "end": "2026-10-05T23:55:00.000+0200",
+     "lastUpdate": "2026-10-05T09:33:00.000+0200",
+     "resume": "2026-10-05T09:33:00.000+0200",
+     "start": "2026-10-05T09:18:00.000+0200"
+    },
+    "title": "10: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "60": "ptTram"
+     }
+    },
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261005-0016-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedLinesDetails": [
+     [
       {
        "lineId": "160",
        "lineName": "60",
@@ -550,12 +512,13 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-05T09:19:00.000+0200",
+     "created": "2026-10-05T09:33:00.000+0200",
      "end": "2026-10-05T23:55:00.000+0200",
-     "lastUpdate": "2026-10-05T09:29:00.000+0200",
+     "lastUpdate": "2026-10-05T09:33:00.000+0200",
+     "resume": "2026-10-05T09:33:00.000+0200",
      "start": "2026-10-05T09:18:00.000+0200"
     },
-    "title": "10, 60: Polizeieinsatz"
+    "title": "60: Polizeieinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1165,6 +1128,96 @@
      "start": "2026-10-05T09:30:22.000+0200"
     },
     "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Polizeieinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R1601-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1601
+    ],
+    "time": {
+     "end": "2026-10-05T10:30:00.000+0200",
+     "start": "2026-10-05T09:31:22.000+0200"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "description": "Polizeieinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R1602-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1602
+    ],
+    "time": {
+     "end": "2026-10-05T10:30:00.000+0200",
+     "start": "2026-10-05T09:31:22.000+0200"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "description": "Polizeieinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R1603-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1603
+    ],
+    "time": {
+     "end": "2026-10-05T10:30:00.000+0200",
+     "start": "2026-10-05T09:31:22.000+0200"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "description": "Polizeieinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R1604-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1604
+    ],
+    "time": {
+     "end": "2026-10-05T10:30:00.000+0200",
+     "start": "2026-10-05T09:31:22.000+0200"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "description": "Polizeieinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R1605-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1605
+    ],
+    "time": {
+     "end": "2026-10-05T10:30:00.000+0200",
+     "start": "2026-10-05T09:31:22.000+0200"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Penzinger Straße"
    },
    {
     "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
@@ -1917,6 +1970,24 @@
     "title": "Polizeieinsatz\nBetrieb ab Hietzing U"
    },
    {
+    "description": "Polizeieinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R574-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     574
+    ],
+    "time": {
+     "end": "2026-10-05T10:30:00.000+0200",
+     "start": "2026-10-05T09:31:15.000+0200"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
     "description": "Polizeieinsatz\nBetrieb ab Anschützgasse",
     "name": "R574-160",
     "owner": "WL",
@@ -1933,6 +2004,24 @@
      "start": "2026-10-05T09:28:45.000+0200"
     },
     "title": "Polizeieinsatz\nBetrieb ab Anschützgasse"
+   },
+   {
+    "description": "Polizeieinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R576-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     576
+    ],
+    "time": {
+     "end": "2026-10-05T10:30:00.000+0200",
+     "start": "2026-10-05T09:31:15.000+0200"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Penzinger Straße"
    },
    {
     "description": "Polizeieinsatz\nBetrieb ab Anschützgasse",
