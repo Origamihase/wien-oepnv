@@ -7,29 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 05 Oct 2026 18:30:45 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 19:00:48 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[9/42: Falschparker]]></title>
+      <title><![CDATA[13A: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
+      <guid isPermaLink="false">8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71</guid>
+      <pubDate>Mon, 05 Oct 2026 18:53:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 18:53:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 18:57:59 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Alser Straße, Skodagasse. Voraussichtliche Dauer: 19:15 Uhr. Grund: Polizeieinsatz im Bereich Kolschitzkygasse. [Seit 18:53]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Alser Straße, Skodagasse. Voraussichtliche Dauer: 19:15 Uhr. Grund: Polizeieinsatz im Bereich Kolschitzkygasse.<br/>[Seit 18:53]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[O: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d</guid>
+      <pubDate>Mon, 05 Oct 2026 18:30:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 18:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 18:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 18:30]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 18:30]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[9: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
       <pubDate>Mon, 05 Oct 2026 17:32:00 +0200</pubDate>
       <ext:first_seen>Mon, 05 Oct 2026 17:32:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 17:49:52 +0200</ext:starts_at>
+      <ext:starts_at>Mon, 05 Oct 2026 17:32:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:32]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:32]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">301231dd4b3d1424c578c356e1ad1eaef839db54dc847e98930e9441759060a5</guid>
-      <pubDate>Mon, 05 Oct 2026 17:26:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 17:29:28 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 17:38:33 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 18:37:00 +0200</ext:ends_at>
-      <description>Betrieb ab Bruno-Marek-Allee; Umleitung über Linie 5 und O. [Seit 17:26]</description>
-      <content:encoded><![CDATA[Betrieb ab Bruno-Marek-Allee; Umleitung über Linie 5 und O.<br/>[Seit 17:26]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2: Rettungseinsatz]]></title>
@@ -37,10 +48,10 @@
       <guid isPermaLink="false">590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b</guid>
       <pubDate>Mon, 05 Oct 2026 17:26:00 +0200</pubDate>
       <ext:first_seen>Mon, 05 Oct 2026 17:27:39 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 17:38:59 +0200</ext:starts_at>
+      <ext:starts_at>Mon, 05 Oct 2026 17:26:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb ab Am Tabor; Umleitung über Linien 31 und 5. [Seit 17:26]</description>
-      <content:encoded><![CDATA[Betrieb ab Am Tabor; Umleitung über Linien 31 und 5.<br/>[Seit 17:26]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:26]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:26]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44A: Betriebsstörung]]></title>
@@ -74,17 +85,6 @@
       <ext:ends_at>Mon, 05 Oct 2026 23:59:00 +0200</ext:ends_at>
       <description>Wegen Rohrlegungsarbeiten in der Anzengruberstraße werden die Linien 49A und 50B umgeleitet. [Heute]</description>
       <content:encoded><![CDATA[Wegen Rohrlegungsarbeiten in der Anzengruberstraße werden die Linien 49A und 50B umgeleitet.<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Rettungseinsatz, Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106</guid>
-      <pubDate>Mon, 05 Oct 2026 15:11:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 15:12:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 15:11:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse. [Heute]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[40A: Döblinger Friedhof]]></title>
