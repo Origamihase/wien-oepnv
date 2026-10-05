@@ -108,4 +108,60 @@ def test_a_failed_main_clause_fails_the_text(monkeypatch: Any) -> None:
 
 
 def test_translation_cache_epoch_was_bumped() -> None:
-    assert build_feed._TRANSLATION_CACHE_EPOCH >= 22
+    assert build_feed._TRANSLATION_CACHE_EPOCH >= 23
+
+
+# First real run after the merge (05.10.2026 17:45): two more gaps.
+
+
+def test_a_cause_the_model_renders_as_a_bare_noun_gets_due_to(monkeypatch: Any) -> None:
+    def pipe(text: str, **_kwargs: Any) -> list[dict[str, str]]:
+        if text.startswith("Deshalb hält die Linie"):
+            return [{"translation_text": "Therefore, line" + text[len("Deshalb hält die Linie"):]}]
+        if text.startswith("Wegen "):
+            return [{"translation_text": "Renovation of the platform"}]
+        return [{"translation_text": text}]
+
+    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: pipe)
+    out = build_feed._translate_text_attempt(
+        "Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in "
+        "Richtung Siebenhirten U ein.",
+        source=_WL,
+    )
+    assert out is not None and out.startswith("Due to renovation of the platform, line U6")
+
+
+def test_a_name_in_a_bare_cause_keeps_its_capital(monkeypatch: Any) -> None:
+    monkeypatch.setattr(
+        build_feed,
+        "_get_translation_pipeline",
+        lambda: lambda text, **_k: [{"translation_text": "Vienna City Marathon"}],
+    )
+    assert build_feed._oebb_cause_en("des Vienna City Marathons", "x", _WL, None) == (
+        "Due to Vienna City Marathon"
+    )
+
+
+def test_a_relocation_way_never_reaches_the_model(model: list[str]) -> None:
+    out = build_feed._translate_text_attempt(
+        "Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A "
+        "in Richtung Reumannplatz U. Hartäckerstraße 65 → etwa 50 Meter in Richtung "
+        "Borkowskigasse.",
+        source=_WL,
+    )
+    assert out is not None
+    assert out.startswith("Wienerbergstraße 27b-27c → Wienerbergstraße 27a. ")
+    assert out.endswith("Hartäckerstraße 65 → approx. 50 metres towards Borkowskigasse.")
+    assert not any("→" in text or "Wienerbergstraße" in text for text in model)
+
+
+@pytest.mark.parametrize(
+    "way",
+    [
+        "1. Haidequerstraße 2 → 1. Haidequerstraße 510.",
+        "Knotzenbachgasse ggü. 40 vor Parkanlage → Knotzenbachgasse 35-45, vor Dirmhirngasse.",
+    ],
+)
+def test_a_number_or_abbreviation_does_not_end_the_way(model: list[str], way: str) -> None:
+    sentences = build_feed._WL_SENTENCE_SPLIT_RE.split(f"{way} Grund: Bauarbeiten.")
+    assert sentences == [way, "Grund: Bauarbeiten."]
