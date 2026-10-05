@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 05 Oct 2026 06:00:52 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 06:30:42 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[63A: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">256dd0cdb2b1c0eb23186e5c51158dfe6e5a1b6abe24847907b9a52340324733</guid>
+      <pubDate>Mon, 05 Oct 2026 06:25:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 06:25:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 06:25:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 06:25]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 06:25]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: Delays]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 05:57]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 05:57]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
-      <pubDate>Mon, 05 Oct 2026 05:29:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 05:29:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 05:29:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 05:58:00 +0200</ext:ends_at>
-      <description>Irregular intervals direction Leopoldau. Reason: defective vehicle. [Since 05:29]</description>
-      <content:encoded><![CDATA[Irregular intervals direction Leopoldau. Reason: defective vehicle.<br/>[Since 05:29]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Neue Donau, no stop towards Floridsdorf]]></title>
