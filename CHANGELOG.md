@@ -5,6 +5,21 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Abhängigkeiten: Dependabot-Rückstand seit Juli (2026-10-05)**: Die
+  zehn Dependabot-PRs vom 01.07. (#1764–#1773) hielten das Limit von je
+  fünf offenen PRs voll, seither kam kein Update mehr. Gesammelt gegen das
+  heutige `main` umgesetzt: `actions/checkout` v7 (Neuerung betrifft nur
+  `pull_request_target`/`workflow_run`, die hier kein Workflow nutzt),
+  `actions/cache` v6.1.0, `stefanzweifel/git-auto-commit-action` v7.2.0
+  (`build-feed.yml` nutzt sie seit 24.09. nicht mehr) und alle drei
+  CodeQL-Teile gemeinsam auf v4.36.2 (#1773 hob nur `analyze`, daher rot).
+  Neue Dependabot-Gruppe `codeql-action` hält sie künftig zusammen.
+  mypy 2.4 statt 1.10 (sechs neue Meldungen in zwei Tests behoben,
+  Baseline bleibt leer), `pytest-cov` 7.1, Untergrenzen für `rjsmin` und
+  `python-dateutil` auf die ohnehin installierten Versionen. `requests`
+  bleibt bei 2.33: 2.34 bringt eigene Typangaben mit und erzeugt 61 neue
+  mypy-Meldungen, vor allem in `src/utils/http.py`; das braucht eine
+  eigene Änderung.
 * **ÖBB: Störungen aus ganz Österreich nicht mehr als Wien-Meldung
   (2026-10-05)**: Die ÖBB-Prüfung fand sechs Meldungen seit Juli, die mit
   Wien nichts zu tun hatten und im deutschen Feed standen, die meisten auf

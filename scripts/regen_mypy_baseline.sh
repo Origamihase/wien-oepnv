@@ -7,7 +7,7 @@
 #
 # Requirements:
 # - Python 3.11
-# - mypy 1.10.x (matches CI; pinned in requirements-dev.txt)
+# - mypy 2.4.x (matches CI; pinned in requirements-dev.txt)
 #
 # Usage:
 #   bash scripts/regen_mypy_baseline.sh
@@ -19,7 +19,7 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO_ROOT"
 
 # Ensure a CI-matching mypy version is installed.
-pip install -q "mypy>=1.10,<1.11"
+pip install -q "mypy>=2.4,<2.5"
 
 CURRENT="$(mktemp)"
 trap 'rm -f "$CURRENT"' EXIT

@@ -46,7 +46,7 @@ Beschreibung begründen, warum er auf diesen PR nicht zutrifft.
 
 ### Statische Analyse
 - [ ] `ruff check src/ tests/` ist sauber.
-- [ ] `python3 -m mypy --no-pretty src tests` (CI-pinnung 1.10.1) ist sauber.
+- [ ] `python3 -m mypy --no-pretty src tests` (CI-Pinnung 2.4.x) ist sauber.
 - [ ] Keine neuen `# type: ignore` / `# noqa`, die eine strukturelle
       Schwäche verbergen.
 - [ ] Keine neuen Mypy-Allowlist-Einträge, sofern nicht dokumentiert.
