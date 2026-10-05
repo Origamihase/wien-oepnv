@@ -88,6 +88,7 @@ def test_genuinely_inactive_statuses_are_still_dropped() -> None:
         "abgeschlossen",
         "beendet",
         "geschlossen",
+        "resolved",  # WL's real value for a finished incident
     ):
         assert _is_inactive_status(s) is True, s
     assert _is_inactive_status("", "", "beendet") is True

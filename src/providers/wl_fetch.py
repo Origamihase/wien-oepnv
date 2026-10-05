@@ -251,9 +251,16 @@ def _best_ts(obj: dict[str, Any]) -> datetime | None:
 # noun ``Wochenende`` (weekend) — all contain the substring ``ende`` and were
 # wrongly dropped by the prior ``"ende" in blob`` membership test, silently
 # discarding valid live disruptions. All keywords are ASCII, so ``\b`` is safe.
+# ``resolved`` is what WL actually sends: a finished incident stays in
+# ``trafficInfoList`` for one more fetch with that status, then disappears.
+# Kept as active, it showed outdated text on the TV for up to 30 minutes
+# (2026-10-05 11:01: "Die Linie U6 fährt derzeit nicht zwischen Westbahnhof
+# und Längenfeldgasse" while the U6 already ran again; 12 cases from
+# 2026-10-04 to 2026-10-05) and, merged with its active ``-F01`` follow-up,
+# hid the follow-up's current text.
 _INACTIVE_STATUS_RE = re.compile(
     r"\b(?:finished|inactive|inaktiv|done|closed|nicht aktiv|ended|ende|"
-    r"abgeschlossen|beendet|geschlossen)\b"
+    r"abgeschlossen|beendet|geschlossen|resolved)\b"
 )
 
 

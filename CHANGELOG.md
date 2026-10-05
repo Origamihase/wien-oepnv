@@ -5,6 +5,17 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **WL: erledigte Störungen sofort aus dem Feed (2026-10-05)**: WL markiert
+  eine beendete Störung mit `"status": "resolved"` und liefert sie noch
+  einen Abruf lang mit. Der Statusfilter kannte das Wort nicht, also stand
+  die Meldung bis zu 30 Minuten weiter im Feed, mit altem Text: am 05.10.
+  um 11:01 Uhr „Die Linie U6 fährt derzeit nicht zwischen Westbahnhof und
+  Längenfeldgasse“, obwohl die U6 wieder fuhr. Teilt sie die Identität mit
+  ihrer aktiven Folgemeldung (`…-F01`), verdeckte ihr Text deren aktuellen
+  („13A: … Voraussichtliche Dauer: 19:15 Uhr“ statt „Nach einer
+  Fahrtbehinderung kommt es zu unterschiedlichen Intervallen“). `resolved`
+  zählt jetzt als beendet. Nachgespielt an allen 59 WL-Rohdaten seit
+  04.10.: 9 Abrufe ändern sich, nur so wie beschrieben.
 * **Englischer Feed: Pfeilzeilen ohne Modell, Ursache immer mit „Due to“
   (2026-10-05)**: Der erste echte Lauf nach „Absichern“ (17:45 Uhr MESZ)
   zeigte zwei Lücken. Die Pfeilzeile einer Verlegung ging durchs Modell
