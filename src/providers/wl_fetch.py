@@ -36,6 +36,7 @@ from .wl_lines import (
     _merge_line_pairs,
 )
 from .wl_plausibility import note_corrections, plausible_end, plausible_start, reset_corrections
+from . import wl_resolved
 from .wl_text import (
     KW_EXCLUDE,
     KW_RESTRICTION,
@@ -257,7 +258,8 @@ def _best_ts(obj: dict[str, Any]) -> datetime | None:
 # (2026-10-05 11:01: "Die Linie U6 fährt derzeit nicht zwischen Westbahnhof
 # und Längenfeldgasse" while the U6 already ran again; 12 cases from
 # 2026-10-04 to 2026-10-05) and, merged with its active ``-F01`` follow-up,
-# hid the follow-up's current text.
+# hid the follow-up's current text. Its display tickers carry no status;
+# ``wl_resolved`` sends them after it.
 _INACTIVE_STATUS_RE = re.compile(
     r"\b(?:finished|inactive|inaktiv|done|closed|nicht aktiv|ended|ende|"
     r"abgeschlossen|beendet|geschlossen|resolved)\b"
@@ -268,6 +270,26 @@ def _is_inactive_status(*values: object) -> bool:
     """True when any status/state *value* marks the item finished/inactive."""
     blob = " ".join(str(v or "") for v in values).lower()
     return _INACTIVE_STATUS_RE.search(blob) is not None
+
+
+def _is_finished(info: Any) -> bool:
+    """True when the WL message *info* is finished by its status fields."""
+    info = _coerce_dict(info)
+    attrs = _coerce_dict(info.get("attributes"))
+    return _is_inactive_status(info.get("status"), attrs.get("status"), attrs.get("state"))
+
+
+def _status_drop_reason(info: Any, stale: set[str]) -> str | None:
+    """Why the traffic info *info* leaves at once, ``None`` when it stays.
+
+    A finished message goes, and so do the display tickers of a finished
+    incident (*stale*, see ``wl_resolved``), which WL sends without a status.
+    """
+    if _is_finished(info):
+        return "Status inaktiv"
+    if isinstance(info, dict) and wl_resolved.ticker_key(info) in stale:
+        return "Kurzmeldung einer erledigten Störung"
+    return None
 
 
 def _wl_identity(
@@ -1284,12 +1306,13 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
     with session_with_retries(WL_USER_AGENT, raise_on_status=False) as session:
         session.headers.update(WL_SESSION_HEADERS)
         # A) TrafficInfos (Störungen)
-        for ti in _fetch_traffic_infos(timeout=timeout, session=session):
+        infos = list(_fetch_traffic_infos(timeout=timeout, session=session))
+        stale = wl_resolved.stale_tickers(infos, _is_finished)
+        for ti in infos:
             attrs = _coerce_dict(ti.get("attributes"))
-            if _is_inactive_status(
-                ti.get("status"), attrs.get("status"), attrs.get("state")
-            ):
-                raw_capture.note_drop("wl", "Status inaktiv", ti.get("title") or ti.get("name"))
+            drop_reason = _status_drop_reason(ti, stale)
+            if drop_reason:
+                raw_capture.note_drop("wl", drop_reason, ti.get("title") or ti.get("name"))
                 continue
 
             title_raw = str(ti.get("title") or ti.get("name") or "Meldung").strip()

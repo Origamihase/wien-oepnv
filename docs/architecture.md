@@ -177,6 +177,22 @@ verdrängt eine andere Störung.
     Linie 46!“ hinter ihrer Maßnahme. Bis zum Abend des 01.10. verwarf
     eine eigene Zuordnung zur ausführlichen Meldung diese Kurzmeldungen
     samt ihrem Inhalt.
+  - Kurzmeldungen einer erledigten Störung (seit 2026-10-05) kommen gar
+    nicht erst hier an. WL schickt die erledigte Störung einen Abruf lang
+    mit Status „resolved“, ihre Kurzmeldungen ohne Status bis zu deren
+    eigenem Ende. Ohne die Störung zogen sie hier die erledigte Störung
+    weiter in den Feed: „15A: Feuerwehreinsatz“ stand am 04.10. noch
+    viereinhalb Stunden nach dem Abschluss, die Kurzmeldungen von „36B:
+    Fremder Verkehrsunfall“ wurden am 05.10. ein neuer Eintrag auf Platz 1.
+    `src/providers/wl_resolved.py` verwirft sie schon beim Abruf: gleiche
+    Linien (sonst aus dem Titel, die U6-Kurzmeldungen nennen keine),
+    Beginn zwischen zehn Minuten vor der Störung und ihrem Abschluss, jedes
+    eigene Wort (Ursache, Haltestelle, Straße) steht in der Störung, und
+    keine laufende Störung einer anderen WL-Nummer passt ebenso.
+    „66A: Bauarbeiten / Busse halten Salvatorianerplatz“ neben der
+    erledigten „66A: Störung an einem Bahnübergang“ bleibt daher.
+    `scripts/update_wl_cache.py` merkt sich die Kurzmeldungen (Name, Beginn,
+    Titel) in `data/wl_resolved_tickers.json`, bis WL sie entfernt.
   - Sonst ist der Titel Linie und die häufigste Ursache der Gruppe; ohne
     Ursache der Titel der ersten Meldung. Die Ursache kommt aus dem Titel
     (`_reason_and_fragment`), aus einer ausführlichen Meldung mit dem

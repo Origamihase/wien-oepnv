@@ -401,6 +401,21 @@ def reset_build_feed_state() -> None:
     reset_registry(with_defaults=True)
 
 
+@pytest.fixture(autouse=True)
+def forget_resolved_tickers() -> Iterator[None]:
+    """Start and end every test without remembered WL tickers.
+
+    ``src.providers.wl_resolved`` keeps the display tickers of closed
+    incidents across fetches; within one test process a test's tickers
+    would otherwise reach the next test's fetch.
+    """
+    from src.providers import wl_resolved
+
+    wl_resolved.forget()
+    yield
+    wl_resolved.forget()
+
+
 @pytest.fixture
 def time_line_today(monkeypatch: pytest.MonkeyPatch) -> None:
     """Render time lines as on 2026-10-02, 12:00 Vienna, whatever today is.

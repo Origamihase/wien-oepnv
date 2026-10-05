@@ -40,12 +40,28 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   einen Abruf lang mit. Der Statusfilter kannte das Wort nicht, also stand
   die Meldung bis zu 30 Minuten weiter im Feed, mit altem Text: am 05.10.
   um 11:01 Uhr „Die Linie U6 fährt derzeit nicht zwischen Westbahnhof und
-  Längenfeldgasse“, obwohl die U6 wieder fuhr. Teilt sie die Identität mit
+  Längenfeldgasse“, obwohl die U6 wieder fuhr. Teilte sie die Identität mit
   ihrer aktiven Folgemeldung (`…-F01`), verdeckte ihr Text deren aktuellen
   („13A: … Voraussichtliche Dauer: 19:15 Uhr“ statt „Nach einer
   Fahrtbehinderung kommt es zu unterschiedlichen Intervallen“). `resolved`
-  zählt jetzt als beendet. Nachgespielt an allen 59 WL-Rohdaten seit
-  04.10.: 9 Abrufe ändern sich, nur so wie beschrieben.
+  zählt jetzt als beendet (Betreiberentscheidung „Sofort raus“).
+  Das allein reichte nicht: Die Anzeigetafel-Kurzmeldungen der Störung
+  (`stoerungkurz`) haben keinen Status und liefen bis zu viereinhalb
+  Stunden weiter. Sie hielten die erledigte Störung im Feed („15A:
+  Feuerwehreinsatz — Betrieb ab Eibesbrunnergasse“ am 04.10. bis 22:30
+  Uhr, Abschluss 18:28 Uhr), schrieben ihren alten Text in die
+  Folgemeldung (U6: „Störung Kein Betrieb zwischen Westbahnhof und
+  Längenfeldgasse“) und in die nächste Störung derselben Linie, und ohne
+  die Störung wurden die von „36B: Fremder Verkehrsunfall“ ein neuer
+  Eintrag auf Platz 1. Sie gehen jetzt mit ihr (`src/providers/wl_resolved.py`:
+  gleiche Linien, Beginn zwischen zehn Minuten vor der Störung und ihrem
+  Abschluss, jedes eigene Wort steht in der Störung); `scripts/update_wl_cache.py`
+  merkt sie sich in `data/wl_resolved_tickers.json`, bis WL sie entfernt.
+  „66A: Busse halten Salvatorianerplatz“ neben der erledigten „66A: Störung
+  an einem Bahnübergang“ bleibt. Nachgespielt an allen 66 WL-Abrufen seit
+  04.10. mit dem ganzen Feed-Neubau: In 15 ändert sich der deutsche Feed,
+  jedes Mal fällt nur Text oder ein Eintrag einer erledigten Störung weg;
+  keine Dopplung, kein first_seen-Eintrag verloren.
 * **Englischer Feed: Pfeilzeilen ohne Modell, Ursache immer mit „Due to“
   (2026-10-05)**: Der erste echte Lauf nach „Absichern“ (17:45 Uhr MESZ)
   zeigte zwei Lücken. Die Pfeilzeile einer Verlegung ging durchs Modell
