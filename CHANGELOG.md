@@ -5,6 +5,15 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Englischer Feed: Pfeilzeilen ohne Modell, Ursache immer mit „Due to“
+  (2026-10-05)**: Der erste echte Lauf nach „Absichern“ (17:45 Uhr MESZ)
+  zeigte zwei Lücken. Die Pfeilzeile einer Verlegung ging durchs Modell
+  und kam verklebt mit Platzhalter-Rest heraus („Wienerbergstraße27b-27c
+  →Wienerbergstraße27a. … 15A5X in the direction of Enkplatz U“); sie wird
+  jetzt wie früher der „Von:“/„Nach:“-Record ohne Modell gesetzt. Und das
+  Modell gab „Wegen Sanierung des Bahnsteigs“ als „Renovation of the
+  platform“ zurück; eine Ursache ohne „Due to“ bekommt es jetzt davor.
+  Epoche 23.
 * **Englischer Feed: WL-Sätze mit „Wegen …“ (2026-10-05)**: Nach der
   Textänderung bei „U6: Neue Donau“ wurde der Satz neu übersetzt und verlor
   seinen Grund („The U6 station stops at Neue Donau U …“). Kein Einzelfall:

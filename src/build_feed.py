@@ -1987,7 +1987,11 @@ _TRANSLATION_MODEL_REVISION = "1a922f3b32a8e809e17a47d4b32142d8105924e5"
 #       U6 station stops at Neue Donau U only in the direction of
 #       Siebenhirten U.", the cause dropped; the source digest is unchanged,
 #       so only a bump evicts it.
-_TRANSLATION_CACHE_EPOCH = 22
+#  23 — a relocation's "A → B" rendered without the model again
+#       (``_render_wl_sentence``), and a cause without "Due to" gets it back.
+#       Cached under 22: "Wienerbergstraße27b-27c →Wienerbergstraße27a. …
+#       15A5X …" and "Renovation of the platform, line U6 …".
+_TRANSLATION_CACHE_EPOCH = 23
 
 # Static lookup for the German words of the bracketed ``[…]`` time line (see
 # ``format_local_times``). Translating these via the ML model would be
@@ -4363,7 +4367,24 @@ def _oebb_cause_en(
     )
     if english is None:
         return None
-    return _capitalise_sentence_start(english.strip().rstrip(".,;:"))
+    english = english.strip().rstrip(".,;:")
+    # The model sometimes renders the phrase as the bare noun ("Wegen
+    # Sanierung des Bahnsteigs" → "Renovation of the platform", WL U6 Neue
+    # Donau, 05.10.2026), and the sentence then reads as if the cause were
+    # its subject. The cause gets its "Due to" back; a capital stays where a
+    # name begins ("Vienna City Marathon"), a common noun is written small.
+    if not _CAUSE_EN_RE.match(english):
+        words = english.split(" ", 2)
+        if len(words) > 1 and words[1][:1].islower():
+            english = english[:1].lower() + english[1:]
+        english = f"Due to {english}"
+    return _capitalise_sentence_start(english)
+
+
+_CAUSE_EN_RE: re.Pattern[str] = re.compile(
+    r"(?:Due to|Because of|Owing to|As a result of|On account of|In view of)\b",
+    re.IGNORECASE,
+)
 
 
 def _oebb_slots_are_names(match: re.Match[str], *slots: str) -> bool:
@@ -4466,6 +4487,34 @@ _WL_MAIN_CLAUSE_SMALL_WORDS: frozenset[str] = frozenset({
 })
 
 
+# A WL sentence ends at ". " before a capital, except behind an ordinal that
+# opens an address ("1. Haidequerstraße 2 → 1. Haidequerstraße 510": at the
+# start or behind the arrow) or an abbreviation that WL's addresses carry
+# ("ggü. 40", "Bhf. Meidling"). A house number ends a sentence as usual
+# ("→ Perchtoldsdorfer Straße 2. Haltestellenverlegung …").
+_WL_SENTENCE_SPLIT_RE: re.Pattern[str] = re.compile(
+    r"(?<!^\d\.)(?<!^\d\d\.)(?<!→ \d\.)(?<!→ \d\d\.)(?<!\bggü\.)(?<!\bNr\.)(?<!\bStr\.)(?<!\bBhf\.)(?<!\bca\.)"
+    r"(?<!\bbzw\.)(?<!\bprov\.)(?<!\bHst\.)(?<=[.!])\s+(?=[A-ZÄÖÜ])"
+)
+
+
+def _render_wl_sentence(
+    sentence: str, ident: str, source: str | None, category: str | None
+) -> str | None:
+    """Render one WL sentence that has a fixed form; ``""`` for the ordinary path.
+
+    A relocation's way ("Wienerbergstraße 27b-27c → Wienerbergstraße 27a.",
+    see :func:`_relocation_first`) is the old ``Von:``/``Nach:`` pair and is
+    rendered like it was, without the model (:func:`_render_record_table`).
+    Through the model it came out glued and with a placeholder left over
+    (05.10.2026 17:45: "Wienerbergstraße27b-27c →Wienerbergstraße27a. … 15A5X
+    in the direction of Enkplatz U").
+    """
+    if f" {_RELOCATION_ARROW} " in sentence:
+        return _render_record_table(sentence, source=source, category=category)
+    return _render_wl_because_sentence(sentence, ident, source, category)
+
+
 def _render_wl_because_sentence(
     sentence: str, ident: str, source: str | None, category: str | None
 ) -> str | None:
@@ -4500,6 +4549,7 @@ def _translate_oebb_templates(
     source: str | None,
     category: str | None,
     render: Callable[[str, str, str | None, str | None], str | None] | None = None,
+    split: re.Pattern[str] | None = None,
 ) -> str | None:
     """Translate a text whose sentences follow an operator's templates.
 
@@ -4511,7 +4561,7 @@ def _translate_oebb_templates(
     fails the whole text (``None``).
     """
     render = render or _render_oebb_sentence
-    sentences = _OEBB_SENTENCE_SPLIT_RE.split(text.strip())
+    sentences = (split or _OEBB_SENTENCE_SPLIT_RE).split(text.strip())
     parts: list[str] = []
     prose: list[str] = []
     templated = False
@@ -4595,7 +4645,8 @@ def _translate_text_attempt(
             return templated
     if oebb_templates and source == "Wiener Linien":
         templated = _translate_oebb_templates(
-            text, ident, source, category, render=_render_wl_because_sentence
+            text, ident, source, category,
+            render=_render_wl_sentence, split=_WL_SENTENCE_SPLIT_RE,
         )
         if templated != text:
             return templated

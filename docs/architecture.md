@@ -1844,9 +1844,14 @@ Nicht jeder Text gehört in ein NMT-Modell:
   Seit 2026-10-05 stehen „Von:“ und „Nach:“ einer Verlegung als
   „Donaufelder Straße 48 → Donaufelder Straße 40-42“ im deutschen Text
   (`_relocation_first`). Der Pfeil wird wie jeder Pfeil maskiert
-  (`_PRESERVED_SYMBOLS_RE`), die Orte gehen aber als Prosa durchs Modell,
-  nicht mehr durch die Record-Regeln oben; fällt dabei ein Ort weg, greift
-  der Entitäten-Wächter, und die Meldung bleibt im EN-Feed deutsch.
+  (`_PRESERVED_SYMBOLS_RE`). Durchs Modell kamen die Orte verklebt und mit
+  Platzhalter-Resten heraus (erster Lauf 05.10. 17:45: „Wienerbergstraße27b-27c
+  →Wienerbergstraße27a. … 15A5X …“); seit Epoche 23 setzt
+  `_render_wl_sentence` jeden Satz mit Pfeil wie früher den Record ohne
+  Modell zusammen (`_render_record_table`: „Hartäckerstraße 65 → approx. 50
+  metres towards Borkowskigasse.“). Ein Satz endet dabei nicht hinter einer
+  Ordnungszahl am Adressanfang („1. Haidequerstraße“) oder einer Abkürzung
+  („ggü. 40“, `_WL_SENTENCE_SPLIT_RE`).
 * **ÖBB-Sätze nach Vorlage.** ÖBB schreibt Störungen fast immer in einem
   Satz mit festen Feldern: „Wegen <Ursache> sind|waren zwischen <A> und
   <B>|in <A> [Zugfahrten] [bis [voraussichtlich] <Zeit> Uhr|derzeit] keine
@@ -1880,7 +1885,10 @@ Nicht jeder Text gehört in ein NMT-Modell:
   construction works in the area of Wildbadgasse, line 20A is diverted.“).
   Beginnt das Modell den Hauptsatz anders oder enthält die Ursache ein Komma
   (244 von 255 WL-„Wegen“-Sätzen seit Juli passen), geht der Satz wie bisher
-  als Ganzes durchs Modell. Epoche 22.
+  als Ganzes durchs Modell. Epoche 22. Gibt das Modell die Ursache als
+  bloßes Hauptwort zurück („Renovation of the platform“, erster echter Lauf
+  05.10. 17:45), setzt `_oebb_cause_en` „Due to“ davor (Epoche 23, gilt auch
+  für ÖBB).
 * **Halte-Meldungen der WL.** Nach „Busse/Züge halten“ und „Ersatzbus hält“
   wählte das Modell die Präposition in jedem Lauf neu („Buses stop
   Salvatorianerplatz“, „Trains stop for lines 6 and 18“). Seit 2026-10-04
