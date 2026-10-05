@@ -68,10 +68,21 @@ jobs:
       # Workaround for actions/checkout#2351 (sporadic includeIf credential
       # race on v6 → "could not read Username, terminal prompts disabled").
       # Two attempts; remove once v6.0.3+ is pinned.
+      #
+      # ``ref: github.ref`` checks out the branch as it is when the job
+      # starts, not the pushed commit (``github.sha``). The concurrency lane
+      # holds this job until a running update-cycle tick has pushed; built
+      # from the pushed commit, the rebuild read caches 30 minutes older than
+      # that tick's, and its reconcile below kept them: on 05.10.2026 the
+      # merge of #1953 at 14:30 UTC replaced the 14:31 feed with one built
+      # from the 14:01 caches ("18: Rettungseinsatz" and the 15A/7A/N62 stop
+      # relocation gone until the next tick, one first_seen entry lost).
+      # Same on 18.09. three times.
       - name: Check out repository (attempt 1/2)
         id: checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
+          ref: ${{ github.ref }}
           fetch-depth: 0
         continue-on-error: true
 
@@ -79,6 +90,7 @@ jobs:
         if: steps.checkout.outcome == 'failure'
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
+          ref: ${{ github.ref }}
           fetch-depth: 0
 
       - name: Set up Python
