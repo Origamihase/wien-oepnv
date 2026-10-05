@@ -216,6 +216,37 @@ def test_single_word_category_heading_is_left_to_the_category_strip() -> None:
     assert desc.startswith("Wegen Gleisbauarbeiten kommt es zu einer Umleitung der Linie N71.")
 
 
+def test_single_word_heading_outside_the_category_list_is_dropped() -> None:
+    # TV preview 05.10.2026, slide 7: "Bahnsteigsanierung Wegen Sanierung …",
+    # and the cut sentence behind it ("… mit der …") fits once it is gone.
+    _, desc = _format(
+        "U6: Neue Donau, kein Halt Richtung Floridsdorf",
+        "<h2>Bahnsteigsanierung</h2>\r\n<p>Wegen Sanierung des Bahnsteigs h&auml;lt die "
+        "Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein.<br />Sie "
+        "erreichen die Station Neue Donau mit der U6 von Floridsdorf.</p>\r\n<p><span "
+        'style="text-decoration: underline;"><strong>Zeitraum:</strong></span><br />'
+        "Montag, 14. September 2026 bis Ende 2026.</p>",
+    )
+    assert desc.startswith(
+        "Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in "
+        "Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von "
+        "Floridsdorf."
+    )
+
+
+@pytest.mark.parametrize(
+    ("heading", "text"),
+    [
+        ("Laufsportveranstaltung", "Wegen des Erste Bank Vienna Night Run 2026 kommt es zu Verkehrseinschränkungen."),
+        ("Netzänderung", "Die Linie 78A bekommt eine neue Linienführung."),
+        ("Kanalgebrechen", "Wegen dringender Sanierungsarbeiten wird die Linie N20 umgeleitet."),
+    ],
+)
+def test_single_word_heading_never_runs_into_the_text(heading: str, text: str) -> None:
+    _, desc = _format("1: Hinweis", f"<h2>{heading}</h2> <p>{text}</p>")
+    assert desc.startswith(text)
+
+
 def test_prose_paragraphs_keep_the_two_sentence_rule() -> None:
     _, desc = _format(
         "63A: Umleitung wegen Kranarbeiten",
@@ -290,3 +321,71 @@ def test_ticker_consequence_ends_with_a_full_stop() -> None:
     )
     assert title == "N71: Ersatzverkehr"
     assert desc.startswith("Busse halten bei Haltestelle N71. [")
+
+
+def _relocation(*sections: tuple[str, str, str, str]) -> str:
+    html = []
+    for heading, stop, origin, target in sections:
+        html.append(
+            f"<p><strong><u>{heading}</u></strong></p>"
+            f"<p><strong><u>Haltestelle:</u></strong> {stop}</p>"
+            f"<p><strong><u>Von:</u></strong> {origin}</p>"
+            f"<p><strong><u>Nach:</u></strong> {target}</p>"
+            "<p><strong><u>Dauer:</u></strong> Ab 05. Oktober 2026, etwa 07:00 Uhr f&uuml;r etwa "
+            "zwei Wochen</p><p><strong><u>Grund:</u></strong> Gleisbau</p>"
+        )
+    return " ".join(html)
+
+
+def test_relocation_shows_where_the_stop_went_first() -> None:
+    # TV 05.10.2026, slide 10: the cut ended at "Von: Donaufelder Straße …".
+    _, desc = _format(
+        "26E/N20: Fultonstraße",
+        _relocation((
+            "Haltestellenverlegung der Linie 26E in Richtung Josef-Baumann-Gasse und Linie "
+            "N20 in Richtung E&szlig;ling, Stadtgrenze",
+            "Fultonstra&szlig;e",
+            "Donaufelder Stra&szlig;e 48",
+            "Donaufelder Stra&szlig;e 40-42",
+        )),
+    )
+    assert desc.startswith(
+        "Donaufelder Straße 48 → Donaufelder Straße 40-42. "
+        "Haltestellenverlegung der Linie 26E in Richtung Josef-Baumann-Gasse"
+    )
+    assert "Haltestelle: Fultonstraße" not in desc
+
+
+def test_relocation_for_two_lines_at_one_place_names_it_once() -> None:
+    _, desc = _format(
+        "12A/N8: Längenfeldgasse U",
+        _relocation(
+            ("Haltestellenverlegung der Linie 12A in Richtung Schmelz, Gablenzgasse",
+             "L&auml;ngenfeldgasse U", "Stiegerbr&uuml;cke vor Linke Wienzeile",
+             "L&auml;ngenfeldgasse 1"),
+            ("Haltestellenverlegung der Linie N8 in Richtung Handelskai S U",
+             "L&auml;ngenfeldgasse U", "Stiegerbr&uuml;cke vor Linke Wienzeile",
+             "L&auml;ngenfeldgasse 1"),
+        ),
+    )
+    assert desc.startswith(
+        "Stiegerbrücke vor Linke Wienzeile → Längenfeldgasse 1. Haltestellenverlegung"
+    )
+    assert desc.count("→") == 1
+
+
+def test_relocation_in_both_directions_keeps_each_direction_with_its_place() -> None:
+    _, desc = _format(
+        "34A/N20: Am Spitz",
+        _relocation(
+            ("Haltestellenverlegung der Linie 34A in Richtung Floridsdorf S U",
+             "Am Spitz", "Am Spitz 1", "Am Spitz, Gleisk&ouml;rper"),
+            ("Haltestellenverlegung der Linie N20 in Richtung Strebersdorf",
+             "Am Spitz", "Am Spitz 16", "Am Spitz, Gleisk&ouml;rper"),
+        ),
+    )
+    assert desc.startswith(
+        "Haltestellenverlegung der Linie 34A in Richtung Floridsdorf S U. Am Spitz 1 → Am Spitz, "
+        "Gleiskörper."
+    )
+    assert "Haltestelle:" not in desc

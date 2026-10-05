@@ -5,6 +5,28 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Haltestellenverlegungen: neue Lage zuerst, mit Pfeil (2026-10-05)**: Auf dem
+  TV endete „26E/N20: Fultonstraße“ mit „Von: Donaufelder Straße …“. Die
+  neue Lage („Nach: Donaufelder Straße 40-42“) fiel der 180-Zeichen-Grenze
+  zum Opfer, weil Linien, Richtungen und ein „Haltestelle:“, das nur den
+  Titel wiederholt, davor standen. `_relocation_first` stellt den Weg als
+  „Donaufelder Straße 48 → Donaufelder Straße 40-42“ nach vorn (Pfeil statt
+  „Von:“/„Nach:“, Betreiberwunsch) und lässt das wiederholte „Haltestelle:“ weg; eine
+  Meldung mit zwei Richtungen und verschiedenen Orten behält ihre
+  Reihenfolge. Nachbau über 2.339 WL-Meldungen seit Juli: die neue Lage
+  sichtbar in 138 statt 93 von 139 Verlegungen, ganz ohne Kürzung 90 statt
+  28; alle anderen Meldungen unverändert.
+  Betreiberentscheidung „Von/Nach zuerst“.
+* **Keine Überschrift mehr vor dem Text ohne Satzende (2026-10-05)**: Auf
+  der TV-Vorschau stand „Bahnsteigsanierung Wegen Sanierung des Bahnsteigs
+  hält die Linie U6 …“, und der zweite Satz brach bei „mit der …“ ab. Eine
+  WL-Überschrift aus einem einzigen Wort fiel nur weg, wenn das Wort in
+  `_CATEGORY_PREFIX_WORDS` stand; jede andere lief ohne Punkt in den Text.
+  `_close_blocks` lässt jetzt jede solche Überschrift weg, wenn Text
+  dahinter folgt. Nachbau über 2.339 verschiedene WL-Meldungen seit Juli:
+  16 Beschreibungen ändern sich, alle nur um die Überschrift (bei U6 Neue
+  Donau, LCC-Herbstmarathon und Gleiswechselbetrieb U6 passt dadurch der
+  ganze zweite Satz), keine anderen; ÖBB und Baustellen unverändert.
 * **Feed-Reihenfolge: Aktuelle Störungen zuerst (2026-10-04)**: Laufende,
   ungeplante Störungen („[Seit hh:mm]“, seit höchstens 24 h im Feed,
   `_is_current_incident`) stehen jetzt vor allem anderen, auch vor neuen

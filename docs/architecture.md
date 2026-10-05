@@ -439,8 +439,12 @@ verdrängt eine andere Störung.
   markiert jetzt das Ende jedes Absatzes, und `_close_blocks` setzt dort
   den Punkt, der fehlt. Eine erste Überschrift, deren Wörter alle schon im
   Titel stehen („Bauarbeiten S80“ unter „S80: Bauarbeiten“), fällt weg; ein
-  einzelnes Wort (`<h2>Gleisbauarbeiten</h2>`) bleibt den bisherigen
-  Regeln, und eine Überschrift ohne Text dahinter bleibt stehen. Zwei
+  einzelnes Wort aus `_CATEGORY_PREFIX_WORDS` (`<h2>Gleisbauarbeiten</h2>`)
+  bleibt den bisherigen Regeln, jedes andere einzelne Wort fällt ebenfalls
+  weg (seit 2026-10-05: „Bahnsteigsanierung Wegen Sanierung …“ stand so auf
+  dem TV, 11 solche Überschriften seit Juli, darunter
+  „Laufsportveranstaltung“, „Netzänderung“, „Kanalgebrechen“), und eine
+  Überschrift ohne Text dahinter bleibt stehen. Zwei
   Ausnahmen vom Punkt: Endet ein Absatz auf ein Funktionswort („… der damit
   einhergehenden“) oder beginnt der nächste klein („prov. Einbahnführung
   …“), läuft der Satz weiter; ein Etikett mit Doppelpunkt („Maßnahmen:“)
@@ -450,7 +454,15 @@ verdrängt eine andere Störung.
   Beginnt der Text mit einer Überschrift oder einem Feld, gilt die
   Zwei-Sätze-Regel nicht, sonst stünde „Haltestelle: Stammersdorf.“ ohne
   die neue Lage da: gezeigt werden die Felder bis zum ersten ganzen Satz,
-  danach greift die 180-Zeichen-Grenze. Die Folge einer Kurzmeldung steht
+  danach greift die 180-Zeichen-Grenze. Bei einer Haltestellenverlegung
+  steht der Weg der Haltestelle vorn, als „Donaufelder Straße 48 →
+  Donaufelder Straße 40-42“ statt „Von: … Nach: …“ (Betreiberwunsch, spart
+  Zeichen), dann die Linien mit ihren Richtungen; ein
+  „Haltestelle:“, das nur den Titel wiederholt, fällt weg (seit 2026-10-05,
+  Betreiberentscheidung „Von/Nach zuerst“, `_relocation_first`: vorher
+  fehlte bei 46 von 139 Verlegungen das „Nach:“). Nennt eine Meldung zwei
+  Richtungen mit verschiedenen Orten, bleibt die Reihenfolge, damit jeder
+  Ort bei seiner Richtung steht. Die Folge einer Kurzmeldung steht
   immer als Satz mit Punkt da („Busse halten bei Haltestelle N71.“), und
   ein doppelter Punkt aus der Quelle („umgeleitet..“) wird einer.
 * **Verklebte Wörter (seit 2026-10-02).** Die Baustellentexte der Stadt

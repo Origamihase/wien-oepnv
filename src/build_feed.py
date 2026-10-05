@@ -8310,9 +8310,15 @@ def _reason_only_summary(category_word: str) -> str:
 # that ends on a function word, is joined without one. A leading block
 # whose words the title already carries all of ("U1: Starke Nachfrage",
 # "Bauarbeiten S80" under "S80: Bauarbeiten") is the heading repeated and
-# goes. A single word is left alone: that is WL's category heading
-# ("<h2>Gleisbauarbeiten</h2>"), which :func:`_strip_summary_category_prefix`
-# and :func:`_reason_only_summary` already handle as a bare word.
+# goes. A single word is WL's category heading ("<h2>Gleisbauarbeiten</h2>").
+# A word of :data:`_CATEGORY_PREFIX_WORDS` is left alone, because
+# :func:`_strip_summary_category_prefix` and :func:`_reason_only_summary`
+# handle it as a bare word. Any other heading word ran into the text on the
+# TV ("Bahnsteigsanierung Wegen Sanierung des Bahnsteigs hält …", U6 Neue
+# Donau, 05.10.2026; 11 heading words since July, "Laufsportveranstaltung",
+# "Netzänderung", "Kanalgebrechen" among them), so it goes like the
+# repeated heading: the text behind it says what happens, mostly opening
+# with "Wegen …" and the cause itself.
 _BLOCK_TERMINAL_PUNCT = ".!?:;,…"
 _WORD_RE = re.compile(r"\w+")
 _CONTINUING_WORDS: frozenset[str] = frozenset({
@@ -8362,6 +8368,71 @@ def _join_continued_blocks(blocks: list[str]) -> list[str]:
     return joined
 
 
+# A WL stop relocation is a list of fields: the lines and their directions,
+# "Haltestelle:", "Von:", "Nach:", "Dauer:", "Grund:". What a rider needs is
+# where the stop went, and that came fourth: on the TV on 05.10.2026 slide 10
+# read "Haltestellenverlegung der Linie 26E in Richtung Josef-Baumann-Gasse
+# und Linie N20 in Richtung Eßling, Stadtgrenze. Haltestelle: Fultonstraße.
+# Von: Donaufelder Straße …" and the 180-character cut took "Nach: Donaufelder
+# Straße 40-42". 46 of 139 relocations cached since July lost their "Nach:"
+# that way. "Von:" and "Nach:" now lead as "Donaufelder Straße 48 →
+# Donaufelder Straße 40-42", the directions follow, and a "Haltestelle:" that
+# only repeats the title goes (operator decision 2026-10-05, "Von/Nach
+# zuerst", then the arrow). A cut then shortens the directions.
+_RELOCATION_FROM = "Von:"
+_RELOCATION_TO = "Nach:"
+_RELOCATION_STOP = "Haltestelle:"
+_RELOCATION_ARROW = "→"
+
+
+def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
+    """Put a relocation's ``Von:`` and ``Nach:`` fields in front."""
+    if not any(block.startswith(_RELOCATION_TO) for block in blocks):
+        return blocks
+    # One notice can list the same stop for two lines ("12A" and "N8" at
+    # Längenfeldgasse U): their "Von:" and "Nach:" are the same words.
+    lead = list(dict.fromkeys(
+        b for b in blocks if b.startswith((_RELOCATION_FROM, _RELOCATION_TO))
+    ))
+    # Several stops or both directions in one notice: each "Von:"/"Nach:"
+    # belongs to the direction above it, so the order stays and only the
+    # repeated stop line goes.
+    several = len(lead) > 2
+    rest = [
+        b
+        for b in blocks
+        if (several or not b.startswith((_RELOCATION_FROM, _RELOCATION_TO)))
+        and not (
+            b.startswith(_RELOCATION_STOP)
+            and {w.casefold() for w in _WORD_RE.findall(b[len(_RELOCATION_STOP):])}
+            <= title_words
+        )
+    ]
+    return _relocation_arrows(rest if several else lead + rest)
+
+
+def _relocation_arrows(blocks: list[str]) -> list[str]:
+    """``Von: A`` and the ``Nach: B`` right after it become ``A → B``.
+
+    Shorter on the display, and the line above already says it is a
+    relocation (operator wish 2026-10-05).
+    """
+    joined: list[str] = []
+    for block in blocks:
+        if (
+            joined
+            and block.startswith(_RELOCATION_TO)
+            and joined[-1].startswith(_RELOCATION_FROM)
+        ):
+            origin = joined[-1][len(_RELOCATION_FROM):].strip().rstrip(".")
+            target = block[len(_RELOCATION_TO):].strip()
+            if origin and target:
+                joined[-1] = f"{origin} {_RELOCATION_ARROW} {target}"
+                continue
+        joined.append(block)
+    return joined
+
+
 def _close_blocks(text: str, raw_title: str) -> tuple[str, bool]:
     """Turn :data:`BLOCK_END_MARK` into sentence ends.
 
@@ -8385,10 +8456,17 @@ def _close_blocks(text: str, raw_title: str) -> tuple[str, bool]:
     # whole description, and the duplicate checks downstream decide on it.
     if len(found) > 1 and {w.casefold() for w in _WORD_RE.findall(found[0])} <= title_words:
         found = found[1:]
+    if (
+        len(found) > 1
+        and len(_WORD_RE.findall(found[0])) == 1
+        and found[0].casefold() not in _CATEGORY_PREFIX_WORDS
+    ):
+        found = found[1:]
     if len(found) > 1:
         kept = [block for block in found if not _DATE_FIELD_RE.match(block)]
         # A label that stood before a date field now meets its own text.
         found = _join_continued_blocks(kept) if kept else found
+    found = _relocation_first(found, title_words)
     closed: list[tuple[str, bool]] = []
     for block in found:
         fragment = len(_WORD_RE.findall(block)) > 1 and not block.endswith(
