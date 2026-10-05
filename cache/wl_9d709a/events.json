@@ -218,18 +218,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "2A/3A: Schellinggasse",
-    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 3A in Richtung Oper, Karlsplatz</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Schellinggasse</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Schellinggasse 14</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Schellinggasse 16</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 07. September 2026, etwa 06:00 Uhr, bis 05. Oktober 2026, etwa 07:00 Uhr</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Haussanierung</span></p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "398323685fc4a877f33705b48fadcd74ffe7d384dff1c7e0b33a9b59f7bcd514",
-    "pubDate": "2026-08-31T00:00:00+02:00",
-    "starts_at": "2026-09-07T00:00:00+02:00",
-    "ends_at": "2026-10-05T07:00:00+02:00",
-    "_identity": "wl|hinweis|L=2A,3A|D=2026-09-07|TK=3a schellinggasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "31A: Kagraner Friedhof",
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 31A in Richtung Kagraner Platz U</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kagraner Friedhof</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Eipeldauer Stra&szlig;e vor Wagramer Stra&szlig;e</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Eipeldauer Stra&szlig;e 52 bis 54&nbsp;</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 19. August 2026, etwa 08:00 Uhr&nbsp;</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stra&szlig;enbauarbeiten</span></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -946,6 +934,18 @@
     "starts_at": "2026-10-01T00:00:14+02:00",
     "ends_at": "2026-10-05T23:59:59+02:00",
     "_identity": "wl|störung|L=52|D=2026-10-01|TK=züge halten bei linien 6 und 18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60A: Rettungseinsatz",
+    "description": "Linie 60A: Unregelmäßige Intervalle in Richtung Liesing S. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7ea7b7e88e9d5c99b7507dbe5112c345878b2378b59599c67bf954ad52c6b36e",
+    "pubDate": "2026-10-05T06:50:00+02:00",
+    "starts_at": "2026-10-05T06:50:00+02:00",
+    "ends_at": "2026-10-05T23:55:00+02:00",
+    "_identity": "wl|störung|L=60A|D=2026-10-05|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",

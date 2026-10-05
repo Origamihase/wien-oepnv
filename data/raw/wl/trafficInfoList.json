@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261005-0004, I20260917-0012, I20260925-0011, I20260922-0032, I20260909-0007, I20261005-0003"
+    "trafficInfoNameList": "I20261005-0004, I20260917-0012, I20261005-0005, I20260925-0011, I20260922-0032, I20260909-0007, I20261005-0003"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R36-152, R1150-0, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R45-136, R19-136, R1476-149, R293-474, R2917-0, R2025-671, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R318-437, R2558-125, R2923-403, R4843-162, R1754-162, R1753-162, R1752-162, R1751-162, R1710-162, R1715-162, R1714-162, R1713-162, R1712-162, R1711-162, R1709-162, R1756-162, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R36-152, R2378-627, R1150-0, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R45-136, R19-136, R1476-149, R318-437, R293-474, R2923-403, R2917-0, R2025-671, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R2558-125, R4843-162, R1754-162, R1753-162, R1752-162, R1751-162, R1710-162, R1715-162, R1714-162, R1713-162, R1712-162, R1711-162, R1709-162, R1756-162, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -270,6 +270,40 @@
      "start": "2026-10-05T06:25:00.000+0200"
     },
     "title": "63A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "60A": "ptBusCity"
+     }
+    },
+    "description": "Linie 60A: Unregelmäßige Intervalle in Richtung Liesing S. Grund: Rettungseinsatz.",
+    "descriptionHTML": "Linie 60A:<br>Unregelmäßige Intervalle in Richtung Liesing S.<br> <br>Grund: Rettungseinsatz.",
+    "name": "I20261005-0005",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "460",
+       "lineName": "60A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-05T06:51:00.000+0200",
+     "end": "2026-10-05T23:55:00.000+0200",
+     "lastUpdate": "2026-10-05T06:51:00.000+0200",
+     "resume": "2026-10-05T06:50:00.000+0200",
+     "start": "2026-10-05T06:50:00.000+0200"
+    },
+    "title": "60A: Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
