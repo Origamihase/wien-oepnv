@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 05 Oct 2026 21:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 23:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[37: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f</guid>
+      <pubDate>Mon, 05 Oct 2026 23:15:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 23:15:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 23:22:28 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 23:15]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 23:15]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[44A: Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Seit 08:30]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 08:30]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Floridsdorf ↔ Wien Jedlersdorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;917288</guid>
-      <pubDate>Mon, 05 Oct 2026 19:55:04 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 20:00:48 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Wegen eines Polizeieinsatzes waren zwischen Wien Floridsdorf Bahnhof (U) und Wien Jedlersdorf Bahnhst bis 19:54 Uhr keine Fahrten möglich. [Heute]</description>
-      <content:encoded><![CDATA[Wegen eines Polizeieinsatzes waren zwischen Wien Floridsdorf Bahnhof (U) und Wien Jedlersdorf Bahnhst bis 19:54 Uhr keine Fahrten möglich.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[15A/7A/N62: Eibesbrunnergasse beide Fahrtrichtungen]]></title>
