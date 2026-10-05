@@ -5,6 +5,15 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Rebuild nach einem Merge baut aus den aktuellen Caches (2026-10-05)**:
+  `build-feed.yml` checkte den gepushten Commit aus. Die Concurrency-Gruppe
+  hält den Job zurück, bis ein laufender Update-Tick gepusht hat; danach
+  baute er aus Caches, die 30 Minuten älter waren, und behielt beim
+  Rebase-Konflikt seine Kopien. Nach dem Merge von #1953 (05.10., 14:30 UTC)
+  ersetzte er so den Feed von 14:31 durch einen aus den 14:01-Caches: zwei
+  aktuelle Meldungen fehlten bis zum nächsten Tick, ein `first_seen`-Eintrag
+  ging verloren. Seit September viermal (18.09. dreimal). Jetzt
+  `ref: github.ref`: ausgecheckt wird der Branch beim Jobstart.
 * **Haltestellenverlegungen: neue Lage zuerst, mit Pfeil (2026-10-05)**: Auf dem
   TV endete „26E/N20: Fultonstraße“ mit „Von: Donaufelder Straße …“. Die
   neue Lage („Nach: Donaufelder Straße 40-42“) fiel der 180-Zeichen-Grenze
