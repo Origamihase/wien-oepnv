@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 05 Oct 2026 15:00:55 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 15:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[12/5: Falschparker]]></title>
+      <title><![CDATA[71/D: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">452ea077d26d994e779db36fd962bb3ffcf0d4420ef0b80400da3d67c2d5c866</guid>
-      <pubDate>Mon, 05 Oct 2026 14:18:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 14:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 14:18:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106</guid>
+      <pubDate>Mon, 05 Oct 2026 15:12:49 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 15:12:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 15:12:49 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 16:13:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung. [Seit 15:12]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 15:12]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104</guid>
+      <pubDate>Mon, 05 Oct 2026 15:01:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 15:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 15:01:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker. [Seit 14:18]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.<br/>[Seit 14:18]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 15:01]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 15:01]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44A: Betriebsstörung]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet. [Bis 07.12.]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet.<br/>[Bis 07.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26E/N20: Fultonstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8360905f480d6715f571ad6ca70aa298b8c553200665d5153e2d69632338a199</guid>
-      <pubDate>Mon, 28 Sep 2026 15:45:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 15:45:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Haltestellenverlegung der Linie 26E in Richtung Josef-Baumann-Gasse und Linie N20 in Richtung Eßling, Stadtgrenze. Haltestelle: Fultonstraße. Von: Donaufelder Straße … [Bis 26.10.]</description>
-      <content:encoded><![CDATA[Haltestellenverlegung der Linie 26E in Richtung Josef-Baumann-Gasse und Linie N20 in Richtung Eßling, Stadtgrenze. Haltestelle: Fultonstraße. Von: Donaufelder Straße …<br/>[Bis 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
