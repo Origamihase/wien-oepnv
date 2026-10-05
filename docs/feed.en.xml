@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 05 Oct 2026 07:30:53 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 08:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945</guid>
+      <pubDate>Mon, 05 Oct 2026 07:53:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 07:53:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 07:53:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Line U1 currently runs between stations Kagraner Platz and Kagran in both directions via track 1. Expected duration: 08:15. Reason: rescue operation in … [Since 07:53]</description>
+      <content:encoded><![CDATA[Line U1 currently runs between stations Kagraner Platz and Kagran in both directions via track 1. Expected duration: 08:15. Reason: rescue operation in …<br/>[Since 07:53]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37/38: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">680feea65497ba72c174dc1d3b77299d887769ca2260c03b8399deb5bcb5e778</guid>
+      <pubDate>Mon, 05 Oct 2026 07:37:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 07:37:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 07:37:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [Since 07:37]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 07:37]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[22A: Defective vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,17 +52,6 @@
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: signal disruption. [Since 07:08]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: signal disruption.<br/>[Since 07:08]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
-      <pubDate>Mon, 05 Oct 2026 07:07:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 07:07:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 07:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 07:45:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 07:07]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 07:07]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[60A: Rescue operation]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 05 Oct 2026 23:59:59 +0200</ext:ends_at>
       <description>[Today]</description>
       <content:encoded><![CDATA[[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A/N65: Grohnergasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">33962c839be0c5f5a8a30f98612a6e490df403ecb5eb3dc4a8369b78e9bff90a</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 11:11:00 +0200</ext:ends_at>
-      <description>Stop relocation of line 16A towards Hetzendorf S and N65 towards Liesing. Stop: Grohnergasse. From: Otto-Probst-Straße before Grohnergasse. To: Approx. … [Today]</description>
-      <content:encoded><![CDATA[Stop relocation of line 16A towards Hetzendorf S and N65 towards Liesing. Stop: Grohnergasse. From: Otto-Probst-Straße before Grohnergasse. To: Approx. …<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
