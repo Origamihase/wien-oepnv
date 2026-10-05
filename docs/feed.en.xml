@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 05 Oct 2026 12:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 13:00:48 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[36B/30A/36A: Third-party traffic accident]]></title>
+      <title><![CDATA[U4: Switch fault]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">07c3e54f1710ac9b7c4cb6dad391aeccd92638cadeea2d42b25900b0954a3c4f</guid>
+      <guid isPermaLink="false">c2aad3fdc6f0b659a98e9e15613bc97fcd324d68275fa594b864a1a5d8cec2a5</guid>
+      <pubDate>Mon, 05 Oct 2026 12:35:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 12:35:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 12:35:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: switch fault in the stop area of Roßauer Lände. [Since 12:35]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: switch fault in the stop area of Roßauer Lände.<br/>[Since 12:35]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[30A/36A: Third-party traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6073a9c5b1642934f82f9cd7f506086954fcc24c10974de4b3c6730b256b38b2</guid>
       <pubDate>Mon, 05 Oct 2026 12:13:00 +0200</pubDate>
       <ext:first_seen>Mon, 05 Oct 2026 12:13:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 05 Oct 2026 12:13:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Jedlesee, Bellgasse. Line 30A: service obstruction towards Stammersdorf, Freiheitsplatz. [Since 12:13]</description>
-      <content:encoded><![CDATA[Service obstruction towards Jedlesee, Bellgasse. Line 30A: service obstruction towards Stammersdorf, Freiheitsplatz.<br/>[Since 12:13]]]></content:encoded>
+      <ext:ends_at>Mon, 05 Oct 2026 12:59:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [Since 12:13]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 12:13]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[36B: Third-party traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">accce3f21245a64052c8612552c60b23535b04f3067f9faca13213873772742d</guid>
+      <pubDate>Mon, 05 Oct 2026 12:13:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 12:13:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 12:13:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 13:15:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [Since 12:13]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 12:13]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[38A: Illegally parked vehicle]]></title>
@@ -27,7 +49,7 @@
       <pubDate>Mon, 05 Oct 2026 11:13:00 +0200</pubDate>
       <ext:first_seen>Mon, 05 Oct 2026 11:13:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 05 Oct 2026 11:13:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Mon, 05 Oct 2026 12:59:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [Since 11:13]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 11:13]]]></content:encoded>
     </item>
@@ -96,28 +118,6 @@
       <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>The work takes place in the period from 20:00 to 05:00. The left lane in the direction of the city is closed. [Until 15.11.]</description>
       <content:encoded><![CDATA[The work takes place in the period from 20:00 to 05:00. The left lane in the direction of the city is closed.<br/>[Until 15.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[52: Trains stop at the stops of lines 6 and 18]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:14 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:14 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Today]</description>
-      <content:encoded><![CDATA[[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Diversion due to crane works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
-      <description>Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected. [Until 11.11.]</description>
-      <content:encoded><![CDATA[Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected.<br/>[Until 11.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
