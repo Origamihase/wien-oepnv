@@ -374,7 +374,9 @@ def test_relocation_for_two_lines_at_one_place_names_it_once() -> None:
     assert desc.count("→") == 1
 
 
-def test_relocation_in_both_directions_keeps_each_direction_with_its_place() -> None:
+def test_relocation_in_both_directions_puts_each_place_before_its_direction() -> None:
+    # Until 05.10.2026 such a notice kept its order, and "15A/7A/N62:
+    # Eibesbrunnergasse" ended on the TV with "Wienerbergstraße 27b-27c → …".
     _, desc = _format(
         "34A/N20: Am Spitz",
         _relocation(
@@ -385,7 +387,23 @@ def test_relocation_in_both_directions_keeps_each_direction_with_its_place() -> 
         ),
     )
     assert desc.startswith(
-        "Haltestellenverlegung der Linie 34A in Richtung Floridsdorf S U. Am Spitz 1 → Am Spitz, "
-        "Gleiskörper."
+        "Am Spitz 1 → Am Spitz, Gleiskörper. Haltestellenverlegung der Linie 34A in Richtung "
+        "Floridsdorf S U. Grund: Gleisbau. Am Spitz 16 → Am Spitz, Gleiskörper."
     )
     assert "Haltestelle:" not in desc
+
+
+def test_relocation_house_number_suffix_stays_compact() -> None:
+    # 15A/7A/N62: Eibesbrunnergasse, 05.10.2026: "Wienerbergstraße 27 b-27 c".
+    _, desc = _format(
+        "15A/7A/N62: Eibesbrunnergasse beide Fahrtrichtungen",
+        _relocation(
+            ("Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U und 15A in "
+             "Richtung Enkplatz U, Grillgasse", "Eibesbrunnergasse",
+             "Wienerbergstra&szlig;e 27b-27c", "Wienerbergstra&szlig;e 27a"),
+            ("Haltestellenverlegung der Linien 7A in Richtung Meidling Hauptstra&szlig;e U und "
+             "15A in Richtung Schedifkaplatz", "Eibesbrunnergasse",
+             "Wienerbergstra&szlig;e 12, Stiege 21-22", "Wienerbergstra&szlig;e 14-14A"),
+        ),
+    )
+    assert desc.startswith("Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung")

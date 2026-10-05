@@ -43,9 +43,14 @@ _COLON_NEWLINE_RE = re.compile(r":\s*\n")
 # unit-style tokens like ``12Uhr`` render as ``12 Uhr``. A single trailing
 # uppercase letter, however, is a Wiener-Linien line-code suffix (``11A``,
 # ``27A``, ``5B``) and must stay glued — splitting produced visibly wrong
-# descriptions like ``Linie 11 A: …``.
+# descriptions like ``Linie 11 A: …``. A single trailing lowercase letter
+# is a house-number or phase suffix (``Wienerbergstraße 27b-27c``,
+# ``Liesinger Platz 2a``, ``Bauphase 1a``), written without a space (DIN
+# 5008); only the one-letter units ``2m``, ``5h`` … are split. Since the
+# stop relocations lead with their addresses (2026-10-05), ``27 b-27 c``
+# stood in the visible text of the German feed.
 _DIGIT_ALPHA_RE = re.compile(
-    r"(\d)([A-Za-zÄÖÜäöüß][a-zäöüß]+|[a-zäöüß])"
+    r"(\d)([A-Za-zÄÖÜäöüß][a-zäöüß]+|[ghlmst](?![A-Za-zÄÖÜäöüß]))"
 )
 _MULTI_BULLET_RE = re.compile(r"(?:\s*•\s*){2,}")
 _LEADING_BULLET_RE = re.compile(r"^\s*•\s*")

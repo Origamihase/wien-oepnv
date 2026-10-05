@@ -5,6 +5,22 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Haltestellenverlegungen: Hausnummern und zwei Richtungen (2026-10-05)**:
+  Nachprüfung von „neue Lage zuerst, mit Pfeil“ über 17.467 verschiedene
+  Meldungen seit Juli (WL, ÖBB, Baustellen) mit altem und neuem Code. Zwei
+  Fehler, beide im Live-Feed von 16:31 Uhr (MESZ) bei „15A/7A/N62:
+  Eibesbrunnergasse“: (1) „Wienerbergstraße 27 b-27 c“. `html_to_text`
+  setzte vor jeden einzelnen Kleinbuchstaben nach einer Ziffer ein
+  Leerzeichen; das traf Hausnummern („27b“, „2a“, „63a“, „77a“, nach DIN
+  5008 ohne Leerzeichen), die mit dem Pfeil vorn sichtbar wurden. Getrennt
+  werden nur noch Einheiten aus einem Buchstaben („2 m“, „5 h“); 10
+  Beschreibungen ändern sich, nur um diese Leerzeichen. (2) Eine Meldung
+  mit zwei Richtungen und verschiedenen Orten behielt ihre Reihenfolge, die
+  neue Lage stand hinter drei Linien und ihren Richtungen und fiel der
+  180-Zeichen-Grenze zum Opfer („… Karlsplatz (U). Wienerbergstraße 27 b-27
+  c → …“). Jetzt steht jeder Pfeil vor seiner Richtung; 4 Verlegungstexte
+  ändern sich. Reihenfolge, Auswahl und Schlüssel der Feed-Einträge bleiben
+  in 12 nachgebauten Läufen seit 21.09. gleich.
 * **Haltestellenverlegungen: neue Lage zuerst, mit Pfeil (2026-10-05)**: Auf dem
   TV endete „26E/N20: Fultonstraße“ mit „Von: Donaufelder Straße …“. Die
   neue Lage („Nach: Donaufelder Straße 40-42“) fiel der 180-Zeichen-Grenze

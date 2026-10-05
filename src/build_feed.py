@@ -8383,6 +8383,9 @@ _RELOCATION_FROM = "Von:"
 _RELOCATION_TO = "Nach:"
 _RELOCATION_STOP = "Haltestelle:"
 _RELOCATION_ARROW = "→"
+# A field of the notice ("Haltestelle:", "Grund:"); any other block is a
+# direction line ("Haltestellenverlegung der Linie 17A in Richtung …").
+_RELOCATION_FIELD_RE = re.compile(r"[^\W\d]+:\s")
 
 
 def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
@@ -8394,21 +8397,36 @@ def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
     lead = list(dict.fromkeys(
         b for b in blocks if b.startswith((_RELOCATION_FROM, _RELOCATION_TO))
     ))
-    # Several stops or both directions in one notice: each "Von:"/"Nach:"
-    # belongs to the direction above it, so the order stays and only the
-    # repeated stop line goes.
-    several = len(lead) > 2
     rest = [
         b
         for b in blocks
-        if (several or not b.startswith((_RELOCATION_FROM, _RELOCATION_TO)))
-        and not (
+        if not (
             b.startswith(_RELOCATION_STOP)
             and {w.casefold() for w in _WORD_RE.findall(b[len(_RELOCATION_STOP):])}
             <= title_words
         )
     ]
-    return _relocation_arrows(rest if several else lead + rest)
+    if len(lead) <= 2:
+        return _relocation_arrows(
+            lead + [b for b in rest if not b.startswith((_RELOCATION_FROM, _RELOCATION_TO))]
+        )
+    # Several stops or both directions in one notice: each "Von:"/"Nach:"
+    # belongs to the direction above it, so it moves in front of that
+    # direction, not of the whole text. "15A/7A/N62: Eibesbrunnergasse" kept
+    # its order until 05.10.2026 and ended on the TV with "Wienerbergstraße
+    # 27b-27c → …": the first new place stood behind three lines and their
+    # directions.
+    ordered: list[str] = []
+    group_start = 0
+    for block in rest:
+        if block.startswith((_RELOCATION_FROM, _RELOCATION_TO)):
+            ordered.insert(group_start, block)
+            group_start += 1
+            continue
+        if not _RELOCATION_FIELD_RE.match(block):
+            group_start = len(ordered)
+        ordered.append(block)
+    return _relocation_arrows(ordered)
 
 
 def _relocation_arrows(blocks: list[str]) -> list[str]:
