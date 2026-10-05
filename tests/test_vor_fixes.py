@@ -4,6 +4,7 @@ from src.providers.vor import (
     VorAuth,
     apply_authentication,
 )
+from requests.structures import CaseInsensitiveDict
 
 class TestVorAuth:
     def test_vor_auth_init_and_call(self) -> None:
@@ -23,38 +24,38 @@ class TestVorAuth:
         # Case 1: Matching Base URL, missing header, missing query param
         req = requests.PreparedRequest()
         req.url = "https://example.com/api/endpoint"
-        req.headers = {}
+        req.headers = CaseInsensitiveDict()
 
         req = auth(req)
 
         assert req.headers.get("Authorization") == auth_header
-        assert "accessId=test_id" in req.url
+        assert req.url is not None and "accessId=test_id" in req.url
 
         # Case 2: Non-matching Base URL
         req = requests.PreparedRequest()
         req.url = "https://other.com/api/endpoint"
-        req.headers = {}
+        req.headers = CaseInsensitiveDict()
 
         req = auth(req)
 
         assert "Authorization" not in req.headers
-        assert "accessId" not in req.url
+        assert req.url is not None and "accessId" not in req.url
 
         # Case 3: Header already present
         req = requests.PreparedRequest()
         req.url = "https://example.com/api/endpoint"
-        req.headers = {"Authorization": "Existing"}
+        req.headers = CaseInsensitiveDict({"Authorization": "Existing"})
 
         req = auth(req)
 
         assert req.headers["Authorization"] == "Existing"
         # Ensure accessId is still injected if missing
-        assert "accessId=test_id" in req.url
+        assert req.url is not None and "accessId=test_id" in req.url
 
         # Case 4: Query param already present
         req = requests.PreparedRequest()
         req.url = "https://example.com/api/endpoint?accessId=existing"
-        req.headers = {}
+        req.headers = CaseInsensitiveDict()
 
         req = auth(req)
 

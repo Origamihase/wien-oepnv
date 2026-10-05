@@ -5,6 +5,17 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Abhängigkeiten: requests 2.34 (2026-10-06)**: Nachzug zu #1770.
+  requests bringt ab 2.34 eigene Typangaben mit; vorher galt jedes
+  requests-Objekt für mypy als `Any`. Die 61 neuen Meldungen sind behoben,
+  ohne das Verhalten zu ändern: `TimeoutHTTPAdapter.send` nennt die
+  Parameter von `HTTPAdapter.send` jetzt einzeln statt `**kwargs` (gleiche
+  Vorgaben, gleiche Proxy-Prüfung), die Sende-Helfer des SSRF-Schutzes
+  geben `requests.Response` zurück, zwei überflüssige `cast`/`type: ignore`
+  fallen weg. In den Tests stehen Ersatz-Sessions jetzt hinter
+  `cast(requests.Session, …)` und Header-Attrappen als
+  `CaseInsensitiveDict`, wie sie requests selbst liefert. Volle Testsuite
+  mit 2.34.2 grün.
 * **Abhängigkeiten: Dependabot-Rückstand seit Juli (2026-10-05)**: Die
   zehn Dependabot-PRs vom 01.07. (#1764–#1773) hielten das Limit von je
   fünf offenen PRs voll, seither kam kein Update mehr. Gesammelt gegen das

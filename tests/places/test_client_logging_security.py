@@ -12,6 +12,7 @@ import requests
 
 from src.places.client import GooglePlacesClient, GooglePlacesConfig
 from src.places.tiling import Tile
+from typing import cast
 
 class _MockResponse:
     def __init__(self, status_code: int, payload: dict[str, Any]) -> None:
@@ -86,7 +87,7 @@ def test_client_redacts_secrets_in_parsing_warnings(caplog: pytest.LogCaptureFix
         timeout_s=1,
         max_retries=0,
     )
-    client = GooglePlacesClient(config, session=session)
+    client = GooglePlacesClient(config, session=cast(requests.Session, session))
 
     tile = Tile(48.0, 16.0)
 

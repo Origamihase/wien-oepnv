@@ -5,6 +5,7 @@ import pytest
 import responses
 
 from src.feed.reporting import RunReport
+from typing import cast
 
 # ``request_safe`` resolves api.github.com before ``responses`` sees the
 # request; stub the resolver so these tests never depend on real DNS.
@@ -42,7 +43,7 @@ def test_run_report_creates_github_issue(monkeypatch: pytest.MonkeyPatch) -> Non
     assert len(responses.calls) == 1
     call = responses.calls[0]
     assert call.request.headers["Authorization"] == "Bearer secret-token"
-    payload = json.loads(call.request.body)
+    payload = json.loads(cast("str | bytes", call.request.body))
     assert payload["title"].startswith("Fehlerbericht: Feed-Lauf")
     assert "Unbekannter Fehler im Test" in payload["body"]
 
