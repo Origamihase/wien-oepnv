@@ -199,6 +199,13 @@ def test_the_budget_is_wired_into_the_build(monkeypatch: pytest.MonkeyPatch, tmp
     since_midnight = local - local.replace(hour=0, minute=0, second=0, microsecond=0)
     if since_midnight < timedelta(minutes=10):
         now -= since_midnight + timedelta(minutes=1)
+    # A start on the full hour marks a scheduled WL entry, not an incident
+    # (``_scheduled_clock``). The others start 60–62 minutes back, so a run
+    # in the first three minutes of an hour put one of them on minute 0 and
+    # out of the incident tier (failed on CI at 16:02 UTC on 2026-10-05,
+    # "N49" behind the demonstrations). Keep every start off minute 0.
+    if now.minute < 10:
+        now -= timedelta(minutes=now.minute + 1)
 
     def stamp(minutes: int) -> str:
         return (now - timedelta(minutes=minutes)).isoformat()
