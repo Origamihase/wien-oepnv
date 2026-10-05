@@ -69,14 +69,32 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   Längenfeldgasse“) und in die nächste Störung derselben Linie, und ohne
   die Störung wurden die von „36B: Fremder Verkehrsunfall“ ein neuer
   Eintrag auf Platz 1. Sie gehen jetzt mit ihr (`src/providers/wl_resolved.py`:
-  gleiche Linien, Beginn zwischen zehn Minuten vor der Störung und ihrem
-  Abschluss, jedes eigene Wort steht in der Störung); `scripts/update_wl_cache.py`
+  ihre Linien gehören zur Störung, Beginn zwischen zehn Minuten vor der
+  Störung und ihrem Ende, jedes eigene Wort steht in der Störung); `scripts/update_wl_cache.py`
   merkt sie sich in `data/wl_resolved_tickers.json`, bis WL sie entfernt.
   „66A: Busse halten Salvatorianerplatz“ neben der erledigten „66A: Störung
   an einem Bahnübergang“ bleibt. Nachgespielt an allen 66 WL-Abrufen seit
-  04.10. mit dem ganzen Feed-Neubau: In 15 ändert sich der deutsche Feed,
-  jedes Mal fällt nur Text oder ein Eintrag einer erledigten Störung weg;
-  keine Dopplung, kein first_seen-Eintrag verloren.
+  04.10. mit dem ganzen Feed-Neubau: In 15 ändert sich der deutsche Feed.
+  14-mal fällt nur Text oder ein Eintrag einer erledigten Störung weg;
+  einmal (04.10. 13:01 Uhr) zeigt „13A: Rettungseinsatz“ „[Seit 12:55]“,
+  den Beginn laut WL, statt „[Seit 12:53]“, den einer Kurzmeldung. Keine
+  Dopplung, kein first_seen-Eintrag verloren.
+  Eine unabhängige Gegenprüfung fand danach noch Folgendes, behoben am selben
+  Abend: Eine erledigte Folgemeldung „Nach einer Fahrtbehinderung …“
+  (`…-F01`) schließt WL erst 20 bis 90 Minuten nach dem Ende der Störung.
+  Eine neue Störung derselben Linie und Ursache, die nur als Kurzmeldung
+  kommt und in diesem Nachlauf beginnt, wäre mit verworfen worden und ganz
+  aus dem Feed gefallen (nachgestellt: „38A: Falschparker“ auf Platz 3 fehlte).
+  Bei einer Folgemeldung endet das Fenster jetzt zwei Minuten nach ihrer
+  Anlage (spätestens beobachtete eigene Kurzmeldung: 52 Sekunden danach).
+  Ein Test, der `update_wl_cache.main()` ausführt, leerte die echte
+  `data/wl_resolved_tickers.json`; die Datei liegt in Tests jetzt unter
+  `tmp_path`. Der Schlüssel einer gemerkten Kurzmeldung wird bereinigt wie
+  die Datei, damit ein weiches Trennzeichen im Titel ihn nach dem Lesen
+  nicht unkenntlich macht. Dazu Tests für jede Regel und für das Gedächtnis
+  über zwei Läufe des Skripts. Nachgespielt an allen 65 WL-Abrufen seit
+  04.10.: dieselben verworfenen Kurzmeldungen in jedem Abruf, der Feed
+  ändert sich nicht.
 * **Englischer Feed: Pfeilzeilen ohne Modell, Ursache immer mit „Due to“
   (2026-10-05)**: Der erste echte Lauf nach „Absichern“ (17:45 Uhr MESZ)
   zeigte zwei Lücken. Die Pfeilzeile einer Verlegung ging durchs Modell
