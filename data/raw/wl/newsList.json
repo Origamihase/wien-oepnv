@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_445, ftazW_1017116, ftazW_1031290, ftazW_1351715, ftazW_769, ftazW_770, ftazW_1351709, ftazW_510, ftazW_511, ftazW_1018067, ftazW_508, ftazW_1351713"
+    "trafficInfoNameList": "ftazW_769, ftazW_770, ftazW_1351709, ftazW_510, ftazW_511, ftazW_1018067, ftazW_508, ftazW_1351713"
    }
   ],
   "poiCategoryGroups": [
@@ -2530,39 +2530,6 @@
    },
    {
     "attributes": {
-     "ausBis": "06.10.2026 05:15",
-     "ausVon": "06.10.2026 01:15",
-     "location": "U1 Mittelbahnsteig - Ausgang Wagramerstraße",
-     "rbls": [
-      4182,
-      4187
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Rennbahnweg",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "U1 Mittelbahnsteig - Ausgang Wagramerstraße",
-    "name": "ftazW_1017116",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4182,
-     4187
-    ],
-    "time": {
-     "end": "2026-10-06T05:15:00.000+0200",
-     "start": "2026-10-06T01:15:00.000+0200"
-    },
-    "title": "Rennbahnweg"
-   },
-   {
-    "attributes": {
      "ausBis": "09.10.2026 00:45",
      "ausVon": "08.10.2026 20:45",
      "location": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Stadion",
@@ -2591,39 +2558,6 @@
      "start": "2026-10-08T20:45:00.000+0200"
     },
     "title": "Stadion"
-   },
-   {
-    "attributes": {
-     "ausBis": "06.10.2026 05:15",
-     "ausVon": "06.10.2026 01:15",
-     "location": "U2 Mittelbahnsteig - Ausgang Erzherzog Karl Straße",
-     "rbls": [
-      4251,
-      4272
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Aspernstraße",
-     "status": "geplante Wartung",
-     "towards": "U2 beide Richtungen"
-    },
-    "description": "U2 Mittelbahnsteig - Ausgang Erzherzog Karl Straße",
-    "name": "ftazW_1031290",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4251,
-     4272
-    ],
-    "time": {
-     "end": "2026-10-06T05:15:00.000+0200",
-     "start": "2026-10-06T01:15:00.000+0200"
-    },
-    "title": "Aspernstraße"
    },
    {
     "attributes": {
@@ -2690,65 +2624,6 @@
      "start": "2026-10-08T20:45:00.000+0200"
     },
     "title": "Neulaa"
-   },
-   {
-    "attributes": {
-     "ausBis": "06.10.2026 05:15",
-     "ausVon": "06.10.2026 01:15",
-     "location": "beide Fahrtrichtungen - Ausgang Alaudagasse",
-     "rbls": [
-      4136,
-      4131
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Alaudagasse",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "beide Fahrtrichtungen - Ausgang Alaudagasse",
-    "name": "ftazW_1351715",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4136,
-     4131
-    ],
-    "time": {
-     "end": "2026-10-06T05:15:00.000+0200",
-     "start": "2026-10-06T01:15:00.000+0200"
-    },
-    "title": "Alaudagasse"
-   },
-   {
-    "attributes": {
-     "ausBis": "06.10.2026 05:15",
-     "ausVon": "06.10.2026 01:15",
-     "location": "Passage - Zwischengeschoss Zugang Meiselmarkt - Ausgang Hütteldorfer Straße",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Johnstraße",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Passage - Zwischengeschoss Zugang Meiselmarkt - Ausgang Hütteldorfer Straße",
-    "name": "ftazW_445",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "time": {
-     "end": "2026-10-06T05:15:00.000+0200",
-     "start": "2026-10-06T01:15:00.000+0200"
-    },
-    "title": "Johnstraße"
    },
    {
     "attributes": {
