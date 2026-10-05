@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 05 Oct 2026 07:01:14 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 07:30:53 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[22A: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ceb7edc1cfe88cf7c5e71cdcc659b084525522b795c8c9186e0465333a83a398</guid>
+      <pubDate>Mon, 05 Oct 2026 07:02:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 07:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 07:02:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 07:02]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 07:02]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[31A: Signalstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">00edbbf20abc1514ffbb7b671cc5d4c7cd52e2d79edd8d76d0aa40602859c1f7</guid>
+      <pubDate>Mon, 05 Oct 2026 07:08:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 07:08:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 07:08:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung. [Seit 07:08]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.<br/>[Seit 07:08]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
+      <pubDate>Mon, 05 Oct 2026 07:07:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 07:07:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 07:07:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 07:45:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 07:07]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 07:07]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[60A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,17 +63,6 @@
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 06:25]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 06:25]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1</guid>
-      <pubDate>Mon, 05 Oct 2026 05:57:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 05:57:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 05:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 05:57]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 05:57]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Neue Donau, kein Halt Richtung Floridsdorf]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Mon, 05 Oct 2026 11:11:00 +0200</ext:ends_at>
       <description>Haltestellenverlegung der Linie 16A in Richtung Hetzendorf S bzw. N65 in Richtung Liesing. Haltestelle: Grohnergasse. Von: Otto-Probst-Straße vor Grohnergasse. Nach: etwa … [Heute]</description>
       <content:encoded><![CDATA[Haltestellenverlegung der Linie 16A in Richtung Hetzendorf S bzw. N65 in Richtung Liesing. Haltestelle: Grohnergasse. Von: Otto-Probst-Straße vor Grohnergasse. Nach: etwa …<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Umleitung wegen Kranarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
-      <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [Bis 11.11.]</description>
-      <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[Bis 11.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29B/N25: Adolf-Loos-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2e0949e212b98b31a226dddab6b40d0f6c06edb1c250ee7ddaac3c840bc8e962</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 11:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet. [Bis 07.12.]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet.<br/>[Bis 07.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
