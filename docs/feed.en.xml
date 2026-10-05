@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 05 Oct 2026 15:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 16:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[71/D: Rescue operation]]></title>
+      <title><![CDATA[71: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106</guid>
-      <pubDate>Mon, 05 Oct 2026 15:12:49 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 15:12:49 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 15:12:49 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 16:13:00 +0200</ext:ends_at>
-      <description>Service obstruction. [Since 15:12]</description>
-      <content:encoded><![CDATA[Service obstruction.<br/>[Since 15:12]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104</guid>
-      <pubDate>Mon, 05 Oct 2026 15:01:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 15:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 15:01:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c</guid>
+      <pubDate>Mon, 05 Oct 2026 15:11:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 15:13:23 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 15:34:49 +0200</ext:starts_at>
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Since 15:01]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 15:01]]]></content:encoded>
+      <description>Trains stop at the stop of line O; diversion to Rennweg over lines 2, 1 and O. [Since 15:11]</description>
+      <content:encoded><![CDATA[Trains stop at the stop of line O; diversion to Rennweg over lines 2, 1 and O.<br/>[Since 15:11]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44A: Service disruption]]></title>
@@ -41,6 +30,28 @@
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: service disruption. [Since 08:30]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[Since 08:30]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[49A/50B: Construction works – Anzengruberstraße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2132d13e48fc6193664b93df9b574ffdd1a141fba0bc0790a962b21354b3837b</guid>
+      <pubDate>Mon, 05 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 16:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:59:00 +0200</ext:ends_at>
+      <description>Due to pipe laying work in Anzengruberstraße, lines 49A and 50B are redirected. [Today]</description>
+      <content:encoded><![CDATA[Due to pipe laying work in Anzengruberstraße, lines 49A and 50B are redirected.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[D: Rescue operation, track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106</guid>
+      <pubDate>Mon, 05 Oct 2026 15:11:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 15:12:49 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 15:11:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Rescue operation: diversion to Quatier Belvedere via lines 2, 1 and O. Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse. [Today]</description>
+      <content:encoded><![CDATA[Rescue operation: diversion to Quatier Belvedere via lines 2, 1 and O. Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[40A: Döblinger Friedhof]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
       <description>Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected. [Until 11.11.]</description>
       <content:encoded><![CDATA[Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected.<br/>[Until 11.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29B/N25: Adolf-Loos-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2e0949e212b98b31a226dddab6b40d0f6c06edb1c250ee7ddaac3c840bc8e962</guid>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 30 Sep 2026 11:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected. [Until 07.12.]</description>
-      <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse lines 29B and N25 are redirected.<br/>[Until 07.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
