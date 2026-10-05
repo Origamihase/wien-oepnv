@@ -50,6 +50,9 @@ Reihenfolge, keine Felder, die sich bei jedem Aufruf ändern. Eine Datei über
 Was der WL-Abruf zusammenführt statt verwirft (Bündelung nach Linien und
 Thema, Anzeigetafel-Kurzmeldungen, Sammel- und Teilmeldungen), steht nicht
 in `wl/verworfen.json`; es lässt sich aus `wl/*.json` mit dem Code des
-jeweiligen Stands nachrechnen. Die Verwürfe des Feed-Builds selbst (nach dem Cache) stehen hier nicht; sie
+jeweiligen Stands nachrechnen. Seit 2026-10-05 gehört dazu
+`data/wl_resolved_tickers.json` desselben Stands: Die Kurzmeldungen einer
+erledigten Störung verwirft der Abruf auch dann noch, wenn die erledigte
+Meldung selbst nicht mehr in `wl/trafficInfoList.json` steht. Die Verwürfe des Feed-Builds selbst (nach dem Cache) stehen hier nicht; sie
 lassen sich aus den Caches unter `cache/` und dem Code des jeweiligen Stands
 nachrechnen.

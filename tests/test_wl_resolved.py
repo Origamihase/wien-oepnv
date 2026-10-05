@@ -59,9 +59,21 @@ def _fetch(monkeypatch: pytest.MonkeyPatch, infos: list[dict[str, Any]]) -> list
 
 
 def _message(
-    name: str, status: str, line: str, title: str, description: str, *, closed: float, html: str | None = None
+    name: str,
+    status: str,
+    line: str,
+    title: str,
+    description: str,
+    *,
+    closed: float,
+    created: float = 1,
+    html: str | None = None,
 ) -> dict[str, Any]:
-    """A long message (``stoerunglang``); a resolved one ends when WL closed it."""
+    """A long message (``stoerunglang``); a resolved one ends when WL closed it.
+
+    WL creates the original a minute after its start and a follow-up
+    (``…-F01``) when the disruption ends.
+    """
     return {
         "attributes": {"relatedLineTypes": {line: "ptBusCity"}},
         "description": description,
@@ -73,7 +85,7 @@ def _message(
         "relatedLines": [line],
         "status": status,
         "time": {
-            "created": _at(1),
+            "created": _at(created),
             "end": _at(closed) if status == "resolved" else _at(240),
             "lastUpdate": _at(closed),
             "resume": _at(closed),
@@ -112,7 +124,7 @@ def _13a(status: str) -> dict[str, Any]:
 
 
 def _13a_follow_up() -> dict[str, Any]:
-    return _message("I20261005-0035-F01", "active", "13A", "13A: Polizeieinsatz", _FOLLOW_UP, closed=6)
+    return _message("I20261005-0035-F01", "active", "13A", "13A: Polizeieinsatz", _FOLLOW_UP, closed=6, created=6)
 
 
 def test_a_resolved_incident_is_not_in_the_feed(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -149,6 +161,7 @@ def _36b_closed() -> dict[str, Any]:
         "36B: Fremder Verkehrsunfall",
         "Linie 36B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
         closed=46,
+        created=25,
     )
 
 
@@ -179,6 +192,7 @@ def _u6_follow_up() -> dict[str, Any]:
         "U6: Rettungseinsatz",
         "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
         closed=35,
+        created=35,
     )
 
 
@@ -251,6 +265,66 @@ def test_a_reused_ticker_counts_as_new(monkeypatch: pytest.MonkeyPatch) -> None:
     assert events and wl_resolved.remembered() == {}
 
 
+def test_a_running_follow_up_of_the_same_incident_does_not_keep_its_tickers(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """05.10. 19:01: the 13A tickers fit the active follow-up's title as well."""
+    tickers = [
+        _ticker(f"R{stop}-413", "Fahrtbehinderung\nwegen Polizeieinsatz", began=5, line="13A")
+        for stop in (693, 694)
+    ]
+    (event,) = _fetch(monkeypatch, [_13a("resolved"), _13a_follow_up(), *tickers])
+    assert "unterschiedlichen Intervallen" in event["description"]
+    assert sorted(record["name"] for record in wl_resolved.remembered().values()) == ["R693-413", "R694-413"]
+
+
+def test_a_ticker_of_another_line_stays(monkeypatch: pytest.MonkeyPatch) -> None:
+    other_line = _ticker("R1091-213", "Fahrtbehinderung\nFremder Verkehrsunfall", began=2.5, line="13A")
+    events = _fetch(monkeypatch, [_36b_closed(), other_line])
+    assert events and wl_resolved.remembered() == {}
+
+
+def test_a_ticker_may_begin_at_most_ten_minutes_before_the_incident(monkeypatch: pytest.MonkeyPatch) -> None:
+    """The earliest real one began 62 s before (13A, 04.10.)."""
+    assert _fetch(monkeypatch, [_36b_closed(), *_36b_tickers(began=-9)]) == []
+    wl_resolved.forget()
+    events = _fetch(monkeypatch, [_36b_closed(), *_36b_tickers(began=-15)])
+    assert events and wl_resolved.remembered() == {}
+
+
+def test_the_display_word_for_a_cause_counts(monkeypatch: pytest.MonkeyPatch) -> None:
+    """WL writes "Fremdunfall" on the display and "Fremder Verkehrsunfall" in the message."""
+    tickers = [_ticker("R1091-236", "Fahrtbehinderung\nFremdunfall", began=2.5, line="36B")]
+    assert _fetch(monkeypatch, [_36b_closed(), *tickers]) == []
+
+
+def _38a_aftermath() -> dict[str, Any]:
+    """05.10.: start 11:13, aftermath from 11:30, resolved at 12:59 (here after 58 minutes, not yet)."""
+    return _message(
+        "I20261005-0021-F01",
+        "resolved",
+        "38A",
+        "38A: Falschparker",
+        "Linie 38A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+        closed=58,
+        created=17,
+    )
+
+
+def test_a_new_incident_during_the_aftermath_keeps_its_tickers(monkeypatch: pytest.MonkeyPatch) -> None:
+    """The aftermath closed 89 minutes after the disruption; a new one in between is news."""
+    old = _ticker("R774-438", "Fahrtbehinderung\nFalschparker", began=16.7, line="38A")
+    new = _ticker("R805-438", "Fahrtbehinderung\nFalschparker", began=50, line="38A")
+    events = _fetch(monkeypatch, [_38a_aftermath(), old, new])
+    assert events and [record["name"] for record in wl_resolved.remembered().values()] == ["R774-438"]
+
+
+def test_a_ticker_begun_with_the_aftermath_still_leaves(monkeypatch: pytest.MonkeyPatch) -> None:
+    """05.10. 17:49: WL created the aftermath of "42: Falschparker" 52 s before a ticker of it."""
+    late = _ticker("R1336-438", "Fahrtbehinderung\nFalschparker", began=17 + 52 / 60, line="38A")
+    assert _fetch(monkeypatch, [_38a_aftermath(), late]) == []
+
+
 # --- memory across runs (scripts/update_wl_cache.py) ------------------------
 
 
@@ -273,6 +347,40 @@ def test_the_memory_survives_a_run_and_forgets_what_wl_removed(
     _fetch(monkeypatch, [_u6_follow_up()])
     wl_resolved.save_memory(path)
     assert json.loads(path.read_text(encoding="utf-8"))["tickers"] == []
+
+
+def test_the_memory_matches_a_title_the_file_scrubs(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    """The file drops soft hyphens and the like; the key read back must still match."""
+    path = tmp_path / "wl_resolved_tickers.json"
+    tickers = [_ticker("R1091-236", "Fahrtbehinderung\nFremder Verkehrsunfall\u00ad", began=2.5, line="36B")]
+    assert _fetch(monkeypatch, [_36b_closed(), *tickers]) == []
+    wl_resolved.save_memory(path)
+    wl_resolved.forget()
+    wl_resolved.load_memory(path)
+    assert _fetch(monkeypatch, tickers) == []
+
+
+def test_the_update_script_carries_the_memory_from_run_to_run(monkeypatch: pytest.MonkeyPatch) -> None:
+    """``main()`` reads the memory before the fetch and writes it after, run by run."""
+    from scripts import update_wl_cache
+    from src.providers import wl_fetch
+
+    written: list[list[dict[str, Any]]] = []
+    monkeypatch.setattr(update_wl_cache, "write_cache", lambda provider, items: written.append(items))
+    monkeypatch.setattr(update_wl_cache, "record_plausibility_anomalies", lambda: None)
+    monkeypatch.setattr(wl_fetch, "_fetch_news", lambda *a, **kw: [])
+    monkeypatch.setattr(wl_fetch, "session_with_retries", lambda *a, **kw: _Session())
+
+    def run(infos: list[dict[str, Any]]) -> str:
+        monkeypatch.setattr(wl_fetch, "_fetch_traffic_infos", lambda *a, **kw: infos)
+        wl_resolved.forget()  # every run is a new process
+        assert update_wl_cache.main() == 0
+        return json.dumps(written[-1], ensure_ascii=False)
+
+    assert "Kein Betrieb" not in run([_u6("resolved"), _u6_follow_up(), *_u6_tickers()])
+    stored = json.loads(update_wl_cache.RESOLVED_TICKERS.read_text(encoding="utf-8"))
+    assert [record["name"] for record in stored["tickers"]] == ["R1199-0", "R1200-0"]
+    assert "Kein Betrieb" not in run([_u6_follow_up(), *_u6_tickers()])
 
 
 def test_no_file_without_anything_to_remember(tmp_path: Path) -> None:

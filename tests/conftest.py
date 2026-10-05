@@ -402,15 +402,20 @@ def reset_build_feed_state() -> None:
 
 
 @pytest.fixture(autouse=True)
-def forget_resolved_tickers() -> Iterator[None]:
-    """Start and end every test without remembered WL tickers.
+def forget_resolved_tickers(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
+    """Start and end every test without remembered WL tickers, away from the real file.
 
     ``src.providers.wl_resolved`` keeps the display tickers of closed
     incidents across fetches; within one test process a test's tickers
-    would otherwise reach the next test's fetch.
+    would otherwise reach the next test's fetch. ``scripts/update_wl_cache.py``
+    keeps them in ``data/wl_resolved_tickers.json``, which the update cycle
+    commits: a test running its ``main()`` emptied that file (check of
+    2026-10-05), so the file moves to *tmp_path*.
     """
+    from scripts import update_wl_cache
     from src.providers import wl_resolved
 
+    monkeypatch.setattr(update_wl_cache, "RESOLVED_TICKERS", tmp_path / "wl_resolved_tickers.json")
     wl_resolved.forget()
     yield
     wl_resolved.forget()

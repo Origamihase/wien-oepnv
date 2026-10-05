@@ -45,19 +45,22 @@ def record_plausibility_anomalies(path: Path = PLAUSIBILITY_ANOMALIES) -> None:
         logger.info("WL-Plausibilität: %d neue Auffälligkeit(en) gesammelt.", new)
 
 
-def load_resolved_tickers(path: Path = RESOLVED_TICKERS) -> None:
-    """Remember the tickers of closed incidents from the last run; never fails the run."""
+def load_resolved_tickers(path: Path | None = None) -> None:
+    """Remember the tickers of closed incidents from the last run; never fails the run.
+
+    The default is read at call time, so tests can move it (``tests/conftest.py``).
+    """
     try:
-        wl_resolved.load_memory(path)
+        wl_resolved.load_memory(path or RESOLVED_TICKERS)
     except (OSError, ValueError) as exc:
         logger.warning("WL-Kurzmeldungen erledigter Störungen nicht gelesen (%s).", type(exc).__name__)
         wl_resolved.forget()
 
 
-def save_resolved_tickers(path: Path = RESOLVED_TICKERS) -> None:
+def save_resolved_tickers(path: Path | None = None) -> None:
     """Keep the tickers of closed incidents for the next run; never fails the run."""
     try:
-        wl_resolved.save_memory(path)
+        wl_resolved.save_memory(path or RESOLVED_TICKERS)
     except OSError as exc:
         logger.warning("WL-Kurzmeldungen erledigter Störungen nicht geschrieben (%s).", type(exc).__name__)
 

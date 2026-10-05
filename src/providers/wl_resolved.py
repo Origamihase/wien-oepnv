@@ -21,9 +21,13 @@ A ticker belongs to a closed incident when all three hold:
 
 1. its lines are among the incident's lines (from ``relatedLines``, else
    from its title: the U6 tickers name no line otherwise);
-2. it started between ten minutes before the incident and its closing
-   (``time.end`` of the resolved message), so a later incident with the
-   same cause keeps its tickers;
+2. it started between ten minutes before the incident and the end of the
+   disruption, so a later incident with the same cause keeps its tickers.
+   For a resolved message the end is its ``time.end``. A follow-up
+   (``…-F01``) is WL's aftermath notice "Nach einer Fahrtbehinderung kommt
+   es zu unterschiedlichen Intervallen": WL creates it when the disruption
+   ends (``time.created``) and resolves it 20 to 90 minutes later, so its
+   window closes two minutes after ``time.created``;
 3. every word it adds beyond lines and stock words ("Fahrtbehinderung",
    "Betrieb ab", "Kein Betrieb zwischen", …) appears in the incident's
    title or text: "Westbahnhof" and "Längenfeldgasse" in "Die Linie U6
@@ -60,9 +64,15 @@ log = logging.getLogger(__name__)
 
 TICKER_CATEGORY = 3
 # How long before the incident's start one of its tickers may begin. Measured
-# 2026-10-04/05: the earliest began 61 s before the incident's start
-# (13A, 04.10.), the latest 9.5 minutes after it (U6, 05.10.).
+# 2026-10-04/05: the earliest began 62 s before the incident's start
+# (13A, 04.10.), the latest 10.4 minutes after it (U6, 05.10.).
 TICKER_LEAD = timedelta(minutes=10)
+# How long after a follow-up's ``time.created`` (the end of the disruption)
+# one of the incident's tickers may still begin. Measured 2026-10-04/05: at
+# most 52 s ("42: Falschparker", 05.10. 17:49). A ticker begun later belongs
+# to a new incident, even with the same line and cause: the aftermath of
+# "38A: Falschparker" ran from 11:30 until 12:59 (05.10.).
+AFTERMATH_GRACE = timedelta(minutes=2)
 MAX_MEMORY_BYTES = 256 * 1024
 
 # Words a ticker uses for the kind of consequence, not for the incident.
@@ -130,9 +140,14 @@ def _words(*parts: object) -> set[str]:
 
 
 def ticker_key(info: Mapping[str, Any]) -> str:
-    """Name, start and title of a ticker: a reused ticker gets a new key."""
+    """Name, start and title of a ticker: a reused ticker gets a new key.
+
+    Scrubbed like the memory file, so a key read back from it still matches
+    a ticker whose title carries, say, a soft hyphen.
+    """
     start = info.get("time", {}).get("start") if isinstance(info.get("time"), Mapping) else ""
-    return "|".join((str(info.get("name") or ""), str(start or ""), str(info.get("title") or "")))
+    key = "|".join((str(info.get("name") or ""), str(start or ""), str(info.get("title") or "")))
+    return str(scrub_trojan_source_primitives(key))
 
 
 def is_ticker(info: Mapping[str, Any]) -> bool:
@@ -143,6 +158,15 @@ def is_ticker(info: Mapping[str, Any]) -> bool:
 def _incident_number(info: Mapping[str, Any]) -> str:
     """``I20261005-0035-F01`` → ``I20261005-0035``: a follow-up shares its number."""
     return str(info.get("name") or "").split("-F")[0]
+
+
+def _disruption_end(incident: Mapping[str, Any]) -> datetime | None:
+    """When the disruption of a resolved message ended (rule 2 above)."""
+    closing = _time(incident, "end")
+    created = _time(incident, "created")
+    if closing is None or created is None or _incident_number(incident) == str(incident.get("name") or ""):
+        return closing
+    return min(closing, created + AFTERMATH_GRACE)
 
 
 def _own_words(ticker: Mapping[str, Any], lines: frozenset[str]) -> set[str]:
@@ -164,9 +188,10 @@ def _belongs(ticker: Mapping[str, Any], incident: Mapping[str, Any], *, closed: 
     began, start = _time(ticker, "start"), _time(incident, "start")
     if began is None or start is None or began < start - TICKER_LEAD:
         return False
-    closing = _time(incident, "end")
-    if closed and (closing is None or began > closing):
-        return False
+    if closed:
+        closing = _disruption_end(incident)
+        if closing is None or began > closing:
+            return False
     return _said_by(_own_words(ticker, lines), incident)
 
 
@@ -254,6 +279,7 @@ def forget() -> None:
 
 
 __all__ = [
+    "AFTERMATH_GRACE",
     "TICKER_CATEGORY",
     "TICKER_LEAD",
     "forget",
