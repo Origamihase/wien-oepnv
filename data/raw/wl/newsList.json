@@ -6,7 +6,7 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-2738, N20260209-3501, N20260209-3802, N20260209-4631, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260701-5989, N20260702-5991, N20260708-6004, N20260722-6034, N20260805-6064, N20260806-6072, N20260813-6092, N20260808-6085, N20260808-6084, N20260808-6083, N20260817-6131, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260831-6165, N20260901-6167, N20260903-6175, N20260908-6177, N20260910-6180, N20260911-6181, N20260915-6185, N20260916-6187, N20260916-6188, N20260918-6192, N20260918-6191, N20260921-6196, N20260922-6200, N20260923-6203, N20260928-6209, N20260928-6210, N20260930-6211, N20260421-5703, N20261002-6215, N20261005-6216, N20261005-6217"
+    "trafficInfoNameList": "N20260209-0049, N20260209-2738, N20260209-3501, N20260209-3802, N20260209-4631, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260701-5989, N20260702-5991, N20260708-6004, N20260722-6034, N20260805-6064, N20260806-6072, N20260813-6092, N20260808-6085, N20260808-6083, N20260808-6084, N20260817-6131, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260831-6165, N20260901-6167, N20260903-6175, N20260908-6177, N20260910-6180, N20260911-6181, N20260915-6185, N20260916-6187, N20260916-6188, N20260918-6192, N20260918-6191, N20260921-6196, N20260922-6200, N20260923-6203, N20260928-6209, N20260928-6210, N20260930-6211, N20260421-5703, N20261002-6215, N20261005-6216, N20261005-6217, N20261005-6218"
    },
    {
     "id": -1,
@@ -599,7 +599,7 @@
      "start": "2026-05-25T00:00:00.000+0200",
      "validFrom": "2026-05-20T14:23:00.000+0200"
     },
-    "title": "66A, N66: Grenzackerstraße Richtung Reumannplatz bzw. Oper, Karlsplatz"
+    "title": "66A, N66: Grenzackerstraße"
    },
    {
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 76A in Richtung Albern, bzw. 76B in Richtung Albern</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Mannsw&ouml;rther Stra&szlig;e</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Mannsw&ouml;rther Stra&szlig;e 82</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Mannsw&ouml;rther Stra&szlig;e 88</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 29. Mai 2026, etwa 11:00 Uhr, bis voraussichtlich Ende Oktober 2026</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kabelarbeiten</span></p>",
@@ -2448,6 +2448,32 @@
      "validFrom": "2026-10-05T13:36:00.000+0200"
     },
     "title": "38B, 39B: Allerheiligenverkehr 01.11.2026"
+   },
+   {
+    "description": "<h2>Gleisbauarbeiten</h2>\r\n<p>Durch Fortschreiten der Gleisbauarbeiten im Bereich Ho&szlig;platz wird die Linie N20 in diesem Bereich umgeleitet.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />06. Oktober 2026, Betriebsbeginn (Nacht von 05. auf 06. Oktober) bis Samstag, 10. Oktober 2026, etwa 05:00 Uhr.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie N20:</strong><br />Umleitung in Richtung Strebersdorf, Meriangasse &uuml;ber Ho&szlig;platz - Patrizigasse - Freytaggasse - Schlo&szlig;hofer Stra&szlig;e.</p>\r\n<p><span style=\"text-decoration: underline;\">Haltestelle:</span><br />- Ho&szlig;platz (Ho&szlig;platz gegen&uuml;ber 12-13).<br /><span style=\"text-decoration: underline;\">Verlegt nach:</span><br />- Ho&szlig;platz (Ho&szlig;platz 7-11, provisorische Haltestelle der Linie 26E).</p>",
+    "id": "N20261005-6218",
+    "location": {
+     "properties": {
+      "attributes": {},
+      "coordName": "WGS84",
+      "type": "news"
+     },
+     "type": "Feature"
+    },
+    "name": "N20261005-6218",
+    "refPoiCategoryId": 13296,
+    "relatedLines": [
+     "N20"
+    ],
+    "relatedStops": [
+     2380
+    ],
+    "time": {
+     "end": "2026-10-10T05:00:00.000+0200",
+     "start": "2026-10-05T14:55:00.000+0200",
+     "validFrom": "2026-10-05T14:49:00.000+0200"
+    },
+    "title": "N20: Gleisbauarbeiten ab 06.10.2026"
    },
    {
     "attributes": {
