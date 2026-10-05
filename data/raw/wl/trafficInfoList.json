@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261005-0027-F01, I20261005-0027-F02, I20260925-0011, I20260922-0032, I20261005-0013, I20260909-0007"
+    "trafficInfoNameList": "I20260917-0012, I20261005-0027-F01, I20261005-0027-F02, I20260925-0011, I20260922-0032, I20261005-0013, I20260909-0007, I20261005-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R36-152, R2378-627, R45-136, R1150-0, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R100-136, R101-136, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R318-437, R293-474, R1446-149, R1445-149, R1474-412, R1508-426, R2025-671, R2917-0, R2923-403, R2558-125, R4843-162, R1754-162, R1753-162, R1752-162, R1751-162, R1710-162, R1756-162, R1714-162, R1713-162, R1712-162, R1711-162, R1709-162, R1715-162, R1974-466, R500-101, R1349-444, R1350-444, R1356-444, R1357-444, R8895-444, R8894-444, R8881-444, R8880-444, R8879-444, R8878-444, R8877-444, R8876-444, R8875-444, R8874-444, R8873-444, R8872-444, R8869-444, R8893-444, R8892-444, R8891-444, R8890-444, R8889-444, R8883-444, R8882-444, R105-136, R2640-171, R2012-171, R105-171, R108-136, R106-136, R107-136, R2013-171, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R100-136, R101-136, R45-136, R1150-0, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R36-152, R1474-412, R1474-149, R1473-149, R1472-149, R1508-426, R318-437, R293-474, R2025-671, R2917-0, R2923-403, R2558-125, R1449-149, R1448-412, R1448-149, R1447-149, R1446-149, R1445-149, R1475-149, R1476-149, R4843-162, R1711-162, R1709-162, R1712-162, R1713-162, R1714-162, R1715-162, R1710-162, R1751-162, R1752-162, R1753-162, R1754-162, R1756-162, R1974-466, R500-101, R1350-444, R1349-444, R1357-444, R1356-444, R8895-444, R8894-444, R8883-444, R8881-444, R8880-444, R8889-444, R8890-444, R8891-444, R8892-444, R8872-444, R8882-444, R8893-444, R8869-444, R8879-444, R8878-444, R8877-444, R8876-444, R8875-444, R8874-444, R8873-444, R105-136, R2640-171, R2012-171, R105-171, R108-136, R107-136, R106-136, R2013-171, R2619-118, R2632-118, R836-118, R837-118, R2420-118, R293-118, R3603-118, R3604-118, R3602-118, R843-118, R2750-118, R2422-118, R3607-118, R3609-118, R3608-118, R3606-118, R3605-118, R3568-118, R2620-118, R284-118, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -307,6 +307,42 @@
      "start": "2026-10-05T15:11:00.000+0200"
     },
     "title": "71: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "18": "ptTram"
+     }
+    },
+    "description": "Linie 18: Betrieb nur zwischen Burggasse, Stadthalle U und St. Marx S. Weichen Sie ersatzweise auf die Linien U2, U3 und 71 aus. Voraussichtliche Dauer: 16:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Viehmarktgasse.",
+    "descriptionHTML": "Linie 18:<br>Betrieb nur zwischen Burggasse, Stadthalle U und St. Marx S.<br> <br>Weichen Sie ersatzweise auf die Linien U2, U3 und 71 aus.<br><br>Voraussichtliche Dauer: 16:40 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Viehmarktgasse.",
+    "name": "I20261005-0029",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "118",
+       "lineName": "18",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     2619
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-05T16:21:00.000+0200",
+     "end": "2026-10-05T23:55:00.000+0200",
+     "lastUpdate": "2026-10-05T16:21:00.000+0200",
+     "start": "2026-10-05T16:20:00.000+0200"
+    },
+    "title": "18: Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1455,6 +1491,42 @@
     "title": "Busse halten\nHoßplatz 11"
    },
    {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2420-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2420
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:20:50.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab St. Marx",
+    "name": "R2422-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2422
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:21:20.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab St. Marx"
+   },
+   {
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -1473,6 +1545,60 @@
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
    },
    {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2619-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2619
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:20:32.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab St. Marx",
+    "name": "R2620-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2620
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:21:32.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab St. Marx"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2632-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2632
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:20:32.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
     "description": "Rettungseinsatz\nUmleitung bis Rennweg über Linien 2, 1 und O",
     "name": "R2640-171",
     "owner": "WL",
@@ -1489,6 +1615,42 @@
      "start": "2026-10-05T15:13:23.000+0200"
     },
     "title": "Rettungseinsatz\nUmleitung bis Rennweg über Linien 2, 1 und O"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab St. Marx",
+    "name": "R2750-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2750
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:21:18.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab St. Marx"
+   },
+   {
+    "description": "Rettungseinsatz\nZüge halten Leberstraße",
+    "name": "R284-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     284
+    ],
+    "time": {
+     "end": "2026-10-05T17:21:00.000+0200",
+     "start": "2026-10-05T16:22:21.000+0200"
+    },
+    "title": "Rettungseinsatz\nZüge halten Leberstraße"
    },
    {
     "description": "3A Netzänderung\nBetrieb ab Riemergasse",
@@ -1522,6 +1684,24 @@
      "start": "2026-10-01T00:00:16.000+0200"
     },
     "title": "Busse halten\nKärntner Ring 5"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R293-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     293
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:20:51.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
@@ -1560,6 +1740,24 @@
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
    },
    {
+    "description": "Rettungseinsatz\nBetrieb ab St. Marx",
+    "name": "R3568-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3568
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:21:24.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab St. Marx"
+   },
+   {
     "description": "Züge halten\nbei Linien 6 und 18",
     "name": "R36-152",
     "owner": "WL",
@@ -1576,6 +1774,150 @@
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Züge halten\nbei Linien 6 und 18"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R3602-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3602
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:20:54.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R3603-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3603
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:20:54.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R3604-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3604
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:20:54.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab St. Marx",
+    "name": "R3605-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3605
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:21:24.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab St. Marx"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab St. Marx",
+    "name": "R3606-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3606
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:21:24.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab St. Marx"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab St. Marx",
+    "name": "R3607-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3607
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:21:24.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab St. Marx"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab St. Marx",
+    "name": "R3608-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3608
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:21:24.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab St. Marx"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab St. Marx",
+    "name": "R3609-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3609
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:21:24.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab St. Marx"
    },
    {
     "description": "Züge halten\nWipplingerstr 39",
@@ -1645,6 +1987,60 @@
      "start": "2026-10-01T00:00:13.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R836-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     836
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:20:43.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R837-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     837
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:20:43.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab St. Marx",
+    "name": "R843-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     843
+    ],
+    "time": {
+     "end": "2026-10-05T17:20:00.000+0200",
+     "start": "2026-10-05T16:21:13.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab St. Marx"
    },
    {
     "description": "Fahrplanaushang\nbitte beachten",

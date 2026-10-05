@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 05 Oct 2026 16:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 16:30:37 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[18: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723</guid>
+      <pubDate>Mon, 05 Oct 2026 16:20:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 16:20:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 16:22:21 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Züge halten Leberstraße. Betrieb nur zwischen Burggasse, Stadthalle U und St. Marx S. Weichen Sie ersatzweise auf die Linien U2, U3 und 71 aus. Voraussichtliche Dauer: 16:40 Uhr. [Seit 16:20]</description>
+      <content:encoded><![CDATA[Züge halten Leberstraße. Betrieb nur zwischen Burggasse, Stadthalle U und St. Marx S. Weichen Sie ersatzweise auf die Linien U2, U3 und 71 aus. Voraussichtliche Dauer: 16:40 Uhr.<br/>[Seit 16:20]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[71: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,6 +41,17 @@
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Seit 08:30]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 08:30]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A/7A/N62: Eibesbrunnergasse beide Fahrtrichtungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bd6cbe1a4ea6d909912fce8527e38411ee42a952a91a70beecf363c26cd3e728</guid>
+      <pubDate>Mon, 05 Oct 2026 16:10:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 16:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 in Richtung Oper, Karlsplatz (U). … [Ab Di 06.10. bis 06.11.]</description>
+      <content:encoded><![CDATA[Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 in Richtung Oper, Karlsplatz (U). …<br/>[Ab Di 06.10. bis 06.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[49A/50B: Bauarbeiten – Anzengruberstraße]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>Die Arbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Der linke Fahrstreifen in Fahrtrichtung stadteinwärts wird gesperrt. [Bis 15.11.]</description>
       <content:encoded><![CDATA[Die Arbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Der linke Fahrstreifen in Fahrtrichtung stadteinwärts wird gesperrt.<br/>[Bis 15.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[52: Züge halten bei Linien 6 und 18]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:14 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 01 Oct 2026 00:00:14 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Heute]</description>
-      <content:encoded><![CDATA[[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Umleitung wegen Kranarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
-      <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [Bis 11.11.]</description>
-      <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[Bis 11.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
