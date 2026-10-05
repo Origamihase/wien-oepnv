@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 05 Oct 2026 19:16:09 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 19:30:42 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[11A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">42fd134123a418e9ad9efe9206b8aec78f4828e1289887cd32b9a179ab2ed7cd</guid>
+      <pubDate>Mon, 05 Oct 2026 19:03:11 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 19:03:11 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 19:04:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit 19:03]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 19:03]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[13A: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,30 +28,8 @@
       <ext:first_seen>Mon, 05 Oct 2026 18:53:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 05 Oct 2026 18:57:59 +0200</ext:starts_at>
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Alser Straße, Skodagasse. Voraussichtliche Dauer: 19:15 Uhr. Grund: Polizeieinsatz im Bereich Kolschitzkygasse. [Seit 18:53]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Alser Straße, Skodagasse. Voraussichtliche Dauer: 19:15 Uhr. Grund: Polizeieinsatz im Bereich Kolschitzkygasse.<br/>[Seit 18:53]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[O: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d</guid>
-      <pubDate>Mon, 05 Oct 2026 18:30:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 18:30:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 18:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 18:30]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 18:30]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
-      <pubDate>Mon, 05 Oct 2026 17:32:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 17:32:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 17:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:32]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:32]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 18:53]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 18:53]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2: Rettungseinsatz]]></title>
@@ -87,15 +76,15 @@
       <content:encoded><![CDATA[Wegen Rohrlegungsarbeiten in der Anzengruberstraße werden die Linien 49A und 50B umgeleitet.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40A: Döblinger Friedhof]]></title>
+      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">627870b759e3f3a09d810891178ef7bb5fd8766a4951e9e88fdd4b55aefe9cae</guid>
+      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
       <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
       <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Hartäckerstraße 65 → etwa 50 Meter in Richtung Borkowskigasse. Haltestellenverlegung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
-      <content:encoded><![CDATA[Hartäckerstraße 65 → etwa 50 Meter in Richtung Borkowskigasse. Haltestellenverlegung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
+      <description>Hartäckerstraße 65 → zur Haltestelle Döblinger Friedhof. Haltestellenverlegung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
+      <content:encoded><![CDATA[Hartäckerstraße 65 → zur Haltestelle Döblinger Friedhof. Haltestellenverlegung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Neue Donau, kein Halt Richtung Floridsdorf]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Tue, 06 Oct 2026 01:00:00 +0200</ext:ends_at>
       <description>Grund: Bauarbeiten. [Bis Di 06.10.]</description>
       <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Bis Di 06.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Rennweg 33A–37]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">65573981646b35911098f80f5060d16369450fbc04c8d50c90d9db3a086b9b29</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 22:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
+      <description>Die Arbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Der linke Fahrstreifen in Fahrtrichtung stadteinwärts wird gesperrt. [Bis 15.11.]</description>
+      <content:encoded><![CDATA[Die Arbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Der linke Fahrstreifen in Fahrtrichtung stadteinwärts wird gesperrt.<br/>[Bis 15.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

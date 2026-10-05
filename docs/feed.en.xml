@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 05 Oct 2026 19:16:09 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 19:30:42 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[11A: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">42fd134123a418e9ad9efe9206b8aec78f4828e1289887cd32b9a179ab2ed7cd</guid>
+      <pubDate>Mon, 05 Oct 2026 19:03:11 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 19:03:11 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 19:04:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: rescue operation. [Since 19:03]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 19:03]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[13A: Police operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,30 +28,8 @@
       <ext:first_seen>Mon, 05 Oct 2026 18:53:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 05 Oct 2026 18:57:59 +0200</ext:starts_at>
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Alser Straße, Skodagasse. Expected duration: 19:15. Reason: police operation in the area of Kolschitzkygasse. [Since 18:53]</description>
-      <content:encoded><![CDATA[Service obstruction towards Alser Straße, Skodagasse. Expected duration: 19:15. Reason: police operation in the area of Kolschitzkygasse.<br/>[Since 18:53]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[O: Traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d</guid>
-      <pubDate>Mon, 05 Oct 2026 18:30:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 18:30:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 18:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 18:30]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 18:30]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
-      <pubDate>Mon, 05 Oct 2026 17:32:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 17:32:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 17:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Since 17:32]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 17:32]]]></content:encoded>
+      <description>After a service obstruction there are different intervals. [Since 18:53]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 18:53]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2: Rescue operation]]></title>
@@ -87,15 +76,15 @@
       <content:encoded><![CDATA[Due to pipe laying work in Anzengruberstraße, lines 49A and 50B are redirected.<br/>[Today]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40A: Döblinger Friedhof]]></title>
+      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">627870b759e3f3a09d810891178ef7bb5fd8766a4951e9e88fdd4b55aefe9cae</guid>
+      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
       <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
       <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Hartäckerstraße 65 → approx. 50 metres towards Borkowskigasse. Stop relocation of line 40A towards Schottentor. Reason: road construction. [Until 26.10.]</description>
-      <content:encoded><![CDATA[Hartäckerstraße 65 → approx. 50 metres towards Borkowskigasse. Stop relocation of line 40A towards Schottentor. Reason: road construction.<br/>[Until 26.10.]]]></content:encoded>
+      <description>Hartäckerstraße 65 → zur Haltestelle Döblinger Friedhof. Stop relocation of line 40A towards Schottentor. Reason: road construction. [Until 26.10.]</description>
+      <content:encoded><![CDATA[Hartäckerstraße 65 → zur Haltestelle Döblinger Friedhof. Stop relocation of line 40A towards Schottentor. Reason: road construction.<br/>[Until 26.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Neue Donau, no stopping direction Floridsdorf]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Tue, 06 Oct 2026 01:00:00 +0200</ext:ends_at>
       <description>Reason: construction works. [Until Tue 06.10.]</description>
       <content:encoded><![CDATA[Reason: construction works.<br/>[Until Tue 06.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Rennweg 33A–37]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">65573981646b35911098f80f5060d16369450fbc04c8d50c90d9db3a086b9b29</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 22:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
+      <description>The work takes place in the period from 20:00 to 05:00. The left lane towards the city is closed. [Until 15.11.]</description>
+      <content:encoded><![CDATA[The work takes place in the period from 20:00 to 05:00. The left lane towards the city is closed.<br/>[Until 15.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
