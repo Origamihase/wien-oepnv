@@ -7,8 +7,52 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 05 Oct 2026 09:00:38 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 09:30:43 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[60: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">adbc205fada2fc64ad22e011c50abe7d99265772e9404e3b8c41ed5b0dfc70d9</guid>
+      <pubDate>Mon, 05 Oct 2026 09:18:21 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 09:30:43 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 09:29:45 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 10:28:00 +0200</ext:ends_at>
+      <description>Betrieb ab Anschützgasse. [Seit 09:18]</description>
+      <content:encoded><![CDATA[Betrieb ab Anschützgasse.<br/>[Seit 09:18]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">381829f20deab888a50e0846e6431dbf3ea0d5a796a28663625e48630c13c686</guid>
+      <pubDate>Mon, 05 Oct 2026 09:30:15 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 09:30:15 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 09:30:22 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 10:29:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung. [Seit 09:30]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 09:30]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4</guid>
+      <pubDate>Mon, 05 Oct 2026 09:10:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 09:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 09:10:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 09:10]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 09:10]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f</guid>
+      <pubDate>Mon, 05 Oct 2026 09:05:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 09:05:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 09:05:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung im Haltestellenbereich Landstraße. [Seit 09:05]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung im Haltestellenbereich Landstraße.<br/>[Seit 09:05]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[44A: Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -43,17 +87,6 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 07:53]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[37/38: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">680feea65497ba72c174dc1d3b77299d887769ca2260c03b8399deb5bcb5e778</guid>
-      <pubDate>Mon, 05 Oct 2026 07:37:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 07:37:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 07:37:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 07:37]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 07:37]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[22A: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">ceb7edc1cfe88cf7c5e71cdcc659b084525522b795c8c9186e0465333a83a398</guid>
@@ -76,17 +109,6 @@
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.<br/>[Seit 07:08]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[60A: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7ea7b7e88e9d5c99b7507dbe5112c345878b2378b59599c67bf954ad52c6b36e</guid>
-      <pubDate>Mon, 05 Oct 2026 06:50:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 06:50:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 06:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in Richtung Liesing S. Grund: Rettungseinsatz. [Seit 06:50]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Liesing S. Grund: Rettungseinsatz.<br/>[Seit 06:50]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[63A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">256dd0cdb2b1c0eb23186e5c51158dfe6e5a1b6abe24847907b9a52340324733</guid>
@@ -96,28 +118,6 @@
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 06:25]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 06:25]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Neue Donau, kein Halt Richtung Floridsdorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">747d54fbd4c0aad685b21596a0c44cb67d41165e556ee43b1bc3e8636920f551</guid>
-      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 16:30:37 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Bahnsteigsanierung Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der … [Bis 31.12.]</description>
-      <content:encoded><![CDATA[Bahnsteigsanierung Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der …<br/>[Bis 31.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
-      <pubDate>Mon, 05 Oct 2026 04:40:13 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 04:40:13 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 01:00:00 +0200</ext:ends_at>
-      <description>Grund: Bauarbeiten. [Bis Di 06.10.]</description>
-      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Bis Di 06.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
