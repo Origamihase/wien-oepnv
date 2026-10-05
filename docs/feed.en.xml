@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 05 Oct 2026 18:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 18:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[52: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">135dc138ba98273ad144d64ca134b6893a89c99daba5bd7077ef978a587e1c53</guid>
-      <pubDate>Mon, 05 Oct 2026 17:50:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 17:50:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 17:54:11 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service from Diesterweggasse service only between Parlament, Volkstheater and Reinlgasse. [Since 17:50]</description>
-      <content:encoded><![CDATA[Service from Diesterweggasse service only between Parlament, Volkstheater and Reinlgasse.<br/>[Since 17:50]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[9/42: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -38,7 +27,7 @@
       <pubDate>Mon, 05 Oct 2026 17:26:00 +0200</pubDate>
       <ext:first_seen>Mon, 05 Oct 2026 17:29:28 +0200</ext:first_seen>
       <ext:starts_at>Mon, 05 Oct 2026 17:38:33 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Mon, 05 Oct 2026 18:37:00 +0200</ext:ends_at>
       <description>Service from Bruno-Marek-Allee; diversion over line 5 and O. [Since 17:26]</description>
       <content:encoded><![CDATA[Service from Bruno-Marek-Allee; diversion over line 5 and O.<br/>[Since 17:26]]]></content:encoded>
     </item>
@@ -50,19 +39,8 @@
       <ext:first_seen>Mon, 05 Oct 2026 17:27:39 +0200</ext:first_seen>
       <ext:starts_at>Mon, 05 Oct 2026 17:38:59 +0200</ext:starts_at>
       <ext:ends_at>Mon, 05 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Diversion over lines 31 and 5. [Since 17:26]</description>
-      <content:encoded><![CDATA[Diversion over lines 31 and 5.<br/>[Since 17:26]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723</guid>
-      <pubDate>Mon, 05 Oct 2026 16:20:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 16:20:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 16:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 05 Oct 2026 18:30:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Since 16:20]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 16:20]]]></content:encoded>
+      <description>Service from Am Tabor; diversion over lines 31 and 5. [Since 17:26]</description>
+      <content:encoded><![CDATA[Service from Am Tabor; diversion over lines 31 and 5.<br/>[Since 17:26]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44A: Service disruption]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Hartäckerstraße 65 → approximately 50 meters towards Borkowskigasse. Stop relocation of line 40A towards Schottentor. Reason: road construction. [Until 26.10.]</description>
       <content:encoded><![CDATA[Hartäckerstraße 65 → approximately 50 meters towards Borkowskigasse. Stop relocation of line 40A towards Schottentor. Reason: road construction.<br/>[Until 26.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Neue Donau, no stop towards Floridsdorf]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">747d54fbd4c0aad685b21596a0c44cb67d41165e556ee43b1bc3e8636920f551</guid>
+      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Sun, 04 Oct 2026 16:30:37 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Renovation of the platform, line U6 stops the station Neue Donau U only in the direction of Siebenhirten U. You can reach Neue Donau with U6 from Floridsdorf. [Until 31.12.]</description>
+      <content:encoded><![CDATA[Renovation of the platform, line U6 stops the station Neue Donau U only in the direction of Siebenhirten U. You can reach Neue Donau with U6 from Floridsdorf.<br/>[Until 31.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Buses stop at Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Mon, 05 Oct 2026 04:40:13 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 04:40:13 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 01:00:00 +0200</ext:ends_at>
+      <description>Reason: construction works. [Until Tue 06.10.]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[Until Tue 06.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

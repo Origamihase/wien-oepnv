@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261005-0032-F01, I20261005-0032-F02, I20261005-0033, I20260917-0012, I20261005-0027-F01, I20261005-0029-F01, I20260925-0011, I20260922-0032, I20261005-0013, I20260909-0007, I20261005-0031-F01, I20261005-0031-F02"
+    "trafficInfoNameList": "I20261005-0032-F01, I20261005-0032-F02, I20260917-0012, I20261005-0033-F01, I20261005-0027-F01, I20260925-0011, I20260922-0032, I20261005-0031-F02, I20261005-0013, I20260909-0007, I20261005-0031-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R45-136, R36-152, R2371-125, R2378-627, R2370-125, R2359-125, R2343-125, R2343-626, R102-136, R101-136, R100-136, R119-136, R130-136, R116-136, R117-136, R118-136, R19-136, R115-136, R103-136, R1150-0, R2372-627, R2380-627, R2345-127, R1473-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1508-426, R2025-671, R2917-0, R318-437, R293-474, R2923-403, R2558-125, R1476-149, R1475-149, R1474-149, R1472-149, R4843-162, R1756-162, R1754-162, R1753-162, R1709-162, R1711-162, R1712-162, R1713-162, R1714-162, R1715-162, R1710-162, R1752-162, R1751-162, R1974-466, R500-101, R1350-444, R1356-444, R1349-444, R1357-444, R8894-444, R8895-444, R8877-444, R8869-444, R8872-444, R8873-444, R8874-444, R8875-444, R8876-444, R8878-444, R8879-444, R8880-444, R8881-444, R8882-444, R8883-444, R8889-444, R8890-444, R8891-444, R8892-444, R8893-444, R22-102, R1019-102, R1020-102, R1022-102, R327-102, R328-102, R326-102, R325-112, R326-112, R3571-112, R3446-112, R3569-112, R3570-112, R322-102, R387-112, R323-112, R324-112, R2168-112, R2204-112, R2203-112, R324-102, R323-102, R325-102, R3878-142, R3877-142, R1342-142, R524-142, R493-142, R149-142, R148-142, R150-142, R525-109, R526-109, R530-109, R531-109, R532-109, R524-109, R223-109, R556-109, R533-109, R188-142, R1213-142, R1212-142, R1336-142, R1338-142, R1539-152, R1542-152, R1541-152, R1540-152, R1465-152, R1553-152, R1552-152, R1554-152, R1556-152, R1555-152, R1551-152, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R100-136, R102-136, R1150-0, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R101-136, R1447-149, R1445-149, R2923-403, R1474-412, R1448-412, R1508-426, R2917-0, R2025-671, R318-437, R293-474, R2558-125, R1446-149, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R4843-162, R1711-162, R1713-162, R1714-162, R1715-162, R1710-162, R1751-162, R1752-162, R1753-162, R1754-162, R1756-162, R1709-162, R1712-162, R1974-466, R500-101, R1356-444, R1357-444, R1350-444, R1349-444, R8894-444, R8895-444, R8890-444, R8891-444, R8892-444, R8893-444, R8889-444, R8883-444, R8882-444, R8881-444, R8880-444, R8879-444, R8878-444, R8877-444, R8876-444, R8875-444, R8874-444, R8873-444, R8872-444, R8869-444, R326-102, R325-112, R326-112, R322-102, R387-112, R324-112, R323-112, R2168-112, R2203-112, R2204-112, R323-102, R324-102, R325-102, R3877-142, R3878-142, R1342-142, R524-142, R493-142, R150-142, R148-142, R149-142, R525-109, R524-109, R526-109, R530-109, R531-109, R532-109, R223-109, R556-109, R533-109, R188-142, R1212-142, R1213-142, R1336-142, R1338-142, R1541-152, R1539-152, R1540-152, R1542-152, R1465-152, R1555-152, R1551-152, R1552-152, R1556-152, R1553-152, R1554-152, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -274,43 +274,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "18": "ptTram"
-     }
-    },
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261005-0029-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "118",
-       "lineName": "18",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     2619
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-05T16:35:00.000+0200",
-     "end": "2026-10-05T18:30:00.000+0200",
-     "lastUpdate": "2026-10-05T17:24:00.000+0200",
-     "resume": "2026-10-05T16:35:00.000+0200",
-     "start": "2026-10-05T16:20:00.000+0200"
-    },
-    "title": "18: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "2": "ptTram"
      }
     },
@@ -375,8 +338,8 @@
     "status": "active",
     "time": {
      "created": "2026-10-05T17:47:00.000+0200",
-     "end": "2026-10-05T23:55:00.000+0200",
-     "lastUpdate": "2026-10-05T17:47:00.000+0200",
+     "end": "2026-10-05T18:35:00.000+0200",
+     "lastUpdate": "2026-10-05T18:29:00.000+0200",
      "resume": "2026-10-05T17:47:00.000+0200",
      "start": "2026-10-05T17:26:00.000+0200"
     },
@@ -458,9 +421,9 @@
       "52": "ptTram"
      }
     },
-    "description": "Linie 52: Betrieb nur zwischen Parlament, Volkstheater und Reinlgasse. Weiterfahrt über die Linie 10 bis Joachimsthalerplatz. Weichen Sie ersatzweise auf die Linie 46 aus. Voraussichtliche Dauer: 18:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Linzer Straße, Hochsatzengasse.",
-    "descriptionHTML": "Linie 52:<br>Betrieb nur zwischen Parlament, Volkstheater und Reinlgasse.<br>Weiterfahrt über die Linie 10 bis Joachimsthalerplatz.<br> <br>Weichen Sie ersatzweise auf die Linie 46 aus.<br><br>Voraussichtliche Dauer: 18:15 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Linzer Straße, Hochsatzengasse.",
-    "name": "I20261005-0033",
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261005-0033-F01",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
@@ -481,9 +444,10 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-05T17:51:00.000+0200",
+     "created": "2026-10-05T18:19:00.000+0200",
      "end": "2026-10-05T23:55:00.000+0200",
-     "lastUpdate": "2026-10-05T17:55:00.000+0200",
+     "lastUpdate": "2026-10-05T18:19:00.000+0200",
+     "resume": "2026-10-05T18:19:00.000+0200",
      "start": "2026-10-05T17:50:00.000+0200"
     },
     "title": "52: Rettungseinsatz"
@@ -525,24 +489,6 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1019-102",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     1019
-    ],
-    "time": {
-     "end": "2026-10-05T18:27:00.000+0200",
-     "start": "2026-10-05T17:27:40.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R102-136",
     "owner": "WL",
@@ -559,42 +505,6 @@
      "start": "2026-10-01T00:00:14.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1020-102",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     1020
-    ],
-    "time": {
-     "end": "2026-10-05T18:27:00.000+0200",
-     "start": "2026-10-05T17:27:40.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1022-102",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     1022
-    ],
-    "time": {
-     "end": "2026-10-05T18:27:00.000+0200",
-     "start": "2026-10-05T17:27:40.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1689,24 +1599,6 @@
     "title": "Rettungseinsatz\nBetrieb ab Bruno-Marek-Allee"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R22-102",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     22
-    ],
-    "time": {
-     "end": "2026-10-05T18:27:00.000+0200",
-     "start": "2026-10-05T17:27:39.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
     "description": "Rettungseinsatz\nBetrieb ab Bruno-Marek-Allee",
     "name": "R2203-112",
     "owner": "WL",
@@ -2260,114 +2152,6 @@
      "start": "2026-10-05T17:29:28.000+0200"
     },
     "title": "Rettungseinsatz\nBetrieb ab Bruno-Marek-Allee"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R327-102",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     327
-    ],
-    "time": {
-     "end": "2026-10-05T18:27:00.000+0200",
-     "start": "2026-10-05T17:27:58.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R328-102",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     328
-    ],
-    "time": {
-     "end": "2026-10-05T18:27:00.000+0200",
-     "start": "2026-10-05T17:27:58.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R3446-112",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     3446
-    ],
-    "time": {
-     "end": "2026-10-05T18:29:00.000+0200",
-     "start": "2026-10-05T17:29:31.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R3569-112",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     3569
-    ],
-    "time": {
-     "end": "2026-10-05T18:29:00.000+0200",
-     "start": "2026-10-05T17:29:31.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R3570-112",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     3570
-    ],
-    "time": {
-     "end": "2026-10-05T18:29:00.000+0200",
-     "start": "2026-10-05T17:29:31.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R3571-112",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     3571
-    ],
-    "time": {
-     "end": "2026-10-05T18:29:00.000+0200",
-     "start": "2026-10-05T17:29:31.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Züge halten\nbei Linien 6 und 18",
