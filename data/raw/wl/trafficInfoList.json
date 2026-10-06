@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261006-0036, I20260917-0012, I20260922-0032, I20260925-0011, I20261006-0039, I20260909-0007, I20261006-0037-F02, I20261006-0037-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261006-0039, I20260909-0007, I20261006-0037-F02, I20261006-0037-F01"
    },
    {
     "id": 3,
@@ -203,43 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 19:10 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Westbahnhof.",
-    "descriptionHTML": "Linie U6:<br>Fahrtbehinderung in Richtung Floridsdorf.<br> <br>Voraussichtliche Dauer: 19:10 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Westbahnhof.",
-    "name": "I20261006-0036",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4619
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-06T18:58:00.000+0200",
-     "end": "2026-10-06T20:49:00.000+0200",
-     "lastUpdate": "2026-10-06T20:49:00.000+0200",
-     "resume": "2026-10-06T20:49:00.000+0200",
-     "start": "2026-10-06T18:58:00.000+0200"
-    },
-    "title": "U6: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "11": "ptTram"
      }
     },
@@ -262,12 +225,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T20:13:00.000+0200",
      "end": "2026-10-06T21:45:00.000+0200",
-     "lastUpdate": "2026-10-06T21:25:00.000+0200",
-     "resume": "2026-10-06T20:13:00.000+0200",
+     "lastUpdate": "2026-10-06T21:45:00.000+0200",
+     "resume": "2026-10-06T21:45:00.000+0200",
      "start": "2026-10-06T19:00:00.000+0200"
     },
     "title": "11: Fremder Verkehrsunfall"
