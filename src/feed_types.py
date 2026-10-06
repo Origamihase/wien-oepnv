@@ -32,6 +32,10 @@ class FeedItem(TypedDict):
     _calculated_end: NotRequired[datetime]
     # WL incidents one entry lists (``_combined_incidents`` in build_feed).
     _wl_incidents: NotRequired[int]
+    # The messages a merged entry stands for (``member_guids`` in feed.merge).
+    _members: NotRequired[list[str]]
+    # WL's incident numbers (``wl_fetch._incident_ids``).
+    _wl_ids: NotRequired[list[str]]
 
 
 @runtime_checkable
