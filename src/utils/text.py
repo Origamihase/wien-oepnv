@@ -4,7 +4,6 @@
 import html
 import re
 from html.parser import HTMLParser
-from re import Match
 
 
 _WS_RE = re.compile(r"[ \t\r\f\v]+")
@@ -216,7 +215,7 @@ def truncate_html(text: str, limit: int, ellipsis: str = "...") -> str:
 def normalize_bullets(text: str) -> str:
     """Remove bullets that directly follow known prepositions."""
 
-    def _repl(match: Match[str]) -> str:
+    def _repl(match: re.Match[str]) -> str:
         prefix = match.group(1)
         tail = match.group(0)[len(prefix):]
         if "\n" in tail:

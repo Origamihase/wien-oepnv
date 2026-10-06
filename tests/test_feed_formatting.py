@@ -86,8 +86,6 @@ def test_emit_item_formatting_plain_text() -> None:
     desc_elem = elem.find("description")
     assert desc_elem is not None
     inner_content = desc_elem.text or ""
-    assert desc_elem is not None
-    inner_content = desc_elem.text or ""
 
     assert "Just plain text." in inner_content
     # No time line -> No <br/>
@@ -111,8 +109,6 @@ def test_emit_item_formatting_multiline_collapsed() -> None:
     ident, elem, replacements = _emit_item(item, now, state)
 
     desc_elem = elem.find("description")
-    assert desc_elem is not None
-    inner_content = desc_elem.text or ""
     assert desc_elem is not None
     inner_content = desc_elem.text or ""
 

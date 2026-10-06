@@ -340,9 +340,9 @@ def test_extract_oebb_geonetz_stops_routes_through_loads_finite() -> None:
     cannot accidentally restore the lenient ``json.loads(...)`` shape."""
     import inspect
 
-    import scripts.extract_oebb_geonetz_stops as eog
+    from scripts.extract_oebb_geonetz_stops import extract
 
-    source = inspect.getsource(eog.extract)
+    source = inspect.getsource(extract)
     assert "loads_finite" in source, (
         "extract() must route the parser through loads_finite so "
         "non-finite literal tokens are rejected at the parse boundary."

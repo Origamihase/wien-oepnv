@@ -27,13 +27,6 @@ def test_make_rss_ignores_items_when_max_is_zero(monkeypatch: pytest.MonkeyPatch
     build_feed = importlib.import_module(module_name)
     build_feed.refresh_from_env()
     try:
-        captured_state = {"value": None}
-
-        def capture_state(state: Any, deletions: Any = None) -> None:
-            captured_state["value"] = state
-
-
-
         def fail_emit(*_args: Any, **_kwargs: Any) -> None:  # pragma: no cover - should not be called
             raise AssertionError("_emit_item should not run when MAX_ITEMS is 0")
 

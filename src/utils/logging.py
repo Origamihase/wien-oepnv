@@ -388,7 +388,13 @@ def sanitize_log_message(
         # and ``/`` are NOT in the class, so the possessive quantifier
         # never over-consumes a real ``scheme://`` — the fix is lossless
         # for every realistic URL scheme (all well under 64 chars).
-        (r"(?i)([a-z0-9+.-]{1,64}+://)([^/@\s]+)@", r"\1***@"),
+        # The userinfo class admits ``@`` and the match runs to the LAST
+        # ``@`` of the authority: a mail login written unencoded
+        # (``smtps://noreply@example.com:pw@smtp.example.com``) is split
+        # by urllib / requests at the last ``@``, so stopping at the first
+        # one left the password in the log. ``/`` still ends the run, so
+        # every ``://`` occurrence is scanned at most to the next slash.
+        (r"(?i)([a-z0-9+.-]{1,64}+://)([^/\s]+)@", r"\1***@"),
         # Basic Auth in malformed credentialled URIs without the ``//``
         # separator (``postgres:admin:secret@host``) and JDBC inner-
         # scheme variants (``jdbc:mysql:root:pw@host``). The canonical
@@ -410,7 +416,7 @@ def sanitize_log_message(
             r"amqp|amqps|kafka|clickhouse|cassandra|elasticsearch|"
             r"smtp|smtps|"
             r"ldap|ldaps|ssh|sftp|smb|cifs)"
-            r":)([^/@\s]+:[^/@\s]+)@",
+            r":)([^/\s]+:[^/@\s]+)@",
             r"\1***@",
         ),
         # Query parameters (key=value or key%3dvalue)

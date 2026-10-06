@@ -199,7 +199,7 @@ def read_secret(name: str, default: str = "") -> str:
                     # Secrets are typically single-line, but strip to be safe
                     return content.strip()
         except ValueError:
-            pass
+            pass  # name escapes $CREDENTIALS_DIRECTORY: not a credential
 
     # 2. Docker Secrets
     # Security: same TOCTOU-safe cap as the systemd branch above.
@@ -216,7 +216,7 @@ def read_secret(name: str, default: str = "") -> str:
             if content is not None:
                 return content.strip()
     except ValueError:
-        pass
+        pass  # name escapes the Docker secrets directory: not a secret
 
     # 3. Environment Variable
     return (os.getenv(name) or default).strip()

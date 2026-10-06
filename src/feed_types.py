@@ -38,4 +38,4 @@ class FeedItem(TypedDict):
 class Provider(Protocol):
     """Protocol for disruption providers."""
     def fetch_events(self, *args: Any, **kwargs: Any) -> list[FeedItem]:
-        ...
+        """Return the provider's current disruption items."""

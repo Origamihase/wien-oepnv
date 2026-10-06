@@ -707,7 +707,7 @@ class SafeDNSHTTPConnection(HTTPConnection):
             if is_ip_safe(target_ip_cand):
                 target_ip = str(target_ip_cand)
         except ValueError:
-            pass
+            pass  # host is a name, not an IP literal: resolved safely below
 
         if target_ip is None:
             ips = _resolve_hostname_safe(self.host)
@@ -745,7 +745,7 @@ class SafeDNSHTTPSConnection(HTTPSConnection):
             if is_ip_safe(target_ip_cand):
                 target_ip = str(target_ip_cand)
         except ValueError:
-            pass
+            pass  # host is a name, not an IP literal: resolved safely below
 
         if target_ip is None:
             ips = _resolve_hostname_safe(self.host)
@@ -1024,7 +1024,7 @@ def _get_port(parsed: Any) -> int | None:
         if parsed.port is not None:
             return cast('int | None', parsed.port)
     except ValueError:
-        pass
+        pass  # unparsable port: fall back to the scheme's default below
     if parsed.scheme == "http":
         return 80
     if parsed.scheme == "https":
@@ -1294,7 +1294,7 @@ def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
                 # We return enough structure to satisfy the rest of the code: sockaddr is (ip, port)
                 results.append((socket.AF_INET, socket.SOCK_STREAM, 6, "", (rdata.address, 0)))
         except (dns.resolver.NoAnswer, dns.resolver.NXDOMAIN, dns.resolver.NoNameservers):
-            pass
+            pass  # no A record; the AAAA lookup below may still answer
 
         # Resolve AAAA records (IPv6)
         try:
@@ -1302,7 +1302,7 @@ def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
             for rdata in answers_v6:
                 results.append((socket.AF_INET6, socket.SOCK_STREAM, 6, "", (rdata.address, 0, 0, 0)))  # type: ignore[arg-type]
         except (dns.resolver.NoAnswer, dns.resolver.NXDOMAIN, dns.resolver.NoNameservers):
-            pass
+            pass  # no AAAA record; an empty result is logged right below
 
         if not results:
             log.debug("DNS resolution yielded no A/AAAA records for host:%s", host_log)
@@ -1972,7 +1972,7 @@ def _resolve_target_ip(parsed: Any, current_url: str) -> str:
             if is_ip_safe(target_ip_cand):
                 target_ip = str(target_ip_cand)
         except ValueError:
-            pass
+            pass  # host is a name, not an IP literal: resolved safely below
 
     if target_ip is None:
         ips = _resolve_hostname_safe(parsed.hostname or "")

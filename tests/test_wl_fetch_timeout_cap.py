@@ -24,7 +24,6 @@ from typing import Any
 import pytest
 
 import src.providers.wl_fetch as wl_fetch
-from src.providers.wl_fetch import MAX_WL_FETCH_TIMEOUT, fetch_events
 
 
 # A usable WL answer with no notices (both lists share the envelope).
@@ -36,8 +35,8 @@ def test_max_wl_fetch_timeout_matches_provider_timeout_ceiling() -> None:
     # orchestrator-level Slowloris ceiling, so no legitimate orchestrator-
     # capped value is ever rejected. The hardcoded default (20) sits below
     # the cap so the production call sites are unaffected.
-    assert MAX_WL_FETCH_TIMEOUT == 25
-    assert MAX_WL_FETCH_TIMEOUT >= 1
+    assert wl_fetch.MAX_WL_FETCH_TIMEOUT == 25
+    assert wl_fetch.MAX_WL_FETCH_TIMEOUT >= 1
 
 
 def test_fetch_events_clamps_huge_timeout_to_cap(
@@ -59,9 +58,9 @@ def test_fetch_events_clamps_huge_timeout_to_cap(
 
     monkeypatch.setattr(wl_fetch, "_get_json", fake_get_json)
 
-    result = fetch_events(timeout=99999)
+    result = wl_fetch.fetch_events(timeout=99999)
     assert result == []
-    assert recorded["timeout"] == MAX_WL_FETCH_TIMEOUT
+    assert recorded["timeout"] == wl_fetch.MAX_WL_FETCH_TIMEOUT
 
 
 def test_fetch_events_at_cap_passes_cap_through(
@@ -82,8 +81,8 @@ def test_fetch_events_at_cap_passes_cap_through(
 
     monkeypatch.setattr(wl_fetch, "_get_json", fake_get_json)
 
-    fetch_events(timeout=MAX_WL_FETCH_TIMEOUT)
-    assert recorded["timeout"] == MAX_WL_FETCH_TIMEOUT
+    wl_fetch.fetch_events(timeout=wl_fetch.MAX_WL_FETCH_TIMEOUT)
+    assert recorded["timeout"] == wl_fetch.MAX_WL_FETCH_TIMEOUT
 
 
 def test_fetch_events_below_cap_passes_through(
@@ -105,7 +104,7 @@ def test_fetch_events_below_cap_passes_through(
 
     monkeypatch.setattr(wl_fetch, "_get_json", fake_get_json)
 
-    fetch_events(timeout=5)
+    wl_fetch.fetch_events(timeout=5)
     assert recorded["timeout"] == 5
 
 
@@ -129,5 +128,5 @@ def test_fetch_events_default_timeout_unchanged(
 
     monkeypatch.setattr(wl_fetch, "_get_json", fake_get_json)
 
-    fetch_events()
+    wl_fetch.fetch_events()
     assert recorded["timeout"] == 20

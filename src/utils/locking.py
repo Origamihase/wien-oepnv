@@ -180,14 +180,14 @@ def file_lock(fileobj: Any, *, exclusive: bool, timeout: float = 15.0) -> Iterat
             try:
                 thread_lock.acquire()
                 thread_lock_held = True
-            except BaseException:
-                # acquire() failed (e.g. KeyboardInterrupt). Roll the
-                # reference counter back so subsequent callers don't see a
-                # phantom holder; callers expect ``_acquire_thread_lock_ref``
-                # / ``_release_thread_lock_ref`` to be balanced.
-                _release_thread_lock_ref(path)
-                thread_lock = None
-                raise
+            finally:
+                if not thread_lock_held:
+                    # acquire() failed (e.g. KeyboardInterrupt). Roll the
+                    # reference counter back so subsequent callers don't see a
+                    # phantom holder; callers expect ``_acquire_thread_lock_ref``
+                    # / ``_release_thread_lock_ref`` to be balanced. The
+                    # exception itself propagates unchanged.
+                    _release_thread_lock_ref(path)
     except Exception as exc:
         # Security (Clear-Text-Logging Drift, src/utils/* round): both the
         # file-object's ``.name`` (a path that the OS permits to carry

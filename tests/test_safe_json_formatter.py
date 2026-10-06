@@ -11,8 +11,8 @@ class TestSafeJSONFormatter(unittest.TestCase):
             1 / 0
         except ZeroDivisionError:
             ei = sys.exc_info()
-        else:
-            self.fail("expected ZeroDivisionError")
+        else:  # pragma: no cover - 1 / 0 always raises
+            raise AssertionError("expected ZeroDivisionError")
 
         tb = ei[2]
         assert tb is not None  # narrows TracebackType | None for mypy
@@ -23,7 +23,7 @@ class TestSafeJSONFormatter(unittest.TestCase):
 
         # Frame should still exist
         self.assertIsNotNone(tb.tb_frame.f_locals)
-        self.assertTrue(len(tb.tb_frame.f_locals) > 0)
+        self.assertGreater(len(tb.tb_frame.f_locals), 0)
 
     def test_safe_formatter_format_does_not_mutate_record(self) -> None:
         record = logging.LogRecord(
@@ -60,10 +60,7 @@ class TestSafeJSONFormatter(unittest.TestCase):
         logger.info("Test message", extra={"data": extra_data})
 
         output = stream.getvalue()
-        try:
-            log_record = json.loads(output)
-        except json.JSONDecodeError:
-            self.fail("Log output is not valid JSON")
+        log_record = json.loads(output)  # raises if the output is not valid JSON
 
         # The original value should not be present in the output
         self.assertNotIn("non_sensitive_value", output)

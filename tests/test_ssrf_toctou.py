@@ -55,8 +55,6 @@ def test_fetch_content_safe_ssrf_bypass_on_error() -> None:
             except requests.exceptions.HTTPError:
                 # Expected since we mocked the response to raise HTTPError and hooks didn't run
                 pass
-            except ValueError:
-                pass
 
             # Verify the hook was passed
             assert mock_req.called

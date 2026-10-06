@@ -37,11 +37,7 @@ def test_request_safe_strips_session_headers_on_redirect() -> None:
         # Mock verify_response_ip to pass
         with patch("src.utils.http.verify_response_ip") as mock_verify:
              # Execute
-            try:
-                request_safe(s, "http://safe.com/start")
-            except Exception as e:
-                print(f"Caught exception: {e}")
-                pass
+            request_safe(s, "http://safe.com/start")
 
     # Verify
     assert len(responses.calls) == 2

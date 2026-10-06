@@ -185,6 +185,7 @@ _JDBC_MYSQL_URI = "jdbc:mysql://root:jdbc_mysql_pw@mysql.example.com:3306/app"
         (_CLICKHOUSE_URI, "ClickHouse"),
         (_CASSANDRA_URI, "Cassandra"),
         (_ELASTICSEARCH_URI, "ElasticSearch"),
+        (_SMTP_URI, "SMTPS (Mailserver)"),
         (_JDBC_PG_URI, "JDBC PostgreSQL"),
         (_JDBC_MYSQL_URI, "JDBC MySQL"),
     ],
@@ -417,3 +418,26 @@ def test_database_uri_masking_contract(tmp_path: Path) -> None:
                 f"finding.match={finding.match!r}. "
                 f"({SENTINEL_DATABASE_URI_DRIFT})"
             )
+
+
+@pytest.mark.parametrize(
+    "uri",
+    [
+        "smtps://noreply@example.com:smtp_pw@smtp.example.com:465",
+        "postgres://ops@example.com:pg_pw@db.example.com/app",
+        "ldaps://admin@corp.example.com:ldap_pw@dc01.example.com",
+    ],
+)
+def test_uri_with_unencoded_at_in_user_is_detected(tmp_path: Path, uri: str) -> None:
+    """A login written as an unencoded mail address still carries a password.
+
+    urllib / requests split the userinfo at the LAST ``@``, so
+    ``smtps://noreply@example.com:pw@host`` authenticates with ``pw``.
+    The scanner stopped at the first ``@`` and missed every such URI.
+    """
+    file_path = tmp_path / ".env"
+    file_path.write_text(f"MAIL_URL={uri}\n", encoding="utf-8")
+
+    findings = scan_repository(tmp_path, paths=[file_path])
+
+    assert findings, f"{uri!r} was not detected ({SENTINEL_DATABASE_URI_DRIFT})"

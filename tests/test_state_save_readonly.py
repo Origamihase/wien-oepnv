@@ -2,7 +2,6 @@ import importlib
 import logging
 import sys
 from pathlib import Path
-from typing import Any
 
 import pytest
 import types
@@ -32,11 +31,6 @@ def test_make_rss_logs_warning_when_state_readonly(
 ) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
-    def fail_save(_: Any) -> None:
-        raise PermissionError("read-only file system")
-
-
-
     now = datetime.now(UTC)
     item = {
         "source": "test",
@@ -57,13 +51,6 @@ def test_make_rss_saves_empty_state_when_no_identities(
     caplog: pytest.LogCaptureFixture,
 ) -> None:
     build_feed = _import_build_feed(monkeypatch)
-
-    captured = {"state": None}
-
-    def marker(state: Any, deletions: Any = None) -> None:  # pragma: no cover - trivial
-        captured["state"] = state
-
-
 
     with caplog.at_level(logging.WARNING):
         rss = build_feed._make_rss(

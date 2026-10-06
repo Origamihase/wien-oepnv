@@ -68,10 +68,7 @@ class TestRedirectParamStripping(unittest.TestCase):
                 return req
             session.prepare_request.side_effect = fake_prepare
 
-            try:
-                request_safe(session, "https://trusted.com/api")
-            except Exception:
-                pass
+            request_safe(session, "https://trusted.com/api")
 
             # Verify calls to adapter.send instead of session.request
             self.assertEqual(mock_adapter.send.call_count, 2)

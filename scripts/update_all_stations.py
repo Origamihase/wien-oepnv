@@ -135,7 +135,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--heartbeat",
         type=Path,
-        default=REPO_ROOT / "data" / "stations_last_run.json",
+        default=_DEFAULT_HEARTBEAT_PATH,
         help=(
             "Path to write the run heartbeat "
             "(default: data/stations_last_run.json under the repository root)."
@@ -144,7 +144,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--diff-report",
         type=Path,
-        default=REPO_ROOT / "docs" / "stations_diff.md",
+        default=_DEFAULT_DIFF_REPORT_PATH,
         help=(
             "Path to write the human-readable diff report "
             "(default: docs/stations_diff.md under the repository root)."
@@ -153,7 +153,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--quarantine",
         type=Path,
-        default=REPO_ROOT / "data" / "quarantine.json",
+        default=_DEFAULT_QUARANTINE_PATH,
         help=(
             "Path to write the auto-quarantine sidecar on validation "
             "failure (default: data/quarantine.json under the repository root)."

@@ -72,7 +72,7 @@ class TestSSRFRedirectRebinding(unittest.TestCase):
                 session = session_with_retries("TestAgent")
 
                 # It should succeed now because we pin to safe IP
-                content = fetch_content_safe(session, "http://attacker.com/")
+                fetch_content_safe(session, "http://attacker.com/")
 
                 print(f"DEBUG: mock_send.call_count: {mock_send.call_count}")
                 print(f"DEBUG: mock_resolve.call_count: {mock_resolve.call_count}")

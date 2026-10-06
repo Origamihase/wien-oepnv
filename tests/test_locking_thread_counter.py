@@ -125,11 +125,9 @@ def test_thread_lock_counter_balanced_when_acquire_raises_baseexception(
 
     monkeypatch.setattr(locking, "_acquire_thread_lock_ref", fake_acquire_ref)
 
-    try:
+    with pytest.raises(KeyboardInterrupt):
         with locking.file_lock(fake_file, exclusive=True, timeout=0.1):
             pass  # pragma: no cover - acquire raises before yield
-    except KeyboardInterrupt:
-        pass
 
     locks_after, counts_after = _snapshot_state()
     assert locks_after == locks_before

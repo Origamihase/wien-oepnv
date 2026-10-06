@@ -57,12 +57,9 @@ def test_precondition_recursion_error_not_caught_by_value_error() -> None:
     """Pin the orthogonality between RecursionError and ValueError.
     The pre-fix code in several parsers caught only ValueError, which
     would NOT swallow a depth-bomb derived RecursionError."""
-    try:
+    assert not issubclass(RecursionError, ValueError)
+    with pytest.raises(RecursionError):
         json.loads(DEEP_BOMB_BYTES)
-    except ValueError:
-        pytest.fail("RecursionError must NOT be a subclass of ValueError")
-    except RecursionError:
-        pass
 
 
 # ============================================================================

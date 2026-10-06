@@ -25,15 +25,15 @@ _ATOM_NS = "http://www.w3.org/2005/Atom"
 def pages_base_url(monkeypatch: pytest.MonkeyPatch) -> Iterator[Callable[[str], None]]:
     """Set PAGES_BASE_URL via env and refresh feed config; restore on teardown."""
 
-    import src.build_feed
+    from src.build_feed import feed_config
 
     def _set(url: str) -> None:
         monkeypatch.setenv("PAGES_BASE_URL", url)
-        src.build_feed.feed_config.refresh_from_env()
+        feed_config.refresh_from_env()
 
     yield _set
     monkeypatch.delenv("PAGES_BASE_URL", raising=False)
-    src.build_feed.feed_config.refresh_from_env()
+    feed_config.refresh_from_env()
 
 
 def test_make_rss_declares_atom_namespace(pages_base_url: Callable[[str], None]) -> None:

@@ -45,18 +45,19 @@ def test_bare_wien_phantom_suppressed_under_only_vienna(
 
 @pytest.fixture(scope="module")
 def pendler_station(station_entries: Any) -> Any:  # entry["name"] narrowing to str needs cast
-    for entry in station_entries:
-        if entry.get("pendler") and not entry.get("in_vienna"):
-            return entry["name"]
-    pytest.fail("No pendler station outside Vienna found in stations.json")
+    name = next(
+        (e["name"] for e in station_entries if e.get("pendler") and not e.get("in_vienna")),
+        None,
+    )
+    assert name is not None, "No pendler station outside Vienna found in stations.json"
+    return name
 
 
 @pytest.fixture(scope="module")
 def vienna_station(station_entries: Any) -> Any:  # entry["name"] narrowing to str needs cast
-    for entry in station_entries:
-        if entry.get("in_vienna"):
-            return entry["name"]
-    pytest.fail("No Vienna station found in stations.json")
+    name = next((e["name"] for e in station_entries if e.get("in_vienna")), None)
+    assert name is not None, "No Vienna station found in stations.json"
+    return name
 
 
 def test_station_flags_match_utils(pendler_station: Any, vienna_station: Any) -> None:

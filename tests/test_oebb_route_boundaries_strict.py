@@ -14,13 +14,12 @@ from __future__ import annotations
 import pytest
 
 import src.providers.oebb as oebb
-from src.providers.oebb import _is_relevant
 
 
 class TestRouteBoundaryTokens:
     def test_zwischen_zu_keeps_wien_route(self) -> None:
         assert (
-            _is_relevant(
+            oebb._is_relevant(
                 "Bauarbeiten",
                 "Aufgrund von Bauarbeiten kommt es zwischen Wien Mitte und "
                 "Flughafen Wien zu Einschränkungen.",
@@ -30,7 +29,7 @@ class TestRouteBoundaryTokens:
 
     def test_von_nach_ueber_keeps_wien_route(self) -> None:
         assert (
-            _is_relevant(
+            oebb._is_relevant(
                 "Bauarbeiten",
                 "Von Wien Meidling nach Mödling über Wiener Neudorf ist die "
                 "Strecke gesperrt.",
@@ -40,7 +39,7 @@ class TestRouteBoundaryTokens:
 
     def test_strecke_kommt_keeps_wien_route(self) -> None:
         assert (
-            _is_relevant(
+            oebb._is_relevant(
                 "Verspätungen",
                 "Auf der Strecke Wien Meidling - Wien Hauptbahnhof kommt es "
                 "zu Verspätungen.",

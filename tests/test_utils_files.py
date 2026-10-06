@@ -35,10 +35,13 @@ def test_atomic_write_no_overwrite(tmp_path: Path) -> None:
 def test_atomic_write_cleanup_on_error(tmp_path: Path) -> None:
     target = tmp_path / "fail.txt"
 
-    with pytest.raises(RuntimeError):
+    def write_then_fail() -> None:
         with atomic_write(target) as f:
             f.write("Start")
             raise RuntimeError("Boom")
+
+    with pytest.raises(RuntimeError):
+        write_then_fail()
 
     assert not target.exists()
     # Check that no temp files are left
