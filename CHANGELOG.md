@@ -5,6 +5,20 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **EN-Feed: kein deutscher Rückfall mehr, wenn das Modell Platzhalter
+  verstümmelt (2026-10-06)**: Das Übersetzungsmodell sieht die Platzhalter
+  jetzt in einer Kurzform (`XENT3X`) statt mit der Zufalls-Nonce des Laufs
+  (`XENT<16 Hex-Zeichen>X3X`). Mit Nonce scheiterte ein Durchlauf an einem
+  verstümmelten oder verlorenen Platzhalter in rund jedem fünften Fall
+  (echtes Modell in GitHub Actions, 814 Modell-Eingaben seit 01.07.: 167
+  gegen 8 in der Kurzform), und wer zweimal scheiterte, stand für einen Lauf
+  deutsch im EN-Feed: seit 04.10. neun Meldungen, zuletzt 66A/N66 am 06.10.
+  um 17:23. Masken, Zuordnung und Rückersetzung behalten die Nonce; ein
+  Quelltext, der die Kurzform selbst enthält, geht wie bisher unter der
+  Nonce ans Modell. Der zweite Durchlauf läuft weiter unter einer frischen
+  Nonce. „in Richtung X … umgeleitet“ wird nach dem Modell zu „redirected
+  towards X“, nicht „redirected to X“. Keine neue Übersetzungs-Epoche:
+  gecachte Übersetzungen bleiben.
 * **Feed: Stadt-Wien-Baustellen nur mit Folgen für Öffis, Beginn am
   richtigen Tag (2026-10-06)**: Prüfung der Baustellen von der Quelle bis
   zum Feed (Bericht `reports/baustellen-pruefung-2026-10-06.md` im

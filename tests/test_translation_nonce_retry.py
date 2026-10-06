@@ -1,5 +1,9 @@
 """A second model pass under a fresh placeholder nonce (audit 2026-09-25, A.5).
 
+Since 2026-10-06 the first pass shows the model the short placeholders
+(``XENT3X``, see ``test_translation_short_placeholders.py``); the second one
+still goes under a fresh nonce. The tests below mangle the first pass.
+
 Whether Marian mangles a placeholder depends on the nonce's SentencePiece
 split, and a bad nonce hits several texts of one build. Live 2026-09-26
 17:01, nonce ``c3ed7873665b7570``: three summaries left a residual
@@ -62,16 +66,18 @@ def _install(monkeypatch: pytest.MonkeyPatch, model: Model) -> list[str]:
     return calls
 
 
-def _mangles_the_build_nonce(text: str) -> str:
-    """The model on a bad nonce: it lower-cases the prefix of the build's placeholders."""
-    return "EN " + text.replace("XGLO" + _PLACEHOLDER_NONCE, "XGLo" + _PLACEHOLDER_NONCE)
+def _mangles_the_first_pass(text: str) -> str:
+    """The model on a bad first pass: it lower-cases the short placeholders' prefix."""
+    if _nonces(text):
+        return "EN " + text
+    return "EN " + text.replace("XGLO", "XGLo")
 
 
 def test_a_bad_nonce_gets_a_second_pass(monkeypatch: pytest.MonkeyPatch) -> None:
-    calls = _install(monkeypatch, _mangles_the_build_nonce)
+    calls = _install(monkeypatch, _mangles_the_first_pass)
     out = build_feed._translate_text_attempt(SUMMARY, ident="60A")
     assert len(calls) == 2
-    assert _nonces(calls[0]) == {_PLACEHOLDER_NONCE}
+    assert _nonces(calls[0]) == set()
     (fresh,) = _nonces(calls[1])
     assert fresh != _PLACEHOLDER_NONCE
     assert out is not None
@@ -94,12 +100,12 @@ def test_two_bad_passes_fall_back(monkeypatch: pytest.MonkeyPatch) -> None:
 
 
 def test_a_dropped_entity_gets_a_second_pass(monkeypatch: pytest.MonkeyPatch) -> None:
-    def _drops_under_the_build_nonce(text: str) -> str:
-        if _PLACEHOLDER_NONCE in text:
-            return "EN " + re.sub(r"XENT[0-9a-f]{16}X0X", "", text)
+    def _drops_in_the_first_pass(text: str) -> str:
+        if not _nonces(text):
+            return "EN " + re.sub(r"XENT0X", "", text)
         return "EN " + text
 
-    calls = _install(monkeypatch, _drops_under_the_build_nonce)
+    calls = _install(monkeypatch, _drops_in_the_first_pass)
     out = build_feed._translate_text_attempt(WITH_ENTITIES, ident="62")
     assert len(calls) == 2
     assert out is not None
@@ -121,7 +127,7 @@ def test_a_pipeline_error_is_not_retried(monkeypatch: pytest.MonkeyPatch) -> Non
 def test_a_doubled_closing_x_under_the_fresh_nonce_is_repaired(monkeypatch: pytest.MonkeyPatch) -> None:
     # The 14AX leak of 2026-09-18, this time on the second pass.
     def _model(text: str) -> str:
-        if _PLACEHOLDER_NONCE in text:
+        if not _nonces(text):
             return "EN " + text.replace("XENT", "XENt")
         return "EN " + re.sub(r"(XENT[0-9a-f]{16}X\d+X)", r"\1X", text)
 

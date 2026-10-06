@@ -139,7 +139,7 @@ def test_an_unknown_reason_goes_through_the_model(monkeypatch: Any) -> None:
 
 def test_a_failed_reason_fails_the_record(monkeypatch: Any) -> None:
     def dropping(text: str, **_kwargs: Any) -> list[dict[str, str]]:
-        return [{"translation_text": re.sub(r"XENT\w+?X\d+X", "", text, count=1)}]
+        return [{"translation_text": re.sub(r"XENT(?:[0-9a-f]{16}X)?\d+X", "", text, count=1)}]
 
     monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: dropping)
     assert build_feed._translate_text_attempt(

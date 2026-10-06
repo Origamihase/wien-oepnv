@@ -123,7 +123,7 @@ def test_the_rule_is_wired_into_the_translation_path(monkeypatch: Any) -> None:
         # keeps the masked identifier. Echoing the placeholder back matters —
         # a mock that dropped it would be rejected by the entity guard and
         # this test would fail for the wrong reason.
-        placeholder = re.search(r"XENT\w+X\d+X", text)
+        placeholder = re.search(r"XENT(?:[0-9a-f]{16}X)?\d+X", text)
         assert placeholder is not None, text
         return [
             {"translation_text": f"the line {placeholder.group(0)} is redirected"}

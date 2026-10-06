@@ -4199,30 +4199,99 @@ def _with_nonce(text: str, old: str, new: str) -> str:
     return re.sub("(XENT|XGLO)" + re.escape(old) + r"(X\d+X)", r"\g<1>" + new + r"\g<2>", text)
 
 
+# What the model sees of a placeholder: ``XENT3X``, without the nonce.
+#
+# The nonce makes a placeholder some ten SentencePiece pieces of random hex,
+# and WL's short texts are mostly placeholders ("XGLO…X0X der Linien XENT…X1X
+# in Richtung XENT…X0X U bzw. XENT…X2X XENT…X3X"). Marian copies that badly:
+# measured with the real model on all 243 distinct model inputs of the feed
+# from 2026-09-20 to 2026-10-06, 227 of 972 passes under random nonces (23 %)
+# mangled or dropped a placeholder, and the same 243 inputs under the short
+# form lost none; over all 814 inputs since 2026-07-01, one pass each, 167
+# against 8. A text that fails both passes puts the German item into the EN
+# feed for a tick: nine items since 2026-10-04, the latest 66A/N66 at 17:23
+# on 2026-10-06 ("left a residual placeholder" under both nonces).
+#
+# The nonce still guards the masks, the mapping and the unmask: only the
+# model's copy is short, and its placeholders are mapped back to the build's
+# nonce before anything is checked. A source text that already carries the
+# short shape (``XENT0X``) would be mapped back as one of ours, so such a text
+# is shown under the nonce as before (``_has_short_placeholder_shape``).
+_SHORT_PLACEHOLDER_SHAPE_RE: re.Pattern[str] = re.compile(
+    r"(?:XENT|XGLO)\d+X", re.IGNORECASE
+)
+_FULL_PLACEHOLDER_RE: re.Pattern[str] = re.compile(
+    "(XENT|XGLO)" + _PLACEHOLDER_NONCE + r"X(\d+)X"
+)
+_SHORT_PLACEHOLDER_RE: re.Pattern[str] = re.compile(r"(XENT|XGLO)(\d+)X")
+
+
+def _has_short_placeholder_shape(masked_text: str) -> bool:
+    """Whether *masked_text* outside its own placeholders looks like a short one."""
+    return bool(_SHORT_PLACEHOLDER_SHAPE_RE.search(_FULL_PLACEHOLDER_RE.sub(" ", masked_text)))
+
+
+def _to_short_placeholders(text: str) -> str:
+    """*text* with every intact placeholder of this build in its short form."""
+    return _FULL_PLACEHOLDER_RE.sub(r"\g<1>\g<2>X", text)
+
+
+def _from_short_placeholders(text: str) -> str:
+    """The model's short placeholders under the build's nonce again."""
+    return _SHORT_PLACEHOLDER_RE.sub(
+        lambda m: f"{m.group(1)}{_PLACEHOLDER_NONCE}X{m.group(2)}X", text
+    )
+
+
+# "Die Linie 65A wird in Richtung Wienerberg City zwischen … umgeleitet": the
+# model wrote "Line 65A is redirected to Wienerberg City between …" in 16 of
+# the 814 distinct model inputs since July with the short placeholders, and in
+# 24 of the 64 such EN lines the feed published since July under the nonce, as
+# if the line now ran there. "in Richtung" is the direction the diverted line
+# travels in. Glossing it ("XGLO1X") made it worse in the real-model probe
+# ("redirected to towards", "the towards Aspern buses"), so the verb's
+# preposition is set right after the model instead, only when the German says
+# "in Richtung" and "umgeleitet".
+_REDIRECTED_TO_RE: re.Pattern[str] = re.compile(
+    r"\b(redirected|diverted|rerouted) to (?!wards\b)(?=\S)"
+)
+
+
+def _redirected_towards(masked_text: str, english: str) -> str:
+    """"redirected to X" → "redirected towards X" for a German "in Richtung X … umgeleitet"."""
+    if "in Richtung" not in masked_text or "umgeleitet" not in masked_text:
+        return english
+    return _REDIRECTED_TO_RE.sub(r"\1 towards ", english)
+
+
 def _model_pass(
     pipe: Any,
     masked_text: str,
     mapping: dict[str, str],
     ident: str,
-    nonce: str,
+    nonce: str | None,
 ) -> tuple[str | None, bool]:
     """One model pass over *masked_text*, its placeholders shown under *nonce*.
 
+    ``None`` shows them in the short form (see :data:`_SHORT_PLACEHOLDER_RE`).
     Returns the unmasked English and ``False``; ``None`` and ``True`` when the
-    model mangled or dropped a placeholder, which another nonce may avoid; and
+    model mangled or dropped a placeholder, which another pass may avoid; and
     ``None`` and ``False`` on any other failure. The masks and *mapping* keep
     the build's nonce: only the model sees *nonce*, and its intact placeholders
     are mapped back before anything is checked or unmasked. A placeholder the
-    model mangled matches neither nonce and fails the residual check.
+    model mangled matches neither form and fails the residual check.
     """
+    shown = (
+        _to_short_placeholders(masked_text)
+        if nonce is None
+        else _with_nonce(masked_text, _PLACEHOLDER_NONCE, nonce)
+    )
     try:
         # ``truncation=True`` enforces the model's input cap (512 tokens
         # for opus-mt-de-en) BEFORE Marian asserts and crashes the
         # whole feed build. Without it, a single long disruption text
         # would abort the EN-feed pass for every item that follows.
-        result = pipe(
-            _with_nonce(masked_text, _PLACEHOLDER_NONCE, nonce), max_length=512, truncation=True
-        )
+        result = pipe(shown, max_length=512, truncation=True)
     except Exception as exc:
         log.warning(
             "Translation failed for identity %s — pipeline raised %s: %s",
@@ -4235,7 +4304,9 @@ def _model_pass(
     if translated is None:
         return None, False
     translated = _normalise_placeholder_debris(
-        _with_nonce(translated, nonce, _PLACEHOLDER_NONCE)
+        _from_short_placeholders(translated)
+        if nonce is None
+        else _with_nonce(translated, nonce, _PLACEHOLDER_NONCE)
     )
     dropped = _entities_dropped_by_translation(masked_text, translated, mapping)
     if dropped:
@@ -4250,13 +4321,16 @@ def _model_pass(
             len(dropped),
             "y" if len(dropped) == 1 else "ies",
             sanitize_log_arg(", ".join(sorted(dropped)[:5])),
-            nonce,
+            nonce or "<kurz>",
         )
         return None, True
-    unmasked = _drop_article_before_street(
-        _drop_article_before_line(
-            _fix_glossary_articles(_unmask_entities(translated, mapping), mapping)
-        )
+    unmasked = _redirected_towards(
+        masked_text,
+        _drop_article_before_street(
+            _drop_article_before_line(
+                _fix_glossary_articles(_unmask_entities(translated, mapping), mapping)
+            )
+        ),
     )
     if _RESIDUAL_PLACEHOLDER_RE.search(unmasked):
         # The model mangled a placeholder so badly the exact-nonce unmask could
@@ -4268,7 +4342,7 @@ def _model_pass(
             "Translation for identity %s left a residual placeholder under "
             "nonce %s; discarding this pass.",
             sanitize_log_arg(ident or "<unknown>"),
-            nonce,
+            nonce or "<kurz>",
         )
         return None, True
     return unmasked, False
@@ -4714,14 +4788,17 @@ def _translate_text_attempt(
             _unmask_entities(masked_text, combined_mapping), record_en
         )
     unmasked, placeholder_failure = _model_pass(
-        pipe, masked_text, combined_mapping, ident, _PLACEHOLDER_NONCE
+        pipe,
+        masked_text,
+        combined_mapping,
+        ident,
+        _PLACEHOLDER_NONCE if _has_short_placeholder_shape(masked_text) else None,
     )
     if placeholder_failure:
-        # The model mangled or dropped a placeholder. Whether it does depends on
-        # the nonce's SentencePiece split, and a bad nonce hits several texts of
-        # a build: 2026-09-26 17:01 (nonce ``c3ed7873665b7570``) lost three
-        # summaries, among them WL's stock sentence, which other builds had
-        # translated for other lines. One more pass under a fresh nonce.
+        # The model mangled or dropped a placeholder. One more pass under a
+        # fresh nonce, a different SentencePiece split of every placeholder:
+        # before the short form, a bad nonce hit several texts of a build
+        # (2026-09-26 17:01, nonce ``c3ed7873665b7570``, three summaries).
         nonce = secrets.token_hex(8)
         log.info(
             "Retrying translation for identity %s under a fresh placeholder nonce (%s).",

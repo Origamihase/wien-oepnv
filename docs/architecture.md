@@ -2013,6 +2013,28 @@ ihn könnte ein Quelltext, der selbst `XENT0X` enthält, die Rückersetzung
 kapern oder zerstören. Das Format ist alphanumerisch und beginnt mit einem
 Buchstaben, weil der SentencePiece-Tokenizer sonst dazu neigt, es zu zerlegen.
 
+**Das Modell sieht die Platzhalter ohne Nonce (seit 2026-10-06).** Der erste
+Durchlauf zeigt dem Modell `XENT3X` und `XGLO0X` (`_to_short_placeholders`),
+die Antwort wird vor jeder Prüfung auf die Nonce des Laufs zurückgesetzt
+(`_from_short_placeholders`). Mit Nonce ist ein Platzhalter rund zehn
+SentencePiece-Stücke Zufalls-Hex, und WLs kurze Texte bestehen fast nur aus
+Platzhaltern („XGLO…X0X der Linien XENT…X1X in Richtung XENT…X0X U bzw.
+XENT…X2X XENT…X3X“). Gemessen mit dem echten Modell in GitHub Actions über
+alle 814 verschiedenen Modell-Eingaben des Feeds seit 01.07.2026: unter einer
+zufälligen Nonce verstümmelte oder verlor das Modell in 167 Durchläufen einen
+Platzhalter (20,5 %), in der Kurzform in 8 (1,0 %). Über die 243 Eingaben ab
+20.09. mit je vier Nonces scheiterten 227 von 972 Durchläufen, in der
+Kurzform keiner. Jeder Text, der in beiden Durchläufen scheiterte, stand für
+einen Lauf deutsch im EN-Feed, seit 04.10. neun Meldungen, zuletzt 66A/N66 am
+06.10. um 17:23 (Log: Rest-Platzhalter unter beiden Nonces). Der Wortlaut
+bleibt sonst gleichwertig; nur „in Richtung X … umgeleitet“ kam öfter als
+„redirected to X“ zurück und wird danach zu „redirected towards X“
+(`_redirected_towards`, ein Glossar-Eintrag für „in Richtung“ machte es in der
+Probe schlechter). Der Schutz der Nonce bleibt: Masken, Zuordnung und
+Rückersetzung tragen sie weiter, und ein Quelltext, der die Kurzform selbst
+enthält (`_has_short_placeholder_shape`, ohne Rücksicht auf Groß- und
+Kleinschreibung), geht wie bisher unter der Nonce ans Modell.
+
 ### Nachkontrollen
 
 Nach dem Modelllauf wird nicht blind vertraut:
@@ -2063,15 +2085,18 @@ Nach dem Modelllauf wird nicht blind vertraut:
 * **Zweiter Versuch mit frischer Nonce (seit 2026-09-27, Audit A.5).**
   Scheitert ein Feld an einem verstümmelten oder verlorenen Platzhalter,
   läuft das Modell noch einmal, diesmal unter einer frisch gewürfelten
-  Nonce (`_model_pass`). Ob das Modell einen Platzhalter verstümmelt, hängt
-  von der Nonce ab, und eine schlechte Nonce trifft mehrere Texte eines
-  Laufs. Am 26.09. um 17:01 scheiterten so drei Zusammenfassungen,
-  darunter WLs Standardsatz, den andere Läufe übersetzt hatten. Die frische
+  Nonce (`_model_pass`). Seit 2026-10-06 ist das der Versuch nach der
+  Kurzform, also eine andere Zerlegung jedes Platzhalters. Vor der Kurzform
+  hing das Scheitern an der Nonce, und eine schlechte Nonce traf mehrere
+  Texte eines Laufs: Am 26.09. um 17:01 scheiterten so drei
+  Zusammenfassungen, darunter WLs Standardsatz, den andere Läufe übersetzt
+  hatten. Die frische
   Nonce sieht nur das Modell: Masken und Zuordnung behalten die Nonce des
   Laufs, und intakte Platzhalter der Antwort werden zurückgesetzt, bevor
   geprüft und demaskiert wird. Ein Fehler der Pipeline selbst löst keinen
   zweiten Versuch aus. Nach zwei gescheiterten Durchläufen bleibt das Feld
-  deutsch wie bisher. Die Logzeilen nennen die Nonce jedes Durchlaufs.
+  deutsch wie bisher. Die Logzeilen nennen die Nonce jedes Durchlaufs,
+  `<kurz>` für die Kurzform.
 
 ### Betrieb
 
