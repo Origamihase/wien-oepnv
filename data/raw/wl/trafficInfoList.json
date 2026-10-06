@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261006-0025, I20260917-0012, I20260922-0032, I20261006-0037, I20260925-0011, I20260909-0007, I20261006-0035, I20261006-0036, I20261006-0038, I20261006-0033-F02, I20261006-0031-F01, I20261006-0027, I20261006-0032-F01, I20261006-0033-F01, I20261006-0034-F01, I20261006-0034, I20261006-0029-F01"
+    "trafficInfoNameList": "I20261006-0025, I20261006-0035, I20260917-0012, I20260922-0032, I20261006-0037, I20260925-0011, I20260909-0007, I20261006-0036, I20261006-0038, I20261006-0033-F02, I20261006-0027, I20261006-0034-F01, I20261006-0032-F01, I20261006-0031-F01, I20261006-0033-F01"
    },
    {
     "id": 3,
@@ -299,43 +299,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "40": "ptTram"
-     }
-    },
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261006-0029-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "140",
-       "lineName": "40",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     189
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-06T17:24:00.000+0200",
-     "end": "2026-10-06T18:28:00.000+0200",
-     "lastUpdate": "2026-10-06T18:28:00.000+0200",
-     "resume": "2026-10-06T18:28:00.000+0200",
-     "start": "2026-10-06T17:13:00.000+0200"
-    },
-    "title": "40: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "5": "ptTram"
      }
     },
@@ -358,12 +321,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T17:40:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T17:40:00.000+0200",
-     "resume": "2026-10-06T17:40:00.000+0200",
+     "end": "2026-10-06T20:00:00.000+0200",
+     "lastUpdate": "2026-10-06T20:00:00.000+0200",
+     "resume": "2026-10-06T20:00:00.000+0200",
      "start": "2026-10-06T17:27:00.000+0200"
     },
     "title": "5: Verkehrsunfall"
@@ -479,43 +442,6 @@
       "U3": "ptMetro"
      }
     },
-    "description": "Die Linie U3 fährt derzeit zwischen den Stationen Kendlerstraße und Hütteldorfer Straße in beiden Richtungen über Gleis 2. Dadurch kann es in diesem Bereich zu längeren Wartezeiten kommen. Voraussichtliche Dauer: 18:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Hütteldorfer Straße.",
-    "descriptionHTML": "Die Linie U3 fährt derzeit zwischen den Stationen Kendlerstraße und Hütteldorfer Straße in beiden Richtungen über Gleis 2.<br> <br>Dadurch kann es in diesem Bereich zu längeren Wartezeiten kommen.<br><br>Voraussichtliche Dauer: 18:45 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Hütteldorfer Straße.",
-    "name": "I20261006-0034",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "303",
-       "lineName": "U3",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4933
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-06T18:16:00.000+0200",
-     "end": "2026-10-06T18:27:00.000+0200",
-     "lastUpdate": "2026-10-06T18:27:00.000+0200",
-     "resume": "2026-10-06T18:27:00.000+0200",
-     "start": "2026-10-06T18:15:00.000+0200"
-    },
-    "title": "U3: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
     "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "name": "I20261006-0034-F01",
@@ -537,12 +463,12 @@
     "relatedStops": [
      4933
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T18:27:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T18:27:00.000+0200",
-     "resume": "2026-10-06T18:27:00.000+0200",
+     "end": "2026-10-06T19:41:00.000+0200",
+     "lastUpdate": "2026-10-06T19:41:00.000+0200",
+     "resume": "2026-10-06T19:41:00.000+0200",
      "start": "2026-10-06T18:15:00.000+0200"
     },
     "title": "U3: Rettungseinsatz"
@@ -571,12 +497,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T18:55:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T18:55:00.000+0200",
-     "resume": "2026-10-06T18:55:00.000+0200",
+     "end": "2026-10-06T20:00:00.000+0200",
+     "lastUpdate": "2026-10-06T20:00:00.000+0200",
+     "resume": "2026-10-06T20:00:00.000+0200",
      "start": "2026-10-06T18:55:00.000+0200"
     },
     "title": "9A: Rettungseinsatz"
