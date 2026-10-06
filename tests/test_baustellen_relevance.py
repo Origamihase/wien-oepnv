@@ -184,12 +184,23 @@ def test_radius_override_widens_the_title_prefix(
         "S-Bahn-Stammstrecke betroffen",
         "Die S-Bahnstation ist nur über die Rampe erreichbar",
         # A real effect next to a sentence that names transit as unaffected.
-        "Der Betrieb der Straßenbahnlinie 49 wird nicht beeinträchtigt. "
-        "Die Haltestelle der betroffenen Buslinien wird verlegt.",
+        "Der Betrieb der Straßenbahnlinie 49 wird nicht beeinträchtigt. Die Haltestelle der betroffenen Buslinien wird verlegt.",
     ],
 )
 def test_mentions_oepnv_true(text: str) -> None:
     assert mentions_oepnv(text) is True
+
+
+# Kept outside the parametrize list: CodeQL reads an implicit concatenation
+# inside a list as a possibly missing comma.
+_OMBUDSSTELLE = (
+    "Detaillierte Informationen über das Bauvorhaben U2 / U5 können über die "
+    "Ombudsstelle des jeweils betroffenen U-Bahnabschnittes eingeholt werden."
+)
+_STADIONBRUECKE = (
+    "Die Umbauarbeiten an der Stadionbrücke aufgrund der Verlängerung der "
+    "Straßenbahnlinie 18 werden in mehreren Bauphasen durchgeführt."
+)
 
 
 @pytest.mark.parametrize(
@@ -205,22 +216,16 @@ def test_mentions_oepnv_true(text: str) -> None:
         "Erneuerung am Verkehrsbahnhof Inzersdorf",
         # The U-Bahn as the builder, not an effect (operator decision 2026-10-06).
         "U-Bahnbau wird gesperrt",
-        "Für den Neubau der U-Bahnstation der U2 Pilgramgasse wird die Rechte "
-        "Wienzeile für den Fahrzeugverkehr gesperrt.",
-        "Detaillierte Informationen über das Bauvorhaben U2 / U5 können über die "
-        "Ombudsstelle des jeweils betroffenen U-Bahnabschnittes eingeholt werden.",
+        "Für den Neubau der U-Bahnstation der U2 Pilgramgasse wird die Rechte Wienzeile für den Fahrzeugverkehr gesperrt.",
+        _OMBUDSSTELLE,
         "Die Kabellegungsarbeiten (110 kV Umlegung als Vorarbeit für die U5) werden bei Tag durchgeführt.",
         # Transit named as unaffected (verbatim from the cache history).
-        "Die Rohrlegungsarbeiten werden in der Nacht in der betriebslosen Zeit des "
-        "öffentlichen Verkehrsmittels durchgeführt.",
+        "Die Rohrlegungsarbeiten werden in der Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels durchgeführt.",
         "Nur die Hausanschlüsse werden in der Nacht in der betriebslosen Zeit der Straßenbahn durchgeführt.",
         "Der Betrieb der Straßenbahnlinie 49 wird durch diese Bauarbeiten nicht beeinträchtigt.",
-        "Der Fahrzeugverkehr einschließlich des öffentlichen Verkehrs kann in allen "
-        "bestehenden Fahrrelationen aufrecht gehalten werden.",
-        "Die Umbauarbeiten an der Stadionbrücke aufgrund der Verlängerung der "
-        "Straßenbahnlinie 18 werden in mehreren Bauphasen durchgeführt.",
-        "Der Verkehr wird über das richtungsführende Gleis oder über das befahrbare "
-        "Haltestellenkap geführt.",
+        "Der Fahrzeugverkehr einschließlich des öffentlichen Verkehrs kann in allen bestehenden Fahrrelationen aufrecht gehalten werden.",
+        _STADIONBRUECKE,
+        "Der Verkehr wird über das richtungsführende Gleis oder über das befahrbare Haltestellenkap geführt.",
     ],
 )
 def test_mentions_oepnv_false(text: str) -> None:

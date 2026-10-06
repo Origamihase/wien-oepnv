@@ -49,11 +49,9 @@ def test_not_an_oepnv_mention(text: str) -> None:
     "text",
     [
         # Eßlinger Hauptstraße 96.
-        "Der Busverkehr der Wiener Linien GmbH & Co KG wird über den Kreisverkehr "
-        "bei der Kreuzung geführt.",
+        "Der Busverkehr der Wiener Linien GmbH & Co KG wird über den Kreisverkehr bei der Kreuzung geführt.",
         # Atzgersdorfer Straße.
-        "Die Haltestelle des betroffenen öffentlichen Verkehrsmittels wird von "
-        "Atzgersdorfer Straße ONr.42 nach ONr.46 verlegt.",
+        "Die Haltestelle des betroffenen öffentlichen Verkehrsmittels wird von Atzgersdorfer Straße ONr.42 nach ONr.46 verlegt.",
         "Die Linie 19A wird über Favoritenstraße umgeleitet.",
         "Der öffentliche Verkehr wird umgeleitet.",
         "Die Buslinie 7A wird in diesen Zeitraum über die Rothenhofgasse umgeleitet.",
