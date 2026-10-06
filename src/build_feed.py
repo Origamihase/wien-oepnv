@@ -1805,9 +1805,6 @@ _LINE_PREFIX_RE = re.compile(
     r"^\s*([A-Za-z0-9]+\s*(?:/\s*[A-Za-z0-9]+){0,20})\s*:\s*"
 )
 
-_ELLIPSIS = " …"
-_SENTENCE_END_RE = re.compile(r"[.!?…](?=\s|$)")
-
 # _WHITESPACE_RE captures all whitespace including newlines (\n).
 # _WHITESPACE_CLEANUP_RE only matches horizontal whitespace (spaces, tabs, etc.) to preserve intended line breaks.
 _WHITESPACE_RE = re.compile(r"\s+")
@@ -9240,7 +9237,6 @@ def _format_item_content(
 
     # Minimal cleanup
     title_out = _WHITESPACE_RE.sub(" ", title_out).strip()
-    title_cdata = _cdata_content(title_out)
 
     # Line 2: Timeframe
     time_line = format_local_times(

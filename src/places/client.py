@@ -377,11 +377,15 @@ class GooglePlacesClient:
 
     def _parse_place(self, raw: object) -> Place | None:
         if not isinstance(raw, dict):
-            LOGGER.warning("Ignoring unexpected place payload: %s", self._sanitize_arg(raw))
+            # Only the shape is logged, never the payload itself: an
+            # untrusted upstream object may carry arbitrary content
+            # (addresses, phone numbers, echoed request data), and the
+            # API-key redaction in ``_sanitize_arg`` only knows our own key.
+            LOGGER.warning("Ignoring unexpected place payload of type %s", type(raw).__name__)
             return None
         place_id = raw.get("id")
         if not isinstance(place_id, str):
-            LOGGER.warning("Skipping place without valid id: %s", self._sanitize_arg(raw))
+            LOGGER.warning("Skipping place without valid id (%d fields)", len(raw))
             return None
         display_name = raw.get("displayName")
         if isinstance(display_name, dict):

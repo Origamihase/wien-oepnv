@@ -5,6 +5,21 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Code Scanning: echte CodeQL-Befunde behoben (2026-10-06)**: Von den
+  104 offenen Meldungen auf `main` waren elf in Produktivcode oder
+  Workflows berechtigt. Der Google-Places-Client schrieb abgelehnte
+  Places-Antworten vollständig ins Log (redigiert wurde nur der eigene
+  API-Key); er loggt jetzt nur noch Typ und Feldanzahl. `claude.yml` und
+  `claude-code-review.yml` nutzten `anthropics/claude-code-action@v1` und
+  `actions/checkout@v7` als bewegliche Tags; beide sind jetzt wie in allen
+  anderen Workflows auf einen Commit-SHA festgelegt (Dependabot hält sie
+  aktuell). Tote Zuweisungen und Konstanten in `src/build_feed.py`
+  (`title_cdata` vor der endgültigen Zuweisung, `_ELLIPSIS`,
+  `_SENTENCE_END_RE`) und `src/providers/vor.py` (`base_url`-Vorbelegung,
+  `DEFAULT_INFO_LINK`, `RETRY_AFTER_MAX_SEC`, `ZONE_VIENNA` samt
+  verwaister Kommentare) entfernt; zwei `# nosec B105` ohne Befund, die
+  Bandit bei jedem Lauf als Warnung meldete, ebenso. Feed-Inhalt
+  unverändert.
 * **Abhängigkeiten: Dependabot-Rückstand seit Juli (2026-10-05)**: Die
   zehn Dependabot-PRs vom 01.07. (#1764–#1773) hielten das Limit von je
   fünf offenen PRs voll, seither kam kein Update mehr. Gesammelt gegen das

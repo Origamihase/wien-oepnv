@@ -53,7 +53,6 @@ log = logging.getLogger(__name__)
 
 BASE_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = BASE_DIR / "data"
-DEFAULT_INFO_LINK = "https://www.vor.at/"
 
 DEFAULT_VERSION = "v1.11.0"
 DEFAULT_BASE = "https://routenplaner.verkehrsauskunft.at/vao/restproxy"
@@ -63,26 +62,6 @@ DEFAULT_USER_AGENT = "wien-oepnv/1.0 (+https://github.com/Origamihase/wien-oepnv
 DEFAULT_HTTP_TIMEOUT = 15
 # "VAO Start" contract limit: 100 requests per day (hard limit).
 DEFAULT_MAX_REQUESTS_PER_DAY = 100
-# Default VOR Monitor whitelist — INTENTIONALLY EMPTY since the Stammstrecke
-# migration (2026-05-09): the historical default ``"Wien Hauptbahnhof,
-# Flughafen Wien"`` consumed two VOR DepartureBoard requests per cron tick
-# (every hour) for stations whose disruption coverage is now provided by
-# the WL / OEBB providers. After the Stammstrecke monitor was migrated from
-# pyhafas to the VOR ``/trip`` endpoint (``scripts/update_stammstrecke_status.py``),
-# the per-day budget became dominated by 2 trip requests × 48 cron fires =
-# 96 requests/day, leaving only ~4 requests/day buffer for monthly station
-# enrichment. Keeping the legacy departure-board polling on top of that
-# would push the project over the contractual ``MAX_REQUESTS_PER_DAY`` cap
-# (100/day). An operator who explicitly needs the legacy behaviour can
-# still set ``VOR_MONITOR_STATIONS_WHITELIST`` in the environment to
-# re-enable specific stations — but the project default is now "no
-# departure-board polling".
-RETRY_AFTER_MAX_SEC = 60.0
-
-
-# Limit concurrent station fetches to avoid thread exhaustion
-
-ZONE_VIENNA = ZoneInfo("Europe/Vienna")
 
 VOR_USER_AGENT = os.getenv("VOR_USER_AGENT", DEFAULT_USER_AGENT)
 # urllib3 retries are disabled here on purpose: every actual HTTP call to
@@ -100,9 +79,9 @@ VOR_RETRY_OPTIONS: dict[str, Any] = {
     "raise_on_status": False,
 }
 
-VOR_ACCESS_ID = ""  # nosec B105
+VOR_ACCESS_ID = ""
 _VOR_ACCESS_TOKEN_RAW = ""  # nosec B105
-_VOR_AUTHORIZATION_HEADER = ""  # nosec B105
+_VOR_AUTHORIZATION_HEADER = ""
 
 # Global lock for thread-safe quota management within the process
 _QUOTA_LOCK = threading.RLock()
@@ -455,8 +434,6 @@ def refresh_base_configuration() -> str:
             "VOR_BASE %r ist kein bekannter VAO-Host; verwende Standard.",
             base_env,
         )
-
-    base_url = DEFAULT_BASE_URL
 
     if validated_base_url_env:
         base_url = validated_base_url_env.rstrip("/") + "/"
