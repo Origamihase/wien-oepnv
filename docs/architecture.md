@@ -528,6 +528,26 @@ verdrängt eine andere Störung.
   jedem Vergleich weg, sonst unterschieden sich Titel-Folge und Text und
   derselbe Satz stand zweimal; ein Leerzeichen vor einem Punkt („12:15
   Uhr .“) und „im Bereich .“ ohne Ort fallen aus der Beschreibung.
+* **„Voraussichtlich bis 14:10 Uhr“ statt „Voraussichtliche Dauer: 14:10
+  Uhr“ (seit 2026-10-06, Betreiberentscheidung „Dauer-Text anpassen“).**
+  WLs Störungsvorlage nennt das erwartete Ende unter einem Dauer-Label. Auf
+  dem TV las sich das wie eine Dauer von 14 Stunden. Hinter dem Label stand
+  seit Juli in jedem der 942 verschiedenen Texte im WL-Cache ein
+  Endzeitpunkt (863 Uhrzeiten, dazu „Betriebsschluss“ in drei
+  Schreibweisen, „Sonntag Betriebsschluss“, „Ende August“, „31.07.2026“,
+  „Montag, 03. August 2026, 04:00 Uhr“), außer „Nicht absehbar“ (48).
+  `_expected_end_sentence` schreibt in `_format_item_content`
+  „Voraussichtlich bis <Ende>“; ein „bis“, das WL selbst davorsetzt, steht
+  nur einmal da. Umgeschrieben wird nur ein Wert, der wie ein Ende anfängt
+  (Ziffer, „ca.“/„circa“/„etwa“/„gegen“ davor, „Betriebsschluss“,
+  Wochentag, „heute“, „morgen“, Monat, „Anfang“/„Mitte“/„Ende“) und keine
+  Dauer nennt („2 Stunden“, „etwa zwei Wochen“). „Nicht absehbar“ und jede
+  andere Form behalten WLs Label. Dabei werden WLs Tippfehler in dieser
+  Uhrzeit behoben („15;40 Uhr“, „12:15 Uht“, „06:30Uhr“). Der Satz ist sechs
+  Zeichen kürzer; in 62 der 4.663 nachgerenderten WL-Texte passt dadurch der
+  Grund wieder ganz in die 180 Zeichen. Zur Zeitzeile widerspricht er nie:
+  Uhrzeiten stehen unter „[Seit hh:mm]“, „[Heute]“ oder „[Am …]“, „Ende
+  August“ unter „[Bis 31.08.]“. Im EN-Feed: §8, „Expected until“.
 * **Zeitzeile: was für heute zählt (seit 2026-10-02, Betreiberentscheidung).**
   Wer vor dem Display steht, fragt: Gilt das jetzt, und wie lange noch?
   `format_local_times` antwortet darauf statt mit zwei vollen Daten:
@@ -1888,6 +1908,19 @@ Nicht jeder Text gehört in ein NMT-Modell:
   approx.“, am Wertanfang groß („Duration: Until approx. 22:00“); in Prosa
   greift der Glossar-Eintrag „bis voraussichtlich“ → „until approx.“
   (seit 2026-09-26, Audit vom 25.09., A.3; vorher „until expected“).
+  Seit 2026-10-06 steht im deutschen Text „Voraussichtlich bis 14:10 Uhr.“
+  statt „Voraussichtliche Dauer: 14:10 Uhr.“ (§1, „Titel und Beschreibung“). Der Satz zählt wie ein
+  Label und beginnt den Record (`_EXPECTED_UNTIL_RE`); als letzter Satz ist
+  er auch allein ein Record. `_render_record_table` setzt ihn als „bis …“
+  zusammen und stellt „Expected“ davor: „Expected until 14:10.“, „Expected
+  until approx. 22:00.“, „Expected until Sunday end of service.“ Die
+  Wertliste kennt dafür die Wochentage, „circa“ und „Anfang“/„Mitte“ vor
+  einem Monat („Wien Mitte“ bleibt ein Name), das Glossar
+  „Betriebsschluß“ und „Betriebschluss“. Eine Hausnummernspanne beginnt
+  nicht mehr an der Ziffer eines Label-Platzhalters („Duration:-19
+  September“ wurde „Duration: Until 19 September“). Kleingeschriebenes
+  „voraussichtlich bis“ in Prosa (ÖBB, WLs „Die Störung dauert …“) bleibt
+  Prosa.
   Seit dem EN-Audit vom 2026-10-03 gehört ein „Voraussichtliche“ vor dem
   ersten Label zum Record („Expected duration:“; vorher blieb es als letztes
   Wort der Prosa stehen und wurde verschluckt oder einzeln übersetzt), und

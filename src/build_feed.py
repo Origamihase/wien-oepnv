@@ -2424,6 +2424,11 @@ _GLOSSARY_BASE: dict[str, str] = {
     # "bis Betriebsschluss": the model rendered it "operation close" (77A,
     # 2026-08); inside a label record nothing renders it at all.
     "Betriebsschluss": "end of service",
+    # WL's other two spellings behind "Voraussichtliche Dauer:" (four texts
+    # since July), left German in the EN record ("Expected until
+    # Betriebsschluß").
+    "Betriebsschluß": "end of service",
+    "Betriebschluss": "end of service",
     "Personen im Gleisbereich": "persons on the tracks",
     # --- Boarding / stop-access vocabulary ---------------------------
     # WL Störung items are headlined with the bare noun ("Einstieg bei
@@ -3973,9 +3978,17 @@ def _split_label_record(text: str) -> tuple[str, str]:
     fewer than :data:`_MIN_LABELS_FOR_RECORD` labels.
     """
     matches = list(_LABEL_RECORD_RE.finditer(text))
-    if len(matches) < _MIN_LABELS_FOR_RECORD:
+    # The expected end the DE feed writes for WL's "Voraussichtliche Dauer:"
+    # (``_expected_end_sentence``) opens the record in its place. Alone it is
+    # a record too when it is the last sentence: like the label it replaced,
+    # it is a table cell, and the model has nothing to add to it.
+    until = list(_EXPECTED_UNTIL_RE.finditer(text))
+    starts = sorted(m.start() for m in (*matches, *until))
+    if len(starts) < _MIN_LABELS_FOR_RECORD and not (
+        until and not matches and not _LETTER_SENTENCE_END_RE.search(text, until[0].end())
+    ):
         return text, ""
-    cut = matches[0].start()
+    cut = starts[0]
     # WL's incident template opens its record with a qualified label,
     # "Voraussichtliche Dauer: 10:10 Uhr. Grund: …". Cut at "Dauer:" alone,
     # the qualifier stayed behind as the last word of the prose, and the model
@@ -3987,6 +4000,20 @@ def _split_label_record(text: str) -> tuple[str, str]:
         cut = qualifier.start()
     return text[:cut].rstrip(), text[cut:].strip()
 
+
+# "Voraussichtlich bis 14:10 Uhr." at the start of a sentence: the DE
+# feed's form of WL's "Voraussichtliche Dauer:" (``_expected_end_sentence``).
+# Capitalised only, so prose that runs on with "… voraussichtlich bis …"
+# (ÖBB, WL's "Die Störung dauert voraussichtlich bis …") stays prose.
+_EXPECTED_UNTIL_RE: re.Pattern[str] = re.compile(r"(?<!\w)Voraussichtlich bis\s")
+# A full stop behind a letter before a capital: a sentence end that a date's
+# day ("19. September") is not.
+_LETTER_SENTENCE_END_RE: re.Pattern[str] = re.compile(r"(?<=[^\W\d])\.\s+[A-ZÄÖÜ]")
+# A record that opens with it is rendered as "bis …" ("Until 14:10",
+# "Until approx. 22:00") and takes "Expected" in front, the English of the
+# German sentence. The glossary would render the adverb alone, as
+# "expected" before a German "bis".
+_RECORD_EXPECTED_UNTIL_RE: re.Pattern[str] = re.compile(r"Voraussichtlich bis\s+")
 
 # The adjective in front of a record's first label (see ``_split_label_record``).
 _LABEL_QUALIFIER_RE: re.Pattern[str] = re.compile(r"(?<!\w)[Vv]oraussichtliche\s+$")
@@ -4013,6 +4040,10 @@ _LABEL_QUALIFIER_RE: re.Pattern[str] = re.compile(r"(?<!\w)[Vv]oraussichtliche\s
 # "bis auf Widerruf" wins over "bis". The third field says whether the
 # English keeps a fixed spelling (month names) or takes a capital only at
 # the start of a value ("Duration: From …", but "…, until further notice").
+_RECORD_MONTH_DE = (
+    r"(?:J[äa]nner|Januar|Februar|März|April|Mai|Juni|Juli|August|September"
+    r"|Oktober|November|Dezember)\b"
+)
 _RECORD_VALUE_RULES: tuple[tuple[str, str, bool], ...] = (
     (r"bis auf Widerruf", "until further notice", False),
     (r"auf (?:derzeit )?unbestimmte Zeit", "until further notice", False),
@@ -4041,6 +4072,12 @@ _RECORD_VALUE_RULES: tuple[tuple[str, str, bool], ...] = (
     (r"ca\.", "approx.", False),
     (r"Ende", "end of", False),
     (r"heute", "today", False),
+    # The values of "Voraussichtlich bis …" (``_expected_end_sentence``):
+    # "Sonntag Betriebsschluss", "circa 22:00 Uhr", "Anfang September". Only
+    # in front of a month, so the station "Wien Mitte" keeps its name.
+    (r"circa", "approx.", False),
+    (r"Anfang(?=\s+" + _RECORD_MONTH_DE + r")", "beginning of", False),
+    (r"Mitte(?=\s+" + _RECORD_MONTH_DE + r")", "middle of", False),
     (r"Meter", "metres", False),
     (r"vor", "before", False),
     (r"nach", "after", False),
@@ -4052,6 +4089,13 @@ _RECORD_VALUE_RULES: tuple[tuple[str, str, bool], ...] = (
     (r"Juli", "July", True),
     (r"Oktober", "October", True),
     (r"Dezember", "December", True),
+    (r"Montag", "Monday", True),
+    (r"Dienstag", "Tuesday", True),
+    (r"Mittwoch", "Wednesday", True),
+    (r"Donnerstag", "Thursday", True),
+    (r"Freitag", "Friday", True),
+    (r"Samstag", "Saturday", True),
+    (r"Sonntag", "Sunday", True),
 )
 _RECORD_VALUE_RE: re.Pattern[str] = re.compile(
     r"(?<!\w)(?:"
@@ -4061,8 +4105,10 @@ _RECORD_VALUE_RE: re.Pattern[str] = re.compile(
 )
 # "Eipeldauer Straße 12 bis 14" is a house-number range and WL writes it
 # "12-14" elsewhere; a clock-time range ("09:00 bis 21:30") is not touched.
+# Neither is the digit closing a label's placeholder: "<label> bis 19.
+# September" came out "Expected-19 September".
 _HOUSE_NUMBER_RANGE_RE: re.Pattern[str] = re.compile(
-    r"(?<![\d:])(\d{1,4}[A-Za-z]?)\s+bis\s+(\d{1,4}[A-Za-z]?)(?![\d:])"
+    r"(?<![\w:])(\d{1,4}[A-Za-z]?)\s+bis\s+(\d{1,4}[A-Za-z]?)(?![\d:])"
 )
 # "30. September" → "30 September": the day's period is German only. Runs
 # after the month names are English, and needs the month to follow, so
@@ -4169,6 +4215,14 @@ def _render_record_table(
     done. Same two passes the model path uses, minus the model, so the
     rendering is deterministic and the addresses cannot move.
     """
+    expected = _RECORD_EXPECTED_UNTIL_RE.match(record)
+    if expected is not None:
+        rendered = _render_record_table(
+            f"bis {record[expected.end():]}", source=source, category=category
+        )
+        if rendered.startswith("Until "):
+            return f"Expected until {rendered[len('Until '):]}"
+        return rendered
     record = _RECORD_BIS_VORAUSSICHTLICH_RE.sub(r"\1 etwa", record)
     glossed, glossary_mapping = _apply_domain_glossary(
         _normalise_for_translation(record), source=source, category=category
@@ -8777,6 +8831,45 @@ _SPACE_BEFORE_PUNCT_RE = re.compile(r"(?<=\S)[ \t]+(?=[,;](?:\s|$)|\.(?:\s|$))")
 _SPACE_BEFORE_COMMA_RE = re.compile(r"(?<=\S)[ \t]+(?=[,;](?:\s|$))")
 _EMPTY_PLACE_RE = re.compile(r"\s+im\s+(?:Haltestellenbereich|Bereich)(?=\s*\.(?:\s|$))")
 
+# WL's incident template names the expected end under a duration label:
+# "Voraussichtliche Dauer: 14:10 Uhr." A clock time is no duration, and on
+# the TV the sentence read as if the disruption lasted 14 hours (slides of
+# 06.10.2026). Every value WL put behind the label since July is an end
+# point (942 distinct texts in the WL cache: a clock time in 863, otherwise
+# "Betriebsschluss", a day, "Ende August", "31.07.2026") except "Nicht
+# absehbar" (48), so the sentence says
+# what it means: "Voraussichtlich bis 14:10 Uhr." A value WL already opens
+# with "bis" keeps a single one. Only a value that starts like an end point
+# is rewritten: a clock time or date, "ca."/"circa"/"etwa"/"gegen" before
+# one, "Betriebsschluss" in its three spellings, a weekday, "heute",
+# "morgen", a month or "Anfang"/"Mitte"/"Ende". A real duration ("2
+# Stunden", "etwa zwei Wochen") and any value of another shape ("Nicht
+# absehbar") keep WL's label, which is right for them.
+_EXPECTED_END_RE = re.compile(
+    r"(?<!\w)(?P<v>[Vv])oraussichtliche\s+Dauer:\s*(?:[Bb]is\s+)?"
+    r"(?=(?:(?:ca\.|circa|etwa|gegen)\s*)?"
+    r"(?:\d|(?:Betriebs?schlu(?:ss|ß)|Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag"
+    r"|[Hh]eute|[Mm]orgen|Anfang|Mitte|Ende|J[äa]nner|Januar|Februar|März|April|Mai|Juni|Juli"
+    r"|August|September|Oktober|November|Dezember)\b))"
+    r"(?![^:]{0,40}?\b(?:Minuten?|Stunden?|Tage|Tagen|Wochen?|Monate|Monaten|Jahre|Jahren)\b)"
+)
+
+
+# WL typed the clock time of that sentence wrong a few times since July:
+# "15;40 Uhr", "12:15 Uht", "06:30Uhr". As the end of the sentence they read
+# like a typo on the TV and stayed one in English ("Expected until
+# 15;40:00").
+_CLOCK_SEMICOLON_RE = re.compile(r"(?<![\d;:])(\d{1,2});(\d{2})(?=\s*Uh[rt]\b)")
+_CLOCK_UHT_RE = re.compile(r"(?<=\d)\s*Uht\b")
+_CLOCK_GLUED_UHR_RE = re.compile(r"(?<=\d\d:\d\d)Uhr\b")
+
+
+def _expected_end_sentence(text: str) -> str:
+    """WL's "Voraussichtliche Dauer: <end>" as "Voraussichtlich bis <end>"."""
+    text = _CLOCK_SEMICOLON_RE.sub(r"\1:\2", text)
+    text = _CLOCK_UHT_RE.sub(" Uhr", _CLOCK_GLUED_UHR_RE.sub(" Uhr", text))
+    return _EXPECTED_END_RE.sub(lambda m: f"{m['v']}oraussichtlich bis ", text)
+
 
 def _join_continued_blocks(blocks: list[str]) -> list[str]:
     """Join a block to the next one where the sentence plainly goes on."""
@@ -9476,6 +9569,7 @@ def _format_item_content(
     # ellipsis (three or more) stays.
     summary = _DOUBLED_FULL_STOP_RE.sub(".", summary)
     summary = _SPACE_BEFORE_PUNCT_RE.sub("", _EMPTY_PLACE_RE.sub("", summary))
+    summary = _expected_end_sentence(summary)
     # Drop the "ask Wiener Linien" referral before the sentence split, or it
     # takes sentence one and the 180-char budget with it. Keep the referral
     # when it is all the description has: a useless sentence still beats an
