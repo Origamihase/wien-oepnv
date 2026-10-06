@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261006-0020-F01, I20261006-0021-F02, I20261006-0019, I20261006-0021-F01, I20261006-0023-F01, I20260917-0012, I20261006-0021, I20261006-0023, I20260925-0011, I20261006-0022-F01, I20260922-0032, I20261006-0021-F03, I20260909-0007, I20261006-0018, I20261006-0022"
+    "trafficInfoNameList": "I20261006-0020-F01, I20261006-0021-F02, I20261006-0019, I20261006-0021-F01, I20261006-0023-F01, I20260917-0012, I20261006-0023, I20260925-0011, I20261006-0022-F01, I20260922-0032, I20261006-0021-F03, I20260909-0007, I20261006-0018"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2372-627, R2343-125, R2359-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2343-626, R2378-627, R2370-125, R2371-125, R2372-125, R2373-125, R318-437, R293-474, R2917-0, R2923-403, R2025-671, R100-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R101-136, R103-136, R102-136, R5815-671, R1448-149, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R1150-0, R1974-466, R500-101, R2737-497, R2866-497, R3009-497, R2736-497, R837-118, R293-118, R836-118, R2619-118, R3602-118, R3603-118, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R293-474, R318-437, R2917-0, R2923-403, R2025-671, R118-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R119-136, R130-136, R19-136, R45-136, R36-152, R5815-671, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1448-149, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R2558-125, R1150-0, R1974-466, R500-101, R293-118, R837-118, R836-118, R2619-118, R3603-118, R3602-118, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -306,57 +306,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "26": "ptTram",
-      "85A": "ptBusCity",
-      "97A": "ptBusCity"
-     }
-    },
-    "description": "Linie 26: Fahrtbehinderung in Richtung Kagran. Linie 85A: Fahrtbehinderung in Richtung Breitenlee, Rautenweg. Linie 97A: Fahrtbehinderung in Richtung Breitenlee, Schule. Voraussichtliche Dauer: 14:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Am Heidjöchl.",
-    "descriptionHTML": "<p>Linie 26:</p><p>Fahrtbehinderung in Richtung Kagran.</p><p>Linie 85A:</p><p>Fahrtbehinderung in Richtung Breitenlee, Rautenweg.</p><p>Linie 97A:</p><p>Fahrtbehinderung in Richtung Breitenlee, Schule.</p><p><br></p><p>Voraussichtliche Dauer: 14:15 Uhr.</p><p><br></p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Am Heidjöchl.</p>",
-    "name": "I20261006-0021",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "26",
-     "85A",
-     "97A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "126",
-       "lineName": "26",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "485",
-       "lineName": "85A",
-       "vehicleType": "ptBusCity"
-      },
-      {
-       "lineId": "497",
-       "lineName": "97A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "relatedStops": [
-     2737
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-06T13:46:00.000+0200",
-     "end": "2026-10-06T14:05:00.000+0200",
-     "lastUpdate": "2026-10-06T14:05:00.000+0200",
-     "resume": "2026-10-06T14:05:00.000+0200",
-     "start": "2026-10-06T13:44:00.000+0200"
-    },
-    "title": "26, 85A, 97A: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "26": "ptTram"
      }
     },
@@ -464,41 +413,6 @@
      "start": "2026-10-06T13:44:00.000+0200"
     },
     "title": "97A: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "9A": "ptBusCity"
-     }
-    },
-    "description": "Linie 9A: Fahrtbehinderung in Richtung Meidling Hauptstraße U. Voraussichtliche Dauer: 14:10 Uhr. Grund: Verkehrsunfall im Bereich Ratschkygasse 13.",
-    "descriptionHTML": "Linie 9A:<br>Fahrtbehinderung in Richtung Meidling Hauptstraße U.<br> <br>Voraussichtliche Dauer: 14:10 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Ratschkygasse 13.",
-    "location": "Ratschkygasse  13",
-    "name": "I20261006-0022",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "409",
-       "lineName": "9A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-06T13:52:00.000+0200",
-     "end": "2026-10-06T14:05:00.000+0200",
-     "lastUpdate": "2026-10-06T14:05:00.000+0200",
-     "resume": "2026-10-06T14:05:00.000+0200",
-     "start": "2026-10-06T13:52:00.000+0200"
-    },
-    "title": "9A: Verkehrsunfall"
    },
    {
     "attributes": {
@@ -1374,60 +1288,6 @@
     "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2736-497",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "97A"
-    ],
-    "relatedStops": [
-     2736
-    ],
-    "time": {
-     "end": "2026-10-06T15:04:00.000+0200",
-     "start": "2026-10-06T14:04:19.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2737-497",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "97A"
-    ],
-    "relatedStops": [
-     2737
-    ],
-    "time": {
-     "end": "2026-10-06T15:04:00.000+0200",
-     "start": "2026-10-06T14:04:19.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2866-497",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "97A"
-    ],
-    "relatedStops": [
-     2866
-    ],
-    "time": {
-     "end": "2026-10-06T15:04:00.000+0200",
-     "start": "2026-10-06T14:04:19.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
     "description": "3A Netzänderung\nBetrieb ab Riemergasse",
     "name": "R2917-0",
     "owner": "WL",
@@ -1495,24 +1355,6 @@
      "start": "2026-10-06T00:00:07.000+0200"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R3009-497",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "97A"
-    ],
-    "relatedStops": [
-     3009
-    ],
-    "time": {
-     "end": "2026-10-06T15:04:00.000+0200",
-     "start": "2026-10-06T14:04:19.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
