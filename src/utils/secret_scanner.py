@@ -796,6 +796,10 @@ _KNOWN_TOKENS = [
     # The ``(?i)`` inline flag handles case-insensitive scheme literals
     # (per RFC 3986 §3.1, URI schemes are case-insensitive). The
     # optional ``jdbc:`` prefix covers Java JDBC URL conventions.
+    # The user part admits ``@``: mail logins are often written
+    # unencoded (``smtps://noreply@example.com:pw@smtp.example.com``),
+    # and urllib / requests split userinfo at the LAST ``@``, so such a
+    # URI carries a live password just like the canonical shape.
     # Real-world emission: ``.env`` files, ``docker-compose.yml``,
     # Heroku ``app.json``, settings.py / application.yml /
     # database.yml, Python notebook output, README example URIs
@@ -806,7 +810,7 @@ _KNOWN_TOKENS = [
             r"(?i)\b(?:jdbc:)?"
             r"(?:postgres(?:ql)?|mysql|mariadb|mongodb(?:\+srv)?|redis|"
             r"amqp|amqps|kafka|clickhouse|cassandra|elasticsearch|smtp|smtps)"
-            r"://[^@\s/:]+:[^@\s/]+@[^\s/]+"
+            r"://[^\s/:]+:[^@\s/]+@[^\s/]+"
         ),
         "Database Connection String gefunden",
     ),
@@ -874,7 +878,7 @@ _KNOWN_TOKENS = [
         re.compile(
             r"(?i)\b(?:jdbc:)?"
             r"(?:ldap|ldaps|ssh|sftp|smb|cifs)"
-            r"://[^@\s/:]+:[^@\s/]+@[^\s/]+"
+            r"://[^\s/:]+:[^@\s/]+@[^\s/]+"
         ),
         "Directory/Shell/Share Connection String gefunden",
     ),

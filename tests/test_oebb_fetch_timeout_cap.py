@@ -25,7 +25,6 @@ from typing import Any
 import pytest
 
 import src.providers.oebb as oebb
-from src.providers.oebb import MAX_OEBB_FETCH_TIMEOUT, fetch_events
 
 
 def test_max_oebb_fetch_timeout_matches_provider_timeout_ceiling() -> None:
@@ -33,8 +32,8 @@ def test_max_oebb_fetch_timeout_matches_provider_timeout_ceiling() -> None:
     # orchestrator-level Slowloris ceiling, so no legitimate orchestrator-
     # capped value is ever rejected. The default ``fetch_events`` parameter
     # (25) sits exactly at the cap.
-    assert MAX_OEBB_FETCH_TIMEOUT == 25
-    assert MAX_OEBB_FETCH_TIMEOUT >= 1
+    assert oebb.MAX_OEBB_FETCH_TIMEOUT == 25
+    assert oebb.MAX_OEBB_FETCH_TIMEOUT >= 1
 
 
 def test_fetch_events_clamps_huge_timeout_to_cap(
@@ -53,9 +52,9 @@ def test_fetch_events_clamps_huge_timeout_to_cap(
 
     monkeypatch.setattr(oebb, "_fetch_xml", fake_fetch_xml)
 
-    result = fetch_events(timeout=99999)
+    result = oebb.fetch_events(timeout=99999)
     assert result == []
-    assert recorded["timeout"] == MAX_OEBB_FETCH_TIMEOUT
+    assert recorded["timeout"] == oebb.MAX_OEBB_FETCH_TIMEOUT
 
 
 def test_fetch_events_at_cap_passes_cap_through(
@@ -73,8 +72,8 @@ def test_fetch_events_at_cap_passes_cap_through(
 
     monkeypatch.setattr(oebb, "_fetch_xml", fake_fetch_xml)
 
-    fetch_events(timeout=MAX_OEBB_FETCH_TIMEOUT)
-    assert recorded["timeout"] == MAX_OEBB_FETCH_TIMEOUT
+    oebb.fetch_events(timeout=oebb.MAX_OEBB_FETCH_TIMEOUT)
+    assert recorded["timeout"] == oebb.MAX_OEBB_FETCH_TIMEOUT
 
 
 def test_fetch_events_below_cap_passes_through(
@@ -93,7 +92,7 @@ def test_fetch_events_below_cap_passes_through(
 
     monkeypatch.setattr(oebb, "_fetch_xml", fake_fetch_xml)
 
-    fetch_events(timeout=5)
+    oebb.fetch_events(timeout=5)
     assert recorded["timeout"] == 5
 
 
@@ -112,5 +111,5 @@ def test_fetch_events_default_timeout_unchanged(
 
     monkeypatch.setattr(oebb, "_fetch_xml", fake_fetch_xml)
 
-    fetch_events()
+    oebb.fetch_events()
     assert recorded["timeout"] == 25

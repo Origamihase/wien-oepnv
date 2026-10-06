@@ -2,7 +2,6 @@ import time
 from typing import Any
 from unittest.mock import MagicMock, patch
 import src.build_feed as bf
-from src.build_feed import _collect_items, RunReport
 
 def test_collect_items_cancelled_future() -> None:
     # Setup configuration
@@ -22,7 +21,7 @@ def test_collect_items_cancelled_future() -> None:
     # Needs to be treated as a network fetcher.
     # Having no `_provider_cache_name` does this naturally.
 
-    report = MagicMock(spec=RunReport)
+    report = MagicMock(spec=bf.RunReport)
 
     with patch.object(bf, "feed_config", mock_feed_config), \
          patch.object(bf, "PROVIDERS", [("DUMMY_ENABLE", mock_fetch)]), \
@@ -47,7 +46,7 @@ def test_collect_items_cancelled_future() -> None:
         with patch.object(bf, "_PROVIDERS_INITIALIZED", True):
             # Run _collect_items. The fetch should time out and the future will be cancelled.
             # Then, if the wait() returns a cancelled future, it won't be logged as "Fetch abgebrochen".
-            _collect_items(report=report)
+            bf._collect_items(report=report)
 
         # Find all calls to provider_error
         error_calls = [call.args[1] for call in report.provider_error.call_args_list]

@@ -296,17 +296,14 @@ def test_baustellen_resolve_data_url_strips_primitive(
     caplog: pytest.LogCaptureFixture,
 ) -> None:
     """L352: ``_resolve_data_url`` rejects unknown-host ``BAUSTELLEN_DATA_URL``."""
-    from scripts.update_baustellen_cache import (
-        DEFAULT_DATA_URL,
-        _resolve_data_url,
-    )
+    import scripts.update_baustellen_cache as ubc
 
     # Construct an https URL pointing at a non-allowlisted host that
     # carries the primitive — the host check fails and the WARNING fires.
     poisoned = f"https://attacker.example.com/poisoned{primitive}path.geojson"
     caplog.set_level(logging.WARNING)
-    result = _resolve_data_url(poisoned)
-    assert result == DEFAULT_DATA_URL
+    result = ubc._resolve_data_url(poisoned)
+    assert result == ubc.DEFAULT_DATA_URL
     _assert_primitive_absent_from_record_state(
         caplog, primitive, primitive_label, "update_baustellen_cache:_resolve_data_url"
     )

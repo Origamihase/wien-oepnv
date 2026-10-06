@@ -1,7 +1,6 @@
 from typing import Any
 from unittest.mock import MagicMock, patch
 import src.build_feed as bf
-from src.build_feed import _collect_items, RunReport
 
 def test_collect_items_timeout_zero() -> None:
     mock_feed_config = MagicMock()
@@ -11,7 +10,7 @@ def test_collect_items_timeout_zero() -> None:
 
     def mock_fetch(timeout: Any = None) -> list[dict[str, Any]]: return []
     mock_fetch.__name__ = "dummy_provider"
-    report = MagicMock(spec=RunReport)
+    report = MagicMock(spec=bf.RunReport)
 
     # ``init_providers`` would register the dummy as a cache loader, and a
     # cache loader runs without a timeout. The test passed in the full suite
@@ -24,7 +23,7 @@ def test_collect_items_timeout_zero() -> None:
          patch("src.build_feed.ThreadPoolExecutor") as mock_executor_cls:
 
         mock_executor = mock_executor_cls.return_value.__enter__.return_value
-        items = _collect_items(report=report)
+        items = bf._collect_items(report=report)
 
         assert len(items) == 0
         report.provider_error.assert_called()
@@ -56,13 +55,12 @@ def test_run_fetch_timeout_exactly_zero() -> None:
         # We will mock perf_counter to return 0.0 then 1.0, so elapsed is 1.0
         # remaining_timeout = 1.0 - 1.0 = 0.0
         # Since it's <= 0, it should raise TimeoutError
-        start_wait = 0.0
         acquired = semaphore.acquire(timeout=timeout_arg)
         if not acquired:
             raise TimeoutError()
 
         try:
-            elapsed = 1.0 # perf_counter() - start_wait
+            elapsed = 1.0
             remaining_timeout = timeout_arg - elapsed if timeout_arg is not None else None
 
             if remaining_timeout is not None and remaining_timeout <= 0:

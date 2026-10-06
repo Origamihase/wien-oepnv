@@ -91,7 +91,7 @@ def _close_and_cleanup_failed_write(
         try:
             os.close(fd)
         except OSError:
-            pass
+            pass  # already closed or invalid; nothing left to release
     # Cleanup temp file
     if os.path.exists(tmp_path):
         try:
@@ -154,7 +154,7 @@ def atomic_write(
         try:
             os.fchmod(fd, 0o600)
         except OSError:
-            pass
+            pass  # no fchmod on this platform (Windows); os.open already used 0o600
 
         f = open(fd, mode, encoding=encoding, newline=newline)
         # The file object now owns the descriptor — closing ``f`` closes
@@ -169,7 +169,7 @@ def atomic_write(
         try:
             os.fchmod(f.fileno(), permissions)
         except OSError:
-            pass
+            pass  # no fchmod on this platform (Windows); the file keeps its 0o600
 
         f.close()
         f = None  # Prevent double close in finally
@@ -200,7 +200,7 @@ def atomic_write(
             finally:
                 os.close(dir_fd)
         except OSError:
-            pass
+            pass  # no directory descriptors on this platform (Windows); see comment above
 
     except Exception:
         _close_and_cleanup_failed_write(f, fd, tmp_path)

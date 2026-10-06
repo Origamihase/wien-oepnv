@@ -2,12 +2,9 @@
 import pytest
 import requests
 from unittest.mock import patch, MagicMock
-from src.utils.http import request_safe, session_with_retries
+from src.utils.http import request_safe
 
 def test_auth_kwargs_leak_on_redirect() -> None:
-    # Setup session
-    s = session_with_retries("test-agent")
-
     # We want to verify that if we pass auth=('user', 'pass'),
     # the Authorization header is NOT sent to the redirect target if it's a different host.
 
@@ -54,10 +51,7 @@ def test_auth_kwargs_leak_on_redirect() -> None:
             mock_resolve.return_value = [(2, 1, 6, '', (target_ip, 80))]
 
             # Execute request_safe with auth kwargs
-            try:
-                request_safe(mock_session, "http://safe.com/start", auth=("user", "pass"))
-            except Exception:
-                pass
+            request_safe(mock_session, "http://safe.com/start", auth=("user", "pass"))
 
             # Verify calls
             assert mock_session.request.call_count == 2
@@ -68,7 +62,6 @@ def test_auth_kwargs_leak_on_redirect() -> None:
 
             # Check arguments of the second call (evil.com)
             args2, kwargs2 = mock_session.request.call_args_list[1]
-            target_url = args1[1]
 
             # The Critical Check: auth should be removed or None for the redirect to evil.com
             # If it is still ("user", "pass"), requests will generate the header for evil.com

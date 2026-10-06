@@ -901,9 +901,11 @@ def render_markdown(
         [
             "---",
             "",
-            "_Quellen_: `data/stats/stammstrecke_*.csv`, "
-            "`data/stats/ausfaelle_*.csv`, `data/stats/stoerungen_*.csv`. "
-            "Generiert von `scripts/generate_markdown_stats.py`.",
+            (
+                "_Quellen_: `data/stats/stammstrecke_*.csv`, "
+                "`data/stats/ausfaelle_*.csv`, `data/stats/stoerungen_*.csv`. "
+                "Generiert von `scripts/generate_markdown_stats.py`."
+            ),
             "",
         ]
     )

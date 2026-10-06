@@ -14,9 +14,6 @@ def mock_feed_config(monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
 
 def test_save_state_secure_permissions(tmp_path: Path, mock_feed_config: None) -> None:
     """Verify that _save_state creates files with secure permissions (0600)."""
-    # Import inside the test to ensure patches are active
-    from src.build_feed import _save_state
-
     # Define a state file path
     state_file = tmp_path / "secure_state.json"
 
@@ -26,7 +23,7 @@ def test_save_state_secure_permissions(tmp_path: Path, mock_feed_config: None) -
 
         test_state = {"test_item": {"first_seen": "2023-01-01T00:00:00+00:00"}}
 
-        _save_state(test_state)
+        src.build_feed._save_state(test_state)
 
         assert state_file.exists()
 

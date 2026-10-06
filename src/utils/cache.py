@@ -108,7 +108,7 @@ def register_cache_alert_hook(callback: _CacheAlertHook) -> Callable[[], None]:
             try:
                 _CACHE_ALERT_HOOKS.remove(callback)
             except ValueError:
-                pass
+                pass  # already unregistered; calling the handle twice is harmless
 
     return _unregister
 
@@ -379,7 +379,7 @@ def prune_cache(max_age_hours: int = 48, *, provider: str | None = None) -> None
                 provider_dir.rmdir()
                 log.info("Removed empty provider directory: %s", provider_dir)
         except OSError:
-            pass
+            pass  # best effort: a directory that cannot be listed or removed just stays
 
 
 def _pretty_print_enabled(explicit: bool | None) -> bool:

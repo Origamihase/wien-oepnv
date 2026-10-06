@@ -190,8 +190,12 @@ def test_fuzzy_merge_recursive() -> None:
         {"title": "2/3: Event 2025", "guid": "2"}, # Merges with 1 -> 1/2/3
         {"title": "3/4: Event 2025", "guid": "3"}  # Matches 1/2/3? Lines: {3} vs {1,2,3}. Int=1, Union=4. 1/4 = 0.25 < 0.3 NO.
     ]
-    # Wait, 1/2 and 2/3 merge -> {1,2,3}.
+    # 1/2 and 2/3 merge -> {1,2,3}.
     # 3/4 and {1,2,3}. Intersection {3}. Union {1,2,3,4}. 1/4 = 0.25. No merge.
+    assert [m["title"] for m in deduplicate_fuzzy(items)] == [
+        "1/2/3: Event 2025",
+        "3/4: Event 2025",
+    ]
 
     # Let's try stronger overlap.
     # A: 1/2/3

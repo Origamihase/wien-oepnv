@@ -5,6 +5,26 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Code Scanning: übrige CodeQL-Meldungen aufgeräumt (2026-10-06)**:
+  Beim Abarbeiten fiel eine echte Lücke auf: Steht im Login einer URL
+  ein unkodiertes `@` (`smtps://noreply@example.com:pw@smtp.example.com`),
+  trennen urllib und requests am letzten `@`, die Maskierung in
+  `sanitize_log_message` aber am ersten. Das Passwort blieb im Log lesbar,
+  und der Secret-Scanner erkannte solche URIs gar nicht. Beide nehmen
+  jetzt den letzten `@` (`src/utils/logging.py`,
+  `src/utils/secret_scanner.py`; `src/utils/http.py` tat das bereits).
+  `scripts/update_all_stations.py` nutzt seine `_DEFAULT_*_PATH`-Konstanten
+  jetzt auch als CLI-Defaults, sodass das Umlenken in Tests wirkt. In den
+  Tests: verschluckte Ausnahmen entfernt (drei Tests fingen jede Ausnahme
+  still ab, obwohl der Aufruf gelingt), ein vergessener Testfall
+  (`_SMTP_URI`) und ein ausgewertetes Merge-Szenario ergänzt, tote
+  Variablen und doppelte Importe entfernt. In `src/`: leere
+  `except`-Zweige begründet, `locking.file_lock` mit `finally` statt
+  `except BaseException`. Was CodeQL danach noch meldet, sind
+  Fehlalarme (u. a. verwechselt es das Standardmodul `logging` mit
+  `src/utils/logging.py`) und sechs Stellen in `src/utils/http.py`, die
+  nach der `requests`-2.34-Umstellung (#1770) folgen. Feed-Inhalt
+  unverändert.
 * **Code Scanning: echte CodeQL-Befunde behoben (2026-10-06)**: Von den
   104 offenen Meldungen auf `main` waren elf in Produktivcode oder
   Workflows berechtigt. Der Google-Places-Client schrieb abgelehnte

@@ -583,7 +583,7 @@ class VorAuth(AuthBase):  # type: ignore[misc]
                     new_parts = parsed._replace(query=new_query)
                     r.url = urlunparse(new_parts)
             except ValueError:
-                pass
+                pass  # malformed URL: leave it untouched, the request then fails visibly
 
         return r
 

@@ -188,14 +188,6 @@ def test_loads_finite_accepts_bytes_and_bytearray() -> None:
 # ---------------------------------------------------------------------------
 
 
-_NETWORK_HOOK_TOKENS = (
-    # Either uses the new ``loads_finite`` wrapper, OR passes the two hooks
-    # directly as kwargs (the ``response.json()`` shape).
-    "loads_finite(",
-    "parse_constant=_reject_non_finite_constant",
-)
-
-
 def _assert_non_finite_pin(func: Any, *, where: str) -> None:
     """Assert ``func`` source pins the non-finite defence in some form."""
     source = inspect.getsource(func)

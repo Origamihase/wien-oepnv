@@ -13,7 +13,7 @@ def test_permission_hint_for_blocked_message() -> None:
 
     assert hint
     assert "enable Places API (New)" in hint
-    assert "places.googleapis.com" in hint
+    assert hint.endswith("call https://places.googleapis.com in its API restrictions.")
 
 
 def test_permission_hint_for_invalid_key() -> None:

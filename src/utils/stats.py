@@ -386,7 +386,7 @@ def _append_row(
         try:
             os.chmod(path, 0o644)
         except OSError:
-            pass
+            pass  # best effort: the row is written, only the mode could not be normalised
         return True
     except OSError as exc:
         LOGGER.warning(

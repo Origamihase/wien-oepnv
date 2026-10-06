@@ -97,7 +97,6 @@ from typing import Any, cast
 import pytest
 
 import src.build_feed
-from src.build_feed import _emit_item, _make_rss
 from src.feed_types import FeedItem
 
 
@@ -182,7 +181,7 @@ def test_drift_premise_link_with_placeholder_triggers_retry_exhaustion(
         RuntimeError,
         match="Konnte keinen eindeutigen Platzhalter generieren",
     ):
-        _emit_item(item, _NOW, {})
+        src.build_feed._emit_item(item, _NOW, {})
 
 
 def test_drift_premise_guid_with_placeholder_triggers_retry_exhaustion(
@@ -199,7 +198,7 @@ def test_drift_premise_guid_with_placeholder_triggers_retry_exhaustion(
         RuntimeError,
         match="Konnte keinen eindeutigen Platzhalter generieren",
     ):
-        _emit_item(item, _NOW, {})
+        src.build_feed._emit_item(item, _NOW, {})
 
 
 def test_drift_premise_description_with_title_placeholder_triggers_retry(
@@ -221,7 +220,7 @@ def test_drift_premise_description_with_title_placeholder_triggers_retry(
         RuntimeError,
         match="Konnte keinen eindeutigen Platzhalter generieren",
     ):
-        _emit_item(item, _NOW, {})
+        src.build_feed._emit_item(item, _NOW, {})
 
 
 def test_drift_premise_title_with_content_placeholder_triggers_retry(
@@ -241,7 +240,7 @@ def test_drift_premise_title_with_content_placeholder_triggers_retry(
         RuntimeError,
         match="Konnte keinen eindeutigen Platzhalter generieren",
     ):
-        _emit_item(item, _NOW, {})
+        src.build_feed._emit_item(item, _NOW, {})
 
 
 # ---------------------------------------------------------------------------
@@ -256,7 +255,7 @@ def test_benign_item_emits_in_one_attempt(fixed_uid: str) -> None:
     Regression guard: the fix's broader collision check MUST NOT
     accidentally over-match benign inputs."""
     item = _base_item()
-    ident, elem, replacements = _emit_item(item, _NOW, {})
+    ident, elem, replacements = src.build_feed._emit_item(item, _NOW, {})
     assert ident
     assert elem.tag == "item"
     assert _PH_CONTENT_FIXED in replacements
@@ -276,7 +275,7 @@ def test_benign_item_xml_round_trips_through_make_rss(fixed_uid: str) -> None:
 
     benign_url = "https://www.wienerlinien.at/legitimate-path"
     item = _base_item(link=benign_url)
-    rss_str = _make_rss([item], _NOW, {})
+    rss_str = src.build_feed._make_rss([item], _NOW, {})
 
     root = DET.fromstring(rss_str)
     channel = root.find("channel")
@@ -309,13 +308,12 @@ def test_collision_check_covers_all_formatted_content_text_fields() -> None:
     check is updated to cover the new field.
     """
     from pathlib import Path
-    from src.build_feed import FormattedContent
 
     source = Path(src.build_feed.__file__).read_text(encoding="utf-8")
 
     # Every NamedTuple field on FormattedContent that carries upstream
     # text MUST be referenced in the placeholder collision check.
-    for field_name in FormattedContent._fields:
+    for field_name in src.build_feed.FormattedContent._fields:
         marker = f"formatted.{field_name}"
         assert marker in source, (
             f"Collision-check coverage gap: {marker!r} is not referenced "
@@ -348,7 +346,7 @@ def test_partial_placeholder_in_link_does_not_trigger_retry(
     # UID and the strict ``in`` check, this MUST NOT trigger a collision
     # because the planted substring is shorter than the full placeholder
     # and is not a substring of any of the placeholder permutations.
-    ident, elem, replacements = _emit_item(item, _NOW, {})
+    ident, elem, replacements = src.build_feed._emit_item(item, _NOW, {})
     assert ident
     assert elem.tag == "item"
 
@@ -360,5 +358,5 @@ def test_unrelated_underscores_do_not_trigger_retry(fixed_uid: str) -> None:
         title="Some___Title___With___Underscores",
         guid="urn:example:item___with___underscores",
     )
-    ident, elem, replacements = _emit_item(item, _NOW, {})
+    ident, elem, replacements = src.build_feed._emit_item(item, _NOW, {})
     assert ident

@@ -226,8 +226,7 @@ def test_github_issue_body_error_log_path_backtick_breaks_inline_code_span(
     # imported at module load time. Instead we monkeypatch the imported
     # reference inside reporting so the test exercises the real sink.
     poisoned_path = Path("log`<script>alert('xss')</script>`/errors.log")
-    import src.feed.reporting as reporting_module
-    monkeypatch.setattr(reporting_module, "error_log_path", poisoned_path)
+    monkeypatch.setattr("src.feed.reporting.error_log_path", poisoned_path)
 
     report = _make_report()
     report.add_error_message("test error to trigger issue submission")
