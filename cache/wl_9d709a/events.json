@@ -770,44 +770,77 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Falschparker",
-    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "12A: Feuerwehreinsatz",
+    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2513938b72db793fec75e59976c4da41d4fac33f1318eb4edd60511ffdcfb5f0",
+    "pubDate": "2026-10-06T17:30:00+02:00",
+    "starts_at": "2026-10-06T17:30:00+02:00",
+    "ends_at": "2026-10-06T23:55:00+02:00",
+    "_identity": "wl|störung|L=12A|D=2026-10-06|TK=feuerwehreinsatz",
+    "_wl_ids": [
+      "I20261006-0032"
+    ]
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Falschparker Betrieb ab Pilgramgasse",
+    "description": "Falschparker\nBetrieb ab Pilgramgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d",
-    "pubDate": "2026-10-06T17:22:00+02:00",
-    "starts_at": "2026-10-06T17:22:00+02:00",
-    "ends_at": "2026-10-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=13A|D=2026-10-06|TK=falschparker",
-    "_wl_ids": [
-      "I20261006-0030"
-    ]
+    "pubDate": "2026-10-06T17:53:10+02:00",
+    "starts_at": "2026-10-06T17:53:10+02:00",
+    "ends_at": "2026-10-06T18:54:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2026-10-06|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "14A: Falschparker",
-    "description": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "13A: Falschparker Umleitung über Gumpendorfer Straße, Linke Wienzeile",
+    "description": "Falschparker\nUmleitung über Gumpendorfer Straße, Linke Wienzeile",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "443234525d35ddc17471249c2e5f5b91be5892acfc39239a8ce1bd0dec620bee",
+    "pubDate": "2026-10-06T17:53:10+02:00",
+    "starts_at": "2026-10-06T17:53:10+02:00",
+    "ends_at": "2026-10-06T18:51:00+02:00",
+    "_identity": "wl|störung|L=13A|D=2026-10-06|TK=falschparker umleitung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Falschparker Betrieb ab Pilgramgasse",
+    "description": "Falschparker\nBetrieb ab Pilgramgasse",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "e94432c96ceb2bf714fdb2aeb039719615f03e39a59552cafb0d232ee11539fc",
-    "pubDate": "2026-10-06T17:22:00+02:00",
-    "starts_at": "2026-10-06T17:22:00+02:00",
-    "ends_at": "2026-10-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=14A|D=2026-10-06|TK=falschparker",
-    "_wl_ids": [
-      "I20261006-0030"
-    ]
+    "pubDate": "2026-10-06T17:54:10+02:00",
+    "starts_at": "2026-10-06T17:54:10+02:00",
+    "ends_at": "2026-10-06T18:55:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2026-10-06|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "15A/7A: Verkehrsüberlastung",
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "title": "14A: Falschparker Umleitung über Gumpendorfer Str., Linke Wienzeile",
+    "description": "Falschparker\nUmleitung über Gumpendorfer Str., Linke Wienzeile",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "89f4d5b271521b2cdd500c2b0d9188c9972cfddd3ecf964d7c99737b00d5485f",
+    "guid": "a61f154a11bbad328ef60b35397abb81d5b272863fa78608e6871166218df69c",
+    "pubDate": "2026-10-06T17:54:10+02:00",
+    "starts_at": "2026-10-06T17:54:10+02:00",
+    "ends_at": "2026-10-06T18:53:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2026-10-06|TK=falschparker umleitung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "15A/63A/7A: Verkehrsüberlastung",
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ab121a7ac3569abc2494b620bff3afce9a9b8b20e3be87ac61f635e8eca994cd",
     "pubDate": "2026-10-06T16:27:00+02:00",
     "starts_at": "2026-10-06T16:27:00+02:00",
     "ends_at": "2026-10-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=15A,7A|D=2026-10-06|TK=7a 15a verkehrsüberlastung",
+    "_identity": "wl|störung|L=15A,63A,7A|D=2026-10-06|TK=7a 15a 63a verkehrsüberlastung",
     "_wl_ids": [
       "I20261006-0025"
     ]
@@ -998,21 +1031,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "32A: Fremder Verkehrsunfall",
-    "description": "Linie 32A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2d45b6da852b996e0cb7d0a979aae9c19692fc48ec76a7326b0f07b2290320fd",
-    "pubDate": "2026-10-06T15:49:00+02:00",
-    "starts_at": "2026-10-06T15:49:00+02:00",
-    "ends_at": "2026-10-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=32A|D=2026-10-06|TK=32a fremder verkehrsunfall",
-    "_wl_ids": [
-      "I20261006-0024"
-    ]
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1055,7 +1073,7 @@
     "guid": "e3e13c6b90be5e66804691a6a7901f8c83e37548e7fcba2b3b5336dc0f8722db",
     "pubDate": "2026-10-06T17:13:00+02:00",
     "starts_at": "2026-10-06T17:13:00+02:00",
-    "ends_at": "2026-10-06T23:55:00+02:00",
+    "ends_at": "2026-10-06T18:28:00+02:00",
     "_identity": "wl|störung|L=40|D=2026-10-06|TK=40 verkehrsunfall",
     "_wl_ids": [
       "I20261006-0029"
@@ -1064,53 +1082,17 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "41: Verkehrsunfall",
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "46/49/52: Gleisbauarbeiten",
+    "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b8938e94c70221081d94c1f9627e29d1273108203a2ba78ea9d9eaa80416cb92",
-    "pubDate": "2026-10-06T17:13:00+02:00",
-    "starts_at": "2026-10-06T17:13:00+02:00",
-    "ends_at": "2026-10-06T23:55:00+02:00",
-    "_identity": "wl|störung|L=41|D=2026-10-06|TK=41 verkehrsunfall",
+    "guid": "9e98111115d4b66f72ae6549bfe4ea7fb6f5a28c0bdbf6c6fa58cdb95cad6ca7",
+    "pubDate": "2026-09-18T04:30:00+02:00",
+    "starts_at": "2026-09-18T04:30:00+02:00",
+    "ends_at": "2026-10-31T01:00:00+01:00",
+    "_identity": "wl|störung|L=46,49,52|D=2026-09-18|TK=46 49 52 gleisbauarbeiten",
     "_wl_ids": [
-      "I20261006-0029"
+      "I20260917-0012"
     ]
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "46: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e1715d10748fce73b172c45e54dd3e25af3065fc6c95c6e107df041384e060fc",
-    "pubDate": "2026-10-06T16:43:33+02:00",
-    "starts_at": "2026-10-06T16:43:33+02:00",
-    "ends_at": "2026-10-06T17:42:00+02:00",
-    "_identity": "wl|störung|L=46|D=2026-10-06|TK=rettungseinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Betrieb ab Hütteldorfer Straße mit Linie 46",
-    "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "123f3ec41d37c82b1cb680b6e9f1c83a2bac197e145422c4289e2bcd81173f3d",
-    "pubDate": "2026-10-06T00:00:25+02:00",
-    "starts_at": "2026-10-06T00:00:25+02:00",
-    "ends_at": "2026-10-06T23:59:59+02:00",
-    "_identity": "wl|störung|L=49|D=2026-10-06|TK=betrieb ab hütteldorfer strasse mit linie 46"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Betrieb ab Urban-Loritz-Platz mit Linie 52",
-    "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b30bec21ad9ff445d41e824ead3b5402c2dd1cdd63d6210037adf1f7e4d8b5f4",
-    "pubDate": "2026-10-06T00:00:25+02:00",
-    "starts_at": "2026-10-06T00:00:25+02:00",
-    "ends_at": "2026-10-06T23:59:59+02:00",
-    "_identity": "wl|störung|L=49|D=2026-10-06|TK=betrieb ab urban loritz platz mit linie 52"
   },
   {
     "source": "Wiener Linien",
@@ -1143,7 +1125,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "5: Verkehrsunfall",
-    "description": "Linie 5: Fahrtbehinderung in Richtung Praterstern S U. Voraussichtliche Dauer: 17:50 Uhr. Grund: Verkehrsunfall im Bereich Nordbahnstraße 34.",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "eb95adf873b18dcc90582141fd8b881d6f58540f5e3144fe72be528eb86b24d6",
     "pubDate": "2026-10-06T17:27:00+02:00",

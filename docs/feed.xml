@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 06 Oct 2026 17:48:40 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 18:03:04 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[13A/14A: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">443234525d35ddc17471249c2e5f5b91be5892acfc39239a8ce1bd0dec620bee</guid>
+      <pubDate>Tue, 06 Oct 2026 17:53:10 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 18:03:04 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 17:53:10 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 18:55:00 +0200</ext:ends_at>
+      <description>13A: Umleitung über Gumpendorfer Straße, Linke Wienzeile; Betrieb ab Pilgramgasse; 14A: Umleitung über Gumpendorfer Str., Linke Wienzeile. [Seit 17:53]</description>
+      <content:encoded><![CDATA[13A: Umleitung über Gumpendorfer Straße, Linke Wienzeile; Betrieb ab Pilgramgasse; 14A: Umleitung über Gumpendorfer Str., Linke Wienzeile.<br/>[Seit 17:53]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[5: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,28 +28,17 @@
       <ext:first_seen>Tue, 06 Oct 2026 17:27:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 06 Oct 2026 17:27:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Praterstern S U. Voraussichtliche Dauer: 17:50 Uhr. Grund: Verkehrsunfall im Bereich Nordbahnstraße 34. [Seit 17:27]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Praterstern S U. Voraussichtliche Dauer: 17:50 Uhr. Grund: Verkehrsunfall im Bereich Nordbahnstraße 34.<br/>[Seit 17:27]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:27]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:27]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[13A/14A: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d</guid>
-      <pubDate>Tue, 06 Oct 2026 17:22:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 17:22:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 17:22:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:22]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:22]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40/41: Verkehrsunfall]]></title>
+      <title><![CDATA[40: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">b8938e94c70221081d94c1f9627e29d1273108203a2ba78ea9d9eaa80416cb92</guid>
       <pubDate>Tue, 06 Oct 2026 17:13:00 +0200</pubDate>
       <ext:first_seen>Tue, 06 Oct 2026 17:13:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 06 Oct 2026 17:13:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Tue, 06 Oct 2026 18:28:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:13]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:13]]]></content:encoded>
     </item>
@@ -54,18 +54,7 @@
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 16:44]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[46: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e1715d10748fce73b172c45e54dd3e25af3065fc6c95c6e107df041384e060fc</guid>
-      <pubDate>Tue, 06 Oct 2026 16:43:33 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 16:43:33 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 16:43:33 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 17:42:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung. [Seit 16:43]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 16:43]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A/7A: Verkehrsüberlastung]]></title>
+      <title><![CDATA[15A/63A/7A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">89f4d5b271521b2cdd500c2b0d9188c9972cfddd3ecf964d7c99737b00d5485f</guid>
       <pubDate>Tue, 06 Oct 2026 16:27:00 +0200</pubDate>
@@ -76,15 +65,15 @@
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 16:27]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[32A: Fremder Verkehrsunfall]]></title>
+      <title><![CDATA[12A: Feuerwehreinsatz, Gleisbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2d45b6da852b996e0cb7d0a979aae9c19692fc48ec76a7326b0f07b2290320fd</guid>
-      <pubDate>Tue, 06 Oct 2026 15:49:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 15:49:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 15:49:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 15:49]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 15:49]]]></content:encoded>
+      <guid isPermaLink="false">2513938b72db793fec75e59976c4da41d4fac33f1318eb4edd60511ffdcfb5f0</guid>
+      <pubDate>Tue, 06 Oct 2026 17:30:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 17:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 17:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21. [Heute]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S80: ÖBB-Ersatzbus]]></title>
@@ -98,17 +87,6 @@
       <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Heute]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[49: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">123f3ec41d37c82b1cb680b6e9f1c83a2bac197e145422c4289e2bcd81173f3d</guid>
-      <pubDate>Tue, 06 Oct 2026 00:00:25 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 00:00:25 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 00:00:25 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Betrieb ab Hütteldorfer Straße mit Linie 46, Urban-Loritz-Platz mit Linie 52. [Heute]</description>
-      <content:encoded><![CDATA[Betrieb ab Hütteldorfer Straße mit Linie 46, Urban-Loritz-Platz mit Linie 52.<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[15A/7A/N62: Eibesbrunnergasse beide Fahrtrichtungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">bd6cbe1a4ea6d909912fce8527e38411ee42a952a91a70beecf363c26cd3e728</guid>
@@ -118,6 +96,28 @@
       <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 … [Bis 06.11.]</description>
       <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 …<br/>[Bis 06.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
+      <pubDate>Mon, 05 Oct 2026 15:40:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 15:40:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 … [Ab Mi 07.10. bis 28.10.]</description>
+      <content:encoded><![CDATA[Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 …<br/>[Ab Mi 07.10. bis 28.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
+      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
+      <content:encoded><![CDATA[Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
