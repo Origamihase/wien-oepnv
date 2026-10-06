@@ -5,6 +5,19 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Feed: „Voraussichtlich bis 14:10 Uhr“ statt „Voraussichtliche Dauer:
+  14:10 Uhr“ (2026-10-06)**: WLs Störungsvorlage nennt das erwartete Ende
+  unter einem Dauer-Label; auf dem TV las sich die Uhrzeit wie eine Dauer.
+  Alle 942 Texte mit diesem Label im WL-Cache seit Juli nennen ein Ende
+  (Uhrzeit, Betriebsschluss, Tag, „Ende August“), außer „Nicht absehbar“,
+  das sein Label behält, ebenso eine echte Dauer („2 Stunden“).
+  WLs Tippfehler in dieser Uhrzeit („15;40 Uhr“, „12:15 Uht“) werden
+  behoben. Der kürzere Satz lässt in 62 von 4.663 nachgerenderten Texten den
+  Grund wieder ganz stehen. EN: „Expected until 14:10.“ ohne Modell, wie
+  vorher „Expected duration: 14:10.“; dazu Wochentage, „circa“,
+  „Anfang/Mitte <Monat>“ und „Betriebsschluß“ im EN-Record, und „Dauer: bis
+  19. September“ wird nicht mehr „Duration:-19 September“. Keine neue
+  Übersetzungs-Epoche: Nur die geänderten Texte werden neu übersetzt.
 * **EN-Feed: kein deutscher Rückfall mehr, wenn das Modell Platzhalter
   verstümmelt (2026-10-06)**: Das Übersetzungsmodell sieht die Platzhalter
   jetzt in einer Kurzform (`XENT3X`) statt mit der Zufalls-Nonce des Laufs
