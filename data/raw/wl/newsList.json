@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_770, ftazW_1351709, ftazW_510, ftazW_511, ftazW_1018067, ftazW_508, ftazW_1351713, ftazW_509, ftazW_1018068, ftazW_1351712"
+    "trafficInfoNameList": "ftazW_510, ftazW_511, ftazW_1018067, ftazW_508, ftazW_1351713, ftazW_509, ftazW_1018068, ftazW_1351712"
    }
   ],
   "poiCategoryGroups": [
@@ -2643,39 +2643,6 @@
    },
    {
     "attributes": {
-     "ausBis": "07.10.2026 05:15",
-     "ausVon": "07.10.2026 01:15",
-     "location": "beide Fahrtrichtungen - Ausgang Laaer Berg Straße",
-     "rbls": [
-      4134,
-      4133
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Oberlaa",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "beide Fahrtrichtungen - Ausgang Laaer Berg Straße",
-    "name": "ftazW_1351709",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4134,
-     4133
-    ],
-    "time": {
-     "end": "2026-10-07T05:15:00.000+0200",
-     "start": "2026-10-07T01:15:00.000+0200"
-    },
-    "title": "Oberlaa"
-   },
-   {
-    "attributes": {
      "ausBis": "09.10.2026 05:15",
      "ausVon": "09.10.2026 01:15",
      "location": "beide Fahrtrichtungen - Ausgang Ada Christengasse bzw. Bahnlände",
@@ -2871,37 +2838,6 @@
      "start": "2026-10-08T01:15:00.000+0200"
     },
     "title": "Dresdner Straße"
-   },
-   {
-    "attributes": {
-     "ausBis": "07.10.2026 05:15",
-     "ausVon": "07.10.2026 01:15",
-     "location": "U1 Bahnsteig Richtung Oberlaa - Ausgang Radingerstraße",
-     "rbls": [
-      4110
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Vorgartenstraße",
-     "status": "geplante Wartung",
-     "towards": "U1 Oberlaa"
-    },
-    "description": "U1 Bahnsteig Richtung Oberlaa - Ausgang Radingerstraße",
-    "name": "ftazW_770",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4110
-    ],
-    "time": {
-     "end": "2026-10-07T05:15:00.000+0200",
-     "start": "2026-10-07T01:15:00.000+0200"
-    },
-    "title": "Vorgartenstraße"
    }
   ]
  },
