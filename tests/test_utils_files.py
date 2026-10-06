@@ -124,3 +124,27 @@ def test_atomic_write_closes_raw_fd_when_file_open_fails(
     # No temp file and no target should be left behind.
     assert not any(p.name.endswith(".tmp") for p in tmp_path.iterdir())
     assert not target.exists()
+
+
+def test_atomic_write_cleans_up_on_keyboard_interrupt(tmp_path: Path) -> None:
+    """A KeyboardInterrupt in the body must close and remove the temp file.
+
+    ``KeyboardInterrupt`` is a ``BaseException``, not an ``Exception``; the
+    cleanup path has to catch it too, or the descriptor and the half-written
+    ``*.tmp`` file would leak.
+    """
+    target = tmp_path / "interrupted.txt"
+    handles: list[Any] = []
+
+    def write_then_interrupt() -> None:
+        with atomic_write(target) as f:
+            handles.append(f)
+            f.write("partial")
+            raise KeyboardInterrupt
+
+    with pytest.raises(KeyboardInterrupt):
+        write_then_interrupt()
+
+    assert handles and handles[0].closed
+    assert not target.exists()
+    assert list(tmp_path.iterdir()) == []
