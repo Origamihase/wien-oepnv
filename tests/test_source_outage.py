@@ -263,7 +263,7 @@ def _serve_layers(
 
     written = [] if written is None else written
     monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
-    monkeypatch.setattr(update_baustellen_cache, "write_cache", lambda p, items: written.append(items))
+    monkeypatch.setattr(update_baustellen_cache, "write_cache", lambda p, items, **_kw: written.append(items))
     monkeypatch.setattr(update_baustellen_cache, "_log_endpoint_diagnostic", lambda *a, **k: None)
     monkeypatch.setattr(update_baustellen_cache, "_cache_exists", lambda: True)
     return written

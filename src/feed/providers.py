@@ -120,7 +120,16 @@ def register_default_providers() -> None:
     register_provider("OEBB_ENABLE", read_cache_oebb, cache_key="oebb")
     # VOR is intentionally absent — see DEFAULT_PROVIDERS in build_feed.py.
     # VOR API is Stammstrecke-only since 2026-05-11.
-    register_provider("BAUSTELLEN_ENABLE", read_cache_baustellen, cache_key="baustellen")
+    # The Baustellen cache holds only sites with an effect on public
+    # transport (rule of 2026-10-06), and on many days there is none. A
+    # failed fetch shows in the updater's exit code and the health check; a
+    # missing or broken cache file still warns through its cache alert.
+    register_provider(
+        "BAUSTELLEN_ENABLE",
+        read_cache_baustellen,
+        cache_key="baustellen",
+        empty_is_normal=True,
+    )
     # The Stammstrecke provider reports S-Bahn trunk-line incidents. Most
     # builds find none, and that is the line running normally — not a
     # provider that failed to deliver.

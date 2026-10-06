@@ -5,6 +5,39 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Feed: Stadt-Wien-Baustellen nur mit Folgen für Öffis, Beginn am
+  richtigen Tag (2026-10-06)**: Prüfung der Baustellen von der Quelle bis
+  zum Feed (Bericht `reports/baustellen-pruefung-2026-10-06.md` im
+  Projektordner). (1) Eine Baustelle kommt nur noch in den Feed, wenn ihr
+  Text eine Folge für Öffis nennt (Haltestelle verlegt, Linie umgeleitet,
+  Straßenbahnbetrieb eingestellt, Schienenersatzverkehr;
+  Betreiberentscheidung „Nur mit Öffi-Folgen“). Bisher reichten die Nähe
+  zu einem Bahnhof („Rennweg 33A–37“, eine nächtliche Fahrstreifensperre,
+  seit 01.10. auf Platz 2 bis 10), die U-Bahn als Bauherr („U2/U5:
+  Volksgartenstraße 2“, las sich wie eine U-Bahn-Störung), Sätze, die
+  Öffis als unberührt nennen („in der betriebslosen Zeit der
+  Straßenbahn“), der Firmenname „Wiener Linien“, die „öffentliche
+  Verkehrsfläche“ und der Verweis an die Wiener Linien in der Einzahl
+  („… ist der Auskunft …“). Seit 23.05. gingen so rund 4.800 der 10.027
+  Baustellen-Plätze an Baustellen ohne Folge für Öffis. Der U-Bahn-Präfix
+  im Titel entfällt. (2) Der Beginn stand einen Tag zu früh: Die Stadt
+  liefert das UTC-Datum eines Wiener Zeitpunkts, der Beginn
+  (Mitternacht) fällt so auf den Vortag (13 von 13 Baustellentexten nennen
+  den Folgetag). Das Cache-Skript nimmt jetzt den Folgetag (`_first_day`);
+  die GUID bleibt. (3) „ONr.“, „O.Nr.“ und „mind.“ beenden keinen Satz
+  mehr: Die neue Adresse einer verlegten Haltestelle war abgeschnitten
+  („… nach Burggasse ONr.“, im Juli und August 361 Feed-Stände). (4) Titel
+  „Altmannsdorfer Straße ONr.76 bis ONr.76A“ steht als „… 76–76A“. (5)
+  EN: Straßennamen auf „-gürtel“, „-lände“, „-damm“ sind vor dem Modell
+  geschützt („Neubaugürtel“ wurde „New belt“). (6) Ein Live-Abruf darf den
+  Cache jetzt verkleinern, bis auf null (`write_cache(..., allow_shrink=True)`):
+  Mit der strengeren Auswahl fällt er von 15 auf 2 Einträge, und die
+  20-%-Sperre hätte jedes Schreiben abgelehnt, Rennweg wäre bis 15.11.
+  stehen geblieben. Bisher endete schon ein leeres Ergebnis mit Exit 1
+  (Health-Check rot) und alten Einträgen im Cache. Ein leerer
+  Baustellen-Cache ist im Feed-Bericht kein Warnfall mehr (`ok-empty`),
+  außer die Cache-Datei fehlt oder ist kaputt. Das Demo-Beispiel behält
+  die Sperre. Doku in `docs/development.md` („Stadt Wien – Baustellen“).
 * **Feed: Meldungen behalten GUID und Beginn, solange sie laufen
   (2026-10-06)**: Ein zusammengelegter WL-Eintrag trug GUID und `pubDate`
   der Meldung, von der er beides hatte. Liefen deren Kurzmeldungen vor der

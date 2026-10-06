@@ -124,6 +124,19 @@ def test_cache_alerts_still_reach_the_detail(
     assert report.warnings == ["Provider oebb: Cache älter als 6h"]
 
 
+def test_a_cache_alert_overrides_an_expected_empty(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """No Baustelle with transit effect is normal; a missing cache file is not."""
+    alert = "Cache-Datei fehlt (cache/baustellen/events.json)"
+    records, report = _run(
+        caplog, "baustellen", empty_is_normal=True, alerts={"baustellen": [alert]}
+    )
+    assert [r.levelno for r in records] == [logging.WARNING]
+    assert report.providers["baustellen"].status == "empty"
+    assert report.warnings == [f"Provider baustellen: {alert}"]
+
+
 def test_repeated_cache_alerts_are_not_restated(
     caplog: pytest.LogCaptureFixture,
 ) -> None:
@@ -161,7 +174,7 @@ def test_a_provider_without_the_flag_is_treated_as_suspect(
 # ---------------- the live wiring ----------------
 
 
-def test_only_stammstrecke_declares_empty_as_normal() -> None:
+def test_stammstrecke_and_baustellen_declare_empty_as_normal() -> None:
     """Pins the live contract, not a hand-built stand-in.
 
     The lesson from the ÖBB title fix (audit 2026-09-12, Befund 1): a change
@@ -178,7 +191,7 @@ def test_only_stammstrecke_declares_empty_as_normal() -> None:
     assert declared == {
         "wl": False,
         "oebb": False,
-        "baustellen": False,
+        "baustellen": True,
         "stammstrecke": True,
     }
 

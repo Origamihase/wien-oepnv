@@ -105,7 +105,7 @@ def test_a_sentence_that_names_a_line_still_counts_next_to_the_referral() -> Non
     [
         "Die Buslinie 7A wird umgeleitet.",
         "Es wird lediglich die bestehende Bushaltestelle bei der Rabengasse verlegt.",
-        "Für den Neubau der U-Bahnstation der U2 Pilgramgasse wird die Rechte Wienzeile gesperrt.",
+        "Im Arbeitsbereich wird der Straßenbahnbetrieb eingestellt.",
         "betrifft die öffentlichen Verkehrsmittel",
     ],
 )
@@ -137,11 +137,12 @@ def test_referral_only_site_far_from_rail_is_not_relevant() -> None:
     assert is_transit_relevant(_site(_ZU_DEN)) is False
 
 
-def test_referral_only_site_at_a_bahnhof_stays_relevant_on_geography() -> None:
-    # Wien Floridsdorf: the geographic ground is independent of the text.
+def test_referral_only_site_at_a_bahnhof_is_not_relevant() -> None:
+    # Wien Floridsdorf: nearness to a station no longer counts on its own
+    # (operator decision 2026-10-06, "Nur mit Öffi-Folgen").
     site = _site(_ZU_DEN, title="Franz-Jonas-Platz")
     site["location"] = {"coordinates": {"lat": 48.2571, "lon": 16.4003}}
-    assert is_transit_relevant(site) is True
+    assert is_transit_relevant(site) is False
 
 
 # ---------------------------------------------------------------------------
@@ -195,7 +196,7 @@ def test_the_ingestion_gate_drops_a_referral_only_site(monkeypatch: pytest.Monke
     def fake_fetch_layers(data_url: str, timeout: int) -> list[dict[str, Any]]:
         return [dict(site) for site in sites]
 
-    def capture_cache(provider: str, items: list[dict[str, Any]]) -> None:
+    def capture_cache(provider: str, items: list[dict[str, Any]], **_kw: Any) -> None:
         written.append((provider, items))
 
     monkeypatch.setattr(updater, "_fetch_layers", fake_fetch_layers)

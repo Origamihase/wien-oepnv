@@ -222,7 +222,9 @@ def test_collect_events_from_sample_payload() -> None:
     first = events[0]
     assert first["category"] == "Baustelle"
     assert first["context"]["district"] == "21"
-    assert first["starts_at"].startswith("2025-10-01")
+    # OBJEKT_BEGINN "2025-10-01Z" is the UTC date of Vienna midnight on 2025-10-02
+    # (see ``_UTC_DATE_RE`` in the script).
+    assert first["starts_at"].startswith("2025-10-02")
     assert "location" in first
     assert first["location"]["coordinates"] == {"lat": 48.2562499, "lon": 16.4007}
 
@@ -237,7 +239,7 @@ def test_main_uses_fallback_when_remote_fails(
     def fake_fetch_remote(url: str, timeout: int) -> None:
         return None
 
-    def capture_cache(provider: str, items: list[dict[str, str]]) -> None:
+    def capture_cache(provider: str, items: list[dict[str, str]], **_kw: Any) -> None:
         calls.append((provider, items))
 
     monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
@@ -256,7 +258,8 @@ def test_main_uses_fallback_when_remote_fails(
     # WFS fetch hide for weeks.
     assert exit_code == 2
     assert calls and calls[0][0] == "baustellen"
-    assert len(calls[0][1]) == 2
+    # Of the two sample sites only Thaliastraße names an effect on transit.
+    assert len(calls[0][1]) == 1
     assert any(
         "FALLBACK" in record.getMessage()
         for record in caplog.records
@@ -275,7 +278,7 @@ def test_main_keeps_an_existing_cache_when_remote_fails(
     """
     calls: list[Any] = []
     monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", lambda url, timeout: None)
-    monkeypatch.setattr(update_baustellen_cache, "write_cache", lambda *a: calls.append(a))
+    monkeypatch.setattr(update_baustellen_cache, "write_cache", lambda *a, **_kw: calls.append(a))
     monkeypatch.setattr(update_baustellen_cache, "_log_endpoint_diagnostic", lambda *a, **k: None)
     monkeypatch.setattr(update_baustellen_cache, "_cache_exists", lambda: True)
     monkeypatch.setenv("BAUSTELLEN_FALLBACK_PATH", str(SAMPLE_PATH))
@@ -350,7 +353,7 @@ def test_main_negotiates_output_format(monkeypatch: pytest.MonkeyPatch) -> None:
     seen: list[str] = []
     payload = {
         "type": "FeatureCollection",
-        "features": [_bau_feature(name="U6 Bauarbeiten Großfeldsiedlung")],
+        "features": [_bau_feature(name="Haltestelle Großfeldsiedlung verlegt")],
     }
 
     def fake_fetch_remote(url: str, timeout: int) -> dict[str, Any] | None:
@@ -360,7 +363,7 @@ def test_main_negotiates_output_format(monkeypatch: pytest.MonkeyPatch) -> None:
     cached: list[tuple[str, list[dict[str, Any]]]] = []
     monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
     monkeypatch.setattr(
-        update_baustellen_cache, "write_cache", lambda p, items: cached.append((p, items))
+        update_baustellen_cache, "write_cache", lambda p, items, **_kw: cached.append((p, items))
     )
 
     exit_code = update_baustellen_cache.main()
@@ -840,44 +843,97 @@ def test_load_fallback_handles_json_depth_bomb(
     )
 
 
-def test_main_skips_write_on_empty_relevant_payload(
-    monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+def test_main_writes_an_empty_selection_from_a_live_answer(
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """A live fetch yielding 0 ÖPNV-relevant entries must NOT trigger the
-    ``DataDegradationError`` path in ``write_cache``.
+    """A healthy live answer with no site that affects public transport.
 
-    Pre-fix the empty payload reached ``write_cache("baustellen", [])`` which
-    raised ``DataDegradationError`` when the prior cache had items. The error
-    was never caught by ``main()``, so the cron step crashed with a non-zero
-    traceback rather than the clean "kept stale cache" signal the operator
-    can read.
+    Since the transit rule of 2026-10-06 ("Nur mit Öffi-Folgen") this is a
+    normal day, not a failure. Before, the empty selection was not written and
+    the updater exited 1: the cache kept sites that no longer qualified and
+    the health check went red every tick. The live answer itself is judged
+    per layer (``_usable_layer``, last good answer), so the write may empty
+    the cache.
     """
-    import logging
-
-    calls: list[tuple[str, list[dict[str, Any]]]] = []
+    calls: list[tuple[str, list[dict[str, Any]], dict[str, Any]]] = []
 
     def fake_fetch_remote(url: str, timeout: int) -> dict[str, Any]:
-        # Live fetch returns a well-formed but empty FeatureCollection
-        # (e.g. transient upstream that legitimately had no construction
-        # sites, or every site filtered out as non-ÖPNV).
         return {"type": "FeatureCollection", "features": []}
 
-    def capture_cache(provider: str, items: list[dict[str, Any]]) -> None:
-        calls.append((provider, items))
+    def capture_cache(provider: str, items: list[dict[str, Any]], **kw: Any) -> None:
+        calls.append((provider, items, kw))
 
     monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
     monkeypatch.setattr(update_baustellen_cache, "write_cache", capture_cache)
-    caplog.set_level(logging.WARNING, logger="update_baustellen_cache")
 
-    exit_code = update_baustellen_cache.main()
+    assert update_baustellen_cache.main() == 0
+    assert calls == [("baustellen", [], {"allow_shrink": True})]
 
-    # write_cache must NOT have been called — the pinned snapshot stays intact.
-    assert calls == []
-    # Non-zero exit so the cron wrapper surfaces the kept-stale state.
-    assert exit_code != 0
-    # The operator-facing warning explains what happened.
-    assert any(
-        "0 ÖPNV-relevante" in record.getMessage()
-        for record in caplog.records
-        if record.name == "update_baustellen_cache"
+
+def _real_cache_file(monkeypatch: pytest.MonkeyPatch, target: Path) -> None:
+    """Point the updater's own ``write_cache`` (imported as ``utils.cache``) at *target*."""
+    module = sys.modules[update_baustellen_cache.write_cache.__module__]
+    monkeypatch.setattr(module, "_cache_file", lambda provider: target)
+
+
+def _site(name: str, text: str) -> dict[str, Any]:
+    return {
+        "type": "Feature",
+        "geometry": {"type": "Point", "coordinates": [16.37, 48.2]},
+        "properties": {
+            "BEZEICHNUNG": name,
+            "OBJEKT_BEGINN": "2026-09-30Z",
+            "OBJEKT_ENDE": "2026-11-15Z",
+            "PRESSETEXT": text,
+        },
+    }
+
+
+def test_main_lets_a_live_answer_shrink_a_populated_cache(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """15 cached sites, two of them with a transit effect: the real step of 2026-10-06.
+
+    The 20 % guard of ``write_cache`` (2 of 15 = 13 %) would have refused the
+    write on every tick, and Rennweg (one lane closed at night) would have
+    stayed in the feed until its end on 15.11.
+    """
+    target = tmp_path / "cache" / "baustellen" / "events.json"
+    target.parent.mkdir(parents=True)
+    target.write_text(json.dumps([{"guid": f"old-{i}"} for i in range(15)]), encoding="utf-8")
+    _real_cache_file(monkeypatch, target)
+
+    features = [
+        _site("Rennweg von 33A bis 37", "Der linke Fahrstreifen wird gesperrt."),
+        _site("Hauptstraße", "Die Buslinie 7A wird über die Rothenhofgasse umgeleitet."),
+        _site("Gasse 1", "Die Haltestelle der Linie 13A wird verlegt."),
+    ] + [_site(f"Gasse {i}", "Die Fahrbahn wird eingeengt.") for i in range(2, 8)]
+
+    def fake_fetch_layers(data_url: str, timeout: int) -> list[dict[str, Any]]:
+        return update_baustellen_cache._collect_events(
+            {"type": "FeatureCollection", "features": features}
+        )
+
+    monkeypatch.setattr(update_baustellen_cache, "_fetch_layers", fake_fetch_layers)
+
+    assert update_baustellen_cache.main() == 0
+    written = json.loads(target.read_text(encoding="utf-8"))
+    assert sorted(item["title"] for item in written) == ["Gasse 1", "Hauptstraße"]
+
+
+def test_demo_sample_still_meets_the_guard(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """The bundled demo sample never shrinks a populated cache."""
+    target = tmp_path / "cache" / "baustellen" / "events.json"
+    target.parent.mkdir(parents=True)
+    target.write_text(json.dumps([{"guid": f"old-{i}"} for i in range(30)]), encoding="utf-8")
+    _real_cache_file(monkeypatch, target)
+    monkeypatch.setattr(update_baustellen_cache, "_fetch_layers", lambda *_a: None)
+    monkeypatch.setattr(update_baustellen_cache, "_cache_exists", lambda: False)
+    monkeypatch.setattr(
+        update_baustellen_cache, "_log_endpoint_diagnostic", lambda *a, **k: None
     )
+
+    assert update_baustellen_cache.main() == 1
+    assert len(json.loads(target.read_text(encoding="utf-8"))) == 30

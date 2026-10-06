@@ -11,9 +11,9 @@ import os
 import re
 import sys
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any, cast
+from typing import Any, Final, cast
 from collections.abc import Iterable, Sequence
 from urllib.parse import quote, urlparse
 
@@ -644,6 +644,45 @@ def _parse_range(properties: dict[str, Any]) -> tuple[datetime | None, datetime 
     return start, end
 
 
+# Der Beginn steht im WFS einen Kalendertag zu früh. Das ``Z`` eines
+# Datums wie ``2026-06-22Z`` ist eine echte Zeitzonenangabe: Die Stadt hält
+# Beginn und Ende als Wiener Zeitpunkte und gibt davon das UTC-Datum aus.
+# Der Beginn (Mitternacht in Wien) fällt dabei auf den Vortag, das Ende
+# (Ende des letzten Tages) bleibt auf seinem Datum. Gemessen am 2026-10-06
+# an allen 69 Baustellen der Cache-Historie seit Mai, deren Text selbst ein
+# Datum nennt: 13 von 13 nennen als ersten Tag der ersten Bauphase den Tag
+# NACH ``OBJEKT_BEGINN`` ("Bauphase 1 von 2 (23.06.2026 bis 28.08.2026)" bei
+# ``2026-06-22Z``, "seit 28. März 2022" bei ``2022-03-27Z``), 8 von 9 als
+# letzten Tag genau ``OBJEKT_ENDE`` ("bis 13.10.2026" bei ``2026-10-13Z``).
+# Der Feed zeigte den Beginn deshalb einen Tag zu früh, und eine
+# angekündigte Baustelle rückte einen Tag zu früh nach vorne.
+_UTC_DATE_RE: Final = re.compile(r"\d{4}-\d{2}-\d{2}Z")
+
+
+def _start_is_utc_date(properties: dict[str, Any]) -> bool:
+    """True when the start :func:`_parse_range` takes is an UTC date (``…Z``)."""
+    for key in START_KEYS:
+        value = properties.get(key)
+        if _parse_datetime(value) is not None:
+            return isinstance(value, str) and bool(_UTC_DATE_RE.fullmatch(value.strip()))
+    return False
+
+
+def _first_day(start: datetime | None, end: datetime | None, properties: dict[str, Any]) -> datetime | None:
+    """The first day of the works, Vienna midnight (see :data:`_UTC_DATE_RE`).
+
+    Never later than the end: a site that would then start after its last
+    day keeps the date as delivered (not seen in the data so far).
+    """
+    if start is None or not _start_is_utc_date(properties):
+        return start
+    following = start.date() + timedelta(days=1)
+    first = datetime(following.year, following.month, following.day, tzinfo=VIENNA_TZ)
+    if end is not None and first.date() > end.date():
+        return start
+    return first
+
+
 def _normalize_datetime(value: datetime | None) -> datetime | None:
     if value is None:
         return None
@@ -844,6 +883,11 @@ def _feature_to_event(feature: dict[str, Any]) -> ConstructionEvent | None:
     start, end = _parse_range(properties)
     start = _normalize_datetime(start)
     end = _normalize_datetime(end)
+    # Die GUID bleibt am gelieferten Datum: Sie trägt ``first_seen`` und die
+    # Übersetzung, und die Korrektur des Beginns soll keine Baustelle neu
+    # erscheinen lassen.
+    guid_start = start
+    start = _first_day(start, end, properties)
     description = _format_description(properties, start, end)
     location = _build_location(properties, geometry)
     context = _build_context(properties)
@@ -859,7 +903,12 @@ def _feature_to_event(feature: dict[str, Any]) -> ConstructionEvent | None:
     # ROHTITEL, nicht der reparierte: Die Kosmetik darf die Identität der
     # Baustelle nicht verschieben (und damit first_seen zurücksetzen).
     identifier = properties.get("OGD_ID") or raw_title
-    guid = make_guid("baustellen", str(identifier), start.isoformat() if start else "", end.isoformat() if end else "")
+    guid = make_guid(
+        "baustellen",
+        str(identifier),
+        guid_start.isoformat() if guid_start else "",
+        end.isoformat() if end else "",
+    )
     pub_date = start or end or datetime.now(tz=VIENNA_TZ)
     return ConstructionEvent(
         guid=guid,
@@ -1116,10 +1165,11 @@ def main() -> int:
             )
             return 1
         events = _collect_events(payload)
-    # Keep only ÖPNV-relevant sites: at/near a rail Bahnhof OR a text that
-    # mentions public transport (stop / line / bus / tram / metro). The
-    # upstream feed is "verkehrswirksam" but still includes pure car-traffic
-    # works, which would bury the ÖPNV signal the feed exists to carry.
+    # Keep only sites whose text names an effect on public transport (a stop
+    # moved or closed, a line diverted or shortened, replacement buses). The
+    # upstream feed is "verkehrswirksam" but mostly carries car-traffic works,
+    # which would take the few feed places from real disruptions. Rule and
+    # evidence: ``src/providers/baustellen.py``.
     relevant = []
     for event in events:
         if is_transit_relevant(event):
@@ -1137,27 +1187,25 @@ def main() -> int:
             skipped,
             len(events),
         )
-    # Empty payload would trigger ``DataDegradationError`` in
-    # ``write_cache`` when a populated cache already exists, and the
-    # uncaught error would crash the cron step. Skip the write
-    # instead — the pinned previous cache stays valid and the
-    # non-zero exit surfaces the issue to the cron wrapper.
-    if not relevant:
+    # A live answer was judged per layer above (``_usable_layer``, minimum
+    # record count, last good answer). What is left after the transit filter
+    # is a selection, and it can honestly be small or empty: on many days no
+    # site in Vienna moves a stop. So a live write may shrink the cache, down
+    # to nothing; the 20 % guard of ``write_cache`` would otherwise keep sites
+    # that no longer qualify (or have ended) and fail every tick. The bundled
+    # demo sample keeps the guard and the old refusal of an empty write.
+    if used_fallback and not relevant:
         LOGGER.warning(
             "Baustellen: 0 ÖPNV-relevante Einträge nach Filter – "
             "Cache wird NICHT überschrieben, gepinnter Snapshot bleibt aktiv."
         )
         return 1
     try:
-        write_cache("baustellen", relevant)
+        write_cache("baustellen", relevant, allow_shrink=not used_fallback)
     except DataDegradationError:
-        # ``write_cache`` refuses not only *empty* but also *drastically
-        # smaller* payloads (< 20 % of the existing cache). The bundled
-        # fallback sample holds only a couple of features, so when the live
-        # WFS fetch fails against a populated production cache the write would
-        # raise — and this is exactly the scenario the fallback exists for.
-        # Treat it like the empty-payload guard above: keep the pinned
-        # snapshot, surface a non-zero exit, never crash the cron step.
+        # Only reachable for the demo sample: ``write_cache`` refuses a payload
+        # below 20 % of a populated cache. Keep the pinned snapshot, surface a
+        # non-zero exit, never crash the cron step.
         LOGGER.warning(
             "Baustellen: Schreiben würde den Cache drastisch degradieren "
             "(%d Eintrag/Einträge) – gepinnter Snapshot bleibt aktiv.",
