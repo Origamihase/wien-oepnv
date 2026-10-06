@@ -14,6 +14,8 @@ from src.places.client import (
     GooglePlacesConfig,
 )
 from src.places.tiling import Tile
+from typing import cast
+import requests
 
 
 class _RecordingResponse:
@@ -82,7 +84,7 @@ def _make_client(
     )
     response = _RecordingResponse(200, {"places": []})
     session = _RecordingSession(response)
-    client = GooglePlacesClient(config, session=session)
+    client = GooglePlacesClient(config, session=cast(requests.Session, session))
     return client, session
 
 

@@ -441,7 +441,7 @@ def _download_ogd_csv(url: str, target: Path) -> bool:
         )
         return True
 
-    content = cast(bytes, response.content)
+    content = response.content
     if not content:
         log.warning("Empty response from %s; using local file if present", url)
         return False

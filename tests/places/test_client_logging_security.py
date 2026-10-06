@@ -12,6 +12,7 @@ import requests
 
 from src.places.client import GooglePlacesClient, GooglePlacesConfig
 from src.places.tiling import Tile
+from typing import cast
 
 class _MockResponse:
     def __init__(self, status_code: int, payload: dict[str, Any]) -> None:
@@ -86,7 +87,7 @@ def test_client_redacts_secrets_in_parsing_warnings(caplog: pytest.LogCaptureFix
         timeout_s=1,
         max_retries=0,
     )
-    client = GooglePlacesClient(config, session=session)
+    client = GooglePlacesClient(config, session=cast(requests.Session, session))
 
     tile = Tile(48.0, 16.0)
 
@@ -154,7 +155,7 @@ def test_client_logs_only_shape_of_rejected_place(caplog: pytest.LogCaptureFixtu
         timeout_s=1,
         max_retries=0,
     )
-    client = GooglePlacesClient(config, session=_MockSession(_MockResponse(200, payload)))
+    client = GooglePlacesClient(config, session=cast(requests.Session, _MockSession(_MockResponse(200, payload))))
     caplog.set_level(logging.WARNING, logger="places.google")
 
     list(client.iter_nearby([Tile(48.0, 16.0)]))

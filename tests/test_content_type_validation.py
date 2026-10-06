@@ -2,6 +2,7 @@ import pytest
 from unittest.mock import MagicMock
 import requests
 from src.utils.http import fetch_content_safe
+from requests.structures import CaseInsensitiveDict
 
 @pytest.fixture
 def mock_session() -> MagicMock:
@@ -14,7 +15,7 @@ def mock_response() -> requests.Response:
     response.url = "http://example.com"
     response.status_code = 200
     # Mock iter_content to return content
-    response.iter_content = MagicMock(return_value=[b"content"])
+    response.iter_content = MagicMock(return_value=[b"content"])  # type: ignore[method-assign]
 
     # Mock raw connection for verify_response_ip
     mock_connection = MagicMock()
@@ -37,7 +38,7 @@ def test_fetch_content_safe_no_validation(
     mock_response: requests.Response,
 ) -> None:
     """Test that without allowed_content_types, safe content types are accepted but text/html is blocked."""
-    mock_response.headers = {"Content-Type": "application/json"}
+    mock_response.headers = CaseInsensitiveDict({"Content-Type": "application/json"})
     mock_session.request.return_value.__enter__.return_value = mock_response
 
     content = fetch_content_safe(mock_session, "http://example.com")
@@ -48,7 +49,7 @@ def test_fetch_content_safe_blocks_html_implicitly(
     mock_response: requests.Response,
 ) -> None:
     """Test that without allowed_content_types, text/html is blocked to prevent proxy/WAF parsing issues."""
-    mock_response.headers = {"Content-Type": "text/html"}
+    mock_response.headers = CaseInsensitiveDict({"Content-Type": "text/html"})
     mock_session.request.return_value.__enter__.return_value = mock_response
 
     with pytest.raises(ValueError, match="Invalid Content-Type: received text/html"):
@@ -60,7 +61,7 @@ def test_fetch_content_safe_valid_json(
     mock_response: requests.Response,
 ) -> None:
     """Test that matching content type is accepted."""
-    mock_response.headers = {"Content-Type": "application/json"}
+    mock_response.headers = CaseInsensitiveDict({"Content-Type": "application/json"})
     mock_session.request.return_value.__enter__.return_value = mock_response
 
     content = fetch_content_safe(
@@ -75,7 +76,7 @@ def test_fetch_content_safe_invalid_type(
     mock_response: requests.Response,
 ) -> None:
     """Test that mismatching content type raises ValueError."""
-    mock_response.headers = {"Content-Type": "text/html"}
+    mock_response.headers = CaseInsensitiveDict({"Content-Type": "text/html"})
     mock_session.request.return_value.__enter__.return_value = mock_response
 
     with pytest.raises(ValueError, match="Invalid Content-Type"):
@@ -90,7 +91,7 @@ def test_fetch_content_safe_charset(
     mock_response: requests.Response,
 ) -> None:
     """Test that content type with charset is parsed correctly."""
-    mock_response.headers = {"Content-Type": "application/json; charset=utf-8"}
+    mock_response.headers = CaseInsensitiveDict({"Content-Type": "application/json; charset=utf-8"})
     mock_session.request.return_value.__enter__.return_value = mock_response
 
     content = fetch_content_safe(
@@ -105,7 +106,7 @@ def test_fetch_content_safe_missing_header(
     mock_response: requests.Response,
 ) -> None:
     """Test that missing header raises ValueError when validation is requested."""
-    mock_response.headers = {}
+    mock_response.headers = CaseInsensitiveDict()
     mock_session.request.return_value.__enter__.return_value = mock_response
 
     with pytest.raises(ValueError, match="Content-Type header missing"):
@@ -120,7 +121,7 @@ def test_fetch_content_safe_ignore_validation(
     mock_response: requests.Response,
 ) -> None:
     """Test that missing header is ignored if no validation requested."""
-    mock_response.headers = {}
+    mock_response.headers = CaseInsensitiveDict()
     mock_session.request.return_value.__enter__.return_value = mock_response
 
     content = fetch_content_safe(mock_session, "http://example.com")
