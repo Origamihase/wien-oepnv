@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261006-0018, I20260922-0032, I20261006-0025, I20260925-0011, I20260909-0007, I20261006-0024"
+    "trafficInfoNameList": "I20260917-0012, I20261006-0018, I20260922-0032, I20261006-0025, I20261006-0024-F01, I20261006-0024, I20261006-0026, I20261006-0027, I20261006-0028, I20260925-0011, I20260909-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R293-474, R318-437, R2917-0, R2923-403, R2025-671, R118-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R119-136, R130-136, R19-136, R45-136, R36-152, R5815-671, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1448-149, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R2558-125, R1150-0, R1974-466, R500-101, R2443-432, R2663-432, R1164-432, R3123-432, R3125-432, R2448-432, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R293-474, R318-437, R2917-0, R2923-403, R2025-671, R116-136, R100-136, R101-136, R102-136, R103-136, R115-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R5815-671, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1474-412, R1508-426, R1448-412, R1445-149, R1150-0, R2558-125, R1974-466, R500-101, R2443-432, R2448-432, R1385-146, R1382-146, R1381-146, R564-146, R1383-146, R1380-146, R1384-146, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,11 +259,47 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T15:49:00.000+0200",
+     "end": "2026-10-06T16:31:00.000+0200",
+     "lastUpdate": "2026-10-06T16:31:00.000+0200",
+     "resume": "2026-10-06T16:31:00.000+0200",
+     "start": "2026-10-06T15:49:00.000+0200"
+    },
+    "title": "32A: Fremder Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "32A": "ptBusCity"
+     }
+    },
+    "description": "Linie 32A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 32A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Gerasdorfer Straße / Schippergasse",
+    "name": "I20261006-0024-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "32A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "432",
+       "lineName": "32A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-06T16:31:00.000+0200",
      "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T16:10:00.000+0200",
+     "lastUpdate": "2026-10-06T16:31:00.000+0200",
+     "resume": "2026-10-06T16:31:00.000+0200",
      "start": "2026-10-06T15:49:00.000+0200"
     },
     "title": "32A: Fremder Verkehrsunfall"
@@ -308,6 +344,108 @@
      "start": "2026-10-06T16:27:00.000+0200"
     },
     "title": "7A, 15A: Verkehrsüberlastung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "7A": "ptBusCity"
+     }
+    },
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
+    "name": "I20261006-0026",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "407",
+       "lineName": "7A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-06T16:38:00.000+0200",
+     "end": "2026-10-06T16:39:00.000+0200",
+     "lastUpdate": "2026-10-06T16:39:00.000+0200",
+     "resume": "2026-10-06T16:39:00.000+0200",
+     "start": "2026-10-06T16:38:00.000+0200"
+    },
+    "title": "7A: Verkehrsüberlastung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "59A": "ptBusCity"
+     }
+    },
+    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
+    "name": "I20261006-0027",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "459",
+       "lineName": "59A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-06T16:44:00.000+0200",
+     "end": "2026-10-06T23:55:00.000+0200",
+     "lastUpdate": "2026-10-06T16:44:00.000+0200",
+     "resume": "2026-10-06T16:44:00.000+0200",
+     "start": "2026-10-06T16:44:00.000+0200"
+    },
+    "title": "59A: Verkehrsüberlastung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "2A": "ptBusCity"
+     }
+    },
+    "description": "Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "descriptionHTML": "Linie 2A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verunreinigung.",
+    "name": "I20261006-0028",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "402",
+       "lineName": "2A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-06T16:51:00.000+0200",
+     "end": "2026-10-06T23:55:00.000+0200",
+     "lastUpdate": "2026-10-06T16:51:00.000+0200",
+     "resume": "2026-10-06T16:51:00.000+0200",
+     "start": "2026-10-06T16:51:00.000+0200"
+    },
+    "title": "2A: Verunreinigung"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -433,24 +571,6 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
    },
    {
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R1164-432",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "32A"
-    ],
-    "relatedStops": [
-     1164
-    ],
-    "time": {
-     "end": "2026-10-06T16:52:00.000+0200",
-     "start": "2026-10-06T15:53:29.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R117-136",
     "owner": "WL",
@@ -521,6 +641,114 @@
      "start": "2026-10-06T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1380-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1380
+    ],
+    "time": {
+     "end": "2026-10-06T17:42:00.000+0200",
+     "start": "2026-10-06T16:43:33.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1381-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1381
+    ],
+    "time": {
+     "end": "2026-10-06T17:42:00.000+0200",
+     "start": "2026-10-06T16:43:33.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1382-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1382
+    ],
+    "time": {
+     "end": "2026-10-06T17:42:00.000+0200",
+     "start": "2026-10-06T16:43:33.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1383-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1383
+    ],
+    "time": {
+     "end": "2026-10-06T17:42:00.000+0200",
+     "start": "2026-10-06T16:43:33.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1384-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1384
+    ],
+    "time": {
+     "end": "2026-10-06T17:42:00.000+0200",
+     "start": "2026-10-06T16:43:33.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1385-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1385
+    ],
+    "time": {
+     "end": "2026-10-06T17:42:00.000+0200",
+     "start": "2026-10-06T16:43:33.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -1114,24 +1342,6 @@
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
    },
    {
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R2663-432",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "32A"
-    ],
-    "relatedStops": [
-     2663
-    ],
-    "time": {
-     "end": "2026-10-06T16:52:00.000+0200",
-     "start": "2026-10-06T15:53:29.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
     "description": "3A Netzänderung\nBetrieb ab Riemergasse",
     "name": "R2917-0",
     "owner": "WL",
@@ -1181,42 +1391,6 @@
      "start": "2026-10-06T00:00:07.000+0200"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
-   },
-   {
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R3123-432",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "32A"
-    ],
-    "relatedStops": [
-     3123
-    ],
-    "time": {
-     "end": "2026-10-06T16:54:00.000+0200",
-     "start": "2026-10-06T15:54:30.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R3125-432",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "32A"
-    ],
-    "relatedStops": [
-     3125
-    ],
-    "time": {
-     "end": "2026-10-06T16:54:00.000+0200",
-     "start": "2026-10-06T15:55:00.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
@@ -1289,6 +1463,24 @@
      "start": "2026-10-06T05:00:29.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R564-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     564
+    ],
+    "time": {
+     "end": "2026-10-06T17:42:00.000+0200",
+     "start": "2026-10-06T16:43:33.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
