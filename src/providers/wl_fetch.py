@@ -1055,6 +1055,22 @@ def _ticker_fold_target(
     return max(matches)[1]
 
 
+# WL numbers an incident ``I20261004-0019`` and the notices that follow it
+# ``I20261004-0019-F01``, ``-F02``: one per line once the incident is over
+# ("6/18: Schadhaftes Fahrzeug" became "6: …" and "18: …" on 2026-10-04).
+# The number stays while the messages, their lines and so their GUIDs change;
+# the feed follows an item from build to build by it
+# (``build_feed._carry_item_identity``). Display tickers (``R1345-143``)
+# have none.
+_INCIDENT_NAME_RE = re.compile(r"^(I\d{8}-\d{4})(?:-F\d+)?$")
+
+
+def _incident_ids(info: dict[str, Any]) -> set[str]:
+    """``{"I20261004-0019"}`` for *info* and its follow-ups, empty for a ticker."""
+    match = _INCIDENT_NAME_RE.match(str(info.get("name") or "").strip())
+    return {match.group(1)} if match else set()
+
+
 def _absorb_headline(target: dict[str, Any], src: dict[str, Any]) -> None:
     """Übernimm Haltestellen, Extras und Zeitraum von *src* nach *target*.
 
@@ -1065,6 +1081,7 @@ def _absorb_headline(target: dict[str, Any], src: dict[str, Any]) -> None:
     aufweichen, und ein bekanntes darf ein offenes nicht verengen.
     """
     target["stop_names"].update(src["stop_names"])
+    target.setdefault("wl_ids", set()).update(src.get("wl_ids") or ())
     for extra in src["extras"]:
         if extra not in target["extras"]:
             target["extras"].append(extra)
@@ -1385,6 +1402,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                     "starts_at": real_start, # Effective start date (for calendar)
                     "ends_at": end,
                     "_identity": identity,
+                    "wl_ids": _incident_ids(ti),
                 }
             )
 
@@ -1500,6 +1518,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                 "starts_at": ev["starts_at"],
                 "ends_at": ev["ends_at"],
                 "_identity": ev["_identity"],  # stabil weiterreichen
+                "wl_ids": set(ev.get("wl_ids") or ()),
             }
         else:
             current_title = b["title"]
@@ -1530,6 +1549,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
 
             b["lines_pairs"] = _merge_line_pairs(b["lines_pairs"], ev["lines_pairs"])
             b["stop_names"].update(ev["stop_names"])
+            b["wl_ids"].update(ev.get("wl_ids") or ())
 
             # Use the earliest pubDate for the bucket (to show when first detected/announced)
             if ev["pubDate"] and (
@@ -1630,6 +1650,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                 "starts_at": b["starts_at"],
                 "ends_at": b["ends_at"],
                 "_identity": b["_identity"],  # stabil für first_seen
+                **({"_wl_ids": sorted(b["wl_ids"])} if b.get("wl_ids") else {}),
                 "_lines_set": lines_tok,  # für Sammel-vs.-Einzel
                 # Für E) und F): was die Meldung über ihre Linien hinaus sagt,
                 # und alles, was sie sagt.

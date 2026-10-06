@@ -35,7 +35,7 @@ from dateutil import parser
 
 from .feed_types import FeedItem
 from .feed import config as feed_config
-from .feed.merge import _natural_keys, deduplicate_fuzzy
+from .feed.merge import _natural_keys, deduplicate_fuzzy, member_guids
 from .feed.logging import configure_logging
 from .feed.providers import (
     iter_providers,
@@ -8260,9 +8260,24 @@ def _combined_incidents(entries: Sequence[FeedItem]) -> FeedItem:
     return merged
 
 
+def _with_members(entry: FeedItem, items: Sequence[FeedItem], groups: Sequence[list[int]]) -> FeedItem:
+    """*entry* with the GUIDs of the messages of *groups* as ``_members``."""
+    marked = cast(FeedItem, dict(entry))
+    marked["_members"] = sorted({guid for group in groups for index in group for guid in member_guids(items[index])})
+    return marked
+
+
 def _merged_run(items: Sequence[FeedItem], run: Sequence[list[int]]) -> tuple[int, FeedItem]:
-    """The entry for *run* and the index it takes."""
-    incidents = [_incident_entry(items, groups) for groups in _run_incidents(items, run)]
+    """The entry for *run* and the index it takes.
+
+    Its ``_members`` are the messages of the incident whose GUID it carries
+    (see ``_carry_item_identity``): of several incidents, the newest.
+    """
+    incidents = [
+        (place, _with_members(entry, items, groups))
+        for groups in _run_incidents(items, run)
+        for place, entry in (_incident_entry(items, groups),)
+    ]
     if len(incidents) == 1:
         return incidents[0]
     ordered = sorted(
@@ -8403,6 +8418,176 @@ def _absorb_works_tickers(items: list[FeedItem]) -> list[FeedItem]:
             sanitize_log_arg(_rendered_title(works)),
         )
     return kept
+
+
+# --- One message, one GUID while it runs (2026-10-06) ------------------------
+#
+# A merged item carries the GUID and the ``pubDate`` of its messages: the
+# GUID of the earliest one or of the long message that says more
+# (``_incident_entry``), of the survivor of ``deduplicate_fuzzy``; the
+# earliest ``pubDate`` (``_span_group``). When the message whose GUID or
+# time the item carries leaves the data before the others, the item takes
+# the next one's, and the feed shows the same disruption as a new item under
+# a new time. "43: Verkehrsunfall" on 2026-10-06: its display tickers (the
+# first one from 00:03:28 Vienna time) ran out at 01:03, the long message
+# (start 00:04) stood alone, and the rebuild at 01:14, without new data,
+# showed it under the long message's GUID and "[Seit 00:04]" instead of
+# "[Seit 00:03]". At 11:30 "1: Verkehrsunfall" lost its long message (start
+# 10:40, resolved) and read "[Seit 10:43]" under the GUID of a ticker. On
+# 05.10. at 01:30 "41/42: Verkehrsunfall" changed its GUID when WL replaced
+# the incident by one follow-up per line, at 19:01 "9: Falschparker" when
+# the 42 of "9/42" ended.
+#
+# So every build notes in the state entry of each item the messages it
+# stands for (``members``: their GUIDs and WL's incident numbers, see
+# ``member_guids``) and when (``members_seen``); a Wiener-Linien disruption
+# also the earliest ``pubDate`` it carried (``earliest_published``). An item
+# that was no item of a build within _OCCURRENCE_GAP under its own GUID
+# takes the GUID of the item that shared one of its messages there, if it
+# continues that item (``_continued_by``); an item continued so keeps that
+# earliest ``pubDate``, the begin its time line showed. Nothing changes for
+# an item whose messages stay; the first build after the change writes the
+# notes and changes no GUID. An entry of several incidents counts the
+# messages of the newest one only (``_merged_run``): a new incident still
+# opens the feed under its own GUID, and the entry falls back to the older
+# one's when it ends.
+
+
+def _noted_recently(entry: dict[str, Any] | None, now_utc: datetime) -> datetime | None:
+    """When a build within _OCCURRENCE_GAP last noted *entry*'s messages, if one did."""
+    seen = _parse_state_time(entry, "members_seen")
+    if seen is None or seen < now_utc - _OCCURRENCE_GAP:
+        return None
+    return seen
+
+
+def _continues(entry: dict[str, Any] | None, item: FeedItem, now_utc: datetime) -> bool:
+    """Whether *item* continues the item *entry* noted.
+
+    It does if a build within _OCCURRENCE_GAP noted the entry and *item*'s
+    message was published by then: WL gives a recurring disruption the GUID
+    of the last one ("43: Verkehrsunfall"), and a new one keeps its own time.
+    """
+    seen = _noted_recently(entry, now_utc)
+    published = _parse_datetime(item.get("pubDate"))
+    return seen is not None and isinstance(published, datetime) and _to_utc(published) <= seen
+
+
+def _continued_by(entry: dict[str, Any], item: FeedItem) -> bool:
+    """Whether *item*, which shares a message with the item *entry* noted, continues it.
+
+    It does if the message whose GUID *item* carries was in that item: its
+    other messages ran out ("43: Verkehrsunfall"). Or if that message is no
+    newer than the begin the item showed: WL enters the long message after
+    its tickers and dates it back (``I20261006-0012-F01``, "1:
+    Verkehrsunfall", created 10:54 with start 10:40, tickers from 10:43).
+    A newer message is a new incident that took up a running one ("52:
+    Rettungseinsatz" on 2026-10-05 with a ticker of 30.09.): it keeps its
+    own GUID and opens the feed.
+    """
+    members = entry.get("members")
+    if isinstance(members, list) and str(item.get("guid") or "") in members:
+        return True
+    begin = _parse_state_time(entry, "earliest_published")
+    published = _parse_datetime(item.get("pubDate"))
+    return begin is not None and isinstance(published, datetime) and _to_utc(published) <= begin
+
+
+def _predecessors(state: dict[str, dict[str, Any]], now_utc: datetime) -> dict[str, list[str]]:
+    """Message GUID → GUIDs of the items recent builds noted it in."""
+    owners: dict[str, list[str]] = defaultdict(list)
+    for guid, entry in state.items():
+        members = entry.get("members") if isinstance(entry, dict) else None
+        if not isinstance(members, list) or _noted_recently(entry, now_utc) is None:
+            continue
+        for member in members:
+            if isinstance(member, str):
+                owners[member].append(guid)
+    return owners
+
+
+def _carry_item_identity(
+    items: list[FeedItem], state: dict[str, dict[str, Any]], now: datetime
+) -> list[FeedItem]:
+    """*items* with the GUID and begin they had while they run (see above)."""
+    now_utc = _to_utc(now)
+    owners = _predecessors(state, now_utc)
+    taken = {str(item.get("guid")) for item in items if item.get("guid")}
+    claims: list[tuple[int, int, str]] = []
+    for index, item in enumerate(items):
+        guid = str(item.get("guid") or "")
+        if not guid or _noted_recently(state.get(guid), now_utc) is not None:
+            continue
+        shared: dict[str, int] = defaultdict(int)
+        for member in member_guids(item):
+            for owner in owners.get(member, ()):
+                shared[owner] += 1
+        claims.extend(
+            (-count, index, owner)
+            for owner, count in shared.items()
+            if owner not in taken and _continued_by(state[owner], item)
+        )
+    out = list(items)
+    carried: set[int] = set()
+    for _count, index, owner in sorted(claims):
+        if index in carried or owner in taken:
+            continue
+        item = cast(FeedItem, dict(items[index]))
+        item["_members"] = member_guids(item)  # its own message stays one of them
+        log.info(
+            "Meldung behält ihre GUID: %s (%s statt %s)",
+            sanitize_log_arg(_rendered_title(item)),
+            owner[:12],
+            str(item.get("guid"))[:12],
+        )
+        item["guid"] = owner
+        out[index] = item
+        carried.add(index)
+        taken.add(owner)
+    for index, item in enumerate(out):
+        if not _is_wl_disruption(item):
+            continue
+        entry = state.get(str(item.get("guid") or ""))
+        earliest = _parse_state_time(entry, "earliest_published")
+        published = _parse_datetime(item.get("pubDate"))
+        if earliest is None or not isinstance(published, datetime) or not _continues(entry, item, now_utc):
+            continue
+        if earliest < _to_utc(published):
+            moved = cast(FeedItem, dict(item))
+            moved["pubDate"] = earliest
+            out[index] = moved
+    return out
+
+
+def _remember_item_identity(
+    items: Sequence[FeedItem], state: dict[str, dict[str, Any]], now: datetime
+) -> None:
+    """Note in each item's state entry what ``_carry_item_identity`` reads back.
+
+    Only entries that exist: the build creates them for what it shows.
+    """
+    now_utc = _to_utc(now)
+    for item in items:
+        guid = str(item.get("guid") or "")
+        entry = state.get(guid) if guid else None
+        if entry is None:
+            continue
+        published = _parse_datetime(item.get("pubDate"))
+        if _is_wl_disruption(item) and isinstance(published, datetime):
+            earliest = _to_utc(published)
+            known = _parse_state_time(entry, "earliest_published")
+            if known is not None and known < earliest and _continues(entry, item, now_utc):
+                earliest = known
+            entry["earliest_published"] = earliest.isoformat()
+        entry["members"] = member_guids(item)
+        entry["members_seen"] = now_utc.isoformat()
+
+
+def _is_wl_disruption(item: FeedItem) -> bool:
+    return (
+        str(item.get("source") or "").strip().casefold() == "wiener linien"
+        and str(item.get("category") or "").strip().casefold() == "störung"
+    )
 
 
 def _reason_only_summary(category_word: str) -> str:
@@ -9863,6 +10048,11 @@ def main() -> int:
         # One WL incident, one slot — see ``_merge_wl_ticker_clusters``; the
         # display tickers of planned works go up in their notice.
         items = _absorb_works_tickers(_merge_wl_ticker_clusters(fuzzy_deduped))
+        # A merged item keeps its GUID and begin while it runs — see
+        # ``_carry_item_identity``. The entry of a GUID carried on stays,
+        # though its own message may have run out above.
+        items = _carry_item_identity(items, state, now)
+        dropped_ids -= {str(it.get("guid")) for it in items if it.get("guid")}
         deduped_count = len(items)
         duplicates_removed = sum(summary.count - 1 for summary in duplicate_summaries)
         if not items:
@@ -9933,6 +10123,8 @@ def main() -> int:
                 "deutscher Feed ist bereits aktualisiert.",
                 sanitize_log_arg(str(exc)),
             )
+
+        _remember_item_identity(items, state, now)
 
         try:
             _save_state(state, deletions=dropped_ids)

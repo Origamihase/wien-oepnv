@@ -5,6 +5,25 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Feed: Meldungen behalten GUID und Beginn, solange sie laufen
+  (2026-10-06)**: Ein zusammengelegter WL-Eintrag trug GUID und `pubDate`
+  der Meldung, von der er beides hatte. Liefen deren Kurzmeldungen vor der
+  ausführlichen Meldung aus (oder umgekehrt), bekam er eine neue GUID, und
+  die Zeitzeile sprang: „43: Verkehrsunfall“ am 06.10. um 01:14 ohne neue
+  Daten von „[Seit 00:03]“ auf „[Seit 00:04]“, ebenso „1:
+  Verkehrsunfall“ (11:30, „[Seit 10:40]“ zu „[Seit 10:43]“), „41/42:
+  Verkehrsunfall“ und „9: Falschparker“ am 05.10. Der Build merkt sich
+  jetzt im State-Eintrag, für welche Meldungen und WL-Störungsnummern ein
+  Item steht (`members`, `members_seen`) und sein frühestes `pubDate`
+  (`earliest_published`), und führt ein Item im nächsten Lauf unter dieser
+  GUID und diesem Beginn weiter (`_carry_item_identity` in
+  `src/build_feed.py`). `wl_fetch` schreibt dafür die Störungsnummer
+  (`I20261004-0019`, auch für die Folgemeldungen `-F01`, `-F02`) als
+  `_wl_ids` in den Cache. Eine neue Störung, die eine laufende aufnimmt,
+  behält ihre eigene GUID. Der erste Lauf ändert keine GUID. Nachbau der
+  117 Läufe vom 04.10. 11:31 bis 06.10. 14:31 (Wiener Zeit): 11 Feed-Stände
+  anders, alle an solchen Fällen; Doku in `docs/development.md` („Eine
+  Meldung, eine GUID“) und `docs/architecture.md`.
 * **Code Scanning: letzte echte Funde (2026-10-06)**: `atomic_write`
   (`src/utils/files.py`) räumte bei `KeyboardInterrupt` oder `SystemExit`
   im Schreibblock nicht auf: die offene temporäre Datei und die halb

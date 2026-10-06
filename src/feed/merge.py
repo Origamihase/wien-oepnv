@@ -1,5 +1,6 @@
 import re
 import string
+from collections.abc import Mapping
 from datetime import datetime
 from typing import Any
 
@@ -588,6 +589,27 @@ def _promote_newer_dates(target: dict[str, Any], source: dict[str, Any]) -> None
             target[date_key] = source_date
 
 
+def member_guids(item: Mapping[str, Any]) -> list[str]:
+    """The GUIDs of the source messages *item* stands for, and WL incident numbers, sorted.
+
+    A merge writes them to ``_members``; an item no merge touched stands
+    for itself. ``build_feed._carry_item_identity`` follows an item from
+    build to build by them, so its GUID does not change when the message
+    whose GUID it carries leaves the data before the others.
+    """
+    members = item.get("_members")
+    if isinstance(members, (list, tuple)) and members:
+        return sorted({str(member) for member in members})
+    guid = item.get("guid")
+    own = {str(guid)} if guid else set()
+    numbers = item.get("_wl_ids")
+    if isinstance(numbers, (list, tuple)):
+        # WL's incident numbers, which outlast the GUIDs of its messages
+        # (``wl_fetch._incident_ids``).
+        own.update(f"wl:{number}" for number in numbers if isinstance(number, str) and number)
+    return sorted(own)
+
+
 def _merge_validity(target: dict[str, Any], source: dict[str, Any]) -> None:
     """Give *target* the validity of both items: earliest start, latest end.
 
@@ -917,6 +939,7 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
                     _promote_newer_dates(existing_copy, item)
                     _merge_validity(existing_copy, item)
+                    existing_copy["_members"] = sorted(set(member_guids(existing)) | set(member_guids(item)))
 
                     # 4. Preserve survivor's GUID and ``_identity``.
                     # Pre-fix the peer-merge rehashed ``guid = sha256(new_title)``

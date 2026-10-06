@@ -266,6 +266,37 @@ und stand seit 26.09. in 370 von 387 Feed-Ständen vorn, obwohl es seit
 Stammstrecke bleiben unberührt, denn dort ist `pubDate` kein Beginn eines
 Auftretens.
 
+Eine Meldung, eine GUID (`_carry_item_identity`, seit 2026-10-06): Ein
+zusammengelegter Eintrag trägt GUID und `pubDate` einer seiner Meldungen,
+etwa der frühesten Kurzmeldung (`_merge_wl_ticker_clusters`) oder des
+Überlebenden von `deduplicate_fuzzy`. Fiel genau diese Meldung weg,
+während die übrigen blieben, bekam der Eintrag die GUID der nächsten, und
+die Zeitzeile sprang. „43: Verkehrsunfall“ stand am 06.10. ab 00:30 als
+„[Seit 00:03]“ im Feed; um 01:03 liefen die Kurzmeldungen aus, und der
+Rebuild um 01:14 zeigte ohne neue Daten eine neue GUID und „[Seit 00:04]“.
+Ebenso „1: Verkehrsunfall“ am 06.10. um 11:30 (ausführliche Meldung
+erledigt, „[Seit 10:40]“ wurde „[Seit 10:43]“), „41/42: Verkehrsunfall“
+am 05.10. um 01:30 (WL ersetzte die Störung durch je eine Folgemeldung pro
+Linie) und „9: Falschparker“ am 05.10. um 19:01. Seither merkt sich der
+Build nach jedem Lauf im State-Eintrag jedes Items, für welche Meldungen es
+steht (`members`: deren GUIDs und, für WL, die Störungsnummer
+`I20261004-0019` ohne `-F01`, die `wl_fetch` als `_wl_ids` in den Cache
+schreibt), wann (`members_seen`) und bei WL-Störungen das früheste `pubDate`
+(`earliest_published`). Ein Item, das in keinem Lauf der letzten
+`_OCCURRENCE_GAP` (2 h) unter seiner eigenen GUID stand, übernimmt die GUID
+des Items, mit dem es dort eine Meldung teilte, und dessen frühestes
+`pubDate`, wenn seine eigene Meldung darin enthalten war oder nicht neuer
+ist als dessen Beginn (WL trägt die ausführliche Meldung oft nach den
+Kurzmeldungen ein und datiert sie zurück). Eine neuere Meldung ist eine
+neue Störung, die eine laufende aufnimmt („52: Rettungseinsatz“ am 05.10.
+mit einer Kurzmeldung vom 30.09.): Sie behält ihre GUID und steht vorn.
+Ein Eintrag mehrerer Störungen einer Linie zählt nur die Meldungen der
+neuesten; endet sie, kehrt er zur GUID der älteren zurück. Der erste Lauf
+nach der Änderung schreibt nur die Notizen und ändert keine GUID, es gibt
+also keine Welle. Im Feed-Nachbau aller 117 Läufe vom 04.10. 11:31 bis
+06.10. 14:31 (Wiener Zeit, WL-Rohdaten neu durch `wl_fetch` geschickt, State
+weitergetragen) unterschieden sich 11 Feed-Stände, alle an diesen Fällen.
+
 Angekündigte Maßnahmen zählen ab ihrem Beginn als neu
 (`_note_announced_starts`, `_sort_moment`, seit 2026-10-04), stehen aber wie
 alles Geplante hinter den aktuellen Störungen: Solange der Beginn (`starts_at`) eines Items mit
