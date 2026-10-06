@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261006-0005, I20261006-0004-F01, I20261006-0004-F02, I20260925-0011, I20260922-0032, I20260909-0007"
+    "trafficInfoNameList": "I20260917-0012, I20261006-0005, I20260925-0011, I20260922-0032, I20260909-0007"
    },
    {
     "id": 3,
@@ -199,76 +199,6 @@
      "start": "2026-09-25T08:55:00.000+0200"
     },
     "title": "26E: Gleisbauarbeiten"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "10": "ptTram"
-     }
-    },
-    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Linzer Straße / Johnstraße",
-    "name": "I20261006-0004-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "110",
-       "lineName": "10",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-06T06:46:00.000+0200",
-     "end": "2026-10-06T08:00:00.000+0200",
-     "lastUpdate": "2026-10-06T08:00:00.000+0200",
-     "resume": "2026-10-06T08:00:00.000+0200",
-     "start": "2026-10-06T06:29:00.000+0200"
-    },
-    "title": "10: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "52": "ptTram"
-     }
-    },
-    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Linzer Straße / Johnstraße",
-    "name": "I20261006-0004-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "152",
-       "lineName": "52",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-06T06:46:00.000+0200",
-     "end": "2026-10-06T08:00:00.000+0200",
-     "lastUpdate": "2026-10-06T08:00:00.000+0200",
-     "resume": "2026-10-06T08:00:00.000+0200",
-     "start": "2026-10-06T06:29:00.000+0200"
-    },
-    "title": "52: Rettungseinsatz"
    },
    {
     "attributes": {
