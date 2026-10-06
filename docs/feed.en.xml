@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 06 Oct 2026 07:00:38 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 07:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[63A: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e7e896d63b9b23989d8440713ce15b7c04d68a1b0098210082b12613484ee8b8</guid>
+      <pubDate>Tue, 06 Oct 2026 07:20:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 07:20:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 07:20:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 07:20]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 07:20]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[59A: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,15 +32,15 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 06:29]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[10: Rettungseinsatz, Gleisbauarbeiten]]></title>
+      <title><![CDATA[10: Rescue operation, track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">8b481d00f597d403fd733652ccb119b371560c14fdfc76dab913cf850ab4d9f9</guid>
       <pubDate>Tue, 06 Oct 2026 06:29:00 +0200</pubDate>
       <ext:first_seen>Tue, 06 Oct 2026 06:29:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 06 Oct 2026 06:40:57 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Rettungseinsatz: Betrieb ab Hütteldorfer Straße. Gleisbauarbeiten: Züge halten bei Linie 46 Richtung Parlament, Volkstheater. [Heute]</description>
-      <content:encoded><![CDATA[Rettungseinsatz: Betrieb ab Hütteldorfer Straße. Gleisbauarbeiten: Züge halten bei Linie 46 Richtung Parlament, Volkstheater.<br/>[Heute]]]></content:encoded>
+      <description>Rescue operation: service from Hütteldorfer Straße. Track construction works: trains stop at the stop of line 46 direction Parlament, Volkstheater. [Today]</description>
+      <content:encoded><![CDATA[Rescue operation: service from Hütteldorfer Straße. Track construction works: trains stop at the stop of line 46 direction Parlament, Volkstheater.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S80: ÖBB replacement bus]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>The work takes place in the period from 20:00 to 05:00. The left lane towards the city is closed. [Until 15.11.]</description>
       <content:encoded><![CDATA[The work takes place in the period from 20:00 to 05:00. The left lane towards the city is closed.<br/>[Until 15.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[52: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
-      <pubDate>Tue, 06 Oct 2026 00:00:18 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 00:00:18 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Trains stop at the stops of lines 6 and 18; service from Penzinger Straße; diversion according to Hietzing. [Today]</description>
-      <content:encoded><![CDATA[Trains stop at the stops of lines 6 and 18; service from Penzinger Straße; diversion according to Hietzing.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
