@@ -7,62 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 06 Oct 2026 11:00:52 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 11:30:40 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1: Traffic accident]]></title>
+      <title><![CDATA[1: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8</guid>
-      <pubDate>Tue, 06 Oct 2026 10:40:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 10:40:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 10:40:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">a8ba70cda76bd25ad99c44435ef8692615c7aebef6b5a98d838a46d6688684c5</guid>
+      <pubDate>Tue, 06 Oct 2026 10:43:51 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 11:30:40 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 10:43:51 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 11:43:00 +0200</ext:ends_at>
+      <description>Umleitung bis Kliebergasse über Linien D und 18; Betrieb ab Kliebergasse; Züge halten bei Linie 18 Richtung Burggasse. [Seit 10:43]</description>
+      <content:encoded><![CDATA[Umleitung bis Kliebergasse über Linien D und 18; Betrieb ab Kliebergasse; Züge halten bei Linie 18 Richtung Burggasse.<br/>[Seit 10:43]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[31: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">84f9fe1b5c4beaf00a73c1565363074e86a57541f0f409f0ef6b0f7aac539f50</guid>
+      <pubDate>Tue, 06 Oct 2026 11:19:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 11:19:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 11:19:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Diversion to Kliebergasse over lines D and 18; service from Kliebergasse; trains stop at the stop of line 18 direction Burggasse. [Since 10:40]</description>
-      <content:encoded><![CDATA[Diversion to Kliebergasse over lines D and 18; service from Kliebergasse; trains stop at the stop of line 18 direction Burggasse.<br/>[Since 10:40]]]></content:encoded>
+      <description>Diversion towards Schottenring U between Jägerstraße U and Gaußplatz over Jägerstraße. [Since 11:19]</description>
+      <content:encoded><![CDATA[Diversion towards Schottenring U between Jägerstraße U and Gaußplatz over Jägerstraße.<br/>[Since 11:19]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[14A: Traffic disruption]]></title>
+      <title><![CDATA[62: Defective car]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">38175aea46ac164884f1acc7db747e047e8b124159bada67f67245d37e0cf932</guid>
-      <pubDate>Tue, 06 Oct 2026 10:16:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 10:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 10:16:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">decb45044f2151222a9fb5923844f3147cf93a315a730b2991db70dccde3c830</guid>
+      <pubDate>Tue, 06 Oct 2026 11:10:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 11:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 11:10:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Buses stop at Evangelischer Friedhof. [Since 10:16]</description>
-      <content:encoded><![CDATA[Buses stop at Evangelischer Friedhof.<br/>[Since 10:16]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
-      <pubDate>Tue, 06 Oct 2026 10:24:02 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 10:24:02 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 10:24:30 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 11:23:00 +0200</ext:ends_at>
-      <description>Service obstruction. [Since 10:24]</description>
-      <content:encoded><![CDATA[Service obstruction.<br/>[Since 10:24]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d</guid>
-      <pubDate>Tue, 06 Oct 2026 09:35:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 09:35:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 09:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: illegally parked vehicle. [Since 09:35]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: illegally parked vehicle.<br/>[Since 09:35]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Meidling]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;917460</guid>
-      <pubDate>Tue, 06 Oct 2026 09:22:08 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 09:33:36 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Because of a damaged bridge by a traffic accident, no trains could run between Wien Hbf (U) and Wien Meidling station (U) until 09:17. [Today]</description>
-      <content:encoded><![CDATA[Because of a damaged bridge by a traffic accident, no trains could run between Wien Hbf (U) and Wien Meidling station (U) until 09:17.<br/>[Today]]]></content:encoded>
+      <description>After a service obstruction there are different intervals. [Since 11:10]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 11:10]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S80: ÖBB replacement bus]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Due to renovation of the platform, line U6 stops the station Neue Donau U only in the direction of Siebenhirten U. You can reach Neue Donau with U6 from Floridsdorf. [Until 31.12.]</description>
       <content:encoded><![CDATA[Due to renovation of the platform, line U6 stops the station Neue Donau U only in the direction of Siebenhirten U. You can reach Neue Donau with U6 from Floridsdorf.<br/>[Until 31.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Buses stop at Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Tue, 06 Oct 2026 04:40:06 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 04:40:06 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 07 Oct 2026 01:00:00 +0200</ext:ends_at>
+      <description>Reason: construction works. [Until Wed 07.10.]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[Until Wed 07.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Rennweg 33A–37]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">65573981646b35911098f80f5060d16369450fbc04c8d50c90d9db3a086b9b29</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 22:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
+      <description>The work takes place in the period from 20:00 to 05:00. The left lane towards the city is closed. [Until 15.11.]</description>
+      <content:encoded><![CDATA[The work takes place in the period from 20:00 to 05:00. The left lane towards the city is closed.<br/>[Until 15.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

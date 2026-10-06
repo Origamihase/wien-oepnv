@@ -1,5 +1,48 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R1616-162|2026-10-06T11:11:23.000+0200|Fahrtbehinderung\nSchadhafter Pkw",
+   "name": "R1616-162",
+   "title": "Fahrtbehinderung\nSchadhafter Pkw",
+   "end": "2026-10-06T12:11:00.000+0200",
+   "incident": "I20261006-0013"
+  },
+  {
+   "key": "R1724-162|2026-10-06T11:11:24.000+0200|Fahrtbehinderung\nSchadhafter Pkw",
+   "name": "R1724-162",
+   "title": "Fahrtbehinderung\nSchadhafter Pkw",
+   "end": "2026-10-06T12:11:00.000+0200",
+   "incident": "I20261006-0013"
+  },
+  {
+   "key": "R1725-162|2026-10-06T11:11:24.000+0200|Fahrtbehinderung\nSchadhafter Pkw",
+   "name": "R1725-162",
+   "title": "Fahrtbehinderung\nSchadhafter Pkw",
+   "end": "2026-10-06T12:11:00.000+0200",
+   "incident": "I20261006-0013"
+  },
+  {
+   "key": "R1726-162|2026-10-06T11:11:24.000+0200|Fahrtbehinderung\nSchadhafter Pkw",
+   "name": "R1726-162",
+   "title": "Fahrtbehinderung\nSchadhafter Pkw",
+   "end": "2026-10-06T12:11:00.000+0200",
+   "incident": "I20261006-0013"
+  },
+  {
+   "key": "R1727-162|2026-10-06T11:11:24.000+0200|Fahrtbehinderung\nSchadhafter Pkw",
+   "name": "R1727-162",
+   "title": "Fahrtbehinderung\nSchadhafter Pkw",
+   "end": "2026-10-06T12:11:00.000+0200",
+   "incident": "I20261006-0013"
+  },
+  {
+   "key": "R1728-162|2026-10-06T11:11:24.000+0200|Fahrtbehinderung\nSchadhafter Pkw",
+   "name": "R1728-162",
+   "title": "Fahrtbehinderung\nSchadhafter Pkw",
+   "end": "2026-10-06T12:11:00.000+0200",
+   "incident": "I20261006-0013"
+  }
+ ]
 }

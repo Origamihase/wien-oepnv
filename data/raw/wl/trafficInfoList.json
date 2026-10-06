@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261006-0008, I20260917-0012, I20260925-0011, I20260922-0032, I20261006-0010-F01, I20260909-0007, I20261006-0012-F01"
+    "trafficInfoNameList": "I20260917-0012, I20261006-0014, I20261006-0010-F01, I20261006-0008, I20260925-0011, I20260922-0032, I20260909-0007, I20261006-0013-F01, I20261006-0013, I20261006-0012-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2359-125, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2378-627, R2343-626, R2343-125, R318-437, R293-474, R2923-403, R2917-0, R2025-671, R119-136, R130-136, R19-136, R45-136, R36-152, R103-136, R102-136, R101-136, R100-136, R116-136, R117-136, R118-136, R115-136, R5815-671, R1447-149, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1150-0, R2558-125, R1974-466, R500-101, R756-414, R223-109, R556-109, R1475-109, R528-109, R533-109, R530-109, R531-109, R532-109, R51-101, R1709-101, R1711-101, R1714-101, R1712-101, R1713-101, R1715-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R293-474, R318-437, R2917-0, R2923-403, R2025-671, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R36-152, R103-136, R102-136, R101-136, R100-136, R45-136, R19-136, R5815-671, R1448-149, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R1150-0, R1974-466, R500-101, R51-101, R1713-101, R1709-101, R1711-101, R1712-101, R1714-101, R1715-101, R1616-162, R1724-162, R1725-162, R1726-162, R1727-162, R1728-162, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -224,12 +224,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T09:35:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T09:35:00.000+0200",
-     "resume": "2026-10-06T09:35:00.000+0200",
+     "end": "2026-10-06T11:26:00.000+0200",
+     "lastUpdate": "2026-10-06T11:26:00.000+0200",
+     "resume": "2026-10-06T11:26:00.000+0200",
      "start": "2026-10-06T09:35:00.000+0200"
     },
     "title": "13A: Falschparker"
@@ -261,12 +261,12 @@
     "relatedStops": [
      756
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T10:54:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T10:54:00.000+0200",
-     "resume": "2026-10-06T10:54:00.000+0200",
+     "end": "2026-10-06T11:26:00.000+0200",
+     "lastUpdate": "2026-10-06T11:26:00.000+0200",
+     "resume": "2026-10-06T11:26:00.000+0200",
      "start": "2026-10-06T10:16:00.000+0200"
     },
     "title": "14A: Verkehrsstörung"
@@ -296,15 +296,119 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T10:54:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T10:54:00.000+0200",
-     "resume": "2026-10-06T10:54:00.000+0200",
+     "end": "2026-10-06T11:26:00.000+0200",
+     "lastUpdate": "2026-10-06T11:26:00.000+0200",
+     "resume": "2026-10-06T11:26:00.000+0200",
      "start": "2026-10-06T10:40:00.000+0200"
     },
     "title": "1: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "62": "ptTram"
+     }
+    },
+    "description": "Linie 62: Fahrtbehinderung in Richtung Lainz, Wolkersbergenstraße. Voraussichtliche Dauer: 11:30 Uhr. Grund: Schadhafter PKW im Bereich Hetzendorfer Straße 84.",
+    "descriptionHTML": "Linie 62:<br>Fahrtbehinderung in Richtung Lainz, Wolkersbergenstraße.<br> <br>Voraussichtliche Dauer: 11:30 Uhr.<br><br>Grund: Schadhafter PKW im Bereich Hetzendorfer Straße 84.",
+    "location": "Hetzendorfer Straße 84",
+    "name": "I20261006-0013",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "162",
+       "lineName": "62",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-06T11:11:00.000+0200",
+     "end": "2026-10-06T11:25:00.000+0200",
+     "lastUpdate": "2026-10-06T11:25:00.000+0200",
+     "resume": "2026-10-06T11:25:00.000+0200",
+     "start": "2026-10-06T11:10:00.000+0200"
+    },
+    "title": "62: Schadhafter PKW"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "62": "ptTram"
+     }
+    },
+    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Hetzendorfer Straße 84",
+    "name": "I20261006-0013-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "162",
+       "lineName": "62",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-06T11:25:00.000+0200",
+     "end": "2026-10-06T23:55:00.000+0200",
+     "lastUpdate": "2026-10-06T11:25:00.000+0200",
+     "resume": "2026-10-06T11:25:00.000+0200",
+     "start": "2026-10-06T11:10:00.000+0200"
+    },
+    "title": "62: Schadhafter PKW"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "31": "ptTram"
+     }
+    },
+    "description": "Linie 31: Umleitung in Richtung Schottenring U zwischen Jägerstraße U und Gaußplatz über Jägerstraße. Voraussichtliche Dauer: 12:00 Uhr. Grund: Verkehrsunfall im Bereich Klosterneuburger Straße.",
+    "descriptionHTML": "Linie 31:<br>Umleitung in Richtung Schottenring U<br>zwischen Jägerstraße U und Gaußplatz<br>über Jägerstraße.<br> <br>Voraussichtliche Dauer: 12:00 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Klosterneuburger Straße.",
+    "location": "Klosterneuburger Straße",
+    "name": "I20261006-0014",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "131",
+       "lineName": "31",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-06T11:21:00.000+0200",
+     "end": "2026-10-06T23:55:00.000+0200",
+     "lastUpdate": "2026-10-06T11:21:00.000+0200",
+     "start": "2026-10-06T11:19:00.000+0200"
+    },
+    "title": "31: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -682,24 +786,6 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21"
    },
    {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1475-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     1475
-    ],
-    "time": {
-     "end": "2026-10-06T11:23:00.000+0200",
-     "start": "2026-10-06T10:24:27.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
     "name": "R1475-149",
     "owner": "WL",
@@ -752,6 +838,24 @@
      "start": "2026-10-06T00:00:25.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R1616-162",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1616
+    ],
+    "time": {
+     "end": "2026-10-06T12:11:00.000+0200",
+     "start": "2026-10-06T11:11:23.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
    },
    {
     "description": "Verkehrsunfall\nBetrieb ab Kliebergasse",
@@ -862,6 +966,96 @@
     "title": "Verkehrsunfall\nZüge halten bei Linie 18 Richtung Burggasse"
    },
    {
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R1724-162",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1724
+    ],
+    "time": {
+     "end": "2026-10-06T12:11:00.000+0200",
+     "start": "2026-10-06T11:11:24.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R1725-162",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1725
+    ],
+    "time": {
+     "end": "2026-10-06T12:11:00.000+0200",
+     "start": "2026-10-06T11:11:24.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R1726-162",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1726
+    ],
+    "time": {
+     "end": "2026-10-06T12:11:00.000+0200",
+     "start": "2026-10-06T11:11:24.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R1727-162",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1727
+    ],
+    "time": {
+     "end": "2026-10-06T12:11:00.000+0200",
+     "start": "2026-10-06T11:11:24.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R1728-162",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1728
+    ],
+    "time": {
+     "end": "2026-10-06T12:11:00.000+0200",
+     "start": "2026-10-06T11:11:24.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -911,24 +1105,6 @@
      "start": "2026-10-06T00:00:09.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R223-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     223
-    ],
-    "time": {
-     "end": "2026-10-06T11:23:00.000+0200",
-     "start": "2026-10-06T10:24:02.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
@@ -1342,114 +1518,6 @@
     "title": "Verkehrsunfall\nUmleitung bis Kliebergasse über Linien D und 18"
    },
    {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R528-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     528
-    ],
-    "time": {
-     "end": "2026-10-06T11:23:00.000+0200",
-     "start": "2026-10-06T10:24:30.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R530-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     530
-    ],
-    "time": {
-     "end": "2026-10-06T11:23:00.000+0200",
-     "start": "2026-10-06T10:24:30.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R531-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     531
-    ],
-    "time": {
-     "end": "2026-10-06T11:23:00.000+0200",
-     "start": "2026-10-06T10:24:30.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R532-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     532
-    ],
-    "time": {
-     "end": "2026-10-06T11:23:00.000+0200",
-     "start": "2026-10-06T10:24:30.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R533-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     533
-    ],
-    "time": {
-     "end": "2026-10-06T11:23:00.000+0200",
-     "start": "2026-10-06T10:24:30.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R556-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     556
-    ],
-    "time": {
-     "end": "2026-10-06T11:23:00.000+0200",
-     "start": "2026-10-06T10:24:19.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "name": "R5815-671",
     "owner": "WL",
@@ -1463,24 +1531,6 @@
      "start": "2026-10-06T00:00:22.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
-   },
-   {
-    "description": "Verkehrsstörung\nBusse halten Evangelischer Friedhof",
-    "name": "R756-414",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedStops": [
-     756
-    ],
-    "time": {
-     "end": "2026-10-06T11:16:00.000+0200",
-     "start": "2026-10-06T10:18:00.000+0200"
-    },
-    "title": "Verkehrsstörung\nBusse halten Evangelischer Friedhof"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
