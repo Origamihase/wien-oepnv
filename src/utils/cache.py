@@ -408,12 +408,24 @@ def _stable_sort_key(item: Any) -> tuple[str, str, str, str]:
     )
 
 
-def write_cache(provider: str, items: list[Any], *, pretty: bool | None = None) -> None:
+def write_cache(
+    provider: str,
+    items: list[Any],
+    *,
+    pretty: bool | None = None,
+    allow_shrink: bool = False,
+) -> None:
     """Write *items* to the cache for *provider* atomically.
 
     Pretty printing is enabled by default to keep JSON files human readable. To
     reduce cache size for large datasets set ``pretty`` to ``False`` or define
     the environment variable ``WIEN_OEPNV_CACHE_PRETTY=0``.
+
+    ``allow_shrink`` skips the data-degradation guard (empty payload, or fewer
+    than 20 % of the cached items). Only for a caller that has already judged
+    the source answer healthy and whose *selection* can legitimately be small
+    or empty: the Stadt-Wien-Baustellen keep only sites with an effect on
+    public transport, and on many days there is none.
     """
 
     # Security (Trojan-Source / BiDi-Mark Drift Round 12, ingestion-boundary
@@ -445,7 +457,7 @@ def write_cache(provider: str, items: list[Any], *, pretty: bool | None = None) 
     cache_file = _cache_file(provider)
 
     # Data Degradation Guard
-    if cache_file.exists():
+    if not allow_shrink and cache_file.exists():
         try:
             # Security: open-then-fstat closes the TOCTOU between the cap
             # check and ``open()`` — a parallel writer's atomic_write

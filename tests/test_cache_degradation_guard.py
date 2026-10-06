@@ -211,3 +211,19 @@ def test_write_cache_does_not_prune_sibling_providers(
         write_cache("alpha", [])
     # The guard raised before atomic_write, so alpha's cache stays intact.
     assert alpha_file.exists()
+
+
+@pytest.mark.parametrize("count", [0, 2])
+def test_allow_shrink_skips_the_guard(tmp_path: Path, count: int) -> None:
+    """A caller that judged the source healthy may shrink its selection (Baustellen)."""
+    provider = "test_allow_shrink"
+    target_file = tmp_path / "cache" / provider / "events.json"
+    target_file.parent.mkdir(parents=True, exist_ok=True)
+    target_file.write_text(json.dumps([{"id": i} for i in range(15)]), encoding="utf-8")
+
+    with patch("src.utils.cache._cache_file", return_value=target_file):
+        with pytest.raises(DataDegradationError):
+            write_cache(provider, [{"id": i} for i in range(count)])
+        write_cache(provider, [{"id": i} for i in range(count)], allow_shrink=True)
+
+    assert len(json.loads(target_file.read_text(encoding="utf-8"))) == count

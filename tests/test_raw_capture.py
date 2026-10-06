@@ -271,7 +271,7 @@ def test_baustellen_snapshot_and_drops(raw_root: Path, monkeypatch: pytest.Monke
 
     cached: list[Any] = []
     monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
-    monkeypatch.setattr(update_baustellen_cache, "write_cache", lambda p, items: cached.append(items))
+    monkeypatch.setattr(update_baustellen_cache, "write_cache", lambda p, items, **_kw: cached.append(items))
 
     assert update_baustellen_cache.main() == 0
 
@@ -296,6 +296,6 @@ def test_baustellen_snapshot_and_drops(raw_root: Path, monkeypatch: pytest.Monke
 def test_baustellen_fallback_writes_no_drops(raw_root: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", lambda url, timeout: None)
     monkeypatch.setattr(update_baustellen_cache, "_log_endpoint_diagnostic", lambda url, timeout: None)
-    monkeypatch.setattr(update_baustellen_cache, "write_cache", lambda p, items: None)
+    monkeypatch.setattr(update_baustellen_cache, "write_cache", lambda p, items, **_kw: None)
     update_baustellen_cache.main()
     assert not (raw_root / "baustellen").exists()

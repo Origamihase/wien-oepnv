@@ -188,8 +188,14 @@ def _u4_item(title: str = U4_TITLE) -> FeedItem:
 
 
 def test_the_post_filter_ships_the_repaired_title() -> None:
-    out = _post_filter_baustellen([_u4_item()])
-    assert [i["title"] for i in out] == [f"U4: {U4_REPAIRED}"]
+    # The real U4 site names no effect on transit and leaves the feed since
+    # 2026-10-06 ("Nur mit Öffi-Folgen"); with one, it ships repaired and
+    # without the "U4:" prefix (the U-Bahn is the builder here).
+    item = _u4_item()
+    item["description"] = f"{U4_DESCRIPTION} Die Buslinie 74A wird umgeleitet."
+    out = _post_filter_baustellen([item])
+    assert [i["title"] for i in out] == [U4_REPAIRED]
+    assert _post_filter_baustellen([_u4_item()]) == []
 
 
 def test_the_post_filter_does_not_mutate_the_cached_item() -> None:

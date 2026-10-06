@@ -855,6 +855,14 @@ _HOUSE_NUMBER_END_RE: re.Pattern[str] = re.compile(
 )
 
 
+# "ONr." (Ordnungsnummer) is the city's word for a house number. In a title
+# it stood in front of both ends: ``Altmannsdorfer Straße ONr.76 bis
+# ONr.76A`` (published 2026-08-28 to 2026-09-02 as "Wien Hetzendorf:
+# Altmannsdorfer Straße ONr.76 bis ONr.76A", in English "ONo76"). Without it
+# the span reads as an address like every other one: ``… 76–76A``.
+_ORDNUNGSNUMMER_RE: re.Pattern[str] = re.compile(r"\b(?:O\.\s?Nr|ONr)\.\s*(?=\d)")
+
+
 def _mark_house_numbers(title: str) -> str:
     """Write the house numbers of a Baustellen title as an address.
 
@@ -865,6 +873,7 @@ def _mark_house_numbers(title: str) -> str:
     number at one end of a section gets "Nr." (``Siebenbrunnengasse von
     Siebenbrunnenplatz bis Nr. 44``).
     """
+    title = _ORDNUNGSNUMMER_RE.sub("", title)
     title = _HOUSE_NUMBER_SPAN_RE.sub(r"\1–\2", title)
     return _HOUSE_NUMBER_END_RE.sub(r"\1 Nr. \2", title)
 
@@ -1007,13 +1016,13 @@ def _post_filter_baustellen(items: list[Any]) -> list[Any]:
     predate the current policy — so the gate is re-applied here, the same
     defence-in-depth contract as :func:`_post_filter_oebb`.
 
-    An item is kept when it is ÖPNV-relevant — at/near a rail Bahnhof OR its
-    text mentions public transport (the "Bahnhofsnähe ODER ÖPNV-Text"
-    policy). When a Bahnhof matches, its name is prefixed onto the title so
-    the entry reads as a transit message at a glance — mirroring the
-    line/route prefixes WL and ÖBB carry, and the title re-derivation
-    :func:`_post_filter_oebb` performs. The prefix is skipped when the title
-    already names the station, keeping the headline compact.
+    An item is kept when its text says what changes for public transport
+    (:func:`src.providers.baustellen.mentions_oepnv`; nearness to a station
+    alone no longer counts, operator decision 2026-10-06). When the site lies
+    next to a rail Bahnhof, its name is prefixed onto the title so the entry
+    reads as a transit message at a glance — mirroring the line/route
+    prefixes WL and ÖBB carry. The prefix is skipped when the title already
+    names the station, keeping the headline compact.
 
     Before the prefix, :func:`_repair_baustellen_title` completes a last
     word the city's 100-character cap cut off — from the item's own
@@ -1024,7 +1033,7 @@ def _post_filter_baustellen(items: list[Any]) -> list[Any]:
     Items carrying neither a title nor a description are treated as
     stubs/metadata and passed through unchanged.
     """
-    from .providers.baustellen import mentions_oepnv, relevant_station, u_bahn_lines
+    from .providers.baustellen import mentions_oepnv, relevant_station
     from .utils.stations import display_name
 
     out: list[Any] = []
@@ -1043,21 +1052,17 @@ def _post_filter_baustellen(items: list[Any]) -> list[Any]:
             item = dict(item)
             item["title"] = repaired
             title = repaired
-        blob = f"{title} {description}"
-        station = relevant_station(item.get("location"))
-        if station is None and not mentions_oepnv(blob):
+        if not mentions_oepnv(f"{title}. {description}"):
             continue
-        # Title prefix: the affected Bahnhof (geo) takes precedence as the
-        # most concrete locator; otherwise the U-Bahn line(s) named in the
-        # text. Bus/tram line numbers are deliberately not guessed here (see
-        # the provider module) — their impact leads the description instead.
+        # Title prefix: the Bahnhof next to the site, the most concrete
+        # locator. Line numbers are not guessed (see the provider module):
+        # the effect leads the description instead. No U-Bahn prefix any
+        # more: in this source the U-Bahn is the builder, and "U2/U5: …"
+        # read like a U-Bahn disruption (operator decision 2026-10-06).
+        station = relevant_station(item.get("location"))
         label = ""
         if station is not None:
             label = display_name(station) or station
-        else:
-            lines = u_bahn_lines(blob)
-            if lines:
-                label = "/".join(lines)
         if label and not _baustellen_title_names_station(title, label):
             item = dict(item)
             item["title"] = f"{label}: {title}" if title else label
@@ -2725,6 +2730,10 @@ _STREET_SUFFIX_CORE = (
     r"[Ss]traße|[Ss]trasse|[Gg]asse|[Pp]latz|[Bb]rücke|[Bb]rucke"
     r"|[Mm]arkt|[Ww]eg|[Rr]ing|[Aa]llee|[Ss]tieg|[Ss]teig"
     r"|[Pp]romenade|[Kk]ai|[Gg]raben|[Zz]eile"
+    # Standing alone these three were already street words
+    # (:data:`_STREET_WORD`), in a compound not: ``Neubaugürtel`` reached the
+    # EN feed as "New belt" (Baustellen title, 2026-09-02).
+    r"|[Gg]ürtel|[Ll]ände|[Dd]amm"
 )
 #: Deklinierte Adjektive, die in Wiener Straßennamen vor dem Namen stehen.
 #: Nur solche, die als eigenes Wort ein echtes englisches Wort ergeben —
@@ -5667,6 +5676,10 @@ def _report_empty_provider(
       line running normally. Most builds look like this. Logging it as a
       warning every 30 minutes made "working" indistinguishable from "broken"
       on the dashboard and buried the warnings that mean something.
+      The Stadt-Wien-Baustellen are the same since 2026-10-06: the cache
+      holds only sites with an effect on public transport, often none. A
+      cache alert (file missing, unreadable, stale) still makes either one
+      a warning.
 
     Which one a provider is, is declared at registration
     (``register_provider(..., empty_is_normal=True)``) rather than guessed
@@ -5677,7 +5690,11 @@ def _report_empty_provider(
     own (``ok-empty`` vs ``empty``): a dashboard that only sees ``:empty``
     cannot tell "nothing to report" from "no data".
     """
-    if getattr(fetch, "_provider_empty_is_normal", False):
+    cache_name = getattr(fetch, "_provider_cache_name", None)
+    alerts = cache_alerts.get(str(cache_name), []) if cache_name is not None else []
+    # A cache alert (file missing, unreadable, too large) means no data, even
+    # for a provider whose empty answer is normally healthy.
+    if getattr(fetch, "_provider_empty_is_normal", False) and not alerts:
         log.info(
             "Provider '%s' meldet keine Vorfälle – Normalzustand, kein Fehler.",
             provider_name,
@@ -5695,11 +5712,8 @@ def _report_empty_provider(
         provider_name,
     )
     detail = "Keine aktuellen Daten"
-    cache_name = getattr(fetch, "_provider_cache_name", None)
-    if cache_name is not None:
-        alerts = cache_alerts.get(str(cache_name), [])
-        if alerts:
-            detail = "; ".join(dict.fromkeys(alerts))
+    if alerts:
+        detail = "; ".join(dict.fromkeys(alerts))
     report.provider_success(
         provider_name, items=0, status="empty", detail=detail
     )

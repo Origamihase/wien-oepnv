@@ -68,6 +68,11 @@ def _unprotected(text: str) -> str:
         "Marxerbrücke",
         "Landstraße",
         "Pasettistraße",
+        # Compounds on -gürtel/-damm (Baustellen audit 2026-10-06):
+        # "Wien Westbahnhof: Neubaugürtel 6-12" went out as "New belt".
+        "Neubaugürtel",
+        "Rollerdamm",
+        "Kaisermühlendamm",
     ],
 )
 def test_street_names_are_shielded_whole(name: str) -> None:

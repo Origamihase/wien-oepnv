@@ -1,8 +1,9 @@
 """Tests for the Baustellen ÖPNV-relevance filter.
 
-The provider must only surface construction sites at/near a rail Bahnhof
-(Wien station or Pendlerbahnhof); ordinary road works anywhere else in
-the city must be dropped so the feed stays a focused transit signal.
+A construction site reaches the feed only when its text says what changes
+for public transport (operator decision 2026-10-06, "Nur mit Öffi-Folgen").
+Nearness to a rail Bahnhof alone no longer counts; it still names the
+station in front of the title.
 """
 from __future__ import annotations
 
@@ -21,7 +22,6 @@ from src.providers.baustellen import (
     mentions_oepnv,
     oepnv_lead,
     relevant_station,
-    u_bahn_lines,
 )
 from src.utils import stations
 
@@ -127,9 +127,11 @@ def _item(lat: float, lon: float, *, title: str = "Sanierung", description: str 
     return {"location": _loc(lat, lon), "title": title, "description": description}
 
 
-def test_geo_only_item_is_relevant_without_oepnv_text() -> None:
-    # Near a Pendlerbahnhof, no ÖPNV keyword needed.
-    assert is_transit_relevant(_item(*MOEDLING)) is True
+def test_station_alone_is_not_relevant() -> None:
+    # Next to a Pendlerbahnhof, but nothing about transit in the text
+    # ("Rennweg 33A–37", places 2 to 10 from 2026-10-01 to 2026-10-06).
+    assert is_transit_relevant(_item(*MOEDLING)) is False
+    assert is_transit_relevant(_item(*WIEN_HBF)) is False
 
 
 def test_text_only_item_is_relevant_far_from_rail() -> None:
@@ -156,14 +158,14 @@ def test_is_transit_relevant_fails_closed(item: object) -> None:
     assert is_transit_relevant(item) is False
 
 
-def test_radius_override_widens_geo_match(
+def test_radius_override_widens_the_title_prefix(
     monkeypatch: pytest.MonkeyPatch, single_station: _RailSet
 ) -> None:
-    # ~300 m from the synthetic station, no ÖPNV text → relevance is purely radius-driven.
-    far = _item(48.2027, 16.3700, title="Sanierung", description="Fahrbahn")
-    assert is_transit_relevant(far) is False
+    # ~300 m from the synthetic station: the prefix is radius-driven.
+    location = _loc(48.2027, 16.3700)
+    assert relevant_station(location) is None
     monkeypatch.setenv("BAUSTELLEN_STATION_RADIUS_M", "500")
-    assert is_transit_relevant(far) is True
+    assert relevant_station(location) == "Test Bahnhof"
 
 
 # --- mentions_oepnv -----------------------------------------------------------
@@ -178,16 +180,27 @@ def test_radius_override_widens_geo_match(
         "betrifft die öffentlichen Verkehrsmittel",
         "Sperre der Buslinie 10A",
         "Linie 46 verkürzt",
-        "U6 Teilsperre",
-        # bug b4: the leading-only \b must KEEP the compound U-/S-Bahn forms
-        # (no boundary exists between "bahn" and "bau"/"station").
-        "U-Bahnbau wird gesperrt",
-        "Neubau der U-Bahnstation der U2",
+        # bug b4: the leading-only \b must KEEP the compound S-Bahn forms.
         "S-Bahn-Stammstrecke betroffen",
+        "Die S-Bahnstation ist nur über die Rampe erreichbar",
+        # A real effect next to a sentence that names transit as unaffected.
+        "Der Betrieb der Straßenbahnlinie 49 wird nicht beeinträchtigt. Die Haltestelle der betroffenen Buslinien wird verlegt.",
     ],
 )
 def test_mentions_oepnv_true(text: str) -> None:
     assert mentions_oepnv(text) is True
+
+
+# Kept outside the parametrize list: CodeQL reads an implicit concatenation
+# inside a list as a possibly missing comma.
+_OMBUDSSTELLE = (
+    "Detaillierte Informationen über das Bauvorhaben U2 / U5 können über die "
+    "Ombudsstelle des jeweils betroffenen U-Bahnabschnittes eingeholt werden."
+)
+_STADIONBRUECKE = (
+    "Die Umbauarbeiten an der Stadionbrücke aufgrund der Verlängerung der "
+    "Straßenbahnlinie 18 werden in mehreren Bauphasen durchgeführt."
+)
 
 
 @pytest.mark.parametrize(
@@ -201,6 +214,18 @@ def test_mentions_oepnv_true(text: str) -> None:
         # must NOT trip the U-/S-Bahn tokens (leading \b on both).
         "Fahrbahnsanierung bei der Hochschaubahn",
         "Erneuerung am Verkehrsbahnhof Inzersdorf",
+        # The U-Bahn as the builder, not an effect (operator decision 2026-10-06).
+        "U-Bahnbau wird gesperrt",
+        "Für den Neubau der U-Bahnstation der U2 Pilgramgasse wird die Rechte Wienzeile für den Fahrzeugverkehr gesperrt.",
+        _OMBUDSSTELLE,
+        "Die Kabellegungsarbeiten (110 kV Umlegung als Vorarbeit für die U5) werden bei Tag durchgeführt.",
+        # Transit named as unaffected (verbatim from the cache history).
+        "Die Rohrlegungsarbeiten werden in der Nacht in der betriebslosen Zeit des öffentlichen Verkehrsmittels durchgeführt.",
+        "Nur die Hausanschlüsse werden in der Nacht in der betriebslosen Zeit der Straßenbahn durchgeführt.",
+        "Der Betrieb der Straßenbahnlinie 49 wird durch diese Bauarbeiten nicht beeinträchtigt.",
+        "Der Fahrzeugverkehr einschließlich des öffentlichen Verkehrs kann in allen bestehenden Fahrrelationen aufrecht gehalten werden.",
+        _STADIONBRUECKE,
+        "Der Verkehr wird über das richtungsführende Gleis oder über das befahrbare Haltestellenkap geführt.",
     ],
 )
 def test_mentions_oepnv_false(text: str) -> None:
@@ -235,26 +260,28 @@ def test_resolve_radius_clamping(monkeypatch: pytest.MonkeyPatch, raw: str, expe
 
 
 def test_post_filter_keeps_relevant_drops_noise_passes_stubs() -> None:
-    geo = {"title": "Fahrbahnsanierung", "description": "x", "location": _loc(*WIEN_HBF)}
+    near = {"title": "Fahrbahnsanierung", "description": "Haltestelle verlegt", "location": _loc(*WIEN_HBF)}
     text = {"title": "Gleisarbeiten", "description": "Haltestelle verlegt", "location": _loc(*FAR_AWAY)}
+    station_only = {"title": "Fahrstreifensperre", "description": "x", "location": _loc(*WIEN_HBF)}
     noise = {"title": "Hinterhof", "description": "Innenhofarbeiten", "location": _loc(*FAR_AWAY)}
     stub = {"guid": "meta-only"}
     sentinel = "passthrough-non-dict"
 
-    result = _post_filter_baustellen([geo, text, noise, stub, sentinel])
+    result = _post_filter_baustellen([near, text, station_only, noise, stub, sentinel])
 
     titles = [r["title"] for r in result if isinstance(r, dict) and "title" in r]
-    # geo-relevant → kept and prefixed with the affected Bahnhof.
+    # Effect named and next to a Bahnhof → kept, prefixed with the Bahnhof.
     assert any(t.endswith("Fahrbahnsanierung") and "Hauptbahnhof" in t for t in titles)
-    # text-relevant (far from rail, but mentions a stop) → kept, NOT prefixed.
+    # Effect named, far from rail → kept, NOT prefixed.
     assert "Gleisarbeiten" in titles
-    assert "Hinterhof" not in titles  # neither near a Bahnhof nor ÖPNV text → dropped
+    assert not any(t.endswith("Fahrstreifensperre") for t in titles)  # station alone → dropped
+    assert "Hinterhof" not in titles
     assert stub in result  # title/description-less stub passes through
     assert sentinel in result  # non-dict passes through
 
 
 def test_post_filter_enriches_title_with_affected_bahnhof() -> None:
-    item = {"title": "Vollsperre Nordbahnstraße", "description": "x", "location": _loc(*WIEN_HBF)}
+    item = {"title": "Vollsperre Nordbahnstraße", "description": "Die Buslinie 5B wird umgeleitet.", "location": _loc(*WIEN_HBF)}
     [out] = _post_filter_baustellen([item])
     assert out["title"].startswith("Wien Hauptbahnhof: ")
     assert out["title"].endswith("Vollsperre Nordbahnstraße")
@@ -264,34 +291,39 @@ def test_post_filter_enriches_title_with_affected_bahnhof() -> None:
 
 def test_post_filter_does_not_double_name_station() -> None:
     # Title already names the station → no redundant prefix.
-    item = {"title": "Umbau Bahnhof Mödling", "description": "x", "location": _loc(*MOEDLING)}
+    item = {"title": "Umbau Bahnhof Mödling", "description": "Die Haltestelle wird verlegt.", "location": _loc(*MOEDLING)}
     [out] = _post_filter_baustellen([item])
     assert out["title"] == "Umbau Bahnhof Mödling"
 
 
-def test_post_filter_prefixes_u_bahn_line_when_not_geo() -> None:
+def test_post_filter_drops_u_bahn_construction() -> None:
+    # Published 2026-05-29 as "U2/U5: Volksgartenstraße 2": a lane closure for
+    # the U-Bahn construction, read like a U-Bahn disruption.
+    item = {
+        "title": "Volksgartenstraße 2",
+        "description": (
+            "Zur Abwicklung des Baustellenverkehrs für den U-Bahnbau wird in der "
+            "Volksgartenstraße eine Fahrspur gesperrt. Detaillierte Informationen über "
+            "das Bauvorhaben U2 / U5 können über die Ombudsstelle eingeholt werden."
+        ),
+        "location": _loc(*FAR_AWAY),
+    }
+    assert _post_filter_baustellen([item]) == []
+
+
+def test_post_filter_no_u_bahn_prefix() -> None:
+    # A real effect beside the U-Bahn as builder: kept, no "U2:" in front.
     item = {
         "title": "Neubaugasse",
-        "description": "Für den U-Bahnbau der U2 / U5 wird gesperrt.",
+        "description": "Für den U-Bahnbau der U2 wird gesperrt. Die Buslinie 13A wird umgeleitet.",
         "location": _loc(*FAR_AWAY),
     }
     [out] = _post_filter_baustellen([item])
-    assert out["title"] == "U2/U5: Neubaugasse"
-
-
-def test_post_filter_does_not_double_name_u_bahn_line() -> None:
-    # Title already names the U-Bahn line → no redundant "U2:" prefix.
-    item = {
-        "title": "U2 Rathaus gesperrt",
-        "description": "Für den U-Bahnbau der U2 wird gesperrt.",
-        "location": _loc(*FAR_AWAY),
-    }
-    [out] = _post_filter_baustellen([item])
-    assert out["title"] == "U2 Rathaus gesperrt"
+    assert out["title"] == "Neubaugasse"
 
 
 def test_post_filter_does_not_guess_a_bus_tram_line() -> None:
-    # Bus/tram impact → kept, but NO guessed line prefix (only U-Bahn/Bahnhof).
+    # Bus/tram impact → kept, but NO guessed line prefix.
     item = {
         "title": "Eßlinger Hauptstraße 96",
         "description": "Der Busverkehr der Wiener Linien wird umgeleitet.",
@@ -301,22 +333,7 @@ def test_post_filter_does_not_guess_a_bus_tram_line() -> None:
     assert out["title"] == "Eßlinger Hauptstraße 96"
 
 
-# --- u_bahn_lines / oepnv_lead ------------------------------------------------
-
-
-@pytest.mark.parametrize(
-    "text, expected",
-    [
-        ("Bauvorhaben U2 / U5", ["U2", "U5"]),
-        ("Neubau der U-Bahnstation der U2 Pilgramgasse", ["U2"]),
-        ("Generalsanierung der U6 Trasse", ["U6"]),
-        ("U-Bahnbau ohne Liniennummer", []),
-        ("Buslinie 10A und Hausnummer 96", []),
-        ("", []),
-    ],
-)
-def test_u_bahn_lines(text: str, expected: list[str]) -> None:
-    assert u_bahn_lines(text) == expected
+# --- oepnv_lead -----------------------------------------------------------
 
 
 def test_oepnv_lead_moves_transit_sentence_to_front() -> None:
@@ -399,12 +416,29 @@ def test_first_lonlat_rejects_bad_geometries(coordinates: object) -> None:
 # --- end-to-end on the bundled sample -----------------------------------------
 
 
-def test_sample_payload_is_all_transit_relevant() -> None:
+def test_sample_payload_keeps_only_the_site_with_an_effect() -> None:
     payload = json.loads(SAMPLE_PATH.read_text(encoding="utf-8"))
     events = update_baustellen_cache._collect_events(payload)
     assert len(events) == 2
-    # Feature 1 is geo-relevant (at a Bahnhof), feature 2 is text-relevant
-    # (mentions a stop, far from rail) — the "Bahnhofsnähe ODER ÖPNV-Text" policy.
-    assert all(is_transit_relevant(event) for event in events)
+    # Feature 1 lies at a Bahnhof but its text names no effect on transit;
+    # feature 2 moves a tram stop.
+    assert [is_transit_relevant(event) for event in events] == [False, True]
     # The LineString feature must still yield a usable representative coordinate.
     assert events[1]["location"]["coordinates"]["lat"] == pytest.approx(48.2103)
+
+
+def test_oepnv_lead_keeps_the_house_number_word_intact() -> None:
+    # "ONr." / "O.Nr." (house number) and "mind." are no sentence end. Published
+    # 2026-07-23 to 08-04 as "… wird von Burggasse ONr.67 nach Burggasse ONr.
+    # Derrechte Fahrstreifen …": the stop's new address was cut off.
+    text = (
+        "Derrechte Fahrstreifen wird gesperrt. Die Haltestelle des betroffenen "
+        "öffentlichen Verkehrsmittels wird von Burggasse ONr.67 nach Burggasse ONr. 69 verlegt."
+    )
+    assert oepnv_lead(text).startswith(
+        "Die Haltestelle des betroffenen öffentlichen Verkehrsmittels wird von "
+        "Burggasse ONr.67 nach Burggasse ONr. 69 verlegt."
+    )
+    out = oepnv_lead("Es bleibt mind. 3,50 m frei. Die Haltestelle wird nach Hausnummer O.Nr. 31 verlegt.")
+    assert out.startswith("Die Haltestelle wird nach Hausnummer O.Nr. 31 verlegt.")
+    assert "mind. 3,50 m frei." in out

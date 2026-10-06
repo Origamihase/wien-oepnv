@@ -1,24 +1,31 @@
 """Relevance policy for the Stadt-Wien construction-site provider.
 
-The upstream WFS feed (``ogdwien:BAUSTELLEOGD``) lists *every* road
-construction site in Vienna — the overwhelming majority of which never
-touch public transport. To keep the feed a focused ÖPNV signal we admit
-a construction site on one of two grounds:
+The upstream WFS layers (``ogdwien:BAUSTELLENLINOGD`` / ``…PKTOGD``) list
+every traffic-relevant road construction site in Vienna, most of which
+never touch public transport. A construction site reaches the feed only
+when its own description says what changes for public transport: a stop
+moved or closed, a line diverted or shortened, tram service suspended, a
+rail replacement bus (operator decision 2026-10-06, "Nur mit Öffi-Folgen").
 
-* **Geographic** — it sits within a small radius of a rail *Bahnhof*: a
-  Wien station or a Pendlerbahnhof from the curated station directory
-  (see :func:`src.utils.stations.nearest_rail_station`). A lane closure
-  on the forecourt of Wien Floridsdorf is worth surfacing; one in a back
-  courtyard 2 km from any station is not.
-* **Textual** — its own description names public transport: a stop, a
-  line, a bus, a tram, the U-/S-Bahn. The Stadt-Wien referral sentence
-  ("Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel
-  sind der Auskunft der Wiener Linien … zu entnehmen") is *not* such a
-  mention — it names nothing, and the feed does not display it either
-  (see :data:`REFERRAL_BOILERPLATE_RE`).
+What does *not* count:
 
-Both checks are linear: a coordinate scan over ~160 stations and a
-literal-alternation regex with bounded runs. No backtracking surface.
+* **Nearness to a station.** Until 2026-10-06 a site within 150 m of a
+  rail Bahnhof was admitted on that alone; "Rennweg 33A–37", a night lane
+  closure next to S Rennweg, held places 2 to 10 for five days with
+  nothing about transit in it.
+* **The U-Bahn as the builder.** "Im Zuge des U-Bahnbaus", "Bauvorhaben
+  U2 / U5", "Vorarbeit für die U5": road closures for the construction of
+  a line, not an effect on one. Every U-Bahn mention in the source since
+  May 2026 is of this kind; titled "U2/U5: …" they read like a U-Bahn
+  disruption on the display.
+* **Transit named as unaffected.** "in der betriebslosen Zeit der
+  Straßenbahn", "nicht beeinträchtigt", "einschließlich des öffentlichen
+  Verkehrs … aufrecht gehalten" — see :data:`_NO_IMPACT_RE`.
+* **The referral to Wiener Linien and the operator's name** — see
+  :data:`REFERRAL_BOILERPLATE_RE` and ``_OPERATOR_NAME_RE``.
+
+The checks are literal-alternation regexes with bounded runs. No
+backtracking surface.
 """
 from __future__ import annotations
 
@@ -38,16 +45,7 @@ __all__ = [
     "oepnv_lead",
     "relevant_station",
     "transit_text",
-    "u_bahn_lines",
 ]
-
-# U-Bahn line labels (U1–U6) are the one line identifier that can be pulled
-# from the free text reliably — unambiguous token, no negation traps, and
-# it marks the marquee projects. Bus/tram line *numbers* are intentionally
-# NOT extracted: the source text negates them ("Linie 49 nicht
-# beeinträchtigt"), reuses the operator name ("Wiener Linien") and is full
-# of house numbers — extracting them would mislabel entries.
-_UBAHN_RE: Final = re.compile(r"\bu([1-6])\b", re.IGNORECASE)
 
 # Sentence splitter for surfacing the ÖPNV-relevant sentence. Splits after
 # ., ! or ? followed by whitespace — linear, no backtracking.
@@ -63,40 +61,71 @@ _SENTENCE_SPLIT_RE: Final = re.compile(r"(?<=[.!?])\s+")
 _NO_SENTENCE_BREAK_RE: Final = re.compile(
     r"(?:"
     r"\b(?:nr|bzw|ca|usw|etc|inkl|exkl|ggf|evtl|max|min|vgl|str|pl|dr|"
-    r"hausnr|mio|mrd|tel|geb|lt|bspw|abs|kfz)"
+    r"hausnr|mio|mrd|tel|geb|lt|bspw|abs|kfz|mind|onr)"
+    # "O.Nr." (Ordnungsnummer, the house number). Without it and "ONr" the
+    # stop's new address was cut in two: "… wird von Burggasse ONr.67 nach
+    # Burggasse ONr. Derrechte Fahrstreifen …" (German feed, 361 times
+    # 2026-07-23 to 08-04; the "69 verlegt." landed behind the next
+    # sentences), the same with "Brünner Straße ONr. 31" (May 2026).
+    r"|\bo\.\s?nr"
     r"|\bz\.\s?b|\bu\.\s?a|\bd\.\s?h"  # z.B. / u.a. / d.h.
     r"|\b\d{1,2}"  # day/month ordinal ("3." in "3. März")
     r")\.\s*$",
     re.IGNORECASE,
 )
 
-# Public-transport vocabulary for the text signal. A construction site whose
-# title/description mentions any of these affects ÖPNV even when it is not
-# right next to a rail Bahnhof (e.g. a bus/tram stop being relocated). The
-# alternation is plain literals + bounded character classes — linear, no
+# Public-transport vocabulary for the text signal: a sentence that names one
+# of these, and does not say transit is unaffected (:data:`_NO_IMPACT_RE`),
+# says what changes for passengers (a bus/tram stop relocated, a line
+# diverted). The alternation is plain literals + bounded character classes — linear, no
 # catastrophic backtracking. Clear compound terms match as substrings;
-# short/ambiguous tokens (bus, bim, linie, U1–U6, tram) require word
+# short/ambiguous tokens (bus, bim, linie, tram) require word
 # boundaries so "Busch" or "Baulinie" do not false-trigger.
 _OEPNV_RE: Final = re.compile(
-    r"haltestelle"
+    # Not "Haltestellenkap": the curb of a stop as a road surface ("der
+    # Verkehr wird über das befahrbare Haltestellenkap geführt").
+    r"haltestelle(?!nkap)"
     r"|stra[sß]+enbahn"
     r"|schienenersatz"
     r"|verkehrsmittel"
     r"|buslinie"
     r"|autobus"
-    # Leading \b ONLY: matches "U-Bahn"/"S-Bahn"/"U-Bahnbau"/"U-Bahnstation"
-    # but not the substrings in "Hochschaubahn" ("ubahn") or
-    # "Verkehrsbahnhof" ("sbahn"). A TRAILING \b after "bahn" would wrongly
-    # drop the compound forms (no boundary between "bahn" and "bau") — bug b4.
-    r"|\bu-?bahn"
+    # Leading \b ONLY: matches "S-Bahn"/"S-Bahnstation" but not the substring
+    # in "Verkehrsbahnhof" ("sbahn"). The U-Bahn is not in this list: in this
+    # source it is always the builder (module docstring).
     r"|\bs-?bahn"
     r"|öpnv"
-    r"|öffentliche[rn]?\s+verkehr"
+    # "der öffentliche Verkehr", "des öffentlichen Verkehrsmittels" — but not
+    # "die öffentliche Verkehrsfläche", the city's word for the road itself
+    # ("in der Mitte der öffentlichen Verkehrsfläche", Matzleinsdorfer Platz).
+    r"|öffentliche[rmns]?\s+verkehr(?:s(?:mittel\w*)?)?\b"
+    # "Der Busverkehr der Wiener Linien wird über den Kreisverkehr geführt"
+    # (Eßlinger Hauptstraße): the bus is named in a compound.
+    r"|\bbusverkehr"
     r"|\bbus(?:se)?\b"
     r"|\bbim\b"
     r"|\blinien?\b"
-    r"|\bu[1-6]\b"
     r"|\btram\b",
+    re.IGNORECASE,
+)
+
+# A sentence that names transit to say it is NOT affected, or names it as the
+# reason for the works. Measured on every sentence of the cache history since
+# May 2026 that names transit (2026-10-06): the works happen "in der
+# betriebslosen Zeit der Straßenbahn" (seven sites, among them Antonsplatz,
+# Simonygasse, Schottenring 11, Wipplingerstraße 13), "Der Betrieb der
+# Straßenbahnlinie 49 wird … nicht beeinträchtigt" (Linzer Straße), "Der
+# Fahrzeugverkehr einschließlich des öffentlichen Verkehrs kann in allen
+# bestehenden Fahrrelationen aufrecht gehalten werden" (Donaufelder Straße),
+# "aufgrund der Verlängerung der Straßenbahnlinie 18" (Stadionbrücke). None
+# of these sentences said anything else about transit; a site with a real
+# effect states it in another sentence (Linzer Straße: "Die Haltestelle …
+# wird provisorisch … verlegt").
+_NO_IMPACT_RE: Final = re.compile(
+    r"betriebslose"
+    r"|\bnicht\s+(?:beeinträchtigt|betroffen|behindert)"
+    r"|in\s+allen\s+(?:bestehenden\s+)?Fahrrelationen"
+    r"|\b(?:Verlängerung|Neubau|Ausbau)\w*\s+(?:der|des)\s+Straßenbahn",
     re.IGNORECASE,
 )
 
@@ -117,6 +146,10 @@ _OEPNV_RE: Final = re.compile(
 # item; audit 2026-09-19, F.1). One definition for both decisions: what says
 # nothing about ÖPNV on the display says nothing about ÖPNV at the gate.
 #
+# A fourth wording has the verb in the singular ("… des betroffenen
+# öffentlichen Verkehrsmittels ist der Auskunft …", Johnstraße and
+# Alaudagasse, July 2026); it counted as an ÖPNV mention until 2026-10-06.
+#
 # Anchored on the two invariant ends; the middle varies within a bounded,
 # dot-free, non-greedy run so a match can never cross a sentence boundary.
 # ``\s*`` before ``öffentlichen``: the upstream text loses spaces
@@ -124,23 +157,21 @@ _OEPNV_RE: Final = re.compile(
 # :func:`repair_glued_words` cannot see.
 REFERRAL_BOILERPLATE_RE: Final = re.compile(
     r"N[äa]here\s+Informationen\s+zu\w*\s+[^.]{0,80}?"
-    r"betroffenen\s*öffentlichen\s+Verkehrsmittel\w*\s+sind\s+der\s+Auskunft\s+"
+    r"betroffenen\s*öffentlichen\s+Verkehrsmittel\w*\s+(?:sind|ist)\s+der\s+Auskunft\s+"
     r"der\s+Wiener\s+Linien\b[^.]{0,40}?zu\s+entnehmen\.?\s*",
     re.IGNORECASE,
 )
 
 #: Default proximity (in metres) between a construction site and a rail
-#: Bahnhof for the site to count as ÖPNV-relevant. 150 m mirrors the
+#: Bahnhof for the Bahnhof to be named in front of the title (since
+#: 2026-10-06 only that; it no longer admits a site). 150 m mirrors the
 #: project's existing "effectively at the station" threshold
-#: (:data:`src.utils.geo.STATION_DRIFT_TOLERANCE_METERS`): a closure
-#: within 150 m of a Bahnhof plausibly affects access to it, while the
-#: tight radius keeps unrelated road works out of the feed.
+#: (:data:`src.utils.geo.STATION_DRIFT_TOLERANCE_METERS`).
 DEFAULT_STATION_RADIUS_M: Final = 150.0
 
-# Operator override bounds. The upper bound stops anyone widening the
-# radius until the filter re-floods the feed it exists to protect; the
-# lower bound keeps the match meaningful (a sub-25 m radius would drop
-# legitimate forecourt closures over GPS jitter alone).
+# Operator override bounds (``BAUSTELLEN_STATION_RADIUS_M``). The upper bound
+# keeps a far station from being named; the lower bound keeps the match
+# meaningful over GPS jitter.
 _MIN_STATION_RADIUS_M: Final = 25.0
 _MAX_STATION_RADIUS_M: Final = 2_000.0
 
@@ -181,36 +212,45 @@ def relevant_station(location: Any, *, radius_m: float | None = None) -> str | N
     return match[0] if match else None
 
 
+# The operator's name is not a mention of a line: "Abdichtungsarbeiten der
+# Wiener Linien GmbH & Co KG an der Decke des U-Bahn-Bauwerks" (Favoritenstraße,
+# a pedestrian zone) and "im Schatten der Gleisbauarbeiten der Wiener Linien"
+# (Aumannplatz) reached the feed on ``\blinien?\b`` alone. Where the text does
+# name an impact it says so in its own words ("Die Buslinie 7A wird …").
+_OPERATOR_NAME_RE: Final = re.compile(
+    r"\bWiener\s+Linien\b(?:\s+GmbH(?:\s*&\s*Co\.?\s*KG)?)?", re.IGNORECASE
+)
+
+
 def transit_text(text: str) -> str:
     """Return ``text`` as the ÖPNV vocabulary check should see it.
 
     Glued words are repaired first so the referral's run-together spelling
-    ("NähereInformationen") is recognised, then the referral is removed.
-    What remains is the part of the description that can name a line, a
-    stop or a mode.
+    ("NähereInformationen") is recognised, then the referral and the
+    operator's name are removed. What remains is the part of the
+    description that can name a line, a stop or a mode.
     """
 
     if not text:
         return ""
-    return REFERRAL_BOILERPLATE_RE.sub("", repair_glued_words(text))
+    text = REFERRAL_BOILERPLATE_RE.sub("", repair_glued_words(text))
+    return _OPERATOR_NAME_RE.sub("", text)
 
 
 def mentions_oepnv(text: str) -> bool:
-    """Return ``True`` if ``text`` mentions public transport (a stop, line,
-    bus, tram/Bim, U-/S-Bahn, …) in its own words.
+    """Return ``True`` if ``text`` says what changes for public transport.
 
-    The Stadt-Wien referral to Wiener Linien does not count: it is removed
-    before the vocabulary check (see :data:`REFERRAL_BOILERPLATE_RE`).
+    Sentence by sentence: one that names a stop, a line, a bus, a tram, the
+    S-Bahn or a rail replacement and does not say transit is unaffected
+    (:data:`_NO_IMPACT_RE`). The referral to Wiener Linien and the
+    operator's name are removed first (:func:`transit_text`).
     """
 
-    return bool(_OEPNV_RE.search(transit_text(text)))
+    return any(_sentence_names_impact(s) for s in _split_into_sentences(transit_text(text)))
 
 
-def u_bahn_lines(text: str) -> list[str]:
-    """Return the sorted, de-duplicated U-Bahn line labels (``U1``–``U6``)
-    named in ``text`` — e.g. ``["U2", "U5"]``; empty if none."""
-
-    return sorted({f"U{digit}" for digit in _UBAHN_RE.findall(text or "")})
+def _sentence_names_impact(sentence: str) -> bool:
+    return bool(_OEPNV_RE.search(sentence)) and not _NO_IMPACT_RE.search(sentence)
 
 
 def _split_into_sentences(text: str) -> list[str]:
@@ -252,19 +292,17 @@ def oepnv_lead(text: str) -> str:
     return text
 
 
-def is_transit_relevant(item: Any, *, radius_m: float | None = None) -> bool:
-    """Return ``True`` if a construction ``item`` is ÖPNV-relevant.
+def is_transit_relevant(item: Any) -> bool:
+    """Return ``True`` if a construction ``item`` reaches the feed.
 
-    Relevance is geographic **or** textual: the site sits within the
-    configured radius of a rail Bahnhof (Wien station or Pendlerbahnhof),
-    OR its title/description names public transport. ``item`` is the
-    provider's event mapping (``location`` + ``title`` + ``description``).
-    Non-dict input is treated as not relevant (fail closed).
+    Its title or description must say what changes for public transport
+    (:func:`mentions_oepnv`); nearness to a station alone does not count
+    (module docstring). ``item`` is the provider's event mapping
+    (``title`` + ``description``). Non-dict input is treated as not
+    relevant (fail closed).
     """
 
     if not isinstance(item, dict):
         return False
-    if relevant_station(item.get("location"), radius_m=radius_m) is not None:
-        return True
-    text = f"{item.get('title') or ''} {item.get('description') or ''}"
+    text = f"{item.get('title') or ''}. {item.get('description') or ''}"
     return mentions_oepnv(text)

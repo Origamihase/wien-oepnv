@@ -172,7 +172,9 @@ def test_baustellen_main_survives_data_degradation(
     def fake_fetch_remote(url: str, timeout: int) -> None:
         return None
 
-    def degrading_write_cache(provider: str, items: list[dict[str, Any]]) -> None:
+    def degrading_write_cache(
+        provider: str, items: list[dict[str, Any]], **_kw: Any
+    ) -> None:
         raise DataDegradationError("degraded payload rejected")
 
     monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)

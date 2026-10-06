@@ -215,6 +215,11 @@ def test_house_numbers_read_as_an_address() -> None:
     assert _mark_house_numbers("Siebenbrunnengasse von Siebenbrunnenplatz bis 44") == (
         "Siebenbrunnengasse von Siebenbrunnenplatz bis Nr. 44"
     )
+    # "ONr." is the city's house-number word (published 2026-08-28 to 09-02).
+    assert _mark_house_numbers("Altmannsdorfer Straße ONr.76 bis ONr.76A") == (
+        "Altmannsdorfer Straße 76–76A"
+    )
+    assert _mark_house_numbers("Linke Wienzeile O.Nr. 86 bis 96") == "Linke Wienzeile 86–96"
 
 
 def test_streets_and_number_spans_of_their_own_stay() -> None:
