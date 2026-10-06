@@ -5,6 +5,15 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Feed: eine verstrichene „Voraussichtlich bis <Uhrzeit>“ fällt weg
+  (2026-10-06)**: Betreiberentscheidung „Weglassen“. In 40 von 184
+  Feed-Ständen seit Juli war die von WL genannte Uhrzeit schon vorbei (U6
+  „bis 19:10“ um 20:31). Ist sie vorbei, steht nur noch Grund und „[Seit
+  hh:mm]“ da (`_drop_passed_expected_end`). Die Uhrzeit gilt für den Tag
+  der Meldung; was mehr als drei Stunden davor liegt, für den nächsten
+  Morgen. Ein Datum, „Betriebsschluss“ und „Nicht absehbar“ bleiben. Im
+  EN-Feed fällt „Expected until …“ mit; die geänderten Texte werden einmal
+  neu übersetzt.
 * **Feed: „Voraussichtlich bis 14:10 Uhr“ statt „Voraussichtliche Dauer:
   14:10 Uhr“ (2026-10-06)**: WLs Störungsvorlage nennt das erwartete Ende
   unter einem Dauer-Label; auf dem TV las sich die Uhrzeit wie eine Dauer.

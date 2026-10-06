@@ -27,7 +27,9 @@ from src.utils.text import repair_glued_words, repair_saint_abbreviation
 pytestmark = pytest.mark.usefixtures("time_line_today")
 
 
-def _format(title: str, desc: str, *, source: str = "Wiener Linien") -> tuple[str, str]:
+def _format(
+    title: str, desc: str, *, source: str = "Wiener Linien", year: int = 2026
+) -> tuple[str, str]:
     item = cast(
         FeedItem,
         {
@@ -42,8 +44,8 @@ def _format(title: str, desc: str, *, source: str = "Wiener Linien") -> tuple[st
     formatted = build_feed._format_item_content(
         item,
         ident="t",
-        starts_at=datetime(2026, 10, 3, 6, 0, tzinfo=UTC),
-        ends_at=datetime(2026, 10, 4, 6, 0, tzinfo=UTC),
+        starts_at=datetime(year, 10, 3, 6, 0, tzinfo=UTC),
+        ends_at=datetime(year, 10, 4, 6, 0, tzinfo=UTC),
     )
     return formatted.title_out, formatted.desc_text_truncated
 
@@ -90,6 +92,8 @@ def test_space_before_full_stop_is_gone() -> None:
         "9A: Falschparker",
         "Linie 9A: Fahrtbehinderung in Richtung Meidling Hauptstraße U. "
         "Voraussichtliche Dauer: 12:15 Uhr . Grund: Falschparker im Bereich Ratschkygasse.",
+        # Ahead, or the passed 12:15 drops the sentence (``_drop_passed_expected_end``).
+        year=2099,
     )
     assert "Uhr ." not in desc
     assert "12:15 Uhr." in desc
