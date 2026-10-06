@@ -5,6 +5,15 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Code Scanning: letzte echte Funde (2026-10-06)**: `atomic_write`
+  (`src/utils/files.py`) räumte bei `KeyboardInterrupt` oder `SystemExit`
+  im Schreibblock nicht auf: die offene temporäre Datei und die halb
+  geschriebene `*.tmp`-Datei blieben liegen, weil nur `Exception`
+  abgefangen wurde. Jetzt schließt ein `with`-Block die Datei immer, und
+  der Fehlerpfad fängt `BaseException`. `src/utils/stats.py` setzt die
+  Rechte der Statistik-CSVs nicht mehr eigens auf `0o644`; git speichert
+  den Modus ohnehin nicht, und die umask ergibt denselben Wert. Feed-Inhalt
+  unverändert.
 * **Code Scanning: übrige CodeQL-Meldungen aufgeräumt (2026-10-06)**:
   Beim Abarbeiten fiel eine echte Lücke auf: Steht im Login einer URL
   ein unkodiertes `@` (`smtps://noreply@example.com:pw@smtp.example.com`),

@@ -28,7 +28,6 @@ import csv
 import io
 import logging
 import math
-import os
 import re
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
@@ -383,10 +382,6 @@ def _append_row(
             if write_header:
                 writer.writerow(header)
             writer.writerow(row)
-        try:
-            os.chmod(path, 0o644)
-        except OSError:
-            pass  # best effort: the row is written, only the mode could not be normalised
         return True
     except OSError as exc:
         LOGGER.warning(

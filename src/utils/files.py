@@ -161,18 +161,19 @@ def atomic_write(
         # ``fd``. Null the raw handle so the failure path never double-closes
         # it (a re-used fd could by then belong to an unrelated file).
         fd = None
-        yield f
-        f.flush()
-        os.fsync(f.fileno())
+        # ``with f`` closes the temporary file before it is moved into place,
+        # on success and on error alike; the failure path below may close it
+        # once more, which is a no-op on an already closed file object.
+        with f:
+            yield f
+            f.flush()
+            os.fsync(f.fileno())
 
-        # Set permissions before moving into place and closing
-        try:
-            os.fchmod(f.fileno(), permissions)
-        except OSError:
-            pass  # no fchmod on this platform (Windows); the file keeps its 0o600
-
-        f.close()
-        f = None  # Prevent double close in finally
+            # Set permissions before moving into place and closing
+            try:
+                os.fchmod(f.fileno(), permissions)
+            except OSError:
+                pass  # no fchmod on this platform (Windows); the file keeps its 0o600
 
         if overwrite:
             os.replace(tmp_path, target)
@@ -202,7 +203,10 @@ def atomic_write(
         except OSError:
             pass  # no directory descriptors on this platform (Windows); see comment above
 
-    except Exception:
+    except BaseException:
+        # BaseException, not Exception: a KeyboardInterrupt or SystemExit
+        # raised inside the ``with`` body must still close the temporary
+        # file and remove it instead of leaking both.
         _close_and_cleanup_failed_write(f, fd, tmp_path)
         raise
 
