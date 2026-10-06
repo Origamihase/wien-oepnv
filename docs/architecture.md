@@ -548,6 +548,19 @@ verdrängt eine andere Störung.
   Grund wieder ganz in die 180 Zeichen. Zur Zeitzeile widerspricht er nie:
   Uhrzeiten stehen unter „[Seit hh:mm]“, „[Heute]“ oder „[Am …]“, „Ende
   August“ unter „[Bis 31.08.]“. Im EN-Feed: §8, „Expected until“.
+  Ist die Uhrzeit vorbei, fällt der Satz weg (`_drop_passed_expected_end`,
+  Betreiberentscheidung „Weglassen“ vom 06.10.2026): In 40 von 184
+  Feed-Ständen seit Juli war sie schon vorbei (U6 „bis 19:10“ um 20:31). WL
+  meldet die Störung dann weiter, ihr Ende ist offen; Grund und „[Seit
+  hh:mm]“ bleiben. Die Uhrzeit gilt für den Tag der jüngsten Zeit der Meldung
+  (`pubDate` oder `starts_at`), bis drei Stunden davor noch für diesen Tag
+  (N29: „00:30 Uhr“ in einer Meldung von 01:12), sonst für den nächsten
+  Morgen („02:45 Uhr“ in einer Meldung von 23:10). Ein Fenster um die
+  aktuelle Zeit taugt nicht: WL schätzt bis 17,5 Stunden voraus („ca. 22
+  Uhr“ für eine Veranstaltung, angelegt um 04:30). Ein Datum,
+  „Betriebsschluss“ und „Nicht absehbar“ bleiben stehen. Nachgespielt über
+  387 Feed-Stände: 49 der 243 angezeigten Sätze mit Uhrzeit fallen weg,
+  Reihenfolge, GUIDs und Titel bleiben gleich.
 * **Zeitzeile: was für heute zählt (seit 2026-10-02, Betreiberentscheidung).**
   Wer vor dem Display steht, fragt: Gilt das jetzt, und wie lange noch?
   `format_local_times` antwortet darauf statt mit zwei vollen Daten:

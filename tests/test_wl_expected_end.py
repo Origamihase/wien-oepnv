@@ -35,11 +35,13 @@ def _summary(desc: str) -> str:
             "link": "",
         },
     )
+    # Far ahead, so the clock time in the text has not passed whenever the
+    # test runs (``_drop_passed_expected_end`` reads the real clock).
     formatted = build_feed._format_item_content(
         item,
         ident="t",
-        starts_at=datetime(2026, 10, 3, 6, 0, tzinfo=UTC),
-        ends_at=datetime(2026, 10, 3, 7, 0, tzinfo=UTC),
+        starts_at=datetime(2099, 10, 3, 6, 0, tzinfo=UTC),
+        ends_at=datetime(2099, 10, 3, 7, 0, tzinfo=UTC),
     )
     return formatted.desc_text_truncated.split("[", 1)[0].strip()
 
@@ -200,3 +202,83 @@ def test_label_before_bis_and_a_day_is_no_house_number_range() -> None:
     assert build_feed._render_record_table(
         "Von: Eipeldauer Straße 12 bis 14.", source="Wiener Linien", category="Hinweis"
     ) == "From: Eipeldauer Straße 12-14."
+
+
+# --- A passed expected end goes (operator decision 2026-10-06, "Weglassen") ---
+
+_VIE = build_feed._VIENNA_TZ
+
+
+def _at(day: int, hour: int, minute: int = 0) -> datetime:
+    return datetime(2026, 10, day, hour, minute, tzinfo=_VIE)
+
+
+def _ticker(pub: datetime) -> FeedItem:
+    return cast(FeedItem, {"source": "Wiener Linien", "category": "Störung", "pubDate": pub})
+
+
+_TEXT = (
+    "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtlich bis 19:10 Uhr. "
+    "Grund: Rettungseinsatz."
+)
+
+
+def test_passed_clock_time_is_dropped() -> None:
+    """U6 on 2026-10-06: "bis 19:10" still stood at 20:31."""
+    out = build_feed._drop_passed_expected_end(
+        _TEXT, _ticker(_at(6, 18, 58)), _at(6, 18, 58), now=_at(6, 20, 31)
+    )
+    assert out == "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Grund: Rettungseinsatz."
+
+
+def test_coming_clock_time_stays() -> None:
+    out = build_feed._drop_passed_expected_end(
+        _TEXT, _ticker(_at(6, 18, 58)), _at(6, 18, 58), now=_at(6, 19, 9)
+    )
+    assert out == _TEXT
+
+
+def test_estimate_far_ahead_stays() -> None:
+    """13A on 2026-09-26: "ca. 22 Uhr" entered at 04:30 for an event."""
+    text = "Busse halten Amerlingstraße 8-10. Voraussichtlich bis ca. 22 Uhr. Grund: Veranstaltung."
+    pub = datetime(2026, 9, 26, 4, 30, tzinfo=_VIE)
+    now = datetime(2026, 9, 26, 17, 0, tzinfo=_VIE)
+    assert build_feed._drop_passed_expected_end(text, _ticker(pub), pub, now=now) == text
+
+
+def test_end_after_midnight_counts_for_the_next_morning() -> None:
+    text = "Kein Betrieb. Voraussichtlich bis 02:45 Uhr."
+    pub = _at(6, 23, 10)
+    assert build_feed._drop_passed_expected_end(text, _ticker(pub), pub, now=_at(7, 1, 0)) == text
+    assert build_feed._drop_passed_expected_end(text, _ticker(pub), pub, now=_at(7, 3, 0)) == "Kein Betrieb."
+
+
+def test_end_already_passed_when_entered_is_dropped() -> None:
+    """N29 on 2026-07-30: "00:30 Uhr" in a message of 01:12."""
+    text = "Fahrtbehinderung. Voraussichtlich bis 00:30 Uhr. Grund: Rettungseinsatz."
+    pub = datetime(2026, 7, 30, 1, 12, tzinfo=_VIE)
+    now = datetime(2026, 7, 30, 1, 30, tzinfo=_VIE)
+    assert build_feed._drop_passed_expected_end(text, _ticker(pub), pub, now=now) == (
+        "Fahrtbehinderung. Grund: Rettungseinsatz."
+    )
+
+
+def test_newest_time_of_the_item_is_the_anchor() -> None:
+    """A bundle's pubDate is its earliest message, starts_at its latest."""
+    text = "Fahrtbehinderung. Voraussichtlich bis 08:00 Uhr."
+    pub, start = _at(5, 7, 30), _at(6, 7, 40)
+    assert build_feed._drop_passed_expected_end(text, _ticker(pub), start, now=_at(6, 7, 50)) == text
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Kein Betrieb. Voraussichtlich bis Betriebsschluss.",
+        "Kein Betrieb. Voraussichtlich bis 19. September, etwa 01:00 Uhr.",
+        "Kein Betrieb. Voraussichtlich bis 31.07.2026.",
+        "Kein Betrieb. Voraussichtliche Dauer: Nicht absehbar.",
+    ],
+)
+def test_only_a_clock_time_is_dropped(text: str) -> None:
+    pub = datetime(2026, 7, 1, 8, 0, tzinfo=_VIE)
+    assert build_feed._drop_passed_expected_end(text, _ticker(pub), pub, now=_at(6, 12)) == text

@@ -8864,6 +8864,53 @@ _CLOCK_UHT_RE = re.compile(r"(?<=\d)\s*Uht\b")
 _CLOCK_GLUED_UHR_RE = re.compile(r"(?<=\d\d:\d\d)Uhr\b")
 
 
+# The expected end as a clock time, the sentence with its full stop:
+# "Voraussichtlich bis 19:10 Uhr.", "… bis ca. 22 Uhr.", "… bis 10:00.". A
+# date ("bis 19. September", "bis 31.07.2026") is no clock time.
+_EXPECTED_CLOCK_END_RE = re.compile(
+    r"(?<!\w)Voraussichtlich bis (?:(?:ca\.|circa|etwa|gegen)\s*)?"
+    r"(?P<h>\d{1,2})(?:[:.](?P<m>\d{2})(?:\s*Uhr)?|\s*Uhr)\.?(?=\s|$)\s*"
+)
+# How far before the item's newest time an end may lie and still mean that
+# day: WL's estimate had already passed when the ticker came (N29 on
+# 2026-07-30: "00:30 Uhr" in a message of 01:12). Further back, it is the
+# next morning ("02:45 Uhr" in a message of 23:10).
+_EXPECTED_END_BEFORE_MESSAGE = timedelta(hours=3)
+
+
+def _drop_passed_expected_end(
+    text: str, it: FeedItem, starts_at: datetime | None, now: datetime | None = None
+) -> str:
+    """*text* without "Voraussichtlich bis <Uhrzeit>." once that time has passed.
+
+    Operator decision 2026-10-06 ("Weglassen"): in 40 of 184 feed states
+    since July that carried WL's expected end as a clock time, the time had
+    passed (U6 "bis 19:10" at 20:31). WL still reports the disruption, so its
+    end is open; the cause and "[Seit hh:mm]" stay. The clock time belongs to
+    the day of the item's newest time (``pubDate`` or ``starts_at``): WL
+    writes estimates up to 17.5 hours ahead ("ca. 22 Uhr" for an event,
+    entered 04:30), so a window around the present would drop a valid one.
+    """
+    match = _EXPECTED_CLOCK_END_RE.search(text)
+    if match is None:
+        return text
+    hour, minute = int(match["h"]), int(match["m"] or 0)
+    if hour > 24 or minute > 59 or (hour == 24 and minute):
+        return text
+    times = [t for t in (starts_at, _parse_datetime(it.get("pubDate"))) if isinstance(t, datetime)]
+    if not times:
+        return text
+    anchor = max(_to_utc(t) for t in times).astimezone(_VIENNA_TZ)
+    end = datetime.combine(anchor.date(), time(hour % 24, minute), tzinfo=_VIENNA_TZ)
+    if hour == 24 or end < anchor - _EXPECTED_END_BEFORE_MESSAGE:
+        end = datetime.combine(
+            anchor.date() + timedelta(days=1), time(hour % 24, minute), tzinfo=_VIENNA_TZ
+        )
+    if _to_utc(end) >= _to_utc(now or datetime.now(UTC)):
+        return text
+    return (text[: match.start()] + text[match.end():]).strip()
+
+
 def _expected_end_sentence(text: str) -> str:
     """WL's "Voraussichtliche Dauer: <end>" as "Voraussichtlich bis <end>"."""
     text = _CLOCK_SEMICOLON_RE.sub(r"\1:\2", text)
@@ -9569,7 +9616,7 @@ def _format_item_content(
     # ellipsis (three or more) stays.
     summary = _DOUBLED_FULL_STOP_RE.sub(".", summary)
     summary = _SPACE_BEFORE_PUNCT_RE.sub("", _EMPTY_PLACE_RE.sub("", summary))
-    summary = _expected_end_sentence(summary)
+    summary = _drop_passed_expected_end(_expected_end_sentence(summary), it, starts_at)
     # Drop the "ask Wiener Linien" referral before the sentence split, or it
     # takes sentence one and the 180-char budget with it. Keep the referral
     # when it is all the description has: a useless sentence still beats an
