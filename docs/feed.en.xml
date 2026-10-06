@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 06 Oct 2026 20:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 20:31:04 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[65A: Third-party traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">60f6aeb5159243f170aeeed12a1220a886b53980899ac92051b53aa9ab94b0ea</guid>
-      <pubDate>Tue, 06 Oct 2026 19:11:20 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 19:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 19:11:20 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Line 65A is redirected towards Wienerberg City between Ettenreichgasse, Schulzentrum and Gußriegelstraße via Laxenburger Straße and Raxstraße. [Since 19:11]</description>
-      <content:encoded><![CDATA[Line 65A is redirected towards Wienerberg City between Ettenreichgasse, Schulzentrum and Gußriegelstraße via Laxenburger Straße and Raxstraße.<br/>[Since 19:11]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11/O: Third-party accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">06076533007ef2930b17429fae4f2c4f7f36dbf3fe61738ccf324bca71f77190</guid>
-      <pubDate>Tue, 06 Oct 2026 19:04:16 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 19:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 19:04:20 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 20:05:00 +0200</ext:ends_at>
-      <description>Service from Quellenplatz; service obstruction; O: trains stop at the stop of line 11. [Since 19:04]</description>
-      <content:encoded><![CDATA[Service from Quellenplatz; service obstruction; O: trains stop at the stop of line 11.<br/>[Since 19:04]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[U6: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -43,15 +21,15 @@
       <content:encoded><![CDATA[Service obstruction towards Floridsdorf. Expected duration: 19:10. Reason: rescue operation in the stop area of Westbahnhof.<br/>[Since 18:58]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[13A: Illegally parked vehicle]]></title>
+      <title><![CDATA[11/O: Third-party traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d</guid>
-      <pubDate>Tue, 06 Oct 2026 17:22:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 17:22:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 17:44:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">36ad6a7c30b68d7345880b54bf25d283a433758da75c3a0fa4127d22d410a937</guid>
+      <pubDate>Tue, 06 Oct 2026 19:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 19:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 19:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Since 17:22]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 17:22]]]></content:encoded>
+      <description>After a service obstruction there are different intervals. [Today]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S80: ÖBB replacement bus]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Wed, 07 Oct 2026 01:00:00 +0200</ext:ends_at>
       <description>Reason: construction works. [Until Wed 07.10.]</description>
       <content:encoded><![CDATA[Reason: construction works.<br/>[Until Wed 07.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52: Trains stop at the stops of lines 6 and 18]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
+      <pubDate>Tue, 06 Oct 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 00:00:18 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Today]</description>
+      <content:encoded><![CDATA[[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[63A: Diversion because of crane works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
+      <description>Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected. [Until 11.11.]</description>
+      <content:encoded><![CDATA[Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected.<br/>[Until 11.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

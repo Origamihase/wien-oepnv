@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 06 Oct 2026 20:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 20:31:04 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[65A: Fremder Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">60f6aeb5159243f170aeeed12a1220a886b53980899ac92051b53aa9ab94b0ea</guid>
-      <pubDate>Tue, 06 Oct 2026 19:11:20 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 19:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 19:11:20 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie 65A wird in Richtung Wienerberg City zwischen Ettenreichgasse, Schulzentrum und Gußriegelstraße über Laxenburger Straße und Raxstraße umgeleitet. [Seit 19:11]</description>
-      <content:encoded><![CDATA[Die Linie 65A wird in Richtung Wienerberg City zwischen Ettenreichgasse, Schulzentrum und Gußriegelstraße über Laxenburger Straße und Raxstraße umgeleitet.<br/>[Seit 19:11]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11/O: Fremdunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">06076533007ef2930b17429fae4f2c4f7f36dbf3fe61738ccf324bca71f77190</guid>
-      <pubDate>Tue, 06 Oct 2026 19:04:16 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 19:30:53 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 19:04:20 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 20:05:00 +0200</ext:ends_at>
-      <description>Betrieb ab Quellenplatz; Fahrtbehinderung; O: Züge halten bei Linie 11. [Seit 19:04]</description>
-      <content:encoded><![CDATA[Betrieb ab Quellenplatz; Fahrtbehinderung; O: Züge halten bei Linie 11.<br/>[Seit 19:04]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[U6: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -43,15 +21,15 @@
       <content:encoded><![CDATA[Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 19:10 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Westbahnhof.<br/>[Seit 18:58]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[13A: Falschparker]]></title>
+      <title><![CDATA[11/O: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d</guid>
-      <pubDate>Tue, 06 Oct 2026 17:22:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 17:22:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 17:44:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">36ad6a7c30b68d7345880b54bf25d283a433758da75c3a0fa4127d22d410a937</guid>
+      <pubDate>Tue, 06 Oct 2026 19:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 19:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 19:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:22]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:22]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Heute]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S80: ÖBB-Ersatzbus]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Wed, 07 Oct 2026 01:00:00 +0200</ext:ends_at>
       <description>Grund: Bauarbeiten. [Bis Mi 07.10.]</description>
       <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Bis Mi 07.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52: Züge halten bei Linien 6 und 18]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
+      <pubDate>Tue, 06 Oct 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 00:00:18 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Heute]</description>
+      <content:encoded><![CDATA[[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[63A: Umleitung wegen Kranarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
+      <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [Bis 11.11.]</description>
+      <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[Bis 11.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
