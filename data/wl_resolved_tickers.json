@@ -3,62 +3,6 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R177-140|2026-10-06T17:20:05.000+0200|Verkehrsunfall\nBetrieb ab Gersthof",
-   "name": "R177-140",
-   "title": "Verkehrsunfall\nBetrieb ab Gersthof",
-   "end": "2026-10-06T18:19:00.000+0200",
-   "incident": "I20261006-0029"
-  },
-  {
-   "key": "R177-141|2026-10-06T17:20:35.000+0200|Verkehrsunfall\nBetrieb ab Gersthof",
-   "name": "R177-141",
-   "title": "Verkehrsunfall\nBetrieb ab Gersthof",
-   "end": "2026-10-06T18:19:00.000+0200",
-   "incident": "I20261006-0029"
-  },
-  {
-   "key": "R189-140|2026-10-06T17:18:35.000+0200|Verkehrsunfall\nUmleitung über die Linien 42 und 9",
-   "name": "R189-140",
-   "title": "Verkehrsunfall\nUmleitung über die Linien 42 und 9",
-   "end": "2026-10-06T18:17:00.000+0200",
-   "incident": "I20261006-0029"
-  },
-  {
-   "key": "R189-141|2026-10-06T17:19:35.000+0200|Verkehrsunfall\nUmleitung über die Linien 42 und 9",
-   "name": "R189-141",
-   "title": "Verkehrsunfall\nUmleitung über die Linien 42 und 9",
-   "end": "2026-10-06T18:18:00.000+0200",
-   "incident": "I20261006-0029"
-  },
-  {
-   "key": "R190-140|2026-10-06T17:20:05.000+0200|Verkehrsunfall\nBetrieb ab Gersthof",
-   "name": "R190-140",
-   "title": "Verkehrsunfall\nBetrieb ab Gersthof",
-   "end": "2026-10-06T18:19:00.000+0200",
-   "incident": "I20261006-0029"
-  },
-  {
-   "key": "R190-141|2026-10-06T17:20:35.000+0200|Verkehrsunfall\nBetrieb ab Gersthof",
-   "name": "R190-141",
-   "title": "Verkehrsunfall\nBetrieb ab Gersthof",
-   "end": "2026-10-06T18:19:00.000+0200",
-   "incident": "I20261006-0029"
-  },
-  {
-   "key": "R192-140|2026-10-06T17:20:05.000+0200|Verkehrsunfall\nBetrieb ab Gersthof",
-   "name": "R192-140",
-   "title": "Verkehrsunfall\nBetrieb ab Gersthof",
-   "end": "2026-10-06T18:19:00.000+0200",
-   "incident": "I20261006-0029"
-  },
-  {
-   "key": "R192-141|2026-10-06T17:20:35.000+0200|Verkehrsunfall\nBetrieb ab Gersthof",
-   "name": "R192-141",
-   "title": "Verkehrsunfall\nBetrieb ab Gersthof",
-   "end": "2026-10-06T18:19:00.000+0200",
-   "incident": "I20261006-0029"
-  },
-  {
    "key": "R345-105|2026-10-06T17:31:37.000+0200|Fahrtbehinderung\nVerkehrsunfall",
    "name": "R345-105",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
@@ -80,11 +24,32 @@
    "incident": "I20261006-0031"
   },
   {
-   "key": "R392-105|2026-10-06T17:29:08.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R392-105",
-   "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-06T18:28:00.000+0200",
-   "incident": "I20261006-0031"
+   "key": "R668-413|2026-10-06T17:53:10.000+0200|Falschparker\nUmleitung über Gumpendorfer Straße, Linke Wienzeile",
+   "name": "R668-413",
+   "title": "Falschparker\nUmleitung über Gumpendorfer Straße, Linke Wienzeile",
+   "end": "2026-10-06T18:51:00.000+0200",
+   "incident": "I20261006-0033"
+  },
+  {
+   "key": "R668-414|2026-10-06T17:54:10.000+0200|Falschparker\nBetrieb ab Pilgramgasse",
+   "name": "R668-414",
+   "title": "Falschparker\nBetrieb ab Pilgramgasse",
+   "end": "2026-10-06T18:55:00.000+0200",
+   "incident": "I20261006-0033"
+  },
+  {
+   "key": "R682-413|2026-10-06T17:53:10.000+0200|Falschparker\nUmleitung über Gumpendorfer Straße, Linke Wienzeile",
+   "name": "R682-413",
+   "title": "Falschparker\nUmleitung über Gumpendorfer Straße, Linke Wienzeile",
+   "end": "2026-10-06T18:51:00.000+0200",
+   "incident": "I20261006-0033"
+  },
+  {
+   "key": "R688-413|2026-10-06T17:53:10.000+0200|Falschparker\nUmleitung über Gumpendorfer Straße, Linke Wienzeile",
+   "name": "R688-413",
+   "title": "Falschparker\nUmleitung über Gumpendorfer Straße, Linke Wienzeile",
+   "end": "2026-10-06T18:51:00.000+0200",
+   "incident": "I20261006-0033"
   }
  ]
 }

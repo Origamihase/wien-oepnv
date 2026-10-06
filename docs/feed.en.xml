@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 06 Oct 2026 18:03:04 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 18:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[13A/14A: Illegally parked vehicle]]></title>
+      <title><![CDATA[U3: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
+      <pubDate>Tue, 06 Oct 2026 18:15:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 18:15:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 18:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [Since 18:15]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 18:15]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[14A: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">443234525d35ddc17471249c2e5f5b91be5892acfc39239a8ce1bd0dec620bee</guid>
       <pubDate>Tue, 06 Oct 2026 17:53:10 +0200</pubDate>
       <ext:first_seen>Tue, 06 Oct 2026 18:03:04 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 17:53:10 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 18:55:00 +0200</ext:ends_at>
-      <description>13A: diversion over Gumpendorfer Straße, Linke Wienzeile; service from Pilgramgasse; 14A: diversion over Gumpendorfer Str., Linke Wienzeile. [Since 17:53]</description>
-      <content:encoded><![CDATA[13A: diversion over Gumpendorfer Straße, Linke Wienzeile; service from Pilgramgasse; 14A: diversion over Gumpendorfer Str., Linke Wienzeile.<br/>[Since 17:53]]]></content:encoded>
+      <ext:starts_at>Tue, 06 Oct 2026 17:54:10 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 18:53:00 +0200</ext:ends_at>
+      <description>Diversion over Gumpendorfer Str., Linke Wienzeile. [Since 17:53]</description>
+      <content:encoded><![CDATA[Diversion over Gumpendorfer Str., Linke Wienzeile.<br/>[Since 17:53]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[5: Traffic accident]]></title>
@@ -32,18 +43,18 @@
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 17:27]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40: Traffic accident]]></title>
+      <title><![CDATA[13A/14A: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b8938e94c70221081d94c1f9627e29d1273108203a2ba78ea9d9eaa80416cb92</guid>
-      <pubDate>Tue, 06 Oct 2026 17:13:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 17:13:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 17:13:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 18:28:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Since 17:13]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 17:13]]]></content:encoded>
+      <guid isPermaLink="false">abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d</guid>
+      <pubDate>Tue, 06 Oct 2026 17:22:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 17:22:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 17:44:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [Since 17:22]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 17:22]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[59A: Traffic congestion]]></title>
+      <title><![CDATA[59A/74A/O: Traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5</guid>
       <pubDate>Tue, 06 Oct 2026 16:44:00 +0200</pubDate>
@@ -54,7 +65,7 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 16:44]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[15A/63A/7A: Traffic congestion]]></title>
+      <title><![CDATA[10A/15A/63A/7A: Traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">89f4d5b271521b2cdd500c2b0d9188c9972cfddd3ecf964d7c99737b00d5485f</guid>
       <pubDate>Tue, 06 Oct 2026 16:27:00 +0200</pubDate>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 … [From Wed 07.10. until 28.10.]</description>
       <content:encoded><![CDATA[Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 …<br/>[From Wed 07.10. until 28.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
-      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction. [Until 26.10.]</description>
-      <content:encoded><![CDATA[Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction.<br/>[Until 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
