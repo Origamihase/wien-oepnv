@@ -155,7 +155,7 @@ def test_client_logs_only_shape_of_rejected_place(caplog: pytest.LogCaptureFixtu
         timeout_s=1,
         max_retries=0,
     )
-    client = GooglePlacesClient(config, session=_MockSession(_MockResponse(200, payload)))
+    client = GooglePlacesClient(config, session=cast(requests.Session, _MockSession(_MockResponse(200, payload))))
     caplog.set_level(logging.WARNING, logger="places.google")
 
     list(client.iter_nearby([Tile(48.0, 16.0)]))
