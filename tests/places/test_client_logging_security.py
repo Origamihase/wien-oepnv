@@ -131,3 +131,36 @@ def test_client_redacts_secrets_in_request_errors(caplog: pytest.LogCaptureFixtu
     # THIS SHOULD FAIL BEFORE FIX
     if secret in caplog.text:
          pytest.fail(f"Secret key found in error logs: {caplog.text}")
+
+
+def test_client_logs_only_shape_of_rejected_place(caplog: pytest.LogCaptureFixture) -> None:
+    """A rejected place payload is logged by shape, never by content.
+
+    The redaction in ``_sanitize_arg`` only knows our own API key; any other
+    upstream content (here an address and a phone number) must not reach
+    the log at all. Covers both rejection paths: not a dict, and no id.
+    """
+    payload = {
+        "places": [
+            ["not", "a", "dict", "+43 1 7909 100"],
+            {"formattedAddress": "Erdbergstraße 202, 1030 Wien", "phone": "+43 1 7909 100"},
+        ]
+    }
+    config = GooglePlacesConfig(
+        api_key="KEY",
+        included_types=["train_station"],
+        language="de",
+        region="AT",
+        radius_m=2500,
+        timeout_s=1,
+        max_retries=0,
+    )
+    client = GooglePlacesClient(config, session=_MockSession(_MockResponse(200, payload)))
+    caplog.set_level(logging.WARNING, logger="places.google")
+
+    list(client.iter_nearby([Tile(48.0, 16.0)]))
+
+    assert "Ignoring unexpected place payload of type list" in caplog.text
+    assert "Skipping place without valid id (2 fields)" in caplog.text
+    assert "Erdbergstraße" not in caplog.text
+    assert "7909" not in caplog.text

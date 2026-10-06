@@ -7,51 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 06 Oct 2026 01:13:54 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 09:01:03 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[7A: Fire-brigade operation]]></title>
+      <title><![CDATA[O: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9becacea1654bfc407293a2a456a751c52933fcf146171a292db6763482941ae</guid>
-      <pubDate>Tue, 06 Oct 2026 00:20:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 00:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 00:20:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">011d5e8498133bc00e1bdf3e9fc71ce953ee78ab3f1b6b1f28b0860bcee4fb84</guid>
+      <pubDate>Tue, 06 Oct 2026 08:37:22 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 08:37:22 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 08:40:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Since 00:20]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 00:20]]]></content:encoded>
+      <description>After a service obstruction there are different intervals. [Since 08:37]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 08:37]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[63A: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e7e896d63b9b23989d8440713ce15b7c04d68a1b0098210082b12613484ee8b8</guid>
+      <pubDate>Tue, 06 Oct 2026 07:20:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 07:20:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 07:20:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 07:20]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 07:20]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S80: ÖBB replacement bus]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Tue, 06 Oct 2026 00:30:03 +0200</pubDate>
+      <pubDate>Tue, 06 Oct 2026 05:00:29 +0200</pubDate>
       <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 00:30:03 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 04:59:00 +0200</ext:ends_at>
-      <description>Bhf. Hütteldorf [Since 00:30]</description>
-      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Since 00:30]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
-      <pubDate>Tue, 06 Oct 2026 00:14:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 00:14:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 00:14:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Since 00:14]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 00:14]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">de57d7fc844121db03d0e532febfd7d62faf7f8cc5ced1951f3e1470fcd4d6c8</guid>
-      <pubDate>Tue, 06 Oct 2026 00:04:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 00:04:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 00:04:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Since 00:04]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 00:04]]]></content:encoded>
+      <ext:starts_at>Tue, 06 Oct 2026 05:00:29 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:00:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf [Today]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[15A/7A/N62: Eibesbrunnergasse both directions]]></title>
@@ -98,26 +87,37 @@
       <content:encoded><![CDATA[Due to renovation of the platform, line U6 stops the station Neue Donau U only in the direction of Siebenhirten U. You can reach Neue Donau with U6 from Floridsdorf.<br/>[Until 31.12.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[N66: Buses stop at Salvatorianerplatz]]></title>
+      <title><![CDATA[66A: Buses stop at Salvatorianerplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">24aa68a100b6cf9da31697ad90c76566903c00e84cace4ff88a183b77a6b231c</guid>
-      <pubDate>Tue, 06 Oct 2026 01:00:15 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 01:00:05 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 01:00:15 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 04:20:00 +0200</ext:ends_at>
-      <description>Reason: construction works. [Today]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[Today]]]></content:encoded>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Tue, 06 Oct 2026 04:40:06 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 04:40:06 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 07 Oct 2026 01:00:00 +0200</ext:ends_at>
+      <description>Reason: construction works. [Until Wed 07.10.]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[Until Wed 07.10.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[N49: Track construction works, delays]]></title>
+      <title><![CDATA[Rennweg 33A–37]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">65573981646b35911098f80f5060d16369450fbc04c8d50c90d9db3a086b9b29</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 22:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
+      <description>The work takes place in the period from 20:00 to 05:00. The left lane towards the city is closed. [Until 15.11.]</description>
+      <content:encoded><![CDATA[The work takes place in the period from 20:00 to 05:00. The left lane towards the city is closed.<br/>[Until 15.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52: Trains stop at the stops of lines 6 and 18]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1963f82ac93d144e418b1738c647d7dac8d1d5dd078a20877ba74368c0ae79ae</guid>
-      <pubDate>Tue, 06 Oct 2026 01:00:02 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 01:00:01 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 01:00:02 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Track construction works: service from Johnstraße U, Schweglerstraße. Delays: Currently, the N49 line has different intervals in both directions. [Today]</description>
-      <content:encoded><![CDATA[Track construction works: service from Johnstraße U, Schweglerstraße. Delays: Currently, the N49 line has different intervals in both directions.<br/>[Today]]]></content:encoded>
+      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
+      <pubDate>Tue, 06 Oct 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 00:00:18 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Today]</description>
+      <content:encoded><![CDATA[[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
