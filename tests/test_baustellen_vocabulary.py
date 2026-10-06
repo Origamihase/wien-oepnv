@@ -9,8 +9,7 @@ from __future__ import annotations
 
 import pytest
 
-from src import build_feed
-from src.providers.baustellen import mentions_oepnv, oepnv_lead
+from src.providers.baustellen import REFERRAL_BOILERPLATE_RE, mentions_oepnv, oepnv_lead
 
 # Favoritenstraße, a pedestrian zone: in the feed 2026-05-24/29 on the
 # operator's name alone.
@@ -67,6 +66,6 @@ def test_still_an_oepnv_mention(text: str) -> None:
 def test_singular_referral_leaves_the_summary() -> None:
     text = "Die Johnstraße wird zur Einbahn. " + _REFERRAL_SINGULAR
     assert oepnv_lead(text) == text
-    assert build_feed.REFERRAL_BOILERPLATE_RE.sub("", text).strip() == (
+    assert REFERRAL_BOILERPLATE_RE.sub("", text).strip() == (
         "Die Johnstraße wird zur Einbahn."
     )

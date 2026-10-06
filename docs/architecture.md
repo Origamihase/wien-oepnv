@@ -816,7 +816,8 @@ Fälle oben ergibt genau den Feed des guten Abrufs.
 Weil die Antwort so je Teil geprüft ist, darf ein guter Baustellen-Abruf den
 Cache verkleinern, auch auf null (`write_cache(..., allow_shrink=True)`, seit
 2026-10-06): In den Cache kommen nur Baustellen mit Folgen für Öffis, und an
-vielen Tagen gibt es keine. Die 20-%-Sperre von `write_cache` gilt für WL, ÖBB
+vielen Tagen gibt es keine. Null gelieferte Baustellen bleiben ein Ausfall
+(Cache bleibt stehen). Die 20-%-Sperre von `write_cache` gilt für WL, ÖBB
 und das Demo-Beispiel weiter.
 
 ---

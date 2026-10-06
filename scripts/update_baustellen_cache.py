@@ -1165,6 +1165,14 @@ def main() -> int:
             )
             return 1
         events = _collect_events(payload)
+    if not used_fallback and not events:
+        # The city delivered no site at all: both layers always list
+        # long-running works, so this is an outage, not a quiet day. Only a
+        # selection the transit filter emptied may empty the cache (below).
+        LOGGER.warning(
+            "Baustellen: Stadt Wien lieferte 0 Baustellen – bestehender Cache bleibt stehen."
+        )
+        return 1
     # Keep only sites whose text names an effect on public transport (a stop
     # moved or closed, a line diverted or shortened, replacement buses). The
     # upstream feed is "verkehrswirksam" but mostly carries car-traffic works,
@@ -1188,8 +1196,9 @@ def main() -> int:
             len(events),
         )
     # A live answer was judged per layer above (``_usable_layer``, minimum
-    # record count, last good answer). What is left after the transit filter
-    # is a selection, and it can honestly be small or empty: on many days no
+    # record count, last good answer) and holds at least one site. What is
+    # left after the transit filter is a selection, and it can honestly be
+    # small or empty: on many days no
     # site in Vienna moves a stop. So a live write may shrink the cache, down
     # to nothing; the 20 % guard of ``write_cache`` would otherwise keep sites
     # that no longer qualify (or have ended) and fail every tick. The bundled

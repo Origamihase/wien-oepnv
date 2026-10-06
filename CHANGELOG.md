@@ -34,7 +34,8 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   Mit der strengeren Auswahl fällt er von 15 auf 2 Einträge, und die
   20-%-Sperre hätte jedes Schreiben abgelehnt, Rennweg wäre bis 15.11.
   stehen geblieben. Bisher endete schon ein leeres Ergebnis mit Exit 1
-  (Health-Check rot) und alten Einträgen im Cache. Ein leerer
+  (Health-Check rot) und alten Einträgen im Cache. Liefert die Stadt gar
+  keine Baustelle, bleibt der Cache wie bisher stehen (Exit 1). Ein leerer
   Baustellen-Cache ist im Feed-Bericht kein Warnfall mehr (`ok-empty`),
   außer die Cache-Datei fehlt oder ist kaputt. Das Demo-Beispiel behält
   die Sperre. Doku in `docs/development.md` („Stadt Wien – Baustellen“).

@@ -843,36 +843,39 @@ def test_load_fallback_handles_json_depth_bomb(
     )
 
 
-def test_main_writes_an_empty_selection_from_a_live_answer(
-    monkeypatch: pytest.MonkeyPatch,
+def test_main_keeps_the_cache_when_the_city_delivers_no_site(
+    monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
 ) -> None:
-    """A healthy live answer with no site that affects public transport.
+    """Zero raw records is an outage, not a quiet day (Quellenausfall 2026-10-04).
 
-    Since the transit rule of 2026-10-06 ("Nur mit Öffi-Folgen") this is a
-    normal day, not a failure. Before, the empty selection was not written and
-    the updater exited 1: the cache kept sites that no longer qualified and
-    the health check went red every tick. The live answer itself is judged
-    per layer (``_usable_layer``, last good answer), so the write may empty
-    the cache.
+    Both layers always list long-running works. Only a selection that the
+    transit rule empties may empty the cache.
     """
-    calls: list[tuple[str, list[dict[str, Any]], dict[str, Any]]] = []
+    import logging
+
+    calls: list[Any] = []
 
     def fake_fetch_remote(url: str, timeout: int) -> dict[str, Any]:
         return {"type": "FeatureCollection", "features": []}
 
-    def capture_cache(provider: str, items: list[dict[str, Any]], **kw: Any) -> None:
-        calls.append((provider, items, kw))
-
     monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
-    monkeypatch.setattr(update_baustellen_cache, "write_cache", capture_cache)
+    monkeypatch.setattr(
+        update_baustellen_cache, "write_cache", lambda *a, **kw: calls.append(a)
+    )
+    caplog.set_level(logging.WARNING, logger="update_baustellen_cache")
 
-    assert update_baustellen_cache.main() == 0
-    assert calls == [("baustellen", [], {"allow_shrink": True})]
+    assert update_baustellen_cache.main() == 1
+    assert calls == []
+    assert any(
+        "0 Baustellen" in record.getMessage()
+        for record in caplog.records
+        if record.name == "update_baustellen_cache"
+    )
 
 
 def _real_cache_file(monkeypatch: pytest.MonkeyPatch, target: Path) -> None:
     """Point the updater's own ``write_cache`` (imported as ``utils.cache``) at *target*."""
-    module = sys.modules[update_baustellen_cache.write_cache.__module__]
+    module = sys.modules[update_baustellen_cache.__dict__["write_cache"].__module__]
     monkeypatch.setattr(module, "_cache_file", lambda provider: target)
 
 
@@ -919,6 +922,49 @@ def test_main_lets_a_live_answer_shrink_a_populated_cache(
     assert update_baustellen_cache.main() == 0
     written = json.loads(target.read_text(encoding="utf-8"))
     assert sorted(item["title"] for item in written) == ["Gasse 1", "Hauptstraße"]
+
+
+def test_main_empties_the_cache_when_no_site_affects_transit(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """The city delivers sites, none moves a stop: the cache becomes empty, exit 0."""
+    target = tmp_path / "cache" / "baustellen" / "events.json"
+    target.parent.mkdir(parents=True)
+    target.write_text(json.dumps([{"guid": f"old-{i}"} for i in range(15)]), encoding="utf-8")
+    _real_cache_file(monkeypatch, target)
+    features = [_site(f"Gasse {i}", "Die Fahrbahn wird eingeengt.") for i in range(6)]
+    monkeypatch.setattr(
+        update_baustellen_cache,
+        "_fetch_layers",
+        lambda *_a: update_baustellen_cache._collect_events(
+            {"type": "FeatureCollection", "features": features}
+        ),
+    )
+
+    assert update_baustellen_cache.main() == 0
+    assert json.loads(target.read_text(encoding="utf-8")) == []
+
+
+@pytest.mark.parametrize(
+    "answer",
+    [None, {"type": "FeatureCollection", "features": []}, {"unexpected": True}],
+    ids=["http-error-or-invalid-json", "zero-sites", "no-feature-list"],
+)
+def test_a_failed_or_empty_fetch_never_shrinks_the_cache(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path, answer: Any
+) -> None:
+    """Real ``write_cache`` on disk: an outage keeps the old cache and exits non-zero."""
+    target = tmp_path / "cache" / "baustellen" / "events.json"
+    target.parent.mkdir(parents=True)
+    old = [{"guid": f"old-{i}"} for i in range(15)]
+    target.write_text(json.dumps(old), encoding="utf-8")
+    _real_cache_file(monkeypatch, target)
+    # ``_fetch_remote`` returns None on HTTP errors and invalid JSON.
+    monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", lambda *_a: answer)
+    monkeypatch.setattr(update_baustellen_cache, "_cache_exists", lambda: True)
+
+    assert update_baustellen_cache.main() == 1
+    assert json.loads(target.read_text(encoding="utf-8")) == old
 
 
 def test_demo_sample_still_meets_the_guard(
