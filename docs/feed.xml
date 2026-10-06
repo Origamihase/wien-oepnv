@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 06 Oct 2026 16:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 16:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[15A/7A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">89f4d5b271521b2cdd500c2b0d9188c9972cfddd3ecf964d7c99737b00d5485f</guid>
+      <pubDate>Tue, 06 Oct 2026 16:27:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 16:27:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 16:27:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 16:27]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 16:27]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[32A: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,30 +28,8 @@
       <ext:first_seen>Tue, 06 Oct 2026 15:49:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 06 Oct 2026 15:49:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 16:15 Uhr. Grund: Fremder Verkehrsunfall im Bereich Gerasdorfer Straße / Schippergasse. [Seit 15:49]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 16:15 Uhr. Grund: Fremder Verkehrsunfall im Bereich Gerasdorfer Straße / Schippergasse.<br/>[Seit 15:49]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5B: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e55e4c55db9e80a5fe1558a44e4df1f020f86f204466795652f84a0c8c8d062a</guid>
-      <pubDate>Tue, 06 Oct 2026 12:53:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 12:53:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 12:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 12:53]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 12:53]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A: Liesinger-Flur-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b627a5088a524636d432acaf864f64e64fcb65b79a9c56b6e1f2f1064c0e1ab</guid>
-      <pubDate>Tue, 06 Oct 2026 12:40:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 12:40:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 12:40:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 20 Oct 2026 23:59:00 +0200</ext:ends_at>
-      <description>Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbau. [Bis 20.10.]</description>
-      <content:encoded><![CDATA[Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbau.<br/>[Bis 20.10.]]]></content:encoded>
+      <description>Die Linie 32A wird in Richtung Bhf. Strebersdorf S zwischen Allissen und Haspingerplatz über Ruthnergasse und Siemensstraße umgeleitet. [Seit 15:49]</description>
+      <content:encoded><![CDATA[Die Linie 32A wird in Richtung Bhf. Strebersdorf S zwischen Allissen und Haspingerplatz über Ruthnergasse und Siemensstraße umgeleitet.<br/>[Seit 15:49]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S80: ÖBB-Ersatzbus]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>Die Arbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Der linke Fahrstreifen in Fahrtrichtung stadteinwärts wird gesperrt. [Bis 15.11.]</description>
       <content:encoded><![CDATA[Die Arbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Der linke Fahrstreifen in Fahrtrichtung stadteinwärts wird gesperrt.<br/>[Bis 15.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52: Züge halten bei Linien 6 und 18]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
+      <pubDate>Tue, 06 Oct 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 00:00:18 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Heute]</description>
+      <content:encoded><![CDATA[[Heute]]]></content:encoded>
     </item>
   </channel>
 </rss>

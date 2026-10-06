@@ -7,40 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 06 Oct 2026 16:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 16:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[32A: Fremder Verkehrsunfall]]></title>
+      <title><![CDATA[15A/7A: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">89f4d5b271521b2cdd500c2b0d9188c9972cfddd3ecf964d7c99737b00d5485f</guid>
+      <pubDate>Tue, 06 Oct 2026 16:27:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 16:27:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 16:27:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 16:27]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 16:27]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[32A: Third-party traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">2d45b6da852b996e0cb7d0a979aae9c19692fc48ec76a7326b0f07b2290320fd</guid>
       <pubDate>Tue, 06 Oct 2026 15:49:00 +0200</pubDate>
       <ext:first_seen>Tue, 06 Oct 2026 15:49:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 06 Oct 2026 15:49:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 16:15 Uhr. Grund: Fremder Verkehrsunfall im Bereich Gerasdorfer Straße / Schippergasse. [Seit 15:49]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 16:15 Uhr. Grund: Fremder Verkehrsunfall im Bereich Gerasdorfer Straße / Schippergasse.<br/>[Seit 15:49]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5B: Traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e55e4c55db9e80a5fe1558a44e4df1f020f86f204466795652f84a0c8c8d062a</guid>
-      <pubDate>Tue, 06 Oct 2026 12:53:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 12:53:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 12:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 12:53]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 12:53]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A: Liesinger-Flur-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b627a5088a524636d432acaf864f64e64fcb65b79a9c56b6e1f2f1064c0e1ab</guid>
-      <pubDate>Tue, 06 Oct 2026 12:40:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 12:40:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 12:40:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 20 Oct 2026 23:59:00 +0200</ext:ends_at>
-      <description>Perfektastraße after Liesinger-Flur-Gasse → Perfektastraße 77. Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse. Reason: road construction. [Until 20.10.]</description>
-      <content:encoded><![CDATA[Perfektastraße after Liesinger-Flur-Gasse → Perfektastraße 77. Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse. Reason: road construction.<br/>[Until 20.10.]]]></content:encoded>
+      <description>Line 32A is redirected to Bhf. StrebersdorfS between Allissen and Haspingerplatz via Ruthnergasse and Siemensstraße. [Since 15:49]</description>
+      <content:encoded><![CDATA[Line 32A is redirected to Bhf. StrebersdorfS between Allissen and Haspingerplatz via Ruthnergasse and Siemensstraße.<br/>[Since 15:49]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S80: ÖBB replacement bus]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
       <description>The work takes place in the period from 20:00 to 05:00. The left lane towards the city is closed. [Until 15.11.]</description>
       <content:encoded><![CDATA[The work takes place in the period from 20:00 to 05:00. The left lane towards the city is closed.<br/>[Until 15.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52: Trains stop at the stops of lines 6 and 18]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
+      <pubDate>Tue, 06 Oct 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 00:00:18 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Today]</description>
+      <content:encoded><![CDATA[[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
