@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 07 Oct 2026 00:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 00:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U6: Signal disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">474c6f8bb0e432949cae7226eb01aad78541598785bc38e306e5fa7c2119a730</guid>
+      <pubDate>Wed, 07 Oct 2026 00:17:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 00:17:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 00:17:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: signal disruption. [Since 00:17]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: signal disruption.<br/>[Since 00:17]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,6 +30,17 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 … [Until 28.10.]</description>
       <content:encoded><![CDATA[Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 …<br/>[Until 28.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: ÖBB replacement bus]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
+      <pubDate>Wed, 07 Oct 2026 00:30:21 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 00:30:21 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 07 Oct 2026 04:59:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf [Since 00:30]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Since 00:30]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[15A/7A/N62: Eibesbrunnergasse both directions]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Because of roadworks in the area of Adolf-Loos-Gasse, lines 29B and N25 are redirected. [Until 07.12.]</description>
       <content:encoded><![CDATA[Because of roadworks in the area of Adolf-Loos-Gasse, lines 29B and N25 are redirected.<br/>[Until 07.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26E/N20: Fultonstraße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8360905f480d6715f571ad6ca70aa298b8c553200665d5153e2d69632338a199</guid>
-      <pubDate>Mon, 28 Sep 2026 15:45:00 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 15:45:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Donaufelder Straße 48 → Donaufelder Straße 40-42. Stop relocation of line 26E towards Josef-Baumann-Gasse and line N20 towards Eßling, Stadtgrenze. … [Until 26.10.]</description>
-      <content:encoded><![CDATA[Donaufelder Straße 48 → Donaufelder Straße 40-42. Stop relocation of line 26E towards Josef-Baumann-Gasse and line N20 towards Eßling, Stadtgrenze. …<br/>[Until 26.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Replacement service]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6f11b9f2989f7ded86ce2e256372b0c9d235d8bccee56c31a7edc035dbad8893</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:17 +0200</pubDate>
-      <ext:first_seen>Mon, 28 Sep 2026 04:01:10 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 00:00:17 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 07 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Buses stop at the stop of line N71. [Today]</description>
-      <content:encoded><![CDATA[Buses stop at the stop of line N71.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>

@@ -782,6 +782,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
+    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
+    "pubDate": "2026-10-07T00:30:21+02:00",
+    "starts_at": "2026-10-07T00:30:21+02:00",
+    "ends_at": "2026-10-07T04:59:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-10-07|TK=bhf hütteldorf öbb ersatzbus für 80"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "25: Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
     "description": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1099,6 +1111,21 @@
     "starts_at": "2026-10-07T00:00:17+02:00",
     "ends_at": "2026-10-07T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-07|TK=ersatzverkehr"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Signalstörung",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "474c6f8bb0e432949cae7226eb01aad78541598785bc38e306e5fa7c2119a730",
+    "pubDate": "2026-10-07T00:17:00+02:00",
+    "starts_at": "2026-10-07T00:17:00+02:00",
+    "ends_at": "2026-10-07T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-10-07|TK=signalstörung",
+    "_wl_ids": [
+      "I20261006-0041"
+    ]
   },
   {
     "source": "Wiener Linien",
