@@ -13,7 +13,7 @@
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R293-474, R318-437, R2917-0, R2923-403, R2025-671, R119-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R130-136, R19-136, R45-136, R36-152, R5815-671, R1474-149, R1475-149, R1476-149, R1447-149, R1446-149, R1448-149, R1508-426, R1448-412, R1473-149, R1472-149, R1449-149, R1474-412, R1445-149, R2558-125, R1150-0, R407-506, R402-506, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2345-127, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R293-474, R318-437, R2917-0, R2923-403, R2025-671, R130-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R19-136, R45-136, R36-152, R5815-671, R1476-149, R1475-149, R1449-149, R1472-149, R1473-149, R1474-149, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R2558-125, R1150-0, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -1036,42 +1036,6 @@
      "start": "2026-10-06T00:00:18.000+0200"
     },
     "title": "Züge halten\nbei Linien 6 und 18"
-   },
-   {
-    "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
-    "name": "R402-506",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N6"
-    ],
-    "relatedStops": [
-     402
-    ],
-    "time": {
-     "end": "2026-10-06T05:05:00.000+0200",
-     "start": "2026-10-06T00:55:05.000+0200"
-    },
-    "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
-   },
-   {
-    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
-    "name": "R407-506",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N6"
-    ],
-    "relatedStops": [
-     407
-    ],
-    "time": {
-     "end": "2026-10-06T05:04:00.000+0200",
-     "start": "2026-10-06T00:54:05.000+0200"
-    },
-    "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
    },
    {
     "description": "Züge halten\nWipplingerstr 39",
