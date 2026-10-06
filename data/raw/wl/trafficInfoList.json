@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261006-0039, I20260909-0007, I20261006-0037-F02, I20261006-0037-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261006-0037-F01"
    },
    {
     "id": 3,
@@ -234,75 +234,6 @@
      "start": "2026-10-06T19:00:00.000+0200"
     },
     "title": "11: Fremder Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Laxenburger Straße / Troststraße",
-    "name": "I20261006-0037-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "170",
-       "lineName": "O",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-06T20:13:00.000+0200",
-     "end": "2026-10-06T21:06:00.000+0200",
-     "lastUpdate": "2026-10-06T21:06:00.000+0200",
-     "resume": "2026-10-06T21:06:00.000+0200",
-     "start": "2026-10-06T19:00:00.000+0200"
-    },
-    "title": "O: Fremder Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "26A": "ptBusCity"
-     }
-    },
-    "description": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "Linie 26A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Rettungseinsatz.",
-    "name": "I20261006-0039",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "26A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "426",
-       "lineName": "26A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-06T20:31:00.000+0200",
-     "end": "2026-10-06T21:05:00.000+0200",
-     "lastUpdate": "2026-10-06T21:05:00.000+0200",
-     "resume": "2026-10-06T21:05:00.000+0200",
-     "start": "2026-10-06T20:31:00.000+0200"
-    },
-    "title": "26A: Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
