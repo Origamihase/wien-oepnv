@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261006-0035, I20260917-0012, I20260922-0032, I20261006-0033-F01, I20260925-0011, I20260909-0007, I20261006-0036, I20261006-0033-F02, I20261006-0038, I20261006-0037-F01, I20261006-0037-F02, I20261006-0037, I20261006-0034-F01, I20261006-0038-F01, I20261006-0031-F01"
+    "trafficInfoNameList": "I20261006-0035, I20261006-0036, I20260917-0012, I20260922-0032, I20261006-0033-F01, I20260925-0011, I20260909-0007, I20261006-0038, I20261006-0037-F01, I20261006-0037-F02, I20261006-0037, I20261006-0038-F01, I20261006-0031-F01, I20261006-0039"
    },
    {
     "id": 3,
@@ -273,78 +273,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "14A": "ptBusCity"
-     }
-    },
-    "description": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Kaunitzgasse 14",
-    "name": "I20261006-0033-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "414",
-       "lineName": "14A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-06T18:06:00.000+0200",
-     "end": "2026-10-06T19:28:00.000+0200",
-     "lastUpdate": "2026-10-06T19:28:00.000+0200",
-     "resume": "2026-10-06T19:28:00.000+0200",
-     "start": "2026-10-06T17:44:00.000+0200"
-    },
-    "title": "14A: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261006-0034-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "303",
-       "lineName": "U3",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4933
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-06T18:27:00.000+0200",
-     "end": "2026-10-06T19:41:00.000+0200",
-     "lastUpdate": "2026-10-06T19:41:00.000+0200",
-     "resume": "2026-10-06T19:41:00.000+0200",
-     "start": "2026-10-06T18:15:00.000+0200"
-    },
-    "title": "U3: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "9A": "ptBusCity"
      }
     },
@@ -403,11 +331,12 @@
     "relatedStops": [
      4619
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T18:58:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T18:58:00.000+0200",
+     "end": "2026-10-06T20:49:00.000+0200",
+     "lastUpdate": "2026-10-06T20:49:00.000+0200",
+     "resume": "2026-10-06T20:49:00.000+0200",
      "start": "2026-10-06T18:58:00.000+0200"
     },
     "title": "U6: Rettungseinsatz"
@@ -593,6 +522,40 @@
      "start": "2026-10-06T19:15:00.000+0200"
     },
     "title": "65A: Fremder Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "26A": "ptBusCity"
+     }
+    },
+    "description": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "Linie 26A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Rettungseinsatz.",
+    "name": "I20261006-0039",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "26A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "426",
+       "lineName": "26A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-06T20:31:00.000+0200",
+     "end": "2026-10-06T23:55:00.000+0200",
+     "lastUpdate": "2026-10-06T20:31:00.000+0200",
+     "resume": "2026-10-06T20:31:00.000+0200",
+     "start": "2026-10-06T20:31:00.000+0200"
+    },
+    "title": "26A: Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
