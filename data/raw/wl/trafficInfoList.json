@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261006-0040"
+    "trafficInfoNameList": "I20261006-0040, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007"
    },
    {
     "id": 3,
@@ -224,12 +224,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T22:49:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T22:49:00.000+0200",
-     "resume": "2026-10-06T22:48:00.000+0200",
+     "end": "2026-10-06T23:30:00.000+0200",
+     "lastUpdate": "2026-10-06T23:30:00.000+0200",
+     "resume": "2026-10-06T23:30:00.000+0200",
      "start": "2026-10-06T22:48:00.000+0200"
     },
     "title": "U6: Polizeieinsatz"
