@@ -487,11 +487,24 @@ verdrängt eine andere Störung.
   Richtung, damit jeder Ort bei seiner Richtung bleibt (seit 2026-10-05
   abends; bis dahin blieb dort die Reihenfolge, und „15A/7A/N62:
   Eibesbrunnergasse“ endete auf dem TV mit „Wienerbergstraße 27b-27c →
-  …“). Hausnummern behalten ihren Buchstaben („27b“, „2a“, DIN 5008):
+  …“). Eine ersatzlos aufgelassene Haltestelle („Nach: Ersatzlos
+  aufgelassen“) bekommt keinen Pfeil, denn der heißt „verlegt nach“: sie
+  steht als „Hartäckerstraße 65: ersatzlos aufgelassen“ da (seit
+  2026-10-06; vorher „Hartäckerstraße 65 → Ersatzlos aufgelassen“ bei 40A,
+  im August bei 5A/5B Malzgasse). Hausnummern behalten ihren Buchstaben („27b“, „2a“, DIN 5008):
   `html_to_text` trennt nur noch Einheiten aus einem Buchstaben („2 m“,
   „5 h“) ab, „27 b-27 c“ stand mit dem Pfeil sichtbar im Feed. Die Folge einer Kurzmeldung steht
   immer als Satz mit Punkt da („Busse halten bei Haltestelle N71.“), und
   ein doppelter Punkt aus der Quelle („umgeleitet..“) wird einer.
+  Kürzt die 180-Zeichen-Grenze einen Text, endet er nie auf einem Wort,
+  das nur auf Folgendes hinführt: Artikel, Präposition, Konjunktion,
+  „Richtung“, „Linie(n)“ (`_DANGLING_TAIL_WORDS`, seit 2026-10-06). Auf
+  dem TV standen am 06.10. „… und N62 in Richtung …“ und „… bzw. N66 in
+  Richtung …“: eine Richtung angekündigt, aber nicht genannt. Jetzt
+  endet der Text auf „… und N62 …“; ein Etikett davor fällt mit
+  („Maßnahmen: Linie …“), was davor steht, bleibt ganz (Liniennummern,
+  „Donaumarina U“, eine geschlossene Klammer, ein Satz mit Punkt). Von
+  308 gekürzten Texten seit Juli endeten 95 so.
 * **Verklebte Wörter (seit 2026-10-02).** Die Baustellentexte der Stadt
   Wien kamen mit Wörtern ohne Leerzeichen in den Feed („Derlinke
   Fahrstreifen“, „Außerhalbder Arbeitszeit“, „zuden“). Zwei Stellen: Der
@@ -535,7 +548,10 @@ verdrängt eine andere Störung.
   „N8: Thaliastraße U“ (seit 24.07.2024) sein Ende 16.11.2026. Der EN-Feed
   tauscht die Wörter einzeln aus (`_TIME_WORDS_DE_TO_EN`: „[From Mon 05.10.
   until 11.11.]“), die Daten bleiben. `ext:starts_at` und `ext:ends_at`
-  ändern sich nicht.
+  ändern sich nicht. Die Wörter der Zeitzeile verbindet ein geschütztes
+  Leerzeichen (U+00A0), damit das Display sie nie in der Mitte umbricht;
+  bis 2026-10-06 war es das schmale (U+202F), mit dem „[Ab Mi 07.10. bis
+  28.10.]“ in der EasySignage-Vorschau fast wie ein Wort aussah.
 * **Zeitzeile einer Störung: „[Seit 10:37]“ (seit 2026-10-03,
   Betreiberwunsch „Störung bitte mit Zeitangabe“).** Bei einer Störung will
   der Leser abschätzen, wie alt die Meldung ist. `_incident_since` liefert

@@ -343,7 +343,7 @@ def test_the_start_stays_the_leads() -> None:
     (item,) = _built(items)
     assert (item["title"], item["starts_at"]) == ("25: Schadhaftes Fahrzeug", breakdown)
     xml = bf._make_rss([item], breakdown + timedelta(minutes=13), {}, lang="de")
-    assert "[Am\u202f27.09.]" in xml
+    assert "[Am\u00a027.09.]" in xml
 
 
 def test_an_open_end_stays_open() -> None:

@@ -17,11 +17,11 @@ VIENNA = ZoneInfo("Europe/Vienna")
 NOW = datetime(2026, 10, 2, 20, 0, tzinfo=VIENNA)
 # The words are joined with NARROW NO-BREAK SPACE so a display never splits
 # the line; the expectations below are written with plain spaces.
-NNBSP = "\u202f"
+NBSP = "\u00a0"
 
 
 def _line(start: datetime | None, end: datetime | None, now: datetime = NOW) -> str:
-    return bf.format_local_times(start, end, now).replace(NNBSP, " ")
+    return bf.format_local_times(start, end, now).replace(NBSP, " ")
 
 
 def _at(year: int, month: int, day: int, hour: int = 0, minute: int = 0) -> datetime:

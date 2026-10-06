@@ -72,7 +72,7 @@ def test_parse_period_reads_a_single_day() -> None:
     assert start is not None and end is not None
     assert start.date() == end.date()
     # A single day renders as "Am …" — see format_local_times.
-    assert format_local_times(start, end, NOW) == "Am\u202f01.11."
+    assert format_local_times(start, end, NOW) == "Am\u00a001.11."
 
 
 def test_parse_period_returns_nothing_without_a_prefix() -> None:
@@ -115,11 +115,11 @@ def test_three_closures_on_one_route_become_distinguishable() -> None:
     # ``format_local_times`` joins its words with NARROW NO-BREAK SPACE
     # (U+202F), on purpose: the period must not wrap mid-range on a display.
     # Spelled out here so nobody "fixes" it to a plain space.
-    nnbsp = "\u202f"
+    nbsp = "\u00a0"
     assert lines == [
-        f"Ab{nnbsp}Sa{nnbsp}03.10.{nnbsp}bis{nnbsp}Mo{nnbsp}05.10.",
-        f"Ab{nnbsp}31.10.{nnbsp}bis{nnbsp}30.11.",
-        f"Ab{nnbsp}05.12.{nnbsp}bis{nnbsp}07.12.",
+        f"Ab{nbsp}Sa{nbsp}03.10.{nbsp}bis{nbsp}Mo{nbsp}05.10.",
+        f"Ab{nbsp}31.10.{nbsp}bis{nbsp}30.11.",
+        f"Ab{nbsp}05.12.{nbsp}bis{nbsp}07.12.",
     ]
     assert len(set(lines)) == 3, "die drei Sperren müssen unterscheidbar sein"
 
