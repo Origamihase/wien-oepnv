@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261006-0008, I20261006-0011, I20260917-0012, I20261006-0005, I20261006-0009, I20261006-0010, I20260925-0011, I20260922-0032, I20260909-0007"
+    "trafficInfoNameList": "I20261006-0008, I20260917-0012, I20260925-0011, I20260922-0032, I20261006-0010-F01, I20260909-0007, I20261006-0012-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2379-627, R2380-627, R2345-127, R2372-627, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2343-125, R2378-627, R2343-626, R2359-125, R2370-125, R318-437, R293-474, R2923-403, R2917-0, R2025-671, R100-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R101-136, R5815-671, R1445-149, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1474-412, R1508-426, R1448-412, R1150-0, R2558-125, R1974-466, R500-101, R768-414, R756-414, R223-109, R556-109, R1475-109, R533-109, R532-109, R531-109, R530-109, R528-109, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2359-125, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2378-627, R2343-626, R2343-125, R318-437, R293-474, R2923-403, R2917-0, R2025-671, R119-136, R130-136, R19-136, R45-136, R36-152, R103-136, R102-136, R101-136, R100-136, R116-136, R117-136, R118-136, R115-136, R5815-671, R1447-149, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1150-0, R2558-125, R1974-466, R500-101, R756-414, R223-109, R556-109, R1475-109, R528-109, R533-109, R530-109, R531-109, R532-109, R51-101, R1709-101, R1711-101, R1714-101, R1712-101, R1713-101, R1715-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,40 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "63A": "ptBusCity"
-     }
-    },
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
-    "name": "I20261006-0005",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "63A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "463",
-       "lineName": "63A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-06T07:21:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T07:21:00.000+0200",
-     "resume": "2026-10-06T07:20:00.000+0200",
-     "start": "2026-10-06T07:20:00.000+0200"
-    },
-    "title": "63A: Verkehrsüberlastung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "13A": "ptBusCity"
      }
     },
@@ -271,46 +237,12 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "62A": "ptBusCity"
-     }
-    },
-    "description": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "Linie 62A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Rettungseinsatz.",
-    "name": "I20261006-0009",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "62A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "462",
-       "lineName": "62A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-06T09:45:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T09:45:00.000+0200",
-     "resume": "2026-10-06T09:45:00.000+0200",
-     "start": "2026-10-06T09:45:00.000+0200"
-    },
-    "title": "62A: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "14A": "ptBusCity"
      }
     },
-    "description": "Die Linie 14A wird in Richtung Reumannplatz U zwischen Scalagasse und Evangelischer Friedhof über über die Hauptfahrbahn umgeleitet. Die Haltestelle Matzleinsdorfer Platz S kann dadurch nicht eingehalten werden. Voraussichtliche Dauer: 11:15 Uhr. Grund: Verkehrsstörung im Haltestellenbereich Matzleinsdorfer Platz S.",
-    "descriptionHTML": "Die Linie 14A wird in Richtung Reumannplatz U zwischen Scalagasse und Evangelischer Friedhof über über die Hauptfahrbahn umgeleitet.<br> <br>Die Haltestelle Matzleinsdorfer Platz S kann dadurch nicht eingehalten werden.<br><br>Voraussichtliche Dauer: 11:15 Uhr.<br><br>Grund: Verkehrsstörung im Haltestellenbereich Matzleinsdorfer Platz S.",
-    "name": "I20261006-0010",
+    "description": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261006-0010-F01",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
@@ -331,9 +263,10 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-06T10:18:00.000+0200",
+     "created": "2026-10-06T10:54:00.000+0200",
      "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T10:18:00.000+0200",
+     "lastUpdate": "2026-10-06T10:54:00.000+0200",
+     "resume": "2026-10-06T10:54:00.000+0200",
      "start": "2026-10-06T10:16:00.000+0200"
     },
     "title": "14A: Verkehrsstörung"
@@ -341,36 +274,37 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "40": "ptTram"
+      "1": "ptTram"
      }
     },
-    "description": "Linie 40: Fahrtbehinderung in Richtung Gersthof, Herbeckstraße. Voraussichtliche Dauer: 10:50 Uhr. Grund: Falschparker im Bereich Herbeckstraße 38.",
-    "descriptionHTML": "Linie 40:<br>Fahrtbehinderung in Richtung Gersthof, Herbeckstraße.<br> <br>Voraussichtliche Dauer: 10:50 Uhr.<br><br>Grund: Falschparker im Bereich Herbeckstraße 38.",
-    "location": "Herbeckstraße 38",
-    "name": "I20261006-0011",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Kärnter Ring / Kärntner Straße",
+    "name": "I20261006-0012-F01",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "40"
+     "1"
     ],
     "relatedLinesDetails": [
      [
       {
-       "lineId": "140",
-       "lineName": "40",
+       "lineId": "101",
+       "lineName": "1",
        "vehicleType": "ptTram"
       }
      ]
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-06T10:26:00.000+0200",
+     "created": "2026-10-06T10:54:00.000+0200",
      "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T10:26:00.000+0200",
-     "start": "2026-10-06T10:24:00.000+0200"
+     "lastUpdate": "2026-10-06T10:54:00.000+0200",
+     "resume": "2026-10-06T10:54:00.000+0200",
+     "start": "2026-10-06T10:40:00.000+0200"
     },
-    "title": "40: Falschparker"
+    "title": "1: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -818,6 +752,114 @@
      "start": "2026-10-06T00:00:25.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Kliebergasse",
+    "name": "R1709-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1709
+    ],
+    "time": {
+     "end": "2026-10-06T11:43:00.000+0200",
+     "start": "2026-10-06T10:43:52.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Kliebergasse",
+    "name": "R1711-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1711
+    ],
+    "time": {
+     "end": "2026-10-06T11:43:00.000+0200",
+     "start": "2026-10-06T10:43:52.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Kliebergasse",
+    "name": "R1712-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1712
+    ],
+    "time": {
+     "end": "2026-10-06T11:43:00.000+0200",
+     "start": "2026-10-06T10:43:52.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Kliebergasse",
+    "name": "R1713-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1713
+    ],
+    "time": {
+     "end": "2026-10-06T11:43:00.000+0200",
+     "start": "2026-10-06T10:43:52.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Kliebergasse",
+    "name": "R1714-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1714
+    ],
+    "time": {
+     "end": "2026-10-06T11:43:00.000+0200",
+     "start": "2026-10-06T10:43:52.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Verkehrsunfall\nZüge halten bei Linie 18 Richtung Burggasse",
+    "name": "R1715-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1715
+    ],
+    "time": {
+     "end": "2026-10-06T11:43:00.000+0200",
+     "start": "2026-10-06T10:44:52.000+0200"
+    },
+    "title": "Verkehrsunfall\nZüge halten bei Linie 18 Richtung Burggasse"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
@@ -1282,6 +1324,24 @@
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
+    "description": "Verkehrsunfall\nUmleitung bis Kliebergasse über Linien D und 18",
+    "name": "R51-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-10-06T11:42:00.000+0200",
+     "start": "2026-10-06T10:43:51.000+0200"
+    },
+    "title": "Verkehrsunfall\nUmleitung bis Kliebergasse über Linien D und 18"
+   },
+   {
     "description": "Fahrtbehinderung\nFalschparker",
     "name": "R528-109",
     "owner": "WL",
@@ -1421,24 +1481,6 @@
      "start": "2026-10-06T10:18:00.000+0200"
     },
     "title": "Verkehrsstörung\nBusse halten Evangelischer Friedhof"
-   },
-   {
-    "description": "Polizeieinsatz\nBetrieb ab Spengergasse",
-    "name": "R768-414",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedStops": [
-     768
-    ],
-    "time": {
-     "end": "2026-10-06T11:00:00.000+0200",
-     "start": "2026-10-06T10:05:28.000+0200"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Spengergasse"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
