@@ -281,7 +281,7 @@ def test_a_dropping_translation_falls_back_to_german(monkeypatch: Any) -> None:
         # Model echoes its input but swallows the first entity placeholder.
         import re
 
-        return [{"translation_text": re.sub(r"XENT\w+?X\d+X", "", text, count=1)}]
+        return [{"translation_text": re.sub(r"XENT(?:[0-9a-f]{16}X)?\d+X", "", text, count=1)}]
 
     monkeypatch.setattr(
         build_feed, "_get_translation_pipeline", lambda: dropping_pipeline
@@ -316,7 +316,7 @@ def test_a_debris_translation_still_succeeds(monkeypatch: Any) -> None:
     def debris_pipeline(text: str, **kwargs: Any) -> list[dict[str, str]]:
         import re
 
-        return [{"translation_text": re.sub(r"(XENT\w+?X\d+X)", r"\1X", text, count=1)}]
+        return [{"translation_text": re.sub(r"(XENT(?:[0-9a-f]{16}X)?\d+X)", r"\1X", text, count=1)}]
 
     monkeypatch.setattr(
         build_feed, "_get_translation_pipeline", lambda: debris_pipeline

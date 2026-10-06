@@ -113,7 +113,7 @@ def test_the_rule_is_wired_into_the_translation_path(monkeypatch: Any) -> None:
     def model(text: str, **kwargs: Any) -> list[dict[str, str]]:
         # Echo the masked placeholder back: a mock that dropped it would be
         # rejected by the entity guard and fail this test for the wrong reason.
-        placeholder = re.search(r"XENT\w+X\d+X", text)
+        placeholder = re.search(r"XENT(?:[0-9a-f]{16}X)?\d+X", text)
         assert placeholder is not None, text
         return [{"translation_text": f"Works in the {placeholder.group(0)} today"}]
 
