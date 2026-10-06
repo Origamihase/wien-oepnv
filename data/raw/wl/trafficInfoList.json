@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261006-0003, I20260925-0011, I20260922-0032, I20260909-0007"
+    "trafficInfoNameList": "I20260917-0012, I20261006-0003, I20260925-0011, I20260922-0032, I20260909-0007, I20261006-0004-F01, I20261006-0004-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2345-127, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R293-474, R318-437, R2917-0, R2923-403, R2025-671, R130-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R19-136, R45-136, R36-152, R5815-671, R1476-149, R1475-149, R1449-149, R1472-149, R1473-149, R1474-149, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R2558-125, R1150-0, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2345-127, R2380-627, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R293-474, R318-437, R2917-0, R2923-403, R2025-671, R130-136, R100-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R45-136, R19-136, R36-152, R5815-671, R1476-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1508-426, R1475-149, R2558-125, R1150-0, R1974-466, R500-101, R483-152, R1559-152, R1549-152, R1562-152, R1561-152, R1560-152, R571-152, R1610-110, R1599-110, R1598-110, R1597-110, R572-110, R571-110, R579-152, R578-152, R1540-152, R1541-152, R1542-152, R1539-152, R1538-152, R1537-152, R1557-152, R1558-152, R1556-152, R1555-152, R1554-152, R1553-152, R1552-152, R1551-152, R1465-152, R578-110, R577-110, R579-110, R581-110, R568-110, R569-110, R570-110, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -234,6 +234,76 @@
      "start": "2026-10-06T06:29:00.000+0200"
     },
     "title": "59A: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "10": "ptTram"
+     }
+    },
+    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Linzer Straße / Johnstraße",
+    "name": "I20261006-0004-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "110",
+       "lineName": "10",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-06T06:46:00.000+0200",
+     "end": "2026-10-06T23:55:00.000+0200",
+     "lastUpdate": "2026-10-06T06:46:00.000+0200",
+     "resume": "2026-10-06T06:46:00.000+0200",
+     "start": "2026-10-06T06:29:00.000+0200"
+    },
+    "title": "10: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "52": "ptTram"
+     }
+    },
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Linzer Straße / Johnstraße",
+    "name": "I20261006-0004-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "152",
+       "lineName": "52",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-06T06:46:00.000+0200",
+     "end": "2026-10-06T23:55:00.000+0200",
+     "lastUpdate": "2026-10-06T06:46:00.000+0200",
+     "resume": "2026-10-06T06:46:00.000+0200",
+     "start": "2026-10-06T06:29:00.000+0200"
+    },
+    "title": "52: Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -539,6 +609,24 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
    },
    {
+    "description": "Rettungseinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R1465-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1465
+    ],
+    "time": {
+     "end": "2026-10-06T07:35:00.000+0200",
+     "start": "2026-10-06T06:36:34.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
     "name": "R1472-149",
     "owner": "WL",
@@ -663,6 +751,420 @@
      "start": "2026-10-06T00:00:25.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Erzherzog-Karl-Straße 78"
+   },
+   {
+    "description": "Rettungseinsatz\nUmleitung nach Hietzing >",
+    "name": "R1537-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1537
+    ],
+    "time": {
+     "end": "2026-10-06T07:34:00.000+0200",
+     "start": "2026-10-06T06:34:25.000+0200"
+    },
+    "title": "Rettungseinsatz\nUmleitung nach Hietzing >"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1538-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1538
+    ],
+    "time": {
+     "end": "2026-10-06T07:33:00.000+0200",
+     "start": "2026-10-06T06:34:25.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1539-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1539
+    ],
+    "time": {
+     "end": "2026-10-06T07:33:00.000+0200",
+     "start": "2026-10-06T06:34:25.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1540-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1540
+    ],
+    "time": {
+     "end": "2026-10-06T07:33:00.000+0200",
+     "start": "2026-10-06T06:34:25.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1541-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1541
+    ],
+    "time": {
+     "end": "2026-10-06T07:33:00.000+0200",
+     "start": "2026-10-06T06:34:25.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1542-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1542
+    ],
+    "time": {
+     "end": "2026-10-06T07:33:00.000+0200",
+     "start": "2026-10-06T06:34:25.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1549-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1549
+    ],
+    "time": {
+     "end": "2026-10-06T07:31:00.000+0200",
+     "start": "2026-10-06T06:31:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R1551-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1551
+    ],
+    "time": {
+     "end": "2026-10-06T07:35:00.000+0200",
+     "start": "2026-10-06T06:36:25.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R1552-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1552
+    ],
+    "time": {
+     "end": "2026-10-06T07:35:00.000+0200",
+     "start": "2026-10-06T06:36:25.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R1553-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1553
+    ],
+    "time": {
+     "end": "2026-10-06T07:35:00.000+0200",
+     "start": "2026-10-06T06:36:25.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R1554-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1554
+    ],
+    "time": {
+     "end": "2026-10-06T07:35:00.000+0200",
+     "start": "2026-10-06T06:36:25.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R1555-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1555
+    ],
+    "time": {
+     "end": "2026-10-06T07:35:00.000+0200",
+     "start": "2026-10-06T06:36:25.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R1556-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1556
+    ],
+    "time": {
+     "end": "2026-10-06T07:35:00.000+0200",
+     "start": "2026-10-06T06:36:25.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R1557-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1557
+    ],
+    "time": {
+     "end": "2026-10-06T07:35:00.000+0200",
+     "start": "2026-10-06T06:36:25.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R1558-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1558
+    ],
+    "time": {
+     "end": "2026-10-06T07:35:00.000+0200",
+     "start": "2026-10-06T06:36:25.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1559-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1559
+    ],
+    "time": {
+     "end": "2026-10-06T07:31:00.000+0200",
+     "start": "2026-10-06T06:31:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1560-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1560
+    ],
+    "time": {
+     "end": "2026-10-06T07:31:00.000+0200",
+     "start": "2026-10-06T06:31:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1561-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1561
+    ],
+    "time": {
+     "end": "2026-10-06T07:31:00.000+0200",
+     "start": "2026-10-06T06:31:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1562-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1562
+    ],
+    "time": {
+     "end": "2026-10-06T07:31:00.000+0200",
+     "start": "2026-10-06T06:31:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1597-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1597
+    ],
+    "time": {
+     "end": "2026-10-06T07:32:00.000+0200",
+     "start": "2026-10-06T06:32:25.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1598-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1598
+    ],
+    "time": {
+     "end": "2026-10-06T07:32:00.000+0200",
+     "start": "2026-10-06T06:32:25.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1599-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1599
+    ],
+    "time": {
+     "end": "2026-10-06T07:32:00.000+0200",
+     "start": "2026-10-06T06:32:25.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1610-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1610
+    ],
+    "time": {
+     "end": "2026-10-06T07:32:00.000+0200",
+     "start": "2026-10-06T06:32:25.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
@@ -1091,6 +1593,24 @@
     "title": "Züge halten\nWipplingerstr 39"
    },
    {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R483-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     483
+    ],
+    "time": {
+     "end": "2026-10-06T07:31:00.000+0200",
+     "start": "2026-10-06T06:31:38.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -1107,6 +1627,222 @@
      "start": "2026-10-06T05:00:29.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R568-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     568
+    ],
+    "time": {
+     "end": "2026-10-06T07:40:00.000+0200",
+     "start": "2026-10-06T06:40:57.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R569-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     569
+    ],
+    "time": {
+     "end": "2026-10-06T07:40:00.000+0200",
+     "start": "2026-10-06T06:40:57.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R570-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     570
+    ],
+    "time": {
+     "end": "2026-10-06T07:40:00.000+0200",
+     "start": "2026-10-06T06:40:57.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R571-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     571
+    ],
+    "time": {
+     "end": "2026-10-06T07:40:00.000+0200",
+     "start": "2026-10-06T06:32:27.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R571-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     571
+    ],
+    "time": {
+     "end": "2026-10-06T07:35:00.000+0200",
+     "start": "2026-10-06T06:31:57.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R572-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     572
+    ],
+    "time": {
+     "end": "2026-10-06T07:32:00.000+0200",
+     "start": "2026-10-06T06:32:27.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Hütteldorfer Straße >",
+    "name": "R577-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     577
+    ],
+    "time": {
+     "end": "2026-10-06T07:37:00.000+0200",
+     "start": "2026-10-06T06:37:57.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Hütteldorfer Straße >"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Hütteldorfer Straße >",
+    "name": "R578-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     578
+    ],
+    "time": {
+     "end": "2026-10-06T07:37:00.000+0200",
+     "start": "2026-10-06T06:37:57.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Hütteldorfer Straße >"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R578-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     578
+    ],
+    "time": {
+     "end": "2026-10-06T07:33:00.000+0200",
+     "start": "2026-10-06T06:33:57.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Hütteldorfer Straße >",
+    "name": "R579-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     579
+    ],
+    "time": {
+     "end": "2026-10-06T07:37:00.000+0200",
+     "start": "2026-10-06T06:37:57.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Hütteldorfer Straße >"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R579-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     579
+    ],
+    "time": {
+     "end": "2026-10-06T07:33:00.000+0200",
+     "start": "2026-10-06T06:33:57.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Gleisbauarbeiten\nZüge halten bei Linie 46 Richtung Parlament, Volkstheater",
+    "name": "R581-110",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     581
+    ],
+    "time": {
+     "end": "2026-10-06T07:37:00.000+0200",
+     "start": "2026-10-06T06:39:57.000+0200"
+    },
+    "title": "Gleisbauarbeiten\nZüge halten bei Linie 46 Richtung Parlament, Volkstheater"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",

@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 06 Oct 2026 06:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 07:00:38 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[59A: Rescue operation]]></title>
@@ -19,6 +19,17 @@
       <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: rescue operation. [Since 06:29]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 06:29]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10: Rettungseinsatz, Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8b481d00f597d403fd733652ccb119b371560c14fdfc76dab913cf850ab4d9f9</guid>
+      <pubDate>Tue, 06 Oct 2026 06:29:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 06:29:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 06:40:57 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Rettungseinsatz: Betrieb ab Hütteldorfer Straße. Gleisbauarbeiten: Züge halten bei Linie 46 Richtung Parlament, Volkstheater. [Heute]</description>
+      <content:encoded><![CDATA[Rettungseinsatz: Betrieb ab Hütteldorfer Straße. Gleisbauarbeiten: Züge halten bei Linie 46 Richtung Parlament, Volkstheater.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S80: ÖBB replacement bus]]></title>
@@ -98,26 +109,15 @@
       <content:encoded><![CDATA[The work takes place in the period from 20:00 to 05:00. The left lane towards the city is closed.<br/>[Until 15.11.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[52: Trains stop at the stops of lines 6 and 18]]></title>
+      <title><![CDATA[52: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
       <pubDate>Tue, 06 Oct 2026 00:00:18 +0200</pubDate>
       <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
       <ext:starts_at>Tue, 06 Oct 2026 00:00:18 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Today]</description>
-      <content:encoded><![CDATA[[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Diversion because of crane works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
-      <description>Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected. [Until 11.11.]</description>
-      <content:encoded><![CDATA[Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected.<br/>[Until 11.11.]]]></content:encoded>
+      <description>Trains stop at the stops of lines 6 and 18; service from Penzinger Straße; diversion according to Hietzing. [Today]</description>
+      <content:encoded><![CDATA[Trains stop at the stops of lines 6 and 18; service from Penzinger Straße; diversion according to Hietzing.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
