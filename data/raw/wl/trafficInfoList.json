@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261005-0044, I20260925-0011, I20260922-0032, I20260909-0007"
+    "trafficInfoNameList": "I20260917-0012, I20260925-0011, I20260922-0032, I20260909-0007"
    },
    {
     "id": 3,
@@ -199,40 +199,6 @@
      "start": "2026-09-25T08:55:00.000+0200"
     },
     "title": "26E: Gleisbauarbeiten"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "N49": "ptBusNight"
-     }
-    },
-    "description": "Derzeit kommt es bei der Linie N49 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Derzeit kommt es bei der Linie N49 in beiden Richtungen zu unterschiedlichen Intervallen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261005-0044",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "N49"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "549",
-       "lineName": "N49",
-       "vehicleType": "ptBusNight"
-      }
-     ]
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-06T00:39:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T00:39:00.000+0200",
-     "resume": "2026-10-06T00:38:00.000+0200",
-     "start": "2026-10-06T00:38:00.000+0200"
-    },
-    "title": "N49: Verspätungen"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
