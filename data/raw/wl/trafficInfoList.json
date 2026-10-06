@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261006-0014, I20261006-0010-F01, I20261006-0008, I20260925-0011, I20260922-0032, I20260909-0007, I20261006-0013-F01, I20261006-0013, I20261006-0012-F01"
+    "trafficInfoNameList": "I20260917-0012, I20261006-0010-F01, I20261006-0008, I20261006-0015, I20261006-0014, I20261006-0013-F01, I20260925-0011, I20260922-0032, I20260909-0007, I20261006-0013, I20261006-0012-F01, I20261006-0014-F01, I20261006-0016-F01, I20261006-0016"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R293-474, R318-437, R2917-0, R2923-403, R2025-671, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R36-152, R103-136, R102-136, R101-136, R100-136, R45-136, R19-136, R5815-671, R1448-149, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R1150-0, R1974-466, R500-101, R51-101, R1713-101, R1709-101, R1711-101, R1712-101, R1714-101, R1715-101, R1616-162, R1724-162, R1725-162, R1726-162, R1727-162, R1728-162, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R293-474, R318-437, R2917-0, R2923-403, R2025-671, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R101-136, R102-136, R100-136, R5815-671, R1445-149, R1508-426, R1448-412, R1474-412, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1150-0, R2558-125, R1974-466, R500-101, R1616-162, R1725-162, R1728-162, R1727-162, R1726-162, R1724-162, R2195-131, R2193-131, R2196-131, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -366,12 +366,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T11:25:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T11:25:00.000+0200",
-     "resume": "2026-10-06T11:25:00.000+0200",
+     "end": "2026-10-06T11:46:00.000+0200",
+     "lastUpdate": "2026-10-06T11:46:00.000+0200",
+     "resume": "2026-10-06T11:46:00.000+0200",
      "start": "2026-10-06T11:10:00.000+0200"
     },
     "title": "62: Schadhafter PKW"
@@ -401,14 +401,158 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T11:21:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T11:21:00.000+0200",
+     "end": "2026-10-06T11:46:00.000+0200",
+     "lastUpdate": "2026-10-06T11:46:00.000+0200",
+     "resume": "2026-10-06T11:46:00.000+0200",
      "start": "2026-10-06T11:19:00.000+0200"
     },
     "title": "31: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "31": "ptTram"
+     }
+    },
+    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Klosterneuburger Straße",
+    "name": "I20261006-0014-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "131",
+       "lineName": "31",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-06T11:46:00.000+0200",
+     "end": "2026-10-06T12:39:00.000+0200",
+     "lastUpdate": "2026-10-06T11:46:00.000+0200",
+     "resume": "2026-10-06T11:46:00.000+0200",
+     "start": "2026-10-06T11:19:00.000+0200"
+    },
+    "title": "31: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "43": "ptTram"
+     }
+    },
+    "description": "Linie 43: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "Linie 43:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Rettungseinsatz.",
+    "name": "I20261006-0015",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "143",
+       "lineName": "43",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-06T11:34:00.000+0200",
+     "end": "2026-10-06T11:41:00.000+0200",
+     "lastUpdate": "2026-10-06T11:41:00.000+0200",
+     "resume": "2026-10-06T11:41:00.000+0200",
+     "start": "2026-10-06T11:33:00.000+0200"
+    },
+    "title": "43: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "43": "ptTram"
+     }
+    },
+    "description": "Linie 43: Umleitung in Richtung Schottentor U zwischen Rosensteingasse und Brünnlbadgasse über die Strecke der Linien 9 und 44. Voraussichtliche Dauer: 12:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Palffygasse.",
+    "descriptionHTML": "Linie 43:<br>Umleitung in Richtung Schottentor U <br>zwischen Rosensteingasse und Brünnlbadgasse <br>über die Strecke der Linien 9 und 44.<br> <br>Voraussichtliche Dauer: 12:00 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Palffygasse.",
+    "name": "I20261006-0016",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "143",
+       "lineName": "43",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     221
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-06T11:42:00.000+0200",
+     "end": "2026-10-06T11:47:00.000+0200",
+     "lastUpdate": "2026-10-06T11:47:00.000+0200",
+     "resume": "2026-10-06T11:47:00.000+0200",
+     "start": "2026-10-06T11:41:00.000+0200"
+    },
+    "title": "43: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "43": "ptTram"
+     }
+    },
+    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261006-0016-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "143",
+       "lineName": "43",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     221
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-06T11:47:00.000+0200",
+     "end": "2026-10-06T23:55:00.000+0200",
+     "lastUpdate": "2026-10-06T11:47:00.000+0200",
+     "resume": "2026-10-06T11:47:00.000+0200",
+     "start": "2026-10-06T11:41:00.000+0200"
+    },
+    "title": "43: Schadhaftes Fahrzeug"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -858,114 +1002,6 @@
     "title": "Fahrtbehinderung\nSchadhafter Pkw"
    },
    {
-    "description": "Verkehrsunfall\nBetrieb ab Kliebergasse",
-    "name": "R1709-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     1709
-    ],
-    "time": {
-     "end": "2026-10-06T11:43:00.000+0200",
-     "start": "2026-10-06T10:43:52.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Kliebergasse"
-   },
-   {
-    "description": "Verkehrsunfall\nBetrieb ab Kliebergasse",
-    "name": "R1711-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     1711
-    ],
-    "time": {
-     "end": "2026-10-06T11:43:00.000+0200",
-     "start": "2026-10-06T10:43:52.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Kliebergasse"
-   },
-   {
-    "description": "Verkehrsunfall\nBetrieb ab Kliebergasse",
-    "name": "R1712-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     1712
-    ],
-    "time": {
-     "end": "2026-10-06T11:43:00.000+0200",
-     "start": "2026-10-06T10:43:52.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Kliebergasse"
-   },
-   {
-    "description": "Verkehrsunfall\nBetrieb ab Kliebergasse",
-    "name": "R1713-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     1713
-    ],
-    "time": {
-     "end": "2026-10-06T11:43:00.000+0200",
-     "start": "2026-10-06T10:43:52.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Kliebergasse"
-   },
-   {
-    "description": "Verkehrsunfall\nBetrieb ab Kliebergasse",
-    "name": "R1714-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     1714
-    ],
-    "time": {
-     "end": "2026-10-06T11:43:00.000+0200",
-     "start": "2026-10-06T10:43:52.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Kliebergasse"
-   },
-   {
-    "description": "Verkehrsunfall\nZüge halten bei Linie 18 Richtung Burggasse",
-    "name": "R1715-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     1715
-    ],
-    "time": {
-     "end": "2026-10-06T11:43:00.000+0200",
-     "start": "2026-10-06T10:44:52.000+0200"
-    },
-    "title": "Verkehrsunfall\nZüge halten bei Linie 18 Richtung Burggasse"
-   },
-   {
     "description": "Fahrtbehinderung\nSchadhafter Pkw",
     "name": "R1724-162",
     "owner": "WL",
@@ -1105,6 +1141,60 @@
      "start": "2026-10-06T00:00:09.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
+   },
+   {
+    "description": "Verkehrsunfall\nZüge halten Jägerstraße bei Linie 12",
+    "name": "R2193-131",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2193
+    ],
+    "time": {
+     "end": "2026-10-06T12:20:00.000+0200",
+     "start": "2026-10-06T11:39:05.000+0200"
+    },
+    "title": "Verkehrsunfall\nZüge halten Jägerstraße bei Linie 12"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Gaußplatz",
+    "name": "R2195-131",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2195
+    ],
+    "time": {
+     "end": "2026-10-06T12:20:00.000+0200",
+     "start": "2026-10-06T11:39:05.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Gaußplatz"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Gaußplatz",
+    "name": "R2196-131",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2196
+    ],
+    "time": {
+     "end": "2026-10-06T12:20:00.000+0200",
+     "start": "2026-10-06T11:39:05.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Gaußplatz"
    },
    {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
@@ -1498,24 +1588,6 @@
      "start": "2026-10-06T05:00:29.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "description": "Verkehrsunfall\nUmleitung bis Kliebergasse über Linien D und 18",
-    "name": "R51-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     51
-    ],
-    "time": {
-     "end": "2026-10-06T11:42:00.000+0200",
-     "start": "2026-10-06T10:43:51.000+0200"
-    },
-    "title": "Verkehrsunfall\nUmleitung bis Kliebergasse über Linien D und 18"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
