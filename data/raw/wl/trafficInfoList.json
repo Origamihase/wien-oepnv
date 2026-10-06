@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261006-0027, I20260925-0011, I20260909-0007, I20261006-0035, I20261006-0036, I20261006-0032-F01, I20261006-0031-F01, I20261006-0025, I20261006-0029-F02, I20261006-0033-F01, I20261006-0033-F02, I20261006-0033, I20261006-0034-F01, I20261006-0034, I20261006-0029-F01"
+    "trafficInfoNameList": "I20261006-0025, I20260917-0012, I20260922-0032, I20261006-0037, I20260925-0011, I20260909-0007, I20261006-0035, I20261006-0036, I20261006-0038, I20261006-0033-F02, I20261006-0031-F01, I20261006-0027, I20261006-0032-F01, I20261006-0033-F01, I20261006-0034-F01, I20261006-0034, I20261006-0029-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R293-474, R318-437, R2917-0, R2923-403, R2025-671, R130-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R19-136, R45-136, R36-152, R5815-671, R1476-149, R1475-149, R1449-149, R1472-149, R1473-149, R1474-149, R1508-426, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R2558-125, R1150-0, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2373-127, R2379-627, R2370-125, R2371-125, R2372-125, R2373-125, R2373-126, R2372-627, R2345-127, R2380-627, R2378-627, R2343-626, R2343-125, R2359-125, R293-474, R318-437, R2917-0, R2923-403, R2025-671, R117-136, R118-136, R36-152, R45-136, R19-136, R130-136, R119-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R5815-671, R1448-412, R1508-426, R1476-149, R1445-149, R1473-149, R1474-149, R1446-149, R1474-412, R1475-149, R1448-149, R1449-149, R1472-149, R1447-149, R2558-125, R1150-0, R1974-466, R500-101, R299-170, R343-170, R1932-170, R1925-170, R1926-170, R1930-170, R1931-170, R1933-170, R2254-111, R1925-111, R1926-111, R2259-111, R2257-111, R2244-111, R2232-111, R2231-111, R2260-111, R2258-111, R1931-111, R1932-111, R1930-111, R1925-465, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -245,12 +245,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T16:27:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T18:24:00.000+0200",
-     "resume": "2026-10-06T16:27:00.000+0200",
+     "end": "2026-10-06T19:10:00.000+0200",
+     "lastUpdate": "2026-10-06T19:10:00.000+0200",
+     "resume": "2026-10-06T19:10:00.000+0200",
      "start": "2026-10-06T16:27:00.000+0200"
     },
     "title": "7A, 15A, 63A, 10A: Verkehrsüberlastung"
@@ -286,12 +286,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T16:44:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T18:52:00.000+0200",
-     "resume": "2026-10-06T16:44:00.000+0200",
+     "end": "2026-10-06T19:09:00.000+0200",
+     "lastUpdate": "2026-10-06T19:09:00.000+0200",
+     "resume": "2026-10-06T19:09:00.000+0200",
      "start": "2026-10-06T16:44:00.000+0200"
     },
     "title": "74A, O: Verkehrsüberlastung"
@@ -332,43 +332,6 @@
      "start": "2026-10-06T17:13:00.000+0200"
     },
     "title": "40: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261006-0029-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "141",
-       "lineName": "41",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     189
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-06T17:24:00.000+0200",
-     "end": "2026-10-06T17:58:00.000+0200",
-     "lastUpdate": "2026-10-06T17:58:00.000+0200",
-     "resume": "2026-10-06T17:58:00.000+0200",
-     "start": "2026-10-06T17:13:00.000+0200"
-    },
-    "title": "41: Verkehrsunfall"
    },
    {
     "attributes": {
@@ -430,57 +393,15 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T17:37:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T17:37:00.000+0200",
-     "resume": "2026-10-06T17:37:00.000+0200",
+     "end": "2026-10-06T19:09:00.000+0200",
+     "lastUpdate": "2026-10-06T19:09:00.000+0200",
+     "resume": "2026-10-06T19:09:00.000+0200",
      "start": "2026-10-06T17:30:00.000+0200"
     },
     "title": "12A: Feuerwehreinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "13A": "ptBusCity",
-      "14A": "ptBusCity"
-     }
-    },
-    "description": "Die Linie 13A wird in Richtung Hauptbahnhof S U zwischen Neubaugasse U und Pilgramgasse U über Gumpendorfer Straße, Getreidemarkt und Linke Wienzeile umgeleitet. Die Linie 14A wird in Richtung Reumannplatz U zwischen Neubaugasse U und Pilgramgasse U über Gumpfendorfer Straße, Getreidemarkt und Linke Wienzeile umgeleitet. Voraussichtliche Dauer: 18:10 Uhr. Grund: Falschparker im Bereich Kaunitzgasse 14.",
-    "descriptionHTML": "Die Linie 13A wird in Richtung Hauptbahnhof S U zwischen Neubaugasse U und Pilgramgasse U über Gumpendorfer Straße, Getreidemarkt und Linke Wienzeile umgeleitet.<br>Die Linie 14A wird in Richtung Reumannplatz U zwischen Neubaugasse U und Pilgramgasse U über Gumpfendorfer Straße, Getreidemarkt und Linke Wienzeile umgeleitet.<br> <br>Voraussichtliche Dauer: 18:10 Uhr.<br><br>Grund: Falschparker im Bereich Kaunitzgasse 14.",
-    "location": "Kaunitzgasse 14",
-    "name": "I20261006-0033",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "13A",
-     "14A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "413",
-       "lineName": "13A",
-       "vehicleType": "ptBusCity"
-      },
-      {
-       "lineId": "414",
-       "lineName": "14A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-06T17:45:00.000+0200",
-     "end": "2026-10-06T18:06:00.000+0200",
-     "lastUpdate": "2026-10-06T18:06:00.000+0200",
-     "resume": "2026-10-06T18:06:00.000+0200",
-     "start": "2026-10-06T17:44:00.000+0200"
-    },
-    "title": "13A, 14A: Falschparker"
    },
    {
     "attributes": {
@@ -542,12 +463,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T18:06:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T18:06:00.000+0200",
-     "resume": "2026-10-06T18:06:00.000+0200",
+     "end": "2026-10-06T19:28:00.000+0200",
+     "lastUpdate": "2026-10-06T19:28:00.000+0200",
+     "resume": "2026-10-06T19:28:00.000+0200",
      "start": "2026-10-06T17:44:00.000+0200"
     },
     "title": "14A: Falschparker"
@@ -695,6 +616,81 @@
      "start": "2026-10-06T18:58:00.000+0200"
     },
     "title": "U6: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram",
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie 11: Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Quellenplatz. Linie O: Betrieb nur zwischen Bruno-Marek-Allee und Quellenplatz. Weiterfahrt bis Reumannplatz U. Weichen Sie ersatzweise auf die Linien U1, 7A, 15A und 16A aus. Voraussichtliche Dauer: 20:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Laxenburger Straße # Troststraße.",
+    "descriptionHTML": "Linie 11:<br>Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Quellenplatz.<br>Linie O:<br>Betrieb nur zwischen Bruno-Marek-Allee und Quellenplatz.<br>Weiterfahrt bis Reumannplatz U.<br> <br>Weichen Sie ersatzweise auf die Linien U1, 7A, 15A und 16A aus.<br><br>Voraussichtliche Dauer: 20:00 Uhr.<br><br>Grund: Fremder Verkehrsunfall im Bereich Laxenburger Straße # Troststraße.",
+    "location": "Laxenburger Straße / Troststraße",
+    "name": "I20261006-0037",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11",
+     "O"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "111",
+       "lineName": "11",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "170",
+       "lineName": "O",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-06T19:08:00.000+0200",
+     "end": "2026-10-06T23:55:00.000+0200",
+     "lastUpdate": "2026-10-06T19:11:00.000+0200",
+     "start": "2026-10-06T19:00:00.000+0200"
+    },
+    "title": "11, O: Fremder Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "65A": "ptBusCity"
+     }
+    },
+    "description": "Die Linie 65A wird in Richtung Wienerberg City zwischen Ettenreichgasse, Schulzentrum und Gußriegelstraße über Laxenburger Straße und Raxstraße umgeleitet. In Richtung Reumannplatz wird die Linie 65A zwischen Neilreichgasse, Troststraße und Ettenreichgasse, Schulzentrum über Neilreichgasse, Raxstraße und Laxenburger Straße umgeleitet. Voraussichtliche Dauer: 20:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Laxenburger Straße # Troststraße.",
+    "descriptionHTML": "<p>Die Linie 65A wird in Richtung Wienerberg City zwischen Ettenreichgasse, Schulzentrum und Gußriegelstraße über Laxenburger Straße und Raxstraße umgeleitet.</p><p><br></p><p>In Richtung Reumannplatz wird die Linie 65A zwischen Neilreichgasse, Troststraße und Ettenreichgasse, Schulzentrum über Neilreichgasse, Raxstraße und Laxenburger Straße umgeleitet.</p><p><br></p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p><br></p><p>Grund: Fremder Verkehrsunfall im Bereich Laxenburger Straße # Troststraße.</p>",
+    "location": "Laxenburger Straße / Troststraße",
+    "name": "I20261006-0038",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "65A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "465",
+       "lineName": "65A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-06T19:24:00.000+0200",
+     "end": "2026-10-06T23:55:00.000+0200",
+     "lastUpdate": "2026-10-06T19:24:00.000+0200",
+     "start": "2026-10-06T19:15:00.000+0200"
+    },
+    "title": "65A: Fremder Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1144,6 +1140,222 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
    },
    {
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1925-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1925
+    ],
+    "time": {
+     "end": "2026-10-06T20:04:00.000+0200",
+     "start": "2026-10-06T19:05:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1925-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     1925
+    ],
+    "time": {
+     "end": "2026-10-06T20:03:00.000+0200",
+     "start": "2026-10-06T19:04:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "description": "Fremdunfall\nUmleitung über Raxstraße",
+    "name": "R1925-465",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "65A"
+    ],
+    "relatedStops": [
+     1925
+    ],
+    "time": {
+     "end": "2026-10-06T20:10:00.000+0200",
+     "start": "2026-10-06T19:11:20.000+0200"
+    },
+    "title": "Fremdunfall\nUmleitung über Raxstraße"
+   },
+   {
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1926-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1926
+    ],
+    "time": {
+     "end": "2026-10-06T20:04:00.000+0200",
+     "start": "2026-10-06T19:05:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1926-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     1926
+    ],
+    "time": {
+     "end": "2026-10-06T20:03:00.000+0200",
+     "start": "2026-10-06T19:04:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "description": "Fremdunfall\nBetrieb ab Quellenplatz",
+    "name": "R1930-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1930
+    ],
+    "time": {
+     "end": "2026-10-06T20:05:00.000+0200",
+     "start": "2026-10-06T19:06:20.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Fremdunfall\nBetrieb ab Quellenplatz",
+    "name": "R1930-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     1930
+    ],
+    "time": {
+     "end": "2026-10-06T20:03:00.000+0200",
+     "start": "2026-10-06T19:04:20.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Fremdunfall\nBetrieb ab Quellenplatz",
+    "name": "R1931-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1931
+    ],
+    "time": {
+     "end": "2026-10-06T20:05:00.000+0200",
+     "start": "2026-10-06T19:06:20.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Fremdunfall\nBetrieb ab Quellenplatz",
+    "name": "R1931-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     1931
+    ],
+    "time": {
+     "end": "2026-10-06T20:03:00.000+0200",
+     "start": "2026-10-06T19:04:20.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Fremdunfall\nBetrieb ab Quellenplatz",
+    "name": "R1932-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1932
+    ],
+    "time": {
+     "end": "2026-10-06T20:05:00.000+0200",
+     "start": "2026-10-06T19:06:20.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Fremdunfall\nBetrieb ab Quellenplatz",
+    "name": "R1932-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     1932
+    ],
+    "time": {
+     "end": "2026-10-06T20:03:00.000+0200",
+     "start": "2026-10-06T19:04:20.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Fremdunfall\nZüge halten bei Linie 11",
+    "name": "R1933-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     1933
+    ],
+    "time": {
+     "end": "2026-10-06T20:04:00.000+0200",
+     "start": "2026-10-06T19:04:50.000+0200"
+    },
+    "title": "Fremdunfall\nZüge halten bei Linie 11"
+   },
+   {
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-466",
     "owner": "WL",
@@ -1175,6 +1387,150 @@
      "start": "2026-10-06T00:00:09.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
+   },
+   {
+    "description": "Fremdunfall\nBetrieb ab Quellenplatz",
+    "name": "R2231-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2231
+    ],
+    "time": {
+     "end": "2026-10-06T20:05:00.000+0200",
+     "start": "2026-10-06T19:06:17.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Fremdunfall\nBetrieb ab Quellenplatz",
+    "name": "R2232-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2232
+    ],
+    "time": {
+     "end": "2026-10-06T20:05:00.000+0200",
+     "start": "2026-10-06T19:06:17.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Fremdunfall\nBetrieb ab Quellenplatz",
+    "name": "R2244-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2244
+    ],
+    "time": {
+     "end": "2026-10-06T20:05:00.000+0200",
+     "start": "2026-10-06T19:06:17.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R2254-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2254
+    ],
+    "time": {
+     "end": "2026-10-06T20:04:00.000+0200",
+     "start": "2026-10-06T19:05:17.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "description": "Fremdunfall\nBetrieb ab Quellenplatz",
+    "name": "R2257-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2257
+    ],
+    "time": {
+     "end": "2026-10-06T20:05:00.000+0200",
+     "start": "2026-10-06T19:06:17.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Fremdunfall\nBetrieb ab Quellenplatz",
+    "name": "R2258-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2258
+    ],
+    "time": {
+     "end": "2026-10-06T20:05:00.000+0200",
+     "start": "2026-10-06T19:06:17.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Fremdunfall\nBetrieb ab Quellenplatz",
+    "name": "R2259-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2259
+    ],
+    "time": {
+     "end": "2026-10-06T20:05:00.000+0200",
+     "start": "2026-10-06T19:06:17.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Fremdunfall\nBetrieb ab Quellenplatz",
+    "name": "R2260-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2260
+    ],
+    "time": {
+     "end": "2026-10-06T20:05:00.000+0200",
+     "start": "2026-10-06T19:06:17.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Quellenplatz"
    },
    {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
@@ -1498,6 +1854,24 @@
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
    },
    {
+    "description": "Fremdunfall\nBetrieb ab Quellenplatz",
+    "name": "R299-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     299
+    ],
+    "time": {
+     "end": "2026-10-06T20:03:00.000+0200",
+     "start": "2026-10-06T19:04:16.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Quellenplatz"
+   },
+   {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1514,6 +1888,24 @@
      "start": "2026-10-06T00:00:07.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R343-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     343
+    ],
+    "time": {
+     "end": "2026-10-06T20:03:00.000+0200",
+     "start": "2026-10-06T19:04:16.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "description": "Züge halten\nbei Linien 6 und 18",
