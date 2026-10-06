@@ -2,6 +2,8 @@ import importlib
 import pytest
 import src.providers.vor as vor
 from typing import Any
+from typing import cast
+import requests
 
 def test_vor_sends_param_when_header_present(monkeypatch: pytest.MonkeyPatch) -> None:
     """
@@ -23,7 +25,7 @@ def test_vor_sends_param_when_header_present(monkeypatch: pytest.MonkeyPatch) ->
             return {"method": method, "url": url, "params": params, **kwargs}
 
     session = DummySession()
-    vor.apply_authentication(session)
+    vor.apply_authentication(cast(requests.Session, session))
 
     # Confirm header is NOT set on session directly (Task 1 fix)
     assert "Authorization" not in session.headers
@@ -44,7 +46,7 @@ def test_vor_sends_param_when_header_present(monkeypatch: pytest.MonkeyPatch) ->
     assert req.headers["Authorization"] == "Bearer secret"
 
     # 2. Param should be injected (as requested by user)
-    assert "accessId=secret" in req.url
+    assert req.url is not None and "accessId=secret" in req.url
 
     monkeypatch.delenv("VOR_ACCESS_ID", raising=False)
     importlib.reload(vor)

@@ -13,6 +13,8 @@ from scripts.fetch_google_places_stations import main as fetch_main
 from src.places.client import GooglePlacesClient, GooglePlacesConfig
 from src.places.quota import MonthlyQuota, QuotaConfig
 from src.places.tiling import Tile
+from typing import cast
+import requests
 
 
 class DummyResponse:
@@ -95,7 +97,7 @@ def test_client_short_circuits_when_quota_reached(tmp_path: Path, caplog: pytest
 
     client = GooglePlacesClient(
         config,
-        session=session,
+        session=cast(requests.Session, session),
         quota=MonthlyQuota.load(quota_path, now_func=lambda: datetime(2024, 5, 1, tzinfo=UTC)),
         quota_config=quota_limits,
         quota_state_path=quota_path,
@@ -137,7 +139,7 @@ def test_successful_request_updates_quota_state(tmp_path: Path) -> None:
 
     client = GooglePlacesClient(
         _make_config(),
-        session=session,
+        session=cast(requests.Session, session),
         quota=MonthlyQuota.load(quota_path),
         quota_config=QuotaConfig(limit_total=5, limit_nearby=5, limit_text=5, limit_details=5, limit_daily=None),
         quota_state_path=quota_path,
@@ -174,7 +176,7 @@ def test_rate_limited_attempts_consume_quota(tmp_path: Path, monkeypatch: pytest
 
     client = GooglePlacesClient(
         _make_config(max_retries=1),
-        session=session,
+        session=cast(requests.Session, session),
         quota=MonthlyQuota.load(quota_path),
         quota_config=QuotaConfig(limit_total=10, limit_nearby=10, limit_text=10, limit_details=10, limit_daily=None),
         quota_state_path=quota_path,

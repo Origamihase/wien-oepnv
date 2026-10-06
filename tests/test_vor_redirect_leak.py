@@ -2,6 +2,7 @@
 import unittest
 import requests
 from src.providers import vor
+from requests.structures import CaseInsensitiveDict
 
 class TestVorRedirectLeak(unittest.TestCase):
     def setUp(self) -> None:
@@ -20,7 +21,7 @@ class TestVorRedirectLeak(unittest.TestCase):
         attacker_url = "http://attacker.com/steal"
         req = requests.PreparedRequest()
         req.url = attacker_url
-        req.headers = {}
+        req.headers = CaseInsensitiveDict()
 
         # Apply auth
         auth(req)
@@ -32,7 +33,7 @@ class TestVorRedirectLeak(unittest.TestCase):
         legit_url = vor.VOR_BASE_URL + "departureBoard"
         req = requests.PreparedRequest()
         req.url = legit_url
-        req.headers = {}
+        req.headers = CaseInsensitiveDict()
 
         # Apply auth
         auth(req)

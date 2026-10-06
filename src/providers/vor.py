@@ -551,7 +551,7 @@ def refresh_access_credentials() -> str:
 refresh_access_credentials()
 
 
-class VorAuth(AuthBase):  # type: ignore[misc]
+class VorAuth(AuthBase):
     """
     Injects VOR access credentials into the request via query parameter,
     only if not already authenticated via header.

@@ -23,7 +23,7 @@ import sys
 from collections.abc import Iterator
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import pytest
 import requests
@@ -1171,7 +1171,7 @@ def test_query_trips_passes_canonical_parameters(
     monkeypatch.setattr(script, "_charge_one_request", lambda _now: None)
 
     direction = script.DIRECTIONS[0]
-    trips = script._query_trips(session=object(), direction=direction, when=_stable_now)
+    trips = script._query_trips(session=cast(requests.Session, object()), direction=direction, when=_stable_now)
     assert trips == []
     assert captured["endpoint"].endswith("/trip")
     params = captured["params"]
@@ -1238,7 +1238,7 @@ def test_query_trips_raises_http_error_with_populated_body_on_4xx(
 
     with pytest.raises(requests.HTTPError) as exc_info:
         script._query_trips(
-            session=object(),
+            session=cast(requests.Session, object()),
             direction=script.DIRECTIONS[0],
             when=_stable_now,
         )
@@ -1270,7 +1270,7 @@ def test_query_trips_normalises_single_trip_payload(
     monkeypatch.setattr(script, "request_safe", fake_request)
 
     trips = script._query_trips(
-        session=object(), direction=script.DIRECTIONS[0], when=_stable_now
+        session=cast(requests.Session, object()), direction=script.DIRECTIONS[0], when=_stable_now
     )
     assert isinstance(trips, list)
     assert len(trips) == 1
@@ -1291,7 +1291,7 @@ def test_query_trips_raises_on_non_dict_payload(
 
     with pytest.raises(TypeError):
         script._query_trips(
-            session=object(), direction=script.DIRECTIONS[0], when=_stable_now
+            session=cast(requests.Session, object()), direction=script.DIRECTIONS[0], when=_stable_now
         )
 
 
@@ -1316,7 +1316,7 @@ def test_process_direction_charges_quota_before_breaker(
 
     state: dict[str, Any] = {}
     result = script._process_direction(
-        object(), script.DIRECTIONS[0], state, when=_stable_now
+        cast(requests.Session, object()), script.DIRECTIONS[0], state, when=_stable_now
     )
     assert call_order == ["charge", "fetch"]
     assert result == "ok"
@@ -1347,7 +1347,7 @@ def test_process_direction_quota_exhausted_does_not_trip_breaker(
 
     state: dict[str, Any] = {}
     result = script._process_direction(
-        object(), script.DIRECTIONS[0], state, when=_stable_now
+        cast(requests.Session, object()), script.DIRECTIONS[0], state, when=_stable_now
     )
     assert result == "quota_exceeded"
     assert fetched["called"] is False

@@ -59,6 +59,7 @@ from src.feed.reporting import (
     RunReport,
     render_feed_health_markdown,
 )
+from typing import cast
 
 
 # ---- Shared fixtures -------------------------------------------------------
@@ -183,7 +184,7 @@ def _post_issue_capture_body(
     )
     report.log_results()
     assert len(responses.calls) == 1, "expected exactly one POST to GitHub"
-    payload = json.loads(responses.calls[0].request.body)
+    payload = json.loads(cast("str | bytes", responses.calls[0].request.body))
     return str(payload["body"])
 
 
