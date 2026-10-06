@@ -116,7 +116,7 @@ import inspect
 import json
 import math
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import pytest
 import requests
@@ -462,7 +462,7 @@ def test_poc_wl_fetch_get_json_rejects_planted_NaN(monkeypatch: pytest.MonkeyPat
 
     monkeypatch.setattr(wl_fetch, "session_with_retries", lambda *_a, **_k: _FakeSession())
 
-    result = wl_fetch._get_json("trafficInfoList", session=_FakeSession())
+    result = wl_fetch._get_json("trafficInfoList", session=cast(requests.Session, _FakeSession()))
     # Post-fix: planted NaN is treated as a decode failure → {}.
     assert result == {}, (
         "wl_fetch._get_json failed to reject planted NaN literal — "
@@ -495,7 +495,7 @@ def test_poc_wl_fetch_get_json_rejects_planted_scientific_overflow(
 
     monkeypatch.setattr(wl_fetch, "session_with_retries", lambda *_a, **_k: _FakeSession())
 
-    result = wl_fetch._get_json("trafficInfoList", session=_FakeSession())
+    result = wl_fetch._get_json("trafficInfoList", session=cast(requests.Session, _FakeSession()))
     assert result == {}
 
 
@@ -523,7 +523,7 @@ def test_poc_wl_fetch_get_json_finite_payload_round_trips(
 
     monkeypatch.setattr(wl_fetch, "session_with_retries", lambda *_a, **_k: _FakeSession())
 
-    result = wl_fetch._get_json("trafficInfoList", session=_FakeSession())
+    result = wl_fetch._get_json("trafficInfoList", session=cast(requests.Session, _FakeSession()))
     assert result == {"latency_ms": 12.5, "ok": True}
     assert math.isfinite(result["latency_ms"])
 

@@ -12,6 +12,7 @@ from src.places.client import GooglePlacesClient, GooglePlacesConfig, Place
 from src.places.merge import BoundingBox, MergeConfig, merge_places, StationEntry
 from src.places.normalize import haversine_m, normalize_name
 from src.places.tiling import Tile
+import requests
 
 
 def make_place(
@@ -284,7 +285,7 @@ def test_client_handles_pagination(monkeypatch: pytest.MonkeyPatch) -> None:
         timeout_s=5.0,
         max_retries=0,
     )
-    client = GooglePlacesClient(config, session=session)
+    client = GooglePlacesClient(config, session=cast(requests.Session, session))
     results = list(client.iter_nearby([Tile(latitude=48.2, longitude=16.3)]))
     assert {place.place_id for place in results} == {"first", "second"}
     assert client.request_count == 2
@@ -312,7 +313,7 @@ def test_client_retries_on_rate_limit(monkeypatch: pytest.MonkeyPatch) -> None:
         timeout_s=5.0,
         max_retries=1,
     )
-    client = GooglePlacesClient(config, session=session)
+    client = GooglePlacesClient(config, session=cast(requests.Session, session))
     monkeypatch.setattr("src.places.client.time.sleep", lambda _: None)
     monkeypatch.setattr(client, "_backoff", lambda attempt: 0.0)
     results = list(client.iter_nearby([Tile(latitude=48.2, longitude=16.3)]))

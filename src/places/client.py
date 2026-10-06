@@ -287,7 +287,7 @@ class GooglePlacesClient:
         self.close()
 
     def close(self) -> None:
-        if self._session:
+        if self._session is not None:
             self._session.close()
 
     def _sanitize_arg(self, arg: object) -> object:
@@ -456,7 +456,7 @@ class GooglePlacesClient:
     def _post(
         self,
         endpoint: str,
-        body: dict[str, object],
+        body: dict[str, Any],
         *,
         quota_kind: str | None = None,
         field_mask: str = FIELD_MASK_NEARBY,

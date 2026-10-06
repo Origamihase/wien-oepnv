@@ -36,7 +36,7 @@ class TestHTTPRequestSafe(unittest.TestCase):
                 resp2.status_code = 200
                 resp2._content = b"Success"
                 # Mock iter_content to simulate streaming response
-                resp2.iter_content = MagicMock(return_value=[b"Success"])
+                resp2.iter_content = MagicMock(return_value=[b"Success"])  # type: ignore[method-assign]
                 resp2.url = 'http://example.com/redirected'
                 resp2.headers['Content-Type'] = 'text/plain'
                 resp2.raw = MagicMock()
@@ -99,7 +99,7 @@ class TestHTTPRequestSafe(unittest.TestCase):
                 resp2 = requests.Response()
                 resp2.status_code = 200
                 resp2._content = b"Success"
-                resp2.iter_content = MagicMock(return_value=[b"Success"])
+                resp2.iter_content = MagicMock(return_value=[b"Success"])  # type: ignore[method-assign]
                 resp2.url = 'http://example.com/redirected'
                 resp2.headers['Content-Type'] = 'text/plain'
                 resp2.raw = MagicMock()
@@ -141,7 +141,7 @@ class TestHTTPRequestSafe(unittest.TestCase):
                 resp = requests.Response()
                 resp.status_code = 200
                 resp._content = b"ok"
-                resp.iter_content = MagicMock(return_value=[b"ok"])
+                resp.iter_content = MagicMock(return_value=[b"ok"])  # type: ignore[method-assign]
                 resp.url = 'http://example.com/'
                 resp.headers['Content-Type'] = 'text/plain'
                 resp.raw = MagicMock()
@@ -186,7 +186,7 @@ class TestHTTPRequestSafe(unittest.TestCase):
                 resp = requests.Response()
                 resp.status_code = 200
                 resp._content = b"ok"
-                resp.iter_content = MagicMock(return_value=[b"ok"])
+                resp.iter_content = MagicMock(return_value=[b"ok"])  # type: ignore[method-assign]
                 resp.url = 'http://example.com/'
                 resp.headers['Content-Type'] = 'text/plain'
                 resp.raw = MagicMock()

@@ -22,9 +22,20 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   `except`-Zweige begründet, `locking.file_lock` mit `finally` statt
   `except BaseException`. Was CodeQL danach noch meldet, sind
   Fehlalarme (u. a. verwechselt es das Standardmodul `logging` mit
-  `src/utils/logging.py`) und sechs Stellen in `src/utils/http.py`, die
-  nach der `requests`-2.34-Umstellung (#1770) folgen. Feed-Inhalt
-  unverändert.
+  `src/utils/logging.py`). In `src/utils/http.py` sind die sechs
+  leeren `except`-Zweige ebenfalls begründet (Verhalten des SSRF-Schutzes
+  unverändert). Feed-Inhalt unverändert.
+* **Abhängigkeiten: requests 2.34 (2026-10-06)**: Nachzug zu #1770.
+  requests bringt ab 2.34 eigene Typangaben mit; vorher galt jedes
+  requests-Objekt für mypy als `Any`. Die 61 neuen Meldungen sind behoben,
+  ohne das Verhalten zu ändern: `TimeoutHTTPAdapter.send` nennt die
+  Parameter von `HTTPAdapter.send` jetzt einzeln statt `**kwargs` (gleiche
+  Vorgaben, gleiche Proxy-Prüfung), die Sende-Helfer des SSRF-Schutzes
+  geben `requests.Response` zurück, zwei überflüssige `cast`/`type: ignore`
+  fallen weg. In den Tests stehen Ersatz-Sessions jetzt hinter
+  `cast(requests.Session, …)` und Header-Attrappen als
+  `CaseInsensitiveDict`, wie sie requests selbst liefert. Volle Testsuite
+  mit 2.34.2 grün.
 * **Code Scanning: echte CodeQL-Befunde behoben (2026-10-06)**: Von den
   104 offenen Meldungen auf `main` waren elf in Produktivcode oder
   Workflows berechtigt. Der Google-Places-Client schrieb abgelehnte

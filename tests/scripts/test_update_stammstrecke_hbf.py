@@ -18,9 +18,10 @@ import sys
 from collections.abc import Iterator
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import pytest
+import requests
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
@@ -769,7 +770,7 @@ def test_query_departure_board_parses_modern_flat_shape(
     monkeypatch.setattr(script, "_charge_one_request", lambda when: None)
 
     when = datetime(2026, 5, 15, 8, 0, tzinfo=VIENNA_TZ)
-    result = script._query_departure_board(session=object(), when=when)
+    result = script._query_departure_board(session=cast(requests.Session, object()), when=when)
     assert len(result) == 2
     assert result[0]["name"] == "S 1"
     assert "departureBoard" in captured_url["endpoint"]
@@ -795,7 +796,7 @@ def test_query_departure_board_parses_nested_shape(
     monkeypatch.setattr(script, "_charge_one_request", lambda when: None)
 
     when = datetime(2026, 5, 15, 8, 0, tzinfo=VIENNA_TZ)
-    result = script._query_departure_board(session=object(), when=when)
+    result = script._query_departure_board(session=cast(requests.Session, object()), when=when)
     assert len(result) == 2
     assert result[0]["name"] == "REX 3"
 
@@ -817,7 +818,7 @@ def test_query_departure_board_handles_single_departure_object(
     monkeypatch.setattr(script, "_charge_one_request", lambda when: None)
 
     when = datetime(2026, 5, 15, 8, 0, tzinfo=VIENNA_TZ)
-    result = script._query_departure_board(session=object(), when=when)
+    result = script._query_departure_board(session=cast(requests.Session, object()), when=when)
     assert result == [{"name": "S 1"}]
 
 
@@ -838,7 +839,7 @@ def test_query_departure_board_returns_empty_when_field_missing(
     monkeypatch.setattr(script, "_charge_one_request", lambda when: None)
 
     when = datetime(2026, 5, 15, 8, 0, tzinfo=VIENNA_TZ)
-    result = script._query_departure_board(session=object(), when=when)
+    result = script._query_departure_board(session=cast(requests.Session, object()), when=when)
     assert result == []
 
 
@@ -862,7 +863,7 @@ def test_query_departure_board_raises_on_http_error(
 
     when = datetime(2026, 5, 15, 8, 0, tzinfo=VIENNA_TZ)
     with pytest.raises(requests.HTTPError):
-        script._query_departure_board(session=object(), when=when)
+        script._query_departure_board(session=cast(requests.Session, object()), when=when)
 
 
 def test_query_departure_board_raises_on_unparseable_json(
@@ -883,7 +884,7 @@ def test_query_departure_board_raises_on_unparseable_json(
 
     when = datetime(2026, 5, 15, 8, 0, tzinfo=VIENNA_TZ)
     with pytest.raises(ValueError):
-        script._query_departure_board(session=object(), when=when)
+        script._query_departure_board(session=cast(requests.Session, object()), when=when)
 
 
 # ---- Sanity / pinning -----------------------------------------------------
@@ -967,7 +968,7 @@ def test_process_tick_quota_exhausted_does_not_trip_breaker(
 
     when = datetime(2026, 5, 15, 8, 0, tzinfo=VIENNA_TZ)
     state: dict[Any, Any] = {}
-    result = script._process_tick(session=object(), state=state, when=when)
+    result = script._process_tick(session=cast(requests.Session, object()), state=state, when=when)
 
     assert result == "quota_exceeded"
     assert fetched["called"] is False

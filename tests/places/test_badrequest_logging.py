@@ -10,6 +10,8 @@ from unittest.mock import MagicMock
 import pytest
 
 from src.places.client import FIELD_MASK_NEARBY, GooglePlacesClient, GooglePlacesConfig, GooglePlacesError
+from typing import cast
+import requests
 
 
 class _ErrorResponse:
@@ -119,7 +121,7 @@ def test_bad_request_error_includes_field_violations() -> None:
         timeout_s=1,
         max_retries=0,
     )
-    client = GooglePlacesClient(config, session=session)
+    client = GooglePlacesClient(config, session=cast(requests.Session, session))
 
     with pytest.raises(GooglePlacesError) as excinfo:
         client._post(
@@ -155,7 +157,7 @@ def test_error_details_strip_control_characters() -> None:
         timeout_s=1,
         max_retries=0,
     )
-    client = GooglePlacesClient(config, session=session)
+    client = GooglePlacesClient(config, session=cast(requests.Session, session))
 
     with pytest.raises(GooglePlacesError) as excinfo:
         client._post(

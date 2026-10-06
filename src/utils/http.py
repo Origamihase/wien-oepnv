@@ -660,21 +660,39 @@ def _sanitize_url_for_error(url: str) -> str:
         return "invalid_url"
 
 
-class TimeoutHTTPAdapter(HTTPAdapter):  # type: ignore[misc]
+class TimeoutHTTPAdapter(HTTPAdapter):
     """HTTPAdapter that enforces a default timeout."""
 
     def __init__(self, *args: Any, timeout: int | float | tuple[float, float] | None = None, **kwargs: Any) -> None:
         self.timeout = timeout
         super().__init__(*args, **kwargs)
 
-    def send(self, request: requests.PreparedRequest, **kwargs: Any) -> requests.Response:
-        if kwargs.get("timeout") is None:
-            kwargs["timeout"] = self.timeout if self.timeout is not None else DEFAULT_TIMEOUT
+    def send(
+        self,
+        request: requests.PreparedRequest,
+        stream: bool = False,
+        timeout: Any = None,
+        verify: Any = True,
+        cert: Any = None,
+        proxies: dict[str, str] | None = None,
+    ) -> requests.Response:
+        # Same parameters and defaults as ``HTTPAdapter.send`` (requests >= 2.34
+        # ships its own types and checks the override); ``Session.send`` passes
+        # them as keywords.
+        if timeout is None:
+            timeout = self.timeout if self.timeout is not None else DEFAULT_TIMEOUT
         # Security: the proxy ``requests`` is about to use, decided before a
         # byte leaves; an untrusted host fails closed (PROXY_TRUSTED_HOSTS).
-        if request.url and select_proxy(request.url, kwargs.get("proxies") or {}) is not None:
+        if request.url and select_proxy(request.url, proxies or {}) is not None:
             _require_trusted_proxy_host(request.url)
-        return super().send(request, **kwargs)
+        return super().send(
+            request,
+            stream=stream,
+            timeout=timeout,
+            verify=verify,
+            cert=cert,
+            proxies=proxies,
+        )
 
 
 class SafeDNSHTTPConnection(HTTPConnection):
@@ -689,7 +707,7 @@ class SafeDNSHTTPConnection(HTTPConnection):
             if is_ip_safe(target_ip_cand):
                 target_ip = str(target_ip_cand)
         except ValueError:
-            pass
+            pass  # host is a name, not an IP literal: resolved safely below
 
         if target_ip is None:
             ips = _resolve_hostname_safe(self.host)
@@ -727,7 +745,7 @@ class SafeDNSHTTPSConnection(HTTPSConnection):
             if is_ip_safe(target_ip_cand):
                 target_ip = str(target_ip_cand)
         except ValueError:
-            pass
+            pass  # host is a name, not an IP literal: resolved safely below
 
         if target_ip is None:
             ips = _resolve_hostname_safe(self.host)
@@ -1006,7 +1024,7 @@ def _get_port(parsed: Any) -> int | None:
         if parsed.port is not None:
             return cast('int | None', parsed.port)
     except ValueError:
-        pass
+        pass  # unparsable port: fall back to the scheme's default below
     if parsed.scheme == "http":
         return 80
     if parsed.scheme == "https":
@@ -1084,7 +1102,8 @@ def session_with_retries(
     session = requests.Session()
 
     # Security: Strip sensitive headers on cross-origin redirects
-    session.rebuild_auth = types.MethodType(_safe_rebuild_auth, session)
+    # Deliberate per-instance override of a method (mypy: method-assign).
+    session.rebuild_auth = types.MethodType(_safe_rebuild_auth, session)  # type: ignore[method-assign]
 
     # Security: Limit redirects to prevent infinite loops and resource exhaustion (DoS)
     session.max_redirects = 10
@@ -1275,7 +1294,7 @@ def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
                 # We return enough structure to satisfy the rest of the code: sockaddr is (ip, port)
                 results.append((socket.AF_INET, socket.SOCK_STREAM, 6, "", (rdata.address, 0)))
         except (dns.resolver.NoAnswer, dns.resolver.NXDOMAIN, dns.resolver.NoNameservers):
-            pass
+            pass  # no A record; the AAAA lookup below may still answer
 
         # Resolve AAAA records (IPv6)
         try:
@@ -1283,7 +1302,7 @@ def _resolve_hostname_safe(hostname: str) -> list[tuple[Any, ...]]:
             for rdata in answers_v6:
                 results.append((socket.AF_INET6, socket.SOCK_STREAM, 6, "", (rdata.address, 0, 0, 0)))  # type: ignore[arg-type]
         except (dns.resolver.NoAnswer, dns.resolver.NXDOMAIN, dns.resolver.NoNameservers):
-            pass
+            pass  # no AAAA record; an empty result is logged right below
 
         if not results:
             log.debug("DNS resolution yielded no A/AAAA records for host:%s", host_log)
@@ -1953,7 +1972,7 @@ def _resolve_target_ip(parsed: Any, current_url: str) -> str:
             if is_ip_safe(target_ip_cand):
                 target_ip = str(target_ip_cand)
         except ValueError:
-            pass
+            pass  # host is a name, not an IP literal: resolved safely below
 
     if target_ip is None:
         ips = _resolve_hostname_safe(parsed.hostname or "")
@@ -1977,7 +1996,7 @@ def _send_http_pinned(
     current_timeout: float | tuple[float, float] | None,
     request_hooks: dict[str, Any],
     kwargs: dict[str, Any],
-) -> Any:
+) -> requests.Response:
     """Send an HTTP request with the URL already pinned to its resolved IP.
 
     Mitigates: DNS-rebinding TOCTOU on plain HTTP. The original hostname
@@ -2007,7 +2026,7 @@ def _send_https_pinned(
     current_timeout: float | tuple[float, float] | None,
     request_hooks: dict[str, Any],
     kwargs: dict[str, Any],
-) -> Any:
+) -> requests.Response:
     """Send an HTTPS request via a per-IP-pinned adapter so the TLS
     handshake's SNI uses the original hostname while the TCP connect
     targets the resolved (vetted) IP.
@@ -2041,7 +2060,7 @@ def _send_https_pinned(
     prepped = session.prepare_request(req)
 
     settings = session.merge_environment_settings(
-        prepped.url,
+        cast(str, prepped.url),
         proxies={},
         stream=True,
         verify=kwargs.get("verify"),
@@ -2475,7 +2494,7 @@ def fetch_content_safe(
         raise_for_status=True,
         **kwargs,
     )
-    return cast(bytes, response.content)
+    return response.content
 
 
 def cleanup_http_sessions() -> None:
