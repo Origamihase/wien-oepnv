@@ -1415,8 +1415,11 @@ def _fmt_rfc2822(dt: datetime) -> str:
         return local_dt.strftime("%a, %d %b %Y %H:%M:%S %z")
 
 
-# Joins the words of a time line so a display never breaks it in two.
-_NNBSP = "\u202f"
+# Joins the words of a time line so a display never breaks it in two. A full
+# NO-BREAK SPACE (U+00A0): the narrow one (U+202F) used until 2026-10-06 set
+# the words so close on the TV that "[Ab Mi 07.10. bis 28.10.]" read almost
+# as one word in the EasySignage preview of 06.10.
+_NBSP = "\u00a0"
 # Weekday abbreviations for the time line, Monday first like ``weekday()``.
 _WEEKDAYS_DE: tuple[str, ...] = ("Mo", "Di", "Mi", "Do", "Fr", "Sa", "So")
 # Within this many days from today a date carries its weekday ("Mo 05.10.").
@@ -1476,8 +1479,8 @@ def format_local_times(
 ) -> str:
     """The time line of an item, phrased for someone reading it today.
 
-    Words are joined with NARROW NO-BREAK SPACE (U+202F), never a plain
-    space: the line must not wrap in the middle on a display.
+    Words are joined with NO-BREAK SPACE (U+00A0), never a plain space:
+    the line must not wrap in the middle on a display.
 
     The display question is "does this apply now, and until when?", so the
     line says what matters for today instead of two full dates (operator
@@ -1526,8 +1529,8 @@ def format_local_times(
         and _to_utc(since_local) <= _to_utc(now_local)
         and (end_local is None or end_local.date() == today)
     ):
-        return f"Seit {since_local:%H:%M}".replace(" ", _NNBSP)
-    return _time_line_text(start_local, end_local, today).replace(" ", _NNBSP)
+        return f"Seit {since_local:%H:%M}".replace(" ", _NBSP)
+    return _time_line_text(start_local, end_local, today).replace(" ", _NBSP)
 
 
 # A disruption that is planned rather than an incident: an event, a
@@ -4823,8 +4826,8 @@ def _translate_time_line_en(time_line: str) -> str:
     ``time_line`` is the bracketed form emitted by
     :func:`_format_item_content` — e.g. ``[Seit 05.01.]``, ``[Heute]`` or
     ``[Ab Mo 05.10. bis 11.11.]`` (``[From Mon 05.10. until 11.11.]``).
-    Dates, anything else unknown and the spaces between the words (NARROW
-    NO-BREAK SPACE from ``format_local_times``) pass through unchanged.
+    Dates, anything else unknown and the spaces between the words
+    (NO-BREAK SPACE from ``format_local_times``) pass through unchanged.
     """
     return _TIME_LINE_WORD_RE.sub(
         lambda match: _TIME_WORDS_DE_TO_EN.get(match.group(0), match.group(0)), time_line

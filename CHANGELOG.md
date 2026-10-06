@@ -5,6 +5,12 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Feed: Zeitzeile mit vollen Wortabständen (2026-10-06)**: Die Wörter
+  der Zeitzeile verband ein schmales geschütztes Leerzeichen (U+202F); in
+  der EasySignage-Vorschau vom 06.10. stand „[Ab Mi 07.10. bis 28.10.]“
+  so eng, dass es sich fast wie ein Wort las. Jetzt verbindet sie ein
+  normales geschütztes Leerzeichen (U+00A0, `_NBSP` in
+  `src/build_feed.py`), das die Zeile genauso zusammenhält. DE und EN.
 * **Feed: gekürzte Texte enden auf einem Wort mit Inhalt, aufgelassene
   Haltestellen ohne Pfeil (2026-10-06)**: Aus der EasySignage-Vorschau vom
   06.10. Zwei Haltestellenverlegungen endeten auf dem TV mit „… und N62 in

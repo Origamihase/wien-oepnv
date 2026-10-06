@@ -37,7 +37,7 @@ from src.providers.wl_text import (  # noqa: E402
 from src.utils.stats import STOERUNGEN_HEADER, StammstreckeObservation  # noqa: E402
 
 VIENNA = ZoneInfo("Europe/Vienna")
-NNBSP = "\u202f"
+NBSP = "\u00a0"
 YEARS = range(2026, 2041)
 WEEKDAYS = ("Mo", "Di", "Mi", "Do", "Fr", "Sa", "So")
 
@@ -56,7 +56,7 @@ def _wall(day: date, hour: int, minute: int = 0, *, fold: int = 0) -> datetime:
 
 
 def _line(start: datetime, end: datetime | None, now: datetime, since: datetime | None = None) -> str:
-    return bf.format_local_times(start, end, now, since=since).replace(NNBSP, " ")
+    return bf.format_local_times(start, end, now, since=since).replace(NBSP, " ")
 
 
 def test_the_years_cover_both_extremes_of_the_last_sunday() -> None:
@@ -176,7 +176,7 @@ def test_weekday_is_the_real_one_across_new_year(year: int) -> None:
         expected = f"{day:%d.%m.}" + (f"{day.year}" if day.year != today.year else "")
         if offset <= 6:
             expected = f"{WEEKDAYS[day.weekday()]} {expected}"
-        assert label.replace(NNBSP, " ") == expected
+        assert label.replace(NBSP, " ") == expected
 
 
 @pytest.mark.parametrize(

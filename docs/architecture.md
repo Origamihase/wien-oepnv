@@ -548,7 +548,10 @@ verdrängt eine andere Störung.
   „N8: Thaliastraße U“ (seit 24.07.2024) sein Ende 16.11.2026. Der EN-Feed
   tauscht die Wörter einzeln aus (`_TIME_WORDS_DE_TO_EN`: „[From Mon 05.10.
   until 11.11.]“), die Daten bleiben. `ext:starts_at` und `ext:ends_at`
-  ändern sich nicht.
+  ändern sich nicht. Die Wörter der Zeitzeile verbindet ein geschütztes
+  Leerzeichen (U+00A0), damit das Display sie nie in der Mitte umbricht;
+  bis 2026-10-06 war es das schmale (U+202F), mit dem „[Ab Mi 07.10. bis
+  28.10.]“ in der EasySignage-Vorschau fast wie ein Wort aussah.
 * **Zeitzeile einer Störung: „[Seit 10:37]“ (seit 2026-10-03,
   Betreiberwunsch „Störung bitte mit Zeitangabe“).** Bei einer Störung will
   der Leser abschätzen, wie alt die Meldung ist. `_incident_since` liefert

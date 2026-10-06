@@ -31,7 +31,7 @@ from src.providers.oebb import _parse_dt_rfc2822  # noqa: E402
 from src.utils.stats import StammstreckeObservation, read_recent_stammstrecke_observations  # noqa: E402
 
 VIENNA = ZoneInfo("Europe/Vienna")
-NNBSP = " "
+NBSP = " "
 SUMMER = timedelta(hours=2)
 WINTER = timedelta(hours=1)
 
@@ -48,7 +48,7 @@ def _local(when: datetime) -> datetime:
 def _line(start: datetime, end: datetime | None, now: datetime, since: datetime | None) -> str:
     return bf.format_local_times(
         _local(start), _local(end) if end else None, _local(now), since=_local(since) if since else None
-    ).replace(NNBSP, " ")
+    ).replace(NBSP, " ")
 
 
 # ---- Time line --------------------------------------------------------------
