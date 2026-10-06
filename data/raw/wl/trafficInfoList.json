@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261006-0019, I20261006-0017, I20261006-0020-F01, I20261006-0020, I20261006-0022, I20260925-0011, I20260922-0032, I20260909-0007, I20261006-0018, I20261006-0016-F01, I20261006-0021"
+    "trafficInfoNameList": "I20260917-0012, I20261006-0019, I20261006-0020, I20261006-0021-F01, I20261006-0021-F02, I20261006-0021-F03, I20261006-0021, I20261006-0020-F01, I20260925-0011, I20260922-0032, I20260909-0007, I20261006-0018, I20261006-0022-F01, I20261006-0022"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2371-125, R2370-125, R2372-125, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2378-627, R2343-626, R2373-125, R2343-125, R2359-125, R293-474, R318-437, R2917-0, R2923-403, R2025-671, R118-136, R119-136, R130-136, R19-136, R45-136, R115-136, R103-136, R102-136, R101-136, R100-136, R36-152, R116-136, R117-136, R5815-671, R1445-149, R1508-426, R1448-412, R1474-412, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1150-0, R2558-125, R1974-466, R500-101, R150-142, R149-142, R148-142, R493-142, R1342-142, R885-126, R881-126, R3184-126, R3187-126, R3186-126, R2377-126, R2376-126, R3183-126, R3185-126, R2566-126, R2737-126, R3009-126, R3069-126, R3115-126, R2634-126, R2556-126, R2558-126, R1837-409, R3192-126, R3068-126, R3207-409, R3213-409, R3193-126, R3191-126, R2374-126, R2375-126, R3196-126, R3197-126, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2359-125, R2370-125, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2373-125, R2372-125, R2371-125, R2373-127, R2378-627, R2343-626, R2343-125, R318-437, R293-474, R2923-403, R2917-0, R2025-671, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R36-152, R45-136, R19-136, R130-136, R119-136, R100-136, R5815-671, R1448-412, R1445-149, R1449-149, R1508-426, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1448-149, R1447-149, R1446-149, R1474-412, R1150-0, R2558-125, R1974-466, R500-101, R149-142, R150-142, R148-142, R1342-142, R493-142, R885-126, R881-126, R3186-126, R3183-126, R3184-126, R3185-126, R3187-126, R2376-126, R2377-126, R3069-126, R2634-126, R2737-126, R2566-126, R3115-126, R3009-126, R2556-126, R2558-126, R1837-409, R3213-409, R3207-409, R3193-126, R3192-126, R3191-126, R2375-126, R2374-126, R3068-126, R3197-126, R3196-126, R2737-497, R2736-497, R3009-497, R2866-497, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,77 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "43": "ptTram"
-     }
-    },
-    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261006-0016-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "143",
-       "lineName": "43",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     221
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-06T11:47:00.000+0200",
-     "end": "2026-10-06T13:14:00.000+0200",
-     "lastUpdate": "2026-10-06T13:14:00.000+0200",
-     "resume": "2026-10-06T13:14:00.000+0200",
-     "start": "2026-10-06T11:41:00.000+0200"
-    },
-    "title": "43: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "37": "ptTram"
-     }
-    },
-    "description": "Linie 37: Fahrtbehinderung in Richtung Schottentor U. Grund: Falschparker.",
-    "descriptionHTML": "Linie 37:<br>Fahrtbehinderung in Richtung Schottentor U.<br> <br>Grund: Falschparker.",
-    "name": "I20261006-0017",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "137",
-       "lineName": "37",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-06T12:46:00.000+0200",
-     "end": "2026-10-06T13:18:00.000+0200",
-     "lastUpdate": "2026-10-06T13:18:00.000+0200",
-     "resume": "2026-10-06T13:18:00.000+0200",
-     "start": "2026-10-06T12:38:00.000+0200"
-    },
-    "title": "37: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "5B": "ptBusCity"
      }
     },
@@ -402,8 +331,8 @@
     "status": "active",
     "time": {
      "created": "2026-10-06T13:39:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T13:39:00.000+0200",
+     "end": "2026-10-06T14:47:00.000+0200",
+     "lastUpdate": "2026-10-06T14:11:00.000+0200",
      "resume": "2026-10-06T13:39:00.000+0200",
      "start": "2026-10-06T13:36:00.000+0200"
     },
@@ -412,12 +341,63 @@
    {
     "attributes": {
      "relatedLineTypes": {
+      "26": "ptTram",
+      "85A": "ptBusCity",
+      "97A": "ptBusCity"
+     }
+    },
+    "description": "Linie 26: Fahrtbehinderung in Richtung Kagran. Linie 85A: Fahrtbehinderung in Richtung Breitenlee, Rautenweg. Linie 97A: Fahrtbehinderung in Richtung Breitenlee, Schule. Voraussichtliche Dauer: 14:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Am Heidjöchl.",
+    "descriptionHTML": "<p>Linie 26:</p><p>Fahrtbehinderung in Richtung Kagran.</p><p>Linie 85A:</p><p>Fahrtbehinderung in Richtung Breitenlee, Rautenweg.</p><p>Linie 97A:</p><p>Fahrtbehinderung in Richtung Breitenlee, Schule.</p><p><br></p><p>Voraussichtliche Dauer: 14:15 Uhr.</p><p><br></p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Am Heidjöchl.</p>",
+    "name": "I20261006-0021",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "26",
+     "85A",
+     "97A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "126",
+       "lineName": "26",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "485",
+       "lineName": "85A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "497",
+       "lineName": "97A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "relatedStops": [
+     2737
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-06T13:46:00.000+0200",
+     "end": "2026-10-06T14:05:00.000+0200",
+     "lastUpdate": "2026-10-06T14:05:00.000+0200",
+     "resume": "2026-10-06T14:05:00.000+0200",
+     "start": "2026-10-06T13:44:00.000+0200"
+    },
+    "title": "26, 85A, 97A: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
       "26": "ptTram"
      }
     },
-    "description": "Linie 26: Fahrtbehinderung in Richtung Kagran. Voraussichtliche Dauer: 14:05 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Am Heidjöchl.",
-    "descriptionHTML": "<p>Linie 26:</p><p>Fahrtbehinderung in Richtung Kagran.</p><p><br></p><p>Voraussichtliche Dauer: 14:05 Uhr.</p><p><br></p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Am Heidjöchl.</p>",
-    "name": "I20261006-0021",
+    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261006-0021-F01",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
@@ -438,12 +418,87 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-06T13:46:00.000+0200",
+     "created": "2026-10-06T14:05:00.000+0200",
      "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T13:46:00.000+0200",
+     "lastUpdate": "2026-10-06T14:05:00.000+0200",
+     "resume": "2026-10-06T14:05:00.000+0200",
      "start": "2026-10-06T13:44:00.000+0200"
     },
     "title": "26: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "85A": "ptBusCity"
+     }
+    },
+    "description": "Linie 85A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 85A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261006-0021-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "85A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "485",
+       "lineName": "85A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "relatedStops": [
+     2737
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-06T14:05:00.000+0200",
+     "end": "2026-10-06T23:55:00.000+0200",
+     "lastUpdate": "2026-10-06T14:05:00.000+0200",
+     "resume": "2026-10-06T14:05:00.000+0200",
+     "start": "2026-10-06T13:44:00.000+0200"
+    },
+    "title": "85A: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "97A": "ptBusCity"
+     }
+    },
+    "description": "Linie 97A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 97A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261006-0021-F03",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "97A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "497",
+       "lineName": "97A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "relatedStops": [
+     2737
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-06T14:05:00.000+0200",
+     "end": "2026-10-06T23:55:00.000+0200",
+     "lastUpdate": "2026-10-06T14:05:00.000+0200",
+     "resume": "2026-10-06T14:05:00.000+0200",
+     "start": "2026-10-06T13:44:00.000+0200"
+    },
+    "title": "97A: Schadhaftes Fahrzeug"
    },
    {
     "attributes": {
@@ -470,12 +525,47 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T13:52:00.000+0200",
+     "end": "2026-10-06T14:05:00.000+0200",
+     "lastUpdate": "2026-10-06T14:05:00.000+0200",
+     "resume": "2026-10-06T14:05:00.000+0200",
+     "start": "2026-10-06T13:52:00.000+0200"
+    },
+    "title": "9A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "9A": "ptBusCity"
+     }
+    },
+    "description": "Linie 9A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 9A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Ratschkygasse  13",
+    "name": "I20261006-0022-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "409",
+       "lineName": "9A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-06T14:05:00.000+0200",
      "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T14:00:00.000+0200",
-     "resume": "2026-10-06T13:52:00.000+0200",
+     "lastUpdate": "2026-10-06T14:05:00.000+0200",
+     "resume": "2026-10-06T14:05:00.000+0200",
      "start": "2026-10-06T13:52:00.000+0200"
     },
     "title": "9A: Verkehrsunfall"
@@ -1465,6 +1555,24 @@
     "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2736-497",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "97A"
+    ],
+    "relatedStops": [
+     2736
+    ],
+    "time": {
+     "end": "2026-10-06T15:04:00.000+0200",
+     "start": "2026-10-06T14:04:19.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
     "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R2737-126",
     "owner": "WL",
@@ -1481,6 +1589,42 @@
      "start": "2026-10-06T13:43:47.000+0200"
     },
     "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2737-497",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "97A"
+    ],
+    "relatedStops": [
+     2737
+    ],
+    "time": {
+     "end": "2026-10-06T15:04:00.000+0200",
+     "start": "2026-10-06T14:04:19.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2866-497",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "97A"
+    ],
+    "relatedStops": [
+     2866
+    ],
+    "time": {
+     "end": "2026-10-06T15:04:00.000+0200",
+     "start": "2026-10-06T14:04:19.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "3A Netzänderung\nBetrieb ab Riemergasse",
@@ -1550,6 +1694,24 @@
      "start": "2026-10-06T13:43:47.000+0200"
     },
     "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R3009-497",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "97A"
+    ],
+    "relatedStops": [
+     3009
+    ],
+    "time": {
+     "end": "2026-10-06T15:04:00.000+0200",
+     "start": "2026-10-06T14:04:19.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Fahrtbehinderung\nSchadhafter Zug",

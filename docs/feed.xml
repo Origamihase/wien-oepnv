@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 06 Oct 2026 14:01:08 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 14:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[97A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9467a246f86f6472938f073378209e9f650cfb30990767d72eec86235aa9019c</guid>
+      <pubDate>Tue, 06 Oct 2026 14:04:19 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 14:04:19 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 14:04:19 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 15:04:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung. [Seit 14:04]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 14:04]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[9A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,19 +28,19 @@
       <ext:first_seen>Tue, 06 Oct 2026 13:52:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 06 Oct 2026 13:52:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Meidling Hauptstraße U. Voraussichtliche Dauer: 14:10 Uhr. Grund: Verkehrsunfall im Bereich Ratschkygasse 13. [Seit 13:52]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Meidling Hauptstraße U. Voraussichtliche Dauer: 14:10 Uhr. Grund: Verkehrsunfall im Bereich Ratschkygasse 13.<br/>[Seit 13:52]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 13:52]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 13:52]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[26: Schadhaftes Fahrzeug]]></title>
+      <title><![CDATA[26/85A/97A: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f36bfd0bb4774d14d71eac6889b393ad5dd3511aecc7a72a6d56cbd25c43546f</guid>
-      <pubDate>Tue, 06 Oct 2026 13:43:45 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 13:43:45 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 14:00:18 +0200</ext:starts_at>
+      <guid isPermaLink="false">087731d38a8e96e43442e1865f9f455a0fe89c4a3943cb131eefa8bcc43f96bb</guid>
+      <pubDate>Tue, 06 Oct 2026 13:44:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 13:44:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 13:44:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Züge halten in Tokiostraße. Fahrtbehinderung in Richtung Kagran. [Seit 13:43]</description>
-      <content:encoded><![CDATA[Züge halten in Tokiostraße. Fahrtbehinderung in Richtung Kagran.<br/>[Seit 13:43]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 13:44]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 13:44]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[42: Falschparker]]></title>
@@ -38,7 +49,7 @@
       <pubDate>Tue, 06 Oct 2026 13:36:00 +0200</pubDate>
       <ext:first_seen>Tue, 06 Oct 2026 13:36:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 06 Oct 2026 13:36:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Tue, 06 Oct 2026 14:47:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 13:36]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 13:36]]]></content:encoded>
     </item>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U, bzw. N66 in Richtung … [Ab Mi 07.10. bis 28.10.]</description>
       <content:encoded><![CDATA[Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U, bzw. N66 in Richtung …<br/>[Ab Mi 07.10. bis 28.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
-      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Hartäckerstraße 65 → zur Haltestelle Döblinger Friedhof. Haltestellenverlegung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
-      <content:encoded><![CDATA[Hartäckerstraße 65 → zur Haltestelle Döblinger Friedhof. Haltestellenverlegung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
