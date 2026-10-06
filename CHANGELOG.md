@@ -39,6 +39,28 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   Baustellen-Cache ist im Feed-Bericht kein Warnfall mehr (`ok-empty`),
   außer die Cache-Datei fehlt oder ist kaputt. Das Demo-Beispiel behält
   die Sperre. Doku in `docs/development.md` („Stadt Wien – Baustellen“).
+* **Feed: Zeitzeile mit vollen Wortabständen (2026-10-06)**: Die Wörter
+  der Zeitzeile verband ein schmales geschütztes Leerzeichen (U+202F); in
+  der EasySignage-Vorschau vom 06.10. stand „[Ab Mi 07.10. bis 28.10.]“
+  so eng, dass es sich fast wie ein Wort las. Jetzt verbindet sie ein
+  normales geschütztes Leerzeichen (U+00A0, `_NBSP` in
+  `src/build_feed.py`), das die Zeile genauso zusammenhält. DE und EN.
+* **Feed: gekürzte Texte enden auf einem Wort mit Inhalt, aufgelassene
+  Haltestellen ohne Pfeil (2026-10-06)**: Aus der EasySignage-Vorschau vom
+  06.10. Zwei Haltestellenverlegungen endeten auf dem TV mit „… und N62 in
+  Richtung …“ und „… bzw. N66 in Richtung …“. Die Kürzung auf 180 Zeichen
+  lässt jetzt kein Wort am Ende stehen, das nur auf Folgendes hinführt
+  (Artikel, Präposition, Konjunktion, „Richtung“, „Linie(n)“,
+  `_DANGLING_TAIL_WORDS` in `src/build_feed.py`), samt einem Etikett davor;
+  was davor steht, bleibt ganz. Betroffen waren 95 von 308 gekürzten
+  Texten seit Juli. Eine geschlossene Klammer am Ende bleibt jetzt stehen
+  („(Strecke Linien 42 und 9) …“). Eine ersatzlos aufgelassene Haltestelle
+  stand als „Hartäckerstraße 65 → Ersatzlos aufgelassen“ da, als wäre sie
+  verlegt; jetzt „Hartäckerstraße 65: ersatzlos aufgelassen“, im EN-Feed
+  „closed without replacement“ ohne Modell. Im EN-Feed blieb „zur
+  Haltestelle“ hinter dem Pfeil deutsch, jetzt „to the stop“. Nachbau aller
+  5 141 Meldungen seit Juli mit altem und neuem Code: 97 Texte anders, alle
+  an diesen Stellen, kein Titel anders.
 * **Feed: Meldungen behalten GUID und Beginn, solange sie laufen
   (2026-10-06)**: Ein zusammengelegter WL-Eintrag trug GUID und `pubDate`
   der Meldung, von der er beides hatte. Liefen deren Kurzmeldungen vor der

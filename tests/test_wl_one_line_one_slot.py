@@ -179,7 +179,7 @@ def test_the_feed_shows_both_causes(monkeypatch: pytest.MonkeyPatch) -> None:
     assert "<![CDATA[66A: Rettungseinsatz, Bauarbeiten]]>" in xml
     assert (
         "Rettungseinsatz: Unregelmäßige Intervalle in beiden Richtungen. "
-        "Bauarbeiten: Busse halten Salvatorianerplatz. [Bis\u202fFr\u202f02.10.]"
+        "Bauarbeiten: Busse halten Salvatorianerplatz. [Bis\u00a0Fr\u00a002.10.]"
     ) in xml
 
 

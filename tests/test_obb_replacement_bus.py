@@ -54,7 +54,7 @@ def test_the_live_item_as_published() -> None:
     end = datetime(2026, 9, 25, 21, 0, tzinfo=UTC)
     formatted = bf._format_item_content(cast(FeedItem, item), ident="t", starts_at=start, ends_at=end)
     assert formatted.title_out == "S80: ÖBB-Ersatzbus"
-    assert formatted.desc_text_truncated == "Bhf. Hütteldorf [Am\u202f25.09.]"
+    assert formatted.desc_text_truncated == "Bhf. Hütteldorf [Am\u00a025.09.]"
 
 
 @pytest.mark.parametrize(

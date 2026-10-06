@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 06 Oct 2026 17:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 17:30:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[2A: Verunreinigung]]></title>
+      <title><![CDATA[5: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4619c75a90f25bd615cc08bf9e8b959426a6b0955c31b8e057f5db3cd364d94e</guid>
-      <pubDate>Tue, 06 Oct 2026 16:51:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 17:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 16:51:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">eb95adf873b18dcc90582141fd8b881d6f58540f5e3144fe72be528eb86b24d6</guid>
+      <pubDate>Tue, 06 Oct 2026 17:27:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 17:27:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 17:27:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Seit 16:51]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Seit 16:51]]]></content:encoded>
+      <description>Fahrtbehinderung in Richtung Praterstern S U. Voraussichtliche Dauer: 17:50 Uhr. Grund: Verkehrsunfall im Bereich Nordbahnstraße 34. [Seit 17:27]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Praterstern S U. Voraussichtliche Dauer: 17:50 Uhr. Grund: Verkehrsunfall im Bereich Nordbahnstraße 34.<br/>[Seit 17:27]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A/14A: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d</guid>
+      <pubDate>Tue, 06 Oct 2026 17:22:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 17:22:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 17:22:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:22]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:22]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40/41: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b8938e94c70221081d94c1f9627e29d1273108203a2ba78ea9d9eaa80416cb92</guid>
+      <pubDate>Tue, 06 Oct 2026 17:13:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 17:13:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 17:13:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:13]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:13]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[59A: Verkehrsüberlastung]]></title>
@@ -28,8 +50,8 @@
       <ext:first_seen>Tue, 06 Oct 2026 16:44:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 06 Oct 2026 16:44:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 16:44]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 16:44]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 16:44]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 16:44]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46: Rettungseinsatz]]></title>
@@ -39,8 +61,8 @@
       <ext:first_seen>Tue, 06 Oct 2026 16:43:33 +0200</ext:first_seen>
       <ext:starts_at>Tue, 06 Oct 2026 16:43:33 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 17:42:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung. [Seit 16:43]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 16:43]]]></content:encoded>
+      <description>Fahrtbehinderung. [Seit 16:43]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 16:43]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[15A/7A: Verkehrsüberlastung]]></title>
@@ -50,8 +72,8 @@
       <ext:first_seen>Tue, 06 Oct 2026 16:27:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 06 Oct 2026 16:27:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 16:27]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 16:27]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 16:27]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 16:27]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[32A: Fremder Verkehrsunfall]]></title>
@@ -61,8 +83,8 @@
       <ext:first_seen>Tue, 06 Oct 2026 15:49:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 06 Oct 2026 15:49:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 15:49]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 15:49]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 15:49]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 15:49]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S80: ÖBB-Ersatzbus]]></title>
@@ -94,30 +116,8 @@
       <ext:first_seen>Mon, 05 Oct 2026 16:10:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 in Richtung … [Bis 06.11.]</description>
-      <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 in Richtung …<br/>[Bis 06.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
-      <pubDate>Mon, 05 Oct 2026 15:40:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 15:40:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 in Richtung … [Ab Mi 07.10. bis 28.10.]</description>
-      <content:encoded><![CDATA[Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 in Richtung …<br/>[Ab Mi 07.10. bis 28.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
-      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Hartäckerstraße 65 → Ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
-      <content:encoded><![CDATA[Hartäckerstraße 65 → Ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
+      <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 … [Bis 06.11.]</description>
+      <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 …<br/>[Bis 06.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

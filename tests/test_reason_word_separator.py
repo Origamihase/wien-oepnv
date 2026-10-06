@@ -123,11 +123,11 @@ def test_the_duplicate_check_still_empties_the_restated_ticker() -> None:
     title, desc = _format("1A: Veranstaltung Kein Betrieb", "Veranstaltung\nKein Betrieb", split_reason=False)
 
     assert title == "1A: Veranstaltung – Kein Betrieb"
-    assert desc == "[Am\u202f19.09.]"
+    assert desc == "[Am\u00a019.09.]"
 
     title, desc = _format("1A: Veranstaltung Kein Betrieb", "Veranstaltung\nKein Betrieb")
 
-    assert (title, desc) == ("1A: Veranstaltung", "Kein Betrieb. [Am\u202f19.09.]")
+    assert (title, desc) == ("1A: Veranstaltung", "Kein Betrieb. [Am\u00a019.09.]")
 
 
 def test_the_published_item_end_to_end() -> None:

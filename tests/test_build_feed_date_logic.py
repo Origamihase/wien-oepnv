@@ -50,7 +50,7 @@ def test_format_local_times_end_before_start_future(
 
     # Since start is in the future, it should use 'Ab ...' (in the coming
     # week with its weekday, inside the current year without it).
-    assert result == "Ab\u202fDo\u202f05.01."
+    assert result == "Ab\u00a0Do\u00a005.01."
 
     # Verify the warning was logged
     warnings = [record.getMessage() for record in caplog.records if record.levelname == "WARNING"]
@@ -80,7 +80,7 @@ def test_format_local_times_end_before_start_past(
         result = build_feed.format_local_times(start, end)
 
     # Since start is in the past, it should use 'Seit ...'
-    assert result == "Seit\u202f05.01."
+    assert result == "Seit\u00a005.01."
 
     # Verify the warning was logged
     warnings = [record.getMessage() for record in caplog.records if record.levelname == "WARNING"]
@@ -112,6 +112,6 @@ def test_format_local_times_long_range_keeps_end(
     # The item already runs, so the line names its end ("Bis …"), not the
     # single-date "Seit …" form: the explicit end date is preserved. (Words
     # are joined with narrow no-break spaces.)
-    assert result == "Bis\u202f02.10."
+    assert result == "Bis\u00a002.10."
     warnings = [record.getMessage() for record in caplog.records if record.levelname == "WARNING"]
     assert not any("Setze Enddatum auf None" in message for message in warnings)

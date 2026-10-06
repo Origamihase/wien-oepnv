@@ -147,7 +147,7 @@ class TestCategoryWordOnBothSides:
         # Not "Grund: Veranstaltung." either — the headline says it already.
         assert "Grund" not in out
         short, out = _format(title, desc)
-        assert (short, out) == ("2A: Veranstaltung", "Kein Betrieb. [Seit\u202f06.05.]")
+        assert (short, out) == ("2A: Veranstaltung", "Kein Betrieb. [Seit\u00a006.05.]")
 
     def test_demonstration_too_it_is_not_one_word(self) -> None:
         title = "71: Demonstration Umleitung bis St. Marx über Linie D und 18"
@@ -206,7 +206,7 @@ class TestCategoryWordOnBothSides:
         # Betrieb" is part of the consequence — the summary would only
         # repeat both.
         short, out = _format(title, desc)
-        assert (short, out) == ("13A: Betriebsstörung", "Kein Betrieb ab 10 Uhr. [Seit\u202f06.05.]")
+        assert (short, out) == ("13A: Betriebsstörung", "Kein Betrieb ab 10 Uhr. [Seit\u00a006.05.]")
 
 
 class TestMergeJoinerOnOneSideOnly:

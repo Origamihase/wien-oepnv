@@ -19,7 +19,7 @@ from src.feed_types import FeedItem
 
 VIENNA = ZoneInfo("Europe/Vienna")
 NOW = datetime(2026, 10, 3, 11, 20, tzinfo=VIENNA)
-NNBSP = " "
+NBSP = " "
 
 
 def _at(day: int, hour: int = 0, minute: int = 0, second: int = 0) -> datetime:
@@ -43,7 +43,7 @@ def _wl(title: str, pub: datetime | None, start: datetime | None, **extra: Any) 
 def _line(item: dict[str, Any], now: datetime = NOW) -> str:
     start, end = item.get("starts_at"), item.get("ends_at")
     since = bf._incident_since(cast(FeedItem, item), start)
-    return bf.format_local_times(start, end, now, since=since).replace(NNBSP, " ")
+    return bf.format_local_times(start, end, now, since=since).replace(NBSP, " ")
 
 
 def test_the_earliest_message_of_the_incident_is_its_begin() -> None:
@@ -167,7 +167,7 @@ def _oebb_line(item: dict[str, Any], entry: dict[str, Any] | None, now: datetime
     since = bf._incident_since(
         cast(FeedItem, item), item["starts_at"], bf._first_published(cast(FeedItem, item), entry)
     )
-    return bf.format_local_times(item["starts_at"], item["ends_at"], now, since=since).replace(NNBSP, " ")
+    return bf.format_local_times(item["starts_at"], item["ends_at"], now, since=since).replace(NBSP, " ")
 
 
 def test_an_oebb_disruption_dated_by_its_period_says_since_when() -> None:
@@ -215,7 +215,7 @@ def test_the_rendered_oebb_item_keeps_its_first_publication(monkeypatch: pytest.
         content = bf._format_item_content(
             cast(FeedItem, item), "oebb", item["starts_at"], item["ends_at"], state=state
         )
-        assert f"[Seit{NNBSP}08:48]" in content.desc_html
+        assert f"[Seit{NBSP}08:48]" in content.desc_html
 
 
 @pytest.mark.parametrize(
@@ -309,7 +309,7 @@ def test_the_clock_is_vienna_time() -> None:
 
 
 def test_the_english_line_reads_since() -> None:
-    assert bf._translate_time_line_en(f"[Seit{NNBSP}10:37]") == f"[Since{NNBSP}10:37]"
+    assert bf._translate_time_line_en(f"[Seit{NBSP}10:37]") == f"[Since{NBSP}10:37]"
 
 
 def test_the_rendered_item_carries_the_line(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -319,4 +319,4 @@ def test_the_rendered_item_carries_the_line(monkeypatch: pytest.MonkeyPatch) -> 
     monkeypatch.setattr(bf, "format_local_times", partial(bf.format_local_times, now=NOW))
     item = _wl("87A: Fahrtbehinderung wegen Rettungseinsatz", _at(3, 10, 37), _at(3, 10, 54, 13))
     content = bf._format_item_content(cast(FeedItem, item), "ident", item["starts_at"], item["ends_at"])
-    assert f"[Seit{NNBSP}10:37]" in content.desc_html
+    assert f"[Seit{NBSP}10:37]" in content.desc_html
