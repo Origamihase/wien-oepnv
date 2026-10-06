@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261006-0016-F01, I20261006-0017, I20260925-0011, I20260922-0032, I20260909-0007, I20261006-0014-F01, I20261006-0018"
+    "trafficInfoNameList": "I20260917-0012, I20261006-0019, I20261006-0017, I20260925-0011, I20260922-0032, I20260909-0007, I20261006-0014-F01, I20261006-0018, I20261006-0016-F01"
    },
    {
     "id": 3,
@@ -262,12 +262,12 @@
     "relatedStops": [
      221
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T11:47:00.000+0200",
-     "end": "2026-10-06T13:25:00.000+0200",
-     "lastUpdate": "2026-10-06T12:31:00.000+0200",
-     "resume": "2026-10-06T11:47:00.000+0200",
+     "end": "2026-10-06T13:14:00.000+0200",
+     "lastUpdate": "2026-10-06T13:14:00.000+0200",
+     "resume": "2026-10-06T13:14:00.000+0200",
      "start": "2026-10-06T11:41:00.000+0200"
     },
     "title": "43: Schadhaftes Fahrzeug"
@@ -296,12 +296,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-06T12:46:00.000+0200",
-     "end": "2026-10-06T23:55:00.000+0200",
-     "lastUpdate": "2026-10-06T12:46:00.000+0200",
-     "resume": "2026-10-06T12:38:00.000+0200",
+     "end": "2026-10-06T13:18:00.000+0200",
+     "lastUpdate": "2026-10-06T13:18:00.000+0200",
+     "resume": "2026-10-06T13:18:00.000+0200",
      "start": "2026-10-06T12:38:00.000+0200"
     },
     "title": "37: Falschparker"
@@ -339,6 +339,40 @@
      "start": "2026-10-06T12:53:00.000+0200"
     },
     "title": "5B: Verkehrsüberlastung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "72A": "ptBusCity"
+     }
+    },
+    "description": "Linie 72A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Fremder Verkehrsunfall.",
+    "descriptionHTML": "Linie 72A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Fremder Verkehrsunfall.",
+    "name": "I20261006-0019",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "72A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "472",
+       "lineName": "72A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-06T13:10:00.000+0200",
+     "end": "2026-10-06T23:55:00.000+0200",
+     "lastUpdate": "2026-10-06T13:10:00.000+0200",
+     "resume": "2026-10-06T13:10:00.000+0200",
+     "start": "2026-10-06T13:10:00.000+0200"
+    },
+    "title": "72A: Fremder Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",

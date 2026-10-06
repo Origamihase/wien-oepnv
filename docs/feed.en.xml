@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 06 Oct 2026 13:01:03 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 13:30:44 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[72A: Third-party traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b4f980eae8aa646c0db51b50f22db1e7adbd9fcdddbead17055414d369c867af</guid>
+      <pubDate>Tue, 06 Oct 2026 13:10:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 13:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 13:10:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: third-party traffic accident. [Since 13:10]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: third-party traffic accident.<br/>[Since 13:10]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[5B: Traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,28 +30,6 @@
       <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 12:53]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 12:53]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f</guid>
-      <pubDate>Tue, 06 Oct 2026 12:38:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 12:38:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 12:38:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Schottentor U. Reason: illegally parked vehicle. [Since 12:38]</description>
-      <content:encoded><![CDATA[Service obstruction towards Schottentor U. Reason: illegally parked vehicle.<br/>[Since 12:38]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: Defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9cbda432936ce6d9f277141eebd80c49b0e6c60a0bd25b184a19bce78ee5282f</guid>
-      <pubDate>Tue, 06 Oct 2026 11:41:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 11:41:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 11:41:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 13:25:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Since 11:41]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 11:41]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[64A: Liesinger-Flur-Gasse]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 07 Oct 2026 01:00:00 +0200</ext:ends_at>
       <description>Reason: construction works. [Until Wed 07.10.]</description>
       <content:encoded><![CDATA[Reason: construction works.<br/>[Until Wed 07.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Rennweg 33A–37]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">65573981646b35911098f80f5060d16369450fbc04c8d50c90d9db3a086b9b29</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 22:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 30 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 15 Nov 2026 00:00:00 +0100</ext:ends_at>
+      <description>The work takes place in the period from 20:00 to 05:00. The left lane towards the city is closed. [Until 15.11.]</description>
+      <content:encoded><![CDATA[The work takes place in the period from 20:00 to 05:00. The left lane towards the city is closed.<br/>[Until 15.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
