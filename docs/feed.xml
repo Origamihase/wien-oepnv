@@ -7,73 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 06 Oct 2026 18:03:04 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 21:30:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[13A/14A: Falschparker]]></title>
+      <title><![CDATA[11: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">443234525d35ddc17471249c2e5f5b91be5892acfc39239a8ce1bd0dec620bee</guid>
-      <pubDate>Tue, 06 Oct 2026 17:53:10 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 18:03:04 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 17:53:10 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 18:55:00 +0200</ext:ends_at>
-      <description>13A: Umleitung über Gumpendorfer Straße, Linke Wienzeile; Betrieb ab Pilgramgasse; 14A: Umleitung über Gumpendorfer Str., Linke Wienzeile. [Seit 17:53]</description>
-      <content:encoded><![CDATA[13A: Umleitung über Gumpendorfer Straße, Linke Wienzeile; Betrieb ab Pilgramgasse; 14A: Umleitung über Gumpendorfer Str., Linke Wienzeile.<br/>[Seit 17:53]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">eb95adf873b18dcc90582141fd8b881d6f58540f5e3144fe72be528eb86b24d6</guid>
-      <pubDate>Tue, 06 Oct 2026 17:27:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 17:27:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 17:27:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:27]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:27]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b8938e94c70221081d94c1f9627e29d1273108203a2ba78ea9d9eaa80416cb92</guid>
-      <pubDate>Tue, 06 Oct 2026 17:13:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 17:13:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 17:13:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 18:28:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:13]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:13]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[59A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5</guid>
-      <pubDate>Tue, 06 Oct 2026 16:44:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 16:44:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 16:44:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 16:44]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 16:44]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A/63A/7A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">89f4d5b271521b2cdd500c2b0d9188c9972cfddd3ecf964d7c99737b00d5485f</guid>
-      <pubDate>Tue, 06 Oct 2026 16:27:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 16:27:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 16:27:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 16:27]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 16:27]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: Feuerwehreinsatz, Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2513938b72db793fec75e59976c4da41d4fac33f1318eb4edd60511ffdcfb5f0</guid>
-      <pubDate>Tue, 06 Oct 2026 17:30:00 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 17:30:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 17:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 06 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21. [Heute]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21.<br/>[Heute]]]></content:encoded>
+      <guid isPermaLink="false">36ad6a7c30b68d7345880b54bf25d283a433758da75c3a0fa4127d22d410a937</guid>
+      <pubDate>Tue, 06 Oct 2026 19:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 19:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 19:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 21:45:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Heute]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S80: ÖBB-Ersatzbus]]></title>
@@ -118,6 +63,61 @@
       <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
       <content:encoded><![CDATA[Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Neue Donau, kein Halt Richtung Floridsdorf]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">747d54fbd4c0aad685b21596a0c44cb67d41165e556ee43b1bc3e8636920f551</guid>
+      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Sun, 04 Oct 2026 16:30:37 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf. [Bis 31.12.]</description>
+      <content:encoded><![CDATA[Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf.<br/>[Bis 31.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Tue, 06 Oct 2026 04:40:06 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 04:40:06 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 07 Oct 2026 01:00:00 +0200</ext:ends_at>
+      <description>Grund: Bauarbeiten. [Bis Mi 07.10.]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Bis Mi 07.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52: Züge halten bei Linien 6 und 18]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
+      <pubDate>Tue, 06 Oct 2026 00:00:18 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 00:00:18 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 06 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>[Heute]</description>
+      <content:encoded><![CDATA[[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[63A: Umleitung wegen Kranarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
+      <description>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet. [Bis 11.11.]</description>
+      <content:encoded><![CDATA[Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstraße und Längenfeldgasse wird die Linie 63A umgeleitet.<br/>[Bis 11.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29B/N25: Adolf-Loos-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2e0949e212b98b31a226dddab6b40d0f6c06edb1c250ee7ddaac3c840bc8e962</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 30 Sep 2026 11:30:57 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 07 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet. [Bis 07.12.]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet.<br/>[Bis 07.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>

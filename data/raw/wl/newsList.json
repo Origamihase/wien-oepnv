@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_769, ftazW_770, ftazW_1351709, ftazW_510, ftazW_511, ftazW_1018067, ftazW_508, ftazW_1351713, ftazW_509, ftazW_1018068, ftazW_1351712"
+    "trafficInfoNameList": "ftazW_770, ftazW_1351709, ftazW_510, ftazW_511, ftazW_1018067, ftazW_508, ftazW_1351713, ftazW_509, ftazW_1018068, ftazW_1351712"
    }
   ],
   "poiCategoryGroups": [
@@ -2871,37 +2871,6 @@
      "start": "2026-10-08T01:15:00.000+0200"
     },
     "title": "Dresdner Straße"
-   },
-   {
-    "attributes": {
-     "ausBis": "07.10.2026 00:45",
-     "ausVon": "06.10.2026 20:45",
-     "location": "U1 Bahnsteig Richtung Leopoldau - Ausgang Radingerstraße",
-     "rbls": [
-      4119
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Vorgartenstraße",
-     "status": "geplante Wartung",
-     "towards": "U1 Leopoldau"
-    },
-    "description": "U1 Bahnsteig Richtung Leopoldau - Ausgang Radingerstraße",
-    "name": "ftazW_769",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4119
-    ],
-    "time": {
-     "end": "2026-10-07T00:45:00.000+0200",
-     "start": "2026-10-06T20:45:00.000+0200"
-    },
-    "title": "Vorgartenstraße"
    },
    {
     "attributes": {
