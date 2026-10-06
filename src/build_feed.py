@@ -4017,6 +4017,9 @@ _RECORD_VALUE_RULES: tuple[tuple[str, str, bool], ...] = (
     (r"gegen", "against", False),
     (r"im Zuge", "along", False),
     (r"provisorische Haltestelle", "temporary stop", False),
+    # "Hartäckerstraße 65 → zur Haltestelle Döblinger Friedhof" (40A,
+    # 06.10.2026) stayed German behind the arrow.
+    (r"zur Haltestelle", "to the stop", False),
     (r"Nebenfahrbahn", "service road", False),
     (r"ab(?=\s+(?:\d|…))", "from", False),
     (r"am(?=\s+\d)", "on", False),
@@ -4495,6 +4498,13 @@ _WL_SENTENCE_SPLIT_RE: re.Pattern[str] = re.compile(
 )
 
 
+# A closed stop's line from :func:`_relocation_arrows` ("Hartäckerstraße 65:
+# ersatzlos aufgelassen.") is the same record as an arrow line.
+_RELOCATION_CLOSED_LINE_RE: re.Pattern[str] = re.compile(
+    r"\S:\s+ersatzlos\s+aufgelassen\.?$"
+)
+
+
 def _render_wl_sentence(
     sentence: str, ident: str, source: str | None, category: str | None
 ) -> str | None:
@@ -4507,7 +4517,7 @@ def _render_wl_sentence(
     (05.10.2026 17:45: "Wienerbergstraße27b-27c →Wienerbergstraße27a. … 15A5X
     in the direction of Enkplatz U").
     """
-    if f" {_RELOCATION_ARROW} " in sentence:
+    if f" {_RELOCATION_ARROW} " in sentence or _RELOCATION_CLOSED_LINE_RE.search(sentence):
         return _render_record_table(sentence, source=source, category=category)
     return _render_wl_because_sentence(sentence, ident, source, category)
 
@@ -8714,6 +8724,12 @@ _RELOCATION_ARROW = "→"
 # A field of the notice ("Haltestelle:", "Grund:"); any other block is a
 # direction line ("Haltestellenverlegung der Linie 17A in Richtung …").
 _RELOCATION_FIELD_RE = re.compile(r"[^\W\d]+:\s")
+# A closed stop has no new place: WL writes "Nach: Ersatzlos aufgelassen".
+# Behind the arrow that read as a destination ("Hartäckerstraße 65 →
+# Ersatzlos aufgelassen", 40A on 06.10.2026; 5A/5B Malzgasse in August), so
+# the old place takes a colon instead: "Hartäckerstraße 65: ersatzlos
+# aufgelassen".
+_RELOCATION_CLOSED_RE = re.compile(r"ersatzlos\s+aufgelassen\b", re.IGNORECASE)
 
 
 def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
@@ -8772,6 +8788,9 @@ def _relocation_arrows(blocks: list[str]) -> list[str]:
         ):
             origin = joined[-1][len(_RELOCATION_FROM):].strip().rstrip(".")
             target = block[len(_RELOCATION_TO):].strip()
+            if origin and _RELOCATION_CLOSED_RE.match(target):
+                joined[-1] = f"{origin}: {target[0].lower()}{target[1:]}"
+                continue
             if origin and target:
                 joined[-1] = f"{origin} {_RELOCATION_ARROW} {target}"
                 continue
@@ -8893,6 +8912,14 @@ _TRUNCATION_PUNCT_STRIP = " ,;:-)/"
 _TRUNCATION_UNIT_TOKENS: frozenset[str] = frozenset(
     {"Uhr", "min", "sec", "h", "km", "kg", "m", "cm", "s", "ms"}
 )
+# A word that only leads into what follows — an article, a preposition, a
+# conjunction, "Richtung" or "Linie" without its name — says nothing once the
+# cut took what it leads into. On the TV on 06.10.2026 two stop relocations
+# ended "… und N62 in Richtung …" and "… bzw. N66 in Richtung …": the reader
+# is told a direction and not shown it. 95 of 308 cut descriptions since
+# July ended on such a word ("Rettungseinsatz im …", "Maßnahmen: Linie …",
+# "Umleitung ab …"). The cut now ends on the last word that carries meaning.
+_DANGLING_TAIL_WORDS: frozenset[str] = _CONTINUING_WORDS | {"richtung", "linie", "linien"}
 
 
 def _should_drop_trailing_tail(tail: str) -> bool:
@@ -8920,6 +8947,7 @@ def _should_drop_trailing_tail(tail: str) -> bool:
 
 def _trim_truncation_tail(truncated: str) -> str:
     """Iteratively drop noise tokens at the end of a hard-truncated summary."""
+    dangling_dropped = False
     for _ in range(8):
         # A label whose value the cut swallowed ("… Grund:", "… Ersatz:",
         # "… Zeitraum:") announces information that is no longer there —
@@ -8934,11 +8962,24 @@ def _trim_truncation_tail(truncated: str) -> str:
             if label_start > 0:
                 truncated = label_candidate[:label_start]
                 continue
-        truncated = truncated.rstrip(_TRUNCATION_PUNCT_STRIP)
+        # Behind a dropped word a closing bracket is whole ("(Strecke Linien
+        # 42 und 9); Linie").
+        truncated = truncated.rstrip(
+            _TRUNCATION_PUNCT_STRIP.replace(")", "") if dangling_dropped else _TRUNCATION_PUNCT_STRIP
+        )
         last_space = truncated.rfind(" ")
         if last_space <= 0:
             break
         tail = truncated[last_space + 1:]
+        if tail.casefold() in _DANGLING_TAIL_WORDS:
+            truncated = truncated[:last_space]
+            dangling_dropped = True
+            continue
+        # What stands in front of a dropped word is whole: a line list
+        # ("auf die Linien U3, 5, 12, 46, 52 und"), a stop ("Donaumarina U
+        # über die") or a sentence ("Ersatz: U1, U2, D, 2 und 71. Die").
+        if dangling_dropped:
+            break
         if _should_drop_trailing_tail(tail):
             truncated = truncated[:last_space]
         else:
@@ -8980,7 +9021,12 @@ def _truncate_summary_180(summary: str) -> str:
         last_open = truncated.rfind("(")
         if last_open >= 0:
             truncated = truncated[:last_open].rstrip(_TRUNCATION_PUNCT_STRIP)
-    return truncated.rstrip(_TRUNCATION_PUNCT_STRIP) + " …"
+    # A bracket that closes one opened in the text stays ("(Strecke Linien
+    # 42 und 9) …").
+    strip = _TRUNCATION_PUNCT_STRIP
+    if truncated.endswith(")") and truncated.count("(") == truncated.count(")"):
+        strip = strip.replace(")", "")
+    return truncated.rstrip(strip) + " …"
 
 
 def _compose_description(summary: str, time_line: str) -> tuple[str, str]:

@@ -487,11 +487,24 @@ verdrängt eine andere Störung.
   Richtung, damit jeder Ort bei seiner Richtung bleibt (seit 2026-10-05
   abends; bis dahin blieb dort die Reihenfolge, und „15A/7A/N62:
   Eibesbrunnergasse“ endete auf dem TV mit „Wienerbergstraße 27b-27c →
-  …“). Hausnummern behalten ihren Buchstaben („27b“, „2a“, DIN 5008):
+  …“). Eine ersatzlos aufgelassene Haltestelle („Nach: Ersatzlos
+  aufgelassen“) bekommt keinen Pfeil, denn der heißt „verlegt nach“: sie
+  steht als „Hartäckerstraße 65: ersatzlos aufgelassen“ da (seit
+  2026-10-06; vorher „Hartäckerstraße 65 → Ersatzlos aufgelassen“ bei 40A,
+  im August bei 5A/5B Malzgasse). Hausnummern behalten ihren Buchstaben („27b“, „2a“, DIN 5008):
   `html_to_text` trennt nur noch Einheiten aus einem Buchstaben („2 m“,
   „5 h“) ab, „27 b-27 c“ stand mit dem Pfeil sichtbar im Feed. Die Folge einer Kurzmeldung steht
   immer als Satz mit Punkt da („Busse halten bei Haltestelle N71.“), und
   ein doppelter Punkt aus der Quelle („umgeleitet..“) wird einer.
+  Kürzt die 180-Zeichen-Grenze einen Text, endet er nie auf einem Wort,
+  das nur auf Folgendes hinführt: Artikel, Präposition, Konjunktion,
+  „Richtung“, „Linie(n)“ (`_DANGLING_TAIL_WORDS`, seit 2026-10-06). Auf
+  dem TV standen am 06.10. „… und N62 in Richtung …“ und „… bzw. N66 in
+  Richtung …“: eine Richtung angekündigt, aber nicht genannt. Jetzt
+  endet der Text auf „… und N62 …“; ein Etikett davor fällt mit
+  („Maßnahmen: Linie …“), was davor steht, bleibt ganz (Liniennummern,
+  „Donaumarina U“, eine geschlossene Klammer, ein Satz mit Punkt). Von
+  308 gekürzten Texten seit Juli endeten 95 so.
 * **Verklebte Wörter (seit 2026-10-02).** Die Baustellentexte der Stadt
   Wien kamen mit Wörtern ohne Leerzeichen in den Feed („Derlinke
   Fahrstreifen“, „Außerhalbder Arbeitszeit“, „zuden“). Zwei Stellen: Der
