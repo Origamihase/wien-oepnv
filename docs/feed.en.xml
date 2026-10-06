@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 07 Oct 2026 00:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 01:01:18 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[U6: Signal disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">474c6f8bb0e432949cae7226eb01aad78541598785bc38e306e5fa7c2119a730</guid>
-      <pubDate>Wed, 07 Oct 2026 00:17:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 00:17:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 00:17:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: signal disruption. [Since 00:17]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: signal disruption.<br/>[Since 00:17]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -76,15 +65,26 @@
       <content:encoded><![CDATA[Due to renovation of the platform, line U6 stops the station Neue Donau U only in the direction of Siebenhirten U. You can reach Neue Donau with U6 from Floridsdorf.<br/>[Until 31.12.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[66A: Buses stop at Salvatorianerplatz]]></title>
+      <title><![CDATA[N66: Buses stop at Salvatorianerplatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
-      <pubDate>Tue, 06 Oct 2026 04:40:06 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 04:40:06 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 07 Oct 2026 01:00:00 +0200</ext:ends_at>
+      <guid isPermaLink="false">24aa68a100b6cf9da31697ad90c76566903c00e84cace4ff88a183b77a6b231c</guid>
+      <pubDate>Wed, 07 Oct 2026 01:00:24 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 01:00:05 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 01:00:24 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 07 Oct 2026 04:20:00 +0200</ext:ends_at>
       <description>Reason: construction works. [Today]</description>
       <content:encoded><![CDATA[Reason: construction works.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N6: Construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">702d63d7625c3038f025628d02f9115371cb86897a042af3fea6ba3fa90b5500</guid>
+      <pubDate>Wed, 07 Oct 2026 00:54:23 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 00:54:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 00:54:23 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 07 Oct 2026 05:05:00 +0200</ext:ends_at>
+      <description>Buses stop at Quellenstraße 189, Neilreichgasse 20-22. [Today]</description>
+      <content:encoded><![CDATA[Buses stop at Quellenstraße 189, Neilreichgasse 20-22.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[52: Trains stop at the stops of lines 6 and 18]]></title>
