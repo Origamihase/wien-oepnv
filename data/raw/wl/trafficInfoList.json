@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261007-0001, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007"
+    "trafficInfoNameList": "I20261007-0001, I20260917-0012, I20260922-0032, I20261007-0002, I20260925-0011, I20260909-0007"
    },
    {
     "id": 3,
@@ -233,6 +233,40 @@
      "start": "2026-10-07T06:15:00.000+0200"
     },
     "title": "40A: Verspätungen"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261007-0002",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "304",
+       "lineName": "U4",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-07T06:49:00.000+0200",
+     "end": "2026-10-07T23:55:00.000+0200",
+     "lastUpdate": "2026-10-07T06:49:00.000+0200",
+     "resume": "2026-10-07T06:48:00.000+0200",
+     "start": "2026-10-07T06:48:00.000+0200"
+    },
+    "title": "U4: Verspätungen"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
