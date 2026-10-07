@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261007-0006-F01, I20261007-0008-F01, I20261007-0008, I20261007-0010, I20261007-0009-F01, I20261007-0009, I20260925-0011, I20260909-0007, I20261007-0005-F01, I20261007-0007-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261007-0008-F01, I20261007-0009-F01, I20261007-0009, I20261007-0010-F01, I20261007-0010, I20261007-0012, I20260925-0011, I20260909-0007, I20261007-0007-F01, I20261007-0011, I20261007-0011-F01"
    },
    {
     "id": 3,
@@ -203,80 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "18": "ptTram"
-     }
-    },
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261007-0005-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "118",
-       "lineName": "18",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     3602
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-07T08:35:00.000+0200",
-     "end": "2026-10-07T10:00:00.000+0200",
-     "lastUpdate": "2026-10-07T10:00:00.000+0200",
-     "resume": "2026-10-07T10:00:00.000+0200",
-     "start": "2026-10-07T08:19:00.000+0200"
-    },
-    "title": "18: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "71": "ptTram"
-     }
-    },
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261007-0006-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "171",
-       "lineName": "71",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     2016
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-07T08:38:00.000+0200",
-     "end": "2026-10-07T10:00:00.000+0200",
-     "lastUpdate": "2026-10-07T10:00:00.000+0200",
-     "resume": "2026-10-07T10:00:00.000+0200",
-     "start": "2026-10-07T08:25:00.000+0200"
-    },
-    "title": "71: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "9": "ptTram"
      }
     },
@@ -310,41 +236,6 @@
      "start": "2026-10-07T08:50:00.000+0200"
     },
     "title": "9: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie O: Fahrtbehinderung in Richtung Bruno-Marek-Allee. Voraussichtliche Dauer: 10:30 Uhr. Grund: Rettungseinsatz im Bereich Landstraße Wien Mitte.",
-    "descriptionHTML": "Linie O:<br>Fahrtbehinderung in Richtung Bruno-Marek-Allee.<br> <br>Voraussichtliche Dauer: 10:30 Uhr.<br><br>Grund: Rettungseinsatz im Bereich Landstraße Wien Mitte.",
-    "location": "Landstraße Wien Mitte",
-    "name": "I20261007-0008",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "170",
-       "lineName": "O",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-07T10:12:00.000+0200",
-     "end": "2026-10-07T10:13:00.000+0200",
-     "lastUpdate": "2026-10-07T10:13:00.000+0200",
-     "resume": "2026-10-07T10:13:00.000+0200",
-     "start": "2026-10-07T10:11:00.000+0200"
-    },
-    "title": "O: Rettungseinsatz"
    },
    {
     "attributes": {
@@ -476,14 +367,158 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-07T10:41:00.000+0200",
-     "end": "2026-10-07T23:55:00.000+0200",
-     "lastUpdate": "2026-10-07T10:41:00.000+0200",
+     "end": "2026-10-07T11:15:00.000+0200",
+     "lastUpdate": "2026-10-07T11:15:00.000+0200",
+     "resume": "2026-10-07T11:15:00.000+0200",
      "start": "2026-10-07T10:40:00.000+0200"
     },
     "title": "2: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "2": "ptTram"
+     }
+    },
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Wilhelminenstraße 6",
+    "name": "I20261007-0010-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "102",
+       "lineName": "2",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-07T11:15:00.000+0200",
+     "end": "2026-10-07T23:55:00.000+0200",
+     "lastUpdate": "2026-10-07T11:15:00.000+0200",
+     "resume": "2026-10-07T11:15:00.000+0200",
+     "start": "2026-10-07T10:40:00.000+0200"
+    },
+    "title": "2: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "13A": "ptBusCity"
+     }
+    },
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker im Haltestellenbereich Lederergasse.",
+    "descriptionHTML": "Linie 13A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Falschparker im Haltestellenbereich Lederergasse.",
+    "name": "I20261007-0011",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "413",
+       "lineName": "13A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "relatedStops": [
+     662
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-07T11:06:00.000+0200",
+     "end": "2026-10-07T11:06:00.000+0200",
+     "lastUpdate": "2026-10-07T11:06:00.000+0200",
+     "resume": "2026-10-07T11:06:00.000+0200",
+     "start": "2026-10-07T11:05:00.000+0200"
+    },
+    "title": "13A: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "13A": "ptBusCity"
+     }
+    },
+    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261007-0011-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "413",
+       "lineName": "13A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "relatedStops": [
+     662
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-07T11:06:00.000+0200",
+     "end": "2026-10-07T11:29:00.000+0200",
+     "lastUpdate": "2026-10-07T11:29:00.000+0200",
+     "resume": "2026-10-07T11:29:00.000+0200",
+     "start": "2026-10-07T11:05:00.000+0200"
+    },
+    "title": "13A: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "13A": "ptBusCity"
+     }
+    },
+    "description": "Linie 13A: Fahrtbehinderung in Richtung Hauptbahnhof S U. Voraussichtliche Dauer: 11:45 Uhr. Grund: Verkehrsunfall im Bereich Favoritenstraße 66.",
+    "descriptionHTML": "Linie 13A:<br>Fahrtbehinderung in Richtung Hauptbahnhof S U.<br> <br>Voraussichtliche Dauer: 11:45 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Favoritenstraße 66.",
+    "location": "Favoritenstraße 66",
+    "name": "I20261007-0012",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "413",
+       "lineName": "13A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-07T11:30:00.000+0200",
+     "end": "2026-10-07T23:55:00.000+0200",
+     "lastUpdate": "2026-10-07T11:30:00.000+0200",
+     "start": "2026-10-07T11:29:00.000+0200"
+    },
+    "title": "13A: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
