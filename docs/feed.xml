@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 07 Oct 2026 18:30:45 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 19:02:39 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
+      <pubDate>Wed, 07 Oct 2026 18:58:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 18:58:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 18:58:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 18:58]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 18:58]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">64c168750858c631c7a91ad91fc35cce1827e9d8a3c84eff3d5bc5adb3221722</guid>
+      <pubDate>Wed, 07 Oct 2026 18:45:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 18:45:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 18:45:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 18:45]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 18:45]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[2: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b</guid>
       <pubDate>Wed, 07 Oct 2026 18:28:00 +0200</pubDate>
       <ext:first_seen>Wed, 07 Oct 2026 18:28:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 18:28:33 +0200</ext:starts_at>
+      <ext:starts_at>Wed, 07 Oct 2026 18:28:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Friedrich-Engels-Platz. Voraussichtlich bis 18:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Heinestraße, Taborstraße. [Seit 18:28]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Friedrich-Engels-Platz. Voraussichtlich bis 18:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Heinestraße, Taborstraße.<br/>[Seit 18:28]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 18:28]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 18:28]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[63A: Verkehrsunfall]]></title>
@@ -41,17 +63,6 @@
       <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 17:40]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 17:40]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5/O: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ecd5f95a17857dc93a63349472e98b39e10391574ac70ec7b83eaf44b2f51e5a</guid>
-      <pubDate>Wed, 07 Oct 2026 16:50:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 16:50:51 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 16:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 16:50]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 16:50]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[16A: Verkehrsüberlastung]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 … [Bis 06.11.]</description>
       <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 …<br/>[Bis 06.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
-      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
-      <content:encoded><![CDATA[Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
