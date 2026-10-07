@@ -3,13 +3,6 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R1003-102|2026-10-07T18:28:08.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R1003-102",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-07T19:27:00.000+0200",
-   "incident": "I20261007-0021"
-  },
-  {
    "key": "R1797-407|2026-10-07T18:46:06.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
    "name": "R1797-407",
    "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
@@ -22,34 +15,6 @@
    "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
    "end": "2026-10-07T19:45:00.000+0200",
    "incident": "I20261007-0022"
-  },
-  {
-   "key": "R314-102|2026-10-07T18:28:33.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R314-102",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-07T19:27:00.000+0200",
-   "incident": "I20261007-0021"
-  },
-  {
-   "key": "R315-102|2026-10-07T18:28:33.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R315-102",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-07T19:27:00.000+0200",
-   "incident": "I20261007-0021"
-  },
-  {
-   "key": "R316-102|2026-10-07T18:28:33.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R316-102",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-07T19:27:00.000+0200",
-   "incident": "I20261007-0021"
-  },
-  {
-   "key": "R317-102|2026-10-07T18:28:33.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R317-102",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-07T19:27:00.000+0200",
-   "incident": "I20261007-0021"
   },
   {
    "key": "R318-102|2026-10-07T18:34:03.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",

@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 07 Oct 2026 19:02:39 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 19:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[48A: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7da5c613b2d12a20d7869dc68a2b28443932b3386ce707fa25728d82068a8310</guid>
+      <pubDate>Wed, 07 Oct 2026 19:26:41 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 19:26:41 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 19:27:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Parlament, U Volkstheater. Voraussichtlich bis 19:50 Uhr. Grund: Fremder Verkehrsunfall im Bereich Gablenzgasse / Arltgasse. [Seit 19:26]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Parlament, U Volkstheater. Voraussichtlich bis 19:50 Uhr. Grund: Fremder Verkehrsunfall im Bereich Gablenzgasse / Arltgasse.<br/>[Seit 19:26]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9bd67baa9df8459d82edefebf52288f443f7ee15a9da5bd91b38050445606134</guid>
+      <pubDate>Wed, 07 Oct 2026 19:20:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 19:20:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 19:24:11 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Betrieb ab Urban-Loritz-Platz. [Seit 19:20]</description>
+      <content:encoded><![CDATA[Betrieb ab Urban-Loritz-Platz.<br/>[Seit 19:20]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -41,39 +63,6 @@
       <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 18:28]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 18:28]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">256dd0cdb2b1c0eb23186e5c51158dfe6e5a1b6abe24847907b9a52340324733</guid>
-      <pubDate>Wed, 07 Oct 2026 17:41:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 17:41:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 17:41:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 17:41]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 17:41]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[80A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3f7a7f7b8b3f9de12c85a091d1ed2338922b50f5fcb2d8dce95e5e6ee14524ab</guid>
-      <pubDate>Wed, 07 Oct 2026 17:40:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 17:40:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 17:40:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 17:40]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 17:40]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">08f8f9d0c414c51fe010c32727e4eaf8cc098f2c840c0b9f9cbd2fc85b0426e7</guid>
-      <pubDate>Wed, 07 Oct 2026 16:36:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 16:36:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 16:36:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 16:36]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 16:36]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[56A/56B/N62: Strampfergasse]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 … [Bis 06.11.]</description>
       <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 …<br/>[Bis 06.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
+      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
+      <content:encoded><![CDATA[Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

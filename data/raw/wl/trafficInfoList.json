@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261007-0020, I20261007-0021-F01, I20260922-0032, I20261007-0021, I20261007-0022-F01, I20261007-0022, I20261007-0023, I20260925-0011, I20261007-0017-F01, I20261007-0019, I20260909-0007, I20261007-0018-F01, I20261007-0018-F02"
+    "trafficInfoNameList": "I20260917-0012, I20261007-0021-F01, I20260922-0032, I20261007-0021, I20261007-0022-F01, I20261007-0022, I20261007-0023, I20261007-0019, I20261007-0025, I20260925-0011, I20260909-0007, I20261007-0018-F01, I20261007-0018-F02, I20261007-0020, I20261007-0017-F01, I20261007-0024"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R101-136, R100-136, R102-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2923-403, R2917-0, R1150-0, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R1974-466, R500-101, R1177-0, R1003-102, R315-102, R314-102, R316-102, R317-102, R319-102, R318-102, R1797-407, R2569-407, R780-407, R814-407, R779-407, R720-407, R721-407, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R100-136, R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R2923-403, R2917-0, R1150-0, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1974-466, R500-101, R1177-0, R318-102, R319-102, R1797-407, R2569-407, R780-407, R779-407, R814-407, R721-407, R720-407, R1375-152, R1479-152, R1477-152, R1487-152, R1480-152, R1478-152, R1440-152, R1486-152, R1444-152, R1443-152, R1442-152, R1441-152, R1429-448, R1426-448, R1432-448, R1431-448, R1430-448, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -227,12 +227,12 @@
     "relatedStops": [
      5587
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-07T16:37:00.000+0200",
-     "end": "2026-10-07T23:55:00.000+0200",
-     "lastUpdate": "2026-10-07T16:37:00.000+0200",
-     "resume": "2026-10-07T16:37:00.000+0200",
+     "end": "2026-10-07T19:19:00.000+0200",
+     "lastUpdate": "2026-10-07T19:19:00.000+0200",
+     "resume": "2026-10-07T19:19:00.000+0200",
      "start": "2026-10-07T16:36:00.000+0200"
     },
     "title": "16A: Verkehrsüberlastung"
@@ -331,12 +331,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-07T17:40:00.000+0200",
-     "end": "2026-10-07T23:55:00.000+0200",
-     "lastUpdate": "2026-10-07T17:40:00.000+0200",
-     "resume": "2026-10-07T17:40:00.000+0200",
+     "end": "2026-10-07T19:16:00.000+0200",
+     "lastUpdate": "2026-10-07T19:16:00.000+0200",
+     "resume": "2026-10-07T19:16:00.000+0200",
      "start": "2026-10-07T17:40:00.000+0200"
     },
     "title": "80A: Verkehrsüberlastung"
@@ -365,12 +365,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-07T17:41:00.000+0200",
-     "end": "2026-10-07T23:55:00.000+0200",
-     "lastUpdate": "2026-10-07T17:41:00.000+0200",
-     "resume": "2026-10-07T17:41:00.000+0200",
+     "end": "2026-10-07T19:07:00.000+0200",
+     "lastUpdate": "2026-10-07T19:07:00.000+0200",
+     "resume": "2026-10-07T19:07:00.000+0200",
      "start": "2026-10-07T17:41:00.000+0200"
     },
     "title": "63A: Verkehrsunfall"
@@ -554,6 +554,74 @@
     "title": "U1: Verspätungen"
    },
    {
+    "attributes": {
+     "relatedLineTypes": {
+      "52": "ptTram"
+     }
+    },
+    "description": "Linie 52: Betrieb nur zwischen Baumgarten und Urban-Loritz-Platz. Weichen Sie ersatzweise auf die Linien U3, 13A und 48A aus. Voraussichtliche Dauer: 19:45 Uhr. Grund: Feuerwehreinsatz im Bereich Siebensterngasse 21.",
+    "descriptionHTML": "Linie 52:<br>Betrieb nur zwischen Baumgarten und Urban-Loritz-Platz.<br> <br>Weichen Sie ersatzweise auf die Linien U3, 13A und 48A aus.<br><br>Voraussichtliche Dauer: 19:45 Uhr.<br><br>Grund: Feuerwehreinsatz im Bereich Siebensterngasse 21.",
+    "location": "Siebensterngasse 21",
+    "name": "I20261007-0024",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "152",
+       "lineName": "52",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-07T19:20:00.000+0200",
+     "end": "2026-10-07T23:55:00.000+0200",
+     "lastUpdate": "2026-10-07T19:23:00.000+0200",
+     "start": "2026-10-07T19:20:00.000+0200"
+    },
+    "title": "52: Feuerwehreinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "48A": "ptBusCity"
+     }
+    },
+    "description": "Linie 48A: Fahrtbehinderung in Richtung Parlament, U Volkstheater. Voraussichtliche Dauer: 19:50 Uhr. Grund: Fremder Verkehrsunfall im Bereich Gablenzgasse # Arltgasse.",
+    "descriptionHTML": "Linie 48A:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater.<br> <br>Voraussichtliche Dauer: 19:50 Uhr.<br><br>Grund: Fremder Verkehrsunfall im Bereich Gablenzgasse # Arltgasse.",
+    "location": "Gablenzgasse / Arltgasse",
+    "name": "I20261007-0025",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "448",
+       "lineName": "48A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-07T19:28:00.000+0200",
+     "end": "2026-10-07T23:55:00.000+0200",
+     "lastUpdate": "2026-10-07T19:28:00.000+0200",
+     "start": "2026-10-07T19:27:00.000+0200"
+    },
+    "title": "48A: Fremder Verkehrsunfall"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R100-136",
     "owner": "WL",
@@ -570,24 +638,6 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1003-102",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     1003
-    ],
-    "time": {
-     "end": "2026-10-07T19:27:00.000+0200",
-     "start": "2026-10-07T18:28:08.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -780,6 +830,204 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "description": "Feuerwehreinsatz\nBetrieb ab Urban-Loritz-Platz",
+    "name": "R1375-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1375
+    ],
+    "time": {
+     "end": "2026-10-07T20:23:00.000+0200",
+     "start": "2026-10-07T19:20:15.000+0200"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Urban-Loritz-Platz"
+   },
+   {
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1426-448",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedStops": [
+     1426
+    ],
+    "time": {
+     "end": "2026-10-07T20:26:00.000+0200",
+     "start": "2026-10-07T19:26:41.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1429-448",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedStops": [
+     1429
+    ],
+    "time": {
+     "end": "2026-10-07T20:26:00.000+0200",
+     "start": "2026-10-07T19:26:41.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1430-448",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedStops": [
+     1430
+    ],
+    "time": {
+     "end": "2026-10-07T20:26:00.000+0200",
+     "start": "2026-10-07T19:26:41.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1431-448",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedStops": [
+     1431
+    ],
+    "time": {
+     "end": "2026-10-07T20:26:00.000+0200",
+     "start": "2026-10-07T19:26:41.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1432-448",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedStops": [
+     1432
+    ],
+    "time": {
+     "end": "2026-10-07T20:26:00.000+0200",
+     "start": "2026-10-07T19:26:41.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "description": "Feuerwehreinsatz\nBetrieb ab Urban-Loritz-Platz",
+    "name": "R1440-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1440
+    ],
+    "time": {
+     "end": "2026-10-07T20:23:00.000+0200",
+     "start": "2026-10-07T19:24:11.000+0200"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Urban-Loritz-Platz"
+   },
+   {
+    "description": "Feuerwehreinsatz\nBetrieb ab Urban-Loritz-Platz",
+    "name": "R1441-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1441
+    ],
+    "time": {
+     "end": "2026-10-07T20:23:00.000+0200",
+     "start": "2026-10-07T19:24:11.000+0200"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Urban-Loritz-Platz"
+   },
+   {
+    "description": "Feuerwehreinsatz\nBetrieb ab Urban-Loritz-Platz",
+    "name": "R1442-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1442
+    ],
+    "time": {
+     "end": "2026-10-07T20:23:00.000+0200",
+     "start": "2026-10-07T19:24:11.000+0200"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Urban-Loritz-Platz"
+   },
+   {
+    "description": "Feuerwehreinsatz\nBetrieb ab Urban-Loritz-Platz",
+    "name": "R1443-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1443
+    ],
+    "time": {
+     "end": "2026-10-07T20:23:00.000+0200",
+     "start": "2026-10-07T19:24:11.000+0200"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Urban-Loritz-Platz"
+   },
+   {
+    "description": "Feuerwehreinsatz\nBetrieb ab Urban-Loritz-Platz",
+    "name": "R1444-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1444
+    ],
+    "time": {
+     "end": "2026-10-07T20:23:00.000+0200",
+     "start": "2026-10-07T19:24:11.000+0200"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Urban-Loritz-Platz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -996,6 +1244,114 @@
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R1477-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1477
+    ],
+    "time": {
+     "end": "2026-10-07T20:22:00.000+0200",
+     "start": "2026-10-07T19:23:11.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R1478-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1478
+    ],
+    "time": {
+     "end": "2026-10-07T20:22:00.000+0200",
+     "start": "2026-10-07T19:23:11.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R1479-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1479
+    ],
+    "time": {
+     "end": "2026-10-07T20:22:00.000+0200",
+     "start": "2026-10-07T19:23:11.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R1480-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1480
+    ],
+    "time": {
+     "end": "2026-10-07T20:22:00.000+0200",
+     "start": "2026-10-07T19:23:11.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "description": "Feuerwehreinsatz\nBetrieb ab Urban-Loritz-Platz",
+    "name": "R1486-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1486
+    ],
+    "time": {
+     "end": "2026-10-07T20:23:00.000+0200",
+     "start": "2026-10-07T19:24:11.000+0200"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Urban-Loritz-Platz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R1487-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1487
+    ],
+    "time": {
+     "end": "2026-10-07T20:22:00.000+0200",
+     "start": "2026-10-07T19:23:11.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
    },
    {
     "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
@@ -1404,78 +1760,6 @@
      "start": "2026-10-07T00:00:15.000+0200"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R314-102",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     314
-    ],
-    "time": {
-     "end": "2026-10-07T19:27:00.000+0200",
-     "start": "2026-10-07T18:28:33.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R315-102",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     315
-    ],
-    "time": {
-     "end": "2026-10-07T19:27:00.000+0200",
-     "start": "2026-10-07T18:28:33.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R316-102",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     316
-    ],
-    "time": {
-     "end": "2026-10-07T19:27:00.000+0200",
-     "start": "2026-10-07T18:28:33.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R317-102",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     317
-    ],
-    "time": {
-     "end": "2026-10-07T19:27:00.000+0200",
-     "start": "2026-10-07T18:28:33.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
