@@ -13,7 +13,7 @@
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R130-136, R119-136, R19-136, R36-152, R45-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R2558-125, R5815-671, R2025-671, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1974-466, R1177-0, R1595-463, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R116-136, R36-152, R115-136, R117-136, R45-136, R19-136, R130-136, R119-136, R118-136, R100-136, R101-136, R102-136, R103-136, R2558-125, R5815-671, R2025-671, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1177-0, R1595-463, R500-101, R407-506, R402-506, R1448-549, R1474-549, R2380-520, R1974-566, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -486,6 +486,24 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Johnstraße U "
    },
    {
+    "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U ",
+    "name": "R1448-549",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N49"
+    ],
+    "relatedStops": [
+     1448
+    ],
+    "time": {
+     "end": "2026-10-08T04:50:00.000+0200",
+     "start": "2026-10-08T01:00:24.000+0200"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Johnstraße U "
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
     "name": "R1449-149",
     "owner": "WL",
@@ -576,6 +594,24 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21"
    },
    {
+    "description": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße ",
+    "name": "R1474-549",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N49"
+    ],
+    "relatedStops": [
+     1474
+    ],
+    "time": {
+     "end": "2026-10-08T05:00:00.000+0200",
+     "start": "2026-10-08T01:00:24.000+0200"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße "
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
     "name": "R1475-149",
     "owner": "WL",
@@ -649,19 +685,19 @@
    },
    {
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
-    "name": "R1974-466",
+    "name": "R1974-566",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "66A"
+     "N66"
     ],
     "relatedStops": [
      1974
     ],
     "time": {
-     "end": "2026-10-08T01:00:00.000+0200",
-     "start": "2026-10-07T04:40:17.000+0200"
+     "end": "2026-10-08T04:20:00.000+0200",
+     "start": "2026-10-08T01:00:26.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
@@ -915,6 +951,24 @@
     "title": "Busse halten\nBessemerstraße 1-3"
    },
    {
+    "description": "Gleisbauarbeiten\nBusse halten Hoßplatz 7-11 bei Linie 26E",
+    "name": "R2380-520",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N20"
+    ],
+    "relatedStops": [
+     2380
+    ],
+    "time": {
+     "end": "2026-10-08T05:00:00.000+0200",
+     "start": "2026-10-08T01:00:25.000+0200"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Hoßplatz 7-11 bei Linie 26E"
+   },
+   {
     "description": "Busse halten\nHoßplatz 11",
     "name": "R2380-627",
     "owner": "WL",
@@ -1003,6 +1057,42 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Züge halten\nbei Linien 6 und 18"
+   },
+   {
+    "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
+    "name": "R402-506",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     402
+    ],
+    "time": {
+     "end": "2026-10-08T05:05:00.000+0200",
+     "start": "2026-10-08T00:55:23.000+0200"
+    },
+    "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
+   },
+   {
+    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
+    "name": "R407-506",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     407
+    ],
+    "time": {
+     "end": "2026-10-08T05:04:00.000+0200",
+     "start": "2026-10-08T00:54:23.000+0200"
+    },
+    "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
    },
    {
     "description": "Züge halten\nWipplingerstr 39",
