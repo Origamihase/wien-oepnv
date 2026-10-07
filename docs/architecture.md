@@ -194,7 +194,10 @@ verdrängt eine andere Störung.
     WL schließt sie erst 20 bis 90 Minuten später. Eine Kurzmeldung, die
     mehr als zwei Minuten nach der Anlage beginnt, gehört deshalb zu einer
     neuen Störung und bleibt („38A: Falschparker“, 05.10.: Nachlauf von
-    11:30 bis 12:59 Uhr).
+    11:30 bis 12:59 Uhr). Ein vom Display gekürztes Wort („Gumpendorfer
+    Str.“) steht in der Störung, wenn eines ihrer Wörter damit beginnt
+    („Gumpendorfer Straße“, 14A am 06.10.); „Bhf.“ und „ggü.“ zählen nicht
+    mit.
     „66A: Bauarbeiten / Busse halten Salvatorianerplatz“ neben der
     erledigten „66A: Störung an einem Bahnübergang“ bleibt daher.
     `scripts/update_wl_cache.py` merkt sich die Kurzmeldungen (Name, Beginn,
@@ -557,7 +560,9 @@ verdrängt eine andere Störung.
   (N29: „00:30 Uhr“ in einer Meldung von 01:12), sonst für den nächsten
   Morgen („02:45 Uhr“ in einer Meldung von 23:10). Ein Fenster um die
   aktuelle Zeit taugt nicht: WL schätzt bis 17,5 Stunden voraus („ca. 22
-  Uhr“ für eine Veranstaltung, angelegt um 04:30). Ein Datum,
+  Uhr“ für eine Veranstaltung, angelegt um 04:30). Ein Punkt zwischen
+  Stunde und Minute gilt nur mit „Uhr“ als Uhrzeit („10.30 Uhr“), sonst
+  wäre „bis 12.10.“ 12:10 Uhr. Ein Datum,
   „Betriebsschluss“ und „Nicht absehbar“ bleiben stehen. Nachgespielt über
   387 Feed-Stände: 49 der 243 angezeigten Sätze mit Uhrzeit fallen weg,
   Reihenfolge, GUIDs und Titel bleiben gleich.

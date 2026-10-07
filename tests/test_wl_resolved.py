@@ -325,6 +325,43 @@ def test_a_ticker_begun_with_the_aftermath_still_leaves(monkeypatch: pytest.Monk
     assert _fetch(monkeypatch, [_38a_aftermath(), late]) == []
 
 
+def test_a_word_the_display_shortened_counts(monkeypatch: pytest.MonkeyPatch) -> None:
+    """06.10. 18:30: the 14A tickers wrote "Gumpendorfer Str.", the incident "Gumpendorfer Straße".
+
+    The 13A tickers, spelling "Straße" out, left with the closed "13A, 14A:
+    Falschparker"; the 14A ones stood on as a second "14A: Falschparker".
+    """
+    closed = _message(
+        "I20261006-0033",
+        "resolved",
+        "14A",
+        "13A, 14A: Falschparker",
+        "Die Linie 14A wird in Richtung Reumannplatz U zwischen Neubaugasse U und Pilgramgasse U über "
+        "Gumpendorfer Straße, Getreidemarkt und Linke Wienzeile umgeleitet. Grund: Falschparker im "
+        "Bereich Kaunitzgasse 14.",
+        closed=22,
+    )
+    tickers = [
+        _ticker(f"R{stop}-414", "Falschparker\nUmleitung über Gumpendorfer Str., Linke Wienzeile", began=10, line="14A")
+        for stop in (666, 682)
+    ]
+    assert _fetch(monkeypatch, [closed, *tickers]) == []
+
+
+def test_a_shortened_word_the_incident_does_not_begin_with_stays(monkeypatch: pytest.MonkeyPatch) -> None:
+    closed = _message(
+        "I20261006-0033",
+        "resolved",
+        "14A",
+        "14A: Falschparker",
+        "Die Linie 14A wird über Getreidemarkt und Linke Wienzeile umgeleitet. Grund: Falschparker.",
+        closed=22,
+    )
+    ticker = _ticker("R666-414", "Falschparker\nUmleitung über Gumpendorfer Str., Linke Wienzeile", began=10, line="14A")
+    events = _fetch(monkeypatch, [closed, ticker])
+    assert events and wl_resolved.remembered() == {}
+
+
 # --- memory across runs (scripts/update_wl_cache.py) ------------------------
 
 

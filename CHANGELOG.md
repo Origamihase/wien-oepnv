@@ -5,6 +5,21 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Feed: Kurzmeldungen mit „Str.“ gehen mit ihrer erledigten Störung
+  (2026-10-07)**: Gegenprüfung der Merges seit 05.10. Am 06.10. um 18:30
+  stand „14A: Falschparker“ ein zweites Mal im Feed, neben dem Nachlauf der
+  schon erledigten „13A, 14A: Falschparker“: Die 14A-Kurzmeldungen
+  schreiben „Gumpendorfer Str.“, die Störung „Gumpendorfer Straße“, und
+  „str“ stand als eigenes Wort nicht in der Störung. Ein vom Display
+  gekürztes Wort (Punkt dahinter, Text danach) zählt jetzt, wenn ein Wort
+  der Störung mit ihm beginnt; „Bhf.“ und „ggü.“ sagen nur, wo der Bus
+  hält, und zählen wie „Haltestelle“ nicht mit
+  (`src/providers/wl_resolved.py`). Nachgespielt über alle 135 WL-Abrufe
+  seit 04.10.: nur diese zwei Kurzmeldungen werden zusätzlich verworfen.
+  Dazu: „Voraussichtlich bis 12.10.“ hätte `_drop_passed_expected_end` als
+  12:10 Uhr gelesen und gestrichen; ein Punkt zwischen Stunde und Minute
+  gilt jetzt nur mit „Uhr“ als Uhrzeit („10.30 Uhr“). In den 4 695 WL-Texten
+  seit Juli ändert das nichts, die Form kam dort noch nicht vor.
 * **Feed: eine neue WL-Störung erbt nicht den Beginn der beendeten
   (2026-10-07)**: Nachtrag zu „Eine Meldung, eine GUID“. Am 06.10. endete
   „13A/14A: Falschparker“ `I20261006-0030` (17:22), WL eröffnete

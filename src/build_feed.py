@@ -8892,10 +8892,12 @@ _CLOCK_GLUED_UHR_RE = re.compile(r"(?<=\d\d:\d\d)Uhr\b")
 
 # The expected end as a clock time, the sentence with its full stop:
 # "Voraussichtlich bis 19:10 Uhr.", "… bis ca. 22 Uhr.", "… bis 10:00.". A
-# date ("bis 19. September", "bis 31.07.2026") is no clock time.
+# date ("bis 19. September", "bis 31.07.2026", "bis 12.10.") is no clock
+# time; a full stop between hour and minute counts only with "Uhr" ("10.30
+# Uhr", twice since July), or "bis 12.10." would read as 12:10 that day.
 _EXPECTED_CLOCK_END_RE = re.compile(
     r"(?<!\w)Voraussichtlich bis (?:(?:ca\.|circa|etwa|gegen)\s*)?"
-    r"(?P<h>\d{1,2})(?:[:.](?P<m>\d{2})(?:\s*Uhr)?|\s*Uhr)\.?(?=\s|$)\s*"
+    r"(?P<h>\d{1,2})(?::(?P<m>\d{2})(?:\s*Uhr)?|\.(?P<dm>\d{2})\s*Uhr|\s*Uhr)\.?(?=\s|$)\s*"
 )
 # How far before the item's newest time an end may lie and still mean that
 # day: WL's estimate had already passed when the ticker came (N29 on
@@ -8920,7 +8922,7 @@ def _drop_passed_expected_end(
     match = _EXPECTED_CLOCK_END_RE.search(text)
     if match is None:
         return text
-    hour, minute = int(match["h"]), int(match["m"] or 0)
+    hour, minute = int(match["h"]), int(match["m"] or match["dm"] or 0)
     if hour > 24 or minute > 59 or (hour == 24 and minute):
         return text
     times = [t for t in (starts_at, _parse_datetime(it.get("pubDate"))) if isinstance(t, datetime)]
