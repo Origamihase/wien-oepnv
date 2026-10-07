@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261007-0018, I20260917-0012, I20260922-0032, I20260925-0011, I20261007-0017-F01, I20261007-0017, I20260909-0007"
+    "trafficInfoNameList": "I20261007-0018, I20260917-0012, I20260922-0032, I20260925-0011, I20261007-0017-F01, I20261007-0017, I20261007-0018-F01, I20261007-0018-F02, I20260909-0007"
    },
    {
     "id": 3,
@@ -306,14 +306,85 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-07T16:51:00.000+0200",
-     "end": "2026-10-07T23:55:00.000+0200",
-     "lastUpdate": "2026-10-07T16:57:00.000+0200",
+     "end": "2026-10-07T17:16:00.000+0200",
+     "lastUpdate": "2026-10-07T17:16:00.000+0200",
+     "resume": "2026-10-07T17:16:00.000+0200",
      "start": "2026-10-07T16:50:00.000+0200"
     },
     "title": "5, O: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "5": "ptTram"
+     }
+    },
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Nordbahnstraße",
+    "name": "I20261007-0018-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "105",
+       "lineName": "5",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-07T17:16:00.000+0200",
+     "end": "2026-10-07T23:55:00.000+0200",
+     "lastUpdate": "2026-10-07T17:16:00.000+0200",
+     "resume": "2026-10-07T17:16:00.000+0200",
+     "start": "2026-10-07T16:50:00.000+0200"
+    },
+    "title": "5: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Nordbahnstraße",
+    "name": "I20261007-0018-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "170",
+       "lineName": "O",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-07T17:16:00.000+0200",
+     "end": "2026-10-07T23:55:00.000+0200",
+     "lastUpdate": "2026-10-07T17:16:00.000+0200",
+     "resume": "2026-10-07T17:16:00.000+0200",
+     "start": "2026-10-07T16:50:00.000+0200"
+    },
+    "title": "O: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",

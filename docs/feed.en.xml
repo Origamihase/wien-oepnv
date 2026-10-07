@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 07 Oct 2026 17:01:09 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 17:30:42 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[5/O: Traffic accident]]></title>
+      <title><![CDATA[5: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">ecd5f95a17857dc93a63349472e98b39e10391574ac70ec7b83eaf44b2f51e5a</guid>
-      <pubDate>Wed, 07 Oct 2026 16:50:51 +0200</pubDate>
+      <pubDate>Wed, 07 Oct 2026 16:50:00 +0200</pubDate>
       <ext:first_seen>Wed, 07 Oct 2026 16:50:51 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 16:57:54 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 07 Oct 2026 17:59:00 +0200</ext:ends_at>
-      <description>Service obstruction; O: service from Praterstern; 5: service from Nordwestbahnstraße. [Since 16:50]</description>
-      <content:encoded><![CDATA[Service obstruction; O: service from Praterstern; 5: service from Nordwestbahnstraße.<br/>[Since 16:50]]]></content:encoded>
+      <ext:starts_at>Wed, 07 Oct 2026 16:50:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service from Nordwestbahnstraße. [Since 16:50]</description>
+      <content:encoded><![CDATA[Service from Nordwestbahnstraße.<br/>[Since 16:50]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[O: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ee9d3f3d2f7894fa11d971e1ac5f847be3f219359a43a6a87138d443f4bb3996</guid>
+      <pubDate>Wed, 07 Oct 2026 16:50:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 16:50:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 16:50:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [Since 16:50]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 16:50]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[16A: Traffic congestion]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 08 Oct 2026 01:00:00 +0200</ext:ends_at>
       <description>Reason: construction works. [Until Thu 08.10.]</description>
       <content:encoded><![CDATA[Reason: construction works.<br/>[Until Thu 08.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[52: Trains stop at the stops of lines 6 and 18]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:16 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 00:00:16 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 07 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Today]</description>
-      <content:encoded><![CDATA[[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
