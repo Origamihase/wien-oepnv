@@ -1,5 +1,55 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R1426-448|2026-10-07T19:26:41.000+0200|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R1426-448",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-07T22:00:00.000+0200",
+   "incident": "I20261007-0025"
+  },
+  {
+   "key": "R1428-448|2026-10-07T19:48:13.000+0200|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R1428-448",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-07T22:00:00.000+0200",
+   "incident": "I20261007-0025"
+  },
+  {
+   "key": "R1429-448|2026-10-07T19:26:41.000+0200|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R1429-448",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-07T22:00:00.000+0200",
+   "incident": "I20261007-0025"
+  },
+  {
+   "key": "R1430-448|2026-10-07T19:26:41.000+0200|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R1430-448",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-07T22:00:00.000+0200",
+   "incident": "I20261007-0025"
+  },
+  {
+   "key": "R1431-448|2026-10-07T19:26:41.000+0200|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R1431-448",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-07T22:00:00.000+0200",
+   "incident": "I20261007-0025"
+  },
+  {
+   "key": "R1432-448|2026-10-07T19:26:41.000+0200|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R1432-448",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-07T22:00:00.000+0200",
+   "incident": "I20261007-0025"
+  },
+  {
+   "key": "R897-448|2026-10-07T19:48:17.000+0200|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R897-448",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-07T22:00:00.000+0200",
+   "incident": "I20261007-0025"
+  }
+ ]
 }

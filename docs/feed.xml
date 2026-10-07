@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 07 Oct 2026 20:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 20:30:44 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[48A: Fremder Verkehrsunfall]]></title>
@@ -15,32 +15,21 @@
       <guid isPermaLink="false">7da5c613b2d12a20d7869dc68a2b28443932b3386ce707fa25728d82068a8310</guid>
       <pubDate>Wed, 07 Oct 2026 19:26:41 +0200</pubDate>
       <ext:first_seen>Wed, 07 Oct 2026 19:26:41 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 19:48:17 +0200</ext:starts_at>
+      <ext:starts_at>Wed, 07 Oct 2026 19:27:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb nur zwischen Klinik Penzing und Schmelz, Gablenzgasse; Betrieb ab Pfenninggeldgasse. [Seit 19:26]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Klinik Penzing und Schmelz, Gablenzgasse; Betrieb ab Pfenninggeldgasse.<br/>[Seit 19:26]]]></content:encoded>
+      <description>Betrieb ab Pfenninggeldgasse. [Seit 19:26]</description>
+      <content:encoded><![CDATA[Betrieb ab Pfenninggeldgasse.<br/>[Seit 19:26]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[52: Feuerwehreinsatz]]></title>
+      <title><![CDATA[63A: Verkehrsstörung, Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9bd67baa9df8459d82edefebf52288f443f7ee15a9da5bd91b38050445606134</guid>
-      <pubDate>Wed, 07 Oct 2026 19:20:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 19:20:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 19:24:11 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb ab Urban-Loritz-Platz. [Seit 19:20]</description>
-      <content:encoded><![CDATA[Betrieb ab Urban-Loritz-Platz.<br/>[Seit 19:20]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
-      <pubDate>Wed, 07 Oct 2026 18:58:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 18:58:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 18:58:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 18:58]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 18:58]]]></content:encoded>
+      <guid isPermaLink="false">4775bfa98a369b780f1a09f5420484150395f83efcb423571af6311708899658</guid>
+      <pubDate>Wed, 07 Oct 2026 20:24:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 20:24:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 20:24:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 07 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Verkehrsstörung: Unregelmäßige Intervalle in beiden Richtungen. Bauarbeiten: Betrieb ab Flurschützstraße, Längenfeldgasse. [Heute]</description>
+      <content:encoded><![CDATA[Verkehrsstörung: Unregelmäßige Intervalle in beiden Richtungen. Bauarbeiten: Betrieb ab Flurschützstraße, Längenfeldgasse.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[56A/56B/N62: Strampfergasse]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 08 Oct 2026 01:00:00 +0200</ext:ends_at>
       <description>Grund: Bauarbeiten. [Bis Do 08.10.]</description>
       <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Bis Do 08.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:16 +0200</pubDate>
+      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 00:00:16 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 07 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Züge halten bei Linien 6 und 18. [Heute]</description>
+      <content:encoded><![CDATA[Züge halten bei Linien 6 und 18.<br/>[Heute]]]></content:encoded>
     </item>
   </channel>
 </rss>
