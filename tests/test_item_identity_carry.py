@@ -27,6 +27,10 @@ Mutations checked against this file (each one caught, by the test named):
 * a GUID is carried onto two items → ``test_one_guid_goes_to_one_item``.
 * a combined entry counts every incident → ``test_a_combined_entry_counts_its_newest_incident``.
 * the provider drops the WL number → ``test_the_provider_keeps_the_wl_number``.
+* another WL incident keeps the begin of the ended one →
+  ``test_a_new_wl_incident_under_the_same_guid_keeps_its_own_time``.
+* another WL incident carries the GUID of the ended one →
+  ``test_a_new_wl_incident_does_not_carry_an_ended_ones_guid``.
 """
 
 from __future__ import annotations
@@ -343,3 +347,29 @@ def test_incident_numbers(name: str, numbers: set[str]) -> None:
 def test_an_item_stands_for_its_message_and_its_wl_number() -> None:
     item = {"guid": "de57", "_wl_ids": ["I20261005-0041"]}
     assert member_guids(item) == ["de57", "wl:I20261005-0041"]
+
+
+FALSCHPARKER = datetime(2026, 10, 6, 16, 30, 57, tzinfo=UTC)  # 18:30:57 in Vienna
+
+
+def test_a_new_wl_incident_under_the_same_guid_keeps_its_own_time() -> None:
+    """"13A/14A: Falschparker" on 2026-10-06: ``I20261006-0030`` (17:22) ended,
+    ``I20261006-0033`` (17:44) came under the same GUID and read "[Seit 17:22]"."""
+    ended = datetime(2026, 10, 6, 15, 22, tzinfo=UTC)
+    new = datetime(2026, 10, 6, 15, 44, tzinfo=UTC)
+    state = {"g": _entry(["g", "wl:I20261006-0030"], FALSCHPARKER - timedelta(minutes=27), ended)}
+    item = _item("g", new, ["g", "wl:I20261006-0033"], "13A/14A: Falschparker")
+    (out,) = bf._carry_item_identity([item], state, FALSCHPARKER)
+    assert (out["guid"], out["pubDate"]) == ("g", new)
+    bf._remember_item_identity([out], state, FALSCHPARKER)
+    assert state["g"]["earliest_published"] == new.isoformat()
+
+
+def test_a_new_wl_incident_does_not_carry_an_ended_ones_guid() -> None:
+    """A ticker of the ended incident still on the line does not make the new one its continuation."""
+    ended = datetime(2026, 10, 6, 15, 22, tzinfo=UTC)
+    new = datetime(2026, 10, 6, 15, 20, tzinfo=UTC)  # dated back before the ended one's begin
+    state = {"old": _entry(["old", "t", "wl:I20261006-0030"], FALSCHPARKER - timedelta(minutes=27), ended)}
+    item = _item("new", new, ["new", "t", "wl:I20261006-0033"], "13A/14A: Falschparker")
+    (out,) = bf._carry_item_identity([item], state, FALSCHPARKER)
+    assert (out["guid"], out["pubDate"]) == ("new", new)
