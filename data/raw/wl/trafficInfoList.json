@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261007-0018, I20260917-0012, I20261007-0020, I20260922-0032, I20260925-0011, I20261007-0017-F01, I20261007-0018-F01, I20261007-0018-F02, I20261007-0019, I20260909-0007"
+    "trafficInfoNameList": "I20260917-0012, I20261007-0020, I20260922-0032, I20260925-0011, I20261007-0017-F01, I20261007-0018-F01, I20261007-0018-F02, I20261007-0019, I20261007-0021, I20260909-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R19-136, R130-136, R45-136, R36-152, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R2558-125, R5815-671, R2025-671, R1474-149, R1475-149, R1476-149, R2923-403, R2917-0, R1150-0, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1974-466, R500-101, R1177-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R116-136, R115-136, R117-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R100-136, R101-136, R102-136, R103-136, R2558-125, R5815-671, R2025-671, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2923-403, R2917-0, R1150-0, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1974-466, R500-101, R1177-0, R1003-102, R314-102, R315-102, R316-102, R317-102, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -240,48 +240,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "5": "ptTram",
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie 5: Betrieb nur zwischen Westbahnhof S U und Nordbahnstraße. Weiterfahrt bis Bruno-Marek-Allee. Linie O: Betrieb nur zwischen Raxstraße und Praterstern S U. Voraussichtliche Dauer: 17:10 Uhr. Grund: Verkehrsunfall im Bereich Nordbahnstraße.",
-    "descriptionHTML": "Linie 5: <br>Betrieb nur zwischen Westbahnhof S U und Nordbahnstraße.<br>Weiterfahrt bis Bruno-Marek-Allee.<br>Linie O:<br>Betrieb nur zwischen Raxstraße und Praterstern S U.<br> <br>Voraussichtliche Dauer: 17:10 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Nordbahnstraße.",
-    "location": "Nordbahnstraße",
-    "name": "I20261007-0018",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "5",
-     "O"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "105",
-       "lineName": "5",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "170",
-       "lineName": "O",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-07T16:51:00.000+0200",
-     "end": "2026-10-07T17:16:00.000+0200",
-     "lastUpdate": "2026-10-07T17:16:00.000+0200",
-     "resume": "2026-10-07T17:16:00.000+0200",
-     "start": "2026-10-07T16:50:00.000+0200"
-    },
-    "title": "5, O: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "5": "ptTram"
      }
     },
@@ -418,6 +376,42 @@
     "title": "63A: Verkehrsunfall"
    },
    {
+    "attributes": {
+     "relatedLineTypes": {
+      "2": "ptTram"
+     }
+    },
+    "description": "Linie 2: Fahrtbehinderung in Richtung Friedrich-Engels-Platz. Voraussichtliche Dauer: 18:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Heinestraße, Taborstraße.",
+    "descriptionHTML": "Linie 2:<br>Fahrtbehinderung in Richtung Friedrich-Engels-Platz.<br> <br>Voraussichtliche Dauer: 18:50 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Heinestraße, Taborstraße.",
+    "name": "I20261007-0021",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "102",
+       "lineName": "2",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1003
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-07T18:28:00.000+0200",
+     "end": "2026-10-07T23:55:00.000+0200",
+     "lastUpdate": "2026-10-07T18:28:00.000+0200",
+     "start": "2026-10-07T18:28:00.000+0200"
+    },
+    "title": "2: Rettungseinsatz"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R100-136",
     "owner": "WL",
@@ -434,6 +428,24 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1003-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1003
+    ],
+    "time": {
+     "end": "2026-10-07T19:27:00.000+0200",
+     "start": "2026-10-07T18:28:08.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1214,6 +1226,78 @@
      "start": "2026-10-07T00:00:15.000+0200"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R314-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     314
+    ],
+    "time": {
+     "end": "2026-10-07T19:27:00.000+0200",
+     "start": "2026-10-07T18:28:33.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R315-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     315
+    ],
+    "time": {
+     "end": "2026-10-07T19:27:00.000+0200",
+     "start": "2026-10-07T18:28:33.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R316-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     316
+    ],
+    "time": {
+     "end": "2026-10-07T19:27:00.000+0200",
+     "start": "2026-10-07T18:28:33.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R317-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     317
+    ],
+    "time": {
+     "end": "2026-10-07T19:27:00.000+0200",
+     "start": "2026-10-07T18:28:33.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",

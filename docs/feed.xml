@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 07 Oct 2026 18:00:54 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 18:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[2: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b</guid>
+      <pubDate>Wed, 07 Oct 2026 18:28:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 18:28:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 18:28:33 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Friedrich-Engels-Platz. Voraussichtlich bis 18:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Heinestraße, Taborstraße. [Seit 18:28]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Friedrich-Engels-Platz. Voraussichtlich bis 18:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Heinestraße, Taborstraße.<br/>[Seit 18:28]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[63A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
       <content:encoded><![CDATA[Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Neue Donau, kein Halt Richtung Floridsdorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">747d54fbd4c0aad685b21596a0c44cb67d41165e556ee43b1bc3e8636920f551</guid>
-      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 16:30:37 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf. [Bis 31.12.]</description>
-      <content:encoded><![CDATA[Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf.<br/>[Bis 31.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
