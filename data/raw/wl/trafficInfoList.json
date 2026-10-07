@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261007-0016-F01, I20260917-0012, I20260922-0032, I20261007-0013, I20260925-0011, I20260909-0007"
+    "trafficInfoNameList": "I20261007-0016-F01, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007"
    },
    {
     "id": 3,
@@ -203,40 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "26A": "ptBusCity"
-     }
-    },
-    "description": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "descriptionHTML": "Linie 26A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Polizeieinsatz.",
-    "name": "I20261007-0013",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "26A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "426",
-       "lineName": "26A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-07T12:39:00.000+0200",
-     "end": "2026-10-07T14:46:00.000+0200",
-     "lastUpdate": "2026-10-07T14:46:00.000+0200",
-     "resume": "2026-10-07T14:46:00.000+0200",
-     "start": "2026-10-07T12:38:00.000+0200"
-    },
-    "title": "26A: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U3": "ptMetro"
      }
     },
@@ -261,12 +227,12 @@
     "relatedStops": [
      4935
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-07T14:03:00.000+0200",
-     "end": "2026-10-07T23:55:00.000+0200",
-     "lastUpdate": "2026-10-07T14:03:00.000+0200",
-     "resume": "2026-10-07T14:03:00.000+0200",
+     "end": "2026-10-07T15:36:00.000+0200",
+     "lastUpdate": "2026-10-07T15:36:00.000+0200",
+     "resume": "2026-10-07T15:36:00.000+0200",
      "start": "2026-10-07T13:41:00.000+0200"
     },
     "title": "U3: Polizeieinsatz"
