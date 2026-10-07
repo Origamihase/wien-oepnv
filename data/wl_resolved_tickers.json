@@ -3,172 +3,95 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R2009-171|2026-10-07T08:29:40.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R2009-171",
+   "key": "R1446-109|2026-10-07T08:59:10.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1446-109",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-07T09:23:00.000+0200",
-   "incident": "I20261007-0006"
+   "end": "2026-10-07T09:58:00.000+0200",
+   "incident": "I20261007-0007"
   },
   {
-   "key": "R2016-171|2026-10-07T08:29:40.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R2016-171",
+   "key": "R1447-109|2026-10-07T09:02:10.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1447-109",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-07T09:23:00.000+0200",
-   "incident": "I20261007-0006"
+   "end": "2026-10-07T10:01:00.000+0200",
+   "incident": "I20261007-0007"
   },
   {
-   "key": "R2020-171|2026-10-07T08:29:40.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R2020-171",
+   "key": "R1475-109|2026-10-07T08:49:09.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1475-109",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-07T09:23:00.000+0200",
-   "incident": "I20261007-0006"
+   "end": "2026-10-07T09:48:00.000+0200",
+   "incident": "I20261007-0007"
   },
   {
-   "key": "R2021-171|2026-10-07T08:29:40.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R2021-171",
+   "key": "R1476-109|2026-10-07T08:49:09.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1476-109",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-07T09:23:00.000+0200",
-   "incident": "I20261007-0006"
+   "end": "2026-10-07T09:48:00.000+0200",
+   "incident": "I20261007-0007"
   },
   {
-   "key": "R2023-171|2026-10-07T08:30:40.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R2023-171",
+   "key": "R484-109|2026-10-07T08:59:12.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R484-109",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-07T09:30:00.000+0200",
-   "incident": "I20261007-0006"
+   "end": "2026-10-07T09:58:00.000+0200",
+   "incident": "I20261007-0007"
   },
   {
-   "key": "R2024-171|2026-10-07T08:30:40.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R2024-171",
+   "key": "R541-109|2026-10-07T08:59:07.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R541-109",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-07T09:30:00.000+0200",
-   "incident": "I20261007-0006"
+   "end": "2026-10-07T09:58:00.000+0200",
+   "incident": "I20261007-0007"
   },
   {
-   "key": "R2025-171|2026-10-07T08:30:40.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R2025-171",
+   "key": "R543-109|2026-10-07T09:02:07.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R543-109",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-07T09:30:00.000+0200",
-   "incident": "I20261007-0006"
+   "end": "2026-10-07T10:01:00.000+0200",
+   "incident": "I20261007-0007"
   },
   {
-   "key": "R2026-171|2026-10-07T08:30:40.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R2026-171",
+   "key": "R544-109|2026-10-07T09:02:07.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R544-109",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-07T09:30:00.000+0200",
-   "incident": "I20261007-0006"
+   "end": "2026-10-07T10:01:00.000+0200",
+   "incident": "I20261007-0007"
   },
   {
-   "key": "R2420-118|2026-10-07T08:22:08.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R2420-118",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-07T09:20:00.000+0200",
-   "incident": "I20261007-0005"
+   "key": "R545-109|2026-10-07T09:02:07.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R545-109",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-07T10:01:00.000+0200",
+   "incident": "I20261007-0007"
   },
   {
-   "key": "R2422-118|2026-10-07T08:23:38.000+0200|Rettungseinsatz\nBetrieb ab Schlachthausgasse",
-   "name": "R2422-118",
-   "title": "Rettungseinsatz\nBetrieb ab Schlachthausgasse",
-   "end": "2026-10-07T09:22:00.000+0200",
-   "incident": "I20261007-0005"
+   "key": "R546-109|2026-10-07T09:02:07.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R546-109",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-07T10:01:00.000+0200",
+   "incident": "I20261007-0007"
   },
   {
-   "key": "R2620-118|2026-10-07T08:20:12.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R2620-118",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-07T09:19:00.000+0200",
-   "incident": "I20261007-0005"
+   "key": "R547-109|2026-10-07T09:02:07.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R547-109",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-07T10:01:00.000+0200",
+   "incident": "I20261007-0007"
   },
   {
-   "key": "R2632-118|2026-10-07T08:22:12.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R2632-118",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-07T09:20:00.000+0200",
-   "incident": "I20261007-0005"
+   "key": "R548-109|2026-10-07T09:02:07.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R548-109",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-07T10:01:00.000+0200",
+   "incident": "I20261007-0007"
   },
   {
-   "key": "R2750-118|2026-10-07T08:23:30.000+0200|Rettungseinsatz\nBetrieb ab Schlachthausgasse",
-   "name": "R2750-118",
-   "title": "Rettungseinsatz\nBetrieb ab Schlachthausgasse",
-   "end": "2026-10-07T09:22:00.000+0200",
-   "incident": "I20261007-0005"
-  },
-  {
-   "key": "R284-118|2026-10-07T08:20:03.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R284-118",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-07T09:19:00.000+0200",
-   "incident": "I20261007-0005"
-  },
-  {
-   "key": "R3568-118|2026-10-07T08:20:10.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R3568-118",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-07T09:19:00.000+0200",
-   "incident": "I20261007-0005"
-  },
-  {
-   "key": "R3602-118|2026-10-07T08:22:10.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R3602-118",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-07T09:20:00.000+0200",
-   "incident": "I20261007-0005"
-  },
-  {
-   "key": "R3603-118|2026-10-07T08:22:10.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R3603-118",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-07T09:20:00.000+0200",
-   "incident": "I20261007-0005"
-  },
-  {
-   "key": "R3604-118|2026-10-07T08:22:10.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R3604-118",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-07T09:20:00.000+0200",
-   "incident": "I20261007-0005"
-  },
-  {
-   "key": "R3605-118|2026-10-07T08:23:10.000+0200|Rettungseinsatz\nBetrieb ab Schlachthausgasse",
-   "name": "R3605-118",
-   "title": "Rettungseinsatz\nBetrieb ab Schlachthausgasse",
-   "end": "2026-10-07T09:22:00.000+0200",
-   "incident": "I20261007-0005"
-  },
-  {
-   "key": "R3606-118|2026-10-07T08:23:10.000+0200|Rettungseinsatz\nBetrieb ab Schlachthausgasse",
-   "name": "R3606-118",
-   "title": "Rettungseinsatz\nBetrieb ab Schlachthausgasse",
-   "end": "2026-10-07T09:22:00.000+0200",
-   "incident": "I20261007-0005"
-  },
-  {
-   "key": "R3607-118|2026-10-07T08:23:10.000+0200|Rettungseinsatz\nBetrieb ab Schlachthausgasse",
-   "name": "R3607-118",
-   "title": "Rettungseinsatz\nBetrieb ab Schlachthausgasse",
-   "end": "2026-10-07T09:22:00.000+0200",
-   "incident": "I20261007-0005"
-  },
-  {
-   "key": "R3608-118|2026-10-07T08:23:10.000+0200|Rettungseinsatz\nBetrieb ab Schlachthausgasse",
-   "name": "R3608-118",
-   "title": "Rettungseinsatz\nBetrieb ab Schlachthausgasse",
-   "end": "2026-10-07T09:22:00.000+0200",
-   "incident": "I20261007-0005"
-  },
-  {
-   "key": "R3609-118|2026-10-07T08:23:10.000+0200|Rettungseinsatz\nBetrieb ab Schlachthausgasse",
-   "name": "R3609-118",
-   "title": "Rettungseinsatz\nBetrieb ab Schlachthausgasse",
-   "end": "2026-10-07T09:22:00.000+0200",
-   "incident": "I20261007-0005"
-  },
-  {
-   "key": "R844-118|2026-10-07T08:20:10.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R844-118",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-07T09:19:00.000+0200",
-   "incident": "I20261007-0005"
+   "key": "R550-109|2026-10-07T09:02:07.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R550-109",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-07T10:01:00.000+0200",
+   "incident": "I20261007-0007"
   }
  ]
 }
