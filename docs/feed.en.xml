@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 07 Oct 2026 23:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 00:01:14 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[11: Rescue operation]]></title>
+      <title><![CDATA[1/1A/2/3A/71/D: Demonstration on 09.10.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e</guid>
-      <pubDate>Wed, 07 Oct 2026 23:25:14 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 23:25:14 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 23:25:16 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 07 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Service obstruction. [Since 23:25]</description>
-      <content:encoded><![CDATA[Service obstruction.<br/>[Since 23:25]]]></content:encoded>
+      <guid isPermaLink="false">32b9e3c0c1c52fc6a0b68acfb7b0051c5873464d1bd8e75b51c15ea6b28cb349</guid>
+      <pubDate>Tue, 06 Oct 2026 12:50:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 00:01:14 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 17:00:00 +0200</ext:ends_at>
+      <description>Because of a demonstration, transport is taking place. [On Fri 09.10.]</description>
+      <content:encoded><![CDATA[Because of a demonstration, transport is taking place.<br/>[On Fri 09.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[63A: Service from Flurschützstraße, Längenfeldgasse]]></title>
@@ -27,9 +27,20 @@
       <pubDate>Wed, 07 Oct 2026 20:09:40 +0200</pubDate>
       <ext:first_seen>Wed, 07 Oct 2026 22:00:56 +0200</ext:first_seen>
       <ext:starts_at>Wed, 07 Oct 2026 20:09:40 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 07 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 08 Oct 2026 04:00:00 +0200</ext:ends_at>
       <description>Reason: construction works. [Today]</description>
       <content:encoded><![CDATA[Reason: construction works.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1A/3A: Schwertgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
+      <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation. [From Fri 09.10. until 31.03.2027]</description>
+      <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation.<br/>[From Fri 09.10. until 31.03.2027]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[56A/56B/N62: Strampfergasse]]></title>
@@ -39,8 +50,8 @@
       <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
       <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 08 Oct 2026 09:00:00 +0200</ext:ends_at>
-      <description>Stop closure of lines 56A, 56B and N62 in both directions. Stop: Strampfergasse. Reason: Road construction. [Until Thu 08.10.]</description>
-      <content:encoded><![CDATA[Stop closure of lines 56A, 56B and N62 in both directions. Stop: Strampfergasse. Reason: Road construction.<br/>[Until Thu 08.10.]]]></content:encoded>
+      <description>Stop closure of lines 56A, 56B and N62 in both directions. Stop: Strampfergasse. Reason: Road construction. [Today]</description>
+      <content:encoded><![CDATA[Stop closure of lines 56A, 56B and N62 in both directions. Stop: Strampfergasse. Reason: Road construction.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
@@ -94,8 +105,8 @@
       <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
       <ext:starts_at>Wed, 07 Oct 2026 04:40:17 +0200</ext:starts_at>
       <ext:ends_at>Thu, 08 Oct 2026 01:00:00 +0200</ext:ends_at>
-      <description>Reason: construction works. [Until Thu 08.10.]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[Until Thu 08.10.]]]></content:encoded>
+      <description>Reason: construction works. [Today]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[52: Trains stop at the stops of lines 6 and 18]]></title>
@@ -104,20 +115,9 @@
       <pubDate>Wed, 07 Oct 2026 00:00:16 +0200</pubDate>
       <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
       <ext:starts_at>Wed, 07 Oct 2026 00:00:16 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 07 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:59:59 +0200</ext:ends_at>
       <description>[Today]</description>
       <content:encoded><![CDATA[[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Diversion because of crane works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 11 Nov 2026 11:11:00 +0100</ext:ends_at>
-      <description>Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected. [Until 11.11.]</description>
-      <content:encoded><![CDATA[Because of crane works in the area of Kerschensteinergasse between Kundratstraße and Längenfeldgasse, line 63A is redirected.<br/>[Until 11.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
