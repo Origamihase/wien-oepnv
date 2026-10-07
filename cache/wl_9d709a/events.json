@@ -386,6 +386,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "56A/56B/N62: Strampfergasse",
+    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenauflassung der Linien&nbsp;</span></u></strong><span style=\"font-family: Segoe UI, sans-serif;\"><strong><u>56A, 56B und N62 in beiden Richtungen</u></strong></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Strampfergasse</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 07. Oktober 2026, etwa 11:00 Uhr, Dauer unbekannt</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stra&szlig;enbau</span></p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d26c6c6963612c560045052c175b1ec9ef04add4290e496a66c9625d2dde4a6e",
+    "pubDate": "2026-10-07T00:00:00+02:00",
+    "starts_at": "2026-10-07T00:00:00+02:00",
+    "ends_at": "2027-10-07T11:11:00+02:00",
+    "_identity": "wl|hinweis|L=56A,56B,N62|D=2026-10-07|TK=56a 56b n62 strampfergasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "57A: Haus des Meeres",
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 57A in Richtung Burgring</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Haus des Meeres</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Gumpendorfer Stra&szlig;e nach Kopernikusgasse</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Gumpendorfer Stra&szlig;e 63a</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 02. M&auml;rz 2026, etwa 10:00 Uhr f&uuml;r ca. 1 Jahr</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Hausbau</span></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -953,6 +965,21 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Verkehrsunfall",
+    "description": "Linie 2: Fahrtbehinderung in Richtung Dornbach. Voraussichtliche Dauer: 11:10 Uhr. Grund: Verkehrsunfall im Bereich Wilhelminenstraße 6.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc",
+    "pubDate": "2026-10-07T10:40:00+02:00",
+    "starts_at": "2026-10-07T10:40:00+02:00",
+    "ends_at": "2026-10-07T23:55:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-10-07|TK=2 verkehrsunfall",
+    "_wl_ids": [
+      "I20261007-0010"
+    ]
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1040,16 +1067,16 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Verkehrsunfall",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "7A: Fremder Verkehrsunfall",
+    "description": "Linie 7A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "70a21e268e6526375afca6cddbf95e3f1acffc96f35534556c62be605d2351c9",
-    "pubDate": "2026-10-07T08:50:00+02:00",
-    "starts_at": "2026-10-07T08:50:00+02:00",
-    "ends_at": "2026-10-07T10:32:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-10-07|TK=9 verkehrsunfall",
+    "guid": "a2b0eb63942e1f4021934a84d5cd0df84f51ded61fcb83e3bd269465214a9da2",
+    "pubDate": "2026-10-07T10:36:00+02:00",
+    "starts_at": "2026-10-07T10:36:00+02:00",
+    "ends_at": "2026-10-07T23:55:00+02:00",
+    "_identity": "wl|störung|L=7A|D=2026-10-07|TK=7a fremder verkehrsunfall",
     "_wl_ids": [
-      "I20261007-0007"
+      "I20261007-0009"
     ]
   },
   {
