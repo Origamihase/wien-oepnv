@@ -276,9 +276,20 @@ def test_newest_time_of_the_item_is_the_anchor() -> None:
         "Kein Betrieb. Voraussichtlich bis Betriebsschluss.",
         "Kein Betrieb. Voraussichtlich bis 19. September, etwa 01:00 Uhr.",
         "Kein Betrieb. Voraussichtlich bis 31.07.2026.",
+        # Day and month without a year: no 12:10 on the day of the message.
+        "Kein Betrieb. Voraussichtlich bis 12.10.",
         "Kein Betrieb. Voraussichtliche Dauer: Nicht absehbar.",
     ],
 )
 def test_only_a_clock_time_is_dropped(text: str) -> None:
     pub = datetime(2026, 7, 1, 8, 0, tzinfo=_VIE)
     assert build_feed._drop_passed_expected_end(text, _ticker(pub), pub, now=_at(6, 12)) == text
+
+
+def test_clock_time_with_a_full_stop_and_uhr_is_dropped() -> None:
+    """WL wrote "10.30 Uhr" twice since July; with "Uhr" it is a clock time."""
+    text = "Fahrtbehinderung. Voraussichtlich bis 10.30 Uhr. Grund: Falschparker."
+    pub = _at(6, 9, 50)
+    assert build_feed._drop_passed_expected_end(text, _ticker(pub), pub, now=_at(6, 10, 45)) == (
+        "Fahrtbehinderung. Grund: Falschparker."
+    )

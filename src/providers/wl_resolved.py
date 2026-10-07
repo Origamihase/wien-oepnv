@@ -34,6 +34,8 @@ A ticker belongs to a closed incident when all three hold:
    fährt derzeit nicht zwischen Westbahnhof und Längenfeldgasse". The
    works ticker "66A: Bauarbeiten / Busse halten Salvatorianerplatz" next to
    the closed "66A: Störung an einem Bahnübergang" fails here and stays.
+   A word the display shortened ("Gumpendorfer Str.") counts when a word
+   of the incident begins with it ("Gumpendorfer Straße").
 
 A ticker that also fits a running incident of another WL number stays. The
 resolved message shows up in one fetch only, so the tickers found then are
@@ -77,16 +79,17 @@ MAX_MEMORY_BYTES = 256 * 1024
 
 # Words a ticker uses for the kind of consequence, not for the incident.
 # Everything else a ticker says (cause, stop, street) must be in the incident.
+# "Bhf." and "ggü." only say where the bus stops; the name behind them counts.
 _STOCK_WORDS = frozenset(
     {
-        "ab", "auf", "aus", "bei", "beiden", "betrieb", "bis", "bitte", "busse",
+        "ab", "auf", "aus", "bei", "beiden", "betrieb", "bhf", "bis", "bitte", "busse",
         "dem", "den", "der", "des", "die", "das", "derzeit", "einstieg",
         "ersatzbus", "ersatzverkehr", "fahrtbehinderung", "fahrtrichtung",
         "halte", "halten", "haltestelle", "haltestellen", "hält", "im", "in",
         "kein", "keine", "linie", "linien", "mit", "nach", "nur", "richtung",
         "richtungen", "störung", "über", "umleitung", "und", "unregelmäßige",
         "intervalle", "verspätungen", "von", "vor", "wegen", "zug", "züge",
-        "zum", "zur", "zwischen",
+        "zum", "zur", "zwischen", "ggü",
     }
 )
 # Cause words WL writes differently on the display and in the long message,
@@ -101,6 +104,15 @@ _WORD_ALIASES: dict[str, frozenset[str]] = {
     "rettungseinatz": frozenset({"rettungseinsatz"}),
 }
 _WORD_RE = re.compile(r"\w+", re.UNICODE)
+# A word the display shortened, marked by its full stop with more text behind
+# it: "Umleitung über Gumpendorfer Str., Linke Wienzeile" for the incident's
+# "Gumpendorfer Straße" (14A, 2026-10-06), "Meidlinger Hauptstr.". It counts
+# as said when a word of the incident begins with it. Read as an exact word,
+# "str" was not in the incident: the two 14A tickers stayed after WL closed
+# "13A, 14A: Falschparker" and stood as a second "14A: Falschparker" in the
+# feed beside the incident's aftermath, while the 13A tickers, which spell
+# "Straße" out, left.
+_SHORTENED_RE = re.compile(r"(\w+)\.(?=\s*\S)", re.UNICODE)
 _TAG_RE = re.compile(r"<[^>]+>")
 
 # Tickers of closed incidents, remembered across fetches: key -> record.
@@ -134,9 +146,12 @@ def _lines(info: Mapping[str, Any]) -> frozenset[str]:
     return frozenset(token for token, _display in pairs)
 
 
+def _plain(*parts: object) -> str:
+    return html.unescape(_TAG_RE.sub(" ", " ".join(str(part or "") for part in parts))).casefold()
+
+
 def _words(*parts: object) -> set[str]:
-    text = html.unescape(_TAG_RE.sub(" ", " ".join(str(part or "") for part in parts)))
-    return set(_WORD_RE.findall(text.casefold()))
+    return set(_WORD_RE.findall(_plain(*parts)))
 
 
 def ticker_key(info: Mapping[str, Any]) -> str:
@@ -170,14 +185,23 @@ def _disruption_end(incident: Mapping[str, Any]) -> datetime | None:
 
 
 def _own_words(ticker: Mapping[str, Any], lines: frozenset[str]) -> set[str]:
-    words = _words(ticker.get("title"), ticker.get("description"))
-    return {word for word in words if word not in _STOCK_WORDS and word not in {line.casefold() for line in lines}}
+    """The ticker's words beyond lines and stock words; a shortened one ends in "."."""
+    text = _plain(ticker.get("title"), ticker.get("description"))
+    shortened = set(_SHORTENED_RE.findall(text))
+    skip = _STOCK_WORDS | {line.casefold() for line in lines}
+    return {f"{word}." if word in shortened else word for word in _WORD_RE.findall(text) if word not in skip}
 
 
 def _said_by(words: set[str], incident: Mapping[str, Any]) -> bool:
     """True when *incident*'s title or text holds every one of *words*."""
     told = _words(incident.get("title"), incident.get("description"), incident.get("descriptionHTML"))
-    return all(word in told or bool(_WORD_ALIASES.get(word, frozenset()) & told) for word in words)
+    return all(_told(word, told) for word in words)
+
+
+def _told(word: str, told: set[str]) -> bool:
+    if word.endswith("."):
+        return any(other.startswith(word[:-1]) for other in told)
+    return word in told or bool(_WORD_ALIASES.get(word, frozenset()) & told)
 
 
 def _belongs(ticker: Mapping[str, Any], incident: Mapping[str, Any], *, closed: bool) -> bool:
