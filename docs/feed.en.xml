@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 07 Oct 2026 08:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 09:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[9: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">70a21e268e6526375afca6cddbf95e3f1acffc96f35534556c62be605d2351c9</guid>
+      <pubDate>Wed, 07 Oct 2026 08:49:09 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 08:49:09 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 08:50:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction towards Westbahnhof S U. Expected until 09:15. Reason: traffic accident in the stop area of Guntherstraße. [Since 08:49]</description>
+      <content:encoded><![CDATA[Service obstruction towards Westbahnhof S U. Expected until 09:15. Reason: traffic accident in the stop area of Guntherstraße.<br/>[Since 08:49]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[71: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +28,8 @@
       <ext:first_seen>Wed, 07 Oct 2026 08:25:00 +0200</ext:first_seen>
       <ext:starts_at>Wed, 07 Oct 2026 08:25:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Kaiserebersdorf, Zinnergasse. Expected until 08:40. Reason: traffic accident in the stop area of St. Marx S. [Since 08:25]</description>
-      <content:encoded><![CDATA[Service obstruction towards Kaiserebersdorf, Zinnergasse. Expected until 08:40. Reason: traffic accident in the stop area of St. Marx S.<br/>[Since 08:25]]]></content:encoded>
+      <description>After a service obstruction there are different intervals. [Since 08:25]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 08:25]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11: Traffic accident]]></title>
@@ -37,10 +48,10 @@
       <guid isPermaLink="false">421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723</guid>
       <pubDate>Wed, 07 Oct 2026 08:19:00 +0200</pubDate>
       <ext:first_seen>Wed, 07 Oct 2026 08:19:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 08:23:38 +0200</ext:starts_at>
+      <ext:starts_at>Wed, 07 Oct 2026 08:19:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 07 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service from Schlachthausgasse. Service only between Burggasse, Stadthalle U and Schlachthausgasse U. Expected until 08:40. [Since 08:19]</description>
-      <content:encoded><![CDATA[Service from Schlachthausgasse. Service only between Burggasse, Stadthalle U and Schlachthausgasse U. Expected until 08:40.<br/>[Since 08:19]]]></content:encoded>
+      <description>After a service obstruction there are different intervals. [Since 08:19]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 08:19]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A: Traffic disruption]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 07 Oct 2026 23:00:00 +0200</ext:ends_at>
       <description>Bhf. Hütteldorf [Today]</description>
       <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A/7A/N62: Eibesbrunnergasse both directions]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bd6cbe1a4ea6d909912fce8527e38411ee42a952a91a70beecf363c26cd3e728</guid>
-      <pubDate>Mon, 05 Oct 2026 16:10:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 16:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 … [Until 06.11.]</description>
-      <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 …<br/>[Until 06.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

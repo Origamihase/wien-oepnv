@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_510, ftazW_511, ftazW_1018067, ftazW_508, ftazW_1351713, ftazW_509, ftazW_1018068, ftazW_1351712"
+    "trafficInfoNameList": "ftazW_510, ftazW_511, ftazW_1018067, ftazW_508, ftazW_1351713, ftazW_509, ftazW_1351712"
    }
   ],
   "poiCategoryGroups": [
@@ -2598,37 +2598,6 @@
     "time": {
      "end": "2026-10-09T00:45:00.000+0200",
      "start": "2026-10-08T20:45:00.000+0200"
-    },
-    "title": "Stadion"
-   },
-   {
-    "attributes": {
-     "ausBis": "09.10.2026 05:15",
-     "ausVon": "09.10.2026 01:15",
-     "location": "U2 Bahnsteig Richtung Seestadt - Ausgang Stadion",
-     "rbls": [
-      4266
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Stadion",
-     "status": "geplante Wartung",
-     "towards": "U2 Seestadt"
-    },
-    "description": "U2 Bahnsteig Richtung Seestadt - Ausgang Stadion",
-    "name": "ftazW_1018068",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4266
-    ],
-    "time": {
-     "end": "2026-10-09T05:15:00.000+0200",
-     "start": "2026-10-09T01:15:00.000+0200"
     },
     "title": "Stadion"
    },
