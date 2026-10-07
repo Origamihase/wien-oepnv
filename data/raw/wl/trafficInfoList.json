@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261007-0016-F01, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007"
+    "trafficInfoNameList": "I20261007-0018, I20260917-0012, I20260922-0032, I20260925-0011, I20261007-0017-F01, I20261007-0017, I20260909-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R19-136, R130-136, R45-136, R36-152, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R2558-125, R5815-671, R2025-671, R1474-149, R1475-149, R1476-149, R2923-403, R2917-0, R1150-0, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1974-466, R500-101, R1177-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R101-136, R102-136, R100-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2923-403, R2917-0, R1150-0, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R1974-466, R500-101, R1177-0, R174-170, R176-170, R333-170, R392-170, R3450-170, R346-105, R347-105, R345-105, R392-105, R3446-170, R3445-170, R346-170, R3449-170, R3448-170, R3447-170, R390-105, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,39 +203,117 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U3": "ptMetro"
+      "16A": "ptBusCity"
      }
     },
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261007-0016-F01",
+    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "Linie 16A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
+    "name": "I20261007-0017",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "U3"
+     "16A"
     ],
     "relatedLinesDetails": [
      [
       {
-       "lineId": "303",
-       "lineName": "U3",
-       "vehicleType": "ptMetro"
+       "lineId": "416",
+       "lineName": "16A",
+       "vehicleType": "ptBusCity"
       }
      ]
     ],
     "relatedStops": [
-     4935
+     5587
     ],
     "status": "resolved",
     "time": {
-     "created": "2026-10-07T14:03:00.000+0200",
-     "end": "2026-10-07T15:36:00.000+0200",
-     "lastUpdate": "2026-10-07T15:36:00.000+0200",
-     "resume": "2026-10-07T15:36:00.000+0200",
-     "start": "2026-10-07T13:41:00.000+0200"
+     "created": "2026-10-07T16:37:00.000+0200",
+     "end": "2026-10-07T16:37:00.000+0200",
+     "lastUpdate": "2026-10-07T16:37:00.000+0200",
+     "resume": "2026-10-07T16:37:00.000+0200",
+     "start": "2026-10-07T16:36:00.000+0200"
     },
-    "title": "U3: Polizeieinsatz"
+    "title": "16A: Verkehrsüberlastung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "16A": "ptBusCity"
+     }
+    },
+    "description": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261007-0017-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "16A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "416",
+       "lineName": "16A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "relatedStops": [
+     5587
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-07T16:37:00.000+0200",
+     "end": "2026-10-07T23:55:00.000+0200",
+     "lastUpdate": "2026-10-07T16:37:00.000+0200",
+     "resume": "2026-10-07T16:37:00.000+0200",
+     "start": "2026-10-07T16:36:00.000+0200"
+    },
+    "title": "16A: Verkehrsüberlastung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "5": "ptTram",
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie 5: Betrieb nur zwischen Westbahnhof S U und Nordbahnstraße. Weiterfahrt bis Bruno-Marek-Allee. Linie O: Betrieb nur zwischen Raxstraße und Praterstern S U. Voraussichtliche Dauer: 17:10 Uhr. Grund: Verkehrsunfall im Bereich Nordbahnstraße.",
+    "descriptionHTML": "Linie 5: <br>Betrieb nur zwischen Westbahnhof S U und Nordbahnstraße.<br>Weiterfahrt bis Bruno-Marek-Allee.<br>Linie O:<br>Betrieb nur zwischen Raxstraße und Praterstern S U.<br> <br>Voraussichtliche Dauer: 17:10 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Nordbahnstraße.",
+    "location": "Nordbahnstraße",
+    "name": "I20261007-0018",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "5",
+     "O"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "105",
+       "lineName": "5",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "170",
+       "lineName": "O",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-07T16:51:00.000+0200",
+     "end": "2026-10-07T23:55:00.000+0200",
+     "lastUpdate": "2026-10-07T16:57:00.000+0200",
+     "start": "2026-10-07T16:50:00.000+0200"
+    },
+    "title": "5, O: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -664,6 +742,42 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
    },
    {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R174-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     174
+    ],
+    "time": {
+     "end": "2026-10-07T17:50:00.000+0200",
+     "start": "2026-10-07T16:50:51.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R176-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     176
+    ],
+    "time": {
+     "end": "2026-10-07T17:50:00.000+0200",
+     "start": "2026-10-07T16:50:51.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -1054,6 +1168,204 @@
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
    },
    {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R333-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     333
+    ],
+    "time": {
+     "end": "2026-10-07T17:50:00.000+0200",
+     "start": "2026-10-07T16:50:53.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R3445-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     3445
+    ],
+    "time": {
+     "end": "2026-10-07T17:56:00.000+0200",
+     "start": "2026-10-07T16:57:33.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R3446-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     3446
+    ],
+    "time": {
+     "end": "2026-10-07T17:56:00.000+0200",
+     "start": "2026-10-07T16:57:33.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Praterstern",
+    "name": "R3447-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     3447
+    ],
+    "time": {
+     "end": "2026-10-07T17:57:00.000+0200",
+     "start": "2026-10-07T16:58:33.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Praterstern"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Praterstern",
+    "name": "R3448-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     3448
+    ],
+    "time": {
+     "end": "2026-10-07T17:57:00.000+0200",
+     "start": "2026-10-07T16:58:33.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Praterstern"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Praterstern",
+    "name": "R3449-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     3449
+    ],
+    "time": {
+     "end": "2026-10-07T17:57:00.000+0200",
+     "start": "2026-10-07T16:58:33.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Praterstern"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Nordwestbahnstraße",
+    "name": "R345-105",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     345
+    ],
+    "time": {
+     "end": "2026-10-07T17:59:00.000+0200",
+     "start": "2026-10-07T16:52:23.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Nordwestbahnstraße"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R3450-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     3450
+    ],
+    "time": {
+     "end": "2026-10-07T17:50:00.000+0200",
+     "start": "2026-10-07T16:51:02.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Nordwestbahnstraße",
+    "name": "R346-105",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     346
+    ],
+    "time": {
+     "end": "2026-10-07T17:59:00.000+0200",
+     "start": "2026-10-07T16:52:23.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Nordwestbahnstraße"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R346-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     346
+    ],
+    "time": {
+     "end": "2026-10-07T17:56:00.000+0200",
+     "start": "2026-10-07T16:57:54.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Nordwestbahnstraße",
+    "name": "R347-105",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     347
+    ],
+    "time": {
+     "end": "2026-10-07T17:59:00.000+0200",
+     "start": "2026-10-07T16:52:23.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Nordwestbahnstraße"
+   },
+   {
     "description": "Züge halten\nbei Linien 6 und 18",
     "name": "R36-152",
     "owner": "WL",
@@ -1070,6 +1382,60 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Züge halten\nbei Linien 6 und 18"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R390-105",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     390
+    ],
+    "time": {
+     "end": "2026-10-07T17:59:00.000+0200",
+     "start": "2026-10-07T16:59:30.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R392-105",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     392
+    ],
+    "time": {
+     "end": "2026-10-07T17:59:00.000+0200",
+     "start": "2026-10-07T16:52:29.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Praterstern",
+    "name": "R392-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     392
+    ],
+    "time": {
+     "end": "2026-10-07T17:57:00.000+0200",
+     "start": "2026-10-07T16:50:59.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Praterstern"
    },
    {
     "description": "Züge halten\nWipplingerstr 39",
