@@ -1082,14 +1082,17 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Verkehrsunfall Betrieb ab Nordwestbahnstraße",
-    "description": "Verkehrsunfall\nBetrieb ab Nordwestbahnstraße",
+    "title": "63A: Verkehrsunfall",
+    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f880c799cdd65952ef75a36b010f0bab0e2e9d3c700a0e4f1307f911e91977a1",
-    "pubDate": "2026-10-07T16:52:23+02:00",
-    "starts_at": "2026-10-07T16:52:23+02:00",
-    "ends_at": "2026-10-07T17:59:00+02:00",
-    "_identity": "wl|störung|L=5|D=2026-10-07|TK=verkehrsunfall betrieb ab nordwestbahnstrasse"
+    "guid": "256dd0cdb2b1c0eb23186e5c51158dfe6e5a1b6abe24847907b9a52340324733",
+    "pubDate": "2026-10-07T17:41:00+02:00",
+    "starts_at": "2026-10-07T17:41:00+02:00",
+    "ends_at": "2026-10-07T23:55:00+02:00",
+    "_identity": "wl|störung|L=63A|D=2026-10-07|TK=63a verkehrsunfall",
+    "_wl_ids": [
+      "I20261007-0020"
+    ]
   },
   {
     "source": "Wiener Linien",
@@ -1114,6 +1117,21 @@
     "starts_at": "2026-10-07T00:00:15+02:00",
     "ends_at": "2026-10-07T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-10-07|TK=einstieg leberstrasse vor s bahn gebäude"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "80A: Verkehrsüberlastung",
+    "description": "Linie 80A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3f7a7f7b8b3f9de12c85a091d1ed2338922b50f5fcb2d8dce95e5e6ee14524ab",
+    "pubDate": "2026-10-07T17:40:00+02:00",
+    "starts_at": "2026-10-07T17:40:00+02:00",
+    "ends_at": "2026-10-07T23:55:00+02:00",
+    "_identity": "wl|störung|L=80A|D=2026-10-07|TK=80a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261007-0019"
+    ]
   },
   {
     "source": "Wiener Linien",
