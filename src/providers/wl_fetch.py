@@ -1156,6 +1156,19 @@ def _fold_display_tickers(buckets: dict[str, dict[str, Any]]) -> None:
 # „5/12/37/38/40/41/42: Gleisbauarbeiten“ jede Nacht neu nach vorn.
 # „Silvesterlauf“ und „Silvesterpfad“ fasst heute ``deduplicate_fuzzy`` im
 # Feed-Bau zusammen (``tests/test_feed_merge.py``).
+#
+# Eine Anzeigetafel-Kurzmeldung deckt nie eine ausführliche Störungsmeldung
+# ab (Prüfung der verworfenen Meldungen, 2026-10-07). Ihr Titel ist die
+# Ursache, und die steht auch im Titel der ausführlichen; nach Wörtern
+# „deckten“ deshalb zwei Kurzmeldungen „10: Fahrtbehinderung wegen
+# Polizeieinsatz“ und „60: Polizeieinsatz Betrieb ab Anschützgasse“ die
+# Meldung „10, 60: Polizeieinsatz“ ab, und E entfernte sie samt
+# „Linie 10: Betrieb nur zwischen Dornbach und Linzer Straße …
+# Voraussichtliche Dauer: 09:50 Uhr“ (Rohdaten 2026-10-05 09:31 MESZ; der
+# Feed zeigte „10“ und „60“ auf zwei Plätzen). Seit 04.10. traf das fünf
+# Störungen (10/60, D/71, 2/12, 13A/14A, 11/O) und täglich die
+# Baustellenmeldungen 25/26/27 und 46/49/52. Was Kurzmeldungen neben ihrer
+# Störung zeigen, entscheidet der Feed-Bau (``_merge_wl_ticker_clusters``).
 
 
 _H2_RE = re.compile(r"<h2[^>]*>(.*?)</h2>", re.IGNORECASE | re.DOTALL)
@@ -1206,6 +1219,16 @@ def _covers_stop_notice(item: dict[str, Any], others: Sequence[dict[str, Any]]) 
     return any(other.get("_stop") == stop for other in others)
 
 
+def _is_display_ticker(item: dict[str, Any]) -> bool:
+    """True für eine Störung nur aus Anzeigetafel-Kurzmeldungen (keine WL-Nummer)."""
+    return item.get("category") == "Störung" and not item.get("_wl_ids")
+
+
+def _may_cover(cover: dict[str, Any], item: dict[str, Any]) -> bool:
+    """False, wenn *cover* eine Kurzmeldung und *item* eine ausführliche Meldung ist."""
+    return not (item.get("_wl_ids") and _is_display_ticker(cover))
+
+
 def _says_nothing_beyond(item: dict[str, Any], others: Sequence[dict[str, Any]]) -> bool:
     """True, wenn der Titel von *item* ganz in den Texten von *others* steht."""
     text = " ".join(str(other.get("_text", "")) for other in others)
@@ -1236,7 +1259,9 @@ def _drop_covered_aggregates(items: list[dict[str, Any]]) -> list[dict[str, Any]
     ein Hinweis je Linie eine echte Störung; ohne die Zeitprüfung löschten
     zeitlich getrennte Einzelmeldungen ein Aggregat für einen dritten
     Zeitraum; ohne den Wortvergleich löschte „1: Rettungseinsatz“ neben
-    „2: Falschparker“ die Meldung „1/2: Demonstration“.
+    „2: Falschparker“ die Meldung „1/2: Demonstration“. Eine
+    Anzeigetafel-Kurzmeldung zählt für eine ausführliche Störung nicht als
+    Einzelmeldung (:func:`_may_cover`).
     """
     singles: dict[tuple[Any, str], list[dict[str, Any]]] = {}
     for it in items:
@@ -1252,7 +1277,8 @@ def _drop_covered_aggregates(items: list[dict[str, Any]]) -> list[dict[str, Any]
                 [
                     single
                     for single in singles.get((it.get("category"), ln), [])
-                    if _intervals_overlap(
+                    if _may_cover(single, it)
+                    and _intervals_overlap(
                         it.get("starts_at"), it.get("ends_at"),
                         single.get("starts_at"), single.get("ends_at"),
                     )
@@ -1276,7 +1302,8 @@ def _drop_covered_subsets(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     trifft die Anzeigetafel-Kurzmeldungen einer Baustelle
     („37: Betrieb ab Nußdorfer Straße“ mit „Gleisbauarbeiten“ in der ersten
     Zeile neben „5/12/37/38/40/41/42: Gleisbauarbeiten“): Sie sagen mit
-    anderen Worten, was die Baustellenmeldung ausführlich sagt.
+    anderen Worten, was die Baustellenmeldung ausführlich sagt. Eine
+    ausführliche Störung entfernt keine Kurzmeldung (:func:`_may_cover`).
     """
     removed: set[int] = set()
     for i, item_a in enumerate(items):
@@ -1288,6 +1315,8 @@ def _drop_covered_subsets(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 continue
             lines_b = item_b.get("_lines_set") or set()
             if not (lines_a < lines_b and item_a.get("category") == item_b.get("category")):
+                continue
+            if not _may_cover(item_b, item_a):
                 continue
             if not _intervals_overlap(
                 item_a.get("starts_at"), item_a.get("ends_at"),
