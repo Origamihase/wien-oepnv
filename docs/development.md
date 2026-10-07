@@ -290,6 +290,11 @@ ist als dessen Beginn (WL trägt die ausführliche Meldung oft nach den
 Kurzmeldungen ein und datiert sie zurück). Eine neuere Meldung ist eine
 neue Störung, die eine laufende aufnimmt („52: Rettungseinsatz“ am 05.10.
 mit einer Kurzmeldung vom 30.09.): Sie behält ihre GUID und steht vorn.
+Tragen beide Seiten WL-Störungsnummern und teilen keine, ist es ebenfalls
+eine neue Störung (`_other_incident`): Sie übernimmt weder GUID noch Beginn.
+„13A/14A: Falschparker“ am 06.10.: `I20261006-0030` (Beginn 17:22) endete,
+`I20261006-0033` (Beginn 17:44) kam unter derselben GUID und zeigte ab 18:30
+„[Seit 17:22]“.
 Ein Eintrag mehrerer Störungen einer Linie zählt nur die Meldungen der
 neuesten; endet sie, kehrt er zur GUID der älteren zurück. Der erste Lauf
 nach der Änderung schreibt nur die Notizen und ändert keine GUID, es gibt

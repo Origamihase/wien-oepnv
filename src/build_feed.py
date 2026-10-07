@@ -8628,7 +8628,30 @@ def _continues(entry: dict[str, Any] | None, item: FeedItem, now_utc: datetime) 
     """
     seen = _noted_recently(entry, now_utc)
     published = _parse_datetime(item.get("pubDate"))
-    return seen is not None and isinstance(published, datetime) and _to_utc(published) <= seen
+    return (
+        seen is not None
+        and isinstance(published, datetime)
+        and _to_utc(published) <= seen
+        and not _other_incident(entry, item)
+    )
+
+
+def _other_incident(entry: dict[str, Any] | None, item: FeedItem) -> bool:
+    """Whether WL numbers *item* and the item *entry* noted as different incidents.
+
+    Both carry incident numbers and share none: WL closed one disruption
+    and opened another for the same lines. "13A/14A: Falschparker" on
+    2026-10-06: ``I20261006-0030`` (start 17:22) ended, ``I20261006-0033``
+    (start 17:44) took its GUID and showed "[Seit 17:22]". The new one
+    keeps its own begin. Without a number on either side (display tickers)
+    nothing says so.
+    """
+    members = entry.get("members") if isinstance(entry, dict) else None
+    if not isinstance(members, list):
+        return False
+    noted = {m for m in members if isinstance(m, str) and m.startswith("wl:")}
+    own = {m for m in member_guids(item) if m.startswith("wl:")}
+    return bool(noted) and bool(own) and noted.isdisjoint(own)
 
 
 def _continued_by(entry: dict[str, Any], item: FeedItem) -> bool:
@@ -8641,8 +8664,11 @@ def _continued_by(entry: dict[str, Any], item: FeedItem) -> bool:
     Verkehrsunfall", created 10:54 with start 10:40, tickers from 10:43).
     A newer message is a new incident that took up a running one ("52:
     Rettungseinsatz" on 2026-10-05 with a ticker of 30.09.): it keeps its
-    own GUID and opens the feed.
+    own GUID and opens the feed. So does one WL numbers as another incident
+    (``_other_incident``).
     """
+    if _other_incident(entry, item):
+        return False
     members = entry.get("members")
     if isinstance(members, list) and str(item.get("guid") or "") in members:
         return True

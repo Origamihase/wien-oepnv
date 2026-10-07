@@ -5,6 +5,14 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Feed: eine neue WL-Störung erbt nicht den Beginn der beendeten
+  (2026-10-07)**: Nachtrag zu „Eine Meldung, eine GUID“. Am 06.10. endete
+  „13A/14A: Falschparker“ `I20261006-0030` (17:22), WL eröffnete
+  `I20261006-0033` (17:44); unter derselben GUID zeigte der Feed ab 18:30
+  „[Seit 17:22]“. Tragen Eintrag und Vorgänger WL-Störungsnummern ohne
+  gemeinsame, übernimmt die Meldung weder GUID noch Beginn
+  (`_other_incident`). Nachgespielt über die 38 Läufe vom 06.10. 16:01 bis
+  07.10. 08:00: nur diese Zeitzeile ändert sich („[Seit 17:44]“).
 * **Feed: eine verstrichene „Voraussichtlich bis <Uhrzeit>“ fällt weg
   (2026-10-06)**: Betreiberentscheidung „Weglassen“. In 40 von 184
   Feed-Ständen seit Juli war die von WL genannte Uhrzeit schon vorbei (U6
