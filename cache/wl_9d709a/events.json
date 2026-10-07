@@ -1040,18 +1040,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "48A: Fremdunfall Betrieb ab Pfenninggeldgasse",
-    "description": "Fremdunfall\nBetrieb ab Pfenninggeldgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "bdf2da1392f6989392280a15b0588a0c5490782479d2d419154e7b546812f418",
-    "pubDate": "2026-10-07T19:33:42+02:00",
-    "starts_at": "2026-10-07T19:50:13+02:00",
-    "ends_at": "2026-10-07T22:00:00+02:00",
-    "_identity": "wl|störung|L=48A|D=2026-10-07|TK=fremdunfall betrieb ab pfenninggeldgasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "52: Züge halten bei Linien 6 und 18",
     "description": "Züge halten\nbei Linien 6 und 18",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1060,21 +1048,6 @@
     "starts_at": "2026-10-07T00:00:16+02:00",
     "ends_at": "2026-10-07T23:59:59+02:00",
     "_identity": "wl|störung|L=52|D=2026-10-07|TK=züge halten bei linien 6 und 18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "63A: Verkehrsstörung",
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "4775bfa98a369b780f1a09f5420484150395f83efcb423571af6311708899658",
-    "pubDate": "2026-10-07T20:24:00+02:00",
-    "starts_at": "2026-10-07T20:24:00+02:00",
-    "ends_at": "2026-10-07T23:55:00+02:00",
-    "_identity": "wl|störung|L=63A|D=2026-10-07|TK=63a verkehrsstörung",
-    "_wl_ids": [
-      "I20261007-0026"
-    ]
   },
   {
     "source": "Wiener Linien",

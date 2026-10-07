@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261007-0026, I20261007-0025-F01, I20260925-0011, I20260909-0007, I20261007-0024-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261007-0026, I20260925-0011, I20260909-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R100-136, R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2923-403, R2917-0, R1150-0, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R1974-466, R500-101, R1177-0, R1429-448, R1426-448, R1432-448, R1431-448, R1430-448, R1401-448, R1375-448, R1406-448, R1428-448, R897-448, R1403-448, R1408-448, R1407-448, R1405-448, R1404-448, R1402-448, R1595-463, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R130-136, R119-136, R19-136, R36-152, R45-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R2558-125, R5815-671, R2025-671, R1473-149, R1474-149, R1475-149, R1476-149, R2923-403, R2917-0, R1150-0, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1974-466, R500-101, R1177-0, R1595-463, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,76 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "52": "ptTram"
-     }
-    },
-    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Siebensterngasse 21",
-    "name": "I20261007-0024-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "152",
-       "lineName": "52",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-07T20:01:00.000+0200",
-     "end": "2026-10-07T20:44:00.000+0200",
-     "lastUpdate": "2026-10-07T20:44:00.000+0200",
-     "resume": "2026-10-07T20:44:00.000+0200",
-     "start": "2026-10-07T19:20:00.000+0200"
-    },
-    "title": "52: Feuerwehreinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "48A": "ptBusCity"
-     }
-    },
-    "description": "Linie 48A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 48A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Gablenzgasse / Arltgasse",
-    "name": "I20261007-0025-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "448",
-       "lineName": "48A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-07T20:00:00.000+0200",
-     "end": "2026-10-07T20:41:00.000+0200",
-     "lastUpdate": "2026-10-07T20:41:00.000+0200",
-     "resume": "2026-10-07T20:41:00.000+0200",
-     "start": "2026-10-07T19:27:00.000+0200"
-    },
-    "title": "48A: Fremder Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "63A": "ptBusCity"
      }
     },
@@ -294,12 +224,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-07T20:24:00.000+0200",
-     "end": "2026-10-07T23:55:00.000+0200",
-     "lastUpdate": "2026-10-07T20:24:00.000+0200",
-     "resume": "2026-10-07T20:24:00.000+0200",
+     "end": "2026-10-07T21:50:00.000+0200",
+     "lastUpdate": "2026-10-07T21:50:00.000+0200",
+     "resume": "2026-10-07T21:50:00.000+0200",
      "start": "2026-10-07T20:24:00.000+0200"
     },
     "title": "63A: Verkehrsstörung"
@@ -513,276 +443,6 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "description": "Fremdunfall\nBetrieb ab Pfenninggeldgasse",
-    "name": "R1375-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1375
-    ],
-    "time": {
-     "end": "2026-10-07T22:00:00.000+0200",
-     "start": "2026-10-07T19:33:47.000+0200"
-    },
-    "title": "Fremdunfall\nBetrieb ab Pfenninggeldgasse"
-   },
-   {
-    "description": "Fremdunfall\nBetrieb ab Pfenninggeldgasse",
-    "name": "R1401-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1401
-    ],
-    "time": {
-     "end": "2026-10-07T22:00:00.000+0200",
-     "start": "2026-10-07T19:33:42.000+0200"
-    },
-    "title": "Fremdunfall\nBetrieb ab Pfenninggeldgasse"
-   },
-   {
-    "description": "Fremdunfall\nBetrieb ab Pfenninggeldgasse",
-    "name": "R1402-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1402
-    ],
-    "time": {
-     "end": "2026-10-07T22:00:00.000+0200",
-     "start": "2026-10-07T19:50:13.000+0200"
-    },
-    "title": "Fremdunfall\nBetrieb ab Pfenninggeldgasse"
-   },
-   {
-    "description": "Fremdunfall\nBetrieb ab Pfenninggeldgasse",
-    "name": "R1403-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1403
-    ],
-    "time": {
-     "end": "2026-10-07T22:00:00.000+0200",
-     "start": "2026-10-07T19:50:13.000+0200"
-    },
-    "title": "Fremdunfall\nBetrieb ab Pfenninggeldgasse"
-   },
-   {
-    "description": "Fremdunfall\nBetrieb ab Pfenninggeldgasse",
-    "name": "R1404-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1404
-    ],
-    "time": {
-     "end": "2026-10-07T22:00:00.000+0200",
-     "start": "2026-10-07T19:50:13.000+0200"
-    },
-    "title": "Fremdunfall\nBetrieb ab Pfenninggeldgasse"
-   },
-   {
-    "description": "Fremdunfall\nBetrieb ab Pfenninggeldgasse",
-    "name": "R1405-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1405
-    ],
-    "time": {
-     "end": "2026-10-07T22:00:00.000+0200",
-     "start": "2026-10-07T19:50:13.000+0200"
-    },
-    "title": "Fremdunfall\nBetrieb ab Pfenninggeldgasse"
-   },
-   {
-    "description": "Fremdunfall\nBetrieb ab Pfenninggeldgasse",
-    "name": "R1406-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1406
-    ],
-    "time": {
-     "end": "2026-10-07T22:00:00.000+0200",
-     "start": "2026-10-07T19:42:43.000+0200"
-    },
-    "title": "Fremdunfall\nBetrieb ab Pfenninggeldgasse"
-   },
-   {
-    "description": "Fremdunfall\nBetrieb ab Pfenninggeldgasse",
-    "name": "R1407-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1407
-    ],
-    "time": {
-     "end": "2026-10-07T22:00:00.000+0200",
-     "start": "2026-10-07T19:50:13.000+0200"
-    },
-    "title": "Fremdunfall\nBetrieb ab Pfenninggeldgasse"
-   },
-   {
-    "description": "Fremdunfall\nBetrieb ab Pfenninggeldgasse",
-    "name": "R1408-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1408
-    ],
-    "time": {
-     "end": "2026-10-07T22:00:00.000+0200",
-     "start": "2026-10-07T19:50:13.000+0200"
-    },
-    "title": "Fremdunfall\nBetrieb ab Pfenninggeldgasse"
-   },
-   {
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R1426-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1426
-    ],
-    "time": {
-     "end": "2026-10-07T22:00:00.000+0200",
-     "start": "2026-10-07T19:26:41.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R1428-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1428
-    ],
-    "time": {
-     "end": "2026-10-07T22:00:00.000+0200",
-     "start": "2026-10-07T19:48:13.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R1429-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1429
-    ],
-    "time": {
-     "end": "2026-10-07T22:00:00.000+0200",
-     "start": "2026-10-07T19:26:41.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R1430-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1430
-    ],
-    "time": {
-     "end": "2026-10-07T22:00:00.000+0200",
-     "start": "2026-10-07T19:26:41.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R1431-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1431
-    ],
-    "time": {
-     "end": "2026-10-07T22:00:00.000+0200",
-     "start": "2026-10-07T19:26:41.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R1432-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1432
-    ],
-    "time": {
-     "end": "2026-10-07T22:00:00.000+0200",
-     "start": "2026-10-07T19:26:41.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -1476,24 +1136,6 @@
      "start": "2026-10-07T00:00:17.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
-   },
-   {
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R897-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     897
-    ],
-    "time": {
-     "end": "2026-10-07T22:00:00.000+0200",
-     "start": "2026-10-07T19:48:17.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
