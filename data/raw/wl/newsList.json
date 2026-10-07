@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_511, ftazW_1018067, ftazW_508, ftazW_1351713, ftazW_509, ftazW_1018068, ftazW_1351712"
+    "trafficInfoNameList": "ftazW_1018067, ftazW_508, ftazW_1351713, ftazW_509, ftazW_1018068, ftazW_1351712"
    }
   ],
   "poiCategoryGroups": [
@@ -2706,39 +2706,6 @@
      "start": "2026-10-09T01:15:00.000+0200"
     },
     "title": "Jägerstraße"
-   },
-   {
-    "attributes": {
-     "ausBis": "08.10.2026 05:15",
-     "ausVon": "08.10.2026 01:15",
-     "location": "U6 Mittelbahnsteig - Ausgang Dresdner Straße",
-     "rbls": [
-      4642,
-      4649
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Dresdner Straße",
-     "status": "geplante Wartung",
-     "towards": "U6 beide Richtungen"
-    },
-    "description": "U6 Mittelbahnsteig - Ausgang Dresdner Straße",
-    "name": "ftazW_511",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4642,
-     4649
-    ],
-    "time": {
-     "end": "2026-10-08T05:15:00.000+0200",
-     "start": "2026-10-08T01:15:00.000+0200"
-    },
-    "title": "Dresdner Straße"
    }
   ]
  },
