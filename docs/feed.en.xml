@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 08 Oct 2026 03:30:41 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 04:00:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[N8: Track construction works]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Fri, 09 Oct 2026 17:00:00 +0200</ext:ends_at>
       <description>Because of a demonstration, transport is taking place. [On Fri 09.10.]</description>
       <content:encoded><![CDATA[Because of a demonstration, transport is taking place.<br/>[On Fri 09.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Service from Flurschützstraße, Längenfeldgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">58579d32bf88aa85dfe0b8d4fd4a85ae0116590d0bb5b72e193d4d54e944f44c</guid>
-      <pubDate>Wed, 07 Oct 2026 20:09:40 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 22:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 20:09:40 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 04:00:00 +0200</ext:ends_at>
-      <description>Reason: construction works. [Today]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N20: Construction works, track construction works]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction. [Until 26.10.]</description>
       <content:encoded><![CDATA[Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction.<br/>[Until 26.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Neue Donau, no stopping direction Floridsdorf]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">747d54fbd4c0aad685b21596a0c44cb67d41165e556ee43b1bc3e8636920f551</guid>
+      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Sun, 04 Oct 2026 16:30:37 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Due to renovation of the platform, line U6 stops the station Neue Donau U only in the direction of Siebenhirten U. You can reach Neue Donau with U6 from Floridsdorf. [Until 31.12.]</description>
+      <content:encoded><![CDATA[Due to renovation of the platform, line U6 stops the station Neue Donau U only in the direction of Siebenhirten U. You can reach Neue Donau with U6 from Floridsdorf.<br/>[Until 31.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
