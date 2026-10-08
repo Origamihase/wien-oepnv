@@ -3,95 +3,95 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R132-101|2026-10-08T15:05:43.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R132-101",
+   "key": "R1475-109|2026-10-08T16:10:20.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R1475-109",
    "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-08T16:05:00.000+0200",
-   "incident": "I20261008-0019-F02"
+   "end": "2026-10-08T17:09:00.000+0200",
+   "incident": "I20261008-0021"
   },
   {
-   "key": "R163-170|2026-10-08T15:07:15.000+0200|Falschparker\nBetrieb ab Praterstern S U ",
-   "name": "R163-170",
-   "title": "Falschparker\nBetrieb ab Praterstern S U ",
-   "end": "2026-10-08T16:05:00.000+0200",
-   "incident": "I20261008-0019"
-  },
-  {
-   "key": "R164-101|2026-10-08T15:04:44.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R164-101",
+   "key": "R1476-109|2026-10-08T16:10:20.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R1476-109",
    "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-08T16:04:00.000+0200",
-   "incident": "I20261008-0019-F02"
+   "end": "2026-10-08T17:09:00.000+0200",
+   "incident": "I20261008-0021"
   },
   {
-   "key": "R164-170|2026-10-08T15:04:14.000+0200|Falschparker\nBetrieb ab Praterstern S U ",
-   "name": "R164-170",
-   "title": "Falschparker\nBetrieb ab Praterstern S U ",
-   "end": "2026-10-08T16:05:00.000+0200",
-   "incident": "I20261008-0019"
+   "key": "R1925-111|2026-10-08T16:07:21.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R1925-111",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-08T17:07:00.000+0200",
+   "incident": "I20261008-0022"
   },
   {
-   "key": "R165-101|2026-10-08T15:04:44.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R165-101",
+   "key": "R1926-111|2026-10-08T16:07:21.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R1926-111",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-08T17:07:00.000+0200",
+   "incident": "I20261008-0022"
+  },
+  {
+   "key": "R223-109|2026-10-08T15:59:20.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R223-109",
    "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-08T16:04:00.000+0200",
-   "incident": "I20261008-0019-F02"
+   "end": "2026-10-08T16:58:00.000+0200",
+   "incident": "I20261008-0021"
   },
   {
-   "key": "R169-101|2026-10-08T15:10:15.000+0200|Falschparker\nBetrieb ab Hintere Zollamtsstraße",
-   "name": "R169-101",
-   "title": "Falschparker\nBetrieb ab Hintere Zollamtsstraße",
-   "end": "2026-10-08T16:09:00.000+0200",
-   "incident": "I20261008-0019-F02"
+   "key": "R2254-111|2026-10-08T16:07:23.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R2254-111",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-08T17:07:00.000+0200",
+   "incident": "I20261008-0022"
   },
   {
-   "key": "R172-101|2026-10-08T15:10:15.000+0200|Falschparker\nBetrieb ab Hintere Zollamtsstraße",
-   "name": "R172-101",
-   "title": "Falschparker\nBetrieb ab Hintere Zollamtsstraße",
-   "end": "2026-10-08T16:09:00.000+0200",
-   "incident": "I20261008-0019-F02"
-  },
-  {
-   "key": "R173-101|2026-10-08T15:10:15.000+0200|Falschparker\nBetrieb ab Hintere Zollamtsstraße",
-   "name": "R173-101",
-   "title": "Falschparker\nBetrieb ab Hintere Zollamtsstraße",
-   "end": "2026-10-08T16:09:00.000+0200",
-   "incident": "I20261008-0019-F02"
-  },
-  {
-   "key": "R174-170|2026-10-08T15:09:15.000+0200|Falschparker\nZüge halten bei Li. 1 Ri. Prater-Hauptallee",
-   "name": "R174-170",
-   "title": "Falschparker\nZüge halten bei Li. 1 Ri. Prater-Hauptallee",
-   "end": "2026-10-08T16:08:00.000+0200",
-   "incident": "I20261008-0019"
-  },
-  {
-   "key": "R311-170|2026-10-08T15:04:13.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R311-170",
+   "key": "R524-109|2026-10-08T15:59:18.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R524-109",
    "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-08T16:03:00.000+0200",
-   "incident": "I20261008-0019"
+   "end": "2026-10-08T16:58:00.000+0200",
+   "incident": "I20261008-0021"
   },
   {
-   "key": "R333-170|2026-10-08T15:08:44.000+0200|Falschparker\nBetrieb ab Hintere Zollamtsstraße",
-   "name": "R333-170",
-   "title": "Falschparker\nBetrieb ab Hintere Zollamtsstraße",
-   "end": "2026-10-08T16:07:00.000+0200",
-   "incident": "I20261008-0019"
-  },
-  {
-   "key": "R3450-170|2026-10-08T15:08:46.000+0200|Falschparker\nBetrieb ab Hintere Zollamtsstraße",
-   "name": "R3450-170",
-   "title": "Falschparker\nBetrieb ab Hintere Zollamtsstraße",
-   "end": "2026-10-08T16:07:00.000+0200",
-   "incident": "I20261008-0019"
-  },
-  {
-   "key": "R346-170|2026-10-08T15:04:13.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R346-170",
+   "key": "R526-109|2026-10-08T15:59:18.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R526-109",
    "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-08T16:03:00.000+0200",
-   "incident": "I20261008-0019"
+   "end": "2026-10-08T16:58:00.000+0200",
+   "incident": "I20261008-0021"
+  },
+  {
+   "key": "R530-109|2026-10-08T15:59:18.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R530-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T16:58:00.000+0200",
+   "incident": "I20261008-0021"
+  },
+  {
+   "key": "R531-109|2026-10-08T16:02:48.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R531-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T17:02:00.000+0200",
+   "incident": "I20261008-0021"
+  },
+  {
+   "key": "R532-109|2026-10-08T16:02:48.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R532-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T17:02:00.000+0200",
+   "incident": "I20261008-0021"
+  },
+  {
+   "key": "R533-109|2026-10-08T16:02:48.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R533-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T17:02:00.000+0200",
+   "incident": "I20261008-0021"
+  },
+  {
+   "key": "R556-109|2026-10-08T15:59:18.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R556-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T16:58:00.000+0200",
+   "incident": "I20261008-0021"
   }
  ]
 }

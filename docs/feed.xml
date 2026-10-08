@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 08 Oct 2026 16:02:46 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 16:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[O: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">011d5e8498133bc00e1bdf3e9fc71ce953ee78ab3f1b6b1f28b0860bcee4fb84</guid>
+      <pubDate>Thu, 08 Oct 2026 16:10:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 16:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 16:10:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 16:10]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 16:10]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[35A: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,26 +32,15 @@
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 15:48]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[O: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a90305646f013b3987fb55ef5dab8d20d35b0e58b3f412f792bb39c48c2fa5a8</guid>
-      <pubDate>Thu, 08 Oct 2026 15:02:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 15:02:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 15:02:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 15:02]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 15:02]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[U3: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3</guid>
-      <pubDate>Thu, 08 Oct 2026 14:39:00 +0200</pubDate>
+      <pubDate>Thu, 08 Oct 2026 16:17:00 +0200</pubDate>
       <ext:first_seen>Thu, 08 Oct 2026 14:39:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 14:39:00 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 08 Oct 2026 16:17:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 14:39]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 14:39]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 16:17]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 16:17]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[9: Falschparker]]></title>
@@ -48,10 +48,10 @@
       <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
       <pubDate>Thu, 08 Oct 2026 15:59:00 +0200</pubDate>
       <ext:first_seen>Thu, 08 Oct 2026 13:44:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 15:59:20 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 08 Oct 2026 15:59:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtlich bis 16:25 Uhr. Grund: Falschparker im Bereich Hormayrgasse. [Seit 15:59]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtlich bis 16:25 Uhr. Grund: Falschparker im Bereich Hormayrgasse.<br/>[Seit 15:59]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 15:59]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 15:59]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[72A: Haidestraße S]]></title>
