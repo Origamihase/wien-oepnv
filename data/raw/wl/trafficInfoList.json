@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261008-0005, I20261008-0005-F01, I20261008-0005-F02, I20261008-0009, I20261008-0008, I20261008-0003, I20260925-0011, I20261008-0004, I20261008-0006, I20260909-0007, I20261008-0010-F01, I20261008-0010, I20261008-0002-F01, I20261008-0002-F02, I20261008-0002, I20261008-0008-F01, I20261008-0002-F03"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261008-0003, I20260925-0011, I20261008-0004, I20260909-0007, I20261008-0010-F01, I20261008-0010, I20261008-0002-F01, I20261008-0002-F02, I20261008-0002, I20261008-0008-F01, I20261008-0002-F03, I20261008-0006, I20261008-0009"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R45-136, R100-136, R36-152, R102-136, R101-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R1177-0, R1974-466, R500-101, R422-106, R422-111, R423-111, R405-106, R404-106, R418-106, R421-106, R420-106, R421-111, R420-111, R762-414, R761-414, R764-414, R1616-162, R1728-162, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R45-136, R100-136, R36-152, R102-136, R101-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R1177-0, R1974-466, R500-101, R422-106, R423-111, R422-111, R405-106, R404-106, R420-106, R421-106, R418-106, R420-111, R421-111, R762-414, R761-414, R764-414, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -425,118 +425,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "68A": "ptBusCity",
-      "68B": "ptBusCity"
-     }
-    },
-    "description": "Die Linie 68B wird in Richtung Reumannplatz U zwischen Eisenstadtplatz und Reumannplatz U über Laaerberg Straße umgeleitet. Die Linie 68A wird in Richtung Reumannplatz U zwischen Eisenstadtplatz und Reumannplatz U über Laaerberg Straße umgeleitet. Voraussichtliche Dauer: 09:00 Uhr. Grund: Rettungseinsatz im Bereich Quellenstraße 107.",
-    "descriptionHTML": "Die Linie 68B wird in Richtung Reumannplatz U zwischen Eisenstadtplatz und Reumannplatz U über Laaerberg Straße umgeleitet.<br>Die Linie 68A wird in Richtung Reumannplatz U zwischen Eisenstadtplatz und Reumannplatz U über Laaerberg Straße umgeleitet.<br> <br>Voraussichtliche Dauer: 09:00 Uhr.<br><br>Grund: Rettungseinsatz im Bereich Quellenstraße 107.",
-    "location": "Quellenstraße  107",
-    "name": "I20261008-0005",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "68A",
-     "68B"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "468",
-       "lineName": "68A",
-       "vehicleType": "ptBusCity"
-      },
-      {
-       "lineId": "268",
-       "lineName": "68B",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T07:44:00.000+0200",
-     "end": "2026-10-08T08:41:00.000+0200",
-     "lastUpdate": "2026-10-08T08:41:00.000+0200",
-     "resume": "2026-10-08T08:41:00.000+0200",
-     "start": "2026-10-08T07:41:00.000+0200"
-    },
-    "title": "68A, 68B: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "68A": "ptBusCity"
-     }
-    },
-    "description": "Linie 68A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 68A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Quellenstraße  107",
-    "name": "I20261008-0005-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "68A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "468",
-       "lineName": "68A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T08:41:00.000+0200",
-     "end": "2026-10-08T08:41:00.000+0200",
-     "lastUpdate": "2026-10-08T08:41:00.000+0200",
-     "resume": "2026-10-08T08:41:00.000+0200",
-     "start": "2026-10-08T07:41:00.000+0200"
-    },
-    "title": "68A: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "68B": "ptBusCity"
-     }
-    },
-    "description": "Linie 68B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 68B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Quellenstraße  107",
-    "name": "I20261008-0005-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "68B"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "268",
-       "lineName": "68B",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T08:41:00.000+0200",
-     "end": "2026-10-08T08:41:00.000+0200",
-     "lastUpdate": "2026-10-08T08:41:00.000+0200",
-     "resume": "2026-10-08T08:41:00.000+0200",
-     "start": "2026-10-08T07:41:00.000+0200"
-    },
-    "title": "68B: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U6": "ptMetro"
      }
     },
@@ -558,52 +446,15 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-08T07:51:00.000+0200",
-     "end": "2026-10-08T23:55:00.000+0200",
-     "lastUpdate": "2026-10-08T07:51:00.000+0200",
-     "resume": "2026-10-08T07:50:00.000+0200",
+     "end": "2026-10-08T09:45:00.000+0200",
+     "lastUpdate": "2026-10-08T09:45:00.000+0200",
+     "resume": "2026-10-08T09:45:00.000+0200",
      "start": "2026-10-08T07:50:00.000+0200"
     },
     "title": "U6: Verunreinigung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "62": "ptTram"
-     }
-    },
-    "description": "Linie 62: Fahrtbehinderung in Richtung Lainz, Wolkersbergenstraße. Voraussichtliche Dauer: 09:00 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Hofwiesengasse.",
-    "descriptionHTML": "Linie 62:<br>Fahrtbehinderung in Richtung Lainz, Wolkersbergenstraße.<br> <br>Voraussichtliche Dauer: 09:00 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Hofwiesengasse.",
-    "name": "I20261008-0008",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "162",
-       "lineName": "62",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     1728
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T08:37:00.000+0200",
-     "end": "2026-10-08T08:46:00.000+0200",
-     "lastUpdate": "2026-10-08T08:46:00.000+0200",
-     "resume": "2026-10-08T08:46:00.000+0200",
-     "start": "2026-10-08T08:33:00.000+0200"
-    },
-    "title": "62: Rettungseinsatz"
    },
    {
     "attributes": {
@@ -666,12 +517,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-08T08:44:00.000+0200",
-     "end": "2026-10-08T23:55:00.000+0200",
-     "lastUpdate": "2026-10-08T08:46:00.000+0200",
-     "resume": "2026-10-08T08:44:00.000+0200",
+     "end": "2026-10-08T09:46:00.000+0200",
+     "lastUpdate": "2026-10-08T09:46:00.000+0200",
+     "resume": "2026-10-08T09:46:00.000+0200",
      "start": "2026-10-08T08:44:00.000+0200"
     },
     "title": "U2: Rettungseinsatz"
@@ -1156,42 +1007,6 @@
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1616-162",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1616
-    ],
-    "time": {
-     "end": "2026-10-08T09:33:00.000+0200",
-     "start": "2026-10-08T08:34:03.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1728-162",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1728
-    ],
-    "time": {
-     "end": "2026-10-08T09:33:00.000+0200",
-     "start": "2026-10-08T08:34:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",

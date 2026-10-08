@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 08 Oct 2026 09:50:10 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 10:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U3: Rettungseinsatz]]></title>
@@ -19,28 +19,6 @@
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 09:01]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 09:01]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
-      <pubDate>Thu, 08 Oct 2026 08:44:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 08:44:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 08:44:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit 08:44]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 08:44]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Verunreinigung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">915e18ead502dc8610d1f4cabb6ce6d6bdc2826f1da93bdee9f3fb85f4d65515</guid>
-      <pubDate>Thu, 08 Oct 2026 07:50:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 07:50:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 07:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Seit 07:50]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Seit 07:50]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Verspätungen]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Thu, 08 Oct 2026 23:00:00 +0200</ext:ends_at>
       <description>Bhf. Hütteldorf [Heute]</description>
       <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A/7A/N62: Eibesbrunnergasse beide Fahrtrichtungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bd6cbe1a4ea6d909912fce8527e38411ee42a952a91a70beecf363c26cd3e728</guid>
+      <pubDate>Mon, 05 Oct 2026 16:10:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 16:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 … [Bis 06.11.]</description>
+      <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 …<br/>[Bis 06.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
+      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
+      <content:encoded><![CDATA[Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
