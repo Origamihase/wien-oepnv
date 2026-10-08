@@ -27,7 +27,9 @@ The rules, in this order:
 The established rules stay as they were and are no correction: an 11:11
 end gives way to the end "Zeitraum:" names, or to the one its duration
 gives (:func:`plausible_end`), a begin date only moves the start later, and
-a text date past the end is not the start but a later phase's date.
+a text date past the end is not the start but a later phase's date. An
+11:11 end the text backs with neither an end nor a duration is not shown
+(:func:`end_unknown`).
 
 What this cannot see: a date that is equally wrong in every source.
 """
@@ -129,6 +131,39 @@ def plausible_end(desc_raw: str, end: datetime | None, start: datetime | None) -
     if named is None or (start is not None and named < start):
         return end
     return named
+
+
+def end_unknown(desc_raw: str, end: datetime | None) -> bool:
+    """Whether *end* is WL's 11:11 expiry date and the text names no end of its own.
+
+    Such an end is not shown (operator decision 2026-10-08, "Kein Ende"):
+    of the 124 notices with an 11:11 end that WL closed between 21.02. and
+    08.10.2026, 122 left before that date, half of them more than 336 days
+    early. The date is set by hand, mostly a year after publication, so the
+    notice expires; WL never meant it as an end. "72A: Haidestraße S"
+    ("Dauer: Ab 08. Oktober 2026, etwa 16:00 Uhr", nothing more) read
+    "[Bis 08.10.2027]", "38A: Fernsprechamt Heiligenstadt" ("auf derzeit
+    unbekannte Zeit") "[Bis 31.12.2027]".
+
+    An end or a duration in the text keeps the end: :func:`plausible_end`
+    has then put the text's end in its place, or kept the 11:11 one because
+    the duration lasts longer. The end itself stays the item's expiry, only
+    the time line leaves it out.
+
+    A vague end ("bis voraussichtlich Mitte August 2026", "bis etwa
+    Frühjahr 2027") names no day and counts as none. Read as the month's
+    last day it would also have expired notices WL still listed: "85A:
+    Straßenbauarbeiten" ("Mitte Mai") was listed until 02.08.2026.
+    """
+    if end is None:
+        return False
+    local = end.astimezone(_VIENNA_TZ)
+    if (local.hour, local.minute) != PLACEHOLDER_END:
+        return False
+    return (
+        extract_end_from_description(desc_raw, reference_date=end) is None
+        and extract_duration_from_description(desc_raw) is None
+    )
 
 
 def _day(value: datetime) -> str:

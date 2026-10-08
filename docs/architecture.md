@@ -808,6 +808,32 @@ Oktober 2026 statt im Herbst 2027). Nur dort: Vier WL-Störungen schreiben „Da
 eine Uhrzeit oder „Bis 30.10.2026 Betriebsschluss“, das die Beginnregel für
 einen Beginn am 30.10. hielte.
 
+Eine Dauer in Jahren („für etwa ein Jahr“, „für ca. 1 Jahr“, „für etwa
+1,5 Jahre“, „eineinhalb“) zählt seit 2026-10-08 wie Wochen und Monate
+(365 Tage je Jahr). Anlass: 1A Habsburgergasse, 57A Haus des Meeres und
+26A/N20 Siebeckstraße standen mit ihrem 11:11-Ende zwei und drei Jahre
+nach der Veröffentlichung im Feed; jetzt enden sie am 20.07.2027,
+31.08.2027 und 24.09.2028 (Start plus Dauer plus halbe Dauer).
+
+**Ein 11:11-Ende ohne Ende und Dauer im Text erscheint nicht in der
+Zeitzeile** (seit 2026-10-08, Betreiberentscheidung „Kein Ende“,
+`wl_plausibility.end_unknown`). Das 11:11-Ende ist bei WL ein von Hand
+gesetztes Ablaufdatum, meist ein Jahr nach der Veröffentlichung, kein
+erwartetes Ende: Von den 124 Hinweisen mit 11:11-Ende, die WL zwischen dem
+21.02. und dem 08.10.2026 beendete, verschwanden 122 vor diesem Datum, im
+Median 336 Tage davor. Die Zeitzeile liest sich deshalb wie bei jeder
+Meldung ohne Ende: „[Seit 08.10.]“, angekündigt „[Ab Mo 19.10.]“ statt
+„[Bis 08.10.2027]“ (72A Haidestraße S) oder „[Bis 31.12.2027]“ (38A, „auf
+derzeit unbekannte Zeit“). Am 08.10. betraf das 25 der 49 WL-Hinweise mit
+11:11-Ende. Nennt der Text ein Ende oder eine Dauer, bleibt alles wie oben,
+auch ein 11:11-Ende, das eine längere Dauer nicht verkürzt (63A). Ein
+vages Ende („bis voraussichtlich Mitte August 2026“, „bis etwa Frühjahr
+2027“) nennt keinen Tag und zählt als keines; als Monatsletzter gelesen
+hätte es Meldungen beendet, die WL noch auslieferte (85A, „Mitte Mai“, bis
+02.08.2026 gelistet). Das 11:11-Datum bleibt das Ablaufdatum der Meldung
+(`ends_at`, Altersfilter); geändert ist nur die Zeitzeile, im englischen
+Feed ebenso.
+
 ### Rohdaten und Verwürfe des Abrufs (seit 2026-10-04)
 
 Die Caches unter `cache/` halten nur, was den Abruf überlebt hat. Ob eine
