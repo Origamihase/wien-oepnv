@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261008-0016-F01, I20261008-0017, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261008-0016, I20261008-0018-F01, I20261008-0018, I20261008-0017-F01"
+    "trafficInfoNameList": "I20261008-0016-F01, I20261008-0017, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261008-0018-F01, I20261008-0018, I20261008-0017-F01, I20261008-0019-F01, I20261008-0019-F02, I20261008-0019"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R118-136, R117-136, R119-136, R36-152, R45-136, R19-136, R130-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R2558-125, R5815-671, R2025-671, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1177-0, R1974-466, R500-101, R552-109, R521-109, R143-109, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R100-136, R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R1177-0, R1974-466, R500-101, R552-109, R521-109, R143-109, R346-170, R311-170, R164-170, R165-101, R164-101, R132-101, R163-170, R333-170, R3450-170, R174-170, R169-101, R172-101, R173-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -206,41 +206,6 @@
       "9": "ptTram"
      }
     },
-    "description": "Linie 9: Betrieb nur zwischen Westbahnhof S U und Johann-Nepomuk-Berger-Platz. Weichen Sie ersatzweise auf die Linien U6, 2, 40, 41, 42 und 10A aus. Voraussichtliche Dauer: 14:15 Uhr. Grund: Falschparker im Bereich Habichergasse 9.",
-    "descriptionHTML": "Linie 9:<br>Betrieb nur zwischen Westbahnhof S U und Johann-Nepomuk-Berger-Platz.<br> <br>Weichen Sie ersatzweise auf die Linien U6, 2, 40, 41, 42 und 10A aus.<br><br>Voraussichtliche Dauer: 14:15 Uhr.<br><br>Grund: Falschparker im Bereich Habichergasse 9.",
-    "location": "Habichergasse 9",
-    "name": "I20261008-0016",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "109",
-       "lineName": "9",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T13:45:00.000+0200",
-     "end": "2026-10-08T14:00:00.000+0200",
-     "lastUpdate": "2026-10-08T14:00:00.000+0200",
-     "resume": "2026-10-08T14:00:00.000+0200",
-     "start": "2026-10-08T13:44:00.000+0200"
-    },
-    "title": "9: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "9": "ptTram"
-     }
-    },
     "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "location": "Habichergasse 9",
@@ -409,6 +374,118 @@
      "start": "2026-10-08T14:50:00.000+0200"
     },
     "title": "9: Fremder Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram",
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie 1: Betrieb nur zwischen Stefan-Fadinger-Platz und Hintere Zollamtsstraße. Linie O: Kein Betrieb zwischen Hintere Zollamtsstraße und Praterstern S U. Voraussichtliche Dauer: 15:25 Uhr. Grund: Falschparker im Bereich Radetzkystraße 10.",
+    "descriptionHTML": "Linie 1: <br>Betrieb nur zwischen Stefan-Fadinger-Platz und Hintere Zollamtsstraße.<br>Linie O:<br>Kein Betrieb zwischen Hintere Zollamtsstraße und Praterstern S U.<br> <br>Voraussichtliche Dauer: 15:25 Uhr.<br><br>Grund: Falschparker im Bereich Radetzkystraße 10.",
+    "location": "Radetzkystraße 10",
+    "name": "I20261008-0019",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1",
+     "O"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "170",
+       "lineName": "O",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "101",
+       "lineName": "1",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-08T15:03:00.000+0200",
+     "end": "2026-10-08T15:23:00.000+0200",
+     "lastUpdate": "2026-10-08T15:23:00.000+0200",
+     "resume": "2026-10-08T15:23:00.000+0200",
+     "start": "2026-10-08T15:02:00.000+0200"
+    },
+    "title": "O, 1: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Radetzkystraße 10",
+    "name": "I20261008-0019-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "170",
+       "lineName": "O",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-08T15:23:00.000+0200",
+     "end": "2026-10-08T23:55:00.000+0200",
+     "lastUpdate": "2026-10-08T15:23:00.000+0200",
+     "resume": "2026-10-08T15:23:00.000+0200",
+     "start": "2026-10-08T15:02:00.000+0200"
+    },
+    "title": "O: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram"
+     }
+    },
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Radetzkystraße 10",
+    "name": "I20261008-0019-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "101",
+       "lineName": "1",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-08T15:23:00.000+0200",
+     "end": "2026-10-08T23:55:00.000+0200",
+     "lastUpdate": "2026-10-08T15:23:00.000+0200",
+     "resume": "2026-10-08T15:23:00.000+0200",
+     "start": "2026-10-08T15:02:00.000+0200"
+    },
+    "title": "1: Falschparker"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -604,6 +681,24 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R132-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     132
+    ],
+    "time": {
+     "end": "2026-10-08T16:05:00.000+0200",
+     "start": "2026-10-08T15:05:43.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
@@ -838,6 +933,150 @@
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+   },
+   {
+    "description": "Falschparker\nBetrieb ab Praterstern S U ",
+    "name": "R163-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     163
+    ],
+    "time": {
+     "end": "2026-10-08T16:05:00.000+0200",
+     "start": "2026-10-08T15:07:15.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Praterstern S U "
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R164-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     164
+    ],
+    "time": {
+     "end": "2026-10-08T16:04:00.000+0200",
+     "start": "2026-10-08T15:04:44.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Falschparker\nBetrieb ab Praterstern S U ",
+    "name": "R164-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     164
+    ],
+    "time": {
+     "end": "2026-10-08T16:05:00.000+0200",
+     "start": "2026-10-08T15:04:14.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Praterstern S U "
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R165-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     165
+    ],
+    "time": {
+     "end": "2026-10-08T16:04:00.000+0200",
+     "start": "2026-10-08T15:04:44.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Falschparker\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R169-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     169
+    ],
+    "time": {
+     "end": "2026-10-08T16:09:00.000+0200",
+     "start": "2026-10-08T15:10:15.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Falschparker\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R172-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     172
+    ],
+    "time": {
+     "end": "2026-10-08T16:09:00.000+0200",
+     "start": "2026-10-08T15:10:15.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Falschparker\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R173-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     173
+    ],
+    "time": {
+     "end": "2026-10-08T16:09:00.000+0200",
+     "start": "2026-10-08T15:10:15.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Falschparker\nZüge halten bei Li. 1 Ri. Prater-Hauptallee",
+    "name": "R174-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     174
+    ],
+    "time": {
+     "end": "2026-10-08T16:08:00.000+0200",
+     "start": "2026-10-08T15:09:15.000+0200"
+    },
+    "title": "Falschparker\nZüge halten bei Li. 1 Ri. Prater-Hauptallee"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
@@ -1179,6 +1418,24 @@
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
    },
    {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R311-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     311
+    ],
+    "time": {
+     "end": "2026-10-08T16:03:00.000+0200",
+     "start": "2026-10-08T15:04:13.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1195,6 +1452,60 @@
      "start": "2026-10-07T00:00:15.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "description": "Falschparker\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R333-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     333
+    ],
+    "time": {
+     "end": "2026-10-08T16:07:00.000+0200",
+     "start": "2026-10-08T15:08:44.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Falschparker\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R3450-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     3450
+    ],
+    "time": {
+     "end": "2026-10-08T16:07:00.000+0200",
+     "start": "2026-10-08T15:08:46.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R346-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     346
+    ],
+    "time": {
+     "end": "2026-10-08T16:03:00.000+0200",
+     "start": "2026-10-08T15:04:13.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Züge halten\nbei Linien 6 und 18",

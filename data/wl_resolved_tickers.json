@@ -3,11 +3,95 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
+   "key": "R132-101|2026-10-08T15:05:43.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R132-101",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T16:05:00.000+0200",
+   "incident": "I20261008-0019"
+  },
+  {
    "key": "R143-109|2026-10-08T14:54:13.000+0200|Fahrtbehinderung\nFremder Verkehrsunfall",
    "name": "R143-109",
    "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
    "end": "2026-10-08T15:54:00.000+0200",
    "incident": "I20261008-0018"
+  },
+  {
+   "key": "R163-170|2026-10-08T15:07:15.000+0200|Falschparker\nBetrieb ab Praterstern S U ",
+   "name": "R163-170",
+   "title": "Falschparker\nBetrieb ab Praterstern S U ",
+   "end": "2026-10-08T16:05:00.000+0200",
+   "incident": "I20261008-0019"
+  },
+  {
+   "key": "R164-101|2026-10-08T15:04:44.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R164-101",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T16:04:00.000+0200",
+   "incident": "I20261008-0019"
+  },
+  {
+   "key": "R164-170|2026-10-08T15:04:14.000+0200|Falschparker\nBetrieb ab Praterstern S U ",
+   "name": "R164-170",
+   "title": "Falschparker\nBetrieb ab Praterstern S U ",
+   "end": "2026-10-08T16:05:00.000+0200",
+   "incident": "I20261008-0019"
+  },
+  {
+   "key": "R165-101|2026-10-08T15:04:44.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R165-101",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T16:04:00.000+0200",
+   "incident": "I20261008-0019"
+  },
+  {
+   "key": "R169-101|2026-10-08T15:10:15.000+0200|Falschparker\nBetrieb ab Hintere Zollamtsstraße",
+   "name": "R169-101",
+   "title": "Falschparker\nBetrieb ab Hintere Zollamtsstraße",
+   "end": "2026-10-08T16:09:00.000+0200",
+   "incident": "I20261008-0019"
+  },
+  {
+   "key": "R172-101|2026-10-08T15:10:15.000+0200|Falschparker\nBetrieb ab Hintere Zollamtsstraße",
+   "name": "R172-101",
+   "title": "Falschparker\nBetrieb ab Hintere Zollamtsstraße",
+   "end": "2026-10-08T16:09:00.000+0200",
+   "incident": "I20261008-0019"
+  },
+  {
+   "key": "R173-101|2026-10-08T15:10:15.000+0200|Falschparker\nBetrieb ab Hintere Zollamtsstraße",
+   "name": "R173-101",
+   "title": "Falschparker\nBetrieb ab Hintere Zollamtsstraße",
+   "end": "2026-10-08T16:09:00.000+0200",
+   "incident": "I20261008-0019"
+  },
+  {
+   "key": "R311-170|2026-10-08T15:04:13.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R311-170",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T16:03:00.000+0200",
+   "incident": "I20261008-0019"
+  },
+  {
+   "key": "R333-170|2026-10-08T15:08:44.000+0200|Falschparker\nBetrieb ab Hintere Zollamtsstraße",
+   "name": "R333-170",
+   "title": "Falschparker\nBetrieb ab Hintere Zollamtsstraße",
+   "end": "2026-10-08T16:07:00.000+0200",
+   "incident": "I20261008-0019"
+  },
+  {
+   "key": "R3450-170|2026-10-08T15:08:46.000+0200|Falschparker\nBetrieb ab Hintere Zollamtsstraße",
+   "name": "R3450-170",
+   "title": "Falschparker\nBetrieb ab Hintere Zollamtsstraße",
+   "end": "2026-10-08T16:07:00.000+0200",
+   "incident": "I20261008-0019"
+  },
+  {
+   "key": "R346-170|2026-10-08T15:04:13.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R346-170",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T16:03:00.000+0200",
+   "incident": "I20261008-0019"
   },
   {
    "key": "R521-109|2026-10-08T14:51:12.000+0200|Fahrtbehinderung\nFremder Verkehrsunfall",
