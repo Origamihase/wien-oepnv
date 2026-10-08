@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 08 Oct 2026 06:30:45 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 07:00:36 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U4/U6: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6cf95fe5cc66cffaf751fc9a315a5015b41795353c72e8d8ebf484f21b0a5c70</guid>
+      <pubDate>Thu, 08 Oct 2026 06:57:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 06:57:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 06:57:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Seit 06:57]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 06:57]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1/1A/2/3A/71/D: Demonstration am 09.10.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 09 Oct 2026 01:00:00 +0200</ext:ends_at>
       <description>Grund: Bauarbeiten. [Bis Fr 09.10.]</description>
       <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Bis Fr 09.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[52: Züge halten bei Linien 6 und 18]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">70487ad96a736e4ead776616bbf33df9a452acf7a51fd4a66cddc5162c0e7d2b</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:16 +0200</pubDate>
-      <ext:first_seen>Thu, 01 Oct 2026 00:00:14 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 00:00:16 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Heute]</description>
-      <content:encoded><![CDATA[[Heute]]]></content:encoded>
     </item>
   </channel>
 </rss>
