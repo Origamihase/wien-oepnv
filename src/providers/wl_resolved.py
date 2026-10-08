@@ -75,7 +75,7 @@ from dateutil import parser as dtparser
 
 from ..utils.files import atomic_write, read_capped_json, read_capped_text
 from ..utils.serialize import scrub_trojan_source_primitives
-from ..utils.text import PLANNED_DISRUPTION_RE
+from ..utils.text import names_planned_measure
 from .wl_lines import _detect_line_pairs_from_text, _make_line_pairs_from_related
 
 log = logging.getLogger(__name__)
@@ -126,7 +126,7 @@ def _lines(info: Mapping[str, Any]) -> frozenset[str]:
 
 def _planned(info: Mapping[str, Any]) -> bool:
     """True when the title names a planned measure (rule 3 above)."""
-    return bool(PLANNED_DISRUPTION_RE.search(str(info.get("title") or "")))
+    return names_planned_measure(str(info.get("title") or ""))
 
 
 def ticker_key(info: Mapping[str, Any]) -> str:

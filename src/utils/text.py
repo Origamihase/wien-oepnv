@@ -26,6 +26,11 @@ PLANNED_DISRUPTION_RE: re.Pattern[str] = re.compile(
     re.IGNORECASE,
 )
 
+
+def names_planned_measure(text: str) -> bool:
+    """True when *text* names a planned measure (:data:`PLANNED_DISRUPTION_RE`)."""
+    return bool(PLANNED_DISRUPTION_RE.search(text))
+
 # Common German prepositions that should not be followed by a bullet.
 PREPOSITIONS: tuple[str, ...] = (
     # Alphabetical order for easier maintenance; keep umlaut/ASCII pairs
