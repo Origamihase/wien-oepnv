@@ -1303,7 +1303,7 @@ def _drop_covered_subsets(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     („37: Betrieb ab Nußdorfer Straße“ mit „Gleisbauarbeiten“ in der ersten
     Zeile neben „5/12/37/38/40/41/42: Gleisbauarbeiten“): Sie sagen mit
     anderen Worten, was die Baustellenmeldung ausführlich sagt. Eine
-    ausführliche Störung entfernt keine Kurzmeldung (:func:`_may_cover`).
+    Kurzmeldung entfernt keine ausführliche Störung (:func:`_may_cover`).
     """
     removed: set[int] = set()
     for i, item_a in enumerate(items):
