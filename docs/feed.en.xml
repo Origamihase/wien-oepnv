@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 08 Oct 2026 09:00:44 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 09:31:06 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U3: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
+      <pubDate>Thu, 08 Oct 2026 09:01:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 09:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 09:01:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [Since 09:01]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 09:01]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +30,6 @@
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: rescue operation. [Since 08:44]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 08:44]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d</guid>
-      <pubDate>Thu, 08 Oct 2026 08:33:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 08:33:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 08:33:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Since 08:33]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 08:33]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Contamination]]></title>
@@ -43,23 +43,12 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 07:50]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[14A: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">84e4d671a35989861eaae0ffbdc51ac7176f80e2aad351517d17f4ba18c5e2ac</guid>
-      <pubDate>Thu, 08 Oct 2026 07:31:28 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 07:31:28 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 07:32:28 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 14:00:00 +0200</ext:ends_at>
-      <description>Service from Laxenburger Straße, Gudrunstraße. [Since 07:31]</description>
-      <content:encoded><![CDATA[Service from Laxenburger Straße, Gudrunstraße.<br/>[Since 07:31]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1/U3: Delays]]></title>
+      <title><![CDATA[U1: Delays]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
       <pubDate>Thu, 08 Oct 2026 07:29:00 +0200</pubDate>
       <ext:first_seen>Thu, 08 Oct 2026 07:29:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 07:29:00 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 08 Oct 2026 07:37:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 07:29]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 07:29]]]></content:encoded>
@@ -68,23 +57,23 @@
       <title><![CDATA[11: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e</guid>
-      <pubDate>Thu, 08 Oct 2026 07:23:27 +0200</pubDate>
+      <pubDate>Thu, 08 Oct 2026 07:22:00 +0200</pubDate>
       <ext:first_seen>Thu, 08 Oct 2026 07:23:27 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 07:29:58 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 14:00:00 +0200</ext:ends_at>
-      <description>Trains stop at Li. O Ri. Raxstraße. [Since 07:23]</description>
-      <content:encoded><![CDATA[Trains stop at Li. O Ri. Raxstraße.<br/>[Since 07:23]]]></content:encoded>
+      <ext:starts_at>Thu, 08 Oct 2026 07:23:27 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Trains stop at Li. O Ri. Raxstraße. After a service obstruction there are different intervals. [Since 07:22]</description>
+      <content:encoded><![CDATA[Trains stop at Li. O Ri. Raxstraße. After a service obstruction there are different intervals.<br/>[Since 07:22]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[6: Rescue operation trains stop at Favoritenstraße 113]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4</guid>
-      <pubDate>Thu, 08 Oct 2026 07:22:57 +0200</pubDate>
+      <pubDate>Thu, 08 Oct 2026 07:22:00 +0200</pubDate>
       <ext:first_seen>Thu, 08 Oct 2026 07:22:57 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 07:27:57 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 14:00:00 +0200</ext:ends_at>
-      <description>[Since 07:22]</description>
-      <content:encoded><![CDATA[[Since 07:22]]]></content:encoded>
+      <ext:starts_at>Thu, 08 Oct 2026 07:22:57 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [Since 07:22]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 07:22]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/1A/2/3A/71/D: Demonstration on 09.10.2026]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 … [Until 28.10.]</description>
       <content:encoded><![CDATA[Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 …<br/>[Until 28.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: ÖBB replacement bus]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
+      <pubDate>Thu, 08 Oct 2026 05:00:13 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 05:00:13 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:00:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf [Today]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
