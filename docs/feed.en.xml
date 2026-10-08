@@ -7,29 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 08 Oct 2026 12:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 12:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[13A: Illegally parked vehicle]]></title>
+      <title><![CDATA[51B: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abd7013f396c98ff91e5b8d63339a5b8519457bc53d3feaf1a6969c91967d81d</guid>
-      <pubDate>Thu, 08 Oct 2026 11:52:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 11:52:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 11:52:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">77b63df2dbb53a67d06ec43efa5f77f25344a7354001c0a3763592cfe8e9d780</guid>
+      <pubDate>Thu, 08 Oct 2026 12:12:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 12:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 12:12:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Since 11:52]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 11:52]]]></content:encoded>
+      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 12:12]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 12:12]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[11: Rescue operation]]></title>
+      <title><![CDATA[11: Defective vehicle, rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e</guid>
-      <pubDate>Thu, 08 Oct 2026 07:22:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 07:23:27 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 07:23:27 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 14:00:00 +0200</ext:ends_at>
-      <description>Trains stop at Li. O Ri. Raxstraße. [Since 07:22]</description>
-      <content:encoded><![CDATA[Trains stop at Li. O Ri. Raxstraße.<br/>[Since 07:22]]]></content:encoded>
+      <guid isPermaLink="false">139846b83acf18a69b923dc1f1f93aa6551cf6b0381d73ccb6f04a94a1059ba6</guid>
+      <pubDate>Thu, 08 Oct 2026 12:11:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 12:11:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 12:11:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Rescue operation: trains stop at Li. O Ri. Raxstraße. [Since 12:11]</description>
+      <content:encoded><![CDATA[Rescue operation: trains stop at Li. O Ri. Raxstraße.<br/>[Since 12:11]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[6: Rescue operation trains stop at Favoritenstraße 113]]></title>
