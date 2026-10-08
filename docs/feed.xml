@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 08 Oct 2026 07:00:36 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 07:31:03 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U4/U6: Betriebsstörung]]></title>
+      <title><![CDATA[U3: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6cf95fe5cc66cffaf751fc9a315a5015b41795353c72e8d8ebf484f21b0a5c70</guid>
-      <pubDate>Thu, 08 Oct 2026 06:57:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 06:57:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 06:57:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
+      <pubDate>Thu, 08 Oct 2026 07:29:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 07:29:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 07:29:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Seit 06:57]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 06:57]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 07:29]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 07:29]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e</guid>
+      <pubDate>Thu, 08 Oct 2026 07:23:27 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 07:23:27 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 07:29:58 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 08:29:00 +0200</ext:ends_at>
+      <description>Betrieb ab Quellenplatz. [Seit 07:23]</description>
+      <content:encoded><![CDATA[Betrieb ab Quellenplatz.<br/>[Seit 07:23]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[6: Rettungseinsatz züge halten Favoritenstraße 113]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4</guid>
+      <pubDate>Thu, 08 Oct 2026 07:22:57 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 07:22:57 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 07:27:57 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 08:28:00 +0200</ext:ends_at>
+      <description>[Seit 07:22]</description>
+      <content:encoded><![CDATA[[Seit 07:22]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/1A/2/3A/71/D: Demonstration am 09.10.2026]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
       <content:encoded><![CDATA[Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Neue Donau, kein Halt Richtung Floridsdorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">747d54fbd4c0aad685b21596a0c44cb67d41165e556ee43b1bc3e8636920f551</guid>
-      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 16:30:37 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf. [Bis 31.12.]</description>
-      <content:encoded><![CDATA[Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf.<br/>[Bis 31.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
-      <pubDate>Thu, 08 Oct 2026 04:40:11 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 04:40:11 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 01:00:00 +0200</ext:ends_at>
-      <description>Grund: Bauarbeiten. [Bis Fr 09.10.]</description>
-      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Bis Fr 09.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
