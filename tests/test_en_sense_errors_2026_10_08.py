@@ -16,7 +16,6 @@ import pytest
 from src import build_feed
 
 _WL = "Wiener Linien"
-_BST = "Stadt Wien – Baustellen"
 
 
 @pytest.fixture
