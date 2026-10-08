@@ -2003,6 +2003,21 @@ Nicht jeder Text gehört in ein NMT-Modell:
   bloßes Hauptwort zurück („Renovation of the platform“, erster echter Lauf
   05.10. 17:45), setzt `_oebb_cause_en` „Due to“ davor (Epoche 23, gilt auch
   für ÖBB).
+* **Ursachen heißen immer „Due to“ (seit 2026-10-08).** Betreiberentscheidung
+  vom 05.10. Das Modell gibt „Wegen“ mal als „Due to“, mal als „Because of“
+  wieder: 72 der 309 verschiedenen Sätze, die der EN-Feed seit Juli mit
+  einer Ursache eröffnete, begannen mit „Because of“ (63A, 29B), drei
+  weitere sagten „because of“ mitten im Satz, und die Ursachen-Bausteine
+  von ÖBB und WL nahmen beides an. `_cause_due_to` macht nach jedem
+  Modelldurchlauf (`_model_pass`) aus „because of“, „owing to“, „on account
+  of“ und „as a result of“ ein „due to“, wo immer es steht; ein großer
+  Anfangsbuchstabe bleibt. Wörter ohne Ursachen-Bedeutung („following“,
+  „As a result,“ ohne „of“, „Because the …“) bleiben unberührt. Werte aus
+  dem Übersetzungs-Cache bekommen dieselbe Behandlung beim Ausliefern
+  (`_cached_translation`), darum ohne Epochenwechsel und ohne neue
+  Übersetzung. Nachgespielt über alle 4.820 EN-Feed-Stände seit Juli: 134
+  der 4.205 verschiedenen Titel und Beschreibungen ändern sich, und zwar
+  nur in diesem einen Wort.
 * **Halte-Meldungen der WL.** Nach „Busse/Züge halten“ und „Ersatzbus hält“
   wählte das Modell die Präposition in jedem Lauf neu („Buses stop
   Salvatorianerplatz“, „Trains stop for lines 6 and 18“). Seit 2026-10-04

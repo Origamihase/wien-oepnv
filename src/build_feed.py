@@ -4306,6 +4306,30 @@ def _redirected_towards(masked_text: str, english: str) -> str:
     return _REDIRECTED_TO_RE.sub(r"\1 towards ", english)
 
 
+# A cause reads "Due to …" everywhere in the EN feed (operator decision
+# 2026-10-05). The model renders "Wegen" as "Because of" as often as "Due
+# to", from one input to the next: of the 309 distinct sentences the EN feed
+# opened with a cause between July and 2026-10-08, 72 began "Because of"
+# ("Because of crane works … line 63A is redirected.", "Because of roadworks
+# in the Giefinggasse …, the 29B buses …"), three more said "because of"
+# mid-sentence, and the ÖBB and WL cause renderers took either as a cause.
+# The class is the model's choice of synonym, so the synonyms of "due to"
+# become "due to" after the model, wherever they stand; "following", "after"
+# and "as a result," (no "of") are no cause prepositions and stay. Cached
+# values get the same treatment on the way out (``_cached_translation``),
+# so no epoch bump and no re-translation is needed.
+_CAUSE_SYNONYM_EN_RE: re.Pattern[str] = re.compile(
+    r"\b(?:because of|owing to|on account of|as a result of)\b", re.IGNORECASE
+)
+
+
+def _cause_due_to(english: str) -> str:
+    """Every "because of"/"owing to"/… as "due to", keeping the first capital."""
+    return _CAUSE_SYNONYM_EN_RE.sub(
+        lambda m: "Due to" if m.group(0)[:1].isupper() else "due to", english
+    )
+
+
 def _model_pass(
     pipe: Any,
     masked_text: str,
@@ -4366,14 +4390,14 @@ def _model_pass(
             nonce or "<kurz>",
         )
         return None, True
-    unmasked = _redirected_towards(
+    unmasked = _cause_due_to(_redirected_towards(
         masked_text,
         _drop_article_before_street(
             _drop_article_before_line(
                 _fix_glossary_articles(_unmask_entities(translated, mapping), mapping)
             )
         ),
-    )
+    ))
     if _RESIDUAL_PLACEHOLDER_RE.search(unmasked):
         # The model mangled a placeholder so badly the exact-nonce unmask could
         # not restore it (dropped/translated nonce chars, lower-cased prefix,
@@ -5085,7 +5109,9 @@ def _cached_translation(
     if isinstance(cached, str) and cached and cached != text:
         defect = _cached_translation_defect(text, cached)
         if defect is None:
-            return cached, True
+            # Cached before "due to" was the one cause preposition
+            # (``_cause_due_to``); the model's words are otherwise kept.
+            return _cause_due_to(cached), True
         # Self-heal: a value persisted by an earlier build is unfit to serve
         # (see ``_cached_translation_defect``). Treat the hit as a MISS and
         # re-translate below so the defect is never served from cache.

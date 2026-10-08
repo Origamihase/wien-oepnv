@@ -5,6 +5,21 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **EN-Feed: Ursachen heißen immer „Due to“ (2026-10-08)**:
+  Betreiberentscheidung „Due to überall“ (Beschluss vom 05.10.). Der
+  EN-Feed zeigte für 63A und 29B „Because of …“: Das Modell gibt „Wegen“
+  mal als „Due to“, mal als „Because of“ wieder, und die Ursachen-Bausteine
+  von ÖBB und WL nahmen beides an. Über alle EN-Feed-Stände seit Juli
+  gezählt: 72 der 309 verschiedenen Sätze mit einer Ursache vorn begannen
+  mit „Because of“, drei weitere sagten es mitten im Satz; „Owing to“ und
+  ähnliche kamen nie vor. Jetzt macht `_cause_due_to` nach jedem
+  Modelldurchlauf und bei jedem Treffer im Übersetzungs-Cache aus „because
+  of“, „owing to“, „on account of“ und „as a result of“ ein „due to“
+  (`src/build_feed.py`); „following“ und „As a result,“ bleiben. Kein
+  Epochenwechsel, keine Neuübersetzung. Nachgespielt über alle 4.820
+  EN-Feed-Stände seit Juli: 134 der 4.205 verschiedenen Titel und
+  Beschreibungen ändern sich, nur in diesem Wort; im Cache 149 von 5.095
+  Werten.
 * **Feed: Kurzmeldungen gehen mit ihrer erledigten WL-Störung, egal was sie
   sagen (2026-10-08)**: Betreiberentscheidung „Erledigtes entfernen“. Am
   08.10. stand „6: Rettungseinsatz züge halten Favoritenstraße 113“ von
