@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 08 Oct 2026 21:01:03 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 21:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[8A: Fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">437c46d6b16d0f42f20b54a25951dace252eff70e57f4fd9b1ca1378470941e6</guid>
+      <pubDate>Thu, 08 Oct 2026 21:08:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 21:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 21:08:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction there are different intervals. [Since 21:08]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 21:08]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Defective vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,8 +28,8 @@
       <ext:first_seen>Thu, 08 Oct 2026 20:36:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 08 Oct 2026 20:36:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>The U1 line currently runs between stations Rennbahnweg and Aderklaaer Straße in both directions via track 1. Expected until 21:05. Reason: Harmful … [Since 20:36]</description>
-      <content:encoded><![CDATA[The U1 line currently runs between stations Rennbahnweg and Aderklaaer Straße in both directions via track 1. Expected until 21:05. Reason: Harmful …<br/>[Since 20:36]]]></content:encoded>
+      <description>The U1 line currently runs between stations Rennbahnweg and Aderklaaer Straße in both directions via track 1. Expected until 22:00. Reason: Harmful … [Since 20:36]</description>
+      <content:encoded><![CDATA[The U1 line currently runs between stations Rennbahnweg and Aderklaaer Straße in both directions via track 1. Expected until 22:00. Reason: Harmful …<br/>[Since 20:36]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[37: Defective train]]></title>
@@ -30,17 +41,6 @@
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [Since 20:27]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 20:27]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Service disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4</guid>
-      <pubDate>Thu, 08 Oct 2026 20:17:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 20:17:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 20:17:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: service disruption in the stop area of Schottentor. [Since 20:17]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption in the stop area of Schottentor.<br/>[Since 20:17]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[63A: Service from Fluschützstraße, Längenfeldgasse]]></title>

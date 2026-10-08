@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261008-0035, I20260917-0012, I20260922-0032, I20260925-0011, I20261008-0028, I20261008-0032, I20261008-0036, I20260909-0007, I20261008-0038-F01, I20261008-0038, I20261008-0037"
+    "trafficInfoNameList": "I20260917-0012, I20261008-0035, I20260922-0032, I20260925-0011, I20261008-0028, I20261008-0032, I20261008-0036, I20260909-0007, I20261008-0038-F01, I20261008-0038, I20261008-0039-F01, I20261008-0039, I20261008-0037"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R45-136, R100-136, R36-152, R102-136, R101-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R1177-0, R1974-466, R500-101, R1797-463, R201-137, R202-137, R204-137, R207-137, R206-137, R205-137, R203-137, R1595-463, R208-137, R209-137, R210-137, R211-137, R1212-137, R150-137, R1213-137, R149-137, R188-137, R216-137, R214-137, R215-137, R213-137, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R45-136, R100-136, R36-152, R102-136, R101-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R1177-0, R1974-466, R500-101, R1797-463, R207-137, R206-137, R205-137, R204-137, R203-137, R1595-463, R208-137, R209-137, R210-137, R211-137, R1212-137, R150-137, R1213-137, R149-137, R188-137, R216-137, R214-137, R213-137, R215-137, R500-408, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -295,11 +295,12 @@
     "relatedStops": [
      4203
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-08T20:18:00.000+0200",
-     "end": "2026-10-08T23:55:00.000+0200",
-     "lastUpdate": "2026-10-08T20:18:00.000+0200",
+     "end": "2026-10-08T21:04:00.000+0200",
+     "lastUpdate": "2026-10-08T21:04:00.000+0200",
+     "resume": "2026-10-08T21:04:00.000+0200",
      "start": "2026-10-08T20:17:00.000+0200"
     },
     "title": "U2: Betriebsstörung"
@@ -344,8 +345,8 @@
       "U1": "ptMetro"
      }
     },
-    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Rennbahnweg und Aderklaaer Straße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 21:05 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rennbahnweg.",
-    "descriptionHTML": "Die Linie U1 fährt derzeit zwischen den Stationen Rennbahnweg und Aderklaaer Straße in beiden Richtungen über Gleis 1.<br> <br>Voraussichtliche Dauer: 21:05 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rennbahnweg.",
+    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Rennbahnweg und Aderklaaer Straße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 22:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rennbahnweg.",
+    "descriptionHTML": "Die Linie U1 fährt derzeit zwischen den Stationen Rennbahnweg und Aderklaaer Straße in beiden Richtungen über Gleis 1.<br> <br>Voraussichtliche Dauer: 22:00 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rennbahnweg.",
     "name": "I20261008-0037",
     "owner": "WL",
     "priority": "1",
@@ -369,7 +370,7 @@
     "time": {
      "created": "2026-10-08T20:36:00.000+0200",
      "end": "2026-10-08T23:55:00.000+0200",
-     "lastUpdate": "2026-10-08T20:36:00.000+0200",
+     "lastUpdate": "2026-10-08T21:03:00.000+0200",
      "start": "2026-10-08T20:36:00.000+0200"
     },
     "title": "U1: Schadhaftes Fahrzeug"
@@ -443,6 +444,80 @@
      "start": "2026-10-08T20:42:00.000+0200"
     },
     "title": "37: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "8A": "ptBusCity"
+     }
+    },
+    "description": "Linie 8A: Fahrtbehinderung in Richtung Bahnhof Meidling S U, Eichenstraße. Voraussichtliche Dauer: 21:30 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Am Fasangarten.",
+    "descriptionHTML": "Linie 8A:<br>Fahrtbehinderung in Richtung Bahnhof Meidling S U, Eichenstraße.<br> <br>Voraussichtliche Dauer: 21:30 Uhr.<br><br>Grund: Feuerwehreinsatz im Haltestellenbereich Am Fasangarten.",
+    "name": "I20261008-0039",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "8A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "408",
+       "lineName": "8A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1777
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-08T21:09:00.000+0200",
+     "end": "2026-10-08T21:19:00.000+0200",
+     "lastUpdate": "2026-10-08T21:19:00.000+0200",
+     "resume": "2026-10-08T21:19:00.000+0200",
+     "start": "2026-10-08T21:08:00.000+0200"
+    },
+    "title": "8A: Feuerwehreinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "8A": "ptBusCity"
+     }
+    },
+    "description": "Linie 8A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 8A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261008-0039-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "8A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "408",
+       "lineName": "8A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1777
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-08T21:19:00.000+0200",
+     "end": "2026-10-08T23:55:00.000+0200",
+     "lastUpdate": "2026-10-08T21:19:00.000+0200",
+     "resume": "2026-10-08T21:19:00.000+0200",
+     "start": "2026-10-08T21:08:00.000+0200"
+    },
+    "title": "8A: Feuerwehreinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1016,42 +1091,6 @@
      "start": "2026-10-08T04:40:11.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R201-137",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     201
-    ],
-    "time": {
-     "end": "2026-10-08T21:26:00.000+0200",
-     "start": "2026-10-08T20:27:16.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R202-137",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     202
-    ],
-    "time": {
-     "end": "2026-10-08T21:26:00.000+0200",
-     "start": "2026-10-08T20:27:16.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
@@ -1661,6 +1700,24 @@
      "start": "2026-10-08T05:00:13.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R500-408",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "8A"
+    ],
+    "relatedStops": [
+     500
+    ],
+    "time": {
+     "end": "2026-10-08T22:11:00.000+0200",
+     "start": "2026-10-08T21:11:49.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",

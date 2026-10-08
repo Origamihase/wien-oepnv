@@ -1166,6 +1166,21 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "8A: Feuerwehreinsatz",
+    "description": "Linie 8A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "437c46d6b16d0f42f20b54a25951dace252eff70e57f4fd9b1ca1378470941e6",
+    "pubDate": "2026-10-08T21:08:00+02:00",
+    "starts_at": "2026-10-08T21:08:00+02:00",
+    "ends_at": "2026-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=8A|D=2026-10-08|TK=feuerwehreinsatz",
+    "_wl_ids": [
+      "I20261008-0039"
+    ]
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "D: Gleisbauarbeiten",
     "description": "Linie D: Kein Betrieb zwischen Börse und Augasse. Weichen Sie ersatzweise auf die Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A aus. Grund: Gleisbauarbeiten im Bereich Althanstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1242,7 +1257,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U1: Schadhaftes Fahrzeug",
-    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Rennbahnweg und Aderklaaer Straße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 21:05 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rennbahnweg.",
+    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Rennbahnweg und Aderklaaer Straße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 22:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rennbahnweg.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
     "pubDate": "2026-10-08T20:36:00+02:00",
@@ -1251,21 +1266,6 @@
     "_identity": "wl|störung|L=U1|D=2026-10-08|TK=u1 schadhaftes fahrzeug",
     "_wl_ids": [
       "I20261008-0037"
-    ]
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U2: Betriebsstörung",
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung im Haltestellenbereich Schottentor.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
-    "pubDate": "2026-10-08T20:17:00+02:00",
-    "starts_at": "2026-10-08T20:17:00+02:00",
-    "ends_at": "2026-10-08T23:55:00+02:00",
-    "_identity": "wl|störung|L=U2|D=2026-10-08|TK=u2 betriebsstörung",
-    "_wl_ids": [
-      "I20261008-0035"
     ]
   },
   {
