@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 08 Oct 2026 21:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 22:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[42: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">84ec1e565462216a9b1b50b2e219a7b33bcc5fcc85e93bca82a84eba9cebcfb9</guid>
+      <pubDate>Thu, 08 Oct 2026 21:37:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 22:00:49 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 21:37:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 21:37]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 21:37]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cb8f37a153e49e1b9fce9bbe197d868b0f2104c567dea861959f72bf49ba88a7</guid>
+      <pubDate>Thu, 08 Oct 2026 21:51:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 21:51:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 21:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Seit 21:51]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Seit 21:51]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[8A: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -28,16 +50,16 @@
       <ext:first_seen>Thu, 08 Oct 2026 20:36:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 08 Oct 2026 20:36:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie U1 fährt derzeit zwischen den Stationen Rennbahnweg und Aderklaaer Straße in beiden Richtungen über Gleis 1. Voraussichtlich bis 22:00 Uhr. Grund: Schadhaftes … [Seit 20:36]</description>
-      <content:encoded><![CDATA[Die Linie U1 fährt derzeit zwischen den Stationen Rennbahnweg und Aderklaaer Straße in beiden Richtungen über Gleis 1. Voraussichtlich bis 22:00 Uhr. Grund: Schadhaftes …<br/>[Seit 20:36]]]></content:encoded>
+      <description>Die Linie U1 fährt derzeit zwischen den Stationen Rennbahnweg und Aderklaaer Straße in beiden Richtungen über Gleis 1. Voraussichtlich bis 22:20 Uhr. Grund: Schadhaftes … [Seit 20:36]</description>
+      <content:encoded><![CDATA[Die Linie U1 fährt derzeit zwischen den Stationen Rennbahnweg und Aderklaaer Straße in beiden Richtungen über Gleis 1. Voraussichtlich bis 22:20 Uhr. Grund: Schadhaftes …<br/>[Seit 20:36]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[37: Schadhafter Zug]]></title>
+      <title><![CDATA[37: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e1973a5b2460c699f70e57fbce62aa566a9126f20e7c1618980da0aaea6a520b</guid>
       <pubDate>Thu, 08 Oct 2026 20:27:16 +0200</pubDate>
       <ext:first_seen>Thu, 08 Oct 2026 20:27:16 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 20:27:16 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 08 Oct 2026 20:42:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 20:27]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20:27]]]></content:encoded>
@@ -96,28 +118,6 @@
       <ext:ends_at>Thu, 08 Oct 2026 23:59:00 +0200</ext:ends_at>
       <description>Wegen Gleisbauarbeiten in der Flurschützstraße muss die Linie N8 umgeleitet werden. [Heute]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten in der Flurschützstraße muss die Linie N8 umgeleitet werden.<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A/3A: Schwertgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
-      <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung. [Ab Fr 09.10. bis 31.03.2027]</description>
-      <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung.<br/>[Ab Fr 09.10. bis 31.03.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
-      <pubDate>Mon, 05 Oct 2026 15:40:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 15:40:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 … [Bis 28.10.]</description>
-      <content:encoded><![CDATA[Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 …<br/>[Bis 28.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

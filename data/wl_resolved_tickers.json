@@ -3,95 +3,32 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R1212-137|2026-10-08T20:42:47.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1212-137",
+   "key": "R1338-142|2026-10-08T21:37:22.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R1338-142",
    "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T21:44:00.000+0200",
-   "incident": "I20261008-0038"
+   "end": "2026-10-08T22:36:00.000+0200",
+   "incident": "I20261008-0040"
   },
   {
-   "key": "R1213-137|2026-10-08T20:45:17.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1213-137",
+   "key": "R1342-142|2026-10-08T21:44:22.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R1342-142",
    "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T21:44:00.000+0200",
-   "incident": "I20261008-0038"
+   "end": "2026-10-08T22:44:00.000+0200",
+   "incident": "I20261008-0040"
   },
   {
-   "key": "R149-137|2026-10-08T20:45:18.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R149-137",
+   "key": "R3877-142|2026-10-08T21:44:25.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R3877-142",
    "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T21:44:00.000+0200",
-   "incident": "I20261008-0038"
+   "end": "2026-10-08T22:44:00.000+0200",
+   "incident": "I20261008-0040"
   },
   {
-   "key": "R150-137|2026-10-08T20:42:48.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R150-137",
+   "key": "R3878-142|2026-10-08T21:44:25.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R3878-142",
    "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T21:44:00.000+0200",
-   "incident": "I20261008-0038"
-  },
-  {
-   "key": "R188-137|2026-10-08T20:45:18.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R188-137",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T21:44:00.000+0200",
-   "incident": "I20261008-0038"
-  },
-  {
-   "key": "R208-137|2026-10-08T20:33:47.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R208-137",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T21:44:00.000+0200",
-   "incident": "I20261008-0038"
-  },
-  {
-   "key": "R209-137|2026-10-08T20:33:47.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R209-137",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T21:44:00.000+0200",
-   "incident": "I20261008-0038"
-  },
-  {
-   "key": "R210-137|2026-10-08T20:33:47.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R210-137",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T21:44:00.000+0200",
-   "incident": "I20261008-0038"
-  },
-  {
-   "key": "R211-137|2026-10-08T20:33:47.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R211-137",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T21:44:00.000+0200",
-   "incident": "I20261008-0038"
-  },
-  {
-   "key": "R213-137|2026-10-08T20:50:49.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R213-137",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-08T21:50:00.000+0200",
-   "incident": "I20261008-0038"
-  },
-  {
-   "key": "R214-137|2026-10-08T20:50:49.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R214-137",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-08T21:50:00.000+0200",
-   "incident": "I20261008-0038"
-  },
-  {
-   "key": "R215-137|2026-10-08T20:50:49.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R215-137",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-08T21:50:00.000+0200",
-   "incident": "I20261008-0038"
-  },
-  {
-   "key": "R216-137|2026-10-08T20:50:49.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R216-137",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-08T21:50:00.000+0200",
-   "incident": "I20261008-0038"
+   "end": "2026-10-08T22:44:00.000+0200",
+   "incident": "I20261008-0040"
   },
   {
    "key": "R500-408|2026-10-08T21:11:49.000+0200|Fahrtbehinderung\nwegen Feuerwehreinsatz",
@@ -99,6 +36,13 @@
    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
    "end": "2026-10-08T22:11:00.000+0200",
    "incident": "I20261008-0039"
+  },
+  {
+   "key": "R524-142|2026-10-08T21:44:23.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R524-142",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-08T22:44:00.000+0200",
+   "incident": "I20261008-0040"
   }
  ]
 }
