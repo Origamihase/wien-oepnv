@@ -1984,7 +1984,17 @@ _TRANSLATION_MODEL_REVISION = "1a922f3b32a8e809e17a47d4b32142d8105924e5"
 #       (``_render_wl_sentence``), and a cause without "Due to" gets it back.
 #       Cached under 22: "Wienerbergstraße27b-27c →Wienerbergstraße27a. …
 #       15A5X …" and "Renovation of the platform, line U6 …".
-_TRANSLATION_CACHE_EPOCH = 23
+#  24 — EN sense errors (check of 2026-10-08, every DE text since July
+#       through the real model): WL's "kommt es zu Verkehrsmaßnahmen" as
+#       "service changes", "unterschiedlichen Intervallen", WL's shorthand
+#       ("Li.", "Ri.", "Hlst.", "ONr.", "Steig A"), "Einstieg bei Linie",
+#       "nicht eingehalten", "über Gleis 2", "kurzgeführt", place names the
+#       model translated ("Ring", "Oper", "Julius Raab Platz", the name
+#       after "Richtung") and the roadworks vocabulary. Cached under 23:
+#       "Due to a demonstration, transport is taking place.", "via 2
+#       track", "Trains stop at Li. O Ri. Raxstraße."; the source digests
+#       are unchanged, so only a bump evicts them.
+_TRANSLATION_CACHE_EPOCH = 24
 
 # Static lookup for the German words of the bracketed ``[…]`` time line (see
 # ``format_local_times``). Translating these via the ML model would be
@@ -2465,6 +2475,99 @@ _GLOSSARY_BASE: dict[str, str] = {
     "Straßenfestes": "street festival",
     "Umleitung": "diversion",
     "Unregelmäßige Intervalle": "irregular intervals",
+    # --- EN sense errors, check of 2026-10-08 ---------------------------
+    # Every distinct German text of the feed since July went through the
+    # real model; these phrases came out with a wrong or no sense. Count of
+    # texts, then what the model made of it:
+    #
+    #   unterschiedlichen Intervallen   46  "different intervals" (WL's
+    #                                       second phrase for irregular
+    #                                       intervals, beside the one above)
+    #   über Gleis 1 / 2                 9  "via 2 track", "via 1 track"
+    #   kurzgeführt / kurz geführt      13  "line 5A operating short-
+    #                                       running", "line 14A is short"
+    #   Ausgang, Sperre, gesperrt        6  "Lock output", "Curfew", "must
+    #                                       be locked"
+    #   Weichentausch                    2  "Switch", "switchover"
+    #   betriebslose Zeit                3  "busy time", "unoccupied time"
+    #   Nebenfahrbahn                    1  "sidecar"
+    #   aufrecht(er)halten               4  "held upright"
+    #   Umleitung / verlegt nach         4  "according to" for "nach"
+    #
+    # The masked forms ("nicht angefahren", "unmittelbar nach", "Nr.",
+    # "Bahnsteig") are what ``_normalise_for_translation`` writes for WL's
+    # "nicht eingehalten", a cross street behind "nach", "ONr." and "Steig".
+    "unterschiedlichen Intervallen": "irregular intervals",
+    "unterschiedliche Intervalle": "irregular intervals",
+    "über Gleis 1": "on track 1",
+    "über Gleis 2": "on track 2",
+    "Gleis 1": "track 1",
+    "Gleis 2": "track 2",
+    "kurzgeführt": "curtailed",
+    "kurz geführt": "curtailed",
+    "Ausgangssperre": "exit closure",
+    "Sperre Ausgang": "exit closure",
+    "Ausgang": "exit",
+    "Sperre": "closure",
+    "gesperrt": "closed",
+    "Weichentausch": "switch replacement",
+    "in der betriebslosen Zeit": "outside operating hours",
+    "betriebslosen Zeit": "non-operating hours",
+    "betriebslose Zeit": "non-operating hours",
+    "Nebenfahrbahn": "service road",
+    "aufrecht gehalten": "maintained",
+    "aufrechtgehalten": "maintained",
+    "aufrecht erhalten": "maintained",
+    "aufrechterhalten": "maintained",
+    # A glossed participle alone loses its auxiliary in the model ("line 5A
+    # curtailed", "The stops … become not served", "can become maintained").
+    # ``_normalise_for_translation`` puts "wird"/"werden" right in front of
+    # the participle (:data:`_GLOSSED_PARTICIPLE_RE`), so the whole verb is
+    # one term; after a modal the infinitive closes it.
+    **{
+        f"{aux} {participle}": f"{en_aux} {english}"
+        for participle, english in (
+            ("kurzgeführt", "curtailed"),
+            ("kurz geführt", "curtailed"),
+            ("gesperrt", "closed"),
+            ("nicht angefahren", "not served"),
+            ("aufrecht gehalten", "maintained"),
+            ("aufrechtgehalten", "maintained"),
+            ("aufrecht erhalten", "maintained"),
+            ("aufrechterhalten", "maintained"),
+        )
+        for aux, en_aux in (("wird", "is"), ("werden", "are"))
+    },
+    **{
+        f"{modal} {participle} werden": f"{en_modal} be {english}"
+        for participle, english in (
+            ("kurzgeführt", "curtailed"),
+            ("kurz geführt", "curtailed"),
+            ("gesperrt", "closed"),
+            ("nicht angefahren", "not served"),
+            ("aufrecht gehalten", "maintained"),
+            ("aufrechtgehalten", "maintained"),
+            ("aufrecht erhalten", "maintained"),
+            ("aufrechterhalten", "maintained"),
+        )
+        for modal, en_modal in (
+            ("kann", "can"), ("können", "can"), ("muss", "must"), ("müssen", "must"),
+        )
+    },
+    "bleiben aufrecht": "remain open",
+    "bleibt aufrecht": "remains open",
+    "Umleitung nach": "diversion to",
+    "Haltestelle verlegt nach": "stop moved to",
+    "verlegt nach": "moved to",
+    "unmittelbar nach": "just after",
+    "nicht angefahren": "not served",
+    "Bahnsteig": "platform",
+    "Nr.": "No.",
+    "auf nahegelegene Haltestellen ausweichen": "switch to nearby stops",
+    # "im Bereich der Wollzeile" came out "in the area of of Wollzeile": the
+    # phrase above takes "im Bereich" and the model renders the article again.
+    "im Bereich der": "in the area of the",
+    "im Bereich des": "in the area of the",
     "Eingeschränkter Betrieb": "restricted service",
     # --- Compound idioms specific to ÖBB/WL ticker text ------------
     "Betrieb ab": "service from",
@@ -2533,7 +2636,6 @@ _GLOSSARY_BY_SOURCE: dict[str, dict[str, str]] = {
     # conduct" which is meaningless in transit English.
     "Wiener Linien": {
         "Kurzführung": "short-running service",
-        "kurzgeführt": "operating short-running",
     },
     # Long-distance + regional rail. Scope: disruption-core
     # vocabulary only — train-type names (so the EN feed can phrase
@@ -2756,7 +2858,7 @@ _STREET_NAME_BODY = (
 #: Präpositionen auf ``-er``, die einen Satz eröffnen können.
 _STREET_WORD = (
     r"(?:Straße|Strasse|Gasse|Platz|Gürtel|Ring|Allee|Weg|Brücke|Kai|Lände"
-    r"|Zeile|Markt|Damm|Berg|Anger|Promenade|Graben|Steig)\b|Str\."
+    r"|Zeile|Markt|Damm|Berg|Anger|Promenade|Graben|Steig|Schleife)\b|Str\."
 )
 _STREET_ER_EXCLUDED = (
     r"Der|Dieser|Jener|Jeder|Welcher|Mancher|Solcher|Aller|Keiner|Einer"
@@ -2773,6 +2875,62 @@ _STREET_SUFFIX_RE: re.Pattern[str] = re.compile(
     r"\b(?:" + _STREET_ATTRIBUTE + r")\s+(?:" + _STREET_NAME_BODY + r")"
     r"|\b" + _STREET_ER_NAME
     + r"|\b(?:" + _STREET_NAME_BODY + r")"
+)
+
+# A street named after a person, written with spaces as WL's tickers do:
+# "Julius Raab Platz", "Victor Braun Platz". Neither word carries a street
+# suffix, so nothing shielded the name and the model translated its last word
+# ("Julius Raab Square", "Victor Braun place 1"; EN check 2026-10-08). Two
+# capitalised words in front of a street word; neither may be an article,
+# preposition or one of WL's own nouns, so a sentence such as "Die Linie
+# Platz …" cannot form a name, and the second is no "-er" place adjective
+# ("Kreuzung Währinger Straße" is a noun and a street, which
+# ``_STREET_ER_NAME`` shields on its own).
+_SPACED_NAME_EXCLUDED = (
+    _STREET_ER_EXCLUDED
+    + r"|Die|Das|Den|Dem|Des|Ein|Eine|Am|An|Auf|Im|In|Bei|Beim|Vom|Von|Zum|Zur"
+    r"|Nach|Vor|Über|Wegen|Ab|Bis|Ecke|Höhe|Richtung|Fahrtrichtung|Haltestelle"
+    r"|Haltestellen|Station|Linie|Linien|Bahnhof|Umleitung|Betrieb|Busse|Züge"
+    r"|Kreuzung|Einmündung"
+)
+_SPACED_STREET_NAME_RE: re.Pattern[str] = re.compile(
+    r"\b(?!(?:" + _SPACED_NAME_EXCLUDED + r")\s)[A-ZÄÖÜ][a-zäöüß]+"
+    r" (?!(?:" + _SPACED_NAME_EXCLUDED + r")\s)(?![A-ZÄÖÜ][a-zäöüß]+er\s)[A-ZÄÖÜ][a-zäöüß]+"
+    r" (?:Platz|Gasse|Straße|Allee|Ring|Weg|Brücke|Markt|Promenade|Kai|Zeile"
+    r"|Steig|Lände|Damm|Gürtel)\b"
+)
+
+# Vienna's places whose names are ordinary German nouns. WL writes them bare,
+# and the model translated them: "am Ring" → "on the ring", "Ring, Volkstheater
+# U" → "ring, Volkstheater U", "Richtung Oper" → "in the direction of opera",
+# "im Bereich Innere Stadt" → "in the area of Inner City", "Kurpark,
+# Nordosteingang" → "spa park, northeast entrance", "Umleitung über Gürtel"
+# → "diversion over belt" (EN check 2026-10-08). A name stays a name in the
+# EN feed, as on the stop sign. Case-sensitive: "Ring" and "Oper" as WL
+# writes them, never a lower-case word.
+_PLACE_NAME_ENTITIES: tuple[str, ...] = (
+    "Kurpark, Nordosteingang",
+    "Kurpark Nordosteingang",
+    "Innere Stadt",
+    "Kurpark",
+    "Gürtel",
+    "Oper",
+    "Ring",
+)
+_PLACE_NAME_ENTITY_RE: re.Pattern[str] = re.compile(
+    r"(?<![\w-])(?:" + "|".join(re.escape(name) for name in _PLACE_NAME_ENTITIES) + r")(?![\w-])"
+)
+
+# The place a WL line runs towards is a stop's name, never a word to
+# translate. The directory and the street rules above know most of them; a
+# bare one-word name they miss went through the model, typos included
+# ("Richtung Stammersdrof" → "towards Stammersdrif"). The word right after
+# "Richtung" is shielded unless it is a compass direction or a generic noun
+# the model should translate ("Richtung Süden", "Richtung Zentrum").
+_DIRECTION_NAME_RE: re.Pattern[str] = re.compile(
+    r"(?<=\bRichtung )(?!(?:Süden|Norden|Osten|Westen|Zentrum|Stadtzentrum|Stadtmitte"
+    r"|Innenstadt|Stadtgrenze|Stadt|Wien|Haltestellen?|Linien?|Stationen?|Bahnhof"
+    r"|Endstelle)\b)[A-ZÄÖÜ][a-zäöüß][A-Za-zÄÖÜäöüß-]*(?![\w:-])"
 )
 
 # A main station as ÖBB writes it: ``Wien Hbf``, ``St.Pölten Hbf``,
@@ -3148,7 +3306,11 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
     # ``XENT…X0X/D`` and the slash context the tram letters are recognised
     # by is still intact — placeholders keep the separators in place.
     working = _TRAM_LETTER_LINE_RE.sub(_replace, working)
+    working = _SPACED_STREET_NAME_RE.sub(_replace, working)
     working = _STREET_SUFFIX_RE.sub(_replace, working)
+    # After the street pass, so "Währinger Gürtel" stays one name.
+    working = _PLACE_NAME_ENTITY_RE.sub(_replace, working)
+    working = _DIRECTION_NAME_RE.sub(_replace, working)
     working = _PRESERVED_SYMBOLS_RE.sub(_replace, working)
     return working, mapping
 
@@ -3403,6 +3565,124 @@ def _normalise_stop_verbs(text: str) -> str:
     return _STOP_AT_PLACE_RE.sub(lambda m: f"{_stop_verb(m)} an ", text)
 
 
+# WL's display-board shorthand, written out before the model sees it. The
+# model kept "Li. 62", "Ri. Lainz" German ("Trains stop at Li. 31 Ri.
+# Schottenring", 11 texts since July), read "Hlst." as "Mostly" ("38A: Mostly
+# moved to Grinzinger Allee 47") and the cut "Fahrleitungsgebr" as "Boarding
+# contact line". Each abbreviation only where WL's tickers use it: before a
+# line, a place, or as the stub of a fault.
+_WL_SHORTHAND_RULES: tuple[tuple[re.Pattern[str], str], ...] = (
+    (re.compile(r"\bLi\.\s*(?=[A-Z0-9])"), "Linie "),
+    (re.compile(r"\bRi\.\s*(?=[A-ZÄÖÜ])"), "Richtung "),
+    (re.compile(r"\b(?:Hlst|Haltest)\.(?=\s)"), "Haltestelle"),
+    (re.compile(r"\b(Fahrleitungs|Oberleitungs)(?:gebr\b\.?|-\s+gebrechen\b)"), r"\1gebrechen"),
+    # The Stadt-Wien roadworks write a house number "ONr.67" or "in Höhe
+    # ONr.42"; the model left the abbreviation German or made "ONo" of it.
+    (re.compile(r"\b(?:in Höhe )?ONr\.\s*(?=\d)"), "Nr. "),
+    # "Züge halten Steig A": the platform letter of a WL stop, "Ascent A" and
+    # "Climb A" through the model.
+    (re.compile(r"\bSteig (?=[A-H1-9]\b)"), "Bahnsteig "),
+)
+
+# Where the vehicles board, the stop of another line: "Einstieg bei Linie
+# 44", "Einstieg Thaliastraße bei Linie 44". The model said "for line 44"
+# (19 texts since July); written as "bei Haltestelle der Linie" the glossary
+# renders it "at the stop of line", as for the stop verbs.
+_BOARDING_AT_LINE_RE: re.Pattern[str] = re.compile(
+    r"\b((?i:Einstieg|Ausstieg|Umstieg)(?: [A-ZÄÖÜ][\w.-]*){0,3}) bei (?:der )?Linie (?=[A-Z0-9])"
+)
+# A cross street behind "nach" in a stop ticker or a boarding place:
+# "Busse halten Gumpendorfer Straße nach Kopernikusgasse" means just past it,
+# like "vor" means just before it. The model read "according to".
+_PLACE_AFTER_CROSS_STREET_RE: re.Pattern[str] = re.compile(
+    r"\b((?:halten?|hält) an|(?i:Einstieg|Ausstieg|Umstieg)(?: bei| in der| beim)?)"
+    r"((?: [A-ZÄÖÜ0-9][\w./-]*)+) nach (?=[A-ZÄÖÜ])"
+)
+
+# A stop the vehicles leave out: WL writes it "kann nicht eingehalten werden"
+# or "hält die Station … ein", which the model rendered "cannot be
+# maintained", "cannot comply with", "is not respected" and "stops the
+# station" (13 texts since July). Rewritten into the plain German verbs
+# "anfahren" and "halten in/an", the glossary renders "not served" and the model
+# writes "stops at".
+_STOP_NOT_SERVED_RULES: tuple[
+    tuple[re.Pattern[str], str | Callable[[re.Match[str]], str]], ...
+] = (
+    (
+        re.compile(r"\bkann((?: [^.!?;]*?)?) nicht eingehalten werden\b"),
+        r"wird\1 nicht angefahren",
+    ),
+    (
+        re.compile(r"\bkönnen((?: [^.!?;]*?)?) nicht eingehalten werden\b"),
+        r"werden\1 nicht angefahren",
+    ),
+    (re.compile(r"\b(wird|werden)((?: [^.!?;]*?)?) nicht eingehalten\b"), r"\1\2 nicht angefahren"),
+    (
+        re.compile(
+            r"\b(kann|können) (die Züge der Linie \S+|die Linie \S+) die Station"
+            r" ([^.!?;]+?) ((?:in beiden Richtungen|in Richtung [^.!?;]+?) )?nicht einhalten\b"
+        ),
+        lambda m: (
+            f"{'hält' if m[1] == 'kann' else 'halten'} {m[2]} {m[4] or ''}"
+            f"nicht in der Station {m[3]}"
+        ),
+    ),
+    (
+        re.compile(r"\b(hält|halten) (die Linie \S+|die Züge der Linie \S+) die Station ([^.!?;]+?) ein\b(?=\s*[.!;,]|\s*$)"),
+        r"\1 \2 an der Station \3",
+    ),
+)
+
+# German puts the participle at the end of the clause, away from its
+# auxiliary: "Die Haltestellen … werden dadurch nicht angefahren", "wird die
+# Linie 5A kurzgeführt", "Der linke Fahrstreifen wird in Fahrtrichtung …
+# gesperrt", "muss … der rechte Ausgang … gesperrt werden". When the
+# glossary renders only the participle, the model loses the auxiliary ("line
+# 5A curtailed", "will be in the direction of the city closed") or doubles
+# it ("can be be maintained"). Auxiliary and participle are put side by side,
+# so the glossary renders the verb whole ("is curtailed", "must be closed").
+# When the words between them open with an article, they are the subject
+# ("wird die Linie 5A kurzgeführt") and stay in front of the verb; otherwise
+# they are adverbs ("derzeit in beiden Fahrtrichtungen", "in der Zeit von …")
+# and follow it, which is where English puts them.
+_GLOSSED_PARTICIPLE = (
+    r"kurz ?geführt|gesperrt|nicht angefahren|aufrecht ?gehalten|aufrecht ?erhalten"
+)
+_GLOSSED_VERB_MIDDLE = (
+    r"((?:(?!\b(?:wird|werden|ist|sind|kann|können|muss|müssen|und|oder)\b)"
+    r"(?:[^.!?;:]|\.(?=\d))){1,90}?)"
+)
+_GLOSSED_PARTICIPLE_RE: re.Pattern[str] = re.compile(
+    r"\b(wird|werden) " + _GLOSSED_VERB_MIDDLE
+    + r" (" + _GLOSSED_PARTICIPLE + r")\b(?! werden)"
+)
+_GLOSSED_MODAL_PARTICIPLE_RE: re.Pattern[str] = re.compile(
+    r"\b(kann|können|muss|müssen) " + _GLOSSED_VERB_MIDDLE
+    + r" (" + _GLOSSED_PARTICIPLE + r") werden\b"
+)
+_SUBJECT_ARTICLE_RE: re.Pattern[str] = re.compile(
+    r"(?:die|der|das|den|dem|ein|eine|einer|kein|keine|alle)\b"
+)
+
+
+def _join_glossed_verb(match: re.Match[str]) -> str:
+    """Auxiliary (or modal) and glossed participle side by side."""
+    verb = match[1]
+    middle = match[2]
+    participle = match[0][match.start(3) - match.start(0):]
+    if _SUBJECT_ARTICLE_RE.match(middle):
+        return f"{middle} {verb} {participle}"
+    return f"{verb} {participle} {middle}"
+
+
+# WL's referral to another line by its bare number: "Umleitung zur
+# Wattgasse, 10A ausweichen" ("diversion to avoid Wattgasse"). Written as
+# WL's stock referral, the glossary renders "alternatively use line 10A".
+_USE_LINE_INSTEAD_RE: re.Pattern[str] = re.compile(
+    r"(?:(?<=^)|(?<=[,;:] )|\bauf (?:die )?(?:Linie )?)(U[1-6]|N?\d{1,3}[A-Z]?) ausweichen\b"
+)
+
+
 def _normalise_for_translation(text: str) -> str:
     """Strip German-only surface forms the NMT model cannot render.
 
@@ -3415,9 +3695,18 @@ def _normalise_for_translation(text: str) -> str:
     text = _HOUR_ONLY_CLOCK_RE.sub(
         lambda m: f"{m.group(1)}:{m.group(2) or '00'}", text
     )
+    for pattern, replacement in _WL_SHORTHAND_RULES:
+        text = pattern.sub(replacement, text)
     text = _ALTERNATIVE_LINES_AUS_RE.sub(r"\1", text)
+    text = _USE_LINE_INSTEAD_RE.sub(r"Weichen Sie ersatzweise auf die Linie \1", text)
+    for rule, rewrite in _STOP_NOT_SERVED_RULES:
+        text = rule.sub(rewrite, text)
+    text = _GLOSSED_MODAL_PARTICIPLE_RE.sub(_join_glossed_verb, text)
+    text = _GLOSSED_PARTICIPLE_RE.sub(_join_glossed_verb, text)
     text = _STOP_OF_LINE_RE.sub("bei Haltestelle der Linie ", text)
+    text = _BOARDING_AT_LINE_RE.sub(r"\1 bei Haltestelle der Linie ", text)
     text = _normalise_stop_verbs(text)
+    text = _PLACE_AFTER_CROSS_STREET_RE.sub(r"\1\2 unmittelbar nach ", text)
     return _CLOCK_SUFFIX_RE.sub("", text)
 
 
@@ -4317,9 +4606,11 @@ def _redirected_towards(masked_text: str, english: str) -> str:
 # become "due to" after the model, wherever they stand; "following", "after"
 # and "as a result," (no "of") are no cause prepositions and stay. Cached
 # values get the same treatment on the way out (``_cached_translation``),
-# so no epoch bump and no re-translation is needed.
+# so no epoch bump and no re-translation is needed. "in view of" never came
+# out of the model so far, but ``_CAUSE_EN_RE`` takes it as a cause, so it
+# is rewritten like the others (EN check 2026-10-08).
 _CAUSE_SYNONYM_EN_RE: re.Pattern[str] = re.compile(
-    r"\b(?:because of|owing to|on account of|as a result of)\b", re.IGNORECASE
+    r"\b(?:because of|owing to|on account of|as a result of|in view of)\b", re.IGNORECASE
 )
 
 
@@ -4657,6 +4948,40 @@ _RELOCATION_CLOSED_LINE_RE: re.Pattern[str] = re.compile(
 )
 
 
+# WL's two sentences for irregular intervals: "Derzeit kommt es bei der Linie
+# N31 in beiden Richtungen zu unterschiedlichen Intervallen." (20 texts since
+# July) and "Nach einer Fahrtbehinderung kommt es zu unterschiedlichen
+# Intervallen." (25). The model wrote "the N31 line has different intervals"
+# and "there are different intervals"; with the phrase glossed, "irregular
+# intervals is used … on the N31 line" and "it comes to irregular
+# intervals". Each has one meaning and is written out. A display ticker's
+# label in front ("Verspätungen: …") keeps its glossary English.
+_WL_IRREGULAR_INTERVALS_RE: re.Pattern[str] = re.compile(
+    r"(?:(?P<label>[A-ZÄÖÜ][a-zäöüß]+): )?"
+    r"(?:(?P<now>Derzeit)|(?P<after>Nach einer Fahrtbehinderung)) kommt es"
+    r"(?: bei der Linie (?P<line>(?:U[1-6]|N?\d{1,3}[A-Z]?|[A-Z])))?"
+    r"(?P<both> in beiden Richtungen)? zu unterschiedlichen Intervallen\."
+)
+
+
+def _render_wl_irregular_intervals(match: re.Match[str], source: str | None) -> str:
+    """English for WL's "… kommt es zu unterschiedlichen Intervallen."; ``""`` when unknown."""
+    label = ""
+    if match["label"]:
+        glossary = _resolve_glossary(source, None)
+        english = next(
+            (value for key, value in glossary.items() if key.casefold() == match["label"].casefold()),
+            None,
+        )
+        if english is None:
+            return ""
+        label = f"{english[:1].upper()}{english[1:]}: "
+    lead = "Currently" if match["now"] else "After a service obstruction"
+    line = f" on line {match['line']}" if match["line"] else ""
+    both = " in both directions" if match["both"] else ""
+    return f"{label}{lead}, there are irregular intervals{line}{both}."
+
+
 def _render_wl_sentence(
     sentence: str, ident: str, source: str | None, category: str | None
 ) -> str | None:
@@ -4671,13 +4996,76 @@ def _render_wl_sentence(
     """
     if f" {_RELOCATION_ARROW} " in sentence or _RELOCATION_CLOSED_LINE_RE.search(sentence):
         return _render_record_table(sentence, source=source, category=category)
+    intervals = _WL_IRREGULAR_INTERVALS_RE.fullmatch(sentence)
+    if intervals is not None:
+        rendered = _render_wl_irregular_intervals(intervals, source)
+        if rendered:
+            return rendered
     return _render_wl_because_sentence(sentence, ident, source, category)
+
+
+# WL's stock opening for planned measures: "Wegen einer Demonstration kommt es
+# zu (folgenden) Verkehrsmaßnahmen (für die Linie 74A)." The model rendered
+# its main clause "transport is taking place", "it comes to traffic measures"
+# and "the following transport measures are taking place" (15 texts since
+# July). The main clause has one meaning, so it is written out here; only the
+# cause goes through the model. The wording "service changes" is the
+# operator's choice (2026-10-08). The cause may hold a comma here
+# ("im Bereich Innenstadt, Währinger Straße"): the main clause is fixed, so
+# no verb can hide behind it. Twice in July WL ran the "Zeitraum:" record on
+# without a period; those sentences keep the ordinary path, since the
+# sentence split has already cut their record at its date.
+_WL_SERVICE_CHANGES_RE: re.Pattern[str] = re.compile(
+    r"Wegen (?P<cause>[^.!?]+?) (?:kommt|kommen) es zu (?P<following>folgenden )?"
+    r"Verkehrsmaßnahmen(?: (?:für|bei) (?:die|der|den) (?P<noun>Linien?) (?P<lines>[^.!?]+?))?"
+    r"[.!]"
+)
+
+
+_WL_HEADED_BECAUSE_RE: re.Pattern[str] = re.compile(
+    r"(?P<head>[A-ZÄÖÜ][a-zäöüß]{3,}) (?P<body>Wegen .+)"
+)
+
+
+def _render_wl_service_changes(
+    match: re.Match[str], ident: str, source: str | None, category: str | None
+) -> str | None:
+    """English for WL's "Wegen … kommt es zu (folgenden) Verkehrsmaßnahmen."."""
+    cause = _oebb_cause_en(match["cause"], ident, source, category)
+    if cause is None:
+        return None
+    lines = ""
+    if match["lines"]:
+        noun = "lines" if match["noun"] == "Linien" else "line"
+        listed = re.sub(r"\s+(?:und|sowie)\s+", " and ", match["lines"].strip())
+        lines = f" to {noun} {listed}" if match["following"] else f" on {noun} {listed}"
+    if match["following"]:
+        return f"{cause}, the following service changes apply{lines}."
+    return f"{cause}, there are service changes{lines}."
 
 
 def _render_wl_because_sentence(
     sentence: str, ident: str, source: str | None, category: str | None
 ) -> str | None:
     """Render one WL "Wegen …" sentence; ``""`` when it takes the ordinary path."""
+    headed = _WL_HEADED_BECAUSE_RE.fullmatch(sentence)
+    if headed is not None:
+        # WL glues its category word in front ("Bahnsteigsanierung Wegen …",
+        # "Ausgangssperre Wegen …"). Through the model whole, the cause got
+        # lost (05.10.: "Refurbishing the platform The U6 line stops …"); the
+        # word goes through on its own and the sentence as usual.
+        body = _render_wl_because_sentence(headed["body"], ident, source, category)
+        if not body:
+            return body
+        head = _translate_text_attempt(
+            headed["head"], ident, source=source, category=category, oebb_templates=False
+        )
+        if head is None:
+            return None
+        return f"{_capitalise_sentence_start(head.strip())} {body}"
+    service_changes = _WL_SERVICE_CHANGES_RE.fullmatch(sentence)
+    if service_changes is not None:
+        return _render_wl_service_changes(service_changes, ident, source, category)
     match = _WL_BECAUSE_RE.fullmatch(sentence)
     if match is None:
         return ""

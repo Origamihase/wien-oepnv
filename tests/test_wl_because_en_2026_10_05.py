@@ -80,9 +80,9 @@ def test_a_main_clause_the_model_opens_otherwise_takes_the_ordinary_path(
 ) -> None:
     # The stub leaves "Deshalb ist …" German: no "Therefore", so the whole
     # sentence goes through the model as before.
-    text = "Wegen Bauarbeiten ist die Station Keplerplatz gesperrt."
+    text = "Wegen Bauarbeiten ist die Station Keplerplatz geschlossen."
     build_feed._translate_text_attempt(text, source=_WL)
-    assert model[-1].startswith("Wegen ") and model[-1].endswith(" gesperrt.")
+    assert model[-1].startswith("Wegen ") and model[-1].endswith(" geschlossen.")
 
 
 def test_a_cause_with_a_comma_takes_the_ordinary_path(model: list[str]) -> None:

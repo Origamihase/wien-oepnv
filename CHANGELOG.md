@@ -5,6 +5,21 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **EN-Feed: Sinnfehler als Klassen behoben (2026-10-08)**: Betreiberwahl
+  „EN-Sinnfehler“. Alle 3.003 verschiedenen deutschen Texte des Feeds seit
+  Juli liefen in der CI durch das echte Übersetzungsmodell, alter gegen
+  neuen Code. Behoben: WLs „kommt es zu Verkehrsmaßnahmen“ (vorher
+  „transport is taking place“, jetzt „there are service changes“, Wortwahl
+  des Betreibers), „unterschiedlichen Intervallen“ („different intervals“),
+  WL-Kürzel „Li.“/„Ri.“/„Hlst.“/„Steig A“/„ONr.“, „Einstieg bei Linie 44“
+  („for line 44“), „kann nicht eingehalten werden“ („cannot be
+  maintained“), „über Gleis 2“ („via 2 track“), „kurzgeführt“ („line 5A
+  operating short-running“), übersetzte Ortsnamen („on the ring“, „towards
+  opera“, „Julius Raab Square“, „spa park“, „belt“) und das Baustellen-
+  Vokabular („sidecar“, „busy time“, „held upright“, „locked“). Englische
+  Verben mit Partizip bleiben beisammen. Epoche 24: Die zwischengespeicherten
+  Übersetzungen werden einmal neu erstellt. Der deutsche Feed ist
+  unverändert. Details in `docs/architecture.md`.
 * **EN-Feed: Ursachen heißen immer „Due to“ (2026-10-08)**:
   Betreiberentscheidung „Due to überall“ (Beschluss vom 05.10.). Der
   EN-Feed zeigte für 63A und 29B „Because of …“: Das Modell gibt „Wegen“
