@@ -3,326 +3,130 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R13-101|2026-10-08T12:37:28.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R13-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:37:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R1446-109|2026-10-08T13:53:07.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "name": "R1446-109",
+   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "end": "2026-10-08T14:51:00.000+0200",
+   "incident": "I20261008-0016"
   },
   {
-   "key": "R14-101|2026-10-08T12:37:28.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R14-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:37:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R1447-109|2026-10-08T13:53:07.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "name": "R1447-109",
+   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "end": "2026-10-08T14:51:00.000+0200",
+   "incident": "I20261008-0016"
   },
   {
-   "key": "R15-101|2026-10-08T12:37:28.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R15-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:37:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R1475-109|2026-10-08T13:50:37.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R1475-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T14:50:00.000+0200",
+   "incident": "I20261008-0016"
   },
   {
-   "key": "R17-101|2026-10-08T12:37:28.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R17-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:37:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R1476-109|2026-10-08T13:50:37.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R1476-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T14:50:00.000+0200",
+   "incident": "I20261008-0016"
   },
   {
-   "key": "R1709-399|2026-10-08T12:48:30.000+0200|Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "name": "R1709-399",
-   "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "end": "2026-10-08T13:47:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R484-109|2026-10-08T13:53:06.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "name": "R484-109",
+   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "end": "2026-10-08T14:51:00.000+0200",
+   "incident": "I20261008-0016"
   },
   {
-   "key": "R1711-399|2026-10-08T12:48:30.000+0200|Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "name": "R1711-399",
-   "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "end": "2026-10-08T13:47:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R530-109|2026-10-08T13:50:35.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R530-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T14:50:00.000+0200",
+   "incident": "I20261008-0016"
   },
   {
-   "key": "R1712-399|2026-10-08T12:48:30.000+0200|Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "name": "R1712-399",
-   "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "end": "2026-10-08T13:47:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R531-109|2026-10-08T13:50:35.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R531-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T14:50:00.000+0200",
+   "incident": "I20261008-0016"
   },
   {
-   "key": "R1713-399|2026-10-08T12:48:30.000+0200|Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "name": "R1713-399",
-   "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "end": "2026-10-08T13:47:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R532-109|2026-10-08T13:50:35.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R532-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T14:50:00.000+0200",
+   "incident": "I20261008-0016"
   },
   {
-   "key": "R1714-399|2026-10-08T12:48:30.000+0200|Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "name": "R1714-399",
-   "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "end": "2026-10-08T13:47:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R533-109|2026-10-08T13:50:35.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R533-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T14:50:00.000+0200",
+   "incident": "I20261008-0016"
   },
   {
-   "key": "R1715-399|2026-10-08T12:48:30.000+0200|Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "name": "R1715-399",
-   "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "end": "2026-10-08T13:47:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R541-109|2026-10-08T13:53:06.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "name": "R541-109",
+   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "end": "2026-10-08T14:51:00.000+0200",
+   "incident": "I20261008-0016"
   },
   {
-   "key": "R1717-399|2026-10-08T12:48:30.000+0200|Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "name": "R1717-399",
-   "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "end": "2026-10-08T13:47:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R543-109|2026-10-08T13:53:06.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "name": "R543-109",
+   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "end": "2026-10-08T14:51:00.000+0200",
+   "incident": "I20261008-0016"
   },
   {
-   "key": "R1748-399|2026-10-08T12:44:00.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1748-399",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:43:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R544-109|2026-10-08T13:44:05.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "name": "R544-109",
+   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "end": "2026-10-08T14:51:00.000+0200",
+   "incident": "I20261008-0016"
   },
   {
-   "key": "R1749-399|2026-10-08T12:44:00.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1749-399",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:43:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R545-109|2026-10-08T13:44:05.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "name": "R545-109",
+   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "end": "2026-10-08T14:51:00.000+0200",
+   "incident": "I20261008-0016"
   },
   {
-   "key": "R1751-101|2026-10-08T12:41:00.000+0200|Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-   "name": "R1751-101",
-   "title": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-   "end": "2026-10-08T13:40:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R546-109|2026-10-08T13:44:05.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "name": "R546-109",
+   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "end": "2026-10-08T14:51:00.000+0200",
+   "incident": "I20261008-0016"
   },
   {
-   "key": "R1751-399|2026-10-08T12:44:00.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1751-399",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:43:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R547-109|2026-10-08T13:44:05.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "name": "R547-109",
+   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "end": "2026-10-08T14:51:00.000+0200",
+   "incident": "I20261008-0016"
   },
   {
-   "key": "R1752-101|2026-10-08T12:37:29.000+0200|Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-   "name": "R1752-101",
-   "title": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-   "end": "2026-10-08T13:40:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R548-109|2026-10-08T13:44:05.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R548-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T14:43:00.000+0200",
+   "incident": "I20261008-0016"
   },
   {
-   "key": "R1752-399|2026-10-08T12:38:29.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1752-399",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:38:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R550-109|2026-10-08T13:44:05.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R550-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T14:43:00.000+0200",
+   "incident": "I20261008-0016"
   },
   {
-   "key": "R1753-101|2026-10-08T12:37:29.000+0200|Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-   "name": "R1753-101",
-   "title": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-   "end": "2026-10-08T13:40:00.000+0200",
-   "incident": "I20261008-0014"
-  },
-  {
-   "key": "R1753-399|2026-10-08T12:38:29.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1753-399",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:38:00.000+0200",
-   "incident": "I20261008-0014"
-  },
-  {
-   "key": "R1754-101|2026-10-08T12:37:29.000+0200|Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-   "name": "R1754-101",
-   "title": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-   "end": "2026-10-08T13:40:00.000+0200",
-   "incident": "I20261008-0014"
-  },
-  {
-   "key": "R1754-399|2026-10-08T12:38:29.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1754-399",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:38:00.000+0200",
-   "incident": "I20261008-0014"
-  },
-  {
-   "key": "R1756-101|2026-10-08T12:37:29.000+0200|Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-   "name": "R1756-101",
-   "title": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-   "end": "2026-10-08T13:40:00.000+0200",
-   "incident": "I20261008-0014"
-  },
-  {
-   "key": "R1756-399|2026-10-08T12:38:29.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1756-399",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:38:00.000+0200",
-   "incident": "I20261008-0014"
-  },
-  {
-   "key": "R18-101|2026-10-08T12:37:28.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R18-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:37:00.000+0200",
-   "incident": "I20261008-0014"
-  },
-  {
-   "key": "R19-101|2026-10-08T12:37:28.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R19-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:37:00.000+0200",
-   "incident": "I20261008-0014"
-  },
-  {
-   "key": "R20-101|2026-10-08T12:37:28.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R20-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:37:00.000+0200",
-   "incident": "I20261008-0014"
-  },
-  {
-   "key": "R399-399|2026-10-08T12:43:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R399-399",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:43:00.000+0200",
-   "incident": "I20261008-0014"
-  },
-  {
-   "key": "R400-399|2026-10-08T12:43:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R400-399",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:43:00.000+0200",
-   "incident": "I20261008-0014"
-  },
-  {
-   "key": "R404-106|2026-10-08T07:27:27.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R404-106",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-08T14:00:00.000+0200",
-   "incident": "I20261008-0002-F01"
-  },
-  {
-   "key": "R405-106|2026-10-08T07:27:27.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R405-106",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-08T14:00:00.000+0200",
-   "incident": "I20261008-0002-F01"
-  },
-  {
-   "key": "R418-106|2026-10-08T07:27:57.000+0200|Rettungseinsatz\nBetrieb ab Reumannplatz U ",
-   "name": "R418-106",
-   "title": "Rettungseinsatz\nBetrieb ab Reumannplatz U ",
-   "end": "2026-10-08T14:00:00.000+0200",
-   "incident": "I20261008-0002"
-  },
-  {
-   "key": "R420-106|2026-10-08T07:27:57.000+0200|Rettungseinsatz\nBetrieb ab Reumannplatz U ",
-   "name": "R420-106",
-   "title": "Rettungseinsatz\nBetrieb ab Reumannplatz U ",
-   "end": "2026-10-08T14:00:00.000+0200",
-   "incident": "I20261008-0002"
-  },
-  {
-   "key": "R420-111|2026-10-08T07:29:58.000+0200|Rettungseinsatz\nBetrieb ab Quellenplatz",
-   "name": "R420-111",
-   "title": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-   "end": "2026-10-08T14:00:00.000+0200",
-   "incident": "I20261008-0002"
-  },
-  {
-   "key": "R421-106|2026-10-08T07:27:57.000+0200|Rettungseinsatz\nBetrieb ab Reumannplatz U ",
-   "name": "R421-106",
-   "title": "Rettungseinsatz\nBetrieb ab Reumannplatz U ",
-   "end": "2026-10-08T14:00:00.000+0200",
-   "incident": "I20261008-0002"
-  },
-  {
-   "key": "R421-111|2026-10-08T07:29:58.000+0200|Rettungseinsatz\nBetrieb ab Quellenplatz",
-   "name": "R421-111",
-   "title": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-   "end": "2026-10-08T14:00:00.000+0200",
-   "incident": "I20261008-0002"
-  },
-  {
-   "key": "R422-111|2026-10-08T07:23:27.000+0200|Rettungseinsatz\nBetrieb ab Quellenplatz",
-   "name": "R422-111",
-   "title": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-   "end": "2026-10-08T14:00:00.000+0200",
-   "incident": "I20261008-0002"
-  },
-  {
-   "key": "R427-399|2026-10-08T12:48:29.000+0200|Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "name": "R427-399",
-   "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "end": "2026-10-08T13:47:00.000+0200",
-   "incident": "I20261008-0014"
-  },
-  {
-   "key": "R4843-101|2026-10-08T12:37:31.000+0200|Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-   "name": "R4843-101",
-   "title": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-   "end": "2026-10-08T13:40:00.000+0200",
-   "incident": "I20261008-0014"
-  },
-  {
-   "key": "R4843-399|2026-10-08T12:38:31.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R4843-399",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:38:00.000+0200",
-   "incident": "I20261008-0014"
-  },
-  {
-   "key": "R5943-399|2026-10-08T12:48:24.000+0200|Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "name": "R5943-399",
-   "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "end": "2026-10-08T13:47:00.000+0200",
-   "incident": "I20261008-0014"
-  },
-  {
-   "key": "R761-414|2026-10-08T07:31:28.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R761-414",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-08T14:00:00.000+0200",
-   "incident": "I20261008-0002-F03"
-  },
-  {
-   "key": "R762-414|2026-10-08T07:31:28.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R762-414",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-08T14:00:00.000+0200",
-   "incident": "I20261008-0002-F03"
-  },
-  {
-   "key": "R764-414|2026-10-08T07:32:28.000+0200|Rettungseinsatz\nBetrieb ab Laxenburger Straße, Gudrunstraße",
-   "name": "R764-414",
-   "title": "Rettungseinsatz\nBetrieb ab Laxenburger Straße, Gudrunstraße",
-   "end": "2026-10-08T14:00:00.000+0200",
-   "incident": "I20261008-0002"
-  },
-  {
-   "key": "R831-101|2026-10-08T12:40:30.000+0200|Schadhafter Zug\nBetrieb über Li. 18+D ",
-   "name": "R831-101",
-   "title": "Schadhafter Zug\nBetrieb über Li. 18+D ",
-   "end": "2026-10-08T13:39:00.000+0200",
-   "incident": "I20261008-0014"
-  },
-  {
-   "key": "R831-399|2026-10-08T12:44:00.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R831-399",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T13:43:00.000+0200",
-   "incident": "I20261008-0014"
-  },
-  {
-   "key": "R851-399|2026-10-08T12:48:31.000+0200|Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "name": "R851-399",
-   "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-   "end": "2026-10-08T13:47:00.000+0200",
-   "incident": "I20261008-0014"
+   "key": "R556-109|2026-10-08T13:50:35.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R556-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-08T14:50:00.000+0200",
+   "incident": "I20261008-0016"
   }
  ]
 }

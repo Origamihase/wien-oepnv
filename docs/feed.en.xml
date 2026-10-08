@@ -7,51 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 08 Oct 2026 13:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 14:01:08 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[39A: Rescue operation]]></title>
+      <title><![CDATA[9: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1df516d27848be5432f6a767976faa1435ee6b8d4cda2e54bf6f90ddfbeff55a</guid>
-      <pubDate>Thu, 08 Oct 2026 12:55:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 12:55:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 12:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 13:40:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: rescue operation. [Since 12:55]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 12:55]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">73357b6320dfec1f26a86c63469d119b40e8f17ed69fcf1491dd8ae09deab193</guid>
-      <pubDate>Thu, 08 Oct 2026 12:35:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 12:35:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 12:35:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
+      <pubDate>Thu, 08 Oct 2026 13:44:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 13:44:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 13:44:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction there are different intervals. [Since 12:35]</description>
-      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 12:35]]]></content:encoded>
+      <description>After a service obstruction there are different intervals. [Since 13:44]</description>
+      <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 13:44]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[11: Rescue operation]]></title>
+      <title><![CDATA[1/1A/2/2A/3A/4A/57A/71/D: Demonstration on 09.10.2026, 10.10.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e</guid>
-      <pubDate>Thu, 08 Oct 2026 07:22:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 07:23:27 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 07:23:27 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 14:00:00 +0200</ext:ends_at>
-      <description>Trains stop at Li. O Ri. Raxstraße. [Since 07:22]</description>
-      <content:encoded><![CDATA[Trains stop at Li. O Ri. Raxstraße.<br/>[Since 07:22]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[6: Rescue operation trains stop at Favoritenstraße 113]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4</guid>
-      <pubDate>Thu, 08 Oct 2026 07:22:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 07:22:57 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 07:22:57 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 14:00:00 +0200</ext:ends_at>
-      <description>[Since 07:22]</description>
-      <content:encoded><![CDATA[[Since 07:22]]]></content:encoded>
+      <guid isPermaLink="false">337422a9d6cedd385263f2f283630dffffa4c906e26c9ae80c7f57cf1fa38c06</guid>
+      <pubDate>Thu, 08 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 14:01:08 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 10 Oct 2026 16:30:00 +0200</ext:ends_at>
+      <description>Because of a demonstration, transport is taking place. [From Fri 09.10. until Sat 10.10.]</description>
+      <content:encoded><![CDATA[Because of a demonstration, transport is taking place.<br/>[From Fri 09.10. until Sat 10.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N8: Diversion]]></title>
@@ -63,17 +41,6 @@
       <ext:ends_at>Thu, 08 Oct 2026 23:59:00 +0200</ext:ends_at>
       <description>Because of track construction works in Flurschützstraße, line N8 must be redirected. [Today]</description>
       <content:encoded><![CDATA[Because of track construction works in Flurschützstraße, line N8 must be redirected.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/1A/2/3A/71/D: Demonstration on 09.10.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">32b9e3c0c1c52fc6a0b68acfb7b0051c5873464d1bd8e75b51c15ea6b28cb349</guid>
-      <pubDate>Tue, 06 Oct 2026 12:50:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 00:01:14 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 17:00:00 +0200</ext:ends_at>
-      <description>Because of a demonstration, transport is taking place. [On Fri 09.10.]</description>
-      <content:encoded><![CDATA[Because of a demonstration, transport is taking place.<br/>[On Fri 09.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1A/3A: Schwertgasse]]></title>
@@ -118,6 +85,39 @@
       <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 … [Until 06.11.]</description>
       <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 …<br/>[Until 06.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
+      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction. [Until 26.10.]</description>
+      <content:encoded><![CDATA[Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction.<br/>[Until 26.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Neue Donau, no stopping direction Floridsdorf]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">747d54fbd4c0aad685b21596a0c44cb67d41165e556ee43b1bc3e8636920f551</guid>
+      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Sun, 04 Oct 2026 16:30:37 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Due to renovation of the platform, line U6 stops the station Neue Donau U only in the direction of Siebenhirten U. You can reach Neue Donau with U6 from Floridsdorf. [Until 31.12.]</description>
+      <content:encoded><![CDATA[Due to renovation of the platform, line U6 stops the station Neue Donau U only in the direction of Siebenhirten U. You can reach Neue Donau with U6 from Floridsdorf.<br/>[Until 31.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Buses stop at Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Thu, 08 Oct 2026 04:40:11 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 04:40:11 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 01:00:00 +0200</ext:ends_at>
+      <description>Reason: construction works. [Until Fri 09.10.]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[Until Fri 09.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

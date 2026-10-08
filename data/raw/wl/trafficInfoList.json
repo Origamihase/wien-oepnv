@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261008-0015, I20260917-0012, I20260922-0032, I20261008-0014-F01, I20261008-0014, I20260925-0011, I20260909-0007, I20261008-0013, I20261008-0012-F01, I20261008-0014-F02"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261008-0014, I20260925-0011, I20261008-0015, I20260909-0007, I20261008-0013, I20261008-0012-F01, I20261008-0016-F01, I20261008-0016, I20261008-0014-F02, I20261008-0014-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R101-136, R100-136, R117-136, R118-136, R116-136, R102-136, R115-136, R103-136, R119-136, R130-136, R19-136, R45-136, R36-152, R5815-671, R2558-125, R2379-627, R2373-126, R2373-125, R2372-125, R2373-127, R2025-671, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R2372-627, R2345-127, R2380-627, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R1177-0, R1974-466, R500-101, R422-106, R423-111, R422-111, R404-106, R405-106, R421-106, R420-106, R418-106, R421-111, R420-111, R761-414, R762-414, R764-414, R13-101, R14-101, R15-101, R17-101, R18-101, R20-101, R19-101, R1752-101, R1756-101, R1754-101, R1753-101, R4843-101, R1756-399, R1754-399, R1753-399, R1752-399, R4843-399, R831-101, R1751-101, R399-399, R400-399, R831-399, R1748-399, R1751-399, R1749-399, R5943-399, R427-399, R1709-399, R1717-399, R1714-399, R1715-399, R1711-399, R1712-399, R1713-399, R851-399, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R100-136, R36-152, R102-136, R101-136, R103-136, R2558-125, R5815-671, R2025-671, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R1177-0, R1974-466, R500-101, R550-109, R548-109, R547-109, R544-109, R545-109, R546-109, R556-109, R530-109, R531-109, R532-109, R533-109, R1475-109, R1476-109, R484-109, R543-109, R541-109, R1446-109, R1447-109, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -342,12 +342,12 @@
     "relatedStops": [
      1713
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-08T12:56:00.000+0200",
-     "end": "2026-10-08T23:55:00.000+0200",
-     "lastUpdate": "2026-10-08T12:56:00.000+0200",
-     "resume": "2026-10-08T12:56:00.000+0200",
+     "end": "2026-10-08T13:41:00.000+0200",
+     "lastUpdate": "2026-10-08T13:41:00.000+0200",
+     "resume": "2026-10-08T13:41:00.000+0200",
      "start": "2026-10-08T12:35:00.000+0200"
     },
     "title": "1: Schadhaftes Fahrzeug"
@@ -413,15 +413,85 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-08T12:55:00.000+0200",
-     "end": "2026-10-08T13:40:00.000+0200",
-     "lastUpdate": "2026-10-08T13:19:00.000+0200",
-     "resume": "2026-10-08T12:55:00.000+0200",
+     "end": "2026-10-08T13:34:00.000+0200",
+     "lastUpdate": "2026-10-08T13:34:00.000+0200",
+     "resume": "2026-10-08T13:34:00.000+0200",
      "start": "2026-10-08T12:55:00.000+0200"
     },
     "title": "39A: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "9": "ptTram"
+     }
+    },
+    "description": "Linie 9: Betrieb nur zwischen Westbahnhof S U und Johann-Nepomuk-Berger-Platz. Weichen Sie ersatzweise auf die Linien U6, 2, 40, 41, 42 und 10A aus. Voraussichtliche Dauer: 14:15 Uhr. Grund: Falschparker im Bereich Habichergasse 9.",
+    "descriptionHTML": "Linie 9:<br>Betrieb nur zwischen Westbahnhof S U und Johann-Nepomuk-Berger-Platz.<br> <br>Weichen Sie ersatzweise auf die Linien U6, 2, 40, 41, 42 und 10A aus.<br><br>Voraussichtliche Dauer: 14:15 Uhr.<br><br>Grund: Falschparker im Bereich Habichergasse 9.",
+    "location": "Habichergasse 9",
+    "name": "I20261008-0016",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "109",
+       "lineName": "9",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-08T13:45:00.000+0200",
+     "end": "2026-10-08T14:00:00.000+0200",
+     "lastUpdate": "2026-10-08T14:00:00.000+0200",
+     "resume": "2026-10-08T14:00:00.000+0200",
+     "start": "2026-10-08T13:44:00.000+0200"
+    },
+    "title": "9: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "9": "ptTram"
+     }
+    },
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Habichergasse 9",
+    "name": "I20261008-0016-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "109",
+       "lineName": "9",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-08T14:00:00.000+0200",
+     "end": "2026-10-08T23:55:00.000+0200",
+     "lastUpdate": "2026-10-08T14:00:00.000+0200",
+     "resume": "2026-10-08T14:00:00.000+0200",
+     "start": "2026-10-08T13:44:00.000+0200"
+    },
+    "title": "9: Falschparker"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -601,24 +671,6 @@
     "title": "Züge halten in\nSchleife"
    },
    {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R13-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     13
-    ],
-    "time": {
-     "end": "2026-10-08T13:37:00.000+0200",
-     "start": "2026-10-08T12:37:28.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R130-136",
     "owner": "WL",
@@ -635,24 +687,6 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R14-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     14
-    ],
-    "time": {
-     "end": "2026-10-08T13:37:00.000+0200",
-     "start": "2026-10-08T12:37:28.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -673,6 +707,24 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
    },
    {
+    "description": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R1446-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     1446
+    ],
+    "time": {
+     "end": "2026-10-08T14:51:00.000+0200",
+     "start": "2026-10-08T13:53:07.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
     "name": "R1446-149",
     "owner": "WL",
@@ -689,6 +741,24 @@
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
+   },
+   {
+    "description": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R1447-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     1447
+    ],
+    "time": {
+     "end": "2026-10-08T14:51:00.000+0200",
+     "start": "2026-10-08T13:53:07.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -835,6 +905,24 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21"
    },
    {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1475-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     1475
+    ],
+    "time": {
+     "end": "2026-10-08T14:50:00.000+0200",
+     "start": "2026-10-08T13:50:37.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
     "name": "R1475-149",
     "owner": "WL",
@@ -853,6 +941,24 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
    },
    {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1476-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     1476
+    ],
+    "time": {
+     "end": "2026-10-08T14:50:00.000+0200",
+     "start": "2026-10-08T13:50:37.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
     "name": "R1476-149",
     "owner": "WL",
@@ -869,420 +975,6 @@
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R15-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     15
-    ],
-    "time": {
-     "end": "2026-10-08T13:37:00.000+0200",
-     "start": "2026-10-08T12:37:28.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R17-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     17
-    ],
-    "time": {
-     "end": "2026-10-08T13:37:00.000+0200",
-     "start": "2026-10-08T12:37:28.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-    "name": "R1709-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     1709
-    ],
-    "time": {
-     "end": "2026-10-08T13:47:00.000+0200",
-     "start": "2026-10-08T12:48:30.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-    "name": "R1711-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     1711
-    ],
-    "time": {
-     "end": "2026-10-08T13:47:00.000+0200",
-     "start": "2026-10-08T12:48:30.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-    "name": "R1712-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     1712
-    ],
-    "time": {
-     "end": "2026-10-08T13:47:00.000+0200",
-     "start": "2026-10-08T12:48:30.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-    "name": "R1713-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     1713
-    ],
-    "time": {
-     "end": "2026-10-08T13:47:00.000+0200",
-     "start": "2026-10-08T12:48:30.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-    "name": "R1714-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     1714
-    ],
-    "time": {
-     "end": "2026-10-08T13:47:00.000+0200",
-     "start": "2026-10-08T12:48:30.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-    "name": "R1715-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     1715
-    ],
-    "time": {
-     "end": "2026-10-08T13:47:00.000+0200",
-     "start": "2026-10-08T12:48:30.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-    "name": "R1717-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     1717
-    ],
-    "time": {
-     "end": "2026-10-08T13:47:00.000+0200",
-     "start": "2026-10-08T12:48:30.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1748-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     1748
-    ],
-    "time": {
-     "end": "2026-10-08T13:43:00.000+0200",
-     "start": "2026-10-08T12:44:00.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1749-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     1749
-    ],
-    "time": {
-     "end": "2026-10-08T13:43:00.000+0200",
-     "start": "2026-10-08T12:44:00.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-    "name": "R1751-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     1751
-    ],
-    "time": {
-     "end": "2026-10-08T13:40:00.000+0200",
-     "start": "2026-10-08T12:41:00.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U "
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1751-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     1751
-    ],
-    "time": {
-     "end": "2026-10-08T13:43:00.000+0200",
-     "start": "2026-10-08T12:44:00.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-    "name": "R1752-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     1752
-    ],
-    "time": {
-     "end": "2026-10-08T13:40:00.000+0200",
-     "start": "2026-10-08T12:37:29.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U "
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1752-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     1752
-    ],
-    "time": {
-     "end": "2026-10-08T13:38:00.000+0200",
-     "start": "2026-10-08T12:38:29.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-    "name": "R1753-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     1753
-    ],
-    "time": {
-     "end": "2026-10-08T13:40:00.000+0200",
-     "start": "2026-10-08T12:37:29.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U "
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1753-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     1753
-    ],
-    "time": {
-     "end": "2026-10-08T13:38:00.000+0200",
-     "start": "2026-10-08T12:38:29.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-    "name": "R1754-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     1754
-    ],
-    "time": {
-     "end": "2026-10-08T13:40:00.000+0200",
-     "start": "2026-10-08T12:37:29.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U "
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1754-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     1754
-    ],
-    "time": {
-     "end": "2026-10-08T13:38:00.000+0200",
-     "start": "2026-10-08T12:38:29.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-    "name": "R1756-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     1756
-    ],
-    "time": {
-     "end": "2026-10-08T13:40:00.000+0200",
-     "start": "2026-10-08T12:37:29.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U "
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1756-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     1756
-    ],
-    "time": {
-     "end": "2026-10-08T13:38:00.000+0200",
-     "start": "2026-10-08T12:38:29.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R18-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     18
-    ],
-    "time": {
-     "end": "2026-10-08T13:37:00.000+0200",
-     "start": "2026-10-08T12:37:28.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R19-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     19
-    ],
-    "time": {
-     "end": "2026-10-08T13:37:00.000+0200",
-     "start": "2026-10-08T12:37:28.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
@@ -1319,24 +1011,6 @@
      "start": "2026-10-08T04:40:11.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R20-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     20
-    ],
-    "time": {
-     "end": "2026-10-08T13:37:00.000+0200",
-     "start": "2026-10-08T12:37:28.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
@@ -1678,240 +1352,6 @@
     "title": "Züge halten\nbei Linien 6 und 18"
    },
    {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R399-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     399
-    ],
-    "time": {
-     "end": "2026-10-08T13:43:00.000+0200",
-     "start": "2026-10-08T12:43:59.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R400-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     400
-    ],
-    "time": {
-     "end": "2026-10-08T13:43:00.000+0200",
-     "start": "2026-10-08T12:43:59.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R404-106",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     404
-    ],
-    "time": {
-     "end": "2026-10-08T14:00:00.000+0200",
-     "start": "2026-10-08T07:27:27.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R405-106",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     405
-    ],
-    "time": {
-     "end": "2026-10-08T14:00:00.000+0200",
-     "start": "2026-10-08T07:27:27.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Reumannplatz U ",
-    "name": "R418-106",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     418
-    ],
-    "time": {
-     "end": "2026-10-08T14:00:00.000+0200",
-     "start": "2026-10-08T07:27:57.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Reumannplatz U "
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Reumannplatz U ",
-    "name": "R420-106",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     420
-    ],
-    "time": {
-     "end": "2026-10-08T14:00:00.000+0200",
-     "start": "2026-10-08T07:27:57.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Reumannplatz U "
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R420-111",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     420
-    ],
-    "time": {
-     "end": "2026-10-08T14:00:00.000+0200",
-     "start": "2026-10-08T07:29:58.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Reumannplatz U ",
-    "name": "R421-106",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     421
-    ],
-    "time": {
-     "end": "2026-10-08T14:00:00.000+0200",
-     "start": "2026-10-08T07:27:57.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Reumannplatz U "
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R421-111",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     421
-    ],
-    "time": {
-     "end": "2026-10-08T14:00:00.000+0200",
-     "start": "2026-10-08T07:29:58.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
-   },
-   {
-    "description": "Rettungseinsatz\nzüge halten Favoritenstraße 113",
-    "name": "R422-106",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     422
-    ],
-    "time": {
-     "end": "2026-10-08T14:00:00.000+0200",
-     "start": "2026-10-08T07:22:57.000+0200"
-    },
-    "title": "Rettungseinsatz\nzüge halten Favoritenstraße 113"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R422-111",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     422
-    ],
-    "time": {
-     "end": "2026-10-08T14:00:00.000+0200",
-     "start": "2026-10-08T07:23:27.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
-   },
-   {
-    "description": "Rettungseinsatz\nZüge halten bei Li. O Ri. Raxstraße",
-    "name": "R423-111",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     423
-    ],
-    "time": {
-     "end": "2026-10-08T14:00:00.000+0200",
-     "start": "2026-10-08T07:23:27.000+0200"
-    },
-    "title": "Rettungseinsatz\nZüge halten bei Li. O Ri. Raxstraße"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-    "name": "R427-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     427
-    ],
-    "time": {
-     "end": "2026-10-08T13:47:00.000+0200",
-     "start": "2026-10-08T12:48:29.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse"
-   },
-   {
     "description": "Züge halten\nWipplingerstr 39",
     "name": "R45-136",
     "owner": "WL",
@@ -1930,40 +1370,22 @@
     "title": "Züge halten\nWipplingerstr 39"
    },
    {
-    "description": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U ",
-    "name": "R4843-101",
+    "description": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R484-109",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "1"
+     "9"
     ],
     "relatedStops": [
-     4843
+     484
     ],
     "time": {
-     "end": "2026-10-08T13:40:00.000+0200",
-     "start": "2026-10-08T12:37:31.000+0200"
+     "end": "2026-10-08T14:51:00.000+0200",
+     "start": "2026-10-08T13:53:06.000+0200"
     },
-    "title": "Schadhafter Zug\nBetrieb ab Oper, Karlsplatz U "
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R4843-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     4843
-    ],
-    "time": {
-     "end": "2026-10-08T13:38:00.000+0200",
-     "start": "2026-10-08T12:38:31.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz"
    },
    {
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
@@ -1984,6 +1406,240 @@
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R530-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     530
+    ],
+    "time": {
+     "end": "2026-10-08T14:50:00.000+0200",
+     "start": "2026-10-08T13:50:35.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R531-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     531
+    ],
+    "time": {
+     "end": "2026-10-08T14:50:00.000+0200",
+     "start": "2026-10-08T13:50:35.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R532-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     532
+    ],
+    "time": {
+     "end": "2026-10-08T14:50:00.000+0200",
+     "start": "2026-10-08T13:50:35.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R533-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     533
+    ],
+    "time": {
+     "end": "2026-10-08T14:50:00.000+0200",
+     "start": "2026-10-08T13:50:35.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R541-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     541
+    ],
+    "time": {
+     "end": "2026-10-08T14:51:00.000+0200",
+     "start": "2026-10-08T13:53:06.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "description": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R543-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     543
+    ],
+    "time": {
+     "end": "2026-10-08T14:51:00.000+0200",
+     "start": "2026-10-08T13:53:06.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "description": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R544-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     544
+    ],
+    "time": {
+     "end": "2026-10-08T14:51:00.000+0200",
+     "start": "2026-10-08T13:44:05.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "description": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R545-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     545
+    ],
+    "time": {
+     "end": "2026-10-08T14:51:00.000+0200",
+     "start": "2026-10-08T13:44:05.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "description": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R546-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     546
+    ],
+    "time": {
+     "end": "2026-10-08T14:51:00.000+0200",
+     "start": "2026-10-08T13:44:05.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "description": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R547-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     547
+    ],
+    "time": {
+     "end": "2026-10-08T14:51:00.000+0200",
+     "start": "2026-10-08T13:44:05.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R548-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     548
+    ],
+    "time": {
+     "end": "2026-10-08T14:43:00.000+0200",
+     "start": "2026-10-08T13:44:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R550-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     550
+    ],
+    "time": {
+     "end": "2026-10-08T14:43:00.000+0200",
+     "start": "2026-10-08T13:44:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R556-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     556
+    ],
+    "time": {
+     "end": "2026-10-08T14:50:00.000+0200",
+     "start": "2026-10-08T13:50:35.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "name": "R5815-671",
     "owner": "WL",
@@ -1997,132 +1653,6 @@
      "start": "2026-10-07T00:00:17.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-    "name": "R5943-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     5943
-    ],
-    "time": {
-     "end": "2026-10-08T13:47:00.000+0200",
-     "start": "2026-10-08T12:48:24.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R761-414",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedStops": [
-     761
-    ],
-    "time": {
-     "end": "2026-10-08T14:00:00.000+0200",
-     "start": "2026-10-08T07:31:28.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R762-414",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedStops": [
-     762
-    ],
-    "time": {
-     "end": "2026-10-08T14:00:00.000+0200",
-     "start": "2026-10-08T07:31:28.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Laxenburger Straße, Gudrunstraße",
-    "name": "R764-414",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedStops": [
-     764
-    ],
-    "time": {
-     "end": "2026-10-08T14:00:00.000+0200",
-     "start": "2026-10-08T07:32:28.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Laxenburger Straße, Gudrunstraße"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb über Li. 18+D ",
-    "name": "R831-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     831
-    ],
-    "time": {
-     "end": "2026-10-08T13:39:00.000+0200",
-     "start": "2026-10-08T12:40:30.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb über Li. 18+D "
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R831-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     831
-    ],
-    "time": {
-     "end": "2026-10-08T13:43:00.000+0200",
-     "start": "2026-10-08T12:44:00.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Aßmayergasse",
-    "name": "R851-399",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "LB"
-    ],
-    "relatedStops": [
-     851
-    ],
-    "time": {
-     "end": "2026-10-08T13:47:00.000+0200",
-     "start": "2026-10-08T12:48:31.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Aßmayergasse"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
