@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261008-0024-F01, I20260917-0012, I20260922-0032, I20261008-0028, I20261008-0024-F02, I20261008-0023-F01, I20260925-0011, I20260909-0007, I20261008-0021-F01, I20261008-0030, I20261008-0022-F02, I20261008-0029, I20261008-0025-F01, I20261008-0026, I20261008-0027"
+    "trafficInfoNameList": "I20261008-0024-F01, I20261008-0030, I20260917-0012, I20260922-0032, I20261008-0028, I20261008-0024-F02, I20261008-0023-F01, I20261008-0029, I20260925-0011, I20261008-0027, I20260909-0007, I20261008-0021-F01, I20261008-0025-F01, I20261008-0031, I20261008-0032, I20261008-0026"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R19-136, R130-136, R45-136, R36-152, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R2558-125, R5815-671, R2025-671, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1177-0, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R100-136, R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R1177-0, R1974-466, R500-101, R39-413, R40-413, R675-413, R676-413, R691-413, R693-413, R669-413, R670-413, R671-413, R672-413, R673-413, R674-413, R1569-459, R1574-459, R1573-459, R1571-459, R1570-459, R8227-459, R695-413, R751-414, R753-414, R754-414, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -238,40 +238,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261008-0022-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "170",
-       "lineName": "O",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T16:11:00.000+0200",
-     "end": "2026-10-08T16:56:00.000+0200",
-     "lastUpdate": "2026-10-08T16:56:00.000+0200",
-     "resume": "2026-10-08T16:56:00.000+0200",
-     "start": "2026-10-08T16:10:00.000+0200"
-    },
-    "title": "O: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U3": "ptMetro"
      }
     },
@@ -467,12 +433,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-08T17:07:00.000+0200",
-     "end": "2026-10-08T23:55:00.000+0200",
-     "lastUpdate": "2026-10-08T17:07:00.000+0200",
-     "resume": "2026-10-08T17:07:00.000+0200",
+     "end": "2026-10-08T18:12:00.000+0200",
+     "lastUpdate": "2026-10-08T18:12:00.000+0200",
+     "resume": "2026-10-08T18:12:00.000+0200",
      "start": "2026-10-08T17:07:00.000+0200"
     },
     "title": "14A: Verkehrsüberlastung"
@@ -535,12 +501,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-08T17:12:00.000+0200",
-     "end": "2026-10-08T23:55:00.000+0200",
-     "lastUpdate": "2026-10-08T17:12:00.000+0200",
-     "resume": "2026-10-08T17:11:00.000+0200",
+     "end": "2026-10-08T18:11:00.000+0200",
+     "lastUpdate": "2026-10-08T18:11:00.000+0200",
+     "resume": "2026-10-08T18:11:00.000+0200",
      "start": "2026-10-08T17:11:00.000+0200"
     },
     "title": "59A: Verkehrsüberlastung"
@@ -570,15 +536,132 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-08T17:59:00.000+0200",
-     "end": "2026-10-08T23:55:00.000+0200",
-     "lastUpdate": "2026-10-08T17:59:00.000+0200",
-     "resume": "2026-10-08T17:57:00.000+0200",
+     "end": "2026-10-08T18:11:00.000+0200",
+     "lastUpdate": "2026-10-08T18:11:00.000+0200",
+     "resume": "2026-10-08T18:11:00.000+0200",
      "start": "2026-10-08T17:57:00.000+0200"
     },
     "title": "13A: Feuerwehreinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram",
+      "2": "ptTram",
+      "71": "ptTram",
+      "D": "ptTram"
+     }
+    },
+    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Laufveranstaltung.",
+    "descriptionHTML": "Linie 1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 2:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie D:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 71:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Laufveranstaltung.",
+    "name": "I20261008-0031",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1",
+     "2",
+     "71",
+     "D"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "136",
+       "lineName": "D",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "101",
+       "lineName": "1",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "102",
+       "lineName": "2",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "171",
+       "lineName": "71",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-08T18:10:00.000+0200",
+     "end": "2026-10-08T23:55:00.000+0200",
+     "lastUpdate": "2026-10-08T18:10:00.000+0200",
+     "resume": "2026-10-08T18:09:00.000+0200",
+     "start": "2026-10-08T18:09:00.000+0200"
+    },
+    "title": "D, 1, 2, 71: Laufveranstaltung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "12A": "ptBusCity",
+      "13A": "ptBusCity",
+      "14A": "ptBusCity",
+      "57A": "ptBusCity",
+      "59A": "ptBusCity"
+     }
+    },
+    "description": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Laufveranstaltung.",
+    "descriptionHTML": "Linie 12A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 13A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 57A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Laufveranstaltung.",
+    "name": "I20261008-0032",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12A",
+     "13A",
+     "14A",
+     "57A",
+     "59A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "413",
+       "lineName": "13A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "414",
+       "lineName": "14A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "457",
+       "lineName": "57A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "459",
+       "lineName": "59A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "412",
+       "lineName": "12A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-08T18:12:00.000+0200",
+     "end": "2026-10-08T23:55:00.000+0200",
+     "lastUpdate": "2026-10-08T18:14:00.000+0200",
+     "resume": "2026-10-08T18:12:00.000+0200",
+     "start": "2026-10-08T18:12:00.000+0200"
+    },
+    "title": "13A, 14A, 57A, 59A, 12A: Laufveranstaltung"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -992,6 +1075,96 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
    },
    {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R1569-459",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1569
+    ],
+    "time": {
+     "end": "2026-10-08T19:19:00.000+0200",
+     "start": "2026-10-08T18:20:34.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R1570-459",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1570
+    ],
+    "time": {
+     "end": "2026-10-08T19:19:00.000+0200",
+     "start": "2026-10-08T18:20:34.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R1571-459",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1571
+    ],
+    "time": {
+     "end": "2026-10-08T19:19:00.000+0200",
+     "start": "2026-10-08T18:20:34.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R1573-459",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1573
+    ],
+    "time": {
+     "end": "2026-10-08T19:19:00.000+0200",
+     "start": "2026-10-08T18:20:34.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R1574-459",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1574
+    ],
+    "time": {
+     "end": "2026-10-08T19:19:00.000+0200",
+     "start": "2026-10-08T18:20:34.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -1367,6 +1540,42 @@
     "title": "Züge halten\nbei Linien 6 und 18"
    },
    {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R39-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     39
+    ],
+    "time": {
+     "end": "2026-10-08T19:17:00.000+0200",
+     "start": "2026-10-08T18:18:33.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R40-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     40
+    ],
+    "time": {
+     "end": "2026-10-08T19:17:00.000+0200",
+     "start": "2026-10-08T18:18:33.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
     "description": "Züge halten\nWipplingerstr 39",
     "name": "R45-136",
     "owner": "WL",
@@ -1416,6 +1625,276 @@
      "start": "2026-10-07T00:00:17.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R669-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     669
+    ],
+    "time": {
+     "end": "2026-10-08T19:17:00.000+0200",
+     "start": "2026-10-08T18:18:34.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R670-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     670
+    ],
+    "time": {
+     "end": "2026-10-08T19:17:00.000+0200",
+     "start": "2026-10-08T18:18:34.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R671-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     671
+    ],
+    "time": {
+     "end": "2026-10-08T19:17:00.000+0200",
+     "start": "2026-10-08T18:18:34.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R672-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     672
+    ],
+    "time": {
+     "end": "2026-10-08T19:17:00.000+0200",
+     "start": "2026-10-08T18:18:34.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R673-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     673
+    ],
+    "time": {
+     "end": "2026-10-08T19:17:00.000+0200",
+     "start": "2026-10-08T18:18:34.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R674-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     674
+    ],
+    "time": {
+     "end": "2026-10-08T19:17:00.000+0200",
+     "start": "2026-10-08T18:18:34.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R675-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     675
+    ],
+    "time": {
+     "end": "2026-10-08T19:17:00.000+0200",
+     "start": "2026-10-08T18:18:34.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R676-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     676
+    ],
+    "time": {
+     "end": "2026-10-08T19:17:00.000+0200",
+     "start": "2026-10-08T18:18:34.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R691-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     691
+    ],
+    "time": {
+     "end": "2026-10-08T19:17:00.000+0200",
+     "start": "2026-10-08T18:18:34.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R693-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     693
+    ],
+    "time": {
+     "end": "2026-10-08T19:17:00.000+0200",
+     "start": "2026-10-08T18:18:34.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R695-413",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     695
+    ],
+    "time": {
+     "end": "2026-10-08T19:23:00.000+0200",
+     "start": "2026-10-08T18:24:35.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R751-414",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "14A"
+    ],
+    "relatedStops": [
+     751
+    ],
+    "time": {
+     "end": "2026-10-08T19:25:00.000+0200",
+     "start": "2026-10-08T18:26:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R753-414",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "14A"
+    ],
+    "relatedStops": [
+     753
+    ],
+    "time": {
+     "end": "2026-10-08T19:25:00.000+0200",
+     "start": "2026-10-08T18:26:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R754-414",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "14A"
+    ],
+    "relatedStops": [
+     754
+    ],
+    "time": {
+     "end": "2026-10-08T19:25:00.000+0200",
+     "start": "2026-10-08T18:26:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Laufveranstaltung",
+    "name": "R8227-459",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     8227
+    ],
+    "time": {
+     "end": "2026-10-08T19:19:00.000+0200",
+     "start": "2026-10-08T18:20:38.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Laufveranstaltung"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",

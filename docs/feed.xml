@@ -7,26 +7,15 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 08 Oct 2026 18:00:51 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 18:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[13A: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">11c860f3f02e4dd83a6557e082cdea5c1a1bc33e5b21562974041148aead9260</guid>
-      <pubDate>Thu, 08 Oct 2026 17:57:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 17:57:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 17:57:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz. [Seit 17:57]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz.<br/>[Seit 17:57]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[4A/14A/59A: Verkehrsüberlastung]]></title>
+      <title><![CDATA[4A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">00805e247214cfaf545982b4b95007ea8a2466b38c0eaf2e743fa342ce44e36c</guid>
       <pubDate>Thu, 08 Oct 2026 17:07:00 +0200</pubDate>
       <ext:first_seen>Thu, 08 Oct 2026 17:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 17:07:00 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 08 Oct 2026 17:11:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 17:07]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 17:07]]]></content:encoded>
@@ -41,6 +30,17 @@
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit 16:58]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 16:58]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/2/12A/13A/14A/57A/59A/71/D: Laufveranstaltung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2e88805aed146c8e393a80848f287c98925db025ea6e7fbb33c24d84e6c31168</guid>
+      <pubDate>Thu, 08 Oct 2026 18:09:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 18:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 18:09:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Laufveranstaltung. [Heute]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Laufveranstaltung.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[72A: Haidestraße S]]></title>

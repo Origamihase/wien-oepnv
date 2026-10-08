@@ -866,6 +866,36 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1/2/71/D: Laufveranstaltung",
+    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Laufveranstaltung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2e88805aed146c8e393a80848f287c98925db025ea6e7fbb33c24d84e6c31168",
+    "pubDate": "2026-10-08T18:09:00+02:00",
+    "starts_at": "2026-10-08T18:09:00+02:00",
+    "ends_at": "2026-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=1,2,71,D|D=2026-10-08|TK=d 1 2 71 laufveranstaltung",
+    "_wl_ids": [
+      "I20261008-0031"
+    ]
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12A/13A/14A/57A/59A: Laufveranstaltung",
+    "description": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Laufveranstaltung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "de72855e99f93a8a341bda24f0c1eeebdbd51e74c63feb65487dfaf3410737e6",
+    "pubDate": "2026-10-08T18:12:00+02:00",
+    "starts_at": "2026-10-08T18:12:00+02:00",
+    "ends_at": "2026-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=12A,13A,14A,57A,59A|D=2026-10-08|TK=13a 14a 57a 59a 12a laufveranstaltung",
+    "_wl_ids": [
+      "I20261008-0032"
+    ]
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -886,36 +916,6 @@
     "starts_at": "2026-10-07T00:00:18+02:00",
     "ends_at": "2026-10-08T23:59:59+02:00",
     "_identity": "wl|störung|L=12A|D=2026-10-07|TK=betrieb ab schweglerstrasse 19 21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Feuerwehreinsatz",
-    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "11c860f3f02e4dd83a6557e082cdea5c1a1bc33e5b21562974041148aead9260",
-    "pubDate": "2026-10-08T17:57:00+02:00",
-    "starts_at": "2026-10-08T17:57:00+02:00",
-    "ends_at": "2026-10-08T23:55:00+02:00",
-    "_identity": "wl|störung|L=13A|D=2026-10-08|TK=feuerwehreinsatz",
-    "_wl_ids": [
-      "I20261008-0030"
-    ]
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "14A: Verkehrsüberlastung",
-    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "00805e247214cfaf545982b4b95007ea8a2466b38c0eaf2e743fa342ce44e36c",
-    "pubDate": "2026-10-08T17:07:00+02:00",
-    "starts_at": "2026-10-08T17:07:00+02:00",
-    "ends_at": "2026-10-08T23:55:00+02:00",
-    "_identity": "wl|störung|L=14A|D=2026-10-08|TK=14a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261008-0027"
-    ]
   },
   {
     "source": "Wiener Linien",
@@ -1144,21 +1144,6 @@
     "starts_at": "2026-10-07T00:00:16+02:00",
     "ends_at": "2026-10-08T23:59:59+02:00",
     "_identity": "wl|störung|L=52|D=2026-10-07|TK=züge halten bei linien 6 und 18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "59A: Verkehrsüberlastung",
-    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
-    "pubDate": "2026-10-08T17:11:00+02:00",
-    "starts_at": "2026-10-08T17:11:00+02:00",
-    "ends_at": "2026-10-08T23:55:00+02:00",
-    "_identity": "wl|störung|L=59A|D=2026-10-08|TK=59a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261008-0029"
-    ]
   },
   {
     "source": "Wiener Linien",
