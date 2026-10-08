@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261008-0003, I20260925-0011, I20261008-0004, I20260909-0007, I20261008-0010-F01, I20261008-0010, I20261008-0002-F01, I20261008-0002-F02, I20261008-0002, I20261008-0008-F01, I20261008-0002-F03, I20261008-0006, I20261008-0009"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261008-0002-F03, I20261008-0006, I20261008-0009, I20261008-0004, I20261008-0002-F01, I20261008-0010-F01, I20261008-0002-F02"
    },
    {
     "id": 3,
@@ -203,55 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "11": "ptTram",
-      "14A": "ptBusCity",
-      "6": "ptTram"
-     }
-    },
-    "description": "Linie 6: Betrieb nur zwischen Burggasse, Stadthalle U und Reumannplatz U. Linie 11: Umleitung in Richtung Otto-Probst-Platz zwischen Absberggasse und Quellenplatz über Hauptbahnhof S U. Linie 14A: Betrieb nur zwischen Neubaugasse U und Laxenburger Straße, Gudrunstraße. Voraussichtliche Dauer: 11:00Uhr. Grund: Rettungseinsatz im Bereich Quellenstraße 107.",
-    "descriptionHTML": "Linie 6:<br>Betrieb nur zwischen Burggasse, Stadthalle U und Reumannplatz U.<br>Linie 11:<br>Umleitung in Richtung Otto-Probst-Platz<br>zwischen Absberggasse und Quellenplatz <br>über Hauptbahnhof S U.<br>Linie 14A:<br>Betrieb nur zwischen Neubaugasse U und Laxenburger Straße, Gudrunstraße.<br> <br>Voraussichtliche Dauer: 11:00Uhr.<br><br>Grund: Rettungseinsatz im Bereich Quellenstraße 107.",
-    "location": "Quellenstraße 107",
-    "name": "I20261008-0002",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11",
-     "14A",
-     "6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "106",
-       "lineName": "6",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "111",
-       "lineName": "11",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "414",
-       "lineName": "14A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T07:28:00.000+0200",
-     "end": "2026-10-08T09:10:00.000+0200",
-     "lastUpdate": "2026-10-08T09:10:00.000+0200",
-     "resume": "2026-10-08T09:10:00.000+0200",
-     "start": "2026-10-08T07:22:00.000+0200"
-    },
-    "title": "6, 11, 14A: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "6": "ptTram"
      }
     },
@@ -274,12 +225,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-08T09:10:00.000+0200",
-     "end": "2026-10-08T23:55:00.000+0200",
-     "lastUpdate": "2026-10-08T09:10:00.000+0200",
-     "resume": "2026-10-08T09:10:00.000+0200",
+     "end": "2026-10-08T10:09:00.000+0200",
+     "lastUpdate": "2026-10-08T10:09:00.000+0200",
+     "resume": "2026-10-08T10:09:00.000+0200",
      "start": "2026-10-08T07:22:00.000+0200"
     },
     "title": "6: Rettungseinsatz"
@@ -312,8 +263,8 @@
     "status": "active",
     "time": {
      "created": "2026-10-08T09:10:00.000+0200",
-     "end": "2026-10-08T23:55:00.000+0200",
-     "lastUpdate": "2026-10-08T09:10:00.000+0200",
+     "end": "2026-10-08T10:45:00.000+0200",
+     "lastUpdate": "2026-10-08T10:25:00.000+0200",
      "resume": "2026-10-08T09:10:00.000+0200",
      "start": "2026-10-08T07:22:00.000+0200"
     },
@@ -357,40 +308,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261008-0003",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "303",
-       "lineName": "U3",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T07:29:00.000+0200",
-     "end": "2026-10-08T09:01:00.000+0200",
-     "lastUpdate": "2026-10-08T09:01:00.000+0200",
-     "resume": "2026-10-08T09:01:00.000+0200",
-     "start": "2026-10-08T07:29:00.000+0200"
-    },
-    "title": "U3: Verspätungen"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U1": "ptMetro"
      }
     },
@@ -412,12 +329,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-08T07:37:00.000+0200",
-     "end": "2026-10-08T23:55:00.000+0200",
-     "lastUpdate": "2026-10-08T07:37:00.000+0200",
-     "resume": "2026-10-08T07:37:00.000+0200",
+     "end": "2026-10-08T10:01:00.000+0200",
+     "lastUpdate": "2026-10-08T10:01:00.000+0200",
+     "resume": "2026-10-08T10:01:00.000+0200",
      "start": "2026-10-08T07:37:00.000+0200"
     },
     "title": "U1: Verspätungen"
@@ -459,43 +376,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "62": "ptTram"
-     }
-    },
-    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261008-0008-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "162",
-       "lineName": "62",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     1728
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T08:46:00.000+0200",
-     "end": "2026-10-08T09:15:00.000+0200",
-     "lastUpdate": "2026-10-08T09:15:00.000+0200",
-     "resume": "2026-10-08T09:15:00.000+0200",
-     "start": "2026-10-08T08:33:00.000+0200"
-    },
-    "title": "62: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U2": "ptMetro"
      }
     },
@@ -533,41 +413,6 @@
       "U3": "ptMetro"
      }
     },
-    "description": "Linie U3: Fahrtbehinderung in Richtung Ottakring. Voraussichtliche Dauer: 09:15 Uhr. Grund: Rettungseinsatz im Bereich Schweglerstraße.",
-    "descriptionHTML": "Linie U3:<br>Fahrtbehinderung in Richtung Ottakring.<br> <br>Voraussichtliche Dauer: 09:15 Uhr.<br><br>Grund: Rettungseinsatz im Bereich Schweglerstraße.",
-    "location": "Schweglerstraße",
-    "name": "I20261008-0010",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "303",
-       "lineName": "U3",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T09:02:00.000+0200",
-     "end": "2026-10-08T09:08:00.000+0200",
-     "lastUpdate": "2026-10-08T09:08:00.000+0200",
-     "resume": "2026-10-08T09:08:00.000+0200",
-     "start": "2026-10-08T09:01:00.000+0200"
-    },
-    "title": "U3: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
     "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "location": "Schweglerstraße",
@@ -587,12 +432,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-08T09:08:00.000+0200",
-     "end": "2026-10-08T23:55:00.000+0200",
-     "lastUpdate": "2026-10-08T09:08:00.000+0200",
-     "resume": "2026-10-08T09:08:00.000+0200",
+     "end": "2026-10-08T10:11:00.000+0200",
+     "lastUpdate": "2026-10-08T10:11:00.000+0200",
+     "resume": "2026-10-08T10:11:00.000+0200",
      "start": "2026-10-08T09:01:00.000+0200"
     },
     "title": "U3: Rettungseinsatz"
