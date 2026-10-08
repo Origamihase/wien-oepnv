@@ -2,6 +2,27 @@
   {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
+    "title": "Burggasse 67",
+    "description": "DieHaltestelle des betroffenen öffentlichen Verkehrsmittels wird von Burggasse ONr.67 nach Burggasse ONr. 69 verlegt. Derrechte Fahrstreifen wird in Fahrtrichtung stadteinwärts gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten. DerFußgänger- und Radverkehr kann aufrecht gehalten werden. \nBeginn: 28.07.2026 00:00 Uhr \nGeplant bis: 30.10.2026 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 7",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "1642f76cdb2a921752f24384fa1ad815176094f31dfa2f9d5130723b697b3205",
+    "pubDate": "2026-07-28T00:00:00+02:00",
+    "starts_at": "2026-07-28T00:00:00+02:00",
+    "ends_at": "2026-10-30T00:00:00+01:00",
+    "context": {
+      "district": "7",
+      "measure": "Straßenbau"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.20428021,
+        "lon": 16.34831234
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
     "title": "Neilreichgasse von Gudrunstraße bis Davidgasse",
     "description": "Eine Zufahrt zu den genehmigten Stellplätzen ist möglich.Die Buslinie 7A wird in diesen Zeitraum über die Rothenhofgasse Sonnleithengasse - Davidgasse umgeleitet. Bauphase 1 von 2 (23.06.2026 bis 28.08.2026):Die Arbeiten erfolgen bei Sperre der Neilreichgasse von Gudrunstraße bis Buchengasse. Für die Arbeiten im Plateau Neilreichgasse und Quellenstraße wird die Quellenstraße von Eckertgasse bis Karmaschgasse für den Fahrzeugverkehr gesperrt.Eine Zufahrt bis zum gesperrten Bereich und zu den genehmigten Stellplätzen ist möglich.Die Umleitung in Fahrtrichtung Laxenburger Straße erfolgt über: Sonnleithnergasse - Buchengasse - Herzgasse.Die Umleitung in Fahrtrichtung Triester Straße erfolgt über: Eckertgasse - Pernerstorfergasse - Karmaschgasse. Bauphase 2 von 2 (31.08.2026 bis 13.10.2026): Die Arbeiten erfolgen im Abschnitt Buchengasse bis Davidgasse. Hierfür wird die Neilreichgasse von Buchengasse bis und in Richtung Rothenhofgasse als Einbahn geführt. \nBeginn: 23.06.2026 00:00 Uhr \nGeplant bis: 13.10.2026 00:00 Uhr \nMaßnahme: Straßenbau \nBezirk: 10",
     "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
@@ -38,6 +59,27 @@
       "coordinates": {
         "lat": 48.19676823,
         "lon": 16.39587332
+      }
+    }
+  },
+  {
+    "source": "Stadt Wien – Baustellen",
+    "category": "Baustelle",
+    "title": "Maxingstraße von Kreuzung Hanselmayergasse bis Kreuzung Trauttmansdorffgasse",
+    "description": "Die betroffenen Buslinien werden umgeleitet, die Fahrgastinformationen erfolgen durch die Wiener Linien GmbH & Co KG. Die Verlegung einer Fernwärmeleitung (Wärmeanschluss für das Kesselhaus Schloss Schönbrunn) in der Maxingstraße und am Montecuccoliplatz erfolgen bei Tag und teilweise bei Erfordernis auch in der Nacht bei Sperre der Maxingstraße im Abschnitt zwischen der Hanselmayergasse und der Trautmansdorffgasse. Um die Zufahrt für die Anrainer im Baustellenbereich sicherstellen zu können, verbleibt eine provisorische Einbahn mit einer Restfahrbahnbreite von 3,20 m, wobei die Einbahnrichtung vom jeweiligen Bauabschnitt abhängig ist. In Richtung Hietzing wird die Umleitungsstrecke über die Fasangartengasse - Lainzer Straße und Hietzinger Hauptstraße geführt. Die Gegenrichtung wird von der Maxingstraße über die Trauttmansdorffgasse und Wattmanngasse (Einbahnführung) und abhängig vom Bauabschnitt entweder von der Wattmanngasse zur Würzburggasse - Opitzgasse zum Montecuccoliplatz oder über die Elisabethallee zum Montecuccoliplatz bzw. Stranzenberggasse umgeleitet. Die aktuellen Umleitungsstrecken werden mittels Voravisotafeln rechtzeitig großräumig im Umfeld der Baustelle angekündigt. Ergänzend wird noch angemerkt, dass in der angeführten Bauzeit auch Rohrlegungsarbeiten der Magistratsabteilung 31 (Wiener Wasser) und Straßenbauarbeiten der Magistratsabteilung 28 (Straßenbau) enthalten sind. \nBeginn: 07.04.2026 00:00 Uhr \nGeplant bis: 31.12.2026 00:00 Uhr \nMaßnahme: Rohrlegung \nBezirk: 13",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
+    "guid": "ddf4712bb48667c01e929b9fc695a2623731bb6527f728d6bfe0c56c093619fa",
+    "pubDate": "2026-04-07T00:00:00+02:00",
+    "starts_at": "2026-04-07T00:00:00+02:00",
+    "ends_at": "2026-12-31T00:00:00+01:00",
+    "context": {
+      "district": "13",
+      "measure": "Rohrlegung"
+    },
+    "location": {
+      "coordinates": {
+        "lat": 48.177796,
+        "lon": 16.29830192
       }
     }
   }

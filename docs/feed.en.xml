@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 08 Oct 2026 14:01:08 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 14:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[9: Illegally parked vehicle]]></title>
@@ -19,6 +19,17 @@
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [Since 13:44]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 13:44]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Burggasse 67]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">1642f76cdb2a921752f24384fa1ad815176094f31dfa2f9d5130723b697b3205</guid>
+      <pubDate>Tue, 28 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 14:30:45 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 28 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 30 Oct 2026 00:00:00 +0100</ext:ends_at>
+      <description>The stop of the affected public transport will be moved from Burggasse ONr.67 to Burggasse ONr. 69. [Until 30.10.]</description>
+      <content:encoded><![CDATA[The stop of the affected public transport will be moved from Burggasse ONr.67 to Burggasse ONr. 69.<br/>[Until 30.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/1A/2/2A/3A/4A/57A/71/D: Demonstration on 09.10.2026, 10.10.2026]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Due to renovation of the platform, line U6 stops the station Neue Donau U only in the direction of Siebenhirten U. You can reach Neue Donau with U6 from Floridsdorf. [Until 31.12.]</description>
       <content:encoded><![CDATA[Due to renovation of the platform, line U6 stops the station Neue Donau U only in the direction of Siebenhirten U. You can reach Neue Donau with U6 from Floridsdorf.<br/>[Until 31.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Buses stop at Salvatorianerplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
-      <pubDate>Thu, 08 Oct 2026 04:40:11 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 04:40:11 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 01:00:00 +0200</ext:ends_at>
-      <description>Reason: construction works. [Until Fri 09.10.]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[Until Fri 09.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

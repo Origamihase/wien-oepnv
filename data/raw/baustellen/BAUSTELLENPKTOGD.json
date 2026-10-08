@@ -95,6 +95,52 @@
   {
    "geometry": {
     "first_position": [
+     16.35383861,
+     48.20412073
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Burggasse 25 bis 45",
+    "BEZIRK": 7,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-07-27Z",
+    "OBJEKT_ENDE": "2026-10-30Z",
+    "PRESSETEXT": "Derrechte Fahrstreifen wird in Fahrtrichtung stadteinwärts gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten. DerFußgänger- und Radverkehr kann aufrecht gehalten werden.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.34831234,
+     48.20428021
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Burggasse 67",
+    "BEZIRK": 7,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-07-27Z",
+    "OBJEKT_ENDE": "2026-10-30Z",
+    "PRESSETEXT": "Derrechte Fahrstreifen wird in Fahrtrichtung stadteinwärts gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten. DerFußgänger- und Radverkehr kann aufrecht gehalten werden. DieHaltestelle des betroffenen öffentlichen Verkehrsmittels wird von Burggasse ONr.67 nach Burggasse ONr. 69 verlegt.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.28541147,
      48.14733017
     ],
@@ -273,6 +319,29 @@
     "OBJEKT_BEGINN": "2021-03-14Z",
     "OBJEKT_ENDE": "2028-12-31Z",
     "PRESSETEXT": "Zur Verbesserung und Erhöhung der Sicherungsmaßnahmen während der Tunnelvortriebarbeiten des U-Bahnbaus wird unter dem Brückentragwerk der ÖBB eine der beiden Linksabbiegespuren in Fahrtrichtung zur Gudrunstraße gesperrt. Der bestehende Radweg unter dem Brückentragwerk wird gesperrt und es wird ein neuer Ersatzgeh- und -radweg geschaffen.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.29726708,
+     48.17578448
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Gerhard Baumann",
+    "ANSPRECHPERSON_TEL": "Tel.: 050128/32740",
+    "ANTRAGSTELLER": null,
+    "BEHINDERUNGSART": "Rohrlegung",
+    "BEZEICHNUNG": "Montecuccoliplatz ggü. 12 bis Ende des Gustav-Zelibor-Park",
+    "BEZIRK": 13,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-02-01Z",
+    "OBJEKT_ENDE": "2026-12-31Z",
+    "PRESSETEXT": "Im Zuge der Verlegung einer Fernwärmeleitung (Wärmeanschluss für das Kesselhaus Schloss Schönbrunn) in der Maxingstraße wird der Montecuccoliplatz im Bereich von der Opitzgasse bis und in Richtung zur Volkgasse als provisorische Einbahn bei Freihaltung einer mindestens 3,50 m breite Restfahrbahn geführt. Für die Arbeiten in der Maxingstraße, welche erst Anfang 2026 beginnen, wird eine gesonderte Meldung ausgesandt.",
     "SE_ANNO_CAD_DATA": null
    }
   },
