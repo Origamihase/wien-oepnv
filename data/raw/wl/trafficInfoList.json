@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261008-0037-F01, I20261008-0037, I20261008-0039-F01, I20260917-0012, I20260922-0032, I20261008-0042, I20261008-0040-F01, I20260925-0011, I20260909-0007, I20261008-0042-F01, I20261008-0041, I20261008-0038-F01"
+    "trafficInfoNameList": "I20261008-0044, I20260917-0012, I20260922-0032, I20260925-0011, I20261008-0037-F01, I20261008-0042-F01, I20260909-0007, I20261008-0043-F01, I20261008-0043"
    },
    {
     "id": 3,
@@ -206,43 +206,6 @@
       "U1": "ptMetro"
      }
     },
-    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Rennbahnweg und Aderklaaer Straße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 22:20 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rennbahnweg.",
-    "descriptionHTML": "Die Linie U1 fährt derzeit zwischen den Stationen Rennbahnweg und Aderklaaer Straße in beiden Richtungen über Gleis 1.<br> <br>Voraussichtliche Dauer: 22:20 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rennbahnweg.",
-    "name": "I20261008-0037",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "301",
-       "lineName": "U1",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4182
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T20:36:00.000+0200",
-     "end": "2026-10-08T22:19:00.000+0200",
-     "lastUpdate": "2026-10-08T22:19:00.000+0200",
-     "resume": "2026-10-08T22:19:00.000+0200",
-     "start": "2026-10-08T20:36:00.000+0200"
-    },
-    "title": "U1: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
     "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "name": "I20261008-0037-F01",
@@ -264,196 +227,15 @@
     "relatedStops": [
      4182
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-08T22:19:00.000+0200",
-     "end": "2026-10-08T23:55:00.000+0200",
-     "lastUpdate": "2026-10-08T22:19:00.000+0200",
-     "resume": "2026-10-08T22:19:00.000+0200",
+     "end": "2026-10-08T23:24:00.000+0200",
+     "lastUpdate": "2026-10-08T23:24:00.000+0200",
+     "resume": "2026-10-08T23:24:00.000+0200",
      "start": "2026-10-08T20:36:00.000+0200"
     },
     "title": "U1: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "37": "ptTram"
-     }
-    },
-    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Döblinger Hauptstraße 87",
-    "name": "I20261008-0038-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "137",
-       "lineName": "37",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T20:55:00.000+0200",
-     "end": "2026-10-08T22:20:00.000+0200",
-     "lastUpdate": "2026-10-08T22:20:00.000+0200",
-     "resume": "2026-10-08T22:20:00.000+0200",
-     "start": "2026-10-08T20:42:00.000+0200"
-    },
-    "title": "37: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "8A": "ptBusCity"
-     }
-    },
-    "description": "Linie 8A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 8A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261008-0039-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "8A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "408",
-       "lineName": "8A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "relatedStops": [
-     1777
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T21:19:00.000+0200",
-     "end": "2026-10-08T22:21:00.000+0200",
-     "lastUpdate": "2026-10-08T22:21:00.000+0200",
-     "resume": "2026-10-08T22:21:00.000+0200",
-     "start": "2026-10-08T21:08:00.000+0200"
-    },
-    "title": "8A: Feuerwehreinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "42": "ptTram"
-     }
-    },
-    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Währinger Gürtel",
-    "name": "I20261008-0040-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "142",
-       "lineName": "42",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T21:51:00.000+0200",
-     "end": "2026-10-08T22:20:00.000+0200",
-     "lastUpdate": "2026-10-08T22:20:00.000+0200",
-     "resume": "2026-10-08T22:20:00.000+0200",
-     "start": "2026-10-08T21:37:00.000+0200"
-    },
-    "title": "42: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "12": "ptTram"
-     }
-    },
-    "description": "Linie 12: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "descriptionHTML": "Linie 12:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Polizeieinsatz.",
-    "name": "I20261008-0041",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "112",
-       "lineName": "12",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     3572
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T21:51:00.000+0200",
-     "end": "2026-10-08T22:20:00.000+0200",
-     "lastUpdate": "2026-10-08T22:20:00.000+0200",
-     "resume": "2026-10-08T22:20:00.000+0200",
-     "start": "2026-10-08T21:51:00.000+0200"
-    },
-    "title": "12: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Fahrtbehinderung in Richtung Siebenhirten. Voraussichtliche Dauer: 22:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Thaliastraße.",
-    "descriptionHTML": "Linie U6:<br>Fahrtbehinderung in Richtung Siebenhirten.<br> <br>Voraussichtliche Dauer: 22:40 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Thaliastraße.",
-    "name": "I20261008-0042",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4621
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T22:13:00.000+0200",
-     "end": "2026-10-08T22:16:00.000+0200",
-     "lastUpdate": "2026-10-08T22:16:00.000+0200",
-     "resume": "2026-10-08T22:16:00.000+0200",
-     "start": "2026-10-08T22:12:00.000+0200"
-    },
-    "title": "U6: Rettungseinsatz"
    },
    {
     "attributes": {
@@ -482,15 +264,119 @@
     "relatedStops": [
      4621
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-08T22:16:00.000+0200",
-     "end": "2026-10-08T23:55:00.000+0200",
-     "lastUpdate": "2026-10-08T22:17:00.000+0200",
-     "resume": "2026-10-08T22:12:00.000+0200",
+     "end": "2026-10-08T23:25:00.000+0200",
+     "lastUpdate": "2026-10-08T23:25:00.000+0200",
+     "resume": "2026-10-08T23:25:00.000+0200",
      "start": "2026-10-08T22:12:00.000+0200"
     },
     "title": "U6: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Die Linie U4 fährt derzeit nicht zwischen Pilgramgasse und Karlsplatz. Weichen Sie ersatzweise auf die Linien 57A, 59A aus. Voraussichtliche Dauer: 23:30 Uhr. Grund: Feuerwehreinsatz im Bereich Hamburgerstraße.",
+    "descriptionHTML": "Die Linie U4 fährt derzeit nicht zwischen Pilgramgasse und Karlsplatz.<br> <br>Weichen Sie ersatzweise auf die Linien 57A, 59A aus.<br><br>Voraussichtliche Dauer: 23:30 Uhr.<br><br>Grund: Feuerwehreinsatz im Bereich Hamburgerstraße.",
+    "location": "Hamburgerstraße",
+    "name": "I20261008-0043",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "304",
+       "lineName": "U4",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-08T23:03:00.000+0200",
+     "end": "2026-10-08T23:21:00.000+0200",
+     "lastUpdate": "2026-10-08T23:21:00.000+0200",
+     "resume": "2026-10-08T23:21:00.000+0200",
+     "start": "2026-10-08T23:01:00.000+0200"
+    },
+    "title": "U4: Feuerwehreinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Hamburgerstraße",
+    "name": "I20261008-0043-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "304",
+       "lineName": "U4",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-08T23:21:00.000+0200",
+     "end": "2026-10-08T23:55:00.000+0200",
+     "lastUpdate": "2026-10-08T23:21:00.000+0200",
+     "resume": "2026-10-08T23:21:00.000+0200",
+     "start": "2026-10-08T23:01:00.000+0200"
+    },
+    "title": "U4: Feuerwehreinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram"
+     }
+    },
+    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "Linie 11:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Rettungseinsatz.",
+    "name": "I20261008-0044",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "111",
+       "lineName": "11",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-08T23:23:00.000+0200",
+     "end": "2026-10-08T23:55:00.000+0200",
+     "lastUpdate": "2026-10-08T23:23:00.000+0200",
+     "resume": "2026-10-08T23:23:00.000+0200",
+     "start": "2026-10-08T23:23:00.000+0200"
+    },
+    "title": "11: Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
