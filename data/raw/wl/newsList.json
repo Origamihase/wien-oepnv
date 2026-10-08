@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1018067, ftazW_508, ftazW_1351713, ftazW_509, ftazW_1018068, ftazW_1351712"
+    "trafficInfoNameList": "ftazW_509, ftazW_1018068, ftazW_1351712"
    }
   ],
   "poiCategoryGroups": [
@@ -2669,37 +2669,6 @@
    },
    {
     "attributes": {
-     "ausBis": "09.10.2026 00:45",
-     "ausVon": "08.10.2026 20:45",
-     "location": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Stadion",
-     "rbls": [
-      4257
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Stadion",
-     "status": "geplante Wartung",
-     "towards": "U2 Karlsplatz"
-    },
-    "description": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Stadion",
-    "name": "ftazW_1018067",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4257
-    ],
-    "time": {
-     "end": "2026-10-09T00:45:00.000+0200",
-     "start": "2026-10-08T20:45:00.000+0200"
-    },
-    "title": "Stadion"
-   },
-   {
-    "attributes": {
      "ausBis": "09.10.2026 05:15",
      "ausVon": "09.10.2026 01:15",
      "location": "U2 Bahnsteig Richtung Seestadt - Ausgang Stadion",
@@ -2761,72 +2730,6 @@
      "start": "2026-10-09T01:15:00.000+0200"
     },
     "title": "Neulaa"
-   },
-   {
-    "attributes": {
-     "ausBis": "09.10.2026 00:45",
-     "ausVon": "08.10.2026 20:45",
-     "location": "beide Fahrtrichtungen - Ausgang Favoritenstraße/Bahnlände",
-     "rbls": [
-      4135,
-      4132
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Neulaa",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "beide Fahrtrichtungen - Ausgang Favoritenstraße/Bahnlände",
-    "name": "ftazW_1351713",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4135,
-     4132
-    ],
-    "time": {
-     "end": "2026-10-09T00:45:00.000+0200",
-     "start": "2026-10-08T20:45:00.000+0200"
-    },
-    "title": "Neulaa"
-   },
-   {
-    "attributes": {
-     "ausBis": "09.10.2026 00:45",
-     "ausVon": "08.10.2026 20:45",
-     "location": "U6 Mittelbahnsteig - Ausgang Jägerstraße",
-     "rbls": [
-      4641,
-      4650
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Jägerstraße",
-     "status": "geplante Wartung",
-     "towards": "U6 beide Richtungen"
-    },
-    "description": "U6 Mittelbahnsteig - Ausgang Jägerstraße",
-    "name": "ftazW_508",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4641,
-     4650
-    ],
-    "time": {
-     "end": "2026-10-09T00:45:00.000+0200",
-     "start": "2026-10-08T20:45:00.000+0200"
-    },
-    "title": "Jägerstraße"
    },
    {
     "attributes": {
