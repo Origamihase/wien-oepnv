@@ -890,6 +890,21 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "14A: Verkehrsüberlastung",
+    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "00805e247214cfaf545982b4b95007ea8a2466b38c0eaf2e743fa342ce44e36c",
+    "pubDate": "2026-10-08T17:07:00+02:00",
+    "starts_at": "2026-10-08T17:07:00+02:00",
+    "ends_at": "2026-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2026-10-08|TK=14a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261008-0027"
+    ]
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1082,7 +1097,7 @@
     "guid": "b8938e94c70221081d94c1f9627e29d1273108203a2ba78ea9d9eaa80416cb92",
     "pubDate": "2026-10-08T16:38:00+02:00",
     "starts_at": "2026-10-08T16:38:00+02:00",
-    "ends_at": "2026-10-08T23:55:00+02:00",
+    "ends_at": "2026-10-08T17:43:00+02:00",
     "_identity": "wl|störung|L=41|D=2026-10-08|TK=41 verkehrsunfall",
     "_wl_ids": [
       "I20261008-0025"
@@ -1106,6 +1121,21 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "4A: Verkehrsüberlastung",
+    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c56de491edf41d83da857f489a91726653fbe3100222ed7e7ce91bebf0b5453c",
+    "pubDate": "2026-10-08T17:11:00+02:00",
+    "starts_at": "2026-10-08T17:11:00+02:00",
+    "ends_at": "2026-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=4A|D=2026-10-08|TK=4a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261008-0028"
+    ]
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "52: Züge halten bei Linien 6 und 18",
     "description": "Züge halten\nbei Linien 6 und 18",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1124,10 +1154,25 @@
     "guid": "e434fd6d0742cbac394675e6b2cc5f55ef6198710b99799268ba19266e8f7734",
     "pubDate": "2026-10-08T16:36:00+02:00",
     "starts_at": "2026-10-08T16:36:00+02:00",
-    "ends_at": "2026-10-08T23:55:00+02:00",
+    "ends_at": "2026-10-08T17:46:00+02:00",
     "_identity": "wl|störung|L=52|D=2026-10-08|TK=polizeieinsatz",
     "_wl_ids": [
       "I20261008-0024"
+    ]
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "59A: Verkehrsüberlastung",
+    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
+    "pubDate": "2026-10-08T17:11:00+02:00",
+    "starts_at": "2026-10-08T17:11:00+02:00",
+    "ends_at": "2026-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=59A|D=2026-10-08|TK=59a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261008-0029"
     ]
   },
   {
@@ -1139,7 +1184,7 @@
     "guid": "adbc205fada2fc64ad22e011c50abe7d99265772e9404e3b8c41ed5b0dfc70d9",
     "pubDate": "2026-10-08T16:36:00+02:00",
     "starts_at": "2026-10-08T16:36:00+02:00",
-    "ends_at": "2026-10-08T23:55:00+02:00",
+    "ends_at": "2026-10-08T17:34:00+02:00",
     "_identity": "wl|störung|L=60|D=2026-10-08|TK=polizeieinsatz",
     "_wl_ids": [
       "I20261008-0024"

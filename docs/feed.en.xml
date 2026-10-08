@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 08 Oct 2026 17:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 17:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[4A/14A/59A: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">00805e247214cfaf545982b4b95007ea8a2466b38c0eaf2e743fa342ce44e36c</guid>
+      <pubDate>Thu, 08 Oct 2026 17:07:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 17:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 17:07:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 17:07]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 17:07]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[41: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,7 +27,7 @@
       <pubDate>Thu, 08 Oct 2026 16:38:00 +0200</pubDate>
       <ext:first_seen>Thu, 08 Oct 2026 16:38:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 08 Oct 2026 16:38:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 08 Oct 2026 17:43:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [Since 16:38]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 16:38]]]></content:encoded>
     </item>
@@ -27,7 +38,7 @@
       <pubDate>Thu, 08 Oct 2026 16:36:00 +0200</pubDate>
       <ext:first_seen>Thu, 08 Oct 2026 16:36:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 08 Oct 2026 16:36:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 08 Oct 2026 17:46:00 +0200</ext:ends_at>
       <description>After a service obstruction there are different intervals. [Since 16:36]</description>
       <content:encoded><![CDATA[After a service obstruction there are different intervals.<br/>[Since 16:36]]]></content:encoded>
     </item>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 08 Oct 2026 23:59:00 +0200</ext:ends_at>
       <description>Because of track construction works in Flurschützstraße, line N8 must be redirected. [Today]</description>
       <content:encoded><![CDATA[Because of track construction works in Flurschützstraße, line N8 must be redirected.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A/3A: Schwertgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
-      <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation. [From Fri 09.10. until 31.03.2027]</description>
-      <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation.<br/>[From Fri 09.10. until 31.03.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
