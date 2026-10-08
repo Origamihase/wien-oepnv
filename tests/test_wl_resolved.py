@@ -67,12 +67,13 @@ def _message(
     *,
     closed: float,
     created: float = 1,
+    start: float = 0,
     html: str | None = None,
 ) -> dict[str, Any]:
     """A long message (``stoerunglang``); a resolved one ends when WL closed it.
 
     WL creates the original a minute after its start and a follow-up
-    (``…-F01``) when the disruption ends.
+    (``…-F01``) when the disruption ends; a follow-up keeps the start.
     """
     return {
         "attributes": {"relatedLineTypes": {line: "ptBusCity"}},
@@ -89,7 +90,7 @@ def _message(
             "end": _at(closed) if status == "resolved" else _at(240),
             "lastUpdate": _at(closed),
             "resume": _at(closed),
-            "start": _at(0),
+            "start": _at(start),
         },
         "title": title,
     }
@@ -222,7 +223,7 @@ def test_tickers_of_a_running_incident_stay(monkeypatch: pytest.MonkeyPatch) -> 
     assert wl_resolved.remembered() == {}
 
 
-def test_a_ticker_saying_something_the_closed_incident_does_not_stays(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_a_works_ticker_beside_a_closed_incident_stays(monkeypatch: pytest.MonkeyPatch) -> None:
     """04.10. 23:31: "66A: Störung an einem Bahnübergang" closed beside the works ticker of 66A."""
     closed = _message(
         "I20261004-0025",
@@ -292,10 +293,99 @@ def test_a_ticker_may_begin_at_most_ten_minutes_before_the_incident(monkeypatch:
     assert events and wl_resolved.remembered() == {}
 
 
-def test_the_display_word_for_a_cause_counts(monkeypatch: pytest.MonkeyPatch) -> None:
-    """WL writes "Fremdunfall" on the display and "Fremder Verkehrsunfall" in the message."""
-    tickers = [_ticker("R1091-236", "Fahrtbehinderung\nFremdunfall", began=2.5, line="36B")]
-    assert _fetch(monkeypatch, [_36b_closed(), *tickers]) == []
+def test_a_ticker_leaves_whatever_cause_it_names(monkeypatch: pytest.MonkeyPatch) -> None:
+    """07.10.: the display said "Schadhafter Zug", the message "25, 26A: Betriebsstörung"."""
+    closed = _message(
+        "I20261007-0003",
+        "resolved",
+        "25",
+        "25, 26A: Betriebsstörung",
+        "Linie 25: Fahrtbehinderung in Richtung Aspern, Oberdorfstraße. Grund: Betriebsstörung.",
+        closed=40,
+    )
+    tickers = [_ticker(f"R{stop}-125", "Fahrtbehinderung\nSchadhafter Zug", began=3, line="25") for stop in (2373, 2374)]
+    assert _fetch(monkeypatch, [closed, *tickers]) == []
+
+
+def test_a_ticker_leaves_whatever_street_it_names(monkeypatch: pytest.MonkeyPatch) -> None:
+    """08.10.: "6: Rettungseinsatz züge halten Favoritenstraße 113" stood on place 2 after 10:09.
+
+    WL had closed the incident's aftermath notice, which names no street;
+    the ticker ran on until 14:00.
+    """
+    closed = _message(
+        "I20261008-0002-F01",
+        "resolved",
+        "6",
+        "6: Rettungseinsatz",
+        "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+        closed=167,
+        created=27,
+    )
+    ticker = _ticker("R404-106", "Rettungseinsatz\nzüge halten Favoritenstraße 113", began=1, line="6")
+    assert _fetch(monkeypatch, [closed, ticker]) == []
+    assert [record["name"] for record in wl_resolved.remembered().values()] == ["R404-106"]
+
+
+def test_a_ticker_of_a_newer_running_incident_on_the_line_stays(monkeypatch: pytest.MonkeyPatch) -> None:
+    """06.10. 19:04: tickers of "11, O: Fremder Verkehrsunfall" (19:00) as "74A, O" closed on the O."""
+    closed = _message(
+        "I20261006-0034",
+        "resolved",
+        "O",
+        "74A, O: Verkehrsüberlastung",
+        "Linie O: Fahrtbehinderung in Richtung Raxstraße. Grund: Verkehrsüberlastung.",
+        closed=70,
+    )
+    running = _message(
+        "I20261006-0037",
+        "active",
+        "O",
+        "11, O: Fremder Verkehrsunfall",
+        "Linie O: Fahrtbehinderung in Richtung Raxstraße. Grund: Fremder Verkehrsunfall.",
+        closed=70,
+        start=40,
+    )
+    ticker = _ticker("R1500-171", "Fremdunfall\nBetrieb ab Quellenplatz", began=44, line="O")
+    events = _fetch(monkeypatch, [closed, running, ticker])
+    assert events and wl_resolved.remembered() == {}
+
+
+def test_a_ticker_of_the_closed_incident_leaves_beside_a_newer_one(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A ticker begun before the newer incident on its line belongs to the older one."""
+    closed = _message(
+        "I20261006-0034", "resolved", "O", "O: Verkehrsüberlastung", "Linie O: Fahrtbehinderung.", closed=70
+    )
+    running = _message(
+        "I20261006-0037", "active", "O", "O: Fremder Verkehrsunfall", "Linie O: Fahrtbehinderung.", closed=70, start=40
+    )
+    ticker = _ticker("R1500-171", "Fahrtbehinderung\nVerkehrsüberlastung", began=2, line="O")
+    _fetch(monkeypatch, [closed, running, ticker])
+    assert [record["name"] for record in wl_resolved.remembered().values()] == ["R1500-171"]
+
+
+def test_a_works_ticker_switched_on_during_an_incident_stays(monkeypatch: pytest.MonkeyPatch) -> None:
+    """06.10. 01:00: the night works of the N49 went up 22 minutes into "N49: Verspätungen"."""
+    closed = _message(
+        "I20261005-0044", "resolved", "N49", "N49: Verspätungen", "Linie N49: Verspätungen.", closed=60
+    )
+    works = _ticker("R1448-549", "Gleisbauarbeiten\nBetrieb ab Johnstraße U", began=22, line="N49")
+    events = _fetch(monkeypatch, [closed, works])
+    assert events and wl_resolved.remembered() == {}
+
+
+def test_the_works_tickers_of_closed_works_leave(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A planned measure WL closes takes its own tickers along (rule 3 holds both ways)."""
+    closed = _message(
+        "I20261007-0027",
+        "resolved",
+        "N8",
+        "N8: Gleisbauarbeiten",
+        "Linie N8: Umleitung wegen Gleisbauarbeiten.",
+        closed=200,
+    )
+    works = _ticker("R1612-508", "Gleisbauarbeiten\nBusse halten Aßmayergasse", began=35, line="N8")
+    assert _fetch(monkeypatch, [closed, works]) == []
 
 
 def _38a_aftermath() -> dict[str, Any]:
@@ -323,43 +413,6 @@ def test_a_ticker_begun_with_the_aftermath_still_leaves(monkeypatch: pytest.Monk
     """05.10. 17:49: WL created the aftermath of "42: Falschparker" 52 s before a ticker of it."""
     late = _ticker("R1336-438", "Fahrtbehinderung\nFalschparker", began=17 + 52 / 60, line="38A")
     assert _fetch(monkeypatch, [_38a_aftermath(), late]) == []
-
-
-def test_a_word_the_display_shortened_counts(monkeypatch: pytest.MonkeyPatch) -> None:
-    """06.10. 18:30: the 14A tickers wrote "Gumpendorfer Str.", the incident "Gumpendorfer Straße".
-
-    The 13A tickers, spelling "Straße" out, left with the closed "13A, 14A:
-    Falschparker"; the 14A ones stood on as a second "14A: Falschparker".
-    """
-    closed = _message(
-        "I20261006-0033",
-        "resolved",
-        "14A",
-        "13A, 14A: Falschparker",
-        "Die Linie 14A wird in Richtung Reumannplatz U zwischen Neubaugasse U und Pilgramgasse U über "
-        "Gumpendorfer Straße, Getreidemarkt und Linke Wienzeile umgeleitet. Grund: Falschparker im "
-        "Bereich Kaunitzgasse 14.",
-        closed=22,
-    )
-    tickers = [
-        _ticker(f"R{stop}-414", "Falschparker\nUmleitung über Gumpendorfer Str., Linke Wienzeile", began=10, line="14A")
-        for stop in (666, 682)
-    ]
-    assert _fetch(monkeypatch, [closed, *tickers]) == []
-
-
-def test_a_shortened_word_the_incident_does_not_begin_with_stays(monkeypatch: pytest.MonkeyPatch) -> None:
-    closed = _message(
-        "I20261006-0033",
-        "resolved",
-        "14A",
-        "14A: Falschparker",
-        "Die Linie 14A wird über Getreidemarkt und Linke Wienzeile umgeleitet. Grund: Falschparker.",
-        closed=22,
-    )
-    ticker = _ticker("R666-414", "Falschparker\nUmleitung über Gumpendorfer Str., Linke Wienzeile", began=10, line="14A")
-    events = _fetch(monkeypatch, [closed, ticker])
-    assert events and wl_resolved.remembered() == {}
 
 
 # --- memory across runs (scripts/update_wl_cache.py) ------------------------

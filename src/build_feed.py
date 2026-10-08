@@ -71,6 +71,7 @@ from .providers.baustellen import REFERRAL_BOILERPLATE_RE
 from .providers.wl_text import _MONTHS_DE, STOP_NOTICE_LEAD_RE
 from .utils.text import (
     BLOCK_END_MARK,
+    PLANNED_DISRUPTION_RE,
     html_to_text,
     repair_glued_words,
     repair_saint_abbreviation,
@@ -1538,22 +1539,9 @@ def format_local_times(
     return _time_line_text(start_local, end_local, today).replace(" ", _NBSP)
 
 
-# A disruption that is planned rather than an incident: an event, a
-# demonstration, works, a state visit, a drill, a relocated stop. Its time
-# line stays "Heute" — the hour it began tells a reader nothing (operator
-# wish 2026-10-03). The words are the planned causes among the 2,324 WL
-# disruptions cached from July to October 2026 ("Laufveranstaltung",
-# "Gleisbauarbeiten", "Kranarbeiten", "Arbeiten am Stellwerk",
-# "Polizeiübung", "Haltestellenverlegung", "Netzänderung" included); ÖBB
-# names its planned closures "Bauarbeiten". Repairs are the consequence of
-# an incident, not a plan: "Wegen Reparaturarbeiten nach einem Unfall"
-# (ÖBB, 27.08.2026), "dringende Reperaturarbeiten an den Treppen" (WL,
-# "U3: Betriebsstörung", 17.09.2026) keep their "Seit".
-_PLANNED_DISRUPTION_RE: re.Pattern[str] = re.compile(
-    r"veranstaltung|demonstration|kundgebung|(?<!rep[ae]ratur)arbeiten\b|staatsbesuch|übung\b"
-    r"|verlegung\b|netzänderung",
-    re.IGNORECASE,
-)
+# A disruption that is planned rather than an incident: shared with
+# ``wl_resolved`` and described at :data:`src.utils.text.PLANNED_DISRUPTION_RE`.
+_PLANNED_DISRUPTION_RE = PLANNED_DISRUPTION_RE
 
 
 def _scheduled_clock(when: datetime) -> bool:

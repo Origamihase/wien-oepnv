@@ -184,22 +184,30 @@ verdrängt eine andere Störung.
     weiter in den Feed: „15A: Feuerwehreinsatz“ stand am 04.10. noch
     viereinhalb Stunden nach dem Abschluss, die Kurzmeldungen von „36B:
     Fremder Verkehrsunfall“ wurden am 05.10. ein neuer Eintrag auf Platz 1.
-    `src/providers/wl_resolved.py` verwirft sie schon beim Abruf: ihre
-    Linien gehören zur Störung (sonst aus dem Titel, die U6-Kurzmeldungen
-    nennen keine), Beginn zwischen zehn Minuten vor der Störung und ihrem
-    Ende, jedes eigene Wort (Ursache, Haltestelle, Straße) steht in der
-    Störung, und keine laufende Störung einer anderen WL-Nummer passt
-    ebenso. Ist die erledigte Meldung eine Folgemeldung „Nach einer
-    Fahrtbehinderung …“ (`…-F01`), endete die Störung, als WL sie anlegte;
-    WL schließt sie erst 20 bis 90 Minuten später. Eine Kurzmeldung, die
-    mehr als zwei Minuten nach der Anlage beginnt, gehört deshalb zu einer
-    neuen Störung und bleibt („38A: Falschparker“, 05.10.: Nachlauf von
-    11:30 bis 12:59 Uhr). Ein vom Display gekürztes Wort („Gumpendorfer
-    Str.“) steht in der Störung, wenn eines ihrer Wörter damit beginnt
-    („Gumpendorfer Straße“, 14A am 06.10.); „Bhf.“ und „ggü.“ zählen nicht
-    mit.
-    „66A: Bauarbeiten / Busse halten Salvatorianerplatz“ neben der
-    erledigten „66A: Störung an einem Bahnübergang“ bleibt daher.
+    `src/providers/wl_resolved.py` verwirft sie schon beim Abruf. Eine
+    Kurzmeldung gehört zur jüngsten WL-Meldung ihrer Art auf ihren Linien:
+    deren Linien umfassen die der Kurzmeldung (sonst aus dem Titel, die
+    U6-Kurzmeldungen nennen keine), sie begann höchstens zehn Minuten nach
+    der Kurzmeldung und von allen solchen Meldungen zuletzt, und beide sind
+    geplante Maßnahmen oder beide nicht (`PLANNED_DISRUPTION_RE` im Titel,
+    dieselbe Regel wie für „[Heute]“). Ist diese Meldung erledigt und begann
+    die Kurzmeldung vor dem Ende der Störung, geht sie mit. Was die
+    Kurzmeldung sagt, zählt seit 2026-10-08 nicht mehr: Vorher musste jedes
+    ihrer Wörter in der Störung stehen, und „6: Rettungseinsatz züge halten
+    Favoritenstraße 113“ stand am 08.10. noch vier Stunden nach dem
+    Abschluss auf Platz 2, weil der Nachlauf keine Straße nennt. Eine
+    jüngere laufende Störung einer anderen WL-Nummer auf denselben Linien
+    behält ihre Kurzmeldungen („11, O: Fremder Verkehrsunfall“ ab 19:00
+    neben der erledigten „74A, O: Verkehrsüberlastung“, 06.10.), eine
+    Bauarbeiten-Kurzmeldung neben einer erledigten Störung bleibt („N49:
+    Gleisbauarbeiten“ ab 01:00 während „N49: Verspätungen“, 06.10.; „66A:
+    Bauarbeiten / Busse halten Salvatorianerplatz“ neben „66A: Störung an
+    einem Bahnübergang“, 04.10.). Ist die erledigte Meldung eine
+    Folgemeldung „Nach einer Fahrtbehinderung …“ (`…-F01`), endete die
+    Störung, als WL sie anlegte; WL schließt sie erst 20 bis 90 Minuten
+    später. Eine Kurzmeldung, die mehr als zwei Minuten nach der Anlage
+    beginnt, gehört deshalb zu einer neuen Störung und bleibt („38A:
+    Falschparker“, 05.10.: Nachlauf von 11:30 bis 12:59 Uhr).
     `scripts/update_wl_cache.py` merkt sich die Kurzmeldungen (Name, Beginn,
     Titel) in `data/wl_resolved_tickers.json`, bis WL sie entfernt.
   - Sonst ist der Titel Linie und die häufigste Ursache der Gruppe; ohne

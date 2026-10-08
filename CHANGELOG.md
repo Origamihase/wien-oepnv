@@ -5,6 +5,29 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Feed: Kurzmeldungen gehen mit ihrer erledigten WL-Störung, egal was sie
+  sagen (2026-10-08)**: Betreiberentscheidung „Erledigtes entfernen“. Am
+  08.10. stand „6: Rettungseinsatz züge halten Favoritenstraße 113“ von
+  10:30 bis 13:30 auf Platz 2 bis 4 des Feeds, obwohl WL die Störung um
+  10:09 erledigt hatte: Eine Kurzmeldung ging nur mit, wenn jedes ihrer
+  Wörter in der erledigten Meldung stand, und der Nachlauf „Nach einer
+  Fahrtbehinderung …“ nennt keine Straße. Jetzt gehört eine Kurzmeldung
+  allein nach Linien und Zeit zur jüngsten WL-Meldung ihrer Art auf ihren
+  Linien (begonnen höchstens zehn Minuten nach ihr; geplante Maßnahme oder
+  nicht nach derselben Regel wie „[Heute]“) und geht mit ihr, wenn sie vor
+  dem Ende der Störung begann (`src/providers/wl_resolved.py`). Eine jüngere
+  laufende Störung einer anderen WL-Nummer auf denselben Linien behält ihre
+  Kurzmeldungen, ebenso eine Bauarbeiten-Kurzmeldung neben einer erledigten
+  Störung. Gezählt über alle 186 WL-Abrufe seit 04.10.: 339 Kurzmeldungen
+  von 36 erledigten Störungen, die alte Regel ließ 40 davon (6 Störungen)
+  stehen. Nachgespielt bis in den Feed: 15 Feed-Stände ändern sich, in
+  allen fallen nur Kurzmeldungen erledigter Störungen weg (1, 97A, 5, 48A,
+  6 und 11); am 07.10. um 17:30 und am 08.10. um 09:31 und 10:00 rücken
+  dadurch zwei Nachläufe zu einem Eintrag zusammen, am 08.10. um 12:31 steht
+  „11: Schadhaftes Fahrzeug“ ohne den alten Rettungseinsatz. Die
+  Wortliste, die Ursachen-Synonyme und die Regel für gekürzte Wörter
+  („Str.“) entfallen; `PLANNED_DISRUPTION_RE` liegt jetzt in
+  `src/utils/text.py`.
 * **Feed: Kurzmeldungen verdrängen keine ausführliche WL-Störung mehr
   (2026-10-07)**: Prüfung aller seit 04.10. verworfenen Meldungen
   (`data/raw/`, 141 WL-, 66 ÖBB-, 3 Baustellen-Stände). Die Regel E im
