@@ -1,41 +1,5 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": [
-  {
-   "key": "R1338-142|2026-10-08T21:37:22.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1338-142",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T22:36:00.000+0200",
-   "incident": "I20261008-0040"
-  },
-  {
-   "key": "R1342-142|2026-10-08T21:44:22.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1342-142",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T22:44:00.000+0200",
-   "incident": "I20261008-0040"
-  },
-  {
-   "key": "R3877-142|2026-10-08T21:44:25.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R3877-142",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T22:44:00.000+0200",
-   "incident": "I20261008-0040"
-  },
-  {
-   "key": "R3878-142|2026-10-08T21:44:25.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R3878-142",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T22:44:00.000+0200",
-   "incident": "I20261008-0040"
-  },
-  {
-   "key": "R524-142|2026-10-08T21:44:23.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R524-142",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-08T22:44:00.000+0200",
-   "incident": "I20261008-0040"
-  }
- ]
+ "tickers": []
 }

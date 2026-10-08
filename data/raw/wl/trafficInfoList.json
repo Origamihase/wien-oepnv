@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261008-0037-F01, I20261008-0037, I20261008-0039-F01, I20260917-0012, I20260922-0032, I20261008-0040, I20261008-0042, I20261008-0040-F01, I20260925-0011, I20260909-0007, I20261008-0042-F01, I20261008-0041, I20261008-0038-F01"
+    "trafficInfoNameList": "I20261008-0037-F01, I20261008-0037, I20261008-0039-F01, I20260917-0012, I20260922-0032, I20261008-0042, I20261008-0040-F01, I20260925-0011, I20260909-0007, I20261008-0042-F01, I20261008-0041, I20261008-0038-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R116-136, R36-152, R115-136, R117-136, R45-136, R19-136, R130-136, R119-136, R118-136, R100-136, R101-136, R102-136, R103-136, R2558-125, R5815-671, R2025-671, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1177-0, R1974-466, R500-101, R1797-463, R1595-463, R1338-142, R1342-142, R524-142, R3878-142, R3877-142, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R130-136, R119-136, R19-136, R36-152, R45-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R2558-125, R5815-671, R2025-671, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1177-0, R1974-466, R1797-463, R1595-463, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -345,41 +345,6 @@
      "start": "2026-10-08T21:08:00.000+0200"
     },
     "title": "8A: Feuerwehreinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "42": "ptTram"
-     }
-    },
-    "description": "Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 22:00 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Währinger Gürtel.",
-    "descriptionHTML": "Linie 42:<br>Fahrtbehinderung in Richtung Antonigasse.<br> <br>Voraussichtliche Dauer: 22:00 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Bereich Währinger Gürtel.",
-    "location": "Währinger Gürtel",
-    "name": "I20261008-0040",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "142",
-       "lineName": "42",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T21:38:00.000+0200",
-     "end": "2026-10-08T21:51:00.000+0200",
-     "lastUpdate": "2026-10-08T21:51:00.000+0200",
-     "resume": "2026-10-08T21:51:00.000+0200",
-     "start": "2026-10-08T21:37:00.000+0200"
-    },
-    "title": "42: Schadhaftes Fahrzeug"
    },
    {
     "attributes": {
@@ -721,42 +686,6 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1338-142",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedStops": [
-     1338
-    ],
-    "time": {
-     "end": "2026-10-08T22:36:00.000+0200",
-     "start": "2026-10-08T21:37:22.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1342-142",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedStops": [
-     1342
-    ],
-    "time": {
-     "end": "2026-10-08T22:44:00.000+0200",
-     "start": "2026-10-08T21:44:22.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -1386,42 +1315,6 @@
     "title": "Züge halten\nbei Linien 6 und 18"
    },
    {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R3877-142",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedStops": [
-     3877
-    ],
-    "time": {
-     "end": "2026-10-08T22:44:00.000+0200",
-     "start": "2026-10-08T21:44:25.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R3878-142",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedStops": [
-     3878
-    ],
-    "time": {
-     "end": "2026-10-08T22:44:00.000+0200",
-     "start": "2026-10-08T21:44:25.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
     "description": "Züge halten\nWipplingerstr 39",
     "name": "R45-136",
     "owner": "WL",
@@ -1438,42 +1331,6 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
-   },
-   {
-    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
-    "name": "R500-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     500
-    ],
-    "time": {
-     "end": "2026-10-08T23:00:00.000+0200",
-     "start": "2026-10-08T05:00:13.000+0200"
-    },
-    "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R524-142",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedStops": [
-     524
-    ],
-    "time": {
-     "end": "2026-10-08T22:44:00.000+0200",
-     "start": "2026-10-08T21:44:23.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
