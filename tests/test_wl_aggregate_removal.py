@@ -143,3 +143,44 @@ def test_display_ticker_of_works_removed_beside_works_notice(
     titles = [it["title"] for it in _run(monkeypatch, [works, ticker])]
 
     assert titles == ["5/12/37: Gleisbauarbeiten"]
+
+
+def test_display_tickers_do_not_cover_a_long_incident_message(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Regression 2026-10-07 (Rohdaten 2026-10-05 09:31 MESZ): Die zwei
+    Anzeigetafel-Kurzmeldungen deckten nach Wörtern die ausführliche Meldung
+    „10, 60: Polizeieinsatz“ ab, und E entfernte sie samt Maßnahmen und
+    Dauer. Eine Kurzmeldung deckt nie eine ausführliche Meldung ab."""
+    incident = _make_event("10, 60: Polizeieinsatz", ["10", "60"])
+    incident["name"] = "I20261005-0016"
+    incident["description"] = (
+        "Linie 10: Betrieb nur zwischen Dornbach und Linzer Straße. "
+        "Linie 60: Kein Betrieb zwischen Penzinger Straße und Anschützgasse. "
+        "Voraussichtliche Dauer: 09:50 Uhr. Grund: Polizeieinsatz."
+    )
+    ticker10 = _make_event("Fahrtbehinderung wegen Polizeieinsatz", ["10"])
+    ticker10["name"] = "R1559-160"
+    ticker60 = _make_event("Polizeieinsatz Betrieb ab Anschützgasse", ["60"])
+    ticker60["name"] = "R572-160"
+
+    items = _run(monkeypatch, [incident, ticker10, ticker60])
+
+    kept = [it for it in items if it["title"] == "10/60: Polizeieinsatz"]
+    assert kept, [it["title"] for it in items]
+    assert "Dornbach" in kept[0]["description"]
+
+
+def test_long_incident_message_not_removed_by_a_wider_display_ticker(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """F: Eine Kurzmeldung für mehr Linien entfernt keine ausführliche Meldung."""
+    incident = _make_event("2: Rettungseinsatz", ["2"])
+    incident["name"] = "I20261005-0031"
+    incident["description"] = "Linie 2: Fahrtbehinderung in Richtung Dornbach. Grund: Rettungseinsatz."
+    ticker = _make_event("Fahrtbehinderung wegen Rettungseinsatz", ["2", "12"])
+    ticker["name"] = "R2420-118"
+
+    titles = [it["title"] for it in _run(monkeypatch, [incident, ticker])]
+
+    assert "2: Rettungseinsatz" in titles, titles

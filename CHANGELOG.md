@@ -5,6 +5,23 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Feed: Kurzmeldungen verdrängen keine ausführliche WL-Störung mehr
+  (2026-10-07)**: Prüfung aller seit 04.10. verworfenen Meldungen
+  (`data/raw/`, 141 WL-, 66 ÖBB-, 3 Baustellen-Stände). Die Regel E im
+  WL-Abruf entfernt eine Meldung für mehrere Linien, wenn Einzelmeldungen
+  ihrer Linien sagen, was ihr Titel sagt. Als Einzelmeldung zählten auch
+  Anzeigetafel-Kurzmeldungen, und deren Ursache steht immer im Titel der
+  Störung: Am 05.10. um 09:31 fehlte „10, 60: Polizeieinsatz“ mit „Betrieb
+  nur zwischen Dornbach und Linzer Straße … Voraussichtliche Dauer: 09:50
+  Uhr“, der Feed zeigte „60: Polizeieinsatz“ und „10: Polizeieinsatz“ auf
+  zwei Plätzen. Seit 04.10. traf das fünf Störungen (10/60, D/71, 2/12,
+  13A/14A, 11/O) für je einen oder zwei Läufe. Eine Kurzmeldung deckt jetzt
+  nie eine ausführliche Meldung mit WL-Nummer ab, in E wie in F
+  (`_may_cover` in `src/providers/wl_fetch.py`). Nachgespielt über alle 141
+  WL-Abrufe seit 04.10. bis in den Feed: acht Feed-Stände ändern sich, in
+  allen steht die ausführliche Meldung statt der Kurzmeldungen, am 05.10. um
+  09:31 ein Platz frei. Die Verwürfe von ÖBB und Stadt Wien folgen den
+  geltenden Regeln.
 * **Feed: Kurzmeldungen mit „Str.“ gehen mit ihrer erledigten Störung
   (2026-10-07)**: Gegenprüfung der Merges seit 05.10. Am 06.10. um 18:30
   stand „14A: Falschparker“ ein zweites Mal im Feed, neben dem Nachlauf der
