@@ -794,8 +794,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Rettungseinsatz Betrieb ab Quellenplatz",
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+    "title": "11: Rettungseinsatz Züge halten bei Li. O Ri. Raxstraße",
+    "description": "Rettungseinsatz\nZüge halten bei Li. O Ri. Raxstraße",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e",
     "pubDate": "2026-10-08T07:23:27+02:00",
@@ -826,6 +826,18 @@
     "starts_at": "2026-10-07T00:00:18+02:00",
     "ends_at": "2026-10-08T23:59:59+02:00",
     "_identity": "wl|störung|L=12A|D=2026-10-07|TK=betrieb ab schweglerstrasse 19 21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Rettungseinsatz Betrieb ab Laxenburger Straße, Gudrunstraße",
+    "description": "Rettungseinsatz\nBetrieb ab Laxenburger Straße, Gudrunstraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "84e4d671a35989861eaae0ffbdc51ac7176f80e2aad351517d17f4ba18c5e2ac",
+    "pubDate": "2026-10-08T07:31:28+02:00",
+    "starts_at": "2026-10-08T07:32:28+02:00",
+    "ends_at": "2026-10-08T08:31:00+02:00",
+    "_identity": "wl|störung|L=14A|D=2026-10-08|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -1052,6 +1064,21 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "68A/68B: Rettungseinsatz",
+    "description": "Die Linie 68B wird in Richtung Reumannplatz U zwischen Eisenstadtplatz und Reumannplatz U über Laaerberg Straße umgeleitet. Die Linie 68A wird in Richtung Reumannplatz U zwischen Eisenstadtplatz und Reumannplatz U über Laaerberg Straße umgeleitet. Voraussichtliche Dauer: 08:00 Uhr. Grund: Rettungseinsatz im Bereich Quellenstraße 107.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ec34bbe682c553021141c55ba3646c7f384930a7304a9f939aab17a5d4509225",
+    "pubDate": "2026-10-08T07:41:00+02:00",
+    "starts_at": "2026-10-08T07:41:00+02:00",
+    "ends_at": "2026-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=68A,68B|D=2026-10-08|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261008-0005"
+    ]
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "6: Rettungseinsatz züge halten Favoritenstraße 113",
     "description": "Rettungseinsatz\nzüge halten Favoritenstraße 113",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1151,6 +1178,21 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-10-08T07:37:00+02:00",
+    "starts_at": "2026-10-08T07:37:00+02:00",
+    "ends_at": "2026-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-10-08|TK=u1 verspätungen",
+    "_wl_ids": [
+      "I20261008-0004"
+    ]
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "U3: Verspätungen",
     "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1161,6 +1203,21 @@
     "_identity": "wl|störung|L=U3|D=2026-10-08|TK=u3 verspätungen",
     "_wl_ids": [
       "I20261008-0003"
+    ]
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verunreinigung",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "915e18ead502dc8610d1f4cabb6ce6d6bdc2826f1da93bdee9f3fb85f4d65515",
+    "pubDate": "2026-10-08T07:50:00+02:00",
+    "starts_at": "2026-10-08T07:50:00+02:00",
+    "ends_at": "2026-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-10-08|TK=u6 verunreinigung",
+    "_wl_ids": [
+      "I20261008-0006"
     ]
   },
   {

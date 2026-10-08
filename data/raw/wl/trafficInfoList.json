@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261008-0001, I20260917-0012, I20260922-0032, I20261008-0002, I20260925-0011, I20261008-0003, I20260909-0007"
+    "trafficInfoNameList": "I20261008-0001, I20260917-0012, I20260922-0032, I20260925-0011, I20261008-0003, I20261008-0004, I20261008-0006, I20261008-0005, I20261008-0002, I20260909-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R45-136, R100-136, R36-152, R102-136, R101-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R1177-0, R1974-466, R500-101, R423-106, R424-106, R422-106, R423-111, R422-111, R1926-111, R1925-111, R404-106, R405-106, R418-106, R420-106, R421-106, R420-111, R421-111, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R45-136, R100-136, R36-152, R102-136, R101-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R1177-0, R1974-466, R500-101, R424-106, R423-106, R422-106, R422-111, R423-111, R1925-111, R1926-111, R405-106, R404-106, R420-106, R418-106, R421-106, R421-111, R420-111, R762-414, R761-414, R764-414, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -245,11 +245,12 @@
     "attributes": {
      "relatedLineTypes": {
       "11": "ptTram",
+      "14A": "ptBusCity",
       "6": "ptTram"
      }
     },
-    "description": "Linie 6: Betrieb nur zwischen Burggasse, Stadthalle U und Reumannplatz U. Linie 11: Umleitung in Richtung Otto-Probst-Platz zwischen Absberggasse und Quellenplatz über Hauptbahnhof S U. Voraussichtliche Dauer: 07:50 Uhr. Grund: Rettungseinsatz im Bereich Quellenstraße 107.",
-    "descriptionHTML": "Linie 6:<br>Betrieb nur zwischen Burggasse, Stadthalle U und Reumannplatz U.<br>Linie 11:<br>Umleitung in Richtung Otto-Probst-Platz<br>zwischen Absberggasse und Quellenplatz <br>über Hauptbahnhof S U.<br> <br>Voraussichtliche Dauer: 07:50 Uhr.<br><br>Grund: Rettungseinsatz im Bereich Quellenstraße 107.",
+    "description": "Linie 6: Betrieb nur zwischen Burggasse, Stadthalle U und Reumannplatz U. Linie 11: Umleitung in Richtung Otto-Probst-Platz zwischen Absberggasse und Quellenplatz über Hauptbahnhof S U. Linie 14A: Betrieb nur zwischen Neubaugasse U und Laxenburger Straße, Gudrunstraße. Voraussichtliche Dauer: 08:00Uhr. Grund: Rettungseinsatz im Bereich Quellenstraße 107.",
+    "descriptionHTML": "Linie 6:<br>Betrieb nur zwischen Burggasse, Stadthalle U und Reumannplatz U.<br>Linie 11:<br>Umleitung in Richtung Otto-Probst-Platz<br>zwischen Absberggasse und Quellenplatz <br>über Hauptbahnhof S U.<br>Linie 14A:<br>Betrieb nur zwischen Neubaugasse U und Laxenburger Straße, Gudrunstraße.<br> <br>Voraussichtliche Dauer: 08:00Uhr.<br><br>Grund: Rettungseinsatz im Bereich Quellenstraße 107.",
     "location": "Quellenstraße 107",
     "name": "I20261008-0002",
     "owner": "WL",
@@ -257,6 +258,7 @@
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
      "11",
+     "14A",
      "6"
     ],
     "relatedLinesDetails": [
@@ -270,6 +272,11 @@
        "lineId": "111",
        "lineName": "11",
        "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "414",
+       "lineName": "14A",
+       "vehicleType": "ptBusCity"
       }
      ]
     ],
@@ -277,10 +284,10 @@
     "time": {
      "created": "2026-10-08T07:28:00.000+0200",
      "end": "2026-10-08T23:55:00.000+0200",
-     "lastUpdate": "2026-10-08T07:28:00.000+0200",
+     "lastUpdate": "2026-10-08T07:53:00.000+0200",
      "start": "2026-10-08T07:22:00.000+0200"
     },
-    "title": "6, 11: Rettungseinsatz"
+    "title": "6, 11, 14A: Rettungseinsatz"
    },
    {
     "attributes": {
@@ -315,6 +322,115 @@
      "start": "2026-10-08T07:29:00.000+0200"
     },
     "title": "U3: Verspätungen"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261008-0004",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "301",
+       "lineName": "U1",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-08T07:37:00.000+0200",
+     "end": "2026-10-08T23:55:00.000+0200",
+     "lastUpdate": "2026-10-08T07:37:00.000+0200",
+     "resume": "2026-10-08T07:37:00.000+0200",
+     "start": "2026-10-08T07:37:00.000+0200"
+    },
+    "title": "U1: Verspätungen"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "68A": "ptBusCity",
+      "68B": "ptBusCity"
+     }
+    },
+    "description": "Die Linie 68B wird in Richtung Reumannplatz U zwischen Eisenstadtplatz und Reumannplatz U über Laaerberg Straße umgeleitet. Die Linie 68A wird in Richtung Reumannplatz U zwischen Eisenstadtplatz und Reumannplatz U über Laaerberg Straße umgeleitet. Voraussichtliche Dauer: 08:00 Uhr. Grund: Rettungseinsatz im Bereich Quellenstraße 107.",
+    "descriptionHTML": "Die Linie 68B wird in Richtung Reumannplatz U zwischen Eisenstadtplatz und Reumannplatz U über Laaerberg Straße umgeleitet.<br>Die Linie 68A wird in Richtung Reumannplatz U zwischen Eisenstadtplatz und Reumannplatz U über Laaerberg Straße umgeleitet.<br> <br>Voraussichtliche Dauer: 08:00 Uhr.<br><br>Grund: Rettungseinsatz im Bereich Quellenstraße 107.",
+    "location": "Quellenstraße  107",
+    "name": "I20261008-0005",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "68A",
+     "68B"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "468",
+       "lineName": "68A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "268",
+       "lineName": "68B",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-08T07:44:00.000+0200",
+     "end": "2026-10-08T23:55:00.000+0200",
+     "lastUpdate": "2026-10-08T07:52:00.000+0200",
+     "start": "2026-10-08T07:41:00.000+0200"
+    },
+    "title": "68A, 68B: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "descriptionHTML": "Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verunreinigung.",
+    "name": "I20261008-0006",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-08T07:51:00.000+0200",
+     "end": "2026-10-08T23:55:00.000+0200",
+     "lastUpdate": "2026-10-08T07:51:00.000+0200",
+     "resume": "2026-10-08T07:50:00.000+0200",
+     "start": "2026-10-08T07:50:00.000+0200"
+    },
+    "title": "U6: Verunreinigung"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1319,7 +1435,7 @@
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Rettungseinsatz\nZüge halten bei Li. O Ri. Raxstraße",
     "name": "R423-111",
     "owner": "WL",
     "priority": "1",
@@ -1331,10 +1447,10 @@
      423
     ],
     "time": {
-     "end": "2026-10-08T08:22:00.000+0200",
+     "end": "2026-10-08T08:29:00.000+0200",
      "start": "2026-10-08T07:23:27.000+0200"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Rettungseinsatz\nZüge halten bei Li. O Ri. Raxstraße"
    },
    {
     "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
@@ -1404,6 +1520,60 @@
      "start": "2026-10-07T00:00:17.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R761-414",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "14A"
+    ],
+    "relatedStops": [
+     761
+    ],
+    "time": {
+     "end": "2026-10-08T08:31:00.000+0200",
+     "start": "2026-10-08T07:31:28.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R762-414",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "14A"
+    ],
+    "relatedStops": [
+     762
+    ],
+    "time": {
+     "end": "2026-10-08T08:31:00.000+0200",
+     "start": "2026-10-08T07:31:28.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Laxenburger Straße, Gudrunstraße",
+    "name": "R764-414",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "14A"
+    ],
+    "relatedStops": [
+     764
+    ],
+    "time": {
+     "end": "2026-10-08T08:31:00.000+0200",
+     "start": "2026-10-08T07:32:28.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Laxenburger Straße, Gudrunstraße"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",

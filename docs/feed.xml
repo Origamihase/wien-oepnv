@@ -7,10 +7,43 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 08 Oct 2026 07:31:03 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 08:00:46 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U3: Verspätungen]]></title>
+      <title><![CDATA[68A/68B: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ec34bbe682c553021141c55ba3646c7f384930a7304a9f939aab17a5d4509225</guid>
+      <pubDate>Thu, 08 Oct 2026 07:41:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 08:00:46 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 07:41:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Die Linie 68B wird in Richtung Reumannplatz U zwischen Eisenstadtplatz und Reumannplatz U über Laaerberg Straße umgeleitet. [Seit 07:41]</description>
+      <content:encoded><![CDATA[Die Linie 68B wird in Richtung Reumannplatz U zwischen Eisenstadtplatz und Reumannplatz U über Laaerberg Straße umgeleitet.<br/>[Seit 07:41]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Verunreinigung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">915e18ead502dc8610d1f4cabb6ce6d6bdc2826f1da93bdee9f3fb85f4d65515</guid>
+      <pubDate>Thu, 08 Oct 2026 07:50:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 07:50:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 07:50:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Seit 07:50]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Seit 07:50]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[14A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">84e4d671a35989861eaae0ffbdc51ac7176f80e2aad351517d17f4ba18c5e2ac</guid>
+      <pubDate>Thu, 08 Oct 2026 07:31:28 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 07:31:28 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 07:32:28 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 08:31:00 +0200</ext:ends_at>
+      <description>Betrieb ab Laxenburger Straße, Gudrunstraße. [Seit 07:31]</description>
+      <content:encoded><![CDATA[Betrieb ab Laxenburger Straße, Gudrunstraße.<br/>[Seit 07:31]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U1/U3: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
       <pubDate>Thu, 08 Oct 2026 07:29:00 +0200</pubDate>
@@ -28,8 +61,8 @@
       <ext:first_seen>Thu, 08 Oct 2026 07:23:27 +0200</ext:first_seen>
       <ext:starts_at>Thu, 08 Oct 2026 07:29:58 +0200</ext:starts_at>
       <ext:ends_at>Thu, 08 Oct 2026 08:29:00 +0200</ext:ends_at>
-      <description>Betrieb ab Quellenplatz. [Seit 07:23]</description>
-      <content:encoded><![CDATA[Betrieb ab Quellenplatz.<br/>[Seit 07:23]]]></content:encoded>
+      <description>Züge halten bei Li. O Ri. Raxstraße. [Seit 07:23]</description>
+      <content:encoded><![CDATA[Züge halten bei Li. O Ri. Raxstraße.<br/>[Seit 07:23]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[6: Rettungseinsatz züge halten Favoritenstraße 113]]></title>
@@ -85,39 +118,6 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 … [Bis 28.10.]</description>
       <content:encoded><![CDATA[Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 …<br/>[Bis 28.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S80: ÖBB-Ersatzbus]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Thu, 08 Oct 2026 05:00:13 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 05:00:13 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 23:00:00 +0200</ext:ends_at>
-      <description>Bhf. Hütteldorf [Heute]</description>
-      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A/7A/N62: Eibesbrunnergasse beide Fahrtrichtungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bd6cbe1a4ea6d909912fce8527e38411ee42a952a91a70beecf363c26cd3e728</guid>
-      <pubDate>Mon, 05 Oct 2026 16:10:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 16:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 … [Bis 06.11.]</description>
-      <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 …<br/>[Bis 06.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
-      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
-      <content:encoded><![CDATA[Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
