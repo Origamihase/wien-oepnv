@@ -68,6 +68,7 @@ from .utils.locking import file_lock
 from .utils.logging import sanitize_log_arg
 from .utils.stats import append_disruption_row, extract_location_name
 from .providers.baustellen import REFERRAL_BOILERPLATE_RE
+from .providers.wl_plausibility import end_unknown
 from .providers.wl_text import _MONTHS_DE, STOP_NOTICE_LEAD_RE
 from .utils.text import (
     BLOCK_END_MARK,
@@ -1456,7 +1457,10 @@ def _plausible_end(
     today, or past the start when that is still ahead. Measured from the
     start alone, a long-running item lost a near, plausible end: "N8:
     Thaliastraße U" read "Seit 24.07.2024" on 2026-10-02 although WL named
-    16.11.2026.
+    16.11.2026. (That end is WL's 11:11 expiry date, and since 2026-10-08
+    the line leaves it out on purpose, see
+    :func:`src.providers.wl_plausibility.end_unknown`; the rule stays for
+    real ends.)
     """
     if end_local is None:
         return None
@@ -10134,10 +10138,14 @@ def _format_item_content(
     # Minimal cleanup
     title_out = _WHITESPACE_RE.sub(" ", title_out).strip()
 
-    # Line 2: Timeframe
+    # Line 2: Timeframe. WL's 11:11 expiry date is no end (see
+    # :func:`wl_plausibility.end_unknown`); the line then reads "Seit …".
+    shown_end = ends_at if isinstance(ends_at, datetime) else None
+    if _is_wl_notice(it) and end_unknown(str(it.get("description") or ""), shown_end):
+        shown_end = None
     time_line = format_local_times(
         starts_at if isinstance(starts_at, datetime) else None,
-        ends_at if isinstance(ends_at, datetime) else None,
+        shown_end,
         since=_incident_since(
             it, starts_at, _first_published(it, state.get(ident) if state is not None else None)
         ),

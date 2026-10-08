@@ -5,6 +5,17 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **WL: Kein Ende statt 11:11-Ablaufdatum (2026-10-08)**:
+  Betreiberentscheidung „Kein Ende“. WL setzt bei Hinweisen ohne bekanntes
+  Ende ein Ablaufdatum um 11:11, meist ein Jahr nach der Veröffentlichung;
+  122 von 124 solcher Hinweise seit Februar verschwanden lange davor. Nennt
+  der Text weder ein Ende noch eine Dauer, zeigt die Zeitzeile jetzt kein
+  Ende mehr: 72A Haidestraße S „[Seit 08.10.]“ statt „[Bis 08.10.2027]“,
+  48A Neustiftgasse „[Ab 19.10.]“ statt „[Ab 19.10. bis 08.10.2027]“ (am
+  08.10. 25 von 49 Hinweisen mit 11:11-Ende). Dauern in Jahren („für etwa
+  ein Jahr“, „1,5 Jahre“) zählen jetzt wie Wochen und Monate. Das
+  Ablaufdatum selbst und die Reihenfolge bleiben. Details in
+  `docs/architecture.md`.
 * **EN-Feed: Sinnfehler als Klassen behoben (2026-10-08)**: Betreiberwahl
   „EN-Sinnfehler“. Alle 3.003 verschiedenen deutschen Texte des Feeds seit
   Juli liefen in der CI durch das echte Übersetzungsmodell, alter gegen

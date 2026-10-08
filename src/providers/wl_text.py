@@ -530,15 +530,16 @@ def extract_end_from_description(
 # auf Dauer von etwa sechs Wochen" (29B/N25), "Von Montag, 05. Oktober 2026,
 # auf Dauer von etwa vier Wochen, täglich von 20:00 Uhr bis 05:00 Uhr" (63A).
 # Four notices on 2026-10-02, all with an 11:11 end.
-_NUMBER_WORDS = {
-    "einen": 1, "einer": 1, "eine": 1, "ein": 1, "zwei": 2, "drei": 3, "vier": 4,
+_NUMBER_WORDS: dict[str, float] = {
+    "eineinhalb": 1.5, "anderthalb": 1.5,
+    "einem": 1, "einen": 1, "einer": 1, "eine": 1, "ein": 1, "zwei": 2, "drei": 3, "vier": 4,
     "fünf": 5, "sechs": 6, "sieben": 7, "acht": 8, "neun": 9, "zehn": 10, "elf": 11, "zwölf": 12,
 }
-_UNIT_DAYS = {"tag": 1, "woche": 7, "monat": 30}
+_UNIT_DAYS = {"tag": 1, "woche": 7, "monat": 30, "jahr": 365}
 _PERIOD_DURATION_RE = re.compile(
     r"\b(?:Dauer\s+von|für)\s+(?:(?:etwa|ca\.|circa|rund|ungefähr|voraussichtlich)\s+)?"
-    r"(?P<count>\d{1,2}|" + "|".join(_NUMBER_WORDS) + r")\s+"
-    r"(?P<unit>Tag(?:e|en)?|Woche(?:n)?|Monat(?:e|en)?)\b",
+    r"(?P<count>\d{1,2}(?:,\d)?|" + "|".join(_NUMBER_WORDS) + r")\s+"
+    r"(?P<unit>Tag(?:e|en)?|Woche(?:n)?|Monat(?:e|en)?|Jahr(?:e|en)?)\b",
     re.IGNORECASE | re.UNICODE,
 )
 
@@ -546,8 +547,12 @@ _PERIOD_DURATION_RE = re.compile(
 def extract_duration_from_description(description: str) -> timedelta | None:
     """The duration the "Zeitraum:" section names ("auf Dauer von etwa sechs Wochen"), or ``None``.
 
-    Days, weeks and months (30 days), as a number or a word up to
-    "zwölf". ``None`` without the heading, with phases or without a
+    Days, weeks, months (30 days) and years (365 days), as a number
+    ("1,5" too) or a word up to "zwölf" ("eineinhalb" too). Years came in
+    with the decision of 2026-10-08: "1A: Habsburgergasse" ("für etwa ein
+    Jahr"), "57A: Haus des Meeres" ("für ca. 1 Jahr") and "26A, N20:
+    Siebeckstraße" ("für etwa 1,5 Jahre") kept WL's 11:11 expiry two and
+    three years out. ``None`` without the heading, with phases or without a
     duration before the measures.
     """
     section = _period_section(description)
@@ -555,7 +560,7 @@ def extract_duration_from_description(description: str) -> timedelta | None:
     if match is None:
         return None
     count_str = match.group("count").lower()
-    count = int(count_str) if count_str.isdigit() else _NUMBER_WORDS[count_str]
+    count = _NUMBER_WORDS[count_str] if count_str in _NUMBER_WORDS else float(count_str.replace(",", "."))
     unit = match.group("unit").lower()
     days = next(per_unit for name, per_unit in _UNIT_DAYS.items() if unit.startswith(name))
     return timedelta(days=count * days) if count > 0 else None
