@@ -26,6 +26,52 @@
   {
    "geometry": {
     "first_position": [
+     16.34376235,
+     48.21524155
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Albertgasse von Kreuzung Josef-Matthias-Hauer-Platz und Josefstädter Straße bis Kreuzung Florianigas",
+    "BEZIRK": 8,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-12Z",
+    "OBJEKT_ENDE": "2027-09-01Z",
+    "PRESSETEXT": "Bauphase 1 von 2 (13.10.2026 bis Mitte März 2027): Die Arbeiten erfolgen im Bereich Albertgasse von Josefstädter Straße bis Florianigasse. Der motorisierte Individualverkehr bleibt aufrecht. DerFußgänger- und Radverkehr kann aufrecht gehalten werden.Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.34402162,
+     48.21060894
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Albertgasse von Kreuzung Josef-Matthias-Hauer-Platz und Josefstädter Straße bis Kreuzung Florianigas",
+    "BEZIRK": 8,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-12Z",
+    "OBJEKT_ENDE": "2027-09-01Z",
+    "PRESSETEXT": "Bauphase 1 von 2 (13.10.2026 bis Mitte März 2027): Die Arbeiten erfolgen im Bereich Albertgasse von Josefstädter Straße bis Florianigasse. Der motorisierte Individualverkehr bleibt aufrecht. DerFußgänger- und Radverkehr kann aufrecht gehalten werden.Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.35994769,
      48.22798854
     ],
@@ -42,7 +88,7 @@
     "GISCODE_TXT": "P90 Baustellen",
     "OBJEKT_BEGINN": "2026-09-21Z",
     "OBJEKT_ENDE": "2026-11-15Z",
-    "PRESSETEXT": "Bauphase 1 von 3 (22.09.2026 bis 11.10.2026): Die Althanstraße wird von Lichtentaler Gasse bis Badgasse als Einbahn geführt. Die Umleitung für die Fahrtrichtung stadteinwärts erfolgt über: Badgasse - Reznicekgasse - Wiesengasse - Fechtergasse. Eine großräumige Umfahrung über die Liechtensteinstraße oder Spittelauer Lände wird empfohlen.",
+    "PRESSETEXT": "Bauphase 1 von 3 (22.09.2026 bis 11.10.2026): Die Althanstraße wird von Lichtentaler Gasse bis Badgasse als Einbahn geführt. Die Umleitung für die Fahrtrichtung stadteinwärts erfolgt über: Badgasse - Reznicekgasse - Wiesengasse - Fechtergasse. Eine großräumige Umfahrung über die Liechtensteinstraße oder Spittelauer Lände wird empfohlen. NEU: Bauphase 2 von 3 (11.09.2026 bis 25.10.2026): Die Althanstraße wird von Newaldgasse bis zur Einfahrt des Frachtenbahnhofs gesperrt. Die Newaldgasse wird von Althanstraße bis Liechtensteinstraße als Einbahn geführt. Die Umleitung für die Fahrtrichtung stadteinwärts erfolgt über: Newaldgasse- Liechtensteinstraße - Reznicekgasse - Badgasse. Die Umleitung für die Fahrtrichtung stadtauswärts erfolgt über: Fechtergasse - Badgasse - Reznicekgasse - Liechtensteinstraße.Eine großräumige Umfahrung über die Liechtensteinstraße oder Spittelauer Lände wird empfohlen.",
     "SE_ANNO_CAD_DATA": null
    }
   },
@@ -66,6 +112,52 @@
     "OBJEKT_BEGINN": "2026-06-07Z",
     "OBJEKT_ENDE": "2027-03-31Z",
     "PRESSETEXT": "Die Arbeiten erfolgen in der Zeit von 20.00 Uhr bis 05.00 Uhr. Ein Fahrstreifen je Fahrtrichtung bleibt aufrecht. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.33809651,
+     48.17792956
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundentelefon Wiener Linien",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-7909/100",
+    "ANTRAGSTELLER": "Wiener Linien GmbH & Co KG",
+    "BEHINDERUNGSART": "Gleisbau",
+    "BEZEICHNUNG": "Aßmayergasse 56 bis 74",
+    "BEZIRK": 12,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-11Z",
+    "OBJEKT_ENDE": "2026-12-18Z",
+    "PRESSETEXT": "Bauphase 1 (12.10.2026 bis 25.10.2026): DieArbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Ein Fahrstreifen je Fahrtrichtung bleibt aufrecht. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.40925476,
+     48.16297585
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Bitterlichstraße von Max-Mauermann-Gasse bis An der Ostbahn",
+    "BEZIRK": 10,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-12Z",
+    "OBJEKT_ENDE": "2026-12-23Z",
+    "PRESSETEXT": "Die Errichtung des Geh- und Radweges erfolgt grundsätzlich unter Aufrechterhaltung des Individualverkehrs. Je nach Baufortschritt wird bei Bedarf in der Bitterlichstraße in der Zeit zwischen 9:00 Uhr und 15:00 Uhr ein Fahrstreifen auf einer maximalen Länge von 40 m in Anspruch genommen und der Verkehr durch wechselweise Durchschleusung geregelt.",
     "SE_ANNO_CAD_DATA": null
    }
   },
@@ -463,6 +555,29 @@
   {
    "geometry": {
     "first_position": [
+     16.367746,
+     48.18153081
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Landgutgasse von Herzgasse und Karl-Merkatz-Gasse bis Margaretengürtel und Kliebergasse",
+    "BEZIRK": 10,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-15Z",
+    "OBJEKT_ENDE": "2026-10-30Z",
+    "PRESSETEXT": "Während der Aufstellung der den Radweg abgrenzenden Betonleitwände wird die Fahrbahn örtlich eingeengt, der Verkehr wird durch geschultes Personal an der Arbeitsstelle vorbeigeschleust.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.39587332,
      48.19676823
     ],
@@ -503,6 +618,29 @@
     "OBJEKT_BEGINN": "2026-07-12Z",
     "OBJEKT_ENDE": "2026-10-31Z",
     "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 20:00 bis 04:00 Uhr. Es wird abschnittsweise ein Fahrstreifen in Fahrtrichtung stadtauswärts sowie in Fahrtrichtung stadteinwärts gesperrt. Die restlichen Fahrstreifen werden aufrechtgehalten. An 5 Tagen wird in der Zeit von 9:00 Uhr bis 15:00 Uhr ein Fahrstreifen in Fahrtrichtung stadteinwärts für Betonierarbeiten gesperrt. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.28245933,
+     48.13496719
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Lehmanngasse von Liesinger Platz und Perchtoldsdorfer Straße bis Fabergasse und Brauereisteg",
+    "BEZIRK": 23,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-12Z",
+    "OBJEKT_ENDE": "2027-05-14Z",
+    "PRESSETEXT": "Bauphase 1 (13.10.2026 bis Ende 2026): Die Arbeiten erfolgen abschnittsweise im Bereich zwischen Löwenthalgasse und Pertoldsdorfer Straße. Es kommt im Baustellenbereich zu Fahrbahnverengungen. Der Radverkehr wird örtlich umgeleitet. DerFußgängerverkehr kann aufrecht gehalten werden.",
     "SE_ANNO_CAD_DATA": null
    }
   },

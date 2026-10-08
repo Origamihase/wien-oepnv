@@ -95,6 +95,29 @@
   {
    "geometry": {
     "first_position": [
+     16.52592037,
+     48.2497451
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Breitenleer Straße 400",
+    "BEZIRK": 22,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-11Z",
+    "OBJEKT_ENDE": "2026-10-18Z",
+    "PRESSETEXT": "ImBaustellenbereich wird ein Fahrstreifen freigehalten und der Verkehr wechselweise mittels Personal durchgeschleust.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.35383861,
      48.20412073
     ],
@@ -204,6 +227,29 @@
     "OBJEKT_BEGINN": "2026-07-12Z",
     "OBJEKT_ENDE": "2026-10-31Z",
     "PRESSETEXT": "Die Arbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Es wird abschnittsweise ein Fahrstreifen in Fahrtrichtung stadtauswärts sowie in Fahrtrichtung stadteinwärts gesperrt. Die restlichen Fahrstreifen werden aufrechtgehalten. Bei einzelnen Sperren des Linksabbiege-Fahrstreifens in Richtung Triester Straße erfolgt eine Umleitung über die Neilreichgasse sowie Sahulkastraße. Außerhalb der Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.29486264,
+     48.18947432
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Ma 31 Kundencenter",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-59959/31600",
+    "ANTRAGSTELLER": "MA31",
+    "BEHINDERUNGSART": "Zuleitungs- Schieber- Hydrantenarbeiten",
+    "BEZEICHNUNG": "Hietzinger Kai Kreuzung Braunschweiggasse",
+    "BEZIRK": 13,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-11Z",
+    "OBJEKT_ENDE": "2026-11-27Z",
+    "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 19:00 bis 5:00 Uhr. Derrechte Fahrstreifen wird in der markierten Breite in Anspruch genommen. Die restlichenFahrstreifen werden aufrechtgehalten. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
     "SE_ANNO_CAD_DATA": null
    }
   },
