@@ -890,14 +890,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A/57A: Laufveranstaltung",
-    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Laufveranstaltung.",
+    "title": "13A: Laufveranstaltung",
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Laufveranstaltung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6fb5ee34dc0433b6d5381ef107a5b11bb451d1953f5998dcd5ef54fd6324a29d",
+    "guid": "d73eedfdd14f9ffaa9dcce0d8bde5898f82540e8d1e1616900b876bb91bb83aa",
     "pubDate": "2026-10-08T18:12:00+02:00",
     "starts_at": "2026-10-08T18:12:00+02:00",
     "ends_at": "2026-10-08T23:55:00+02:00",
-    "_identity": "wl|störung|L=13A,57A|D=2026-10-08|TK=13a 57a laufveranstaltung",
+    "_identity": "wl|störung|L=13A|D=2026-10-08|TK=13a laufveranstaltung",
     "_wl_ids": [
       "I20261008-0032"
     ]
@@ -1091,6 +1091,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "37: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e1973a5b2460c699f70e57fbce62aa566a9126f20e7c1618980da0aaea6a520b",
+    "pubDate": "2026-10-08T20:27:16+02:00",
+    "starts_at": "2026-10-08T20:27:16+02:00",
+    "ends_at": "2026-10-08T21:26:00+02:00",
+    "_identity": "wl|störung|L=37|D=2026-10-08|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "46/49/52: Gleisbauarbeiten",
     "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1129,6 +1141,18 @@
     "starts_at": "2026-10-07T00:00:16+02:00",
     "ends_at": "2026-10-08T23:59:59+02:00",
     "_identity": "wl|störung|L=52|D=2026-10-07|TK=züge halten bei linien 6 und 18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "63A: Betrieb ab Fluschützstraße, Längenfeldgasse",
+    "description": "Bauarbeiten\nBetrieb ab Fluschützstraße, Längenfeldgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "166640279a1993832f467814252f3cf80a26d6791643bd878adc69e28ab0caa3",
+    "pubDate": "2026-10-08T20:05:13+02:00",
+    "starts_at": "2026-10-08T20:05:13+02:00",
+    "ends_at": "2026-10-08T23:59:59+02:00",
+    "_identity": "wl|störung|L=63A|D=2026-10-08|TK=betrieb ab fluschützstrasse längenfeldgasse"
   },
   {
     "source": "Wiener Linien",
@@ -1228,6 +1252,21 @@
     "starts_at": "2026-10-07T00:00:17+02:00",
     "ends_at": "2026-10-08T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-07|TK=ersatzverkehr"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Betriebsstörung",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung im Haltestellenbereich Schottentor.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2026-10-08T20:17:00+02:00",
+    "starts_at": "2026-10-08T20:17:00+02:00",
+    "ends_at": "2026-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-10-08|TK=u2 betriebsstörung",
+    "_wl_ids": [
+      "I20261008-0035"
+    ]
   },
   {
     "source": "Wiener Linien",

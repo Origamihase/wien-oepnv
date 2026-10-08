@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 08 Oct 2026 20:00:46 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 20:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[37: Defective train]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e1973a5b2460c699f70e57fbce62aa566a9126f20e7c1618980da0aaea6a520b</guid>
+      <pubDate>Thu, 08 Oct 2026 20:27:16 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 20:27:16 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 20:27:16 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 21:26:00 +0200</ext:ends_at>
+      <description>Service obstruction. [Since 20:27]</description>
+      <content:encoded><![CDATA[Service obstruction.<br/>[Since 20:27]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Service disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4</guid>
+      <pubDate>Thu, 08 Oct 2026 20:17:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 20:17:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 20:17:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: service disruption in the stop area of Schottentor. [Since 20:17]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption in the stop area of Schottentor.<br/>[Since 20:17]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[4A: Traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,7 +43,18 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 17:07]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[13A/57A: Running event]]></title>
+      <title><![CDATA[63A: Service from Fluschützstraße, Längenfeldgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">166640279a1993832f467814252f3cf80a26d6791643bd878adc69e28ab0caa3</guid>
+      <pubDate>Thu, 08 Oct 2026 20:05:13 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 20:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 20:05:13 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Reason: construction works. [Today]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: Running event]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">6fb5ee34dc0433b6d5381ef107a5b11bb451d1953f5998dcd5ef54fd6324a29d</guid>
       <pubDate>Thu, 08 Oct 2026 18:12:00 +0200</pubDate>
@@ -85,39 +118,6 @@
       <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
       <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation. [From Fri 09.10. until 31.03.2027]</description>
       <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation.<br/>[From Fri 09.10. until 31.03.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
-      <pubDate>Mon, 05 Oct 2026 15:40:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 15:40:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 … [Until 28.10.]</description>
-      <content:encoded><![CDATA[Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 …<br/>[Until 28.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S80: ÖBB replacement bus]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Thu, 08 Oct 2026 05:00:13 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 05:00:13 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 23:00:00 +0200</ext:ends_at>
-      <description>Bhf. Hütteldorf [Today]</description>
-      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A/7A/N62: Eibesbrunnergasse both directions]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bd6cbe1a4ea6d909912fce8527e38411ee42a952a91a70beecf363c26cd3e728</guid>
-      <pubDate>Mon, 05 Oct 2026 16:10:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 16:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 … [Until 06.11.]</description>
-      <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 …<br/>[Until 06.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
