@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 08 Oct 2026 18:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 19:01:33 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U4: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
+      <pubDate>Thu, 08 Oct 2026 18:52:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 18:52:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 18:52:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 18:52]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 18:52]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[4A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -32,12 +43,12 @@
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 16:58]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1/2/12A/13A/14A/57A/59A/71/D: Laufveranstaltung]]></title>
+      <title><![CDATA[12A/13A/14A/57A/59A: Laufveranstaltung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">2e88805aed146c8e393a80848f287c98925db025ea6e7fbb33c24d84e6c31168</guid>
       <pubDate>Thu, 08 Oct 2026 18:09:00 +0200</pubDate>
       <ext:first_seen>Thu, 08 Oct 2026 18:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 18:09:00 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 08 Oct 2026 18:12:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Laufveranstaltung. [Heute]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Laufveranstaltung.<br/>[Heute]]]></content:encoded>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 … [Bis 28.10.]</description>
       <content:encoded><![CDATA[Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 …<br/>[Bis 28.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S80: ÖBB-Ersatzbus]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Thu, 08 Oct 2026 05:00:13 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 05:00:13 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 23:00:00 +0200</ext:ends_at>
-      <description>Bhf. Hütteldorf [Heute]</description>
-      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Heute]]]></content:encoded>
     </item>
   </channel>
 </rss>

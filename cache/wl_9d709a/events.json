@@ -866,21 +866,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/2/71/D: Laufveranstaltung",
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Laufveranstaltung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2e88805aed146c8e393a80848f287c98925db025ea6e7fbb33c24d84e6c31168",
-    "pubDate": "2026-10-08T18:09:00+02:00",
-    "starts_at": "2026-10-08T18:09:00+02:00",
-    "ends_at": "2026-10-08T23:55:00+02:00",
-    "_identity": "wl|störung|L=1,2,71,D|D=2026-10-08|TK=d 1 2 71 laufveranstaltung",
-    "_wl_ids": [
-      "I20261008-0031"
-    ]
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A/13A/14A/57A/59A: Laufveranstaltung",
     "description": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Laufveranstaltung.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1257,6 +1242,21 @@
     "_identity": "wl|störung|L=O|D=2026-10-08|TK=rettungseinsatz",
     "_wl_ids": [
       "I20261008-0026"
+    ]
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Verspätungen",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
+    "pubDate": "2026-10-08T18:52:00+02:00",
+    "starts_at": "2026-10-08T18:52:00+02:00",
+    "ends_at": "2026-10-08T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-10-08|TK=u4 verspätungen",
+    "_wl_ids": [
+      "I20261008-0033"
     ]
   },
   {
