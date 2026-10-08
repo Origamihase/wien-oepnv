@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 08 Oct 2026 14:30:45 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 15:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[9: Falschparker]]></title>
+      <title><![CDATA[9: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
-      <pubDate>Thu, 08 Oct 2026 13:44:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 13:44:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 13:44:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">8592082f0ee1e02c1752914f4264dc0c7712b06abe68bfff8093855857b88f37</guid>
+      <pubDate>Thu, 08 Oct 2026 14:50:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 14:50:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 14:50:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 13:44]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 13:44]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 14:50]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 14:50]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3</guid>
+      <pubDate>Thu, 08 Oct 2026 14:39:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 14:39:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 14:39:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 14:39]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 14:39]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Burggasse 67]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
       <content:encoded><![CDATA[Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Neue Donau, kein Halt Richtung Floridsdorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">747d54fbd4c0aad685b21596a0c44cb67d41165e556ee43b1bc3e8636920f551</guid>
-      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 16:30:37 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf. [Bis 31.12.]</description>
-      <content:encoded><![CDATA[Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf.<br/>[Bis 31.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>

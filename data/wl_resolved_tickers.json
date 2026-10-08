@@ -3,130 +3,25 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R1446-109|2026-10-08T13:53:07.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "name": "R1446-109",
-   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "end": "2026-10-08T14:51:00.000+0200",
-   "incident": "I20261008-0016"
+   "key": "R143-109|2026-10-08T14:54:13.000+0200|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R143-109",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-08T15:54:00.000+0200",
+   "incident": "I20261008-0018"
   },
   {
-   "key": "R1447-109|2026-10-08T13:53:07.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "name": "R1447-109",
-   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "end": "2026-10-08T14:51:00.000+0200",
-   "incident": "I20261008-0016"
+   "key": "R521-109|2026-10-08T14:51:12.000+0200|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R521-109",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-08T15:50:00.000+0200",
+   "incident": "I20261008-0018"
   },
   {
-   "key": "R1475-109|2026-10-08T13:50:37.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R1475-109",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-08T14:50:00.000+0200",
-   "incident": "I20261008-0016"
-  },
-  {
-   "key": "R1476-109|2026-10-08T13:50:37.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R1476-109",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-08T14:50:00.000+0200",
-   "incident": "I20261008-0016"
-  },
-  {
-   "key": "R484-109|2026-10-08T13:53:06.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "name": "R484-109",
-   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "end": "2026-10-08T14:51:00.000+0200",
-   "incident": "I20261008-0016"
-  },
-  {
-   "key": "R530-109|2026-10-08T13:50:35.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R530-109",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-08T14:50:00.000+0200",
-   "incident": "I20261008-0016"
-  },
-  {
-   "key": "R531-109|2026-10-08T13:50:35.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R531-109",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-08T14:50:00.000+0200",
-   "incident": "I20261008-0016"
-  },
-  {
-   "key": "R532-109|2026-10-08T13:50:35.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R532-109",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-08T14:50:00.000+0200",
-   "incident": "I20261008-0016"
-  },
-  {
-   "key": "R533-109|2026-10-08T13:50:35.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R533-109",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-08T14:50:00.000+0200",
-   "incident": "I20261008-0016"
-  },
-  {
-   "key": "R541-109|2026-10-08T13:53:06.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "name": "R541-109",
-   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "end": "2026-10-08T14:51:00.000+0200",
-   "incident": "I20261008-0016"
-  },
-  {
-   "key": "R543-109|2026-10-08T13:53:06.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "name": "R543-109",
-   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "end": "2026-10-08T14:51:00.000+0200",
-   "incident": "I20261008-0016"
-  },
-  {
-   "key": "R544-109|2026-10-08T13:44:05.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "name": "R544-109",
-   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "end": "2026-10-08T14:51:00.000+0200",
-   "incident": "I20261008-0016"
-  },
-  {
-   "key": "R545-109|2026-10-08T13:44:05.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "name": "R545-109",
-   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "end": "2026-10-08T14:51:00.000+0200",
-   "incident": "I20261008-0016"
-  },
-  {
-   "key": "R546-109|2026-10-08T13:44:05.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "name": "R546-109",
-   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "end": "2026-10-08T14:51:00.000+0200",
-   "incident": "I20261008-0016"
-  },
-  {
-   "key": "R547-109|2026-10-08T13:44:05.000+0200|Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "name": "R547-109",
-   "title": "Falschparker\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-   "end": "2026-10-08T14:51:00.000+0200",
-   "incident": "I20261008-0016"
-  },
-  {
-   "key": "R548-109|2026-10-08T13:44:05.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R548-109",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-08T14:43:00.000+0200",
-   "incident": "I20261008-0016"
-  },
-  {
-   "key": "R550-109|2026-10-08T13:44:05.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R550-109",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-08T14:43:00.000+0200",
-   "incident": "I20261008-0016"
-  },
-  {
-   "key": "R556-109|2026-10-08T13:50:35.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R556-109",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-08T14:50:00.000+0200",
-   "incident": "I20261008-0016"
+   "key": "R552-109|2026-10-08T14:51:11.000+0200|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R552-109",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-08T15:50:00.000+0200",
+   "incident": "I20261008-0018"
   }
  ]
 }
