@@ -38,7 +38,7 @@ def _rendered(text: str) -> str:
         # a place right after the verb
         ("Busse halten Salvatorianerplatz", "buses stop at Salvatorianerplatz"),
         ("Züge halten Wipplingerstr 39", "trains stop at Wipplingerstr 39"),
-        ("Züge halten Steig A", "trains stop at Steig A"),
+        ("Züge halten Steig A", "trains stop at platform A"),
         (
             "Ersatzbus hält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
             "replacement bus stops at Karl-Waldbrunner-Platz vor Schloßhofer Straße",

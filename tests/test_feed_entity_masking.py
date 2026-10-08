@@ -342,7 +342,9 @@ def test_resolve_glossary_wiener_linien_overlay() -> None:
     assert wl["Betriebsstörung"] == "service disruption"
     # WL-specific disruption entries activated.
     assert wl["Kurzführung"] == "short-running service"
-    assert wl["kurzgeführt"] == "operating short-running"
+    # "kurzgeführt" moved to the base layer as "curtailed" (EN check
+    # 2026-10-08: "line 5A operating short-running").
+    assert wl["kurzgeführt"] == "curtailed"
     # Facility vocabulary is intentionally absent — feed scope excludes
     # elevator / escalator items by policy, so the overlay must not
     # smuggle that vocabulary in via the EN translation either.

@@ -2017,7 +2017,41 @@ Nicht jeder Text gehört in ein NMT-Modell:
   (`_cached_translation`), darum ohne Epochenwechsel und ohne neue
   Übersetzung. Nachgespielt über alle 4.820 EN-Feed-Stände seit Juli: 134
   der 4.205 verschiedenen Titel und Beschreibungen ändern sich, und zwar
-  nur in diesem einen Wort.
+  nur in diesem einen Wort. Seit der EN-Prüfung vom 2026-10-08 gehört auch
+  „in view of“ dazu (kam nie vor, aber `_CAUSE_EN_RE` nimmt es als Ursache).
+* **EN-Sinnfehler als Klassen (seit 2026-10-08, Epoche 24).** Alle 3.003
+  verschiedenen deutschen Texte des Feeds seit Juli liefen durch das echte
+  Modell; was den Sinn verfehlte, ist nach Klassen behoben:
+  * WLs „Wegen <Ursache> kommt es zu (folgenden) Verkehrsmaßnahmen (für die
+    Linie X).“ wird ohne Modell geschrieben (`_WL_SERVICE_CHANGES_RE`):
+    „Due to <cause>, there are service changes.“ bzw. „…, the following
+    service changes apply (to line X).“ (Wortwahl des Betreibers vom
+    08.10.; vorher „transport is taking place“). Ebenso WLs zwei Sätze zu
+    unregelmäßigen Intervallen (`_WL_IRREGULAR_INTERVALS_RE`): „Currently,
+    there are irregular intervals on line N31 in both directions.“ und
+    „After a service obstruction, there are irregular intervals.“
+  * `_normalise_for_translation` schreibt WLs Kürzel aus („Li.“, „Ri.“,
+    „Hlst.“/„Haltest.“, „Fahrleitungsgebr“, „Steig A“, „ONr.“), macht
+    „Einstieg bei Linie 44“ zu „bei Haltestelle der Linie“, eine
+    Querstraße hinter „nach“ in Halte- und Einstiegsmeldungen zu „just
+    after“ und „kann nicht eingehalten werden“ / „hält … die Station … ein“
+    zu „not served“ / „stops at“. Ein Partizip, das das Glossar übersetzt
+    („kurzgeführt“, „gesperrt“, „nicht angefahren“, „aufrecht gehalten“),
+    kommt mit seinem Hilfsverb zusammen (`_GLOSSED_PARTICIPLE_RE`), damit das
+    Modell es nicht abtrennt („line 5A curtailed“, „can be be maintained“).
+  * Neue Glossar-Einträge: „unterschiedlichen Intervallen“, „über Gleis
+    1/2“, „kurzgeführt“ → „curtailed“, „Ausgang“, „Sperre“, „gesperrt“,
+    „Weichentausch“, „betriebslose Zeit“, „Nebenfahrbahn“, „Umleitung
+    nach“, „verlegt nach“, „im Bereich der/des“ (vorher „in the area of
+    of“).
+  * Namen bleiben Namen: Wiener Orte, die gewöhnliche Nomen sind („Ring“,
+    „Gürtel“, „Oper“, „Innere Stadt“, „Kurpark“, `_PLACE_NAME_ENTITIES`),
+    Straßen mit Leerzeichen („Julius Raab Platz“, `_SPACED_STREET_NAME_RE`),
+    „Erlaaer Schleife“ und das eine Wort nach „Richtung“
+    (`_DIRECTION_NAME_RE`, außer Himmelsrichtungen und „Zentrum“).
+  Nachgespielt mit dem echten Modell über alle 3.003 Texte: Nur Texte mit
+  einer dieser Formen ändern sich; die übrigen Unterschiede sind das
+  bekannte Rauschen der Wiederholung unter zufälliger Nonce.
 * **Halte-Meldungen der WL.** Nach „Busse/Züge halten“ und „Ersatzbus hält“
   wählte das Modell die Präposition in jedem Lauf neu („Buses stop
   Salvatorianerplatz“, „Trains stop for lines 6 and 18“). Seit 2026-10-04

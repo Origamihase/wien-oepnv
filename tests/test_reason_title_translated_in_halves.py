@@ -197,7 +197,9 @@ def test_the_model_never_sees_the_dash_end_to_end(monkeypatch: pytest.MonkeyPatc
         FeedItem,
         {
             "title": "31: Demonstration Betrieb ab Wallensteinstraße",
-            "description": "Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+            # Prose the model still translates (the irregular-intervals
+            # sentence is written out without it since 2026-10-08).
+            "description": "Die Linie 31 wird örtlich umgeleitet.",
             "source": "Wiener Linien",
             "category": "Störung",
             "guid": "t-en",

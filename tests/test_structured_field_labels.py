@@ -118,7 +118,7 @@ def test_haltestellenverlegung_has_one_english_face() -> None:
 @pytest.mark.parametrize(
     "phrase",
     [
-        "Umleitung nach Hofmühlgasse",
+        "Fahrt nach Hofmühlgasse",
         "Nach Ende der Bauarbeiten",
         "Von Montag bis Freitag",
         "Der Zug fährt nach Floridsdorf",
