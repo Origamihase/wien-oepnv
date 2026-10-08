@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 08 Oct 2026 08:30:53 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 09:00:44 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[68A/68B: Rettungseinsatz]]></title>
+      <title><![CDATA[U2: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ec34bbe682c553021141c55ba3646c7f384930a7304a9f939aab17a5d4509225</guid>
-      <pubDate>Thu, 08 Oct 2026 07:41:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 08:00:46 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 07:41:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
+      <pubDate>Thu, 08 Oct 2026 08:44:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 08:44:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 08:44:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie 68B wird in Richtung Reumannplatz U zwischen Eisenstadtplatz und Reumannplatz U über Laaerberg Straße umgeleitet. [Seit 07:41]</description>
-      <content:encoded><![CDATA[Die Linie 68B wird in Richtung Reumannplatz U zwischen Eisenstadtplatz und Reumannplatz U über Laaerberg Straße umgeleitet.<br/>[Seit 07:41]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit 08:44]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 08:44]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d</guid>
+      <pubDate>Thu, 08 Oct 2026 08:33:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 08:33:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 08:33:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 08 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 08:33]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 08:33]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Verunreinigung]]></title>
@@ -38,7 +49,7 @@
       <pubDate>Thu, 08 Oct 2026 07:31:28 +0200</pubDate>
       <ext:first_seen>Thu, 08 Oct 2026 07:31:28 +0200</ext:first_seen>
       <ext:starts_at>Thu, 08 Oct 2026 07:32:28 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 09:30:00 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 08 Oct 2026 14:00:00 +0200</ext:ends_at>
       <description>Betrieb ab Laxenburger Straße, Gudrunstraße. [Seit 07:31]</description>
       <content:encoded><![CDATA[Betrieb ab Laxenburger Straße, Gudrunstraße.<br/>[Seit 07:31]]]></content:encoded>
     </item>
@@ -60,7 +71,7 @@
       <pubDate>Thu, 08 Oct 2026 07:23:27 +0200</pubDate>
       <ext:first_seen>Thu, 08 Oct 2026 07:23:27 +0200</ext:first_seen>
       <ext:starts_at>Thu, 08 Oct 2026 07:29:58 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 09:30:00 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 08 Oct 2026 14:00:00 +0200</ext:ends_at>
       <description>Züge halten bei Li. O Ri. Raxstraße. [Seit 07:23]</description>
       <content:encoded><![CDATA[Züge halten bei Li. O Ri. Raxstraße.<br/>[Seit 07:23]]]></content:encoded>
     </item>
@@ -71,7 +82,7 @@
       <pubDate>Thu, 08 Oct 2026 07:22:57 +0200</pubDate>
       <ext:first_seen>Thu, 08 Oct 2026 07:22:57 +0200</ext:first_seen>
       <ext:starts_at>Thu, 08 Oct 2026 07:27:57 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 09:30:00 +0200</ext:ends_at>
+      <ext:ends_at>Thu, 08 Oct 2026 14:00:00 +0200</ext:ends_at>
       <description>[Seit 07:22]</description>
       <content:encoded><![CDATA[[Seit 07:22]]]></content:encoded>
     </item>
@@ -96,17 +107,6 @@
       <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
       <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung. [Ab Fr 09.10. bis 31.03.2027]</description>
       <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung.<br/>[Ab Fr 09.10. bis 31.03.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[56A/56B/N62: Strampfergasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d26c6c6963612c560045052c175b1ec9ef04add4290e496a66c9625d2dde4a6e</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 08 Oct 2026 09:00:00 +0200</ext:ends_at>
-      <description>Haltestellenauflassung der Linien 56A, 56B und N62 in beiden Richtungen. Haltestelle: Strampfergasse. Grund: Straßenbau. [Heute]</description>
-      <content:encoded><![CDATA[Haltestellenauflassung der Linien 56A, 56B und N62 in beiden Richtungen. Haltestelle: Strampfergasse. Grund: Straßenbau.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
