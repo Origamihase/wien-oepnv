@@ -8,6 +8,24 @@ from html.parser import HTMLParser
 
 _WS_RE = re.compile(r"[ \t\r\f\v]+")
 
+# A disruption that is planned rather than an incident: an event, a
+# demonstration, works, a state visit, a drill, a relocated stop. Its time
+# line stays "Heute" — the hour it began tells a reader nothing (operator
+# wish 2026-10-03). The words are the planned causes among the 2,324 WL
+# disruptions cached from July to October 2026 ("Laufveranstaltung",
+# "Gleisbauarbeiten", "Kranarbeiten", "Arbeiten am Stellwerk",
+# "Polizeiübung", "Haltestellenverlegung", "Netzänderung" included); ÖBB
+# names its planned closures "Bauarbeiten". Repairs are the consequence of
+# an incident, not a plan: "Wegen Reparaturarbeiten nach einem Unfall"
+# (ÖBB, 27.08.2026), "dringende Reperaturarbeiten an den Treppen" (WL,
+# "U3: Betriebsstörung", 17.09.2026) keep their "Seit". ``wl_resolved`` uses it
+# to tell the display tickers of planned measures from those of incidents.
+PLANNED_DISRUPTION_RE: re.Pattern[str] = re.compile(
+    r"veranstaltung|demonstration|kundgebung|(?<!rep[ae]ratur)arbeiten\b|staatsbesuch|übung\b"
+    r"|verlegung\b|netzänderung",
+    re.IGNORECASE,
+)
+
 # Common German prepositions that should not be followed by a bullet.
 PREPOSITIONS: tuple[str, ...] = (
     # Alphabetical order for easier maintenance; keep umlaut/ASCII pairs
