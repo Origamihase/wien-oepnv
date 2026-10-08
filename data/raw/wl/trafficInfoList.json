@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261008-0037-F01, I20261008-0042-F01, I20260909-0007, I20261008-0043, I20261008-0043-F01, I20261008-0044"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261008-0043-F01, I20261008-0044"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R19-136, R130-136, R45-136, R36-152, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R2558-125, R5815-671, R2025-671, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1177-0, R1974-466, R1595-463, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R130-136, R119-136, R19-136, R36-152, R45-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R2558-125, R5815-671, R2025-671, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1177-0, R1974-466, R1595-463, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -199,115 +199,6 @@
      "start": "2026-09-25T08:55:00.000+0200"
     },
     "title": "26E: Gleisbauarbeiten"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261008-0037-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "301",
-       "lineName": "U1",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4182
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T22:19:00.000+0200",
-     "end": "2026-10-08T23:24:00.000+0200",
-     "lastUpdate": "2026-10-08T23:24:00.000+0200",
-     "resume": "2026-10-08T23:24:00.000+0200",
-     "start": "2026-10-08T20:36:00.000+0200"
-    },
-    "title": "U1: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261008-0042-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4621
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T22:16:00.000+0200",
-     "end": "2026-10-08T23:25:00.000+0200",
-     "lastUpdate": "2026-10-08T23:25:00.000+0200",
-     "resume": "2026-10-08T23:25:00.000+0200",
-     "start": "2026-10-08T22:12:00.000+0200"
-    },
-    "title": "U6: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Die Linie U4 fährt derzeit nicht zwischen Pilgramgasse und Karlsplatz. Weichen Sie ersatzweise auf die Linien 57A, 59A aus. Voraussichtliche Dauer: 23:30 Uhr. Grund: Feuerwehreinsatz im Bereich Hamburgerstraße.",
-    "descriptionHTML": "Die Linie U4 fährt derzeit nicht zwischen Pilgramgasse und Karlsplatz.<br> <br>Weichen Sie ersatzweise auf die Linien 57A, 59A aus.<br><br>Voraussichtliche Dauer: 23:30 Uhr.<br><br>Grund: Feuerwehreinsatz im Bereich Hamburgerstraße.",
-    "location": "Hamburgerstraße",
-    "name": "I20261008-0043",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "304",
-       "lineName": "U4",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T23:03:00.000+0200",
-     "end": "2026-10-08T23:21:00.000+0200",
-     "lastUpdate": "2026-10-08T23:21:00.000+0200",
-     "resume": "2026-10-08T23:21:00.000+0200",
-     "start": "2026-10-08T23:01:00.000+0200"
-    },
-    "title": "U4: Feuerwehreinsatz"
    },
    {
     "attributes": {
@@ -1199,6 +1090,24 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
+   },
+   {
+    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
+    "name": "R500-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     500
+    ],
+    "time": {
+     "end": "2026-10-09T04:59:00.000+0200",
+     "start": "2026-10-09T00:30:09.000+0200"
+    },
+    "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
