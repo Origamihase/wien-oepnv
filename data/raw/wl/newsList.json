@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_509, ftazW_1018068, ftazW_1351712"
+    "trafficInfoNameList": "ftazW_509, ftazW_1018068, ftazW_1351712, ftazW_1017117, ftazW_212, ftazW_2, ftazW_582, ftazW_1031271"
    }
   ],
   "poiCategoryGroups": [
@@ -2641,6 +2641,39 @@
    },
    {
     "attributes": {
+     "ausBis": "12.10.2026 00:45",
+     "ausVon": "11.10.2026 20:45",
+     "location": "U1 Mittelbahnsteig - Ausgang Aderklaaer Straße",
+     "rbls": [
+      4183,
+      4188
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Aderklaaer Straße",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Ausgang Aderklaaer Straße",
+    "name": "ftazW_1017117",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4183,
+     4188
+    ],
+    "time": {
+     "end": "2026-10-12T00:45:00.000+0200",
+     "start": "2026-10-11T20:45:00.000+0200"
+    },
+    "title": "Aderklaaer Straße"
+   },
+   {
+    "attributes": {
      "ausBis": "09.10.2026 05:15",
      "ausVon": "09.10.2026 01:15",
      "location": "U2 Bahnsteig Richtung Seestadt - Ausgang Stadion",
@@ -2669,6 +2702,37 @@
      "start": "2026-10-09T01:15:00.000+0200"
     },
     "title": "Stadion"
+   },
+   {
+    "attributes": {
+     "ausBis": "12.10.2026 00:45",
+     "ausVon": "11.10.2026 20:45",
+     "location": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Kaisermühlendamm",
+     "rbls": [
+      4256
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Donaustadtbrücke",
+     "status": "geplante Wartung",
+     "towards": "U2 Karlsplatz"
+    },
+    "description": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Kaisermühlendamm",
+    "name": "ftazW_1031271",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4256
+    ],
+    "time": {
+     "end": "2026-10-12T00:45:00.000+0200",
+     "start": "2026-10-11T20:45:00.000+0200"
+    },
+    "title": "Donaustadtbrücke"
    },
    {
     "attributes": {
@@ -2705,6 +2769,63 @@
    },
    {
     "attributes": {
+     "ausBis": "12.10.2026 00:45",
+     "ausVon": "11.10.2026 20:45",
+     "location": "U1 Bahnsteig Richtung Leopoldau - Ausgang Arbeiterstrandbadstraße",
+     "rbls": [
+      4125
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Alte Donau",
+     "status": "geplante Wartung",
+     "towards": "U1 Leopoldau"
+    },
+    "description": "U1 Bahnsteig Richtung Leopoldau - Ausgang Arbeiterstrandbadstraße",
+    "name": "ftazW_2",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4125
+    ],
+    "time": {
+     "end": "2026-10-12T00:45:00.000+0200",
+     "start": "2026-10-11T20:45:00.000+0200"
+    },
+    "title": "Alte Donau"
+   },
+   {
+    "attributes": {
+     "ausBis": "12.10.2026 00:45",
+     "ausVon": "11.10.2026 20:45",
+     "location": "U6 Mittelbahnsteig - Zwischengeschoss Zugang ÖBB Bahnsteig",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Bahnhof Meidling",
+     "status": "geplante Wartung",
+     "towards": "U6 beide Richtungen"
+    },
+    "description": "U6 Mittelbahnsteig - Zwischengeschoss Zugang ÖBB Bahnsteig",
+    "name": "ftazW_212",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "time": {
+     "end": "2026-10-12T00:45:00.000+0200",
+     "start": "2026-10-11T20:45:00.000+0200"
+    },
+    "title": "Bahnhof Meidling"
+   },
+   {
+    "attributes": {
      "ausBis": "09.10.2026 05:15",
      "ausVon": "09.10.2026 01:15",
      "location": "U6 Mittelbahnsteig - Ausgang Leipziger Platz",
@@ -2735,6 +2856,27 @@
      "start": "2026-10-09T01:15:00.000+0200"
     },
     "title": "Jägerstraße"
+   },
+   {
+    "attributes": {
+     "ausBis": "12.10.2026 00:45",
+     "ausVon": "11.10.2026 20:45",
+     "location": "Karlsplatzpassage - U2 Bahnsteig Endstation Karlsplatz",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [],
+     "station": "Karlsplatz",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Karlsplatzpassage - U2 Bahnsteig Endstation Karlsplatz",
+    "name": "ftazW_582",
+    "refPoiCategoryId": -1,
+    "time": {
+     "end": "2026-10-12T00:45:00.000+0200",
+     "start": "2026-10-11T20:45:00.000+0200"
+    },
+    "title": "Karlsplatz"
    }
   ]
  },

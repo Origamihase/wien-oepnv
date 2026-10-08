@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 09 Oct 2026 00:42:23 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 01:01:05 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N8: Track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">637f1a6ac83241b370a1aaf6804c2955c70ae12c21c23052d06685192de2962d</guid>
+      <pubDate>Fri, 09 Oct 2026 00:45:12 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 01:01:05 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 00:45:12 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 05:15:00 +0200</ext:ends_at>
+      <description>Buses stop at Aßmayergasse 48 for line 59A, Aßmayergasse to Flurschützstraße for line 59A. [Today]</description>
+      <content:encoded><![CDATA[Buses stop at Aßmayergasse 48 for line 59A, Aßmayergasse to Flurschützstraße for line 59A.<br/>[Today]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Nestroyplatz, ramp lock]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 … [Until 28.10.]</description>
       <content:encoded><![CDATA[Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 …<br/>[Until 28.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S80: ÖBB replacement bus]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Fri, 09 Oct 2026 00:30:09 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 00:30:09 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 04:59:00 +0200</ext:ends_at>
-      <description>Bhf. Hütteldorf [Since 00:30]</description>
-      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Since 00:30]]]></content:encoded>
     </item>
   </channel>
 </rss>
