@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 09 Oct 2026 13:01:08 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 13:30:44 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[5: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">eb95adf873b18dcc90582141fd8b881d6f58540f5e3144fe72be528eb86b24d6</guid>
+      <pubDate>Fri, 09 Oct 2026 13:19:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 13:19:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 13:19:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Praterstern S U. Voraussichtlich bis 13:50 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Nordwestbahnstraße. [Seit 13:19]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Praterstern S U. Voraussichtlich bis 13:50 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Nordwestbahnstraße.<br/>[Seit 13:19]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[29B/U6: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -43,15 +54,37 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 11:47]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[12A: Falschparker, Gleisbauarbeiten]]></title>
+      <title><![CDATA[46/48A/52: Demonstration]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7</guid>
-      <pubDate>Fri, 09 Oct 2026 12:36:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 12:36:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 12:36:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">3bb4d7061d271d4f3809ed2eb99553cb577bc0fddb43c2c068b8947686e287e6</guid>
+      <pubDate>Fri, 09 Oct 2026 13:13:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 13:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 13:13:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Heute]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Floridsdorf ↔ Wien Jedlersdorf]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;918175</guid>
+      <pubDate>Fri, 09 Oct 2026 13:06:38 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 13:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 09 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21. [Heute]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21.<br/>[Heute]]]></content:encoded>
+      <description>Wegen eines Polizeieinsatzes waren zwischen Wien Floridsdorf Bahnhof (U) und Wien Jedlersdorf Bahnhst bis 13:03 Uhr keine Fahrten möglich. [Heute]</description>
+      <content:encoded><![CDATA[Wegen eines Polizeieinsatzes waren zwischen Wien Floridsdorf Bahnhof (U) und Wien Jedlersdorf Bahnhst bis 13:03 Uhr keine Fahrten möglich.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">615c7d9755493e3506136b4c89ccafaac30323c3c9774583bc4b55062576c7bb</guid>
+      <pubDate>Fri, 09 Oct 2026 13:16:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 13:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 13:16:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 14 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet. [Bis 14.11.]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet.<br/>[Bis 14.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[25: Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße]]></title>
@@ -85,39 +118,6 @@
       <ext:ends_at>Sun, 11 Oct 2026 16:30:00 +0200</ext:ends_at>
       <description>Wegen des LCC-Herbstmarathons in der Prater Hauptallee wird die Linie 18 kurz geführt. Linie 18: Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U. [Am So 11.10.]</description>
       <content:encoded><![CDATA[Wegen des LCC-Herbstmarathons in der Prater Hauptallee wird die Linie 18 kurz geführt. Linie 18: Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U.<br/>[Am So 11.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/1A/2/2A/3A/4A/57A/71/D: Demonstration am 09.10.2026, 10.10.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">337422a9d6cedd385263f2f283630dffffa4c906e26c9ae80c7f57cf1fa38c06</guid>
-      <pubDate>Thu, 08 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 14:01:08 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 16:30:00 +0200</ext:ends_at>
-      <description>Wegen einer Demonstration kommt es zu Verkehrsmaßnahmen. [Bis Sa 10.10.]</description>
-      <content:encoded><![CDATA[Wegen einer Demonstration kommt es zu Verkehrsmaßnahmen.<br/>[Bis Sa 10.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A/3A: Schwertgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
-      <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung. [Bis 31.03.2027]</description>
-      <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung.<br/>[Bis 31.03.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[72A: Haidestraße S]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">478a7dd15ce15abfb6a3b89c90e7305c6500a29a34ffa7ee497d6624535e2914</guid>
-      <pubDate>Thu, 08 Oct 2026 15:30:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 15:30:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 15:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 12 Oct 2026 13:00:00 +0200</ext:ends_at>
-      <description>Lautenschlägergasse nach Haidestraße → 1. Haidequerstraße gegenüber 3A. Haltestellenverlegung der Linie 72A in Richtung Hasenleiten. Grund: Arbeiten an einer Gasleitung. [Bis Mo 12.10.]</description>
-      <content:encoded><![CDATA[Lautenschlägergasse nach Haidestraße → 1. Haidequerstraße gegenüber 3A. Haltestellenverlegung der Linie 72A in Richtung Hasenleiten. Grund: Arbeiten an einer Gasleitung.<br/>[Bis Mo 12.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

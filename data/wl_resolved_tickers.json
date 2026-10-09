@@ -1,5 +1,48 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R13-102|2026-10-09T13:08:16.000+0200|Demonstration\nBetrieb ab Parlament, Volkstheater",
+   "name": "R13-102",
+   "title": "Demonstration\nBetrieb ab Parlament, Volkstheater",
+   "end": "2026-10-09T23:45:00.000+0200",
+   "incident": "I20261009-0019-F01"
+  },
+  {
+   "key": "R14-102|2026-10-09T13:08:16.000+0200|Demonstration\nBetrieb ab Parlament, Volkstheater",
+   "name": "R14-102",
+   "title": "Demonstration\nBetrieb ab Parlament, Volkstheater",
+   "end": "2026-10-09T23:45:00.000+0200",
+   "incident": "I20261009-0019-F01"
+  },
+  {
+   "key": "R15-102|2026-10-09T13:09:16.000+0200|Demonstration\nZüge halten bei Linie 46",
+   "name": "R15-102",
+   "title": "Demonstration\nZüge halten bei Linie 46",
+   "end": "2026-10-09T23:45:00.000+0200",
+   "incident": "I20261009-0019-F01"
+  },
+  {
+   "key": "R49-102|2026-10-09T13:09:46.000+0200|Demonstration\nZüge halten nach der Bellariastraße",
+   "name": "R49-102",
+   "title": "Demonstration\nZüge halten nach der Bellariastraße",
+   "end": "2026-10-09T23:45:00.000+0200",
+   "incident": "I20261009-0019-F01"
+  },
+  {
+   "key": "R50-102|2026-10-09T13:09:46.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "name": "R50-102",
+   "title": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "end": "2026-10-09T23:30:00.000+0200",
+   "incident": "I20261009-0019-F01"
+  },
+  {
+   "key": "R51-102|2026-10-09T13:09:46.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "name": "R51-102",
+   "title": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "end": "2026-10-09T23:30:00.000+0200",
+   "incident": "I20261009-0019-F01"
+  }
+ ]
 }
