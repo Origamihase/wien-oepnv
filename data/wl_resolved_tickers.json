@@ -3,11 +3,39 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
+   "key": "R13-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "name": "R13-101",
+   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "end": "2026-10-09T21:00:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
    "key": "R13-102|2026-10-09T13:08:16.000+0200|Demonstration\nBetrieb ab Parlament, Volkstheater",
    "name": "R13-102",
    "title": "Demonstration\nBetrieb ab Parlament, Volkstheater",
    "end": "2026-10-09T23:45:00.000+0200",
    "incident": "I20261009-0019-F01"
+  },
+  {
+   "key": "R13-136|2026-10-09T13:03:46.000+0200|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R13-136",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-10-09T19:15:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R13-171|2026-10-09T13:10:16.000+0200|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R13-171",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-10-09T23:30:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R14-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "name": "R14-101",
+   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "end": "2026-10-09T21:00:00.000+0200",
+   "incident": "I20261009-0019"
   },
   {
    "key": "R14-102|2026-10-09T13:08:16.000+0200|Demonstration\nBetrieb ab Parlament, Volkstheater",
@@ -17,11 +45,235 @@
    "incident": "I20261009-0019-F01"
   },
   {
+   "key": "R14-136|2026-10-09T13:03:46.000+0200|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R14-136",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-10-09T19:15:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R14-171|2026-10-09T13:10:16.000+0200|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R14-171",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-10-09T23:30:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R15-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "name": "R15-101",
+   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "end": "2026-10-09T21:00:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
    "key": "R15-102|2026-10-09T13:09:16.000+0200|Demonstration\nZüge halten bei Linie 46",
    "name": "R15-102",
    "title": "Demonstration\nZüge halten bei Linie 46",
    "end": "2026-10-09T23:45:00.000+0200",
    "incident": "I20261009-0019-F01"
+  },
+  {
+   "key": "R15-136|2026-10-09T13:03:46.000+0200|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R15-136",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-10-09T19:15:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R15-171|2026-10-09T13:10:16.000+0200|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R15-171",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-10-09T23:30:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R17-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "name": "R17-101",
+   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "end": "2026-10-09T21:00:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R17-136|2026-10-09T13:03:46.000+0200|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R17-136",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-10-09T19:15:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R17-171|2026-10-09T13:10:16.000+0200|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R17-171",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-10-09T23:30:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R18-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "name": "R18-101",
+   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "end": "2026-10-09T21:00:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R18-136|2026-10-09T13:03:46.000+0200|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R18-136",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-10-09T19:15:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R18-171|2026-10-09T13:10:16.000+0200|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R18-171",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-10-09T23:30:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R19-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "name": "R19-101",
+   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "end": "2026-10-09T21:00:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R19-171|2026-10-09T13:10:16.000+0200|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R19-171",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-10-09T23:30:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R20-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "name": "R20-101",
+   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "end": "2026-10-09T21:00:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R21-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "name": "R21-101",
+   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "end": "2026-10-09T21:00:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R22-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "name": "R22-101",
+   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+   "end": "2026-10-09T21:00:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R345-105|2026-10-09T13:32:49.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R345-105",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T14:32:00.000+0200",
+   "incident": "I20261009-0022"
+  },
+  {
+   "key": "R346-105|2026-10-09T13:32:49.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R346-105",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T14:32:00.000+0200",
+   "incident": "I20261009-0022"
+  },
+  {
+   "key": "R347-105|2026-10-09T13:32:49.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R347-105",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T14:32:00.000+0200",
+   "incident": "I20261009-0022"
+  },
+  {
+   "key": "R390-105|2026-10-09T13:20:47.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R390-105",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T14:19:00.000+0200",
+   "incident": "I20261009-0022"
+  },
+  {
+   "key": "R391-105|2026-10-09T13:20:47.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R391-105",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T14:19:00.000+0200",
+   "incident": "I20261009-0022"
+  },
+  {
+   "key": "R392-105|2026-10-09T13:20:47.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R392-105",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T14:19:00.000+0200",
+   "incident": "I20261009-0022"
+  },
+  {
+   "key": "R44-171|2026-10-09T13:11:46.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "name": "R44-171",
+   "title": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "end": "2026-10-09T23:30:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R45-101|2026-10-09T13:01:45.000+0200|Demonstration\nBetrieb ab Resselgasse",
+   "name": "R45-101",
+   "title": "Demonstration\nBetrieb ab Resselgasse",
+   "end": "2026-10-09T21:15:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R45-171|2026-10-09T13:11:46.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "name": "R45-171",
+   "title": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "end": "2026-10-09T23:30:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R46-101|2026-10-09T13:01:45.000+0200|Demonstration\nBetrieb ab Resselgasse",
+   "name": "R46-101",
+   "title": "Demonstration\nBetrieb ab Resselgasse",
+   "end": "2026-10-09T21:15:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R46-136|2026-10-09T13:03:16.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "name": "R46-136",
+   "title": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "end": "2026-10-09T19:45:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R46-171|2026-10-09T13:11:46.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "name": "R46-171",
+   "title": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "end": "2026-10-09T23:30:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R47-101|2026-10-09T13:01:45.000+0200|Demonstration\nBetrieb ab Resselgasse",
+   "name": "R47-101",
+   "title": "Demonstration\nBetrieb ab Resselgasse",
+   "end": "2026-10-09T21:15:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R47-136|2026-10-09T13:03:16.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "name": "R47-136",
+   "title": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "end": "2026-10-09T19:45:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R47-171|2026-10-09T13:11:46.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "name": "R47-171",
+   "title": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "end": "2026-10-09T23:30:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R49-101|2026-10-09T13:01:45.000+0200|Demonstration\nBetrieb ab Resselgasse",
+   "name": "R49-101",
+   "title": "Demonstration\nBetrieb ab Resselgasse",
+   "end": "2026-10-09T21:15:00.000+0200",
+   "incident": "I20261009-0019"
   },
   {
    "key": "R49-102|2026-10-09T13:09:46.000+0200|Demonstration\nZüge halten nach der Bellariastraße",
@@ -31,6 +283,27 @@
    "incident": "I20261009-0019-F01"
   },
   {
+   "key": "R49-136|2026-10-09T13:03:16.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "name": "R49-136",
+   "title": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "end": "2026-10-09T19:45:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R49-171|2026-10-09T13:11:46.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "name": "R49-171",
+   "title": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "end": "2026-10-09T23:30:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R50-101|2026-10-09T13:01:45.000+0200|Demonstration\nBetrieb ab Resselgasse",
+   "name": "R50-101",
+   "title": "Demonstration\nBetrieb ab Resselgasse",
+   "end": "2026-10-09T21:15:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
    "key": "R50-102|2026-10-09T13:09:46.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
    "name": "R50-102",
    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz",
@@ -38,11 +311,53 @@
    "incident": "I20261009-0019-F01"
   },
   {
+   "key": "R50-136|2026-10-09T13:03:16.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "name": "R50-136",
+   "title": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "end": "2026-10-09T19:45:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R50-171|2026-10-09T13:11:46.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "name": "R50-171",
+   "title": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "end": "2026-10-09T23:30:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R51-101|2026-10-09T13:01:45.000+0200|Demonstration\nBetrieb ab Resselgasse",
+   "name": "R51-101",
+   "title": "Demonstration\nBetrieb ab Resselgasse",
+   "end": "2026-10-09T21:15:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
    "key": "R51-102|2026-10-09T13:09:46.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
    "name": "R51-102",
    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz",
    "end": "2026-10-09T23:30:00.000+0200",
    "incident": "I20261009-0019-F01"
+  },
+  {
+   "key": "R51-136|2026-10-09T13:03:16.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "name": "R51-136",
+   "title": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "end": "2026-10-09T19:45:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R51-171|2026-10-09T13:11:46.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "name": "R51-171",
+   "title": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+   "end": "2026-10-09T23:30:00.000+0200",
+   "incident": "I20261009-0019"
+  },
+  {
+   "key": "R81-171|2026-10-09T13:10:16.000+0200|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R81-171",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-10-09T23:30:00.000+0200",
+   "incident": "I20261009-0019"
   }
  ]
 }

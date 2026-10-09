@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 09 Oct 2026 13:30:44 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 14:00:38 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[14A/16A/22A: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">00805e247214cfaf545982b4b95007ea8a2466b38c0eaf2e743fa342ce44e36c</guid>
+      <pubDate>Fri, 09 Oct 2026 13:45:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 13:45:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 13:45:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 13:45]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 13:45]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40/41: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">46770cbdcca7b3b0724e5953b64353d0a982642ac049261e3dfdc906c581b130</guid>
+      <pubDate>Fri, 09 Oct 2026 13:37:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 13:37:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 13:37:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: illegally parked vehicle in the stop area of Aumannplatz. [Since 13:37]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: illegally parked vehicle in the stop area of Aumannplatz.<br/>[Since 13:37]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
+      <pubDate>Fri, 09 Oct 2026 13:30:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 13:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 13:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 13:30]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:30]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[5: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,11 +50,11 @@
       <ext:first_seen>Fri, 09 Oct 2026 13:19:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 09 Oct 2026 13:19:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Praterstern S U. Expected until 13:50. Reason: traffic accident in the stop area of Nordwestbahnstraße. [Since 13:19]</description>
-      <content:encoded><![CDATA[Service obstruction towards Praterstern S U. Expected until 13:50. Reason: traffic accident in the stop area of Nordwestbahnstraße.<br/>[Since 13:19]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 13:19]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:19]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[29B/U6: Delays]]></title>
+      <title><![CDATA[29B: Delays]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">9a1559f2c1c320ce5f98a02e7cb37df385b4a95dcdf57633564949bf55d72c8f</guid>
       <pubDate>Fri, 09 Oct 2026 12:32:00 +0200</pubDate>
@@ -38,20 +71,9 @@
       <pubDate>Fri, 09 Oct 2026 12:27:00 +0200</pubDate>
       <ext:first_seen>Fri, 09 Oct 2026 12:27:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 09 Oct 2026 12:27:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 09 Oct 2026 14:01:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: rescue operation. [Since 12:27]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 12:27]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f94fbeab08b9708757617720bbdfb8cc7bdedebccf4bf1f4d359d04ca2e2e9d4</guid>
-      <pubDate>Fri, 09 Oct 2026 11:47:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 12:01:13 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 11:47:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 11:47]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 11:47]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46/48A/52: Demonstration]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Fri, 09 Oct 2026 23:59:59 +0200</ext:ends_at>
       <description>Trains stop at Donaufelder Straße 175-177. [Today]</description>
       <content:encoded><![CDATA[Trains stop at Donaufelder Straße 175-177.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Folding ramps out of service on 10.10.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">000c01149fd3b84e0fd6751fe3cf1e6037a0e2ac6dc446c713492642a8342b5a</guid>
-      <pubDate>Mon, 05 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 00:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 23:00:00 +0200</ext:ends_at>
-      <description>Due to the high passenger volume associated with an event, the folding ramps of the underground trains of line U1 cannot be extended. [On Sat 10.10.]</description>
-      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the underground trains of line U1 cannot be extended.<br/>[On Sat 10.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: LCC autumn marathon on 11.10.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">daa1fa725b6871207d859b871146acfe9897adaf53769abeed930afb4c8730db</guid>
-      <pubDate>Mon, 28 Sep 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 00:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 11 Oct 2026 16:30:00 +0200</ext:ends_at>
-      <description>Due to the LCC autumn marathon in Prater Hauptallee, line 18 is curtailed. Line 18: service only between Burggasse, Stadthalle U and Schlachthausgasse U. [On Sun 11.10.]</description>
-      <content:encoded><![CDATA[Due to the LCC autumn marathon in Prater Hauptallee, line 18 is curtailed. Line 18: service only between Burggasse, Stadthalle U and Schlachthausgasse U.<br/>[On Sun 11.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
