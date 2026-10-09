@@ -24,6 +24,7 @@ from ..utils import raw_capture, source_shape
 from ..utils.ids import make_guid
 from ..utils.logging import sanitize_log_arg
 from ..utils.stations import canonical_name, display_name
+from ..utils.text import is_station_access_only
 from ..feed.config import ENDS_AT_GRACE_MINUTES
 
 from .wl_lines import (
@@ -45,6 +46,21 @@ from .wl_text import (
     _title_core,
     _topic_key_from_title,
 )
+
+
+def _facility_drop_reason(title: str) -> str | None:
+    """Drop reason for a title about station facilities only, else ``None``.
+
+    A lift or escalator (``_is_facility_only``) and, since 2026-10-09, a
+    closed station access (``is_station_access_only``: "Aufgangssperre",
+    "Sperre Ausgang") have no place in the feed: the trains still stop.
+    """
+    if _is_facility_only(title):
+        return "nur Aufzug/Fahrtreppe"
+    if is_station_access_only(title):
+        return "nur Aufgang/Ausgang"
+    return None
+
 
 # Basis-URL aus Secret/ENV, Fallback: OGD-Endpoint
 _WL_DEFAULT_BASE = "https://www.wienerlinien.at/ogd_realtime"
@@ -1374,8 +1390,9 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             # must NOT drop a genuine line disruption (e.g. "U4: Streckensperre"
             # whose description also notes an out-of-service lift). Only a
             # facility-only TITLE drops the item.
-            if _is_facility_only(title_raw):
-                raw_capture.note_drop("wl", "nur Aufzug/Fahrtreppe", title_raw)
+            facility = _facility_drop_reason(title_raw)
+            if facility:
+                raw_capture.note_drop("wl", facility, title_raw)
                 continue
 
             tinfo = _coerce_dict(ti.get("time"))
@@ -1460,8 +1477,9 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             # Title-driven facility check (see the trafficInfo branch above):
             # a facility word in the description / subtitle is only a
             # side-mention and must not drop a genuine line disruption.
-            if _is_facility_only(title_raw):
-                raw_capture.note_drop("wl", "nur Aufzug/Fahrtreppe", title_raw)
+            facility = _facility_drop_reason(title_raw)
+            if facility:
+                raw_capture.note_drop("wl", facility, title_raw)
                 continue
 
             tinfo = _coerce_dict(poi.get("time"))

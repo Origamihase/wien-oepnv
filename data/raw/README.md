@@ -15,7 +15,7 @@ Health-Check schreiben hier nichts.
 | --- | --- | --- |
 | `wl/trafficInfoList.json` | [`src/providers/wl_fetch.py`](../../src/providers/wl_fetch.py) | WL-Antwort `trafficInfoList` (`stoerunglang`, `stoerungkurz`), ohne `message.serverTime`, `trafficInfos` nach `name` sortiert |
 | `wl/newsList.json` | ebenda | WL-Antwort `newsList`, ohne `message.serverTime`, `pois` nach `name` sortiert |
-| `wl/verworfen.json` | ebenda | vom Abruf verworfene WL-Meldungen mit Grund (Status inaktiv, Kurzmeldung einer erledigten Störung, nur Aufzug/Fahrtreppe, außerhalb des Zeitraums, Ausschluss-Stichwort ohne Einschränkung, kein Einschränkungs-Stichwort) |
+| `wl/verworfen.json` | ebenda | vom Abruf verworfene WL-Meldungen mit Grund (Status inaktiv, Kurzmeldung einer erledigten Störung, nur Aufzug/Fahrtreppe, nur Aufgang/Ausgang, außerhalb des Zeitraums, Ausschluss-Stichwort ohne Einschränkung, kein Einschränkungs-Stichwort) |
 | `oebb/rss.json` | [`src/providers/oebb.py`](../../src/providers/oebb.py) | alle `<item>` des ÖBB-RSS mit jedem Kindelement als Text, nach `guid` sortiert; der Kanal-Kopf (`lastBuildDate`) fehlt |
 | `oebb/verworfen.json` | ebenda | ÖBB-Meldungen, die der Wien-Filter verwarf |
 | `baustellen/BAUSTELLENLINOGD.json`, `baustellen/BAUSTELLENPKTOGD.json` | [`scripts/update_baustellen_cache.py`](../../scripts/update_baustellen_cache.py) | je WFS-Layer alle Features mit ihren Properties ohne `OBJECTID`, von der Geometrie nur Typ und erste Position (`first_position`), nach `OGD_ID` bzw. Titel sortiert; Antwortkopf und Feature-`id` fehlen |
