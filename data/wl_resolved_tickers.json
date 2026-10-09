@@ -1,5 +1,48 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R2251-567|2026-10-09T03:45:52.000+0200|Fahrtbehinderung\nwegen Störung an einem Bahnübergang",
+   "name": "R2251-567",
+   "title": "Fahrtbehinderung\nwegen Störung an einem Bahnübergang",
+   "end": "2026-10-09T04:44:00.000+0200",
+   "incident": "I20261009-0001"
+  },
+  {
+   "key": "R2579-567|2026-10-09T03:45:52.000+0200|Fahrtbehinderung\nwegen Störung an einem Bahnübergang",
+   "name": "R2579-567",
+   "title": "Fahrtbehinderung\nwegen Störung an einem Bahnübergang",
+   "end": "2026-10-09T04:44:00.000+0200",
+   "incident": "I20261009-0001"
+  },
+  {
+   "key": "R2930-567|2026-10-09T03:45:52.000+0200|Fahrtbehinderung\nwegen Störung an einem Bahnübergang",
+   "name": "R2930-567",
+   "title": "Fahrtbehinderung\nwegen Störung an einem Bahnübergang",
+   "end": "2026-10-09T04:44:00.000+0200",
+   "incident": "I20261009-0001"
+  },
+  {
+   "key": "R3170-567|2026-10-09T03:45:53.000+0200|Fahrtbehinderung\nwegen Störung an einem Bahnübergang",
+   "name": "R3170-567",
+   "title": "Fahrtbehinderung\nwegen Störung an einem Bahnübergang",
+   "end": "2026-10-09T04:44:00.000+0200",
+   "incident": "I20261009-0001"
+  },
+  {
+   "key": "R3190-567|2026-10-09T03:45:53.000+0200|Fahrtbehinderung\nwegen Störung an einem Bahnübergang",
+   "name": "R3190-567",
+   "title": "Fahrtbehinderung\nwegen Störung an einem Bahnübergang",
+   "end": "2026-10-09T04:44:00.000+0200",
+   "incident": "I20261009-0001"
+  },
+  {
+   "key": "R806-567|2026-10-09T03:45:51.000+0200|Fahrtbehinderung\nwegen Störung an einem Bahnübergang",
+   "name": "R806-567",
+   "title": "Fahrtbehinderung\nwegen Störung an einem Bahnübergang",
+   "end": "2026-10-09T04:44:00.000+0200",
+   "incident": "I20261009-0001"
+  }
+ ]
 }
