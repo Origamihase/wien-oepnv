@@ -834,6 +834,17 @@ hätte es Meldungen beendet, die WL noch auslieferte (85A, „Mitte Mai“, bis
 (`ends_at`, Altersfilter); geändert ist nur die Zeitzeile, im englischen
 Feed ebenso.
 
+**Ein Text-Ende beendet die Meldung, auch wenn WL sie noch ausliefert**
+(Betreiberentscheidung 2026-10-09, „Text-Ende beendet“). Ist das Ende aus
+dem Text oder aus Start plus Dauer vorbei, verwirft der Abruf die Meldung
+(„außerhalb des Zeitraums“). WL liefert solche Meldungen oft noch Tage bis
+Wochen aus (13 von 52 zwischen Februar und Oktober 2026, 1 bis 41 Tage,
+z. B. 93A/96A/N91 Schillwasserweg „bis etwa Ende Juli“, gelistet bis 10.09.).
+Das ist gewollt und kein Defekt: Bliebe die Meldung, zeigte ihr eigener
+Text („bis etwa Ende Juli 2026“), dass sie abgelaufen ist, und das
+verwirrt. Ein Versuch, sie bis zum Rückzug durch WL zu behalten (#1989),
+wurde mit #1990 zurückgenommen.
+
 ### Rohdaten und Verwürfe des Abrufs (seit 2026-10-04)
 
 Die Caches unter `cache/` halten nur, was den Abruf überlebt hat. Ob eine

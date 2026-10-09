@@ -117,6 +117,11 @@ def plausible_end(desc_raw: str, end: datetime | None, start: datetime | None) -
     from the text's start plus a buffer (:data:`MIN_DURATION_BUFFER`), but
     only to shorten the end, never to extend it. The text's end counts only
     when it does not lie before the start.
+
+    Once that end has passed, the notice expires even while WL still lists
+    it (operator decision 2026-10-09, "Text-Ende beendet"): kept, its own
+    text ("bis etwa Ende Juli 2026") would show it had ended. Keeping such
+    notices until WL took them off (#1989) was reverted by #1990.
     """
     if end is None:
         return None
