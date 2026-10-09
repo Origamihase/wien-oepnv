@@ -26,7 +26,7 @@ The rules, in this order:
 
 The established rules stay as they were and are no correction: an 11:11
 end gives way to the end "Zeitraum:" names, or to the one its duration
-gives (:func:`plausible_end`), a begin date only moves the start later, and
+gives, until that end has passed (:func:`plausible_end`), a begin date only moves the start later, and
 a text date past the end is not the start but a later phase's date. An
 11:11 end the text backs with neither an end nor a duration is not shown
 (:func:`end_unknown`).
@@ -62,8 +62,9 @@ _VIENNA_TZ = ZoneInfo("Europe/Vienna")
 # WL closes 23 of 34 notices (2026-10-01) at exactly 11:11, mostly a year
 # after publication or on 11.11. — an end set by hand, not a date that was
 # known. "44A: Kurzführung" ended "Ende September 2026" by its text and by
-# its ``time.end`` on 22.07.2027, so the finished notice stayed a candidate
-# for the ten feed slots.
+# its ``time.end`` on 22.07.2027. The text's end is shown while it lies
+# ahead; WL still listed 44A on 09.10.2026, so once it has passed the
+# notice stays until WL takes it off (:func:`plausible_end`).
 PLACEHOLDER_END = (11, 11)
 
 # How far ahead of its publication a measure may begin on one source's word.
@@ -109,7 +110,34 @@ def _duration_end(desc_raw: str, reference: datetime) -> datetime | None:
     return datetime(last.year, last.month, last.day, 23, 59, tzinfo=_VIENNA_TZ)
 
 
-def plausible_end(desc_raw: str, end: datetime | None, start: datetime | None) -> datetime | None:
+def _text_end(desc_raw: str, end: datetime, start: datetime | None) -> datetime | None:
+    """The end the text gives in place of the 11:11 *end*, or ``None``.
+
+    A named end, else a duration from the text's start plus a buffer
+    (:data:`MIN_DURATION_BUFFER`), the latter only when it shortens the
+    end. ``None`` as well when the text's end lies before the start.
+    """
+    reference = start or end
+    named = extract_end_from_description(desc_raw, reference_date=reference)
+    if named is None:
+        estimated = _duration_end(desc_raw, reference)
+        named = estimated if estimated is not None and estimated < end else None
+    if named is None or (start is not None and named < start):
+        return None
+    return named
+
+
+def _is_placeholder(end: datetime) -> bool:
+    local = end.astimezone(_VIENNA_TZ)
+    return (local.hour, local.minute) == PLACEHOLDER_END
+
+
+def plausible_end(
+    desc_raw: str,
+    end: datetime | None,
+    start: datetime | None,
+    now: datetime | None = None,
+) -> datetime | None:
     """WL's ``time.end``, or the end its "Zeitraum:" gives instead of an 11:11 one.
 
     Only an end at 11:11 Europe/Vienna gives way; every other end, and an
@@ -117,23 +145,32 @@ def plausible_end(desc_raw: str, end: datetime | None, start: datetime | None) -
     from the text's start plus a buffer (:data:`MIN_DURATION_BUFFER`), but
     only to shorten the end, never to extend it. The text's end counts only
     when it does not lie before the start.
+
+    The text's end counts only until it has passed (*now*). After that WL's
+    11:11 end is the end again, so a notice WL still lists stays: WL takes a
+    notice off by hand when the measure is over, and its text end is an
+    estimate ("bis etwa Ende Juli 2026"). Of the 52 notices whose 11:11 end
+    a text end or a duration replaced and that WL took off between 21.02.
+    and 01.10.2026, 39 left on or before that end; the other 13 were still
+    listed after it, 1 to 41 days, together 173 days ("93A/96A/N91:
+    Schillwasserweg", "bis etwa Ende Juli 2026", listed until 10.09.). On
+    those days the text end alone dropped them. Whether the end has passed
+    the time line shows (:func:`end_unknown`).
     """
-    if end is None:
-        return None
-    local = end.astimezone(_VIENNA_TZ)
-    if (local.hour, local.minute) != PLACEHOLDER_END:
+    if end is None or not _is_placeholder(end):
         return end
-    reference = start or end
-    named = extract_end_from_description(desc_raw, reference_date=reference)
-    if named is None:
-        estimated = _duration_end(desc_raw, reference)
-        named = estimated if estimated is not None and estimated < end else None
-    if named is None or (start is not None and named < start):
+    named = _text_end(desc_raw, end, start)
+    if named is None or (now is not None and named < now):
         return end
     return named
 
 
-def end_unknown(desc_raw: str, end: datetime | None) -> bool:
+def end_unknown(
+    desc_raw: str,
+    end: datetime | None,
+    start: datetime | None = None,
+    now: datetime | None = None,
+) -> bool:
     """Whether *end* is WL's 11:11 expiry date and the text names no end of its own.
 
     Such an end is not shown (operator decision 2026-10-08, "Kein Ende"):
@@ -150,20 +187,27 @@ def end_unknown(desc_raw: str, end: datetime | None) -> bool:
     the duration lasts longer. The end itself stays the item's expiry, only
     the time line leaves it out.
 
+    A text end that has passed (*now*) while WL still lists the notice is
+    no end either: :func:`plausible_end` has given the 11:11 end back, and
+    the line reads "Seit …" instead of an end in the past or WL's expiry
+    date.
+
     A vague end ("bis voraussichtlich Mitte August 2026", "bis etwa
     Frühjahr 2027") names no day and counts as none. Read as the month's
     last day it would also have expired notices WL still listed: "85A:
     Straßenbauarbeiten" ("Mitte Mai") was listed until 02.08.2026.
     """
-    if end is None:
+    if end is None or not _is_placeholder(end):
         return False
-    local = end.astimezone(_VIENNA_TZ)
-    if (local.hour, local.minute) != PLACEHOLDER_END:
-        return False
-    return (
+    if (
         extract_end_from_description(desc_raw, reference_date=end) is None
         and extract_duration_from_description(desc_raw) is None
-    )
+    ):
+        return True
+    if now is None:
+        return False
+    named = _text_end(desc_raw, end, start)
+    return named is not None and named < now
 
 
 def _day(value: datetime) -> str:

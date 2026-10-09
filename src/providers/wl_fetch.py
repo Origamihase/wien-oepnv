@@ -368,13 +368,14 @@ def _is_active(start: datetime | None, end: datetime | None, now: datetime) -> b
 
 
 def _effective_end(
-    desc_raw: str, end: datetime | None, start: datetime | None
+    desc_raw: str, end: datetime | None, start: datetime | None, now: datetime | None = None
 ) -> datetime | None:
     """WL's ``time.end``, or the end its "Zeitraum:" names instead of an 11:11 one.
 
-    See :func:`wl_plausibility.plausible_end`.
+    A text end that has passed by *now* gives the 11:11 end back, so a
+    notice WL still lists stays. See :func:`wl_plausibility.plausible_end`.
     """
-    return plausible_end(desc_raw, end, start)
+    return plausible_end(desc_raw, end, start, now)
 
 
 def _effective_start(
@@ -1397,7 +1398,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
 
             tinfo = _coerce_dict(ti.get("time"))
             start = _iso(tinfo.get("start")) or _best_ts(ti)
-            end = _effective_end(desc_raw, _iso(tinfo.get("end")), start)
+            end = _effective_end(desc_raw, _iso(tinfo.get("end")), start, now)
 
             real_start = _effective_start(title_raw, desc_raw, start, end, now)
 
@@ -1484,7 +1485,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
 
             tinfo = _coerce_dict(poi.get("time"))
             start = _iso(tinfo.get("start")) or _best_ts(poi)
-            end = _effective_end(desc_raw, _iso(tinfo.get("end")), start)
+            end = _effective_end(desc_raw, _iso(tinfo.get("end")), start, now)
 
             real_start = _effective_start(title_raw, desc_raw, start, end, now)
 

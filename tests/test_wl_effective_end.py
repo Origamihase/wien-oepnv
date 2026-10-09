@@ -126,9 +126,17 @@ def _notice(text: str, end: str) -> dict[str, Any]:
     }
 
 
-def test_fetch_events_drops_a_notice_its_text_says_has_ended(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_fetch_events_keeps_a_notice_wl_lists_past_its_text_end(monkeypatch: pytest.MonkeyPatch) -> None:
+    # "93A/96A/N91: Schillwasserweg" ("bis etwa Ende Juli 2026") was listed
+    # by WL until 10.09.2026: the passed text end gives the 11:11 end back.
     text = "Zeitraum: Ab 3. Jänner 2020 bis Ende März 2020. Maßnahmen: Umleitung."
-    assert _fetch(monkeypatch, _notice(text, "2099-01-01T11:11:00+01:00")) == []
+    (event,) = _fetch(monkeypatch, _notice(text, "2099-01-01T11:11:00+01:00"))
+    assert event["ends_at"] == datetime(2099, 1, 1, 11, 11, tzinfo=VIENNA)
+
+
+def test_fetch_events_drops_a_notice_past_its_11_11_end(monkeypatch: pytest.MonkeyPatch) -> None:
+    text = "Zeitraum: Ab 3. Jänner 2020 bis Ende März 2020. Maßnahmen: Umleitung."
+    assert _fetch(monkeypatch, _notice(text, "2021-01-01T11:11:00+01:00")) == []
 
 
 def test_fetch_events_keeps_the_text_end(monkeypatch: pytest.MonkeyPatch) -> None:

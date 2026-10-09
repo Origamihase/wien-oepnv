@@ -146,9 +146,13 @@ def _midnight(offset: int) -> datetime:
     return today + timedelta(days=offset)
 
 
-def test_fetch_events_drops_a_notice_long_past_its_duration(monkeypatch: pytest.MonkeyPatch) -> None:
-    # two weeks plus one week of buffer ended before today
-    assert _fetch(monkeypatch, _notice(_midnight(-51), 2)) == []
+def test_fetch_events_keeps_a_notice_wl_lists_past_its_duration(monkeypatch: pytest.MonkeyPatch) -> None:
+    # two weeks plus one week of buffer ended before today, but WL still
+    # lists the notice ("65A/66A: Inzersdorfer Straße" until 07.10.2026):
+    # the 11:11 end is the end again
+    begin = _midnight(-51)
+    (event,) = _fetch(monkeypatch, _notice(begin, 2))
+    assert event["ends_at"] == (begin + timedelta(days=365)).replace(hour=11, minute=11)
 
 
 def test_fetch_events_keeps_a_notice_within_the_buffer(monkeypatch: pytest.MonkeyPatch) -> None:
