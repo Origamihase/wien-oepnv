@@ -296,7 +296,12 @@ eine neue Störung (`_other_incident`): Sie übernimmt weder GUID noch Beginn.
 `I20261006-0033` (Beginn 17:44) kam unter derselben GUID und zeigte ab 18:30
 „[Seit 17:22]“.
 Ein Eintrag mehrerer Störungen einer Linie zählt nur die Meldungen der
-neuesten; endet sie, kehrt er zur GUID der älteren zurück. Der erste Lauf
+neuesten; endet sie, kehrt er zur GUID der älteren zurück. Eine Meldung
+ohne Ursache, die älter ist als jede dieser Störungen, zählt nie mit
+(`_with_unowned`, seit 2026-10-09): Die Haltestellen-Meldungen der
+Gleisbauarbeiten der Linie 25 (seit 23.09.) übernahmen sonst am 09.10.
+nach dem Ende von „25: Verspätungen“ deren GUID und Beginn und standen von
+12:01 bis 20:30 als neue Störung im Feed, bis auf Platz 2. Der erste Lauf
 nach der Änderung schreibt nur die Notizen und ändert keine GUID, es gibt
 also keine Welle. Im Feed-Nachbau aller 117 Läufe vom 04.10. 11:31 bis
 06.10. 14:31 (Wiener Zeit, WL-Rohdaten neu durch `wl_fetch` geschickt, State

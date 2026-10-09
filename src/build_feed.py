@@ -2020,7 +2020,13 @@ _TRANSLATION_MODEL_REVISION = "1a922f3b32a8e809e17a47d4b32142d8105924e5"
 #       "Due to a demonstration, transport is taking place.", "via 2
 #       track", "Trains stop at Li. O Ri. Raxstraße."; the source digests
 #       are unchanged, so only a bump evicts them.
-_TRANSLATION_CACHE_EPOCH = 24
+#  25 — check of 2026-10-09: a stop sentence with a line ("Ersatzbus 26E
+#       hält an …", "Linie 5 hält …") gets "stops at" like "Busse halten"
+#       (cached: "Replacement bus 26E holds … ahead of …"); ÖBB's templated
+#       sentence is no longer split after "St." ("in St. Pölten Hbf"), and
+#       its fixed follow-up sentences are written out. The source digests
+#       of the stop texts are unchanged, so only a bump evicts them.
+_TRANSLATION_CACHE_EPOCH = 25
 
 # Static lookup for the German words of the bracketed ``[…]`` time line (see
 # ``format_local_times``). Translating these via the ML model would be
@@ -2622,6 +2628,14 @@ _GLOSSARY_BASE: dict[str, str] = {
     "Busse halten an": "buses stop at",
     "Ersatzbusse halten an": "replacement buses stop at",
     "Ersatzbus hält an": "replacement bus stops at",
+    # With the line between noun and verb ("Ersatzbus 26E hält an …", see
+    # ``_STOP_VERB``) the verb stands alone. A place follows it; "hält an"
+    # at the end of a clause ("Die Störung hält an.") is rewritten before
+    # the glossary sees it (``_PERSISTS_RE``).
+    "hält an": "stops at",
+    "hält gegenüber": "stops opposite",
+    "hält bei Haltestelle der Linie": "stops at the stop of line",
+    "hält bei den Haltestellen der Linien": "stops at the stops of lines",
     "Haltestelle aufgelassen": "stop closed",
     "bei Haltestelle der Linie": "at the stop of line",
     "bei den Haltestellen der Linien": "at the stops of lines",
@@ -3555,8 +3569,19 @@ _STOP_OF_LINE_RE: re.Pattern[str] = re.compile(
 # takes "an" ("buses stop at"), another line's stop is written out as
 # "bei Haltestelle der Linie". Every other word after the verb ("in", "auf",
 # "vor", "nach", "gegenüber", "Richtung", …) is left to the model, which
-# renders those prepositions itself.
-_STOP_VERB = r"\b(?i:(Busse|Züge|Ersatzbusse) halten?|(Ersatzbus) hält)"
+# renders those prepositions itself. A single vehicle may carry its line
+# ("Ersatzbus 26E hält Karl-Waldbrunner-Platz", "Linie 26E hält Donaufelder
+# Straße 148", "Ersatzbus 41E hält bei Währinger Str 200", in the WL data
+# since September): with the line between noun and verb the place form was
+# never written, and the model read "hält" as "holds" ("replacement bus 26E
+# holds Karl-Waldbrunner-Platz ahead of …", 09.10.2026) or left the "at"
+# out. "hält an" and "hält bei Haltestelle der Linie" are glossary forms of
+# their own for that reason.
+_STOP_LINE = r"(?:[A-Z]?\d{1,3}[A-Z]?|[A-Z])"
+_STOP_VERB = (
+    r"\b(?i:(Busse|Züge|Ersatzbusse) halten?"
+    rf"|(Ersatzbus(?: {_STOP_LINE})?|Linie {_STOP_LINE}|Ersatzverkehr) hält)"
+)
 _STOP_AT_LINES_RE: re.Pattern[str] = re.compile(
     _STOP_VERB + r" (?:(?i:bei) )?(?:den )?(?i:Linien) (?=[A-Z0-9])"
 )
@@ -3580,8 +3605,15 @@ def _stop_verb(match: re.Match[str]) -> str:
     return f"{match.group(2)} hält"
 
 
+# "hält an" at the end of a clause is the other verb, "anhalten" ("Die
+# Störung hält an."): it must not meet the glossary's "hält an" ("stops
+# at"), which only a stop's place may follow.
+_PERSISTS_RE: re.Pattern[str] = re.compile(r"\bhält an(?=\s*(?:[.,;:!?)]|$))")
+
+
 def _normalise_stop_verbs(text: str) -> str:
     """Rewrite WL's stop tickers into the forms the glossary renders whole."""
+    text = _PERSISTS_RE.sub("dauert an", text)
     text = _STOP_AT_LINES_RE.sub(
         lambda m: f"{_stop_verb(m)} bei den Haltestellen der Linien ", text
     )
@@ -4780,9 +4812,13 @@ def _translation_text(result: Any, ident: str) -> str | None:
 # it is. The station names stay as ÖBB writes them, like every other name in
 # the EN feed; only the trailing "Bahnhof"/"Bahnhst" becomes "station", as the
 # glossary has rendered it since 2026-09-07.
+#
+# The German summary leaves the place out where the title names it and the
+# sentence would otherwise push ÖBB's second one out of the 180 characters
+# (:func:`_oebb_sentence_without_place`), so the place slot may be empty.
 _OEBB_RESTRICTION_RE: re.Pattern[str] = re.compile(
-    r"Wegen (?P<cause>.+?) (?P<tense>sind|waren) "
-    r"(?:zwischen (?P<a>.+?) und (?P<b>.+?)|in (?P<at>.+?)|im Bereich (?P<area>.+?))"
+    r"Wegen (?P<cause>.+?) (?P<tense>sind|waren)"
+    r"(?P<place> (?:zwischen (?P<a>.+?) und (?P<b>.+?)|in (?P<at>.+?)|im Bereich (?P<area>.+?)))?"
     r"(?: Zugfahrten)?"
     r"(?: (?:bis (?P<expected>voraussichtlich )?|(?P<expected_first>voraussichtlich) bis )"
     r"(?:(?P<date>\d{2}\.\d{2}\.\d{4}),? )?"
@@ -4816,7 +4852,10 @@ _OEBB_SLOT_NOT_A_NAME_RE: re.Pattern[str] = re.compile(
     r"\d|\b(?:und|bzw|sowie|oder|bis|von|ab|am|um|für|nach|Uhr"
     r"|voraussichtlich|derzeit|erneut|noch|Zugfahrten|Fahrten|Züge)\b"
 )
-_OEBB_SENTENCE_SPLIT_RE: re.Pattern[str] = re.compile(r"(?<=[.!])\s+(?=[A-ZÄÖÜ])")
+# "St." opens a name ("in St. Pölten Hbf", "[in St. Pankraz]"), never ends a
+# sentence: split there, the templated sentence went through the model in
+# two halves (42 of the 443 ÖBB texts in the cache on 2026-10-09).
+_OEBB_SENTENCE_SPLIT_RE: re.Pattern[str] = re.compile(r"(?<!\bSt\.)(?<=[.!])\s+(?=[A-ZÄÖÜ])")
 _OEBB_STATION_SUFFIX_RE: re.Pattern[str] = re.compile(
     r" (?:Bahnhof|Bahnhst\.?)(?=(?: \(U\))?(?: \[[^\]]*\])?$)"
 )
@@ -4856,6 +4895,56 @@ _CAUSE_EN_RE: re.Pattern[str] = re.compile(
 )
 
 
+# ÖBB says in its second sentence what is still going on: "Planen Sie
+# derzeit noch bis zu 10 Minuten mehr Reisezeit ein." under a disruption
+# that is over, "Über die Dauer der Unterbrechung kann derzeit noch keine
+# Angabe gemacht werden." under one that runs. The German summary keeps two
+# sentences within 180 characters, and the first one, with the two stations
+# in ÖBB's long form ("zwischen Wien Leopoldau Bahnhst (U) und Wien
+# Süßenbrunn Bahnhst"), took 140 of them: in 59 of the 106 ÖBB texts the
+# German feed showed since September the second sentence was cut, and no
+# text kept it. "Wien Leopoldau ↔ Wien Süßenbrunn" on 09.10.2026 at 20:30
+# read "… waren … bis 20:18 Uhr keine Fahrten möglich. [Heute]", as if all
+# were over. The title names the stations already, so where the second
+# sentence would not fit, the first one leaves out the place it repeats.
+# ÖBB's courtesy sentences tell a reader at the display nothing ("Wir
+# bitten um Entschuldigung." closes 310 of the 316 ÖBB texts since June) and
+# would take that room, so they go first.
+_OEBB_COURTESY_RE: re.Pattern[str] = re.compile(
+    r"\s*(?:Wir bitten um Entschuldigung|Sobald uns weitere Informationen vorliegen,"
+    r" informieren wir Sie|Details finden Sie hier)\s*[.!…]*"
+)
+_OEBB_PLACE_SUFFIX_RE: re.Pattern[str] = re.compile(
+    r"(?:\s+\[[^\]]*\]|\s+\((?:U|Wien)\)|\s+(?:Bahnhof|Bahnhst\.?|Bhf\.?))+$"
+)
+
+
+def _oebb_place_key(name: str) -> str:
+    """*name* compared without ÖBB's suffixes, spaces and dots ("Wien Hbf (U)" → "wienhauptbahnhof")."""
+    core = _OEBB_PLACE_SUFFIX_RE.sub("", name.strip())
+    core = re.sub(r"\bHbf\b\.?", "Hauptbahnhof", core)
+    return re.sub(r"[\s.]", "", core).casefold()
+
+
+def _oebb_title_names(place: str, title: str) -> bool:
+    """Whether the ÖBB *title* names the station *place* of a templated sentence."""
+    key = _oebb_place_key(place)
+    bare = key.removeprefix("wien")
+    shown = re.sub(r"[\s.]", "", title).casefold()
+    return len(bare) >= 4 and bare in shown
+
+
+def _oebb_sentence_without_place(sentence: str, title: str) -> str | None:
+    """*sentence* without the place the ÖBB *title* already names, else ``None`` (see above)."""
+    match = _OEBB_RESTRICTION_RE.fullmatch(sentence)
+    if match is None or not match["place"] or not _oebb_slots_are_names(match, "a", "b", "at", "area"):
+        return None
+    places = [match[slot] for slot in ("a", "b", "at", "area") if match[slot]]
+    if not all(_oebb_title_names(place, title) for place in places):
+        return None
+    return sentence[: match.start("place")] + sentence[match.end("place"):]
+
+
 def _oebb_slots_are_names(match: re.Match[str], *slots: str) -> bool:
     """Whether every filled place slot of *match* is a bare station name."""
     return not any(
@@ -4885,14 +4974,16 @@ def _render_oebb_sentence(
                 else "trains can only run to a limited extent"
             )
         if match["at"]:
-            place = f"at {_oebb_station_en(match['at'])}"
+            place = f" at {_oebb_station_en(match['at'])}"
         elif match["area"]:
-            place = f"in the area of {_oebb_station_en(match['area'])}"
-        else:
+            place = f" in the area of {_oebb_station_en(match['area'])}"
+        elif match["a"]:
             place = (
-                f"between {_oebb_station_en(match['a'])}"
+                f" between {_oebb_station_en(match['a'])}"
                 f" and {_oebb_station_en(match['b'])}"
             )
+        else:
+            place = ""
         if match["time"]:
             day = f"{match['date']}, " if match["date"] else ""
             expected = match["expected"] or match["expected_first"]
@@ -4903,7 +4994,7 @@ def _render_oebb_sentence(
             when = " at present"
         else:
             when = ""
-        return f"{cause}, {core} {place}{when}."
+        return f"{cause}, {core}{place}{when}."
     match = _OEBB_NO_TRAINS_RE.fullmatch(sentence)
     if match is not None and _oebb_slots_are_names(match, "a", "b"):
         cause = _oebb_cause_en(match["cause"], ident, source, category)
@@ -4915,6 +5006,56 @@ def _render_oebb_sentence(
             f"{cause}, no {match['trains']} trains can run between "
             f"{_oebb_station_en(match['a'])} and {_oebb_station_en(match['b'])}{dates}."
         )
+    return _render_oebb_follow_up(sentence)
+
+
+# ÖBB's second sentence says what is still going on, in a handful of fixed
+# forms (every ÖBB text in the cache on 2026-10-09: 249 of the 261 second
+# sentences the German summary keeps since then). They reached the model
+# only cut off until then. Each has one meaning and is written out; any other
+# wording ("Fernverkehrszüge und CJX Züge werden umgeleitet.") goes through
+# the model as before.
+_OEBB_EXTRA_TIME_RE: re.Pattern[str] = re.compile(
+    r"Planen Sie(?P<area> in diesem Bereich)?(?P<still> derzeit(?: noch)?| noch)?"
+    r" bis zu (?P<minutes>\d{1,3}) Minuten mehr Reisezeit ein\."
+)
+_OEBB_LONGER_TRIP_RE: re.Pattern[str] = re.compile(
+    r"Ihre Reisezeit verlängert sich um bis zu (?P<minutes>\d{1,3}) Minuten\."
+)
+_OEBB_SOME_CANCELLED_RE: re.Pattern[str] = re.compile(
+    r"Es kommt(?P<still> noch)? zu vereinzelten Zugausfällen und (?:Verzögerungen|Verspätungen)"
+    r"(?: bis zu (?P<minutes>\d{1,3}) Minuten)?\."
+)
+_OEBB_FIXED_FOLLOW_UPS: dict[str, str] = {
+    "Über die Dauer der Unterbrechung kann derzeit noch keine Angabe gemacht werden.":
+        "It is not yet known how long the interruption will last.",
+    "Die Züge warten die Sperre vorerst ab.":
+        "For now, trains are waiting until the line reopens.",
+    "Fahrgäste mit ÖBB-Tickets können die Wiener Linien benutzen.":
+        "Passengers with ÖBB tickets can use Wiener Linien.",
+    "Fahrgäste mit ÖBB-Tickets können in diesem Bereich die Wiener Linien benutzen.":
+        "Passengers with ÖBB tickets can use Wiener Linien in this area.",
+}
+
+
+def _render_oebb_follow_up(sentence: str) -> str:
+    """English for one of ÖBB's fixed follow-up sentences; ``""`` for any other."""
+    fixed = _OEBB_FIXED_FOLLOW_UPS.get(sentence)
+    if fixed is not None:
+        return fixed
+    match = _OEBB_EXTRA_TIME_RE.fullmatch(sentence)
+    if match is not None:
+        lead = "For now, allow" if match["still"] else "Allow"
+        area = " in this area" if match["area"] else ""
+        return f"{lead} up to {match['minutes']} minutes of extra travel time{area}."
+    match = _OEBB_LONGER_TRIP_RE.fullmatch(sentence)
+    if match is not None:
+        return f"Your journey takes up to {match['minutes']} minutes longer."
+    match = _OEBB_SOME_CANCELLED_RE.fullmatch(sentence)
+    if match is not None:
+        still = " still" if match["still"] else ""
+        delays = f"delays of up to {match['minutes']} minutes" if match["minutes"] else "delays"
+        return f"There are{still} occasional train cancellations and {delays}."
     return ""
 
 
@@ -8658,10 +8799,18 @@ def _line_runs(items: Sequence[FeedItem], groups: Sequence[list[int]]) -> list[l
     return runs
 
 
-def _run_incidents(items: Sequence[FeedItem], run: Sequence[list[int]]) -> list[list[list[int]]]:
-    """The incidents of *run*: its groups by cause, WL's synonyms counted.
+def _run_incidents(
+    items: Sequence[FeedItem], run: Sequence[list[int]]
+) -> tuple[list[list[list[int]]], list[list[int]]]:
+    """The incidents of *run*, its groups by cause (WL's synonyms counted), and the groups of none.
 
-    A group without a cause joins the incident published nearest to it.
+    A group without a cause joins the incident published nearest to it, of
+    those that had begun when it appeared: a display text cannot announce
+    an incident that came later. Tickers that come a few minutes ahead of
+    their incident (``wl_resolved.TICKER_LEAD``) share its group anyway
+    (``WL_TICKER_CLUSTER_SECONDS``). One older than every incident belongs
+    to none of them and comes back second (``_with_unowned``). Without any
+    incident, the groups without a cause are the one incident.
     """
     incidents: dict[str, list[list[int]]] = {}
     causeless: list[list[int]] = []
@@ -8672,15 +8821,24 @@ def _run_incidents(items: Sequence[FeedItem], run: Sequence[list[int]]) -> list[
         else:
             causeless.append(group)
     if not incidents:
-        return [causeless] if causeless else []
+        return ([causeless] if causeless else []), []
+    alone: list[list[int]] = []
     for group in causeless:
         when = _publication_key(items, group[0])[0]
+        begun = [
+            groups
+            for groups in incidents.values()
+            if min(_publication_key(items, other[0])[0] for other in groups) <= when
+        ]
+        if not begun:
+            alone.append(group)
+            continue
         nearest = min(
-            incidents.values(),
+            begun,
             key=lambda groups: min(abs((_publication_key(items, other[0])[0] - when).total_seconds()) for other in groups),
         )
         nearest.append(group)
-    return list(incidents.values())
+    return list(incidents.values()), alone
 
 
 # A WL long message names the measure first, then the advice, the expected
@@ -8880,21 +9038,58 @@ def _merged_run(items: Sequence[FeedItem], run: Sequence[list[int]]) -> tuple[in
     """The entry for *run* and the index it takes.
 
     Its ``_members`` are the messages of the incident whose GUID it carries
-    (see ``_carry_item_identity``): of several incidents, the newest.
+    (see ``_carry_item_identity``): of several incidents, the newest. What
+    belongs to no incident comes last and is no member (``_with_unowned``).
     """
+    found, unowned = _run_incidents(items, run)
     incidents = [
         (place, _with_members(entry, items, groups))
-        for groups in _run_incidents(items, run)
+        for groups in found
         for place, entry in (_incident_entry(items, groups),)
     ]
     if len(incidents) == 1:
-        return incidents[0]
-    ordered = sorted(
-        incidents,
-        key=lambda incident: (_incident_start(incident[1]), str(incident[1].get("guid") or "")),
-        reverse=True,
-    )
-    return ordered[0][0], _combined_incidents([entry for _, entry in ordered])
+        place, entry = incidents[0]
+    else:
+        ordered = sorted(
+            incidents,
+            key=lambda incident: (_incident_start(incident[1]), str(incident[1].get("guid") or "")),
+            reverse=True,
+        )
+        place, entry = ordered[0][0], _combined_incidents([entry for _, entry in ordered])
+    if unowned:
+        entry = _with_unowned(entry, [items[index] for group in unowned for index in group])
+    return place, entry
+
+
+def _with_unowned(entry: FeedItem, members: Sequence[FeedItem]) -> FeedItem:
+    """*entry* with what *members*, display texts older than its incidents, say, at the end.
+
+    WL repeats the stops of planned works on the displays for weeks
+    without a cause ("25: Ersatzbus 26E hält Karl-Waldbrunner-Platz vor
+    Schloßhofer Straße", "Züge halten Donaufelder Straße 175-177", in the
+    data since 22.09.2026). On 2026-10-09 at 09:36 they joined "25:
+    Verspätungen" (Grund: Schadhaftes Fahrzeug) as its consequences: the
+    feed read the works' stops in front of the delay and lost its cause,
+    and when the delay ended, the stops kept its GUID and begin and stood
+    as a new disruption from 12:01 to 20:30, on up to place 2. The line
+    still takes one slot (operator decision 2026-10-01), but the stops
+    follow the incident's own text, after its cause, and stay out of
+    ``_members``: when the incident ends, the item falls back to their own
+    GUID and begin.
+    """
+    text = _ticker_text(entry)
+    said = _message_tokens(f"{_rendered_title(entry)} {text}")
+    candidates = [(part.consequence or part.body).replace("*", "").strip() for part in map(_ticker_part, members)]
+    messages = [
+        m.rstrip(" .")
+        for m in _distinct_messages(candidates, _rendered_title(entry))
+        if m.casefold() != _HINDRANCE.casefold() and not _said_already(m, said)
+    ]
+    if not messages:
+        return entry
+    merged = cast(FeedItem, dict(entry))
+    merged["description"] = f"{text} {_as_sentence('; '.join(messages))}" if text else _as_sentence("; ".join(messages))
+    return merged
 
 
 def _merge_wl_ticker_clusters(items: list[FeedItem]) -> list[FeedItem]:
@@ -10177,6 +10372,11 @@ def _format_item_content(
     summary = _DATE_RANGE_PREFIX_RE.sub("", summary)
     summary = _DATE_SINGLE_PREFIX_RE.sub("", summary)
 
+    # ÖBB's courtesy sentences take room the display needs — see
+    # ``_oebb_sentence_without_place``.
+    if it.get("source") == _OEBB_SOURCE:
+        summary = _OEBB_COURTESY_RE.sub("", summary).strip() or summary
+
     # Bulletpoints auflösen, um einen fließenden Satz zu bilden
     summary = summary.replace(" • ", " ").replace("•", " ")
     # WL uses ``#`` as an internal street-junction marker — real cache
@@ -10232,6 +10432,12 @@ def _format_item_content(
         # sentence 2 carrying the actual disruption reason was dropped).
         if len(sentences) > 1:
             candidate = f"{short_summary} {sentences[1]}"
+            if len(candidate) > 180 and it.get("source") == _OEBB_SOURCE:
+                # ÖBB's second sentence says what still goes on — see
+                # ``_oebb_sentence_without_place``.
+                shorter = _oebb_sentence_without_place(short_summary, raw_title)
+                if shorter is not None:
+                    candidate = f"{shorter} {sentences[1]}"
             if len(candidate) <= 180:
                 short_summary = candidate
         summary = short_summary
