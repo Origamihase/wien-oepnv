@@ -10,6 +10,7 @@ enough. Real texts from the caches of 2026-10-09 and 2026-08-07.
 from __future__ import annotations
 
 from datetime import UTC, datetime
+from typing import Any, cast
 from zoneinfo import ZoneInfo
 
 import pytest
@@ -25,6 +26,7 @@ _BURGGASSE: FeedItem = {
     "source": "Stadt Wien – Baustellen",
     "category": "Baustelle",
     "title": "Burggasse 67",
+    "link": "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen",
     "description": (
         "DieHaltestelle des betroffenen öffentlichen Verkehrsmittels wird von Burggasse "
         "ONr.67 nach Burggasse ONr. 69 verlegt. Derrechte Fahrstreifen wird in "
@@ -38,6 +40,7 @@ _WL_48A: FeedItem = {
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "48A: Neubaugasse, Burggasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
     "description": (
         "<p><strong>Haltestellenverlegung der Linie 48A in Richtung Parlament, U Volkstheater"
         "</strong></p><p>Haltestelle: Neubaugasse, Burggasse</p><p>Von: Burggasse vor "
@@ -48,6 +51,10 @@ _WL_48A: FeedItem = {
     "starts_at": datetime(2026, 9, 8, tzinfo=_VIENNA),
     "ends_at": datetime(2026, 11, 10, 23, 59, tzinfo=_VIENNA),
 }
+
+
+def _with(base: FeedItem, **changes: Any) -> FeedItem:
+    return cast(FeedItem, {**base, **changes})
 
 
 def _guids(items: list[FeedItem]) -> list[str]:
@@ -112,20 +119,20 @@ def test_a_site_with_a_running_wl_twin_leaves() -> None:
 
 
 def test_a_site_without_a_twin_stays() -> None:
-    other = dict(_WL_48A, title="48A: St.-Ulrichs-Platz", guid="wl-other",
+    other = _with(_WL_48A, title="48A: St.-Ulrichs-Platz", guid="wl-other",
                  description="Haltestelle: St.-Ulrichs-Platz Von: Burggasse 25 Nach: Burggasse 27")
     out = bf._drop_baustellen_twins([_BURGGASSE, other], _NOW)
     assert _guids(out) == ["bau-burggasse", "wl-other"]
 
 
 def test_an_announced_wl_notice_is_no_twin_yet() -> None:
-    later = dict(_WL_48A, starts_at=datetime(2026, 10, 19, tzinfo=_VIENNA))
+    later = _with(_WL_48A, starts_at=datetime(2026, 10, 19, tzinfo=_VIENNA))
     out = bf._drop_baustellen_twins([_BURGGASSE, later], _NOW)
     assert "bau-burggasse" in _guids(out)
 
 
 def test_a_live_wl_incident_is_no_twin() -> None:
-    incident = dict(_WL_48A, category="Störung")
+    incident = _with(_WL_48A, category="Störung")
     out = bf._drop_baustellen_twins([_BURGGASSE, incident], _NOW)
     assert "bau-burggasse" in _guids(out)
 
@@ -138,7 +145,7 @@ def test_an_extended_site_counts_from_its_start() -> None:
 
 
 def test_a_site_seen_before_its_start_keeps_its_moment() -> None:
-    site = dict(_BURGGASSE, starts_at=datetime(2026, 10, 12, tzinfo=_VIENNA))
+    site = _with(_BURGGASSE, starts_at=datetime(2026, 10, 12, tzinfo=_VIENNA))
     state = {"bau-burggasse": {"first_seen": "2026-10-08T12:30:45+00:00"}}
     key = bf._recency_sort_key(site, state, _NOW)
     assert -key[1] == datetime(2026, 10, 8, 12, 30, 45, tzinfo=UTC).timestamp()
