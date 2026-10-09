@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 09 Oct 2026 08:00:39 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 08:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[O: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a90305646f013b3987fb55ef5dab8d20d35b0e58b3f412f792bb39c48c2fa5a8</guid>
+      <pubDate>Fri, 09 Oct 2026 08:25:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 08:25:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 08:25:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: illegally parked vehicle. [Since 08:25]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: illegally parked vehicle.<br/>[Since 08:25]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">0b00fe24c2dd37aaf07ae252d80374592513223744f2d6ecc3fa197c58c6de52</guid>
+      <pubDate>Fri, 09 Oct 2026 08:09:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 08:09:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 08:09:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 08:09]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 08:09]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U3: Delays]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Fri, 30 Oct 2026 00:00:00 +0100</ext:ends_at>
       <description>The stop of the affected public transport will be moved from Burggasse No. 67 to Burggasse No. 69. [Until 30.10.]</description>
       <content:encoded><![CDATA[The stop of the affected public transport will be moved from Burggasse No. 67 to Burggasse No. 69.<br/>[Until 30.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
-      <pubDate>Mon, 05 Oct 2026 15:40:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 15:40:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 … [Until 28.10.]</description>
-      <content:encoded><![CDATA[Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 …<br/>[Until 28.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S80: ÖBB replacement bus]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Fri, 09 Oct 2026 05:00:28 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 05:00:28 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:00:00 +0200</ext:ends_at>
-      <description>Bhf. Hütteldorf [Today]</description>
-      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>

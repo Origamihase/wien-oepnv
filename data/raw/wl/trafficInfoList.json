@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261009-0003"
+    "trafficInfoNameList": "I20260917-0012, I20261009-0004, I20260922-0032, I20260925-0011, I20261009-0005, I20260909-0007, I20261009-0003"
    },
    {
     "id": 3,
@@ -233,6 +233,74 @@
      "start": "2026-10-09T07:52:00.000+0200"
     },
     "title": "U3: Verspätungen"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "13A": "ptBusCity"
+     }
+    },
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "Linie 13A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
+    "name": "I20261009-0004",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "413",
+       "lineName": "13A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-09T08:10:00.000+0200",
+     "end": "2026-10-09T23:55:00.000+0200",
+     "lastUpdate": "2026-10-09T08:10:00.000+0200",
+     "resume": "2026-10-09T08:09:00.000+0200",
+     "start": "2026-10-09T08:09:00.000+0200"
+    },
+    "title": "13A: Verkehrsüberlastung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "descriptionHTML": "Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Falschparker.",
+    "name": "I20261009-0005",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "170",
+       "lineName": "O",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-09T08:26:00.000+0200",
+     "end": "2026-10-09T23:55:00.000+0200",
+     "lastUpdate": "2026-10-09T08:26:00.000+0200",
+     "resume": "2026-10-09T08:25:00.000+0200",
+     "start": "2026-10-09T08:25:00.000+0200"
+    },
+    "title": "O: Falschparker"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
