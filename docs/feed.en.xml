@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 09 Oct 2026 08:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 09:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[42/9: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d0306412af66249baa2e50a703d32bf283d9f6320fd3f4faaa25f07a5180723d</guid>
+      <pubDate>Fri, 09 Oct 2026 08:59:51 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 08:59:51 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 08:59:51 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 09:59:00 +0200</ext:ends_at>
+      <description>Diversion to Gersthof over lines 42 and 9! Diversion to Gersthof &amp;lt; over lines 42 and 9! [Since 08:59]</description>
+      <content:encoded><![CDATA[Diversion to Gersthof over lines 42 and 9! Diversion to Gersthof &lt; over lines 42 and 9!<br/>[Since 08:59]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40/41: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2eb68f371c0d737b7a5ab3e158e473973cc35e96b9aefc6807cce70740d62e8e</guid>
+      <pubDate>Fri, 09 Oct 2026 08:56:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 08:56:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 08:56:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Diversion towards Gersthof, Herbeckstraße between Währinger Straße, Volksoper U and Gersthof S via Michelbeuern-AKH U (line lines 42 and 9). Line 41: diversion … [Since 08:56]</description>
+      <content:encoded><![CDATA[Diversion towards Gersthof, Herbeckstraße between Währinger Straße, Volksoper U and Gersthof S via Michelbeuern-AKH U (line lines 42 and 9). Line 41: diversion …<br/>[Since 08:56]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc</guid>
+      <pubDate>Fri, 09 Oct 2026 08:37:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 08:37:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 08:37:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 08:37]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 08:37]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[O: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,17 +63,6 @@
       <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 08:09]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 08:09]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: Delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
-      <pubDate>Fri, 09 Oct 2026 07:52:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 07:52:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 07:52:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 07:52]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 07:52]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Nestroyplatz, ramp lock]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
       <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation. [Until 31.03.2027]</description>
       <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation.<br/>[Until 31.03.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[72A: Haidestraße S]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">478a7dd15ce15abfb6a3b89c90e7305c6500a29a34ffa7ee497d6624535e2914</guid>
-      <pubDate>Thu, 08 Oct 2026 15:30:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 15:30:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 15:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 08 Oct 2027 11:11:00 +0200</ext:ends_at>
-      <description>Lautenschlägergasse after Haidestraße → 1. Haidequerstraße opposite 3A. Stop relocation of line 72A towards Hasenleiten. Reason: Work on a gas line. [Since 08.10.]</description>
-      <content:encoded><![CDATA[Lautenschlägergasse after Haidestraße → 1. Haidequerstraße opposite 3A. Stop relocation of line 72A towards Hasenleiten. Reason: Work on a gas line.<br/>[Since 08.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Burggasse 67]]></title>
-      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
-      <guid isPermaLink="false">1642f76cdb2a921752f24384fa1ad815176094f31dfa2f9d5130723b697b3205</guid>
-      <pubDate>Tue, 28 Jul 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 14:30:45 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 28 Jul 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 30 Oct 2026 00:00:00 +0100</ext:ends_at>
-      <description>The stop of the affected public transport will be moved from Burggasse No. 67 to Burggasse No. 69. [Until 30.10.]</description>
-      <content:encoded><![CDATA[The stop of the affected public transport will be moved from Burggasse No. 67 to Burggasse No. 69.<br/>[Until 30.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

@@ -1,5 +1,55 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R134-102|2026-10-09T08:45:20.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R134-102",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T09:45:00.000+0200",
+   "incident": "I20261009-0006"
+  },
+  {
+   "key": "R50-102|2026-10-09T08:40:19.000+0200|Verkehrsunfall\nBetrieb ab Schwedenplatz",
+   "name": "R50-102",
+   "title": "Verkehrsunfall\nBetrieb ab Schwedenplatz",
+   "end": "2026-10-09T09:39:00.000+0200",
+   "incident": "I20261009-0006"
+  },
+  {
+   "key": "R51-102|2026-10-09T08:40:19.000+0200|Verkehrsunfall\nBetrieb ab Schwedenplatz",
+   "name": "R51-102",
+   "title": "Verkehrsunfall\nBetrieb ab Schwedenplatz",
+   "end": "2026-10-09T09:39:00.000+0200",
+   "incident": "I20261009-0006"
+  },
+  {
+   "key": "R52-102|2026-10-09T08:40:19.000+0200|Verkehrsunfall\nBetrieb ab Schwedenplatz",
+   "name": "R52-102",
+   "title": "Verkehrsunfall\nBetrieb ab Schwedenplatz",
+   "end": "2026-10-09T09:39:00.000+0200",
+   "incident": "I20261009-0006"
+  },
+  {
+   "key": "R53-102|2026-10-09T08:40:19.000+0200|Verkehrsunfall\nBetrieb ab Schwedenplatz",
+   "name": "R53-102",
+   "title": "Verkehrsunfall\nBetrieb ab Schwedenplatz",
+   "end": "2026-10-09T09:39:00.000+0200",
+   "incident": "I20261009-0006"
+  },
+  {
+   "key": "R54-102|2026-10-09T08:40:19.000+0200|Verkehrsunfall\nBetrieb ab Schwedenplatz",
+   "name": "R54-102",
+   "title": "Verkehrsunfall\nBetrieb ab Schwedenplatz",
+   "end": "2026-10-09T09:39:00.000+0200",
+   "incident": "I20261009-0006"
+  },
+  {
+   "key": "R55-102|2026-10-09T08:40:19.000+0200|Verkehrsunfall\nBetrieb ab Schwedenplatz",
+   "name": "R55-102",
+   "title": "Verkehrsunfall\nBetrieb ab Schwedenplatz",
+   "end": "2026-10-09T09:39:00.000+0200",
+   "incident": "I20261009-0006"
+  }
+ ]
 }
