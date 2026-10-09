@@ -53,6 +53,7 @@ from ..utils.http import (
 )
 from ..utils.logging import sanitize_log_arg
 from ..utils import raw_capture, source_shape
+from ..utils.text import is_station_access_only
 
 from defusedxml import ElementTree as ET # XXE Mitigation applied
 
@@ -230,7 +231,9 @@ def _is_facility_or_weather_only(title: str, description: str) -> bool:
     the feed — including titles that combine "Bauarbeiten" with
     "Aufzug betroffen", because the actual subject is still the broken
     elevator and not a service-affecting track disruption. Any mention
-    of a facility keyword in the title therefore drops the message.
+    of a facility keyword in the title therefore drops the message, and
+    so does a closed station access (``is_station_access_only``: the
+    trains still stop) unless the title also names a measure for the line.
 
     Weather titles are dropped only when the title doesn't also carry a
     real disruption keyword: ``Sturmschaden: Strecke Wien-Mödling
@@ -246,6 +249,9 @@ def _is_facility_or_weather_only(title: str, description: str) -> bool:
         # Strict: any facility-keyword title drops, with or without an
         # accompanying transit keyword. Side-mentions of "Aufzug" should
         # never reach the feed per user spec.
+        return True
+    if is_station_access_only(title):
+        # A closed Aufgang/Ausgang counts like a broken lift (2026-10-09).
         return True
     has_weather = bool(_WEATHER_KEYWORD_RE.search(title_low))
     if not has_weather:

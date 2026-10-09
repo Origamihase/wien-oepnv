@@ -5,6 +5,19 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Aufgangssperren wie defekte Aufzüge (2026-10-09)**: Betreiberentscheidung
+  „Eine Aufgangssperre soll bitte wie ein defekter Aufzug behandelt werden.“
+  Nennt der Titel einer WL- oder ÖBB-Meldung einen gesperrten Aufgang,
+  Ausgang, Zugang, Eingang oder Stiegen-/Treppenabgang einer Station
+  („Aufgangssperre“, „Sperre eines Aufgangs“, „Sperre Ausgang“), verwirft
+  der Abruf sie wie einen reinen Aufzug-Titel, Grund „nur Aufgang/Ausgang“
+  in `data/raw/wl/verworfen.json`. Nennt der Titel zugleich eine Maßnahme
+  für die Linie („kein Halt“, „fahren durch“, „Ersatzverkehr“), bleibt die
+  Meldung. „U1: Nestroyplatz, Aufgangssperre“ stand seit dem 09.10. 00:01
+  im Feed, nachts meist auf Platz 1 oder 2; in allen 225 WL-Abrufen seit
+  04.10. verschwindet nur diese Meldung. Über 7.015 verschiedene Titel aus
+  WL- und ÖBB-Cache seit Februar trifft die Regel sonst nur die beiden
+  Keplerplatz-Sperren und ÖBB-Aufzugsmeldungen, die schon vorher wegfielen.
 * **WL: Kein Ende statt 11:11-Ablaufdatum (2026-10-08)**:
   Betreiberentscheidung „Kein Ende“. WL setzt bei Hinweisen ohne bekanntes
   Ende ein Ablaufdatum um 11:11, meist ein Jahr nach der Veröffentlichung;

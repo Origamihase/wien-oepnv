@@ -31,6 +31,43 @@ def names_planned_measure(text: str) -> bool:
     """True when *text* names a planned measure (:data:`PLANNED_DISRUPTION_RE`)."""
     return bool(PLANNED_DISRUPTION_RE.search(text))
 
+
+# A closed way into a station (Aufgang, Ausgang, Zugang, Eingang,
+# Stiegen-/Treppenabgang) is treated like a broken lift: the trains still
+# stop, passengers take another exit (operator decision 2026-10-09). Real
+# WL titles: "U1: Nestroyplatz, Aufgangssperre ab 12.10.2026", "U1:
+# Keplerplatz, Sperre eines Aufgangs", "U1: Sperre Ausgang beim
+# Keplerplatz". The roots match inside compounds like the lift roots; a
+# bare "abgang" is left out because "Murenabgang" is a rail closure cause.
+STATION_ACCESS_RE: re.Pattern[str] = re.compile(
+    r"\b\w*(?:aufg|ausg|zug|eing|stiegenabg|treppenabg)(?:a|ä|ae)ng\w*\b",
+    re.IGNORECASE,
+)
+
+# What the trains themselves do. A title naming one of these is about the
+# line, not only about a way into the station, and stays.
+_LINE_MEASURE_RE: re.Pattern[str] = re.compile(
+    r"\bkein(?:en)?\s+(?:halt|betrieb)\b|\bohne\s+halt\b|\bdurchf(?:ahr|ähr|aehr)\w*"
+    r"|\bfahren(?:\s+\w+){0,3}\s+durch\b"
+    r"|\b(?:hält|haelt|halten)\s+nicht\b|\beingestellt\b|\bumgeleitet\b"
+    r"|umleitung|ersatzverkehr|unterbrech|kurz\s*ge(?:führt|fuehrt)|kurzf(?:ü|ue)hrung"
+    r"|\bentf(?:ällt|aellt|allen)\b",
+    re.IGNORECASE,
+)
+
+
+def is_station_access_only(title: str) -> bool:
+    """True when *title* is about a closed station access and nothing else.
+
+    Mirrors the lift rule (title-driven: a word in the description is a
+    side-mention), with one addition: a title that also names a measure
+    for the line (:data:`_LINE_MEASURE_RE`, "kein Halt", "durchfahren",
+    "Ersatzverkehr" …) keeps the item.
+    """
+    if not title or not STATION_ACCESS_RE.search(title):
+        return False
+    return not _LINE_MEASURE_RE.search(title)
+
 # Common German prepositions that should not be followed by a bullet.
 PREPOSITIONS: tuple[str, ...] = (
     # Alphabetical order for easier maintenance; keep umlaut/ASCII pairs
