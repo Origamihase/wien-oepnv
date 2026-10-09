@@ -45,13 +45,22 @@ STATION_ACCESS_RE: re.Pattern[str] = re.compile(
 )
 
 # What the trains themselves do. A title naming one of these is about the
-# line, not only about a way into the station, and stays.
+# line, not only about a way into the station, and stays. Besides WL's
+# measures this holds ÖBB's words for the trains (check of 2026-10-09): a
+# train that fails or runs late ("Zugausfall", "fällt aus", "Verspätungen"),
+# a changed timetable or offer ("Fahrplanänderung", "geändertes Zugangebot",
+# where "Zugangebot" itself reads as "Zugang" plus "ebot"), single-track
+# running and a closed line ("Streckensperre"). Without them "Geändertes
+# Zugangebot …" or "Zugausfall ab Ausgangsbahnhof …" would have left the
+# feed like a closed exit.
 _LINE_MEASURE_RE: re.Pattern[str] = re.compile(
     r"\bkein(?:en)?\s+(?:halt|betrieb)\b|\bohne\s+halt\b|\bdurchf(?:ahr|ähr|aehr)\w*"
     r"|\bfahren(?:\s+\w+){0,3}\s+durch\b"
     r"|\b(?:hält|haelt|halten)\s+nicht\b|\beingestellt\b|\bumgeleitet\b"
     r"|umleitung|ersatzverkehr|unterbrech|kurz\s*ge(?:führt|fuehrt)|kurzf(?:ü|ue)hrung"
-    r"|\bentf(?:ällt|aellt|allen)\b",
+    r"|\bentf(?:ällt|aellt|allen)\b"
+    r"|ausf(?:a|ä|ae)ll|\bf(?:ällt|aellt|allen)\s+aus\b|versp(?:ä|ae)t"
+    r"|fahrplan|angebot|eingleisig|(?:gleis|strecken|bahn)\w*sperr",
     re.IGNORECASE,
 )
 

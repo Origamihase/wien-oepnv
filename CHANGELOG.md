@@ -5,6 +5,18 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Aufgangssperren: Zugwörter der ÖBB halten die Meldung (2026-10-09)**:
+  Befund der neunten unabhängigen Prüfung. Die Regel aus dem Eintrag
+  darunter sucht die Zugangs-Wörter auch im Wortinneren; „Zugangebot“
+  enthält „Zugang“, „Ausgangsbahnhof“ enthält „Ausgang“. Ein ÖBB-Titel wie
+  „Geändertes Zugangebot: Wien Hbf“ oder „Zugausfall ab Ausgangsbahnhof …“
+  wäre deshalb wie ein gesperrter Ausgang aus dem Feed gefallen. Jetzt
+  zählen auch die Wörter der ÖBB für die Züge als Maßnahme für die Linie:
+  Ausfall („Zugausfall“, „fällt aus“), Verspätung, Fahrplan, Angebot,
+  eingleisig und Strecken-/Gleis-/Bahnsperre. Über alle 7.670 Titel aus
+  WL- und ÖBB-Cache, Rohdaten und Verwürfen seit Februar verwirft die Regel
+  dieselben acht Titel wie vorher; eine Meldung mit diesen Wörtern kam
+  bisher nicht vor.
 * **Klapprampensperren wie defekte Aufzüge (2026-10-09)**: Betreiberwahl
   „Auch verwerfen“. Können bei einer Veranstaltung die Klapprampen der
   U-Bahn-Züge nicht ausfahren („U1: Klapprampensperre am 10.10.2026“),

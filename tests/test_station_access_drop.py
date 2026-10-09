@@ -52,6 +52,17 @@ def test_access_closure_titles_drop(title: str) -> None:
         "13A: Haltestellenverlegung Kliebergasse",
         # A landslide is a rail closure cause, not a station exit.
         "Murenabgang: Strecke Wien-Mödling gesperrt",
+        # ÖBB's words for the trains (check of 2026-10-09): "Zugangebot"
+        # holds "Zugang", "Ausgangsbahnhof" holds "Ausgang"; the title is
+        # about the trains and stays.
+        "Geändertes Zugangebot: Wien Hbf",
+        "Eingeschränktes Zugangebot zwischen Wien Meidling und Mödling",
+        "Zugausfall ab Ausgangsbahnhof Wien Hbf",
+        "Züge fallen aus, Ausgang Bahnsteig 1 gesperrt: Wien Meidling",
+        "Verspätungen wegen Sperre eines Zugangs: Wien Floridsdorf",
+        "Fahrplanänderung, Zugang Bahnsteig 2 gesperrt: Wien Mitte",
+        "Eingleisiger Betrieb, Ausgang gesperrt: Wien Simmering",
+        "Streckensperre, Zugang gesperrt: Wien Liesing",
         "",
     ],
 )
@@ -69,6 +80,8 @@ def test_oebb_access_closure_drops_like_a_lift() -> None:
     assert _is_facility_or_weather_only("Wien Meidling: Aufgang Bahnsteig 1 gesperrt", "") is True
     assert _is_facility_or_weather_only("Murenabgang: Strecke Wien-Mödling gesperrt", "") is False
     assert _is_facility_or_weather_only("Wien Hbf: Zugang gesperrt, Züge halten nicht", "") is False
+    # ÖBB's train words keep the item: "Zugangebot" reads as "Zugang".
+    assert _is_facility_or_weather_only("Geändertes Zugangebot: Wien Hbf", "") is False
 
 
 def _wl_news(name: str, title: str, description: str, now: datetime) -> dict[str, Any]:
