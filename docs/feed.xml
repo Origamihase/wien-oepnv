@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 10 Oct 2026 01:00:50 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 01:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U2: Rettungseinsatz]]></title>
@@ -76,6 +76,17 @@
       <content:encoded><![CDATA[Lautenschlägergasse nach Haidestraße → 1. Haidequerstraße gegenüber 3A. Haltestellenverlegung der Linie 72A in Richtung Hasenleiten. Grund: Arbeiten an einer Gasleitung.<br/>[Bis Mo 12.10.]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[N20: Bauarbeiten, Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fbb2a8ec5e05f8147afc547298621b5aa410a4dd847efd2a4b79524c0dfd7460</guid>
+      <pubDate>Sat, 10 Oct 2026 01:10:05 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 01:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 01:10:05 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 10 Oct 2026 05:00:00 +0200</ext:ends_at>
+      <description>Bauarbeiten: Busse halten Donaufelder Straße 40-42, auf der Hauptfahrbahn. Gleisbauarbeiten: Busse halten Hoßplatz 7-11 bei Linie 26E, Bessemerstraße 1-3. [Heute]</description>
+      <content:encoded><![CDATA[Bauarbeiten: Busse halten Donaufelder Straße 40-42, auf der Hauptfahrbahn. Gleisbauarbeiten: Busse halten Hoßplatz 7-11 bei Linie 26E, Bessemerstraße 1-3.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 … [Bis 06.11.]</description>
       <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 …<br/>[Bis 06.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
-      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
-      <content:encoded><![CDATA[Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

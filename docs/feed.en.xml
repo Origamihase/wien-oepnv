@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 10 Oct 2026 01:00:50 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 01:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U2: Rescue operation]]></title>
@@ -76,6 +76,17 @@
       <content:encoded><![CDATA[Lautenschlägergasse after Haidestraße → 1. Haidequerstraße opposite 3A. Stop relocation of line 72A towards Hasenleiten. Reason: Work on a gas line.<br/>[Until Mon 12.10.]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[N20: Construction works, track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">fbb2a8ec5e05f8147afc547298621b5aa410a4dd847efd2a4b79524c0dfd7460</guid>
+      <pubDate>Sat, 10 Oct 2026 01:10:05 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 01:30:58 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 01:10:05 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 10 Oct 2026 05:00:00 +0200</ext:ends_at>
+      <description>Construction works: buses stop at Donaufelder Straße 40-42, on the main carriageway. Track construction works: buses stop at Hoßplatz 7-11 on line 26E, Bessemerstraße 1-3. [Today]</description>
+      <content:encoded><![CDATA[Construction works: buses stop at Donaufelder Straße 40-42, on the main carriageway. Track construction works: buses stop at Hoßplatz 7-11 on line 26E, Bessemerstraße 1-3.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 … [Until 06.11.]</description>
       <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 …<br/>[Until 06.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
-      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction. [Until 26.10.]</description>
-      <content:encoded><![CDATA[Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction.<br/>[Until 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
