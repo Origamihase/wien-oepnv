@@ -830,30 +830,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "U1: Klapprampensperre am 10.10.2026",
-    "description": "<p class=\"MsoNormal\">Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung k&ouml;nnen die Klapprampen der U-Bahnz&uuml;ge der Linie U1 nicht ausgefahren werden. Bitte achten Sie beim Ein- und Aussteigen besonders auf den Spalt zwischen Zug und Bahnsteig.</p> <p class=\"MsoNormal\">Due to the high number of passengers attending an event, the folding ramps on line U1 underground trains cannot be deployed. Please mind the gap between the platform and the train when boarding or alighting.</p> <p class=\"MsoNormal\">Zeitraum | Duration:<br />10.10.2026 ca. 20:30 Uhr - 22:45 Uhr</p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "000c01149fd3b84e0fd6751fe3cf1e6037a0e2ac6dc446c713492642a8342b5a",
-    "pubDate": "2026-10-05T00:00:00+02:00",
-    "starts_at": "2026-10-10T00:00:00+02:00",
-    "ends_at": "2026-10-10T23:00:00+02:00",
-    "_identity": "wl|hinweis|L=U1|D=2026-10-10|TK=u1 klapprampensperre am 10 10 2026"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "U4: Klapprampensperre am 16.10.2026",
-    "description": "<p class=\"MsoNormal\">Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung k&ouml;nnen die Klapprampen der U-Bahnz&uuml;ge der Linie U4 nicht ausgefahren werden. Bitte achten Sie beim Ein- und Aussteigen besonders auf den Spalt zwischen Zug und Bahnsteig.</p> <p class=\"MsoNormal\">Due to the high number of passengers attending an event, the folding ramps on line U4 underground trains cannot be deployed. Please mind the gap between the platform and the train when boarding or alighting.</p> <p class=\"MsoNormal\">Zeitraum | Duration:<br />16.10.2026, ca. 20:30 Uhr - 23:00 Uhr</p>",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "feca1a5cc8e32b420c316f55dd59693219791ef328479b0ace77069e4e567a25",
-    "pubDate": "2026-10-08T15:20:00+02:00",
-    "starts_at": "2026-10-16T00:00:00+02:00",
-    "ends_at": "2026-10-16T23:00:00+02:00",
-    "_identity": "wl|hinweis|L=U4|D=2026-10-16|TK=u4 klapprampensperre am 16 10 2026"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "U6: Neue Donau, kein Halt Richtung Floridsdorf",
     "description": "<h2>Bahnsteigsanierung</h2> <p>Wegen Sanierung des Bahnsteigs h&auml;lt die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein.<br />Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 14. September 2026 bis Ende 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br />Die Station Neue Donau U wird in Richtung Floridsdorf U durchfahren.</p> <p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />Aus Richtung Siebenhirten U kommend fahren Sie weiter bis Floridsdorf U und ab dort mit dem n&auml;chsten Zug zur&uuml;ck zur Station Neue Donau U.</p> <p><span style=\"text-decoration: underline;\"><strong>Hinweis:</strong></span><br />Fallweise ist ein eingleisiger Betrieb in der Station Neue Donau U ab 22:00 Uhr notwendig. Die Station Neue Donau U wird dann in beiden Richtungen eingehalten.</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -862,6 +838,21 @@
     "starts_at": "2026-09-14T00:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|hinweis|L=U6|D=2026-09-14|TK=u6 neue donau kein halt richtung floridsdorf"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Verunreinigung",
+    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "1f0306b680e5da26f14eb1fee7aed5a4682caac6e0570037c68c42879db4b795",
+    "pubDate": "2026-10-09T16:10:00+02:00",
+    "starts_at": "2026-10-09T16:10:00+02:00",
+    "ends_at": "2026-10-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-10-09|TK=11 verunreinigung",
+    "_wl_ids": [
+      "I20261009-0033"
+    ]
   },
   {
     "source": "Wiener Linien",
@@ -1087,6 +1078,21 @@
     "starts_at": "2026-10-07T00:00:15+02:00",
     "ends_at": "2026-10-09T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-10-07|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Verkehrsüberlastung",
+    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9bf5343b39ded7dc7ca142844f951a241fc0e1d681fa0c0e2ed28db2ac8efe38",
+    "pubDate": "2026-10-09T16:22:00+02:00",
+    "starts_at": "2026-10-09T16:22:00+02:00",
+    "ends_at": "2026-10-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=40A|D=2026-10-09|TK=40a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261009-0034"
+    ]
   },
   {
     "source": "Wiener Linien",

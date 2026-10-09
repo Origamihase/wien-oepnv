@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 09 Oct 2026 16:13:39 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 16:31:01 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[11: Contamination]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1f0306b680e5da26f14eb1fee7aed5a4682caac6e0570037c68c42879db4b795</guid>
+      <pubDate>Fri, 09 Oct 2026 16:10:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 16:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 16:10:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: contamination. [Since 16:10]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 16:10]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9bf5343b39ded7dc7ca142844f951a241fc0e1d681fa0c0e2ed28db2ac8efe38</guid>
+      <pubDate>Fri, 09 Oct 2026 16:22:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 14:54:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 16:22:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 16:22]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 16:22]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[16A/22A: Traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,17 +52,6 @@
       <ext:ends_at>Fri, 09 Oct 2026 23:59:59 +0200</ext:ends_at>
       <description>Trains stop at Donaufelder Straße 175-177. [Today]</description>
       <content:encoded><![CDATA[Trains stop at Donaufelder Straße 175-177.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Folding ramps out of service on 10.10.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">000c01149fd3b84e0fd6751fe3cf1e6037a0e2ac6dc446c713492642a8342b5a</guid>
-      <pubDate>Mon, 05 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 00:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 23:00:00 +0200</ext:ends_at>
-      <description>Due to the high passenger volume associated with an event, the folding ramps of the underground trains of line U1 cannot be extended. [On Sat 10.10.]</description>
-      <content:encoded><![CDATA[Due to the high passenger volume associated with an event, the folding ramps of the underground trains of line U1 cannot be extended.<br/>[On Sat 10.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[18: LCC autumn marathon on 11.10.2026]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 … [Until 28.10.]</description>
       <content:encoded><![CDATA[Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 …<br/>[Until 28.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S80: ÖBB replacement bus]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Fri, 09 Oct 2026 05:00:28 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 05:00:28 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:00:00 +0200</ext:ends_at>
-      <description>Bhf. Hütteldorf [Today]</description>
-      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
