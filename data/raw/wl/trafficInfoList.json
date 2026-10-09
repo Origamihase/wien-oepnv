@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261009-0046-F01-F01, I20261009-0047-F01"
+    "trafficInfoNameList": "I20261009-0049, I20260917-0012, I20261009-0048, I20260922-0032, I20261009-0049-F01, I20260925-0011, I20260909-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R45-136, R19-136, R130-136, R119-136, R118-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R117-136, R36-152, R5815-671, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R1974-466, R2378-627, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2343-125, R2359-125, R2343-626, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R100-136, R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R1974-466, R2343-125, R2378-627, R2343-626, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,76 +203,112 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U6": "ptMetro"
+      "U1": "ptMetro"
      }
     },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261009-0046-F01-F01",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kagran.",
+    "descriptionHTML": "Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kagran.",
+    "name": "I20261009-0048",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "U6"
+     "U1"
     ],
     "relatedLinesDetails": [
      [
       {
-       "lineId": "306",
-       "lineName": "U6",
+       "lineId": "301",
+       "lineName": "U1",
        "vehicleType": "ptMetro"
       }
      ]
     ],
     "relatedStops": [
-     4620
+     4127
     ],
-    "status": "resolved",
+    "status": "active",
     "time": {
-     "created": "2026-10-09T22:10:00.000+0200",
-     "end": "2026-10-09T23:20:00.000+0200",
-     "lastUpdate": "2026-10-09T23:20:00.000+0200",
-     "resume": "2026-10-09T23:20:00.000+0200",
-     "start": "2026-10-09T21:59:00.000+0200"
+     "created": "2026-10-10T00:02:00.000+0200",
+     "end": "2026-10-10T23:55:00.000+0200",
+     "lastUpdate": "2026-10-10T00:02:00.000+0200",
+     "start": "2026-10-10T00:01:00.000+0200"
     },
-    "title": "U6: Polizeieinsatz"
+    "title": "U1: Schadhaftes Fahrzeug"
    },
    {
     "attributes": {
      "relatedLineTypes": {
-      "11": "ptTram"
+      "U2": "ptMetro"
      }
     },
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261009-0047-F01",
+    "description": "Linie U2: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 00:25 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Donauspital.",
+    "descriptionHTML": "Linie U2:<br>Fahrtbehinderung in beiden Richtungen.<br> <br>Voraussichtliche Dauer: 00:25 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Donauspital.",
+    "name": "I20261009-0049",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "11"
+     "U2"
     ],
     "relatedLinesDetails": [
      [
       {
-       "lineId": "111",
-       "lineName": "11",
-       "vehicleType": "ptTram"
+       "lineId": "302",
+       "lineName": "U2",
+       "vehicleType": "ptMetro"
       }
      ]
     ],
     "relatedStops": [
-     4732
+     4252
     ],
     "status": "resolved",
     "time": {
-     "created": "2026-10-09T22:33:00.000+0200",
-     "end": "2026-10-09T23:21:00.000+0200",
-     "lastUpdate": "2026-10-09T23:21:00.000+0200",
-     "resume": "2026-10-09T23:21:00.000+0200",
-     "start": "2026-10-09T22:30:00.000+0200"
+     "created": "2026-10-10T00:03:00.000+0200",
+     "end": "2026-10-10T00:12:00.000+0200",
+     "lastUpdate": "2026-10-10T00:12:00.000+0200",
+     "resume": "2026-10-10T00:12:00.000+0200",
+     "start": "2026-10-10T00:03:00.000+0200"
     },
-    "title": "11: Rettungseinsatz"
+    "title": "U2: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Die Linie U2 fährt derzeit zwischen den Stationen Donauspital und Hardeggasse in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 00:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Donauspital.",
+    "descriptionHTML": "Die Linie U2 fährt derzeit zwischen den Stationen Donauspital und Hardeggasse in beiden Richtungen über Gleis 2.<br> <br>Voraussichtliche Dauer: 00:45 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Donauspital.",
+    "name": "I20261009-0049-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "302",
+       "lineName": "U2",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4252
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-10T00:12:00.000+0200",
+     "end": "2026-10-10T23:55:00.000+0200",
+     "lastUpdate": "2026-10-10T00:29:00.000+0200",
+     "resume": "2026-10-10T00:03:00.000+0200",
+     "start": "2026-10-10T00:03:00.000+0200"
+    },
+    "title": "U2: Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1077,6 +1113,24 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
+   },
+   {
+    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
+    "name": "R500-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     500
+    ],
+    "time": {
+     "end": "2026-10-10T04:59:00.000+0200",
+     "start": "2026-10-10T00:30:04.000+0200"
+    },
+    "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
