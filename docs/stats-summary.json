@@ -1,7 +1,7 @@
 {
   "ausfaelle": {
     "by_direction": {
-      "Meidling": 966,
+      "Meidling": 967,
       "Praterstern": 916
     },
     "by_hour": {
@@ -22,7 +22,7 @@
       "14": 75,
       "15": 109,
       "16": 89,
-      "17": 107,
+      "17": 108,
       "18": 106,
       "19": 127,
       "20": 106,
@@ -43,7 +43,7 @@
       "REX2277": 1,
       "REX3": 195,
       "REX92": 3,
-      "S1": 412,
+      "S1": 413,
       "S2": 300,
       "S27016": 1,
       "S28044": 1,
@@ -57,15 +57,15 @@
     "by_weekday": {
       "Di": 291,
       "Do": 325,
-      "Fr": 367,
+      "Fr": 368,
       "Mi": 302,
       "Mo": 282,
       "Sa": 152,
       "So": 163
     },
-    "total": 1882
+    "total": 1883
   },
-  "generated_at": "2026-10-09T17:30:56+02:00",
+  "generated_at": "2026-10-09T18:01:22+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 1.0,
@@ -114,7 +114,7 @@
         "Meidling": {
           "last_seen": "2026-10-09T17:25:00+02:00",
           "peer_rows_since": 0,
-          "rows_in_window": 1192
+          "rows_in_window": 1191
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
@@ -128,7 +128,7 @@
     },
     "live": {
       "avg_delay_minutes": 0.0,
-      "observations": 2,
+      "observations": 1,
       "window_minutes": 60
     },
     "max_delay_minutes": 395.33,

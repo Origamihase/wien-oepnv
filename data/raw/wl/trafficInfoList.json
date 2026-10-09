@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261009-0026-F01, I20260917-0012, I20260922-0032, I20260925-0011, I20261009-0033, I20260909-0007, I20261009-0034, I20261009-0035, I20261009-0037, I20261009-0026-F02, I20261009-0026, I20261009-0036"
+    "trafficInfoNameList": "I20261009-0026-F01, I20260917-0012, I20260922-0032, I20260925-0011, I20261009-0033, I20260909-0007, I20261009-0034, I20261009-0038, I20261009-0037, I20261009-0026-F02, I20261009-0036"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R116-136, R100-136, R101-136, R102-136, R103-136, R115-136, R130-136, R118-136, R19-136, R45-136, R119-136, R36-152, R117-136, R2558-125, R5815-671, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2025-671, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R2372-627, R2345-127, R2380-627, R1177-0, R1974-466, R500-101, R19-101, R13-101, R14-101, R15-101, R17-101, R18-101, R20-101, R21-101, R22-101, R51-101, R45-101, R46-101, R47-101, R49-101, R50-101, R50-136, R46-136, R47-136, R49-136, R51-136, R17-136, R13-136, R14-136, R15-136, R18-136, R13-102, R14-102, R15-102, R51-102, R50-102, R49-102, R15-171, R17-171, R18-171, R19-171, R81-171, R14-171, R13-171, R46-171, R47-171, R49-171, R50-171, R51-171, R44-171, R45-171, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R45-136, R36-152, R116-136, R119-136, R19-136, R118-136, R130-136, R100-136, R101-136, R115-136, R103-136, R102-136, R117-136, R5815-671, R2558-125, R2380-627, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R2345-127, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2025-671, R1446-149, R1445-149, R1474-412, R1448-412, R2372-627, R1177-0, R1974-466, R500-101, R21-101, R20-101, R19-101, R18-101, R17-101, R15-101, R14-101, R13-101, R22-101, R46-101, R45-101, R47-101, R49-101, R50-101, R51-101, R49-136, R51-136, R50-136, R46-136, R47-136, R18-136, R14-136, R15-136, R17-136, R13-136, R13-102, R14-102, R15-102, R50-102, R51-102, R49-102, R81-171, R14-171, R13-171, R15-171, R17-171, R18-171, R19-171, R47-171, R44-171, R45-171, R46-171, R49-171, R50-171, R51-171, R1876-101, R1875-101, R1714-101, R1713-101, R1712-101, R1711-101, R1709-101, R1715-101, R851-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,47 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "16A": "ptBusCity",
-      "22A": "ptBusCity"
-     }
-    },
-    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "Linie 16A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 22A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
-    "name": "I20261009-0026",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "16A",
-     "22A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "416",
-       "lineName": "16A",
-       "vehicleType": "ptBusCity"
-      },
-      {
-       "lineId": "422",
-       "lineName": "22A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-09T13:52:00.000+0200",
-     "end": "2026-10-09T16:55:00.000+0200",
-     "lastUpdate": "2026-10-09T16:55:00.000+0200",
-     "resume": "2026-10-09T16:55:00.000+0200",
-     "start": "2026-10-09T13:52:00.000+0200"
-    },
-    "title": "16A, 22A: Verkehrsüberlastung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "16A": "ptBusCity"
      }
     },
@@ -380,40 +339,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "40": "ptTram"
-     }
-    },
-    "description": "Linie 40: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus.",
-    "descriptionHTML": "Linie 40:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Vandalismus.",
-    "name": "I20261009-0035",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "140",
-       "lineName": "40",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-09T16:35:00.000+0200",
-     "end": "2026-10-09T16:55:00.000+0200",
-     "lastUpdate": "2026-10-09T16:55:00.000+0200",
-     "resume": "2026-10-09T16:55:00.000+0200",
-     "start": "2026-10-09T16:35:00.000+0200"
-    },
-    "title": "40: Vandalismus"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U1": "ptMetro"
      }
     },
@@ -478,6 +403,40 @@
      "start": "2026-10-09T17:13:00.000+0200"
     },
     "title": "U4: Verunreinigung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram"
+     }
+    },
+    "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Weichen Sie ersatzweise auf die Linien 7A und 65A aus. Voraussichtliche Dauer: 18:15 Uhr. Grund: Polizeieinsatz im Bereich Knöllgasse.",
+    "descriptionHTML": "Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.<br> <br>Weichen Sie ersatzweise auf die Linien 7A und 65A aus.<br><br>Voraussichtliche Dauer: 18:15 Uhr.<br><br>Grund: Polizeieinsatz im Bereich Knöllgasse.",
+    "location": "Knöllgasse",
+    "name": "I20261009-0038",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "101",
+       "lineName": "1",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-09T17:47:00.000+0200",
+     "end": "2026-10-09T23:55:00.000+0200",
+     "lastUpdate": "2026-10-09T17:48:00.000+0200",
+     "start": "2026-10-09T17:46:00.000+0200"
+    },
+    "title": "1: Polizeieinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1161,6 +1120,114 @@
     "title": "Fahrtbehinderung\nwegen Demonstration"
    },
    {
+    "description": "Polizeieinsatz\nBetrieb nur bis Knöllgasse / Reumannplatz",
+    "name": "R1709-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1709
+    ],
+    "time": {
+     "end": "2026-10-09T18:48:00.000+0200",
+     "start": "2026-10-09T17:48:53.000+0200"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Knöllgasse / Reumannplatz"
+   },
+   {
+    "description": "Polizeieinsatz\nBetrieb nur bis Knöllgasse / Reumannplatz",
+    "name": "R1711-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1711
+    ],
+    "time": {
+     "end": "2026-10-09T18:48:00.000+0200",
+     "start": "2026-10-09T17:48:53.000+0200"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Knöllgasse / Reumannplatz"
+   },
+   {
+    "description": "Polizeieinsatz\nBetrieb nur bis Knöllgasse / Reumannplatz",
+    "name": "R1712-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1712
+    ],
+    "time": {
+     "end": "2026-10-09T18:48:00.000+0200",
+     "start": "2026-10-09T17:48:53.000+0200"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Knöllgasse / Reumannplatz"
+   },
+   {
+    "description": "Polizeieinsatz\nBetrieb nur bis Knöllgasse / Reumannplatz",
+    "name": "R1713-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1713
+    ],
+    "time": {
+     "end": "2026-10-09T18:48:00.000+0200",
+     "start": "2026-10-09T17:48:53.000+0200"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Knöllgasse / Reumannplatz"
+   },
+   {
+    "description": "Polizeieinsatz\nBetrieb nur bis Knöllgasse / Reumannplatz",
+    "name": "R1714-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1714
+    ],
+    "time": {
+     "end": "2026-10-09T18:48:00.000+0200",
+     "start": "2026-10-09T17:48:53.000+0200"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Knöllgasse / Reumannplatz"
+   },
+   {
+    "description": "Polizeieinsatz\nBetrieb nur bis Knöllgasse / Reumannplatz",
+    "name": "R1715-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1715
+    ],
+    "time": {
+     "end": "2026-10-09T18:48:00.000+0200",
+     "start": "2026-10-09T17:48:53.000+0200"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Knöllgasse / Reumannplatz"
+   },
+   {
     "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
     "name": "R18-101",
     "owner": "WL",
@@ -1213,6 +1280,42 @@
      "start": "2026-10-09T13:10:16.000+0200"
     },
     "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1875-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1875
+    ],
+    "time": {
+     "end": "2026-10-09T18:47:00.000+0200",
+     "start": "2026-10-09T17:47:54.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1876-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1876
+    ],
+    "time": {
+     "end": "2026-10-09T18:47:00.000+0200",
+     "start": "2026-10-09T17:47:54.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
@@ -2125,6 +2228,24 @@
      "start": "2026-10-09T13:10:16.000+0200"
     },
     "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "description": "Polizeieinsatz\nBetrieb nur bis Knöllgasse / Reumannplatz",
+    "name": "R851-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     851
+    ],
+    "time": {
+     "end": "2026-10-09T18:48:00.000+0200",
+     "start": "2026-10-09T17:48:54.000+0200"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Knöllgasse / Reumannplatz"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
