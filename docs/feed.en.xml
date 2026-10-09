@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 09 Oct 2026 22:02:24 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 22:20:08 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U6: Police operation]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Currently, the U6 line trains do not stop at Burggasse - Stadthalle station in the direction of Floridsdorf. [Since 21:59]</description>
       <content:encoded><![CDATA[Currently, the U6 line trains do not stop at Burggasse - Stadthalle station in the direction of Floridsdorf.<br/>[Since 21:59]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25: Replacement bus 26E stops at Karl-Waldbrunner-Platz before Schloßhofer Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1fada7614a788ccf1a33277fc05d810e42ffa22f80e787d1c7f2415eb1f42b8c</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:18 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 09:36:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 00:00:18 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Trains stop at Donaufelder Straße 175-177. [Today]</description>
-      <content:encoded><![CDATA[Trains stop at Donaufelder Straße 175-177.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[18: LCC autumn marathon on 11.10.2026]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction. [Until 26.10.]</description>
       <content:encoded><![CDATA[Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction.<br/>[Until 26.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Neue Donau, no stop towards Floridsdorf]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">747d54fbd4c0aad685b21596a0c44cb67d41165e556ee43b1bc3e8636920f551</guid>
+      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Sun, 04 Oct 2026 16:30:37 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Due to renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station Neue Donau with the U6 of … [Until 31.12.]</description>
+      <content:encoded><![CDATA[Due to renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station Neue Donau with the U6 of …<br/>[Until 31.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
