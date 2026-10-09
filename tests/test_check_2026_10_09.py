@@ -153,6 +153,52 @@ def test_a_message_of_the_incident_still_carries_its_guid() -> None:
     assert carried["guid"] == "1fada761"
 
 
+# 01.10.: WL's long message, dated back to 18:48, came after the tickers of 18:50.
+PKW_TICKERS = [
+    _wl(
+        "60: Fahrtbehinderung Schadhafter Pkw", "Fahrtbehinderung\nSchadhafter Pkw",
+        "eb0220c8", "2026-10-01T18:50:36+02:00", "2026-10-01T23:55:00+02:00",
+    ),
+    _wl(
+        "60: Schadhafter Pkw Betrieb ab Anschützgasse", "Schadhafter Pkw\nBetrieb ab Anschützgasse",
+        "3145b3c4", "2026-10-01T18:51:06+02:00", "2026-10-01T23:55:00+02:00",
+    ),
+]
+PKW_MESSAGE = _wl(
+    "60: Schadhafter PKW",
+    "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "ca37a3c3", "2026-10-01T18:48:00+02:00", "2026-10-01T23:55:00+02:00",
+)
+
+
+@pytest.mark.parametrize(
+    "own",
+    [
+        # The GUID recurs (same text on 11.09.); the build restarted it at 18:48.
+        {"first_seen": "2026-10-01T16:48:00+00:00", "last_seen": "2026-10-01T17:30:57+00:00"},
+        # Noted under its own GUID, but in an earlier occurrence.
+        {
+            "first_seen": "2026-10-01T16:48:00+00:00",
+            "members": ["ca37a3c3"],
+            "members_seen": "2026-09-28T08:00:00+00:00",
+        },
+    ],
+)
+def test_a_dated_back_message_takes_its_tickers_guid(own: dict[str, Any]) -> None:
+    (item,) = _built([*PKW_TICKERS, PKW_MESSAGE])
+    state = {
+        "eb0220c8": {
+            "first_seen": "2026-10-01T16:50:36+00:00",
+            "earliest_published": "2026-10-01T16:50:36+00:00",
+            "members": ["3145b3c4", "eb0220c8"],
+            "members_seen": "2026-10-01T17:01:00+00:00",
+        },
+        "ca37a3c3": own,
+    }
+    (carried,) = bf._carry_item_identity([item], state, _at("2026-10-01T19:30:57+02:00"))
+    assert carried["guid"] == "eb0220c8"
+
+
 # ---------------- ÖBB: the second sentence ----------------
 
 LEOPOLDAU: FeedItem = {

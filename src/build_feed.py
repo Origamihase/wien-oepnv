@@ -9371,12 +9371,17 @@ def _continued_by(entry: dict[str, Any], item: FeedItem, own: dict[str, Any] | N
     """Whether *item*, which shares a message with the item *entry* noted, continues it.
 
     Never if *item* stood in the feed under its own GUID before that item
-    did (*own*, its state entry, seen first): it was there first, and the
-    other took it up. The stops of the line 25 track works (in the feed
-    since 23.09.) became members of "25: Verspätungen" on 2026-10-09 at
-    09:36, before ``_with_unowned`` kept them out; when the delay ended
-    they carried its GUID and begin and stood as a new disruption on up to
-    place 2, and every later build carried them on again.
+    did (*own*, its state entry: noted by a build since its ``first_seen``,
+    which is older than the other's): it was there first, and the other
+    took it up. The stops of the line 25 track works (in the feed since
+    23.09.) became members of "25: Verspätungen" on 2026-10-09 at 09:36,
+    before ``_with_unowned`` kept them out; when the delay ended they
+    carried its GUID and begin and stood as a new disruption on up to
+    place 2, and every later build carried them on again. An entry no
+    build noted in this occurrence does not count: its ``first_seen`` may
+    be the message's own start (``_restart_recurring_occurrences``), and
+    WL dates a long message back ("60: Schadhafter PKW" on 2026-10-01,
+    dated 18:48, came after the tickers of 18:50 and carries their GUID).
 
     It does if the message whose GUID *item* carries was in that item: its
     other messages ran out ("43: Verkehrsunfall"). Or if that message is no
@@ -9391,7 +9396,8 @@ def _continued_by(entry: dict[str, Any], item: FeedItem, own: dict[str, Any] | N
     if _other_incident(entry, item):
         return False
     first, owner_first = _parse_state_time(own, "first_seen"), _parse_state_time(entry, "first_seen")
-    if first is not None and owner_first is not None and first < owner_first:
+    noted = _parse_state_time(own, "members_seen")
+    if first is not None and owner_first is not None and noted is not None and first < owner_first and noted >= first:
         return False
     members = entry.get("members")
     if isinstance(members, list) and str(item.get("guid") or "") in members:
