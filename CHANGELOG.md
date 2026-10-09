@@ -12,7 +12,11 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   GUID wieder, im ersten Lauf nach dem Merge (22:00) auf Platz 2 mit
   „[Heute]“. Ein Item, das unter seiner eigenen GUID früher im Feed stand
   als das Item, mit dem es eine Meldung teilt, übernimmt dessen GUID nicht
-  mehr (`_continued_by`). Nachbau aller Läufe vom 01. bis 09.10.: siehe PR.
+  mehr (`_continued_by`). Früher im Feed heißt: von einem Lauf in diesem
+  Auftreten notiert (`members_seen`), nicht nur ein älteres `first_seen`;
+  eine zurückdatierte WL-Langmeldung („60: Schadhafter PKW“, 01.10.)
+  übernimmt die GUID ihrer Tafel-Meldungen weiter. Nachbau aller Läufe vom
+  01. bis 09.10.: siehe PR.
   Dazu: Der Betreiber bestätigte am selben Abend, dass der ÖBB-Text die
   Stationen weglässt, die der Titel nennt („Stationen weglassen“), damit
   der zweite Satz in die 180 Zeichen passt.
