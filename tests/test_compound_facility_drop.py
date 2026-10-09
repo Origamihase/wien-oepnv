@@ -108,3 +108,22 @@ class TestWlCompoundFacilityDropped:
             _is_facility_only("U6: Verspätung wegen Schadhaftem Fahrzeug")
             is False
         )
+
+
+class TestKlapprampeCountsLikeALift:
+    """Folding ramps of the trains count like a lift (operator decision 2026-10-09).
+
+    WL's only form since July 2026 is "Klapprampensperre" (17 notices,
+    U1/U2/U4, events); the trains run as usual.
+    """
+
+    def test_wl_klapprampensperre_drops(self) -> None:
+        assert _is_facility_only("U1: Klapprampensperre am 10.10.2026") is True
+        assert _is_facility_only("U4: U4 Klapprampensperre am 12.08.2026") is True
+
+    def test_oebb_klapprampe_drops(self) -> None:
+        assert _is_facility_or_weather_only("Klapprampe defekt: Wien Hbf", "") is True
+
+    def test_side_mention_in_description_keeps_wl_title(self) -> None:
+        # Title-driven: the description may mention the ramps.
+        assert _is_facility_only("U1: Verspätungen") is False

@@ -81,7 +81,11 @@ FACILITY_ONLY = re.compile(
     # the bare-root pattern with ``\b`` on both sides misses real
     # ÖBB titles like ``Technische Störung des Personenlift``.
     r"\b\w*(?:aufzug|aufz(?:ü|ue)ge|lift|fahrstuhl|"
-    r"fahrtreppen?(?:info)?|rolltreppen?|aufzugsinfo)\w*\b",
+    r"fahrtreppen?(?:info)?|rolltreppen?|aufzugsinfo|"
+    # The folding ramps of the trains count like a lift (operator decision
+    # 2026-10-09): "U1: Klapprampensperre am 10.10.2026", WL's only form
+    # since July 2026; the trains run as usual.
+    r"klapprampen?)\w*\b",
     re.IGNORECASE,
 )
 
