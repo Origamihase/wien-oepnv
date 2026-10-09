@@ -5,6 +5,28 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Zehnte unabhängige Prüfung: Abruf bis Feed (2026-10-09)**: Drei
+  Befunde, alle an echten Daten nachgespielt (Feed-Läufe vom 01. bis
+  09.10., alle 443 ÖBB-Texte im Cache seit Juni).
+  - Eine Linie, ein Platz: Eine Tafel-Meldung ohne Ursache schließt sich
+    nur noch einem Vorfall an, der schon begonnen hatte, als sie erschien.
+    Die Haltestellen der Gleisbauarbeiten „25: Ersatzbus 26E hält
+    Karl-Waldbrunner-Platz …“ (seit 23.09.) standen am 09.10. vor „25:
+    Verspätungen“ und verdrängten deren Grund; nach dem Ende der
+    Verspätung standen sie mit deren GUID und Beginn von 12:01 bis 20:30
+    als neue Störung im Feed, bis auf Platz 2. Jetzt stehen sie hinter dem
+    Text des Vorfalls und zählen nicht zu seinen Meldungen.
+  - ÖBB: Der zweite Satz, was noch gilt („Planen Sie derzeit noch bis zu
+    10 Minuten mehr Reisezeit ein.“, „Über die Dauer der Unterbrechung
+    kann derzeit noch keine Angabe gemacht werden.“), fiel in 59 von 106
+    ÖBB-Texten seit September aus den 180 Zeichen. Nennt der Titel die
+    Stationen, lässt der erste Satz sie weg; „Wir bitten um
+    Entschuldigung.“ und ÖBBs andere Höflichkeitssätze fallen vorher weg.
+    251 der 443 ÖBB-Texte behalten so ihren zweiten Satz.
+  - EN (Epoche 25): „Ersatzbus 26E hält …“ heißt „replacement bus 26E
+    stops at …“ statt „holds … ahead of“ (offener Punkt r); ÖBBs feste
+    Folgesätze ohne Modell; ÖBBs Vorlagensatz endet nicht mehr hinter
+    „St.“ („in St. Pölten Hbf“).
 * **Baustellen: WL-Meldung genügt (2026-10-09)**: Eine Stadt-Wien-Baustelle,
   deren Maßnahme ein laufender WL-Hinweis schon meldet, fällt aus dem Feed
   (Betreiberentscheidung). Anlass: „Burggasse 67“ auf Platz 9, dieselbe

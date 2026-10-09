@@ -332,7 +332,24 @@ verdrängt eine andere Störung.
     ```
 
   - Eine Meldung ohne eigene Ursache geht zum Vorfall, der ihr zeitlich
-    am nächsten veröffentlicht wurde.
+    am nächsten veröffentlicht wurde, unter denen, die schon begonnen
+    hatten, als sie erschien: Eine Tafel-Meldung kann keinen späteren
+    Vorfall ankündigen. Meldungen, die ein paar Minuten vor ihrem Vorfall
+    kommen, liegen ohnehin in seinem Zeitfenster
+    (`WL_TICKER_CLUSTER_SECONDS`). Eine ältere Meldung ohne Ursache steht
+    hinter dem Text des Vorfalls, als eigener Satz nach seinem Grund, und
+    gehört nicht zu seinen Mitgliedern (`_with_unowned`, seit 2026-10-09);
+    die Linie behält ihren einen Platz. Anlass: Die Haltestellen der
+    Gleisbauarbeiten „25: Ersatzbus 26E hält Karl-Waldbrunner-Platz vor
+    Schloßhofer Straße“ und „Züge halten Donaufelder Straße 175-177“
+    (seit 23.09. im Feed-Zustand) schlossen sich am 09.10. um 09:36 „25:
+    Verspätungen“ (Grund: Schadhaftes Fahrzeug) an. Der Feed las die
+    Haltestellen vor der Verspätung, ihr Grund fiel aus den 180 Zeichen,
+    und als die Verspätung endete, behielten die Haltestellen ihre GUID
+    und ihren Beginn: Sie standen von 12:01 bis 20:30 als neue Störung im
+    Feed, bis auf Platz 2. Jetzt liest der Eintrag „Unregelmäßige
+    Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.“, und
+    danach fällt er auf GUID und Beginn der Haltestellen zurück.
   - Ausnahmen: Eine Ursache von mehr als `_MAX_LISTED_WORDS` (6) Wörtern
     ist ein Satz. Die Meldung „18: Haltestelle Stadionbrücke … aufgelassen.
     Bitte …“, seit Juli im Cache, behält ihren Eintrag und schließt sich
@@ -432,8 +449,11 @@ verdrängt eine andere Störung.
   Rendern (`_display_title`):
   * ÖBB: Die Linienliste vor dem Doppelpunkt steht ohne Leerzeichen
     (`_compact_line_prefix`): „R40/REX41/REX4/S40: …“ statt „R 40/REX 41/REX
-    4/S 40: …“, wie WL („U6“) und der Stammstrecken-Monitor („S1/S2“). Die
-    Beschreibung bleibt im Wortlaut der ÖBB (Betreiberwunsch).
+    4/S 40: …“, wie WL („U6“) und der Stammstrecken-Monitor („S1/S2“),
+    Betreiberwunsch. In der Beschreibung bleiben die Linien in ÖBBs
+    Schreibweise; dort fallen seit 2026-10-09 nur ÖBBs Höflichkeitssätze und,
+    wo der zweite Satz sonst nicht passt, die Stationen weg, die der Titel
+    schon nennt (unten, „ÖBB: der zweite Satz“).
   * Baustellen: Hausnummern stehen als Adresse (`_mark_house_numbers`).
     „Rennweg von 33A bis 37“ las sich am Fernseher wie Bus 33A und
     Straßenbahn 37; jetzt „Rennweg 33A–37“, ebenso „Kirchengasse 1–30“. Eine
@@ -539,6 +559,30 @@ verdrängt eine andere Störung.
   jedem Vergleich weg, sonst unterschieden sich Titel-Folge und Text und
   derselbe Satz stand zweimal; ein Leerzeichen vor einem Punkt („12:15
   Uhr .“) und „im Bereich .“ ohne Ort fallen aus der Beschreibung.
+* **ÖBB: der zweite Satz sagt, was noch gilt (seit 2026-10-09).** ÖBB
+  sagt im zweiten Satz, was noch gilt: „Planen Sie derzeit noch bis zu 10
+  Minuten mehr Reisezeit ein.“ unter einer Störung, die vorbei ist, „Über die Dauer
+  der Unterbrechung kann derzeit noch keine Angabe gemacht werden.“ unter
+  einer laufenden. Der erste Satz mit beiden Stationen in ÖBBs Langform
+  („zwischen Wien Leopoldau Bahnhst (U) und Wien Süßenbrunn Bahnhst“)
+  brauchte bis zu 140 der 180 Zeichen; in 59 der 106 ÖBB-Texte, die der
+  deutsche Feed seit September zeigte, fiel der zweite Satz weg. „Wien
+  Leopoldau ↔ Wien Süßenbrunn“ las sich am 09.10. um 20:30 „… waren bis
+  20:18 Uhr keine Fahrten möglich. [Heute]“, als wäre alles vorbei. Passt
+  der zweite Satz nicht, lässt der erste jetzt den Ort weg, wenn der Titel
+  jede seiner Stationen nennt (`_oebb_sentence_without_place`): „Wegen
+  einer Stellwerkstörung am Bahnhof waren bis 20:18 Uhr keine Fahrten
+  möglich. Planen Sie derzeit noch bis zu 10 Minuten mehr Reisezeit ein.“
+  Nennt der Titel eine Station nicht, bleibt der Ort stehen. ÖBBs
+  Höflichkeitssätze („Wir bitten um Entschuldigung.“, am Ende von 310 der
+  316 ÖBB-Texte seit Juni; „Sobald uns weitere Informationen vorliegen,
+  informieren wir Sie.“, „Details finden Sie hier...“) sagen am Fernseher
+  nichts und fallen vorher weg (`_OEBB_COURTESY_RE`). Über alle 443
+  ÖBB-Texte im Cache seit Juni ändern sich 265: 251 behalten ihren
+  zweiten Satz, die übrigen verlieren nur den Höflichkeitssatz. Rückblick:
+  Eine Störung, die ÖBB als vorbei meldet („waren“), bleibt im Feed, weil
+  98 der 100 solchen Texte seit Juni noch Folgen nennen (Reisezeit,
+  Zugausfälle); der zweite Satz macht das jetzt sichtbar.
 * **„Voraussichtlich bis 14:10 Uhr“ statt „Voraussichtliche Dauer: 14:10
   Uhr“ (seit 2026-10-06, Betreiberentscheidung „Dauer-Text anpassen“).**
   WLs Störungsvorlage nennt das erwartete Ende unter einem Dauer-Label. Auf
@@ -2023,6 +2067,19 @@ Nicht jeder Text gehört in ein NMT-Modell:
   Abweichung nach der zweiten Station im Stationsfeld, Deutsch mitten im
   englischen Satz („… and Gramatneusiedl Bahnhof Zugfahrten bis
   voraussichtlich 27.08.2026, 23:59 Uhr.“; vierte Nachprüfung 2026-10-03).
+  Seit 2026-10-09 (Epoche 25) darf der Ort fehlen, weil der deutsche Text
+  ihn weglässt, wenn der Titel ihn nennt („…, no trains could run until
+  20:18.“, siehe §1, „ÖBB: der zweite Satz“). ÖBBs feste Folgesätze setzt
+  `_render_oebb_follow_up` ohne Modell zusammen („Planen Sie derzeit noch
+  bis zu 10 Minuten mehr Reisezeit ein.“ → „For now, allow up to 10
+  minutes of extra travel time.“; ebenso „Es kommt noch zu vereinzelten
+  Zugausfällen und Verzögerungen.“, „Über die Dauer der Unterbrechung kann
+  derzeit noch keine Angabe gemacht werden.“, „Die Züge warten die Sperre
+  vorerst ab.“, „Ihre Reisezeit verlängert sich um bis zu N Minuten.“):
+  249 der 261 zweiten Sätze, die der deutsche Text seither behält; die
+  übrigen („Fernverkehrszüge und CJX Züge werden umgeleitet.“) nehmen den
+  normalen Weg. Der Satz endet nicht mehr hinter „St.“ („in St. Pölten
+  Hbf“): 42 der 443 ÖBB-Texte gingen vorher in zwei Hälften durchs Modell.
 * **WL-Sätze mit „Wegen …“ (seit 2026-10-05).** WL schreibt Ursachen wie
   ÖBB vor den Hauptsatz („Wegen Bauarbeiten im Bereich Wildbadgasse wird die
   Linie 20A umgeleitet.“), und das Modell verlor daran den Sinn
@@ -2099,7 +2156,14 @@ Nicht jeder Text gehört in ein NMT-Modell:
   und 18“) wird „bei Haltestelle der Linie“ bzw. „bei den Haltestellen der
   Linien“ („at the stop(s) of line(s)“). Eine eigene Präposition („in“,
   „auf“, „am“, „vor“, „nach“, „gegenüber“, „Richtung“) bleibt dem Modell.
-  „Züge/Busse halten nicht“ ist „… do not stop“.
+  „Züge/Busse halten nicht“ ist „… do not stop“. Seit 2026-10-09 (Epoche
+  25) gilt das auch, wenn ein einzelnes Fahrzeug seine Linie trägt
+  („Ersatzbus 26E hält Karl-Waldbrunner-Platz“, „Linie 26E hält …“,
+  „Ersatzverkehr hält …“): Das Modell las „hält“ dort als „holds“
+  („replacement bus 26E holds Karl-Waldbrunner-Platz ahead of …“, offener
+  Punkt r). „hält an“ am Satzende ist das andere Verb („Die Störung hält
+  an.“) und wird vorher zu „dauert an“ (`_PERSISTS_RE`), damit es nicht
+  „stops at“ wird.
 * **Nicht-übersetzbarer Inhalt.** `_is_non_translatable_content` erkennt
   maskierte Texte, in denen nach dem Maskieren nichts mehr steht, was ein
   Modell übersetzen könnte. Das sind reine Linien- und Stationsfolgen, seit
