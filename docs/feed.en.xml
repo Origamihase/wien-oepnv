@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 09 Oct 2026 10:30:39 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 11:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[U1: Delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
-      <pubDate>Fri, 09 Oct 2026 10:27:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 10:27:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 10:27:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 10:27]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 10:27]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[40/41: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -28,30 +17,8 @@
       <ext:first_seen>Fri, 09 Oct 2026 10:26:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 09 Oct 2026 10:26:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Gersthof, Herbeckstraße. Line 41: service obstruction towards Pötzleinsdorf. [Since 10:26]</description>
-      <content:encoded><![CDATA[Service obstruction towards Gersthof, Herbeckstraße. Line 41: service obstruction towards Pötzleinsdorf.<br/>[Since 10:26]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[42: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
-      <pubDate>Fri, 09 Oct 2026 10:25:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 10:25:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 10:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 10:31:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 10:25]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 10:25]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
-      <pubDate>Fri, 09 Oct 2026 10:15:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 10:15:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 10:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: rescue operation. [Since 10:15]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 10:15]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 10:26]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 10:26]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[25: Delays]]></title>
@@ -63,6 +30,17 @@
       <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Replacement bus 26E holds Karl-Waldbrunner-Platz ahead of Schloßhofer Straße; trains stop at Donaufelder Straße 175-177. Irregular intervals in both directions. [Since 09:36]</description>
       <content:encoded><![CDATA[Replacement bus 26E holds Karl-Waldbrunner-Platz ahead of Schloßhofer Straße; trains stop at Donaufelder Straße 175-177. Irregular intervals in both directions.<br/>[Since 09:36]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[42/9: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d0306412af66249baa2e50a703d32bf283d9f6320fd3f4faaa25f07a5180723d</guid>
+      <pubDate>Fri, 09 Oct 2026 10:42:31 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 08:59:51 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 10:42:31 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 11:42:00 +0200</ext:ends_at>
+      <description>Diversion to Gersthof over lines 42 and 9! Diversion to Gersthof &amp;lt; over lines 42 and 9! [Since 10:42]</description>
+      <content:encoded><![CDATA[Diversion to Gersthof over lines 42 and 9! Diversion to Gersthof &lt; over lines 42 and 9!<br/>[Since 10:42]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Folding ramps out of service on 10.10.2026]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Fri, 08 Oct 2027 11:11:00 +0200</ext:ends_at>
       <description>Lautenschlägergasse after Haidestraße → 1. Haidequerstraße opposite 3A. Stop relocation of line 72A towards Hasenleiten. Reason: Work on a gas line. [Since 08.10.]</description>
       <content:encoded><![CDATA[Lautenschlägergasse after Haidestraße → 1. Haidequerstraße opposite 3A. Stop relocation of line 72A towards Hasenleiten. Reason: Work on a gas line.<br/>[Since 08.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Burggasse 67]]></title>
+      <link>https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen</link>
+      <guid isPermaLink="false">1642f76cdb2a921752f24384fa1ad815176094f31dfa2f9d5130723b697b3205</guid>
+      <pubDate>Tue, 28 Jul 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 14:30:45 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 28 Jul 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 30 Oct 2026 00:00:00 +0100</ext:ends_at>
+      <description>The stop of the affected public transport will be moved from Burggasse No. 67 to Burggasse No. 69. [Until 30.10.]</description>
+      <content:encoded><![CDATA[The stop of the affected public transport will be moved from Burggasse No. 67 to Burggasse No. 69.<br/>[Until 30.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
+      <pubDate>Mon, 05 Oct 2026 15:40:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 15:40:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 … [Until 28.10.]</description>
+      <content:encoded><![CDATA[Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 …<br/>[Until 28.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
