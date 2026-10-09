@@ -42,8 +42,11 @@ __all__ = [
     "REFERRAL_BOILERPLATE_RE",
     "is_transit_relevant",
     "mentions_oepnv",
+    "names_site_street",
+    "shares_address",
     "oepnv_lead",
     "relevant_station",
+    "site_street",
     "transit_text",
 ]
 
@@ -306,3 +309,96 @@ def is_transit_relevant(item: Any) -> bool:
         return False
     text = f"{item.get('title') or ''}. {item.get('description') or ''}"
     return mentions_oepnv(text)
+
+
+# The street a site lies on: the head of the city's title, up to the section
+# ("Neilreichgasse von Gudrunstraße bis Davidgasse", "Inzersdorfer Straße
+# Kreuzung Leibnizgasse", "Universitätsring und Schottenring von …") or the
+# house number ("Burggasse 67"). A station prefix the feed put in front
+# ("Wien Hetzendorf: …") is not part of it. Plain literals and one lazy run up
+# to a fixed set of separators — linear.
+_SITE_STREET_RE: Final = re.compile(
+    r"^\s*(?P<street>[^\d,(]+?)"
+    r"(?=\s+(?:von|Kreuzung|bis|zwischen|und|ggü\.?|gegenüber|vor|nach|unter|im|in|beim?)\s"
+    r"|\s+(?:O\.\s?Nr|ONr|Nr)\.|\s*\d|\s*,|\s*\(|\s*$)",
+)
+
+
+def site_street(title: str) -> str | None:
+    """Return the street a construction site lies on, from its title.
+
+    ``None`` when the title does not start with a street name of at least
+    two words' worth of letters (a bare "A4" or an empty title).
+    """
+
+    if not title:
+        return None
+    head = title.rsplit(": ", 1)[-1]
+    match = _SITE_STREET_RE.match(head)
+    if match is None:
+        return None
+    street = match.group("street").strip()
+    return street if len(street) >= 5 else None
+
+
+# The sentence a WL notice gives its cause in: "Wegen Bauarbeiten im Bereich
+# Neilreichgasse # Davidgasse wird die Linie 7A umgeleitet.", "Aufgrund von
+# Bauarbeiten in der Maxingstraße …", "Wegen der Sanierung der Floridsdorfer
+# Brücke …". Up to the first full stop after it; bounded, no nesting.
+_WL_CAUSE_SENTENCE_RE: Final = re.compile(r"\b(?:Wegen|Aufgrund)\b[^.]{0,300}")
+
+# An address: a street name (up to three words, the last one ending in a street
+# word) and a house number, with the city's "ONr." / "ON" / "Nr." in between
+# or not ("Burggasse ONr. 69", "Nach: Burggasse 69", "Landstraßer Hauptstraße
+# 140-142"; only the first number of a span counts).
+_ADDRESS_RE: Final = re.compile(
+    r"((?:[A-ZÄÖÜ][\wäöüß.-]*\s+){0,2}[A-ZÄÖÜ][\wäöüß-]*"
+    r"(?:gasse|straße|platz|weg|ring|kai|brücke|allee|gürtel|zeile|steig|ufer|lände))"
+    r"\s+(?:(?:O\.\s?Nr|ONr|Nr|ON)\.?\s*)?(\d{1,4})(?!\d)"
+)
+
+
+def _addresses(text: str) -> set[tuple[str, str]]:
+    return {(m.group(1), m.group(2)) for m in _ADDRESS_RE.finditer(text)}
+
+
+def _same_address(a: tuple[str, str], b: tuple[str, str]) -> bool:
+    # "Haltestelle Burggasse 69" and "Burggasse 69" are one address.
+    return a[1] == b[1] and (a[0].endswith(b[0]) or b[0].endswith(a[0]))
+
+
+def names_site_street(text: str, street: str) -> bool:
+    """Return ``True`` if a WL notice's cause sentence places it on ``street``.
+
+    The sentence WL opens a planned measure with names where the works are:
+    "Wegen Bauarbeiten im Bereich Neilreichgasse # Davidgasse …", "Aufgrund
+    von Bauarbeiten in der Maxingstraße …". A street that appears only in a
+    detour route ("über Neilreichgasse – Troststraße"), a list of
+    provisional stops ("Herzgasse (Neilreichgasse 56)") or a stop name
+    ("Richtung Burggasse") does not count: long streets carry several
+    measures at once (Burggasse: 48A St.-Ulrichs-Platz, a flea-market detour
+    of the 13A and the stop at Burggasse 69, summer 2026).
+    """
+
+    if not text or not street:
+        return False
+    cause = _WL_CAUSE_SENTENCE_RE.search(text)
+    if cause is None:
+        return False
+    return re.search(r"\b" + re.escape(street) + r"\b", cause.group(0)) is not None
+
+
+def shares_address(site_text: str, notice_text: str) -> bool:
+    """Return ``True`` if both texts name the same street address.
+
+    The city writes where a stop goes ("von Burggasse ONr.67 nach Burggasse
+    ONr. 69"), WL writes the same stop ("Nach: Burggasse 69"). Same street and
+    same house number; a neighbouring stop on the same street (48A
+    "St.-Ulrichs-Platz", Burggasse 25 to 27) is not the same.
+    """
+
+    site = _addresses(site_text)
+    if not site:
+        return False
+    notice = _addresses(notice_text)
+    return any(_same_address(a, b) for a in site for b in notice)

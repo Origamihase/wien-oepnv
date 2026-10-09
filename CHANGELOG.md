@@ -5,6 +5,16 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Baustellen: WL-Meldung genügt (2026-10-09)**: Eine Stadt-Wien-Baustelle,
+  deren Maßnahme ein laufender WL-Hinweis schon meldet, fällt aus dem Feed
+  (Betreiberentscheidung). Anlass: „Burggasse 67“ auf Platz 9, dieselbe
+  Haltestellenverlegung wie „48A: Neubaugasse, Burggasse“, aber ohne Linie.
+  Seit Mai hatten fast alle Baustellen mit Öffi-Folge einen solchen
+  WL-Zwilling; zweimal standen beide tagelang unter den ersten zehn
+  (Inzersdorfer Straße 06.–13.08., Floridsdorfer Brücke 09.–13.07.). Eine
+  verlängerte Baustelle (neue GUID, weil das Enddatum darin steckt) zählt
+  nicht mehr als brandneu, sondern nie später als ab ihrem Starttag. „ONr.“
+  und „ON“ vor einer Hausnummer heißen im deutschen Text jetzt „Nr.“.
 * **Text-Enden beenden keine WL-Meldung mehr, die WL noch ausliefert
   (2026-10-09)**: Ersetzt ein Ende aus dem Text („bis etwa Ende Juli
   2026“) oder aus Start plus Dauer WLs 11:11-Ablaufdatum, gilt es nur noch,

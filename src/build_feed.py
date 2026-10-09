@@ -67,7 +67,12 @@ from .utils.http import validate_http_url
 from .utils.locking import file_lock
 from .utils.logging import sanitize_log_arg
 from .utils.stats import append_disruption_row, extract_location_name
-from .providers.baustellen import REFERRAL_BOILERPLATE_RE
+from .providers.baustellen import (
+    REFERRAL_BOILERPLATE_RE,
+    names_site_street,
+    shares_address,
+    site_street,
+)
 from .providers.wl_plausibility import end_unknown
 from .providers.wl_text import _MONTHS_DE, STOP_NOTICE_LEAD_RE
 from .utils.text import (
@@ -863,6 +868,23 @@ _HOUSE_NUMBER_END_RE: re.Pattern[str] = re.compile(
 # Altmannsdorfer Straße ONr.76 bis ONr.76A", in English "ONo76"). Without it
 # the span reads as an address like every other one: ``… 76–76A``.
 _ORDNUNGSNUMMER_RE: re.Pattern[str] = re.compile(r"\b(?:O\.\s?Nr|ONr)\.\s*(?=\d)")
+
+
+# The same abbreviation in running text, and its short form "ON" ("in die
+# Wolfersberggasse ON 1", "von der ON 125 bis zur ON 141"): written "Nr.",
+# which reads right in every position ("von der Nr. 125", "in Höhe Nr. 42",
+# "Burggasse Nr. 67"). In the German feed since May 2026 from Stadt Wien
+# ("von Burggasse ONr.67 nach Burggasse ONr. 69") and from WL ("Busse halten
+# Währinger Straße ONr. 200-202", "Nach: Heiligenstädter Straße ONr. 2").
+# "ON" only in capitals and before a number.
+_ORDNUNGSNUMMER_TEXT_RE: re.Pattern[str] = re.compile(
+    r"\b(?:(?:O\.\s?Nr|ONr)\.|ON)\s*(?=\d)"
+)
+
+
+def _ordnungsnummer_as_nr(text: str) -> str:
+    """``ONr.67`` / ``O.Nr. 67`` / ``ON 67`` → ``Nr. 67`` (see the pattern)."""
+    return _ORDNUNGSNUMMER_TEXT_RE.sub("Nr. ", text)
 
 
 def _mark_house_numbers(title: str) -> str:
@@ -7537,6 +7559,28 @@ def _is_current_incident(
     return _incident_since(item, start, published) is not None
 
 
+def _baustelle_start_cap(item: FeedItem, moment: datetime, now_utc: datetime) -> datetime:
+    """A Stadt Wien Baustelle counts as new no later than on its start day.
+
+    The Baustellen GUID carries the end date, and a site whose end has passed
+    leaves the state. When the city extends a site, it returns with a new
+    GUID and counted as brand-new: "Burggasse 67", running since 28.07., end
+    moved from 02.10. to 30.10. and listed again on 08.10., stood on place 9
+    as the newest item of the feed. Its start says what it is: works running
+    since July. Like a re-issued WL measure, it keeps its place. A site seen
+    before its start is unaffected (:func:`_note_announced_starts`).
+    """
+    if not _is_baustelle(item):
+        return moment
+    start = _parse_datetime(item.get("starts_at"))
+    if not isinstance(start, datetime):
+        return moment
+    start_utc = _to_utc(start)
+    if start_utc <= now_utc and start_utc < moment:
+        return start_utc
+    return moment
+
+
 def _recency_sort_key(
     item: FeedItem, state: dict[str, dict[str, Any]], now_utc: datetime
 ) -> tuple[int, float, int, float, str]:
@@ -7570,6 +7614,7 @@ def _recency_sort_key(
     _, entry = _lookup_state(item, state)
     first_seen = _parse_first_seen(entry, None) or _initial_first_seen(item, now_utc)
     first_seen = _sort_moment(entry, first_seen, now_utc)
+    first_seen = _baustelle_start_cap(item, first_seen, now_utc)
     pub = _parse_datetime(item.get("pubDate"))
     pub_ts = pub.timestamp() if isinstance(pub, datetime) else float("-inf")
     # Clamp a future pubDate to now: a bogus future publication date must not
@@ -8965,6 +9010,73 @@ def _works_shown(item: FeedItem, notices: Sequence[FeedItem]) -> FeedItem | None
     return None
 
 
+def _is_baustelle(item: FeedItem) -> bool:
+    return str(item.get("source") or "").strip().casefold().startswith("stadt wien")
+
+
+def _drop_baustellen_twins(items: list[FeedItem], now: datetime) -> list[FeedItem]:
+    """Drop a Stadt Wien Baustelle that a running WL notice already reports.
+
+    The city's roadworks list says what changes for transit without naming
+    the line ("Die Haltestelle des betroffenen öffentlichen Verkehrsmittels
+    wird von Burggasse ONr.67 nach Burggasse ONr. 69 verlegt"); Wiener Linien
+    publish the same measure with line, direction and reason ("48A:
+    Neubaugasse, Burggasse … Nach: Burggasse 69"). Since May 2026 nearly
+    every site that passed the transit rule had such a WL twin, and twice
+    both stood among the ten displayed items for days ("Inzersdorfer Straße
+    Kreuzung Leibnizgasse" next to "65A/66A/7A: Inzersdorfer Straße #
+    Leibnizgasse", 06.–13.08.; "Floridsdorfer Brücke …" next to the line 31,
+    09.–13.07.). Operator decision 2026-10-09: the WL notice is enough.
+
+    A twin is a WL ``Hinweis`` (a planned measure, not a live incident) that
+    is in force now and either gives the site's street as the place of its
+    cause ("Wegen Bauarbeiten im Bereich Neilreichgasse …",
+    :func:`src.providers.baustellen.names_site_street`) or names an address
+    the site's text names too ("Nach: Burggasse 69",
+    :func:`src.providers.baustellen.shares_address`). A street that only
+    appears in a detour or a stop list does not make a twin. A site without
+    one stays as before.
+    """
+    now_utc = _to_utc(now)
+    notices: list[str] = []
+    for it in items:
+        if str(it.get("source") or "").strip().casefold() != "wiener linien":
+            continue
+        if str(it.get("category") or "").strip().casefold() != "hinweis":
+            continue
+        start = _parse_datetime(it.get("starts_at"))
+        if isinstance(start, datetime) and _to_utc(start) > now_utc:
+            continue
+        notices.append(
+            f"{it.get('title') or ''} {html_to_text(str(it.get('description') or ''))}"
+        )
+    if not notices:
+        return items
+    out: list[FeedItem] = []
+    for it in items:
+        if _is_baustelle(it):
+            street = site_street(str(it.get("title") or ""))
+            site_text = f"{it.get('title') or ''}. {it.get('description') or ''}"
+            twin = next(
+                (
+                    text
+                    for text in notices
+                    if (street and names_site_street(text, street))
+                    or shares_address(site_text, text)
+                ),
+                None,
+            )
+            if twin is not None:
+                log.info(
+                    "Baustelle %s verworfen: WL meldet dieselbe Maßnahme (%s).",
+                    sanitize_log_arg(str(it.get("title") or "")),
+                    sanitize_log_arg(twin[:80]),
+                )
+                continue
+        out.append(it)
+    return out
+
+
 def _absorb_works_tickers(items: list[FeedItem]) -> list[FeedItem]:
     """Drop the WL disruptions that only show a notice's planned works (see above)."""
     notices = [item for item in items if _is_wl_notice(item)]
@@ -10003,7 +10115,9 @@ def _format_item_content(
     raw_desc  = it.get("description") or ""
     # Before any comparison: "Ring , Volkstheater U" in the title and
     # "Ring, Volkstheater U" in the text are one sentence, not two.
-    raw_title = repair_saint_abbreviation(_SPACE_BEFORE_COMMA_RE.sub("", raw_title))
+    raw_title = _ordnungsnummer_as_nr(
+        repair_saint_abbreviation(_SPACE_BEFORE_COMMA_RE.sub("", raw_title))
+    )
     title_lead = repair_saint_abbreviation(_SPACE_BEFORE_COMMA_RE.sub("", title_lead))
     raw_desc = _SPACE_BEFORE_COMMA_RE.sub("", raw_desc)
     link = _resolve_item_link(it.get("link"), ident)
@@ -10043,7 +10157,7 @@ def _format_item_content(
     # sentence splitting and the 180-char truncation) also feeds the EN
     # translation pipeline readable German instead of run-together
     # tokens the NMT model has never seen.
-    summary = repair_glued_words(summary)
+    summary = _ordnungsnummer_as_nr(repair_glued_words(summary))
     # A sentence ends with one full stop, an abbreviation at the end of a
     # sentence included (Duden). WL typed two ("… wird die Linie 12A
     # umgeleitet.. Maßnahmen: …", three notices since July 2026); an
@@ -10556,14 +10670,14 @@ def lint() -> int:
         duplicates_removed = sum(summary.count - 1 for summary in duplicate_summaries)
 
         deduped_items = _dedupe_items(list(filtered_items))
-        deduped_items = _absorb_works_tickers(
+        deduped_items = _drop_baustellen_twins(_absorb_works_tickers(
             _merge_wl_ticker_clusters(
                 cast(
                     list[FeedItem],
                     deduplicate_fuzzy(cast(list[dict[str, Any]], deduped_items)),
                 )
             )
-        )
+        ), now)
         deduped_count = len(deduped_items)
         new_items_count = _count_new_items(deduped_items, state)
         missing_guid_items = [it for it in filtered_items if not it.get("guid")]
@@ -10773,6 +10887,8 @@ def main() -> int:
         # One WL incident, one slot — see ``_merge_wl_ticker_clusters``; the
         # display tickers of planned works go up in their notice.
         items = _absorb_works_tickers(_merge_wl_ticker_clusters(fuzzy_deduped))
+        # A Baustelle that a running WL notice reports gives way to it.
+        items = _drop_baustellen_twins(items, now)
         # A merged item keeps its GUID and begin while it runs — see
         # ``_carry_item_identity``. The entry of a GUID carried on stays,
         # though its own message may have run out above.
