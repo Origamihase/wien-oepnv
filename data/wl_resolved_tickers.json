@@ -3,6 +3,20 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
+   "key": "R1212-142|2026-10-09T14:20:54.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R1212-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:20:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
+   "key": "R1213-142|2026-10-09T14:20:54.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R1213-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:20:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
    "key": "R13-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
    "name": "R13-101",
    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
@@ -29,6 +43,13 @@
    "title": "Fahrtbehinderung\nwegen Demonstration",
    "end": "2026-10-09T23:30:00.000+0200",
    "incident": "I20261009-0019"
+  },
+  {
+   "key": "R1342-142|2026-10-09T14:14:23.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R1342-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:14:00.000+0200",
+   "incident": "I20261009-0027"
   },
   {
    "key": "R14-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
@@ -59,6 +80,20 @@
    "incident": "I20261009-0019"
   },
   {
+   "key": "R148-142|2026-10-09T14:14:22.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R148-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:14:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
+   "key": "R149-142|2026-10-09T14:14:22.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R149-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:14:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
    "key": "R15-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
    "name": "R15-101",
    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
@@ -85,6 +120,13 @@
    "title": "Fahrtbehinderung\nwegen Demonstration",
    "end": "2026-10-09T23:30:00.000+0200",
    "incident": "I20261009-0019"
+  },
+  {
+   "key": "R150-142|2026-10-09T14:14:22.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R150-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:14:00.000+0200",
+   "incident": "I20261009-0027"
   },
   {
    "key": "R17-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
@@ -129,6 +171,13 @@
    "incident": "I20261009-0019"
   },
   {
+   "key": "R188-142|2026-10-09T14:20:52.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R188-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:20:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
    "key": "R19-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
    "name": "R19-101",
    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
@@ -164,6 +213,20 @@
    "incident": "I20261009-0019"
   },
   {
+   "key": "R223-109|2026-10-09T14:19:22.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R223-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:19:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
+   "key": "R2964-138|2026-10-09T14:25:57.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R2964-138",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-09T15:25:00.000+0200",
+   "incident": "I20261009-0029"
+  },
+  {
    "key": "R345-105|2026-10-09T13:32:49.000+0200|Fahrtbehinderung\nVerkehrsunfall",
    "name": "R345-105",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
@@ -185,25 +248,11 @@
    "incident": "I20261009-0022"
   },
   {
-   "key": "R390-105|2026-10-09T13:20:47.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R390-105",
-   "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-09T14:19:00.000+0200",
-   "incident": "I20261009-0022"
-  },
-  {
-   "key": "R391-105|2026-10-09T13:20:47.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R391-105",
-   "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-09T14:19:00.000+0200",
-   "incident": "I20261009-0022"
-  },
-  {
-   "key": "R392-105|2026-10-09T13:20:47.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R392-105",
-   "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-09T14:19:00.000+0200",
-   "incident": "I20261009-0022"
+   "key": "R3878-142|2026-10-09T14:14:23.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R3878-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:14:00.000+0200",
+   "incident": "I20261009-0027"
   },
   {
    "key": "R44-171|2026-10-09T13:11:46.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
@@ -297,6 +346,13 @@
    "incident": "I20261009-0019"
   },
   {
+   "key": "R493-142|2026-10-09T14:14:22.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R493-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:14:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
    "key": "R50-101|2026-10-09T13:01:45.000+0200|Demonstration\nBetrieb ab Resselgasse",
    "name": "R50-101",
    "title": "Demonstration\nBetrieb ab Resselgasse",
@@ -351,6 +407,90 @@
    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz",
    "end": "2026-10-09T23:30:00.000+0200",
    "incident": "I20261009-0019"
+  },
+  {
+   "key": "R521-109|2026-10-09T14:19:23.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R521-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:18:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
+   "key": "R524-109|2026-10-09T14:19:23.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R524-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:19:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
+   "key": "R525-109|2026-10-09T14:19:23.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R525-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:19:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
+   "key": "R526-109|2026-10-09T14:19:23.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R526-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:19:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
+   "key": "R530-109|2026-10-09T14:21:23.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R530-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:21:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
+   "key": "R531-109|2026-10-09T14:21:23.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R531-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:21:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
+   "key": "R532-109|2026-10-09T14:21:23.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R532-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:21:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
+   "key": "R533-109|2026-10-09T14:21:23.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R533-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:21:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
+   "key": "R552-109|2026-10-09T14:19:24.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R552-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:18:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
+   "key": "R553-109|2026-10-09T14:19:24.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R553-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:18:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
+   "key": "R554-109|2026-10-09T14:19:24.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R554-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:18:00.000+0200",
+   "incident": "I20261009-0027"
+  },
+  {
+   "key": "R556-109|2026-10-09T14:21:24.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R556-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T15:21:00.000+0200",
+   "incident": "I20261009-0027"
   },
   {
    "key": "R81-171|2026-10-09T13:10:16.000+0200|Fahrtbehinderung\nwegen Demonstration",
