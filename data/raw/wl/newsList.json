@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1017117, ftazW_212, ftazW_2, ftazW_582, ftazW_1031271"
+    "trafficInfoNameList": "ftazW_1017117, ftazW_212, ftazW_2, ftazW_582, ftazW_1031271, ftazW_3, ftazW_581, ftazW_1353814, ftazW_1017118"
    }
   ],
   "poiCategoryGroups": [
@@ -2674,6 +2674,39 @@
    },
    {
     "attributes": {
+     "ausBis": "12.10.2026 05:15",
+     "ausVon": "12.10.2026 01:15",
+     "location": "U1 Mittelbahnsteig - Ausgang Baldassgasse",
+     "rbls": [
+      4183,
+      4188
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Aderklaaer Straße",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Ausgang Baldassgasse",
+    "name": "ftazW_1017118",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4183,
+     4188
+    ],
+    "time": {
+     "end": "2026-10-12T05:15:00.000+0200",
+     "start": "2026-10-12T01:15:00.000+0200"
+    },
+    "title": "Aderklaaer Straße"
+   },
+   {
+    "attributes": {
      "ausBis": "12.10.2026 00:45",
      "ausVon": "11.10.2026 20:45",
      "location": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Kaisermühlendamm",
@@ -2702,6 +2735,32 @@
      "start": "2026-10-11T20:45:00.000+0200"
     },
     "title": "Donaustadtbrücke"
+   },
+   {
+    "attributes": {
+     "ausBis": "12.10.2026 05:15",
+     "ausVon": "12.10.2026 01:15",
+     "location": "Ausgang Schedifkaplatz - Zwischengeschoß Zugang ÖBB",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Bahnhof Meidling",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Ausgang Schedifkaplatz - Zwischengeschoß Zugang ÖBB",
+    "name": "ftazW_1353814",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "time": {
+     "end": "2026-10-12T05:15:00.000+0200",
+     "start": "2026-10-12T01:15:00.000+0200"
+    },
+    "title": "Bahnhof Meidling"
    },
    {
     "attributes": {
@@ -2759,6 +2818,67 @@
      "start": "2026-10-11T20:45:00.000+0200"
     },
     "title": "Bahnhof Meidling"
+   },
+   {
+    "attributes": {
+     "ausBis": "12.10.2026 05:15",
+     "ausVon": "12.10.2026 01:15",
+     "location": "U1 Bahnsteig Richtung Oberlaa - Ausgang Arbeiterstrandbadstraße",
+     "rbls": [
+      4104
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Alte Donau",
+     "status": "geplante Wartung",
+     "towards": "U1 Oberlaa"
+    },
+    "description": "U1 Bahnsteig Richtung Oberlaa - Ausgang Arbeiterstrandbadstraße",
+    "name": "ftazW_3",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4104
+    ],
+    "time": {
+     "end": "2026-10-12T05:15:00.000+0200",
+     "start": "2026-10-12T01:15:00.000+0200"
+    },
+    "title": "Alte Donau"
+   },
+   {
+    "attributes": {
+     "ausBis": "12.10.2026 05:15",
+     "ausVon": "12.10.2026 01:15",
+     "location": "U4 Mittelbahnsteig - Karlsplatzpassage",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U2",
+      "U1",
+      "U4"
+     ],
+     "station": "Karlsplatz",
+     "status": "geplante Wartung",
+     "towards": "U4 beide Richtungen"
+    },
+    "description": "U4 Mittelbahnsteig - Karlsplatzpassage",
+    "name": "ftazW_581",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2",
+     "U1",
+     "U4"
+    ],
+    "time": {
+     "end": "2026-10-12T05:15:00.000+0200",
+     "start": "2026-10-12T01:15:00.000+0200"
+    },
+    "title": "Karlsplatz"
    },
    {
     "attributes": {
