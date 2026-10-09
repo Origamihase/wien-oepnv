@@ -3,13 +3,6 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R13-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "name": "R13-101",
-   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "end": "2026-10-09T21:00:00.000+0200",
-   "incident": "I20261009-0019-F02"
-  },
-  {
    "key": "R13-102|2026-10-09T13:08:16.000+0200|Demonstration\nBetrieb ab Parlament, Volkstheater",
    "name": "R13-102",
    "title": "Demonstration\nBetrieb ab Parlament, Volkstheater",
@@ -24,27 +17,6 @@
    "incident": "I20261009-0019-F03"
   },
   {
-   "key": "R1338-142|2026-10-09T19:41:36.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R1338-142",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-09T20:40:00.000+0200",
-   "incident": "I20261009-0041"
-  },
-  {
-   "key": "R1342-142|2026-10-09T19:49:07.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R1342-142",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-09T20:50:00.000+0200",
-   "incident": "I20261009-0041"
-  },
-  {
-   "key": "R14-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "name": "R14-101",
-   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "end": "2026-10-09T21:00:00.000+0200",
-   "incident": "I20261009-0019-F02"
-  },
-  {
    "key": "R14-136|2026-10-09T20:08:37.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
    "name": "R14-136",
    "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
@@ -52,25 +24,60 @@
    "incident": "I20261009-0043"
   },
   {
-   "key": "R148-142|2026-10-09T19:57:36.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R148-142",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-09T20:57:00.000+0200",
-   "incident": "I20261009-0041"
+   "key": "R1452-146|2026-10-09T20:20:10.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1452-146",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T21:16:00.000+0200",
+   "incident": "I20261009-0044-F01"
   },
   {
-   "key": "R149-142|2026-10-09T19:57:36.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R149-142",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-09T20:57:00.000+0200",
-   "incident": "I20261009-0041"
+   "key": "R1453-146|2026-10-09T20:20:10.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1453-146",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T21:16:00.000+0200",
+   "incident": "I20261009-0044-F01"
   },
   {
-   "key": "R15-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "name": "R15-101",
-   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "end": "2026-10-09T21:00:00.000+0200",
-   "incident": "I20261009-0019-F02"
+   "key": "R1454-146|2026-10-09T20:20:10.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1454-146",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T21:16:00.000+0200",
+   "incident": "I20261009-0044-F01"
+  },
+  {
+   "key": "R1455-146|2026-10-09T20:20:10.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1455-146",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T21:16:00.000+0200",
+   "incident": "I20261009-0044-F01"
+  },
+  {
+   "key": "R1456-146|2026-10-09T20:20:10.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1456-146",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T21:16:00.000+0200",
+   "incident": "I20261009-0044-F01"
+  },
+  {
+   "key": "R1457-146|2026-10-09T20:20:10.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1457-146",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T21:16:00.000+0200",
+   "incident": "I20261009-0044-F01"
+  },
+  {
+   "key": "R1458-146|2026-10-09T20:21:10.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1458-146",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T21:20:00.000+0200",
+   "incident": "I20261009-0044-F01"
+  },
+  {
+   "key": "R1462-146|2026-10-09T20:34:41.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R1462-146",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-09T21:34:00.000+0200",
+   "incident": "I20261009-0044-F01"
   },
   {
    "key": "R15-136|2026-10-09T20:08:37.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
@@ -80,32 +87,11 @@
    "incident": "I20261009-0043"
   },
   {
-   "key": "R150-142|2026-10-09T19:57:36.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R150-142",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-09T20:57:00.000+0200",
-   "incident": "I20261009-0041"
-  },
-  {
-   "key": "R17-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "name": "R17-101",
-   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "end": "2026-10-09T21:00:00.000+0200",
-   "incident": "I20261009-0019-F02"
-  },
-  {
    "key": "R17-136|2026-10-09T20:08:37.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
    "name": "R17-136",
    "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
    "end": "2026-10-09T21:08:00.000+0200",
    "incident": "I20261009-0043"
-  },
-  {
-   "key": "R18-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "name": "R18-101",
-   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "end": "2026-10-09T21:00:00.000+0200",
-   "incident": "I20261009-0019-F02"
   },
   {
    "key": "R18-136|2026-10-09T20:08:37.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
@@ -115,32 +101,18 @@
    "incident": "I20261009-0043"
   },
   {
-   "key": "R19-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "name": "R19-101",
-   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "end": "2026-10-09T21:00:00.000+0200",
-   "incident": "I20261009-0019-F02"
+   "key": "R3375-146|2026-10-09T20:21:09.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R3375-146",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T21:20:00.000+0200",
+   "incident": "I20261009-0044-F01"
   },
   {
-   "key": "R20-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "name": "R20-101",
-   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "end": "2026-10-09T21:00:00.000+0200",
-   "incident": "I20261009-0019-F02"
-  },
-  {
-   "key": "R21-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "name": "R21-101",
-   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "end": "2026-10-09T21:00:00.000+0200",
-   "incident": "I20261009-0019-F02"
-  },
-  {
-   "key": "R22-101|2026-10-09T12:59:15.000+0200|Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "name": "R22-101",
-   "title": "Demonstration\nBetrieb ab Julius-Raab-Platz",
-   "end": "2026-10-09T21:00:00.000+0200",
-   "incident": "I20261009-0019-F02"
+   "key": "R3376-146|2026-10-09T20:34:41.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R3376-146",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-09T21:34:00.000+0200",
+   "incident": "I20261009-0044-F01"
   },
   {
    "key": "R44-171|2026-10-09T13:11:46.000+0200|Demonstration\nBetrieb ab Schwarzenbergplatz",
@@ -213,13 +185,6 @@
    "incident": "I20261009-0019-F03"
   },
   {
-   "key": "R493-142|2026-10-09T19:57:37.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R493-142",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-09T20:57:00.000+0200",
-   "incident": "I20261009-0041"
-  },
-  {
    "key": "R50-101|2026-10-09T13:01:45.000+0200|Demonstration\nBetrieb ab Resselgasse",
    "name": "R50-101",
    "title": "Demonstration\nBetrieb ab Resselgasse",
@@ -262,11 +227,32 @@
    "incident": "I20261009-0019-F03"
   },
   {
-   "key": "R524-142|2026-10-09T19:43:05.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R524-142",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-09T20:42:00.000+0200",
-   "incident": "I20261009-0041"
+   "key": "R568-110|2026-10-09T20:26:11.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R568-110",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T21:25:00.000+0200",
+   "incident": "I20261009-0044"
+  },
+  {
+   "key": "R569-110|2026-10-09T20:26:11.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R569-110",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T21:25:00.000+0200",
+   "incident": "I20261009-0044"
+  },
+  {
+   "key": "R570-110|2026-10-09T20:26:11.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R570-110",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T21:25:00.000+0200",
+   "incident": "I20261009-0044"
+  },
+  {
+   "key": "R571-110|2026-10-09T20:26:11.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R571-110",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-09T21:25:00.000+0200",
+   "incident": "I20261009-0044"
   },
   {
    "key": "R81-171|2026-10-09T13:10:16.000+0200|Fahrtbehinderung\nwegen Demonstration",

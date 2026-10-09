@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 09 Oct 2026 20:30:39 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 21:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[10/46: Traffic accident]]></title>
+      <title><![CDATA[10: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">dc1e930f1f173c246355fc498636953dba24f8b3aea9c11e2d3ce3a258c95faf</guid>
       <pubDate>Fri, 09 Oct 2026 20:18:00 +0200</pubDate>
       <ext:first_seen>Fri, 09 Oct 2026 20:30:39 +0200</ext:first_seen>
       <ext:starts_at>Fri, 09 Oct 2026 20:18:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Unter St. Veit, Hummelgasse. Line 46: service obstruction towards Hütteldorf. [Since 20:18]</description>
-      <content:encoded><![CDATA[Service obstruction towards Unter St. Veit, Hummelgasse. Line 46: service obstruction towards Hütteldorf.<br/>[Since 20:18]]]></content:encoded>
+      <ext:ends_at>Fri, 09 Oct 2026 21:20:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 20:18]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 20:18]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[49: Traffic accident]]></title>
@@ -32,37 +32,15 @@
       <content:encoded><![CDATA[Service obstruction.<br/>[Since 20:17]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U4: Service disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682</guid>
-      <pubDate>Fri, 09 Oct 2026 20:05:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 20:05:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 20:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: service disruption. [Since 20:05]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[Since 20:05]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[42: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
       <pubDate>Fri, 09 Oct 2026 19:40:00 +0200</pubDate>
       <ext:first_seen>Fri, 09 Oct 2026 19:40:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 09 Oct 2026 19:40:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 09 Oct 2026 21:02:00 +0200</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 19:40]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 19:40]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26A: Police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">cc50dc6a5ca22ae79c6dcc472391441d2a97d10bcf2b47c7cba4c68f563860cc</guid>
-      <pubDate>Fri, 09 Oct 2026 19:27:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 19:27:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 19:27:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: police operation in the stop area of Saltenstraße. [Since 19:27]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: police operation in the stop area of Saltenstraße.<br/>[Since 19:27]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/D: Police operation]]></title>
@@ -76,7 +54,18 @@
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 20:08]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[2/71: Police operation]]></title>
+      <title><![CDATA[71: Police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">13ad442da299b2121f7e427f4ba860f1f37cd803b35cbedcd18c4a776e245c5d</guid>
+      <pubDate>Fri, 09 Oct 2026 13:10:16 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 13:10:16 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 13:10:16 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 21:09:00 +0200</ext:ends_at>
+      <description>Service obstruction. [Since 13:10]</description>
+      <content:encoded><![CDATA[Service obstruction.<br/>[Since 13:10]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2: Police operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">0a8aa8f7231d98faa38de820cfb27484955a1529c285e8a8472318b330368561</guid>
       <pubDate>Fri, 09 Oct 2026 13:08:16 +0200</pubDate>
@@ -85,6 +74,17 @@
       <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 13:08]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:08]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Police operation, construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">aba904564d19959e0ddb3e2e002949d8d9e98e2655696c852ae1597077a1d78b</guid>
+      <pubDate>Fri, 09 Oct 2026 20:38:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 20:38:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 20:38:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 10 Oct 2026 01:00:00 +0200</ext:ends_at>
+      <description>Police operation: irregular intervals in both directions. Construction works: buses stop at Salvatorianerplatz. [Until Sat 10.10.]</description>
+      <content:encoded><![CDATA[Police operation: irregular intervals in both directions. Construction works: buses stop at Salvatorianerplatz.<br/>[Until Sat 10.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Leopoldau ↔ Wien Süßenbrunn]]></title>
