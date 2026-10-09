@@ -1,7 +1,7 @@
 {
   "ausfaelle": {
     "by_direction": {
-      "Meidling": 969,
+      "Meidling": 970,
       "Praterstern": 916
     },
     "by_hour": {
@@ -25,7 +25,7 @@
       "17": 108,
       "18": 107,
       "19": 128,
-      "20": 106,
+      "20": 107,
       "21": 109,
       "22": 98,
       "23": 86
@@ -43,7 +43,7 @@
       "REX2277": 1,
       "REX3": 195,
       "REX92": 3,
-      "S1": 415,
+      "S1": 416,
       "S2": 300,
       "S27016": 1,
       "S28044": 1,
@@ -57,15 +57,15 @@
     "by_weekday": {
       "Di": 291,
       "Do": 325,
-      "Fr": 370,
+      "Fr": 371,
       "Mi": 302,
       "Mo": 282,
       "Sa": 152,
       "So": 163
     },
-    "total": 1885
+    "total": 1886
   },
-  "generated_at": "2026-10-09T20:01:01+02:00",
+  "generated_at": "2026-10-09T20:30:48+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 1.0,
@@ -114,7 +114,7 @@
         "Meidling": {
           "last_seen": "2026-10-09T19:55:00+02:00",
           "peer_rows_since": 0,
-          "rows_in_window": 1191
+          "rows_in_window": 1190
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
@@ -128,7 +128,7 @@
     },
     "live": {
       "avg_delay_minutes": 0.0,
-      "observations": 2,
+      "observations": 1,
       "window_minutes": 60
     },
     "max_delay_minutes": 395.33,
@@ -158,7 +158,7 @@
       "17": 162,
       "18": 195,
       "19": 138,
-      "20": 107,
+      "20": 108,
       "21": 85,
       "22": 127,
       "23": 102
@@ -166,19 +166,19 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 180,
       "VOR/VAO": 11,
-      "Wiener Linien": 2929,
+      "Wiener Linien": 2930,
       "ÖBB": 284
     },
     "by_weekday": {
       "Di": 502,
       "Do": 554,
-      "Fr": 527,
+      "Fr": 528,
       "Mi": 531,
       "Mo": 471,
       "Sa": 409,
       "So": 410
     },
-    "total": 3404
+    "total": 3405
   },
   "year": 2026
 }

@@ -830,6 +830,21 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10/46: Verkehrsunfall",
+    "description": "Linie 10: Fahrtbehinderung in Richtung Unter St. Veit, Hummelgasse. Linie 46: Fahrtbehinderung in Richtung Hütteldorf. Voraussichtliche Dauer: 20:40 Uhr. Grund: Verkehrsunfall im Bereich Breitenseer Straße 28.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "dc1e930f1f173c246355fc498636953dba24f8b3aea9c11e2d3ce3a258c95faf",
+    "pubDate": "2026-10-09T20:18:00+02:00",
+    "starts_at": "2026-10-09T20:18:00+02:00",
+    "ends_at": "2026-10-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=10,46|D=2026-10-09|TK=46 10 verkehrsunfall",
+    "_wl_ids": [
+      "I20261009-0044"
+    ]
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -874,6 +889,21 @@
     "starts_at": "2026-10-09T05:00:28+02:00",
     "ends_at": "2026-10-09T23:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-10-09|TK=bhf hütteldorf öbb ersatzbus für 80"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Polizeieinsatz",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "63da0a693c3cade54082d11235f33ad2c470d9015d5662a310a9f542e55f2972",
+    "pubDate": "2026-10-09T20:08:00+02:00",
+    "starts_at": "2026-10-09T20:08:00+02:00",
+    "ends_at": "2026-10-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-10-09|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261009-0043"
+    ]
   },
   {
     "source": "Wiener Linien",
@@ -1043,6 +1073,21 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "0a8aa8f7231d98faa38de820cfb27484955a1529c285e8a8472318b330368561",
+    "pubDate": "2026-10-09T13:08:16+02:00",
+    "starts_at": "2026-10-09T20:14:08+02:00",
+    "ends_at": "2026-10-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-10-09|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261009-0043"
+    ]
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1055,12 +1100,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "42: Fahrtbehinderung Falschparker",
-    "description": "Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 20:10 Uhr. Grund: Falschparker im Bereich Kreuzgasse.",
+    "title": "42: Falschparker",
+    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
     "pubDate": "2026-10-09T19:40:00+02:00",
-    "starts_at": "2026-10-09T19:57:37+02:00",
+    "starts_at": "2026-10-09T19:40:00+02:00",
     "ends_at": "2026-10-09T23:55:00+02:00",
     "_identity": "wl|störung|L=42|D=2026-10-09|TK=falschparker",
     "_wl_ids": [
@@ -1085,6 +1130,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "49: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d3121440bb198809da6ad6777749127de887bfe17ce700d64f281bbb4593b9c8",
+    "pubDate": "2026-10-09T20:17:09+02:00",
+    "starts_at": "2026-10-09T20:17:09+02:00",
+    "ends_at": "2026-10-09T21:16:00+02:00",
+    "_identity": "wl|störung|L=49|D=2026-10-09|TK=fahrtbehinderung verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "52: Züge halten bei Linien 6 und 18",
     "description": "Züge halten\nbei Linien 6 und 18",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1105,6 +1162,21 @@
     "starts_at": "2026-10-09T04:40:27+02:00",
     "ends_at": "2026-10-10T01:00:00+02:00",
     "_identity": "wl|störung|L=66A|D=2026-10-09|TK=busse halten salvatorianerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "13ad442da299b2121f7e427f4ba860f1f37cd803b35cbedcd18c4a776e245c5d",
+    "pubDate": "2026-10-09T13:10:16+02:00",
+    "starts_at": "2026-10-09T20:08:00+02:00",
+    "ends_at": "2026-10-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-10-09|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261009-0043"
+    ]
   },
   {
     "source": "Wiener Linien",
@@ -1184,6 +1256,21 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "D: Polizeieinsatz",
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f1ccf4d6b1a6d1d510b41cb2c10a04e3bb077aef3d27f0c5f99cad2a9c11f584",
+    "pubDate": "2026-10-09T20:08:00+02:00",
+    "starts_at": "2026-10-09T20:08:00+02:00",
+    "ends_at": "2026-10-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-10-09|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261009-0043"
+    ]
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N71: Ersatzverkehr Busse halten bei Haltestelle N71",
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1192,6 +1279,21 @@
     "starts_at": "2026-10-07T00:00:17+02:00",
     "ends_at": "2026-10-09T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-07|TK=ersatzverkehr"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Betriebsstörung",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
+    "pubDate": "2026-10-09T20:05:00+02:00",
+    "starts_at": "2026-10-09T20:05:00+02:00",
+    "ends_at": "2026-10-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-10-09|TK=u4 betriebsstörung",
+    "_wl_ids": [
+      "I20261009-0042"
+    ]
   },
   {
     "source": "Wiener Linien",
@@ -1240,5 +1342,17 @@
     "starts_at": "2026-10-07T00:00:18+02:00",
     "ends_at": "2026-10-09T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-10-07|TK=ersatzverkehr"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "68bc6af54c6e7221254acf728b57d945990511addcc9f1a0366dc0c96112b806",
+    "pubDate": "2026-10-09T20:07:37+02:00",
+    "starts_at": "2026-10-09T20:07:37+02:00",
+    "ends_at": "2026-10-09T21:06:00+02:00",
+    "_identity": "wl|störung|L=|D=2026-10-09|TK=polizeieinsatz"
   }
 ]
