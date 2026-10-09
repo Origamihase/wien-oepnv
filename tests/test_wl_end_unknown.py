@@ -155,3 +155,57 @@ def test_a_year_shortens_the_expiry_date() -> None:
     # 19.01.2027 plus half a year of buffer
     assert end == datetime(2027, 7, 20, 23, 59, tzinfo=VIENNA)
     assert end_unknown(desc, end) is False
+
+
+# --- a text end that has passed while WL still lists the notice -------------
+#
+# Of 52 notices whose 11:11 end a text end or a duration replaced and that WL
+# took off between 21.02. and 01.10.2026, 13 were still listed after that end
+# (1 to 41 days). WL takes a notice off by hand; the text end is an estimate.
+
+_SCHILLWASSERWEG = _stop("20. April 2026, etwa 07:00 Uhr bis etwa Ende Juli 2026")
+_SCHILLWASSERWEG_START = datetime(2026, 3, 25, tzinfo=VIENNA)
+_SCHILLWASSERWEG_EXPIRY = datetime(2027, 7, 31, 11, 11, tzinfo=VIENNA)
+
+
+def test_the_text_end_counts_until_it_has_passed() -> None:
+    end_of_july = datetime(2026, 7, 31, 23, 59, tzinfo=VIENNA)
+    before = datetime(2026, 7, 31, 12, 0, tzinfo=VIENNA)
+    after = datetime(2026, 8, 1, 0, 30, tzinfo=VIENNA)
+    args = (_SCHILLWASSERWEG, _SCHILLWASSERWEG_EXPIRY, _SCHILLWASSERWEG_START)
+    assert plausible_end(*args) == end_of_july  # without a clock: the text end
+    assert plausible_end(*args, before) == end_of_july
+    assert plausible_end(*args, after) == _SCHILLWASSERWEG_EXPIRY
+    assert end_unknown(*args, before) is False
+    assert end_unknown(*args, after) is True
+
+
+def test_a_passed_duration_gives_the_expiry_back() -> None:
+    """65A/66A Inzersdorfer Straße: "etwa zwei Wochen" from 12.08., listed until 07.10.2026."""
+    desc = _works("Ab Mittwoch, 12. August 2026, etwa 06:00 Uhr auf Dauer von etwa zwei Wochen.")
+    expiry = datetime(2027, 8, 31, 11, 11, tzinfo=VIENNA)
+    start = datetime(2026, 8, 5, tzinfo=VIENNA)
+    # two weeks and one of buffer: 02.09.
+    assert plausible_end(desc, expiry, start, datetime(2026, 9, 2, 20, 0, tzinfo=VIENNA)) == datetime(
+        2026, 9, 2, 23, 59, tzinfo=VIENNA
+    )
+    now = datetime(2026, 10, 7, 12, 0, tzinfo=VIENNA)
+    assert plausible_end(desc, expiry, start, now) == expiry
+    assert end_unknown(desc, expiry, start, now) is True
+
+
+def test_an_exact_end_is_not_given_back() -> None:
+    """Only WL's 11:11 expiry gives way; an end WL set itself stays and expires."""
+    exact = datetime(2026, 7, 31, 8, 30, tzinfo=VIENNA)
+    after = datetime(2026, 8, 1, tzinfo=VIENNA)
+    assert plausible_end(_SCHILLWASSERWEG, exact, _SCHILLWASSERWEG_START, after) == exact
+    assert end_unknown(_SCHILLWASSERWEG, exact, _SCHILLWASSERWEG_START, after) is False
+
+
+def test_time_line_after_the_text_end() -> None:
+    """The line names no end in the past and not WL's expiry date: "Seit …"."""
+    desc = _stop("03. Jänner 2020, etwa 07:00 Uhr bis etwa Ende März 2020")
+    start = datetime(2020, 1, 3, 7, 0, tzinfo=VIENNA)
+    line = _time_line("93A/96A/N91: Schillwasserweg", desc, start, datetime(2099, 1, 3, 11, 11, tzinfo=VIENNA))
+    assert line == "[Seit 03.01.2020]"
+

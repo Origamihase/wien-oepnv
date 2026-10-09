@@ -5,6 +5,17 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Text-Enden beenden keine WL-Meldung mehr, die WL noch ausliefert
+  (2026-10-09)**: Ersetzt ein Ende aus dem Text („bis etwa Ende Juli
+  2026“) oder aus Start plus Dauer WLs 11:11-Ablaufdatum, gilt es nur noch,
+  bis es vorbei ist. Danach ist wieder das 11:11-Datum das Ende; die
+  Meldung bleibt, solange WL sie ausliefert, und die Zeitzeile liest
+  „[Seit …]“ statt eines vergangenen Endes. Von 52 solchen Hinweisen, die
+  WL zwischen Februar und Oktober zurückzog, lieferte WL 13 noch 1 bis 41
+  Tage nach ihrem Text-Ende aus (93A/96A/N91 Schillwasserweg, 65A/66A
+  Inzersdorfer Straße, 44A Kurzführung); der Abruf hatte sie an 173 Tagen
+  verworfen. Im Nachbau von 122 Tagesläufen ändern sich die zehn
+  Feed-Einträge nicht.
 * **Aufgangssperren: Zugwörter der ÖBB halten die Meldung (2026-10-09)**:
   Befund der neunten unabhängigen Prüfung. Die Regel aus dem Eintrag
   darunter sucht die Zugangs-Wörter auch im Wortinneren; „Zugangebot“
