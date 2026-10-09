@@ -830,6 +830,21 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11: Rettungseinsatz",
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e",
+    "pubDate": "2026-10-09T22:30:00+02:00",
+    "starts_at": "2026-10-09T22:30:00+02:00",
+    "ends_at": "2026-10-09T23:55:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-10-09|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261009-0047"
+    ]
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -862,18 +877,6 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13|TK=haltestelle stadionbrücke im rahmen des strassenbahn neubaus der linie 18 aufgelassen bitte auf nahegelegene haltestellen ausweichen"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
-    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
-    "pubDate": "2026-10-09T05:00:28+02:00",
-    "starts_at": "2026-10-09T05:00:28+02:00",
-    "ends_at": "2026-10-09T23:00:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-10-09|TK=bhf hütteldorf öbb ersatzbus für 80"
   },
   {
     "source": "Wiener Linien",
