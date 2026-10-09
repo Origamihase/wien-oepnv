@@ -7,29 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 09 Oct 2026 17:11:28 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 17:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U4: Contamination]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">5718e5adfd8ff17a7b75efa1723cae5513a3a9e89e84929ae6d9338f8ba24e1d</guid>
+      <pubDate>Fri, 09 Oct 2026 17:13:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 17:13:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 17:13:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: contamination. [Since 17:13]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 17:13]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Meidling ↔ Wien Liesing]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;918196</guid>
-      <pubDate>Fri, 09 Oct 2026 16:57:26 +0200</pubDate>
+      <pubDate>Fri, 09 Oct 2026 17:10:36 +0200</pubDate>
       <ext:first_seen>Fri, 09 Oct 2026 17:01:01 +0200</ext:first_seen>
       <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 09 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Due to damage on the track, trains can only run to a limited extent between Wien Meidling station (U) and Wien Liesing station at present. [Since 16:57]</description>
-      <content:encoded><![CDATA[Due to damage on the track, trains can only run to a limited extent between Wien Meidling station (U) and Wien Liesing station at present.<br/>[Since 16:57]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
-      <pubDate>Fri, 09 Oct 2026 16:48:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 14:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 16:48:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 16:48]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 16:48]]]></content:encoded>
+      <description>Due to damage on the track, trains can only run to a limited extent between Wien Meidling station (U) and Wien Liesing station until approx. 18:30. [Since 16:57]</description>
+      <content:encoded><![CDATA[Due to damage on the track, trains can only run to a limited extent between Wien Meidling station (U) and Wien Liesing station until approx. 18:30.<br/>[Since 16:57]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[22A: Traffic congestion]]></title>
