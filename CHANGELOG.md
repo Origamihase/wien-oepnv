@@ -26,6 +26,12 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   Inzersdorfer Straße, 44A Kurzführung); der Abruf hatte sie an 173 Tagen
   verworfen. Im Nachbau von 122 Tagesläufen ändern sich die zehn
   Feed-Einträge nicht.
+* **Text-Enden: Entscheidung dokumentiert (2026-10-09)**: Ein Ende aus dem
+  Text einer WL-Meldung („bis etwa Ende Juli 2026“) oder aus Start plus
+  Dauer beendet sie, auch wenn WL sie noch ausliefert. #1989 hielt solche
+  Meldungen bis zum Rückzug durch WL; #1990 nahm das zurück, weil der Text
+  der Meldung dann zeigt, dass sie abgelaufen ist. Betreiberentscheidung
+  „Text-Ende beendet“, siehe `docs/architecture.md`.
 * **Aufgangssperren: Zugwörter der ÖBB halten die Meldung (2026-10-09)**:
   Befund der neunten unabhängigen Prüfung. Die Regel aus dem Eintrag
   darunter sucht die Zugangs-Wörter auch im Wortinneren; „Zugangebot“

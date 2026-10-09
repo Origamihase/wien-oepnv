@@ -10253,15 +10253,9 @@ def _format_item_content(
     title_out = _WHITESPACE_RE.sub(" ", title_out).strip()
 
     # Line 2: Timeframe. WL's 11:11 expiry date is no end (see
-    # :func:`wl_plausibility.end_unknown`), nor is a text end that has
-    # passed while WL still lists the notice; the line then reads "Seit …".
+    # :func:`wl_plausibility.end_unknown`); the line then reads "Seit …".
     shown_end = ends_at if isinstance(ends_at, datetime) else None
-    if _is_wl_notice(it) and end_unknown(
-        str(it.get("description") or ""),
-        shown_end,
-        starts_at if isinstance(starts_at, datetime) else None,
-        datetime.now(UTC),
-    ):
+    if _is_wl_notice(it) and end_unknown(str(it.get("description") or ""), shown_end):
         shown_end = None
     time_line = format_local_times(
         starts_at if isinstance(starts_at, datetime) else None,

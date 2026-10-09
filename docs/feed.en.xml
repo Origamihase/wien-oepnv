@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 09 Oct 2026 18:14:20 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 19:04:14 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945</guid>
+      <pubDate>Fri, 09 Oct 2026 18:02:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 18:02:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 18:02:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 18:02]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 18:02]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1: Police operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">63da0a693c3cade54082d11235f33ad2c470d9015d5662a310a9f542e55f2972</guid>
       <pubDate>Fri, 09 Oct 2026 17:46:00 +0200</pubDate>
       <ext:first_seen>Fri, 09 Oct 2026 17:46:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 17:48:54 +0200</ext:starts_at>
+      <ext:starts_at>Fri, 09 Oct 2026 17:46:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Operating only up to Knöllgasse / Reumannplatz. Service only between Prater Hauptallee and Knöllgasse. [Since 17:46]</description>
-      <content:encoded><![CDATA[Operating only up to Knöllgasse / Reumannplatz. Service only between Prater Hauptallee and Knöllgasse.<br/>[Since 17:46]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 17:46]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 17:46]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U4: Contamination]]></title>
@@ -35,12 +46,12 @@
       <title><![CDATA[Wien Meidling ↔ Wien Liesing]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;918196</guid>
-      <pubDate>Fri, 09 Oct 2026 17:46:17 +0200</pubDate>
+      <pubDate>Fri, 09 Oct 2026 18:47:03 +0200</pubDate>
       <ext:first_seen>Fri, 09 Oct 2026 17:01:01 +0200</ext:first_seen>
       <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 09 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Due to damage on the track, trains can only run to a limited extent between Wien Meidling station (U) and Wien Liesing station until approx. 18:30. [Since 16:57]</description>
-      <content:encoded><![CDATA[Due to damage on the track, trains can only run to a limited extent between Wien Meidling station (U) and Wien Liesing station until approx. 18:30.<br/>[Since 16:57]]]></content:encoded>
+      <description>Due to damage on the track, trains can only run to a limited extent between Wien Meidling station (U) and Wien Liesing station until approx. 19:30. [Since 16:57]</description>
+      <content:encoded><![CDATA[Due to damage on the track, trains can only run to a limited extent between Wien Meidling station (U) and Wien Liesing station until approx. 19:30.<br/>[Since 16:57]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[22A: Traffic congestion]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 30 Oct 2026 00:00:00 +0100</ext:ends_at>
       <description>The stop of the affected public transport will be moved from Burggasse No. 67 to Burggasse No. 69. [Until 30.10.]</description>
       <content:encoded><![CDATA[The stop of the affected public transport will be moved from Burggasse No. 67 to Burggasse No. 69.<br/>[Until 30.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A/2/2A/3A/4A/71/D: Demonstration on 10.10.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">337422a9d6cedd385263f2f283630dffffa4c906e26c9ae80c7f57cf1fa38c06</guid>
-      <pubDate>Thu, 08 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 14:01:08 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 16:30:00 +0200</ext:ends_at>
-      <description>Due to a demonstration, there is a restriction on public transport. [On Sat 10.10.]</description>
-      <content:encoded><![CDATA[Due to a demonstration, there is a restriction on public transport.<br/>[On Sat 10.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
