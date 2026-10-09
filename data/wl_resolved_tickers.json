@@ -1,5 +1,20 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R1338-142|2026-10-09T11:40:38.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R1338-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T12:39:00.000+0200",
+   "incident": "I20261009-0013"
+  },
+  {
+   "key": "R524-142|2026-10-09T11:52:38.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R524-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-09T12:47:00.000+0200",
+   "incident": "I20261009-0013"
+  }
+ ]
 }
