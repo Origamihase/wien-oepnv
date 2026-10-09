@@ -5,6 +5,27 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Baustellen: WL-Meldung genügt (2026-10-09)**: Eine Stadt-Wien-Baustelle,
+  deren Maßnahme ein laufender WL-Hinweis schon meldet, fällt aus dem Feed
+  (Betreiberentscheidung). Anlass: „Burggasse 67“ auf Platz 9, dieselbe
+  Haltestellenverlegung wie „48A: Neubaugasse, Burggasse“, aber ohne Linie.
+  Seit Mai hatten fast alle Baustellen mit Öffi-Folge einen solchen
+  WL-Zwilling; zweimal standen beide tagelang unter den ersten zehn
+  (Inzersdorfer Straße 06.–13.08., Floridsdorfer Brücke 09.–13.07.). Eine
+  verlängerte Baustelle (neue GUID, weil das Enddatum darin steckt) zählt
+  nicht mehr als brandneu, sondern nie später als ab ihrem Starttag. „ONr.“
+  und „ON“ vor einer Hausnummer heißen im deutschen Text jetzt „Nr.“.
+* **Text-Enden beenden keine WL-Meldung mehr, die WL noch ausliefert
+  (2026-10-09)**: Ersetzt ein Ende aus dem Text („bis etwa Ende Juli
+  2026“) oder aus Start plus Dauer WLs 11:11-Ablaufdatum, gilt es nur noch,
+  bis es vorbei ist. Danach ist wieder das 11:11-Datum das Ende; die
+  Meldung bleibt, solange WL sie ausliefert, und die Zeitzeile liest
+  „[Seit …]“ statt eines vergangenen Endes. Von 52 solchen Hinweisen, die
+  WL zwischen Februar und Oktober zurückzog, lieferte WL 13 noch 1 bis 41
+  Tage nach ihrem Text-Ende aus (93A/96A/N91 Schillwasserweg, 65A/66A
+  Inzersdorfer Straße, 44A Kurzführung); der Abruf hatte sie an 173 Tagen
+  verworfen. Im Nachbau von 122 Tagesläufen ändern sich die zehn
+  Feed-Einträge nicht.
 * **Text-Enden: Entscheidung dokumentiert (2026-10-09)**: Ein Ende aus dem
   Text einer WL-Meldung („bis etwa Ende Juli 2026“) oder aus Start plus
   Dauer beendet sie, auch wenn WL sie noch ausliefert. #1989 hielt solche
