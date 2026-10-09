@@ -301,7 +301,13 @@ ohne Ursache, die älter ist als jede dieser Störungen, zählt nie mit
 (`_with_unowned`, seit 2026-10-09): Die Haltestellen-Meldungen der
 Gleisbauarbeiten der Linie 25 (seit 23.09.) übernahmen sonst am 09.10.
 nach dem Ende von „25: Verspätungen“ deren GUID und Beginn und standen von
-12:01 bis 20:30 als neue Störung im Feed, bis auf Platz 2. Der erste Lauf
+12:01 bis 20:30 als neue Störung im Feed, bis auf Platz 2. Und ein Item, das
+unter seiner eigenen GUID früher im Feed stand (`first_seen`) als das Item,
+mit dem es eine Meldung teilt, übernimmt dessen GUID nie: Es war zuerst da,
+das andere hat es aufgenommen. Der Zustand aus der Zeit vor der Regel hielt
+die Haltestellen der Linie 25 sonst auch nach dem Merge unter der GUID der
+Verspätung, im Lauf um 22:00 auf Platz 2, und jeder weitere Lauf hätte das
+fortgesetzt. Der erste Lauf
 nach der Änderung schreibt nur die Notizen und ändert keine GUID, es gibt
 also keine Welle. Im Feed-Nachbau aller 117 Läufe vom 04.10. 11:31 bis
 06.10. 14:31 (Wiener Zeit, WL-Rohdaten neu durch `wl_fetch` geschickt, State

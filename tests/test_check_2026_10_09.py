@@ -16,6 +16,7 @@ of that day):
 Mutations checked against this file (each one caught, by the test named):
 
 * a causeless group joins an incident that began later → ``test_old_stops_follow_the_delay_and_are_no_member``.
+* an item in the feed first takes a later item's GUID → ``test_stops_in_the_feed_first_keep_their_own_guid``.
 * the courtesy sentence stays → ``test_the_second_oebb_sentence_fits_without_the_stations``.
 * the place goes although the title does not name it → ``test_a_place_the_title_does_not_name_stays``.
 * the "St." split stays → ``test_st_poelten_is_one_templated_sentence``.
@@ -117,6 +118,39 @@ def test_a_stop_ticker_of_the_incident_still_joins_it() -> None:
     (item,) = _built([stop, DELAY])
     assert item["title"] == "25: Verspätungen"
     assert sorted(cast(list[str], item.get("_members"))) == ["1fada761", "early"]
+
+
+def _stops_state(stops_first_seen: str) -> dict[str, dict[str, Any]]:
+    """The feed state of 09.10. 21:30: the stops noted under the delay's GUID since 12:01."""
+    return {
+        "1fada761": {
+            "first_seen": "2026-10-09T07:36:00+00:00",
+            "earliest_published": "2026-10-06T22:00:18+00:00",
+            "members": ["92b3e152", "b1de3360"],
+            "members_seen": "2026-10-09T19:30:46+00:00",
+        },
+        "92b3e152": {
+            "first_seen": stops_first_seen,
+            "members": ["92b3e152", "b1de3360"],
+            "members_seen": "2026-10-09T07:30:56+00:00",
+        },
+    }
+
+
+def test_stops_in_the_feed_first_keep_their_own_guid() -> None:
+    # Live at 22:00: the stops took the delay's GUID again, place 2, "[Heute]".
+    (item,) = _built([BUS_STOP, TRAIN_STOP])
+    state = _stops_state("2026-09-22T22:00:28+00:00")
+    (carried,) = bf._carry_item_identity([item], state, _at("2026-10-09T22:00:57+02:00"))
+    assert carried["guid"] == "92b3e152"
+
+
+def test_a_message_of_the_incident_still_carries_its_guid() -> None:
+    # "43: Verkehrsunfall": what is left of an incident keeps its GUID and begin.
+    (item,) = _built([BUS_STOP, TRAIN_STOP])
+    state = _stops_state("2026-10-09T07:36:00+00:00")
+    (carried,) = bf._carry_item_identity([item], state, _at("2026-10-09T22:00:57+02:00"))
+    assert carried["guid"] == "1fada761"
 
 
 # ---------------- ÖBB: the second sentence ----------------
