@@ -762,6 +762,29 @@
   {
    "geometry": {
     "first_position": [
+     16.33972613,
+     48.2189357
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Gerhard Baumann",
+    "ANSPRECHPERSON_TEL": "Tel.: 050128/32740",
+    "ANTRAGSTELLER": "Wiener Netze - Bereich Gas",
+    "BEHINDERUNGSART": "Rohrlegung",
+    "BEZEICHNUNG": "Martinstraße von Kreuzung Leo-Slezak-Gasse bis Kreuzung Blumengasse",
+    "BEZIRK": 18,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-05Z",
+    "OBJEKT_ENDE": "2026-12-18Z",
+    "PRESSETEXT": "Die Arbeiten erfolgen bei Sperre der Martinstraße von Kreuzung Leo-Slezak-Gasse bis Kreuzung Blumengasse. Eine Zufahrt zu den genehmigten Stellplätzen ist möglich. Der Bereich Martinstraße ist von Jörgerstraße und Veronikagasse bis und in Richtung Leo-Slezak-Gasse als Einbahn geführt.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.35857299,
      48.18132585
     ],

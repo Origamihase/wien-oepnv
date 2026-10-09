@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261009-0044-F02, I20260917-0012, I20260922-0032, I20260925-0011, I20261009-0043-F01, I20260909-0007, I20261009-0041-F01, I20261009-0046, I20261009-0043-F02, I20261009-0045, I20261009-0043-F03"
+    "trafficInfoNameList": "I20261009-0046-F01-F01, I20260917-0012, I20261009-0046-F01, I20260922-0032, I20260925-0011, I20260909-0007, I20261009-0046"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R101-136, R102-136, R100-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R1177-0, R1974-466, R500-101, R13-102, R51-102, R50-102, R49-102, R81-171, R13-171, R46-171, R47-171, R49-171, R50-171, R44-171, R51-171, R45-171, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R101-136, R102-136, R100-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R1177-0, R1974-466, R500-101, R13-102, R51-102, R50-102, R49-102, R81-171, R13-171, R51-171, R44-171, R45-171, R46-171, R47-171, R49-171, R50-171, R4733-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,221 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "42": "ptTram"
-     }
-    },
-    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Kreuzgasse",
-    "name": "I20261009-0041-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "142",
-       "lineName": "42",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-09T20:04:00.000+0200",
-     "end": "2026-10-09T21:02:00.000+0200",
-     "lastUpdate": "2026-10-09T21:02:00.000+0200",
-     "resume": "2026-10-09T21:02:00.000+0200",
-     "start": "2026-10-09T19:40:00.000+0200"
-    },
-    "title": "42: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "D": "ptTram"
-     }
-    },
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261009-0043-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "136",
-       "lineName": "D",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     13
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-09T20:14:00.000+0200",
-     "end": "2026-10-09T21:20:00.000+0200",
-     "lastUpdate": "2026-10-09T21:20:00.000+0200",
-     "resume": "2026-10-09T21:20:00.000+0200",
-     "start": "2026-10-09T20:08:00.000+0200"
-    },
-    "title": "D: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "1": "ptTram"
-     }
-    },
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261009-0043-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "101",
-       "lineName": "1",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     13
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-09T20:14:00.000+0200",
-     "end": "2026-10-09T21:14:00.000+0200",
-     "lastUpdate": "2026-10-09T21:14:00.000+0200",
-     "resume": "2026-10-09T21:14:00.000+0200",
-     "start": "2026-10-09T20:08:00.000+0200"
-    },
-    "title": "1: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261009-0043-F03",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "102",
-       "lineName": "2",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     13
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-09T20:14:00.000+0200",
-     "end": "2026-10-09T21:18:00.000+0200",
-     "lastUpdate": "2026-10-09T21:18:00.000+0200",
-     "resume": "2026-10-09T21:18:00.000+0200",
-     "start": "2026-10-09T20:08:00.000+0200"
-    },
-    "title": "2: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "10": "ptTram"
-     }
-    },
-    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Breitenseer Straße 28",
-    "name": "I20261009-0044-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "110",
-       "lineName": "10",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-09T20:36:00.000+0200",
-     "end": "2026-10-09T21:20:00.000+0200",
-     "lastUpdate": "2026-10-09T21:20:00.000+0200",
-     "resume": "2026-10-09T21:20:00.000+0200",
-     "start": "2026-10-09T20:18:00.000+0200"
-    },
-    "title": "10: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "66A": "ptBusCity"
-     }
-    },
-    "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "descriptionHTML": "Linie 66A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Polizeieinsatz.",
-    "name": "I20261009-0045",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "466",
-       "lineName": "66A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-09T20:38:00.000+0200",
-     "end": "2026-10-09T21:14:00.000+0200",
-     "lastUpdate": "2026-10-09T21:14:00.000+0200",
-     "resume": "2026-10-09T21:14:00.000+0200",
-     "start": "2026-10-09T20:38:00.000+0200"
-    },
-    "title": "66A: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U6": "ptMetro"
      }
     },
@@ -442,11 +227,86 @@
     "relatedStops": [
      4620
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-09T22:00:00.000+0200",
+     "end": "2026-10-09T22:03:00.000+0200",
+     "lastUpdate": "2026-10-09T22:03:00.000+0200",
+     "resume": "2026-10-09T22:03:00.000+0200",
+     "start": "2026-10-09T21:59:00.000+0200"
+    },
+    "title": "U6: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Derzeit können die Züge der Linie U6 die Station Burggasse - Stadthalle in Richtung Floridsdorf nicht einhalten. Voraussichtliche Dauer: 22:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Burggasse - Stadthalle.",
+    "descriptionHTML": "Derzeit können die Züge der Linie U6 die Station Burggasse - Stadthalle in Richtung Floridsdorf nicht einhalten.<br> <br>Voraussichtliche Dauer: 22:30 Uhr.<br><br>Grund: Polizeieinsatz im Haltestellenbereich Burggasse - Stadthalle.",
+    "name": "I20261009-0046-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4620
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-09T22:03:00.000+0200",
+     "end": "2026-10-09T22:10:00.000+0200",
+     "lastUpdate": "2026-10-09T22:10:00.000+0200",
+     "resume": "2026-10-09T22:10:00.000+0200",
+     "start": "2026-10-09T21:59:00.000+0200"
+    },
+    "title": "U6: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261009-0046-F01-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4620
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-09T22:10:00.000+0200",
      "end": "2026-10-09T23:55:00.000+0200",
-     "lastUpdate": "2026-10-09T22:00:00.000+0200",
+     "lastUpdate": "2026-10-09T22:10:00.000+0200",
+     "resume": "2026-10-09T22:10:00.000+0200",
      "start": "2026-10-09T21:59:00.000+0200"
     },
     "title": "U6: Polizeieinsatz"
@@ -1362,6 +1222,21 @@
      "start": "2026-10-09T13:11:46.000+0200"
     },
     "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
+    "name": "R4733-0",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     4733
+    ],
+    "time": {
+     "end": "2026-10-09T23:26:00.000+0200",
+     "start": "2026-10-09T22:26:52.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
    },
    {
     "description": "Demonstration\nZüge halten nach der Bellariastraße",
