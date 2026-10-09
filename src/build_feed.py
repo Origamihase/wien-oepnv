@@ -9367,8 +9367,16 @@ def _other_incident(entry: dict[str, Any] | None, item: FeedItem) -> bool:
     return bool(noted) and bool(own) and noted.isdisjoint(own)
 
 
-def _continued_by(entry: dict[str, Any], item: FeedItem) -> bool:
+def _continued_by(entry: dict[str, Any], item: FeedItem, own: dict[str, Any] | None = None) -> bool:
     """Whether *item*, which shares a message with the item *entry* noted, continues it.
+
+    Never if *item* stood in the feed under its own GUID before that item
+    did (*own*, its state entry, seen first): it was there first, and the
+    other took it up. The stops of the line 25 track works (in the feed
+    since 23.09.) became members of "25: Verspätungen" on 2026-10-09 at
+    09:36, before ``_with_unowned`` kept them out; when the delay ended
+    they carried its GUID and begin and stood as a new disruption on up to
+    place 2, and every later build carried them on again.
 
     It does if the message whose GUID *item* carries was in that item: its
     other messages ran out ("43: Verkehrsunfall"). Or if that message is no
@@ -9381,6 +9389,9 @@ def _continued_by(entry: dict[str, Any], item: FeedItem) -> bool:
     (``_other_incident``).
     """
     if _other_incident(entry, item):
+        return False
+    first, owner_first = _parse_state_time(own, "first_seen"), _parse_state_time(entry, "first_seen")
+    if first is not None and owner_first is not None and first < owner_first:
         return False
     members = entry.get("members")
     if isinstance(members, list) and str(item.get("guid") or "") in members:
@@ -9422,7 +9433,7 @@ def _carry_item_identity(
         claims.extend(
             (-count, index, owner)
             for owner, count in shared.items()
-            if owner not in taken and _continued_by(state[owner], item)
+            if owner not in taken and _continued_by(state[owner], item, state.get(guid))
         )
     out = list(items)
     carried: set[int] = set()

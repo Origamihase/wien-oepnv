@@ -559,7 +559,7 @@ verdrängt eine andere Störung.
   jedem Vergleich weg, sonst unterschieden sich Titel-Folge und Text und
   derselbe Satz stand zweimal; ein Leerzeichen vor einem Punkt („12:15
   Uhr .“) und „im Bereich .“ ohne Ort fallen aus der Beschreibung.
-* **ÖBB: der zweite Satz sagt, was noch gilt (seit 2026-10-09).** ÖBB
+* **ÖBB: der zweite Satz sagt, was noch gilt (seit 2026-10-09, Betreiberentscheidung „Stationen weglassen“ vom selben Abend).** ÖBB
   sagt im zweiten Satz, was noch gilt: „Planen Sie derzeit noch bis zu 10
   Minuten mehr Reisezeit ein.“ unter einer Störung, die vorbei ist, „Über die Dauer
   der Unterbrechung kann derzeit noch keine Angabe gemacht werden.“ unter

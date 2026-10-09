@@ -5,6 +5,17 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Wer zuerst im Feed stand, behält seine GUID (2026-10-09)**: Nachtrag zur
+  zehnten Prüfung. Der Feed-Zustand aus der Zeit vor `_with_unowned` führte
+  die Haltestellen der Gleisbauarbeiten der Linie 25 (seit 23.09. im Feed)
+  als Meldungen von „25: Verspätungen“; jeder Lauf übernahm deshalb deren
+  GUID wieder, im ersten Lauf nach dem Merge (22:00) auf Platz 2 mit
+  „[Heute]“. Ein Item, das unter seiner eigenen GUID früher im Feed stand
+  als das Item, mit dem es eine Meldung teilt, übernimmt dessen GUID nicht
+  mehr (`_continued_by`). Nachbau aller Läufe vom 01. bis 09.10.: siehe PR.
+  Dazu: Der Betreiber bestätigte am selben Abend, dass der ÖBB-Text die
+  Stationen weglässt, die der Titel nennt („Stationen weglassen“), damit
+  der zweite Satz in die 180 Zeichen passt.
 * **Zehnte unabhängige Prüfung: Abruf bis Feed (2026-10-09)**: Drei
   Befunde, alle an echten Daten nachgespielt (Feed-Läufe vom 01. bis
   09.10., alle 443 ÖBB-Texte im Cache seit Juni).
