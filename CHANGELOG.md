@@ -17,6 +17,14 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   WL- und ÖBB-Cache, Rohdaten und Verwürfen seit Februar verwirft die Regel
   dieselben acht Titel wie vorher; eine Meldung mit diesen Wörtern kam
   bisher nicht vor.
+* **Klapprampensperren wie defekte Aufzüge (2026-10-09)**: Betreiberwahl
+  „Auch verwerfen“. Können bei einer Veranstaltung die Klapprampen der
+  U-Bahn-Züge nicht ausfahren („U1: Klapprampensperre am 10.10.2026“),
+  verwirft der Abruf die Meldung wie einen reinen Aufzug-Titel, bei WL und
+  ÖBB; die Züge fahren normal. WL schickte seit Juli 17 solche Meldungen,
+  alle in dieser einen Schreibweise. In allen 237 WL-Abrufen seit 04.10.
+  verschwinden nur „U1: Klapprampensperre am 10.10.2026“ und „U4:
+  Klapprampensperre am 16.10.2026“.
 * **Aufgangssperren wie defekte Aufzüge (2026-10-09)**: Betreiberentscheidung
   „Eine Aufgangssperre soll bitte wie ein defekter Aufzug behandelt werden.“
   Nennt der Titel einer WL- oder ÖBB-Meldung einen gesperrten Aufgang,

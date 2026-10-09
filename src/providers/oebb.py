@@ -188,7 +188,7 @@ _FACILITY_KEYWORD_RE = re.compile(
     # The optional surrounding ``\w*`` lets the regex match any
     # German prefix/suffix without enumerating every variant.
     r"\b\w*(?:aufzug|aufz(?:ü|ue)ge|aufzugsinfo|lift|fahrstuhl|"
-    r"fahrtreppen?(?:info)?|rolltreppen?)\w*\b",
+    r"fahrtreppen?(?:info)?|rolltreppen?|klapprampen?)\w*\b",
     re.IGNORECASE,
 )
 _WEATHER_KEYWORD_RE = re.compile(
