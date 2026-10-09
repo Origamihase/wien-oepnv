@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261009-0019-F05, I20260917-0012, I20260922-0032, I20261009-0025, I20260925-0011, I20261009-0034, I20260909-0007, I20261009-0026, I20261009-0027-F01, I20261009-0031, I20261009-0023-F01, I20261009-0032-F01, I20261009-0019-F02, I20261009-0033"
+    "trafficInfoNameList": "I20261009-0019-F05, I20261009-0026-F01, I20260917-0012, I20260922-0032, I20261009-0025, I20260925-0011, I20261009-0033, I20260909-0007, I20261009-0027-F01, I20261009-0034, I20261009-0031, I20261009-0036, I20261009-0032-F01, I20261009-0035, I20261009-0019-F02, I20261009-0026-F02, I20261009-0026"
    },
    {
     "id": 3,
@@ -273,43 +273,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261009-0023-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4618
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-09T13:50:00.000+0200",
-     "end": "2026-10-09T15:36:00.000+0200",
-     "lastUpdate": "2026-10-09T15:36:00.000+0200",
-     "resume": "2026-10-09T15:36:00.000+0200",
-     "start": "2026-10-09T13:30:00.000+0200"
-    },
-    "title": "U6: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "14A": "ptBusCity"
      }
     },
@@ -372,15 +335,83 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-09T13:52:00.000+0200",
-     "end": "2026-10-09T23:55:00.000+0200",
-     "lastUpdate": "2026-10-09T13:52:00.000+0200",
-     "resume": "2026-10-09T13:52:00.000+0200",
+     "end": "2026-10-09T16:55:00.000+0200",
+     "lastUpdate": "2026-10-09T16:55:00.000+0200",
+     "resume": "2026-10-09T16:55:00.000+0200",
      "start": "2026-10-09T13:52:00.000+0200"
     },
     "title": "16A, 22A: Verkehrsüberlastung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "16A": "ptBusCity"
+     }
+    },
+    "description": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261009-0026-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "16A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "416",
+       "lineName": "16A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-09T16:55:00.000+0200",
+     "end": "2026-10-09T16:56:00.000+0200",
+     "lastUpdate": "2026-10-09T16:56:00.000+0200",
+     "resume": "2026-10-09T16:56:00.000+0200",
+     "start": "2026-10-09T13:52:00.000+0200"
+    },
+    "title": "16A: Verkehrsüberlastung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "22A": "ptBusCity"
+     }
+    },
+    "description": "Linie 22A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 22A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261009-0026-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "22A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "422",
+       "lineName": "22A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-09T16:55:00.000+0200",
+     "end": "2026-10-09T23:55:00.000+0200",
+     "lastUpdate": "2026-10-09T16:55:00.000+0200",
+     "resume": "2026-10-09T16:55:00.000+0200",
+     "start": "2026-10-09T13:52:00.000+0200"
+    },
+    "title": "22A: Verkehrsüberlastung"
    },
    {
     "attributes": {
@@ -510,12 +541,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-09T16:10:00.000+0200",
-     "end": "2026-10-09T23:55:00.000+0200",
-     "lastUpdate": "2026-10-09T16:10:00.000+0200",
-     "resume": "2026-10-09T16:10:00.000+0200",
+     "end": "2026-10-09T16:56:00.000+0200",
+     "lastUpdate": "2026-10-09T16:56:00.000+0200",
+     "resume": "2026-10-09T16:56:00.000+0200",
      "start": "2026-10-09T16:10:00.000+0200"
     },
     "title": "11: Verunreinigung"
@@ -544,15 +575,83 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-09T16:22:00.000+0200",
-     "end": "2026-10-09T23:55:00.000+0200",
-     "lastUpdate": "2026-10-09T16:22:00.000+0200",
-     "resume": "2026-10-09T16:22:00.000+0200",
+     "end": "2026-10-09T16:56:00.000+0200",
+     "lastUpdate": "2026-10-09T16:56:00.000+0200",
+     "resume": "2026-10-09T16:56:00.000+0200",
      "start": "2026-10-09T16:22:00.000+0200"
     },
     "title": "40A: Verkehrsüberlastung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "40": "ptTram"
+     }
+    },
+    "description": "Linie 40: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus.",
+    "descriptionHTML": "Linie 40:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Vandalismus.",
+    "name": "I20261009-0035",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "140",
+       "lineName": "40",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-09T16:35:00.000+0200",
+     "end": "2026-10-09T16:55:00.000+0200",
+     "lastUpdate": "2026-10-09T16:55:00.000+0200",
+     "resume": "2026-10-09T16:55:00.000+0200",
+     "start": "2026-10-09T16:35:00.000+0200"
+    },
+    "title": "40: Vandalismus"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261009-0036",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "301",
+       "lineName": "U1",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-09T16:48:00.000+0200",
+     "end": "2026-10-09T23:55:00.000+0200",
+     "lastUpdate": "2026-10-09T16:48:00.000+0200",
+     "resume": "2026-10-09T16:48:00.000+0200",
+     "start": "2026-10-09T16:48:00.000+0200"
+    },
+    "title": "U1: Verspätungen"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",

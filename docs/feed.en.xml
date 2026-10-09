@@ -7,40 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 09 Oct 2026 16:31:01 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 17:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[11: Contamination]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1f0306b680e5da26f14eb1fee7aed5a4682caac6e0570037c68c42879db4b795</guid>
-      <pubDate>Fri, 09 Oct 2026 16:10:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 16:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 16:10:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: contamination. [Since 16:10]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 16:10]]]></content:encoded>
+      <title><![CDATA[Wien Meidling ↔ Wien Liesing]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;918196</guid>
+      <pubDate>Fri, 09 Oct 2026 16:57:26 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 17:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Due to damage on the track, trains can only run to a limited extent between Wien Meidling station (U) and Wien Liesing station at present. [Since 16:57]</description>
+      <content:encoded><![CDATA[Due to damage on the track, trains can only run to a limited extent between Wien Meidling station (U) and Wien Liesing station at present.<br/>[Since 16:57]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40A: Traffic congestion]]></title>
+      <title><![CDATA[U1: Delays]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9bf5343b39ded7dc7ca142844f951a241fc0e1d681fa0c0e2ed28db2ac8efe38</guid>
-      <pubDate>Fri, 09 Oct 2026 16:22:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 14:54:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 16:22:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
+      <pubDate>Fri, 09 Oct 2026 16:48:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 14:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 16:48:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 16:22]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 16:22]]]></content:encoded>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 16:48]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 16:48]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[16A/22A: Traffic congestion]]></title>
+      <title><![CDATA[22A: Traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">00805e247214cfaf545982b4b95007ea8a2466b38c0eaf2e743fa342ce44e36c</guid>
-      <pubDate>Fri, 09 Oct 2026 13:45:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 13:45:00 +0200</ext:first_seen>
+      <guid isPermaLink="false">058b4c8d1bcd5de597f6cab7230653901d4005a4a0eeb390c31a784c8b083aea</guid>
+      <pubDate>Fri, 09 Oct 2026 13:52:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 13:52:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 09 Oct 2026 13:52:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 13:45]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 13:45]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 13:52]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:52]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[25: Replacement bus 26E holds Karl-Waldbrunner-Platz ahead of Schloßhofer Straße]]></title>
@@ -65,15 +65,15 @@
       <content:encoded><![CDATA[Due to the LCC autumn marathon in Prater Hauptallee, line 18 is curtailed. Line 18: service only between Burggasse, Stadthalle U and Schlachthausgasse U.<br/>[On Sun 11.10.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1/1A/2/2A/3A/4A/57A/71/D: Demonstration on 09.10.2026, 10.10.2026]]></title>
+      <title><![CDATA[1A/2/2A/3A/4A/71/D: Demonstration on 10.10.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">337422a9d6cedd385263f2f283630dffffa4c906e26c9ae80c7f57cf1fa38c06</guid>
       <pubDate>Thu, 08 Oct 2026 00:00:00 +0200</pubDate>
       <ext:first_seen>Thu, 08 Oct 2026 14:01:08 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:starts_at>Sat, 10 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 10 Oct 2026 16:30:00 +0200</ext:ends_at>
-      <description>Due to a demonstration, there are service changes. [Until Sat 10.10.]</description>
-      <content:encoded><![CDATA[Due to a demonstration, there are service changes.<br/>[Until Sat 10.10.]]]></content:encoded>
+      <description>Due to a demonstration, there is a restriction on public transport. [On Sat 10.10.]</description>
+      <content:encoded><![CDATA[Due to a demonstration, there is a restriction on public transport.<br/>[On Sat 10.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1A/3A: Schwertgasse]]></title>
