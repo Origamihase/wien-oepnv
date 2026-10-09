@@ -31,7 +31,6 @@ from zoneinfo import ZoneInfo
 import pytest
 
 import src.build_feed as bf
-from src.build_feed import _apply_domain_glossary, _normalise_for_translation, _unmask_entities
 from src.feed.merge import deduplicate_fuzzy
 from src.feed_types import FeedItem
 
@@ -261,10 +260,10 @@ def test_st_poelten_is_one_templated_sentence(cause_stub: list[str]) -> None:
 
 
 def _rendered(text: str) -> str:
-    glossed, mapping = _apply_domain_glossary(
-        _normalise_for_translation(text), source=_WL, category="Störung"
+    glossed, mapping = bf._apply_domain_glossary(
+        bf._normalise_for_translation(text), source=_WL, category="Störung"
     )
-    return _unmask_entities(glossed, mapping)
+    return bf._unmask_entities(glossed, mapping)
 
 
 @pytest.mark.parametrize(
