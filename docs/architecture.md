@@ -774,7 +774,7 @@ dieser Reihenfolge:
    ersten Korrektur.
 
 Die bisherigen Regeln gelten unverändert und zählen nicht als Korrektur:
-Ein 11:11-Ende weicht dem Ende aus „Zeitraum:“ (bis es vorbei ist, siehe unten), ein Beginndatum verschiebt
+Ein 11:11-Ende weicht dem Ende aus „Zeitraum:“, ein Beginndatum verschiebt
 den Start nur nach hinten, und ein Textdatum hinter dem Ende ist das Datum
 einer späteren Phase. Was die Prüfung nicht sehen kann: eine Angabe, die an
 allen Stellen gleich falsch ist.
@@ -833,26 +833,6 @@ hätte es Meldungen beendet, die WL noch auslieferte (85A, „Mitte Mai“, bis
 02.08.2026 gelistet). Das 11:11-Datum bleibt das Ablaufdatum der Meldung
 (`ends_at`, Altersfilter); geändert ist nur die Zeitzeile, im englischen
 Feed ebenso.
-
-**Ein Text-Ende gilt nur, bis es vorbei ist** (seit 2026-10-09,
-`wl_plausibility.plausible_end` mit `now`). Danach ist wieder WLs
-11:11-Ende das Ende: Eine Meldung, die WL noch ausliefert, bleibt, bis WL
-sie zurückzieht oder das 11:11-Datum erreicht ist, und die Zeitzeile liest
-„[Seit …]“ statt eines vergangenen Endes oder des Ablaufdatums
-(`end_unknown`). Das gilt für ein Ende aus dem Text wie für eines aus
-Start plus Dauer plus Puffer; ein Ende, das WL selbst setzt (nicht 11:11),
-beendet die Meldung wie bisher. WL nimmt eine Meldung von Hand zurück, wenn
-die Maßnahme vorbei ist; „bis etwa Ende Juli 2026“ ist eine Schätzung. Von
-den 52 Hinweisen, deren 11:11-Ende ein Text-Ende oder eine Dauer ersetzte
-und die WL zwischen dem 21.02. und dem 01.10.2026 zurückzog, verschwanden
-39 spätestens an diesem Ende; die anderen 13 lieferte WL danach noch 1 bis
-41 Tage aus, zusammen 173 Tage, an denen das Text-Ende allein sie
-verwarf (93A/96A/N91 Schillwasserweg „bis etwa Ende Juli“, gelistet bis
-10.09.; 65A/66A Inzersdorfer Straße „etwa zwei Wochen“ ab 12.08., gelistet
-bis 07.10.; 44A Kurzführung „bis Ende September“, am 09.10. noch
-gelistet). Im Nachbau von 122 Feeds (ein Lauf je Tag, 01.06. bis 01.10.)
-ändern sich die zehn Einträge des Feeds dabei nicht: Die länger gelisteten
-Hinweise sind alt und stehen hinter Platz 10.
 
 ### Rohdaten und Verwürfe des Abrufs (seit 2026-10-04)
 
