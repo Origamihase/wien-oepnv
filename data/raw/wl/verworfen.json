@@ -1,8 +1,32 @@
 {
  "verworfen": [
   {
+   "grund": "Kurzmeldung einer erledigten Störung",
+   "titel": "Fahrtbehinderung Falschparker"
+  },
+  {
    "grund": "Status inaktiv",
-   "titel": "40, 41: Verkehrsunfall"
+   "titel": "13A: Verkehrsüberlastung"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "2: Verkehrsunfall"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "40: Verkehrsunfall"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "41: Verkehrsunfall"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "42: Falschparker"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "O: Falschparker"
   },
   {
    "grund": "außerhalb des Zeitraums",
@@ -27,6 +51,10 @@
   {
    "grund": "außerhalb des Zeitraums",
    "titel": "Karlsplatz"
+  },
+  {
+   "grund": "nur Aufgang/Ausgang",
+   "titel": "U1: Nestroyplatz, Aufgangssperre ab 12.10.2026"
   },
   {
    "grund": "nur Aufzug/Fahrtreppe",

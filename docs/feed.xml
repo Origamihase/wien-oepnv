@@ -7,8 +7,52 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 09 Oct 2026 10:29:34 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 10:30:39 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
+      <pubDate>Fri, 09 Oct 2026 10:27:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 10:27:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 10:27:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 10:27]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 10:27]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40/41: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">46770cbdcca7b3b0724e5953b64353d0a982642ac049261e3dfdc906c581b130</guid>
+      <pubDate>Fri, 09 Oct 2026 10:26:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 10:26:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 10:26:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Gersthof, Herbeckstraße. Linie 41: Fahrtbehinderung in Richtung Pötzleinsdorf. [Seit 10:26]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Gersthof, Herbeckstraße. Linie 41: Fahrtbehinderung in Richtung Pötzleinsdorf.<br/>[Seit 10:26]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[42: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
+      <pubDate>Fri, 09 Oct 2026 10:25:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 10:25:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 10:25:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 10:31:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 10:25]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 10:25]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
+      <pubDate>Fri, 09 Oct 2026 10:15:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 10:15:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 10:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit 10:15]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 10:15]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[25: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,61 +63,6 @@
       <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße; Züge halten Donaufelder Straße 175-177. Unregelmäßige Intervalle in beiden Richtungen. [Seit 09:36]</description>
       <content:encoded><![CDATA[Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße; Züge halten Donaufelder Straße 175-177. Unregelmäßige Intervalle in beiden Richtungen.<br/>[Seit 09:36]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40/41: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2eb68f371c0d737b7a5ab3e158e473973cc35e96b9aefc6807cce70740d62e8e</guid>
-      <pubDate>Fri, 09 Oct 2026 08:56:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 08:56:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 08:56:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 08:56]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 08:56]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc</guid>
-      <pubDate>Fri, 09 Oct 2026 08:37:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 08:37:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 08:37:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 08:37]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 08:37]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[O: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a90305646f013b3987fb55ef5dab8d20d35b0e58b3f412f792bb39c48c2fa5a8</guid>
-      <pubDate>Fri, 09 Oct 2026 08:25:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 08:25:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 08:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker. [Seit 08:25]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.<br/>[Seit 08:25]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[13A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0b00fe24c2dd37aaf07ae252d80374592513223744f2d6ecc3fa197c58c6de52</guid>
-      <pubDate>Fri, 09 Oct 2026 08:09:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 08:09:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 08:09:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 09 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 08:09]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 08:09]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Nestroyplatz, Aufgangssperre]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">af7f26fba535b6b0c5e17ddae8e344243ab4cecda38832925b8ef15eacf2a859</guid>
-      <pubDate>Mon, 05 Oct 2026 15:55:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 00:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 12 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 30 Nov 2026 04:30:00 +0100</ext:ends_at>
-      <description>Wegen Sanierungsarbeiten wird in der Station Nestroyplatz ein Aufgang gesperrt. [Ab Mo 12.10. bis 30.11.]</description>
-      <content:encoded><![CDATA[Wegen Sanierungsarbeiten wird in der Station Nestroyplatz ein Aufgang gesperrt.<br/>[Ab Mo 12.10. bis 30.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Klapprampensperre am 10.10.2026]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
       <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung. [Bis 31.03.2027]</description>
       <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung.<br/>[Bis 31.03.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[72A: Haidestraße S]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">478a7dd15ce15abfb6a3b89c90e7305c6500a29a34ffa7ee497d6624535e2914</guid>
+      <pubDate>Thu, 08 Oct 2026 15:30:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 15:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 15:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 08 Oct 2027 11:11:00 +0200</ext:ends_at>
+      <description>Lautenschlägergasse nach Haidestraße → 1. Haidequerstraße gegenüber 3A. Haltestellenverlegung der Linie 72A in Richtung Hasenleiten. Grund: Arbeiten an einer Gasleitung. [Seit 08.10.]</description>
+      <content:encoded><![CDATA[Lautenschlägergasse nach Haidestraße → 1. Haidequerstraße gegenüber 3A. Haltestellenverlegung der Linie 72A in Richtung Hasenleiten. Grund: Arbeiten an einer Gasleitung.<br/>[Seit 08.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
