@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261009-0008, I20261009-0013, I20261009-0013-F01, I20261009-0014-F02, I20260917-0012, I20260922-0032, I20261009-0014-F01, I20260925-0011, I20261009-0014, I20260909-0007, I20261009-0012-F02, I20261009-0012-F01, I20261009-0015"
+    "trafficInfoNameList": "I20261009-0013-F01, I20261009-0014-F02, I20261009-0017, I20260917-0012, I20260922-0032, I20261009-0014-F01, I20260925-0011, I20261009-0014, I20261009-0016, I20261009-0018, I20260909-0007, I20261009-0012-F02, I20261009-0012-F01, I20261009-0015, I20261009-0017-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R100-136, R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R1974-466, R500-101, R1338-142, R524-143, R237-143, R235-143, R236-143, R234-143, R236-144, R237-144, R1372-144, R1373-144, R1371-144, R524-142, R555-144, R217-144, R219-144, R218-144, R1360-144, R1345-144, R1361-144, R219-143, R217-143, R218-143, R1345-143, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R101-136, R36-152, R100-136, R102-136, R2558-125, R5815-671, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1177-0, R1974-466, R500-101, R21-101, R20-101, R19-101, R18-101, R17-101, R15-101, R14-101, R13-101, R22-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,40 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "25": "ptTram"
-     }
-    },
-    "description": "Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie 25:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261009-0008",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "125",
-       "lineName": "25",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-09T09:37:00.000+0200",
-     "end": "2026-10-09T11:38:00.000+0200",
-     "lastUpdate": "2026-10-09T11:38:00.000+0200",
-     "resume": "2026-10-09T11:38:00.000+0200",
-     "start": "2026-10-09T09:36:00.000+0200"
-    },
-    "title": "25: Verspätungen"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "40": "ptTram"
      }
     },
@@ -307,43 +273,6 @@
      "start": "2026-10-09T10:26:00.000+0200"
     },
     "title": "41: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "42": "ptTram"
-     }
-    },
-    "description": "Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 12:10 Uhr. Grund: Falschparker im Haltestellenbereich Eduardgasse.",
-    "descriptionHTML": "Linie 42:<br>Fahrtbehinderung in Richtung Antonigasse.<br> <br>Voraussichtliche Dauer: 12:10 Uhr.<br><br>Grund: Falschparker im Haltestellenbereich Eduardgasse.",
-    "name": "I20261009-0013",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "142",
-       "lineName": "42",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     3875
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-09T11:43:00.000+0200",
-     "end": "2026-10-09T11:55:00.000+0200",
-     "lastUpdate": "2026-10-09T11:55:00.000+0200",
-     "resume": "2026-10-09T11:55:00.000+0200",
-     "start": "2026-10-09T11:42:00.000+0200"
-    },
-    "title": "42: Falschparker"
    },
    {
     "attributes": {
@@ -535,6 +464,144 @@
     "title": "5B: Rettungseinsatz"
    },
    {
+    "attributes": {
+     "relatedLineTypes": {
+      "29B": "ptBusCity"
+     }
+    },
+    "description": "Linie 29B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie 29B:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261009-0016",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "29B"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "229",
+       "lineName": "29B",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-09T12:32:00.000+0200",
+     "end": "2026-10-09T23:55:00.000+0200",
+     "lastUpdate": "2026-10-09T12:32:00.000+0200",
+     "resume": "2026-10-09T12:32:00.000+0200",
+     "start": "2026-10-09T12:32:00.000+0200"
+    },
+    "title": "29B: Verspätungen"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "12A": "ptBusCity"
+     }
+    },
+    "description": "Linie 12A: Fahrtbehinderung in Richtung Schmelz, Gablenzgasse. Voraussichtliche Dauer: 13:00 Uhr. Grund: Falschparker im Bereich Siebenbrunnenfeldgasse.",
+    "descriptionHTML": "Linie 12A:<br>Fahrtbehinderung in Richtung Schmelz, Gablenzgasse.<br> <br>Voraussichtliche Dauer: 13:00 Uhr.<br><br>Grund: Falschparker im Bereich Siebenbrunnenfeldgasse.",
+    "location": "Siebenbrunnenfeldgasse",
+    "name": "I20261009-0017",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "412",
+       "lineName": "12A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-09T12:37:00.000+0200",
+     "end": "2026-10-09T12:41:00.000+0200",
+     "lastUpdate": "2026-10-09T12:41:00.000+0200",
+     "resume": "2026-10-09T12:41:00.000+0200",
+     "start": "2026-10-09T12:36:00.000+0200"
+    },
+    "title": "12A: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "12A": "ptBusCity"
+     }
+    },
+    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Siebenbrunnenfeldgasse",
+    "name": "I20261009-0017-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "412",
+       "lineName": "12A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-09T12:41:00.000+0200",
+     "end": "2026-10-09T13:20:00.000+0200",
+     "lastUpdate": "2026-10-09T12:44:00.000+0200",
+     "resume": "2026-10-09T12:41:00.000+0200",
+     "start": "2026-10-09T12:36:00.000+0200"
+    },
+    "title": "12A: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261009-0018",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-09T12:42:00.000+0200",
+     "end": "2026-10-09T23:55:00.000+0200",
+     "lastUpdate": "2026-10-09T12:42:00.000+0200",
+     "resume": "2026-10-09T12:42:00.000+0200",
+     "start": "2026-10-09T12:42:00.000+0200"
+    },
+    "title": "U6: Verspätungen"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R100-136",
     "owner": "WL",
@@ -712,6 +779,24 @@
     "title": "Züge halten in\nSchleife"
    },
    {
+    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+    "name": "R13-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     13
+    ],
+    "time": {
+     "end": "2026-10-09T21:00:00.000+0200",
+     "start": "2026-10-09T12:59:15.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R130-136",
     "owner": "WL",
@@ -730,148 +815,22 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
    },
    {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1338-142",
+    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+    "name": "R14-101",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "42"
+     "1"
     ],
     "relatedStops": [
-     1338
+     14
     ],
     "time": {
-     "end": "2026-10-09T12:39:00.000+0200",
-     "start": "2026-10-09T11:40:38.000+0200"
+     "end": "2026-10-09T21:00:00.000+0200",
+     "start": "2026-10-09T12:59:15.000+0200"
     },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Alser Straße",
-    "name": "R1345-143",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     1345
-    ],
-    "time": {
-     "end": "2026-10-09T12:53:00.000+0200",
-     "start": "2026-10-09T11:55:40.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Alser Straße"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-berger-Platz",
-    "name": "R1345-144",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1345
-    ],
-    "time": {
-     "end": "2026-10-09T12:52:00.000+0200",
-     "start": "2026-10-09T11:54:10.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-berger-Platz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-berger-Platz",
-    "name": "R1360-144",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1360
-    ],
-    "time": {
-     "end": "2026-10-09T12:52:00.000+0200",
-     "start": "2026-10-09T11:54:10.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-berger-Platz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-berger-Platz",
-    "name": "R1361-144",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1361
-    ],
-    "time": {
-     "end": "2026-10-09T12:52:00.000+0200",
-     "start": "2026-10-09T11:54:10.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-berger-Platz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1371-144",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1371
-    ],
-    "time": {
-     "end": "2026-10-09T12:49:00.000+0200",
-     "start": "2026-10-09T11:50:39.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1372-144",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1372
-    ],
-    "time": {
-     "end": "2026-10-09T12:49:00.000+0200",
-     "start": "2026-10-09T11:50:39.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1373-144",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1373
-    ],
-    "time": {
-     "end": "2026-10-09T12:49:00.000+0200",
-     "start": "2026-10-09T11:50:39.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -1090,6 +1049,78 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
    },
    {
+    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+    "name": "R15-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-09T21:00:00.000+0200",
+     "start": "2026-10-09T12:59:15.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+    "name": "R17-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-10-09T21:00:00.000+0200",
+     "start": "2026-10-09T12:59:15.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+    "name": "R18-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     18
+    ],
+    "time": {
+     "end": "2026-10-09T21:00:00.000+0200",
+     "start": "2026-10-09T12:59:15.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+    "name": "R19-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     19
+    ],
+    "time": {
+     "end": "2026-10-09T21:00:00.000+0200",
+     "start": "2026-10-09T12:59:15.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -1126,6 +1157,24 @@
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
    {
+    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+    "name": "R20-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     20
+    ],
+    "time": {
+     "end": "2026-10-09T21:00:00.000+0200",
+     "start": "2026-10-09T12:59:15.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "name": "R2025-671",
     "owner": "WL",
@@ -1141,130 +1190,40 @@
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
    },
    {
-    "description": "Rettungseinsatz\nBetrieb ab Alser Straße",
-    "name": "R217-143",
+    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+    "name": "R21-101",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "43"
+     "1"
     ],
     "relatedStops": [
-     217
+     21
     ],
     "time": {
-     "end": "2026-10-09T12:53:00.000+0200",
-     "start": "2026-10-09T11:55:38.000+0200"
+     "end": "2026-10-09T21:00:00.000+0200",
+     "start": "2026-10-09T12:59:15.000+0200"
     },
-    "title": "Rettungseinsatz\nBetrieb ab Alser Straße"
+    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
    },
    {
-    "description": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-berger-Platz",
-    "name": "R217-144",
+    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+    "name": "R22-101",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "44"
+     "1"
     ],
     "relatedStops": [
-     217
+     22
     ],
     "time": {
-     "end": "2026-10-09T12:52:00.000+0200",
-     "start": "2026-10-09T11:54:08.000+0200"
+     "end": "2026-10-09T21:00:00.000+0200",
+     "start": "2026-10-09T12:59:15.000+0200"
     },
-    "title": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-berger-Platz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Alser Straße",
-    "name": "R218-143",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     218
-    ],
-    "time": {
-     "end": "2026-10-09T12:53:00.000+0200",
-     "start": "2026-10-09T11:55:38.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Alser Straße"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-berger-Platz",
-    "name": "R218-144",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     218
-    ],
-    "time": {
-     "end": "2026-10-09T12:52:00.000+0200",
-     "start": "2026-10-09T11:54:08.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-berger-Platz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Alser Straße",
-    "name": "R219-143",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     219
-    ],
-    "time": {
-     "end": "2026-10-09T12:53:00.000+0200",
-     "start": "2026-10-09T11:55:38.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Alser Straße"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-berger-Platz",
-    "name": "R219-144",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     219
-    ],
-    "time": {
-     "end": "2026-10-09T12:52:00.000+0200",
-     "start": "2026-10-09T11:54:08.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-berger-Platz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R234-143",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     234
-    ],
-    "time": {
-     "end": "2026-10-09T12:48:00.000+0200",
-     "start": "2026-10-09T11:49:07.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
    },
    {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
@@ -1321,24 +1280,6 @@
     "title": "Züge halten bei\nLinie 31"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R235-143",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     235
-    ],
-    "time": {
-     "end": "2026-10-09T12:48:00.000+0200",
-     "start": "2026-10-09T11:49:07.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
     "description": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
     "name": "R2359-125",
     "owner": "WL",
@@ -1355,78 +1296,6 @@
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R236-143",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     236
-    ],
-    "time": {
-     "end": "2026-10-09T12:48:00.000+0200",
-     "start": "2026-10-09T11:49:07.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R236-144",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     236
-    ],
-    "time": {
-     "end": "2026-10-09T12:49:00.000+0200",
-     "start": "2026-10-09T11:50:37.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R237-143",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     237
-    ],
-    "time": {
-     "end": "2026-10-09T12:48:00.000+0200",
-     "start": "2026-10-09T11:49:07.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R237-144",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     237
-    ],
-    "time": {
-     "end": "2026-10-09T12:49:00.000+0200",
-     "start": "2026-10-09T11:50:37.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
@@ -1715,60 +1584,6 @@
      "start": "2026-10-09T05:00:28.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R524-142",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedStops": [
-     524
-    ],
-    "time": {
-     "end": "2026-10-09T12:47:00.000+0200",
-     "start": "2026-10-09T11:52:38.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R524-143",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     524
-    ],
-    "time": {
-     "end": "2026-10-09T12:47:00.000+0200",
-     "start": "2026-10-09T11:48:08.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-berger-Platz",
-    "name": "R555-144",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     555
-    ],
-    "time": {
-     "end": "2026-10-09T12:52:00.000+0200",
-     "start": "2026-10-09T11:53:40.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-berger-Platz"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
