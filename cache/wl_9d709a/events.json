@@ -894,9 +894,9 @@
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
-    "pubDate": "2026-10-09T00:30:09+02:00",
-    "starts_at": "2026-10-09T00:30:09+02:00",
-    "ends_at": "2026-10-09T04:59:00+02:00",
+    "pubDate": "2026-10-09T05:00:28+02:00",
+    "starts_at": "2026-10-09T05:00:28+02:00",
+    "ends_at": "2026-10-09T23:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-10-09|TK=bhf hütteldorf öbb ersatzbus für 80"
   },
   {
@@ -1091,14 +1091,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "63A: Betrieb ab Fluschützstraße, Längenfeldgasse",
-    "description": "Bauarbeiten\nBetrieb ab Fluschützstraße, Längenfeldgasse",
+    "title": "66A: Busse halten Salvatorianerplatz",
+    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "166640279a1993832f467814252f3cf80a26d6791643bd878adc69e28ab0caa3",
-    "pubDate": "2026-10-08T20:33:17+02:00",
-    "starts_at": "2026-10-08T20:33:17+02:00",
-    "ends_at": "2026-10-09T05:00:00+02:00",
-    "_identity": "wl|störung|L=63A|D=2026-10-08|TK=betrieb ab fluschützstrasse längenfeldgasse"
+    "guid": "f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417",
+    "pubDate": "2026-10-09T04:40:27+02:00",
+    "starts_at": "2026-10-09T04:40:27+02:00",
+    "ends_at": "2026-10-10T01:00:00+02:00",
+    "_identity": "wl|störung|L=66A|D=2026-10-09|TK=busse halten salvatorianerplatz"
   },
   {
     "source": "Wiener Linien",
@@ -1178,78 +1178,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N20: Busse halten auf der Hauptfahrbahn",
-    "description": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2465b8f495aa09c30a1900425c8f402136474c4599d6f3677d4f46d051c9c4ae",
-    "pubDate": "2026-10-09T01:16:14+02:00",
-    "starts_at": "2026-10-09T01:16:14+02:00",
-    "ends_at": "2026-10-09T04:52:00+02:00",
-    "_identity": "wl|störung|L=N20|D=2026-10-09|TK=busse halten auf der hauptfahrbahn"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N20: Busse halten Bessemerstraße 1-3",
-    "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "f3142d4f32419f4772ec66186ea9d3101fb32548016973434774ef3660ca4236",
-    "pubDate": "2026-10-09T01:30:16+02:00",
-    "starts_at": "2026-10-09T01:30:16+02:00",
-    "ends_at": "2026-10-09T04:35:00+02:00",
-    "_identity": "wl|störung|L=N20|D=2026-10-09|TK=busse halten bessemerstrasse 1 3"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N20: Busse halten Donaufelder Straße 40-42",
-    "description": "Bauarbeiten\nBusse halten Donaufelder Straße 40-42",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fbb2a8ec5e05f8147afc547298621b5aa410a4dd847efd2a4b79524c0dfd7460",
-    "pubDate": "2026-10-09T01:10:13+02:00",
-    "starts_at": "2026-10-09T01:10:13+02:00",
-    "ends_at": "2026-10-09T04:50:00+02:00",
-    "_identity": "wl|störung|L=N20|D=2026-10-09|TK=busse halten donaufelder strasse 40 42"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N20: Busse halten Hoßplatz 7-11 bei Linie 26E",
-    "description": "Gleisbauarbeiten\nBusse halten Hoßplatz 7-11 bei Linie 26E",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "84f4be8b3ea53caeb6011b712691197f6e76500cae97eb51344c8e6b217efbfd",
-    "pubDate": "2026-10-09T01:00:12+02:00",
-    "starts_at": "2026-10-09T01:00:12+02:00",
-    "ends_at": "2026-10-09T05:00:00+02:00",
-    "_identity": "wl|störung|L=N20|D=2026-10-09|TK=busse halten hossplatz 7 11 bei linie 26e"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N49: Betrieb ab Johnstraße U",
-    "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "1963f82ac93d144e418b1738c647d7dac8d1d5dd078a20877ba74368c0ae79ae",
-    "pubDate": "2026-10-09T01:00:12+02:00",
-    "starts_at": "2026-10-09T01:00:12+02:00",
-    "ends_at": "2026-10-09T04:50:00+02:00",
-    "_identity": "wl|störung|L=N49|D=2026-10-09|TK=betrieb ab johnstrasse u"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N49: Betrieb ab Schweglerstraße",
-    "description": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2bb63e86a6366d616958e9c07d55e93631da5aea27e8aba60ef218fd8f38dca9",
-    "pubDate": "2026-10-09T01:00:12+02:00",
-    "starts_at": "2026-10-09T01:00:12+02:00",
-    "ends_at": "2026-10-09T05:00:00+02:00",
-    "_identity": "wl|störung|L=N49|D=2026-10-09|TK=betrieb ab schweglerstrasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N6: Busse halten Neilreichgasse 20-22",
     "description": "Bauarbeiten Busse halten Neilreichgasse 20-22",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1282,18 +1210,6 @@
     "starts_at": "2026-10-07T00:00:17+02:00",
     "ends_at": "2026-10-09T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-07|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N8: Busse halten Aßmayergasse 48 bei Linie 59A",
-    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "637f1a6ac83241b370a1aaf6804c2955c70ae12c21c23052d06685192de2962d",
-    "pubDate": "2026-10-09T00:45:12+02:00",
-    "starts_at": "2026-10-09T00:45:12+02:00",
-    "ends_at": "2026-10-09T04:45:00+02:00",
-    "_identity": "wl|störung|L=N8|D=2026-10-09|TK=busse halten assmayergasse 48 bei linie 59a"
   },
   {
     "source": "Wiener Linien",
