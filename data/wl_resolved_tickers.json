@@ -1,20 +1,5 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": [
-  {
-   "key": "R13-102|2026-10-09T13:08:16.000+0200|Demonstration\nBetrieb ab Parlament, Volkstheater",
-   "name": "R13-102",
-   "title": "Demonstration\nBetrieb ab Parlament, Volkstheater",
-   "end": "2026-10-09T23:45:00.000+0200",
-   "incident": "I20261009-0019-F05"
-  },
-  {
-   "key": "R49-102|2026-10-09T13:09:46.000+0200|Demonstration\nZüge halten nach der Bellariastraße",
-   "name": "R49-102",
-   "title": "Demonstration\nZüge halten nach der Bellariastraße",
-   "end": "2026-10-09T23:45:00.000+0200",
-   "incident": "I20261009-0019-F05"
-  }
- ]
+ "tickers": []
 }
