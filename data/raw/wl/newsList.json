@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1017117, ftazW_212, ftazW_2, ftazW_582, ftazW_1031271, ftazW_3, ftazW_581, ftazW_1353814, ftazW_1017118, ftazW_487, ftazW_756, ftazW_146, ftazW_1353815, ftazW_1017119, ftazW_1031269"
+    "trafficInfoNameList": "ftazW_1017117, ftazW_212, ftazW_2, ftazW_582, ftazW_1031271, ftazW_3, ftazW_581, ftazW_1353814, ftazW_1017118, ftazW_487, ftazW_756, ftazW_146, ftazW_1017119, ftazW_1031269"
    }
   ],
   "poiCategoryGroups": [
@@ -2954,32 +2954,6 @@
     "time": {
      "end": "2026-10-12T05:15:00.000+0200",
      "start": "2026-10-12T01:15:00.000+0200"
-    },
-    "title": "Bahnhof Meidling"
-   },
-   {
-    "attributes": {
-     "ausBis": "13.10.2026 00:45",
-     "ausVon": "12.10.2026 20:45",
-     "location": "U6 Mittelbahnsteig - Zwischengeschoß Zugang ÖBB Bahnsteig",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Bahnhof Meidling",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "U6 Mittelbahnsteig - Zwischengeschoß Zugang ÖBB Bahnsteig",
-    "name": "ftazW_1353815",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "time": {
-     "end": "2026-10-13T00:45:00.000+0200",
-     "start": "2026-10-12T20:45:00.000+0200"
     },
     "title": "Bahnhof Meidling"
    },
