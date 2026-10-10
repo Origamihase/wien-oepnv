@@ -221,6 +221,7 @@ def test_health_check_note_keeps_the_run_green(
     monkeypatch.setattr(f"{target}.check_source", lambda *_a, **_kw: healthy)
     monkeypatch.setattr(f"{target}.check_feed_freshness", lambda _now: healthy)
     monkeypatch.setattr(f"{target}.check_stations", lambda _now: healthy)
+    monkeypatch.setattr(f"{target}.check_stammstrecke_abruf", lambda _now: healthy)
     monkeypatch.setattr(f"{target}.check_stammstrecke_directions", lambda _now: note)
     monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
 

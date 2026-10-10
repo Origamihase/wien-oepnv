@@ -1047,10 +1047,23 @@
     }
     // Peer route: trains demonstrably ran and this direction was not among
     // them. Corridor route: nothing left to compare against, so only a
-    // stretch longer than any healthy pause counts.
+    // stretch longer than any healthy pause counts — and only while the
+    // monitor's own fetch works (``coverage.poll``, operator decision
+    // 2026-10-10): a dark corridor behind a broken fetch is not "no
+    // departures", it is the health check's to report. Mirrors
+    // ``fetch_working`` in ``find_silent_coverage_directions``. An older
+    // summary without ``poll`` keeps the earlier behaviour.
+    let fetchWorking = true;
+    const poll = coverage && coverage.poll;
+    if (poll) {
+      const lastOk = poll.last_success ? Date.parse(poll.last_success) : NaN;
+      const staleMs = numberOr(poll.stale_hours, 3) * 3600000;
+      fetchWorking = Number.isFinite(lastOk) && now - lastOk <= staleMs;
+    }
     let missing = quiet.filter((d) => peerRowsSince(d) >= peerNeeded);
     if (
       !missing.length &&
+      fetchWorking &&
       quiet.length === everSeen.length &&
       quiet.every((d) => now - lastSeenOf(d) >= corridorMs)
     ) {
