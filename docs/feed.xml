@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 10 Oct 2026 17:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 18:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[5: Rettungseinsatz]]></title>
@@ -15,21 +15,10 @@
       <guid isPermaLink="false">3c0f04fc72c473debc1c3aced181d4782b1f08226a834b9859b95c38c56635f5</guid>
       <pubDate>Sat, 10 Oct 2026 17:26:00 +0200</pubDate>
       <ext:first_seen>Sat, 10 Oct 2026 17:26:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 17:26:02 +0200</ext:starts_at>
+      <ext:starts_at>Sat, 10 Oct 2026 17:26:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Praterstern S U. Voraussichtlich bis 17:55 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Rauscherstraße. [Seit 17:26]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Praterstern S U. Voraussichtlich bis 17:55 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Rauscherstraße.<br/>[Seit 17:26]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[37: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f</guid>
-      <pubDate>Sat, 10 Oct 2026 16:46:00 +0200</pubDate>
-      <ext:first_seen>Sat, 10 Oct 2026 16:46:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 16:46:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 16:46]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 16:46]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:26]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:26]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[18: LCC-Herbstmarathon am 11.10.2026]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf. [Bis 31.12.]</description>
       <content:encoded><![CDATA[Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf.<br/>[Bis 31.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Sat, 10 Oct 2026 04:40:17 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 04:40:17 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 11 Oct 2026 01:00:00 +0200</ext:ends_at>
+      <description>Grund: Bauarbeiten. [Bis So 11.10.]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Bis So 11.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

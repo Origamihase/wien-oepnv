@@ -3,32 +3,95 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R201-137|2026-10-10T16:48:28.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R201-137",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-10T17:47:00.000+0200",
-   "incident": "I20261010-0020"
+   "key": "R345-105|2026-10-10T17:26:00.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R345-105",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-10T18:25:00.000+0200",
+   "incident": "I20261010-0022"
   },
   {
-   "key": "R203-137|2026-10-10T16:50:28.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R203-137",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-10T17:49:00.000+0200",
-   "incident": "I20261010-0020"
+   "key": "R346-105|2026-10-10T17:26:00.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R346-105",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-10T18:25:00.000+0200",
+   "incident": "I20261010-0022"
   },
   {
-   "key": "R207-137|2026-10-10T16:54:29.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R207-137",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-10T17:53:00.000+0200",
-   "incident": "I20261010-0020"
+   "key": "R347-105|2026-10-10T17:26:00.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R347-105",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-10T18:25:00.000+0200",
+   "incident": "I20261010-0022"
   },
   {
-   "key": "R208-137|2026-10-10T16:54:29.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R208-137",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-10T17:53:00.000+0200",
-   "incident": "I20261010-0020"
+   "key": "R349-105|2026-10-10T17:32:30.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R349-105",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-10T18:32:00.000+0200",
+   "incident": "I20261010-0022"
+  },
+  {
+   "key": "R350-105|2026-10-10T17:32:30.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R350-105",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-10T18:32:00.000+0200",
+   "incident": "I20261010-0022"
+  },
+  {
+   "key": "R351-105|2026-10-10T17:35:01.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R351-105",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-10T18:34:00.000+0200",
+   "incident": "I20261010-0022"
+  },
+  {
+   "key": "R352-105|2026-10-10T17:35:01.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R352-105",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-10T18:34:00.000+0200",
+   "incident": "I20261010-0022"
+  },
+  {
+   "key": "R353-105|2026-10-10T17:35:01.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R353-105",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-10T18:34:00.000+0200",
+   "incident": "I20261010-0022"
+  },
+  {
+   "key": "R388-105|2026-10-10T17:26:02.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R388-105",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-10T18:25:00.000+0200",
+   "incident": "I20261010-0022"
+  },
+  {
+   "key": "R389-105|2026-10-10T17:26:02.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R389-105",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-10T18:25:00.000+0200",
+   "incident": "I20261010-0022"
+  },
+  {
+   "key": "R390-105|2026-10-10T17:26:02.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R390-105",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-10T18:25:00.000+0200",
+   "incident": "I20261010-0022"
+  },
+  {
+   "key": "R391-105|2026-10-10T17:26:02.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R391-105",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-10T18:25:00.000+0200",
+   "incident": "I20261010-0022"
+  },
+  {
+   "key": "R392-105|2026-10-10T17:26:02.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R392-105",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-10T18:25:00.000+0200",
+   "incident": "I20261010-0022"
   }
  ]
 }
