@@ -1,20 +1,20 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-10-04T06:39:54+00:00_
+_Erzeugt am: 2026-10-10T14:11:46+00:00_
 
-**Stationen: 2244 → 2244 (Δ +0)**
+**Stationen: 2244 → 2243 (Δ -1)**
 
 ## Hinzugefügt (0)
 
 _Keine._
 
-## Entfernt (0)
+## Entfernt (1)
 
-_Keine._
+- `diva:60202502` — Wien Stadion U, Handelskai \(WL\)
 
-## Umbenannt (0)
+## Umbenannt (1)
 
-_Keine._
+- `diva:60201237`: "Wien Kirchengasse \(WL\)" → "Wien Siebensterngasse \(WL\)"
 
 ## Koordinaten verschoben (≥ 100 m) (0)
 
