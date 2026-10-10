@@ -104,9 +104,32 @@ def test_resolve_quota_state_path_prefers_env(tmp_path: Path) -> None:
     path = resolve_quota_state_path({"PLACES_QUOTA_STATE": str(override)})
     assert path == override.resolve()
 
-    base = Path("data") / "state"
-    result = resolve_quota_state_path({"STATE_PATH": str(base)})
-    assert result == (base / "places_quota.json").resolve()
+
+
+def test_resolve_quota_state_path_ignores_feed_state_path() -> None:
+    """``STATE_PATH`` is the feed's first-seen *file*; the quota must not
+    reinterpret it as a directory (one variable, one meaning)."""
+    default = Path("data/places_quota.json").resolve()
+    for value in ("data/first_seen.json", "data/state"):
+        assert resolve_quota_state_path({"STATE_PATH": value}) == default
+    override = Path("data") / "places_quota_override.json"
+    both = {"STATE_PATH": "data/first_seen.json", "PLACES_QUOTA_STATE": str(override)}
+    assert resolve_quota_state_path(both) == override.resolve()
+
+
+def test_state_path_env_is_read_only_by_feed_config() -> None:
+    """Guard the class: no module besides the feed config reads ``STATE_PATH``."""
+    import re
+
+    root = Path(__file__).resolve().parents[2]
+    pattern = re.compile(r"""(?:getenv|\.get|environ\[|resolve_env_path)\(?\s*["']STATE_PATH["']""")
+    readers = sorted(
+        str(path.relative_to(root))
+        for folder in ("src", "scripts")
+        for path in (root / folder).rglob("*.py")
+        if pattern.search(path.read_text(encoding="utf-8"))
+    )
+    assert readers == ["src/feed/config.py"]
 
 
 def test_resolve_quota_state_path_rejects_outside_repo(tmp_path: Path) -> None:

@@ -5,6 +5,17 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **`STATE_PATH` hat nur noch eine Bedeutung (2026-10-10)**: Der Feed-Build
+  las `STATE_PATH` als Datei (`data/first_seen.json`), das
+  Google-Places-Kontingent als Verzeichnis für `places_quota.json`. Das
+  Kontingent liest die Variable nicht mehr; sein Speicherort lässt sich nur
+  noch über `PLACES_QUOTA_STATE` ändern. `STATE_PATH` bleibt dem Feed, weil
+  Standardwert, Doku und Tests daran hängen und eine Umbenennung nur
+  bestehende Konfigurationen bräche (Begründung in `docs/architecture.md`
+  §5). Niemand setzt die Variable, bei den Standardwerten bleiben Feed und
+  Zählerstand unverändert. Neuer Test: kein Modul außer `src/feed/config.py`
+  liest `STATE_PATH`. Die Warnung, die die Doku-Prüfung dazu in
+  `docs/how-to/google_places_stations.md` geschrieben hatte, ist ersetzt.
 * **Dokumentation gegen den Code geprüft (2026-10-10)**: Jede Aussage in
   README, `docs/` (ohne Archiv und erzeugte Statistikseiten), CHANGELOG und
   den Workflow-Kommentaren mit dem heutigen Stand verglichen. Berichtigt:

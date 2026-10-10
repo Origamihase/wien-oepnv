@@ -333,13 +333,17 @@ def load_quota_config_from_env(env: Mapping[str, str] | None = None) -> QuotaCon
 
 
 def resolve_quota_state_path(env: Mapping[str, str] | None = None) -> Path:
+    """Return the quota state file: ``PLACES_QUOTA_STATE`` or the default.
+
+    ``STATE_PATH`` is deliberately ignored. It belongs to the feed build and
+    names a *file* (``data/first_seen.json``); this module used to read it as
+    a *directory* and append ``places_quota.json``, so one variable carried
+    two incompatible meanings (operator decision 2026-10-10: every purpose
+    gets its own variable, no name has two meanings).
+    """
     environment = env or os.environ
     override = environment.get("PLACES_QUOTA_STATE")
     if override:
         # Security: validate configured paths to prevent path traversal outside allowed roots.
         return validate_path(Path(override), "PLACES_QUOTA_STATE")
-    base = environment.get("STATE_PATH")
-    if base:
-        base_path = validate_path(Path(base), "STATE_PATH")
-        return validate_path(base_path / "places_quota.json", "PLACES_QUOTA_STATE")
     return validate_path(Path("data/places_quota.json"), "PLACES_QUOTA_STATE")
