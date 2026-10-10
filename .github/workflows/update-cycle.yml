@@ -103,6 +103,9 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: write
+      # Only for the Feed-Wächter step: one issue per broken feed rule
+      # (docs/reference/feed_watch.md). No other step uses the token for issues.
+      issues: write
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       PYTHONPATH: src
@@ -557,6 +560,28 @@ jobs:
         continue-on-error: true
         timeout-minutes: 1
         run: python scripts/check_feed_lines.py
+
+      # Feed-Wächter (docs/reference/feed_watch.md): checks the built German feed
+      # against the rules learned since September 2026 (duplicates, an old
+      # message counted as new, a "Seit" time before the incident, ÖBB's
+      # second sentence, the time line, text length) and compares what the
+      # sources delivered with the last seven days. Report only: it never
+      # changes the feed and never blocks the publish (exit 0 even on its own
+      # error; ``continue-on-error`` and the time limit on top). Findings are
+      # never red (operator decision 2026-10-10: red only when the fetch does
+      # not work): they show as ``::warning`` annotations, in
+      # ``data/feed_watch.json`` (rides this run's commit, the Health check
+      # reads it as a note) and as one GitHub issue per broken rule, which
+      # closes itself once the rule holds again. ``issues: write`` above
+      # exists for this step only.
+      - name: Feed-Wächter (report only)
+        if: steps.freshness.outputs.should_run == 'true'
+        continue-on-error: true
+        timeout-minutes: 2
+        env:
+          FEED_WATCH_ISSUES: '1'
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/feed_watch.py
 
       # ----- Validate + single atomic publish ----------------------------
 

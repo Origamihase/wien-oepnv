@@ -969,6 +969,22 @@ und das Demo-Beispiel weiter.
 
 ---
 
+### Feed-Wächter (seit 2026-10-10)
+
+`scripts/feed_watch.py` läuft in `update-cycle.yml` nach der Linien-Prüfung
+und vor dem Veröffentlichen und prüft den fertigen deutschen Feed gegen die
+Regeln, die seit September aus Audits und Entscheidungen entstanden sind
+(doppelte Einträge, eine alte Meldung als neue Störung, eine „Seit“-Zeit vor
+der Störung, ÖBBs zweiter Satz, Zeitzeile, Länge), und die Mengen der
+Rohantworten und Verwürfe gegen die letzten sieben Tage. Er ändert den Feed
+nie und blockiert die Veröffentlichung nie. Inhaltsfunde werden nie rot
+(Entscheidung des Betreibers vom 2026-10-10 für den Health check: rot nur,
+wenn der Abruf nicht funktioniert); sie stehen als `::warning` im
+Protokoll, in `data/feed_watch.json` (der Health check zeigt sie als
+Hinweis) und je Regel als GitHub-Issue, das sich selbst schließt. Regeln,
+Schwellen und Rückprüfung über 1 975 Feed-Stände:
+[`reference/feed_watch.md`](reference/feed_watch.md).
+
 ## 2. Die `request_safe`-Security-State-Machine
 
 `request_safe` ist ein einzelner 75-Zeilen-Orchestrator, der 14
