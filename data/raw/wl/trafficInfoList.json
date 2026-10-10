@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261010-0004, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261010-0003"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261010-0003, I20260925-0011, I20260909-0007, I20261010-0005, I20261010-0004-F01, I20261010-0004"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R45-136, R36-152, R130-136, R19-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R5815-671, R2558-125, R1472-149, R1473-149, R2025-671, R1474-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1475-149, R1476-149, R1177-0, R2373-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1974-466, R500-101, R571-152, R483-152, R1477-152, R1478-152, R1487-152, R1480-152, R1479-152, R1562-152, R1558-152, R1559-152, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R100-136, R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2373-125, R2372-125, R1974-466, R500-101, R483-152, R571-152, R1480-152, R1487-152, R1477-152, R1478-152, R1479-152, R1562-152, R1559-152, R1558-152, R1441-152, R1375-152, R1539-152, R1542-152, R1465-152, R1553-152, R1556-152, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -224,12 +224,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-10T05:03:00.000+0200",
-     "end": "2026-10-10T23:55:00.000+0200",
-     "lastUpdate": "2026-10-10T05:03:00.000+0200",
-     "resume": "2026-10-10T05:02:00.000+0200",
+     "end": "2026-10-10T06:01:00.000+0200",
+     "lastUpdate": "2026-10-10T06:01:00.000+0200",
+     "resume": "2026-10-10T06:01:00.000+0200",
      "start": "2026-10-10T05:02:00.000+0200"
     },
     "title": "U4: Verspätungen"
@@ -240,8 +240,8 @@
       "52": "ptTram"
      }
     },
-    "description": "Linie 52: Fahrtbehinderung in Richtung Parlament, U Volkstheater. Voraussichtliche Dauer: 06:15 Uhr. Grund: Polizeieinsatz im Bereich Linzer Straße 85.",
-    "descriptionHTML": "Linie 52:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater.<br> <br>Voraussichtliche Dauer: 06:15 Uhr.<br><br>Grund: Polizeieinsatz im Bereich Linzer Straße 85.",
+    "description": "Linie 52: Betrieb nur zwischen Parlament, Volkstheater und Reinlgasse. Weiterfahrt über die Linie 10 bis Joachimsthalerplatz. Voraussichtliche Dauer: 07:00 Uhr. Grund: Polizeieinsatz im Bereich Linzer Straße 85.",
+    "descriptionHTML": "Linie 52:<br>Betrieb nur zwischen Parlament, Volkstheater und Reinlgasse.<br>Weiterfahrt über die Linie 10 bis Joachimsthalerplatz.<br> <br>Voraussichtliche Dauer: 07:00 Uhr.<br><br>Grund: Polizeieinsatz im Bereich Linzer Straße 85.",
     "location": "Linzer Straße 85",
     "name": "I20261010-0004",
     "owner": "WL",
@@ -259,14 +259,84 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-10T05:56:00.000+0200",
-     "end": "2026-10-10T23:55:00.000+0200",
-     "lastUpdate": "2026-10-10T05:56:00.000+0200",
+     "end": "2026-10-10T06:27:00.000+0200",
+     "lastUpdate": "2026-10-10T06:27:00.000+0200",
+     "resume": "2026-10-10T06:27:00.000+0200",
      "start": "2026-10-10T05:55:00.000+0200"
     },
     "title": "52: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "52": "ptTram"
+     }
+    },
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Linzer Straße 85",
+    "name": "I20261010-0004-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "152",
+       "lineName": "52",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-10T06:27:00.000+0200",
+     "end": "2026-10-10T23:55:00.000+0200",
+     "lastUpdate": "2026-10-10T06:27:00.000+0200",
+     "resume": "2026-10-10T06:27:00.000+0200",
+     "start": "2026-10-10T05:55:00.000+0200"
+    },
+    "title": "52: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram"
+     }
+    },
+    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "descriptionHTML": "Linie 11:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Betriebsstörung.",
+    "name": "I20261010-0005",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "111",
+       "lineName": "11",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-10T06:22:00.000+0200",
+     "end": "2026-10-10T23:55:00.000+0200",
+     "lastUpdate": "2026-10-10T06:22:00.000+0200",
+     "resume": "2026-10-10T06:21:00.000+0200",
+     "start": "2026-10-10T06:21:00.000+0200"
+    },
+    "title": "11: Verspätungen"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -464,6 +534,42 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
    },
    {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1375-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1375
+    ],
+    "time": {
+     "end": "2026-10-10T07:08:00.000+0200",
+     "start": "2026-10-10T06:09:25.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1441-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1441
+    ],
+    "time": {
+     "end": "2026-10-10T07:08:00.000+0200",
+     "start": "2026-10-10T06:09:25.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
     "name": "R1445-149",
     "owner": "WL",
@@ -570,6 +676,24 @@
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
+   },
+   {
+    "description": "Polizeieinsatz\nBetrieb ab Linzer Straße ",
+    "name": "R1465-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1465
+    ],
+    "time": {
+     "end": "2026-10-10T07:18:00.000+0200",
+     "start": "2026-10-10T06:19:26.000+0200"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Linzer Straße "
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
@@ -771,6 +895,78 @@
    },
    {
     "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1539-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1539
+    ],
+    "time": {
+     "end": "2026-10-10T07:19:00.000+0200",
+     "start": "2026-10-10T06:16:57.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1542-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1542
+    ],
+    "time": {
+     "end": "2026-10-10T07:19:00.000+0200",
+     "start": "2026-10-10T06:16:57.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Polizeieinsatz\nBetrieb ab Linzer Straße ",
+    "name": "R1553-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1553
+    ],
+    "time": {
+     "end": "2026-10-10T07:18:00.000+0200",
+     "start": "2026-10-10T06:19:27.000+0200"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Linzer Straße "
+   },
+   {
+    "description": "Polizeieinsatz\nBetrieb ab Linzer Straße ",
+    "name": "R1556-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1556
+    ],
+    "time": {
+     "end": "2026-10-10T07:18:00.000+0200",
+     "start": "2026-10-10T06:19:27.000+0200"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Linzer Straße "
+   },
+   {
+    "description": "Polizeieinsatz\nZüge halten bei Linie 10 Richtung Hummelgasse",
     "name": "R1558-152",
     "owner": "WL",
     "priority": "1",
@@ -782,10 +978,10 @@
      1558
     ],
     "time": {
-     "end": "2026-10-10T06:57:00.000+0200",
+     "end": "2026-10-10T07:15:00.000+0200",
      "start": "2026-10-10T05:57:55.000+0200"
     },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+    "title": "Polizeieinsatz\nZüge halten bei Linie 10 Richtung Hummelgasse"
    },
    {
     "description": "Fahrtbehinderung\nwegen Polizeieinsatz",

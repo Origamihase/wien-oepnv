@@ -7,29 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 10 Oct 2026 06:00:55 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 06:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[11: Delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">eaf96db733f004733a9b91b0e04111a3f9331a02f6c30911495b5b22f6e936d3</guid>
+      <pubDate>Sat, 10 Oct 2026 06:21:00 +0200</pubDate>
+      <ext:first_seen>Sat, 10 Oct 2026 06:21:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 06:21:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: service disruption. [Since 06:21]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[Since 06:21]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[52: Police operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e434fd6d0742cbac394675e6b2cc5f55ef6198710b99799268ba19266e8f7734</guid>
       <pubDate>Sat, 10 Oct 2026 05:55:00 +0200</pubDate>
       <ext:first_seen>Sat, 10 Oct 2026 05:55:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 05:57:55 +0200</ext:starts_at>
+      <ext:starts_at>Sat, 10 Oct 2026 05:55:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Parlament, U Volkstheater. Expected until 06:15. Reason: police operation in the area of Linzer Straße 85. Trains stop at the stops of lines 6 and 18. [Since 05:55]</description>
-      <content:encoded><![CDATA[Service obstruction towards Parlament, U Volkstheater. Expected until 06:15. Reason: police operation in the area of Linzer Straße 85. Trains stop at the stops of lines 6 and 18.<br/>[Since 05:55]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
-      <pubDate>Sat, 10 Oct 2026 05:02:00 +0200</pubDate>
-      <ext:first_seen>Sat, 10 Oct 2026 05:02:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 05:02:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 05:02]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 05:02]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. Trains stop at the stops of lines 6 and 18. [Since 05:55]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals. Trains stop at the stops of lines 6 and 18.<br/>[Since 05:55]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1A/2/2A/3A/4A/71/D: Demonstration on 10.10.2026]]></title>
