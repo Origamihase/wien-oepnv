@@ -3,32 +3,123 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R143-109|2026-10-10T14:01:41.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R143-109",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-10T15:05:00.000+0200",
-   "incident": "I20261010-0014-F01"
+   "key": "R10-102|2026-10-10T13:39:39.000+0200|Demonstration\nBetrieb ab Parlament, Volkstheater ",
+   "name": "R10-102",
+   "title": "Demonstration\nBetrieb ab Parlament, Volkstheater ",
+   "end": "2026-10-10T17:00:00.000+0200",
+   "incident": "I20261010-0012"
   },
   {
-   "key": "R223-109|2026-10-10T14:01:41.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R223-109",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-10T15:01:00.000+0200",
-   "incident": "I20261010-0014-F01"
+   "key": "R11-102|2026-10-10T13:39:39.000+0200|Demonstration\nBetrieb ab Parlament, Volkstheater ",
+   "name": "R11-102",
+   "title": "Demonstration\nBetrieb ab Parlament, Volkstheater ",
+   "end": "2026-10-10T17:00:00.000+0200",
+   "incident": "I20261010-0012"
   },
   {
-   "key": "R524-109|2026-10-10T14:01:42.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R524-109",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-10T15:05:00.000+0200",
-   "incident": "I20261010-0014-F01"
+   "key": "R12-102|2026-10-10T13:39:39.000+0200|Demonstration\nBetrieb ab Parlament, Volkstheater ",
+   "name": "R12-102",
+   "title": "Demonstration\nBetrieb ab Parlament, Volkstheater ",
+   "end": "2026-10-10T17:00:00.000+0200",
+   "incident": "I20261010-0012"
   },
   {
-   "key": "R526-109|2026-10-10T14:01:42.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R526-109",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-10T15:01:00.000+0200",
-   "incident": "I20261010-0014-F01"
+   "key": "R13-102|2026-10-10T13:39:39.000+0200|Demonstration\nBetrieb ab Parlament, Volkstheater ",
+   "name": "R13-102",
+   "title": "Demonstration\nBetrieb ab Parlament, Volkstheater ",
+   "end": "2026-10-10T17:00:00.000+0200",
+   "incident": "I20261010-0012"
+  },
+  {
+   "key": "R134-102|2026-10-10T13:39:39.000+0200|Demonstration\nZüge halten gegenüber ",
+   "name": "R134-102",
+   "title": "Demonstration\nZüge halten gegenüber ",
+   "end": "2026-10-10T17:00:00.000+0200",
+   "incident": "I20261010-0012"
+  },
+  {
+   "key": "R14-102|2026-10-10T13:39:39.000+0200|Demonstration\nBetrieb ab Parlament, Volkstheater ",
+   "name": "R14-102",
+   "title": "Demonstration\nBetrieb ab Parlament, Volkstheater ",
+   "end": "2026-10-10T17:00:00.000+0200",
+   "incident": "I20261010-0012"
+  },
+  {
+   "key": "R15-102|2026-10-10T13:39:39.000+0200|Demonstration\nZüge halten Dr.-Karl-Renner-Ring 3 ",
+   "name": "R15-102",
+   "title": "Demonstration\nZüge halten Dr.-Karl-Renner-Ring 3 ",
+   "end": "2026-10-10T17:00:00.000+0200",
+   "incident": "I20261010-0012"
+  },
+  {
+   "key": "R22-102|2026-10-10T13:39:39.000+0200|Demonstration\nBetrieb ab Parlament, Volkstheater ",
+   "name": "R22-102",
+   "title": "Demonstration\nBetrieb ab Parlament, Volkstheater ",
+   "end": "2026-10-10T17:00:00.000+0200",
+   "incident": "I20261010-0012"
+  },
+  {
+   "key": "R268-474|2026-10-10T13:40:08.000+0200|Demonstration\nBetrieb ab Landstraße",
+   "name": "R268-474",
+   "title": "Demonstration\nBetrieb ab Landstraße",
+   "end": "2026-10-10T17:00:00.000+0200",
+   "incident": "I20261010-0012"
+  },
+  {
+   "key": "R49-102|2026-10-10T13:39:39.000+0200|Demonstration\nZüge halten gegenüber ",
+   "name": "R49-102",
+   "title": "Demonstration\nZüge halten gegenüber ",
+   "end": "2026-10-10T17:30:00.000+0200",
+   "incident": "I20261010-0012"
+  },
+  {
+   "key": "R50-102|2026-10-10T13:39:39.000+0200|Demonstration\nBetrieb ab Schwedenplatz ",
+   "name": "R50-102",
+   "title": "Demonstration\nBetrieb ab Schwedenplatz ",
+   "end": "2026-10-10T17:00:00.000+0200",
+   "incident": "I20261010-0012"
+  },
+  {
+   "key": "R51-102|2026-10-10T13:39:39.000+0200|Demonstration\nBetrieb ab Schwedenplatz ",
+   "name": "R51-102",
+   "title": "Demonstration\nBetrieb ab Schwedenplatz ",
+   "end": "2026-10-10T17:00:00.000+0200",
+   "incident": "I20261010-0012"
+  },
+  {
+   "key": "R52-102|2026-10-10T13:39:39.000+0200|Demonstration\nBetrieb ab Schwedenplatz ",
+   "name": "R52-102",
+   "title": "Demonstration\nBetrieb ab Schwedenplatz ",
+   "end": "2026-10-10T17:00:00.000+0200",
+   "incident": "I20261010-0012"
+  },
+  {
+   "key": "R53-102|2026-10-10T13:39:39.000+0200|Demonstration\nBetrieb ab Schwedenplatz ",
+   "name": "R53-102",
+   "title": "Demonstration\nBetrieb ab Schwedenplatz ",
+   "end": "2026-10-10T17:00:00.000+0200",
+   "incident": "I20261010-0012"
+  },
+  {
+   "key": "R54-102|2026-10-10T13:39:39.000+0200|Demonstration\nBetrieb ab Schwedenplatz ",
+   "name": "R54-102",
+   "title": "Demonstration\nBetrieb ab Schwedenplatz ",
+   "end": "2026-10-10T17:00:00.000+0200",
+   "incident": "I20261010-0012"
+  },
+  {
+   "key": "R55-102|2026-10-10T13:39:39.000+0200|Demonstration\nBetrieb ab Schwedenplatz ",
+   "name": "R55-102",
+   "title": "Demonstration\nBetrieb ab Schwedenplatz ",
+   "end": "2026-10-10T17:00:00.000+0200",
+   "incident": "I20261010-0012"
+  },
+  {
+   "key": "R9-102|2026-10-10T13:39:39.000+0200|Demonstration\nBetrieb ab Parlament, Volkstheater ",
+   "name": "R9-102",
+   "title": "Demonstration\nBetrieb ab Parlament, Volkstheater ",
+   "end": "2026-10-10T17:00:00.000+0200",
+   "incident": "I20261010-0012"
   }
  ]
 }
