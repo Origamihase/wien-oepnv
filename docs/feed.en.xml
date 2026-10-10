@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 10 Oct 2026 07:30:43 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 08:00:42 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[52: Police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e434fd6d0742cbac394675e6b2cc5f55ef6198710b99799268ba19266e8f7734</guid>
-      <pubDate>Sat, 10 Oct 2026 05:55:00 +0200</pubDate>
-      <ext:first_seen>Sat, 10 Oct 2026 05:55:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 05:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 07:37:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. Trains stop at the stops of lines 6 and 18. [Since 05:55]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals. Trains stop at the stops of lines 6 and 18.<br/>[Since 05:55]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[1A/2/2A/3A/4A/71/D: Demonstration on 10.10.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Due to renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station Neue Donau with the U6 of … [Until 31.12.]</description>
       <content:encoded><![CDATA[Due to renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station Neue Donau with the U6 of …<br/>[Until 31.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Buses stop at Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Sat, 10 Oct 2026 04:40:17 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 04:40:17 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 11 Oct 2026 01:00:00 +0200</ext:ends_at>
+      <description>Reason: construction works. [Until Sun 11.10.]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[Until Sun 11.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

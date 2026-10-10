@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 10 Oct 2026 07:30:43 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 08:00:42 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[52: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e434fd6d0742cbac394675e6b2cc5f55ef6198710b99799268ba19266e8f7734</guid>
-      <pubDate>Sat, 10 Oct 2026 05:55:00 +0200</pubDate>
-      <ext:first_seen>Sat, 10 Oct 2026 05:55:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 05:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 07:37:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. Züge halten bei Linien 6 und 18. [Seit 05:55]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. Züge halten bei Linien 6 und 18.<br/>[Seit 05:55]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[1A/2/2A/3A/4A/71/D: Demonstration am 10.10.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf. [Bis 31.12.]</description>
       <content:encoded><![CDATA[Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf.<br/>[Bis 31.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Sat, 10 Oct 2026 04:40:17 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 04:40:17 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 11 Oct 2026 01:00:00 +0200</ext:ends_at>
+      <description>Grund: Bauarbeiten. [Bis So 11.10.]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Bis So 11.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

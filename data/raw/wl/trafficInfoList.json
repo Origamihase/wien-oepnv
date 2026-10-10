@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261010-0005, I20260917-0012, I20260922-0032, I20260925-0011, I20261010-0004-F01, I20260909-0007, I20261010-0004"
+    "trafficInfoNameList": "I20261010-0005, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261010-0004-F01"
    },
    {
     "id": 3,
@@ -206,41 +206,6 @@
       "52": "ptTram"
      }
     },
-    "description": "Linie 52: Betrieb nur zwischen Parlament, Volkstheater und Reinlgasse. Weiterfahrt über die Linie 10 bis Joachimsthalerplatz. Voraussichtliche Dauer: 07:00 Uhr. Grund: Polizeieinsatz im Bereich Linzer Straße 85.",
-    "descriptionHTML": "Linie 52:<br>Betrieb nur zwischen Parlament, Volkstheater und Reinlgasse.<br>Weiterfahrt über die Linie 10 bis Joachimsthalerplatz.<br> <br>Voraussichtliche Dauer: 07:00 Uhr.<br><br>Grund: Polizeieinsatz im Bereich Linzer Straße 85.",
-    "location": "Linzer Straße 85",
-    "name": "I20261010-0004",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "152",
-       "lineName": "52",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-10T05:56:00.000+0200",
-     "end": "2026-10-10T06:27:00.000+0200",
-     "lastUpdate": "2026-10-10T06:27:00.000+0200",
-     "resume": "2026-10-10T06:27:00.000+0200",
-     "start": "2026-10-10T05:55:00.000+0200"
-    },
-    "title": "52: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "52": "ptTram"
-     }
-    },
     "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "location": "Linzer Straße 85",
@@ -260,12 +225,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-10T06:27:00.000+0200",
      "end": "2026-10-10T07:37:00.000+0200",
-     "lastUpdate": "2026-10-10T07:08:00.000+0200",
-     "resume": "2026-10-10T06:27:00.000+0200",
+     "lastUpdate": "2026-10-10T07:37:00.000+0200",
+     "resume": "2026-10-10T07:37:00.000+0200",
      "start": "2026-10-10T05:55:00.000+0200"
     },
     "title": "52: Polizeieinsatz"
