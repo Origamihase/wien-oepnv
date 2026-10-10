@@ -1,5 +1,195 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R2038-171|2026-10-11T00:01:43.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R2038-171",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R2039-171|2026-10-11T00:01:43.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R2039-171",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R2040-171|2026-10-11T00:01:43.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R2040-171",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R2041-171|2026-10-11T00:01:43.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R2041-171",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R2043-171|2026-10-11T00:01:43.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R2043-171",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R2044-171|2026-10-11T00:01:43.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R2044-171",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R2045-171|2026-10-11T00:01:43.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R2045-171",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R2046-171|2026-10-11T00:01:43.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R2046-171",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R2047-171|2026-10-11T00:01:43.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R2047-171",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R2584-111|2026-10-11T00:02:10.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R2584-111",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R2641-171|2026-10-11T00:01:40.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R2641-171",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R3434-111|2026-10-11T00:02:16.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R3434-111",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R415-111|2026-10-11T00:02:12.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R415-111",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R416-111|2026-10-11T00:02:12.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R416-111",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R418-111|2026-10-11T00:02:12.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R418-111",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R420-111|2026-10-11T00:02:12.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R420-111",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R421-111|2026-10-11T00:02:12.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R421-111",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R422-111|2026-10-11T00:02:12.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R422-111",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R423-111|2026-10-11T00:02:12.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R423-111",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R780-415|2026-10-11T00:03:41.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R780-415",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:03:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R806-415|2026-10-10T23:57:40.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R806-415",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T00:57:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R808-415|2026-10-10T23:57:40.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R808-415",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T00:57:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R809-415|2026-10-10T23:57:40.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R809-415",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T00:57:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R81-171|2026-10-11T00:01:41.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R81-171",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T01:01:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R811-415|2026-10-10T23:57:40.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R811-415",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T00:57:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R812-415|2026-10-10T23:57:40.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R812-415",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T00:57:00.000+0200",
+   "incident": "I20261010-0031"
+  },
+  {
+   "key": "R814-415|2026-10-10T23:57:40.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R814-415",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T00:57:00.000+0200",
+   "incident": "I20261010-0031"
+  }
+ ]
 }
