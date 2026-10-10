@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 10 Oct 2026 12:30:44 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 13:01:05 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U3: Service disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f</guid>
+      <pubDate>Sat, 10 Oct 2026 12:55:00 +0200</pubDate>
+      <ext:first_seen>Sat, 10 Oct 2026 12:55:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 12:55:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Currently all lifts in the station are out of service. Please use the adjacent stations. [Since 12:55]</description>
+      <content:encoded><![CDATA[Currently all lifts in the station are out of service. Please use the adjacent stations.<br/>[Since 12:55]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U6: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction. [Until 26.10.]</description>
       <content:encoded><![CDATA[Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction.<br/>[Until 26.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Neue Donau, no stop towards Floridsdorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">747d54fbd4c0aad685b21596a0c44cb67d41165e556ee43b1bc3e8636920f551</guid>
-      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 16:30:37 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Due to renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station Neue Donau with the U6 of … [Until 31.12.]</description>
-      <content:encoded><![CDATA[Due to renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station Neue Donau with the U6 of …<br/>[Until 31.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>

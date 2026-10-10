@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261010-0010"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261010-0010, I20261010-0011"
    },
    {
     "id": 3,
@@ -233,6 +233,41 @@
      "start": "2026-10-10T12:20:00.000+0200"
     },
     "title": "U6: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Derzeit sind alle Aufzüge in der Station außer Betrieb. Bitte benutzen Sie die benachbarten Stationen. Grund: Betriebsstörung.",
+    "descriptionHTML": "Derzeit sind alle Aufzüge in der Station außer Betrieb. Bitte benutzen Sie die benachbarten Stationen.<br> <br>Grund: Betriebsstörung.",
+    "location": "Kardinal-Nagl-Platz",
+    "name": "I20261010-0011",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "303",
+       "lineName": "U3",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-10T12:57:00.000+0200",
+     "end": "2026-10-10T23:55:00.000+0200",
+     "lastUpdate": "2026-10-10T12:57:00.000+0200",
+     "resume": "2026-10-10T12:55:00.000+0200",
+     "start": "2026-10-10T12:55:00.000+0200"
+    },
+    "title": "U3: Betriebsstörung"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
