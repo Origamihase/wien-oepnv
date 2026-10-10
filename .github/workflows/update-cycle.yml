@@ -45,7 +45,7 @@ name: Update cycle
 # observability — both acceptable for the 30-min cadence.
 #
 # Step order:
-#   1. ``actions/checkout`` (full history for clean rebase later) +
+#   1. ``actions/checkout`` (depth 1, see the checkout step) +
 #      configure the bot git identity once for the whole job
 #   2. backup-cron freshness gate — on a ``schedule`` run decide whether a
 #      recent tick already covered this window; steps 4-7 gate on its
@@ -68,9 +68,9 @@ name: Update cycle
 #      external commit action — see that step's header for the rationale)
 #
 # Concurrency: the workflow holds the ``external-api-fetch`` lock
-# (shared with ``manual-full-refresh.yml`` and the dispatch-only
-# escape-hatch workflows) so the project never has two parallel
-# API-fetching cycles in flight.
+# (shared with ``manual-full-refresh.yml``, ``test-vor-api.yml`` and
+# ``build-feed.yml`` runs on ``main``) so the project never has two
+# parallel API-fetching cycles in flight.
 
 on:
   workflow_dispatch:
@@ -103,6 +103,10 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: write
+      # Only for the Feed-Wächter step: one issue per broken feed rule
+      # (docs/reference/feed_watch.md; operator decision 2026-10-11: a finding
+      # should reach him by mail the same day). No other step uses it.
+      issues: write
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       PYTHONPATH: src
@@ -557,6 +561,28 @@ jobs:
         continue-on-error: true
         timeout-minutes: 1
         run: python scripts/check_feed_lines.py
+
+      # Feed-Wächter (docs/reference/feed_watch.md): checks the built German feed
+      # against the rules learned since September 2026 (duplicates, an old
+      # message counted as new, a "Seit" time before the incident, ÖBB's
+      # second sentence, the time line, text length) and compares what the
+      # sources delivered with the last seven days. Report only: it never
+      # changes the feed and never blocks the publish (exit 0 even on its own
+      # error; ``continue-on-error`` and the time limit on top). Findings are
+      # never red (operator decision 2026-10-10: red only when the fetch does
+      # not work): they show as ``::warning`` annotations, in
+      # ``data/feed_watch.json`` (rides this run's commit, the Health check
+      # reads it as a note) and as one GitHub issue per broken rule, which
+      # closes itself once the rule holds again. ``issues: write`` above
+      # exists for this step only.
+      - name: Feed-Wächter (report only)
+        if: steps.freshness.outputs.should_run == 'true'
+        continue-on-error: true
+        timeout-minutes: 2
+        env:
+          FEED_WATCH_ISSUES: '1'
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/feed_watch.py
 
       # ----- Validate + single atomic publish ----------------------------
 

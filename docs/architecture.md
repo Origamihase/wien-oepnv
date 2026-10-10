@@ -92,6 +92,10 @@ sequenceDiagram
     Note over Build: ein WL-Vorfall, ein Platz
     Build->>Build: _absorb_works_tickers
     Note over Build: Tafel-Meldungen einer Baustelle<br/>gehen in ihren Hinweis auf
+    Build->>Build: _drop_baustellen_twins + _carry_item_identity
+    Note over Build: Baustelle mit WL-Zwilling fällt weg,<br/>zusammengelegte Einträge behalten GUID
+    Build->>Build: Sortierung + _defer_* / _apply_topic_budget
+    Note over Build: entscheidet, was die zehn Plätze bekommt
     Build->>RSS: _make_rss + atomic_write
     RSS-->>Cron: docs/feed.xml
 ```
@@ -428,8 +432,8 @@ verdrängt eine andere Störung.
     137 Zeichen. Nur wenn die Beschreibung jedes weggenommene Wort enthält;
     sie erscheint dann vollständig, weil sie den Titel nicht mehr wiederholt.
   * Baustellen: Im Abschnitt „von … bis …“ fällt zuerst „Kreuzung“ weg, dann
-    jeder zweite Name an einem Ende (`_compact_baustellen_section`): „U2:
-    Rechte Wienzeile von Ramperstorffergasse bis Pilgramgasse“ statt „… von
+    jeder zweite Name an einem Ende (`_compact_baustellen_section`): „Rechte
+    Wienzeile von Ramperstorffergasse bis Pilgramgasse“ statt „… von
     Kreuzung Ramperstorffergasse bis Kreuzung Pilgramgasse und
     Pilgrambrücke“. Ist der Titel dann noch über 50, behält er die Straße,
     und der Abschnitt steht vor dem ersten Satz der Beschreibung
@@ -999,6 +1003,24 @@ und das Demo-Beispiel weiter.
 
 ---
 
+### Feed-Wächter (seit 2026-10-10)
+
+`scripts/feed_watch.py` läuft in `update-cycle.yml` nach der Linien-Prüfung
+und vor dem Veröffentlichen und prüft den fertigen deutschen Feed gegen die
+Regeln, die seit September aus Audits und Entscheidungen entstanden sind
+(doppelte Einträge, eine alte Meldung als neue Störung, eine „Seit“-Zeit vor
+der Störung, ÖBBs zweiter Satz, Zeitzeile, Länge), und die Mengen der
+Rohantworten und Verwürfe gegen die letzten sieben Tage. Er ändert den Feed
+nie und blockiert die Veröffentlichung nie. Inhaltsfunde werden nie rot
+(Entscheidung des Betreibers vom 2026-10-10 für den Health check: rot nur,
+wenn der Abruf nicht funktioniert); sie stehen als `::warning` im
+Protokoll, in `data/feed_watch.json` (der Health check zeigt sie als
+Hinweis) und je Regel als GitHub-Issue, das sich selbst schließt (dafür
+`issues: write` im Update-Lauf, Entscheidung des Betreibers vom
+2026-10-11: ein Fund soll am selben Tag per Mail ankommen). Regeln,
+Schwellen und Rückprüfung über 1 975 Feed-Stände:
+[`reference/feed_watch.md`](reference/feed_watch.md).
+
 ## 2. Die `request_safe`-Security-State-Machine
 
 `request_safe` ist ein einzelner 75-Zeilen-Orchestrator, der 14
@@ -1148,7 +1170,7 @@ flowchart LR
 
 - **Prozess-Ebene** — der Cron-Eintrittspunkt. Wenn `main()` wirft, ist der Cron-Lauf die Fehler-Einheit; das ist Absicht, damit ein korrupter Schreibvorgang keinen halbgaren Feed veröffentlicht.
 - **Provider-Ebene** — `_collect_items` hüllt den Loader jedes Providers in ein try/except, sodass eine Provider-Exception die Items der anderen nicht mit in den Abgrund nimmt. Der `ThreadPoolExecutor` plus die Apex-Phase-1-Deadline-Eviction-Schleife begrenzt das Wall-Clock-Budget für nicht antwortende Provider.
-- **Call-Ebene** — `request_safe` ist die per-Call-Security-State-Machine (§2). `CircuitBreaker` ist ein zur Übernahme bereitstehendes Resilienz-Primitiv; die gemeinsam genutzte Klasse `src.utils.circuit_breaker.CircuitBreaker` umhüllt den OSM-Client (`src/places/osm_client.py`), den HAFAS-Client (`src/places/hafas_client.py`) und den Stammstrecken-Hbf-Monitor (`scripts/update_stammstrecke_hbf.py`). Google Places (`src/places/client.py`) trägt einen ad-hoc inline-implementierten 5xx-Counter-Breaker statt des gemeinsamen Primitivs — gleiches Pattern, eigener State.
+- **Call-Ebene** — `request_safe` ist die per-Call-Security-State-Machine (§2). `CircuitBreaker` ist ein zur Übernahme bereitstehendes Resilienz-Primitiv; die gemeinsam genutzte Klasse `src.utils.circuit_breaker.CircuitBreaker` umhüllt den OSM-Client (`src/places/osm_client.py`), den HAFAS-Client (`src/places/hafas_client.py`), den Google-Places-Client (`src/places/client.py`, fünf Fehlschläge, 300 s Pause), den Stammstrecken-Hbf-Monitor (`scripts/update_stammstrecke_hbf.py`) und das Rollback-Skript `scripts/update_stammstrecke_status.py`.
 - **Transport-Ebene** — `JitterRetry` (in `session_with_retries`) behandelt transiente 5xx und Connection-Resets per jitter-belegtem Exponential-Backoff. `PinnedHTTPSAdapter` hält die SNI beim TLS-Handshake auf dem ursprünglichen Hostnamen, während der TCP-Connect die aufgelöste (geprüfte) IP anvisiert.
 - **Payload-Ebene** — sobald Bytes eintreffen, validiert jeder Provider den Top-Level-Typ (Zero-Trust-Shape), fängt `RecursionError` aus JSON-Tiefenbomben und arbeitet innerhalb des 10-MB-Body-Caps.
 
@@ -1480,6 +1502,24 @@ Skript ändert nie eine Meldung. Es schreibt nur seine Sammlung
   der Google-Places-Call vollständig übersprungen. Das Freikontingent
   (`PLACES_LIMIT_*`-Env-Vars) bleibt für tatsächlich fehlende Einträge
   reserviert.
+- **Eigene Variable für den Zählerstand (seit 2026-10-10).** Der
+  Zählerstand liegt in `data/places_quota.json`; umbiegen lässt er sich
+  nur über `PLACES_QUOTA_STATE`. Bis 2026-10-10 las
+  `src/places/quota.py:resolve_quota_state_path` ersatzweise auch
+  `STATE_PATH` und hängte `places_quota.json` daran an, behandelte die
+  Variable also als **Verzeichnis**, während der Feed-Build
+  (`src/feed/config.py`) sie als **Datei** liest (`data/first_seen.json`).
+  Wer den Feed-Zustand umbog, hätte das Kontingent auf einen ungültigen
+  Pfad `…/first_seen.json/places_quota.json` gelegt. Betreiberentscheidung
+  vom 2026-10-10: Jeder Zweck bekommt eine eigene Variable, kein Name hat
+  zwei Bedeutungen. `STATE_PATH` bleibt dem Feed, weil er der einzige
+  Verbraucher mit Gewicht ist (Standardwert, Doku, Tests und Path-Guard
+  hängen daran) und eine Umbenennung nur bestehende Konfigurationen
+  bräche; das Kontingent hatte mit `PLACES_QUOTA_STATE` ohnehin schon
+  einen eigenen Namen, nur der Rückgriff fiel weg. Weder Workflows noch
+  Skripte setzten `STATE_PATH`, bei den Standardwerten ändert sich also
+  nichts. `tests/places/test_quota.py` wacht darüber, dass außer
+  `src/feed/config.py` kein Modul `STATE_PATH` liest.
 
 **Netzwerk-Resilienz-Schichten:**
 
@@ -1639,6 +1679,14 @@ generischen Schlüssel ebenfalls beansprucht, kippte die Auflösung still.
 `Wien Inzersdorf Lokalbahn (WL)` liegt in Wien und beansprucht ihn
 heute nur deshalb nicht, weil alle seine Aliase `Inzersdorf` tragen.
 
+**Namens-Zuordnungskonflikte** (seit 2026-09-18,
+`_find_name_ownership_issues` in `src/utils/stations_validation.py`):
+Tragen zwei Einträge denselben kanonischen Namen, behält `_station_lookup`
+den zuerst registrierten, ohne Stärke und Quelle abzuwägen. Gemeldet wird
+nur der Fall, in dem dieser Gewinner keine Haltestelle des Namens hat,
+ein anderer Eintrag der Gruppe aber schon; dann löst der Name auf den
+falschen Ort auf. Auch dieser Befund ist gemeldet, nicht blockierend.
+
 Dieselbe Abhängigkeit gilt für **abgeschnittene Endpunkte**. Die
 Routenregeln in `src/providers/oebb.py` beenden einen Endpunkt an
 Zeitpräpositionen wie `im`/`am`; ein Ortsname, der eine davon trägt, fiel
@@ -1732,13 +1780,14 @@ flowchart LR
         DCSV[stoerungen_YYYY.csv<br/><i>timestamp, weekday, hour, provider, location_name</i>]
     end
     subgraph "Täglicher Aggregator (update-cycle.yml, erster Cycle-Tick nach Mitternacht Wien)"
-        AGG[generate_markdown_stats.py<br/><i>nur stdlib, 30-Tage-Fenster</i>]
+        AGG[generate_markdown_stats.py<br/><i>nur stdlib, Kalenderjahr;<br/>README-Marker 60 Min / 30 Tage</i>]
     end
     subgraph "Feed-Build-Konsument"
         FRP[src/feed/stammstrecke.py<br/><i>1-Stunden-Fenster, ≥2 Beobachtungen > 9 min</i>]
     end
     subgraph "Ausgaben"
         MD[docs/statistik.md<br/><i>ASCII-/Emoji-Balken</i>]
+        SUM[docs/stats-summary.json + README-Marker<br/><i>jeder Cycle-Tick</i>]
         RSS[docs/feed.xml<br/><i>0..2 Stammstrecken-Items</i>]
     end
 
@@ -1749,6 +1798,7 @@ flowchart LR
     ACSV --> AGG
     DCSV --> AGG
     AGG --> MD
+    AGG --> SUM
     SCSV --> FRP
     FRP --> RSS
 ```
@@ -1757,7 +1807,7 @@ flowchart LR
 
 | Ziel | Verwirklicht durch |
 | --- | --- |
-| **CI/CD-Entkoppelung** — der tägliche Aggregator läuft genau einmal am Tag (erster Cycle-Tick nach Mitternacht Wien), gegated durch ein Inline-`TZ=Europe/Vienna date +%H%M`-Check in `update-cycle.yml`; die README-STATS-Marker werden bei jedem ca. 30-Min-Cycle-Tick aktualisiert | `.github/workflows/update-cycle.yml`, Step „Refresh statistics dashboard and README snapshot" (der separate `generate-stats.yml`-Workflow wurde zusammen mit den per-Provider-Escapes entfernt; Ad-hoc-Regenerationen laufen jetzt über `manual-full-refresh.yml`) |
+| **CI/CD-Entkoppelung** — `docs/statistik.md` wird nur auf den Cycle-Ticks zwischen 00:00 und 00:29 Wiener Zeit neu gerendert (in der Regel einer am Tag), gegated durch ein Inline-`TZ=Europe/Vienna date +%H%M`-Check in `update-cycle.yml`; die README-STATS-Marker und `docs/stats-summary.json` werden bei jedem ca. 30-Min-Cycle-Tick aktualisiert (`--skip-dashboard`) | `.github/workflows/update-cycle.yml`, Step „Refresh statistics dashboard and README snapshot" (der separate `generate-stats.yml`-Workflow wurde zusammen mit den per-Provider-Escapes entfernt; Ad-hoc-Regenerationen laufen jetzt über `manual-full-refresh.yml`) |
 | **Strikt null Data-Science-Abhängigkeiten** — kein `numpy`, `pandas`, `matplotlib`; die CI-Installation bleibt sub-sekundär | `scripts/generate_markdown_stats.py` kommt ohne externe Data-Science-Pakete aus — nur Python-Standardbibliothek (u. a. `csv`, `datetime`, `statistics`, `zoneinfo`) und projekteigene `src.*`-Module |
 | **Append-only, lock-freie Producer** — Einzelzeilen-Writes sind unter POSIX bis `PIPE_BUF` (4 KiB) atomar, parallele Cycle-Ticks können also nicht mitten in einer Zeile Bytes verschachteln | `src/utils/stats.py:_append_row` (Modus `"a"`, kein `flock`) |
 | **Strict-new-Gating für Disruptions** — langlebige Events werden einmal aufgezeichnet, nicht einmal pro Build | `src/build_feed.py:_update_item_state` schreibt nur beim *strikten* State-Cache-Miss (weder `_identity` noch `guid` hatten einen Vorgängereintrag) |
@@ -1980,7 +2030,7 @@ darauf, letzter Abruf mit Zug). Die Regel steht einmal in
   Bahnsteig; strukturell, ohne Wortliste), ein übersprungener Abruf
   (Tageslimit, Circuit Breaker) und ein Monitor, der gar nicht mehr
   läuft. Drei Stunden: Der längste Abstand zwischen zwei Abrufen vom
-  09.09. bis 10.10.2026 war 2:00 h (1 493 Abrufe, rekonstruiert aus dem
+  09.09. bis 10.10.2026 war 2:00 h (1 492 Abrufe, rekonstruiert aus dem
   VAO-Zähler in der Git-Historie). Ein einzelner gescheiterter Abruf
   macht noch nichts rot.
 * **Abruf funktioniert, keine Züge** heißt: eine gültige Antwort ohne
@@ -2439,18 +2489,19 @@ deshalb bleibt die Epoche des Übersetzungs-Caches. Wer auf eine neuere
 Revision wechselt, ändert die Konstante und erhöht die Epoche.
 
 `torch` steht **absichtlich nicht** in `requirements.txt` — es ist ein
-mehrere hundert MB schweres Backend, das nur der EN-Pfad braucht. Beide
-feed-schreibenden Workflows installieren es deshalb getrennt und CPU-only,
-auf zwei verschiedenen Wegen:
+mehrere hundert MB schweres Backend, das nur der EN-Pfad braucht. Alle
+drei feed-schreibenden Workflows installieren es deshalb getrennt und
+CPU-only, auf zwei verschiedenen Wegen:
 
-* `build-feed.yml` als eigener Schritt *Install PyTorch (CPU-only)*,
+* `build-feed.yml` und `manual-full-refresh.yml` als eigener Schritt
+  *Install PyTorch (CPU-only)*,
 * `update-cycle.yml` innerhalb des gecachten venv (`.venv/bin/pip install
   torch --index-url https://download.pytorch.org/whl/cpu`) — der
   Cache-Schlüssel dort bezieht die Workflow-Datei bewusst mit ein, weil ein
   früherer Schlüssel die `torch`-Zeile nicht abdeckte und der EN-Feed nach
   einem Cache-Treffer ohne Backend dastand.
 
-Beide cachen zusätzlich den Hugging-Face-Hub, damit das Modell nicht bei
+Alle drei cachen zusätzlich den Hugging-Face-Hub, damit das Modell nicht bei
 jedem Lauf neu geladen wird. Ist die Pipeline nicht verfügbar, liefert
 `_get_translation_pipeline` `None`, jedes Feld scheitert, und der EN-Feed
 enthält deutsche Items — sichtbar, aber nicht kaputt.

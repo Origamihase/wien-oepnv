@@ -10,6 +10,9 @@ Ein simples Splitten (z. B. beim ersten oder letzten Doppelpunkt) ist unzureiche
 
 Daher erfolgt das Parsing der Präfixe **iterativ**. In einer `while`-Schleife wird mittels regulärer Ausdrücke jeweils von vorne geprüft, ob der Anfang des Textes ein bekanntes Präfix (wie `"Störung:"` oder `"REX 51:"`) ist. Ist das der Fall, wird es abgeschnitten und die Prüfung wiederholt, bis kein bekanntes Präfix mehr gefunden wird. Dadurch bleiben reguläre Bestandteile des Titels, die Doppelpunkte enthalten, geschützt.
 
+## Vorfilter vor der Stationserkennung
+Vor dem Wien-Filter fallen Meldungen weg, deren Titel nur eine Anlage der Station (Aufzug, Lift, Fahrtreppe), einen gesperrten Zugang (Aufgang, Ausgang, Zugang, Eingang, Stiegenabgang; seit 2026-10-09, außer der Titel nennt eine Folge für die Züge) oder reines Wetter ohne Störungswort betrifft (`_is_facility_or_weather_only`). Der Grund steht in `data/raw/oebb/verworfen.json`, mit denselben Etiketten wie bei den Wiener Linien. Details in [`docs/development.md`](../development.md), Abschnitt „ÖBB“.
+
 ## Die Stationserkennung (Routing-Matrix)
 Die Relevanz einer Strecke wird durch den Abgleich der erkannten Start- und Zielbahnhöfe ermittelt. Wir verwenden eine mehrstufige Logik, um zu entscheiden, welche Routen behalten und welche verworfen werden.
 

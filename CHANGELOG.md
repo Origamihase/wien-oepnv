@@ -35,6 +35,66 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   `src/utils/vienna_clock.py` verschoben). Bis zur Umstellung ändert sich
   nichts; ob WL wieder +01:00 schickt, zeigt der Rohstand der Nacht zum
   25.10.
+* **Feed-Wächter (2026-10-10)**: Neues Skript `scripts/feed_watch.py`
+  prüft am Ende jedes Update-Laufs den fertigen deutschen Feed gegen die
+  Regeln seit September: doppelte Einträge, Anzahl, eine alte Meldung als
+  neue Störung, eine „Seit“-Zeit vor der Störung, ÖBB-Text ohne zweiten
+  Satz, Form der Zeitzeile, vergangene Zeitangaben, mehr als 180 Zeichen,
+  ÖBBs Höflichkeitssatz; dazu leere Caches, eingebrochene Rohantworten und
+  springende Verwurfsanteile gegen die letzten sieben Tage und das Alter
+  des Feeds. Er ändert den Feed nie und blockiert die Veröffentlichung nie.
+  Funde werden nie rot (Regel des Betreibers vom 10.10. für den Health
+  check, übernommen: rot nur, wenn der Abruf nicht funktioniert; ein
+  verletzter Inhalt ist kein kaputter Abruf): `::warning` im Protokoll,
+  Stand in `data/feed_watch.json`, Hinweis im Health check (Prüfung
+  `Feed-Wächter`) und je Regel ein GitHub-Issue (Label `feed-waechter`),
+  das sich nach zwei guten Läufen selbst schließt; dafür hat der Job in
+  `update-cycle.yml` jetzt `issues: write` (Entscheidung des Betreibers
+  vom 11.10.: Ein Fund soll ihn am selben Tag per Mail erreichen, nicht
+  erst beim Nachschauen). Rückprüfung über alle 1 975
+  Feed-Stände vom 01.09. bis 10.10.: Die drei Fälle, die erst Audits
+  fanden, wären am selben Tag gemeldet worden (Linie 25 ab 12:01 am 09.10.,
+  ÖBB-Zweitsatz ab 02.09., „2/71 [Seit 13:08]“ um 20:30); am 07., 08. und
+  10.10. war keine Regel verletzt. Regeln, Schwellen und Ergebnis in
+  `docs/reference/feed_watch.md`.
+* **`STATE_PATH` hat nur noch eine Bedeutung (2026-10-10)**: Der Feed-Build
+  las `STATE_PATH` als Datei (`data/first_seen.json`), das
+  Google-Places-Kontingent als Verzeichnis für `places_quota.json`. Das
+  Kontingent liest die Variable nicht mehr; sein Speicherort lässt sich nur
+  noch über `PLACES_QUOTA_STATE` ändern. `STATE_PATH` bleibt dem Feed, weil
+  Standardwert, Doku und Tests daran hängen und eine Umbenennung nur
+  bestehende Konfigurationen bräche (Begründung in `docs/architecture.md`
+  §5). Niemand setzt die Variable, bei den Standardwerten bleiben Feed und
+  Zählerstand unverändert. Neuer Test: kein Modul außer `src/feed/config.py`
+  liest `STATE_PATH`. Die Warnung, die die Doku-Prüfung dazu in
+  `docs/how-to/google_places_stations.md` geschrieben hatte, ist ersetzt.
+* **Dokumentation gegen den Code geprüft (2026-10-10)**: Jede Aussage in
+  README, `docs/` (ohne Archiv und erzeugte Statistikseiten), CHANGELOG und
+  den Workflow-Kommentaren mit dem heutigen Stand verglichen. Berichtigt:
+  Testzahl (über 11 000 Tests in rund 640 Modulen); VOR liefert keine
+  Meldungen mehr, nur Messwerte der Stammstrecke; `PROVIDER_TIMEOUT` lässt
+  sich nur senken (Obergrenze 25 s); `test.yml` läuft auf Pushes nach
+  `main` und auf Pull Requests; `python -m src.cli checks` prüft mit Mypy nur
+  `src/`, die volle Abdeckung prüft `mypy-strict.yml`; das Validierungs-Gate
+  der Stationen stellt fehlerhafte Einträge in `data/quarantine.json`
+  zurück, statt den Lauf zu blockieren; zwölf statt elf
+  Validierungs-Kategorien (Namens-Zuordnungskonflikte, seit 2026-09-18);
+  `episode_starts.json` und `poll_status.json` unter `cache/stammstrecke/`;
+  Google Places nutzt den gemeinsamen `CircuitBreaker`; `docs/statistik.md`
+  zeigt das Kalenderjahr (30 Tage gelten nur für die README-Marker) und wird
+  nur auf den Ticks zwischen 00:00 und 00:29 Wiener Zeit gerendert; alle
+  drei feed-schreibenden Workflows installieren `torch`; 1 492 statt
+  1 493 Abrufe im Replay der Stammstrecke; `test-vor-api.yml` nutzt
+  `verify_vor_access_id.py` statt `curl`; `manual-full-refresh.yml`
+  enthält die beiden HAFAS-Schritte der Stationspflege nicht. Ergänzt:
+  `WIEN_OEPNV_AT_RECONCILE`, `PLACES_MAX_RESULTS`, die `HEALTH_*`-Schwellen,
+  die doppelte Bedeutung von `STATE_PATH` (Datei für den Feed, Verzeichnis
+  für das Places-Kontingent), der ÖBB-Vorfilter in der Provider-Referenz.
+  `docs/index.md` (Projektseite): Geltungsbereich Wien und Pendlerstrecken
+  statt „Wien, Niederösterreich und Burgenland“ (Betreiberentscheidung
+  „Bezug zu Wien“, #1959), Links auf README, How-tos und Referenzen
+  zeigen auf GitHub statt ins Leere, Vorlagen-Hinweis im Fuß entfernt. Der
+  Eintrag zu #1989 ist als zurückgenommen markiert. Code unverändert.
 * **Kein Platzhalter-Rest mehr im EN-Feed, in beiden Übersetzungsversuchen (2026-10-10)**:
   Offener Befund der EN-Prüfung vom 08.10. Verlor das Modell das Präfix
   eines Glossar-Platzhalters, blieb ein Rest wie „Nord8d74459316abX5X“
@@ -169,7 +229,8 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   nicht mehr als brandneu, sondern nie später als ab ihrem Starttag. „ONr.“
   und „ON“ vor einer Hausnummer heißen im deutschen Text jetzt „Nr.“.
 * **Text-Enden beenden keine WL-Meldung mehr, die WL noch ausliefert
-  (2026-10-09)**: Ersetzt ein Ende aus dem Text („bis etwa Ende Juli
+  (2026-10-09; zurückgenommen mit #1990, siehe den folgenden Eintrag)**:
+  Ersetzt ein Ende aus dem Text („bis etwa Ende Juli
   2026“) oder aus Start plus Dauer WLs 11:11-Ablaufdatum, gilt es nur noch,
   bis es vorbei ist. Danach ist wieder das 11:11-Datum das Ende; die
   Meldung bleibt, solange WL sie ausliefert, und die Zeitzeile liest

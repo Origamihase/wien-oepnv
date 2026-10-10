@@ -7,7 +7,7 @@ maintainer. It is fully independent of ``update-cycle.yml``: a red health check
 never affects the feed build, and the feed build is never made to fail by this
 script.
 
-It runs two complementary kinds of checks:
+It runs two complementary kinds of checks and shows a third:
 
 1. **Quellen-Erreichbarkeit (Live-Canary).** Runs the *real* production cache
    updaters (``update_wl_cache.py`` / ``update_oebb_cache.py`` /
@@ -48,6 +48,11 @@ budget. Instead the monitor records every poll in
 ``cache/stammstrecke/poll_status.json``, and ``Stammstrecke-Abruf`` turns red
 when no poll has worked for three hours (operator decision 2026-10-10: red
 only when the fetch is broken, never because no train runs).
+
+3. **Feed-Wächter** (``data/feed_watch.json``, written by
+   ``scripts/feed_watch.py`` at the end of every Update run): the rules the
+   German feed broke in the last run. Always a note, never red (see
+   :func:`check_feed_watch`).
 
 Thresholds are env-tunable (see the constants below); the defaults match the
 two workflows' cadences.
@@ -494,6 +499,62 @@ def check_stammstrecke_directions(now: datetime) -> Check:
     )
 
 
+# The Feed-Wächter (scripts/feed_watch.py) runs at the end of every Update run.
+# Its state is committed with the feed, so it is current whenever the feed is.
+FEED_WATCH_STATE = REPO_ROOT / "data" / "feed_watch.json"
+
+
+def check_feed_watch(now: datetime) -> Check:
+    """Show what the Feed-Wächter found in the last Update run, as a note.
+
+    Never red (operator decision 2026-10-10, Michael: red only when the fetch
+    does not work). A rule the German feed breaks is content: the fetch, the
+    build and the publish worked. The watcher reports it in the job log and
+    as a GitHub issue; here it shows as a note (``ℹ️`` and a ``::warning``).
+    A missing or stale state is a note too: a dead Update run already turns
+    ``Feed-Build`` red, and a watcher that could not check says so in its
+    ``error`` field.
+    """
+    name = "Feed-Wächter"
+    data = read_capped_json(FEED_WATCH_STATE, label="feed_watch")
+    if not isinstance(data, dict):
+        return Check(name, ok=True, note=True,
+                     summary="HINWEIS — noch kein Stand des Feed-Wächters "
+                     "(data/feed_watch.json fehlt oder ist unlesbar)")
+    updated_raw = data.get("updated")
+    try:
+        updated = datetime.fromisoformat(str(updated_raw))
+        if updated.tzinfo is None:
+            updated = updated.replace(tzinfo=UTC)
+    except ValueError:
+        updated = None
+    age = f"vor {_fmt_age((now - updated).total_seconds())}" if updated else "Zeitpunkt unbekannt"
+    error = data.get("error")
+    if error:
+        return Check(name, ok=True, note=True,
+                     summary=f"HINWEIS — Wächter konnte nicht prüfen ({age})",
+                     detail=str(error)[:200])
+    if updated is None or (now - updated).total_seconds() > FEED_MAX_AGE_H * 3600:
+        return Check(name, ok=True, note=True,
+                     summary=f"HINWEIS — kein aktueller Stand des Feed-Wächters ({age})")
+    findings = [f for f in data.get("findings") or [] if isinstance(f, dict)]
+    if not findings:
+        return Check(name, ok=True, summary=f"OK — alle Regeln halten (Stand {age})")
+    titles: list[str] = []
+    for finding in findings:
+        title = str(finding.get("title") or finding.get("rule") or "?")
+        if title not in titles:
+            titles.append(title)
+    first = findings[0]
+    return Check(
+        name,
+        ok=True,
+        note=True,
+        summary=f"HINWEIS — {len(titles)} Regel(n) verletzt: {', '.join(titles)} (Stand {age})",
+        detail=f"{first.get('subject', '')}: {first.get('text', '')}"[:200],
+    )
+
+
 def _render_plain(now: datetime, sources: list[Check], outputs: list[Check]) -> str:
     line = "=" * 64
     when = now.strftime("%Y-%m-%d %H:%M UTC")
@@ -551,6 +612,7 @@ def main() -> int:
         check_stations(now),
         check_stammstrecke_abruf(now),
         check_stammstrecke_directions(now),
+        check_feed_watch(now),
     ]
     all_checks = sources + outputs
     failed = [c for c in all_checks if not c.ok]

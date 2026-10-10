@@ -82,9 +82,10 @@ gh run watch
 
 ### Ergebnis prüfen
 
-Der Workflow führt `curl`-Abfragen sowie die vollständige Test-Suite (`pytest`) aus.
+Der Workflow prüft zuerst das VAO-Tagesbudget, ruft dann einmal den Endpunkt ab und führt die vollständige Test-Suite (`pytest`) aus. `curl` kommt dabei nicht mehr vor.
 
-*   **Smoke test VOR endpoint**: Prüft, ob ein einfacher Abruf (z. B. nach "Wien Hauptbahnhof") mit den hinterlegten Secrets einen HTTP 200 Status liefert.
+*   **VAO quota pre-flight**: `scripts/preflight_quota_check.py --check vor --margin 1` überspringt den Abruf, wenn das Tagesbudget (100 Requests) erschöpft ist.
+*   **Smoke test VOR endpoint**: `scripts/verify_vor_access_id.py` fragt `location.name` nach "Wien Hauptbahnhof" ab. Der Abruf läuft über `src.providers.vor`, zählt gegen das Tagesbudget und hält das Token aus Kommandozeile und Fehlertexten heraus. Exit-Code 3 (Budget erschöpft) ist kein Secret-Fehler und lässt den Schritt grün.
 *   **Run pytest**: Validiert die gesamte Integrationslogik.
 
 Schlägt der "Smoke test" fehl, sind meist die Secrets ungültig oder abgelaufen.

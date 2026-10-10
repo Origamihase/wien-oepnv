@@ -9,7 +9,7 @@ og_image_alt: "Diagramm mit ÖPNV-Icons und Wien-Skyline als Vorschau für den W
 
 # Wien ÖPNV Feed – Verkehrsmeldungen & API für Wien und die Ostregion
 
-Der **Wien ÖPNV Feed** bündelt alle relevanten Störungs- und Baustellenmeldungen für den öffentlichen Verkehr in Wien, Niederösterreich und dem Burgenland. Das Projekt richtet sich an Nahverkehrs-Apps, Informationsdisplays, Medienhäuser, Data-Science-Teams und engagierte Open-Data-Communities, die aktuelle Informationen zu U-Bahn, Straßenbahn, Bus und Bahn automatisiert weiterverarbeiten möchten.
+Der **Wien ÖPNV Feed** bündelt alle relevanten Störungs- und Baustellenmeldungen für den öffentlichen Verkehr in Wien und auf den Pendlerstrecken ins Umland (ÖBB-Meldungen mit Bezug zu Wien: innerhalb Wiens oder zwischen Wien und einem Pendlerbahnhof des Umlands). Das Projekt richtet sich an Nahverkehrs-Apps, Informationsdisplays, Medienhäuser, Data-Science-Teams und engagierte Open-Data-Communities, die aktuelle Informationen zu U-Bahn, Straßenbahn, Bus und Bahn automatisiert weiterverarbeiten möchten.
 
 Der gesamte Code steht als Open Source zur Verfügung, sodass du jederzeit nachvollziehen kannst, wie der Feed erstellt wird. Dank ausführlicher Dokumentation, reproduzierbaren Build-Skripten und transparent gepflegten Cache-Dateien lässt sich der Feed nahtlos in bestehende Datenpipelines und Mobilitätsplattformen integrieren.
 
@@ -29,7 +29,7 @@ Der gesamte Code steht als Open Source zur Verfügung, sodass du jederzeit nachv
 5. **Qualitätscheck** vor dem nächsten Build optional mit `python -m src.cli feed lint` durchführen.
 6. **Statische Analysen** optional mit `python -m src.cli checks` ausführen.
 
-Weitere Details findest du in der [ausführlichen Projektdokumentation](../README.md) sowie in den [How-to-Anleitungen](how-to/) für spezielle Workflows.
+Weitere Details findest du in der [ausführlichen Projektdokumentation](https://github.com/Origamihase/wien-oepnv#readme) sowie in den [How-to-Anleitungen](https://github.com/Origamihase/wien-oepnv/tree/main/docs/how-to) für spezielle Workflows.
 
 ## Datengrundlage und Lizenzierung
 
@@ -80,8 +80,8 @@ Der Code steht unter der MIT-Lizenz. Prüfe bei externen Datenquellen die indivi
 
 ## Weiterführende Ressourcen
 
-- [Projektübersicht im README](../README.md)
-- [API-Referenzen und Audits](reference/)
+- [Projektübersicht im README](https://github.com/Origamihase/wien-oepnv#readme)
+- [API-Referenzen](https://github.com/Origamihase/wien-oepnv/tree/main/docs/reference) und [Audits](https://github.com/Origamihase/wien-oepnv/tree/main/docs/archive/audits)
 - Feed-Health-Report: `docs/feed-health.md` (+ `docs/feed-health.json` für maschinelle Konsumenten) – beide lokal nach jedem Build erzeugt
 - [Eventschema für Integrationen](schema/events.schema.json)
 - [Feed als RSS-Dokument](feed.xml)
@@ -105,7 +105,7 @@ Der Code steht unter der MIT-Lizenz. Prüfe bei externen Datenquellen die indivi
         "@type": "Organization",
         "name": "Wien ÖPNV Projektteam"
       },
-      "description": "Open-Source-Projekt zur Aggregation und Bereitstellung von Verkehrsmeldungen für Wien, Niederösterreich und das Burgenland via RSS und JSON.",
+      "description": "Open-Source-Projekt zur Aggregation und Bereitstellung von Verkehrsmeldungen für Wien und die Pendlerstrecken ins Umland via RSS und JSON.",
       "url": "https://origamihase.github.io/wien-oepnv/",
       "softwareVersion": "1.0",
       "keywords": [
@@ -124,7 +124,7 @@ Der Code steht unter der MIT-Lizenz. Prüfe bei externen Datenquellen die indivi
           "name": "Was ist der Funktionsumfang des Wien ÖPNV Feed?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Der Feed bündelt Verkehrs- und Störungsmeldungen aus Wien, Niederösterreich und dem Burgenland, dedupliziert identische Ereignisse und stellt sie als strukturierte RSS- sowie JSON-Daten mit konsistenten Metadaten bereit."
+            "text": "Der Feed bündelt Verkehrs- und Störungsmeldungen aus Wien und von den Pendlerstrecken ins Umland, dedupliziert identische Ereignisse und stellt sie als strukturierte RSS- sowie JSON-Daten mit konsistenten Metadaten bereit."
           }
         },
         {
@@ -157,6 +157,3 @@ Der Code steht unter der MIT-Lizenz. Prüfe bei externen Datenquellen die indivi
 }
 </script>
 
-<footer class="page-footer">
-  <p><strong>Hinweis:</strong> Passe bei Bedarf die Projekt-URL in der Sitemap und in den strukturierten Daten an deine produktive Domain an.</p>
-</footer>
