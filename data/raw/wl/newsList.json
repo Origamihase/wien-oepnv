@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1017117, ftazW_212, ftazW_2, ftazW_582, ftazW_1031271, ftazW_3, ftazW_581, ftazW_1353814, ftazW_1017118, ftazW_487, ftazW_756, ftazW_146, ftazW_1017119, ftazW_1031269"
+    "trafficInfoNameList": "ftazW_1017117, ftazW_212, ftazW_2, ftazW_582, ftazW_1031271, ftazW_3, ftazW_581, ftazW_1353814, ftazW_1017118, ftazW_487, ftazW_756, ftazW_146, ftazW_1017119, ftazW_1031269, ftazW_147, ftazW_29, ftazW_1031270, ftazW_211, ftazW_488, ftazW_1354336, ftazW_1017120"
    }
   ],
   "poiCategoryGroups": [
@@ -2845,6 +2845,39 @@
    },
    {
     "attributes": {
+     "ausBis": "13.10.2026 05:15",
+     "ausVon": "13.10.2026 01:15",
+     "location": "U1 Mittelbahnsteig - Ausgang Gitlbauergasse / Kürschnergasse",
+     "rbls": [
+      4184,
+      4189
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Großfeldsiedlung",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Ausgang Gitlbauergasse / Kürschnergasse",
+    "name": "ftazW_1017120",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4184,
+     4189
+    ],
+    "time": {
+     "end": "2026-10-13T05:15:00.000+0200",
+     "start": "2026-10-13T01:15:00.000+0200"
+    },
+    "title": "Großfeldsiedlung"
+   },
+   {
+    "attributes": {
      "ausBis": "13.10.2026 00:45",
      "ausVon": "12.10.2026 20:45",
      "location": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Neue Donau",
@@ -2871,6 +2904,37 @@
     "time": {
      "end": "2026-10-13T00:45:00.000+0200",
      "start": "2026-10-12T20:45:00.000+0200"
+    },
+    "title": "Donaustadtbrücke"
+   },
+   {
+    "attributes": {
+     "ausBis": "13.10.2026 05:15",
+     "ausVon": "13.10.2026 01:15",
+     "location": "U2 Bahnsteig Richtung Seestadt - Ausgang Neue Donau",
+     "rbls": [
+      4267
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Donaustadtbrücke",
+     "status": "geplante Wartung",
+     "towards": "U2 Seestadt"
+    },
+    "description": "U2 Bahnsteig Richtung Seestadt - Ausgang Neue Donau",
+    "name": "ftazW_1031270",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4267
+    ],
+    "time": {
+     "end": "2026-10-13T05:15:00.000+0200",
+     "start": "2026-10-13T01:15:00.000+0200"
     },
     "title": "Donaustadtbrücke"
    },
@@ -2933,6 +2997,47 @@
    },
    {
     "attributes": {
+     "ausBis": "13.10.2026 05:15",
+     "ausVon": "13.10.2026 01:15",
+     "location": "Passage - Bahnsteig Linie 1, 18, 62, Badner Bahn",
+     "rbls": [
+      400,
+      400,
+      851
+     ],
+     "reason": "",
+     "relatedLines": [
+      "18",
+      "62",
+      "1",
+      "LB"
+     ],
+     "station": "Matzleinsdorfer Platz",
+     "status": "geplante Wartung",
+     "towards": "18 Schlachthausgasse, WLB Oper, Karlsplatz U, 62 Lainz, Wolkersbergenstraße"
+    },
+    "description": "Passage - Bahnsteig Linie 1, 18, 62, Badner Bahn",
+    "name": "ftazW_1354336",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "18",
+     "62",
+     "1",
+     "LB"
+    ],
+    "relatedStops": [
+     400,
+     400,
+     851
+    ],
+    "time": {
+     "end": "2026-10-13T05:15:00.000+0200",
+     "start": "2026-10-13T01:15:00.000+0200"
+    },
+    "title": "Matzleinsdorfer Platz"
+   },
+   {
+    "attributes": {
      "ausBis": "13.10.2026 00:45",
      "ausVon": "12.10.2026 20:45",
      "location": "U3 Mittelbahnsteig - Ausgang Hainburger Straße",
@@ -2961,6 +3066,39 @@
     "time": {
      "end": "2026-10-13T00:45:00.000+0200",
      "start": "2026-10-12T20:45:00.000+0200"
+    },
+    "title": "Rochusgasse"
+   },
+   {
+    "attributes": {
+     "ausBis": "13.10.2026 05:15",
+     "ausVon": "13.10.2026 01:15",
+     "location": "U3 Mittelbahnsteig - Ausgang Rochusmarkt",
+     "rbls": [
+      4914,
+      4903
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Rochusgasse",
+     "status": "geplante Wartung",
+     "towards": "U3 beide Richtungen"
+    },
+    "description": "U3 Mittelbahnsteig - Ausgang Rochusmarkt",
+    "name": "ftazW_147",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4914,
+     4903
+    ],
+    "time": {
+     "end": "2026-10-13T05:15:00.000+0200",
+     "start": "2026-10-13T01:15:00.000+0200"
     },
     "title": "Rochusgasse"
    },
@@ -2997,6 +3135,32 @@
    },
    {
     "attributes": {
+     "ausBis": "13.10.2026 05:15",
+     "ausVon": "13.10.2026 01:15",
+     "location": "Zwischengeschoss - Ausgang Wilhelmstraße",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Bahnhof Meidling",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Zwischengeschoss - Ausgang Wilhelmstraße",
+    "name": "ftazW_211",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "time": {
+     "end": "2026-10-13T05:15:00.000+0200",
+     "start": "2026-10-13T01:15:00.000+0200"
+    },
+    "title": "Bahnhof Meidling"
+   },
+   {
+    "attributes": {
      "ausBis": "12.10.2026 00:45",
      "ausVon": "11.10.2026 20:45",
      "location": "U6 Mittelbahnsteig - Zwischengeschoss Zugang ÖBB Bahnsteig",
@@ -3020,6 +3184,32 @@
      "start": "2026-10-11T20:45:00.000+0200"
     },
     "title": "Bahnhof Meidling"
+   },
+   {
+    "attributes": {
+     "ausBis": "13.10.2026 05:15",
+     "ausVon": "13.10.2026 01:15",
+     "location": "Zwischengeschoss - Ausgang Minoritenplatz",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Herrengasse",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Zwischengeschoss - Ausgang Minoritenplatz",
+    "name": "ftazW_29",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "time": {
+     "end": "2026-10-13T05:15:00.000+0200",
+     "start": "2026-10-13T01:15:00.000+0200"
+    },
+    "title": "Herrengasse"
    },
    {
     "attributes": {
@@ -3082,6 +3272,43 @@
     "time": {
      "end": "2026-10-13T00:45:00.000+0200",
      "start": "2026-10-12T20:45:00.000+0200"
+    },
+    "title": "Spittelau"
+   },
+   {
+    "attributes": {
+     "ausBis": "13.10.2026 05:15",
+     "ausVon": "13.10.2026 01:15",
+     "location": "U4 Mittelbahnsteig - Zwischengeschoss - U6 Bahnsteig Richtung Siebenhirten",
+     "rbls": [
+      4439,
+      4440,
+      4651
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4",
+      "U6"
+     ],
+     "station": "Spittelau",
+     "status": "geplante Wartung",
+     "towards": "U4 beide Richtungen, U6 Siebenhirten"
+    },
+    "description": "U4 Mittelbahnsteig - Zwischengeschoss - U6 Bahnsteig Richtung Siebenhirten",
+    "name": "ftazW_488",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4",
+     "U6"
+    ],
+    "relatedStops": [
+     4439,
+     4440,
+     4651
+    ],
+    "time": {
+     "end": "2026-10-13T05:15:00.000+0200",
+     "start": "2026-10-13T01:15:00.000+0200"
     },
     "title": "Spittelau"
    },
