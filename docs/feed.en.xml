@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 10 Oct 2026 17:02:43 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 19:30:43 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[37: Illegally parked vehicle]]></title>
+      <title><![CDATA[32A: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f</guid>
-      <pubDate>Sat, 10 Oct 2026 16:46:00 +0200</pubDate>
-      <ext:first_seen>Sat, 10 Oct 2026 16:46:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 16:54:29 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Schottentor U. Expected until 17:20. Reason: illegally parked vehicle in the stop area of Hohe Warte. [Since 16:46]</description>
-      <content:encoded><![CDATA[Service obstruction towards Schottentor U. Expected until 17:20. Reason: illegally parked vehicle in the stop area of Hohe Warte.<br/>[Since 16:46]]]></content:encoded>
+      <guid isPermaLink="false">72b15e921cc21a0aeb5361674384109c63f686e18c932390d3ce9867dda79e61</guid>
+      <pubDate>Sat, 10 Oct 2026 19:12:00 +0200</pubDate>
+      <ext:first_seen>Sat, 10 Oct 2026 19:12:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 19:12:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 10 Oct 2026 19:45:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 19:12]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 19:12]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Liesing ↔ Mödling]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;918427</guid>
+      <pubDate>Sat, 10 Oct 2026 18:25:30 +0200</pubDate>
+      <ext:first_seen>Sat, 10 Oct 2026 18:30:53 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 10 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Due to persons on the tracks, no trains could run until 18:23. For now, allow up to 10 minutes of extra travel time. [Today]</description>
+      <content:encoded><![CDATA[Due to persons on the tracks, no trains could run until 18:23. For now, allow up to 10 minutes of extra travel time.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[18: LCC autumn marathon on 11.10.2026]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Due to renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station Neue Donau with the U6 of … [Until 31.12.]</description>
       <content:encoded><![CDATA[Due to renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station Neue Donau with the U6 of …<br/>[Until 31.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Buses stop at Salvatorianerplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
-      <pubDate>Sat, 10 Oct 2026 04:40:17 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 04:40:17 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 11 Oct 2026 01:00:00 +0200</ext:ends_at>
-      <description>Reason: construction works. [Until Sun 11.10.]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[Until Sun 11.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
