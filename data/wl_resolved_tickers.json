@@ -3,102 +3,11 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R1212-140|2026-10-10T18:23:09.000+0200|Rettungseinsatz\nUmleittung ab Volksoper über 42+9",
-   "name": "R1212-140",
-   "title": "Rettungseinsatz\nUmleittung ab Volksoper über 42+9",
-   "end": "2026-10-10T19:22:00.000+0200",
-   "incident": "I20261010-0023-F01"
-  },
-  {
-   "key": "R1213-140|2026-10-10T18:23:09.000+0200|Rettungseinsatz\nUmleittung ab Volksoper über 42+9",
-   "name": "R1213-140",
-   "title": "Rettungseinsatz\nUmleittung ab Volksoper über 42+9",
-   "end": "2026-10-10T19:22:00.000+0200",
-   "incident": "I20261010-0023-F01"
-  },
-  {
-   "key": "R1312-141|2026-10-10T18:15:38.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R1312-141",
+   "key": "R2443-432|2026-10-10T19:13:18.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R2443-432",
    "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-10T19:15:00.000+0200",
-   "incident": "I20261010-0023"
-  },
-  {
-   "key": "R1313-141|2026-10-10T18:15:38.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R1313-141",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-10T19:15:00.000+0200",
-   "incident": "I20261010-0023"
-  },
-  {
-   "key": "R1315-141|2026-10-10T18:15:38.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R1315-141",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-10T19:15:00.000+0200",
-   "incident": "I20261010-0023"
-  },
-  {
-   "key": "R1316-141|2026-10-10T18:15:38.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R1316-141",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-10T19:15:00.000+0200",
-   "incident": "I20261010-0023"
-  },
-  {
-   "key": "R141-140|2026-10-10T18:18:37.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R141-140",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-10T19:18:00.000+0200",
-   "incident": "I20261010-0023"
-  },
-  {
-   "key": "R188-140|2026-10-10T18:23:07.000+0200|Rettungseinsatz\nUmleittung ab Volksoper über 42+9",
-   "name": "R188-140",
-   "title": "Rettungseinsatz\nUmleittung ab Volksoper über 42+9",
-   "end": "2026-10-10T19:22:00.000+0200",
-   "incident": "I20261010-0023-F01"
-  },
-  {
-   "key": "R189-140|2026-10-10T18:23:07.000+0200|Rettungseinsatz\nUmleittung ab Volksoper über 42+9",
-   "name": "R189-140",
-   "title": "Rettungseinsatz\nUmleittung ab Volksoper über 42+9",
-   "end": "2026-10-10T19:22:00.000+0200",
-   "incident": "I20261010-0023-F01"
-  },
-  {
-   "key": "R192-140|2026-10-10T18:05:35.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R192-140",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-10T19:05:00.000+0200",
-   "incident": "I20261010-0023"
-  },
-  {
-   "key": "R192-141|2026-10-10T18:06:35.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R192-141",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-10T19:05:00.000+0200",
-   "incident": "I20261010-0023"
-  },
-  {
-   "key": "R193-141|2026-10-10T18:06:35.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R193-141",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-10T19:05:00.000+0200",
-   "incident": "I20261010-0023"
-  },
-  {
-   "key": "R521-140|2026-10-10T18:05:36.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R521-140",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-10T19:05:00.000+0200",
-   "incident": "I20261010-0023"
-  },
-  {
-   "key": "R699-412|2026-10-10T18:07:06.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R699-412",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-10T19:06:00.000+0200",
-   "incident": "I20261010-0024"
+   "end": "2026-10-10T20:13:00.000+0200",
+   "incident": "I20261010-0026"
   },
   {
    "key": "R855-438|2026-10-10T18:44:40.000+0200|Fahrtbehinderung\nFalschparker",
