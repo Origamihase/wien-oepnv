@@ -16,7 +16,8 @@ Diese Architektur entstand in zwei Schritten:
   (Feed-Builder). Zuvor schrieb der Cron-Job direkt in
   `cache/stammstrecke/events.json`. Seither ist das CSV-Ledger die
   einzige Quelle der Wahrheit sowohl für den RSS-Feed (1-Stunden-Fenster)
-  als auch für das 30-Tage-Dashboard in `docs/statistik.md`; die
+  als auch für das Dashboard in `docs/statistik.md` (Kalenderjahr) und die
+  README-Marker (60 Minuten und 30 Tage); die
   Schwellen-Logik lebt im Feed-Builder und wird für jeden Build neu
   ausgewertet, sodass ein nachträglich angepasster Threshold sofort
   wirkt, ohne dass der Cron-Job neu laufen muss.
@@ -378,9 +379,11 @@ Statistik-Dashboard:
 * **Feed-Builder** — liest `stammstrecke_<YYYY>.csv` mit einem
   1-Stunden-Fenster über das Trigger-Gate (siehe oben).
 
-Beide Konsumenten benutzen denselben Reader-Pfad
-(`src.utils.stats.read_recent_stammstrecke_observations`) und
-profitieren damit vom gleichen Bounded-Read- und Tolerance-Verhalten.
+Der Feed-Builder liest über
+`src.utils.stats.read_recent_stammstrecke_observations`, der Renderer
+über eigene Parser (`_iter_csv_rows` in
+`scripts/generate_markdown_stats.py`). Beide lesen gedeckelt über
+`src.utils.files.read_capped_text` und überspringen kaputte Zeilen.
 Architektur-Kontext und Diagramm: siehe Section 6 in
 [`docs/architecture.md`](../architecture.md).
 

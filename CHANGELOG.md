@@ -5,6 +5,33 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Dokumentation gegen den Code geprüft (2026-10-10)**: Jede Aussage in
+  README, `docs/` (ohne Archiv und erzeugte Statistikseiten), CHANGELOG und
+  den Workflow-Kommentaren mit dem heutigen Stand verglichen. Berichtigt:
+  Testzahl (über 11 000 Tests in rund 640 Modulen); VOR liefert keine
+  Meldungen mehr, nur Messwerte der Stammstrecke; `PROVIDER_TIMEOUT` lässt
+  sich nur senken (Obergrenze 25 s); `test.yml` läuft auf Pushes nach
+  `main` und auf Pull Requests; `python -m src.cli checks` prüft mit Mypy nur
+  `src/`, die volle Abdeckung prüft `mypy-strict.yml`; das Validierungs-Gate
+  der Stationen stellt fehlerhafte Einträge in `data/quarantine.json`
+  zurück, statt den Lauf zu blockieren; zwölf statt elf
+  Validierungs-Kategorien (Namens-Zuordnungskonflikte, seit 2026-09-18);
+  `episode_starts.json` und `poll_status.json` unter `cache/stammstrecke/`;
+  Google Places nutzt den gemeinsamen `CircuitBreaker`; `docs/statistik.md`
+  zeigt das Kalenderjahr (30 Tage gelten nur für die README-Marker) und wird
+  nur auf den Ticks zwischen 00:00 und 00:29 Wiener Zeit gerendert; alle
+  drei feed-schreibenden Workflows installieren `torch`; 1 492 statt
+  1 493 Abrufe im Replay der Stammstrecke; `test-vor-api.yml` nutzt
+  `verify_vor_access_id.py` statt `curl`; `manual-full-refresh.yml`
+  enthält die beiden HAFAS-Schritte der Stationspflege nicht. Ergänzt:
+  `WIEN_OEPNV_AT_RECONCILE`, `PLACES_MAX_RESULTS`, die `HEALTH_*`-Schwellen,
+  die doppelte Bedeutung von `STATE_PATH` (Datei für den Feed, Verzeichnis
+  für das Places-Kontingent), der ÖBB-Vorfilter in der Provider-Referenz.
+  `docs/index.md` (Projektseite): Geltungsbereich Wien und Pendlerstrecken
+  statt „Wien, Niederösterreich und Burgenland“ (Betreiberentscheidung
+  „Bezug zu Wien“, #1959), Links auf README, How-tos und Referenzen
+  zeigen auf GitHub statt ins Leere, Vorlagen-Hinweis im Fuß entfernt. Der
+  Eintrag zu #1989 ist als zurückgenommen markiert. Code unverändert.
 * **Kein Platzhalter-Rest mehr im EN-Feed, in beiden Übersetzungsversuchen (2026-10-10)**:
   Offener Befund der EN-Prüfung vom 08.10. Verlor das Modell das Präfix
   eines Glossar-Platzhalters, blieb ein Rest wie „Nord8d74459316abX5X“
@@ -139,7 +166,8 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   nicht mehr als brandneu, sondern nie später als ab ihrem Starttag. „ONr.“
   und „ON“ vor einer Hausnummer heißen im deutschen Text jetzt „Nr.“.
 * **Text-Enden beenden keine WL-Meldung mehr, die WL noch ausliefert
-  (2026-10-09)**: Ersetzt ein Ende aus dem Text („bis etwa Ende Juli
+  (2026-10-09; zurückgenommen mit #1990, siehe den folgenden Eintrag)**:
+  Ersetzt ein Ende aus dem Text („bis etwa Ende Juli
   2026“) oder aus Start plus Dauer WLs 11:11-Ablaufdatum, gilt es nur noch,
   bis es vorbei ist. Danach ist wieder das 11:11-Datum das Ende; die
   Meldung bleibt, solange WL sie ausliefert, und die Zeitzeile liest

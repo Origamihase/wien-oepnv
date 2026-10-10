@@ -35,6 +35,7 @@ Alle Parameter lassen sich via Umgebungsvariablen steuern. Die wichtigsten:
 | `PLACES_LANGUAGE` | `de` | Sprache der API-Antworten. |
 | `PLACES_REGION` | `AT` | Regions-Bias. |
 | `PLACES_RADIUS_M` | `2500` | Radius je Suchkachel (Meter). |
+| `PLACES_MAX_RESULTS` | `20` | Treffer je Suchanfrage, auf 1 bis 20 geklammert (`src/places/client.py`). |
 | `PLACES_TILES` | Stephansplatz | JSON-Liste von Tile-Zentren. Kann via `--tiles-file` überschrieben werden. |
 | `MERGE_MAX_DIST_M` | `150` | Distanzschwelle für Duplikate (Meter). |
 | `BOUNDINGBOX_VIENNA` | – | JSON-Objekt mit `min_lat`, `min_lng`, `max_lat`, `max_lng` zur Heuristik `in_vienna`. |
@@ -47,7 +48,7 @@ Alle Parameter lassen sich via Umgebungsvariablen steuern. Die wichtigsten:
 Die Places API darf nur im Rahmen des kostenlosen Kontingents genutzt werden. Das Repository bringt daher einen Quota-Manager mit, der die monatlichen Aufrufe (Monatsgrenzen in der Zeitzone Europe/Vienna) zählt und bei Erreichen der Limits auf bestehende Caches zurückfällt.
 
 * Limits werden über folgende ENV-Variablen gesteuert (Defaults in Klammern): `PLACES_LIMIT_TOTAL` (4000), `PLACES_LIMIT_NEARBY` (1500), `PLACES_LIMIT_TEXT` (1500), `PLACES_LIMIT_DETAILS` (1000), `PLACES_LIMIT_DAILY` (200).
-* Der Zählerstand wird in `data/places_quota.json` persistiert. Der Speicherort kann über `PLACES_QUOTA_STATE` überschrieben werden (Pfad muss innerhalb von `data/`, `docs/` oder `log/` liegen). Falls `STATE_PATH` gesetzt ist, landet die Datei automatisch dort.
+* Der Zählerstand wird in `data/places_quota.json` persistiert. Der Speicherort kann über `PLACES_QUOTA_STATE` überschrieben werden (Pfad muss innerhalb von `data/`, `docs/` oder `log/` liegen). Falls `STATE_PATH` gesetzt ist, liest das Quota-Modul es als **Verzeichnis** und legt `places_quota.json` darin ab (`src/places/quota.py:resolve_quota_state_path`). Achtung: Der Feed-Build liest dieselbe Variable als **Datei** (`data/first_seen.json`). Wer `STATE_PATH` für den Feed umbiegt, sollte deshalb `PLACES_QUOTA_STATE` explizit setzen.
 * Beim Monatswechsel (Zeitzone Europe/Vienna, identisch zum Tageszähler) wird der Zähler automatisch auf Null zurückgesetzt und der neue Stand gespeichert. Logs enthalten einen Hinweis „Quota reset for new month …“.
 * Sind die Limits erreicht, werden keine externen Requests mehr abgesetzt. Stattdessen erscheint eine Warnung „Quota reached, using existing cache. No files were modified.“ und bestehende Cache-/Zieldateien bleiben unverändert.
 * `--dry-run` zeigt die aktuellen Zähler sowie Limits im Log an und verändert weder State noch Ausgabedateien.
