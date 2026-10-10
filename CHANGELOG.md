@@ -33,6 +33,50 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   `src/utils/vienna_clock.py` verschoben). Bis zur Umstellung ändert sich
   nichts; ob WL wieder +01:00 schickt, zeigt der Rohstand der Nacht zum
   25.10.
+* **Kein Platzhalter-Rest mehr im EN-Feed, in beiden Übersetzungsversuchen (2026-10-10)**:
+  Offener Befund der EN-Prüfung vom 08.10. Verlor das Modell das Präfix
+  eines Glossar-Platzhalters, blieb ein Rest wie „Nord8d74459316abX5X“
+  stehen, den die Prüfung eines Durchlaufs (`_RESIDUAL_PLACEHOLDER_RE`)
+  nicht kannte. Nachgestellt im heutigen Code: Es traf nicht nur den
+  zweiten Versuch unter frischer Nonce, sondern auch den ersten in
+  Kurzform („NordGLO0X“, „XGLO0“). So ein Wert wurde veröffentlicht und
+  erst im nächsten Lauf vom Cache verworfen. Jetzt prüft jeder Durchlauf
+  mit derselben Regel wie der Cache (`_leftover_placeholder` in
+  `src/build_feed.py`), und die Regel kennt zwei weitere Restformen:
+  Präfix-Buchstaben am Index und einen Nonce-Rest aus Hex-Zeichen. Ein
+  Platzhalter mit einem Index, den der Quelltext nicht hat, lässt den
+  Durchlauf ebenfalls scheitern. Ein erkannter Rest nimmt den bestehenden
+  Weg: zweiter Versuch, danach bleibt das Feld deutsch. Replay über 3 003
+  veröffentlichte DE/EN-Paare (Juli bis 08.10.) und 5 151 gecachte
+  EN-Felder: Die Regel findet genau die Werte, die der Cache schon
+  verwarf, kein Wort fälschlich; der Live-Feed ändert sich nicht. Tests:
+  `tests/test_en_placeholder_leftovers_2026_10_10.py` verstümmelt jeden
+  Platzhalter einzeln in 16 Formen, in beiden Versuchen. Doku:
+  `docs/architecture.md`, „Nachkontrollen“.
+* **Health check: Stammstrecke rot nur bei kaputtem Abruf (2026-10-10)**:
+  Betreiberentscheidung: „Der Check soll nur auf rot, wenn der Abruf nicht
+  funktioniert. Wenn die Technik funktioniert gehört er auch auf grün.
+  Wenn wirklich keine Züge fahren, gehört dies auf der Homepage gemeldet,
+  aber der Check bleibt grün.“ Bisher wurde ein komplett ausgefallener
+  Stammstrecken-Monitor nirgends rot: Die Richtungsprüfung wird nie rot
+  (#1939), und ein Korridor ohne Messwerte sah aus wie eine Nacht. Jetzt
+  schreibt der Monitor jeden Abruf, auch den gescheiterten, nach
+  `cache/stammstrecke/poll_status.json`; die neue Prüfung
+  `Stammstrecke-Abruf` wird rot, wenn seit drei Stunden kein Abruf
+  funktioniert hat (gescheiterter Request, unlesbare oder unvollständige
+  Antwort, übersprungener Abruf, Monitor läuft nicht mehr). Eine gültige
+  Antwort ohne Stammstrecken-Zug bleibt grün. Website und README nennen
+  einen ganz dunklen Korridor („Aktuell keine Fahrten … Richtung Meidling
+  und Praterstern“) nur noch, solange der Abruf funktioniert; hinter
+  einem kaputten Abruf stimmte der Satz nicht. Regel in
+  `src/utils/stammstrecke_poll.py`, Begründung in
+  `docs/architecture.md`, §7. Replay über die 1 492 Abrufe vom 09.09. bis
+  10.10.: Der längste Abstand zwischen zwei Abrufen war 2:00 h, kein
+  Monitor-Schritt scheiterte; die neue Prüfung wäre in diesen 30 Tagen
+  nie rot geworden. Die 37 Abrufe tagsüber ohne Messwert waren gültige
+  Antworten (24 bis 37 Abfahrten, kein Stammstrecken-Zug mit Echtzeit)
+  und bleiben grün. Der Status zählt Züge auf Gleis 1/2 vor dem
+  Echtzeit-Filter, weil VAO `rtTime` oft weglässt.
 * **Protokoll der verworfenen Meldungen nennt den wahren Grund (2026-10-10)**:
   Befund der Prüfung vom 09.10. Der ÖBB-Abruf schrieb für jede verworfene
   Meldung „nicht Wien-relevant“ nach `data/raw/oebb/verworfen.json`, auch

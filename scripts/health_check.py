@@ -44,7 +44,10 @@ It runs two complementary kinds of checks:
 
 Stammstrecke/VOR is deliberately NOT probed live: the VAO ReST API is capped at
 100 requests/day and a recurring health probe would burn that contractual
-budget.
+budget. Instead the monitor records every poll in
+``cache/stammstrecke/poll_status.json``, and ``Stammstrecke-Abruf`` turns red
+when no poll has worked for three hours (operator decision 2026-10-10: red
+only when the fetch is broken, never because no train runs).
 
 Thresholds are env-tunable (see the constants below); the defaults match the
 two workflows' cadences.
@@ -362,6 +365,44 @@ def check_stations(now: datetime) -> Check:
                  summary=f"OK — {age_txt}aktualisiert, alle Teilschritte sauber")
 
 
+def check_stammstrecke_abruf(now: datetime) -> Check:
+    """Red only when the Stammstrecke monitor's fetch does not work.
+
+    Operator decision 2026-10-10 (Michael): "Der Check soll nur auf rot, wenn
+    der Abruf nicht funktioniert. Wenn die Technik funktioniert gehört er auch
+    auf grün. Wenn wirklich keine Züge fahren, gehört dies auf der Homepage
+    gemeldet, aber der Check bleibt grün."
+
+    The monitor records every poll in ``cache/stammstrecke/poll_status.json``.
+    Broken = no working poll for :data:`POLL_STALE_HOURS` (a failed request,
+    an unreadable or incomplete answer, a skipped poll, or a monitor that no
+    longer runs) or no readable status at all. A valid answer without a single
+    Stammstrecke train is a working fetch and stays green; the website names
+    the train-less corridor instead. Before this check a completely dead
+    monitor turned nothing red, because the direction check below never fails
+    (#1939) and a corridor without ledger rows looks exactly like a night.
+    The rule lives in :mod:`src.utils.stammstrecke_poll`, shared with the
+    website summary, so the check and the banner cannot disagree.
+    """
+    name = "Stammstrecke-Abruf"
+    try:
+        from src.utils.stammstrecke_poll import (
+            POLL_STALE_HOURS,
+            assess_poll,
+            load_poll_status,
+        )
+    except Exception as exc:  # pragma: no cover - import-environment guard
+        return Check(
+            name,
+            ok=False,
+            summary="FEHLER — Abruf-Prüfung nicht lauffähig",
+            detail=_clean_line(str(exc)),
+        )
+    stale_h = _env_float("HEALTH_STAMMSTRECKE_POLL_STALE_HOURS", POLL_STALE_HOURS)
+    verdict = assess_poll(load_poll_status(), now=now, stale_hours=stale_h)
+    return Check(name, ok=verdict.working, summary=verdict.summary, detail=verdict.detail)
+
+
 def check_stammstrecke_directions(now: datetime) -> Check:
     """Note when one Stammstrecke direction has gone silent while the other reports.
 
@@ -433,8 +474,10 @@ def check_stammstrecke_directions(now: datetime) -> Check:
         )
 
     if all(a.rows == 0 for a in activity):
-        # Both directions quiet: night-time, or an outage the feed-freshness
-        # and updater checks own. Not a direction fault — do not double-alarm.
+        # Both directions quiet: night-time, a real stop of service, or a
+        # broken fetch — the last one is ``Stammstrecke-Abruf``'s to report
+        # (red), the others are not a fault. Not a direction fault either —
+        # do not double-alarm.
         return Check(
             name,
             ok=True,
@@ -506,6 +549,7 @@ def main() -> int:
     outputs = [
         check_feed_freshness(now),
         check_stations(now),
+        check_stammstrecke_abruf(now),
         check_stammstrecke_directions(now),
     ]
     all_checks = sources + outputs
