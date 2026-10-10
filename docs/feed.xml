@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 10 Oct 2026 15:57:54 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 16:01:45 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[22A: Verkehrsüberlastung]]></title>
+      <title><![CDATA[40/41: Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">058b4c8d1bcd5de597f6cab7230653901d4005a4a0eeb390c31a784c8b083aea</guid>
-      <pubDate>Sat, 10 Oct 2026 13:57:00 +0200</pubDate>
-      <ext:first_seen>Sat, 10 Oct 2026 13:57:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 13:57:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">46770cbdcca7b3b0724e5953b64353d0a982642ac049261e3dfdc906c581b130</guid>
+      <pubDate>Sat, 10 Oct 2026 15:59:00 +0200</pubDate>
+      <ext:first_seen>Sat, 10 Oct 2026 15:59:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 15:59:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 13:57]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 13:57]]]></content:encoded>
+      <description>Fahrtbehinderung in Richtung Schottentor U. Voraussichtlich bis 16:30 Uhr. Grund: Falschparker im Bereich Währinger Straße. [Seit 15:59]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Schottentor U. Voraussichtlich bis 16:30 Uhr. Grund: Falschparker im Bereich Währinger Straße.<br/>[Seit 15:59]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: Demonstration, Gleisbauarbeiten]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Sat, 10 Oct 2026 23:59:59 +0200</ext:ends_at>
       <description>Demonstration: Umleitung über die Linien O und 1. Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse. [Heute]</description>
       <content:encoded><![CDATA[Demonstration: Umleitung über die Linien O und 1. Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Demonstration, Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">248d4ea551a5d6e952d0ca7fd955503cf4f51d755910624e25277eea19192547</guid>
-      <pubDate>Sat, 10 Oct 2026 12:11:00 +0200</pubDate>
-      <ext:first_seen>Sat, 10 Oct 2026 15:01:14 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 12:11:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Bauarbeiten: Einstieg Leberstraße vor S-Bahn-Gebäude. [Heute]</description>
-      <content:encoded><![CDATA[Bauarbeiten: Einstieg Leberstraße vor S-Bahn-Gebäude.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1A/2/2A/3A/4A/71/D: Demonstration am 10.10.2026]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 … [Bis 06.11.]</description>
       <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 …<br/>[Bis 06.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
+      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
+      <content:encoded><![CDATA[Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
