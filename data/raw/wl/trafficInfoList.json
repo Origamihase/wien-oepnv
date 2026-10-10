@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261010-0024, I20260917-0012, I20260922-0032, I20260925-0011, I20261010-0023-F01, I20260909-0007, I20261010-0022-F01, I20261010-0025, I20261010-0023-F02, I20261010-0026, I20261010-0026-F01"
+    "trafficInfoNameList": "I20261010-0026-F01, I20260917-0012, I20260922-0032, I20260925-0011, I20261010-0023-F01, I20260909-0007, I20261010-0022-F01, I20261010-0026"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R100-136, R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2379-627, R2380-627, R2345-127, R2372-627, R2378-627, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2373-126, R2373-127, R2373-125, R2372-125, R1974-466, R500-101, R855-438, R859-438, R2443-432, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R100-136, R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2380-627, R2345-127, R2372-627, R2372-125, R2343-125, R2343-626, R2378-627, R2373-126, R2373-127, R2373-125, R2379-627, R2371-125, R2370-125, R2359-125, R1974-466, R500-101, R2443-432, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -277,115 +277,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261010-0023-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "141",
-       "lineName": "41",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     191
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-10T18:23:00.000+0200",
-     "end": "2026-10-10T18:50:00.000+0200",
-     "lastUpdate": "2026-10-10T18:50:00.000+0200",
-     "resume": "2026-10-10T18:50:00.000+0200",
-     "start": "2026-10-10T18:05:00.000+0200"
-    },
-    "title": "41: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "12A": "ptBusCity"
-     }
-    },
-    "description": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "Linie 12A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Rettungseinsatz.",
-    "location": "Ramperstorffergasse",
-    "name": "I20261010-0024",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "412",
-       "lineName": "12A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-10T18:12:00.000+0200",
-     "end": "2026-10-10T18:55:00.000+0200",
-     "lastUpdate": "2026-10-10T18:55:00.000+0200",
-     "resume": "2026-10-10T18:55:00.000+0200",
-     "start": "2026-10-10T18:08:00.000+0200"
-    },
-    "title": "12A: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "38A": "ptBusCity"
-     }
-    },
-    "description": "Linie 38A: Fahrtbehinderung in Richtung Kahlenberg. Voraussichtliche Dauer: 19:15 Uhr. Grund: Falschparker im Haltestellenbereich Grinzing.",
-    "descriptionHTML": "Linie 38A:<br>Fahrtbehinderung in Richtung Kahlenberg.<br> <br>Voraussichtliche Dauer: 19:15 Uhr.<br><br>Grund: Falschparker im Haltestellenbereich Grinzing.",
-    "name": "I20261010-0025",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "38A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "438",
-       "lineName": "38A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "relatedStops": [
-     855
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-10T18:43:00.000+0200",
-     "end": "2026-10-10T18:48:00.000+0200",
-     "lastUpdate": "2026-10-10T18:48:00.000+0200",
-     "resume": "2026-10-10T18:48:00.000+0200",
-     "start": "2026-10-10T18:42:00.000+0200"
-    },
-    "title": "38A: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "32A": "ptBusCity"
      }
     },
@@ -443,12 +334,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-10T19:17:00.000+0200",
      "end": "2026-10-10T19:45:00.000+0200",
-     "lastUpdate": "2026-10-10T19:20:00.000+0200",
-     "resume": "2026-10-10T19:17:00.000+0200",
+     "lastUpdate": "2026-10-10T19:45:00.000+0200",
+     "resume": "2026-10-10T19:45:00.000+0200",
      "start": "2026-10-10T19:12:00.000+0200"
     },
     "title": "32A: Rettungseinsatz"
@@ -1307,42 +1198,6 @@
      "start": "2026-10-07T00:00:17.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R855-438",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38A"
-    ],
-    "relatedStops": [
-     855
-    ],
-    "time": {
-     "end": "2026-10-10T19:44:00.000+0200",
-     "start": "2026-10-10T18:44:40.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R859-438",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38A"
-    ],
-    "relatedStops": [
-     859
-    ],
-    "time": {
-     "end": "2026-10-10T19:44:00.000+0200",
-     "start": "2026-10-10T18:44:40.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
