@@ -5,6 +5,26 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Kein Platzhalter-Rest mehr im EN-Feed, in beiden Übersetzungsversuchen (2026-10-10)**:
+  Offener Befund der EN-Prüfung vom 08.10. Verlor das Modell das Präfix
+  eines Glossar-Platzhalters, blieb ein Rest wie „Nord8d74459316abX5X“
+  stehen, den die Prüfung eines Durchlaufs (`_RESIDUAL_PLACEHOLDER_RE`)
+  nicht kannte. Nachgestellt im heutigen Code: Es traf nicht nur den
+  zweiten Versuch unter frischer Nonce, sondern auch den ersten in
+  Kurzform („NordGLO0X“, „XGLO0“). So ein Wert wurde veröffentlicht und
+  erst im nächsten Lauf vom Cache verworfen. Jetzt prüft jeder Durchlauf
+  mit derselben Regel wie der Cache (`_leftover_placeholder` in
+  `src/build_feed.py`), und die Regel kennt zwei weitere Restformen:
+  Präfix-Buchstaben am Index und einen Nonce-Rest aus Hex-Zeichen. Ein
+  Platzhalter mit einem Index, den der Quelltext nicht hat, lässt den
+  Durchlauf ebenfalls scheitern. Ein erkannter Rest nimmt den bestehenden
+  Weg: zweiter Versuch, danach bleibt das Feld deutsch. Replay über 3 003
+  veröffentlichte DE/EN-Paare (Juli bis 08.10.) und 5 151 gecachte
+  EN-Felder: Die Regel findet genau die Werte, die der Cache schon
+  verwarf, kein Wort fälschlich; der Live-Feed ändert sich nicht. Tests:
+  `tests/test_en_placeholder_leftovers_2026_10_10.py` verstümmelt jeden
+  Platzhalter einzeln in 16 Formen, in beiden Versuchen. Doku:
+  `docs/architecture.md`, „Nachkontrollen“.
 * **Health check: Stammstrecke rot nur bei kaputtem Abruf (2026-10-10)**:
   Betreiberentscheidung: „Der Check soll nur auf rot, wenn der Abruf nicht
   funktioniert. Wenn die Technik funktioniert gehört er auch auf grün.

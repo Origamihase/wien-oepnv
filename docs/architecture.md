@@ -2346,6 +2346,29 @@ Nach dem Modelllauf wird nicht blind vertraut:
   Verankert auf der Form der Nonce selbst (8–32 Hex-Zeichen), nicht auf dem
   laxeren Muster der `XENT`/`XGLO`-Varianten — ein nacktes `ENT`/`GLO` ist
   sonst ein gewöhnliches Wortfragment.
+* **Eine Regel für frische Übersetzung und Cache (seit 2026-10-10).**
+  Jeder Modelldurchlauf wird mit derselben Prüfung beurteilt wie ein
+  gecachter Wert (`_leftover_placeholder`: `_RESIDUAL_PLACEHOLDER_RE` plus
+  `_CACHED_DEBRIS_RE` gegen den deutschen Text). Vorher sah der Durchlauf
+  nur `_RESIDUAL_PLACEHOLDER_RE`: Verlor das Modell das Präfix eines
+  Glossar-Platzhalters (`XGLO`), blieb ein Rest stehen, den kein Muster
+  kannte und den auch `_entities_dropped_by_translation` nicht zählt (es
+  zählt nur `XENT`). So ein Wert wurde veröffentlicht, gecacht und erst
+  im nächsten Lauf vom Cache verworfen. Das galt in beiden Versuchen, in
+  der Kurzform („NordGLO0X“, „XGLO0“) wie unter der Nonce
+  („Nord8d74459316abX5X“, „Nord8d74459316ab“). `_CACHED_DEBRIS_RE` kennt
+  dafür zwei weitere Formen: Präfix-Buchstaben, die am Index kleben
+  (`ent`/`glo` vor einer Ziffer), und ein Nonce-Rest (mindestens sechs
+  kleine Hex-Zeichen mit Ziffer und Buchstabe). Ein intakter Platzhalter,
+  den der Quelltext nicht hat (verschobener Index), lässt den Durchlauf
+  ebenfalls scheitern, statt beim Demaskieren still ein Wort zu löschen.
+  Jeder erkannte Rest nimmt den Weg jedes verstümmelten Platzhalters:
+  zweiter Versuch, danach bleibt das Feld deutsch. Replay: In den 3 003
+  vom Juli bis 08.10. veröffentlichten DE/EN-Paaren und den 5 151
+  gecachten EN-Feldern vom 10.10. findet die neue Regel genau die Werte,
+  die der Cache schon verwarf (27 bzw. 42, kein Wort fälschlich); 24 der
+  27 veröffentlichten hätte der Durchlauf schon abgewiesen, der letzte
+  stand am 30.09. im Feed. Der Live-Feed vom 10.10. ändert sich nicht.
 * **Zweiter Versuch mit frischer Nonce (seit 2026-09-27, Audit A.5).**
   Scheitert ein Feld an einem verstümmelten oder verlorenen Platzhalter,
   läuft das Modell noch einmal, diesmal unter einer frisch gewürfelten

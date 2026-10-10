@@ -4685,6 +4685,7 @@ def _model_pass(
     mapping: dict[str, str],
     ident: str,
     nonce: str | None,
+    german: str,
 ) -> tuple[str | None, bool]:
     """One model pass over *masked_text*, its placeholders shown under *nonce*.
 
@@ -4694,7 +4695,9 @@ def _model_pass(
     ``None`` and ``False`` on any other failure. The masks and *mapping* keep
     the build's nonce: only the model sees *nonce*, and its intact placeholders
     are mapped back before anything is checked or unmasked. A placeholder the
-    model mangled matches neither form and fails the residual check.
+    model mangled matches neither form and fails the residual check, which
+    judges the pass by the same rule as a cached value
+    (:func:`_leftover_placeholder` against the German *german*).
     """
     shown = (
         _to_short_placeholders(masked_text)
@@ -4723,6 +4726,21 @@ def _model_pass(
         if nonce is None
         else _with_nonce(translated, nonce, _PLACEHOLDER_NONCE)
     )
+    invented = sorted(
+        {m.group(0) for m in _UNMASK_PLACEHOLDER_RE.finditer(translated)} - mapping.keys()
+    )
+    if invented:
+        # An intact placeholder the source never had (the model shifted an
+        # index): the unmask would delete it silently, losing a word nobody
+        # can name. Same verdict as a mangled one.
+        log.warning(
+            "Translation for identity %s carries %d placeholder(s) the source "
+            "does not have under nonce %s; discarding this pass.",
+            sanitize_log_arg(ident or "<unknown>"),
+            len(invented),
+            nonce or "<kurz>",
+        )
+        return None, True
     dropped = _entities_dropped_by_translation(masked_text, translated, mapping)
     if dropped:
         # The sentence that came back is missing a station, a line or a house
@@ -4747,12 +4765,17 @@ def _model_pass(
             )
         ),
     ))
-    if _RESIDUAL_PLACEHOLDER_RE.search(unmasked):
+    if _leftover_placeholder(german, unmasked):
         # The model mangled a placeholder so badly the exact-nonce unmask could
         # not restore it (dropped/translated nonce chars, lower-cased prefix,
-        # truncated index). Treat the pass as FAILED: after a second failed pass
-        # the caller does not cache it and falls back to the German source — a
-        # raw sentinel must never reach subscribers.
+        # truncated index, a lost prefix leaving nonce or index glued to a
+        # word). Treat the pass as FAILED: after a second failed pass the
+        # caller does not cache it and falls back to the German source — a
+        # raw sentinel must never reach subscribers. The rule is the one the
+        # cache applies (``_cached_translation_defect``): before 2026-10-10 a
+        # pass was judged by ``_RESIDUAL_PLACEHOLDER_RE`` alone, so a shape
+        # only the debris rule sees ("Nord8d74459316abX5X") was published
+        # and cached, and left the cache only on the next build.
         log.warning(
             "Translation for identity %s left a residual placeholder under "
             "nonce %s; discarding this pass.",
@@ -5414,6 +5437,7 @@ def _translate_text_attempt(
         combined_mapping,
         ident,
         _PLACEHOLDER_NONCE if _has_short_placeholder_shape(masked_text) else None,
+        prose,
     )
     if placeholder_failure:
         # The model mangled or dropped a placeholder. One more pass under a
@@ -5427,7 +5451,7 @@ def _translate_text_attempt(
             nonce,
         )
         unmasked, _placeholder_failure = _model_pass(
-            pipe, masked_text, combined_mapping, ident, nonce
+            pipe, masked_text, combined_mapping, ident, nonce, prose
         )
     if unmasked is None:
         return None
@@ -5550,14 +5574,45 @@ def _translate_time_line_en(time_line: str) -> str:
 # St.Andrä-Wördern" on 2026-10-02, with 44 such fields in the cache (fund D).
 # An ``X`` counts only behind a lowercase letter or a digit, so "REX" stays
 # alone, and only when the German source does not carry the same token.
+#
+# Since 2026-10-10 the same rule judges every fresh model pass
+# (:func:`_leftover_placeholder`), and two more shapes count. Both are what a
+# placeholder leaves when the model drops its opening ``X`` or its prefix,
+# in either form a pass shows it (``XGLO0X`` or ``XGLO<nonce>X0X``):
+#
+# * the prefix letters glued to the index, ``NordGLO0X`` or ``XGLO0``;
+# * a nonce fragment, six or more lowercase hex characters with at least one
+#   digit and one letter: "Nord8d74459316abX5X", or "Nord8d74459316ab" once
+#   the index went too (EN check 2026-10-08).
+#
+# A glossary placeholder (``XGLO``) that the model loses this way is counted
+# by no other check (``_entities_dropped_by_translation`` counts ``XENT``
+# only), so before 2026-10-10 the leftover was published and cached and left
+# the cache on the next build. Every match of either shape in the 3,003 DE/EN
+# pairs the feed published from July to 2026-10-08 and in the 5,151 cached
+# EN fields of 2026-10-10 was a leaked placeholder, never a word: no German
+# or English word runs "ent"/"glo" into a digit, no word is a lowercase hex
+# run with a digit in it, and a line code is upper case ("44A").
 _CACHED_DEBRIS_RE: re.Pattern[str] = re.compile(
     r"[A-Za-zÄÖÜäöüß0-9]*(?:[a-zäöüß]|\d)X(?![A-Za-z0-9])|XG[A-Za-z]{2}[0-9a-f]{8,}\w*"
+    r"|[A-Za-zÄÖÜäöüß]*(?i:ent|glo)\d+X?"
+    r"|(?=[0-9a-f]*\d)(?=[0-9a-f]*[a-f])[0-9a-f]{6,}"
 )
 
 
 def _placeholder_debris(source: str, cached: str) -> bool:
     """Whether *cached* carries placeholder debris the German *source* does not."""
     return any(match.group(0) not in source for match in _CACHED_DEBRIS_RE.finditer(cached))
+
+
+def _leftover_placeholder(source: str, english: str) -> bool:
+    """Whether *english* carries a placeholder or its debris the German *source* does not.
+
+    One rule for a fresh model pass (:func:`_model_pass`) and a cached value
+    (:func:`_cached_translation_defect`), so the cache never has to heal what
+    a pass let through.
+    """
+    return bool(_RESIDUAL_PLACEHOLDER_RE.search(english)) or _placeholder_debris(source, english)
 
 
 def _cached_translation_defect(source: str, cached: str) -> str | None:
@@ -5578,7 +5633,7 @@ def _cached_translation_defect(source: str, cached: str) -> str | None:
 
     Either way :func:`_cached_translation` treats the hit as a miss.
     """
-    if _RESIDUAL_PLACEHOLDER_RE.search(cached) or _placeholder_debris(source, cached):
+    if _leftover_placeholder(source, cached):
         return "residual placeholder"
     if set(_DATE_ENTITY_RE.findall(source)) - set(_DATE_ENTITY_RE.findall(cached)):
         return "missing or mangled date"
