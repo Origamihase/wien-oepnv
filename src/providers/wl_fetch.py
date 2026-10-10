@@ -25,6 +25,7 @@ from ..utils.ids import make_guid
 from ..utils.logging import sanitize_log_arg
 from ..utils.stations import canonical_name, display_name
 from ..utils.text import DROP_ACCESS, facility_drop_label, is_station_access_only
+from ..utils.vienna_clock import vienna_wall_clock
 from ..feed.config import ENDS_AT_GRACE_MINUTES
 
 from .wl_lines import (
@@ -36,7 +37,13 @@ from .wl_lines import (
     _make_line_pairs_from_related,
     _merge_line_pairs,
 )
-from .wl_plausibility import note_corrections, plausible_end, plausible_start, reset_corrections
+from .wl_plausibility import (
+    incident_begin,
+    note_corrections,
+    plausible_end,
+    plausible_start,
+    reset_corrections,
+)
 from . import wl_resolved
 from .wl_text import (
     FACILITY_ONLY,
@@ -191,7 +198,9 @@ def _iso(s: object) -> datetime | None:
         return None
     if not dt.tzinfo:
         dt = dt.replace(tzinfo=UTC)
-    return cast('datetime | None', dt)
+    # In winter time WL gives summer times the winter offset (20.03.2026:
+    # "2027-06-30T11:11:00+01:00"); the wall clock is what it meant.
+    return cast('datetime | None', vienna_wall_clock(dt))
 
 
 # A title that only lists lines says nothing the line prefix does not. The
@@ -1089,6 +1098,13 @@ def _incident_ids(info: dict[str, Any]) -> set[str]:
     return {match.group(1)} if match else set()
 
 
+def _earliest(a: datetime | None, b: datetime | None) -> datetime | None:
+    """The earlier of *a* and *b*; an unknown one does not count."""
+    if a is None or b is None:
+        return a or b
+    return min(a, b)
+
+
 def _absorb_headline(target: dict[str, Any], src: dict[str, Any]) -> None:
     """Übernimm Haltestellen, Extras und Zeitraum von *src* nach *target*.
 
@@ -1106,6 +1122,7 @@ def _absorb_headline(target: dict[str, Any], src: dict[str, Any]) -> None:
     src_pub, target_pub = src.get("pubDate"), target.get("pubDate")
     if src_pub and (not target_pub or src_pub < target_pub):
         target["pubDate"] = src_pub
+    target["incident_start"] = _earliest(target.get("incident_start"), src.get("incident_start"))
     src_end, target_end = src.get("ends_at"), target.get("ends_at")
     if src_end is not None and target_end is not None:
         target["ends_at"] = max(target_end, src_end)
@@ -1434,6 +1451,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             # stabile Identity für first_seen
             topic_key = _topic_key_from_title(title_raw)
             identity = _wl_identity("störung", line_pairs, real_start, topic_key)
+            wl_ids = _incident_ids(ti)
 
             raw.append(
                 {
@@ -1450,7 +1468,9 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                     "starts_at": real_start, # Effective start date (for calendar)
                     "ends_at": end,
                     "_identity": identity,
-                    "wl_ids": _incident_ids(ti),
+                    "wl_ids": wl_ids,
+                    # A display ticker's start can be an old one (``incident_begin``).
+                    "incident_start": start if wl_ids else None,
                 }
             )
 
@@ -1568,6 +1588,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                 "ends_at": ev["ends_at"],
                 "_identity": ev["_identity"],  # stabil weiterreichen
                 "wl_ids": set(ev.get("wl_ids") or ()),
+                "incident_start": ev.get("incident_start"),
             }
         else:
             current_title = b["title"]
@@ -1605,6 +1626,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                 not b["pubDate"] or ev["pubDate"] < b["pubDate"]
             ):
                 b["pubDate"] = ev["pubDate"]
+            b["incident_start"] = _earliest(b.get("incident_start"), ev.get("incident_start"))
 
             # A notice (Hinweis) spans its phases and starts at the earliest
             # of them, like the end below and the fuzzy merge
@@ -1695,11 +1717,13 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                 "description": desc,  # plain text
                 "link": f"{WL_BASE}",
                 "guid": guid,
-                "pubDate": b["pubDate"],  # None erlaubt
+                # None erlaubt; a rewritten ticker does not date it back
+                "pubDate": incident_begin(b["pubDate"], b.get("incident_start")),
                 "starts_at": b["starts_at"],
                 "ends_at": b["ends_at"],
                 "_identity": b["_identity"],  # stabil für first_seen
                 **({"_wl_ids": sorted(b["wl_ids"])} if b.get("wl_ids") else {}),
+                **({"_incident_start": b["incident_start"]} if b.get("incident_start") else {}),
                 "_lines_set": lines_tok,  # für Sammel-vs.-Einzel
                 # Für E) und F): was die Meldung über ihre Linien hinaus sagt,
                 # und alles, was sie sagt.
