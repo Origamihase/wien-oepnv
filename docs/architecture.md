@@ -653,9 +653,15 @@ verdrängt eine andere Störung.
     Einsatzes: `pubDate` ist die früheste, `starts_at` die jüngste
     (`wl_fetch` nimmt die jüngste, damit eine wiederverwendete alte
     Kurzmeldung nichts zurückdatiert). Am 03.10. trugen „86A/87A/95A:
-    Fahrtbehinderung wegen Rettungseinsatz“ `pubDate` 10:37:00, die von WL
-    eingetragene Minute, und die Kurzmeldungen der Linien von 10:42:44 bis
-    10:54:13 als `starts_at`. Der Beginn ist daher `pubDate`, wenn es am
+    Fahrtbehinderung wegen Rettungseinsatz“ `pubDate` 10:37:00, den von WL
+    eingetragenen Beginn, und die Kurzmeldungen der Linien von 10:42:44 bis
+    10:54:13 als `starts_at`. Geprüft am 10.10. an den Rohdaten seit 04.10.
+    (366 ungeplante WL-Störungen, `reports/seit-zeit-2026-10-10.md`):
+    `time.start` einer Störungsmeldung ist der Beginn, den WL bei der
+    Erfassung (`time.created`) einträgt, bei der Erstmeldung 0 bis 10
+    Minuten davor (177 von 205 binnen einer Minute); Folgemeldungen
+    (`-F01` …) erben ihn. Unser Abruf sah keine Meldung vor ihrer
+    Erfassung und jede im nächsten Abruf danach. Der Beginn ist daher `pubDate`, wenn es am
     selben Wiener Tag liegt und nicht auf einer vollen Stunde; sonst
     `starts_at`. Von den 18 Bündeln seit Juli, deren früheste Meldung mehr
     als eine Stunde vor der jüngsten lag, trugen 12 eines dieser Merkmale,
@@ -669,6 +675,20 @@ verdrängt eine andere Störung.
     vollen Stunde beginnt, zeigt weiter „[Heute]“. Die Beginne passen zur
     Beobachtung: 2 038 der 2 324 WL-Störungen seit Juli tauchten binnen 35
     Minuten nach ihrem `starts_at` im Feed auf (Takt 30 Minuten).
+    Eine Kurzmeldung darf den Beginn der Störungsmeldung (WL-Nummer
+    `I…`) höchstens `TICKER_LEAD_MAX` = 60 Minuten vorziehen
+    (`wl_plausibility.incident_begin`, seit 2026-10-10; das Feld
+    `_incident_start` trägt den Beginn der Störungsmeldungen durch Cache
+    und Merge). WL schaltet die Anzeigen bis zu 39 Minuten vor der
+    Erfassung ein, dann stimmt die frühere Zeit („9: Falschparker“ am
+    09.10.: Anzeige 14:21, Meldung 15:00). Ältere stammen von einer
+    Anzeige, die WL für den neuen Einsatz umgeschrieben hat und die ihre
+    alte Startzeit behielt: Am 09.10. lasen die Anzeigen einer
+    Demonstration von 13:08 „Fahrtbehinderung wegen Polizeieinsatz“ für den
+    Polizeieinsatz ab 20:08, der Feed zeigte um 20:30 „2/71: Polizeieinsatz
+    [Seit 13:08]“. Ohne Störungsmeldung im Eintrag sagt nichts, dass eine
+    Anzeige umgeschrieben wurde; so blieb um 21:01 „71: Polizeieinsatz
+    [Seit 13:10]“, als WL für die 71 nur noch die Anzeigen führte.
     Fällt die früheste Meldung weg, während die übrigen bleiben (die
     Kurzmeldungen laufen aus, die ausführliche Meldung wird erledigt),
     bleibt der Beginn stehen: Der Build merkt sich das früheste `pubDate`
@@ -743,13 +763,25 @@ verdrängt eine andere Störung.
     zum Zeitpunkt des Abrufs. Beim ersten Abruf nach dem 29.03.2026 wechselten
     alle laufenden Meldungen bei gleicher Uhrzeit von +01:00 auf +02:00, und
     alle 38 Wintermeldungen im Cache tragen seither +02:00 („19 Dec 2025
-    10:07:13 +0200“). Ab dem 25.10. trügen Sommermeldungen +01:00. `oebb.
-    _vienna_wall_clock` liest die Uhrzeit als Wiener Ortszeit, wenn der Offset
-    nicht zu ihr passt; in der doppelten Stunde passen beide und der gesendete
-    gilt. WL lieferte im März Sommerzeiten ebenfalls mit dem Winter-Offset,
-    seit Mai aber durchgehend richtige Offsets (kein falscher unter rund 7 000
-    Zeitstempeln der anderen Jahreszeit in jedem 20. Cache-Stand); daher bleibt
-    WL unverändert.
+    10:07:13 +0200“). Ab dem 25.10. trügen Sommermeldungen +01:00.
+    `vienna_wall_clock` (`src/utils/vienna_clock.py`) liest die Uhrzeit als
+    Wiener Ortszeit, wenn der Offset nicht zu ihr passt; in der doppelten
+    Stunde passen beide und der gesendete gilt.
+  - **WL-Zeitstempel (seit 2026-10-10 ebenso):** Solange Winterzeit galt,
+    trugen alle Sommerzeiten von WL +01:00 (am 20.03.2026 alle 17, darunter
+    die 11:11-Platzhalter „2027-06-30T11:11:00+01:00“ und Datumsenden
+    „2026-05-31T23:56:00+01:00“); gemeint war die Uhrzeit. In der Sommerzeit
+    stimmen die Offsets beider Jahreszeiten (kein falscher unter 7 775
+    Winterzeiten in jedem 20. Cache-Stand von Mai bis Oktober, keiner unter
+    den 53 der Rohantworten seit 04.10.). Der Fehler tritt also nur in der
+    Winterzeit auf und ist ab dem 25.10. zurückzuerwarten. Ungeschützt
+    zählte ein 11:11-Ende dann als 12:11 nicht mehr als Platzhalter (die
+    Zeitzeile zeigte „[Bis 30.06.2027]“ für rund 27 Hinweise mit einem
+    Sommer-Platzhalter), und ein Ende um 23:56 fiele auf den Folgetag.
+    `wl_fetch._iso` und `wl_resolved._moment` lesen deshalb dieselbe
+    Wanduhr wie ÖBB. Bis zur Umstellung ändert das nichts (alle Offsets
+    passen); ob WL ab 25.10. wieder +01:00 schickt, zeigt der WL-Rohstand
+    dieser Nacht.
   - Die Statistik-Spalte `hour` zählt am 25.10. die Stunde 02 doppelt; das ist
     die reale Wiener Stunde und bleibt so.
 * **Folgejahre, Jahreswechsel, Schaltjahre (geprüft 2026-10-03 bis 2040).**

@@ -36,6 +36,9 @@ class FeedItem(TypedDict):
     _members: NotRequired[list[str]]
     # WL's incident numbers (``wl_fetch._incident_ids``).
     _wl_ids: NotRequired[list[str]]
+    # The earliest start of those messages (``wl_plausibility.incident_begin``);
+    # an ISO string once read back from the cache.
+    _incident_start: NotRequired[datetime | str]
 
 
 @runtime_checkable

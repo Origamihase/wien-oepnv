@@ -66,6 +66,30 @@ _VIENNA_TZ = ZoneInfo("Europe/Vienna")
 # for the ten feed slots.
 PLACEHOLDER_END = (11, 11)
 
+# How long before WL's incident message (``I20261010-0007``) a display ticker
+# of the same incident may have begun. WL switches the displays on before it
+# enters the incident: from 04.10. to 10.10.2026 up to 39 minutes ("9:
+# Falschparker", ticker 14:21, incident 15:00), and the ticker's time is the
+# true begin. A ticker that began earlier still is one WL rewrote for the new
+# incident and that kept the start of the old one: on 09.10. the tickers of a
+# demonstration from 13:08 read "Fahrtbehinderung wegen Polizeieinsatz" for
+# a police operation from 20:08, and the feed showed "2/71: Polizeieinsatz
+# [Seit 13:08]".
+TICKER_LEAD_MAX = timedelta(minutes=60)
+
+
+def incident_begin(published: datetime | None, incident_start: datetime | None) -> datetime | None:
+    """The earliest ``pubDate`` of an item, unless a ticker dated it before its incident.
+
+    *incident_start* is the earliest start of the item's WL incident
+    messages. A ``pubDate`` more than :data:`TICKER_LEAD_MAX` before it
+    came from a rewritten ticker and gives way to the incident's start.
+    Without an incident message nothing says so, and the ``pubDate`` stays.
+    """
+    if published is None or incident_start is None:
+        return published
+    return incident_start if published < incident_start - TICKER_LEAD_MAX else published
+
 # How far ahead of its publication a measure may begin on one source's word.
 # In the WL cache of 2026-10-02 the longest real lead is the Stammstrecke
 # phase 2 (published 10.06., begins 07.09.): 88 days. The next is 370 days,
