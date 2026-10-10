@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 10 Oct 2026 23:30:43 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2026 00:01:03 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[11/71/15A: Police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e028bf29e2b55f123a4f0f60decb3321ba0350e9760eab5627332c4fb672125d</guid>
+      <pubDate>Sat, 10 Oct 2026 23:57:00 +0200</pubDate>
+      <ext:first_seen>Sun, 11 Oct 2026 00:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 23:57:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 11 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction in both directions. Line 15A: service obstruction towards the station Meidling S U, Schedifkaplatz. [Today]</description>
+      <content:encoded><![CDATA[Service obstruction in both directions. Line 15A: service obstruction towards the station Meidling S U, Schedifkaplatz.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29B: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">472b7a2959f06b96c6440b0762bffddb4e5aceb2438c5a1a740531545c12af5a</guid>
+      <pubDate>Sat, 10 Oct 2026 23:51:00 +0200</pubDate>
+      <ext:first_seen>Sun, 11 Oct 2026 00:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 23:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 11 Oct 2026 00:45:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [Today]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Today]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Hetzendorf ↔ Wien Atzgersdorf]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;918456</guid>
-      <pubDate>Sat, 10 Oct 2026 23:14:32 +0200</pubDate>
+      <pubDate>Sat, 10 Oct 2026 23:58:44 +0200</pubDate>
       <ext:first_seen>Sat, 10 Oct 2026 23:00:51 +0200</ext:first_seen>
       <ext:starts_at>Sat, 10 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Due to damage on the track, trains can only run to a limited extent until approx. 23:59. Allow up to 10 minutes of extra travel time. [Since 22:58]</description>
-      <content:encoded><![CDATA[Due to damage on the track, trains can only run to a limited extent until approx. 23:59. Allow up to 10 minutes of extra travel time.<br/>[Since 22:58]]]></content:encoded>
+      <ext:ends_at>Sun, 11 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Due to damage on the track, trains can only run to a limited extent until approx. 00:30. Allow up to 10 minutes of extra travel time. [Today]</description>
+      <content:encoded><![CDATA[Due to damage on the track, trains can only run to a limited extent until approx. 00:30. Allow up to 10 minutes of extra travel time.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U2: Rescue operation]]></title>
@@ -27,9 +49,9 @@
       <pubDate>Sat, 10 Oct 2026 23:27:00 +0200</pubDate>
       <ext:first_seen>Sat, 10 Oct 2026 22:33:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 10 Oct 2026 23:27:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Seestadt. Expected until 23:55. Reason: rescue operation in the stop area of Taborstraße. [Since 23:27]</description>
-      <content:encoded><![CDATA[Service obstruction towards Seestadt. Expected until 23:55. Reason: rescue operation in the stop area of Taborstraße.<br/>[Since 23:27]]]></content:encoded>
+      <ext:ends_at>Sun, 11 Oct 2026 00:30:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Today]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[18: LCC autumn marathon on 11.10.2026]]></title>
@@ -39,8 +61,8 @@
       <ext:first_seen>Fri, 09 Oct 2026 00:01:03 +0200</ext:first_seen>
       <ext:starts_at>Sun, 11 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 11 Oct 2026 16:30:00 +0200</ext:ends_at>
-      <description>Due to the LCC autumn marathon in Prater Hauptallee, line 18 is curtailed. Line 18: service only between Burggasse, Stadthalle U and Schlachthausgasse U. [On Sun 11.10.]</description>
-      <content:encoded><![CDATA[Due to the LCC autumn marathon in Prater Hauptallee, line 18 is curtailed. Line 18: service only between Burggasse, Stadthalle U and Schlachthausgasse U.<br/>[On Sun 11.10.]]]></content:encoded>
+      <description>Due to the LCC autumn marathon in Prater Hauptallee, line 18 is curtailed. Line 18: service only between Burggasse, Stadthalle U and Schlachthausgasse U. [Today]</description>
+      <content:encoded><![CDATA[Due to the LCC autumn marathon in Prater Hauptallee, line 18 is curtailed. Line 18: service only between Burggasse, Stadthalle U and Schlachthausgasse U.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1A/3A: Schwertgasse]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction. [Until 26.10.]</description>
       <content:encoded><![CDATA[Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction.<br/>[Until 26.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Neue Donau, no stop towards Floridsdorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">747d54fbd4c0aad685b21596a0c44cb67d41165e556ee43b1bc3e8636920f551</guid>
-      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 16:30:37 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Due to renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station Neue Donau with the U6 of … [Until 31.12.]</description>
-      <content:encoded><![CDATA[Due to renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station Neue Donau with the U6 of …<br/>[Until 31.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Buses stop at Salvatorianerplatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
-      <pubDate>Sat, 10 Oct 2026 04:40:17 +0200</pubDate>
-      <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 04:40:17 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 11 Oct 2026 01:00:00 +0200</ext:ends_at>
-      <description>Reason: construction works. [Until Sun 11.10.]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[Until Sun 11.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
