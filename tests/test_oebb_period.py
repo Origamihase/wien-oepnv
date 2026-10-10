@@ -109,7 +109,7 @@ def test_three_closures_on_one_route_become_distinguishable() -> None:
                 f"keine Nahverkehrszüge fahren."
             )
         )
-        assert built is not None
+        assert not isinstance(built, str), built
         lines.append(format_local_times(built["starts_at"], built["ends_at"], NOW))
 
     # ``format_local_times`` joins its words with NARROW NO-BREAK SPACE
@@ -134,7 +134,7 @@ def test_the_period_replaces_the_publication_date() -> None:
         _item("05.12.2026 - 07.12.2026<br/><br/>Wegen Bauarbeiten können zwischen "
               "<b>Wien Hbf (U)</b> und <b>Gramatneusiedl Bahnhof</b> …")
     )
-    assert built is not None
+    assert not isinstance(built, str), built
 
     pub = built["pubDate"]
     assert isinstance(pub, datetime)
@@ -154,7 +154,7 @@ def test_an_end_date_lets_a_finished_closure_retire() -> None:
     until it aged out by ``first_seen``, long after the work had finished.
     """
     built = _build_item_from_xml(_item("03.10.2026 - 05.10.2026<br/><br/>Wegen Bauarbeiten …"))
-    assert built is not None
+    assert not isinstance(built, str), built
     assert built["ends_at"] is not None
 
 
@@ -164,6 +164,6 @@ def test_without_a_period_the_previous_behaviour_is_kept() -> None:
         _item("Wegen Bauarbeiten können zwischen <b>Wien Hbf (U)</b> und "
               "<b>Gramatneusiedl Bahnhof</b> keine Züge fahren.")
     )
-    assert built is not None
+    assert not isinstance(built, str), built
     assert built["starts_at"] == built["pubDate"]
     assert built["ends_at"] is None
