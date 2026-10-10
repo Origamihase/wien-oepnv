@@ -217,70 +217,20 @@ jobs:
       - name: Refresh statistics dashboard and README snapshot
         run: python scripts/generate_markdown_stats.py
 
-      # ----- 5) Aenderungen committen und pushen -----
-      - name: Pull concurrent remote changes
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          # ``git pull --rebase --autostash`` does NOT fail when the
-          # autostash RE-APPLY conflicts: the rebase (fast-forward onto a
-          # concurrent push) succeeds, the failed ``git stash apply`` is
-          # only a warning, and the step still exits 0 — leaving an UNMERGED
-          # index. The next step (git-auto-commit-action) then dies with the
-          # opaque "error: you need to resolve your current index first"
-          # (observed 2026-05-25 on update-cycle.yml, the mirror of this
-          # commit pattern). The shared ``external-api-fetch`` concurrency
-          # lane now serialises the feed-writing workflows so this collision
-          # should not recur; the block below is the defense-in-depth
-          # backstop that keeps ANY residual concurrent push (a manual push,
-          # a future workflow) from re-introducing the silent-unmerged-index
-          # failure.
-          git pull --rebase --autostash
-
-          # Append-only ledgers (``data/stats/*.csv``) auto-resolve via the
-          # ``merge=union`` driver in ``.gitattributes`` — both sides' rows
-          # are kept, so they never surface as unmerged here. Everything
-          # else this refresh writes (feed XMLs, README, statistik.md, the
-          # station directory, the ``first_seen`` state) is a full
-          # regeneration, so on the rare residual conflict the locally built
-          # copy is authoritative.
-          mapfile -t -d '' conflicts < <(git diff --name-only --diff-filter=U -z)
-          if [ "${#conflicts[@]}" -gt 0 ]; then
-            echo "::warning title=reconcile::autostash re-apply conflicted on a concurrent push; keeping locally-built copies for: ${conflicts[*]}"
-            # In a stash-apply conflict, stage 3 ("--theirs") is the stashed
-            # locally-built version; stage 2 is the just-pulled upstream.
-            git checkout --theirs -- "${conflicts[@]}"
-            git add -- "${conflicts[@]}"
-            # A conflicted ``git stash apply`` leaves the autostash entry on
-            # the stash stack; drop it so it cannot leak into a later run.
-            git stash drop || true
-          fi
-
-          # Never hand an unmerged index to the auto-commit step.
-          if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
-            echo "::error title=reconcile::unresolved merge conflicts remain after reconcile" >&2
-            git diff --name-only --diff-filter=U >&2
-            exit 1
-          fi
-
-      # NO ``push_options: --force-with-lease`` — it cannot protect this
-      # push and actively destroyed history on 2026-09-11. The action runs
-      # its own ``git fetch`` immediately before pushing, which re-arms the
-      # lease against the very commit the lease is meant to protect:
-      #
-      #   + f576d7cc6...a62fa59c1 main -> origin/main  (forced update)
-      #   Your branch and 'origin/main' have diverged … 1 different commits
-      #   + a62fa59c1...82c421f01 main -> main         (forced update)
-      #
-      # That second line silently dropped the merge commit of PR #1783 from
-      # main. A plain push cannot do that: after the rebase in the step
-      # above it fast-forwards, and if a concurrent writer wins the race it
-      # is rejected — this run then leaves the remote untouched and the next
-      # trigger regenerates the same output. See
-      # ``docs/archive/audits/audit-2026-09-12-force-push-history-loss.md``.
+      # Publish through ``scripts/publish_to_main.sh``, the publish path
+      # shared by every workflow that writes to ``main`` (since 2026-10-10):
+      # commit, then a PLAIN push (never ``--force-with-lease``, which
+      # dropped the merge of PR #1783 from ``main`` on 2026-09-11, see
+      # docs/archive/audits/audit-2026-09-12-force-push-history-loss.md)
+      # with up to 4 attempts; a rejection by a concurrent push re-syncs
+      # with ``git pull --rebase`` first and a conflict keeps the locally
+      # built copy. It replaces the former pre-commit pull plus a single
+      # push through ``git-auto-commit-action``, which went red whenever an
+      # update-cycle commit landed in between (SEO Verify, 2026-10-04).
+      # ``--strict``: a run that could not publish after every attempt
+      # turns red, so a lost refresh does not pass unnoticed.
       - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@4a55954c782fc1ea30b9056cd3e7a2b40ca8887d # v7.2.0
-        with:
-          commit_message: 'chore: full project refresh (manual trigger) [skip ci]'
-          add_options: '-A'
+        shell: bash
+        run: >-
+          bash scripts/publish_to_main.sh --all --strict --label publish
+          --message "chore: full project refresh (manual trigger) [skip ci]"
