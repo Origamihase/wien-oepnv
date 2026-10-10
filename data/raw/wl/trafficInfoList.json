@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261010-0004-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261010-0006"
    },
    {
     "id": 3,
@@ -203,37 +203,36 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "52": "ptTram"
+      "62": "ptTram"
      }
     },
-    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Linzer Straße 85",
-    "name": "I20261010-0004-F01",
+    "description": "Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie 62:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261010-0006",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "52"
+     "62"
     ],
     "relatedLinesDetails": [
      [
       {
-       "lineId": "152",
-       "lineName": "52",
+       "lineId": "162",
+       "lineName": "62",
        "vehicleType": "ptTram"
       }
      ]
     ],
-    "status": "resolved",
+    "status": "active",
     "time": {
-     "created": "2026-10-10T06:27:00.000+0200",
-     "end": "2026-10-10T07:37:00.000+0200",
-     "lastUpdate": "2026-10-10T07:37:00.000+0200",
-     "resume": "2026-10-10T07:37:00.000+0200",
-     "start": "2026-10-10T05:55:00.000+0200"
+     "created": "2026-10-10T08:46:00.000+0200",
+     "end": "2026-10-10T23:55:00.000+0200",
+     "lastUpdate": "2026-10-10T08:46:00.000+0200",
+     "resume": "2026-10-10T08:45:00.000+0200",
+     "start": "2026-10-10T08:45:00.000+0200"
     },
-    "title": "52: Polizeieinsatz"
+    "title": "62: Verspätungen"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
