@@ -33,12 +33,12 @@ class TestOebbMarchegg:
         # Expected behavior (fixed): Title matches "Marchegg" (Outer) so it should be filtered.
         # AND if it were kept, it should be formatted nicely.
 
-        # We force _is_relevant to return True momentarily to inspect the TITLE formatting
+        # We force _drop_reason to keep the item momentarily to inspect the TITLE formatting
         # because if it works correctly, the item is filtered out and we can't see the title.
 
         # Robustly patch the module imported in this file
         with patch.object(oebb_provider, "_fetch_xml", return_value=ET.fromstring(MOCK_XML)):
-            with patch.object(oebb_provider, "_is_relevant", return_value=True):
+            with patch.object(oebb_provider, "_drop_reason", return_value=None):
                 events = oebb_provider.fetch_events()
 
                 assert len(events) == 1

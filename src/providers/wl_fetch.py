@@ -24,7 +24,7 @@ from ..utils import raw_capture, source_shape
 from ..utils.ids import make_guid
 from ..utils.logging import sanitize_log_arg
 from ..utils.stations import canonical_name, display_name
-from ..utils.text import is_station_access_only
+from ..utils.text import DROP_ACCESS, facility_drop_label, is_station_access_only
 from ..feed.config import ENDS_AT_GRACE_MINUTES
 
 from .wl_lines import (
@@ -39,6 +39,7 @@ from .wl_lines import (
 from .wl_plausibility import note_corrections, plausible_end, plausible_start, reset_corrections
 from . import wl_resolved
 from .wl_text import (
+    FACILITY_ONLY,
     KW_EXCLUDE,
     KW_RESTRICTION,
     _is_facility_only,
@@ -51,14 +52,15 @@ from .wl_text import (
 def _facility_drop_reason(title: str) -> str | None:
     """Drop reason for a title about station facilities only, else ``None``.
 
-    A lift or escalator (``_is_facility_only``) and, since 2026-10-09, a
+    A lift or escalator (``_is_facility_only``), since 2026-10-09 the
+    folding ramp of a train (own label since 2026-10-10), and a
     closed station access (``is_station_access_only``: "Aufgangssperre",
     "Sperre Ausgang") have no place in the feed: the trains still stop.
     """
     if _is_facility_only(title):
-        return "nur Aufzug/Fahrtreppe"
+        return facility_drop_label(FACILITY_ONLY.findall(title))
     if is_station_access_only(title):
-        return "nur Aufgang/Ausgang"
+        return DROP_ACCESS
     return None
 
 
