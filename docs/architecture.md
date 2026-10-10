@@ -1450,6 +1450,24 @@ Skript ändert nie eine Meldung. Es schreibt nur seine Sammlung
   der Google-Places-Call vollständig übersprungen. Das Freikontingent
   (`PLACES_LIMIT_*`-Env-Vars) bleibt für tatsächlich fehlende Einträge
   reserviert.
+- **Eigene Variable für den Zählerstand (seit 2026-10-10).** Der
+  Zählerstand liegt in `data/places_quota.json`; umbiegen lässt er sich
+  nur über `PLACES_QUOTA_STATE`. Bis 2026-10-10 las
+  `src/places/quota.py:resolve_quota_state_path` ersatzweise auch
+  `STATE_PATH` und hängte `places_quota.json` daran an, behandelte die
+  Variable also als **Verzeichnis**, während der Feed-Build
+  (`src/feed/config.py`) sie als **Datei** liest (`data/first_seen.json`).
+  Wer den Feed-Zustand umbog, hätte das Kontingent auf einen ungültigen
+  Pfad `…/first_seen.json/places_quota.json` gelegt. Betreiberentscheidung
+  vom 2026-10-10: Jeder Zweck bekommt eine eigene Variable, kein Name hat
+  zwei Bedeutungen. `STATE_PATH` bleibt dem Feed, weil er der einzige
+  Verbraucher mit Gewicht ist (Standardwert, Doku, Tests und Path-Guard
+  hängen daran) und eine Umbenennung nur bestehende Konfigurationen
+  bräche; das Kontingent hatte mit `PLACES_QUOTA_STATE` ohnehin schon
+  einen eigenen Namen, nur der Rückgriff fiel weg. Weder Workflows noch
+  Skripte setzten `STATE_PATH`, bei den Standardwerten ändert sich also
+  nichts. `tests/places/test_quota.py` wacht darüber, dass außer
+  `src/feed/config.py` kein Modul `STATE_PATH` liest.
 
 **Netzwerk-Resilienz-Schichten:**
 
