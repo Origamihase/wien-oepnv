@@ -73,7 +73,7 @@ from .providers.baustellen import (
     shares_address,
     site_street,
 )
-from .providers.wl_plausibility import end_unknown
+from .providers.wl_plausibility import end_unknown, incident_begin
 from .providers.wl_text import _MONTHS_DE, STOP_NOTICE_LEAD_RE
 from .utils.text import (
     BLOCK_END_MARK,
@@ -1661,6 +1661,7 @@ def _incident_since(
         # Liesing", Polizeieinsatz, 03.10.2026 20:00:01), and that one read
         # "Heute" while the line was closed.
         return first_published or pub_date
+    pub_date = incident_begin(pub_date, _wl_incident_start(it))
     since = starts_at
     if (
         isinstance(pub_date, datetime)
@@ -8662,8 +8663,18 @@ def _span_group(merged: FeedItem, members: Sequence[FeedItem]) -> None:
     # An open end of one member keeps the incident open.
     merged["ends_at"] = max(ends, key=_to_utc) if len(ends) == len(members) else None
     published = [p for p in (m.get("pubDate") for m in members) if isinstance(p, datetime)]
+    incidents = [s for s in map(_wl_incident_start, members) if s is not None]
+    if incidents:
+        merged["_incident_start"] = min(incidents, key=_to_utc)
     if published:
-        merged["pubDate"] = min(published, key=_to_utc)
+        # A ticker WL rewrote for this incident keeps an old start
+        # (``wl_plausibility.incident_begin``).
+        merged["pubDate"] = incident_begin(min(published, key=_to_utc), _wl_incident_start(merged))
+
+
+def _wl_incident_start(item: FeedItem) -> datetime | None:
+    """The earliest start of *item*'s WL incident messages (``wl_fetch``), if it has one."""
+    return _parse_datetime(item.get("_incident_start"))
 
 
 def _merged_ticker(members: Sequence[FeedItem]) -> FeedItem:
@@ -9462,7 +9473,7 @@ def _carry_item_identity(
         if not _is_wl_disruption(item):
             continue
         entry = state.get(str(item.get("guid") or ""))
-        earliest = _parse_state_time(entry, "earliest_published")
+        earliest = incident_begin(_parse_state_time(entry, "earliest_published"), _wl_incident_start(item))
         published = _parse_datetime(item.get("pubDate"))
         if earliest is None or not isinstance(published, datetime) or not _continues(entry, item, now_utc):
             continue

@@ -5,6 +5,34 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **„Seit“-Zeit geprüft; umgeschriebene WL-Anzeigen datieren nicht mehr zurück (2026-10-10)**:
+  Prüfung „Unverifiziert“ (`reports/seit-zeit-2026-10-10.md` im
+  Projektordner). An allen WL-Rohdaten seit 04.10. bestätigt: `pubDate`
+  einer Störungsmeldung ist der Beginn, den WL bei der Erfassung einträgt
+  (bei 205 Erstmeldungen 0 bis 9 Minuten vor `time.created`, 177 binnen
+  einer Minute; Folgemeldungen erben ihn), kein Abruf sah eine Meldung vor
+  ihrer Erfassung. Fehler: Am 09.10. schrieb WL die Anzeigen einer
+  Demonstration (Linien 2 und 71, ab 13:08) für den Polizeieinsatz ab 20:08
+  um; sie behielten ihre Startzeit, und der Feed zeigte „2/71:
+  Polizeieinsatz [Seit 13:08]“. Jetzt zieht eine Anzeige den Beginn der
+  Störungsmeldung höchstens `TICKER_LEAD_MAX` = 60 Minuten vor
+  (`wl_plausibility.incident_begin`; das Feld `_incident_start` trägt den
+  Beginn durch Cache, Merge und Zeitzeile). Echte Vorläufe von bis zu 39
+  Minuten bleiben („9: Falschparker“: Anzeige 14:21, Meldung 15:00).
+  Replay aller 345 Builds seit 04.10.: 343 gleich, zwei zeigen „[Seit
+  20:08]“ statt „[Seit 13:08]“. Ohne Störungsmeldung im Eintrag bleibt eine
+  umgeschriebene Anzeige erkennbar nur an ihrem Text und wird nicht
+  korrigiert („71: Polizeieinsatz [Seit 13:10]“ um 21:01).
+* **WL-Zeitstempel mit falschem Jahreszeit-Offset (2026-10-10)**: Im März
+  trugen alle Sommerzeiten von WL +01:00 (z. B. der 11:11-Platzhalter
+  „2027-06-30T11:11:00+01:00“); seit Mai stimmen alle Offsets. Ab 25.10. ist
+  der Fehler zurückzuerwarten: ein 11:11-Ende hätte als 12:11 nicht mehr als
+  Platzhalter gezählt, ein Ende um 23:56 wäre auf den Folgetag gefallen.
+  `wl_fetch._iso` und `wl_resolved._moment` lesen die Uhrzeit jetzt wie ÖBB
+  als Wiener Wanduhr (`vienna_wall_clock`, aus `oebb.py` nach
+  `src/utils/vienna_clock.py` verschoben). Bis zur Umstellung ändert sich
+  nichts; ob WL wieder +01:00 schickt, zeigt der Rohstand der Nacht zum
+  25.10.
 * **Protokoll der verworfenen Meldungen nennt den wahren Grund (2026-10-10)**:
   Befund der Prüfung vom 09.10. Der ÖBB-Abruf schrieb für jede verworfene
   Meldung „nicht Wien-relevant“ nach `data/raw/oebb/verworfen.json`, auch
