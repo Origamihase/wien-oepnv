@@ -104,7 +104,8 @@ jobs:
     permissions:
       contents: write
       # Only for the Feed-Wächter step: one issue per broken feed rule
-      # (docs/reference/feed_watch.md). No other step uses the token for issues.
+      # (docs/reference/feed_watch.md; operator decision 2026-10-10: a finding
+      # should reach him by mail the same day). No other step uses it.
       issues: write
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true

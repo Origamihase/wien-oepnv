@@ -19,7 +19,9 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   Stand in `data/feed_watch.json`, Hinweis im Health check (Prüfung
   `Feed-Wächter`) und je Regel ein GitHub-Issue (Label `feed-waechter`),
   das sich nach zwei guten Läufen selbst schließt; dafür hat der Job in
-  `update-cycle.yml` jetzt `issues: write`. Rückprüfung über alle 1 975
+  `update-cycle.yml` jetzt `issues: write` (Entscheidung des Betreibers
+  vom 10.10.: Ein Fund soll ihn am selben Tag per Mail erreichen, nicht
+  erst beim Nachschauen). Rückprüfung über alle 1 975
   Feed-Stände vom 01.09. bis 10.10.: Die drei Fälle, die erst Audits
   fanden, wären am selben Tag gemeldet worden (Linie 25 ab 12:01 am 09.10.,
   ÖBB-Zweitsatz ab 02.09., „2/71 [Seit 13:08]“ um 20:30); am 07., 08. und

@@ -67,6 +67,16 @@ zwei Läufen in Folge, schließt er es mit einem Kommentar. Dafür hat der Job i
 antwortet GitHub nicht, steht eine Warnung im Protokoll, und der nächste Lauf
 versucht es wieder.
 
+Entscheidung des Betreibers (Michael, 2026-10-10, Karte „Darf der
+Update-Lauf für Wächter-Funde GitHub-Issues anlegen?“, Antwort „Issues
+anlegen“): Der Update-Lauf bekommt `issues: write`. Grund: Ein Fund, den
+niemand sieht, wiederholt den Fall vom 09.10., als der Ticker der Linie 25
+acht Stunden auf Platz 2 stand. Ein Issue löst die Mail von GitHub am selben
+Tag aus; Protokoll und Health check allein sieht nur, wer nachschaut. Das
+Recht erlaubt nur Issues, keinen Code. Die Gegenoption „Nur Hinweis“ (kein
+neues Recht) ist damit verworfen; wer die Issues abschalten will, entfernt
+`FEED_WATCH_ISSUES` und `issues: write` aus `update-cycle.yml`.
+
 ## Die Regeln
 
 Rang wie in `AGENTS.md`: Rang 1 verdrängt Meldungen, Rang 2 verfälscht, was

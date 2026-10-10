@@ -1125,8 +1125,9 @@ def _report(findings: Sequence[Finding], now: datetime) -> None:
     try:
         with open(summary_path, "a", encoding="utf-8") as handle:
             handle.write("\n".join(lines) + "\n")
-    except OSError:
-        pass
+    except OSError as exc:
+        # Die Zusammenfassung ist Zierde; Log und ::warning tragen die Funde schon.
+        LOGGER.debug("Feed-Wächter: Step-Summary nicht schreibbar: %s", _clean(str(exc)))
 
 
 def run(args: argparse.Namespace, now: datetime) -> int:
