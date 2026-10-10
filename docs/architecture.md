@@ -1916,7 +1916,62 @@ Zukunft enger werden, sind die niedrig hängenden Hebel:
   API-Effekt, aber kleinere Antwort-Payloads).
 * Operating-Hours-Cadence im IFTTT-Applet (nur 04–23 Uhr statt
   ganztägig) — die Stammstrecke fährt zwischen 00:30 und 04:00 nur
-  ausgedünnt, das Monitoring liefert dort kaum Signal.
+  ausgedünnt, das Monitoring liefert dort kaum Signal. Dann muss
+  `POLL_STALE_HOURS` (unten) über die nächtliche Pause gehoben werden,
+  sonst färbt die Pause den Health check rot.
+
+### Überwachung: Abruf kaputt oder keine Züge (seit 2026-10-10)
+
+Betreiberentscheidung (Michael, 2026-10-10): „Der Check soll nur auf
+rot, wenn der Abruf nicht funktioniert. Wenn die Technik funktioniert
+gehört er auch auf grün. Wenn wirklich keine Züge fahren, gehört dies
+auf der Homepage gemeldet, aber der Check bleibt grün.“
+
+Vorher wurde ein komplett ausgefallener Monitor nirgends rot: Die
+Richtungsprüfung im Health check wird nie rot (Entscheidung 2026-10-03,
+#1939), und ein Korridor ohne Ledger-Zeilen sieht aus wie eine Nacht.
+Die Ledger halten nur Züge fest, sie können „kein Zug fuhr“ und „wir
+haben nichts gesehen“ nicht unterscheiden. Deshalb schreibt der Monitor
+jeden Abruf, auch den gescheiterten, nach
+`cache/stammstrecke/poll_status.json` (letzter Versuch und sein
+Ergebnis, letzter erfolgreicher Abruf, Abfahrten und Stammstrecken-Züge
+darauf, letzter Abruf mit Zug). Die Regel steht einmal in
+`src/utils/stammstrecke_poll.py`:
+
+* **Abruf kaputt** heißt: seit `POLL_STALE_HOURS` (3 h) kein
+  erfolgreicher Abruf, oder kein lesbarer Status. Darunter fallen ein
+  gescheiterter Request (HTTP-Fehler, Timeout), eine unlesbare Antwort
+  (kein JSON, `errorCode`-Hülle), eine **unvollständige** Antwort (die
+  Tafel listet Abfahrten, aber keine trägt Linie, Planzeit und
+  Bahnsteig; strukturell, ohne Wortliste), ein übersprungener Abruf
+  (Tageslimit, Circuit Breaker) und ein Monitor, der gar nicht mehr
+  läuft. Drei Stunden: Der längste Abstand zwischen zwei Abrufen vom
+  09.09. bis 10.10.2026 war 2:00 h (1 493 Abrufe, rekonstruiert aus dem
+  VAO-Zähler in der Git-Historie). Ein einzelner gescheiterter Abruf
+  macht noch nichts rot.
+* **Abruf funktioniert, keine Züge** heißt: eine gültige Antwort ohne
+  Stammstrecken-Zug, auch eine leere Tafel. Beispiel 22.09.2026 21:00:
+  29 Abfahrten am Hbf, 16 auf anderen Bahnsteigen, kein Zug auf Gleis
+  1/2; der Monitor-Schritt lief erfolgreich.
+
+Wer die Regel liest:
+
+* `scripts/health_check.py`, Prüfung `Stammstrecke-Abruf`: rot nur im
+  ersten Fall; im zweiten grün mit „derzeit kein Stammstrecken-Zug auf
+  der Tafel“. Kein ℹ️-Hinweis, weil die Nachtpause sonst jede Nacht
+  einen erzeugte. Die Richtungsprüfung bleibt unverändert nie rot.
+* Website (`docs/assets/site.js`) und README/Statistik
+  (`render_direction_coverage_note` in
+  `scripts/generate_markdown_stats.py`): Den ganzen Korridor („Aktuell
+  keine Fahrten von Wien Hbf Richtung Meidling und Praterstern“) nennen
+  sie nur, solange der Abruf funktioniert (`fetch_working`;
+  `coverage.poll` in `docs/stats-summary.json`, im Browser gegen die
+  Uhr des Lesers geprüft). Hinter einem kaputten Abruf wäre der Satz
+  eine Behauptung, die der Monitor nicht machen kann; der Fall gehört
+  dem Health check. Die Schwellen des Hinweises (eine Stunde je
+  Richtung mit Nachweis aus der Gegenrichtung, acht Stunden für den
+  ganzen Korridor) bleiben, ebenso der Hinweis für eine einzelne stille
+  Richtung.
 
 ---
 

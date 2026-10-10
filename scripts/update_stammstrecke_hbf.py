@@ -179,6 +179,15 @@ from src.utils.files import loads_finite  # noqa: E402
 from src.utils.http import request_safe  # noqa: E402
 from src.utils import logging as utils_logging  # noqa: E402
 from src.utils.stations import station_info  # noqa: E402
+from src.utils.stammstrecke_poll import (  # noqa: E402
+    POLL_STATUS_PATH,
+    RESULT_BREAKER,
+    RESULT_OK,
+    answer_is_incomplete,
+    load_poll_status,
+    record_poll,
+    save_poll_status,
+)
 from src.utils.stats import (  # noqa: E402
     DIRECTION_SILENCE_WINDOW_HOURS,
     append_ausfall_row,
@@ -772,6 +781,10 @@ class _CollectionDiagnostics:
     dropped_no_track: int
     dropped_non_stammstrecke_track: int
     cancelled_observed: int = 0
+    #: S-Bahn departures on a Stammstrecke platform (or cancelled without
+    #: one), counted before the realtime gate: a train without ``rtTime``
+    #: is still a train on the board. Feeds ``poll_status.json``.
+    on_stammstrecke: int = 0
 
 
 def _collect_hbf_observations(
@@ -839,6 +852,7 @@ def _collect_hbf_observations(
     dropped_no_track = 0
     dropped_non_stammstrecke_track = 0
     cancelled_observed = 0
+    on_stammstrecke = 0
 
     for dep in departures:
         if not isinstance(dep, Mapping):
@@ -884,6 +898,7 @@ def _collect_hbf_observations(
             if track_trunk is None or track_trunk not in STAMMSTRECKE_HBF_TRACK_TRUNKS:
                 dropped_non_stammstrecke_track += 1
                 continue
+        on_stammstrecke += 1
 
         sched_date = dep.get("date")
         sched_time = dep.get("time")
@@ -947,6 +962,7 @@ def _collect_hbf_observations(
             dropped_no_track=dropped_no_track,
             dropped_non_stammstrecke_track=dropped_non_stammstrecke_track,
             cancelled_observed=cancelled_observed,
+            on_stammstrecke=on_stammstrecke,
         ),
     )
 
@@ -983,25 +999,71 @@ def _log_track_drops(
 # ---- Main flow ------------------------------------------------------------
 
 
+@dataclass
+class _TickTally:
+    """What one poll saw, for ``cache/stammstrecke/poll_status.json``.
+
+    Filled by :func:`_process_tick` when the caller passes one. ``error``
+    is a short, leak-safe reason (HTTP code or exception type, never a
+    message that could carry the ``accessId``-bearing URL).
+    """
+
+    departures: int = 0
+    trains: int = 0
+    error: str = ""
+
+
+def _count_readable_departures(departures: Iterable[Any]) -> int:
+    """Departures that carry every field the monitor reads.
+
+    A line name, a parseable scheduled date and time, and a platform (a
+    cancelled train may lack the platform). Independent of the S-Bahn and
+    platform gates: a Railjet on platform 7 is a perfectly readable
+    departure. When a board lists departures and *none* is readable, the
+    answer is incomplete (:func:`src.utils.stammstrecke_poll.answer_is_incomplete`)
+    — a train-less board and a board whose fields went missing must not
+    look the same.
+    """
+
+    readable = 0
+    for dep in departures:
+        if not isinstance(dep, Mapping):
+            continue
+        if not _departure_line_name(dep):
+            continue
+        if _parse_vao_dt(dep.get("date"), dep.get("time")) is None:
+            continue
+        if _extract_track_string(dep) is None and not _departure_is_cancelled(dep):
+            continue
+        readable += 1
+    return readable
+
+
 def _process_tick(
     session: requests.Session,
     state: dict[Any, Any],
     *,
     when: datetime,
     recently_finalised: Mapping[str, datetime] | None = None,
+    tally: _TickTally | None = None,
 ) -> str:
     """Single ``/departureBoard`` poll, classify, and observe.
 
     Returns one of:
 
     * ``"ok"`` — query succeeded and observations were folded into
-      the pending state;
+      the pending state (also when the board held no Stammstrecke train:
+      that is a working fetch, see :mod:`src.utils.stammstrecke_poll`);
     * ``"error"`` — VAO transport / parse error (already logged);
+    * ``"incomplete"`` — the board lists departures but none carries the
+      fields the monitor reads; nothing is observed;
     * ``"quota_exceeded"`` — daily quota cap hit before the call.
 
     ``CircuitBreakerOpen`` is re-raised so :func:`main` can short-
     circuit the rest of the tick.
     """
+    if tally is None:
+        tally = _TickTally()
 
     LOGGER.info(
         "Stammstrecke (Hbf): /departureBoard für %s (id=%s, duration=%d).",
@@ -1033,6 +1095,7 @@ def _process_tick(
             "Stammstrecke (Hbf): /departureBoard fehlgeschlagen: HTTP %s.",
             utils_logging.sanitize_log_arg(str(status) if status is not None else "?"),
         )
+        tally.error = f"HTTP {status if status is not None else '?'}"
         return "error"
     except Exception as exc:
         # Security: ``VorAuth`` injects the ``accessId`` into the URL
@@ -1043,9 +1106,22 @@ def _process_tick(
             "Stammstrecke (Hbf): /departureBoard fehlgeschlagen: %s.",
             type(exc).__name__,
         )
+        tally.error = type(exc).__name__
         return "error"
 
+    tally.departures = len(departures)
+    readable = _count_readable_departures(departures)
+    if answer_is_incomplete(departures=len(departures), readable=readable):
+        LOGGER.warning(
+            "Stammstrecke (Hbf): /departureBoard-Antwort unvollständig — %d "
+            "Abfahrt(en), keine mit Linie, Planzeit und Bahnsteig.",
+            len(departures),
+        )
+        tally.error = f"{len(departures)} Abfahrten ohne lesbare Felder"
+        return "incomplete"
+
     by_direction, diagnostics = _collect_hbf_observations(departures)
+    tally.trains = diagnostics.on_stammstrecke
     _log_track_drops(
         diagnostics.dropped_no_track,
         diagnostics.dropped_non_stammstrecke_track,
@@ -1076,6 +1152,27 @@ def _process_tick(
         diagnostics.cancelled_observed,
     )
     return "ok"
+
+
+def _record_poll_outcome(when: datetime, result: str, tally: _TickTally) -> None:
+    """Fold this poll into ``cache/stammstrecke/poll_status.json`` (best-effort)."""
+
+    try:
+        previous = load_poll_status(POLL_STATUS_PATH)
+        status = record_poll(
+            previous,
+            when=when,
+            result=result,
+            error="" if result == RESULT_OK else tally.error,
+            departures=tally.departures,
+            trains=tally.trains,
+        )
+        save_poll_status(status, POLL_STATUS_PATH)
+    except Exception as exc:  # pragma: no cover - observability must not crash the tick
+        LOGGER.warning(
+            "Stammstrecke (Hbf): Abrufstatus nicht gespeichert: %s.",
+            type(exc).__name__,
+        )
 
 
 def _emit_workflow_warning(title: str, message: str) -> None:
@@ -1176,6 +1273,7 @@ def main() -> int:
 
         successes = 0
         errors = 0
+        tally = _TickTally()
 
         with ExitStack() as stack:
             try:
@@ -1185,6 +1283,7 @@ def main() -> int:
                     "Stammstrecke (Hbf): VOR-Session konnte nicht erstellt werden: %s.",
                     type(exc).__name__,
                 )
+                _record_poll_outcome(when, "error", _TickTally(error=type(exc).__name__))
                 return 1
 
             try:
@@ -1193,7 +1292,9 @@ def main() -> int:
                     state,
                     when=when,
                     recently_finalised=recently_finalised,
+                    tally=tally,
                 )
+                poll_result = status
             except CircuitBreakerOpen:
                 LOGGER.warning(
                     "Stammstrecke (Hbf): Circuit breaker offen (%d "
@@ -1201,11 +1302,17 @@ def main() -> int:
                     _BREAKER.consecutive_failures,
                 )
                 status = "error"
+                poll_result = RESULT_BREAKER
 
-            if status in ("error", "quota_exceeded"):
+            if status in ("error", "incomplete", "quota_exceeded"):
                 errors += 1
             else:
                 successes += 1
+
+            # Every poll leaves its outcome behind, the failed ones too: the
+            # health check turns red on a broken fetch, never on an empty
+            # board (operator decision 2026-10-10, src/utils/stammstrecke_poll.py).
+            _record_poll_outcome(when, poll_result, tally)
 
         # Finalisation pass per direction. Trains scheduled <= now are
         # popped from the pending state, their latest observation is

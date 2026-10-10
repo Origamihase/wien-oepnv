@@ -62,6 +62,12 @@ from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.utils.files import atomic_write, read_capped_text  # noqa: E402
 from src.utils.logging import sanitize_log_arg  # noqa: E402
 from src.utils.serialize import scrub_trojan_source_primitives  # noqa: E402
+from src.utils.stammstrecke_poll import (  # noqa: E402
+    POLL_STALE_HOURS,
+    PollStatus,
+    assess_poll,
+    load_poll_status,
+)
 from src.utils.stats import (  # noqa: E402
     AUSFAELLE_HEADER,
     DEFAULT_STATS_DIR,
@@ -1043,10 +1049,13 @@ def _last_seen_per_direction(
 #
 # Note what the rule can and cannot claim. With a peer reporting, "no
 # journeys in this direction" is sound: the peer proves our own collector was
-# alive. With the whole corridor dark the ledger cannot tell "no trains ran"
-# from "we observed nothing" — that distinction belongs to
-# ``scripts/health_check.py``. The corridor wording therefore only claims the
-# figures are old, which holds either way.
+# alive. With the whole corridor dark the ledger alone cannot tell "no trains
+# ran" from "we observed nothing", so the corridor route additionally needs
+# the monitor's own poll record to show a working fetch
+# (:mod:`src.utils.stammstrecke_poll`). Operator decision 2026-10-10: a broken
+# fetch turns the health check red and is not the readers' business; a
+# working fetch without trains is, and goes on the website — "Aktuell keine
+# Fahrten" is then a claim the monitor can actually make.
 #: Hours a direction must go without a journey before the banner names it.
 DIRECTION_SILENCE_NOTICE_HOURS: Final = 1.0
 #: Journeys a peer direction must log in that stretch to prove service is
@@ -1071,6 +1080,7 @@ def find_silent_coverage_directions(
     *,
     now: datetime,
     directions: tuple[str, ...] = STAMMSTRECKE_DIRECTIONS,
+    fetch_working: bool = True,
 ) -> list[str]:
     """Directions with no journey for long enough to be worth saying so.
 
@@ -1080,6 +1090,8 @@ def find_silent_coverage_directions(
 
     See the constants above for why the hour is gated on evidence that
     trains are running rather than applied to the clock alone.
+    *fetch_working* gates the whole-corridor route: without a working poll
+    a dark corridor is a broken fetch, not a corridor without trains.
     """
     latest = _last_seen_per_direction(rows)
     threshold = timedelta(hours=DIRECTION_SILENCE_NOTICE_HOURS)
@@ -1107,7 +1119,10 @@ def find_silent_coverage_directions(
         return silent
 
     # No peer to compare against: only a stretch longer than any healthy
-    # pause distinguishes a stopped corridor from a sleeping one.
+    # pause distinguishes a stopped corridor from a sleeping one — and only a
+    # working fetch distinguishes it from a monitor that sees nothing.
+    if not fetch_working:
+        return []
     if len(quiet) == len([d for d in directions if d in latest]):
         corridor = timedelta(hours=CORRIDOR_SILENCE_NOTICE_HOURS)
         if all(now - latest[d] >= corridor for d in quiet):
@@ -1121,6 +1136,7 @@ def render_direction_coverage_note(
     now: datetime,
     all_rows: list[StammstreckeRow] | None = None,
     directions: tuple[str, ...] = STAMMSTRECKE_DIRECTIONS,
+    fetch_working: bool = True,
 ) -> str:
     """Return a Markdown warning while a direction has no journeys.
 
@@ -1157,7 +1173,7 @@ def render_direction_coverage_note(
     """
     ledger = list(all_rows) if all_rows else window_rows
     missing = find_silent_coverage_directions(
-        ledger, now=now, directions=directions
+        ledger, now=now, directions=directions, fetch_working=fetch_working
     )
     if not missing:
         return ""
@@ -1564,6 +1580,7 @@ def _direction_coverage(
     all_rows: list[StammstreckeRow],
     window_days: int,
     directions: tuple[str, ...] = STAMMSTRECKE_DIRECTIONS,
+    poll: dict[str, object] | None = None,
 ) -> dict[str, object]:
     """Per-direction evidence for the coverage banner.
 
@@ -1583,6 +1600,12 @@ def _direction_coverage(
     When a silent direction resumes, its ``last_seen`` moves and the banner
     disappears on the next tick with nobody editing anything — which is the
     whole point.
+
+    *poll* (``last_success``, ``stale_hours``) is the monitor's own record
+    of its last working fetch (:func:`_poll_evidence`). The browser names a
+    dark corridor only while that fetch is recent — the same gate as
+    ``fetch_working`` in :func:`find_silent_coverage_directions`. Omitted
+    when unknown; the browser then keeps its earlier behaviour.
     """
     last_seen = _last_seen_per_direction(all_rows)
     in_window: dict[str, int] = defaultdict(int)
@@ -1590,7 +1613,7 @@ def _direction_coverage(
         in_window[row.direction] += 1
 
     known = sorted({*directions, *last_seen, *in_window})
-    return {
+    payload: dict[str, object] = {
         "window_days": window_days,
         "silence_hours": DIRECTION_SILENCE_NOTICE_HOURS,
         "peer_rows_required": DIRECTION_SILENCE_NOTICE_PEER_ROWS,
@@ -1618,6 +1641,20 @@ def _direction_coverage(
             for direction in known
         },
     }
+    if poll is not None:
+        payload["poll"] = poll
+    return payload
+
+
+def _poll_evidence(status: PollStatus | None) -> dict[str, object]:
+    """The monitor's last working fetch, as shipped to the browser."""
+    last_success = status.last_success if status is not None else None
+    return {
+        "last_success": (
+            last_success.isoformat(timespec="seconds") if last_success else None
+        ),
+        "stale_hours": POLL_STALE_HOURS,
+    }
 
 
 def build_stats_summary(
@@ -1631,6 +1668,7 @@ def build_stats_summary(
     window_rows: list[StammstreckeRow],
     all_window_rows: list[StammstreckeRow],
     window_days: int,
+    poll: dict[str, object] | None = None,
 ) -> dict[str, object]:
     """Assemble the JSON payload ``docs/assets/site.js`` renders from.
 
@@ -1671,6 +1709,7 @@ def build_stats_summary(
                 window_rows,
                 all_rows=all_window_rows,
                 window_days=window_days,
+                poll=poll,
             ),
         },
         "stoerungen": {
@@ -1990,8 +2029,12 @@ def main(argv: list[str] | None = None) -> int:
     # docs/statistik.md and both 30-day README blocks. The annual dashboard
     # aggregate still contains the pre-outage rows, so absence-from-aggregate
     # alone would never fire there; the recent window is what reveals it.
+    # Operator decision 2026-10-10: a dark corridor is named only while the
+    # monitor's fetch works; a broken fetch is the health check's (red).
+    poll_status = load_poll_status()
+    fetch_working = assess_poll(poll_status, now=now).working
     coverage_note = render_direction_coverage_note(
-        sm_window, now=now, all_rows=window_sm
+        sm_window, now=now, all_rows=window_sm, fetch_working=fetch_working
     )
     if coverage_note:
         LOGGER.warning(
@@ -2027,6 +2070,7 @@ def main(argv: list[str] | None = None) -> int:
                 window_rows=sm_window,
                 all_window_rows=window_sm,
                 window_days=args.readme_window_days,
+                poll=_poll_evidence(poll_status),
             ),
             output_path=summary_path,
         )

@@ -5,6 +5,30 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Health check: Stammstrecke rot nur bei kaputtem Abruf (2026-10-10)**:
+  Betreiberentscheidung: „Der Check soll nur auf rot, wenn der Abruf nicht
+  funktioniert. Wenn die Technik funktioniert gehört er auch auf grün.
+  Wenn wirklich keine Züge fahren, gehört dies auf der Homepage gemeldet,
+  aber der Check bleibt grün.“ Bisher wurde ein komplett ausgefallener
+  Stammstrecken-Monitor nirgends rot: Die Richtungsprüfung wird nie rot
+  (#1939), und ein Korridor ohne Messwerte sah aus wie eine Nacht. Jetzt
+  schreibt der Monitor jeden Abruf, auch den gescheiterten, nach
+  `cache/stammstrecke/poll_status.json`; die neue Prüfung
+  `Stammstrecke-Abruf` wird rot, wenn seit drei Stunden kein Abruf
+  funktioniert hat (gescheiterter Request, unlesbare oder unvollständige
+  Antwort, übersprungener Abruf, Monitor läuft nicht mehr). Eine gültige
+  Antwort ohne Stammstrecken-Zug bleibt grün. Website und README nennen
+  einen ganz dunklen Korridor („Aktuell keine Fahrten … Richtung Meidling
+  und Praterstern“) nur noch, solange der Abruf funktioniert; hinter
+  einem kaputten Abruf stimmte der Satz nicht. Regel in
+  `src/utils/stammstrecke_poll.py`, Begründung in
+  `docs/architecture.md`, §7. Replay über die 1 492 Abrufe vom 09.09. bis
+  10.10.: Der längste Abstand zwischen zwei Abrufen war 2:00 h, kein
+  Monitor-Schritt scheiterte; die neue Prüfung wäre in diesen 30 Tagen
+  nie rot geworden. Die 37 Abrufe tagsüber ohne Messwert waren gültige
+  Antworten (24 bis 37 Abfahrten, kein Stammstrecken-Zug mit Echtzeit)
+  und bleiben grün. Der Status zählt Züge auf Gleis 1/2 vor dem
+  Echtzeit-Filter, weil VAO `rtTime` oft weglässt.
 * **Protokoll der verworfenen Meldungen nennt den wahren Grund (2026-10-10)**:
   Befund der Prüfung vom 09.10. Der ÖBB-Abruf schrieb für jede verworfene
   Meldung „nicht Wien-relevant“ nach `data/raw/oebb/verworfen.json`, auch
