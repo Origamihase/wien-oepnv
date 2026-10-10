@@ -5,6 +5,28 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Feed-Wächter (2026-10-10)**: Neues Skript `scripts/feed_watch.py`
+  prüft am Ende jedes Update-Laufs den fertigen deutschen Feed gegen die
+  Regeln seit September: doppelte Einträge, Anzahl, eine alte Meldung als
+  neue Störung, eine „Seit“-Zeit vor der Störung, ÖBB-Text ohne zweiten
+  Satz, Form der Zeitzeile, vergangene Zeitangaben, mehr als 180 Zeichen,
+  ÖBBs Höflichkeitssatz; dazu leere Caches, eingebrochene Rohantworten und
+  springende Verwurfsanteile gegen die letzten sieben Tage und das Alter
+  des Feeds. Er ändert den Feed nie und blockiert die Veröffentlichung nie.
+  Funde werden nie rot (Regel des Betreibers vom 10.10. für den Health
+  check, übernommen: rot nur, wenn der Abruf nicht funktioniert; ein
+  verletzter Inhalt ist kein kaputter Abruf): `::warning` im Protokoll,
+  Stand in `data/feed_watch.json`, Hinweis im Health check (Prüfung
+  `Feed-Wächter`) und je Regel ein GitHub-Issue (Label `feed-waechter`),
+  das sich nach zwei guten Läufen selbst schließt; dafür hat der Job in
+  `update-cycle.yml` jetzt `issues: write` (Entscheidung des Betreibers
+  vom 11.10.: Ein Fund soll ihn am selben Tag per Mail erreichen, nicht
+  erst beim Nachschauen). Rückprüfung über alle 1 975
+  Feed-Stände vom 01.09. bis 10.10.: Die drei Fälle, die erst Audits
+  fanden, wären am selben Tag gemeldet worden (Linie 25 ab 12:01 am 09.10.,
+  ÖBB-Zweitsatz ab 02.09., „2/71 [Seit 13:08]“ um 20:30); am 07., 08. und
+  10.10. war keine Regel verletzt. Regeln, Schwellen und Ergebnis in
+  `docs/reference/feed_watch.md`.
 * **`STATE_PATH` hat nur noch eine Bedeutung (2026-10-10)**: Der Feed-Build
   las `STATE_PATH` als Datei (`data/first_seen.json`), das
   Google-Places-Kontingent als Verzeichnis für `places_quota.json`. Das
