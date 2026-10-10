@@ -1214,21 +1214,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N49: Rettungseinsatz",
-    "description": "Derzeit kommt es bei der Linie N49 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "7c0e78a66ba8fc08ee763fd5496de0261fd387d077a7af3034c3343db661941b",
-    "pubDate": "2026-10-10T02:49:00+02:00",
-    "starts_at": "2026-10-10T02:49:00+02:00",
-    "ends_at": "2026-10-10T23:55:00+02:00",
-    "_identity": "wl|störung|L=N49|D=2026-10-10|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261010-0001"
-    ]
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N66: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1297,6 +1282,21 @@
     "starts_at": "2026-10-10T00:45:04+02:00",
     "ends_at": "2026-10-10T05:15:00+02:00",
     "_identity": "wl|störung|L=N8|D=2026-10-10|TK=busse halten assmayergasse nach flurschützstrasse bei linie 59a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Verunreinigung",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9779e7ace261e01ddc018942c222784a1d556276f8f642723bab39617b6cccfc",
+    "pubDate": "2026-10-10T03:52:00+02:00",
+    "starts_at": "2026-10-10T03:52:00+02:00",
+    "ends_at": "2026-10-10T04:40:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-10-10|TK=u1 verunreinigung",
+    "_wl_ids": [
+      "I20261010-0002"
+    ]
   },
   {
     "source": "Wiener Linien",
