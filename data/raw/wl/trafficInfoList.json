@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261010-0005, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261010-0004-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261010-0004-F01"
    },
    {
     "id": 3,
@@ -234,40 +234,6 @@
      "start": "2026-10-10T05:55:00.000+0200"
     },
     "title": "52: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "11": "ptTram"
-     }
-    },
-    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "Linie 11:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Betriebsstörung.",
-    "name": "I20261010-0005",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "111",
-       "lineName": "11",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-10T06:22:00.000+0200",
-     "end": "2026-10-10T06:56:00.000+0200",
-     "lastUpdate": "2026-10-10T06:56:00.000+0200",
-     "resume": "2026-10-10T06:56:00.000+0200",
-     "start": "2026-10-10T06:21:00.000+0200"
-    },
-    "title": "11: Verspätungen"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
