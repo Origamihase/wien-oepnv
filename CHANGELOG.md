@@ -5,6 +5,26 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **ÖBB: der zweite Satz bleibt auch bei abweichendem Satzbau (2026-10-11)**:
+  Die Entscheidung vom 09.10. (ÖBB-Texte behalten ihren zweiten Satz; die
+  Stationen des Titels fallen aus Satz 1 nur weg, wenn Satz 2 sonst nicht in
+  180 Zeichen passt) galt nur für Sätze, die genau ÖBBs Störungsvorlage
+  folgten. Der Feed-Wächter fand Ausnahmen, ein Replay über alle 563
+  ÖBB-Texte seit Juni 13: „… und Liesing (Wien) Zugfahrten voraussichtlich
+  23:00 Uhr …“ (ohne „bis“), Bauankündigungen („Wegen Bauarbeiten können
+  zwischen … am 01.11.2026 … keine S45-Züge fahren.“ verlor „Ein
+  Schienenersatzverkehr mit Autobussen wird für Sie eingerichtet.“) und
+  zweite Sätze, die auf ein kurzes Wort enden („… Reisezeit ein.“, „…
+  vorerst ab.“) und deshalb mit dem dritten zusammen zu lang waren. Der Ort
+  wird jetzt aus dem Satzbau bestimmt (hinter dem Verb des Hauptsatzes, jede
+  Station bis zu ÖBBs Zusatz oder zum ersten Wort, das keinen Namen beginnt;
+  der Titel muss sie ganz nennen), und der zweite Satz endet bei Bedarf am
+  ersten Punkt ohne Abkürzung davor. Alle 13 Änderungen im Replay behalten
+  den zweiten Satz, kein anderer Text ändert sich, die Wächter-Regel
+  `oebb-zweiter-satz` meldet über alle Texte nichts mehr (vorher 3). Im
+  aktuellen Feed ist keine Meldung betroffen. Im EN-Feed bleibt eine
+  Bauankündigung ohne Ort Vorlage („no R 40 trains can run from … to …“).
+  Details in `docs/architecture.md` (ÖBB: der zweite Satz).
 * **Feed-Wächter (2026-10-10)**: Neues Skript `scripts/feed_watch.py`
   prüft am Ende jedes Update-Laufs den fertigen deutschen Feed gegen die
   Regeln seit September: doppelte Einträge, Anzahl, eine alte Meldung als

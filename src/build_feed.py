@@ -4850,11 +4850,12 @@ _OEBB_RESTRICTION_RE: re.Pattern[str] = re.compile(
     r" (?:(?P<none>keine Fahrten|nicht)|nur eingeschränkt(?: Fahrten)?) möglich\."
 )
 # The planned-works variant: "Wegen Bauarbeiten können [von D bis D]
-# zwischen A und B [von D bis D] keine R 40-Züge fahren."
+# [zwischen A und B] [von D bis D] keine R 40-Züge fahren." (the German
+# summary may leave the place out, as above).
 _OEBB_NO_TRAINS_RE: re.Pattern[str] = re.compile(
     r"Wegen (?P<cause>.+?) können"
     r"(?: von (?P<d1>\d{2}\.\d{2}\.\d{4}) bis (?P<d2>\d{2}\.\d{2}\.\d{4}))?"
-    r" zwischen (?P<a>.+?) und (?P<b>.+?)"
+    r"(?: zwischen (?P<a>.+?) und (?P<b>.+?))?"
     r"(?: von (?P<d3>\d{2}\.\d{2}\.\d{4}) bis (?P<d4>\d{2}\.\d{2}\.\d{4}))?"
     r" keine (?P<trains>[A-Z]{1,3} ?\d{1,3})-Züge fahren\."
 )
@@ -4957,15 +4958,128 @@ def _oebb_title_names(place: str, title: str) -> bool:
     return len(bare) >= 4 and bare in shown
 
 
+# Where the place stands is a matter of sentence structure, not of one
+# template: "Wegen <Ursache> <Verb> … zwischen <A> und <B> | in <A> | im
+# Bereich <A> …". Each station runs to ÖBB's suffixes ("Bahnhof", "(U)",
+# "(Wien)") or to the first word that opens no name, and the title must name
+# all of it. Read from the template's slots instead, a sentence that varies the
+# wording behind the second station kept its place, and its second sentence
+# went: "zwischen Wien Meidling Bahnhof (U) und Liesing (Wien) Zugfahrten
+# voraussichtlich 23:00 Uhr nur eingeschränkt möglich." (no "bis", ÖBB on
+# 13.08.2026) put "Zugfahrten voraussichtlich 23:00 Uhr" into the station
+# slot, and "Es kommt zu vereinzelten Zugausfällen und Verspätungen bis zu 10
+# Minuten." never reached the display. ÖBB's planned works ("Wegen
+# Bauarbeiten können zwischen <A> und <B> am 01.11.2026 … keine S45-Züge
+# fahren.") are the same sentence and lost "Ein Schienenersatzverkehr mit
+# Autobussen wird für Sie eingerichtet." the same way. The place follows the
+# main verb, so a place inside the cause ("Wegen eines Polizeieinsatzes in
+# Wien Meidling …") stays; a place in a list (", und zwischen …") stays too.
+_OEBB_MAIN_VERB_RE: re.Pattern[str] = re.compile(
+    r"Wegen .+? (?:sind|waren|ist|war|können|kann|konnten|fahren|fährt|werden|wird) "
+)
+_OEBB_PLACE_LEAD_RE: re.Pattern[str] = re.compile(r" (?P<lead>zwischen|im Bereich|in) ")
+_OEBB_NAME_SUFFIXES_RE: re.Pattern[str] = re.compile(
+    r"(?: (?:Bahnhof|Bahnhst\.?|Bhf\.?|\((?:U|Wien)\)|\[[^\]]*\]))*"
+)
+
+
+def _oebb_station_end(sentence: str, start: int, title: str, *, before_und: bool) -> int | None:
+    """End of the station that begins at *start*, when *title* names it, else ``None``.
+
+    The station is the shortest run of words, with ÖBB's suffixes, that " und "
+    follows (*before_und*) or, behind it, the rest of the sentence: after a
+    suffix any word, without one a word that opens no name ("bis",
+    "Zugfahrten", "am 01.11.2026"). "Brunn am Gebirge-Maria Enzersdorf
+    Bahnhof" thus stays one name, and a title with "Brunn am Gebirge" does
+    not name it.
+    """
+    for gap in re.finditer(r" |$", sentence[start:]):
+        name = sentence[start : start + gap.start()]
+        if not name or "," in name or _OEBB_SLOT_NOT_A_NAME_RE.search(name):
+            return None
+        cut = start + gap.start()
+        suffixes = _OEBB_NAME_SUFFIXES_RE.match(sentence, cut)
+        end = suffixes.end() if suffixes is not None else cut
+        if _oebb_name_ends_at(sentence[end:], suffixed=end > cut, before_und=before_und):
+            return end if _oebb_title_names(name, title) else None
+    return None
+
+
+# A word behind a station without suffix that opens no name: the template's
+# own words, a date or a clock time ("am 01.11.2026", "bis 20:18 Uhr").
+_OEBB_AFTER_NAME_RE: re.Pattern[str] = re.compile(
+    r"(?:(?:bis|derzeit|keine?|nur|einige|erneut|noch|Zugfahrten|Fahrten)"
+    r"|\S*\d\S*|(?:am|um|von|vom|ab) \S*\d\S*"
+    r")(?=[ .,;)]|$)"
+)
+
+
+def _oebb_name_ends_at(rest: str, *, suffixed: bool, before_und: bool) -> bool:
+    """Whether a station name may end where *rest* begins (see above)."""
+    if before_und:
+        return rest.startswith(" und ")
+    if rest in {"", ".", "!"}:
+        return True
+    if not rest.startswith(" "):
+        return False
+    if suffixed:
+        return True
+    return _OEBB_AFTER_NAME_RE.match(rest, 1) is not None
+
+
 def _oebb_sentence_without_place(sentence: str, title: str) -> str | None:
     """*sentence* without the place the ÖBB *title* already names, else ``None`` (see above)."""
-    match = _OEBB_RESTRICTION_RE.fullmatch(sentence)
-    if match is None or not match["place"] or not _oebb_slots_are_names(match, "a", "b", "at", "area"):
+    verb = _OEBB_MAIN_VERB_RE.match(sentence)
+    if verb is None:
         return None
-    places = [match[slot] for slot in ("a", "b", "at", "area") if match[slot]]
-    if not all(_oebb_title_names(place, title) for place in places):
+    lead = _OEBB_PLACE_LEAD_RE.search(sentence, verb.end() - 1)
+    if lead is None:
         return None
-    return sentence[: match.start("place")] + sentence[match.end("place"):]
+    if lead["lead"] == "zwischen":
+        first = _oebb_station_end(sentence, lead.end(), title, before_und=True)
+        if first is None:
+            return None
+        end = _oebb_station_end(sentence, first + len(" und "), title, before_und=False)
+    else:
+        end = _oebb_station_end(sentence, lead.end(), title, before_und=False)
+    if end is None:
+        return None
+    return sentence[: lead.start()] + sentence[end:]
+
+
+# ÖBB ends a sentence after a short word too: "Planen Sie bis zu 15 Minuten
+# mehr Reisezeit ein.", "Die Züge warten die Sperre vorerst ab.",
+# "… informieren wir Sie." The summary's split wants four letters before the
+# full stop (for "Gerasdorf b. Wien", "Bahnhst bzw. Gerasdorf") and took such
+# a sentence together with the next one as the second; the two did not fit,
+# and the second sentence went with the third (Leopoldau ↔ Süßenbrunn,
+# 09.10.2026, 20:00: "… Reisezeit ein. Fahrgäste mit ÖBB-Tickets können …").
+# Where that happens, the second sentence ends at the first full stop that
+# follows no abbreviation.
+_OEBB_SECOND_SENTENCE_END_RE: re.Pattern[str] = re.compile(
+    r"(?<=[.!])(?<!\b[A-Za-z]\.)(?<!\bbzw\.)(?<!\bzw\.)(?<!\bca\.)(?<!\bNr\.)(?<!\bSt\.)"
+    r"(?<!\bStr\.)(?<!\bWr\.)(?<!\bHbf\.)(?<!\bBhf\.)\s+(?=[A-ZÄÖÜ])"
+)
+
+
+def _oebb_first_two_sentences(first: str, second: str, title: str) -> str | None:
+    """ÖBB's first sentence with its *second*, within 180 characters, else ``None``.
+
+    The first sentence leaves out the place the title names only where the
+    second would not fit otherwise (operator decision 2026-10-09); *second*
+    may hold a third sentence the summary's split did not see, which then
+    goes before the place does.
+    """
+    shorter = _oebb_sentence_without_place(first, title)
+    alone = _OEBB_SECOND_SENTENCE_END_RE.split(second, maxsplit=1)[0]
+    candidates = [f"{first} {second}"]
+    if shorter is not None:
+        candidates.append(f"{shorter} {second}")
+    if alone != second:
+        candidates.append(f"{first} {alone}")
+        if shorter is not None:
+            candidates.append(f"{shorter} {alone}")
+    return next((c for c in candidates if len(c) <= 180), None)
 
 
 def _oebb_slots_are_names(match: re.Match[str], *slots: str) -> bool:
@@ -5025,10 +5139,12 @@ def _render_oebb_sentence(
             return None
         first, last = (match["d1"], match["d2"]) if match["d1"] else (match["d3"], match["d4"])
         dates = f" from {first} to {last}" if first else ""
-        return (
-            f"{cause}, no {match['trains']} trains can run between "
-            f"{_oebb_station_en(match['a'])} and {_oebb_station_en(match['b'])}{dates}."
+        between = (
+            f" between {_oebb_station_en(match['a'])} and {_oebb_station_en(match['b'])}"
+            if match["a"]
+            else ""
         )
+        return f"{cause}, no {match['trains']} trains can run{between}{dates}."
     return _render_oebb_follow_up(sentence)
 
 
@@ -10506,10 +10622,11 @@ def _format_item_content(
             candidate = f"{short_summary} {sentences[1]}"
             if len(candidate) > 180 and it.get("source") == _OEBB_SOURCE:
                 # ÖBB's second sentence says what still goes on — see
-                # ``_oebb_sentence_without_place``.
-                shorter = _oebb_sentence_without_place(short_summary, raw_title)
-                if shorter is not None:
-                    candidate = f"{shorter} {sentences[1]}"
+                # ``_oebb_first_two_sentences``.
+                candidate = (
+                    _oebb_first_two_sentences(short_summary, sentences[1], raw_title)
+                    or candidate
+                )
             if len(candidate) <= 180:
                 short_summary = candidate
         summary = short_summary

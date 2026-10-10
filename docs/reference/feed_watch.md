@@ -148,8 +148,13 @@ Meidling ↔ Wien Liesing“ („… zwischen Wien Meidling Bahnhof (U) und Lies
 (Wien) Zugfahrten voraussichtlich 23:00 Uhr nur eingeschränkt möglich.“):
 Die Vorlage des Builders erkennt „voraussichtlich“ ohne „bis“ nicht, behält
 die Stationen und lässt den zweiten Satz („Es kommt zu vereinzelten
-Zugausfällen und Verspätungen bis zu 10 Minuten.“) weg. Eine echte Lücke,
-nicht behoben; der Wächter meldet sie, wenn sie wieder vorkommt.
+Zugausfällen und Verspätungen bis zu 10 Minuten.“) weg. Behoben am 11.10.
+(Builder liest den Ort aus dem Satzbau statt aus der Vorlage, siehe
+`docs/architecture.md`, ÖBB: der zweite Satz); seither meldet die Regel über
+alle ÖBB-Texte seit Juni nichts mehr. Bauankündigungen („… zwischen A und B
+am 01.11.2026 … keine S45-Züge fahren.“) deckt die Regel nicht ab: Ihr
+Ortsmuster endet vor „bis“, „derzeit“, „keine“ und ähnlichen Wörtern, nicht
+vor einem Datum.
 
 ## Eine Regel ergänzen
 

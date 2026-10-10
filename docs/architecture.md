@@ -587,6 +587,30 @@ verdrängt eine andere Störung.
   Eine Störung, die ÖBB als vorbei meldet („waren“), bleibt im Feed, weil
   98 der 100 solchen Texte seit Juni noch Folgen nennen (Reisezeit,
   Zugausfälle); der zweite Satz macht das jetzt sichtbar.
+  **Vollständig umgesetzt seit 2026-10-11** (dieselbe Entscheidung, keine
+  neue): Der Feed-Wächter (Regel `oebb-zweiter-satz`) fand Texte, die den
+  zweiten Satz trotzdem verloren, ein Replay über alle 563 ÖBB-Texte im
+  Cache seit Juni 13. Zwei Ursachen: (1) Der Ort wurde aus den Slots einer
+  Vorlage gelesen; schrieb ÖBB den Satz etwas anders („… und Liesing (Wien)
+  Zugfahrten voraussichtlich 23:00 Uhr nur eingeschränkt möglich.“, ohne
+  „bis“, 13.08.) oder war es eine Bauankündigung („Wegen Bauarbeiten können
+  zwischen … am 01.11.2026 … keine S45-Züge fahren.“), blieb der Ort stehen
+  und „Ein Schienenersatzverkehr mit Autobussen wird für Sie eingerichtet.“
+  fiel weg. Jetzt bestimmt der Satzbau den Ort: Er steht hinter dem Verb
+  des Hauptsatzes („Wegen … sind|waren|können|fahren …“), jede Station reicht
+  bis zu ÖBBs Zusatz („Bahnhof“, „(U)“, „(Wien)“) oder bis zum ersten Wort,
+  das keinen Namen beginnt („bis“, „Zugfahrten“, „am 01.11.2026“), und der
+  Titel muss sie ganz nennen. „Brunn am Gebirge-Maria Enzersdorf“ unter dem
+  Titel „Wien Liesing ↔ Brunn am Gebirge“ bleibt deshalb stehen, ebenso ein
+  Ort in der Ursache oder in einer Aufzählung. (2) Der Satztrenner verlangt
+  vier Buchstaben vor dem Punkt (wegen „Gerasdorf b. Wien“) und sah „…
+  Reisezeit ein.“ und „… vorerst ab.“ nicht als Satzende; zweiter und
+  dritter Satz zusammen passten nicht und fielen gemeinsam weg (Leopoldau ↔
+  Süßenbrunn, 09.10., 20:00). Passt das nicht, endet der zweite Satz jetzt
+  am ersten Punkt, vor dem keine Abkürzung steht
+  (`_oebb_first_two_sentences`); die Stationen fallen erst weg, wenn auch
+  dieser Satz allein sonst nicht passt. Alle 13 Änderungen im Replay sind
+  „zweiter Satz bleibt“, kein anderer Text ändert sich.
 * **„Voraussichtlich bis 14:10 Uhr“ statt „Voraussichtliche Dauer: 14:10
   Uhr“ (seit 2026-10-06, Betreiberentscheidung „Dauer-Text anpassen“).**
   WLs Störungsvorlage nennt das erwartete Ende unter einem Dauer-Label. Auf
