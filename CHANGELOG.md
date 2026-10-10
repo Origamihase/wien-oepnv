@@ -19,6 +19,8 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   (`wl_plausibility.incident_begin`; das Feld `_incident_start` trägt den
   Beginn durch Cache, Merge und Zeitzeile). Echte Vorläufe von bis zu 39
   Minuten bleiben („9: Falschparker“: Anzeige 14:21, Meldung 15:00).
+  Das 60-Minuten-Fenster ist Michaels Entscheidung vom 11.10.2026
+  („Fenster 60 Minuten“ auf der Entscheidungskarte).
   Replay aller 345 Builds seit 04.10.: 343 gleich, zwei zeigen „[Seit
   20:08]“ statt „[Seit 13:08]“. Ohne Störungsmeldung im Eintrag bleibt eine
   umgeschriebene Anzeige erkennbar nur an ihrem Text und wird nicht

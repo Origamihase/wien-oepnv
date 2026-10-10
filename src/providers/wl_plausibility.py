@@ -74,7 +74,9 @@ PLACEHOLDER_END = (11, 11)
 # incident and that kept the start of the old one: on 09.10. the tickers of a
 # demonstration from 13:08 read "Fahrtbehinderung wegen Polizeieinsatz" for
 # a police operation from 20:08, and the feed showed "2/71: Polizeieinsatz
-# [Seit 13:08]".
+# [Seit 13:08]". The 60-minute window is Michael's decision of 11.10.2026
+# (decision card, "Fenster 60 Minuten"): it keeps every real ticker lead seen
+# and corrects the rewritten ticker; do not change it without asking him.
 TICKER_LEAD_MAX = timedelta(minutes=60)
 
 

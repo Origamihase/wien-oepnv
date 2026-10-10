@@ -677,7 +677,9 @@ verdrängt eine andere Störung.
     Minuten nach ihrem `starts_at` im Feed auf (Takt 30 Minuten).
     Eine Kurzmeldung darf den Beginn der Störungsmeldung (WL-Nummer
     `I…`) höchstens `TICKER_LEAD_MAX` = 60 Minuten vorziehen
-    (`wl_plausibility.incident_begin`, seit 2026-10-10; das Feld
+    (`wl_plausibility.incident_begin`, seit 2026-10-10; Entscheidung von
+    Michael am 11.10.2026, „Fenster 60 Minuten“, weil es alle echten
+    Vorläufe behält und die umgeschriebene Anzeige korrigiert; das Feld
     `_incident_start` trägt den Beginn der Störungsmeldungen durch Cache
     und Merge). WL schaltet die Anzeigen bis zu 39 Minuten vor der
     Erfassung ein, dann stimmt die frühere Zeit („9: Falschparker“ am
