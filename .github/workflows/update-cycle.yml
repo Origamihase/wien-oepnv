@@ -45,7 +45,7 @@ name: Update cycle
 # observability — both acceptable for the 30-min cadence.
 #
 # Step order:
-#   1. ``actions/checkout`` (full history for clean rebase later) +
+#   1. ``actions/checkout`` (depth 1, see the checkout step) +
 #      configure the bot git identity once for the whole job
 #   2. backup-cron freshness gate — on a ``schedule`` run decide whether a
 #      recent tick already covered this window; steps 4-7 gate on its
@@ -68,9 +68,9 @@ name: Update cycle
 #      external commit action — see that step's header for the rationale)
 #
 # Concurrency: the workflow holds the ``external-api-fetch`` lock
-# (shared with ``manual-full-refresh.yml`` and the dispatch-only
-# escape-hatch workflows) so the project never has two parallel
-# API-fetching cycles in flight.
+# (shared with ``manual-full-refresh.yml``, ``test-vor-api.yml`` and
+# ``build-feed.yml`` runs on ``main``) so the project never has two
+# parallel API-fetching cycles in flight.
 
 on:
   workflow_dispatch:
