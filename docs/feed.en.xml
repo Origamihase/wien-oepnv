@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 10 Oct 2026 13:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 14:01:16 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[22A: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">058b4c8d1bcd5de597f6cab7230653901d4005a4a0eeb390c31a784c8b083aea</guid>
+      <pubDate>Sat, 10 Oct 2026 13:57:00 +0200</pubDate>
+      <ext:first_seen>Sat, 10 Oct 2026 13:57:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 13:57:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 13:57]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 13:57]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[9: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
+      <pubDate>Sat, 10 Oct 2026 13:54:00 +0200</pubDate>
+      <ext:first_seen>Sat, 10 Oct 2026 13:54:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 13:56:11 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction towards Gersthof S. Expected until 14:25. Reason: illegally parked vehicle in the area of Hormayrgasse 27. [Since 13:54]</description>
+      <content:encoded><![CDATA[Service obstruction towards Gersthof S. Expected until 14:25. Reason: illegally parked vehicle in the area of Hormayrgasse 27.<br/>[Since 13:54]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[35A: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">03b7d773a613c65dc47884517046d555d006e6e24abebc2d3c4c6a50e91e901f</guid>
+      <pubDate>Sat, 10 Oct 2026 13:44:00 +0200</pubDate>
+      <ext:first_seen>Sat, 10 Oct 2026 13:44:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 13:44:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: rescue operation. [Since 13:44]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 13:44]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U3: Service disruption]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -32,13 +65,13 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 12:20]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1A/2/2A/3A/4A/71/D: Demonstration on 10.10.2026]]></title>
+      <title><![CDATA[1A/2/2A/3A/4A/71/74A/D: Demonstration on 10.10.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">337422a9d6cedd385263f2f283630dffffa4c906e26c9ae80c7f57cf1fa38c06</guid>
-      <pubDate>Thu, 08 Oct 2026 00:00:00 +0200</pubDate>
+      <pubDate>Sat, 10 Oct 2026 12:11:00 +0200</pubDate>
       <ext:first_seen>Thu, 08 Oct 2026 14:01:08 +0200</ext:first_seen>
       <ext:starts_at>Sat, 10 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 16:30:00 +0200</ext:ends_at>
+      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Due to a demonstration, there is a restriction on public transport. [Today]</description>
       <content:encoded><![CDATA[Due to a demonstration, there is a restriction on public transport.<br/>[Today]]]></content:encoded>
     </item>
@@ -85,39 +118,6 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 … [Until 28.10.]</description>
       <content:encoded><![CDATA[Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 …<br/>[Until 28.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S80: ÖBB replacement bus]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Sat, 10 Oct 2026 05:00:17 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 05:00:17 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 23:00:00 +0200</ext:ends_at>
-      <description>Bhf. Hütteldorf [Today]</description>
-      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A/7A/N62: Eibesbrunnergasse both directions]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bd6cbe1a4ea6d909912fce8527e38411ee42a952a91a70beecf363c26cd3e728</guid>
-      <pubDate>Mon, 05 Oct 2026 16:10:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 16:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 … [Until 06.11.]</description>
-      <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 …<br/>[Until 06.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
-      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction. [Until 26.10.]</description>
-      <content:encoded><![CDATA[Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction.<br/>[Until 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

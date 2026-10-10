@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261010-0010, I20261010-0011"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261010-0015, I20260925-0011, I20260909-0007, I20261010-0010, I20261010-0012, I20261010-0013, I20261010-0011, I20261010-0014"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R100-136, R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2378-627, R2343-125, R2359-125, R2343-626, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R36-152, R100-136, R130-136, R19-136, R45-136, R5815-671, R2558-125, R1448-412, R1474-412, R2025-671, R1445-149, R1476-149, R1446-149, R1449-149, R1447-149, R1448-149, R1472-149, R1473-149, R1475-149, R1474-149, R1177-0, R2373-126, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2372-627, R2345-127, R2380-627, R2379-627, R1974-466, R500-101, R51-136, R50-136, R49-136, R46-136, R47-136, R105-136, R17-136, R13-136, R14-136, R15-136, R111-136, R18-136, R81-136, R2044-171, R49-171, R50-171, R51-171, R81-171, R105-171, R13-171, R14-171, R15-171, R17-171, R18-171, R19-171, R44-171, R45-171, R46-171, R47-171, R2043-171, R2045-171, R2046-171, R2047-171, R1490-404, R2641-171, R2015-171, R2012-171, R2013-171, R2014-171, R2640-171, R12-102, R10-102, R55-102, R54-102, R53-102, R22-102, R14-102, R13-102, R11-102, R52-102, R51-102, R50-102, R15-102, R134-102, R9-102, R49-102, R268-474, R552-109, R521-109, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -273,6 +273,187 @@
     "title": "U3: Betriebsstörung"
    },
    {
+    "attributes": {
+     "relatedLineTypes": {
+      "2": "ptTram",
+      "4A": "ptBusCity",
+      "71": "ptTram",
+      "74A": "ptBusCity",
+      "D": "ptTram"
+     }
+    },
+    "description": "Die Züge der Linie D werden zwischen Absberggasse und Börse in beiden Richtungen ab Quartier Belvedere über die Linie O - Wien Mitte - Julius-Raab-Platz - Schwedenplatz und Schottenring umgeleitet. Die Züge der Linie 2 werden in beiden Richtungen zwischen Parlament, U Volkstheater und Schwedenplatz über Schottentor und Schottenring umgeleitet. In Richtung Dornbach kann die Haltestelle Schwedenplatz nicht eingehalten werden. Die Züge der Linie 71 fahren nur zwischen Kaiserebersdorf, Zinnergasse und St. Marx S und werden über die Linie 18 zur Schlachthausgasse umgeleitet. Die Busse der Linie 4A fahren nur zwischen Wittelsbachstraße und Lisztstraße. Die Linie 74A fährt nur zwischen St. Marx und Landstraße Weichen Sie ersatzweise auf die U-Bahn-Linien aus. Die Störung dauert voraussichtlich bis 16:30 Uhr. Grund dafür ist eine Demonstration im Bereich Karlsplatz, Innere Stadt und Ringstraße.",
+    "descriptionHTML": "<p>Die Züge der Linie D werden zwischen Absberggasse und Börse in beiden Richtungen ab Quartier Belvedere über die Linie O - Wien Mitte - Julius-Raab-Platz - Schwedenplatz und Schottenring umgeleitet.</p><p><br></p><p>Die Züge der Linie 2 werden in beiden Richtungen zwischen Parlament, U Volkstheater und Schwedenplatz über Schottentor und Schottenring umgeleitet. In Richtung Dornbach kann die Haltestelle Schwedenplatz nicht eingehalten werden.</p><p><br></p><p>Die Züge der Linie 71 fahren nur zwischen Kaiserebersdorf, Zinnergasse und St. Marx S und werden über die Linie 18 zur Schlachthausgasse umgeleitet.</p><p><br></p><p>Die Busse der Linie 4A fahren nur zwischen Wittelsbachstraße und Lisztstraße.</p><p><br></p><p><br></p><p>Die Linie 74A fährt nur zwischen St. Marx und Landstraße</p><p>Weichen Sie ersatzweise auf die U-Bahn-Linien aus.</p><p><br></p><p>Die Störung dauert voraussichtlich bis 16:30 Uhr.</p><p><br></p><p>Grund dafür ist eine Demonstration im Bereich Karlsplatz, Innere Stadt und Ringstraße.</p>",
+    "name": "I20261010-0012",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2",
+     "D",
+     "71",
+     "4A",
+     "74A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "136",
+       "lineName": "D",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "171",
+       "lineName": "71",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "102",
+       "lineName": "2",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "404",
+       "lineName": "4A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "474",
+       "lineName": "74A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-10T13:40:00.000+0200",
+     "end": "2026-10-10T23:55:00.000+0200",
+     "lastUpdate": "2026-10-10T13:44:00.000+0200",
+     "start": "2026-10-10T12:11:00.000+0200"
+    },
+    "title": "D, 71, 2, 4A, 74A: Demonstration"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "35A": "ptBusCity"
+     }
+    },
+    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Rettungseinsatz.",
+    "name": "I20261010-0013",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "35A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "435",
+       "lineName": "35A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-10T13:44:00.000+0200",
+     "end": "2026-10-10T23:55:00.000+0200",
+     "lastUpdate": "2026-10-10T13:44:00.000+0200",
+     "resume": "2026-10-10T13:44:00.000+0200",
+     "start": "2026-10-10T13:44:00.000+0200"
+    },
+    "title": "35A: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "9": "ptTram"
+     }
+    },
+    "description": "Linie 9: Fahrtbehinderung in Richtung Gersthof S. Voraussichtliche Dauer: 14:25 Uhr. Grund: Falschparker im Bereich Hormayrgasse 27.",
+    "descriptionHTML": "Linie 9:<br>Fahrtbehinderung in Richtung Gersthof S.<br> <br>Voraussichtliche Dauer: 14:25 Uhr.<br><br>Grund: Falschparker im Bereich Hormayrgasse 27.",
+    "location": "Hormayrgasse  27",
+    "name": "I20261010-0014",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "109",
+       "lineName": "9",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-10T13:55:00.000+0200",
+     "end": "2026-10-10T23:55:00.000+0200",
+     "lastUpdate": "2026-10-10T13:55:00.000+0200",
+     "start": "2026-10-10T13:54:00.000+0200"
+    },
+    "title": "9: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "22A": "ptBusCity"
+     }
+    },
+    "description": "Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "Linie 22A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
+    "name": "I20261010-0015",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "22A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "422",
+       "lineName": "22A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-10T13:58:00.000+0200",
+     "end": "2026-10-10T23:55:00.000+0200",
+     "lastUpdate": "2026-10-10T13:58:00.000+0200",
+     "resume": "2026-10-10T13:57:00.000+0200",
+     "start": "2026-10-10T13:57:00.000+0200"
+    },
+    "title": "22A: Verkehrsüberlastung"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Parlament, Volkstheater ",
+    "name": "R10-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     10
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:39:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Parlament, Volkstheater "
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R100-136",
     "owner": "WL",
@@ -343,6 +524,78 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+    "name": "R105-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     105
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:36:38.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab St. Marx",
+    "name": "R105-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     105
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab St. Marx"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Parlament, Volkstheater ",
+    "name": "R11-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     11
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:39:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Parlament, Volkstheater "
+   },
+   {
+    "description": "Demonstration\nUmleitung über die Linien O und 1",
+    "name": "R111-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     111
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:08.000+0200"
+    },
+    "title": "Demonstration\nUmleitung über die Linien O und 1"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
@@ -450,6 +703,78 @@
     "title": "Züge halten in\nSchleife"
    },
    {
+    "description": "Demonstration\nBetrieb ab Parlament, Volkstheater ",
+    "name": "R12-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     12
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:39:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Parlament, Volkstheater "
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Parlament, Volkstheater ",
+    "name": "R13-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     13
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:39:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Parlament, Volkstheater "
+   },
+   {
+    "description": "Demonstration\nKein Betrieb Richtung Börse",
+    "name": "R13-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     13
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:08.000+0200"
+    },
+    "title": "Demonstration\nKein Betrieb Richtung Börse"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R13-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     13
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R130-136",
     "owner": "WL",
@@ -466,6 +791,78 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "description": "Demonstration\nZüge halten gegenüber ",
+    "name": "R134-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     134
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:39:39.000+0200"
+    },
+    "title": "Demonstration\nZüge halten gegenüber "
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Parlament, Volkstheater ",
+    "name": "R14-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:39:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Parlament, Volkstheater "
+   },
+   {
+    "description": "Demonstration\nKein Betrieb Richtung Börse",
+    "name": "R14-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:08.000+0200"
+    },
+    "title": "Demonstration\nKein Betrieb Richtung Börse"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R14-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -684,6 +1081,150 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
    },
    {
+    "description": "Demonstration\nBetrieb ab Lisztstraße",
+    "name": "R1490-404",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "4A"
+    ],
+    "relatedStops": [
+     1490
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Lisztstraße"
+   },
+   {
+    "description": "Demonstration\nZüge halten Dr.-Karl-Renner-Ring 3 ",
+    "name": "R15-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:39:39.000+0200"
+    },
+    "title": "Demonstration\nZüge halten Dr.-Karl-Renner-Ring 3 "
+   },
+   {
+    "description": "Demonstration\nKein Betrieb Richtung Börse",
+    "name": "R15-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:08.000+0200"
+    },
+    "title": "Demonstration\nKein Betrieb Richtung Börse"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R15-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "description": "Demonstration\nKein Betrieb Richtung Börse",
+    "name": "R17-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:08.000+0200"
+    },
+    "title": "Demonstration\nKein Betrieb Richtung Börse"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R17-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "description": "Demonstration\nKein Betrieb Richtung Börse",
+    "name": "R18-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     18
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:08.000+0200"
+    },
+    "title": "Demonstration\nKein Betrieb Richtung Börse"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R18-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     18
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -700,6 +1241,24 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R19-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     19
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
    },
    {
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
@@ -720,6 +1279,78 @@
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
    {
+    "description": "Demonstration\nBetrieb ab St. Marx",
+    "name": "R2012-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2012
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:40.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab St. Marx"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab St. Marx",
+    "name": "R2013-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2013
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:40.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab St. Marx"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab St. Marx",
+    "name": "R2014-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2014
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:40.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab St. Marx"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab St. Marx",
+    "name": "R2015-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2015
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:40.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab St. Marx"
+   },
+   {
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "name": "R2025-671",
     "owner": "WL",
@@ -733,6 +1364,114 @@
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
+   },
+   {
+    "description": "Demonstration\nUmleitung Linie 18 bis Schlachthausgasse ",
+    "name": "R2043-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2043
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Demonstration\nUmleitung Linie 18 bis Schlachthausgasse "
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R2044-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2044
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R2045-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2045
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R2046-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2046
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R2047-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2047
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Parlament, Volkstheater ",
+    "name": "R22-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     22
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:39:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Parlament, Volkstheater "
    },
    {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
@@ -1005,6 +1744,60 @@
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
    },
    {
+    "description": "Demonstration\nBetrieb ab St. Marx",
+    "name": "R2640-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2640
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:40.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab St. Marx"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R2641-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2641
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:40.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Landstraße",
+    "name": "R268-474",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "74A"
+    ],
+    "relatedStops": [
+     268
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:40:08.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Landstraße"
+   },
+   {
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1059,6 +1852,24 @@
     "title": "Züge halten\nbei Linien 6 und 18"
    },
    {
+    "description": "Demonstration\nBetrieb ab St. Marx",
+    "name": "R44-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     44
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab St. Marx"
+   },
+   {
     "description": "Züge halten\nWipplingerstr 39",
     "name": "R45-136",
     "owner": "WL",
@@ -1075,6 +1886,204 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab St. Marx",
+    "name": "R45-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     45
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab St. Marx"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+    "name": "R46-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     46
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:36:38.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab St. Marx",
+    "name": "R46-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     46
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab St. Marx"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+    "name": "R47-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:36:38.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab St. Marx",
+    "name": "R47-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab St. Marx"
+   },
+   {
+    "description": "Demonstration\nZüge halten gegenüber ",
+    "name": "R49-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-10-10T17:30:00.000+0200",
+     "start": "2026-10-10T13:39:39.000+0200"
+    },
+    "title": "Demonstration\nZüge halten gegenüber "
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+    "name": "R49-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:36:38.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab St. Marx",
+    "name": "R49-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab St. Marx"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwedenplatz ",
+    "name": "R50-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:39:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz "
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+    "name": "R50-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:36:38.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab St. Marx",
+    "name": "R50-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab St. Marx"
    },
    {
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
@@ -1095,6 +2104,168 @@
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
+    "description": "Demonstration\nBetrieb ab Schwedenplatz ",
+    "name": "R51-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:39:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz "
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
+    "name": "R51-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:36:38.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab St. Marx",
+    "name": "R51-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab St. Marx"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwedenplatz ",
+    "name": "R52-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     52
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:39:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz "
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R521-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     521
+    ],
+    "time": {
+     "end": "2026-10-10T14:55:00.000+0200",
+     "start": "2026-10-10T13:56:11.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwedenplatz ",
+    "name": "R53-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     53
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:39:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz "
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwedenplatz ",
+    "name": "R54-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     54
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:39:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz "
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwedenplatz ",
+    "name": "R55-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     55
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:39:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz "
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R552-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     552
+    ],
+    "time": {
+     "end": "2026-10-10T14:55:00.000+0200",
+     "start": "2026-10-10T13:56:11.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "name": "R5815-671",
     "owner": "WL",
@@ -1108,6 +2279,60 @@
      "start": "2026-10-07T00:00:17.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "description": "Demonstration\nKein Betrieb Richtung Börse",
+    "name": "R81-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     81
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:08.000+0200"
+    },
+    "title": "Demonstration\nKein Betrieb Richtung Börse"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R81-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     81
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:37:39.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Parlament, Volkstheater ",
+    "name": "R9-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     9
+    ],
+    "time": {
+     "end": "2026-10-10T17:00:00.000+0200",
+     "start": "2026-10-10T13:39:39.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Parlament, Volkstheater "
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
