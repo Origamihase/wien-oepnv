@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 10 Oct 2026 14:30:37 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 15:01:14 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[22A: Traffic congestion]]></title>
@@ -21,28 +21,6 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 13:57]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[9: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
-      <pubDate>Sat, 10 Oct 2026 13:54:00 +0200</pubDate>
-      <ext:first_seen>Sat, 10 Oct 2026 13:54:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 13:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 13:54]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:54]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: Service disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f</guid>
-      <pubDate>Sat, 10 Oct 2026 12:55:00 +0200</pubDate>
-      <ext:first_seen>Sat, 10 Oct 2026 12:55:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 12:55:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Currently all lifts in the station Kardinal-Nagl-Platz are out of service. Please use the adjacent stations. [Since 12:55]</description>
-      <content:encoded><![CDATA[Currently all lifts in the station Kardinal-Nagl-Platz are out of service. Please use the adjacent stations.<br/>[Since 12:55]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[U6: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
@@ -54,7 +32,29 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 12:20]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1A/2/2A/3A/4A/71/74A/D: Demonstration on 10.10.2026]]></title>
+      <title><![CDATA[D: Demonstration, track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a945ae1c98c627e464cfe1be0435b068f6048bc818f57fce202c9dfe2427afa1</guid>
+      <pubDate>Sat, 10 Oct 2026 13:37:08 +0200</pubDate>
+      <ext:first_seen>Sat, 10 Oct 2026 15:01:14 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 13:37:08 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 10 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Demonstration: diversion over lines O and 1. Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse. [Today]</description>
+      <content:encoded><![CDATA[Demonstration: diversion over lines O and 1. Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2/74A: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">248d4ea551a5d6e952d0ca7fd955503cf4f51d755910624e25277eea19192547</guid>
+      <pubDate>Sat, 10 Oct 2026 12:11:00 +0200</pubDate>
+      <ext:first_seen>Sat, 10 Oct 2026 15:01:14 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 12:11:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>The 2 line trains are redirected in both directions between Parlament, U Volkstheater and Schwedenplatz via Schottentor and Schottenring. [Today]</description>
+      <content:encoded><![CDATA[The 2 line trains are redirected in both directions between Parlament, U Volkstheater and Schwedenplatz via Schottentor and Schottenring.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1A/2/2A/3A/4A/71/D: Demonstration on 10.10.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">337422a9d6cedd385263f2f283630dffffa4c906e26c9ae80c7f57cf1fa38c06</guid>
       <pubDate>Sat, 10 Oct 2026 14:10:00 +0200</pubDate>

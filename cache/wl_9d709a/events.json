@@ -881,14 +881,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2/D/71/4A/74A: Demonstration",
-    "description": "Die Züge der Linie D werden zwischen Absberggasse und Börse in beiden Richtungen ab Quartier Belvedere über die Linie O - Wien Mitte - Julius-Raab-Platz - Schwedenplatz und Schottenring umgeleitet. Die Züge der Linie 2 werden in beiden Richtungen zwischen Parlament, U Volkstheater und Schwedenplatz über Schottentor und Schottenring umgeleitet. In Richtung Dornbach kann die Haltestelle Schwedenplatz nicht eingehalten werden. Die Züge der Linie 71 fahren nur zwischen Kaiserebersdorf, Zinnergasse und St. Marx S und werden über die Linie 18 zur Schlachthausgasse umgeleitet. Die Busse der Linie 4A fahren nur zwischen Wittelsbachstraße und Lisztstraße. Die Linie 74A fährt nur zwischen St. Marx und Landstraße Weichen Sie ersatzweise auf die U-Bahn-Linien aus. Die Störung dauert voraussichtlich bis 16:30 Uhr. Grund dafür ist eine Demonstration im Bereich Karlsplatz, Innere Stadt und Ringstraße.",
+    "title": "2/74A: Demonstration",
+    "description": "Die Züge der Linie 2 werden in beiden Richtungen zwischen Parlament, U Volkstheater und Schwedenplatz über Schottentor und Schottenring umgeleitet. In Richtung Dornbach kann die Haltestelle Schwedenplatz nicht eingehalten werden Die Linie 74A fährt nur zwischen St. Marx und Landstraße Weichen Sie ersatzweise auf die U-Bahn-Linien aus. Die Störung dauert voraussichtlich bis 16:30 Uhr. Grund dafür ist eine Demonstration im Bereich Karlsplatz, Innere Stadt und Ringstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "443f36d48c891c0779bfc27ddf9de069ab76821975bf7b74d702f6a9e05dec47",
+    "guid": "248d4ea551a5d6e952d0ca7fd955503cf4f51d755910624e25277eea19192547",
     "pubDate": "2026-10-10T12:11:00+02:00",
     "starts_at": "2026-10-10T12:11:00+02:00",
     "ends_at": "2026-10-10T23:55:00+02:00",
-    "_identity": "wl|störung|L=2,4A,71,74A,D|D=2026-10-10|TK=demonstration",
+    "_identity": "wl|störung|L=2,74A|D=2026-10-10|TK=demonstration",
     "_wl_ids": [
       "I20261010-0012"
     ]
@@ -1112,6 +1112,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "71: Fahrtbehinderung wegen Demonstration",
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c3bc1799723b116ebf4b83b471a9da3fca2e1fd490f9c8a631a88fa52b77863a",
+    "pubDate": "2026-10-10T13:37:39+02:00",
+    "starts_at": "2026-10-10T13:37:40+02:00",
+    "ends_at": "2026-10-10T17:00:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-10-10|TK=demonstration"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Demonstration Umleitung Linie 18 bis Schlachthausgasse",
+    "description": "Demonstration\nUmleitung Linie 18 bis Schlachthausgasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "da84575e403987cf05ebf512e9805cba174d01928b37ed81d4eeb626f203023a",
+    "pubDate": "2026-10-10T13:37:39+02:00",
+    "starts_at": "2026-10-10T13:37:39+02:00",
+    "ends_at": "2026-10-10T17:00:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-10-10|TK=demonstration umleitung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1120,21 +1144,6 @@
     "starts_at": "2026-10-07T00:00:15+02:00",
     "ends_at": "2026-10-10T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-10-07|TK=einstieg leberstrasse vor s bahn gebäude"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Falschparker",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-10-10T13:54:00+02:00",
-    "starts_at": "2026-10-10T13:54:00+02:00",
-    "ends_at": "2026-10-10T23:55:00+02:00",
-    "_identity": "wl|störung|L=9|D=2026-10-10|TK=falschparker",
-    "_wl_ids": [
-      "I20261010-0014"
-    ]
   },
   {
     "source": "Wiener Linien",
@@ -1202,6 +1211,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "D: Demonstration Umleitung über die Linien O und 1",
+    "description": "Demonstration\nUmleitung über die Linien O und 1",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a945ae1c98c627e464cfe1be0435b068f6048bc818f57fce202c9dfe2427afa1",
+    "pubDate": "2026-10-10T13:37:08+02:00",
+    "starts_at": "2026-10-10T13:37:08+02:00",
+    "ends_at": "2026-10-10T17:00:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-10-10|TK=demonstration umleitung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N71: Ersatzverkehr Busse halten bei Haltestelle N71",
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1210,21 +1231,6 @@
     "starts_at": "2026-10-07T00:00:17+02:00",
     "ends_at": "2026-10-10T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-07|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Betriebsstörung",
-    "description": "Derzeit sind alle Aufzüge in der Station Kardinal-Nagl-Platz außer Betrieb. Bitte benutzen Sie die benachbarten Stationen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
-    "pubDate": "2026-10-10T12:55:00+02:00",
-    "starts_at": "2026-10-10T12:55:00+02:00",
-    "ends_at": "2026-10-10T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-10-10|TK=u3 betriebsstörung",
-    "_wl_ids": [
-      "I20261010-0011"
-    ]
   },
   {
     "source": "Wiener Linien",
