@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1017117, ftazW_212, ftazW_2, ftazW_582, ftazW_1031271, ftazW_3, ftazW_581, ftazW_1353814, ftazW_1017118, ftazW_487, ftazW_756, ftazW_146, ftazW_1353815, ftazW_1017119, ftazW_1031269, ftazW_147, ftazW_29, ftazW_1031270, ftazW_211, ftazW_488, ftazW_1354336, ftazW_1017120"
+    "trafficInfoNameList": "ftazW_1017117, ftazW_212, ftazW_2, ftazW_582, ftazW_1031271, ftazW_3, ftazW_581, ftazW_1353814, ftazW_1017118, ftazW_487, ftazW_756, ftazW_146, ftazW_1353815, ftazW_1017119, ftazW_1031269, ftazW_147, ftazW_29, ftazW_1031270, ftazW_211, ftazW_488, ftazW_1354336, ftazW_1017120, ftazW_1016902, ftazW_734, ftazW_1031272"
    }
   ],
   "poiCategoryGroups": [
@@ -2694,6 +2694,37 @@
    },
    {
     "attributes": {
+     "ausBis": "14.10.2026 00:45",
+     "ausVon": "13.10.2026 20:45",
+     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Jenullgasse",
+     "rbls": [
+      4407
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Braunschweiggasse",
+     "status": "geplante Wartung",
+     "towards": "U4 Heiligenstadt"
+    },
+    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Jenullgasse",
+    "name": "ftazW_1016902",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4407
+    ],
+    "time": {
+     "end": "2026-10-14T00:45:00.000+0200",
+     "start": "2026-10-13T20:45:00.000+0200"
+    },
+    "title": "Braunschweiggasse"
+   },
+   {
+    "attributes": {
      "ausBis": "12.10.2026 00:45",
      "ausVon": "11.10.2026 20:45",
      "location": "U1 Mittelbahnsteig - Ausgang Aderklaaer Straße",
@@ -2914,6 +2945,37 @@
     "time": {
      "end": "2026-10-12T00:45:00.000+0200",
      "start": "2026-10-11T20:45:00.000+0200"
+    },
+    "title": "Donaustadtbrücke"
+   },
+   {
+    "attributes": {
+     "ausBis": "14.10.2026 00:45",
+     "ausVon": "13.10.2026 20:45",
+     "location": "U2 Bahnsteig Richtung Seestadt - Ausgang Kaisermühlendamm",
+     "rbls": [
+      4267
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Donaustadtbrücke",
+     "status": "geplante Wartung",
+     "towards": "U2 Seestadt"
+    },
+    "description": "U2 Bahnsteig Richtung Seestadt - Ausgang Kaisermühlendamm",
+    "name": "ftazW_1031272",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4267
+    ],
+    "time": {
+     "end": "2026-10-14T00:45:00.000+0200",
+     "start": "2026-10-13T20:45:00.000+0200"
     },
     "title": "Donaustadtbrücke"
    },
@@ -3336,6 +3398,37 @@
      "start": "2026-10-11T20:45:00.000+0200"
     },
     "title": "Karlsplatz"
+   },
+   {
+    "attributes": {
+     "ausBis": "14.10.2026 00:45",
+     "ausVon": "13.10.2026 20:45",
+     "location": "U3 Bahnsteig Richtung Simmering - Ausgang Gasometer/Modecenterstraße",
+     "rbls": [
+      4934
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Gasometer",
+     "status": "geplante Wartung",
+     "towards": "U3 Simmering"
+    },
+    "description": "U3 Bahnsteig Richtung Simmering - Ausgang Gasometer/Modecenterstraße",
+    "name": "ftazW_734",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4934
+    ],
+    "time": {
+     "end": "2026-10-14T00:45:00.000+0200",
+     "start": "2026-10-13T20:45:00.000+0200"
+    },
+    "title": "Gasometer"
    },
    {
     "attributes": {
