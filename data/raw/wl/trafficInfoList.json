@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261010-0003, I20260925-0011, I20260909-0007, I20261010-0005, I20261010-0004-F01, I20261010-0004"
+    "trafficInfoNameList": "I20261010-0005, I20260917-0012, I20260922-0032, I20261010-0003, I20260925-0011, I20260909-0007, I20261010-0004-F01, I20261010-0004"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R100-136, R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2373-125, R2372-125, R1974-466, R500-101, R483-152, R571-152, R1480-152, R1487-152, R1477-152, R1478-152, R1479-152, R1562-152, R1559-152, R1558-152, R1441-152, R1375-152, R1539-152, R1542-152, R1465-152, R1553-152, R1556-152, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R100-136, R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2372-125, R2373-125, R2379-627, R2380-627, R2345-127, R2372-627, R2373-127, R2373-126, R1974-466, R500-101, R1558-152, R1375-152, R1441-152, R1542-152, R1539-152, R1465-152, R1553-152, R1556-152, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -328,12 +328,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-10T06:22:00.000+0200",
-     "end": "2026-10-10T23:55:00.000+0200",
-     "lastUpdate": "2026-10-10T06:22:00.000+0200",
-     "resume": "2026-10-10T06:21:00.000+0200",
+     "end": "2026-10-10T06:56:00.000+0200",
+     "lastUpdate": "2026-10-10T06:56:00.000+0200",
+     "resume": "2026-10-10T06:56:00.000+0200",
      "start": "2026-10-10T06:21:00.000+0200"
     },
     "title": "11: Verspätungen"
@@ -805,96 +805,6 @@
    },
    {
     "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1477-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1477
-    ],
-    "time": {
-     "end": "2026-10-10T06:57:00.000+0200",
-     "start": "2026-10-10T05:57:54.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1478-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1478
-    ],
-    "time": {
-     "end": "2026-10-10T06:57:00.000+0200",
-     "start": "2026-10-10T05:57:54.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1479-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1479
-    ],
-    "time": {
-     "end": "2026-10-10T06:57:00.000+0200",
-     "start": "2026-10-10T05:57:54.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1480-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1480
-    ],
-    "time": {
-     "end": "2026-10-10T06:57:00.000+0200",
-     "start": "2026-10-10T05:57:54.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1487-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1487
-    ],
-    "time": {
-     "end": "2026-10-10T06:57:00.000+0200",
-     "start": "2026-10-10T05:57:54.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
     "name": "R1539-152",
     "owner": "WL",
     "priority": "1",
@@ -982,42 +892,6 @@
      "start": "2026-10-10T05:57:55.000+0200"
     },
     "title": "Polizeieinsatz\nZüge halten bei Linie 10 Richtung Hummelgasse"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1559-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1559
-    ],
-    "time": {
-     "end": "2026-10-10T06:57:00.000+0200",
-     "start": "2026-10-10T05:57:55.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1562-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1562
-    ],
-    "time": {
-     "end": "2026-10-10T06:57:00.000+0200",
-     "start": "2026-10-10T05:57:55.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
@@ -1413,24 +1287,6 @@
     "title": "Züge halten\nWipplingerstr 39"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R483-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     483
-    ],
-    "time": {
-     "end": "2026-10-10T06:57:00.000+0200",
-     "start": "2026-10-10T05:57:53.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -1447,24 +1303,6 @@
      "start": "2026-10-10T05:00:17.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R571-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     571
-    ],
-    "time": {
-     "end": "2026-10-10T06:57:00.000+0200",
-     "start": "2026-10-10T05:57:53.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
