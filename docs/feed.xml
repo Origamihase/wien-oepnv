@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sat, 10 Oct 2026 10:30:54 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 11:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[U1: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7</guid>
-      <pubDate>Sat, 10 Oct 2026 10:17:00 +0200</pubDate>
-      <ext:first_seen>Sat, 10 Oct 2026 10:17:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 10:17:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 10:17]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 10:17]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182</guid>
-      <pubDate>Sat, 10 Oct 2026 10:03:00 +0200</pubDate>
-      <ext:first_seen>Sat, 10 Oct 2026 10:03:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 10:03:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 10:03]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 10:03]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[1A/2/2A/3A/4A/71/D: Demonstration am 10.10.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -118,6 +96,28 @@
       <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
       <content:encoded><![CDATA[Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Neue Donau, kein Halt Richtung Floridsdorf]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">747d54fbd4c0aad685b21596a0c44cb67d41165e556ee43b1bc3e8636920f551</guid>
+      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Sun, 04 Oct 2026 16:30:37 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf. [Bis 31.12.]</description>
+      <content:encoded><![CDATA[Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf.<br/>[Bis 31.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Sat, 10 Oct 2026 04:40:17 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 10 Oct 2026 04:40:17 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 11 Oct 2026 01:00:00 +0200</ext:ends_at>
+      <description>Grund: Bauarbeiten. [Bis So 11.10.]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Bis So 11.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
