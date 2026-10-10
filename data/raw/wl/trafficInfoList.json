@@ -240,8 +240,8 @@
       "U3": "ptMetro"
      }
     },
-    "description": "Derzeit sind alle Aufzüge in der Station außer Betrieb. Bitte benutzen Sie die benachbarten Stationen. Grund: Betriebsstörung.",
-    "descriptionHTML": "Derzeit sind alle Aufzüge in der Station außer Betrieb. Bitte benutzen Sie die benachbarten Stationen.<br> <br>Grund: Betriebsstörung.",
+    "description": "Derzeit sind alle Aufzüge in der Station Kardinal-Nagl-Platz außer Betrieb. Bitte benutzen Sie die benachbarten Stationen. Grund: Betriebsstörung.",
+    "descriptionHTML": "Derzeit sind alle Aufzüge in der Station Kardinal-Nagl-Platz außer Betrieb. Bitte benutzen Sie die benachbarten Stationen.<br> <br>Grund: Betriebsstörung.",
     "location": "Kardinal-Nagl-Platz",
     "name": "I20261010-0011",
     "owner": "WL",
@@ -259,11 +259,14 @@
       }
      ]
     ],
+    "relatedStops": [
+     4915
+    ],
     "status": "active",
     "time": {
      "created": "2026-10-10T12:57:00.000+0200",
      "end": "2026-10-10T23:55:00.000+0200",
-     "lastUpdate": "2026-10-10T12:57:00.000+0200",
+     "lastUpdate": "2026-10-10T13:03:00.000+0200",
      "resume": "2026-10-10T12:55:00.000+0200",
      "start": "2026-10-10T12:55:00.000+0200"
     },
