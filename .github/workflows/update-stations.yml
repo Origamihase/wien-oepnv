@@ -141,71 +141,27 @@ jobs:
       - name: Regenerate validation report
         run: python -m src.cli stations validate --output docs/stations_validation_report.md
 
-      - name: Pull concurrent remote changes
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          # Single conflict-safe rebase onto the current remote tip. (This
-          # replaces two back-to-back ``git pull --rebase --autostash`` steps
-          # that both re-pulled ``origin/main`` — the second made the first
-          # redundant.) ``git pull --rebase --autostash`` does NOT fail when
-          # the autostash RE-APPLY conflicts: the rebase succeeds, the failed
-          # ``git stash apply`` is only a warning, and the step still exits 0
-          # — leaving an UNMERGED index that crashes the downstream
-          # auto-commit with "you need to resolve your current index first"
-          # (the failure fixed for the feed workflows on 2026-05-25). The
-          # station directory really can collide here: manual-full-refresh.yml
-          # also runs ``update_all_stations.py`` and writes
-          # ``data/stations.json`` from a separate concurrency lane.
-          git fetch origin main
-          git pull --rebase --autostash origin main
-
-          # Every file this job writes (stations.json, the validation report,
-          # the HAFAS profile, the Places quota counter) is a full
-          # regeneration, so on a conflict the locally built copy is
-          # authoritative. ``data/oebb_station_lines.json`` accumulates, but
-          # only this job writes it and it starts from the checked-out copy,
-          # so the local copy wins there too.
-          mapfile -t -d '' conflicts < <(git diff --name-only --diff-filter=U -z)
-          if [ "${#conflicts[@]}" -gt 0 ]; then
-            echo "::warning title=reconcile::autostash re-apply conflicted on a concurrent push; keeping locally-built copies for: ${conflicts[*]}"
-            # In a stash-apply conflict, stage 3 ("--theirs") is the stashed
-            # locally-built version; stage 2 is the just-pulled upstream.
-            git checkout --theirs -- "${conflicts[@]}"
-            git add -- "${conflicts[@]}"
-            # A conflicted ``git stash apply`` leaves the autostash entry on
-            # the stash stack; drop it so it cannot leak into a later run.
-            git stash drop || true
-          fi
-
-          # Never hand an unmerged index to the auto-commit step.
-          if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
-            echo "::error title=reconcile::unresolved merge conflicts remain after reconcile" >&2
-            git diff --name-only --diff-filter=U >&2
-            exit 1
-          fi
-
-      # NO ``push_options: --force-with-lease`` — it cannot protect this
-      # push and actively destroyed history on 2026-09-11. The action runs
-      # its own ``git fetch`` immediately before pushing, which re-arms the
-      # lease against the very commit the lease is meant to protect:
-      #
-      #   + f576d7cc6...a62fa59c1 main -> origin/main  (forced update)
-      #   Your branch and 'origin/main' have diverged … 1 different commits
-      #   + a62fa59c1...82c421f01 main -> main         (forced update)
-      #
-      # That second line silently dropped the merge commit of PR #1783 from
-      # main. A plain push cannot do that: after the rebase in the step
-      # above it fast-forwards, and if a concurrent writer wins the race it
-      # is rejected — this run then leaves the remote untouched and the next
-      # trigger regenerates the same output. See
-      # ``docs/archive/audits/audit-2026-09-12-force-push-history-loss.md``.
+      # Publish through ``scripts/publish_to_main.sh``, the publish path
+      # shared by every workflow that writes to ``main`` (since 2026-10-10):
+      # commit, then a PLAIN push (never ``--force-with-lease``, which
+      # dropped the merge of PR #1783 from ``main`` on 2026-09-11, see
+      # docs/archive/audits/audit-2026-09-12-force-push-history-loss.md)
+      # with up to 4 attempts; a rejection by a concurrent push re-syncs
+      # with ``git pull --rebase`` first and a conflict keeps the locally
+      # built copy. It replaces the former pre-commit pull plus a single
+      # push through ``git-auto-commit-action``, which went red whenever an
+      # update-cycle commit landed in between (SEO Verify, 2026-10-04).
+      # ``--strict``: a run that could not publish after every attempt
+      # turns red, so a lost refresh does not pass unnoticed.
+      # Every file this job writes (stations.json, the validation report,
+      # the HAFAS profile, the Places quota counter) is a full regeneration,
+      # so on a rebase conflict the locally built copy is authoritative.
+      # ``data/oebb_station_lines.json`` accumulates, but only this job
+      # writes it and it starts from the checked-out copy, so the local copy
+      # wins there too. The station directory really can collide:
+      # manual-full-refresh.yml also writes ``data/stations.json``.
       - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@4a55954c782fc1ea30b9056cd3e7a2b40ca8887d # v7.2.0
-        with:
-          commit_message: "chore(data): refresh station directory [skip ci]"
-          add_options: "-A"
+        shell: bash
+        run: >-
+          bash scripts/publish_to_main.sh --all --strict --label publish
+          --message "chore(data): refresh station directory [skip ci]"

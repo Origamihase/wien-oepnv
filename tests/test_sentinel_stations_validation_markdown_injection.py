@@ -5,7 +5,7 @@ docs/stations_validation_report.md`` (driven by the
 ``update-stations.yml`` cron workflow and the ``manual-full-refresh.yml``
 workflow) regenerates the public ``docs/stations_validation_report.md``
 artefact from ``data/stations.json``. The same workflow then
-auto-commits the file via ``stefanzweifel/git-auto-commit-action`` so the
+auto-commits the file via ``scripts/publish_to_main.sh`` so the
 report is *publicly published* on github.com (and any GitHub Pages site
 mirroring ``docs/``).
 

@@ -5,6 +5,30 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Workflows: ein Weg auf `main`, nie mehr Force-Push (2026-10-10)**:
+  Prüfung aller Workflows und der 6 091 echten Läufe vom 10.09. bis
+  10.10. Alle fünf Workflows, die auf `main` schreiben (Update-Lauf,
+  Rebuild, SEO Verify, Stationspflege, manueller Komplettlauf),
+  veröffentlichen jetzt über `scripts/publish_to_main.sh`: Commit, dann
+  ein gewöhnlicher Push mit vier Versuchen; lehnt GitHub ab, setzt
+  `git pull --rebase` den Commit auf den neuen Stand.
+  - Update-Lauf und Rebuild pushten mit `--force-with-lease`. Der
+    `git pull` zwischen zwei Versuchen stellte das Lease auf den Commit,
+    den es schützen soll (derselbe Mechanismus wie beim Verlust von
+    PR #1783 am 2026-09-11). Musste der Rebase abgebrochen werden,
+    überschrieb der nächste Versuch einen dazwischen gemergten PR;
+    nachgestellt an einem Wegwerf-Repository. Passiert ist es nicht: Alle
+    204 seit dem 12.09. gemergten PRs stehen in `main`.
+  - SEO Verify, Stationspflege und Komplettlauf pushten einmal über
+    `git-auto-commit-action` und wurden rot, wenn ein Update-Tick
+    dazwischenkam (SEO Verify am 04.10., 17:27 UTC; die Prüfungen danach
+    liefen nicht). Die Stationspflege und der Komplettlauf werden nur noch
+    rot, wenn nach allen Versuchen nichts veröffentlicht ist.
+  - Doku: GitHub stellt geplante Läufe hier stark verspätet und
+    lückenhaft zu (Backup-Cron 157 von rund 730, Health check dreimal
+    statt viermal am Tag, Stunden zu spät). Den 30-Minuten-Takt trägt
+    allein IFTTT; `docs/development.md` („Geplante Läufe“,
+    „Veröffentlichen auf `main`“).
 * **Wer zuerst im Feed stand, behält seine GUID (2026-10-09)**: Nachtrag zur
   zehnten Prüfung. Der Feed-Zustand aus der Zeit vor `_with_unowned` führte
   die Haltestellen der Gleisbauarbeiten der Linie 25 (seit 23.09. im Feed)

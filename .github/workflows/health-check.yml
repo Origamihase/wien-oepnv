@@ -13,10 +13,13 @@ name: Health check
 
 on:
   schedule:
-    # Every 6 hours → detection latency for a stalled feed or an unreachable
-    # source is at most ~6 h. Increase the frequency for faster alerts; the
-    # trade-off is more e-mails while an outage persists (GitHub mails on every
-    # failed run, there is no built-in dedupe).
+    # Every 6 hours on paper. GitHub delivers it late and not always: since
+    # 2026-10-05 three runs a day, two to seven hours after the slot
+    # (docs/development.md, "Geplante Läufe"), so the detection latency for
+    # a stalled feed or an unreachable source is up to ~10 h, not ~6 h.
+    # Increase the frequency for faster alerts; the trade-off is more
+    # e-mails while an outage persists (GitHub mails on every failed run,
+    # there is no built-in dedupe).
     - cron: '0 */6 * * *'
   workflow_dispatch:
 
