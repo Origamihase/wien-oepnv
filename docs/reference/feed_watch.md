@@ -67,7 +67,7 @@ zwei Läufen in Folge, schließt er es mit einem Kommentar. Dafür hat der Job i
 antwortet GitHub nicht, steht eine Warnung im Protokoll, und der nächste Lauf
 versucht es wieder.
 
-Entscheidung des Betreibers (Michael, 2026-10-10, Karte „Darf der
+Entscheidung des Betreibers (Michael, 2026-10-11, 01:13 Wiener Zeit, Karte „Darf der
 Update-Lauf für Wächter-Funde GitHub-Issues anlegen?“, Antwort „Issues
 anlegen“): Der Update-Lauf bekommt `issues: write`. Grund: Ein Fund, den
 niemand sieht, wiederholt den Fall vom 09.10., als der Ticker der Linie 25

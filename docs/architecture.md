@@ -983,7 +983,7 @@ wenn der Abruf nicht funktioniert); sie stehen als `::warning` im
 Protokoll, in `data/feed_watch.json` (der Health check zeigt sie als
 Hinweis) und je Regel als GitHub-Issue, das sich selbst schließt (dafür
 `issues: write` im Update-Lauf, Entscheidung des Betreibers vom
-2026-10-10: ein Fund soll am selben Tag per Mail ankommen). Regeln,
+2026-10-11: ein Fund soll am selben Tag per Mail ankommen). Regeln,
 Schwellen und Rückprüfung über 1 975 Feed-Stände:
 [`reference/feed_watch.md`](reference/feed_watch.md).
 
