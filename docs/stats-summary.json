@@ -1,7 +1,7 @@
 {
   "ausfaelle": {
     "by_direction": {
-      "Meidling": 970,
+      "Meidling": 971,
       "Praterstern": 916
     },
     "by_hour": {
@@ -21,7 +21,7 @@
       "13": 68,
       "14": 75,
       "15": 109,
-      "16": 89,
+      "16": 90,
       "17": 108,
       "18": 107,
       "19": 128,
@@ -35,7 +35,7 @@
       "CJX2917": 1,
       "CJX2932": 1,
       "CJX2946": 1,
-      "CJX9": 380,
+      "CJX9": 381,
       "R3": 22,
       "R4": 1,
       "REX1": 156,
@@ -60,17 +60,17 @@
       "Fr": 371,
       "Mi": 302,
       "Mo": 282,
-      "Sa": 152,
+      "Sa": 153,
       "So": 163
     },
-    "total": 1886
+    "total": 1887
   },
-  "generated_at": "2026-10-10T16:31:04+02:00",
+  "generated_at": "2026-10-10T17:01:06+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 1.0,
     "by_direction": {
-      "Meidling": 6140,
+      "Meidling": 6141,
       "Praterstern": 3831
     },
     "by_hour_avg": {
@@ -90,7 +90,7 @@
       "13": 0.64,
       "14": 0.78,
       "15": 1.31,
-      "16": 0.97,
+      "16": 0.96,
       "17": 1.2,
       "18": 1.11,
       "19": 1.14,
@@ -112,13 +112,13 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-10-10T16:17:00+02:00",
+          "last_seen": "2026-10-10T16:47:00+02:00",
           "peer_rows_since": 0,
           "rows_in_window": 1198
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 2290,
+          "peer_rows_since": 2291,
           "rows_in_window": 0
         }
       },
@@ -134,7 +134,7 @@
     "max_delay_minutes": 395.33,
     "threshold_exceedances": 129,
     "threshold_minutes": 9.0,
-    "total_observations": 9971
+    "total_observations": 9972
   },
   "stoerungen": {
     "by_hour": {

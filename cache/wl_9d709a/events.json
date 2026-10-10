@@ -1016,31 +1016,16 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40: Falschparker",
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "37: Fahrtbehinderung Falschparker",
+    "description": "Linie 37: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 17:20 Uhr. Grund: Falschparker im Haltestellenbereich Hohe Warte.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
-    "pubDate": "2026-10-10T15:59:00+02:00",
-    "starts_at": "2026-10-10T15:59:00+02:00",
+    "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
+    "pubDate": "2026-10-10T16:46:00+02:00",
+    "starts_at": "2026-10-10T16:54:29+02:00",
     "ends_at": "2026-10-10T23:55:00+02:00",
-    "_identity": "wl|störung|L=40|D=2026-10-10|TK=falschparker",
+    "_identity": "wl|störung|L=37|D=2026-10-10|TK=falschparker",
     "_wl_ids": [
-      "I20261010-0018"
-    ]
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Falschparker",
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
-    "pubDate": "2026-10-10T15:59:00+02:00",
-    "starts_at": "2026-10-10T15:59:00+02:00",
-    "ends_at": "2026-10-10T23:55:00+02:00",
-    "_identity": "wl|störung|L=41|D=2026-10-10|TK=falschparker",
-    "_wl_ids": [
-      "I20261010-0018"
+      "I20261010-0020"
     ]
   },
   {
@@ -1057,18 +1042,6 @@
     "_wl_ids": [
       "I20260917-0012"
     ]
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "4A: Demonstration Betrieb ab Lisztstraße",
-    "description": "Demonstration\nBetrieb ab Lisztstraße",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "79b936e8248544e9b51be04d1a8ac4a6913dbd6fcf3755cb0240923428f60051",
-    "pubDate": "2026-10-10T13:37:39+02:00",
-    "starts_at": "2026-10-10T13:37:39+02:00",
-    "ends_at": "2026-10-10T17:00:00+02:00",
-    "_identity": "wl|störung|L=4A|D=2026-10-10|TK=demonstration"
   },
   {
     "source": "Wiener Linien",
@@ -1093,30 +1066,6 @@
     "starts_at": "2026-10-10T04:40:17+02:00",
     "ends_at": "2026-10-11T01:00:00+02:00",
     "_identity": "wl|störung|L=66A|D=2026-10-10|TK=busse halten salvatorianerplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Fahrtbehinderung wegen Demonstration",
-    "description": "Fahrtbehinderung\nwegen Demonstration",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c3bc1799723b116ebf4b83b471a9da3fca2e1fd490f9c8a631a88fa52b77863a",
-    "pubDate": "2026-10-10T13:37:39+02:00",
-    "starts_at": "2026-10-10T13:37:40+02:00",
-    "ends_at": "2026-10-10T17:00:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-10-10|TK=demonstration"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Demonstration Umleitung Linie 18 bis Schlachthausgasse",
-    "description": "Demonstration\nUmleitung Linie 18 bis Schlachthausgasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "da84575e403987cf05ebf512e9805cba174d01928b37ed81d4eeb626f203023a",
-    "pubDate": "2026-10-10T13:37:39+02:00",
-    "starts_at": "2026-10-10T13:37:39+02:00",
-    "ends_at": "2026-10-10T17:00:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-10-10|TK=demonstration umleitung"
   },
   {
     "source": "Wiener Linien",
@@ -1196,30 +1145,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Demonstration Betrieb ab Julius-Raab-Platz",
-    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "23617704b0adedf9ec79e6ea20280c4a9295bcef03cad548c5faed81118dda8e",
-    "pubDate": "2026-10-10T13:36:38+02:00",
-    "starts_at": "2026-10-10T13:37:08+02:00",
-    "ends_at": "2026-10-10T17:00:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-10-10|TK=demonstration"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Demonstration Umleitung über die Linien O und 1",
-    "description": "Demonstration\nUmleitung über die Linien O und 1",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a945ae1c98c627e464cfe1be0435b068f6048bc818f57fce202c9dfe2427afa1",
-    "pubDate": "2026-10-10T13:37:08+02:00",
-    "starts_at": "2026-10-10T13:37:08+02:00",
-    "ends_at": "2026-10-10T17:00:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-10-10|TK=demonstration umleitung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Ersatzverkehr Busse halten bei Haltestelle N71",
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1228,21 +1153,6 @@
     "starts_at": "2026-10-07T00:00:17+02:00",
     "ends_at": "2026-10-10T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-07|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Betriebsstörung",
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
-    "pubDate": "2026-10-10T16:17:00+02:00",
-    "starts_at": "2026-10-10T16:17:00+02:00",
-    "ends_at": "2026-10-10T23:55:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-10-10|TK=u4 betriebsstörung",
-    "_wl_ids": [
-      "I20261010-0019"
-    ]
   },
   {
     "source": "Wiener Linien",
@@ -1299,7 +1209,7 @@
     "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "123bfd62dc7da0ffcd0f3060d27cb4dab7826707d05ffaed1e40fdb867f626eb",
-    "pubDate": "2026-10-10T16:01:53+02:00",
+    "pubDate": "2026-10-10T16:07:54+02:00",
     "starts_at": "2026-10-10T16:13:24+02:00",
     "ends_at": "2026-10-10T17:12:00+02:00",
     "_identity": "wl|störung|L=|D=2026-10-10|TK=falschparker"
