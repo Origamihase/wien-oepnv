@@ -2,7 +2,11 @@
  "verworfen": [
   {
    "grund": "Kurzmeldung einer erledigten Störung",
-   "titel": "Demonstration Züge halten gegenüber"
+   "titel": "Fahrtbehinderung Falschparker"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "37: Falschparker"
   },
   {
    "grund": "Status inaktiv",
@@ -10,19 +14,11 @@
   },
   {
    "grund": "Status inaktiv",
-   "titel": "41, 40: Falschparker"
-  },
-  {
-   "grund": "Status inaktiv",
    "titel": "41: Falschparker"
   },
   {
    "grund": "Status inaktiv",
-   "titel": "71: Demonstration"
-  },
-  {
-   "grund": "Status inaktiv",
-   "titel": "D: Demonstration"
+   "titel": "U3: Betriebsstörung"
   },
   {
    "grund": "Status inaktiv",
@@ -82,19 +78,19 @@
   },
   {
    "grund": "nur Aufzug/Fahrtreppe",
-   "titel": "U1: Klapprampensperre am 10.10.2026"
-  },
-  {
-   "grund": "nur Aufzug/Fahrtreppe",
    "titel": "U2: Rathaus - Kein Aufzug am Bahnsteig Richtung Seestadt"
   },
   {
    "grund": "nur Aufzug/Fahrtreppe",
-   "titel": "U4: Klapprampensperre am 16.10.2026"
+   "titel": "U4: Pilgramgasse - Kein Aufzug am Bahnsteig Richtung Hütteldorf"
   },
   {
-   "grund": "nur Aufzug/Fahrtreppe",
-   "titel": "U4: Pilgramgasse - Kein Aufzug am Bahnsteig Richtung Hütteldorf"
+   "grund": "nur Klapprampe",
+   "titel": "U1: Klapprampensperre am 10.10.2026"
+  },
+  {
+   "grund": "nur Klapprampe",
+   "titel": "U4: Klapprampensperre am 16.10.2026"
   }
  ]
 }
