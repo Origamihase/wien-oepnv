@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sat, 10 Oct 2026 18:30:53 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 19:00:54 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[41: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1b9880e738badf2ab93ca803b6161595a319b82ea03cebf2c5ff834226e92cd8</guid>
-      <pubDate>Sat, 10 Oct 2026 18:05:00 +0200</pubDate>
-      <ext:first_seen>Sat, 10 Oct 2026 18:05:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 18:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 18:05]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 18:05]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5092aa3e16264a54729d619c0073938e9a20bc79adf99a5a51f89ef26c9055eb</guid>
-      <pubDate>Sat, 10 Oct 2026 18:05:00 +0200</pubDate>
-      <ext:first_seen>Sat, 10 Oct 2026 18:05:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 18:23:09 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Transfer from Volksoper via 42+9. After a service obstruction, there are irregular intervals. [Since 18:05]</description>
-      <content:encoded><![CDATA[Transfer from Volksoper via 42+9. After a service obstruction, there are irregular intervals.<br/>[Since 18:05]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[5: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -38,7 +16,7 @@
       <pubDate>Sat, 10 Oct 2026 17:26:00 +0200</pubDate>
       <ext:first_seen>Sat, 10 Oct 2026 17:26:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 10 Oct 2026 17:26:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Sat, 10 Oct 2026 19:08:00 +0200</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 17:26]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 17:26]]]></content:encoded>
     </item>
@@ -52,17 +30,6 @@
       <ext:ends_at>Sat, 10 Oct 2026 23:59:59 +0200</ext:ends_at>
       <description>Due to persons on the tracks, no trains could run until 18:23. For now, allow up to 10 minutes of extra travel time. [Today]</description>
       <content:encoded><![CDATA[Due to persons on the tracks, no trains could run until 18:23. For now, allow up to 10 minutes of extra travel time.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: Rescue operation, track construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">711bdd6742039946a988fc6856f5ba58cc852d11dc70306ccf9c11dcbf6587d7</guid>
-      <pubDate>Sat, 10 Oct 2026 18:07:06 +0200</pubDate>
-      <ext:first_seen>Sat, 10 Oct 2026 18:07:06 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 10 Oct 2026 18:08:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 10 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Rescue operation: irregular intervals in both directions. Track construction works: service from Johnstraße U, Schweglerstraße 19-21. [Today]</description>
-      <content:encoded><![CDATA[Rescue operation: irregular intervals in both directions. Track construction works: service from Johnstraße U, Schweglerstraße 19-21.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[18: LCC autumn marathon on 11.10.2026]]></title>
@@ -118,6 +85,39 @@
       <ext:ends_at>Sat, 10 Oct 2026 23:00:00 +0200</ext:ends_at>
       <description>Bhf. Hütteldorf [Today]</description>
       <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A/7A/N62: Eibesbrunnergasse both directions]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bd6cbe1a4ea6d909912fce8527e38411ee42a952a91a70beecf363c26cd3e728</guid>
+      <pubDate>Mon, 05 Oct 2026 16:10:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 16:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 … [Until 06.11.]</description>
+      <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 …<br/>[Until 06.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
+      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction. [Until 26.10.]</description>
+      <content:encoded><![CDATA[Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction.<br/>[Until 26.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Neue Donau, no stop towards Floridsdorf]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">747d54fbd4c0aad685b21596a0c44cb67d41165e556ee43b1bc3e8636920f551</guid>
+      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Sun, 04 Oct 2026 16:30:37 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Due to renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station Neue Donau with the U6 of … [Until 31.12.]</description>
+      <content:encoded><![CDATA[Due to renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station Neue Donau with the U6 of …<br/>[Until 31.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>

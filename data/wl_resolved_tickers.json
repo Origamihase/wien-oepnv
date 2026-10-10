@@ -3,6 +3,20 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
+   "key": "R1212-140|2026-10-10T18:23:09.000+0200|Rettungseinsatz\nUmleittung ab Volksoper über 42+9",
+   "name": "R1212-140",
+   "title": "Rettungseinsatz\nUmleittung ab Volksoper über 42+9",
+   "end": "2026-10-10T19:22:00.000+0200",
+   "incident": "I20261010-0023-F01"
+  },
+  {
+   "key": "R1213-140|2026-10-10T18:23:09.000+0200|Rettungseinsatz\nUmleittung ab Volksoper über 42+9",
+   "name": "R1213-140",
+   "title": "Rettungseinsatz\nUmleittung ab Volksoper über 42+9",
+   "end": "2026-10-10T19:22:00.000+0200",
+   "incident": "I20261010-0023-F01"
+  },
+  {
    "key": "R1312-141|2026-10-10T18:15:38.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
    "name": "R1312-141",
    "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
@@ -38,6 +52,20 @@
    "incident": "I20261010-0023"
   },
   {
+   "key": "R188-140|2026-10-10T18:23:07.000+0200|Rettungseinsatz\nUmleittung ab Volksoper über 42+9",
+   "name": "R188-140",
+   "title": "Rettungseinsatz\nUmleittung ab Volksoper über 42+9",
+   "end": "2026-10-10T19:22:00.000+0200",
+   "incident": "I20261010-0023-F01"
+  },
+  {
+   "key": "R189-140|2026-10-10T18:23:07.000+0200|Rettungseinsatz\nUmleittung ab Volksoper über 42+9",
+   "name": "R189-140",
+   "title": "Rettungseinsatz\nUmleittung ab Volksoper über 42+9",
+   "end": "2026-10-10T19:22:00.000+0200",
+   "incident": "I20261010-0023-F01"
+  },
+  {
    "key": "R192-140|2026-10-10T18:05:35.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
    "name": "R192-140",
    "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
@@ -59,46 +87,32 @@
    "incident": "I20261010-0023"
   },
   {
-   "key": "R349-105|2026-10-10T17:32:30.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R349-105",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-10T18:32:00.000+0200",
-   "incident": "I20261010-0022"
-  },
-  {
-   "key": "R350-105|2026-10-10T17:32:30.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R350-105",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-10T18:32:00.000+0200",
-   "incident": "I20261010-0022"
-  },
-  {
-   "key": "R351-105|2026-10-10T17:35:01.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R351-105",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-10T18:34:00.000+0200",
-   "incident": "I20261010-0022"
-  },
-  {
-   "key": "R352-105|2026-10-10T17:35:01.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R352-105",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-10T18:34:00.000+0200",
-   "incident": "I20261010-0022"
-  },
-  {
-   "key": "R353-105|2026-10-10T17:35:01.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R353-105",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-10T18:34:00.000+0200",
-   "incident": "I20261010-0022"
-  },
-  {
    "key": "R521-140|2026-10-10T18:05:36.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
    "name": "R521-140",
    "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
    "end": "2026-10-10T19:05:00.000+0200",
    "incident": "I20261010-0023"
+  },
+  {
+   "key": "R699-412|2026-10-10T18:07:06.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R699-412",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-10T19:06:00.000+0200",
+   "incident": "I20261010-0024"
+  },
+  {
+   "key": "R855-438|2026-10-10T18:44:40.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R855-438",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-10T19:44:00.000+0200",
+   "incident": "I20261010-0025"
+  },
+  {
+   "key": "R859-438|2026-10-10T18:44:40.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R859-438",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-10T19:44:00.000+0200",
+   "incident": "I20261010-0025"
   }
  ]
 }
