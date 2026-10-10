@@ -77,6 +77,27 @@ def is_station_access_only(title: str) -> bool:
         return False
     return not _LINE_MEASURE_RE.search(title)
 
+
+# Why the fetch dropped a notice about station equipment, as written to
+# ``data/raw/<source>/verworfen.json`` (``src/utils/raw_capture.py``). WL
+# and ÖBB share them, so one cause reads the same in both files. Until
+# 2026-10-10 ÖBB wrote "nicht Wien-relevant" for every drop, lifts included,
+# and WL wrote "nur Aufzug/Fahrtreppe" for the folding ramps of the trains.
+DROP_LIFT = "nur Aufzug/Fahrtreppe"
+DROP_RAMP = "nur Klapprampe"
+DROP_ACCESS = "nur Aufgang/Ausgang"
+
+
+def facility_drop_label(words: list[str]) -> str:
+    """Drop label for the facility words a provider's title regex matched.
+
+    :data:`DROP_RAMP` when every word is a folding ramp ("Klapprampensperre"),
+    else :data:`DROP_LIFT`.
+    """
+    if words and all("klapprampe" in word.casefold() for word in words):
+        return DROP_RAMP
+    return DROP_LIFT
+
 # Common German prepositions that should not be followed by a bullet.
 PREPOSITIONS: tuple[str, ...] = (
     # Alphabetical order for easier maintenance; keep umlaut/ASCII pairs

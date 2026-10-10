@@ -211,7 +211,9 @@ OEBB_RSS = """<?xml version="1.0" encoding="ISO-8859-1"?>
 def test_oebb_snapshot_and_drops(raw_root: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(oebb_provider, "_fetch_xml", lambda url, timeout=25: ET.fromstring(OEBB_RSS))
     monkeypatch.setattr(
-        oebb_provider, "_is_relevant", lambda title, desc: "Wien" in title or "Wien" in desc
+        oebb_provider,
+        "_drop_reason",
+        lambda title, desc: None if "Wien" in title or "Wien" in desc else "nicht Wien-relevant",
     )
 
     items = oebb_provider.fetch_events()

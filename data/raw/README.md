@@ -15,9 +15,9 @@ Health-Check schreiben hier nichts.
 | --- | --- | --- |
 | `wl/trafficInfoList.json` | [`src/providers/wl_fetch.py`](../../src/providers/wl_fetch.py) | WL-Antwort `trafficInfoList` (`stoerunglang`, `stoerungkurz`), ohne `message.serverTime`, `trafficInfos` nach `name` sortiert |
 | `wl/newsList.json` | ebenda | WL-Antwort `newsList`, ohne `message.serverTime`, `pois` nach `name` sortiert |
-| `wl/verworfen.json` | ebenda | vom Abruf verworfene WL-Meldungen mit Grund (Status inaktiv, Kurzmeldung einer erledigten Störung, nur Aufzug/Fahrtreppe, nur Aufgang/Ausgang, außerhalb des Zeitraums, Ausschluss-Stichwort ohne Einschränkung, kein Einschränkungs-Stichwort) |
+| `wl/verworfen.json` | ebenda | vom Abruf verworfene WL-Meldungen mit Grund (Status inaktiv, Kurzmeldung einer erledigten Störung, nur Aufzug/Fahrtreppe, nur Klapprampe, nur Aufgang/Ausgang, außerhalb des Zeitraums, Ausschluss-Stichwort ohne Einschränkung, kein Einschränkungs-Stichwort) |
 | `oebb/rss.json` | [`src/providers/oebb.py`](../../src/providers/oebb.py) | alle `<item>` des ÖBB-RSS mit jedem Kindelement als Text, nach `guid` sortiert; der Kanal-Kopf (`lastBuildDate`) fehlt |
-| `oebb/verworfen.json` | ebenda | ÖBB-Meldungen, die der Wien-Filter verwarf |
+| `oebb/verworfen.json` | ebenda | vom Abruf verworfene ÖBB-Meldungen mit Grund (nur Aufzug/Fahrtreppe, nur Klapprampe, nur Aufgang/Ausgang, nur Wetterwarnung, nicht Wien-relevant); dieselbe Ursache trägt bei WL und ÖBB dasselbe Etikett |
 | `baustellen/BAUSTELLENLINOGD.json`, `baustellen/BAUSTELLENPKTOGD.json` | [`scripts/update_baustellen_cache.py`](../../scripts/update_baustellen_cache.py) | je WFS-Layer alle Features mit ihren Properties ohne `OBJECTID`, von der Geometrie nur Typ und erste Position (`first_position`), nach `OGD_ID` bzw. Titel sortiert; Antwortkopf und Feature-`id` fehlen |
 | `baustellen/verworfen.json` | ebenda | Baustellen ohne ÖPNV-Bezug oder ohne Titel und Straße; nur nach einem vollständigen Live-Abruf, nie nach dem Fallback-Sample oder einer letzten guten Antwort |
 

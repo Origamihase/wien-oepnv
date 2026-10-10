@@ -53,7 +53,7 @@ from ..utils.http import (
 )
 from ..utils.logging import sanitize_log_arg
 from ..utils import raw_capture, source_shape
-from ..utils.text import is_station_access_only
+from ..utils.text import DROP_ACCESS, facility_drop_label, is_station_access_only
 
 from defusedxml import ElementTree as ET # XXE Mitigation applied
 
@@ -191,6 +191,11 @@ _FACILITY_KEYWORD_RE = re.compile(
     r"fahrtreppen?(?:info)?|rolltreppen?|klapprampen?)\w*\b",
     re.IGNORECASE,
 )
+# Label in ``data/raw/oebb/verworfen.json`` for a standalone weather warning
+# and for a message the Wien filter (``_is_relevant``) dropped.
+DROP_WEATHER = "nur Wetterwarnung"
+DROP_NOT_VIENNA = "nicht Wien-relevant"
+
 _WEATHER_KEYWORD_RE = re.compile(
     r"\b(sturm|sturmwarnung|unwetter|gewitter|hochwasser|wetter|wetterlage|"
     r"glatteis|schneefall|schneefälle|murenabgang|lawinengefahr)\b",
@@ -227,6 +232,17 @@ _TRANSIT_KEYWORD_RE = re.compile(
 def _is_facility_or_weather_only(title: str, description: str) -> bool:
     """Decide whether the message has no place in the Wien-ÖPNV feed.
 
+    True when :func:`_facility_or_weather_reason` names a reason.
+    """
+    return _facility_or_weather_reason(title, description) is not None
+
+
+def _facility_or_weather_reason(title: str, description: str) -> str | None:
+    """Why the message has no place in the Wien-ÖPNV feed, else ``None``.
+
+    The reason is the label in ``data/raw/oebb/verworfen.json``, the same
+    as WL's for the same cause (``src/utils/text.py``).
+
     Per project spec elevator/escalator notices have nothing to do in
     the feed — including titles that combine "Bauarbeiten" with
     "Aufzug betroffen", because the actual subject is still the broken
@@ -242,22 +258,22 @@ def _is_facility_or_weather_only(title: str, description: str) -> bool:
     Wien`` are pure weather warnings and drop.
     """
     if not title:
-        return False
+        return None
     title_low = title.lower()
-    has_facility = bool(_FACILITY_KEYWORD_RE.search(title_low))
-    if has_facility:
+    facility_words = _FACILITY_KEYWORD_RE.findall(title_low)
+    if facility_words:
         # Strict: any facility-keyword title drops, with or without an
         # accompanying transit keyword. Side-mentions of "Aufzug" should
         # never reach the feed per user spec.
-        return True
+        return facility_drop_label(facility_words)
     if is_station_access_only(title):
         # A closed Aufgang/Ausgang counts like a broken lift (2026-10-09).
-        return True
+        return DROP_ACCESS
     has_weather = bool(_WEATHER_KEYWORD_RE.search(title_low))
     if not has_weather:
-        return False
+        return None
     # Weather: drop only when the title has no real disruption signal.
-    return not _TRANSIT_KEYWORD_RE.search(title_low)
+    return None if _TRANSIT_KEYWORD_RE.search(title_low) else DROP_WEATHER
 
 
 NON_LOCATION_PREFIXES = {
@@ -1344,9 +1360,22 @@ def _is_relevant(title: str, description: str) -> bool:
     of scope per project spec. Mixed transit messages that merely mention
     weather/facility as cause or side-effect still go through.
     """
-    if _is_facility_or_weather_only(title, description):
-        return False
+    return _drop_reason(title, description) is None
 
+
+def _drop_reason(title: str, description: str) -> str | None:
+    """Why :func:`_is_relevant` drops the message, ``None`` when it stays.
+
+    The reason is the label in ``data/raw/oebb/verworfen.json``.
+    """
+    reason = _facility_or_weather_reason(title, description)
+    if reason is not None:
+        return reason
+    return None if _serves_vienna(title, description) else DROP_NOT_VIENNA
+
+
+def _serves_vienna(title: str, description: str) -> bool:
+    """Rules 1 and 2 of :func:`_is_relevant`: the Wien filter proper."""
     routes = _extract_routes(title, description)
 
     if routes:
@@ -2162,10 +2191,10 @@ def _parse_period(desc: str) -> tuple[datetime | None, datetime | None]:
     return start, end
 
 
-def _build_item_from_xml(item: ET.Element) -> FeedItem | None:
+def _build_item_from_xml(item: ET.Element) -> FeedItem | str:
     """Convert one ``<item>`` XML element into a normalised ``FeedItem``,
-    or return ``None`` when the item is dropped by the Wien-relevance
-    filter. Pure ETL: no shared state, no I/O.
+    or return the drop reason (``_drop_reason``) when the Wien-relevance
+    filter drops it. Pure ETL: no shared state, no I/O.
 
     The pipeline is:
         clean title → derive guid → clean description → parse pubDate
@@ -2195,8 +2224,9 @@ def _build_item_from_xml(item: ET.Element) -> FeedItem | None:
     # Wien-relevant connection or station. Run AFTER title fallback so
     # that fallback-derived titles (e.g. resolved via OEBB station ID)
     # contribute to the relevance check.
-    if not _is_relevant(title, desc):
-        return None
+    reason = _drop_reason(title, desc)
+    if reason is not None:
+        return reason
 
     return {
         "source": "ÖBB",
@@ -2278,10 +2308,10 @@ def fetch_events(timeout: int = 25) -> list[FeedItem]:
     out: list[FeedItem] = []
     for item in channel.findall("item"):
         feed_item = _build_item_from_xml(item)
-        if feed_item is not None:
-            out.append(feed_item)
+        if isinstance(feed_item, str):
+            raw_capture.note_drop("oebb", feed_item, _get_text(item, "title"))
         else:
-            raw_capture.note_drop("oebb", "nicht Wien-relevant", _get_text(item, "title"))
+            out.append(feed_item)
     raw_capture.write_drops("oebb")
 
     log.info("ÖBB: %d Items nach Region/Titel-Kosmetik", len(out))

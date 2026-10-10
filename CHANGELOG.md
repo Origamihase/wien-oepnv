@@ -5,6 +5,24 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Protokoll der verworfenen Meldungen nennt den wahren Grund (2026-10-10)**:
+  Befund der Prüfung vom 09.10. Der ÖBB-Abruf schrieb für jede verworfene
+  Meldung „nicht Wien-relevant“ nach `data/raw/oebb/verworfen.json`, auch
+  für defekte Aufzüge („Technische Störung des Personenlift in Wien
+  Leopoldau Bahnhst (U)“). Jetzt steht dort der Grund, an dem die Meldung
+  scheiterte (`_drop_reason` in `src/providers/oebb.py`), mit denselben
+  Etiketten wie bei WL (`src/utils/text.py`): „nur Aufzug/Fahrtreppe“,
+  „nur Klapprampe“, „nur Aufgang/Ausgang“, dazu „nur Wetterwarnung“ und
+  für den Wien-Filter weiter „nicht Wien-relevant“. Bei WL standen die
+  Klapprampensperren („U1: Klapprampensperre am 10.10.2026“) als „nur
+  Aufzug/Fahrtreppe“ im Protokoll, jetzt als „nur Klapprampe“. Die
+  Baustellen-Etiketten waren schon richtig. Welche Meldungen wegfallen,
+  ändert sich nicht: Über alle 105 ÖBB- und 272 WL-Rohdatenstände seit
+  04.10. bleiben die Items gleich; 70 von 293 verworfenen ÖBB-Meldungen
+  heißen jetzt „nur Aufzug/Fahrtreppe“, zwei WL-Titel „nur Klapprampe“.
+  Kein Auswertungsskript liest die Etiketten. Doku: die doppelte
+  WL-Zeile in `docs/development.md` („Umsetzung“, Rest eines Merges vom
+  09.10.) ist wieder eine.
 * **Workflows: ein Weg auf `main`, nie mehr Force-Push (2026-10-10)**:
   Prüfung aller Workflows und der 6 091 echten Läufe vom 10.09. bis
   10.10. Alle fünf Workflows, die auf `main` schreiben (Update-Lauf,
