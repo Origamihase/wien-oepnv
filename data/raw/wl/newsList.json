@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1017117, ftazW_212, ftazW_2, ftazW_582, ftazW_1031271, ftazW_3, ftazW_581, ftazW_1353814, ftazW_1017118, ftazW_487, ftazW_756, ftazW_146, ftazW_1353815, ftazW_1017119, ftazW_1031269, ftazW_147, ftazW_29, ftazW_1031270, ftazW_211, ftazW_488, ftazW_1354336, ftazW_1017120, ftazW_1016902, ftazW_734, ftazW_1031272, ftazW_1031273, ftazW_1016903, ftazW_82, ftazW_736"
+    "trafficInfoNameList": "ftazW_1017117, ftazW_2, ftazW_582, ftazW_1031271, ftazW_3, ftazW_581, ftazW_1353814, ftazW_1017118, ftazW_487, ftazW_756, ftazW_146, ftazW_1353815, ftazW_1017119, ftazW_1031269, ftazW_147, ftazW_29, ftazW_1031270, ftazW_211, ftazW_488, ftazW_1354336, ftazW_1017120, ftazW_1016902, ftazW_734, ftazW_1031272, ftazW_1031273, ftazW_1016903, ftazW_82, ftazW_736"
    }
   ],
   "poiCategoryGroups": [
@@ -3254,32 +3254,6 @@
    },
    {
     "attributes": {
-     "ausBis": "12.10.2026 00:45",
-     "ausVon": "11.10.2026 20:45",
-     "location": "U6 Mittelbahnsteig - Zwischengeschoss Zugang ÖBB Bahnsteig",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Bahnhof Meidling",
-     "status": "geplante Wartung",
-     "towards": "U6 beide Richtungen"
-    },
-    "description": "U6 Mittelbahnsteig - Zwischengeschoss Zugang ÖBB Bahnsteig",
-    "name": "ftazW_212",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "time": {
-     "end": "2026-10-12T00:45:00.000+0200",
-     "start": "2026-10-11T20:45:00.000+0200"
-    },
-    "title": "Bahnhof Meidling"
-   },
-   {
-    "attributes": {
      "ausBis": "13.10.2026 05:15",
      "ausVon": "13.10.2026 01:15",
      "location": "Zwischengeschoss - Ausgang Minoritenplatz",
@@ -3345,8 +3319,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U6",
-      "U4"
+      "U4",
+      "U6"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3356,8 +3330,8 @@
     "name": "ftazW_487",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U6",
-     "U4"
+     "U4",
+     "U6"
     ],
     "relatedStops": [
      4627
@@ -3380,8 +3354,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U6",
-      "U4"
+      "U4",
+      "U6"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3391,8 +3365,8 @@
     "name": "ftazW_488",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U6",
-     "U4"
+     "U4",
+     "U6"
     ],
     "relatedStops": [
      4439,
@@ -3413,8 +3387,8 @@
      "rbls": [],
      "reason": "",
      "relatedLines": [
-      "U1",
       "U2",
+      "U1",
       "U4"
      ],
      "station": "Karlsplatz",
@@ -3425,8 +3399,8 @@
     "name": "ftazW_581",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U1",
      "U2",
+     "U1",
      "U4"
     ],
     "time": {
