@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261010-0032, I20260917-0012, I20260922-0032, I20260925-0011, I20261010-0031-F02, I20261010-0031-F01, I20260909-0007, I20261010-0029-F01, I20261010-0031-F03, I20261010-0030"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261010-0031-F01, I20260909-0007"
    },
    {
     "id": 3,
@@ -203,77 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U2": "ptMetro"
-     }
-    },
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261010-0029-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "302",
-       "lineName": "U2",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4261
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-10T23:39:00.000+0200",
-     "end": "2026-10-11T00:30:00.000+0200",
-     "lastUpdate": "2026-10-11T00:30:00.000+0200",
-     "resume": "2026-10-11T00:30:00.000+0200",
-     "start": "2026-10-10T23:27:00.000+0200"
-    },
-    "title": "U2: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "29B": "ptBusCity"
-     }
-    },
-    "description": "Linie 29B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie 29B:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261010-0030",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "29B"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "229",
-       "lineName": "29B",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-10T23:51:00.000+0200",
-     "end": "2026-10-11T00:45:00.000+0200",
-     "lastUpdate": "2026-10-11T00:45:00.000+0200",
-     "resume": "2026-10-11T00:45:00.000+0200",
-     "start": "2026-10-10T23:51:00.000+0200"
-    },
-    "title": "29B: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "15A": "ptBusCity"
      }
     },
@@ -307,114 +236,6 @@
      "start": "2026-10-10T23:57:00.000+0200"
     },
     "title": "15A: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "11": "ptTram"
-     }
-    },
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261010-0031-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "111",
-       "lineName": "11",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     412
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-11T00:05:00.000+0200",
-     "end": "2026-10-11T00:34:00.000+0200",
-     "lastUpdate": "2026-10-11T00:34:00.000+0200",
-     "resume": "2026-10-11T00:34:00.000+0200",
-     "start": "2026-10-10T23:57:00.000+0200"
-    },
-    "title": "11: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "71": "ptTram"
-     }
-    },
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261010-0031-F03",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "171",
-       "lineName": "71",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     412
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-11T00:05:00.000+0200",
-     "end": "2026-10-11T00:41:00.000+0200",
-     "lastUpdate": "2026-10-11T00:41:00.000+0200",
-     "resume": "2026-10-11T00:41:00.000+0200",
-     "start": "2026-10-10T23:57:00.000+0200"
-    },
-    "title": "71: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261010-0032",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "170",
-       "lineName": "O",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-11T00:33:00.000+0200",
-     "end": "2026-10-11T00:49:00.000+0200",
-     "lastUpdate": "2026-10-11T00:49:00.000+0200",
-     "resume": "2026-10-11T00:49:00.000+0200",
-     "start": "2026-10-11T00:33:00.000+0200"
-    },
-    "title": "O: Schadhaftes Fahrzeug"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",

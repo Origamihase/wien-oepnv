@@ -76,6 +76,7 @@ from dateutil import parser as dtparser
 from ..utils.files import atomic_write, read_capped_json, read_capped_text
 from ..utils.serialize import scrub_trojan_source_primitives
 from ..utils.text import names_planned_measure
+from ..utils.vienna_clock import vienna_wall_clock
 from .wl_lines import _detect_line_pairs_from_text, _make_line_pairs_from_related
 
 log = logging.getLogger(__name__)
@@ -108,7 +109,8 @@ def _moment(value: object) -> datetime | None:
         moment = dtparser.isoparse(text)
     except (ValueError, OverflowError):
         return None
-    return moment if moment.tzinfo is not None else None
+    # The offset WL gives a time of the other season (``wl_fetch._iso``).
+    return vienna_wall_clock(moment) if moment.tzinfo is not None else None
 
 
 def _time(info: Mapping[str, Any], key: str) -> datetime | None:
