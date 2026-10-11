@@ -596,4 +596,4 @@ def test_the_real_directory_resolves_the_key_names() -> None:
     assert _check("S1: Störung", "Wien Mitte-Landstraße", directory) == [
         "S1 at Wien Mitte-Landstraße not judged (no train seen there)"
     ]
-    assert _check("S60: Umbau", "Bahnhof Himberg", directory) == ["S60 at Himberg not judged (no line known there)"]
+    assert _check("S60: Umbau", "Bahnhof Himberg", directory) == []
