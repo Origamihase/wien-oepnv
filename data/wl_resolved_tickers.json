@@ -1,5 +1,230 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R1212-137|2026-10-11T18:30:59.000+0200|Schadhafter Zug\nBetrieb ab Nußdorfer Straße",
+   "name": "R1212-137",
+   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße",
+   "end": "2026-10-11T19:30:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R1212-138|2026-10-11T18:25:59.000+0200|Schadhafter Zug\nBetrieb ab Spitalgasse",
+   "name": "R1212-138",
+   "title": "Schadhafter Zug\nBetrieb ab Spitalgasse",
+   "end": "2026-10-11T19:25:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R1212-142|2026-10-11T18:29:29.000+0200|Schadhafter Zug\nBetrieb ab Währinger Straße, Volksoper",
+   "name": "R1212-142",
+   "title": "Schadhafter Zug\nBetrieb ab Währinger Straße, Volksoper",
+   "end": "2026-10-11T19:28:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R1213-137|2026-10-11T18:30:59.000+0200|Schadhafter Zug\nBetrieb ab Nußdorfer Straße",
+   "name": "R1213-137",
+   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße",
+   "end": "2026-10-11T19:30:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R1213-138|2026-10-11T18:25:59.000+0200|Schadhafter Zug\nBetrieb ab Spitalgasse",
+   "name": "R1213-138",
+   "title": "Schadhafter Zug\nBetrieb ab Spitalgasse",
+   "end": "2026-10-11T19:25:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R1213-142|2026-10-11T18:29:29.000+0200|Schadhafter Zug\nBetrieb ab Währinger Straße, Volksoper",
+   "name": "R1213-142",
+   "title": "Schadhafter Zug\nBetrieb ab Währinger Straße, Volksoper",
+   "end": "2026-10-11T19:28:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R1336-142|2026-10-11T18:29:59.000+0200|Schadhafter Zug\nZüge halten bei Währinger Gürtel",
+   "name": "R1336-142",
+   "title": "Schadhafter Zug\nZüge halten bei Währinger Gürtel",
+   "end": "2026-10-11T19:29:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R143-109|2026-10-11T18:31:59.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R143-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-11T19:31:00.000+0200",
+   "incident": "I20261011-0018"
+  },
+  {
+   "key": "R148-142|2026-10-11T18:28:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R148-142",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-11T19:28:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R150-137|2026-10-11T18:12:27.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R150-137",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-11T19:30:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R150-138|2026-10-11T18:24:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R150-138",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-11T19:24:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R150-142|2026-10-11T18:28:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R150-142",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-11T19:28:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R188-137|2026-10-11T18:30:59.000+0200|Schadhafter Zug\nBetrieb ab Nußdorfer Straße",
+   "name": "R188-137",
+   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße",
+   "end": "2026-10-11T19:30:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R188-138|2026-10-11T18:26:29.000+0200|Schadhafter Zug\nZüge halten bei Linie 5 und 12",
+   "name": "R188-138",
+   "title": "Schadhafter Zug\nZüge halten bei Linie 5 und 12",
+   "end": "2026-10-11T19:25:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R188-142|2026-10-11T18:29:29.000+0200|Schadhafter Zug\nBetrieb ab Währinger Straße, Volksoper",
+   "name": "R188-142",
+   "title": "Schadhafter Zug\nBetrieb ab Währinger Straße, Volksoper",
+   "end": "2026-10-11T19:28:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R207-137|2026-10-11T18:30:29.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R207-137",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-11T19:30:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R208-137|2026-10-11T18:30:29.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R208-137",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-11T19:30:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R209-137|2026-10-11T18:30:29.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R209-137",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-11T19:30:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R210-137|2026-10-11T18:30:29.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R210-137",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-11T19:30:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R211-137|2026-10-11T18:12:27.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R211-137",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-11T19:30:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R211-138|2026-10-11T18:24:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R211-138",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-11T19:24:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R213-137|2026-10-11T18:30:59.000+0200|Schadhafter Zug\nBetrieb ab Nußdorfer Straße",
+   "name": "R213-137",
+   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße",
+   "end": "2026-10-11T19:30:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R214-137|2026-10-11T18:30:59.000+0200|Schadhafter Zug\nBetrieb ab Nußdorfer Straße",
+   "name": "R214-137",
+   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße",
+   "end": "2026-10-11T19:30:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R215-137|2026-10-11T18:31:29.000+0200|Schadhafter Zug\nZüge halten Währinger Gürtel ggü. 164",
+   "name": "R215-137",
+   "title": "Schadhafter Zug\nZüge halten Währinger Gürtel ggü. 164",
+   "end": "2026-10-11T19:30:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R223-109|2026-10-11T18:31:59.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R223-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-11T19:31:00.000+0200",
+   "incident": "I20261011-0018"
+  },
+  {
+   "key": "R3570-112|2026-10-11T18:32:32.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R3570-112",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T19:32:00.000+0200",
+   "incident": "I20261011-0020"
+  },
+  {
+   "key": "R3571-112|2026-10-11T18:32:32.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R3571-112",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T19:32:00.000+0200",
+   "incident": "I20261011-0020"
+  },
+  {
+   "key": "R493-142|2026-10-11T18:28:58.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R493-142",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-11T19:28:00.000+0200",
+   "incident": "I20261011-0019"
+  },
+  {
+   "key": "R521-109|2026-10-11T18:16:27.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R521-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-11T19:15:00.000+0200",
+   "incident": "I20261011-0018"
+  },
+  {
+   "key": "R524-109|2026-10-11T18:31:58.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R524-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-11T19:31:00.000+0200",
+   "incident": "I20261011-0018"
+  },
+  {
+   "key": "R526-109|2026-10-11T18:31:58.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R526-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-11T19:31:00.000+0200",
+   "incident": "I20261011-0018"
+  },
+  {
+   "key": "R552-109|2026-10-11T18:16:28.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R552-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-11T19:15:00.000+0200",
+   "incident": "I20261011-0018"
+  }
+ ]
 }
