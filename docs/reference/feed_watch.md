@@ -62,10 +62,15 @@ Issues: Der Wächter öffnet je Regel höchstens eines. Steht schon ein offenes
 mit demselben Titel, nutzt er es; wurde eines vor weniger als 24 Stunden
 geschlossen, öffnet er es wieder, statt ein neues anzulegen. Hält die Regel in
 zwei Läufen in Folge, schließt er es mit einem Kommentar. Dafür hat der Job in
-`update-cycle.yml` das Recht `issues: write` (nur dieser Schritt nutzt es;
-`FEED_WATCH_ISSUES=1` schaltet die Issues ein). Fehlt das Recht oder
-antwortet GitHub nicht, steht eine Warnung im Protokoll, und der nächste Lauf
-versucht es wieder.
+`update-cycle.yml` das Recht `issues: write` (`FEED_WATCH_ISSUES=1`
+schaltet die Issues ein). Das Recht gilt für den ganzen Job; dass nur dieser
+Schritt es nutzt, ist Absprache, keine technische Grenze: `actions/checkout`
+legt das Token für den späteren Push im Checkout ab, jeder Schritt könnte es
+lesen. Fehlt das Recht oder antwortet GitHub nicht, steht eine Warnung im
+Protokoll, und der nächste Lauf versucht es wieder. Lesen und Ändern
+(GET, PATCH) wiederholt der Wächter bei Netzfehlern, Anlegen (POST) nicht:
+hat GitHub ein Issue oder einen Kommentar angelegt und trotzdem mit einem
+Fehler geantwortet, entstünde es sonst doppelt (seit 11.10.2026).
 
 Entscheidung des Betreibers (Michael, 2026-10-11, 01:13 Wiener Zeit, Karte „Darf der
 Update-Lauf für Wächter-Funde GitHub-Issues anlegen?“, Antwort „Issues
@@ -86,11 +91,11 @@ am TV steht.
 | --- | --- | --- | --- |
 | `doppelter-eintrag` | 1 | zwei Einträge dieselbe GUID oder denselben Titel haben | zehn Plätze am TV |
 | `anzahl` | 1 | der Feed nicht genau `MAX_ITEMS` (10) Einträge hat | zehn Folien in EasySignage |
-| `alte-meldung-als-neu` | 1 | ein Eintrag als heutige Störung erscheint („[Heute]“ oder „[Seit hh:mm]“), dessen Meldung (`pubDate`) und Beginn (`starts_at`) mehr als 24 Stunden vor seiner ersten Sichtung (`first_seen`) liegen | Linie 25, 09.10. (#1993) |
+| `alte-meldung-als-neu` | 1 | ein Eintrag als heutige Störung erscheint („[Heute]“ oder „[Seit hh:mm]“), dessen Meldung (`pubDate`) mehr als 24 Stunden vor seiner ersten Sichtung (`first_seen`) liegt, ebenso sein Beginn (`starts_at`), sofern der Feed einen nennt | Linie 25, 09.10. (#1993) |
 | `seit-zu-frueh` | 2 | eine Störung „[Seit hh:mm]“ zum ersten Mal erscheint, die Zeit mehr als drei Stunden vor dem Bau liegt, keine ihrer Linien im vorigen Bau (höchstens zwei Stunden alt) als Störung stand und der vorige Bau Platz hatte (einen Eintrag, der keine Störung „Seit hh:mm“ war); einmal gefunden, bleiben dieselben Linien an diesem Tag gemeldet, solange ihre „Seit“-Zeit höchstens eine Stunde nach der gefundenen liegt | „2/71 [Seit 13:08]“, 09.10. (PR #2001) |
 | `oebb-zweiter-satz` | 2 | der zweite Satz des ÖBB-Texts (aus dem Cache, ohne Höflichkeitssätze) fehlt, obwohl er neben den ersten Satz passen würde, wenn dieser die Stationen weglässt, die der Titel nennt | #1993 |
 | `zeitzeile` | 2 | die Beschreibung nicht mit einer Zeitzeile in einer der Formen von `format_local_times` endet (Heute, Seit heute, Seit hh:mm, Seit/Bis/Am/Ab <Tag>, Ab <Tag> bis <Tag>), Wörter mit U+00A0 verbunden | Entscheidungen 02./03.10., #1971 |
-| `ende-vorbei` | 2 | die Zeitzeile ein Ende vor heute nennt, eine „Seit“-Zeit nach dem Bau, oder der Text einer heutigen Störung „Voraussichtlich bis <Uhrzeit>“ sagt, obwohl die Uhrzeit vorbei ist | #1975 |
+| `ende-vorbei` | 2 | die Zeitzeile ein Ende vor heute nennt, eine „Seit“-Zeit nach dem Bau, oder der Text einer heutigen Störung „Voraussichtlich bis <Uhrzeit>“ sagt, obwohl die Uhrzeit vorbei ist. Die Uhrzeit gehört wie im Builder zum Tag der jüngsten Zeit des Eintrags und liegt mehr als drei Stunden davor am Folgetag; Zeitpunkte werden in UTC verglichen, in der doppelten Stunde am Ende der Sommerzeit zählt der spätere, der nicht nach dem Bau liegt (seit 11.10.2026) | #1975 |
 | `textlaenge` | 2 | die Beschreibung ohne Zeitzeile länger als 180 Zeichen ist | Schnitt in EasySignage |
 | `hoeflichkeitssatz` | 2 | „Wir bitten um Entschuldigung“ im Text steht | #1993 |
 | `quelle-leer` | Quelle | der Cache eines Anbieters leer ist, obwohl er in den letzten sieben Tagen im Median mindestens fünf Meldungen hatte | — |

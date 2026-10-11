@@ -89,6 +89,9 @@ BODY_CHAR_LIMIT = 180
 # the begin up to 60 minutes earlier (PR #2001). Three hours lie above all of
 # that; "2/71: Polizeieinsatz [Seit 13:08]" appeared at 20:30, 7 h 22 min late.
 SINCE_LATE = timedelta(hours=3)
+# How far before an item's newest time "Voraussichtlich bis <Uhrzeit>" may
+# lie and still mean that day (``_EXPECTED_END_BEFORE_MESSAGE`` in the builder).
+EXPECTED_END_BEFORE_MESSAGE = timedelta(hours=3)
 # The previous build counts as "the screen before" only when it is this recent.
 PREVIOUS_MAX_GAP = timedelta(hours=2)
 # A message older than a day that the feed counts as first seen today has
@@ -364,8 +367,26 @@ def _line_keys(title: str) -> frozenset[str]:
     return frozenset({_normalize(title).casefold()})
 
 
+def _vienna_clock(day: date, hour: int, minute: int, built: datetime) -> datetime:
+    """The moment *hour*:*minute* Vienna time on *day*, in UTC.
+
+    In the hour that repeats when summer time ends (25.10.2026, 02:00 to
+    03:00 twice) a clock time names two moments; it is the later one that
+    is not after the build (the builder's own rule, ``format_local_times``
+    in src/build_feed.py, compares moments in UTC). ``replace()`` on the
+    build's local time kept the build's pass instead: at 02:01 winter time
+    "[Seit 02:26]" (summer time, 35 minutes before) read as 25 minutes
+    after the build, and the rule ``ende-vorbei`` fired.
+    """
+    wall = datetime(day.year, day.month, day.day, hour, minute)
+    moments = sorted({wall.replace(tzinfo=VIENNA, fold=fold).astimezone(UTC) for fold in (0, 1)})
+    limit = built.astimezone(UTC) + timedelta(minutes=1)
+    passed = [moment for moment in moments if moment <= limit]
+    return passed[-1] if passed else moments[0]
+
+
 def _since_clock(time_line: str | None, built: datetime) -> datetime | None:
-    """The moment of a "Seit hh:mm" time line, on the Vienna day of the build."""
+    """The moment (UTC) of a "Seit hh:mm" time line, on the Vienna day of the build."""
     if time_line is None:
         return None
     match = _SINCE_CLOCK_RE.fullmatch(time_line.replace(_NBSP, " "))
@@ -374,7 +395,7 @@ def _since_clock(time_line: str | None, built: datetime) -> datetime | None:
     hour, minute = int(match.group(1)), int(match.group(2))
     if hour > 23 or minute > 59:
         return None
-    return _local(built).replace(hour=hour, minute=minute, second=0, microsecond=0)
+    return _vienna_clock(_local(built).date(), hour, minute, built)
 
 
 def _is_current(time_line: str | None) -> bool:
@@ -483,12 +504,13 @@ def check_since_too_early(
         if since is None or built - since <= SINCE_LATE:
             continue
         keys = _line_keys(item.title)
-        clock = f"{since:%H:%M}"
+        clock = f"{_local(since):%H:%M}"
         still = any(
             keys & set(entry.get("lines") or [])
             and isinstance(entry.get("since"), str)
-            and since <= _local(built).replace(
-                hour=int(entry["since"][:2]), minute=int(entry["since"][3:5]), second=0, microsecond=0
+            and since
+            <= _vienna_clock(
+                _local(built).date(), int(entry["since"][:2]), int(entry["since"][3:5]), built
             )
             + timedelta(hours=1)
             for entry in keep
@@ -601,7 +623,7 @@ def check_past_end(items: Sequence[Item], built: datetime) -> list[Finding]:
                 Finding("ende-vorbei", item.title, f"[{_normalize(time_line)}] liegt vor heute")
             )
         since = _since_clock(time_line, built)
-        if since is not None and since > local + timedelta(minutes=1):
+        if since is not None and since > built.astimezone(UTC) + timedelta(minutes=1):
             findings.append(
                 Finding(
                     "ende-vorbei",
@@ -611,11 +633,20 @@ def check_past_end(items: Sequence[Item], built: datetime) -> list[Finding]:
             )
         if not _is_current(time_line):
             continue
+        # The clock time belongs to the day of the item's newest time, as in
+        # the builder (``_drop_passed_expected_end``): more than three hours
+        # before it, it is the next morning. "[Seit 23:30]" with
+        # "Voraussichtlich bis 00:30" at 23:45 is not past.
+        times = [t for t in (item.pub_date, item.starts_at, since) if t is not None]
+        anchor = _local(max(times, key=lambda t: t.astimezone(UTC)) if times else built)
         for match in _EXPECTED_UNTIL_RE.finditer(item.body):
             hour, minute = int(match.group(1)), int(match.group(2))
             if hour > 23 or minute > 59:
                 continue
-            if local.replace(hour=hour, minute=minute, second=0, microsecond=0) < local - timedelta(minutes=1):
+            until = _vienna_clock(anchor.date(), hour, minute, built)
+            if until < anchor.astimezone(UTC) - EXPECTED_END_BEFORE_MESSAGE:
+                until = _vienna_clock(anchor.date() + timedelta(days=1), hour, minute, built)
+            if until < built.astimezone(UTC) - timedelta(minutes=1):
                 findings.append(
                     Finding(
                         "ende-vorbei",
@@ -911,7 +942,9 @@ class IssueClient:
             raise ValueError("unsafe GitHub API URL")
         with session_with_retries(
             user_agent="wien-oepnv-feed-watch",
-            allowed_methods=("GET", "POST", "PATCH"),
+            # POST is not retried: a create GitHub carried out but answered
+            # with a 5xx or a timeout would open the issue or comment twice.
+            allowed_methods=("GET", "PATCH"),
             raise_on_status=False,
         ) as session:
             session.headers.update(

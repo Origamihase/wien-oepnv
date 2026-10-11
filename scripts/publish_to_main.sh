@@ -25,10 +25,11 @@
 # fast-forward; in every other case it is rejected and the remote stays as
 # it is. On a rejection the script re-syncs with ``git pull --rebase`` and
 # tries again (4 attempts, 2/4/8 s apart). A rebase conflict resolves to the
-# locally-built copy (the commit being replayed, "theirs" in rebase terms):
-# the callers only commit files they regenerate. ``merge=union`` CSV ledgers
-# never conflict. A rebase that still cannot finish is aborted and the next
-# attempt starts over.
+# locally built lines (the commit being replayed, "theirs" in rebase terms)
+# and keeps every other line of the concurrent commit (``keep_local_lines``):
+# a file the run regenerates may also be edited by hand (README.md, the
+# stations). ``merge=union`` CSV ledgers never conflict. A rebase that
+# still cannot finish is aborted and the next attempt starts over.
 #
 # Usage:
 #   scripts/publish_to_main.sh --message MSG --label TITLE [--strict]
@@ -121,6 +122,33 @@ if git diff --cached --quiet; then
 fi
 git commit -q -m "${message}"
 
+# Resolve one conflicted path of a stopped rebase. Only the conflicting
+# lines take the locally built side ("theirs" in rebase terms); every other
+# change of the concurrent commit stays. Until 2026-10-11 the whole file was
+# replaced by the local copy: a README edit merged during an Update run next
+# to the stats block, or a station added by hand to data/stations.json during
+# the Stationspflege run, was reverted with it, and the run stayed green
+# (Gesamtprüfung 11.10.2026). A path without all three versions (added or
+# deleted on one side) or one ``git merge-file`` cannot merge (binary) keeps
+# the whole local copy, as before.
+keep_local_lines() {
+  local path=$1 tmp rc
+  tmp=$(mktemp -d)
+  if git show ":1:${path}" >"${tmp}/base" 2>/dev/null \
+    && git show ":2:${path}" >"${tmp}/upstream" 2>/dev/null \
+    && git show ":3:${path}" >"${tmp}/local" 2>/dev/null; then
+    git merge-file --theirs -q "${tmp}/upstream" "${tmp}/base" "${tmp}/local"
+    rc=$?
+    if [ "${rc}" -ge 0 ] && [ "${rc}" -lt 128 ]; then
+      cp "${tmp}/upstream" "${path}"
+      rm -rf "${tmp}"
+      return 0
+    fi
+  fi
+  rm -rf "${tmp}"
+  git checkout --theirs -- "${path}"
+}
+
 # 3) Plain push with retry and re-sync. Never --force / --force-with-lease.
 max_attempts=4
 delay="${PUBLISH_RETRY_DELAY:-2}"
@@ -140,8 +168,10 @@ while :; do
   if ! git pull --rebase --autostash origin "${branch}"; then
     mapfile -t -d '' conflicts < <(git diff --name-only --diff-filter=U -z)
     if [ "${#conflicts[@]}" -gt 0 ]; then
-      echo "::warning title=${label}::rebase conflict on a concurrent push; keeping the locally built copies of: ${conflicts[*]}"
-      git checkout --theirs -- "${conflicts[@]}"
+      echo "::warning title=${label}::rebase conflict on a concurrent push; keeping the locally built lines of: ${conflicts[*]}"
+      for conflict in "${conflicts[@]}"; do
+        keep_local_lines "${conflict}"
+      done
       git add -- "${conflicts[@]}"
       git rebase --continue || git rebase --abort || true
     else

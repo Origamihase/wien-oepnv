@@ -317,6 +317,51 @@ def test_past_ends_and_future_since() -> None:
     ]
 
 
+def test_since_in_the_repeated_hour_is_not_after_the_build() -> None:
+    # 25.10.2026: built 02:01 winter time (01:01 UTC), incident since 02:26
+    # summer time (00:26 UTC), 35 minutes before. The builder writes "Seit
+    # 02:26" (Gesamtprüfung 11.10.2026: the watcher read it as 25 minutes
+    # after the build).
+    items = [
+        _since("U6: Rettungseinsatz", "02:26", pub="Sun, 25 Oct 2026 00:26:00 +0000"),
+    ] + _filler(9)
+    result = _run(_feed(items, built="Sun, 25 Oct 2026 02:01:00 +0100"))
+    assert "ende-vorbei" not in _rules(result)
+
+
+def test_since_after_the_build_in_the_repeated_hour_is_still_found() -> None:
+    # Built 02:10 summer time (00:10 UTC): "Seit 02:40" is no moment yet.
+    items = [_since("U6: Rettungseinsatz", "02:40", pub="Sun, 25 Oct 2026 00:05:00 +0000")]
+    result = _run(_feed(items + _filler(9), built="Sun, 25 Oct 2026 02:10:00 +0200"))
+    assert [(f.rule_id, f.subject) for f in result.findings] == [
+        ("ende-vorbei", "U6: Rettungseinsatz")
+    ]
+
+
+def test_an_expected_end_after_midnight_is_not_past() -> None:
+    items = [
+        _item(
+            "13A: Gebrechen",
+            f"Umleitung. Voraussichtlich bis 00:30 Uhr. [Seit{NBSP}23:30]",
+            pub="Fri, 09 Oct 2026 23:30:00 +0200",
+        ),
+        _item(
+            "14A: Gebrechen",
+            f"Umleitung. Voraussichtlich bis 23:40 Uhr. [Seit{NBSP}23:30]",
+            pub="Fri, 09 Oct 2026 23:30:00 +0200",
+        ),
+    ] + _filler(8)
+    result = _run(_feed(items, built="Fri, 09 Oct 2026 23:45:00 +0200"))
+    assert [(f.rule_id, f.subject) for f in result.findings] == [("ende-vorbei", "14A: Gebrechen")]
+
+
+def test_issue_requests_do_not_retry_a_post() -> None:
+    # A create GitHub carried out but answered with an error would open the
+    # issue twice (Gesamtprüfung 11.10.2026).
+    source = (REPO_ROOT / "scripts" / "feed_watch.py").read_text(encoding="utf-8")
+    assert 'allowed_methods=("GET", "PATCH")' in source
+
+
 def test_length_and_courtesy() -> None:
     long_body = "Wort " * 40
     items = [

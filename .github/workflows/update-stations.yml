@@ -148,14 +148,16 @@ jobs:
       # docs/archive/audits/audit-2026-09-12-force-push-history-loss.md)
       # with up to 4 attempts; a rejection by a concurrent push re-syncs
       # with ``git pull --rebase`` first and a conflict keeps the locally
-      # built copy. It replaces the former pre-commit pull plus a single
+      # built lines (the concurrent commit's other lines stay). It replaces the former pre-commit pull plus a single
       # push through ``git-auto-commit-action``, which went red whenever an
       # update-cycle commit landed in between (SEO Verify, 2026-10-04).
       # ``--strict``: a run that could not publish after every attempt
       # turns red, so a lost refresh does not pass unnoticed.
       # Every file this job writes (stations.json, the validation report,
       # the HAFAS profile, the Places quota counter) is a full regeneration,
-      # so on a rebase conflict the locally built copy is authoritative.
+      # so on a rebase conflict its conflicting lines are authoritative; a
+      # station added by hand in a PR merged during the run keeps every line
+      # that does not touch the regenerated ones (``keep_local_lines``).
       # ``data/oebb_station_lines.json`` accumulates, but only this job
       # writes it and it starts from the checked-out copy, so the local copy
       # wins there too. The station directory really can collide:

@@ -611,6 +611,18 @@ verdrängt eine andere Störung.
   (`_oebb_first_two_sentences`); die Stationen fallen erst weg, wenn auch
   dieser Satz allein sonst nicht passt. Alle 13 Änderungen im Replay sind
   „zweiter Satz bleibt“, kein anderer Text ändert sich.
+  **Ort in einer Liste (seit 2026-10-11, Gesamtprüfung):** Setzt hinter der
+  Station eine Aufzählung fort („… und Flughafen Wien Bahnhof bzw. Wien Hbf
+  (U) und Flughafen Wien Bahnhof, bis …“, „in Lind-Rosegg Bahnhst und
+  Föderlach Bahnhof …“, „in Wien Hbf (U) bzw Wien Meidling …“) oder folgt
+  im selben Satz eine weitere Strecke („… der Zug REX6 (7799) zwischen Wien
+  Hbf und Kledering der Zug S60 …“), bleibt der Ort stehen. Ohne diese
+  Regel hätte die Kürzung „Wegen Verlängerung der Bauarbeiten sind bzw. Wien
+  Hbf (U) und Flughafen Wien Bahnhof, bis …“ erzeugt; der echte Text vom
+  07.09. lag zehn Zeichen über der Grenze und kam so nie an den TV. Replay
+  über alle 563 ÖBB-Texte: keine Ausgabe ändert sich, zehn verstümmelte
+  Kürzungen entfallen (`_OEBB_PLACE_LIST_RE`, Test
+  `tests/test_oebb_ort_in_liste.py`).
 * **„Voraussichtlich bis 14:10 Uhr“ statt „Voraussichtliche Dauer: 14:10
   Uhr“ (seit 2026-10-06, Betreiberentscheidung „Dauer-Text anpassen“).**
   WLs Störungsvorlage nennt das erwartete Ende unter einem Dauer-Label. Auf
