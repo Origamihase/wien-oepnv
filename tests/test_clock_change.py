@@ -128,6 +128,45 @@ def test_oebb_winter_message_after_midnight_keeps_its_day() -> None:
     assert parsed is not None and parsed.astimezone(VIENNA).date().isoformat() == "2026-01-15"
 
 
+# ---- Wiener Linien times --------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    ("sent", "expected_local"),
+    [
+        # Summer times as WL sent them in winter time (cache of 20.03.2026).
+        ("2027-06-30T11:11:00.000+0100", "2027-06-30 11:11"),
+        ("2026-05-31T23:56:00.000+0100", "2026-05-31 23:56"),
+        ("2026-07-11T00:00:00.000+0100", "2026-07-11 00:00"),
+        # Offsets that fit stay as sent, as in every answer since May.
+        ("2026-11-07T01:00:00.000+0100", "2026-11-07 01:00"),
+        ("2026-09-28T04:30:00.000+0200", "2026-09-28 04:30"),
+        # In the repeated hour both offsets fit; the one sent decides.
+        ("2026-10-25T02:30:00.000+0200", "2026-10-25 02:30"),
+        ("2026-10-25T02:30:00.000+0100", "2026-10-25 02:30"),
+    ],
+)
+def test_wl_time_is_vienna_wall_clock(sent: str, expected_local: str) -> None:
+    from src.providers import wl_fetch, wl_resolved
+
+    for parsed in (wl_fetch._iso(sent), wl_resolved._moment(sent)):
+        assert parsed is not None
+        assert parsed.astimezone(VIENNA).strftime("%Y-%m-%d %H:%M") == expected_local
+    assert wl_fetch._iso("2026-10-25T02:30:00.000+0200") != wl_fetch._iso(
+        "2026-10-25T02:30:00.000+0100"
+    )
+
+
+def test_wl_summer_placeholder_end_stays_unknown_in_winter_time() -> None:
+    # WL's 11:11 expiry date of a notice, sent with the winter offset: read
+    # as given it was 12:11 and the time line showed "Bis 30.06.2027".
+    from src.providers import wl_fetch
+    from src.providers.wl_plausibility import end_unknown
+
+    end = wl_fetch._iso("2027-06-30T11:11:00.000+0100")
+    assert end_unknown("Wegen Bauarbeiten fährt die Linie 77A eine Umleitung.", end)
+
+
 # ---- Stammstrecke monitor ---------------------------------------------------
 
 
