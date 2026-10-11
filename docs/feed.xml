@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 11 Oct 2026 22:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2026 23:01:03 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[71/74A: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">86d270df856455068f0e4e993ebc1a65540e22a1378b1bc97257b5b4e8a43d9f</guid>
+      <pubDate>Sun, 11 Oct 2026 22:46:00 +0200</pubDate>
+      <ext:first_seen>Sun, 11 Oct 2026 23:01:03 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 11 Oct 2026 22:46:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 11 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Derzeit kein Betrieb zwischen Schwarzenbergplatz und Enkplatz U, Grillgasse. [Seit 22:46]</description>
+      <content:encoded><![CDATA[Derzeit kein Betrieb zwischen Schwarzenbergplatz und Enkplatz U, Grillgasse.<br/>[Seit 22:46]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[38: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">31f255c87f5a1575177df04a76beabf6426a71727ee2fef75eb69ab752e4775f</guid>
+      <pubDate>Sun, 11 Oct 2026 22:29:00 +0200</pubDate>
+      <ext:first_seen>Sun, 11 Oct 2026 22:29:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 11 Oct 2026 22:29:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 11 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 22:29]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 22:29]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -96,28 +118,6 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 … [Bis 28.10.]</description>
       <content:encoded><![CDATA[Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 …<br/>[Bis 28.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S80: ÖBB-Ersatzbus]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Sun, 11 Oct 2026 05:00:09 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Oct 2026 05:00:09 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 11 Oct 2026 23:00:00 +0200</ext:ends_at>
-      <description>Bhf. Hütteldorf [Heute]</description>
-      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A/7A/N62: Eibesbrunnergasse beide Fahrtrichtungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bd6cbe1a4ea6d909912fce8527e38411ee42a952a91a70beecf363c26cd3e728</guid>
-      <pubDate>Mon, 05 Oct 2026 16:10:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 16:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 … [Bis 06.11.]</description>
-      <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 …<br/>[Bis 06.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
