@@ -1,25 +1,13 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-11T07:01:38.591922+00:00",
- "built": "2026-10-11T09:01:26+02:00",
+ "updated": "2026-10-11T07:30:54.420092+00:00",
+ "built": "2026-10-11T09:30:48+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-11T09:01:26+02:00",
+  "built": "2026-10-11T09:30:48+02:00",
   "items": [
-   {
-    "title": "O: Rettungseinsatz",
-    "time_line": "Seit 08:21"
-   },
-   {
-    "title": "71: Rettungseinsatz",
-    "time_line": "Seit 07:37"
-   },
-   {
-    "title": "74A: Rettungseinsatz, Bauarbeiten",
-    "time_line": "Heute"
-   },
    {
     "title": "18: LCC-Herbstmarathon am 11.10.2026",
     "time_line": "Heute"
@@ -47,6 +35,18 @@
    {
     "title": "40A: Döblinger Friedhof, Felix-Dahn-Straße",
     "time_line": "Bis 26.10."
+   },
+   {
+    "title": "U6: Neue Donau, kein Halt Richtung Floridsdorf",
+    "time_line": "Bis 31.12."
+   },
+   {
+    "title": "66A: Busse halten Salvatorianerplatz",
+    "time_line": "Bis Mo 12.10."
+   },
+   {
+    "title": "52: Züge halten bei Linien 6 und 18",
+    "time_line": "Heute"
    }
   ]
  },
@@ -370,6 +370,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 103
+   }
+  },
+  {
+   "t": "2026-10-11T07:30:54.420092+00:00",
+   "raw": {
+    "wl-stoerungen": 66,
+    "wl-hinweise": 102,
+    "oebb": 164,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 140,
+    "baustellen": 69
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 100
    }
   }
  ]
