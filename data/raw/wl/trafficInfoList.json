@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261011-0007, I20260922-0032, I20261011-0013, I20261011-0015, I20260925-0011, I20260909-0007, I20261011-0008, I20261011-0012-F01, I20261011-0011-F01, I20261011-0014-F01, I20261011-0014"
+    "trafficInfoNameList": "I20260917-0012, I20261011-0007, I20260922-0032, I20261011-0015, I20261011-0014-F01, I20260925-0011, I20260909-0007, I20261011-0008, I20261011-0014, I20261011-0015-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R100-136, R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2378-627, R2359-125, R2343-125, R2372-627, R2345-127, R2380-627, R2379-627, R2343-626, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R1974-466, R500-101, R2420-118, R2632-118, R3604-118, R3602-118, R3603-118, R1150-431, R1150-236, R1150-430, R1122-430, R1692-459, R2422-118, R2750-118, R3608-118, R3607-118, R3606-118, R3605-118, R3609-118, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R100-136, R36-152, R102-136, R101-136, R103-136, R2558-125, R5815-671, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2372-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2345-127, R2380-627, R2379-627, R2378-627, R2343-626, R1974-466, R500-101, R2420-118, R2632-118, R3602-118, R3604-118, R3603-118, R1150-431, R1150-236, R1150-430, R1122-430, R2422-118, R2750-118, R3605-118, R3607-118, R3609-118, R3606-118, R3608-118, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -285,112 +285,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261011-0011-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "304",
-       "lineName": "U4",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4437
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-11T13:23:00.000+0200",
-     "end": "2026-10-11T14:33:00.000+0200",
-     "lastUpdate": "2026-10-11T14:33:00.000+0200",
-     "resume": "2026-10-11T14:33:00.000+0200",
-     "start": "2026-10-11T13:07:00.000+0200"
-    },
-    "title": "U4: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261011-0012-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-11T13:23:00.000+0200",
-     "end": "2026-10-11T14:33:00.000+0200",
-     "lastUpdate": "2026-10-11T14:33:00.000+0200",
-     "resume": "2026-10-11T14:33:00.000+0200",
-     "start": "2026-10-11T13:09:00.000+0200"
-    },
-    "title": "U6: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "66A": "ptBusCity"
-     }
-    },
-    "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Fremder Verkehrsunfall.",
-    "descriptionHTML": "Linie 66A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Fremder Verkehrsunfall.",
-    "location": "Sterngasse  / Richard-Strauss-Straße ",
-    "name": "I20261011-0013",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "466",
-       "lineName": "66A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-11T13:27:00.000+0200",
-     "end": "2026-10-11T14:33:00.000+0200",
-     "lastUpdate": "2026-10-11T14:33:00.000+0200",
-     "resume": "2026-10-11T14:33:00.000+0200",
-     "start": "2026-10-11T13:26:00.000+0200"
-    },
-    "title": "66A: Fremder Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "59A": "ptBusCity"
      }
     },
@@ -448,12 +342,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-11T14:58:00.000+0200",
-     "end": "2026-10-11T23:55:00.000+0200",
-     "lastUpdate": "2026-10-11T14:58:00.000+0200",
-     "resume": "2026-10-11T14:58:00.000+0200",
+     "end": "2026-10-11T15:45:00.000+0200",
+     "lastUpdate": "2026-10-11T15:45:00.000+0200",
+     "resume": "2026-10-11T15:45:00.000+0200",
      "start": "2026-10-11T14:52:00.000+0200"
     },
     "title": "59A: Schadhafter PKW"
@@ -483,11 +377,47 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-11T15:00:00.000+0200",
+     "end": "2026-10-11T15:31:00.000+0200",
+     "lastUpdate": "2026-10-11T15:31:00.000+0200",
+     "resume": "2026-10-11T15:31:00.000+0200",
+     "start": "2026-10-11T14:59:00.000+0200"
+    },
+    "title": "54B: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "54B": "ptBusCity"
+     }
+    },
+    "description": "Linie 54B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 54B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Hanschweg / Pia-Maria-Plechl-Weg",
+    "name": "I20261011-0015-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "54B"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "254",
+       "lineName": "54B",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-11T15:31:00.000+0200",
      "end": "2026-10-11T23:55:00.000+0200",
-     "lastUpdate": "2026-10-11T15:05:00.000+0200",
+     "lastUpdate": "2026-10-11T15:31:00.000+0200",
+     "resume": "2026-10-11T15:31:00.000+0200",
      "start": "2026-10-11T14:59:00.000+0200"
     },
     "title": "54B: Falschparker"
@@ -974,24 +904,6 @@
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
-    "name": "R1692-459",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedStops": [
-     1692
-    ],
-    "time": {
-     "end": "2026-10-11T15:53:00.000+0200",
-     "start": "2026-10-11T14:54:07.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter PKW"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
