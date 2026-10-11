@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Sun, 11 Oct 2026 11:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2026 12:01:05 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[30A: Gas pipe fracture]]></title>
@@ -43,7 +43,7 @@
       <content:encoded><![CDATA[No service.<br/>[Since 11:04]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[36B/30A/31A: Burst gas pipe]]></title>
+      <title><![CDATA[30A/31A/36B: Burst gas pipe]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">26fb6f57b3d85338e59837def650de7e0253f6912ffa992ef3aa5d1252cec0b5</guid>
       <pubDate>Sun, 11 Oct 2026 11:00:00 +0200</pubDate>
@@ -52,6 +52,17 @@
       <ext:ends_at>Sun, 11 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Line 36B is redirected towards Jedlesee, Bellgasse between Berzeliusgasse and Brünner Straße S via Brünner Straße. [Today]</description>
       <content:encoded><![CDATA[Line 36B is redirected towards Jedlesee, Bellgasse between Berzeliusgasse and Brünner Straße S via Brünner Straße.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[D: Third-party traffic accident, track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f0dde5821d03cb68c45830addd54ee8545c302f1154e3c7d1144448feb5546bd</guid>
+      <pubDate>Sun, 11 Oct 2026 11:30:00 +0200</pubDate>
+      <ext:first_seen>Sun, 11 Oct 2026 11:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 11 Oct 2026 11:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 11 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse. [Today]</description>
+      <content:encoded><![CDATA[Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[18: LCC autumn marathon on 11.10.2026]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sun, 11 Oct 2026 23:00:00 +0200</ext:ends_at>
       <description>Bhf. Hütteldorf [Today]</description>
       <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A/7A/N62: Eibesbrunnergasse both directions]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bd6cbe1a4ea6d909912fce8527e38411ee42a952a91a70beecf363c26cd3e728</guid>
-      <pubDate>Mon, 05 Oct 2026 16:10:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 16:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 … [Until 06.11.]</description>
-      <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 …<br/>[Until 06.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

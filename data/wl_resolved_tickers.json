@@ -1,5 +1,34 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R105-136|2026-10-11T11:33:17.000+0200|Fremdunfall\nUmleitung bis Quartier Belvedere < ",
+   "name": "R105-136",
+   "title": "Fremdunfall\nUmleitung bis Quartier Belvedere < ",
+   "end": "2026-10-11T13:30:00.000+0200",
+   "incident": "I20261011-0009"
+  },
+  {
+   "key": "R109-136|2026-10-11T11:32:47.000+0200|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R109-136",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-11T12:32:00.000+0200",
+   "incident": "I20261011-0009"
+  },
+  {
+   "key": "R3431-136|2026-10-11T11:32:51.000+0200|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R3431-136",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-11T12:32:00.000+0200",
+   "incident": "I20261011-0009"
+  },
+  {
+   "key": "R58-136|2026-10-11T11:32:47.000+0200|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R58-136",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-11T12:32:00.000+0200",
+   "incident": "I20261011-0009"
+  }
+ ]
 }

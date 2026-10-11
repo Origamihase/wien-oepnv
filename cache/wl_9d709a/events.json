@@ -1034,7 +1034,7 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "36B/30A/31A: Gasrohrgebrechen",
+    "title": "30A/31A/36B: Gasrohrgebrechen",
     "description": "Die Linie 36B wird in Richtung Jedlesee, Bellgasse zwischen Berzeliusgasse und Brünner Straße S über Brünner Straße umgeleitet. Die Linie 30A wird in Richtung Stammersdorf, Freiheitsplatz zwischen Berzeliusgasse und Gschweidlgasse über Brünner Straße, Hanreitergasse umgeleitet. Die Linie 31A wird in Richtung Großjedlersdorf, Jochbergengasse zwischen Berzeliusgasse und Großjedlersdorf, Jochbergengasse über Brünner Straße, Hanreitergasse, Jedlersdorfer Straße umgeleitet. Voraussichtliche Dauer: Nicht absehbar. Grund: Gasrohrgebrechen im Bereich Brünner Straße # Frauenstiftgasse .",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "26fb6f57b3d85338e59837def650de7e0253f6912ffa992ef3aa5d1252cec0b5",
@@ -1210,6 +1210,22 @@
     "starts_at": "2026-10-07T00:00:16+02:00",
     "ends_at": "2026-10-11T23:59:59+02:00",
     "_identity": "wl|störung|L=D|D=2026-10-07|TK=züge halten wipplingerstr 39"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Fremder Verkehrsunfall",
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f0dde5821d03cb68c45830addd54ee8545c302f1154e3c7d1144448feb5546bd",
+    "pubDate": "2026-10-11T11:30:00+02:00",
+    "starts_at": "2026-10-11T11:30:00+02:00",
+    "ends_at": "2026-10-11T23:55:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-10-11|TK=d fremder verkehrsunfall",
+    "_wl_ids": [
+      "I20261011-0009"
+    ],
+    "_incident_start": "2026-10-11T11:30:00+02:00"
   },
   {
     "source": "Wiener Linien",
