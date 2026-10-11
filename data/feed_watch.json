@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-11T08:01:02.053664+00:00",
- "built": "2026-10-11T10:00:57+02:00",
+ "updated": "2026-10-11T08:30:47.873622+00:00",
+ "built": "2026-10-11T10:30:42+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-11T10:00:57+02:00",
+  "built": "2026-10-11T10:30:42+02:00",
   "items": [
    {
     "title": "18: LCC-Herbstmarathon am 11.10.2026",
@@ -394,6 +394,26 @@
   },
   {
    "t": "2026-10-11T08:01:02.053664+00:00",
+   "raw": {
+    "wl-stoerungen": 65,
+    "wl-hinweise": 101,
+    "oebb": 164,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 140,
+    "baustellen": 69
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 100
+   }
+  },
+  {
+   "t": "2026-10-11T08:30:47.873622+00:00",
    "raw": {
     "wl-stoerungen": 65,
     "wl-hinweise": 101,
