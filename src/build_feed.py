@@ -4975,6 +4975,12 @@ def _oebb_title_names(place: str, title: str) -> bool:
 # Autobussen wird für Sie eingerichtet." the same way. The place follows the
 # main verb, so a place inside the cause ("Wegen eines Polizeieinsatzes in
 # Wien Meidling …") stays; a place in a list (", und zwischen …") stays too.
+# So does one that a list continues behind it ("zwischen A und B bzw. C und
+# D, bis …", "in A und B …") or that another route follows ("zwischen A und B
+# der Zug REX6 (7799) zwischen C und D der Zug S60 (26093) …"): without it
+# the sentence read "Wegen Verlängerung der Bauarbeiten sind bzw. Wien Hbf
+# (U) und Flughafen Wien Bahnhof, bis …" (ÖBB, 07.09.2026, ten characters
+# short of the display), or gave the REX 6 the other route.
 _OEBB_MAIN_VERB_RE: re.Pattern[str] = re.compile(
     r"Wegen .+? (?:sind|waren|ist|war|können|kann|konnten|fahren|fährt|werden|wird) "
 )
@@ -5015,13 +5021,17 @@ _OEBB_AFTER_NAME_RE: re.Pattern[str] = re.compile(
 )
 
 
+# Words behind a station that continue a list of places.
+_OEBB_PLACE_LIST_RE: re.Pattern[str] = re.compile(r" (?:und|bzw\.?|sowie|oder|u\.) ")
+
+
 def _oebb_name_ends_at(rest: str, *, suffixed: bool, before_und: bool) -> bool:
     """Whether a station name may end where *rest* begins (see above)."""
     if before_und:
         return rest.startswith(" und ")
     if rest in {"", ".", "!"}:
         return True
-    if not rest.startswith(" "):
+    if not rest.startswith(" ") or _OEBB_PLACE_LIST_RE.match(rest):
         return False
     if suffixed:
         return True
@@ -5043,7 +5053,7 @@ def _oebb_sentence_without_place(sentence: str, title: str) -> str | None:
         end = _oebb_station_end(sentence, first + len(" und "), title, before_und=False)
     else:
         end = _oebb_station_end(sentence, lead.end(), title, before_und=False)
-    if end is None:
+    if end is None or re.search(r"\bzwischen\b", sentence[end:]):
         return None
     return sentence[: lead.start()] + sentence[end:]
 

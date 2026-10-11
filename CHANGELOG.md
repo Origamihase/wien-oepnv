@@ -5,6 +5,38 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Gesamtprüfung vom Abruf bis zum Feed (2026-10-11)**: Live-Feed von 08:00
+  nachgebaut (identisch), alle 58 deutschen Feed-Stände seit 10.10. ohne
+  doppelten Titel oder GUID, Verwürfe von WL, ÖBB und Baustellen alle mit
+  richtigem Grund, Baustellen-Zwillinge (Burggasse 67, Maxingstraße) fallen
+  wie entschieden weg. Gefunden und behoben:
+  - **ÖBB: Ort in einer Liste.** Die Kürzung von Satz 1 (#2005) schnitt
+    auch Orte heraus, hinter denen eine Aufzählung weitergeht („… Flughafen
+    Wien Bahnhof bzw. Wien Hbf (U) und …“, „in A und B …“) oder eine
+    weitere Strecke folgt. Daraus wäre „Wegen Verlängerung der Bauarbeiten
+    sind bzw. Wien Hbf (U) und Flughafen Wien Bahnhof, bis …“ geworden; der
+    echte Text vom 07.09. lag zehn Zeichen über der Grenze. Solche Orte
+    bleiben jetzt stehen. Replay über alle 563 ÖBB-Texte: keine Ausgabe
+    ändert sich, zehn verstümmelte Kürzungen entfallen.
+  - **Push-Konflikt** (`scripts/publish_to_main.sh`): Ein Rebase-Konflikt
+    ersetzte die ganze Datei durch die lokal gebaute; eine Änderung an
+    `README.md` oder `data/stations.json`, die während eines Laufs gemergt
+    wurde, ging bei grünem Lauf verloren. Jetzt gewinnen nur die
+    kollidierenden Zeilen (`keep_local_lines`), der Rest des anderen Commits
+    bleibt.
+  - **Feed-Wächter:** In der doppelten Stunde am 25.10. hätte „[Seit
+    02:26]“ (Sommerzeit) um 02:01 Winterzeit als Zeit nach dem Bau gegolten,
+    und „Voraussichtlich bis 00:30“ einer Störung seit 23:30 galt um 23:45
+    als vorbei; beides hätte ein falsches Issue geöffnet. Zeitpunkte werden
+    jetzt in UTC verglichen, die Uhrzeit gehört wie im Builder zum Tag der
+    jüngsten Zeit des Eintrags. Anlegen von Issues und Kommentaren (POST)
+    wird nicht mehr wiederholt (sonst doppelt, wenn GitHub anlegt und mit
+    einem Fehler antwortet). Rückblick über 2 031 Feed-Stände seit 01.09.:
+    dieselben Funde wie vorher.
+  - Doku: Schrittliste in `update-cycle.yml` nennt den Wächter; Regel
+    `alte-meldung-als-neu` beschrieben wie umgesetzt; `issues: write` gilt
+    technisch für den ganzen Job.
+  Bericht: `reports/gesamtpruefung-2026-10-11.md` im Projektordner.
 * **ÖBB: der zweite Satz bleibt auch bei abweichendem Satzbau (2026-10-11)**:
   Die Entscheidung vom 09.10. (ÖBB-Texte behalten ihren zweiten Satz; die
   Stationen des Titels fallen aus Satz 1 nur weg, wenn Satz 2 sonst nicht in

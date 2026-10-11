@@ -192,8 +192,9 @@ jobs:
       #   * no changes -> clean no-op (exit 0).
       #   * PLAIN push (never a force, since 2026-10-10) with up to 4
       #     attempts and backoff; on a rejection ``git pull --rebase``
-      #     replays our commit and a conflict resolves to the locally-built
-      #     regeneration.
+      #     replays our commit; in a conflict the conflicting lines take the
+      #     locally-built regeneration, the concurrent commit's other lines
+      #     stay (``keep_local_lines``).
       #   * if every attempt fails -> warning + exit 0; the next cycle tick
       #     rebuilds and publishes from fresh caches.
       - name: Validate and publish feed outputs

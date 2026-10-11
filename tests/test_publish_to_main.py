@@ -163,9 +163,31 @@ def test_conflict_keeps_the_locally_built_copy(tmp_path: Path) -> None:
     _write(work, "docs/feed.xml", "<rss>mine</rss>\n")
     result = _publish(work, env, "--all", "--label", "cycle-publish", "--message", "chore: update cycle")
     assert result.returncode == 0, result.stderr
-    assert "keeping the locally built copies of: docs/feed.xml" in result.stdout
+    assert "keeping the locally built lines of: docs/feed.xml" in result.stdout
     assert _is_ancestor(origin, env, concurrent)
     assert _remote_file(origin, env, "docs/feed.xml") == "<rss>mine</rss>"
+
+
+def test_a_conflict_keeps_the_concurrent_lines_it_does_not_touch(tmp_path: Path) -> None:
+    # Gesamtprüfung 11.10.2026: a hand edit next to a regenerated block
+    # conflicts; the whole local copy replaced it and the edit was gone.
+    origin, work, other, env = _setup(tmp_path)
+    # The edit of "intro" abuts the stats line: that hunk conflicts and takes
+    # the local lines; the title, two lines away, merges as it is.
+    base = "# Title\n\nintro\n3 Meldungen\n"
+    _concurrent_commit(other, env, "README.md", base)
+    _git(work, env, "pull", "-q", "origin", "main")
+    _concurrent_commit(
+        other, env, "README.md", base.replace("# Title", "# New title").replace("intro", "intro, edited")
+    )
+    _write(work, "README.md", base.replace("3 Meldungen", "5 Meldungen"))
+    result = _publish(work, env, "--all", "--label", "cycle-publish", "--message", "chore: update cycle")
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "keeping the locally built lines of: README.md" in result.stdout
+    readme = _remote_file(origin, env, "README.md")
+    assert readme.startswith("# New title\n")
+    assert "edited" not in readme
+    assert "5 Meldungen" in readme
 
 
 @pytest.mark.parametrize("strict", [False, True])

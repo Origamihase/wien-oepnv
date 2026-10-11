@@ -62,7 +62,11 @@ name: Update cycle
 #      a cosmetic stats failure must NEVER block the feed publish); then
 #      ``check_feed_lines.py`` logs the line check and collects its
 #      anomalies in ``data/feed_line_anomalies.json`` (same guard)
-#   8. ``scripts/publish_to_main.sh``: validate the built feed XML, then
+#   8. ``scripts/feed_watch.py`` (Feed-Wächter) checks the built German
+#      feed against its rules and writes ``data/feed_watch.json``, one
+#      GitHub issue per broken rule (report only, continue-on-error, never
+#      red; docs/reference/feed_watch.md)
+#   9. ``scripts/publish_to_main.sh``: validate the built feed XML, then
 #      a single ``git commit`` + retrying, never-fail plain ``git push``
 #      (reconcile onto concurrent pushes is folded into the push loop; no
 #      external commit action — see that step's header for the rationale)
@@ -615,7 +619,9 @@ jobs:
       #     2026-10-10) with up to 4 attempts and backoff 2/4/8 s; on a
       #     rejection ``git pull --rebase`` replays our commit onto the
       #     concurrent push (update-stations.yml / seo-guard.yml / a merged
-      #     PR) and a conflict resolves to the locally-built regeneration.
+      #     PR); in a conflict the conflicting lines take the locally-built
+      #     regeneration, the concurrent commit's other lines stay (a README
+      #     edit next to the stats block, ``keep_local_lines``).
       #     Before, the re-fetch of that pull re-armed the lease, so a
       #     rebase that had to be aborted let the next attempt force-push
       #     over the concurrent commit (``main`` has no branch protection).
