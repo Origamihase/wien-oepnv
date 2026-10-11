@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 11 Oct 2026 13:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2026 14:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U4/U6: Polizeieinsatz]]></title>
@@ -19,17 +19,6 @@
       <ext:ends_at>Sun, 11 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 13:07]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 13:07]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11: Verunreinigung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1f0306b680e5da26f14eb1fee7aed5a4682caac6e0570037c68c42879db4b795</guid>
-      <pubDate>Sun, 11 Oct 2026 12:34:00 +0200</pubDate>
-      <ext:first_seen>Sun, 11 Oct 2026 12:34:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Oct 2026 12:34:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 11 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Seit 12:34]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Seit 12:34]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[30A: Gasrohrbruch]]></title>
@@ -87,17 +76,6 @@
       <content:encoded><![CDATA[Die Linie 36B wird in Richtung Jedlesee, Bellgasse zwischen Berzeliusgasse und Brünner Straße S über Brünner Straße umgeleitet.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[D: Fremder Verkehrsunfall, Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f0dde5821d03cb68c45830addd54ee8545c302f1154e3c7d1144448feb5546bd</guid>
-      <pubDate>Sun, 11 Oct 2026 11:30:00 +0200</pubDate>
-      <ext:first_seen>Sun, 11 Oct 2026 11:30:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Oct 2026 11:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 11 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse. [Heute]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[18: LCC-Herbstmarathon am 11.10.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">daa1fa725b6871207d859b871146acfe9897adaf53769abeed930afb4c8730db</guid>
@@ -118,6 +96,28 @@
       <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
       <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung. [Bis 31.03.2027]</description>
       <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung.<br/>[Bis 31.03.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[72A: Haidestraße S]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">478a7dd15ce15abfb6a3b89c90e7305c6500a29a34ffa7ee497d6624535e2914</guid>
+      <pubDate>Thu, 08 Oct 2026 15:30:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 15:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 08 Oct 2026 15:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 12 Oct 2026 13:00:00 +0200</ext:ends_at>
+      <description>Lautenschlägergasse nach Haidestraße → 1. Haidequerstraße gegenüber 3A. Haltestellenverlegung der Linie 72A in Richtung Hasenleiten. Grund: Arbeiten an einer Gasleitung. [Bis Mo 12.10.]</description>
+      <content:encoded><![CDATA[Lautenschlägergasse nach Haidestraße → 1. Haidequerstraße gegenüber 3A. Haltestellenverlegung der Linie 72A in Richtung Hasenleiten. Grund: Arbeiten an einer Gasleitung.<br/>[Bis Mo 12.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
+      <pubDate>Mon, 05 Oct 2026 15:40:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 15:40:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 … [Bis 28.10.]</description>
+      <content:encoded><![CDATA[Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 …<br/>[Bis 28.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
