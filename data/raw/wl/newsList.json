@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1017117, ftazW_212, ftazW_2, ftazW_582, ftazW_1031271, ftazW_3, ftazW_581, ftazW_1353814, ftazW_1017118, ftazW_487, ftazW_756, ftazW_146, ftazW_1353815, ftazW_1017119, ftazW_1031269, ftazW_147, ftazW_29, ftazW_1031270, ftazW_211, ftazW_488, ftazW_1354336, ftazW_1017120, ftazW_1016902, ftazW_734, ftazW_1031272"
+    "trafficInfoNameList": "ftazW_1017117, ftazW_212, ftazW_2, ftazW_582, ftazW_1031271, ftazW_3, ftazW_581, ftazW_1353814, ftazW_1017118, ftazW_487, ftazW_756, ftazW_146, ftazW_1353815, ftazW_1017119, ftazW_1031269, ftazW_147, ftazW_29, ftazW_1031270, ftazW_211, ftazW_488, ftazW_1354336, ftazW_1017120, ftazW_1016902, ftazW_734, ftazW_1031272, ftazW_1031273, ftazW_1016903, ftazW_82, ftazW_736"
    }
   ],
   "poiCategoryGroups": [
@@ -2725,6 +2725,37 @@
    },
    {
     "attributes": {
+     "ausBis": "14.10.2026 05:15",
+     "ausVon": "14.10.2026 01:15",
+     "location": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Jenullgasse",
+     "rbls": [
+      4430
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Braunschweiggasse",
+     "status": "geplante Wartung",
+     "towards": "U4 Hütteldorf"
+    },
+    "description": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Jenullgasse",
+    "name": "ftazW_1016903",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4430
+    ],
+    "time": {
+     "end": "2026-10-14T05:15:00.000+0200",
+     "start": "2026-10-14T01:15:00.000+0200"
+    },
+    "title": "Braunschweiggasse"
+   },
+   {
+    "attributes": {
      "ausBis": "12.10.2026 00:45",
      "ausVon": "11.10.2026 20:45",
      "location": "U1 Mittelbahnsteig - Ausgang Aderklaaer Straße",
@@ -2976,6 +3007,32 @@
     "time": {
      "end": "2026-10-14T00:45:00.000+0200",
      "start": "2026-10-13T20:45:00.000+0200"
+    },
+    "title": "Donaustadtbrücke"
+   },
+   {
+    "attributes": {
+     "ausBis": "14.10.2026 05:15",
+     "ausVon": "14.10.2026 01:15",
+     "location": "Ausgang Kaisermühlendamm - Kaisermühlendamm",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Donaustadtbrücke",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Ausgang Kaisermühlendamm - Kaisermühlendamm",
+    "name": "ftazW_1031273",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "time": {
+     "end": "2026-10-14T05:15:00.000+0200",
+     "start": "2026-10-14T01:15:00.000+0200"
     },
     "title": "Donaustadtbrücke"
    },
@@ -3432,6 +3489,37 @@
    },
    {
     "attributes": {
+     "ausBis": "14.10.2026 05:15",
+     "ausVon": "14.10.2026 01:15",
+     "location": "U3 Bahnsteig Richtung Ottakring - Ausgang Gasometer/Modecenterstraße",
+     "rbls": [
+      4941
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Gasometer",
+     "status": "geplante Wartung",
+     "towards": "U3 Ottakring"
+    },
+    "description": "U3 Bahnsteig Richtung Ottakring - Ausgang Gasometer/Modecenterstraße",
+    "name": "ftazW_736",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4941
+    ],
+    "time": {
+     "end": "2026-10-14T05:15:00.000+0200",
+     "start": "2026-10-14T01:15:00.000+0200"
+    },
+    "title": "Gasometer"
+   },
+   {
+    "attributes": {
      "ausBis": "13.10.2026 00:45",
      "ausVon": "12.10.2026 20:45",
      "location": "U3 Mittelbahnsteig - Ausgang Simmeringer Hauptstraße",
@@ -3462,6 +3550,43 @@
      "start": "2026-10-12T20:45:00.000+0200"
     },
     "title": "Enkplatz"
+   },
+   {
+    "attributes": {
+     "ausBis": "14.10.2026 05:15",
+     "ausVon": "14.10.2026 01:15",
+     "location": "U3 Mittelbahnsteig - U2 Bahnsteig Richtung Seestadt - Ausgang Bellariastraße",
+     "rbls": [
+      4909,
+      4908,
+      4206
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2",
+      "U3"
+     ],
+     "station": "Volkstheater",
+     "status": "geplante Wartung",
+     "towards": "U3 beide Richtungen, U2 Seestadt"
+    },
+    "description": "U3 Mittelbahnsteig - U2 Bahnsteig Richtung Seestadt - Ausgang Bellariastraße",
+    "name": "ftazW_82",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2",
+     "U3"
+    ],
+    "relatedStops": [
+     4909,
+     4908,
+     4206
+    ],
+    "time": {
+     "end": "2026-10-14T05:15:00.000+0200",
+     "start": "2026-10-14T01:15:00.000+0200"
+    },
+    "title": "Volkstheater"
    }
   ]
  },
