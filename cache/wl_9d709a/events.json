@@ -794,22 +794,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Verkehrsunfall",
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4037eb177f53feada9cd8d5d413f9865f66b30fafc51c7e633db6ca36d431e5",
-    "pubDate": "2026-10-11T19:00:00+02:00",
-    "starts_at": "2026-10-11T19:00:00+02:00",
-    "ends_at": "2026-10-11T23:55:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-10-11|TK=10a verkehrsunfall",
-    "_wl_ids": [
-      "I20261011-0021"
-    ],
-    "_incident_start": "2026-10-11T19:00:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1342,41 +1326,5 @@
     "starts_at": "2026-10-07T00:00:18+02:00",
     "ends_at": "2026-10-11T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-10-07|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "0adadc0d52c1c4ca5640d9262b7d557e64527b5ae1096d8366a008580c44402a",
-    "pubDate": "2026-10-11T18:26:59+02:00",
-    "starts_at": "2026-10-11T18:26:59+02:00",
-    "ends_at": "2026-10-11T19:26:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-10-11|TK=fahrtbehinderung schadhafter zug"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Schadhafter Zug Betrieb ab Währinger Straße, Volksoper",
-    "description": "Schadhafter Zug\nBetrieb ab Währinger Straße, Volksoper",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "cbad9ebe950d170ec2855a673a47c6ba24185d85600ea89feb24d5a129157f92",
-    "pubDate": "2026-10-11T18:27:59+02:00",
-    "starts_at": "2026-10-11T18:27:59+02:00",
-    "ends_at": "2026-10-11T19:27:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-10-11|TK=schadhafter zug betrieb ab währinger strasse volksoper"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Schadhafter Zug Züge halten bei Währinger Gürtel",
-    "description": "Schadhafter Zug\nZüge halten bei Währinger Gürtel",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6a6f3baae37bb47d2c2a1b3fcf48329716e75f026256383f0e7b293d10864739",
-    "pubDate": "2026-10-11T18:27:59+02:00",
-    "starts_at": "2026-10-11T18:27:59+02:00",
-    "ends_at": "2026-10-11T19:27:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-10-11|TK=schadhafter zug züge halten bei währinger gürtel"
   }
 ]
