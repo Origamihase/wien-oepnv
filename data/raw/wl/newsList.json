@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_3, ftazW_581, ftazW_1353814, ftazW_1017118, ftazW_487, ftazW_756, ftazW_146, ftazW_1353815, ftazW_1017119, ftazW_1031269, ftazW_147, ftazW_29, ftazW_1031270, ftazW_211, ftazW_488, ftazW_1354336, ftazW_1017120, ftazW_1016902, ftazW_734, ftazW_1031272, ftazW_1031273, ftazW_1016903, ftazW_82, ftazW_736"
+    "trafficInfoNameList": "ftazW_3, ftazW_581, ftazW_1353814, ftazW_1017118, ftazW_487, ftazW_756, ftazW_146, ftazW_1353815, ftazW_1017119, ftazW_1031269, ftazW_147, ftazW_29, ftazW_1031270, ftazW_211, ftazW_488, ftazW_1354336, ftazW_1017120, ftazW_1016902, ftazW_734, ftazW_1031272, ftazW_1031273, ftazW_1016903, ftazW_82, ftazW_736, ftazW_239, ftazW_1017121, ftazW_83, ftazW_728"
    }
   ],
   "poiCategoryGroups": [
@@ -2832,6 +2832,39 @@
    },
    {
     "attributes": {
+     "ausBis": "15.10.2026 00:45",
+     "ausVon": "14.10.2026 20:45",
+     "location": "U1 Mittelbahnsteig - Passage",
+     "rbls": [
+      4185,
+      4190
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Leopoldau",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Passage",
+    "name": "ftazW_1017121",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4185,
+     4190
+    ],
+    "time": {
+     "end": "2026-10-15T00:45:00.000+0200",
+     "start": "2026-10-14T20:45:00.000+0200"
+    },
+    "title": "Leopoldau"
+   },
+   {
+    "attributes": {
      "ausBis": "13.10.2026 00:45",
      "ausVon": "12.10.2026 20:45",
      "location": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Neue Donau",
@@ -3136,6 +3169,41 @@
    },
    {
     "attributes": {
+     "ausBis": "15.10.2026 00:45",
+     "ausVon": "14.10.2026 20:45",
+     "location": "U4 Bahnsteig Richtung Heiligenstadt, U6 Bahnsteig Richtung Floridsdorf - Ausgang Storchensteg/Gierstergasse",
+     "rbls": [
+      4437,
+      4617
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4",
+      "U6"
+     ],
+     "station": "Längenfeldgasse",
+     "status": "geplante Wartung",
+     "towards": "U4 Heiligenstadt, U6 Floridsdorf"
+    },
+    "description": "U4 Bahnsteig Richtung Heiligenstadt, U6 Bahnsteig Richtung Floridsdorf - Ausgang Storchensteg/Gierstergasse",
+    "name": "ftazW_239",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4",
+     "U6"
+    ],
+    "relatedStops": [
+     4437,
+     4617
+    ],
+    "time": {
+     "end": "2026-10-15T00:45:00.000+0200",
+     "start": "2026-10-14T20:45:00.000+0200"
+    },
+    "title": "Längenfeldgasse"
+   },
+   {
+    "attributes": {
      "ausBis": "13.10.2026 05:15",
      "ausVon": "13.10.2026 01:15",
      "location": "Zwischengeschoss - Ausgang Minoritenplatz",
@@ -3293,6 +3361,37 @@
    },
    {
     "attributes": {
+     "ausBis": "15.10.2026 00:45",
+     "ausVon": "14.10.2026 20:45",
+     "location": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Seegasse",
+     "rbls": [
+      4406
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Roßauer Lände",
+     "status": "geplante Wartung",
+     "towards": "U4 Hütteldorf"
+    },
+    "description": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Seegasse",
+    "name": "ftazW_728",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4406
+    ],
+    "time": {
+     "end": "2026-10-15T00:45:00.000+0200",
+     "start": "2026-10-14T20:45:00.000+0200"
+    },
+    "title": "Roßauer Lände"
+   },
+   {
+    "attributes": {
      "ausBis": "14.10.2026 00:45",
      "ausVon": "13.10.2026 20:45",
      "location": "U3 Bahnsteig Richtung Simmering - Ausgang Gasometer/Modecenterstraße",
@@ -3420,6 +3519,41 @@
     "time": {
      "end": "2026-10-14T05:15:00.000+0200",
      "start": "2026-10-14T01:15:00.000+0200"
+    },
+    "title": "Volkstheater"
+   },
+   {
+    "attributes": {
+     "ausBis": "15.10.2026 00:45",
+     "ausVon": "14.10.2026 20:45",
+     "location": "U3 Mittelbahnsteig - Zwischengeschoss Aufgang Ring",
+     "rbls": [
+      4909,
+      4908
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2",
+      "U3"
+     ],
+     "station": "Volkstheater",
+     "status": "geplante Wartung",
+     "towards": "U3 beide Richtungen"
+    },
+    "description": "U3 Mittelbahnsteig - Zwischengeschoss Aufgang Ring",
+    "name": "ftazW_83",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2",
+     "U3"
+    ],
+    "relatedStops": [
+     4909,
+     4908
+    ],
+    "time": {
+     "end": "2026-10-15T00:45:00.000+0200",
+     "start": "2026-10-14T20:45:00.000+0200"
     },
     "title": "Volkstheater"
    }
