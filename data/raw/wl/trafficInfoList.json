@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261011-0008, I20261011-0022, I20261011-0024, I20261011-0023-F01, I20261011-0023"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261011-0008, I20261011-0023-F01, I20261011-0023, I20261011-0022, I20261011-0024-F01, I20261011-0024-F02, I20261011-0024"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R100-136, R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2373-126, R2345-127, R2380-627, R2372-627, R2379-627, R1974-466, R1150-431, R1150-236, R1150-430, R1122-430, R1223-138, R1221-138, R1226-138, R1224-138, R1225-138, R1227-138, R2985-138, R286-474, R105-171, R2640-171, R2016-171, R2015-171, R2014-171, R2021-171, R2020-171, R2012-171, R2013-171, R2009-171, R2641-171, R2047-171, R2046-171, R2045-171, R2044-171, R2043-171, R2039-171, R2036-171, R2038-171, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R100-136, R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2343-125, R2343-626, R2378-627, R2379-627, R2380-627, R2345-127, R2372-627, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R1974-466, R1150-431, R1150-236, R1150-430, R1122-430, R1221-138, R1223-138, R1224-138, R1225-138, R1226-138, R1227-138, R2985-138, R286-474, R105-171, R2640-171, R2020-171, R2012-171, R2016-171, R2021-171, R2013-171, R2014-171, R2015-171, R2009-171, R2641-171, R2046-171, R2036-171, R2038-171, R2039-171, R2043-171, R2044-171, R2045-171, R2047-171, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -272,12 +272,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-11T22:25:00.000+0200",
-     "end": "2026-10-11T23:55:00.000+0200",
-     "lastUpdate": "2026-10-11T22:25:00.000+0200",
-     "resume": "2026-10-11T22:25:00.000+0200",
+     "end": "2026-10-11T23:04:00.000+0200",
+     "lastUpdate": "2026-10-11T23:04:00.000+0200",
+     "resume": "2026-10-11T23:04:00.000+0200",
      "start": "2026-10-11T22:25:00.000+0200"
     },
     "title": "U1: Betriebsstörung"
@@ -355,20 +355,53 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "71": "ptTram",
       "74A": "ptBusCity"
      }
     },
-    "description": "Linie 71: Derzeit kein Betrieb zwischen Schwarzenbergplatz und Enkplatz U, Grillgasse. Linie 74A: Betrieb zwischen Stubentor U und St. Marx ohne Einhaltung der Haltestellen Grasbergergasse und Hofmannsthalgasse Weichen Sie ersatzweise auf die Linien U3, D und 18 aus. Voraussichtliche Dauer: 23:30 Uhr. Grund: Feuerwehreinsatz im Bereich Rennweg # Grasbergergasse.",
-    "descriptionHTML": "Linie 71:<br>Derzeit kein Betrieb zwischen Schwarzenbergplatz und Enkplatz U, Grillgasse.<br>Linie 74A:<br>Betrieb zwischen Stubentor U und St. Marx ohne Einhaltung der Haltestellen Grasbergergasse und Hofmannsthalgasse<br> <br>Weichen Sie ersatzweise auf die Linien U3, D und 18 aus.<br><br>Voraussichtliche Dauer: 23:30 Uhr.<br><br>Grund: Feuerwehreinsatz im Bereich Rennweg # Grasbergergasse.",
+    "description": "Linie 74A: Betrieb zwischen Stubentor U und St. Marx ohne Einhaltung der Haltestellen Grasbergergasse und Hofmannsthalgasse Voraussichtliche Dauer: 00:00 Uhr. Grund: Feuerwehreinsatz im Bereich Rennweg # Grasbergergasse.",
+    "descriptionHTML": "Linie 74A:<br>Betrieb zwischen Stubentor U und St. Marx ohne Einhaltung der Haltestellen Grasbergergasse und Hofmannsthalgasse<br> <br>Voraussichtliche Dauer: 00:00 Uhr.<br><br>Grund: Feuerwehreinsatz im Bereich Rennweg # Grasbergergasse.",
     "location": "Rennweg / Grasbergergasse",
     "name": "I20261011-0024",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "71",
      "74A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "474",
+       "lineName": "74A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-11T22:49:00.000+0200",
+     "end": "2026-10-11T23:15:00.000+0200",
+     "lastUpdate": "2026-10-11T23:15:00.000+0200",
+     "resume": "2026-10-11T23:15:00.000+0200",
+     "start": "2026-10-11T22:46:00.000+0200"
+    },
+    "title": "74A: Feuerwehreinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "71": "ptTram"
+     }
+    },
+    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Rennweg / Grasbergergasse",
+    "name": "I20261011-0024-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "71"
     ],
     "relatedLinesDetails": [
      [
@@ -376,7 +409,37 @@
        "lineId": "171",
        "lineName": "71",
        "vehicleType": "ptTram"
-      },
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-11T23:11:00.000+0200",
+     "end": "2026-10-11T23:55:00.000+0200",
+     "lastUpdate": "2026-10-11T23:11:00.000+0200",
+     "resume": "2026-10-11T23:11:00.000+0200",
+     "start": "2026-10-11T22:46:00.000+0200"
+    },
+    "title": "71: Feuerwehreinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "74A": "ptBusCity"
+     }
+    },
+    "description": "Linie 74A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 74A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Rennweg / Grasbergergasse",
+    "name": "I20261011-0024-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "74A"
+    ],
+    "relatedLinesDetails": [
+     [
       {
        "lineId": "474",
        "lineName": "74A",
@@ -386,12 +449,13 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-11T22:49:00.000+0200",
+     "created": "2026-10-11T23:15:00.000+0200",
      "end": "2026-10-11T23:55:00.000+0200",
-     "lastUpdate": "2026-10-11T22:55:00.000+0200",
+     "lastUpdate": "2026-10-11T23:15:00.000+0200",
+     "resume": "2026-10-11T23:15:00.000+0200",
      "start": "2026-10-11T22:46:00.000+0200"
     },
-    "title": "71, 74A: Feuerwehreinsatz"
+    "title": "74A: Feuerwehreinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1666,7 +1730,7 @@
     "title": "Feuerwehreinsatz\nBetrieb ab Rabengasse"
    },
    {
-    "description": "Feuerwehreinsatz\nBetrieb ab Rabengasse",
+    "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
     "priority": "1",
@@ -1678,10 +1742,10 @@
      293
     ],
     "time": {
-     "end": "2026-10-11T23:50:00.000+0200",
+     "end": "2026-10-11T23:59:59.000+0200",
      "start": "2026-10-07T00:00:15.000+0200"
     },
-    "title": "Feuerwehreinsatz\nBetrieb ab Rabengasse"
+    "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
    },
    {
     "description": "Fahrtbehinderung\nVerkehrsunfall",

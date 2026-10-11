@@ -1,24 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-11T21:01:16.082665+00:00",
- "built": "2026-10-11T23:01:03+02:00",
+ "updated": "2026-10-11T21:30:55.961372+00:00",
+ "built": "2026-10-11T23:30:43+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-11T23:01:03+02:00",
+  "built": "2026-10-11T23:30:43+02:00",
   "items": [
    {
-    "title": "71/74A: Feuerwehreinsatz",
+    "title": "71: Feuerwehreinsatz",
     "time_line": "Seit 22:46"
    },
    {
     "title": "38: Verkehrsunfall",
     "time_line": "Seit 22:29"
-   },
-   {
-    "title": "U1: Betriebsstörung",
-    "time_line": "Seit 22:25"
    },
    {
     "title": "30A: Gasrohrbruch",
@@ -31,6 +27,10 @@
    {
     "title": "31A: Gasrohrbruch",
     "time_line": "Seit 11:04"
+   },
+   {
+    "title": "74A: Feuerwehreinsatz, Bauarbeiten",
+    "time_line": "Heute"
    },
    {
     "title": "30A/31A/36B: Gasrohrgebrechen",
@@ -930,6 +930,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 102
+   }
+  },
+  {
+   "t": "2026-10-11T21:30:55.961372+00:00",
+   "raw": {
+    "wl-stoerungen": 93,
+    "wl-hinweise": 96,
+    "oebb": 163,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 24,
+    "oebb": 139,
+    "baustellen": 69
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 103
    }
   }
  ]

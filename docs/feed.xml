@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 11 Oct 2026 23:01:03 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2026 23:30:43 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[71/74A: Feuerwehreinsatz]]></title>
+      <title><![CDATA[71: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">86d270df856455068f0e4e993ebc1a65540e22a1378b1bc97257b5b4e8a43d9f</guid>
       <pubDate>Sun, 11 Oct 2026 22:46:00 +0200</pubDate>
       <ext:first_seen>Sun, 11 Oct 2026 23:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Oct 2026 22:46:00 +0200</ext:starts_at>
+      <ext:starts_at>Sun, 11 Oct 2026 22:52:58 +0200</ext:starts_at>
       <ext:ends_at>Sun, 11 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Derzeit kein Betrieb zwischen Schwarzenbergplatz und Enkplatz U, Grillgasse. [Seit 22:46]</description>
-      <content:encoded><![CDATA[Derzeit kein Betrieb zwischen Schwarzenbergplatz und Enkplatz U, Grillgasse.<br/>[Seit 22:46]]]></content:encoded>
+      <description>Betrieb ab Enkplatz, Grillgasse. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 22:46]</description>
+      <content:encoded><![CDATA[Betrieb ab Enkplatz, Grillgasse. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 22:46]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[38: Verkehrsunfall]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Sun, 11 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 22:29]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 22:29]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a</guid>
-      <pubDate>Sun, 11 Oct 2026 22:25:00 +0200</pubDate>
-      <ext:first_seen>Sun, 11 Oct 2026 22:25:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Oct 2026 22:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 11 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Seit 22:25]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 22:25]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[30A: Gasrohrbruch]]></title>
@@ -74,6 +63,17 @@
       <ext:ends_at>Sun, 11 Oct 2026 23:45:00 +0200</ext:ends_at>
       <description>Kein Betrieb. [Seit 11:04]</description>
       <content:encoded><![CDATA[Kein Betrieb.<br/>[Seit 11:04]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[74A: Feuerwehreinsatz, Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">12ded5c597715eabdfef482cbbb0763cb44caad945a82566c969ac94d0f6188a</guid>
+      <pubDate>Sun, 11 Oct 2026 22:46:00 +0200</pubDate>
+      <ext:first_seen>Sun, 11 Oct 2026 23:30:43 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 11 Oct 2026 22:46:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 11 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Bauarbeiten: Einstieg Leberstraße vor S-Bahn-Gebäude. [Heute]</description>
+      <content:encoded><![CDATA[Bauarbeiten: Einstieg Leberstraße vor S-Bahn-Gebäude.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[30A/31A/36B: Gasrohrgebrechen]]></title>
