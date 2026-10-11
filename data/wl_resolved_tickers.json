@@ -1,41 +1,5 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": [
-  {
-   "key": "R2420-118|2026-10-11T08:58:03.000+0200|Fahrtbehinderung\nLaufveranstaltung",
-   "name": "R2420-118",
-   "title": "Fahrtbehinderung\nLaufveranstaltung",
-   "end": "2026-10-11T16:45:00.000+0200",
-   "incident": "I20261011-0007"
-  },
-  {
-   "key": "R2632-118|2026-10-11T08:58:03.000+0200|Fahrtbehinderung\nLaufveranstaltung",
-   "name": "R2632-118",
-   "title": "Fahrtbehinderung\nLaufveranstaltung",
-   "end": "2026-10-11T16:45:00.000+0200",
-   "incident": "I20261011-0007"
-  },
-  {
-   "key": "R3602-118|2026-10-11T08:58:05.000+0200|Fahrtbehinderung\nLaufveranstaltung",
-   "name": "R3602-118",
-   "title": "Fahrtbehinderung\nLaufveranstaltung",
-   "end": "2026-10-11T16:45:00.000+0200",
-   "incident": "I20261011-0007"
-  },
-  {
-   "key": "R3603-118|2026-10-11T08:58:05.000+0200|Fahrtbehinderung\nLaufveranstaltung",
-   "name": "R3603-118",
-   "title": "Fahrtbehinderung\nLaufveranstaltung",
-   "end": "2026-10-11T16:45:00.000+0200",
-   "incident": "I20261011-0007"
-  },
-  {
-   "key": "R3604-118|2026-10-11T08:58:05.000+0200|Fahrtbehinderung\nLaufveranstaltung",
-   "name": "R3604-118",
-   "title": "Fahrtbehinderung\nLaufveranstaltung",
-   "end": "2026-10-11T16:45:00.000+0200",
-   "incident": "I20261011-0007"
-  }
- ]
+ "tickers": []
 }
