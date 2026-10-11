@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261010-0031-F01, I20260909-0007"
+    "trafficInfoNameList": "I20261011-0001, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007"
    },
    {
     "id": 3,
@@ -203,39 +203,36 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "15A": "ptBusCity"
+      "U2": "ptMetro"
      }
     },
-    "description": "Linie 15A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 15A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261010-0031-F01",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "descriptionHTML": "Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Betriebsstörung.",
+    "name": "I20261011-0001",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "15A"
+     "U2"
     ],
     "relatedLinesDetails": [
      [
       {
-       "lineId": "415",
-       "lineName": "15A",
-       "vehicleType": "ptBusCity"
+       "lineId": "302",
+       "lineName": "U2",
+       "vehicleType": "ptMetro"
       }
      ]
     ],
-    "relatedStops": [
-     412
-    ],
-    "status": "resolved",
+    "status": "active",
     "time": {
-     "created": "2026-10-11T00:05:00.000+0200",
-     "end": "2026-10-11T01:04:00.000+0200",
-     "lastUpdate": "2026-10-11T01:04:00.000+0200",
-     "resume": "2026-10-11T01:04:00.000+0200",
-     "start": "2026-10-10T23:57:00.000+0200"
+     "created": "2026-10-11T02:17:00.000+0200",
+     "end": "2026-10-11T23:55:00.000+0200",
+     "lastUpdate": "2026-10-11T02:17:00.000+0200",
+     "resume": "2026-10-11T02:17:00.000+0200",
+     "start": "2026-10-11T02:17:00.000+0200"
     },
-    "title": "15A: Polizeieinsatz"
+    "title": "U2: Betriebsstörung"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
