@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261011-0008, I20261011-0023-F01, I20261011-0023, I20261011-0022, I20261011-0024-F01, I20261011-0024-F02, I20261011-0024"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261011-0023, I20261011-0022, I20261011-0024, I20261011-0024-F02, I20261011-0008, I20261011-0023-F01, I20261011-0024-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R100-136, R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2558-125, R5815-671, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2343-125, R2343-626, R2378-627, R2379-627, R2380-627, R2345-127, R2372-627, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R1974-466, R1150-431, R1150-236, R1150-430, R1122-430, R1221-138, R1223-138, R1224-138, R1225-138, R1226-138, R1227-138, R2985-138, R286-474, R105-171, R2640-171, R2020-171, R2012-171, R2016-171, R2021-171, R2013-171, R2014-171, R2015-171, R2009-171, R2641-171, R2046-171, R2036-171, R2038-171, R2039-171, R2043-171, R2044-171, R2045-171, R2047-171, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R100-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2345-127, R2372-627, R2379-627, R2378-627, R2380-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R1974-466, R5815-671, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -239,11 +239,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-11T11:09:00.000+0200",
      "end": "2026-10-11T23:55:00.000+0200",
-     "lastUpdate": "2026-10-11T12:02:00.000+0200",
+     "lastUpdate": "2026-10-11T23:55:00.000+0200",
+     "resume": "2026-10-11T23:55:00.000+0200",
      "start": "2026-10-11T11:00:00.000+0200"
     },
     "title": "30A, 31A, 36B: Gasrohrgebrechen"
@@ -342,12 +343,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-11T22:58:00.000+0200",
      "end": "2026-10-11T23:55:00.000+0200",
-     "lastUpdate": "2026-10-11T22:58:00.000+0200",
-     "resume": "2026-10-11T22:58:00.000+0200",
+     "lastUpdate": "2026-10-11T23:55:00.000+0200",
+     "resume": "2026-10-11T23:55:00.000+0200",
      "start": "2026-10-11T22:29:00.000+0200"
     },
     "title": "38: Verkehrsunfall"
@@ -412,12 +413,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-11T23:11:00.000+0200",
      "end": "2026-10-11T23:55:00.000+0200",
-     "lastUpdate": "2026-10-11T23:11:00.000+0200",
-     "resume": "2026-10-11T23:11:00.000+0200",
+     "lastUpdate": "2026-10-11T23:55:00.000+0200",
+     "resume": "2026-10-11T23:55:00.000+0200",
      "start": "2026-10-11T22:46:00.000+0200"
     },
     "title": "71: Feuerwehreinsatz"
@@ -447,12 +448,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-11T23:15:00.000+0200",
-     "end": "2026-10-11T23:55:00.000+0200",
-     "lastUpdate": "2026-10-11T23:15:00.000+0200",
-     "resume": "2026-10-11T23:15:00.000+0200",
+     "end": "2026-10-11T23:56:00.000+0200",
+     "lastUpdate": "2026-10-11T23:56:00.000+0200",
+     "resume": "2026-10-11T23:56:00.000+0200",
      "start": "2026-10-11T22:46:00.000+0200"
     },
     "title": "74A: Feuerwehreinsatz"
@@ -470,7 +471,7 @@
      100
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -488,7 +489,7 @@
      101
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -506,7 +507,7 @@
      102
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -524,46 +525,10 @@
      103
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse",
-    "name": "R105-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     105
-    ],
-    "time": {
-     "end": "2026-10-11T23:51:00.000+0200",
-     "start": "2026-10-11T22:51:55.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse"
-   },
-   {
-    "description": "Gasrohrbruch\nBetrieb ab Gschweidlgasse",
-    "name": "R1122-430",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "30A"
-    ],
-    "relatedStops": [
-     1122
-    ],
-    "time": {
-     "end": "2026-10-11T23:45:00.000+0200",
-     "start": "2026-10-11T11:07:16.000+0200"
-    },
-    "title": "Gasrohrbruch\nBetrieb ab Gschweidlgasse"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
@@ -578,64 +543,10 @@
      115
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
-   },
-   {
-    "description": "Gasrohrbruch\nBetrieb ab Brünner Straße <",
-    "name": "R1150-236",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "36B"
-    ],
-    "relatedStops": [
-     1150
-    ],
-    "time": {
-     "end": "2026-10-11T23:45:00.000+0200",
-     "start": "2026-10-11T11:06:45.000+0200"
-    },
-    "title": "Gasrohrbruch\nBetrieb ab Brünner Straße <"
-   },
-   {
-    "description": "Gasrohrbruch\nBetrieb ab Gschweidlgasse",
-    "name": "R1150-430",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "30A"
-    ],
-    "relatedStops": [
-     1150
-    ],
-    "time": {
-     "end": "2026-10-11T23:45:00.000+0200",
-     "start": "2026-10-11T11:07:15.000+0200"
-    },
-    "title": "Gasrohrbruch\nBetrieb ab Gschweidlgasse"
-   },
-   {
-    "description": "Gasrohrbruch\nKein Betrieb",
-    "name": "R1150-431",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "31A"
-    ],
-    "relatedStops": [
-     1150
-    ],
-    "time": {
-     "end": "2026-10-11T23:45:00.000+0200",
-     "start": "2026-10-11T11:04:44.000+0200"
-    },
-    "title": "Gasrohrbruch\nKein Betrieb"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
@@ -650,7 +561,7 @@
      116
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -668,7 +579,7 @@
      117
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -683,7 +594,7 @@
      1177
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T07:54:33.000+0200"
     },
     "title": "\n\n\nBauarbeiten\nBusse halten\nFrauenstift-\ngasse 6-10\n\n\n"
@@ -701,7 +612,7 @@
      118
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -719,118 +630,10 @@
      119
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Züge halten in\nSchleife"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1221-138",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1221
-    ],
-    "time": {
-     "end": "2026-10-11T23:40:00.000+0200",
-     "start": "2026-10-11T22:33:53.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1223-138",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1223
-    ],
-    "time": {
-     "end": "2026-10-11T23:40:00.000+0200",
-     "start": "2026-10-11T22:33:53.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1224-138",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1224
-    ],
-    "time": {
-     "end": "2026-10-11T23:40:00.000+0200",
-     "start": "2026-10-11T22:37:54.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1225-138",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1225
-    ],
-    "time": {
-     "end": "2026-10-11T23:40:00.000+0200",
-     "start": "2026-10-11T22:37:54.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1226-138",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1226
-    ],
-    "time": {
-     "end": "2026-10-11T23:40:00.000+0200",
-     "start": "2026-10-11T22:37:54.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1227-138",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1227
-    ],
-    "time": {
-     "end": "2026-10-11T23:40:00.000+0200",
-     "start": "2026-10-11T22:40:24.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -845,7 +648,7 @@
      130
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -863,7 +666,7 @@
      1445
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
@@ -881,7 +684,7 @@
      1446
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
@@ -899,7 +702,7 @@
      1447
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
@@ -917,7 +720,7 @@
      1448
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
@@ -935,7 +738,7 @@
      1448
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Johnstraße U "
@@ -953,7 +756,7 @@
      1449
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
@@ -971,7 +774,7 @@
      1472
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
@@ -989,7 +792,7 @@
      1473
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
@@ -1007,7 +810,7 @@
      1474
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
@@ -1025,7 +828,7 @@
      1474
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21"
@@ -1043,7 +846,7 @@
      1475
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
@@ -1061,7 +864,7 @@
      1476
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
@@ -1079,7 +882,7 @@
      19
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -1103,150 +906,6 @@
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
    {
-    "description": "Feuerwehreinsatz\nZüge halten bei Linie 15A",
-    "name": "R2009-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2009
-    ],
-    "time": {
-     "end": "2026-10-11T23:51:00.000+0200",
-     "start": "2026-10-11T22:52:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nZüge halten bei Linie 15A"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse",
-    "name": "R2012-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2012
-    ],
-    "time": {
-     "end": "2026-10-11T23:51:00.000+0200",
-     "start": "2026-10-11T22:51:57.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse",
-    "name": "R2013-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2013
-    ],
-    "time": {
-     "end": "2026-10-11T23:51:00.000+0200",
-     "start": "2026-10-11T22:51:57.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse",
-    "name": "R2014-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2014
-    ],
-    "time": {
-     "end": "2026-10-11T23:51:00.000+0200",
-     "start": "2026-10-11T22:51:57.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse",
-    "name": "R2015-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2015
-    ],
-    "time": {
-     "end": "2026-10-11T23:51:00.000+0200",
-     "start": "2026-10-11T22:51:57.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse",
-    "name": "R2016-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2016
-    ],
-    "time": {
-     "end": "2026-10-11T23:51:00.000+0200",
-     "start": "2026-10-11T22:51:57.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse",
-    "name": "R2020-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2020
-    ],
-    "time": {
-     "end": "2026-10-11T23:51:00.000+0200",
-     "start": "2026-10-11T22:51:57.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse",
-    "name": "R2021-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2021
-    ],
-    "time": {
-     "end": "2026-10-11T23:51:00.000+0200",
-     "start": "2026-10-11T22:51:57.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse"
-   },
-   {
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "name": "R2025-671",
     "owner": "WL",
@@ -1256,154 +915,10 @@
      2025
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz",
-    "name": "R2036-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2036
-    ],
-    "time": {
-     "end": "2026-10-11T23:52:00.000+0200",
-     "start": "2026-10-11T22:52:58.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz",
-    "name": "R2038-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2038
-    ],
-    "time": {
-     "end": "2026-10-11T23:52:00.000+0200",
-     "start": "2026-10-11T22:52:58.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz",
-    "name": "R2039-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2039
-    ],
-    "time": {
-     "end": "2026-10-11T23:52:00.000+0200",
-     "start": "2026-10-11T22:52:58.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz",
-    "name": "R2043-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2043
-    ],
-    "time": {
-     "end": "2026-10-11T23:52:00.000+0200",
-     "start": "2026-10-11T22:52:58.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz",
-    "name": "R2044-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2044
-    ],
-    "time": {
-     "end": "2026-10-11T23:52:00.000+0200",
-     "start": "2026-10-11T22:52:58.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz",
-    "name": "R2045-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2045
-    ],
-    "time": {
-     "end": "2026-10-11T23:52:00.000+0200",
-     "start": "2026-10-11T22:52:58.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz",
-    "name": "R2046-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2046
-    ],
-    "time": {
-     "end": "2026-10-11T23:52:00.000+0200",
-     "start": "2026-10-11T22:52:58.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz",
-    "name": "R2047-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2047
-    ],
-    "time": {
-     "end": "2026-10-11T23:52:00.000+0200",
-     "start": "2026-10-11T22:52:58.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz"
    },
    {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
@@ -1418,7 +933,7 @@
      2343
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-10T00:00:29.000+0200"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
@@ -1436,7 +951,7 @@
      2343
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-10T00:00:29.000+0200"
     },
     "title": "Ersatzbus\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
@@ -1454,7 +969,7 @@
      2345
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-10T00:00:29.000+0200"
     },
     "title": "Züge halten bei\nLinie 31"
@@ -1472,7 +987,7 @@
      2359
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-10T00:00:29.000+0200"
     },
     "title": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
@@ -1490,7 +1005,7 @@
      2370
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-10T00:00:29.000+0200"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
@@ -1508,7 +1023,7 @@
      2371
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-10T00:00:29.000+0200"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
@@ -1526,7 +1041,7 @@
      2372
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-10T00:00:29.000+0200"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
@@ -1544,7 +1059,7 @@
      2372
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-10T00:00:29.000+0200"
     },
     "title": "Busse halten auf\nHauptfahrbahn"
@@ -1562,7 +1077,7 @@
      2373
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-10T00:00:29.000+0200"
     },
     "title": "Züge halten\nDonaufelder Straße 175-177"
@@ -1580,7 +1095,7 @@
      2373
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-10T00:00:29.000+0200"
     },
     "title": "Züge halten in\nTokiostraße"
@@ -1598,7 +1113,7 @@
      2373
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-10T00:00:29.000+0200"
     },
     "title": "Linie 25 in\nTokiostraße benützen"
@@ -1616,7 +1131,7 @@
      2378
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-10T00:00:29.000+0200"
     },
     "title": "Busse halten\nSatzingerweg 41"
@@ -1634,7 +1149,7 @@
      2379
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-10T00:00:29.000+0200"
     },
     "title": "Busse halten\nBessemerstraße 1-3"
@@ -1652,7 +1167,7 @@
      2380
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-10T00:00:29.000+0200"
     },
     "title": "Busse halten\nHoßplatz 11"
@@ -1670,64 +1185,10 @@
      2558
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:17.000+0200"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse",
-    "name": "R2640-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2640
-    ],
-    "time": {
-     "end": "2026-10-11T23:51:00.000+0200",
-     "start": "2026-10-11T22:51:56.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Enkplatz, Grillgasse"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz",
-    "name": "R2641-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2641
-    ],
-    "time": {
-     "end": "2026-10-11T23:52:00.000+0200",
-     "start": "2026-10-11T22:52:56.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb ab Rabengasse",
-    "name": "R286-474",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "74A"
-    ],
-    "relatedStops": [
-     286
-    ],
-    "time": {
-     "end": "2026-10-11T23:50:00.000+0200",
-     "start": "2026-10-11T22:50:54.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Rabengasse"
    },
    {
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
@@ -1742,28 +1203,10 @@
      293
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:15.000+0200"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2985-138",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     2985
-    ],
-    "time": {
-     "end": "2026-10-11T23:40:00.000+0200",
-     "start": "2026-10-11T22:40:26.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
@@ -1778,7 +1221,7 @@
      318
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:15.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
@@ -1796,7 +1239,7 @@
      36
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Züge halten\nbei Linien 6 und 18"
@@ -1814,7 +1257,7 @@
      45
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
+     "end": "2026-10-12T23:59:59.000+0200",
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
@@ -1829,8 +1272,8 @@
      5815
     ],
     "time": {
-     "end": "2026-10-11T23:59:59.000+0200",
-     "start": "2026-10-07T00:00:17.000+0200"
+     "end": "2026-10-12T23:59:59.000+0200",
+     "start": "2026-10-12T00:00:06.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
    },

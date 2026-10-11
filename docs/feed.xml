@@ -7,84 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Sun, 11 Oct 2026 23:30:43 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2026 00:00:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[71: Feuerwehreinsatz]]></title>
+      <title><![CDATA[12/5: Albertgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">86d270df856455068f0e4e993ebc1a65540e22a1378b1bc97257b5b4e8a43d9f</guid>
-      <pubDate>Sun, 11 Oct 2026 22:46:00 +0200</pubDate>
-      <ext:first_seen>Sun, 11 Oct 2026 23:01:03 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Oct 2026 22:52:58 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 11 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb ab Enkplatz, Grillgasse. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 22:46]</description>
-      <content:encoded><![CDATA[Betrieb ab Enkplatz, Grillgasse. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 22:46]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">31f255c87f5a1575177df04a76beabf6426a71727ee2fef75eb69ab752e4775f</guid>
-      <pubDate>Sun, 11 Oct 2026 22:29:00 +0200</pubDate>
-      <ext:first_seen>Sun, 11 Oct 2026 22:29:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Oct 2026 22:29:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 11 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 22:29]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 22:29]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[30A: Gasrohrbruch]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a052426dab5ef7951a6060c50d14618f938f130fdca1616d95cca0659fab8332</guid>
-      <pubDate>Sun, 11 Oct 2026 11:07:15 +0200</pubDate>
-      <ext:first_seen>Sun, 11 Oct 2026 11:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Oct 2026 11:07:16 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 11 Oct 2026 23:45:00 +0200</ext:ends_at>
-      <description>Betrieb ab Gschweidlgasse. [Seit 11:07]</description>
-      <content:encoded><![CDATA[Betrieb ab Gschweidlgasse.<br/>[Seit 11:07]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[36B: Gasrohrbruch]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">aba0800a7909e10553c5298a0319fb383c41de92ba8a7d0969dd1214635e34fa</guid>
-      <pubDate>Sun, 11 Oct 2026 11:06:45 +0200</pubDate>
-      <ext:first_seen>Sun, 11 Oct 2026 11:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Oct 2026 11:06:45 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 11 Oct 2026 23:45:00 +0200</ext:ends_at>
-      <description>Betrieb ab Brünner Straße. [Seit 11:06]</description>
-      <content:encoded><![CDATA[Betrieb ab Brünner Straße.<br/>[Seit 11:06]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31A: Gasrohrbruch]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">eceeb9e88c53c89585c43b0a1709160ee29375b3ba316c739c7b3c1b61524562</guid>
-      <pubDate>Sun, 11 Oct 2026 11:04:44 +0200</pubDate>
-      <ext:first_seen>Sun, 11 Oct 2026 11:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Oct 2026 11:04:44 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 11 Oct 2026 23:45:00 +0200</ext:ends_at>
-      <description>Kein Betrieb. [Seit 11:04]</description>
-      <content:encoded><![CDATA[Kein Betrieb.<br/>[Seit 11:04]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Feuerwehreinsatz, Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">12ded5c597715eabdfef482cbbb0763cb44caad945a82566c969ac94d0f6188a</guid>
-      <pubDate>Sun, 11 Oct 2026 22:46:00 +0200</pubDate>
-      <ext:first_seen>Sun, 11 Oct 2026 23:30:43 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Oct 2026 22:46:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 11 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Bauarbeiten: Einstieg Leberstraße vor S-Bahn-Gebäude. [Heute]</description>
-      <content:encoded><![CDATA[Bauarbeiten: Einstieg Leberstraße vor S-Bahn-Gebäude.<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[30A/31A/36B: Gasrohrgebrechen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">26fb6f57b3d85338e59837def650de7e0253f6912ffa992ef3aa5d1252cec0b5</guid>
-      <pubDate>Sun, 11 Oct 2026 11:00:00 +0200</pubDate>
-      <ext:first_seen>Sun, 11 Oct 2026 11:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 11 Oct 2026 11:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 11 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie 36B wird in Richtung Jedlesee, Bellgasse zwischen Berzeliusgasse und Brünner Straße S über Brünner Straße umgeleitet. [Heute]</description>
-      <content:encoded><![CDATA[Die Linie 36B wird in Richtung Jedlesee, Bellgasse zwischen Berzeliusgasse und Brünner Straße S über Brünner Straße umgeleitet.<br/>[Heute]]]></content:encoded>
+      <guid isPermaLink="false">3e5225e046a0df3ec11a86c99a2c68a57b90ba1f9c0a3a5c4fdf60d90cdf02e7</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Albertgasse 27 → Albertgasse 33 - 35. Haltestellenverlegung der Linien 5 und 12 in Richtung Westbahnhof U bzw. Josefstädter Straße U. Grund: Bauarbeiten. [Ab Di 13.10. bis 03.11.]</description>
+      <content:encoded><![CDATA[Albertgasse 27 → Albertgasse 33 - 35. Haltestellenverlegung der Linien 5 und 12 in Richtung Westbahnhof U bzw. Josefstädter Straße U. Grund: Bauarbeiten.<br/>[Ab Di 13.10. bis 03.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1A/3A: Schwertgasse]]></title>
@@ -105,8 +39,19 @@
       <ext:first_seen>Thu, 08 Oct 2026 15:30:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 08 Oct 2026 15:30:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 12 Oct 2026 13:00:00 +0200</ext:ends_at>
-      <description>Lautenschlägergasse nach Haidestraße → 1. Haidequerstraße gegenüber 3A. Haltestellenverlegung der Linie 72A in Richtung Hasenleiten. Grund: Arbeiten an einer Gasleitung. [Bis Mo 12.10.]</description>
-      <content:encoded><![CDATA[Lautenschlägergasse nach Haidestraße → 1. Haidequerstraße gegenüber 3A. Haltestellenverlegung der Linie 72A in Richtung Hasenleiten. Grund: Arbeiten an einer Gasleitung.<br/>[Bis Mo 12.10.]]]></content:encoded>
+      <description>Lautenschlägergasse nach Haidestraße → 1. Haidequerstraße gegenüber 3A. Haltestellenverlegung der Linie 72A in Richtung Hasenleiten. Grund: Arbeiten an einer Gasleitung. [Heute]</description>
+      <content:encoded><![CDATA[Lautenschlägergasse nach Haidestraße → 1. Haidequerstraße gegenüber 3A. Haltestellenverlegung der Linie 72A in Richtung Hasenleiten. Grund: Arbeiten an einer Gasleitung.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A: Max-Mauermann-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">56aa798cbb018fbaed4813a991f56c2470867f1f9a0ce034661ba2e01da13007</guid>
+      <pubDate>Wed, 07 Oct 2026 15:30:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 15:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Bitterlichstraße gegenüber Max-Mauermann-Gasse → Bitterlichstraße gegenüber Friedrich-Teller-Gasse. Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling … [Ab Di 13.10. bis 25.12.]</description>
+      <content:encoded><![CDATA[Bitterlichstraße gegenüber Max-Mauermann-Gasse → Bitterlichstraße gegenüber Friedrich-Teller-Gasse. Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling …<br/>[Ab Di 13.10. bis 25.12.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
@@ -118,6 +63,61 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 … [Bis 28.10.]</description>
       <content:encoded><![CDATA[Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 …<br/>[Bis 28.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A/7A/N62: Eibesbrunnergasse beide Fahrtrichtungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bd6cbe1a4ea6d909912fce8527e38411ee42a952a91a70beecf363c26cd3e728</guid>
+      <pubDate>Mon, 05 Oct 2026 16:10:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 16:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 … [Bis 06.11.]</description>
+      <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 …<br/>[Bis 06.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
+      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
+      <content:encoded><![CDATA[Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Neue Donau, kein Halt Richtung Floridsdorf]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">747d54fbd4c0aad685b21596a0c44cb67d41165e556ee43b1bc3e8636920f551</guid>
+      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
+      <ext:first_seen>Sun, 04 Oct 2026 16:30:37 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf. [Bis 31.12.]</description>
+      <content:encoded><![CDATA[Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von Floridsdorf.<br/>[Bis 31.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Sun, 11 Oct 2026 04:40:09 +0200</pubDate>
+      <ext:first_seen>Sat, 03 Oct 2026 04:40:27 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 11 Oct 2026 04:40:09 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 12 Oct 2026 01:00:00 +0200</ext:ends_at>
+      <description>Grund: Bauarbeiten. [Heute]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[20A: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d541da730008a50f7d13d1231355ba02134695bfdd0469c8f90d4ab1ab9eaf30</guid>
+      <pubDate>Fri, 02 Oct 2026 16:05:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 16:31:05 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Oct 2026 17:00:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet. [Ab Di 13.10. bis Mi 14.10.]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet.<br/>[Ab Di 13.10. bis Mi 14.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
