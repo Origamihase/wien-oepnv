@@ -59,6 +59,7 @@ LIESING: FeedItem = {
         "Achau <b>umgeleitet</b>.<br>Beachten Sie bitte die Lautsprecherdurchsagen und "
         "Monitoranzeigen am Bahnsteig.<br>Wir bitten um Entschuldigung."
     ),
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
     "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&904585",
 }
 
@@ -75,6 +76,7 @@ LEOPOLDAU: FeedItem = {
         "Leopoldau Bahnhst (U) und Wien Süßenbrunn Bahnhst die Wiener Linien benutzen.<br>Wir "
         "bitten um Entschuldigung."
     ),
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
     "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&918244",
 }
 
@@ -91,6 +93,7 @@ S45: FeedItem = {
         "Schienenersatzverkehr mit Autobussen wird für Sie eingerichtet.<br><br>Wir bitten um "
         "Entschuldigung."
     ),
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
     "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&904162",
 }
 
