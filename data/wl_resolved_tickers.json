@@ -1,5 +1,69 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R120-136|2026-10-11T16:57:20.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R120-136",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T17:57:00.000+0200",
+   "incident": "I20261011-0016"
+  },
+  {
+   "key": "R121-136|2026-10-11T16:57:20.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R121-136",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T17:57:00.000+0200",
+   "incident": "I20261011-0016"
+  },
+  {
+   "key": "R123-136|2026-10-11T16:57:20.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R123-136",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T17:57:00.000+0200",
+   "incident": "I20261011-0016"
+  },
+  {
+   "key": "R124-136|2026-10-11T16:57:20.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R124-136",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T17:57:00.000+0200",
+   "incident": "I20261011-0016"
+  },
+  {
+   "key": "R125-136|2026-10-11T16:57:20.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R125-136",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T17:57:00.000+0200",
+   "incident": "I20261011-0016"
+  },
+  {
+   "key": "R126-136|2026-10-11T16:57:20.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R126-136",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T17:57:00.000+0200",
+   "incident": "I20261011-0016"
+  },
+  {
+   "key": "R96-136|2026-10-11T16:57:20.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R96-136",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T17:57:00.000+0200",
+   "incident": "I20261011-0016"
+  },
+  {
+   "key": "R98-136|2026-10-11T16:57:20.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R98-136",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T17:57:00.000+0200",
+   "incident": "I20261011-0016"
+  },
+  {
+   "key": "R99-136|2026-10-11T16:57:20.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R99-136",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-11T17:57:00.000+0200",
+   "incident": "I20261011-0016"
+  }
+ ]
 }
