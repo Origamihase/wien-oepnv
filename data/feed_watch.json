@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-12T16:01:12.148624+00:00",
- "built": "2026-10-12T18:01:07+02:00",
+ "updated": "2026-10-12T16:31:10.910208+00:00",
+ "built": "2026-10-12T18:31:04+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-12T18:01:07+02:00",
+  "built": "2026-10-12T18:31:04+02:00",
   "items": [
    {
     "title": "60A: Verkehrsunfall",
@@ -1684,6 +1684,26 @@
    "discarded": {
     "wl": 23,
     "oebb": 144,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 98
+   }
+  },
+  {
+   "t": "2026-10-12T16:31:10.910208+00:00",
+   "raw": {
+    "wl-stoerungen": 57,
+    "wl-hinweise": 102,
+    "oebb": 168,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 21,
+    "oebb": 143,
     "baustellen": 68
    },
    "cache": {
