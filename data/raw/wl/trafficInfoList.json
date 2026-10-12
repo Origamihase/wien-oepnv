@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261012-0007-F01, I20261012-0014, I20261012-0016, I20260925-0011, I20261012-0013, I20261012-0010, I20261012-0012, I20260909-0007, I20261012-0008-F01, I20261012-0013-F01, I20261012-0005-F01, I20261012-0011, I20261012-0015"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261012-0014, I20260925-0011, I20261012-0012, I20260909-0007, I20261012-0016, I20261012-0015-F01, I20261012-0015"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2379-627, R2380-627, R2345-127, R2372-627, R2372-125, R2373-126, R2373-127, R2373-125, R5815-671, R1974-466, R500-101, R571-152, R1558-152, R1559-152, R1556-152, R1465-152, R1553-152, R1539-152, R1542-152, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R36-152, R100-136, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2345-127, R2372-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2379-627, R2380-627, R5815-671, R1974-466, R500-101, R571-152, R1558-152, R1559-152, R1556-152, R1553-152, R1465-152, R1539-152, R1542-152, R1537-152, R578-152, R579-152, R1532-152, R1535-152, R464-152, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,183 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "12A": "ptBusCity"
-     }
-    },
-    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261012-0005-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "412",
-       "lineName": "12A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "relatedStops": [
-     3137
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T06:03:00.000+0200",
-     "end": "2026-10-12T07:11:00.000+0200",
-     "lastUpdate": "2026-10-12T07:11:00.000+0200",
-     "resume": "2026-10-12T07:11:00.000+0200",
-     "start": "2026-10-12T05:41:00.000+0200"
-    },
-    "title": "12A: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "57A": "ptBusCity"
-     }
-    },
-    "description": "Linie 57A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 57A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Jheringgasse",
-    "name": "I20261012-0007-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "57A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "457",
-       "lineName": "57A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T06:22:00.000+0200",
-     "end": "2026-10-12T07:11:00.000+0200",
-     "lastUpdate": "2026-10-12T07:11:00.000+0200",
-     "resume": "2026-10-12T07:11:00.000+0200",
-     "start": "2026-10-12T05:53:00.000+0200"
-    },
-    "title": "57A: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261012-0008-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "303",
-       "lineName": "U3",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4915
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T06:03:00.000+0200",
-     "end": "2026-10-12T07:04:00.000+0200",
-     "lastUpdate": "2026-10-12T07:04:00.000+0200",
-     "resume": "2026-10-12T07:04:00.000+0200",
-     "start": "2026-10-12T06:02:00.000+0200"
-    },
-    "title": "U3: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "6": "ptTram"
-     }
-    },
-    "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie 6:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261012-0010",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "106",
-       "lineName": "6",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T06:21:00.000+0200",
-     "end": "2026-10-12T07:12:00.000+0200",
-     "lastUpdate": "2026-10-12T07:12:00.000+0200",
-     "resume": "2026-10-12T07:12:00.000+0200",
-     "start": "2026-10-12T06:21:00.000+0200"
-    },
-    "title": "6: Verspätungen"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261012-0011",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "304",
-       "lineName": "U4",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T06:39:00.000+0200",
-     "end": "2026-10-12T07:22:00.000+0200",
-     "lastUpdate": "2026-10-12T07:22:00.000+0200",
-     "resume": "2026-10-12T07:22:00.000+0200",
-     "start": "2026-10-12T06:39:00.000+0200"
-    },
-    "title": "U4: Verspätungen"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U1": "ptMetro"
      }
     },
@@ -410,80 +233,6 @@
      "start": "2026-10-12T06:54:00.000+0200"
     },
     "title": "U1: Verspätungen"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 07:05 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Erlaaer Straße.",
-    "descriptionHTML": "Linie U6:<br>Fahrtbehinderung in Richtung Floridsdorf.<br> <br>Voraussichtliche Dauer: 07:05 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Erlaaer Straße.",
-    "name": "I20261012-0013",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4637
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T06:55:00.000+0200",
-     "end": "2026-10-12T07:00:00.000+0200",
-     "lastUpdate": "2026-10-12T07:00:00.000+0200",
-     "resume": "2026-10-12T07:00:00.000+0200",
-     "start": "2026-10-12T06:54:00.000+0200"
-    },
-    "title": "U6: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261012-0013-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4637
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T07:00:00.000+0200",
-     "end": "2026-10-12T07:21:00.000+0200",
-     "lastUpdate": "2026-10-12T07:21:00.000+0200",
-     "resume": "2026-10-12T07:21:00.000+0200",
-     "start": "2026-10-12T06:54:00.000+0200"
-    },
-    "title": "U6: Schadhaftes Fahrzeug"
    },
    {
     "attributes": {
@@ -528,8 +277,8 @@
       "52": "ptTram"
      }
     },
-    "description": "Linie 52: Betrieb nur zwischen Parlament, Volkstheater und Reinlgasse. Weiterfahrt über die Linie 10 bis Joachimsthalerplatz. Voraussichtliche Dauer: 08:15 Uhr. Grund: Verkehrsunfall im Bereich Linzer Straße 161.",
-    "descriptionHTML": "Linie 52:<br>Betrieb nur zwischen Parlament, Volkstheater und Reinlgasse.<br>Weiterfahrt über die Linie 10 bis Joachimsthalerplatz.<br> <br>Voraussichtliche Dauer: 08:15 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Linzer Straße 161.",
+    "description": "Linie 52: Betrieb nur zwischen Parlament, Volkstheater und Reinlgasse. Weiterfahrt über die Linie 10 bis Joachimsthalerplatz. Voraussichtliche Dauer: 08:30 Uhr. Grund: Verkehrsunfall im Bereich Linzer Straße 161.",
+    "descriptionHTML": "Linie 52:<br>Betrieb nur zwischen Parlament, Volkstheater und Reinlgasse.<br>Weiterfahrt über die Linie 10 bis Joachimsthalerplatz.<br> <br>Voraussichtliche Dauer: 08:30 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Linzer Straße 161.",
     "location": "Linzer Straße 161",
     "name": "I20261012-0015",
     "owner": "WL",
@@ -547,11 +296,47 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-12T07:46:00.000+0200",
+     "end": "2026-10-12T08:24:00.000+0200",
+     "lastUpdate": "2026-10-12T08:24:00.000+0200",
+     "resume": "2026-10-12T08:24:00.000+0200",
+     "start": "2026-10-12T07:45:00.000+0200"
+    },
+    "title": "52: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "52": "ptTram"
+     }
+    },
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Linzer Straße 161",
+    "name": "I20261012-0015-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "152",
+       "lineName": "52",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-12T08:24:00.000+0200",
      "end": "2026-10-12T23:55:00.000+0200",
-     "lastUpdate": "2026-10-12T07:49:00.000+0200",
+     "lastUpdate": "2026-10-12T08:24:00.000+0200",
+     "resume": "2026-10-12T08:24:00.000+0200",
      "start": "2026-10-12T07:45:00.000+0200"
     },
     "title": "52: Verkehrsunfall"
@@ -580,12 +365,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-12T07:50:00.000+0200",
-     "end": "2026-10-12T23:55:00.000+0200",
-     "lastUpdate": "2026-10-12T07:50:00.000+0200",
-     "resume": "2026-10-12T07:49:00.000+0200",
+     "end": "2026-10-12T08:13:00.000+0200",
+     "lastUpdate": "2026-10-12T08:13:00.000+0200",
+     "resume": "2026-10-12T08:13:00.000+0200",
      "start": "2026-10-12T07:49:00.000+0200"
     },
     "title": "U1: Verspätungen"
@@ -1018,6 +803,60 @@
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+   },
+   {
+    "description": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz",
+    "name": "R1532-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1532
+    ],
+    "time": {
+     "end": "2026-10-12T09:01:00.000+0200",
+     "start": "2026-10-12T08:01:44.000+0200"
+    },
+    "title": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz"
+   },
+   {
+    "description": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz",
+    "name": "R1535-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1535
+    ],
+    "time": {
+     "end": "2026-10-12T09:01:00.000+0200",
+     "start": "2026-10-12T08:01:44.000+0200"
+    },
+    "title": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz"
+   },
+   {
+    "description": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz",
+    "name": "R1537-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1537
+    ],
+    "time": {
+     "end": "2026-10-12T09:01:00.000+0200",
+     "start": "2026-10-12T08:01:44.000+0200"
+    },
+    "title": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz"
    },
    {
     "description": "Fahrtbehinderung\nVerkehrsunfall",
@@ -1521,6 +1360,24 @@
     "title": "Züge halten\nWipplingerstr 39"
    },
    {
+    "description": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz",
+    "name": "R464-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     464
+    ],
+    "time": {
+     "end": "2026-10-12T09:01:00.000+0200",
+     "start": "2026-10-12T08:01:44.000+0200"
+    },
+    "title": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz"
+   },
+   {
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -1555,6 +1412,42 @@
      "start": "2026-10-12T07:49:12.000+0200"
     },
     "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz",
+    "name": "R578-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     578
+    ],
+    "time": {
+     "end": "2026-10-12T09:01:00.000+0200",
+     "start": "2026-10-12T08:01:44.000+0200"
+    },
+    "title": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz"
+   },
+   {
+    "description": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz",
+    "name": "R579-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     579
+    ],
+    "time": {
+     "end": "2026-10-12T09:01:00.000+0200",
+     "start": "2026-10-12T08:01:44.000+0200"
+    },
+    "title": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
