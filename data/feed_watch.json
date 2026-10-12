@@ -1,20 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-12T14:31:01.802909+00:00",
- "built": "2026-10-12T16:30:48+02:00",
+ "updated": "2026-10-12T15:01:15.118098+00:00",
+ "built": "2026-10-12T17:00:59+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-12T16:30:48+02:00",
+  "built": "2026-10-12T17:00:59+02:00",
   "items": [
+   {
+    "title": "60A: Verkehrsunfall",
+    "time_line": "Seit 16:36"
+   },
    {
     "title": "U6: Betriebsstörung",
     "time_line": "Seit 16:13"
-   },
-   {
-    "title": "U4: Polizeieinsatz",
-    "time_line": "Seit 16:09"
    },
    {
     "title": "1/71/D: Demonstration am 13.10.2026",
@@ -1616,6 +1616,26 @@
    "t": "2026-10-12T14:31:01.802909+00:00",
    "raw": {
     "wl-stoerungen": 63,
+    "wl-hinweise": 101,
+    "oebb": 171,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 26,
+    "oebb": 145,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 11,
+    "wl": 99
+   }
+  },
+  {
+   "t": "2026-10-12T15:01:15.118098+00:00",
+   "raw": {
+    "wl-stoerungen": 64,
     "wl-hinweise": 101,
     "oebb": 171,
     "baustellen-linien": 52,
