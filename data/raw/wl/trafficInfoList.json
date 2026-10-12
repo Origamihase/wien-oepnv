@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261012-0018-F01, I20261012-0018-F03, I20261012-0018-F04, I20261012-0018, I20261012-0019-F01, I20261012-0019, I20260917-0012, I20260922-0032, I20261012-0017-F01, I20260925-0011, I20260909-0007, I20261012-0018-F02, I20261012-0015-F01"
+    "trafficInfoNameList": "I20261012-0019, I20260917-0012, I20261012-0018-F03, I20260922-0032, I20261012-0018-F02, I20261012-0018-F01, I20260925-0011, I20260909-0007, I20261012-0015-F01, I20261012-0019-F01, I20261012-0018-F04"
    },
    {
     "id": 3,
@@ -225,108 +225,15 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-12T08:24:00.000+0200",
-     "end": "2026-10-12T23:55:00.000+0200",
-     "lastUpdate": "2026-10-12T08:24:00.000+0200",
-     "resume": "2026-10-12T08:24:00.000+0200",
+     "end": "2026-10-12T10:42:00.000+0200",
+     "lastUpdate": "2026-10-12T10:42:00.000+0200",
+     "resume": "2026-10-12T10:42:00.000+0200",
      "start": "2026-10-12T07:45:00.000+0200"
     },
     "title": "52: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261012-0017-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "304",
-       "lineName": "U4",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4437
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T08:52:00.000+0200",
-     "end": "2026-10-12T09:34:00.000+0200",
-     "lastUpdate": "2026-10-12T09:34:00.000+0200",
-     "resume": "2026-10-12T09:34:00.000+0200",
-     "start": "2026-10-12T08:50:00.000+0200"
-    },
-    "title": "U4: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "13A": "ptBusCity",
-      "18": "ptTram",
-      "62": "ptTram",
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie 18: Fahrtbehinderung in beiden Richtungen. Linie 62: Fahrtbehinderung in beiden Richtungen. Linie O: Fahrtbehinderung in beiden Richtungen. Linie 13A: Fahrtbehinderung in Richtung Alser Straße, Skodagasse. Voraussichtliche Dauer: 09:50 Uhr. Grund: Verkehrsunfall im Bereich Karl-Popper-Straße.",
-    "descriptionHTML": "Linie 18:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie 62:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie O:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie 13A:<br>Fahrtbehinderung in Richtung Alser Straße, Skodagasse.<br> <br>Voraussichtliche Dauer: 09:50 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Karl-Popper-Straße.",
-    "location": "Karl-Popper-Straße",
-    "name": "I20261012-0018",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "18",
-     "62",
-     "O",
-     "13A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "170",
-       "lineName": "O",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "162",
-       "lineName": "62",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "118",
-       "lineName": "18",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "413",
-       "lineName": "13A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T09:26:00.000+0200",
-     "end": "2026-10-12T09:29:00.000+0200",
-     "lastUpdate": "2026-10-12T09:29:00.000+0200",
-     "resume": "2026-10-12T09:29:00.000+0200",
-     "start": "2026-10-12T09:24:00.000+0200"
-    },
-    "title": "O, 62, 18, 13A: Verkehrsunfall"
    },
    {
     "attributes": {
@@ -353,12 +260,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-12T09:29:00.000+0200",
-     "end": "2026-10-12T23:55:00.000+0200",
-     "lastUpdate": "2026-10-12T09:29:00.000+0200",
-     "resume": "2026-10-12T09:29:00.000+0200",
+     "end": "2026-10-12T10:42:00.000+0200",
+     "lastUpdate": "2026-10-12T10:42:00.000+0200",
+     "resume": "2026-10-12T10:42:00.000+0200",
      "start": "2026-10-12T09:24:00.000+0200"
     },
     "title": "O: Verkehrsunfall"
@@ -388,12 +295,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-12T09:29:00.000+0200",
      "end": "2026-10-12T10:32:00.000+0200",
-     "lastUpdate": "2026-10-12T10:07:00.000+0200",
-     "resume": "2026-10-12T09:29:00.000+0200",
+     "lastUpdate": "2026-10-12T10:32:00.000+0200",
+     "resume": "2026-10-12T10:32:00.000+0200",
      "start": "2026-10-12T09:24:00.000+0200"
     },
     "title": "62: Verkehrsunfall"
@@ -423,12 +330,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-12T09:29:00.000+0200",
-     "end": "2026-10-12T23:55:00.000+0200",
-     "lastUpdate": "2026-10-12T09:29:00.000+0200",
-     "resume": "2026-10-12T09:29:00.000+0200",
+     "end": "2026-10-12T10:42:00.000+0200",
+     "lastUpdate": "2026-10-12T10:42:00.000+0200",
+     "resume": "2026-10-12T10:42:00.000+0200",
      "start": "2026-10-12T09:24:00.000+0200"
     },
     "title": "18: Verkehrsunfall"
@@ -458,12 +365,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-12T09:29:00.000+0200",
-     "end": "2026-10-12T23:55:00.000+0200",
-     "lastUpdate": "2026-10-12T09:29:00.000+0200",
-     "resume": "2026-10-12T09:29:00.000+0200",
+     "end": "2026-10-12T10:42:00.000+0200",
+     "lastUpdate": "2026-10-12T10:42:00.000+0200",
+     "resume": "2026-10-12T10:42:00.000+0200",
      "start": "2026-10-12T09:24:00.000+0200"
     },
     "title": "13A: Verkehrsunfall"
@@ -528,12 +435,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-12T10:11:00.000+0200",
-     "end": "2026-10-12T23:55:00.000+0200",
-     "lastUpdate": "2026-10-12T10:11:00.000+0200",
-     "resume": "2026-10-12T10:11:00.000+0200",
+     "end": "2026-10-12T10:42:00.000+0200",
+     "lastUpdate": "2026-10-12T10:42:00.000+0200",
+     "resume": "2026-10-12T10:42:00.000+0200",
      "start": "2026-10-12T10:04:00.000+0200"
     },
     "title": "9: Falschparker"
