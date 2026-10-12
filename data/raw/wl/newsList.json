@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_487, ftazW_756, ftazW_146, ftazW_1353815, ftazW_1017119, ftazW_1031269, ftazW_147, ftazW_29, ftazW_1031270, ftazW_211, ftazW_488, ftazW_1354336, ftazW_1017120, ftazW_1016902, ftazW_734, ftazW_1031272, ftazW_1031273, ftazW_1016903, ftazW_82, ftazW_736, ftazW_239, ftazW_1017121, ftazW_83, ftazW_728, ftazW_84, ftazW_240, ftazW_727, ftazW_45, ftazW_1017123, ftazW_1031267"
+    "trafficInfoNameList": "ftazW_147, ftazW_29, ftazW_1031270, ftazW_211, ftazW_488, ftazW_1354336, ftazW_1017120, ftazW_1016902, ftazW_734, ftazW_1031272, ftazW_1031273, ftazW_1016903, ftazW_82, ftazW_736, ftazW_239, ftazW_1017121, ftazW_83, ftazW_728, ftazW_84, ftazW_240, ftazW_727, ftazW_45, ftazW_1017123, ftazW_1031267"
    }
   ],
   "poiCategoryGroups": [
@@ -2660,39 +2660,6 @@
    },
    {
     "attributes": {
-     "ausBis": "13.10.2026 00:45",
-     "ausVon": "12.10.2026 20:45",
-     "location": "U1 Mittelbahnsteig - Ausgang Dopschstraße",
-     "rbls": [
-      4184,
-      4189
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Großfeldsiedlung",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "U1 Mittelbahnsteig - Ausgang Dopschstraße",
-    "name": "ftazW_1017119",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4184,
-     4189
-    ],
-    "time": {
-     "end": "2026-10-13T00:45:00.000+0200",
-     "start": "2026-10-12T20:45:00.000+0200"
-    },
-    "title": "Großfeldsiedlung"
-   },
-   {
-    "attributes": {
      "ausBis": "13.10.2026 05:15",
      "ausVon": "13.10.2026 01:15",
      "location": "U1 Mittelbahnsteig - Ausgang Gitlbauergasse / Kürschnergasse",
@@ -2816,37 +2783,6 @@
    },
    {
     "attributes": {
-     "ausBis": "13.10.2026 00:45",
-     "ausVon": "12.10.2026 20:45",
-     "location": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Neue Donau",
-     "rbls": [
-      4256
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Donaustadtbrücke",
-     "status": "geplante Wartung",
-     "towards": "U2 Karlsplatz"
-    },
-    "description": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Neue Donau",
-    "name": "ftazW_1031269",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4256
-    ],
-    "time": {
-     "end": "2026-10-13T00:45:00.000+0200",
-     "start": "2026-10-12T20:45:00.000+0200"
-    },
-    "title": "Donaustadtbrücke"
-   },
-   {
-    "attributes": {
      "ausBis": "13.10.2026 05:15",
      "ausVon": "13.10.2026 01:15",
      "location": "U2 Bahnsteig Richtung Seestadt - Ausgang Neue Donau",
@@ -2935,32 +2871,6 @@
    },
    {
     "attributes": {
-     "ausBis": "13.10.2026 00:45",
-     "ausVon": "12.10.2026 20:45",
-     "location": "U6 Mittelbahnsteig - Zwischengeschoß Zugang ÖBB Bahnsteig",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Bahnhof Meidling",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "U6 Mittelbahnsteig - Zwischengeschoß Zugang ÖBB Bahnsteig",
-    "name": "ftazW_1353815",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "time": {
-     "end": "2026-10-13T00:45:00.000+0200",
-     "start": "2026-10-12T20:45:00.000+0200"
-    },
-    "title": "Bahnhof Meidling"
-   },
-   {
-    "attributes": {
      "ausBis": "13.10.2026 05:15",
      "ausVon": "13.10.2026 01:15",
      "location": "Passage - Bahnsteig Linie 1, 18, 62, Badner Bahn",
@@ -2999,39 +2909,6 @@
      "start": "2026-10-13T01:15:00.000+0200"
     },
     "title": "Matzleinsdorfer Platz"
-   },
-   {
-    "attributes": {
-     "ausBis": "13.10.2026 00:45",
-     "ausVon": "12.10.2026 20:45",
-     "location": "U3 Mittelbahnsteig - Ausgang Hainburger Straße",
-     "rbls": [
-      4914,
-      4903
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Rochusgasse",
-     "status": "geplante Wartung",
-     "towards": "U3 beide Richtungen"
-    },
-    "description": "U3 Mittelbahnsteig - Ausgang Hainburger Straße",
-    "name": "ftazW_146",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4914,
-     4903
-    ],
-    "time": {
-     "end": "2026-10-13T00:45:00.000+0200",
-     "start": "2026-10-12T20:45:00.000+0200"
-    },
-    "title": "Rochusgasse"
    },
    {
     "attributes": {
@@ -3223,39 +3100,6 @@
    },
    {
     "attributes": {
-     "ausBis": "13.10.2026 00:45",
-     "ausVon": "12.10.2026 20:45",
-     "location": "U4 Mittelbahnsteig - Zwischengeschoss - U6 Bahnsteig Richtung Floridsdorf",
-     "rbls": [
-      4627
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4",
-      "U6"
-     ],
-     "station": "Spittelau",
-     "status": "geplante Wartung",
-     "towards": "U6 Floridsdorf"
-    },
-    "description": "U4 Mittelbahnsteig - Zwischengeschoss - U6 Bahnsteig Richtung Floridsdorf",
-    "name": "ftazW_487",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4",
-     "U6"
-    ],
-    "relatedStops": [
-     4627
-    ],
-    "time": {
-     "end": "2026-10-13T00:45:00.000+0200",
-     "start": "2026-10-12T20:45:00.000+0200"
-    },
-    "title": "Spittelau"
-   },
-   {
-    "attributes": {
      "ausBis": "13.10.2026 05:15",
      "ausVon": "13.10.2026 01:15",
      "location": "U4 Mittelbahnsteig - Zwischengeschoss - U6 Bahnsteig Richtung Siebenhirten",
@@ -3414,39 +3258,6 @@
      "start": "2026-10-14T01:15:00.000+0200"
     },
     "title": "Gasometer"
-   },
-   {
-    "attributes": {
-     "ausBis": "13.10.2026 00:45",
-     "ausVon": "12.10.2026 20:45",
-     "location": "U3 Mittelbahnsteig - Ausgang Simmeringer Hauptstraße",
-     "rbls": [
-      4936,
-      4939
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Enkplatz",
-     "status": "geplante Wartung",
-     "towards": "U3 beide Richtungen"
-    },
-    "description": "U3 Mittelbahnsteig - Ausgang Simmeringer Hauptstraße",
-    "name": "ftazW_756",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4936,
-     4939
-    ],
-    "time": {
-     "end": "2026-10-13T00:45:00.000+0200",
-     "start": "2026-10-12T20:45:00.000+0200"
-    },
-    "title": "Enkplatz"
    },
    {
     "attributes": {
