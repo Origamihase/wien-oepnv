@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261012-0007-F01, I20261012-0014, I20260925-0011, I20261012-0013, I20261012-0010, I20260909-0007, I20261012-0009, I20261012-0008-F01, I20261012-0013-F01, I20261012-0012, I20261012-0005-F01, I20261012-0011"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261012-0007-F01, I20261012-0014, I20261012-0016, I20260925-0011, I20261012-0013, I20261012-0010, I20261012-0012, I20260909-0007, I20261012-0008-F01, I20261012-0013-F01, I20261012-0005-F01, I20261012-0011, I20261012-0015"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R101-136, R36-152, R100-136, R102-136, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2380-627, R2345-127, R2372-627, R2378-627, R2343-626, R2359-125, R2343-125, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R5815-671, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2379-627, R2380-627, R2345-127, R2372-627, R2372-125, R2373-126, R2373-127, R2373-125, R5815-671, R1974-466, R500-101, R571-152, R1558-152, R1559-152, R1556-152, R1465-152, R1553-152, R1539-152, R1542-152, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -312,40 +312,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261012-0009",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "301",
-       "lineName": "U1",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T06:09:00.000+0200",
-     "end": "2026-10-12T06:54:00.000+0200",
-     "lastUpdate": "2026-10-12T06:54:00.000+0200",
-     "resume": "2026-10-12T06:54:00.000+0200",
-     "start": "2026-10-12T06:08:00.000+0200"
-    },
-    "title": "U1: Verspätungen"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "6": "ptTram"
      }
     },
@@ -435,12 +401,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-12T06:54:00.000+0200",
-     "end": "2026-10-12T23:55:00.000+0200",
-     "lastUpdate": "2026-10-12T06:54:00.000+0200",
-     "resume": "2026-10-12T06:54:00.000+0200",
+     "end": "2026-10-12T07:42:00.000+0200",
+     "lastUpdate": "2026-10-12T07:42:00.000+0200",
+     "resume": "2026-10-12T07:42:00.000+0200",
      "start": "2026-10-12T06:54:00.000+0200"
     },
     "title": "U1: Verspätungen"
@@ -555,6 +521,74 @@
      "start": "2026-10-12T07:29:00.000+0200"
     },
     "title": "U4: Verspätungen"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "52": "ptTram"
+     }
+    },
+    "description": "Linie 52: Betrieb nur zwischen Parlament, Volkstheater und Reinlgasse. Weiterfahrt über die Linie 10 bis Joachimsthalerplatz. Voraussichtliche Dauer: 08:15 Uhr. Grund: Verkehrsunfall im Bereich Linzer Straße 161.",
+    "descriptionHTML": "Linie 52:<br>Betrieb nur zwischen Parlament, Volkstheater und Reinlgasse.<br>Weiterfahrt über die Linie 10 bis Joachimsthalerplatz.<br> <br>Voraussichtliche Dauer: 08:15 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Linzer Straße 161.",
+    "location": "Linzer Straße 161",
+    "name": "I20261012-0015",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "152",
+       "lineName": "52",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-12T07:46:00.000+0200",
+     "end": "2026-10-12T23:55:00.000+0200",
+     "lastUpdate": "2026-10-12T07:49:00.000+0200",
+     "start": "2026-10-12T07:45:00.000+0200"
+    },
+    "title": "52: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261012-0016",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "301",
+       "lineName": "U1",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-12T07:50:00.000+0200",
+     "end": "2026-10-12T23:55:00.000+0200",
+     "lastUpdate": "2026-10-12T07:50:00.000+0200",
+     "resume": "2026-10-12T07:49:00.000+0200",
+     "start": "2026-10-12T07:49:00.000+0200"
+    },
+    "title": "U1: Verspätungen"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -860,6 +894,24 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
    },
    {
+    "description": "Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen.",
+    "name": "R1465-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1465
+    ],
+    "time": {
+     "end": "2026-10-12T10:00:00.000+0200",
+     "start": "2026-10-12T07:50:13.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen."
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
     "name": "R1472-149",
     "owner": "WL",
@@ -966,6 +1018,114 @@
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1539-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1539
+    ],
+    "time": {
+     "end": "2026-10-12T09:45:00.000+0200",
+     "start": "2026-10-12T07:51:43.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1542-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1542
+    ],
+    "time": {
+     "end": "2026-10-12T09:45:00.000+0200",
+     "start": "2026-10-12T07:51:43.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen.",
+    "name": "R1553-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1553
+    ],
+    "time": {
+     "end": "2026-10-12T10:00:00.000+0200",
+     "start": "2026-10-12T07:50:13.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen."
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen.",
+    "name": "R1556-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1556
+    ],
+    "time": {
+     "end": "2026-10-12T10:00:00.000+0200",
+     "start": "2026-10-12T07:49:13.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen."
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1558-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1558
+    ],
+    "time": {
+     "end": "2026-10-12T08:48:00.000+0200",
+     "start": "2026-10-12T07:49:13.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1559-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1559
+    ],
+    "time": {
+     "end": "2026-10-12T08:48:00.000+0200",
+     "start": "2026-10-12T07:49:13.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
@@ -1377,6 +1537,24 @@
      "start": "2026-10-12T05:00:25.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R571-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     571
+    ],
+    "time": {
+     "end": "2026-10-12T08:48:00.000+0200",
+     "start": "2026-10-12T07:49:12.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",

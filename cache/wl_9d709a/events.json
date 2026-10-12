@@ -1034,6 +1034,46 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "52: Verkehrsunfall",
+    "description": "Linie 52: Betrieb nur zwischen Parlament, Volkstheater und Reinlgasse. Weiterfahrt über die Linie 10 bis Joachimsthalerplatz. Voraussichtliche Dauer: 08:15 Uhr. Grund: Verkehrsunfall im Bereich Linzer Straße 161.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "01c1edad0db092aed085d667951c6be88cf791b9631f3f4007cfee702ab02beb",
+    "pubDate": "2026-10-12T07:45:00+02:00",
+    "starts_at": "2026-10-12T07:45:00+02:00",
+    "ends_at": "2026-10-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=52|D=2026-10-12|TK=52 verkehrsunfall",
+    "_wl_ids": [
+      "I20261012-0015"
+    ],
+    "_incident_start": "2026-10-12T07:45:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "538e3537ccddfddb6ed2a2bea6bb7128afece95871c03e3c9b06dde002cf7d72",
+    "pubDate": "2026-10-12T07:49:12+02:00",
+    "starts_at": "2026-10-12T07:51:43+02:00",
+    "ends_at": "2026-10-12T09:45:00+02:00",
+    "_identity": "wl|störung|L=52|D=2026-10-12|TK=fahrtbehinderung verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Verkehrsunfall Betrieb ab Reinlgasse. Linie 46 benutzen.",
+    "description": "Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "ff6f7e970a640f61ca6df088a095e41ee35a06e937473db4bfb09380c4958fd9",
+    "pubDate": "2026-10-12T07:49:13+02:00",
+    "starts_at": "2026-10-12T07:50:13+02:00",
+    "ends_at": "2026-10-12T10:00:00+02:00",
+    "_identity": "wl|störung|L=52|D=2026-10-12|TK=verkehrsunfall betrieb ab reinlgasse linie 46 benutzen"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1138,14 +1178,14 @@
     "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
-    "pubDate": "2026-10-12T06:54:00+02:00",
-    "starts_at": "2026-10-12T06:54:00+02:00",
+    "pubDate": "2026-10-12T07:49:00+02:00",
+    "starts_at": "2026-10-12T07:49:00+02:00",
     "ends_at": "2026-10-12T23:55:00+02:00",
     "_identity": "wl|störung|L=U1|D=2026-10-12|TK=u1 verspätungen",
     "_wl_ids": [
-      "I20261012-0012"
+      "I20261012-0016"
     ],
-    "_incident_start": "2026-10-12T06:54:00+02:00"
+    "_incident_start": "2026-10-12T07:49:00+02:00"
   },
   {
     "source": "Wiener Linien",
