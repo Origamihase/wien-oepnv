@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261012-0014, I20260925-0011, I20260909-0007, I20261012-0016, I20261012-0017-F01, I20261012-0015-F01, I20261012-0015, I20261012-0017"
+    "trafficInfoNameList": "I20261012-0018-F01, I20261012-0018-F02, I20261012-0018-F03, I20261012-0018-F04, I20261012-0018, I20260917-0012, I20260922-0032, I20261012-0014, I20260925-0011, I20260909-0007, I20261012-0017-F01, I20261012-0015-F01, I20261012-0017"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R101-136, R36-152, R100-136, R102-136, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2379-627, R2380-627, R2345-127, R2372-627, R2343-125, R2378-627, R5815-671, R1974-466, R500-101, R1556-152, R1553-152, R1465-152, R1542-152, R1539-152, R579-152, R464-152, R1532-152, R1535-152, R1537-152, R578-152, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2372-627, R2379-627, R2380-627, R2345-127, R2373-126, R2373-127, R5815-671, R1974-466, R500-101, R1556-152, R1553-152, R1465-152, R1539-152, R1542-152, R847-118, R848-118, R849-118, R851-118, R339-118, R835-118, R834-118, R293-118, R303-118, R304-118, R428-118, R427-118, R2619-118, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -243,41 +243,6 @@
       "52": "ptTram"
      }
     },
-    "description": "Linie 52: Betrieb nur zwischen Parlament, Volkstheater und Reinlgasse. Weiterfahrt über die Linie 10 bis Joachimsthalerplatz. Voraussichtliche Dauer: 08:30 Uhr. Grund: Verkehrsunfall im Bereich Linzer Straße 161.",
-    "descriptionHTML": "Linie 52:<br>Betrieb nur zwischen Parlament, Volkstheater und Reinlgasse.<br>Weiterfahrt über die Linie 10 bis Joachimsthalerplatz.<br> <br>Voraussichtliche Dauer: 08:30 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Linzer Straße 161.",
-    "location": "Linzer Straße 161",
-    "name": "I20261012-0015",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "152",
-       "lineName": "52",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T07:46:00.000+0200",
-     "end": "2026-10-12T08:24:00.000+0200",
-     "lastUpdate": "2026-10-12T08:24:00.000+0200",
-     "resume": "2026-10-12T08:24:00.000+0200",
-     "start": "2026-10-12T07:45:00.000+0200"
-    },
-    "title": "52: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "52": "ptTram"
-     }
-    },
     "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "location": "Linzer Straße 161",
@@ -306,40 +271,6 @@
      "start": "2026-10-12T07:45:00.000+0200"
     },
     "title": "52: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261012-0016",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "301",
-       "lineName": "U1",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T07:50:00.000+0200",
-     "end": "2026-10-12T08:13:00.000+0200",
-     "lastUpdate": "2026-10-12T08:13:00.000+0200",
-     "resume": "2026-10-12T08:13:00.000+0200",
-     "start": "2026-10-12T07:49:00.000+0200"
-    },
-    "title": "U1: Verspätungen"
    },
    {
     "attributes": {
@@ -414,6 +345,202 @@
      "start": "2026-10-12T08:50:00.000+0200"
     },
     "title": "U4: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "13A": "ptBusCity",
+      "18": "ptTram",
+      "62": "ptTram",
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie 18: Fahrtbehinderung in beiden Richtungen. Linie 62: Fahrtbehinderung in beiden Richtungen. Linie O: Fahrtbehinderung in beiden Richtungen. Linie 13A: Fahrtbehinderung in Richtung Alser Straße, Skodagasse. Voraussichtliche Dauer: 09:50 Uhr. Grund: Verkehrsunfall im Bereich Karl-Popper-Straße.",
+    "descriptionHTML": "Linie 18:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie 62:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie O:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie 13A:<br>Fahrtbehinderung in Richtung Alser Straße, Skodagasse.<br> <br>Voraussichtliche Dauer: 09:50 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Karl-Popper-Straße.",
+    "location": "Karl-Popper-Straße",
+    "name": "I20261012-0018",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "18",
+     "62",
+     "O",
+     "13A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "170",
+       "lineName": "O",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "162",
+       "lineName": "62",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "118",
+       "lineName": "18",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "413",
+       "lineName": "13A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-12T09:26:00.000+0200",
+     "end": "2026-10-12T09:29:00.000+0200",
+     "lastUpdate": "2026-10-12T09:29:00.000+0200",
+     "resume": "2026-10-12T09:29:00.000+0200",
+     "start": "2026-10-12T09:24:00.000+0200"
+    },
+    "title": "O, 62, 18, 13A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Karl-Popper-Straße",
+    "name": "I20261012-0018-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "170",
+       "lineName": "O",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-12T09:29:00.000+0200",
+     "end": "2026-10-12T23:55:00.000+0200",
+     "lastUpdate": "2026-10-12T09:29:00.000+0200",
+     "resume": "2026-10-12T09:29:00.000+0200",
+     "start": "2026-10-12T09:24:00.000+0200"
+    },
+    "title": "O: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "62": "ptTram"
+     }
+    },
+    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Karl-Popper-Straße",
+    "name": "I20261012-0018-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "162",
+       "lineName": "62",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-12T09:29:00.000+0200",
+     "end": "2026-10-12T23:55:00.000+0200",
+     "lastUpdate": "2026-10-12T09:29:00.000+0200",
+     "resume": "2026-10-12T09:29:00.000+0200",
+     "start": "2026-10-12T09:24:00.000+0200"
+    },
+    "title": "62: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "18": "ptTram"
+     }
+    },
+    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Karl-Popper-Straße",
+    "name": "I20261012-0018-F03",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "118",
+       "lineName": "18",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-12T09:29:00.000+0200",
+     "end": "2026-10-12T23:55:00.000+0200",
+     "lastUpdate": "2026-10-12T09:29:00.000+0200",
+     "resume": "2026-10-12T09:29:00.000+0200",
+     "start": "2026-10-12T09:24:00.000+0200"
+    },
+    "title": "18: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "13A": "ptBusCity"
+     }
+    },
+    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Karl-Popper-Straße",
+    "name": "I20261012-0018-F04",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "413",
+       "lineName": "13A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-12T09:29:00.000+0200",
+     "end": "2026-10-12T23:55:00.000+0200",
+     "lastUpdate": "2026-10-12T09:29:00.000+0200",
+     "resume": "2026-10-12T09:29:00.000+0200",
+     "start": "2026-10-12T09:24:00.000+0200"
+    },
+    "title": "13A: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -845,60 +972,6 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
    },
    {
-    "description": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz",
-    "name": "R1532-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1532
-    ],
-    "time": {
-     "end": "2026-10-12T09:01:00.000+0200",
-     "start": "2026-10-12T08:01:44.000+0200"
-    },
-    "title": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz"
-   },
-   {
-    "description": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz",
-    "name": "R1535-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1535
-    ],
-    "time": {
-     "end": "2026-10-12T09:01:00.000+0200",
-     "start": "2026-10-12T08:01:44.000+0200"
-    },
-    "title": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz"
-   },
-   {
-    "description": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz",
-    "name": "R1537-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1537
-    ],
-    "time": {
-     "end": "2026-10-12T09:01:00.000+0200",
-     "start": "2026-10-12T08:01:44.000+0200"
-    },
-    "title": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz"
-   },
-   {
     "description": "Fahrtbehinderung\nVerkehrsunfall",
     "name": "R1539-152",
     "owner": "WL",
@@ -1292,6 +1365,42 @@
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
    },
    {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2619-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2619
+    ],
+    "time": {
+     "end": "2026-10-12T10:27:00.000+0200",
+     "start": "2026-10-12T09:27:24.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R293-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     293
+    ],
+    "time": {
+     "end": "2026-10-12T10:27:00.000+0200",
+     "start": "2026-10-12T09:27:22.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1308,6 +1417,42 @@
      "start": "2026-10-07T00:00:15.000+0200"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R303-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     303
+    ],
+    "time": {
+     "end": "2026-10-12T10:27:00.000+0200",
+     "start": "2026-10-12T09:27:22.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R304-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     304
+    ],
+    "time": {
+     "end": "2026-10-12T10:27:00.000+0200",
+     "start": "2026-10-12T09:27:22.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
@@ -1328,6 +1473,24 @@
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
    },
    {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R339-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     339
+    ],
+    "time": {
+     "end": "2026-10-12T10:27:00.000+0200",
+     "start": "2026-10-12T09:27:22.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
     "description": "Züge halten\nbei Linien 6 und 18",
     "name": "R36-152",
     "owner": "WL",
@@ -1344,6 +1507,42 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Züge halten\nbei Linien 6 und 18"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R427-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     427
+    ],
+    "time": {
+     "end": "2026-10-12T10:27:00.000+0200",
+     "start": "2026-10-12T09:27:23.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R428-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     428
+    ],
+    "time": {
+     "end": "2026-10-12T10:27:00.000+0200",
+     "start": "2026-10-12T09:27:23.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Züge halten\nWipplingerstr 39",
@@ -1364,24 +1563,6 @@
     "title": "Züge halten\nWipplingerstr 39"
    },
    {
-    "description": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz",
-    "name": "R464-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     464
-    ],
-    "time": {
-     "end": "2026-10-12T09:01:00.000+0200",
-     "start": "2026-10-12T08:01:44.000+0200"
-    },
-    "title": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz"
-   },
-   {
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -1400,42 +1581,6 @@
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
-    "description": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz",
-    "name": "R578-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     578
-    ],
-    "time": {
-     "end": "2026-10-12T09:01:00.000+0200",
-     "start": "2026-10-12T08:01:44.000+0200"
-    },
-    "title": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz"
-   },
-   {
-    "description": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz",
-    "name": "R579-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     579
-    ],
-    "time": {
-     "end": "2026-10-12T09:01:00.000+0200",
-     "start": "2026-10-12T08:01:44.000+0200"
-    },
-    "title": "Verkehrsunfall\nUmleitung zum Joachimsthalerplatz"
-   },
-   {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "name": "R5815-671",
     "owner": "WL",
@@ -1449,6 +1594,114 @@
      "start": "2026-10-12T00:00:06.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R834-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     834
+    ],
+    "time": {
+     "end": "2026-10-12T10:27:00.000+0200",
+     "start": "2026-10-12T09:27:22.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R835-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     835
+    ],
+    "time": {
+     "end": "2026-10-12T10:27:00.000+0200",
+     "start": "2026-10-12T09:27:22.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R847-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     847
+    ],
+    "time": {
+     "end": "2026-10-12T10:27:00.000+0200",
+     "start": "2026-10-12T09:27:22.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R848-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     848
+    ],
+    "time": {
+     "end": "2026-10-12T10:27:00.000+0200",
+     "start": "2026-10-12T09:27:22.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R849-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     849
+    ],
+    "time": {
+     "end": "2026-10-12T10:27:00.000+0200",
+     "start": "2026-10-12T09:27:22.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R851-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     851
+    ],
+    "time": {
+     "end": "2026-10-12T10:27:00.000+0200",
+     "start": "2026-10-12T09:27:22.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
