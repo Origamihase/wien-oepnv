@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Mon, 12 Oct 2026 21:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2026 22:00:46 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[9: Polizeieinsatz]]></title>
+      <title><![CDATA[5/12: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d0e4afae8a76682f9151e0252680d546a58090bd24478041f5804ac6fa3ff1de</guid>
-      <pubDate>Mon, 12 Oct 2026 21:22:00 +0200</pubDate>
-      <ext:first_seen>Mon, 12 Oct 2026 21:22:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 12 Oct 2026 21:22:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">e51951a503565e36ead67df34b39b4610182b9b9dcc9afc61af74e08f8698c87</guid>
+      <pubDate>Mon, 12 Oct 2026 21:31:00 +0200</pubDate>
+      <ext:first_seen>Mon, 12 Oct 2026 21:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 12 Oct 2026 21:31:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 12 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz im Haltestellenbereich Elterleinplatz. [Seit 21:22]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz im Haltestellenbereich Elterleinplatz.<br/>[Seit 21:22]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 21:31]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 21:31]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U2: Polizeieinsatz]]></title>
@@ -30,28 +30,6 @@
       <ext:ends_at>Mon, 12 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 21:07]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 21:07]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7432174b0dd142a4728e8ba0144127ca655d49ae49e269a9660834d572eca3ab</guid>
-      <pubDate>Mon, 12 Oct 2026 20:47:00 +0200</pubDate>
-      <ext:first_seen>Mon, 12 Oct 2026 20:47:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 12 Oct 2026 20:47:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 12 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit 20:47]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 20:47]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[94A: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ab9a315bb4763912df12601d781a9487102576b75c46fff6971dcfe32c9a9c29</guid>
-      <pubDate>Mon, 12 Oct 2026 19:43:00 +0200</pubDate>
-      <ext:first_seen>Mon, 12 Oct 2026 19:43:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 12 Oct 2026 19:43:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 12 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Seit 19:43]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 19:43]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/71/D: Demonstration am 13.10.2026]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Mon, 12 Oct 2026 23:00:00 +0200</ext:ends_at>
       <description>Bhf. Hütteldorf [Heute]</description>
       <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A/7A/N62: Eibesbrunnergasse beide Fahrtrichtungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bd6cbe1a4ea6d909912fce8527e38411ee42a952a91a70beecf363c26cd3e728</guid>
+      <pubDate>Mon, 05 Oct 2026 16:10:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 16:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 … [Bis 06.11.]</description>
+      <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 …<br/>[Bis 06.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
+      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau. [Bis 26.10.]</description>
+      <content:encoded><![CDATA[Hartäckerstraße 65: ersatzlos aufgelassen. Haltestellenauflassung der Linie 40A in Richtung Schottentor. Grund: Straßenbau.<br/>[Bis 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
