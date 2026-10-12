@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261012-0033, I20261012-0037-F01, I20260917-0012, I20261012-0037-F02, I20260922-0032, I20260925-0011, I20261012-0037, I20260909-0007, I20261012-0036, I20261012-0035-F01, I20261012-0035, I20261012-0034"
+    "trafficInfoNameList": "I20261012-0033, I20261012-0037-F01, I20260917-0012, I20261012-0037-F02, I20260922-0032, I20260925-0011, I20261012-0037, I20260909-0007, I20261012-0036, I20261012-0038, I20261012-0035-F01, I20261012-0034"
    },
    {
     "id": 3,
@@ -274,43 +274,6 @@
       "U2": "ptMetro"
      }
     },
-    "description": "Die Linie U2 fährt derzeit nicht zwischen Donauspital und Stadlau. Voraussichtliche Dauer: 21:45 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Hardeggasse.",
-    "descriptionHTML": "Die Linie U2 fährt derzeit nicht zwischen Donauspital und Stadlau.<br> <br>Voraussichtliche Dauer: 21:45 Uhr.<br><br>Grund: Polizeieinsatz im Haltestellenbereich Hardeggasse.",
-    "name": "I20261012-0035",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "302",
-       "lineName": "U2",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4253
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T21:11:00.000+0200",
-     "end": "2026-10-12T21:25:00.000+0200",
-     "lastUpdate": "2026-10-12T21:25:00.000+0200",
-     "resume": "2026-10-12T21:25:00.000+0200",
-     "start": "2026-10-12T21:07:00.000+0200"
-    },
-    "title": "U2: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U2": "ptMetro"
-     }
-    },
     "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "name": "I20261012-0035-F01",
@@ -496,6 +459,43 @@
      "start": "2026-10-12T21:31:00.000+0200"
     },
     "title": "12: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Die Linie U6 fährt derzeit in der Station Neue Donau in beiden Richtungen über Gleis 2. Grund: Bauarbeiten.",
+    "descriptionHTML": "Die Linie U6 fährt derzeit in der Station Neue Donau in beiden Richtungen über Gleis 2.<br> <br>Grund: Bauarbeiten.",
+    "name": "I20261012-0038",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4644
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-12T22:08:00.000+0200",
+     "end": "2026-10-12T23:55:00.000+0200",
+     "lastUpdate": "2026-10-12T22:08:00.000+0200",
+     "resume": "2026-10-12T22:07:00.000+0200",
+     "start": "2026-10-12T22:07:00.000+0200"
+    },
+    "title": "U6: Bauarbeiten"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
