@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261012-0032, I20260917-0012, I20260922-0032, I20261012-0033, I20260925-0011, I20260909-0007, I20261012-0030"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261012-0033, I20260925-0011, I20260909-0007, I20261012-0032"
    },
    {
     "id": 3,
@@ -203,40 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "60A": "ptBusCity"
-     }
-    },
-    "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "Linie 60A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
-    "name": "I20261012-0030",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "460",
-       "lineName": "60A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T16:36:00.000+0200",
-     "end": "2026-10-12T19:09:00.000+0200",
-     "lastUpdate": "2026-10-12T19:09:00.000+0200",
-     "resume": "2026-10-12T19:09:00.000+0200",
-     "start": "2026-10-12T16:36:00.000+0200"
-    },
-    "title": "60A: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U6": "ptMetro"
      }
     },
@@ -258,12 +224,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-12T19:15:00.000+0200",
-     "end": "2026-10-12T23:55:00.000+0200",
-     "lastUpdate": "2026-10-12T19:15:00.000+0200",
-     "resume": "2026-10-12T19:14:00.000+0200",
+     "end": "2026-10-12T20:30:00.000+0200",
+     "lastUpdate": "2026-10-12T20:30:00.000+0200",
+     "resume": "2026-10-12T20:30:00.000+0200",
      "start": "2026-10-12T19:14:00.000+0200"
     },
     "title": "U6: Rettungseinsatz"
