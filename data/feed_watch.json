@@ -1,20 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-12T15:01:15.118098+00:00",
- "built": "2026-10-12T17:00:59+02:00",
+ "updated": "2026-10-12T15:30:50.692156+00:00",
+ "built": "2026-10-12T17:30:42+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-12T17:00:59+02:00",
+  "built": "2026-10-12T17:30:42+02:00",
   "items": [
    {
     "title": "60A: Verkehrsunfall",
     "time_line": "Seit 16:36"
-   },
-   {
-    "title": "U6: Betriebsstörung",
-    "time_line": "Seit 16:13"
    },
    {
     "title": "1/71/D: Demonstration am 13.10.2026",
@@ -47,6 +43,10 @@
    {
     "title": "40A: Döblinger Friedhof, Felix-Dahn-Straße",
     "time_line": "Bis 26.10."
+   },
+   {
+    "title": "U6: Neue Donau, kein Halt Richtung Floridsdorf",
+    "time_line": "Bis 31.12."
    }
   ]
  },
@@ -1650,6 +1650,26 @@
     "baustellen": 4,
     "oebb": 11,
     "wl": 99
+   }
+  },
+  {
+   "t": "2026-10-12T15:30:50.692156+00:00",
+   "raw": {
+    "wl-stoerungen": 60,
+    "wl-hinweise": 102,
+    "oebb": 171,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 24,
+    "oebb": 145,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 11,
+    "wl": 98
    }
   }
  ]

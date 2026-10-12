@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261012-0029-F01, I20261012-0029, I20260917-0012, I20260922-0032, I20261012-0028, I20261012-0030, I20261012-0028-F01, I20260925-0011, I20260909-0007, I20261012-0025-F01, I20261012-0031, I20261012-0026"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261012-0030, I20261012-0028-F01, I20260925-0011, I20260909-0007, I20261012-0029-F01, I20261012-0031"
    },
    {
     "id": 3,
@@ -203,112 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Wilhelminenstraße",
-    "name": "I20261012-0025-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "102",
-       "lineName": "2",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T15:23:00.000+0200",
-     "end": "2026-10-12T16:16:00.000+0200",
-     "lastUpdate": "2026-10-12T16:16:00.000+0200",
-     "resume": "2026-10-12T16:16:00.000+0200",
-     "start": "2026-10-12T15:05:00.000+0200"
-    },
-    "title": "2: Fremder Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "69A": "ptBusCity"
-     }
-    },
-    "description": "Linie 69A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "Linie 69A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
-    "name": "I20261012-0026",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "69A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "469",
-       "lineName": "69A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T15:12:00.000+0200",
-     "end": "2026-10-12T16:16:00.000+0200",
-     "lastUpdate": "2026-10-12T16:16:00.000+0200",
-     "resume": "2026-10-12T16:16:00.000+0200",
-     "start": "2026-10-12T15:12:00.000+0200"
-    },
-    "title": "69A: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Fahrtbehinderung in Richtung Hütteldorf. Voraussichtliche Dauer: 16:15 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Schwedenplatz.",
-    "descriptionHTML": "Linie U4:<br>Fahrtbehinderung in Richtung Hütteldorf.<br> <br>Voraussichtliche Dauer: 16:15 Uhr.<br><br>Grund: Polizeieinsatz im Haltestellenbereich Schwedenplatz.",
-    "name": "I20261012-0028",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "304",
-       "lineName": "U4",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4427
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T16:09:00.000+0200",
-     "end": "2026-10-12T16:12:00.000+0200",
-     "lastUpdate": "2026-10-12T16:12:00.000+0200",
-     "resume": "2026-10-12T16:12:00.000+0200",
-     "start": "2026-10-12T16:09:00.000+0200"
-    },
-    "title": "U4: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U4": "ptMetro"
      }
     },
@@ -349,43 +243,6 @@
       "U6": "ptMetro"
      }
     },
-    "description": "Linie U6: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 16:25 Uhr. Grund: Betriebsstörung im Haltestellenbereich Burggasse - Stadthalle.",
-    "descriptionHTML": "Linie U6:<br>Fahrtbehinderung in beiden Richtungen.<br> <br>Voraussichtliche Dauer: 16:25 Uhr.<br><br>Grund: Betriebsstörung im Haltestellenbereich Burggasse - Stadthalle.",
-    "name": "I20261012-0029",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4620
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T16:14:00.000+0200",
-     "end": "2026-10-12T16:20:00.000+0200",
-     "lastUpdate": "2026-10-12T16:20:00.000+0200",
-     "resume": "2026-10-12T16:20:00.000+0200",
-     "start": "2026-10-12T16:13:00.000+0200"
-    },
-    "title": "U6: Betriebsstörung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
     "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "name": "I20261012-0029-F01",
@@ -407,12 +264,12 @@
     "relatedStops": [
      4620
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-12T16:20:00.000+0200",
-     "end": "2026-10-12T23:55:00.000+0200",
-     "lastUpdate": "2026-10-12T16:20:00.000+0200",
-     "resume": "2026-10-12T16:20:00.000+0200",
+     "end": "2026-10-12T17:11:00.000+0200",
+     "lastUpdate": "2026-10-12T17:11:00.000+0200",
+     "resume": "2026-10-12T17:11:00.000+0200",
      "start": "2026-10-12T16:13:00.000+0200"
     },
     "title": "U6: Betriebsstörung"
