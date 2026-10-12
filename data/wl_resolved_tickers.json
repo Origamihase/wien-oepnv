@@ -1,55 +1,5 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": [
-  {
-   "key": "R1212-138|2026-10-12T13:07:14.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
-   "name": "R1212-138",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
-   "end": "2026-10-12T14:06:00.000+0200",
-   "incident": "I20261012-0022"
-  },
-  {
-   "key": "R1213-138|2026-10-12T13:07:14.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
-   "name": "R1213-138",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
-   "end": "2026-10-12T14:06:00.000+0200",
-   "incident": "I20261012-0022"
-  },
-  {
-   "key": "R150-138|2026-10-12T13:07:14.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
-   "name": "R150-138",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
-   "end": "2026-10-12T14:06:00.000+0200",
-   "incident": "I20261012-0022"
-  },
-  {
-   "key": "R188-138|2026-10-12T13:07:14.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
-   "name": "R188-138",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
-   "end": "2026-10-12T14:06:00.000+0200",
-   "incident": "I20261012-0022"
-  },
-  {
-   "key": "R211-138|2026-10-12T13:07:14.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
-   "name": "R211-138",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
-   "end": "2026-10-12T14:06:00.000+0200",
-   "incident": "I20261012-0022"
-  },
-  {
-   "key": "R213-138|2026-10-12T13:07:14.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
-   "name": "R213-138",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
-   "end": "2026-10-12T14:06:00.000+0200",
-   "incident": "I20261012-0022"
-  },
-  {
-   "key": "R214-138|2026-10-12T13:07:14.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
-   "name": "R214-138",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
-   "end": "2026-10-12T14:06:00.000+0200",
-   "incident": "I20261012-0022"
-  }
- ]
+ "tickers": []
 }
