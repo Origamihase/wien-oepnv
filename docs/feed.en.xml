@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 12 Oct 2026 12:30:42 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2026 13:02:35 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[38: Police operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">14b787061b8e077e79d48423bff586516bd1c55ab89e303fd510de9c03ccc6d9</guid>
+      <pubDate>Mon, 12 Oct 2026 12:52:00 +0200</pubDate>
+      <ext:first_seen>Mon, 12 Oct 2026 12:52:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 12 Oct 2026 12:53:14 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 12 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction towards Schottentor U. Expected until 13:10. Reason: police operation in the stop area of Sieveringer Straße. [Since 12:52]</description>
+      <content:encoded><![CDATA[Service obstruction towards Schottentor U. Expected until 13:10. Reason: police operation in the stop area of Sieveringer Straße.<br/>[Since 12:52]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[31: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -24,12 +35,23 @@
       <title><![CDATA[Wien Hauptbahnhof ↔ Wiener Neustadt Hauptbahnhof]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;918684</guid>
-      <pubDate>Mon, 12 Oct 2026 12:02:50 +0200</pubDate>
+      <pubDate>Mon, 12 Oct 2026 12:50:11 +0200</pubDate>
       <ext:first_seen>Mon, 12 Oct 2026 12:00:52 +0200</ext:first_seen>
       <ext:starts_at>Mon, 12 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 12 Oct 2026 23:59:59 +0200</ext:ends_at>
       <description>Due to an overhead-line fault after an accident, train journeys in Wr. Neustadt Hbf until approx. 23:59 are only very limited. [Since 11:55]</description>
       <content:encoded><![CDATA[Due to an overhead-line fault after an accident, train journeys in Wr. Neustadt Hbf until approx. 23:59 are only very limited.<br/>[Since 11:55]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/71/D: Demonstration on 13.10.2026]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">1a79e14e4fbd9e007952da0547d39938646bff0e3fe35a9b0c5023ce06c14df8</guid>
+      <pubDate>Mon, 12 Oct 2026 13:00:00 +0200</pubDate>
+      <ext:first_seen>Mon, 12 Oct 2026 13:02:35 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 19:00:00 +0200</ext:ends_at>
+      <description>Due to a demonstration, there is a restriction on public transport. [On Tue 13.10.]</description>
+      <content:encoded><![CDATA[Due to a demonstration, there is a restriction on public transport.<br/>[On Tue 13.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12/5: Albertgasse]]></title>
@@ -52,17 +74,6 @@
       <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
       <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation. [Until 31.03.2027]</description>
       <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation.<br/>[Until 31.03.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[72A: Haidestraße S]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">478a7dd15ce15abfb6a3b89c90e7305c6500a29a34ffa7ee497d6624535e2914</guid>
-      <pubDate>Thu, 08 Oct 2026 15:30:00 +0200</pubDate>
-      <ext:first_seen>Thu, 08 Oct 2026 15:30:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 08 Oct 2026 15:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 12 Oct 2026 13:00:00 +0200</ext:ends_at>
-      <description>Lautenschlägergasse after Haidestraße → 1. Haidequerstraße opposite 3A. Stop relocation of line 72A towards Hasenleiten. Reason: Work on a gas line. [Today]</description>
-      <content:encoded><![CDATA[Lautenschlägergasse after Haidestraße → 1. Haidequerstraße opposite 3A. Stop relocation of line 72A towards Hasenleiten. Reason: Work on a gas line.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[15A: Max-Mauermann-Gasse]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 … [Until 06.11.]</description>
       <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 …<br/>[Until 06.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
-      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction. [Until 26.10.]</description>
-      <content:encoded><![CDATA[Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction.<br/>[Until 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

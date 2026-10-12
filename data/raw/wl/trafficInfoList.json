@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261012-0021-F01, I20260909-0007, I20261012-0020-F01, I20261012-0021"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261012-0021-F01, I20260909-0007, I20261012-0021, I20261012-0022"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R36-152, R100-136, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2343-125, R2343-626, R2378-627, R2379-627, R2380-627, R2345-127, R2372-627, R2359-125, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R5815-671, R1974-466, R500-101, R2198-131, R2195-131, R2196-131, R2193-131, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2343-626, R2378-627, R2343-125, R2379-627, R2380-627, R2345-127, R2372-627, R2373-125, R2373-127, R2373-126, R2372-125, R2371-125, R2370-125, R2359-125, R5815-671, R1974-466, R500-101, R2198-131, R2195-131, R2196-131, R2193-131, R209-138, R210-138, R1227-138, R1226-138, R1225-138, R1224-138, R208-138, R2985-138, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,43 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261012-0020-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "301",
-       "lineName": "U1",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4182
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T11:12:00.000+0200",
-     "end": "2026-10-12T11:59:00.000+0200",
-     "lastUpdate": "2026-10-12T11:59:00.000+0200",
-     "resume": "2026-10-12T11:59:00.000+0200",
-     "start": "2026-10-12T11:10:00.000+0200"
-    },
-    "title": "U1: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "31": "ptTram"
      }
     },
@@ -306,6 +269,42 @@
      "start": "2026-10-12T12:16:00.000+0200"
     },
     "title": "31: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "38": "ptTram"
+     }
+    },
+    "description": "Linie 38: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 13:10 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Sieveringer Straße.",
+    "descriptionHTML": "Linie 38:<br>Fahrtbehinderung in Richtung Schottentor U.<br> <br>Voraussichtliche Dauer: 13:10 Uhr.<br><br>Grund: Polizeieinsatz im Haltestellenbereich Sieveringer Straße.",
+    "name": "I20261012-0022",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "138",
+       "lineName": "38",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1217
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-12T12:52:00.000+0200",
+     "end": "2026-10-12T23:55:00.000+0200",
+     "lastUpdate": "2026-10-12T12:52:00.000+0200",
+     "start": "2026-10-12T12:52:00.000+0200"
+    },
+    "title": "38: Polizeieinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -483,6 +482,78 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Züge halten in\nSchleife"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1224-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1224
+    ],
+    "time": {
+     "end": "2026-10-12T13:52:00.000+0200",
+     "start": "2026-10-12T12:53:12.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1225-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1225
+    ],
+    "time": {
+     "end": "2026-10-12T13:52:00.000+0200",
+     "start": "2026-10-12T12:53:12.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1226-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1226
+    ],
+    "time": {
+     "end": "2026-10-12T13:52:00.000+0200",
+     "start": "2026-10-12T12:53:12.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1227-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1227
+    ],
+    "time": {
+     "end": "2026-10-12T13:52:00.000+0200",
+     "start": "2026-10-12T12:53:12.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -768,6 +839,60 @@
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R208-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     208
+    ],
+    "time": {
+     "end": "2026-10-12T13:52:00.000+0200",
+     "start": "2026-10-12T12:53:12.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R209-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     209
+    ],
+    "time": {
+     "end": "2026-10-12T13:52:00.000+0200",
+     "start": "2026-10-12T12:53:12.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R210-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     210
+    ],
+    "time": {
+     "end": "2026-10-12T13:52:00.000+0200",
+     "start": "2026-10-12T12:53:12.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "description": "Falschparker\nUmleitung! Einstieg bei Linie 12.",
@@ -1128,6 +1253,24 @@
      "start": "2026-10-07T00:00:15.000+0200"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2985-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     2985
+    ],
+    "time": {
+     "end": "2026-10-12T13:52:00.000+0200",
+     "start": "2026-10-12T12:53:14.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
