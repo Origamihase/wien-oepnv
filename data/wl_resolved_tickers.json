@@ -1,5 +1,27 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R2195-131|2026-10-12T12:22:41.000+0200|Falschparker\nBetrieb ab Gaußplatz (Umleitung)",
+   "name": "R2195-131",
+   "title": "Falschparker\nBetrieb ab Gaußplatz (Umleitung)",
+   "end": "2026-10-12T13:22:00.000+0200",
+   "incident": "I20261012-0021"
+  },
+  {
+   "key": "R2196-131|2026-10-12T12:22:41.000+0200|Falschparker\nBetrieb ab Gaußplatz (Umleitung)",
+   "name": "R2196-131",
+   "title": "Falschparker\nBetrieb ab Gaußplatz (Umleitung)",
+   "end": "2026-10-12T13:22:00.000+0200",
+   "incident": "I20261012-0021"
+  },
+  {
+   "key": "R2198-131|2026-10-12T12:17:11.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R2198-131",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-12T13:16:00.000+0200",
+   "incident": "I20261012-0021"
+  }
+ ]
 }
