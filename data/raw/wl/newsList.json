@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_487, ftazW_756, ftazW_146, ftazW_1017119, ftazW_1031269, ftazW_147, ftazW_29, ftazW_1031270, ftazW_211, ftazW_488, ftazW_1354336, ftazW_1017120, ftazW_1016902, ftazW_734, ftazW_1031272, ftazW_1031273, ftazW_1016903, ftazW_82, ftazW_736, ftazW_239, ftazW_1017121, ftazW_83, ftazW_728, ftazW_84, ftazW_240, ftazW_727, ftazW_45, ftazW_1017123, ftazW_1031267"
+    "trafficInfoNameList": "ftazW_487, ftazW_756, ftazW_146, ftazW_1353815, ftazW_1017119, ftazW_1031269, ftazW_147, ftazW_29, ftazW_1031270, ftazW_211, ftazW_488, ftazW_1354336, ftazW_1017120, ftazW_1016902, ftazW_734, ftazW_1031272, ftazW_1031273, ftazW_1016903, ftazW_82, ftazW_736, ftazW_239, ftazW_1017121, ftazW_83, ftazW_728, ftazW_84, ftazW_240, ftazW_727, ftazW_45, ftazW_1017123, ftazW_1031267"
    }
   ],
   "poiCategoryGroups": [
@@ -2932,6 +2932,32 @@
      "start": "2026-10-14T01:15:00.000+0200"
     },
     "title": "Donaustadtbrücke"
+   },
+   {
+    "attributes": {
+     "ausBis": "13.10.2026 00:45",
+     "ausVon": "12.10.2026 20:45",
+     "location": "U6 Mittelbahnsteig - Zwischengeschoß Zugang ÖBB Bahnsteig",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Bahnhof Meidling",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "U6 Mittelbahnsteig - Zwischengeschoß Zugang ÖBB Bahnsteig",
+    "name": "ftazW_1353815",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "time": {
+     "end": "2026-10-13T00:45:00.000+0200",
+     "start": "2026-10-12T20:45:00.000+0200"
+    },
+    "title": "Bahnhof Meidling"
    },
    {
     "attributes": {
