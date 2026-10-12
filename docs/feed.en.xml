@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 12 Oct 2026 23:30:44 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 00:00:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U2: Delays]]></title>
+      <title><![CDATA[9: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1</guid>
-      <pubDate>Mon, 12 Oct 2026 23:11:00 +0200</pubDate>
-      <ext:first_seen>Mon, 12 Oct 2026 23:11:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 12 Oct 2026 23:11:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 12 Oct 2026 23:45:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 23:11]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 23:11]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Construction works]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c8fe425d7242fb213ce8416c7e36d3307750aef3cd584dd26b6b881c88e54d42</guid>
-      <pubDate>Mon, 12 Oct 2026 22:07:00 +0200</pubDate>
-      <ext:first_seen>Mon, 12 Oct 2026 22:07:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 12 Oct 2026 22:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 12 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>The U6 line is currently running at Neue Donau station in both directions on track 2. Reason: construction works. [Today]</description>
-      <content:encoded><![CDATA[The U6 line is currently running at Neue Donau station in both directions on track 2. Reason: construction works.<br/>[Today]]]></content:encoded>
+      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
+      <pubDate>Mon, 12 Oct 2026 23:47:00 +0200</pubDate>
+      <ext:first_seen>Mon, 12 Oct 2026 23:47:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 12 Oct 2026 23:59:27 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 00:59:00 +0200</ext:ends_at>
+      <description>Service obstruction towards Westbahnhof S U. Expected until 00:15. Reason: illegally parked vehicle in the area of Hormayrgasse 43. [Today]</description>
+      <content:encoded><![CDATA[Service obstruction towards Westbahnhof S U. Expected until 00:15. Reason: illegally parked vehicle in the area of Hormayrgasse 43.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/71/D: Demonstration on 13.10.2026]]></title>
@@ -39,8 +28,8 @@
       <ext:first_seen>Mon, 12 Oct 2026 13:02:35 +0200</ext:first_seen>
       <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 13 Oct 2026 19:00:00 +0200</ext:ends_at>
-      <description>Due to a demonstration, there is a restriction on public transport. [On Tue 13.10.]</description>
-      <content:encoded><![CDATA[Due to a demonstration, there is a restriction on public transport.<br/>[On Tue 13.10.]]]></content:encoded>
+      <description>Due to a demonstration, there is a restriction on public transport. [Today]</description>
+      <content:encoded><![CDATA[Due to a demonstration, there is a restriction on public transport.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12/5: Albertgasse]]></title>
@@ -50,8 +39,41 @@
       <ext:first_seen>Fri, 09 Oct 2026 00:00:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <description>Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works. [From Tue 13.10. until 03.11.]</description>
-      <content:encoded><![CDATA[Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works.<br/>[From Tue 13.10. until 03.11.]]]></content:encoded>
+      <description>Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works. [Until 03.11.]</description>
+      <content:encoded><![CDATA[Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works.<br/>[Until 03.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A: Max-Mauermann-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">56aa798cbb018fbaed4813a991f56c2470867f1f9a0ce034661ba2e01da13007</guid>
+      <pubDate>Wed, 07 Oct 2026 15:30:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 15:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling … [Until 25.12.]</description>
+      <content:encoded><![CDATA[Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling …<br/>[Until 25.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[20A: Construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d541da730008a50f7d13d1231355ba02134695bfdd0469c8f90d4ab1ab9eaf30</guid>
+      <pubDate>Fri, 02 Oct 2026 16:05:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 16:31:05 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Oct 2026 17:00:00 +0200</ext:ends_at>
+      <description>Due to construction works in the area of Wildbadgasse, line 20A is redirected. [Until Wed 14.10.]</description>
+      <content:encoded><![CDATA[Due to construction works in the area of Wildbadgasse, line 20A is redirected.<br/>[Until Wed 14.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">615c7d9755493e3506136b4c89ccafaac30323c3c9774583bc4b55062576c7bb</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 13:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 14 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Due to construction works in the area of Neilreichgasse / Davidgasse, line 7A is redirected. [From Wed 14.10. until 14.11.]</description>
+      <content:encoded><![CDATA[Due to construction works in the area of Neilreichgasse / Davidgasse, line 7A is redirected.<br/>[From Wed 14.10. until 14.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1A/3A: Schwertgasse]]></title>
@@ -65,15 +87,15 @@
       <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation.<br/>[Until 31.03.2027]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[15A: Max-Mauermann-Gasse]]></title>
+      <title><![CDATA[30A/31A/36A/36B: Großjedlersdorf]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">56aa798cbb018fbaed4813a991f56c2470867f1f9a0ce034661ba2e01da13007</guid>
-      <pubDate>Wed, 07 Oct 2026 15:30:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 15:30:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling … [From Tue 13.10. until 25.12.]</description>
-      <content:encoded><![CDATA[Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling …<br/>[From Tue 13.10. until 25.12.]]]></content:encoded>
+      <guid isPermaLink="false">ce34a544ce4bbc382e34f3f31313bf19d5bf84aa82a678002869995af06a5f15</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 07:00:00 +0200</ext:ends_at>
+      <description>Frauenstiftgasse after Brünner Straße → Frauenstiftgasse 5-7. Stop relocation of lines 30A towards Freiheitsplatz, 31A towards Jochbergengasse, 36A and 36B … [From Wed 14.10. until Fri 16.10.]</description>
+      <content:encoded><![CDATA[Frauenstiftgasse after Brünner Straße → Frauenstiftgasse 5-7. Stop relocation of lines 30A towards Freiheitsplatz, 31A towards Jochbergengasse, 36A and 36B …<br/>[From Wed 14.10. until Fri 16.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 … [Until 06.11.]</description>
       <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 …<br/>[Until 06.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
-      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction. [Until 26.10.]</description>
-      <content:encoded><![CDATA[Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction.<br/>[Until 26.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Neue Donau, no stop towards Floridsdorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">747d54fbd4c0aad685b21596a0c44cb67d41165e556ee43b1bc3e8636920f551</guid>
-      <pubDate>Thu, 13 Aug 2026 12:00:00 +0200</pubDate>
-      <ext:first_seen>Sun, 04 Oct 2026 16:30:37 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 14 Sep 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 31 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Due to renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station Neue Donau with the U6 of … [Until 31.12.]</description>
-      <content:encoded><![CDATA[Due to renovation of the platform, line U6 stops at the station Neue Donau U only in the direction of Siebenhirten U. You can reach the station Neue Donau with the U6 of …<br/>[Until 31.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
