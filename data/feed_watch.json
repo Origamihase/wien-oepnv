@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-12T23:01:02.795880+00:00",
- "built": "2026-10-13T01:00:53+02:00",
+ "updated": "2026-10-12T23:30:55.787522+00:00",
+ "built": "2026-10-13T01:30:50+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-13T01:00:53+02:00",
+  "built": "2026-10-13T01:30:50+02:00",
   "items": [
    {
     "title": "N71: Polizeieinsatz, Ersatzverkehr",
@@ -1970,6 +1970,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 104
+   }
+  },
+  {
+   "t": "2026-10-12T23:30:55.787522+00:00",
+   "raw": {
+    "wl-stoerungen": 68,
+    "wl-hinweise": 96,
+    "oebb": 168,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 20,
+    "oebb": 144,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 107
    }
   }
  ]
