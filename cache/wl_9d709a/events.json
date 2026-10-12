@@ -818,6 +818,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12A: Fahrtbehinderung Falschparker",
+    "description": "Linie 12A: Betrieb nur zwischen Schmelz, Gablenzgasse und Fendigasse. Voraussichtliche Dauer: 06:00 Uhr. Grund: Falschparker im Haltestellenbereich Siebenbrunnengasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
+    "pubDate": "2026-10-12T05:41:00+02:00",
+    "starts_at": "2026-10-12T05:42:30+02:00",
+    "ends_at": "2026-10-12T23:55:00+02:00",
+    "_identity": "wl|störung|L=12A|D=2026-10-12|TK=falschparker",
+    "_wl_ids": [
+      "I20261012-0005"
+    ],
+    "_incident_start": "2026-10-12T05:41:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1034,18 +1050,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "57A: Fahrtbehinderung Falschparker",
-    "description": "Linie 57A: Fahrtbehinderung in Richtung Burgring. Voraussichtliche Dauer: 05:40 Uhr. Grund: Falschparker im Bereich Jheringgasse 8.",
+    "title": "57A: Schadhaftes Fahrzeug",
+    "description": "Linie 57A: Fahrtbehinderung in Richtung Burgring. Voraussichtliche Dauer: 06:15 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Jheringgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ea62c449327bf335e63a7d607bb714e6ac14750aff28e2890f1af90455e231e6",
-    "pubDate": "2026-10-12T05:18:00+02:00",
-    "starts_at": "2026-10-12T05:21:29+02:00",
+    "guid": "78cb3d65edcb3a7bca77fc5c286d529e11d5d2d3cfad69d34e799986ea945f7c",
+    "pubDate": "2026-10-12T05:53:00+02:00",
+    "starts_at": "2026-10-12T05:53:00+02:00",
     "ends_at": "2026-10-12T23:55:00+02:00",
-    "_identity": "wl|störung|L=57A|D=2026-10-12|TK=falschparker",
+    "_identity": "wl|störung|L=57A|D=2026-10-12|TK=57a schadhaftes fahrzeug",
     "_wl_ids": [
-      "I20261012-0004"
+      "I20261012-0007"
     ],
-    "_incident_start": "2026-10-12T05:18:00+02:00"
+    "_incident_start": "2026-10-12T05:53:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1154,30 +1170,14 @@
     "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-10-12T04:43:00+02:00",
-    "starts_at": "2026-10-12T04:43:00+02:00",
+    "pubDate": "2026-10-12T05:46:00+02:00",
+    "starts_at": "2026-10-12T05:46:00+02:00",
     "ends_at": "2026-10-12T23:55:00+02:00",
     "_identity": "wl|störung|L=U3|D=2026-10-12|TK=u3 verspätungen",
     "_wl_ids": [
-      "I20261012-0001"
+      "I20261012-0006"
     ],
-    "_incident_start": "2026-10-12T04:43:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2026-10-12T05:06:00+02:00",
-    "starts_at": "2026-10-12T05:06:00+02:00",
-    "ends_at": "2026-10-12T23:55:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-10-12|TK=u4 verspätungen",
-    "_wl_ids": [
-      "I20261012-0003"
-    ],
-    "_incident_start": "2026-10-12T05:06:00+02:00"
+    "_incident_start": "2026-10-12T05:46:00+02:00"
   },
   {
     "source": "Wiener Linien",
