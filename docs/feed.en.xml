@@ -7,10 +7,32 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Mon, 12 Oct 2026 05:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2026 05:30:40 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U3: Defective vehicle]]></title>
+      <title><![CDATA[57A: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ea62c449327bf335e63a7d607bb714e6ac14750aff28e2890f1af90455e231e6</guid>
+      <pubDate>Mon, 12 Oct 2026 05:18:00 +0200</pubDate>
+      <ext:first_seen>Mon, 12 Oct 2026 05:18:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 12 Oct 2026 05:21:29 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 12 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction towards Burgring. Expected until 05:40. Reason: illegally parked vehicle in the area of Jheringgasse 8. [Since 05:18]</description>
+      <content:encoded><![CDATA[Service obstruction towards Burgring. Expected until 05:40. Reason: illegally parked vehicle in the area of Jheringgasse 8.<br/>[Since 05:18]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
+      <pubDate>Mon, 12 Oct 2026 05:06:00 +0200</pubDate>
+      <ext:first_seen>Mon, 12 Oct 2026 05:06:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 12 Oct 2026 05:06:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 12 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 05:06]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 05:06]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Delays]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3</guid>
       <pubDate>Mon, 12 Oct 2026 04:43:00 +0200</pubDate>
@@ -19,17 +41,6 @@
       <ext:ends_at>Mon, 12 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 04:43]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 04:43]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N8: Buses stop at Aßmayergasse just after Flurschützstraße for line 59A]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">10b9a6d53b42f1dead1c688ecfaaf4e6a3c8058ce9e29c10c1d6b71e47353c17</guid>
-      <pubDate>Mon, 12 Oct 2026 00:45:06 +0200</pubDate>
-      <ext:first_seen>Sat, 10 Oct 2026 01:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 12 Oct 2026 00:45:06 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 12 Oct 2026 05:15:00 +0200</ext:ends_at>
-      <description>Reason: track construction works. [Today]</description>
-      <content:encoded><![CDATA[Reason: track construction works.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12/5: Albertgasse]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 … [Until 06.11.]</description>
       <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 …<br/>[Until 06.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
-      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction. [Until 26.10.]</description>
-      <content:encoded><![CDATA[Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction.<br/>[Until 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
