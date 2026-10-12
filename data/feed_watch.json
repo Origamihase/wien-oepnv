@@ -1,20 +1,24 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-12T04:00:56.955478+00:00",
- "built": "2026-10-12T06:00:46+02:00",
+ "updated": "2026-10-12T04:30:52.268785+00:00",
+ "built": "2026-10-12T06:30:43+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-12T06:00:46+02:00",
+  "built": "2026-10-12T06:30:43+02:00",
   "items": [
    {
-    "title": "57A: Schadhaftes Fahrzeug",
-    "time_line": "Seit 05:53"
+    "title": "6: Verspätungen",
+    "time_line": "Seit 06:21"
    },
    {
-    "title": "U3: Verspätungen",
-    "time_line": "Seit 05:46"
+    "title": "U1: Verspätungen",
+    "time_line": "Seit 06:08"
+   },
+   {
+    "title": "57A/U3: Schadhaftes Fahrzeug",
+    "time_line": "Seit 05:53"
    },
    {
     "title": "12A: Falschparker, Gleisbauarbeiten",
@@ -43,10 +47,6 @@
    {
     "title": "S80: ÖBB-Ersatzbus",
     "time_line": "Heute"
-   },
-   {
-    "title": "15A/7A/N62: Eibesbrunnergasse beide Fahrtrichtungen",
-    "time_line": "Bis 06.11."
    }
   ]
  },
@@ -1210,6 +1210,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 100
+   }
+  },
+  {
+   "t": "2026-10-12T04:30:52.268785+00:00",
+   "raw": {
+    "wl-stoerungen": 79,
+    "wl-hinweise": 102,
+    "oebb": 163,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 29,
+    "oebb": 139,
+    "baustellen": 69
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 102
    }
   }
  ]

@@ -2,7 +2,15 @@
  "verworfen": [
   {
    "grund": "Kurzmeldung einer erledigten Störung",
+   "titel": "Fahrtbehinderung Falschparker"
+  },
+  {
+   "grund": "Kurzmeldung einer erledigten Störung",
    "titel": "Fahrtbehinderung Schadhafter Bus"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "12A: Falschparker"
   },
   {
    "grund": "Status inaktiv",
@@ -10,7 +18,11 @@
   },
   {
    "grund": "Status inaktiv",
-   "titel": "7A: Signalstörung"
+   "titel": "57A: Schadhaftes Fahrzeug"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "U3: Schadhaftes Fahrzeug"
   },
   {
    "grund": "Status inaktiv",
