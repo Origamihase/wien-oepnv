@@ -3,41 +3,6 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R1465-152|2026-10-12T07:50:13.000+0200|Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen.",
-   "name": "R1465-152",
-   "title": "Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen.",
-   "end": "2026-10-12T10:00:00.000+0200",
-   "incident": "I20261012-0015"
-  },
-  {
-   "key": "R1539-152|2026-10-12T07:51:43.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R1539-152",
-   "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-12T09:45:00.000+0200",
-   "incident": "I20261012-0015"
-  },
-  {
-   "key": "R1542-152|2026-10-12T07:51:43.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R1542-152",
-   "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-12T09:45:00.000+0200",
-   "incident": "I20261012-0015"
-  },
-  {
-   "key": "R1553-152|2026-10-12T07:50:13.000+0200|Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen.",
-   "name": "R1553-152",
-   "title": "Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen.",
-   "end": "2026-10-12T10:00:00.000+0200",
-   "incident": "I20261012-0015"
-  },
-  {
-   "key": "R1556-152|2026-10-12T07:49:13.000+0200|Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen.",
-   "name": "R1556-152",
-   "title": "Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen.",
-   "end": "2026-10-12T10:00:00.000+0200",
-   "incident": "I20261012-0015"
-  },
-  {
    "key": "R2619-118|2026-10-12T09:27:24.000+0200|Fahrtbehinderung\nVerkehrsunfall",
    "name": "R2619-118",
    "title": "Fahrtbehinderung\nVerkehrsunfall",

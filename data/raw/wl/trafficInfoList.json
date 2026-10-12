@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261012-0018-F01, I20261012-0018-F02, I20261012-0018-F03, I20261012-0018-F04, I20261012-0018, I20260917-0012, I20260922-0032, I20261012-0014, I20260925-0011, I20260909-0007, I20261012-0017-F01, I20261012-0015-F01, I20261012-0017"
+    "trafficInfoNameList": "I20261012-0018-F01, I20261012-0018-F02, I20261012-0018-F03, I20261012-0018-F04, I20261012-0018, I20260917-0012, I20260922-0032, I20261012-0017-F01, I20260925-0011, I20260909-0007, I20261012-0015-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2372-627, R2379-627, R2380-627, R2345-127, R2373-126, R2373-127, R5815-671, R1974-466, R500-101, R1556-152, R1553-152, R1465-152, R1539-152, R1542-152, R847-118, R848-118, R849-118, R851-118, R339-118, R835-118, R834-118, R293-118, R303-118, R304-118, R428-118, R427-118, R2619-118, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R45-136, R19-136, R130-136, R119-136, R101-136, R36-152, R100-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2359-125, R2343-125, R2343-626, R2378-627, R2370-125, R2379-627, R2380-627, R2345-127, R2372-627, R2373-127, R2373-126, R2373-125, R2372-125, R2371-125, R5815-671, R1974-466, R500-101, R339-118, R851-118, R849-118, R848-118, R847-118, R303-118, R834-118, R304-118, R293-118, R835-118, R427-118, R428-118, R2619-118, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,43 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261012-0014",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "304",
-       "lineName": "U4",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4409
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T07:30:00.000+0200",
-     "end": "2026-10-12T08:50:00.000+0200",
-     "lastUpdate": "2026-10-12T08:50:00.000+0200",
-     "resume": "2026-10-12T08:50:00.000+0200",
-     "start": "2026-10-12T07:29:00.000+0200"
-    },
-    "title": "U4: Verspätungen"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "52": "ptTram"
      }
     },
@@ -278,43 +241,6 @@
       "U4": "ptMetro"
      }
     },
-    "description": "Linie U4: Fahrtbehinderung in Richtung Hütteldorf. Voraussichtliche Dauer: 09:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Längenfeldgasse.",
-    "descriptionHTML": "Linie U4:<br>Fahrtbehinderung in Richtung Hütteldorf.<br> <br>Voraussichtliche Dauer: 09:15 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Längenfeldgasse.",
-    "name": "I20261012-0017",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "304",
-       "lineName": "U4",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4437
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-12T08:50:00.000+0200",
-     "end": "2026-10-12T08:52:00.000+0200",
-     "lastUpdate": "2026-10-12T08:52:00.000+0200",
-     "resume": "2026-10-12T08:52:00.000+0200",
-     "start": "2026-10-12T08:50:00.000+0200"
-    },
-    "title": "U4: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
     "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "name": "I20261012-0017-F01",
@@ -336,12 +262,12 @@
     "relatedStops": [
      4437
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-12T08:52:00.000+0200",
-     "end": "2026-10-12T23:55:00.000+0200",
-     "lastUpdate": "2026-10-12T08:52:00.000+0200",
-     "resume": "2026-10-12T08:52:00.000+0200",
+     "end": "2026-10-12T09:34:00.000+0200",
+     "lastUpdate": "2026-10-12T09:34:00.000+0200",
+     "resume": "2026-10-12T09:34:00.000+0200",
      "start": "2026-10-12T08:50:00.000+0200"
     },
     "title": "U4: Rettungseinsatz"
@@ -846,24 +772,6 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
    },
    {
-    "description": "Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen.",
-    "name": "R1465-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1465
-    ],
-    "time": {
-     "end": "2026-10-12T10:00:00.000+0200",
-     "start": "2026-10-12T07:50:13.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen."
-   },
-   {
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
     "name": "R1472-149",
     "owner": "WL",
@@ -970,78 +878,6 @@
      "start": "2026-10-07T00:00:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1539-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1539
-    ],
-    "time": {
-     "end": "2026-10-12T09:45:00.000+0200",
-     "start": "2026-10-12T07:51:43.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1542-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1542
-    ],
-    "time": {
-     "end": "2026-10-12T09:45:00.000+0200",
-     "start": "2026-10-12T07:51:43.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen.",
-    "name": "R1553-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1553
-    ],
-    "time": {
-     "end": "2026-10-12T10:00:00.000+0200",
-     "start": "2026-10-12T07:50:13.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen."
-   },
-   {
-    "description": "Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen.",
-    "name": "R1556-152",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1556
-    ],
-    "time": {
-     "end": "2026-10-12T10:00:00.000+0200",
-     "start": "2026-10-12T07:49:13.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Reinlgasse. Linie 46 benutzen."
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
