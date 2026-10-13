@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 13 Oct 2026 07:00:51 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 07:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[40A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9bf5343b39ded7dc7ca142844f951a241fc0e1d681fa0c0e2ed28db2ac8efe38</guid>
+      <pubDate>Tue, 13 Oct 2026 07:01:00 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 07:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 07:01:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 07:01]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 07:01]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
+      <pubDate>Tue, 13 Oct 2026 07:19:00 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 06:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 07:19:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 07:19]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 07:19]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[16A/17A/67A/67B: Störung an einem Bahnübergang]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,15 +43,26 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 06:31]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U4: Verspätungen]]></title>
+      <title><![CDATA[12A: Falschparker, Gleisbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
-      <pubDate>Tue, 13 Oct 2026 06:31:00 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 06:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 06:31:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7</guid>
+      <pubDate>Tue, 13 Oct 2026 07:12:00 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 07:12:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 07:12:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21. [Heute]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
+      <pubDate>Tue, 13 Oct 2026 07:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 07:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 07:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 06:31]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 06:31]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Heute]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Verkehrsunfall, Bauarbeiten]]></title>
@@ -85,39 +118,6 @@
       <ext:ends_at>Wed, 14 Oct 2026 17:00:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet. [Bis Mi 14.10.]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet.<br/>[Bis Mi 14.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">615c7d9755493e3506136b4c89ccafaac30323c3c9774583bc4b55062576c7bb</guid>
-      <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 13:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 14 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet. [Ab Mi 14.10. bis 14.11.]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet.<br/>[Ab Mi 14.10. bis 14.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A/3A: Schwertgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
-      <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung. [Bis 31.03.2027]</description>
-      <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung.<br/>[Bis 31.03.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[30A/31A/36A/36B: Großjedlersdorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ce34a544ce4bbc382e34f3f31313bf19d5bf84aa82a678002869995af06a5f15</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 07:00:00 +0200</ext:ends_at>
-      <description>Frauenstiftgasse nach Brünner Straße → Frauenstiftgasse 5-7. Haltestellenverlegung der Linien 30A in Richtung Freiheitsplatz, 31A in Richtung Jochbergengasse, 36A und 36B … [Ab Mi 14.10. bis Fr 16.10.]</description>
-      <content:encoded><![CDATA[Frauenstiftgasse nach Brünner Straße → Frauenstiftgasse 5-7. Haltestellenverlegung der Linien 30A in Richtung Freiheitsplatz, 31A in Richtung Jochbergengasse, 36A und 36B …<br/>[Ab Mi 14.10. bis Fr 16.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
