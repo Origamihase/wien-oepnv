@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 13 Oct 2026 23:30:44 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 00:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[7A: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">615c7d9755493e3506136b4c89ccafaac30323c3c9774583bc4b55062576c7bb</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 13:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 14 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet. [Bis 14.11.]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet.<br/>[Bis 14.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[30A/31A/36A/36B: Großjedlersdorf]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ce34a544ce4bbc382e34f3f31313bf19d5bf84aa82a678002869995af06a5f15</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 07:00:00 +0200</ext:ends_at>
+      <description>Frauenstiftgasse nach Brünner Straße → Frauenstiftgasse 5-7. Haltestellenverlegung der Linien 30A in Richtung Freiheitsplatz, 31A in Richtung Jochbergengasse, 36A und 36B … [Bis Fr 16.10.]</description>
+      <content:encoded><![CDATA[Frauenstiftgasse nach Brünner Straße → Frauenstiftgasse 5-7. Haltestellenverlegung der Linien 30A in Richtung Freiheitsplatz, 31A in Richtung Jochbergengasse, 36A und 36B …<br/>[Bis Fr 16.10.]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[12/5: Albertgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -39,19 +61,8 @@
       <ext:first_seen>Fri, 02 Oct 2026 16:31:05 +0200</ext:first_seen>
       <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 14 Oct 2026 17:00:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet. [Bis Mi 14.10.]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet.<br/>[Bis Mi 14.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">615c7d9755493e3506136b4c89ccafaac30323c3c9774583bc4b55062576c7bb</guid>
-      <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 13:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 14 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet. [Ab Mi 14.10. bis 14.11.]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet.<br/>[Ab Mi 14.10. bis 14.11.]]]></content:encoded>
+      <description>Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet. [Heute]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1A/3A: Schwertgasse]]></title>
@@ -63,17 +74,6 @@
       <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
       <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung. [Bis 31.03.2027]</description>
       <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung.<br/>[Bis 31.03.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[30A/31A/36A/36B: Großjedlersdorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ce34a544ce4bbc382e34f3f31313bf19d5bf84aa82a678002869995af06a5f15</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 07:00:00 +0200</ext:ends_at>
-      <description>Frauenstiftgasse nach Brünner Straße → Frauenstiftgasse 5-7. Haltestellenverlegung der Linien 30A in Richtung Freiheitsplatz, 31A in Richtung Jochbergengasse, 36A und 36B … [Ab Mi 14.10. bis Fr 16.10.]</description>
-      <content:encoded><![CDATA[Frauenstiftgasse nach Brünner Straße → Frauenstiftgasse 5-7. Haltestellenverlegung der Linien 30A in Richtung Freiheitsplatz, 31A in Richtung Jochbergengasse, 36A und 36B …<br/>[Ab Mi 14.10. bis Fr 16.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
