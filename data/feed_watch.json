@@ -1,20 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-13T10:01:06.904225+00:00",
- "built": "2026-10-13T12:01:03+02:00",
+ "updated": "2026-10-13T10:30:54.295445+00:00",
+ "built": "2026-10-13T12:30:46+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-13T12:01:03+02:00",
+  "built": "2026-10-13T12:30:46+02:00",
   "items": [
    {
-    "title": "O: Falschparker",
-    "time_line": "Seit 10:54"
-   },
-   {
-    "title": "38: Rettungseinsatz",
-    "time_line": "Seit 10:51"
+    "title": "13A: Verkehrsüberlastung",
+    "time_line": "Seit 12:14"
    },
    {
     "title": "U3: Verspätungen",
@@ -47,6 +43,10 @@
    {
     "title": "30A/31A/36A/36B: Großjedlersdorf",
     "time_line": "Ab Mi 14.10. bis Fr 16.10."
+   },
+   {
+    "title": "66A/N66: Liesing, Schulzentrum",
+    "time_line": "Bis 28.10."
    }
   ]
  },
@@ -2410,6 +2410,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 100
+   }
+  },
+  {
+   "t": "2026-10-13T10:30:54.295445+00:00",
+   "raw": {
+    "wl-stoerungen": 64,
+    "wl-hinweise": 102,
+    "oebb": 160,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 26,
+    "oebb": 136,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 99
    }
   }
  ]

@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 13 Oct 2026 12:01:03 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 12:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[O: Falschparker]]></title>
+      <title><![CDATA[13A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a90305646f013b3987fb55ef5dab8d20d35b0e58b3f412f792bb39c48c2fa5a8</guid>
-      <pubDate>Tue, 13 Oct 2026 10:54:00 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 10:54:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 10:54:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">0b00fe24c2dd37aaf07ae252d80374592513223744f2d6ecc3fa197c58c6de52</guid>
+      <pubDate>Tue, 13 Oct 2026 12:14:00 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 12:14:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 12:14:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 10:54]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 10:54]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a71fc169a65218e40e97e38cf1216a0530e03cb41823f0f6e351949dbeea8a98</guid>
-      <pubDate>Tue, 13 Oct 2026 10:51:00 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 10:51:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 10:51:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 10:51]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 10:51]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 12:14]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 12:14]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Verspätungen]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 16 Oct 2026 07:00:00 +0200</ext:ends_at>
       <description>Frauenstiftgasse nach Brünner Straße → Frauenstiftgasse 5-7. Haltestellenverlegung der Linien 30A in Richtung Freiheitsplatz, 31A in Richtung Jochbergengasse, 36A und 36B … [Ab Mi 14.10. bis Fr 16.10.]</description>
       <content:encoded><![CDATA[Frauenstiftgasse nach Brünner Straße → Frauenstiftgasse 5-7. Haltestellenverlegung der Linien 30A in Richtung Freiheitsplatz, 31A in Richtung Jochbergengasse, 36A und 36B …<br/>[Ab Mi 14.10. bis Fr 16.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
+      <pubDate>Mon, 05 Oct 2026 15:40:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 15:40:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 … [Bis 28.10.]</description>
+      <content:encoded><![CDATA[Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 …<br/>[Bis 28.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

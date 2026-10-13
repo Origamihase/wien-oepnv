@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261013-0019-F01, I20261013-0019, I20261013-0013-F01, I20260917-0012, I20260922-0032, I20261013-0006-F01, I20260925-0011, I20260909-0007, I20261013-0017, I20261013-0020-F01, I20261013-0020, I20261013-0018, I20261013-0021"
+    "trafficInfoNameList": "I20261013-0013-F01, I20260917-0012, I20260922-0032, I20261013-0006-F01, I20261013-0020-F01, I20260925-0011, I20260909-0007, I20261013-0017, I20261013-0019-F01, I20261013-0018, I20261013-0022, I20261013-0021"
    },
    {
     "id": 3,
@@ -346,43 +346,6 @@
       "38": "ptTram"
      }
     },
-    "description": "Linie 38: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Weichen Sie ersatzweise auf die Linien 37, 10A, 38A und 39A aus. Voraussichtliche Dauer: 11:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Gatterburggasse.",
-    "descriptionHTML": "Linie 38:<br>Betrieb nur zwischen Schottentor U und Nußdorfer Straße U.<br> <br>Weichen Sie ersatzweise auf die Linien 37, 10A, 38A und 39A aus.<br><br>Voraussichtliche Dauer: 11:15 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Gatterburggasse.",
-    "name": "I20261013-0019",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "138",
-       "lineName": "38",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     2964
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-13T10:54:00.000+0200",
-     "end": "2026-10-13T11:01:00.000+0200",
-     "lastUpdate": "2026-10-13T11:01:00.000+0200",
-     "resume": "2026-10-13T11:01:00.000+0200",
-     "start": "2026-10-13T10:51:00.000+0200"
-    },
-    "title": "38: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "38": "ptTram"
-     }
-    },
     "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "name": "I20261013-0019-F01",
@@ -404,50 +367,15 @@
     "relatedStops": [
      2964
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-13T11:01:00.000+0200",
-     "end": "2026-10-13T23:55:00.000+0200",
-     "lastUpdate": "2026-10-13T11:01:00.000+0200",
-     "resume": "2026-10-13T11:01:00.000+0200",
+     "end": "2026-10-13T12:14:00.000+0200",
+     "lastUpdate": "2026-10-13T12:14:00.000+0200",
+     "resume": "2026-10-13T12:14:00.000+0200",
      "start": "2026-10-13T10:51:00.000+0200"
     },
     "title": "38: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie O: Fahrtbehinderung in Richtung Raxstraße. Voraussichtliche Dauer: 11:20 Uhr. Grund: Falschparker im Bereich Radetzkystraße 23.",
-    "descriptionHTML": "Linie O:<br>Fahrtbehinderung in Richtung Raxstraße.<br> <br>Voraussichtliche Dauer: 11:20 Uhr.<br><br>Grund: Falschparker im Bereich Radetzkystraße 23.",
-    "location": "Radetzkystraße 23",
-    "name": "I20261013-0020",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "170",
-       "lineName": "O",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-13T10:55:00.000+0200",
-     "end": "2026-10-13T10:57:00.000+0200",
-     "lastUpdate": "2026-10-13T10:57:00.000+0200",
-     "resume": "2026-10-13T10:57:00.000+0200",
-     "start": "2026-10-13T10:54:00.000+0200"
-    },
-    "title": "O: Falschparker"
    },
    {
     "attributes": {
@@ -474,12 +402,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-13T10:57:00.000+0200",
-     "end": "2026-10-13T23:55:00.000+0200",
-     "lastUpdate": "2026-10-13T10:57:00.000+0200",
-     "resume": "2026-10-13T10:57:00.000+0200",
+     "end": "2026-10-13T12:13:00.000+0200",
+     "lastUpdate": "2026-10-13T12:13:00.000+0200",
+     "resume": "2026-10-13T12:13:00.000+0200",
      "start": "2026-10-13T10:54:00.000+0200"
     },
     "title": "O: Falschparker"
@@ -517,6 +445,40 @@
      "start": "2026-10-13T11:51:00.000+0200"
     },
     "title": "U3: Verspätungen"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "13A": "ptBusCity"
+     }
+    },
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "Linie 13A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
+    "name": "I20261013-0022",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "413",
+       "lineName": "13A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-13T12:14:00.000+0200",
+     "end": "2026-10-13T23:55:00.000+0200",
+     "lastUpdate": "2026-10-13T12:14:00.000+0200",
+     "resume": "2026-10-13T12:14:00.000+0200",
+     "start": "2026-10-13T12:14:00.000+0200"
+    },
+    "title": "13A: Verkehrsüberlastung"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
