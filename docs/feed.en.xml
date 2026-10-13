@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 13 Oct 2026 19:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 20:01:05 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[10A: Traffic accident]]></title>
+      <title><![CDATA[D: Traffic accident, track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a4037eb177f53feada9cd8d5d413f9865f66b30fafc51c7e633db6ca36d431e5</guid>
-      <pubDate>Tue, 13 Oct 2026 17:53:00 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 17:53:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 17:53:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 19:50:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 17:53]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 17:53]]]></content:encoded>
+      <guid isPermaLink="false">051fe237cd9d1bc03ec48c00ed10749fdd7ce5ba869a0aa8db07e86f4bc6eeb9</guid>
+      <pubDate>Tue, 13 Oct 2026 19:46:27 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 19:46:27 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 19:46:27 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Traffic accident: service obstruction. Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse. [Today]</description>
+      <content:encoded><![CDATA[Traffic accident: service obstruction. Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[74A: Rescue operation, construction works]]></title>
@@ -30,17 +30,6 @@
       <ext:ends_at>Tue, 13 Oct 2026 23:59:59 +0200</ext:ends_at>
       <description>Rescue operation: irregular intervals in both directions. Construction works: boarding Leberstraße in front of S-Bahn building. [Today]</description>
       <content:encoded><![CDATA[Rescue operation: irregular intervals in both directions. Construction works: boarding Leberstraße in front of S-Bahn building.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/71: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8cc22bbfd84d131d38143c70f680c24d1c39fbf1fe455e06a3f50824d8ce8e3c</guid>
-      <pubDate>Tue, 13 Oct 2026 11:39:00 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 11:39:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 11:39:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Today]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12/5: Albertgasse]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 … [Until 28.10.]</description>
       <content:encoded><![CDATA[Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 …<br/>[Until 28.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: ÖBB replacement bus]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
+      <pubDate>Tue, 13 Oct 2026 05:00:28 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 05:00:28 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 23:00:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf [Today]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
