@@ -1,15 +1,23 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-13T13:30:53.501420+00:00",
- "built": "2026-10-13T15:30:44+02:00",
+ "updated": "2026-10-13T14:01:29.525484+00:00",
+ "built": "2026-10-13T16:01:15+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-13T15:30:44+02:00",
+  "built": "2026-10-13T16:01:15+02:00",
   "items": [
    {
-    "title": "60A/66A: Polizeieinsatz",
+    "title": "37: Falschparker",
+    "time_line": "Seit 15:48"
+   },
+   {
+    "title": "U1: Betriebsstörung",
+    "time_line": "Seit 15:30"
+   },
+   {
+    "title": "60A: Polizeieinsatz",
     "time_line": "Seit 14:44"
    },
    {
@@ -21,12 +29,12 @@
     "time_line": "Seit 13:02"
    },
    {
-    "title": "U3: Rettungseinsatz",
-    "time_line": "Seit 13:12"
-   },
-   {
     "title": "D: Fremder Verkehrsunfall, Gleisbauarbeiten",
     "time_line": "Heute"
+   },
+   {
+    "title": "66A: Polizeieinsatz, Bauarbeiten",
+    "time_line": "Bis Mi 14.10."
    },
    {
     "title": "1/71/D: Demonstration am 13.10.2026",
@@ -39,14 +47,6 @@
    {
     "title": "15A: Max-Mauermann-Gasse",
     "time_line": "Bis 25.12."
-   },
-   {
-    "title": "20A: Bauarbeiten",
-    "time_line": "Bis Mi 14.10."
-   },
-   {
-    "title": "7A: Bauarbeiten",
-    "time_line": "Ab Mi 14.10. bis 14.11."
    }
   ]
  },
@@ -2550,6 +2550,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 105
+   }
+  },
+  {
+   "t": "2026-10-13T14:01:29.525484+00:00",
+   "raw": {
+    "wl-stoerungen": 156,
+    "wl-hinweise": 102,
+    "oebb": 160,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 27,
+    "oebb": 136,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 107
    }
   }
  ]
