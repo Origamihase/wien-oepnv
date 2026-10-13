@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 13 Oct 2026 14:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 15:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[3A: Traffic congestion]]></title>
+      <title><![CDATA[60A/66A: Police operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9f9e6187c209c35f7459a15952d47555cbf84b2191172cf18db8d559f94cca69</guid>
-      <pubDate>Tue, 13 Oct 2026 14:13:00 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 14:13:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 14:13:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">c652cf30c2af9c572183f45e9eac81da4c7406355a1e9d0106f8cc5657636fe4</guid>
+      <pubDate>Tue, 13 Oct 2026 14:44:00 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 15:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 14:44:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 14:13]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 14:13]]]></content:encoded>
+      <description>Line 60A is redirected in both directions between Brunner Straße, Erlaaer Straße and Schloss Alterlaa via Breitenfurter Straße and Gregorygasse. [Since 14:44]</description>
+      <content:encoded><![CDATA[Line 60A is redirected in both directions between Brunner Straße, Erlaaer Straße and Schloss Alterlaa via Breitenfurter Straße and Gregorygasse.<br/>[Since 14:44]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7</guid>
+      <pubDate>Tue, 13 Oct 2026 14:59:00 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 14:59:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 14:59:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction towards Kaiserebersdorf, Zinnergasse. Expected until 15:20. Reason: traffic accident in the area of Rennweg 92. [Since 14:59]</description>
+      <content:encoded><![CDATA[Service obstruction towards Kaiserebersdorf, Zinnergasse. Expected until 15:20. Reason: traffic accident in the area of Rennweg 92.<br/>[Since 14:59]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5/12: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d4e34f09d4feef2c9a3d0b25bc620ab6468efd635b84d9e7f803ea88c87e5d21</guid>
+      <pubDate>Tue, 13 Oct 2026 14:56:00 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 14:56:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 14:56:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction towards Praterstern S U. Line 12: service obstruction towards Hillerstraße. [Since 14:56]</description>
+      <content:encoded><![CDATA[Service obstruction towards Praterstern S U. Line 12: service obstruction towards Hillerstraße.<br/>[Since 14:56]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[O: Traffic accident]]></title>
@@ -41,17 +63,6 @@
       <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 13:12]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:12]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[6: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0db792f9373b33394ac9cbd54fe89c56f58770700c324d59539bd75f7e841cff</guid>
-      <pubDate>Tue, 13 Oct 2026 12:51:00 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 12:51:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 12:51:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 12:51]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 12:51]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/71/D: Demonstration on 13.10.2026]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 14 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Due to construction works in the area of Neilreichgasse / Davidgasse, line 7A is redirected. [From Wed 14.10. until 14.11.]</description>
       <content:encoded><![CDATA[Due to construction works in the area of Neilreichgasse / Davidgasse, line 7A is redirected.<br/>[From Wed 14.10. until 14.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A/3A: Schwertgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
-      <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation. [Until 31.03.2027]</description>
-      <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation.<br/>[Until 31.03.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
