@@ -2503,7 +2503,7 @@
     "title": "7A: Bauarbeiten ab 14.10.2026"
    },
    {
-    "description": "<h2>Demonstration</h2>\r\n<p>Wegen einer Demonstration kommt es zu einer Einschr&auml;nkung des &ouml;ffentlichen Verkehrs.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Am Dienstag, 13. Oktober 2026 zwischen 13:00 Uhr und 19:00 Uhr.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie D:</strong><br />Umleitung der Z&uuml;ge zwischen Absberggasse und B&ouml;rse in beiden Richtungen ab Quartier Belvedere &uuml;ber die Linie O - Wien Mitte - Julius-Raab-Platz - Schwedenplatz - Schottenring.</p>\r\n<p><strong>Linie 1:</strong><br />Umleitung in Richtung Prater Hauptallee zwischen Karlsplatz und Julius-Raab-Platz &uuml;ber Schwarzenbergplatz - Stubentor.<br />Umleitung in Richtung Stefan-Fadinger-Platz: Die Z&uuml;ge fahren bis B&ouml;rse, wenden dort und fahren zur&uuml;ck &uuml;ber Schottenring - Schwedenplatz - Stubentor - Schwarzenbergplatz zum Karlsplatz.</p>\r\n<p><strong>Linie 71:</strong><br />Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und St. Marx S. Die Z&uuml;ge werden &uuml;ber die Linie 18 zur Schlachthausgasse umgeleitet.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />Weichen Sie ersatzweise auf die Linien U2, U3 und U4 aus.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Hinweis:</strong></span><br />Die genannten Einschr&auml;nkungen sollten gleichzeitig eintreten und gleichzeitig wieder normalisiert werden. Beachten Sie bitte unsere Lautsprecherdurchsagen und unsere Echtzeitinformationen unter&nbsp;<a href=\"https://www.wienerlinien.at\">www.wienerlinien.at</a>.</p>",
+    "description": "<h2>Demonstration</h2>\r\n<p>Wegen einer Demonstration kommt es zu einer Einschr&auml;nkung des &ouml;ffentlichen Verkehrs.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Am Dienstag, 13. Oktober 2026 zwischen 13:00 Uhr und 19:00 Uhr.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie D:</strong><br />Umleitung der Z&uuml;ge zwischen Absberggasse und B&ouml;rse in beiden Richtungen ab Schwarzenbergplatz &uuml;ber Stubentor - Schwedenplatz - Schottenring.</p>\r\n<p><strong>Linie 1:</strong><br />Umleitung in Richtung Prater Hauptallee zwischen Karlsplatz und Julius-Raab-Platz &uuml;ber Schwarzenbergplatz - Stubentor.<br />Umleitung in Richtung Stefan-Fadinger-Platz: Die Z&uuml;ge fahren bis B&ouml;rse, wenden dort und fahren zur&uuml;ck &uuml;ber Schottenring - Schwedenplatz - Stubentor - Schwarzenbergplatz zum Karlsplatz.</p>\r\n<p><strong>Linie 71:</strong><br />Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und St. Marx S. Die Z&uuml;ge werden &uuml;ber die Linie 18 zur Schlachthausgasse umgeleitet.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />Weichen Sie ersatzweise auf die Linien U2, U3 und U4 aus.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Hinweis:</strong></span><br />Die genannten Einschr&auml;nkungen sollten gleichzeitig eintreten und gleichzeitig wieder normalisiert werden. Beachten Sie bitte unsere Lautsprecherdurchsagen und unsere Echtzeitinformationen unter&nbsp;<a href=\"https://www.wienerlinien.at\">www.wienerlinien.at</a>.</p>",
     "id": "N20261012-6273",
     "location": {
      "properties": {
@@ -2862,7 +2862,7 @@
     "attributes": {
      "ausBis": "16.10.2026 00:45",
      "ausVon": "15.10.2026 20:45",
-     "location": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
+     "location": "Zwischengeschoss Zugang Aufzug U1 - U4 Mittelbahnsteig",
      "rbls": [
       4427,
       4410
@@ -2876,7 +2876,7 @@
      "status": "geplante Wartung",
      "towards": "U4 beide Richtungen"
     },
-    "description": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
+    "description": "Zwischengeschoss Zugang Aufzug U1 - U4 Mittelbahnsteig",
     "name": "ftazW_113",
     "refPoiCategoryId": -1,
     "relatedLines": [
