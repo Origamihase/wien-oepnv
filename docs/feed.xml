@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 13 Oct 2026 16:01:15 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 16:30:43 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[37: Falschparker]]></title>
@@ -17,19 +17,8 @@
       <ext:first_seen>Tue, 13 Oct 2026 15:48:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 13 Oct 2026 15:48:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker im Bereich Geweygasse 5. [Seit 15:48]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker im Bereich Geweygasse 5.<br/>[Seit 15:48]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a</guid>
-      <pubDate>Tue, 13 Oct 2026 15:30:00 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 15:30:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 15:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 15:30]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 15:30]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 15:48]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 15:48]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[60A: Polizeieinsatz]]></title>
@@ -41,17 +30,6 @@
       <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 14:44]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 14:44]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5/12: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">d4e34f09d4feef2c9a3d0b25bc620ab6468efd635b84d9e7f803ea88c87e5d21</guid>
-      <pubDate>Tue, 13 Oct 2026 14:56:00 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 14:56:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 14:56:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 14:56]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 14:56]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[O: Verkehrsunfall]]></title>
@@ -79,12 +57,12 @@
       <title><![CDATA[66A: Polizeieinsatz, Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">aba904564d19959e0ddb3e2e002949d8d9e98e2655696c852ae1597077a1d78b</guid>
-      <pubDate>Tue, 13 Oct 2026 14:44:00 +0200</pubDate>
+      <pubDate>Tue, 13 Oct 2026 15:54:00 +0200</pubDate>
       <ext:first_seen>Tue, 13 Oct 2026 14:44:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 13 Oct 2026 15:54:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 14 Oct 2026 01:00:00 +0200</ext:ends_at>
-      <description>Polizeieinsatz: Die Linie 66A kann die Haltestelle Atzgersdorf, Kirchenplatz in Richtung Reumannplatz nicht einhalten. Bauarbeiten: Busse halten Salvatorianerplatz. [Bis Mi 14.10.]</description>
-      <content:encoded><![CDATA[Polizeieinsatz: Die Linie 66A kann die Haltestelle Atzgersdorf, Kirchenplatz in Richtung Reumannplatz nicht einhalten. Bauarbeiten: Busse halten Salvatorianerplatz.<br/>[Bis Mi 14.10.]]]></content:encoded>
+      <description>Bauarbeiten: Busse halten Salvatorianerplatz. [Bis Mi 14.10.]</description>
+      <content:encoded><![CDATA[Bauarbeiten: Busse halten Salvatorianerplatz.<br/>[Bis Mi 14.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/71/D: Demonstration am 13.10.2026]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Bitterlichstraße gegenüber Max-Mauermann-Gasse → Bitterlichstraße gegenüber Friedrich-Teller-Gasse. Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling … [Bis 25.12.]</description>
       <content:encoded><![CDATA[Bitterlichstraße gegenüber Max-Mauermann-Gasse → Bitterlichstraße gegenüber Friedrich-Teller-Gasse. Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling …<br/>[Bis 25.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[20A: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d541da730008a50f7d13d1231355ba02134695bfdd0469c8f90d4ab1ab9eaf30</guid>
+      <pubDate>Fri, 02 Oct 2026 16:05:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 16:31:05 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Oct 2026 17:00:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet. [Bis Mi 14.10.]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet.<br/>[Bis Mi 14.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">615c7d9755493e3506136b4c89ccafaac30323c3c9774583bc4b55062576c7bb</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 13:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 14 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet. [Ab Mi 14.10. bis 14.11.]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet.<br/>[Ab Mi 14.10. bis 14.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
