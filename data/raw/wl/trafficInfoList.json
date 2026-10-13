@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261013-0036, I20260917-0012, I20260922-0032, I20261013-0033-F01, I20260925-0011, I20260909-0007, I20261013-0034-F01, I20261013-0037, I20261013-0025, I20261013-0031-F01, I20261013-0038, I20261013-0028-F02"
+    "trafficInfoNameList": "I20261013-0036, I20261013-0039, I20260917-0012, I20260922-0032, I20261013-0025-F01, I20260925-0011, I20261013-0025-F02, I20261013-0025-F03, I20260909-0007, I20261013-0034-F01, I20261013-0037, I20261013-0025, I20261013-0031-F01, I20261013-0038, I20261013-0028-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R19-136, R45-136, R36-152, R119-136, R130-136, R117-136, R118-136, R2558-125, R1474-149, R1476-149, R1475-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R2025-671, R1177-0, R2373-126, R2345-127, R2372-627, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2378-627, R2359-125, R2343-125, R2343-626, R2379-627, R2380-627, R5815-671, R1974-466, R500-101, R831-101, R1754-101, R1751-101, R1752-101, R1753-101, R1756-101, R4843-101, R81-171, R2641-171, R2036-171, R2035-171, R2041-171, R2043-171, R2044-171, R2045-171, R2034-171, R2033-171, R2038-171, R2040-171, R2039-171, R2046-171, R2047-171, R1933-170, R1930-170, R1931-170, R1932-170, R2259-170, R2260-170, R44-101, R41-101, R42-101, R43-101, R172-101, R174-101, R173-101, R169-101, R170-101, R171-101, R111-136, R57-136, R3437-136, R3431-136, R3439-136, R13-136, R17-136, R18-136, R15-136, R14-136, R44-171, R51-171, R50-171, R49-171, R47-171, R46-171, R45-171, R51-101, R46-101, R15-101, R17-101, R18-101, R13-101, R14-101, R47-101, R49-101, R50-101, R3186-126, R3185-126, R3184-126, R3183-126, R3187-126, R3115-126, R3069-126, R3009-126, R2737-126, R2736-126, R5728-126, R3113-126, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R119-136, R118-136, R100-136, R130-136, R117-136, R116-136, R36-152, R45-136, R19-136, R115-136, R103-136, R102-136, R101-136, R2558-125, R2025-671, R1476-149, R1475-149, R1445-149, R1448-412, R1472-149, R1449-149, R1448-149, R1474-412, R1446-149, R1473-149, R1474-149, R1447-149, R1177-0, R2379-627, R2345-127, R2372-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2380-627, R5815-671, R1974-466, R500-101, R831-101, R1756-101, R1754-101, R1751-101, R1752-101, R1753-101, R4843-101, R81-171, R2641-171, R2046-171, R2045-171, R2044-171, R2043-171, R2041-171, R2040-171, R2039-171, R2038-171, R2036-171, R2033-171, R2034-171, R2035-171, R2047-171, R1932-170, R1933-170, R1930-170, R1931-170, R2260-170, R2259-170, R41-101, R42-101, R43-101, R44-101, R169-101, R170-101, R171-101, R172-101, R173-101, R174-101, R57-136, R111-136, R3431-136, R3437-136, R3439-136, R13-136, R18-136, R17-136, R15-136, R14-136, R46-171, R45-171, R44-171, R51-171, R50-171, R49-171, R47-171, R14-101, R51-101, R50-101, R49-101, R47-101, R13-101, R46-101, R18-101, R17-101, R15-101, R3184-126, R3183-126, R3187-126, R3186-126, R3185-126, R3115-126, R3069-126, R2737-126, R3009-126, R2736-126, R5728-126, R3113-126, R3005-126, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -239,14 +239,120 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-13T13:06:00.000+0200",
-     "end": "2026-10-13T23:55:00.000+0200",
-     "lastUpdate": "2026-10-13T13:06:00.000+0200",
+     "end": "2026-10-13T17:55:00.000+0200",
+     "lastUpdate": "2026-10-13T17:55:00.000+0200",
+     "resume": "2026-10-13T17:55:00.000+0200",
      "start": "2026-10-13T11:39:00.000+0200"
     },
     "title": "D, 1, 71: Demonstration"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "D": "ptTram"
+     }
+    },
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Universitätsring",
+    "name": "I20261013-0025-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "136",
+       "lineName": "D",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-13T17:55:00.000+0200",
+     "end": "2026-10-13T23:55:00.000+0200",
+     "lastUpdate": "2026-10-13T17:55:00.000+0200",
+     "resume": "2026-10-13T17:55:00.000+0200",
+     "start": "2026-10-13T11:39:00.000+0200"
+    },
+    "title": "D: Demonstration"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram"
+     }
+    },
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Universitätsring",
+    "name": "I20261013-0025-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "101",
+       "lineName": "1",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-13T17:55:00.000+0200",
+     "end": "2026-10-13T23:55:00.000+0200",
+     "lastUpdate": "2026-10-13T17:55:00.000+0200",
+     "resume": "2026-10-13T17:55:00.000+0200",
+     "start": "2026-10-13T11:39:00.000+0200"
+    },
+    "title": "1: Demonstration"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "71": "ptTram"
+     }
+    },
+    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Universitätsring",
+    "name": "I20261013-0025-F03",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "171",
+       "lineName": "71",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-13T17:55:00.000+0200",
+     "end": "2026-10-13T23:55:00.000+0200",
+     "lastUpdate": "2026-10-13T17:55:00.000+0200",
+     "resume": "2026-10-13T17:55:00.000+0200",
+     "start": "2026-10-13T11:39:00.000+0200"
+    },
+    "title": "71: Demonstration"
    },
    {
     "attributes": {
@@ -319,41 +425,6 @@
      "start": "2026-10-13T15:24:00.000+0200"
     },
     "title": "D: Fremder Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "37": "ptTram"
-     }
-    },
-    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Geweygasse 5",
-    "name": "I20261013-0033-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "137",
-       "lineName": "37",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-13T16:02:00.000+0200",
-     "end": "2026-10-13T16:40:00.000+0200",
-     "lastUpdate": "2026-10-13T16:40:00.000+0200",
-     "resume": "2026-10-13T16:40:00.000+0200",
-     "start": "2026-10-13T15:48:00.000+0200"
-    },
-    "title": "37: Falschparker"
    },
    {
     "attributes": {
@@ -466,8 +537,8 @@
       "26": "ptTram"
      }
     },
-    "description": "Die Linie 26 fährt derzeit nur zwischen Kagran und Prinzgasse und weiter bis Aspern Nord. Voraussichtliche Dauer: 18:00 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Hausfeldstraße.",
-    "descriptionHTML": "Die Linie 26 fährt derzeit nur zwischen Kagran und Prinzgasse und weiter bis Aspern Nord.<br> <br>Voraussichtliche Dauer: 18:00 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Bereich Hausfeldstraße.",
+    "description": "Die Linie 26 fährt derzeit nur zwischen Kagran und Prinzgasse und weiter bis Aspern Nord. Voraussichtliche Dauer: 18:15 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Hausfeldstraße.",
+    "descriptionHTML": "Die Linie 26 fährt derzeit nur zwischen Kagran und Prinzgasse und weiter bis Aspern Nord.<br> <br>Voraussichtliche Dauer: 18:15 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Bereich Hausfeldstraße.",
     "location": "Hausfeldstraße",
     "name": "I20261013-0038",
     "owner": "WL",
@@ -489,10 +560,44 @@
     "time": {
      "created": "2026-10-13T17:24:00.000+0200",
      "end": "2026-10-13T23:55:00.000+0200",
-     "lastUpdate": "2026-10-13T17:24:00.000+0200",
+     "lastUpdate": "2026-10-13T17:58:00.000+0200",
      "start": "2026-10-13T17:21:00.000+0200"
     },
     "title": "26: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "10A": "ptBusCity"
+     }
+    },
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
+    "name": "I20261013-0039",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "410",
+       "lineName": "10A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-13T17:54:00.000+0200",
+     "end": "2026-10-13T23:55:00.000+0200",
+     "lastUpdate": "2026-10-13T17:54:00.000+0200",
+     "resume": "2026-10-13T17:53:00.000+0200",
+     "start": "2026-10-13T17:53:00.000+0200"
+    },
+    "title": "10A: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -2035,6 +2140,24 @@
      "start": "2026-10-07T00:00:15.000+0200"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Zug, Umleitung Aspern Nord",
+    "name": "R3005-126",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3005
+    ],
+    "time": {
+     "end": "2026-10-13T18:43:00.000+0200",
+     "start": "2026-10-13T17:44:16.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug, Umleitung Aspern Nord"
    },
    {
     "description": "Schadhafter Zug\nBetrieb ab Prinzgasse",

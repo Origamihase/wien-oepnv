@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1017122, ftazW_1016902, ftazW_734, ftazW_1031272, ftazW_1031273, ftazW_1017124, ftazW_1016903, ftazW_82, ftazW_736, ftazW_239, ftazW_1017121, ftazW_83, ftazW_728, ftazW_84, ftazW_240, ftazW_727, ftazW_45, ftazW_1017123, ftazW_1031267, ftazW_113, ftazW_746, ftazW_1031268, ftazW_739, ftazW_1016568, ftazW_574, ftazW_97, ftazW_114, ftazW_766, ftazW_575, ftazW_740"
+    "trafficInfoNameList": "ftazW_1017122, ftazW_1016902, ftazW_734, ftazW_1031272, ftazW_1031273, ftazW_1017124, ftazW_1016903, ftazW_82, ftazW_239, ftazW_1017121, ftazW_83, ftazW_728, ftazW_84, ftazW_240, ftazW_727, ftazW_45, ftazW_1017123, ftazW_1031267, ftazW_113, ftazW_746, ftazW_1031268, ftazW_739, ftazW_1016568, ftazW_574, ftazW_97, ftazW_114, ftazW_766, ftazW_575, ftazW_740"
    }
   ],
   "poiCategoryGroups": [
@@ -3213,37 +3213,6 @@
     "time": {
      "end": "2026-10-14T00:45:00.000+0200",
      "start": "2026-10-13T20:45:00.000+0200"
-    },
-    "title": "Gasometer"
-   },
-   {
-    "attributes": {
-     "ausBis": "14.10.2026 05:15",
-     "ausVon": "14.10.2026 01:15",
-     "location": "U3 Bahnsteig Richtung Ottakring - Ausgang Gasometer/Modecenterstraße",
-     "rbls": [
-      4941
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Gasometer",
-     "status": "geplante Wartung",
-     "towards": "U3 Ottakring"
-    },
-    "description": "U3 Bahnsteig Richtung Ottakring - Ausgang Gasometer/Modecenterstraße",
-    "name": "ftazW_736",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4941
-    ],
-    "time": {
-     "end": "2026-10-14T05:15:00.000+0200",
-     "start": "2026-10-14T01:15:00.000+0200"
     },
     "title": "Gasometer"
    },

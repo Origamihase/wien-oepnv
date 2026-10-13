@@ -18,10 +18,14 @@
     "description": "<h2>Demonstration</h2> <p>Wegen einer Demonstration kommt es zu einer Einschr&auml;nkung des &ouml;ffentlichen Verkehrs.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Am Dienstag, 13. Oktober 2026 zwischen 13:00 Uhr und 19:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie D:</strong><br />Umleitung der Z&uuml;ge zwischen Absberggasse und B&ouml;rse in beiden Richtungen ab Schwarzenbergplatz &uuml;ber Stubentor - Schwedenplatz - Schottenring.</p> <p><strong>Linie 1:</strong><br />Umleitung in Richtung Prater Hauptallee zwischen Karlsplatz und Julius-Raab-Platz &uuml;ber Schwarzenbergplatz - Stubentor.<br />Umleitung in Richtung Stefan-Fadinger-Platz: Die Z&uuml;ge fahren bis B&ouml;rse, wenden dort und fahren zur&uuml;ck &uuml;ber Schottenring - Schwedenplatz - Stubentor - Schwarzenbergplatz zum Karlsplatz.</p> <p><strong>Linie 71:</strong><br />Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und St. Marx S. Die Z&uuml;ge werden &uuml;ber die Linie 18 zur Schlachthausgasse umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Ersatz:</strong></span><br />Weichen Sie ersatzweise auf die Linien U2, U3 und U4 aus.</p> <p><span style=\"text-decoration: underline;\"><strong>Hinweis:</strong></span><br />Die genannten Einschr&auml;nkungen sollten gleichzeitig eintreten und gleichzeitig wieder normalisiert werden. Beachten Sie bitte unsere Lautsprecherdurchsagen und unsere Echtzeitinformationen unter&nbsp;<a href=\"https://www.wienerlinien.at\">www.wienerlinien.at</a>.</p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "1a79e14e4fbd9e007952da0547d39938646bff0e3fe35a9b0c5023ce06c14df8",
-    "pubDate": "2026-10-12T13:00:00+02:00",
+    "pubDate": "2026-10-13T11:39:00+02:00",
     "starts_at": "2026-10-13T00:00:00+02:00",
-    "ends_at": "2026-10-13T19:30:00+02:00",
-    "_identity": "wl|hinweis|L=1,71,D|D=2026-10-13|TK=demonstration"
+    "ends_at": "2026-10-13T23:55:00+02:00",
+    "_identity": "wl|hinweis|L=1,71,D|D=2026-10-13|TK=demonstration",
+    "_wl_ids": [
+      "I20261013-0025"
+    ],
+    "_incident_start": "2026-10-13T11:39:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -794,18 +798,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/71/D: Demonstration",
-    "description": "Linie 1: Umleitung in Richtung Stefan-Fadinger-Platz Wende über Börse und Umleitung bis Resselgasse über Schwedenplatz U und Schwarzenbergplatz. Einstieg am Karlsplatz U (bei Linie 4A) möglich. Umleitung in Richtung Prater Hauptallee zwischen Karlsplatz U und Julius-Raab-Platz über Schwarzenbergplatz und Stubentor U. Fahrgäste zwischen Börse und Schwedenplatz mit dem Ziel Prater Hauptallee müssen am Julius-Raab-Platz in einen anderen Zug der Linie 1 umsteigen. Linie D: Umleitung der Züge im Abschnitt Absberggasse - Börse in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz U. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Weichen Sie ersatzweise auf die Linien U2 und 2 aus. Voraussichtliche Dauer: 19:00 Uhr. Grund: Demonstration im Bereich Universitätsring.",
+    "title": "10A: Verkehrsunfall",
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ad4814f762aa48c34e8d9de2b9afa12b616fbf72f49a5e925e4bb5b73034ef90",
-    "pubDate": "2026-10-13T11:39:00+02:00",
-    "starts_at": "2026-10-13T11:39:00+02:00",
+    "guid": "a4037eb177f53feada9cd8d5d413f9865f66b30fafc51c7e633db6ca36d431e5",
+    "pubDate": "2026-10-13T17:53:00+02:00",
+    "starts_at": "2026-10-13T17:53:00+02:00",
     "ends_at": "2026-10-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=1,71,D|D=2026-10-13|TK=demonstration",
+    "_identity": "wl|störung|L=10A|D=2026-10-13|TK=10a verkehrsunfall",
     "_wl_ids": [
-      "I20261013-0025"
+      "I20261013-0039"
     ],
-    "_incident_start": "2026-10-13T11:39:00+02:00"
+    "_incident_start": "2026-10-13T17:53:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1019,7 +1023,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "26: Schadhaftes Fahrzeug",
-    "description": "Die Linie 26 fährt derzeit nur zwischen Kagran und Prinzgasse und weiter bis Aspern Nord. Voraussichtliche Dauer: 18:00 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Hausfeldstraße.",
+    "description": "Die Linie 26 fährt derzeit nur zwischen Kagran und Prinzgasse und weiter bis Aspern Nord. Voraussichtliche Dauer: 18:15 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Hausfeldstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "59e208367d2d4abd51c67734b05d4470604d748bf4d8210aec89186b2434cefa",
     "pubDate": "2026-10-13T17:21:00+02:00",
@@ -1054,6 +1058,18 @@
     "starts_at": "2026-10-13T17:19:14+02:00",
     "ends_at": "2026-10-13T18:27:00+02:00",
     "_identity": "wl|störung|L=26|D=2026-10-13|TK=schadhafter zug betrieb ab prinzgasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Fahrtbehinderung Schadhafter Zug, Umleitung Aspern Nord",
+    "description": "Fahrtbehinderung\nSchadhafter Zug, Umleitung Aspern Nord",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "a1a584cf44c1e44b0490ba96e9cf8c8ec45b79167b4197c8ecb3cbc3f563301b",
+    "pubDate": "2026-10-13T17:44:16+02:00",
+    "starts_at": "2026-10-13T17:44:16+02:00",
+    "ends_at": "2026-10-13T18:43:00+02:00",
+    "_identity": "wl|störung|L=26|D=2026-10-13|TK=umleitung"
   },
   {
     "source": "Wiener Linien",
