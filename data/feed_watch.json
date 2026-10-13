@@ -1,20 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-13T16:01:11.974294+00:00",
- "built": "2026-10-13T18:00:58+02:00",
+ "updated": "2026-10-13T16:31:12.090592+00:00",
+ "built": "2026-10-13T18:30:56+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-13T18:00:58+02:00",
+  "built": "2026-10-13T18:30:56+02:00",
   "items": [
-   {
-    "title": "26: Schadhafter Zug,, Schadhaftes Fahrzeug",
-    "time_line": "Seit 17:44"
-   },
    {
     "title": "10A: Verkehrsunfall",
     "time_line": "Seit 17:53"
+   },
+   {
+    "title": "26: Schadhaftes Fahrzeug",
+    "time_line": "Seit 17:19"
    },
    {
     "title": "11A: Verkehrsüberlastung",
@@ -25,12 +25,12 @@
     "time_line": "Seit 16:39"
    },
    {
-    "title": "60A: Polizeieinsatz",
-    "time_line": "Seit 14:44"
-   },
-   {
     "title": "O: Verkehrsunfall",
     "time_line": "Seit 13:02"
+   },
+   {
+    "title": "16A/17A: Störung an einem Bahnübergang",
+    "time_line": "Heute"
    },
    {
     "title": "66A: Polizeieinsatz, Bauarbeiten",
@@ -2650,6 +2650,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 107
+   }
+  },
+  {
+   "t": "2026-10-13T16:31:12.090592+00:00",
+   "raw": {
+    "wl-stoerungen": 134,
+    "wl-hinweise": 101,
+    "oebb": 160,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 32,
+    "oebb": 136,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 104
    }
   }
  ]

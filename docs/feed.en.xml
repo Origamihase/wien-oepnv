@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 13 Oct 2026 18:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 18:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[26: Defective train,, defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a1a584cf44c1e44b0490ba96e9cf8c8ec45b79167b4197c8ecb3cbc3f563301b</guid>
-      <pubDate>Tue, 13 Oct 2026 17:44:16 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 18:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 17:44:16 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Defective train,: diversion Aspern Nord. Defective vehicle: service from Prinzgasse. [Since 17:44]</description>
-      <content:encoded><![CDATA[Defective train,: diversion Aspern Nord. Defective vehicle: service from Prinzgasse.<br/>[Since 17:44]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[10A: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,6 +19,17 @@
       <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: traffic accident. [Since 17:53]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 17:53]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f36bfd0bb4774d14d71eac6889b393ad5dd3511aecc7a72a6d56cbd25c43546f</guid>
+      <pubDate>Tue, 13 Oct 2026 17:19:13 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 17:19:13 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 17:21:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. Trains stop in Tokiostraße. [Since 17:19]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals. Trains stop in Tokiostraße.<br/>[Since 17:19]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A: Traffic congestion]]></title>
@@ -54,17 +54,6 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 16:39]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[60A: Police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c652cf30c2af9c572183f45e9eac81da4c7406355a1e9d0106f8cc5657636fe4</guid>
-      <pubDate>Tue, 13 Oct 2026 14:44:00 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 15:01:04 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 14:44:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 14:44]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 14:44]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[O: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">6514f4d84c031a613f9600a8a532de752e5f42ebad2f6cd171ba0116fcc4be4b</guid>
@@ -74,6 +63,17 @@
       <ext:ends_at>Tue, 13 Oct 2026 19:15:00 +0200</ext:ends_at>
       <description>Diversion from Quellenplatz via lines O and D. [Since 13:02]</description>
       <content:encoded><![CDATA[Diversion from Quellenplatz via lines O and D.<br/>[Since 13:02]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[16A/17A: Level crossing fault]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">332a4e5d3f62bbf99e77944e05e9c4843740df6c5a14c9f025477f1a82afba61</guid>
+      <pubDate>Tue, 13 Oct 2026 18:00:00 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 18:30:56 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 18:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: level crossing fault. [Today]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: level crossing fault.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Police operation, construction works]]></title>
