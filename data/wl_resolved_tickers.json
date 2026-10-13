@@ -1,5 +1,20 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R2173-127|2026-10-13T08:30:21.000+0200|Stromstörung \nBetrieb nur bis Nordbrücke",
+   "name": "R2173-127",
+   "title": "Stromstörung \nBetrieb nur bis Nordbrücke",
+   "end": "2026-10-13T09:29:00.000+0200",
+   "incident": "I20261013-0011"
+  },
+  {
+   "key": "R2174-127|2026-10-13T08:30:21.000+0200|Stromstörung \nBetrieb nur bis Nordbrücke",
+   "name": "R2174-127",
+   "title": "Stromstörung \nBetrieb nur bis Nordbrücke",
+   "end": "2026-10-13T09:29:00.000+0200",
+   "incident": "I20261013-0011"
+  }
+ ]
 }

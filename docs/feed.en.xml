@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 13 Oct 2026 08:30:38 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 09:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[88B/88A: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ddb6678269151c0a3a1a576cd24aaf4e72c0f39a595148237ab9a80a0331a1a4</guid>
+      <pubDate>Tue, 13 Oct 2026 08:41:00 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 09:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 08:41:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 08:41]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 08:41]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[25A: Service disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">7411811c4c779fc5fdb7c1dfc2b14a9944a845577933f6b6342f054d7ecee8ab</guid>
+      <pubDate>Tue, 13 Oct 2026 08:32:00 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 09:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 08:32:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: service disruption. [Since 08:32]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[Since 08:32]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[99B: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -28,8 +50,8 @@
       <ext:first_seen>Tue, 13 Oct 2026 08:23:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 13 Oct 2026 08:23:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>The 27 line currently only runs between Floridsdorf S U and Nordbrücke. [Since 08:23]</description>
-      <content:encoded><![CDATA[The 27 line currently only runs between Floridsdorf S U and Nordbrücke.<br/>[Since 08:23]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. Use 25 line in Tokiostraße; trains stop at the stop of line 31. [Since 08:23]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals. Use 25 line in Tokiostraße; trains stop at the stop of line 31.<br/>[Since 08:23]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Rescue operation]]></title>
@@ -54,15 +76,15 @@
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 07:48]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U4: Delays]]></title>
+      <title><![CDATA[U6: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
-      <pubDate>Tue, 13 Oct 2026 07:19:00 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 06:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 07:19:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
+      <pubDate>Tue, 13 Oct 2026 08:39:00 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 07:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 08:39:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 07:19]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 07:19]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 08:39]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 08:39]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[16A/17A/67B: Level crossing fault]]></title>
@@ -87,17 +109,6 @@
       <content:encoded><![CDATA[Track construction works: service from Johnstraße U, Schweglerstraße 19-21.<br/>[Today]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U6: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
-      <pubDate>Tue, 13 Oct 2026 07:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 07:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 07:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Today]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[66A: Traffic accident, construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">74d7957440840d3e04ef7e63c6b0e84924838c4a84cdab001ac77313773a37b5</guid>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 14 Oct 2026 01:00:00 +0200</ext:ends_at>
       <description>Traffic accident: irregular intervals in both directions. Construction works: buses stop at Salvatorianerplatz. [Until Wed 14.10.]</description>
       <content:encoded><![CDATA[Traffic accident: irregular intervals in both directions. Construction works: buses stop at Salvatorianerplatz.<br/>[Until Wed 14.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/71/D: Demonstration on 13.10.2026]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1a79e14e4fbd9e007952da0547d39938646bff0e3fe35a9b0c5023ce06c14df8</guid>
-      <pubDate>Mon, 12 Oct 2026 13:00:00 +0200</pubDate>
-      <ext:first_seen>Mon, 12 Oct 2026 13:02:35 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 19:00:00 +0200</ext:ends_at>
-      <description>Due to a demonstration, there is a restriction on public transport. [Today]</description>
-      <content:encoded><![CDATA[Due to a demonstration, there is a restriction on public transport.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
