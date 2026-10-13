@@ -1,55 +1,5 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": [
-  {
-   "key": "R3434-106|2026-10-13T13:08:19.000+0200|Verkehrsunfall\nBetrieb ab Quellenplatz",
-   "name": "R3434-106",
-   "title": "Verkehrsunfall\nBetrieb ab Quellenplatz",
-   "end": "2026-10-13T14:07:00.000+0200",
-   "incident": "I20261013-0023"
-  },
-  {
-   "key": "R404-111|2026-10-13T12:51:16.000+0200|Verkehrsunfall\nBetrieb ab Absberggasse",
-   "name": "R404-111",
-   "title": "Verkehrsunfall\nBetrieb ab Absberggasse",
-   "end": "2026-10-13T14:02:00.000+0200",
-   "incident": "I20261013-0023"
-  },
-  {
-   "key": "R405-111|2026-10-13T12:51:16.000+0200|Verkehrsunfall\nBetrieb ab Absberggasse",
-   "name": "R405-111",
-   "title": "Verkehrsunfall\nBetrieb ab Absberggasse",
-   "end": "2026-10-13T14:02:00.000+0200",
-   "incident": "I20261013-0023"
-  },
-  {
-   "key": "R418-106|2026-10-13T13:08:18.000+0200|Verkehrsunfall\nBetrieb ab Quellenplatz",
-   "name": "R418-106",
-   "title": "Verkehrsunfall\nBetrieb ab Quellenplatz",
-   "end": "2026-10-13T14:07:00.000+0200",
-   "incident": "I20261013-0023"
-  },
-  {
-   "key": "R420-106|2026-10-13T13:08:18.000+0200|Verkehrsunfall\nBetrieb ab Quellenplatz",
-   "name": "R420-106",
-   "title": "Verkehrsunfall\nBetrieb ab Quellenplatz",
-   "end": "2026-10-13T14:07:00.000+0200",
-   "incident": "I20261013-0023"
-  },
-  {
-   "key": "R421-106|2026-10-13T13:08:18.000+0200|Verkehrsunfall\nBetrieb ab Quellenplatz",
-   "name": "R421-106",
-   "title": "Verkehrsunfall\nBetrieb ab Quellenplatz",
-   "end": "2026-10-13T14:07:00.000+0200",
-   "incident": "I20261013-0023"
-  },
-  {
-   "key": "R422-106|2026-10-13T13:08:18.000+0200|Verkehrsunfall\nBetrieb ab Quellenplatz",
-   "name": "R422-106",
-   "title": "Verkehrsunfall\nBetrieb ab Quellenplatz",
-   "end": "2026-10-13T14:07:00.000+0200",
-   "incident": "I20261013-0023"
-  }
- ]
+ "tickers": []
 }
