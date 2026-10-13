@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 13 Oct 2026 17:00:50 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 17:30:41 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[26: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f36bfd0bb4774d14d71eac6889b393ad5dd3511aecc7a72a6d56cbd25c43546f</guid>
+      <pubDate>Tue, 13 Oct 2026 17:19:13 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 17:19:13 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 17:27:45 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Betrieb ab Prinzgasse. Die Linie 26 fährt derzeit nur zwischen Kagran und Prinzgasse und weiter bis Aspern Nord. [Seit 17:19]</description>
+      <content:encoded><![CDATA[Betrieb ab Prinzgasse. Die Linie 26 fährt derzeit nur zwischen Kagran und Prinzgasse und weiter bis Aspern Nord.<br/>[Seit 17:19]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9d0a7e4b9b87021faced5a5e0994d1adbea3b271fc48868ad2b14e038ee2871b</guid>
+      <pubDate>Tue, 13 Oct 2026 17:13:00 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 17:13:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 17:13:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 17:13]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 17:13]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[24A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -41,17 +63,6 @@
       <ext:ends_at>Tue, 13 Oct 2026 19:15:00 +0200</ext:ends_at>
       <description>Umleitung ab Quellenplatz über Linien O und D. [Seit 13:02]</description>
       <content:encoded><![CDATA[Umleitung ab Quellenplatz über Linien O und D.<br/>[Seit 13:02]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Fremder Verkehrsunfall, Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f0dde5821d03cb68c45830addd54ee8545c302f1154e3c7d1144448feb5546bd</guid>
-      <pubDate>Tue, 13 Oct 2026 15:24:00 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 15:24:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 15:24:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse. [Heute]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Polizeieinsatz, Bauarbeiten]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 14 Oct 2026 17:00:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet. [Bis Mi 14.10.]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet.<br/>[Bis Mi 14.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">615c7d9755493e3506136b4c89ccafaac30323c3c9774583bc4b55062576c7bb</guid>
-      <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 13:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 14 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet. [Ab Mi 14.10. bis 14.11.]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet.<br/>[Ab Mi 14.10. bis 14.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
