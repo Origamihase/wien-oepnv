@@ -822,38 +822,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "16A: Störung an einem Bahnübergang",
-    "description": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "78cfc305e07fdf703edca3374236eb576bf584080a19450b6f7f78fade7ec1e8",
-    "pubDate": "2026-10-13T06:31:00+02:00",
-    "starts_at": "2026-10-13T06:31:00+02:00",
-    "ends_at": "2026-10-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=16A|D=2026-10-13|TK=16a störung an einem bahnübergang",
-    "_wl_ids": [
-      "I20261013-0002"
-    ],
-    "_incident_start": "2026-10-13T06:31:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "17A: Störung an einem Bahnübergang",
-    "description": "Linie 17A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a9a27425e5abc97ac537f8ede7996cb196df826cae17e716388d06154a7c5243",
-    "pubDate": "2026-10-13T06:31:00+02:00",
-    "starts_at": "2026-10-13T06:31:00+02:00",
-    "ends_at": "2026-10-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=17A|D=2026-10-13|TK=17a störung an einem bahnübergang",
-    "_wl_ids": [
-      "I20261013-0002"
-    ],
-    "_incident_start": "2026-10-13T06:31:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1114,6 +1082,70 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "60: Schadhaftes Fahrzeug",
+    "description": "Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Weichen Sie ersatzweise auf die Linien 56A, 56B, 58A oder 58B aus. Voraussichtliche Dauer: 09:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Stadlergasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b98153df7d0e60b82d0381b90b9ad92815df222d447546c78876ca54749e306a",
+    "pubDate": "2026-10-13T09:16:00+02:00",
+    "starts_at": "2026-10-13T09:16:00+02:00",
+    "ends_at": "2026-10-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-10-13|TK=60 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261013-0015"
+    ],
+    "_incident_start": "2026-10-13T09:16:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Schadhafter Zug Betrieb ab Hietzing",
+    "description": "Schadhafter Zug\nBetrieb ab Hietzing",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9af2a719dbb39fc7b8160d494638687588df31ef1f3e5601db7f73a66230c477",
+    "pubDate": "2026-10-13T09:23:26+02:00",
+    "starts_at": "2026-10-13T09:23:26+02:00",
+    "ends_at": "2026-10-13T10:22:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-10-13|TK=schadhafter zug betrieb ab hietzing"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Schadhafter Zug Betrieb ab Hofwiesengasse",
+    "description": "Schadhafter Zug\nBetrieb ab Hofwiesengasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3ba4c6494be8dc0e55d7daa610f5f3b2f958bae603c38cf922f86623dddd062b",
+    "pubDate": "2026-10-13T09:20:56+02:00",
+    "starts_at": "2026-10-13T09:20:57+02:00",
+    "ends_at": "2026-10-13T10:20:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-10-13|TK=schadhafter zug betrieb ab hofwiesengasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Schadhafter Zug Betrieb nur bis Hietzing",
+    "description": "Schadhafter Zug\nBetrieb nur bis Hietzing",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "afe66e104509856bd24ac99f3fb3f4533b696a68a423beb3539391b6de1a3bd0",
+    "pubDate": "2026-10-13T09:20:26+02:00",
+    "starts_at": "2026-10-13T09:20:26+02:00",
+    "ends_at": "2026-10-13T10:19:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-10-13|TK=schadhafter zug betrieb nur bis hietzing"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Schadhafter Zug Betrieb nur bis Hofwiesengasse",
+    "description": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "b8f4ff4576419a8da119b1997421e4132ca2e88b99b351f3c217301a7b1b5aa2",
+    "pubDate": "2026-10-13T09:19:25+02:00",
+    "starts_at": "2026-10-13T09:19:25+02:00",
+    "ends_at": "2026-10-13T10:18:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-10-13|TK=schadhafter zug betrieb nur bis hofwiesengasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Verkehrsunfall",
     "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1142,22 +1174,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "67B: Störung an einem Bahnübergang",
-    "description": "Linie 67B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "64adf3f111f665b0756e206081b736c33bee655dba42034dde513aed6f0ef56b",
-    "pubDate": "2026-10-13T06:31:00+02:00",
-    "starts_at": "2026-10-13T06:31:00+02:00",
-    "ends_at": "2026-10-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=67B|D=2026-10-13|TK=67b störung an einem bahnübergang",
-    "_wl_ids": [
-      "I20261013-0002"
-    ],
-    "_incident_start": "2026-10-13T06:31:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1170,50 +1186,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "77A: Falschparker",
-    "description": "Linie 77A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "88B: Verkehrsunfall",
+    "description": "Linie 88B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "660f28330b16b21973d919d0ca7b3d0827062ed7398171f828b0ccfbf543928b",
-    "pubDate": "2026-10-13T07:48:00+02:00",
-    "starts_at": "2026-10-13T07:48:00+02:00",
-    "ends_at": "2026-10-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=77A|D=2026-10-13|TK=falschparker",
-    "_wl_ids": [
-      "I20261013-0008"
-    ],
-    "_incident_start": "2026-10-13T07:48:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "88B/88A: Verkehrsunfall",
-    "description": "Linie 88B: Unregelmäßige Intervalle in beiden Richtungen. Linie 88A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ddb6678269151c0a3a1a576cd24aaf4e72c0f39a595148237ab9a80a0331a1a4",
+    "guid": "9130e68b46ebd544ee95ec562eb6ff13137401898bdfd823019b9b5e750652e7",
     "pubDate": "2026-10-13T08:41:00+02:00",
     "starts_at": "2026-10-13T08:41:00+02:00",
     "ends_at": "2026-10-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=88A,88B|D=2026-10-13|TK=88a 88b verkehrsunfall",
+    "_identity": "wl|störung|L=88B|D=2026-10-13|TK=88b verkehrsunfall",
     "_wl_ids": [
       "I20261013-0014"
     ],
     "_incident_start": "2026-10-13T08:41:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "99B: Verkehrsunfall",
-    "description": "Linie 99B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "5bfb3c88f9ea5ecd9ddb72a42e0bb321a5f3670b1347d165f90b1ba7186cbab6",
-    "pubDate": "2026-10-13T08:10:00+02:00",
-    "starts_at": "2026-10-13T08:10:00+02:00",
-    "ends_at": "2026-10-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=99B|D=2026-10-13|TK=99b verkehrsunfall",
-    "_wl_ids": [
-      "I20261013-0009"
-    ],
-    "_incident_start": "2026-10-13T08:10:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1370,17 +1354,5 @@
     "starts_at": "2026-10-07T00:00:18+02:00",
     "ends_at": "2026-10-13T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-10-07|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung Stromstörung",
-    "description": "Fahrtbehinderung\nStromstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a833cc9d450f4182d98193474b5dc52555fb1bb2f0535bfab99fe6768c66eb9e",
-    "pubDate": "2026-10-13T08:23:50+02:00",
-    "starts_at": "2026-10-13T08:27:51+02:00",
-    "ends_at": "2026-10-13T09:26:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-10-13|TK=fahrtbehinderung stromstörung"
   }
 ]

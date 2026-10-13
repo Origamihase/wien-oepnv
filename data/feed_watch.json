@@ -1,24 +1,24 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-13T07:01:17.383276+00:00",
- "built": "2026-10-13T09:01:00+02:00",
+ "updated": "2026-10-13T07:30:48.902703+00:00",
+ "built": "2026-10-13T09:30:39+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-13T09:01:00+02:00",
+  "built": "2026-10-13T09:30:39+02:00",
   "items": [
    {
-    "title": "88B/88A: Verkehrsunfall",
+    "title": "60: Schadhaftes Fahrzeug",
+    "time_line": "Seit 09:16"
+   },
+   {
+    "title": "88B: Verkehrsunfall",
     "time_line": "Seit 08:41"
    },
    {
     "title": "25A: Betriebsstörung",
     "time_line": "Seit 08:32"
-   },
-   {
-    "title": "99B: Verkehrsunfall",
-    "time_line": "Seit 08:10"
    },
    {
     "title": "27: Stromstörung",
@@ -29,16 +29,8 @@
     "time_line": "Seit 08:20"
    },
    {
-    "title": "77A: Falschparker",
-    "time_line": "Seit 07:48"
-   },
-   {
     "title": "U6: Rettungseinsatz",
     "time_line": "Seit 08:39"
-   },
-   {
-    "title": "16A/17A/67B: Störung an einem Bahnübergang",
-    "time_line": "Seit 06:31"
    },
    {
     "title": "12A: Falschparker, Gleisbauarbeiten",
@@ -47,6 +39,14 @@
    {
     "title": "66A: Verkehrsunfall, Bauarbeiten",
     "time_line": "Bis Mi 14.10."
+   },
+   {
+    "title": "1/71/D: Demonstration am 13.10.2026",
+    "time_line": "Heute"
+   },
+   {
+    "title": "12/5: Albertgasse",
+    "time_line": "Bis 03.11."
    }
   ]
  },
@@ -2290,6 +2290,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 110
+   }
+  },
+  {
+   "t": "2026-10-13T07:30:48.902703+00:00",
+   "raw": {
+    "wl-stoerungen": 98,
+    "wl-hinweise": 101,
+    "oebb": 160,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 28,
+    "oebb": 136,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 109
    }
   }
  ]

@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261013-0003, I20260917-0012, I20260922-0032, I20261013-0006-F01, I20261013-0005, I20261013-0002-F01, I20261013-0002-F02, I20260925-0011, I20261013-0002-F04, I20260909-0007, I20261013-0002-F03, I20261013-0008-F01, I20261013-0008, I20261013-0009-F01, I20261013-0009, I20261013-0010-F01, I20261013-0010, I20261013-0007, I20261013-0012, I20261013-0004-F01, I20261013-0014, I20261013-0011-F01, I20261013-0011, I20261013-0013-F01, I20261013-0013"
+    "trafficInfoNameList": "I20261013-0003, I20260917-0012, I20260922-0032, I20261013-0006-F01, I20260925-0011, I20260909-0007, I20261013-0010-F01, I20261013-0007, I20261013-0012, I20261013-0004-F01, I20261013-0011-F01, I20261013-0011, I20261013-0013-F01, I20261013-0013, I20261013-0002-F04, I20261013-0002-F01, I20261013-0002-F02, I20261013-0009-F01, I20261013-0015, I20261013-0014, I20261013-0008-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R101-136, R100-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2379-627, R2345-127, R2373-126, R2372-627, R2380-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R5815-671, R1974-466, R500-101, R2178-0, R2177-0, R2183-0, R2184-0, R2176-0, R2185-0, R2174-127, R2173-127, R2186-127, R2175-127, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R101-136, R100-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2378-627, R2379-627, R2380-627, R2345-127, R2372-627, R5815-671, R1974-466, R500-101, R2186-127, R2175-127, R1626-160, R1634-160, R1633-160, R1632-160, R1631-160, R1630-160, R1629-160, R1628-160, R1627-160, R1625-160, R1607-160, R1537-160, R1535-160, R1532-160, R1610-160, R1612-160, R1613-160, R1611-160, R5611-160, R1638-160, R1636-160, R1637-160, R1639-160, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -225,12 +225,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-13T06:33:00.000+0200",
-     "end": "2026-10-13T23:55:00.000+0200",
-     "lastUpdate": "2026-10-13T06:33:00.000+0200",
-     "resume": "2026-10-13T06:33:00.000+0200",
+     "end": "2026-10-13T09:02:00.000+0200",
+     "lastUpdate": "2026-10-13T09:02:00.000+0200",
+     "resume": "2026-10-13T09:02:00.000+0200",
      "start": "2026-10-13T06:31:00.000+0200"
     },
     "title": "16A: Störung an einem Bahnübergang"
@@ -260,50 +260,15 @@
       }
      ]
     ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-13T06:33:00.000+0200",
-     "end": "2026-10-13T23:55:00.000+0200",
-     "lastUpdate": "2026-10-13T06:33:00.000+0200",
-     "resume": "2026-10-13T06:33:00.000+0200",
-     "start": "2026-10-13T06:31:00.000+0200"
-    },
-    "title": "17A: Störung an einem Bahnübergang"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "67A": "ptBusCity"
-     }
-    },
-    "description": "Linie 67A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 67A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Himberger Straße",
-    "name": "I20261013-0002-F03",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "67A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "467",
-       "lineName": "67A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
     "status": "resolved",
     "time": {
      "created": "2026-10-13T06:33:00.000+0200",
-     "end": "2026-10-13T07:59:00.000+0200",
-     "lastUpdate": "2026-10-13T07:59:00.000+0200",
-     "resume": "2026-10-13T07:59:00.000+0200",
+     "end": "2026-10-13T09:02:00.000+0200",
+     "lastUpdate": "2026-10-13T09:02:00.000+0200",
+     "resume": "2026-10-13T09:02:00.000+0200",
      "start": "2026-10-13T06:31:00.000+0200"
     },
-    "title": "67A: Störung an einem Bahnübergang"
+    "title": "17A: Störung an einem Bahnübergang"
    },
    {
     "attributes": {
@@ -330,12 +295,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-13T06:33:00.000+0200",
-     "end": "2026-10-13T23:55:00.000+0200",
-     "lastUpdate": "2026-10-13T06:33:00.000+0200",
-     "resume": "2026-10-13T06:33:00.000+0200",
+     "end": "2026-10-13T09:02:00.000+0200",
+     "lastUpdate": "2026-10-13T09:02:00.000+0200",
+     "resume": "2026-10-13T09:02:00.000+0200",
      "start": "2026-10-13T06:31:00.000+0200"
     },
     "title": "67B: Störung an einem Bahnübergang"
@@ -414,40 +379,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "40A": "ptBusCity"
-     }
-    },
-    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "Linie 40A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
-    "name": "I20261013-0005",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "40A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "440",
-       "lineName": "40A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-13T07:01:00.000+0200",
-     "end": "2026-10-13T07:58:00.000+0200",
-     "lastUpdate": "2026-10-13T07:58:00.000+0200",
-     "resume": "2026-10-13T07:58:00.000+0200",
-     "start": "2026-10-13T07:01:00.000+0200"
-    },
-    "title": "40A: Verkehrsüberlastung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "12A": "ptBusCity"
      }
     },
@@ -520,41 +451,6 @@
       "77A": "ptBusCity"
      }
     },
-    "description": "Linie 77A: Fahrtbehinderung in Richtung Neu Marx. Voraussichtliche Dauer: 08:10 Uhr. Grund: Falschparker im Bereich Juchgasse.",
-    "descriptionHTML": "Linie 77A:<br>Fahrtbehinderung in Richtung Neu Marx.<br> <br>Voraussichtliche Dauer: 08:10 Uhr.<br><br>Grund: Falschparker im Bereich Juchgasse.",
-    "location": "Juchgasse",
-    "name": "I20261013-0008",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "77A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "477",
-       "lineName": "77A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-13T07:50:00.000+0200",
-     "end": "2026-10-13T08:05:00.000+0200",
-     "lastUpdate": "2026-10-13T08:05:00.000+0200",
-     "resume": "2026-10-13T08:05:00.000+0200",
-     "start": "2026-10-13T07:48:00.000+0200"
-    },
-    "title": "77A: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "77A": "ptBusCity"
-     }
-    },
     "description": "Linie 77A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 77A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "location": "Juchgasse",
@@ -574,50 +470,15 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-13T08:05:00.000+0200",
-     "end": "2026-10-13T23:55:00.000+0200",
-     "lastUpdate": "2026-10-13T08:05:00.000+0200",
-     "resume": "2026-10-13T08:05:00.000+0200",
+     "end": "2026-10-13T09:24:00.000+0200",
+     "lastUpdate": "2026-10-13T09:24:00.000+0200",
+     "resume": "2026-10-13T09:24:00.000+0200",
      "start": "2026-10-13T07:48:00.000+0200"
     },
     "title": "77A: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "99B": "ptBusCity"
-     }
-    },
-    "description": "Linie 99B: Fahrtbehinderung in Richtung Aspern Nord U. Voraussichtliche Dauer: 08:30 Uhr. Grund: Verkehrsunfall im Bereich Schafflerhofstraße.",
-    "descriptionHTML": "Linie 99B:<br>Fahrtbehinderung in Richtung Aspern Nord U.<br> <br>Voraussichtliche Dauer: 08:30 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Schafflerhofstraße.",
-    "location": "Schafflerhofstraße",
-    "name": "I20261013-0009",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "99B"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "299",
-       "lineName": "99B",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-13T08:11:00.000+0200",
-     "end": "2026-10-13T08:14:00.000+0200",
-     "lastUpdate": "2026-10-13T08:14:00.000+0200",
-     "resume": "2026-10-13T08:14:00.000+0200",
-     "start": "2026-10-13T08:10:00.000+0200"
-    },
-    "title": "99B: Verkehrsunfall"
    },
    {
     "attributes": {
@@ -644,52 +505,15 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-13T08:14:00.000+0200",
-     "end": "2026-10-13T23:55:00.000+0200",
-     "lastUpdate": "2026-10-13T08:14:00.000+0200",
-     "resume": "2026-10-13T08:14:00.000+0200",
+     "end": "2026-10-13T09:13:00.000+0200",
+     "lastUpdate": "2026-10-13T09:13:00.000+0200",
+     "resume": "2026-10-13T09:13:00.000+0200",
      "start": "2026-10-13T08:10:00.000+0200"
     },
     "title": "99B: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Fahrtbehinderung in Richtung Simmering. Voraussichtliche Dauer: 08:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Schweglerstraße.",
-    "descriptionHTML": "Linie U3:<br>Fahrtbehinderung in Richtung Simmering.<br> <br>Voraussichtliche Dauer: 08:45 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Schweglerstraße.",
-    "name": "I20261013-0010",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "303",
-       "lineName": "U3",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4927
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-13T08:20:00.000+0200",
-     "end": "2026-10-13T08:24:00.000+0200",
-     "lastUpdate": "2026-10-13T08:24:00.000+0200",
-     "resume": "2026-10-13T08:24:00.000+0200",
-     "start": "2026-10-13T08:20:00.000+0200"
-    },
-    "title": "U3: Rettungseinsatz"
    },
    {
     "attributes": {
@@ -909,27 +733,20 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "88A": "ptBusCity",
       "88B": "ptBusCity"
      }
     },
-    "description": "Linie 88B: Unregelmäßige Intervalle in beiden Richtungen. Linie 88A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "Linie 88B:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 88A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
+    "description": "Linie 88B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "Linie 88B:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
     "name": "I20261013-0014",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "88B",
-     "88A"
+     "88B"
     ],
     "relatedLinesDetails": [
      [
-      {
-       "lineId": "488",
-       "lineName": "88A",
-       "vehicleType": "ptBusCity"
-      },
       {
        "lineId": "288",
        "lineName": "88B",
@@ -941,11 +758,47 @@
     "time": {
      "created": "2026-10-13T08:42:00.000+0200",
      "end": "2026-10-13T23:55:00.000+0200",
-     "lastUpdate": "2026-10-13T08:42:00.000+0200",
+     "lastUpdate": "2026-10-13T09:24:00.000+0200",
      "resume": "2026-10-13T08:41:00.000+0200",
      "start": "2026-10-13T08:41:00.000+0200"
     },
-    "title": "88A, 88B: Verkehrsunfall"
+    "title": "88B: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "60": "ptTram"
+     }
+    },
+    "description": "Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Weichen Sie ersatzweise auf die Linien 56A, 56B, 58A oder 58B aus. Voraussichtliche Dauer: 09:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Stadlergasse.",
+    "descriptionHTML": "Linie 60:<br>Kein Betrieb zwischen Hofwiesengasse und Hietzing U.<br> <br>Weichen Sie ersatzweise auf die Linien 56A, 56B, 58A oder 58B aus.<br><br>Voraussichtliche Dauer: 09:40 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Stadlergasse.",
+    "name": "I20261013-0015",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "160",
+       "lineName": "60",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1612
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-13T09:20:00.000+0200",
+     "end": "2026-10-13T23:55:00.000+0200",
+     "lastUpdate": "2026-10-13T09:20:00.000+0200",
+     "start": "2026-10-13T09:16:00.000+0200"
+    },
+    "title": "60: Schadhaftes Fahrzeug"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1359,6 +1212,402 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
    },
    {
+    "description": "Schadhafter Zug\nBetrieb nur bis Hietzing ",
+    "name": "R1532-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1532
+    ],
+    "time": {
+     "end": "2026-10-13T10:19:00.000+0200",
+     "start": "2026-10-13T09:20:26.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Hietzing "
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb nur bis Hietzing ",
+    "name": "R1535-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1535
+    ],
+    "time": {
+     "end": "2026-10-13T10:19:00.000+0200",
+     "start": "2026-10-13T09:20:26.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Hietzing "
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb nur bis Hietzing ",
+    "name": "R1537-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1537
+    ],
+    "time": {
+     "end": "2026-10-13T10:19:00.000+0200",
+     "start": "2026-10-13T09:20:26.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Hietzing "
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse",
+    "name": "R1607-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1607
+    ],
+    "time": {
+     "end": "2026-10-13T10:18:00.000+0200",
+     "start": "2026-10-13T09:19:25.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb nur bis Hietzing ",
+    "name": "R1610-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1610
+    ],
+    "time": {
+     "end": "2026-10-13T10:19:00.000+0200",
+     "start": "2026-10-13T09:20:26.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Hietzing "
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb ab Hofwiesengasse",
+    "name": "R1611-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1611
+    ],
+    "time": {
+     "end": "2026-10-13T10:20:00.000+0200",
+     "start": "2026-10-13T09:20:56.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Hofwiesengasse"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb ab Hofwiesengasse",
+    "name": "R1612-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1612
+    ],
+    "time": {
+     "end": "2026-10-13T10:20:00.000+0200",
+     "start": "2026-10-13T09:20:56.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Hofwiesengasse"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb ab Hofwiesengasse",
+    "name": "R1613-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1613
+    ],
+    "time": {
+     "end": "2026-10-13T10:20:00.000+0200",
+     "start": "2026-10-13T09:20:56.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Hofwiesengasse"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse",
+    "name": "R1625-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1625
+    ],
+    "time": {
+     "end": "2026-10-13T10:18:00.000+0200",
+     "start": "2026-10-13T09:19:25.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse",
+    "name": "R1626-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1626
+    ],
+    "time": {
+     "end": "2026-10-13T10:18:00.000+0200",
+     "start": "2026-10-13T09:19:25.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse",
+    "name": "R1627-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1627
+    ],
+    "time": {
+     "end": "2026-10-13T10:18:00.000+0200",
+     "start": "2026-10-13T09:19:25.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse",
+    "name": "R1628-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1628
+    ],
+    "time": {
+     "end": "2026-10-13T10:18:00.000+0200",
+     "start": "2026-10-13T09:19:25.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse",
+    "name": "R1629-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1629
+    ],
+    "time": {
+     "end": "2026-10-13T10:18:00.000+0200",
+     "start": "2026-10-13T09:19:25.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse",
+    "name": "R1630-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1630
+    ],
+    "time": {
+     "end": "2026-10-13T10:18:00.000+0200",
+     "start": "2026-10-13T09:19:25.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse",
+    "name": "R1631-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1631
+    ],
+    "time": {
+     "end": "2026-10-13T10:18:00.000+0200",
+     "start": "2026-10-13T09:19:25.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse",
+    "name": "R1632-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1632
+    ],
+    "time": {
+     "end": "2026-10-13T10:18:00.000+0200",
+     "start": "2026-10-13T09:19:25.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse",
+    "name": "R1633-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1633
+    ],
+    "time": {
+     "end": "2026-10-13T10:18:00.000+0200",
+     "start": "2026-10-13T09:19:25.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse",
+    "name": "R1634-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1634
+    ],
+    "time": {
+     "end": "2026-10-13T10:18:00.000+0200",
+     "start": "2026-10-13T09:19:25.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb ab Hietzing ",
+    "name": "R1636-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1636
+    ],
+    "time": {
+     "end": "2026-10-13T10:22:00.000+0200",
+     "start": "2026-10-13T09:23:26.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Hietzing "
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb ab Hietzing ",
+    "name": "R1637-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1637
+    ],
+    "time": {
+     "end": "2026-10-13T10:22:00.000+0200",
+     "start": "2026-10-13T09:23:26.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Hietzing "
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb ab Hietzing ",
+    "name": "R1638-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1638
+    ],
+    "time": {
+     "end": "2026-10-13T10:22:00.000+0200",
+     "start": "2026-10-13T09:23:26.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Hietzing "
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb ab Hietzing ",
+    "name": "R1639-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1639
+    ],
+    "time": {
+     "end": "2026-10-13T10:22:00.000+0200",
+     "start": "2026-10-13T09:23:26.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Hietzing "
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -1410,42 +1659,6 @@
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
    },
    {
-    "description": "Stromstörung \nBetrieb nur bis Nordbrücke",
-    "name": "R2173-127",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedStops": [
-     2173
-    ],
-    "time": {
-     "end": "2026-10-13T09:29:00.000+0200",
-     "start": "2026-10-13T08:30:21.000+0200"
-    },
-    "title": "Stromstörung \nBetrieb nur bis Nordbrücke"
-   },
-   {
-    "description": "Stromstörung \nBetrieb nur bis Nordbrücke",
-    "name": "R2174-127",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedStops": [
-     2174
-    ],
-    "time": {
-     "end": "2026-10-13T09:29:00.000+0200",
-     "start": "2026-10-13T08:30:21.000+0200"
-    },
-    "title": "Stromstörung \nBetrieb nur bis Nordbrücke"
-   },
-   {
     "description": "Fahrtbehinderung\nwegen Stromstörung",
     "name": "R2175-127",
     "owner": "WL",
@@ -1462,96 +1675,6 @@
      "start": "2026-10-13T08:46:53.000+0200"
     },
     "title": "Fahrtbehinderung\nwegen Stromstörung"
-   },
-   {
-    "description": "Fahrtbehinderung\nStromstörung",
-    "name": "R2176-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2176
-    ],
-    "time": {
-     "end": "2026-10-13T09:26:00.000+0200",
-     "start": "2026-10-13T08:27:51.000+0200"
-    },
-    "title": "Fahrtbehinderung\nStromstörung"
-   },
-   {
-    "description": "Fahrtbehinderung\nStromstörung",
-    "name": "R2177-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2177
-    ],
-    "time": {
-     "end": "2026-10-13T09:23:00.000+0200",
-     "start": "2026-10-13T08:23:50.000+0200"
-    },
-    "title": "Fahrtbehinderung\nStromstörung"
-   },
-   {
-    "description": "Fahrtbehinderung\nStromstörung",
-    "name": "R2178-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2178
-    ],
-    "time": {
-     "end": "2026-10-13T09:23:00.000+0200",
-     "start": "2026-10-13T08:23:50.000+0200"
-    },
-    "title": "Fahrtbehinderung\nStromstörung"
-   },
-   {
-    "description": "Fahrtbehinderung\nStromstörung",
-    "name": "R2183-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2183
-    ],
-    "time": {
-     "end": "2026-10-13T09:23:00.000+0200",
-     "start": "2026-10-13T08:23:51.000+0200"
-    },
-    "title": "Fahrtbehinderung\nStromstörung"
-   },
-   {
-    "description": "Fahrtbehinderung\nStromstörung",
-    "name": "R2184-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2184
-    ],
-    "time": {
-     "end": "2026-10-13T09:23:00.000+0200",
-     "start": "2026-10-13T08:23:51.000+0200"
-    },
-    "title": "Fahrtbehinderung\nStromstörung"
-   },
-   {
-    "description": "Fahrtbehinderung\nStromstörung",
-    "name": "R2185-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2185
-    ],
-    "time": {
-     "end": "2026-10-13T09:26:00.000+0200",
-     "start": "2026-10-13T08:27:51.000+0200"
-    },
-    "title": "Fahrtbehinderung\nStromstörung"
    },
    {
     "description": "Fahrtbehinderung\nwegen Stromstörung",
@@ -1930,6 +2053,24 @@
      "start": "2026-10-13T05:00:28.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb ab Hofwiesengasse",
+    "name": "R5611-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     5611
+    ],
+    "time": {
+     "end": "2026-10-13T10:20:00.000+0200",
+     "start": "2026-10-13T09:20:57.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Hofwiesengasse"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
