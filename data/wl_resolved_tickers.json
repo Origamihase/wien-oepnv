@@ -1,48 +1,5 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": [
-  {
-   "key": "R90-136|2026-10-13T15:36:32.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R90-136",
-   "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-13T16:36:00.000+0200",
-   "incident": "I20261013-0031"
-  },
-  {
-   "key": "R91-136|2026-10-13T15:36:32.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R91-136",
-   "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-13T16:36:00.000+0200",
-   "incident": "I20261013-0031"
-  },
-  {
-   "key": "R92-136|2026-10-13T15:36:32.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R92-136",
-   "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-13T16:36:00.000+0200",
-   "incident": "I20261013-0031"
-  },
-  {
-   "key": "R93-136|2026-10-13T15:36:32.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R93-136",
-   "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-13T16:36:00.000+0200",
-   "incident": "I20261013-0031"
-  },
-  {
-   "key": "R94-136|2026-10-13T15:36:32.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R94-136",
-   "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-13T16:36:00.000+0200",
-   "incident": "I20261013-0031"
-  },
-  {
-   "key": "R95-136|2026-10-13T15:36:32.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R95-136",
-   "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-13T16:36:00.000+0200",
-   "incident": "I20261013-0031"
-  }
- ]
+ "tickers": []
 }
