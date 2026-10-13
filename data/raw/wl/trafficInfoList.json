@@ -13,7 +13,7 @@
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2372-125, R2373-125, R2373-127, R2373-126, R2380-627, R2345-127, R2372-627, R2379-627, R2370-125, R2343-125, R2359-125, R2371-125, R2378-627, R2343-626, R5815-671, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R130-136, R19-136, R36-152, R45-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2343-626, R2379-627, R2380-627, R2345-127, R2372-627, R2378-627, R5815-671, R1974-466, R500-101, R3190-0, R2930-0, R2236-0, R2931-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -663,6 +663,21 @@
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
    },
    {
+    "description": "Fahrtbehinderung\nSignalstörung\n\n\n\n",
+    "name": "R2236-0",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2236
+    ],
+    "time": {
+     "end": "2026-10-13T07:28:00.000+0200",
+     "start": "2026-10-13T06:29:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSignalstörung\n\n\n\n"
+   },
+   {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -951,6 +966,36 @@
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
    },
    {
+    "description": "Fahrtbehinderung\nSignalstörung\n\n\n\n",
+    "name": "R2930-0",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2930
+    ],
+    "time": {
+     "end": "2026-10-13T07:28:00.000+0200",
+     "start": "2026-10-13T06:29:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSignalstörung\n\n\n\n"
+   },
+   {
+    "description": "Fahrtbehinderung\nSignalstörung\n\n\n\n",
+    "name": "R2931-0",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2931
+    ],
+    "time": {
+     "end": "2026-10-13T07:28:00.000+0200",
+     "start": "2026-10-13T06:29:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSignalstörung\n\n\n\n"
+   },
+   {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -967,6 +1012,21 @@
      "start": "2026-10-07T00:00:15.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "description": "Fahrtbehinderung\nSignalstörung\n\n\n\n",
+    "name": "R3190-0",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     3190
+    ],
+    "time": {
+     "end": "2026-10-13T07:28:00.000+0200",
+     "start": "2026-10-13T06:29:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSignalstörung\n\n\n\n"
    },
    {
     "description": "Züge halten\nbei Linien 6 und 18",
