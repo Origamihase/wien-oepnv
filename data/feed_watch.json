@@ -1,28 +1,28 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-13T08:30:59.663752+00:00",
- "built": "2026-10-13T10:30:53+02:00",
+ "updated": "2026-10-13T09:01:12.440407+00:00",
+ "built": "2026-10-13T11:01:00+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-13T10:30:53+02:00",
+  "built": "2026-10-13T11:01:00+02:00",
   "items": [
    {
-    "title": "35A: Rettungseinsatz",
-    "time_line": "Seit 10:10"
+    "title": "O: Falschparker",
+    "time_line": "Seit 10:54"
+   },
+   {
+    "title": "35A: Polizeieinsatz, Rettungseinsatz",
+    "time_line": "Seit 10:51"
+   },
+   {
+    "title": "38: Rettungseinsatz",
+    "time_line": "Seit 10:51"
    },
    {
     "title": "U3: Verspätungen",
     "time_line": "Seit 09:33"
-   },
-   {
-    "title": "60: Schadhaftes Fahrzeug",
-    "time_line": "Seit 09:16"
-   },
-   {
-    "title": "27: Stromstörung",
-    "time_line": "Seit 08:23"
    },
    {
     "title": "U6: Rettungseinsatz",
@@ -2350,6 +2350,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 102
+   }
+  },
+  {
+   "t": "2026-10-13T09:01:12.440407+00:00",
+   "raw": {
+    "wl-stoerungen": 77,
+    "wl-hinweise": 101,
+    "oebb": 160,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 27,
+    "oebb": 136,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 104
    }
   }
  ]

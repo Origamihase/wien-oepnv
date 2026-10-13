@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261013-0006-F01, I20260925-0011, I20260909-0007, I20261013-0011-F01, I20261013-0013-F01, I20261013-0016, I20261013-0015-F01, I20261013-0015, I20261013-0010-F01, I20261013-0017, I20261013-0003, I20261013-0012, I20261013-0014, I20261013-0018, I20261013-0016-F01"
+    "trafficInfoNameList": "I20261013-0015-F01, I20260917-0012, I20260922-0032, I20261013-0006-F01, I20260925-0011, I20260909-0007, I20261013-0020-F01, I20261013-0020, I20261013-0013-F01, I20261013-0019, I20261013-0017, I20261013-0003, I20261013-0012, I20261013-0014, I20261013-0018, I20261013-0016-F01, I20261013-0011-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R45-136, R36-152, R119-136, R19-136, R130-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R2558-125, R1474-412, R2025-671, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1448-412, R1177-0, R2372-125, R2373-125, R2373-127, R2373-126, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2345-127, R2380-627, R2379-627, R2372-627, R5815-671, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R115-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R102-136, R100-136, R101-136, R103-136, R116-136, R2558-125, R1473-149, R1445-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1448-412, R1474-412, R2025-671, R1476-149, R1475-149, R1474-149, R1177-0, R2343-626, R2379-627, R2380-627, R2345-127, R2372-627, R2378-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R5815-671, R1974-466, R500-101, R1217-435, R1216-435, R1215-435, R2964-435, R1216-138, R2964-138, R1217-138, R1215-138, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -272,43 +272,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261013-0010-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "303",
-       "lineName": "U3",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4927
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-13T08:24:00.000+0200",
-     "end": "2026-10-13T09:32:00.000+0200",
-     "lastUpdate": "2026-10-13T09:32:00.000+0200",
-     "resume": "2026-10-13T09:32:00.000+0200",
-     "start": "2026-10-13T08:20:00.000+0200"
-    },
-    "title": "U3: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "27": "ptTram"
      }
     },
@@ -331,12 +294,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-13T08:46:00.000+0200",
-     "end": "2026-10-13T23:55:00.000+0200",
-     "lastUpdate": "2026-10-13T08:46:00.000+0200",
-     "resume": "2026-10-13T08:46:00.000+0200",
+     "end": "2026-10-13T10:45:00.000+0200",
+     "lastUpdate": "2026-10-13T10:45:00.000+0200",
+     "resume": "2026-10-13T10:45:00.000+0200",
      "start": "2026-10-13T08:23:00.000+0200"
     },
     "title": "27: Stromstörung"
@@ -452,43 +415,6 @@
       "60": "ptTram"
      }
     },
-    "description": "Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Weichen Sie ersatzweise auf die Linien 56A, 56B, 58A oder 58B aus. Voraussichtliche Dauer: 09:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Stadlergasse.",
-    "descriptionHTML": "Linie 60:<br>Kein Betrieb zwischen Hofwiesengasse und Hietzing U.<br> <br>Weichen Sie ersatzweise auf die Linien 56A, 56B, 58A oder 58B aus.<br><br>Voraussichtliche Dauer: 09:40 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Stadlergasse.",
-    "name": "I20261013-0015",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "160",
-       "lineName": "60",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     1612
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-13T09:20:00.000+0200",
-     "end": "2026-10-13T09:32:00.000+0200",
-     "lastUpdate": "2026-10-13T09:32:00.000+0200",
-     "resume": "2026-10-13T09:32:00.000+0200",
-     "start": "2026-10-13T09:16:00.000+0200"
-    },
-    "title": "60: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "60": "ptTram"
-     }
-    },
     "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "name": "I20261013-0015-F01",
@@ -510,52 +436,15 @@
     "relatedStops": [
      1612
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-13T09:32:00.000+0200",
-     "end": "2026-10-13T23:55:00.000+0200",
-     "lastUpdate": "2026-10-13T09:32:00.000+0200",
-     "resume": "2026-10-13T09:32:00.000+0200",
+     "end": "2026-10-13T10:46:00.000+0200",
+     "lastUpdate": "2026-10-13T10:46:00.000+0200",
+     "resume": "2026-10-13T10:46:00.000+0200",
      "start": "2026-10-13T09:16:00.000+0200"
     },
     "title": "60: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Fahrtbehinderung in Richtung Hütteldorf. Voraussichtliche Dauer: 09:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Unter St. Veit.",
-    "descriptionHTML": "Linie U4:<br>Fahrtbehinderung in Richtung Hütteldorf.<br> <br>Voraussichtliche Dauer: 09:45 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Unter St. Veit.",
-    "name": "I20261013-0016",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "304",
-       "lineName": "U4",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4405
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-13T09:31:00.000+0200",
-     "end": "2026-10-13T09:32:00.000+0200",
-     "lastUpdate": "2026-10-13T09:32:00.000+0200",
-     "resume": "2026-10-13T09:32:00.000+0200",
-     "start": "2026-10-13T09:30:00.000+0200"
-    },
-    "title": "U4: Rettungseinsatz"
    },
    {
     "attributes": {
@@ -661,6 +550,112 @@
      "start": "2026-10-13T10:10:00.000+0200"
     },
     "title": "35A: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "38": "ptTram"
+     }
+    },
+    "description": "Linie 38: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Weichen Sie ersatzweise auf die Linien 37, 10A, 38A und 39A aus. Voraussichtliche Dauer: 11:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Gatterburggasse.",
+    "descriptionHTML": "Linie 38:<br>Betrieb nur zwischen Schottentor U und Nußdorfer Straße U.<br> <br>Weichen Sie ersatzweise auf die Linien 37, 10A, 38A und 39A aus.<br><br>Voraussichtliche Dauer: 11:15 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Gatterburggasse.",
+    "name": "I20261013-0019",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "138",
+       "lineName": "38",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     2964
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-13T10:54:00.000+0200",
+     "end": "2026-10-13T23:55:00.000+0200",
+     "lastUpdate": "2026-10-13T10:59:00.000+0200",
+     "start": "2026-10-13T10:51:00.000+0200"
+    },
+    "title": "38: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Fahrtbehinderung in Richtung Raxstraße. Voraussichtliche Dauer: 11:20 Uhr. Grund: Falschparker im Bereich Radetzkystraße 23.",
+    "descriptionHTML": "Linie O:<br>Fahrtbehinderung in Richtung Raxstraße.<br> <br>Voraussichtliche Dauer: 11:20 Uhr.<br><br>Grund: Falschparker im Bereich Radetzkystraße 23.",
+    "location": "Radetzkystraße 23",
+    "name": "I20261013-0020",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "170",
+       "lineName": "O",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-13T10:55:00.000+0200",
+     "end": "2026-10-13T10:57:00.000+0200",
+     "lastUpdate": "2026-10-13T10:57:00.000+0200",
+     "resume": "2026-10-13T10:57:00.000+0200",
+     "start": "2026-10-13T10:54:00.000+0200"
+    },
+    "title": "O: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Radetzkystraße 23",
+    "name": "I20261013-0020-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "170",
+       "lineName": "O",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-13T10:57:00.000+0200",
+     "end": "2026-10-13T23:55:00.000+0200",
+     "lastUpdate": "2026-10-13T10:57:00.000+0200",
+     "resume": "2026-10-13T10:57:00.000+0200",
+     "start": "2026-10-13T10:54:00.000+0200"
+    },
+    "title": "O: Falschparker"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -838,6 +833,114 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Züge halten in\nSchleife"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1215-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1215
+    ],
+    "time": {
+     "end": "2026-10-13T11:58:00.000+0200",
+     "start": "2026-10-13T10:59:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1215-435",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "35A"
+    ],
+    "relatedStops": [
+     1215
+    ],
+    "time": {
+     "end": "2026-10-13T11:50:00.000+0200",
+     "start": "2026-10-13T10:51:04.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1216-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1216
+    ],
+    "time": {
+     "end": "2026-10-13T11:58:00.000+0200",
+     "start": "2026-10-13T10:59:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1216-435",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "35A"
+    ],
+    "relatedStops": [
+     1216
+    ],
+    "time": {
+     "end": "2026-10-13T11:50:00.000+0200",
+     "start": "2026-10-13T10:51:04.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1217-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1217
+    ],
+    "time": {
+     "end": "2026-10-13T11:58:00.000+0200",
+     "start": "2026-10-13T10:59:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1217-435",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "35A"
+    ],
+    "relatedStops": [
+     1217
+    ],
+    "time": {
+     "end": "2026-10-13T11:50:00.000+0200",
+     "start": "2026-10-13T10:51:04.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1411,6 +1514,42 @@
      "start": "2026-10-07T00:00:15.000+0200"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2964-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     2964
+    ],
+    "time": {
+     "end": "2026-10-13T11:58:00.000+0200",
+     "start": "2026-10-13T10:59:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2964-435",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "35A"
+    ],
+    "relatedStops": [
+     2964
+    ],
+    "time": {
+     "end": "2026-10-13T11:50:00.000+0200",
+     "start": "2026-10-13T10:51:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
