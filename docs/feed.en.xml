@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 13 Oct 2026 06:30:41 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 07:00:51 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[16A/17A/67A/67B: Level crossing fault]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">64adf3f111f665b0756e206081b736c33bee655dba42034dde513aed6f0ef56b</guid>
+      <pubDate>Tue, 13 Oct 2026 06:31:00 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 06:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 06:31:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 06:31]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 06:31]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
+      <pubDate>Tue, 13 Oct 2026 06:31:00 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 06:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 06:31:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 06:31]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 06:31]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Traffic accident, construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">74d7957440840d3e04ef7e63c6b0e84924838c4a84cdab001ac77313773a37b5</guid>
+      <pubDate>Tue, 13 Oct 2026 06:43:00 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 06:43:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 06:43:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Oct 2026 01:00:00 +0200</ext:ends_at>
+      <description>Traffic accident: irregular intervals in both directions. Construction works: buses stop at Salvatorianerplatz. [Until Wed 14.10.]</description>
+      <content:encoded><![CDATA[Traffic accident: irregular intervals in both directions. Construction works: buses stop at Salvatorianerplatz.<br/>[Until Wed 14.10.]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1/71/D: Demonstration on 13.10.2026]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -85,39 +118,6 @@
       <ext:ends_at>Fri, 16 Oct 2026 07:00:00 +0200</ext:ends_at>
       <description>Frauenstiftgasse after Brünner Straße → Frauenstiftgasse 5-7. Stop relocation of lines 30A towards Freiheitsplatz, 31A towards Jochbergengasse, 36A and 36B … [From Wed 14.10. until Fri 16.10.]</description>
       <content:encoded><![CDATA[Frauenstiftgasse after Brünner Straße → Frauenstiftgasse 5-7. Stop relocation of lines 30A towards Freiheitsplatz, 31A towards Jochbergengasse, 36A and 36B …<br/>[From Wed 14.10. until Fri 16.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
-      <pubDate>Mon, 05 Oct 2026 15:40:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 15:40:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 … [Until 28.10.]</description>
-      <content:encoded><![CDATA[Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 …<br/>[Until 28.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S80: ÖBB replacement bus]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
-      <pubDate>Tue, 13 Oct 2026 05:00:28 +0200</pubDate>
-      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 05:00:28 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 23:00:00 +0200</ext:ends_at>
-      <description>Bhf. Hütteldorf [Today]</description>
-      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A/7A/N62: Eibesbrunnergasse both directions]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bd6cbe1a4ea6d909912fce8527e38411ee42a952a91a70beecf363c26cd3e728</guid>
-      <pubDate>Mon, 05 Oct 2026 16:10:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 16:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 … [Until 06.11.]</description>
-      <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 …<br/>[Until 06.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

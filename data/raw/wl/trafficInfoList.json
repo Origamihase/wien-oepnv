@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007"
+    "trafficInfoNameList": "I20261013-0003, I20260917-0012, I20260922-0032, I20261013-0001, I20261013-0002-F01, I20261013-0002-F02, I20260925-0011, I20261013-0002-F03, I20261013-0002-F04, I20261013-0002, I20260909-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R130-136, R19-136, R36-152, R45-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2343-626, R2379-627, R2380-627, R2345-127, R2372-627, R2378-627, R5815-671, R1974-466, R500-101, R3190-0, R2930-0, R2236-0, R2931-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R130-136, R19-136, R36-152, R45-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R2558-125, R2025-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1177-0, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2343-626, R2379-627, R2380-627, R2345-127, R2372-627, R2378-627, R5815-671, R1974-466, R500-101, R3190-0, R2930-0, R2236-0, R2931-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -199,6 +199,270 @@
      "start": "2026-09-25T08:55:00.000+0200"
     },
     "title": "26E: Gleisbauarbeiten"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261013-0001",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "304",
+       "lineName": "U4",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-13T06:31:00.000+0200",
+     "end": "2026-10-13T23:55:00.000+0200",
+     "lastUpdate": "2026-10-13T06:31:00.000+0200",
+     "resume": "2026-10-13T06:31:00.000+0200",
+     "start": "2026-10-13T06:31:00.000+0200"
+    },
+    "title": "U4: Verspätungen"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "16A": "ptBusCity",
+      "17A": "ptBusCity",
+      "67A": "ptBusCity",
+      "67B": "ptBusCity"
+     }
+    },
+    "description": "Linie 67B: Fahrtbehinderung in beiden Richtungen. Linie 16A: Fahrtbehinderung in beiden Richtungen. Linie 17A: Fahrtbehinderung in beiden Richtungen. Linie 67A: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 06:45 Uhr. Grund: Störung an einem Bahnübergang im Bereich Himberger Straße.",
+    "descriptionHTML": "Linie 67B:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie 16A:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie 17A:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie 67A:<br>Fahrtbehinderung in beiden Richtungen.<br> <br>Voraussichtliche Dauer: 06:45 Uhr.<br><br>Grund: Störung an einem Bahnübergang im Bereich Himberger Straße.",
+    "location": "Himberger Straße",
+    "name": "I20261013-0002",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "67B",
+     "16A",
+     "17A",
+     "67A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "416",
+       "lineName": "16A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "417",
+       "lineName": "17A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "467",
+       "lineName": "67A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "267",
+       "lineName": "67B",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-13T06:32:00.000+0200",
+     "end": "2026-10-13T06:33:00.000+0200",
+     "lastUpdate": "2026-10-13T06:33:00.000+0200",
+     "resume": "2026-10-13T06:33:00.000+0200",
+     "start": "2026-10-13T06:31:00.000+0200"
+    },
+    "title": "16A, 17A, 67A, 67B: Störung an einem Bahnübergang"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "16A": "ptBusCity"
+     }
+    },
+    "description": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Himberger Straße",
+    "name": "I20261013-0002-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "16A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "416",
+       "lineName": "16A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-13T06:33:00.000+0200",
+     "end": "2026-10-13T23:55:00.000+0200",
+     "lastUpdate": "2026-10-13T06:33:00.000+0200",
+     "resume": "2026-10-13T06:33:00.000+0200",
+     "start": "2026-10-13T06:31:00.000+0200"
+    },
+    "title": "16A: Störung an einem Bahnübergang"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "17A": "ptBusCity"
+     }
+    },
+    "description": "Linie 17A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 17A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Himberger Straße",
+    "name": "I20261013-0002-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "17A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "417",
+       "lineName": "17A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-13T06:33:00.000+0200",
+     "end": "2026-10-13T23:55:00.000+0200",
+     "lastUpdate": "2026-10-13T06:33:00.000+0200",
+     "resume": "2026-10-13T06:33:00.000+0200",
+     "start": "2026-10-13T06:31:00.000+0200"
+    },
+    "title": "17A: Störung an einem Bahnübergang"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "67A": "ptBusCity"
+     }
+    },
+    "description": "Linie 67A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 67A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Himberger Straße",
+    "name": "I20261013-0002-F03",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "67A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "467",
+       "lineName": "67A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-13T06:33:00.000+0200",
+     "end": "2026-10-13T23:55:00.000+0200",
+     "lastUpdate": "2026-10-13T06:33:00.000+0200",
+     "resume": "2026-10-13T06:33:00.000+0200",
+     "start": "2026-10-13T06:31:00.000+0200"
+    },
+    "title": "67A: Störung an einem Bahnübergang"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "67B": "ptBusCity"
+     }
+    },
+    "description": "Linie 67B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 67B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Himberger Straße",
+    "name": "I20261013-0002-F04",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "67B"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "267",
+       "lineName": "67B",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-13T06:33:00.000+0200",
+     "end": "2026-10-13T23:55:00.000+0200",
+     "lastUpdate": "2026-10-13T06:33:00.000+0200",
+     "resume": "2026-10-13T06:33:00.000+0200",
+     "start": "2026-10-13T06:31:00.000+0200"
+    },
+    "title": "67B: Störung an einem Bahnübergang"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "66A": "ptBusCity"
+     }
+    },
+    "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "Linie 66A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
+    "name": "I20261013-0003",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "66A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "466",
+       "lineName": "66A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-13T06:45:00.000+0200",
+     "end": "2026-10-13T23:55:00.000+0200",
+     "lastUpdate": "2026-10-13T06:45:00.000+0200",
+     "resume": "2026-10-13T06:43:00.000+0200",
+     "start": "2026-10-13T06:43:00.000+0200"
+    },
+    "title": "66A: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
