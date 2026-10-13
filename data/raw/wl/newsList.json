@@ -2837,7 +2837,7 @@
     "attributes": {
      "ausBis": "16.10.2026 00:45",
      "ausVon": "15.10.2026 20:45",
-     "location": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
+     "location": "Zwischengeschoss Zugang Aufzug U1 - U4 Mittelbahnsteig",
      "rbls": [
       4427,
       4410
@@ -2851,7 +2851,7 @@
      "status": "geplante Wartung",
      "towards": "U4 beide Richtungen"
     },
-    "description": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
+    "description": "Zwischengeschoss Zugang Aufzug U1 - U4 Mittelbahnsteig",
     "name": "ftazW_113",
     "refPoiCategoryId": -1,
     "relatedLines": [
@@ -2912,8 +2912,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U4",
-      "U6"
+      "U6",
+      "U4"
      ],
      "station": "Längenfeldgasse",
      "status": "geplante Wartung",
@@ -2923,8 +2923,8 @@
     "name": "ftazW_239",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U4",
-     "U6"
+     "U6",
+     "U4"
     ],
     "relatedStops": [
      4437,
@@ -2947,8 +2947,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U4",
-      "U6"
+      "U6",
+      "U4"
      ],
      "station": "Längenfeldgasse",
      "status": "geplante Wartung",
@@ -2958,8 +2958,8 @@
     "name": "ftazW_240",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U4",
-     "U6"
+     "U6",
+     "U4"
     ],
     "relatedStops": [
      4438,

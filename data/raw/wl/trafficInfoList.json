@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261013-0038-F01, I20260917-0012, I20261013-0039, I20260922-0032, I20260925-0011, I20261013-0034-F01, I20260909-0007, I20261013-0041, I20261013-0037, I20261013-0042, I20261013-0025-F02, I20261013-0025-F03"
+    "trafficInfoNameList": "I20260917-0012, I20261013-0039, I20260922-0032, I20260925-0011, I20260909-0007, I20261013-0041, I20261013-0042, I20261013-0025-F02, I20261013-0025-F03"
    },
    {
     "id": 3,
@@ -269,112 +269,6 @@
      "start": "2026-10-13T11:39:00.000+0200"
     },
     "title": "71: Demonstration"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "66A": "ptBusCity"
-     }
-    },
-    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261013-0034-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "466",
-       "lineName": "66A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "relatedStops": [
-     1908
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-13T16:11:00.000+0200",
-     "end": "2026-10-13T19:19:00.000+0200",
-     "lastUpdate": "2026-10-13T19:19:00.000+0200",
-     "resume": "2026-10-13T19:19:00.000+0200",
-     "start": "2026-10-13T15:54:00.000+0200"
-    },
-    "title": "66A: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "11A": "ptBusCity"
-     }
-    },
-    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "Linie 11A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
-    "name": "I20261013-0037",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "411",
-       "lineName": "11A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-13T17:13:00.000+0200",
-     "end": "2026-10-13T19:00:00.000+0200",
-     "lastUpdate": "2026-10-13T19:00:00.000+0200",
-     "resume": "2026-10-13T19:00:00.000+0200",
-     "start": "2026-10-13T17:13:00.000+0200"
-    },
-    "title": "11A: Verkehrsüberlastung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "26": "ptTram"
-     }
-    },
-    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Hausfeldstraße",
-    "name": "I20261013-0038-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "126",
-       "lineName": "26",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-13T18:02:00.000+0200",
-     "end": "2026-10-13T19:12:00.000+0200",
-     "lastUpdate": "2026-10-13T19:12:00.000+0200",
-     "resume": "2026-10-13T19:12:00.000+0200",
-     "start": "2026-10-13T17:21:00.000+0200"
-    },
-    "title": "26: Schadhaftes Fahrzeug"
    },
    {
     "attributes": {
