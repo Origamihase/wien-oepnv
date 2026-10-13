@@ -1054,22 +1054,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40A: Verkehrsüberlastung",
-    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9bf5343b39ded7dc7ca142844f951a241fc0e1d681fa0c0e2ed28db2ac8efe38",
-    "pubDate": "2026-10-13T07:01:00+02:00",
-    "starts_at": "2026-10-13T07:01:00+02:00",
-    "ends_at": "2026-10-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=40A|D=2026-10-13|TK=40a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261013-0005"
-    ],
-    "_incident_start": "2026-10-13T07:01:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "46/49/52: Gleisbauarbeiten",
     "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1126,22 +1110,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "67A: Störung an einem Bahnübergang",
-    "description": "Linie 67A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "6e99216299a61049561d5a4425452f6c84cc32619ff3840ff8b07559a0c13400",
-    "pubDate": "2026-10-13T06:31:00+02:00",
-    "starts_at": "2026-10-13T06:31:00+02:00",
-    "ends_at": "2026-10-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=67A|D=2026-10-13|TK=67a störung an einem bahnübergang",
-    "_wl_ids": [
-      "I20261013-0002"
-    ],
-    "_incident_start": "2026-10-13T06:31:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "67B: Störung an einem Bahnübergang",
     "description": "Linie 67B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1166,6 +1134,22 @@
     "starts_at": "2026-10-07T00:00:15+02:00",
     "ends_at": "2026-10-13T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-10-07|TK=einstieg leberstrasse vor s bahn gebäude"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "77A: Falschparker",
+    "description": "Linie 77A: Fahrtbehinderung in Richtung Neu Marx. Voraussichtliche Dauer: 08:10 Uhr. Grund: Falschparker im Bereich Juchgasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "660f28330b16b21973d919d0ca7b3d0827062ed7398171f828b0ccfbf543928b",
+    "pubDate": "2026-10-13T07:48:00+02:00",
+    "starts_at": "2026-10-13T07:48:00+02:00",
+    "ends_at": "2026-10-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=77A|D=2026-10-13|TK=falschparker",
+    "_wl_ids": [
+      "I20261013-0008"
+    ],
+    "_incident_start": "2026-10-13T07:48:00+02:00"
   },
   {
     "source": "Wiener Linien",

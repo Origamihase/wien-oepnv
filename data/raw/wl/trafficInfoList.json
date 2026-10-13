@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261013-0003, I20260917-0012, I20261013-0004-F01, I20261013-0004, I20260922-0032, I20261013-0001, I20261013-0007, I20261013-0006-F01, I20261013-0006, I20261013-0002-F01, I20261013-0002-F02, I20260925-0011, I20261013-0002-F03, I20261013-0002-F04, I20261013-0002, I20261013-0005, I20260909-0007"
+    "trafficInfoNameList": "I20261013-0003, I20260917-0012, I20261013-0004-F01, I20261013-0004, I20260922-0032, I20261013-0001, I20261013-0007, I20261013-0006-F01, I20261013-0006, I20261013-0008, I20261013-0005, I20261013-0002-F01, I20261013-0002-F02, I20260925-0011, I20261013-0002-F04, I20260909-0007, I20261013-0002-F03"
    },
    {
     "id": 3,
@@ -237,62 +237,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "16A": "ptBusCity",
-      "17A": "ptBusCity",
-      "67A": "ptBusCity",
-      "67B": "ptBusCity"
-     }
-    },
-    "description": "Linie 67B: Fahrtbehinderung in beiden Richtungen. Linie 16A: Fahrtbehinderung in beiden Richtungen. Linie 17A: Fahrtbehinderung in beiden Richtungen. Linie 67A: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 06:45 Uhr. Grund: Störung an einem Bahnübergang im Bereich Himberger Straße.",
-    "descriptionHTML": "Linie 67B:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie 16A:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie 17A:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie 67A:<br>Fahrtbehinderung in beiden Richtungen.<br> <br>Voraussichtliche Dauer: 06:45 Uhr.<br><br>Grund: Störung an einem Bahnübergang im Bereich Himberger Straße.",
-    "location": "Himberger Straße",
-    "name": "I20261013-0002",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "67B",
-     "16A",
-     "17A",
-     "67A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "416",
-       "lineName": "16A",
-       "vehicleType": "ptBusCity"
-      },
-      {
-       "lineId": "417",
-       "lineName": "17A",
-       "vehicleType": "ptBusCity"
-      },
-      {
-       "lineId": "467",
-       "lineName": "67A",
-       "vehicleType": "ptBusCity"
-      },
-      {
-       "lineId": "267",
-       "lineName": "67B",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-13T06:32:00.000+0200",
-     "end": "2026-10-13T06:33:00.000+0200",
-     "lastUpdate": "2026-10-13T06:33:00.000+0200",
-     "resume": "2026-10-13T06:33:00.000+0200",
-     "start": "2026-10-13T06:31:00.000+0200"
-    },
-    "title": "16A, 17A, 67A, 67B: Störung an einem Bahnübergang"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "16A": "ptBusCity"
      }
     },
@@ -385,12 +329,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-13T06:33:00.000+0200",
-     "end": "2026-10-13T23:55:00.000+0200",
-     "lastUpdate": "2026-10-13T06:33:00.000+0200",
-     "resume": "2026-10-13T06:33:00.000+0200",
+     "end": "2026-10-13T07:59:00.000+0200",
+     "lastUpdate": "2026-10-13T07:59:00.000+0200",
+     "resume": "2026-10-13T07:59:00.000+0200",
      "start": "2026-10-13T06:31:00.000+0200"
     },
     "title": "67A: Störung an einem Bahnübergang"
@@ -562,12 +506,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-13T07:01:00.000+0200",
-     "end": "2026-10-13T23:55:00.000+0200",
-     "lastUpdate": "2026-10-13T07:01:00.000+0200",
-     "resume": "2026-10-13T07:01:00.000+0200",
+     "end": "2026-10-13T07:58:00.000+0200",
+     "lastUpdate": "2026-10-13T07:58:00.000+0200",
+     "resume": "2026-10-13T07:58:00.000+0200",
      "start": "2026-10-13T07:01:00.000+0200"
     },
     "title": "40A: Verkehrsüberlastung"
@@ -675,6 +619,40 @@
      "start": "2026-10-13T07:19:00.000+0200"
     },
     "title": "U4: Verspätungen"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "77A": "ptBusCity"
+     }
+    },
+    "description": "Linie 77A: Fahrtbehinderung in Richtung Neu Marx. Voraussichtliche Dauer: 08:10 Uhr. Grund: Falschparker im Bereich Juchgasse.",
+    "descriptionHTML": "Linie 77A:<br>Fahrtbehinderung in Richtung Neu Marx.<br> <br>Voraussichtliche Dauer: 08:10 Uhr.<br><br>Grund: Falschparker im Bereich Juchgasse.",
+    "location": "Juchgasse",
+    "name": "I20261013-0008",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "77A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "477",
+       "lineName": "77A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-13T07:50:00.000+0200",
+     "end": "2026-10-13T23:55:00.000+0200",
+     "lastUpdate": "2026-10-13T07:50:00.000+0200",
+     "start": "2026-10-13T07:48:00.000+0200"
+    },
+    "title": "77A: Falschparker"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
