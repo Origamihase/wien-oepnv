@@ -1,20 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-13T09:31:03.423807+00:00",
- "built": "2026-10-13T11:30:52+02:00",
+ "updated": "2026-10-13T10:01:06.904225+00:00",
+ "built": "2026-10-13T12:01:03+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-13T11:30:52+02:00",
+  "built": "2026-10-13T12:01:03+02:00",
   "items": [
    {
     "title": "O: Falschparker",
     "time_line": "Seit 10:54"
-   },
-   {
-    "title": "35A: Polizeieinsatz, Rettungseinsatz",
-    "time_line": "Seit 10:51"
    },
    {
     "title": "38: Rettungseinsatz",
@@ -22,15 +18,7 @@
    },
    {
     "title": "U3: Verspätungen",
-    "time_line": "Seit 09:33"
-   },
-   {
-    "title": "U6: Rettungseinsatz",
-    "time_line": "Seit 08:39"
-   },
-   {
-    "title": "12A: Falschparker, Gleisbauarbeiten",
-    "time_line": "Heute"
+    "time_line": "Seit 11:51"
    },
    {
     "title": "1/71/D: Demonstration am 13.10.2026",
@@ -47,6 +35,18 @@
    {
     "title": "20A: Bauarbeiten",
     "time_line": "Bis Mi 14.10."
+   },
+   {
+    "title": "7A: Bauarbeiten",
+    "time_line": "Ab Mi 14.10. bis 14.11."
+   },
+   {
+    "title": "1A/3A: Schwertgasse",
+    "time_line": "Bis 31.03.2027"
+   },
+   {
+    "title": "30A/31A/36A/36B: Großjedlersdorf",
+    "time_line": "Ab Mi 14.10. bis Fr 16.10."
    }
   ]
  },
@@ -2390,6 +2390,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 103
+   }
+  },
+  {
+   "t": "2026-10-13T10:01:06.904225+00:00",
+   "raw": {
+    "wl-stoerungen": 65,
+    "wl-hinweise": 102,
+    "oebb": 160,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 26,
+    "oebb": 136,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 100
    }
   }
  ]
