@@ -810,22 +810,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5/12: Schadhaftes Fahrzeug",
-    "description": "Linie 5: Fahrtbehinderung in Richtung Praterstern S U. Linie 12: Fahrtbehinderung in Richtung Hillerstraße. Voraussichtliche Dauer: 15:20 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Franz-Josefs-Bahnhof S.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "d4e34f09d4feef2c9a3d0b25bc620ab6468efd635b84d9e7f803ea88c87e5d21",
-    "pubDate": "2026-10-13T14:56:00+02:00",
-    "starts_at": "2026-10-13T14:56:00+02:00",
-    "ends_at": "2026-10-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=12,5|D=2026-10-13|TK=5 12 schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261013-0029"
-    ],
-    "_incident_start": "2026-10-13T14:56:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -850,14 +834,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "title": "12: Schadhaftes Fahrzeug",
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "32ae66e6206b82ebc95ff253940dc84dcc795b64994268f24cd4036d2e9a3634",
-    "pubDate": "2026-10-13T14:56:57+02:00",
-    "starts_at": "2026-10-13T14:57:01+02:00",
-    "ends_at": "2026-10-13T15:56:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-10-13|TK=fahrtbehinderung schadhafter zug"
+    "guid": "f37ac9d780139dd8d71f16d421347f46e6132e81bedba6f8e24a961524205866",
+    "pubDate": "2026-10-13T14:56:00+02:00",
+    "starts_at": "2026-10-13T14:56:00+02:00",
+    "ends_at": "2026-10-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=12|D=2026-10-13|TK=12 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261013-0029"
+    ],
+    "_incident_start": "2026-10-13T14:56:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1078,26 +1066,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "title": "5: Schadhaftes Fahrzeug",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3ae90c0c64b5c7d1855f6d65b70c2fac58c3368abd559cb27a64de60c6b7a7c5",
-    "pubDate": "2026-10-13T14:56:59+02:00",
-    "starts_at": "2026-10-13T14:56:59+02:00",
-    "ends_at": "2026-10-13T15:56:00+02:00",
-    "_identity": "wl|störung|L=5|D=2026-10-13|TK=fahrtbehinderung schadhafter zug"
+    "guid": "e51951a503565e36ead67df34b39b4610182b9b9dcc9afc61af74e08f8698c87",
+    "pubDate": "2026-10-13T14:56:00+02:00",
+    "starts_at": "2026-10-13T14:56:00+02:00",
+    "ends_at": "2026-10-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=5|D=2026-10-13|TK=5 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261013-0029"
+    ],
+    "_incident_start": "2026-10-13T14:56:00+02:00"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60A/66A: Polizeieinsatz",
-    "description": "Die Linie 60A wird in beiden Richtungen zwischen Brunner Straße, Erlaaer Straße und Schloss Alterlaa über Breitenfurter Straße und Gregorygasse umgeleitet. Die Linie 66A wird in beiden Richtungen zwischen Brunner Straße / Erlaaer Straße und Schloss Alterlaa über Breitenfurter Straße und Gregorygasse umgeleitet. Voraussichtliche Dauer: 15:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Josef-Österreicher-Gasse.",
+    "title": "60A: Polizeieinsatz",
+    "description": "Linie 60A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c652cf30c2af9c572183f45e9eac81da4c7406355a1e9d0106f8cc5657636fe4",
+    "guid": "f42bfc1b46935341e2e8a8a4cbc02855df833e32d533d3687e940ff1889be70d",
     "pubDate": "2026-10-13T14:44:00+02:00",
     "starts_at": "2026-10-13T14:44:00+02:00",
     "ends_at": "2026-10-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=60A,66A|D=2026-10-13|TK=polizeieinsatz",
+    "_identity": "wl|störung|L=60A|D=2026-10-13|TK=polizeieinsatz",
     "_wl_ids": [
       "I20261013-0028"
     ],
@@ -1118,18 +1110,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Verkehrsunfall",
-    "description": "Linie 71: Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. Voraussichtliche Dauer: 15:20 Uhr. Grund: Verkehrsunfall im Bereich Rennweg 92.",
+    "title": "66A: Polizeieinsatz",
+    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7",
-    "pubDate": "2026-10-13T14:59:00+02:00",
-    "starts_at": "2026-10-13T14:59:00+02:00",
+    "guid": "aba904564d19959e0ddb3e2e002949d8d9e98e2655696c852ae1597077a1d78b",
+    "pubDate": "2026-10-13T14:44:00+02:00",
+    "starts_at": "2026-10-13T14:44:00+02:00",
     "ends_at": "2026-10-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=71|D=2026-10-13|TK=71 verkehrsunfall",
+    "_identity": "wl|störung|L=66A|D=2026-10-13|TK=polizeieinsatz",
     "_wl_ids": [
-      "I20261013-0030"
+      "I20261013-0028"
     ],
-    "_incident_start": "2026-10-13T14:59:00+02:00"
+    "_incident_start": "2026-10-13T14:44:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1206,6 +1198,22 @@
     "starts_at": "2026-10-07T00:00:16+02:00",
     "ends_at": "2026-10-13T23:59:59+02:00",
     "_identity": "wl|störung|L=D|D=2026-10-07|TK=züge halten wipplingerstr 39"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Fremder Verkehrsunfall",
+    "description": "Linie D: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 15:45 Uhr. Grund: Fremder Verkehrsunfall im Bereich Heiligenstädter Straße # Gunoldstraße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "f0dde5821d03cb68c45830addd54ee8545c302f1154e3c7d1144448feb5546bd",
+    "pubDate": "2026-10-13T15:24:00+02:00",
+    "starts_at": "2026-10-13T15:24:00+02:00",
+    "ends_at": "2026-10-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-10-13|TK=d fremder verkehrsunfall",
+    "_wl_ids": [
+      "I20261013-0031"
+    ],
+    "_incident_start": "2026-10-13T15:24:00+02:00"
   },
   {
     "source": "Wiener Linien",

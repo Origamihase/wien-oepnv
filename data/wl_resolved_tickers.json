@@ -1,5 +1,195 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R2009-171|2026-10-13T15:02:28.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2009-171",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-13T16:02:00.000+0200",
+   "incident": "I20261013-0030"
+  },
+  {
+   "key": "R2016-171|2026-10-13T15:00:28.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2016-171",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-13T16:00:00.000+0200",
+   "incident": "I20261013-0030"
+  },
+  {
+   "key": "R2018-171|2026-10-13T15:00:28.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2018-171",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-13T16:00:00.000+0200",
+   "incident": "I20261013-0030"
+  },
+  {
+   "key": "R2019-171|2026-10-13T15:00:28.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2019-171",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-13T16:00:00.000+0200",
+   "incident": "I20261013-0030"
+  },
+  {
+   "key": "R2020-171|2026-10-13T15:00:28.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2020-171",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-13T16:00:00.000+0200",
+   "incident": "I20261013-0030"
+  },
+  {
+   "key": "R2021-171|2026-10-13T15:00:28.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2021-171",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-13T16:00:00.000+0200",
+   "incident": "I20261013-0030"
+  },
+  {
+   "key": "R2023-171|2026-10-13T15:02:28.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2023-171",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-13T16:02:00.000+0200",
+   "incident": "I20261013-0030"
+  },
+  {
+   "key": "R2024-171|2026-10-13T15:07:29.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2024-171",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-13T16:07:00.000+0200",
+   "incident": "I20261013-0030"
+  },
+  {
+   "key": "R2025-171|2026-10-13T15:07:29.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2025-171",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-13T16:07:00.000+0200",
+   "incident": "I20261013-0030"
+  },
+  {
+   "key": "R2026-171|2026-10-13T15:07:29.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2026-171",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-13T16:07:00.000+0200",
+   "incident": "I20261013-0030"
+  },
+  {
+   "key": "R2168-112|2026-10-13T14:57:01.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R2168-112",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-13T15:56:00.000+0200",
+   "incident": "I20261013-0029"
+  },
+  {
+   "key": "R2203-112|2026-10-13T14:56:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R2203-112",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-13T15:56:00.000+0200",
+   "incident": "I20261013-0029"
+  },
+  {
+   "key": "R2204-112|2026-10-13T14:56:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R2204-112",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-13T15:56:00.000+0200",
+   "incident": "I20261013-0029"
+  },
+  {
+   "key": "R2305-466|2026-10-13T14:49:28.000+0200|Polizeieinsatz\nUmleitung ab Erlaaer Straße über Breitenfurter Str./ Gregorygasse",
+   "name": "R2305-466",
+   "title": "Polizeieinsatz\nUmleitung ab Erlaaer Straße über Breitenfurter Str./ Gregorygasse",
+   "end": "2026-10-13T15:46:00.000+0200",
+   "incident": "I20261013-0028"
+  },
+  {
+   "key": "R323-112|2026-10-13T14:56:57.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R323-112",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-13T15:56:00.000+0200",
+   "incident": "I20261013-0029"
+  },
+  {
+   "key": "R324-112|2026-10-13T14:56:57.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R324-112",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-13T15:56:00.000+0200",
+   "incident": "I20261013-0029"
+  },
+  {
+   "key": "R325-112|2026-10-13T14:56:57.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R325-112",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-13T15:56:00.000+0200",
+   "incident": "I20261013-0029"
+  },
+  {
+   "key": "R384-105|2026-10-13T14:56:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R384-105",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-13T15:56:00.000+0200",
+   "incident": "I20261013-0029"
+  },
+  {
+   "key": "R384-112|2026-10-13T14:56:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R384-112",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-13T15:56:00.000+0200",
+   "incident": "I20261013-0029"
+  },
+  {
+   "key": "R385-105|2026-10-13T14:56:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R385-105",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-13T15:56:00.000+0200",
+   "incident": "I20261013-0029"
+  },
+  {
+   "key": "R385-112|2026-10-13T14:56:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R385-112",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-13T15:56:00.000+0200",
+   "incident": "I20261013-0029"
+  },
+  {
+   "key": "R386-105|2026-10-13T14:56:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R386-105",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-13T15:56:00.000+0200",
+   "incident": "I20261013-0029"
+  },
+  {
+   "key": "R386-112|2026-10-13T14:56:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R386-112",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-13T15:56:00.000+0200",
+   "incident": "I20261013-0029"
+  },
+  {
+   "key": "R387-105|2026-10-13T14:56:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R387-105",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-13T15:56:00.000+0200",
+   "incident": "I20261013-0029"
+  },
+  {
+   "key": "R387-112|2026-10-13T14:56:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R387-112",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-13T15:56:00.000+0200",
+   "incident": "I20261013-0029"
+  },
+  {
+   "key": "R388-105|2026-10-13T14:56:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R388-105",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-13T15:56:00.000+0200",
+   "incident": "I20261013-0029"
+  },
+  {
+   "key": "R389-105|2026-10-13T14:56:59.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R389-105",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-13T15:56:00.000+0200",
+   "incident": "I20261013-0029"
+  }
+ ]
 }
