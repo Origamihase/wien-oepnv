@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1017122, ftazW_1016902, ftazW_734, ftazW_1031272, ftazW_1031273, ftazW_1017124, ftazW_1016903, ftazW_82, ftazW_239, ftazW_1017121, ftazW_83, ftazW_728, ftazW_84, ftazW_240, ftazW_727, ftazW_45, ftazW_1017123, ftazW_1031267, ftazW_113, ftazW_746, ftazW_1031268, ftazW_739, ftazW_574, ftazW_97, ftazW_114, ftazW_766, ftazW_575, ftazW_740"
+    "trafficInfoNameList": "ftazW_1031273, ftazW_1017124, ftazW_1016903, ftazW_82, ftazW_239, ftazW_1017121, ftazW_83, ftazW_728, ftazW_84, ftazW_240, ftazW_727, ftazW_45, ftazW_1017123, ftazW_1031267, ftazW_113, ftazW_746, ftazW_1031268, ftazW_739, ftazW_574, ftazW_97, ftazW_114, ftazW_766, ftazW_575, ftazW_740"
    }
   ],
   "poiCategoryGroups": [
@@ -2536,37 +2536,6 @@
    },
    {
     "attributes": {
-     "ausBis": "14.10.2026 00:45",
-     "ausVon": "13.10.2026 20:45",
-     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Jenullgasse",
-     "rbls": [
-      4407
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Braunschweiggasse",
-     "status": "geplante Wartung",
-     "towards": "U4 Heiligenstadt"
-    },
-    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Jenullgasse",
-    "name": "ftazW_1016902",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4407
-    ],
-    "time": {
-     "end": "2026-10-14T00:45:00.000+0200",
-     "start": "2026-10-13T20:45:00.000+0200"
-    },
-    "title": "Braunschweiggasse"
-   },
-   {
-    "attributes": {
      "ausBis": "14.10.2026 05:15",
      "ausVon": "14.10.2026 01:15",
      "location": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Jenullgasse",
@@ -2626,39 +2595,6 @@
     "time": {
      "end": "2026-10-15T00:45:00.000+0200",
      "start": "2026-10-14T20:45:00.000+0200"
-    },
-    "title": "Leopoldau"
-   },
-   {
-    "attributes": {
-     "ausBis": "14.10.2026 00:45",
-     "ausVon": "13.10.2026 20:45",
-     "location": "U1 Mittelbahnsteig - Zwischengeschoss",
-     "rbls": [
-      4185,
-      4190
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Leopoldau",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "U1 Mittelbahnsteig - Zwischengeschoss",
-    "name": "ftazW_1017122",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4185,
-     4190
-    ],
-    "time": {
-     "end": "2026-10-14T00:45:00.000+0200",
-     "start": "2026-10-13T20:45:00.000+0200"
     },
     "title": "Leopoldau"
    },
@@ -2778,37 +2714,6 @@
    },
    {
     "attributes": {
-     "ausBis": "14.10.2026 00:45",
-     "ausVon": "13.10.2026 20:45",
-     "location": "U2 Bahnsteig Richtung Seestadt - Ausgang Kaisermühlendamm",
-     "rbls": [
-      4267
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Donaustadtbrücke",
-     "status": "geplante Wartung",
-     "towards": "U2 Seestadt"
-    },
-    "description": "U2 Bahnsteig Richtung Seestadt - Ausgang Kaisermühlendamm",
-    "name": "ftazW_1031272",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4267
-    ],
-    "time": {
-     "end": "2026-10-14T00:45:00.000+0200",
-     "start": "2026-10-13T20:45:00.000+0200"
-    },
-    "title": "Donaustadtbrücke"
-   },
-   {
-    "attributes": {
      "ausBis": "14.10.2026 05:15",
      "ausVon": "14.10.2026 01:15",
      "location": "Ausgang Kaisermühlendamm - Kaisermühlendamm",
@@ -2837,7 +2742,7 @@
     "attributes": {
      "ausBis": "16.10.2026 00:45",
      "ausVon": "15.10.2026 20:45",
-     "location": "Zwischengeschoss Zugang Aufzug U1 - U4 Mittelbahnsteig",
+     "location": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
      "rbls": [
       4427,
       4410
@@ -2851,7 +2756,7 @@
      "status": "geplante Wartung",
      "towards": "U4 beide Richtungen"
     },
-    "description": "Zwischengeschoss Zugang Aufzug U1 - U4 Mittelbahnsteig",
+    "description": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
     "name": "ftazW_113",
     "refPoiCategoryId": -1,
     "relatedLines": [
@@ -2872,7 +2777,7 @@
     "attributes": {
      "ausBis": "16.10.2026 05:15",
      "ausVon": "16.10.2026 01:15",
-     "location": "U1 Mittelbahnsteig - Zwischengeschoss Zugang U4",
+     "location": "Zwischengeschoss Zugang U4 - U1 Mittelbahnsteig",
      "rbls": [
       4113,
       4116
@@ -2885,7 +2790,7 @@
      "status": "geplante Wartung",
      "towards": "U1 beide Richtungen"
     },
-    "description": "U1 Mittelbahnsteig - Zwischengeschoss Zugang U4",
+    "description": "Zwischengeschoss Zugang U4 - U1 Mittelbahnsteig",
     "name": "ftazW_114",
     "refPoiCategoryId": -1,
     "relatedLines": [
@@ -3127,37 +3032,6 @@
      "start": "2026-10-14T20:45:00.000+0200"
     },
     "title": "Roßauer Lände"
-   },
-   {
-    "attributes": {
-     "ausBis": "14.10.2026 00:45",
-     "ausVon": "13.10.2026 20:45",
-     "location": "U3 Bahnsteig Richtung Simmering - Ausgang Gasometer/Modecenterstraße",
-     "rbls": [
-      4934
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Gasometer",
-     "status": "geplante Wartung",
-     "towards": "U3 Simmering"
-    },
-    "description": "U3 Bahnsteig Richtung Simmering - Ausgang Gasometer/Modecenterstraße",
-    "name": "ftazW_734",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4934
-    ],
-    "time": {
-     "end": "2026-10-14T00:45:00.000+0200",
-     "start": "2026-10-13T20:45:00.000+0200"
-    },
-    "title": "Gasometer"
    },
    {
     "attributes": {
