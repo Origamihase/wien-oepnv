@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261013-0043-F01, I20261013-0045-F01, I20260917-0012, I20260922-0032, I20261013-0044, I20260925-0011, I20260909-0007, I20261013-0045"
+    "trafficInfoNameList": "I20261013-0045-F01, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261013-0045"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R119-136, R130-136, R36-152, R45-136, R19-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R2558-125, R1475-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1476-149, R2025-671, R1177-0, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2378-627, R2379-627, R2380-627, R2345-127, R2372-627, R2373-126, R5815-671, R1974-466, R500-101, R552-109, R553-109, R554-109, R521-109, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R130-136, R19-136, R36-152, R45-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R2558-125, R1446-149, R1476-149, R1448-412, R1474-412, R1445-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R2025-671, R1177-0, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2378-627, R2343-626, R2379-627, R2380-627, R2345-127, R2372-627, R2373-127, R2373-126, R5815-671, R1974-466, R554-109, R553-109, R552-109, R521-109, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -199,75 +199,6 @@
      "start": "2026-09-25T08:55:00.000+0200"
     },
     "title": "26E: Gleisbauarbeiten"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "9": "ptTram"
-     }
-    },
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Hormayrgasse 11",
-    "name": "I20261013-0043-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "109",
-       "lineName": "9",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-13T21:09:00.000+0200",
-     "end": "2026-10-13T21:55:00.000+0200",
-     "lastUpdate": "2026-10-13T21:55:00.000+0200",
-     "resume": "2026-10-13T21:55:00.000+0200",
-     "start": "2026-10-13T20:51:00.000+0200"
-    },
-    "title": "9: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "48A": "ptBusCity"
-     }
-    },
-    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261013-0044",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "448",
-       "lineName": "48A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-13T21:17:00.000+0200",
-     "end": "2026-10-13T21:41:00.000+0200",
-     "lastUpdate": "2026-10-13T21:41:00.000+0200",
-     "resume": "2026-10-13T21:41:00.000+0200",
-     "start": "2026-10-13T21:16:00.000+0200"
-    },
-    "title": "48A: Verspätungen"
    },
    {
     "attributes": {
@@ -1142,24 +1073,6 @@
      "start": "2026-10-07T00:00:16.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
-   },
-   {
-    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
-    "name": "R500-101",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     500
-    ],
-    "time": {
-     "end": "2026-10-13T23:00:00.000+0200",
-     "start": "2026-10-13T05:00:28.000+0200"
-    },
-    "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
     "description": "Fahrtbehinderung\nFalschparker",
