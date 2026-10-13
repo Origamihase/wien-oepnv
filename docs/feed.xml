@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Tue, 13 Oct 2026 13:30:58 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 14:01:24 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[O: Verkehrsunfall]]></title>
@@ -21,15 +21,15 @@
       <content:encoded><![CDATA[Umleitung ab Quellenplatz über Linien O und D.<br/>[Seit 13:02]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U3: Rettungseinsatz, Verspätungen]]></title>
+      <title><![CDATA[U3: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
       <pubDate>Tue, 13 Oct 2026 13:12:00 +0200</pubDate>
       <ext:first_seen>Tue, 13 Oct 2026 13:12:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 13 Oct 2026 13:12:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Rettungseinsatz: Die Linie U3 fährt derzeit zwischen den Stationen Kendlerstraße und Hütteldorfer Straße in beiden Richtungen über Gleis 2. Verspätungen: Unregelmäßige … [Seit 13:12]</description>
-      <content:encoded><![CDATA[Rettungseinsatz: Die Linie U3 fährt derzeit zwischen den Stationen Kendlerstraße und Hütteldorfer Straße in beiden Richtungen über Gleis 2. Verspätungen: Unregelmäßige …<br/>[Seit 13:12]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 13:12]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 13:12]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[6/11: Verkehrsunfall]]></title>
@@ -52,17 +52,6 @@
       <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 12:14]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 12:14]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e</guid>
-      <pubDate>Tue, 13 Oct 2026 13:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 13:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 13:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Heute]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/71/D: Demonstration am 13.10.2026]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Sat, 14 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet. [Ab Mi 14.10. bis 14.11.]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet.<br/>[Ab Mi 14.10. bis 14.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1A/3A: Schwertgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
+      <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung. [Bis 31.03.2027]</description>
+      <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung.<br/>[Bis 31.03.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
