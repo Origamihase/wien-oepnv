@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Tue, 13 Oct 2026 18:30:56 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 19:00:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[10A: Traffic accident]]></title>
@@ -27,31 +27,9 @@
       <pubDate>Tue, 13 Oct 2026 17:19:13 +0200</pubDate>
       <ext:first_seen>Tue, 13 Oct 2026 17:19:13 +0200</ext:first_seen>
       <ext:starts_at>Tue, 13 Oct 2026 17:21:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Tue, 13 Oct 2026 19:12:00 +0200</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. Trains stop in Tokiostraße. [Since 17:19]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals. Trains stop in Tokiostraße.<br/>[Since 17:19]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A: Traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9d0a7e4b9b87021faced5a5e0994d1adbea3b271fc48868ad2b14e038ee2871b</guid>
-      <pubDate>Tue, 13 Oct 2026 17:13:00 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 17:13:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 17:13:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 17:13]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 17:13]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[24A: Traffic congestion]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">16fcbbe3aabe5a1378dc06ea696db0d79196145330594b3b91659557e6d58a03</guid>
-      <pubDate>Tue, 13 Oct 2026 16:39:00 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 16:39:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 16:39:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 16:39]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 16:39]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[O: Traffic accident]]></title>
@@ -65,15 +43,15 @@
       <content:encoded><![CDATA[Diversion from Quellenplatz via lines O and D.<br/>[Since 13:02]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[16A/17A: Level crossing fault]]></title>
+      <title><![CDATA[74A: Rescue operation, construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">332a4e5d3f62bbf99e77944e05e9c4843740df6c5a14c9f025477f1a82afba61</guid>
-      <pubDate>Tue, 13 Oct 2026 18:00:00 +0200</pubDate>
-      <ext:first_seen>Tue, 13 Oct 2026 18:30:56 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 18:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: level crossing fault. [Today]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: level crossing fault.<br/>[Today]]]></content:encoded>
+      <guid isPermaLink="false">87cde0ff8f531daad212e230c8873600d36c9a10b0da2554e6fac3c5a24c60e6</guid>
+      <pubDate>Tue, 13 Oct 2026 18:53:00 +0200</pubDate>
+      <ext:first_seen>Tue, 13 Oct 2026 18:53:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 18:53:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 13 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Rescue operation: irregular intervals in both directions. Construction works: boarding Leberstraße in front of S-Bahn building. [Today]</description>
+      <content:encoded><![CDATA[Rescue operation: irregular intervals in both directions. Construction works: boarding Leberstraße in front of S-Bahn building.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Police operation, construction works]]></title>
@@ -87,15 +65,15 @@
       <content:encoded><![CDATA[Construction works: buses stop at Salvatorianerplatz.<br/>[Until Wed 14.10.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1/71/D: Demonstration on 13.10.2026]]></title>
+      <title><![CDATA[1/71: Demonstration]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1a79e14e4fbd9e007952da0547d39938646bff0e3fe35a9b0c5023ce06c14df8</guid>
+      <guid isPermaLink="false">8cc22bbfd84d131d38143c70f680c24d1c39fbf1fe455e06a3f50824d8ce8e3c</guid>
       <pubDate>Tue, 13 Oct 2026 11:39:00 +0200</pubDate>
-      <ext:first_seen>Mon, 12 Oct 2026 13:02:35 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:first_seen>Tue, 13 Oct 2026 11:39:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 11:39:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 13 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Due to a demonstration, there is a restriction on public transport. [Today]</description>
-      <content:encoded><![CDATA[Due to a demonstration, there is a restriction on public transport.<br/>[Today]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Today]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12/5: Albertgasse]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling … [Until 25.12.]</description>
       <content:encoded><![CDATA[Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling …<br/>[Until 25.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[20A: Construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d541da730008a50f7d13d1231355ba02134695bfdd0469c8f90d4ab1ab9eaf30</guid>
+      <pubDate>Fri, 02 Oct 2026 16:05:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 16:31:05 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Oct 2026 17:00:00 +0200</ext:ends_at>
+      <description>Due to construction works in the area of Wildbadgasse, line 20A is redirected. [Until Wed 14.10.]</description>
+      <content:encoded><![CDATA[Due to construction works in the area of Wildbadgasse, line 20A is redirected.<br/>[Until Wed 14.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">615c7d9755493e3506136b4c89ccafaac30323c3c9774583bc4b55062576c7bb</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 13:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 14 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Due to construction works in the area of Neilreichgasse / Davidgasse, line 7A is redirected. [From Wed 14.10. until 14.11.]</description>
+      <content:encoded><![CDATA[Due to construction works in the area of Neilreichgasse / Davidgasse, line 7A is redirected.<br/>[From Wed 14.10. until 14.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
