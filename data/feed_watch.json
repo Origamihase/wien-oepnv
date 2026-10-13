@@ -1,32 +1,24 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-13T08:01:00.890760+00:00",
- "built": "2026-10-13T10:00:50+02:00",
+ "updated": "2026-10-13T08:30:59.663752+00:00",
+ "built": "2026-10-13T10:30:53+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-13T10:00:50+02:00",
+  "built": "2026-10-13T10:30:53+02:00",
   "items": [
+   {
+    "title": "35A: Rettungseinsatz",
+    "time_line": "Seit 10:10"
+   },
    {
     "title": "U3: Verspätungen",
     "time_line": "Seit 09:33"
    },
    {
-    "title": "U4: Rettungseinsatz",
-    "time_line": "Seit 09:30"
-   },
-   {
     "title": "60: Schadhaftes Fahrzeug",
     "time_line": "Seit 09:16"
-   },
-   {
-    "title": "88B: Verkehrsunfall",
-    "time_line": "Seit 08:41"
-   },
-   {
-    "title": "25A: Betriebsstörung",
-    "time_line": "Seit 08:32"
    },
    {
     "title": "27: Stromstörung",
@@ -41,12 +33,20 @@
     "time_line": "Heute"
    },
    {
-    "title": "66A: Verkehrsunfall, Bauarbeiten",
-    "time_line": "Bis Mi 14.10."
-   },
-   {
     "title": "1/71/D: Demonstration am 13.10.2026",
     "time_line": "Heute"
+   },
+   {
+    "title": "12/5: Albertgasse",
+    "time_line": "Bis 03.11."
+   },
+   {
+    "title": "15A: Max-Mauermann-Gasse",
+    "time_line": "Bis 25.12."
+   },
+   {
+    "title": "20A: Bauarbeiten",
+    "time_line": "Bis Mi 14.10."
    }
   ]
  },
@@ -2330,6 +2330,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 105
+   }
+  },
+  {
+   "t": "2026-10-13T08:30:59.663752+00:00",
+   "raw": {
+    "wl-stoerungen": 69,
+    "wl-hinweise": 101,
+    "oebb": 159,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 26,
+    "oebb": 135,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 102
    }
   }
  ]
