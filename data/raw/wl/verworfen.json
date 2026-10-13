@@ -1,6 +1,22 @@
 {
  "verworfen": [
   {
+   "grund": "Kurzmeldung einer erledigten Störung",
+   "titel": "Schadhafter Zug Betrieb ab Hietzing"
+  },
+  {
+   "grund": "Kurzmeldung einer erledigten Störung",
+   "titel": "Schadhafter Zug Betrieb ab Hofwiesengasse"
+  },
+  {
+   "grund": "Kurzmeldung einer erledigten Störung",
+   "titel": "Schadhafter Zug Betrieb nur bis Hietzing"
+  },
+  {
+   "grund": "Kurzmeldung einer erledigten Störung",
+   "titel": "Schadhafter Zug Betrieb nur bis Hofwiesengasse"
+  },
+  {
    "grund": "Status inaktiv",
    "titel": "16A: Störung an einem Bahnübergang"
   },
@@ -10,7 +26,7 @@
   },
   {
    "grund": "Status inaktiv",
-   "titel": "27: Stromstörung"
+   "titel": "60: Schadhaftes Fahrzeug"
   },
   {
    "grund": "Status inaktiv",
@@ -26,11 +42,11 @@
   },
   {
    "grund": "Status inaktiv",
-   "titel": "U4: Verspätungen"
+   "titel": "U3: Rettungseinsatz"
   },
   {
    "grund": "Status inaktiv",
-   "titel": "U6: Rettungseinsatz"
+   "titel": "U4: Rettungseinsatz"
   },
   {
    "grund": "außerhalb des Zeitraums",

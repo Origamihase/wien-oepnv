@@ -1030,18 +1030,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "27: Fahrtbehinderung wegen Stromstörung",
-    "description": "Fahrtbehinderung\nwegen Stromstörung",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "deee1babf5dc7b811f812928e2030700a354c24599a97fdb5fb4b755a5527310",
-    "pubDate": "2026-10-13T08:46:53+02:00",
-    "starts_at": "2026-10-13T08:46:53+02:00",
-    "ends_at": "2026-10-13T09:46:00+02:00",
-    "_identity": "wl|störung|L=27|D=2026-10-13|TK=fahrtbehinderung wegen stromstörung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1083,7 +1071,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "60: Schadhaftes Fahrzeug",
-    "description": "Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Weichen Sie ersatzweise auf die Linien 56A, 56B, 58A oder 58B aus. Voraussichtliche Dauer: 09:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Stadlergasse.",
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "b98153df7d0e60b82d0381b90b9ad92815df222d447546c78876ca54749e306a",
     "pubDate": "2026-10-13T09:16:00+02:00",
@@ -1094,54 +1082,6 @@
       "I20261013-0015"
     ],
     "_incident_start": "2026-10-13T09:16:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Schadhafter Zug Betrieb ab Hietzing",
-    "description": "Schadhafter Zug\nBetrieb ab Hietzing",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "9af2a719dbb39fc7b8160d494638687588df31ef1f3e5601db7f73a66230c477",
-    "pubDate": "2026-10-13T09:23:26+02:00",
-    "starts_at": "2026-10-13T09:23:26+02:00",
-    "ends_at": "2026-10-13T10:22:00+02:00",
-    "_identity": "wl|störung|L=60|D=2026-10-13|TK=schadhafter zug betrieb ab hietzing"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Schadhafter Zug Betrieb ab Hofwiesengasse",
-    "description": "Schadhafter Zug\nBetrieb ab Hofwiesengasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "3ba4c6494be8dc0e55d7daa610f5f3b2f958bae603c38cf922f86623dddd062b",
-    "pubDate": "2026-10-13T09:20:56+02:00",
-    "starts_at": "2026-10-13T09:20:57+02:00",
-    "ends_at": "2026-10-13T10:20:00+02:00",
-    "_identity": "wl|störung|L=60|D=2026-10-13|TK=schadhafter zug betrieb ab hofwiesengasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Schadhafter Zug Betrieb nur bis Hietzing",
-    "description": "Schadhafter Zug\nBetrieb nur bis Hietzing",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "afe66e104509856bd24ac99f3fb3f4533b696a68a423beb3539391b6de1a3bd0",
-    "pubDate": "2026-10-13T09:20:26+02:00",
-    "starts_at": "2026-10-13T09:20:26+02:00",
-    "ends_at": "2026-10-13T10:19:00+02:00",
-    "_identity": "wl|störung|L=60|D=2026-10-13|TK=schadhafter zug betrieb nur bis hietzing"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Schadhafter Zug Betrieb nur bis Hofwiesengasse",
-    "description": "Schadhafter Zug\nBetrieb nur bis Hofwiesengasse",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "b8f4ff4576419a8da119b1997421e4132ca2e88b99b351f3c217301a7b1b5aa2",
-    "pubDate": "2026-10-13T09:19:25+02:00",
-    "starts_at": "2026-10-13T09:19:25+02:00",
-    "ends_at": "2026-10-13T10:18:00+02:00",
-    "_identity": "wl|störung|L=60|D=2026-10-13|TK=schadhafter zug betrieb nur bis hofwiesengasse"
   },
   {
     "source": "Wiener Linien",
@@ -1278,18 +1218,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Rettungseinsatz",
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
-    "pubDate": "2026-10-13T08:20:00+02:00",
-    "starts_at": "2026-10-13T08:20:00+02:00",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-10-13T09:33:00+02:00",
+    "starts_at": "2026-10-13T09:33:00+02:00",
     "ends_at": "2026-10-13T23:55:00+02:00",
-    "_identity": "wl|störung|L=U3|D=2026-10-13|TK=rettungseinsatz",
+    "_identity": "wl|störung|L=U3|D=2026-10-13|TK=u3 verspätungen",
     "_wl_ids": [
-      "I20261013-0010"
+      "I20261013-0017"
     ],
-    "_incident_start": "2026-10-13T08:20:00+02:00"
+    "_incident_start": "2026-10-13T09:33:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Rettungseinsatz",
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a",
+    "pubDate": "2026-10-13T09:30:00+02:00",
+    "starts_at": "2026-10-13T09:30:00+02:00",
+    "ends_at": "2026-10-13T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-10-13|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261013-0016"
+    ],
+    "_incident_start": "2026-10-13T09:30:00+02:00"
   },
   {
     "source": "Wiener Linien",
