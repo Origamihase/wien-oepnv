@@ -1,41 +1,5 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": [
-  {
-   "key": "R272-112|2026-10-14T20:52:02.000+0200|Fahrtbehinderung\nwegen Pkw im Gleis",
-   "name": "R272-112",
-   "title": "Fahrtbehinderung\nwegen Pkw im Gleis",
-   "end": "2026-10-14T22:06:00.000+0200",
-   "incident": "I20261014-0044"
-  },
-  {
-   "key": "R357-112|2026-10-14T20:52:02.000+0200|Fahrtbehinderung\nwegen Pkw im Gleis",
-   "name": "R357-112",
-   "title": "Fahrtbehinderung\nwegen Pkw im Gleis",
-   "end": "2026-10-14T22:06:00.000+0200",
-   "incident": "I20261014-0044"
-  },
-  {
-   "key": "R379-112|2026-10-14T20:52:00.000+0200|Pkw im Gleis\nBetrieb ab Lange Gasse",
-   "name": "R379-112",
-   "title": "Pkw im Gleis\nBetrieb ab Lange Gasse",
-   "end": "2026-10-14T22:06:00.000+0200",
-   "incident": "I20261014-0044"
-  },
-  {
-   "key": "R380-112|2026-10-14T20:52:00.000+0200|Pkw im Gleis\nZüge halten bei Linie 43 Richtung Schottentor",
-   "name": "R380-112",
-   "title": "Pkw im Gleis\nZüge halten bei Linie 43 Richtung Schottentor",
-   "end": "2026-10-14T22:07:00.000+0200",
-   "incident": "I20261014-0044"
-  },
-  {
-   "key": "R458-112|2026-10-14T20:52:00.000+0200|Pkw im Gleis\nBetrieb ab Lange Gasse",
-   "name": "R458-112",
-   "title": "Pkw im Gleis\nBetrieb ab Lange Gasse",
-   "end": "2026-10-14T22:06:00.000+0200",
-   "incident": "I20261014-0044"
-  }
- ]
+ "tickers": []
 }
