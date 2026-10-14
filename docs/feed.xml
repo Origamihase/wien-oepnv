@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 14 Oct 2026 20:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 21:00:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[12/5: Fahrzeug im Gleis]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9c39fb84304f09d5c63f52f854a6c380efa100e38513f1272da89c78b4f4588c</guid>
+      <pubDate>Wed, 14 Oct 2026 20:48:00 +0200</pubDate>
+      <ext:first_seen>Wed, 14 Oct 2026 20:48:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 20:48:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Kein Betrieb zwischen Lange Gasse und Lerchenfelder Straße. Weiterfahrt ab Lange Gasse bis Alser Straße U, Zimmermannplatz. [Seit 20:48]</description>
+      <content:encoded><![CDATA[Kein Betrieb zwischen Lange Gasse und Lerchenfelder Straße. Weiterfahrt ab Lange Gasse bis Alser Straße U, Zimmermannplatz.<br/>[Seit 20:48]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,19 +28,8 @@
       <ext:first_seen>Wed, 14 Oct 2026 20:08:00 +0200</ext:first_seen>
       <ext:starts_at>Wed, 14 Oct 2026 20:08:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie U1 fährt derzeit in der Station Praterstern in beiden Richtungen über Gleis 2. Voraussichtlich bis 20:35 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Praterstern. [Seit 20:08]</description>
-      <content:encoded><![CDATA[Die Linie U1 fährt derzeit in der Station Praterstern in beiden Richtungen über Gleis 2. Voraussichtlich bis 20:35 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Praterstern.<br/>[Seit 20:08]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5/12: Fahrzeug im Gleis]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9c39fb84304f09d5c63f52f854a6c380efa100e38513f1272da89c78b4f4588c</guid>
-      <pubDate>Wed, 14 Oct 2026 19:33:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 20:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 19:33:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 19:33]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19:33]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 20:08]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20:08]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[64A: Liesing-Flur-Gasse]]></title>
