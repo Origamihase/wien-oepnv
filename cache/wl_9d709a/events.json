@@ -830,6 +830,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5/12: Fahrzeug im Gleis",
+    "description": "Linie 5: Kein Betrieb zwischen Lange Gasse und Lerchenfelder Straße. Weiterfahrt ab Lange Gasse bis Alser Straße U, Zimmermannplatz. Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Bahnhof Gürtel. Voraussichtliche Dauer: 20:30 Uhr. Grund: Fahrzeug im Gleis im Bereich Albertgasse 33.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "9c39fb84304f09d5c63f52f854a6c380efa100e38513f1272da89c78b4f4588c",
+    "pubDate": "2026-10-14T19:33:00+02:00",
+    "starts_at": "2026-10-14T19:33:00+02:00",
+    "ends_at": "2026-10-14T23:55:00+02:00",
+    "_identity": "wl|störung|L=12,5|D=2026-10-14|TK=5 12 fahrzeug im gleis",
+    "_wl_ids": [
+      "I20261014-0042"
+    ],
+    "_incident_start": "2026-10-14T19:33:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -850,22 +866,6 @@
     "starts_at": "2026-10-14T00:00:23+02:00",
     "ends_at": "2026-10-14T23:59:59+02:00",
     "_identity": "wl|störung|L=12A|D=2026-10-14|TK=betrieb ab schweglerstrasse 19 21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Verkehrsunfall",
-    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "e5660a0ab66e8052c66ac62caa273ee692ce56758d8e16e3324e16b86881f37a",
-    "pubDate": "2026-10-14T18:34:00+02:00",
-    "starts_at": "2026-10-14T18:34:00+02:00",
-    "ends_at": "2026-10-14T23:55:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-10-14|TK=12 verkehrsunfall",
-    "_wl_ids": [
-      "I20261014-0039"
-    ],
-    "_incident_start": "2026-10-14T18:34:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1102,18 +1102,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Verkehrsunfall",
-    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "5: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
     "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "eb95adf873b18dcc90582141fd8b881d6f58540f5e3144fe72be528eb86b24d6",
-    "pubDate": "2026-10-14T18:34:00+02:00",
-    "starts_at": "2026-10-14T18:34:00+02:00",
-    "ends_at": "2026-10-14T23:55:00+02:00",
-    "_identity": "wl|störung|L=5|D=2026-10-14|TK=5 verkehrsunfall",
-    "_wl_ids": [
-      "I20261014-0039"
-    ],
-    "_incident_start": "2026-10-14T18:34:00+02:00"
+    "guid": "1e75a876ba5d2fb19bc3545856b422cbe2876b7c531c7e805168d1258018e030",
+    "pubDate": "2026-10-14T19:36:24+02:00",
+    "starts_at": "2026-10-14T19:36:24+02:00",
+    "ends_at": "2026-10-14T20:35:00+02:00",
+    "_identity": "wl|störung|L=5|D=2026-10-14|TK=feuerwehreinsatz"
   },
   {
     "source": "Wiener Linien",

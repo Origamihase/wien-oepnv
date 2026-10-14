@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 14 Oct 2026 19:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 20:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[5/12: Verkehrsunfall]]></title>
+      <title><![CDATA[5: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ecb43b7286fcaae6b1cc5f9a87ce1ce8b4e61a8b15f64825ec5895c9be2ee5c4</guid>
-      <pubDate>Wed, 14 Oct 2026 18:34:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 19:00:49 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 18:34:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">1e75a876ba5d2fb19bc3545856b422cbe2876b7c531c7e805168d1258018e030</guid>
+      <pubDate>Wed, 14 Oct 2026 19:36:24 +0200</pubDate>
+      <ext:first_seen>Wed, 14 Oct 2026 20:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 19:36:24 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Oct 2026 20:35:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung. [Seit 19:36]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 19:36]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5/12: Fahrzeug im Gleis]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9c39fb84304f09d5c63f52f854a6c380efa100e38513f1272da89c78b4f4588c</guid>
+      <pubDate>Wed, 14 Oct 2026 19:33:00 +0200</pubDate>
+      <ext:first_seen>Wed, 14 Oct 2026 20:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 19:33:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 18:34]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 18:34]]]></content:encoded>
+      <description>Kein Betrieb zwischen Lange Gasse und Lerchenfelder Straße. Weiterfahrt ab Lange Gasse bis Alser Straße U, Zimmermannplatz. [Seit 19:33]</description>
+      <content:encoded><![CDATA[Kein Betrieb zwischen Lange Gasse und Lerchenfelder Straße. Weiterfahrt ab Lange Gasse bis Alser Straße U, Zimmermannplatz.<br/>[Seit 19:33]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[13A: Falschparker]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 15 Oct 2026 17:00:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet. [Bis Do 15.10.]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet.<br/>[Bis Do 15.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A/3A: Schwertgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
-      <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung. [Bis 31.03.2027]</description>
-      <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung.<br/>[Bis 31.03.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
