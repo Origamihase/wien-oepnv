@@ -758,6 +758,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "N81R/N81: Bauarbeiten",
+    "description": "<h2>Bauarbeiten</h2> <p>Wegen Stra&szlig;enbauarbeiten im Bereich Meiereistra&szlig;e # Stephanie-Endres-Stra&szlig;e kommt es zu Umleitungen bei der Rufbuslinie N81.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Dienstag, 27. Oktober 2026, 00:30 Uhr bis Freitag, 30. Oktober 2026, 05:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie N81 in Richtung Praterbr&uuml;cke:</strong><br />Umleitung ab Engerthstra&szlig;e # Sturgasse &uuml;ber Sturgasse - Handelskai - Marathonweg - Wehlistra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:</span><br />- Pensionistenwohnhaus Prater (Engerthstra&szlig;e 232-238, Stiege 9)<br />- Stadion (Stephanie-Endres-Stra&szlig;e nach Meiereistra&szlig;e)<br />- Marathonweg (Marathonweg vor Wehlistra&szlig;e)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:</span><br />- Stadion (Handelskai nach Meiereistra&szlig;e, provisorische Haltestelle)<br />- Marathonweg (Marathonweg vor Wehlistra&szlig;e, provisorische Haltestelle)</p> <p><strong>Linie N81 in Richtung Praterstern:</strong><br />Umleitung ab Wehlistra&szlig;e # Marathonweg &uuml;ber Marathonweg - Handelskai - Dr.-Natterer-Gasse - Engerthstra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:</span><br />- Stadion (Stephanie-Endres-Stra&szlig;e vor Meiereistra&szlig;e)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Dr.-Natterer-Gasse (Dr.-Natterer-Gasse gegen&uuml;ber 2-4, Haltestelle der Linie 18)</p>",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "84342e7299cf2d1a256f7e6f2a7a8fcae415185eab7bcfd7d9344c3de0c12009",
+    "pubDate": "2026-10-14T16:10:00+02:00",
+    "starts_at": "2026-10-27T00:00:00+01:00",
+    "ends_at": "2026-10-30T05:00:00+01:00",
+    "_identity": "wl|hinweis|L=N81R|D=2026-10-27|TK=n81 bauarbeiten"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "N8: Thaliastraße U",
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie N8 in Richtung Alterlaa U</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Thaliastra&szlig;e U</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Lerchenfelder G&uuml;rtel 35</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Lerchenfelder G&uuml;rtel 41</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp; Ab 20. Juli 2024,&nbsp;</span></span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">Dauer derzeit unbekannt</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Bauarbeiten</span></p>",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1202,6 +1214,22 @@
     "starts_at": "2026-10-14T00:00:23+02:00",
     "ends_at": "2026-10-14T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-14|TK=ersatzverkehr"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-10-14T16:02:00+02:00",
+    "starts_at": "2026-10-14T16:02:00+02:00",
+    "ends_at": "2026-10-14T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-10-14|TK=u1 verspätungen",
+    "_wl_ids": [
+      "I20261014-0035"
+    ],
+    "_incident_start": "2026-10-14T16:02:00+02:00"
   },
   {
     "source": "Wiener Linien",

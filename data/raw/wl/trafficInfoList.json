@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261014-0032-F01, I20261014-0032-F02, I20260909-0007, I20261014-0027-F01, I20261014-0031, I20261014-0033-F01, I20261014-0033, I20261014-0032, I20261014-0030-F01, I20261014-0030, I20261014-0024-F01, I20261014-0032-F03, I20261014-0028-F01, I20261014-0034, I20261014-0029-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261014-0032-F01, I20261014-0032-F02, I20260909-0007, I20261014-0033-F01, I20261014-0033, I20261014-0030-F01, I20261014-0024-F01, I20261014-0032-F03, I20261014-0034, I20261014-0029-F01, I20261014-0035"
    },
    {
     "id": 3,
@@ -240,80 +240,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "9": "ptTram"
-     }
-    },
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261014-0027-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "109",
-       "lineName": "9",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     484
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T14:12:00.000+0200",
-     "end": "2026-10-14T15:11:00.000+0200",
-     "lastUpdate": "2026-10-14T15:11:00.000+0200",
-     "resume": "2026-10-14T15:11:00.000+0200",
-     "start": "2026-10-14T14:03:00.000+0200"
-    },
-    "title": "9: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "1": "ptTram"
-     }
-    },
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261014-0028-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "101",
-       "lineName": "1",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     1877
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T14:09:00.000+0200",
-     "end": "2026-10-14T15:16:00.000+0200",
-     "lastUpdate": "2026-10-14T15:16:00.000+0200",
-     "resume": "2026-10-14T15:16:00.000+0200",
-     "start": "2026-10-14T14:06:00.000+0200"
-    },
-    "title": "1: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "24A": "ptBusCity"
      }
     },
@@ -352,43 +278,6 @@
       "D": "ptTram"
      }
     },
-    "description": "Die Linie D fährt derzeit nur zwischen Nußdorf und Augasse beziehungsweise zwischen Börse und Quartier Belvedere S. Voraussichtliche Dauer: 15:10 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Alfred-Adler-Straße.",
-    "descriptionHTML": "Die Linie D fährt derzeit nur zwischen Nußdorf und Augasse beziehungsweise zwischen Börse und Quartier Belvedere S.<br> <br>Voraussichtliche Dauer: 15:10 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Alfred-Adler-Straße.",
-    "name": "I20261014-0030",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "136",
-       "lineName": "D",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     3437
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T14:40:00.000+0200",
-     "end": "2026-10-14T15:11:00.000+0200",
-     "lastUpdate": "2026-10-14T15:11:00.000+0200",
-     "resume": "2026-10-14T15:11:00.000+0200",
-     "start": "2026-10-14T14:39:00.000+0200"
-    },
-    "title": "D: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "D": "ptTram"
-     }
-    },
     "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "name": "I20261014-0030-F01",
@@ -419,91 +308,6 @@
      "start": "2026-10-14T14:39:00.000+0200"
     },
     "title": "D: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261014-0031",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "304",
-       "lineName": "U4",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T14:46:00.000+0200",
-     "end": "2026-10-14T15:24:00.000+0200",
-     "lastUpdate": "2026-10-14T15:24:00.000+0200",
-     "resume": "2026-10-14T15:24:00.000+0200",
-     "start": "2026-10-14T14:46:00.000+0200"
-    },
-    "title": "U4: Verspätungen"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "11": "ptTram",
-      "14A": "ptBusCity",
-      "6": "ptTram"
-     }
-    },
-    "description": "Linie 6: Betrieb nur zwischen Burggasse, Stadthalle U und Quellenplatz. Linie 11: Umleitung in beiden Richtungen zwischen Quellenplatz und Absberggasse über Hauptbahnhof S U. Linie 14A: Betrieb nur zwischen Neubaugasse U und Laxenburger Straße, Gudrunstraße. Voraussichtliche Dauer: 15:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Reumannplatz U.",
-    "descriptionHTML": "Linie 6:<br>Betrieb nur zwischen Burggasse, Stadthalle U und Quellenplatz.<br>Linie 11:<br>Umleitung in beiden Richtungen<br>zwischen Quellenplatz und Absberggasse <br>über Hauptbahnhof S U.<br>Linie 14A:<br>Betrieb nur zwischen Neubaugasse U und Laxenburger Straße, Gudrunstraße.<br> <br>Voraussichtliche Dauer: 15:15 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Reumannplatz U.",
-    "name": "I20261014-0032",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11",
-     "14A",
-     "6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "106",
-       "lineName": "6",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "111",
-       "lineName": "11",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "414",
-       "lineName": "14A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "relatedStops": [
-     404
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T14:52:00.000+0200",
-     "end": "2026-10-14T15:08:00.000+0200",
-     "lastUpdate": "2026-10-14T15:08:00.000+0200",
-     "resume": "2026-10-14T15:08:00.000+0200",
-     "start": "2026-10-14T14:52:00.000+0200"
-    },
-    "title": "6, 11, 14A: Rettungseinsatz"
    },
    {
     "attributes": {
@@ -726,6 +530,40 @@
      "start": "2026-10-14T15:38:00.000+0200"
     },
     "title": "U3: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261014-0035",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "301",
+       "lineName": "U1",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-14T16:02:00.000+0200",
+     "end": "2026-10-14T23:55:00.000+0200",
+     "lastUpdate": "2026-10-14T16:02:00.000+0200",
+     "resume": "2026-10-14T16:02:00.000+0200",
+     "start": "2026-10-14T16:02:00.000+0200"
+    },
+    "title": "U1: Verspätungen"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
