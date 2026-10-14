@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261014-0024-F01, I20260917-0012, I20260922-0032, I20261014-0024, I20261014-0028-F01, I20260925-0011, I20261014-0027-F01, I20261014-0027, I20261014-0024-F02, I20260909-0007, I20261014-0023-F01, I20261014-0025, I20261014-0028, I20261014-0021, I20261014-0022-F03, I20261014-0022-F02, I20261014-0026-F01, I20261014-0026, I20261014-0029-F01, I20261014-0029, I20261014-0022-F01, I20261014-0022-F04"
+    "trafficInfoNameList": "I20261014-0024-F01, I20260917-0012, I20260922-0032, I20261014-0028-F01, I20260925-0011, I20261014-0027, I20261014-0027-F01, I20261014-0024-F02, I20260909-0007, I20261014-0023-F01, I20261014-0025, I20261014-0028, I20261014-0021, I20261014-0022-F03, I20261014-0022-F02, I20261014-0031, I20261014-0032, I20261014-0026, I20261014-0029-F01, I20261014-0029, I20261014-0022-F01, I20261014-0022-F04, I20261014-0026-F01, I20261014-0030"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2025-671, R1177-0, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R318-437, R130-136, R19-136, R45-136, R36-152, R1474-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R5815-671, R1445-149, R1448-412, R2558-125, R2378-627, R2343-125, R2371-125, R2370-125, R2359-125, R2343-626, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R1974-466, R500-101, R1150-0, R1776-463, R1338-142, R484-109, R543-109, R1447-109, R1446-109, R544-109, R547-109, R545-109, R546-109, R541-109, R426-101, R1882-101, R1881-101, R1880-101, R831-101, R1884-101, R1883-101, R1754-101, R1753-101, R1752-101, R1751-101, R493-142, R524-142, R3877-142, R3878-142, R1342-142, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R1177-0, R318-437, R2025-671, R1448-412, R1445-149, R1446-149, R1448-149, R5815-671, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1474-412, R1447-149, R2558-125, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2372-627, R2345-127, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R1974-466, R500-101, R1150-0, R484-109, R1447-109, R543-109, R544-109, R545-109, R546-109, R547-109, R1446-109, R541-109, R426-101, R1884-101, R1883-101, R1882-101, R1880-101, R1881-101, R831-101, R1751-101, R1752-101, R1753-101, R1754-101, R493-142, R524-142, R1342-142, R3877-142, R3878-142, R81-136, R114-136, R13-136, R112-136, R113-136, R111-136, R57-136, R14-136, R15-136, R405-106, R404-106, R403-106, R422-106, R420-106, R418-106, R421-106, R3434-106, R405-111, R409-111, R408-111, R404-111, R3435-111, R3434-111, R422-111, R418-111, R420-111, R421-111, R416-111, R423-0, R58-136, R109-136, R3439-136, R3431-136, R3437-136, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -417,50 +417,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "63A": "ptBusCity",
-      "8A": "ptBusCity"
-     }
-    },
-    "description": "Die Linie 8A wird in Richtung Küniglberg, ORF-Zentrum zwischen Hohenbergstraße und Edelsinnstraße über Edelsinnstraße umgeleitet. Die Linie 63A wird in Richtung Am Rosenhügel zwischen Hohenbergstraße und Edelsinnstraße über Edelsinnstraße umgeleitet. Voraussichtliche Dauer: 14:15 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Gaßmannstraße.",
-    "descriptionHTML": "Die Linie 8A wird in Richtung Küniglberg, ORF-Zentrum zwischen Hohenbergstraße und Edelsinnstraße über Edelsinnstraße umgeleitet.<br>Die Linie 63A wird in Richtung Am Rosenhügel zwischen Hohenbergstraße und Edelsinnstraße über Edelsinnstraße umgeleitet.<br> <br>Voraussichtliche Dauer: 14:15 Uhr.<br><br>Grund: Verkehrsunfall im Haltestellenbereich Gaßmannstraße.",
-    "name": "I20261014-0024",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "63A",
-     "8A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "463",
-       "lineName": "63A",
-       "vehicleType": "ptBusCity"
-      },
-      {
-       "lineId": "408",
-       "lineName": "8A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "relatedStops": [
-     1773
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T13:32:00.000+0200",
-     "end": "2026-10-14T13:55:00.000+0200",
-     "lastUpdate": "2026-10-14T13:55:00.000+0200",
-     "resume": "2026-10-14T13:55:00.000+0200",
-     "start": "2026-10-14T13:31:00.000+0200"
-    },
-    "title": "63A, 8A: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "63A": "ptBusCity"
      }
     },
@@ -522,12 +478,12 @@
     "relatedStops": [
      1773
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-14T13:55:00.000+0200",
      "end": "2026-10-14T14:49:00.000+0200",
-     "lastUpdate": "2026-10-14T14:26:00.000+0200",
-     "resume": "2026-10-14T13:55:00.000+0200",
+     "lastUpdate": "2026-10-14T14:49:00.000+0200",
+     "resume": "2026-10-14T14:49:00.000+0200",
      "start": "2026-10-14T13:31:00.000+0200"
     },
     "title": "8A: Verkehrsunfall"
@@ -630,12 +586,12 @@
     "relatedStops": [
      3875
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-14T14:10:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T14:10:00.000+0200",
-     "resume": "2026-10-14T14:10:00.000+0200",
+     "end": "2026-10-14T14:48:00.000+0200",
+     "lastUpdate": "2026-10-14T14:48:00.000+0200",
+     "resume": "2026-10-14T14:48:00.000+0200",
      "start": "2026-10-14T13:57:00.000+0200"
     },
     "title": "42: Falschparker"
@@ -707,8 +663,8 @@
     "status": "active",
     "time": {
      "created": "2026-10-14T14:12:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T14:12:00.000+0200",
+     "end": "2026-10-14T15:11:00.000+0200",
+     "lastUpdate": "2026-10-14T14:43:00.000+0200",
      "resume": "2026-10-14T14:12:00.000+0200",
      "start": "2026-10-14T14:03:00.000+0200"
     },
@@ -859,6 +815,119 @@
     "title": "24A: Betriebsstörung"
    },
    {
+    "attributes": {
+     "relatedLineTypes": {
+      "D": "ptTram"
+     }
+    },
+    "description": "Die Linie D fährt derzeit nur zwischen Nußdorf und Augasse beziehungsweise zwischen Börse und Quartier Belvedere S. Voraussichtliche Dauer: 15:10 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Alfred-Adler-Straße.",
+    "descriptionHTML": "Die Linie D fährt derzeit nur zwischen Nußdorf und Augasse beziehungsweise zwischen Börse und Quartier Belvedere S.<br> <br>Voraussichtliche Dauer: 15:10 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Alfred-Adler-Straße.",
+    "name": "I20261014-0030",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "136",
+       "lineName": "D",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     3437
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-14T14:40:00.000+0200",
+     "end": "2026-10-14T23:55:00.000+0200",
+     "lastUpdate": "2026-10-14T14:57:00.000+0200",
+     "start": "2026-10-14T14:39:00.000+0200"
+    },
+    "title": "D: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261014-0031",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "304",
+       "lineName": "U4",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-14T14:46:00.000+0200",
+     "end": "2026-10-14T23:55:00.000+0200",
+     "lastUpdate": "2026-10-14T14:46:00.000+0200",
+     "resume": "2026-10-14T14:46:00.000+0200",
+     "start": "2026-10-14T14:46:00.000+0200"
+    },
+    "title": "U4: Verspätungen"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram",
+      "6": "ptTram"
+     }
+    },
+    "description": "Linie 6: Betrieb nur zwischen Burggasse, Stadthalle U und Quellenplatz. Linie 11: Umleitung in beiden Richtungen zwischen Quellenplatz und Absberggasse über Hauptbahnhof S U. Voraussichtliche Dauer: 15:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Reumannplatz U.",
+    "descriptionHTML": "Linie 6:<br>Betrieb nur zwischen Burggasse, Stadthalle U und Quellenplatz.<br>Linie 11:<br>Umleitung in beiden Richtungen<br>zwischen Quellenplatz und Absberggasse <br>über Hauptbahnhof S U.<br> <br>Voraussichtliche Dauer: 15:15 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Reumannplatz U.",
+    "name": "I20261014-0032",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11",
+     "6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "106",
+       "lineName": "6",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "111",
+       "lineName": "11",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     404
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-14T14:52:00.000+0200",
+     "end": "2026-10-14T23:55:00.000+0200",
+     "lastUpdate": "2026-10-14T14:58:00.000+0200",
+     "start": "2026-10-14T14:52:00.000+0200"
+    },
+    "title": "6, 11: Rettungseinsatz"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R100-136",
     "owner": "WL",
@@ -929,6 +998,96 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R109-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     109
+    ],
+    "time": {
+     "end": "2026-10-14T15:59:00.000+0200",
+     "start": "2026-10-14T14:59:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R111-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     111
+    ],
+    "time": {
+     "end": "2026-10-14T15:51:00.000+0200",
+     "start": "2026-10-14T14:44:53.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R112-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     112
+    ],
+    "time": {
+     "end": "2026-10-14T15:51:00.000+0200",
+     "start": "2026-10-14T14:44:53.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R113-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     113
+    ],
+    "time": {
+     "end": "2026-10-14T15:51:00.000+0200",
+     "start": "2026-10-14T14:44:53.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R114-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     114
+    ],
+    "time": {
+     "end": "2026-10-14T15:51:00.000+0200",
+     "start": "2026-10-14T14:44:53.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
@@ -1051,6 +1210,24 @@
     "title": "Züge halten in\nSchleife"
    },
    {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R13-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     13
+    ],
+    "time": {
+     "end": "2026-10-14T15:51:00.000+0200",
+     "start": "2026-10-14T14:44:53.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R130-136",
     "owner": "WL",
@@ -1070,24 +1247,6 @@
    },
    {
     "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1338-142",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedStops": [
-     1338
-    ],
-    "time": {
-     "end": "2026-10-14T14:58:00.000+0200",
-     "start": "2026-10-14T13:59:22.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
     "name": "R1342-142",
     "owner": "WL",
     "priority": "1",
@@ -1103,6 +1262,24 @@
      "start": "2026-10-14T14:09:24.000+0200"
     },
     "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R14-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-14T15:51:00.000+0200",
+     "start": "2026-10-14T14:52:24.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -1357,6 +1534,24 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
    },
    {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R15-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-14T15:51:00.000+0200",
+     "start": "2026-10-14T14:52:24.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
     "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R1751-101",
     "owner": "WL",
@@ -1427,24 +1622,6 @@
      "start": "2026-10-14T14:08:53.000+0200"
     },
     "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R1776-463",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "63A"
-    ],
-    "relatedStops": [
-     1776
-    ],
-    "time": {
-     "end": "2026-10-14T14:31:00.000+0200",
-     "start": "2026-10-14T13:32:18.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "description": "Fahrtbehinderung\nSchadhafter Zug",
@@ -1894,6 +2071,114 @@
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
    },
    {
+    "description": "Rettungseinsatz\nBetrieb ab Quartier Belvedere",
+    "name": "R3431-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     3431
+    ],
+    "time": {
+     "end": "2026-10-14T15:59:00.000+0200",
+     "start": "2026-10-14T15:00:30.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Quartier Belvedere"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+    "name": "R3434-106",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     3434
+    ],
+    "time": {
+     "end": "2026-10-14T15:55:00.000+0200",
+     "start": "2026-10-14T14:56:30.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+    "name": "R3434-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     3434
+    ],
+    "time": {
+     "end": "2026-10-14T15:57:00.000+0200",
+     "start": "2026-10-14T14:58:00.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse",
+    "name": "R3435-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     3435
+    ],
+    "time": {
+     "end": "2026-10-14T15:56:00.000+0200",
+     "start": "2026-10-14T14:57:30.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Quartier Belvedere",
+    "name": "R3437-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     3437
+    ],
+    "time": {
+     "end": "2026-10-14T15:59:00.000+0200",
+     "start": "2026-10-14T15:00:30.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Quartier Belvedere"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Quartier Belvedere",
+    "name": "R3439-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     3439
+    ],
+    "time": {
+     "end": "2026-10-14T15:59:00.000+0200",
+     "start": "2026-10-14T15:00:30.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Quartier Belvedere"
+   },
+   {
     "description": "Züge halten\nbei Linien 6 und 18",
     "name": "R36-152",
     "owner": "WL",
@@ -1946,6 +2231,309 @@
      "start": "2026-10-14T14:09:24.000+0200"
     },
     "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R403-106",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     403
+    ],
+    "time": {
+     "end": "2026-10-14T15:54:00.000+0200",
+     "start": "2026-10-14T14:55:25.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R404-106",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     404
+    ],
+    "time": {
+     "end": "2026-10-14T15:54:00.000+0200",
+     "start": "2026-10-14T14:55:25.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse",
+    "name": "R404-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     404
+    ],
+    "time": {
+     "end": "2026-10-14T15:56:00.000+0200",
+     "start": "2026-10-14T14:57:26.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R405-106",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     405
+    ],
+    "time": {
+     "end": "2026-10-14T15:54:00.000+0200",
+     "start": "2026-10-14T14:55:25.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse",
+    "name": "R405-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     405
+    ],
+    "time": {
+     "end": "2026-10-14T15:56:00.000+0200",
+     "start": "2026-10-14T14:57:26.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse",
+    "name": "R408-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     408
+    ],
+    "time": {
+     "end": "2026-10-14T15:56:00.000+0200",
+     "start": "2026-10-14T14:57:26.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse",
+    "name": "R409-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     409
+    ],
+    "time": {
+     "end": "2026-10-14T15:56:00.000+0200",
+     "start": "2026-10-14T14:57:26.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+    "name": "R416-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     416
+    ],
+    "time": {
+     "end": "2026-10-14T15:57:00.000+0200",
+     "start": "2026-10-14T14:58:26.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+    "name": "R418-106",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     418
+    ],
+    "time": {
+     "end": "2026-10-14T15:55:00.000+0200",
+     "start": "2026-10-14T14:56:26.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+    "name": "R418-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     418
+    ],
+    "time": {
+     "end": "2026-10-14T15:57:00.000+0200",
+     "start": "2026-10-14T14:58:26.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+    "name": "R420-106",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     420
+    ],
+    "time": {
+     "end": "2026-10-14T15:55:00.000+0200",
+     "start": "2026-10-14T14:56:26.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+    "name": "R420-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     420
+    ],
+    "time": {
+     "end": "2026-10-14T15:57:00.000+0200",
+     "start": "2026-10-14T14:58:26.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+    "name": "R421-106",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     421
+    ],
+    "time": {
+     "end": "2026-10-14T15:55:00.000+0200",
+     "start": "2026-10-14T14:56:26.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+    "name": "R421-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     421
+    ],
+    "time": {
+     "end": "2026-10-14T15:57:00.000+0200",
+     "start": "2026-10-14T14:58:26.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+    "name": "R422-106",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     422
+    ],
+    "time": {
+     "end": "2026-10-14T15:55:00.000+0200",
+     "start": "2026-10-14T14:56:26.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+    "name": "R422-111",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     422
+    ],
+    "time": {
+     "end": "2026-10-14T15:57:00.000+0200",
+     "start": "2026-10-14T14:58:26.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
+   },
+   {
+    "description": "Rettungseinsatz\nZüge halten bei\nLinie O\n",
+    "name": "R423-0",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     423
+    ],
+    "time": {
+     "end": "2026-10-14T15:58:00.000+0200",
+     "start": "2026-10-14T14:58:56.000+0200"
+    },
+    "title": "Rettungseinsatz\nZüge halten bei\nLinie O\n"
    },
    {
     "description": "Fahrtbehinderung\nSchadhafter Zug",
@@ -2164,6 +2752,42 @@
     "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
+    "description": "Rettungseinsatz\nBetrieb ab Quartier Belvedere",
+    "name": "R57-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     57
+    ],
+    "time": {
+     "end": "2026-10-14T15:59:00.000+0200",
+     "start": "2026-10-14T14:44:53.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Quartier Belvedere"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R58-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     58
+    ],
+    "time": {
+     "end": "2026-10-14T15:59:00.000+0200",
+     "start": "2026-10-14T14:59:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "name": "R5815-671",
     "owner": "WL",
@@ -2177,6 +2801,24 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R81-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     81
+    ],
+    "time": {
+     "end": "2026-10-14T15:51:00.000+0200",
+     "start": "2026-10-14T14:44:53.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Fahrtbehinderung\nSchadhafter Zug",
