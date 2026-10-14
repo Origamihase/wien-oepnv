@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261014-0011, I20261014-0013, I20260925-0011, I20261014-0014-F01, I20261014-0014, I20260909-0007, I20261014-0013-F01, I20261014-0010, I20261014-0012, I20261014-0015-F01, I20261014-0015"
+    "trafficInfoNameList": "I20260917-0012, I20261014-0014-F01, I20260922-0032, I20261014-0016, I20260925-0011, I20261014-0015-F01, I20261014-0010, I20260909-0007, I20261014-0012, I20261014-0015, I20261014-0011"
    },
    {
     "id": 3,
@@ -227,8 +227,8 @@
     "status": "active",
     "time": {
      "created": "2026-10-14T08:31:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T10:03:00.000+0200",
+     "end": "2026-10-14T11:35:00.000+0200",
+     "lastUpdate": "2026-10-14T11:00:00.000+0200",
      "resume": "2026-10-14T08:29:00.000+0200",
      "start": "2026-10-14T08:29:00.000+0200"
     },
@@ -258,12 +258,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-14T08:35:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T08:35:00.000+0200",
-     "resume": "2026-10-14T08:35:00.000+0200",
+     "end": "2026-10-14T10:52:00.000+0200",
+     "lastUpdate": "2026-10-14T10:52:00.000+0200",
+     "resume": "2026-10-14T10:52:00.000+0200",
      "start": "2026-10-14T08:35:00.000+0200"
     },
     "title": "O: Verkehrsüberlastung"
@@ -308,117 +308,6 @@
       "U6": "ptMetro"
      }
     },
-    "description": "Linie U6: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 09:40 Uhr. Grund: Betriebsstörung im Haltestellenbereich Josefstädter Straße.",
-    "descriptionHTML": "Linie U6:<br>Fahrtbehinderung in beiden Richtungen.<br> <br>Voraussichtliche Dauer: 09:40 Uhr.<br><br>Grund: Betriebsstörung im Haltestellenbereich Josefstädter Straße.",
-    "name": "I20261014-0013",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4622
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T09:31:00.000+0200",
-     "end": "2026-10-14T09:41:00.000+0200",
-     "lastUpdate": "2026-10-14T09:41:00.000+0200",
-     "resume": "2026-10-14T09:41:00.000+0200",
-     "start": "2026-10-14T09:28:00.000+0200"
-    },
-    "title": "U6: Betriebsstörung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261014-0013-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4622
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T09:41:00.000+0200",
-     "end": "2026-10-14T09:44:00.000+0200",
-     "lastUpdate": "2026-10-14T09:44:00.000+0200",
-     "resume": "2026-10-14T09:44:00.000+0200",
-     "start": "2026-10-14T09:28:00.000+0200"
-    },
-    "title": "U6: Betriebsstörung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Fahrtbehinderung in Richtung Siebenhirten. Voraussichtliche Dauer: 10:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Josefstädter Straße.",
-    "descriptionHTML": "Linie U6:<br>Fahrtbehinderung in Richtung Siebenhirten.<br> <br>Voraussichtliche Dauer: 10:00 Uhr.<br><br>Grund: Polizeieinsatz im Haltestellenbereich Josefstädter Straße.",
-    "name": "I20261014-0014",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4622
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T09:45:00.000+0200",
-     "end": "2026-10-14T09:46:00.000+0200",
-     "lastUpdate": "2026-10-14T09:46:00.000+0200",
-     "resume": "2026-10-14T09:46:00.000+0200",
-     "start": "2026-10-14T09:44:00.000+0200"
-    },
-    "title": "U6: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
     "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "name": "I20261014-0014-F01",
@@ -440,12 +329,12 @@
     "relatedStops": [
      4622
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-14T09:46:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T09:46:00.000+0200",
-     "resume": "2026-10-14T09:46:00.000+0200",
+     "end": "2026-10-14T10:34:00.000+0200",
+     "lastUpdate": "2026-10-14T10:34:00.000+0200",
+     "resume": "2026-10-14T10:34:00.000+0200",
      "start": "2026-10-14T09:44:00.000+0200"
     },
     "title": "U6: Polizeieinsatz"
@@ -510,15 +399,49 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-14T10:17:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T10:17:00.000+0200",
-     "resume": "2026-10-14T10:17:00.000+0200",
+     "end": "2026-10-14T10:52:00.000+0200",
+     "lastUpdate": "2026-10-14T10:52:00.000+0200",
+     "resume": "2026-10-14T10:52:00.000+0200",
      "start": "2026-10-14T10:07:00.000+0200"
     },
     "title": "10A: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "10A": "ptBusCity"
+     }
+    },
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Bereich Johnstraße.",
+    "descriptionHTML": "Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Rettungseinsatz im Bereich Johnstraße.",
+    "location": "Johnstraße",
+    "name": "I20261014-0016",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "410",
+       "lineName": "10A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-14T10:54:00.000+0200",
+     "end": "2026-10-14T23:55:00.000+0200",
+     "lastUpdate": "2026-10-14T10:54:00.000+0200",
+     "start": "2026-10-14T10:52:00.000+0200"
+    },
+    "title": "10A: Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
