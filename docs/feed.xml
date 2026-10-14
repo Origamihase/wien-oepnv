@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 14 Oct 2026 23:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 00:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[5/12: Fahrzeug im Gleis]]></title>
+      <title><![CDATA[1/2/5/5A/5B/71/74A/80A/D/O: Demonstration]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9c39fb84304f09d5c63f52f854a6c380efa100e38513f1272da89c78b4f4588c</guid>
-      <pubDate>Wed, 14 Oct 2026 20:48:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 20:48:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 20:48:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 20:48]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20:48]]]></content:encoded>
+      <guid isPermaLink="false">f868d2f5eb494decde7d0c63339dab6ae0887407eebc3eed949d2e7e53c0a75c</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 15 Oct 2026 00:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 19:05:00 +0200</ext:ends_at>
+      <description>Wegen einer Demonstration kommt es zu Einschränkungen im öffentlichen Verkehr. Linie D: Kurzführung der Züge zwischen Absberggasse und Börse am Schwarzenbergplatz. [Am Fr 16.10.]</description>
+      <content:encoded><![CDATA[Wegen einer Demonstration kommt es zu Einschränkungen im öffentlichen Verkehr. Linie D: Kurzführung der Züge zwischen Absberggasse und Börse am Schwarzenbergplatz.<br/>[Am Fr 16.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Bauarbeiten]]></title>
@@ -28,8 +28,19 @@
       <ext:first_seen>Wed, 14 Oct 2026 22:05:00 +0200</ext:first_seen>
       <ext:starts_at>Wed, 14 Oct 2026 22:05:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 15 Oct 2026 00:35:00 +0200</ext:ends_at>
-      <description>Die Linie U6 fährt derzeit in der Station Neue Donau in beiden Richtungen über Gleis 2. Grund: Bauarbeiten im Haltestellenbereich Neue Donau. [Bis Do 15.10.]</description>
-      <content:encoded><![CDATA[Die Linie U6 fährt derzeit in der Station Neue Donau in beiden Richtungen über Gleis 2. Grund: Bauarbeiten im Haltestellenbereich Neue Donau.<br/>[Bis Do 15.10.]]]></content:encoded>
+      <description>Die Linie U6 fährt derzeit in der Station Neue Donau in beiden Richtungen über Gleis 2. Grund: Bauarbeiten im Haltestellenbereich Neue Donau. [Heute]</description>
+      <content:encoded><![CDATA[Die Linie U6 fährt derzeit in der Station Neue Donau in beiden Richtungen über Gleis 2. Grund: Bauarbeiten im Haltestellenbereich Neue Donau.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N71: Simmering S U]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c8f0b5a42164e2ff573973d0ebcbdf6fbd76b99aebfc2c85c8b8657ef7b9bb79</guid>
+      <pubDate>Wed, 14 Oct 2026 15:35:00 +0200</pubDate>
+      <ext:first_seen>Wed, 14 Oct 2026 15:35:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 23 Oct 2026 05:05:00 +0200</ext:ends_at>
+      <description>Simmeringer Hauptstraße gegenüber 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, provisorische Haltestelle, Hauptfahrbahn. Haltestellenverlegung der Linie N71 … [Ab Fr 16.10. bis 23.10.]</description>
+      <content:encoded><![CDATA[Simmeringer Hauptstraße gegenüber 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, provisorische Haltestelle, Hauptfahrbahn. Haltestellenverlegung der Linie N71 …<br/>[Ab Fr 16.10. bis 23.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[64A: Liesing-Flur-Gasse]]></title>
@@ -94,8 +105,8 @@
       <ext:first_seen>Fri, 02 Oct 2026 16:31:05 +0200</ext:first_seen>
       <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 15 Oct 2026 17:00:00 +0200</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet. [Bis Do 15.10.]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet.<br/>[Bis Do 15.10.]]]></content:encoded>
+      <description>Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet. [Heute]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1A/3A: Schwertgasse]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
       <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung. [Bis 31.03.2027]</description>
       <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung.<br/>[Bis 31.03.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
-      <pubDate>Mon, 05 Oct 2026 15:40:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 15:40:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 … [Bis 28.10.]</description>
-      <content:encoded><![CDATA[Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 …<br/>[Bis 28.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
