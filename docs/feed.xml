@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 14 Oct 2026 08:00:49 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 08:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[46: Rettungseinsatz]]></title>
+      <title><![CDATA[16A/17A/67A/67B: Störung an einem Bahnübergang]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e1715d10748fce73b172c45e54dd3e25af3065fc6c95c6e107df041384e060fc</guid>
-      <pubDate>Wed, 14 Oct 2026 06:20:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 06:20:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 06:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 08:23:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 06:20]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 06:20]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
-      <pubDate>Wed, 14 Oct 2026 07:55:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 05:55:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 07:55:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">64adf3f111f665b0756e206081b736c33bee655dba42034dde513aed6f0ef56b</guid>
+      <pubDate>Wed, 14 Oct 2026 07:59:00 +0200</pubDate>
+      <ext:first_seen>Wed, 14 Oct 2026 07:59:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 07:59:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 07:55]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 07:55]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 07:59]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 07:59]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Bauarbeiten]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 14 Oct 2026 23:00:00 +0200</ext:ends_at>
       <description>Bhf. Hütteldorf [Heute]</description>
       <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A/7A/N62: Eibesbrunnergasse beide Fahrtrichtungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bd6cbe1a4ea6d909912fce8527e38411ee42a952a91a70beecf363c26cd3e728</guid>
+      <pubDate>Mon, 05 Oct 2026 16:10:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 16:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 … [Bis 06.11.]</description>
+      <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 …<br/>[Bis 06.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
