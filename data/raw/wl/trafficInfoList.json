@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261014-0010, I20260917-0012, I20260922-0032, I20261014-0008, I20261014-0011, I20260925-0011, I20260909-0007, I20261014-0009-F01, I20261014-0009-F02, I20261014-0009-F03, I20261014-0009-F04, I20261014-0009, I20261014-0012, I20261014-0004-F01"
+    "trafficInfoNameList": "I20261014-0009-F01, I20261014-0009-F02, I20261014-0009-F04, I20261014-0009-F03, I20260917-0012, I20260922-0032, I20261014-0008, I20261014-0011, I20260925-0011, I20260909-0007, I20261014-0012, I20261014-0010"
    },
    {
     "id": 3,
@@ -203,43 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "46": "ptTram"
-     }
-    },
-    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261014-0004-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "146",
-       "lineName": "46",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     1376
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T06:48:00.000+0200",
-     "end": "2026-10-14T08:23:00.000+0200",
-     "lastUpdate": "2026-10-14T08:23:00.000+0200",
-     "resume": "2026-10-14T08:23:00.000+0200",
-     "start": "2026-10-14T06:20:00.000+0200"
-    },
-    "title": "46: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U1": "ptMetro"
      }
     },
@@ -274,62 +237,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "16A": "ptBusCity",
-      "17A": "ptBusCity",
-      "67A": "ptBusCity",
-      "67B": "ptBusCity"
-     }
-    },
-    "description": "Linie 67B: Fahrtbehinderung in beiden Richtungen. Linie 16A: Fahrtbehinderung in beiden Richtungen. Linie 17A: Fahrtbehinderung in beiden Richtungen. Linie 67A: Fahrtbehinderung in beiden Richtungen. Grund: Störung an einem Bahnübergang im Bereich Himberger Straße.",
-    "descriptionHTML": "Linie 67B:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie 16A:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie 17A:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie 67A:<br>Fahrtbehinderung in beiden Richtungen.<br> <br>Grund: Störung an einem Bahnübergang im Bereich Himberger Straße.",
-    "location": "Himberger Straße",
-    "name": "I20261014-0009",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "67B",
-     "16A",
-     "17A",
-     "67A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "416",
-       "lineName": "16A",
-       "vehicleType": "ptBusCity"
-      },
-      {
-       "lineId": "417",
-       "lineName": "17A",
-       "vehicleType": "ptBusCity"
-      },
-      {
-       "lineId": "467",
-       "lineName": "67A",
-       "vehicleType": "ptBusCity"
-      },
-      {
-       "lineId": "267",
-       "lineName": "67B",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T08:00:00.000+0200",
-     "end": "2026-10-14T08:00:00.000+0200",
-     "lastUpdate": "2026-10-14T08:00:00.000+0200",
-     "resume": "2026-10-14T08:00:00.000+0200",
-     "start": "2026-10-14T07:59:00.000+0200"
-    },
-    "title": "16A, 17A, 67A, 67B: Störung an einem Bahnübergang"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "16A": "ptBusCity"
      }
     },
@@ -352,12 +259,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-14T08:00:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T08:00:00.000+0200",
-     "resume": "2026-10-14T08:00:00.000+0200",
+     "end": "2026-10-14T09:08:00.000+0200",
+     "lastUpdate": "2026-10-14T09:08:00.000+0200",
+     "resume": "2026-10-14T09:08:00.000+0200",
      "start": "2026-10-14T07:59:00.000+0200"
     },
     "title": "16A: Störung an einem Bahnübergang"
@@ -387,12 +294,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-14T08:00:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T08:00:00.000+0200",
-     "resume": "2026-10-14T08:00:00.000+0200",
+     "end": "2026-10-14T09:08:00.000+0200",
+     "lastUpdate": "2026-10-14T09:08:00.000+0200",
+     "resume": "2026-10-14T09:08:00.000+0200",
      "start": "2026-10-14T07:59:00.000+0200"
     },
     "title": "17A: Störung an einem Bahnübergang"
@@ -422,12 +329,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-14T08:00:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T08:00:00.000+0200",
-     "resume": "2026-10-14T08:00:00.000+0200",
+     "end": "2026-10-14T09:09:00.000+0200",
+     "lastUpdate": "2026-10-14T09:09:00.000+0200",
+     "resume": "2026-10-14T09:09:00.000+0200",
      "start": "2026-10-14T07:59:00.000+0200"
     },
     "title": "67A: Störung an einem Bahnübergang"
@@ -457,12 +364,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-14T08:00:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T08:00:00.000+0200",
-     "resume": "2026-10-14T08:00:00.000+0200",
+     "end": "2026-10-14T09:08:00.000+0200",
+     "lastUpdate": "2026-10-14T09:08:00.000+0200",
+     "resume": "2026-10-14T09:08:00.000+0200",
      "start": "2026-10-14T07:59:00.000+0200"
     },
     "title": "67B: Störung an einem Bahnübergang"
@@ -472,12 +379,13 @@
      "relatedLineTypes": {
       "10A": "ptBusCity",
       "40A": "ptBusCity",
+      "48A": "ptBusCity",
       "59A": "ptBusCity",
       "7A": "ptBusCity"
      }
     },
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 40A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 40A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
     "name": "I20261014-0010",
     "owner": "WL",
     "priority": "1",
@@ -486,6 +394,7 @@
      "7A",
      "10A",
      "40A",
+     "48A",
      "59A"
     ],
     "relatedLinesDetails": [
@@ -509,6 +418,11 @@
        "lineId": "440",
        "lineName": "40A",
        "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "448",
+       "lineName": "48A",
+       "vehicleType": "ptBusCity"
       }
      ]
     ],
@@ -516,11 +430,11 @@
     "time": {
      "created": "2026-10-14T08:31:00.000+0200",
      "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T08:31:00.000+0200",
+     "lastUpdate": "2026-10-14T09:09:00.000+0200",
      "resume": "2026-10-14T08:29:00.000+0200",
      "start": "2026-10-14T08:29:00.000+0200"
     },
-    "title": "10A, 7A, 59A, 40A: Verkehrsüberlastung"
+    "title": "10A, 7A, 59A, 40A, 48A: Verkehrsüberlastung"
    },
    {
     "attributes": {

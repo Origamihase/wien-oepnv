@@ -7,10 +7,10 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 14 Oct 2026 09:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 09:30:41 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[7A/10A/40A/59A/O: Verkehrsüberlastung]]></title>
+      <title><![CDATA[7A/10A/40A/48A/59A/O: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e0554706221cae8ec59ecf4482b9f7c5d637c7681ec4306e8140d11430a520d6</guid>
       <pubDate>Wed, 14 Oct 2026 08:29:00 +0200</pubDate>
@@ -30,17 +30,6 @@
       <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Seit 08:58]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 08:58]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A/17A/67A/67B: Störung an einem Bahnübergang]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">64adf3f111f665b0756e206081b736c33bee655dba42034dde513aed6f0ef56b</guid>
-      <pubDate>Wed, 14 Oct 2026 07:59:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 07:59:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 07:59:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 07:59]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 07:59]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Bauarbeiten]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 … [Bis 28.10.]</description>
       <content:encoded><![CDATA[Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 …<br/>[Bis 28.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: ÖBB-Ersatzbus]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
+      <pubDate>Wed, 14 Oct 2026 05:00:27 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 05:00:27 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Oct 2026 23:00:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf [Heute]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Heute]]]></content:encoded>
     </item>
   </channel>
 </rss>

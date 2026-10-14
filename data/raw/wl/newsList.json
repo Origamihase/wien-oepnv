@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_728, ftazW_239, ftazW_1017121, ftazW_83, ftazW_45, ftazW_1017123, ftazW_1031267, ftazW_84, ftazW_240, ftazW_727, ftazW_574, ftazW_113, ftazW_746, ftazW_1031268, ftazW_739, ftazW_575, ftazW_740, ftazW_97, ftazW_114, ftazW_766"
+    "trafficInfoNameList": "ftazW_239, ftazW_1017121, ftazW_83, ftazW_728, ftazW_84, ftazW_240, ftazW_727, ftazW_45, ftazW_1017123, ftazW_1031267, ftazW_113, ftazW_746, ftazW_1031268, ftazW_739, ftazW_574, ftazW_97, ftazW_114, ftazW_766, ftazW_575, ftazW_740"
    }
   ],
   "poiCategoryGroups": [
@@ -2659,7 +2659,7 @@
     "attributes": {
      "ausBis": "16.10.2026 00:45",
      "ausVon": "15.10.2026 20:45",
-     "location": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
+     "location": "Zwischengeschoss Zugang Aufzug U1 - U4 Mittelbahnsteig",
      "rbls": [
       4427,
       4410
@@ -2673,7 +2673,7 @@
      "status": "geplante Wartung",
      "towards": "U4 beide Richtungen"
     },
-    "description": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
+    "description": "Zwischengeschoss Zugang Aufzug U1 - U4 Mittelbahnsteig",
     "name": "ftazW_113",
     "refPoiCategoryId": -1,
     "relatedLines": [
