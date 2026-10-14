@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 14 Oct 2026 05:01:06 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 05:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[7A: Construction works]]></title>
@@ -65,17 +65,6 @@
       <content:encoded><![CDATA[Due to construction works in the area of Wildbadgasse, line 20A is redirected.<br/>[Today]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[N8: Buses stop at Aßmayergasse just after Flurschützstraße for line 59A]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">10b9a6d53b42f1dead1c688ecfaaf4e6a3c8058ce9e29c10c1d6b71e47353c17</guid>
-      <pubDate>Wed, 14 Oct 2026 00:45:27 +0200</pubDate>
-      <ext:first_seen>Sat, 10 Oct 2026 01:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 00:45:27 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 05:15:00 +0200</ext:ends_at>
-      <description>Reason: track construction works. [Today]</description>
-      <content:encoded><![CDATA[Reason: track construction works.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[1A/3A: Schwertgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 … [Until 06.11.]</description>
       <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 …<br/>[Until 06.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Döblinger Friedhof, Felix-Dahn-Straße]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3b87641b77fa6c0aafabe7d9cf756796d943ae3e84185578ab69bd83d20a1a28</guid>
+      <pubDate>Mon, 05 Oct 2026 10:15:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 10:15:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 05 Oct 2026 10:15:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction. [Until 26.10.]</description>
+      <content:encoded><![CDATA[Hartäckerstraße 65: closed without replacement. Stop closure of line 40A towards Schottentor. Reason: road construction.<br/>[Until 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
