@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261014-0037, I20261014-0038, I20260917-0012, I20260922-0032, I20261014-0036, I20261014-0030-F01, I20261014-0037-F01, I20260925-0011, I20260909-0007, I20261014-0032-F01, I20261014-0037-F02, I20261014-0032-F02, I20261014-0033-F01, I20261014-0034, I20261014-0035"
+    "trafficInfoNameList": "I20261014-0037, I20261014-0035, I20261014-0038, I20260917-0012, I20260922-0032, I20261014-0030-F01, I20261014-0037-F01, I20260925-0011, I20260909-0007, I20261014-0032-F01, I20261014-0037-F02, I20261014-0032-F02, I20261014-0033-F01, I20261014-0034"
    },
    {
     "id": 3,
@@ -409,52 +409,15 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-14T16:02:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T16:02:00.000+0200",
-     "resume": "2026-10-14T16:02:00.000+0200",
+     "end": "2026-10-14T17:44:00.000+0200",
+     "lastUpdate": "2026-10-14T17:44:00.000+0200",
+     "resume": "2026-10-14T17:44:00.000+0200",
      "start": "2026-10-14T16:02:00.000+0200"
     },
     "title": "U1: Verspätungen"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "52": "ptTram"
-     }
-    },
-    "description": "Linie 52: Fahrtbehinderung in Richtung Baumgarten. Voraussichtliche Dauer: 17:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Geibelgasse.",
-    "descriptionHTML": "Linie 52:<br>Fahrtbehinderung in Richtung Baumgarten.<br> <br>Voraussichtliche Dauer: 17:00 Uhr.<br><br>Grund: Polizeieinsatz im Haltestellenbereich Geibelgasse.",
-    "name": "I20261014-0036",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "152",
-       "lineName": "52",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     1533
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T16:37:00.000+0200",
-     "end": "2026-10-14T16:38:00.000+0200",
-     "lastUpdate": "2026-10-14T16:38:00.000+0200",
-     "resume": "2026-10-14T16:38:00.000+0200",
-     "start": "2026-10-14T16:36:00.000+0200"
-    },
-    "title": "52: Polizeieinsatz"
    },
    {
     "attributes": {
@@ -598,12 +561,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-14T17:13:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T17:13:00.000+0200",
-     "resume": "2026-10-14T17:13:00.000+0200",
+     "end": "2026-10-14T17:44:00.000+0200",
+     "lastUpdate": "2026-10-14T17:44:00.000+0200",
+     "resume": "2026-10-14T17:44:00.000+0200",
      "start": "2026-10-14T17:13:00.000+0200"
     },
     "title": "U6: Verspätungen"
