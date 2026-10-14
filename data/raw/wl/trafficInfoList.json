@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261014-0008, I20260925-0011, I20260909-0007, I20261014-0009-F01, I20261014-0009-F02, I20261014-0009-F03, I20261014-0009-F04, I20261014-0009, I20261014-0004-F01"
+    "trafficInfoNameList": "I20261014-0010, I20260917-0012, I20260922-0032, I20261014-0008, I20261014-0011, I20260925-0011, I20260909-0007, I20261014-0009-F01, I20261014-0009-F02, I20261014-0009-F03, I20261014-0009-F04, I20261014-0009, I20261014-0012, I20261014-0004-F01"
    },
    {
     "id": 3,
@@ -466,6 +466,129 @@
      "start": "2026-10-14T07:59:00.000+0200"
     },
     "title": "67B: Störung an einem Bahnübergang"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "10A": "ptBusCity",
+      "40A": "ptBusCity",
+      "59A": "ptBusCity",
+      "7A": "ptBusCity"
+     }
+    },
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 40A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
+    "name": "I20261014-0010",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "7A",
+     "10A",
+     "40A",
+     "59A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "410",
+       "lineName": "10A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "407",
+       "lineName": "7A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "459",
+       "lineName": "59A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "440",
+       "lineName": "40A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-14T08:31:00.000+0200",
+     "end": "2026-10-14T23:55:00.000+0200",
+     "lastUpdate": "2026-10-14T08:31:00.000+0200",
+     "resume": "2026-10-14T08:29:00.000+0200",
+     "start": "2026-10-14T08:29:00.000+0200"
+    },
+    "title": "10A, 7A, 59A, 40A: Verkehrsüberlastung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
+    "name": "I20261014-0011",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "170",
+       "lineName": "O",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-14T08:35:00.000+0200",
+     "end": "2026-10-14T23:55:00.000+0200",
+     "lastUpdate": "2026-10-14T08:35:00.000+0200",
+     "resume": "2026-10-14T08:35:00.000+0200",
+     "start": "2026-10-14T08:35:00.000+0200"
+    },
+    "title": "O: Verkehrsüberlastung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "descriptionHTML": "Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Betriebsstörung.",
+    "name": "I20261014-0012",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "302",
+       "lineName": "U2",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-14T08:58:00.000+0200",
+     "end": "2026-10-14T23:55:00.000+0200",
+     "lastUpdate": "2026-10-14T08:58:00.000+0200",
+     "resume": "2026-10-14T08:58:00.000+0200",
+     "start": "2026-10-14T08:58:00.000+0200"
+    },
+    "title": "U2: Betriebsstörung"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
