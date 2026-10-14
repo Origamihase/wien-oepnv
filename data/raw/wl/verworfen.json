@@ -1,20 +1,8 @@
 {
  "verworfen": [
   {
-   "grund": "Kurzmeldung einer erledigten Störung",
-   "titel": "Fahrtbehinderung wegen Rettungseinsatz"
-  },
-  {
-   "grund": "Kurzmeldung einer erledigten Störung",
-   "titel": "Rettungseinsatz Betrieb ab Enkplatz, Grillgasse"
-  },
-  {
-   "grund": "Kurzmeldung einer erledigten Störung",
-   "titel": "Rettungseinsatz Betrieb ab Quartier Belvedere"
-  },
-  {
-   "grund": "Kurzmeldung einer erledigten Störung",
-   "titel": "Rettungseinsatz Betrieb ab Quellenplatz"
+   "grund": "Status inaktiv",
+   "titel": "14A: Rettungseinsatz"
   },
   {
    "grund": "Status inaktiv",
@@ -22,7 +10,7 @@
   },
   {
    "grund": "Status inaktiv",
-   "titel": "42: Falschparker"
+   "titel": "24A: Betriebsstörung"
   },
   {
    "grund": "Status inaktiv",
@@ -30,7 +18,7 @@
   },
   {
    "grund": "Status inaktiv",
-   "titel": "8A: Verkehrsunfall"
+   "titel": "63A: Verkehrsunfall"
   },
   {
    "grund": "Status inaktiv",
@@ -43,6 +31,10 @@
   {
    "grund": "Status inaktiv",
    "titel": "U4: Verspätungen"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "U6: Rettungseinsatz"
   },
   {
    "grund": "außerhalb des Zeitraums",

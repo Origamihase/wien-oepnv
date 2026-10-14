@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 14 Oct 2026 15:30:42 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 16:00:54 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U3: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
+      <pubDate>Wed, 14 Oct 2026 15:38:00 +0200</pubDate>
+      <ext:first_seen>Wed, 14 Oct 2026 15:38:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 15:38:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: rescue operation. [Since 15:38]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 15:38]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U6: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,22 +28,11 @@
       <ext:first_seen>Wed, 14 Oct 2026 15:09:00 +0200</ext:first_seen>
       <ext:starts_at>Wed, 14 Oct 2026 15:09:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>The U6 line currently runs between the stations Nußdorfer Straße and Spittelau in both directions on track 2. Expected until 15:40. Reason: rescue operation … [Since 15:09]</description>
-      <content:encoded><![CDATA[The U6 line currently runs between the stations Nußdorfer Straße and Spittelau in both directions on track 2. Expected until 15:40. Reason: rescue operation …<br/>[Since 15:09]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 15:09]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 15:09]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[O: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">011d5e8498133bc00e1bdf3e9fc71ce953ee78ab3f1b6b1f28b0860bcee4fb84</guid>
-      <pubDate>Wed, 14 Oct 2026 14:58:56 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 14:58:56 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 14:58:56 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 15:58:00 +0200</ext:ends_at>
-      <description>Trains stop at the stop of line O. [Since 14:58]</description>
-      <content:encoded><![CDATA[Trains stop at the stop of line O.<br/>[Since 14:58]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[6/11/14A: Rescue operation]]></title>
+      <title><![CDATA[6/11: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">680895df03a2ef7f990eeb83faa2d2bf5876861127c83781c65ad960e3e41998</guid>
       <pubDate>Wed, 14 Oct 2026 14:52:00 +0200</pubDate>
@@ -41,28 +41,6 @@
       <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 14:52]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 14:52]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[24A: Service disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2de760181a65c454c954cecfd6900e8ee65cf9734b8542a79d3db454877da735</guid>
-      <pubDate>Wed, 14 Oct 2026 14:20:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 14:30:47 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 14:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 14:20]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 14:20]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">1b9feb3521bf10053f40e6730c6cb1f4d8b79f2ab069b5767a7926e6f77fd041</guid>
-      <pubDate>Wed, 14 Oct 2026 13:31:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 13:31:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 13:31:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 13:31]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:31]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: Rescue operation, track construction works]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works. [Until 03.11.]</description>
       <content:encoded><![CDATA[Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works.<br/>[Until 03.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A: Max-Mauermann-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">56aa798cbb018fbaed4813a991f56c2470867f1f9a0ce034661ba2e01da13007</guid>
+      <pubDate>Wed, 07 Oct 2026 15:30:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 15:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling … [Until 25.12.]</description>
+      <content:encoded><![CDATA[Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling …<br/>[Until 25.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[20A: Construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d541da730008a50f7d13d1231355ba02134695bfdd0469c8f90d4ab1ab9eaf30</guid>
+      <pubDate>Fri, 02 Oct 2026 16:05:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 16:31:05 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 15 Oct 2026 17:00:00 +0200</ext:ends_at>
+      <description>Due to construction works in the area of Wildbadgasse, line 20A is redirected. [Until Thu 15.10.]</description>
+      <content:encoded><![CDATA[Due to construction works in the area of Wildbadgasse, line 20A is redirected.<br/>[Until Thu 15.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
