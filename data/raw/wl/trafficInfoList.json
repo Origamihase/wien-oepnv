@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261014-0020-F01, I20261014-0019-F01, I20261014-0022-F01, I20261014-0022-F02, I20261014-0022-F03, I20261014-0022-F04, I20261014-0022, I20260925-0011, I20260909-0007, I20261014-0019, I20261014-0016, I20261014-0021, I20261014-0023-F01, I20261014-0023"
+    "trafficInfoNameList": "I20261014-0024-F01, I20261014-0024-F02, I20260917-0012, I20260922-0032, I20261014-0020-F01, I20261014-0019-F01, I20261014-0022-F01, I20261014-0022-F02, I20261014-0022-F03, I20261014-0022-F04, I20261014-0022, I20261014-0024, I20260925-0011, I20260909-0007, I20261014-0019, I20261014-0023-F01, I20261014-0025, I20261014-0016, I20261014-0021, I20261014-0023, I20261014-0026"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1177-0, R293-474, R2025-671, R1474-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1475-149, R1476-149, R2558-125, R2345-127, R2372-627, R2378-627, R2343-626, R2380-627, R2373-127, R2373-126, R2379-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R1974-466, R500-101, R1150-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2025-671, R1177-0, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R293-474, R318-437, R1473-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1474-149, R1475-149, R1476-149, R2558-125, R2380-627, R2345-127, R2372-627, R2379-627, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R1974-466, R500-101, R1150-0, R1776-463, R1338-142, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -396,10 +396,10 @@
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "67B",
      "16A",
      "17A",
-     "67A"
+     "67A",
+     "67B"
     ],
     "relatedLinesDetails": [
      [
@@ -639,15 +639,203 @@
     "relatedStops": [
      4621
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-14T13:25:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T13:25:00.000+0200",
-     "resume": "2026-10-14T13:25:00.000+0200",
+     "end": "2026-10-14T13:57:00.000+0200",
+     "lastUpdate": "2026-10-14T13:57:00.000+0200",
+     "resume": "2026-10-14T13:57:00.000+0200",
      "start": "2026-10-14T13:25:00.000+0200"
     },
     "title": "U6: Betriebsstörung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "63A": "ptBusCity",
+      "8A": "ptBusCity"
+     }
+    },
+    "description": "Die Linie 8A wird in Richtung Küniglberg, ORF-Zentrum zwischen Hohenbergstraße und Edelsinnstraße über Edelsinnstraße umgeleitet. Die Linie 63A wird in Richtung Am Rosenhügel zwischen Hohenbergstraße und Edelsinnstraße über Edelsinnstraße umgeleitet. Voraussichtliche Dauer: 14:15 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Gaßmannstraße.",
+    "descriptionHTML": "Die Linie 8A wird in Richtung Küniglberg, ORF-Zentrum zwischen Hohenbergstraße und Edelsinnstraße über Edelsinnstraße umgeleitet.<br>Die Linie 63A wird in Richtung Am Rosenhügel zwischen Hohenbergstraße und Edelsinnstraße über Edelsinnstraße umgeleitet.<br> <br>Voraussichtliche Dauer: 14:15 Uhr.<br><br>Grund: Verkehrsunfall im Haltestellenbereich Gaßmannstraße.",
+    "name": "I20261014-0024",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "63A",
+     "8A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "463",
+       "lineName": "63A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "408",
+       "lineName": "8A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1773
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-14T13:32:00.000+0200",
+     "end": "2026-10-14T13:55:00.000+0200",
+     "lastUpdate": "2026-10-14T13:55:00.000+0200",
+     "resume": "2026-10-14T13:55:00.000+0200",
+     "start": "2026-10-14T13:31:00.000+0200"
+    },
+    "title": "63A, 8A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "63A": "ptBusCity"
+     }
+    },
+    "description": "Linie 63A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 63A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261014-0024-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "63A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "463",
+       "lineName": "63A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1773
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-14T13:55:00.000+0200",
+     "end": "2026-10-14T23:55:00.000+0200",
+     "lastUpdate": "2026-10-14T13:55:00.000+0200",
+     "resume": "2026-10-14T13:55:00.000+0200",
+     "start": "2026-10-14T13:31:00.000+0200"
+    },
+    "title": "63A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "8A": "ptBusCity"
+     }
+    },
+    "description": "Linie 8A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 8A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261014-0024-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "8A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "408",
+       "lineName": "8A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1773
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-14T13:55:00.000+0200",
+     "end": "2026-10-14T23:55:00.000+0200",
+     "lastUpdate": "2026-10-14T13:55:00.000+0200",
+     "resume": "2026-10-14T13:55:00.000+0200",
+     "start": "2026-10-14T13:31:00.000+0200"
+    },
+    "title": "8A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261014-0025",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "303",
+       "lineName": "U3",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-14T13:32:00.000+0200",
+     "end": "2026-10-14T13:57:00.000+0200",
+     "lastUpdate": "2026-10-14T13:57:00.000+0200",
+     "resume": "2026-10-14T13:57:00.000+0200",
+     "start": "2026-10-14T13:32:00.000+0200"
+    },
+    "title": "U3: Verspätungen"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "42": "ptTram"
+     }
+    },
+    "description": "Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 14:20 Uhr. Grund: Falschparker im Haltestellenbereich Eduardgasse.",
+    "descriptionHTML": "Linie 42:<br>Fahrtbehinderung in Richtung Antonigasse.<br> <br>Voraussichtliche Dauer: 14:20 Uhr.<br><br>Grund: Falschparker im Haltestellenbereich Eduardgasse.",
+    "name": "I20261014-0026",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "142",
+       "lineName": "42",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     3875
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-14T13:58:00.000+0200",
+     "end": "2026-10-14T23:55:00.000+0200",
+     "lastUpdate": "2026-10-14T13:58:00.000+0200",
+     "start": "2026-10-14T13:57:00.000+0200"
+    },
+    "title": "42: Falschparker"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -858,6 +1046,24 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1338-142",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     1338
+    ],
+    "time": {
+     "end": "2026-10-14T14:58:00.000+0200",
+     "start": "2026-10-14T13:59:22.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -1074,6 +1280,24 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+   },
+   {
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1776-463",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "63A"
+    ],
+    "relatedStops": [
+     1776
+    ],
+    "time": {
+     "end": "2026-10-14T14:31:00.000+0200",
+     "start": "2026-10-14T13:32:18.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
