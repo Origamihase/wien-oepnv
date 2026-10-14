@@ -1,20 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-14T19:00:58.722466+00:00",
- "built": "2026-10-14T21:00:48+02:00",
+ "updated": "2026-10-14T19:30:58.452763+00:00",
+ "built": "2026-10-14T21:30:49+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-14T21:00:48+02:00",
+  "built": "2026-10-14T21:30:49+02:00",
   "items": [
    {
-    "title": "12/5: Fahrzeug im Gleis",
+    "title": "5/12: Fahrzeug im Gleis",
     "time_line": "Seit 20:48"
-   },
-   {
-    "title": "U1: Rettungseinsatz",
-    "time_line": "Seit 20:08"
    },
    {
     "title": "64A: Liesing-Flur-Gasse",
@@ -47,6 +43,10 @@
    {
     "title": "66A/N66: Liesing, Schulzentrum",
     "time_line": "Bis 28.10."
+   },
+   {
+    "title": "S80: ÖBB-Ersatzbus",
+    "time_line": "Heute"
    }
   ]
  },
@@ -3723,6 +3723,26 @@
    },
    "discarded": {
     "wl": 22,
+    "oebb": 142,
+    "baustellen": 67
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 10,
+    "wl": 103
+   }
+  },
+  {
+   "t": "2026-10-14T19:30:58.452763+00:00",
+   "raw": {
+    "wl-stoerungen": 82,
+    "wl-hinweise": 91,
+    "oebb": 166,
+    "baustellen-linien": 50,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 26,
     "oebb": 142,
     "baustellen": 67
    },

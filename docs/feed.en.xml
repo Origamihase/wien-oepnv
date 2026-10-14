@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 14 Oct 2026 21:00:48 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 21:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[12/5: Vehicle on the track]]></title>
+      <title><![CDATA[5/12: Vehicle on the track]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">9c39fb84304f09d5c63f52f854a6c380efa100e38513f1272da89c78b4f4588c</guid>
       <pubDate>Wed, 14 Oct 2026 20:48:00 +0200</pubDate>
       <ext:first_seen>Wed, 14 Oct 2026 20:48:00 +0200</ext:first_seen>
       <ext:starts_at>Wed, 14 Oct 2026 20:48:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>No service between Lange Gasse and Lerchenfelder Straße. Continue from Lange Gasse to Alser Straße U, Zimmermannplatz. [Since 20:48]</description>
-      <content:encoded><![CDATA[No service between Lange Gasse and Lerchenfelder Straße. Continue from Lange Gasse to Alser Straße U, Zimmermannplatz.<br/>[Since 20:48]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945</guid>
-      <pubDate>Wed, 14 Oct 2026 20:08:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 20:08:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 20:08:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 20:08]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 20:08]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 20:48]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 20:48]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[64A: Liesing-Flur-Gasse]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 … [Until 28.10.]</description>
       <content:encoded><![CDATA[Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 …<br/>[Until 28.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: ÖBB replacement bus]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
+      <pubDate>Wed, 14 Oct 2026 05:00:27 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 05:00:27 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Oct 2026 23:00:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf [Today]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>

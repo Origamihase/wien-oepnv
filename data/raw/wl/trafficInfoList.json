@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261014-0040-F01, I20261014-0043-F01, I20261014-0043, I20260925-0011, I20261014-0042-F01, I20261014-0042-F02, I20260909-0007, I20261014-0041-F01, I20261014-0042, I20261014-0044"
+    "trafficInfoNameList": "I20261014-0043-F01, I20260917-0012, I20260922-0032, I20261014-0043, I20261014-0044-F01, I20261014-0044-F02, I20261014-0044, I20260925-0011, I20261014-0042-F01, I20261014-0042-F02, I20260909-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R116-136, R1177-0, R293-474, R318-437, R2025-671, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R100-136, R101-136, R102-136, R103-136, R115-136, R1448-149, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1449-149, R2558-125, R2345-127, R2372-627, R2359-125, R2370-125, R2371-125, R2372-125, R2380-627, R2373-127, R2373-126, R2343-125, R2343-626, R2378-627, R2379-627, R2373-125, R1974-466, R500-101, R1150-0, R357-105, R272-105, R379-105, R377-105, R380-105, R379-112, R458-112, R383-112, R382-112, R381-112, R380-112, R211-112, R272-112, R356-112, R357-112, R354-112, R355-112, R384-112, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2025-671, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1177-0, R293-474, R318-437, R1445-149, R5815-671, R1448-412, R1474-412, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2345-127, R2343-626, R2378-627, R2379-627, R2373-127, R2373-126, R2380-627, R2372-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R1974-466, R500-101, R1150-0, R272-105, R357-105, R377-105, R379-105, R380-105, R383-112, R381-112, R382-112, R379-112, R458-112, R380-112, R211-112, R355-112, R354-112, R356-112, R357-112, R272-112, R384-112, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,122 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261014-0040-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4620
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T18:46:00.000+0200",
-     "end": "2026-10-14T20:07:00.000+0200",
-     "lastUpdate": "2026-10-14T20:07:00.000+0200",
-     "resume": "2026-10-14T20:07:00.000+0200",
-     "start": "2026-10-14T18:38:00.000+0200"
-    },
-    "title": "U6: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "13A": "ptBusCity"
-     }
-    },
-    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261014-0041-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "413",
-       "lineName": "13A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "relatedStops": [
-     671
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T19:02:00.000+0200",
-     "end": "2026-10-14T20:07:00.000+0200",
-     "lastUpdate": "2026-10-14T20:07:00.000+0200",
-     "resume": "2026-10-14T20:07:00.000+0200",
-     "start": "2026-10-14T18:56:00.000+0200"
-    },
-    "title": "13A: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "12": "ptTram",
-      "5": "ptTram"
-     }
-    },
-    "description": "Linie 5: Kein Betrieb zwischen Lange Gasse und Lerchenfelder Straße. Weiterfahrt ab Lange Gasse bis Alser Straße U, Zimmermannplatz. Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Bahnhof Gürtel. Voraussichtliche Dauer: 20:30 Uhr. Grund: Fahrzeug im Gleis im Bereich Albertgasse 33.",
-    "descriptionHTML": "<p><br></p><p>Linie 5:</p><p>Kein Betrieb zwischen Lange Gasse und Lerchenfelder Straße.</p><p>Weiterfahrt ab Lange Gasse bis Alser Straße U, Zimmermannplatz.</p><p>Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U.</p><p>Linie 12:</p><p>Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S.</p><p>Weiterfahrt bis Bahnhof Gürtel.</p><p><br></p><p>Voraussichtliche Dauer: 20:30 Uhr.</p><p><br></p><p>Grund: Fahrzeug im Gleis im Bereich Albertgasse 33.</p>",
-    "location": "Albertgasse 33",
-    "name": "I20261014-0042",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12",
-     "5"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "105",
-       "lineName": "5",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "112",
-       "lineName": "12",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T19:35:00.000+0200",
-     "end": "2026-10-14T20:10:00.000+0200",
-     "lastUpdate": "2026-10-14T20:10:00.000+0200",
-     "resume": "2026-10-14T20:10:00.000+0200",
-     "start": "2026-10-14T19:33:00.000+0200"
-    },
-    "title": "5, 12: Fahrzeug im Gleis"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "5": "ptTram"
      }
     },
@@ -450,12 +334,12 @@
     "relatedStops": [
      4117
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-14T20:34:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T20:34:00.000+0200",
-     "resume": "2026-10-14T20:34:00.000+0200",
+     "end": "2026-10-14T21:13:00.000+0200",
+     "lastUpdate": "2026-10-14T21:13:00.000+0200",
+     "resume": "2026-10-14T21:13:00.000+0200",
      "start": "2026-10-14T20:08:00.000+0200"
     },
     "title": "U1: Rettungseinsatz"
@@ -467,8 +351,8 @@
       "5": "ptTram"
      }
     },
-    "description": "Linie 5: Kein Betrieb zwischen Lange Gasse und Lerchenfelder Straße. Weiterfahrt ab Lange Gasse bis Alser Straße U, Zimmermannplatz. Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Bahnhof Gürtel. Weichen Sie ersatzweise auf die Linie U6 aus. Voraussichtliche Dauer: 21:45 Uhr. Grund: Fahrzeug im Gleis im Haltestellenbereich Albertgasse.",
-    "descriptionHTML": "<p>Linie 5:</p><p>Kein Betrieb zwischen Lange Gasse und Lerchenfelder Straße.</p><p>Weiterfahrt ab Lange Gasse bis Alser Straße U, Zimmermannplatz.</p><p>Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U.</p><p>Linie 12:</p><p>Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S.</p><p>Weiterfahrt bis Bahnhof Gürtel.</p><p><br></p><p>Weichen Sie ersatzweise auf die Linie U6 aus.</p><p><br></p><p>Voraussichtliche Dauer: 21:45 Uhr.</p><p><br></p><p>Grund: Fahrzeug im Gleis im Haltestellenbereich Albertgasse.</p>",
+    "description": "Linie 5: Kein Betrieb zwischen Lange Gasse und Lerchenfelder Straße. Weiterfahrt ab Lange Gasse bis Alser Straße U, Zimmermannplatz. Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U. Linie 12: Betrieb nur zwischen Hillerstraße und Lange Gasse. Weiterfahrt bis Zimmermannplatz. Weichen Sie ersatzweise auf die Linie U6 aus. Voraussichtliche Dauer: 21:45 Uhr. Grund: Fahrzeug im Gleis im Haltestellenbereich Albertgasse.",
+    "descriptionHTML": "<p>Linie 5:</p><p>Kein Betrieb zwischen Lange Gasse und Lerchenfelder Straße.</p><p>Weiterfahrt ab Lange Gasse bis Alser Straße U, Zimmermannplatz.</p><p>Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U.</p><p>Linie 12:</p><p>Betrieb nur zwischen Hillerstraße und Lange Gasse.</p><p>Weiterfahrt bis Zimmermannplatz.</p><p><br></p><p>Weichen Sie ersatzweise auf die Linie U6 aus.</p><p><br></p><p>Voraussichtliche Dauer: 21:45 Uhr.</p><p><br></p><p>Grund: Fahrzeug im Gleis im Haltestellenbereich Albertgasse.</p>",
     "name": "I20261014-0044",
     "owner": "WL",
     "priority": "1",
@@ -494,14 +378,89 @@
     "relatedStops": [
      359
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-14T20:58:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T20:58:00.000+0200",
+     "end": "2026-10-14T21:18:00.000+0200",
+     "lastUpdate": "2026-10-14T21:18:00.000+0200",
+     "resume": "2026-10-14T21:18:00.000+0200",
      "start": "2026-10-14T20:48:00.000+0200"
     },
     "title": "5, 12: Fahrzeug im Gleis"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "5": "ptTram"
+     }
+    },
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261014-0044-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "105",
+       "lineName": "5",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     359
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-14T21:18:00.000+0200",
+     "end": "2026-10-14T23:55:00.000+0200",
+     "lastUpdate": "2026-10-14T21:18:00.000+0200",
+     "resume": "2026-10-14T21:18:00.000+0200",
+     "start": "2026-10-14T20:48:00.000+0200"
+    },
+    "title": "5: Fahrzeug im Gleis"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "12": "ptTram"
+     }
+    },
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261014-0044-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "112",
+       "lineName": "12",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     359
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-14T21:18:00.000+0200",
+     "end": "2026-10-14T23:55:00.000+0200",
+     "lastUpdate": "2026-10-14T21:18:00.000+0200",
+     "resume": "2026-10-14T21:18:00.000+0200",
+     "start": "2026-10-14T20:48:00.000+0200"
+    },
+    "title": "12: Fahrzeug im Gleis"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1299,7 +1258,7 @@
      272
     ],
     "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
+     "end": "2026-10-14T22:06:00.000+0200",
      "start": "2026-10-14T20:52:02.000+0200"
     },
     "title": "Fahrtbehinderung\nwegen Pkw im Gleis"
@@ -1425,7 +1384,7 @@
      357
     ],
     "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
+     "end": "2026-10-14T22:06:00.000+0200",
      "start": "2026-10-14T20:52:02.000+0200"
     },
     "title": "Fahrtbehinderung\nwegen Pkw im Gleis"
@@ -1485,7 +1444,7 @@
     "title": "Pkw im Gleis\nBetrieb ab Lange Gasse"
    },
    {
-    "description": "Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S",
+    "description": "Pkw im Gleis\nBetrieb ab Lange Gasse",
     "name": "R379-112",
     "owner": "WL",
     "priority": "1",
@@ -1497,10 +1456,10 @@
      379
     ],
     "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
+     "end": "2026-10-14T22:06:00.000+0200",
      "start": "2026-10-14T20:52:00.000+0200"
     },
-    "title": "Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S"
+    "title": "Pkw im Gleis\nBetrieb ab Lange Gasse"
    },
    {
     "description": "Pkw im Gleis\nZüge halten bei Linie 43 Richtung Schottentor",
@@ -1521,7 +1480,7 @@
     "title": "Pkw im Gleis\nZüge halten bei Linie 43 Richtung Schottentor"
    },
    {
-    "description": "Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S",
+    "description": "Pkw im Gleis\nZüge halten bei Linie 43 Richtung Schottentor",
     "name": "R380-112",
     "owner": "WL",
     "priority": "1",
@@ -1533,10 +1492,10 @@
      380
     ],
     "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
+     "end": "2026-10-14T22:07:00.000+0200",
      "start": "2026-10-14T20:52:00.000+0200"
     },
-    "title": "Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S"
+    "title": "Pkw im Gleis\nZüge halten bei Linie 43 Richtung Schottentor"
    },
    {
     "description": "Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S",
@@ -1629,7 +1588,7 @@
     "title": "Züge halten\nWipplingerstr 39"
    },
    {
-    "description": "Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S",
+    "description": "Pkw im Gleis\nBetrieb ab Lange Gasse",
     "name": "R458-112",
     "owner": "WL",
     "priority": "1",
@@ -1641,10 +1600,10 @@
      458
     ],
     "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
+     "end": "2026-10-14T22:06:00.000+0200",
      "start": "2026-10-14T20:52:00.000+0200"
     },
-    "title": "Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S"
+    "title": "Pkw im Gleis\nBetrieb ab Lange Gasse"
    },
    {
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
