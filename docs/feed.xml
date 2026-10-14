@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 14 Oct 2026 11:30:57 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 12:00:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[36B: Verkehrsunfall]]></title>
+      <title><![CDATA[88B: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">537a043cfb2484a37bbe1c05b76f66a716a3057cddf873381706f910f929cd91</guid>
-      <pubDate>Wed, 14 Oct 2026 11:10:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 11:30:57 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 11:10:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">163985620af2d536600dcb4c7bd83855cb2879bce6f846c0324d8cd5a42ce24a</guid>
+      <pubDate>Wed, 14 Oct 2026 11:53:00 +0200</pubDate>
+      <ext:first_seen>Wed, 14 Oct 2026 11:53:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 11:56:38 +0200</ext:starts_at>
       <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall im Bereich Prager Straße. [Seit 11:10]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall im Bereich Prager Straße.<br/>[Seit 11:10]]]></content:encoded>
+      <description>Fahrtbehinderung in Eßling, Wegmayersiedlung. Voraussichtlich bis 12:20 Uhr. Grund: Polizeieinsatz im Bereich Ultzmanngasse. [Seit 11:53]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Eßling, Wegmayersiedlung. Voraussichtlich bis 12:20 Uhr. Grund: Polizeieinsatz im Bereich Ultzmanngasse.<br/>[Seit 11:53]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[9A: Falschparker]]></title>
@@ -41,17 +41,6 @@
       <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Bereich Johnstraße. [Seit 10:52]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Bereich Johnstraße.<br/>[Seit 10:52]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e0554706221cae8ec59ecf4482b9f7c5d637c7681ec4306e8140d11430a520d6</guid>
-      <pubDate>Wed, 14 Oct 2026 08:29:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 09:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 08:29:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 11:35:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 08:29]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 08:29]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[64A: Liesing-Flur-Gasse]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Wed, 14 Oct 2026 17:00:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet. [Heute]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1A/3A: Schwertgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
+      <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung. [Bis 31.03.2027]</description>
+      <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung.<br/>[Bis 31.03.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

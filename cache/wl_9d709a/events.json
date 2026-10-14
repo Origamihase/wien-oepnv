@@ -1010,22 +1010,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "36B: Verkehrsunfall",
-    "description": "Linie 36B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall im Bereich Prager Straße.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "537a043cfb2484a37bbe1c05b76f66a716a3057cddf873381706f910f929cd91",
-    "pubDate": "2026-10-14T11:10:00+02:00",
-    "starts_at": "2026-10-14T11:10:00+02:00",
-    "ends_at": "2026-10-14T23:55:00+02:00",
-    "_identity": "wl|störung|L=36B|D=2026-10-14|TK=36b verkehrsunfall",
-    "_wl_ids": [
-      "I20261014-0018"
-    ],
-    "_incident_start": "2026-10-14T11:10:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1050,22 +1034,6 @@
       "I20260917-0012"
     ],
     "_incident_start": "2026-09-18T04:30:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "48A: Verkehrsüberlastung",
-    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "68437700f8aeaee18ffffa29c3114cdeb4dd158a27bedb1178d146036ce0af2b",
-    "pubDate": "2026-10-14T08:29:00+02:00",
-    "starts_at": "2026-10-14T08:29:00+02:00",
-    "ends_at": "2026-10-14T11:35:00+02:00",
-    "_identity": "wl|störung|L=48A|D=2026-10-14|TK=48a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261014-0010"
-    ],
-    "_incident_start": "2026-10-14T08:29:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1102,6 +1070,22 @@
     "starts_at": "2026-10-14T00:00:22+02:00",
     "ends_at": "2026-10-14T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-10-14|TK=einstieg leberstrasse vor s bahn gebäude"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "88B: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 88B: Fahrtbehinderung in Eßling, Wegmayersiedlung. Voraussichtliche Dauer: 12:20 Uhr. Grund: Polizeieinsatz im Bereich Ultzmanngasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "163985620af2d536600dcb4c7bd83855cb2879bce6f846c0324d8cd5a42ce24a",
+    "pubDate": "2026-10-14T11:53:00+02:00",
+    "starts_at": "2026-10-14T11:56:38+02:00",
+    "ends_at": "2026-10-14T23:55:00+02:00",
+    "_identity": "wl|störung|L=88B|D=2026-10-14|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261014-0019"
+    ],
+    "_incident_start": "2026-10-14T11:53:00+02:00"
   },
   {
     "source": "Wiener Linien",
