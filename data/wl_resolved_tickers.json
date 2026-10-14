@@ -1,48 +1,5 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": [
-  {
-   "key": "R1375-146|2026-10-14T06:27:38.000+0200|Rettungseinsatz\nBetrieb ab Thaliastraße",
-   "name": "R1375-146",
-   "title": "Rettungseinsatz\nBetrieb ab Thaliastraße",
-   "end": "2026-10-14T07:37:00.000+0200",
-   "incident": "I20261014-0004"
-  },
-  {
-   "key": "R1376-146|2026-10-14T06:27:38.000+0200|Rettungseinsatz\nBetrieb ab Thaliastraße",
-   "name": "R1376-146",
-   "title": "Rettungseinsatz\nBetrieb ab Thaliastraße",
-   "end": "2026-10-14T07:37:00.000+0200",
-   "incident": "I20261014-0004"
-  },
-  {
-   "key": "R1377-146|2026-10-14T06:27:38.000+0200|Rettungseinsatz\nBetrieb ab Thaliastraße",
-   "name": "R1377-146",
-   "title": "Rettungseinsatz\nBetrieb ab Thaliastraße",
-   "end": "2026-10-14T07:37:00.000+0200",
-   "incident": "I20261014-0004"
-  },
-  {
-   "key": "R1378-146|2026-10-14T06:27:38.000+0200|Rettungseinsatz\nBetrieb ab Thaliastraße",
-   "name": "R1378-146",
-   "title": "Rettungseinsatz\nBetrieb ab Thaliastraße",
-   "end": "2026-10-14T07:37:00.000+0200",
-   "incident": "I20261014-0004"
-  },
-  {
-   "key": "R1393-146|2026-10-14T06:37:39.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R1393-146",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-14T07:36:00.000+0200",
-   "incident": "I20261014-0004"
-  },
-  {
-   "key": "R1394-146|2026-10-14T06:37:38.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R1394-146",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-14T07:36:00.000+0200",
-   "incident": "I20261014-0004"
-  }
- ]
+ "tickers": []
 }
