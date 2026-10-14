@@ -1,12 +1,12 @@
 {
  "verworfen": [
   {
-   "grund": "Kurzmeldung einer erledigten Störung",
-   "titel": "Fahrtbehinderung wegen Rettungseinsatz"
+   "grund": "Status inaktiv",
+   "titel": "10A: Rettungseinsatz"
   },
   {
    "grund": "Status inaktiv",
-   "titel": "36B: Verkehrsunfall"
+   "titel": "16A, 17A, 67A, 67B: Störung an einem Bahnübergang"
   },
   {
    "grund": "Status inaktiv",
@@ -14,7 +14,11 @@
   },
   {
    "grund": "Status inaktiv",
-   "titel": "9A: Falschparker"
+   "titel": "88B: Polizeieinsatz"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "U6: Betriebsstörung"
   },
   {
    "grund": "außerhalb des Zeitraums",

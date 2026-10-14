@@ -1,55 +1,5 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": [
-  {
-   "key": "R364-105|2026-10-14T12:09:10.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R364-105",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-14T13:09:00.000+0200",
-   "incident": "I20261014-0020"
-  },
-  {
-   "key": "R367-105|2026-10-14T12:09:10.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R367-105",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-14T13:09:00.000+0200",
-   "incident": "I20261014-0020"
-  },
-  {
-   "key": "R370-105|2026-10-14T12:09:10.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R370-105",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-14T13:09:00.000+0200",
-   "incident": "I20261014-0020"
-  },
-  {
-   "key": "R373-105|2026-10-14T12:09:10.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R373-105",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-14T13:09:00.000+0200",
-   "incident": "I20261014-0020"
-  },
-  {
-   "key": "R374-105|2026-10-14T12:09:10.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R374-105",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-14T13:09:00.000+0200",
-   "incident": "I20261014-0020"
-  },
-  {
-   "key": "R375-105|2026-10-14T12:09:10.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R375-105",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-14T13:09:00.000+0200",
-   "incident": "I20261014-0020"
-  },
-  {
-   "key": "R377-105|2026-10-14T12:13:39.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
-   "name": "R377-105",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "end": "2026-10-14T13:13:00.000+0200",
-   "incident": "I20261014-0020"
-  }
- ]
+ "tickers": []
 }
