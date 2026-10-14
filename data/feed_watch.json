@@ -1,20 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-14T22:31:03.208704+00:00",
- "built": "2026-10-15T00:30:57+02:00",
+ "updated": "2026-10-14T23:00:52.806127+00:00",
+ "built": "2026-10-15T01:00:43+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-15T00:30:57+02:00",
+  "built": "2026-10-15T01:00:43+02:00",
   "items": [
    {
     "title": "1/2/5/5A/5B/71/74A/80A/D/O: Demonstration",
     "time_line": "Am Fr 16.10."
-   },
-   {
-    "title": "U6: Bauarbeiten",
-    "time_line": "Heute"
    },
    {
     "title": "N71: Simmering S U",
@@ -42,6 +38,10 @@
    },
    {
     "title": "20A: Bauarbeiten",
+    "time_line": "Heute"
+   },
+   {
+    "title": "N8: Gleisbauarbeiten",
     "time_line": "Heute"
    },
    {
@@ -3870,6 +3870,26 @@
     "baustellen": 3,
     "oebb": 10,
     "wl": 102
+   }
+  },
+  {
+   "t": "2026-10-14T23:00:52.806127+00:00",
+   "raw": {
+    "wl-stoerungen": 64,
+    "wl-hinweise": 91,
+    "oebb": 166,
+    "baustellen-linien": 50,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 17,
+    "oebb": 142,
+    "baustellen": 67
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 10,
+    "wl": 107
    }
   }
  ]
