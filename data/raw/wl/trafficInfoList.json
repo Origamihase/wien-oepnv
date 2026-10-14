@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261014-0036, I20260925-0011, I20261014-0032-F01, I20261014-0032-F02, I20260909-0007, I20261014-0033-F01, I20261014-0030-F01, I20261014-0034, I20261014-0035"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261014-0044-F01, I20261014-0044-F02, I20260925-0011, I20260909-0007, I20261014-0045"
    },
    {
     "id": 3,
@@ -203,113 +203,76 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "D": "ptTram"
+      "5": "ptTram"
      }
     },
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261014-0030-F01",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261014-0044-F01",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "D"
+     "5"
     ],
     "relatedLinesDetails": [
      [
       {
-       "lineId": "136",
-       "lineName": "D",
+       "lineId": "105",
+       "lineName": "5",
        "vehicleType": "ptTram"
       }
      ]
     ],
     "relatedStops": [
-     3437
+     359
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-14T15:11:00.000+0200",
+     "created": "2026-10-14T21:18:00.000+0200",
      "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T15:11:00.000+0200",
-     "resume": "2026-10-14T15:11:00.000+0200",
-     "start": "2026-10-14T14:39:00.000+0200"
+     "lastUpdate": "2026-10-14T21:18:00.000+0200",
+     "resume": "2026-10-14T21:18:00.000+0200",
+     "start": "2026-10-14T20:48:00.000+0200"
     },
-    "title": "D: Rettungseinsatz"
+    "title": "5: Fahrzeug im Gleis"
    },
    {
     "attributes": {
      "relatedLineTypes": {
-      "6": "ptTram"
+      "12": "ptTram"
      }
     },
-    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261014-0032-F01",
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261014-0044-F02",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "6"
+     "12"
     ],
     "relatedLinesDetails": [
      [
       {
-       "lineId": "106",
-       "lineName": "6",
+       "lineId": "112",
+       "lineName": "12",
        "vehicleType": "ptTram"
       }
      ]
     ],
     "relatedStops": [
-     404
+     359
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-14T15:08:00.000+0200",
+     "created": "2026-10-14T21:18:00.000+0200",
      "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T15:08:00.000+0200",
-     "resume": "2026-10-14T15:08:00.000+0200",
-     "start": "2026-10-14T14:52:00.000+0200"
+     "lastUpdate": "2026-10-14T21:18:00.000+0200",
+     "resume": "2026-10-14T21:18:00.000+0200",
+     "start": "2026-10-14T20:48:00.000+0200"
     },
-    "title": "6: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "11": "ptTram"
-     }
-    },
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261014-0032-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "111",
-       "lineName": "11",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     404
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-14T15:08:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T15:08:00.000+0200",
-     "resume": "2026-10-14T15:08:00.000+0200",
-     "start": "2026-10-14T14:52:00.000+0200"
-    },
-    "title": "11: Rettungseinsatz"
+    "title": "12: Fahrzeug im Gleis"
    },
    {
     "attributes": {
@@ -317,9 +280,9 @@
       "U6": "ptMetro"
      }
     },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261014-0033-F01",
+    "description": "Die Linie U6 fährt derzeit in der Station Neue Donau in beiden Richtungen über Gleis 2. Grund: Bauarbeiten im Haltestellenbereich Neue Donau.",
+    "descriptionHTML": "Die Linie U6 fährt derzeit in der Station Neue Donau in beiden Richtungen über Gleis 2.<br> <br>Grund: Bauarbeiten im Haltestellenbereich Neue Donau.",
+    "name": "I20261014-0045",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
@@ -336,125 +299,16 @@
      ]
     ],
     "relatedStops": [
-     4627
+     4644
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-14T15:40:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T15:40:00.000+0200",
-     "resume": "2026-10-14T15:40:00.000+0200",
-     "start": "2026-10-14T15:09:00.000+0200"
+     "created": "2026-10-14T22:07:00.000+0200",
+     "end": "2026-10-15T00:35:00.000+0200",
+     "lastUpdate": "2026-10-14T22:07:00.000+0200",
+     "start": "2026-10-14T22:05:00.000+0200"
     },
-    "title": "U6: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Rettungseinsatz.",
-    "name": "I20261014-0034",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "303",
-       "lineName": "U3",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4937
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-14T15:38:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T15:38:00.000+0200",
-     "resume": "2026-10-14T15:38:00.000+0200",
-     "start": "2026-10-14T15:38:00.000+0200"
-    },
-    "title": "U3: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261014-0035",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "301",
-       "lineName": "U1",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-14T16:02:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T16:02:00.000+0200",
-     "resume": "2026-10-14T16:02:00.000+0200",
-     "start": "2026-10-14T16:02:00.000+0200"
-    },
-    "title": "U1: Verspätungen"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "52": "ptTram"
-     }
-    },
-    "description": "Linie 52: Fahrtbehinderung in Richtung Baumgarten. Voraussichtliche Dauer: 17:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Geibelgasse.",
-    "descriptionHTML": "Linie 52:<br>Fahrtbehinderung in Richtung Baumgarten.<br> <br>Voraussichtliche Dauer: 17:00 Uhr.<br><br>Grund: Polizeieinsatz im Haltestellenbereich Geibelgasse.",
-    "name": "I20261014-0036",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "152",
-       "lineName": "52",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     1533
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T16:37:00.000+0200",
-     "end": "2026-10-14T16:38:00.000+0200",
-     "lastUpdate": "2026-10-14T16:38:00.000+0200",
-     "resume": "2026-10-14T16:38:00.000+0200",
-     "start": "2026-10-14T16:36:00.000+0200"
-    },
-    "title": "52: Polizeieinsatz"
+    "title": "U6: Bauarbeiten"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
