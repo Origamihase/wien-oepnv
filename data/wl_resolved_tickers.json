@@ -1,5 +1,146 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R211-105|2026-10-14T18:40:18.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R211-105",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-14T19:39:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R211-112|2026-10-14T18:40:48.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R211-112",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-14T19:40:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R272-112|2026-10-14T18:40:49.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R272-112",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-14T19:40:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R352-105|2026-10-14T18:40:19.000+0200|Verkehrsunfall\nBetrieb ab Spitalgasse",
+   "name": "R352-105",
+   "title": "Verkehrsunfall\nBetrieb ab Spitalgasse",
+   "end": "2026-10-14T19:47:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R352-112|2026-10-14T18:40:49.000+0200|Verkehrsunfall\nBetrieb ab Spitalgasse",
+   "name": "R352-112",
+   "title": "Verkehrsunfall\nBetrieb ab Spitalgasse",
+   "end": "2026-10-14T19:54:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R353-105|2026-10-14T18:40:19.000+0200|Verkehrsunfall\nBetrieb ab Spitalgasse",
+   "name": "R353-105",
+   "title": "Verkehrsunfall\nBetrieb ab Spitalgasse",
+   "end": "2026-10-14T19:47:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R353-112|2026-10-14T18:40:49.000+0200|Verkehrsunfall\nBetrieb ab Spitalgasse",
+   "name": "R353-112",
+   "title": "Verkehrsunfall\nBetrieb ab Spitalgasse",
+   "end": "2026-10-14T19:54:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R354-105|2026-10-14T18:40:19.000+0200|Verkehrsunfall\nBetrieb ab Spitalgasse",
+   "name": "R354-105",
+   "title": "Verkehrsunfall\nBetrieb ab Spitalgasse",
+   "end": "2026-10-14T19:47:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R354-112|2026-10-14T18:40:49.000+0200|Verkehrsunfall\nBetrieb ab Spitalgasse",
+   "name": "R354-112",
+   "title": "Verkehrsunfall\nBetrieb ab Spitalgasse",
+   "end": "2026-10-14T19:54:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R355-105|2026-10-14T18:40:19.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R355-105",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-14T19:39:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R355-112|2026-10-14T18:40:49.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R355-112",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-14T19:40:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R356-105|2026-10-14T18:40:19.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R356-105",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-14T19:39:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R356-112|2026-10-14T18:40:49.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R356-112",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-14T19:40:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R357-112|2026-10-14T18:40:49.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R357-112",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-14T19:40:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R383-105|2026-10-14T18:48:48.000+0200|Verkehrsunfall\nBetrieb ab Franz Josefs Bahnhof S",
+   "name": "R383-105",
+   "title": "Verkehrsunfall\nBetrieb ab Franz Josefs Bahnhof S",
+   "end": "2026-10-14T19:47:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R383-112|2026-10-14T18:56:19.000+0200|Verkehrsunfall\nBetrieb ab Franz Josefs Bahnhof S",
+   "name": "R383-112",
+   "title": "Verkehrsunfall\nBetrieb ab Franz Josefs Bahnhof S",
+   "end": "2026-10-14T19:55:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R384-105|2026-10-14T18:49:18.000+0200|Verkehrsunfall\nZüge halten bei Linie D",
+   "name": "R384-105",
+   "title": "Verkehrsunfall\nZüge halten bei Linie D",
+   "end": "2026-10-14T19:48:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R384-112|2026-10-14T18:56:49.000+0200|Verkehrsunfall\nZüge halten bei Linie D",
+   "name": "R384-112",
+   "title": "Verkehrsunfall\nZüge halten bei Linie D",
+   "end": "2026-10-14T19:56:00.000+0200",
+   "incident": "I20261014-0039"
+  },
+  {
+   "key": "R673-413|2026-10-14T18:57:53.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R673-413",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-14T19:57:00.000+0200",
+   "incident": "I20261014-0041"
+  },
+  {
+   "key": "R676-413|2026-10-14T18:57:53.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R676-413",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-14T19:57:00.000+0200",
+   "incident": "I20261014-0041"
+  }
+ ]
 }
