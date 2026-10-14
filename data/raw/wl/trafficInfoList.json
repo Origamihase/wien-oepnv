@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261014-0002, I20260922-0032, I20261014-0004, I20261014-0005, I20260925-0011, I20261014-0003, I20260909-0007, I20261014-0006, I20261014-0001-F01, I20261014-0001, I20261014-0002-F01, I20261014-0005-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261014-0005, I20261014-0007, I20260925-0011, I20260909-0007, I20261014-0006, I20261014-0003, I20261014-0005-F01, I20261014-0001-F01, I20261014-0002-F01, I20261014-0004-F01, I20261014-0004"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2025-671, R100-136, R1177-0, R293-474, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R318-437, R101-136, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R5815-671, R1447-149, R1446-149, R1445-149, R1474-412, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R500-101, R123-136, R124-136, R125-136, R126-136, R814-407, R779-407, R780-407, R90-136, R95-136, R94-136, R93-136, R92-136, R91-136, R128-136, R88-136, R127-136, R97-136, R99-136, R98-136, R96-136, R1375-144, R1376-144, R1377-144, R1379-144, R1378-144, R1379-146, R1381-146, R1382-146, R1375-146, R1376-146, R1377-146, R1378-146, R1380-146, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2025-671, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1177-0, R293-474, R318-437, R1446-149, R5815-671, R1448-412, R1474-412, R1445-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-627, R2380-627, R2345-127, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R1974-466, R500-101, R1377-144, R1376-144, R1375-144, R1378-144, R1379-144, R1379-146, R1380-146, R1381-146, R1382-146, R1375-146, R1377-146, R1378-146, R1376-146, R1394-146, R1393-146, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -206,43 +206,6 @@
       "D": "ptTram"
      }
     },
-    "description": "Linie D: Der nördliche Ast Augasse - Nußdorf, Beethovengang ist derzeit eingestellt. Weichen Sie ersatzweise auf die Linien S40, U4 oder 400 aus. Grund: Schadhafter Zug im Bereich Gunoldstraße. Störungsdauer: Ca. 06:00 Uhr.",
-    "descriptionHTML": "<p><strong>Linie D:</strong></p><p>Der nördliche Ast Augasse - Nußdorf, Beethovengang ist derzeit eingestellt.</p><p>Weichen Sie ersatzweise auf die Linien S40, U4 oder 400 aus.</p><p><strong>Grund:</strong></p><p>Schadhafter Zug im Bereich Gunoldstraße.</p><p><strong>Störungsdauer:</strong></p><p>Ca. 06:00 Uhr.</p>",
-    "name": "I20261014-0001",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "136",
-       "lineName": "D",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     123
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T05:36:00.000+0200",
-     "end": "2026-10-14T05:50:00.000+0200",
-     "lastUpdate": "2026-10-14T05:50:00.000+0200",
-     "resume": "2026-10-14T05:50:00.000+0200",
-     "start": "2026-10-14T05:35:00.000+0200"
-    },
-    "title": "D: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "D": "ptTram"
-     }
-    },
     "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "name": "I20261014-0001-F01",
@@ -273,41 +236,6 @@
      "start": "2026-10-14T05:35:00.000+0200"
     },
     "title": "D: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "7A": "ptBusCity"
-     }
-    },
-    "description": "Linie 7A: Fahrtbehinderung in Richtung Meidling Hauptstraße U. Voraussichtliche Dauer: 06:00 Uhr. Grund: Falschparker im Bereich Rotenhofgasse 77.",
-    "descriptionHTML": "Linie 7A:<br>Fahrtbehinderung in Richtung Meidling Hauptstraße U.<br> <br>Voraussichtliche Dauer: 06:00 Uhr.<br><br>Grund: Falschparker im Bereich Rotenhofgasse 77.",
-    "location": "Rotenhofgasse 77",
-    "name": "I20261014-0002",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "7A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "407",
-       "lineName": "7A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T05:45:00.000+0200",
-     "end": "2026-10-14T05:55:00.000+0200",
-     "lastUpdate": "2026-10-14T05:55:00.000+0200",
-     "resume": "2026-10-14T05:55:00.000+0200",
-     "start": "2026-10-14T05:43:00.000+0200"
-    },
-    "title": "7A: Falschparker"
    },
    {
     "attributes": {
@@ -368,12 +296,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-14T05:55:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T05:55:00.000+0200",
-     "resume": "2026-10-14T05:55:00.000+0200",
+     "end": "2026-10-14T06:37:00.000+0200",
+     "lastUpdate": "2026-10-14T06:37:00.000+0200",
+     "resume": "2026-10-14T06:37:00.000+0200",
      "start": "2026-10-14T05:55:00.000+0200"
     },
     "title": "U1: Verspätungen"
@@ -384,9 +312,46 @@
       "46": "ptTram"
      }
     },
-    "description": "Linie 46: Fahrtbehinderung in Richtung Parlament, U Volkstheater Voraussichtliche Dauer: 06:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Auerspergstraße.",
-    "descriptionHTML": "Linie 46:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater<br> <br>Voraussichtliche Dauer: 06:40 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Auerspergstraße.",
+    "description": "Linie 46: Betrieb nur zwischen Hütteldorf, Bujattigasse und Thaliastraße U. Die Züge werden zur U-Bahn-Station Josefstädterstraße umgeleitet. Weichen Sie ersatzweise auf die Linien 2, 52 oder 48A aus. Voraussichtliche Dauer: 07:00 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Auerspergstraße.",
+    "descriptionHTML": "Linie 46:<br>Betrieb nur zwischen Hütteldorf, Bujattigasse und Thaliastraße U. Die Züge werden zur U-Bahn-Station Josefstädterstraße umgeleitet.<br> <br>Weichen Sie ersatzweise auf die Linien 2, 52 oder 48A aus.<br><br>Voraussichtliche Dauer: 07:00 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Auerspergstraße.",
     "name": "I20261014-0004",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "146",
+       "lineName": "46",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1376
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-14T06:20:00.000+0200",
+     "end": "2026-10-14T06:48:00.000+0200",
+     "lastUpdate": "2026-10-14T06:48:00.000+0200",
+     "resume": "2026-10-14T06:48:00.000+0200",
+     "start": "2026-10-14T06:20:00.000+0200"
+    },
+    "title": "46: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "46": "ptTram"
+     }
+    },
+    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261014-0004-F01",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
@@ -407,9 +372,10 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-14T06:20:00.000+0200",
+     "created": "2026-10-14T06:48:00.000+0200",
      "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T06:20:00.000+0200",
+     "lastUpdate": "2026-10-14T06:48:00.000+0200",
+     "resume": "2026-10-14T06:48:00.000+0200",
      "start": "2026-10-14T06:20:00.000+0200"
     },
     "title": "46: Rettungseinsatz"
@@ -478,12 +444,12 @@
     "relatedStops": [
      4205
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-14T06:25:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T06:25:00.000+0200",
-     "resume": "2026-10-14T06:25:00.000+0200",
+     "end": "2026-10-14T06:46:00.000+0200",
+     "lastUpdate": "2026-10-14T06:46:00.000+0200",
+     "resume": "2026-10-14T06:46:00.000+0200",
      "start": "2026-10-14T06:21:00.000+0200"
     },
     "title": "U2: Polizeieinsatz"
@@ -521,6 +487,40 @@
      "start": "2026-10-14T06:27:00.000+0200"
     },
     "title": "27: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261014-0007",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "301",
+       "lineName": "U1",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-14T06:50:00.000+0200",
+     "end": "2026-10-14T23:55:00.000+0200",
+     "lastUpdate": "2026-10-14T06:50:00.000+0200",
+     "resume": "2026-10-14T06:49:00.000+0200",
+     "start": "2026-10-14T06:49:00.000+0200"
+    },
+    "title": "U1: Verspätungen"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -700,114 +700,6 @@
     "title": "Züge halten in\nSchleife"
    },
    {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R123-136",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     123
-    ],
-    "time": {
-     "end": "2026-10-14T06:36:00.000+0200",
-     "start": "2026-10-14T05:37:31.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R124-136",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     124
-    ],
-    "time": {
-     "end": "2026-10-14T06:51:00.000+0200",
-     "start": "2026-10-14T05:37:31.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R125-136",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     125
-    ],
-    "time": {
-     "end": "2026-10-14T06:51:00.000+0200",
-     "start": "2026-10-14T05:37:31.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R126-136",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     126
-    ],
-    "time": {
-     "end": "2026-10-14T06:51:00.000+0200",
-     "start": "2026-10-14T05:37:31.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R127-136",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     127
-    ],
-    "time": {
-     "end": "2026-10-14T06:51:00.000+0200",
-     "start": "2026-10-14T05:52:33.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R128-136",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     128
-    ],
-    "time": {
-     "end": "2026-10-14T06:51:00.000+0200",
-     "start": "2026-10-14T05:52:33.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R130-136",
     "owner": "WL",
@@ -844,7 +736,7 @@
     "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Rettungseinsatz\nBetrieb ab Thaliastraße",
     "name": "R1375-146",
     "owner": "WL",
     "priority": "1",
@@ -856,10 +748,10 @@
      1375
     ],
     "time": {
-     "end": "2026-10-14T07:26:00.000+0200",
+     "end": "2026-10-14T07:37:00.000+0200",
      "start": "2026-10-14T06:27:38.000+0200"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Rettungseinsatz\nBetrieb ab Thaliastraße"
    },
    {
     "description": "Fahrtbehinderung\nSchadhafter Zug",
@@ -880,7 +772,7 @@
     "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Rettungseinsatz\nBetrieb ab Thaliastraße",
     "name": "R1376-146",
     "owner": "WL",
     "priority": "1",
@@ -892,10 +784,10 @@
      1376
     ],
     "time": {
-     "end": "2026-10-14T07:26:00.000+0200",
+     "end": "2026-10-14T07:37:00.000+0200",
      "start": "2026-10-14T06:27:38.000+0200"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Rettungseinsatz\nBetrieb ab Thaliastraße"
    },
    {
     "description": "Fahrtbehinderung\nSchadhafter Zug",
@@ -916,7 +808,7 @@
     "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Rettungseinsatz\nBetrieb ab Thaliastraße",
     "name": "R1377-146",
     "owner": "WL",
     "priority": "1",
@@ -928,10 +820,10 @@
      1377
     ],
     "time": {
-     "end": "2026-10-14T07:26:00.000+0200",
+     "end": "2026-10-14T07:37:00.000+0200",
      "start": "2026-10-14T06:27:38.000+0200"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Rettungseinsatz\nBetrieb ab Thaliastraße"
    },
    {
     "description": "Fahrtbehinderung\nSchadhafter Zug",
@@ -952,7 +844,7 @@
     "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Rettungseinsatz\nBetrieb ab Thaliastraße",
     "name": "R1378-146",
     "owner": "WL",
     "priority": "1",
@@ -964,10 +856,10 @@
      1378
     ],
     "time": {
-     "end": "2026-10-14T07:26:00.000+0200",
+     "end": "2026-10-14T07:37:00.000+0200",
      "start": "2026-10-14T06:27:38.000+0200"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Rettungseinsatz\nBetrieb ab Thaliastraße"
    },
    {
     "description": "Fahrtbehinderung\nSchadhafter Zug",
@@ -1056,6 +948,42 @@
     "time": {
      "end": "2026-10-14T07:26:00.000+0200",
      "start": "2026-10-14T06:27:38.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1393-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1393
+    ],
+    "time": {
+     "end": "2026-10-14T07:36:00.000+0200",
+     "start": "2026-10-14T06:37:39.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1394-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1394
+    ],
+    "time": {
+     "end": "2026-10-14T07:36:00.000+0200",
+     "start": "2026-10-14T06:37:38.000+0200"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
@@ -1700,258 +1628,6 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R779-407",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "7A"
-    ],
-    "relatedStops": [
-     779
-    ],
-    "time": {
-     "end": "2026-10-14T06:45:00.000+0200",
-     "start": "2026-10-14T05:46:33.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R780-407",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "7A"
-    ],
-    "relatedStops": [
-     780
-    ],
-    "time": {
-     "end": "2026-10-14T06:45:00.000+0200",
-     "start": "2026-10-14T05:46:33.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R814-407",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "7A"
-    ],
-    "relatedStops": [
-     814
-    ],
-    "time": {
-     "end": "2026-10-14T06:45:00.000+0200",
-     "start": "2026-10-14T05:46:33.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R88-136",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     88
-    ],
-    "time": {
-     "end": "2026-10-14T06:51:00.000+0200",
-     "start": "2026-10-14T05:52:33.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R90-136",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     90
-    ],
-    "time": {
-     "end": "2026-10-14T06:51:00.000+0200",
-     "start": "2026-10-14T05:47:32.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R91-136",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     91
-    ],
-    "time": {
-     "end": "2026-10-14T06:51:00.000+0200",
-     "start": "2026-10-14T05:47:32.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R92-136",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     92
-    ],
-    "time": {
-     "end": "2026-10-14T06:51:00.000+0200",
-     "start": "2026-10-14T05:47:32.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R93-136",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     93
-    ],
-    "time": {
-     "end": "2026-10-14T06:51:00.000+0200",
-     "start": "2026-10-14T05:47:32.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R94-136",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     94
-    ],
-    "time": {
-     "end": "2026-10-14T06:51:00.000+0200",
-     "start": "2026-10-14T05:47:32.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R95-136",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     95
-    ],
-    "time": {
-     "end": "2026-10-14T06:51:00.000+0200",
-     "start": "2026-10-14T05:47:32.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R96-136",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     96
-    ],
-    "time": {
-     "end": "2026-10-14T06:53:00.000+0200",
-     "start": "2026-10-14T05:54:03.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R97-136",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     97
-    ],
-    "time": {
-     "end": "2026-10-14T06:53:00.000+0200",
-     "start": "2026-10-14T05:54:03.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R98-136",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     98
-    ],
-    "time": {
-     "end": "2026-10-14T06:53:00.000+0200",
-     "start": "2026-10-14T05:54:03.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R99-136",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     99
-    ],
-    "time": {
-     "end": "2026-10-14T06:53:00.000+0200",
-     "start": "2026-10-14T05:54:03.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",

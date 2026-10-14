@@ -3,95 +3,74 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R123-136|2026-10-14T05:37:31.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R123-136",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T06:36:00.000+0200",
-   "incident": "I20261014-0001"
+   "key": "R1375-146|2026-10-14T06:27:38.000+0200|Rettungseinsatz\nBetrieb ab Thaliastraße",
+   "name": "R1375-146",
+   "title": "Rettungseinsatz\nBetrieb ab Thaliastraße",
+   "end": "2026-10-14T07:37:00.000+0200",
+   "incident": "I20261014-0004"
   },
   {
-   "key": "R124-136|2026-10-14T05:37:31.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R124-136",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T06:51:00.000+0200",
-   "incident": "I20261014-0001"
+   "key": "R1376-146|2026-10-14T06:27:38.000+0200|Rettungseinsatz\nBetrieb ab Thaliastraße",
+   "name": "R1376-146",
+   "title": "Rettungseinsatz\nBetrieb ab Thaliastraße",
+   "end": "2026-10-14T07:37:00.000+0200",
+   "incident": "I20261014-0004"
   },
   {
-   "key": "R125-136|2026-10-14T05:37:31.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R125-136",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T06:51:00.000+0200",
-   "incident": "I20261014-0001"
+   "key": "R1377-146|2026-10-14T06:27:38.000+0200|Rettungseinsatz\nBetrieb ab Thaliastraße",
+   "name": "R1377-146",
+   "title": "Rettungseinsatz\nBetrieb ab Thaliastraße",
+   "end": "2026-10-14T07:37:00.000+0200",
+   "incident": "I20261014-0004"
   },
   {
-   "key": "R126-136|2026-10-14T05:37:31.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R126-136",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T06:51:00.000+0200",
-   "incident": "I20261014-0001"
+   "key": "R1378-146|2026-10-14T06:27:38.000+0200|Rettungseinsatz\nBetrieb ab Thaliastraße",
+   "name": "R1378-146",
+   "title": "Rettungseinsatz\nBetrieb ab Thaliastraße",
+   "end": "2026-10-14T07:37:00.000+0200",
+   "incident": "I20261014-0004"
   },
   {
-   "key": "R779-407|2026-10-14T05:46:33.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R779-407",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-14T06:45:00.000+0200",
-   "incident": "I20261014-0002"
+   "key": "R1379-146|2026-10-14T06:27:38.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R1379-146",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T07:26:00.000+0200",
+   "incident": "I20261014-0004"
   },
   {
-   "key": "R780-407|2026-10-14T05:46:33.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R780-407",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-14T06:45:00.000+0200",
-   "incident": "I20261014-0002"
+   "key": "R1380-146|2026-10-14T06:27:38.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R1380-146",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T07:26:00.000+0200",
+   "incident": "I20261014-0004"
   },
   {
-   "key": "R814-407|2026-10-14T05:46:33.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R814-407",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-14T06:45:00.000+0200",
-   "incident": "I20261014-0002"
+   "key": "R1381-146|2026-10-14T06:27:38.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R1381-146",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T07:26:00.000+0200",
+   "incident": "I20261014-0004"
   },
   {
-   "key": "R90-136|2026-10-14T05:47:32.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R90-136",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T06:51:00.000+0200",
-   "incident": "I20261014-0001"
+   "key": "R1382-146|2026-10-14T06:27:38.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R1382-146",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T07:26:00.000+0200",
+   "incident": "I20261014-0004"
   },
   {
-   "key": "R91-136|2026-10-14T05:47:32.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R91-136",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T06:51:00.000+0200",
-   "incident": "I20261014-0001"
+   "key": "R1393-146|2026-10-14T06:37:39.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R1393-146",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T07:36:00.000+0200",
+   "incident": "I20261014-0004"
   },
   {
-   "key": "R92-136|2026-10-14T05:47:32.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R92-136",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T06:51:00.000+0200",
-   "incident": "I20261014-0001"
-  },
-  {
-   "key": "R93-136|2026-10-14T05:47:32.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R93-136",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T06:51:00.000+0200",
-   "incident": "I20261014-0001"
-  },
-  {
-   "key": "R94-136|2026-10-14T05:47:32.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R94-136",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T06:51:00.000+0200",
-   "incident": "I20261014-0001"
-  },
-  {
-   "key": "R95-136|2026-10-14T05:47:32.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R95-136",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T06:51:00.000+0200",
-   "incident": "I20261014-0001"
+   "key": "R1394-146|2026-10-14T06:37:38.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R1394-146",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T07:36:00.000+0200",
+   "incident": "I20261014-0004"
   }
  ]
 }
