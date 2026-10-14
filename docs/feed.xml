@@ -7,30 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Wed, 14 Oct 2026 07:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 07:30:43 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[27: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2944c0ef3d90e6a01626e659ff945114566768f92f2cfcb4aacd173962aa18ee</guid>
-      <pubDate>Wed, 14 Oct 2026 06:27:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 06:27:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 06:27:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 06:27]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 06:27]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[44: Schadhafter Zug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">5c54608e82b98f1b8952074e67a1c6efe9985fd6f6eb453f7e95f43b8016dc81</guid>
-      <pubDate>Wed, 14 Oct 2026 06:21:08 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 06:21:08 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 06:21:08 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 07:20:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung. [Seit 06:21]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 06:21]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[46: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -38,31 +16,9 @@
       <pubDate>Wed, 14 Oct 2026 06:20:00 +0200</pubDate>
       <ext:first_seen>Wed, 14 Oct 2026 06:20:00 +0200</ext:first_seen>
       <ext:starts_at>Wed, 14 Oct 2026 06:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Wed, 14 Oct 2026 08:23:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 06:20]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 06:20]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
-      <pubDate>Wed, 14 Oct 2026 06:49:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 05:55:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 06:49:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 06:49]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 06:49]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Schadhaftes Fahrzeug, Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">479d81556bc68dbdee0680cddad02646b0c604865221d4ea576921f46f65d96c</guid>
-      <pubDate>Wed, 14 Oct 2026 05:35:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 05:35:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 05:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse. [Heute]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Bauarbeiten]]></title>
@@ -118,6 +74,50 @@
       <ext:ends_at>Wed, 14 Oct 2026 17:00:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet. [Heute]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1A/3A: Schwertgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
+      <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung. [Bis 31.03.2027]</description>
+      <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung.<br/>[Bis 31.03.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
+      <pubDate>Mon, 05 Oct 2026 15:40:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 15:40:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 … [Bis 28.10.]</description>
+      <content:encoded><![CDATA[Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 …<br/>[Bis 28.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: ÖBB-Ersatzbus]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
+      <pubDate>Wed, 14 Oct 2026 05:00:27 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 05:00:27 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Oct 2026 23:00:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf [Heute]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A/7A/N62: Eibesbrunnergasse beide Fahrtrichtungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">bd6cbe1a4ea6d909912fce8527e38411ee42a952a91a70beecf363c26cd3e728</guid>
+      <pubDate>Mon, 05 Oct 2026 16:10:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 16:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 … [Bis 06.11.]</description>
+      <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 …<br/>[Bis 06.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
