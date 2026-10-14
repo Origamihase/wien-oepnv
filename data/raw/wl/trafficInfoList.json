@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261014-0009-F01, I20261014-0009-F02, I20261014-0009-F04, I20261014-0009-F03, I20260917-0012, I20260922-0032, I20261014-0008, I20261014-0011, I20260925-0011, I20260909-0007, I20261014-0012, I20261014-0010"
+    "trafficInfoNameList": "I20261014-0009-F01, I20261014-0009-F02, I20261014-0009-F04, I20261014-0009-F03, I20260917-0012, I20260922-0032, I20261014-0011, I20261014-0013, I20260925-0011, I20261014-0014-F01, I20261014-0014, I20260909-0007, I20261014-0012, I20261014-0010, I20261014-0013-F01"
    },
    {
     "id": 3,
@@ -199,40 +199,6 @@
      "start": "2026-09-25T08:55:00.000+0200"
     },
     "title": "26E: Gleisbauarbeiten"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261014-0008",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "301",
-       "lineName": "U1",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T07:56:00.000+0200",
-     "end": "2026-10-14T08:26:00.000+0200",
-     "lastUpdate": "2026-10-14T08:26:00.000+0200",
-     "resume": "2026-10-14T08:26:00.000+0200",
-     "start": "2026-10-14T07:55:00.000+0200"
-    },
-    "title": "U1: Verspätungen"
    },
    {
     "attributes": {
@@ -503,6 +469,154 @@
      "start": "2026-10-14T08:58:00.000+0200"
     },
     "title": "U2: Betriebsstörung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 09:40 Uhr. Grund: Betriebsstörung im Haltestellenbereich Josefstädter Straße.",
+    "descriptionHTML": "Linie U6:<br>Fahrtbehinderung in beiden Richtungen.<br> <br>Voraussichtliche Dauer: 09:40 Uhr.<br><br>Grund: Betriebsstörung im Haltestellenbereich Josefstädter Straße.",
+    "name": "I20261014-0013",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4622
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-14T09:31:00.000+0200",
+     "end": "2026-10-14T09:41:00.000+0200",
+     "lastUpdate": "2026-10-14T09:41:00.000+0200",
+     "resume": "2026-10-14T09:41:00.000+0200",
+     "start": "2026-10-14T09:28:00.000+0200"
+    },
+    "title": "U6: Betriebsstörung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261014-0013-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4622
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-14T09:41:00.000+0200",
+     "end": "2026-10-14T09:44:00.000+0200",
+     "lastUpdate": "2026-10-14T09:44:00.000+0200",
+     "resume": "2026-10-14T09:44:00.000+0200",
+     "start": "2026-10-14T09:28:00.000+0200"
+    },
+    "title": "U6: Betriebsstörung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Fahrtbehinderung in Richtung Siebenhirten. Voraussichtliche Dauer: 10:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Josefstädter Straße.",
+    "descriptionHTML": "Linie U6:<br>Fahrtbehinderung in Richtung Siebenhirten.<br> <br>Voraussichtliche Dauer: 10:00 Uhr.<br><br>Grund: Polizeieinsatz im Haltestellenbereich Josefstädter Straße.",
+    "name": "I20261014-0014",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4622
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-14T09:45:00.000+0200",
+     "end": "2026-10-14T09:46:00.000+0200",
+     "lastUpdate": "2026-10-14T09:46:00.000+0200",
+     "resume": "2026-10-14T09:46:00.000+0200",
+     "start": "2026-10-14T09:44:00.000+0200"
+    },
+    "title": "U6: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261014-0014-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4622
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-14T09:46:00.000+0200",
+     "end": "2026-10-14T23:55:00.000+0200",
+     "lastUpdate": "2026-10-14T09:46:00.000+0200",
+     "resume": "2026-10-14T09:46:00.000+0200",
+     "start": "2026-10-14T09:44:00.000+0200"
+    },
+    "title": "U6: Polizeieinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
