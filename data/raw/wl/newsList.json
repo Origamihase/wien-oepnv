@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_84, ftazW_240, ftazW_727, ftazW_45, ftazW_1017123, ftazW_1031267, ftazW_113, ftazW_746, ftazW_1031268, ftazW_739, ftazW_574, ftazW_97, ftazW_114, ftazW_766, ftazW_575, ftazW_740"
+    "trafficInfoNameList": "ftazW_113, ftazW_746, ftazW_1031268, ftazW_739, ftazW_574, ftazW_97, ftazW_114, ftazW_766, ftazW_575, ftazW_740"
    }
   ],
   "poiCategoryGroups": [
@@ -2635,63 +2635,6 @@
    },
    {
     "attributes": {
-     "ausBis": "15.10.2026 05:15",
-     "ausVon": "15.10.2026 01:15",
-     "location": "Passage - Ausgang Schererstraße",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Leopoldau",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Passage - Ausgang Schererstraße",
-    "name": "ftazW_1017123",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "time": {
-     "end": "2026-10-15T05:15:00.000+0200",
-     "start": "2026-10-15T01:15:00.000+0200"
-    },
-    "title": "Leopoldau"
-   },
-   {
-    "attributes": {
-     "ausBis": "15.10.2026 05:15",
-     "ausVon": "15.10.2026 01:15",
-     "location": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Donaumarina",
-     "rbls": [
-      4255
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Donaumarina",
-     "status": "geplante Wartung",
-     "towards": "U2 Karlsplatz"
-    },
-    "description": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Donaumarina",
-    "name": "ftazW_1031267",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4255
-    ],
-    "time": {
-     "end": "2026-10-15T05:15:00.000+0200",
-     "start": "2026-10-15T01:15:00.000+0200"
-    },
-    "title": "Donaumarina"
-   },
-   {
-    "attributes": {
      "ausBis": "16.10.2026 00:45",
      "ausVon": "15.10.2026 20:45",
      "location": "U2 Bahnsteig Richtung Seestadt - Ausgang Donaumarina",
@@ -2725,7 +2668,7 @@
     "attributes": {
      "ausBis": "16.10.2026 00:45",
      "ausVon": "15.10.2026 20:45",
-     "location": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
+     "location": "Zwischengeschoss Zugang Aufzug U1 - U4 Mittelbahnsteig",
      "rbls": [
       4427,
       4410
@@ -2739,7 +2682,7 @@
      "status": "geplante Wartung",
      "towards": "U4 beide Richtungen"
     },
-    "description": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
+    "description": "Zwischengeschoss Zugang Aufzug U1 - U4 Mittelbahnsteig",
     "name": "ftazW_113",
     "refPoiCategoryId": -1,
     "relatedLines": [
@@ -2760,7 +2703,7 @@
     "attributes": {
      "ausBis": "16.10.2026 05:15",
      "ausVon": "16.10.2026 01:15",
-     "location": "U1 Mittelbahnsteig - Zwischengeschoss Zugang U4",
+     "location": "Zwischengeschoss Zugang U4 - U1 Mittelbahnsteig",
      "rbls": [
       4113,
       4116
@@ -2773,7 +2716,7 @@
      "status": "geplante Wartung",
      "towards": "U1 beide Richtungen"
     },
-    "description": "U1 Mittelbahnsteig - Zwischengeschoss Zugang U4",
+    "description": "Zwischengeschoss Zugang U4 - U1 Mittelbahnsteig",
     "name": "ftazW_114",
     "refPoiCategoryId": -1,
     "relatedLines": [
@@ -2788,74 +2731,6 @@
      "start": "2026-10-16T01:15:00.000+0200"
     },
     "title": "Schwedenplatz"
-   },
-   {
-    "attributes": {
-     "ausBis": "15.10.2026 05:15",
-     "ausVon": "15.10.2026 01:15",
-     "location": "U4 Bahnsteig Richtung Hütteldorf, U6 Bahnsteig Richtung Siebenhirten - Ausgang Storchensteg/Gierstergasse",
-     "rbls": [
-      4438,
-      4612
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4",
-      "U6"
-     ],
-     "station": "Längenfeldgasse",
-     "status": "geplante Wartung",
-     "towards": "U4 Hütteldorf, U6 Siebenhirten"
-    },
-    "description": "U4 Bahnsteig Richtung Hütteldorf, U6 Bahnsteig Richtung Siebenhirten - Ausgang Storchensteg/Gierstergasse",
-    "name": "ftazW_240",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4",
-     "U6"
-    ],
-    "relatedStops": [
-     4438,
-     4612
-    ],
-    "time": {
-     "end": "2026-10-15T05:15:00.000+0200",
-     "start": "2026-10-15T01:15:00.000+0200"
-    },
-    "title": "Längenfeldgasse"
-   },
-   {
-    "attributes": {
-     "ausBis": "15.10.2026 05:15",
-     "ausVon": "15.10.2026 01:15",
-     "location": "U3 Mittelbahnsteig - Ausgang Keinergasse",
-     "rbls": [
-      4915,
-      4902
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Kardinal-Nagl-Platz",
-     "status": "geplante Wartung",
-     "towards": "U3 beide Richtungen"
-    },
-    "description": "U3 Mittelbahnsteig - Ausgang Keinergasse",
-    "name": "ftazW_45",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4915,
-     4902
-    ],
-    "time": {
-     "end": "2026-10-15T05:15:00.000+0200",
-     "start": "2026-10-15T01:15:00.000+0200"
-    },
-    "title": "Kardinal-Nagl-Platz"
    },
    {
     "attributes": {
@@ -2918,37 +2793,6 @@
      "start": "2026-10-16T01:15:00.000+0200"
     },
     "title": "Schönbrunn"
-   },
-   {
-    "attributes": {
-     "ausBis": "15.10.2026 05:15",
-     "ausVon": "15.10.2026 01:15",
-     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Seegasse",
-     "rbls": [
-      4431
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Roßauer Lände",
-     "status": "geplante Wartung",
-     "towards": "U4 Heiligenstadt"
-    },
-    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Seegasse",
-    "name": "ftazW_727",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4431
-    ],
-    "time": {
-     "end": "2026-10-15T05:15:00.000+0200",
-     "start": "2026-10-15T01:15:00.000+0200"
-    },
-    "title": "Roßauer Lände"
    },
    {
     "attributes": {
@@ -3074,34 +2918,6 @@
      "start": "2026-10-16T01:15:00.000+0200"
     },
     "title": "Simmering"
-   },
-   {
-    "attributes": {
-     "ausBis": "15.10.2026 05:15",
-     "ausVon": "15.10.2026 01:15",
-     "location": "Zwischengeschoss - Ausgang Dr. Karl Renner Ring",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U2",
-      "U3"
-     ],
-     "station": "Volkstheater",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Zwischengeschoss - Ausgang Dr. Karl Renner Ring",
-    "name": "ftazW_84",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2",
-     "U3"
-    ],
-    "time": {
-     "end": "2026-10-15T05:15:00.000+0200",
-     "start": "2026-10-15T01:15:00.000+0200"
-    },
-    "title": "Volkstheater"
    },
    {
     "attributes": {
