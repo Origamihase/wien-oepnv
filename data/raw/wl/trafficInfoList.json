@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261014-0016, I20261014-0020-F01, I20261014-0020, I20260925-0011, I20261014-0018, I20260909-0007, I20261014-0019, I20261014-0010, I20261014-0017-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261014-0016, I20261014-0020-F01, I20261014-0020, I20260925-0011, I20261014-0018, I20260909-0007, I20261014-0019, I20261014-0017-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2025-671, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1177-0, R293-474, R318-437, R1448-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2359-125, R2378-627, R2343-626, R2343-125, R1974-466, R500-101, R1150-0, R1045-288, R1044-288, R374-105, R375-105, R364-105, R367-105, R370-105, R373-105, R377-105, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2025-671, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1177-0, R293-474, R318-437, R1448-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2370-125, R2378-627, R2343-626, R2343-125, R2359-125, R2371-125, R1974-466, R500-101, R1150-0, R364-105, R370-105, R374-105, R375-105, R373-105, R367-105, R377-105, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -199,40 +199,6 @@
      "start": "2026-09-25T08:55:00.000+0200"
     },
     "title": "26E: Gleisbauarbeiten"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "48A": "ptBusCity"
-     }
-    },
-    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
-    "name": "I20261014-0010",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "448",
-       "lineName": "48A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T08:31:00.000+0200",
-     "end": "2026-10-14T11:35:00.000+0200",
-     "lastUpdate": "2026-10-14T11:35:00.000+0200",
-     "resume": "2026-10-14T11:35:00.000+0200",
-     "start": "2026-10-14T08:29:00.000+0200"
-    },
-    "title": "48A: Verkehrsüberlastung"
    },
    {
     "attributes": {
@@ -519,42 +485,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1044-288",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "88B"
-    ],
-    "relatedStops": [
-     1044
-    ],
-    "time": {
-     "end": "2026-10-14T12:55:00.000+0200",
-     "start": "2026-10-14T11:56:38.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1045-288",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "88B"
-    ],
-    "relatedStops": [
-     1045
-    ],
-    "time": {
-     "end": "2026-10-14T12:55:00.000+0200",
-     "start": "2026-10-14T11:56:38.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
