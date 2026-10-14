@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261014-0009-F01, I20261014-0009-F02, I20261014-0009-F04, I20261014-0009-F03, I20260917-0012, I20260922-0032, I20261014-0011, I20261014-0013, I20260925-0011, I20261014-0014-F01, I20261014-0014, I20260909-0007, I20261014-0012, I20261014-0010, I20261014-0013-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261014-0011, I20261014-0013, I20260925-0011, I20261014-0014-F01, I20261014-0014, I20260909-0007, I20261014-0013-F01, I20261014-0010, I20261014-0012, I20261014-0015-F01, I20261014-0015"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1177-0, R293-474, R2025-671, R1474-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1475-149, R1476-149, R2558-125, R2345-127, R2372-627, R2378-627, R2343-626, R2380-627, R2373-127, R2373-126, R2379-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R1974-466, R500-101, R1150-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2025-671, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1177-0, R293-474, R318-437, R1448-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2370-125, R2378-627, R2343-626, R2343-125, R2359-125, R2371-125, R1974-466, R500-101, R1150-0, R2972-410, R2967-410, R2969-410, R2970-410, R2968-410, R2966-410, R8192-410, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,188 +203,20 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "16A": "ptBusCity"
+      "48A": "ptBusCity"
      }
     },
-    "description": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Himberger Straße",
-    "name": "I20261014-0009-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "16A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "416",
-       "lineName": "16A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T08:00:00.000+0200",
-     "end": "2026-10-14T09:08:00.000+0200",
-     "lastUpdate": "2026-10-14T09:08:00.000+0200",
-     "resume": "2026-10-14T09:08:00.000+0200",
-     "start": "2026-10-14T07:59:00.000+0200"
-    },
-    "title": "16A: Störung an einem Bahnübergang"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "17A": "ptBusCity"
-     }
-    },
-    "description": "Linie 17A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 17A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Himberger Straße",
-    "name": "I20261014-0009-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "17A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "417",
-       "lineName": "17A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T08:00:00.000+0200",
-     "end": "2026-10-14T09:08:00.000+0200",
-     "lastUpdate": "2026-10-14T09:08:00.000+0200",
-     "resume": "2026-10-14T09:08:00.000+0200",
-     "start": "2026-10-14T07:59:00.000+0200"
-    },
-    "title": "17A: Störung an einem Bahnübergang"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "67A": "ptBusCity"
-     }
-    },
-    "description": "Linie 67A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 67A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Himberger Straße",
-    "name": "I20261014-0009-F03",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "67A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "467",
-       "lineName": "67A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T08:00:00.000+0200",
-     "end": "2026-10-14T09:09:00.000+0200",
-     "lastUpdate": "2026-10-14T09:09:00.000+0200",
-     "resume": "2026-10-14T09:09:00.000+0200",
-     "start": "2026-10-14T07:59:00.000+0200"
-    },
-    "title": "67A: Störung an einem Bahnübergang"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "67B": "ptBusCity"
-     }
-    },
-    "description": "Linie 67B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 67B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Himberger Straße",
-    "name": "I20261014-0009-F04",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "67B"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "267",
-       "lineName": "67B",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T08:00:00.000+0200",
-     "end": "2026-10-14T09:08:00.000+0200",
-     "lastUpdate": "2026-10-14T09:08:00.000+0200",
-     "resume": "2026-10-14T09:08:00.000+0200",
-     "start": "2026-10-14T07:59:00.000+0200"
-    },
-    "title": "67B: Störung an einem Bahnübergang"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "10A": "ptBusCity",
-      "40A": "ptBusCity",
-      "48A": "ptBusCity",
-      "59A": "ptBusCity",
-      "7A": "ptBusCity"
-     }
-    },
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 40A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
+    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
     "name": "I20261014-0010",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "7A",
-     "10A",
-     "40A",
-     "48A",
-     "59A"
+     "48A"
     ],
     "relatedLinesDetails": [
      [
-      {
-       "lineId": "410",
-       "lineName": "10A",
-       "vehicleType": "ptBusCity"
-      },
-      {
-       "lineId": "407",
-       "lineName": "7A",
-       "vehicleType": "ptBusCity"
-      },
-      {
-       "lineId": "459",
-       "lineName": "59A",
-       "vehicleType": "ptBusCity"
-      },
-      {
-       "lineId": "440",
-       "lineName": "40A",
-       "vehicleType": "ptBusCity"
-      },
       {
        "lineId": "448",
        "lineName": "48A",
@@ -396,11 +228,11 @@
     "time": {
      "created": "2026-10-14T08:31:00.000+0200",
      "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T09:09:00.000+0200",
+     "lastUpdate": "2026-10-14T10:03:00.000+0200",
      "resume": "2026-10-14T08:29:00.000+0200",
      "start": "2026-10-14T08:29:00.000+0200"
     },
-    "title": "10A, 7A, 59A, 40A, 48A: Verkehrsüberlastung"
+    "title": "48A: Verkehrsüberlastung"
    },
    {
     "attributes": {
@@ -460,12 +292,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-14T08:58:00.000+0200",
-     "end": "2026-10-14T23:55:00.000+0200",
-     "lastUpdate": "2026-10-14T08:58:00.000+0200",
-     "resume": "2026-10-14T08:58:00.000+0200",
+     "end": "2026-10-14T10:17:00.000+0200",
+     "lastUpdate": "2026-10-14T10:17:00.000+0200",
+     "resume": "2026-10-14T10:17:00.000+0200",
      "start": "2026-10-14T08:58:00.000+0200"
     },
     "title": "U2: Betriebsstörung"
@@ -617,6 +449,76 @@
      "start": "2026-10-14T09:44:00.000+0200"
     },
     "title": "U6: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "10A": "ptBusCity"
+     }
+    },
+    "description": "Linie 10A: Fahrtbehinderung in Richtung Niederhofstraße U. Voraussichtliche Dauer: 10:30 Uhr. Grund: Falschparker im Bereich Chimanistraße 1.",
+    "descriptionHTML": "Linie 10A:<br>Fahrtbehinderung in Richtung Niederhofstraße U.<br> <br>Voraussichtliche Dauer: 10:30 Uhr.<br><br>Grund: Falschparker im Bereich Chimanistraße 1.",
+    "location": "Chimanistraße 1",
+    "name": "I20261014-0015",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "410",
+       "lineName": "10A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-14T10:08:00.000+0200",
+     "end": "2026-10-14T10:17:00.000+0200",
+     "lastUpdate": "2026-10-14T10:17:00.000+0200",
+     "resume": "2026-10-14T10:17:00.000+0200",
+     "start": "2026-10-14T10:07:00.000+0200"
+    },
+    "title": "10A: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "10A": "ptBusCity"
+     }
+    },
+    "description": "Linie 10A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 10A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Chimanistraße 1",
+    "name": "I20261014-0015-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "410",
+       "lineName": "10A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-14T10:17:00.000+0200",
+     "end": "2026-10-14T23:55:00.000+0200",
+     "lastUpdate": "2026-10-14T10:17:00.000+0200",
+     "resume": "2026-10-14T10:17:00.000+0200",
+     "start": "2026-10-14T10:07:00.000+0200"
+    },
+    "title": "10A: Falschparker"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1384,6 +1286,114 @@
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
    },
    {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2966-410",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2966
+    ],
+    "time": {
+     "end": "2026-10-14T11:09:00.000+0200",
+     "start": "2026-10-14T10:10:00.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2967-410",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2967
+    ],
+    "time": {
+     "end": "2026-10-14T11:09:00.000+0200",
+     "start": "2026-10-14T10:10:00.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2968-410",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2968
+    ],
+    "time": {
+     "end": "2026-10-14T11:09:00.000+0200",
+     "start": "2026-10-14T10:10:00.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2969-410",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2969
+    ],
+    "time": {
+     "end": "2026-10-14T11:09:00.000+0200",
+     "start": "2026-10-14T10:10:00.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2970-410",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2970
+    ],
+    "time": {
+     "end": "2026-10-14T11:09:00.000+0200",
+     "start": "2026-10-14T10:10:00.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2972-410",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2972
+    ],
+    "time": {
+     "end": "2026-10-14T11:09:00.000+0200",
+     "start": "2026-10-14T10:10:00.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1469,6 +1479,24 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R8192-410",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     8192
+    ],
+    "time": {
+     "end": "2026-10-14T11:09:00.000+0200",
+     "start": "2026-10-14T10:10:01.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",

@@ -1,5 +1,55 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R2966-410|2026-10-14T10:10:00.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R2966-410",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-14T11:09:00.000+0200",
+   "incident": "I20261014-0015"
+  },
+  {
+   "key": "R2967-410|2026-10-14T10:10:00.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R2967-410",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-14T11:09:00.000+0200",
+   "incident": "I20261014-0015"
+  },
+  {
+   "key": "R2968-410|2026-10-14T10:10:00.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R2968-410",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-14T11:09:00.000+0200",
+   "incident": "I20261014-0015"
+  },
+  {
+   "key": "R2969-410|2026-10-14T10:10:00.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R2969-410",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-14T11:09:00.000+0200",
+   "incident": "I20261014-0015"
+  },
+  {
+   "key": "R2970-410|2026-10-14T10:10:00.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R2970-410",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-14T11:09:00.000+0200",
+   "incident": "I20261014-0015"
+  },
+  {
+   "key": "R2972-410|2026-10-14T10:10:00.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R2972-410",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-14T11:09:00.000+0200",
+   "incident": "I20261014-0015"
+  },
+  {
+   "key": "R8192-410|2026-10-14T10:10:01.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R8192-410",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-14T11:09:00.000+0200",
+   "incident": "I20261014-0015"
+  }
+ ]
 }

@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 14 Oct 2026 10:00:59 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 10:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[10A: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3bd9f4c68055fa6d9b69495117575dc8f78fabf6d25c7ba67dc6f52114f61816</guid>
+      <pubDate>Wed, 14 Oct 2026 10:07:00 +0200</pubDate>
+      <ext:first_seen>Wed, 14 Oct 2026 10:07:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 10:07:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 10:07]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 10:07]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U6: Police operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,7 +32,7 @@
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 09:44]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[7A/10A/40A/48A/59A/O: Traffic congestion]]></title>
+      <title><![CDATA[48A/O: Traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e0554706221cae8ec59ecf4482b9f7c5d637c7681ec4306e8140d11430a520d6</guid>
       <pubDate>Wed, 14 Oct 2026 08:29:00 +0200</pubDate>
@@ -30,17 +41,6 @@
       <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 08:29]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 08:29]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Service disruption]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4</guid>
-      <pubDate>Wed, 14 Oct 2026 08:58:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 08:58:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 08:58:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: service disruption. [Since 08:58]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[Since 08:58]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Construction works]]></title>
