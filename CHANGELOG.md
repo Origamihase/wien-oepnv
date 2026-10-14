@@ -5,6 +5,17 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Jules-Audits 05.–14.10. geprüft (2026-10-14)**: Von den Funden war
+  einer noch offen und betraf den deutschen Feed:
+  - **WL-Maßnahmen fielen aus dem Text.** Stand vor dem Maßnahmenblock ein
+    Satz, der bleibt („Wegen einer Demonstration kommt es zu einer
+    Einschränkung des öffentlichen Verkehrs.“), passten beide zusammen nie
+    in 180 Zeichen, und die Beschreibung endete nach diesem Satz (Demo am
+    Ring, 13.10.). Der Maßnahmenblock folgt jetzt auch dann und wird mit
+    „…“ gekürzt, sofern die Linie und mindestens drei Wörter ihrer
+    Maßnahme sichtbar bleiben (`_with_second_sentence`). Replay über alle
+    4.899 WL-Texte seit Juli: 18 Texte zeigen jetzt die erste Maßnahme,
+    sonst ändert sich nichts; ÖBB (563 Texte) unverändert.
 * **Gesamtprüfung vom Abruf bis zum Feed (2026-10-11)**: Live-Feed von 08:00
   nachgebaut (identisch), alle 58 deutschen Feed-Stände seit 10.10. ohne
   doppelten Titel oder GUID, Verwürfe von WL, ÖBB und Baustellen alle mit

@@ -441,6 +441,49 @@ def _prefer_measures(summary: str) -> str:
     return " ".join([*kept, measures])
 
 
+# Words of the first measure that must still stand behind the head after the
+# 180 cut for the measure block to ride along: "Linie D: Umleitung der Züge
+# …" says what happens, "Linie D: …" or "Linie D: Umleitung …" does not.
+_MEASURE_MIN_WORDS_SHOWN = 3
+
+
+def _with_second_sentence(first: str, second: str, *, oebb: bool, raw_title: str) -> str:
+    """The summary's first sentence, with the second one when it may follow.
+
+    The second sentence follows whenever both fit the 180 characters. ÖBB's
+    second sentence says what still goes on (``_oebb_first_two_sentences``).
+
+    A WL measure block (see :func:`_prefer_measures`) follows even when it
+    does not fit, and ``_truncate_summary_180`` cuts it with an ellipsis:
+    the block is joined into one sentence, so as a whole it nearly never
+    fits behind a kept sentence, and the 180-check dropped every measure.
+    Published 2026-10-13 for the demonstration on the Ring::
+
+        1/71/D: Demonstration am 13.10.2026
+        Wegen einer Demonstration kommt es zu einer Einschränkung des
+        öffentlichen Verkehrs. [Heute]
+
+    while the text went on "Linie D: Umleitung der Züge zwischen
+    Absberggasse und Börse …" (18 texts since July, Jules audit
+    2026-10-13). It follows only when the cut still shows the first
+    measure's line and :data:`_MEASURE_MIN_WORDS_SHOWN` words of it;
+    behind a long first sentence a bare "Linie D: …" says nothing.
+    """
+    candidate = f"{first} {second}"
+    if len(candidate) > 180 and oebb:
+        candidate = _oebb_first_two_sentences(first, second, raw_title) or candidate
+    if len(candidate) <= 180:
+        return candidate
+    label = _WL_DESC_LINIE_PREFIX_RE.match(second)
+    if label is None:
+        return first
+    shown = _truncate_summary_180(candidate)[len(first):].removesuffix("…").strip()
+    label_shown = _WL_DESC_LINIE_PREFIX_RE.match(shown)
+    if label_shown is None or len(shown[label_shown.end():].split()) < _MEASURE_MIN_WORDS_SHOWN:
+        return first
+    return candidate
+
+
 def _strip_trailing_directional_marker(summary: str) -> str:
     """Drop a trailing WL ``>`` / ``<`` arrow with surrounding whitespace.
 
@@ -10640,16 +10683,9 @@ def _format_item_content(
         # after ``Karlsplatz U`` artificially terminates sentence 1, so
         # sentence 2 carrying the actual disruption reason was dropped).
         if len(sentences) > 1:
-            candidate = f"{short_summary} {sentences[1]}"
-            if len(candidate) > 180 and it.get("source") == _OEBB_SOURCE:
-                # ÖBB's second sentence says what still goes on — see
-                # ``_oebb_first_two_sentences``.
-                candidate = (
-                    _oebb_first_two_sentences(short_summary, sentences[1], raw_title)
-                    or candidate
-                )
-            if len(candidate) <= 180:
-                short_summary = candidate
+            short_summary = _with_second_sentence(
+                short_summary, sentences[1], oebb=it.get("source") == _OEBB_SOURCE, raw_title=raw_title
+            )
         summary = short_summary
 
     # Harte Begrenzung für den TV-Screen (max. 180 Zeichen).

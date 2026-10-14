@@ -508,7 +508,13 @@ verdrängt eine andere Störung.
   gehört zum nächsten Absatz und steht nie allein am Ende. Absätze mit
   „Zeitraum:“ und „Dauer:“ fallen in jedem mehrteiligen Text weg, denn die
   Zeitzeile nennt die Daten schon, und sie nahmen den Maßnahmen den Platz.
-  Beginnt der Text mit einer Überschrift oder einem Feld, gilt die
+  Ein Maßnahmenblock („Linie D: …; Linie 1: …“) folgt einem stehen
+  gebliebenen Einleitungssatz auch dann, wenn beide nicht in 180 Zeichen
+  passen, und wird mit „…“ gekürzt, solange die Linie und mindestens drei
+  Wörter ihrer Maßnahme sichtbar bleiben (`_with_second_sentence`, seit
+  2026-10-14; vorher stand bei der Demo am Ring am 13.10. nur „Wegen einer
+  Demonstration kommt es zu einer Einschränkung des öffentlichen
+  Verkehrs.“). Beginnt der Text mit einer Überschrift oder einem Feld, gilt die
   Zwei-Sätze-Regel nicht, sonst stünde „Haltestelle: Stammersdorf.“ ohne
   die neue Lage da: gezeigt werden die Felder bis zum ersten ganzen Satz,
   danach greift die 180-Zeichen-Grenze. Bei einer Haltestellenverlegung
