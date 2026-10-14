@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261014-0032-F01, I20261014-0032-F02, I20260909-0007, I20261014-0033-F01, I20261014-0033, I20261014-0030-F01, I20261014-0024-F01, I20261014-0032-F03, I20261014-0034, I20261014-0029-F01, I20261014-0035"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261014-0036, I20260925-0011, I20261014-0032-F01, I20261014-0032-F02, I20260909-0007, I20261014-0033-F01, I20261014-0030-F01, I20261014-0034, I20261014-0035"
    },
    {
     "id": 3,
@@ -203,78 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "63A": "ptBusCity"
-     }
-    },
-    "description": "Linie 63A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 63A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261014-0024-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "63A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "463",
-       "lineName": "63A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "relatedStops": [
-     1773
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T13:55:00.000+0200",
-     "end": "2026-10-14T15:44:00.000+0200",
-     "lastUpdate": "2026-10-14T15:44:00.000+0200",
-     "resume": "2026-10-14T15:44:00.000+0200",
-     "start": "2026-10-14T13:31:00.000+0200"
-    },
-    "title": "63A: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "24A": "ptBusCity"
-     }
-    },
-    "description": "Linie 24A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 24A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Breitenleer Straße 318",
-    "name": "I20261014-0029-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "24A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "424",
-       "lineName": "24A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T14:24:00.000+0200",
-     "end": "2026-10-14T15:44:00.000+0200",
-     "lastUpdate": "2026-10-14T15:44:00.000+0200",
-     "resume": "2026-10-14T15:44:00.000+0200",
-     "start": "2026-10-14T14:20:00.000+0200"
-    },
-    "title": "24A: Betriebsstörung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "D": "ptTram"
      }
     },
@@ -386,80 +314,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "14A": "ptBusCity"
-     }
-    },
-    "description": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261014-0032-F03",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "414",
-       "lineName": "14A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "relatedStops": [
-     404
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T15:08:00.000+0200",
-     "end": "2026-10-14T15:44:00.000+0200",
-     "lastUpdate": "2026-10-14T15:44:00.000+0200",
-     "resume": "2026-10-14T15:44:00.000+0200",
-     "start": "2026-10-14T14:52:00.000+0200"
-    },
-    "title": "14A: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Nußdorfer Straße und Spittelau in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 15:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Spittelau.",
-    "descriptionHTML": "Die Linie U6 fährt derzeit zwischen den Stationen Nußdorfer Straße und Spittelau in beiden Richtungen über Gleis 2.<br> <br>Voraussichtliche Dauer: 15:40 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Spittelau.",
-    "name": "I20261014-0033",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4627
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T15:10:00.000+0200",
-     "end": "2026-10-14T15:40:00.000+0200",
-     "lastUpdate": "2026-10-14T15:40:00.000+0200",
-     "resume": "2026-10-14T15:40:00.000+0200",
-     "start": "2026-10-14T15:09:00.000+0200"
-    },
-    "title": "U6: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U6": "ptMetro"
      }
     },
@@ -564,6 +418,43 @@
      "start": "2026-10-14T16:02:00.000+0200"
     },
     "title": "U1: Verspätungen"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "52": "ptTram"
+     }
+    },
+    "description": "Linie 52: Fahrtbehinderung in Richtung Baumgarten. Voraussichtliche Dauer: 17:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Geibelgasse.",
+    "descriptionHTML": "Linie 52:<br>Fahrtbehinderung in Richtung Baumgarten.<br> <br>Voraussichtliche Dauer: 17:00 Uhr.<br><br>Grund: Polizeieinsatz im Haltestellenbereich Geibelgasse.",
+    "name": "I20261014-0036",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "152",
+       "lineName": "52",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1533
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-14T16:37:00.000+0200",
+     "end": "2026-10-14T16:38:00.000+0200",
+     "lastUpdate": "2026-10-14T16:38:00.000+0200",
+     "resume": "2026-10-14T16:38:00.000+0200",
+     "start": "2026-10-14T16:36:00.000+0200"
+    },
+    "title": "52: Polizeieinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
