@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 14 Oct 2026 15:00:46 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 15:30:42 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U6: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
+      <pubDate>Wed, 14 Oct 2026 15:09:00 +0200</pubDate>
+      <ext:first_seen>Wed, 14 Oct 2026 15:09:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 15:09:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>The U6 line currently runs between the stations Nußdorfer Straße and Spittelau in both directions on track 2. Expected until 15:40. Reason: rescue operation … [Since 15:09]</description>
+      <content:encoded><![CDATA[The U6 line currently runs between the stations Nußdorfer Straße and Spittelau in both directions on track 2. Expected until 15:40. Reason: rescue operation …<br/>[Since 15:09]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[O: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,26 +32,15 @@
       <content:encoded><![CDATA[Trains stop at the stop of line O.<br/>[Since 14:58]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[11/6: Rescue operation]]></title>
+      <title><![CDATA[6/11/14A: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">680895df03a2ef7f990eeb83faa2d2bf5876861127c83781c65ad960e3e41998</guid>
       <pubDate>Wed, 14 Oct 2026 14:52:00 +0200</pubDate>
       <ext:first_seen>Wed, 14 Oct 2026 14:52:00 +0200</ext:first_seen>
       <ext:starts_at>Wed, 14 Oct 2026 14:52:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service only between Burggasse, Stadthalle U and Quellenplatz. [Since 14:52]</description>
-      <content:encoded><![CDATA[Service only between Burggasse, Stadthalle U and Quellenplatz.<br/>[Since 14:52]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Delays]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
-      <pubDate>Wed, 14 Oct 2026 14:46:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 14:46:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 14:46:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 14:46]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 14:46]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 14:52]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 14:52]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[24A: Service disruption]]></title>
@@ -52,17 +52,6 @@
       <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 14:20]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 14:20]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/9: Defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f2e5215dcf979df7b2f81449c361d572de72aa15e864729d40a888c35d82fe7b</guid>
-      <pubDate>Wed, 14 Oct 2026 14:03:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 14:03:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 14:03:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 14:03]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 14:03]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[63A: Traffic accident]]></title>
@@ -81,10 +70,10 @@
       <guid isPermaLink="false">503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106</guid>
       <pubDate>Wed, 14 Oct 2026 14:39:00 +0200</pubDate>
       <ext:first_seen>Wed, 14 Oct 2026 14:39:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 15:00:30 +0200</ext:starts_at>
+      <ext:starts_at>Wed, 14 Oct 2026 14:39:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 14 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Rescue operation: The D line currently only runs between Nußdorf and Augasse or between Börse and Quartier Belvedere S. Track construction works: trains stop … [Today]</description>
-      <content:encoded><![CDATA[Rescue operation: The D line currently only runs between Nußdorf and Augasse or between Börse and Quartier Belvedere S. Track construction works: trains stop …<br/>[Today]]]></content:encoded>
+      <description>Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse. [Today]</description>
+      <content:encoded><![CDATA[Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[64A: Liesing-Flur-Gasse]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 16 Oct 2026 07:00:00 +0200</ext:ends_at>
       <description>Frauenstiftgasse after Brünner Straße → Frauenstiftgasse 5-7. Stop relocation of lines 30A towards Freiheitsplatz, 31A towards Jochbergengasse, 36A and 36B … [Until Fri 16.10.]</description>
       <content:encoded><![CDATA[Frauenstiftgasse after Brünner Straße → Frauenstiftgasse 5-7. Stop relocation of lines 30A towards Freiheitsplatz, 31A towards Jochbergengasse, 36A and 36B …<br/>[Until Fri 16.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12/5: Albertgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3e5225e046a0df3ec11a86c99a2c68a57b90ba1f9c0a3a5c4fdf60d90cdf02e7</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works. [Until 03.11.]</description>
+      <content:encoded><![CDATA[Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works.<br/>[Until 03.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

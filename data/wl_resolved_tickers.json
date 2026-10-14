@@ -3,179 +3,235 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R1342-142|2026-10-14T14:09:24.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R1342-142",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-14T15:08:00.000+0200",
-   "incident": "I20261014-0026"
+   "key": "R109-136|2026-10-14T14:59:55.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R109-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T15:59:00.000+0200",
+   "incident": "I20261014-0030"
   },
   {
-   "key": "R1446-109|2026-10-14T14:02:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1446-109",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:02:00.000+0200",
-   "incident": "I20261014-0027"
+   "key": "R111-136|2026-10-14T14:44:53.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R111-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T15:51:00.000+0200",
+   "incident": "I20261014-0030"
   },
   {
-   "key": "R1447-109|2026-10-14T14:02:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1447-109",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:02:00.000+0200",
-   "incident": "I20261014-0027"
+   "key": "R112-136|2026-10-14T14:44:53.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R112-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T15:51:00.000+0200",
+   "incident": "I20261014-0030"
   },
   {
-   "key": "R1751-101|2026-10-14T14:08:53.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1751-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:08:00.000+0200",
-   "incident": "I20261014-0028"
+   "key": "R113-136|2026-10-14T14:44:53.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R113-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T15:51:00.000+0200",
+   "incident": "I20261014-0030"
   },
   {
-   "key": "R1752-101|2026-10-14T14:08:53.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1752-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:08:00.000+0200",
-   "incident": "I20261014-0028"
+   "key": "R114-136|2026-10-14T14:44:53.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R114-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T15:51:00.000+0200",
+   "incident": "I20261014-0030"
   },
   {
-   "key": "R1753-101|2026-10-14T14:08:53.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1753-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:08:00.000+0200",
-   "incident": "I20261014-0028"
+   "key": "R13-136|2026-10-14T14:44:53.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R13-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T15:51:00.000+0200",
+   "incident": "I20261014-0030"
   },
   {
-   "key": "R1754-101|2026-10-14T14:08:53.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1754-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:08:00.000+0200",
-   "incident": "I20261014-0028"
+   "key": "R14-136|2026-10-14T14:52:24.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R14-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T15:51:00.000+0200",
+   "incident": "I20261014-0030"
   },
   {
-   "key": "R1880-101|2026-10-14T14:08:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1880-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:08:00.000+0200",
-   "incident": "I20261014-0028"
+   "key": "R15-136|2026-10-14T14:52:24.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R15-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T15:51:00.000+0200",
+   "incident": "I20261014-0030"
   },
   {
-   "key": "R1881-101|2026-10-14T14:08:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1881-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:08:00.000+0200",
-   "incident": "I20261014-0028"
+   "key": "R3431-136|2026-10-14T15:00:30.000+0200|Rettungseinsatz\nBetrieb ab Quartier Belvedere",
+   "name": "R3431-136",
+   "title": "Rettungseinsatz\nBetrieb ab Quartier Belvedere",
+   "end": "2026-10-14T15:59:00.000+0200",
+   "incident": "I20261014-0030"
   },
   {
-   "key": "R1882-101|2026-10-14T14:08:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1882-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:08:00.000+0200",
-   "incident": "I20261014-0028"
+   "key": "R3434-106|2026-10-14T14:56:30.000+0200|Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "name": "R3434-106",
+   "title": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "end": "2026-10-14T15:55:00.000+0200",
+   "incident": "I20261014-0032"
   },
   {
-   "key": "R1883-101|2026-10-14T14:08:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1883-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:08:00.000+0200",
-   "incident": "I20261014-0028"
+   "key": "R3434-111|2026-10-14T14:58:00.000+0200|Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "name": "R3434-111",
+   "title": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "end": "2026-10-14T15:57:00.000+0200",
+   "incident": "I20261014-0032"
   },
   {
-   "key": "R1884-101|2026-10-14T14:08:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1884-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:08:00.000+0200",
-   "incident": "I20261014-0028"
+   "key": "R3435-111|2026-10-14T14:57:30.000+0200|Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse",
+   "name": "R3435-111",
+   "title": "Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse",
+   "end": "2026-10-14T15:56:00.000+0200",
+   "incident": "I20261014-0032"
   },
   {
-   "key": "R3877-142|2026-10-14T14:09:24.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R3877-142",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-14T15:08:00.000+0200",
-   "incident": "I20261014-0026"
+   "key": "R3437-136|2026-10-14T15:00:30.000+0200|Rettungseinsatz\nBetrieb ab Quartier Belvedere",
+   "name": "R3437-136",
+   "title": "Rettungseinsatz\nBetrieb ab Quartier Belvedere",
+   "end": "2026-10-14T15:59:00.000+0200",
+   "incident": "I20261014-0030"
   },
   {
-   "key": "R3878-142|2026-10-14T14:09:24.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R3878-142",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-14T15:08:00.000+0200",
-   "incident": "I20261014-0026"
+   "key": "R3439-136|2026-10-14T15:00:30.000+0200|Rettungseinsatz\nBetrieb ab Quartier Belvedere",
+   "name": "R3439-136",
+   "title": "Rettungseinsatz\nBetrieb ab Quartier Belvedere",
+   "end": "2026-10-14T15:59:00.000+0200",
+   "incident": "I20261014-0030"
   },
   {
-   "key": "R426-101|2026-10-14T14:08:51.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R426-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:08:00.000+0200",
-   "incident": "I20261014-0028"
+   "key": "R403-106|2026-10-14T14:55:25.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R403-106",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T15:54:00.000+0200",
+   "incident": "I20261014-0032"
   },
   {
-   "key": "R484-109|2026-10-14T14:02:50.000+0200|Schadhafter Zug\nBetrieb ab Urban-Loritz-Platz",
-   "name": "R484-109",
-   "title": "Schadhafter Zug\nBetrieb ab Urban-Loritz-Platz",
-   "end": "2026-10-14T15:04:00.000+0200",
-   "incident": "I20261014-0027"
+   "key": "R404-106|2026-10-14T14:55:25.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R404-106",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T15:54:00.000+0200",
+   "incident": "I20261014-0032"
   },
   {
-   "key": "R493-142|2026-10-14T14:09:21.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R493-142",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-14T15:08:00.000+0200",
-   "incident": "I20261014-0026"
+   "key": "R404-111|2026-10-14T14:57:26.000+0200|Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse",
+   "name": "R404-111",
+   "title": "Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse",
+   "end": "2026-10-14T15:56:00.000+0200",
+   "incident": "I20261014-0032"
   },
   {
-   "key": "R524-142|2026-10-14T14:09:21.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R524-142",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-14T15:08:00.000+0200",
-   "incident": "I20261014-0026"
+   "key": "R405-106|2026-10-14T14:55:25.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R405-106",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T15:54:00.000+0200",
+   "incident": "I20261014-0032"
   },
   {
-   "key": "R541-109|2026-10-14T14:02:52.000+0200|Schadhafter Zug\nZüge halten bei Linie 49",
-   "name": "R541-109",
-   "title": "Schadhafter Zug\nZüge halten bei Linie 49",
-   "end": "2026-10-14T15:04:00.000+0200",
-   "incident": "I20261014-0027"
+   "key": "R405-111|2026-10-14T14:57:26.000+0200|Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse",
+   "name": "R405-111",
+   "title": "Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse",
+   "end": "2026-10-14T15:56:00.000+0200",
+   "incident": "I20261014-0032"
   },
   {
-   "key": "R543-109|2026-10-14T14:02:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R543-109",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:02:00.000+0200",
-   "incident": "I20261014-0027"
+   "key": "R408-111|2026-10-14T14:57:26.000+0200|Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse",
+   "name": "R408-111",
+   "title": "Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse",
+   "end": "2026-10-14T15:56:00.000+0200",
+   "incident": "I20261014-0032"
   },
   {
-   "key": "R544-109|2026-10-14T14:02:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R544-109",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:02:00.000+0200",
-   "incident": "I20261014-0027"
+   "key": "R409-111|2026-10-14T14:57:26.000+0200|Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse",
+   "name": "R409-111",
+   "title": "Rettungseinsatz\nBetrieb ab Enkplatz, Grillgasse",
+   "end": "2026-10-14T15:56:00.000+0200",
+   "incident": "I20261014-0032"
   },
   {
-   "key": "R545-109|2026-10-14T14:02:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R545-109",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:02:00.000+0200",
-   "incident": "I20261014-0027"
+   "key": "R416-111|2026-10-14T14:58:26.000+0200|Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "name": "R416-111",
+   "title": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "end": "2026-10-14T15:57:00.000+0200",
+   "incident": "I20261014-0032"
   },
   {
-   "key": "R546-109|2026-10-14T14:02:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R546-109",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:02:00.000+0200",
-   "incident": "I20261014-0027"
+   "key": "R418-106|2026-10-14T14:56:26.000+0200|Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "name": "R418-106",
+   "title": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "end": "2026-10-14T15:55:00.000+0200",
+   "incident": "I20261014-0032"
   },
   {
-   "key": "R547-109|2026-10-14T14:02:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R547-109",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:02:00.000+0200",
-   "incident": "I20261014-0027"
+   "key": "R418-111|2026-10-14T14:58:26.000+0200|Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "name": "R418-111",
+   "title": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "end": "2026-10-14T15:57:00.000+0200",
+   "incident": "I20261014-0032"
   },
   {
-   "key": "R831-101|2026-10-14T14:08:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R831-101",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-14T15:08:00.000+0200",
-   "incident": "I20261014-0028"
+   "key": "R420-106|2026-10-14T14:56:26.000+0200|Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "name": "R420-106",
+   "title": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "end": "2026-10-14T15:55:00.000+0200",
+   "incident": "I20261014-0032"
+  },
+  {
+   "key": "R420-111|2026-10-14T14:58:26.000+0200|Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "name": "R420-111",
+   "title": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "end": "2026-10-14T15:57:00.000+0200",
+   "incident": "I20261014-0032"
+  },
+  {
+   "key": "R421-106|2026-10-14T14:56:26.000+0200|Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "name": "R421-106",
+   "title": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "end": "2026-10-14T15:55:00.000+0200",
+   "incident": "I20261014-0032"
+  },
+  {
+   "key": "R421-111|2026-10-14T14:58:26.000+0200|Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "name": "R421-111",
+   "title": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "end": "2026-10-14T15:57:00.000+0200",
+   "incident": "I20261014-0032"
+  },
+  {
+   "key": "R422-106|2026-10-14T14:56:26.000+0200|Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "name": "R422-106",
+   "title": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "end": "2026-10-14T15:55:00.000+0200",
+   "incident": "I20261014-0032"
+  },
+  {
+   "key": "R422-111|2026-10-14T14:58:26.000+0200|Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "name": "R422-111",
+   "title": "Rettungseinsatz\nBetrieb ab Quellenplatz",
+   "end": "2026-10-14T15:57:00.000+0200",
+   "incident": "I20261014-0032"
+  },
+  {
+   "key": "R57-136|2026-10-14T14:44:53.000+0200|Rettungseinsatz\nBetrieb ab Quartier Belvedere",
+   "name": "R57-136",
+   "title": "Rettungseinsatz\nBetrieb ab Quartier Belvedere",
+   "end": "2026-10-14T15:59:00.000+0200",
+   "incident": "I20261014-0030"
+  },
+  {
+   "key": "R58-136|2026-10-14T14:59:55.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R58-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T15:59:00.000+0200",
+   "incident": "I20261014-0030"
+  },
+  {
+   "key": "R81-136|2026-10-14T14:44:53.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R81-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-14T15:51:00.000+0200",
+   "incident": "I20261014-0030"
   }
  ]
 }
