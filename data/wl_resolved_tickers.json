@@ -3,11 +3,193 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
+   "key": "R1338-142|2026-10-14T13:59:22.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R1338-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-14T14:58:00.000+0200",
+   "incident": "I20261014-0026"
+  },
+  {
+   "key": "R1342-142|2026-10-14T14:09:24.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R1342-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-14T15:08:00.000+0200",
+   "incident": "I20261014-0026"
+  },
+  {
+   "key": "R1446-109|2026-10-14T14:02:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R1446-109",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:02:00.000+0200",
+   "incident": "I20261014-0027"
+  },
+  {
+   "key": "R1447-109|2026-10-14T14:02:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R1447-109",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:02:00.000+0200",
+   "incident": "I20261014-0027"
+  },
+  {
+   "key": "R1751-101|2026-10-14T14:08:53.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R1751-101",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:08:00.000+0200",
+   "incident": "I20261014-0028"
+  },
+  {
+   "key": "R1752-101|2026-10-14T14:08:53.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R1752-101",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:08:00.000+0200",
+   "incident": "I20261014-0028"
+  },
+  {
+   "key": "R1753-101|2026-10-14T14:08:53.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R1753-101",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:08:00.000+0200",
+   "incident": "I20261014-0028"
+  },
+  {
+   "key": "R1754-101|2026-10-14T14:08:53.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R1754-101",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:08:00.000+0200",
+   "incident": "I20261014-0028"
+  },
+  {
    "key": "R1776-463|2026-10-14T13:32:18.000+0200|Fahrtbehinderung\nFremder Verkehrsunfall",
    "name": "R1776-463",
    "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
    "end": "2026-10-14T14:31:00.000+0200",
    "incident": "I20261014-0024"
+  },
+  {
+   "key": "R1880-101|2026-10-14T14:08:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R1880-101",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:08:00.000+0200",
+   "incident": "I20261014-0028"
+  },
+  {
+   "key": "R1881-101|2026-10-14T14:08:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R1881-101",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:08:00.000+0200",
+   "incident": "I20261014-0028"
+  },
+  {
+   "key": "R1882-101|2026-10-14T14:08:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R1882-101",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:08:00.000+0200",
+   "incident": "I20261014-0028"
+  },
+  {
+   "key": "R1883-101|2026-10-14T14:08:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R1883-101",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:08:00.000+0200",
+   "incident": "I20261014-0028"
+  },
+  {
+   "key": "R1884-101|2026-10-14T14:08:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R1884-101",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:08:00.000+0200",
+   "incident": "I20261014-0028"
+  },
+  {
+   "key": "R3877-142|2026-10-14T14:09:24.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R3877-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-14T15:08:00.000+0200",
+   "incident": "I20261014-0026"
+  },
+  {
+   "key": "R3878-142|2026-10-14T14:09:24.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R3878-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-14T15:08:00.000+0200",
+   "incident": "I20261014-0026"
+  },
+  {
+   "key": "R426-101|2026-10-14T14:08:51.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R426-101",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:08:00.000+0200",
+   "incident": "I20261014-0028"
+  },
+  {
+   "key": "R484-109|2026-10-14T14:02:50.000+0200|Schadhafter Zug\nBetrieb ab Urban-Loritz-Platz",
+   "name": "R484-109",
+   "title": "Schadhafter Zug\nBetrieb ab Urban-Loritz-Platz",
+   "end": "2026-10-14T15:04:00.000+0200",
+   "incident": "I20261014-0027"
+  },
+  {
+   "key": "R493-142|2026-10-14T14:09:21.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R493-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-14T15:08:00.000+0200",
+   "incident": "I20261014-0026"
+  },
+  {
+   "key": "R524-142|2026-10-14T14:09:21.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R524-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-14T15:08:00.000+0200",
+   "incident": "I20261014-0026"
+  },
+  {
+   "key": "R541-109|2026-10-14T14:02:52.000+0200|Schadhafter Zug\nZüge halten bei Linie 49",
+   "name": "R541-109",
+   "title": "Schadhafter Zug\nZüge halten bei Linie 49",
+   "end": "2026-10-14T15:04:00.000+0200",
+   "incident": "I20261014-0027"
+  },
+  {
+   "key": "R543-109|2026-10-14T14:02:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R543-109",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:02:00.000+0200",
+   "incident": "I20261014-0027"
+  },
+  {
+   "key": "R544-109|2026-10-14T14:02:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R544-109",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:02:00.000+0200",
+   "incident": "I20261014-0027"
+  },
+  {
+   "key": "R545-109|2026-10-14T14:02:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R545-109",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:02:00.000+0200",
+   "incident": "I20261014-0027"
+  },
+  {
+   "key": "R546-109|2026-10-14T14:02:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R546-109",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:02:00.000+0200",
+   "incident": "I20261014-0027"
+  },
+  {
+   "key": "R547-109|2026-10-14T14:02:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R547-109",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:02:00.000+0200",
+   "incident": "I20261014-0027"
+  },
+  {
+   "key": "R831-101|2026-10-14T14:08:52.000+0200|Fahrtbehinderung\nSchadhafter Zug",
+   "name": "R831-101",
+   "title": "Fahrtbehinderung\nSchadhafter Zug",
+   "end": "2026-10-14T15:08:00.000+0200",
+   "incident": "I20261014-0028"
   }
  ]
 }

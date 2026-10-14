@@ -7,18 +7,40 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Wed, 14 Oct 2026 14:01:22 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 14:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[24A: Service disruption]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2de760181a65c454c954cecfd6900e8ee65cf9734b8542a79d3db454877da735</guid>
+      <pubDate>Wed, 14 Oct 2026 14:20:00 +0200</pubDate>
+      <ext:first_seen>Wed, 14 Oct 2026 14:30:47 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 14:20:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 14:20]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 14:20]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/9: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f2e5215dcf979df7b2f81449c361d572de72aa15e864729d40a888c35d82fe7b</guid>
+      <pubDate>Wed, 14 Oct 2026 14:03:00 +0200</pubDate>
+      <ext:first_seen>Wed, 14 Oct 2026 14:03:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 14:03:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 14:03]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 14:03]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[42: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
       <pubDate>Wed, 14 Oct 2026 13:57:00 +0200</pubDate>
       <ext:first_seen>Wed, 14 Oct 2026 13:57:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 13:59:22 +0200</ext:starts_at>
+      <ext:starts_at>Wed, 14 Oct 2026 13:57:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Antonigasse. Expected until 14:20. Reason: illegally parked vehicle in the stop area of Eduardgasse. [Since 13:57]</description>
-      <content:encoded><![CDATA[Service obstruction towards Antonigasse. Expected until 14:20. Reason: illegally parked vehicle in the stop area of Eduardgasse.<br/>[Since 13:57]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 13:57]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:57]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[8A/63A: Traffic accident]]></title>
@@ -30,28 +52,6 @@
       <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 13:31]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:31]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A/17A/67A/67B: Level crossing fault]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">64adf3f111f665b0756e206081b736c33bee655dba42034dde513aed6f0ef56b</guid>
-      <pubDate>Wed, 14 Oct 2026 13:18:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 13:18:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 13:18:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 13:18]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:18]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9b0bf096e3aaab7957e32fe345110615bbe03b8747d9cc18bef459027e9a139f</guid>
-      <pubDate>Wed, 14 Oct 2026 13:13:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 13:13:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 13:13:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 14 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident in the stop area of Berggasse. [Since 13:13]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident in the stop area of Berggasse.<br/>[Since 13:13]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[64A: Liesing-Flur-Gasse]]></title>
