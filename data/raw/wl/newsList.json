@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_239, ftazW_1017121, ftazW_83, ftazW_728, ftazW_84, ftazW_240, ftazW_727, ftazW_45, ftazW_1017123, ftazW_1031267, ftazW_113, ftazW_746, ftazW_1031268, ftazW_739, ftazW_574, ftazW_97, ftazW_114, ftazW_766, ftazW_575, ftazW_740"
+    "trafficInfoNameList": "ftazW_239, ftazW_1017121, ftazW_83, ftazW_728, ftazW_84, ftazW_240, ftazW_727, ftazW_45, ftazW_1017123, ftazW_1031267, ftazW_112, ftazW_113, ftazW_746, ftazW_1031268, ftazW_739, ftazW_574, ftazW_97, ftazW_114, ftazW_766, ftazW_575, ftazW_740"
    }
   ],
   "poiCategoryGroups": [
@@ -2654,6 +2654,41 @@
      "start": "2026-10-15T20:45:00.000+0200"
     },
     "title": "Donaumarina"
+   },
+   {
+    "attributes": {
+     "ausBis": "15.10.2026 17:00",
+     "ausVon": "15.10.2026 07:00",
+     "location": "U1 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U4 - Ausgang Schwedenplatz",
+     "rbls": [
+      4113,
+      4116
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1",
+      "U4"
+     ],
+     "station": "Schwedenplatz",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U4 - Ausgang Schwedenplatz",
+    "name": "ftazW_112",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1",
+     "U4"
+    ],
+    "relatedStops": [
+     4113,
+     4116
+    ],
+    "time": {
+     "end": "2026-10-15T17:00:00.000+0200",
+     "start": "2026-10-15T07:00:00.000+0200"
+    },
+    "title": "Schwedenplatz"
    },
    {
     "attributes": {
