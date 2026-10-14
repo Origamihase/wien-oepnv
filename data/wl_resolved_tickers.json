@@ -3,52 +3,10 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R211-112|2026-10-14T20:52:01.000+0200|Fahrtbehinderung\nwegen Pkw im Gleis",
-   "name": "R211-112",
-   "title": "Fahrtbehinderung\nwegen Pkw im Gleis",
-   "end": "2026-10-14T22:00:00.000+0200",
-   "incident": "I20261014-0044"
-  },
-  {
-   "key": "R272-105|2026-10-14T20:51:02.000+0200|Pkw im Gleis\nBetrieb ab Lerchenfelder Straße",
-   "name": "R272-105",
-   "title": "Pkw im Gleis\nBetrieb ab Lerchenfelder Straße",
-   "end": "2026-10-14T22:00:00.000+0200",
-   "incident": "I20261014-0044"
-  },
-  {
    "key": "R272-112|2026-10-14T20:52:02.000+0200|Fahrtbehinderung\nwegen Pkw im Gleis",
    "name": "R272-112",
    "title": "Fahrtbehinderung\nwegen Pkw im Gleis",
    "end": "2026-10-14T22:06:00.000+0200",
-   "incident": "I20261014-0044"
-  },
-  {
-   "key": "R354-112|2026-10-14T20:52:02.000+0200|Fahrtbehinderung\nwegen Pkw im Gleis",
-   "name": "R354-112",
-   "title": "Fahrtbehinderung\nwegen Pkw im Gleis",
-   "end": "2026-10-14T22:00:00.000+0200",
-   "incident": "I20261014-0044"
-  },
-  {
-   "key": "R355-112|2026-10-14T20:52:02.000+0200|Fahrtbehinderung\nwegen Pkw im Gleis",
-   "name": "R355-112",
-   "title": "Fahrtbehinderung\nwegen Pkw im Gleis",
-   "end": "2026-10-14T22:00:00.000+0200",
-   "incident": "I20261014-0044"
-  },
-  {
-   "key": "R356-112|2026-10-14T20:52:02.000+0200|Fahrtbehinderung\nwegen Pkw im Gleis",
-   "name": "R356-112",
-   "title": "Fahrtbehinderung\nwegen Pkw im Gleis",
-   "end": "2026-10-14T22:00:00.000+0200",
-   "incident": "I20261014-0044"
-  },
-  {
-   "key": "R357-105|2026-10-14T20:51:02.000+0200|Pkw im Gleis\nBetrieb ab Lerchenfelder Straße",
-   "name": "R357-105",
-   "title": "Pkw im Gleis\nBetrieb ab Lerchenfelder Straße",
-   "end": "2026-10-14T22:00:00.000+0200",
    "incident": "I20261014-0044"
   },
   {
@@ -59,20 +17,6 @@
    "incident": "I20261014-0044"
   },
   {
-   "key": "R377-105|2026-10-14T20:51:30.000+0200|Pkw im Gleis\nBetrieb ab Lange Gasse",
-   "name": "R377-105",
-   "title": "Pkw im Gleis\nBetrieb ab Lange Gasse",
-   "end": "2026-10-14T22:00:00.000+0200",
-   "incident": "I20261014-0044"
-  },
-  {
-   "key": "R379-105|2026-10-14T20:51:30.000+0200|Pkw im Gleis\nBetrieb ab Lange Gasse",
-   "name": "R379-105",
-   "title": "Pkw im Gleis\nBetrieb ab Lange Gasse",
-   "end": "2026-10-14T22:00:00.000+0200",
-   "incident": "I20261014-0044"
-  },
-  {
    "key": "R379-112|2026-10-14T20:52:00.000+0200|Pkw im Gleis\nBetrieb ab Lange Gasse",
    "name": "R379-112",
    "title": "Pkw im Gleis\nBetrieb ab Lange Gasse",
@@ -80,45 +24,10 @@
    "incident": "I20261014-0044"
   },
   {
-   "key": "R380-105|2026-10-14T20:51:30.000+0200|Pkw im Gleis\nZüge halten bei Linie 43 Richtung Schottentor",
-   "name": "R380-105",
-   "title": "Pkw im Gleis\nZüge halten bei Linie 43 Richtung Schottentor",
-   "end": "2026-10-14T22:00:00.000+0200",
-   "incident": "I20261014-0044"
-  },
-  {
    "key": "R380-112|2026-10-14T20:52:00.000+0200|Pkw im Gleis\nZüge halten bei Linie 43 Richtung Schottentor",
    "name": "R380-112",
    "title": "Pkw im Gleis\nZüge halten bei Linie 43 Richtung Schottentor",
    "end": "2026-10-14T22:07:00.000+0200",
-   "incident": "I20261014-0044"
-  },
-  {
-   "key": "R381-112|2026-10-14T20:52:00.000+0200|Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S",
-   "name": "R381-112",
-   "title": "Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S",
-   "end": "2026-10-14T22:00:00.000+0200",
-   "incident": "I20261014-0044"
-  },
-  {
-   "key": "R382-112|2026-10-14T20:52:00.000+0200|Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S",
-   "name": "R382-112",
-   "title": "Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S",
-   "end": "2026-10-14T22:00:00.000+0200",
-   "incident": "I20261014-0044"
-  },
-  {
-   "key": "R383-112|2026-10-14T20:52:00.000+0200|Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S",
-   "name": "R383-112",
-   "title": "Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S",
-   "end": "2026-10-14T22:00:00.000+0200",
-   "incident": "I20261014-0044"
-  },
-  {
-   "key": "R384-112|2026-10-14T20:52:30.000+0200|Pkw im Gleis\nZüge halten bei Linie D",
-   "name": "R384-112",
-   "title": "Pkw im Gleis\nZüge halten bei Linie D",
-   "end": "2026-10-14T22:00:00.000+0200",
    "incident": "I20261014-0044"
   },
   {

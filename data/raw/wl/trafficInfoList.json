@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261014-0043-F01, I20260917-0012, I20260922-0032, I20261014-0043, I20261014-0044-F01, I20261014-0044-F02, I20261014-0044, I20260925-0011, I20261014-0042-F01, I20261014-0042-F02, I20260909-0007"
+    "trafficInfoNameList": "I20261014-0043-F01, I20260917-0012, I20260922-0032, I20261014-0044-F01, I20261014-0044-F02, I20261014-0044, I20260925-0011, I20260909-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2025-671, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1177-0, R293-474, R318-437, R1445-149, R5815-671, R1448-412, R1474-412, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2345-127, R2343-626, R2378-627, R2379-627, R2373-127, R2373-126, R2380-627, R2372-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R1974-466, R500-101, R1150-0, R272-105, R357-105, R377-105, R379-105, R380-105, R383-112, R381-112, R382-112, R379-112, R458-112, R380-112, R211-112, R355-112, R354-112, R356-112, R357-112, R272-112, R384-112, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2025-671, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1177-0, R293-474, R318-437, R1449-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2373-125, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R1974-466, R500-101, R1150-0, R458-112, R379-112, R380-112, R272-112, R357-112, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -199,113 +199,6 @@
      "start": "2026-09-25T08:55:00.000+0200"
     },
     "title": "26E: Gleisbauarbeiten"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "5": "ptTram"
-     }
-    },
-    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Albertgasse 33",
-    "name": "I20261014-0042-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "105",
-       "lineName": "5",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T20:10:00.000+0200",
-     "end": "2026-10-14T20:48:00.000+0200",
-     "lastUpdate": "2026-10-14T20:48:00.000+0200",
-     "resume": "2026-10-14T20:48:00.000+0200",
-     "start": "2026-10-14T19:33:00.000+0200"
-    },
-    "title": "5: Fahrzeug im Gleis"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "12": "ptTram"
-     }
-    },
-    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Albertgasse 33",
-    "name": "I20261014-0042-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "112",
-       "lineName": "12",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T20:10:00.000+0200",
-     "end": "2026-10-14T20:48:00.000+0200",
-     "lastUpdate": "2026-10-14T20:48:00.000+0200",
-     "resume": "2026-10-14T20:48:00.000+0200",
-     "start": "2026-10-14T19:33:00.000+0200"
-    },
-    "title": "12: Fahrzeug im Gleis"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Die Linie U1 fährt derzeit in der Station Praterstern in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 20:35 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Praterstern.",
-    "descriptionHTML": "Die Linie U1 fährt derzeit in der Station Praterstern in beiden Richtungen über Gleis 2.<br> <br>Voraussichtliche Dauer: 20:35 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Praterstern.",
-    "name": "I20261014-0043",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "301",
-       "lineName": "U1",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4117
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-14T20:10:00.000+0200",
-     "end": "2026-10-14T20:34:00.000+0200",
-     "lastUpdate": "2026-10-14T20:34:00.000+0200",
-     "resume": "2026-10-14T20:34:00.000+0200",
-     "start": "2026-10-14T20:08:00.000+0200"
-    },
-    "title": "U1: Rettungseinsatz"
    },
    {
     "attributes": {
@@ -940,24 +833,6 @@
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Pkw im Gleis",
-    "name": "R211-112",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     211
-    ],
-    "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
-     "start": "2026-10-14T20:52:01.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Pkw im Gleis"
-   },
-   {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -1228,24 +1103,6 @@
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
    },
    {
-    "description": "Pkw im Gleis\nBetrieb ab Lerchenfelder Straße",
-    "name": "R272-105",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     272
-    ],
-    "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
-     "start": "2026-10-14T20:51:02.000+0200"
-    },
-    "title": "Pkw im Gleis\nBetrieb ab Lerchenfelder Straße"
-   },
-   {
     "description": "Fahrtbehinderung\nwegen Pkw im Gleis",
     "name": "R272-112",
     "owner": "WL",
@@ -1301,78 +1158,6 @@
    },
    {
     "description": "Fahrtbehinderung\nwegen Pkw im Gleis",
-    "name": "R354-112",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     354
-    ],
-    "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
-     "start": "2026-10-14T20:52:02.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Pkw im Gleis"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Pkw im Gleis",
-    "name": "R355-112",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     355
-    ],
-    "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
-     "start": "2026-10-14T20:52:02.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Pkw im Gleis"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Pkw im Gleis",
-    "name": "R356-112",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     356
-    ],
-    "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
-     "start": "2026-10-14T20:52:02.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Pkw im Gleis"
-   },
-   {
-    "description": "Pkw im Gleis\nBetrieb ab Lerchenfelder Straße",
-    "name": "R357-105",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     357
-    ],
-    "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
-     "start": "2026-10-14T20:51:02.000+0200"
-    },
-    "title": "Pkw im Gleis\nBetrieb ab Lerchenfelder Straße"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Pkw im Gleis",
     "name": "R357-112",
     "owner": "WL",
     "priority": "1",
@@ -1409,42 +1194,6 @@
    },
    {
     "description": "Pkw im Gleis\nBetrieb ab Lange Gasse",
-    "name": "R377-105",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     377
-    ],
-    "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
-     "start": "2026-10-14T20:51:30.000+0200"
-    },
-    "title": "Pkw im Gleis\nBetrieb ab Lange Gasse"
-   },
-   {
-    "description": "Pkw im Gleis\nBetrieb ab Lange Gasse",
-    "name": "R379-105",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     379
-    ],
-    "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
-     "start": "2026-10-14T20:51:30.000+0200"
-    },
-    "title": "Pkw im Gleis\nBetrieb ab Lange Gasse"
-   },
-   {
-    "description": "Pkw im Gleis\nBetrieb ab Lange Gasse",
     "name": "R379-112",
     "owner": "WL",
     "priority": "1",
@@ -1463,24 +1212,6 @@
    },
    {
     "description": "Pkw im Gleis\nZüge halten bei Linie 43 Richtung Schottentor",
-    "name": "R380-105",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     380
-    ],
-    "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
-     "start": "2026-10-14T20:51:30.000+0200"
-    },
-    "title": "Pkw im Gleis\nZüge halten bei Linie 43 Richtung Schottentor"
-   },
-   {
-    "description": "Pkw im Gleis\nZüge halten bei Linie 43 Richtung Schottentor",
     "name": "R380-112",
     "owner": "WL",
     "priority": "1",
@@ -1496,78 +1227,6 @@
      "start": "2026-10-14T20:52:00.000+0200"
     },
     "title": "Pkw im Gleis\nZüge halten bei Linie 43 Richtung Schottentor"
-   },
-   {
-    "description": "Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S",
-    "name": "R381-112",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     381
-    ],
-    "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
-     "start": "2026-10-14T20:52:00.000+0200"
-    },
-    "title": "Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S"
-   },
-   {
-    "description": "Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S",
-    "name": "R382-112",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     382
-    ],
-    "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
-     "start": "2026-10-14T20:52:00.000+0200"
-    },
-    "title": "Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S"
-   },
-   {
-    "description": "Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S",
-    "name": "R383-112",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     383
-    ],
-    "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
-     "start": "2026-10-14T20:52:00.000+0200"
-    },
-    "title": "Pkw im Gleis\nBetrieb ab Franz Josefs Bahnhof S"
-   },
-   {
-    "description": "Pkw im Gleis\nZüge halten bei Linie D",
-    "name": "R384-112",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     384
-    ],
-    "time": {
-     "end": "2026-10-14T22:00:00.000+0200",
-     "start": "2026-10-14T20:52:30.000+0200"
-    },
-    "title": "Pkw im Gleis\nZüge halten bei Linie D"
    },
    {
     "description": "Züge halten\nWipplingerstr 39",
