@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261015-0015-F01, I20260909-0007, I20261015-0016-F01, I20261015-0017-F01, I20261015-0017-F02, I20261015-0017-F03, I20261015-0017"
+    "trafficInfoNameList": "I20261015-0018-F01, I20260917-0012, I20261015-0018, I20260922-0032, I20260925-0011, I20261015-0015-F01, I20261015-0019, I20260909-0007, I20261015-0017-F01, I20261015-0017-F02, I20261015-0017-F03, I20261015-0017, I20261015-0020, I20261015-0021"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R1177-0, R293-474, R2025-671, R100-136, R101-136, R1445-149, R1476-149, R1475-149, R1474-149, R1474-412, R1448-412, R5815-671, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1150-0, R1974-466, R500-101, R1925-111, R1926-111, R2254-111, R1925-170, R1926-170, R1930-111, R1932-111, R1931-111, R1933-111, R1933-170, R1932-170, R1930-170, R1931-170, R2244-111, R2231-111, R299-170, R2232-111, R2259-111, R2260-111, R2258-111, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R1177-0, R2025-671, R318-437, R1474-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1475-149, R1476-149, R2558-125, R2345-127, R2372-627, R2378-627, R2343-626, R2380-627, R2373-127, R2373-126, R2379-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R1150-0, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -240,41 +240,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "9A": "ptBusCity"
-     }
-    },
-    "description": "Linie 9A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 9A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Hoffmeistergasse  / Eichenstraße",
-    "name": "I20261015-0016-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "409",
-       "lineName": "9A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T11:01:00.000+0200",
-     "end": "2026-10-15T11:34:00.000+0200",
-     "lastUpdate": "2026-10-15T11:34:00.000+0200",
-     "resume": "2026-10-15T11:34:00.000+0200",
-     "start": "2026-10-15T10:56:00.000+0200"
-    },
-    "title": "9A: Fremder Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "11": "ptTram",
       "65A": "ptBusCity",
       "O": "ptTram"
@@ -425,6 +390,182 @@
      "start": "2026-10-15T11:35:00.000+0200"
     },
     "title": "65A: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 13:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Thaliastraße.",
+    "descriptionHTML": "Linie U6:<br>Fahrtbehinderung in Richtung Floridsdorf.<br> <br>Voraussichtliche Dauer: 13:00 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Thaliastraße.",
+    "name": "I20261015-0018",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4621
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-15T12:36:00.000+0200",
+     "end": "2026-10-15T12:44:00.000+0200",
+     "lastUpdate": "2026-10-15T12:44:00.000+0200",
+     "resume": "2026-10-15T12:44:00.000+0200",
+     "start": "2026-10-15T12:35:00.000+0200"
+    },
+    "title": "U6: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261015-0018-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4621
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T12:44:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T12:44:00.000+0200",
+     "resume": "2026-10-15T12:44:00.000+0200",
+     "start": "2026-10-15T12:35:00.000+0200"
+    },
+    "title": "U6: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "62": "ptTram"
+     }
+    },
+    "description": "Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie 62:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261015-0019",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "162",
+       "lineName": "62",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T12:45:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T12:45:00.000+0200",
+     "resume": "2026-10-15T12:45:00.000+0200",
+     "start": "2026-10-15T12:45:00.000+0200"
+    },
+    "title": "62: Verspätungen"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "37A": "ptBusCity"
+     }
+    },
+    "description": "Linie 37A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "Linie 37A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
+    "name": "I20261015-0020",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "37A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "437",
+       "lineName": "37A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T12:51:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T12:51:00.000+0200",
+     "resume": "2026-10-15T12:51:00.000+0200",
+     "start": "2026-10-15T12:51:00.000+0200"
+    },
+    "title": "37A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "26A": "ptBusCity"
+     }
+    },
+    "description": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "Linie 26A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
+    "name": "I20261015-0021",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "26A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "426",
+       "lineName": "26A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T12:52:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T12:52:00.000+0200",
+     "resume": "2026-10-15T12:52:00.000+0200",
+     "start": "2026-10-15T12:52:00.000+0200"
+    },
+    "title": "26A: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -871,222 +1012,6 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1925-111",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     1925
-    ],
-    "time": {
-     "end": "2026-10-15T12:37:00.000+0200",
-     "start": "2026-10-15T11:38:28.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1925-170",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     1925
-    ],
-    "time": {
-     "end": "2026-10-15T12:38:00.000+0200",
-     "start": "2026-10-15T11:38:58.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1926-111",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     1926
-    ],
-    "time": {
-     "end": "2026-10-15T12:37:00.000+0200",
-     "start": "2026-10-15T11:38:28.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1926-170",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     1926
-    ],
-    "time": {
-     "end": "2026-10-15T12:38:00.000+0200",
-     "start": "2026-10-15T11:38:58.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R1930-111",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     1930
-    ],
-    "time": {
-     "end": "2026-10-15T12:40:00.000+0200",
-     "start": "2026-10-15T11:40:58.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R1930-170",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     1930
-    ],
-    "time": {
-     "end": "2026-10-15T12:42:00.000+0200",
-     "start": "2026-10-15T11:42:59.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R1931-111",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     1931
-    ],
-    "time": {
-     "end": "2026-10-15T12:40:00.000+0200",
-     "start": "2026-10-15T11:40:58.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R1931-170",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     1931
-    ],
-    "time": {
-     "end": "2026-10-15T12:42:00.000+0200",
-     "start": "2026-10-15T11:42:59.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R1932-111",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     1932
-    ],
-    "time": {
-     "end": "2026-10-15T12:40:00.000+0200",
-     "start": "2026-10-15T11:40:58.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R1932-170",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     1932
-    ],
-    "time": {
-     "end": "2026-10-15T12:42:00.000+0200",
-     "start": "2026-10-15T11:42:59.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
-   },
-   {
-    "description": "Rettungseinsatz\nEinstieg bei Linie 6 Richtung Geiereckstraße",
-    "name": "R1933-111",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     1933
-    ],
-    "time": {
-     "end": "2026-10-15T12:40:00.000+0200",
-     "start": "2026-10-15T11:41:59.000+0200"
-    },
-    "title": "Rettungseinsatz\nEinstieg bei Linie 6 Richtung Geiereckstraße"
-   },
-   {
-    "description": "Rettungseinsatz\nEinstieg bei Linie 6 Richtung Burggasse",
-    "name": "R1933-170",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     1933
-    ],
-    "time": {
-     "end": "2026-10-15T12:41:00.000+0200",
-     "start": "2026-10-15T11:42:29.000+0200"
-    },
-    "title": "Rettungseinsatz\nEinstieg bei Linie 6 Richtung Burggasse"
-   },
-   {
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-466",
     "owner": "WL",
@@ -1118,132 +1043,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R2231-111",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2231
-    ],
-    "time": {
-     "end": "2026-10-15T12:52:00.000+0200",
-     "start": "2026-10-15T11:53:00.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R2232-111",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2232
-    ],
-    "time": {
-     "end": "2026-10-15T12:53:00.000+0200",
-     "start": "2026-10-15T11:56:31.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R2244-111",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2244
-    ],
-    "time": {
-     "end": "2026-10-15T12:52:00.000+0200",
-     "start": "2026-10-15T11:53:00.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2254-111",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2254
-    ],
-    "time": {
-     "end": "2026-10-15T12:37:00.000+0200",
-     "start": "2026-10-15T11:38:29.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R2258-111",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2258
-    ],
-    "time": {
-     "end": "2026-10-15T13:00:00.000+0200",
-     "start": "2026-10-15T12:01:01.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R2259-111",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2259
-    ],
-    "time": {
-     "end": "2026-10-15T13:00:00.000+0200",
-     "start": "2026-10-15T12:01:01.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R2260-111",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2260
-    ],
-    "time": {
-     "end": "2026-10-15T13:00:00.000+0200",
-     "start": "2026-10-15T12:01:01.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
    },
    {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
@@ -1532,24 +1331,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
-   },
-   {
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R299-170",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     299
-    ],
-    "time": {
-     "end": "2026-10-15T12:52:00.000+0200",
-     "start": "2026-10-15T11:53:28.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
    },
    {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
