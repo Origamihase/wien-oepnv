@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_97, ftazW_114, ftazW_766, ftazW_575"
+    "trafficInfoNameList": "ftazW_97, ftazW_114, ftazW_766, ftazW_575, ftazW_740, ftazW_371, ftazW_519, ftazW_37, ftazW_112"
    }
   ],
   "poiCategoryGroups": [
@@ -2604,6 +2604,41 @@
    },
    {
     "attributes": {
+     "ausBis": "19.10.2026 00:45",
+     "ausVon": "18.10.2026 20:45",
+     "location": "U1 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U4 - Ausgang Schwedenplatz",
+     "rbls": [
+      4113,
+      4116
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1",
+      "U4"
+     ],
+     "station": "Schwedenplatz",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U4 - Ausgang Schwedenplatz",
+    "name": "ftazW_112",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1",
+     "U4"
+    ],
+    "relatedStops": [
+     4113,
+     4116
+    ],
+    "time": {
+     "end": "2026-10-19T00:45:00.000+0200",
+     "start": "2026-10-18T20:45:00.000+0200"
+    },
+    "title": "Schwedenplatz"
+   },
+   {
+    "attributes": {
      "ausBis": "16.10.2026 05:15",
      "ausVon": "16.10.2026 01:15",
      "location": "U1 Mittelbahnsteig - Zwischengeschoss Zugang U4",
@@ -2637,6 +2672,96 @@
    },
    {
     "attributes": {
+     "ausBis": "19.10.2026 00:45",
+     "ausVon": "18.10.2026 20:45",
+     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Neulerchenfelder Straße",
+     "rbls": [
+      4607
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Josefstädter Straße",
+     "status": "geplante Wartung",
+     "towards": "U6 Siebenhirten"
+    },
+    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Neulerchenfelder Straße",
+    "name": "ftazW_37",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4607
+    ],
+    "time": {
+     "end": "2026-10-19T00:45:00.000+0200",
+     "start": "2026-10-18T20:45:00.000+0200"
+    },
+    "title": "Josefstädter Straße"
+   },
+   {
+    "attributes": {
+     "ausBis": "19.10.2026 00:45",
+     "ausVon": "18.10.2026 20:45",
+     "location": "U3 Bahnsteig Richtung Ottakring - U3 Bahnsteig Richtung Simmering - Zwischengeschoss",
+     "rbls": [
+      4919,
+      4922
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Zieglergasse",
+     "status": "geplante Wartung",
+     "towards": "U3 Ottakring, U3 Simmering"
+    },
+    "description": "U3 Bahnsteig Richtung Ottakring - U3 Bahnsteig Richtung Simmering - Zwischengeschoss",
+    "name": "ftazW_371",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4919,
+     4922
+    ],
+    "time": {
+     "end": "2026-10-19T00:45:00.000+0200",
+     "start": "2026-10-18T20:45:00.000+0200"
+    },
+    "title": "Zieglergasse"
+   },
+   {
+    "attributes": {
+     "ausBis": "19.10.2026 00:45",
+     "ausVon": "18.10.2026 20:45",
+     "location": "ÖBB Bahnsteig Richtung Floridsdorf - Ausgang Engerthstraße",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Handelskai",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "ÖBB Bahnsteig Richtung Floridsdorf - Ausgang Engerthstraße",
+    "name": "ftazW_519",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "time": {
+     "end": "2026-10-19T00:45:00.000+0200",
+     "start": "2026-10-18T20:45:00.000+0200"
+    },
+    "title": "Handelskai"
+   },
+   {
+    "attributes": {
      "ausBis": "16.10.2026 05:15",
      "ausVon": "16.10.2026 01:15",
      "location": "U4 Bahnsteig Richtung Richtung Hütteldorf - Ausgang Schloß Schönbrunn",
@@ -2665,6 +2790,39 @@
      "start": "2026-10-16T01:15:00.000+0200"
     },
     "title": "Schönbrunn"
+   },
+   {
+    "attributes": {
+     "ausBis": "16.10.2026 05:15",
+     "ausVon": "16.10.2026 01:15",
+     "location": "U3 Mittelbahnsteig - Ausgang Eisteichstraße",
+     "rbls": [
+      4935,
+      4940
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Zippererstraße",
+     "status": "geplante Wartung",
+     "towards": "U3 beide Richtungen"
+    },
+    "description": "U3 Mittelbahnsteig - Ausgang Eisteichstraße",
+    "name": "ftazW_740",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4935,
+     4940
+    ],
+    "time": {
+     "end": "2026-10-16T05:15:00.000+0200",
+     "start": "2026-10-16T01:15:00.000+0200"
+    },
+    "title": "Zippererstraße"
    },
    {
     "attributes": {
