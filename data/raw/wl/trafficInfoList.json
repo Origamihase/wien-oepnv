@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261015-0040-F01, I20261015-0040-F02, I20260925-0011, I20260909-0007, I20261015-0039, I20261015-0036, I20261015-0038-F01, I20261015-0041, I20261015-0037-F01, I20261015-0040"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261015-0040-F01, I20261015-0040-F02, I20260925-0011, I20260909-0007, I20261015-0041, I20261015-0040"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1177-0, R293-474, R2025-671, R1472-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2379-627, R2380-627, R2345-127, R2372-627, R2373-126, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2378-627, R2343-626, R2343-125, R1150-0, R1974-466, R2343-229, R1125-229, R2343-429, R1125-429, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1177-0, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R2025-671, R318-437, R293-474, R1473-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1474-149, R1475-149, R1476-149, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2380-627, R2379-627, R2345-127, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R1150-0, R1974-466, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -199,146 +199,6 @@
      "start": "2026-09-25T08:55:00.000+0200"
     },
     "title": "26E: Gleisbauarbeiten"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "29A": "ptBusCity"
-     }
-    },
-    "description": "Linie 29A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "Linie 29A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
-    "name": "I20261015-0036",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "29A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "429",
-       "lineName": "29A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T20:42:00.000+0200",
-     "end": "2026-10-15T22:02:00.000+0200",
-     "lastUpdate": "2026-10-15T22:02:00.000+0200",
-     "resume": "2026-10-15T22:02:00.000+0200",
-     "start": "2026-10-15T20:42:00.000+0200"
-    },
-    "title": "29A: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261015-0037-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "301",
-       "lineName": "U1",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4185
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T21:23:00.000+0200",
-     "end": "2026-10-15T22:02:00.000+0200",
-     "lastUpdate": "2026-10-15T22:02:00.000+0200",
-     "resume": "2026-10-15T22:02:00.000+0200",
-     "start": "2026-10-15T20:58:00.000+0200"
-    },
-    "title": "U1: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "7A": "ptBusCity"
-     }
-    },
-    "description": "Linie 7A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 7A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Sonnleithnergasse ",
-    "name": "I20261015-0038-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "7A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "407",
-       "lineName": "7A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T21:39:00.000+0200",
-     "end": "2026-10-15T22:02:00.000+0200",
-     "lastUpdate": "2026-10-15T22:02:00.000+0200",
-     "resume": "2026-10-15T22:02:00.000+0200",
-     "start": "2026-10-15T21:25:00.000+0200"
-    },
-    "title": "7A: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "13A": "ptBusCity"
-     }
-    },
-    "description": "Linie 13A: Unregelmäßige Intervalle in Richtung Alser Straße, Skodagasse. Grund: Polizeieinsatz.",
-    "descriptionHTML": "Linie 13A:<br>Unregelmäßige Intervalle in Richtung Alser Straße, Skodagasse.<br> <br>Grund: Polizeieinsatz.",
-    "name": "I20261015-0039",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "413",
-       "lineName": "13A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T22:01:00.000+0200",
-     "end": "2026-10-15T22:23:00.000+0200",
-     "lastUpdate": "2026-10-15T22:23:00.000+0200",
-     "resume": "2026-10-15T22:23:00.000+0200",
-     "start": "2026-10-15T22:01:00.000+0200"
-    },
-    "title": "13A: Polizeieinsatz"
    },
    {
     "attributes": {
@@ -558,42 +418,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1125-229",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "29B"
-    ],
-    "relatedStops": [
-     1125
-    ],
-    "time": {
-     "end": "2026-10-15T23:29:00.000+0200",
-     "start": "2026-10-15T22:30:04.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1125-429",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "29A"
-    ],
-    "relatedStops": [
-     1125
-    ],
-    "time": {
-     "end": "2026-10-15T23:30:00.000+0200",
-     "start": "2026-10-15T22:30:34.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
@@ -1017,42 +841,6 @@
      "start": "2026-10-14T00:00:25.000+0200"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R2343-229",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "29B"
-    ],
-    "relatedStops": [
-     2343
-    ],
-    "time": {
-     "end": "2026-10-15T23:29:00.000+0200",
-     "start": "2026-10-15T22:30:03.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R2343-429",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "29A"
-    ],
-    "relatedStops": [
-     2343
-    ],
-    "time": {
-     "end": "2026-10-15T23:30:00.000+0200",
-     "start": "2026-10-15T22:30:33.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Ersatzbus\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
