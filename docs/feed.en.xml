@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 15 Oct 2026 14:34:06 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 15:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Wien Hetzendorf ↔ Wien Liesing]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;919813</guid>
+      <pubDate>Thu, 15 Oct 2026 14:58:17 +0200</pubDate>
+      <ext:first_seen>Thu, 15 Oct 2026 15:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 15 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 15 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Due to damage on the track, trains can only run to a limited extent until approx. 16:00. Allow up to 15 minutes of extra travel time. [Since 14:58]</description>
+      <content:encoded><![CDATA[Due to damage on the track, trains can only run to a limited extent until approx. 16:00. Allow up to 15 minutes of extra travel time.<br/>[Since 14:58]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[10: Level crossing fault]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,28 +30,6 @@
       <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 14:08]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 14:08]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Third-party traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">85ef2a0baf69650a1a8085cc90d290ed25d87e7295927f37db4a458c23e43499</guid>
-      <pubDate>Thu, 15 Oct 2026 13:35:00 +0200</pubDate>
-      <ext:first_seen>Thu, 15 Oct 2026 13:35:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 15 Oct 2026 13:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 13:35]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:35]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26A/37A: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">119a03d73a56c25ea94d3b18e4744ffb579a2a4fa2061d08540c9b17d3370ed5</guid>
-      <pubDate>Thu, 15 Oct 2026 12:51:00 +0200</pubDate>
-      <ext:first_seen>Thu, 15 Oct 2026 13:01:07 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 15 Oct 2026 12:51:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 12:51]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 12:51]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/2/5/5A/5B/71/74A/80A/D/O: Demonstration]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling … [Until 25.12.]</description>
       <content:encoded><![CDATA[Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling …<br/>[Until 25.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[20A: Construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d541da730008a50f7d13d1231355ba02134695bfdd0469c8f90d4ab1ab9eaf30</guid>
+      <pubDate>Fri, 02 Oct 2026 16:05:00 +0200</pubDate>
+      <ext:first_seen>Fri, 02 Oct 2026 16:31:05 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 15 Oct 2026 17:00:00 +0200</ext:ends_at>
+      <description>Due to construction works in the area of Wildbadgasse, line 20A is redirected. [Today]</description>
+      <content:encoded><![CDATA[Due to construction works in the area of Wildbadgasse, line 20A is redirected.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
