@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_113, ftazW_746, ftazW_1031268, ftazW_739, ftazW_574, ftazW_97, ftazW_114, ftazW_766, ftazW_575, ftazW_740"
+    "trafficInfoNameList": "ftazW_746, ftazW_1031268, ftazW_739, ftazW_574, ftazW_97, ftazW_114, ftazW_766, ftazW_575, ftazW_740"
    }
   ],
   "poiCategoryGroups": [
@@ -2663,41 +2663,6 @@
      "start": "2026-10-15T20:45:00.000+0200"
     },
     "title": "Donaumarina"
-   },
-   {
-    "attributes": {
-     "ausBis": "16.10.2026 00:45",
-     "ausVon": "15.10.2026 20:45",
-     "location": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
-     "rbls": [
-      4427,
-      4410
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4",
-      "U1"
-     ],
-     "station": "Schwedenplatz",
-     "status": "geplante Wartung",
-     "towards": "U4 beide Richtungen"
-    },
-    "description": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
-    "name": "ftazW_113",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4",
-     "U1"
-    ],
-    "relatedStops": [
-     4427,
-     4410
-    ],
-    "time": {
-     "end": "2026-10-16T00:45:00.000+0200",
-     "start": "2026-10-15T20:45:00.000+0200"
-    },
-    "title": "Schwedenplatz"
    },
    {
     "attributes": {
