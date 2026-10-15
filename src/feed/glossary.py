@@ -14,6 +14,15 @@ Changing an entry changes the EN feed: bump ``_TRANSLATION_CACHE_EPOCH`` in
 
 from __future__ import annotations
 
+# The tables keep their private names from ``build_feed``, which imports them
+# (code scanning counts an unlisted ``_name`` as unused).
+__all__ = [
+    "_FIELD_LABEL_EN",
+    "_GLOSSARY_BASE",
+    "_GLOSSARY_BY_CATEGORY",
+    "_GLOSSARY_BY_SOURCE",
+]
+
 # ÖPNV domain glossary. The Helsinki opus-mt-de-en model has only
 # seen everyday German prose during training; it routinely
 # mistranslates Austrian transit jargon because the closest token in
