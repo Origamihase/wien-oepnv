@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_113, ftazW_746, ftazW_1031268, ftazW_739, ftazW_574, ftazW_97, ftazW_114, ftazW_766, ftazW_575, ftazW_740"
+    "trafficInfoNameList": "ftazW_97, ftazW_114, ftazW_766, ftazW_575"
    }
   ],
   "poiCategoryGroups": [
@@ -2604,72 +2604,6 @@
    },
    {
     "attributes": {
-     "ausBis": "16.10.2026 00:45",
-     "ausVon": "15.10.2026 20:45",
-     "location": "U2 Bahnsteig Richtung Seestadt - Ausgang Donaumarina",
-     "rbls": [
-      4268
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Donaumarina",
-     "status": "geplante Wartung",
-     "towards": "U2 Seestadt"
-    },
-    "description": "U2 Bahnsteig Richtung Seestadt - Ausgang Donaumarina",
-    "name": "ftazW_1031268",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4268
-    ],
-    "time": {
-     "end": "2026-10-16T00:45:00.000+0200",
-     "start": "2026-10-15T20:45:00.000+0200"
-    },
-    "title": "Donaumarina"
-   },
-   {
-    "attributes": {
-     "ausBis": "16.10.2026 00:45",
-     "ausVon": "15.10.2026 20:45",
-     "location": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
-     "rbls": [
-      4427,
-      4410
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4",
-      "U1"
-     ],
-     "station": "Schwedenplatz",
-     "status": "geplante Wartung",
-     "towards": "U4 beide Richtungen"
-    },
-    "description": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
-    "name": "ftazW_113",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4",
-     "U1"
-    ],
-    "relatedStops": [
-     4427,
-     4410
-    ],
-    "time": {
-     "end": "2026-10-16T00:45:00.000+0200",
-     "start": "2026-10-15T20:45:00.000+0200"
-    },
-    "title": "Schwedenplatz"
-   },
-   {
-    "attributes": {
      "ausBis": "16.10.2026 05:15",
      "ausVon": "16.10.2026 01:15",
      "location": "U1 Mittelbahnsteig - Zwischengeschoss Zugang U4",
@@ -2703,37 +2637,6 @@
    },
    {
     "attributes": {
-     "ausBis": "16.10.2026 00:45",
-     "ausVon": "15.10.2026 20:45",
-     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Schloß Schönbrunn",
-     "rbls": [
-      4411
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Schönbrunn",
-     "status": "geplante Wartung",
-     "towards": "U4 Heiligenstadt"
-    },
-    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Schloß Schönbrunn",
-    "name": "ftazW_574",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4411
-    ],
-    "time": {
-     "end": "2026-10-16T00:45:00.000+0200",
-     "start": "2026-10-15T20:45:00.000+0200"
-    },
-    "title": "Schönbrunn"
-   },
-   {
-    "attributes": {
      "ausBis": "16.10.2026 05:15",
      "ausVon": "16.10.2026 01:15",
      "location": "U4 Bahnsteig Richtung Richtung Hütteldorf - Ausgang Schloß Schönbrunn",
@@ -2762,105 +2665,6 @@
      "start": "2026-10-16T01:15:00.000+0200"
     },
     "title": "Schönbrunn"
-   },
-   {
-    "attributes": {
-     "ausBis": "16.10.2026 00:45",
-     "ausVon": "15.10.2026 20:45",
-     "location": "U3 Mittelbahnsteig - Ausgang Zippererstraße/Simmeringer Hauptstraße",
-     "rbls": [
-      4935,
-      4940
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Zippererstraße",
-     "status": "geplante Wartung",
-     "towards": "U3 beide Richtungen"
-    },
-    "description": "U3 Mittelbahnsteig - Ausgang Zippererstraße/Simmeringer Hauptstraße",
-    "name": "ftazW_739",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4935,
-     4940
-    ],
-    "time": {
-     "end": "2026-10-16T00:45:00.000+0200",
-     "start": "2026-10-15T20:45:00.000+0200"
-    },
-    "title": "Zippererstraße"
-   },
-   {
-    "attributes": {
-     "ausBis": "16.10.2026 05:15",
-     "ausVon": "16.10.2026 01:15",
-     "location": "U3 Mittelbahnsteig - Ausgang Eisteichstraße",
-     "rbls": [
-      4935,
-      4940
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Zippererstraße",
-     "status": "geplante Wartung",
-     "towards": "U3 beide Richtungen"
-    },
-    "description": "U3 Mittelbahnsteig - Ausgang Eisteichstraße",
-    "name": "ftazW_740",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4935,
-     4940
-    ],
-    "time": {
-     "end": "2026-10-16T05:15:00.000+0200",
-     "start": "2026-10-16T01:15:00.000+0200"
-    },
-    "title": "Zippererstraße"
-   },
-   {
-    "attributes": {
-     "ausBis": "16.10.2026 00:45",
-     "ausVon": "15.10.2026 20:45",
-     "location": "U3 Mittelbahnsteig - Ausgang Kaiserebersdorfer Straße/Strachegasse",
-     "rbls": [
-      4937,
-      4938
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Simmering",
-     "status": "geplante Wartung",
-     "towards": "U3 beide Richtungen"
-    },
-    "description": "U3 Mittelbahnsteig - Ausgang Kaiserebersdorfer Straße/Strachegasse",
-    "name": "ftazW_746",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4937,
-     4938
-    ],
-    "time": {
-     "end": "2026-10-16T00:45:00.000+0200",
-     "start": "2026-10-15T20:45:00.000+0200"
-    },
-    "title": "Simmering"
    },
    {
     "attributes": {
