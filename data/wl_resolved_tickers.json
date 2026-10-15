@@ -1,5 +1,69 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R1930-111|2026-10-15T19:43:45.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R1930-111",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-15T20:43:00.000+0200",
+   "incident": "I20261015-0035"
+  },
+  {
+   "key": "R1931-111|2026-10-15T19:43:45.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R1931-111",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-15T20:43:00.000+0200",
+   "incident": "I20261015-0035"
+  },
+  {
+   "key": "R1932-111|2026-10-15T19:43:45.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R1932-111",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-15T20:43:00.000+0200",
+   "incident": "I20261015-0035"
+  },
+  {
+   "key": "R1933-111|2026-10-15T19:43:45.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R1933-111",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-15T20:43:00.000+0200",
+   "incident": "I20261015-0035"
+  },
+  {
+   "key": "R404-111|2026-10-15T19:43:45.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R404-111",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-15T20:43:00.000+0200",
+   "incident": "I20261015-0035"
+  },
+  {
+   "key": "R405-111|2026-10-15T19:43:45.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R405-111",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-15T20:43:00.000+0200",
+   "incident": "I20261015-0035"
+  },
+  {
+   "key": "R699-412|2026-10-15T19:27:45.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R699-412",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-15T20:27:00.000+0200",
+   "incident": "I20261015-0034"
+  },
+  {
+   "key": "R751-412|2026-10-15T19:27:45.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R751-412",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-15T20:27:00.000+0200",
+   "incident": "I20261015-0034"
+  },
+  {
+   "key": "R753-412|2026-10-15T19:27:45.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R753-412",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-15T20:27:00.000+0200",
+   "incident": "I20261015-0034"
+  }
+ ]
 }
