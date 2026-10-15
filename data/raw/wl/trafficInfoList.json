@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261015-0033, I20261015-0034-F01, I20260922-0032, I20260925-0011, I20261015-0035-F01, I20260909-0007, I20261015-0036"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261015-0037-F01, I20261015-0037, I20260909-0007, I20261015-0036, I20261015-0038"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2025-671, R101-136, R102-136, R103-136, R100-136, R1177-0, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R293-474, R318-437, R1472-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2373-127, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2378-627, R1150-0, R1974-466, R500-101, R2343-229, R1125-229, R2343-429, R1125-429, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2025-671, R1177-0, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R318-437, R1448-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2359-125, R2378-627, R2343-626, R2343-125, R1150-0, R1974-466, R500-101, R2343-229, R1125-229, R2343-429, R1125-429, R814-407, R1797-407, R780-407, R720-407, R721-407, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,113 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "63A": "ptBusCity"
-     }
-    },
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "descriptionHTML": "Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Polizeieinsatz.",
-    "name": "I20261015-0033",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "63A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "463",
-       "lineName": "63A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "relatedStops": [
-     2452
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T19:21:00.000+0200",
-     "end": "2026-10-15T20:21:00.000+0200",
-     "lastUpdate": "2026-10-15T20:21:00.000+0200",
-     "resume": "2026-10-15T20:21:00.000+0200",
-     "start": "2026-10-15T19:20:00.000+0200"
-    },
-    "title": "63A: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "12A": "ptBusCity"
-     }
-    },
-    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Obere Amtshausgasse  2",
-    "name": "I20261015-0034-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "412",
-       "lineName": "12A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T19:37:00.000+0200",
-     "end": "2026-10-15T20:21:00.000+0200",
-     "lastUpdate": "2026-10-15T20:21:00.000+0200",
-     "resume": "2026-10-15T20:21:00.000+0200",
-     "start": "2026-10-15T19:26:00.000+0200"
-    },
-    "title": "12A: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "11": "ptTram"
-     }
-    },
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Neilreichgasse 105",
-    "name": "I20261015-0035-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "111",
-       "lineName": "11",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T19:47:00.000+0200",
-     "end": "2026-10-15T20:21:00.000+0200",
-     "lastUpdate": "2026-10-15T20:21:00.000+0200",
-     "resume": "2026-10-15T20:21:00.000+0200",
-     "start": "2026-10-15T19:43:00.000+0200"
-    },
-    "title": "11: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "29A": "ptBusCity"
      }
     },
@@ -340,6 +233,114 @@
      "start": "2026-10-15T20:42:00.000+0200"
     },
     "title": "29A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Die Linie U1 fährt derzeit nur zwischen Oberlaa und Großfeldsiedlung. Weichen Sie ersatzweise auf die Linie 29A aus. Voraussichtliche Dauer: 21:40 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Leopoldau.",
+    "descriptionHTML": "Die Linie U1 fährt derzeit nur zwischen Oberlaa und Großfeldsiedlung.<br> <br>Weichen Sie ersatzweise auf die Linie 29A aus.<br><br>Voraussichtliche Dauer: 21:40 Uhr.<br><br>Grund: Polizeieinsatz im Haltestellenbereich Leopoldau.",
+    "name": "I20261015-0037",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "301",
+       "lineName": "U1",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4185
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-15T21:06:00.000+0200",
+     "end": "2026-10-15T21:23:00.000+0200",
+     "lastUpdate": "2026-10-15T21:23:00.000+0200",
+     "resume": "2026-10-15T21:23:00.000+0200",
+     "start": "2026-10-15T20:58:00.000+0200"
+    },
+    "title": "U1: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261015-0037-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "301",
+       "lineName": "U1",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4185
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T21:23:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T21:23:00.000+0200",
+     "resume": "2026-10-15T21:23:00.000+0200",
+     "start": "2026-10-15T20:58:00.000+0200"
+    },
+    "title": "U1: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "7A": "ptBusCity"
+     }
+    },
+    "description": "Linie 7A: Fahrtbehinderung in Richtung Meidling Hauptstraße U. Voraussichtliche Dauer: 21:45 Uhr. Grund: Falschparker im Bereich Sonnleithnergasse .",
+    "descriptionHTML": "Linie 7A:<br>Fahrtbehinderung in Richtung Meidling Hauptstraße U.<br> <br>Voraussichtliche Dauer: 21:45 Uhr.<br><br>Grund: Falschparker im Bereich Sonnleithnergasse .",
+    "location": "Sonnleithnergasse ",
+    "name": "I20261015-0038",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "407",
+       "lineName": "7A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T21:25:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T21:25:00.000+0200",
+     "start": "2026-10-15T21:25:00.000+0200"
+    },
+    "title": "7A: Falschparker"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -804,6 +805,24 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
    },
    {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1797-407",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedStops": [
+     1797
+    ],
+    "time": {
+     "end": "2026-10-15T22:24:00.000+0200",
+     "start": "2026-10-15T21:24:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -1264,6 +1283,78 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R720-407",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedStops": [
+     720
+    ],
+    "time": {
+     "end": "2026-10-15T22:24:00.000+0200",
+     "start": "2026-10-15T21:24:56.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R721-407",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedStops": [
+     721
+    ],
+    "time": {
+     "end": "2026-10-15T22:24:00.000+0200",
+     "start": "2026-10-15T21:24:56.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R780-407",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedStops": [
+     780
+    ],
+    "time": {
+     "end": "2026-10-15T22:24:00.000+0200",
+     "start": "2026-10-15T21:24:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R814-407",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedStops": [
+     814
+    ],
+    "time": {
+     "end": "2026-10-15T22:24:00.000+0200",
+     "start": "2026-10-15T21:24:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",

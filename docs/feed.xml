@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 15 Oct 2026 21:12:56 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 21:30:38 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[7A: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">77994cd70c8bd44acc7c6ae28c2d0cee63d1f01a0b2acaf969f56ecb941ab571</guid>
+      <pubDate>Thu, 15 Oct 2026 21:24:55 +0200</pubDate>
+      <ext:first_seen>Thu, 15 Oct 2026 21:24:55 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 15 Oct 2026 21:25:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Meidling Hauptstraße U. Voraussichtlich bis 21:45 Uhr. Grund: Falschparker im Bereich Sonnleithnergasse. [Seit 21:24]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Meidling Hauptstraße U. Voraussichtlich bis 21:45 Uhr. Grund: Falschparker im Bereich Sonnleithnergasse.<br/>[Seit 21:24]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[29A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,6 +41,17 @@
       <ext:ends_at>Thu, 15 Oct 2026 21:40:00 +0200</ext:ends_at>
       <description>Fahrtbehinderung. [Seit 20:40]</description>
       <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 20:40]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U1: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49</guid>
+      <pubDate>Thu, 15 Oct 2026 20:58:00 +0200</pubDate>
+      <ext:first_seen>Thu, 15 Oct 2026 20:58:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 15 Oct 2026 20:58:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 20:58]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20:58]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/2/5/5A/5B/71/74A/80A/D/O: Demonstration]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Albertgasse 27 → Albertgasse 33 - 35. Haltestellenverlegung der Linien 5 und 12 in Richtung Westbahnhof U bzw. Josefstädter Straße U. Grund: Bauarbeiten. [Bis 03.11.]</description>
       <content:encoded><![CDATA[Albertgasse 27 → Albertgasse 33 - 35. Haltestellenverlegung der Linien 5 und 12 in Richtung Westbahnhof U bzw. Josefstädter Straße U. Grund: Bauarbeiten.<br/>[Bis 03.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A: Max-Mauermann-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">56aa798cbb018fbaed4813a991f56c2470867f1f9a0ce034661ba2e01da13007</guid>
-      <pubDate>Wed, 07 Oct 2026 15:30:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 15:30:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Bitterlichstraße gegenüber Max-Mauermann-Gasse → Bitterlichstraße gegenüber Friedrich-Teller-Gasse. Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling … [Bis 25.12.]</description>
-      <content:encoded><![CDATA[Bitterlichstraße gegenüber Max-Mauermann-Gasse → Bitterlichstraße gegenüber Friedrich-Teller-Gasse. Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling …<br/>[Bis 25.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A/3A: Schwertgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
-      <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung. [Bis 31.03.2027]</description>
-      <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung.<br/>[Bis 31.03.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
