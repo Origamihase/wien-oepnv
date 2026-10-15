@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261015-0017-F02, I20260925-0011, I20261015-0020, I20260909-0007, I20261015-0021, I20261015-0024-F01, I20261015-0024, I20261015-0023-F01"
+    "trafficInfoNameList": "I20261015-0025, I20260917-0012, I20260922-0032, I20261015-0024-F01, I20260925-0011, I20261015-0020, I20260909-0007, I20261015-0021, I20261015-0023-F01"
    },
    {
     "id": 3,
@@ -203,41 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "11": "ptTram"
-     }
-    },
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Troststraße / Van-der-Nüll-Gasse ",
-    "name": "I20261015-0017-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "111",
-       "lineName": "11",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T12:09:00.000+0200",
-     "end": "2026-10-15T14:13:00.000+0200",
-     "lastUpdate": "2026-10-15T14:13:00.000+0200",
-     "resume": "2026-10-15T14:13:00.000+0200",
-     "start": "2026-10-15T11:35:00.000+0200"
-    },
-    "title": "11: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "37A": "ptBusCity"
      }
     },
@@ -344,43 +309,6 @@
       "10": "ptTram"
      }
     },
-    "description": "Linie 10: Fahrtbehinderung in Richtung Unter St. Veit, Hummelgasse. Voraussichtliche Dauer: 14:20 Uhr. Grund: Störung an einem Bahnübergang im Haltestellenbereich Verbindungsbahn.",
-    "descriptionHTML": "Linie 10:<br>Fahrtbehinderung in Richtung Unter St. Veit, Hummelgasse.<br> <br>Voraussichtliche Dauer: 14:20 Uhr.<br><br>Grund: Störung an einem Bahnübergang im Haltestellenbereich Verbindungsbahn.",
-    "name": "I20261015-0024",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "110",
-       "lineName": "10",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     1600
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T14:10:00.000+0200",
-     "end": "2026-10-15T14:12:00.000+0200",
-     "lastUpdate": "2026-10-15T14:12:00.000+0200",
-     "resume": "2026-10-15T14:12:00.000+0200",
-     "start": "2026-10-15T14:08:00.000+0200"
-    },
-    "title": "10: Störung an einem Bahnübergang"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "10": "ptTram"
-     }
-    },
     "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "name": "I20261015-0024-F01",
@@ -402,15 +330,49 @@
     "relatedStops": [
      1600
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-15T14:12:00.000+0200",
-     "end": "2026-10-15T23:55:00.000+0200",
-     "lastUpdate": "2026-10-15T14:12:00.000+0200",
-     "resume": "2026-10-15T14:12:00.000+0200",
+     "end": "2026-10-15T15:11:00.000+0200",
+     "lastUpdate": "2026-10-15T15:11:00.000+0200",
+     "resume": "2026-10-15T15:11:00.000+0200",
      "start": "2026-10-15T14:08:00.000+0200"
     },
     "title": "10: Störung an einem Bahnübergang"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "98A": "ptBusCity"
+     }
+    },
+    "description": "Linie 98A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "Linie 98A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Rettungseinsatz.",
+    "name": "I20261015-0025",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "98A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "498",
+       "lineName": "98A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T15:28:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T15:28:00.000+0200",
+     "resume": "2026-10-15T15:28:00.000+0200",
+     "start": "2026-10-15T15:28:00.000+0200"
+    },
+    "title": "98A: Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
