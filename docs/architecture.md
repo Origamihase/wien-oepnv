@@ -2394,7 +2394,11 @@ Nicht jeder Text gehört in ein NMT-Modell:
     „Einstieg bei Linie 44“ zu „bei Haltestelle der Linie“, eine
     Querstraße hinter „nach“ in Halte- und Einstiegsmeldungen zu „just
     after“ und „kann nicht eingehalten werden“ / „hält … die Station … ein“
-    zu „not served“ / „stops at“. Ein Partizip, das das Glossar übersetzt
+    zu „not served“ / „stops at“; „kann/können … die Haltestelle(n)/Station(en)
+    … nicht einhalten“ mit dem Subjekt davor („Die Linie 66A kann die
+    Haltestelle Atzgersdorf, Kirchenplatz in Richtung Reumannplatz nicht
+    einhalten“, vorher „cannot follow the stop“) wird zu „hält nicht an der
+    Haltestelle …“, das Glossar sagt „does not stop at“ (15.10.). Ein Partizip, das das Glossar übersetzt
     („kurzgeführt“, „gesperrt“, „nicht angefahren“, „aufrecht gehalten“),
     kommt mit seinem Hilfsverb zusammen (`_GLOSSED_PARTICIPLE_RE`), damit das
     Modell es nicht abtrennt („line 5A curtailed“, „can be be maintained“).
@@ -2466,6 +2470,14 @@ Zwei Sorten, bewusst unterscheidbar:
   square“; Determinative wie „Dieser Platz“ ausgenommen), Hauptbahnhöfe in
   ÖBB-Kurzform („Wien Hbf“, vorher „Vienna Hbf“) und WL-Haltestellen in der
   Komma-Form der Echtzeittexte („Burggasse, Stadthalle“, vorher „city hall“).
+  Seit 15.10. gehört „Wien“ direkt vor einem Namen oder hinter ÖBBs „b.“
+  (bei) zum Namen und wird mit ihm geschützt (`_WIEN_NAME_RE`, letzter
+  Durchgang): „Wien Schedifkaplatz“ (vorher „Vienna Schedifkaplatz“ neben
+  „Wien Matzleinsdorfer Platz“), „Wien St.Marx“, „Purkersdorf b.Wien
+  Zentrum“, „Gerasdorf b. Wien“. Ein Name bleibt im EN-Feed ein Name, wie
+  auf dem Schild; „Wien“ allein („Fahrtrichtung Wien“, „Großraum Wien“) ist
+  die Stadt und wird weiter „Vienna“, vor einer Marke („Wien
+  Stammstrecke“), Linie oder einem Symbol bleibt es frei.
   Werden nach dem Modelllauf **wortgleich** zurückgesetzt. Ein Datum wird
   **vor** den Linienkennungen maskiert: sonst wäre nur sein Tag ein
   Platzhalter, der am Punkt klebt, und das Modell verliert den Punkt

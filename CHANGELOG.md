@@ -5,6 +5,23 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **EN: „nicht einhalten“ und Haltestellen mit „Wien“ im Namen (2026-10-15)**:
+  „Die Linie 66A kann die Haltestelle Atzgersdorf, Kirchenplatz in Richtung
+  Reumannplatz nicht einhalten“ stand im EN-Feed als „Line 66A cannot
+  follow the stop …“ (13.10.). Jedes „kann/können … die Haltestelle(n)/
+  Station(en) … nicht einhalten“ wird vor dem Modell zu „hält nicht an der
+  Haltestelle …“, das Glossar sagt „does not stop at“; jetzt „Line 66A does
+  not stop at Atzgersdorf, Kirchenplatz towards Reumannplatz.“ „Wien“ direkt
+  vor einem Namen oder hinter ÖBBs „b.“ gehört zum Namen und wird mit ihm
+  geschützt (`_WIEN_NAME_RE`): „Badner Bahn: no service Wien Schedifkaplatz –
+  Wien Matzleinsdorfer Platz“ statt „Vienna Schedifkaplatz – Wien …“, „Wien
+  St.Marx“ statt „Vienna St.Marx“ (07.09.); „Fahrtrichtung Wien“ bleibt „in
+  the direction of Vienna“. Michael bestätigte die Behebung am 15.10.; ein
+  Name bleibt im EN-Feed ein Name, wie auf dem Schild (`docs/architecture.md`).
+  Der deutsche Feed ändert sich nicht. Replay über 9.825 echte Texte seit
+  01.07. (Feed-Texte und Caches von WL, ÖBB und Baustellen): 35 Modell-Eingaben
+  ändern sich, alle aus diesen zwei Klassen; die 43 betroffenen und
+  Kontrollsätze liefen mit dem echten Modell alt gegen neu.
 * **`feed lint` nutzt die Feed-Kette des Builds (2026-10-15)**: Die
   Nachprüfung von „Feed-Kette als eine Funktion“ fand in `lint()` eine zweite,
   abgeschriebene Kette ohne Identitätsübernahme, Neustart wiederkehrender
