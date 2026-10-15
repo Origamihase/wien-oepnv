@@ -1,19 +1,19 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-15T14:31:05.024961+00:00",
- "built": "2026-10-15T16:30:50+02:00",
+ "updated": "2026-10-15T15:01:06.329503+00:00",
+ "built": "2026-10-15T17:00:56+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-15T16:30:50+02:00",
+  "built": "2026-10-15T17:00:56+02:00",
   "items": [
    {
     "title": "7A/10A/14A/16A/59A/80A: Verkehrsüberlastung",
     "time_line": "Seit 16:17"
    },
    {
-    "title": "Wien Hetzendorf ↔ Wien Liesing",
+    "title": "12A: Polizeieinsatz, Gleisbauarbeiten",
     "time_line": "Heute"
    },
    {
@@ -45,8 +45,8 @@
     "time_line": "Bis 25.12."
    },
    {
-    "title": "20A: Bauarbeiten",
-    "time_line": "Heute"
+    "title": "1A/3A: Schwertgasse",
+    "time_line": "Bis 31.03.2027"
    }
   ]
  },
@@ -4509,6 +4509,26 @@
    "cache": {
     "baustellen": 3,
     "oebb": 11,
+    "wl": 102
+   }
+  },
+  {
+   "t": "2026-10-15T15:01:06.329503+00:00",
+   "raw": {
+    "wl-stoerungen": 63,
+    "wl-hinweise": 84,
+    "oebb": 159,
+    "baustellen-linien": 50,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 14,
+    "oebb": 135,
+    "baustellen": 67
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 10,
     "wl": 102
    }
   }
