@@ -236,7 +236,7 @@ verdrängt eine andere Störung.
     „23.09.2026 – 27.09.2026“ über einem Schaden vom selben Morgen.
   - `62: ÖBB Bauarbeiten` über „Betrieb ab Kliebergasse; Züge halte bei
     Linie 18, Richtung Burggasse; Kein Betrieb.“
-  - Grenzen: Andere Linienmengen („62/18“), Hinweise und andere Quellen
+  - Grenzen: Andere Linienmengen („62/18“, Ausnahmen unten), Hinweise und andere Quellen
     bleiben getrennt. Die Beschreibung ist auf 180 Zeichen begrenzt. Die
     Störungsstatistik zählt einen zusammengelegten Vorfall einmal.
   - Eine Ausnahme bei den Linienmengen (seit 2026-10-02): Zwei
@@ -258,6 +258,37 @@ verdrängt eine andere Störung.
     anderen Störungen fehlten; nachher sind es 9. Jetzt steht
     „6/18: Schadhaftes Fahrzeug“ da. Unterscheidet sich eine Meldung,
     bleiben die Gruppen getrennt.
+  - Eine zweite Ausnahme (seit 2026-10-15): Kurzmeldungen einzelner Linien
+    eines Vorfalls mehrerer Linien gehen in dessen ausführliche Meldung auf
+    (`_join_part_line_tickers`). WL schreibt eine ausführliche Meldung für
+    alle Linien, aber eine Tafel-Kurzmeldung je Linie, und die Gruppen
+    oben trafen sich nie. Am 11.10. von 11:30 bis 23:30 Uhr belegte ein
+    Gasrohrbruch in der Brünner Straße so vier der zehn Plätze:
+    „30A/31A/36B: Gasrohrgebrechen“ und daneben „30A: Gasrohrbruch“,
+    „36B: Gasrohrbruch“ und „31A: Gasrohrbruch“ mit „Kein Betrieb.“, während
+    die ausführliche Meldung sagt, dass die 31A umgeleitet wird. Der
+    Provider legt eine Kurzmeldung nur dann in die ausführliche Meldung,
+    wenn diese jedes ihrer Wörter wiederholt
+    (`wl_fetch._fold_display_tickers`), und die Tafel sagt „Gasrohrbruch“,
+    die Meldung „Gasrohrgebrechen“. Eine Kurzmeldung gehört zur
+    ausführlichen Meldung, wenn deren Linien ihre umfassen, beide dieselbe
+    Ursache nennen (mit WLs Synonymen, `_CAUSE_SYNONYMS`, jetzt auch
+    „Gasrohrbruch“ = „Gasrohrgebrechen“), sie höchstens zehn Minuten vor ihr
+    begann (wie `wl_resolved.TICKER_LEAD`) und sich die Gültigkeiten
+    überschneiden; von mehreren gehört sie der zuletzt begonnenen. Eine
+    Kurzmeldung anderer Ursache behält ihren Platz („43: Falschparker“ neben
+    „43/44: Rettungseinsatz“, 09.10.), eine ohne Ursache ebenfalls. Spricht
+    der Text der ausführlichen Meldung von der Linie („Die Linie 31A wird …
+    umgeleitet“), steht dort WLs eigene Aussage, und die Kurzmeldung einer
+    einzelnen Haltestellentafel fügt nichts hinzu; „31A: Kein Betrieb“
+    hätte ihr auf dem Bildschirm widersprochen. Was die Kurzmeldung einer
+    Linie ankündigt, die der Text nicht nennt, bleibt mit dem Linienkürzel
+    stehen, platziert wie bei `_with_consequences` („14A: Umleitung über
+    Gumpendorfer Str., Linke Wienzeile.“ vor WLs Standardsatz zu
+    „13A/14A: Falschparker“, 06.10.). Die Kurzmeldungen werden Mitglieder
+    des Eintrags (`_members`), damit GUID und Beginn bleiben, wenn die
+    ausführliche Meldung zuerst endet. Nachgerechnet über alle Feed-Stände
+    seit 15.07. (4.510 Stände): In 26 ändert sich etwas, alle am 06.10. und 11.10.; 24 davon sind der Gasrohrbruch (drei Plätze frei), je einer „37/38/40/41/42: Schadhaftes Fahrzeug“ (zwei Plätze frei) und „13A/14A: Falschparker“ (einer). Sonst bleibt jeder Stand gleich.
 * **Eine Linie, ein Platz (seit 2026-10-01, Betreiberentscheidung).**
   „Wenn mehrere unterschiedliche Linien betroffen sind, soll die Störung
   auch angezeigt werden. Mehrere Störungsmeldungen zur selben Linie sollte

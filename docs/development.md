@@ -216,7 +216,12 @@ Ursache, die Beschreibung sammelt alle Folgen („62: ÖBB Bauarbeiten“ über
 „Betrieb ab Kliebergasse; Züge halte bei Linie 18, Richtung Burggasse; Kein
 Betrieb.“). Sagt eine ausführliche Meldung der Gruppe mehr als WLs
 Standardsatz, steht stattdessen sie, so wie allein (Details in
-`docs/architecture.md`). Zeigt ein solcher Eintrag nur die Baustelle eines
+`docs/architecture.md`). Kurzmeldungen einzelner Linien gehen in die
+ausführliche Meldung eines Vorfalls mehrerer Linien auf, wenn sie dieselbe
+Ursache nennen und höchstens zehn Minuten vor ihr begannen
+(`_join_part_line_tickers`, seit 2026-10-15; „30A/31A/36B:
+Gasrohrgebrechen“ stand am 11.10. sonst neben drei Tickern „Gasrohrbruch“).
+Zeigt ein solcher Eintrag nur die Baustelle eines
 WL-Hinweises (gleiche Ursache, Linien, Zeitraum und eine gemeinsame Straße),
 geht er in diesem Hinweis auf (`_absorb_works_tickers`). Tests dazu lesen die Meldungen wie der Feed, über
 `_post_filter_wl`. Danach sortiert der Build die
