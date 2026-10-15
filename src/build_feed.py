@@ -441,6 +441,181 @@ def _prefer_measures(summary: str) -> str:
     return " ".join([*kept, measures])
 
 
+# --- Every line of a WL disruption, in short (operator decision 2026-10-15) --
+#
+# WL writes the long message of a disruption on several lines as one
+# sentence per line. The summary keeps two sentences and 180 characters, so
+# the feed showed only the first line's measure. On 2026-10-11 the gas leak
+# in Brünner Straße read
+#
+#     30A/31A/36B: Gasrohrgebrechen
+#     Die Linie 36B wird in Richtung Jedlesee, Bellgasse zwischen
+#     Berzeliusgasse und Brünner Straße S über Brünner Straße umgeleitet.
+#
+# and said nothing of the detours of 30A and 31A. 70 WL texts since July
+# lost the measure of at least one line this way; where the text labels
+# each line ("Linie 37: … Linie 38: …"), the first label was stripped as
+# well (``_strip_wl_description_line_prefix``), and "Betrieb nur zwischen
+# Hohe Warte und Nußdorfer Straße U" stood without its line. Michael's
+# card pick "Kurzform je Linie" (2026-10-15, "Am TV sieht man sonst nur,
+# was mit einer von drei Linien passiert"): each line with its measure and
+# its two end points, without direction and detour streets::
+#
+#     Umleitungen: 36B Berzeliusgasse – Brünner Straße S; 30A
+#     Berzeliusgasse – Gschweidlgasse; 31A Berzeliusgasse – Großjedlersdorf,
+#     Jochbergengasse.
+#
+# Lines with different measures name them each ("37: Betrieb nur Hohe
+# Warte – Nußdorfer Straße U; 5: Umleitung …"). WL's expected end follows
+# when it fits. It applies only where a line would go missing: a text
+# whose shown part (first sentences, 180 cut) names every line stays as WL
+# wrote it, and so does one with a measure the patterns below do not know; lines that do not fit the
+# 180 characters give way whole, last first, behind "…".
+_SHORT_LINE_MARKER_RE: re.Pattern[str] = re.compile(
+    rf"(?:^|(?<=[.!?;])\s+)(?:Linien?\s+(?P<label>{_WL_DESC_LINE_TOKEN}"
+    rf"(?:\s*(?:,|und|/|\+)\s*{_WL_DESC_LINE_TOKEN}){{0,20}})\s*:\s+"
+    rf"|(?P<lb>Badner\s+Bahn)\s*:\s+"
+    rf"|Die\s+(?:Züge\s+der\s+)?Linie\s+(?P<subject>{_WL_DESC_LINE_TOKEN})\s+(?=wird|werden|fährt))"
+)
+_SHORT_TAIL_RE: re.Pattern[str] = re.compile(
+    r"\s+(?:Weichen Sie|Voraussichtlich bis|Voraussichtliche Dauer|Grund:)"
+)
+_SHORT_EXPECTED_END_RE: re.Pattern[str] = re.compile(r"Voraussichtlich bis [^.]*?\d{1,2}:\d{2} Uhr\.")
+# A place ends before "über", "örtlich", "umgeleitet", "in Richtung" or the
+# sentence end; WL's abbreviations ("Bhf.", "Str.", "St.", "Dr.-Adolf-…")
+# and ordinals ("Zentralfriedhof, 4. Tor") are part of it.
+_SHORT_PLACE = r"(?:Bhf\.|Str\.|St\.|Dr\.-?|\b\d{1,2}\.(?=\s)|[^.;])+?"
+_SHORT_PLACE_END = r"(?=\s+(?:über|örtlich|umgeleitet|in\s+Richtung)\b|[.;]|$)"
+_SHORT_MEASURES: tuple[tuple[str, re.Pattern[str]], ...] = (
+    ("Kein Betrieb", re.compile(
+        rf"\b(?:fährt\s+(?:derzeit\s+)?nicht|[Kk]ein\s+Betrieb)\s+zwischen\s+(?P<a>{_SHORT_PLACE})\s+und\s+"
+        rf"(?P<b>{_SHORT_PLACE}){_SHORT_PLACE_END}")),
+    ("Betrieb nur", re.compile(
+        rf"\b(?:fährt\s+(?:derzeit\s+)?nur|Betrieb\s+nur)\s+zwischen\s+(?P<a>{_SHORT_PLACE})\s+und\s+"
+        rf"(?P<b>{_SHORT_PLACE}){_SHORT_PLACE_END}")),
+    ("Umleitung", re.compile(
+        rf"^wird\b[^.;]*?\bzwischen\s+(?P<a>{_SHORT_PLACE})\s+und\s+(?P<b>{_SHORT_PLACE}){_SHORT_PLACE_END}"
+        rf"[^;]*?\bumgeleitet\b")),
+    ("Umleitung", re.compile(
+        rf"^Umleitung\b[^.;]*?\bzwischen\s+(?P<a>{_SHORT_PLACE})\s+und\s+(?P<b>{_SHORT_PLACE}){_SHORT_PLACE_END}")),
+)
+# A measure without places: the line as a whole.
+_SHORT_BARE_MEASURES: tuple[tuple[str, re.Pattern[str]], ...] = (
+    ("Fahrtbehinderung", re.compile(r"^Fahrtbehinderung\b")),
+    ("Unregelmäßige Intervalle", re.compile(r"^Unregelmäßige Intervalle\b")),
+    ("Verspätungen", re.compile(r"^Verspätungen\b")),
+    ("Kein Betrieb", re.compile(r"^(?:Kein Betrieb|Derzeit ist ein Betrieb nicht möglich)\s*(?:[.;]|$)")),
+)
+_SHORT_GROUP_LABEL = {"Umleitung": "Umleitungen"}
+# WL's own name for its line LB (the title says "LB", the text "Badner Bahn:").
+_SHORT_LINE_NAME = {"LB": "Badner Bahn"}
+
+
+def _short_measure(body: str) -> tuple[str, str] | None:
+    """``("Umleitung", "Berzeliusgasse – Gschweidlgasse")`` for one line's sentence, or ``None``."""
+    for kind, pattern in _SHORT_MEASURES:
+        match = pattern.search(body)
+        if match is not None:
+            a, b = match["a"].strip(" ,"), match["b"].strip(" ,")
+            if not re.search(r"[A-Za-zÄÖÜäöüß]{2}", a) or not re.search(r"[A-Za-zÄÖÜäöüß]{2}", b):
+                return None
+            return kind, f"{a} – {b}"
+    for kind, pattern in _SHORT_BARE_MEASURES:
+        if pattern.match(body):
+            return kind, ""
+    return None
+
+
+def _line_segments(text: str, title_lines: Sequence[str]) -> list[tuple[str, str]] | None:
+    """``[(line label, its text), …]`` in WL's order, or ``None`` if a part belongs to no line.
+
+    A text before the first label belongs to the one title line no label
+    names: ``_post_filter_wl`` strips the first label (see above).
+    """
+    markers = list(_SHORT_LINE_MARKER_RE.finditer(text))
+    if not markers:
+        return None
+    segments: list[tuple[str, str]] = []
+    labels = [
+        "/".join(re.split(r"\s*(?:,|und|/|\+)\s*", m["label"]))
+        if m["label"]
+        else "LB" if m["lb"] else str(m["subject"])
+        for m in markers
+    ]
+    named = {line for label in labels for line in label.split("/")}
+    lead = text[: markers[0].start()].strip()
+    if lead:
+        unnamed = [line for line in title_lines if line not in named]
+        if len(unnamed) != 1:
+            return None
+        segments.append((unnamed[0], lead))
+    for index, (marker, label) in enumerate(zip(markers, labels, strict=True)):
+        end = markers[index + 1].start() if index + 1 < len(markers) else len(text)
+        body = text[marker.start("subject") + len(label) if marker["subject"] else marker.end() : end].strip()
+        segments.append((label, body))
+    return segments
+
+
+def _title_line_list(title: str) -> list[str]:
+    """``["30A", "31A", "36B"]`` for "30A/31A/36B: Gasrohrgebrechen"."""
+    prefix = re.match(r"^([^:]+):", title)
+    return prefix[1].split("/") if prefix else []
+
+
+def _every_line_in_short(item: FeedItem, summary: str, shown: str, title: str) -> str | None:
+    """The short form of a WL disruption's lines when *shown* misses one, else ``None``.
+
+    *summary* is the whole text, *shown* what the TV would show without
+    the short form (sentences and the 180 cut applied).
+    """
+    if item.get("source") != "Wiener Linien" or item.get("category") != "Störung":
+        return None
+    if all(_text_names_line(shown, line) for line in _title_line_list(title)):
+        return None
+    return _lines_in_short(summary, title)
+
+
+def _lines_in_short(summary: str, title: str) -> str | None:
+    """*summary* of a WL disruption on several lines with every line in short (see above).
+
+    ``None`` when a line's measure is not one of the known kinds.
+    """
+    title_lines = _title_line_list(title)
+    if len(title_lines) < 2:
+        return None
+    tail = _SHORT_TAIL_RE.search(summary)
+    measures = summary[: tail.start()] if tail else summary
+    segments = _line_segments(measures.strip(), title_lines)
+    if segments is None or len(segments) < 2:
+        return None
+    parsed: list[tuple[str, str, str]] = []
+    for label, body in segments:
+        short = _short_measure(body)
+        if short is None:
+            return None
+        parsed.append((_SHORT_LINE_NAME.get(label, label), *short))
+    if {line for label, _b in segments for line in label.split("/")} != set(title_lines):
+        return None
+    kinds = {kind for _l, kind, _p in parsed}
+    if len(kinds) == 1:
+        (kind,) = kinds
+        head = f"{_SHORT_GROUP_LABEL.get(kind, kind)}: "
+        parts = [f"{label} {place}".strip() for label, _k, place in parsed]
+        separator = ", " if not any(place for _l, _k, place in parsed) else "; "
+    else:
+        head = ""
+        parts = [f"{label}: {kind} {place}".strip() for label, kind, place in parsed]
+        separator = "; "
+    text = f"{head}{separator.join(parts)}."
+    while len(text) > 180 and len(parts) > 1:
+        parts.pop()
+        text = f"{head}{separator.join(parts)} …"
+    expected = _SHORT_EXPECTED_END_RE.search(summary[tail.start():] if tail else "")
+    if expected and len(f"{text} {expected[0]}") <= 180:
+        text = f"{text} {expected[0]}"
+    return text
+
+
 # Words of the first measure that must still stand behind the head after the
 # 180 cut for the measure block to ride along: "Linie D: Umleitung der Züge
 # …" says what happens, "Linie D: …" or "Linie D: Umleitung …" does not.
@@ -2653,6 +2828,11 @@ _GLOSSARY_BASE: dict[str, str] = {
     # "because of", "for" or "due to" from one build to the next.
     "Kein Betrieb": "no service",
     "Betrieb nur zwischen": "service only between",
+    # The heads of the short form of a disruption on several lines
+    # (``_lines_in_short``): "Umleitungen: 36B A – B; 30A …", "37: Betrieb
+    # nur A – B; …".
+    "Umleitungen": "diversions",
+    "Betrieb nur": "service only",
     "Fahrtbehinderung wegen": "service obstruction due to",
     "Züge halten in Schleife": "trains stop in the loop",
     "Züge halten": "trains stop",
@@ -10791,7 +10971,9 @@ def _format_item_content(
     # :func:`_reason_only_summary`.
     category_word = _leading_category_word(summary)
     summary = _strip_summary_category_prefix(summary, raw_title)
-    # A WL notice with a measure block: measures first, see the helper.
+    # The text before the measures come first: a WL disruption on several
+    # lines may show every line in short instead (see below).
+    whole_summary = summary
     summary = _prefer_measures(summary)
 
     # Extrahiere maximal die ersten zwei Sätze.
@@ -10836,6 +11018,9 @@ def _format_item_content(
     # für den lang/state-Overlay behält.
     uncut_summary = summary
     summary = _truncate_summary_180(summary)
+    short_lines = _every_line_in_short(it, whole_summary, summary, raw_title)
+    if short_lines is not None:
+        summary = uncut_summary = short_lines
 
     # Für XML robust aufbereiten (CDATA schützt Sonderzeichen)
     title_out = _sanitize_text(raw_title)
