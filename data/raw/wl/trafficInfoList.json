@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261015-0031-F01, I20261015-0034-F01, I20261015-0034, I20260909-0007, I20261015-0033, I20261015-0035-F01, I20261015-0035"
+    "trafficInfoNameList": "I20260917-0012, I20261015-0033, I20261015-0034-F01, I20260922-0032, I20260925-0011, I20261015-0034, I20261015-0035-F01, I20260909-0007, I20261015-0035"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R19-136, R45-136, R36-152, R102-136, R103-136, R2025-671, R115-136, R116-136, R117-136, R318-437, R293-474, R118-136, R119-136, R130-136, R1177-0, R100-136, R101-136, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R5815-671, R1474-412, R2558-125, R2372-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R1150-0, R1974-466, R500-101, R751-412, R753-412, R699-412, R405-111, R1930-111, R1933-111, R1932-111, R404-111, R1931-111, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2025-671, R1177-0, R293-474, R318-437, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R1449-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2372-125, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R1150-0, R1974-466, R500-101, R1932-111, R1931-111, R405-111, R404-111, R1933-111, R1930-111, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,43 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261015-0031-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "303",
-       "lineName": "U3",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4932
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T18:06:00.000+0200",
-     "end": "2026-10-15T19:15:00.000+0200",
-     "lastUpdate": "2026-10-15T19:15:00.000+0200",
-     "resume": "2026-10-15T19:15:00.000+0200",
-     "start": "2026-10-15T18:00:00.000+0200"
-    },
-    "title": "U3: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "63A": "ptBusCity"
      }
     },
@@ -264,12 +227,12 @@
     "relatedStops": [
      2452
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-15T19:21:00.000+0200",
-     "end": "2026-10-15T23:55:00.000+0200",
-     "lastUpdate": "2026-10-15T19:21:00.000+0200",
-     "resume": "2026-10-15T19:20:00.000+0200",
+     "end": "2026-10-15T20:21:00.000+0200",
+     "lastUpdate": "2026-10-15T20:21:00.000+0200",
+     "resume": "2026-10-15T20:21:00.000+0200",
      "start": "2026-10-15T19:20:00.000+0200"
     },
     "title": "63A: Polizeieinsatz"
@@ -334,12 +297,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-15T19:37:00.000+0200",
-     "end": "2026-10-15T23:55:00.000+0200",
-     "lastUpdate": "2026-10-15T19:37:00.000+0200",
-     "resume": "2026-10-15T19:37:00.000+0200",
+     "end": "2026-10-15T20:21:00.000+0200",
+     "lastUpdate": "2026-10-15T20:21:00.000+0200",
+     "resume": "2026-10-15T20:21:00.000+0200",
      "start": "2026-10-15T19:26:00.000+0200"
     },
     "title": "12A: Falschparker"
@@ -404,12 +367,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-15T19:47:00.000+0200",
-     "end": "2026-10-15T23:55:00.000+0200",
-     "lastUpdate": "2026-10-15T19:47:00.000+0200",
-     "resume": "2026-10-15T19:47:00.000+0200",
+     "end": "2026-10-15T20:21:00.000+0200",
+     "lastUpdate": "2026-10-15T20:21:00.000+0200",
+     "resume": "2026-10-15T20:21:00.000+0200",
      "start": "2026-10-15T19:43:00.000+0200"
     },
     "title": "11: Rettungseinsatz"
@@ -1373,60 +1336,6 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R699-412",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12A"
-    ],
-    "relatedStops": [
-     699
-    ],
-    "time": {
-     "end": "2026-10-15T20:27:00.000+0200",
-     "start": "2026-10-15T19:27:45.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R751-412",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12A"
-    ],
-    "relatedStops": [
-     751
-    ],
-    "time": {
-     "end": "2026-10-15T20:27:00.000+0200",
-     "start": "2026-10-15T19:27:45.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R753-412",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12A"
-    ],
-    "relatedStops": [
-     753
-    ],
-    "time": {
-     "end": "2026-10-15T20:27:00.000+0200",
-     "start": "2026-10-15T19:27:45.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
