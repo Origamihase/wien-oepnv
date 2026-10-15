@@ -5,10 +5,6 @@
    "titel": "Fahrtbehinderung Verkehrsunfall"
   },
   {
-   "grund": "Kurzmeldung einer erledigten Störung",
-   "titel": "Fahrtbehinderung wegen Polizeieinsatz"
-  },
-  {
    "grund": "Status inaktiv",
    "titel": "1A: Verkehrsunfall"
   },
@@ -18,7 +14,11 @@
   },
   {
    "grund": "Status inaktiv",
-   "titel": "4A: Polizeieinsatz"
+   "titel": "40: Verkehrsunfall"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "41: Verkehrsunfall"
   },
   {
    "grund": "Status inaktiv",
@@ -26,7 +26,7 @@
   },
   {
    "grund": "Status inaktiv",
-   "titel": "U1: Schadhaftes Fahrzeug"
+   "titel": "U3: Feuerwehreinsatz"
   },
   {
    "grund": "außerhalb des Zeitraums",

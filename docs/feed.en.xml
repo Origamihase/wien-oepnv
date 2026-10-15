@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 15 Oct 2026 09:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 09:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Wien Liesing ↔ Wien Aspern Nord]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;919702</guid>
+      <pubDate>Thu, 15 Oct 2026 09:24:38 +0200</pubDate>
+      <ext:first_seen>Thu, 15 Oct 2026 09:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 15 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 15 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Due to a defective train on the line, trains can only run to a limited extent between Wien Liesing station and Wien Aspern Nord station (U) at present. [Since 09:24]</description>
+      <content:encoded><![CDATA[Due to a defective train on the line, trains can only run to a limited extent between Wien Liesing station and Wien Aspern Nord station (U) at present.<br/>[Since 09:24]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[9: Delays]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">31a26903d85084ee959631a5114ee24e12feca42c93cb008a7a19a3e9dad3628</guid>
+      <pubDate>Thu, 15 Oct 2026 09:20:00 +0200</pubDate>
+      <ext:first_seen>Thu, 15 Oct 2026 09:20:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 15 Oct 2026 09:20:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 09:20]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 09:20]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40/41: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">46770cbdcca7b3b0724e5953b64353d0a982642ac049261e3dfdc906c581b130</guid>
+      <pubDate>Thu, 15 Oct 2026 09:04:00 +0200</pubDate>
+      <ext:first_seen>Thu, 15 Oct 2026 09:04:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 15 Oct 2026 09:04:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: illegally parked vehicle. [Since 09:04]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: illegally parked vehicle.<br/>[Since 09:04]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1/62/71: Traffic congestion]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,7 +54,7 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 08:51]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40/41/42: Traffic accident]]></title>
+      <title><![CDATA[42: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">b8938e94c70221081d94c1f9627e29d1273108203a2ba78ea9d9eaa80416cb92</guid>
       <pubDate>Thu, 15 Oct 2026 08:36:00 +0200</pubDate>
@@ -76,17 +109,6 @@
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 07:44]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U3: Fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">6566afe6a6d5bb47f5532e8e78c4be9008a200aae7aa9dd8b96b02967baf9643</guid>
-      <pubDate>Thu, 15 Oct 2026 06:32:00 +0200</pubDate>
-      <ext:first_seen>Thu, 15 Oct 2026 07:01:15 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 15 Oct 2026 06:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 06:32]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 06:32]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[1/2/5/5A/5B/71/74A/80A/D/O: Demonstration]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">f868d2f5eb494decde7d0c63339dab6ae0887407eebc3eed949d2e7e53c0a75c</guid>
@@ -96,28 +118,6 @@
       <ext:ends_at>Fri, 16 Oct 2026 19:05:00 +0200</ext:ends_at>
       <description>Due to a demonstration, there are restrictions on public transport. Line D: short-running service of the trains between Absberggasse and Börse on Schwarzenbergplatz. [On Fri 16.10.]</description>
       <content:encoded><![CDATA[Due to a demonstration, there are restrictions on public transport. Line D: short-running service of the trains between Absberggasse and Börse on Schwarzenbergplatz.<br/>[On Fri 16.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Simmering S U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c8f0b5a42164e2ff573973d0ebcbdf6fbd76b99aebfc2c85c8b8657ef7b9bb79</guid>
-      <pubDate>Wed, 14 Oct 2026 15:35:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 15:35:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 23 Oct 2026 05:05:00 +0200</ext:ends_at>
-      <description>Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 … [From Fri 16.10. until 23.10.]</description>
-      <content:encoded><![CDATA[Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 …<br/>[From Fri 16.10. until 23.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A: Liesing-Flur-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">609517ab3ab98b5b38f0fe913f15e9bd18cd5a3d9005a51a2cb50d3fb227ddbd</guid>
-      <pubDate>Wed, 14 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Perfektastraße after Liesinger-Flur-Gasse → Perfektastraße 77. Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse. Reason: roadworks. [Until 28.10.]</description>
-      <content:encoded><![CDATA[Perfektastraße after Liesinger-Flur-Gasse → Perfektastraße 77. Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse. Reason: roadworks.<br/>[Until 28.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
