@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_97, ftazW_114, ftazW_766, ftazW_575, ftazW_740, ftazW_371, ftazW_519, ftazW_37, ftazW_112"
+    "trafficInfoNameList": "ftazW_371, ftazW_519, ftazW_37, ftazW_112"
    }
   ],
   "poiCategoryGroups": [
@@ -2639,39 +2639,6 @@
    },
    {
     "attributes": {
-     "ausBis": "16.10.2026 05:15",
-     "ausVon": "16.10.2026 01:15",
-     "location": "U1 Mittelbahnsteig - Zwischengeschoss Zugang U4",
-     "rbls": [
-      4113,
-      4116
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Schwedenplatz",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "U1 Mittelbahnsteig - Zwischengeschoss Zugang U4",
-    "name": "ftazW_114",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4113,
-     4116
-    ],
-    "time": {
-     "end": "2026-10-16T05:15:00.000+0200",
-     "start": "2026-10-16T01:15:00.000+0200"
-    },
-    "title": "Schwedenplatz"
-   },
-   {
-    "attributes": {
      "ausBis": "19.10.2026 00:45",
      "ausVon": "18.10.2026 20:45",
      "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Neulerchenfelder Straße",
@@ -2759,124 +2726,6 @@
      "start": "2026-10-18T20:45:00.000+0200"
     },
     "title": "Handelskai"
-   },
-   {
-    "attributes": {
-     "ausBis": "16.10.2026 05:15",
-     "ausVon": "16.10.2026 01:15",
-     "location": "U4 Bahnsteig Richtung Richtung Hütteldorf - Ausgang Schloß Schönbrunn",
-     "rbls": [
-      4426
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Schönbrunn",
-     "status": "geplante Wartung",
-     "towards": "U4 Hütteldorf"
-    },
-    "description": "U4 Bahnsteig Richtung Richtung Hütteldorf - Ausgang Schloß Schönbrunn",
-    "name": "ftazW_575",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4426
-    ],
-    "time": {
-     "end": "2026-10-16T05:15:00.000+0200",
-     "start": "2026-10-16T01:15:00.000+0200"
-    },
-    "title": "Schönbrunn"
-   },
-   {
-    "attributes": {
-     "ausBis": "16.10.2026 05:15",
-     "ausVon": "16.10.2026 01:15",
-     "location": "U3 Mittelbahnsteig - Ausgang Eisteichstraße",
-     "rbls": [
-      4935,
-      4940
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Zippererstraße",
-     "status": "geplante Wartung",
-     "towards": "U3 beide Richtungen"
-    },
-    "description": "U3 Mittelbahnsteig - Ausgang Eisteichstraße",
-    "name": "ftazW_740",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4935,
-     4940
-    ],
-    "time": {
-     "end": "2026-10-16T05:15:00.000+0200",
-     "start": "2026-10-16T01:15:00.000+0200"
-    },
-    "title": "Zippererstraße"
-   },
-   {
-    "attributes": {
-     "ausBis": "16.10.2026 05:15",
-     "ausVon": "16.10.2026 01:15",
-     "location": "Zwischengeschoss - Ausgang Strachegasse",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Simmering",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Zwischengeschoss - Ausgang Strachegasse",
-    "name": "ftazW_766",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "time": {
-     "end": "2026-10-16T05:15:00.000+0200",
-     "start": "2026-10-16T01:15:00.000+0200"
-    },
-    "title": "Simmering"
-   },
-   {
-    "attributes": {
-     "ausBis": "16.10.2026 05:15",
-     "ausVon": "16.10.2026 01:15",
-     "location": "Zwischengeschoß - Ausgang Stephansplatz",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U1",
-      "U3"
-     ],
-     "station": "Stephansplatz",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Zwischengeschoß - Ausgang Stephansplatz",
-    "name": "ftazW_97",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1",
-     "U3"
-    ],
-    "time": {
-     "end": "2026-10-16T05:15:00.000+0200",
-     "start": "2026-10-16T01:15:00.000+0200"
-    },
-    "title": "Stephansplatz"
    }
   ]
  },
