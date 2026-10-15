@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261015-0031-F01, I20261015-0031, I20261015-0028-F01, I20260917-0012, I20260922-0032, I20260925-0011, I20261015-0027, I20260909-0007, I20261015-0029, I20261015-0032, I20261015-0030"
+    "trafficInfoNameList": "I20261015-0028-F01, I20261015-0034, I20260917-0012, I20260922-0032, I20260925-0011, I20261015-0027, I20261015-0031-F01, I20260909-0007, I20261015-0029, I20261015-0032, I20261015-0030, I20261015-0033"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2025-671, R1177-0, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R293-474, R318-437, R1446-149, R5815-671, R1448-412, R1474-412, R1445-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2378-627, R2380-627, R2345-127, R2372-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R1150-0, R1974-466, R500-101, R586-448, R1391-448, R1387-448, R1388-448, R1389-448, R1390-448, R1392-448, R586-146, R1387-146, R1388-146, R1389-146, R1390-146, R1391-146, R1392-146, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2025-671, R101-136, R100-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R1177-0, R293-474, R318-437, R1472-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2379-627, R2380-627, R2345-127, R2372-627, R2373-126, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2378-627, R2343-626, R2343-125, R1150-0, R1974-466, R500-101, R699-412, R753-412, R751-412, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -383,43 +383,6 @@
       "U3": "ptMetro"
      }
     },
-    "description": "Linie U3: Fahrtbehinderung in Richtung Simmering. Voraussichtliche Dauer: 18:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kendlerstraße.",
-    "descriptionHTML": "Linie U3:<br>Fahrtbehinderung in Richtung Simmering.<br> <br>Voraussichtliche Dauer: 18:10 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kendlerstraße.",
-    "name": "I20261015-0031",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "303",
-       "lineName": "U3",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4932
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T18:05:00.000+0200",
-     "end": "2026-10-15T18:06:00.000+0200",
-     "lastUpdate": "2026-10-15T18:06:00.000+0200",
-     "resume": "2026-10-15T18:06:00.000+0200",
-     "start": "2026-10-15T18:00:00.000+0200"
-    },
-    "title": "U3: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
     "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "name": "I20261015-0031-F01",
@@ -441,12 +404,12 @@
     "relatedStops": [
      4932
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-15T18:06:00.000+0200",
-     "end": "2026-10-15T23:55:00.000+0200",
-     "lastUpdate": "2026-10-15T18:06:00.000+0200",
-     "resume": "2026-10-15T18:06:00.000+0200",
+     "end": "2026-10-15T19:15:00.000+0200",
+     "lastUpdate": "2026-10-15T19:15:00.000+0200",
+     "resume": "2026-10-15T19:15:00.000+0200",
      "start": "2026-10-15T18:00:00.000+0200"
     },
     "title": "U3: Schadhaftes Fahrzeug"
@@ -487,6 +450,77 @@
      "start": "2026-10-15T18:03:00.000+0200"
     },
     "title": "46: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "63A": "ptBusCity"
+     }
+    },
+    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Polizeieinsatz.",
+    "name": "I20261015-0033",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "63A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "463",
+       "lineName": "63A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "relatedStops": [
+     2452
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T19:21:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T19:21:00.000+0200",
+     "resume": "2026-10-15T19:20:00.000+0200",
+     "start": "2026-10-15T19:20:00.000+0200"
+    },
+    "title": "63A: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "12A": "ptBusCity"
+     }
+    },
+    "description": "Linie 12A: Fahrtbehinderung in Richtung Schmelz, Gablenzgasse. Voraussichtliche Dauer: 19:50 Uhr. Grund: Falschparker im Bereich Obere Amtshausgasse 2.",
+    "descriptionHTML": "Linie 12A:<br>Fahrtbehinderung in Richtung Schmelz, Gablenzgasse.<br> <br>Voraussichtliche Dauer: 19:50 Uhr.<br><br>Grund: Falschparker im Bereich Obere Amtshausgasse 2.",
+    "location": "Obere Amtshausgasse  2",
+    "name": "I20261015-0034",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "412",
+       "lineName": "12A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T19:29:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T19:29:00.000+0200",
+     "start": "2026-10-15T19:26:00.000+0200"
+    },
+    "title": "12A: Falschparker"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -697,222 +731,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1387-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1387
-    ],
-    "time": {
-     "end": "2026-10-15T19:03:00.000+0200",
-     "start": "2026-10-15T18:04:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1387-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1387
-    ],
-    "time": {
-     "end": "2026-10-15T19:03:00.000+0200",
-     "start": "2026-10-15T18:04:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1388-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1388
-    ],
-    "time": {
-     "end": "2026-10-15T19:03:00.000+0200",
-     "start": "2026-10-15T18:04:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1388-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1388
-    ],
-    "time": {
-     "end": "2026-10-15T19:03:00.000+0200",
-     "start": "2026-10-15T18:04:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1389-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1389
-    ],
-    "time": {
-     "end": "2026-10-15T19:03:00.000+0200",
-     "start": "2026-10-15T18:04:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1389-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1389
-    ],
-    "time": {
-     "end": "2026-10-15T19:03:00.000+0200",
-     "start": "2026-10-15T18:04:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1390-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1390
-    ],
-    "time": {
-     "end": "2026-10-15T19:03:00.000+0200",
-     "start": "2026-10-15T18:04:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1390-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1390
-    ],
-    "time": {
-     "end": "2026-10-15T19:03:00.000+0200",
-     "start": "2026-10-15T18:04:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1391-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1391
-    ],
-    "time": {
-     "end": "2026-10-15T19:03:00.000+0200",
-     "start": "2026-10-15T18:04:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1391-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1391
-    ],
-    "time": {
-     "end": "2026-10-15T19:03:00.000+0200",
-     "start": "2026-10-15T18:04:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1392-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1392
-    ],
-    "time": {
-     "end": "2026-10-15T19:03:00.000+0200",
-     "start": "2026-10-15T18:04:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1392-448",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedStops": [
-     1392
-    ],
-    "time": {
-     "end": "2026-10-15T19:03:00.000+0200",
-     "start": "2026-10-15T18:04:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -1557,40 +1375,58 @@
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R586-146",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R699-412",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "46"
+     "12A"
     ],
     "relatedStops": [
-     586
+     699
     ],
     "time": {
-     "end": "2026-10-15T19:03:00.000+0200",
-     "start": "2026-10-15T18:04:33.000+0200"
+     "end": "2026-10-15T20:27:00.000+0200",
+     "start": "2026-10-15T19:27:45.000+0200"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R586-448",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R751-412",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "48A"
+     "12A"
     ],
     "relatedStops": [
-     586
+     751
     ],
     "time": {
-     "end": "2026-10-15T19:03:00.000+0200",
-     "start": "2026-10-15T18:04:03.000+0200"
+     "end": "2026-10-15T20:27:00.000+0200",
+     "start": "2026-10-15T19:27:45.000+0200"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R753-412",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12A"
+    ],
+    "relatedStops": [
+     753
+    ],
+    "time": {
+     "end": "2026-10-15T20:27:00.000+0200",
+     "start": "2026-10-15T19:27:45.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
