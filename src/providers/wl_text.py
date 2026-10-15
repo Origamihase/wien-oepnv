@@ -534,6 +534,11 @@ def extract_end_from_description(
 # auf Dauer von etwa sechs Wochen" (29B/N25), "Von Montag, 05. Oktober 2026,
 # auf Dauer von etwa vier Wochen, täglich von 20:00 Uhr bis 05:00 Uhr" (63A).
 # Four notices on 2026-10-02, all with an 11:11 end.
+# A range ("für etwa zwei bis drei Wochen", "2-3 Monate") is not read on
+# purpose (operator decision 2026-10-15, "So lassen"): it counts as no
+# duration, like a vague end, so the notice shows no end and stays while WL
+# lists it. Nothing wrong shows, and none of the 9,741 distinct texts of all
+# providers since 2026-07-01 had one.
 _NUMBER_WORDS: dict[str, float] = {
     "eineinhalb": 1.5, "anderthalb": 1.5,
     "einem": 1, "einen": 1, "einer": 1, "eine": 1, "ein": 1, "zwei": 2, "drei": 3, "vier": 4,
