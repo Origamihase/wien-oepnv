@@ -3,6 +3,13 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
+   "key": "R132-101|2026-10-15T13:40:10.000+0200|Fremdunfall\nUmleitung ab Radetzkyplatz zum Praterstern",
+   "name": "R132-101",
+   "title": "Fremdunfall\nUmleitung ab Radetzkyplatz zum Praterstern",
+   "end": "2026-10-15T14:39:00.000+0200",
+   "incident": "I20261015-0023"
+  },
+  {
    "key": "R1475-109|2026-10-15T13:07:05.000+0200|Fahrtbehinderung\nVerkehrsunfall",
    "name": "R1475-109",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
@@ -15,6 +22,55 @@
    "title": "Fahrtbehinderung\nVerkehrsunfall",
    "end": "2026-10-15T14:06:00.000+0200",
    "incident": "I20261015-0022"
+  },
+  {
+   "key": "R164-101|2026-10-15T13:40:09.000+0200|Fremdunfall\nUmleitung ab Radetzkyplatz zum Praterstern",
+   "name": "R164-101",
+   "title": "Fremdunfall\nUmleitung ab Radetzkyplatz zum Praterstern",
+   "end": "2026-10-15T14:39:00.000+0200",
+   "incident": "I20261015-0023"
+  },
+  {
+   "key": "R165-101|2026-10-15T13:40:09.000+0200|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R165-101",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-15T14:40:00.000+0200",
+   "incident": "I20261015-0023"
+  },
+  {
+   "key": "R169-101|2026-10-15T13:41:09.000+0200|Fremdunfall\nBetrieb ab Radetzkyplatz",
+   "name": "R169-101",
+   "title": "Fremdunfall\nBetrieb ab Radetzkyplatz",
+   "end": "2026-10-15T14:40:00.000+0200",
+   "incident": "I20261015-0023"
+  },
+  {
+   "key": "R172-101|2026-10-15T13:46:39.000+0200|Fremdunfall\nBetrieb ab Radetzkyplatz",
+   "name": "R172-101",
+   "title": "Fremdunfall\nBetrieb ab Radetzkyplatz",
+   "end": "2026-10-15T14:45:00.000+0200",
+   "incident": "I20261015-0023"
+  },
+  {
+   "key": "R173-101|2026-10-15T13:47:10.000+0200|Fremdunfall\nEinstieg bei Linie O Richtung Raxstraße",
+   "name": "R173-101",
+   "title": "Fremdunfall\nEinstieg bei Linie O Richtung Raxstraße",
+   "end": "2026-10-15T14:46:00.000+0200",
+   "incident": "I20261015-0023"
+  },
+  {
+   "key": "R22-101|2026-10-15T13:40:10.000+0200|Fremdunfall\nUmleitung ab Radetzkyplatz zum Praterstern",
+   "name": "R22-101",
+   "title": "Fremdunfall\nUmleitung ab Radetzkyplatz zum Praterstern",
+   "end": "2026-10-15T14:39:00.000+0200",
+   "incident": "I20261015-0023"
+  },
+  {
+   "key": "R23-101|2026-10-15T13:40:10.000+0200|Fremdunfall\nUmleitung ab Radetzkyplatz zum Praterstern",
+   "name": "R23-101",
+   "title": "Fremdunfall\nUmleitung ab Radetzkyplatz zum Praterstern",
+   "end": "2026-10-15T14:39:00.000+0200",
+   "incident": "I20261015-0023"
   },
   {
    "key": "R532-109|2026-10-15T13:06:35.000+0200|Fahrtbehinderung\nVerkehrsunfall",

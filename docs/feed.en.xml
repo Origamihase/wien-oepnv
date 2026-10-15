@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 15 Oct 2026 13:31:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 14:01:13 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[1: Third-party traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">85ef2a0baf69650a1a8085cc90d290ed25d87e7295927f37db4a458c23e43499</guid>
+      <pubDate>Thu, 15 Oct 2026 13:35:00 +0200</pubDate>
+      <ext:first_seen>Thu, 15 Oct 2026 13:35:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 15 Oct 2026 13:35:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 13:35]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:35]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[26A/37A: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,18 +32,7 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 12:51]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U6: Defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd</guid>
-      <pubDate>Thu, 15 Oct 2026 12:35:00 +0200</pubDate>
-      <ext:first_seen>Thu, 15 Oct 2026 12:35:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 15 Oct 2026 12:35:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 12:35]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 12:35]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11/O: Rescue operation]]></title>
+      <title><![CDATA[11: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">0bbc5e33d6a24f1a0c1a97028ebc54a073d3215cbcd1e3b8d1f656b73b5b04ae</guid>
       <pubDate>Thu, 15 Oct 2026 11:35:00 +0200</pubDate>
