@@ -1,0 +1,218 @@
+{
+"desc|WL|Betrieb nur: 25 Aspern, Oberdorfstraße – Josef-Baumann-Gasse; 26 Hausfeldstraße U – Josef-Baumann-Gasse; 27 Strebersdorf, Meriangasse – Floridsdorf S U.": {
+"en": "Service only: 25 Aspern, Oberdorfstraße – Josef-Baumann-Gasse; 26 Hausfeldstraße U – Josef-Baumann-Gasse; 27 Strebersdorf, Meriangasse – Floridsdorf S U.",
+"calls": {}
+},
+"desc|WL|5: Kein Betrieb Lange Gasse – Lerchenfelder Straße; 12: Betrieb nur Hillerstraße – Franz-Josefs-Bahnhof S.": {
+"en": "5: no service Lange Gasse – Lerchenfelder Straße; 12: service only Hillerstraße – Franz-Josefs-Bahnhof S.",
+"calls": {}
+},
+"desc|WL|Kein Betrieb: 5 Klosterneuburger Straße, Wallensteinstraße – Alserbachstraße; 12 Klosterneuburger Straße, Wallensteinstraße – Alserbachstraße.": {
+"en": "No service: 5 Klosterneuburger Straße, Wallensteinstraße – Alserbachstraße; 12 Klosterneuburger Straße, Wallensteinstraße – Alserbachstraße.",
+"calls": {}
+},
+"desc|WL|Unregelmäßige Intervalle: 7A, 10A, 40A, 48A, 59A.": {
+"en": "Irregular intervals: 7A, 10A, 40A, 48A, 59A.",
+"calls": {}
+},
+"desc|WL|Unregelmäßige Intervalle: 7A, 10A, 40A, 59A.": {
+"en": "Irregular intervals: 7A, 10A, 40A, 59A.",
+"calls": {}
+},
+"desc|WL|Umleitungen: 60A Brunner Straße, Erlaaer Straße – Schloss Alterlaa; 66A Brunner Straße / Erlaaer Straße – Schloss Alterlaa.": {
+"en": "Diversions: 60A Brunner Straße, Erlaaer Straße – Schloss Alterlaa; 66A Brunner Straße / Erlaaer Straße – Schloss Alterlaa.",
+"calls": {}
+},
+"desc|WL|Umleitungen: 36B Berzeliusgasse – Brünner Straße S; 30A Berzeliusgasse – Gschweidlgasse; 31A Berzeliusgasse – Großjedlersdorf, Jochbergengasse.": {
+"en": "Diversions: 36B Berzeliusgasse – Brünner Straße S; 30A Berzeliusgasse – Gschweidlgasse; 31A Berzeliusgasse – Großjedlersdorf, Jochbergengasse.",
+"calls": {}
+},
+"desc|WL|Betrieb nur: 37 Hohe Warte – Nußdorfer Straße U; 38 Grinzing – Spitalgasse; 40 Gersthof, Herbeckstraße – Währinger Straße, Volksoper U …": {
+"en": "Service only: 37 Hohe Warte – Nußdorfer Straße U; 38 Grinzing – Spitalgasse; 40 Gersthof, Herbeckstraße – Währinger Straße, Volksoper U …",
+"calls": {}
+},
+"desc|WL|Umleitungen: 40 Währinger Straße, Volksoper U – Gersthof S; 41 Währinger Straße, Volksoper U – Gersthof S.": {
+"en": "Diversions: 40 Währinger Straße, Volksoper U – Gersthof S; 41 Währinger Straße, Volksoper U – Gersthof S.",
+"calls": {}
+},
+"desc|WL|Unregelmäßige Intervalle: 12A, 13A, 14A, 57A, 59A.": {
+"en": "Irregular intervals: 12A, 13A, 14A, 57A, 59A.",
+"calls": {}
+},
+"desc|WL|Unregelmäßige Intervalle: 1, 2, D, 71.": {
+"en": "Irregular intervals: 1, 2, D, 71.",
+"calls": {
+"XGLO0X: XENT0X, XENT1X, D, XENT2X.": "XGLO0X: XENT0X, XENT1X, D, XENT2X."
+}
+},
+"desc|WL|Umleitungen: 68B Eisenstadtplatz – Reumannplatz U; 68A Eisenstadtplatz – Reumannplatz U.": {
+"en": "Diversions: 68B Eisenstadtplatz – Reumannplatz U; 68A Eisenstadtplatz – Reumannplatz U.",
+"calls": {}
+},
+"desc|WL|Unregelmäßige Intervalle: 7A, 10A, 15A, 63A.": {
+"en": "Irregular intervals: 7A, 10A, 15A, 63A.",
+"calls": {}
+},
+"desc|WL|5: Kein Betrieb Lange Gasse – Lerchenfelder Straße; 12: Betrieb nur Hillerstraße – Lange Gasse.": {
+"en": "5: no service Lange Gasse – Lerchenfelder Straße; 12: service only Hillerstraße – Lange Gasse.",
+"calls": {}
+},
+"desc|WL|Umleitungen: 65A Reumannplatz U – Laxenburger Straße / Troststraße; 66A Reumannplatz U – Laxenburger Straße / Troststraße.": {
+"en": "Diversions: 65A Reumannplatz U – Laxenburger Straße / Troststraße; 66A Reumannplatz U – Laxenburger Straße / Troststraße.",
+"calls": {}
+},
+"desc|WL|Fahrtbehinderung: 67B, 16A, 17A, 67A.": {
+"en": "Service obstruction: 67B, 16A, 17A, 67A.",
+"calls": {}
+},
+"desc|WL|Unregelmäßige Intervalle: 4A, 7A, 10A, 16A.": {
+"en": "Irregular intervals: 4A, 7A, 10A, 16A.",
+"calls": {}
+},
+"desc|WL|Unregelmäßige Intervalle: O, 10A, 12A, 35A, 63A.": {
+"en": "Irregular intervals: O, 10A, 12A, 35A, 63A.",
+"calls": {
+"XGLO0X: O, XENT0X, XENT1X, XENT2X, XENT3X.": "XGLO0X: O, XENT0X, XENT1X, XENT2X, XENT3X."
+}
+},
+"desc|WL|62: Kein Betrieb Eichenstraße – Wattmanngasse; Badner Bahn: Kein Betrieb Wien Schedifkaplatz – Wien Matzleinsdorfer Platz; 59A: Betrieb nur Karlsplatz U – Hans-Mandl-Berufsschule …": {
+"en": "62: no service Eichenstraße – Wattmanngasse; Badner Bahn: no service Vienna Schedifkaplatz – Wien Matzleinsdorfer Platz; 59A: service only Karlsplatz U – Hans-Mandl-Berufsschule …",
+"calls": {
+"XENT6X: XGLO0X XENT1X XENT9X XENT2X; XENT0X: XGLO0X Wien XENT8X XENT9X XENT3X; XENT7X: XGLO1X XENT4X U XENT9X XENT5X XENT10X": "XENT6X: XGLO0X XENT1X XENT9X XENT2X; XENT0X: XGLO0X Vienna XENT8X XENT9X XENT3X; XENT7X: XGLO1X XENT4X U XENT9X XENT5X XENT10X"
+}
+},
+"desc|WL|Umleitungen: 24A Breitenlee, Ziegelhofstraße – Breitenlee, Ort; 85A Karl-Bednarik-Gasse – Halblehenweg.": {
+"en": "Diversions: 24A Breitenlee, Ziegelhofstraße – Breitenlee, Ort; 85A Karl-Bednarik-Gasse – Halblehenweg.",
+"calls": {}
+},
+"desc|WL|Fahrtbehinderung: 64B, 64A, 66A, 67A.": {
+"en": "Service obstruction: 64B, 64A, 66A, 67A.",
+"calls": {}
+},
+"desc|WL|Betrieb nur: 43 Neuwaldegg – Elterleinplatz; 44 Ottakring, Maroltingergasse – Johann-Nepomuk-Berger-Platz.": {
+"en": "Service only: 43 Neuwaldegg – Elterleinplatz; 44 Ottakring, Maroltingergasse – Johann-Nepomuk-Berger-Platz.",
+"calls": {}
+},
+"desc|WL|5: Kein Betrieb Franz-Josefs-Bahnhof S – Lerchenfelder Straße; 12: Betrieb nur Hillerstraße – Franz-Josefs-Bahnhof S; 43: Betrieb nur Neuwaldegg – Rosensteingasse …": {
+"en": "5: no service Franz-Josefs-Bahnhof S – Lerchenfelder Straße; 12: service only Hillerstraße – Franz-Josefs-Bahnhof S; 43: service only Neuwaldegg – Rosensteingasse …",
+"calls": {}
+},
+"desc|WL|1: Umleitung Kliebergasse – Hintere Zollamtsstraße; 2: Kein Betrieb Parlament, U Volkstheater – Heinestraße; D: Kein Betrieb Börse – Quartier Belvedere …": {
+"en": "1: diversion Kliebergasse – Hintere Zollamtsstraße; 2: no service Parlament, U Volkstheater – Heinestraße; D: no service Börse – Quartier Belvedere …",
+"calls": {
+"XENT6X: XGLO0X XENT0X XENT8X XENT1X; XENT7X: XGLO1X XENT2X XENT8X XENT3X; D: XGLO1X XENT4X XENT8X XENT5X XENT9X": "XENT6X: XGLO0X XENT0X XENT8X XENT1X; XENT7X: XGLO1X XENT2X XENT8X XENT3X; D: XGLO1X XENT4X XENT8X XENT5X XENT9X"
+}
+},
+"desc|WL|Unregelmäßige Intervalle: 5B, 76B, 16A, 22A.": {
+"en": "Irregular intervals: 5B, 76B, 16A, 22A.",
+"calls": {}
+},
+"desc|WL|Unregelmäßige Intervalle: 51B, 16A, 51A, 53A, 60A, 86A, 87A.": {
+"en": "Irregular intervals: 51B, 16A, 51A, 53A, 60A, 86A, 87A.",
+"calls": {}
+},
+"desc|WL|Umleitungen: 60A Alterlaa U – Carlbergergasse; 64A Steinsee – Gregorygasse; 66A Steinsee – Atzgersdorf, Kirchenplatz.": {
+"en": "Diversions: 60A Alterlaa U – Carlbergergasse; 64A Steinsee – Gregorygasse; 66A Steinsee – Atzgersdorf, Kirchenplatz.",
+"calls": {}
+},
+"desc|WL|60A: Fahrtbehinderung; 64A: Umleitung Steinsee – Gregorygasse; 66A: Umleitung Steinsee – Atzgersdorf, Kirchenplatz.": {
+"en": "60A: service obstruction; 64A: diversion Steinsee – Gregorygasse; 66A: diversion Steinsee – Atzgersdorf, Kirchenplatz.",
+"calls": {}
+},
+"desc|WL|Unregelmäßige Intervalle: 1, 18, 62, Badner Bahn.": {
+"en": "Irregular intervals: 1, 18, 62, Badner Bahn.",
+"calls": {}
+},
+"desc|WL|Unregelmäßige Intervalle: 31A, 32A, 39A, 94A.": {
+"en": "Irregular intervals: 31A, 32A, 39A, 94A.",
+"calls": {}
+},
+"desc|WL|Unregelmäßige Intervalle: 51B, 95B, 12A, 22A, 51A, 56A, 80A, 95A, 98A.": {
+"en": "Irregular intervals: 51B, 95B, 12A, 22A, 51A, 56A, 80A, 95A, 98A.",
+"calls": {}
+},
+"desc|WL|Unregelmäßige Intervalle: 1, 6, 18, 62, Badner Bahn.": {
+"en": "Irregular intervals: 1, 6, 18, 62, Badner Bahn.",
+"calls": {}
+},
+"desc|WL|13A: Kein Betrieb Ziegelofengasse – Neubaugasse / Burggasse; 59A: Betrieb nur Bhf. Meidling S U – Margaretenplatz, Schönbrunner Straße.": {
+"en": "13A: no service Ziegelofengasse – Neubaugasse / Burggasse; 59A: service only Bhf. Meidling S U – Margaretenplatz, Schönbrunner Straße.",
+"calls": {}
+},
+"desc|WL|Umleitungen: 29B Dopschstraße – Kefergrundgasse; 28A Julius-Ficker-Straße – Leopoldauer Platz; 29A Kefedergrundgasse – Dopschstraße.": {
+"en": "Diversions: 29B Dopschstraße – Kefergrundgasse; 28A Julius-Ficker-Straße – Leopoldauer Platz; 29A Kefedergrundgasse – Dopschstraße.",
+"calls": {}
+},
+"desc|WL|1: Umleitung Julius-Raab-Platz – Karlsplatz U; D: Umleitung Schwarzenbergplatz – Börse; 71: Betrieb nur Kaiserebersdorf – Schwarzenbergplatz.": {
+"en": "1: diversion Julius-Raab-Platz – Karlsplatz U; D: diversion Schwarzenbergplatz – Börse; 71: service only Kaiserebersdorf – Schwarzenbergplatz.",
+"calls": {
+"XENT5X: XGLO0X XENT0X XENT7X XENT1X U; D: XGLO0X XENT2X XENT7X XENT3X; XENT6X: XGLO1X XENT4X XENT7X XENT2X.": "XENT5X: XGLO0X XENT0X XENT7X XENT1X U; D: XGLO0X XENT2X XENT7X XENT3X; XENT6X: XGLO1X XENT4X XENT7X XENT2X."
+}
+},
+"desc|WL|1: Umleitung Julius-Raab-Platz – Karlsplatz U; 2: Kein Betrieb Josefstädter Straße U – Schwedenplatz U; D: Kein Betrieb Börse – Schwarzenbergplatz …": {
+"en": "1: diversion Julius-Raab-Platz – Karlsplatz U; 2: no service Josefstädter Straße U – Schwedenplatz U; D: no service Börse – Schwarzenbergplatz …",
+"calls": {
+"XENT6X: XGLO0X XENT0X XENT8X XENT1X U; XENT7X: XGLO1X XENT2X U XENT8X XENT3X U; D: XGLO1X XENT4X XENT8X XENT5X XENT9X": "XENT6X: XGLO0X XENT0X XENT8X XENT1X U; XENT7X: XGLO1X XENT2X U XENT8X XENT3X U; D: XGLO1X XENT4X XENT8X XENT5X XENT9X"
+}
+},
+"desc|WL|18: Umleitung Matzleinsdorfer Plaz S – Hauptbahnhof S U; 62: Betrieb nur Lainz – Matzleinsdorfer Platz S; O: Umleitung Quellenplatz – Quartier Belvedere S.": {
+"en": "18: diversion Matzleinsdorfer Plaz S – Hauptbahnhof S U; 62: service only Lainz – Matzleinsdorfer Platz S; O: diversion Quellenplatz – Quartier Belvedere S.",
+"calls": {
+"XENT4X: XGLO0X Matzleinsdorfer Plaz S XENT6X XENT0X S U; XENT5X: XGLO1X Lainz XENT6X XENT1X S; O: XGLO0X XENT2X XENT6X XENT3X S.": "XENT4X: XGLO0X Matzleinsdorfer Plaz S XENT6X XENT0X S U; XENT5X: XGLO1X Lainz XENT6X XENT1X S; O: XGLO0X XENT2X XENT6X XENT3X S."
+}
+},
+"desc|WL|30: Betrieb nur Floridsdorf S U – Floridsdorfer Markt; 31: Betrieb nur Schottenring U – Floridsdorfer Markt; 36B: Umleitung Haspingerplatz – Koloniestraße.": {
+"en": "30: service only Floridsdorf S U – Floridsdorfer Markt; 31: service only Schottenring U – Floridsdorfer Markt; 36B: diversion Haspingerplatz – Koloniestraße.",
+"calls": {}
+},
+"desc|WL|D: Umleitung Schwarzenbergplatz – Börse; 1: Umleitung Karlsplatz U – Julius-Raab-Platz; 71: Betrieb nur Kaiserebersdorf – Schwarzenbergplatz.": {
+"en": "D: diversion Schwarzenbergplatz – Börse; 1: diversion Karlsplatz U – Julius-Raab-Platz; 71: service only Kaiserebersdorf – Schwarzenbergplatz.",
+"calls": {}
+},
+"desc|WL|5: Kein Betrieb Lerchenfelder Straße – Franz-Josefs-Bahnhof S; 12: Betrieb nur Hillerstraße – Franz-Josefs-Bahnhof S; 37: Betrieb nur Hohe Warte – Nußdorfer Straße U …": {
+"en": "5: no service Lerchenfelder Straße – Franz-Josefs-Bahnhof S; 12: service only Hillerstraße – Franz-Josefs-Bahnhof S; 37: service only Hohe Warte – Nußdorfer Straße U …",
+"calls": {}
+},
+"desc|WL|Umleitungen: 1A Schottentor U – Michaelerplatz; 2A Renngasse – Michaelerplatz.": {
+"en": "Diversions: 1A Schottentor U – Michaelerplatz; 2A Renngasse – Michaelerplatz.",
+"calls": {}
+},
+"desc|WL|Umleitungen: 5B Bhf. Heiligenstadt S U – Heiligenstädter Brücke; 38A Bahnhof Heiligenstadt S U – Grinzinger Straße.": {
+"en": "Diversions: 5B Bhf. Heiligenstadt S U – Heiligenstädter Brücke; 38A Station Heiligenstadt S U – Grinzinger Straße.",
+"calls": {
+"XGLO0X: XENT3X Bhf. XENT0X S U XENT5X XENT1X; XENT4X Bahnhof XENT0X S U XENT5X XENT2X.": "XGLO0X: XENT3X Bhf. XENT0X S U XENT5X XENT1X; XENT4X Station XENT0X S U XENT5X XENT2X."
+}
+},
+"desc|WL|Umleitungen: 5B Bhf. Heiligenstadt S U – Heiligenstädter Brücke; 11A Bahnhof Heiligenstadt S U – Dr.-Adolf-Schärf-Heim.": {
+"en": "Diversions: 5B Bhf. Heiligenstadt S U – Heiligenstädter Brücke; 11A Station Heiligenstadt S U – Dr.-Adolf-Schärf-Heim.",
+"calls": {
+"XGLO0X: XENT3X Bhf. XENT0X S U XENT5X XENT1X; XENT4X Bahnhof XENT0X S U XENT5X XENT2X.": "XGLO0X: XENT3X Bhf. XENT0X S U XENT5X XENT1X; XENT4X Station XENT0X S U XENT5X XENT2X."
+}
+},
+"desc|WL|Umleitungen: 77A Ludwig-Koeßler-Platz – Donaumarina U; 80A Wittelsbachstraße – Ludwig-Koeßler-Platz.": {
+"en": "Diversions: 77A Ludwig-Koeßler-Platz – Donaumarina U; 80A Wittelsbachstraße – Ludwig-Koeßler-Platz.",
+"calls": {}
+},
+"desc|WL|25: Betrieb nur Aspern, Oberdorfstraße – Kagran U; 26: Betrieb nur Hausfeldstraße U – Josef-Baumann-Gasse; 27: Betrieb nur Aspern Nord S U – Josef-Baumann-Gasse; 30: Kein Betrieb.": {
+"en": "25: service only Aspern, Oberdorfstraße – Kagran U; 26: service only Hausfeldstraße U – Josef-Baumann-Gasse; 27: service only Aspern Nord S U – Josef-Baumann-Gasse; 30: no service.",
+"calls": {}
+},
+"desc|WL|25: Betrieb nur Aspern, Oberdorfstraße – Kagran U; 26: Kein Betrieb Josef-Baumann-Gasse – Floridsdorf S U; 27: Kein Betrieb Josef-Baumann-Gasse – Floridsdorf.": {
+"en": "25: service only Aspern, Oberdorfstraße – Kagran U; 26: no service Josef-Baumann-Gasse – Floridsdorf S U; 27: no service Josef-Baumann-Gasse – Floridsdorf.",
+"calls": {}
+},
+"desc|WL|Umleitungen: 51B Leyserstraße – Torricelligasse; 51A Leyserstraße – Torricelligasse.": {
+"en": "Diversions: 51B Leyserstraße – Torricelligasse; 51A Leyserstraße – Torricelligasse.",
+"calls": {}
+},
+"desc|WL|25: Betrieb nur Aspern, Oberdorfstraße – Kagran U; 26: Betrieb nur Hausfeldstraße U – Josef-Baumann-Gasse; 27: Kein Betrieb Josef-Baumann-Gasse – Floridsdorf.": {
+"en": "25: service only Aspern, Oberdorfstraße – Kagran U; 26: service only Hausfeldstraße U – Josef-Baumann-Gasse; 27: no service Josef-Baumann-Gasse – Floridsdorf.",
+"calls": {}
+},
+"desc|WL|Die Linie 66A kann die Haltestelle Atzgersdorf, Kirchenplatz in Richtung Reumannplatz nicht einhalten. Grund: Polizeieinsatz im Haltestellenbereich Atzgersdorf, Kirchenplatz.": {
+"en": "Line 66A cannot follow the stop Atzgersdorf, Kirchenplatz towards Reumannplatz. Reason: police operation in the stop area of Atzgersdorf, Kirchenplatz.",
+"calls": {
+"Die Linie XENT2X kann die Haltestelle XENT0X in Richtung XENT1X nicht einhalten. XGLO0X XGLO1X XGLO2X XENT0X.": "The line XENT2X cannot follow the stop XENT0X towards XENT1X. XGLO0X XGLO1X XGLO2X XENT0X."
+}
+}
+}
