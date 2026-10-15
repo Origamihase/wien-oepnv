@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261015-0004-F01, I20260922-0032, I20260925-0011, I20261015-0004, I20260909-0007, I20261015-0002-F03, I20261015-0003-F01, I20261015-0003"
+    "trafficInfoNameList": "I20260917-0012, I20261015-0004-F01, I20261015-0005, I20260922-0032, I20260925-0011, I20261015-0004, I20261015-0007, I20260909-0007, I20261015-0002-F03, I20261015-0003-F01, I20261015-0003, I20261015-0006-F01, I20261015-0006"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2025-671, R130-136, R119-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R1177-0, R45-136, R36-152, R293-474, R318-437, R100-136, R19-136, R1445-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1473-149, R1474-412, R1448-412, R5815-671, R1476-149, R1475-149, R1474-149, R2558-125, R2372-125, R2380-627, R2345-127, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2372-627, R2373-127, R2373-126, R2379-627, R2373-125, R1150-0, R1974-466, R500-101, R484-0, R534-0, R559-0, R566-0, R568-0, R571-0, R575-0, R578-0, R581-0, R583-0, R960-0, R799-0, R837-0, R842-0, R860-0, R898-0, R900-0, R10-0, R15-0, R36-0, R49-0, R54-0, R412-0, R435-0, R464-0, R483-0, R1401-0, R702-0, R688-0, R1411-0, R1440-0, R1447-0, R1375-0, R1384-0, R1387-0, R161-0, R370-0, R297-0, R296-0, R291-0, R268-0, R263-0, R259-0, R257-0, R176-0, R253-0, R2024-0, R666-0, R2020-0, R1449-0, R1450-0, R1472-0, R1473-0, R1475-0, R2034-0, R2036-0, R2039-0, R2058-0, R2099-0, R1482-0, R1495-0, R1498-0, R1503-0, R2009-0, R5652-0, R2938-0, R2917-0, R2889-0, R2887-0, R2882-0, R2527-0, R2524-0, R2516-0, R2509-0, R5548-0, R3157-0, R1527-0, R1528-0, R1530-0, R1531-0, R1548-0, R1549-0, R3156-0, R5692-0, R5669-0, R5658-0, R5772-0, R5634-0, R2585-0, R2588-0, R2600-0, R2606-0, R2618-0, R2681-0, R2682-0, R2575-0, R4733-0, R4732-0, R2576-0, R2584-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1177-0, R2025-671, R318-437, R1474-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1475-149, R1476-149, R2558-125, R2345-127, R2372-627, R2378-627, R2343-626, R2380-627, R2373-127, R2373-126, R2379-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R1150-0, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -386,19 +386,161 @@
     "title": "U1: Schadhaftes Fahrzeug"
    },
    {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R10-0",
+    "attributes": {
+     "relatedLineTypes": {
+      "1A": "ptBusCity"
+     }
+    },
+    "description": "Linie 1A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "Linie 1A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
+    "location": "Habsburgergasse",
+    "name": "I20261015-0005",
     "owner": "WL",
     "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     10
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1A"
     ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "401",
+       "lineName": "1A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
     "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
+     "created": "2026-10-15T07:32:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T07:32:00.000+0200",
+     "resume": "2026-10-15T07:32:00.000+0200",
+     "start": "2026-10-15T07:32:00.000+0200"
     },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
+    "title": "1A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 08:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Bahnhof Meidling.",
+    "descriptionHTML": "Linie U6:<br>Fahrtbehinderung in beiden Richtungen.<br> <br>Voraussichtliche Dauer: 08:00 Uhr.<br><br>Grund: Polizeieinsatz im Haltestellenbereich Bahnhof Meidling.",
+    "name": "I20261015-0006",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4615
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-15T07:44:00.000+0200",
+     "end": "2026-10-15T07:50:00.000+0200",
+     "lastUpdate": "2026-10-15T07:50:00.000+0200",
+     "resume": "2026-10-15T07:50:00.000+0200",
+     "start": "2026-10-15T07:44:00.000+0200"
+    },
+    "title": "U6: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261015-0006-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4615
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T07:50:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T07:50:00.000+0200",
+     "resume": "2026-10-15T07:50:00.000+0200",
+     "start": "2026-10-15T07:44:00.000+0200"
+    },
+    "title": "U6: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "12A": "ptBusCity",
+      "35A": "ptBusCity",
+      "63A": "ptBusCity"
+     }
+    },
+    "description": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "Linie 12A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
+    "name": "I20261015-0007",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12A",
+     "35A",
+     "63A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "412",
+       "lineName": "12A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "435",
+       "lineName": "35A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "463",
+       "lineName": "63A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T07:52:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T07:52:00.000+0200",
+     "resume": "2026-10-15T07:52:00.000+0200",
+     "start": "2026-10-15T07:52:00.000+0200"
+    },
+    "title": "12A, 35A, 63A: Verkehrsüberlastung"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -611,96 +753,6 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
    },
    {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1375-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1375
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1384-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1384
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1387-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1387
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1401-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1401
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1411-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1411
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1440-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1440
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
     "name": "R1445-149",
     "owner": "WL",
@@ -735,21 +787,6 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1447-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1447
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -806,21 +843,6 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Johnstraße U "
    },
    {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1449-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1449
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
     "name": "R1449-149",
     "owner": "WL",
@@ -839,36 +861,6 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
    },
    {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1450-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1450
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1472-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1472
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
     "name": "R1472-149",
     "owner": "WL",
@@ -885,21 +877,6 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1473-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1473
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
@@ -956,21 +933,6 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21"
    },
    {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1475-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1475
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
     "name": "R1475-149",
     "owner": "WL",
@@ -1005,201 +967,6 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1482-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1482
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1495-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1495
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1498-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1498
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R15-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     15
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1503-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1503
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1527-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1527
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1528-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1528
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1530-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1530
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1531-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1531
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1548-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1548
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R1549-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1549
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R161-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     161
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R176-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     176
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
@@ -1238,51 +1005,6 @@
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
    {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2009-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2009
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2020-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2020
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2024-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2024
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "name": "R2025-671",
     "owner": "WL",
@@ -1296,81 +1018,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2034-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2034
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2036-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2036
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2039-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2039
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2058-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2058
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2099-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2099
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
    },
    {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
@@ -1625,81 +1272,6 @@
     "title": "Busse halten\nHoßplatz 11"
    },
    {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2509-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2509
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2516-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2516
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2524-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2524
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2527-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2527
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R253-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     253
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -1716,291 +1288,6 @@
      "start": "2026-10-14T00:00:24.000+0200"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R257-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     257
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2575-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2575
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:30.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2576-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2576
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:30.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2584-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2584
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:30.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2585-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2585
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:30.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2588-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2588
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:30.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R259-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     259
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2600-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2600
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:30.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2606-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2606
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:30.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2618-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2618
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:30.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R263-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     263
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R268-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     268
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2681-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2681
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:30.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2682-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2682
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:30.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2882-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2882
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2887-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2887
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2889-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2889
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R291-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     291
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2917-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2917
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
    },
    {
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
@@ -2021,81 +1308,6 @@
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
    },
    {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R2938-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2938
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R296-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     296
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R297-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     297
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R3156-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     3156
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R3157-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     3157
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -2112,21 +1324,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R36-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     36
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
    },
    {
     "description": "Züge halten\nbei Linien 6 und 18",
@@ -2147,51 +1344,6 @@
     "title": "Züge halten\nbei Linien 6 und 18"
    },
    {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R370-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     370
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R412-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     412
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R435-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     435
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
     "description": "Züge halten\nWipplingerstr 39",
     "name": "R45-136",
     "owner": "WL",
@@ -2208,96 +1360,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R464-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     464
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R4732-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     4732
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:30.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R4733-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     4733
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:30.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R483-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     483
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R484-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     484
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R49-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     49
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
    },
    {
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
@@ -2318,246 +1380,6 @@
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R534-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     534
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R54-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     54
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R5548-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     5548
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R559-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     559
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R5634-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     5634
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R5652-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     5652
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R5658-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     5658
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R566-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     566
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R5669-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     5669
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R568-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     568
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R5692-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     5692
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R571-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     571
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R575-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     575
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R5772-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     5772
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:29.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R578-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     578
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R581-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     581
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "name": "R5815-671",
     "owner": "WL",
@@ -2571,171 +1393,6 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R583-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     583
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R666-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     666
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R688-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     688
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R702-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     702
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:28.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R799-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     799
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R837-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     837
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R842-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     842
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R860-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     860
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R898-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     898
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R900-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     900
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
-   },
-   {
-    "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
-    "name": "R960-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     960
-    ],
-    "time": {
-     "end": "2026-10-15T07:39:00.000+0200",
-     "start": "2026-10-15T06:40:27.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
