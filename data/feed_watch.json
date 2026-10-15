@@ -1,13 +1,21 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-15T15:30:42.914620+00:00",
- "built": "2026-10-15T17:30:39+02:00",
+ "updated": "2026-10-15T16:01:20.262552+00:00",
+ "built": "2026-10-15T18:01:06+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-15T17:30:39+02:00",
+  "built": "2026-10-15T18:01:06+02:00",
   "items": [
+   {
+    "title": "48A: Polizeieinsatz",
+    "time_line": "Seit 17:55"
+   },
+   {
+    "title": "15A: Rettungseinsatz",
+    "time_line": "Seit 17:48"
+   },
    {
     "title": "7A/10A/14A/16A/59A/80A: Verkehrsüberlastung",
     "time_line": "Seit 16:17"
@@ -39,14 +47,6 @@
    {
     "title": "12/5: Albertgasse",
     "time_line": "Bis 03.11."
-   },
-   {
-    "title": "15A: Max-Mauermann-Gasse",
-    "time_line": "Bis 25.12."
-   },
-   {
-    "title": "1A/3A: Schwertgasse",
-    "time_line": "Bis 31.03.2027"
    }
   ]
  },
@@ -4550,6 +4550,26 @@
     "baustellen": 3,
     "oebb": 10,
     "wl": 102
+   }
+  },
+  {
+   "t": "2026-10-15T16:01:20.262552+00:00",
+   "raw": {
+    "wl-stoerungen": 61,
+    "wl-hinweise": 84,
+    "oebb": 159,
+    "baustellen-linien": 50,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 11,
+    "oebb": 135,
+    "baustellen": 67
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 10,
+    "wl": 104
    }
   }
  ]

@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261015-0027, I20260917-0012, I20260922-0032, I20261015-0026-F01, I20260925-0011, I20260909-0007, I20261015-0028-F01, I20261015-0028"
+    "trafficInfoNameList": "I20261015-0027, I20261015-0029, I20260917-0012, I20260922-0032, I20261015-0030, I20260925-0011, I20260909-0007, I20261015-0028-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2025-671, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R1177-0, R293-474, R318-437, R1473-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1474-149, R1475-149, R1476-149, R2558-125, R2380-627, R2345-127, R2372-627, R2379-627, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R1150-0, R1974-466, R500-101, R1427-412, R2880-412, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1177-0, R2025-671, R318-437, R1474-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1475-149, R1476-149, R2558-125, R2345-127, R2372-627, R2378-627, R2343-626, R2380-627, R2373-127, R2373-126, R2379-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R1150-0, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,43 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "27": "ptTram"
-     }
-    },
-    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261015-0026-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "127",
-       "lineName": "27",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     2173
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T15:49:00.000+0200",
-     "end": "2026-10-15T16:27:00.000+0200",
-     "lastUpdate": "2026-10-15T16:27:00.000+0200",
-     "resume": "2026-10-15T16:27:00.000+0200",
-     "start": "2026-10-15T15:41:00.000+0200"
-    },
-    "title": "27: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "10A": "ptBusCity",
       "14A": "ptBusCity",
       "16A": "ptBusCity",
@@ -312,43 +275,6 @@
       "12A": "ptBusCity"
      }
     },
-    "description": "Linie 12A: Fahrtbehinderung in Richtung Schmelz, Gablenzgasse. Voraussichtliche Dauer: 17:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Henriettenplatz.",
-    "descriptionHTML": "Linie 12A:<br>Fahrtbehinderung in Richtung Schmelz, Gablenzgasse.<br> <br>Voraussichtliche Dauer: 17:00 Uhr.<br><br>Grund: Polizeieinsatz im Haltestellenbereich Henriettenplatz.",
-    "name": "I20261015-0028",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "412",
-       "lineName": "12A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "relatedStops": [
-     3160
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T16:39:00.000+0200",
-     "end": "2026-10-15T16:49:00.000+0200",
-     "lastUpdate": "2026-10-15T16:49:00.000+0200",
-     "resume": "2026-10-15T16:49:00.000+0200",
-     "start": "2026-10-15T16:38:00.000+0200"
-    },
-    "title": "12A: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "12A": "ptBusCity"
-     }
-    },
     "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "name": "I20261015-0028-F01",
@@ -379,6 +305,77 @@
      "start": "2026-10-15T16:38:00.000+0200"
     },
     "title": "12A: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "15A": "ptBusCity"
+     }
+    },
+    "description": "Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "Linie 15A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Rettungseinsatz.",
+    "name": "I20261015-0029",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "15A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "415",
+       "lineName": "15A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T17:48:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T17:48:00.000+0200",
+     "resume": "2026-10-15T17:48:00.000+0200",
+     "start": "2026-10-15T17:48:00.000+0200"
+    },
+    "title": "15A: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "48A": "ptBusCity"
+     }
+    },
+    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Polizeieinsatz.",
+    "name": "I20261015-0030",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "448",
+       "lineName": "48A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1407
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T17:56:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T17:56:00.000+0200",
+     "resume": "2026-10-15T17:55:00.000+0200",
+     "start": "2026-10-15T17:55:00.000+0200"
+    },
+    "title": "48A: Polizeieinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -589,24 +586,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1427-412",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12A"
-    ],
-    "relatedStops": [
-     1427
-    ],
-    "time": {
-     "end": "2026-10-15T17:42:00.000+0200",
-     "start": "2026-10-15T16:43:26.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -1144,24 +1123,6 @@
      "start": "2026-10-14T00:00:24.000+0200"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2880-412",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12A"
-    ],
-    "relatedStops": [
-     2880
-    ],
-    "time": {
-     "end": "2026-10-15T17:42:00.000+0200",
-     "start": "2026-10-15T16:43:29.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
