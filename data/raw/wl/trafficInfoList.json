@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261015-0004-F01, I20261015-0005, I20260922-0032, I20260925-0011, I20261015-0004, I20261015-0007, I20260909-0007, I20261015-0002-F03, I20261015-0003-F01, I20261015-0003, I20261015-0006-F01, I20261015-0006"
+    "trafficInfoNameList": "I20260917-0012, I20261015-0005, I20260922-0032, I20261015-0009-F01, I20261015-0009, I20260925-0011, I20260909-0007, I20261015-0004-F01, I20261015-0008-F01, I20261015-0008, I20261015-0003-F01, I20261015-0006-F01, I20261015-0006, I20261015-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1177-0, R2025-671, R318-437, R1474-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1475-149, R1476-149, R2558-125, R2345-127, R2372-627, R2378-627, R2343-626, R2380-627, R2373-127, R2373-126, R2379-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R1150-0, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2025-671, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1177-0, R293-474, R318-437, R1473-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1474-149, R1475-149, R1476-149, R2558-125, R2380-627, R2345-127, R2372-627, R2379-627, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R1150-0, R1974-466, R500-101, R1498-404, R1489-404, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,80 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "D": "ptTram"
-     }
-    },
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261015-0002-F03",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "136",
-       "lineName": "D",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     51
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T05:46:00.000+0200",
-     "end": "2026-10-15T07:16:00.000+0200",
-     "lastUpdate": "2026-10-15T07:16:00.000+0200",
-     "resume": "2026-10-15T07:16:00.000+0200",
-     "start": "2026-10-15T05:34:00.000+0200"
-    },
-    "title": "D: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Die Linie U3 fährt derzeit nur zwischen Simmering und Westbahnhof. Weichen Sie ersatzweise auf die Linien 9, 46, 52, 48A aus. Voraussichtliche Dauer: 08:00 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Johnstraße.",
-    "descriptionHTML": "Die Linie U3 fährt derzeit nur zwischen Simmering und Westbahnhof.<br> <br>Weichen Sie ersatzweise auf die Linien 9, 46, 52, 48A aus.<br><br>Voraussichtliche Dauer: 08:00 Uhr.<br><br>Grund: Feuerwehreinsatz im Haltestellenbereich Johnstraße.",
-    "name": "I20261015-0003",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "303",
-       "lineName": "U3",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4926
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T06:38:00.000+0200",
-     "end": "2026-10-15T07:20:00.000+0200",
-     "lastUpdate": "2026-10-15T07:20:00.000+0200",
-     "resume": "2026-10-15T07:20:00.000+0200",
-     "start": "2026-10-15T06:32:00.000+0200"
-    },
-    "title": "U3: Feuerwehreinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U3": "ptMetro"
      }
     },
@@ -317,43 +243,6 @@
       "U1": "ptMetro"
      }
     },
-    "description": "Linie U1: Fahrtbehinderung in Richtung Oberlaa. Voraussichtliche Dauer: 07_30 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kagraner Platz.",
-    "descriptionHTML": "Linie U1:<br>Fahrtbehinderung in Richtung Oberlaa.<br> <br>Voraussichtliche Dauer: 07_30 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kagraner Platz.",
-    "name": "I20261015-0004",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "301",
-       "lineName": "U1",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4181
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T07:10:00.000+0200",
-     "end": "2026-10-15T07:14:00.000+0200",
-     "lastUpdate": "2026-10-15T07:14:00.000+0200",
-     "resume": "2026-10-15T07:14:00.000+0200",
-     "start": "2026-10-15T07:09:00.000+0200"
-    },
-    "title": "U1: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
     "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "name": "I20261015-0004-F01",
@@ -375,12 +264,12 @@
     "relatedStops": [
      4181
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-15T07:14:00.000+0200",
-     "end": "2026-10-15T23:55:00.000+0200",
-     "lastUpdate": "2026-10-15T07:14:00.000+0200",
-     "resume": "2026-10-15T07:14:00.000+0200",
+     "end": "2026-10-15T08:02:00.000+0200",
+     "lastUpdate": "2026-10-15T08:02:00.000+0200",
+     "resume": "2026-10-15T08:02:00.000+0200",
      "start": "2026-10-15T07:09:00.000+0200"
     },
     "title": "U1: Schadhaftes Fahrzeug"
@@ -498,18 +387,20 @@
     "attributes": {
      "relatedLineTypes": {
       "12A": "ptBusCity",
+      "16A": "ptBusCity",
       "35A": "ptBusCity",
       "63A": "ptBusCity"
      }
     },
-    "description": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "Linie 12A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
+    "description": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "Linie 12A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 16A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
     "name": "I20261015-0007",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
      "12A",
+     "16A",
      "35A",
      "63A"
     ],
@@ -529,6 +420,11 @@
        "lineId": "463",
        "lineName": "63A",
        "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "416",
+       "lineName": "16A",
+       "vehicleType": "ptBusCity"
       }
      ]
     ],
@@ -536,11 +432,155 @@
     "time": {
      "created": "2026-10-15T07:52:00.000+0200",
      "end": "2026-10-15T23:55:00.000+0200",
-     "lastUpdate": "2026-10-15T07:52:00.000+0200",
+     "lastUpdate": "2026-10-15T08:06:00.000+0200",
      "resume": "2026-10-15T07:52:00.000+0200",
      "start": "2026-10-15T07:52:00.000+0200"
     },
-    "title": "12A, 35A, 63A: Verkehrsüberlastung"
+    "title": "12A, 35A, 63A, 16A: Verkehrsüberlastung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "4A": "ptBusCity"
+     }
+    },
+    "description": "Linie 4A: Fahrtbehinderung in Richtung Wittelsbachstraße. Voraussichtliche Dauer: 08:30 Uhr. Grund: Polizeieinsatz im Bereich Rotundenbrücke.",
+    "descriptionHTML": "Linie 4A:<br>Fahrtbehinderung in Richtung Wittelsbachstraße.<br> <br>Voraussichtliche Dauer: 08:30 Uhr.<br><br>Grund: Polizeieinsatz im Bereich Rotundenbrücke.",
+    "location": "Rotundenbrücke",
+    "name": "I20261015-0008",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "4A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "404",
+       "lineName": "4A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-15T08:10:00.000+0200",
+     "end": "2026-10-15T08:11:00.000+0200",
+     "lastUpdate": "2026-10-15T08:11:00.000+0200",
+     "resume": "2026-10-15T08:11:00.000+0200",
+     "start": "2026-10-15T08:07:00.000+0200"
+    },
+    "title": "4A: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "4A": "ptBusCity"
+     }
+    },
+    "description": "Linie 4A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 4A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Rotundenbrücke",
+    "name": "I20261015-0008-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "4A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "404",
+       "lineName": "4A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T08:11:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T08:11:00.000+0200",
+     "resume": "2026-10-15T08:11:00.000+0200",
+     "start": "2026-10-15T08:07:00.000+0200"
+    },
+    "title": "4A: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Aderklaaer Straße und Rennbahnweg in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 08:45 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Aderklaaer Straße.",
+    "descriptionHTML": "Die Linie U1 fährt derzeit zwischen den Stationen Aderklaaer Straße und Rennbahnweg in beiden Richtungen über Gleis 1.<br> <br>Voraussichtliche Dauer: 08:45 Uhr.<br><br>Grund: Polizeieinsatz im Haltestellenbereich Aderklaaer Straße.",
+    "name": "I20261015-0009",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "301",
+       "lineName": "U1",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4183
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-15T08:24:00.000+0200",
+     "end": "2026-10-15T08:28:00.000+0200",
+     "lastUpdate": "2026-10-15T08:28:00.000+0200",
+     "resume": "2026-10-15T08:28:00.000+0200",
+     "start": "2026-10-15T08:23:00.000+0200"
+    },
+    "title": "U1: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261015-0009-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "301",
+       "lineName": "U1",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4183
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T08:28:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T08:28:00.000+0200",
+     "resume": "2026-10-15T08:28:00.000+0200",
+     "start": "2026-10-15T08:23:00.000+0200"
+    },
+    "title": "U1: Polizeieinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -967,6 +1007,42 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1489-404",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "4A"
+    ],
+    "relatedStops": [
+     1489
+    ],
+    "time": {
+     "end": "2026-10-15T09:09:00.000+0200",
+     "start": "2026-10-15T08:10:37.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1498-404",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "4A"
+    ],
+    "relatedStops": [
+     1498
+    ],
+    "time": {
+     "end": "2026-10-15T09:09:00.000+0200",
+     "start": "2026-10-15T08:10:37.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",

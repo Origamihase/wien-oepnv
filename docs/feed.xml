@@ -7,10 +7,32 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 15 Oct 2026 08:00:49 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 08:30:35 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[12A/35A/63A: Verkehrsüberlastung]]></title>
+      <title><![CDATA[4A: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">301f12106df6114e14ae8e5c057faeee2f4580fd67c56a6e078efb1a7df2ae0e</guid>
+      <pubDate>Thu, 15 Oct 2026 08:07:00 +0200</pubDate>
+      <ext:first_seen>Thu, 15 Oct 2026 08:30:35 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 15 Oct 2026 08:07:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 08:07]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 08:07]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U1: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49</guid>
+      <pubDate>Thu, 15 Oct 2026 08:23:00 +0200</pubDate>
+      <ext:first_seen>Thu, 15 Oct 2026 08:23:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 15 Oct 2026 08:23:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 08:23]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 08:23]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A/16A/35A/63A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">1d73bb136a2cc4846af5fef2d185a8b483fed2361afb469a8662b6111b072f77</guid>
       <pubDate>Thu, 15 Oct 2026 07:52:00 +0200</pubDate>
@@ -41,17 +63,6 @@
       <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 07:32]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 07:32]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7</guid>
-      <pubDate>Thu, 15 Oct 2026 07:09:00 +0200</pubDate>
-      <ext:first_seen>Thu, 15 Oct 2026 07:09:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 15 Oct 2026 07:09:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 07:09]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 07:09]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Feuerwehreinsatz]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Sat, 14 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet. [Bis 14.11.]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet.<br/>[Bis 14.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[30A/31A/36A/36B: Großjedlersdorf]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">ce34a544ce4bbc382e34f3f31313bf19d5bf84aa82a678002869995af06a5f15</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 07:00:00 +0200</ext:ends_at>
-      <description>Frauenstiftgasse nach Brünner Straße → Frauenstiftgasse 5-7. Haltestellenverlegung der Linien 30A in Richtung Freiheitsplatz, 31A in Richtung Jochbergengasse, 36A und 36B … [Bis Fr 16.10.]</description>
-      <content:encoded><![CDATA[Frauenstiftgasse nach Brünner Straße → Frauenstiftgasse 5-7. Haltestellenverlegung der Linien 30A in Richtung Freiheitsplatz, 31A in Richtung Jochbergengasse, 36A und 36B …<br/>[Bis Fr 16.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
