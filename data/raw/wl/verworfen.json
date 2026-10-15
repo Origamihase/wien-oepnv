@@ -2,7 +2,19 @@
  "verworfen": [
   {
    "grund": "Kurzmeldung einer erledigten Störung",
+   "titel": "Fahrtbehinderung Verkehrsunfall"
+  },
+  {
+   "grund": "Kurzmeldung einer erledigten Störung",
    "titel": "Fahrtbehinderung wegen Polizeieinsatz"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "1A: Verkehrsunfall"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "40, 41, 42: Verkehrsunfall"
   },
   {
    "grund": "Status inaktiv",
@@ -15,10 +27,6 @@
   {
    "grund": "Status inaktiv",
    "titel": "U1: Schadhaftes Fahrzeug"
-  },
-  {
-   "grund": "Status inaktiv",
-   "titel": "U6: Polizeieinsatz"
   },
   {
    "grund": "außerhalb des Zeitraums",

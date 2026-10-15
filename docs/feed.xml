@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 15 Oct 2026 08:30:35 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 09:01:05 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[1/62/71: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">24c73dd44a1ffa55e3ae1c5df216837c7b2f05a8343dfaae9b5013a334be1e81</guid>
+      <pubDate>Thu, 15 Oct 2026 08:51:00 +0200</pubDate>
+      <ext:first_seen>Thu, 15 Oct 2026 09:01:05 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 15 Oct 2026 08:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 08:51]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 08:51]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40/41/42: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">b8938e94c70221081d94c1f9627e29d1273108203a2ba78ea9d9eaa80416cb92</guid>
+      <pubDate>Thu, 15 Oct 2026 08:36:00 +0200</pubDate>
+      <ext:first_seen>Thu, 15 Oct 2026 08:36:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 15 Oct 2026 08:36:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 08:36]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 08:36]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[4A: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -32,7 +54,7 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 08:23]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[12A/16A/35A/63A: Verkehrsüberlastung]]></title>
+      <title><![CDATA[12A/16A/35A/40A/63A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">1d73bb136a2cc4846af5fef2d185a8b483fed2361afb469a8662b6111b072f77</guid>
       <pubDate>Thu, 15 Oct 2026 07:52:00 +0200</pubDate>
@@ -52,17 +74,6 @@
       <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 07:44]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 07:44]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9c4b20eeb0989a8f43e6b6aa56a0761d9fd3f3c3c7627ef6c508b6ef4287118a</guid>
-      <pubDate>Thu, 15 Oct 2026 07:32:00 +0200</pubDate>
-      <ext:first_seen>Thu, 15 Oct 2026 07:32:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 15 Oct 2026 07:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 07:32]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 07:32]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Feuerwehreinsatz]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten. [Bis 28.10.]</description>
       <content:encoded><![CDATA[Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten.<br/>[Bis 28.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">615c7d9755493e3506136b4c89ccafaac30323c3c9774583bc4b55062576c7bb</guid>
-      <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 09 Oct 2026 13:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 14 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet. [Bis 14.11.]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet.<br/>[Bis 14.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
