@@ -5,6 +5,20 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Feed-Kette als eine Funktion, Glossar als Datenmodul (2026-10-15)**:
+  Die rund 15 Schritte zwischen Abruf und RSS standen nur in `main()`,
+  vermischt mit Zeitmessung und Dateischreiben; Replay-Proben schrieben sie
+  ab, und die älteren kannten den Baustellen-Zwillingsschritt nicht. Jetzt
+  stehen sie in `_assemble_feed_items`, die `main()` und jede Probe
+  aufrufen. Die reinen Glossar-Tabellen (`_GLOSSARY_BASE`,
+  `_GLOSSARY_BY_SOURCE`, `_GLOSSARY_BY_CATEGORY`, `_FIELD_LABEL_EN`) liegen in
+  `src/feed/glossary.py`. Michaels Entscheidung nach Jules'
+  Modularisierungs-Audit vom 14.10.: nur diese zwei Schritte, alle Logik- und
+  Übersetzungsfunktionen bleiben in `build_feed.py`, damit keine der 264
+  Test-Attrappen auf `build_feed` ins Leere läuft (Begründung in
+  `docs/architecture.md` §1, „Eine Feed-Kette, ein Modul“). Der Feed ändert
+  sich nicht: Replay alt gegen neu über alle Feed-Stände, DE und EN
+  identisch.
 * **Jede Linie einer WL-Störung mehrerer Linien (2026-10-15)**: Beim
   Gasrohrbruch am 11.10. zeigte „30A/31A/36B: Gasrohrgebrechen“ nur die
   Umleitung der 36B, denn WL schreibt einen Satz je Linie und die

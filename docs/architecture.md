@@ -111,6 +111,36 @@ sequenceDiagram
 - **Vor dem Altersfilter** verwirft `_drop_test_messages` Testmeldungen der Anbieter („Testmeldung“, oder ein Titel bzw. Text von höchstens fünf Wörtern mit dem Wort „Test“, wobei ein Bindestrich zum Wort gehört und „Test-Fahrten“ nicht trifft; Anlass: zwei WL-Testmeldungen am 23.09.2026). Seit 2026-10-03 zählen auch „Testfall“ und „Testtext“ und ein beliebig langer Text, der nur aus „Test“ besteht („Test Test Tes Test Test Test“); die Filterprüfung fand diese drei Formen in der WL-Cache-Historie. Sie belegten sonst einen der zehn Plätze.
 - **Nach der Dedupe** legt `_merge_wl_ticker_clusters` die WL-Störungen eines Vorfalls zu einem Eintrag zusammen (seit 2026-09-26), und seit 2026-10-01 auch die einer Linie, deren Gültigkeit sich überschneidet (unten, „Titel und Beschreibung im deutschen Feed“). `deduplicate_fuzzy` lässt zwei WL-Störungen derselben Linien deshalb in Ruhe (`_may_merge`); WL-Störungen sich überschneidender, verschiedener Linien („40/41“ und „40“) führt es weiter selbst zusammen. Anschließend gehen die Anzeigetafel-Meldungen einer Baustelle in deren Hinweis auf (`_absorb_works_tickers`, seit 2026-10-02): eine WL-Störung mit genau einem Vorfall, deren Ursache der Hinweis im Titel oder in der `<h2>`-Überschrift nennt, deren Linien er abdeckt, deren Gültigkeit in seiner liegt (± 1 Tag) und von deren Straßen er eine nennt. Anlass: „D: Gleisbauarbeiten [Am 01.10.2026]“ für Arbeiten vom 28.09. bis 07.11., ebenso 12A, 25, N20, N49, 37A und 74A in allen 68 WL-Cache-Ständen vom 30.09. bis 02.10.; WL veröffentlicht die Tafel-Meldungen jede Nacht neu, sie belegten so täglich einen vorderen Platz. Die Straße hält zwei Baustellen derselben Ursache auseinander („66A: Busse halten Salvatorianerplatz“ ist nicht der Hinweis „65A/66A: Inzersdorfer Straße“). Den WL-Merge einfach vor `deduplicate_fuzzy` zu ziehen hätte die Reste auch entfernt, nahm aber am 02.10. einen Rettungseinsatz der Linie D mit in den Hinweis. Eine Stadt-Wien-Baustelle, deren Maßnahme ein laufender WL-Hinweis schon meldet, fällt danach weg (`_drop_baustellen_twins`, seit 2026-10-09, Betreiberentscheidung „WL-Meldung genügt“): Zwilling ist ein WL-Hinweis, der bereits gilt und in seinem Ursachensatz die Straße der Baustelle nennt („Wegen Bauarbeiten im Bereich Neilreichgasse # Davidgasse …“) oder dieselbe Adresse wie der Baustellentext („Nach: Burggasse 69“); eine Straße nur in Umleitung oder Haltestellenliste zählt nicht (`names_site_street`, `shares_address` in `src/providers/baustellen.py`). Die WL-Meldung nennt Linie und Richtung, die Baustelle nicht; seit Mai hatten fast alle Baustellen mit Öffi-Folge einen solchen Zwilling, zweimal standen beide tagelang unter den ersten zehn (Inzersdorfer Straße, Floridsdorfer Brücke). Ein zusammengelegter Eintrag behält danach GUID und Beginn, die er im Feed hatte, auch wenn die Meldung, von der beides stammt, vor den anderen wegfällt (`_carry_item_identity`, seit 2026-10-06; `docs/development.md`, „Eine Meldung, eine GUID“). Danach entscheidet die Reihenfolge, was die zehn Plätze bekommt: Sortierung nach `first_seen` (laufende ungeplante Störungen, seit höchstens 24 h im Feed, vor allem anderen, `_is_current_incident`, Betreiberentscheidung 2026-10-04; sonst neueste zuerst; eine wiederkehrende WL-Meldung bekommt vorher über `_restart_recurring_occurrences` den Beginn ihres aktuellen Auftretens, die WL-GUID enthält kein Datum; eine angekündigte Maßnahme zählt ab ihrem Beginn als neu, `announced_start` über `_note_announced_starts`; eine Stadt-Wien-Baustelle zählt nie später als an ihrem Starttag als neu, `_baustelle_start_cap`, seit 2026-10-09: ihre GUID enthält das Enddatum, eine verlängerte Baustelle kam sonst als brandneu zurück, „Burggasse 67“ am 08.10. auf Platz 9), dann `_defer_repeated_route_titles` (von wortgleichen ÖBB-Titeln bleibt nur das früheste Zeitfenster vorn, eine laufende Störung aber immer, seit 2026-10-05), `_apply_topic_budget` (höchstens `MAX_ITEMS_PER_TOPIC` je Ursachenwort und Tag), `_defer_upcoming_items` (was erst nach `UPCOMING_PREVIEW_DAYS` Tagen beginnt, rückt hinter alles Laufende, Betreiberentscheidung 2026-10-02; Standard seit 2026-10-03 ein Tag, also ab dem Vortag, freitags und samstags bis einschließlich Montag) und `_defer_all_clear_items` (ÖBB-Entwarnungen „Aufhebung …“ ganz nach hinten, Betreiberentscheidung 2026-09-25). Die Regeln löschen nichts, sie stellen hinter das Feld — siehe `docs/development.md`, „Reihenfolge im Feed".
 
+### Eine Feed-Kette, ein Modul (seit 2026-10-15)
+
+Alle Schritte zwischen Abruf und RSS (Testmeldungen, Altersfilter, Dedupe,
+WL-Zusammenlegung, Baustellen-Zwillinge, `_carry_item_identity`, Sortierung
+und die `_defer_*`-Regeln) stehen in genau einer Funktion,
+`_assemble_feed_items` in `src/build_feed.py`. `main()` ruft sie zwischen
+`_invoke_collect_items` und `_make_rss` auf und liest Zählwerte und Zeiten für
+den Health-Report aus `FeedAssemblyStats`. Jede Probe, die einen früheren
+Feed-Stand aus dem Cache nachbaut (Replay alt gegen neu), ruft dieselbe
+Funktion auf, statt die Schritte abzuschreiben: Abgeschriebene Ketten liefen
+dem echten Build davon (die älteren Replay-Proben kannten den
+Zwillingsschritt nicht). `tests/test_assemble_feed_items.py` hält fest, dass
+`main()` keinen Kettenschritt mehr selbst aufruft.
+
+`build_feed.py` bleibt ansonsten ein Modul. Michaels Entscheidung vom
+2026-10-15 nach Jules' Modularisierungs-Audit vom 2026-10-14
+(`docs/archive/audits/audit-2026-10-14-build-feed-modularization.md`):
+umgesetzt werden nur die Feed-Kette als Funktion und die Auslagerung der
+reinen Glossar-Daten nach `src/feed/glossary.py` (siehe §8). Die vorgeschlagene
+Aufteilung in Übersetzer-, Text- und XML-Module wird **nicht** gemacht. Grund:
+Die Tests ersetzen Funktionen von `build_feed` 264-mal per
+`patch.object(bf, …)` (55-mal allein `_get_translation_pipeline`), und 216
+Testdateien importieren das Modul. Wandert eine Funktion in ein anderes
+Modul, ruft der Code dort seine eigene Kopie auf; ein Re-Export in
+`build_feed` hält den Import am Leben, aber die Attrappe läuft ins Leere, und
+ein Test bricht oder ruft still das echte Übersetzungsmodell. Am TV brächte die
+Aufteilung nichts, das Risiko trüge der deutsche Feed. Die Funktionen sind
+einzeln klein genug: Nur `_dedupe_items` steht auf der Liste des
+C901-Gates.
+
 ### Titel und Beschreibung im deutschen Feed
 
 Diese Regeln entscheiden, was ein Eintrag im deutschen Feed zeigt. Sie
@@ -2440,7 +2470,11 @@ Zwei Sorten, bewusst unterscheidbar:
   Entsprechung ersetzt; die Auswahl ist nach `(source, category)` geschichtet
   (`_GLOSSARY_BASE`, `_GLOSSARY_BY_SOURCE`, `_GLOSSARY_BY_CATEGORY`, aufgelöst
   von `_resolve_glossary`), damit betreiberspezifisches Vokabular nur bei
-  Items dieses Betreibers greift.
+  Items dieses Betreibers greift. Die Tabellen (samt `_FIELD_LABEL_EN`)
+  stehen seit 2026-10-15 als reine Daten in `src/feed/glossary.py`;
+  `build_feed` importiert sie unter denselben Namen, und alle Funktionen, die
+  sie anwenden, bleiben dort (Begründung in §1, „Eine Feed-Kette, ein
+  Modul“).
 
 Die Reihenfolge ist kein Zufall: **Glossar zuerst, Entitäten danach.** Nach
 dem Glossar-Durchlauf stehen dort `XGLO…`-Platzhalter, die der Entity-Masker
