@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261015-0002-F03, I20261015-0002-F01, I20260917-0012, I20260922-0032, I20260925-0011, I20261015-0002-F02, I20260909-0007, I20261015-0003, I20261015-0002-F04"
+    "trafficInfoNameList": "I20260917-0012, I20261015-0004-F01, I20260922-0032, I20260925-0011, I20261015-0004, I20260909-0007, I20261015-0002-F03, I20261015-0003-F01, I20261015-0003"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R36-152, R2025-671, R115-136, R103-136, R102-136, R101-136, R100-136, R293-474, R1177-0, R318-437, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R1474-412, R1447-149, R1446-149, R1445-149, R1448-149, R1448-412, R5815-671, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R2558-125, R2370-125, R2359-125, R2343-125, R2343-626, R2372-125, R2373-127, R2373-125, R2371-125, R2372-627, R2378-627, R2373-126, R2379-627, R2380-627, R2345-127, R1150-0, R1974-466, R500-101, R534-0, R559-0, R566-0, R568-0, R571-0, R575-0, R578-0, R581-0, R583-0, R960-0, R799-0, R837-0, R842-0, R860-0, R898-0, R900-0, R10-0, R15-0, R36-0, R49-0, R54-0, R412-0, R435-0, R464-0, R483-0, R484-0, R1447-0, R702-0, R688-0, R1449-0, R1450-0, R1472-0, R1473-0, R2034-0, R2036-0, R2039-0, R370-0, R297-0, R296-0, R291-0, R268-0, R263-0, R259-0, R257-0, R2058-0, R2099-0, R1411-0, R666-0, R1440-0, R1375-0, R1384-0, R1387-0, R161-0, R176-0, R253-0, R1401-0, R2024-0, R2020-0, R2009-0, R1475-0, R1482-0, R1495-0, R1498-0, R1503-0, R5658-0, R2938-0, R2917-0, R2889-0, R2887-0, R2882-0, R2527-0, R2524-0, R2516-0, R2509-0, R5548-0, R3157-0, R1527-0, R1528-0, R1530-0, R1531-0, R1548-0, R1549-0, R3156-0, R5634-0, R5692-0, R5772-0, R5669-0, R5652-0, R2575-0, R2576-0, R2584-0, R2585-0, R2588-0, R2600-0, R2606-0, R2618-0, R2681-0, R2682-0, R4733-0, R4732-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2025-671, R130-136, R119-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R1177-0, R45-136, R36-152, R293-474, R318-437, R100-136, R19-136, R1445-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1473-149, R1474-412, R1448-412, R5815-671, R1476-149, R1475-149, R1474-149, R2558-125, R2372-125, R2380-627, R2345-127, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2372-627, R2373-127, R2373-126, R2379-627, R2373-125, R1150-0, R1974-466, R500-101, R484-0, R534-0, R559-0, R566-0, R568-0, R571-0, R575-0, R578-0, R581-0, R583-0, R960-0, R799-0, R837-0, R842-0, R860-0, R898-0, R900-0, R10-0, R15-0, R36-0, R49-0, R54-0, R412-0, R435-0, R464-0, R483-0, R1401-0, R702-0, R688-0, R1411-0, R1440-0, R1447-0, R1375-0, R1384-0, R1387-0, R161-0, R370-0, R297-0, R296-0, R291-0, R268-0, R263-0, R259-0, R257-0, R176-0, R253-0, R2024-0, R666-0, R2020-0, R1449-0, R1450-0, R1472-0, R1473-0, R1475-0, R2034-0, R2036-0, R2039-0, R2058-0, R2099-0, R1482-0, R1495-0, R1498-0, R1503-0, R2009-0, R5652-0, R2938-0, R2917-0, R2889-0, R2887-0, R2882-0, R2527-0, R2524-0, R2516-0, R2509-0, R5548-0, R3157-0, R1527-0, R1528-0, R1530-0, R1531-0, R1548-0, R1549-0, R3156-0, R5692-0, R5669-0, R5658-0, R5772-0, R5634-0, R2585-0, R2588-0, R2600-0, R2606-0, R2618-0, R2681-0, R2682-0, R2575-0, R4733-0, R4732-0, R2576-0, R2584-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,80 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "1": "ptTram"
-     }
-    },
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261015-0002-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "101",
-       "lineName": "1",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     51
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T05:46:00.000+0200",
-     "end": "2026-10-15T06:06:00.000+0200",
-     "lastUpdate": "2026-10-15T06:06:00.000+0200",
-     "resume": "2026-10-15T06:06:00.000+0200",
-     "start": "2026-10-15T05:34:00.000+0200"
-    },
-    "title": "1: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261015-0002-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "102",
-       "lineName": "2",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     51
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T05:46:00.000+0200",
-     "end": "2026-10-15T06:07:00.000+0200",
-     "lastUpdate": "2026-10-15T06:07:00.000+0200",
-     "resume": "2026-10-15T06:07:00.000+0200",
-     "start": "2026-10-15T05:34:00.000+0200"
-    },
-    "title": "2: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "D": "ptTram"
      }
     },
@@ -301,52 +227,15 @@
     "relatedStops": [
      51
     ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-15T05:46:00.000+0200",
-     "end": "2026-10-15T23:55:00.000+0200",
-     "lastUpdate": "2026-10-15T05:46:00.000+0200",
-     "resume": "2026-10-15T05:46:00.000+0200",
-     "start": "2026-10-15T05:34:00.000+0200"
-    },
-    "title": "D: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "71": "ptTram"
-     }
-    },
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261015-0002-F04",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "171",
-       "lineName": "71",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     51
-    ],
     "status": "resolved",
     "time": {
      "created": "2026-10-15T05:46:00.000+0200",
-     "end": "2026-10-15T05:56:00.000+0200",
-     "lastUpdate": "2026-10-15T05:56:00.000+0200",
-     "resume": "2026-10-15T05:56:00.000+0200",
+     "end": "2026-10-15T07:16:00.000+0200",
+     "lastUpdate": "2026-10-15T07:16:00.000+0200",
+     "resume": "2026-10-15T07:16:00.000+0200",
      "start": "2026-10-15T05:34:00.000+0200"
     },
-    "title": "71: Schadhaftes Fahrzeug"
+    "title": "D: Schadhaftes Fahrzeug"
    },
    {
     "attributes": {
@@ -375,14 +264,126 @@
     "relatedStops": [
      4926
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-15T06:38:00.000+0200",
-     "end": "2026-10-15T23:55:00.000+0200",
-     "lastUpdate": "2026-10-15T06:38:00.000+0200",
+     "end": "2026-10-15T07:20:00.000+0200",
+     "lastUpdate": "2026-10-15T07:20:00.000+0200",
+     "resume": "2026-10-15T07:20:00.000+0200",
      "start": "2026-10-15T06:32:00.000+0200"
     },
     "title": "U3: Feuerwehreinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261015-0003-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "303",
+       "lineName": "U3",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4926
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T07:20:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T07:20:00.000+0200",
+     "resume": "2026-10-15T07:20:00.000+0200",
+     "start": "2026-10-15T06:32:00.000+0200"
+    },
+    "title": "U3: Feuerwehreinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Fahrtbehinderung in Richtung Oberlaa. Voraussichtliche Dauer: 07_30 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kagraner Platz.",
+    "descriptionHTML": "Linie U1:<br>Fahrtbehinderung in Richtung Oberlaa.<br> <br>Voraussichtliche Dauer: 07_30 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kagraner Platz.",
+    "name": "I20261015-0004",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "301",
+       "lineName": "U1",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4181
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-15T07:10:00.000+0200",
+     "end": "2026-10-15T07:14:00.000+0200",
+     "lastUpdate": "2026-10-15T07:14:00.000+0200",
+     "resume": "2026-10-15T07:14:00.000+0200",
+     "start": "2026-10-15T07:09:00.000+0200"
+    },
+    "title": "U1: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261015-0004-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "301",
+       "lineName": "U1",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4181
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T07:14:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T07:14:00.000+0200",
+     "resume": "2026-10-15T07:14:00.000+0200",
+     "start": "2026-10-15T07:09:00.000+0200"
+    },
+    "title": "U1: Schadhaftes Fahrzeug"
    },
    {
     "description": "Feuerwehreinsatz\nBetrieb nur zwischen Simmering und Westbahnhof",
