@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Thu, 15 Oct 2026 12:10:11 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 12:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[11/65A/O: Rettungseinsatz]]></title>
@@ -17,19 +17,8 @@
       <ext:first_seen>Thu, 15 Oct 2026 11:35:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 15 Oct 2026 11:35:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Quellenplatz. Linie O: Betrieb nur zwischen Bruno-Marek-Allee und Quellenplatz. [Seit 11:35]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Quellenplatz. Linie O: Betrieb nur zwischen Bruno-Marek-Allee und Quellenplatz.<br/>[Seit 11:35]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab</guid>
-      <pubDate>Thu, 15 Oct 2026 10:22:00 +0200</pubDate>
-      <ext:first_seen>Thu, 15 Oct 2026 07:44:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 15 Oct 2026 10:22:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 10:22]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 10:22]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 11:35]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 11:35]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/2/5/5A/5B/71/74A/80A/D/O: Demonstration]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Thu, 15 Oct 2026 17:00:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet. [Heute]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1A/3A: Schwertgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
+      <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung. [Bis 31.03.2027]</description>
+      <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung.<br/>[Bis 31.03.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
