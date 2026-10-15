@@ -5,6 +5,22 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Kurzmeldungen eines Vorfalls mehrerer Linien (2026-10-15)**: Am 11.10.
+  von 11:30 bis 23:30 Uhr belegte ein Gasrohrbruch in der Brünner Straße
+  vier der zehn Plätze: „30A/31A/36B: Gasrohrgebrechen“ und daneben je eine
+  Tafel-Kurzmeldung „30A: Gasrohrbruch“, „36B: Gasrohrbruch“ und „31A:
+  Gasrohrbruch“ („Kein Betrieb.“, obwohl die 31A umgeleitet wurde). Die
+  Zusammenlegung kannte nur gleiche Linienmengen, und der Provider legt
+  eine Kurzmeldung nur dann in die ausführliche Meldung, wenn diese jedes
+  ihrer Wörter wiederholt. Jetzt geht eine Kurzmeldung in die ausführliche
+  Meldung auf, deren Linien ihre umfassen, mit derselben Ursache (WLs
+  Synonyme gezählt, neu „Gasrohrbruch“ = „Gasrohrgebrechen“), höchstens
+  zehn Minuten vor ihr begonnen und mit überlappender Gültigkeit
+  (`_join_part_line_tickers`). Nennt der Text die Linie selbst, fügt die
+  Kurzmeldung nichts hinzu; sonst bleibt ihre Folge mit Linienkürzel.
+  Replay über alle 4.510 Feed-Stände seit 15.07.: 26 ändern sich, alle
+  am 06.10. und 11.10. (Gasrohrbruch 24-mal, je einmal „37/38/40/41/42:
+  Schadhaftes Fahrzeug“ und „13A/14A: Falschparker“); sonst nichts.
 * **Jules-Audits 05.–14.10. geprüft (2026-10-14)**: Von den Funden war
   einer noch offen und betraf den deutschen Feed:
   - **WL-Maßnahmen fielen aus dem Text.** Stand vor dem Maßnahmenblock ein

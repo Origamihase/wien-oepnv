@@ -8847,7 +8847,8 @@ def _telling_long_message(members: Sequence[FeedItem]) -> FeedItem | None:
 # beside "Schadhaftes Fahrzeug" 14 times, "Fremdunfall" or "Verkehrsunfall"
 # beside "Fremder Verkehrsunfall" 9, "Beschädigte Oberleitung" beside
 # "Oberleitungsgebrechen" 6, "Schadhafter Bus" beside "Schadhaftes
-# Fahrzeug" once. Only what WL wrote side by side; "Bauarbeiten" and
+# Fahrzeug" once, "Gasrohrbruch" beside "Gasrohrgebrechen" (2026-10-11).
+# Only what WL wrote side by side; "Bauarbeiten" and
 # "Gleisbauarbeiten" can be two sites and stay apart.
 _CAUSE_SYNONYMS: dict[str, str] = {
     "schadhafter zug": "schadhaftes fahrzeug",
@@ -8857,6 +8858,7 @@ _CAUSE_SYNONYMS: dict[str, str] = {
     "beschädigte oberleitung": "oberleitungsgebrechen",
     "oberleitungsgebr": "oberleitungsgebrechen",
     "rettungseinatz": "rettungseinsatz",
+    "gasrohrbruch": "gasrohrgebrechen",
 }
 
 
@@ -9344,9 +9346,148 @@ def _merge_wl_ticker_clusters(items: list[FeedItem]) -> list[FeedItem]:
             sanitize_log_arg(entry["title"]),
             sanitize_log_arg(" | ".join(_rendered_title(items[index]) for index in sorted(members))),
         )
+    if dropped:
+        items = [replaced.get(index, item) for index, item in enumerate(items) if index not in dropped]
+    return _join_part_line_tickers(items)
+
+
+# --- Tickers of some lines of a longer incident (2026-10-15) -----------------
+#
+# The merge above joins WL disruptions of the same line set. WL writes one
+# long message for all lines of an incident but a display ticker per line,
+# so these never met. On 2026-10-11 from 11:30 to 23:30 Vienna time a gas
+# leak in Brünner Straße took four of the ten slots::
+#
+#     36B/30A/31A: Gasrohrgebrechen   Die Linie 36B wird … umgeleitet.
+#     30A: Gasrohrbruch               Betrieb ab Gschweidlgasse.
+#     36B: Gasrohrbruch               Betrieb ab Brünner Straße.
+#     31A: Gasrohrbruch               Kein Betrieb.
+#
+# The provider folds a ticker into a long message only when the message
+# repeats every word of the ticker (``wl_fetch._fold_display_tickers``);
+# the display says "Gasrohrbruch" where the message says "Gasrohrgebrechen".
+# "37/38/40/41/42: Schadhaftes Fahrzeug" stood beside "38/42: Schadhafter
+# Zug" and "37: Schadhafter Zug" the same day.
+#
+# Now a WL disruption that is display tickers only joins the entry of a WL
+# incident (one with a WL number) of more lines when it is that incident's
+# ticker: its lines are among the incident's, it names the same cause, WL's
+# synonyms counted (``_CAUSE_SYNONYMS``), it began at most
+# ``wl_resolved.TICKER_LEAD`` before the incident and their validity meets.
+# Of several such incidents the one begun last owns it, as in
+# ``wl_resolved``. A ticker of another cause keeps its slot ("43:
+# Falschparker" beside "43/44: Rettungseinsatz", 2026-10-09).
+#
+# A line the incident's text speaks of ("Die Linie 31A wird … umgeleitet")
+# has WL's own statement there; the ticker of one stop ("Kein Betrieb" at the
+# Brünner Straße display, while the 31A runs a detour) adds nothing to it and
+# would contradict it on the screen. What a ticker of a line the text does
+# not name announces is kept under its line ("37: Betrieb ab …").
+_TICKER_LEAD = timedelta(minutes=10)  # ``wl_resolved.TICKER_LEAD``
+
+
+def _has_wl_number(item: FeedItem) -> bool:
+    """Whether *item* stands for a WL message with an incident number (not tickers only)."""
+    return any(member.startswith("wl:") for member in member_guids(item))
+
+
+def _text_names_line(text: str, line: str) -> bool:
+    """Whether *text* speaks of *line* ("Linie 30A", "Linien 30A und 31A", "Linie 38:")."""
+    return re.search(
+        rf"\bLinien?\s+(?:[\w]+(?:,\s*|\s+und\s+|\s+sowie\s+))*{re.escape(line)}\b", text
+    ) is not None
+
+
+def _ticker_owner(ticker: FeedItem, incidents: Sequence[tuple[int, FeedItem]]) -> int | None:
+    """The index of the incident entry whose ticker *ticker* is, if any (see above)."""
+    lines = {token.casefold() for token in _ticker_line_tokens(ticker)}
+    cause = _cause_key(_ticker_part(ticker).cause)
+    began, span = _ticker_time(ticker), _group_span([ticker])
+    if not lines or not cause or began is None or span is None:
+        return None
+    fitting: list[tuple[datetime, int]] = []
+    for index, entry in incidents:
+        start, entry_span = _ticker_time(entry), _group_span([entry])
+        if start is None or entry_span is None or began < start - _TICKER_LEAD:
+            continue
+        if not lines < {token.casefold() for token in _ticker_line_tokens(entry)}:
+            continue
+        if _cause_key(_ticker_part(entry).cause) != cause or not _spans_meet(span, entry_span):
+            continue
+        fitting.append((start, index))
+    return max(fitting)[1] if fitting else None
+
+
+def _with_line_tickers(entry: FeedItem, tickers: Sequence[FeedItem]) -> FeedItem:
+    """*entry* with its *tickers* joined (see above)."""
+    text = _ticker_text(entry)
+    said = _message_tokens(f"{_rendered_title(entry)} {text}")
+    cause = _ticker_part(entry).cause.casefold()
+    added: list[str] = []
+    for ticker in tickers:
+        lines = _ticker_line_tokens(ticker)
+        if all(_text_names_line(text, line) for line in lines):
+            continue
+        part = _ticker_part(ticker)
+        message = _without_cause(part.consequence or part.extra or part.body, cause).replace("*", "").strip(" .")
+        if not message or message.casefold() == _HINDRANCE.casefold() or _said_already(message, said):
+            continue
+        added.append(f"{'/'.join(lines)}: {message}")
+    merged = cast(FeedItem, dict(entry))
+    merged["_members"] = sorted({guid for item in (entry, *tickers) for guid in member_guids(item)})
+    ends = [e for e in (item.get("ends_at") for item in (entry, *tickers)) if isinstance(e, datetime)]
+    merged["ends_at"] = max(ends, key=_to_utc) if len(ends) == 1 + len(tickers) else None
+    if not added:
+        return merged
+    # Placed as in ``_with_consequences``: behind the measure, in front of
+    # the advice, the expected end and the cause; in front of a text that
+    # names no measure (WL's stock sentence); what tells a rider nothing to
+    # do at the end.
+    rider = [m for m in added if _RIDER_CONSEQUENCE_RE.search(m)]
+    rest = [m for m in added if not _RIDER_CONSEQUENCE_RE.search(m)]
+    tail = _LONG_MESSAGE_TAIL_RE.search(text)
+    cut = tail.start() if tail else len(text)
+    measure = text[:cut].rstrip()
+    if rider and _RIDER_CONSEQUENCE_RE.search(measure):
+        text = f"{measure} {_as_sentence('; '.join(rider))}{text[cut:]}"
+    elif rider:
+        text = f"{_as_sentence('; '.join(rider))} {text}"
+    if rest:
+        text = f"{text} {_as_sentence('; '.join(rest))}"
+    merged["description"] = text
+    return merged
+
+
+def _join_part_line_tickers(items: list[FeedItem]) -> list[FeedItem]:
+    """Join display tickers of some lines into their incident of more lines (see above)."""
+    incidents = [(index, item) for index, item in enumerate(items) if _is_wl_ticker(item) and _has_wl_number(item)]
+    if not incidents:
+        return items
+    owned: dict[int, list[FeedItem]] = defaultdict(list)
+    dropped: set[int] = set()
+    for index, item in enumerate(items):
+        if not _is_wl_ticker(item) or _has_wl_number(item):
+            continue
+        owner = _ticker_owner(item, incidents)
+        if owner is None:
+            continue
+        owned[owner].append(item)
+        dropped.add(index)
     if not dropped:
         return items
-    return [replaced.get(index, item) for index, item in enumerate(items) if index not in dropped]
+    out: list[FeedItem] = []
+    for index, item in enumerate(items):
+        if index in dropped:
+            continue
+        if index in owned:
+            item = _with_line_tickers(item, owned[index])
+            log.info(
+                "WL-Kurzmeldungen in die Meldung mehrerer Linien aufgenommen: %s ← %s",
+                sanitize_log_arg(_rendered_title(item)),
+                sanitize_log_arg(" | ".join(_rendered_title(ticker) for ticker in owned[index])),
+            )
+        out.append(item)
+    return out
 
 
 # --- Display tickers of planned works (2026-10-02) --------------------------
