@@ -866,7 +866,7 @@ Die neue Kommandozeile (`python -m src.cli`) bündelt bisher verstreute Skripte.
 - `python -m src.cli cache update <wl|oebb|baustellen>` – aktualisiert den jeweiligen Provider-Cache. (VOR ist seit 2026-05-11 nicht mehr cache-fähig — der Stammstrecke-Monitor läuft als eigener Workflow-Step und schreibt direkt in den CSV-Ledger.)
 - `python -m src.cli stations update <all|directory|wl>` – führt die bestehenden Stations-Skripte mit optionalem `--verbose` aus. (VOR-Stations-Refresh wurde 2026-05-11 entfernt — `data/vor-haltestellen.csv` wird redaktionell gepflegt.)
 - `python -m src.cli feed build` – startet den Feed-Build mit der aktuellen Umgebung.
-- `python -m src.cli feed lint` – prüft die aggregierten Items auf fehlende GUIDs oder unerwartete Duplikate.
+- `python -m src.cli feed lint` – prüft die aggregierten Items auf fehlende GUIDs oder unerwartete Duplikate. Seit 2026-10-15 läuft dafür dieselbe Feed-Kette wie im Build (`_assemble_feed_items`); die Zählwerte entsprechen damit dem Health-Report, und fehlende GUIDs zählen nur bei Einträgen, die in den Feed kämen.
 - `python -m src.cli tokens verify <vor|google-places|vor-auth>` – validiert Secrets und API-Zugänge.
 - `python -m src.cli checks [--fix] [--ruff-args …]` – ruft die statischen Prüfungen konsistent zur CI auf.
 

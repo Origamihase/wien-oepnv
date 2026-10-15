@@ -10855,25 +10855,17 @@ def lint() -> int:
     try:
         items = _invoke_collect_items(report)
         raw_count = len(items)
-        items = _drop_test_messages(items)
-
-        filtered_items, _ = _drop_old_items(items, now, state)
-        filtered_count = len(filtered_items)
-        duplicate_summaries = _summarize_duplicates(filtered_items)
-        duplicates_removed = sum(summary.count - 1 for summary in duplicate_summaries)
-
-        deduped_items = _dedupe_items(list(filtered_items))
-        deduped_items = _drop_baustellen_twins(_absorb_works_tickers(
-            _merge_wl_ticker_clusters(
-                cast(
-                    list[FeedItem],
-                    deduplicate_fuzzy(cast(list[dict[str, Any]], deduped_items)),
-                )
-            )
-        ), now)
-        deduped_count = len(deduped_items)
+        # The same chain as ``main`` (``_assemble_feed_items``), so lint
+        # counts what the health report of a build would count. ``state`` is
+        # only read back by ``_count_new_items`` and never saved here.
+        stats = FeedAssemblyStats()
+        deduped_items = _assemble_feed_items(items, state, now, stats=stats)
+        filtered_count = stats.filtered_count
+        duplicate_summaries = stats.duplicate_summaries
+        duplicates_removed = stats.duplicates_removed
+        deduped_count = stats.deduped_count
         new_items_count = _count_new_items(deduped_items, state)
-        missing_guid_items = [it for it in filtered_items if not it.get("guid")]
+        missing_guid_items = [it for it in deduped_items if not it.get("guid")]
 
         metrics = FeedHealthMetrics(
             raw_items=raw_count,

@@ -122,8 +122,12 @@ den Health-Report aus `FeedAssemblyStats`. Jede Probe, die einen früheren
 Feed-Stand aus dem Cache nachbaut (Replay alt gegen neu), ruft dieselbe
 Funktion auf, statt die Schritte abzuschreiben: Abgeschriebene Ketten liefen
 dem echten Build davon (die älteren Replay-Proben kannten den
-Zwillingsschritt nicht). `tests/test_assemble_feed_items.py` hält fest, dass
-`main()` keinen Kettenschritt mehr selbst aufruft.
+Zwillingsschritt nicht). Auch `lint()` (`python -m src.cli feed lint`) ruft
+sie auf; bis zur Nachprüfung vom 2026-10-15 trug es eine eigene Kopie ohne
+`_carry_item_identity`, `_restart_recurring_occurrences` und
+`_note_announced_starts`. `tests/test_assemble_feed_items.py` hält fest, dass
+`main()` keinen Kettenschritt mehr selbst aufruft und keine andere Funktion
+mehr als einen Kettenschritt aufruft, also keine zweite Kette entsteht.
 
 `build_feed.py` bleibt ansonsten ein Modul. Michaels Entscheidung vom
 2026-10-15 nach Jules' Modularisierungs-Audit vom 2026-10-14
