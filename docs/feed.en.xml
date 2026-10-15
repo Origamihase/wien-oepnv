@@ -7,19 +7,8 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 15 Oct 2026 23:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 00:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[1/2/5/5A/5B/71/74A/80A/D/O: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f868d2f5eb494decde7d0c63339dab6ae0887407eebc3eed949d2e7e53c0a75c</guid>
-      <pubDate>Tue, 13 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 15 Oct 2026 00:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 19:05:00 +0200</ext:ends_at>
-      <description>Due to a demonstration, there are restrictions on public transport. Line D: short-running service of the trains between Absberggasse and Börse on Schwarzenbergplatz. [On Fri 16.10.]</description>
-      <content:encoded><![CDATA[Due to a demonstration, there are restrictions on public transport. Line D: short-running service of the trains between Absberggasse and Börse on Schwarzenbergplatz.<br/>[On Fri 16.10.]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[N71: Simmering S U]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -28,8 +17,19 @@
       <ext:first_seen>Wed, 14 Oct 2026 15:35:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 23 Oct 2026 05:05:00 +0200</ext:ends_at>
-      <description>Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 … [From Fri 16.10. until 23.10.]</description>
-      <content:encoded><![CDATA[Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 …<br/>[From Fri 16.10. until 23.10.]]]></content:encoded>
+      <description>Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 … [Until 23.10.]</description>
+      <content:encoded><![CDATA[Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 …<br/>[Until 23.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/2/5/5A/5B/71/74A/80A/D/O: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f868d2f5eb494decde7d0c63339dab6ae0887407eebc3eed949d2e7e53c0a75c</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 15 Oct 2026 00:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 19:05:00 +0200</ext:ends_at>
+      <description>Due to a demonstration, there are restrictions on public transport. Line D: short-running service of the trains between Absberggasse and Börse on Schwarzenbergplatz. [Today]</description>
+      <content:encoded><![CDATA[Due to a demonstration, there are restrictions on public transport. Line D: short-running service of the trains between Absberggasse and Börse on Schwarzenbergplatz.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[64A: Liesing-Flur-Gasse]]></title>
@@ -61,8 +61,8 @@
       <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
       <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 16 Oct 2026 07:00:00 +0200</ext:ends_at>
-      <description>Frauenstiftgasse after Brünner Straße → Frauenstiftgasse 5-7. Stop relocation of lines 30A towards Freiheitsplatz, 31A towards Jochbergengasse, 36A and 36B … [Until Fri 16.10.]</description>
-      <content:encoded><![CDATA[Frauenstiftgasse after Brünner Straße → Frauenstiftgasse 5-7. Stop relocation of lines 30A towards Freiheitsplatz, 31A towards Jochbergengasse, 36A and 36B …<br/>[Until Fri 16.10.]]]></content:encoded>
+      <description>Frauenstiftgasse after Brünner Straße → Frauenstiftgasse 5-7. Stop relocation of lines 30A towards Freiheitsplatz, 31A towards Jochbergengasse, 36A and 36B … [Today]</description>
+      <content:encoded><![CDATA[Frauenstiftgasse after Brünner Straße → Frauenstiftgasse 5-7. Stop relocation of lines 30A towards Freiheitsplatz, 31A towards Jochbergengasse, 36A and 36B …<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12/5: Albertgasse]]></title>
@@ -98,6 +98,17 @@
       <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation.<br/>[Until 31.03.2027]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[48A: Neubaugasse, Neustiftgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d97a8a3d7d6328446c638ae8a1ccf0afc80a24b1828141a4b94ad0065074c2e5</guid>
+      <pubDate>Thu, 08 Oct 2026 15:10:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 15:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 19 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 08 Oct 2027 11:11:00 +0200</ext:ends_at>
+      <description>Neustiftgasse 52 → Neustiftgasse 42-44. Stop relocation of line 48A towards Klinik Penzing. Reason: renovation work. [From Mon 19.10.]</description>
+      <content:encoded><![CDATA[Neustiftgasse 52 → Neustiftgasse 42-44. Stop relocation of line 48A towards Klinik Penzing. Reason: renovation work.<br/>[From Mon 19.10.]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
@@ -107,17 +118,6 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 … [Until 28.10.]</description>
       <content:encoded><![CDATA[Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 …<br/>[Until 28.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A/7A/N62: Eibesbrunnergasse both directions]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">bd6cbe1a4ea6d909912fce8527e38411ee42a952a91a70beecf363c26cd3e728</guid>
-      <pubDate>Mon, 05 Oct 2026 16:10:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 16:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 06 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 06 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 … [Until 06.11.]</description>
-      <content:encoded><![CDATA[Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Stop relocation of lines 7A towards Reumannplatz U, 15A towards Enkplatz U, Grillgasse and N62 …<br/>[Until 06.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
