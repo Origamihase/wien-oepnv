@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261015-0009-F01, I20261015-0010-F01, I20261015-0010-F02, I20260925-0011, I20260909-0007, I20261015-0012, I20261015-0011, I20261015-0003-F01, I20261015-0014-F01, I20261015-0014-F02, I20261015-0014, I20261015-0007, I20261015-0006-F01, I20261015-0013, I20261015-0010-F03, I20261015-0008-F01"
+    "trafficInfoNameList": "I20261015-0014-F01, I20261015-0014-F02, I20261015-0013, I20261015-0012, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261015-0011, I20261015-0015-F01, I20261015-0015, I20261015-0014, I20261015-0007, I20261015-0006-F01, I20261015-0009-F01, I20261015-0010-F03, I20261015-0008-F01"
    },
    {
     "id": 3,
@@ -203,43 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261015-0003-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "303",
-       "lineName": "U3",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4926
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T07:20:00.000+0200",
-     "end": "2026-10-15T09:12:00.000+0200",
-     "lastUpdate": "2026-10-15T09:12:00.000+0200",
-     "resume": "2026-10-15T09:12:00.000+0200",
-     "start": "2026-10-15T06:32:00.000+0200"
-    },
-    "title": "U3: Feuerwehreinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U6": "ptMetro"
      }
     },
@@ -398,89 +361,15 @@
     "relatedStops": [
      4183
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-15T08:28:00.000+0200",
-     "end": "2026-10-15T23:55:00.000+0200",
-     "lastUpdate": "2026-10-15T08:28:00.000+0200",
-     "resume": "2026-10-15T08:28:00.000+0200",
+     "end": "2026-10-15T10:27:00.000+0200",
+     "lastUpdate": "2026-10-15T10:27:00.000+0200",
+     "resume": "2026-10-15T10:27:00.000+0200",
      "start": "2026-10-15T08:23:00.000+0200"
     },
     "title": "U1: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "40": "ptTram"
-     }
-    },
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261015-0010-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "140",
-       "lineName": "40",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     189
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T08:43:00.000+0200",
-     "end": "2026-10-15T09:04:00.000+0200",
-     "lastUpdate": "2026-10-15T09:04:00.000+0200",
-     "resume": "2026-10-15T09:04:00.000+0200",
-     "start": "2026-10-15T08:36:00.000+0200"
-    },
-    "title": "40: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261015-0010-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "141",
-       "lineName": "41",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     189
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T08:43:00.000+0200",
-     "end": "2026-10-15T09:04:00.000+0200",
-     "lastUpdate": "2026-10-15T09:04:00.000+0200",
-     "resume": "2026-10-15T09:04:00.000+0200",
-     "start": "2026-10-15T08:36:00.000+0200"
-    },
-    "title": "41: Verkehrsunfall"
    },
    {
     "attributes": {
@@ -599,12 +488,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-15T09:07:00.000+0200",
-     "end": "2026-10-15T23:55:00.000+0200",
-     "lastUpdate": "2026-10-15T09:07:00.000+0200",
-     "resume": "2026-10-15T09:04:00.000+0200",
+     "end": "2026-10-15T10:14:00.000+0200",
+     "lastUpdate": "2026-10-15T10:14:00.000+0200",
+     "resume": "2026-10-15T10:14:00.000+0200",
      "start": "2026-10-15T09:04:00.000+0200"
     },
     "title": "40, 41: Falschparker"
@@ -633,12 +522,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-15T09:20:00.000+0200",
-     "end": "2026-10-15T23:55:00.000+0200",
-     "lastUpdate": "2026-10-15T09:20:00.000+0200",
-     "resume": "2026-10-15T09:20:00.000+0200",
+     "end": "2026-10-15T10:13:00.000+0200",
+     "lastUpdate": "2026-10-15T10:13:00.000+0200",
+     "resume": "2026-10-15T10:13:00.000+0200",
      "start": "2026-10-15T09:20:00.000+0200"
     },
     "title": "9: Verspätungen"
@@ -710,12 +599,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-15T09:35:00.000+0200",
-     "end": "2026-10-15T23:55:00.000+0200",
-     "lastUpdate": "2026-10-15T09:35:00.000+0200",
-     "resume": "2026-10-15T09:35:00.000+0200",
+     "end": "2026-10-15T10:13:00.000+0200",
+     "lastUpdate": "2026-10-15T10:13:00.000+0200",
+     "resume": "2026-10-15T10:13:00.000+0200",
      "start": "2026-10-15T09:33:00.000+0200"
     },
     "title": "36A: Polizeieinsatz"
@@ -745,15 +634,89 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-15T09:35:00.000+0200",
-     "end": "2026-10-15T23:55:00.000+0200",
-     "lastUpdate": "2026-10-15T09:35:00.000+0200",
-     "resume": "2026-10-15T09:35:00.000+0200",
+     "end": "2026-10-15T10:13:00.000+0200",
+     "lastUpdate": "2026-10-15T10:13:00.000+0200",
+     "resume": "2026-10-15T10:13:00.000+0200",
      "start": "2026-10-15T09:33:00.000+0200"
     },
     "title": "36B: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 10:40 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Josefstädter Straße.",
+    "descriptionHTML": "Linie U6:<br>Fahrtbehinderung in Richtung Floridsdorf.<br> <br>Voraussichtliche Dauer: 10:40 Uhr.<br><br>Grund: Polizeieinsatz im Haltestellenbereich Josefstädter Straße.",
+    "name": "I20261015-0015",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4622
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-15T10:23:00.000+0200",
+     "end": "2026-10-15T10:25:00.000+0200",
+     "lastUpdate": "2026-10-15T10:25:00.000+0200",
+     "resume": "2026-10-15T10:25:00.000+0200",
+     "start": "2026-10-15T10:22:00.000+0200"
+    },
+    "title": "U6: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261015-0015-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4622
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T10:25:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T10:25:00.000+0200",
+     "resume": "2026-10-15T10:25:00.000+0200",
+     "start": "2026-10-15T10:22:00.000+0200"
+    },
+    "title": "U6: Polizeieinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
