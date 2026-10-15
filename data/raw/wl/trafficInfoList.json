@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261015-0024-F01, I20261015-0025, I20260925-0011, I20260909-0007, I20261015-0026-F01, I20261015-0026"
+    "trafficInfoNameList": "I20261015-0027, I20260917-0012, I20260922-0032, I20261015-0025, I20261015-0026-F01, I20260925-0011, I20260909-0007, I20261015-0026"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1177-0, R293-474, R2025-671, R1473-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1474-149, R1475-149, R1476-149, R2558-125, R2380-627, R2345-127, R2372-627, R2378-627, R2343-626, R2379-627, R2372-125, R2373-125, R2373-127, R2373-126, R2343-125, R2359-125, R2370-125, R2371-125, R1150-0, R1974-466, R500-101, R2173-127, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R101-136, R102-136, R100-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R1177-0, R293-474, R2025-671, R1473-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1474-149, R1475-149, R1476-149, R2558-125, R2380-627, R2345-127, R2372-627, R2378-627, R2343-626, R2379-627, R2372-125, R2373-125, R2373-127, R2373-126, R2343-125, R2359-125, R2370-125, R2371-125, R1150-0, R1974-466, R500-101, R2173-127, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,43 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "10": "ptTram"
-     }
-    },
-    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261015-0024-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "110",
-       "lineName": "10",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     1600
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T14:12:00.000+0200",
-     "end": "2026-10-15T15:11:00.000+0200",
-     "lastUpdate": "2026-10-15T15:11:00.000+0200",
-     "resume": "2026-10-15T15:11:00.000+0200",
-     "start": "2026-10-15T14:08:00.000+0200"
-    },
-    "title": "10: Störung an einem Bahnübergang"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "98A": "ptBusCity"
      }
     },
@@ -335,15 +298,84 @@
     "relatedStops": [
      2173
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-15T15:49:00.000+0200",
-     "end": "2026-10-15T23:55:00.000+0200",
-     "lastUpdate": "2026-10-15T15:49:00.000+0200",
-     "resume": "2026-10-15T15:49:00.000+0200",
+     "end": "2026-10-15T16:27:00.000+0200",
+     "lastUpdate": "2026-10-15T16:27:00.000+0200",
+     "resume": "2026-10-15T16:27:00.000+0200",
      "start": "2026-10-15T15:41:00.000+0200"
     },
     "title": "27: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "10A": "ptBusCity",
+      "14A": "ptBusCity",
+      "16A": "ptBusCity",
+      "59A": "ptBusCity",
+      "7A": "ptBusCity",
+      "80A": "ptBusCity"
+     }
+    },
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Linie 80A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 16A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 80A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
+    "name": "I20261015-0027",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "7A",
+     "10A",
+     "14A",
+     "16A",
+     "59A",
+     "80A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "410",
+       "lineName": "10A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "414",
+       "lineName": "14A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "407",
+       "lineName": "7A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "416",
+       "lineName": "16A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "459",
+       "lineName": "59A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "480",
+       "lineName": "80A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T16:19:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T16:19:00.000+0200",
+     "resume": "2026-10-15T16:17:00.000+0200",
+     "start": "2026-10-15T16:17:00.000+0200"
+    },
+    "title": "10A, 14A, 7A, 16A, 59A, 80A: Verkehrsüberlastung"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
