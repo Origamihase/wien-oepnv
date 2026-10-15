@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261015-0014-F01, I20261015-0014-F02, I20261015-0013, I20261015-0012, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261015-0015-F01, I20261015-0015, I20261015-0009-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261015-0016-F01, I20261015-0016, I20260925-0011, I20260909-0007, I20261015-0015-F01, I20261015-0009-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2025-671, R1177-0, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R293-474, R318-437, R1472-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2373-127, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2378-627, R1150-0, R1974-466, R500-101, R500-409, R1837-409, R3207-409, R3213-409, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R100-136, R1177-0, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R293-474, R2025-671, R1472-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2373-127, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2378-627, R1150-0, R1974-466, R500-101, R500-409, R1837-409, R3213-409, R3207-409, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -240,189 +240,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "40": "ptTram",
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 40: Unregelmäßige Intervalle in beiden Richtungen. Linie 41: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
-    "descriptionHTML": "Linie 40:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 41:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Falschparker.",
-    "location": "Währinger Straße",
-    "name": "I20261015-0012",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "40",
-     "41"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "140",
-       "lineName": "40",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "141",
-       "lineName": "41",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T09:07:00.000+0200",
-     "end": "2026-10-15T10:14:00.000+0200",
-     "lastUpdate": "2026-10-15T10:14:00.000+0200",
-     "resume": "2026-10-15T10:14:00.000+0200",
-     "start": "2026-10-15T09:04:00.000+0200"
-    },
-    "title": "40, 41: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "9": "ptTram"
-     }
-    },
-    "description": "Linie 9: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie 9:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261015-0013",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "109",
-       "lineName": "9",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T09:20:00.000+0200",
-     "end": "2026-10-15T10:13:00.000+0200",
-     "lastUpdate": "2026-10-15T10:13:00.000+0200",
-     "resume": "2026-10-15T10:13:00.000+0200",
-     "start": "2026-10-15T09:20:00.000+0200"
-    },
-    "title": "9: Verspätungen"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "36A": "ptBusCity"
-     }
-    },
-    "description": "Linie 36A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 36A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Anton-Dengler-Gasse",
-    "name": "I20261015-0014-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "36A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "436",
-       "lineName": "36A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T09:35:00.000+0200",
-     "end": "2026-10-15T10:13:00.000+0200",
-     "lastUpdate": "2026-10-15T10:13:00.000+0200",
-     "resume": "2026-10-15T10:13:00.000+0200",
-     "start": "2026-10-15T09:33:00.000+0200"
-    },
-    "title": "36A: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "36B": "ptBusCity"
-     }
-    },
-    "description": "Linie 36B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 36B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Anton-Dengler-Gasse",
-    "name": "I20261015-0014-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "36B"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "236",
-       "lineName": "36B",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T09:35:00.000+0200",
-     "end": "2026-10-15T10:13:00.000+0200",
-     "lastUpdate": "2026-10-15T10:13:00.000+0200",
-     "resume": "2026-10-15T10:13:00.000+0200",
-     "start": "2026-10-15T09:33:00.000+0200"
-    },
-    "title": "36B: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 10:40 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Josefstädter Straße.",
-    "descriptionHTML": "Linie U6:<br>Fahrtbehinderung in Richtung Floridsdorf.<br> <br>Voraussichtliche Dauer: 10:40 Uhr.<br><br>Grund: Polizeieinsatz im Haltestellenbereich Josefstädter Straße.",
-    "name": "I20261015-0015",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4622
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T10:23:00.000+0200",
-     "end": "2026-10-15T10:25:00.000+0200",
-     "lastUpdate": "2026-10-15T10:25:00.000+0200",
-     "resume": "2026-10-15T10:25:00.000+0200",
-     "start": "2026-10-15T10:22:00.000+0200"
-    },
-    "title": "U6: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U6": "ptMetro"
      }
     },
@@ -456,6 +273,76 @@
      "start": "2026-10-15T10:22:00.000+0200"
     },
     "title": "U6: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "9A": "ptBusCity"
+     }
+    },
+    "description": "Linie 9A: Fahrtbehinderung in Richtung Bahnhof Meidling S U, Eichenstraße. Voraussichtliche Dauer: 11:10 Uhr. Grund: Fremder Verkehrsunfall im Bereich Hoffmeistergasse # Eichenstraße.",
+    "descriptionHTML": "Linie 9A:<br>Fahrtbehinderung in Richtung Bahnhof Meidling S U, Eichenstraße.<br> <br>Voraussichtliche Dauer: 11:10 Uhr.<br><br>Grund: Fremder Verkehrsunfall im Bereich Hoffmeistergasse # Eichenstraße.",
+    "location": "Hoffmeistergasse  / Eichenstraße",
+    "name": "I20261015-0016",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "409",
+       "lineName": "9A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-15T11:01:00.000+0200",
+     "end": "2026-10-15T11:01:00.000+0200",
+     "lastUpdate": "2026-10-15T11:01:00.000+0200",
+     "resume": "2026-10-15T11:01:00.000+0200",
+     "start": "2026-10-15T10:56:00.000+0200"
+    },
+    "title": "9A: Fremder Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "9A": "ptBusCity"
+     }
+    },
+    "description": "Linie 9A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 9A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Hoffmeistergasse  / Eichenstraße",
+    "name": "I20261015-0016-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "409",
+       "lineName": "9A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-15T11:01:00.000+0200",
+     "end": "2026-10-15T23:55:00.000+0200",
+     "lastUpdate": "2026-10-15T11:01:00.000+0200",
+     "resume": "2026-10-15T11:01:00.000+0200",
+     "start": "2026-10-15T10:56:00.000+0200"
+    },
+    "title": "9A: Fremder Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
