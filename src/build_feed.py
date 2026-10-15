@@ -36,11 +36,12 @@ from dateutil import parser
 
 from .feed_types import FeedItem
 from .feed import config as feed_config
+# ``as`` re-exports explicitly: tests read the tables from ``build_feed``.
 from .feed.glossary import (
-    _FIELD_LABEL_EN,
-    _GLOSSARY_BASE,
-    _GLOSSARY_BY_CATEGORY,
-    _GLOSSARY_BY_SOURCE,
+    _FIELD_LABEL_EN as _FIELD_LABEL_EN,
+    _GLOSSARY_BASE as _GLOSSARY_BASE,
+    _GLOSSARY_BY_CATEGORY as _GLOSSARY_BY_CATEGORY,
+    _GLOSSARY_BY_SOURCE as _GLOSSARY_BY_SOURCE,
 )
 from .feed.merge import _natural_keys, deduplicate_fuzzy, member_guids
 from .feed.logging import configure_logging
