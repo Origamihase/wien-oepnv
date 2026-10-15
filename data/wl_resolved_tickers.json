@@ -1,5 +1,34 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R1475-109|2026-10-15T13:07:05.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1475-109",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-15T14:06:00.000+0200",
+   "incident": "I20261015-0022"
+  },
+  {
+   "key": "R1476-109|2026-10-15T13:07:05.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1476-109",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-15T14:06:00.000+0200",
+   "incident": "I20261015-0022"
+  },
+  {
+   "key": "R532-109|2026-10-15T13:06:35.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R532-109",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-15T14:06:00.000+0200",
+   "incident": "I20261015-0022"
+  },
+  {
+   "key": "R533-109|2026-10-15T13:06:35.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R533-109",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-15T14:06:00.000+0200",
+   "incident": "I20261015-0022"
+  }
+ ]
 }

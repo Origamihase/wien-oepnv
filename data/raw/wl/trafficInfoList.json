@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261015-0018-F01, I20260917-0012, I20261015-0018, I20260922-0032, I20260925-0011, I20261015-0015-F01, I20261015-0019, I20260909-0007, I20261015-0017-F01, I20261015-0017-F02, I20261015-0017-F03, I20261015-0017, I20261015-0020, I20261015-0021"
+    "trafficInfoNameList": "I20261015-0018-F01, I20260917-0012, I20261015-0018, I20261015-0017-F03, I20260922-0032, I20261015-0019, I20260925-0011, I20260909-0007, I20261015-0017-F01, I20261015-0017-F02, I20261015-0020, I20261015-0022, I20261015-0021, I20261015-0022-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R1177-0, R2025-671, R318-437, R1474-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1475-149, R1476-149, R2558-125, R2345-127, R2372-627, R2378-627, R2343-626, R2380-627, R2373-127, R2373-126, R2379-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R1150-0, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2025-671, R1177-0, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R318-437, R1472-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2373-127, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2378-627, R1150-0, R1974-466, R500-101, R532-109, R533-109, R1476-109, R1475-109, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,92 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261015-0015-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4622
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T10:25:00.000+0200",
-     "end": "2026-10-15T12:04:00.000+0200",
-     "lastUpdate": "2026-10-15T12:04:00.000+0200",
-     "resume": "2026-10-15T12:04:00.000+0200",
-     "start": "2026-10-15T10:22:00.000+0200"
-    },
-    "title": "U6: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "11": "ptTram",
-      "65A": "ptBusCity",
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie 11: Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Quellenplatz. Linie O: Betrieb nur zwischen Bruno-Marek-Allee und Quellenplatz. Weiterfahrt bis Reumannplatz U. Die Linie 65A wird in Richtung Reumannplatz U zwischen Neilreichgasse / Troststraße und Ettenreichgasse, Schulzentrum über die Neilreichgasse, Raxstraße und Laxenburger Straße umgeleitet. Weichen Sie ersatzweise auf die Linien U1, 15A, 16A, 65A, 66A, aus. Voraussichtliche Dauer: 12:15 Uhr . Grund: Rettungseinsatz im Bereich Troststraße # Van-der-Nüll-Gasse .",
-    "descriptionHTML": "Linie 11:<br>Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Quellenplatz.<br>Linie O:<br>Betrieb nur zwischen Bruno-Marek-Allee und Quellenplatz.<br>Weiterfahrt bis Reumannplatz U.<br>Die Linie 65A wird in Richtung Reumannplatz U zwischen Neilreichgasse / Troststraße und Ettenreichgasse, Schulzentrum über die Neilreichgasse, Raxstraße und Laxenburger Straße umgeleitet.<br> <br>Weichen Sie ersatzweise auf die Linien U1, 15A, 16A, 65A, 66A, aus.<br><br>Voraussichtliche Dauer: 12:15 Uhr .<br><br>Grund: Rettungseinsatz im Bereich Troststraße # Van-der-Nüll-Gasse .",
-    "location": "Troststraße / Van-der-Nüll-Gasse ",
-    "name": "I20261015-0017",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11",
-     "65A",
-     "O"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "170",
-       "lineName": "O",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "111",
-       "lineName": "11",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "465",
-       "lineName": "65A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-15T11:38:00.000+0200",
-     "end": "2026-10-15T12:09:00.000+0200",
-     "lastUpdate": "2026-10-15T12:09:00.000+0200",
-     "resume": "2026-10-15T12:09:00.000+0200",
-     "start": "2026-10-15T11:35:00.000+0200"
-    },
-    "title": "O, 11, 65A: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "O": "ptTram"
      }
     },
@@ -381,12 +295,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-15T12:09:00.000+0200",
-     "end": "2026-10-15T23:55:00.000+0200",
-     "lastUpdate": "2026-10-15T12:09:00.000+0200",
-     "resume": "2026-10-15T12:09:00.000+0200",
+     "end": "2026-10-15T13:04:00.000+0200",
+     "lastUpdate": "2026-10-15T13:04:00.000+0200",
+     "resume": "2026-10-15T13:04:00.000+0200",
      "start": "2026-10-15T11:35:00.000+0200"
     },
     "title": "65A: Rettungseinsatz"
@@ -489,12 +403,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-15T12:45:00.000+0200",
-     "end": "2026-10-15T23:55:00.000+0200",
-     "lastUpdate": "2026-10-15T12:45:00.000+0200",
-     "resume": "2026-10-15T12:45:00.000+0200",
+     "end": "2026-10-15T13:29:00.000+0200",
+     "lastUpdate": "2026-10-15T13:29:00.000+0200",
+     "resume": "2026-10-15T13:29:00.000+0200",
      "start": "2026-10-15T12:45:00.000+0200"
     },
     "title": "62: Verspätungen"
@@ -566,6 +480,76 @@
      "start": "2026-10-15T12:52:00.000+0200"
     },
     "title": "26A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "9": "ptTram"
+     }
+    },
+    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 13:30 Uhr. Grund: Verkehrsunfall im Bereich Herbststraße.",
+    "descriptionHTML": "Linie 9:<br>Fahrtbehinderung in Richtung Westbahnhof S U.<br> <br>Voraussichtliche Dauer: 13:30 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Herbststraße.",
+    "location": "Herbststraße",
+    "name": "I20261015-0022",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "109",
+       "lineName": "9",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-15T13:06:00.000+0200",
+     "end": "2026-10-15T13:12:00.000+0200",
+     "lastUpdate": "2026-10-15T13:12:00.000+0200",
+     "resume": "2026-10-15T13:12:00.000+0200",
+     "start": "2026-10-15T13:05:00.000+0200"
+    },
+    "title": "9: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "9": "ptTram"
+     }
+    },
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Herbststraße",
+    "name": "I20261015-0022-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "109",
+       "lineName": "9",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-15T13:12:00.000+0200",
+     "end": "2026-10-15T13:22:00.000+0200",
+     "lastUpdate": "2026-10-15T13:22:00.000+0200",
+     "resume": "2026-10-15T13:22:00.000+0200",
+     "start": "2026-10-15T13:05:00.000+0200"
+    },
+    "title": "9: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -958,6 +942,24 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21"
    },
    {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1475-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     1475
+    ],
+    "time": {
+     "end": "2026-10-15T14:06:00.000+0200",
+     "start": "2026-10-15T13:07:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
     "name": "R1475-149",
     "owner": "WL",
@@ -974,6 +976,24 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1476-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     1476
+    ],
+    "time": {
+     "end": "2026-10-15T14:06:00.000+0200",
+     "start": "2026-10-15T13:07:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
@@ -1403,6 +1423,42 @@
      "start": "2026-10-15T05:00:18.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R532-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     532
+    ],
+    "time": {
+     "end": "2026-10-15T14:06:00.000+0200",
+     "start": "2026-10-15T13:06:35.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R533-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     533
+    ],
+    "time": {
+     "end": "2026-10-15T14:06:00.000+0200",
+     "start": "2026-10-15T13:06:35.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
