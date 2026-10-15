@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import dataclasses
 import hashlib
 import html
 import inspect
@@ -11537,6 +11538,140 @@ def lint() -> int:
         report.log_results()
 
 
+@dataclasses.dataclass
+class FeedAssemblyStats:
+    """Counters and timings of one ``_assemble_feed_items`` run.
+
+    Filled step by step, so a caller that catches an exception mid-chain
+    still reads what was counted up to that point (``main`` writes them to
+    the health report either way).
+    """
+
+    filtered_count: int = 0
+    deduped_count: int = 0
+    duplicates_removed: int = 0
+    duplicate_summaries: list[DuplicateSummary] = dataclasses.field(default_factory=list)
+    dropped_ids: set[str] = dataclasses.field(default_factory=set)
+    filter_duration: float = 0.0
+    dedupe_duration: float = 0.0
+
+
+def _assemble_feed_items(
+    items: list[FeedItem],
+    state: dict[str, Any],
+    now: datetime,
+    *,
+    stats: FeedAssemblyStats | None = None,
+) -> list[FeedItem]:
+    """Turn the collected provider items into the ordered feed list.
+
+    This is the whole feed chain between fetching and writing: test notices
+    out, age filter, dedupe, WL merges, Baustellen twins, identity carry-over
+    and the ordering rules. ``main`` calls it, and so must every replay or
+    probe that rebuilds a past feed state from cached data, so a probe can
+    never compute a different feed than the real build (older probes that
+    copied the steps by hand missed the twin step). Fetching, RSS rendering,
+    file writes and ``_save_state`` stay in ``main``.
+
+    ``state`` is updated in place as before (first_seen, restarts, carried
+    identities). The list is not cut to ``MAX_ITEMS``; ``_make_rss`` does that.
+    """
+    if stats is None:
+        stats = FeedAssemblyStats()
+    collected_count = len(items)
+    items = _drop_test_messages(items)
+
+    filter_start = perf_counter()
+    # Before the age filter: it reads the same first_seen.
+    _restart_recurring_occurrences(items, state, now)
+    _note_announced_starts(items, state, now)
+    items, dropped_ids = _drop_old_items(items, now, state)
+    stats.dropped_ids = dropped_ids
+    stats.filter_duration = perf_counter() - filter_start
+    stats.filtered_count = len(items)
+    log.info(
+        "Altersfilter angewendet: %d Items nach %.2fs (vorher: %d)",
+        len(items),
+        stats.filter_duration,
+        collected_count,
+    )
+
+    # Performance: capture the pre-dedupe count and run the duplicate
+    # summary BEFORE ``_dedupe_items`` mutates the list. The previous
+    # ``copy.deepcopy(items)`` snapshot was defensive overhead — at
+    # ~200 items per typical run it costs ~MBs of RAM and ~100ms of
+    # CPU; at 100x scale (a stress-day with thousands of items) it
+    # would dominate the build. ``_summarize_duplicates`` only reads
+    # from the items (the only mutation it can trigger is a benign
+    # ``_calculated_identity`` cache key on the dict, which doesn't
+    # affect the summary's output); ``_dedupe_items`` runs strictly
+    # after both observers have seen the pre-dedupe state, so the
+    # snapshot copy was redundant.
+    pre_dedupe_count = len(items)
+    stats.duplicate_summaries = _summarize_duplicates(items)
+
+    dedupe_start = perf_counter()
+    deduped = _dedupe_items(items)
+    stats.dedupe_duration = perf_counter() - dedupe_start
+    log.info(
+        "Duplikate entfernt: %d eindeutige Items nach %.2fs (vorher: %d)",
+        len(deduped),
+        stats.dedupe_duration,
+        pre_dedupe_count,
+    )
+
+    fuzzy_start = perf_counter()
+    fuzzy_deduped = cast(
+        list[FeedItem],
+        deduplicate_fuzzy(cast(list[dict[str, Any]], deduped)),
+    )
+    fuzzy_duration = perf_counter() - fuzzy_start
+    if len(fuzzy_deduped) < len(deduped):
+        log.info(
+            "Fuzzy Duplikate entfernt: %d verbleiben nach %.2fs (vorher: %d)",
+            len(fuzzy_deduped),
+            fuzzy_duration,
+            len(deduped),
+        )
+
+    # One WL incident, one slot — see ``_merge_wl_ticker_clusters``; the
+    # display tickers of planned works go up in their notice.
+    items = _absorb_works_tickers(_merge_wl_ticker_clusters(fuzzy_deduped))
+    # A Baustelle that a running WL notice reports gives way to it.
+    items = _drop_baustellen_twins(items, now)
+    # A merged item keeps its GUID and begin while it runs — see
+    # ``_carry_item_identity``. The entry of a GUID carried on stays,
+    # though its own message may have run out above.
+    items = _carry_item_identity(items, state, now)
+    stats.dropped_ids -= {str(it.get("guid")) for it in items if it.get("guid")}
+    stats.deduped_count = len(items)
+    stats.duplicates_removed = sum(
+        summary.count - 1 for summary in stats.duplicate_summaries
+    )
+    if not items:
+        log.warning("Keine Items gesammelt.")
+        items = []
+    else:
+        log.debug("Sortiere %d Items nach Priorität (first_seen, neueste zuerst).", len(items))
+    now_utc = _to_utc(now)
+    sort_keys = {id(it): _recency_sort_key(it, state, now_utc) for it in items}
+    items.sort(key=lambda it: sort_keys[id(it)])
+    # One route must not stand in the feed once per construction phase —
+    # see ``_defer_repeated_route_titles``; a current incident keeps its
+    # place (tier 0 of the sort key).
+    items = _defer_repeated_route_titles(
+        items, is_current=lambda it: sort_keys[id(it)][0] == 0
+    )
+    # One event must not take every slot — see ``_apply_topic_budget``.
+    items = _apply_topic_budget(items, feed_config.MAX_ITEMS_PER_TOPIC)
+    # What applies now comes before what is only announced — see
+    # ``_defer_upcoming_items``.
+    items = _defer_upcoming_items(items, now_utc, feed_config.UPCOMING_PREVIEW_DAYS)
+    # An all-clear only fills a slot nothing else needs — see
+    # ``_defer_all_clear_items``.
+    return _defer_all_clear_items(items)
+
+
 def main() -> int:
     """Execute the full feed generation pipeline (collect, dedupe, generate RSS)."""
     init_providers()
@@ -11557,14 +11692,12 @@ def main() -> int:
     if stale_cache_messages:
         log.warning("Veraltete Caches erkannt: %s", "; ".join(stale_cache_messages))
     health_metrics: FeedHealthMetrics | None = None
-    duplicate_summaries: list[DuplicateSummary] = []
-    # Initialize counters to 0 to avoid redundant checks later (Task 3A)
+    # Initialize counters to 0 to avoid redundant checks later (Task 3A);
+    # the feed chain counts into ``stats``.
     raw_count: int = 0
-    filtered_count: int = 0
-    deduped_count: int = 0
-    duplicates_removed: int = 0
     new_items_count: int = 0
     items: list[FeedItem] = []
+    stats = FeedAssemblyStats()
     health_path = validate_path(Path(feed_config.FEED_HEALTH_PATH), "FEED_HEALTH_PATH")
     health_json_path = validate_path(
         Path(feed_config.FEED_HEALTH_JSON_PATH), "FEED_HEALTH_JSON_PATH"
@@ -11602,104 +11735,17 @@ def main() -> int:
             raw_count,
             collect_duration,
         )
-        items = _drop_test_messages(items)
-
-        filter_start = perf_counter()
-        # Before the age filter: it reads the same first_seen.
-        _restart_recurring_occurrences(items, state, now)
-        _note_announced_starts(items, state, now)
-        items, dropped_ids = _drop_old_items(items, now, state)
-        filter_duration = perf_counter() - filter_start
-        filtered_count = len(items)
-        log.info(
-            "Altersfilter angewendet: %d Items nach %.2fs (vorher: %d)",
-            len(items),
-            filter_duration,
-            raw_count,
-        )
-
-        # Performance: capture the pre-dedupe count and run the duplicate
-        # summary BEFORE ``_dedupe_items`` mutates the list. The previous
-        # ``copy.deepcopy(items)`` snapshot was defensive overhead — at
-        # ~200 items per typical run it costs ~MBs of RAM and ~100ms of
-        # CPU; at 100x scale (a stress-day with thousands of items) it
-        # would dominate the build. ``_summarize_duplicates`` only reads
-        # from the items (the only mutation it can trigger is a benign
-        # ``_calculated_identity`` cache key on the dict, which doesn't
-        # affect the summary's output); ``_dedupe_items`` runs strictly
-        # after both observers have seen the pre-dedupe state, so the
-        # snapshot copy was redundant.
-        pre_dedupe_count = len(items)
-        duplicate_summaries = _summarize_duplicates(items)
-
-        dedupe_start = perf_counter()
-        deduped = _dedupe_items(items)
-        dedupe_duration = perf_counter() - dedupe_start
-        log.info(
-            "Duplikate entfernt: %d eindeutige Items nach %.2fs (vorher: %d)",
-            len(deduped),
-            dedupe_duration,
-            pre_dedupe_count,
-        )
-
-        fuzzy_start = perf_counter()
-        fuzzy_deduped = cast(
-            list[FeedItem],
-            deduplicate_fuzzy(cast(list[dict[str, Any]], deduped)),
-        )
-        fuzzy_duration = perf_counter() - fuzzy_start
-        if len(fuzzy_deduped) < len(deduped):
-            log.info(
-                "Fuzzy Duplikate entfernt: %d verbleiben nach %.2fs (vorher: %d)",
-                len(fuzzy_deduped),
-                fuzzy_duration,
-                len(deduped),
-            )
-
-        # One WL incident, one slot — see ``_merge_wl_ticker_clusters``; the
-        # display tickers of planned works go up in their notice.
-        items = _absorb_works_tickers(_merge_wl_ticker_clusters(fuzzy_deduped))
-        # A Baustelle that a running WL notice reports gives way to it.
-        items = _drop_baustellen_twins(items, now)
-        # A merged item keeps its GUID and begin while it runs — see
-        # ``_carry_item_identity``. The entry of a GUID carried on stays,
-        # though its own message may have run out above.
-        items = _carry_item_identity(items, state, now)
-        dropped_ids -= {str(it.get("guid")) for it in items if it.get("guid")}
-        deduped_count = len(items)
-        duplicates_removed = sum(summary.count - 1 for summary in duplicate_summaries)
-        if not items:
-            log.warning("Keine Items gesammelt.")
-            items = []
-        else:
-            log.debug("Sortiere %d Items nach Priorität (first_seen, neueste zuerst).", len(items))
-        now_utc = _to_utc(now)
-        sort_keys = {id(it): _recency_sort_key(it, state, now_utc) for it in items}
-        items.sort(key=lambda it: sort_keys[id(it)])
-        # One route must not stand in the feed once per construction phase —
-        # see ``_defer_repeated_route_titles``; a current incident keeps its
-        # place (tier 0 of the sort key).
-        items = _defer_repeated_route_titles(
-            items, is_current=lambda it: sort_keys[id(it)][0] == 0
-        )
-        # One event must not take every slot — see ``_apply_topic_budget``.
-        items = _apply_topic_budget(items, feed_config.MAX_ITEMS_PER_TOPIC)
-        # What applies now comes before what is only announced — see
-        # ``_defer_upcoming_items``.
-        items = _defer_upcoming_items(items, now_utc, feed_config.UPCOMING_PREVIEW_DAYS)
-        # An all-clear only fills a slot nothing else needs — see
-        # ``_defer_all_clear_items``.
-        items = _defer_all_clear_items(items)
+        items = _assemble_feed_items(items, state, now, stats=stats)
 
         new_items_count = _count_new_items(items, state)
 
         health_metrics = FeedHealthMetrics(
             raw_items=raw_count,
-            filtered_items=filtered_count,
-            deduped_items=deduped_count,
+            filtered_items=stats.filtered_count,
+            deduped_items=stats.deduped_count,
             new_items=new_items_count,
-            duplicate_count=duplicates_removed,
-            duplicates=tuple(duplicate_summaries),
+            duplicate_count=stats.duplicates_removed,
+            duplicates=tuple(stats.duplicate_summaries),
         )
 
         # German feed (primary) is built first so the public ``feed.xml``
@@ -11740,7 +11786,7 @@ def main() -> int:
         _remember_item_identity(items, state, now)
 
         try:
-            _save_state(state, deletions=dropped_ids)
+            _save_state(state, deletions=stats.dropped_ids)
         except Exception as e:
             # Security (Clear-Text-Logging Drift): broad framework catch.
             log.warning(
@@ -11772,8 +11818,8 @@ def main() -> int:
             final_items=len(items),
             durations={
                 "collect": collect_duration,
-                "filter": filter_duration,
-                "dedupe": dedupe_duration,
+                "filter": stats.filter_duration,
+                "dedupe": stats.dedupe_duration,
                 "rss": rss_duration,
                 "total": total_duration,
             },
@@ -11787,14 +11833,15 @@ def main() -> int:
         log.exception("Feed-Bau fehlgeschlagen: %s", sanitize_log_arg(str(exc)))
         report.record_exception(exc)
         if health_metrics is None:
-            # Simplified fallback using pre-initialized counters (Task 3A).
+            # Simplified fallback using pre-initialized counters (Task 3A);
+            # ``stats`` holds what the feed chain counted before it failed.
             health_metrics = FeedHealthMetrics(
                 raw_items=raw_count,
-                filtered_items=filtered_count,
-                deduped_items=deduped_count,
+                filtered_items=stats.filtered_count,
+                deduped_items=stats.deduped_count,
                 new_items=new_items_count,
-                duplicate_count=duplicates_removed,
-                duplicates=tuple(duplicate_summaries),
+                duplicate_count=stats.duplicates_removed,
+                duplicates=tuple(stats.duplicate_summaries),
             )
         report.finish(build_successful=False)
         _write_health_outputs(health_metrics)
