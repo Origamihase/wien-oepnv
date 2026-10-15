@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 16 Oct 2026 00:00:59 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 00:30:54 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N71: Gleisbauarbeiten, Ersatzverkehr]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">cbaeb9add89e94f501dce883629cbda4e8b00aaf9f47f93a8e33ea51c4b85db2</guid>
+      <pubDate>Fri, 16 Oct 2026 00:25:11 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 00:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 00:25:11 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Gleisbauarbeiten: Busse halten Simmeringer Hauptstr. 157. Ersatzverkehr: Busse halten bei Haltestelle N71. [Heute]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten: Busse halten Simmeringer Hauptstr. 157. Ersatzverkehr: Busse halten bei Haltestelle N71.<br/>[Heute]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[N71: Simmering S U]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 08 Oct 2027 11:11:00 +0200</ext:ends_at>
       <description>Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten. [Ab Mo 19.10.]</description>
       <content:encoded><![CDATA[Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten.<br/>[Ab Mo 19.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
-      <pubDate>Mon, 05 Oct 2026 15:40:00 +0200</pubDate>
-      <ext:first_seen>Mon, 05 Oct 2026 15:40:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 … [Bis 28.10.]</description>
-      <content:encoded><![CDATA[Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 …<br/>[Bis 28.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
