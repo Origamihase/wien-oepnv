@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Thu, 15 Oct 2026 06:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 07:01:15 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U3: Fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">6566afe6a6d5bb47f5532e8e78c4be9008a200aae7aa9dd8b96b02967baf9643</guid>
+      <pubDate>Thu, 15 Oct 2026 06:32:00 +0200</pubDate>
+      <ext:first_seen>Thu, 15 Oct 2026 07:01:15 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 15 Oct 2026 06:32:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 15 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>The U3 line currently only runs between Simmering and Westbahnhof. [Since 06:32]</description>
+      <content:encoded><![CDATA[The U3 line currently only runs between Simmering and Westbahnhof.<br/>[Since 06:32]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[D: Defective vehicle, track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -107,17 +118,6 @@
       <ext:ends_at>Thu, 15 Oct 2026 17:00:00 +0200</ext:ends_at>
       <description>Due to construction works in the area of Wildbadgasse, line 20A is redirected. [Today]</description>
       <content:encoded><![CDATA[Due to construction works in the area of Wildbadgasse, line 20A is redirected.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A/3A: Schwertgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
-      <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation. [Until 31.03.2027]</description>
-      <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation.<br/>[Until 31.03.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
