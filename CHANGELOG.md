@@ -5,6 +5,20 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Jede Linie einer WL-Störung mehrerer Linien (2026-10-15)**: Beim
+  Gasrohrbruch am 11.10. zeigte „30A/31A/36B: Gasrohrgebrechen“ nur die
+  Umleitung der 36B, denn WL schreibt einen Satz je Linie und die
+  Beschreibung behält die ersten Sätze bis 180 Zeichen. Michaels
+  Entscheidung „Kurzform je Linie“ („Am TV sieht man sonst nur, was mit
+  einer von drei Linien passiert“): Fehlt sonst eine Linie, steht jede mit
+  Maßnahme und Endpunkten da, ohne Richtung und Umleitungsstraßen
+  („Umleitungen: 36B Berzeliusgasse – Brünner Straße S; 30A Berzeliusgasse
+  – Gschweidlgasse; 31A Berzeliusgasse – Großjedlersdorf,
+  Jochbergengasse.“; `_lines_in_short`). Texte, die schon jede Linie
+  zeigen, und Maßnahmen, die die Regel nicht kennt, bleiben unverändert;
+  was nicht in 180 Zeichen passt, fällt linienweise mit „…“ weg. Replay
+  über alle 4.899 WL-Texte seit Juli: 62 ändern sich, sonst nichts. EN:
+  Glossar „Umleitungen“ → „diversions“, „Betrieb nur“ → „service only“.
 * **Kurzmeldungen eines Vorfalls mehrerer Linien (2026-10-15)**: Am 11.10.
   von 11:30 bis 23:30 Uhr belegte ein Gasrohrbruch in der Brünner Straße
   vier der zehn Plätze: „30A/31A/36B: Gasrohrgebrechen“ und daneben je eine

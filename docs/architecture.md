@@ -545,7 +545,26 @@ verdrängt eine andere Störung.
   Wörter ihrer Maßnahme sichtbar bleiben (`_with_second_sentence`, seit
   2026-10-14; vorher stand bei der Demo am Ring am 13.10. nur „Wegen einer
   Demonstration kommt es zu einer Einschränkung des öffentlichen
-  Verkehrs.“). Beginnt der Text mit einer Überschrift oder einem Feld, gilt die
+  Verkehrs.“). Eine WL-Störung mehrerer Linien zeigt jede Linie in
+  Kurzform, wenn der Text sonst eine Linie verschweigen würde
+  (`_lines_in_short`, seit 2026-10-15; Betreiberentscheidung „Kurzform je
+  Linie“, Begründung: „Am TV sieht man sonst nur, was mit einer von drei
+  Linien passiert“). WL schreibt einen Satz je Linie, und beim
+  Gasrohrbruch am 11.10. stand nur die Umleitung der 36B da. Jetzt:
+  „Umleitungen: 36B Berzeliusgasse – Brünner Straße S; 30A Berzeliusgasse
+  – Gschweidlgasse; 31A Berzeliusgasse – Großjedlersdorf, Jochbergengasse.“
+  Je Linie stehen die Maßnahme und ihre beiden Endpunkte, ohne Richtung
+  und Umleitungsstraßen; haben alle Linien dieselbe Maßnahme, steht sie
+  einmal vorn, sonst bei jeder Linie („25: Betrieb nur …; 30: Kein
+  Betrieb.“). Bekannt sind „Kein Betrieb“, „Betrieb nur“, „Umleitung“
+  sowie „Fahrtbehinderung“, „Unregelmäßige Intervalle“ und „Verspätungen“
+  ohne Orte; „Badner Bahn:“ ist die Linie LB. WLs „Voraussichtlich bis
+  hh:mm Uhr.“ folgt, wenn es passt. Linien, die nicht in 180 Zeichen
+  passen, fallen ganz weg, die letzte zuerst, mit „…“. Nennt der gezeigte
+  Text schon jede Linie („Linie 26: …; Linie 27: …“) oder kennt die Regel
+  die Maßnahme einer Linie nicht, bleibt der Text wie bisher. Replay über
+  alle 4.899 WL-Texte seit Juli: 62 ändern sich, alle nur dort, wo vorher
+  mindestens eine Linie fehlte. Beginnt der Text mit einer Überschrift oder einem Feld, gilt die
   Zwei-Sätze-Regel nicht, sonst stünde „Haltestelle: Stammersdorf.“ ohne
   die neue Lage da: gezeigt werden die Felder bis zum ersten ganzen Satz,
   danach greift die 180-Zeichen-Grenze. Bei einer Haltestellenverlegung
