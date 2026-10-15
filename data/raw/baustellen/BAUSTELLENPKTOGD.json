@@ -256,6 +256,29 @@
   {
    "geometry": {
     "first_position": [
+     16.37585151,
+     48.17068913
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Inzersdorfer Straße Kreuzung Inzersdorfer Straße und Ettenreichgasse",
+    "BEZIRK": 10,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-19Z",
+    "OBJEKT_ENDE": "2026-10-30Z",
+    "PRESSETEXT": "Die Arbeiten im Kreuzungsplateau erfolgen bei Aufrechterhaltung aller Fahrrelationen.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.35527809,
      48.20977459
     ],
@@ -273,6 +296,29 @@
     "OBJEKT_BEGINN": "2026-09-14Z",
     "OBJEKT_ENDE": "2026-11-01Z",
     "PRESSETEXT": "Die Arbeiten werden in der Zeit von 09:00 Uhr bis 15:00 Uhr und von 19:00 Uhr bis 06:00 Uhr durchgeführt. Der rechte Fahrstreifen wird in Fahrtrichtung 9. Bezirk gesperrt. Die restlichen Fahrstreifen werden aufrechtgehalten. Außerhalb der Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.36123988,
+     48.1472034
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Laxenburger Straße 253",
+    "BEZIRK": 23,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-19Z",
+    "OBJEKT_ENDE": "2026-10-30Z",
+    "PRESSETEXT": "Ein Fahrstreifen je Fahrtrichtung bleibt aufrecht.",
     "SE_ANNO_CAD_DATA": null
    }
   },

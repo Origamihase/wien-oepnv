@@ -1,24 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-15T20:00:58.862336+00:00",
- "built": "2026-10-15T22:00:47+02:00",
+ "updated": "2026-10-15T20:31:01.682576+00:00",
+ "built": "2026-10-15T22:30:53+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-15T22:00:47+02:00",
+  "built": "2026-10-15T22:30:53+02:00",
   "items": [
    {
-    "title": "7A: Falschparker",
-    "time_line": "Seit 21:24"
-   },
-   {
-    "title": "29A: Verkehrsunfall",
-    "time_line": "Seit 20:41"
-   },
-   {
-    "title": "U1: Polizeieinsatz",
-    "time_line": "Seit 20:58"
+    "title": "29B/29A: Falschparker",
+    "time_line": "Seit 22:28"
    },
    {
     "title": "1/2/5/5A/5B/71/74A/80A/D/O: Demonstration",
@@ -47,6 +39,14 @@
    {
     "title": "15A: Max-Mauermann-Gasse",
     "time_line": "Bis 25.12."
+   },
+   {
+    "title": "1A/3A: Schwertgasse",
+    "time_line": "Bis 31.03.2027"
+   },
+   {
+    "title": "66A/N66: Liesing, Schulzentrum",
+    "time_line": "Bis 28.10."
    }
   ]
  },
@@ -4730,6 +4730,26 @@
     "baustellen": 3,
     "oebb": 10,
     "wl": 103
+   }
+  },
+  {
+   "t": "2026-10-15T20:31:01.682576+00:00",
+   "raw": {
+    "wl-stoerungen": 68,
+    "wl-hinweise": 78,
+    "oebb": 158,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 25
+   },
+   "discarded": {
+    "wl": 14,
+    "oebb": 134,
+    "baustellen": 73
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 10,
+    "wl": 101
    }
   }
  ]

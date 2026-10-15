@@ -325,6 +325,29 @@
   {
    "geometry": {
     "first_position": [
+     16.41189035,
+     48.19247486
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Erdbergstraße 192-196 bis 202",
+    "BEZIRK": 3,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-18Z",
+    "OBJEKT_ENDE": "2026-10-31Z",
+    "PRESSETEXT": "Die Arbeiten werden in der Nacht von 20:00-05:00 Uhr durchgeführt. Der Fahrzeugverkehr wird mittels Verkehrszeichen wechselweise durch den Arbeitsbereich geschleust. Der Fußgängerverkehr wird in geeigneter und sicherer Weise aufrecht gehalten.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.37537409,
      48.18121198
     ],
@@ -808,6 +831,29 @@
   {
    "geometry": {
     "first_position": [
+     16.42170028,
+     48.2112587
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Meiereistraße von Olympiaplatz und Engerthstraße und Stephanie-Endres-Straße bis Handelskai",
+    "BEZIRK": 2,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-11Z",
+    "OBJEKT_ENDE": "2026-11-13Z",
+    "PRESSETEXT": "Im Zeitraum von 12.10.2026 bis 23.10.2026 sowie von 01.11.2026 bis 15.11.2026 wird die Meiereistraße von Engerthstraße bis und in Fahrtrichtung Handelskai zur Einbahn.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.32479348,
      48.19861052
     ],
@@ -848,6 +894,29 @@
     "OBJEKT_BEGINN": "2026-07-26Z",
     "OBJEKT_ENDE": "2026-11-01Z",
     "PRESSETEXT": "Die Arbeiten erfolgen abschnittsweise bei Sperre des betroffenen Bereiches der Nebenfahrbahn. Die Zufahrt bis zum gesperrten Bereich ist gestattet.DerFußgänger- und Radverkehr kann aufrecht gehalten werden.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.42112397,
+     48.2105957
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundentelefon Wiener Linien",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-7909/100",
+    "ANTRAGSTELLER": "Wiener Linien GmbH & Co KG",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Olympiaplatz von Kreuzung Meiereistraße und Vorgartenstraße und Unbenannte Verkehrsfläche bis Kreuzu",
+    "BEZIRK": 2,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-22Z",
+    "OBJEKT_ENDE": "2026-11-01Z",
+    "PRESSETEXT": "Das Kreuzungsplateau wird für den motorisierten Verkehr gesperrt. Die Zufahrt bis zum gesperrten Bereich ist möglich. Die Meiereistraße, Engerthstraße, Olympiaplatz sowie Stephanie-Endres-Straße wird als Sackgassenbereich ausgebildet. Die offizielle Umleitung zu den Bereichen im Umfeld des Ernst-Happel-Stadions erfolgt über die Machstraße und Vorgartenstraße.",
     "SE_ANNO_CAD_DATA": null
    }
   },
@@ -1078,6 +1147,29 @@
     "OBJEKT_BEGINN": "2026-05-18Z",
     "OBJEKT_ENDE": "2027-05-28Z",
     "PRESSETEXT": "In Fahrtrichtung stadteinwärts wird ein 3,50 m breiter Fahrstreifen aufrecht gehalten. Die Fahrtrichtung stadtauswärts wird über das richtungsführende Gleis oder die bestehende Nebenfahrbahn umgeleitet. Die Arbeiten werden abschnittsweise durchgeführt.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.37863654,
+     48.16882376
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Troststraße von Kreuzung Rissaweggasse bis Kreuzung Wirerstraße",
+    "BEZIRK": 10,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-19Z",
+    "OBJEKT_ENDE": "2026-10-30Z",
+    "PRESSETEXT": "Die Troststraße wirdvon Wirestraße bis und in Fahrtrichtung Rechberggasse zur Einbahn. Die Angeligasse wird von Rechberggasse bis und in Fahrtrichtung Wirestraße zur Einbahn. Die Wirestraße wird von Troststraße bis und in Fahrtrichtung Angeligasse zur Einbahn.Die Umleitung in Fahrtrichtung Laxenburger Straße erfolgt über: Rechberggasse, Angeligasse und Hollitzergasse.",
     "SE_ANNO_CAD_DATA": null
    }
   },
