@@ -5,6 +5,13 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **`feed lint` nutzt die Feed-Kette des Builds (2026-10-15)**: Die
+  Nachprüfung von „Feed-Kette als eine Funktion“ fand in `lint()` eine zweite,
+  abgeschriebene Kette ohne Identitätsübernahme, Neustart wiederkehrender
+  Meldungen und angekündigte Starts; ihre Zählwerte konnten vom Health-Report
+  abweichen. `lint()` ruft jetzt `_assemble_feed_items` auf, ein Test lässt
+  keine zweite Kette mehr zu. Der Feed selbst ändert sich nicht, `lint`
+  schreibt nichts.
 * **Feed-Kette als eine Funktion, Glossar als Datenmodul (2026-10-15)**:
   Die rund 15 Schritte zwischen Abruf und RSS standen nur in `main()`,
   vermischt mit Zeitmessung und Dateischreiben; Replay-Proben schrieben sie
@@ -17,8 +24,9 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   Übersetzungsfunktionen bleiben in `build_feed.py`, damit keine der 264
   Test-Attrappen auf `build_feed` ins Leere läuft (Begründung in
   `docs/architecture.md` §1, „Eine Feed-Kette, ein Modul“). Der Feed ändert
-  sich nicht: Replay alt gegen neu über alle Feed-Stände, DE und EN
-  identisch.
+  sich nicht: Replay alt gegen neu über 2.555 Feed-Stände (alle seit
+  01.09., davor jeder achte ab 15.07.), DE, EN-Kette und State identisch; die
+  Glossar-Tabellen sind Eintrag für Eintrag dieselben.
 * **Jede Linie einer WL-Störung mehrerer Linien (2026-10-15)**: Beim
   Gasrohrbruch am 11.10. zeigte „30A/31A/36B: Gasrohrgebrechen“ nur die
   Umleitung der 36B, denn WL schreibt einen Satz je Linie und die

@@ -44,7 +44,11 @@ _CHAIN_STEPS = {
 
 
 def _called_names(func: Any) -> set[str]:
-    tree = ast.parse(textwrap.dedent(inspect.getsource(func)))
+    tree = (
+        func
+        if isinstance(func, ast.AST)
+        else ast.parse(textwrap.dedent(inspect.getsource(func)))
+    )
     return {
         node.func.id
         for node in ast.walk(tree)
@@ -69,6 +73,23 @@ def test_main_runs_no_chain_step_itself() -> None:
     called = _called_names(bf.main)
     assert "_assemble_feed_items" in called
     assert not called & _CHAIN_STEPS
+
+
+def test_no_other_function_copies_the_chain() -> None:
+    # ``lint`` once carried its own copy (without identity carry-over,
+    # restarts and announced starts), so its counts could differ from the
+    # health report of a build. One chain step in a helper is fine; two or
+    # more mean a second chain.
+    tree = ast.parse(inspect.getsource(bf))
+    copies = {
+        node.name
+        for node in tree.body
+        if isinstance(node, ast.FunctionDef)
+        and node.name != "_assemble_feed_items"
+        and len(_called_names(node) & _CHAIN_STEPS) > 1
+    }
+    assert not copies
+    assert "_assemble_feed_items" in _called_names(bf.lint)
 
 
 def test_assemble_runs_every_chain_step() -> None:
