@@ -497,6 +497,19 @@ _GLOSSARY_BASE: dict[str, str] = {
     # "Züge halten" entry as "trains stop nicht …", which the model may
     # read either way.
     "Züge halten nicht": "trains do not stop",
+    # What ``_STOP_NOT_SERVED_RULES`` writes for "kann die Haltestelle …
+    # nicht einhalten" ("Die Linie 66A hält nicht an der Haltestelle
+    # Atzgersdorf, Kirchenplatz in Richtung Reumannplatz"): the stop's name
+    # follows, so the noun goes with the verb. The verb takes the number of
+    # "kann"/"können", the noun its own ("Die Linie U6 kann die Stationen …").
+    "hält nicht an der Haltestelle": "does not stop at",
+    "hält nicht an den Haltestellen": "does not stop at",
+    "hält nicht in der Station": "does not stop at",
+    "hält nicht in den Stationen": "does not stop at",
+    "halten nicht an der Haltestelle": "do not stop at",
+    "halten nicht an den Haltestellen": "do not stop at",
+    "halten nicht in der Station": "do not stop at",
+    "halten nicht in den Stationen": "do not stop at",
     "Busse halten nicht": "buses do not stop",
     "Busse halten an": "buses stop at",
     "Ersatzbusse halten an": "replacement buses stop at",
