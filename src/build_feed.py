@@ -12,7 +12,7 @@ import string
 import secrets
 import sys
 import xml.etree.ElementTree as ET  # nosec B405
-from collections import defaultdict
+from collections import Counter, defaultdict
 from collections.abc import Callable, Sequence
 from concurrent.futures import (
     FIRST_COMPLETED,
@@ -2672,6 +2672,29 @@ _PLACEHOLDER_NONCE = secrets.token_hex(8)
 _ENTITY_PLACEHOLDER_FORMAT = "XENT" + _PLACEHOLDER_NONCE + "X{index}X"
 _ENTITY_PLACEHOLDER_RE: re.Pattern[str] = re.compile("XENT" + _PLACEHOLDER_NONCE + r"X\d+X")
 
+# "Wien" as part of a stop's name: "Wien Schedifkaplatz" (Badner Bahn),
+# "Wien St.Marx Bahnhst", "Purkersdorf b.Wien Zentrum Bahnhst",
+# "Hennersdorf b.Wien Bahnhst". The directory knows none of these forms, so
+# only the street half (or nothing) was shielded and the model turned the
+# city into English: "no service Vienna Schedifkaplatz – Wien Matzleinsdorfer
+# Platz" (probe 2026-10-15), "between Vienna St.Marx Bahnhst" (2026-09-07),
+# "Vienna centre Bahnhst" (2026-08-15). A name stays a name in the EN feed,
+# as on the stop sign, so "Wien" directly in front of a name, or behind
+# ÖBB's "b." ("bei"), is shielded together with that name. "Wien" on its own
+# ("Fahrtrichtung Wien", "Großraum Wien") is the city and still becomes
+# "Vienna". The station nouns after the name are no part of it; a masked
+# brand ("Wien Stammstrecke") stays a brand of its own.
+_WIEN_NAME_STATION_NOUNS = r"(?:Bahnhof|Bahnhst|Bahnst|Bhf|Bf|Hbf|Haltestelle|Station)\b"
+_WIEN_NAME_WORD = (
+    r"(?!" + _WIEN_NAME_STATION_NOUNS + r")(?!XENT|XGLO)"
+    r"[A-ZÄÖÜ][A-Za-zÄÖÜäöüß]*(?:\.[A-ZÄÖÜ][A-Za-zÄÖÜäöüß]+)*(?![\w-])"
+)
+_WIEN_NAME_RE: re.Pattern[str] = re.compile(
+    r"(?<![\w.-])(?:(?:(?:" + _ENTITY_PLACEHOLDER_RE.pattern + r"|(?!XENT|XGLO)[A-ZÄÖÜ][A-Za-zÄÖÜäöüß-]*) )?"
+    r"b\.\s?Wien(?: " + _WIEN_NAME_WORD + r")?(?![\w-])"
+    r"|Wien (?:" + _ENTITY_PLACEHOLDER_RE.pattern + r"|" + _WIEN_NAME_WORD + r"))"
+)
+
 
 # Unicode glyphs that the Helsinki opus-mt-de-en tokenizer is likely
 # to map to its ``<unk>`` slot — and silently drop on detokenize.
@@ -2964,8 +2987,7 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
     mapping: dict[str, str] = {}
     surface_to_placeholder: dict[str, str] = {}
 
-    def _replace(match: re.Match[str]) -> str:
-        surface = match.group(0)
+    def _register(surface: str) -> str:
         cached = surface_to_placeholder.get(surface)
         if cached is not None:
             return cached
@@ -2973,6 +2995,9 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
         mapping[placeholder] = surface
         surface_to_placeholder[surface] = placeholder
         return placeholder
+
+    def _replace(match: re.Match[str]) -> str:
+        return _register(match.group(0))
 
     working = _brand_entity_pattern().sub(_replace, text)
     station_pattern = _station_entity_pattern()
@@ -2997,7 +3022,48 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
     working = _PLACE_NAME_ENTITY_RE.sub(_replace, working)
     working = _DIRECTION_NAME_RE.sub(_replace, working)
     working = _PRESERVED_SYMBOLS_RE.sub(_replace, working)
+    # Last, so that the name behind "Wien" is already masked by whichever
+    # pass knows it ("Wien Schedifkaplatz": the street pass).
+    working = _absorb_wien_into_names(working, mapping, _register)
     return working, mapping
+
+
+def _absorb_wien_into_names(
+    working: str,
+    mapping: dict[str, str],
+    register: Callable[[str], str],
+) -> str:
+    """Shield "Wien" together with the name it belongs to (``_WIEN_NAME_RE``).
+
+    A name an earlier pass already masked takes the city into its own
+    placeholder; a placeholder the text uses elsewhere too, without the
+    city, stays as it is there, and the whole name gets a new one.
+    """
+    counts = Counter(_ENTITY_PLACEHOLDER_RE.findall(working))
+
+    def _absorb(match: re.Match[str]) -> str:
+        text = match.group(0)
+        inner = _ENTITY_PLACEHOLDER_RE.search(text)
+        if inner is None:
+            return register(text)
+        placeholder = inner.group(0)
+        surface = mapping.get(placeholder, "")
+        if (
+            not surface[:1].isupper()
+            or surface in _BRAND_ENTITIES
+            or _LINE_ENTITY_RE.fullmatch(surface)
+        ):
+            return text
+        whole = text.replace(placeholder, surface)
+        if counts[placeholder] == 1:
+            mapping[placeholder] = whole
+            return placeholder
+        return register(whole)
+
+    working = _WIEN_NAME_RE.sub(_absorb, working)
+    for placeholder in [p for p in mapping if p.startswith("XENT") and p not in working]:
+        del mapping[placeholder]
+    return working
 
 
 # Glossary placeholders use a distinct ``XGLO<n>X`` prefix so the
@@ -3308,6 +3374,12 @@ _PLACE_AFTER_CROSS_STREET_RE: re.Pattern[str] = re.compile(
 # station" (13 texts since July). Rewritten into the plain German verbs
 # "anfahren" and "halten in/an", the glossary renders "not served" and the model
 # writes "stops at".
+_STOP_NOT_KEPT_PLACE: dict[str, str] = {
+    "Haltestelle": "an der Haltestelle",
+    "Haltestellen": "an den Haltestellen",
+    "Station": "in der Station",
+    "Stationen": "in den Stationen",
+}
 _STOP_NOT_SERVED_RULES: tuple[
     tuple[re.Pattern[str], str | Callable[[re.Match[str]], str]], ...
 ] = (
@@ -3333,6 +3405,22 @@ _STOP_NOT_SERVED_RULES: tuple[
     (
         re.compile(r"\b(hält|halten) (die Linie \S+|die Züge der Linie \S+) die Station ([^.!?;]+?) ein\b(?=\s*[.!;,]|\s*$)"),
         r"\1 \2 an der Station \3",
+    ),
+    # Every other "kann/können … die Haltestelle(n)/Station(en) … nicht
+    # einhalten", the subject mostly in front of the verb: "Die Linie 66A
+    # kann die Haltestelle Atzgersdorf, Kirchenplatz in Richtung Reumannplatz
+    # nicht einhalten" became "Line 66A cannot follow the stop …" (13.10.2026,
+    # still so with the real model on 15.10.), "… umgeleitet und können die
+    # Haltestellen Klinik Ottakring und Waidäckergasse nicht einhalten".
+    (
+        re.compile(
+            r"\b(kann|können) ((?:die Züge der Linie|die Busse der Linie|die Linie) \S+ )?"
+            r"die (Haltestellen?|Stationen?) ((?:[^.!?;]|\.(?=\s?\d))+?) nicht einhalten\b"
+        ),
+        lambda m: (
+            f"{'hält' if m[1] == 'kann' else 'halten'} {m[2] or ''}nicht "
+            f"{_STOP_NOT_KEPT_PLACE[m[3]]} {m[4]}"
+        ),
     ),
 )
 
