@@ -1,5 +1,13 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R2173-127|2026-10-15T15:42:51.000+0200|Rettungseinsatz\nBetrieb ab Koloniestraße",
+   "name": "R2173-127",
+   "title": "Rettungseinsatz\nBetrieb ab Koloniestraße",
+   "end": "2026-10-15T16:42:00.000+0200",
+   "incident": "I20261015-0026"
+  }
+ ]
 }
