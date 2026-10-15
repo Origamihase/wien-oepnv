@@ -203,3 +203,45 @@ def test_the_extract_and_the_helper_split_sentences_the_same_way() -> None:
         _prefer_measures("Zeitraum: bis Ende September 2026. Linie 56A: Umleitung über Lainzer Straße.")
         == "Linie 56A: Umleitung über Lainzer Straße."
     )
+
+
+# The cache's HTML of 2026-10-13, shortened: the kept introduction and the
+# joined measure block did not fit 180 characters together, and the
+# description read only "Wegen einer Demonstration kommt es zu einer
+# Einschränkung des öffentlichen Verkehrs." (Jules audit 2026-10-13).
+_DEMO_RING_HTML = (
+    "<h2>Demonstration</h2> <p>Wegen einer Demonstration kommt es zu einer "
+    "Einschr&auml;nkung des &ouml;ffentlichen Verkehrs.</p> "
+    "<p><strong>Zeitraum:</strong><br />Am Dienstag, 13. Oktober 2026 zwischen "
+    "13:00 Uhr und 19:00 Uhr.</p> <p><strong>Ma&szlig;nahmen:</strong><br />"
+    "<strong>Linie D:</strong> Umleitung der Z&uuml;ge zwischen Absberggasse und "
+    "B&ouml;rse in beiden Richtungen ab Schwarzenbergplatz &uuml;ber Stubentor - "
+    "Schwedenplatz - Schottenring.<br /><strong>Linie 71:</strong> Betrieb nur "
+    "zwischen Kaiserebersdorf, Zinnergasse und St. Marx S.</p>"
+)
+
+
+def test_the_measures_follow_a_kept_introduction_cut_with_an_ellipsis() -> None:
+    desc = _render("1/71/D: Demonstration am 13.10.2026", _DEMO_RING_HTML)
+    body = desc.rsplit(" [", 1)[0]
+    assert body.startswith(
+        "Wegen einer Demonstration kommt es zu einer Einschränkung des öffentlichen "
+        "Verkehrs. Linie D: Umleitung der Züge zwischen Absberggasse und Börse"
+    )
+    assert body.endswith(" …")
+    assert len(body) <= 180
+
+
+def test_a_bare_measure_label_does_not_follow_a_long_introduction() -> None:
+    """Behind a first sentence that leaves no room, "Linie D: …" says nothing."""
+    first = "Wegen einer Demonstration " + "im Bereich Ring und Schwarzenbergplatz " * 3 + "kommt es zu Verkehrsmaßnahmen."
+    second = "Linie D: Umleitung der Züge zwischen Absberggasse und Börse in beiden Richtungen."
+    assert len(first) < 180 < len(f"{first} {second}")
+    assert build_feed._with_second_sentence(first, second, oebb=False, raw_title="D: Demonstration") == first
+
+
+def test_a_second_sentence_without_a_measure_label_still_needs_to_fit() -> None:
+    first = "Wegen Bauarbeiten in der Maxingstraße werden die Linien 56A und 58A umgeleitet."
+    second = "Die Haltestellen in der Maxingstraße werden " + "in beiden Richtungen " * 5 + "nicht angefahren."
+    assert len(f"{first} {second}") > 180
+    assert build_feed._with_second_sentence(first, second, oebb=False, raw_title="56A: Bauarbeiten") == first
