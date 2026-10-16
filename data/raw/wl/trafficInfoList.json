@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261016-0003-F01, I20261016-0005, I20260917-0012, I20260922-0032, I20260925-0011, I20261016-0004, I20260909-0007, I20261016-0006, I20261016-0002"
+    "trafficInfoNameList": "I20261016-0003-F01, I20261016-0007-F01, I20260917-0012, I20261016-0007, I20260922-0032, I20260925-0011, I20261016-0004, I20261016-0005, I20260909-0007, I20261016-0006, I20261016-0008"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R45-136, R19-136, R1177-0, R130-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R2025-671, R36-152, R318-437, R293-474, R1474-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R1150-0, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R36-152, R1177-0, R19-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R45-136, R2025-671, R318-437, R293-474, R1472-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,40 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U2": "ptMetro"
-     }
-    },
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Betriebsstörung.",
-    "name": "I20261016-0002",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "302",
-       "lineName": "U2",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-16T04:56:00.000+0200",
-     "end": "2026-10-16T06:49:00.000+0200",
-     "lastUpdate": "2026-10-16T06:49:00.000+0200",
-     "resume": "2026-10-16T06:49:00.000+0200",
-     "start": "2026-10-16T04:56:00.000+0200"
-    },
-    "title": "U2: Verspätungen"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U6": "ptMetro"
      }
     },
@@ -327,12 +293,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T07:02:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T07:02:00.000+0200",
-     "resume": "2026-10-16T07:01:00.000+0200",
+     "end": "2026-10-16T07:35:00.000+0200",
+     "lastUpdate": "2026-10-16T07:35:00.000+0200",
+     "resume": "2026-10-16T07:35:00.000+0200",
      "start": "2026-10-16T07:01:00.000+0200"
     },
     "title": "72A: Verkehrsunfall"
@@ -370,6 +336,110 @@
      "start": "2026-10-16T07:29:00.000+0200"
     },
     "title": "17A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Fahrtbehinderung in Richtung Ottakring. Voraussichtliche Dauer: 07:40 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Erdberg.",
+    "descriptionHTML": "Linie U3:<br>Fahrtbehinderung in Richtung Ottakring.<br> <br>Voraussichtliche Dauer: 07:40 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Bereich Erdberg.",
+    "location": "Erdberg",
+    "name": "I20261016-0007",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "303",
+       "lineName": "U3",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-16T07:32:00.000+0200",
+     "end": "2026-10-16T07:33:00.000+0200",
+     "lastUpdate": "2026-10-16T07:33:00.000+0200",
+     "resume": "2026-10-16T07:33:00.000+0200",
+     "start": "2026-10-16T07:31:00.000+0200"
+    },
+    "title": "U3: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Erdberg",
+    "name": "I20261016-0007-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "303",
+       "lineName": "U3",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T07:33:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T07:33:00.000+0200",
+     "resume": "2026-10-16T07:33:00.000+0200",
+     "start": "2026-10-16T07:31:00.000+0200"
+    },
+    "title": "U3: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "2A": "ptBusCity"
+     }
+    },
+    "description": "Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie 2A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261016-0008",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "402",
+       "lineName": "2A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T07:51:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T07:51:00.000+0200",
+     "resume": "2026-10-16T07:50:00.000+0200",
+     "start": "2026-10-16T07:50:00.000+0200"
+    },
+    "title": "2A: Verspätungen"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -460,21 +530,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
-   },
-   {
-    "description": "Bauarbeiten\nBusse halten\nFrauenstiftgasse\n5-7\n\n",
-    "name": "R1150-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1150
-    ],
-    "time": {
-     "end": "2026-10-16T08:00:00.000+0200",
-     "start": "2026-10-14T07:11:10.000+0200"
-    },
-    "title": "Bauarbeiten\nBusse halten\nFrauenstiftgasse\n5-7\n\n"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",

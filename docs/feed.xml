@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 16 Oct 2026 07:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 08:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[2A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">57d004da43aa922d23ef17d2febd4d27e41c86903650f7772a81a3838692e289</guid>
+      <pubDate>Fri, 16 Oct 2026 07:50:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 07:50:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 07:50:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 07:50]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 07:50]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3</guid>
+      <pubDate>Fri, 16 Oct 2026 07:31:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 07:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 07:31:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 07:31]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 07:31]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[17A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -19,17 +41,6 @@
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 07:29]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 07:29]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[72A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3e70e4bbf713fcdd4cc095fbdfff6414327c3b6ba5f04ca7de2ff298fcb90bef</guid>
-      <pubDate>Fri, 16 Oct 2026 07:01:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 07:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 07:01:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 07:01]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 07:01]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Schadhaftes Fahrzeug]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Albertgasse 27 → Albertgasse 33 - 35. Haltestellenverlegung der Linien 5 und 12 in Richtung Westbahnhof U bzw. Josefstädter Straße U. Grund: Bauarbeiten. [Bis 03.11.]</description>
       <content:encoded><![CDATA[Albertgasse 27 → Albertgasse 33 - 35. Haltestellenverlegung der Linien 5 und 12 in Richtung Westbahnhof U bzw. Josefstädter Straße U. Grund: Bauarbeiten.<br/>[Bis 03.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A: Max-Mauermann-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">56aa798cbb018fbaed4813a991f56c2470867f1f9a0ce034661ba2e01da13007</guid>
-      <pubDate>Wed, 07 Oct 2026 15:30:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 15:30:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Bitterlichstraße gegenüber Max-Mauermann-Gasse → Bitterlichstraße gegenüber Friedrich-Teller-Gasse. Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling … [Bis 25.12.]</description>
-      <content:encoded><![CDATA[Bitterlichstraße gegenüber Max-Mauermann-Gasse → Bitterlichstraße gegenüber Friedrich-Teller-Gasse. Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling …<br/>[Bis 25.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
