@@ -183,7 +183,8 @@
       "<strong>City of Vienna (OGD)</strong> – construction works with district &amp; period",
     "footer-about-heading": "About the dashboard",
     "footer-about-html":
-      "Code open-source under the MIT licence. Notice texts remain with their sources: " +
+      "Code open-source under the MIT licence. Notice texts remain with their sources and are " +
+      "shortened, edited and machine-translated for feed and dashboard: " +
       "Wiener Linien and City of Vienna – data.wien.gv.at under " +
       "<a href=\"https://creativecommons.org/licenses/by/4.0/\" rel=\"external noopener noreferrer\" target=\"_blank\">CC&nbsp;BY&nbsp;4.0</a>, " +
       "ÖBB alerts &copy;&nbsp;ÖBB (not openly licensed); details in " +

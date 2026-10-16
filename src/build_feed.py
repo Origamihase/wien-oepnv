@@ -10965,6 +10965,14 @@ def _emit_item(
     return ident, item, replacements
 
 
+# CC BY 4.0, section 3(a)(1): the attribution names the licence with its URI
+# and says that the material was modified. The feed shortens and reformats the
+# notice texts (titles, descriptions) and the English feed machine-translates
+# them, so both channel lines say so and link the licence and NOTICE.md in
+# full (a feed reader has no repository to resolve a bare file name against).
+_CC_BY_4_URL = "https://creativecommons.org/licenses/by/4.0/"
+_NOTICE_URL = "https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md"
+
 # Channel-level metadata for the English feed mirror (docs/feed.en.xml).
 # Kept as a module-level constant so the EN strings are reviewable in one
 # place and never reach the upstream-controlled translation pipeline —
@@ -10977,11 +10985,12 @@ _CHANNEL_METADATA_EN: dict[str, str] = {
     ),
     "language": "en",
     "copyright": (
-        "Code: MIT licence. Notice texts remain with their sources: "
-        "Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0), "
-        "ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: ÖBB-Infrastruktur AG "
-        "(GeoNetz), Wiener Linien (OGD stops), City of Vienna – data.wien.gv.at "
-        "(CC BY 4.0). Details: NOTICE.md in the repository."
+        "Code: MIT licence. Notice texts remain with their sources and are "
+        "shortened, edited and machine-translated for this feed: "
+        "Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, "
+        f"{_CC_BY_4_URL}), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: "
+        "ÖBB-Infrastruktur AG (GeoNetz), Wiener Linien (OGD stops), City of Vienna – "
+        f"data.wien.gv.at (CC BY 4.0). Details: {_NOTICE_URL}"
     ),
 }
 
@@ -10994,11 +11003,12 @@ _CHANNEL_METADATA_EN: dict[str, str] = {
 # (ÖBB-Infrastruktur GeoNetz, Wiener Linien OGD stops, Stadt Wien), so the
 # line names exactly those; never OSM, HAFAS or Google.
 _CHANNEL_COPYRIGHT_DE = (
-    "Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen: "
-    "Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0), "
-    "ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: ÖBB-Infrastruktur AG "
-    "(GeoNetz), Wiener Linien (OGD-Haltestellen), Stadt Wien – data.wien.gv.at "
-    "(CC BY 4.0). Details: NOTICE.md im Repository."
+    "Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind "
+    "für den Feed gekürzt und bearbeitet: "
+    "Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, "
+    f"{_CC_BY_4_URL}), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: "
+    "ÖBB-Infrastruktur AG (GeoNetz), Wiener Linien (OGD-Haltestellen), Stadt Wien – "
+    f"data.wien.gv.at (CC BY 4.0). Details: {_NOTICE_URL}"
 )
 
 

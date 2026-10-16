@@ -16,6 +16,13 @@ Die Meldungstexte stammen von den Anbietern. Der englische Feed ist eine
 maschinelle Übersetzung dieser Texte und ändert nichts an ihrer Herkunft. Beide
 Feeds nennen die Quellen im `<copyright>`-Element des Kanals.
 
+Die Texte erscheinen **bearbeitet**: Titel und Beschreibungen werden gekürzt und
+vereinheitlicht, der englische Feed ist maschinell übersetzt. CC BY 4.0
+(Abschnitt 3(a)(1)) verlangt deshalb neben der Quelle den Hinweis auf die
+Bearbeitung und einen Link zur Lizenz. Beides steht im `<copyright>`-Element
+beider Feeds und in der Fußzeile der Webseite (DE und EN), zusammen mit dem
+vollständigen Link auf diese Datei.
+
 | Quelle | Inhalt im Feed | Lizenz / Bedingungen | Quellenangabe |
 | --- | --- | --- | --- |
 | Wiener Linien (OGD-Echtzeitdaten, `wienerlinien.at/ogd_realtime`) | Störungs- und Baustellenmeldungen | CC BY 4.0 laut [Wiener Linien Open Data](https://www.wienerlinien.at/open-data) („unter Angabe der Datenherkunft“) | „Datenquelle: Wiener Linien“ |

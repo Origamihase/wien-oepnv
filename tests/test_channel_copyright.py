@@ -39,3 +39,20 @@ def test_channel_copyright_names_sources(lang: str, expected: tuple[str, ...]) -
     assert "ÖBB (CC" not in text
     assert "VOR" not in text and "VAO" not in text
 
+
+
+@pytest.mark.parametrize(
+    ("lang", "modified"),
+    [("de", "gekürzt und bearbeitet"), ("en", "shortened, edited and machine-translated")],
+)
+def test_channel_copyright_meets_cc_by_attribution(lang: str, modified: str) -> None:
+    """CC BY 4.0, section 3(a)(1): say the texts were modified and link the licence.
+
+    The feed shortens and reformats every notice and the English feed is a
+    machine translation, so the modification note is required. A feed reader
+    cannot resolve a bare "NOTICE.md", hence the full URL.
+    """
+    text = build_feed._channel_metadata(lang)["copyright"]
+    assert modified in text
+    assert "https://creativecommons.org/licenses/by/4.0/" in text
+    assert "https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md" in text
