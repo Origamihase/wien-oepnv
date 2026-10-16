@@ -21,6 +21,7 @@ Dieses Projekt bündelt Störungs- und Baustellenmeldungen der Wiener Linien (WL
 | Funktion | Beschreibung |
 | -------- | ------------ |
 | **Konsolidierter RSS-Feed** | Bereinigte Meldungen aller Verkehrsträger – ideal für Feed-Reader, Dashboards oder Widgets. |
+| **GeoRSS, wo der Ort sicher ist** | ÖBB-Abschnitte als `<georss:line>`, einzelne Bahnhöfe, Baustellen und WL-Haltestellenverlegungen als `<georss:point>`; alle anderen Items bleiben bewusst ohne Geodaten ([`docs/architecture.md`](docs/architecture.md) §1). |
 | **Statistik-Dashboard** | Tägliche Auswertung von Verspätungen und Störungen (Fokus: S-Bahn-Stammstrecke). |
 | **OGD-Baustellen-Layer** | Integration städtischer Baustellendaten (inkl. Bezirk, Zeitraum, Geo-Infos). |
 | **Stabile JSON-API** | Sofort nutzbare Cache-Dateien (`events.json`) für eigene Projekte und Analysen. |
