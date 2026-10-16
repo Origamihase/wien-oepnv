@@ -5,6 +5,14 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Feed: Quellenangabe für die GeoRSS-Koordinaten (2026-10-16)**: Die
+  `<copyright>`-Zeile beider Feeds (#2025) nennt jetzt auch die Herkunft
+  der Koordinaten aus #2026: ÖBB-Infrastruktur AG (GeoNetz), Wiener Linien
+  (OGD-Haltestellen) und Stadt Wien, alle CC BY 4.0. `NOTICE.md` führt die
+  drei Datensätze in der Feed-Tabelle. Genau diese drei, weil
+  `open_data_coordinate` keine anderen Koordinaten zulässt (kein
+  OpenStreetMap, kein HAFAS, kein Google). Items und der Fernseher ändern
+  sich nicht.
 * **Lizenz: MIT nur für den Code, Quellen ausgewiesen (2026-10-16)**:
   Michael entschied am 16.10., bei MIT zu bleiben, weil Städte und
   Signage-Betreiber den Code ohne Hürden übernehmen sollen. Die
