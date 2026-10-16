@@ -37,6 +37,17 @@ Die GeoRSS-Koordinaten kommen nur aus diesen drei offenen Datensätzen
 16.10.2026), nie aus den zusammengeführten Koordinaten des Stationsverzeichnisses
 (OpenStreetMap, HAFAS, Google). Details: `docs/architecture.md` §1, „Geodaten im Feed“.
 
+### ÖBB-Inhalte
+
+Für die ÖBB-Meldungstexte und die HAFAS-Abfragen (Koordinaten, EVA-Nummern,
+`data/oebb_station_lines.json`) gibt es keine offene Lizenz; die allgemeinen
+Nutzungsbedingungen von oebb.at verlangen für das Vervielfältigen eine
+schriftliche Genehmigung. Michael hat die ÖBB am 16.10.2026 über den Kontakt
+von data.oebb.at um diese Genehmigung gebeten. Bis zur Antwort bleiben die
+Inhalte im Feed. Entschieden von Michael am 16.10.2026: Lehnt die ÖBB ab,
+werden die ÖBB-Inhalte aus dem Projekt entfernt, weil er die ÖBB als
+Eigentümerin der Daten sieht.
+
 ## Stationsverzeichnis und weitere Dateien unter `data/`
 
 `data/stations.json` führt pro Eintrag ein Feld `source`, das die Herkunft der

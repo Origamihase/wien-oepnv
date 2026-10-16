@@ -27,9 +27,13 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   und mit Zähler vor jedem Aufruf. Wiener Linien, ÖBB-RSS und die
   Baustellen-WFS veröffentlichen kein Limit; das Projekt fragt jede Quelle
   rund 50-mal am Tag ab (WL zwei Listen je Lauf), mit eigenem User-Agent.
-  Offen und nur von Michael zu entscheiden: die Erlaubnis der ÖBB für die
-  Meldungstexte und die HAFAS-Abfragen (die allgemeinen Nutzungsbedingungen
-  von oebb.at verlangen für Vervielfältigung eine schriftliche Genehmigung).
+  ÖBB: Für die Meldungstexte und die HAFAS-Abfragen gibt es keine offene
+  Lizenz; die allgemeinen Nutzungsbedingungen von oebb.at verlangen für
+  Vervielfältigung eine schriftliche Genehmigung. Michael hat sie am 16.10.
+  über den Kontakt von data.oebb.at angefragt. Seine Entscheidung: Lehnt die
+  ÖBB ab, kommen die ÖBB-Inhalte aus dem Projekt, „da ich persönlich die ÖBB
+  als Eigentümer der Daten sehe“. Bis zur Antwort bleibt der Feed, wie er ist
+  (`NOTICE.md`, Abschnitt „ÖBB-Inhalte“, Kommentar in `src/providers/oebb.py`).
 * **Google-Places-Stufe entfernt, Secrets im Health check (2026-10-16)**:
   Michael fragte am 16.10.: „Es sollte doch auffallen, wenn hinterlegte
   Secrets nicht mehr funktionieren und die Quelle deshalb nicht verwendet
