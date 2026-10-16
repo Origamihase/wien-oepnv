@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-16T03:00:56.892148+00:00",
- "built": "2026-10-16T05:00:45+02:00",
+ "updated": "2026-10-16T03:30:58.280354+00:00",
+ "built": "2026-10-16T05:30:48+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-16T05:00:45+02:00",
+  "built": "2026-10-16T05:30:48+02:00",
   "items": [
+   {
+    "title": "Wien Stadlau ↔ Wien Süßenbrunn",
+    "time_line": "Seit 05:14"
+   },
    {
     "title": "U2: Verspätungen",
     "time_line": "Seit 04:56"
@@ -15,10 +19,6 @@
    {
     "title": "46: Rettungseinsatz",
     "time_line": "Seit 04:53"
-   },
-   {
-    "title": "N71: Gleisbauarbeiten, Ersatzverkehr",
-    "time_line": "Heute"
    },
    {
     "title": "N71: Simmering S U",
@@ -5010,6 +5010,26 @@
     "baustellen": 3,
     "oebb": 10,
     "wl": 106
+   }
+  },
+  {
+   "t": "2026-10-16T03:30:58.280354+00:00",
+   "raw": {
+    "wl-stoerungen": 75,
+    "wl-hinweise": 82,
+    "oebb": 157,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 25
+   },
+   "discarded": {
+    "wl": 13,
+    "oebb": 133,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 11,
+    "wl": 102
    }
   }
  ]
