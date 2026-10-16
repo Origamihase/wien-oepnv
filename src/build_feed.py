@@ -3398,8 +3398,8 @@ _STOP_NOT_SERVED_RULES: tuple[
             r" ([^.!?;]+?) ((?:in beiden Richtungen|in Richtung [^.!?;]+?) )?nicht einhalten\b"
         ),
         lambda m: (
-            f"{'hält' if m[1] == 'kann' else 'halten'} {m[2]} {m[4] or ''}"
-            f"nicht in der Station {m[3]}"
+            f"{m[2]} {'hält' if m[1] == 'kann' else 'halten'} "
+            f"nicht in der Station {m[3]}{' ' + m[4].rstrip() if m[4] else ''}"
         ),
     ),
     (
@@ -3418,7 +3418,7 @@ _STOP_NOT_SERVED_RULES: tuple[
             r"die (Haltestellen?|Stationen?) ((?:[^.!?;]|\.(?=\s?\d))+?) nicht einhalten\b"
         ),
         lambda m: (
-            f"{'hält' if m[1] == 'kann' else 'halten'} {m[2] or ''}nicht "
+            f"{m[2] or ''}{'hält' if m[1] == 'kann' else 'halten'} nicht "
             f"{_STOP_NOT_KEPT_PLACE[m[3]]} {m[4]}"
         ),
     ),
