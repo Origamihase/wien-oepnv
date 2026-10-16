@@ -1,5 +1,69 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R13-136|2026-10-16T09:54:40.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R13-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-16T10:58:00.000+0200",
+   "incident": "I20261016-0012"
+  },
+  {
+   "key": "R14-136|2026-10-16T09:54:40.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R14-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-16T10:58:00.000+0200",
+   "incident": "I20261016-0012"
+  },
+  {
+   "key": "R15-136|2026-10-16T09:54:40.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R15-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-16T10:58:00.000+0200",
+   "incident": "I20261016-0012"
+  },
+  {
+   "key": "R17-136|2026-10-16T09:54:40.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R17-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-16T10:58:00.000+0200",
+   "incident": "I20261016-0012"
+  },
+  {
+   "key": "R18-136|2026-10-16T09:59:10.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R18-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-16T10:58:00.000+0200",
+   "incident": "I20261016-0012"
+  },
+  {
+   "key": "R46-136|2026-10-16T10:01:11.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R46-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-16T11:00:00.000+0200",
+   "incident": "I20261016-0012"
+  },
+  {
+   "key": "R47-136|2026-10-16T10:01:11.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R47-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-16T11:00:00.000+0200",
+   "incident": "I20261016-0012"
+  },
+  {
+   "key": "R49-136|2026-10-16T10:01:11.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R49-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-16T11:00:00.000+0200",
+   "incident": "I20261016-0012"
+  },
+  {
+   "key": "R81-136|2026-10-16T09:54:40.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R81-136",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-16T10:58:00.000+0200",
+   "incident": "I20261016-0012"
+  }
+ ]
 }
