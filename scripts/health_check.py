@@ -54,6 +54,11 @@ only when the fetch is broken, never because no train runs).
    German feed broke in the last run. Always a note, never red (see
    :func:`check_feed_watch`).
 
+4. **Zugangsdaten (Secrets).** Every repository secret a workflow passes on is
+   listed in :data:`WORKFLOW_SECRETS`. A secret the feed pipeline needs that
+   arrives empty turns the run red and is named; its value is never read
+   beyond "empty or not" and never printed (see :func:`check_secrets`).
+
 Thresholds are env-tunable (see the constants below); the defaults match the
 two workflows' cadences.
 """
@@ -501,6 +506,77 @@ def check_stammstrecke_directions(now: datetime) -> Check:
 
 # The Feed-Wächter (scripts/feed_watch.py) runs at the end of every Update run.
 # Its state is committed with the feed, so it is current whenever the feed is.
+@dataclass(frozen=True)
+class WorkflowSecret:
+    """One repository secret that a workflow under ``.github/workflows`` uses.
+
+    ``kind``:
+
+    * ``required`` — a feed-pipeline step cannot do its job without it. The
+      Health check gets it passed and turns red when it arrives empty.
+    * ``optional`` — the code has a built-in default; empty is fine and only
+      shown as a detail line.
+    * ``tooling`` — used by a repository tool workflow, not by the feed
+      pipeline. Not passed to the Health check, which has no use for it.
+    """
+
+    name: str
+    kind: str
+    purpose: str
+
+
+# The complete list of repository secrets the workflows use. Operator decision
+# 2026-10-16 (Michael): secrets that no longer reach their consumer must not go
+# unnoticed, and the Health check is the place where that shows. Until then a
+# missing secret fell back silently: the Google Places key had reached no
+# workflow since 2026-05-11, and ``VOR_VERSION`` / ``VOR_BASE`` were passed on
+# although no such secret existed. ``tests/test_workflow_secrets.py`` keeps
+# this list, the workflows' ``secrets.*`` references and the env names the
+# code reads in step, so the class cannot come back unnoticed.
+WORKFLOW_SECRETS: tuple[WorkflowSecret, ...] = (
+    WorkflowSecret("VOR_ACCESS_ID", "required",
+                   "Stammstrecken-Monitor (VOR/VAO ReST API)"),
+    WorkflowSecret("VOR_BASE_URL", "optional",
+                   "VAO-Host, Standard in src/providers/vor.py"),
+    WorkflowSecret("CLAUDE_CODE_OAUTH_TOKEN", "tooling",
+                   "Claude-Workflows (Code-Review, @claude)"),
+    WorkflowSecret("REPO_ADMIN_TOKEN", "tooling",
+                   "SEO-Guard: Beschreibung und Homepage des Repositorys"),
+)
+
+
+def check_secrets() -> Check:
+    """Red when a secret the feed pipeline needs arrives empty in this run.
+
+    The Health-check workflow passes every ``required`` and ``optional``
+    secret of :data:`WORKFLOW_SECRETS`. A secret that is not stored in the
+    repository arrives as an empty string, exactly as it would in the Update
+    run. Only emptiness is checked and only names are printed, never a value.
+    Whether a stored key is still *accepted* shows in ``Stammstrecke-Abruf``:
+    a rejected key makes every poll fail, and that check turns red after
+    three hours.
+    """
+    name = "Secrets"
+    checked = [s for s in WORKFLOW_SECRETS if s.kind in {"required", "optional"}]
+    empty = [s for s in checked if not os.environ.get(s.name, "").strip()]
+    missing = [s for s in empty if s.kind == "required"]
+    defaulted = [s for s in empty if s.kind == "optional"]
+    if missing:
+        return Check(
+            name,
+            ok=False,
+            summary="FEHLT — " + ", ".join(s.name for s in missing)
+            + " leer oder nicht als Repository-Secret hinterlegt",
+            detail="; ".join(f"{s.name}: {s.purpose}" for s in missing),
+        )
+    present = [s.name for s in checked if s not in empty]
+    detail = "; ".join(
+        f"{s.name} leer, es gilt der Standard aus dem Code ({s.purpose})" for s in defaulted
+    )
+    return Check(name, ok=True, summary="OK — " + ", ".join(present) + " gesetzt",
+                 detail=detail)
+
+
 FEED_WATCH_STATE = REPO_ROOT / "data" / "feed_watch.json"
 
 
@@ -555,7 +631,9 @@ def check_feed_watch(now: datetime) -> Check:
     )
 
 
-def _render_plain(now: datetime, sources: list[Check], outputs: list[Check]) -> str:
+def _render_plain(
+    now: datetime, sources: list[Check], outputs: list[Check], config: list[Check]
+) -> str:
     line = "=" * 64
     when = now.strftime("%Y-%m-%d %H:%M UTC")
     if _VIENNA is not None:
@@ -574,8 +652,9 @@ def _render_plain(now: datetime, sources: list[Check], outputs: list[Check]) -> 
 
     block("QUELLEN (Live-Abruf)", sources)
     block("AKTUALITÄT (committete Outputs)", outputs)
+    block("ZUGANGSDATEN (Secrets)", config)
 
-    failed = [c for c in sources + outputs if not c.ok]
+    failed = [c for c in sources + outputs + config if not c.ok]
     rows.append(line)
     if failed:
         names = ", ".join(c.name for c in failed)
@@ -586,8 +665,10 @@ def _render_plain(now: datetime, sources: list[Check], outputs: list[Check]) -> 
     return "\n".join(rows)
 
 
-def _render_markdown(now: datetime, sources: list[Check], outputs: list[Check]) -> str:
-    failed = [c for c in sources + outputs if not c.ok]
+def _render_markdown(
+    now: datetime, sources: list[Check], outputs: list[Check], config: list[Check]
+) -> str:
+    failed = [c for c in sources + outputs + config if not c.ok]
     head = "❌ Probleme gefunden" if failed else "✅ Alles gesund"
     lines = [
         f"## Wien-ÖPNV Health-Check — {head}",
@@ -596,7 +677,7 @@ def _render_markdown(now: datetime, sources: list[Check], outputs: list[Check]) 
         "| Status | Prüfung | Ergebnis |",
         "| :----: | ------- | -------- |",
     ]
-    for c in sources + outputs:
+    for c in sources + outputs + config:
         mark = _mark(c)
         cell = c.summary + (f"<br>↳ `{c.detail}`" if c.detail else "")
         lines.append(f"| {mark} | **{c.name}** | {cell} |")
@@ -614,10 +695,11 @@ def main() -> int:
         check_stammstrecke_directions(now),
         check_feed_watch(now),
     ]
-    all_checks = sources + outputs
+    config = [check_secrets()]
+    all_checks = sources + outputs + config
     failed = [c for c in all_checks if not c.ok]
 
-    print(_render_plain(now, sources, outputs))
+    print(_render_plain(now, sources, outputs, config))
 
     # GitHub Actions annotations — make each failure jump out in the run UI
     # (and the failure e-mail's linked summary).
@@ -633,7 +715,7 @@ def main() -> int:
     if summary_path:
         try:
             with open(summary_path, "a", encoding="utf-8") as fh:
-                fh.write(_render_markdown(now, sources, outputs))
+                fh.write(_render_markdown(now, sources, outputs, config))
         except OSError:
             pass  # summary is best-effort; never let it mask the real result
 

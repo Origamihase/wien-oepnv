@@ -171,7 +171,7 @@ def test_inventory_load_json_pins_finite_reader_helper() -> None:
         "``json.loads(text)`` is the pre-fix shape — replace with "
         "``loads_finite(text)`` to align with the canonical sibling "
         "readers (read_capped_json, load_stations, read_cache, "
-        "_load_state, MonthlyQuota.load, etc.).\n\n"
+        "_load_state, etc.).\n\n"
         f"Marker: {SENTINEL_APPLY_STATION_OVERRIDES_NON_FINITE_DRIFT}"
     )
 

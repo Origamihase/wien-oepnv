@@ -48,7 +48,6 @@ _STATION_UPDATE_SCRIPTS = {
 
 _TOKEN_VERIFY_SCRIPTS = {
     "vor": "verify_vor_access_id.py",
-    "google-places": "verify_google_places_access.py",
     "vor-auth": "check_vor_auth.py",
 }
 
@@ -244,7 +243,7 @@ def _configure_token_commands(subparsers: argparse._SubParsersAction[argparse.Ar
         "targets",
         nargs="*",
         metavar="TARGET",
-        help="Zu prüfende Zugangsdaten (vor, vor-auth, google-places). Ohne Angabe werden alle überprüft.",
+        help="Zu prüfende Zugangsdaten (vor, vor-auth). Ohne Angabe werden alle überprüft.",
     )
     verify_parser.add_argument(
         "--all",

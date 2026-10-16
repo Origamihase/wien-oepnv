@@ -67,4 +67,11 @@ jobs:
         uses: ./.github/actions/install-deps
 
       - name: Run health check
+        # Only the secrets the feed pipeline uses (WORKFLOW_SECRETS in
+        # scripts/health_check.py, kinds "required" and "optional"). The check
+        # tests them for emptiness and prints names, never values; GitHub
+        # masks them in the log as well.
+        env:
+          VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
+          VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
         run: python scripts/health_check.py

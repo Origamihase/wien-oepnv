@@ -31,7 +31,7 @@ import zipfile
 from io import BytesIO
 from pathlib import Path
 from typing import cast
-from collections.abc import Callable, Iterable, Mapping, MutableMapping, Sequence
+from collections.abc import Callable, Iterable, Mapping, Sequence
 
 import openpyxl
 
@@ -127,17 +127,6 @@ MAX_CSV_LOCATIONS_BYTES = 50 * 1024 * 1024
 MAX_CACHED_WORKBOOK_BYTES = 10 * 1024 * 1024
 
 try:  # pragma: no cover - convenience for module execution
-    from src.places.client import (
-        DEFAULT_INCLUDED_TYPES,
-        GooglePlacesClient,
-        GooglePlacesConfig,
-        GooglePlacesError,
-        GooglePlacesPermissionError,
-        GooglePlacesTileError,
-        Place,
-        get_places_api_key,
-    )
-    from src.places.diagnostics import permission_hint
     from src.places.hafas_client import enrich_station_with_hafas
     from src.places.merge import BoundingBox, MergeConfig, merge_places, StationEntry
     from src.places.osm_client import (
@@ -146,21 +135,9 @@ try:  # pragma: no cover - convenience for module execution
         fetch_osm_places,
         filter_complete_places,
     )
-    from src.places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file
     from src.utils.env import get_bool_env, load_default_env_files
     from src.utils.logging import sanitize_log_arg
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
-    from places.client import (  # type: ignore[no-redef]
-        DEFAULT_INCLUDED_TYPES,
-        GooglePlacesClient,
-        GooglePlacesConfig,
-        GooglePlacesError,
-        GooglePlacesPermissionError,
-        GooglePlacesTileError,
-        Place,
-        get_places_api_key,
-    )
-    from places.diagnostics import permission_hint  # type: ignore[no-redef]
     from places.hafas_client import enrich_station_with_hafas  # type: ignore[no-redef]
     from places.merge import BoundingBox, MergeConfig, merge_places, StationEntry  # type: ignore[no-redef]
     from places.osm_client import (  # type: ignore[no-redef]
@@ -169,7 +146,6 @@ except ModuleNotFoundError:  # pragma: no cover - fallback when installed as pac
         fetch_osm_places,
         filter_complete_places,
     )
-    from places.tiling import Tile, iter_tiles, load_tiles_from_env, load_tiles_from_file  # type: ignore[no-redef]
     from utils.env import get_bool_env, load_default_env_files  # type: ignore[no-redef]
     from utils.logging import sanitize_log_arg  # type: ignore[no-redef]
 
@@ -185,7 +161,7 @@ DEFAULT_VOR_STOPS_PATH = _ROOT / "data" / "vor-haltestellen.csv"
 # ``GeoNetz_12-2024.zip``. Read by ``_enrich_with_geonetz`` to attach
 # the three identifier fields onto every ÖBB-Excel station whose
 # ``bst_id`` matches a row's ``bsts_id``. Coordinates are left untouched
-# by this enrichment — they are governed by OSM/HAFAS/Google tiers and
+# by this enrichment — they are governed by the OSM/HAFAS tiers and
 # the PR #1601 GeoNetz-reconciliation; this loader only adds metadata.
 DEFAULT_GEONETZ_STOPS_PATH = _ROOT / "data" / "oebb_geonetz_stops.json"
 # Soft-fail snapshot for the ÖBB workbook — mirrors the pinned-CSV
@@ -242,14 +218,6 @@ class CacheRefreshTarget:
     availability_check: Callable[[], bool] | None = None
 
 
-def _has_google_places_credentials() -> bool:
-    return bool(os.getenv("GOOGLE_ACCESS_ID") or os.getenv("GOOGLE_MAPS_API_KEY"))
-
-
-def _google_cache_args() -> tuple[str, ...]:
-    return ("--write",)
-
-
 _CACHE_REFRESH_TARGETS: tuple[CacheRefreshTarget, ...] = (
     CacheRefreshTarget("ÖBB", ("update_oebb_cache.py",)),
     # VOR was removed from the station-directory refresh path on
@@ -258,13 +226,6 @@ _CACHE_REFRESH_TARGETS: tuple[CacheRefreshTarget, ...] = (
     # The station directory uses the pinned ``data/vor-haltestellen.csv``
     # snapshot for VOR stop IDs.
     CacheRefreshTarget("Wiener Linien", ("update_wl_cache.py",)),
-    CacheRefreshTarget(
-        "Google Places",
-        ("update_google_cache.py", "fetch_google_places_stations.py"),
-        optional=True,
-        extra_args_factory=_google_cache_args,
-        availability_check=_has_google_places_credentials,
-    ),
 )
 
 
@@ -882,80 +843,19 @@ def _normalize_csv_key(value: str | None) -> str:
     return re.sub(r"[^a-z0-9]+", "", value.casefold())
 
 
-def _parse_included_types(raw: str | None) -> list[str]:
-    if raw is None:
-        return list(DEFAULT_INCLUDED_TYPES)
-    items = [part.strip() for part in raw.split(",") if part.strip()]
-    return items or list(DEFAULT_INCLUDED_TYPES)
-
-
-def _parse_radius(raw: str | None) -> int:
-    if raw is None:
-        return 2500
-    try:
-        radius = int(raw)
-    except (TypeError, ValueError):
-        # Security (Path-Log Sibling Drift Round 4, env-repr closure):
-        # ``raw`` is the operator-controlled ``PLACES_RADIUS_M`` value.
-        # Pre-fix the WARNING line interpolated it via ``%r`` — Python's
-        # repr() escapes most attack bytes but lets all 256 Variation
-        # Selectors (U+FE00-U+FE0F + U+E0100-U+E01EF) through verbatim
-        # into ``record.args[0]`` and ``record.getMessage()``. Route
-        # through ``sanitize_log_arg`` so the canonical
-        # ``_INVISIBLE_DANGEROUS_RE`` strips them BEFORE the value
-        # lands in caplog / non-SafeFormatter handlers.
-        logger.warning(
-            "Invalid PLACES_RADIUS_M=%s – using default 2500",
-            sanitize_log_arg(raw),
-        )
-        return 2500
-    return max(1, min(50000, radius))
-
-
-def _parse_max_results(raw: str | None) -> int:
-    if raw is None:
-        return 20
-    try:
-        value = int(raw)
-    except (TypeError, ValueError):
-        # Security: see ``_parse_radius`` — same env-repr drift closure.
-        logger.warning(
-            "Invalid PLACES_MAX_RESULTS=%s – using default 20",
-            sanitize_log_arg(raw),
-        )
-        return 20
-    if value <= 0:
-        return 0
-    return max(1, min(20, value))
-
-
 def _parse_float(raw: str | None, *, key: str, default: float) -> float:
     if raw is None:
         return default
     try:
         return float(raw)
     except (TypeError, ValueError):
-        # Security: see ``_parse_radius`` — same env-repr drift closure.
-        # ``key`` is a hardcoded module-internal constant
+        # Security (Path-Log Sibling Drift Round 4, env-repr closure):
+        # ``raw`` is operator-controlled; ``sanitize_log_arg`` strips
+        # Variation Selectors and other invisible bytes that ``%r`` lets
+        # through before the value lands in the log. ``key`` is a hardcoded module-internal constant
         # (``REQUEST_TIMEOUT_S`` / ``MERGE_MAX_DIST_M``); only ``raw`` is
         # operator-controlled and therefore the only arg requiring the
         # canonical scrub.
-        logger.warning(
-            "Invalid %s=%s – using default %s",
-            key,
-            sanitize_log_arg(raw),
-            default,
-        )
-        return default
-
-
-def _parse_int(raw: str | None, *, key: str, default: int) -> int:
-    if raw is None:
-        return default
-    try:
-        return int(raw)
-    except (TypeError, ValueError):
-        # Security: see ``_parse_radius`` — same env-repr drift closure.
         logger.warning(
             "Invalid %s=%s – using default %s",
             key,
@@ -972,8 +872,8 @@ def _parse_bounding_box(raw: str | None) -> BoundingBox | None:
     # ``BOUNDINGBOX_VIENNA`` env override (intentional misconfig, leaked
     # CI env, compromised secret store). ``json.loads`` raises
     # ``RecursionError`` (NOT a subclass of ``json.JSONDecodeError`` and
-    # NOT caught by the outer ``except ValueError`` in
-    # ``_enrich_with_google_places``) on a deeply-nested payload. Without
+    # NOT caught by the caller's ``except ValueError``) on a
+    # deeply-nested payload. Without
     # this catch the unhandled error crashes the entire
     # ``update_station_directory.py`` cron pipeline.
     try:
@@ -981,8 +881,7 @@ def _parse_bounding_box(raw: str | None) -> BoundingBox | None:
         # hooks (Round 1503 sibling) that reject NaN / Infinity / 1e1000
         # literals planted into the env-controlled ``BOUNDINGBOX_VIENNA``
         # override (leaked CI env / compromised secret store / hostile
-        # operator). Mirrors the canonical defence pinned at
-        # ``scripts/fetch_google_places_stations.py:_parse_bounding_box``.
+        # operator).
         data = loads_finite(raw)
     except (json.JSONDecodeError, RecursionError) as exc:
         raise ValueError("BOUNDINGBOX_VIENNA must be valid JSON") from exc
@@ -999,73 +898,13 @@ def _parse_bounding_box(raw: str | None) -> BoundingBox | None:
         raise ValueError("BOUNDINGBOX_VIENNA must define min_lat/min_lng/max_lat/max_lng") from exc
 
 
-def _load_tiles_configuration(tiles_file: Path | None, env: MutableMapping[str, str]) -> Sequence[Tile]:
-    if tiles_file:
-        return load_tiles_from_file(tiles_file)
-    return load_tiles_from_env(env.get("PLACES_TILES"))
-
-
-def _fetch_google_places(client: GooglePlacesClient, tiles: Sequence[Tile]) -> list[Place]:
-    places_by_id: dict[str, Place] = {}
-    for tile in iter_tiles(tiles):
-        logger.info("Fetching Google Places tile")
-        try:
-            for place in client.iter_nearby([tile]):
-                places_by_id.setdefault(place.place_id, place)
-        except GooglePlacesTileError as exc:
-            logger.warning(
-                "Skipping Google Places tile due to error: %s",
-                exc,
-            )
-            continue
-    return list(places_by_id.values())
-
-
-def _merge_google_metadata(
-    stations: list[Station],
-    places: Sequence[Place],
-    merge_config: MergeConfig,
-) -> None:
-    if not places:
-        logger.info("Google Places enrichment returned no places")
-        return
-
-    existing_entries = cast(list[StationEntry], [station.as_dict() for station in stations])
-    outcome = merge_places(existing_entries, places, merge_config)
-
-    by_id: dict[str, Mapping[str, object]] = {}
-    for entry in outcome.stations:
-        bst_id = entry.get("bst_id")
-        if isinstance(bst_id, str) and bst_id:
-            by_id[str(bst_id)] = entry
-
-    for station in stations:
-        merged = by_id.get(station.bst_id)
-        if merged:
-            station.update_from_entry(merged)
-
-    logger.info(
-        "Google Places enrichment updated %d stations; %d suggestions already covered",
-        len(outcome.updated_entries),
-        len(outcome.skipped_places),
-    )
-
-    unmatched = [entry for entry in outcome.new_entries if "bst_id" not in entry]
-    if unmatched:
-        logger.info(
-            "Google Places suggested %d additional stations without bst_id; ignoring",
-            len(unmatched),
-        )
-
-
 def _stations_missing_coordinates(stations: list[Station]) -> list[Station]:
     """Return the subset of *stations* that still lack lat/lng metadata.
 
-    The OSM-first / Google-fallback split keys on this set: OSM is the
-    primary directory enrichment source; Google Places is only invoked
-    if at least one station is still missing coordinates after the OSM
-    merge has run. Without this gate every cron tick would burn the
-    Google Places monthly free-tier quota even when OSM already covered
+    The OSM-first / HAFAS-fallback split keys on this set: OSM is the
+    primary directory enrichment source; HAFAS is only asked for the
+    stations still missing coordinates after the OSM merge has run, so a
+    cron tick does not send hundreds of LocMatch requests when OSM already covered
     the entire directory.
     """
     missing: list[Station] = []
@@ -1087,7 +926,7 @@ def _enrich_with_osm(
 
     Returns ``True`` if the upstream call succeeded (regardless of how
     many stations actually got updated), ``False`` if OSM failed and
-    the caller should fall through to the Google Places path. The
+    the caller should fall through to the HAFAS path. The
     bounding box defaults to Vienna's WGS84 envelope if the caller did
     not provide a ``BOUNDINGBOX_VIENNA`` override.
     """
@@ -1141,9 +980,8 @@ def _enrich_with_osm(
 
     # Tag updated stations with ``source="osm"`` so downstream consumers
     # can tell which directory feed contributed each entry. The merge
-    # outcome already records ``source="google_places"`` for stations
-    # touched by the Google path; we set ``"osm"`` here without losing
-    # any existing source markers.
+    # outcome's own source marker is replaced; we set ``"osm"`` here
+    # without losing any existing source markers.
     updated = 0
     for station in stations:
         merged = by_id.get(station.bst_id)
@@ -1176,13 +1014,12 @@ def _enrich_with_hafas(stations: list[Station]) -> list[Station]:
     The HAFAS hit is committed straight onto the station's extras —
     matching the field shape produced by the OSM merge — and the
     HAFAS ``extId`` is persisted as the top-level ``hafas_extId`` key
-    (parallel to ``vor_id`` / ``_google_place_id``) so downstream
+    (parallel to ``vor_id``) so downstream
     consumers can resolve a station back to its HAFAS identifier
     without re-querying the upstream.
 
     Returns the residual list of stations *still* missing coordinates
-    after HAFAS ran, so the caller can hand only that subset to the
-    Google Places tier — protecting the monthly free-tier quota.
+    after HAFAS ran, so the caller can name them in a warning.
     """
     if not stations:
         return []
@@ -1224,13 +1061,13 @@ def _enrich_manual_stations(
 
     Manual entries — added for the Ostregion Liniennetz stations outside
     the Wien/NÖ pendler scope (PR #1557) — bypass ``_filter_relevant_stations``
-    and therefore never enter the ÖBB-side OSM/HAFAS/Google enrichment chain.
+    and therefore never enter the ÖBB-side OSM/HAFAS enrichment chain.
     Without this step they stay coordinate-less forever, even though the
     cron pipeline already loads sources (GTFS stops.txt, VOR haltestellen.csv)
     and has an unmetered fallback (HAFAS ÖBB Scotty) that can resolve them.
 
     Resolution order — same fail-cheap-first rationale as ``_enrich_with_osm``
-    / ``_enrich_with_hafas`` / ``_enrich_with_google_places``:
+    / ``_enrich_with_hafas``:
 
       1. **Local index** (``location_index`` = GTFS + WL + VOR coords,
          free, in-memory). Already built earlier in ``main()`` for the ÖBB
@@ -1337,92 +1174,6 @@ def _merge_sources_into_entry(entry: dict[str, object], add: Iterable[str]) -> N
         if token:
             tokens.add(token)
     entry["source"] = ",".join(sorted(tokens))
-
-
-def _enrich_with_google_places(
-    stations: list[Station],
-    *,
-    tiles_file: Path | None,
-    missing_subset: list[Station] | None = None,
-) -> None:
-    """Enrich stations via the Google Places fallback.
-
-    *missing_subset* — when provided — is the strict subset of stations
-    that the merge step is allowed to touch. The OSM-first / Google-second
-    contract requires Google Places to ONLY backfill entries that the
-    primary OSM run could not resolve; stations that already carry
-    OSM-supplied coordinates must not be re-keyed by the fallback even if
-    a Google Place happens to share their name. When *missing_subset* is
-    ``None`` the function falls back to the legacy whole-list behaviour
-    (used by the no-OSM cron path); callers in the OSM-first flow must
-    always pass an explicit subset.
-    """
-    load_default_env_files()
-    env = os.environ
-
-    target_stations = missing_subset if missing_subset is not None else stations
-    if not target_stations:
-        logger.info("Skipping Google Places enrichment: no stations are missing coordinates")
-        return
-
-    try:
-        api_key = get_places_api_key()
-    except SystemExit as exc:  # pragma: no cover - depends on env configuration
-        message = exc.args[0] if exc.args else "Missing GOOGLE_ACCESS_ID"
-        logger.warning("Skipping Google Places enrichment: %s", message)
-        return
-
-    try:
-        tiles = _load_tiles_configuration(tiles_file, env)
-    except (OSError, ValueError) as exc:
-        logger.error("Cannot load Places tile configuration: %s", exc)
-        return
-
-    included_types = _parse_included_types(env.get("PLACES_INCLUDED_TYPES"))
-    radius_m = _parse_radius(env.get("PLACES_RADIUS_M"))
-    max_result_count = _parse_max_results(env.get("PLACES_MAX_RESULTS"))
-    language = env.get("PLACES_LANGUAGE", "de")
-    region = env.get("PLACES_REGION", "AT")
-    timeout_s = _parse_float(env.get("REQUEST_TIMEOUT_S"), key="REQUEST_TIMEOUT_S", default=25.0)
-    max_retries = _parse_int(env.get("REQUEST_MAX_RETRIES"), key="REQUEST_MAX_RETRIES", default=4)
-    merge_distance = _parse_float(env.get("MERGE_MAX_DIST_M"), key="MERGE_MAX_DIST_M", default=150.0)
-
-    try:
-        bounding_box = _parse_bounding_box(env.get("BOUNDINGBOX_VIENNA"))
-    except ValueError as exc:
-        logger.error("Invalid BOUNDINGBOX_VIENNA configuration: %s", exc)
-        return
-
-    client_config = GooglePlacesConfig(
-        api_key=api_key,
-        included_types=included_types,
-        language=language,
-        region=region,
-        radius_m=radius_m,
-        timeout_s=timeout_s,
-        max_retries=max_retries,
-        max_result_count=max_result_count,
-    )
-    client = GooglePlacesClient(client_config)
-
-    try:
-        places = _fetch_google_places(client, tiles)
-    except GooglePlacesPermissionError as exc:
-        hint = permission_hint(str(exc))
-        if hint:
-            logger.error("Google Places denied access: %s | %s", exc, hint)
-        else:
-            logger.error("Google Places denied access: %s", exc)
-        return
-    except GooglePlacesError as exc:
-        logger.error("Google Places enrichment failed: %s", exc)
-        return
-
-    _merge_google_metadata(
-        target_stations,
-        places,
-        MergeConfig(max_distance_m=merge_distance, bounding_box=bounding_box),
-    )
 
 
 class _NormalizedCSVRow:
@@ -1787,19 +1538,6 @@ def parse_args() -> argparse.Namespace:
         help=("Use OpenStreetMap (Overpass API) as the primary station " "directory source (default: enabled)"),
     )
     parser.add_argument(
-        "--google-enrich",
-        dest="google_enrich",
-        action=argparse.BooleanOptionalAction,
-        default=True,
-        help=("Use Google Places API as a fallback when OSM data is " "missing for a station (default: enabled)"),
-    )
-    parser.add_argument(
-        "--places-tiles-file",
-        type=Path,
-        metavar="PATH",
-        help="Optional JSON file overriding PLACES_TILES for Google enrichment",
-    )
-    parser.add_argument(
         "-v",
         "--verbose",
         action="store_true",
@@ -1834,8 +1572,7 @@ def download_workbook(
       atomic-write to the pinned local CSV on success, read the pinned
       CSV on failure.
     * OSM Overpass — circuit-breaker + smoke-check gate, soft-fail
-      to Google Places fallback.
-    * Google Places — credentials-gated, soft-fail on quota.
+      to the HAFAS fallback.
 
     Prior to this commit ÖBB was the only fail-fast source — a
     transient ``data.oebb.at`` outage (CMS migration, CDN issue,
@@ -2295,7 +2032,7 @@ def _enrich_with_geonetz(
 
     On a hit, the three identifier fields are written to
     ``station.extras`` if not already set. Coordinates are explicitly
-    *not* overwritten — they're governed by the OSM/HAFAS/Google
+    *not* overwritten — they're governed by the OSM/HAFAS
     enrichment tiers and the PR #1601 GeoNetz-reconciliation; this
     loader only adds metadata so the next cron tick doesn't silently
     revert a hand-curated value.
@@ -2574,20 +2311,17 @@ def main() -> None:
     stations = _filter_relevant_stations(stations)
 
     # GeoNetz metadata enrichment (PR β). Runs after the filter so it
-    # only touches the pendler/in_vienna subset, and before OSM/HAFAS/
-    # Google so downstream enrichment tiers see the eva_nr that PR γ
+    # only touches the pendler/in_vienna subset, and before OSM/HAFAS
+    # so downstream enrichment tiers see the eva_nr that PR γ
     # (planned: HAFAS-drift-detection) needs as the join key. Idempotent
     # — re-runs leave previously-set values alone.
     geonetz_lookup = _load_geonetz_stops(args.geonetz_stops)
     if geonetz_lookup:
         _enrich_with_geonetz(stations, geonetz_lookup)
 
-    # OSM is now the primary directory enrichment source. Google Places
-    # only runs as a *fallback* when at least one station is still
-    # missing coordinates after OSM completed (or when OSM itself
-    # failed). This keeps the Google Places monthly free-tier quota
-    # untouched when the public Overpass API already covers the entire
-    # directory.
+    # OSM is the primary directory enrichment source. HAFAS only runs as
+    # a *fallback* when at least one station is still missing
+    # coordinates after OSM completed (or when OSM itself failed).
     #
     # ``WIEN_OEPNV_OSM_ENRICH=0`` env-disables OSM without taking the
     # CLI flag — used by the wrapper-orchestrator regression test
@@ -2617,49 +2351,28 @@ def main() -> None:
     else:
         logger.info("Skipping OSM Overpass enrichment (WIEN_OEPNV_OSM_ENRICH=0)")
 
-    if getattr(args, "google_enrich", False):
-        missing = _stations_missing_coordinates(stations)
-        if not missing:
-            logger.info(
-                "Skipping Google Places enrichment: %s already covered all " "%d stations with coordinates",
-                "OSM" if osm_succeeded else "the existing directory",
-                len(stations),
+    # HAFAS (ÖBB Scotty) is the fallback for stations OSM did not cover.
+    # There is no further tier: Michael decided on 2026-10-16 that the
+    # station directory holds only openly licensed coordinates (no Google
+    # Places). A station still without coordinates stays without them and
+    # is named in a warning so the weekly run shows it.
+    missing = _stations_missing_coordinates(stations)
+    if not missing:
+        logger.info(
+            "%s already covered all %d stations with coordinates",
+            "OSM" if osm_succeeded else "The existing directory",
+            len(stations),
+        )
+    else:
+        missing = _enrich_with_hafas(missing)
+        if missing:
+            logger.warning(
+                "%d stations still without coordinates after OSM + HAFAS: %s",
+                len(missing),
+                ", ".join(sanitize_log_arg(station.name) for station in missing[:20]),
             )
         else:
-            # HAFAS (ÖBB Scotty) is the second-tier fallback: it sits
-            # between the OSM Overpass primary and the Google Places
-            # last-resort. The HAFAS Mgate API has no per-month quota,
-            # so resolving coordinates here directly reduces the load
-            # on the Google free-tier budget tracked in
-            # data/places_quota.json.
-            missing = _enrich_with_hafas(missing)
-            if not missing:
-                logger.info(
-                    "HAFAS resolved every remaining station; skipping Google Places enrichment"
-                )
-            else:
-                if osm_succeeded:
-                    logger.info(
-                        "Falling back to Google Places for %d stations still " "missing coordinates after OSM + HAFAS enrichment",
-                        len(missing),
-                    )
-                else:
-                    logger.info(
-                        "Falling back to Google Places for %d stations missing " "coordinates (OSM Overpass was unavailable)",
-                        len(missing),
-                    )
-                # Pass the strict subset so Google never re-keys stations that
-                # OSM / HAFAS (or any earlier source) already resolved. The merge
-                # logic in src.places.merge would otherwise greedily match Google
-                # Places by name even when the existing entry is complete, giving
-                # the fallback authority it shouldn't have.
-                _enrich_with_google_places(
-                    stations,
-                    tiles_file=args.places_tiles_file,
-                    missing_subset=missing,
-                )
-    else:
-        logger.info("Skipping Google Places enrichment (--no-google-enrich)")
+            logger.info("HAFAS resolved every remaining station")
 
     # Enrich the manual block (manual_distant_at / manual_foreign_city —
     # the Ostregion Liniennetz stations from PR #1557) that bypassed the

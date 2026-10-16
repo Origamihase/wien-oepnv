@@ -11,8 +11,6 @@ to the on-disk path on the next run.
 This file extends the canonical regression coverage to the on-disk and
 env-source siblings that survived the prior round:
 
-  * ``src/places/tiling.py:load_tiles_from_env`` (env-source, no try/except)
-  * ``src/places/tiling.py:load_tiles_from_file`` (file-source, no try/except)
   * ``src/utils/cache.py:read_cache`` (file-source, missing RecursionError)
   * ``src/utils/cache.py:read_status`` (file-source, missing RecursionError)
   * ``src/utils/cache.py:write_cache`` data-degradation guard (file-source,
@@ -21,7 +19,6 @@ env-source siblings that survived the prior round:
     RecursionError)
   * ``src/utils/stations.py:_station_entries`` (file-source, missing
     RecursionError)
-  * ``src/places/quota.py:MonthlyQuota.load`` (file-source, no try/except)
   * ``src/places/merge.py:load_stations`` (file-source, no try/except)
   * ``scripts/update_station_directory.py:_parse_bounding_box``
     (env-source, missing RecursionError on the EXISTING json.JSONDecodeError
@@ -29,13 +26,12 @@ env-source siblings that survived the prior round:
 
 Threat model: a deeply-nested but well-formed JSON document persisted to
 disk by a previous corrupted run, planted by a compromised CI runner, or
-encoded into an env override (``PLACES_TILES``, ``BOUNDINGBOX_VIENNA``).
+encoded into an env override (``BOUNDINGBOX_VIENNA``).
 ``json.loads`` raises ``RecursionError`` (NOT a subclass of
 ``json.JSONDecodeError`` and NOT caught by ``except ValueError``); the
 pre-fix code therefore propagated the exception out of the loader and
 crashed the surrounding pipeline (``build_feed.py`` orchestrator,
-``update_station_directory.py`` cron, ``fetch_google_places_stations.py``
-nightly job).
+``update_station_directory.py`` cron).
 """
 
 from __future__ import annotations
@@ -59,44 +55,6 @@ def test_precondition_deep_bomb_raises_recursion_error() -> None:
     unfixed code — so we pin the precondition first."""
     with pytest.raises(RecursionError):
         json.loads(DEEP_BOMB_STR)
-
-
-# ============================================================================
-# src/places/tiling.py — Tile config (CRITICAL)
-# ============================================================================
-#
-# Pre-fix: ``load_tiles_from_env`` and ``load_tiles_from_file`` had NO
-# try/except around ``json.loads``. A depth-bomb in ``PLACES_TILES`` env or
-# a tiles file propagated ``RecursionError`` out of ``_load_tiles_configuration``
-# in ``update_station_directory.py`` (caller's ``except (OSError, ValueError)``
-# does NOT catch ``RecursionError``) and ``fetch_google_places_stations.py``
-# (caller's ``_build_runtime_config`` is wrapped in ``except Exception`` so
-# the script wouldn't crash but would emit a confusing "Configuration error"
-# instead of the canonical "Cannot load Places tile configuration" warning).
-# Post-fix: both functions raise ``ValueError("Tile configuration is not
-# valid JSON")``, matching the existing semantic contract (callers catch
-# ``ValueError`` for malformed JSON).
-
-
-def test_load_tiles_from_env_handles_depth_bomb() -> None:
-    """Pre-fix: depth-bomb in ``PLACES_TILES`` raised RecursionError out of
-    ``json.loads``. Post-fix: surfaces a clean ValueError."""
-    from src.places import tiling
-
-    with pytest.raises(ValueError, match="(?i)valid json|tile configuration"):
-        tiling.load_tiles_from_env(DEEP_BOMB_STR)
-
-
-def test_load_tiles_from_file_handles_depth_bomb(tmp_path: Path) -> None:
-    """Pre-fix: depth-bomb tile file raised RecursionError out of
-    ``json.loads``. Post-fix: surfaces a clean ValueError."""
-    from src.places import tiling
-
-    poisoned = tmp_path / "tiles.json"
-    poisoned.write_text(DEEP_BOMB_STR, encoding="utf-8")
-
-    with pytest.raises(ValueError, match="(?i)valid json|tile configuration"):
-        tiling.load_tiles_from_file(poisoned)
 
 
 # ============================================================================
@@ -224,31 +182,6 @@ def test_stations_station_entries_handles_depth_bomb(tmp_path: Path) -> None:
             stations._station_entries.cache_clear()
 
     assert result == ()
-
-
-# ============================================================================
-# src/places/quota.py — MonthlyQuota state (HIGH)
-# ============================================================================
-#
-# Pre-fix: ``MonthlyQuota.load`` had NO try/except around ``json.loads``.
-# A depth-bomb in the quota state file (planted by a compromised runner or
-# a corrupted previous write) would propagate RecursionError out of
-# ``MonthlyQuota.load``. The caller in
-# ``fetch_google_places_stations.py:main`` does wrap this in ``except
-# Exception``, so the script wouldn't crash with an unhandled traceback,
-# but the canonical contract is to surface the failure as ``ValueError``
-# alongside the other state-corruption errors so a future caller without
-# the broad ``except Exception`` inherits a safe default.
-
-
-def test_quota_load_handles_depth_bomb(tmp_path: Path) -> None:
-    from src.places.quota import MonthlyQuota
-
-    poisoned = tmp_path / "quota.json"
-    poisoned.write_text(DEEP_BOMB_STR, encoding="utf-8")
-
-    with pytest.raises(ValueError, match="(?i)valid json|quota state"):
-        MonthlyQuota.load(poisoned)
 
 
 # ============================================================================

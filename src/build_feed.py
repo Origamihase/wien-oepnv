@@ -7836,8 +7836,7 @@ def _placeholder_collides_with_formatted(
     corrupt the public feed. The check examines every text-bearing
     ``FormattedContent`` field, mirroring the ``isinstance`` Zero-Trust
     guards added at every other upstream JSON-parse site
-    (``src/providers/vor.py``, ``src/providers/wl_fetch.py``,
-    ``src/places/client.py``).
+    (``src/providers/vor.py``, ``src/providers/wl_fetch.py``).
     """
     text_fields = (
         formatted.link,
@@ -10732,7 +10731,7 @@ def _escape_description_markup(text: str) -> str:
 #
 # Coordinates come only from open datasets with known terms (ÖBB-Infrastruktur
 # GeoNetz, Wiener Linien OGD, Stadt Wien OGD; all CC BY 4.0), never from the
-# directory's merged OSM / HAFAS / Google Places values
+# directory's merged OSM / HAFAS values
 # (:func:`src.utils.stations.open_data_coordinate`). A station without an
 # open coordinate leaves the item without geo.
 

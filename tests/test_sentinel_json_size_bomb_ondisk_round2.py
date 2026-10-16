@@ -391,8 +391,8 @@ def test_canonical_size_cap_constants_inventory() -> None:
     inventory: list[tuple[str, str]] = [
         # Round 1
         ("src.utils.cache", "MAX_CACHE_FILE_BYTES"),
-        ("src.places.quota", "MAX_QUOTA_FILE_BYTES"),
-        ("src.places.tiling", "MAX_TILE_FILE_BYTES"),
+        # (the Round 1 Places quota/tile loaders were removed with the
+        # Google Places stage on 2026-10-16)
         # Round 2 (this file)
         ("src.utils.stations", "MAX_STATIONS_FILE_BYTES"),
         ("src.utils.stations", "MAX_VIENNA_POLYGON_FILE_BYTES"),

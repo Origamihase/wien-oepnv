@@ -3,10 +3,10 @@
 The 2026-05-07 journal canonicalised the defence pattern
 ``except (ValueError, json.JSONDecodeError, RecursionError)`` for every
 JSON parser whose payload comes from an untrusted upstream peer (provider
-API, GitHub API, Google Places API, VAO mgate). The defence had been
+API, GitHub API, VAO mgate). The defence had been
 applied to ``src/providers/*`` and ``scripts/update_baustellen_cache.py``
 but several sibling sites in ``src/feed/reporting.py``,
-``src/places/client.py``, ``scripts/update_vor_stations.py``,
+``scripts/update_vor_stations.py``,
 ``scripts/fetch_vor_haltestellen.py``, and ``scripts/verify_vor_access_id.py``
 inherited the pre-canonicalisation ``except ValueError`` shape.
 
@@ -32,7 +32,6 @@ from typing import Any
 
 import pytest
 import responses
-import requests
 
 # Pre-fix sanity: verify that ``json.loads`` actually raises ``RecursionError``
 # on a 5000-deep nested array under Python's default 1000-frame stack budget.
@@ -164,86 +163,6 @@ def test_reporter_handles_github_response_depth_bomb_on_success_status(
         message.endswith("Automatisches GitHub-Issue erstellt.")
         for message in info_messages
     ), f"Expected URL-less success log, got: {info_messages}"
-
-
-# ============================================================================
-# src/places/client.py — Google Places API (defence-in-depth)
-# ============================================================================
-#
-# ``_post`` already has an outer ``except Exception`` catch-all that would
-# convert ``RecursionError`` to ``GooglePlacesTileError``, but the canonical
-# defence pattern explicitly routes JSON-parse failures through the
-# decode-error branch with a sanitised error message. This test verifies
-# the decode-error path (not the catch-all) is taken on a depth-bomb.
-
-def _make_places_config() -> Any:
-    """Construct a minimal ``GooglePlacesConfig`` for unit-tests."""
-    from src.places.client import GooglePlacesConfig
-    return GooglePlacesConfig(
-        api_key="dummy",
-        included_types=["transit_station"],
-        language="de",
-        region="AT",
-        radius_m=500,
-        timeout_s=5,
-        max_retries=0,
-    )
-
-
-def test_places_client_format_error_message_handles_depth_bomb() -> None:
-    """``_format_error_message`` calls ``response.json()`` on the error
-    path (line 525). Pre-fix, the ``except (ValueError,
-    requests.exceptions.JSONDecodeError)`` clause did not include
-    ``RecursionError``, so a depth-bomb would propagate up the call
-    stack. Post-fix, the ``return default`` fallback runs."""
-    from src.places.client import GooglePlacesClient
-
-    client = GooglePlacesClient(_make_places_config())
-
-    response = requests.Response()
-    response.status_code = 400
-    response._content = DEEP_BOMB_BYTES
-    response.headers["Content-Type"] = "application/json"
-
-    # Pre-fix this propagated RecursionError. Post-fix, returns the
-    # default formatted message without crashing.
-    message = client._format_error_message(response)
-    assert "Request failed with status 400" in message
-
-
-def test_places_client_post_200_handles_depth_bomb() -> None:
-    """Pre-fix: ``response.json()`` at line 436 raised ``RecursionError``
-    that escaped the ``except (ValueError, requests.exceptions.
-    JSONDecodeError)`` clause. Post-fix: the ``GooglePlacesError("Invalid
-    JSON payload received from Places API")`` decode-failure branch
-    runs."""
-    from src.places.client import GooglePlacesClient, GooglePlacesError
-
-    client = GooglePlacesClient(_make_places_config())
-
-    response = requests.Response()
-    response.status_code = 200
-    response._content = DEEP_BOMB_BYTES
-    response.headers["Content-Type"] = "application/json"
-
-    # Reproduce the relevant inner block of ``_post`` to verify the
-    # exception-class scope of the canonical defence. Mocking the full
-    # session-retry chain is heavyweight; this unit-level reproduction
-    # pins the regression.
-    with pytest.raises(GooglePlacesError, match="Invalid JSON payload"):
-        try:
-            payload = response.json()
-        except (
-            ValueError,
-            requests.exceptions.JSONDecodeError,
-            RecursionError,
-        ) as exc:
-            raise GooglePlacesError(
-                "Invalid JSON payload received from Places API"
-            ) from exc
-        if not isinstance(payload, dict):
-            raise GooglePlacesError("Unexpected JSON payload type")
-    _ = client  # quiet unused-var lint
 
 
 # ============================================================================

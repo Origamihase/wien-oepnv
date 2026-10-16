@@ -9,7 +9,7 @@ call inside those readers now pins ``parse_constant`` +
 (``NaN`` / ``Infinity`` / ``-Infinity`` / ``1e1000``-scientific-
 overflow).  The drift this round closes:
 
-* **18 network-tainted / env-tainted / state-sidecar JSON parsers**
+* **15 network-tainted / env-tainted / state-sidecar JSON parsers**
   outside the Round-1503 inventory were left at lenient-mode
   ``json.loads(content)`` / ``response.json()`` — every one is the
   symmetric companion to the writer-pin family for a DIFFERENT taint
@@ -23,12 +23,10 @@ The Round-1503 channel was *committed on-disk state files*
 ``cache/<provider>/events.json``, etc.).  The channel this round
 closes is everything that PR #1503 did NOT enumerate:
 
-1. **Network-tainted JSON (13 sites)** — every HTTP response parsed
+1. **Network-tainted JSON (11 sites)** — every HTTP response parsed
    into the build pipeline:
 
    * Wiener Linien (``src/providers/wl_fetch.py:_get_json``)
-   * Google Places (``src/places/client.py`` 200-branch + error-
-     formatter branch)
    * HAFAS (``src/places/hafas_client.py``)
    * OSM Overpass (``src/places/osm_client.py``)
    * GitHub API issue-submit (``src/feed/reporting.py`` error branch
@@ -55,10 +53,9 @@ closes is everything that PR #1503 did NOT enumerate:
      non-finite at serialisation time and raises ``ValueError``,
      crashing the cron pipeline mid-write with no recovery.
 
-2. **Env-tainted JSON (2 sites)** — the ``BOUNDINGBOX_VIENNA``
+2. **Env-tainted JSON (1 site)** — the ``BOUNDINGBOX_VIENNA``
    override:
 
-   * ``scripts/fetch_google_places_stations.py:_parse_bounding_box``
    * ``scripts/update_station_directory.py:_parse_bounding_box``
 
    A leaked CI env / compromised secret store / hostile operator
@@ -102,7 +99,7 @@ Coverage
 
 * 5 canonical-helper behavioural tests for the new
   ``loads_finite()`` wrapper and the two existing hooks.
-* 18 inventory pins (source-grep) — one per enumerated site.
+* 15 inventory pins (source-grep) — one per enumerated site.
 * Multiple per-site behavioural PoCs covering both ``NaN`` /
   ``Infinity`` literal tokens AND ``1e1000`` scientific-notation
   overflow, plus a finite-round-trip regression guard.
@@ -225,30 +222,6 @@ def test_inventory_wl_fetch_get_json_pins_hooks() -> None:
     _assert_non_finite_pin(
         _get_json,
         where="src/providers/wl_fetch.py:_get_json (Wiener Linien API)",
-    )
-
-
-def test_inventory_places_client_post_pins_hooks() -> None:
-    from src.places.client import GooglePlacesClient
-
-    _assert_non_finite_pin(
-        GooglePlacesClient._post,
-        where=(
-            "src/places/client.py:GooglePlacesClient._post "
-            "(Google Places 200-branch)"
-        ),
-    )
-
-
-def test_inventory_places_client_format_error_message_pins_hooks() -> None:
-    from src.places.client import GooglePlacesClient
-
-    _assert_non_finite_pin(
-        GooglePlacesClient._format_error_message,
-        where=(
-            "src/places/client.py:GooglePlacesClient._format_error_message "
-            "(Google Places error-formatter)"
-        ),
     )
 
 
@@ -378,18 +351,6 @@ def test_inventory_update_stammstrecke_status_trip_pins_hooks() -> None:
         "``loads_finite`` callsites (pending_trips load + "
         "recently_finalised load + /trip parse + error-envelope decode) "
         f"\n\nMarker: {SENTINEL_NETWORK_TAINTED_NON_FINITE_DRIFT}"
-    )
-
-
-def test_inventory_fetch_google_places_stations_pins_hooks() -> None:
-    from scripts.fetch_google_places_stations import _parse_bounding_box
-
-    _assert_non_finite_pin(
-        _parse_bounding_box,
-        where=(
-            "scripts/fetch_google_places_stations.py:_parse_bounding_box "
-            "(BOUNDINGBOX_VIENNA env override)"
-        ),
     )
 
 
@@ -529,7 +490,7 @@ def test_poc_wl_fetch_get_json_finite_payload_round_trips(
 
 
 # ---------------------------------------------------------------------------
-# Behavioural PoC: response.json() shape (Google Places / OSM / HAFAS / GitHub).
+# Behavioural PoC: response.json() shape (OSM / HAFAS / GitHub).
 # ---------------------------------------------------------------------------
 
 
@@ -606,51 +567,8 @@ def test_poc_response_json_with_hooks_accepts_finite() -> None:
 # ---------------------------------------------------------------------------
 
 
-def test_poc_fetch_google_places_bounding_box_rejects_NaN() -> None:
-    """A hostile ``BOUNDINGBOX_VIENNA`` env containing NaN must raise.
-
-    PRE-FIX: ``json.loads('{"min_lat": NaN, ...}')`` returns
-    ``{"min_lat": float('nan'), ...}``, then ``float(data["min_lat"])``
-    is ``float('nan')``, and the ``BoundingBox`` dataclass accepts it.
-    Every place-fetch URL constructed from the bounds carries the
-    non-finite coordinate.
-
-    POST-FIX: ``loads_finite`` raises ``json.JSONDecodeError``, the
-    outer ``except`` re-raises as ``ValueError("BOUNDINGBOX_VIENNA must
-    be valid JSON")``.
-    """
-    from scripts.fetch_google_places_stations import _parse_bounding_box
-
-    with pytest.raises(ValueError, match="BOUNDINGBOX_VIENNA"):
-        _parse_bounding_box('{"min_lat": NaN, "min_lng": 16.0, "max_lat": 48.5, "max_lng": 16.8}')
-
-
-def test_poc_fetch_google_places_bounding_box_rejects_scientific_overflow() -> None:
-    """A ``1e1000`` env override must raise the same canonical error."""
-    from scripts.fetch_google_places_stations import _parse_bounding_box
-
-    with pytest.raises(ValueError, match="BOUNDINGBOX_VIENNA"):
-        _parse_bounding_box(
-            '{"min_lat": 1e1000, "min_lng": 16.0, "max_lat": 48.5, "max_lng": 16.8}'
-        )
-
-
-def test_poc_fetch_google_places_bounding_box_finite_passes() -> None:
-    """A finite-coordinate env override must round-trip post-fix."""
-    from scripts.fetch_google_places_stations import _parse_bounding_box
-
-    bbox = _parse_bounding_box(
-        '{"min_lat": 48.1, "min_lng": 16.2, "max_lat": 48.3, "max_lng": 16.5}'
-    )
-    assert bbox is not None
-    assert math.isfinite(bbox.min_lat)
-    assert math.isfinite(bbox.min_lng)
-    assert math.isfinite(bbox.max_lat)
-    assert math.isfinite(bbox.max_lng)
-
-
 def test_poc_update_station_directory_bounding_box_rejects_NaN() -> None:
-    """Mirror PoC for the sibling ``BOUNDINGBOX_VIENNA`` parser."""
+    """A hostile ``BOUNDINGBOX_VIENNA`` env containing Infinity must raise."""
     from scripts.update_station_directory import _parse_bounding_box
 
     with pytest.raises(ValueError, match="BOUNDINGBOX_VIENNA"):

@@ -27,7 +27,6 @@ Der Wien ÖPNV Feed bündelt Störungs- und Baustellenmeldungen von Wiener Linie
 
 ## How-to
 
-- [Google Places Stations Import](https://origamihase.github.io/wien-oepnv/how-to/google_places_stations.html): Anleitung zum Tier-3-Fallback-Abruf von Bahnhofs- und Haltestellendaten über die Google Places API in den lokalen Stationskatalog (OSM primär, HAFAS als Tier-2-Fallback davor).
 - [Eigene Provider-Plugins anbinden](https://origamihase.github.io/wien-oepnv/how-to/provider_plugins.html): Schritt-für-Schritt-Anleitung, um neue Datenquellen als Provider-Plugin in die Feed-Pipeline einzubinden und lokal zu testen.
 - [Repository-Secrets sicher testen](https://origamihase.github.io/wien-oepnv/how-to/test-api-secrets.html): So führen Sie API-Aufrufe mit in GitHub Actions hinterlegten Secrets aus, ohne die Zugangsdaten lokal preiszugeben.
 - [Trip-Abfrage durchführen](https://origamihase.github.io/wien-oepnv/how-to/trip-request.html): Kurzer Leitfaden, um mit der VAO ReST API Fahrten zwischen zwei Punkten zu ermitteln und die Antworten weiterzuverarbeiten.

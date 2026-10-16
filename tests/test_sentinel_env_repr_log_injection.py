@@ -12,7 +12,7 @@ lands in :attr:`record.args` — so consumers reading the record before
 ``caplog``, custom handlers, JSON shippers, the GitHub-Actions live
 log viewer's :class:`StreamHandler` adapter, etc.) all see safe text.
 
-Seven sibling sites still interpolate env-controlled values via the
+Four sibling sites still interpolated env-controlled values via the
 bare ``%r`` repr conversion. While Python's :func:`repr` escapes most
 control bytes (``\\n``, ``\\x1b``, the BMP ``\\u`` band, the 8-bit C1
 band), it leaves **256 code points** in :data:`unicodedata.category`
@@ -25,10 +25,7 @@ the canonical
 by this PoC:
 
   * ``scripts/update_station_directory.py``
-      - L793  ``_parse_radius``       ``PLACES_RADIUS_M`` env override
-      - L804  ``_parse_max_results``  ``PLACES_MAX_RESULTS`` env override
       - L817  ``_parse_float``        generic float env (``REQUEST_TIMEOUT_S``, ``MERGE_MAX_DIST_M``)
-      - L827  ``_parse_int``          generic int env   (``REQUEST_MAX_RETRIES``)
 
   * ``scripts/update_baustellen_cache.py``
       - L352  ``_resolve_data_url``   ``BAUSTELLEN_DATA_URL`` env override
@@ -205,47 +202,8 @@ def test_variation_selector_range_inventory_leaks_through_repr() -> None:
 
 
 # ============================================================================
-# scripts/update_station_directory.py — four ``_parse_*`` sites (L793, L804, L817, L827)
+# scripts/update_station_directory.py — ``_parse_float`` site (L817)
 # ============================================================================
-
-
-@pytest.mark.parametrize("primitive,primitive_label", _PRIMITIVES)
-def test_update_station_directory_parse_radius_strips_primitive(
-    primitive: str,
-    primitive_label: str,
-    caplog: pytest.LogCaptureFixture,
-) -> None:
-    """L793: ``_parse_radius`` rejects non-integer ``PLACES_RADIUS_M``."""
-    from scripts.update_station_directory import _parse_radius
-
-    poisoned = f"abc{primitive}def"
-    caplog.set_level(logging.WARNING)
-    result = _parse_radius(poisoned)
-    assert result == 2500
-    _assert_primitive_absent_from_record_state(
-        caplog, primitive, primitive_label, "update_station_directory:_parse_radius"
-    )
-
-
-@pytest.mark.parametrize("primitive,primitive_label", _PRIMITIVES)
-def test_update_station_directory_parse_max_results_strips_primitive(
-    primitive: str,
-    primitive_label: str,
-    caplog: pytest.LogCaptureFixture,
-) -> None:
-    """L804: ``_parse_max_results`` rejects non-integer ``PLACES_MAX_RESULTS``."""
-    from scripts.update_station_directory import _parse_max_results
-
-    poisoned = f"abc{primitive}def"
-    caplog.set_level(logging.WARNING)
-    result = _parse_max_results(poisoned)
-    assert result == 20
-    _assert_primitive_absent_from_record_state(
-        caplog,
-        primitive,
-        primitive_label,
-        "update_station_directory:_parse_max_results",
-    )
 
 
 @pytest.mark.parametrize("primitive,primitive_label", _PRIMITIVES)
@@ -263,24 +221,6 @@ def test_update_station_directory_parse_float_strips_primitive(
     assert result == 25.0
     _assert_primitive_absent_from_record_state(
         caplog, primitive, primitive_label, "update_station_directory:_parse_float"
-    )
-
-
-@pytest.mark.parametrize("primitive,primitive_label", _PRIMITIVES)
-def test_update_station_directory_parse_int_strips_primitive(
-    primitive: str,
-    primitive_label: str,
-    caplog: pytest.LogCaptureFixture,
-) -> None:
-    """L827: ``_parse_int`` rejects non-integer env values."""
-    from scripts.update_station_directory import _parse_int
-
-    poisoned = f"abc{primitive}def"
-    caplog.set_level(logging.WARNING)
-    result = _parse_int(poisoned, key="REQUEST_MAX_RETRIES", default=4)
-    assert result == 4
-    _assert_primitive_absent_from_record_state(
-        caplog, primitive, primitive_label, "update_station_directory:_parse_int"
     )
 
 
@@ -454,7 +394,7 @@ def test_inventory_no_env_repr_log_drift_in_canonical_sites() -> None:
 # ============================================================================
 # Positive: the fix preserves operator-correlation. After the fix, the
 # log line still carries the (sanitised) env value so an operator can
-# distinguish "bad PLACES_RADIUS_M" from "bad PLACES_MAX_RESULTS".
+# distinguish "bad REQUEST_TIMEOUT_S" from "bad MERGE_MAX_DIST_M".
 # ============================================================================
 
 
@@ -464,15 +404,15 @@ def test_fix_preserves_safe_ascii_correlation_token(
     """Safe ASCII payloads still appear verbatim in the log line.
 
     The fix uses :func:`sanitize_log_arg` which is byte-preserving on
-    benign ASCII — the operator can still see ``Invalid PLACES_RADIUS_M=
-    twentyfive`` instead of just ``Invalid PLACES_RADIUS_M=...``.
+    benign ASCII — the operator can still see ``Invalid REQUEST_TIMEOUT_S=
+    twentyfive`` instead of just ``Invalid REQUEST_TIMEOUT_S=...``.
     """
-    from scripts.update_station_directory import _parse_radius
+    from scripts.update_station_directory import _parse_float
 
     benign = "twentyfive"  # not a number, but no attack bytes
     caplog.set_level(logging.WARNING)
-    result = _parse_radius(benign)
-    assert result == 2500
+    result = _parse_float(benign, key="REQUEST_TIMEOUT_S", default=25.0)
+    assert result == 25.0
     assert any(
         benign in record.getMessage() for record in caplog.records
     ), (
@@ -490,12 +430,12 @@ def test_fix_strips_ansi_escape_from_log_line(
     if a future refactor re-introduces ``%s`` formatting somewhere, the
     canonical helper neutralises the ESC byte before it lands in args.
     """
-    from scripts.update_station_directory import _parse_radius
+    from scripts.update_station_directory import _parse_float
 
     # CSI red ANSI sequence + colour reset
     poisoned = "abc\x1b[31mDANGER\x1b[0m"
     caplog.set_level(logging.WARNING)
-    _parse_radius(poisoned)
+    _parse_float(poisoned, key="REQUEST_TIMEOUT_S", default=25.0)
     for record in caplog.records:
         message = record.getMessage()
         assert "\x1b" not in message, (
@@ -512,15 +452,15 @@ def test_fix_strips_newline_log_forgery_from_log_line(
 ) -> None:
     """Newline / log-forgery primitives are stripped at the args level.
 
-    A planted ``raw='2500\\n[CRIT] FAKE LOG ENTRY'`` cannot inject a
+    A planted ``raw='25\\n[CRIT] FAKE LOG ENTRY'`` cannot inject a
     second log entry after the fix — ``sanitize_log_arg`` escapes the
     newline to ``\\n`` (literal backslash-n) before format-interpolation.
     """
-    from scripts.update_station_directory import _parse_radius
+    from scripts.update_station_directory import _parse_float
 
     poisoned = "abc\n[CRIT] FAKE LOG ENTRY: cron pipeline compromised"
     caplog.set_level(logging.WARNING)
-    _parse_radius(poisoned)
+    _parse_float(poisoned, key="REQUEST_TIMEOUT_S", default=25.0)
     for record in caplog.records:
         message = record.getMessage()
         assert "\n[CRIT]" not in message, (

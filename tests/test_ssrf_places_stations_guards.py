@@ -35,7 +35,7 @@ import json
 import tempfile
 from pathlib import Path
 
-from src.places.client import Place
+from src.places.place import Place
 from src.places.merge import MergeConfig, load_stations, merge_places
 from src.utils.http import validate_http_url
 from src.utils.stations_validation import validate_stations

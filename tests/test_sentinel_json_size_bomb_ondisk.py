@@ -18,14 +18,14 @@ past the depth-bomb defences entirely:
     process's `ulimit -v` and crashes with ``MemoryError``.
   * ``MemoryError`` is a ``BaseException`` subclass — it is NOT caught
     by any of the surrounding ``except (OSError, json.JSONDecodeError,
-    RecursionError)`` handlers in the cache / quota / tile loaders, so
+    RecursionError)`` handlers in the cache loaders, so
     the unhandled exception propagates out of the loader, escapes the
     feed orchestrator's main ``try`` block, and crashes the entire
     cron-driven build.
 
 The threat actor is the same as the depth-bomb family: a compromised CI
 runner / partial flush + power loss / operator mis-edit that drops a
-multi-MiB to multi-GiB file under ``cache/`` or ``data/places-*.json``.
+multi-MiB to multi-GiB file under ``cache/``.
 The defence-in-depth contract this file pins is that every on-disk JSON
 parser in the canonical loader set MUST short-circuit before
 ``json.load`` / ``json.loads`` is invoked when the underlying file
@@ -33,11 +33,8 @@ exceeds the per-loader byte cap.
 
 The fix shape mirrors the per-loader depth-bomb catch: each parser
 stat()'s the file BEFORE opening / reading, and treats sizes above
-``MAX_CACHE_FILE_BYTES`` (50 MiB for the cache/status loaders) /
-``MAX_QUOTA_FILE_BYTES`` (1 MiB for the Places quota counter, which is
-a single small JSON object) / ``MAX_TILE_FILE_BYTES`` (1 MiB for the
-Places tile config, an operator-supplied list of bounding boxes) as
-unreadable / corrupt. Each cap is sized at ~100x the largest
+``MAX_CACHE_FILE_BYTES`` (50 MiB for the cache/status loaders) as
+unreadable / corrupt. The cap is sized at ~100x the largest
 legitimately-written file shape so the cap does NOT introduce a
 false-positive rejection of valid state.
 
@@ -47,8 +44,10 @@ Sites covered
   * ``src/utils/cache.py:read_status`` (status / heartbeat loader)
   * ``src/utils/cache.py:write_cache`` data-degradation guard
     (existing-cache reader before overwrite)
-  * ``src/places/quota.py:MonthlyQuota.load`` (Places API quota counter)
-  * ``src/places/tiling.py:load_tiles_from_file`` (Places tile config)
+
+The former Google Places loaders (``src/places/quota.py`` quota counter,
+``src/places/tiling.py`` tile config) were removed together with the
+Google Places stage on 2026-10-16; their tests went with them.
 """
 
 from __future__ import annotations
@@ -85,19 +84,12 @@ def test_precondition_cache_size_cap_constants_exist() -> None:
     removes them, every regression test below would silently pass even on
     unfixed code — so we pin the precondition first."""
     from src.utils import cache
-    from src.places import quota, tiling
 
     assert isinstance(cache.MAX_CACHE_FILE_BYTES, int)
     assert cache.MAX_CACHE_FILE_BYTES > 0
     # Cap must accommodate the largest legitimate on-disk cache observed
     # in production; below 1 MiB would reject normal cache state.
     assert cache.MAX_CACHE_FILE_BYTES >= 1_000_000
-
-    assert isinstance(quota.MAX_QUOTA_FILE_BYTES, int)
-    assert quota.MAX_QUOTA_FILE_BYTES > 0
-
-    assert isinstance(tiling.MAX_TILE_FILE_BYTES, int)
-    assert tiling.MAX_TILE_FILE_BYTES > 0
 
 
 # ============================================================================
@@ -208,51 +200,3 @@ def test_read_cache_normal_file_unaffected(
     cache_file.write_text(json.dumps([{"id": 1}]), encoding="utf-8")
 
     assert cache.read_cache("wl") == [{"id": 1}]
-
-
-# ============================================================================
-# src/places/quota.py — Places API quota counter
-# ============================================================================
-
-
-def test_quota_load_rejects_oversized_file(
-    tmp_path: Path,
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    """The Places API monthly quota counter is a small JSON object
-    (5-10 fields). Pre-fix, an attacker-planted multi-MiB file would
-    propagate past ``json.loads`` into MemoryError. Post-fix: the
-    1 MiB cap rejects oversized files before the read."""
-    from src.places import quota
-
-    monkeypatch.setattr(quota, "MAX_QUOTA_FILE_BYTES", 1024, raising=False)
-
-    state_file = tmp_path / "places_quota.json"
-    _write_oversized(state_file, 4096)
-
-    with pytest.raises(ValueError, match="too large|zu groß"):
-        quota.MonthlyQuota.load(state_file)
-
-
-# ============================================================================
-# src/places/tiling.py — Places tile configuration
-# ============================================================================
-
-
-def test_load_tiles_from_file_rejects_oversized_file(
-    tmp_path: Path,
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    """The Places tile config is a small operator-supplied JSON list of
-    bounding boxes (tens of objects, never multi-MiB). Pre-fix, a
-    planted huge file would propagate past ``json.loads`` into
-    MemoryError. Post-fix: the 1 MiB cap rejects oversized files."""
-    from src.places import tiling
-
-    monkeypatch.setattr(tiling, "MAX_TILE_FILE_BYTES", 1024, raising=False)
-
-    tile_file = tmp_path / "tiles.json"
-    _write_oversized(tile_file, 4096)
-
-    with pytest.raises(ValueError, match="too large|zu groß"):
-        tiling.load_tiles_from_file(tile_file)

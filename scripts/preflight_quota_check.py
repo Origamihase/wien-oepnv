@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Hard-gate API calls on the persisted daily / monthly quota state.
+"""Hard-gate API calls on the persisted daily quota state.
 
-Defense-in-depth wrapper around the existing in-script quota guards
-(:func:`src.providers.vor.load_request_count` for VAO,
-:class:`src.places.quota.MonthlyQuota` for Google Places). The
-in-script guards are only consulted *during* the script run; this
-preflight exits early — *before* any HTTP request fires — when the
-persisted counter shows that a fresh run would breach the contractual
-daily / monthly cap.
+Defense-in-depth wrapper around the existing in-script quota guard
+(:func:`src.providers.vor.load_request_count` for VAO). The in-script
+guard is only consulted *during* the script run; this preflight exits
+early — *before* any HTTP request fires — when the persisted counter
+shows that a fresh run would breach the contractual daily cap. (A
+Google-Places monthly gate existed until 2026-10-16; the Google stage
+was removed from the station directory then.)
 
 Why a separate preflight when the in-script guard already exists?
 Two operational reasons:
@@ -27,7 +27,7 @@ Two operational reasons:
    which surfaces the quota state cleanly.
 
 Exit codes:
-    0    quota OK; planned reservation fits inside the daily / monthly cap.
+    0    quota OK; planned reservation fits inside the daily cap.
     1    quota would be exceeded; caller MUST skip the API call.
     2    misuse (bad CLI args, unreadable state file, missing limit env).
 
@@ -158,20 +158,10 @@ def _configure_safe_logging(level: int = logging.INFO) -> None:
 VOR_DAILY_LIMIT: Final[int] = 100
 VOR_QUOTA_FILE: Final[Path] = REPO_ROOT / "data" / "vor_request_count.json"
 
-# Google Places monthly cap. (This preflight gates only the monthly total;
-# the daily Places sub-cap is enforced in-script by ``MonthlyQuota``.) Mirror
-# the env defaults used by the OSM-first / Google-Places-fallback step in
-# ``update-stations.yml``.
-PLACES_QUOTA_FILE: Final[Path] = REPO_ROOT / "data" / "places_quota.json"
-PLACES_DEFAULT_MONTHLY: Final[int] = 4000
-
 # Security: defense-in-depth byte-size cap on the persisted quota
 # state files. The state shape is tiny in production
-# (``{"date": "YYYY-MM-DD", "requests": N}`` is a few dozen bytes;
-# the Places state ``{"month": "YYYY-MM", "counts": {...}, "total":
-# N, "daily_key": "...", "daily_total": N}`` is well under 1 KiB).
-# 1 MiB is ~5000x the largest legitimate state shape and matches
-# ``src/places/quota.py:MAX_QUOTA_FILE_BYTES``. The pre-fix shape
+# (``{"date": "YYYY-MM-DD", "requests": N}`` is a few dozen bytes).
+# 1 MiB is far above the largest legitimate state shape. The pre-fix shape
 # (``json.load(handle)`` with no cap) was a JSON-size-bomb sibling
 # missed by the 2026-05-08 *Round 3* sweep — the script was added
 # AFTER Round 3 closed sixteen siblings in ``scripts/`` and the
@@ -244,35 +234,6 @@ def _check_vor(margin: int) -> int:
     return count + margin
 
 
-def _check_places(margin: int, limit: int) -> int:
-    """Return the monthly count that *would* be reached after charging *margin*.
-
-    Mirrors :class:`src.places.quota.MonthlyQuota.can_consume` for the
-    *total* counter only (the per-kind sub-caps are checked inside
-    the Python client; this preflight is the early-exit gate for the
-    expensive workflow steps that run *before* the client is invoked).
-    """
-    state = _read_json_file(PLACES_QUOTA_FILE)
-    # Cross-month boundary → counter resets to 0. The stored ``month`` is
-    # written by ``MonthlyQuota.current_month_key`` in Europe/Vienna, so the
-    # comparison month MUST also be Vienna-local — using UTC here would, in the
-    # ~1–2 h month-end window where Vienna has rolled over but UTC has not,
-    # falsely treat the counter as freshly reset and pass a near-cap run.
-    from datetime import datetime
-    from zoneinfo import ZoneInfo
-
-    current_month = datetime.now(ZoneInfo("Europe/Vienna")).strftime("%Y-%m")
-    stored_month = state.get("month")
-    if stored_month != current_month:
-        return margin
-    raw_total = state.get("total", 0)
-    total = _coerce_int(raw_total)
-    if total < 0:
-        total = 0
-    _ = limit  # limit is supplied for future per-kind checks
-    return total + margin
-
-
 def _coerce_int(raw: object) -> int:
     """Best-effort ``int(raw)`` — returns ``0`` on any failure."""
     try:
@@ -332,7 +293,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n", maxsplit=1)[0])
     parser.add_argument(
         "--check",
-        choices=("vor", "places"),
+        choices=("vor",),
         required=True,
         help="Which API surface to gate.",
     )
@@ -352,8 +313,7 @@ def main(argv: list[str] | None = None) -> int:
         default=None,
         help=(
             "Optional override for the contractual limit. By default the "
-            "module-level ``VOR_DAILY_LIMIT`` / ``PLACES_DEFAULT_MONTHLY`` "
-            "values are used. Lower-only: an override above the default "
+            "module-level ``VOR_DAILY_LIMIT`` value is used. Lower-only: an override above the default "
             "is clamped to the default (defense-in-depth)."
         ),
     )
@@ -373,26 +333,16 @@ def main(argv: list[str] | None = None) -> int:
     _configure_safe_logging(logging.INFO)
     LOGGER.setLevel(logging.INFO)
 
-    if args.check == "vor":
-        default_limit = VOR_DAILY_LIMIT
-        # Lower-only override: an env-derived override above the contract
-        # limit is clamped to the contract limit.
-        limit = (
-            min(args.limit_override, default_limit)
-            if args.limit_override is not None
-            else default_limit
-        )
-        projected = _check_vor(args.margin)
-        kind = "VOR daily"
-    else:
-        default_limit = PLACES_DEFAULT_MONTHLY
-        limit = (
-            min(args.limit_override, default_limit)
-            if args.limit_override is not None
-            else default_limit
-        )
-        projected = _check_places(args.margin, limit)
-        kind = "Places monthly"
+    default_limit = VOR_DAILY_LIMIT
+    # Lower-only override: an env-derived override above the contract
+    # limit is clamped to the contract limit.
+    limit = (
+        min(args.limit_override, default_limit)
+        if args.limit_override is not None
+        else default_limit
+    )
+    projected = _check_vor(args.margin)
+    kind = "VOR daily"
 
     quota_ok = projected <= limit
     if quota_ok:

@@ -47,11 +47,6 @@ This file extends the canonical regression coverage to the surviving sites:
     depth-bomb (or even malformed JSON) crashed the merge.
   * ``scripts/update_all_stations.py:_load_stations`` — orchestrator's
     diff-detection reader.
-  * ``scripts/fetch_google_places_stations.py:_parse_bounding_box`` —
-    env-source ``BOUNDINGBOX_VIENNA`` parser; pre-fix had NO try/except
-    so a depth-bomb in the env value escapes through ``_build_runtime
-    _config``'s ``except Exception``-narrowed catch as a confusing
-    "Configuration error" that masks the real cause.
   * ``scripts/validate_vor_mapping.py:main`` — diagnostic-only script
     completes the enumeration so the canonical contract holds repo-wide.
 
@@ -396,29 +391,6 @@ def test_update_all_stations_load_stations_handles_depth_bomb(tmp_path: Path) ->
     result = update_all_stations._load_stations(poisoned)
 
     assert result == []
-
-
-# ============================================================================
-# scripts/fetch_google_places_stations.py — _parse_bounding_box (env)
-# ============================================================================
-#
-# Pre-fix: ``_parse_bounding_box`` had NO try/except around
-# ``json.loads(raw)``. A depth-bomb in ``BOUNDINGBOX_VIENNA`` env
-# (intentional misconfig, leaked CI env, compromised secret store)
-# propagates ``RecursionError`` out of the function. The caller
-# ``_build_runtime_config`` is wrapped in ``except Exception`` so the
-# script doesn't crash with an unhandled traceback, but it emits a
-# confusing "Configuration error" warning that masks the real cause.
-# Post-fix: surfaces a clean ``ValueError("BOUNDINGBOX_VIENNA must be
-# valid JSON")`` matching the canonical contract from the sibling
-# ``update_station_directory.py:_parse_bounding_box`` (Round 3).
-
-
-def test_fetch_google_places_parse_bounding_box_handles_depth_bomb() -> None:
-    from scripts import fetch_google_places_stations
-
-    with pytest.raises(ValueError, match="(?i)valid json|bounding"):
-        fetch_google_places_stations._parse_bounding_box(DEEP_BOMB_STR)
 
 
 # ============================================================================

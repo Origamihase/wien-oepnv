@@ -1190,8 +1190,8 @@ Bedingungen, alle CC BY 4.0: ÖBB-Infrastruktur GeoNetz
 OGD Haltestellen (`data/wienerlinien-ogd-haltestellen.csv`, über die DIVA)
 und die Baustellen-Daten der Stadt Wien.
 `src.utils.stations.open_data_coordinate` liest nie die `latitude`/
-`longitude` des Verzeichnisses, weil diese auch aus OpenStreetMap, ÖBB HAFAS
-und Google Places zusammengeführt sind. Eine Station ohne offene Koordinate
+`longitude` des Verzeichnisses, weil diese auch aus OpenStreetMap und ÖBB
+HAFAS zusammengeführt sind. Eine Station ohne offene Koordinate
 (seit Juli nur Guntramsdorf-Kaiserau, nur VOR) lässt das Item ohne
 Geodaten; es gibt keinen Rückfall. Das Verzeichnis dient nur dazu, den
 Namen aus dem Titel einer Station zuzuordnen.
@@ -1286,10 +1286,11 @@ diesem Fall still übersprungen. Jetzt gilt:
 - Jeder andere Host wird abgewiesen, bevor ein Byte gesendet wird
   (`TimeoutHTTPAdapter.send`, gilt für alle Sessions aus
   `session_with_retries` und für `request_safe`). `verify_response_ip` prüft
-  dasselbe nach der Antwort, etwa für den Places-Client.
+  dasselbe nach der Antwort.
 - Die Liste nennt genau die Upstreams des Projekts: Wiener Linien, ÖBB
   (Fahrplan und Daten), VAO, Stadt Wien (Baustellen), Overpass,
-  Google Places, GitHub-API und `raw.githubusercontent.com`. Ein Test
+  GitHub-API und `raw.githubusercontent.com` (Google Places ist seit
+  2026-10-16 entfernt). Ein Test
   gleicht sie mit den im Code konfigurierten Hosts ab, in beide Richtungen.
   Ein neuer Upstream muss dort eingetragen werden.
 - Die Produktions-Workflows setzen keinen Proxy. Betroffen sind
@@ -1348,7 +1349,7 @@ flowchart LR
 
 - **Prozess-Ebene** — der Cron-Eintrittspunkt. Wenn `main()` wirft, ist der Cron-Lauf die Fehler-Einheit; das ist Absicht, damit ein korrupter Schreibvorgang keinen halbgaren Feed veröffentlicht.
 - **Provider-Ebene** — `_collect_items` hüllt den Loader jedes Providers in ein try/except, sodass eine Provider-Exception die Items der anderen nicht mit in den Abgrund nimmt. Der `ThreadPoolExecutor` plus die Apex-Phase-1-Deadline-Eviction-Schleife begrenzt das Wall-Clock-Budget für nicht antwortende Provider.
-- **Call-Ebene** — `request_safe` ist die per-Call-Security-State-Machine (§2). `CircuitBreaker` ist ein zur Übernahme bereitstehendes Resilienz-Primitiv; die gemeinsam genutzte Klasse `src.utils.circuit_breaker.CircuitBreaker` umhüllt den OSM-Client (`src/places/osm_client.py`), den HAFAS-Client (`src/places/hafas_client.py`), den Google-Places-Client (`src/places/client.py`, fünf Fehlschläge, 300 s Pause), den Stammstrecken-Hbf-Monitor (`scripts/update_stammstrecke_hbf.py`) und das Rollback-Skript `scripts/update_stammstrecke_status.py`.
+- **Call-Ebene** — `request_safe` ist die per-Call-Security-State-Machine (§2). `CircuitBreaker` ist ein zur Übernahme bereitstehendes Resilienz-Primitiv; die gemeinsam genutzte Klasse `src.utils.circuit_breaker.CircuitBreaker` umhüllt den OSM-Client (`src/places/osm_client.py`), den HAFAS-Client (`src/places/hafas_client.py`), den Stammstrecken-Hbf-Monitor (`scripts/update_stammstrecke_hbf.py`) und das Rollback-Skript `scripts/update_stammstrecke_status.py`.
 - **Transport-Ebene** — `JitterRetry` (in `session_with_retries`) behandelt transiente 5xx und Connection-Resets per jitter-belegtem Exponential-Backoff. `PinnedHTTPSAdapter` hält die SNI beim TLS-Handshake auf dem ursprünglichen Hostnamen, während der TCP-Connect die aufgelöste (geprüfte) IP anvisiert.
 - **Payload-Ebene** — sobald Bytes eintreffen, validiert jeder Provider den Top-Level-Typ (Zero-Trust-Shape), fängt `RecursionError` aus JSON-Tiefenbomben und arbeitet innerhalb des 10-MB-Body-Caps.
 
@@ -1412,16 +1413,30 @@ im Build-Log sehen.
 
 ---
 
-## 5. Drei-Stufen-Stationsverzeichnis-Anreicherung (OSM → HAFAS → Google)
+## 5. Zwei-Stufen-Stationsverzeichnis-Anreicherung (OSM → HAFAS)
 
 Stationskoordinaten und -Metadaten werden über eine geschichtete
 Anreicherungspipeline befüllt, die von
 `scripts/update_station_directory.py` orchestriert wird. Die Hierarchie
 ist eine **strikt gestufte Kaskade**: OpenStreetMap (Overpass-API) ist
 die primäre Quelle, HAFAS (ÖBB Scotty) ist der seit 2026-05-14
-eingeführte Level-2-Fallback, und Google Places ist die letzte Stufe,
-die ausschließlich Stationen verarbeitet, die die ersten beiden Stufen
-nicht auflösen konnten.
+eingeführte Level-2-Fallback und verarbeitet ausschließlich Stationen,
+die OSM nicht auflösen konnte. Eine Station, die auch HAFAS nicht
+auflöst, bleibt ohne Koordinate; der Lauf nennt sie in einer Warnung.
+
+> **Entscheidung 2026-10-16 (Michael): keine Google-Places-Stufe mehr.**
+> Bis dahin war Google Places die dritte Stufe für die Restmenge. Das
+> Verzeichnis soll nur Koordinaten führen, deren Herkunft und
+> Bedingungen bekannt sind (`NOTICE.md`); die 18 Google-Koordinaten
+> wurden in #2025 durch ÖBB-GeoNetz und WL-OGD ersetzt. Der Schlüssel
+> erreichte zudem seit 2026-05-11 keinen Workflow mehr, die Stufe lief
+> also längst still ins Leere. Entfernt sind der Client
+> (`src/places/client.py`, `quota.py`, `tiling.py`, `diagnostics.py`),
+> die Skripte `fetch_google_places_stations.py` und
+> `verify_google_places_access.py`, `data/places_quota.json`, die
+> Quota-Prüfung `--check places` in `scripts/preflight_quota_check.py`
+> und `places.googleapis.com` aus `PROXY_TRUSTED_HOSTS`. Die
+> Datenklasse `Place` liegt jetzt in `src/places/place.py`.
 
 > **Hinweis zur GeoNetz-Anreicherung:** Orthogonal zur Koordinaten-Kaskade
 > läuft `_enrich_with_geonetz`. Es liest die gepinnte
@@ -1446,7 +1461,7 @@ flowchart LR
     H -- ja --> K[Tier 2: HAFAS Mgate<br/>(src/places/hafas_client.py)]
     K --> L[HAFAS CircuitBreaker<br/>5 Fails / 5 Min Cool-off]
     L --> M[Rest noch ohne Koordinaten?]
-    M -- ja --> I[Tier 3: Google Places<br/>(nur strikte Restmenge)]
+    M -- ja --> I[Warnung mit Stationsnamen<br/>(Station bleibt ohne Koordinate)]
     M -- nein --> J[stations.json]
     H -- nein --> J
     I --> J
@@ -1455,10 +1470,7 @@ flowchart LR
 **Warum OSM zuerst:**
 
 - **Offene Daten, kein Kontingent.** Die Overpass-API ist ohne API-Key
-  öffentlich erreichbar und arbeitet unter einer Fair-Use-Policy. Ohne
-  diese Stufe würde jeder Wien-Stationsverzeichnis-Refresh das
-  Monats-Freikontingent von Google Places verbrauchen — endlich und
-  geteilt mit anderen Ad-hoc-Verifikationsläufen.
+  öffentlich erreichbar und arbeitet unter einer Fair-Use-Policy.
 - **Editor-gepflegte Passagier-Namen.** Die `_NAME_PRIORITY`-Hierarchie
   in `src/places/osm_client.py:_select_name` wählt
   `name:de` → `name` → `official_name(:de)` → `loc_name(:de)` →
@@ -1474,7 +1486,7 @@ flowchart LR
   enumeriert; `mypy --strict` fängt damit jeden Tippfehler bei
   Tag-Reads.
 
-**Warum HAFAS der Level-2-Fallback ist (und Google auf Stufe 3 rutscht):**
+**Warum HAFAS der Level-2-Fallback ist:**
 
 - **Betreiber-authoritative Koordinaten und EVA-Nummern.** HAFAS ist
   die hauseigene Routing-Backbone der ÖBB. Eine `LocMatch`-Query
@@ -1487,12 +1499,9 @@ flowchart LR
   WGS84-Floats skaliert.
 - **Kein Tages-/Monats-Request-Budget.** Anders als der
   VAO-ReST-Endpoint (gedeckelt auf 100 Req/Tag, reserviert für den
-  Stammstrecken-Monitor — siehe §7) und Google Places (Monats-
-  Freikontingent, getrackt in `data/places_quota.json`) hat die
-  HAFAS-Mgate-API kein publiziertes per-Konsumenten-Limit, das die
-  Cron-Pipeline routinemäßig reißen würde. Jede Station, die HAFAS
-  auflösen kann, ist eine Station weniger, die das Google-Budget
-  belastet.
+  Stammstrecken-Monitor — siehe §7) hat die HAFAS-Mgate-API kein
+  publiziertes per-Konsumenten-Limit, das die Cron-Pipeline
+  routinemäßig reißen würde.
 - **Selbstheilende Credential-Rotation.** Die ÖBB rotiert das
   Mgate-`salt`/`ver`/`aid`-Tripel ohne Vorankündigung. Das
   Begleit-Skript `scripts/sync_hafas_profile.py` läuft in
@@ -1518,8 +1527,8 @@ flowchart LR
   fünf Minuten lang — eine ÖBB-Störung kann die Cron-Pipeline damit
   nicht in Selbst-DDoS treiben. `CircuitBreakerOpen` wird am
   öffentlichen Einstiegspunkt zu `None` konvertiert: ein
-  HAFAS-Schluckauf crasht das Skript nicht, und der
-  Google-Places-Fallback läuft trotzdem für die verbliebene Restmenge.
+  HAFAS-Schluckauf crasht das Skript nicht; die betroffenen Stationen
+  behalten ihre bisherige Koordinate oder bleiben ohne.
   Den Transport (Profil, Umschlag, MAC, `request_safe`, JSON-Hooks)
   kapselt seit 2026-09-25 `post_mgate(svcReqL, max_bytes=…)`, damit
   weitere Mgate-Methoden (z. B. `StationBoard` für die Linien je
@@ -1666,38 +1675,13 @@ Skript ändert nie eine Meldung. Es schreibt nur seine Sammlung
   Text sind auf 300 Zeichen gekürzt. `--no-record` prüft nur, etwa für
   Rückschauen über alte Feed-Stände.
 
-**Warum Google Places die Notfall-Stufe ist:**
-
-- Nachdem OSM und HAFAS gelaufen sind, filtert
-  `_stations_missing_coordinates` die Stationsliste auf exakt jene
-  Einträge, denen *noch immer* `latitude`/`longitude` fehlt. Diese
-  Restmenge — und **nur** diese — wird an
-  `_enrich_with_google_places(..., missing_subset=...)` übergeben.
-  Stationen, die von OSM oder HAFAS aufgelöst wurden, werden auch
-  dann nicht erneut geokodiert, wenn ein Google-Place zufällig
-  denselben Namen trägt.
-- Wenn OSM und HAFAS alle Stationen mit Koordinaten abdecken, wird
-  der Google-Places-Call vollständig übersprungen. Das Freikontingent
-  (`PLACES_LIMIT_*`-Env-Vars) bleibt für tatsächlich fehlende Einträge
-  reserviert.
-- **Eigene Variable für den Zählerstand (seit 2026-10-10).** Der
-  Zählerstand liegt in `data/places_quota.json`; umbiegen lässt er sich
-  nur über `PLACES_QUOTA_STATE`. Bis 2026-10-10 las
-  `src/places/quota.py:resolve_quota_state_path` ersatzweise auch
-  `STATE_PATH` und hängte `places_quota.json` daran an, behandelte die
-  Variable also als **Verzeichnis**, während der Feed-Build
-  (`src/feed/config.py`) sie als **Datei** liest (`data/first_seen.json`).
-  Wer den Feed-Zustand umbog, hätte das Kontingent auf einen ungültigen
-  Pfad `…/first_seen.json/places_quota.json` gelegt. Betreiberentscheidung
-  vom 2026-10-10: Jeder Zweck bekommt eine eigene Variable, kein Name hat
-  zwei Bedeutungen. `STATE_PATH` bleibt dem Feed, weil er der einzige
-  Verbraucher mit Gewicht ist (Standardwert, Doku, Tests und Path-Guard
-  hängen daran) und eine Umbenennung nur bestehende Konfigurationen
-  bräche; das Kontingent hatte mit `PLACES_QUOTA_STATE` ohnehin schon
-  einen eigenen Namen, nur der Rückgriff fiel weg. Weder Workflows noch
-  Skripte setzten `STATE_PATH`, bei den Standardwerten ändert sich also
-  nichts. `tests/places/test_quota.py` wacht darüber, dass außer
-  `src/feed/config.py` kein Modul `STATE_PATH` liest.
+**`STATE_PATH` hat nur eine Bedeutung (seit 2026-10-10).** Der
+Feed-Build (`src/feed/config.py`) liest die Variable als **Datei**
+(`data/first_seen.json`). Bis 2026-10-10 las der Google-Places-Zähler sie
+ersatzweise als **Verzeichnis**. Betreiberentscheidung vom 2026-10-10:
+Jeder Zweck bekommt eine eigene Variable, kein Name hat zwei Bedeutungen.
+`tests/test_state_path_env_reader.py` wacht darüber, dass außer
+`src/feed/config.py` kein Modul `STATE_PATH` liest.
 
 **Netzwerk-Resilienz-Schichten:**
 
@@ -1741,7 +1725,6 @@ Relevante CLI-Flags / Env-Vars:
 |---|---|---|
 | `--osm-enrich` / `--no-osm-enrich` | aktiv | CLI-Schalter für den OSM-Schritt |
 | `WIEN_OEPNV_OSM_ENRICH` | `1` | Env-Override; `0` überspringt OSM (von CI gesetzt, wenn der Smoke-Test fehlschlägt) |
-| `--google-enrich` / `--no-google-enrich` | aktiv | CLI-Schalter für den Google-Places-Fallback |
 | `OVERPASS_URL` | `overpass-api.de` | Trusted-Mirror-Override; abgelehnt, wenn nicht auf der Allowlist |
 | `MERGE_MAX_DIST_M` | `150` | Distanz-Schwelle für den Dedup-Match in `merge_places` |
 
@@ -1753,7 +1736,7 @@ Log-Zeile `HAFAS enrichment disabled: …`.
 
 ### 5a. Wiener-Linien-OGD-Merge (die vierte Quelle)
 
-Nachdem die OSM-/Google-Places-Anreicherung die ÖBB-verwurzelte
+Nachdem die OSM-/HAFAS-Anreicherung die ÖBB-verwurzelte
 `stations.json` geschrieben hat, läuft `scripts/update_wl_stations.py`
 als eigene Stufe im Wrapper-Orchestrator. Dieser Schritt faltet die
 Wiener-Linien-OGD-Echtzeit-Stations- und Stop-Daten in das Verzeichnis,

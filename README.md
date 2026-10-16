@@ -107,15 +107,14 @@ Das Projekt unterscheidet konsequent zwischen *Live-Verkehrsmeldungen* (treiben 
 
 ### Stationsverzeichnis (Geokoordinaten & Metadaten)
 
-Die Koordinaten-Anreicherung läuft als geordnete Fallback-Kette mit drei Tiers, damit das Monatskontingent der kommerziellen Quelle (Google Places) nur als letzter Notausgang in Anspruch genommen wird.
+Die Koordinaten-Anreicherung läuft als geordnete Fallback-Kette mit zwei Stufen, beide ohne kommerzielle Quelle. Eine Station, die keine der beiden auflöst, bleibt ohne Koordinate und wird im wöchentlichen Lauf mit Namen gewarnt. (Die frühere dritte Stufe Google Places hat Michael am 16.10.2026 entfernt: Das Verzeichnis führt nur Koordinaten mit bekannter Herkunft, siehe [`NOTICE.md`](NOTICE.md).)
 
 | Tier | Quelle | Zweck |
 | --- | --- | --- |
 | **1 (Primär)** | **OpenStreetMap (Overpass API)** | Offene Daten ohne API-Limit. Liefert Koordinaten, passagierfreundliche Namen und Klassifizierungs-Tags für jeden Stop innerhalb der Wiener Bounding-Box. |
-| **2 (Fallback)** | **HAFAS (ÖBB Scotty)** | Nativer Mgate-`LocMatch`-Client. Liefert hochpräzise Koordinaten und Metadaten (insb. EVA-Nummer / `extId`) für Stationen, die OSM nicht auflösen konnte. Kein Tagesbudget — schont das Google-Kontingent. |
-| **3 (Letzter Ausweg)** | **Google Places** | Wird nur für die strikte Restmenge aktiviert, die weder OSM noch HAFAS abdecken konnten. Persistenter Monats-Quota-Manager (`data/places_quota.json`). |
+| **2 (Fallback)** | **HAFAS (ÖBB Scotty)** | Nativer Mgate-`LocMatch`-Client. Liefert hochpräzise Koordinaten und Metadaten (insb. EVA-Nummer / `extId`) für Stationen, die OSM nicht auflösen konnte. Kein Tagesbudget. |
 
-Begleitende Stamm-/Identifier-Quellen: das **ÖBB-Excel** „Verzeichnis der Verkehrsstationen" (Pflicht-`bst_id`/`bst_code`), das **ÖBB-GeoNetz** (EVA-Nummer & IFOPT-ID, Source-Token `oebb_geonetz`), die **Wiener Linien OGD-CSVs** für DIVA-Subcodes und Bahnsteig-Stops sowie die gepinnte **VOR-Stop-Liste** (`data/vor-haltestellen.csv`). Details in [`docs/architecture.md`](docs/architecture.md) §5 und in [`docs/how-to/google_places_stations.md`](docs/how-to/google_places_stations.md).
+Begleitende Stamm-/Identifier-Quellen: das **ÖBB-Excel** „Verzeichnis der Verkehrsstationen" (Pflicht-`bst_id`/`bst_code`), das **ÖBB-GeoNetz** (EVA-Nummer & IFOPT-ID, Source-Token `oebb_geonetz`), die **Wiener Linien OGD-CSVs** für DIVA-Subcodes und Bahnsteig-Stops sowie die gepinnte **VOR-Stop-Liste** (`data/vor-haltestellen.csv`). Details in [`docs/architecture.md`](docs/architecture.md) §5.
 
 ### ⚖️ Lizenz
 

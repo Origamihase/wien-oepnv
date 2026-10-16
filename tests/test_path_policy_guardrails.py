@@ -98,21 +98,6 @@ def test_sync_hafas_write_profile_warns_outside_but_writes(
 
 
 # ---------------------------------------------------------------------------
-# Operator tool: fetch_google_places_stations --dump-new (via _dump_changes).
-# ---------------------------------------------------------------------------
-def test_fetch_google_dump_changes_warns_outside_but_writes(
-    tmp_path: Path, caplog: pytest.LogCaptureFixture
-) -> None:
-    from scripts import fetch_google_places_stations
-
-    out = tmp_path / "dump.json"
-    with caplog.at_level(logging.WARNING, logger="places.cli"):
-        fetch_google_places_stations._dump_changes(out, [], [])
-    assert out.exists()
-    assert any("outside the repository" in r.getMessage() for r in caplog.records)
-
-
-# ---------------------------------------------------------------------------
 # Operator tool: configure_feed --env-file (also fixes the absolute bypass).
 # ---------------------------------------------------------------------------
 def test_configure_feed_env_file_warns_outside_but_writes(

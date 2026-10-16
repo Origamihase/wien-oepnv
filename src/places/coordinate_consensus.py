@@ -8,9 +8,8 @@ HAFAS (ÖBB) is the second Austrian source. When both are present and
 agree (distance ``<=`` tolerance) the WL coordinate is kept. When they
 disagree, OpenStreetMap arbitrates by endorsing whichever of the two
 lies closer to it. OSM is consulted only as a tie-breaker — never as a
-primary source — and Google Places stays the gap-fill of last resort for
-a station that has *no* coordinate at all (handled elsewhere in the
-pipeline), never an arbiter between two Austrian sources.
+primary source. (Google Places, once the gap-fill of last resort, was
+removed from the pipeline on 2026-10-16.)
 
 The module is deliberately pure (no I/O, no network): callers inject the
 already-resolved WL / HAFAS / OSM coordinates so the policy is trivially

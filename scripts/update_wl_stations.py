@@ -1730,9 +1730,7 @@ def _reconcile_at_overlap(
     lazily, only when a disagreement exists) arbitrates by endorsing the
     candidate closer to it. A missing HAFAS result is a deliberate no-op:
     a transient outage must never shift a coordinate. An unresolvable
-    conflict keeps WL (highest priority) and is logged for review — Google
-    is the gap-fill of last resort for coordinate-less stations, not an
-    arbiter between two Austrian sources.
+    conflict keeps WL (highest priority) and is logged for review.
     """
 
     pending_osm: list[
@@ -1961,7 +1959,7 @@ def merge_into_stations(
 
     filtered.extend(unmatched)
 
-    # Coordinate consensus (WL → HAFAS → OSM → Google): runs on the fully
+    # Coordinate consensus (WL → HAFAS → OSM): runs on the fully
     # merged list so overlap entries already carry both ``wl_diva`` and the
     # ÖBB-side HAFAS identity. Optional so direct callers / unit tests keep
     # the historical no-reconcile behaviour; ``main()`` injects the real,
@@ -2084,7 +2082,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     if contaminated:
         log.info("Dropped %d distant-name-contaminating alias/stop token(s)", contaminated)
 
-    # Austrian-source coordinate consensus (WL → HAFAS → OSM → Google).
+    # Austrian-source coordinate consensus (WL → HAFAS → OSM).
     # Env-disabled via ``WIEN_OEPNV_AT_RECONCILE=0`` — mirrors the
     # ``WIEN_OEPNV_OSM_ENRICH`` gate so the orchestrator wrapper test can
     # skip the ~40 real HAFAS round-trips (and a possible Overpass call)

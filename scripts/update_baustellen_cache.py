@@ -133,8 +133,7 @@ USER_AGENT = "Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-o
 # stalling the whole feed-build pipeline. The cap can only TIGHTEN — env
 # overrides may lower the timeout (tests use 1–5s) but never raise it above
 # the documented ceiling. Mirrors the ``MAX_PROVIDER_TIMEOUT`` cap in
-# ``src/feed/config.py`` and the ``MAX_TIMEOUT_S`` cap in
-# ``src/places/client.py``.
+# ``src/feed/config.py``.
 DEFAULT_BAUSTELLEN_TIMEOUT = 20
 MAX_BAUSTELLEN_TIMEOUT = DEFAULT_BAUSTELLEN_TIMEOUT
 
@@ -758,8 +757,7 @@ def _build_location(properties: dict[str, Any], geometry: dict[str, Any]) -> dic
             lon, lat = point
             # Security (Coordinate finite/range drift, parser-level
             # floor): mirror the canonical scrub pinned at
-            # ``src/places/hafas_client.py:_extract_first_location``,
-            # ``src/places/client.py:_parse_place`` and
+            # ``src/places/hafas_client.py:_extract_first_location`` and
             # ``src/places/osm_client.py:filter_complete_places``
             # (Round 1485 / Round 1486). A compromised
             # ``data.wien.gv.at`` upstream (or MITM / DNS rebind)

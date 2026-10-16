@@ -45,8 +45,7 @@ log = logging.getLogger(__name__)
 # Pre-fix a planted upstream payload carrying any of these zero-width
 # Format primitives in a station name / cache event / quota state
 # survived this scrubber and landed in the committed JSON sidecar
-# (cache/<provider>/events.json, data/stations.json,
-# data/places_quota.json). The bytes are invisible in git diff /
+# (cache/<provider>/events.json, data/stations.json). The bytes are invisible in git diff /
 # GitHub web UI / IDE preview but break downstream byte-equality
 # dedup keying. The U+2060..U+2069 range folds in the existing
 # BiDi-isolate band; reserved U+2065 has no defined meaning so the

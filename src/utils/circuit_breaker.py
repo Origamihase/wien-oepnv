@@ -23,8 +23,8 @@ Why a project-local primitive instead of a third-party library:
 
 * The codebase grew several ad-hoc resilience implementations
   (``vor.py`` Emergency Stop, WL/ÖBB urllib3-only, and the former
-  ``places/client.py`` per-instance 5xx counter — since migrated to
-  this primitive). A shared primitive eliminates drift as further
+  Google Places client's per-instance 5xx counter — migrated to this
+  primitive, the client itself removed on 2026-10-16). A shared primitive eliminates drift as further
   providers adopt it.
 * The third-party options (``circuitbreaker``, ``pybreaker``) bring
   larger surface than we need and don't compose cleanly with our
@@ -121,8 +121,8 @@ class CircuitBreaker:
                 return []
 
     When the breaker must interleave with an in-method retry loop and
-    per-attempt accounting (Google Places: only 5xx count as failures,
-    and each HTTP attempt debits the monthly quota *before* it runs),
+    per-attempt accounting (e.g. only 5xx count as failures, and each
+    HTTP attempt debits a quota *before* it runs),
     drive it with the lower-level :meth:`record_success` /
     :meth:`record_failure` and read :attr:`state` to short-circuit,
     rather than :meth:`call`.
@@ -134,8 +134,8 @@ class CircuitBreaker:
             for it in build logs.
         failure_threshold: Number of consecutive failures while
             CLOSED that trip the breaker to OPEN. Defaults to 5,
-            which matches the existing ``places/client.py`` and
-            ``vor.py`` Emergency-Stop thresholds.
+            which matches the existing ``vor.py`` Emergency-Stop
+            threshold.
         recovery_timeout: Seconds the breaker stays OPEN before
             transitioning to HALF_OPEN. Defaults to 60. Tune higher
             (e.g. 300) for upstreams that take a long time to

@@ -69,6 +69,11 @@ Sites covered
     file unbounded. A planted huge file crashes the station-directory
     update before any state is merged.
 
+Site 7 (and the ``src/places/client.py`` / Google-Places script mentions
+above) no longer exists: the Google Places stage was removed from the
+station-directory pipeline on 2026-10-16, so its regression test and
+inventory entry were dropped with it.
+
 Fix shape
 ---------
 Identical to Round 6: replace ``Path.read_text(encoding="utf-8")`` with
@@ -400,48 +405,6 @@ def test_check_complexity_parse_baseline_accepts_normal(tmp_path: Path) -> None:
 
 
 # ============================================================================
-# scripts/fetch_google_places_stations.py — _write_if_changed
-# ============================================================================
-
-
-def test_fetch_google_places_write_if_changed_rejects_oversized(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    """Pre-fix: ``_write_if_changed`` reads the existing stations.json
-    via ``path.read_text(encoding="utf-8")`` with NO size cap before
-    deciding whether to skip the write. A planted huge file at the
-    target path raises ``MemoryError`` past the surrounding handler
-    and crashes the cron pipeline.
-
-    Post-fix: ``read_capped_text`` returns ``None`` and the function
-    proceeds to overwrite (treats the oversized file as "different",
-    which is the safe default — overwrite poisoned state with the
-    freshly-fetched stations)."""
-    import sys
-
-    repo_root = Path(__file__).resolve().parents[1]
-    sys.path.insert(0, str(repo_root))
-    try:
-        from scripts import fetch_google_places_stations as fgps
-    finally:
-        sys.path.pop(0)
-
-    poisoned = tmp_path / "stations.json"
-    _write_oversized_text(poisoned, 4096)
-
-    monkeypatch.setattr(fgps, "MAX_STATIONS_FILE_BYTES", 1024)
-
-    # Run the function — pre-fix would MemoryError; post-fix should
-    # overwrite the poisoned file
-    fgps._write_if_changed(poisoned, [{"name": "Test Stop"}])
-
-    # The poisoned file has been overwritten with valid JSON
-    import json as _json
-    after = _json.loads(poisoned.read_text(encoding="utf-8"))
-    assert after == {"stations": [{"name": "Test Stop"}]}
-
-
-# ============================================================================
 # Inventory: every module exposes its expected MAX_* constant
 # ============================================================================
 
@@ -462,12 +425,8 @@ def test_round7_inventory_constants() -> None:
     repo_root = Path(__file__).resolve().parents[1]
     sys.path.insert(0, str(repo_root))
     try:
-        from scripts import (
-            check_complexity,
-            fetch_google_places_stations,
-        )
+        from scripts import check_complexity
 
         assert check_complexity.MAX_BASELINE_FILE_BYTES > 0
-        assert fetch_google_places_stations.MAX_STATIONS_FILE_BYTES > 0
     finally:
         sys.path.pop(0)

@@ -1,11 +1,11 @@
-"""Sentinel PoC: Coordinate-ingest drift — HAFAS / Google Places parsers
-accept non-finite (``NaN`` / ``+Inf`` / ``-Inf``) and out-of-WGS84-range
+"""Sentinel PoC: Coordinate-ingest drift — the HAFAS parser accepted non-finite (``NaN`` / ``+Inf`` / ``-Inf``) and out-of-WGS84-range
 ``lat`` / ``lon`` values from a compromised upstream and persist them
 verbatim into the public ``data/stations.json`` artefact.
 
 The 2026-05-11 HAFAS coordinate-fallback round (PR #1482, commit
 ``45d899c``) added :mod:`src.places.hafas_client` as the third tier of
-the station-directory enrichment cascade (OSM → HAFAS → Google Places).
+the station-directory enrichment cascade (OSM → HAFAS; the former
+Google Places tier was removed on 2026-10-16).
 The HAFAS parser :func:`src.places.hafas_client._extract_first_location`
 validates that ``crd.x`` / ``crd.y`` are ``int | float`` (and not
 ``bool``) but performs no finite check (``math.isfinite``) and no
@@ -15,18 +15,10 @@ line 617 AND incidentally against ``+Inf`` / ``-Inf`` via
 ``BoundingBox.contains`` (lines 516-517) — every comparison with
 ``±inf`` falls outside the Vienna box and the place is dropped.
 
-The Google Places sibling :func:`src.places.client.GooglePlacesClient.
-_parse_place` (lines 323-327) ships an even thinner check: only the
-``isinstance(latitude, float | int)`` shape, which accepts
-``float('nan')`` / ``float('inf')`` / ``float('-inf')`` directly
-because ``isinstance(NaN, float)`` returns ``True`` and the JSON decoder
-parses the non-standard ``NaN`` / ``Infinity`` / ``-Infinity`` literals
-into the corresponding Python float values by default.
-
 Threat model
 ------------
 
-Three distinct attacker positions can plant non-finite or out-of-range
+Two distinct attacker positions can plant non-finite or out-of-range
 coordinates into the cron pipeline:
 
   1. **Compromised HAFAS upstream** (``fahrplan.oebb.at``): a planted
@@ -44,17 +36,7 @@ coordinates into the cron pipeline:
      in Go), and silently visualised at impossible map locations by
      the lenient consumers that *do* accept them.
 
-  2. **Compromised Google Places upstream** (``places.googleapis.com``):
-     same shape via ``location: {latitude: NaN, longitude: Infinity}``
-     in the ``searchText`` response.  The
-     :class:`src.places.client.GooglePlacesClient._parse_place`
-     surface passes the value through ``float()`` and constructs a
-     :class:`Place` with the poisoned coordinates.  Downstream
-     :func:`src.places.merge.merge_places` writes the same fields
-     onto ``station["latitude"]`` / ``["longitude"]`` and the writer
-     persists them.
-
-  3. **MITM / DNS hijack** on either upstream: identical shape — the
+  2. **MITM / DNS hijack** on the upstream: identical shape — the
      finite check is absent on the *parser* side of the network
      boundary, so any on-path attacker controls both the byte stream
      AND the cached on-disk state.
@@ -88,7 +70,7 @@ ingest tier before the data lands in the committed artefact.
 The fix
 -------
 
-Three coordinated boundary scrubs:
+Two coordinated boundary scrubs:
 
   1. :func:`src.places.hafas_client._extract_first_location` — after
      dividing by ``_HAFAS_COORD_SCALE``, reject any pair where
@@ -97,15 +79,9 @@ Three coordinated boundary scrubs:
      outside the WGS84 valid range (``lat`` ∈ ``[-90, 90]``, ``lon``
      ∈ ``[-180, 180]``).
 
-  2. :func:`src.places.client.GooglePlacesClient._parse_place` —
-     mirror the same scrub on the post-``float()`` lat/lon pair so
-     a hostile Google Places response (or MITM) cannot smuggle
-     non-finite or out-of-range values into the :class:`Place`
-     dataclass.
-
-  3. :func:`src.places.merge.write_stations` — defence-in-depth:
+  2. :func:`src.places.merge.write_stations` — defence-in-depth:
      pass ``allow_nan=False`` to ``json.dumps`` so any future bypass
-     (a fourth tier added without the canonical floor) surfaces as a
+     (a new tier added without the canonical floor) surfaces as a
      loud :class:`ValueError` at write time rather than silently
      corrupting the committed artefact with non-standard JSON
      literals.
@@ -127,15 +103,12 @@ parser drops the check fails the inventory test.
 from __future__ import annotations
 
 import json
-import math
 from pathlib import Path
 from typing import Any
 
 import pytest
 
-from src.places import client as places_client
 from src.places import hafas_client
-from src.places.client import GooglePlacesClient, GooglePlacesConfig
 from src.places.hafas_client import HafasLocation
 from src.places.merge import StationEntry, write_stations
 
@@ -174,17 +147,6 @@ def _hafas_payload(x: object, y: object) -> dict[str, Any]:
                 },
             }
         ]
-    }
-
-
-def _google_place_payload(lat: object, lng: object) -> dict[str, Any]:
-    """Return a minimal Google Places response with *lat* and *lng*."""
-    return {
-        "id": "places/ChIJtest123",
-        "displayName": {"text": "Wien Hauptbahnhof"},
-        "location": {"latitude": lat, "longitude": lng},
-        "types": ["train_station"],
-        "formattedAddress": "Am Hauptbahnhof, 1100 Wien",
     }
 
 
@@ -294,95 +256,7 @@ def test_hafas_parser_accepts_wgs84_edge_coordinates() -> None:
 
 
 # ---------------------------------------------------------------------------
-# (3) Google Places parser — reject non-finite coordinates.
-# ---------------------------------------------------------------------------
-
-
-def _make_places_client() -> GooglePlacesClient:
-    """Construct a minimal GooglePlacesClient suitable for parser tests."""
-    config = GooglePlacesConfig(
-        api_key="test-api-key",
-        included_types=["train_station"],
-        language="de",
-        region="AT",
-        radius_m=1000,
-        timeout_s=5.0,
-        max_retries=0,
-    )
-    return GooglePlacesClient(config)
-
-
-@pytest.mark.parametrize(
-    ("latitude", "longitude"),
-    [
-        (_NAN, 16.377778),
-        (48.185222, _NAN),
-        (_NAN, _NAN),
-        (_POS_INF, 16.377778),
-        (48.185222, _POS_INF),
-        (_NEG_INF, 16.377778),
-        (48.185222, _NEG_INF),
-        (_POS_INF, _NEG_INF),
-    ],
-)
-def test_google_places_parser_rejects_non_finite_coordinates(
-    latitude: float,
-    longitude: float,
-) -> None:
-    """PoC: Google Places upstream replying with ``NaN`` / ``Inf``
-    for latitude or longitude must NOT produce a :class:`Place`.
-
-    SENTINEL_COORD_FINITE_DRIFT.
-    """
-    client = _make_places_client()
-    result = client._parse_place(_google_place_payload(latitude, longitude))
-    assert result is None, (
-        f"Non-finite Google Places coordinate {latitude=}/{longitude=} "
-        "reached the downstream writer — parser did not enforce "
-        "math.isfinite()."
-    )
-
-
-@pytest.mark.parametrize(
-    ("latitude", "longitude"),
-    [
-        (90.000_001, 16.377778),
-        (-90.000_001, 16.377778),
-        (48.185222, 180.000_001),
-        (48.185222, -180.000_001),
-        (1e10, 1e10),
-        (-1e10, -1e10),
-    ],
-)
-def test_google_places_parser_rejects_out_of_range_coordinates(
-    latitude: float,
-    longitude: float,
-) -> None:
-    """PoC: Google Places upstream replying with coordinates outside
-    the WGS84 valid range must NOT produce a :class:`Place`.
-
-    SENTINEL_COORD_FINITE_DRIFT.
-    """
-    client = _make_places_client()
-    result = client._parse_place(_google_place_payload(latitude, longitude))
-    assert result is None, (
-        f"Out-of-WGS84-range Google Places coordinate {latitude=}/"
-        f"{longitude=} reached the downstream writer — parser did "
-        "not enforce the WGS84 valid-range floor."
-    )
-
-
-def test_google_places_parser_accepts_legitimate_vienna_coordinates() -> None:
-    """Regression: a typical Vienna coordinate pair must still pass."""
-    client = _make_places_client()
-    result = client._parse_place(_google_place_payload(48.185222, 16.377778))
-    assert result is not None
-    assert math.isclose(result.latitude, 48.185222, abs_tol=1e-9)
-    assert math.isclose(result.longitude, 16.377778, abs_tol=1e-9)
-
-
-# ---------------------------------------------------------------------------
-# (4) Writer defence-in-depth — ``write_stations`` rejects non-finite floats.
+# (3) Writer defence-in-depth — ``write_stations`` rejects non-finite floats.
 # ---------------------------------------------------------------------------
 
 
@@ -468,7 +342,7 @@ def _raise_on_nan_or_infinity(token: str) -> float:
 
 
 # ---------------------------------------------------------------------------
-# (5) End-to-end integration — non-finite HAFAS coordinate never reaches
+# (4) End-to-end integration — non-finite HAFAS coordinate never reaches
 #     the on-disk artefact even if a future ingest tier forgets the check.
 # ---------------------------------------------------------------------------
 
@@ -502,7 +376,7 @@ def test_end_to_end_nan_never_reaches_stations_file(tmp_path: Path) -> None:
 
 
 # ---------------------------------------------------------------------------
-# (6) Inventory invariant — every parser tier applies the canonical floor.
+# (5) Inventory invariant — every parser tier applies the canonical floor.
 # ---------------------------------------------------------------------------
 
 
@@ -526,14 +400,6 @@ def test_inventory_every_places_parser_validates_finite_range() -> None:
         _hafas_payload(999_999_999, 48_185_222)
     ) is None
 
-    # Google Places parser — non-finite rejection.
-    client = _make_places_client()
-    assert client._parse_place(_google_place_payload(_NAN, 16.377778)) is None
-    assert client._parse_place(_google_place_payload(_POS_INF, 16.377778)) is None
-    # Google Places parser — out-of-range rejection.
-    assert client._parse_place(_google_place_payload(91.0, 16.377778)) is None
-    assert client._parse_place(_google_place_payload(48.185222, 181.0)) is None
-
 
 def test_inventory_writer_pins_allow_nan_false_contract() -> None:
     """Inventory: the :func:`src.places.merge.write_stations` writer
@@ -553,7 +419,7 @@ def test_inventory_writer_pins_allow_nan_false_contract() -> None:
 
 
 # ---------------------------------------------------------------------------
-# (7) Module-import smoke test — the fixes must not regress the module.
+# (6) Module-import smoke test — the fixes must not regress the module.
 # ---------------------------------------------------------------------------
 
 
@@ -562,5 +428,4 @@ def test_module_imports_remain_clean() -> None:
     the entry points the surrounding pipeline relies on."""
     assert hasattr(hafas_client, "_extract_first_location")
     assert hasattr(hafas_client, "enrich_station_with_hafas")
-    assert hasattr(places_client, "GooglePlacesClient")
     assert callable(write_stations)

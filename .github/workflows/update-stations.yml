@@ -20,11 +20,11 @@ name: Update station directory
 # * OSM Overpass — ``_enrich_with_osm`` queries Overpass via the
 #   ``WIEN_OEPNV_OSM_ENRICH=1`` env (toggled below by the Overpass
 #   smoke check); free open data, retried.
-# * Google Places — ``_enrich_with_google_places`` runs ONLY for the
+# * HAFAS (ÖBB Scotty) — ``_enrich_with_hafas`` runs ONLY for the
 #   subset of stations still missing coordinates after OSM
-#   (``_stations_missing_coordinates`` strict subset). Persistent
-#   monthly quota in ``data/places_quota.json`` enforces the contract
-#   limit.
+#   (``_stations_missing_coordinates`` strict subset). There is no
+#   further tier: the Google Places stage was removed on 2026-10-16
+#   (Michael's decision: only openly licensed coordinates).
 #
 # VOR is intentionally not invoked from this workflow (the project
 # reserves the VAO 100/day budget for the Stammstrecke monitor — see
@@ -50,8 +50,8 @@ jobs:
     # Defense-in-depth ceiling: the weekly station-directory refresh is
     # the second-heaviest workflow after manual-full-refresh. It does
     # the ÖBB Excel pull + WL OGD CSV pull + OSM Overpass enrichment +
-    # HAFAS manual-block enrichment + (conditional) Google Places
-    # fallback + validation + diff + heartbeat. Healthy runs take
+    # HAFAS manual-block enrichment + HAFAS coordinate fallback +
+    # validation + diff + heartbeat. Healthy runs take
     # 25-45 min depending on OSM Overpass and HAFAS latency. 60 min
     # gives ~1.3x headroom while catching hangs (stuck Overpass query,
     # runaway HAFAS retry loop) quickly. Without the cap the workflow
@@ -105,7 +105,7 @@ jobs:
       - name: Overpass smoke check (fail-fast / skip-OSM gate)
         id: overpass-smoke
         # ``--allow-skip`` downgrades network-failure exits to success so the
-        # job can keep running with the Google Places fallback when the public
+        # job can keep running with the HAFAS fallback when the public
         # Overpass mirror is degraded. The step's outcome is wired into the
         # next step's ``WIEN_OEPNV_OSM_ENRICH`` env so we don't waste the
         # urllib3 retry budget on a known-down upstream.

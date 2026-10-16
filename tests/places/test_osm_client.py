@@ -267,7 +267,7 @@ def test_fetch_stations_dedupes_repeated_ids(monkeypatch: pytest.MonkeyPatch, re
 
 
 def test_filter_complete_places_drops_blank_names() -> None:
-    from src.places.client import Place
+    from src.places.place import Place
 
     full = Place(place_id="osm:node/1", name="Wien", latitude=48.0, longitude=16.0, types=[], formatted_address=None)
     blank = Place(place_id="osm:node/2", name="   ", latitude=48.0, longitude=16.0, types=[], formatted_address=None)

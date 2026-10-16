@@ -5,8 +5,8 @@ and the Baustellen coordinate parser.
 The 2026-05-14 coordinate-finite/range round (PR #1485, commit
 ``31570fe``) pinned ``allow_nan=False`` on
 :func:`src.places.merge.write_stations` so a future bypass of the
-parser-level finite floor at :class:`src.places.hafas_client` /
-:class:`src.places.client.GooglePlacesClient` would surface as a loud
+parser-level finite floor at :class:`src.places.hafas_client`
+would surface as a loud
 :class:`ValueError` at write time rather than silently corrupting the
 committed ``data/stations.json`` artefact with non-standard
 ``NaN`` / ``Infinity`` / ``-Infinity`` JSON literals (invalid per
@@ -24,8 +24,7 @@ Sites enumerated
 ================
 
 (A) ``data/stations.json`` writers — committed to ``main`` by the
-    weekly ``update-stations.yml`` cron and the operator-only
-    ``update-google-places-stations.yml`` workflow:
+    weekly ``update-stations.yml`` cron:
 
       * :func:`scripts.update_station_directory.write_json` — the
         primary OEBB ``Verzeichnis der Verkehrsstationen`` Excel
@@ -61,16 +60,6 @@ Sites enumerated
         ``"infinity"`` (per Python's :class:`float` constructor
         contract).
 
-      * :func:`scripts.fetch_google_places_stations._write_if_changed`
-        — the Google-Places-only manual escape hatch invoked by
-        ``update-google-places-stations.yml`` (which lists
-        ``git add data/stations.json`` in its commit step).
-
-      * :func:`scripts.fetch_google_places_stations._dump_changes` —
-        the companion diff-dump writer (writes a sibling JSON with
-        only the ``new`` / ``updated`` entries; reviewed by operators
-        and shared via the workflow logs).
-
 (B) Cache writer (``cache/<provider>/events.json``) — committed to
     ``main`` by the IFTTT-triggered ``update-cycle.yml``:
 
@@ -91,8 +80,7 @@ Sites enumerated
         (line 509 pre-fix) — performs ``float(coordinates[0])`` /
         ``float(coordinates[1])`` without ``math.isfinite()`` or
         WGS84-range guards.  Mirrors the canonical floor pinned at
-        :func:`src.places.hafas_client._extract_first_location` and
-        :meth:`src.places.client.GooglePlacesClient._parse_place`.
+        :func:`src.places.hafas_client._extract_first_location`.
 
 Threat model
 ============
@@ -102,7 +90,7 @@ coordinates into the cron pipeline:
 
   1. **Compromised upstream**: ``data.wien.gv.at`` (Baustellen),
      OEBB ``Verzeichnis der Verkehrsstationen`` (Excel mirror),
-     ``places.googleapis.com``, OGD Wien-Linien CSVs, the operator
+     OGD Wien-Linien CSVs, the operator
      mirror of GTFS / VOR.  Any compromised JSON / CSV / XLSX
      response carrying the non-standard ``NaN`` / ``Infinity`` /
      ``-Infinity`` literal flows through the local ``float()`` /
@@ -145,7 +133,9 @@ lands data into a committed JSON artefact.
 The fix
 =======
 
-Eight coordinated edits, all pinned by this test file:
+Six coordinated edits, all pinned by this test file (the former
+``scripts/fetch_google_places_stations.py`` writers were removed with
+that script on 2026-10-16):
 
   1. ``scripts/update_station_directory.py:write_json`` —
      pass ``allow_nan=False`` to ``json.dump``.
@@ -155,13 +145,9 @@ Eight coordinated edits, all pinned by this test file:
      same.
   4. ``scripts/update_wl_stations.py:merge_into_stations`` (the
      ``json.dump`` near line 1226) — same.
-  5. ``scripts/fetch_google_places_stations.py:_write_if_changed`` —
-     pass ``allow_nan=False`` to ``json.dumps``.
-  6. ``scripts/fetch_google_places_stations.py:_dump_changes`` —
-     same.
-  7. ``src/utils/cache.py:write_cache`` — pass ``allow_nan=False``
+  5. ``src/utils/cache.py:write_cache`` — pass ``allow_nan=False``
      to ``json.dump``.
-  8. ``scripts/update_baustellen_cache.py:_build_location`` —
+  6. ``scripts/update_baustellen_cache.py:_build_location`` —
      reject non-finite (``math.isfinite``) and out-of-WGS84-range
      coordinates at the parser boundary so the writer-side floor is
      pure defence-in-depth (the legitimate events in the same batch
@@ -443,85 +429,6 @@ def test_inventory_update_wl_stations_writer_pins_allow_nan_false() -> None:
 
 
 # ---------------------------------------------------------------------------
-# (A5/A6) ``fetch_google_places_stations`` — both writers.
-# ---------------------------------------------------------------------------
-
-
-@pytest.mark.parametrize(
-    ("lat", "lon"),
-    [
-        (_NAN, 16.377778),
-        (48.185222, _POS_INF),
-    ],
-)
-def test_fetch_google_places_write_if_changed_rejects_non_finite(
-    tmp_path: Path,
-    lat: float,
-    lon: float,
-) -> None:
-    """PoC: ``_write_if_changed`` must refuse a poisoned station.
-
-    SENTINEL_COMPANION_WRITER_DRIFT.
-    """
-    module = _import_script("fetch_google_places_stations")
-    out_path = tmp_path / "stations.json"
-    poisoned = [_poisoned_station(lat=lat, lon=lon)]
-    with pytest.raises(ValueError):
-        module._write_if_changed(out_path, poisoned)
-
-
-def test_fetch_google_places_write_if_changed_accepts_legitimate(
-    tmp_path: Path,
-) -> None:
-    module = _import_script("fetch_google_places_stations")
-    out_path = tmp_path / "stations.json"
-    module._write_if_changed(out_path, [_legit_station()])
-    raw = out_path.read_text(encoding="utf-8")
-    parsed = json.loads(raw, parse_constant=_raise_on_nan_or_infinity)
-    assert parsed["stations"][0]["name"] == "Wien Hauptbahnhof"
-
-
-def test_fetch_google_places_dump_changes_rejects_non_finite(tmp_path: Path) -> None:
-    """PoC: ``_dump_changes`` must refuse a poisoned ``new`` entry.
-
-    SENTINEL_COMPANION_WRITER_DRIFT.
-    """
-    module = _import_script("fetch_google_places_stations")
-    out_path = tmp_path / "changes.json"
-    poisoned = [_poisoned_station(lat=_NAN, lon=16.377778)]
-    with pytest.raises(ValueError):
-        module._dump_changes(out_path, poisoned, [])
-
-    out_path2 = tmp_path / "changes2.json"
-    poisoned_updated = [_poisoned_station(lat=48.185222, lon=_POS_INF)]
-    with pytest.raises(ValueError):
-        module._dump_changes(out_path2, [], poisoned_updated)
-
-
-def test_fetch_google_places_dump_changes_accepts_legitimate(tmp_path: Path) -> None:
-    module = _import_script("fetch_google_places_stations")
-    out_path = tmp_path / "changes.json"
-    module._dump_changes(out_path, [_legit_station()], [])
-    raw = out_path.read_text(encoding="utf-8")
-    parsed = json.loads(raw, parse_constant=_raise_on_nan_or_infinity)
-    assert parsed["new"][0]["name"] == "Wien Hauptbahnhof"
-
-
-def test_inventory_fetch_google_places_writers_pin_allow_nan_false() -> None:
-    module = _import_script("fetch_google_places_stations")
-    write_source = inspect.getsource(module._write_if_changed)
-    dump_source = inspect.getsource(module._dump_changes)
-    assert "allow_nan=False" in write_source, (
-        "scripts/fetch_google_places_stations.py:_write_if_changed "
-        "must serialise data/stations.json with allow_nan=False."
-    )
-    assert "allow_nan=False" in dump_source, (
-        "scripts/fetch_google_places_stations.py:_dump_changes must "
-        "serialise the change-dump JSON with allow_nan=False."
-    )
-
-
-# ---------------------------------------------------------------------------
 # (B) ``src.utils.cache.write_cache`` — PoC + inventory.
 # ---------------------------------------------------------------------------
 
@@ -797,8 +704,6 @@ def test_inventory_every_committed_artefact_writer_pins_allow_nan_false() -> Non
         ("enrich_station_aliases", "_write_stations_payload"),
         ("update_all_stations", "_write_stations_payload"),
         ("update_wl_stations", "merge_into_stations"),
-        ("fetch_google_places_stations", "_write_if_changed"),
-        ("fetch_google_places_stations", "_dump_changes"),
     ]
     missing: list[str] = []
     for module_name, func_name in inventory:
@@ -822,7 +727,7 @@ def test_inventory_every_committed_artefact_writer_pins_allow_nan_false() -> Non
 def test_inventory_baustellen_parser_pins_canonical_finite_floor() -> None:
     """Inventory: the Baustellen coordinate parser must apply the
     canonical finite + WGS84-range floor at its boundary, mirroring
-    the HAFAS / Google Places / OSM parser-level checks pinned in
+    the HAFAS / OSM parser-level checks pinned in
     Round 1485.
 
     SENTINEL_COMPANION_WRITER_DRIFT.
@@ -856,8 +761,6 @@ def test_module_imports_remain_clean() -> None:
         ("enrich_station_aliases", "_write_stations_payload"),
         ("update_all_stations", "_write_stations_payload"),
         ("update_wl_stations", "merge_into_stations"),
-        ("fetch_google_places_stations", "_write_if_changed"),
-        ("fetch_google_places_stations", "_dump_changes"),
         ("update_baustellen_cache", "_build_location"),
     ]:
         module = _import_script(module_name)

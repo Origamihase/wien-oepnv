@@ -19,13 +19,11 @@ with ``add_options: "-A"`` — exactly the same threat surface Rounds
 Sinks pinned in this PoC
 =========================
 
-1. ``scripts/fetch_google_places_stations.py:_write_if_changed``
-   (line ~288) — writes ``{"stations": [...]}`` to ``data/stations.json``
-   during the manual Google-Places-only escape hatch path
-   (``update-google-places-stations.yml`` workflow).
-2. ``scripts/fetch_google_places_stations.py:_dump_changes``
-   (line ~273) — writes a ``{"new": [...], "updated": [...]}``
-   per-run change-dump sidecar.
+Sinks 1-2 (``scripts/fetch_google_places_stations.py:_write_if_changed``
+and ``_dump_changes``) were removed together with that script on
+2026-10-16 (Google Places stage dropped); the numbering below is kept
+stable so the section headers still match the Round-13 checklist.
+
 3. ``scripts/update_all_stations.py:_write_stations_payload``
    (line ~529) — writes ``{"stations": [...]}`` to the orchestrator's
    temp file which is then copy-back'd to ``data/stations.json``
@@ -52,8 +50,7 @@ Sinks pinned in this PoC
 Threat model (identical to Round 13)
 =====================================
 
-1. Attacker compromises an upstream provider (Google Places hijack,
-   OSM Overpass cache poisoning, OEBB ``Verzeichnis der
+1. Attacker compromises an upstream provider (OSM Overpass cache poisoning, OEBB ``Verzeichnis der
    Verkehrsstationen`` Excel response tampering, Wien OGD CSV
    poisoning, VAO ReST station-resolution endpoint hijack, leaked CI
    secret store) or an operator mis-edits ``data/stations.json`` /
@@ -62,15 +59,14 @@ Threat model (identical to Round 13)
    in a ``name`` / ``aliases[]`` / ``_formatted_address`` /
    ``station_name`` / ``resolved_name`` field — e.g.
    ``name="Hauptbahnhof<U+202E>moc.live"`` displays as
-   ``Hauptbahnhofevil.com`` — reaches one of the eight script-level
+   ``Hauptbahnhofevil.com`` — reaches one of the script-level
    writers above.
 3. Pre-fix each writer serialised the item via
    ``json.dump(..., ensure_ascii=False, ...)`` or
    ``json.dumps(..., ensure_ascii=False, ...)``. ``ensure_ascii=False``
    emits U+202E as its raw UTF-8 byte triplet ``\\xe2\\x80\\xae``, so
    the on-disk file carries the BiDi-reversal trigger.
-4. The ``update-stations.yml`` / ``update-google-places-stations.yml``
-   workflow commits the poisoned file to ``main``. The malicious name
+4. The ``update-stations.yml`` workflow commits the poisoned file to ``main``. The malicious name
    is now visible in ``git log -p`` / ``git show`` / the GitHub web UI
    / ``cat`` / ``less`` / IDE preview — every viewer honours BiDi
    reversal.
@@ -154,136 +150,6 @@ _UTF8_BYTES = {p: p.encode("utf-8") for p in _TROJAN_SOURCE_PRIMITIVES}
 # E2 80 AE drives the actual BiDi reversal that hides the attack
 # in any operator review pass.
 _RLO_UTF8 = b"\xe2\x80\xae"
-
-
-# ---------------------------------------------------------------------
-# Sink 1: ``scripts/fetch_google_places_stations.py:_write_if_changed``
-# ---------------------------------------------------------------------
-
-
-def test_fetch_google_places_write_if_changed_no_rlo_leak(tmp_path: Path) -> None:
-    """A planted station name with U+202E reaches ``data/stations.json``
-    pre-fix via the manual Google-Places escape-hatch workflow."""
-    from scripts.fetch_google_places_stations import _write_if_changed
-
-    target = tmp_path / "stations.json"
-    stations = [
-        {
-            "name": "Hauptbahnhof‮moc.live",
-            "source": "google_places",
-            "latitude": 48.18,
-            "longitude": 16.38,
-        }
-    ]
-    _write_if_changed(target, stations)
-
-    raw = target.read_bytes()
-    assert _RLO_UTF8 not in raw, (
-        "U+202E (RLO) leaked verbatim into data/stations.json via "
-        "_write_if_changed — BiDi reversal is now active for any "
-        "cat / less / GitHub / IDE viewer of the file."
-    )
-
-
-@pytest.mark.parametrize("primitive", _TROJAN_SOURCE_PRIMITIVES)
-def test_fetch_google_places_write_if_changed_strips_every_primitive(
-    tmp_path: Path, primitive: str
-) -> None:
-    """Every canonical attack-byte primitive must be rejected at the
-    ingestion boundary — a single primitive surviving in raw form
-    reopens the attack via a future provider-controlled field."""
-    from scripts.fetch_google_places_stations import _write_if_changed
-
-    target = tmp_path / f"stations-{ord(primitive):04x}.json"
-    stations = [
-        {
-            "name": f"evil{primitive}.example",
-            "source": "google_places",
-            "latitude": 48.18,
-            "longitude": 16.38,
-            "aliases": [f"alias{primitive}evil"],
-        }
-    ]
-    _write_if_changed(target, stations)
-
-    raw = target.read_bytes()
-    expected = _UTF8_BYTES[primitive]
-    assert expected not in raw, (
-        f"Trojan-Source primitive U+{ord(primitive):04X} leaked into "
-        f"data/stations.json via _write_if_changed as raw UTF-8 bytes ({expected!r})."
-    )
-
-
-def test_fetch_google_places_write_if_changed_preserves_german_umlauts(
-    tmp_path: Path,
-) -> None:
-    """Legitimate German content (ä/ö/ü/Ä/Ö/Ü/ß) must survive the
-    scrubber so the weekly commit diff stays compact."""
-    from scripts.fetch_google_places_stations import _write_if_changed
-
-    target = tmp_path / "stations.json"
-    stations = [
-        {
-            "name": "Wien Hütteldorf",
-            "aliases": ["Hauptbahnhof", "Floridsdorfer Brücke", "Wien Heiligenstadt", "Praterstraße"],
-            "source": "google_places",
-            "latitude": 48.18,
-            "longitude": 16.38,
-        }
-    ]
-    _write_if_changed(target, stations)
-
-    text = target.read_text(encoding="utf-8")
-    assert "Hütteldorf" in text
-    assert "Floridsdorfer Brücke" in text
-    assert "Praterstraße" in text
-    # Sanity: the bloated \u00XX escape form must NOT appear — that
-    # would mean we accidentally switched to ensure_ascii=True and
-    # ballooned the diff size 4-6x.
-    assert "\\u00fc" not in text
-    assert "\\u00df" not in text
-
-
-# ---------------------------------------------------------------------
-# Sink 2: ``scripts/fetch_google_places_stations.py:_dump_changes``
-# ---------------------------------------------------------------------
-
-
-def test_fetch_google_places_dump_changes_no_rlo_leak(tmp_path: Path) -> None:
-    """The per-run change dump sidecar also gets committed via the
-    same workflow — same ingestion-boundary scrubbing required."""
-    from scripts.fetch_google_places_stations import _dump_changes
-
-    target = tmp_path / "places_changes.json"
-    new_entries = [
-        {"name": "EvilStation‮moc.live", "place_id": "abc"},
-    ]
-    updated_entries = [
-        {"name": "Hbf‮.evil", "place_id": "def"},
-    ]
-    _dump_changes(target, new_entries, updated_entries)
-
-    raw = target.read_bytes()
-    assert _RLO_UTF8 not in raw, (
-        "U+202E (RLO) leaked verbatim into the change-dump sidecar."
-    )
-
-
-@pytest.mark.parametrize("primitive", _TROJAN_SOURCE_PRIMITIVES)
-def test_fetch_google_places_dump_changes_strips_every_primitive(
-    tmp_path: Path, primitive: str
-) -> None:
-    from scripts.fetch_google_places_stations import _dump_changes
-
-    target = tmp_path / f"changes-{ord(primitive):04x}.json"
-    new_entries = [{"name": f"evil{primitive}.example", "place_id": "abc"}]
-    _dump_changes(target, new_entries, [])
-
-    raw = target.read_bytes()
-    expected = _UTF8_BYTES[primitive]
-    assert expected not in raw, (
-        f"Trojan-Source primitive U+{ord(primitive):04X} leaked into change dump."
-    )
 
 
 # ---------------------------------------------------------------------
@@ -572,7 +438,6 @@ def test_all_script_writers_use_shared_scrubber_helper() -> None:
     primitive set would silently drift away from the canonical floor
     pinned in ``src/utils/serialize.py``."""
     targets = [
-        "scripts/fetch_google_places_stations.py",
         "scripts/update_all_stations.py",
         "scripts/enrich_station_aliases.py",
         "scripts/update_station_directory.py",

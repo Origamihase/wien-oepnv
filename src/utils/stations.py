@@ -1214,8 +1214,7 @@ def open_data_coordinate(name: str, *, prefer: str = "oebb") -> OpenCoordinate |
     notice).
 
     The directory's own ``latitude``/``longitude`` are deliberately not
-    used: they are merged from OpenStreetMap, ÖBB HAFAS and Google Places
-    as well, and the GeoRSS elements in the public feed must only carry
+    used: they are merged from OpenStreetMap and ÖBB HAFAS as well, and the GeoRSS elements in the public feed must only carry
     coordinates whose origin and terms are known (operator decision
     2026-10-16). A station found in neither dataset yields ``None`` — no
     fallback.

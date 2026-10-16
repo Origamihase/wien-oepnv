@@ -41,5 +41,5 @@ Im Projekt-Code (`src/providers/vor.py`) sind `VOR_VERSION` (primär) und `VOR_V
 
 ## Nächste Schritte
 
-- Falls eine neue Version aktiviert werden soll, `VOR_VERSION` als Umgebungsvariable setzen (Default ist im Code gepinnt).
+- Falls eine neue Version aktiviert werden soll, `DEFAULT_VERSION` in `src/providers/vor.py` anheben (Default ist im Code gepinnt). Die Umgebungsvariable `VOR_VERSION` wirkt nur lokal: Seit 2026-10-16 reicht kein Workflow sie weiter, ein Repository-Secret dieses Namens bliebe also wirkungslos (`tests/test_workflow_secrets.py` lässt CI scheitern, sobald ein Workflow ein nicht registriertes Secret übergibt).
 - Referenzkapitel der PDF konsultieren, falls Parameter zwischen Versionen variieren.

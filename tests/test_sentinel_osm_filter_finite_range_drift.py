@@ -95,7 +95,7 @@ import math
 import pytest
 
 from src.places import osm_client as osm_module
-from src.places.client import Place
+from src.places.place import Place
 from src.places.osm_client import filter_complete_places
 
 

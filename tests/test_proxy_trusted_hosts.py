@@ -21,7 +21,6 @@ import requests
 import responses
 
 from scripts import sync_hafas_profile, update_baustellen_cache, update_station_directory, update_wl_stations
-from src.places import client as places_client
 from src.places import hafas_client, osm_client
 from src.providers import oebb, vor, wl_fetch
 from src.utils.http import (
@@ -56,7 +55,7 @@ def test_without_a_proxy_the_peer_ip_is_checked() -> None:
     [
         ({"HTTPS_PROXY": PROXY}, "https://www.wienerlinien.at/ogd_realtime/x"),
         ({"https_proxy": PROXY}, "https://fahrplan.oebb.at/bin/mgate.exe"),
-        ({"ALL_PROXY": "socks5://proxy.invalid:1080"}, "https://places.googleapis.com/v1/places:searchText"),
+        ({"ALL_PROXY": "socks5://proxy.invalid:1080"}, "https://overpass-api.de/api/interpreter"),
         ({"HTTP_PROXY": PROXY}, "http://93.184.216.34/pinned"),  # the pinned plain-HTTP path
         ({"HTTPS_PROXY": PROXY}, "https://WWW.Wienerlinien.at./ogd_realtime/x"),  # case, trailing dot
     ],
@@ -156,7 +155,6 @@ def _upstream_hosts() -> dict[str, set[str]]:
         "baustellen": update_baustellen_cache._BAUSTELLEN_TRUSTED_HOSTS,
         "hafas": {_host(hafas_client._HAFAS_ENDPOINT)},
         "overpass": {_host(url) for url in osm_client.DEFAULT_OVERPASS_ENDPOINTS},
-        "places": {_host(places_client._API_BASE)},
         "hafas_profile": {_host(sync_hafas_profile._PROFILE_SOURCE_URL)},
         "station_directory": {_host(update_station_directory.DEFAULT_SOURCE_URL)},
         "wl_stations": {_host(update_wl_stations.OGD_LINIEN_URL), _host(update_wl_stations.OGD_HALTESTELLEN_URL)},

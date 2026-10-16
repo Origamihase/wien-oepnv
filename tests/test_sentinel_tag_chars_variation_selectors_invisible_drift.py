@@ -243,7 +243,7 @@ def test_trojan_source_primitives_re_matches_missing_code_point(
     that every committed cache / state / stations writer runs on its
     payload before serialising. Pre-fix a planted Tag-character
     payload reaches ``cache/<provider>/events.json`` /
-    ``data/stations.json`` / ``data/places_quota.json`` verbatim.
+    ``data/stations.json`` verbatim.
     """
     assert _TROJAN_SOURCE_PRIMITIVES_RE.search(code_point) is not None, (
         f"_TROJAN_SOURCE_PRIMITIVES_RE must match {label}"

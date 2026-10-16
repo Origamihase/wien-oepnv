@@ -1075,8 +1075,8 @@ def _safe_rebuild_auth(self: requests.Session, prepared_request: requests.Prepar
         # Also strip sensitive QUERY parameters from the redirect URL.
         # ``request_safe`` does this inside its manual redirect loop via
         # ``_strip_redirect_secrets``, but callers that hit ``Session``
-        # directly (e.g. ``places/client.py`` POSTs that use the session's
-        # native redirect handling) only reach THIS hook. Without the
+        # directly (POSTs that use the session's native redirect
+        # handling) only reach THIS hook. Without the
         # strip, a cross-origin redirect target receives the auth token
         # in the URL line of the next request — defeating the header
         # strip immediately above.
@@ -1654,7 +1654,6 @@ PROXY_TRUSTED_HOSTS: frozenset[str] = frozenset({
     "fahrplan.oebb.at",  # src/providers/oebb.py, src/places/hafas_client.py
     "overpass-api.de",  # src/places/osm_client.py
     "overpass.kumi.systems",  # src/places/osm_client.py
-    "places.googleapis.com",  # src/places/client.py
     "raw.githubusercontent.com",  # scripts/sync_hafas_profile.py
     "routenplaner.verkehrsauskunft.at",  # src/providers/vor.py, Stammstrecke monitor
     "www.wienerlinien.at",  # src/providers/wl_fetch.py, scripts/update_wl_stations.py

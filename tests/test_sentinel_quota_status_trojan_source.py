@@ -1,16 +1,12 @@
-"""Sentinel PoC: Trojan-Source / BiDi-Mark leakage at the three
-committed operator-facing JSON sidecar writers that the *BiDi-Mark
-Drift Round 10* closing-checklist named but deferred —
-``MonthlyQuota.save_atomic`` (``data/places_quota.json``),
+"""Sentinel PoC: Trojan-Source / BiDi-Mark leakage at the committed
+operator-facing JSON sidecar writers that the *BiDi-Mark Drift
+Round 10* closing-checklist named but deferred —
 ``save_request_count``'s atomic-write site
 (``data/vor_request_count.json``), and ``write_status``
 (``cache/<provider>/last_run.json``).
 
 These files are committed to ``main`` by the automated pipeline:
 
-  * ``data/places_quota.json`` — by the weekly ``update-stations.yml``
-    cron job (the OSM-first / Google-Places-fallback step charges
-    against this quota and writes the persisted counter).
   * ``data/vor_request_count.json`` — by the IFTTT-triggered
     ``update-cycle.yml`` (Stammstrecke step). The former
     ``update-vor-cache.yml`` operator-only escape hatch that also
@@ -38,26 +34,9 @@ The state-cache writer (``_save_state``), the orchestrator heartbeat
 writer (``_write_heartbeat_file``), the auto-quarantine writer
 (``_write_quarantine_file``) and the stations-diff markdown writer
 (``_render_diff_markdown``) already closed this drift in PR #1434 and
-PR #1435 (journal Rounds 9 and 10). The three sibling writers below
+PR #1435 (journal Rounds 9 and 10). The sibling writers below
 are the deferred siblings the Round-10 closing-checklist explicitly
 named.
-
-Attack path for ``MonthlyQuota.save_atomic``
-=============================================
-
-The current schema serialises ``month_key``, ``daily_key``,
-``counts`` (a ``dict[str, int]``), ``total`` and ``daily_total`` —
-``month_key`` and ``daily_key`` are *strings*. Today both fields are
-populated from internal helpers (``current_month_key`` /
-``current_daily_key`` return safe ASCII), but the dataclass itself
-accepts any string. A future schema-drift addition or an operator
-mis-edit of the on-disk file would slip a planted BiDi mark straight
-through to the next ``save_atomic`` write — the file is committed to
-``main`` by the weekly ``update-stations.yml`` cron job (the OSM-first
-/ Google-Places-fallback step charges against this quota and writes
-the persisted counter) and rendered via ``cat`` / ``less`` / the
-GitHub web UI / IDE preview, where the BiDi reversal of the
-surrounding bytes hides the attack from review.
 
 Attack path for ``save_request_count``'s writer
 ================================================
@@ -86,7 +65,6 @@ slip through.
 To pin the invariant programmatically (the same shape the existing
 Round-9 / Round-10 PoCs use), each post-fix writer uses
 ``ensure_ascii=True``. The PoCs below use a synthetic payload field
-(or, for ``MonthlyQuota``, the existing ``daily_key`` string field)
 carrying the canonical Trojan-Source primitive set to demonstrate the
 escape behaviour: every primitive lands as a literal ``\\uXXXX`` escape
 in the on-disk file rather than its raw UTF-8 byte sequence.
@@ -94,7 +72,7 @@ in the on-disk file rather than its raw UTF-8 byte sequence.
 Fix shape
 ==========
 
-All three writers: switch from ``ensure_ascii=False`` to
+Both writers: switch from ``ensure_ascii=False`` to
 ``ensure_ascii=True``. The VOR writer additionally extracts the inline
 ``atomic_write`` block into a ``_write_request_count_file(path,
 payload)`` helper, mirroring the Round-10 ``_write_heartbeat_file``
@@ -118,7 +96,6 @@ from pathlib import Path
 
 import pytest
 
-from src.places.quota import MonthlyQuota
 from src.providers.vor import _write_request_count_file
 from src.utils import cache
 from src.utils.files import sanitize_filename
@@ -168,97 +145,7 @@ _UTF8_BYTES = {primitive: primitive.encode("utf-8") for primitive in _TROJAN_SOU
 
 
 # ---------------------------------------------------------------------
-# PoC 1: ``MonthlyQuota.save_atomic`` — the ``daily_key`` / ``month_key``
-# string fields MUST NOT leak raw BiDi marks into the on-disk file.
-# ---------------------------------------------------------------------
-
-
-def test_quota_save_atomic_does_not_emit_raw_bidi_override(tmp_path: Path) -> None:
-    """A planted ``daily_key`` carrying U+202E reaches the on-disk
-    ``data/places_quota.json`` verbatim pre-fix. Operators viewing the
-    file via ``cat`` / ``less`` / GitHub web UI / IDE preview see the
-    BiDi-reversed display of the surrounding bytes, hiding the attack
-    from review.
-    """
-    quota = MonthlyQuota(
-        month_key="2026-05",
-        counts={"nearby": 1, "text": 0, "details": 0},
-        total=1,
-        daily_key="2026-05-10‮moc.live",
-        daily_total=1,
-    )
-    out_path = tmp_path / "places_quota.json"
-    quota.save_atomic(out_path)
-
-    raw_bytes = out_path.read_bytes()
-    # The smoking gun: U+202E encodes to the 3-byte UTF-8 sequence E2 80 AE.
-    # Its appearance in the on-disk file means BiDi reversal is now active
-    # for any cat / less / GitHub / IDE viewer of the file.
-    assert b"\xe2\x80\xae" not in raw_bytes, (
-        "U+202E (RLO) leaked verbatim into data/places_quota.json — "
-        "BiDi reversal is now active for any cat/less/GitHub viewer of the file."
-    )
-    # Defense-in-depth: the escaped form ``\\u202e`` MUST appear so the
-    # forensic intent (preserve which date / key was tracked) is not lost.
-    assert "\\u202e" in raw_bytes.decode("utf-8"), (
-        "The escaped sentinel ``\\u202e`` is missing — quota state lost."
-    )
-
-
-@pytest.mark.parametrize("primitive", _TROJAN_SOURCE_PRIMITIVES)
-def test_quota_save_atomic_escapes_every_trojan_source_primitive(
-    tmp_path: Path, primitive: str
-) -> None:
-    """The escape behaviour MUST be uniform across the canonical
-    Trojan-Source / zero-width / line-terminator / C1 union — a single
-    primitive surviving in raw form reopens the attack via a future
-    field that carries operator-controlled or schema-drift content.
-    """
-    quota = MonthlyQuota(
-        month_key="2026-05",
-        daily_key=f"evil{primitive}.example",
-        daily_total=1,
-        total=1,
-    )
-    out_path = tmp_path / "places_quota.json"
-    quota.save_atomic(out_path)
-
-    raw_bytes = out_path.read_bytes()
-    raw_utf8 = _UTF8_BYTES[primitive]
-    assert raw_utf8 not in raw_bytes, (
-        f"Trojan-Source primitive U+{ord(primitive):04X} leaked into the "
-        f"places quota state file as raw UTF-8 bytes ({raw_utf8!r})."
-    )
-
-
-def test_quota_save_atomic_round_trips_legitimate_payload(tmp_path: Path) -> None:
-    """Regression: the canonical quota schema (ASCII-safe ISO keys + ints)
-    round-trips byte-stable through ``json.loads``. The ``MonthlyQuota.load``
-    path must continue to recover the in-memory state from the on-disk file
-    after the ``ensure_ascii=True`` switch — operators relying on the file
-    for monthly reconciliation see exactly the same parsed structure as
-    pre-fix runs.
-    """
-    quota = MonthlyQuota(
-        month_key="2026-05",
-        counts={"nearby": 3, "text": 2, "details": 1},
-        total=6,
-        daily_key="2026-05-10",
-        daily_total=4,
-    )
-    out_path = tmp_path / "places_quota.json"
-    quota.save_atomic(out_path)
-
-    parsed = json.loads(out_path.read_text(encoding="utf-8"))
-    assert parsed["month"] == "2026-05"
-    assert parsed["counts"] == {"nearby": 3, "text": 2, "details": 1}
-    assert parsed["total"] == 6
-    assert parsed["daily_key"] == "2026-05-10"
-    assert parsed["daily_total"] == 4
-
-
-# ---------------------------------------------------------------------
-# PoC 2: ``_write_request_count_file`` — the extracted VOR quota writer
+# PoC 1: ``_write_request_count_file`` — the extracted VOR quota writer
 # helper MUST NOT leak raw BiDi marks into
 # ``data/vor_request_count.json``.
 # ---------------------------------------------------------------------
@@ -329,7 +216,7 @@ def test_vor_request_count_round_trips_legitimate_payload(tmp_path: Path) -> Non
 
 
 # ---------------------------------------------------------------------
-# PoC 3: ``write_status`` — the cache heartbeat writer MUST NOT leak
+# PoC 2: ``write_status`` — the cache heartbeat writer MUST NOT leak
 # raw BiDi marks into ``cache/<provider>/last_run.json``.
 # ---------------------------------------------------------------------
 
