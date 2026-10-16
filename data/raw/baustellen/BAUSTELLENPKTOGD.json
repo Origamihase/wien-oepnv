@@ -72,29 +72,6 @@
   {
    "geometry": {
     "first_position": [
-     16.52592037,
-     48.2497451
-    ],
-    "type": "Point"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Kundenzentrum",
-    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
-    "ANTRAGSTELLER": "MA28",
-    "BEHINDERUNGSART": "Straßenbau",
-    "BEZEICHNUNG": "Breitenleer Straße 400",
-    "BEZIRK": 22,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-10-12Z",
-    "OBJEKT_ENDE": "2026-10-16Z",
-    "PRESSETEXT": "ImBaustellenbereich wird ein Fahrstreifen freigehalten und der Verkehr wechselweise mittels Personal durchgeschleust.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
      16.35383861,
      48.20412073
     ],
@@ -158,29 +135,6 @@
     "OBJEKT_BEGINN": "2026-06-28Z",
     "OBJEKT_ENDE": "2026-11-27Z",
     "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. ImBaustellenbereich wird ein Fahrstreifen mit einer Restfahrbahn von 3,00 mfreigehalten und der Verkehr wechselweise mittels Verkehrszeichen durchgeschleust. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
-     16.32544707,
-     48.24010387
-    ],
-    "type": "Point"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Kundenzentrum",
-    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
-    "ANTRAGSTELLER": "MA28",
-    "BEHINDERUNGSART": "Straßenbau",
-    "BEZEICHNUNG": "Felix-Dahn-Straße Kreuzung Hartäckerstraße und Antelweg",
-    "BEZIRK": 19,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-10-05Z",
-    "OBJEKT_ENDE": "2026-10-15Z",
-    "PRESSETEXT": "Die Hartäckerstraße wird von Felix-Dahn-Straße in Richtung Dänenstraße als Einbahn geführt. Die Felix-Dahn-Straße wird zwischen Peter-Jordan-Straße und Hartäckerstraße in Richtung Hartäckerstraße als Einbahn geführt. Der Fahrzeugverkehr kommend vom 19. Bezirk in Richtung 18. Bezirk wird über die Felix-Dahn-Straße Hartäckerstraße Dänenstraße Peter-Jordan-Straße geführt.Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen.",
     "SE_ANNO_CAD_DATA": null
    }
   },
@@ -457,29 +411,6 @@
     "OBJEKT_BEGINN": "2026-09-21Z",
     "OBJEKT_ENDE": "2026-11-20Z",
     "PRESSETEXT": "Ein Fahrstreifen je Fahrtrichtung bleibt aufrecht. Die rechte Nebenfahrbahn in Fahrtrichtung Triester Straße wird gesperrt. DerFußgänger- und Radverkehr kann aufrecht gehalten werden.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
-     16.42189748,
-     48.27593991
-    ],
-    "type": "Point"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Kundenzentrum",
-    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
-    "ANTRAGSTELLER": "MA28",
-    "BEHINDERUNGSART": "Straßenbau",
-    "BEZEICHNUNG": "Ruthnergasse Kreuzung Justgasse",
-    "BEZIRK": 21,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-09-20Z",
-    "OBJEKT_ENDE": "2026-10-15Z",
-    "PRESSETEXT": "ImBaustellenbereich wird ein Fahrstreifen freigehalten und der Verkehr wechselweise mittels Personal während der Spitzenzeiten oder Verkehrszeichen durchgeschleust. Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen.",
     "SE_ANNO_CAD_DATA": null
    }
   },
