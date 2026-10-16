@@ -62,11 +62,12 @@
   // Wert, ohne Annahmen über nur teilweise dokumentierte Endpunkte/Params.
   // Abfrage-Koordinaten: Wien Hauptbahnhof aus dem Stationsverzeichnis
   // (data/stations.json — Eintrag "Wien Hauptbahnhof", bst_id 900100 /
-  // eva_nr 8103000).
+  // eva_nr 8103000; Koordinate aus dem ÖBB-GeoNetz, CC BY 4.0, seit
+  // 16.10.2026 statt der früheren Google-Places-Koordinate).
   const WEATHER_API = "https://api.open-meteo.com/v1";
   const WEATHER_MODEL = "geosphere_arome_austria";
-  const WEATHER_LAT = "48.186116";
-  const WEATHER_LON = "16.374399";
+  const WEATHER_LAT = "48.185201";
+  const WEATHER_LON = "16.376296";
 
   // ----- Lokalisierung (Zero-Tracker) ---------------------------------
   // Statisches Wörterbuch: das Frontend-UI hat wenig Text, deshalb wird
