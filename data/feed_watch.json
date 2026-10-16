@@ -1,13 +1,25 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-16T18:01:05.649116+00:00",
- "built": "2026-10-16T20:00:52+02:00",
+ "updated": "2026-10-16T18:31:02.770386+00:00",
+ "built": "2026-10-16T20:30:46+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-16T20:00:52+02:00",
+  "built": "2026-10-16T20:30:46+02:00",
   "items": [
+   {
+    "title": "62/LB: Fahrzeug im Gleis",
+    "time_line": "Seit 20:03"
+   },
+   {
+    "title": "38A: Falschparker",
+    "time_line": "Seit 20:25"
+   },
+   {
+    "title": "U6: Rettungseinsatz",
+    "time_line": "Seit 20:18"
+   },
    {
     "title": "Verzögerung auf der Strecke: Wien",
     "time_line": "Seit 19:58"
@@ -15,10 +27,6 @@
    {
     "title": "6/18: Fahrzeug im Gleis",
     "time_line": "Seit 19:32"
-   },
-   {
-    "title": "62: Rettungseinsatz",
-    "time_line": "Seit 19:42"
    },
    {
     "title": "4A: Schadhaftes Fahrzeug",
@@ -33,19 +41,11 @@
     "time_line": "Seit 13:16"
    },
    {
-    "title": "40: Demonstration",
-    "time_line": "Heute"
-   },
-   {
     "title": "D: Demonstration, Gleisbauarbeiten",
     "time_line": "Heute"
    },
    {
     "title": "62A/7A/N8: Bauarbeiten",
-    "time_line": "Heute"
-   },
-   {
-    "title": "64A: Seybelgasse",
     "time_line": "Heute"
    }
   ]
@@ -5610,6 +5610,26 @@
     "baustellen": 3,
     "oebb": 11,
     "wl": 112
+   }
+  },
+  {
+   "t": "2026-10-16T18:31:02.770386+00:00",
+   "raw": {
+    "wl-stoerungen": 183,
+    "wl-hinweise": 84,
+    "oebb": 161,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 25
+   },
+   "discarded": {
+    "wl": 36,
+    "oebb": 136,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 11,
+    "wl": 114
    }
   }
  ]

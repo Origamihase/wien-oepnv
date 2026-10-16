@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:georss="http://www.georss.org/georss" version="2.0">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" version="2.0">
   <channel>
     <title>Vienna Public Transport — Disruptions &amp; Commuter Info</title>
     <link>https://github.com/Origamihase/wien-oepnv</link>
@@ -8,8 +8,41 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Code: MIT licence. Notice texts remain with their sources: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0), ÖBB (© ÖBB, not openly licensed). Details: NOTICE.md in the repository.</copyright>
-    <lastBuildDate>Fri, 16 Oct 2026 20:16:14 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 20:30:46 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[62/LB: Vehicle on the track]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">9c98376a065019f9814bc9424ef2fe07d129b73834779d9d3a750f013998e9ba</guid>
+      <pubDate>Fri, 16 Oct 2026 20:03:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 20:30:46 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 20:03:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>The 62 line does not currently travel between Eichenstraße and Aßmayergasse. The LB line does not currently travel between Matzleinsdorfer Platz S and Aßmayergasse. [Since 20:03]</description>
+      <content:encoded><![CDATA[The 62 line does not currently travel between Eichenstraße and Aßmayergasse. The LB line does not currently travel between Matzleinsdorfer Platz S and Aßmayergasse.<br/>[Since 20:03]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[38A: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">361d72bca0cc84100f7195fc89fc1a03d6a8b18b8fa4cc578267b3f69d263e62</guid>
+      <pubDate>Fri, 16 Oct 2026 20:25:18 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 20:25:18 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 20:25:18 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 21:24:00 +0200</ext:ends_at>
+      <description>Service obstruction. [Since 20:25]</description>
+      <content:encoded><![CDATA[Service obstruction.<br/>[Since 20:25]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
+      <pubDate>Fri, 16 Oct 2026 20:18:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 20:18:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 20:18:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 20:18]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 20:18]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Delay on the line: Vienna]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -31,17 +64,6 @@
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 19:32]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 19:32]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d</guid>
-      <pubDate>Fri, 16 Oct 2026 19:42:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 19:42:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 19:42:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 19:42]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 19:42]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[4A: Defective vehicle]]></title>
@@ -77,17 +99,6 @@
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:16]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">483512e46745ecd5bac505f2ee9feeb3011e40b15827bfd34d100ed89553735a</guid>
-      <pubDate>Fri, 16 Oct 2026 19:21:12 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 19:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 19:21:12 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 20:20:00 +0200</ext:ends_at>
-      <description>Service obstruction. [Today]</description>
-      <content:encoded><![CDATA[Service obstruction.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[D: Demonstration, track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">23617704b0adedf9ec79e6ea20280c4a9295bcef03cad548c5faed81118dda8e</guid>
@@ -108,18 +119,6 @@
       <ext:ends_at>Fri, 16 Oct 2026 23:59:00 +0200</ext:ends_at>
       <description>Due to construction works in the area of Breitenfurter Straße 1, lines 7A, 62A and N8 are redirected. [Today]</description>
       <content:encoded><![CDATA[Due to construction works in the area of Breitenfurter Straße 1, lines 7A, 62A and N8 are redirected.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A: Seybelgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">68609c1ab7a3cbeddad7e3ea90732b10dfe089ab97a782743d62a48542be7f20</guid>
-      <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:59:00 +0200</ext:ends_at>
-      <georss:point>48.137599 16.294667</georss:point>
-      <description>An den Steinfeldern 3, before Seybelgasse → Seybelgasse opposite 20. Stop relocation of line 64A towards Liesing. Reason: roadworks. [Today]</description>
-      <content:encoded><![CDATA[An den Steinfeldern 3, before Seybelgasse → Seybelgasse opposite 20. Stop relocation of line 64A towards Liesing. Reason: roadworks.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
