@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261016-0025, I20260917-0012, I20260922-0032, I20261016-0026, I20260925-0011, I20260909-0007, I20261016-0024-F01, I20261016-0024, I20261016-0011-F01, I20261016-0014, I20261016-0017-F01, I20261016-0023-F01, I20261016-0021-F01, I20261016-0022, I20261016-0020"
+    "trafficInfoNameList": "I20261016-0025, I20261016-0029, I20260917-0012, I20260922-0032, I20261016-0030, I20260925-0011, I20260909-0007, I20261016-0024-F01, I20261016-0024, I20261016-0026-F01, I20261016-0026, I20261016-0011-F01, I20261016-0027, I20261016-0031-F01, I20261016-0031, I20261016-0023-F01, I20261016-0022, I20261016-0020, I20261016-0028"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R130-136, R1177-0, R119-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R2025-671, R36-152, R45-136, R19-136, R1472-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R1974-466, R500-101, R1620-160, R1606-160, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R45-136, R115-136, R103-136, R102-136, R101-136, R100-136, R293-474, R318-437, R36-152, R19-136, R119-136, R2025-671, R130-136, R1177-0, R118-136, R116-136, R117-136, R1446-149, R1474-412, R5815-671, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1445-149, R1448-149, R1447-149, R2558-125, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2372-627, R2345-127, R2380-627, R2379-627, R2343-626, R2378-627, R1974-466, R500-101, R1606-160, R1620-160, R1625-160, R1607-160, R132-101, R164-101, R165-101, R173-101, R172-101, R169-101, R2388-402, R1489-404, R1498-404, R268-474, R46-171, R13-171, R14-171, R15-171, R17-171, R18-171, R19-171, R44-171, R45-171, R47-171, R49-171, R50-171, R51-171, R81-171, R14-101, R13-101, R23-101, R22-101, R20-101, R19-101, R18-101, R17-101, R15-101, R1754-101, R1756-101, R1751-101, R1752-101, R1753-101, R4843-101, R50-101, R46-101, R51-101, R41-101, R45-101, R44-101, R42-101, R49-101, R47-101, R1712-101, R1714-101, R1711-101, R1713-101, R1709-101, R1715-101, R831-101, R174-101, R10-102, R14-102, R13-102, R9-102, R22-102, R12-102, R11-102, R52-102, R50-102, R53-102, R51-102, R55-102, R54-102, R134-102, R2391-405, R46-136, R50-136, R49-136, R47-136, R51-136, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -238,75 +238,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261016-0014",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-16T10:07:00.000+0200",
-     "end": "2026-10-16T14:14:00.000+0200",
-     "lastUpdate": "2026-10-16T14:14:00.000+0200",
-     "resume": "2026-10-16T14:14:00.000+0200",
-     "start": "2026-10-16T10:07:00.000+0200"
-    },
-    "title": "U6: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Kettenbrückengasse",
-    "name": "I20261016-0017-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "304",
-       "lineName": "U4",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-16T11:15:00.000+0200",
-     "end": "2026-10-16T14:14:00.000+0200",
-     "lastUpdate": "2026-10-16T14:14:00.000+0200",
-     "resume": "2026-10-16T14:14:00.000+0200",
-     "start": "2026-10-16T11:06:00.000+0200"
-    },
-    "title": "U4: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U1": "ptMetro"
      }
     },
@@ -337,41 +268,6 @@
      "start": "2026-10-16T13:16:00.000+0200"
     },
     "title": "U1: Weichenstörung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "9": "ptTram"
-     }
-    },
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Hormayrgasse 19",
-    "name": "I20261016-0021-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "109",
-       "lineName": "9",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-16T13:31:00.000+0200",
-     "end": "2026-10-16T14:06:00.000+0200",
-     "lastUpdate": "2026-10-16T14:06:00.000+0200",
-     "resume": "2026-10-16T14:06:00.000+0200",
-     "start": "2026-10-16T13:24:00.000+0200"
-    },
-    "title": "9: Falschparker"
    },
    {
     "attributes": {
@@ -573,14 +469,328 @@
     "relatedStops": [
      1620
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T14:57:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T14:57:00.000+0200",
+     "end": "2026-10-16T15:11:00.000+0200",
+     "lastUpdate": "2026-10-16T15:11:00.000+0200",
+     "resume": "2026-10-16T15:11:00.000+0200",
      "start": "2026-10-16T14:56:00.000+0200"
     },
     "title": "60: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "60": "ptTram"
+     }
+    },
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261016-0026-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "160",
+       "lineName": "60",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1620
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T15:11:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T15:11:00.000+0200",
+     "resume": "2026-10-16T15:11:00.000+0200",
+     "start": "2026-10-16T14:56:00.000+0200"
+    },
+    "title": "60: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram",
+      "4A": "ptBusCity"
+     }
+    },
+    "description": "Linie 1: Betrieb nur zwischen Stefan-Fadinger-Platz und Hintere Zollamtsstraße. Linie 4A: Fahrtbehinderung in Richtung Karlsplatz U. Voraussichtliche Dauer: 15:45 Uhr. Grund: Verkehrsunfall im Bereich Wittelsbachstraße.",
+    "descriptionHTML": "Linie 1: <br>Betrieb nur zwischen Stefan-Fadinger-Platz und Hintere Zollamtsstraße.<br>Linie 4A:<br>Fahrtbehinderung in Richtung Karlsplatz U.<br> <br>Voraussichtliche Dauer: 15:45 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Wittelsbachstraße.",
+    "location": "Wittelsbachstraße",
+    "name": "I20261016-0027",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1",
+     "4A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "101",
+       "lineName": "1",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "404",
+       "lineName": "4A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T15:10:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T15:11:00.000+0200",
+     "start": "2026-10-16T15:09:00.000+0200"
+    },
+    "title": "1, 4A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "2A": "ptBusCity",
+      "5A": "ptBusCity"
+     }
+    },
+    "description": "Linie 2A: Fahrtbehinderung in Richtung Obere Augartenstraße. Linie 5A: Fahrtbehinderung in Richtung Griegstraße. Voraussichtliche Dauer: 15:45 Uhr. Grund: Verkehrsunfall im Bereich Leopoldsgasse.",
+    "descriptionHTML": "Linie 2A:<br>Fahrtbehinderung in Richtung Obere Augartenstraße.<br>Linie 5A:<br>Fahrtbehinderung in Richtung Griegstraße.<br> <br>Voraussichtliche Dauer: 15:45 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Leopoldsgasse.",
+    "location": "Leopoldsgasse",
+    "name": "I20261016-0028",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2A",
+     "5A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "402",
+       "lineName": "2A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "405",
+       "lineName": "5A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T15:15:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T15:15:00.000+0200",
+     "start": "2026-10-16T15:12:00.000+0200"
+    },
+    "title": "2A, 5A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram",
+      "2": "ptTram",
+      "5A": "ptBusCity",
+      "71": "ptTram",
+      "74A": "ptBusCity",
+      "D": "ptTram"
+     }
+    },
+    "description": "Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18). Linie 2: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Schwedenplatz U über Schottentor - Schottenring. Haltestellen: Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. Schwedenplatz U in Richtung Dornbach: Kein Halt möglich. Gredlerstraße: Kein Halt möglich. Parlament, U Volkstheater in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach). Parlament, U Volkstheater in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament. Linie D: Kein Betrieb zwischen Börse und Schwarzenbergplatz. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Linie 5A: Betrieb nur zwischen Griegstraße und Karmeliterplatz. Linie 74A: Betrieb nur zwischen St. Marx S und Landstraße S U. Voraussichtliche Dauer: ca 19:30 Uhr. Grund: Demonstration im Bereich .",
+    "descriptionHTML": "Linie 1: <br>Umleitung in beiden Richtungen <br>zwischen Kliebergasse und Hintere Zollamtsstraße <br>über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18).<br>Linie 2: <br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Schwedenplatz U <br>über Schottentor - Schottenring.<br><br>Haltestellen:<br>Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. <br>Schwedenplatz U in Richtung Dornbach: Kein Halt möglich.<br>Gredlerstraße: Kein Halt möglich.<br>Parlament, U Volkstheater in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach).<br>Parlament, U Volkstheater in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament.<br>Linie D:<br>Kein Betrieb zwischen Börse und Schwarzenbergplatz.<br>Linie 71:<br>Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.<br>Linie 5A:<br>Betrieb nur zwischen Griegstraße und Karmeliterplatz.<br>Linie 74A:<br>Betrieb nur zwischen St. Marx S und Landstraße S U.<br> <br>Voraussichtliche Dauer: ca 19:30 Uhr.<br><br>Grund: Demonstration im Bereich .",
+    "name": "I20261016-0029",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1",
+     "2",
+     "D",
+     "71",
+     "5A",
+     "74A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "101",
+       "lineName": "1",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "102",
+       "lineName": "2",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "136",
+       "lineName": "D",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "171",
+       "lineName": "71",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "405",
+       "lineName": "5A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "474",
+       "lineName": "74A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T15:25:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T15:25:00.000+0200",
+     "start": "2026-10-16T15:20:00.000+0200"
+    },
+    "title": "1, 2, D, 71, 5A, 74A: Demonstration"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Fahrtbehinderung in Richtung Bruno-Marek-Allee. Voraussichtliche Dauer: 16:00 Uhr. Grund: Falschparker im Bereich Radetzkystraße.",
+    "descriptionHTML": "Linie O:<br>Fahrtbehinderung in Richtung Bruno-Marek-Allee.<br> <br>Voraussichtliche Dauer: 16:00 Uhr.<br><br>Grund: Falschparker im Bereich Radetzkystraße.",
+    "location": "Radetzkystraße",
+    "name": "I20261016-0030",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "170",
+       "lineName": "O",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T15:27:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T15:27:00.000+0200",
+     "start": "2026-10-16T15:26:00.000+0200"
+    },
+    "title": "O: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram"
+     }
+    },
+    "description": "Linie 11: Fahrtbehinderung in Richtung Otto-Probst-Platz. Voraussichtliche Dauer: 16:00 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Zentralfriedhof 2.Tor.",
+    "descriptionHTML": "Linie 11:<br>Fahrtbehinderung in Richtung Otto-Probst-Platz.<br> <br>Voraussichtliche Dauer: 16:00 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Zentralfriedhof 2.Tor.",
+    "name": "I20261016-0031",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "111",
+       "lineName": "11",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     2028
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-16T15:29:00.000+0200",
+     "end": "2026-10-16T15:29:00.000+0200",
+     "lastUpdate": "2026-10-16T15:29:00.000+0200",
+     "resume": "2026-10-16T15:29:00.000+0200",
+     "start": "2026-10-16T15:27:00.000+0200"
+    },
+    "title": "11: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram"
+     }
+    },
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261016-0031-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "111",
+       "lineName": "11",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     2028
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T15:29:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T15:29:00.000+0200",
+     "resume": "2026-10-16T15:29:00.000+0200",
+     "start": "2026-10-16T15:27:00.000+0200"
+    },
+    "title": "11: Rettungseinsatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Parlament, Volsktheater",
+    "name": "R10-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     10
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:27:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Parlament, Volsktheater"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -653,6 +863,24 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Parlament, Volsktheater",
+    "name": "R11-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     11
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:27:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Parlament, Volsktheater"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
@@ -760,6 +988,78 @@
     "title": "Züge halten in\nSchleife"
    },
    {
+    "description": "Demonstration\nBetrieb ab Parlament, Volsktheater",
+    "name": "R12-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     12
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:27:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Parlament, Volsktheater"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R13-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     13
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:23:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Parlament, Volsktheater",
+    "name": "R13-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     13
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:27:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Parlament, Volsktheater"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R13-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     13
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:22:12.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R130-136",
     "owner": "WL",
@@ -776,6 +1076,96 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "description": "Demonstration\nZüge halten bei Linie O",
+    "name": "R132-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     132
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:11:41.000+0200"
+    },
+    "title": "Demonstration\nZüge halten bei Linie O"
+   },
+   {
+    "description": "Demonstration\nZüge halten Steig C",
+    "name": "R134-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     134
+    ],
+    "time": {
+     "end": "2026-10-16T16:27:00.000+0200",
+     "start": "2026-10-16T15:28:43.000+0200"
+    },
+    "title": "Demonstration\nZüge halten Steig C"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R14-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:23:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Parlament, Volsktheater",
+    "name": "R14-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:27:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Parlament, Volsktheater"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R14-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:22:12.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -995,6 +1385,78 @@
    },
    {
     "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1489-404",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "4A"
+    ],
+    "relatedStops": [
+     1489
+    ],
+    "time": {
+     "end": "2026-10-16T16:13:00.000+0200",
+     "start": "2026-10-16T15:13:41.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1498-404",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "4A"
+    ],
+    "relatedStops": [
+     1498
+    ],
+    "time": {
+     "end": "2026-10-16T16:13:00.000+0200",
+     "start": "2026-10-16T15:13:41.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R15-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:23:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R15-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:22:12.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
     "name": "R1606-160",
     "owner": "WL",
     "priority": "1",
@@ -1008,6 +1470,24 @@
     "time": {
      "end": "2026-10-16T15:57:00.000+0200",
      "start": "2026-10-16T14:57:40.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1607-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1607
+    ],
+    "time": {
+     "end": "2026-10-16T16:00:00.000+0200",
+     "start": "2026-10-16T15:01:40.000+0200"
     },
     "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
@@ -1030,6 +1510,420 @@
     "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1625-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1625
+    ],
+    "time": {
+     "end": "2026-10-16T16:00:00.000+0200",
+     "start": "2026-10-16T15:01:40.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R164-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     164
+    ],
+    "time": {
+     "end": "2026-10-16T16:11:00.000+0200",
+     "start": "2026-10-16T15:12:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R165-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     165
+    ],
+    "time": {
+     "end": "2026-10-16T16:11:00.000+0200",
+     "start": "2026-10-16T15:12:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R169-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     169
+    ],
+    "time": {
+     "end": "2026-10-16T16:11:00.000+0200",
+     "start": "2026-10-16T15:12:39.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R17-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:23:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R17-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:22:12.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R1709-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1709
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:24:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R1711-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1711
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:24:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R1712-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1712
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:24:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R1713-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1713
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:24:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R1714-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1714
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:24:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Demonstration\nZüge halten bei Linie 18",
+    "name": "R1715-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1715
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:25:13.000+0200"
+    },
+    "title": "Demonstration\nZüge halten bei Linie 18"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R172-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     172
+    ],
+    "time": {
+     "end": "2026-10-16T16:11:00.000+0200",
+     "start": "2026-10-16T15:12:39.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R173-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     173
+    ],
+    "time": {
+     "end": "2026-10-16T16:11:00.000+0200",
+     "start": "2026-10-16T15:12:39.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Demonstration\nUmleitung über Linien O und 18",
+    "name": "R174-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     174
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:26:10.000+0200"
+    },
+    "title": "Demonstration\nUmleitung über Linien O und 18"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R1751-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1751
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:23:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R1752-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1752
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:23:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R1753-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1753
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:23:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R1754-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1754
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:23:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R1756-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1756
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:23:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R18-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     18
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:23:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R18-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     18
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:22:12.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R19-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     19
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:23:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -1046,6 +1940,24 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R19-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     19
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:22:12.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
    },
    {
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
@@ -1066,6 +1978,24 @@
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
    {
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R20-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     20
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:23:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "name": "R2025-671",
     "owner": "WL",
@@ -1079,6 +2009,60 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R22-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     22
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:23:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Parlament, Volsktheater",
+    "name": "R22-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     22
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:27:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Parlament, Volsktheater"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R23-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     23
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:23:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
    },
    {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
@@ -1333,6 +2317,42 @@
     "title": "Busse halten\nHoßplatz 11"
    },
    {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2388-402",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2A"
+    ],
+    "relatedStops": [
+     2388
+    ],
+    "time": {
+     "end": "2026-10-16T16:12:00.000+0200",
+     "start": "2026-10-16T15:13:13.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R2391-405",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5A"
+    ],
+    "relatedStops": [
+     2391
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:29:14.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -1349,6 +2369,24 @@
      "start": "2026-10-14T00:00:24.000+0200"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Landstraße",
+    "name": "R268-474",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "74A"
+    ],
+    "relatedStops": [
+     268
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:21:12.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Landstraße"
    },
    {
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
@@ -1405,7 +2443,97 @@
     "title": "Züge halten\nbei Linien 6 und 18"
    },
    {
-    "description": "Züge halten\nWipplingerstr 39",
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R41-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     41
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:24:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R42-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     42
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:24:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R44-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     44
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:24:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R44-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     44
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:22:12.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R45-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     45
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:24:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
     "name": "R45-136",
     "owner": "WL",
     "priority": "1",
@@ -1417,10 +2545,280 @@
      45
     ],
     "time": {
-     "end": "2026-10-16T23:59:59.000+0200",
+     "end": "2026-10-16T23:45:00.000+0200",
      "start": "2026-10-14T00:00:22.000+0200"
     },
-    "title": "Züge halten\nWipplingerstr 39"
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R45-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     45
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:22:12.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R46-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     46
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:24:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R46-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     46
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:30:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R46-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     46
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:22:12.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R47-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:24:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R47-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:30:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R47-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:22:12.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R4843-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     4843
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:23:45.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R49-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:24:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R49-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:30:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R49-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:22:12.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R50-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:24:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwedenplatz",
+    "name": "R50-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:27:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R50-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:30:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R50-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:22:12.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
    },
    {
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
@@ -1441,6 +2839,150 @@
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R51-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:24:42.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwedenplatz",
+    "name": "R51-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:27:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R51-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:30:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R51-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:22:12.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwedenplatz",
+    "name": "R52-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     52
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:27:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwedenplatz",
+    "name": "R53-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     53
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:27:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwedenplatz",
+    "name": "R54-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     54
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:27:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Schwedenplatz",
+    "name": "R55-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     55
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:27:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz"
+   },
+   {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "name": "R5815-671",
     "owner": "WL",
@@ -1454,6 +2996,60 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R81-171",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     81
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:22:12.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "description": "Demonstration\nUmleitung über Linien 18 und O",
+    "name": "R831-101",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     831
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:25:42.000+0200"
+    },
+    "title": "Demonstration\nUmleitung über Linien 18 und O"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Parlament, Volsktheater",
+    "name": "R9-102",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     9
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:27:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Parlament, Volsktheater"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
