@@ -1038,7 +1038,12 @@ auch ein 11:11-Ende, das eine längere Dauer nicht verkürzt (63A). Ein
 vages Ende („bis voraussichtlich Mitte August 2026“, „bis etwa Frühjahr
 2027“) nennt keinen Tag und zählt als keines; als Monatsletzter gelesen
 hätte es Meldungen beendet, die WL noch auslieferte (85A, „Mitte Mai“, bis
-02.08.2026 gelistet). Das 11:11-Datum bleibt das Ablaufdatum der Meldung
+02.08.2026 gelistet). Eine Dauer-Spanne („für etwa zwei bis drei Wochen“,
+„2–3 Monate“) zählt ebenso als keine Dauer (Betreiberentscheidung
+2026-10-15, „So lassen“): Die Meldung zeigt kein Ende und bleibt, solange
+WL sie ausliefert; falsch ist dabei nichts. In den 9.741 verschiedenen
+Texten aller Anbieter seit 01.07.2026 kam keine Spanne vor, alle 103
+Dauerangaben waren einfache Zahlen. Das 11:11-Datum bleibt das Ablaufdatum der Meldung
 (`ends_at`, Altersfilter); geändert ist nur die Zeitzeile, im englischen
 Feed ebenso.
 

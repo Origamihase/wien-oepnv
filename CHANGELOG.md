@@ -5,6 +5,15 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Dauer-Spannen zählen als keine Dauer (2026-10-15, nur Doku)**: „für
+  etwa zwei bis drei Wochen“ oder „2–3 Monate“ im „Zeitraum:“ einer
+  WL-Meldung liest `extract_duration_from_description` nicht; die Meldung
+  zeigt dann kein Ende, wie bei einem vagen Ende („Mitte August“), und
+  bleibt, solange WL sie ausliefert. Michael entschied am 15.10. „So
+  lassen“: Die Lücke zeigt nichts Falsches, und in den 9.741 verschiedenen
+  Texten aller Anbieter seit 01.07. stand keine Spanne. Festgehalten in
+  `docs/architecture.md` und am Parser, damit kein Audit sie als Fehler
+  meldet. Code und Feed ändern sich nicht.
 * **EN: „nicht einhalten“ und Haltestellen mit „Wien“ im Namen (2026-10-15)**:
   „Die Linie 66A kann die Haltestelle Atzgersdorf, Kirchenplatz in Richtung
   Reumannplatz nicht einhalten“ stand im EN-Feed als „Line 66A cannot
