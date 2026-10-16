@@ -2,10 +2,6 @@
  "verworfen": [
   {
    "grund": "Kurzmeldung einer erledigten Störung",
-   "titel": "Fahrtbehinderung Falschparker"
-  },
-  {
-   "grund": "Kurzmeldung einer erledigten Störung",
    "titel": "Fahrtbehinderung Verkehrsunfall"
   },
   {
@@ -26,6 +22,10 @@
   },
   {
    "grund": "Status inaktiv",
+   "titel": "2A: Verspätungen"
+  },
+  {
+   "grund": "Status inaktiv",
    "titel": "71: Verkehrsunfall"
   },
   {
@@ -39,6 +39,14 @@
   {
    "grund": "Status inaktiv",
    "titel": "9: Falschparker"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "U4: Polizeieinsatz"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "U6: Schadhaftes Fahrzeug"
   },
   {
    "grund": "außerhalb des Zeitraums",

@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-16T12:01:10.334521+00:00",
- "built": "2026-10-16T14:00:59+02:00",
+ "updated": "2026-10-16T12:31:08.125246+00:00",
+ "built": "2026-10-16T14:30:54+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-16T14:00:59+02:00",
+  "built": "2026-10-16T14:30:54+02:00",
   "items": [
+   {
+    "title": "U6: Betriebsstörung",
+    "time_line": "Seit 14:29"
+   },
    {
     "title": "U1: Feuerwehreinsatz",
     "time_line": "Seit 13:16"
@@ -17,28 +21,8 @@
     "time_line": "Seit 13:30"
    },
    {
-    "title": "2A: Verspätungen",
-    "time_line": "Seit 13:27"
-   },
-   {
-    "title": "9: Falschparker",
-    "time_line": "Seit 13:24"
-   },
-   {
-    "title": "U4: Polizeieinsatz",
-    "time_line": "Seit 11:06"
-   },
-   {
-    "title": "U6: Schadhaftes Fahrzeug",
-    "time_line": "Seit 10:07"
-   },
-   {
     "title": "U2: Weichenstörung",
     "time_line": "Seit 09:39"
-   },
-   {
-    "title": "Wien Liesing ↔ Wien Meidling",
-    "time_line": "Heute"
    },
    {
     "title": "62A/7A/N8: Bauarbeiten",
@@ -47,6 +31,22 @@
    {
     "title": "64A: Seybelgasse",
     "time_line": "Heute"
+   },
+   {
+    "title": "12A/14A/59A: Bezirksamt Margareten",
+    "time_line": "Heute"
+   },
+   {
+    "title": "N71: Simmering S U",
+    "time_line": "Bis 23.10."
+   },
+   {
+    "title": "1/2/5/5A/5B/71/74A/80A/D/O: Demonstration",
+    "time_line": "Heute"
+   },
+   {
+    "title": "64A: Liesing-Flur-Gasse",
+    "time_line": "Bis 28.10."
    }
   ]
  },
@@ -5370,6 +5370,26 @@
     "baustellen": 3,
     "oebb": 11,
     "wl": 110
+   }
+  },
+  {
+   "t": "2026-10-16T12:31:08.125246+00:00",
+   "raw": {
+    "wl-stoerungen": 81,
+    "wl-hinweise": 86,
+    "oebb": 161,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 25
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 137,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 10,
+    "wl": 107
    }
   }
  ]

@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261016-0022, I20261016-0021-F01, I20261016-0021, I20261016-0019-F01, I20260925-0011, I20260909-0007, I20261016-0011-F01, I20261016-0019-F02, I20261016-0017-F01, I20261016-0014, I20261016-0023-F01, I20261016-0023, I20261016-0020"
+    "trafficInfoNameList": "I20261016-0020, I20260917-0012, I20260922-0032, I20261016-0021, I20261016-0019-F01, I20261016-0024, I20260925-0011, I20260909-0007, I20261016-0011-F01, I20261016-0019-F02, I20261016-0014, I20261016-0017-F01, I20261016-0023-F01, I20261016-0023, I20261016-0021-F01, I20261016-0022"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R2025-671, R103-136, R102-136, R101-136, R100-136, R1177-0, R293-474, R1445-149, R1447-149, R1448-149, R1449-149, R1475-149, R1446-149, R1476-149, R5815-671, R1472-149, R1473-149, R1474-149, R1448-412, R1474-412, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R500-101, R556-109, R223-109, R526-109, R530-109, R2641-171, R2047-171, R2046-171, R2045-171, R2044-171, R2038-171, R2039-171, R2043-171, R2036-171, R2021-171, R2016-171, R2020-171, R2009-171, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R36-152, R45-136, R19-136, R130-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R1177-0, R318-437, R293-474, R119-136, R118-136, R117-136, R2025-671, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R500-101, R2046-171, R2045-171, R2044-171, R2641-171, R2047-171, R2039-171, R2038-171, R2043-171, R2036-171, R2021-171, R2020-171, R2016-171, R2009-171, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,12 +259,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T10:07:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T10:07:00.000+0200",
-     "resume": "2026-10-16T10:07:00.000+0200",
+     "end": "2026-10-16T14:14:00.000+0200",
+     "lastUpdate": "2026-10-16T14:14:00.000+0200",
+     "resume": "2026-10-16T14:14:00.000+0200",
      "start": "2026-10-16T10:07:00.000+0200"
     },
     "title": "U6: Schadhaftes Fahrzeug"
@@ -294,12 +294,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T11:15:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T11:15:00.000+0200",
-     "resume": "2026-10-16T11:15:00.000+0200",
+     "end": "2026-10-16T14:14:00.000+0200",
+     "lastUpdate": "2026-10-16T14:14:00.000+0200",
+     "resume": "2026-10-16T14:14:00.000+0200",
      "start": "2026-10-16T11:06:00.000+0200"
     },
     "title": "U4: Polizeieinsatz"
@@ -380,8 +380,8 @@
       "U1": "ptMetro"
      }
     },
-    "description": "Derzeit können die Züge der Linie U1 die Station Alaudagasse in beiden Richtungen nicht einhalten. Weichen Sie ersatzweise auf die Linien 16A, 17A, 67A, 67B aus. Voraussichtliche Dauer: 14:30 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Alaudagasse.",
-    "descriptionHTML": "Derzeit können die Züge der Linie U1 die Station Alaudagasse in beiden Richtungen nicht einhalten.<br> <br>Weichen Sie ersatzweise auf die Linien 16A, 17A, 67A, 67B aus.<br><br>Voraussichtliche Dauer: 14:30 Uhr.<br><br>Grund: Feuerwehreinsatz im Haltestellenbereich Alaudagasse.",
+    "description": "Die Linie U1 fährt derzeit in der Station Alaudagasse in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 15:00 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Alaudagasse.",
+    "descriptionHTML": "Die Linie U1 fährt derzeit in der Station Alaudagasse in beiden Richtungen über Gleis 2.<br> <br>Voraussichtliche Dauer: 15:00 Uhr.<br><br>Grund: Feuerwehreinsatz im Haltestellenbereich Alaudagasse.",
     "name": "I20261016-0020",
     "owner": "WL",
     "priority": "1",
@@ -405,7 +405,7 @@
     "time": {
      "created": "2026-10-16T13:17:00.000+0200",
      "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T13:57:00.000+0200",
+     "lastUpdate": "2026-10-16T14:27:00.000+0200",
      "start": "2026-10-16T13:16:00.000+0200"
     },
     "title": "U1: Feuerwehreinsatz"
@@ -470,12 +470,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T13:31:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T13:31:00.000+0200",
-     "resume": "2026-10-16T13:31:00.000+0200",
+     "end": "2026-10-16T14:06:00.000+0200",
+     "lastUpdate": "2026-10-16T14:06:00.000+0200",
+     "resume": "2026-10-16T14:06:00.000+0200",
      "start": "2026-10-16T13:24:00.000+0200"
     },
     "title": "9: Falschparker"
@@ -504,12 +504,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T13:27:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T13:27:00.000+0200",
-     "resume": "2026-10-16T13:27:00.000+0200",
+     "end": "2026-10-16T14:27:00.000+0200",
+     "lastUpdate": "2026-10-16T14:27:00.000+0200",
+     "resume": "2026-10-16T14:27:00.000+0200",
      "start": "2026-10-16T13:27:00.000+0200"
     },
     "title": "2A: Verspätungen"
@@ -583,6 +583,40 @@
      "start": "2026-10-16T13:30:00.000+0200"
     },
     "title": "71: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 14:45 Uhr. Grund: Betriebsstörung im Bereich Jägerstraße.",
+    "descriptionHTML": "Linie U6:<br>Fahrtbehinderung in Richtung Floridsdorf.<br> <br>Voraussichtliche Dauer: 14:45 Uhr.<br><br>Grund: Betriebsstörung im Bereich Jägerstraße.",
+    "location": "Jägerstraße",
+    "name": "I20261016-0024",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T14:29:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T14:29:00.000+0200",
+     "start": "2026-10-16T14:29:00.000+0200"
+    },
+    "title": "U6: Betriebsstörung"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1263,24 +1297,6 @@
     "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R223-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     223
-    ],
-    "time": {
-     "end": "2026-10-16T14:25:00.000+0200",
-     "start": "2026-10-16T13:25:59.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -1657,60 +1673,6 @@
      "start": "2026-10-16T05:00:10.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R526-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     526
-    ],
-    "time": {
-     "end": "2026-10-16T14:25:00.000+0200",
-     "start": "2026-10-16T13:26:00.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R530-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     530
-    ],
-    "time": {
-     "end": "2026-10-16T14:25:00.000+0200",
-     "start": "2026-10-16T13:26:00.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R556-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     556
-    ],
-    "time": {
-     "end": "2026-10-16T14:25:00.000+0200",
-     "start": "2026-10-16T13:25:59.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
