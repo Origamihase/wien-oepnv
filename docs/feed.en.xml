@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 16 Oct 2026 13:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 14:00:59 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U1: Fire-brigade operation]]></title>
@@ -17,8 +17,19 @@
       <ext:first_seen>Fri, 16 Oct 2026 13:30:46 +0200</ext:first_seen>
       <ext:starts_at>Fri, 16 Oct 2026 13:16:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction in both directions. Expected until 14:00. Reason: fire-brigade operation in the stop area of Alaudagasse. [Since 13:16]</description>
-      <content:encoded><![CDATA[Service obstruction in both directions. Expected until 14:00. Reason: fire-brigade operation in the stop area of Alaudagasse.<br/>[Since 13:16]]]></content:encoded>
+      <description>Currently, the U1 line trains do not stop at Alaudagasse station in both directions. [Since 13:16]</description>
+      <content:encoded><![CDATA[Currently, the U1 line trains do not stop at Alaudagasse station in both directions.<br/>[Since 13:16]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7</guid>
+      <pubDate>Fri, 16 Oct 2026 13:30:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 13:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 13:30:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 13:30]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:30]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2A: Delays]]></title>
@@ -32,26 +43,15 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 13:27]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[86A/87A: Third-party traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0a7e4561163f9919b4598b806543069f2eeffbe5d89e7e9a769918867b42a319</guid>
-      <pubDate>Fri, 16 Oct 2026 12:24:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 12:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 12:24:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 12:24]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 12:24]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[9: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
       <pubDate>Fri, 16 Oct 2026 13:24:00 +0200</pubDate>
       <ext:first_seen>Fri, 16 Oct 2026 11:13:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 13:26:00 +0200</ext:starts_at>
+      <ext:starts_at>Fri, 16 Oct 2026 13:24:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Westbahnhof S U. Expected until 13:50. Reason: illegally parked vehicle in the area of Hormayrgasse 19. [Since 13:24]</description>
-      <content:encoded><![CDATA[Service obstruction towards Westbahnhof S U. Expected until 13:50. Reason: illegally parked vehicle in the area of Hormayrgasse 19.<br/>[Since 13:24]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 13:24]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:24]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U4: Police operation]]></title>

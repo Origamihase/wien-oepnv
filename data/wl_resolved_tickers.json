@@ -1,5 +1,125 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R2009-171|2026-10-16T13:38:00.000+0200|Verkehrsunfall\nZüge halten bei Linie 15A",
+   "name": "R2009-171",
+   "title": "Verkehrsunfall\nZüge halten bei Linie 15A",
+   "end": "2026-10-16T14:37:00.000+0200",
+   "incident": "I20261016-0023"
+  },
+  {
+   "key": "R2016-171|2026-10-16T13:37:30.000+0200|Verkehrsunfall\nBetrieb ab Enkplatz, Grillgasse",
+   "name": "R2016-171",
+   "title": "Verkehrsunfall\nBetrieb ab Enkplatz, Grillgasse",
+   "end": "2026-10-16T14:36:00.000+0200",
+   "incident": "I20261016-0023"
+  },
+  {
+   "key": "R2020-171|2026-10-16T13:37:30.000+0200|Verkehrsunfall\nBetrieb ab Enkplatz, Grillgasse",
+   "name": "R2020-171",
+   "title": "Verkehrsunfall\nBetrieb ab Enkplatz, Grillgasse",
+   "end": "2026-10-16T14:36:00.000+0200",
+   "incident": "I20261016-0023"
+  },
+  {
+   "key": "R2021-171|2026-10-16T13:37:30.000+0200|Verkehrsunfall\nBetrieb ab Enkplatz, Grillgasse",
+   "name": "R2021-171",
+   "title": "Verkehrsunfall\nBetrieb ab Enkplatz, Grillgasse",
+   "end": "2026-10-16T14:36:00.000+0200",
+   "incident": "I20261016-0023"
+  },
+  {
+   "key": "R2036-171|2026-10-16T13:35:31.000+0200|Verkehrsunfall\nBetrieb ab St. Marx",
+   "name": "R2036-171",
+   "title": "Verkehrsunfall\nBetrieb ab St. Marx",
+   "end": "2026-10-16T14:35:00.000+0200",
+   "incident": "I20261016-0023"
+  },
+  {
+   "key": "R2038-171|2026-10-16T13:34:01.000+0200|Verkehrsunfall\nBetrieb ab St. Marx",
+   "name": "R2038-171",
+   "title": "Verkehrsunfall\nBetrieb ab St. Marx",
+   "end": "2026-10-16T14:35:00.000+0200",
+   "incident": "I20261016-0023"
+  },
+  {
+   "key": "R2039-171|2026-10-16T13:34:01.000+0200|Verkehrsunfall\nBetrieb ab St. Marx",
+   "name": "R2039-171",
+   "title": "Verkehrsunfall\nBetrieb ab St. Marx",
+   "end": "2026-10-16T14:35:00.000+0200",
+   "incident": "I20261016-0023"
+  },
+  {
+   "key": "R2043-171|2026-10-16T13:34:01.000+0200|Verkehrsunfall\nZüge halten in der Leberstraße",
+   "name": "R2043-171",
+   "title": "Verkehrsunfall\nZüge halten in der Leberstraße",
+   "end": "2026-10-16T14:36:00.000+0200",
+   "incident": "I20261016-0023"
+  },
+  {
+   "key": "R2044-171|2026-10-16T13:34:01.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2044-171",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-16T14:33:00.000+0200",
+   "incident": "I20261016-0023"
+  },
+  {
+   "key": "R2045-171|2026-10-16T13:34:01.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2045-171",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-16T14:33:00.000+0200",
+   "incident": "I20261016-0023"
+  },
+  {
+   "key": "R2046-171|2026-10-16T13:34:01.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2046-171",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-16T14:33:00.000+0200",
+   "incident": "I20261016-0023"
+  },
+  {
+   "key": "R2047-171|2026-10-16T13:34:01.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2047-171",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-16T14:33:00.000+0200",
+   "incident": "I20261016-0023"
+  },
+  {
+   "key": "R223-109|2026-10-16T13:25:59.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R223-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-16T14:25:00.000+0200",
+   "incident": "I20261016-0021"
+  },
+  {
+   "key": "R2641-171|2026-10-16T13:34:01.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2641-171",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-16T14:33:00.000+0200",
+   "incident": "I20261016-0023"
+  },
+  {
+   "key": "R526-109|2026-10-16T13:26:00.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R526-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-16T14:25:00.000+0200",
+   "incident": "I20261016-0021"
+  },
+  {
+   "key": "R530-109|2026-10-16T13:26:00.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R530-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-16T14:25:00.000+0200",
+   "incident": "I20261016-0021"
+  },
+  {
+   "key": "R556-109|2026-10-16T13:25:59.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R556-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-16T14:25:00.000+0200",
+   "incident": "I20261016-0021"
+  }
+ ]
 }
