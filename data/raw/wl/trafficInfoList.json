@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261016-0025, I20261016-0029, I20260917-0012, I20260922-0032, I20261016-0030, I20260925-0011, I20260909-0007, I20261016-0024-F01, I20261016-0024, I20261016-0026-F01, I20261016-0026, I20261016-0011-F01, I20261016-0027, I20261016-0031-F01, I20261016-0031, I20261016-0023-F01, I20261016-0022, I20261016-0020, I20261016-0028"
+    "trafficInfoNameList": "I20261016-0027-F01, I20261016-0025, I20260917-0012, I20260922-0032, I20260925-0011, I20261016-0029, I20261016-0020, I20260909-0007, I20261016-0024-F01, I20261016-0026, I20261016-0030-F01, I20261016-0011-F01, I20261016-0030, I20261016-0026-F01, I20261016-0031-F01, I20261016-0031, I20261016-0023-F01, I20261016-0027-F02, I20261016-0027, I20261016-0028-F01, I20261016-0028"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R45-136, R115-136, R103-136, R102-136, R101-136, R100-136, R293-474, R318-437, R36-152, R19-136, R119-136, R2025-671, R130-136, R1177-0, R118-136, R116-136, R117-136, R1446-149, R1474-412, R5815-671, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1445-149, R1448-149, R1447-149, R2558-125, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2372-627, R2345-127, R2380-627, R2379-627, R2343-626, R2378-627, R1974-466, R500-101, R1606-160, R1620-160, R1625-160, R1607-160, R132-101, R164-101, R165-101, R173-101, R172-101, R169-101, R2388-402, R1489-404, R1498-404, R268-474, R46-171, R13-171, R14-171, R15-171, R17-171, R18-171, R19-171, R44-171, R45-171, R47-171, R49-171, R50-171, R51-171, R81-171, R14-101, R13-101, R23-101, R22-101, R20-101, R19-101, R18-101, R17-101, R15-101, R1754-101, R1756-101, R1751-101, R1752-101, R1753-101, R4843-101, R50-101, R46-101, R51-101, R41-101, R45-101, R44-101, R42-101, R49-101, R47-101, R1712-101, R1714-101, R1711-101, R1713-101, R1709-101, R1715-101, R831-101, R174-101, R10-102, R14-102, R13-102, R9-102, R22-102, R12-102, R11-102, R52-102, R50-102, R53-102, R51-102, R55-102, R54-102, R134-102, R2391-405, R46-136, R50-136, R49-136, R47-136, R51-136, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R45-136, R19-136, R117-136, R116-136, R1177-0, R119-136, R130-136, R36-152, R118-136, R2025-671, R293-474, R318-437, R115-136, R103-136, R101-136, R102-136, R100-136, R1474-412, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R5815-671, R1445-149, R1476-149, R1448-412, R2558-125, R2372-125, R2345-127, R2380-627, R2343-626, R2379-627, R2373-126, R2373-127, R2373-125, R2371-125, R2378-627, R2370-125, R2359-125, R2343-125, R2372-627, R1974-466, R500-101, R132-101, R164-101, R165-101, R172-101, R173-101, R169-101, R2388-402, R1489-404, R1498-404, R268-474, R17-171, R13-171, R14-171, R15-171, R18-171, R19-171, R44-171, R45-171, R46-171, R47-171, R49-171, R50-171, R51-171, R81-171, R19-101, R15-101, R17-101, R18-101, R13-101, R22-101, R14-101, R23-101, R20-101, R1753-101, R1756-101, R1751-101, R1752-101, R1754-101, R4843-101, R44-101, R41-101, R51-101, R50-101, R49-101, R47-101, R46-101, R45-101, R42-101, R1712-101, R1714-101, R1713-101, R1711-101, R1709-101, R1715-101, R831-101, R174-101, R9-102, R22-102, R14-102, R11-102, R10-102, R12-102, R13-102, R55-102, R52-102, R51-102, R53-102, R54-102, R50-102, R134-102, R2391-405, R46-136, R49-136, R50-136, R51-136, R47-136, R81-136, R17-136, R15-136, R14-136, R13-136, R18-136, R164-170, R346-170, R311-170, R3445-170, R3446-170, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -241,8 +241,8 @@
       "U1": "ptMetro"
      }
     },
-    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Alaudagasse und Troststraße in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 16:00 Uhr. Grund: Weichenstörung im Bereich Alaudagasse.",
-    "descriptionHTML": "Die Linie U1 fährt derzeit zwischen den Stationen Alaudagasse und Troststraße in beiden Richtungen über Gleis 2.<br> <br>Voraussichtliche Dauer: 16:00 Uhr.<br><br>Grund: Weichenstörung im Bereich Alaudagasse.",
+    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Alaudagasse und Troststraße in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: Nicht absehbar. Grund: Weichenstörung im Bereich Alaudagasse.",
+    "descriptionHTML": "Die Linie U1 fährt derzeit zwischen den Stationen Alaudagasse und Troststraße in beiden Richtungen über Gleis 2.<br> <br>Voraussichtliche Dauer: Nicht absehbar.<br><br>Grund: Weichenstörung im Bereich Alaudagasse.",
     "location": " Alaudagasse",
     "name": "I20261016-0020",
     "owner": "WL",
@@ -264,44 +264,10 @@
     "time": {
      "created": "2026-10-16T13:17:00.000+0200",
      "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T14:53:00.000+0200",
+     "lastUpdate": "2026-10-16T15:55:00.000+0200",
      "start": "2026-10-16T13:16:00.000+0200"
     },
     "title": "U1: Weichenstörung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "2A": "ptBusCity"
-     }
-    },
-    "description": "Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie 2A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261016-0022",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "402",
-       "lineName": "2A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-16T13:27:00.000+0200",
-     "end": "2026-10-16T14:27:00.000+0200",
-     "lastUpdate": "2026-10-16T14:27:00.000+0200",
-     "resume": "2026-10-16T14:27:00.000+0200",
-     "start": "2026-10-16T13:27:00.000+0200"
-    },
-    "title": "2A: Verspätungen"
    },
    {
     "attributes": {
@@ -337,41 +303,6 @@
      "start": "2026-10-16T13:30:00.000+0200"
     },
     "title": "71: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 14:45 Uhr. Grund: Betriebsstörung im Bereich Jägerstraße.",
-    "descriptionHTML": "Linie U6:<br>Fahrtbehinderung in Richtung Floridsdorf.<br> <br>Voraussichtliche Dauer: 14:45 Uhr.<br><br>Grund: Betriebsstörung im Bereich Jägerstraße.",
-    "location": "Jägerstraße",
-    "name": "I20261016-0024",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-16T14:29:00.000+0200",
-     "end": "2026-10-16T14:36:00.000+0200",
-     "lastUpdate": "2026-10-16T14:36:00.000+0200",
-     "resume": "2026-10-16T14:36:00.000+0200",
-     "start": "2026-10-16T14:29:00.000+0200"
-    },
-    "title": "U6: Betriebsstörung"
    },
    {
     "attributes": {
@@ -432,12 +363,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T14:56:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T14:56:00.000+0200",
-     "resume": "2026-10-16T14:56:00.000+0200",
+     "end": "2026-10-16T15:45:00.000+0200",
+     "lastUpdate": "2026-10-16T15:45:00.000+0200",
+     "resume": "2026-10-16T15:45:00.000+0200",
      "start": "2026-10-16T14:56:00.000+0200"
     },
     "title": "7A: Verkehrsüberlastung"
@@ -509,8 +440,8 @@
     "status": "active",
     "time": {
      "created": "2026-10-16T15:11:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T15:11:00.000+0200",
+     "end": "2026-10-16T16:35:00.000+0200",
+     "lastUpdate": "2026-10-16T15:59:00.000+0200",
      "resume": "2026-10-16T15:11:00.000+0200",
      "start": "2026-10-16T14:56:00.000+0200"
     },
@@ -548,11 +479,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T15:10:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T15:11:00.000+0200",
+     "end": "2026-10-16T15:32:00.000+0200",
+     "lastUpdate": "2026-10-16T15:32:00.000+0200",
+     "resume": "2026-10-16T15:32:00.000+0200",
      "start": "2026-10-16T15:09:00.000+0200"
     },
     "title": "1, 4A: Verkehrsunfall"
@@ -560,20 +492,88 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "2A": "ptBusCity",
-      "5A": "ptBusCity"
+      "1": "ptTram"
      }
     },
-    "description": "Linie 2A: Fahrtbehinderung in Richtung Obere Augartenstraße. Linie 5A: Fahrtbehinderung in Richtung Griegstraße. Voraussichtliche Dauer: 15:45 Uhr. Grund: Verkehrsunfall im Bereich Leopoldsgasse.",
-    "descriptionHTML": "Linie 2A:<br>Fahrtbehinderung in Richtung Obere Augartenstraße.<br>Linie 5A:<br>Fahrtbehinderung in Richtung Griegstraße.<br> <br>Voraussichtliche Dauer: 15:45 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Leopoldsgasse.",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Wittelsbachstraße",
+    "name": "I20261016-0027-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "101",
+       "lineName": "1",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-16T15:32:00.000+0200",
+     "end": "2026-10-16T15:32:00.000+0200",
+     "lastUpdate": "2026-10-16T15:32:00.000+0200",
+     "resume": "2026-10-16T15:32:00.000+0200",
+     "start": "2026-10-16T15:09:00.000+0200"
+    },
+    "title": "1: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "4A": "ptBusCity"
+     }
+    },
+    "description": "Linie 4A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 4A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Wittelsbachstraße",
+    "name": "I20261016-0027-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "4A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "404",
+       "lineName": "4A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T15:32:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T15:32:00.000+0200",
+     "resume": "2026-10-16T15:32:00.000+0200",
+     "start": "2026-10-16T15:09:00.000+0200"
+    },
+    "title": "4A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "2A": "ptBusCity"
+     }
+    },
+    "description": "Linie 2A: Fahrtbehinderung in Richtung Obere Augartenstraße. Voraussichtliche Dauer: 15:45 Uhr. Grund: Verkehrsunfall im Bereich Leopoldsgasse.",
+    "descriptionHTML": "Linie 2A:<br>Fahrtbehinderung in Richtung Obere Augartenstraße.<br> <br>Voraussichtliche Dauer: 15:45 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Leopoldsgasse.",
     "location": "Leopoldsgasse",
     "name": "I20261016-0028",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "2A",
-     "5A"
+     "2A"
     ],
     "relatedLinesDetails": [
      [
@@ -581,22 +581,53 @@
        "lineId": "402",
        "lineName": "2A",
        "vehicleType": "ptBusCity"
-      },
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-16T15:15:00.000+0200",
+     "end": "2026-10-16T15:42:00.000+0200",
+     "lastUpdate": "2026-10-16T15:42:00.000+0200",
+     "resume": "2026-10-16T15:42:00.000+0200",
+     "start": "2026-10-16T15:12:00.000+0200"
+    },
+    "title": "2A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "2A": "ptBusCity"
+     }
+    },
+    "description": "Linie 2A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 2A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Leopoldsgasse",
+    "name": "I20261016-0028-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2A"
+    ],
+    "relatedLinesDetails": [
+     [
       {
-       "lineId": "405",
-       "lineName": "5A",
+       "lineId": "402",
+       "lineName": "2A",
        "vehicleType": "ptBusCity"
       }
      ]
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-16T15:15:00.000+0200",
+     "created": "2026-10-16T15:42:00.000+0200",
      "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T15:15:00.000+0200",
+     "lastUpdate": "2026-10-16T15:42:00.000+0200",
+     "resume": "2026-10-16T15:42:00.000+0200",
      "start": "2026-10-16T15:12:00.000+0200"
     },
-    "title": "2A, 5A: Verkehrsunfall"
+    "title": "2A: Verkehrsunfall"
    },
    {
     "attributes": {
@@ -609,8 +640,9 @@
       "D": "ptTram"
      }
     },
-    "description": "Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18). Linie 2: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Schwedenplatz U über Schottentor - Schottenring. Haltestellen: Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. Schwedenplatz U in Richtung Dornbach: Kein Halt möglich. Gredlerstraße: Kein Halt möglich. Parlament, U Volkstheater in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach). Parlament, U Volkstheater in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament. Linie D: Kein Betrieb zwischen Börse und Schwarzenbergplatz. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Linie 5A: Betrieb nur zwischen Griegstraße und Karmeliterplatz. Linie 74A: Betrieb nur zwischen St. Marx S und Landstraße S U. Voraussichtliche Dauer: ca 19:30 Uhr. Grund: Demonstration im Bereich .",
-    "descriptionHTML": "Linie 1: <br>Umleitung in beiden Richtungen <br>zwischen Kliebergasse und Hintere Zollamtsstraße <br>über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18).<br>Linie 2: <br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Schwedenplatz U <br>über Schottentor - Schottenring.<br><br>Haltestellen:<br>Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. <br>Schwedenplatz U in Richtung Dornbach: Kein Halt möglich.<br>Gredlerstraße: Kein Halt möglich.<br>Parlament, U Volkstheater in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach).<br>Parlament, U Volkstheater in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament.<br>Linie D:<br>Kein Betrieb zwischen Börse und Schwarzenbergplatz.<br>Linie 71:<br>Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.<br>Linie 5A:<br>Betrieb nur zwischen Griegstraße und Karmeliterplatz.<br>Linie 74A:<br>Betrieb nur zwischen St. Marx S und Landstraße S U.<br> <br>Voraussichtliche Dauer: ca 19:30 Uhr.<br><br>Grund: Demonstration im Bereich .",
+    "description": "Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18). Linie 2: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Schwedenplatz U über Schottentor - Schottenring. Haltestellen: Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. Schwedenplatz U in Richtung Dornbach: Kein Halt möglich. Gredlerstraße: Kein Halt möglich. Parlament, U Volkstheater in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach). Parlament, U Volkstheater in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament. Linie D: Kein Betrieb zwischen Börse und Schwarzenbergplatz. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Linie 5A: Betrieb nur zwischen Griegstraße und Karmeliterplatz. Linie 74A: Betrieb nur zwischen St. Marx S und Landstraße S U. Voraussichtliche Dauer: ca 19:30 Uhr. Grund: Demonstration im Bereich Praterstraße und Innere Stadt.",
+    "descriptionHTML": "Linie 1: <br>Umleitung in beiden Richtungen <br>zwischen Kliebergasse und Hintere Zollamtsstraße <br>über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18).<br>Linie 2: <br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Schwedenplatz U <br>über Schottentor - Schottenring.<br><br>Haltestellen:<br>Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. <br>Schwedenplatz U in Richtung Dornbach: Kein Halt möglich.<br>Gredlerstraße: Kein Halt möglich.<br>Parlament, U Volkstheater in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach).<br>Parlament, U Volkstheater in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament.<br>Linie D:<br>Kein Betrieb zwischen Börse und Schwarzenbergplatz.<br>Linie 71:<br>Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.<br>Linie 5A:<br>Betrieb nur zwischen Griegstraße und Karmeliterplatz.<br>Linie 74A:<br>Betrieb nur zwischen St. Marx S und Landstraße S U.<br> <br>Voraussichtliche Dauer: ca 19:30 Uhr.<br><br>Grund: Demonstration im Bereich Praterstraße und Innere Stadt.",
+    "location": "Praterstraße und Innere Stadt",
     "name": "I20261016-0029",
     "owner": "WL",
     "priority": "1",
@@ -661,7 +693,7 @@
     "time": {
      "created": "2026-10-16T15:25:00.000+0200",
      "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T15:25:00.000+0200",
+     "lastUpdate": "2026-10-16T15:40:00.000+0200",
      "start": "2026-10-16T15:20:00.000+0200"
     },
     "title": "1, 2, D, 71, 5A, 74A: Demonstration"
@@ -691,11 +723,47 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T15:27:00.000+0200",
+     "end": "2026-10-16T15:41:00.000+0200",
+     "lastUpdate": "2026-10-16T15:41:00.000+0200",
+     "resume": "2026-10-16T15:41:00.000+0200",
+     "start": "2026-10-16T15:26:00.000+0200"
+    },
+    "title": "O: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Radetzkystraße",
+    "name": "I20261016-0030-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "170",
+       "lineName": "O",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T15:41:00.000+0200",
      "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T15:27:00.000+0200",
+     "lastUpdate": "2026-10-16T15:41:00.000+0200",
+     "resume": "2026-10-16T15:41:00.000+0200",
      "start": "2026-10-16T15:26:00.000+0200"
     },
     "title": "O: Falschparker"
@@ -1042,6 +1110,24 @@
     "title": "Demonstration\nBetrieb ab Parlament, Volsktheater"
    },
    {
+    "description": "Demonstration\nBetrieb ab Augasse",
+    "name": "R13-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     13
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:30:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Augasse"
+   },
+   {
     "description": "Fahrtbehinderung\nwegen Demonstration",
     "name": "R13-171",
     "owner": "WL",
@@ -1148,6 +1234,24 @@
      "start": "2026-10-16T15:27:13.000+0200"
     },
     "title": "Demonstration\nBetrieb ab Parlament, Volsktheater"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Augasse",
+    "name": "R14-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:30:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Augasse"
    },
    {
     "description": "Fahrtbehinderung\nwegen Demonstration",
@@ -1438,6 +1542,24 @@
     "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
    },
    {
+    "description": "Demonstration\nBetrieb ab Augasse",
+    "name": "R15-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:30:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Augasse"
+   },
+   {
     "description": "Fahrtbehinderung\nwegen Demonstration",
     "name": "R15-171",
     "owner": "WL",
@@ -1457,78 +1579,6 @@
    },
    {
     "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1606-160",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1606
-    ],
-    "time": {
-     "end": "2026-10-16T15:57:00.000+0200",
-     "start": "2026-10-16T14:57:40.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1607-160",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1607
-    ],
-    "time": {
-     "end": "2026-10-16T16:00:00.000+0200",
-     "start": "2026-10-16T15:01:40.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1620-160",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1620
-    ],
-    "time": {
-     "end": "2026-10-16T15:57:00.000+0200",
-     "start": "2026-10-16T14:57:40.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1625-160",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1625
-    ],
-    "time": {
-     "end": "2026-10-16T16:00:00.000+0200",
-     "start": "2026-10-16T15:01:40.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
     "name": "R164-101",
     "owner": "WL",
     "priority": "1",
@@ -1544,6 +1594,24 @@
      "start": "2026-10-16T15:12:09.000+0200"
     },
     "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R164-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     164
+    ],
+    "time": {
+     "end": "2026-10-16T16:33:00.000+0200",
+     "start": "2026-10-16T15:34:11.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Fahrtbehinderung\nVerkehrsunfall",
@@ -1598,6 +1666,24 @@
      "start": "2026-10-16T15:23:42.000+0200"
     },
     "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Augasse",
+    "name": "R17-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:30:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Augasse"
    },
    {
     "description": "Fahrtbehinderung\nwegen Demonstration",
@@ -1888,6 +1974,24 @@
     "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
    },
    {
+    "description": "Demonstration\nBetrieb ab Augasse",
+    "name": "R18-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     18
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:30:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Augasse"
+   },
+   {
     "description": "Fahrtbehinderung\nwegen Demonstration",
     "name": "R18-171",
     "owner": "WL",
@@ -1924,7 +2028,7 @@
     "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
    },
    {
-    "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
+    "description": "Demonstration\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
     "priority": "1",
@@ -1936,10 +2040,10 @@
      19
     ],
     "time": {
-     "end": "2026-10-16T23:59:59.000+0200",
+     "end": "2026-10-16T23:45:00.000+0200",
      "start": "2026-10-14T00:00:22.000+0200"
     },
-    "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
+    "title": "Demonstration\nBetrieb ab Augasse"
    },
    {
     "description": "Fahrtbehinderung\nwegen Demonstration",
@@ -2407,6 +2511,24 @@
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
    },
    {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R311-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     311
+    ],
+    "time": {
+     "end": "2026-10-16T16:33:00.000+0200",
+     "start": "2026-10-16T15:34:13.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -2423,6 +2545,60 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R3445-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     3445
+    ],
+    "time": {
+     "end": "2026-10-16T16:33:00.000+0200",
+     "start": "2026-10-16T15:34:17.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R3446-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     3446
+    ],
+    "time": {
+     "end": "2026-10-16T16:33:00.000+0200",
+     "start": "2026-10-16T15:34:17.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R346-170",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     346
+    ],
+    "time": {
+     "end": "2026-10-16T16:33:00.000+0200",
+     "start": "2026-10-16T15:34:13.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Züge halten\nbei Linien 6 und 18",
@@ -2996,6 +3172,24 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "description": "Demonstration\nBetrieb ab Augasse",
+    "name": "R81-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     81
+    ],
+    "time": {
+     "end": "2026-10-16T23:45:00.000+0200",
+     "start": "2026-10-16T15:30:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Augasse"
    },
    {
     "description": "Fahrtbehinderung\nwegen Demonstration",

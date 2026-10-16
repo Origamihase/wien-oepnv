@@ -2,7 +2,19 @@
  "verworfen": [
   {
    "grund": "Kurzmeldung einer erledigten Störung",
+   "titel": "Fahrtbehinderung Falschparker"
+  },
+  {
+   "grund": "Kurzmeldung einer erledigten Störung",
    "titel": "Fahrtbehinderung Verkehrsunfall"
+  },
+  {
+   "grund": "Kurzmeldung einer erledigten Störung",
+   "titel": "Verkehrsunfall Betrieb ab Hintere Zollamtsstraße"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "1, 4A: Verkehrsunfall"
   },
   {
    "grund": "Status inaktiv",
@@ -10,7 +22,11 @@
   },
   {
    "grund": "Status inaktiv",
-   "titel": "2A: Verspätungen"
+   "titel": "1: Verkehrsunfall"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "2A: Verkehrsunfall"
   },
   {
    "grund": "Status inaktiv",
@@ -18,7 +34,11 @@
   },
   {
    "grund": "Status inaktiv",
-   "titel": "U6: Betriebsstörung"
+   "titel": "7A: Verkehrsüberlastung"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "O: Falschparker"
   },
   {
    "grund": "außerhalb des Zeitraums",

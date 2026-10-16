@@ -3,32 +3,95 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R1606-160|2026-10-16T14:57:40.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R1606-160",
+   "key": "R1489-404|2026-10-16T15:13:41.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1489-404",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-16T15:57:00.000+0200",
-   "incident": "I20261016-0026"
+   "end": "2026-10-16T16:13:00.000+0200",
+   "incident": "I20261016-0027"
   },
   {
-   "key": "R1607-160|2026-10-16T15:01:40.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R1607-160",
+   "key": "R1498-404|2026-10-16T15:13:41.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1498-404",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-16T16:00:00.000+0200",
-   "incident": "I20261016-0026"
+   "end": "2026-10-16T16:13:00.000+0200",
+   "incident": "I20261016-0027"
   },
   {
-   "key": "R1620-160|2026-10-16T14:57:40.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R1620-160",
+   "key": "R164-101|2026-10-16T15:12:09.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R164-101",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-16T15:57:00.000+0200",
-   "incident": "I20261016-0026"
+   "end": "2026-10-16T16:11:00.000+0200",
+   "incident": "I20261016-0027-F01"
   },
   {
-   "key": "R1625-160|2026-10-16T15:01:40.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R1625-160",
+   "key": "R164-170|2026-10-16T15:34:11.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R164-170",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-16T16:33:00.000+0200",
+   "incident": "I20261016-0030"
+  },
+  {
+   "key": "R165-101|2026-10-16T15:12:09.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R165-101",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-16T16:00:00.000+0200",
-   "incident": "I20261016-0026"
+   "end": "2026-10-16T16:11:00.000+0200",
+   "incident": "I20261016-0027-F01"
+  },
+  {
+   "key": "R169-101|2026-10-16T15:12:39.000+0200|Verkehrsunfall\nBetrieb ab Hintere Zollamtsstraße",
+   "name": "R169-101",
+   "title": "Verkehrsunfall\nBetrieb ab Hintere Zollamtsstraße",
+   "end": "2026-10-16T16:11:00.000+0200",
+   "incident": "I20261016-0027-F01"
+  },
+  {
+   "key": "R172-101|2026-10-16T15:12:39.000+0200|Verkehrsunfall\nBetrieb ab Hintere Zollamtsstraße",
+   "name": "R172-101",
+   "title": "Verkehrsunfall\nBetrieb ab Hintere Zollamtsstraße",
+   "end": "2026-10-16T16:11:00.000+0200",
+   "incident": "I20261016-0027-F01"
+  },
+  {
+   "key": "R173-101|2026-10-16T15:12:39.000+0200|Verkehrsunfall\nBetrieb ab Hintere Zollamtsstraße",
+   "name": "R173-101",
+   "title": "Verkehrsunfall\nBetrieb ab Hintere Zollamtsstraße",
+   "end": "2026-10-16T16:11:00.000+0200",
+   "incident": "I20261016-0027-F01"
+  },
+  {
+   "key": "R2388-402|2026-10-16T15:13:13.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2388-402",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-16T16:12:00.000+0200",
+   "incident": "I20261016-0028"
+  },
+  {
+   "key": "R311-170|2026-10-16T15:34:13.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R311-170",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-16T16:33:00.000+0200",
+   "incident": "I20261016-0030"
+  },
+  {
+   "key": "R3445-170|2026-10-16T15:34:17.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R3445-170",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-16T16:33:00.000+0200",
+   "incident": "I20261016-0030"
+  },
+  {
+   "key": "R3446-170|2026-10-16T15:34:17.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R3446-170",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-16T16:33:00.000+0200",
+   "incident": "I20261016-0030"
+  },
+  {
+   "key": "R346-170|2026-10-16T15:34:13.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R346-170",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-16T16:33:00.000+0200",
+   "incident": "I20261016-0030"
   }
  ]
 }
