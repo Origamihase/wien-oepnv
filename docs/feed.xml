@@ -7,10 +7,10 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 16 Oct 2026 11:30:35 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 12:00:54 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[9/42: Falschparker]]></title>
+      <title><![CDATA[9: Falschparker]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
       <pubDate>Fri, 16 Oct 2026 11:13:00 +0200</pubDate>
@@ -65,15 +65,26 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 10:06]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U2: Stromschiene]]></title>
+      <title><![CDATA[U2: Weichenstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">4460db7100edd882f0850654a58cc4dacef4a8d1b3718df2d37d810e6bc3c23b</guid>
       <pubDate>Fri, 16 Oct 2026 09:39:00 +0200</pubDate>
       <ext:first_seen>Fri, 16 Oct 2026 10:01:05 +0200</ext:first_seen>
       <ext:starts_at>Fri, 16 Oct 2026 09:39:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie U2 fährt derzeit zwischen den Stationen Donaumarina und Stadlau in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: Nicht absehbar. [Seit 09:39]</description>
-      <content:encoded><![CDATA[Die Linie U2 fährt derzeit zwischen den Stationen Donaumarina und Stadlau in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: Nicht absehbar.<br/>[Seit 09:39]]]></content:encoded>
+      <description>Die Linie U2 fährt derzeit nur zwischen Karlsplatz und Stadion beziehungsweise zwischen Donaumarina und Seestadt. [Seit 09:39]</description>
+      <content:encoded><![CDATA[Die Linie U2 fährt derzeit nur zwischen Karlsplatz und Stadion beziehungsweise zwischen Donaumarina und Seestadt.<br/>[Seit 09:39]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62A/7A/N8: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">ec760ed4fea6e1168857f4e98a71099b766192e4893266a0a2e84e34245263a9</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 12:00:54 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:59:00 +0200</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Breitenfurter Straße 1 werden die Linien 7A, 62A und N8 umgeleitet. [Heute]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Breitenfurter Straße 1 werden die Linien 7A, 62A und N8 umgeleitet.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: Rettungseinsatz, Gleisbauarbeiten]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 23 Oct 2026 05:05:00 +0200</ext:ends_at>
       <description>Simmeringer Hauptstraße gegenüber 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, provisorische Haltestelle, Hauptfahrbahn. Haltestellenverlegung der Linie N71 … [Bis 23.10.]</description>
       <content:encoded><![CDATA[Simmeringer Hauptstraße gegenüber 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, provisorische Haltestelle, Hauptfahrbahn. Haltestellenverlegung der Linie N71 …<br/>[Bis 23.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2/5/5A/5B/71/74A/80A/D/O: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f868d2f5eb494decde7d0c63339dab6ae0887407eebc3eed949d2e7e53c0a75c</guid>
-      <pubDate>Tue, 13 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 15 Oct 2026 00:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 19:05:00 +0200</ext:ends_at>
-      <description>Wegen einer Demonstration kommt es zu Einschränkungen im öffentlichen Verkehr. Linie D: Kurzführung der Züge zwischen Absberggasse und Börse am Schwarzenbergplatz. [Heute]</description>
-      <content:encoded><![CDATA[Wegen einer Demonstration kommt es zu Einschränkungen im öffentlichen Verkehr. Linie D: Kurzführung der Züge zwischen Absberggasse und Börse am Schwarzenbergplatz.<br/>[Heute]]]></content:encoded>
     </item>
   </channel>
 </rss>
