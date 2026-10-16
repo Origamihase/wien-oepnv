@@ -842,22 +842,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Schadhaftes Fahrzeug",
-    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "fdcda7ef6a92179bf10d7bc572ea4566627e0563f24d6ad54899c823e3aca356",
-    "pubDate": "2026-10-16T19:03:00+02:00",
-    "starts_at": "2026-10-16T19:03:00+02:00",
-    "ends_at": "2026-10-16T23:55:00+02:00",
-    "_identity": "wl|störung|L=10|D=2026-10-16|TK=10 schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261016-0034"
-    ],
-    "_incident_start": "2026-10-16T19:03:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1130,22 +1114,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "4A: Schadhaftes Fahrzeug",
-    "description": "Linie 4A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "c5e79df575bfef0f92f84914b1cdc1dbbc7f1530310af91d4850b16431d82fc3",
-    "pubDate": "2026-10-16T19:24:00+02:00",
-    "starts_at": "2026-10-16T19:24:00+02:00",
-    "ends_at": "2026-10-16T20:44:00+02:00",
-    "_identity": "wl|störung|L=4A|D=2026-10-16|TK=4a schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261016-0036"
-    ],
-    "_incident_start": "2026-10-16T19:24:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "52: Züge halten bei Linien 6 und 18",
     "description": "Züge halten\nbei Linien 6 und 18",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1159,7 +1127,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "62/LB: Fahrzeug im Gleis",
-    "description": "Die Linie 62 fährt derzeit nicht zwischen Eichenstraße und Aßmayergasse. Die Linie LB fährt derzeit nicht zwischen Matzleinsdorfer Platz S und Aßmayergasse. Voraussichtliche Dauer: 21:00 Uhr. Grund: Fahrzeug im Gleis im Bereich Flurschützstraße.",
+    "description": "Die Linie 62 fährt derzeit nicht zwischen Eichenstraße und Aßmayergasse. Die Lokal Bahn fährt derzeit nicht zwischen Matzleinsdorfer Platz S und Aßmayergasse. Weichen Sie ersatzweise auf die Linie U6 aus. Das Ende der Störung ist derzeit nicht absehbar. Grund: Fahrzeug im Gleis im Bereich Flurschützstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
     "guid": "9c98376a065019f9814bc9424ef2fe07d129b73834779d9d3a750f013998e9ba",
     "pubDate": "2026-10-16T20:03:00+02:00",
@@ -1182,22 +1150,6 @@
     "starts_at": "2026-10-16T04:40:10+02:00",
     "ends_at": "2026-10-17T01:00:00+02:00",
     "_identity": "wl|störung|L=66A|D=2026-10-16|TK=busse halten salvatorianerplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Fahrzeug im Gleis",
-    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "a4b76be07792d3edac398c73ec6f5c6b59d0528c10822e9c84cad6b5dbd20d14",
-    "pubDate": "2026-10-16T19:32:00+02:00",
-    "starts_at": "2026-10-16T19:32:00+02:00",
-    "ends_at": "2026-10-16T23:55:00+02:00",
-    "_identity": "wl|störung|L=6|D=2026-10-16|TK=6 fahrzeug im gleis",
-    "_wl_ids": [
-      "I20261016-0037"
-    ],
-    "_incident_start": "2026-10-16T19:32:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1278,22 +1230,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Demonstration",
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "23617704b0adedf9ec79e6ea20280c4a9295bcef03cad548c5faed81118dda8e",
-    "pubDate": "2026-10-16T15:20:00+02:00",
-    "starts_at": "2026-10-16T15:20:00+02:00",
-    "ends_at": "2026-10-16T23:55:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-10-16|TK=demonstration",
-    "_wl_ids": [
-      "I20261016-0029"
-    ],
-    "_incident_start": "2026-10-16T15:20:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Ersatzverkehr Busse halten bei Haltestelle N71",
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1318,22 +1254,6 @@
       "I20261016-0020"
     ],
     "_incident_start": "2026-10-16T13:16:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Rettungseinsatz",
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
-    "pubDate": "2026-10-16T20:18:00+02:00",
-    "starts_at": "2026-10-16T20:18:00+02:00",
-    "ends_at": "2026-10-16T23:55:00+02:00",
-    "_identity": "wl|störung|L=U6|D=2026-10-16|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261016-0040"
-    ],
-    "_incident_start": "2026-10-16T20:18:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1394,18 +1314,6 @@
     "starts_at": "2026-10-16T20:11:17+02:00",
     "ends_at": "2026-10-16T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-10-16|TK=fahrtbehinderung pkw im gleis"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung wegen PKW im Gleis",
-    "description": "Fahrtbehinderung\nwegen PKW im Gleis",
-    "link": "https://www.wienerlinien.at/ogd_realtime",
-    "guid": "49ff09b9bc7c7149e09a5e2524d1bb475c0f925ef936d921e67a8e040709a1df",
-    "pubDate": "2026-10-16T19:34:14+02:00",
-    "starts_at": "2026-10-16T19:39:14+02:00",
-    "ends_at": "2026-10-16T20:38:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-10-16|TK=fahrtbehinderung wegen pkw im gleis"
   },
   {
     "source": "Wiener Linien",
