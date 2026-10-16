@@ -7,8 +7,30 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 16 Oct 2026 14:57:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 15:00:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[7A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc</guid>
+      <pubDate>Fri, 16 Oct 2026 14:56:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 14:56:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 14:56:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 14:56]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 14:56]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f1fe5d52a5a574694cd18960683874af6f978ac62924632bfae77052d94b803d</guid>
+      <pubDate>Fri, 16 Oct 2026 14:56:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 14:56:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 14:56:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung in Richtung Rodaun. Voraussichtlich bis 15:30 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Maurer Hauptplatz. [Seit 14:56]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Rodaun. Voraussichtlich bis 15:30 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Maurer Hauptplatz.<br/>[Seit 14:56]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U6: Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -17,19 +39,19 @@
       <ext:first_seen>Fri, 16 Oct 2026 14:29:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 16 Oct 2026 14:29:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Floridsdorf. Grund: Betriebsstörung im Bereich Jägerstraße. [Seit 14:29]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Floridsdorf. Grund: Betriebsstörung im Bereich Jägerstraße.<br/>[Seit 14:29]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 14:29]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 14:29]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U1: Feuerwehreinsatz]]></title>
+      <title><![CDATA[U1: Weichenstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e938b804c9027f350eb7c9b5ec95f3fa4f3f1c5011ac2ba48fcf6c6fcde70d0c</guid>
       <pubDate>Fri, 16 Oct 2026 13:16:00 +0200</pubDate>
       <ext:first_seen>Fri, 16 Oct 2026 13:30:46 +0200</ext:first_seen>
       <ext:starts_at>Fri, 16 Oct 2026 13:16:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie U1 fährt derzeit in der Station Alaudagasse in beiden Richtungen über Gleis 2. Voraussichtlich bis 15:00 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Alaudagasse. [Seit 13:16]</description>
-      <content:encoded><![CDATA[Die Linie U1 fährt derzeit in der Station Alaudagasse in beiden Richtungen über Gleis 2. Voraussichtlich bis 15:00 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Alaudagasse.<br/>[Seit 13:16]]]></content:encoded>
+      <description>Die Linie U1 fährt derzeit zwischen den Stationen Alaudagasse und Troststraße in beiden Richtungen über Gleis 2. Voraussichtlich bis 16:00 Uhr. Grund: Weichenstörung … [Seit 13:16]</description>
+      <content:encoded><![CDATA[Die Linie U1 fährt derzeit zwischen den Stationen Alaudagasse und Troststraße in beiden Richtungen über Gleis 2. Voraussichtlich bis 16:00 Uhr. Grund: Weichenstörung …<br/>[Seit 13:16]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[71: Verkehrsunfall]]></title>
@@ -96,28 +118,6 @@
       <ext:ends_at>Fri, 23 Oct 2026 05:05:00 +0200</ext:ends_at>
       <description>Simmeringer Hauptstraße gegenüber 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, provisorische Haltestelle, Hauptfahrbahn. Haltestellenverlegung der Linie N71 … [Bis 23.10.]</description>
       <content:encoded><![CDATA[Simmeringer Hauptstraße gegenüber 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, provisorische Haltestelle, Hauptfahrbahn. Haltestellenverlegung der Linie N71 …<br/>[Bis 23.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2/5/5A/5B/71/74A/80A/D/O: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f868d2f5eb494decde7d0c63339dab6ae0887407eebc3eed949d2e7e53c0a75c</guid>
-      <pubDate>Tue, 13 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Thu, 15 Oct 2026 00:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 19:05:00 +0200</ext:ends_at>
-      <description>Wegen einer Demonstration kommt es zu Einschränkungen im öffentlichen Verkehr. Linie D: Kurzführung der Züge zwischen Absberggasse und Börse am Schwarzenbergplatz. [Heute]</description>
-      <content:encoded><![CDATA[Wegen einer Demonstration kommt es zu Einschränkungen im öffentlichen Verkehr. Linie D: Kurzführung der Züge zwischen Absberggasse und Börse am Schwarzenbergplatz.<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A: Liesing-Flur-Gasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">609517ab3ab98b5b38f0fe913f15e9bd18cd5a3d9005a51a2cb50d3fb227ddbd</guid>
-      <pubDate>Wed, 14 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten. [Bis 28.10.]</description>
-      <content:encoded><![CDATA[Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten.<br/>[Bis 28.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

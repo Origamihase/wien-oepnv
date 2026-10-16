@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261016-0020, I20260917-0012, I20260922-0032, I20261016-0021, I20261016-0019-F01, I20261016-0024, I20260925-0011, I20260909-0007, I20261016-0011-F01, I20261016-0019-F02, I20261016-0014, I20261016-0017-F01, I20261016-0023-F01, I20261016-0023, I20261016-0021-F01, I20261016-0022"
+    "trafficInfoNameList": "I20261016-0025, I20260917-0012, I20260922-0032, I20261016-0026, I20260925-0011, I20260909-0007, I20261016-0024-F01, I20261016-0024, I20261016-0011-F01, I20261016-0014, I20261016-0017-F01, I20261016-0023-F01, I20261016-0021-F01, I20261016-0022, I20261016-0020"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R36-152, R45-136, R19-136, R130-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R1177-0, R318-437, R293-474, R119-136, R118-136, R117-136, R2025-671, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R500-101, R2046-171, R2045-171, R2044-171, R2641-171, R2047-171, R2039-171, R2038-171, R2043-171, R2036-171, R2021-171, R2020-171, R2016-171, R2009-171, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R130-136, R1177-0, R119-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R2025-671, R36-152, R45-136, R19-136, R1472-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R1974-466, R500-101, R1620-160, R1606-160, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -307,81 +307,12 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "86A": "ptBusCity"
-     }
-    },
-    "description": "Linie 86A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 86A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Stadtlauer Straße",
-    "name": "I20261016-0019-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "86A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "486",
-       "lineName": "86A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-16T12:29:00.000+0200",
-     "end": "2026-10-16T13:38:00.000+0200",
-     "lastUpdate": "2026-10-16T13:38:00.000+0200",
-     "resume": "2026-10-16T13:38:00.000+0200",
-     "start": "2026-10-16T12:24:00.000+0200"
-    },
-    "title": "86A: Fremder Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "87A": "ptBusCity"
-     }
-    },
-    "description": "Linie 87A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 87A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Stadtlauer Straße",
-    "name": "I20261016-0019-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "87A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "487",
-       "lineName": "87A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-16T12:29:00.000+0200",
-     "end": "2026-10-16T13:38:00.000+0200",
-     "lastUpdate": "2026-10-16T13:38:00.000+0200",
-     "resume": "2026-10-16T13:38:00.000+0200",
-     "start": "2026-10-16T12:24:00.000+0200"
-    },
-    "title": "87A: Fremder Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U1": "ptMetro"
      }
     },
-    "description": "Die Linie U1 fährt derzeit in der Station Alaudagasse in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 15:00 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Alaudagasse.",
-    "descriptionHTML": "Die Linie U1 fährt derzeit in der Station Alaudagasse in beiden Richtungen über Gleis 2.<br> <br>Voraussichtliche Dauer: 15:00 Uhr.<br><br>Grund: Feuerwehreinsatz im Haltestellenbereich Alaudagasse.",
+    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Alaudagasse und Troststraße in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 16:00 Uhr. Grund: Weichenstörung im Bereich Alaudagasse.",
+    "descriptionHTML": "Die Linie U1 fährt derzeit zwischen den Stationen Alaudagasse und Troststraße in beiden Richtungen über Gleis 2.<br> <br>Voraussichtliche Dauer: 16:00 Uhr.<br><br>Grund: Weichenstörung im Bereich Alaudagasse.",
+    "location": " Alaudagasse",
     "name": "I20261016-0020",
     "owner": "WL",
     "priority": "1",
@@ -398,52 +329,14 @@
       }
      ]
     ],
-    "relatedStops": [
-     4136
-    ],
     "status": "active",
     "time": {
      "created": "2026-10-16T13:17:00.000+0200",
      "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T14:27:00.000+0200",
+     "lastUpdate": "2026-10-16T14:53:00.000+0200",
      "start": "2026-10-16T13:16:00.000+0200"
     },
-    "title": "U1: Feuerwehreinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "9": "ptTram"
-     }
-    },
-    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 13:50 Uhr. Grund: Falschparker im Bereich Hormayrgasse 19.",
-    "descriptionHTML": "Linie 9:<br>Fahrtbehinderung in Richtung Westbahnhof S U.<br> <br>Voraussichtliche Dauer: 13:50 Uhr.<br><br>Grund: Falschparker im Bereich Hormayrgasse 19.",
-    "location": "Hormayrgasse 19",
-    "name": "I20261016-0021",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "109",
-       "lineName": "9",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-16T13:24:00.000+0200",
-     "end": "2026-10-16T13:31:00.000+0200",
-     "lastUpdate": "2026-10-16T13:31:00.000+0200",
-     "resume": "2026-10-16T13:31:00.000+0200",
-     "start": "2026-10-16T13:24:00.000+0200"
-    },
-    "title": "9: Falschparker"
+    "title": "U1: Weichenstörung"
    },
    {
     "attributes": {
@@ -520,41 +413,6 @@
       "71": "ptTram"
      }
     },
-    "description": "Linie 71: Kein Betrieb zwischen Enkplatz U, Grillgasse und St. Marx S. Weichen Sie ersatzweise auf die Linien U3 und 18 aus. Voraussichtliche Dauer: 13:55 Uhr. Grund: Verkehrsunfall im Bereich Simmeringer Hauptstraße 91.",
-    "descriptionHTML": "Linie 71:<br>Kein Betrieb zwischen Enkplatz U, Grillgasse und St. Marx S.<br> <br>Weichen Sie ersatzweise auf die Linien U3 und 18 aus.<br><br>Voraussichtliche Dauer: 13:55 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Simmeringer Hauptstraße 91.",
-    "location": "Simmeringer Hauptstraße 91",
-    "name": "I20261016-0023",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "171",
-       "lineName": "71",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-16T13:32:00.000+0200",
-     "end": "2026-10-16T13:52:00.000+0200",
-     "lastUpdate": "2026-10-16T13:52:00.000+0200",
-     "resume": "2026-10-16T13:52:00.000+0200",
-     "start": "2026-10-16T13:30:00.000+0200"
-    },
-    "title": "71: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "71": "ptTram"
-     }
-    },
     "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "location": "Simmeringer Hauptstraße 91",
@@ -609,14 +467,120 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T14:29:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T14:29:00.000+0200",
+     "end": "2026-10-16T14:36:00.000+0200",
+     "lastUpdate": "2026-10-16T14:36:00.000+0200",
+     "resume": "2026-10-16T14:36:00.000+0200",
      "start": "2026-10-16T14:29:00.000+0200"
     },
     "title": "U6: Betriebsstörung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Jägerstraße",
+    "name": "I20261016-0024-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "306",
+       "lineName": "U6",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T14:36:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T14:36:00.000+0200",
+     "resume": "2026-10-16T14:36:00.000+0200",
+     "start": "2026-10-16T14:29:00.000+0200"
+    },
+    "title": "U6: Betriebsstörung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "7A": "ptBusCity"
+     }
+    },
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
+    "name": "I20261016-0025",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "407",
+       "lineName": "7A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T14:56:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T14:56:00.000+0200",
+     "resume": "2026-10-16T14:56:00.000+0200",
+     "start": "2026-10-16T14:56:00.000+0200"
+    },
+    "title": "7A: Verkehrsüberlastung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "60": "ptTram"
+     }
+    },
+    "description": "Linie 60: Fahrtbehinderung in Richtung Rodaun. Voraussichtliche Dauer: 15:30 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Maurer Hauptplatz.",
+    "descriptionHTML": "Linie 60:<br>Fahrtbehinderung in Richtung Rodaun.<br> <br>Voraussichtliche Dauer: 15:30 Uhr.<br><br>Grund: Verkehrsunfall im Haltestellenbereich Maurer Hauptplatz.",
+    "name": "I20261016-0026",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "160",
+       "lineName": "60",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1620
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T14:57:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T14:57:00.000+0200",
+     "start": "2026-10-16T14:56:00.000+0200"
+    },
+    "title": "60: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1030,6 +994,42 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
    },
    {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1606-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1606
+    ],
+    "time": {
+     "end": "2026-10-16T15:57:00.000+0200",
+     "start": "2026-10-16T14:57:40.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1620-160",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1620
+    ],
+    "time": {
+     "end": "2026-10-16T15:57:00.000+0200",
+     "start": "2026-10-16T14:57:40.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -1066,78 +1066,6 @@
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
    {
-    "description": "Verkehrsunfall\nZüge halten bei Linie 15A",
-    "name": "R2009-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2009
-    ],
-    "time": {
-     "end": "2026-10-16T14:37:00.000+0200",
-     "start": "2026-10-16T13:38:00.000+0200"
-    },
-    "title": "Verkehrsunfall\nZüge halten bei Linie 15A"
-   },
-   {
-    "description": "Verkehrsunfall\nBetrieb ab Enkplatz, Grillgasse",
-    "name": "R2016-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2016
-    ],
-    "time": {
-     "end": "2026-10-16T14:36:00.000+0200",
-     "start": "2026-10-16T13:37:30.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Enkplatz, Grillgasse"
-   },
-   {
-    "description": "Verkehrsunfall\nBetrieb ab Enkplatz, Grillgasse",
-    "name": "R2020-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2020
-    ],
-    "time": {
-     "end": "2026-10-16T14:36:00.000+0200",
-     "start": "2026-10-16T13:37:30.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Enkplatz, Grillgasse"
-   },
-   {
-    "description": "Verkehrsunfall\nBetrieb ab Enkplatz, Grillgasse",
-    "name": "R2021-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2021
-    ],
-    "time": {
-     "end": "2026-10-16T14:36:00.000+0200",
-     "start": "2026-10-16T13:37:30.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Enkplatz, Grillgasse"
-   },
-   {
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "name": "R2025-671",
     "owner": "WL",
@@ -1151,150 +1079,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
-   },
-   {
-    "description": "Verkehrsunfall\nBetrieb ab St. Marx",
-    "name": "R2036-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2036
-    ],
-    "time": {
-     "end": "2026-10-16T14:35:00.000+0200",
-     "start": "2026-10-16T13:35:31.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab St. Marx"
-   },
-   {
-    "description": "Verkehrsunfall\nBetrieb ab St. Marx",
-    "name": "R2038-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2038
-    ],
-    "time": {
-     "end": "2026-10-16T14:35:00.000+0200",
-     "start": "2026-10-16T13:34:01.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab St. Marx"
-   },
-   {
-    "description": "Verkehrsunfall\nBetrieb ab St. Marx",
-    "name": "R2039-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2039
-    ],
-    "time": {
-     "end": "2026-10-16T14:35:00.000+0200",
-     "start": "2026-10-16T13:34:01.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab St. Marx"
-   },
-   {
-    "description": "Verkehrsunfall\nZüge halten in der Leberstraße",
-    "name": "R2043-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2043
-    ],
-    "time": {
-     "end": "2026-10-16T14:36:00.000+0200",
-     "start": "2026-10-16T13:34:01.000+0200"
-    },
-    "title": "Verkehrsunfall\nZüge halten in der Leberstraße"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2044-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2044
-    ],
-    "time": {
-     "end": "2026-10-16T14:33:00.000+0200",
-     "start": "2026-10-16T13:34:01.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2045-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2045
-    ],
-    "time": {
-     "end": "2026-10-16T14:33:00.000+0200",
-     "start": "2026-10-16T13:34:01.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2046-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2046
-    ],
-    "time": {
-     "end": "2026-10-16T14:33:00.000+0200",
-     "start": "2026-10-16T13:34:01.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2047-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2047
-    ],
-    "time": {
-     "end": "2026-10-16T14:33:00.000+0200",
-     "start": "2026-10-16T13:34:01.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
@@ -1565,24 +1349,6 @@
      "start": "2026-10-14T00:00:24.000+0200"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2641-171",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2641
-    ],
-    "time": {
-     "end": "2026-10-16T14:33:00.000+0200",
-     "start": "2026-10-16T13:34:01.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
