@@ -5276,9 +5276,9 @@
         "Wien-Rennweg-(WL) Bf",
         "Wien-Rennweg-(WL) bf"
       ],
-      "latitude": 48.19465,
-      "longitude": 16.386478,
-      "source": "google_places,hafas,oebb,oebb_geonetz,osm,wl",
+      "latitude": 48.195812,
+      "longitude": 16.385855,
+      "source": "hafas,oebb,oebb_geonetz,osm,wl",
       "wl_diva": "60201091",
       "wl_stops": [
         {
@@ -5971,9 +5971,9 @@
         "Wien-Praterstern-(WL) Bf",
         "Wien-Praterstern-(WL) bf"
       ],
-      "latitude": 48.218504,
-      "longitude": 16.391977,
-      "source": "google_places,hafas,oebb,oebb_geonetz,osm,wl",
+      "latitude": 48.21854,
+      "longitude": 16.392222,
+      "source": "hafas,oebb,oebb_geonetz,osm,wl",
       "wl_diva": "60201040",
       "wl_stops": [
         {
@@ -8789,9 +8789,9 @@
         "Wien-Franz-Josefs-Bf-(WL)",
         "Wien-Franz-Josefs-bf-(WL)"
       ],
-      "latitude": 48.225503,
-      "longitude": 16.361344,
-      "source": "google_places,hafas,oebb,oebb_geonetz,osm,wl",
+      "latitude": 48.226607,
+      "longitude": 16.361443,
+      "source": "hafas,oebb,oebb_geonetz,osm,wl",
       "wl_diva": "60200345",
       "wl_stops": [
         {
@@ -18604,14 +18604,6 @@
       "address": "3335 Weyer, Bahnpromenade 150"
     },
     {
-      "_google_place_id": "ChIJZ1D-htapbUcROoi_2Jg_fcg",
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
       "aliases": [
         "490134900",
         "Wien Hauptbahnhof",
@@ -18859,11 +18851,11 @@
       "bst_code": "900100",
       "bst_id": "900100",
       "in_vienna": true,
-      "latitude": 48.186116,
-      "longitude": 16.374399,
+      "latitude": 48.185201,
+      "longitude": 16.376296,
       "name": "Wien Hauptbahnhof",
       "pendler": false,
-      "source": "google_places,hafas,oebb_geonetz,osm,vor,wl",
+      "source": "hafas,oebb_geonetz,osm,vor,wl",
       "vor_id": "490134900",
       "wl_diva": "60201349",
       "wl_stops": [
@@ -18984,14 +18976,6 @@
       "address": "1110 Wien,"
     },
     {
-      "_google_place_id": "ChIJAejOLIMHbUcRqGaIKFIrOSs",
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
       "aliases": [
         "490065700",
         "Wien Karlsplatz",
@@ -19132,11 +19116,11 @@
       "bst_code": "900101",
       "bst_id": "900101",
       "in_vienna": true,
-      "latitude": 48.200779399999995,
-      "longitude": 16.3694019,
+      "latitude": 48.2009554,
+      "longitude": 16.3689484,
       "name": "Wien Karlsplatz",
       "pendler": false,
-      "source": "google_places,vor,wl",
+      "source": "vor,wl",
       "vor_id": "490065700",
       "wl_diva": "60200657",
       "wl_stops": [
@@ -19250,14 +19234,6 @@
       ]
     },
     {
-      "_google_place_id": "ChIJm6KCZnMHbUcRF0kfTP5M-HY",
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
       "aliases": [
         "490074300",
         "Wien Mitte-Landstraße",
@@ -19492,11 +19468,11 @@
       "bst_code": "900102",
       "bst_id": "900102",
       "in_vienna": true,
-      "latitude": 48.207316999999996,
-      "longitude": 16.385641,
+      "latitude": 48.2060445,
+      "longitude": 16.3845881,
       "name": "Wien Mitte-Landstraße",
       "pendler": false,
-      "source": "google_places,vor,wl",
+      "source": "vor,wl",
       "vor_id": "490074300",
       "wl_diva": "60200743",
       "wl_stops": [
@@ -19569,14 +19545,6 @@
       ]
     },
     {
-      "_google_place_id": "ChIJtXUcR7wHbUcR4C9kP_yXVMY",
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
       "aliases": [
         "490118400",
         "Wien Schottentor",
@@ -19663,11 +19631,11 @@
       "bst_code": "900103",
       "bst_id": "900103",
       "in_vienna": true,
-      "latitude": 48.2136712,
-      "longitude": 16.3621954,
+      "latitude": 48.2139405,
+      "longitude": 16.3622649,
       "name": "Wien Schottentor",
       "pendler": false,
-      "source": "google_places,vor,wl",
+      "source": "vor,wl",
       "vor_id": "490118400",
       "wl_diva": "60201184",
       "wl_stops": [
@@ -19771,14 +19739,6 @@
       ]
     },
     {
-      "_google_place_id": "ChIJQ-lZKZ8HbUcRLnHPUlkyNqE",
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
       "aliases": [
         "490132000",
         "Wien Stephansplatz",
@@ -19916,11 +19876,11 @@
       "bst_code": "900104",
       "bst_id": "900104",
       "in_vienna": true,
-      "latitude": 48.208175999999995,
-      "longitude": 16.371245899999998,
+      "latitude": 48.2081338,
+      "longitude": 16.3716344,
       "name": "Wien Stephansplatz",
       "pendler": false,
-      "source": "google_places,vor,wl",
+      "source": "vor,wl",
       "vor_id": "490132000",
       "wl_diva": "60201320",
       "wl_stops": [
@@ -20857,17 +20817,9 @@
         "Wien-Herrengasse-(WL) Bf",
         "Wien-Herrengasse-(WL) bf"
       ],
-      "source": "google_places,wl",
-      "latitude": 48.20975,
-      "longitude": 16.365304,
-      "_google_place_id": "ChIJBa9sJZgHbUcRrekncb64g2M",
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
+      "source": "wl",
+      "latitude": 48.2094868,
+      "longitude": 16.3658492,
       "wl_lines": [
         "1A",
         "U3"
@@ -21119,17 +21071,9 @@
         "Wien-Kettenbrückengasse-(WL) Bf",
         "Wien-Kettenbrückengasse-(WL) bf"
       ],
-      "source": "google_places,wl",
-      "latitude": 48.196886,
-      "longitude": 16.358618,
-      "_google_place_id": "ChIJKev0BYYHbUcRJCw8HjiV7KQ",
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
+      "source": "wl",
+      "latitude": 48.1968179,
+      "longitude": 16.3589951,
       "wl_lines": [
         "N60",
         "U4"
@@ -21257,17 +21201,9 @@
         "Wien-Messe-Prater-(WL) Bf",
         "Wien-Messe-Prater-(WL) bf"
       ],
-      "source": "google_places,wl",
-      "latitude": 48.217859,
-      "longitude": 16.405106,
-      "_google_place_id": "ChIJI_ezLxoHbUcRIBhUplX6B8Q",
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
+      "source": "wl",
+      "latitude": 48.2177893,
+      "longitude": 16.4056985,
       "wl_lines": [
         "82A",
         "N81R",
@@ -21439,17 +21375,9 @@
         "Wien-Neubaugasse-(WL) Bf",
         "Wien-Neubaugasse-(WL) bf"
       ],
-      "source": "google_places,wl",
-      "latitude": 48.198549,
-      "longitude": 16.350755,
-      "_google_place_id": "ChIJ9zkxBIwHbUcRJYN0SNOPjgo",
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
+      "source": "wl",
+      "latitude": 48.1982909,
+      "longitude": 16.3502006,
       "wl_lines": [
         "13A",
         "14A",
@@ -21629,17 +21557,9 @@
         "Wien-Pilgramgasse-(WL) Bf",
         "Wien-Pilgramgasse-(WL) bf"
       ],
-      "source": "google_places,wl",
-      "latitude": 48.192679,
-      "longitude": 16.354519,
-      "_google_place_id": "ChIJL9GG_ieobUcR-w0VU2MaNko",
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
+      "source": "wl",
+      "latitude": 48.1926261,
+      "longitude": 16.3544765,
       "wl_lines": [
         "12A",
         "13A",
@@ -21788,17 +21708,9 @@
         "Wien-Schottenring-(WL) Bf",
         "Wien-Schottenring-(WL) bf"
       ],
-      "source": "google_places,wl",
-      "latitude": 48.216678,
-      "longitude": 16.371596,
-      "_google_place_id": "ChIJP12J6aQHbUcRMDvO2qPS6bg",
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
+      "source": "wl",
+      "latitude": 48.2169214,
+      "longitude": 16.3711313,
       "wl_lines": [
         "1",
         "2",
@@ -22035,17 +21947,9 @@
         "Wien-Schwedenplatz-(WL) Bf",
         "Wien-Schwedenplatz-(WL) bf"
       ],
-      "source": "google_places,wl",
-      "latitude": 48.211866,
-      "longitude": 16.377598,
-      "_google_place_id": "ChIJDSNnWKAHbUcRRVENqz1Znc0",
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
+      "source": "wl",
+      "latitude": 48.2117496,
+      "longitude": 16.3778956,
       "wl_lines": [
         "1",
         "2",
@@ -22151,17 +22055,9 @@
         "Wien-Stadtpark-(WL) Bf",
         "Wien-Stadtpark-(WL) bf"
       ],
-      "source": "google_places,wl",
-      "latitude": 48.20237,
-      "longitude": 16.379692,
-      "_google_place_id": "ChIJ6RFHjXYHbUcRcptFKU97FKc",
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
+      "source": "wl",
+      "latitude": 48.2025121,
+      "longitude": 16.3791083,
       "wl_lines": [
         "N75",
         "U4"
@@ -22276,17 +22172,9 @@
         "Wien-Stubentor-(WL) Bf",
         "Wien-Stubentor-(WL) bf"
       ],
-      "source": "google_places,wl",
-      "latitude": 48.207025,
-      "longitude": 16.379935,
-      "_google_place_id": "ChIJB-JqE3UHbUcRYy5vg6_mm_s",
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
+      "source": "wl",
+      "latitude": 48.2070682,
+      "longitude": 16.3802761,
       "wl_lines": [
         "1",
         "2",
@@ -22430,17 +22318,9 @@
         "Wien-Volkstheater-(WL) Bf",
         "Wien-Volkstheater-(WL) bf"
       ],
-      "source": "google_places,wl",
-      "latitude": 48.205245,
-      "longitude": 16.357992,
-      "_google_place_id": "ChIJua204ZAHbUcRnAuRn1kblgM",
-      "_types": [
-        "subway_station",
-        "transit_station",
-        "transportation_service",
-        "point_of_interest",
-        "establishment"
-      ],
+      "source": "wl",
+      "latitude": 48.2051404,
+      "longitude": 16.357971,
       "wl_lines": [
         "13A",
         "48A",

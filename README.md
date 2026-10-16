@@ -117,6 +117,14 @@ Die Koordinaten-Anreicherung läuft als geordnete Fallback-Kette mit drei Tiers,
 
 Begleitende Stamm-/Identifier-Quellen: das **ÖBB-Excel** „Verzeichnis der Verkehrsstationen" (Pflicht-`bst_id`/`bst_code`), das **ÖBB-GeoNetz** (EVA-Nummer & IFOPT-ID, Source-Token `oebb_geonetz`), die **Wiener Linien OGD-CSVs** für DIVA-Subcodes und Bahnsteig-Stops sowie die gepinnte **VOR-Stop-Liste** (`data/vor-haltestellen.csv`). Details in [`docs/architecture.md`](docs/architecture.md) §5 und in [`docs/how-to/google_places_stations.md`](docs/how-to/google_places_stations.md).
 
+### ⚖️ Lizenz
+
+Der **Code** steht unter der [MIT-Lizenz](LICENSE). Die **Meldungstexte** in
+`docs/feed.xml` und `docs/feed.en.xml` und die Datensätze unter `data/` gehören
+den jeweiligen Quellen und stehen unter deren Lizenzen (Wiener Linien und Stadt
+Wien: CC BY 4.0; ÖBB-Meldungen: © ÖBB). Die vollständige Aufstellung mit den
+Pflicht-Quellenangaben steht in [`NOTICE.md`](NOTICE.md).
+
 ---
 
 ## 🔗 Weiterführende Links

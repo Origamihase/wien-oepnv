@@ -582,6 +582,11 @@ damit kurze Stellencodes wie `Sue`/`Su` distinkt bleiben).
 
 ### Datenquellen und Lizenzen
 
+Die MIT-Lizenz gilt nur für den Code. Welche Lizenz für Feed-Texte, Statistik und
+die Dateien unter `data/` gilt, fasst [`NOTICE.md`](../NOTICE.md) zusammen; beide
+Feeds nennen die Quellen im `<copyright>`-Element des Kanals (Entscheidung
+Michael, 16.10.2026).
+
 | Quelle | Datei(en) | Lizenz | Pflicht-Attribution |
 |---|---|---|---|
 | **ÖBB-Verkehrsstationen** (`data.oebb.at`) | extrahiert aus dem Excel „Verzeichnis der Verkehrsstationen"; eine atomar-geschriebene Cache-Kopie liegt unter `data/oebb-verkehrsstationen.xlsx` (Soft-Fail-Snapshot seit PR #1450 — wird bei `data.oebb.at`-Outage automatisch verwendet). Zusätzlich `data/gtfs/stops.txt`. | [CC BY 3.0 AT](https://creativecommons.org/licenses/by/3.0/at/) | „Datenquelle: ÖBB-Infrastruktur AG" |

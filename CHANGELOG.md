@@ -5,6 +5,31 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Lizenz: MIT nur für den Code, Quellen ausgewiesen (2026-10-16)**:
+  Michael entschied am 16.10., bei MIT zu bleiben, weil Städte und
+  Signage-Betreiber den Code ohne Hürden übernehmen sollen. Die
+  Meldungstexte und Datensätze gehören aber den Quellen und werden nicht
+  unter MIT weiterlizenziert. Neu ist `NOTICE.md` mit der Aufstellung je
+  Quelle (Wiener Linien und Stadt Wien CC BY 4.0, ÖBB-Meldungen © ÖBB ohne
+  offene Lizenz, Stationsdaten mit OSM, HAFAS und Google Places). Beide
+  Feeds tragen im Kanal ein `<copyright>`-Element mit den Quellen; die
+  Items und damit die Anzeige auf den Bildschirmen ändern sich nicht.
+  README, `docs/index.md`, `docs/development.md` und die Fußzeile der
+  Webseite (DE/EN) verweisen darauf. VOR/VAO speist keinen Feed-Eintrag
+  und steht deshalb nicht in der Feed-Zeile.
+* **Stationen ohne Google-Places-Koordinaten (2026-10-16)**: Michael
+  wollte die 18 Koordinaten aus Google Places in `data/stations.json`
+  loswerden, weil ihre Weitergabe in einem öffentlichen Repository nicht
+  durch eine offene Lizenz gedeckt ist. Die vier Bahnhöfe mit EVA-Nummer
+  (Rennweg, Praterstern, Franz-Josefs-Bahnhof, Hauptbahnhof) nehmen jetzt
+  die Koordinate aus dem ÖBB-GeoNetz (CC BY 4.0), die 14 U-Bahn-Stationen
+  die WL-OGD-Haltestelle ihrer DIVA (CC BY 4.0); Abstand zur alten Lage
+  7 bis 174 m. `google_places`, `_google_place_id` und `_types` sind aus
+  diesen Einträgen entfernt, `data/new_places.json` (ungenutzter
+  Google-Diff einer Handausführung) ist gelöscht, und die Wetter-Abfrage
+  der Webseite nutzt die GeoNetz-Koordinate des Hauptbahnhofs. Die
+  Google-Stufe des Stationslaufs läuft nur für Stationen ohne Koordinate
+  und trägt bei diesen 18 deshalb nichts wieder ein.
 * **Feed: GeoRSS, wo der Ort sicher ist (2026-10-16)**: Beide Feeds tragen
   jetzt in einem Item höchstens ein `<georss:point>` oder eine
   `<georss:line>` (Namespace `http://www.georss.org/georss`). ÖBB: aus dem

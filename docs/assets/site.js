@@ -62,11 +62,12 @@
   // Wert, ohne Annahmen über nur teilweise dokumentierte Endpunkte/Params.
   // Abfrage-Koordinaten: Wien Hauptbahnhof aus dem Stationsverzeichnis
   // (data/stations.json — Eintrag "Wien Hauptbahnhof", bst_id 900100 /
-  // eva_nr 8103000).
+  // eva_nr 8103000; Koordinate aus dem ÖBB-GeoNetz, CC BY 4.0, seit
+  // 16.10.2026 statt der früheren Google-Places-Koordinate).
   const WEATHER_API = "https://api.open-meteo.com/v1";
   const WEATHER_MODEL = "geosphere_arome_austria";
-  const WEATHER_LAT = "48.186116";
-  const WEATHER_LON = "16.374399";
+  const WEATHER_LAT = "48.185201";
+  const WEATHER_LON = "16.376296";
 
   // ----- Lokalisierung (Zero-Tracker) ---------------------------------
   // Statisches Wörterbuch: das Frontend-UI hat wenig Text, deshalb wird
@@ -182,7 +183,12 @@
       "<strong>City of Vienna (OGD)</strong> – construction works with district &amp; period",
     "footer-about-heading": "About the dashboard",
     "footer-about-html":
-      "Open-source under the MIT licence. Feed update cadence: roughly every 30&nbsp;minutes. " +
+      "Code open-source under the MIT licence. Notice texts remain with their sources: " +
+      "Wiener Linien and City of Vienna – data.wien.gv.at under " +
+      "<a href=\"https://creativecommons.org/licenses/by/4.0/\" rel=\"external noopener noreferrer\" target=\"_blank\">CC&nbsp;BY&nbsp;4.0</a>, " +
+      "ÖBB alerts &copy;&nbsp;ÖBB (not openly licensed); details in " +
+      "<a href=\"https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md\" rel=\"external noopener noreferrer\" target=\"_blank\">NOTICE.md</a>. " +
+      "Feed update cadence: roughly every 30&nbsp;minutes. " +
       "This dashboard fetches feed and statistics CSVs <em>directly in the browser</em> – " +
       "no trackers, no cookies, no third-party scripts. Proper names (stations, operators) " +
       "are kept in German on purpose; only the surrounding text is translated.",
