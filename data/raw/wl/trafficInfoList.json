@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261016-0018-F01, I20261016-0018, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261016-0015-F01, I20261016-0011, I20261016-0012-F01, I20261016-0013-F01, I20261016-0013, I20261016-0017-F01, I20261016-0017, I20261016-0016, I20261016-0018-F02, I20261016-0014"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261016-0018-F01, I20260925-0011, I20261016-0012-F01, I20261016-0019-F01, I20261016-0019-F02, I20260909-0007, I20261016-0015-F01, I20261016-0019, I20261016-0011-F01, I20261016-0011, I20261016-0017-F01, I20261016-0018-F02, I20261016-0013-F01, I20261016-0019-F03, I20261016-0014"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R103-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R2025-671, R116-136, R115-136, R318-437, R293-474, R1177-0, R100-136, R101-136, R102-136, R1472-149, R1474-149, R1475-149, R1476-149, R5815-671, R1473-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R2558-125, R2372-627, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R1974-466, R500-101, R521-109, R552-109, R1338-142, R550-109, R143-109, R526-109, R524-109, R223-109, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R19-136, R1177-0, R130-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R2025-671, R36-152, R45-136, R318-437, R1473-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R1974-466, R500-101, R967-495, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -206,8 +206,8 @@
       "U2": "ptMetro"
      }
     },
-    "description": "Die Linie U2 fährt derzeit nur zwischen Karlsplatz und Stadion beziehungsweise zwischen Donaumarina und Seestadt. Weichen Sie ersatzweise auf die Linie 77A aus. Grund: Weichenstörung im Bereich Stadion.",
-    "descriptionHTML": "Die Linie U2 fährt derzeit nur zwischen Karlsplatz und Stadion beziehungsweise zwischen Donaumarina und Seestadt.<br> <br>Weichen Sie ersatzweise auf die Linie 77A aus.<br><br>Grund: Weichenstörung im Bereich Stadion.",
+    "description": "Die Linie U2 fährt derzeit zwischen den Stationen Donaumarina und Donaustadtbrücke in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: Nicht absehbar. Grund: Weichenstörung im Bereich Stadion.",
+    "descriptionHTML": "Die Linie U2 fährt derzeit zwischen den Stationen Donaumarina und Donaustadtbrücke in beiden Richtungen über Gleis 2.<br> <br>Voraussichtliche Dauer: Nicht absehbar.<br><br>Grund: Weichenstörung im Bereich Stadion.",
     "location": "Stadion",
     "name": "I20261016-0011",
     "owner": "WL",
@@ -225,11 +225,47 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T09:47:00.000+0200",
+     "end": "2026-10-16T12:33:00.000+0200",
+     "lastUpdate": "2026-10-16T12:33:00.000+0200",
+     "resume": "2026-10-16T12:33:00.000+0200",
+     "start": "2026-10-16T09:39:00.000+0200"
+    },
+    "title": "U2: Weichenstörung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Stadion",
+    "name": "I20261016-0011-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "302",
+       "lineName": "U2",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T12:33:00.000+0200",
      "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T11:51:00.000+0200",
+     "lastUpdate": "2026-10-16T12:33:00.000+0200",
+     "resume": "2026-10-16T12:33:00.000+0200",
      "start": "2026-10-16T09:39:00.000+0200"
     },
     "title": "U2: Weichenstörung"
@@ -261,50 +297,15 @@
     "relatedStops": [
      112
     ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-16T10:07:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T10:07:00.000+0200",
-     "resume": "2026-10-16T10:07:00.000+0200",
-     "start": "2026-10-16T09:51:00.000+0200"
-    },
-    "title": "D: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "61A": "ptBusCity"
-     }
-    },
-    "description": "Die Linie 61A wird in beiden Richtungen zwischen Carlbergergasse und Perfektastraße U über die Perfektastraße umgeleitet. Voraussichtliche Dauer: 11:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Herziggasse.",
-    "descriptionHTML": "Die Linie 61A wird in beiden Richtungen zwischen Carlbergergasse und Perfektastraße U über die Perfektastraße umgeleitet.<br> <br>Voraussichtliche Dauer: 11:00 Uhr.<br><br>Grund: Fremder Verkehrsunfall im Bereich Herziggasse.",
-    "location": "Herziggasse",
-    "name": "I20261016-0013",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "61A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "461",
-       "lineName": "61A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
     "status": "resolved",
     "time": {
      "created": "2026-10-16T10:07:00.000+0200",
-     "end": "2026-10-16T10:56:00.000+0200",
-     "lastUpdate": "2026-10-16T10:56:00.000+0200",
-     "resume": "2026-10-16T10:56:00.000+0200",
-     "start": "2026-10-16T10:06:00.000+0200"
+     "end": "2026-10-16T12:04:00.000+0200",
+     "lastUpdate": "2026-10-16T12:04:00.000+0200",
+     "resume": "2026-10-16T12:04:00.000+0200",
+     "start": "2026-10-16T09:51:00.000+0200"
     },
-    "title": "61A: Fremder Verkehrsunfall"
+    "title": "D: Rettungseinsatz"
    },
    {
     "attributes": {
@@ -331,12 +332,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T10:56:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T10:56:00.000+0200",
-     "resume": "2026-10-16T10:56:00.000+0200",
+     "end": "2026-10-16T12:30:00.000+0200",
+     "lastUpdate": "2026-10-16T12:30:00.000+0200",
+     "resume": "2026-10-16T12:30:00.000+0200",
      "start": "2026-10-16T10:06:00.000+0200"
     },
     "title": "61A: Fremder Verkehrsunfall"
@@ -400,84 +401,15 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T10:37:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T10:37:00.000+0200",
-     "resume": "2026-10-16T10:37:00.000+0200",
+     "end": "2026-10-16T12:05:00.000+0200",
+     "lastUpdate": "2026-10-16T12:05:00.000+0200",
+     "resume": "2026-10-16T12:05:00.000+0200",
      "start": "2026-10-16T10:34:00.000+0200"
     },
     "title": "O: Feuerwehreinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "59A": "ptBusCity"
-     }
-    },
-    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Betriebsstörung.",
-    "name": "I20261016-0016",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "459",
-       "lineName": "59A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-16T10:42:00.000+0200",
-     "end": "2026-10-16T11:26:00.000+0200",
-     "lastUpdate": "2026-10-16T11:26:00.000+0200",
-     "resume": "2026-10-16T11:26:00.000+0200",
-     "start": "2026-10-16T10:42:00.000+0200"
-    },
-    "title": "59A: Betriebsstörung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Die Linie U4 fährt derzeit zwischen den Stationen Pilgramgasse und Kettenbrückengasse in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 11:35 Uhr. Grund: Polizeieinsatz im Bereich Kettenbrückengasse.",
-    "descriptionHTML": "Die Linie U4 fährt derzeit zwischen den Stationen Pilgramgasse und Kettenbrückengasse in beiden Richtungen über Gleis 2.<br> <br>Voraussichtliche Dauer: 11:35 Uhr.<br><br>Grund: Polizeieinsatz im Bereich Kettenbrückengasse.",
-    "location": "Kettenbrückengasse",
-    "name": "I20261016-0017",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "304",
-       "lineName": "U4",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-16T11:07:00.000+0200",
-     "end": "2026-10-16T11:15:00.000+0200",
-     "lastUpdate": "2026-10-16T11:15:00.000+0200",
-     "resume": "2026-10-16T11:15:00.000+0200",
-     "start": "2026-10-16T11:06:00.000+0200"
-    },
-    "title": "U4: Polizeieinsatz"
    },
    {
     "attributes": {
@@ -517,48 +449,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "42": "ptTram",
-      "9": "ptTram"
-     }
-    },
-    "description": "Linie 9: Betrieb nur zwischen Westbahnhof S U und Rosensteingasse. Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 11:45 Uhr. Grund: Falschparker im Bereich Kreuzgasse.",
-    "descriptionHTML": "Linie 9:<br>Betrieb nur zwischen Westbahnhof S U und Rosensteingasse.<br>Linie 42:<br>Fahrtbehinderung in Richtung Antonigasse.<br> <br>Voraussichtliche Dauer: 11:45 Uhr.<br><br>Grund: Falschparker im Bereich Kreuzgasse.",
-    "location": "Kreuzgasse",
-    "name": "I20261016-0018",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "42",
-     "9"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "109",
-       "lineName": "9",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "142",
-       "lineName": "42",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-16T11:14:00.000+0200",
-     "end": "2026-10-16T11:29:00.000+0200",
-     "lastUpdate": "2026-10-16T11:29:00.000+0200",
-     "resume": "2026-10-16T11:29:00.000+0200",
-     "start": "2026-10-16T11:13:00.000+0200"
-    },
-    "title": "9, 42: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "9": "ptTram"
      }
     },
@@ -581,12 +471,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T11:29:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T11:29:00.000+0200",
-     "resume": "2026-10-16T11:29:00.000+0200",
+     "end": "2026-10-16T12:31:00.000+0200",
+     "lastUpdate": "2026-10-16T12:31:00.000+0200",
+     "resume": "2026-10-16T12:31:00.000+0200",
      "start": "2026-10-16T11:13:00.000+0200"
     },
     "title": "9: Falschparker"
@@ -625,6 +515,160 @@
      "start": "2026-10-16T11:13:00.000+0200"
     },
     "title": "42: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "86A": "ptBusCity",
+      "87A": "ptBusCity",
+      "95A": "ptBusCity"
+     }
+    },
+    "description": "Linie 86A: Fahrtbehinderung in beiden Richtungen. Linie 87A: Fahrtbehinderung in beiden Richtungen. Linie 95A: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 13:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Stadtlauer Straße.",
+    "descriptionHTML": "Linie 86A:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie 87A:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie 95A:<br>Fahrtbehinderung in beiden Richtungen.<br> <br>Voraussichtliche Dauer: 13:00 Uhr.<br><br>Grund: Fremder Verkehrsunfall im Bereich Stadtlauer Straße.",
+    "location": "Stadtlauer Straße",
+    "name": "I20261016-0019",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "86A",
+     "87A",
+     "95A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "486",
+       "lineName": "86A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "487",
+       "lineName": "87A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "495",
+       "lineName": "95A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-16T12:25:00.000+0200",
+     "end": "2026-10-16T12:29:00.000+0200",
+     "lastUpdate": "2026-10-16T12:29:00.000+0200",
+     "resume": "2026-10-16T12:29:00.000+0200",
+     "start": "2026-10-16T12:24:00.000+0200"
+    },
+    "title": "86A, 87A, 95A: Fremder Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "86A": "ptBusCity"
+     }
+    },
+    "description": "Linie 86A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 86A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Stadtlauer Straße",
+    "name": "I20261016-0019-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "86A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "486",
+       "lineName": "86A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T12:29:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T12:29:00.000+0200",
+     "resume": "2026-10-16T12:29:00.000+0200",
+     "start": "2026-10-16T12:24:00.000+0200"
+    },
+    "title": "86A: Fremder Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "87A": "ptBusCity"
+     }
+    },
+    "description": "Linie 87A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 87A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Stadtlauer Straße",
+    "name": "I20261016-0019-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "87A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "487",
+       "lineName": "87A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T12:29:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T12:29:00.000+0200",
+     "resume": "2026-10-16T12:29:00.000+0200",
+     "start": "2026-10-16T12:24:00.000+0200"
+    },
+    "title": "87A: Fremder Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "95A": "ptBusCity"
+     }
+    },
+    "description": "Linie 95A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 95A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Stadtlauer Straße",
+    "name": "I20261016-0019-F03",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "95A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "495",
+       "lineName": "95A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-16T12:29:00.000+0200",
+     "end": "2026-10-16T12:50:00.000+0200",
+     "lastUpdate": "2026-10-16T12:50:00.000+0200",
+     "resume": "2026-10-16T12:50:00.000+0200",
+     "start": "2026-10-16T12:24:00.000+0200"
+    },
+    "title": "95A: Fremder Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -820,42 +864,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1338-142",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedStops": [
-     1338
-    ],
-    "time": {
-     "end": "2026-10-16T12:18:00.000+0200",
-     "start": "2026-10-16T11:19:17.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Falschparker\nBetrieb ab Rosensteingasse",
-    "name": "R143-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     143
-    ],
-    "time": {
-     "end": "2026-10-16T12:23:00.000+0200",
-     "start": "2026-10-16T11:23:47.000+0200"
-    },
-    "title": "Falschparker\nBetrieb ab Rosensteingasse"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -1123,24 +1131,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
-   },
-   {
-    "description": "Falschparker\nZüge halten Rosensteingasse 61",
-    "name": "R223-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     223
-    ],
-    "time": {
-     "end": "2026-10-16T12:23:00.000+0200",
-     "start": "2026-10-16T11:24:17.000+0200"
-    },
-    "title": "Falschparker\nZüge halten Rosensteingasse 61"
    },
    {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
@@ -1503,96 +1493,6 @@
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R521-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     521
-    ],
-    "time": {
-     "end": "2026-10-16T12:21:00.000+0200",
-     "start": "2026-10-16T11:14:47.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Falschparker\nBetrieb ab Rosensteingasse",
-    "name": "R524-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     524
-    ],
-    "time": {
-     "end": "2026-10-16T12:23:00.000+0200",
-     "start": "2026-10-16T11:23:48.000+0200"
-    },
-    "title": "Falschparker\nBetrieb ab Rosensteingasse"
-   },
-   {
-    "description": "Falschparker\nBetrieb ab Rosensteingasse",
-    "name": "R526-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     526
-    ],
-    "time": {
-     "end": "2026-10-16T12:23:00.000+0200",
-     "start": "2026-10-16T11:23:48.000+0200"
-    },
-    "title": "Falschparker\nBetrieb ab Rosensteingasse"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R550-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     550
-    ],
-    "time": {
-     "end": "2026-10-16T12:21:00.000+0200",
-     "start": "2026-10-16T11:23:18.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R552-109",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     552
-    ],
-    "time": {
-     "end": "2026-10-16T12:21:00.000+0200",
-     "start": "2026-10-16T11:14:47.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "name": "R5815-671",
     "owner": "WL",
@@ -1606,6 +1506,24 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R967-495",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "95A"
+    ],
+    "relatedStops": [
+     967
+    ],
+    "time": {
+     "end": "2026-10-16T13:26:00.000+0200",
+     "start": "2026-10-16T12:26:53.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",

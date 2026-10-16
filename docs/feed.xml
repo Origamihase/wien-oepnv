@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 16 Oct 2026 12:00:54 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 13:01:07 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[9: Falschparker]]></title>
+      <title><![CDATA[86A/87A: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
-      <pubDate>Fri, 16 Oct 2026 11:13:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 11:13:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 11:13:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">0a7e4561163f9919b4598b806543069f2eeffbe5d89e7e9a769918867b42a319</guid>
+      <pubDate>Fri, 16 Oct 2026 12:24:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 12:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 12:24:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 11:13]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 11:13]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 12:24]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 12:24]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U4: Polizeieinsatz]]></title>
@@ -32,17 +32,6 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 11:06]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[O: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">7de4c7d3cdd3e9b35b45b4459812669e6d8236531fa455c6b535a9b2ce271652</guid>
-      <pubDate>Fri, 16 Oct 2026 10:34:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 11:00:44 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 10:34:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 10:34]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 10:34]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[U6: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd</guid>
@@ -54,17 +43,6 @@
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 10:07]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[61A: Fremder Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f01f6bfc539d737cfb9352804fe8a7b3feacc86b339269e1284ac631eaa221ae</guid>
-      <pubDate>Fri, 16 Oct 2026 10:06:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 10:06:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 10:06:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 10:06]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 10:06]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[U2: Weichenstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">4460db7100edd882f0850654a58cc4dacef4a8d1b3718df2d37d810e6bc3c23b</guid>
@@ -72,8 +50,8 @@
       <ext:first_seen>Fri, 16 Oct 2026 10:01:05 +0200</ext:first_seen>
       <ext:starts_at>Fri, 16 Oct 2026 09:39:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie U2 fährt derzeit nur zwischen Karlsplatz und Stadion beziehungsweise zwischen Donaumarina und Seestadt. [Seit 09:39]</description>
-      <content:encoded><![CDATA[Die Linie U2 fährt derzeit nur zwischen Karlsplatz und Stadion beziehungsweise zwischen Donaumarina und Seestadt.<br/>[Seit 09:39]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 09:39]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 09:39]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A/7A/N8: Bauarbeiten]]></title>
@@ -87,17 +65,6 @@
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Breitenfurter Straße 1 werden die Linien 7A, 62A und N8 umgeleitet.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[D: Rettungseinsatz, Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106</guid>
-      <pubDate>Fri, 16 Oct 2026 09:51:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 09:51:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 09:51:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse. [Heute]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[64A: Seybelgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">68609c1ab7a3cbeddad7e3ea90732b10dfe089ab97a782743d62a48542be7f20</guid>
@@ -109,6 +76,17 @@
       <content:encoded><![CDATA[An den Steinfeldern 3, vor Seybelgasse → Seybelgasse gegenüber 20. Haltestellenverlegung der Linie 64A in Richtung Liesing. Grund: Straßenbauarbeiten.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[12A/14A/59A: Bezirksamt Margareten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f3a42dafa639d8c2023e9c1eab41a9d1526cfb261e87036429e751a8a54f5e4c</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:59:00 +0200</ext:ends_at>
+      <description>ASchönbrunner Straße 69 → Rampersdorffergasse. Haltestellenverlegung der Linien 12A, 14A und 59A in Richtung Schmelz, Gablenzgasse, Neubaugasse bzw. Oper, Karlsplatz. … [Heute]</description>
+      <content:encoded><![CDATA[ASchönbrunner Straße 69 → Rampersdorffergasse. Haltestellenverlegung der Linien 12A, 14A und 59A in Richtung Schmelz, Gablenzgasse, Neubaugasse bzw. Oper, Karlsplatz. …<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[N71: Simmering S U]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">c8f0b5a42164e2ff573973d0ebcbdf6fbd76b99aebfc2c85c8b8657ef7b9bb79</guid>
@@ -118,6 +96,28 @@
       <ext:ends_at>Fri, 23 Oct 2026 05:05:00 +0200</ext:ends_at>
       <description>Simmeringer Hauptstraße gegenüber 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, provisorische Haltestelle, Hauptfahrbahn. Haltestellenverlegung der Linie N71 … [Bis 23.10.]</description>
       <content:encoded><![CDATA[Simmeringer Hauptstraße gegenüber 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, provisorische Haltestelle, Hauptfahrbahn. Haltestellenverlegung der Linie N71 …<br/>[Bis 23.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/2/5/5A/5B/71/74A/80A/D/O: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f868d2f5eb494decde7d0c63339dab6ae0887407eebc3eed949d2e7e53c0a75c</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Thu, 15 Oct 2026 00:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 19:05:00 +0200</ext:ends_at>
+      <description>Wegen einer Demonstration kommt es zu Einschränkungen im öffentlichen Verkehr. Linie D: Kurzführung der Züge zwischen Absberggasse und Börse am Schwarzenbergplatz. [Heute]</description>
+      <content:encoded><![CDATA[Wegen einer Demonstration kommt es zu Einschränkungen im öffentlichen Verkehr. Linie D: Kurzführung der Züge zwischen Absberggasse und Börse am Schwarzenbergplatz.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[64A: Liesing-Flur-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">609517ab3ab98b5b38f0fe913f15e9bd18cd5a3d9005a51a2cb50d3fb227ddbd</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 14 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten. [Bis 28.10.]</description>
+      <content:encoded><![CDATA[Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten.<br/>[Bis 28.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
