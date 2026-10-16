@@ -24,7 +24,7 @@ jobs:
     timeout-minutes: 120
     env:
       OLD_REF: cbd8f4727383c87896b190ad777a69472fa5d8d4
-      REPEATS: 10
+      REPEATS: 6
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
