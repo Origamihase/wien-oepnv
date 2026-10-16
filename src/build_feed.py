@@ -10979,7 +10979,9 @@ _CHANNEL_METADATA_EN: dict[str, str] = {
     "copyright": (
         "Code: MIT licence. Notice texts remain with their sources: "
         "Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0), "
-        "ÖBB (© ÖBB, not openly licensed). Details: NOTICE.md in the repository."
+        "ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: ÖBB-Infrastruktur AG "
+        "(GeoNetz), Wiener Linien (OGD stops), City of Vienna – data.wien.gv.at "
+        "(CC BY 4.0). Details: NOTICE.md in the repository."
     ),
 }
 
@@ -10987,10 +10989,16 @@ _CHANNEL_METADATA_EN: dict[str, str] = {
 # license. The channel names the sources and their terms once; items stay
 # untouched, so nothing changes on the EasySignage displays. VOR/VAO feeds
 # no item (only the Stammstrecke statistics) and is therefore not named here.
+# The GeoRSS coordinates (:func:`_item_geometry`) come only from the three
+# open datasets ``open_data_coordinate`` and the Baustellen data accept
+# (ÖBB-Infrastruktur GeoNetz, Wiener Linien OGD stops, Stadt Wien), so the
+# line names exactly those; never OSM, HAFAS or Google.
 _CHANNEL_COPYRIGHT_DE = (
     "Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen: "
     "Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0), "
-    "ÖBB (© ÖBB, keine offene Lizenz). Details: NOTICE.md im Repository."
+    "ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: ÖBB-Infrastruktur AG "
+    "(GeoNetz), Wiener Linien (OGD-Haltestellen), Stadt Wien – data.wien.gv.at "
+    "(CC BY 4.0). Details: NOTICE.md im Repository."
 )
 
 

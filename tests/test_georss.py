@@ -192,3 +192,19 @@ def test_open_data_coordinate_never_falls_back_to_the_directory(
 def test_open_data_tables_load_from_the_repository() -> None:
     assert len(stations._geonetz_coordinates()) > 500
     assert len(stations._wl_ogd_coordinates()) > 1000
+
+
+@pytest.mark.parametrize(
+    ("lang", "expected"),
+    [
+        ("de", ("GeoRSS-Koordinaten", "ÖBB-Infrastruktur AG (GeoNetz)", "Wiener Linien (OGD-Haltestellen)")),
+        ("en", ("GeoRSS coordinates", "ÖBB-Infrastruktur AG (GeoNetz)", "Wiener Linien (OGD stops)")),
+    ],
+)
+def test_channel_copyright_names_the_coordinate_sources(lang: str, expected: tuple[str, ...]) -> None:
+    # Exactly the datasets ``open_data_coordinate`` and the Baustellen data
+    # accept; the feed never carries OSM, HAFAS or Google coordinates.
+    text = bf._channel_metadata(lang)["copyright"]
+    for part in expected:
+        assert part in text
+    assert "OpenStreetMap" not in text and "HAFAS" not in text and "Google" not in text

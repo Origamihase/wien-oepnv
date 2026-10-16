@@ -21,6 +21,14 @@ Feeds nennen die Quellen im `<copyright>`-Element des Kanals.
 | Wiener Linien (OGD-Echtzeitdaten, `wienerlinien.at/ogd_realtime`) | Störungs- und Baustellenmeldungen | CC BY 4.0 laut [Wiener Linien Open Data](https://www.wienerlinien.at/open-data) („unter Angabe der Datenherkunft“) | „Datenquelle: Wiener Linien“ |
 | Stadt Wien (OGD, `data.wien.gv.at`, Layer `ogdwien:BAUSTELLEN…OGD`) | Baustellen mit Öffi-Bezug | CC BY 4.0 | „Datenquelle: Stadt Wien – data.wien.gv.at“ |
 | ÖBB (RSS-Meldungen von `fahrplan.oebb.at`) | Bahnmeldungen mit Wien-Bezug | **keine offene Lizenz bekannt**; es gelten die Nutzungsbedingungen der ÖBB | „© ÖBB“ |
+| ÖBB-Infrastruktur GeoNetz (`data/oebb_geonetz_stops.json`) | Koordinaten der ÖBB-Bahnhöfe in `<georss:point>`/`<georss:line>` | CC BY 4.0 | „Datenquelle: ÖBB-Infrastruktur AG (data.oebb.at, mobilitaetsdaten.gv.at)“ |
+| Wiener Linien OGD Haltestellen (`data/wienerlinien-ogd-haltestellen.csv`) | Koordinaten verlegter WL-Haltestellen in `<georss:point>` | CC BY 4.0 | „Datenquelle: Wiener Linien“ |
+| Stadt Wien (OGD, Baustellen-Layer) | Koordinate der Baustelle in `<georss:point>` | CC BY 4.0 | „Datenquelle: Stadt Wien – data.wien.gv.at“ |
+
+Die GeoRSS-Koordinaten kommen nur aus diesen drei offenen Datensätzen
+(`src.utils.stations.open_data_coordinate`, Entscheidung von Michael vom
+16.10.2026), nie aus den zusammengeführten Koordinaten des Stationsverzeichnisses
+(OpenStreetMap, HAFAS, Google). Details: `docs/architecture.md` §1, „Geodaten im Feed“.
 
 ## Stationsverzeichnis und weitere Dateien unter `data/`
 
