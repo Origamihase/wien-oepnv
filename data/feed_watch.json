@@ -1,13 +1,21 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-16T03:30:58.280354+00:00",
- "built": "2026-10-16T05:30:48+02:00",
+ "updated": "2026-10-16T04:01:29.752104+00:00",
+ "built": "2026-10-16T06:01:14+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-16T05:30:48+02:00",
+  "built": "2026-10-16T06:01:14+02:00",
   "items": [
+   {
+    "title": "30: Schadhafter Zug Alle Züge über das Gleis der Linie 31",
+    "time_line": "Seit 05:58"
+   },
+   {
+    "title": "U6: Schadhaftes Fahrzeug",
+    "time_line": "Seit 05:46"
+   },
    {
     "title": "Wien Stadlau ↔ Wien Süßenbrunn",
     "time_line": "Seit 05:14"
@@ -39,14 +47,6 @@
    {
     "title": "30A/31A/36A/36B: Großjedlersdorf",
     "time_line": "Heute"
-   },
-   {
-    "title": "12/5: Albertgasse",
-    "time_line": "Bis 03.11."
-   },
-   {
-    "title": "15A: Max-Mauermann-Gasse",
-    "time_line": "Bis 25.12."
    }
   ]
  },
@@ -5030,6 +5030,26 @@
     "baustellen": 3,
     "oebb": 11,
     "wl": 102
+   }
+  },
+  {
+   "t": "2026-10-16T04:01:29.752104+00:00",
+   "raw": {
+    "wl-stoerungen": 66,
+    "wl-hinweise": 82,
+    "oebb": 157,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 25
+   },
+   "discarded": {
+    "wl": 14,
+    "oebb": 133,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 11,
+    "wl": 104
    }
   }
  ]
