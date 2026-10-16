@@ -36,7 +36,7 @@ Werte nennt. Die Einträge mischen mehrere Quellen:
 | Stadt Wien, Stadtgrenze (MA 41) | `data/LANDESGRENZEOGD.json` | CC BY 4.0 | „Datenquelle: Stadt Wien – data.wien.gv.at“ |
 | OpenStreetMap (Overpass) | Koordinaten mit `source` `osm` | [ODbL](https://opendatacommons.org/licenses/odbl/) | „© OpenStreetMap-Mitwirkende“ |
 | HAFAS (ÖBB Scotty) | Koordinaten und EVA-Nummern mit `source` `hafas`, `data/oebb_station_lines.json` | **ungeklärt**: öffentlich erreichbares Auskunftssystem der ÖBB, keine offene Lizenz bekannt | „Fahrplandaten: ÖBB“ |
-| Google Places | Einzelne Koordinaten mit `source` `google_places` (Stand 16.10.2026: 18 Einträge) | **ungeklärt**: Nutzungsbedingungen von Google | – |
+| Google Places | Einzelne Koordinaten mit `source` `google_places` (Stand 16.10.2026: 18 Einträge, deren Feld `source` den Wert `google_places` enthält; das Feld zählt alle beteiligten Quellen, nicht nur die der Koordinate) | **ungeklärt**: Nutzungsbedingungen von Google | – |
 | Eigene Pflege | `source` `manual`, Overrides, Mapping-Dateien | MIT wie der Code | – |
 
 Die Lizenzangaben der offenen Datensätze stammen aus der Tabelle
