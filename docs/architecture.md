@@ -2437,9 +2437,20 @@ Nicht jeder Text gehört in ein NMT-Modell:
     („Burggasse - Stadthalle“ für „Burggasse-Stadthalle“, „Michelbeuern -
     AKH“, „Julius - Raab - Platz“; vorher „Burggasse - City Hall“, „Julius -
     Raab - square“, 16.10.; ein Leerzeichen nur auf einer Seite wie in
-    „Lorenz-Müller- Gasse“ ist ein Tippfehler, den das Modell selbst glättet),
+    „Lorenz-Müller- Gasse“ oder „Josef- Baumann- Gasse“ ist ein Tippfehler
+    der Quelle, den das Modell in der Probe vom 16.10. stehen ließ, wie er
+    geschrieben ist: der Name bleibt ein Name; ein Name mit diesem Tippfehler
+    in einem ÖBB-Text, „Wien Erzherzog- Karl Straße“ (03.07.2026, nur im
+    dritten Satz, den der Feed nicht zeigt), wird bewusst nicht eigens
+    geschützt, Betreiberentscheidung 2026-10-16 „So lassen“: er kam nie ins
+    Modell),
     „Erlaaer Schleife“ und das eine Wort nach „Richtung“
-    (`_DIRECTION_NAME_RE`, außer Himmelsrichtungen und „Zentrum“).
+    (`_DIRECTION_NAME_RE`, außer Himmelsrichtungen und „Zentrum“). „in
+    Richtung Bahnhof Heiligenstadt S U“ (43 Texte seit Juli) bleibt dem
+    Modell überlassen, Betreiberentscheidung 2026-10-16 „So lassen“: meist
+    kommt „towards the station Heiligenstadt S U“ heraus, selten „direction
+    Heiligenstadt S U“ (05.10.); beides ist verständlich und richtig, und nur
+    der englische Feed ist betroffen.
   Nachgespielt mit dem echten Modell über alle 3.003 Texte: Nur Texte mit
   einer dieser Formen ändern sich; die übrigen Unterschiede sind das
   bekannte Rauschen der Wiederholung unter zufälliger Nonce.
@@ -2505,7 +2516,11 @@ Zwei Sorten, bewusst unterscheidbar:
   Zentrum“, „Gerasdorf b. Wien“. Ein Name bleibt im EN-Feed ein Name, wie
   auf dem Schild; „Wien“ allein („Fahrtrichtung Wien“, „Großraum Wien“) ist
   die Stadt und wird weiter „Vienna“, vor einer Marke („Wien
-  Stammstrecke“), Linie oder einem Symbol bleibt es frei.
+  Stammstrecke“), Linie oder einem Symbol bleibt es frei. Fehlt vor einem
+  Satzanfang der Punkt („Richtung Wien Ab 20 Uhr“), nähme die Regel das
+  erste Wort als Namen; das kam in 9.965 echten Texten seit 01.07. nie vor
+  (alle 48 Formen „Wien + Großwort“ sind Stationsnamen) und bleibt so,
+  Betreiberentscheidung 2026-10-16 „So lassen“.
   Werden nach dem Modelllauf **wortgleich** zurückgesetzt. Ein Datum wird
   **vor** den Linienkennungen maskiert: sonst wäre nur sein Tag ein
   Platzhalter, der am Punkt klebt, und das Modell verliert den Punkt

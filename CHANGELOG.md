@@ -5,6 +5,20 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **EN: drei Randfälle bleiben, wie sie sind (2026-10-16, nur Doku)**:
+  Michael entschied am 16.10. für alle drei „So lassen“, festgehalten in
+  `docs/architecture.md`, damit kein Audit sie als Fehler meldet. (1) Der
+  ÖBB-Tippfehler „Wien Erzherzog- Karl Straße“ (ein Text am 03.07., nur im
+  dritten Satz, den der Feed nicht zeigt) kam nie ins Modell; die
+  WL-Namen derselben Klasse („Lorenz-Müller- Gasse“, „Josef- Baumann-
+  Gasse“, „Vösendorf- Siebenhirten“) bleiben schon heute als Namen stehen.
+  (2) „Richtung Wien Ab 20 Uhr“ ohne Punkt würde „Wien Ab“ als Namen
+  schützen; in 9.965 echten Texten seit 01.07. nie vorgekommen. (3) „in
+  Richtung Bahnhof Heiligenstadt S U“ kommt meist als „towards the station
+  …“, selten als „direction …“ heraus; beides ist richtig. Dazu
+  richtiggestellt: Laut Doku und Kommentar zu #2020 glättete das Modell
+  „Lorenz-Müller- Gasse“ selbst; in der Probe vom 16.10. ließ es die
+  Schreibweise der Quelle stehen. Code und Feed ändern sich nicht.
 * **EN: „die Station … nicht einhalten“ auch in der Einzahl (2026-10-16)**:
   Die Prüfung von #2018 bis #2020 fand eine Lücke in der Regel für „kann/
   können … die Haltestelle(n)/Station(en) … nicht einhalten“: Das Muster
