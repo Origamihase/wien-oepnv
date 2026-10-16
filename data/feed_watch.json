@@ -1,19 +1,19 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-16T22:00:59.667615+00:00",
- "built": "2026-10-17T00:00:46+02:00",
+ "updated": "2026-10-16T22:30:42.231850+00:00",
+ "built": "2026-10-17T00:30:37+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-17T00:00:46+02:00",
+  "built": "2026-10-17T00:30:37+02:00",
   "items": [
    {
     "title": "Wien Hütteldorf ↔ Wien Hauptbahnhof",
     "time_line": "Bis Mi 21.10."
    },
    {
-    "title": "D: Verkehrsunfall, Gleisbauarbeiten",
+    "title": "N71: Gleisbauarbeiten, Ersatzverkehr",
     "time_line": "Heute"
    },
    {
@@ -5770,6 +5770,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 98
+   }
+  },
+  {
+   "t": "2026-10-16T22:30:42.231850+00:00",
+   "raw": {
+    "wl-stoerungen": 59,
+    "wl-hinweise": 80,
+    "oebb": 159,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 12,
+    "oebb": 136,
+    "baustellen": 69
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 99
    }
   }
  ]

@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: ÖBB-Infrastruktur AG (GeoNetz), Wiener Linien (OGD-Haltestellen), Stadt Wien – data.wien.gv.at (CC BY 4.0). Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 17 Oct 2026 00:00:46 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 00:30:37 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Hütteldorf ↔ Wien Hauptbahnhof]]></title>
@@ -23,15 +23,15 @@
       <content:encoded><![CDATA[Wegen Bauarbeiten fahren zwischen Salzburg Hbf und Flughafen Wien Bahnhof bzw. Hegyeshalom von 10.10.2026 (22:30 Uhr) bis 14.10.2026 (04:00 Uhr) und von 17.10.2026 …<br/>[Bis Mi 21.10.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[D: Verkehrsunfall, Gleisbauarbeiten]]></title>
+      <title><![CDATA[N71: Gleisbauarbeiten, Ersatzverkehr]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">99d97a77a399286ca28d0b822ce176ae2d28f6c5a979031093f6afc6f33d065e</guid>
-      <pubDate>Fri, 16 Oct 2026 23:02:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 23:02:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 23:02:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">cbaeb9add89e94f501dce883629cbda4e8b00aaf9f47f93a8e33ea51c4b85db2</guid>
+      <pubDate>Sat, 17 Oct 2026 00:25:10 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 00:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 17 Oct 2026 00:25:10 +0200</ext:starts_at>
       <ext:ends_at>Sat, 17 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse. [Heute]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.<br/>[Heute]]]></content:encoded>
+      <description>Gleisbauarbeiten: Busse halten Simmeringer Hauptstr. 157. Ersatzverkehr: Busse halten bei Haltestelle N71. [Heute]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten: Busse halten Simmeringer Hauptstr. 157. Ersatzverkehr: Busse halten bei Haltestelle N71.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N71: Simmering S U]]></title>
