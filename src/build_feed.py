@@ -3386,6 +3386,9 @@ _STOP_NOT_KEPT_PLACE: dict[str, str] = {
     "Station": "in der Station",
     "Stationen": "in den Stationen",
 }
+# Who leaves the stop out, when WL puts it behind the verb: "die Linie U6",
+# "die Züge der Linie U2", "die Busse der Linien 54A und 54B".
+_STOP_RULE_SUBJECT = r"die (?:(?:Züge|Busse|Straßenbahnen) der )?Linien? \S+(?:(?:, | und )\S+)*"
 _STOP_NOT_SERVED_RULES: tuple[
     tuple[re.Pattern[str], str | Callable[[re.Match[str]], str]], ...
 ] = (
@@ -3399,8 +3402,8 @@ _STOP_NOT_SERVED_RULES: tuple[
     ),
     (re.compile(r"\b(wird|werden)((?: [^.!?;]*?)?) nicht eingehalten\b"), r"\1\2 nicht angefahren"),
     # The subject behind the verb ("Derzeit können die Züge der Linie U6 die
-    # Station Alser Straße in beiden Richtungen nicht einhalten", U2 and U6
-    # since July) is put in front of it, so verb and place stand side by side
+    # Station Alser Straße in beiden Richtungen nicht einhalten", U1, U2 and
+    # U6 since July) is put in front of it, so verb and place stand side by side
     # for the glossary ("die Züge der Linie U6 halten nicht in der Station …"
     # -> "do not stop at"); the direction follows the station. Written as
     # "halten die Züge der Linie U6 in beiden Richtungen nicht in der Station"
@@ -3411,7 +3414,7 @@ _STOP_NOT_SERVED_RULES: tuple[
     # same order as ``_join_glossed_verb`` gives a passive.
     (
         re.compile(
-            r"\b(kann|können) (die Züge der Linie \S+|die Linie \S+) die Station"
+            r"\b(kann|können) (" + _STOP_RULE_SUBJECT + r") die Station"
             r" ([^.!?;]+?) ((?:in beiden Richtungen|in Richtung [^.!?;]+?) )?nicht einhalten\b"
         ),
         lambda m: (
@@ -3429,11 +3432,14 @@ _STOP_NOT_SERVED_RULES: tuple[
     # nicht einhalten" became "Line 66A cannot follow the stop …" (13.10.2026,
     # still so with the real model on 15.10.), "… umgeleitet und können die
     # Haltestellen Klinik Ottakring und Waidäckergasse nicht einhalten". A
-    # subject behind the verb goes in front of it, as above.
+    # subject behind the verb goes in front of it, as above. "Station" is
+    # spelt out with its plural: "Stationen?" took only "Statione(n)", and
+    # "Die Linie U6 kann die Station Alser Straße nicht einhalten" stayed
+    # unglossed (check of 2026-10-16).
     (
         re.compile(
-            r"\b(kann|können) ((?:die Züge der Linie|die Busse der Linie|die Linie) \S+ )?"
-            r"die (Haltestellen?|Stationen?) ((?:[^.!?;]|\.(?=\s?\d))+?) nicht einhalten\b"
+            r"\b(kann|können) ((?:" + _STOP_RULE_SUBJECT + r") )?"
+            r"die (Haltestellen?|Station(?:en)?) ((?:[^.!?;]|\.(?=\s?\d))+?) nicht einhalten\b"
         ),
         lambda m: (
             f"{m[2] or ''}{'hält' if m[1] == 'kann' else 'halten'} nicht "

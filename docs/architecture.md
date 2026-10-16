@@ -2405,7 +2405,7 @@ Nicht jeder Text gehört in ein NMT-Modell:
     einhalten“, vorher „cannot follow the stop“) wird zu „hält nicht an der
     Haltestelle …“, das Glossar sagt „does not stop at“ (15.10.). Steht das
     Subjekt hinter dem Verb („Derzeit können die Züge der Linie U6 die Station
-    Alser Straße in beiden Richtungen nicht einhalten“, U2 und U6 seit Juli),
+    Alser Straße in beiden Richtungen nicht einhalten“, U1, U2 und U6 seit Juli),
     kommt es vor das Verb und die Richtung hinter die Station („Derzeit die
     Züge der Linie U6 halten nicht in der Station Alser Straße in beiden
     Richtungen“), damit das Glossar greift. Vorher blieb der Satz ungeglost,
@@ -2415,7 +2415,13 @@ Nicht jeder Text gehört in ein NMT-Modell:
     16.10. (Karte „Englischer U6-Text“): Der Satz soll bei jedem Durchlauf
     gleich und sauber herauskommen. Mit dem Glossar besteht schon der erste
     Durchlauf mit den kurzen Platzhaltern; der Zufalls-Nonce des zweiten wird
-    nicht mehr gebraucht, und das Ergebnis ist bei jedem Build dasselbe. Ein Partizip, das das Glossar übersetzt
+    nicht mehr gebraucht, und das Ergebnis ist bei jedem Build dasselbe.
+    Seit der Prüfung vom 16.10. gilt das auch für die Einzahl „die Station“
+    mit dem Subjekt davor oder einer Uhrzeit hinter der Station („Die Linie
+    U6 kann die Station Alser Straße nicht einhalten“; das Muster
+    `Stationen?` traf nur „Statione(n)“) und für ein Subjekt mit „Linien“
+    hinter dem Verb („die Züge der Linien U2 und U3“, „die Busse der Linien
+    54A und 54B“, `_STOP_RULE_SUBJECT`). Ein Partizip, das das Glossar übersetzt
     („kurzgeführt“, „gesperrt“, „nicht angefahren“, „aufrecht gehalten“),
     kommt mit seinem Hilfsverb zusammen (`_GLOSSED_PARTICIPLE_RE`), damit das
     Modell es nicht abtrennt („line 5A curtailed“, „can be be maintained“).

@@ -97,6 +97,45 @@ def test_a_subject_behind_the_verb_goes_in_front_of_it(german: str, shown: str) 
 
 
 @pytest.mark.parametrize(
+    ("german", "shown"),
+    [
+        (
+            "Die Linie U6 kann die Station Alser Straße nicht einhalten.",
+            "Die Linie [U6] <does not stop at> [Alser Straße].",
+        ),
+        (
+            "Die Züge der Linie U6 können die Station Burggasse - Stadthalle in Richtung "
+            "Floridsdorf nicht einhalten.",
+            "Die Züge der Linie [U6] <do not stop at> [Burggasse - Stadthalle] in Richtung [Floridsdorf].",
+        ),
+        (
+            "Derzeit können die Züge der Linie U6 die Station Alser Straße in Richtung "
+            "Siebenhirten ab ca. 22.30 Uhr nicht einhalten.",
+            "Derzeit die Züge der Linie [U6] <do not stop at> [Alser Straße] in Richtung [Siebenhirten] ab ca.",
+        ),
+        (
+            "Derzeit können die Züge der Linien U2 und U3 die Station Volkstheater in "
+            "beiden Richtungen nicht einhalten.",
+            "Derzeit die Züge der Linien [U2] und [U3] <do not stop at> [Volkstheater] in beiden Richtungen.",
+        ),
+        (
+            "Derzeit können die Busse der Linien 54A und 54B die Haltestelle Hütteldorf "
+            "nicht einhalten.",
+            "Derzeit die Busse der Linien [54A] und [54B] <do not stop at> [Hütteldorf].",
+        ),
+    ],
+)
+def test_a_single_station_and_a_plural_subject_get_the_same_verb(german: str, shown: str) -> None:
+    # Check of 2026-10-16: "Stationen?" matched only "Statione(n)", so the
+    # singular "Station" with the subject in front, or with a time behind
+    # the station, stayed "kann … nicht einhalten" ("cannot follow"); a
+    # subject with "Linien" behind the verb was not recognised.
+    model_input = _model_input(german)
+    assert shown in model_input
+    assert "einhalten" not in model_input
+
+
+@pytest.mark.parametrize(
     ("german", "name"),
     [
         (
