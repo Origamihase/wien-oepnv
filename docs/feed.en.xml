@@ -8,38 +8,16 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Code: MIT licence. Notice texts remain with their sources: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: ÖBB-Infrastruktur AG (GeoNetz), Wiener Linien (OGD stops), City of Vienna – data.wien.gv.at (CC BY 4.0). Details: NOTICE.md in the repository.</copyright>
-    <lastBuildDate>Fri, 16 Oct 2026 23:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 23:30:58 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[13A: Police operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71</guid>
-      <pubDate>Fri, 16 Oct 2026 22:54:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 22:54:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 22:54:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 22:54]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 22:54]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">9b0bf096e3aaab7957e32fe345110615bbe03b8747d9cc18bef459027e9a139f</guid>
-      <pubDate>Fri, 16 Oct 2026 22:30:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 22:30:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 22:30:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:17:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident in the area of Alserbachstraße. [Since 22:30]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident in the area of Alserbachstraße.<br/>[Since 22:30]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5/12: Traffic accident]]></title>
+      <title><![CDATA[12: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e5660a0ab66e8052c66ac62caa273ee692ce56758d8e16e3324e16b86881f37a</guid>
       <pubDate>Fri, 16 Oct 2026 22:26:00 +0200</pubDate>
       <ext:first_seen>Fri, 16 Oct 2026 22:26:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 16 Oct 2026 22:26:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:45:00 +0200</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 22:26]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 22:26]]]></content:encoded>
     </item>
@@ -50,9 +28,20 @@
       <pubDate>Fri, 16 Oct 2026 21:25:00 +0200</pubDate>
       <ext:first_seen>Fri, 16 Oct 2026 21:30:55 +0200</ext:first_seen>
       <ext:starts_at>Fri, 16 Oct 2026 21:25:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:47:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: service disruption. [Since 21:25]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[Since 21:25]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[D: Traffic accident, track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">99d97a77a399286ca28d0b822ce176ae2d28f6c5a979031093f6afc6f33d065e</guid>
+      <pubDate>Fri, 16 Oct 2026 23:02:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 23:02:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 23:02:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 17 Oct 2026 00:02:00 +0200</ext:ends_at>
+      <description>Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse. [Until Sat 17.10.]</description>
+      <content:encoded><![CDATA[Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse.<br/>[Until Sat 17.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A/7A/N8: Construction works]]></title>
@@ -123,6 +112,18 @@
       <georss:point>48.210606 16.344038</georss:point>
       <description>Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works. [Until 03.11.]</description>
       <content:encoded><![CDATA[Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works.<br/>[Until 03.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A: Max-Mauermann-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">56aa798cbb018fbaed4813a991f56c2470867f1f9a0ce034661ba2e01da13007</guid>
+      <pubDate>Wed, 07 Oct 2026 15:30:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 15:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <georss:point>48.163113 16.409373</georss:point>
+      <description>Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling … [Until 25.12.]</description>
+      <content:encoded><![CDATA[Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling …<br/>[Until 25.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
