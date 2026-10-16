@@ -1,34 +1,5 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": [
-  {
-   "key": "R761-414|2026-10-16T08:11:00.000+0200|Fahrtbehinderung\nwegen Feuerwehreinsatz",
-   "name": "R761-414",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-   "end": "2026-10-16T09:10:00.000+0200",
-   "incident": "I20261016-0009"
-  },
-  {
-   "key": "R762-414|2026-10-16T08:11:00.000+0200|Fahrtbehinderung\nwegen Feuerwehreinsatz",
-   "name": "R762-414",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-   "end": "2026-10-16T09:10:00.000+0200",
-   "incident": "I20261016-0009"
-  },
-  {
-   "key": "R764-414|2026-10-16T08:09:00.000+0200|Feuerwehreinsatz\nBetrieb ab Laxenburger Straße, Gudrunstraße",
-   "name": "R764-414",
-   "title": "Feuerwehreinsatz\nBetrieb ab Laxenburger Straße, Gudrunstraße",
-   "end": "2026-10-16T09:10:00.000+0200",
-   "incident": "I20261016-0009"
-  },
-  {
-   "key": "R765-414|2026-10-16T08:09:00.000+0200|Fahrtbehinderung\nwegen Feuerwehreinsatz",
-   "name": "R765-414",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-   "end": "2026-10-16T09:08:00.000+0200",
-   "incident": "I20261016-0009"
-  }
- ]
+ "tickers": []
 }

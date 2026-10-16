@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 16 Oct 2026 09:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 09:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[Wien Meidling ↔ Wien Liesing]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;919984</guid>
-      <pubDate>Fri, 16 Oct 2026 08:51:19 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 09:01:05 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Wegen einer Weichenstörung sind Zugfahrten derzeit nur eingeschränkt möglich. Es kommt zu vereinzelten Zugausfällen und Verspätungen bis zu 10 Minuten. [Seit 08:51]</description>
-      <content:encoded><![CDATA[Wegen einer Weichenstörung sind Zugfahrten derzeit nur eingeschränkt möglich. Es kommt zu vereinzelten Zugausfällen und Verspätungen bis zu 10 Minuten.<br/>[Seit 08:51]]]></content:encoded>
+      <title><![CDATA[10A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">219e547df2be869f9c5e196043c5ef1b5d356073d50ea5347540dd618f54101f</guid>
+      <pubDate>Fri, 16 Oct 2026 09:16:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 09:16:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 09:16:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit 09:16]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 09:16]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Polizeieinsatz]]></title>
@@ -43,15 +43,15 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 08:08]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[2A: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">57d004da43aa922d23ef17d2febd4d27e41c86903650f7772a81a3838692e289</guid>
-      <pubDate>Fri, 16 Oct 2026 07:50:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 07:50:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 07:50:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 09:07:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 07:50]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 07:50]]]></content:encoded>
+      <title><![CDATA[Wien Meidling ↔ Wien Liesing]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;919984</guid>
+      <pubDate>Fri, 16 Oct 2026 09:04:16 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 09:01:05 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Wegen einer Weichenstörung waren bis 09:02 Uhr nur eingeschränkt Fahrten möglich. Planen Sie derzeit noch bis zu 5 Minuten mehr Reisezeit ein. [Heute]</description>
+      <content:encoded><![CDATA[Wegen einer Weichenstörung waren bis 09:02 Uhr nur eingeschränkt Fahrten möglich. Planen Sie derzeit noch bis zu 5 Minuten mehr Reisezeit ein.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N71: Simmering S U]]></title>
