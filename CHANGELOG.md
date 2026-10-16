@@ -5,6 +5,29 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **EN: U-Bahn-Station „nicht einhalten“ bei jedem Durchlauf gleich
+  (2026-10-16)**: „Derzeit können die Züge der Linie U6 die Station
+  Burggasse - Stadthalle in Richtung Floridsdorf nicht einhalten“ kam im
+  EN-Feed je nach Durchlauf anders heraus, mal „do not stop at Burggasse -
+  Stadthalle station“, mal „stop in the direction of Floridsdorf not in the
+  station …“ oder „are unable to meet the Stadlau station“ (U2 und U6 seit
+  Juli). Das Subjekt stand zwischen Verb und Ort, das Glossar griff nicht,
+  der erste Modell-Durchlauf verlor die Richtung, und der zweite hing von
+  der Zufalls-Nonce ab. Jetzt kommt das Subjekt vor das Verb und die
+  Richtung hinter die Station: „Currently the trains of line U6 do not stop
+  at Burggasse - Stadthalle towards Floridsdorf.“ Der erste Durchlauf
+  besteht, das Ergebnis ist jedes Mal dasselbe. Michael wählte die Behebung
+  am 16.10. Dazu zwei Klassen aus derselben Probe: Ein Stationsname mit
+  Bindestrich zwischen zwei Leerzeichen bleibt ganz geschützt („Grund: …
+  im Haltestellenbereich Burggasse - Stadthalle“ war „Burggasse - City
+  Hall“, „Julius - Raab - Platz“ war „Julius - Raab - square“), und zwei
+  Platzhalter, die das Modell zusammenklebte („line U6do not stop at“),
+  bekommen ihr Leerzeichen zurück. Replay über 9.956 verschiedene echte
+  Texte seit 01.07. (Feed und Caches von WL, ÖBB, Baustellen): 26
+  Modell-Eingaben ändern sich, alle aus diesen Klassen, und liefen alt
+  gegen neu durch das echte Modell (zwei Läufe, je sechs bis zehn
+  Wiederholungen des zweiten Durchlaufs). Der deutsche Feed ändert sich
+  nicht; keine betroffene Übersetzung liegt im Cache, die Epoche bleibt 25.
 * **Dauer-Spannen zählen als keine Dauer (2026-10-15, nur Doku)**: „für
   etwa zwei bis drei Wochen“ oder „2–3 Monate“ im „Zeitraum:“ einer
   WL-Meldung liest `extract_duration_from_description` nicht; die Meldung

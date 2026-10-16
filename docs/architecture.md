@@ -2403,7 +2403,19 @@ Nicht jeder Text gehört in ein NMT-Modell:
     … nicht einhalten“ mit dem Subjekt davor („Die Linie 66A kann die
     Haltestelle Atzgersdorf, Kirchenplatz in Richtung Reumannplatz nicht
     einhalten“, vorher „cannot follow the stop“) wird zu „hält nicht an der
-    Haltestelle …“, das Glossar sagt „does not stop at“ (15.10.). Ein Partizip, das das Glossar übersetzt
+    Haltestelle …“, das Glossar sagt „does not stop at“ (15.10.). Steht das
+    Subjekt hinter dem Verb („Derzeit können die Züge der Linie U6 die Station
+    Alser Straße in beiden Richtungen nicht einhalten“, U2 und U6 seit Juli),
+    kommt es vor das Verb und die Richtung hinter die Station („Derzeit die
+    Züge der Linie U6 halten nicht in der Station Alser Straße in beiden
+    Richtungen“), damit das Glossar greift. Vorher blieb der Satz ungeglost,
+    und das Modell schrieb je nach Platzhalter-Nonce des zweiten Durchlaufs
+    etwas anderes („stop towards Floridsdorf do not stop at the station“,
+    „are unable to meet the Stadlau station“). Michael wählte die Behebung am
+    16.10. (Karte „Englischer U6-Text“): Der Satz soll bei jedem Durchlauf
+    gleich und sauber herauskommen. Mit dem Glossar besteht schon der erste
+    Durchlauf mit den kurzen Platzhaltern; der Zufalls-Nonce des zweiten wird
+    nicht mehr gebraucht, und das Ergebnis ist bei jedem Build dasselbe. Ein Partizip, das das Glossar übersetzt
     („kurzgeführt“, „gesperrt“, „nicht angefahren“, „aufrecht gehalten“),
     kommt mit seinem Hilfsverb zusammen (`_GLOSSED_PARTICIPLE_RE`), damit das
     Modell es nicht abtrennt („line 5A curtailed“, „can be be maintained“).
@@ -2415,6 +2427,11 @@ Nicht jeder Text gehört in ein NMT-Modell:
   * Namen bleiben Namen: Wiener Orte, die gewöhnliche Nomen sind („Ring“,
     „Gürtel“, „Oper“, „Innere Stadt“, „Kurpark“, `_PLACE_NAME_ENTITIES`),
     Straßen mit Leerzeichen („Julius Raab Platz“, `_SPACED_STREET_NAME_RE`),
+    Stationsnamen, deren Bindestrich zwischen zwei Leerzeichen steht
+    („Burggasse - Stadthalle“ für „Burggasse-Stadthalle“, „Michelbeuern -
+    AKH“, „Julius - Raab - Platz“; vorher „Burggasse - City Hall“, „Julius -
+    Raab - square“, 16.10.; ein Leerzeichen nur auf einer Seite wie in
+    „Lorenz-Müller- Gasse“ ist ein Tippfehler, den das Modell selbst glättet),
     „Erlaaer Schleife“ und das eine Wort nach „Richtung“
     (`_DIRECTION_NAME_RE`, außer Himmelsrichtungen und „Zentrum“).
   Nachgespielt mit dem echten Modell über alle 3.003 Texte: Nur Texte mit
@@ -2577,6 +2594,14 @@ Nach dem Modelllauf wird nicht blind vertraut:
   Verankert auf der Form der Nonce selbst (8–32 Hex-Zeichen), nicht auf dem
   laxeren Muster der `XENT`/`XGLO`-Varianten — ein nacktes `ENT`/`GLO` ist
   sonst ein gewöhnliches Wortfragment.
+* **Zusammengeklebte Platzhalter bekommen ihr Leerzeichen zurück (seit
+  2026-10-16).** Unter einer Zufalls-Nonce ließ das Modell das Leerzeichen
+  zwischen zwei Platzhaltern weg, und der Satz kam als „the trains of line
+  U6do not stop at“ oder „line 13Adoes not stop atNeubaugasse“ heraus
+  (EN-Probe vom 16.10.). `_respace_glued_placeholders` setzt es wieder
+  ein, wo der maskierte Quelltext die beiden Platzhalter getrennt hatte;
+  stehen sie dort zusammen („47–51“ sind drei Platzhalter in Folge),
+  bleibt es so.
 * **Eine Regel für frische Übersetzung und Cache (seit 2026-10-10).**
   Jeder Modelldurchlauf wird mit derselben Prüfung beurteilt wie ein
   gecachter Wert (`_leftover_placeholder`: `_RESIDUAL_PLACEHOLDER_RE` plus
