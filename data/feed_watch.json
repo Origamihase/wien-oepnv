@@ -1,32 +1,24 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-16T06:01:12.634834+00:00",
- "built": "2026-10-16T08:01:02+02:00",
+ "updated": "2026-10-16T06:31:00.985518+00:00",
+ "built": "2026-10-16T08:30:48+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-16T08:01:02+02:00",
+  "built": "2026-10-16T08:30:48+02:00",
   "items": [
+   {
+    "title": "14A: Feuerwehreinsatz",
+    "time_line": "Seit 08:08"
+   },
    {
     "title": "2A: Verspätungen",
     "time_line": "Seit 07:50"
    },
    {
-    "title": "U3: Schadhaftes Fahrzeug",
-    "time_line": "Seit 07:31"
-   },
-   {
     "title": "17A: Verkehrsunfall",
     "time_line": "Seit 07:29"
-   },
-   {
-    "title": "U6: Schadhaftes Fahrzeug",
-    "time_line": "Seit 05:46"
-   },
-   {
-    "title": "Wien Stadlau ↔ Wien Süßenbrunn",
-    "time_line": "Heute"
    },
    {
     "title": "N71: Simmering S U",
@@ -47,6 +39,14 @@
    {
     "title": "12/5: Albertgasse",
     "time_line": "Bis 03.11."
+   },
+   {
+    "title": "15A: Max-Mauermann-Gasse",
+    "time_line": "Bis 25.12."
+   },
+   {
+    "title": "1A/3A: Schwertgasse",
+    "time_line": "Bis 31.03.2027"
    }
   ]
  },
@@ -5130,6 +5130,26 @@
     "baustellen": 3,
     "oebb": 11,
     "wl": 104
+   }
+  },
+  {
+   "t": "2026-10-16T06:31:00.985518+00:00",
+   "raw": {
+    "wl-stoerungen": 67,
+    "wl-hinweise": 83,
+    "oebb": 156,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 25
+   },
+   "discarded": {
+    "wl": 14,
+    "oebb": 133,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 10,
+    "wl": 103
    }
   }
  ]
