@@ -1,0 +1,74 @@
+name: EN probe (temporary)
+
+# One-off probe for the EN U6 stop thread; removed before merge.
+# Runs the EN pipeline of OLD_REF and of this branch with the real model over
+# every distinct DE text of the feed since July and commits the results to
+# probe/out/ on this branch.
+on:
+  push:
+    branches:
+      - 'claude/project-thread-fyoaod'
+    paths:
+      - 'probe/RUN'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: en-probe
+  cancel-in-progress: true
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      OLD_REF: cbd8f4727383c87896b190ad777a69472fa5d8d4
+      REPEATS: 10
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: Resolve Hugging Face cache key
+        id: hf-cache-key
+        shell: bash
+        run: echo "month=$(date -u +'%Y-%m')" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/huggingface
+          key: huggingface-${{ runner.os }}-${{ steps.hf-cache-key.outputs.month }}
+          restore-keys: |
+            huggingface-${{ runner.os }}-
+      - run: pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - uses: ./.github/actions/install-deps
+      - name: Probe old and new code
+        shell: bash
+        run: |
+          set -euo pipefail
+          git worktree add /tmp/old "$OLD_REF"
+          mkdir -p /tmp/res
+          python probe/en_probe.py /tmp/old probe/inputs.json /tmp/res/old.json "$REPEATS"
+          python probe/en_probe.py "$PWD" probe/inputs.json /tmp/res/new.json "$REPEATS"
+      - name: Commit results
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          RUN="$(cat probe/RUN)"
+          for i in 1 2 3 4 5 6 7 8; do
+            git fetch origin "$GITHUB_REF_NAME"
+            git reset --hard "origin/$GITHUB_REF_NAME"
+            mkdir -p "probe/out/$RUN"
+            cp /tmp/res/*.json "probe/out/$RUN/"
+            git add "probe/out/$RUN"
+            git commit -m "probe: EN results run $RUN [skip ci]"
+            if git push origin "HEAD:$GITHUB_REF_NAME"; then exit 0; fi
+            sleep $((i * 5))
+          done
+          exit 1
