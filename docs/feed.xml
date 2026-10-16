@@ -8,51 +8,40 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0), ÖBB (© ÖBB, keine offene Lizenz). Details: NOTICE.md im Repository.</copyright>
-    <lastBuildDate>Fri, 16 Oct 2026 21:01:14 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 21:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[62/LB: Fahrzeug im Gleis]]></title>
+      <title><![CDATA[5: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3e79d6c90567f1c1a1a76d116fa315fb54794f1c95ef005e954a2d040b8edd24</guid>
+      <pubDate>Fri, 16 Oct 2026 21:25:54 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 21:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 21:25:54 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 22:25:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung. [Seit 21:25]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 21:25]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[18/6: Betriebsstörung]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">68101de83aa7de197835f7eb56411d8e802db684d6daaa808beebf02303fc3c8</guid>
+      <pubDate>Fri, 16 Oct 2026 21:25:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 21:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 21:25:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Seit 21:25]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 21:25]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: Fahrzeug im Gleis]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">9c98376a065019f9814bc9424ef2fe07d129b73834779d9d3a750f013998e9ba</guid>
       <pubDate>Fri, 16 Oct 2026 20:03:00 +0200</pubDate>
       <ext:first_seen>Fri, 16 Oct 2026 20:30:46 +0200</ext:first_seen>
       <ext:starts_at>Fri, 16 Oct 2026 20:03:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie 62 fährt derzeit nicht zwischen Eichenstraße und Aßmayergasse. Die Lokal Bahn fährt derzeit nicht zwischen Matzleinsdorfer Platz S und Aßmayergasse. [Seit 20:03]</description>
-      <content:encoded><![CDATA[Die Linie 62 fährt derzeit nicht zwischen Eichenstraße und Aßmayergasse. Die Lokal Bahn fährt derzeit nicht zwischen Matzleinsdorfer Platz S und Aßmayergasse.<br/>[Seit 20:03]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38A: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">361d72bca0cc84100f7195fc89fc1a03d6a8b18b8fa4cc578267b3f69d263e62</guid>
-      <pubDate>Fri, 16 Oct 2026 20:25:18 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 20:25:18 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 20:25:18 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 21:24:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung. [Seit 20:25]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 20:25]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Verzögerung auf der Strecke: Wien]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;920073</guid>
-      <pubDate>Fri, 16 Oct 2026 19:58:28 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 20:00:52 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Wegen einer Verzögerung auf der Strecke sind in Wien Hbf (U) Zugfahrten derzeit nur eingeschränkt möglich. Planen Sie bis zu 15 Minuten mehr Reisezeit ein. [Seit 19:58]</description>
-      <content:encoded><![CDATA[Wegen einer Verzögerung auf der Strecke sind in Wien Hbf (U) Zugfahrten derzeit nur eingeschränkt möglich. Planen Sie bis zu 15 Minuten mehr Reisezeit ein.<br/>[Seit 19:58]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18: Fahrzeug im Gleis]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4da317d92f3072c74eeb9c19279f33352117b32b116a2c406b12b1690fc14ab1</guid>
-      <pubDate>Fri, 16 Oct 2026 19:32:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 20:00:52 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 19:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 19:32]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19:32]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 20:03]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20:03]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46: Schadhaftes Fahrzeug]]></title>
@@ -64,17 +53,6 @@
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 19:03]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19:03]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Weichenstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">e938b804c9027f350eb7c9b5ec95f3fa4f3f1c5011ac2ba48fcf6c6fcde70d0c</guid>
-      <pubDate>Fri, 16 Oct 2026 13:16:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 13:30:46 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 13:16:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 13:16]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 13:16]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A/7A/N8: Bauarbeiten]]></title>
@@ -122,6 +100,29 @@
       <georss:point>48.170159 16.420009</georss:point>
       <description>Simmeringer Hauptstraße gegenüber 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, provisorische Haltestelle, Hauptfahrbahn. Haltestellenverlegung der Linie N71 … [Bis 23.10.]</description>
       <content:encoded><![CDATA[Simmeringer Hauptstraße gegenüber 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, provisorische Haltestelle, Hauptfahrbahn. Haltestellenverlegung der Linie N71 …<br/>[Bis 23.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[64A: Liesing-Flur-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">609517ab3ab98b5b38f0fe913f15e9bd18cd5a3d9005a51a2cb50d3fb227ddbd</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 14 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten. [Bis 28.10.]</description>
+      <content:encoded><![CDATA[Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten.<br/>[Bis 28.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12/5: Albertgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3e5225e046a0df3ec11a86c99a2c68a57b90ba1f9c0a3a5c4fdf60d90cdf02e7</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 09 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <georss:point>48.210606 16.344038</georss:point>
+      <description>Albertgasse 27 → Albertgasse 33 - 35. Haltestellenverlegung der Linien 5 und 12 in Richtung Westbahnhof U bzw. Josefstädter Straße U. Grund: Bauarbeiten. [Bis 03.11.]</description>
+      <content:encoded><![CDATA[Albertgasse 27 → Albertgasse 33 - 35. Haltestellenverlegung der Linien 5 und 12 in Richtung Westbahnhof U bzw. Josefstädter Straße U. Grund: Bauarbeiten.<br/>[Bis 03.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

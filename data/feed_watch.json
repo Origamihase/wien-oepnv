@@ -1,36 +1,28 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-16T19:01:29.541556+00:00",
- "built": "2026-10-16T21:01:14+02:00",
+ "updated": "2026-10-16T19:31:11.418423+00:00",
+ "built": "2026-10-16T21:30:55+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-16T21:01:14+02:00",
+  "built": "2026-10-16T21:30:55+02:00",
   "items": [
    {
-    "title": "62/LB: Fahrzeug im Gleis",
+    "title": "5: Betriebsstörung",
+    "time_line": "Seit 21:25"
+   },
+   {
+    "title": "18/6: Betriebsstörung",
+    "time_line": "Seit 21:25"
+   },
+   {
+    "title": "62: Fahrzeug im Gleis",
     "time_line": "Seit 20:03"
-   },
-   {
-    "title": "38A: Falschparker",
-    "time_line": "Seit 20:25"
-   },
-   {
-    "title": "Verzögerung auf der Strecke: Wien",
-    "time_line": "Seit 19:58"
-   },
-   {
-    "title": "18: Fahrzeug im Gleis",
-    "time_line": "Seit 19:32"
    },
    {
     "title": "46: Schadhaftes Fahrzeug",
     "time_line": "Seit 19:03"
-   },
-   {
-    "title": "U1: Weichenstörung",
-    "time_line": "Seit 13:16"
    },
    {
     "title": "62A/7A/N8: Bauarbeiten",
@@ -47,6 +39,14 @@
    {
     "title": "N71: Simmering S U",
     "time_line": "Bis 23.10."
+   },
+   {
+    "title": "64A: Liesing-Flur-Gasse",
+    "time_line": "Bis 28.10."
+   },
+   {
+    "title": "12/5: Albertgasse",
+    "time_line": "Bis 03.11."
    }
   ]
  },
@@ -5650,6 +5650,26 @@
     "baustellen": 3,
     "oebb": 11,
     "wl": 108
+   }
+  },
+  {
+   "t": "2026-10-16T19:31:11.418423+00:00",
+   "raw": {
+    "wl-stoerungen": 162,
+    "wl-hinweise": 84,
+    "oebb": 160,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 25
+   },
+   "discarded": {
+    "wl": 32,
+    "oebb": 136,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 10,
+    "wl": 107
    }
   }
  ]
