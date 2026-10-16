@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import csv
 import hashlib
+import io
 import json
 import logging
 import math
@@ -16,7 +18,7 @@ from pathlib import Path
 from typing import Any, NamedTuple
 from collections.abc import Iterable
 
-from .files import _reject_non_finite_constant, _reject_non_finite_float
+from .files import _reject_non_finite_constant, _reject_non_finite_float, read_capped_text
 from .geo import calculate_distance_meters
 
 __all__ = [
@@ -25,10 +27,12 @@ __all__ = [
     "is_in_vienna",
     "is_pendler",
     "nearest_rail_station",
+    "open_data_coordinate",
     "station_by_oebb_id",
     "station_info",
     "station_lines",
     "station_named_in_text",
+    "station_wl_lines",
     "text_has_vienna_connection",
 ]
 
@@ -72,6 +76,10 @@ _STATIONS_PATH = Path(__file__).resolve().parents[2] / "data" / "stations.json"
 _STATION_LINES_PATH = (
     Path(__file__).resolve().parents[2] / "data" / "oebb_station_lines.json"
 )
+_GEONETZ_STOPS_PATH = Path(__file__).resolve().parents[2] / "data" / "oebb_geonetz_stops.json"
+_WL_OGD_STOPS_PATH = (
+    Path(__file__).resolve().parents[2] / "data" / "wienerlinien-ogd-haltestellen.csv"
+)
 _VIENNA_POLYGON_PATH = Path(__file__).resolve().parents[2] / "data" / "LANDESGRENZEOGD.json"
 
 # Security: defense-in-depth byte-size caps on the on-disk stations and
@@ -96,6 +104,8 @@ _VIENNA_POLYGON_PATH = Path(__file__).resolve().parents[2] / "data" / "LANDESGRE
 MAX_STATIONS_FILE_BYTES = 50 * 1024 * 1024
 MAX_VIENNA_POLYGON_FILE_BYTES = 50 * 1024 * 1024
 MAX_STATION_LINES_FILE_BYTES = 50 * 1024 * 1024
+MAX_GEONETZ_STOPS_FILE_BYTES = 10 * 1024 * 1024
+MAX_WL_OGD_STOPS_FILE_BYTES = 10 * 1024 * 1024
 
 Coordinate = tuple[float, float]
 Ring = tuple[Coordinate, ...]
@@ -1102,6 +1112,137 @@ def station_lines(name: str) -> frozenset[str]:
     info = station_info(name)
     canonical = info.name if info else name
     return _station_lines_by_name().get(_normalize_token(canonical), frozenset())
+
+
+class OpenCoordinate(NamedTuple):
+    """A station coordinate taken from an open dataset, with its origin."""
+
+    latitude: float
+    longitude: float
+    # ``"oebb_geonetz"`` (ÖBB-Infrastruktur GeoNetz, CC BY 4.0) or
+    # ``"wl_ogd"`` (Wiener Linien OGD Haltestellen, CC BY 4.0).
+    dataset: str
+
+
+@lru_cache(maxsize=1)
+def _entries_by_name() -> dict[str, dict[str, Any]]:
+    """Directory entries keyed on their canonical ``name``."""
+
+    result: dict[str, dict[str, Any]] = {}
+    for entry in _station_entries():
+        name = entry.get("name")
+        if isinstance(name, str) and name and name not in result:
+            result[name] = entry
+    return result
+
+
+@lru_cache(maxsize=1)
+def _geonetz_coordinates() -> dict[str, tuple[float, float]]:
+    """GeoNetz stop coordinates keyed ``eva:<EVA-Nr>`` and ``ifopt:<IFOPT>``."""
+
+    payload = _read_capped_json(
+        _GEONETZ_STOPS_PATH, MAX_GEONETZ_STOPS_FILE_BYTES, label="GeoNetz stops"
+    )
+    stops = payload.get("stops") if isinstance(payload, dict) else None
+    if not isinstance(stops, list):
+        return {}
+    result: dict[str, tuple[float, float]] = {}
+    for stop in stops:
+        if not isinstance(stop, dict):
+            continue
+        lat = _coerce_lat(stop.get("lat"))
+        lon = _coerce_lon(stop.get("lon"))
+        if lat is None or lon is None:
+            continue
+        for prefix, field in (("eva", "eva_nr"), ("ifopt", "ifopt_id")):
+            value = stop.get(field)
+            if isinstance(value, str) and value.strip():
+                result.setdefault(f"{prefix}:{value.strip()}", (lat, lon))
+    return result
+
+
+@lru_cache(maxsize=1)
+def _wl_ogd_coordinates() -> dict[str, tuple[float, float]]:
+    """Wiener Linien OGD stop coordinates keyed on the DIVA number."""
+
+    text = read_capped_text(
+        _WL_OGD_STOPS_PATH,
+        MAX_WL_OGD_STOPS_FILE_BYTES,
+        encoding="utf-8-sig",
+        label="WL OGD Haltestellen",
+        logger=logger,
+    )
+    if text is None:
+        return {}
+    result: dict[str, tuple[float, float]] = {}
+    for row in csv.DictReader(io.StringIO(text), delimiter=";"):
+        diva = (row.get("DIVA") or "").strip()
+        lat = _coerce_lat(row.get("Latitude"))
+        lon = _coerce_lon(row.get("Longitude"))
+        if diva and lat is not None and lon is not None:
+            result.setdefault(diva, (lat, lon))
+    return result
+
+
+def _geonetz_coordinate(entry: dict[str, Any]) -> OpenCoordinate | None:
+    table = _geonetz_coordinates()
+    for prefix, field in (("eva", "eva_nr"), ("ifopt", "ifopt_id")):
+        value = entry.get(field)
+        if isinstance(value, str) and value.strip():
+            hit = table.get(f"{prefix}:{value.strip()}")
+            if hit:
+                return OpenCoordinate(hit[0], hit[1], "oebb_geonetz")
+    return None
+
+
+def _wl_ogd_coordinate(entry: dict[str, Any]) -> OpenCoordinate | None:
+    diva = entry.get("wl_diva")
+    if diva is None:
+        return None
+    hit = _wl_ogd_coordinates().get(str(diva).strip())
+    return OpenCoordinate(hit[0], hit[1], "wl_ogd") if hit else None
+
+
+def open_data_coordinate(name: str, *, prefer: str = "oebb") -> OpenCoordinate | None:
+    """Coordinate of the station named *name* from an open dataset only.
+
+    *name* is a canonical directory name (``StationInfo.name``). The
+    coordinate comes from ÖBB-Infrastruktur's GeoNetz (joined on EVA or
+    IFOPT number) or from the Wiener Linien OGD stop list (joined on the
+    DIVA number), both CC BY 4.0. ``prefer="wl"`` tries the Wiener Linien
+    list first (a WL stop notice), the default tries GeoNetz first (a rail
+    notice).
+
+    The directory's own ``latitude``/``longitude`` are deliberately not
+    used: they are merged from OpenStreetMap, ÖBB HAFAS and Google Places
+    as well, and the GeoRSS elements in the public feed must only carry
+    coordinates whose origin and terms are known (operator decision
+    2026-10-16). A station found in neither dataset yields ``None`` — no
+    fallback.
+    """
+
+    entry = _entries_by_name().get(name)
+    if entry is None:
+        return None
+    order = (_wl_ogd_coordinate, _geonetz_coordinate) if prefer == "wl" else (
+        _geonetz_coordinate,
+        _wl_ogd_coordinate,
+    )
+    for resolve in order:
+        hit = resolve(entry)
+        if hit is not None:
+            return hit
+    return None
+
+
+def station_wl_lines(name: str) -> frozenset[str]:
+    """Wiener Linien lines the directory lists for the station *name*."""
+
+    entry = _entries_by_name().get(name)
+    lines = entry.get("wl_lines") if entry else None
+    if not isinstance(lines, list):
+        return frozenset()
+    return frozenset(str(line).strip() for line in lines if str(line).strip())
 
 
 def is_in_vienna(lat: object, lon: object | None = None) -> bool:
