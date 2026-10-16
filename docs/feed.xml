@@ -7,18 +7,29 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 16 Oct 2026 07:01:10 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 07:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[14A: Verkehrsunfall]]></title>
+      <title><![CDATA[17A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">45135f0f9023593102b885c7d89c0c028d3a4d83421c93a8a39180b147612974</guid>
-      <pubDate>Fri, 16 Oct 2026 06:16:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 06:16:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 06:16:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">5663fecbf675128e997aa265491bb433f2c1a3c40b9e5aa509f998b0c368932d</guid>
+      <pubDate>Fri, 16 Oct 2026 07:29:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 07:29:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 07:29:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 06:16]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 06:16]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 07:29]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 07:29]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[72A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">3e70e4bbf713fcdd4cc095fbdfff6414327c3b6ba5f04ca7de2ff298fcb90bef</guid>
+      <pubDate>Fri, 16 Oct 2026 07:01:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 07:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 07:01:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 07:01]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 07:01]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Schadhaftes Fahrzeug]]></title>
@@ -107,17 +118,6 @@
       <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Bitterlichstraße gegenüber Max-Mauermann-Gasse → Bitterlichstraße gegenüber Friedrich-Teller-Gasse. Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling … [Bis 25.12.]</description>
       <content:encoded><![CDATA[Bitterlichstraße gegenüber Max-Mauermann-Gasse → Bitterlichstraße gegenüber Friedrich-Teller-Gasse. Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling …<br/>[Bis 25.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A/3A: Schwertgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
-      <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung. [Bis 31.03.2027]</description>
-      <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung.<br/>[Bis 31.03.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

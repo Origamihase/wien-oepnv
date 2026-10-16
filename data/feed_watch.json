@@ -1,16 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-16T05:01:17.806702+00:00",
- "built": "2026-10-16T07:01:10+02:00",
+ "updated": "2026-10-16T05:31:00.881608+00:00",
+ "built": "2026-10-16T07:30:47+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-16T07:01:10+02:00",
+  "built": "2026-10-16T07:30:47+02:00",
   "items": [
    {
-    "title": "14A: Verkehrsunfall",
-    "time_line": "Seit 06:16"
+    "title": "17A: Verkehrsunfall",
+    "time_line": "Seit 07:29"
+   },
+   {
+    "title": "72A: Verkehrsunfall",
+    "time_line": "Seit 07:01"
    },
    {
     "title": "U6: Schadhaftes Fahrzeug",
@@ -43,10 +47,6 @@
    {
     "title": "15A: Max-Mauermann-Gasse",
     "time_line": "Bis 25.12."
-   },
-   {
-    "title": "1A/3A: Schwertgasse",
-    "time_line": "Bis 31.03.2027"
    }
   ]
  },
@@ -5090,6 +5090,26 @@
     "baustellen": 3,
     "oebb": 11,
     "wl": 101
+   }
+  },
+  {
+   "t": "2026-10-16T05:31:00.881608+00:00",
+   "raw": {
+    "wl-stoerungen": 62,
+    "wl-hinweise": 81,
+    "oebb": 157,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 25
+   },
+   "discarded": {
+    "wl": 13,
+    "oebb": 133,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 11,
+    "wl": 102
    }
   }
  ]

@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261016-0003-F01, I20260917-0012, I20260922-0032, I20260925-0011, I20261016-0001-F01, I20260909-0007, I20261016-0004, I20261016-0002"
+    "trafficInfoNameList": "I20261016-0003-F01, I20261016-0005, I20260917-0012, I20260922-0032, I20260925-0011, I20261016-0004, I20260909-0007, I20261016-0006, I20261016-0002"
    },
    {
     "id": 3,
@@ -203,41 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "46": "ptTram"
-     }
-    },
-    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Hütteldorfer Straße  305",
-    "name": "I20261016-0001-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "146",
-       "lineName": "46",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-16T05:05:00.000+0200",
-     "end": "2026-10-16T06:16:00.000+0200",
-     "lastUpdate": "2026-10-16T06:16:00.000+0200",
-     "resume": "2026-10-16T06:16:00.000+0200",
-     "start": "2026-10-16T04:53:00.000+0200"
-    },
-    "title": "46: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U2": "ptMetro"
      }
     },
@@ -328,15 +293,83 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T06:17:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T06:17:00.000+0200",
-     "resume": "2026-10-16T06:16:00.000+0200",
+     "end": "2026-10-16T07:19:00.000+0200",
+     "lastUpdate": "2026-10-16T07:19:00.000+0200",
+     "resume": "2026-10-16T07:19:00.000+0200",
      "start": "2026-10-16T06:16:00.000+0200"
     },
     "title": "14A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "72A": "ptBusCity"
+     }
+    },
+    "description": "Linie 72A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "Linie 72A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
+    "name": "I20261016-0005",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "72A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "472",
+       "lineName": "72A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T07:02:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T07:02:00.000+0200",
+     "resume": "2026-10-16T07:01:00.000+0200",
+     "start": "2026-10-16T07:01:00.000+0200"
+    },
+    "title": "72A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "17A": "ptBusCity"
+     }
+    },
+    "description": "Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "Linie 17A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
+    "name": "I20261016-0006",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "17A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "417",
+       "lineName": "17A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T07:29:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T07:29:00.000+0200",
+     "resume": "2026-10-16T07:29:00.000+0200",
+     "start": "2026-10-16T07:29:00.000+0200"
+    },
+    "title": "17A: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
