@@ -51,7 +51,12 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   Funktion `open_data_coordinate`, nie aus den zusammengeführten
   OSM-/HAFAS-/Google-Werten des Stationsverzeichnisses; ohne offene
   Koordinate gibt es keine Geodaten. Titel und Beschreibung ändern sich
-  nicht. Replay alt gegen neu über die Feed-Stände seit 01.07.: folgt.
+  nicht. Replay mit dem echten `main()` alt gegen neu über 2.651
+  Feed-Stände (alle seit 01.09., jeder achte seit 01.07.): DE, EN und State
+  in allen Ständen gleich bis auf die GeoRSS-Elemente und die
+  Namespace-Angabe; 131 verschiedene Items bekamen Geodaten (6 Baustellen,
+  51 WL-Haltestellenverlegungen, 58 ÖBB-Linien, 16 ÖBB-Punkte), DE und EN
+  jeweils gleich. Der Feed-Wächter meldet auf 68 Ständen alt und neu dasselbe.
 * **Branch-Schutz für `main` (2026-10-16, nur Doku)**: Michael hat am
   16.10. das Ruleset „main schützen“ angelegt: aktiv auf dem
   Standard-Branch, Bypass-Liste leer, nur „Restrict deletions“ und „Block
