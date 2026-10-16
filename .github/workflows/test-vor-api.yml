@@ -67,8 +67,11 @@ jobs:
           # container/JS Action mechanism); any non-zero exit hard-FAILS the
           # job. Emit a flag instead and gate the downstream steps on it so a
           # secrets-less run (e.g. a fork) skips cleanly with a green job.
-          if [[ -z "${VOR_ACCESS_ID:-}" || -z "${VOR_BASE_URL:-}" ]]; then
-            echo "VOR_ACCESS_ID oder VOR_BASE_URL fehlt -> Tests werden übersprungen."
+          # Only VOR_ACCESS_ID is required: an empty VOR_BASE_URL falls back to
+          # the VAO host in src/providers/vor.py (WORKFLOW_SECRETS in
+          # scripts/health_check.py lists it as optional).
+          if [[ -z "${VOR_ACCESS_ID:-}" ]]; then
+            echo "VOR_ACCESS_ID fehlt -> Tests werden übersprungen."
             echo "Hinweis: Ohne konfigurierte Secrets (z. B. in Forks) stehen diese Werte nicht zur Verfügung."
             echo "have_secrets=false" >> "$GITHUB_OUTPUT"
           else

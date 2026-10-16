@@ -5,6 +5,35 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Quellenangabe nach CC BY 4.0 vollständig, VOR_BASE_URL wirklich optional (2026-10-16)**:
+  Michael fragte am 16.10.: „Bitte prüfe nun die aktuelle Situation der
+  Lizenzbedingungen. Prüfe auch, ob die API-Limits sauber eingehalten
+  werden. Ist alles konform?“ Die Prüfung fand zwei Fehler einer Klasse.
+  (1) CC BY 4.0 verlangt in Abschnitt 3(a)(1) neben der Quelle den Hinweis,
+  dass das Material bearbeitet wurde, und einen Link zur Lizenz. Der Feed
+  kürzt und vereinheitlicht Titel und Beschreibungen, der englische Feed ist
+  maschinell übersetzt; die `<copyright>`-Zeile beider Feeds und die
+  Fußzeile der Webseite (DE und EN) sagten das nicht und nannten die Lizenz
+  ohne Link. Beide sagen es jetzt, verlinken die Lizenz und `NOTICE.md` mit
+  voller Adresse (ein Feed-Reader kann den bloßen Dateinamen nicht auflösen).
+  Items und der Fernseher ändern sich nicht: Ein Nachbau aus denselben Caches
+  mit altem und neuem Code unterscheidet sich nur in `<copyright>` und
+  `lastBuildDate`. (2) Seit #2029 führt der Health check `VOR_BASE_URL` als
+  optional, `manual-full-refresh.yml` brach ohne den Wert aber ab und
+  `test-vor-api.yml` übersprang still den Rauchtest. Beide verlangen jetzt
+  nur `VOR_ACCESS_ID`; ein Test hält die Workflows bei der Liste.
+  API-Limits: Die VAO-Abfragen (Tagesbudget 100, VAO Start) bleiben mit
+  rund 48 Abfragen pro Tag unter dem Limit, ohne urllib3-Wiederholungen
+  und mit Zähler vor jedem Aufruf. Wiener Linien, ÖBB-RSS und die
+  Baustellen-WFS veröffentlichen kein Limit; das Projekt fragt jede Quelle
+  rund 50-mal am Tag ab (WL zwei Listen je Lauf), mit eigenem User-Agent.
+  ÖBB: Für die Meldungstexte und die HAFAS-Abfragen gibt es keine offene
+  Lizenz; die allgemeinen Nutzungsbedingungen von oebb.at verlangen für
+  Vervielfältigung eine schriftliche Genehmigung. Michael hat sie am 16.10.
+  über den Kontakt von data.oebb.at angefragt. Seine Entscheidung: Lehnt die
+  ÖBB ab, kommen die ÖBB-Inhalte aus dem Projekt, „da ich persönlich die ÖBB
+  als Eigentümer der Daten sehe“. Bis zur Antwort bleibt der Feed, wie er ist
+  (`NOTICE.md`, Abschnitt „ÖBB-Inhalte“, Kommentar in `src/providers/oebb.py`).
 * **Google-Places-Stufe entfernt, Secrets im Health check (2026-10-16)**:
   Michael fragte am 16.10.: „Es sollte doch auffallen, wenn hinterlegte
   Secrets nicht mehr funktionieren und die Quelle deshalb nicht verwendet

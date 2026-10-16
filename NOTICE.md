@@ -16,6 +16,13 @@ Die Meldungstexte stammen von den Anbietern. Der englische Feed ist eine
 maschinelle Übersetzung dieser Texte und ändert nichts an ihrer Herkunft. Beide
 Feeds nennen die Quellen im `<copyright>`-Element des Kanals.
 
+Die Texte erscheinen **bearbeitet**: Titel und Beschreibungen werden gekürzt und
+vereinheitlicht, der englische Feed ist maschinell übersetzt. CC BY 4.0
+(Abschnitt 3(a)(1)) verlangt deshalb neben der Quelle den Hinweis auf die
+Bearbeitung und einen Link zur Lizenz. Beides steht im `<copyright>`-Element
+beider Feeds und in der Fußzeile der Webseite (DE und EN), zusammen mit dem
+vollständigen Link auf diese Datei.
+
 | Quelle | Inhalt im Feed | Lizenz / Bedingungen | Quellenangabe |
 | --- | --- | --- | --- |
 | Wiener Linien (OGD-Echtzeitdaten, `wienerlinien.at/ogd_realtime`) | Störungs- und Baustellenmeldungen | CC BY 4.0 laut [Wiener Linien Open Data](https://www.wienerlinien.at/open-data) („unter Angabe der Datenherkunft“) | „Datenquelle: Wiener Linien“ |
@@ -29,6 +36,17 @@ Die GeoRSS-Koordinaten kommen nur aus diesen drei offenen Datensätzen
 (`src.utils.stations.open_data_coordinate`, Entscheidung von Michael vom
 16.10.2026), nie aus den zusammengeführten Koordinaten des Stationsverzeichnisses
 (OpenStreetMap, HAFAS, Google). Details: `docs/architecture.md` §1, „Geodaten im Feed“.
+
+### ÖBB-Inhalte
+
+Für die ÖBB-Meldungstexte und die HAFAS-Abfragen (Koordinaten, EVA-Nummern,
+`data/oebb_station_lines.json`) gibt es keine offene Lizenz; die allgemeinen
+Nutzungsbedingungen von oebb.at verlangen für das Vervielfältigen eine
+schriftliche Genehmigung. Michael hat die ÖBB am 16.10.2026 über den Kontakt
+von data.oebb.at um diese Genehmigung gebeten. Bis zur Antwort bleiben die
+Inhalte im Feed. Entschieden von Michael am 16.10.2026: Lehnt die ÖBB ab,
+werden die ÖBB-Inhalte aus dem Projekt entfernt, weil er die ÖBB als
+Eigentümerin der Daten sieht.
 
 ## Stationsverzeichnis und weitere Dateien unter `data/`
 

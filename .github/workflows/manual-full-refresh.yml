@@ -135,8 +135,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if [[ -z "${VOR_ACCESS_ID:-}" || -z "${VOR_BASE_URL:-}" ]]; then
-            echo "Secrets fehlen (VOR_ACCESS_ID/VOR_BASE_URL)." >&2
+          # Only VOR_ACCESS_ID is required: an empty VOR_BASE_URL falls back to
+          # the VAO host in src/providers/vor.py (WORKFLOW_SECRETS in
+          # scripts/health_check.py lists it as optional).
+          if [[ -z "${VOR_ACCESS_ID:-}" ]]; then
+            echo "Secret fehlt (VOR_ACCESS_ID)." >&2
             exit 1
           fi
 

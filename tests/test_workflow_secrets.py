@@ -149,3 +149,18 @@ def test_optional_secret_set_leaves_no_detail(monkeypatch: pytest.MonkeyPatch) -
     assert check.ok
     assert check.summary == "OK — VOR_ACCESS_ID, VOR_BASE_URL gesetzt"
     assert check.detail == ""
+
+
+def test_no_workflow_requires_an_optional_secret() -> None:
+    """A secret ``WORKFLOW_SECRETS`` calls optional must not gate a workflow.
+
+    ``VOR_BASE_URL`` falls back to the VAO host in ``src/providers/vor.py``;
+    ``manual-full-refresh.yml`` failed and ``test-vor-api.yml`` skipped its
+    smoke test when it was empty, although the Health check reports it as
+    optional.
+    """
+    optional = {s.name for s in health_check.WORKFLOW_SECRETS if s.kind == "optional"}
+    gate = re.compile(r'-z "\$\{([A-Z_]+):-\}"')
+    for path in sorted(WORKFLOWS.glob("*.yml")):
+        required_here = set(gate.findall(path.read_text(encoding="utf-8")))
+        assert not (required_here & optional), (path.name, sorted(required_here & optional))

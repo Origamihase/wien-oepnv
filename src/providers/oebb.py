@@ -60,6 +60,11 @@ from defusedxml import ElementTree as ET # XXE Mitigation applied
 
 log = logging.getLogger(__name__)
 
+# Licence: the ÖBB notices are not openly licensed; oebb.at's general terms
+# require written consent for copying. Michael asked ÖBB for it via the
+# data.oebb.at contact on 2026-10-16 and decided: if ÖBB refuses, the ÖBB
+# content (this provider and the HAFAS queries) leaves the project, because
+# ÖBB owns the data (NOTICE.md, "ÖBB-Inhalte").
 _OEBB_DEFAULT_URL = (
     "https://fahrplan.oebb.at/bin/help.exe/dnl?protocol=https:&tpl=rss_WI_oebb&"
 )
