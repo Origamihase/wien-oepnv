@@ -5,6 +5,18 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Lizenz: MIT nur für den Code, Quellen ausgewiesen (2026-10-16)**:
+  Michael entschied am 16.10., bei MIT zu bleiben, weil Städte und
+  Signage-Betreiber den Code ohne Hürden übernehmen sollen. Die
+  Meldungstexte und Datensätze gehören aber den Quellen und werden nicht
+  unter MIT weiterlizenziert. Neu ist `NOTICE.md` mit der Aufstellung je
+  Quelle (Wiener Linien und Stadt Wien CC BY 4.0, ÖBB-Meldungen © ÖBB ohne
+  offene Lizenz, Stationsdaten mit OSM, HAFAS und Google Places). Beide
+  Feeds tragen im Kanal ein `<copyright>`-Element mit den Quellen; die
+  Items und damit die Anzeige auf den Bildschirmen ändern sich nicht.
+  README, `docs/index.md`, `docs/development.md` und die Fußzeile der
+  Webseite (DE/EN) verweisen darauf. VOR/VAO speist keinen Feed-Eintrag
+  und steht deshalb nicht in der Feed-Zeile.
 * **Branch-Schutz für `main` (2026-10-16, nur Doku)**: Michael hat am
   16.10. das Ruleset „main schützen“ angelegt: aktiv auf dem
   Standard-Branch, Bypass-Liste leer, nur „Restrict deletions“ und „Block

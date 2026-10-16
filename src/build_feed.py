@@ -10854,7 +10854,22 @@ _CHANNEL_METADATA_EN: dict[str, str] = {
         "official sources (Wiener Linien, ÖBB, VOR/VAO, City of Vienna)."
     ),
     "language": "en",
+    "copyright": (
+        "Code: MIT licence. Notice texts remain with their sources: "
+        "Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0), "
+        "ÖBB (© ÖBB, not openly licensed). Details: NOTICE.md in the repository."
+    ),
 }
+
+# Michael, 16.10.2026: the code stays MIT, the notice texts are not ours to
+# license. The channel names the sources and their terms once; items stay
+# untouched, so nothing changes on the EasySignage displays. VOR/VAO feeds
+# no item (only the Stammstrecke statistics) and is therefore not named here.
+_CHANNEL_COPYRIGHT_DE = (
+    "Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen: "
+    "Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0), "
+    "ÖBB (© ÖBB, keine offene Lizenz). Details: NOTICE.md im Repository."
+)
 
 
 def _channel_metadata(lang: str) -> dict[str, str]:
@@ -10865,6 +10880,7 @@ def _channel_metadata(lang: str) -> dict[str, str]:
         "title": feed_config.FEED_TITLE,
         "description": feed_config.FEED_DESC,
         "language": "de",
+        "copyright": _CHANNEL_COPYRIGHT_DE,
     }
 
 
@@ -10933,6 +10949,7 @@ def _make_rss(
     atom_self.set("type", "application/rss+xml")
     atom_self.set("href", f"{pages_base}/{feed_filename}")
     ET.SubElement(channel, "language").text = metadata["language"]
+    ET.SubElement(channel, "copyright").text = metadata["copyright"]
 
     ET.SubElement(channel, "lastBuildDate").text = _fmt_rfc2822(now)
     ET.SubElement(channel, "ttl").text = str(feed_config.FEED_TTL)

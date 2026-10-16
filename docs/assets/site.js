@@ -182,7 +182,12 @@
       "<strong>City of Vienna (OGD)</strong> – construction works with district &amp; period",
     "footer-about-heading": "About the dashboard",
     "footer-about-html":
-      "Open-source under the MIT licence. Feed update cadence: roughly every 30&nbsp;minutes. " +
+      "Code open-source under the MIT licence. Notice texts remain with their sources: " +
+      "Wiener Linien and City of Vienna – data.wien.gv.at under " +
+      "<a href=\"https://creativecommons.org/licenses/by/4.0/\" rel=\"external noopener noreferrer\" target=\"_blank\">CC&nbsp;BY&nbsp;4.0</a>, " +
+      "ÖBB alerts &copy;&nbsp;ÖBB (not openly licensed); details in " +
+      "<a href=\"https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md\" rel=\"external noopener noreferrer\" target=\"_blank\">NOTICE.md</a>. " +
+      "Feed update cadence: roughly every 30&nbsp;minutes. " +
       "This dashboard fetches feed and statistics CSVs <em>directly in the browser</em> – " +
       "no trackers, no cookies, no third-party scripts. Proper names (stations, operators) " +
       "are kept in German on purpose; only the surrounding text is translated.",

@@ -73,7 +73,7 @@ Der Feed konsolidiert Meldungen, dedupliziert identische Ereignisse, versieht si
 Ja. Die Architektur erlaubt es, Provider über Umgebungsvariablen zu deaktivieren oder neue Adapter in `src/providers/` hinzuzufügen. Das How-to [eigene Provider-Plugins anbinden](how-to/provider_plugins.md) beschreibt den empfohlenen Workflow inklusive Scaffold-Skript.
 
 ### Unter welcher Lizenz steht das Projekt?
-Der Code steht unter der MIT-Lizenz. Prüfe bei externen Datenquellen die individuellen Lizenzbedingungen.
+Der Code steht unter der MIT-Lizenz. Die Meldungstexte im Feed und die Datensätze unter `data/` gehören den jeweiligen Quellen (Wiener Linien und Stadt Wien: CC BY 4.0; ÖBB-Meldungen: © ÖBB). Die Aufstellung mit den Pflicht-Quellenangaben steht in [`NOTICE.md`](https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md).
 
 ### Wie bleibe ich über Änderungen informiert?
 Überwache das Repository, abonniere Releases oder integriere die Cache-Updates in deine CI/CD-Pipeline. Audit-Berichte und Changelogs dokumentieren wichtige Änderungen.
@@ -140,7 +140,7 @@ Der Code steht unter der MIT-Lizenz. Prüfe bei externen Datenquellen die indivi
           "name": "Unter welcher Lizenz steht das Projekt?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Der Code wird unter der MIT-Lizenz veröffentlicht. Für externe Datenquellen gelten zusätzlich deren jeweilige Nutzungsbedingungen."
+            "text": "Der Code steht unter der MIT-Lizenz. Die Meldungstexte im Feed und die Datensätze unter data/ gehören den jeweiligen Quellen (Wiener Linien und Stadt Wien: CC BY 4.0; ÖBB-Meldungen: © ÖBB); die Aufstellung steht in NOTICE.md."
           }
         },
         {
