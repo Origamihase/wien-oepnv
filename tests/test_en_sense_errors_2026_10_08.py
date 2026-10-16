@@ -156,7 +156,7 @@ def test_wl_wording_reaches_the_model_in_a_form_it_renders(german: str, shown: s
         (
             "Derzeit können die Züge der Linie U6 die Station Alser Straße in beiden "
             "Richtungen nicht einhalten.",
-            "halten die Züge der Linie [U6] in beiden Richtungen nicht in der Station",
+            "die Züge der Linie [U6] <do not stop at> [Alser Straße] in beiden Richtungen",
         ),
         (
             "Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur "

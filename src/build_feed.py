@@ -24,6 +24,7 @@ from concurrent.futures import (
 from datetime import date, datetime, time, timedelta, UTC
 from email.utils import format_datetime
 from functools import lru_cache
+from itertools import pairwise
 from pathlib import Path
 from threading import BoundedSemaphore, Lock
 from time import perf_counter
@@ -2903,13 +2904,14 @@ def _station_entity_pattern() -> re.Pattern[str] | None:
         return None
 
     sorted_names = sorted(names, key=len, reverse=True)
-    # A hyphen in a name may carry a space on either side: WL writes the
+    # A hyphen in a name may stand between two spaces: WL writes the
     # directory's "Burggasse-Stadthalle" as "Burggasse - Stadthalle" (U6
     # tickers since July). Only "Burggasse" was protected, and the model made
-    # "Burggasse - City Hall" of the rest (16.10.2026).
+    # "Burggasse - City Hall" of the rest (16.10.2026). A space on one side
+    # only ("Lorenz-Müller- Gasse") is a typo the model mends itself.
     pattern = (
         r"(?<!\w)(?:"
-        + "|".join(re.escape(name).replace(r"\-", r" ?- ?") for name in sorted_names)
+        + "|".join(re.escape(name).replace(r"\-", r"(?: - |-)") for name in sorted_names)
         + r")(?!\w)"
     )
     return re.compile(pattern, re.IGNORECASE)
@@ -4441,7 +4443,7 @@ def _respace_glued_placeholders(translated: str, masked_text: str) -> str:
     matches = list(_UNMASK_PLACEHOLDER_RE.finditer(translated))
     cuts = [
         second.start()
-        for first, second in zip(matches, matches[1:])
+        for first, second in pairwise(matches)
         if first.end() == second.start()
         and first.group(0) + second.group(0) not in masked_text
     ]
