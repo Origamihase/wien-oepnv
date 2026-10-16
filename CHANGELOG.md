@@ -17,6 +17,19 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   README, `docs/index.md`, `docs/development.md` und die Fußzeile der
   Webseite (DE/EN) verweisen darauf. VOR/VAO speist keinen Feed-Eintrag
   und steht deshalb nicht in der Feed-Zeile.
+* **Stationen ohne Google-Places-Koordinaten (2026-10-16)**: Michael
+  wollte die 18 Koordinaten aus Google Places in `data/stations.json`
+  loswerden, weil ihre Weitergabe in einem öffentlichen Repository nicht
+  durch eine offene Lizenz gedeckt ist. Die vier Bahnhöfe mit EVA-Nummer
+  (Rennweg, Praterstern, Franz-Josefs-Bahnhof, Hauptbahnhof) nehmen jetzt
+  die Koordinate aus dem ÖBB-GeoNetz (CC BY 4.0), die 14 U-Bahn-Stationen
+  die WL-OGD-Haltestelle ihrer DIVA (CC BY 4.0); Abstand zur alten Lage
+  7 bis 174 m. `google_places`, `_google_place_id` und `_types` sind aus
+  diesen Einträgen entfernt, `data/new_places.json` (ungenutzter
+  Google-Diff einer Handausführung) ist gelöscht, und die Wetter-Abfrage
+  der Webseite nutzt die GeoNetz-Koordinate des Hauptbahnhofs. Die
+  Google-Stufe des Stationslaufs läuft nur für Stationen ohne Koordinate
+  und trägt bei diesen 18 deshalb nichts wieder ein.
 * **Branch-Schutz für `main` (2026-10-16, nur Doku)**: Michael hat am
   16.10. das Ruleset „main schützen“ angelegt: aktiv auf dem
   Standard-Branch, Bypass-Liste leer, nur „Restrict deletions“ und „Block
