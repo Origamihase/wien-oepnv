@@ -1,4 +1,4 @@
-"""Merge helpers for integrating Google Places data into stations."""
+"""Merge helpers for integrating OSM place data into stations."""
 
 from __future__ import annotations
 
@@ -18,7 +18,7 @@ from ..utils.files import (
 from ..utils.serialize import scrub_trojan_source_primitives
 from ..utils.stations import MAX_STATIONS_FILE_BYTES
 
-from .client import Place
+from .place import Place
 from .normalize import haversine_m, normalize_name
 
 __all__ = [
@@ -342,18 +342,16 @@ def _update_station(
 ) -> bool:
     changed = False
 
+    # The caller tags the source of its places (``_enrich_with_osm`` adds
+    # ``osm``); here only the existing value is normalised to a sorted,
+    # comma-separated string. Until 2026-10-16 this added
+    # ``google_places`` for every merge, a leftover of the removed Google
+    # Places tier.
     sources = _ensure_source_set(station)
-    if "google_places" not in sources:
-        sources.add("google_places")
-        # Ensure 'source' is saved as a comma-separated string
-        station["source"] = ",".join(sorted(sources))
+    new_source_str = ",".join(sorted(sources))
+    if station.get("source") != new_source_str:
+        station["source"] = new_source_str
         changed = True
-    else:
-        # Also fix existing format just in case it wasn't string
-        new_source_str = ",".join(sorted(sources))
-        if station.get("source") != new_source_str:
-            station["source"] = new_source_str
-            changed = True
 
     existing_place_id = station.get("_google_place_id")
     # Whether this place is trusted to "own" the station. A distance-only
@@ -409,7 +407,7 @@ def _update_station(
 def _create_station(place: Place, config: MergeConfig) -> StationEntry:
     station: StationEntry = {
         "name": place.name,
-        "source": "google_places",
+        "source": "osm",
         "aliases": [],
         "latitude": place.latitude,
         "longitude": place.longitude,

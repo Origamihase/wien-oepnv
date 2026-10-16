@@ -32,11 +32,19 @@ WORKFLOW_DIR = REPO_ROOT / ".github" / "workflows"
 _VOR_MARKERS = ("VOR_ACCESS_ID", "VAO_ACCESS_ID", "verkehrsauskunft")
 
 
+#: Workflows that carry a VOR secret without spending VAO budget. The Health
+#: check receives ``VOR_ACCESS_ID`` only so ``check_secrets`` can tell whether
+#: it arrives empty (operator decision 2026-10-16); it never sends a VAO
+#: request, which ``test_health_check_never_calls_vao`` pins.
+_NO_VAO_REQUESTS = {"health-check.yml"}
+
+
 def _vor_workflows() -> list[Path]:
     found = [
         path
         for path in sorted(WORKFLOW_DIR.glob("*.yml"))
-        if any(marker in path.read_text(encoding="utf-8") for marker in _VOR_MARKERS)
+        if path.name not in _NO_VAO_REQUESTS
+        and any(marker in path.read_text(encoding="utf-8") for marker in _VOR_MARKERS)
     ]
     assert found, "no VOR-touching workflow found — did the glob break?"
     return found
@@ -213,3 +221,19 @@ def test_architecture_doc_lists_the_ci_consumer() -> None:
     assert "| **Tagesbudget gesamt** | **48 / 100** |" not in text, (
         "§7 still totals the budget without the CI smoke test"
     )
+
+
+def test_health_check_never_calls_vao() -> None:
+    """The Health check may hold the VOR secret but must not spend VAO budget.
+
+    It runs the WL, ÖBB and Baustellen updaters and reads committed files;
+    the Stammstrecke is judged from ``poll_status.json``, never live.
+    """
+    script = (REPO_ROOT / "scripts" / "health_check.py").read_text(encoding="utf-8")
+    # Importing a constant (``DIRECTION_LABELS``) is fine; a request path is not.
+    for marker in ("providers.vor import", "providers import vor", "verkehrsauskunft",
+                   "_charge_one_request", "VorAuth", "accessId"):
+        assert marker not in script, marker
+    workflow = _strip_comments((WORKFLOW_DIR / "health-check.yml").read_text(encoding="utf-8"))
+    run_lines = [line.strip() for line in workflow.splitlines() if line.strip().startswith("run:")]
+    assert run_lines == ["run: python scripts/health_check.py"]

@@ -636,7 +636,7 @@ def _save_pending_trips(path: Path, state: Mapping[str, _PendingTrip]) -> bool:
     ``allow_nan=False`` mirrors the canonical writer-side pin
     established for the sibling state-sink writers
     (``data/first_seen.json`` / ``data/stations_last_run.json`` /
-    ``data/vor_request_count.json`` / ``data/places_quota.json`` /
+    ``data/vor_request_count.json`` /
     ``cache/<provider>/last_run.json``). ``_trip_to_json`` emits
     ``"latest_delay_minutes": trip.latest_delay_minutes`` directly
     from the concrete ``float`` field; a future refactor of

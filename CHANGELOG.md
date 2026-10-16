@@ -5,6 +5,31 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Google-Places-Stufe entfernt, Secrets im Health check (2026-10-16)**:
+  Michael fragte am 16.10.: „Es sollte doch auffallen, wenn hinterlegte
+  Secrets nicht mehr funktionieren und die Quelle deshalb nicht verwendet
+  werden kann.“ Der Abgleich zeigte: Der Google-Places-Schlüssel erreichte
+  seit 2026-05-11 keinen Workflow mehr (der damals stillgelegte
+  Google-Workflow wurde nicht ersetzt), und `update-cycle.yml` sowie
+  `manual-full-refresh.yml` reichten die nie angelegten Secrets
+  `VOR_VERSION` und `VOR_BASE` weiter. Fehlende Werte fielen still auf
+  Standards zurück; auf den Feed wirkte das nicht. Drei Änderungen:
+  (1) Die Google-Stufe des Stationsverzeichnisses ist ausgebaut, weil das
+  Verzeichnis nur Koordinaten mit bekannter Herkunft führen soll
+  (`NOTICE.md`): Client, Kontingent, Kacheln, Diagnose, die beiden
+  Google-Skripte, `data/places_quota.json`, `--check places` im
+  Pre-Flight, `tokens verify google-places` und `places.googleapis.com`
+  in `PROXY_TRUSTED_HOSTS`. Eine Station ohne OSM- und HAFAS-Koordinate
+  bleibt ohne und wird im wöchentlichen Lauf mit Namen gewarnt. `Place`
+  liegt jetzt in `src/places/place.py`; `merge_places` vermerkt keine
+  Quelle `google_places` mehr. (2) Die toten Verweise `VOR_VERSION` und
+  `VOR_BASE` sind aus den Workflows entfernt; die Code-Aliase bleiben für
+  lokale Läufe. (3) Michael: „der Health-Check genügt für diese
+  Überprüfung“. `WORKFLOW_SECRETS` in `scripts/health_check.py` listet
+  jedes Secret, das ein Workflow nutzt; die neue Prüfung `Secrets` wird
+  rot, wenn `VOR_ACCESS_ID` leer ankommt, und nennt nur den Namen.
+  `tests/test_workflow_secrets.py` hält Liste, Workflows und Code in CI
+  im Gleichschritt. Der Feed ändert sich nicht.
 * **Feed: Quellenangabe für die GeoRSS-Koordinaten (2026-10-16)**: Die
   `<copyright>`-Zeile beider Feeds (#2025) nennt jetzt auch die Herkunft
   der Koordinaten aus #2026: ÖBB-Infrastruktur AG (GeoNetz), Wiener Linien

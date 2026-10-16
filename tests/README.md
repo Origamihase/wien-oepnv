@@ -7,7 +7,7 @@ Dieses Verzeichnis enthält die automatisierte Test-Suite, basierend auf `pytest
 - **`conftest.py`**: Enthält globale Fixtures, darunter vier autouse-Fixtures für deterministische Test-Reihenfolge: `reset_vor_request_count` (frischer VOR-Quota-Counter pro Test), `reset_build_feed_state` (modul-globaler State von `src/build_feed.py`), `isolate_stats_writes` (CSV-Ledger-Writer schreiben pro Test in `tmp_path`) und `reset_circuit_breakers` (alle projekt-eigenen Breaker zurück auf CLOSED).
 - **`test_*.py`**: Die eigentlichen Testdateien. Sie sind meist nach dem Modul benannt, das sie testen (`test_build_feed_atom.py`, `test_build_feed_cache.py`, … decken jeweils einen Aspekt von `src/build_feed.py` ab; das Pendant zu `src/build_feed.py` ist also kein einzelnes Modul, sondern eine Familie themenspezifischer Dateien).
 - **Unterverzeichnisse** für strukturierte Test-Suites:
-  - `tests/places/` — Tier-1/2/3-Stationsverzeichnis-Pipeline (OSM, HAFAS, Google Places).
+  - `tests/places/` — Stationsverzeichnis-Pipeline (OSM, HAFAS-Fallback; die Google-Places-Stufe wurde am 2026-10-16 entfernt).
   - `tests/providers/` — WL- und ÖBB-Provider-Adapter.
   - `tests/scripts/` — Wartungsskripte (`update_stammstrecke_*`, `update_station_directory`, `generate_markdown_stats`, …).
 

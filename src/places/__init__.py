@@ -3,10 +3,9 @@
 from __future__ import annotations
 
 __all__ = [
-    "client",
     "coordinate_consensus",
     "merge",
     "normalize",
     "osm_client",
-    "tiling",
+    "place",
 ]

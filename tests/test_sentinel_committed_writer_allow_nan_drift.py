@@ -51,11 +51,9 @@ environment-controlled values.
        status payload is a public ``dict[str, Any]`` so any future
        caller adding a float field (latency, response_size_ratio …)
        inherits the missing-pin.
-    3. :meth:`src.places.quota.MonthlyQuota.save_atomic`
-       (``data/places_quota.json``) — Google Places quota state.
-       Current writer casts every numeric to ``int(...)`` but the
-       defence-in-depth pin would surface a future ``float`` field
-       (e.g. fractional cost accounting) as a loud ValueError.
+    3. (formerly ``src.places.quota.MonthlyQuota.save_atomic`` —
+       ``data/places_quota.json``; removed with the Google Places
+       stage on 2026-10-16.)
     4. :func:`src.build_feed._save_state` (the inline
        ``json.dump(merged_state, ...)``) — ``data/first_seen.json``.
        The state dict's values are ISO date strings today but the
@@ -140,7 +138,8 @@ Eight coordinated edits, all pinned by this test file:
   1. ``src/feed/reporting.py:write_feed_health_json`` —
      pass ``allow_nan=False`` to ``json.dump``.
   2. ``src/utils/cache.py:write_status`` — same.
-  3. ``src/places/quota.py:MonthlyQuota.save_atomic`` — same.
+  3. (``src/places/quota.py:MonthlyQuota.save_atomic`` — removed
+     2026-10-16 together with the Google Places stage.)
   4. ``src/build_feed.py:_save_state`` — same.
   5. ``src/providers/vor.py:_write_request_count_file`` — same.
   6. ``scripts/update_all_stations.py:_write_heartbeat_file`` — same.
@@ -234,18 +233,6 @@ def test_inventory_write_status_pins_allow_nan() -> None:
     _assert_allow_nan_pin(
         write_status,
         where="src/utils/cache.py:write_status (cache/<provider>/last_run.json)",
-    )
-
-
-def test_inventory_monthly_quota_save_atomic_pins_allow_nan() -> None:
-    from src.places.quota import MonthlyQuota
-
-    _assert_allow_nan_pin(
-        MonthlyQuota.save_atomic,
-        where=(
-            "src/places/quota.py:MonthlyQuota.save_atomic "
-            "(data/places_quota.json)"
-        ),
     )
 
 

@@ -44,7 +44,7 @@ Werte nennt. Die Einträge mischen mehrere Quellen:
 | Stadt Wien, Stadtgrenze (MA 41) | `data/LANDESGRENZEOGD.json` | CC BY 4.0 | „Datenquelle: Stadt Wien – data.wien.gv.at“ |
 | OpenStreetMap (Overpass) | Koordinaten mit `source` `osm` | [ODbL](https://opendatacommons.org/licenses/odbl/) | „© OpenStreetMap-Mitwirkende“ |
 | HAFAS (ÖBB Scotty) | Koordinaten und EVA-Nummern mit `source` `hafas`, `data/oebb_station_lines.json` | **ungeklärt**: öffentlich erreichbares Auskunftssystem der ÖBB, keine offene Lizenz bekannt | „Fahrplandaten: ÖBB“ |
-| Google Places | Stand 16.10.2026: **kein Eintrag**. Die 18 früheren Google-Koordinaten sind durch ÖBB-GeoNetz (Bahnhöfe mit EVA-Nummer) oder die WL-OGD-Haltestelle ersetzt. Die Google-Stufe von `scripts/update_station_directory.py` kann aber bei neuen Stationen ohne andere Koordinate wieder welche eintragen | Nutzungsbedingungen von Google, nicht geprüft | – |
+| Google Places | **kein Eintrag**. Die 18 früheren Google-Koordinaten sind seit 16.10.2026 durch ÖBB-GeoNetz (Bahnhöfe mit EVA-Nummer) oder die WL-OGD-Haltestelle ersetzt, und die Google-Stufe von `scripts/update_station_directory.py` ist am selben Tag entfernt worden; es kommen keine neuen hinzu | – | – |
 | Eigene Pflege | `source` `manual`, Overrides, Mapping-Dateien | MIT wie der Code | – |
 
 Die Lizenzangaben der offenen Datensätze stammen aus der Tabelle

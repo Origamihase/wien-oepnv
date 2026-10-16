@@ -54,8 +54,7 @@ log = logging.getLogger(__name__)
 # the whole feed-build cron. The cap can only TIGHTEN — env overrides may
 # lower the timeout (tests use 1–5s) but never raise it above the documented
 # ceiling. Mirrors the ``min(VOR_HTTP_TIMEOUT, DEFAULT_HTTP_TIMEOUT)`` cap in
-# ``src/providers/vor.py`` and the ``MAX_TIMEOUT_S`` enforcement in
-# ``GooglePlacesConfig.__post_init__`` (``src/places/client.py``).
+# ``src/providers/vor.py``.
 MAX_PROVIDER_TIMEOUT = DEFAULT_PROVIDER_TIMEOUT
 
 # Security: ``MAX_LOG_BYTES`` is the disk-exhaustion-defence ceiling for the
@@ -73,8 +72,7 @@ MAX_PROVIDER_TIMEOUT = DEFAULT_PROVIDER_TIMEOUT
 # the absolute upper bound bounds the worst-case disk footprint at
 # ``2 * MAX_LOG_BYTES * (MAX_LOG_BACKUP_COUNT + 1)`` (two log files share
 # the threshold). Mirrors the TIGHTEN-only contract of ``MAX_PROVIDER_TIMEOUT``
-# above and ``MAX_TIMEOUT_S`` / ``MAX_REQUEST_RETRIES`` in
-# ``src/places/client.py``.
+# above.
 DEFAULT_LOG_MAX_BYTES = 1_000_000
 MAX_LOG_BYTES = 100 * 1024 * 1024
 

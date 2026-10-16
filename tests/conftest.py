@@ -290,8 +290,8 @@ def _restore_replaced_modules() -> Iterator[None]:
     the fixtures in this file (``reset_build_feed_state``,
     ``time_line_today``) reset and patched the copy, not the module those
     tests call. A reload replaces the module's classes, so a test holding
-    ``GooglePlacesError`` from its import no longer caught the error the
-    client raised. The outcome depended on the order and on today's date
+    an exception class from its import no longer caught the error the
+    reloaded module raised. The outcome depended on the order and on today's date
     (test-suite audit 2026-10-04: 21 tests failed in shuffled runs, 14 more
     with the clock set to New Year). Modules a test imports for the first
     time stay.
@@ -539,7 +539,6 @@ def _eagerly_import_breaker_modules() -> None:
     for module_name in (
         "src.places.osm_client",
         "src.places.hafas_client",
-        "src.places.client",
     ):
         try:
             importlib.import_module(module_name)

@@ -14,7 +14,6 @@ PR #1491) pinned ``allow_nan=False`` on every committed-to-main
       coordinate writers)
     * :func:`src.feed.reporting.write_feed_health_json`
       (``docs/feed-health.json``), :func:`src.utils.cache.write_status`,
-      :meth:`src.places.quota.MonthlyQuota.save_atomic`,
       :func:`src.build_feed._save_state`,
       :func:`src.providers.vor._write_request_count_file`,
       :func:`scripts.update_all_stations._write_heartbeat_file`,
@@ -137,12 +136,7 @@ Sites migrated this round (8 production sites in src/):
       the writer for the data-degradation guard)
     * :func:`src.utils.cache.read_status`
       (``cache/<provider>/last_run.json``)
-    * :meth:`src.places.quota.MonthlyQuota.load`
-      (``data/places_quota.json``)
     * :func:`src.places.merge.load_stations` (``data/stations.json``)
-    * :func:`src.places.tiling.load_tiles_from_env` (``PLACES_TILES``
-      env value)
-    * :func:`src.places.tiling.load_tiles_from_file` (tile config file)
     * :func:`src.utils.stations_validation._load_stations`
       (``data/stations.json`` validator)
 
@@ -354,39 +348,12 @@ def test_inventory_cache_read_status_pins_hooks() -> None:
     )
 
 
-def test_inventory_monthly_quota_load_pins_hooks() -> None:
-    from src.places.quota import MonthlyQuota
-
-    _assert_parse_constant_pin(
-        MonthlyQuota.load,
-        where="src/places/quota.py:MonthlyQuota.load (data/places_quota.json)",
-    )
-
-
 def test_inventory_places_load_stations_pins_hooks() -> None:
     from src.places.merge import load_stations
 
     _assert_parse_constant_pin(
         load_stations,
         where="src/places/merge.py:load_stations (data/stations.json)",
-    )
-
-
-def test_inventory_tiling_load_tiles_from_env_pins_hooks() -> None:
-    from src.places.tiling import load_tiles_from_env
-
-    _assert_parse_constant_pin(
-        load_tiles_from_env,
-        where="src/places/tiling.py:load_tiles_from_env (PLACES_TILES env)",
-    )
-
-
-def test_inventory_tiling_load_tiles_from_file_pins_hooks() -> None:
-    from src.places.tiling import load_tiles_from_file
-
-    _assert_parse_constant_pin(
-        load_tiles_from_file,
-        where="src/places/tiling.py:load_tiles_from_file (tile config file)",
     )
 
 
@@ -567,54 +534,6 @@ def test_poc_load_stations_finite_payload_round_trips(tmp_path: Path) -> None:
     assert stations[0]["name"] == "Wien Hauptbahnhof"
     assert math.isfinite(float(stations[0]["latitude"]))
     assert math.isfinite(float(stations[0]["longitude"]))
-
-
-def test_poc_monthly_quota_load_rejects_planted_NaN_literal(tmp_path: Path) -> None:
-    """``MonthlyQuota.load`` must raise on planted NaN.
-
-    The current writer casts every numeric to ``int(...)`` so a NaN
-    cannot legitimately reach the file via the writer path.  But the
-    threat model is a PLANTED file — bypassing the writer entirely.
-    """
-    from src.places.quota import MonthlyQuota
-
-    poisoned = tmp_path / "places_quota.json"
-    poisoned.write_bytes(
-        b'{"month": "2026-05", "counts": {}, "total": 0, '
-        b'"daily_key": "2026-05-15", "daily_total": NaN}'
-    )
-
-    with pytest.raises(ValueError):
-        MonthlyQuota.load(poisoned)
-
-
-def test_poc_load_tiles_from_env_rejects_planted_NaN_literal() -> None:
-    """``load_tiles_from_env`` must raise on planted NaN coordinates."""
-    from src.places.tiling import load_tiles_from_env
-
-    with pytest.raises(ValueError):
-        load_tiles_from_env('[{"latitude": NaN, "longitude": 16.37}]')
-
-
-def test_poc_load_tiles_from_env_rejects_scientific_overflow() -> None:
-    """``load_tiles_from_env`` must raise on ``1e1000`` overflow."""
-    from src.places.tiling import load_tiles_from_env
-
-    with pytest.raises(ValueError):
-        load_tiles_from_env('[{"latitude": 1e1000, "longitude": 16.37}]')
-
-
-def test_poc_load_tiles_from_file_rejects_planted_NaN_literal(
-    tmp_path: Path,
-) -> None:
-    """``load_tiles_from_file`` must raise on planted NaN coordinates."""
-    from src.places.tiling import load_tiles_from_file
-
-    poisoned = tmp_path / "tiles.json"
-    poisoned.write_bytes(b'[{"latitude": NaN, "longitude": 16.37}]')
-
-    with pytest.raises(ValueError):
-        load_tiles_from_file(poisoned)
 
 
 def test_poc_stations_validation_rejects_planted_NaN_literal(tmp_path: Path) -> None:

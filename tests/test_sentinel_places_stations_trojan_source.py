@@ -22,8 +22,8 @@ operator-facing JSON family with the SAME fix shape requirement:
     ``update-stations.yml`` commit diff.
   * The committed sidecar contract is unambiguous: the file is
     pushed to ``main`` by the weekly ``update-stations.yml`` cron
-    job, whose OSM-first / Google-Places-fallback step writes the
-    enriched directory.
+    job, whose OSM-first / HAFAS-fallback step writes the enriched
+    directory.
 
 The Round-12 "Named but deferred" entry pinned the fix shape:
 **pair an ingestion-boundary Trojan-Source primitive scrubber with
@@ -35,18 +35,17 @@ sidecar in the codebase.
 Attack path
 ============
 
-1. Attacker compromises an upstream provider (Google Places hijack,
-   OSM Overpass cache poisoning, OEBB ``Verzeichnis der
+1. Attacker compromises an upstream provider (OSM Overpass cache
+   poisoning, OEBB ``Verzeichnis der
    Verkehrsstationen`` Excel response tampering, Wien OGD CSV
    poisoning, leaked CI secret store) or an operator mis-edits
    ``data/stations.json`` directly.
 2. A planted station entry carrying U+202E (RIGHT-TO-LEFT OVERRIDE)
    in a ``name``, ``_formatted_address``, or ``aliases[]`` field —
    e.g. ``name="Hauptbahnhof‮moc.live"`` displays as
-   ``Hauptbahnhofevil.com`` — reaches ``write_stations`` via one of
-   the upstream Google Places ingestion paths
-   (``scripts/fetch_google_places_stations.py``,
-   ``scripts/update_station_directory.py``).
+   ``Hauptbahnhofevil.com`` — reaches ``write_stations`` via the
+   station-directory ingestion path
+   (``scripts/update_station_directory.py``).
 3. Pre-fix ``write_stations`` serialised the payload via
    ``json.dumps({"stations": ...}, ensure_ascii=False, indent=2,
    sort_keys=True)``. ``ensure_ascii=False`` emits U+202E as its raw

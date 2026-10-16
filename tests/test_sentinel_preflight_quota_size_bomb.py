@@ -73,7 +73,12 @@ canonical helper (``src/utils/files.py``) combines the byte-size cap
 open) with the depth-bomb catch tuple in one place. The new
 ``MAX_PREFLIGHT_QUOTA_FILE_BYTES`` constant (1 MiB, ~5000x typical
 state — ``{"date": "...", "requests": N}`` is a few dozen bytes)
-mirrors ``src/places/quota.py:MAX_QUOTA_FILE_BYTES``.
+mirrored the former ``src/places/quota.py:MAX_QUOTA_FILE_BYTES``.
+
+Since 2026-10-16 the Google Places stage (and with it the ``places``
+branch of the pre-flight and ``data/places_quota.json``) is gone; the
+pre-flight now gates the VOR quota only, so the loader under test reads
+``data/vor_request_count.json`` alone.
 
 Closing-checklist
 -----------------

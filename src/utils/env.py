@@ -73,8 +73,7 @@ __all__ = [
 #     most; 1 MiB is ~1000x and accommodates every legitimate
 #     configuration shape.
 #   - Systemd / Docker secrets are typically a single line (token,
-#     password, certificate); 1 MiB is ~10000x legit and matches the
-#     existing ``places/quota.py:MAX_QUOTA_FILE_BYTES`` ceiling.
+#     password, certificate); 1 MiB is ~10000x legit.
 MAX_ENV_FILE_BYTES = 1 * 1024 * 1024
 MAX_SECRET_FILE_BYTES = 1 * 1024 * 1024
 

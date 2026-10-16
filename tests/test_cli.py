@@ -194,7 +194,6 @@ def test_cli_tokens_verify_defaults_to_all(monkeypatch: pytest.MonkeyPatch) -> N
     assert exit_code == 0
     assert calls == [
         "verify_vor_access_id.py",
-        "verify_google_places_access.py",
         "check_vor_auth.py",
     ]
 
@@ -204,17 +203,15 @@ def test_cli_tokens_verify_stops_on_error(monkeypatch: pytest.MonkeyPatch) -> No
 
     def fake_run_script(script_name: str, *, extra_args: list[str] | None = None) -> int:
         calls.append(script_name)
-        return 1 if script_name == "verify_google_places_access.py" else 0
+        return 1 if script_name == "verify_vor_access_id.py" else 0
 
     monkeypatch.setattr(cli, "_run_script", fake_run_script)
 
     exit_code = cli.main(["tokens", "verify", "--stop-on-error"])
 
     assert exit_code == 1
-    assert calls == [
-        "verify_vor_access_id.py",
-        "verify_google_places_access.py",
-    ]
+    # The first target fails, so the second (check_vor_auth.py) never runs.
+    assert calls == ["verify_vor_access_id.py"]
 
 
 def test_cli_config_wizard_forwards_arguments(monkeypatch: pytest.MonkeyPatch) -> None:

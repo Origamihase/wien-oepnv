@@ -107,8 +107,7 @@ def _coerce_float(value: Any) -> float | None:
         # ÖBB-Infrastruktur fetch) cannot land non-standard non-finite
         # literals in the committed ``data/oebb_geonetz_stops.json``
         # sidecar. Mirrors the canonical coordinate-floor pinned at
-        # :func:`src.places.hafas_client._extract_first_location`,
-        # :func:`src.places.client._parse_place`, and the writer-side
+        # :func:`src.places.hafas_client._extract_first_location` and the writer-side
         # ``allow_nan=False`` pin established in Round 1485
         # (``src.places.merge.write_stations``).
         if not math.isfinite(coerced):

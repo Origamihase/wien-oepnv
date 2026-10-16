@@ -49,8 +49,6 @@ jobs:
       PIP_CACHE_DIR: /tmp/pip-cache
       VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
       VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
-      VOR_BASE: ${{ secrets.VOR_BASE }}
-      VOR_VERSION: ${{ secrets.VOR_VERSION }}
 
     steps:
       # Workaround for actions/checkout#2351 (sporadic includeIf credential

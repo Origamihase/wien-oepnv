@@ -40,7 +40,7 @@ from ..utils.files import _reject_non_finite_constant, _reject_non_finite_float
 from ..utils.http import request_safe, session_with_retries
 from ..utils.logging import sanitize_log_arg
 
-from .client import Place
+from .place import Place
 from .merge import BoundingBox
 
 __all__ = [
@@ -330,7 +330,7 @@ class OSMOverpassClient:
         retrying on every cron tick. ``CircuitBreakerOpen``,
         :class:`requests.RequestException` and any deserialisation
         errors are converted to :class:`OSMOverpassError` — callers
-        catch the latter to fall back to Google Places.
+        catch the latter to fall back to HAFAS.
         """
         try:
             payload = _BREAKER.call(self._fetch_payload)
@@ -554,7 +554,7 @@ def convert_to_place(station: OSMStation) -> Place:
     ``Place.place_id`` and treats ``Place.types`` as the authoritative
     list of place categories. Embedding the OSM type into the
     place_id (``osm:way/12345``) keeps the identifier stable across
-    runs and avoids collisions with the Google Places ``ChIJ…`` shape.
+    runs and avoids collisions with other place-id shapes.
     """
     return Place(
         place_id=f"osm:{station.osm_type}/{station.osm_id}",
@@ -624,9 +624,8 @@ def filter_complete_places(places: Iterable[Place]) -> list[Place]:
         # :func:`_iter_stations` ``BoundingBox.contains`` gate to
         # incidentally reject ``±Inf`` (every comparison with ``±inf``
         # falls outside any finite envelope). Mirroring the HAFAS
-        # (:func:`src.places.hafas_client._is_valid_wgs84_coord`) and
-        # Google Places (:func:`src.places.client.GooglePlacesClient._parse_place`)
-        # parser-boundary defences here closes the third-tier
+        # (:func:`src.places.hafas_client._is_valid_wgs84_coord`)
+        # parser-boundary defence here closes the third-tier
         # structural drift so :func:`filter_complete_places` enforces
         # the canonical floor independent of caller path — defence-in-
         # depth against a future bounding-box relaxation, a third-

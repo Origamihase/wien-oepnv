@@ -335,11 +335,9 @@ def _write_request_count_file(path: Path, payload: Mapping[str, Any]) -> None:
 # json.JSONDecodeError, RecursionError)``) past every catch tuple — crashing the
 # per-request quota debit (``load_request_count`` / ``save_request_count``).
 # ``vor_request_count.json`` is a single small object
-# ``{"date": "...", "requests": N}`` (~50 bytes); 1 MiB matches the existing
-# ``places/quota.py:MAX_QUOTA_FILE_BYTES`` ceiling. Mirrors the per-loader cap
-# pattern in ``src/utils/cache.py`` (``MAX_CACHE_FILE_BYTES``) /
-# ``src/places/quota.py`` (``MAX_QUOTA_FILE_BYTES``) / ``src/places/tiling.py``
-# (``MAX_TILE_FILE_BYTES``).
+# ``{"date": "...", "requests": N}`` (~50 bytes); 1 MiB is far above that.
+# Mirrors the per-loader cap pattern in ``src/utils/cache.py``
+# (``MAX_CACHE_FILE_BYTES``).
 MAX_VOR_QUOTA_FILE_BYTES = 1 * 1024 * 1024
 
 

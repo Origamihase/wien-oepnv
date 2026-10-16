@@ -57,11 +57,12 @@ This file pins the canonical helper ``src.utils.files.read_capped_json``
 (used by 16+ scripts via the shared-helper pattern) and the parallel
 ``src.utils.stations._read_capped_json`` (used by the two
 ``@lru_cache``-decorated import-time loaders ``_station_entries`` and
-``_vienna_polygons``). The 9 remaining stat-then-open sites
-(``src/utils/cache.py`` × 3, ``src/places/quota.py``,
-``src/places/tiling.py``, ``src/places/merge.py``,
+``_vienna_polygons``). The 7 remaining stat-then-open sites
+(``src/utils/cache.py`` × 3, ``src/places/merge.py``,
 ``src/build_feed.py`` × 2, ``src/utils/stations_validation.py``) are
-covered by the inventory walker test below.
+covered by the inventory walker test below. (The former
+``src/places/quota.py`` / ``src/places/tiling.py`` sites were removed
+with the Google Places stage on 2026-10-16.)
 """
 
 from __future__ import annotations
@@ -332,8 +333,7 @@ def test_no_function_uses_unsafe_stat_then_open_pattern() -> None:
 
     The walker scans ``src/utils/files.py``, ``src/utils/stations.py``,
     ``src/utils/cache.py``, ``src/utils/stations_validation.py``,
-    ``src/places/quota.py``, ``src/places/tiling.py``,
-    ``src/places/merge.py`` and ``src/build_feed.py`` — the eight
+    ``src/places/merge.py`` and ``src/build_feed.py`` — the six
     modules currently containing the canonical
     ``MAX_*_FILE_BYTES`` cap pattern.
     """
@@ -342,8 +342,6 @@ def test_no_function_uses_unsafe_stat_then_open_pattern() -> None:
         _BASE_DIR / "src" / "utils" / "stations.py",
         _BASE_DIR / "src" / "utils" / "cache.py",
         _BASE_DIR / "src" / "utils" / "stations_validation.py",
-        _BASE_DIR / "src" / "places" / "quota.py",
-        _BASE_DIR / "src" / "places" / "tiling.py",
         _BASE_DIR / "src" / "places" / "merge.py",
         _BASE_DIR / "src" / "build_feed.py",
     ]
@@ -386,7 +384,6 @@ def test_precondition_canonical_cap_constants_exist() -> None:
     from src.utils import files
     from src.utils import stations
     from src.utils import cache
-    from src.places import quota, tiling
     from src import build_feed
 
     assert isinstance(files.DEFAULT_MAX_JSON_FILE_BYTES, int)
@@ -404,12 +401,6 @@ def test_precondition_canonical_cap_constants_exist() -> None:
 
     assert isinstance(cache.MAX_CACHE_FILE_BYTES, int)
     assert cache.MAX_CACHE_FILE_BYTES > 0
-
-    assert isinstance(quota.MAX_QUOTA_FILE_BYTES, int)
-    assert quota.MAX_QUOTA_FILE_BYTES > 0
-
-    assert isinstance(tiling.MAX_TILE_FILE_BYTES, int)
-    assert tiling.MAX_TILE_FILE_BYTES > 0
 
     assert isinstance(build_feed.MAX_STATE_FILE_BYTES, int)
     assert build_feed.MAX_STATE_FILE_BYTES > 0

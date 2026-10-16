@@ -1,7 +1,7 @@
 """Native HAFAS (ÖBB Scotty) Mgate client for coordinate fallback.
 
-This module is the third tier of the station-directory enrichment
-pipeline. After OSM Overpass and before Google Places, callers ask
+This module is the last tier of the station-directory enrichment
+pipeline. After OSM Overpass, callers ask
 :func:`enrich_station_with_hafas` for a station's coordinates by name.
 A single HAFAS Mgate ``LocMatch`` request returns the canonical
 location row, which is normalised into a :class:`HafasLocation`
@@ -29,8 +29,9 @@ The ~30-min feed cycle (``update-cycle.yml``) neither runs the sync nor
 reads this file, so the profile is fetched at most once per week — not
 per tick. When the profile is absent (developer's local machine,
 first-time clone) :func:`enrich_station_with_hafas` returns ``None``
-instead of raising — the caller treats HAFAS as unavailable and falls
-through to the Google Places tier.
+instead of raising — the caller treats HAFAS as unavailable and the
+station stays without coordinates (there is no further tier since
+2026-10-16).
 
 No external HAFAS client library is used. The Mgate request payload is
 constructed directly and — when the upstream profile carries a salt —
@@ -166,8 +167,8 @@ def _load_profile(path: Path = _PROFILE_PATH) -> HafasProfile:
     Raises :class:`HafasProfileError` if the file is missing, the
     payload is not a JSON object, or any of the required fields is
     missing / mistyped. The public entry point catches this and
-    short-circuits to ``None`` so the cron pipeline can fall through
-    to Google Places.
+    short-circuits to ``None`` so the cron pipeline carries on without
+    HAFAS coordinates.
     """
     payload = read_capped_json(
         path,
