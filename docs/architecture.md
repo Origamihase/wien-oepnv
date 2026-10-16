@@ -1194,7 +1194,9 @@ und die Baustellen-Daten der Stadt Wien.
 und Google Places zusammengeführt sind. Eine Station ohne offene Koordinate
 (seit Juli nur Guntramsdorf-Kaiserau, nur VOR) lässt das Item ohne
 Geodaten; es gibt keinen Rückfall. Das Verzeichnis dient nur dazu, den
-Namen aus dem Titel einer Station zuzuordnen.
+Namen aus dem Titel einer Station zuzuordnen. Die `<copyright>`-Zeile beider
+Feeds und die Feed-Tabelle in `NOTICE.md` nennen genau diese drei Quellen
+(seit 2026-10-16, nach #2025).
 
 Den Fernseher (EasySignage) prüft nach einer Änderung am Feed nur der
 Betreiber selbst.
