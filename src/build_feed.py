@@ -102,6 +102,8 @@ ATOM_NS = "http://www.w3.org/2005/Atom"
 ET.register_namespace("atom", ATOM_NS)
 ET.register_namespace("ext", "https://wien-oepnv.example/schema")
 ET.register_namespace("content", "http://purl.org/rss/1.0/modules/content/")
+GEORSS_NS = "http://www.georss.org/georss"
+ET.register_namespace("georss", GEORSS_NS)
 
 log = logging.getLogger("build_feed")
 
@@ -10704,6 +10706,120 @@ def _escape_description_markup(text: str) -> str:
     return text.translate(_DESCRIPTION_MARKUP_ESCAPES)
 
 
+# GeoRSS (operator decision 2026-10-16, "Eine präzise Variante würde das
+# Projekt aufwerten. Falsche Daten bringen uns hingegen nichts."): an item
+# carries a ``<georss:point>`` or ``<georss:line>`` only where its place is
+# certain, and most items carry none, by design.
+#
+# Measured over every notice title since 2026-07-01 (reports/
+# georss-einschaetzung-2026-10-16.md): taking every station a text names, in
+# text order, draws wrong shapes for Wiener Linien — 15 % of the names follow
+# "Richtung" (the line's terminus, not the place), 26 % of the lines zigzag
+# through detours and replacement lines, street names hit stops named after
+# them ("Simmeringer Hauptstraße" is the stop Hauptwerkstätte). So:
+#
+# * ÖBB: the title only. One station → point; exactly one "A ↔ B" → a line
+#   from A to B (a straight segment between the two stations, never a
+#   computed midpoint). A title with several sections ("A ↔ B / C ↔ D"), a
+#   chain of three or more, or any part that is not exactly a station name
+#   gets nothing.
+# * Stadt Wien Baustellen: the site's own coordinate from the city's data
+#   (the first point of its geometry), only inside Vienna.
+# * Wiener Linien: only a stop relocation or closure ("15A: Max-Mauermann-
+#   Gasse" with "Haltestellenverlegung …"), whose title names exactly one stop
+#   that the directory lists for one of the title's lines. Every other WL
+#   notice — the large majority — gets nothing.
+#
+# Coordinates come only from open datasets with known terms (ÖBB-Infrastruktur
+# GeoNetz, Wiener Linien OGD, Stadt Wien OGD; all CC BY 4.0), never from the
+# directory's merged OSM / HAFAS / Google Places values
+# (:func:`src.utils.stations.open_data_coordinate`). A station without an
+# open coordinate leaves the item without geo.
+
+_OEBB_TITLE_LINES_RE = re.compile(
+    r"^[A-Z]{1,4}\s?\d{1,3}[A-Z]?(?:\s*/\s*[A-Z]{1,4}\s?\d{1,3}[A-Z]?)*:\s+"
+)
+_WL_STOP_TITLE_RE = re.compile(r"^([A-Za-z0-9]+(?:/[A-Za-z0-9]+)*):\s*(\S.*)$")
+
+_Coord = tuple[float, float]
+
+
+def _oebb_title_geometry(title: str) -> tuple[_Coord, ...] | None:
+    from .utils.stations import open_data_coordinate, station_named_in_text
+
+    rest = _OEBB_TITLE_LINES_RE.sub("", title.strip(), count=1)
+    if not rest or "/" in rest or ":" in rest:
+        return None
+    parts = [part.strip() for part in rest.split("↔")]
+    if len(parts) > 2 or not all(parts):
+        return None
+    names: list[str] = []
+    for part in parts:
+        info = station_named_in_text(part)
+        if info is None:
+            return None
+        if info.name not in names:
+            names.append(info.name)
+    coords: list[_Coord] = []
+    for name in names:
+        hit = open_data_coordinate(name)
+        if hit is None:
+            return None
+        coords.append((hit.latitude, hit.longitude))
+    return tuple(coords)
+
+
+def _wl_stop_notice_geometry(item: FeedItem) -> tuple[_Coord, ...] | None:
+    from .utils.stations import open_data_coordinate, station_named_in_text, station_wl_lines
+
+    if not STOP_NOTICE_LEAD_RE.match(html_to_text(str(item.get("description") or ""))[:200]):
+        return None
+    match = _WL_STOP_TITLE_RE.match(str(item.get("title") or "").strip())
+    if match is None:
+        return None
+    info = station_named_in_text(match.group(2).strip())
+    if info is None:
+        return None
+    if not set(match.group(1).split("/")) & station_wl_lines(info.name):
+        return None
+    hit = open_data_coordinate(info.name, prefer="wl")
+    return ((hit.latitude, hit.longitude),) if hit else None
+
+
+def _baustelle_geometry(item: FeedItem) -> tuple[_Coord, ...] | None:
+    from .utils.stations import is_in_vienna
+
+    location = cast(dict[str, Any], item).get("location")
+    coordinates = location.get("coordinates") if isinstance(location, dict) else None
+    if not isinstance(coordinates, dict):
+        return None
+    lat, lon = coordinates.get("lat"), coordinates.get("lon")
+    if not isinstance(lat, int | float) or not isinstance(lon, int | float):
+        return None
+    if not is_in_vienna(lat, lon):
+        return None
+    return ((float(lat), float(lon)),)
+
+
+def _item_geometry(item: FeedItem) -> tuple[_Coord, ...] | None:
+    """The certain place of ``item`` as one point or a two-point line, or ``None``.
+
+    See the GeoRSS block comment above for the rules per source.
+    """
+    source = str(item.get("source") or "").strip()
+    if source == "ÖBB":
+        return _oebb_title_geometry(str(item.get("title") or ""))
+    if source == "Wiener Linien":
+        return _wl_stop_notice_geometry(item)
+    if _is_baustelle(item):
+        return _baustelle_geometry(item)
+    return None
+
+
+def _georss_coords(coords: tuple[_Coord, ...]) -> str:
+    return " ".join(f"{lat:.6f} {lon:.6f}" for lat, lon in coords)
+
+
 def _emit_item(
     it: FeedItem,
     now: datetime,
@@ -10809,6 +10925,13 @@ def _emit_item(
 
     if isinstance(ends_at, datetime):
         ET.SubElement(item, "{https://wien-oepnv.example/schema}ends_at").text = _fmt_rfc2822(ends_at)
+
+    # GeoRSS: one point or a line where the place is certain, else nothing
+    # (see :func:`_item_geometry`). Language-independent, so DE and EN agree.
+    geometry = _item_geometry(it)
+    if geometry:
+        tag = "point" if len(geometry) == 1 else "line"
+        ET.SubElement(item, f"{{{GEORSS_NS}}}{tag}").text = _georss_coords(geometry)
 
     # Description
     # Security (stored HTML/JS injection on the public feed — ``<description>``

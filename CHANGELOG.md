@@ -30,6 +30,28 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   der Webseite nutzt die GeoNetz-Koordinate des Hauptbahnhofs. Die
   Google-Stufe des Stationslaufs läuft nur für Stationen ohne Koordinate
   und trägt bei diesen 18 deshalb nichts wieder ein.
+* **Feed: GeoRSS, wo der Ort sicher ist (2026-10-16)**: Beide Feeds tragen
+  jetzt in einem Item höchstens ein `<georss:point>` oder eine
+  `<georss:line>` (Namespace `http://www.georss.org/georss`). ÖBB: aus dem
+  Titel, eine Station als Punkt, genau ein „A ↔ B“ als Linie aus zwei
+  Punkten; Titel mit mehreren Abschnitten, drei oder mehr Stationen oder
+  einem Teil, der kein genauer Stationsname ist, bekommen nichts.
+  Baustellen: die Koordinate der Stadt Wien. Wiener Linien: nur
+  Haltestellenverlegungen und -auflassungen, deren Titel genau eine
+  Haltestelle der genannten Linie nennt. Entscheidung von Michael vom
+  16.10.: „Eine präzise Variante würde das Projekt aufwerten. Falsche Daten
+  bringen uns hingegen nichts.“ Deshalb bleiben die meisten Items, vor
+  allem fast alle WL-Meldungen, absichtlich ohne Geodaten. Gemessen über
+  alle Titel seit 01.07.: ÖBB 79 Linien und 19 Punkte von 152, Baustellen
+  58 von 58, WL 87 von 3.151. Der ursprüngliche Vorschlag (alle Stationen
+  eines Textes in Textreihenfolge) hätte bei WL falsch gezeichnet: 15 %
+  der Namen stehen hinter „Richtung“, 26 % der Linien laufen im Zickzack.
+  Koordinaten kommen nur aus offenen Datensätzen (ÖBB-Infrastruktur
+  GeoNetz, Wiener Linien OGD, Stadt Wien; CC BY 4.0) über die neue
+  Funktion `open_data_coordinate`, nie aus den zusammengeführten
+  OSM-/HAFAS-/Google-Werten des Stationsverzeichnisses; ohne offene
+  Koordinate gibt es keine Geodaten. Titel und Beschreibung ändern sich
+  nicht. Replay alt gegen neu über die Feed-Stände seit 01.07.: folgt.
 * **Branch-Schutz für `main` (2026-10-16, nur Doku)**: Michael hat am
   16.10. das Ruleset „main schützen“ angelegt: aktiv auf dem
   Standard-Branch, Bypass-Liste leer, nur „Restrict deletions“ und „Block

@@ -1152,6 +1152,53 @@ Hinweis) und je Regel als GitHub-Issue, das sich selbst schließt (dafür
 Schwellen und Rückprüfung über 1 975 Feed-Stände:
 [`reference/feed_watch.md`](reference/feed_watch.md).
 
+### Geodaten im Feed: GeoRSS nur, wo der Ort sicher ist (seit 2026-10-16)
+
+Beide Feeds (`feed.xml`, `feed.en.xml`) tragen in einem Item höchstens ein
+`<georss:point>` oder eine `<georss:line>` (GeoRSS Simple, Namespace
+`http://www.georss.org/georss`, Koordinaten „Breite Länge“ mit sechs
+Nachkommastellen). Reader ohne GeoRSS übergehen die Elemente wie die seit
+Langem vorhandenen `ext:`-Felder; Titel und Beschreibung ändern sich nicht.
+Gebaut in `_item_geometry` (`src/build_feed.py`), aufgerufen von `_emit_item`.
+
+**Entscheidung des Betreibers (2026-10-16):** „Ich möchte das Projekt so gut
+wie möglich machen. Eine präzise Variante würde das Projekt aufwerten.
+Falsche Daten bringen uns hingegen nichts.“ Deshalb bekommt ein Item nur
+dann Geodaten, wenn sein Ort sicher feststeht; **die meisten Items, vor
+allem fast alle Meldungen der Wiener Linien, bleiben absichtlich ohne**.
+Das ist kein Fehler und keine Lücke.
+
+| Quelle | Regel | Abdeckung (Titel seit 01.07.2026) |
+| --- | --- | --- |
+| ÖBB | nur der Titel (Linienpräfix wie „R 95:“ weg): genau eine Station → Punkt; genau ein „A ↔ B“ → Linie aus zwei Punkten (dieselbe Station zweimal → Punkt); mehrere Abschnitte („A ↔ B / C ↔ D“), drei oder mehr Stationen, ein Doppelpunkt im Rest oder ein Teil, der nicht genau ein Stationsname ist → nichts | 79 Linien, 19 Punkte von 152 |
+| Stadt Wien Baustellen | die Koordinate der Stadt Wien aus `location.coordinates` (erster Punkt der Geometrie der Baustelle), nur innerhalb Wiens → Punkt | 58 von 58 |
+| Wiener Linien | nur eine Haltestellenverlegung oder -auflassung, deren Titel genau eine Haltestelle nennt („15A: Max-Mauermann-Gasse“), die das Verzeichnis für eine der Linien im Titel führt → Punkt; alles andere → nichts | 87 von 3.151 |
+
+Warum nicht alle Stationen eines Textes (Vorschlag vom 2026-10-16, gemessen
+über alle Meldungstexte seit 01.07., `reports/georss-einschaetzung-2026-10-16.md`
+im Projektordner): 15 % der in WL-Texten erkannten Namen stehen hinter
+„Richtung“ (die Endstation, nicht der Ort), 26 % der so gebildeten Linien
+laufen im Zickzack über Umleitungen und Ersatzlinien, Straßennamen treffen
+gleichnamige Haltestellen („Simmeringer Hauptstraße“ ist die Haltestelle
+Hauptwerkstätte am Ende der Straße). Eine ÖBB-Linie ist die Gerade zwischen
+den zwei Bahnhöfen, nie ein berechneter Mittelpunkt und nicht der
+Gleisverlauf.
+
+**Herkunft der Koordinaten:** nur offene Datensätze mit bekannten
+Bedingungen, alle CC BY 4.0: ÖBB-Infrastruktur GeoNetz
+(`data/oebb_geonetz_stops.json`, über EVA- oder IFOPT-Nummer), Wiener Linien
+OGD Haltestellen (`data/wienerlinien-ogd-haltestellen.csv`, über die DIVA)
+und die Baustellen-Daten der Stadt Wien.
+`src.utils.stations.open_data_coordinate` liest nie die `latitude`/
+`longitude` des Verzeichnisses, weil diese auch aus OpenStreetMap, ÖBB HAFAS
+und Google Places zusammengeführt sind. Eine Station ohne offene Koordinate
+(seit Juli nur Guntramsdorf-Kaiserau, nur VOR) lässt das Item ohne
+Geodaten; es gibt keinen Rückfall. Das Verzeichnis dient nur dazu, den
+Namen aus dem Titel einer Station zuzuordnen.
+
+Den Fernseher (EasySignage) prüft nach einer Änderung am Feed nur der
+Betreiber selbst.
+
 ## 2. Die `request_safe`-Security-State-Machine
 
 `request_safe` ist ein einzelner 75-Zeilen-Orchestrator, der 14
