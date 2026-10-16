@@ -2903,9 +2903,13 @@ def _station_entity_pattern() -> re.Pattern[str] | None:
         return None
 
     sorted_names = sorted(names, key=len, reverse=True)
+    # A hyphen in a name may carry a space on either side: WL writes the
+    # directory's "Burggasse-Stadthalle" as "Burggasse - Stadthalle" (U6
+    # tickers since July). Only "Burggasse" was protected, and the model made
+    # "Burggasse - City Hall" of the rest (16.10.2026).
     pattern = (
         r"(?<!\w)(?:"
-        + "|".join(re.escape(name) for name in sorted_names)
+        + "|".join(re.escape(name).replace(r"\-", r" ?- ?") for name in sorted_names)
         + r")(?!\w)"
     )
     return re.compile(pattern, re.IGNORECASE)
@@ -3392,6 +3396,17 @@ _STOP_NOT_SERVED_RULES: tuple[
         r"werden\1 nicht angefahren",
     ),
     (re.compile(r"\b(wird|werden)((?: [^.!?;]*?)?) nicht eingehalten\b"), r"\1\2 nicht angefahren"),
+    # The subject behind the verb ("Derzeit können die Züge der Linie U6 die
+    # Station Alser Straße in beiden Richtungen nicht einhalten", U2 and U6
+    # since July) is put in front of it, so verb and place stand side by side
+    # for the glossary ("die Züge der Linie U6 halten nicht in der Station …"
+    # -> "do not stop at"); the direction follows the station. Written as
+    # "halten die Züge der Linie U6 in beiden Richtungen nicht in der Station"
+    # the model got nothing glossed, and what it wrote changed with the
+    # placeholder nonce of the second pass ("stop towards Floridsdorf do not
+    # stop at the station", "stop in the direction of Floridsdorf not in the
+    # station", "are unable to meet the Stadlau station"; 16.10.2026). The
+    # same order as ``_join_glossed_verb`` gives a passive.
     (
         re.compile(
             r"\b(kann|können) (die Züge der Linie \S+|die Linie \S+) die Station"
@@ -3411,7 +3426,8 @@ _STOP_NOT_SERVED_RULES: tuple[
     # kann die Haltestelle Atzgersdorf, Kirchenplatz in Richtung Reumannplatz
     # nicht einhalten" became "Line 66A cannot follow the stop …" (13.10.2026,
     # still so with the real model on 15.10.), "… umgeleitet und können die
-    # Haltestellen Klinik Ottakring und Waidäckergasse nicht einhalten".
+    # Haltestellen Klinik Ottakring und Waidäckergasse nicht einhalten". A
+    # subject behind the verb goes in front of it, as above.
     (
         re.compile(
             r"\b(kann|können) ((?:die Züge der Linie|die Busse der Linie|die Linie) \S+ )?"
@@ -4412,6 +4428,28 @@ def _cause_due_to(english: str) -> str:
     )
 
 
+def _respace_glued_placeholders(translated: str, masked_text: str) -> str:
+    """A space between two placeholders the model glued that the source kept apart.
+
+    Under a random nonce the model sometimes drops the space between two
+    placeholders: "XENT…X1XXGLO…X0X" came back for "die Züge der Linie U6
+    hält nicht in der Station" and was published as "the trains of line
+    U6do not stop at", "line 13Adoes not stop atNeubaugasse" (EN probe,
+    16.10.2026). A pair that stands together in the source too ("47–51" is
+    three placeholders in a row) stays as it is.
+    """
+    matches = list(_UNMASK_PLACEHOLDER_RE.finditer(translated))
+    cuts = [
+        second.start()
+        for first, second in zip(matches, matches[1:])
+        if first.end() == second.start()
+        and first.group(0) + second.group(0) not in masked_text
+    ]
+    for cut in reversed(cuts):
+        translated = translated[:cut] + " " + translated[cut:]
+    return translated
+
+
 def _model_pass(
     pipe: Any,
     masked_text: str,
@@ -4454,10 +4492,13 @@ def _model_pass(
     translated = _translation_text(result, ident)
     if translated is None:
         return None, False
-    translated = _normalise_placeholder_debris(
-        _from_short_placeholders(translated)
-        if nonce is None
-        else _with_nonce(translated, nonce, _PLACEHOLDER_NONCE)
+    translated = _respace_glued_placeholders(
+        _normalise_placeholder_debris(
+            _from_short_placeholders(translated)
+            if nonce is None
+            else _with_nonce(translated, nonce, _PLACEHOLDER_NONCE)
+        ),
+        masked_text,
     )
     invented = sorted(
         {m.group(0) for m in _UNMASK_PLACEHOLDER_RE.finditer(translated)} - mapping.keys()
