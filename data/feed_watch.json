@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-16T14:31:07.535197+00:00",
- "built": "2026-10-16T16:30:52+02:00",
+ "updated": "2026-10-16T15:00:47.298169+00:00",
+ "built": "2026-10-16T17:00:39+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-16T16:30:52+02:00",
+  "built": "2026-10-16T17:00:39+02:00",
   "items": [
    {
     "title": "U3: Verspätungen",
@@ -19,14 +19,6 @@
    {
     "title": "O: Falschparker",
     "time_line": "Seit 15:26"
-   },
-   {
-    "title": "60: Verkehrsunfall",
-    "time_line": "Seit 14:56"
-   },
-   {
-    "title": "U6: Betriebsstörung",
-    "time_line": "Seit 14:29"
    },
    {
     "title": "U1: Weichenstörung",
@@ -46,6 +38,14 @@
    },
    {
     "title": "1/2/5/5A/5B/71/74A/80A/D/O: Demonstration",
+    "time_line": "Heute"
+   },
+   {
+    "title": "64A: Seybelgasse",
+    "time_line": "Heute"
+   },
+   {
+    "title": "12A/14A/59A: Bezirksamt Margareten",
     "time_line": "Heute"
    }
   ]
@@ -5470,6 +5470,26 @@
     "baustellen": 3,
     "oebb": 10,
     "wl": 111
+   }
+  },
+  {
+   "t": "2026-10-16T15:00:47.298169+00:00",
+   "raw": {
+    "wl-stoerungen": 142,
+    "wl-hinweise": 85,
+    "oebb": 162,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 25
+   },
+   "discarded": {
+    "wl": 15,
+    "oebb": 138,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 10,
+    "wl": 109
    }
   }
  ]

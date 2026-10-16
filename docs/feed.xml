@@ -7,7 +7,7 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 16 Oct 2026 16:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 17:00:39 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U3: Verspätungen]]></title>
@@ -43,28 +43,6 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 15:26]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[60: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f1fe5d52a5a574694cd18960683874af6f978ac62924632bfae77052d94b803d</guid>
-      <pubDate>Fri, 16 Oct 2026 14:56:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 14:56:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 14:56:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 16:35:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 14:56]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 14:56]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22</guid>
-      <pubDate>Fri, 16 Oct 2026 14:29:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 14:29:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 14:29:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 14:29]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 14:29]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[U1: Weichenstörung]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">e938b804c9027f350eb7c9b5ec95f3fa4f3f1c5011ac2ba48fcf6c6fcde70d0c</guid>
@@ -72,8 +50,8 @@
       <ext:first_seen>Fri, 16 Oct 2026 13:30:46 +0200</ext:first_seen>
       <ext:starts_at>Fri, 16 Oct 2026 13:16:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Die Linie U1 fährt derzeit zwischen den Stationen Alaudagasse und Troststraße in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: Nicht absehbar. [Seit 13:16]</description>
-      <content:encoded><![CDATA[Die Linie U1 fährt derzeit zwischen den Stationen Alaudagasse und Troststraße in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: Nicht absehbar.<br/>[Seit 13:16]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 13:16]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 13:16]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U2: Weichenstörung]]></title>
@@ -118,6 +96,28 @@
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Wegen einer Demonstration kommt es zu Einschränkungen im öffentlichen Verkehr. Linie D: Kurzführung der Züge zwischen Absberggasse und Börse am Schwarzenbergplatz. [Heute]</description>
       <content:encoded><![CDATA[Wegen einer Demonstration kommt es zu Einschränkungen im öffentlichen Verkehr. Linie D: Kurzführung der Züge zwischen Absberggasse und Börse am Schwarzenbergplatz.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[64A: Seybelgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">68609c1ab7a3cbeddad7e3ea90732b10dfe089ab97a782743d62a48542be7f20</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:59:00 +0200</ext:ends_at>
+      <description>An den Steinfeldern 3, vor Seybelgasse → Seybelgasse gegenüber 20. Haltestellenverlegung der Linie 64A in Richtung Liesing. Grund: Straßenbauarbeiten. [Heute]</description>
+      <content:encoded><![CDATA[An den Steinfeldern 3, vor Seybelgasse → Seybelgasse gegenüber 20. Haltestellenverlegung der Linie 64A in Richtung Liesing. Grund: Straßenbauarbeiten.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A/14A/59A: Bezirksamt Margareten]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">f3a42dafa639d8c2023e9c1eab41a9d1526cfb261e87036429e751a8a54f5e4c</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:59:00 +0200</ext:ends_at>
+      <description>ASchönbrunner Straße 69 → Rampersdorffergasse. Haltestellenverlegung der Linien 12A, 14A und 59A in Richtung Schmelz, Gablenzgasse, Neubaugasse bzw. Oper, Karlsplatz. … [Heute]</description>
+      <content:encoded><![CDATA[ASchönbrunner Straße 69 → Rampersdorffergasse. Haltestellenverlegung der Linien 12A, 14A und 59A in Richtung Schmelz, Gablenzgasse, Neubaugasse bzw. Oper, Karlsplatz. …<br/>[Heute]]]></content:encoded>
     </item>
   </channel>
 </rss>
