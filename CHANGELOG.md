@@ -5,13 +5,32 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **EN: „die Station … nicht einhalten“ auch in der Einzahl (2026-10-16)**:
+  Die Prüfung von #2018 bis #2020 fand eine Lücke in der Regel für „kann/
+  können … die Haltestelle(n)/Station(en) … nicht einhalten“: Das Muster
+  `Stationen?` traf nur „Statione(n)“, nicht „Station“. „Die Linie U6 kann
+  die Station Alser Straße nicht einhalten“ (Subjekt vor dem Verb) und
+  „Derzeit können die Züge der Linie U6 die Station … in Richtung
+  Siebenhirten ab ca. 22.30 Uhr nicht einhalten“ (Uhrzeit hinter der
+  Station) blieben ungeglost, wie die Haltestelle vor #2018 („cannot
+  follow the stop“). Ein Subjekt mit „Linien“ hinter dem Verb („die Züge
+  der Linien U2 und U3“, „die Busse der Linien 54A und 54B“, so in
+  WL-Texten) erkannte keine der beiden Regeln. Jetzt sieht das Modell in
+  allen diesen Formen „does not stop at“ / „do not stop at“ vor dem
+  Stationsnamen, wie bei der Haltestelle.
+  Replay über 9.965 verschiedene echte Texte seit 01.07. (Feed und Caches
+  von WL, ÖBB, Baustellen): keine Modell-Eingabe ändert sich, die Lücke war
+  latent. Kein betroffener Text liegt im Übersetzungs-Cache, die Epoche
+  bleibt 25. Der deutsche Feed ändert sich nicht. Dazu richtiggestellt: Die
+  U-Bahn-Sätze mit dem Subjekt hinter dem Verb gab es seit Juli auch bei
+  der U1 (Alaudagasse), nicht nur bei U2 und U6.
 * **EN: U-Bahn-Station „nicht einhalten“ bei jedem Durchlauf gleich
   (2026-10-16)**: „Derzeit können die Züge der Linie U6 die Station
   Burggasse - Stadthalle in Richtung Floridsdorf nicht einhalten“ kam im
   EN-Feed je nach Durchlauf anders heraus, mal „do not stop at Burggasse -
   Stadthalle station“, mal „stop in the direction of Floridsdorf not in the
-  station …“ oder „are unable to meet the Stadlau station“ (U2 und U6 seit
-  Juli). Das Subjekt stand zwischen Verb und Ort, das Glossar griff nicht,
+  station …“ oder „are unable to meet the Stadlau station“ (U1, U2 und U6
+  seit Juli). Das Subjekt stand zwischen Verb und Ort, das Glossar griff nicht,
   der erste Modell-Durchlauf verlor die Richtung, und der zweite hing von
   der Zufalls-Nonce ab. Jetzt kommt das Subjekt vor das Verb und die
   Richtung hinter die Station: „Currently the trains of line U6 do not stop
