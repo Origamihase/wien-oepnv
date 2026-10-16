@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261016-0006, I20260925-0011, I20260909-0007, I20261016-0008, I20261016-0009-F01, I20261016-0009, I20261016-0010"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261016-0012, I20260925-0011, I20260909-0007, I20261016-0011, I20261016-0008, I20261016-0010, I20261016-0009-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R19-136, R1177-0, R130-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R2025-671, R36-152, R45-136, R318-437, R1473-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R1974-466, R500-101, R720-407, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R116-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R2025-671, R318-437, R293-474, R1177-0, R100-136, R101-136, R102-136, R103-136, R115-136, R1472-149, R1474-149, R1475-149, R1476-149, R5815-671, R1473-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R2558-125, R2372-627, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R1974-466, R500-101, R17-136, R15-136, R14-136, R13-136, R81-136, R18-136, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,40 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "17A": "ptBusCity"
-     }
-    },
-    "description": "Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "Linie 17A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
-    "name": "I20261016-0006",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "17A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "417",
-       "lineName": "17A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-16T07:29:00.000+0200",
-     "end": "2026-10-16T08:39:00.000+0200",
-     "lastUpdate": "2026-10-16T08:39:00.000+0200",
-     "resume": "2026-10-16T08:39:00.000+0200",
-     "start": "2026-10-16T07:29:00.000+0200"
-    },
-    "title": "17A: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "2A": "ptBusCity"
      }
     },
@@ -274,41 +240,6 @@
       "14A": "ptBusCity"
      }
     },
-    "description": "Linie 14A: Betrieb nur zwischen Neubaugasse U und Laxenburger Straße, Gudrunstraße. Weichen Sie ersatzweise auf die Linien U1, O, 6 und 11 aus. Voraussichtliche Dauer: 08:40 Uhr. Grund: Feuerwehreinsatz im Bereich Gudrunstraße 112.",
-    "descriptionHTML": "Linie 14A:<br>Betrieb nur zwischen Neubaugasse U und Laxenburger Straße, Gudrunstraße.<br> <br>Weichen Sie ersatzweise auf die Linien U1, O, 6 und 11 aus.<br><br>Voraussichtliche Dauer: 08:40 Uhr.<br><br>Grund: Feuerwehreinsatz im Bereich Gudrunstraße 112.",
-    "location": "Gudrunstraße 112",
-    "name": "I20261016-0009",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "414",
-       "lineName": "14A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-16T08:09:00.000+0200",
-     "end": "2026-10-16T08:37:00.000+0200",
-     "lastUpdate": "2026-10-16T08:37:00.000+0200",
-     "resume": "2026-10-16T08:37:00.000+0200",
-     "start": "2026-10-16T08:08:00.000+0200"
-    },
-    "title": "14A: Feuerwehreinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "14A": "ptBusCity"
-     }
-    },
     "description": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "location": "Gudrunstraße 112",
@@ -328,12 +259,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T08:37:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T08:37:00.000+0200",
-     "resume": "2026-10-16T08:37:00.000+0200",
+     "end": "2026-10-16T09:54:00.000+0200",
+     "lastUpdate": "2026-10-16T09:54:00.000+0200",
+     "resume": "2026-10-16T09:54:00.000+0200",
      "start": "2026-10-16T08:08:00.000+0200"
     },
     "title": "14A: Feuerwehreinsatz"
@@ -371,6 +302,76 @@
      "start": "2026-10-16T09:16:00.000+0200"
     },
     "title": "10A: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Die Linie U2 fährt derzeit zwischen den Stationen Donaumarina und Stadlau in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: Nicht absehbar. Grund: Schaden an der Stromschiene im Bereich Donaustadtbrücke.",
+    "descriptionHTML": "<p>Die Linie U2 fährt derzeit zwischen den Stationen Donaumarina und Stadlau in beiden Richtungen über Gleis 1.</p><p><br></p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p><br></p><p>Grund: Schaden an der Stromschiene im Bereich Donaustadtbrücke.</p>",
+    "location": " Donaustadtbrücke",
+    "name": "I20261016-0011",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "302",
+       "lineName": "U2",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T09:47:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T09:49:00.000+0200",
+     "start": "2026-10-16T09:39:00.000+0200"
+    },
+    "title": "U2: Stromschiene"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "D": "ptTram"
+     }
+    },
+    "description": "Linie D: Fahrtbehinderung in Richtung Börse. Voraussichtliche Dauer: 10:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Schloss Belvedere.",
+    "descriptionHTML": "Linie D:<br>Fahrtbehinderung in Richtung Börse.<br> <br>Voraussichtliche Dauer: 10:30 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Schloss Belvedere.",
+    "name": "I20261016-0012",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "136",
+       "lineName": "D",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     112
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T09:52:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T09:57:00.000+0200",
+     "start": "2026-10-16T09:51:00.000+0200"
+    },
+    "title": "D: Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -550,6 +551,24 @@
     "title": "Züge halten in\nSchleife"
    },
    {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R13-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     13
+    ],
+    "time": {
+     "end": "2026-10-16T10:58:00.000+0200",
+     "start": "2026-10-16T09:54:40.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R130-136",
     "owner": "WL",
@@ -566,6 +585,24 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R14-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-16T10:58:00.000+0200",
+     "start": "2026-10-16T09:54:40.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -782,6 +819,60 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R15-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-16T10:58:00.000+0200",
+     "start": "2026-10-16T09:54:40.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R17-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-10-16T10:58:00.000+0200",
+     "start": "2026-10-16T09:54:40.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R18-136",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     18
+    ],
+    "time": {
+     "end": "2026-10-16T10:58:00.000+0200",
+     "start": "2026-10-16T09:59:10.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
@@ -1210,22 +1301,22 @@
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R720-407",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R81-136",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "7A"
+     "D"
     ],
     "relatedStops": [
-     720
+     81
     ],
     "time": {
-     "end": "2026-10-16T09:56:00.000+0200",
-     "start": "2026-10-16T08:57:34.000+0200"
+     "end": "2026-10-16T10:58:00.000+0200",
+     "start": "2026-10-16T09:54:40.000+0200"
     },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",

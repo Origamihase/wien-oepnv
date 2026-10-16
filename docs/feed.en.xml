@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 16 Oct 2026 09:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 10:01:05 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U2: Current rail]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4460db7100edd882f0850654a58cc4dacef4a8d1b3718df2d37d810e6bc3c23b</guid>
+      <pubDate>Fri, 16 Oct 2026 09:39:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 10:01:05 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 09:39:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>The U2 line currently runs between the stations Donaumarina and Stadlau in both directions on track 1. Expected duration: Not foreseeable. [Since 09:39]</description>
+      <content:encoded><![CDATA[The U2 line currently runs between the stations Donaumarina and Stadlau in both directions on track 1. Expected duration: Not foreseeable.<br/>[Since 09:39]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[10A: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,26 +32,15 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 09:16]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[7A: Police operation]]></title>
+      <title><![CDATA[D: Rescue operation, track construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">64c168750858c631c7a91ad91fc35cce1827e9d8a3c84eff3d5bc5adb3221722</guid>
-      <pubDate>Fri, 16 Oct 2026 08:57:34 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 08:57:34 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 08:57:34 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 09:56:00 +0200</ext:ends_at>
-      <description>Service obstruction. [Since 08:57]</description>
-      <content:encoded><![CDATA[Service obstruction.<br/>[Since 08:57]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[14A: Fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b7bd3cd4f54766cc3b141ab99ee8ccce4cba3f788ba6ba3b2b9828f85bf7be2a</guid>
-      <pubDate>Fri, 16 Oct 2026 08:08:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 08:08:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 08:08:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 08:08]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 08:08]]]></content:encoded>
+      <guid isPermaLink="false">503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106</guid>
+      <pubDate>Fri, 16 Oct 2026 09:51:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 09:51:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 09:59:10 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Rescue operation: service obstruction towards Börse. Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse. [Today]</description>
+      <content:encoded><![CDATA[Rescue operation: service obstruction towards Börse. Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Meidling ↔ Wien Liesing]]></title>

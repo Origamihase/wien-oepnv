@@ -7,8 +7,19 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 16 Oct 2026 09:30:50 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 10:01:05 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U2: Stromschiene]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4460db7100edd882f0850654a58cc4dacef4a8d1b3718df2d37d810e6bc3c23b</guid>
+      <pubDate>Fri, 16 Oct 2026 09:39:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 10:01:05 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 09:39:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Die Linie U2 fährt derzeit zwischen den Stationen Donaumarina und Stadlau in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: Nicht absehbar. [Seit 09:39]</description>
+      <content:encoded><![CDATA[Die Linie U2 fährt derzeit zwischen den Stationen Donaumarina und Stadlau in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: Nicht absehbar.<br/>[Seit 09:39]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[10A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -21,26 +32,15 @@
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 09:16]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[7A: Polizeieinsatz]]></title>
+      <title><![CDATA[D: Rettungseinsatz, Gleisbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">64c168750858c631c7a91ad91fc35cce1827e9d8a3c84eff3d5bc5adb3221722</guid>
-      <pubDate>Fri, 16 Oct 2026 08:57:34 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 08:57:34 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 08:57:34 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 09:56:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung. [Seit 08:57]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 08:57]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[14A: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">b7bd3cd4f54766cc3b141ab99ee8ccce4cba3f788ba6ba3b2b9828f85bf7be2a</guid>
-      <pubDate>Fri, 16 Oct 2026 08:08:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 08:08:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 08:08:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 08:08]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 08:08]]]></content:encoded>
+      <guid isPermaLink="false">503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106</guid>
+      <pubDate>Fri, 16 Oct 2026 09:51:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 09:51:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 09:59:10 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Rettungseinsatz: Fahrtbehinderung in Richtung Börse. Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse. [Heute]</description>
+      <content:encoded><![CDATA[Rettungseinsatz: Fahrtbehinderung in Richtung Börse. Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Meidling ↔ Wien Liesing]]></title>
