@@ -7,29 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 16 Oct 2026 01:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 02:00:47 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[N62/N66: Illegally parked vehicle]]></title>
+      <title><![CDATA[N62: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">99b9e73876934089890aeb4f71b063ac748290c5e82c27729c17689df900a5bf</guid>
       <pubDate>Fri, 16 Oct 2026 01:08:00 +0200</pubDate>
       <ext:first_seen>Fri, 16 Oct 2026 01:30:48 +0200</ext:first_seen>
       <ext:starts_at>Fri, 16 Oct 2026 01:08:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>The N62 line is currently prevented from continuing in the direction of Lainzer Tor. The N66 line is currently blocked in the direction of Liesing S. [Since 01:08]</description>
-      <content:encoded><![CDATA[The N62 line is currently prevented from continuing in the direction of Lainzer Tor. The N66 line is currently blocked in the direction of Liesing S.<br/>[Since 01:08]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[69A: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">0e7a79c133508f7f3290d629b2969029f7ba3a0b9defcd40f14000ca953a829f</guid>
-      <pubDate>Fri, 16 Oct 2026 00:40:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 00:40:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 00:40:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 00:40]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 00:40]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 01:08]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 01:08]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N71: Track construction works, replacement service]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling … [Until 25.12.]</description>
       <content:encoded><![CDATA[Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling …<br/>[Until 25.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N8: Track construction works]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">10b9a6d53b42f1dead1c688ecfaaf4e6a3c8058ce9e29c10c1d6b71e47353c17</guid>
+      <pubDate>Fri, 16 Oct 2026 00:45:15 +0200</pubDate>
+      <ext:first_seen>Sat, 10 Oct 2026 01:00:50 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 00:45:15 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 05:15:00 +0200</ext:ends_at>
+      <description>Buses stop at Aßmayergasse just after Flurschützstraße for line 59A, Aßmayergasse 48 for line 59A. [Today]</description>
+      <content:encoded><![CDATA[Buses stop at Aßmayergasse just after Flurschützstraße for line 59A, Aßmayergasse 48 for line 59A.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>

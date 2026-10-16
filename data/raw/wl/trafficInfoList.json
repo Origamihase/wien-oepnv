@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261015-0042-F01, I20261015-0042, I20260925-0011, I20260909-0007, I20261015-0043"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261015-0043-F01, I20260925-0011, I20261015-0043-F02, I20261015-0043, I20260909-0007, I20261015-0042-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2025-671, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1177-0, R293-474, R318-437, R1475-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R5815-671, R1474-149, R1476-149, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1150-0, R2034-571, R500-101, R2145-469, R739-469, R418-469, R3369-469, R3370-469, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R1448-549, R1474-549, R814-562, R780-562, R1616-562, R1776-562, R1711-562, R1712-562, R1713-562, R1728-562, R2371-520, R2372-520, R1927-566, R1907-566, R1963-566, R1941-566, R1940-566, R2305-566, R676-566, R717-566, R1893-566, R1819-566, R2005-566, R2379-520, R2378-520, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R1177-0, R101-136, R100-136, R293-474, R2025-671, R102-136, R103-136, R115-136, R1473-149, R1474-149, R1475-149, R1476-149, R1472-149, R5815-671, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R2558-125, R2345-127, R2372-627, R2373-126, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2373-125, R2379-627, R2380-627, R2373-127, R2372-125, R1150-0, R2034-571, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R1448-549, R1474-549, R814-562, R1616-562, R780-562, R1728-562, R1776-562, R1711-562, R1712-562, R1713-562, R2371-520, R2372-520, R2005-566, R2379-520, R2378-520, R3853-562, R2607-562, R5596-562, R1782-562, R5688-562, R5618-562, R5616-562, R5615-562, R5612-562, R1634-562, R807-562, R790-562, R782-562, R781-562, R1739-562, R1740-562, R1741-562, R1753-562, R1754-562, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -206,41 +206,6 @@
       "69A": "ptBusCity"
      }
     },
-    "description": "Linie 69A: Fahrtbehinderung in Richtung Hauptbahnhof S U. Voraussichtliche Dauer: 01:00 Uhr. Grund: Falschparker im Bereich Lindenbauergasse.",
-    "descriptionHTML": "Linie 69A:<br>Fahrtbehinderung in Richtung Hauptbahnhof S U.<br> <br>Voraussichtliche Dauer: 01:00 Uhr.<br><br>Grund: Falschparker im Bereich Lindenbauergasse.",
-    "location": "Lindenbauergasse",
-    "name": "I20261015-0042",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "69A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "469",
-       "lineName": "69A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-16T00:41:00.000+0200",
-     "end": "2026-10-16T00:46:00.000+0200",
-     "lastUpdate": "2026-10-16T00:46:00.000+0200",
-     "resume": "2026-10-16T00:46:00.000+0200",
-     "start": "2026-10-16T00:40:00.000+0200"
-    },
-    "title": "69A: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "69A": "ptBusCity"
-     }
-    },
     "description": "Linie 69A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 69A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "location": "Lindenbauergasse",
@@ -260,12 +225,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T00:46:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T00:46:00.000+0200",
-     "resume": "2026-10-16T00:46:00.000+0200",
+     "end": "2026-10-16T01:39:00.000+0200",
+     "lastUpdate": "2026-10-16T01:39:00.000+0200",
+     "resume": "2026-10-16T01:39:00.000+0200",
      "start": "2026-10-16T00:40:00.000+0200"
     },
     "title": "69A: Falschparker"
@@ -277,8 +242,8 @@
       "N66": "ptBusNight"
      }
     },
-    "description": "Die Linie N62 ist derzeit in Richtung Lainzer Tor an der Weiterfahrt gehindert. Die Linie N66 ist derzeit in Richtung Liesing S an der Weiterfahrt gehindert. Voraussichtliche Dauer: 01:30 Uhr. Grund: Falschparker im Bereich Paulanergasse.",
-    "descriptionHTML": "Die Linie N62 ist derzeit in Richtung Lainzer Tor an der Weiterfahrt gehindert.<br>Die Linie N66 ist derzeit in Richtung Liesing S an der Weiterfahrt gehindert.<br> <br>Voraussichtliche Dauer: 01:30 Uhr.<br><br>Grund: Falschparker im Bereich Paulanergasse.",
+    "description": "Die Linie N62 ist derzeit in Richtung Lainzer Tor an der Weiterfahrt gehindert. Die Linie N66 ist derzeit in Richtung Liesing S an der Weiterfahrt gehindert. Voraussichtliche Dauer: 01:40 Uhr. Grund: Falschparker im Bereich Paulanergasse.",
+    "descriptionHTML": "Die Linie N62 ist derzeit in Richtung Lainzer Tor an der Weiterfahrt gehindert.<br>Die Linie N66 ist derzeit in Richtung Liesing S an der Weiterfahrt gehindert.<br> <br>Voraussichtliche Dauer: 01:40 Uhr.<br><br>Grund: Falschparker im Bereich Paulanergasse.",
     "location": "Paulanergasse",
     "name": "I20261015-0043",
     "owner": "WL",
@@ -302,14 +267,85 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-16T01:08:00.000+0200",
-     "end": "2026-10-16T23:55:00.000+0200",
-     "lastUpdate": "2026-10-16T01:22:00.000+0200",
+     "end": "2026-10-16T01:32:00.000+0200",
+     "lastUpdate": "2026-10-16T01:32:00.000+0200",
+     "resume": "2026-10-16T01:32:00.000+0200",
      "start": "2026-10-16T01:08:00.000+0200"
     },
     "title": "N62, N66: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "N62": "ptBusNight"
+     }
+    },
+    "description": "Linie N62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie N62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Paulanergasse",
+    "name": "I20261015-0043-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "562",
+       "lineName": "N62",
+       "vehicleType": "ptBusNight"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T01:32:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T01:32:00.000+0200",
+     "resume": "2026-10-16T01:32:00.000+0200",
+     "start": "2026-10-16T01:08:00.000+0200"
+    },
+    "title": "N62: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "N66": "ptBusNight"
+     }
+    },
+    "description": "Linie N66: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie N66: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Paulanergasse",
+    "name": "I20261015-0043-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "N66"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "566",
+       "lineName": "N66",
+       "vehicleType": "ptBusNight"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-16T01:32:00.000+0200",
+     "end": "2026-10-16T23:55:00.000+0200",
+     "lastUpdate": "2026-10-16T01:32:00.000+0200",
+     "resume": "2026-10-16T01:32:00.000+0200",
+     "start": "2026-10-16T01:08:00.000+0200"
+    },
+    "title": "N66: Falschparker"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -793,6 +829,24 @@
    },
    {
     "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1634-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     1634
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:48.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
     "name": "R1711-562",
     "owner": "WL",
     "priority": "1",
@@ -882,6 +936,60 @@
     "title": "Fahrtbehinderung\nFalschparker"
    },
    {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1739-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     1739
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:49.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1740-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     1740
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:49.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1741-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     1741
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:49.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
     "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
     "name": "R1749-508",
     "owner": "WL",
@@ -898,6 +1006,42 @@
      "start": "2026-10-16T00:45:15.000+0200"
     },
     "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1753-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     1753
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:49.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1754-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     1754
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:49.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Fahrtbehinderung\nFalschparker",
@@ -919,37 +1063,19 @@
    },
    {
     "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1819-566",
+    "name": "R1782-562",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "N66"
+     "N62"
     ],
     "relatedStops": [
-     1819
+     1782
     ],
     "time": {
-     "end": "2026-10-16T02:23:00.000+0200",
-     "start": "2026-10-16T01:24:18.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1893-566",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     1893
-    ],
-    "time": {
-     "end": "2026-10-16T02:23:00.000+0200",
-     "start": "2026-10-16T01:24:18.000+0200"
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:48.000+0200"
     },
     "title": "Fahrtbehinderung\nFalschparker"
    },
@@ -972,97 +1098,7 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
    },
    {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1907-566",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     1907
-    ],
-    "time": {
-     "end": "2026-10-16T02:23:00.000+0200",
-     "start": "2026-10-16T01:23:48.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1927-566",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     1927
-    ],
-    "time": {
-     "end": "2026-10-16T02:23:00.000+0200",
-     "start": "2026-10-16T01:23:48.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1940-566",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     1940
-    ],
-    "time": {
-     "end": "2026-10-16T02:23:00.000+0200",
-     "start": "2026-10-16T01:23:48.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1941-566",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     1941
-    ],
-    "time": {
-     "end": "2026-10-16T02:23:00.000+0200",
-     "start": "2026-10-16T01:23:48.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1963-566",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     1963
-    ],
-    "time": {
-     "end": "2026-10-16T02:23:00.000+0200",
-     "start": "2026-10-16T01:23:48.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
+    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-566",
     "owner": "WL",
     "priority": "1",
@@ -1074,10 +1110,10 @@
      1974
     ],
     "time": {
-     "end": "2026-10-16T02:28:00.000+0200",
+     "end": "2026-10-16T04:20:00.000+0200",
      "start": "2026-10-16T01:00:16.000+0200"
     },
-    "title": "Fahrtbehinderung\nFalschparker"
+    "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
    {
     "description": "Fahrtbehinderung\nFalschparker",
@@ -1129,42 +1165,6 @@
      "start": "2026-10-16T00:25:11.000+0200"
     },
     "title": "Gleisbauarbeiten\nBusse halten Simmeringer Hauptstr. 157"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R2145-469",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "69A"
-    ],
-    "relatedStops": [
-     2145
-    ],
-    "time": {
-     "end": "2026-10-16T01:40:00.000+0200",
-     "start": "2026-10-16T00:40:43.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R2305-566",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     2305
-    ],
-    "time": {
-     "end": "2026-10-16T02:23:00.000+0200",
-     "start": "2026-10-16T01:23:50.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
@@ -1509,6 +1509,24 @@
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
    },
    {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2607-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     2607
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:22.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1545,42 +1563,6 @@
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
    },
    {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R3369-469",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "69A"
-    ],
-    "relatedStops": [
-     3369
-    ],
-    "time": {
-     "end": "2026-10-16T01:40:00.000+0200",
-     "start": "2026-10-16T00:40:48.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R3370-469",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "69A"
-    ],
-    "relatedStops": [
-     3370
-    ],
-    "time": {
-     "end": "2026-10-16T01:40:00.000+0200",
-     "start": "2026-10-16T00:40:48.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
     "description": "Züge halten\nbei Linien 6 und 18",
     "name": "R36-152",
     "owner": "WL",
@@ -1597,6 +1579,24 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Züge halten\nbei Linien 6 und 18"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R3853-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     3853
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:21.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
@@ -1635,24 +1635,6 @@
     "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
    },
    {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R418-469",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "69A"
-    ],
-    "relatedStops": [
-     418
-    ],
-    "time": {
-     "end": "2026-10-16T01:40:00.000+0200",
-     "start": "2026-10-16T00:40:46.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
     "description": "Züge halten\nWipplingerstr 39",
     "name": "R45-136",
     "owner": "WL",
@@ -1689,6 +1671,114 @@
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R5596-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     5596
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:26.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R5612-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     5612
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:48.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R5615-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     5615
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:48.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R5616-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     5616
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:48.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R5618-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     5618
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:48.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R5688-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     5688
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:48.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "name": "R5815-671",
     "owner": "WL",
@@ -1705,60 +1795,6 @@
    },
    {
     "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R676-566",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     676
-    ],
-    "time": {
-     "end": "2026-10-16T02:23:00.000+0200",
-     "start": "2026-10-16T01:23:51.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R717-566",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     717
-    ],
-    "time": {
-     "end": "2026-10-16T02:23:00.000+0200",
-     "start": "2026-10-16T01:23:51.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R739-469",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "69A"
-    ],
-    "relatedStops": [
-     739
-    ],
-    "time": {
-     "end": "2026-10-16T01:40:00.000+0200",
-     "start": "2026-10-16T00:40:45.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
     "name": "R780-562",
     "owner": "WL",
     "priority": "1",
@@ -1772,6 +1808,78 @@
     "time": {
      "end": "2026-10-16T02:07:00.000+0200",
      "start": "2026-10-16T01:08:16.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R781-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     781
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:49.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R782-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     782
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:49.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R790-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     790
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:49.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R807-562",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedStops": [
+     807
+    ],
+    "time": {
+     "end": "2026-10-16T02:31:00.000+0200",
+     "start": "2026-10-16T01:31:49.000+0200"
     },
     "title": "Fahrtbehinderung\nFalschparker"
    },
