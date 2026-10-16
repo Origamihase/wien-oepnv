@@ -8,29 +8,18 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: ÖBB-Infrastruktur AG (GeoNetz), Wiener Linien (OGD-Haltestellen), Stadt Wien – data.wien.gv.at (CC BY 4.0). Details: NOTICE.md im Repository.</copyright>
-    <lastBuildDate>Fri, 16 Oct 2026 22:13:19 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 22:31:25 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[64A: Rettungseinsatz]]></title>
+      <title><![CDATA[12/5: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">49eb2c1bd433616d13cea08a9a3a32b0222f9729f31aaece42aac218211be2da</guid>
-      <pubDate>Fri, 16 Oct 2026 21:36:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 21:36:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 21:36:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">ecb43b7286fcaae6b1cc5f9a87ce1ce8b4e61a8b15f64825ec5895c9be2ee5c4</guid>
+      <pubDate>Fri, 16 Oct 2026 22:25:59 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 22:25:59 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 22:26:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit 21:36]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 21:36]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5/6: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3e79d6c90567f1c1a1a76d116fa315fb54794f1c95ef005e954a2d040b8edd24</guid>
-      <pubDate>Fri, 16 Oct 2026 21:25:54 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 21:30:55 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 21:25:54 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 22:26:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung. [Seit 21:25]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 21:25]]]></content:encoded>
+      <description>Fahrtbehinderung: 5, 12. Voraussichtlich bis 22:50 Uhr. [Seit 22:25]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung: 5, 12. Voraussichtlich bis 22:50 Uhr.<br/>[Seit 22:25]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[18: Betriebsstörung]]></title>
@@ -123,6 +112,18 @@
       <georss:point>48.210606 16.344038</georss:point>
       <description>Albertgasse 27 → Albertgasse 33 - 35. Haltestellenverlegung der Linien 5 und 12 in Richtung Westbahnhof U bzw. Josefstädter Straße U. Grund: Bauarbeiten. [Bis 03.11.]</description>
       <content:encoded><![CDATA[Albertgasse 27 → Albertgasse 33 - 35. Haltestellenverlegung der Linien 5 und 12 in Richtung Westbahnhof U bzw. Josefstädter Straße U. Grund: Bauarbeiten.<br/>[Bis 03.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A: Max-Mauermann-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">56aa798cbb018fbaed4813a991f56c2470867f1f9a0ce034661ba2e01da13007</guid>
+      <pubDate>Wed, 07 Oct 2026 15:30:00 +0200</pubDate>
+      <ext:first_seen>Wed, 07 Oct 2026 15:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <georss:point>48.163113 16.409373</georss:point>
+      <description>Bitterlichstraße gegenüber Max-Mauermann-Gasse → Bitterlichstraße gegenüber Friedrich-Teller-Gasse. Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling … [Bis 25.12.]</description>
+      <content:encoded><![CDATA[Bitterlichstraße gegenüber Max-Mauermann-Gasse → Bitterlichstraße gegenüber Friedrich-Teller-Gasse. Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling …<br/>[Bis 25.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>

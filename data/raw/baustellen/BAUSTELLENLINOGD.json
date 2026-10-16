@@ -824,7 +824,7 @@
     "GISCODE_TXT": "P90 Baustellen",
     "OBJEKT_BEGINN": "2026-10-11Z",
     "OBJEKT_ENDE": "2026-11-13Z",
-    "PRESSETEXT": "Im Zeitraum von 12.10.2026 bis 23.10.2026 sowie von 01.11.2026 bis 15.11.2026 wird die Meiereistraße von Engerthstraße bis und in Fahrtrichtung Handelskai zur Einbahn.",
+    "PRESSETEXT": "Im Zeitraum von 12.10.2026 bis 23.10.2026 sowie von 01.11.2026 bis 13.11.2026 wird die Meiereistraße von Engerthstraße bis und in Fahrtrichtung Handelskai zur Einbahn.",
     "SE_ANNO_CAD_DATA": null
    }
   },
@@ -848,6 +848,29 @@
     "OBJEKT_BEGINN": "2026-09-14Z",
     "OBJEKT_ENDE": "2026-11-15Z",
     "PRESSETEXT": "DieArbeiten erfolgen bei Sperre der Huglgasse von Kreuzung Hütteldorfer Straße bis KreuzungMärzstraße und Sperre der Märzstraße von Kreuzung Huglgasse bis Kreuzung Stättermayergasse. Die angrenzenden Straßenzüge werden als Sackgassen ausgebildet und die Zufahrt bis zum gesperrten Bereich ist möglich. Die Umleitung erfolgt über: Hütteldorfer Straße - Schweglerstraße. DerFußgängerverkehr kann aufrecht gehalten werden.Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.36603404,
+     48.17881979
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": null,
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Neilreichgasse von Gudrunstraße bis Davidgasse",
+    "BEZIRK": 10,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-06-22Z",
+    "OBJEKT_ENDE": "2026-11-06Z",
+    "PRESSETEXT": "Bauphase 1 von 2 (23.06.2026 bis 28.08.2026):Die Arbeiten erfolgen bei Sperre der Neilreichgasse von Gudrunstraße bis Buchengasse. Für die Arbeiten im Plateau Neilreichgasse und Quellenstraße wird die Quellenstraße von Eckertgasse bis Karmaschgasse für den Fahrzeugverkehr gesperrt.Eine Zufahrt bis zum gesperrten Bereich und zu den genehmigten Stellplätzen ist möglich.Die Umleitung in Fahrtrichtung Laxenburger Straße erfolgt über: Sonnleithnergasse - Buchengasse - Herzgasse.Die Umleitung in Fahrtrichtung Triester Straße erfolgt über: Eckertgasse - Pernerstorfergasse - Karmaschgasse. Bauphase 2 von 2 (31.08.2026 bis 06.11.2026): Die Arbeiten erfolgen im Abschnitt Buchengasse bis Davidgasse. Hierfür wird die Neilreichgasse von Buchengasse bis und in Richtung Rothenhofgasse als Einbahn geführt. Eine Zufahrt zu den genehmigten Stellplätzen ist möglich.Die Buslinie 7A wird in diesen Zeitraum über die Rothenhofgasse Sonnleithengasse - Davidgasse umgeleitet.",
     "SE_ANNO_CAD_DATA": null
    }
   },
@@ -1146,7 +1169,7 @@
     "GISCODE_TXT": "P90 Baustellen",
     "OBJEKT_BEGINN": "2026-10-19Z",
     "OBJEKT_ENDE": "2026-10-30Z",
-    "PRESSETEXT": "Die Troststraße wirdvon Wirestraße bis und in Fahrtrichtung Rechberggasse zur Einbahn. Die Angeligasse wird von Rechberggasse bis und in Fahrtrichtung Wirestraße zur Einbahn. Die Wirestraße wird von Troststraße bis und in Fahrtrichtung Angeligasse zur Einbahn.Die Umleitung in Fahrtrichtung Laxenburger Straße erfolgt über: Rechberggasse, Angeligasse und Hollitzergasse.",
+    "PRESSETEXT": "Die Troststraße wirdvon Wirerstraße bis und in Fahrtrichtung Rechberggasse zur Einbahn. Die Angeligasse wird von Rechberggasse bis und in Fahrtrichtung Wirerstraße zur Einbahn. Die Wirerstraße wird von Troststraße bis und in Fahrtrichtung Angeligasse zur Einbahn.Die Umleitung in Fahrtrichtung Laxenburger Straße erfolgt über: Rechberggasse, Angeligasse und Hollitzergasse.",
     "SE_ANNO_CAD_DATA": null
    }
   },
