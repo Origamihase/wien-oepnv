@@ -7,18 +7,18 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 16 Oct 2026 18:02:55 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 18:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U3: Delays]]></title>
+      <title><![CDATA[1: Police operation]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
-      <pubDate>Fri, 16 Oct 2026 16:27:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 16:27:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 16:27:00 +0200</ext:starts_at>
+      <guid isPermaLink="false">63da0a693c3cade54082d11235f33ad2c470d9015d5662a310a9f542e55f2972</guid>
+      <pubDate>Fri, 16 Oct 2026 18:02:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 18:02:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 18:02:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 16:27]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 16:27]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 18:02]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 18:02]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[4A: Traffic accident]]></title>
@@ -52,17 +52,6 @@
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 13:16]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:16]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Switch fault]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">4460db7100edd882f0850654a58cc4dacef4a8d1b3718df2d37d810e6bc3c23b</guid>
-      <pubDate>Fri, 16 Oct 2026 09:39:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 10:01:05 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 09:39:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 09:39]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 09:39]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A/7A/N8: Construction works]]></title>
@@ -118,6 +107,17 @@
       <ext:ends_at>Fri, 23 Oct 2026 05:05:00 +0200</ext:ends_at>
       <description>Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 … [Until 23.10.]</description>
       <content:encoded><![CDATA[Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 …<br/>[Until 23.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[64A: Liesing-Flur-Gasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">609517ab3ab98b5b38f0fe913f15e9bd18cd5a3d9005a51a2cb50d3fb227ddbd</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Wed, 14 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Perfektastraße after Liesinger-Flur-Gasse → Perfektastraße 77. Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse. Reason: roadworks. [Until 28.10.]</description>
+      <content:encoded><![CDATA[Perfektastraße after Liesinger-Flur-Gasse → Perfektastraße 77. Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse. Reason: roadworks.<br/>[Until 28.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
