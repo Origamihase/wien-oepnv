@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" version="2.0">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:georss="http://www.georss.org/georss" version="2.0">
   <channel>
     <title>ÖPNV Störungen Wien &amp; Pendler</title>
     <link>https://github.com/Origamihase/wien-oepnv</link>
@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
-    <lastBuildDate>Fri, 16 Oct 2026 19:55:13 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 20:00:52 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Verzögerung auf der Strecke: Wien]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;920073</guid>
+      <pubDate>Fri, 16 Oct 2026 19:58:28 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 20:00:52 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Wegen einer Verzögerung auf der Strecke sind in Wien Hbf (U) Zugfahrten derzeit nur eingeschränkt möglich. Planen Sie bis zu 15 Minuten mehr Reisezeit ein. [Seit 19:58]</description>
+      <content:encoded><![CDATA[Wegen einer Verzögerung auf der Strecke sind in Wien Hbf (U) Zugfahrten derzeit nur eingeschränkt möglich. Planen Sie bis zu 15 Minuten mehr Reisezeit ein.<br/>[Seit 19:58]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[6/18: Fahrzeug im Gleis]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">4da317d92f3072c74eeb9c19279f33352117b32b116a2c406b12b1690fc14ab1</guid>
+      <pubDate>Fri, 16 Oct 2026 19:32:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 20:00:52 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 19:32:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 19:32]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19:32]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[62: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d</guid>
+      <pubDate>Fri, 16 Oct 2026 19:42:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 19:42:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 19:42:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 19:42]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19:42]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[4A: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -16,7 +49,7 @@
       <pubDate>Fri, 16 Oct 2026 19:24:00 +0200</pubDate>
       <ext:first_seen>Fri, 16 Oct 2026 19:30:49 +0200</ext:first_seen>
       <ext:starts_at>Fri, 16 Oct 2026 19:24:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Fri, 16 Oct 2026 20:44:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 19:24]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19:24]]]></content:encoded>
     </item>
@@ -28,52 +61,8 @@
       <ext:first_seen>Fri, 16 Oct 2026 19:30:49 +0200</ext:first_seen>
       <ext:starts_at>Fri, 16 Oct 2026 19:03:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Kein Betrieb: 10 Joachimsthalerplatz – Penzinger Straße; 46 Breitensee S – Joachimsthalerplatz. [Seit 19:03]</description>
-      <content:encoded><![CDATA[Kein Betrieb: 10 Joachimsthalerplatz – Penzinger Straße; 46 Breitensee S – Joachimsthalerplatz.<br/>[Seit 19:03]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40/41: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">46770cbdcca7b3b0724e5953b64353d0a982642ac049261e3dfdc906c581b130</guid>
-      <pubDate>Fri, 16 Oct 2026 19:19:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 19:19:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 19:19:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung: 40, 41. [Seit 19:19]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung: 40, 41.<br/>[Seit 19:19]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[44: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">95f5e733f774706c0b823246524a86bb8b6b48fd50e0ccfc15432e2c4c3225f0</guid>
-      <pubDate>Fri, 16 Oct 2026 18:56:08 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 18:56:08 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 18:56:09 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 19:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung. [Seit 18:56]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 18:56]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">63da0a693c3cade54082d11235f33ad2c470d9015d5662a310a9f542e55f2972</guid>
-      <pubDate>Fri, 16 Oct 2026 18:02:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 18:02:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 18:02:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 18:02]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 18:02]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[O: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">a90305646f013b3987fb55ef5dab8d20d35b0e58b3f412f792bb39c48c2fa5a8</guid>
-      <pubDate>Fri, 16 Oct 2026 15:26:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 15:26:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 15:26:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 15:26]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 15:26]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 19:03]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19:03]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Weichenstörung]]></title>
@@ -98,15 +87,15 @@
       <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[71/D: Demonstration]]></title>
+      <title><![CDATA[D: Demonstration, Gleisbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">23617704b0adedf9ec79e6ea20280c4a9295bcef03cad548c5faed81118dda8e</guid>
       <pubDate>Fri, 16 Oct 2026 15:20:00 +0200</pubDate>
       <ext:first_seen>Fri, 16 Oct 2026 15:20:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 16 Oct 2026 15:20:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Heute]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Heute]]]></content:encoded>
+      <ext:ends_at>Fri, 16 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse. [Heute]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A/7A/N8: Bauarbeiten]]></title>
@@ -118,6 +107,18 @@
       <ext:ends_at>Fri, 16 Oct 2026 23:59:00 +0200</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Breitenfurter Straße 1 werden die Linien 7A, 62A und N8 umgeleitet. [Heute]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Breitenfurter Straße 1 werden die Linien 7A, 62A und N8 umgeleitet.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[64A: Seybelgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">68609c1ab7a3cbeddad7e3ea90732b10dfe089ab97a782743d62a48542be7f20</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:59:00 +0200</ext:ends_at>
+      <georss:point>48.137599 16.294667</georss:point>
+      <description>An den Steinfeldern 3, vor Seybelgasse → Seybelgasse gegenüber 20. Haltestellenverlegung der Linie 64A in Richtung Liesing. Grund: Straßenbauarbeiten. [Heute]</description>
+      <content:encoded><![CDATA[An den Steinfeldern 3, vor Seybelgasse → Seybelgasse gegenüber 20. Haltestellenverlegung der Linie 64A in Richtung Liesing. Grund: Straßenbauarbeiten.<br/>[Heute]]]></content:encoded>
     </item>
   </channel>
 </rss>
