@@ -42,7 +42,15 @@
   },
   {
    "grund": "Kurzmeldung einer erledigten Störung",
+   "titel": "Fahrtbehinderung Verkehrsunfall"
+  },
+  {
+   "grund": "Kurzmeldung einer erledigten Störung",
    "titel": "Fahrtbehinderung wegen Demonstration"
+  },
+  {
+   "grund": "Kurzmeldung einer erledigten Störung",
+   "titel": "Fahrtbehinderung wegen Polizeieinsatz"
   },
   {
    "grund": "Kurzmeldung einer erledigten Störung",
@@ -54,7 +62,15 @@
   },
   {
    "grund": "Status inaktiv",
-   "titel": "46: Schadhaftes Fahrzeug"
+   "titel": "13A: Polizeieinsatz"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "5, 12: Verkehrsunfall"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "62: Fahrzeug im Gleis"
   },
   {
    "grund": "Status inaktiv",
@@ -95,10 +111,6 @@
   {
    "grund": "nur Aufzug/Fahrtreppe",
    "titel": "U4: Pilgramgasse - Kein Aufzug am Bahnsteig Richtung Hütteldorf"
-  },
-  {
-   "grund": "nur Klapprampe",
-   "titel": "U4: Klapprampensperre am 16.10.2026"
   }
  ]
 }
