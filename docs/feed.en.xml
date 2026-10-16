@@ -7,8 +7,41 @@
     <atom:link rel="alternate" type="text/html" href="https://origamihase.github.io/wien-oepnv/" />
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
-    <lastBuildDate>Fri, 16 Oct 2026 19:00:49 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 19:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[4A: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">c5e79df575bfef0f92f84914b1cdc1dbbc7f1530310af91d4850b16431d82fc3</guid>
+      <pubDate>Fri, 16 Oct 2026 19:24:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 19:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 19:24:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 19:24]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 19:24]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10/46: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">525af73bea6d90380459654bb984902fa78dd087f922bc29547e956b794ca4e3</guid>
+      <pubDate>Fri, 16 Oct 2026 19:03:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 19:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 19:03:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>No service: 10 Joachimsthalerplatz – Penzinger Straße; 46 Breitensee S – Joachimsthalerplatz. [Since 19:03]</description>
+      <content:encoded><![CDATA[No service: 10 Joachimsthalerplatz – Penzinger Straße; 46 Breitensee S – Joachimsthalerplatz.<br/>[Since 19:03]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40/41: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">46770cbdcca7b3b0724e5953b64353d0a982642ac049261e3dfdc906c581b130</guid>
+      <pubDate>Fri, 16 Oct 2026 19:19:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 19:19:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 19:19:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction: 40, 41. Expected until 19:45. [Since 19:19]</description>
+      <content:encoded><![CDATA[Service obstruction: 40, 41. Expected until 19:45.<br/>[Since 19:19]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[44: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
@@ -30,17 +63,6 @@
       <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 18:02]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 18:02]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[4A: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">3d30f07a2f4c17e712ca1f63d0872114a677e39508fe191263a1ffa655a859af</guid>
-      <pubDate>Fri, 16 Oct 2026 15:09:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 15:30:42 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 15:09:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 15:09]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 15:09]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[O: Illegally parked vehicle]]></title>
@@ -65,6 +87,28 @@
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:16]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[40: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">483512e46745ecd5bac505f2ee9feeb3011e40b15827bfd34d100ed89553735a</guid>
+      <pubDate>Fri, 16 Oct 2026 19:21:12 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 19:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 19:21:12 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 20:20:00 +0200</ext:ends_at>
+      <description>Service obstruction. [Today]</description>
+      <content:encoded><![CDATA[Service obstruction.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[71/D: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">23617704b0adedf9ec79e6ea20280c4a9295bcef03cad548c5faed81118dda8e</guid>
+      <pubDate>Fri, 16 Oct 2026 15:20:00 +0200</pubDate>
+      <ext:first_seen>Fri, 16 Oct 2026 15:20:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 15:20:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Today]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[62A/7A/N8: Construction works]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">ec760ed4fea6e1168857f4e98a71099b766192e4893266a0a2e84e34245263a9</guid>
@@ -74,50 +118,6 @@
       <ext:ends_at>Fri, 16 Oct 2026 23:59:00 +0200</ext:ends_at>
       <description>Due to construction works in the area of Breitenfurter Straße 1, lines 7A, 62A and N8 are redirected. [Today]</description>
       <content:encoded><![CDATA[Due to construction works in the area of Breitenfurter Straße 1, lines 7A, 62A and N8 are redirected.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2/5/5A/5B/71/74A/80A/D/O: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f868d2f5eb494decde7d0c63339dab6ae0887407eebc3eed949d2e7e53c0a75c</guid>
-      <pubDate>Fri, 16 Oct 2026 15:20:00 +0200</pubDate>
-      <ext:first_seen>Thu, 15 Oct 2026 00:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Due to a demonstration, there are restrictions on public transport. Line D: short-running service of the trains between Absberggasse and Börse on Schwarzenbergplatz. [Today]</description>
-      <content:encoded><![CDATA[Due to a demonstration, there are restrictions on public transport. Line D: short-running service of the trains between Absberggasse and Börse on Schwarzenbergplatz.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A: Seybelgasse]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">68609c1ab7a3cbeddad7e3ea90732b10dfe089ab97a782743d62a48542be7f20</guid>
-      <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:59:00 +0200</ext:ends_at>
-      <description>An den Steinfeldern 3, before Seybelgasse → Seybelgasse opposite 20. Stop relocation of line 64A towards Liesing. Reason: roadworks. [Today]</description>
-      <content:encoded><![CDATA[An den Steinfeldern 3, before Seybelgasse → Seybelgasse opposite 20. Stop relocation of line 64A towards Liesing. Reason: roadworks.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A/14A/59A: Bezirksamt Margareten]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">f3a42dafa639d8c2023e9c1eab41a9d1526cfb261e87036429e751a8a54f5e4c</guid>
-      <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 16 Oct 2026 23:59:00 +0200</ext:ends_at>
-      <description>ASchönbrunner Straße 69 → Rampersdorffergasse. Stop relocation of lines 12A, 14A and 59A towards Schmelz, Gablenzgasse, Neubaugasse or Oper, Karlsplatz. … [Today]</description>
-      <content:encoded><![CDATA[ASchönbrunner Straße 69 → Rampersdorffergasse. Stop relocation of lines 12A, 14A and 59A towards Schmelz, Gablenzgasse, Neubaugasse or Oper, Karlsplatz. …<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Simmering S U]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">c8f0b5a42164e2ff573973d0ebcbdf6fbd76b99aebfc2c85c8b8657ef7b9bb79</guid>
-      <pubDate>Wed, 14 Oct 2026 15:35:00 +0200</pubDate>
-      <ext:first_seen>Wed, 14 Oct 2026 15:35:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 23 Oct 2026 05:05:00 +0200</ext:ends_at>
-      <description>Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 … [Until 23.10.]</description>
-      <content:encoded><![CDATA[Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 …<br/>[Until 23.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

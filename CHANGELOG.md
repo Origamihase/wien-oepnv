@@ -27,6 +27,16 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   OSM-/HAFAS-/Google-Werten des Stationsverzeichnisses; ohne offene
   Koordinate gibt es keine Geodaten. Titel und Beschreibung ändern sich
   nicht. Replay alt gegen neu über die Feed-Stände seit 01.07.: folgt.
+* **Branch-Schutz für `main` (2026-10-16, nur Doku)**: Michael hat am
+  16.10. das Ruleset „main schützen“ angelegt: aktiv auf dem
+  Standard-Branch, Bypass-Liste leer, nur „Restrict deletions“ und „Block
+  force pushes“. Mehr nicht, weil der Update-Lauf als
+  `github-actions[bot]` direkt auf `main` pusht; Regeln für Pull Requests,
+  Status-Checks, signierte Commits oder Code-Scanning würden ihn
+  aufhalten. `docs/development.md` („Veröffentlichen auf `main`“)
+  beschreibt das Ruleset, wie man es ohne Admin-Rechte prüft und was bei
+  einer Ablehnung zu tun ist; der Satz „`main` hat keinen Branch-Schutz“
+  ist berichtigt. Code und Feed ändern sich nicht.
 * **EN: drei Randfälle bleiben, wie sie sind (2026-10-16, nur Doku)**:
   Michael entschied am 16.10. für alle drei „So lassen“, festgehalten in
   `docs/architecture.md`, damit kein Audit sie als Fehler meldet. (1) Der
