@@ -184,7 +184,7 @@ def write_stations(path: Path, stations: Sequence[StationEntry]) -> None:
     # those non-standard literals, and every strict downstream consumer
     # (``JSON.parse``, ``serde_json``, ``encoding/json``) refuses them. A
     # parser-level finite floor exists on every current ingest tier (OSM,
-    # HAFAS, Google Places); this pin surfaces a future bypass as a loud
+    # HAFAS); this pin surfaces a future bypass as a loud
     # failure at write time rather than silently corrupting the committed
     # ``data/stations.json`` artefact.
     payload = json.dumps(

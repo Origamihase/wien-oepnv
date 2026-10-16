@@ -35,7 +35,7 @@ vollständigen Link auf diese Datei.
 Die GeoRSS-Koordinaten kommen nur aus diesen drei offenen Datensätzen
 (`src.utils.stations.open_data_coordinate`, Entscheidung von Michael vom
 16.10.2026), nie aus den zusammengeführten Koordinaten des Stationsverzeichnisses
-(OpenStreetMap, HAFAS, Google). Details: `docs/architecture.md` §1, „Geodaten im Feed“.
+(OpenStreetMap, HAFAS). Details: `docs/architecture.md` §1, „Geodaten im Feed“.
 
 ### ÖBB-Inhalte
 
