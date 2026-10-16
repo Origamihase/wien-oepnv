@@ -1066,6 +1066,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2A: Verspätungen",
+    "description": "Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "57d004da43aa922d23ef17d2febd4d27e41c86903650f7772a81a3838692e289",
+    "pubDate": "2026-10-16T13:27:00+02:00",
+    "starts_at": "2026-10-16T13:27:00+02:00",
+    "ends_at": "2026-10-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=2A|D=2026-10-16|TK=2a verspätungen",
+    "_wl_ids": [
+      "I20261016-0022"
+    ],
+    "_incident_start": "2026-10-16T13:27:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1162,6 +1178,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "9: Fahrtbehinderung Falschparker",
+    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 13:50 Uhr. Grund: Falschparker im Bereich Hormayrgasse 19.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2026-10-16T13:24:00+02:00",
+    "starts_at": "2026-10-16T13:26:00+02:00",
+    "ends_at": "2026-10-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-10-16|TK=falschparker",
+    "_wl_ids": [
+      "I20261016-0021"
+    ],
+    "_incident_start": "2026-10-16T13:24:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "D: Gleisbauarbeiten",
     "description": "Linie D: Kein Betrieb zwischen Börse und Augasse. Weichen Sie ersatzweise auf die Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A aus. Grund: Gleisbauarbeiten im Bereich Althanstraße.",
     "link": "https://www.wienerlinien.at/ogd_realtime",
@@ -1234,6 +1266,22 @@
     "starts_at": "2026-10-14T00:00:23+02:00",
     "ends_at": "2026-10-16T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-14|TK=ersatzverkehr"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Feuerwehreinsatz",
+    "description": "Linie U1: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 14:00 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Alaudagasse.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e938b804c9027f350eb7c9b5ec95f3fa4f3f1c5011ac2ba48fcf6c6fcde70d0c",
+    "pubDate": "2026-10-16T13:16:00+02:00",
+    "starts_at": "2026-10-16T13:16:00+02:00",
+    "ends_at": "2026-10-16T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-10-16|TK=feuerwehreinsatz",
+    "_wl_ids": [
+      "I20261016-0020"
+    ],
+    "_incident_start": "2026-10-16T13:16:00+02:00"
   },
   {
     "source": "Wiener Linien",
