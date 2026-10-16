@@ -2908,7 +2908,8 @@ def _station_entity_pattern() -> re.Pattern[str] | None:
     # directory's "Burggasse-Stadthalle" as "Burggasse - Stadthalle" (U6
     # tickers since July). Only "Burggasse" was protected, and the model made
     # "Burggasse - City Hall" of the rest (16.10.2026). A space on one side
-    # only ("Lorenz-Müller- Gasse") is a typo the model mends itself.
+    # only ("Lorenz-Müller- Gasse") is a typo of the source; the model left
+    # it as written in the probe of 16.10.2026, so the name stays a name.
     pattern = (
         r"(?<!\w)(?:"
         + "|".join(re.escape(name).replace(r"\-", r"(?: - |-)") for name in sorted_names)
