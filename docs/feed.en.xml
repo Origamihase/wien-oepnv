@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 17 Oct 2026 10:04:03 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 10:30:43 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[11: Rescue operation]]></title>
@@ -32,8 +32,8 @@
       <ext:starts_at>Sat, 17 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 21 Oct 2026 23:59:59 +0200</ext:ends_at>
       <georss:line>48.197671 16.261209 48.185201 16.376296</georss:line>
-      <description>Due to construction works, between Salzburg Hbf and Flughafen Wien train station or Hegyeshalom from 10.10.2026 (22:30) to 14.10.2026 (04:00) and from 17.10.2026 … [Until Wed 21.10.]</description>
-      <content:encoded><![CDATA[Due to construction works, between Salzburg Hbf and Flughafen Wien train station or Hegyeshalom from 10.10.2026 (22:30) to 14.10.2026 (04:00) and from 17.10.2026 …<br/>[Until Wed 21.10.]]]></content:encoded>
+      <description>Partial failure: From 18.10.2026 to 19.10.2026, the RJ 263 train cannot travel between Wien Hütteldorf station (U) and Wien Hbf (U). [Until Wed 21.10.]</description>
+      <content:encoded><![CDATA[Partial failure: From 18.10.2026 to 19.10.2026, the RJ 263 train cannot travel between Wien Hütteldorf station (U) and Wien Hbf (U).<br/>[Until Wed 21.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N71: Simmering S U]]></title>

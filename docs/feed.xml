@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 17 Oct 2026 10:04:03 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 10:30:43 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[11: Rettungseinsatz]]></title>
@@ -32,8 +32,8 @@
       <ext:starts_at>Sat, 17 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 21 Oct 2026 23:59:59 +0200</ext:ends_at>
       <georss:line>48.197671 16.261209 48.185201 16.376296</georss:line>
-      <description>Wegen Bauarbeiten fahren zwischen Salzburg Hbf und Flughafen Wien Bahnhof bzw. Hegyeshalom von 10.10.2026 (22:30 Uhr) bis 14.10.2026 (04:00 Uhr) und von 17.10.2026 … [Bis Mi 21.10.]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten fahren zwischen Salzburg Hbf und Flughafen Wien Bahnhof bzw. Hegyeshalom von 10.10.2026 (22:30 Uhr) bis 14.10.2026 (04:00 Uhr) und von 17.10.2026 …<br/>[Bis Mi 21.10.]]]></content:encoded>
+      <description>Teilausfall: Von 18.10.2026 bis 19.10.2026 kann der Zug RJ 263 zwischen Wien Hütteldorf Bahnhof (U) und Wien Hbf (U) nicht fahren. [Bis Mi 21.10.]</description>
+      <content:encoded><![CDATA[Teilausfall: Von 18.10.2026 bis 19.10.2026 kann der Zug RJ 263 zwischen Wien Hütteldorf Bahnhof (U) und Wien Hbf (U) nicht fahren.<br/>[Bis Mi 21.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N71: Simmering S U]]></title>
