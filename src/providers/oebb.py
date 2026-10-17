@@ -116,6 +116,12 @@ if _OEBB_URL_ENV and _OEBB_URL_OVERRIDE is None:
     )
 OEBB_URL = _OEBB_URL_OVERRIDE or _OEBB_DEFAULT_URL
 
+# Item link when a notice carries none: the ÖBB-Streckeninformation page,
+# not the RSS endpoint above (a reader would open raw XML).
+OEBB_INFO_URL = (
+    "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&"
+)
+
 # Optional strenger Filter: Nur Meldungen mit Endpunkten in Wien behalten.
 # Aktiviert durch Umgebungsvariable ``OEBB_ONLY_VIENNA`` ("1"/"true" vs "0"/"false", case-insens).
 OEBB_ONLY_VIENNA = get_bool_env("OEBB_ONLY_VIENNA", False)
@@ -2180,7 +2186,7 @@ def _build_item_from_xml(item: ET.Element) -> FeedItem | str:
     """
     raw_title = _get_text(item, "title")
     title = _clean_title_keep_places(raw_title)
-    link = _get_text(item, "link").strip() or OEBB_URL
+    link = _get_text(item, "link").strip() or OEBB_INFO_URL
     raw_guid = _get_text(item, "guid").strip()
     desc = _clean_description(_get_text(item, "description"))
     pub = _parse_dt_rfc2822(_get_text(item, "pubDate"))

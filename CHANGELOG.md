@@ -5,6 +5,29 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Link und Quellenangabe jeder Meldung (2026-10-17)**: Michael: „Meldungen
+  von der ÖBB sollen zu ÖBB verlinken und eine Quellenangabe als Tag
+  beinhalten. Meldungen der Wiener Linien sollen zu den Wiener Linien
+  verlinken [...] Das Selbe für Baustellenmeldungen der Stadt Wien u.s.w.“
+  Jedes Item trägt jetzt das RSS-Element `<source>` (Wiener Linien, ÖBB,
+  Stadt Wien bzw. City of Vienna, VOR/VAO) mit der Seite der Quelle in
+  `url`, und sein `<link>` bleibt bei der Domain des Betreibers; ein Link
+  anderswohin fällt auf dessen Meldungsseite zurück (`_ITEM_SOURCES` in
+  `src/build_feed.py`). Dabei behoben: Die Baustellen verlinkten auf eine
+  data.gv.at-Katalogseite, die seit dem Umzug des Portals 404 liefert (jetzt
+  `wien.gv.at/verkehr/baustellen`), und die Stammstrecken-Meldung auf eine
+  WL-Seite, die nur auf die WL-Startseite umleitete (jetzt wie die
+  ÖBB-Meldungen die ÖBB-Streckeninformation, sein Ja vom 17.10.). Eine
+  ÖBB-Meldung ohne eigenen Link zeigt auf die Streckeninformation statt auf
+  den RSS-Endpunkt. Titel, Texte, GUIDs und Reihenfolge bleiben gleich.
+* **VAO-Handbuch nur noch verlinkt (2026-10-17)**: Die Kopie
+  `docs/reference/manuals/Handbuch_VAO_ReST_API_latest.pdf` ist entfernt;
+  die Doku verlinkt die öffentliche Schnittstellen-Dokumentation der VAO
+  (über verkehrsauskunft.at/start), damit immer die aktuelle Fassung gilt und
+  das Dokument der VAO nicht mit dem Projekt verteilt wird. Michael: „Die
+  Schnittstellen Dokumentation liegt bereits öffentlich im Internet […] du
+  kannst sie auch gerne entfernen. Die Doku sollte eine ordnungsgemäße
+  Implementation ermöglichen.“
 * **Live-Abnahme: Lizenzangaben, tote Links, Barrierefreiheit der Doku-Seiten (2026-10-17)**:
   Erste Prüfung mit vollem Netz (Webseite in Chromium, Feed von außen,
   Lizenzhinweise gegen die Originalquellen). Behoben, jeweils als Klasse:

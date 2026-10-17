@@ -76,8 +76,11 @@ TRIGGER_CONSECUTIVE_COUNT: Final[int] = 2
 EVENT_SOURCE: Final = "VOR/VAO"
 EVENT_CATEGORY: Final = "Störung"
 EVENT_TITLE: Final = "S-Bahn Stammstrecke Verspätungen"
+# The monitor reports ÖBB S-Bahn trains, so its item links to the
+# ÖBB-Streckeninformation like the ÖBB notices (Michael, 17.10.2026; the
+# former WL page only redirected to the WL start page).
 EVENT_LINK: Final = (
-    "https://www.wienerlinien.at/web/wienerlinien/oeffis-stoerungen-strecke"
+    "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&"
 )
 
 # Window lengths.
