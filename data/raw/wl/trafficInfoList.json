@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261017-0013-F01, I20261017-0013, I20260917-0012, I20260922-0032, I20261017-0011-F01, I20260925-0011, I20261017-0011-F02, I20261017-0012, I20261017-0016, I20260909-0007, I20261017-0009, I20261017-0015, I20261017-0014-F01, I20261017-0014-F02, I20261017-0014, I20261017-0017"
+    "trafficInfoNameList": "I20261017-0013-F01, I20261017-0011-F01, I20260917-0012, I20260922-0032, I20260925-0011, I20261017-0016, I20261017-0014-F01, I20260909-0007, I20261017-0015, I20261017-0014-F02, I20261017-0017, I20261017-0011-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R100-136, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R2025-671, R318-437, R293-474, R101-136, R36-152, R1446-149, R1476-149, R5815-671, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1448-412, R1474-412, R1445-149, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R500-101, R146-0, R187-0, R148-0, R147-0, R150-0, R1212-0, R1213-0, R188-0, R720-407, R721-407, R1797-407, R814-407, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R19-136, R2025-671, R118-136, R318-437, R293-474, R119-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R130-136, R36-152, R45-136, R1472-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R1974-466, R500-101, R721-407, R720-407, R1797-407, R814-407, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,40 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "35A": "ptBusCity"
-     }
-    },
-    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261017-0009",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "35A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "435",
-       "lineName": "35A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T10:35:00.000+0200",
-     "end": "2026-10-17T12:52:00.000+0200",
-     "lastUpdate": "2026-10-17T12:52:00.000+0200",
-     "resume": "2026-10-17T12:52:00.000+0200",
-     "start": "2026-10-17T10:35:00.000+0200"
-    },
-    "title": "35A: Verspätungen"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "11": "ptTram"
      }
     },
@@ -264,8 +230,8 @@
     "status": "active",
     "time": {
      "created": "2026-10-17T12:03:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T12:03:00.000+0200",
+     "end": "2026-10-17T14:08:00.000+0200",
+     "lastUpdate": "2026-10-17T13:52:00.000+0200",
      "resume": "2026-10-17T12:03:00.000+0200",
      "start": "2026-10-17T11:41:00.000+0200"
     },
@@ -301,82 +267,12 @@
     "status": "active",
     "time": {
      "created": "2026-10-17T12:03:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T12:03:00.000+0200",
+     "end": "2026-10-17T14:07:00.000+0200",
+     "lastUpdate": "2026-10-17T13:52:00.000+0200",
      "resume": "2026-10-17T12:03:00.000+0200",
      "start": "2026-10-17T11:41:00.000+0200"
     },
     "title": "O: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Fahrtbehinderung in Richtung Friedrich-Engels-Platz. Voraussichtliche Dauer: 12:20 Uhr. Grund: Falschparker im Bereich Wilhelminenstraße.",
-    "descriptionHTML": "Linie 2:<br>Fahrtbehinderung in Richtung Friedrich-Engels-Platz.<br> <br>Voraussichtliche Dauer: 12:20 Uhr.<br><br>Grund: Falschparker im Bereich Wilhelminenstraße.",
-    "location": "Wilhelminenstraße",
-    "name": "I20261017-0012",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "102",
-       "lineName": "2",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T11:58:00.000+0200",
-     "end": "2026-10-17T12:44:00.000+0200",
-     "lastUpdate": "2026-10-17T12:44:00.000+0200",
-     "resume": "2026-10-17T12:44:00.000+0200",
-     "start": "2026-10-17T11:56:00.000+0200"
-    },
-    "title": "2: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "18": "ptTram"
-     }
-    },
-    "description": "Linie 18: Betrieb nur zwischen Burggasse, Stadthalle U und Ernst-Happel-Stadion. Voraussichtliche Dauer: 12:45 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Dr.-Natterer-Gasse.",
-    "descriptionHTML": "Linie 18:<br>Betrieb nur zwischen Burggasse, Stadthalle U und Ernst-Happel-Stadion.<br> <br>Voraussichtliche Dauer: 12:45 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Bereich Dr.-Natterer-Gasse.",
-    "location": "Dr.-Natterer-Gasse",
-    "name": "I20261017-0013",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "118",
-       "lineName": "18",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T12:14:00.000+0200",
-     "end": "2026-10-17T12:40:00.000+0200",
-     "lastUpdate": "2026-10-17T12:40:00.000+0200",
-     "resume": "2026-10-17T12:40:00.000+0200",
-     "start": "2026-10-17T12:12:00.000+0200"
-    },
-    "title": "18: Schadhaftes Fahrzeug"
    },
    {
     "attributes": {
@@ -406,54 +302,12 @@
     "status": "active",
     "time": {
      "created": "2026-10-17T12:40:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T12:40:00.000+0200",
+     "end": "2026-10-17T14:07:00.000+0200",
+     "lastUpdate": "2026-10-17T13:31:00.000+0200",
      "resume": "2026-10-17T12:40:00.000+0200",
      "start": "2026-10-17T12:12:00.000+0200"
     },
     "title": "18: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "40": "ptTram",
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 40: Fahrtbehinderung in Richtung Schottentor U. Linie 41: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 13:00 Uhr. Grund: Falschparker im Bereich Währinger Straße 136.",
-    "descriptionHTML": "Linie 40:<br>Fahrtbehinderung in Richtung Schottentor U.<br>Linie 41:<br>Fahrtbehinderung in Richtung Schottentor U.<br> <br>Voraussichtliche Dauer: 13:00 Uhr.<br><br>Grund: Falschparker im Bereich Währinger Straße 136.",
-    "location": "Währinger Straße 136",
-    "name": "I20261017-0014",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "40",
-     "41"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "140",
-       "lineName": "40",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "141",
-       "lineName": "41",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T12:36:00.000+0200",
-     "end": "2026-10-17T12:52:00.000+0200",
-     "lastUpdate": "2026-10-17T12:52:00.000+0200",
-     "resume": "2026-10-17T12:52:00.000+0200",
-     "start": "2026-10-17T12:34:00.000+0200"
-    },
-    "title": "40, 41: Falschparker"
    },
    {
     "attributes": {
@@ -480,12 +334,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-17T12:52:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T12:52:00.000+0200",
-     "resume": "2026-10-17T12:52:00.000+0200",
+     "end": "2026-10-17T13:58:00.000+0200",
+     "lastUpdate": "2026-10-17T13:58:00.000+0200",
+     "resume": "2026-10-17T13:58:00.000+0200",
      "start": "2026-10-17T12:34:00.000+0200"
     },
     "title": "40: Falschparker"
@@ -515,12 +369,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-17T12:52:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T12:52:00.000+0200",
-     "resume": "2026-10-17T12:52:00.000+0200",
+     "end": "2026-10-17T13:59:00.000+0200",
+     "lastUpdate": "2026-10-17T13:59:00.000+0200",
+     "resume": "2026-10-17T13:59:00.000+0200",
      "start": "2026-10-17T12:34:00.000+0200"
     },
     "title": "41: Falschparker"
@@ -583,12 +437,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-17T13:10:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T13:10:00.000+0200",
-     "resume": "2026-10-17T13:10:00.000+0200",
+     "end": "2026-10-17T13:37:00.000+0200",
+     "lastUpdate": "2026-10-17T13:37:00.000+0200",
+     "resume": "2026-10-17T13:37:00.000+0200",
      "start": "2026-10-17T13:10:00.000+0200"
     },
     "title": "U4: Schadhaftes Fahrzeug"
@@ -791,36 +645,6 @@
     "title": "Züge halten in\nSchleife"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Falschparker",
-    "name": "R1212-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1212
-    ],
-    "time": {
-     "end": "2026-10-17T13:45:00.000+0200",
-     "start": "2026-10-17T12:46:20.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Falschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Falschparker",
-    "name": "R1213-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1213
-    ],
-    "time": {
-     "end": "2026-10-17T13:45:00.000+0200",
-     "start": "2026-10-17T12:46:20.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Falschparker"
-   },
-   {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R130-136",
     "owner": "WL",
@@ -947,36 +771,6 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Falschparker\n\n",
-    "name": "R146-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     146
-    ],
-    "time": {
-     "end": "2026-10-17T13:36:00.000+0200",
-     "start": "2026-10-17T12:37:19.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Falschparker\n\n"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Falschparker\n\n",
-    "name": "R147-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     147
-    ],
-    "time": {
-     "end": "2026-10-17T13:36:00.000+0200",
-     "start": "2026-10-17T12:37:19.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Falschparker\n\n"
-   },
-   {
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
     "name": "R1472-149",
     "owner": "WL",
@@ -1085,36 +879,6 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Falschparker\n\n",
-    "name": "R148-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     148
-    ],
-    "time": {
-     "end": "2026-10-17T13:36:00.000+0200",
-     "start": "2026-10-17T12:37:19.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Falschparker\n\n"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Falschparker\n\n\n\n",
-    "name": "R150-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     150
-    ],
-    "time": {
-     "end": "2026-10-17T13:45:00.000+0200",
-     "start": "2026-10-17T12:45:49.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Falschparker\n\n\n\n"
-   },
-   {
     "description": "Fahrtbehinderung\nFalschparker",
     "name": "R1797-407",
     "owner": "WL",
@@ -1131,36 +895,6 @@
      "start": "2026-10-17T13:18:24.000+0200"
     },
     "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Falschparker\n\n",
-    "name": "R187-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     187
-    ],
-    "time": {
-     "end": "2026-10-17T13:36:00.000+0200",
-     "start": "2026-10-17T12:37:19.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Falschparker\n\n"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Falschparker",
-    "name": "R188-0",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     188
-    ],
-    "time": {
-     "end": "2026-10-17T13:45:00.000+0200",
-     "start": "2026-10-17T12:46:20.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Falschparker"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",

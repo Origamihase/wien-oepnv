@@ -8,20 +8,8 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 17 Oct 2026 13:30:44 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 14:01:13 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[U4: Defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4</guid>
-      <pubDate>Sat, 17 Oct 2026 13:10:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Sat, 17 Oct 2026 13:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 17 Oct 2026 13:10:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 13:10]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 13:10]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[U2: Switch fault]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -35,18 +23,6 @@
       <content:encoded><![CDATA[The U2 line currently runs between the stations Donaumarina and Donaustadtbrücke in both directions on track 2. Expected duration: Not foreseeable.<br/>[Since 13:04]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40/41: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919</guid>
-      <pubDate>Sat, 17 Oct 2026 12:34:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Sat, 17 Oct 2026 12:34:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 17 Oct 2026 12:34:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 12:34]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 12:34]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[18: Defective vehicle]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">9211cb3d8ce68889c7066532dfb5410be52f492f45bf8c859a2229f0a241d27f</guid>
@@ -54,7 +30,7 @@
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <ext:first_seen>Sat, 17 Oct 2026 12:12:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 17 Oct 2026 12:12:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Sat, 17 Oct 2026 14:07:00 +0200</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 12:12]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 12:12]]]></content:encoded>
     </item>
@@ -66,7 +42,7 @@
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <ext:first_seen>Sat, 17 Oct 2026 12:01:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 17 Oct 2026 11:41:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <ext:ends_at>Sat, 17 Oct 2026 14:08:00 +0200</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 11:41]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 11:41]]]></content:encoded>
     </item>
@@ -132,6 +108,32 @@
       <georss:point>48.210606 16.344038</georss:point>
       <description>Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works. [Until 03.11.]</description>
       <content:encoded><![CDATA[Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works.<br/>[Until 03.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A: Max-Mauermann-Gasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">56aa798cbb018fbaed4813a991f56c2470867f1f9a0ce034661ba2e01da13007</guid>
+      <pubDate>Wed, 07 Oct 2026 15:30:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Wed, 07 Oct 2026 15:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <georss:point>48.163113 16.409373</georss:point>
+      <description>Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling … [Until 25.12.]</description>
+      <content:encoded><![CDATA[Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling …<br/>[Until 25.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1A/3A: Schwertgasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
+      <georss:point>48.212312 16.369604</georss:point>
+      <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation. [Until 31.03.2027]</description>
+      <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation.<br/>[Until 31.03.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

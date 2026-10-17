@@ -824,7 +824,7 @@
     "guid": "b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e",
     "pubDate": "2026-10-17T11:41:00+02:00",
     "starts_at": "2026-10-17T11:41:00+02:00",
-    "ends_at": "2026-10-17T23:55:00+02:00",
+    "ends_at": "2026-10-17T14:08:00+02:00",
     "_identity": "wl|störung|L=11|D=2026-10-17|TK=rettungseinsatz",
     "_wl_ids": [
       "I20261017-0011"
@@ -876,7 +876,7 @@
     "guid": "9211cb3d8ce68889c7066532dfb5410be52f492f45bf8c859a2229f0a241d27f",
     "pubDate": "2026-10-17T12:12:00+02:00",
     "starts_at": "2026-10-17T12:12:00+02:00",
-    "ends_at": "2026-10-17T23:55:00+02:00",
+    "ends_at": "2026-10-17T14:07:00+02:00",
     "_identity": "wl|störung|L=18|D=2026-10-17|TK=18 schadhaftes fahrzeug",
     "_wl_ids": [
       "I20261017-0013"
@@ -1062,38 +1062,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40: Falschparker",
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
-    "pubDate": "2026-10-17T12:34:00+02:00",
-    "starts_at": "2026-10-17T12:34:00+02:00",
-    "ends_at": "2026-10-17T23:55:00+02:00",
-    "_identity": "wl|störung|L=40|D=2026-10-17|TK=falschparker",
-    "_wl_ids": [
-      "I20261017-0014"
-    ],
-    "_incident_start": "2026-10-17T12:34:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Falschparker",
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
-    "pubDate": "2026-10-17T12:34:00+02:00",
-    "starts_at": "2026-10-17T12:34:00+02:00",
-    "ends_at": "2026-10-17T23:55:00+02:00",
-    "_identity": "wl|störung|L=41|D=2026-10-17|TK=falschparker",
-    "_wl_ids": [
-      "I20261017-0014"
-    ],
-    "_incident_start": "2026-10-17T12:34:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "46/49/52: Gleisbauarbeiten",
     "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1228,7 +1196,7 @@
     "guid": "011d5e8498133bc00e1bdf3e9fc71ce953ee78ab3f1b6b1f28b0860bcee4fb84",
     "pubDate": "2026-10-17T11:41:00+02:00",
     "starts_at": "2026-10-17T11:41:00+02:00",
-    "ends_at": "2026-10-17T23:55:00+02:00",
+    "ends_at": "2026-10-17T14:07:00+02:00",
     "_identity": "wl|störung|L=O|D=2026-10-17|TK=rettungseinsatz",
     "_wl_ids": [
       "I20261017-0011"
@@ -1250,22 +1218,6 @@
       "I20261017-0015"
     ],
     "_incident_start": "2026-10-17T13:04:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Schadhaftes Fahrzeug",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
-    "pubDate": "2026-10-17T13:10:00+02:00",
-    "starts_at": "2026-10-17T13:10:00+02:00",
-    "ends_at": "2026-10-17T23:55:00+02:00",
-    "_identity": "wl|störung|L=U4|D=2026-10-17|TK=u4 schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261017-0016"
-    ],
-    "_incident_start": "2026-10-17T13:10:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1302,17 +1254,5 @@
     "starts_at": "2026-10-14T00:00:22+02:00",
     "ends_at": "2026-10-17T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-10-14|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung wegen Falschparker",
-    "description": "Fahrtbehinderung\nwegen Falschparker",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "123bfd62dc7da0ffcd0f3060d27cb4dab7826707d05ffaed1e40fdb867f626eb",
-    "pubDate": "2026-10-17T12:37:19+02:00",
-    "starts_at": "2026-10-17T12:46:20+02:00",
-    "ends_at": "2026-10-17T13:45:00+02:00",
-    "_identity": "wl|störung|L=|D=2026-10-17|TK=falschparker"
   }
 ]
