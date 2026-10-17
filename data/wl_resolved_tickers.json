@@ -3,32 +3,32 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R1797-407|2026-10-17T13:18:24.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R1797-407",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-17T14:17:00.000+0200",
-   "incident": "I20261017-0017"
+   "key": "R253-474|2026-10-17T14:09:28.000+0200|Fahrtbehinderung\nSignalstörung",
+   "name": "R253-474",
+   "title": "Fahrtbehinderung\nSignalstörung",
+   "end": "2026-10-17T15:08:00.000+0200",
+   "incident": "I20261017-0018"
   },
   {
-   "key": "R720-407|2026-10-17T13:18:23.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R720-407",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-17T14:17:00.000+0200",
-   "incident": "I20261017-0017"
+   "key": "R268-474|2026-10-17T14:09:29.000+0200|Fahrtbehinderung\nSignalstörung",
+   "name": "R268-474",
+   "title": "Fahrtbehinderung\nSignalstörung",
+   "end": "2026-10-17T15:08:00.000+0200",
+   "incident": "I20261017-0018"
   },
   {
-   "key": "R721-407|2026-10-17T13:18:23.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R721-407",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-17T14:17:00.000+0200",
-   "incident": "I20261017-0017"
+   "key": "R281-474|2026-10-17T14:09:29.000+0200|Fahrtbehinderung\nSignalstörung",
+   "name": "R281-474",
+   "title": "Fahrtbehinderung\nSignalstörung",
+   "end": "2026-10-17T15:08:00.000+0200",
+   "incident": "I20261017-0018"
   },
   {
-   "key": "R814-407|2026-10-17T13:18:25.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R814-407",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-17T14:17:00.000+0200",
-   "incident": "I20261017-0017"
+   "key": "R296-474|2026-10-17T14:09:29.000+0200|Fahrtbehinderung\nSignalstörung",
+   "name": "R296-474",
+   "title": "Fahrtbehinderung\nSignalstörung",
+   "end": "2026-10-17T15:08:00.000+0200",
+   "incident": "I20261017-0018"
   }
  ]
 }

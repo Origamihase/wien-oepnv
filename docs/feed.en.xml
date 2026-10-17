@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 17 Oct 2026 14:01:13 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 14:30:36 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U2: Switch fault]]></title>
@@ -19,32 +19,20 @@
       <ext:first_seen>Sat, 17 Oct 2026 13:04:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 17 Oct 2026 13:04:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>The U2 line currently runs between the stations Donaumarina and Donaustadtbrücke in both directions on track 2. Expected duration: Not foreseeable. [Since 13:04]</description>
-      <content:encoded><![CDATA[The U2 line currently runs between the stations Donaumarina and Donaustadtbrücke in both directions on track 2. Expected duration: Not foreseeable.<br/>[Since 13:04]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 13:04]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:04]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[18: Defective vehicle]]></title>
+      <title><![CDATA[74A: Signal disruption, construction works]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">9211cb3d8ce68889c7066532dfb5410be52f492f45bf8c859a2229f0a241d27f</guid>
-      <pubDate>Sat, 17 Oct 2026 12:12:00 +0200</pubDate>
+      <guid isPermaLink="false">e42a781836ec2814f0a4c06b6398c6abf7ac48b3b5c47aa27b1fc2a90ec45037</guid>
+      <pubDate>Sat, 17 Oct 2026 14:07:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Sat, 17 Oct 2026 12:12:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 17 Oct 2026 12:12:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 17 Oct 2026 14:07:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 12:12]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 12:12]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11/O: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">b24e53abd403bf48d2fb6a973bd2a44ecd2cd893126f7a84529b14df228c5cd1</guid>
-      <pubDate>Sat, 17 Oct 2026 11:41:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Sat, 17 Oct 2026 12:01:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 17 Oct 2026 11:41:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 17 Oct 2026 14:08:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 11:41]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 11:41]]]></content:encoded>
+      <ext:first_seen>Sat, 17 Oct 2026 14:07:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 17 Oct 2026 14:07:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 17 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Construction works: boarding Leberstraße in front of S-Bahn building. [Today]</description>
+      <content:encoded><![CDATA[Construction works: boarding Leberstraße in front of S-Bahn building.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hütteldorf ↔ Wien Hauptbahnhof]]></title>
@@ -134,6 +122,19 @@
       <georss:point>48.212312 16.369604</georss:point>
       <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation. [Until 31.03.2027]</description>
       <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation.<br/>[Until 31.03.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[48A: Neubaugasse, Neustiftgasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">d97a8a3d7d6328446c638ae8a1ccf0afc80a24b1828141a4b94ad0065074c2e5</guid>
+      <pubDate>Thu, 08 Oct 2026 15:10:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Thu, 08 Oct 2026 15:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 19 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 08 Oct 2027 11:11:00 +0200</ext:ends_at>
+      <georss:point>48.205482 16.348467</georss:point>
+      <description>Neustiftgasse 52 → Neustiftgasse 42-44. Stop relocation of line 48A towards Klinik Penzing. Reason: renovation work. [From Mon 19.10.]</description>
+      <content:encoded><![CDATA[Neustiftgasse 52 → Neustiftgasse 42-44. Stop relocation of line 48A towards Klinik Penzing. Reason: renovation work.<br/>[From Mon 19.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
