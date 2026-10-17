@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261017-0037-F01, I20261017-0038, I20260925-0011, I20261017-0036-F01, I20260909-0007"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261017-0038, I20261017-0040-F01, I20261017-0040, I20260925-0011, I20260909-0007, I20261017-0039"
    },
    {
     "id": 3,
@@ -203,76 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "1": "ptTram"
-     }
-    },
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Julius-Raab-Platz",
-    "name": "I20261017-0036-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "101",
-       "lineName": "1",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T20:45:00.000+0200",
-     "end": "2026-10-17T21:17:00.000+0200",
-     "lastUpdate": "2026-10-17T21:17:00.000+0200",
-     "resume": "2026-10-17T21:17:00.000+0200",
-     "start": "2026-10-17T20:40:00.000+0200"
-    },
-    "title": "1: Fremder Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "74A": "ptBusCity"
-     }
-    },
-    "description": "Linie 74A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 74A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Landstraßer Hauptstraße 105",
-    "name": "I20261017-0037-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "74A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "474",
-       "lineName": "74A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T20:55:00.000+0200",
-     "end": "2026-10-17T21:05:00.000+0200",
-     "lastUpdate": "2026-10-17T21:05:00.000+0200",
-     "resume": "2026-10-17T21:05:00.000+0200",
-     "start": "2026-10-17T20:53:00.000+0200"
-    },
-    "title": "74A: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "12": "ptTram",
       "5": "ptTram"
      }
@@ -311,6 +241,114 @@
      "start": "2026-10-17T21:54:00.000+0200"
     },
     "title": "5, 12: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "31": "ptTram"
+     }
+    },
+    "description": "Linie 31: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "descriptionHTML": "Linie 31:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verunreinigung.",
+    "name": "I20261017-0039",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "131",
+       "lineName": "31",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T22:02:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T22:02:00.000+0200",
+     "resume": "2026-10-17T22:02:00.000+0200",
+     "start": "2026-10-17T22:02:00.000+0200"
+    },
+    "title": "31: Verunreinigung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 22:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Schlachthausgasse.",
+    "descriptionHTML": "Linie U3:<br>Fahrtbehinderung in beiden Richtungen.<br> <br>Voraussichtliche Dauer: 22:30 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Schlachthausgasse.",
+    "name": "I20261017-0040",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "303",
+       "lineName": "U3",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4916
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-17T22:21:00.000+0200",
+     "end": "2026-10-17T22:26:00.000+0200",
+     "lastUpdate": "2026-10-17T22:26:00.000+0200",
+     "resume": "2026-10-17T22:26:00.000+0200",
+     "start": "2026-10-17T22:20:00.000+0200"
+    },
+    "title": "U3: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261017-0040-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "303",
+       "lineName": "U3",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4916
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T22:26:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T22:26:00.000+0200",
+     "resume": "2026-10-17T22:26:00.000+0200",
+     "start": "2026-10-17T22:20:00.000+0200"
+    },
+    "title": "U3: Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
