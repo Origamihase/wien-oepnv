@@ -55,7 +55,7 @@
         "source": {
           "type": "string",
           "pattern": "^[a-z_]+(?:,[a-z_]+)*$",
-          "description": "Komma-getrennte Provider-Token ohne Whitespace. Erlaubte Tokens: oebb, vor, wl, google_places, manual. Reihenfolge alphabetisch (places/merge.py:182). Whitespace innerhalb wird vom NamingIssue-Validator gemeldet."
+          "description": "Komma-getrennte Provider-Token ohne Whitespace. Tokens im Bestand: hafas, manual, oebb, oebb_geonetz, osm, vor, wl (google_places nur noch als Altwert, seit 2026-10-16 ohne Eintrag). Reihenfolge alphabetisch (places/merge.py, _update_station). Whitespace innerhalb wird vom NamingIssue-Validator gemeldet."
         },
         "bst_id": {
           "type": "string",

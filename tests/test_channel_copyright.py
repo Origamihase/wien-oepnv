@@ -34,8 +34,9 @@ def test_channel_copyright_names_sources(lang: str, expected: tuple[str, ...]) -
     text = copyrights[0].text or ""
     for part in expected:
         assert part in text
-    # ÖBB texts are not openly licensed: CC BY must not be attached to them,
-    # and VOR/VAO feeds no item.
+    # ÖBB texts are not openly licensed: CC BY must not be attached to them.
+    # VOR/VAO supplies no notice text: the Stammstrecke item is our own text
+    # computed from VAO departure data (NOTICE.md, build_feed comment).
     assert "ÖBB (CC" not in text
     assert "VOR" not in text and "VAO" not in text
 

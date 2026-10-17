@@ -14,7 +14,8 @@ MIT weiterlizenziert, sondern mit ihrer Herkunft ausgewiesen.
 
 Die Meldungstexte stammen von den Anbietern. Der englische Feed ist eine
 maschinelle Übersetzung dieser Texte und ändert nichts an ihrer Herkunft. Beide
-Feeds nennen die Quellen im `<copyright>`-Element des Kanals.
+Feeds nennen die Quellen im `<copyright>`-Element des Kanals, und seit
+17.10.2026 nennt jedes Item seine Quelle im Element `<source>`.
 
 Die Texte erscheinen **bearbeitet**: Titel und Beschreibungen werden gekürzt und
 vereinheitlicht, der englische Feed ist maschinell übersetzt. CC BY 4.0
@@ -28,6 +29,7 @@ vollständigen Link auf diese Datei.
 | Wiener Linien (OGD-Echtzeitdaten, `wienerlinien.at/ogd_realtime`) | Störungs- und Baustellenmeldungen | CC BY 4.0 laut [Wiener Linien Open Data](https://www.wienerlinien.at/open-data) („unter Angabe der Datenherkunft“) | „Datenquelle: Wiener Linien“ |
 | Stadt Wien (OGD, `data.wien.gv.at`, Layer `ogdwien:BAUSTELLEN…OGD`) | Baustellen mit Öffi-Bezug | CC BY 4.0 | „Datenquelle: Stadt Wien – data.wien.gv.at“ |
 | ÖBB (RSS-Meldungen von `fahrplan.oebb.at`) | Bahnmeldungen mit Wien-Bezug | **keine offene Lizenz bekannt**; es gelten die Nutzungsbedingungen der ÖBB | „© ÖBB“ |
+| VOR/VAO ReST API (Abfahrtsdaten) | die Meldung „S-Bahn Stammstrecke Verspätungen“, wenn der Monitor eine Verspätungsepisode erkennt; ihr Text („Durchschnittliche Verspätung von … min in Richtung …“) ist eine eigene Auswertung, kein Text von VOR/VAO | Nutzungsbedingungen von VOR/VAO (siehe „Statistik“ unten) | `<source>` VOR/VAO am Item |
 | ÖBB-Infrastruktur GeoNetz (`data/oebb_geonetz_stops.json`) | Koordinaten der ÖBB-Bahnhöfe in `<georss:point>`/`<georss:line>` | [CC BY 3.0 AT](https://creativecommons.org/licenses/by/3.0/at/deed.de) | „Datenquelle: [ÖBB-Infrastruktur AG](https://infrastruktur.oebb.at/de/)“ |
 | Wiener Linien OGD Haltestellen (`data/wienerlinien-ogd-haltestellen.csv`) | Koordinaten verlegter WL-Haltestellen in `<georss:point>` | CC BY 4.0 | „Datenquelle: Wiener Linien“ |
 | Stadt Wien (OGD, Baustellen-Layer) | Koordinate der Baustelle in `<georss:point>` | CC BY 4.0 | „Datenquelle: Stadt Wien – data.wien.gv.at“ |
