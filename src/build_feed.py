@@ -7799,6 +7799,88 @@ def _resolve_item_link(candidate: Any, ident: str) -> str:
     return sanitized or feed_config.FEED_LINK
 
 
+@dataclasses.dataclass(frozen=True, slots=True)
+class _ItemSource:
+    """Who an item comes from: its ``<source>`` tag and its link target.
+
+    ``hosts`` are the domains an item link may point to; any other link
+    (a dead catalogue page, another operator's site) is replaced by
+    ``link``, the operator's own page for its current notices.
+    """
+
+    name_de: str
+    name_en: str
+    url: str
+    hosts: tuple[str, ...]
+    link: str
+
+
+_OEBB_STRECKENINFO_URL = (
+    "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&"
+)
+_WL_BETRIEBSINFO_URL = "https://www.wienerlinien.at/betriebsinfo"
+_WIEN_BAUSTELLEN_URL = "https://www.wien.gv.at/verkehr/baustellen"
+
+# Michael, 17.10.2026: "Meldungen von der ÖBB sollen zu ÖBB verlinken und eine
+# Quellenangabe als Tag beinhalten. Meldungen der Wiener Linien sollen zu den
+# Wiener Linien verlinken und eine Quellenangabe als Tag für die Wiener Linien
+# haben. Das Selbe für Baustellenmeldungen der Stadt Wien u.s.w." So every
+# item links to the operator it is about and carries an RSS ``<source>``
+# naming where it comes from. The Stammstrecke monitor reports ÖBB S-Bahn
+# trains, so it links to the ÖBB-Streckeninformation like the ÖBB notices
+# (his yes 17.10.2026), while its tag names the data behind it, VOR/VAO.
+# Keyed by the item's ``source`` field; an unknown source keeps its link and
+# gets no tag.
+_ITEM_SOURCES: dict[str, _ItemSource] = {
+    "Wiener Linien": _ItemSource(
+        "Wiener Linien",
+        "Wiener Linien",
+        _WL_BETRIEBSINFO_URL,
+        ("wienerlinien.at",),
+        _WL_BETRIEBSINFO_URL,
+    ),
+    "ÖBB": _ItemSource(
+        "ÖBB", "ÖBB", _OEBB_STRECKENINFO_URL, ("oebb.at",), _OEBB_STRECKENINFO_URL
+    ),
+    "Stadt Wien – Baustellen": _ItemSource(
+        "Stadt Wien",
+        "City of Vienna",
+        _WIEN_BAUSTELLEN_URL,
+        ("wien.gv.at",),
+        _WIEN_BAUSTELLEN_URL,
+    ),
+    "VOR/VAO": _ItemSource(
+        "VOR/VAO",
+        "VOR/VAO",
+        "https://www.verkehrsauskunft.at/start",
+        ("oebb.at",),
+        _OEBB_STRECKENINFO_URL,
+    ),
+}
+
+
+def _item_source(it: Any) -> _ItemSource | None:
+    """Return the :class:`_ItemSource` for item ``it`` or ``None`` when unknown."""
+    source = it.get("source")
+    return _ITEM_SOURCES.get(source) if isinstance(source, str) else None
+
+
+def _link_on_hosts(link: str, hosts: tuple[str, ...]) -> bool:
+    """Return whether ``link`` points to one of ``hosts`` or a subdomain."""
+    host = (urlparse(link).hostname or "").lower()
+    return any(host == h or host.endswith("." + h) for h in hosts)
+
+
+def _source_item_link(it: Any, ident: str) -> str:
+    """Return the item ``<link>``: the resolved link while it stays with the
+    item's operator, else the operator's own notices page."""
+    link = _resolve_item_link(it.get("link"), ident)
+    src = _item_source(it)
+    if src is not None and not _link_on_hosts(link, src.hosts):
+        return src.link
+    return link
+
+
 def _cdata_content(s: str) -> str:
     """Prepare a string for inclusion in a CDATA block, handling ']]>'."""
     return s.replace("]]>", "]]]]><![CDATA[>")
@@ -10448,7 +10530,7 @@ def _format_item_content(
     )
     title_lead = repair_saint_abbreviation(_SPACE_BEFORE_COMMA_RE.sub("", title_lead))
     raw_desc = _SPACE_BEFORE_COMMA_RE.sub("", raw_desc)
-    link = _resolve_item_link(it.get("link"), ident)
+    link = _source_item_link(it, ident)
 
     raw_guid = it.get("guid") or ident
     # Security: route the upstream-supplied guid through ``_sanitize_text``
@@ -10917,6 +10999,14 @@ def _emit_item(
     if isinstance(pubDate, datetime):
         ET.SubElement(item, "pubDate").text = _fmt_rfc2822(pubDate)
 
+    # Source tag (see ``_ITEM_SOURCES``): the name of the source, with its
+    # page in the ``url`` attribute RSS 2.0 requires.
+    item_source = _item_source(it_dict)
+    if item_source is not None:
+        source_elem = ET.SubElement(item, "source")
+        source_elem.text = item_source.name_en if lang == "en" else item_source.name_de
+        source_elem.set("url", item_source.url)
+
     # Extensions
     ET.SubElement(item, "{https://wien-oepnv.example/schema}first_seen").text = _fmt_rfc2822(fs_dt)
 
@@ -11003,8 +11093,9 @@ _CHANNEL_METADATA_EN: dict[str, str] = {
 }
 
 # Michael, 16.10.2026: the code stays MIT, the notice texts are not ours to
-# license. The channel names the sources and their terms once; items stay
-# untouched, so nothing changes on the EasySignage displays. VOR/VAO feeds
+# license. The channel names the sources and their terms once; titles and
+# texts stay untouched, so nothing changes on the EasySignage displays (each
+# item names its source in ``<source>`` since 17.10.2026, ``_ITEM_SOURCES``). VOR/VAO feeds
 # no item (only the Stammstrecke statistics) and is therefore not named here.
 # The GeoRSS coordinates (:func:`_item_geometry`) come only from the three
 # open datasets ``open_data_coordinate`` and the Baustellen data accept

@@ -238,7 +238,7 @@ Cache zu lesen oder zu schreiben.
 | `EVENT_SOURCE` | `"VOR/VAO"` | `source`-Feld der emittierten Events (vorher `"ÖBB"`; geändert mit der 2026-05-09-Migration, weil die Datenquelle inzwischen technisch die VOR/VAO-API ist). |
 | `EVENT_CATEGORY` | `"Störung"` | RSS-`category`-Feld. |
 | `EVENT_TITLE` | `"S-Bahn Stammstrecke Verspätungen"` | konstantes Item-Title. |
-| `EVENT_LINK` | `https://www.wienerlinien.at/web/wienerlinien/oeffis-stoerungen-strecke` | weiterführender Link für Feed-Reader. |
+| `EVENT_LINK` | `https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&` | weiterführender Link für Feed-Reader. |
 
 ### Trigger-Gate, Anzeigewert, First-Seen
 
@@ -282,7 +282,7 @@ Pro Richtung und pro Build:
   "category": "Störung",
   "title": "S-Bahn Stammstrecke Verspätungen",
   "description": "Durchschnittliche Verspätung von 12.5 Minuten in Richtung Meidling [Seit 09.05.2026]",
-  "link": "https://www.wienerlinien.at/web/wienerlinien/oeffis-stoerungen-strecke",
+  "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
   "guid": "<sha256(stammstrecke_delay_meidling|<iso-first-seen>)>",
   "pubDate": "2026-05-10T08:30:00+02:00",
   "starts_at": "2026-05-09T08:30:00+02:00",

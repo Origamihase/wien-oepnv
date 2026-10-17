@@ -117,9 +117,10 @@ _OUTPUT_FORMAT_CANDIDATES: tuple[str, ...] = (
 # offending parameter fits comfortably in 2 KiB; the cap keeps a hostile /
 # oversized upstream body from being buffered into the log.
 _DIAGNOSTIC_MAX_BYTES = 2048
-DEFAULT_INFO_URL = (
-    "https://www.data.gv.at/katalog/en/dataset/baustellen-wien-verkehrsbeeintraechtigungen"
-)
+# Item link: the Stadt Wien page listing the current construction sites. The
+# former data.gv.at catalogue page answers 404 since the portal moved
+# (checked 17.10.2026); the feed also links every Stadt Wien item there.
+DEFAULT_INFO_URL = "https://www.wien.gv.at/verkehr/baustellen"
 DEFAULT_FALLBACK_PATH = REPO_ROOT / "data" / "samples" / "baustellen_sample.geojson"
 VIENNA_TZ = ZoneInfo("Europe/Vienna")
 USER_AGENT = "Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-oepnv)"
