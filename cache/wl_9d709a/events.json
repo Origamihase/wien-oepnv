@@ -848,7 +848,7 @@
     "guid": "b4c2e5634daffb2953a449e1106154bca73bdb498b00ff9111c29ce9d41ff3ae",
     "pubDate": "2026-10-17T14:37:00+02:00",
     "starts_at": "2026-10-17T14:37:00+02:00",
-    "ends_at": "2026-10-17T23:55:00+02:00",
+    "ends_at": "2026-10-17T18:01:00+02:00",
     "_identity": "wl|störung|L=12A|D=2026-10-17|TK=12a verspätungen",
     "_wl_ids": [
       "I20261017-0019"
@@ -894,6 +894,22 @@
     "starts_at": "2026-10-17T05:00:05+02:00",
     "ends_at": "2026-10-17T23:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-10-17|TK=bhf hütteldorf öbb ersatzbus für 80"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "24A: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 24A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "647389adc701cc0e0d20ee18f6ee0001853021d81f73777b06c4716df3f44cb0",
+    "pubDate": "2026-10-17T17:57:00+02:00",
+    "starts_at": "2026-10-17T17:57:53+02:00",
+    "ends_at": "2026-10-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=24A|D=2026-10-17|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261017-0026"
+    ],
+    "_incident_start": "2026-10-17T17:57:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1090,6 +1106,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "57A: Polizeieinsatz",
+    "description": "Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1479d69628ad6774aff996064517e6a4ab864e04445cce50bdca7679b4465bb8",
+    "pubDate": "2026-10-17T17:59:00+02:00",
+    "starts_at": "2026-10-17T17:59:00+02:00",
+    "ends_at": "2026-10-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=57A|D=2026-10-17|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261017-0028"
+    ],
+    "_incident_start": "2026-10-17T17:59:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1186,6 +1218,22 @@
     "starts_at": "2026-10-14T00:00:23+02:00",
     "ends_at": "2026-10-17T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-14|TK=ersatzverkehr"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Verunreinigung",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9779e7ace261e01ddc018942c222784a1d556276f8f642723bab39617b6cccfc",
+    "pubDate": "2026-10-17T17:58:00+02:00",
+    "starts_at": "2026-10-17T17:58:00+02:00",
+    "ends_at": "2026-10-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=U1|D=2026-10-17|TK=u1 verunreinigung",
+    "_wl_ids": [
+      "I20261017-0027"
+    ],
+    "_incident_start": "2026-10-17T17:58:00+02:00"
   },
   {
     "source": "Wiener Linien",
