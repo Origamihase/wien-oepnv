@@ -5,6 +5,24 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Lizenz-Audit: Angaben in `NOTICE.md` gegen die Originaltexte korrigiert (2026-10-17)**:
+  Eine Prüfung aller Quellen gegen ihre Originalseiten (data.gv.at,
+  data.oebb.at, Wiener Linien Open Data, oebb.at, Open-Meteo, Hugging Face,
+  PyPI) hat falsche oder fehlende Angaben gefunden, keine im Feed.
+  `data/vor-haltestellen.csv` stand als „VOR, CC BY 4.0“ in `NOTICE.md` und
+  `docs/development.md`; die Werte kamen aber bis 11.05.2026 aus dem
+  Auskunftssystem der AnachB-Webapp des VOR (`anachb.vor.at`), für das keine
+  offene Lizenz bekannt ist. Sie heißen jetzt „ungeklärt“ wie die HAFAS-Daten,
+  und `data/gtfs/stops.txt` steht als daraus abgeleiteter Auszug bei VOR statt
+  bei ÖBB-Infrastruktur. Das Verzeichnis der Verkehrsstationen nennt
+  „ÖBB-Infrastruktur AG“ jetzt als Link, wie die Datensatzseite es verlangt;
+  `public-transport/hafas-client` ist ISC- statt MIT-lizenziert; das
+  Übersetzungsmodell steht unter Apache-2.0; OSM-Werte bleiben unter ODbL 1.0
+  mit Link auf openstreetmap.org/copyright. Neu in `NOTICE.md`: `data/raw/`
+  (die ÖBB-Rohdaten gehören zu den ÖBB-Inhalten), die Zustandsdateien mit
+  Meldungstexten und die eigenen Dateien. Der Test
+  `tests/test_notice_data_coverage.py` verlangt künftig für jede Datei unter
+  `data/` eine Zeile in `NOTICE.md`. Feed, Webseite und TV ändern sich nicht.
 * **VAO-„Start“-Vertrag: Hinweis auf die Grundlage der Stammstrecken-Daten (2026-10-17)**:
   Michael hat den Vertrag des kostenlosen VAO-Pakets „Start“ übergeben (bis
   zu 100 Abfragen pro Tag; der Vertragstext bleibt außerhalb des
