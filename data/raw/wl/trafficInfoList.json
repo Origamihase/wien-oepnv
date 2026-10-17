@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261017-0005-F01, I20260917-0012, I20261017-0005, I20260922-0032, I20260925-0011, I20260909-0007"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261017-0005-F01, I20260909-0007, I20261017-0006, I20261017-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R119-136, R118-136, R36-152, R2025-671, R318-437, R293-474, R116-136, R117-136, R100-136, R101-136, R102-136, R103-136, R115-136, R45-136, R19-136, R130-136, R1448-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R1974-466, R500-101, R248-102, R247-102, R556-102, R251-102, R249-102, R1368-102, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R36-152, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R2025-671, R318-437, R1472-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -206,41 +206,6 @@
       "2": "ptTram"
      }
     },
-    "description": "Linie 2: Fahrtbehinderung in Richtung Friedrich-Engels-Platz. Voraussichtliche Dauer: 08:30 Uhr. Grund: Verkehrsunfall im Bereich Mayssengasse 35.",
-    "descriptionHTML": "Linie 2:<br>Fahrtbehinderung in Richtung Friedrich-Engels-Platz.<br> <br>Voraussichtliche Dauer: 08:30 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Mayssengasse 35.",
-    "location": "Mayssengasse 35",
-    "name": "I20261017-0005",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "102",
-       "lineName": "2",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T08:05:00.000+0200",
-     "end": "2026-10-17T08:13:00.000+0200",
-     "lastUpdate": "2026-10-17T08:13:00.000+0200",
-     "resume": "2026-10-17T08:13:00.000+0200",
-     "start": "2026-10-17T08:05:00.000+0200"
-    },
-    "title": "2: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
     "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "location": "Mayssengasse 35",
@@ -260,15 +225,83 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-17T08:13:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T08:13:00.000+0200",
-     "resume": "2026-10-17T08:13:00.000+0200",
+     "end": "2026-10-17T09:05:00.000+0200",
+     "lastUpdate": "2026-10-17T09:05:00.000+0200",
+     "resume": "2026-10-17T09:05:00.000+0200",
      "start": "2026-10-17T08:05:00.000+0200"
     },
     "title": "2: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "71": "ptTram"
+     }
+    },
+    "description": "Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie 71:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261017-0006",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "171",
+       "lineName": "71",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T09:20:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T09:20:00.000+0200",
+     "resume": "2026-10-17T09:19:00.000+0200",
+     "start": "2026-10-17T09:19:00.000+0200"
+    },
+    "title": "71: Verspätungen"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram"
+     }
+    },
+    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "Linie 11:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Rettungseinsatz.",
+    "name": "I20261017-0007",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "111",
+       "lineName": "11",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T09:22:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T09:22:00.000+0200",
+     "resume": "2026-10-17T09:22:00.000+0200",
+     "start": "2026-10-17T09:22:00.000+0200"
+    },
+    "title": "11: Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -449,24 +482,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1368-102",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     1368
-    ],
-    "time": {
-     "end": "2026-10-17T09:06:00.000+0200",
-     "start": "2026-10-17T08:07:24.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -988,78 +1003,6 @@
     "title": "Busse halten\nHoßplatz 11"
    },
    {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R247-102",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     247
-    ],
-    "time": {
-     "end": "2026-10-17T09:06:00.000+0200",
-     "start": "2026-10-17T08:07:23.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R248-102",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     248
-    ],
-    "time": {
-     "end": "2026-10-17T09:06:00.000+0200",
-     "start": "2026-10-17T08:07:23.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R249-102",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     249
-    ],
-    "time": {
-     "end": "2026-10-17T09:06:00.000+0200",
-     "start": "2026-10-17T08:07:23.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R251-102",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     251
-    ],
-    "time": {
-     "end": "2026-10-17T09:06:00.000+0200",
-     "start": "2026-10-17T08:07:23.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -1166,24 +1109,6 @@
      "start": "2026-10-17T05:00:05.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R556-102",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     556
-    ],
-    "time": {
-     "end": "2026-10-17T09:06:00.000+0200",
-     "start": "2026-10-17T08:07:23.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",

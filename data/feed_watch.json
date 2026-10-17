@@ -1,16 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-17T07:01:11.627110+00:00",
- "built": "2026-10-17T09:01:03+02:00",
+ "updated": "2026-10-17T07:31:15.410010+00:00",
+ "built": "2026-10-17T09:30:58+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-17T09:01:03+02:00",
+  "built": "2026-10-17T09:30:58+02:00",
   "items": [
    {
-    "title": "2: Verkehrsunfall",
-    "time_line": "Seit 08:05"
+    "title": "71: Verspätungen",
+    "time_line": "Seit 09:19"
+   },
+   {
+    "title": "11: Rettungseinsatz",
+    "time_line": "Seit 09:22"
    },
    {
     "title": "Wien Hütteldorf ↔ Wien Hauptbahnhof",
@@ -43,10 +47,6 @@
    {
     "title": "48A: Neubaugasse, Neustiftgasse",
     "time_line": "Ab Mo 19.10."
-   },
-   {
-    "title": "66A/N66: Liesing, Schulzentrum",
-    "time_line": "Bis 28.10."
    }
   ]
  },
@@ -6130,6 +6130,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 99
+   }
+  },
+  {
+   "t": "2026-10-17T07:31:15.410010+00:00",
+   "raw": {
+    "wl-stoerungen": 58,
+    "wl-hinweise": 93,
+    "oebb": 159,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 17,
+    "oebb": 136,
+    "baustellen": 69
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 100
    }
   }
  ]
