@@ -35,10 +35,26 @@ def test_channel_copyright_names_sources(lang: str, expected: tuple[str, ...]) -
     for part in expected:
         assert part in text
     # ÖBB texts are not openly licensed: CC BY must not be attached to them.
-    # VOR/VAO supplies no notice text: the Stammstrecke item is our own text
-    # computed from VAO departure data (NOTICE.md, build_feed comment).
     assert "ÖBB (CC" not in text
-    assert "VOR" not in text and "VAO" not in text
+
+
+@pytest.mark.parametrize(
+    ("lang", "basis"),
+    [
+        ("de", "Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH."),
+        ("en", "S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH."),
+    ],
+)
+def test_channel_copyright_names_vao_start_as_basis(lang: str, basis: str) -> None:
+    """VAO "Start" contract, point 5.3: the service names the VAO "Start" access as its basis.
+
+    Michael chose on 2026-10-17 to carry the sentence in both feeds. VAO is a
+    basis, not a licensor of notice texts: the Stammstrecke item is our own
+    text computed from VAO departure data, so no licence is attached to it.
+    """
+    text = build_feed._channel_metadata(lang)["copyright"]
+    assert basis in text
+    assert "VAO (CC" not in text
 
 
 

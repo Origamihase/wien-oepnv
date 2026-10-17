@@ -113,6 +113,18 @@ DEFAULT_README_WINDOW_DAYS: Final = 30
 # in two more spots, which understated/overstated exceedances on a threshold change.
 STAMMSTRECKE_THRESHOLD_MINUTES: Final = DELAY_THRESHOLD_MINUTES
 README_PENDING_PLACEHOLDER: Final = "_wird berechnet…_"
+# VAO "Start" contract, point 5.3: the statistics page states that the VAO
+# "Start" access is the basis of the Stammstrecke data (NOTICE.md).
+VAO_BASIS_NOTE: Final = (
+    "> Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der "
+    "Verkehrsauskunft Österreich VAO GmbH."
+)
+# Michael, 17.10.2026: every source gets its own attribution. The disruption
+# statistics count feed items from all four sources, each under its own.
+STOERUNGEN_SOURCES_NOTE: Final = (
+    "> Quellen: die Meldungen des Feeds, jede unter ihrer eigenen Quelle – "
+    "Wiener Linien, ÖBB, Stadt Wien (Baustellen) und VOR/VAO (Stammstrecke)."
+)
 
 # Sentinel emitted by :func:`src.utils.stats.extract_location_name` when
 # no directory-anchored station can be identified for a disruption (the
@@ -841,7 +853,10 @@ def render_markdown(
         )
     )
 
-    sections.extend(["## Stammstrecke", ""])
+    # VAO "Start" contract, point 5.3: name the VAO "Start" access as the
+    # basis of the Stammstrecke data (Michael, 17.10.2026; NOTICE.md). The
+    # Ausfälle section below comes from the same VAO queries and repeats it.
+    sections.extend(["## Stammstrecke", "", VAO_BASIS_NOTE, ""])
     sections.extend(
         _format_directions_section(stammstrecke, coverage_note=coverage_note)
     )
@@ -868,7 +883,7 @@ def render_markdown(
         render_avg_delay_hour(stammstrecke.by_hour_avg, BAR_GLYPHS["delay_hour"])
     )
 
-    sections.extend(["## Ausfälle", ""])
+    sections.extend(["## Ausfälle", "", VAO_BASIS_NOTE, ""])
     sections.extend(_format_ausfall_directions_section(ausfaelle))
     sections.extend(_format_ausfall_lines_section(ausfaelle))
     sections.extend(
@@ -886,7 +901,7 @@ def render_markdown(
         )
     )
 
-    sections.extend(["## Störungen", ""])
+    sections.extend(["## Störungen", "", STOERUNGEN_SOURCES_NOTE, ""])
     sections.extend(_format_providers_section(stoerungen))
     sections.extend(
         render_weekday_bars(

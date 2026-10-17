@@ -5,6 +5,30 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **VAO-„Start“-Vertrag: Hinweis auf die Grundlage der Stammstrecken-Daten (2026-10-17)**:
+  Michael hat den Vertrag des kostenlosen VAO-Pakets „Start“ übergeben (bis
+  zu 100 Abfragen pro Tag; der Vertragstext bleibt außerhalb des
+  Repositorys). Die Prüfung gegen unsere Nutzung: Abfragezahl (48 pro Tag,
+  Gate vor jedem Abruf), produktiver Einsatz, Verwahrung der Zugangsdaten
+  und ein einziger Zugang sind konform; die Stammstrecken-Statistik darf
+  veröffentlicht werden, weil sie eigene Auswertungen und keine Rohantworten
+  zeigt. Offen war Punkt 5.3: Der Dienst muss deutlich sagen, dass der
+  VAO-„Start“-Zugang seine Grundlage ist; bisher stand nur „VOR/VAO“ als
+  Quellenname, und das `<copyright>` nannte VAO gar nicht. Michael hat
+  entschieden, den Hinweis überall zu führen: „Stammstrecken-Daten:
+  Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO
+  GmbH.“ steht jetzt im `<copyright>` beider Feeds (EN übersetzt), in der
+  Fußzeile der Webseite (DE und EN), auf `docs/statistik.md`, im README und
+  in `NOTICE.md`. Titel und Texte der Meldungen ändern sich nicht, am
+  Fernseher bleibt alles gleich; der Quellen-Tag `<source>` VOR/VAO bleibt.
+  Endet der Vertrag, müssen die Hinweise wieder entfernt werden (Punkt 7.7).
+  Dazu Michael: „Bitte beachte, dass jede Quelle den passenden Quellenhinweis
+  erhält. ÖBB für die ÖBB, WL für WL und VOR/VAO für VOR/VAO“ und „Am TV soll
+  sich weiterhin nichts ändern“. Jede Meldung trägt ihre Quelle schon seit
+  #2033 im `<source>`; neu nennen auch die Statistik-Seite und das Dashboard
+  ihre Quelle je Abschnitt: Stammstrecke und Ausfälle „VOR/VAO“ (beide aus
+  denselben VAO-Abfragen), die Störungsstatistik ihre vier Quellen, jede
+  Meldung unter ihrer eigenen.
 * **Doku: Stammstrecken-Meldung und Stationsquellen richtig beschrieben (2026-10-17)**:
   Die unabhängige Prüfung von #2025 bis #2035 fand zwei falsche Angaben.
   (1) `NOTICE.md`, ein Code-Kommentar in `src/build_feed.py`, ein

@@ -11162,6 +11162,17 @@ _CC_BY_3_AT_URL = "https://creativecommons.org/licenses/by/3.0/at/deed.de"
 _OEBB_INFRA_URL = "https://infrastruktur.oebb.at/de/"
 _NOTICE_URL = "https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md"
 
+# VAO "Start" contract, point 5.3: name the VAO "Start" access as the basis
+# of the Stammstrecke data (see the comment above ``_CHANNEL_COPYRIGHT_DE``).
+_VAO_BASIS_DE = (
+    "Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der "
+    "Verkehrsauskunft Österreich VAO GmbH."
+)
+_VAO_BASIS_EN = (
+    "S-Bahn trunk-line data: based on the VAO “Start” access of "
+    "Verkehrsauskunft Österreich VAO GmbH."
+)
+
 # Channel-level metadata for the English feed mirror (docs/feed.en.xml).
 # Kept as a module-level constant so the EN strings are reviewable in one
 # place and never reach the upstream-controlled translation pipeline —
@@ -11180,7 +11191,7 @@ _CHANNEL_METADATA_EN: dict[str, str] = {
         f"{_CC_BY_4_URL}), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: "
         f"Datenquelle: ÖBB-Infrastruktur AG ({_OEBB_INFRA_URL}; GeoNetz, CC BY 3.0 AT, "
         f"{_CC_BY_3_AT_URL}), Wiener Linien (OGD stops) and City of Vienna – "
-        f"data.wien.gv.at (CC BY 4.0). Details: {_NOTICE_URL}"
+        f"data.wien.gv.at (CC BY 4.0). {_VAO_BASIS_EN} Details: {_NOTICE_URL}"
     ),
 }
 
@@ -11188,10 +11199,14 @@ _CHANNEL_METADATA_EN: dict[str, str] = {
 # license. The channel names the sources and their terms once; titles and
 # texts stay untouched, so nothing changes on the EasySignage displays (each
 # item names its source in ``<source>`` since 17.10.2026, ``_ITEM_SOURCES``).
-# VOR/VAO is not named here: its one feed item, the Stammstrecke delay notice
-# (``src.feed.stammstrecke``, ``<source>`` VOR/VAO), is our own text computed
-# from VAO departure data, not a notice text of VOR/VAO; NOTICE.md lists it
-# under the feeds and points to the VOR/VAO terms.
+# VAO is named as the basis of the Stammstrecke data, not as a licensor:
+# the Stammstrecke delay notice (``src.feed.stammstrecke``, ``<source>``
+# VOR/VAO) is our own text computed from VAO departure data. The VAO "Start"
+# contract (point 5.3) requires the service to state unmistakably that the
+# VAO "Start" access is its basis; Michael chose on 17.10.2026 to carry that
+# sentence in both feeds, the site footer, docs/statistik.md, README and
+# NOTICE.md (docs/architecture.md §7). Should the contract end, point 7.7
+# requires removing it again.
 # The GeoRSS coordinates (:func:`_item_geometry`) come only from the three
 # open datasets ``open_data_coordinate`` and the Baustellen data accept
 # (ÖBB-Infrastruktur GeoNetz, Wiener Linien OGD stops, Stadt Wien), so the
@@ -11203,7 +11218,7 @@ _CHANNEL_COPYRIGHT_DE = (
     f"{_CC_BY_4_URL}), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: "
     f"Datenquelle: ÖBB-Infrastruktur AG ({_OEBB_INFRA_URL}; GeoNetz, CC BY 3.0 AT, "
     f"{_CC_BY_3_AT_URL}), Wiener Linien (OGD-Haltestellen) und Stadt Wien – "
-    f"data.wien.gv.at (CC BY 4.0). Details: {_NOTICE_URL}"
+    f"data.wien.gv.at (CC BY 4.0). {_VAO_BASIS_DE} Details: {_NOTICE_URL}"
 )
 
 

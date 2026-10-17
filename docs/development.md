@@ -66,7 +66,7 @@ Der Feed-Build folgt einem klaren Ablauf:
 | `scripts/`            | Kommandozeilen-Werkzeuge für Cache-Updates, Stationspflege sowie API-Hilfsfunktionen.            |
 | `cache/`              | Versionierte Provider-Zwischenspeicher (`wl`, `oebb`, `baustellen`) für reproduzierbare Feed-Builds plus die Stammstrecke-Sidecars (`pending_trips.json`, `recently_finalised.json`, `episode_starts.json`, `poll_status.json`); VOR hat seit 2026-05-11 kein eigenes Cache-Verzeichnis mehr (siehe Hinweis unten). |
 | `data/`               | Stationsverzeichnis, GTFS-Testdaten und Hilfslisten (z. B. Pendler-Whitelist).                   |
-| `docs/`               | Audit-Berichte, Referenzen, Beispiel-Feeds und das offizielle VOR/VAO-API-Handbuch.              |
+| `docs/`               | Audit-Berichte, Referenzen und Beispiel-Feeds (das VAO-Handbuch ist nur verlinkt, siehe unten). |
 | `.github/workflows/`  | Automatisierte Jobs für Cache-Updates, Stationspflege, Feed-Erzeugung und Tests.                |
 | `tests/`              | Umfangreiche Pytest-Suite (über 11 000 Tests in rund 640 Modulen, Stand 2026-10-10) für Feed-Logik, Provider-Adapter und Utility-Funktionen. |
 

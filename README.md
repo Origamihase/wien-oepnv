@@ -36,6 +36,8 @@ Dieses Projekt bündelt Störungs- und Baustellenmeldungen der Wiener Linien (WL
 
 Die S-Bahn-Stammstrecke ist das Rückgrat des Pendlerverkehrs. Wir erfassen und werten reale Verspätungen, Ausfälle und Störungen kontinuierlich aus. Ausfälle werden aus den bestehenden VAO-Abfahrtsmonitor-Abfragen extrahiert und im 30-Min-Zyklus deduplizierungssicher gezählt.
 
+> Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der [Verkehrsauskunft Österreich VAO GmbH](https://www.verkehrsauskunft.at/start) (kostenlos, bis zu 100 Abfragen pro Tag; Hinweis nach Punkt 5.3 des Vertrags, siehe [`NOTICE.md`](NOTICE.md)).
+
 Mehr Statistiken findest du hier:
 [**📊 Zum detaillierten Dashboard**](docs/statistik.md)
 
