@@ -2262,6 +2262,36 @@ Zukunft enger werden, sind die niedrig hängenden Hebel:
   `POLL_STALE_HOURS` (unten) über die nächtliche Pause gehoben werden,
   sonst färbt die Pause den Health check rot.
 
+### Der VAO-„Start“-Vertrag (geprüft 2026-10-17)
+
+Michael nutzt das kostenlose Paket „Start“ der Verkehrsauskunft Österreich
+VAO GmbH; den Vertrag hat er am 17.10.2026 übergeben, sein Text liegt nicht
+im Repository. Was er für dieses Projekt bedeutet:
+
+* **Abfragen:** bis zu 100 pro Kalendertag (Punkt 1.3). Der Zähler
+  `data/vor_request_count.json` rechnet nach Wiener Kalendertag, die beiden
+  Schutzschichten oben halten den Monitor bei 48.
+* **Nutzung:** produktiver Einsatz und das Einbetten der Abfrageergebnisse
+  in den eigenen Dienst sind erlaubt (Präambel Punkt 4, Punkt 1.3); Rechte an
+  den Daten selbst räumt die VAO nicht ein. Feed und Statistik zeigen deshalb
+  nur eigene Auswertungen (Verspätungsepisoden, Ausfallzählungen), nie
+  Rohantworten.
+* **Zugangsdaten und Doku:** die Access-ID liegt nur im Secret
+  `VOR_ACCESS_ID` und wird in Logs maskiert (Punkt 5.4); es gibt genau einen
+  Zugang (Punkt 5.5). Das Handbuch stellt die VAO selbst öffentlich bereit;
+  das Repository verlinkt es nur (`docs/development.md`).
+* **Hinweis auf die Grundlage (Punkt 5.3):** Michael hat am 17.10.2026
+  entschieden, den Satz „Stammstrecken-Daten: Grundlage ist der
+  VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH.“ überall zu
+  führen: im `<copyright>` beider Feeds (`_VAO_BASIS_DE`/`_VAO_BASIS_EN` in
+  `src/build_feed.py`), in der Fußzeile der Webseite (DE in
+  `docs/site.html`, EN in `docs/assets/site.js`), auf `docs/statistik.md`
+  (`VAO_BASIS_NOTE` in `scripts/generate_markdown_stats.py`), im README und in
+  `NOTICE.md`. VAO ist dort Grundlage, kein Lizenzgeber: Die
+  Stammstrecken-Meldung ist ein eigener Text. Der Quellen-Tag `<source>`
+  VOR/VAO am Item bleibt. Endet der Vertrag, müssen diese Hinweise wieder
+  entfernt werden (Punkt 7.7).
+
 ### Überwachung: Abruf kaputt oder keine Züge (seit 2026-10-10)
 
 Betreiberentscheidung (Michael, 2026-10-10): „Der Check soll nur auf

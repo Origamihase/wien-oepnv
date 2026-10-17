@@ -696,3 +696,22 @@ def test_main_returns_zero_with_no_input_files(tmp_path: Path) -> None:
     assert rc == 0
     body = output.read_text(encoding="utf-8")
     assert "Keine Daten verfügbar" in body
+
+
+def test_render_markdown_names_vao_start_as_basis() -> None:
+    """VAO "Start" contract, point 5.3 (Michael, 17.10.2026; NOTICE.md).
+
+    The statistics page states under the Stammstrecke heading that the VAO
+    "Start" access is the basis of its data, also when there is no data.
+    """
+    md = script.render_markdown(
+        year=2026,
+        generated_at=datetime(2026, 5, 9, 8, 30, tzinfo=VIENNA_TZ),
+        stammstrecke=script.StammstreckeAggregate(),
+        stoerungen=script.StoerungAggregate(),
+        ausfaelle=script.AusfallAggregate(),
+    )
+    assert (
+        "## Stammstrecke\n\n> Stammstrecken-Daten: Grundlage ist der "
+        "VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH.\n" in md
+    )

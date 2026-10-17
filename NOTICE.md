@@ -29,7 +29,7 @@ vollständigen Link auf diese Datei.
 | Wiener Linien (OGD-Echtzeitdaten, `wienerlinien.at/ogd_realtime`) | Störungs- und Baustellenmeldungen | CC BY 4.0 laut [Wiener Linien Open Data](https://www.wienerlinien.at/open-data) („unter Angabe der Datenherkunft“) | „Datenquelle: Wiener Linien“ |
 | Stadt Wien (OGD, `data.wien.gv.at`, Layer `ogdwien:BAUSTELLEN…OGD`) | Baustellen mit Öffi-Bezug | CC BY 4.0 | „Datenquelle: Stadt Wien – data.wien.gv.at“ |
 | ÖBB (RSS-Meldungen von `fahrplan.oebb.at`) | Bahnmeldungen mit Wien-Bezug | **keine offene Lizenz bekannt**; es gelten die Nutzungsbedingungen der ÖBB | „© ÖBB“ |
-| VOR/VAO ReST API (Abfahrtsdaten) | die Meldung „S-Bahn Stammstrecke Verspätungen“, wenn der Monitor eine Verspätungsepisode erkennt; ihr Text („Durchschnittliche Verspätung von … min in Richtung …“) ist eine eigene Auswertung, kein Text von VOR/VAO | Nutzungsbedingungen von VOR/VAO (siehe „Statistik“ unten) | `<source>` VOR/VAO am Item |
+| VOR/VAO ReST API (Abfahrtsdaten) | die Meldung „S-Bahn Stammstrecke Verspätungen“, wenn der Monitor eine Verspätungsepisode erkennt; ihr Text („Durchschnittliche Verspätung von … min in Richtung …“) ist eine eigene Auswertung, kein Text von VOR/VAO | VAO-„Start“-Vertrag der Verkehrsauskunft Österreich VAO GmbH (siehe „Statistik“ unten) | „Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH.“ im `<copyright>` beider Feeds; `<source>` VOR/VAO am Item |
 | ÖBB-Infrastruktur GeoNetz (`data/oebb_geonetz_stops.json`) | Koordinaten der ÖBB-Bahnhöfe in `<georss:point>`/`<georss:line>` | [CC BY 3.0 AT](https://creativecommons.org/licenses/by/3.0/at/deed.de) | „Datenquelle: [ÖBB-Infrastruktur AG](https://infrastruktur.oebb.at/de/)“ |
 | Wiener Linien OGD Haltestellen (`data/wienerlinien-ogd-haltestellen.csv`) | Koordinaten verlegter WL-Haltestellen in `<georss:point>` | CC BY 4.0 | „Datenquelle: Wiener Linien“ |
 | Stadt Wien (OGD, Baustellen-Layer) | Koordinate der Baustelle in `<georss:point>` | CC BY 4.0 | „Datenquelle: Stadt Wien – data.wien.gv.at“ |
@@ -73,8 +73,18 @@ Die Lizenzangaben der offenen Datensätze stammen aus der Tabelle
 ## Statistik (`data/stats/`, `docs/statistik.md`, Website-Dashboard)
 
 Die Störungsstatistik zählt die Feed-Meldungen; es gelten die Angaben zum Feed.
-Die Stammstrecken-Statistik beruht auf Abfragen der VOR/VAO ReST API; für diese
-Antworten gelten die Nutzungsbedingungen von VOR/VAO.
+Die Stammstrecken-Statistik beruht auf Abfragen der VOR/VAO ReST API über den
+kostenlosen VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH (bis zu
+100 Abfragen pro Tag). Der Vertrag erlaubt den produktiven Einsatz und das
+Einbetten der Abfrageergebnisse in den eigenen Dienst, räumt aber keine Rechte an
+den Daten selbst ein (Punkt 1.3). Veröffentlicht werden deshalb nur eigene
+Auswertungen (Verspätungen, Ausfälle), keine Rohantworten. Punkt 5.3 verlangt im
+Dienst und in den Projektdarstellungen den deutlichen Hinweis, dass der
+VAO-„Start“-Zugang die Grundlage ist. Michael hat am 17.10.2026 entschieden, ihn
+überall zu führen: im `<copyright>` beider Feeds, in der Fußzeile der Webseite
+(DE und EN), auf `docs/statistik.md`, im README und hier. Endet der Vertrag,
+müssen diese Hinweise wieder entfernt werden (Punkt 7.7). Der Vertragstext selbst
+liegt nicht im Repository.
 
 ## Wetter auf der Webseite (`docs/site.html`)
 

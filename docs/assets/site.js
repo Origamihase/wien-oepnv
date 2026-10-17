@@ -188,7 +188,9 @@
       "shortened, edited and machine-translated for feed and dashboard: " +
       "Wiener Linien and City of Vienna – data.wien.gv.at under " +
       "<a href=\"https://creativecommons.org/licenses/by/4.0/\" rel=\"external noopener noreferrer\" target=\"_blank\">CC&nbsp;BY&nbsp;4.0</a>, " +
-      "ÖBB alerts &copy;&nbsp;ÖBB (not openly licensed); details in " +
+      "ÖBB alerts &copy;&nbsp;ÖBB (not openly licensed). " +
+      "S-Bahn trunk-line data: based on the VAO “Start” access of " +
+      "Verkehrsauskunft Österreich VAO GmbH. Details in " +
       "<a href=\"https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md\" rel=\"external noopener noreferrer\" target=\"_blank\">NOTICE.md</a>. " +
       "Feed update cadence: roughly every 30&nbsp;minutes. " +
       "This dashboard fetches feed and statistics CSVs <em>directly in the browser</em> – " +

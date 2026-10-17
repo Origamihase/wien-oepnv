@@ -14,6 +14,8 @@ _Automatisch erzeugt am 2026-10-17T00:00+02:00 (Europe/Vienna)._
 
 ## Stammstrecke
 
+> Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH.
+
 ### Beobachtungen je Richtung
 
 > ⚠️ **Eingeschränkte Abdeckung:** Aktuell keine Fahrten von Wien Hbf Richtung **Praterstern** auf der Stammstrecke (zuletzt am 14.08.2026). Die Zahlen unten decken daher nur Richtung **Meidling** ab — **kein Korridor-Gesamtwert**.
