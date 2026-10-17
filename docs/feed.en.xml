@@ -8,31 +8,19 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 17 Oct 2026 16:00:37 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 16:30:40 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[64A: Traffic accident]]></title>
+      <title><![CDATA[2A: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">2b43b2cf270ad0eb82141dcac02a8b63277141db79e08f4221106b9f3fd4836e</guid>
-      <pubDate>Sat, 17 Oct 2026 15:39:00 +0200</pubDate>
+      <guid isPermaLink="false">7153bd0c4f86d5daa0b9fa484bbab50662a40fb9a3f7f706745f8272dc4ce8ec</guid>
+      <pubDate>Sat, 17 Oct 2026 16:23:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Sat, 17 Oct 2026 15:39:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 17 Oct 2026 15:39:00 +0200</ext:starts_at>
+      <ext:first_seen>Sat, 17 Oct 2026 16:23:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 17 Oct 2026 16:23:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 15:39]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 15:39]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[36B: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5c7757da43084f91dfe679a2ec1d858fd746d5d3b67b0243143ee01984b8ff75</guid>
-      <pubDate>Sat, 17 Oct 2026 15:28:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Sat, 17 Oct 2026 15:28:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 17 Oct 2026 15:28:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 15:28]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 15:28]]]></content:encoded>
+      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 16:23]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 16:23]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[61A: Traffic accident]]></title>
@@ -132,6 +120,19 @@
       <georss:point>48.210606 16.344038</georss:point>
       <description>Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works. [Until 03.11.]</description>
       <content:encoded><![CDATA[Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works.<br/>[Until 03.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A: Max-Mauermann-Gasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">56aa798cbb018fbaed4813a991f56c2470867f1f9a0ce034661ba2e01da13007</guid>
+      <pubDate>Wed, 07 Oct 2026 15:30:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Wed, 07 Oct 2026 15:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <georss:point>48.163113 16.409373</georss:point>
+      <description>Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling … [Until 25.12.]</description>
+      <content:encoded><![CDATA[Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling …<br/>[Until 25.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
