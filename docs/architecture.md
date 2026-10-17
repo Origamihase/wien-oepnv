@@ -713,6 +713,29 @@ verdrängt eine andere Störung.
   über alle 563 ÖBB-Texte: keine Ausgabe ändert sich, zehn verstümmelte
   Kürzungen entfallen (`_OEBB_PLACE_LIST_RE`, Test
   `tests/test_oebb_ort_in_liste.py`).
+* **ÖBB: der Text beginnt mit dem Satz, der die Titelstrecke nennt (seit 2026-10-17).**
+  Der Titel einer ÖBB-Meldung ist ihre Wien-relevante Strecke, und die kann
+  aus einem späteren Abschnitt des Textes stammen (`_apply_route_title`). Die
+  ÖBB-Meldung „Salzburg Hbf => Flughafen Wien Bahnhof/Hegyeshalom“ stand am
+  17.10. als „Wien Hütteldorf ↔ Wien Hauptbahnhof“ im Feed, der Text darunter
+  sprach aber von „Salzburg Hbf und Flughafen Wien Bahnhof bzw. Hegyeshalom“
+  und brach nach 180 Zeichen ab, bevor er sagte, was passiert. Die
+  Titelstrecke stand nur im Abschnitt „TEILAUSFALL: … kann der Zug RJ 263
+  zwischen Wien Hütteldorf Bahnhof (U) und Wien Hbf (U) nicht fahren.“, den
+  der Fernseher nie zeigte. Nennt Satz 1 eine Strecke und keine ihrer
+  Stationen steht im Titel, rückt jetzt der erste spätere Satz mit einer
+  Titelstrecke nach vorn; Satz 1 folgt, wenn beide in die 180 Zeichen passen
+  (`_oebb_title_route_first`). Satz 1 bleibt vorn, wenn er keine Strecke
+  nennt (er gilt dann für alle) oder eine Station mit dem Titel teilt
+  („zwischen Gänserndorf und Deutsch Wagram“ unter „Wien Floridsdorf ↔
+  Gänserndorf“ ist derselbe Bau vom Nachbarabschnitt aus, und Satz 1 trägt
+  die Daten). ÖBBs Abschnittsnamen in Großbuchstaben („TEILAUSFALL:“,
+  „GEÄNDERTE FAHRZEITEN:“, „ACHTUNG:“) stehen im Text normal geschrieben
+  („Teilausfall:“), Betreiberwunsch vom 17.10. („„Teilausfall“ gefällt mir
+  besser als „TEILAUSFALL““, `_oebb_section_labels_cased`); Kürzel wie
+  „RJ 263“ oder „ÖBB“ bleiben. Replay über alle 589 ÖBB-Texte im Cache seit
+  Mai: nur diese Meldung ändert sich (drei ihrer Fassungen), Titel und Zahl
+  der Items bleiben gleich.
 * **„Voraussichtlich bis 14:10 Uhr“ statt „Voraussichtliche Dauer: 14:10
   Uhr“ (seit 2026-10-06, Betreiberentscheidung „Dauer-Text anpassen“).**
   WLs Störungsvorlage nennt das erwartete Ende unter einem Dauer-Label. Auf

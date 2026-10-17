@@ -633,6 +633,96 @@ def _lines_in_short(summary: str, title: str) -> str | None:
 _MEASURE_MIN_WORDS_SHOWN = 3
 
 
+# ÖBB heads the sections of a long notice in capitals ("TEILAUSFALL:",
+# "HALTAUSFALL:", "GEÄNDERTE FAHRZEITEN:", "ACHTUNG:", "HINWEISE:"). Once a
+# section leads the shown text (:func:`_oebb_title_route_first`) the label
+# stands on the TV; it reads "Teilausfall:" there, operator request
+# 2026-10-17 ("„Teilausfall“ gefällt mir besser als „TEILAUSFALL“"). Only a
+# capitals run in front of a colon is a label; "ÖBB" or "RJ 263" stay.
+_OEBB_SECTION_LABEL_RE = re.compile(r"\b([A-ZÄÖÜ]{4,}(?:[ /-][A-ZÄÖÜ]{2,})*)(?=\s*:)")
+
+
+def _oebb_section_labels_cased(text: str) -> str:
+    """``"TEILAUSFALL: …"`` → ``"Teilausfall: …"``, every word of the label."""
+    return _OEBB_SECTION_LABEL_RE.sub(
+        lambda m: re.sub(r"[A-ZÄÖÜ]+", lambda w: w[0][0] + w[0][1:].lower(), m[1]), text
+    )
+
+
+def _oebb_route_keys(text: str) -> set[frozenset[str]]:
+    """The station pairs of every ``zwischen A und B`` route in *text*.
+
+    ÖBB writes alternatives into one slot ("zwischen Salzburg Hbf und
+    Flughafen Wien Bahnhof bzw. Hegyeshalom"); each one is its own pair.
+    """
+    from .providers.oebb import _extract_zwischen_routes
+    from .utils.stations import station_named_in_text
+
+    def names(slot: str) -> list[str]:
+        infos = (station_named_in_text(part.strip()) for part in re.split(r"\s+bzw\.?\s+", slot))
+        return [info.name for info in infos if info is not None]
+
+    return {
+        frozenset((a, b))
+        for slot_a, slot_b in _extract_zwischen_routes(text)
+        for a in names(slot_a)
+        for b in names(slot_b)
+    }
+
+
+def _oebb_title_route_keys(title: str) -> set[frozenset[str]]:
+    """The station pairs of the ``A ↔ B`` routes in an ÖBB title."""
+    from .utils.stations import station_named_in_text
+
+    rest = _OEBB_TITLE_LINES_RE.sub("", title.strip(), count=1)
+    keys: set[frozenset[str]] = set()
+    for segment in re.split(r"\s+/\s+", rest):
+        infos = [station_named_in_text(part.strip()) for part in segment.split("↔")]
+        for info_a, info_b in pairwise(infos):
+            if info_a is not None and info_b is not None:
+                keys.add(frozenset((info_a.name, info_b.name)))
+    return keys
+
+
+def _oebb_title_route_first(sentences: list[str], title: str, *, oebb: bool) -> list[str]:
+    """Lead an ÖBB text with the sentence that names the title's route.
+
+    The provider titles an ÖBB notice with its Wien-relevant route, which
+    may come from a later section of the text (``_apply_route_title``),
+    while the display shows sentence one. Published 2026-10-17 from the
+    ÖBB notice "Salzburg Hbf => Flughafen Wien Bahnhof/Hegyeshalom"::
+
+        Wien Hütteldorf ↔ Wien Hauptbahnhof
+        Wegen Bauarbeiten fahren zwischen Salzburg Hbf und Flughafen Wien
+        Bahnhof bzw. Hegyeshalom von 10.10.2026 (22:30 Uhr) bis … [Bis Mi 21.10.]
+
+    The title came from "TEILAUSFALL: … kann der Zug RJ 263 zwischen Wien
+    Hütteldorf Bahnhof (U) und Wien Hbf (U) nicht fahren.", a sentence the
+    TV viewer never saw: title and text named two different routes.
+
+    When sentence one names a route and none of its stations stands in the
+    title, the first later sentence naming a title route moves to the
+    front; sentence one follows it when both fit
+    (:func:`_with_second_sentence`). Sentence one stays first when it names
+    no route (it then speaks for every route) or shares a station with the
+    title: "zwischen Gänserndorf und Deutsch Wagram" under "Wien Floridsdorf
+    ↔ Gänserndorf" is the same works seen from the neighbouring stretch,
+    and its first sentence carries the dates the later one lacks.
+    """
+    if not oebb or len(sentences) < 2:
+        return sentences
+    title_keys = _oebb_title_route_keys(title)
+    first_keys = _oebb_route_keys(sentences[0])
+    if not title_keys or not first_keys:
+        return sentences
+    if set().union(*first_keys) & set().union(*title_keys):
+        return sentences
+    for index, sentence in enumerate(sentences[1:], start=1):
+        if _oebb_route_keys(sentence) & title_keys:
+            return [sentence, *sentences[:index], *sentences[index + 1:]]
+    return sentences
+
+
 def _with_second_sentence(first: str, second: str, *, oebb: bool, raw_title: str) -> str:
     """The summary's first sentence, with the second one when it may follow.
 
@@ -10591,6 +10681,7 @@ def _format_item_content(
     # ``_oebb_sentence_without_place``.
     if it.get("source") == _OEBB_SOURCE:
         summary = _OEBB_COURTESY_RE.sub("", summary).strip() or summary
+        summary = _oebb_section_labels_cased(summary)
 
     # Bulletpoints auflösen, um einen fließenden Satz zu bilden
     summary = summary.replace(" • ", " ").replace("•", " ")
@@ -10638,6 +10729,7 @@ def _format_item_content(
         for s in _SENTENCE_SPLIT_RE.split(summary)
         if s.strip()
     ]
+    sentences = _oebb_title_route_first(sentences, raw_title, oebb=it.get("source") == _OEBB_SOURCE)
     if sentences and not fragment_led:
         short_summary = sentences[0]
         # Append the second sentence whenever the combined length still
