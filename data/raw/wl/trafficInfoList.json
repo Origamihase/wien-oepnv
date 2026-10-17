@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261017-0015-F01, I20261017-0015, I20260922-0032, I20260925-0011, I20261017-0016, I20261017-0014-F01, I20261017-0018-F01, I20260909-0007, I20261017-0018, I20261017-0014-F02, I20261017-0011-F02, I20261017-0013-F01, I20261017-0011-F01"
+    "trafficInfoNameList": "I20260917-0012, I20261017-0015-F01, I20261017-0015, I20260922-0032, I20260925-0011, I20261017-0014-F01, I20261017-0018-F01, I20260909-0007, I20261017-0018, I20261017-0014-F02, I20261017-0019, I20261017-0011-F02, I20261017-0013-F01, I20261017-0020, I20261017-0011-F01"
    },
    {
     "id": 3,
@@ -452,40 +452,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261017-0016",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "304",
-       "lineName": "U4",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T13:10:00.000+0200",
-     "end": "2026-10-17T13:37:00.000+0200",
-     "lastUpdate": "2026-10-17T13:37:00.000+0200",
-     "resume": "2026-10-17T13:37:00.000+0200",
-     "start": "2026-10-17T13:10:00.000+0200"
-    },
-    "title": "U4: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "74A": "ptBusCity"
      }
     },
@@ -552,6 +518,74 @@
      "start": "2026-10-17T14:07:00.000+0200"
     },
     "title": "74A: Signalstörung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "12A": "ptBusCity"
+     }
+    },
+    "description": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie 12A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261017-0019",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "412",
+       "lineName": "12A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T14:37:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T14:37:00.000+0200",
+     "resume": "2026-10-17T14:37:00.000+0200",
+     "start": "2026-10-17T14:37:00.000+0200"
+    },
+    "title": "12A: Verspätungen"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "13A": "ptBusCity"
+     }
+    },
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
+    "descriptionHTML": "Linie 13A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Demonstration.",
+    "name": "I20261017-0020",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "413",
+       "lineName": "13A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T14:57:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T14:57:00.000+0200",
+     "resume": "2026-10-17T14:57:00.000+0200",
+     "start": "2026-10-17T14:57:00.000+0200"
+    },
+    "title": "13A: Demonstration"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
