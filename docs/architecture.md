@@ -1224,6 +1224,36 @@ Feeds und die Feed-Tabelle in `NOTICE.md` nennen genau diese drei Quellen
 Den Fernseher (EasySignage) prüft nach einer Änderung am Feed nur der
 Betreiber selbst.
 
+### Link und Quelle jeder Meldung (seit 2026-10-17)
+
+Michael, 17.10.2026: „Meldungen von der ÖBB sollen zu ÖBB verlinken und eine
+Quellenangabe als Tag beinhalten. Meldungen der Wiener Linien sollen zu den
+Wiener Linien verlinken und eine Quellenangabe als Tag für die Wiener Linien
+haben. Das Selbe für Baustellenmeldungen der Stadt Wien u.s.w.“
+
+Die Tabelle `_ITEM_SOURCES` in `src/build_feed.py` legt je Quelle (Feld
+`source` des Items) drei Dinge fest: den Namen im RSS-Element `<source>`, die
+Adresse in dessen Pflichtattribut `url` und die Domains, auf die der
+`<link>` zeigen darf. Ein Link auf eine andere Domain (eine tote
+Katalogseite, die Seite eines anderen Betreibers) wird durch die Seite des
+Betreibers mit seinen aktuellen Meldungen ersetzt:
+
+| `source` | `<source>` DE / EN | `<link>` (Domain, Rückfall) |
+| --- | --- | --- |
+| Wiener Linien | Wiener Linien | wienerlinien.at, `/betriebsinfo` |
+| ÖBB | ÖBB | oebb.at, ÖBB-Streckeninformation auf fahrplan.oebb.at |
+| Stadt Wien – Baustellen | Stadt Wien / City of Vienna | wien.gv.at, `/verkehr/baustellen` |
+| VOR/VAO (Stammstrecke) | VOR/VAO | oebb.at, ÖBB-Streckeninformation |
+
+Die Stammstrecken-Meldung beschreibt S-Bahn-Züge der ÖBB und verlinkt daher
+wie die ÖBB-Meldungen (sein Ja vom 17.10.2026); ihr Tag nennt die Daten, aus
+denen sie berechnet ist. Vorher verlinkte sie auf eine WL-Seite, die nur auf
+die WL-Startseite umleitete, und die Baustellen auf eine Katalogseite von
+data.gv.at, die seit dem Umzug des Portals 404 liefert. Eine unbekannte Quelle
+behält ihren Link und bekommt keinen Tag. Titel, Texte, GUIDs und Reihenfolge
+ändern sich nicht; ob EasySignage den Tag anzeigt, sieht nur der Betreiber am
+Fernseher.
+
 ## 2. Die `request_safe`-Security-State-Machine
 
 `request_safe` ist ein einzelner 75-Zeilen-Orchestrator, der 14

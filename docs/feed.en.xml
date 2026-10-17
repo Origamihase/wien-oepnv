@@ -8,24 +8,14 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 17 Oct 2026 09:30:58 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 10:04:03 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[71: Delays]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">e3d5b5559f494aee2eaa5aaaaf9d625b3d892f7b9d9446f0446e98c4a0f04ac1</guid>
-      <pubDate>Sat, 17 Oct 2026 09:19:00 +0200</pubDate>
-      <ext:first_seen>Sat, 17 Oct 2026 09:30:58 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 17 Oct 2026 09:19:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 09:19]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 09:19]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[11: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e</guid>
       <pubDate>Sat, 17 Oct 2026 09:22:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <ext:first_seen>Sat, 17 Oct 2026 09:22:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 17 Oct 2026 09:22:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
@@ -37,6 +27,7 @@
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;901477</guid>
       <pubDate>Thu, 03 Sep 2026 09:31:47 +0200</pubDate>
+      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
       <ext:first_seen>Tue, 04 Aug 2026 14:01:06 +0200</ext:first_seen>
       <ext:starts_at>Sat, 17 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 21 Oct 2026 23:59:59 +0200</ext:ends_at>
@@ -49,6 +40,7 @@
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">c8f0b5a42164e2ff573973d0ebcbdf6fbd76b99aebfc2c85c8b8657ef7b9bb79</guid>
       <pubDate>Wed, 14 Oct 2026 15:35:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <ext:first_seen>Wed, 14 Oct 2026 15:35:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 23 Oct 2026 05:05:00 +0200</ext:ends_at>
@@ -61,6 +53,7 @@
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">609517ab3ab98b5b38f0fe913f15e9bd18cd5a3d9005a51a2cb50d3fb227ddbd</guid>
       <pubDate>Wed, 14 Oct 2026 00:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <ext:first_seen>Wed, 14 Oct 2026 00:00:00 +0200</ext:first_seen>
       <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
@@ -72,6 +65,7 @@
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">615c7d9755493e3506136b4c89ccafaac30323c3c9774583bc4b55062576c7bb</guid>
       <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <ext:first_seen>Fri, 09 Oct 2026 13:30:44 +0200</ext:first_seen>
       <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 14 Nov 2026 23:59:00 +0100</ext:ends_at>
@@ -83,6 +77,7 @@
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">3e5225e046a0df3ec11a86c99a2c68a57b90ba1f9c0a3a5c4fdf60d90cdf02e7</guid>
       <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <ext:first_seen>Fri, 09 Oct 2026 00:00:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
@@ -95,6 +90,7 @@
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">56aa798cbb018fbaed4813a991f56c2470867f1f9a0ce034661ba2e01da13007</guid>
       <pubDate>Wed, 07 Oct 2026 15:30:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <ext:first_seen>Wed, 07 Oct 2026 15:30:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
@@ -107,6 +103,7 @@
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
       <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
@@ -119,12 +116,26 @@
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">d97a8a3d7d6328446c638ae8a1ccf0afc80a24b1828141a4b94ad0065074c2e5</guid>
       <pubDate>Thu, 08 Oct 2026 15:10:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <ext:first_seen>Thu, 08 Oct 2026 15:10:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 19 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 08 Oct 2027 11:11:00 +0200</ext:ends_at>
       <georss:point>48.205482 16.348467</georss:point>
       <description>Neustiftgasse 52 → Neustiftgasse 42-44. Stop relocation of line 48A towards Klinik Penzing. Reason: renovation work. [From Mon 19.10.]</description>
       <content:encoded><![CDATA[Neustiftgasse 52 → Neustiftgasse 42-44. Stop relocation of line 48A towards Klinik Penzing. Reason: renovation work.<br/>[From Mon 19.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
+      <pubDate>Mon, 05 Oct 2026 15:40:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Mon, 05 Oct 2026 15:40:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <georss:point>48.140620 16.280393</georss:point>
+      <description>Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 … [Until 28.10.]</description>
+      <content:encoded><![CDATA[Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 …<br/>[Until 28.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

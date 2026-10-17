@@ -9,7 +9,7 @@ Dieser Leitfaden zeigt, wie sich die im Projekt aktive VAO ReST API-Version iden
 
 ## Hinweis zur Namensgebung
 
-Im Projekt-Code (`src/providers/vor.py`) sind `VOR_VERSION` (primär) und `VOR_VERSIONS` (Fallback-Alias) **beide Versions-Strings**, die in die Basis-URL eingebaut werden (z. B. `v1.11.0`), **keine URLs zu einem „/versions"-Endpunkt**. Eine zentrale „Liste aller aktiven API-Versionen" stellt die VAO-API selbst nicht als REST-Endpoint bereit; verbindliche Quelle bleibt das offizielle PDF-Handbuch (`docs/reference/manuals/Handbuch_VAO_ReST_API_latest.pdf`, Kapitel 3).
+Im Projekt-Code (`src/providers/vor.py`) sind `VOR_VERSION` (primär) und `VOR_VERSIONS` (Fallback-Alias) **beide Versions-Strings**, die in die Basis-URL eingebaut werden (z. B. `v1.11.0`), **keine URLs zu einem „/versions"-Endpunkt**. Eine zentrale „Liste aller aktiven API-Versionen" stellt die VAO-API selbst nicht als REST-Endpoint bereit; verbindliche Quelle bleibt das offizielle Handbuch der VAO ([Schnittstellen-Dokumentation](https://cloud.verkehrsauskunft.at/index.php/s/oXxTKf2tEH5fKJr), Kapitel 3).
 
 ## Voraussetzungen
 
