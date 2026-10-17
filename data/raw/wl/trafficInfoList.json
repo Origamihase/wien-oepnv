@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261017-0007, I20260909-0007, I20261017-0008, I20261017-0006"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261017-0008-F01, I20261017-0008, I20261017-0010-F01, I20261017-0010, I20260925-0011, I20261017-0007, I20260909-0007, I20261017-0009"
    },
    {
     "id": 3,
@@ -203,40 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "71": "ptTram"
-     }
-    },
-    "description": "Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie 71:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261017-0006",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "171",
-       "lineName": "71",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T09:20:00.000+0200",
-     "end": "2026-10-17T09:41:00.000+0200",
-     "lastUpdate": "2026-10-17T09:41:00.000+0200",
-     "resume": "2026-10-17T09:41:00.000+0200",
-     "start": "2026-10-17T09:19:00.000+0200"
-    },
-    "title": "71: Verspätungen"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "11": "ptTram"
      }
     },
@@ -274,8 +240,8 @@
       "U3": "ptMetro"
      }
     },
-    "description": "Linie U3: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 11:00 Uhr. Grund: Polizeieinsatz im Bereich Johnstraße.",
-    "descriptionHTML": "Linie U3:<br>Fahrtbehinderung in beiden Richtungen.<br> <br>Voraussichtliche Dauer: 11:00 Uhr.<br><br>Grund: Polizeieinsatz im Bereich Johnstraße.",
+    "description": "Die Linie U3 fährt derzeit in der Station Johnstraße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 11:00 Uhr. Grund: Polizeieinsatz im Bereich Johnstraße.",
+    "descriptionHTML": "Die Linie U3 fährt derzeit in der Station Johnstraße in beiden Richtungen über Gleis 1.<br> <br>Voraussichtliche Dauer: 11:00 Uhr.<br><br>Grund: Polizeieinsatz im Bereich Johnstraße.",
     "location": "Johnstraße",
     "name": "I20261017-0008",
     "owner": "WL",
@@ -293,14 +259,154 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-17T10:22:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T10:29:00.000+0200",
+     "end": "2026-10-17T10:40:00.000+0200",
+     "lastUpdate": "2026-10-17T10:40:00.000+0200",
+     "resume": "2026-10-17T10:40:00.000+0200",
      "start": "2026-10-17T10:20:00.000+0200"
     },
     "title": "U3: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Johnstraße",
+    "name": "I20261017-0008-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "303",
+       "lineName": "U3",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T10:40:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T10:40:00.000+0200",
+     "resume": "2026-10-17T10:40:00.000+0200",
+     "start": "2026-10-17T10:20:00.000+0200"
+    },
+    "title": "U3: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "35A": "ptBusCity"
+     }
+    },
+    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261017-0009",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "35A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "435",
+       "lineName": "35A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T10:35:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T10:35:00.000+0200",
+     "resume": "2026-10-17T10:35:00.000+0200",
+     "start": "2026-10-17T10:35:00.000+0200"
+    },
+    "title": "35A: Verspätungen"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "9A": "ptBusCity"
+     }
+    },
+    "description": "Linie 9A: Fahrtbehinderung in Richtung Meidling Hauptstraße U. Voraussichtliche Dauer: 11:15 Uhr. Grund: Falschparker im Bereich Tanbruckgasse.",
+    "descriptionHTML": "Linie 9A:<br>Fahrtbehinderung in Richtung Meidling Hauptstraße U.<br> <br>Voraussichtliche Dauer: 11:15 Uhr.<br><br>Grund: Falschparker im Bereich Tanbruckgasse.",
+    "location": "Tanbruckgasse",
+    "name": "I20261017-0010",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "409",
+       "lineName": "9A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-17T10:49:00.000+0200",
+     "end": "2026-10-17T10:50:00.000+0200",
+     "lastUpdate": "2026-10-17T10:50:00.000+0200",
+     "resume": "2026-10-17T10:50:00.000+0200",
+     "start": "2026-10-17T10:48:00.000+0200"
+    },
+    "title": "9A: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "9A": "ptBusCity"
+     }
+    },
+    "description": "Linie 9A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 9A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Tanbruckgasse",
+    "name": "I20261017-0010-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "409",
+       "lineName": "9A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T10:50:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T10:50:00.000+0200",
+     "resume": "2026-10-17T10:50:00.000+0200",
+     "start": "2026-10-17T10:48:00.000+0200"
+    },
+    "title": "9A: Falschparker"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
