@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 17 Oct 2026 12:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 12:05:26 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[11/O: Rescue operation]]></title>
@@ -19,8 +19,8 @@
       <ext:first_seen>Sat, 17 Oct 2026 12:01:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 17 Oct 2026 11:41:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction: 11, O. Expected until 12:05. [Since 11:41]</description>
-      <content:encoded><![CDATA[Service obstruction: 11, O. Expected until 12:05.<br/>[Since 11:41]]]></content:encoded>
+      <description>Service obstruction: 11, O. [Since 11:41]</description>
+      <content:encoded><![CDATA[Service obstruction: 11, O.<br/>[Since 11:41]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2: Illegally parked vehicle]]></title>
