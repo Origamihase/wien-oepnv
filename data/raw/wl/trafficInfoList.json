@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261017-0028, I20261017-0031, I20260917-0012, I20260922-0032, I20261017-0019, I20260925-0011, I20260909-0007, I20261017-0029, I20261017-0026, I20261017-0020, I20261017-0027, I20261017-0030"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261017-0019, I20261017-0020, I20260925-0011, I20261017-0030-F01, I20261017-0030, I20260909-0007, I20261017-0029, I20261017-0026, I20261017-0028, I20261017-0027, I20261017-0031-F01, I20261017-0031-F02, I20261017-0031, I20261017-0032-F01, I20261017-0032"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R118-136, R45-136, R19-136, R130-136, R119-136, R2025-671, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R36-152, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R2558-125, R2372-627, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R1974-466, R500-101, R904-424, R141-140, R1531-160, R1532-0, R1548-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R115-136, R45-136, R19-136, R130-136, R119-136, R118-136, R2025-671, R117-136, R318-437, R293-474, R116-136, R100-136, R101-136, R102-136, R103-136, R36-152, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R2558-125, R2372-627, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R1974-466, R500-101, R141-140, R1531-160, R1532-0, R1548-0, R3066-424, R1177-431, R982-431, R3100-431, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -258,12 +258,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-17T14:57:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T14:57:00.000+0200",
-     "resume": "2026-10-17T14:57:00.000+0200",
+     "end": "2026-10-17T18:31:00.000+0200",
+     "lastUpdate": "2026-10-17T18:31:00.000+0200",
+     "resume": "2026-10-17T18:31:00.000+0200",
      "start": "2026-10-17T14:57:00.000+0200"
     },
     "title": "13A: Demonstration"
@@ -292,12 +292,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-17T17:57:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T17:57:00.000+0200",
-     "resume": "2026-10-17T17:57:00.000+0200",
+     "end": "2026-10-17T18:32:00.000+0200",
+     "lastUpdate": "2026-10-17T18:32:00.000+0200",
+     "resume": "2026-10-17T18:32:00.000+0200",
      "start": "2026-10-17T17:57:00.000+0200"
     },
     "title": "24A: Polizeieinsatz"
@@ -360,12 +360,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-17T18:00:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T18:00:00.000+0200",
-     "resume": "2026-10-17T17:59:00.000+0200",
+     "end": "2026-10-17T18:32:00.000+0200",
+     "lastUpdate": "2026-10-17T18:32:00.000+0200",
+     "resume": "2026-10-17T18:32:00.000+0200",
      "start": "2026-10-17T17:59:00.000+0200"
     },
     "title": "57A: Polizeieinsatz"
@@ -434,11 +434,49 @@
     "relatedStops": [
      4257
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-17T18:17:00.000+0200",
+     "end": "2026-10-17T18:42:00.000+0200",
+     "lastUpdate": "2026-10-17T18:42:00.000+0200",
+     "resume": "2026-10-17T18:42:00.000+0200",
+     "start": "2026-10-17T18:16:00.000+0200"
+    },
+    "title": "U2: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261017-0030-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "302",
+       "lineName": "U2",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4257
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T18:42:00.000+0200",
      "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T18:21:00.000+0200",
+     "lastUpdate": "2026-10-17T18:42:00.000+0200",
+     "resume": "2026-10-17T18:42:00.000+0200",
      "start": "2026-10-17T18:16:00.000+0200"
     },
     "title": "U2: Rettungseinsatz"
@@ -477,14 +515,159 @@
     "relatedStops": [
      1548
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-17T18:25:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T18:25:00.000+0200",
+     "end": "2026-10-17T18:35:00.000+0200",
+     "lastUpdate": "2026-10-17T18:35:00.000+0200",
+     "resume": "2026-10-17T18:35:00.000+0200",
      "start": "2026-10-17T18:22:00.000+0200"
     },
     "title": "52, 60: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "52": "ptTram"
+     }
+    },
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261017-0031-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "152",
+       "lineName": "52",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1548
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T18:35:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T18:35:00.000+0200",
+     "resume": "2026-10-17T18:35:00.000+0200",
+     "start": "2026-10-17T18:22:00.000+0200"
+    },
+    "title": "52: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "60": "ptTram"
+     }
+    },
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261017-0031-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "160",
+       "lineName": "60",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1548
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T18:35:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T18:35:00.000+0200",
+     "resume": "2026-10-17T18:35:00.000+0200",
+     "start": "2026-10-17T18:22:00.000+0200"
+    },
+    "title": "60: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "24A": "ptBusCity"
+     }
+    },
+    "description": "Die Linie 24A fährt derzeit nur zwischen Neueßling und Kraygasse. Ab Kraygasse werden die Busse nach Kagran geführt. Weichen Sie ersatzweise auf die Linie U1 aus. Voraussichtliche Dauer: 19:45 Uhr. Grund: Fremder Verkehrsunfall im Bereich Kagraner Platz.",
+    "descriptionHTML": "Die Linie 24A fährt derzeit nur zwischen Neueßling und Kraygasse.<br> <br>Ab Kraygasse werden die Busse nach Kagran geführt.<br><br>Weichen Sie ersatzweise auf die Linie U1 aus.<br><br>Voraussichtliche Dauer: 19:45 Uhr.<br><br>Grund: Fremder Verkehrsunfall im Bereich Kagraner Platz.",
+    "location": "Kagraner Platz",
+    "name": "I20261017-0032",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "24A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "424",
+       "lineName": "24A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-17T18:41:00.000+0200",
+     "end": "2026-10-17T18:55:00.000+0200",
+     "lastUpdate": "2026-10-17T18:55:00.000+0200",
+     "resume": "2026-10-17T18:55:00.000+0200",
+     "start": "2026-10-17T18:33:00.000+0200"
+    },
+    "title": "24A: Fremder Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "24A": "ptBusCity"
+     }
+    },
+    "description": "Linie 24A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 24A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Kagraner Platz",
+    "name": "I20261017-0032-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "24A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "424",
+       "lineName": "24A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T18:55:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T18:55:00.000+0200",
+     "resume": "2026-10-17T18:55:00.000+0200",
+     "start": "2026-10-17T18:33:00.000+0200"
+    },
+    "title": "24A: Fremder Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -611,6 +794,24 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb nur bis Leopoldauer Platz",
+    "name": "R1177-431",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31A"
+    ],
+    "relatedStops": [
+     1177
+    ],
+    "time": {
+     "end": "2026-10-17T19:31:00.000+0200",
+     "start": "2026-10-17T18:33:23.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb nur bis Leopoldauer Platz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
@@ -1288,6 +1489,42 @@
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
    },
    {
+    "description": "Verkehrsunfall\nBetrieb ab Kraygasse",
+    "name": "R3066-424",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "24A"
+    ],
+    "relatedStops": [
+     3066
+    ],
+    "time": {
+     "end": "2026-10-17T19:30:00.000+0200",
+     "start": "2026-10-17T18:31:28.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Kraygasse"
+   },
+   {
+    "description": "Verkehrsunfall\nBetrieb nur bis Leopoldauer Platz",
+    "name": "R3100-431",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31A"
+    ],
+    "relatedStops": [
+     3100
+    ],
+    "time": {
+     "end": "2026-10-17T19:31:00.000+0200",
+     "start": "2026-10-17T18:33:28.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb nur bis Leopoldauer Platz"
+   },
+   {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1375,22 +1612,22 @@
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
    },
    {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R904-424",
+    "description": "Verkehrsunfall\nBetrieb nur bis Leopoldauer Platz",
+    "name": "R982-431",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "24A"
+     "31A"
     ],
     "relatedStops": [
-     904
+     982
     ],
     "time": {
-     "end": "2026-10-17T18:57:00.000+0200",
-     "start": "2026-10-17T17:57:53.000+0200"
+     "end": "2026-10-17T19:31:00.000+0200",
+     "start": "2026-10-17T18:33:27.000+0200"
     },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+    "title": "Verkehrsunfall\nBetrieb nur bis Leopoldauer Platz"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
