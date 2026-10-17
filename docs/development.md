@@ -568,7 +568,7 @@ verhindert Drift.
 | `pendler` | ✓ | `true` für Pendler-Knoten **außerhalb** Wiens (siehe `data/pendler_bst_ids.json`). **Exklusiv zu `in_vienna`**: jede Station ist entweder Wien-Station ODER Pendler, niemals beides. Ausnahmen sind manuell gepflegte Knoten außerhalb des Pendlergürtels: `type: manual_foreign_city` (z. B. München Hauptbahnhof, Roma Termini, Bratislava hl.st.) und `type: manual_distant_at` (z. B. Salzburg Hbf, Graz Hbf, Linz Hbf, Innsbruck Hbf) — bei beiden Sondertypen sind beide Flags `false`. Verstöße werden vom Validator als NamingIssue gemeldet und vom Updater automatisch korrigiert (in_vienna gewinnt). |
 | `aliases` | ✓ | Schreibvarianten und IDs zur Erkennung in Provider-Texten. |
 | `latitude` / `longitude` | ✓ | WGS84-Koordinaten (validiert gegen das Wien-Polygon für `in_vienna`-Einträge). |
-| `source` | ✓ | Komma-getrennte Provider-Tokens (kein Whitespace) aus `oebb,vor,wl,google_places,manual` (`google_places` nur noch als Altwert zulässig; seit 2026-10-16 trägt kein Eintrag ihn, die Google-Stufe ist entfernt). |
+| `source` | ✓ | Komma-getrennte Provider-Tokens (kein Whitespace, alphabetisch): `hafas`, `manual`, `oebb`, `oebb_geonetz`, `osm`, `vor`, `wl`. Das Feld nennt alle beteiligten Quellen eines Eintrags, nicht nur die seiner Koordinate. `google_places` ist nur noch als Altwert zulässig; seit 2026-10-16 trägt kein Eintrag ihn, die Google-Stufe ist entfernt. |
 | `bst_id`, `bst_code` | ÖBB | ÖBB-Stellen-ID und -Stellencode aus dem Excel-Verzeichnis (data.oebb.at). |
 | `vor_id` | ÖBB/VOR | VOR/VAO-Stop-ID (numerisch oder volles HAFAS-Token); entspricht typischerweise GTFS-`stop_id`. |
 | `wl_diva` | WL | Wiener-Linien-DIVA aus `wienerlinien-ogd-haltestellen.csv`. |

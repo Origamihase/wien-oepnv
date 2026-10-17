@@ -11187,8 +11187,11 @@ _CHANNEL_METADATA_EN: dict[str, str] = {
 # Michael, 16.10.2026: the code stays MIT, the notice texts are not ours to
 # license. The channel names the sources and their terms once; titles and
 # texts stay untouched, so nothing changes on the EasySignage displays (each
-# item names its source in ``<source>`` since 17.10.2026, ``_ITEM_SOURCES``). VOR/VAO feeds
-# no item (only the Stammstrecke statistics) and is therefore not named here.
+# item names its source in ``<source>`` since 17.10.2026, ``_ITEM_SOURCES``).
+# VOR/VAO is not named here: its one feed item, the Stammstrecke delay notice
+# (``src.feed.stammstrecke``, ``<source>`` VOR/VAO), is our own text computed
+# from VAO departure data, not a notice text of VOR/VAO; NOTICE.md lists it
+# under the feeds and points to the VOR/VAO terms.
 # The GeoRSS coordinates (:func:`_item_geometry`) come only from the three
 # open datasets ``open_data_coordinate`` and the Baustellen data accept
 # (ÖBB-Infrastruktur GeoNetz, Wiener Linien OGD stops, Stadt Wien), so the

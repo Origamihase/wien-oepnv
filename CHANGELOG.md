@@ -5,6 +5,20 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Doku: Stammstrecken-Meldung und Stationsquellen richtig beschrieben (2026-10-17)**:
+  Die unabhängige Prüfung von #2025 bis #2035 fand zwei falsche Angaben.
+  (1) `NOTICE.md`, ein Code-Kommentar in `src/build_feed.py`, ein
+  Testkommentar und der Eintrag „Lizenz: MIT nur für den Code“ unten sagten,
+  VOR/VAO speise keinen Feed-Eintrag. Der Stammstrecken-Monitor erzeugt aber
+  die Meldung „S-Bahn Stammstrecke Verspätungen“ (zuletzt am 19.08.2026 im
+  Feed, seit #2033 mit `<source>` VOR/VAO). Ihr Text ist eine eigene
+  Auswertung der VAO-Abfahrtsdaten, kein Meldungstext von VOR/VAO; die
+  `<copyright>`-Zeile bleibt deshalb unverändert, `NOTICE.md` führt die
+  Meldung jetzt in der Feed-Tabelle und nennt das `<source>`-Element je Item.
+  (2) `docs/development.md` und `docs/schema/stations.schema.json` nannten
+  als Tokens im Feld `source` von `data/stations.json` nur `oebb, vor, wl,
+  google_places, manual`; der Bestand trägt auch `hafas`, `osm` und
+  `oebb_geonetz` (die meisten Einträge). Feed und Daten ändern sich nicht.
 * **Website: Kacheln mit Farbe statt weißer Kästen (2026-10-17)**: Michael:
   „Der Aufbau selbst ist gut. Ich mag auch die Farben. Der kleine Zug ist ein
   Hingucker und die Fußzeile ist, mit dem Hintergrund, auch in Ordnung. Die
