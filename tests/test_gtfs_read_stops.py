@@ -23,8 +23,11 @@ def test_read_gtfs_stops_reads_sample_file() -> None:
     platform = stops["8103000:1"]
     assert platform.parent_station == "8103000"
     assert platform.platform_code == "1"
-    assert platform.stop_lat == pytest.approx(48.185750)
-    assert platform.stop_lon == pytest.approx(16.375120)
+    # The repository copy carries no coordinates since 2026-10-17: they came
+    # from the AnachB webapp without an open licence (NOTICE.md). Parsing of
+    # coordinates is covered by the tmp-file tests below.
+    assert platform.stop_lat is None
+    assert platform.stop_lon is None
 
     child_without_location = stops["8103001:1"]
     assert child_without_location.location_type is None

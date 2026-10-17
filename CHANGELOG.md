@@ -5,6 +5,40 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Hinweis „inoffiziell“, Bilder ohne ÖBB-Marken, keine
+  VOR-Koordinaten (2026-10-17)**: Michaels Entscheidung zum Lizenz-Audit:
+  klar sagen, dass das Projekt inoffiziell ist, und nur Marken und Daten mit
+  geklärten Nutzungsrechten zeigen. Drei Folgen: (1) Am Anfang des
+  `<copyright>` beider Feeds, in der Fußzeile (DE/EN) und im README steht
+  „Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und
+  VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen.“ Titel und Texte
+  der Meldungen bleiben, am TV ändert sich nichts. (2) Die beiden KI-Bilder der
+  Webseite (Zug, Fußzeilen-Hintergrund) zeigten ÖBB-Logo und „cityjet“; die
+  Marken sind übermalt, Motiv und Design bleiben (`docs/architecture.md`,
+  „Bilder ohne Marken“). (3) Die Koordinaten aus dem AnachB-Auskunftssystem
+  sind weg: `data/vor-haltestellen.csv` hat nur noch ID und Name, die
+  Mapping-Datei und `data/gtfs/stops.txt` keine Koordinaten mehr, und die 101
+  Stationen, deren Koordinate von dort stammte, tragen die des
+  ÖBB-Infrastruktur-GeoNetz (bis 230 m Abstand, keine wechselt zwischen Wien
+  und Umland). Tests halten alle drei Punkte fest.
+* **Lizenz-Audit: Angaben in `NOTICE.md` gegen die Originaltexte korrigiert (2026-10-17)**:
+  Eine Prüfung aller Quellen gegen ihre Originalseiten (data.gv.at,
+  data.oebb.at, Wiener Linien Open Data, oebb.at, Open-Meteo, Hugging Face,
+  PyPI) hat falsche oder fehlende Angaben gefunden, keine im Feed.
+  `data/vor-haltestellen.csv` stand als „VOR, CC BY 4.0“ in `NOTICE.md` und
+  `docs/development.md`; die Werte kamen aber bis 11.05.2026 aus dem
+  Auskunftssystem der AnachB-Webapp des VOR (`anachb.vor.at`), für das keine
+  offene Lizenz bekannt ist. Sie heißen jetzt „ungeklärt“ wie die HAFAS-Daten,
+  und `data/gtfs/stops.txt` steht als daraus abgeleiteter Auszug bei VOR statt
+  bei ÖBB-Infrastruktur. Das Verzeichnis der Verkehrsstationen nennt
+  „ÖBB-Infrastruktur AG“ jetzt als Link, wie die Datensatzseite es verlangt;
+  `public-transport/hafas-client` ist ISC- statt MIT-lizenziert; das
+  Übersetzungsmodell steht unter Apache-2.0; OSM-Werte bleiben unter ODbL 1.0
+  mit Link auf openstreetmap.org/copyright. Neu in `NOTICE.md`: `data/raw/`
+  (die ÖBB-Rohdaten gehören zu den ÖBB-Inhalten), die Zustandsdateien mit
+  Meldungstexten und die eigenen Dateien. Der Test
+  `tests/test_notice_data_coverage.py` verlangt künftig für jede Datei unter
+  `data/` eine Zeile in `NOTICE.md`. Feed, Webseite und TV ändern sich nicht.
 * **VAO-„Start“-Vertrag: Hinweis auf die Grundlage der Stammstrecken-Daten (2026-10-17)**:
   Michael hat den Vertrag des kostenlosen VAO-Pakets „Start“ übergeben (bis
   zu 100 Abfragen pro Tag; der Vertragstext bleibt außerhalb des

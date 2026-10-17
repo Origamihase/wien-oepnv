@@ -58,17 +58,58 @@ Werte nennt. Die Einträge mischen mehrere Quellen:
 | Quelle | Dateien / Einsatz | Lizenz / Bedingungen | Quellenangabe |
 | --- | --- | --- | --- |
 | Wiener Linien OGD | `data/wienerlinien-ogd-*.csv`, Stationen mit `source` `wl` | CC BY 4.0 | „Datenquelle: Wiener Linien“ |
-| ÖBB-Infrastruktur, Verzeichnis der Verkehrsstationen | `data/oebb-verkehrsstationen.xlsx`, `data/gtfs/stops.txt`, `source` `oebb` | CC BY 3.0 AT | „Datenquelle: ÖBB-Infrastruktur AG“ |
+| ÖBB-Infrastruktur, Verzeichnis der Verkehrsstationen | `data/oebb-verkehrsstationen.xlsx`, `source` `oebb` | [CC BY 3.0 AT](https://creativecommons.org/licenses/by/3.0/at/deed.de) | „Datenquelle: [ÖBB-Infrastruktur AG](https://infrastruktur.oebb.at/de/)“ |
 | ÖBB-Infrastruktur GeoNetz | `data/oebb_geonetz_stops.json`, `source` `oebb_geonetz` | [CC BY 3.0 AT](https://creativecommons.org/licenses/by/3.0/at/deed.de) | „Datenquelle: [ÖBB-Infrastruktur AG](https://infrastruktur.oebb.at/de/)“ |
-| VOR Verkehrsverbund Ost-Region | `data/vor-haltestellen.csv`, `data/vor-haltestellen.mapping.json`, `source` `vor` | CC BY 4.0 | „Datenquelle: VOR Verkehrsverbund Ost-Region“ |
+| VOR Verkehrsverbund Ost-Region (Auskunft AnachB) | `data/vor-haltestellen.csv`, `data/vor-haltestellen.mapping.json`, `data/gtfs/stops.txt`, `source` `vor`, Feld `vor_id` | **ungeklärt**: Haltestellen-IDs und -Namen aus dem Auskunftssystem der AnachB-Webapp des VOR (`anachb.vor.at`), keine offene Lizenz bekannt; Koordinaten seit 17.10.2026 entfernt (siehe unten, „VOR-Haltestellendaten“) | „Haltestellendaten: VOR“ |
 | Stadt Wien, Stadtgrenze (MA 41) | `data/LANDESGRENZEOGD.json` | CC BY 4.0 | „Datenquelle: Stadt Wien – data.wien.gv.at“ |
-| OpenStreetMap (Overpass) | Koordinaten mit `source` `osm` | [ODbL](https://opendatacommons.org/licenses/odbl/) | „© OpenStreetMap-Mitwirkende“ |
-| HAFAS (ÖBB Scotty) | Koordinaten und EVA-Nummern mit `source` `hafas`, `data/oebb_station_lines.json` | **ungeklärt**: öffentlich erreichbares Auskunftssystem der ÖBB, keine offene Lizenz bekannt | „Fahrplandaten: ÖBB“ |
+| OpenStreetMap (Overpass) | Koordinaten mit `source` `osm` | [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/); die aus OpenStreetMap übernommenen Werte stehen auch in diesem Verzeichnis unter der ODbL | „© [OpenStreetMap-Mitwirkende](https://www.openstreetmap.org/copyright)“ |
+| HAFAS (ÖBB Scotty) | Koordinaten und EVA-Nummern mit `source` `hafas`, `data/oebb_station_lines.json`; die Zugangskennung in `data/hafas_profile.json` stammt aus dem ISC-lizenzierten Projekt [`public-transport/hafas-client`](https://github.com/public-transport/hafas-client) | **ungeklärt**: öffentlich erreichbares Auskunftssystem der ÖBB, keine offene Lizenz bekannt | „Fahrplandaten: ÖBB“ |
 | Google Places | **kein Eintrag**. Die 18 früheren Google-Koordinaten sind seit 16.10.2026 durch ÖBB-GeoNetz (Bahnhöfe mit EVA-Nummer) oder die WL-OGD-Haltestelle ersetzt, und die Google-Stufe von `scripts/update_station_directory.py` ist am selben Tag entfernt worden; es kommen keine neuen hinzu | – | – |
-| Eigene Pflege | `source` `manual`, Overrides, Mapping-Dateien | MIT wie der Code | – |
+| Eigene Pflege | `source` `manual`, `data/stations_overrides.json`, `data/stations_metadata.json`, `data/pendler_bst_ids.json`, `data/pendler_candidates.json`, `data/planned_station_lines.json`, `data/quarantine.json`, `data/stations_last_run.json`, `data/vor_request_count.json` | MIT wie der Code | – |
 
-Die Lizenzangaben der offenen Datensätze stammen aus der Tabelle
+Die Lizenzangaben sind am 17.10.2026 gegen die Originalseiten geprüft
+(Datensatzseiten auf `data.gv.at` und `data.oebb.at`, Wiener Linien Open
+Data, OpenStreetMap); dieselbe Tabelle mit Dateidetails steht unter
 „Datenquellen und Lizenzen“ in [`docs/development.md`](docs/development.md).
+
+### VOR-Haltestellendaten
+
+`data/vor-haltestellen.csv` (VOR-Haltestellen-ID und Name) ist kein offener
+Datensatz. Das inzwischen gelöschte Skript `fetch_vor_haltestellen.py` hat die
+Werte bis 11.05.2026 beim Auskunftssystem der AnachB-Webapp des VOR
+(`anachb.vor.at/hamm/gate`, mit der Zugangskennung aus deren
+Webapp-Konfiguration) abgefragt; seither ist die Datei eingefroren. Bis
+17.10.2026 nannte diese Datei dafür fälschlich CC BY 4.0; eine Lizenz des VOR
+für diese Daten ist nicht bekannt.
+
+Michael hat am 17.10.2026 entschieden, die Koordinaten aus dieser Quelle
+nicht mehr zu führen, weil für sie keine Nutzungsrechte geklärt sind:
+
+- `data/vor-haltestellen.csv` enthält nur noch ID und Name, die
+  `data/vor-haltestellen.mapping.json` keine Koordinaten mehr, und der daraus
+  abgeleitete Auszug `data/gtfs/stops.txt` (157 der 167 Zeilen mit
+  VOR-Haltestellen-ID) hat leere `stop_lat`/`stop_lon`.
+- Die 101 Stationen in `data/stations.json`, deren Koordinate aus dieser
+  Quelle stammte, tragen jetzt die Koordinate des ÖBB-Infrastruktur-GeoNetz
+  (CC BY 3.0 AT, oben); ihre `source` nennt `oebb_geonetz`. Keine Station
+  wechselte dabei zwischen Wien und Umland.
+- Was bleibt, sind Haltestellen-IDs und Namen (`vor_id`, Aliase), die der
+  Stationsabgleich braucht. Der Stammstrecken-Monitor fragt die VAO-API mit
+  Michaels eigenem Zugang ab (Statistik oben).
+
+Der Feed zeigt keine dieser Koordinaten: GeoRSS-Punkte kommen nur aus den
+drei offenen Datensätzen oben.
+
+## Rohantworten und Betriebszustand (`data/raw/`, Zustandsdateien)
+
+| Dateien | Inhalt | Lizenz / Bedingungen |
+| --- | --- | --- |
+| `data/raw/wl/*` | letzte gute Antworten der Wiener-Linien-Echtzeitdaten und die verworfenen Meldungen | CC BY 4.0, „Datenquelle: Wiener Linien“ |
+| `data/raw/baustellen/*`, `data/samples/baustellen_sample.geojson` | Baustellen-Layer der Stadt Wien (ohne Geometrie bis auf die erste Position) | CC BY 4.0, „Datenquelle: Stadt Wien – data.wien.gv.at“ |
+| `data/raw/oebb/*` | **alle** Items des ÖBB-RSS, auch die ohne Wien-Bezug | wie die ÖBB-Meldungstexte (oben, „ÖBB-Inhalte“): keine offene Lizenz, gehört zu den ÖBB-Inhalten |
+| `data/first_seen.json`, `data/feed_watch.json`, `data/wl_resolved_tickers.json`, `data/wl_plausibility_anomalies.json`, `data/feed_line_anomalies.json` | Zustand des Feed-Builds mit Titeln und Texten der Meldungen (auch der englischen Übersetzung) | wie die Feeds oben; eigene Felder MIT |
+
+Wer `data/` als Ganzes weiterverwendet, übernimmt diese Bedingungen je Datei.
 
 ## Statistik (`data/stats/`, `docs/statistik.md`, Website-Dashboard)
 
@@ -88,6 +129,21 @@ hier; jede andere Quelle behält ihren eigenen Hinweis. Endet der Vertrag,
 müssen diese Hinweise wieder entfernt werden (Punkt 7.7). Der Vertragstext selbst
 liegt nicht im Repository.
 
+## Bilder der Webseite (`docs/assets/`)
+
+`train.png` (der fahrende Zug, mit `train.webp`, `train-small.webp`) und
+`footer-bg.jpg` (Hintergrund der Fußzeile, mit `footer-bg.webp`) sind laut
+Michael KI-generiert. Die ÖBB-Marken, die die Bilder zeigten
+(Logo, Schriftzug „cityjet“), sind seit 17.10.2026 entfernt, weil die
+Nutzungsbedingungen von oebb.at auch für Markennamen eine Genehmigung
+verlangen. Die übrigen Grafiken (`site-favicon.svg`, `og-default.svg`, das
+Logo im Seitenkopf) sind eigene Arbeiten.
+
+Das Projekt ist **inoffiziell** und steht in keiner Verbindung zu Wiener
+Linien, ÖBB, Stadt Wien oder VOR/VAO; maßgeblich sind die verlinkten
+Originalmeldungen. Das steht auch am Anfang des `<copyright>` beider Feeds,
+in der Fußzeile der Webseite und im README.
+
 ## Wetter auf der Webseite (`docs/site.html`)
 
 Das Dashboard zeigt im Kopf die aktuelle Temperatur am Wien Hauptbahnhof. Der
@@ -104,10 +160,15 @@ freigegeben; das Dashboard ist werbefrei und ohne Abo.
 
 ## Abhängigkeiten
 
-Die Python-Abhängigkeiten in `requirements.txt` stehen unter ihren eigenen
-Lizenzen. Das Übersetzungsmodell `Helsinki-NLP/opus-mt-de-en` wird zur Laufzeit
-geladen und nicht im Repository verteilt; seine Lizenz steht auf der Modellkarte
-bei Hugging Face.
+Die Python-Abhängigkeiten in `requirements.txt` stehen unter ihren eigenen,
+durchweg freizügigen Lizenzen (Stand 17.10.2026: requests, transformers,
+sentencepiece, torch Apache-2.0; python-dateutil BSD/Apache-2.0; defusedxml
+PSF; openpyxl MIT; dnspython ISC). Sie werden installiert, nicht im Repository
+mitverteilt. Das Übersetzungsmodell `Helsinki-NLP/opus-mt-de-en` steht laut
+[Modellkarte](https://huggingface.co/Helsinki-NLP/opus-mt-de-en) unter
+Apache-2.0; es wird zur Laufzeit geladen und nicht im Repository verteilt. Die
+Dokumentationsseiten nutzen das Jekyll-Theme Primer (MIT) und laden
+`anchor-js` (MIT) von cdnjs.
 
 ---
 

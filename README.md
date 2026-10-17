@@ -120,6 +120,9 @@ Begleitende Stamm-/Identifier-Quellen: das **ÖBB-Excel** „Verzeichnis der Ver
 
 ### ⚖️ Lizenz
 
+**Inoffizielles Projekt** ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und
+VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen.
+
 Der **Code** steht unter der [MIT-Lizenz](LICENSE). Die **Meldungstexte** in
 `docs/feed.xml` und `docs/feed.en.xml` und die Datensätze unter `data/` gehören
 den jeweiligen Quellen und stehen unter deren Lizenzen (Wiener Linien und Stadt

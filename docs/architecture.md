@@ -2174,6 +2174,25 @@ vorhanden, keine Konsolenfehler unter der strengen CSP. Wächter:
 `tests/test_site_css_tiles.py`. Wie das Ergebnis auf seinem eigenen Gerät
 wirkt (Bildschirm, Schrift, Bewegung), beurteilt Michael selbst.
 
+### Bilder ohne Marken, Hinweis „inoffiziell“ (2026-10-17)
+
+Beide Bilder der Seite (`docs/assets/train.png`, der fahrende Zug, und
+`docs/assets/footer-bg.jpg`, der Hintergrund der Fußzeile) sind laut Michael
+KI-generiert. Sie zeigten aber ÖBB-Marken: das ÖBB-Logo und den Schriftzug
+„cityjet“ am Zug, ÖBB-Logos auf Sitzen, Liniennetzplan und Fahrschein im
+Hintergrund. Die Nutzungsbedingungen von oebb.at (Punkt 3) verlangen auch für
+Markennamen eine vorherige schriftliche Genehmigung. Michael hat am 17.10.2026
+entschieden, nur Inhalte mit geklärten Nutzungsrechten zu zeigen. Deshalb sind die Marken
+aus beiden Bildern entfernt (übermalt aus der umgebenden Fläche); Motiv,
+Farben, Größe und Aufbau bleiben, die WebP-Fassungen sind aus den neuen
+Bildern erzeugt. Aus demselben Grund steht am Anfang des `<copyright>` beider
+Feeds, in der Fußzeile (DE/EN) und im README der Satz „Inoffizielles Projekt
+ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind
+die verlinkten Originalmeldungen.“ (`_UNOFFICIAL_DE`/`_EN` in
+`src/build_feed.py`, Test `tests/test_channel_copyright.py`). Titel und Texte
+der Meldungen ändern sich dadurch nicht. Ein neues Bild für die Seite trägt
+keine Marke eines Verkehrsunternehmens.
+
 ---
 
 ## 7. VOR/VAO-API — Stammstrecke-only-Scope (2026-05-11)

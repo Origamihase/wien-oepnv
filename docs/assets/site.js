@@ -188,6 +188,8 @@
       '<a href="https://open-meteo.com/" rel="external noopener noreferrer" target="_blank"><strong>Weather data by Open-Meteo.com</strong></a> – weather at Wien Hbf (CC&nbsp;BY&nbsp;4.0)',
     "footer-about-heading": "About the dashboard",
     "footer-about-html":
+      "Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; " +
+      "the linked original notices are authoritative. " +
       "Code open-source under the MIT licence. Notice texts remain with their sources and are " +
       "shortened, edited and machine-translated for feed and dashboard: " +
       "Wiener Linien and City of Vienna – data.wien.gv.at under " +
