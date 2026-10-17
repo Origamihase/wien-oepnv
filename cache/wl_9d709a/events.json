@@ -1238,6 +1238,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U2: Weichenstörung",
+    "description": "Die Linie U2 fährt derzeit zwischen den Stationen Donaumarina und Donaustadtbrücke in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: Nicht absehbar. Grund: Weichenstörung im Bereich Stadion.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "77b27c4272114ea067073650d04c977682732e6124442518d04bef2cd04bde5e",
+    "pubDate": "2026-10-17T13:04:00+02:00",
+    "starts_at": "2026-10-17T13:04:00+02:00",
+    "ends_at": "2026-10-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-10-17|TK=u2 weichenstörung",
+    "_wl_ids": [
+      "I20261017-0015"
+    ],
+    "_incident_start": "2026-10-17T13:04:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Schadhaftes Fahrzeug",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
+    "pubDate": "2026-10-17T13:10:00+02:00",
+    "starts_at": "2026-10-17T13:10:00+02:00",
+    "ends_at": "2026-10-17T23:55:00+02:00",
+    "_identity": "wl|störung|L=U4|D=2026-10-17|TK=u4 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261017-0016"
+    ],
+    "_incident_start": "2026-10-17T13:10:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",

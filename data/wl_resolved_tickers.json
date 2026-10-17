@@ -3,46 +3,32 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R2420-118|2026-10-17T12:15:20.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R2420-118",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-17T13:15:00.000+0200",
-   "incident": "I20261017-0013"
+   "key": "R1797-407|2026-10-17T13:18:24.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R1797-407",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-17T14:17:00.000+0200",
+   "incident": "I20261017-0017"
   },
   {
-   "key": "R2422-118|2026-10-17T12:17:20.000+0200|Schadhafter Zug\nBetrieb ab Stadionbad",
-   "name": "R2422-118",
-   "title": "Schadhafter Zug\nBetrieb ab Stadionbad",
-   "end": "2026-10-17T13:22:00.000+0200",
-   "incident": "I20261017-0013"
+   "key": "R720-407|2026-10-17T13:18:23.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R720-407",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-17T14:17:00.000+0200",
+   "incident": "I20261017-0017"
   },
   {
-   "key": "R3604-118|2026-10-17T12:15:21.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R3604-118",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-17T13:15:00.000+0200",
-   "incident": "I20261017-0013"
+   "key": "R721-407|2026-10-17T13:18:23.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R721-407",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-17T14:17:00.000+0200",
+   "incident": "I20261017-0017"
   },
   {
-   "key": "R3605-118|2026-10-17T12:17:21.000+0200|Schadhafter Zug\nBetrieb ab Stadionbad",
-   "name": "R3605-118",
-   "title": "Schadhafter Zug\nBetrieb ab Stadionbad",
-   "end": "2026-10-17T13:22:00.000+0200",
-   "incident": "I20261017-0013"
-  },
-  {
-   "key": "R3606-118|2026-10-17T12:17:21.000+0200|Schadhafter Zug\nBetrieb ab Stadionbad",
-   "name": "R3606-118",
-   "title": "Schadhafter Zug\nBetrieb ab Stadionbad",
-   "end": "2026-10-17T13:22:00.000+0200",
-   "incident": "I20261017-0013"
-  },
-  {
-   "key": "R3607-118|2026-10-17T12:17:51.000+0200|Schadhafter Zug\nBetrieb ab Stadionbad",
-   "name": "R3607-118",
-   "title": "Schadhafter Zug\nBetrieb ab Stadionbad",
-   "end": "2026-10-17T13:22:00.000+0200",
-   "incident": "I20261017-0013"
+   "key": "R814-407|2026-10-17T13:18:25.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R814-407",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-17T14:17:00.000+0200",
+   "incident": "I20261017-0017"
   }
  ]
 }

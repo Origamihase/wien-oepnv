@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261017-0013-F01, I20261017-0013, I20260917-0012, I20260922-0032, I20261017-0011-F01, I20260925-0011, I20261017-0011-F02, I20261017-0011, I20261017-0012, I20260909-0007, I20261017-0009, I20261017-0014-F01, I20261017-0014-F02, I20261017-0014, I20261017-0008-F01"
+    "trafficInfoNameList": "I20261017-0013-F01, I20261017-0013, I20260917-0012, I20260922-0032, I20261017-0011-F01, I20260925-0011, I20261017-0011-F02, I20261017-0012, I20261017-0016, I20260909-0007, I20261017-0009, I20261017-0015, I20261017-0014-F01, I20261017-0014-F02, I20261017-0014, I20261017-0017"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R318-437, R36-152, R1474-412, R1445-149, R1446-149, R1475-149, R1476-149, R5815-671, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1448-412, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R500-101, R2420-118, R3604-118, R2422-118, R3605-118, R3606-118, R3607-118, R187-0, R147-0, R146-0, R148-0, R150-0, R1213-0, R188-0, R1212-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R100-136, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R2025-671, R318-437, R293-474, R101-136, R36-152, R1446-149, R1476-149, R5815-671, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1448-412, R1474-412, R1445-149, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R500-101, R146-0, R187-0, R148-0, R147-0, R150-0, R1212-0, R1213-0, R188-0, R720-407, R721-407, R1797-407, R814-407, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,41 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Johnstraße",
-    "name": "I20261017-0008-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "303",
-       "lineName": "U3",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T10:40:00.000+0200",
-     "end": "2026-10-17T11:57:00.000+0200",
-     "lastUpdate": "2026-10-17T11:57:00.000+0200",
-     "resume": "2026-10-17T11:57:00.000+0200",
-     "start": "2026-10-17T10:20:00.000+0200"
-    },
-    "title": "U3: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "35A": "ptBusCity"
      }
     },
@@ -268,50 +233,6 @@
      "start": "2026-10-17T10:35:00.000+0200"
     },
     "title": "35A: Verspätungen"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "11": "ptTram",
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie 11: Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. Linie O: Fahrtbehinderung in Richtung Bruno-Marek-Allee. Voraussichtliche Dauer: 12:05 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Laxenburger Straße / Troststraße.",
-    "descriptionHTML": "Linie 11:<br>Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse.<br>Linie O:<br>Fahrtbehinderung in Richtung Bruno-Marek-Allee.<br> <br>Voraussichtliche Dauer: 12:05 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Laxenburger Straße / Troststraße.",
-    "name": "I20261017-0011",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11",
-     "O"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "111",
-       "lineName": "11",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "170",
-       "lineName": "O",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     1931
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T11:41:00.000+0200",
-     "end": "2026-10-17T12:03:00.000+0200",
-     "lastUpdate": "2026-10-17T12:03:00.000+0200",
-     "resume": "2026-10-17T12:03:00.000+0200",
-     "start": "2026-10-17T11:41:00.000+0200"
-    },
-    "title": "11, O: Rettungseinsatz"
    },
    {
     "attributes": {
@@ -603,6 +524,109 @@
      "start": "2026-10-17T12:34:00.000+0200"
     },
     "title": "41: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Die Linie U2 fährt derzeit zwischen den Stationen Donaumarina und Donaustadtbrücke in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: Nicht absehbar. Grund: Weichenstörung im Bereich Stadion.",
+    "descriptionHTML": "Die Linie U2 fährt derzeit zwischen den Stationen Donaumarina und Donaustadtbrücke in beiden Richtungen über Gleis 2.<br> <br>Voraussichtliche Dauer: Nicht absehbar.<br><br>Grund: Weichenstörung im Bereich Stadion.",
+    "location": " Stadion",
+    "name": "I20261017-0015",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "302",
+       "lineName": "U2",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T13:05:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T13:15:00.000+0200",
+     "start": "2026-10-17T13:04:00.000+0200"
+    },
+    "title": "U2: Weichenstörung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261017-0016",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "304",
+       "lineName": "U4",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T13:10:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T13:10:00.000+0200",
+     "resume": "2026-10-17T13:10:00.000+0200",
+     "start": "2026-10-17T13:10:00.000+0200"
+    },
+    "title": "U4: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "7A": "ptBusCity"
+     }
+    },
+    "description": "Linie 7A: Fahrtbehinderung in Richtung Meidling Hauptstraße U. Voraussichtliche Dauer: 13:45 Uhr. Grund: Falschparker im Bereich Sonnleithnergasse.",
+    "descriptionHTML": "Linie 7A:<br>Fahrtbehinderung in Richtung Meidling Hauptstraße U.<br> <br>Voraussichtliche Dauer: 13:45 Uhr.<br><br>Grund: Falschparker im Bereich Sonnleithnergasse.",
+    "location": "Sonnleithnergasse",
+    "name": "I20261017-0017",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "407",
+       "lineName": "7A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-17T13:18:00.000+0200",
+     "end": "2026-10-17T13:20:00.000+0200",
+     "lastUpdate": "2026-10-17T13:20:00.000+0200",
+     "resume": "2026-10-17T13:20:00.000+0200",
+     "start": "2026-10-17T13:17:00.000+0200"
+    },
+    "title": "7A: Falschparker"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1091,6 +1115,24 @@
     "title": "Fahrtbehinderung\nwegen Falschparker\n\n\n\n"
    },
    {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1797-407",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedStops": [
+     1797
+    ],
+    "time": {
+     "end": "2026-10-17T14:17:00.000+0200",
+     "start": "2026-10-17T13:18:24.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
     "description": "Fahrtbehinderung\nwegen Falschparker\n\n",
     "name": "R187-0",
     "owner": "WL",
@@ -1424,42 +1466,6 @@
     "title": "Busse halten\nHoßplatz 11"
    },
    {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R2420-118",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     2420
-    ],
-    "time": {
-     "end": "2026-10-17T13:15:00.000+0200",
-     "start": "2026-10-17T12:15:20.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Stadionbad",
-    "name": "R2422-118",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     2422
-    ],
-    "time": {
-     "end": "2026-10-17T13:22:00.000+0200",
-     "start": "2026-10-17T12:17:20.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Stadionbad"
-   },
-   {
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -1532,78 +1538,6 @@
     "title": "Züge halten\nbei Linien 6 und 18"
    },
    {
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R3604-118",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     3604
-    ],
-    "time": {
-     "end": "2026-10-17T13:15:00.000+0200",
-     "start": "2026-10-17T12:15:21.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Stadionbad",
-    "name": "R3605-118",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     3605
-    ],
-    "time": {
-     "end": "2026-10-17T13:22:00.000+0200",
-     "start": "2026-10-17T12:17:21.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Stadionbad"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Stadionbad",
-    "name": "R3606-118",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     3606
-    ],
-    "time": {
-     "end": "2026-10-17T13:22:00.000+0200",
-     "start": "2026-10-17T12:17:21.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Stadionbad"
-   },
-   {
-    "description": "Schadhafter Zug\nBetrieb ab Stadionbad",
-    "name": "R3607-118",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     3607
-    ],
-    "time": {
-     "end": "2026-10-17T13:22:00.000+0200",
-     "start": "2026-10-17T12:17:51.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Stadionbad"
-   },
-   {
     "description": "Züge halten\nWipplingerstr 39",
     "name": "R45-136",
     "owner": "WL",
@@ -1653,6 +1587,60 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R720-407",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedStops": [
+     720
+    ],
+    "time": {
+     "end": "2026-10-17T14:17:00.000+0200",
+     "start": "2026-10-17T13:18:23.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R721-407",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedStops": [
+     721
+    ],
+    "time": {
+     "end": "2026-10-17T14:17:00.000+0200",
+     "start": "2026-10-17T13:18:23.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R814-407",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedStops": [
+     814
+    ],
+    "time": {
+     "end": "2026-10-17T14:17:00.000+0200",
+     "start": "2026-10-17T13:18:25.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
