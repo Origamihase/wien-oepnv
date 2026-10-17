@@ -729,9 +729,13 @@ verdrängt eine andere Störung.
   nennt (er gilt dann für alle) oder eine Station mit dem Titel teilt
   („zwischen Gänserndorf und Deutsch Wagram“ unter „Wien Floridsdorf ↔
   Gänserndorf“ ist derselbe Bau vom Nachbarabschnitt aus, und Satz 1 trägt
-  die Daten). Replay über alle 589 ÖBB-Texte im Cache seit Mai: nur diese
-  Meldung ändert sich (drei ihrer Fassungen), Titel und Zahl der Items
-  bleiben gleich.
+  die Daten). ÖBBs Abschnittsnamen in Großbuchstaben („TEILAUSFALL:“,
+  „GEÄNDERTE FAHRZEITEN:“, „ACHTUNG:“) stehen im Text normal geschrieben
+  („Teilausfall:“), Betreiberwunsch vom 17.10. („„Teilausfall“ gefällt mir
+  besser als „TEILAUSFALL““, `_oebb_section_labels_cased`); Kürzel wie
+  „RJ 263“ oder „ÖBB“ bleiben. Replay über alle 589 ÖBB-Texte im Cache seit
+  Mai: nur diese Meldung ändert sich (drei ihrer Fassungen), Titel und Zahl
+  der Items bleiben gleich.
 * **„Voraussichtlich bis 14:10 Uhr“ statt „Voraussichtliche Dauer: 14:10
   Uhr“ (seit 2026-10-06, Betreiberentscheidung „Dauer-Text anpassen“).**
   WLs Störungsvorlage nennt das erwartete Ende unter einem Dauer-Label. Auf

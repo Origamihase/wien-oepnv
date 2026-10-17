@@ -16,6 +16,11 @@ Mutations checked against this file (each one caught, by the test named):
   ``test_a_neighbouring_stretch_stays_first``.
 * reordering also when sentence one names no route →
   ``test_a_first_sentence_without_route_stays_first``.
+* the label left in capitals → ``test_the_title_route_section_comes_first``.
+
+ÖBB's capital section labels read in normal case ("Teilausfall:"), operator
+request 2026-10-17; codes such as "RJ 263" or "ÖBB" stay
+(``test_only_labels_change_case``).
 """
 
 from __future__ import annotations
@@ -63,7 +68,7 @@ HUETTELDORF: FeedItem = {
 def test_the_title_route_section_comes_first() -> None:
     summary = _summary(HUETTELDORF)
     assert summary.startswith(
-        "TEILAUSFALL: Von 18.10.2026 bis 19.10.2026 kann der Zug RJ 263 zwischen "
+        "Teilausfall: Von 18.10.2026 bis 19.10.2026 kann der Zug RJ 263 zwischen "
         "Wien Hütteldorf Bahnhof (U) und Wien Hbf (U) nicht fahren."
     )
     assert "Salzburg" not in summary
@@ -98,3 +103,9 @@ def test_a_first_sentence_without_route_stays_first() -> None:
         ),
     }
     assert _summary(item).startswith("Wegen eines Polizeieinsatzes sind keine Fahrten möglich.")
+
+
+def test_only_labels_change_case() -> None:
+    assert bf._oebb_section_labels_cased(
+        "VORVERLEGTE ABFAHRTSZEITEN/GEÄNDERTE FAHRZEITEN: Der Zug RJ 263 der ÖBB: ACHTUNG: x"
+    ) == "Vorverlegte Abfahrtszeiten/Geänderte Fahrzeiten: Der Zug RJ 263 der ÖBB: Achtung: x"

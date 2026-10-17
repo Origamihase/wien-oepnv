@@ -633,6 +633,22 @@ def _lines_in_short(summary: str, title: str) -> str | None:
 _MEASURE_MIN_WORDS_SHOWN = 3
 
 
+# ÖBB heads the sections of a long notice in capitals ("TEILAUSFALL:",
+# "HALTAUSFALL:", "GEÄNDERTE FAHRZEITEN:", "ACHTUNG:", "HINWEISE:"). Once a
+# section leads the shown text (:func:`_oebb_title_route_first`) the label
+# stands on the TV; it reads "Teilausfall:" there, operator request
+# 2026-10-17 ("„Teilausfall“ gefällt mir besser als „TEILAUSFALL“"). Only a
+# capitals run in front of a colon is a label; "ÖBB" or "RJ 263" stay.
+_OEBB_SECTION_LABEL_RE = re.compile(r"\b([A-ZÄÖÜ]{4,}(?:[ /-][A-ZÄÖÜ]{2,})*)(?=\s*:)")
+
+
+def _oebb_section_labels_cased(text: str) -> str:
+    """``"TEILAUSFALL: …"`` → ``"Teilausfall: …"``, every word of the label."""
+    return _OEBB_SECTION_LABEL_RE.sub(
+        lambda m: re.sub(r"[A-ZÄÖÜ]+", lambda w: w[0][0] + w[0][1:].lower(), m[1]), text
+    )
+
+
 def _oebb_route_keys(text: str) -> set[frozenset[str]]:
     """The station pairs of every ``zwischen A und B`` route in *text*.
 
@@ -10583,6 +10599,7 @@ def _format_item_content(
     # ``_oebb_sentence_without_place``.
     if it.get("source") == _OEBB_SOURCE:
         summary = _OEBB_COURTESY_RE.sub("", summary).strip() or summary
+        summary = _oebb_section_labels_cased(summary)
 
     # Bulletpoints auflösen, um einen fließenden Satz zu bilden
     summary = summary.replace(" • ", " ").replace("•", " ")

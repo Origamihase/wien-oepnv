@@ -13,7 +13,9 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   10.10.2026 … und von 17.10.2026 …“, die Titelstrecke stand nur im Abschnitt
   „TEILAUSFALL“ (RJ 263, 18.–19.10.). Nennt Satz 1 eine Strecke, die keine
   Station mit dem Titel teilt, beginnt der Text jetzt mit dem Satz, der die
-  Titelstrecke nennt (`_oebb_title_route_first`). Replay über 589 ÖBB-Texte
+  Titelstrecke nennt (`_oebb_title_route_first`). ÖBBs Abschnittsnamen in
+  Großbuchstaben stehen normal geschrieben („Teilausfall:“ statt
+  „TEILAUSFALL:“, Betreiberwunsch vom 17.10.). Replay über 589 ÖBB-Texte
   seit Mai: nur diese Meldung ändert sich. Details in
   `docs/architecture.md` (ÖBB: der Text beginnt mit dem Satz, der die
   Titelstrecke nennt).
