@@ -5,6 +5,22 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Hinweis „inoffiziell“, Bilder ohne ÖBB-Marken, keine
+  VOR-Koordinaten (2026-10-17)**: Michaels Entscheidung zum Lizenz-Audit:
+  klar sagen, dass das Projekt inoffiziell ist, und nur Marken und Daten mit
+  geklärten Nutzungsrechten zeigen. Drei Folgen: (1) Am Anfang des
+  `<copyright>` beider Feeds, in der Fußzeile (DE/EN) und im README steht
+  „Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und
+  VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen.“ Titel und Texte
+  der Meldungen bleiben, am TV ändert sich nichts. (2) Die beiden KI-Bilder der
+  Webseite (Zug, Fußzeilen-Hintergrund) zeigten ÖBB-Logo und „cityjet“; die
+  Marken sind übermalt, Motiv und Design bleiben (`docs/architecture.md`,
+  „Bilder ohne Marken“). (3) Die Koordinaten aus dem AnachB-Auskunftssystem
+  sind weg: `data/vor-haltestellen.csv` hat nur noch ID und Name, die
+  Mapping-Datei und `data/gtfs/stops.txt` keine Koordinaten mehr, und die 101
+  Stationen, deren Koordinate von dort stammte, tragen die des
+  ÖBB-Infrastruktur-GeoNetz (bis 230 m Abstand, keine wechselt zwischen Wien
+  und Umland). Tests halten alle drei Punkte fest.
 * **Lizenz-Audit: Angaben in `NOTICE.md` gegen die Originaltexte korrigiert (2026-10-17)**:
   Eine Prüfung aller Quellen gegen ihre Originalseiten (data.gv.at,
   data.oebb.at, Wiener Linien Open Data, oebb.at, Open-Meteo, Hugging Face,

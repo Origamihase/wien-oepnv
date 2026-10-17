@@ -11,6 +11,8 @@ source (``data/gtfs/stops.txt``, a VOR extract listed as ÖBB-Infrastruktur).
 
 from __future__ import annotations
 
+import csv
+import json
 import re
 import shutil
 import subprocess  # noqa: S404 - fixed git command, no user input
@@ -76,3 +78,16 @@ def test_vor_stop_data_is_not_called_open() -> None:
     row = next(line for line in text.splitlines() if "`data/vor-haltestellen.csv`" in line and line.startswith("|"))
     assert "CC BY" not in row
     assert "ungeklärt" in row
+
+
+def test_vor_derived_files_carry_no_coordinates() -> None:
+    # Michael, 17.10.2026: the AnachB-derived files keep IDs and names only.
+    with (_ROOT / "data" / "vor-haltestellen.csv").open(encoding="utf-8") as handle:
+        header = next(csv.reader(handle, delimiter=";"))
+    assert header == ["StopPointId", "StopPointName"]
+    mapping = json.loads((_ROOT / "data" / "vor-haltestellen.mapping.json").read_text(encoding="utf-8"))
+    assert not [e for e in mapping if "latitude" in e or "longitude" in e]
+    with (_ROOT / "data" / "gtfs" / "stops.txt").open(encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle))
+    assert rows
+    assert not [r for r in rows if r["stop_lat"] or r["stop_lon"]]

@@ -648,6 +648,12 @@ def _build_location_index(
     wl_path: Path | None,
     vor_path: Path | None = None,
 ) -> dict[str, LocationInfo]:
+    # Since 2026-10-17 the pinned VOR stop list and the GTFS stub carry no
+    # coordinates: they came from the AnachB webapp without an open licence,
+    # and Michael decided to drop them (NOTICE.md, "VOR-Haltestellendaten").
+    # Both loaders skip rows without coordinates, so the index is fed by the
+    # WL OGD stops only; a file that regains coordinates would feed it again,
+    # which tests/test_notice_data_coverage.py guards against.
     locations: dict[str, LocationInfo] = {}
     if gtfs_path:
         locations.update(_load_gtfs_locations(gtfs_path))

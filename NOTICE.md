@@ -60,7 +60,7 @@ Werte nennt. Die Einträge mischen mehrere Quellen:
 | Wiener Linien OGD | `data/wienerlinien-ogd-*.csv`, Stationen mit `source` `wl` | CC BY 4.0 | „Datenquelle: Wiener Linien“ |
 | ÖBB-Infrastruktur, Verzeichnis der Verkehrsstationen | `data/oebb-verkehrsstationen.xlsx`, `source` `oebb` | [CC BY 3.0 AT](https://creativecommons.org/licenses/by/3.0/at/deed.de) | „Datenquelle: [ÖBB-Infrastruktur AG](https://infrastruktur.oebb.at/de/)“ |
 | ÖBB-Infrastruktur GeoNetz | `data/oebb_geonetz_stops.json`, `source` `oebb_geonetz` | [CC BY 3.0 AT](https://creativecommons.org/licenses/by/3.0/at/deed.de) | „Datenquelle: [ÖBB-Infrastruktur AG](https://infrastruktur.oebb.at/de/)“ |
-| VOR Verkehrsverbund Ost-Region (Auskunft AnachB) | `data/vor-haltestellen.csv`, `data/vor-haltestellen.mapping.json`, `data/gtfs/stops.txt`, `source` `vor`, Feld `vor_id` | **ungeklärt**: Haltestellen-IDs und Koordinaten aus dem Auskunftssystem der AnachB-Webapp des VOR (`anachb.vor.at`), keine offene Lizenz bekannt (siehe unten, „VOR-Haltestellendaten“) | „Haltestellendaten: VOR“ |
+| VOR Verkehrsverbund Ost-Region (Auskunft AnachB) | `data/vor-haltestellen.csv`, `data/vor-haltestellen.mapping.json`, `data/gtfs/stops.txt`, `source` `vor`, Feld `vor_id` | **ungeklärt**: Haltestellen-IDs und -Namen aus dem Auskunftssystem der AnachB-Webapp des VOR (`anachb.vor.at`), keine offene Lizenz bekannt; Koordinaten seit 17.10.2026 entfernt (siehe unten, „VOR-Haltestellendaten“) | „Haltestellendaten: VOR“ |
 | Stadt Wien, Stadtgrenze (MA 41) | `data/LANDESGRENZEOGD.json` | CC BY 4.0 | „Datenquelle: Stadt Wien – data.wien.gv.at“ |
 | OpenStreetMap (Overpass) | Koordinaten mit `source` `osm` | [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/); die aus OpenStreetMap übernommenen Werte stehen auch in diesem Verzeichnis unter der ODbL | „© [OpenStreetMap-Mitwirkende](https://www.openstreetmap.org/copyright)“ |
 | HAFAS (ÖBB Scotty) | Koordinaten und EVA-Nummern mit `source` `hafas`, `data/oebb_station_lines.json`; die Zugangskennung in `data/hafas_profile.json` stammt aus dem ISC-lizenzierten Projekt [`public-transport/hafas-client`](https://github.com/public-transport/hafas-client) | **ungeklärt**: öffentlich erreichbares Auskunftssystem der ÖBB, keine offene Lizenz bekannt | „Fahrplandaten: ÖBB“ |
@@ -74,17 +74,31 @@ Data, OpenStreetMap); dieselbe Tabelle mit Dateidetails steht unter
 
 ### VOR-Haltestellendaten
 
-`data/vor-haltestellen.csv` (VOR-Haltestellen-ID, Name, Koordinate) ist kein
-offener Datensatz. Das inzwischen gelöschte Skript `fetch_vor_haltestellen.py`
-hat die Werte bis 11.05.2026 beim Auskunftssystem der AnachB-Webapp des VOR
+`data/vor-haltestellen.csv` (VOR-Haltestellen-ID und Name) ist kein offener
+Datensatz. Das inzwischen gelöschte Skript `fetch_vor_haltestellen.py` hat die
+Werte bis 11.05.2026 beim Auskunftssystem der AnachB-Webapp des VOR
 (`anachb.vor.at/hamm/gate`, mit der Zugangskennung aus deren
-Webapp-Konfiguration) abgefragt; seither ist die Datei eingefroren.
-`data/gtfs/stops.txt` ist ein daraus abgeleiteter Auszug (157 der 167 Zeilen
-tragen eine VOR-Haltestellen-ID). Bis 17.10.2026 nannte diese Datei dafür
-fälschlich CC BY 4.0; eine Lizenz des VOR für diese Daten ist nicht bekannt.
-Die Werte stehen nur im Repository und im Stationsverzeichnis; der Feed zeigt
-keine VOR-Koordinate (GeoRSS nur aus den drei offenen Datensätzen oben), und der
-Stammstrecken-Monitor fragt die VAO-API mit Michaels eigenem Zugang ab.
+Webapp-Konfiguration) abgefragt; seither ist die Datei eingefroren. Bis
+17.10.2026 nannte diese Datei dafür fälschlich CC BY 4.0; eine Lizenz des VOR
+für diese Daten ist nicht bekannt.
+
+Michael hat am 17.10.2026 entschieden, die Koordinaten aus dieser Quelle
+nicht mehr zu führen, weil für sie keine Nutzungsrechte geklärt sind:
+
+- `data/vor-haltestellen.csv` enthält nur noch ID und Name, die
+  `data/vor-haltestellen.mapping.json` keine Koordinaten mehr, und der daraus
+  abgeleitete Auszug `data/gtfs/stops.txt` (157 der 167 Zeilen mit
+  VOR-Haltestellen-ID) hat leere `stop_lat`/`stop_lon`.
+- Die 101 Stationen in `data/stations.json`, deren Koordinate aus dieser
+  Quelle stammte, tragen jetzt die Koordinate des ÖBB-Infrastruktur-GeoNetz
+  (CC BY 3.0 AT, oben); ihre `source` nennt `oebb_geonetz`. Keine Station
+  wechselte dabei zwischen Wien und Umland.
+- Was bleibt, sind Haltestellen-IDs und Namen (`vor_id`, Aliase), die der
+  Stationsabgleich braucht. Der Stammstrecken-Monitor fragt die VAO-API mit
+  Michaels eigenem Zugang ab (Statistik oben).
+
+Der Feed zeigt keine dieser Koordinaten: GeoRSS-Punkte kommen nur aus den
+drei offenen Datensätzen oben.
 
 ## Rohantworten und Betriebszustand (`data/raw/`, Zustandsdateien)
 
@@ -114,6 +128,21 @@ im Dashboard an diesen beiden Abschnitten („Quelle: VOR/VAO“), im README und
 hier; jede andere Quelle behält ihren eigenen Hinweis. Endet der Vertrag,
 müssen diese Hinweise wieder entfernt werden (Punkt 7.7). Der Vertragstext selbst
 liegt nicht im Repository.
+
+## Bilder der Webseite (`docs/assets/`)
+
+`train.png` (der fahrende Zug, mit `train.webp`, `train-small.webp`) und
+`footer-bg.jpg` (Hintergrund der Fußzeile, mit `footer-bg.webp`) sind laut
+Michael KI-generiert. Die ÖBB-Marken, die die Bilder zeigten
+(Logo, Schriftzug „cityjet“), sind seit 17.10.2026 entfernt, weil die
+Nutzungsbedingungen von oebb.at auch für Markennamen eine Genehmigung
+verlangen. Die übrigen Grafiken (`site-favicon.svg`, `og-default.svg`, das
+Logo im Seitenkopf) sind eigene Arbeiten.
+
+Das Projekt ist **inoffiziell** und steht in keiner Verbindung zu Wiener
+Linien, ÖBB, Stadt Wien oder VOR/VAO; maßgeblich sind die verlinkten
+Originalmeldungen. Das steht auch am Anfang des `<copyright>` beider Feeds,
+in der Fußzeile der Webseite und im README.
 
 ## Wetter auf der Webseite (`docs/site.html`)
 

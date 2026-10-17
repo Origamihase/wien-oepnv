@@ -11173,6 +11173,19 @@ _VAO_BASIS_EN = (
     "Verkehrsauskunft Österreich VAO GmbH."
 )
 
+# Michael, 17.10.2026 (licence audit): the channel says first that the project is unofficial and that
+# the linked original notices are authoritative, so nobody reads the
+# shortened or translated texts as an operator's own announcement. Channel
+# level only; titles and texts on the EasySignage displays stay unchanged.
+_UNOFFICIAL_DE = (
+    "Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien "
+    "und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen."
+)
+_UNOFFICIAL_EN = (
+    "Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of "
+    "Vienna or VOR/VAO; the linked original notices are authoritative."
+)
+
 # Channel-level metadata for the English feed mirror (docs/feed.en.xml).
 # Kept as a module-level constant so the EN strings are reviewable in one
 # place and never reach the upstream-controlled translation pipeline —
@@ -11185,6 +11198,7 @@ _CHANNEL_METADATA_EN: dict[str, str] = {
     ),
     "language": "en",
     "copyright": (
+        f"{_UNOFFICIAL_EN} "
         "Code: MIT licence. Notice texts remain with their sources and are "
         "shortened, edited and machine-translated for this feed: "
         "Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, "
@@ -11212,6 +11226,7 @@ _CHANNEL_METADATA_EN: dict[str, str] = {
 # (ÖBB-Infrastruktur GeoNetz, Wiener Linien OGD stops, Stadt Wien), so the
 # line names exactly those; never OSM, HAFAS or Google.
 _CHANNEL_COPYRIGHT_DE = (
+    f"{_UNOFFICIAL_DE} "
     "Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind "
     "für den Feed gekürzt und bearbeitet: "
     "Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, "

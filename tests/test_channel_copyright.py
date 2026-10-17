@@ -86,3 +86,18 @@ def test_channel_copyright_gives_geonetz_its_own_licence(lang: str) -> None:
     text = build_feed._channel_metadata(lang)["copyright"]
     assert "Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/" in text
     assert "GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de" in text
+
+
+@pytest.mark.parametrize(
+    ("lang", "expected"),
+    [
+        ("de", "Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO"),
+        ("en", "Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO"),
+    ],
+)
+def test_channel_copyright_starts_with_unofficial_note(lang: str, expected: str) -> None:
+    # Michael, 17.10.2026: the feed must not read as an operator's own
+    # announcement; the linked originals are authoritative.
+    root = ET.fromstring(build_feed._make_rss([], _NOW, {}, lang=lang))
+    text = root.findtext("channel/copyright") or ""
+    assert text.startswith(expected)
