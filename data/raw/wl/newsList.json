@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_371, ftazW_519, ftazW_37, ftazW_112, ftazW_23, ftazW_370, ftazW_520, ftazW_283, ftazW_485, ftazW_369, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_4"
+    "trafficInfoNameList": "ftazW_371, ftazW_519, ftazW_37, ftazW_112, ftazW_23, ftazW_370, ftazW_520, ftazW_283, ftazW_485, ftazW_369, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_4, ftazW_484, ftazW_368, ftazW_196, ftazW_1018061, ftazW_393, ftazW_15, ftazW_1032342"
    }
   ],
   "poiCategoryGroups": [
@@ -2976,6 +2976,39 @@
    },
    {
     "attributes": {
+     "ausBis": "20.10.2026 05:15",
+     "ausVon": "20.10.2026 01:15",
+     "location": "U2 Mittelbahnsteig - Ausgang Prater",
+     "rbls": [
+      4259,
+      4264
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Messe-Prater",
+     "status": "geplante Wartung",
+     "towards": "U2 beide Richtungen"
+    },
+    "description": "U2 Mittelbahnsteig - Ausgang Prater",
+    "name": "ftazW_1018061",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4259,
+     4264
+    ],
+    "time": {
+     "end": "2026-10-20T05:15:00.000+0200",
+     "start": "2026-10-20T01:15:00.000+0200"
+    },
+    "title": "Messe-Prater"
+   },
+   {
+    "attributes": {
      "ausBis": "20.10.2026 00:45",
      "ausVon": "19.10.2026 20:45",
      "location": "U2 Mittelbahnsteig - Ausgang Messe",
@@ -3042,6 +3075,39 @@
    },
    {
     "attributes": {
+     "ausBis": "20.10.2026 05:15",
+     "ausVon": "20.10.2026 01:15",
+     "location": "U2 Mittelbahnsteig - Ausgang Hausfeldstraße, zur Straßenbahnlinie 26 und zu allen Buslinien",
+     "rbls": [
+      4279,
+      4274
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Hausfeldstraße",
+     "status": "geplante Wartung",
+     "towards": "U2 beide Richtungen"
+    },
+    "description": "U2 Mittelbahnsteig - Ausgang Hausfeldstraße, zur Straßenbahnlinie 26 und zu allen Buslinien",
+    "name": "ftazW_1032342",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4279,
+     4274
+    ],
+    "time": {
+     "end": "2026-10-20T05:15:00.000+0200",
+     "start": "2026-10-20T01:15:00.000+0200"
+    },
+    "title": "Hausfeldstraße"
+   },
+   {
+    "attributes": {
      "ausBis": "19.10.2026 00:45",
      "ausVon": "18.10.2026 20:45",
      "location": "U1 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U4 - Ausgang Schwedenplatz",
@@ -3074,6 +3140,70 @@
      "start": "2026-10-18T20:45:00.000+0200"
     },
     "title": "Schwedenplatz"
+   },
+   {
+    "attributes": {
+     "ausBis": "20.10.2026 05:15",
+     "ausVon": "20.10.2026 01:15",
+     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Urban Loritz Platz",
+     "rbls": [
+      4620
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Burggasse-Stadthalle",
+     "status": "geplante Wartung",
+     "towards": "U6 Floridsdorf"
+    },
+    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Urban Loritz Platz",
+    "name": "ftazW_15",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4620
+    ],
+    "time": {
+     "end": "2026-10-20T05:15:00.000+0200",
+     "start": "2026-10-20T01:15:00.000+0200"
+    },
+    "title": "Burggasse-Stadthalle"
+   },
+   {
+    "attributes": {
+     "ausBis": "20.10.2026 05:15",
+     "ausVon": "20.10.2026 01:15",
+     "location": "U4 Mittelbahnsteig - Ausgang Meidling Hauptstraße/Lobkowitzbrücke",
+     "rbls": [
+      4413,
+      4424
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Meidling Hauptstraße",
+     "status": "geplante Wartung",
+     "towards": "U4 beide Richtungen"
+    },
+    "description": "U4 Mittelbahnsteig - Ausgang Meidling Hauptstraße/Lobkowitzbrücke",
+    "name": "ftazW_196",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4413,
+     4424
+    ],
+    "time": {
+     "end": "2026-10-20T05:15:00.000+0200",
+     "start": "2026-10-20T01:15:00.000+0200"
+    },
+    "title": "Meidling Hauptstraße"
    },
    {
     "attributes": {
@@ -3138,6 +3268,32 @@
      "start": "2026-10-19T01:15:00.000+0200"
     },
     "title": "Kagran"
+   },
+   {
+    "attributes": {
+     "ausBis": "20.10.2026 05:15",
+     "ausVon": "20.10.2026 01:15",
+     "location": "Zwischengeschoss - Ausgang Schottenfeldgasse",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Zieglergasse",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Zwischengeschoss - Ausgang Schottenfeldgasse",
+    "name": "ftazW_368",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "time": {
+     "end": "2026-10-20T05:15:00.000+0200",
+     "start": "2026-10-20T01:15:00.000+0200"
+    },
+    "title": "Zieglergasse"
    },
    {
     "attributes": {
@@ -3264,6 +3420,34 @@
    },
    {
     "attributes": {
+     "ausBis": "20.10.2026 05:15",
+     "ausVon": "20.10.2026 01:15",
+     "location": "Passage - Ausgang Äußere Mariahilferstraße",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U6",
+      "U3"
+     ],
+     "station": "Westbahnhof",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Passage - Ausgang Äußere Mariahilferstraße",
+    "name": "ftazW_393",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6",
+     "U3"
+    ],
+    "time": {
+     "end": "2026-10-20T05:15:00.000+0200",
+     "start": "2026-10-20T01:15:00.000+0200"
+    },
+    "title": "Westbahnhof"
+   },
+   {
+    "attributes": {
      "ausBis": "20.10.2026 00:45",
      "ausVon": "19.10.2026 20:45",
      "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Lazarettgasse, Kinderspitalgasse",
@@ -3292,6 +3476,37 @@
      "start": "2026-10-19T20:45:00.000+0200"
     },
     "title": "Alser Straße"
+   },
+   {
+    "attributes": {
+     "ausBis": "20.10.2026 05:15",
+     "ausVon": "20.10.2026 01:15",
+     "location": "U6 Bahnsteig Richtung Siebenhirten - Passage - Ausgang Anton Baumgartner Straße",
+     "rbls": [
+      4631
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Alterlaa",
+     "status": "geplante Wartung",
+     "towards": "U6 Siebenhirten"
+    },
+    "description": "U6 Bahnsteig Richtung Siebenhirten - Passage - Ausgang Anton Baumgartner Straße",
+    "name": "ftazW_484",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4631
+    ],
+    "time": {
+     "end": "2026-10-20T05:15:00.000+0200",
+     "start": "2026-10-20T01:15:00.000+0200"
+    },
+    "title": "Alterlaa"
    },
    {
     "attributes": {

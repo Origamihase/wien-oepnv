@@ -8,19 +8,8 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: ÖBB-Infrastruktur AG (GeoNetz), Wiener Linien (OGD stops), City of Vienna – data.wien.gv.at (CC BY 4.0). Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 17 Oct 2026 05:00:52 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 05:30:51 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[N41: Contamination]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">849f7234a1cd94d5af94a95c315da85326f3020ed31cb6cb00587102c4aa7aa8</guid>
-      <pubDate>Sat, 17 Oct 2026 04:40:00 +0200</pubDate>
-      <ext:first_seen>Sat, 17 Oct 2026 05:00:52 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 17 Oct 2026 04:40:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: contamination. [Since 04:40]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 04:40]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Wien Hütteldorf ↔ Wien Hauptbahnhof]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -32,17 +21,6 @@
       <georss:line>48.197671 16.261209 48.185201 16.376296</georss:line>
       <description>Due to construction works, between Salzburg Hbf and Flughafen Wien train station or Hegyeshalom from 10.10.2026 (22:30) to 14.10.2026 (04:00) and from 17.10.2026 … [Until Wed 21.10.]</description>
       <content:encoded><![CDATA[Due to construction works, between Salzburg Hbf and Flughafen Wien train station or Hegyeshalom from 10.10.2026 (22:30) to 14.10.2026 (04:00) and from 17.10.2026 …<br/>[Until Wed 21.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Track construction works, replacement service]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">cbaeb9add89e94f501dce883629cbda4e8b00aaf9f47f93a8e33ea51c4b85db2</guid>
-      <pubDate>Sat, 17 Oct 2026 00:25:10 +0200</pubDate>
-      <ext:first_seen>Fri, 16 Oct 2026 00:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 17 Oct 2026 00:25:10 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 17 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Track construction works: buses stop at Simmeringer Hauptstr. 157. Replacement service: buses stop at the stop of line N71. [Today]</description>
-      <content:encoded><![CDATA[Track construction works: buses stop at Simmeringer Hauptstr. 157. Replacement service: buses stop at the stop of line N71.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N71: Simmering S U]]></title>
@@ -103,17 +81,6 @@
       <content:encoded><![CDATA[Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling …<br/>[Until 25.12.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[N8: Buses stop at Aßmayergasse just after Flurschützstraße for line 59A]]></title>
-      <link>https://www.wienerlinien.at/ogd_realtime</link>
-      <guid isPermaLink="false">10b9a6d53b42f1dead1c688ecfaaf4e6a3c8058ce9e29c10c1d6b71e47353c17</guid>
-      <pubDate>Sat, 17 Oct 2026 00:45:15 +0200</pubDate>
-      <ext:first_seen>Sat, 10 Oct 2026 01:00:50 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 17 Oct 2026 00:45:15 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 17 Oct 2026 05:15:00 +0200</ext:ends_at>
-      <description>Reason: track construction works. [Today]</description>
-      <content:encoded><![CDATA[Reason: track construction works.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[1A/3A: Schwertgasse]]></title>
       <link>https://www.wienerlinien.at/ogd_realtime</link>
       <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
@@ -124,6 +91,41 @@
       <georss:point>48.212312 16.369604</georss:point>
       <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation. [Until 31.03.2027]</description>
       <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation.<br/>[Until 31.03.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[48A: Neubaugasse, Neustiftgasse]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">d97a8a3d7d6328446c638ae8a1ccf0afc80a24b1828141a4b94ad0065074c2e5</guid>
+      <pubDate>Thu, 08 Oct 2026 15:10:00 +0200</pubDate>
+      <ext:first_seen>Thu, 08 Oct 2026 15:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 19 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 08 Oct 2027 11:11:00 +0200</ext:ends_at>
+      <georss:point>48.205482 16.348467</georss:point>
+      <description>Neustiftgasse 52 → Neustiftgasse 42-44. Stop relocation of line 48A towards Klinik Penzing. Reason: renovation work. [From Mon 19.10.]</description>
+      <content:encoded><![CDATA[Neustiftgasse 52 → Neustiftgasse 42-44. Stop relocation of line 48A towards Klinik Penzing. Reason: renovation work.<br/>[From Mon 19.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
+      <pubDate>Mon, 05 Oct 2026 15:40:00 +0200</pubDate>
+      <ext:first_seen>Mon, 05 Oct 2026 15:40:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <georss:point>48.140620 16.280393</georss:point>
+      <description>Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 … [Until 28.10.]</description>
+      <content:encoded><![CDATA[Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 …<br/>[Until 28.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: ÖBB replacement bus]]></title>
+      <link>https://www.wienerlinien.at/ogd_realtime</link>
+      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
+      <pubDate>Sat, 17 Oct 2026 05:00:05 +0200</pubDate>
+      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 17 Oct 2026 05:00:05 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 17 Oct 2026 23:00:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf [Today]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
