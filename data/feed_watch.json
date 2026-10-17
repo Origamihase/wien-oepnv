@@ -1,32 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-17T17:30:57.373620+00:00",
- "built": "2026-10-17T19:30:43+02:00",
+ "updated": "2026-10-17T18:01:14.781336+00:00",
+ "built": "2026-10-17T20:01:00+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-17T19:30:43+02:00",
+  "built": "2026-10-17T20:01:00+02:00",
   "items": [
+   {
+    "title": "37/O: Verunreinigung",
+    "time_line": "Seit 19:50"
+   },
    {
     "title": "U2: Betriebsstörung",
     "time_line": "Seit 19:01"
-   },
-   {
-    "title": "31A: Verkehrsunfall",
-    "time_line": "Seit 18:33"
-   },
-   {
-    "title": "24A: Fremder Verkehrsunfall",
-    "time_line": "Seit 18:33"
-   },
-   {
-    "title": "52/60: Rettungseinsatz",
-    "time_line": "Seit 18:16"
-   },
-   {
-    "title": "U4: Gegenstände im Gleis",
-    "time_line": "Seit 18:06"
    },
    {
     "title": "Wien Hütteldorf ↔ Wien Hauptbahnhof",
@@ -47,6 +35,18 @@
    {
     "title": "12/5: Albertgasse",
     "time_line": "Bis 03.11."
+   },
+   {
+    "title": "15A: Max-Mauermann-Gasse",
+    "time_line": "Bis 25.12."
+   },
+   {
+    "title": "1A/3A: Schwertgasse",
+    "time_line": "Bis 31.03.2027"
+   },
+   {
+    "title": "48A: Neubaugasse, Neustiftgasse",
+    "time_line": "Ab Mo 19.10."
    }
   ]
  },
@@ -6550,6 +6550,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 104
+   }
+  },
+  {
+   "t": "2026-10-17T18:01:14.781336+00:00",
+   "raw": {
+    "wl-stoerungen": 65,
+    "wl-hinweise": 93,
+    "oebb": 159,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 23,
+    "oebb": 136,
+    "baustellen": 69
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 101
    }
   }
  ]
