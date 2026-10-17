@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261017-0015-F01, I20261017-0022, I20261017-0023, I20260925-0011, I20260909-0007, I20261017-0021, I20261017-0019, I20261017-0024, I20261017-0023-F02, I20261017-0020, I20261017-0018-F01, I20261017-0023-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261017-0022, I20261017-0023, I20261017-0024, I20260925-0011, I20260909-0007, I20261017-0021, I20261017-0019, I20261017-0023-F02, I20261017-0020, I20261017-0018-F01, I20261017-0023-F01, I20261017-0025"
    },
    {
     "id": 3,
@@ -199,41 +199,6 @@
      "start": "2026-09-25T08:55:00.000+0200"
     },
     "title": "26E: Gleisbauarbeiten"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U2": "ptMetro"
-     }
-    },
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": " Stadion",
-    "name": "I20261017-0015-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "302",
-       "lineName": "U2",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T14:11:00.000+0200",
-     "end": "2026-10-17T15:22:00.000+0200",
-     "lastUpdate": "2026-10-17T15:22:00.000+0200",
-     "resume": "2026-10-17T15:22:00.000+0200",
-     "start": "2026-10-17T13:04:00.000+0200"
-    },
-    "title": "U2: Weichenstörung"
    },
    {
     "attributes": {
@@ -473,12 +438,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-17T15:45:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T15:45:00.000+0200",
-     "resume": "2026-10-17T15:45:00.000+0200",
+     "end": "2026-10-17T16:10:00.000+0200",
+     "lastUpdate": "2026-10-17T16:10:00.000+0200",
+     "resume": "2026-10-17T16:10:00.000+0200",
      "start": "2026-10-17T15:28:00.000+0200"
     },
     "title": "36B: Rettungseinsatz"
@@ -542,15 +507,49 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-17T15:40:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T15:40:00.000+0200",
-     "resume": "2026-10-17T15:39:00.000+0200",
+     "end": "2026-10-17T16:24:00.000+0200",
+     "lastUpdate": "2026-10-17T16:24:00.000+0200",
+     "resume": "2026-10-17T16:24:00.000+0200",
      "start": "2026-10-17T15:39:00.000+0200"
     },
     "title": "64A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "2A": "ptBusCity"
+     }
+    },
+    "description": "Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "Linie 2A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
+    "name": "I20261017-0025",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "402",
+       "lineName": "2A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T16:23:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T16:23:00.000+0200",
+     "resume": "2026-10-17T16:23:00.000+0200",
+     "start": "2026-10-17T16:23:00.000+0200"
+    },
+    "title": "2A: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
