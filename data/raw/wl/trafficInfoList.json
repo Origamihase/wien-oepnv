@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261017-0008-F01, I20261017-0008, I20261017-0010-F01, I20261017-0010, I20260925-0011, I20261017-0007, I20260909-0007, I20261017-0009"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261017-0008-F01, I20261017-0008, I20261017-0010, I20260925-0011, I20260909-0007, I20261017-0010-F01, I20261017-0009"
    },
    {
     "id": 3,
@@ -203,40 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "11": "ptTram"
-     }
-    },
-    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "Linie 11:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Rettungseinsatz.",
-    "name": "I20261017-0007",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "111",
-       "lineName": "11",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T09:22:00.000+0200",
-     "end": "2026-10-17T10:23:00.000+0200",
-     "lastUpdate": "2026-10-17T10:23:00.000+0200",
-     "resume": "2026-10-17T10:23:00.000+0200",
-     "start": "2026-10-17T09:22:00.000+0200"
-    },
-    "title": "11: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U3": "ptMetro"
      }
     },
@@ -398,12 +364,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-17T10:50:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T10:50:00.000+0200",
-     "resume": "2026-10-17T10:50:00.000+0200",
+     "end": "2026-10-17T11:10:00.000+0200",
+     "lastUpdate": "2026-10-17T11:10:00.000+0200",
+     "resume": "2026-10-17T11:10:00.000+0200",
      "start": "2026-10-17T10:48:00.000+0200"
     },
     "title": "9A: Falschparker"
