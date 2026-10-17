@@ -715,3 +715,11 @@ def test_render_markdown_names_vao_start_as_basis() -> None:
         "## Stammstrecke\n\n> Stammstrecken-Daten: Grundlage ist der "
         "VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH.\n" in md
     )
+    # The Ausfälle come from the same VAO queries; the disruption statistics
+    # name each of their four sources (Michael, 17.10.2026).
+    assert "## Ausfälle\n\n> Stammstrecken-Daten: Grundlage ist der VAO" in md
+    assert (
+        "## Störungen\n\n> Quellen: die Meldungen des Feeds, jede unter ihrer "
+        "eigenen Quelle – Wiener Linien, ÖBB, Stadt Wien (Baustellen) und "
+        "VOR/VAO (Stammstrecke).\n" in md
+    )

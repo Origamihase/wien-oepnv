@@ -2291,6 +2291,18 @@ im Repository. Was er für dieses Projekt bedeutet:
   Stammstrecken-Meldung ist ein eigener Text. Der Quellen-Tag `<source>`
   VOR/VAO am Item bleibt. Endet der Vertrag, müssen diese Hinweise wieder
   entfernt werden (Punkt 7.7).
+* **Jede Quelle ihr eigener Hinweis:** Michael, 17.10.2026: „Bitte beachte,
+  dass jede Quelle den passenden Quellenhinweis erhält. ÖBB für die ÖBB, WL
+  für WL und VOR/VAO für VOR/VAO“, und „Am TV soll sich weiterhin nichts
+  ändern“. Der VAO-Satz steht deshalb nur bei den Stammstrecken-Daten, nie
+  als Hinweis für den ganzen Dienst: im Feed als eigener Satz im
+  `<copyright>` neben den anderen Quellen, auf `docs/statistik.md` unter
+  „Stammstrecke“ und „Ausfälle“ (beide aus denselben VAO-Abfragen), im
+  Dashboard „Quelle: VOR/VAO“ an diesen Abschnitten. Die Störungsstatistik
+  nennt ihre vier Quellen (`STOERUNGEN_SOURCES_NOTE`), jede Meldung zählt
+  unter ihrer eigenen; im Feed trägt jede Meldung ihre Quelle im `<source>`
+  (siehe §1, „Link und Quelle jeder Meldung“). Titel und Texte der
+  Meldungen bleiben unberührt.
 
 ### Überwachung: Abruf kaputt oder keine Züge (seit 2026-10-10)
 

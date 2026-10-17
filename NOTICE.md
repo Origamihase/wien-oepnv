@@ -82,7 +82,9 @@ Auswertungen (Verspätungen, Ausfälle), keine Rohantworten. Punkt 5.3 verlangt 
 Dienst und in den Projektdarstellungen den deutlichen Hinweis, dass der
 VAO-„Start“-Zugang die Grundlage ist. Michael hat am 17.10.2026 entschieden, ihn
 überall zu führen: im `<copyright>` beider Feeds, in der Fußzeile der Webseite
-(DE und EN), auf `docs/statistik.md`, im README und hier. Endet der Vertrag,
+(DE und EN), auf `docs/statistik.md` (unter „Stammstrecke“ und „Ausfälle“),
+im Dashboard an diesen beiden Abschnitten („Quelle: VOR/VAO“), im README und
+hier; jede andere Quelle behält ihren eigenen Hinweis. Endet der Vertrag,
 müssen diese Hinweise wieder entfernt werden (Punkt 7.7). Der Vertragstext selbst
 liegt nicht im Repository.
 

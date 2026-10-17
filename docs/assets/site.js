@@ -112,7 +112,8 @@
     "feed-title": "Current disruptions",
     "feed-sub-stammstrecke-html":
       "Current S-Bahn observations at Wien Hauptbahnhof " +
-      "– <code>data/stats/stammstrecke_<span data-year-label>–</span>.csv</code>.",
+      "– <code>data/stats/stammstrecke_<span data-year-label>–</span>.csv</code>. " +
+      "Source: VOR/VAO.",
     "feed-sub-live-html":
       "Live from <a href=\"feed.en.xml\" type=\"application/rss+xml\" " +
       "data-i18n-href=\"feed-href\" data-href-de=\"feed.xml\" " +
@@ -138,7 +139,8 @@
     "stoerungen-sub-html":
       "Yearly ledger from " +
       "<code>data/stats/stoerungen_<span data-year-label>–</span>.csv</code> " +
-      "– one row per newly recognised event identity.",
+      "– one row per newly recognised event identity. " +
+      "Sources: Wiener Linien, ÖBB, City of Vienna and VOR/VAO, each notice under its own.",
     "aria-stoerungen-kpis": "Disruption key figures",
     "card-by-provider": "Distribution by source",
     "aria-stoerungen-providers": "Disruptions by source",
@@ -150,7 +152,8 @@
     "stammstrecke-title": "Trunk line – delays",
     "stammstrecke-sub-html":
       "S-Bahn observations at Wien Hauptbahnhof – " +
-      "<code>data/stats/stammstrecke_<span data-year-label>–</span>.csv</code>.",
+      "<code>data/stats/stammstrecke_<span data-year-label>–</span>.csv</code>. " +
+      "Source: VOR/VAO.",
     "aria-stammstrecke-kpis": "Trunk line key figures",
     "card-stammstrecke-hour": "Avg. delay by hour of day",
     "aria-stammstrecke-hour": "Avg. delay by hour",
@@ -162,7 +165,8 @@
     "ausfaelle-title": "Trunk line – cancellations",
     "ausfaelle-sub-html":
       "Cancelled S-Bahn services – deduplicated ledger " +
-      "<code>data/stats/ausfaelle_<span data-year-label>–</span>.csv</code>.",
+      "<code>data/stats/ausfaelle_<span data-year-label>–</span>.csv</code>. " +
+      "Source: VOR/VAO.",
     "aria-ausfaelle-kpis": "Cancellation key figures",
     "card-by-line": "By line",
     "aria-ausfaelle-line": "Cancellations by line",

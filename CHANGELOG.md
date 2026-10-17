@@ -22,6 +22,13 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   in `NOTICE.md`. Titel und Texte der Meldungen ändern sich nicht, am
   Fernseher bleibt alles gleich; der Quellen-Tag `<source>` VOR/VAO bleibt.
   Endet der Vertrag, müssen die Hinweise wieder entfernt werden (Punkt 7.7).
+  Dazu Michael: „Bitte beachte, dass jede Quelle den passenden Quellenhinweis
+  erhält. ÖBB für die ÖBB, WL für WL und VOR/VAO für VOR/VAO“ und „Am TV soll
+  sich weiterhin nichts ändern“. Jede Meldung trägt ihre Quelle schon seit
+  #2033 im `<source>`; neu nennen auch die Statistik-Seite und das Dashboard
+  ihre Quelle je Abschnitt: Stammstrecke und Ausfälle „VOR/VAO“ (beide aus
+  denselben VAO-Abfragen), die Störungsstatistik ihre vier Quellen, jede
+  Meldung unter ihrer eigenen.
 * **Doku: Stammstrecken-Meldung und Stationsquellen richtig beschrieben (2026-10-17)**:
   Die unabhängige Prüfung von #2025 bis #2035 fand zwei falsche Angaben.
   (1) `NOTICE.md`, ein Code-Kommentar in `src/build_feed.py`, ein

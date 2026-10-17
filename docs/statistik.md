@@ -109,6 +109,8 @@ _Automatisch erzeugt am 2026-10-17T00:00+02:00 (Europe/Vienna)._
 
 ## Ausfälle
 
+> Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH.
+
 ### Ausfälle je Richtung
 
 | Richtung | Anzahl |
@@ -185,6 +187,8 @@ _Automatisch erzeugt am 2026-10-17T00:00+02:00 (Europe/Vienna)._
 ```
 
 ## Störungen
+
+> Quellen: die Meldungen des Feeds, jede unter ihrer eigenen Quelle – Wiener Linien, ÖBB, Stadt Wien (Baustellen) und VOR/VAO (Stammstrecke).
 
 ### Störungen je Quelle
 
