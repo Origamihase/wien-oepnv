@@ -91,3 +91,18 @@ def test_vor_derived_files_carry_no_coordinates() -> None:
         rows = list(csv.DictReader(handle))
     assert rows
     assert not [r for r in rows if r["stop_lat"] or r["stop_lon"]]
+
+
+def test_notice_names_model_and_torch_licences() -> None:
+    """The model's original CC BY 4.0 weights and PyTorch's BSD licence are named.
+
+    The Hugging Face card of ``Helsinki-NLP/opus-mt-de-en`` says Apache-2.0,
+    while the OPUS-MT project releases the original weights under CC BY 4.0;
+    PyTorch is BSD-3-Clause, not Apache-2.0 (both read 17.10.2026).
+    """
+    text = (_ROOT / "NOTICE.md").read_text(encoding="utf-8")
+    section = text.split("## Abhängigkeiten", 1)[1].split("\n## ", 1)[0]
+    assert "OPUS-MT" in section and "CC BY 4.0" in section
+    assert "Universität Helsinki" in section
+    assert "BSD-3-Clause" in section
+    assert "torch Apache-2.0" not in section
