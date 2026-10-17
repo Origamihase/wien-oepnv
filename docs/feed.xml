@@ -8,8 +8,32 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 17 Oct 2026 15:30:43 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 16:00:37 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[64A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">2b43b2cf270ad0eb82141dcac02a8b63277141db79e08f4221106b9f3fd4836e</guid>
+      <pubDate>Sat, 17 Oct 2026 15:39:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Sat, 17 Oct 2026 15:39:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 17 Oct 2026 15:39:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 15:39]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 15:39]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[36B: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">5c7757da43084f91dfe679a2ec1d858fd746d5d3b67b0243143ee01984b8ff75</guid>
+      <pubDate>Sat, 17 Oct 2026 15:28:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Sat, 17 Oct 2026 15:28:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 17 Oct 2026 15:28:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 15:28]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 15:28]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[61A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -21,18 +45,6 @@
       <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 15:22]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 15:22]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945</guid>
-      <pubDate>Sat, 17 Oct 2026 15:14:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Sat, 17 Oct 2026 15:14:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 17 Oct 2026 15:14:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit 15:14]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 15:14]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[13A: Demonstration]]></title>
@@ -57,18 +69,6 @@
       <ext:ends_at>Sat, 17 Oct 2026 23:59:59 +0200</ext:ends_at>
       <description>Verspätungen: Unregelmäßige Intervalle in beiden Richtungen. Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21. [Heute]</description>
       <content:encoded><![CDATA[Verspätungen: Unregelmäßige Intervalle in beiden Richtungen. Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21.<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Signalstörung, Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">e42a781836ec2814f0a4c06b6398c6abf7ac48b3b5c47aa27b1fc2a90ec45037</guid>
-      <pubDate>Sat, 17 Oct 2026 14:07:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Sat, 17 Oct 2026 14:07:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 17 Oct 2026 14:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 17 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Bauarbeiten: Einstieg Leberstraße vor S-Bahn-Gebäude. [Heute]</description>
-      <content:encoded><![CDATA[Bauarbeiten: Einstieg Leberstraße vor S-Bahn-Gebäude.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hütteldorf ↔ Wien Hauptbahnhof]]></title>
