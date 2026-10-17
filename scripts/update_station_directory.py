@@ -17,7 +17,6 @@ import io
 import json
 import logging
 import math
-import os
 import re
 
 # Bandit B404: subprocess is required to invoke internal cache-refresh
@@ -30,7 +29,6 @@ from dataclasses import dataclass, field
 import zipfile
 from io import BytesIO
 from pathlib import Path
-from typing import cast
 from collections.abc import Callable, Iterable, Mapping, Sequence
 
 import openpyxl
@@ -128,24 +126,12 @@ MAX_CACHED_WORKBOOK_BYTES = 10 * 1024 * 1024
 
 try:  # pragma: no cover - convenience for module execution
     from src.places.hafas_client import enrich_station_with_hafas
-    from src.places.merge import BoundingBox, MergeConfig, merge_places, StationEntry
-    from src.places.osm_client import (
-        OSMOverpassError,
-        VIENNA_BOUNDING_BOX,
-        fetch_osm_places,
-        filter_complete_places,
-    )
+    from src.places.merge import BoundingBox
     from src.utils.env import get_bool_env, load_default_env_files
     from src.utils.logging import sanitize_log_arg
 except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
     from places.hafas_client import enrich_station_with_hafas  # type: ignore[no-redef]
-    from places.merge import BoundingBox, MergeConfig, merge_places, StationEntry  # type: ignore[no-redef]
-    from places.osm_client import (  # type: ignore[no-redef]
-        OSMOverpassError,
-        VIENNA_BOUNDING_BOX,
-        fetch_osm_places,
-        filter_complete_places,
-    )
+    from places.merge import BoundingBox  # type: ignore[no-redef]
     from utils.env import get_bool_env, load_default_env_files  # type: ignore[no-redef]
     from utils.logging import sanitize_log_arg  # type: ignore[no-redef]
 
@@ -161,8 +147,8 @@ DEFAULT_VOR_STOPS_PATH = _ROOT / "data" / "vor-haltestellen.csv"
 # ``GeoNetz_12-2024.zip``. Read by ``_enrich_with_geonetz`` to attach
 # the three identifier fields onto every ÖBB-Excel station whose
 # ``bst_id`` matches a row's ``bsts_id``. Coordinates are left untouched
-# by this enrichment — they are governed by the OSM/HAFAS tiers and
-# the PR #1601 GeoNetz-reconciliation; this loader only adds metadata.
+# by this enrichment — they are governed by the HAFAS tier and the
+# PR #1601 GeoNetz-reconciliation; this loader only adds metadata.
 DEFAULT_GEONETZ_STOPS_PATH = _ROOT / "data" / "oebb_geonetz_stops.json"
 # Soft-fail snapshot for the ÖBB workbook — mirrors the pinned-CSV
 # fallback pattern used by WL OGD (PR #1441-#1442) and the VOR
@@ -871,6 +857,8 @@ def _parse_float(raw: str | None, *, key: str, default: float) -> float:
         return default
 
 
+# No caller since the OSM tier left on 2026-10-17; kept with
+# ``_parse_float`` because the sentinel tests pin their input hardening.
 def _parse_bounding_box(raw: str | None) -> BoundingBox | None:
     if not raw:
         return None
@@ -907,11 +895,9 @@ def _parse_bounding_box(raw: str | None) -> BoundingBox | None:
 def _stations_missing_coordinates(stations: list[Station]) -> list[Station]:
     """Return the subset of *stations* that still lack lat/lng metadata.
 
-    The OSM-first / HAFAS-fallback split keys on this set: OSM is the
-    primary directory enrichment source; HAFAS is only asked for the
-    stations still missing coordinates after the OSM merge has run, so a
-    cron tick does not send hundreds of LocMatch requests when OSM already covered
-    the entire directory.
+    HAFAS is only asked for this set, so a cron tick does not send
+    hundreds of LocMatch requests when the existing directory already
+    covers every station (coordinate inertia).
     """
     missing: list[Station] = []
     for station in stations:
@@ -922,103 +908,13 @@ def _stations_missing_coordinates(stations: list[Station]) -> list[Station]:
     return missing
 
 
-def _enrich_with_osm(
-    stations: list[Station],
-    *,
-    bounding_box: BoundingBox | None,
-    merge_distance_m: float,
-) -> bool:
-    """Enrich *stations* via the OSM Overpass API.
-
-    Returns ``True`` if the upstream call succeeded (regardless of how
-    many stations actually got updated), ``False`` if OSM failed and
-    the caller should fall through to the HAFAS path. The
-    bounding box defaults to Vienna's WGS84 envelope if the caller did
-    not provide a ``BOUNDINGBOX_VIENNA`` override.
-    """
-    bbox = bounding_box or VIENNA_BOUNDING_BOX
-    try:
-        places = fetch_osm_places()
-    except OSMOverpassError as exc:
-        # Security (Clear-Text-Logging Drift Round 3): the OSMOverpassError
-        # text is itself sanitised at the raise site, but route through
-        # ``sanitize_log_arg`` for defence-in-depth — any future shape that
-        # surfaces attacker-controlled bytes (e.g. raw protobuf parser
-        # excerpts, urllib3 connection-pool stack traces) will be stripped
-        # of control characters before reaching the cron runner's stdout.
-        logger.error(
-            "OSM Overpass enrichment failed: %s",
-            sanitize_log_arg(str(exc)),
-        )
-        return False
-    except Exception as exc:  # pragma: no cover - defensive logging path
-        # Security (Clear-Text-Logging Drift Round 3): framework catch-all —
-        # the exception text is fully attacker-controlled when an upstream
-        # library raises a custom subclass with a poisoned ``__str__``.
-        logger.error(
-            "Unexpected error during OSM Overpass enrichment: %s: %s",
-            type(exc).__name__,
-            sanitize_log_arg(str(exc)),
-        )
-        return False
-
-    complete = filter_complete_places(places)
-    logger.info(
-        "OSM Overpass returned %d candidates (%d after completeness filter)",
-        len(places),
-        len(complete),
-    )
-    if not complete:
-        return True
-
-    existing_entries = cast(list[StationEntry], [station.as_dict() for station in stations])
-    outcome = merge_places(
-        existing_entries,
-        complete,
-        MergeConfig(max_distance_m=merge_distance_m, bounding_box=bbox),
-    )
-
-    by_id: dict[str, Mapping[str, object]] = {}
-    for entry in outcome.stations:
-        bst_id = entry.get("bst_id")
-        if isinstance(bst_id, str) and bst_id:
-            by_id[str(bst_id)] = entry
-
-    # Tag updated stations with ``source="osm"`` so downstream consumers
-    # can tell which directory feed contributed each entry. The merge
-    # outcome's own source marker is replaced; we set ``"osm"`` here
-    # without losing any existing source markers.
-    updated = 0
-    for station in stations:
-        merged = by_id.get(station.bst_id)
-        if not merged:
-            continue
-        existing_source = station.extras.get("source")
-        sources: set[str] = set()
-        if isinstance(existing_source, str):
-            sources.update(s.strip() for s in existing_source.split(",") if s.strip())
-        sources.add("osm")
-        merged_with_source = dict(merged)
-        merged_with_source["source"] = ",".join(sorted(sources))
-        station.update_from_entry(merged_with_source)
-        updated += 1
-
-    logger.info(
-        "OSM Overpass enrichment updated %d stations; %d candidates already covered",
-        updated,
-        len(outcome.skipped_places),
-    )
-    return True
-
-
 def _enrich_with_hafas(stations: list[Station]) -> list[Station]:
     """Resolve coordinates for *stations* via the ÖBB HAFAS fallback.
 
     Iterates over the strict subset of stations still missing
-    coordinates after the OSM pass and asks
+    coordinates and asks
     :func:`src.places.hafas_client.enrich_station_with_hafas` for each.
-    The HAFAS hit is committed straight onto the station's extras —
-    matching the field shape produced by the OSM merge — and the
+    The HAFAS hit is committed straight onto the station's extras and the
     HAFAS ``extId`` is persisted as the top-level ``hafas_extId`` key
     (parallel to ``vor_id``) so downstream
     consumers can resolve a station back to its HAFAS identifier
@@ -1067,13 +963,13 @@ def _enrich_manual_stations(
 
     Manual entries — added for the Ostregion Liniennetz stations outside
     the Wien/NÖ pendler scope (PR #1557) — bypass ``_filter_relevant_stations``
-    and therefore never enter the ÖBB-side OSM/HAFAS enrichment chain.
+    and therefore never enter the ÖBB-side HAFAS enrichment.
     Without this step they stay coordinate-less forever, even though the
     cron pipeline already loads sources (GTFS stops.txt, VOR haltestellen.csv)
     and has an unmetered fallback (HAFAS ÖBB Scotty) that can resolve them.
 
-    Resolution order — same fail-cheap-first rationale as ``_enrich_with_osm``
-    / ``_enrich_with_hafas``:
+    Resolution order — same fail-cheap-first rationale as
+    ``_enrich_with_hafas``:
 
       1. **Local index** (``location_index`` = GTFS + WL + VOR coords,
          free, in-memory). Already built earlier in ``main()`` for the ÖBB
@@ -1537,13 +1433,6 @@ def parse_args() -> argparse.Namespace:
         help="Path to the Wiener Linien haltepunkte CSV for coordinate lookup",
     )
     parser.add_argument(
-        "--osm-enrich",
-        dest="osm_enrich",
-        action=argparse.BooleanOptionalAction,
-        default=True,
-        help=("Use OpenStreetMap (Overpass API) as the primary station " "directory source (default: enabled)"),
-    )
-    parser.add_argument(
         "-v",
         "--verbose",
         action="store_true",
@@ -1577,8 +1466,6 @@ def download_workbook(
     * WL OGD (``scripts/update_wl_stations.py:_download_ogd_csv``) —
       atomic-write to the pinned local CSV on success, read the pinned
       CSV on failure.
-    * OSM Overpass — circuit-breaker + smoke-check gate, soft-fail
-      to the HAFAS fallback.
 
     Prior to this commit ÖBB was the only fail-fast source — a
     transient ``data.oebb.at`` outage (CMS migration, CDN issue,
@@ -1861,8 +1748,17 @@ def _annotate_station_flags(
     pendler_ids: set[str],
     locations: Mapping[str, LocationInfo],
     pendler_name_candidates: set[str] | None = None,
+    geonetz_lookup: Mapping[str, Mapping[str, object]] | None = None,
 ) -> None:
     """Set ``in_vienna`` and ``pendler`` mutually exclusively.
+
+    A station whose ``bst_id`` has a GeoNetz point is checked against the
+    city boundary with that point, not with the name-keyed *locations*:
+    a name can belong to another place. ``Siebenhirten`` (bst_id 1371,
+    near Mistelbach) matched the Wiener Linien stop of that name in
+    Liesing and counted as Vienna until 2026-10-17. For the same reason
+    the Wiener-Linien auto-promotion to ``pendler`` (rule 3 below) only
+    applies when the name-keyed location is the one that was checked.
 
     A station is either inside the Vienna city limits *or* a commuter-belt
     station outside; never both. If a Vienna station's bst_id is mistakenly
@@ -1898,6 +1794,9 @@ def _annotate_station_flags(
         # polygon. The synthetic LocationInfo carries ``sources={"extras"}``
         # so the WL-auto-promote check below remains a no-op for this path.
         polygon_info: LocationInfo | None = info
+        geonetz_info = _geonetz_point(station, geonetz_lookup)
+        if geonetz_info is not None:
+            polygon_info = geonetz_info
         if polygon_info is None:
             extras_lat = station.extras.get("latitude")
             extras_lon = station.extras.get("longitude")
@@ -1925,7 +1824,12 @@ def _annotate_station_flags(
                 if key and key in name_candidates:
                     pendler_candidate = True
                     break
-        if info and not station.in_vienna and "wl" in info.sources:
+        if (
+            info
+            and polygon_info is info
+            and not station.in_vienna
+            and "wl" in info.sources
+        ):
             pendler_candidate = True
         if station.in_vienna and pendler_candidate:
             logger.warning(
@@ -1937,6 +1841,80 @@ def _annotate_station_flags(
             )
             pendler_candidate = False
         station.pendler = pendler_candidate
+
+
+def _geonetz_point(
+    station: Station, geonetz_lookup: Mapping[str, Mapping[str, object]] | None
+) -> LocationInfo | None:
+    """GeoNetz point of *station*'s ``bst_id`` as a :class:`LocationInfo`."""
+    if not geonetz_lookup or not station.bst_id:
+        return None
+    try:
+        lookup_id = str(int(float(station.bst_id)))
+    except (TypeError, ValueError):
+        lookup_id = str(station.bst_id)
+    geo = geonetz_lookup.get(lookup_id)
+    if geo is None:
+        return None
+    lat, lon = geo.get("lat"), geo.get("lon")
+    if isinstance(lat, bool) or isinstance(lon, bool):
+        return None
+    if not (isinstance(lat, int | float) and isinstance(lon, int | float)):
+        return None
+    if not (math.isfinite(lat) and math.isfinite(lon)):
+        return None
+    if not (-90.0 <= lat <= 90.0 and -180.0 <= lon <= 180.0):
+        return None
+    return LocationInfo(latitude=float(lat), longitude=float(lon), sources={"oebb_geonetz"})
+
+
+def _drop_duplicate_eva(
+    entries: list[dict[str, object]], existing_ids: set[str]
+) -> list[dict[str, object]]:
+    """Keep one directory entry per EVA number (``eva_nr``).
+
+    The ÖBB workbook can list one station under two ``bst_id`` values
+    (``Handelskai`` 1586 next to ``Wien Handelskai`` 779, both EVA
+    8101934), and a synthetic entry can stand in for a workbook station
+    the boundary check used to drop (``Wien Kaiserebersdorf`` 900105 for
+    bst_id 1059, EVA 8100374). Two entries for one station split its
+    aliases, so the entry already in the directory wins: a manual entry
+    or one whose ``bst_id`` the previous run had (*existing_ids*); else
+    the first. Entries without an EVA number pass through.
+    """
+
+    def _known(entry: dict[str, object]) -> bool:
+        bst_id = entry.get("bst_id")
+        if bst_id is None:
+            return True
+        try:
+            key = str(int(float(str(bst_id))))
+        except (TypeError, ValueError):
+            key = str(bst_id)
+        return key in existing_ids or not key.isdigit() or int(key) >= 900000
+
+    chosen: dict[str, dict[str, object]] = {}
+    for entry in entries:
+        eva = entry.get("eva_nr")
+        if not isinstance(eva, str) or not eva.strip():
+            continue
+        current = chosen.get(eva)
+        if current is None or (not _known(current) and _known(entry)):
+            chosen[eva] = entry
+    kept: list[dict[str, object]] = []
+    for entry in entries:
+        eva = entry.get("eva_nr")
+        if isinstance(eva, str) and eva.strip() and chosen[eva] is not entry:
+            logger.warning(
+                "Skipping %s (bst_id=%s): EVA %s already belongs to %s",
+                sanitize_log_arg(str(entry.get("name"))),
+                sanitize_log_arg(str(entry.get("bst_id"))),
+                sanitize_log_arg(eva),
+                sanitize_log_arg(str(chosen[eva].get("name"))),
+            )
+            continue
+        kept.append(entry)
+    return kept
 
 
 def _filter_relevant_stations(stations: list[Station]) -> list[Station]:
@@ -2038,8 +2016,8 @@ def _enrich_with_geonetz(
 
     On a hit, the three identifier fields are written to
     ``station.extras`` if not already set. Coordinates are explicitly
-    *not* overwritten — they're governed by the OSM/HAFAS
-    enrichment tiers and the PR #1601 GeoNetz-reconciliation; this
+    *not* overwritten — they're governed by the HAFAS tier and the
+    PR #1601 GeoNetz-reconciliation; this
     loader only adds metadata so the next cron tick doesn't silently
     revert a hand-curated value.
 
@@ -2099,6 +2077,57 @@ def _enrich_with_geonetz(
             station.extras["source"] = ",".join(sorted(tokens))
     if enriched:
         logger.info("GeoNetz-enriched %d stations with eva_nr/ifopt_id/address", enriched)
+
+
+def _fill_coordinates_from_geonetz(
+    stations: Iterable[Station], geonetz_lookup: Mapping[str, Mapping[str, object]]
+) -> int:
+    """Give stations without coordinates the GeoNetz point of their ``bst_id``.
+
+    Runs before the HAFAS fallback, so a station of the ÖBB workbook gets an
+    openly licensed coordinate (ÖBB-Infrastruktur GeoNetz, CC BY 3.0 AT)
+    first; this took over the gap-filling of the OpenStreetMap tier removed
+    on 2026-10-17. Only the ``bst_id`` join is used, never the name: a name
+    can belong to another place (``Siebenhirten`` bst_id 1371 lies near
+    Mistelbach, the Wiener Linien stop of that name in Liesing). Existing
+    coordinates are never touched. Returns the number of stations filled.
+    """
+    filled = 0
+    for station in stations:
+        lat = station.extras.get("latitude")
+        lng = station.extras.get("longitude")
+        if isinstance(lat, int | float) and isinstance(lng, int | float):
+            continue
+        if not station.bst_id:
+            continue
+        try:
+            lookup_id = str(int(float(station.bst_id)))
+        except (TypeError, ValueError):
+            lookup_id = str(station.bst_id)
+        geo = geonetz_lookup.get(lookup_id)
+        if geo is None:
+            continue
+        geo_lat, geo_lon = geo.get("lat"), geo.get("lon")
+        if isinstance(geo_lat, bool) or isinstance(geo_lon, bool):
+            continue
+        if not (isinstance(geo_lat, int | float) and isinstance(geo_lon, int | float)):
+            continue
+        if not (math.isfinite(geo_lat) and math.isfinite(geo_lon)):
+            continue
+        if not (-90.0 <= geo_lat <= 90.0 and -180.0 <= geo_lon <= 180.0):
+            continue
+        station.extras["latitude"] = float(geo_lat)
+        station.extras["longitude"] = float(geo_lon)
+        existing_source = station.extras.get("source")
+        tokens: set[str] = set()
+        if isinstance(existing_source, str):
+            tokens.update(t.strip() for t in existing_source.split(",") if t.strip())
+        tokens.add("oebb_geonetz")
+        station.extras["source"] = ",".join(sorted(tokens))
+        filled += 1
+    if filled:
+        logger.info("GeoNetz filled coordinates for %d stations", filled)
+    return filled
 
 
 def load_pendler_station_ids(path: Path) -> set[str]:
@@ -2299,11 +2328,13 @@ def main() -> None:
     )
     if not location_index:
         logger.warning("No coordinate data available; falling back to name heuristic")
+    geonetz_lookup = _load_geonetz_stops(args.geonetz_stops)
     _annotate_station_flags(
         stations,
         pendler_ids,
         location_index,
         pendler_name_candidates=pendler_name_candidates,
+        geonetz_lookup=geonetz_lookup,
     )
     vor_stops = load_vor_stops(args.vor_stops) if args.vor_stops else []
     vor_name_map: dict[str, str] = {}
@@ -2317,47 +2348,23 @@ def main() -> None:
     stations = _filter_relevant_stations(stations)
 
     # GeoNetz metadata enrichment (PR β). Runs after the filter so it
-    # only touches the pendler/in_vienna subset, and before OSM/HAFAS
+    # only touches the pendler/in_vienna subset, and before HAFAS
     # so downstream enrichment tiers see the eva_nr that PR γ
     # (planned: HAFAS-drift-detection) needs as the join key. Idempotent
     # — re-runs leave previously-set values alone.
-    geonetz_lookup = _load_geonetz_stops(args.geonetz_stops)
     if geonetz_lookup:
         _enrich_with_geonetz(stations, geonetz_lookup)
 
-    # OSM is the primary directory enrichment source. HAFAS only runs as
-    # a *fallback* when at least one station is still missing
-    # coordinates after OSM completed (or when OSM itself failed).
-    #
-    # ``WIEN_OEPNV_OSM_ENRICH=0`` env-disables OSM without taking the
-    # CLI flag — used by the wrapper-orchestrator regression test
-    # (``tests/test_update_all_stations_wrapper.py:test_wrapper_atomic_on_success``)
-    # to keep its 60-second pytest-timeout budget free of real Overpass
-    # round-trips. Production cron runs leave the env unset, so OSM
-    # remains the primary source by default.
+    # No OpenStreetMap tier (Michael, 17.10.2026): OSM coordinates are
+    # under the ODbL, whose share-alike would cover this whole published
+    # file, and the file also holds data that cannot be put under the ODbL.
+    # Coordinates come from the existing directory (inertia), GeoNetz and
+    # the Wiener Linien OGD list; HAFAS fills only what is still missing.
     load_default_env_files()
-    env = os.environ
-    cli_enabled = bool(getattr(args, "osm_enrich", False))
-    env_enabled = get_bool_env("WIEN_OEPNV_OSM_ENRICH", True)
-    osm_succeeded = False
-    if cli_enabled and env_enabled:
-        try:
-            bounding_box = _parse_bounding_box(env.get("BOUNDINGBOX_VIENNA"))
-        except ValueError as exc:
-            logger.error("Invalid BOUNDINGBOX_VIENNA configuration: %s", exc)
-            bounding_box = None
-        merge_distance = _parse_float(env.get("MERGE_MAX_DIST_M"), key="MERGE_MAX_DIST_M", default=150.0)
-        osm_succeeded = _enrich_with_osm(
-            stations,
-            bounding_box=bounding_box,
-            merge_distance_m=merge_distance,
-        )
-    elif not cli_enabled:
-        logger.info("Skipping OSM Overpass enrichment (--no-osm-enrich)")
-    else:
-        logger.info("Skipping OSM Overpass enrichment (WIEN_OEPNV_OSM_ENRICH=0)")
+    if geonetz_lookup:
+        _fill_coordinates_from_geonetz(stations, geonetz_lookup)
 
-    # HAFAS (ÖBB Scotty) is the fallback for stations OSM did not cover.
+    # HAFAS (ÖBB Scotty) is the fallback for stations without coordinates.
     # There is no further tier: Michael decided on 2026-10-16 that the
     # station directory holds only openly licensed coordinates (no Google
     # Places). A station still without coordinates stays without them and
@@ -2365,15 +2372,14 @@ def main() -> None:
     missing = _stations_missing_coordinates(stations)
     if not missing:
         logger.info(
-            "%s already covered all %d stations with coordinates",
-            "OSM" if osm_succeeded else "The existing directory",
+            "The existing directory already covered all %d stations with coordinates",
             len(stations),
         )
     else:
         missing = _enrich_with_hafas(missing)
         if missing:
             logger.warning(
-                "%d stations still without coordinates after OSM + HAFAS: %s",
+                "%d stations still without coordinates after HAFAS: %s",
                 len(missing),
                 ", ".join(sanitize_log_arg(station.name) for station in missing[:20]),
             )
@@ -2387,8 +2393,7 @@ def main() -> None:
     # back to the unmetered HAFAS LocMatch tier — exactly the same
     # cheap-first strategy the ÖBB pipeline already runs.
     #
-    # Env-disabled via ``WIEN_OEPNV_MANUAL_ENRICH=0`` — mirrors the
-    # ``WIEN_OEPNV_OSM_ENRICH`` gate used by
+    # Env-disabled via ``WIEN_OEPNV_MANUAL_ENRICH=0`` — used by
     # ``test_wrapper_atomic_on_success`` to keep the orchestrator
     # subprocess test under its 180-second pytest timeout: the test
     # carries 296 manual entries without coordinates, and 296 real
@@ -2404,6 +2409,7 @@ def main() -> None:
 
     final_stations = [station.as_dict() for station in stations]
     final_stations.extend(manual_stations)
+    final_stations = _drop_duplicate_eva(final_stations, set(existing_entries))
 
     # Data-loss floor: never replace a populated directory with a truncated ÖBB
     # set (see _station_directory_floor_violation). Fails closed — the pinned

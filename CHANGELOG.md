@@ -5,6 +5,34 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Stationsverzeichnis ohne OpenStreetMap (2026-10-17)**: Michaels
+  Entscheidung („Ja, bitte“ auf die Frage, die OSM-Koordinaten durch
+  GeoNetz/WL zu ersetzen und den wöchentlichen OSM-Lauf keine Koordinaten
+  mehr schreiben zu lassen). Grund: OSM-Werte stehen unter der ODbL 1.0; je
+  Station mit anderen Quellen gemischt, müsste `data/stations.json` als
+  Ganzes unter der ODbL stehen, und das geht wegen der übrigen Daten nicht.
+  Die 150 Einträge mit `osm` tragen jetzt die Koordinate aus GeoNetz oder
+  der WL-OGD-Liste (93 unter 1 m, 56 unter 200 m daneben). Die eine große
+  Abweichung war ein Fehler der OSM-Stufe: `Siebenhirten` (bst_id 1371, bei
+  Mistelbach) stand über den Namen am gleichnamigen Ort in Liesing. Entfernt
+  sind die OSM-Stufe in `scripts/update_station_directory.py` samt
+  `--osm-enrich`/`WIEN_OEPNV_OSM_ENRICH`, der OSM-Schiedsrichter im WL-Lauf
+  (ein Widerspruch WL/HAFAS behält WL) und der Overpass-Vorabtest in
+  `update-stations.yml`. Neu: `_fill_coordinates_from_geonetz` gibt einer
+  Station ohne Koordinate den GeoNetz-Punkt ihrer `bst_id`, bevor HAFAS
+  gefragt wird; nie über den Namen. Derselbe Namensfehler steckte in der
+  Wien-Grenze: Siebenhirten galt als Wien, weil `in_vienna` den über den
+  Namen gefundenen Ort in Liesing prüfte. Jetzt prüft der Lauf eine Station
+  mit GeoNetz-Punkt ihrer `bst_id` an diesem Punkt; Siebenhirten liegt weder
+  in Wien noch im Pendlergürtel und ist aus dem Verzeichnis gegangen. Neu
+  auch: je EVA-Nummer nur ein Eintrag (`_drop_duplicate_eva`), weil sonst
+  `Kaiserebersdorf` (1059) neben `Wien Kaiserebersdorf` (900105) und
+  `Handelskai` (1586) neben `Wien Handelskai` (779) stünden. Feed, Webseite
+  und TV ändern sich nicht: Nachbau von 198 Feed-Ständen (13.–17.10.)
+  identisch, ein Stationslauf mit dem neuen Code ändert außer Siebenhirten
+  kein `in_vienna` und kein `pendler`. Test
+  `tests/test_station_directory_no_osm.py`; `docs/architecture.md` §5,
+  `NOTICE.md`, `docs/development.md`, README.
 * **NOTICE: Übersetzungsmodell und PyTorch richtig benannt (2026-10-17)**:
   `Helsinki-NLP/opus-mt-de-en` stand nur mit der Lizenz seiner
   Hugging-Face-Modellkarte (Apache-2.0) in `NOTICE.md`; die ursprünglichen

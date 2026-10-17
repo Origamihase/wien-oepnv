@@ -109,12 +109,12 @@ Das Projekt unterscheidet konsequent zwischen *Live-Verkehrsmeldungen* (treiben 
 
 ### Stationsverzeichnis (Geokoordinaten & Metadaten)
 
-Die Koordinaten-Anreicherung läuft als geordnete Fallback-Kette mit zwei Stufen, beide ohne kommerzielle Quelle. Eine Station, die keine der beiden auflöst, bleibt ohne Koordinate und wird im wöchentlichen Lauf mit Namen gewarnt. (Die frühere dritte Stufe Google Places hat Michael am 16.10.2026 entfernt: Das Verzeichnis führt nur Koordinaten mit bekannter Herkunft, siehe [`NOTICE.md`](NOTICE.md).)
+Bestehende Koordinaten bleiben erhalten. Einer Station ohne Koordinate gibt der wöchentliche Lauf zuerst den Punkt aus dem ÖBB-GeoNetz (über die `bst_id`), danach fragt er HAFAS. Eine Station, die keine der beiden auflöst, bleibt ohne Koordinate und wird mit Namen gewarnt. (Google Places hat Michael am 16.10.2026 entfernt, OpenStreetMap am 17.10.2026: Das Verzeichnis führt nur Koordinaten mit bekannter Herkunft und passenden Bedingungen, siehe [`NOTICE.md`](NOTICE.md).)
 
 | Tier | Quelle | Zweck |
 | --- | --- | --- |
-| **1 (Primär)** | **OpenStreetMap (Overpass API)** | Offene Daten ohne API-Limit. Liefert Koordinaten, passagierfreundliche Namen und Klassifizierungs-Tags für jeden Stop innerhalb der Wiener Bounding-Box. |
-| **2 (Fallback)** | **HAFAS (ÖBB Scotty)** | Nativer Mgate-`LocMatch`-Client. Liefert hochpräzise Koordinaten und Metadaten (insb. EVA-Nummer / `extId`) für Stationen, die OSM nicht auflösen konnte. Kein Tagesbudget. |
+| **1 (Primär)** | **ÖBB-Infrastruktur GeoNetz** | Offene Daten (CC BY 3.0 AT). Liefert den Punkt jeder ÖBB-Station über ihre `bst_id`; nie über den Namen, weil gleichnamige Orte verwechselt würden. |
+| **2 (Fallback)** | **HAFAS (ÖBB Scotty)** | Nativer Mgate-`LocMatch`-Client. Liefert Koordinaten und Metadaten (insb. EVA-Nummer / `extId`) für Stationen, die GeoNetz nicht abdeckt. Kein Tagesbudget. |
 
 Begleitende Stamm-/Identifier-Quellen: das **ÖBB-Excel** „Verzeichnis der Verkehrsstationen" (Pflicht-`bst_id`/`bst_code`), das **ÖBB-GeoNetz** (EVA-Nummer & IFOPT-ID, Source-Token `oebb_geonetz`), die **Wiener Linien OGD-CSVs** für DIVA-Subcodes und Bahnsteig-Stops sowie die gepinnte **VOR-Stop-Liste** (`data/vor-haltestellen.csv`). Details in [`docs/architecture.md`](docs/architecture.md) §5.
 
