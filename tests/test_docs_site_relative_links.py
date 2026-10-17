@@ -36,8 +36,6 @@ def test_no_relative_link_leaves_the_published_site() -> None:
             rel = page.relative_to(ROOT)
             if not resolved.is_relative_to(DOCS):
                 bad.append(f"{rel}: {target} (outside docs/)")
-            elif resolved.is_dir() and not any(
-                (resolved / name).exists() for name in ("index.md", "index.html", "README.md")
-            ):
+            elif resolved.is_dir() and not any((resolved / name).exists() for name in ("index.md", "index.html", "README.md")):
                 bad.append(f"{rel}: {target} (directory without index page)")
     assert not bad, "\n".join(bad)
