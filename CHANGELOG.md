@@ -5,6 +5,35 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Live-Abnahme: Lizenzangaben, tote Links, Barrierefreiheit der Doku-Seiten (2026-10-17)**:
+  Erste Prüfung mit vollem Netz (Webseite in Chromium, Feed von außen,
+  Lizenzhinweise gegen die Originalquellen). Behoben, jeweils als Klasse:
+  (1) Das ÖBB-Infrastruktur-GeoNetz steht laut seiner Datensatzseite auf
+  data.oebb.at unter CC BY 3.0 AT, nicht CC BY 4.0, und verlangt „Datenquelle:
+  ÖBB-Infrastruktur AG“ mit Link auf infrastruktur.oebb.at. Die
+  `<copyright>`-Zeile beider Feeds, `NOTICE.md`, die Entwicklerdoku und die
+  Lizenzangabe in `data/oebb_geonetz_stops.json` sagen das jetzt.
+  (2) Das Wetter im Dashboard-Kopf kommt von Open-Meteo (CC BY 4.0), deren
+  Bedingungen einen Link neben jeder Anzeige verlangen; es fehlte jede
+  Nennung. Das Widget ist jetzt ein Link auf open-meteo.com, die Fußzeile
+  nennt die Quelle (DE und EN), `NOTICE.md` hat einen Abschnitt dazu. Die
+  zweite Abfrageform `/v1/geosphere_arome_austria` antwortete immer 404 und
+  ist entfernt.
+  (3) Jede WL-Meldung im Feed verlinkte auf die Schnittstellen-Adresse
+  `www.wienerlinien.at/ogd_realtime`, die im Browser 404 liefert; sie
+  verlinkt jetzt auf `www.wienerlinien.at/betriebsinfo`. Titel, Texte, GUIDs
+  und Reihenfolge bleiben gleich, der Fernseher zeigt keine Links.
+  (4) Elf relative Links in `docs/development.md` und `docs/architecture.md`
+  zeigten auf der Webseite ins Leere (`../README.md` wird zu
+  `origamihase.github.io/README.md`); sie zeigen jetzt auf GitHub, ein Test
+  hält alle Doku-Seiten davon frei.
+  (5) Die Doku-Seiten (Primer-Theme) trugen `lang="en-US"`, zwei `<h1>`,
+  keinen `<main>`-Bereich, eine englische Fußzeile, kein Favicon (404 auf
+  `/favicon.ico`) und Links, die sich nur durch die Farbe abhoben.
+  `docs/_config.yml` setzt die Sprache, `docs/_layouts/default.html` und
+  `docs/_includes/head-custom.html` beheben den Rest; axe meldet auf den 120
+  gebauten Seiten nur noch zwei leere Tabellenköpfe in einem archivierten
+  Jules-Audit.
 * **Quellenangabe nach CC BY 4.0 vollständig, VOR_BASE_URL wirklich optional (2026-10-16)**:
   Michael fragte am 16.10.: „Bitte prüfe nun die aktuelle Situation der
   Lizenzbedingungen. Prüfe auch, ob die API-Limits sauber eingehalten

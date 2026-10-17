@@ -18,7 +18,7 @@
   <link rel="alternate" type="application/rss+xml" title="Wien ÖPNV Feed" href="feed.xml">
   <link rel="alternate" type="application/rss+xml" title="Vienna Public Transport Feed (English)" href="feed.en.xml">
   <link rel="icon" type="image/svg+xml" href="assets/site-favicon.svg">
-  <link rel="stylesheet" href="assets/site.min.css?v=9d0e91fbf51b">
+  <link rel="stylesheet" href="assets/site.min.css?v=db4dc820cb08">
   <!-- Audit E.3: the statistics panels used to fetch three raw yearly CSVs
        (~705 KB and growing) from raw.githubusercontent.com, which is why this
        head used to warm a cross-origin socket. They now read one ~3 KB
@@ -103,12 +103,15 @@
            (kein CLS), solange noch der ``–``-Platzhalter steht. role="img"
            + dynamisch gesetztes aria-label fassen Symbol und Wert zu einer
            barrierefreien Einheit zusammen; die Lokalisierung der Tooltip-/
-           aria-Texte erfolgt in site.js (kein ``data-i18n``-Knoten). -->
-      <div class="weather" id="weather" role="img" data-state="loading"
-           title="Wetter am Wiener Hbf" aria-label="Aktuelles Wetter am Wiener Hbf">
+           aria-Texte erfolgt in site.js (kein ``data-i18n``-Knoten).
+           Das Widget ist ein Link auf open-meteo.com: Die Open-Meteo-Lizenz
+           (CC BY 4.0) verlangt einen Link neben jeder Stelle, an der ihre
+           Daten erscheinen; die Fußzeile nennt die Quelle zusätzlich. -->
+      <a class="weather" id="weather" href="https://open-meteo.com/" rel="external noopener noreferrer" target="_blank" data-state="loading"
+           title="Wetter am Wiener Hbf – Wetterdaten von Open-Meteo.com" aria-label="Aktuelles Wetter am Wiener Hbf – Wetterdaten von Open-Meteo.com">
         <span class="weather__icon" id="weather-icon" aria-hidden="true"></span>
         <span class="weather__temp" id="weather-temp">–</span>
-      </div>
+      </a>
       <!-- Sprachumschalter (Zero-Tracker): CSP-konformer In-Page-Switch
            ohne externes Widget. Die aktive Sprache liegt in
            ``localStorage['wienoepnv:lang']`` und steuert (a) den
@@ -340,6 +343,7 @@
           <li data-i18n="footer-source-oebb-html" data-i18n-html="1"><strong>ÖBB</strong> – bundesweite Bahnmeldungen, Wien-gefiltert</li>
           <li data-i18n="footer-source-vor-html" data-i18n-html="1"><strong>VOR/VAO</strong> – Stammstrecken-Beobachtungen am Wien Hbf</li>
           <li data-i18n="footer-source-stadt-html" data-i18n-html="1"><strong>Stadt Wien (OGD)</strong> – Baustellen mit Bezirk &amp; Zeitraum</li>
+          <li data-i18n="footer-source-weather-html" data-i18n-html="1"><a href="https://open-meteo.com/" rel="external noopener noreferrer" target="_blank"><strong>Wetterdaten von Open-Meteo.com</strong></a> – Wetter am Wien Hbf (CC&nbsp;BY&nbsp;4.0)</li>
         </ul>
       </div>
       <div>
@@ -360,6 +364,6 @@
     </div>
   </footer>
 
-  <script src="assets/site.min.js?v=4b3d70a0a9b1" defer></script>
+  <script src="assets/site.min.js?v=147e18c049a1" defer></script>
 </body>
 </html>

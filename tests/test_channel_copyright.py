@@ -56,3 +56,16 @@ def test_channel_copyright_meets_cc_by_attribution(lang: str, modified: str) -> 
     assert modified in text
     assert "https://creativecommons.org/licenses/by/4.0/" in text
     assert "https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md" in text
+
+
+@pytest.mark.parametrize("lang", ["de", "en"])
+def test_channel_copyright_gives_geonetz_its_own_licence(lang: str) -> None:
+    """The ÖBB-Infrastruktur GeoNetz is CC BY 3.0 AT, not CC BY 4.0.
+
+    Its dataset page on data.oebb.at (read 17.10.2026) names CC BY 3.0
+    Österreich and the attribution "Datenquelle: ÖBB-Infrastruktur AG" with
+    the name linked to infrastruktur.oebb.at.
+    """
+    text = build_feed._channel_metadata(lang)["copyright"]
+    assert "Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/" in text
+    assert "GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de" in text

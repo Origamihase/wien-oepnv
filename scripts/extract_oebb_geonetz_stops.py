@@ -70,8 +70,8 @@ _DEFAULT_SOURCE_URL = (
     "GeoNetz_12-2024.zip"
 )
 _DEFAULT_LICENSE = (
-    "Datenquelle: ÖBB-Infrastruktur AG (data.oebb.at, "
-    "mobilitaetsdaten.gv.at) — CC BY 4.0"
+    "Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/) — "
+    "CC BY 3.0 AT (https://creativecommons.org/licenses/by/3.0/at/deed.de)"
 )
 
 

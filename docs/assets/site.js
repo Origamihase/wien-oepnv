@@ -54,15 +54,14 @@
   // Open-Meteo (GeoSphere-Austria-Modell AROME). Wird im Browser des
   // Besuchers abgefragt — der CSP-``connect-src`` lässt nur
   // ``api.open-meteo.com`` zu — und gemeinsam mit den Verkehrsdaten in
-  // ``loadAll()`` aktualisiert. ``loadWeather`` probiert mehrere
+  // ``loadAll()`` aktualisiert. ``loadWeather`` probiert zwei
   // Request-Formen der Reihe nach (siehe dort): primär den dokumentierten
   // ``/v1/forecast``-Endpunkt mit ``models=geosphere_arome_austria``,
-  // dann den dedizierten Modell-Endpunkt mit der Stundenreihe, zuletzt
-  // Best-Match als Notnagel — so zeigt das Widget möglichst immer einen
-  // Wert, ohne Annahmen über nur teilweise dokumentierte Endpunkte/Params.
+  // dann Best-Match als Notnagel — so zeigt das Widget möglichst immer
+  // einen Wert.
   // Abfrage-Koordinaten: Wien Hauptbahnhof aus dem Stationsverzeichnis
   // (data/stations.json — Eintrag "Wien Hauptbahnhof", bst_id 900100 /
-  // eva_nr 8103000; Koordinate aus dem ÖBB-GeoNetz, CC BY 4.0, seit
+  // eva_nr 8103000; Koordinate aus dem ÖBB-GeoNetz, CC BY 3.0 AT, seit
   // 16.10.2026 statt der früheren Google-Places-Koordinate).
   const WEATHER_API = "https://api.open-meteo.com/v1";
   const WEATHER_MODEL = "geosphere_arome_austria";
@@ -181,6 +180,8 @@
       "<strong>VOR/VAO</strong> – trunk-line observations at Wien Hbf",
     "footer-source-stadt-html":
       "<strong>City of Vienna (OGD)</strong> – construction works with district &amp; period",
+    "footer-source-weather-html":
+      '<a href="https://open-meteo.com/" rel="external noopener noreferrer" target="_blank"><strong>Weather data by Open-Meteo.com</strong></a> – weather at Wien Hbf (CC&nbsp;BY&nbsp;4.0)',
     "footer-about-heading": "About the dashboard",
     "footer-about-html":
       "Code open-source under the MIT licence. Notice texts remain with their sources and are " +
@@ -436,6 +437,7 @@
   // condition keys mirror the buckets returned by ``weatherCondition``.
   const WEATHER_TEXT_DE = {
     aria: "Aktuelles Wetter am Wiener Hbf",
+    credit: "Wetterdaten von Open-Meteo.com",
     clear: "klar",
     partly: "teils bewölkt",
     cloudy: "bewölkt",
@@ -446,6 +448,7 @@
   };
   const WEATHER_TEXT_EN = {
     aria: "Current weather at Wien Hbf",
+    credit: "Weather data by Open-Meteo.com",
     clear: "clear",
     partly: "partly cloudy",
     cloudy: "cloudy",
@@ -1381,7 +1384,10 @@
     iconNode.append(buildWeatherIcon(weatherIconName(condition, isDay)));
     widget.dataset.state = "ready";
     widget.dataset.condition = condition;
-    const label = `${wt("aria")}: ${tempText}, ${wt(condition)}`;
+    // The widget links to open-meteo.com (their CC BY 4.0 terms ask for a
+    // link next to every place the data appear), so the name says whose
+    // data the reading is.
+    const label = `${wt("aria")}: ${tempText}, ${wt(condition)} – ${wt("credit")}`;
     widget.setAttribute("aria-label", label);
     widget.setAttribute("title", label);
   }
@@ -1461,19 +1467,16 @@
   async function loadWeather(signal) {
     const loc = `latitude=${WEATHER_LAT}&longitude=${WEATHER_LON}`;
     const current = "current=temperature_2m,weather_code,is_day";
-    const hourly =
-      "hourly=temperature_2m,weather_code,is_day&timeformat=unixtime&forecast_days=1";
     // Tried in order; the first that yields a value wins (every URL stays
-    // on api.open-meteo.com, the only host the CSP allows). The Open-Meteo
-    // OpenAPI spec documents only ``/v1/forecast`` — model-specific paths
-    // are undocumented — so GeoSphere data is requested primarily via
-    // ``/v1/forecast`` + ``models=`` (the safest, documented form). The
-    // dedicated endpoint with its documented hourly series is the second
-    // try, and a plain best-match request is the last-resort so the widget
-    // still shows a value even if the GeoSphere model identifier changes.
+    // on api.open-meteo.com, the only host the CSP allows). GeoSphere data
+    // is requested via the documented ``/v1/forecast`` + ``models=``, and a
+    // plain best-match request is the last resort so the widget still shows
+    // a value even if the GeoSphere model identifier changes. A third form,
+    // ``/v1/geosphere_arome_austria``, answered 404 on every call (checked
+    // live on 17.10.2026) and only added a failed request to the console
+    // whenever the first form failed, so it is gone.
     const urls = [
       `${WEATHER_API}/forecast?${loc}&${current}&models=${WEATHER_MODEL}`,
-      `${WEATHER_API}/${WEATHER_MODEL}?${loc}&${hourly}`,
       `${WEATHER_API}/forecast?${loc}&${current}`,
     ];
     let reading = null;

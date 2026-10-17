@@ -1,0 +1,7 @@
+# GitHub Pages builds the site from docs/ on main with the default theme
+# (Primer). Without a language the theme marks every page as lang="en-US"
+# and jekyll-seo-tag as og:locale "en_US", although the pages are German;
+# screen readers then read them with an English voice. A page written in
+# another language sets its own ``lang`` in the front matter.
+theme: jekyll-theme-primer
+lang: de-AT

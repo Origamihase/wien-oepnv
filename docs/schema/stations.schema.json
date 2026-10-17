@@ -85,7 +85,7 @@
         "eva_nr": {
           "type": "string",
           "pattern": "^[0-9]{6,8}$",
-          "description": "UIC EVA-Nummer (z. B. '8103000' für Wien Hauptbahnhof) aus dem ÖBB-Infrastruktur GeoNetz-Datensatz (data.oebb.at GeoNetz_12-2024, CC BY 4.0). Internationaler UIC-Standard, identisch mit der DB-Stations-Nummer und damit Schlüssel für DB-HAFAS / transport.rest / bahn.guru-Integration. Wird vom GeoNetz-Loader in scripts/update_station_directory.py gesetzt; nur bei oebb-Stationen mit einem bsts_id-Match im Datensatz vorhanden."
+          "description": "UIC EVA-Nummer (z. B. '8103000' für Wien Hauptbahnhof) aus dem ÖBB-Infrastruktur GeoNetz-Datensatz (data.oebb.at GeoNetz_12-2024, CC BY 3.0 AT). Internationaler UIC-Standard, identisch mit der DB-Stations-Nummer und damit Schlüssel für DB-HAFAS / transport.rest / bahn.guru-Integration. Wird vom GeoNetz-Loader in scripts/update_station_directory.py gesetzt; nur bei oebb-Stationen mit einem bsts_id-Match im Datensatz vorhanden."
         },
         "ifopt_id": {
           "type": "string",

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{%- comment -%}
+  Primer's default layout (jekyll-theme-primer 0.6.0) with four changes for
+  accessibility, found by the axe check of the live pages on 17.10.2026:
+  the page language comes from the page or _config.yml instead of a fixed
+  "en-US"; the site name is no longer a second <h1> above the page title
+  (it stays the <h1> on a page that has none of its own);
+  the content sits in a <main> landmark; the footer is German and links the
+  page source (the edit link only works for signed-in GitHub users).
+{%- endcomment -%}
+<html lang="{{ page.lang | default: site.lang | default: "de-AT" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    {% include head-custom.html %}
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      {% if site.title and site.title != page.title %}
+      <header class="site-header">
+        {%- comment -%} A page without its own <h1> (some audit logs start
+        at "##") keeps the site name as its one level-one heading. {%- endcomment -%}
+        {% if content contains "<h1" %}
+        <p class="site-header__name"><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></p>
+        {% else %}
+        <h1 class="site-header__name"><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
+        {% endif %}
+      </header>
+      {% endif %}
+
+      <main id="content">
+      {{ content }}
+      </main>
+
+      <footer class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        Diese Seite ist Open Source: <a href="https://github.com/Origamihase/wien-oepnv/blob/main/docs/{{ page.path }}">Quelltext auf GitHub</a>.
+      </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+      // Code blocks and tables that scroll sideways must be reachable by
+      // keyboard (WCAG 2.1.1); only the ones that actually overflow get a
+      // tab stop.
+      document.querySelectorAll("main pre, main table, main .highlight").forEach(function (el) {
+        if (el.scrollWidth > el.clientWidth + 1 && !el.closest("[tabindex]")) {
+          el.tabIndex = 0;
+        }
+      });
+    </script>
+  </body>
+</html>

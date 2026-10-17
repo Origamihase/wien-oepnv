@@ -1119,7 +1119,7 @@ class OpenCoordinate(NamedTuple):
 
     latitude: float
     longitude: float
-    # ``"oebb_geonetz"`` (ÖBB-Infrastruktur GeoNetz, CC BY 4.0) or
+    # ``"oebb_geonetz"`` (ÖBB-Infrastruktur GeoNetz, CC BY 3.0 AT) or
     # ``"wl_ogd"`` (Wiener Linien OGD Haltestellen, CC BY 4.0).
     dataset: str
 

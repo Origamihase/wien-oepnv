@@ -289,7 +289,11 @@ code {
   font-weight: 600;
   line-height: 1;
   white-space: nowrap;
+  /* The widget is a link to open-meteo.com (attribution, see site.html). */
+  text-decoration: none;
 }
+a.weather:hover,
+a.weather:focus-visible { border-color: var(--c-text-subtle); }
 .weather__icon {
   display: inline-flex;
   flex: none;

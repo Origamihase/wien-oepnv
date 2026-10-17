@@ -116,6 +116,14 @@ if _WL_BASE_ENV and _WL_BASE_OVERRIDE is None:
     )
 WL_BASE = (_WL_BASE_OVERRIDE or _WL_DEFAULT_BASE).rstrip("/")
 
+# Item ``<link>`` for every WL notice: the operator's public disruption page.
+# ``WL_BASE`` is the API root, which answers 404 to a browser (and 403 with a
+# trailing slash), so a reader clicking a WL item landed on an error page
+# (live check 17.10.2026). The OGD feed has no per-notice page; the
+# Betriebsinfo page lists the current notices. The GUID stays as it was, so
+# first_seen, dedupe and the TV rotation do not change.
+WL_INFO_URL = "https://www.wienerlinien.at/betriebsinfo"
+
 log = logging.getLogger(__name__)
 
 # Security: ``MAX_WL_FETCH_TIMEOUT`` is the Slowloris-defence ceiling for the
@@ -1715,7 +1723,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                 "category": b["category"],
                 "title": title_final,  # plain text
                 "description": desc,  # plain text
-                "link": f"{WL_BASE}",
+                "link": WL_INFO_URL,
                 "guid": guid,
                 # None erlaubt; a rewritten ticker does not date it back
                 "pubDate": incident_begin(b["pubDate"], b.get("incident_start")),

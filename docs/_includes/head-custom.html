@@ -14,11 +14,31 @@
 {% endif %}
 
 <link rel="alternate" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" title="Wien ÖPNV Feed" />
-{% if canonical_url %}
-<link rel="canonical" href="{{ canonical_url }}">
-{% endif %}
-<meta property="og:type" content="{% if page.url == '/' %}website{% else %}article{% endif %}">
-<meta property="og:locale" content="de_AT">
+<link rel="alternate" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" title="Vienna Public Transport Feed (English)" hreflang="en" />
+<link rel="icon" type="image/svg+xml" href="{{ '/assets/site-favicon.svg' | relative_url }}">
+{% comment %}
+  jekyll-seo-tag already writes the canonical link and og:locale (from
+  ``lang`` in _config.yml); writing them here again gave every page two
+  canonical links and two contradicting locales.
+{% endcomment %}
+<style>
+  /* Site name above the page title: looks like the old heading, but is no
+     second <h1> (the page title is the only one). */
+  .site-header__name { font-size: 2em; font-weight: 600; margin: 0 0 16px; padding-bottom: 0.3em; border-bottom: 1px solid #eaecef; line-height: 1.25; }
+  /* Links inside running text are underlined, so they are not told apart
+     by colour alone (WCAG 1.4.1; Primer's blue has 2.7:1 against the text). */
+  main p a, main li a, main td a, main blockquote a { text-decoration: underline; }
+  main a.anchorjs-link { text-decoration: none; }
+  footer.footer a { text-decoration: underline; }
+  /* Syntax colours of Primer's Rouge theme that stay below 4.5:1 on the
+     code background (#f6f8fa), darkened to the same hue. */
+  .highlight .c, .highlight .c1, .highlight .cm, .highlight .cs, .highlight .cd, .highlight .cp { color: #57606a; }
+  .highlight .nb, .highlight .bp { color: #005c80; }
+  .highlight .m, .highlight .mi, .highlight .mf, .highlight .mh, .highlight .mo, .highlight .il,
+  .highlight .na, .highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .no { color: #006666; }
+  /* Quote text on the code background reached only 4.37:1. */
+  .markdown-body blockquote { color: #57606a; }
+</style>
 {% if meta_title %}
 <meta property="og:title" content="{{ meta_title | escape }}">
 <meta name="twitter:title" content="{{ meta_title | escape }}">

@@ -1185,8 +1185,8 @@ den zwei Bahnhöfen, nie ein berechneter Mittelpunkt und nicht der
 Gleisverlauf.
 
 **Herkunft der Koordinaten:** nur offene Datensätze mit bekannten
-Bedingungen, alle CC BY 4.0: ÖBB-Infrastruktur GeoNetz
-(`data/oebb_geonetz_stops.json`, über EVA- oder IFOPT-Nummer), Wiener Linien
+Bedingungen: ÖBB-Infrastruktur GeoNetz (CC BY 3.0 AT,
+`data/oebb_geonetz_stops.json`, über EVA- oder IFOPT-Nummer), Wiener Linien
 OGD Haltestellen (`data/wienerlinien-ogd-haltestellen.csv`, über die DIVA)
 und die Baustellen-Daten der Stadt Wien.
 `src.utils.stations.open_data_coordinate` liest nie die `latitude`/
@@ -2752,5 +2752,5 @@ diese Karte beschreibt nur die laufzeit-architektonischen Schichten:
   (`src/utils/secret_scanner.py`, im CI- und pre-commit-Lauf) sind als
   Entwicklungs-/CI-Werkzeuge in [`development.md`](development.md)
   dokumentiert.
-* Eine konsolidierte Gesamtübersicht steht in [`AGENTS.md`](../AGENTS.md);
-  die Meldewege für Schwachstellen in [`SECURITY.md`](../SECURITY.md).
+* Eine konsolidierte Gesamtübersicht steht in [`AGENTS.md`](https://github.com/Origamihase/wien-oepnv/blob/main/AGENTS.md);
+  die Meldewege für Schwachstellen in [`SECURITY.md`](https://github.com/Origamihase/wien-oepnv/blob/main/SECURITY.md).
