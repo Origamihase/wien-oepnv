@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-17T17:01:08.271803+00:00",
- "built": "2026-10-17T19:00:53+02:00",
+ "updated": "2026-10-17T17:30:57.373620+00:00",
+ "built": "2026-10-17T19:30:43+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-17T19:00:53+02:00",
+  "built": "2026-10-17T19:30:43+02:00",
   "items": [
+   {
+    "title": "U2: Betriebsstörung",
+    "time_line": "Seit 19:01"
+   },
    {
     "title": "31A: Verkehrsunfall",
     "time_line": "Seit 18:33"
@@ -17,20 +21,12 @@
     "time_line": "Seit 18:33"
    },
    {
-    "title": "40: Falschparker",
-    "time_line": "Seit 18:16"
-   },
-   {
-    "title": "52/60/U2: Rettungseinsatz",
+    "title": "52/60: Rettungseinsatz",
     "time_line": "Seit 18:16"
    },
    {
     "title": "U4: Gegenstände im Gleis",
     "time_line": "Seit 18:06"
-   },
-   {
-    "title": "U1: Verunreinigung",
-    "time_line": "Seit 17:58"
    },
    {
     "title": "Wien Hütteldorf ↔ Wien Hauptbahnhof",
@@ -47,6 +43,10 @@
    {
     "title": "7A: Bauarbeiten",
     "time_line": "Bis 14.11."
+   },
+   {
+    "title": "12/5: Albertgasse",
+    "time_line": "Bis 03.11."
    }
   ]
  },
@@ -6530,6 +6530,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 107
+   }
+  },
+  {
+   "t": "2026-10-17T17:30:57.373620+00:00",
+   "raw": {
+    "wl-stoerungen": 72,
+    "wl-hinweise": 93,
+    "oebb": 159,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 24,
+    "oebb": 136,
+    "baustellen": 69
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 104
    }
   }
  ]

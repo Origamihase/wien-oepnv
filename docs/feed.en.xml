@@ -8,8 +8,20 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 17 Oct 2026 19:00:53 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 19:30:43 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U2: Service disruption]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4</guid>
+      <pubDate>Sat, 17 Oct 2026 19:01:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Sat, 17 Oct 2026 19:01:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 17 Oct 2026 19:01:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 19:01]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 19:01]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[31A: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -35,25 +47,13 @@
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 18:33]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919</guid>
-      <pubDate>Sat, 17 Oct 2026 18:16:53 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Sat, 17 Oct 2026 18:16:53 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 17 Oct 2026 18:16:53 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 17 Oct 2026 19:16:00 +0200</ext:ends_at>
-      <description>Service obstruction. [Since 18:16]</description>
-      <content:encoded><![CDATA[Service obstruction.<br/>[Since 18:16]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[52/60/U2: Rescue operation]]></title>
+      <title><![CDATA[52/60: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
       <pubDate>Sat, 17 Oct 2026 18:16:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <ext:first_seen>Sat, 17 Oct 2026 18:16:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 17 Oct 2026 18:16:00 +0200</ext:starts_at>
+      <ext:starts_at>Sat, 17 Oct 2026 18:22:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 18:16]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 18:16]]]></content:encoded>
@@ -69,18 +69,6 @@
       <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: objects on the track in the stop area of Längenfeldgasse. [Since 18:06]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: objects on the track in the stop area of Längenfeldgasse.<br/>[Since 18:06]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Contamination]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">9779e7ace261e01ddc018942c222784a1d556276f8f642723bab39617b6cccfc</guid>
-      <pubDate>Sat, 17 Oct 2026 17:58:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Sat, 17 Oct 2026 17:58:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 17 Oct 2026 17:58:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 17 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: contamination. [Since 17:58]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 17:58]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hütteldorf ↔ Wien Hauptbahnhof]]></title>
@@ -131,6 +119,19 @@
       <ext:ends_at>Sat, 14 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Due to construction works in the area of Neilreichgasse / Davidgasse, line 7A is redirected. [Until 14.11.]</description>
       <content:encoded><![CDATA[Due to construction works in the area of Neilreichgasse / Davidgasse, line 7A is redirected.<br/>[Until 14.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12/5: Albertgasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">3e5225e046a0df3ec11a86c99a2c68a57b90ba1f9c0a3a5c4fdf60d90cdf02e7</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Fri, 09 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <georss:point>48.210606 16.344038</georss:point>
+      <description>Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works. [Until 03.11.]</description>
+      <content:encoded><![CDATA[Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works.<br/>[Until 03.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
