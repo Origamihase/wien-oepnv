@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261017-0022, I20260917-0012, I20260922-0032, I20261017-0024, I20261017-0025, I20260925-0011, I20260909-0007, I20261017-0019, I20261017-0020, I20261017-0023-F01"
+    "trafficInfoNameList": "I20261017-0022, I20260917-0012, I20260922-0032, I20261017-0025, I20260925-0011, I20260909-0007, I20261017-0019, I20261017-0020"
    },
    {
     "id": 3,
@@ -301,75 +301,6 @@
      "start": "2026-10-17T15:22:00.000+0200"
     },
     "title": "61A: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "36B": "ptBusCity"
-     }
-    },
-    "description": "Linie 36B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 36B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "O'Brien-Gasse",
-    "name": "I20261017-0023-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "36B"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "236",
-       "lineName": "36B",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T15:45:00.000+0200",
-     "end": "2026-10-17T16:10:00.000+0200",
-     "lastUpdate": "2026-10-17T16:10:00.000+0200",
-     "resume": "2026-10-17T16:10:00.000+0200",
-     "start": "2026-10-17T15:28:00.000+0200"
-    },
-    "title": "36B: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "64A": "ptBusCity"
-     }
-    },
-    "description": "Linie 64A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "Linie 64A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
-    "name": "I20261017-0024",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "64A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "464",
-       "lineName": "64A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T15:40:00.000+0200",
-     "end": "2026-10-17T16:24:00.000+0200",
-     "lastUpdate": "2026-10-17T16:24:00.000+0200",
-     "resume": "2026-10-17T16:24:00.000+0200",
-     "start": "2026-10-17T15:39:00.000+0200"
-    },
-    "title": "64A: Verkehrsunfall"
    },
    {
     "attributes": {
