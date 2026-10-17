@@ -36,6 +36,7 @@ from src.feed_types import FeedItem
 pytestmark = pytest.mark.usefixtures("time_line_today")
 
 _VIENNA = ZoneInfo("Europe/Vienna")
+_LINK = "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&"
 
 
 def _summary(item: FeedItem) -> str:
@@ -48,6 +49,7 @@ def _summary(item: FeedItem) -> str:
 HUETTELDORF: FeedItem = {
     "source": "ÖBB",
     "category": "Störung",
+    "link": _LINK,
     "title": "Wien Hütteldorf ↔ Wien Hauptbahnhof",
     "description": (
         "17.10.2026 - 21.10.2026<br/><br/>Wegen Bauarbeiten fahren<br>zwischen <b>Salzburg Hbf</b> "
@@ -79,6 +81,7 @@ def test_a_neighbouring_stretch_stays_first() -> None:
     item: FeedItem = {
         "source": "ÖBB",
         "category": "Störung",
+        "link": _LINK,
         "title": "Wien Floridsdorf ↔ Gänserndorf",
         "description": (
             "Wegen Bauarbeiten können zwischen <b>Gänserndorf Bahnhof</b> und <b>Deutsch Wagram "
@@ -95,6 +98,7 @@ def test_a_first_sentence_without_route_stays_first() -> None:
     item: FeedItem = {
         "source": "ÖBB",
         "category": "Störung",
+        "link": _LINK,
         "title": "Wien Meidling ↔ Wien Liesing",
         "description": (
             "Wegen eines Polizeieinsatzes sind keine Fahrten möglich.<br>Fahrgäste mit ÖBB-Tickets "
