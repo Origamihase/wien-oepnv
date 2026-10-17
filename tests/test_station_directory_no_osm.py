@@ -76,7 +76,7 @@ def test_fill_keeps_existing_coordinates() -> None:
 
 
 def test_fill_skips_unusable_geonetz_values() -> None:
-    lookup = {
+    lookup: dict[str, dict[str, object]] = {
         "1": {"lat": True, "lon": 16.0},
         "2": {"lat": float("nan"), "lon": 16.0},
         "3": {"lat": 120.0, "lon": 16.0},
@@ -103,11 +103,11 @@ def test_boundary_check_uses_geonetz_point_not_the_name() -> None:
 
 
 def test_one_entry_per_eva_number_keeps_the_known_one() -> None:
-    known = {"bst_id": "779", "name": "Wien Handelskai", "eva_nr": "8101934"}
-    synthetic = {"bst_id": "900105", "name": "Wien Kaiserebersdorf", "eva_nr": "8100374"}
-    new_twin = {"bst_id": "1586", "name": "Handelskai", "eva_nr": "8101934"}
-    new_real = {"bst_id": "1059", "name": "Kaiserebersdorf", "eva_nr": "8100374"}
-    plain = {"bst_id": "5", "name": "Ohne EVA"}
+    known: dict[str, object] = {"bst_id": "779", "name": "Wien Handelskai", "eva_nr": "8101934"}
+    synthetic: dict[str, object] = {"bst_id": "900105", "name": "Wien Kaiserebersdorf", "eva_nr": "8100374"}
+    new_twin: dict[str, object] = {"bst_id": "1586", "name": "Handelskai", "eva_nr": "8101934"}
+    new_real: dict[str, object] = {"bst_id": "1059", "name": "Kaiserebersdorf", "eva_nr": "8100374"}
+    plain: dict[str, object] = {"bst_id": "5", "name": "Ohne EVA"}
 
     kept = usd._drop_duplicate_eva([new_twin, known, new_real, plain, synthetic], {"779"})
 
