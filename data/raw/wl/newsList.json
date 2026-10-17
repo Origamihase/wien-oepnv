@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_371, ftazW_519, ftazW_37, ftazW_112, ftazW_23, ftazW_370, ftazW_520, ftazW_283, ftazW_485, ftazW_369, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_4, ftazW_484, ftazW_368, ftazW_196, ftazW_1018061, ftazW_393, ftazW_15, ftazW_1032342"
+    "trafficInfoNameList": "ftazW_371, ftazW_519, ftazW_37, ftazW_112, ftazW_23, ftazW_370, ftazW_520, ftazW_283, ftazW_485, ftazW_369, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_4, ftazW_484, ftazW_368, ftazW_196, ftazW_1018061, ftazW_393, ftazW_15, ftazW_1032342, ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41"
    }
   ],
   "poiCategoryGroups": [
@@ -3174,6 +3174,32 @@
    },
    {
     "attributes": {
+     "ausBis": "21.10.2026 00:45",
+     "ausVon": "20.10.2026 20:45",
+     "location": "Zwischengeschoss - Ausgang Erdbergstraße",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Erdberg",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Zwischengeschoss - Ausgang Erdbergstraße",
+    "name": "ftazW_17",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "time": {
+     "end": "2026-10-21T00:45:00.000+0200",
+     "start": "2026-10-20T20:45:00.000+0200"
+    },
+    "title": "Erdberg"
+   },
+   {
+    "attributes": {
      "ausBis": "20.10.2026 05:15",
      "ausVon": "20.10.2026 01:15",
      "location": "U4 Mittelbahnsteig - Ausgang Meidling Hauptstraße/Lobkowitzbrücke",
@@ -3204,6 +3230,37 @@
      "start": "2026-10-20T01:15:00.000+0200"
     },
     "title": "Meidling Hauptstraße"
+   },
+   {
+    "attributes": {
+     "ausBis": "21.10.2026 00:45",
+     "ausVon": "20.10.2026 20:45",
+     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Nußdorfer Straße",
+     "rbls": [
+      4626
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Nußdorfer Straße",
+     "status": "geplante Wartung",
+     "towards": "U6 Floridsdorf"
+    },
+    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Nußdorfer Straße",
+    "name": "ftazW_209",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4626
+    ],
+    "time": {
+     "end": "2026-10-21T00:45:00.000+0200",
+     "start": "2026-10-20T20:45:00.000+0200"
+    },
+    "title": "Nußdorfer Straße"
    },
    {
     "attributes": {
@@ -3479,6 +3536,37 @@
    },
    {
     "attributes": {
+     "ausBis": "21.10.2026 00:45",
+     "ausVon": "20.10.2026 20:45",
+     "location": "U1 Bahnsteig Richtung Leopoldau - Ausgang Schüttaustraße",
+     "rbls": [
+      4123
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Kaisermühlen-VIC",
+     "status": "geplante Wartung",
+     "towards": "U1 Leopoldau"
+    },
+    "description": "U1 Bahnsteig Richtung Leopoldau - Ausgang Schüttaustraße",
+    "name": "ftazW_41",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4123
+    ],
+    "time": {
+     "end": "2026-10-21T00:45:00.000+0200",
+     "start": "2026-10-20T20:45:00.000+0200"
+    },
+    "title": "Kaisermühlen-VIC"
+   },
+   {
+    "attributes": {
      "ausBis": "20.10.2026 05:15",
      "ausVon": "20.10.2026 01:15",
      "location": "U6 Bahnsteig Richtung Siebenhirten - Passage - Ausgang Anton Baumgartner Straße",
@@ -3538,6 +3626,37 @@
      "start": "2026-10-19T20:45:00.000+0200"
     },
     "title": "Alterlaa"
+   },
+   {
+    "attributes": {
+     "ausBis": "21.10.2026 00:45",
+     "ausVon": "20.10.2026 20:45",
+     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Jörgerstraße, Hernalser Hauptstraße",
+     "rbls": [
+      4606
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Alser Straße",
+     "status": "geplante Wartung",
+     "towards": "U6 Siebenhirten"
+    },
+    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Jörgerstraße, Hernalser Hauptstraße",
+    "name": "ftazW_5",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4606
+    ],
+    "time": {
+     "end": "2026-10-21T00:45:00.000+0200",
+     "start": "2026-10-20T20:45:00.000+0200"
+    },
+    "title": "Alser Straße"
    },
    {
     "attributes": {
@@ -3626,6 +3745,39 @@
      "start": "2026-10-19T20:45:00.000+0200"
     },
     "title": "Handelskai"
+   },
+   {
+    "attributes": {
+     "ausBis": "21.10.2026 00:45",
+     "ausVon": "20.10.2026 20:45",
+     "location": "U3 Mittelbahnsteig - Ausgang Kendlerstraße",
+     "rbls": [
+      4932,
+      4929
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Kendlerstraße",
+     "status": "geplante Wartung",
+     "towards": "U3 beide Richtungen"
+    },
+    "description": "U3 Mittelbahnsteig - Ausgang Kendlerstraße",
+    "name": "ftazW_599",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4932,
+     4929
+    ],
+    "time": {
+     "end": "2026-10-21T00:45:00.000+0200",
+     "start": "2026-10-20T20:45:00.000+0200"
+    },
+    "title": "Kendlerstraße"
    }
   ]
  },
