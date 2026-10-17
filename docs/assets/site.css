@@ -1,6 +1,18 @@
 /* Wien ÖPNV – Live-Dashboard
  * Vanilla CSS, mobile-first, kein Build-Schritt.
  * Farbpalette ist abgestimmt auf assets/og-default.svg.
+ *
+ * Kachel-Design (2026-10-17, Michael): Aufbau, Farben, der fahrende Zug
+ * und die Fußzeile mit Foto-Hintergrund bleiben, wie sie sind ("Der Aufbau
+ * selbst ist gut. Ich mag auch die Farben. Der kleine Zug ist ein
+ * Hingucker"); nur die Kacheln wirkten "ziemlich generisch". Seither trägt
+ * jede Kachel die Farbe dessen, wofür sie steht: Meldungen die Farbe ihrer
+ * Quelle (Randstreifen, Hauch im Hintergrund, Punkt im Etikett und im
+ * Filter), jede Statistik-Sektion einen eigenen Ton (``--tone``: Störungen
+ * Blau, Verspätungen Orange, Ausfälle Rot, passend zu ihren Balken), der
+ * Überschrift, Kennzahl und Zeilen-Hover färbt. Kein neues HTML, kein
+ * neues JS, keine neue Farbe: alles leitet sich aus den Tokens unten ab.
+ * Details: docs/architecture.md, "Gestaltung des Live-Dashboards".
  */
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -33,11 +45,16 @@
   --c-danger: #b91c1c;
   --c-info: #1d4ed8;
 
-  --radius: 14px;
-  --radius-lg: 22px;
+  --radius: 16px;
+  --radius-lg: 24px;
 
-  --shadow-sm: 0 1px 2px rgba(15, 23, 36, 0.06);
-  --shadow: 0 1px 2px rgba(15, 23, 36, 0.05), 0 8px 24px rgba(15, 23, 36, 0.06);
+  --shadow-sm: 0 1px 2px rgba(15, 23, 36, 0.05), 0 2px 8px -3px rgba(15, 23, 36, 0.08);
+  --shadow: 0 2px 4px rgba(15, 23, 36, 0.04), 0 14px 32px -10px rgba(15, 23, 36, 0.18);
+  /* Hairline highlight along a tile's top edge (light falls from above). */
+  --edge: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  /* Section tone: the colour a section's tiles, heading marker and hover
+   * share. Sections below override it; see "Section tones". */
+  --tone: var(--c-accent);
 
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
@@ -77,8 +94,9 @@
     --c-danger: #fb7185;
     --c-info: #7dc1ff;
 
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.5);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 8px -3px rgba(0, 0, 0, 0.35);
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.35), 0 16px 36px -10px rgba(0, 0, 0, 0.65);
+    --edge: inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
 }
 
@@ -341,11 +359,19 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
 .hero {
   margin: 0 0 clamp(1.5rem, 4vw, 2.5rem);
   padding: clamp(1.5rem, 4vw, 2.5rem);
+  /* Gradient hairline: the border picks up the accent blue top-left and the
+   * Wiener-Linien red bottom-right (padding-box/border-box layering, so the
+   * card body stays a solid surface). */
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--c-bg-elev) 92%, transparent) 0%, var(--c-bg-elev) 100%);
-  border: 1px solid var(--c-border);
+    linear-gradient(var(--c-bg-elev), var(--c-bg-elev)) padding-box,
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--c-accent) 55%, var(--c-border)) 0%,
+      var(--c-border) 35%,
+      var(--c-border) 65%,
+      color-mix(in srgb, var(--c-wl) 40%, var(--c-border)) 100%) border-box;
+  border: 1px solid transparent;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--edge), var(--shadow);
   position: relative;
   overflow: hidden;
 }
@@ -383,7 +409,8 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
   margin: 0 0 0.65rem;
   font-size: clamp(1.65rem, 3.4vw, 2.4rem);
   line-height: 1.15;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 .hero__lead {
   margin: 0;
@@ -521,8 +548,27 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
 .section__header h2 {
   margin: 0 0 0.35rem;
   font-size: clamp(1.3rem, 2.4vw, 1.7rem);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
 }
+/* Section marker: a small square in the section tone with a soft halo, so
+ * each section reads as its own block before the first tile. */
+.section__header h2::before {
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 0.55em;
+  margin-inline-end: 0.6em;
+  border-radius: 0.18em;
+  vertical-align: 0.1em;
+  background: var(--tone);
+  box-shadow: 0 0 0 0.2em color-mix(in srgb, var(--tone) 22%, transparent);
+}
+
+/* Section tones. Each statistics section takes the colour of its own bars
+ * (``.bars--delay`` orange, ``.bars--cancel`` red; the Störungs bars use the
+ * accent blue of ``:root``), so heading, KPI tiles and chart hover match. */
+#stammstrecke { --tone: var(--c-warning); }
+#ausfaelle { --tone: var(--c-danger); }
 .section__header .year {
   color: var(--c-text-subtle);
   font-weight: 600;
@@ -565,8 +611,8 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
 .chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.35rem 0.75rem;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
   font-family: inherit;
   font-size: 0.85rem;
   font-weight: 600;
@@ -574,15 +620,30 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
   background: var(--c-surface);
   border: 1px solid var(--c-border-strong);
   border-radius: 999px;
+  box-shadow: var(--shadow-sm);
   cursor: pointer;
   user-select: none;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, box-shadow 0.15s;
 }
-.chip:hover { color: var(--c-text); background: var(--c-surface-2); }
+/* Source chips carry the dot of their source (same ``--src`` as the feed
+ * pills below); "Alle" has none. */
+.chip[data-filter]:not([data-filter="all"])::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  flex: none;
+  background: var(--src);
+}
+.chip:hover { color: var(--c-text); background: var(--c-surface-2); border-color: var(--c-text-subtle); }
+/* Active chip: the text colour as background. The former ``--c-brand``
+ * fill was the page background in dark mode (#0a1126 on #0a1126), so the
+ * active "Alle" chip lost its outline there entirely. */
 .chip.is-active {
-  background: var(--c-brand);
-  color: var(--c-brand-ink);
-  border-color: var(--c-brand);
+  background: var(--c-text);
+  color: var(--c-bg);
+  border-color: var(--c-text);
+  box-shadow: var(--shadow);
 }
 
 /* Feed list */
@@ -614,16 +675,37 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
  * background colour — a few seconds of slightly taller dead space in
  * exchange for collapsing CLS from 0.9 to ~0.1. */
 .feed-list[aria-busy="true"] { min-height: 1600px; }
+/* Feed tiles (2026-10-17). Every tile carries the colour of its source as
+ * ``--src``: a 4 px stripe on the leading edge (an inset shadow, so it
+ * follows the rounded corners without a pseudo-element), a faint wash of
+ * that colour behind the badge, and the badge itself. The source is set on
+ * the ``<li>`` (``data-source`` from ``renderFeedItem()`` in site.js) and
+ * inherited by the badge and, for the filter chips, by ``data-filter``. */
+.feed-item,
+.chip { --src: var(--c-text-subtle); }
+.feed-item[data-source="wienerlinien"], .chip[data-filter="wienerlinien"] { --src: var(--c-wl); }
+.feed-item[data-source="oebb"], .chip[data-filter="oebb"] { --src: var(--c-oebb); }
+.feed-item[data-source="vor"] { --src: var(--c-vor); }
+.feed-item[data-source="baustellen"], .chip[data-filter="baustellen"] { --src: var(--c-baustellen); }
+
 .feed-item {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 0.8rem 1rem;
-  padding: 1rem 1.1rem;
-  background: var(--c-surface);
+  gap: 0.8rem 1.15rem;
+  padding: 1.05rem 1.25rem 1.05rem 1.4rem;
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--src) 5%, var(--c-surface)) 0%,
+      var(--c-surface) 32%);
   border: 1px solid var(--c-border);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  box-shadow: inset 4px 0 0 var(--src), var(--edge), var(--shadow-sm);
+  transition: transform 0.2s cubic-bezier(0.2, 0.7, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+  /* Tiles fade up one after another when the list renders (also after a
+   * filter click or the 5-minute refresh). ``backwards`` only fills the
+   * delay, so the animation never holds ``transform`` against the hover
+   * lift below. Opacity/transform only: no layout shift. */
+  animation: tile-in 0.45s cubic-bezier(0.2, 0.7, 0.3, 1) backwards;
   /* Isolate intra-item layout from the rest of the feed-list. Each
    * card already has a solid border and box-shadow that visually scopes
    * its content, so promising the browser that nothing inside affects
@@ -631,45 +713,74 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
    * work when many feed-items render in one frame. No visual effect. */
   contain: layout;
 }
-.feed-item:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+.feed-item:nth-child(2) { animation-delay: 40ms; }
+.feed-item:nth-child(3) { animation-delay: 80ms; }
+.feed-item:nth-child(4) { animation-delay: 120ms; }
+.feed-item:nth-child(5) { animation-delay: 160ms; }
+.feed-item:nth-child(6) { animation-delay: 200ms; }
+.feed-item:nth-child(7) { animation-delay: 240ms; }
+.feed-item:nth-child(8) { animation-delay: 280ms; }
+.feed-item:nth-child(9) { animation-delay: 320ms; }
+.feed-item:nth-child(n+10) { animation-delay: 360ms; }
+@keyframes tile-in {
+  from { opacity: 0; transform: translateY(8px); }
+}
+/* The tile's border takes a hint of the source colour on hover and while
+ * the title link has keyboard focus; only pointer devices get the lift. */
+.feed-item:hover,
+.feed-item:focus-within {
+  border-color: color-mix(in srgb, var(--src) 45%, var(--c-border));
+  box-shadow: inset 4px 0 0 var(--src), var(--edge), var(--shadow);
+}
+@media (hover: hover) {
+  .feed-item:hover { transform: translateY(-2px); }
+}
 .feed-item__source {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.45rem;
   /* Reserve enough horizontal room for the widest source label
-   * ("WIENER LINIEN" – 13 uppercase chars at 0.72rem/700) so every
-   * pill across the feed renders at the same width. Previously the
+   * ("WIENER LINIEN" – 13 uppercase chars at 0.7rem/700 plus its dot) so
+   * every pill across the feed renders at the same width. Previously the
    * 100 px floor only sufficed for shorter labels ("ÖBB",
    * "ANDERE"), which let "WIENER LINIEN" inflate its own pill and
    * pushed the title column to a different start column on every
    * card – the result was a visibly stair-stepped indentation down
    * the list. The 9 rem (144 px) floor fits the longest label with a
-   * small visual buffer and still sits well within the 320 px mobile
-   * viewport before ``grid-template-columns`` collapses to a single
-   * column at 540 px. */
+   * small visual buffer; below 540 px the pill sits above the title and
+   * drops the floor (see the narrow-screen block). */
   min-width: 9rem;
-  padding: 0.18rem 0.55rem;
+  padding: 0.28rem 0.7rem;
   height: max-content;
-  border-radius: 8px;
-  font-size: 0.72rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #fff;
-  background: var(--c-text-subtle);
+  background: var(--src);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 2px 6px -2px color-mix(in srgb, var(--src) 70%, transparent);
   white-space: nowrap;
 }
-.feed-item__source[data-source="wienerlinien"] { background: var(--c-wl); }
-.feed-item__source[data-source="oebb"] { background: var(--c-oebb); }
-.feed-item__source[data-source="vor"] { background: var(--c-vor); }
-.feed-item__source[data-source="other"] { background: var(--c-text-subtle); }
+.feed-item__source::before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  flex: none;
+  background: currentColor;
+  opacity: 0.85;
+}
 /* Baustellen is the only pill with dark text on a yellow ground (a
  * deliberate "construction sign" look). Black on the ``--c-baustellen``
  * yellow clears WCAG-AAA in both schemes, so it needs no dark-mode
  * background override like the white-text pills below. */
-.feed-item__source[data-source="baustellen"] { background: var(--c-baustellen); color: #1a1a1a; }
+.feed-item__source[data-source="baustellen"] { color: #1a1a1a; }
 
-/* Dark-mode source pill contrast.
+/* Dark-mode source colour.
  *
  * Light-mode brand colours (#E2002A, #C03021, …) give white text a
  * 6.8:1+ contrast on the pill background – comfortably above WCAG-AA.
@@ -683,65 +794,82 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
  * An earlier attempt flipped the pill *text* to ``var(--c-brand)``
  * (dark navy). That cleared the WCAG ratio on paper but read "muddy"
  * on the bright pill colours and visually competed with the pill
- * itself; combined with the intrinsic pill widths it also stayed
- * misaligned across cards.
+ * itself.
  *
  * The current fix paints the pill *background* with darker, saturated
  * brand variants in dark mode and keeps the pill text white in both
  * schemes. Every combination now clears 6:1 against white and the
- * silhouette still reads as the brand colour. The Wiener-Linien and
+ * silhouette still reads as the brand colour. Since 2026-10-17 these
+ * variants are the tile's whole ``--src`` (stripe, wash, chip dot), so a
+ * source reads as one colour everywhere. The Wiener-Linien and
  * ÖBB provider bars deliberately mirror these same dark reds (see the
  * ``.bars--provider`` dark-mode override below) so each source's chart
  * fill matches its feed pill; the other token-driven fills (VOR,
  * Baustellen) are evaluated against the dark navy card surface, not
- * white text, so they keep their lively pastels. The pill width is
- * locked separately via the ``min-width: 9rem`` rule above so the
- * title column lines up across cards regardless of label length. */
+ * white text, so they keep their lively pastels. */
 @media (prefers-color-scheme: dark) {
-  .feed-item__source { background: #4a5775; }
-  .feed-item__source[data-source="wienerlinien"] { background: #b80024; }
-  .feed-item__source[data-source="oebb"] { background: #9f2a1b; }
-  .feed-item__source[data-source="vor"] { background: #406b0e; }
-  .feed-item__source[data-source="other"] { background: #4a5775; }
+  .feed-item, .chip { --src: #4a5775; }
+  .feed-item[data-source="wienerlinien"], .chip[data-filter="wienerlinien"] { --src: #b80024; }
+  .feed-item[data-source="oebb"], .chip[data-filter="oebb"] { --src: #9f2a1b; }
+  .feed-item[data-source="vor"] { --src: #406b0e; }
+  .feed-item[data-source="baustellen"], .chip[data-filter="baustellen"] { --src: var(--c-baustellen); }
 }
 .feed-item__body { min-width: 0; }
 .feed-item__title {
-  margin: 0 0 0.25rem;
-  font-size: 1.02rem;
+  margin: 0 0 0.3rem;
+  font-size: 1.06rem;
   font-weight: 700;
   line-height: 1.3;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 .feed-item__title a {
   color: inherit;
   text-decoration: none;
   border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 .feed-item__title a:hover { border-bottom-color: var(--c-accent); color: var(--c-accent); }
 .feed-item__desc {
   margin: 0.25rem 0 0;
   color: var(--c-text-muted);
   font-size: 0.95rem;
+  line-height: 1.55;
   overflow-wrap: anywhere;
+  text-wrap: pretty;
 }
+/* Begin / Bis / Erstmals as small capsules instead of a loose text row. */
 .feed-item__meta {
-  margin-top: 0.55rem;
+  margin-top: 0.75rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem 1rem;
-  font-size: 0.82rem;
-  color: var(--c-text-subtle);
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--c-text-muted);
 }
-.feed-item__meta time { font-variant-numeric: tabular-nums; }
+.feed-item__meta > div {
+  display: inline-flex;
+  align-items: baseline;
+  padding: 0.18rem 0.6rem;
+  border: 1px solid var(--c-border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--c-surface-2) 65%, var(--c-surface));
+}
+.feed-item__meta time { font-variant-numeric: tabular-nums; color: var(--c-text); font-weight: 500; }
 .feed-item__meta dfn {
   font-style: normal;
   font-weight: 600;
   color: var(--c-text-muted);
+  white-space: pre;
 }
 
 @media (max-width: 540px) {
-  .feed-item { grid-template-columns: 1fr; }
-  .feed-item__source { justify-self: start; }
+  .feed-item { grid-template-columns: 1fr; gap: 0.6rem; padding: 0.95rem 1rem 1rem 1.2rem; }
+  .feed-item__source { justify-self: start; min-width: 0; }
+  /* Tighter capsules on phones, so "Bis" and "Erstmals" still share a line
+   * as the plain text row did before. */
+  .feed-item__meta { gap: 0.3rem; font-size: 0.75rem; margin-top: 0.6rem; }
+  .feed-item__meta > div { padding: 0.1rem 0.45rem; }
   /* Single-column feed-items stack the source badge above the body and
    * are ~50% taller than the two-column desktop layout, so the 1600px
    * global reservation undershoots the real mobile footprint (~10 items
@@ -783,25 +911,49 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
  * als ``margin-top``, um die Kachel optisch vom darunter folgenden
  * Sammelfeed-Sub-Text abzusetzen. */
 .live-tile {
+  /* Seit 2026-10-17 im Ton der Stammstrecken-Sektion, auf die sie verlinkt,
+   * mit einem pulsierenden Live-Punkt vor der Beschriftung (am Label, damit
+   * er auf dem Handy nicht allein in einer Zeile steht). */
+  --tone: var(--c-warning);
   display: inline-flex;
   align-items: center;
   gap: 0.45rem 1rem;
   flex-wrap: wrap;
   margin: 0.45rem 0 1rem;
-  padding: 0.55rem 1.05rem 0.6rem;
-  background: var(--c-surface);
-  border: 1px solid var(--c-border);
+  padding: 0.6rem 1.15rem 0.65rem 1rem;
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--tone) 10%, var(--c-surface)) 0%,
+      var(--c-surface) 70%);
+  border: 1px solid color-mix(in srgb, var(--tone) 30%, var(--c-border));
   border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--edge), var(--shadow-sm);
   color: inherit;
   text-decoration: none;
   max-width: 100%;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.12s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
-.live-tile:hover {
-  border-color: var(--c-border-strong);
-  box-shadow: var(--shadow);
-  transform: translateY(-1px);
+.live-tile__label::before {
+  content: "";
+  align-self: center;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  flex: none;
+  background: var(--c-success);
+  animation: live-ping 2.4s ease-out infinite;
+}
+@keyframes live-ping {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--c-success) 55%, transparent); }
+  70%, 100% { box-shadow: 0 0 0 0.5rem color-mix(in srgb, var(--c-success) 0%, transparent); }
+}
+.live-tile:hover,
+.live-tile:focus-visible {
+  border-color: color-mix(in srgb, var(--tone) 60%, var(--c-border));
+  box-shadow: var(--edge), var(--shadow);
+}
+@media (hover: hover) {
+  .live-tile:hover { transform: translateY(-2px); }
 }
 .live-tile__label {
   display: inline-flex;
@@ -880,14 +1032,24 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
   #stoerungen-kpis,
   #stammstrecke-kpis { grid-template-columns: repeat(4, 1fr); }
 }
+/* KPI tiles take their section's ``--tone``: a soft glow from the top
+ * right corner and the tone square in front of the label, like the
+ * section heading. */
 .kpi {
-  background: var(--c-surface);
+  position: relative;
+  background:
+    radial-gradient(130% 110% at 100% 0%,
+      color-mix(in srgb, var(--tone) 13%, transparent) 0%,
+      transparent 55%),
+    var(--c-surface);
   border: 1px solid var(--c-border);
   border-radius: var(--radius);
-  padding: 1rem 1.1rem;
-  box-shadow: var(--shadow-sm);
+  padding: 1.1rem 1.2rem 1.05rem;
+  box-shadow: var(--edge), var(--shadow-sm);
   display: grid;
-  gap: 0.2rem;
+  align-content: start;
+  gap: 0.25rem;
+  animation: tile-in 0.45s cubic-bezier(0.2, 0.7, 0.3, 1) backwards;
   /* Keep the rendered KPI tile at least as tall as its skeleton so the
    * transition between the loading state and the real numbers never
    * shrinks the card. The 112 px floor matches the typical
@@ -899,19 +1061,35 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
    * paragraphs) don't trigger re-layout of sibling cards in the grid. */
   contain: layout;
 }
+.kpi:nth-child(2) { animation-delay: 60ms; }
+.kpi:nth-child(3) { animation-delay: 120ms; }
+.kpi:nth-child(4) { animation-delay: 180ms; }
+.kpi.skeleton { animation: none; }
 .kpi__label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin: 0;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--c-text-subtle);
+  color: var(--c-text-muted);
+}
+.kpi__label::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 0.15rem;
+  flex: none;
+  background: var(--tone);
 }
 .kpi__value {
-  margin: 0;
-  font-size: clamp(1.6rem, 3vw, 2rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  margin: 0.15rem 0 0;
+  font-size: clamp(1.7rem, 3vw, 2.15rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
   color: var(--c-text);
 }
@@ -948,8 +1126,8 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
   background: var(--c-surface);
   border: 1px solid var(--c-border);
   border-radius: var(--radius);
-  padding: 1.1rem 1.2rem 1.2rem;
-  box-shadow: var(--shadow-sm);
+  padding: 1.15rem 1.25rem 1.25rem;
+  box-shadow: var(--edge), var(--shadow-sm);
   min-width: 0;
   /* Same reasoning as ``.kpi``/``.feed-item``: the card is a self-
    * contained chart container with explicit border + min-height
@@ -959,11 +1137,25 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
   contain: layout;
 }
 .card--wide { grid-column: 1 / -1; }
+/* Chart title with a hairline underneath and a short tone bar on it. */
 .card__title {
-  margin: 0 0 0.85rem;
-  font-size: 1.02rem;
+  position: relative;
+  margin: 0 0 1rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--c-border);
+  font-size: 1rem;
   font-weight: 700;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.01em;
+}
+.card__title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 2.25rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--tone);
 }
 
 /* Bars (SVG-based, CSP-friendly).
@@ -1003,6 +1195,15 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
   gap: 0.6rem;
   align-items: center;
   font-size: 0.88rem;
+  /* Row hover: a tinted band drawn with background + spread shadow, so it
+   * reaches past the row without padding (the reserved ``.bars`` heights
+   * above must not grow). */
+  border-radius: 6px;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+.bar-row:hover {
+  background: color-mix(in srgb, var(--tone) 9%, transparent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--tone) 9%, transparent);
 }
 .bar-row__label {
   color: var(--c-text-muted);
@@ -1014,9 +1215,9 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
 .bar-row__chart {
   display: block;
   width: 100%;
-  height: 14px;
+  height: 12px;
   overflow: hidden;
-  border-radius: 7px;
+  border-radius: 6px;
   background: transparent;
 }
 .bar-row__track { fill: var(--c-surface-2); }
@@ -1177,6 +1378,7 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
 
 /* Reduce motion */
 @media (prefers-reduced-motion: reduce) {
+  .feed-item, .kpi, .live-tile__label::before { animation: none; }
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;

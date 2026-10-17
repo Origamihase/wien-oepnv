@@ -2132,6 +2132,48 @@ großgeschrieben sind und Störungstypen wie `Demonstration Linie`
 fälschlich als Haltestellen akzeptiert wurden). So rendert das Dashboard
 auch bei adversarial Provider-Input noch.
 
+### Gestaltung des Live-Dashboards (Kacheln, 2026-10-17)
+
+Michael am 17.10.2026 zu `site.html`: „Der Aufbau selbst ist gut. Ich mag
+auch die Farben. Der kleine Zug ist ein Hingucker und die Fußzeile ist, mit
+dem Hintergrund, auch in Ordnung. Die Kacheln selbst sehen aber ziemlich
+generisch aus.“ Daraus folgt, was bleibt und was neu ist:
+
+* **Bleibt, auf seinen Wunsch:** Aufbau und Reihenfolge der Sektionen,
+  Farbpalette (alle Tokens in `:root`), der fahrende Zug, Kopfzeile und die
+  Fußzeile mit Foto-Hintergrund. HTML und JavaScript sind unverändert; die
+  Änderung steckt allein in `docs/assets/site.css` (und dem daraus erzeugten
+  `site.min.css`).
+* **Neu: Jede Kachel trägt die Farbe dessen, wofür sie steht.** Eine Meldung
+  hat die Farbe ihrer Quelle als `--src` (Randstreifen links, ein Hauch der
+  Farbe hinter dem Etikett, das Etikett selbst mit Punkt; derselbe Punkt
+  steht im passenden Filter-Chip). Im Dunkelmodus sind das die dunkleren
+  Markenrot-Varianten, die schon vorher für die weiße Etikettschrift galten
+  (Kontrast ≥ 6:1).
+* **Neu: Jede Statistik-Sektion hat einen Ton** (`--tone`): Störungen Blau,
+  Stammstrecken-Verspätungen Orange, Ausfälle Rot, also die Farbe ihrer
+  Balken. Der Ton färbt das Quadrat vor der Überschrift, den Schimmer und das
+  Quadrat der Kennzahl-Kacheln, den Strich unter jedem Diagrammtitel und das
+  Hover-Band einer Balkenzeile. Die Live-Kachel „Ø Verspätung Stammstrecke“
+  nimmt den Ton der Sektion, auf die sie verlinkt, und trägt einen
+  pulsierenden Live-Punkt.
+* **Neu: Beginn, Bis und Erstmals** stehen als kleine Kapseln unter dem
+  Meldungstext statt als lose Textzeile.
+* **Bewegung:** Kacheln blenden beim Rendern kurz nacheinander ein, Meldungen
+  heben sich bei Hover an (nur mit Maus). Alles nur über `opacity` und
+  `transform`, also ohne Layout-Verschiebung; bei
+  `prefers-reduced-motion: reduce` ist beides aus.
+* **Behoben dabei:** Der aktive Filter-Chip nutzte `--c-brand` als
+  Hintergrund, das im Dunkelmodus die Seitenfarbe ist; „Alle“ war dort nicht
+  als aktiv erkennbar. Er nutzt jetzt die Textfarbe als Hintergrund.
+
+Geprüft vor dem Merge in Chromium (Desktop 1366 px hell/dunkel, Handy
+375 px und 320 px, DE und EN): keine axe-Verstöße, kein waagrechter
+Überlauf, ein `<h1>`, Feed-Autodiscovery DE/EN und beide Open-Meteo-Links
+vorhanden, keine Konsolenfehler unter der strengen CSP. Wächter:
+`tests/test_site_css_tiles.py`. Wie das Ergebnis auf seinem eigenen Gerät
+wirkt (Bildschirm, Schrift, Bewegung), beurteilt Michael selbst.
+
 ---
 
 ## 7. VOR/VAO-API — Stammstrecke-only-Scope (2026-05-11)

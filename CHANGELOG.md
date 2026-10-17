@@ -5,6 +5,21 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Website: Kacheln mit Farbe statt weißer Kästen (2026-10-17)**: Michael:
+  „Der Aufbau selbst ist gut. Ich mag auch die Farben. Der kleine Zug ist ein
+  Hingucker und die Fußzeile ist, mit dem Hintergrund, auch in Ordnung. Die
+  Kacheln selbst sehen aber ziemlich generisch aus.“ Aufbau, Farben, Zug und
+  Fußzeile bleiben; nur `docs/assets/site.css` ändert sich. Jede Meldung
+  trägt jetzt die Farbe ihrer Quelle (Randstreifen, Etikett mit Punkt, Punkt
+  im Filter), jede Statistik-Sektion den Ton ihrer Balken (Störungen Blau,
+  Verspätungen Orange, Ausfälle Rot) an Überschrift, Kennzahlen und
+  Diagrammtiteln. Beginn/Bis/Erstmals stehen als Kapseln, Kacheln blenden
+  beim Laden ein (aus bei reduzierter Bewegung), die Live-Kachel hat einen
+  pulsierenden Punkt. Dabei behoben: Der aktive Filter-Chip war im
+  Dunkelmodus unsichtbar (Hintergrund gleich Seitenfarbe). Geprüft in
+  Chromium: axe ohne Befund, kein Überlauf auf 320/375 px, DE und EN gleich.
+  Details in `docs/architecture.md` (Gestaltung des Live-Dashboards),
+  Wächter `tests/test_site_css_tiles.py`.
 * **ÖBB: Titel und Text nennen dieselbe Strecke (2026-10-17)**: Der Titel
   einer ÖBB-Meldung ist ihre Wien-relevante Strecke und kann aus einem
   späteren Abschnitt stammen; der Text zeigte trotzdem Satz 1. „Wien
