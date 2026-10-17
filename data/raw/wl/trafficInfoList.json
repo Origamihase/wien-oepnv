@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261017-0005-F01, I20260909-0007, I20261017-0007, I20261017-0006"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261017-0007, I20260909-0007, I20261017-0008, I20261017-0006"
    },
    {
     "id": 3,
@@ -203,41 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Mayssengasse 35",
-    "name": "I20261017-0005-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "102",
-       "lineName": "2",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T08:13:00.000+0200",
-     "end": "2026-10-17T09:05:00.000+0200",
-     "lastUpdate": "2026-10-17T09:05:00.000+0200",
-     "resume": "2026-10-17T09:05:00.000+0200",
-     "start": "2026-10-17T08:05:00.000+0200"
-    },
-    "title": "2: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "71": "ptTram"
      }
     },
@@ -293,15 +258,49 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-17T09:22:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T09:22:00.000+0200",
-     "resume": "2026-10-17T09:22:00.000+0200",
+     "end": "2026-10-17T10:23:00.000+0200",
+     "lastUpdate": "2026-10-17T10:23:00.000+0200",
+     "resume": "2026-10-17T10:23:00.000+0200",
      "start": "2026-10-17T09:22:00.000+0200"
     },
     "title": "11: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 11:00 Uhr. Grund: Polizeieinsatz im Bereich Johnstraße.",
+    "descriptionHTML": "Linie U3:<br>Fahrtbehinderung in beiden Richtungen.<br> <br>Voraussichtliche Dauer: 11:00 Uhr.<br><br>Grund: Polizeieinsatz im Bereich Johnstraße.",
+    "location": "Johnstraße",
+    "name": "I20261017-0008",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "303",
+       "lineName": "U3",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T10:22:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T10:29:00.000+0200",
+     "start": "2026-10-17T10:20:00.000+0200"
+    },
+    "title": "U3: Polizeieinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
