@@ -1,0 +1,100 @@
+"""An ÖBB text leads with the sentence that names the title's route.
+
+The provider titles an ÖBB notice with its Wien-relevant route, which may
+stand in a later section of the text. Published 2026-10-17 (operator report
+of that morning): title "Wien Hütteldorf ↔ Wien Hauptbahnhof" over a text
+about "Salzburg Hbf und Flughafen Wien Bahnhof bzw. Hegyeshalom", cut before
+it said what happens. The title's route stood only in the section
+"TEILAUSFALL", which the TV viewer never saw. A replay over all 589 ÖBB
+texts cached since May changed only this notice (three of its versions).
+
+Mutations checked against this file (each one caught, by the test named):
+
+* no reordering at all → ``test_the_title_route_section_comes_first``.
+* "bzw." alternatives not split → ``test_the_title_route_section_comes_first``.
+* reordering also when sentence one shares a station →
+  ``test_a_neighbouring_stretch_stays_first``.
+* reordering also when sentence one names no route →
+  ``test_a_first_sentence_without_route_stays_first``.
+"""
+
+from __future__ import annotations
+
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+import pytest
+
+import src.build_feed as bf
+from src.feed_types import FeedItem
+
+pytestmark = pytest.mark.usefixtures("time_line_today")
+
+_VIENNA = ZoneInfo("Europe/Vienna")
+
+
+def _summary(item: FeedItem) -> str:
+    starts = datetime(2026, 10, 17, tzinfo=_VIENNA)
+    ends = datetime(2026, 10, 21, 23, 59, 59, tzinfo=_VIENNA)
+    return bf._format_item_content(item, "oebb", starts, ends).desc_text_truncated
+
+
+# ÖBB TRACKINFO 901477 as published 2026-10-17 (cache/oebb_c40d21/events.json).
+HUETTELDORF: FeedItem = {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "Wien Hütteldorf ↔ Wien Hauptbahnhof",
+    "description": (
+        "17.10.2026 - 21.10.2026<br/><br/>Wegen Bauarbeiten fahren<br>zwischen <b>Salzburg Hbf</b> "
+        "und <b>Flughafen Wien Bahnhof </b>bzw.<b> Hegyeshalom<br></b>von <b>10.10.2026</b> "
+        "(22:30 Uhr) bis <b>14.10.2026</b> (04:00 Uhr) und<br>von <b>17.10.2026 </b>(22:30 Uhr) "
+        "bis <b>21.10.2026 </b>(04:00 Uhr)<b><br></b>einige Fernverkehrszüge mit geänderten "
+        "Fahrzeiten.<br><br><b>TEILAUSFALL:</b><br>Von <b>18.10.2026</b> bis <b>19.10.2026</b> "
+        "kann der Zug RJ 263<br>zwischen <b>Wien Hütteldorf Bahnhof (U) </b>und <b>Wien Hbf (U) "
+        "</b>nicht fahren.<br><br><b>HALTAUSFALL:<br></b>Von <b>11.10.2026</b> bis "
+        "<b>12.10.2026</b> kann der Zug RJ 263<br>in <b>Wien Hütteldorf Bahnhof (U) </b>nicht "
+        "halten.<br><br>Ihre Reisezeit verlängert sich um bis zu 8 Minuten.<br>"
+        "Anschlussverbindungen können nicht gewährleistet werden.<br><br>Wir bitten um "
+        "Entschuldigung."
+    ),
+}
+
+
+def test_the_title_route_section_comes_first() -> None:
+    summary = _summary(HUETTELDORF)
+    assert summary.startswith(
+        "TEILAUSFALL: Von 18.10.2026 bis 19.10.2026 kann der Zug RJ 263 zwischen "
+        "Wien Hütteldorf Bahnhof (U) und Wien Hbf (U) nicht fahren."
+    )
+    assert "Salzburg" not in summary
+
+
+def test_a_neighbouring_stretch_stays_first() -> None:
+    # ÖBB TRACKINFO 888637, 24.06.2026: the works seen from the next stretch.
+    item: FeedItem = {
+        "source": "ÖBB",
+        "category": "Störung",
+        "title": "Wien Floridsdorf ↔ Gänserndorf",
+        "description": (
+            "Wegen Bauarbeiten können zwischen <b>Gänserndorf Bahnhof</b> und <b>Deutsch Wagram "
+            "Bahnhof</b> von <b>11.09.2026</b> (00:10 Uhr) bis <b>05.10.2026</b> (04:20 Uhr) einige "
+            "Nahverkehrszüge nicht fahren.<br>Einige Nahverkehrszüge können zwischen <b>Gänserndorf "
+            "Bahnhof</b> und <b>Wien Floridsdorf Bahnhof (U)</b> nicht fahren."
+        ),
+    }
+    assert _summary(item).startswith("Wegen Bauarbeiten können zwischen Gänserndorf Bahnhof")
+
+
+def test_a_first_sentence_without_route_stays_first() -> None:
+    # ÖBB, 22.06.2026: sentence one speaks for the whole line.
+    item: FeedItem = {
+        "source": "ÖBB",
+        "category": "Störung",
+        "title": "Wien Meidling ↔ Wien Liesing",
+        "description": (
+            "Wegen eines Polizeieinsatzes sind keine Fahrten möglich.<br>Fahrgäste mit ÖBB-Tickets "
+            "können zwischen <b>Wien Meidling Bahnhof (U)</b> und <b>Wien Liesing Bahnhof</b> die "
+            "Wiener Linien benutzen."
+        ),
+    }
+    assert _summary(item).startswith("Wegen eines Polizeieinsatzes sind keine Fahrten möglich.")

@@ -5,6 +5,18 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **ÖBB: Titel und Text nennen dieselbe Strecke (2026-10-17)**: Der Titel
+  einer ÖBB-Meldung ist ihre Wien-relevante Strecke und kann aus einem
+  späteren Abschnitt stammen; der Text zeigte trotzdem Satz 1. „Wien
+  Hütteldorf ↔ Wien Hauptbahnhof“ stand über „Wegen Bauarbeiten fahren
+  zwischen Salzburg Hbf und Flughafen Wien Bahnhof bzw. Hegyeshalom von
+  10.10.2026 … und von 17.10.2026 …“, die Titelstrecke stand nur im Abschnitt
+  „TEILAUSFALL“ (RJ 263, 18.–19.10.). Nennt Satz 1 eine Strecke, die keine
+  Station mit dem Titel teilt, beginnt der Text jetzt mit dem Satz, der die
+  Titelstrecke nennt (`_oebb_title_route_first`). Replay über 589 ÖBB-Texte
+  seit Mai: nur diese Meldung ändert sich. Details in
+  `docs/architecture.md` (ÖBB: der Text beginnt mit dem Satz, der die
+  Titelstrecke nennt).
 * **Live-Abnahme: Lizenzangaben, tote Links, Barrierefreiheit der Doku-Seiten (2026-10-17)**:
   Erste Prüfung mit vollem Netz (Webseite in Chromium, Feed von außen,
   Lizenzhinweise gegen die Originalquellen). Behoben, jeweils als Klasse:
