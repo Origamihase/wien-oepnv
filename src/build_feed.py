@@ -10730,7 +10730,8 @@ def _escape_description_markup(text: str) -> str:
 #   notice — the large majority — gets nothing.
 #
 # Coordinates come only from open datasets with known terms (ÖBB-Infrastruktur
-# GeoNetz, Wiener Linien OGD, Stadt Wien OGD; all CC BY 4.0), never from the
+# GeoNetz under CC BY 3.0 AT, Wiener Linien OGD and Stadt Wien OGD under
+# CC BY 4.0), never from the
 # directory's merged OSM / HAFAS values
 # (:func:`src.utils.stations.open_data_coordinate`). A station without an
 # open coordinate leaves the item without geo.
@@ -10971,6 +10972,12 @@ def _emit_item(
 # them, so both channel lines say so and link the licence and NOTICE.md in
 # full (a feed reader has no repository to resolve a bare file name against).
 _CC_BY_4_URL = "https://creativecommons.org/licenses/by/4.0/"
+# The ÖBB-Infrastruktur GeoNetz on data.oebb.at is CC BY 3.0 AT, not 4.0, and
+# asks for the attribution "Datenquelle: ÖBB-Infrastruktur AG" with the name
+# linked to infrastruktur.oebb.at (dataset page, read 17.10.2026). A feed
+# line cannot carry a hyperlink, so the URL follows the name.
+_CC_BY_3_AT_URL = "https://creativecommons.org/licenses/by/3.0/at/deed.de"
+_OEBB_INFRA_URL = "https://infrastruktur.oebb.at/de/"
 _NOTICE_URL = "https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md"
 
 # Channel-level metadata for the English feed mirror (docs/feed.en.xml).
@@ -10989,7 +10996,8 @@ _CHANNEL_METADATA_EN: dict[str, str] = {
         "shortened, edited and machine-translated for this feed: "
         "Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, "
         f"{_CC_BY_4_URL}), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: "
-        "ÖBB-Infrastruktur AG (GeoNetz), Wiener Linien (OGD stops), City of Vienna – "
+        f"Datenquelle: ÖBB-Infrastruktur AG ({_OEBB_INFRA_URL}; GeoNetz, CC BY 3.0 AT, "
+        f"{_CC_BY_3_AT_URL}), Wiener Linien (OGD stops) and City of Vienna – "
         f"data.wien.gv.at (CC BY 4.0). Details: {_NOTICE_URL}"
     ),
 }
@@ -11007,7 +11015,8 @@ _CHANNEL_COPYRIGHT_DE = (
     "für den Feed gekürzt und bearbeitet: "
     "Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, "
     f"{_CC_BY_4_URL}), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: "
-    "ÖBB-Infrastruktur AG (GeoNetz), Wiener Linien (OGD-Haltestellen), Stadt Wien – "
+    f"Datenquelle: ÖBB-Infrastruktur AG ({_OEBB_INFRA_URL}; GeoNetz, CC BY 3.0 AT, "
+    f"{_CC_BY_3_AT_URL}), Wiener Linien (OGD-Haltestellen) und Stadt Wien – "
     f"data.wien.gv.at (CC BY 4.0). Details: {_NOTICE_URL}"
 )
 

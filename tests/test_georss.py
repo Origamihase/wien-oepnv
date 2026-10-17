@@ -197,8 +197,8 @@ def test_open_data_tables_load_from_the_repository() -> None:
 @pytest.mark.parametrize(
     ("lang", "expected"),
     [
-        ("de", ("GeoRSS-Koordinaten", "ÖBB-Infrastruktur AG (GeoNetz)", "Wiener Linien (OGD-Haltestellen)")),
-        ("en", ("GeoRSS coordinates", "ÖBB-Infrastruktur AG (GeoNetz)", "Wiener Linien (OGD stops)")),
+        ("de", ("GeoRSS-Koordinaten", "ÖBB-Infrastruktur AG", "GeoNetz", "Wiener Linien (OGD-Haltestellen)")),
+        ("en", ("GeoRSS coordinates", "ÖBB-Infrastruktur AG", "GeoNetz", "Wiener Linien (OGD stops)")),
     ],
 )
 def test_channel_copyright_names_the_coordinate_sources(lang: str, expected: tuple[str, ...]) -> None:
