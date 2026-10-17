@@ -336,25 +336,37 @@ def test_real_stations_json_keeps_wien_hauptbahnhof_as_manual() -> None:
     assert "Wien Kaiserebersdorf" in manual_names
 
 
-def test_real_stations_json_keeps_siebenhirten_in_mapping() -> None:
-    """End-to-end pin: committed Siebenhirten (real bst_id 1371) → mapping.
+def test_real_bst_code_without_oebb_token_keeps_mapping(tmp_path: Path) -> None:
+    """A real Betriebsstelle without a bare ``oebb`` token → mapping.
 
     Sibling to :func:`test_real_stations_json_keeps_wien_hauptbahnhof_as_manual`
-    for the opposite failure mode. ``Siebenhirten`` carries
-    ``source="oebb_geonetz,osm"`` (no bare ``oebb`` token) but a real,
-    non-synthetic ``bst_id`` the live workbook re-emits. It must classify
-    into ``mapping`` — leaking it into ``manual_stations`` ships a
-    duplicate ``bst_id=1371`` that fails ``validate_stations`` in CI.
+    for the opposite failure mode. The case was ``Siebenhirten`` (bst_id
+    1371, ``source="oebb_geonetz,osm"``); it left the directory on
+    2026-10-17 because it lies outside Vienna and the commuter belt, so the
+    shape is pinned with a fixture instead. It must classify into
+    ``mapping`` — leaking it into ``manual_stations`` ships a duplicate
+    ``bst_id`` that fails ``validate_stations`` in CI.
     """
-    stations_path = Path("data/stations.json")
-    if not stations_path.exists():  # pragma: no cover - fresh clone
-        pytest.skip("data/stations.json not present in this checkout")
+    stations_path = tmp_path / "stations.json"
+    stations_path.write_text(
+        json.dumps(
+            {
+                "stations": [
+                    {
+                        "bst_id": "1371",
+                        "bst_code": "Mb  H2H",
+                        "name": "Siebenhirten",
+                        "in_vienna": False,
+                        "pendler": True,
+                        "source": "oebb_geonetz",
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
 
     mapping, manual = _load_existing_station_entries(stations_path)
 
-    assert "1371" in mapping, (
-        "Regression: Siebenhirten (real bst_id 1371, source without a bare "
-        "``oebb`` token) must round-trip through the ÖBB-Excel mapping, not "
-        "leak into manual_stations and duplicate against the fresh extract."
-    )
+    assert "1371" in mapping
     assert not any(e.get("name") == "Siebenhirten" for e in manual)

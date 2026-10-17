@@ -136,21 +136,6 @@ def _load_enrich_station_with_hafas() -> Callable[..., Any]:
     return cast(Callable[..., Any], module.enrich_station_with_hafas)
 
 
-def _load_osm_place_fetchers() -> tuple[Callable[..., Any], Callable[..., Any]]:
-    """Lazy OSM import — pulls the Overpass client; resolved only when a
-    WL/HAFAS disagreement needs an arbiter.
-    """
-
-    base_dir = _project_root()
-    if str(base_dir) not in sys.path:
-        sys.path.insert(0, str(base_dir))
-    module = import_module("src.places.osm_client")
-    return (
-        cast(Callable[..., Any], module.fetch_osm_places),
-        cast(Callable[..., Any], module.filter_complete_places),
-    )
-
-
 BASE_DIR = _project_root()
 is_in_vienna = _load_is_in_vienna()
 calculate_distance_meters = _load_calculate_distance_meters()
@@ -1662,43 +1647,6 @@ def _build_hafas_lookup() -> Callable[[str], tuple[float, float] | None]:
     return lookup
 
 
-def _build_osm_index_loader() -> Callable[[], Mapping[str, tuple[float, float]]]:
-    """Return a lazy loader of a normalised-name → ``(lat, lon)`` OSM index.
-
-    The Overpass round-trip happens on first call only; the reconciliation
-    pass invokes it solely when a WL/HAFAS disagreement actually needs an
-    arbiter, so an all-agree run never touches the network. Failures
-    degrade to an empty index (every disagreement then stays unresolved
-    and keeps WL).
-    """
-
-    def loader() -> Mapping[str, tuple[float, float]]:
-        try:
-            fetch_osm_places, filter_complete_places = _load_osm_place_fetchers()
-            places = filter_complete_places(fetch_osm_places())
-        except Exception as exc:  # nosec B902 - OSM must never crash the merge
-            log.warning(
-                "OSM fetch for coordinate arbitration failed: %s",
-                sanitize_log_arg(type(exc).__name__),
-            )
-            return {}
-        index: dict[str, tuple[float, float]] = {}
-        for place in places:
-            key = _normalize_key(getattr(place, "name", None))
-            lat = getattr(place, "latitude", None)
-            lon = getattr(place, "longitude", None)
-            if (
-                key
-                and key not in index
-                and isinstance(lat, int | float)
-                and isinstance(lon, int | float)
-            ):
-                index[key] = (float(lat), float(lon))
-        return index
-
-    return loader
-
-
 def _apply_coordinate_decision(entry: dict[str, object], decision: Any) -> None:
     """Write a :class:`CoordinateDecision` onto a merged station entry.
 
@@ -1728,7 +1676,9 @@ def _reconcile_at_overlap(
     multimodal hubs where a Wiener-Linien stop and an ÖBB station were
     unified. WL is authoritative; HAFAS is cross-checked; OSM (fetched
     lazily, only when a disagreement exists) arbitrates by endorsing the
-    candidate closer to it. A missing HAFAS result is a deliberate no-op:
+    candidate closer to it — only when a caller passes *osm_index_loader*;
+    ``main()`` passes none since 2026-10-17, so a disagreement keeps WL.
+    A missing HAFAS result is a deliberate no-op:
     a transient outage must never shift a coordinate. An unresolvable
     conflict keeps WL (highest priority) and is logged for review.
     """
@@ -1959,7 +1909,7 @@ def merge_into_stations(
 
     filtered.extend(unmatched)
 
-    # Coordinate consensus (WL → HAFAS → OSM): runs on the fully
+    # Coordinate consensus (WL → HAFAS): runs on the fully
     # merged list so overlap entries already carry both ``wl_diva`` and the
     # ÖBB-side HAFAS identity. Optional so direct callers / unit tests keep
     # the historical no-reconcile behaviour; ``main()`` injects the real,
@@ -2082,24 +2032,23 @@ def main(argv: Sequence[str] | None = None) -> int:
     if contaminated:
         log.info("Dropped %d distant-name-contaminating alias/stop token(s)", contaminated)
 
-    # Austrian-source coordinate consensus (WL → HAFAS → OSM).
-    # Env-disabled via ``WIEN_OEPNV_AT_RECONCILE=0`` — mirrors the
-    # ``WIEN_OEPNV_OSM_ENRICH`` gate so the orchestrator wrapper test can
-    # skip the ~40 real HAFAS round-trips (and a possible Overpass call)
+    # Austrian-source coordinate consensus (WL → HAFAS). Since 2026-10-17
+    # no OpenStreetMap arbiter (Michael: no OSM data in the published
+    # directory, ODbL share-alike): a WL/HAFAS disagreement keeps the WL
+    # coordinate. Env-disabled via ``WIEN_OEPNV_AT_RECONCILE=0`` so the
+    # orchestrator wrapper test can skip the ~40 real HAFAS round-trips
     # that would otherwise tip it over its pytest timeout. Production cron
     # runs leave the env unset so reconciliation remains active.
     reconcile: Callable[[list[dict[str, object]]], None] | None = None
     if get_bool_env("WIEN_OEPNV_AT_RECONCILE", True):
         wl_coord_by_diva = _wl_coord_index(wl_entries)
         hafas_lookup = _build_hafas_lookup()
-        osm_index_loader = _build_osm_index_loader()
 
         def _run_reconcile(merged: list[dict[str, object]]) -> None:
             _reconcile_at_overlap(
                 merged,
                 wl_coord_by_diva,
                 hafas_lookup=hafas_lookup,
-                osm_index_loader=osm_index_loader,
             )
 
         reconcile = _run_reconcile

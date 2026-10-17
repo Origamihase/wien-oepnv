@@ -37,7 +37,7 @@ vollständigen Link auf diese Datei.
 Die GeoRSS-Koordinaten kommen nur aus diesen drei offenen Datensätzen
 (`src.utils.stations.open_data_coordinate`, Entscheidung von Michael vom
 16.10.2026), nie aus den zusammengeführten Koordinaten des Stationsverzeichnisses
-(OpenStreetMap, HAFAS). Details: `docs/architecture.md` §1, „Geodaten im Feed“.
+(HAFAS). Details: `docs/architecture.md` §1, „Geodaten im Feed“.
 
 ### ÖBB-Inhalte
 
@@ -62,14 +62,14 @@ Werte nennt. Die Einträge mischen mehrere Quellen:
 | ÖBB-Infrastruktur GeoNetz | `data/oebb_geonetz_stops.json`, `source` `oebb_geonetz` | [CC BY 3.0 AT](https://creativecommons.org/licenses/by/3.0/at/deed.de) | „Datenquelle: [ÖBB-Infrastruktur AG](https://infrastruktur.oebb.at/de/)“ |
 | VOR Verkehrsverbund Ost-Region (Auskunft AnachB) | `data/vor-haltestellen.csv`, `data/vor-haltestellen.mapping.json`, `data/gtfs/stops.txt`, `source` `vor`, Feld `vor_id` | **ungeklärt**: Haltestellen-IDs und -Namen aus dem Auskunftssystem der AnachB-Webapp des VOR (`anachb.vor.at`), keine offene Lizenz bekannt; Koordinaten seit 17.10.2026 entfernt (siehe unten, „VOR-Haltestellendaten“) | „Haltestellendaten: VOR“ |
 | Stadt Wien, Stadtgrenze (MA 41) | `data/LANDESGRENZEOGD.json` | CC BY 4.0 | „Datenquelle: Stadt Wien – data.wien.gv.at“ |
-| OpenStreetMap (Overpass) | Koordinaten mit `source` `osm` | [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/); die aus OpenStreetMap übernommenen Werte stehen auch in diesem Verzeichnis unter der ODbL | „© [OpenStreetMap-Mitwirkende](https://www.openstreetmap.org/copyright)“ |
+| OpenStreetMap (Overpass) | **kein Eintrag**. Die 150 früheren OSM-Koordinaten sind seit 17.10.2026 durch ÖBB-GeoNetz oder die WL-OGD-Haltestelle ersetzt, und der Stationslauf hat keine OSM-Stufe mehr: OSM-Werte stehen unter der [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/), deren Weitergabepflicht bei gemischten Einträgen das ganze Verzeichnis erfasst hätte. Ältere Fassungen von `data/stations.json` in der Git-Historie enthalten noch OSM-Werte („© [OpenStreetMap-Mitwirkende](https://www.openstreetmap.org/copyright)“, ODbL 1.0) | – | – |
 | HAFAS (ÖBB Scotty) | Koordinaten und EVA-Nummern mit `source` `hafas`, `data/oebb_station_lines.json`; die Zugangskennung in `data/hafas_profile.json` stammt aus dem ISC-lizenzierten Projekt [`public-transport/hafas-client`](https://github.com/public-transport/hafas-client) | **ungeklärt**: öffentlich erreichbares Auskunftssystem der ÖBB, keine offene Lizenz bekannt | „Fahrplandaten: ÖBB“ |
 | Google Places | **kein Eintrag**. Die 18 früheren Google-Koordinaten sind seit 16.10.2026 durch ÖBB-GeoNetz (Bahnhöfe mit EVA-Nummer) oder die WL-OGD-Haltestelle ersetzt, und die Google-Stufe von `scripts/update_station_directory.py` ist am selben Tag entfernt worden; es kommen keine neuen hinzu | – | – |
 | Eigene Pflege | `source` `manual`, `data/stations_overrides.json`, `data/stations_metadata.json`, `data/pendler_bst_ids.json`, `data/pendler_candidates.json`, `data/planned_station_lines.json`, `data/quarantine.json`, `data/stations_last_run.json`, `data/vor_request_count.json` | MIT wie der Code | – |
 
 Die Lizenzangaben sind am 17.10.2026 gegen die Originalseiten geprüft
 (Datensatzseiten auf `data.gv.at` und `data.oebb.at`, Wiener Linien Open
-Data, OpenStreetMap); dieselbe Tabelle mit Dateidetails steht unter
+Data); dieselbe Tabelle mit Dateidetails steht unter
 „Datenquellen und Lizenzen“ in [`docs/development.md`](docs/development.md).
 
 ### VOR-Haltestellendaten

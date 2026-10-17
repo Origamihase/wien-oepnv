@@ -1213,7 +1213,7 @@ Bedingungen: ÖBB-Infrastruktur GeoNetz (CC BY 3.0 AT,
 OGD Haltestellen (`data/wienerlinien-ogd-haltestellen.csv`, über die DIVA)
 und die Baustellen-Daten der Stadt Wien.
 `src.utils.stations.open_data_coordinate` liest nie die `latitude`/
-`longitude` des Verzeichnisses, weil diese auch aus OpenStreetMap und ÖBB
+`longitude` des Verzeichnisses, weil diese auch aus ÖBB
 HAFAS zusammengeführt sind. Eine Station ohne offene Koordinate
 (seit Juli nur Guntramsdorf-Kaiserau, nur VOR) lässt das Item ohne
 Geodaten; es gibt keinen Rückfall. Das Verzeichnis dient nur dazu, den
@@ -1468,16 +1468,56 @@ im Build-Log sehen.
 
 ---
 
-## 5. Zwei-Stufen-Stationsverzeichnis-Anreicherung (OSM → HAFAS)
+## 5. Stationsverzeichnis-Anreicherung (GeoNetz → HAFAS)
 
 Stationskoordinaten und -Metadaten werden über eine geschichtete
 Anreicherungspipeline befüllt, die von
-`scripts/update_station_directory.py` orchestriert wird. Die Hierarchie
-ist eine **strikt gestufte Kaskade**: OpenStreetMap (Overpass-API) ist
-die primäre Quelle, HAFAS (ÖBB Scotty) ist der seit 2026-05-14
-eingeführte Level-2-Fallback und verarbeitet ausschließlich Stationen,
-die OSM nicht auflösen konnte. Eine Station, die auch HAFAS nicht
-auflöst, bleibt ohne Koordinate; der Lauf nennt sie in einer Warnung.
+`scripts/update_station_directory.py` orchestriert wird. Eine Station
+behält ihre bisherige Koordinate (Koordinaten-Trägheit). Fehlt ihr eine,
+bekommt sie zuerst den GeoNetz-Punkt ihrer `bst_id`
+(`_fill_coordinates_from_geonetz`, ÖBB-Infrastruktur, CC BY 3.0 AT);
+HAFAS (ÖBB Scotty) fragt der Lauf nur noch für den Rest. Eine Station,
+die auch HAFAS nicht auflöst, bleibt ohne Koordinate; der Lauf nennt sie
+in einer Warnung.
+
+> **Entscheidung 2026-10-17 (Michael): keine OpenStreetMap-Stufe mehr.**
+> Bis dahin war OpenStreetMap (Overpass) die erste Stufe des Stationslaufs
+> und im WL-Lauf der Schiedsrichter, wenn WL und HAFAS sich bei einer
+> gemeinsamen Station widersprachen. OSM-Werte stehen unter der ODbL 1.0;
+> je Station mit WL-, GeoNetz- und HAFAS-Werten in einer Datei gemischt,
+> wird `data/stations.json` eine abgeleitete Datenbank, die als Ganzes
+> unter der ODbL stehen müsste. Das geht nicht, weil die Datei auch Daten
+> ohne geklärte Weitergaberechte enthält. Auf die Frage „OSM-Koordinaten
+> durch GeoNetz/WL ersetzen und den wöchentlichen OSM-Lauf keine
+> Koordinaten mehr schreiben lassen?“ antwortete er „Ja, bitte“. Alle 150
+> Einträge mit dem Token `osm` haben seitdem die Koordinate aus GeoNetz
+> oder der WL-OGD-Liste (bei WL-Stationen die WL-Koordinate, die der
+> Abgleich ohne Schiedsrichter behält); 93 lagen schon unter 1 m daneben,
+> 56 unter 200 m. Die eine große Abweichung war ein Fehler der OSM-Stufe:
+> `Siebenhirten` (`bst_id` 1371, bei Mistelbach) trug über den Namen die
+> Koordinate des gleichnamigen Ortsteils in Liesing. Deshalb füllt
+> `_fill_coordinates_from_geonetz` nur über die `bst_id`, nie über den
+> Namen. Derselbe Namensfehler steckte in der Wien-Grenze: `in_vienna`
+> prüfte die Koordinate, die der Lauf über den Namen fand, und das war für
+> Siebenhirten die Liesinger WL-Haltestelle. Seitdem prüft
+> `_annotate_station_flags` eine Station mit GeoNetz-Punkt ihrer `bst_id`
+> an diesem Punkt, und die WL-Hochstufung zu `pendler` gilt nur, wenn der
+> geprüfte Ort der über den Namen gefundene ist. Siebenhirten liegt weder in
+> Wien noch im Pendlergürtel und ist aus dem Verzeichnis gegangen (im Nachbau
+> ohne Folge für den Feed). Weil die Grenze damit `Kaiserebersdorf` (1059)
+> als Wien erkennt, für das schon der Ersatzeintrag `Wien Kaiserebersdorf`
+> (900105) steht, und das ÖBB-Excel `Handelskai` (1586) neben
+> `Wien Handelskai` (779) führt, behält `_drop_duplicate_eva` je EVA-Nummer
+> nur einen Eintrag, den schon vorhandenen. Entfernt sind `_enrich_with_osm`, der Schalter
+> `--osm-enrich`/`WIEN_OEPNV_OSM_ENRICH`, der OSM-Schiedsrichter in
+> `scripts/update_wl_stations.py` (ein Widerspruch WL/HAFAS behält WL) und
+> der Overpass-Vorabtest in `update-stations.yml`. `src/places/osm_client.py`
+> und `scripts/check_overpass_status.py` bleiben mit ihren Tests im
+> Repository, ohne Aufruf im Produktivlauf. Der Feed war nie betroffen:
+> GeoRSS nimmt nur GeoNetz, WL-OGD und Stadt Wien (§1); der Nachbau von
+> 198 Feed-Ständen (13.–17.10.2026) mit altem und neuem Verzeichnis war
+> identisch, ein Stationslauf mit dem neuen Code änderte außer Siebenhirten
+> kein `in_vienna` und kein `pendler`.
 
 > **Entscheidung 2026-10-16 (Michael): keine Google-Places-Stufe mehr.**
 > Bis dahin war Google Places die dritte Stufe für die Restmenge. Das
@@ -1505,43 +1545,21 @@ auflöst, bleibt ohne Koordinate; der Lauf nennt sie in einer Warnung.
 
 ```mermaid
 flowchart LR
-    A[ÖBB-Verzeichnis<br/>(Excel)] --> B[Stationsliste<br/>ohne Koordinaten]
-    B --> C[CI-Gate:<br/>scripts/check_overpass_status.py]
-    C -- Mirror up --> D[Tier 1: OSM Overpass<br/>(src/places/osm_client.py)]
-    C -- Mirror down --> E[OSM überspringen<br/>via WIEN_OEPNV_OSM_ENRICH=0]
-    D --> F[OSM CircuitBreaker<br/>5 Fails / 5 Min Cool-off]
-    F --> G[merge_places<br/>(Name + Distanz-Match)]
-    G --> H[Stationen ohne Koordinaten?]
-    E --> H
-    H -- ja --> K[Tier 2: HAFAS Mgate<br/>(src/places/hafas_client.py)]
+    A[ÖBB-Verzeichnis<br/>(Excel)] --> B[Stationsliste<br/>mit bisherigen Koordinaten]
+    B --> H[Stationen ohne Koordinaten?]
+    H -- ja --> G[GeoNetz-Punkt der bst_id<br/>(_fill_coordinates_from_geonetz)]
+    G --> N[Rest noch ohne Koordinaten?]
+    N -- ja --> K[HAFAS Mgate<br/>(src/places/hafas_client.py)]
     K --> L[HAFAS CircuitBreaker<br/>5 Fails / 5 Min Cool-off]
     L --> M[Rest noch ohne Koordinaten?]
     M -- ja --> I[Warnung mit Stationsnamen<br/>(Station bleibt ohne Koordinate)]
     M -- nein --> J[stations.json]
+    N -- nein --> J
     H -- nein --> J
     I --> J
 ```
 
-**Warum OSM zuerst:**
-
-- **Offene Daten, kein Kontingent.** Die Overpass-API ist ohne API-Key
-  öffentlich erreichbar und arbeitet unter einer Fair-Use-Policy.
-- **Editor-gepflegte Passagier-Namen.** Die `_NAME_PRIORITY`-Hierarchie
-  in `src/places/osm_client.py:_select_name` wählt
-  `name:de` → `name` → `official_name(:de)` → `loc_name(:de)` →
-  `alt_name(:de)` → `short_name(:de)`. Lange, passagierfreundliche
-  Formen (`"Wien Hauptbahnhof"`, `"Wien Praterstern"`) setzen sich
-  konsistent gegen kryptische ÖBB-interne Abkürzungen durch, während
-  zusammengesetzte Strukturen intakt bleiben, weil die Long-Form-Keys
-  zuerst gegriffen werden.
-- **Strikte Typisierung.** Der Overpass-Tag-Bag wird als TypedDict
-  `OSMTags` exponiert (siehe `src/places/osm_client.py`). Jeder Tag,
-  den das Projekt tatsächlich konsumiert (Naming, Klassifizierung,
-  Barrierefreiheit, Betreiber-Metadaten), ist mit `NotRequired[str]`
-  enumeriert; `mypy --strict` fängt damit jeden Tippfehler bei
-  Tag-Reads.
-
-**Warum HAFAS der Level-2-Fallback ist:**
+**Warum HAFAS der Level-2-Fallback ist:****Warum HAFAS der Level-2-Fallback ist:**
 
 - **Betreiber-authoritative Koordinaten und EVA-Nummern.** HAFAS ist
   die hauseigene Routing-Backbone der ÖBB. Eine `LocMatch`-Query
@@ -1740,30 +1758,23 @@ Jeder Zweck bekommt eine eigene Variable, kein Name hat zwei Bedeutungen.
 
 **Netzwerk-Resilienz-Schichten:**
 
-1. **CI-Smoke-Test** (`scripts/check_overpass_status.py`) prüft den
-   Overpass-Endpoint zu Beginn von `update-stations.yml` mit einer
-   `out count`-Query. Ist Overpass nicht erreichbar, setzt der Workflow
-   `WIEN_OEPNV_OSM_ENRICH=0` und überspringt den OSM-Lauf, anstatt auf
-   stehende urllib3-Retries zu warten.
-2. **HAFAS-Profil-Sync** (`scripts/sync_hafas_profile.py`) läuft im
+1. **HAFAS-Profil-Sync** (`scripts/sync_hafas_profile.py`) läuft im
    selben Workflow vor `update_all_stations.py` und aktualisiert
    `data/hafas_profile.json` über `request_safe` aus dem Upstream-
    Community-Profil. Persistiert wird über
    `src.utils.files.atomic_write`, sodass ein abgebrochener Download
    keine korrupte JSON-Sidecar-Datei hinterlassen kann.
-3. **`urllib3`-JitterRetry** (`session_with_retries`) behandelt
+2. **`urllib3`-JitterRetry** (`session_with_retries`) behandelt
    transiente 5xx und Connection-Resets innerhalb eines einzelnen
-   OSM- oder HAFAS-Aufrufs.
-4. **`CircuitBreaker` pro Tier** — `src/places/osm_client.py:_BREAKER`
-   und `src/places/hafas_client.py:_BREAKER` öffnen nach fünf
-   aufeinanderfolgenden Fehlern und bleiben fünf Minuten offen; beide
-   konvertieren `CircuitBreakerOpen` zu einem soft-fail
-   `None`/Leerer-Liste-Ergebnis pro Call, sodass die Cron-Pipeline
-   mit den noch gesunden Tiers weiterläuft.
-5. **`request_safe`** umhüllt jeden OSM- und HAFAS-Call in der
+   HAFAS-Aufrufs.
+3. **`CircuitBreaker`** — `src/places/hafas_client.py:_BREAKER`
+   öffnet nach fünf aufeinanderfolgenden Fehlern und bleibt fünf
+   Minuten offen; er konvertiert `CircuitBreakerOpen` zu einem soft-fail
+   `None` pro Call, sodass die Cron-Pipeline weiterläuft.
+4. **`request_safe`** umhüllt jeden HAFAS-Call in der
    Security-State-Machine (§2): SSRF, Redirect, Content-Type,
    Slowloris, Payload-Cap.
-6. **Test-Isolation** — `tests/conftest.py` registriert eine
+5. **Test-Isolation** — `tests/conftest.py` registriert eine
    autouse-Fixture `reset_circuit_breakers`, die über
    `CircuitBreaker.iter_instances()` (ein prozessweites
    `weakref.WeakSet`, das jeder `CircuitBreaker.__init__` automatisch
@@ -1778,10 +1789,8 @@ Relevante CLI-Flags / Env-Vars:
 
 | Flag / Env | Default | Zweck |
 |---|---|---|
-| `--osm-enrich` / `--no-osm-enrich` | aktiv | CLI-Schalter für den OSM-Schritt |
-| `WIEN_OEPNV_OSM_ENRICH` | `1` | Env-Override; `0` überspringt OSM (von CI gesetzt, wenn der Smoke-Test fehlschlägt) |
-| `OVERPASS_URL` | `overpass-api.de` | Trusted-Mirror-Override; abgelehnt, wenn nicht auf der Allowlist |
-| `MERGE_MAX_DIST_M` | `150` | Distanz-Schwelle für den Dedup-Match in `merge_places` |
+| `WIEN_OEPNV_MANUAL_ENRICH` | `1` | `0` überspringt die Anreicherung der manuellen Einträge (Testlauf des Orchestrators) |
+| `WIEN_OEPNV_AT_RECONCILE` | `1` | `0` überspringt den Koordinaten-Abgleich WL/HAFAS im WL-Lauf |
 
 HAFAS selbst hat keinen CLI-Schalter — die Stufe ist aktiv, sobald die
 Profil-Sidecar-Datei existiert. Wer HAFAS zu Debug-Zwecken überspringen
@@ -1791,7 +1800,7 @@ Log-Zeile `HAFAS enrichment disabled: …`.
 
 ### 5a. Wiener-Linien-OGD-Merge (die vierte Quelle)
 
-Nachdem die OSM-/HAFAS-Anreicherung die ÖBB-verwurzelte
+Nachdem die GeoNetz-/HAFAS-Anreicherung die ÖBB-verwurzelte
 `stations.json` geschrieben hat, läuft `scripts/update_wl_stations.py`
 als eigene Stufe im Wrapper-Orchestrator. Dieser Schritt faltet die
 Wiener-Linien-OGD-Echtzeit-Stations- und Stop-Daten in das Verzeichnis,
