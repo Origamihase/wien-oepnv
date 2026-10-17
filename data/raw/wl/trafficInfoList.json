@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261017-0030-F01, I20261017-0034, I20260917-0012, I20260922-0032, I20260925-0011, I20261017-0035, I20260909-0007, I20261017-0032-F01, I20261017-0033-F01, I20261017-0033, I20261017-0029, I20261017-0031-F02, I20261017-0027, I20261017-0031-F01"
+    "trafficInfoNameList": "I20261017-0034, I20261017-0035, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261017-0032-F01, I20261017-0033-F01, I20261017-0029, I20261017-0031-F02, I20261017-0031-F01"
    },
    {
     "id": 3,
@@ -203,40 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "descriptionHTML": "Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verunreinigung.",
-    "name": "I20261017-0027",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "301",
-       "lineName": "U1",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T17:58:00.000+0200",
-     "end": "2026-10-17T19:21:00.000+0200",
-     "lastUpdate": "2026-10-17T19:21:00.000+0200",
-     "resume": "2026-10-17T19:21:00.000+0200",
-     "start": "2026-10-17T17:58:00.000+0200"
-    },
-    "title": "U1: Verunreinigung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U4": "ptMetro"
      }
     },
@@ -270,43 +236,6 @@
      "start": "2026-10-17T18:06:00.000+0200"
     },
     "title": "U4: Gegenstände im Gleis"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U2": "ptMetro"
-     }
-    },
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261017-0030-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "302",
-       "lineName": "U2",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4257
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T18:42:00.000+0200",
-     "end": "2026-10-17T19:01:00.000+0200",
-     "lastUpdate": "2026-10-17T19:01:00.000+0200",
-     "resume": "2026-10-17T19:01:00.000+0200",
-     "start": "2026-10-17T18:16:00.000+0200"
-    },
-    "title": "U2: Rettungseinsatz"
    },
    {
     "attributes": {
@@ -423,43 +352,6 @@
       "U2": "ptMetro"
      }
     },
-    "description": "Linie U2: Fahrtbehinderung in Richtung Karlsplatz. Voraussichtliche Dauer: 19:15 Uhr. Grund: Betriebsstörung im Haltestellenbereich Rathaus.",
-    "descriptionHTML": "Linie U2:<br>Fahrtbehinderung in Richtung Karlsplatz.<br> <br>Voraussichtliche Dauer: 19:15 Uhr.<br><br>Grund: Betriebsstörung im Haltestellenbereich Rathaus.",
-    "name": "I20261017-0033",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "302",
-       "lineName": "U2",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4205
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T19:02:00.000+0200",
-     "end": "2026-10-17T19:05:00.000+0200",
-     "lastUpdate": "2026-10-17T19:05:00.000+0200",
-     "resume": "2026-10-17T19:05:00.000+0200",
-     "start": "2026-10-17T19:01:00.000+0200"
-    },
-    "title": "U2: Betriebsstörung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U2": "ptMetro"
-     }
-    },
     "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "name": "I20261017-0033-F01",
@@ -552,8 +444,8 @@
     "status": "active",
     "time": {
      "created": "2026-10-17T19:51:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T19:51:00.000+0200",
+     "end": "2026-10-17T20:41:00.000+0200",
+     "lastUpdate": "2026-10-17T20:02:00.000+0200",
      "resume": "2026-10-17T19:51:00.000+0200",
      "start": "2026-10-17T19:51:00.000+0200"
     },
