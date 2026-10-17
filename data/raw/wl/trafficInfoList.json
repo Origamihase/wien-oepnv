@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261017-0022, I20261017-0023, I20261017-0024, I20260925-0011, I20260909-0007, I20261017-0021, I20261017-0019, I20261017-0023-F02, I20261017-0020, I20261017-0018-F01, I20261017-0023-F01, I20261017-0025"
+    "trafficInfoNameList": "I20261017-0022, I20260917-0012, I20260922-0032, I20261017-0024, I20261017-0025, I20260925-0011, I20260909-0007, I20261017-0019, I20261017-0020, I20261017-0023-F01"
    },
    {
     "id": 3,
@@ -203,41 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "74A": "ptBusCity"
-     }
-    },
-    "description": "Linie 74A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 74A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Landstraßer Hauptstraße / Vordere Zollamtsstraße",
-    "name": "I20261017-0018-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "74A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "474",
-       "lineName": "74A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T14:11:00.000+0200",
-     "end": "2026-10-17T15:44:00.000+0200",
-     "lastUpdate": "2026-10-17T15:44:00.000+0200",
-     "resume": "2026-10-17T15:44:00.000+0200",
-     "start": "2026-10-17T14:07:00.000+0200"
-    },
-    "title": "74A: Signalstörung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "12A": "ptBusCity"
      }
     },
@@ -306,40 +271,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Rettungseinsatz.",
-    "name": "I20261017-0021",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "301",
-       "lineName": "U1",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T15:14:00.000+0200",
-     "end": "2026-10-17T15:48:00.000+0200",
-     "lastUpdate": "2026-10-17T15:48:00.000+0200",
-     "resume": "2026-10-17T15:48:00.000+0200",
-     "start": "2026-10-17T15:14:00.000+0200"
-    },
-    "title": "U1: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "61A": "ptBusCity"
      }
     },
@@ -361,57 +292,15 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-17T15:22:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T15:22:00.000+0200",
-     "resume": "2026-10-17T15:22:00.000+0200",
+     "end": "2026-10-17T16:58:00.000+0200",
+     "lastUpdate": "2026-10-17T16:58:00.000+0200",
+     "resume": "2026-10-17T16:58:00.000+0200",
      "start": "2026-10-17T15:22:00.000+0200"
     },
     "title": "61A: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "36A": "ptBusCity",
-      "36B": "ptBusCity"
-     }
-    },
-    "description": "Die Linie 36B wird in Richtung Leopoldau S U zwischen Dunantgasse und Ignaz-Köck-Straße über Galvanigasse umgeleitet. Die Linie 36A wird in Richtung Carabelligasse zwischen Dunantgasse und Lokomotivgasse über Galvanigasse und Prager Straße umgeleitet. Voraussichtliche Dauer: 16:00 Uhr. Grund: Rettungseinsatz im Bereich O'Brien-Gasse.",
-    "descriptionHTML": "Die Linie 36B wird in Richtung Leopoldau S U zwischen Dunantgasse und Ignaz-Köck-Straße über Galvanigasse umgeleitet.<br>Die Linie 36A wird in Richtung Carabelligasse zwischen Dunantgasse und Lokomotivgasse über Galvanigasse und Prager Straße umgeleitet.<br> <br>Voraussichtliche Dauer: 16:00 Uhr.<br><br>Grund: Rettungseinsatz im Bereich O'Brien-Gasse.",
-    "location": "O'Brien-Gasse",
-    "name": "I20261017-0023",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "36B",
-     "36A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "236",
-       "lineName": "36B",
-       "vehicleType": "ptBusCity"
-      },
-      {
-       "lineId": "436",
-       "lineName": "36A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T15:36:00.000+0200",
-     "end": "2026-10-17T15:45:00.000+0200",
-     "lastUpdate": "2026-10-17T15:45:00.000+0200",
-     "resume": "2026-10-17T15:45:00.000+0200",
-     "start": "2026-10-17T15:28:00.000+0200"
-    },
-    "title": "36B, 36A: Rettungseinsatz"
    },
    {
     "attributes": {
@@ -447,41 +336,6 @@
      "start": "2026-10-17T15:28:00.000+0200"
     },
     "title": "36B: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "36A": "ptBusCity"
-     }
-    },
-    "description": "Linie 36A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 36A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "O'Brien-Gasse",
-    "name": "I20261017-0023-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "36A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "436",
-       "lineName": "36A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T15:45:00.000+0200",
-     "end": "2026-10-17T15:49:00.000+0200",
-     "lastUpdate": "2026-10-17T15:49:00.000+0200",
-     "resume": "2026-10-17T15:49:00.000+0200",
-     "start": "2026-10-17T15:28:00.000+0200"
-    },
-    "title": "36A: Rettungseinsatz"
    },
    {
     "attributes": {
@@ -541,12 +395,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-17T16:23:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T16:23:00.000+0200",
-     "resume": "2026-10-17T16:23:00.000+0200",
+     "end": "2026-10-17T16:59:00.000+0200",
+     "lastUpdate": "2026-10-17T16:59:00.000+0200",
+     "resume": "2026-10-17T16:59:00.000+0200",
      "start": "2026-10-17T16:23:00.000+0200"
     },
     "title": "2A: Verkehrsunfall"
