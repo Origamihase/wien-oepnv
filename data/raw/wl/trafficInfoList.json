@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261017-0012, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261017-0010-F01, I20261017-0011, I20261017-0008-F01, I20261017-0009"
+    "trafficInfoNameList": "I20261017-0012, I20260917-0012, I20260922-0032, I20261017-0011-F01, I20260925-0011, I20261017-0011-F02, I20261017-0011, I20260909-0007, I20261017-0013, I20261017-0008-F01, I20261017-0009"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R36-152, R116-136, R117-136, R103-136, R102-136, R101-136, R100-136, R118-136, R119-136, R293-474, R318-437, R130-136, R19-136, R2025-671, R115-136, R45-136, R1475-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1476-149, R5815-671, R2558-125, R2380-627, R2378-627, R2343-125, R2359-125, R2345-127, R2373-125, R2373-127, R2373-126, R2379-627, R2370-125, R2371-125, R2372-627, R2372-125, R2343-626, R1974-466, R500-101, R404-111, R405-111, R1931-111, R1933-111, R1932-111, R301-170, R1932-170, R1931-170, R1933-170, R409-111, R408-111, R302-170, R303-170, R304-170, R2027-111, R2026-111, R2025-111, R2024-111, R2023-111, R2009-111, R305-170, R306-170, R4732-111, R251-102, R249-102, R248-102, R247-102, R1368-102, R556-102, R307-170, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R36-152, R101-136, R100-136, R102-136, R293-474, R318-437, R103-136, R2025-671, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R1448-412, R5815-671, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2372-125, R2379-627, R2345-127, R2373-125, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-627, R2380-627, R2373-127, R2373-126, R1974-466, R500-101, R405-111, R404-111, R1933-111, R1932-111, R1931-111, R301-170, R1933-170, R1931-170, R1932-170, R409-111, R408-111, R304-170, R302-170, R303-170, R2025-111, R2024-111, R2023-111, R2009-111, R2027-111, R2026-111, R306-170, R305-170, R4732-111, R248-102, R247-102, R251-102, R249-102, R307-170, R1368-102, R556-102, R2420-118, R3604-118, R2422-118, R3605-118, R3606-118, R3607-118, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -272,41 +272,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "9A": "ptBusCity"
-     }
-    },
-    "description": "Linie 9A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 9A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Tanbruckgasse",
-    "name": "I20261017-0010-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "409",
-       "lineName": "9A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-17T10:50:00.000+0200",
-     "end": "2026-10-17T11:10:00.000+0200",
-     "lastUpdate": "2026-10-17T11:10:00.000+0200",
-     "resume": "2026-10-17T11:10:00.000+0200",
-     "start": "2026-10-17T10:48:00.000+0200"
-    },
-    "title": "9A: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "11": "ptTram",
       "O": "ptTram"
      }
@@ -338,14 +303,89 @@
     "relatedStops": [
      1931
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-17T11:41:00.000+0200",
-     "end": "2026-10-17T23:55:00.000+0200",
-     "lastUpdate": "2026-10-17T11:41:00.000+0200",
+     "end": "2026-10-17T12:03:00.000+0200",
+     "lastUpdate": "2026-10-17T12:03:00.000+0200",
+     "resume": "2026-10-17T12:03:00.000+0200",
      "start": "2026-10-17T11:41:00.000+0200"
     },
     "title": "11, O: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram"
+     }
+    },
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261017-0011-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "111",
+       "lineName": "11",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1931
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T12:03:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T12:03:00.000+0200",
+     "resume": "2026-10-17T12:03:00.000+0200",
+     "start": "2026-10-17T11:41:00.000+0200"
+    },
+    "title": "11: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261017-0011-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "170",
+       "lineName": "O",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1931
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T12:03:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T12:03:00.000+0200",
+     "resume": "2026-10-17T12:03:00.000+0200",
+     "start": "2026-10-17T11:41:00.000+0200"
+    },
+    "title": "O: Rettungseinsatz"
    },
    {
     "attributes": {
@@ -380,6 +420,40 @@
      "start": "2026-10-17T11:56:00.000+0200"
     },
     "title": "2: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "18": "ptTram"
+     }
+    },
+    "description": "Linie 18: Betrieb nur zwischen Burggasse, Stadthalle U und Ernst-Happel-Stadion. Voraussichtliche Dauer: 12:45 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Dr.-Natterer-Gasse.",
+    "descriptionHTML": "Linie 18:<br>Betrieb nur zwischen Burggasse, Stadthalle U und Ernst-Happel-Stadion.<br> <br>Voraussichtliche Dauer: 12:45 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Bereich Dr.-Natterer-Gasse.",
+    "location": "Dr.-Natterer-Gasse",
+    "name": "I20261017-0013",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "118",
+       "lineName": "18",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-17T12:14:00.000+0200",
+     "end": "2026-10-17T23:55:00.000+0200",
+     "lastUpdate": "2026-10-17T12:14:00.000+0200",
+     "start": "2026-10-17T12:12:00.000+0200"
+    },
+    "title": "18: Schadhaftes Fahrzeug"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1315,6 +1389,42 @@
     "title": "Busse halten\nHoßplatz 11"
    },
    {
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R2420-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2420
+    ],
+    "time": {
+     "end": "2026-10-17T13:15:00.000+0200",
+     "start": "2026-10-17T12:15:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb ab Stadionbad",
+    "name": "R2422-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2422
+    ],
+    "time": {
+     "end": "2026-10-17T13:22:00.000+0200",
+     "start": "2026-10-17T12:17:20.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Stadionbad"
+   },
+   {
     "description": "Fahrtbehinderung\nFalschparker",
     "name": "R247-102",
     "owner": "WL",
@@ -1583,6 +1693,78 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Züge halten\nbei Linien 6 und 18"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3604-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3604
+    ],
+    "time": {
+     "end": "2026-10-17T13:15:00.000+0200",
+     "start": "2026-10-17T12:15:21.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb ab Stadionbad",
+    "name": "R3605-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3605
+    ],
+    "time": {
+     "end": "2026-10-17T13:22:00.000+0200",
+     "start": "2026-10-17T12:17:21.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Stadionbad"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb ab Stadionbad",
+    "name": "R3606-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3606
+    ],
+    "time": {
+     "end": "2026-10-17T13:22:00.000+0200",
+     "start": "2026-10-17T12:17:21.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Stadionbad"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb ab Stadionbad",
+    "name": "R3607-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3607
+    ],
+    "time": {
+     "end": "2026-10-17T13:22:00.000+0200",
+     "start": "2026-10-17T12:17:51.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Stadionbad"
    },
    {
     "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
