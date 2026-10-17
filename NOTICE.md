@@ -161,12 +161,21 @@ freigegeben; das Dashboard ist werbefrei und ohne Abo.
 ## Abhängigkeiten
 
 Die Python-Abhängigkeiten in `requirements.txt` stehen unter ihren eigenen,
-durchweg freizügigen Lizenzen (Stand 17.10.2026: requests, transformers,
-sentencepiece, torch Apache-2.0; python-dateutil BSD/Apache-2.0; defusedxml
-PSF; openpyxl MIT; dnspython ISC). Sie werden installiert, nicht im Repository
-mitverteilt. Das Übersetzungsmodell `Helsinki-NLP/opus-mt-de-en` steht laut
-[Modellkarte](https://huggingface.co/Helsinki-NLP/opus-mt-de-en) unter
-Apache-2.0; es wird zur Laufzeit geladen und nicht im Repository verteilt. Die
+durchweg freizügigen Lizenzen (Stand 17.10.2026, gelesen auf PyPI: requests,
+transformers, sentencepiece Apache-2.0; python-dateutil BSD/Apache-2.0;
+defusedxml PSF; openpyxl MIT; dnspython ISC). PyTorch (`torch`, von der
+Build-Pipeline als CPU-Paket installiert) steht unter BSD-3-Clause, das Paket
+enthält mitgelieferte Teile unter Apache-2.0, BSD-2-Clause, BSL-1.0 und MIT.
+Sie werden installiert, nicht im Repository mitverteilt.
+
+Die englischen Übersetzungen erzeugt OPUS-MT (`Helsinki-NLP/opus-mt-de-en`,
+Jörg Tiedemann und Language Technology Research Group, Universität Helsinki).
+Die [Modellkarte auf Hugging Face](https://huggingface.co/Helsinki-NLP/opus-mt-de-en)
+nennt Apache-2.0; die ursprünglichen Modellgewichte gibt das
+[OPUS-MT-Projekt](https://github.com/Helsinki-NLP/OPUS-MT-train) unter
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) heraus; diese
+Namensnennung folgt deshalb CC BY 4.0. Das Modell wird zur
+Laufzeit geladen und nicht im Repository verteilt. Die
 Dokumentationsseiten nutzen das Jekyll-Theme Primer (MIT) und laden
 `anchor-js` (MIT) von cdnjs.
 

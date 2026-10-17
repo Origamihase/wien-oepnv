@@ -5,6 +5,15 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **NOTICE: Übersetzungsmodell und PyTorch richtig benannt (2026-10-17)**:
+  `Helsinki-NLP/opus-mt-de-en` stand nur mit der Lizenz seiner
+  Hugging-Face-Modellkarte (Apache-2.0) in `NOTICE.md`; die ursprünglichen
+  OPUS-MT-Gewichte stehen laut OPUS-MT-Projekt unter CC BY 4.0. NOTICE nennt
+  jetzt beide und führt die Namensnennung (Jörg Tiedemann, Language Technology
+  Research Group, Universität Helsinki). PyTorch hieß Apache-2.0, steht aber
+  unter BSD-3-Clause mit mitgelieferten Teilen unter weiteren freien Lizenzen.
+  Feed, Webseite und TV ändern sich nicht. Test
+  `tests/test_notice_data_coverage.py::test_notice_names_model_and_torch_licences`.
 * **Hinweis „inoffiziell“, Bilder ohne ÖBB-Marken, keine
   VOR-Koordinaten (2026-10-17)**: Michaels Entscheidung zum Lizenz-Audit:
   klar sagen, dass das Projekt inoffiziell ist, und nur Marken und Daten mit
