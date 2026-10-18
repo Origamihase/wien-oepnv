@@ -8,10 +8,22 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 18 Oct 2026 22:00:52 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2026 22:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[6/9/18/52: Rettungseinsatz]]></title>
+      <title><![CDATA[31: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">93779f2373f8195241c5ab62df54f31689b7c4f93a9f65654658fd3b67c3a983</guid>
+      <pubDate>Sun, 18 Oct 2026 22:27:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Sun, 18 Oct 2026 22:27:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 18 Oct 2026 22:27:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 18 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in Richtung Schottenring U. Grund: Rettungseinsatz. [Seit 22:27]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Schottenring U. Grund: Rettungseinsatz.<br/>[Seit 22:27]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[6/9: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">2d9e5e07e55318a09766dbf27e836197397566da9140db5c09f4272a2dae3a8d</guid>
       <pubDate>Sun, 18 Oct 2026 21:16:00 +0200</pubDate>
@@ -21,18 +33,6 @@
       <ext:ends_at>Sun, 18 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 21:16]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 21:16]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[77A: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">660f28330b16b21973d919d0ca7b3d0827062ed7398171f828b0ccfbf543928b</guid>
-      <pubDate>Sun, 18 Oct 2026 21:10:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Sun, 18 Oct 2026 21:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 18 Oct 2026 21:10:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 18 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 21:10]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 21:10]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hütteldorf ↔ Wien Hauptbahnhof]]></title>
