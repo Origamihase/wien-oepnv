@@ -65,7 +65,7 @@
     },
     "total": 1912
   },
-  "generated_at": "2026-10-18T05:00:57+02:00",
+  "generated_at": "2026-10-18T05:31:17+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.98,
@@ -124,7 +124,7 @@
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-10-18T05:00:43+02:00",
+        "last_success": "2026-10-18T05:31:02+02:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
@@ -132,7 +132,7 @@
     },
     "live": {
       "avg_delay_minutes": 0.0,
-      "observations": 2,
+      "observations": 1,
       "window_minutes": 60
     },
     "max_delay_minutes": 395.33,

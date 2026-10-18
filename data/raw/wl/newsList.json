@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_371, ftazW_519, ftazW_37, ftazW_112, ftazW_23, ftazW_370, ftazW_520, ftazW_283, ftazW_485, ftazW_369, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_4, ftazW_484, ftazW_368, ftazW_196, ftazW_1018061, ftazW_393, ftazW_15, ftazW_1032342, ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41"
+    "trafficInfoNameList": "ftazW_371, ftazW_519, ftazW_37, ftazW_112, ftazW_23, ftazW_370, ftazW_520, ftazW_283, ftazW_485, ftazW_369, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_4, ftazW_484, ftazW_368, ftazW_196, ftazW_1018061, ftazW_393, ftazW_15, ftazW_1032342, ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210"
    }
   ],
   "poiCategoryGroups": [
@@ -3108,6 +3108,39 @@
    },
    {
     "attributes": {
+     "ausBis": "21.10.2026 05:15",
+     "ausVon": "21.10.2026 01:15",
+     "location": "Bahnsteig Linie U2 - Ausgang Seestadtstraße, zu den Buslinien",
+     "rbls": [
+      4277,
+      4276
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Seestadt",
+     "status": "geplante Wartung",
+     "towards": "U2 beide Richtungen"
+    },
+    "description": "Bahnsteig Linie U2 - Ausgang Seestadtstraße, zu den Buslinien",
+    "name": "ftazW_1032355",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4277,
+     4276
+    ],
+    "time": {
+     "end": "2026-10-21T05:15:00.000+0200",
+     "start": "2026-10-21T01:15:00.000+0200"
+    },
+    "title": "Seestadt"
+   },
+   {
+    "attributes": {
      "ausBis": "19.10.2026 00:45",
      "ausVon": "18.10.2026 20:45",
      "location": "U1 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U4 - Ausgang Schwedenplatz",
@@ -3174,6 +3207,37 @@
    },
    {
     "attributes": {
+     "ausBis": "21.10.2026 05:15",
+     "ausVon": "21.10.2026 01:15",
+     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Urban Loritz Platz",
+     "rbls": [
+      4609
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Burggasse-Stadthalle",
+     "status": "geplante Wartung",
+     "towards": "U6 Siebenhirten"
+    },
+    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Urban Loritz Platz",
+    "name": "ftazW_16",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4609
+    ],
+    "time": {
+     "end": "2026-10-21T05:15:00.000+0200",
+     "start": "2026-10-21T01:15:00.000+0200"
+    },
+    "title": "Burggasse-Stadthalle"
+   },
+   {
+    "attributes": {
      "ausBis": "21.10.2026 00:45",
      "ausVon": "20.10.2026 20:45",
      "location": "Zwischengeschoss - Ausgang Erdbergstraße",
@@ -3195,6 +3259,39 @@
     "time": {
      "end": "2026-10-21T00:45:00.000+0200",
      "start": "2026-10-20T20:45:00.000+0200"
+    },
+    "title": "Erdberg"
+   },
+   {
+    "attributes": {
+     "ausBis": "21.10.2026 05:15",
+     "ausVon": "21.10.2026 01:15",
+     "location": "U3 Mittelbahnsteig - Ausgang Franzosengraben",
+     "rbls": [
+      4917,
+      4900
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Erdberg",
+     "status": "geplante Wartung",
+     "towards": "U3 beide Richtungen"
+    },
+    "description": "U3 Mittelbahnsteig - Ausgang Franzosengraben",
+    "name": "ftazW_18",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4917,
+     4900
+    ],
+    "time": {
+     "end": "2026-10-21T05:15:00.000+0200",
+     "start": "2026-10-21T01:15:00.000+0200"
     },
     "title": "Erdberg"
    },
@@ -3259,6 +3356,37 @@
     "time": {
      "end": "2026-10-21T00:45:00.000+0200",
      "start": "2026-10-20T20:45:00.000+0200"
+    },
+    "title": "Nußdorfer Straße"
+   },
+   {
+    "attributes": {
+     "ausBis": "21.10.2026 05:15",
+     "ausVon": "21.10.2026 01:15",
+     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Döblinger Hauptstraße",
+     "rbls": [
+      4603
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Nußdorfer Straße",
+     "status": "geplante Wartung",
+     "towards": "U6 Siebenhirten"
+    },
+    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Döblinger Hauptstraße",
+    "name": "ftazW_210",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4603
+    ],
+    "time": {
+     "end": "2026-10-21T05:15:00.000+0200",
+     "start": "2026-10-21T01:15:00.000+0200"
     },
     "title": "Nußdorfer Straße"
    },
@@ -3562,6 +3690,37 @@
     "time": {
      "end": "2026-10-21T00:45:00.000+0200",
      "start": "2026-10-20T20:45:00.000+0200"
+    },
+    "title": "Kaisermühlen-VIC"
+   },
+   {
+    "attributes": {
+     "ausBis": "21.10.2026 05:15",
+     "ausVon": "21.10.2026 01:15",
+     "location": "U1 Bahnsteig Richtung Oberlaa - Ausgang Schüttaustraße",
+     "rbls": [
+      4106
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Kaisermühlen-VIC",
+     "status": "geplante Wartung",
+     "towards": "U1 Oberlaa"
+    },
+    "description": "U1 Bahnsteig Richtung Oberlaa - Ausgang Schüttaustraße",
+    "name": "ftazW_42",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4106
+    ],
+    "time": {
+     "end": "2026-10-21T05:15:00.000+0200",
+     "start": "2026-10-21T01:15:00.000+0200"
     },
     "title": "Kaisermühlen-VIC"
    },
