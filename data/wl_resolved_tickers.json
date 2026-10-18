@@ -1,20 +1,5 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": [
-  {
-   "key": "R5200-438|2026-10-18T11:20:01.000+0200|Falschparker\nBetrieb ab Wagenwiese bzw. Krapfenwaldgasse",
-   "name": "R5200-438",
-   "title": "Falschparker\nBetrieb ab Wagenwiese bzw. Krapfenwaldgasse",
-   "end": "2026-10-18T14:00:00.000+0200",
-   "incident": "I20261018-0008"
-  },
-  {
-   "key": "R859-438|2026-10-18T11:19:58.000+0200|Falschparker\nBetrieb ab Wagenwiese bzw. Krapfenwaldgasse",
-   "name": "R859-438",
-   "title": "Falschparker\nBetrieb ab Wagenwiese bzw. Krapfenwaldgasse",
-   "end": "2026-10-18T14:00:00.000+0200",
-   "incident": "I20261018-0008"
-  }
- ]
+ "tickers": []
 }
