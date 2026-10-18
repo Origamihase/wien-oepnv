@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261018-0019, I20260917-0012, I20260922-0032, I20261018-0018, I20260925-0011, I20260909-0007, I20261018-0016-F01, I20261018-0017, I20261018-0016-F02"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261018-0018, I20261018-0019-F01, I20261018-0019, I20260925-0011, I20260909-0007, I20261018-0016-F01, I20261018-0016-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R130-136, R36-152, R318-437, R293-474, R118-136, R117-136, R116-136, R115-136, R119-136, R100-136, R101-136, R102-136, R103-136, R45-136, R19-136, R2025-671, R1449-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R1974-466, R500-101, R2985-138, R1227-138, R211-138, R208-138, R209-138, R210-138, R150-138, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2025-671, R117-136, R36-152, R45-136, R19-136, R115-136, R103-136, R102-136, R101-136, R318-437, R293-474, R130-136, R100-136, R119-136, R116-136, R118-136, R1448-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R1974-466, R500-101, R2985-138, R1227-138, R209-138, R208-138, R210-138, R211-138, R150-138, R1213-138, R213-138, R188-138, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -273,40 +273,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "22A": "ptBusCity"
-     }
-    },
-    "description": "Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "Linie 22A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
-    "name": "I20261018-0017",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "22A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "422",
-       "lineName": "22A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-18T18:10:00.000+0200",
-     "end": "2026-10-18T19:08:00.000+0200",
-     "lastUpdate": "2026-10-18T19:08:00.000+0200",
-     "resume": "2026-10-18T19:08:00.000+0200",
-     "start": "2026-10-18T18:09:00.000+0200"
-    },
-    "title": "22A: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "5": "ptTram"
      }
     },
@@ -363,11 +329,47 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-18T19:59:00.000+0200",
+     "end": "2026-10-18T20:10:00.000+0200",
+     "lastUpdate": "2026-10-18T20:10:00.000+0200",
+     "resume": "2026-10-18T20:10:00.000+0200",
+     "start": "2026-10-18T19:57:00.000+0200"
+    },
+    "title": "38: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "38": "ptTram"
+     }
+    },
+    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Billrothstraße 40",
+    "name": "I20261018-0019-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "138",
+       "lineName": "38",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-18T20:10:00.000+0200",
      "end": "2026-10-18T23:55:00.000+0200",
-     "lastUpdate": "2026-10-18T19:59:00.000+0200",
+     "lastUpdate": "2026-10-18T20:10:00.000+0200",
+     "resume": "2026-10-18T20:10:00.000+0200",
      "start": "2026-10-18T19:57:00.000+0200"
     },
     "title": "38: Verkehrsunfall"
@@ -533,6 +535,24 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Züge halten in\nSchleife"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1213-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1213
+    ],
+    "time": {
+     "end": "2026-10-18T21:01:00.000+0200",
+     "start": "2026-10-18T20:02:07.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Fahrtbehinderung\nVerkehrsunfall",
@@ -805,6 +825,24 @@
     "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R188-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     188
+    ],
+    "time": {
+     "end": "2026-10-18T21:05:00.000+0200",
+     "start": "2026-10-18T20:06:21.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -924,6 +962,24 @@
     "time": {
      "end": "2026-10-18T20:56:00.000+0200",
      "start": "2026-10-18T19:58:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R213-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     213
+    ],
+    "time": {
+     "end": "2026-10-18T21:05:00.000+0200",
+     "start": "2026-10-18T20:06:21.000+0200"
     },
     "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
