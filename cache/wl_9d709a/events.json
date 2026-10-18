@@ -1114,30 +1114,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "7A: Fahrtbehinderung wegen Ampelstörung",
-    "description": "Fahrtbehinderung\nwegen Ampelstörung",
+    "title": "7A: Fahrtbehinderung Falschparker",
+    "description": "Linie 7A: Fahrtbehinderung in Richtung Meidling Hauptstraße U. Voraussichtliche Dauer: 06:00 Uhr. Grund: Falschparker im Bereich Rotenhofgasse # Sonnleithnergasse.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "681284b903d6c0023a314230e9878d3677e949ce500fe8bd896bc3e0f1a81c97",
-    "pubDate": "2026-10-18T05:07:22+02:00",
-    "starts_at": "2026-10-18T05:07:24+02:00",
-    "ends_at": "2026-10-18T06:06:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2026-10-18|TK=fahrtbehinderung wegen ampelstörung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7A: Signalstörung",
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung im Haltestellenbereich Unfallkrankenhaus Meidling.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "56cfae51576906358ca8b20023d237b58b63c2307392b3a7b06419cfe7314754",
-    "pubDate": "2026-10-18T05:07:00+02:00",
-    "starts_at": "2026-10-18T05:07:00+02:00",
+    "guid": "77994cd70c8bd44acc7c6ae28c2d0cee63d1f01a0b2acaf969f56ecb941ab571",
+    "pubDate": "2026-10-18T05:32:00+02:00",
+    "starts_at": "2026-10-18T05:52:29+02:00",
     "ends_at": "2026-10-18T23:55:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2026-10-18|TK=signalstörung",
+    "_identity": "wl|störung|L=7A|D=2026-10-18|TK=falschparker",
     "_wl_ids": [
-      "I20261018-0001"
+      "I20261018-0003"
     ],
-    "_incident_start": "2026-10-18T05:07:00+02:00"
+    "_incident_start": "2026-10-18T05:32:00+02:00"
   },
   {
     "source": "Wiener Linien",
