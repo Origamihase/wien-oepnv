@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 18 Oct 2026 11:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2026 12:01:08 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[38A: Falschparker]]></title>
@@ -21,18 +21,6 @@
       <ext:ends_at>Sun, 18 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Betrieb ab Wagenwiese bzw. Krapfenwaldgasse. Die Linie 38A kann die Haltestelle Cobenzl-Parkplatz in beiden Richtungen nicht einhalten. [Seit 11:18]</description>
       <content:encoded><![CDATA[Betrieb ab Wagenwiese bzw. Krapfenwaldgasse. Die Linie 38A kann die Haltestelle Cobenzl-Parkplatz in beiden Richtungen nicht einhalten.<br/>[Seit 11:18]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">214cec6cae971effd21b47b0b3859b88354324a6fc53301d0ac43a41c2f9bb78</guid>
-      <pubDate>Sun, 18 Oct 2026 10:52:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Sun, 18 Oct 2026 10:52:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 18 Oct 2026 10:52:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 18 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 10:52]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 10:52]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Wien Matzleinsdorfer Platz]]></title>
@@ -135,6 +123,19 @@
       <georss:point>48.212312 16.369604</georss:point>
       <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung. [Bis 31.03.2027]</description>
       <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U. Grund: Haussanierung.<br/>[Bis 31.03.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[48A: Neubaugasse, Neustiftgasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">d97a8a3d7d6328446c638ae8a1ccf0afc80a24b1828141a4b94ad0065074c2e5</guid>
+      <pubDate>Thu, 08 Oct 2026 15:10:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Thu, 08 Oct 2026 15:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 19 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 08 Oct 2027 11:11:00 +0200</ext:ends_at>
+      <georss:point>48.205482 16.348467</georss:point>
+      <description>Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten. [Ab Mo 19.10.]</description>
+      <content:encoded><![CDATA[Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten.<br/>[Ab Mo 19.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
