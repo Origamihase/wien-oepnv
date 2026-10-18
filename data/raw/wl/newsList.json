@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_371, ftazW_519, ftazW_37, ftazW_112, ftazW_23, ftazW_370, ftazW_520, ftazW_283, ftazW_485, ftazW_369, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_4, ftazW_484, ftazW_368, ftazW_196, ftazW_1018061, ftazW_393, ftazW_15, ftazW_1032342, ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210"
+    "trafficInfoNameList": "ftazW_371, ftazW_519, ftazW_37, ftazW_112, ftazW_23, ftazW_370, ftazW_520, ftazW_283, ftazW_485, ftazW_369, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_4, ftazW_484, ftazW_368, ftazW_1018061, ftazW_393, ftazW_15, ftazW_1032342, ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210"
    }
   ],
   "poiCategoryGroups": [
@@ -3294,39 +3294,6 @@
      "start": "2026-10-21T01:15:00.000+0200"
     },
     "title": "Erdberg"
-   },
-   {
-    "attributes": {
-     "ausBis": "20.10.2026 05:15",
-     "ausVon": "20.10.2026 01:15",
-     "location": "U4 Mittelbahnsteig - Ausgang Meidling Hauptstraße/Lobkowitzbrücke",
-     "rbls": [
-      4413,
-      4424
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Meidling Hauptstraße",
-     "status": "geplante Wartung",
-     "towards": "U4 beide Richtungen"
-    },
-    "description": "U4 Mittelbahnsteig - Ausgang Meidling Hauptstraße/Lobkowitzbrücke",
-    "name": "ftazW_196",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4413,
-     4424
-    ],
-    "time": {
-     "end": "2026-10-20T05:15:00.000+0200",
-     "start": "2026-10-20T01:15:00.000+0200"
-    },
-    "title": "Meidling Hauptstraße"
    },
    {
     "attributes": {

@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261018-0006, I20260917-0012, I20260922-0032, I20260925-0011, I20261018-0006-F01, I20260909-0007, I20261018-0005-F01"
+    "trafficInfoNameList": "I20261018-0005-F01, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007"
    },
    {
     "id": 3,
@@ -225,85 +225,15 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-18T08:25:00.000+0200",
      "end": "2026-10-18T09:45:00.000+0200",
-     "lastUpdate": "2026-10-18T09:09:00.000+0200",
-     "resume": "2026-10-18T08:25:00.000+0200",
+     "lastUpdate": "2026-10-18T09:45:00.000+0200",
+     "resume": "2026-10-18T09:45:00.000+0200",
      "start": "2026-10-18T07:47:00.000+0200"
     },
     "title": "46: Schadhafter LKW"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "56A": "ptBusCity"
-     }
-    },
-    "description": "Liebe Fahrgäste! Die Linie 56A wird in Richtung Bhf. Atzgersdorf S zwischen Heudörfelgasse und Franz-Asenbauer-Gasse örtlich umgeleitet. Die Störung dauert voraussichtlich bis 10:00 Uhr. Grund dafür ist ein Feuerwehreinsatz im Bereich Heudörfelgasse 70.",
-    "descriptionHTML": "<p>Liebe Fahrgäste!</p><p>Die Linie 56A wird in Richtung Bhf. Atzgersdorf S zwischen Heudörfelgasse und Franz-Asenbauer-Gasse örtlich umgeleitet.</p><p><br></p><p>Die Störung dauert voraussichtlich bis 10:00 Uhr.</p><p>Grund dafür ist ein Feuerwehreinsatz im Bereich Heudörfelgasse 70.</p>",
-    "location": "Heudörfelgasse 70",
-    "name": "I20261018-0006",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "56A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "456",
-       "lineName": "56A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-18T08:30:00.000+0200",
-     "end": "2026-10-18T08:33:00.000+0200",
-     "lastUpdate": "2026-10-18T08:33:00.000+0200",
-     "resume": "2026-10-18T08:33:00.000+0200",
-     "start": "2026-10-18T08:27:00.000+0200"
-    },
-    "title": "56A: Feuerwehreinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "56A": "ptBusCity"
-     }
-    },
-    "description": "Linie 56A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 56A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Heudörfelgasse 70",
-    "name": "I20261018-0006-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "56A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "456",
-       "lineName": "56A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-18T08:33:00.000+0200",
-     "end": "2026-10-18T08:39:00.000+0200",
-     "lastUpdate": "2026-10-18T08:39:00.000+0200",
-     "resume": "2026-10-18T08:39:00.000+0200",
-     "start": "2026-10-18T08:27:00.000+0200"
-    },
-    "title": "56A: Feuerwehreinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
