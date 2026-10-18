@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261018-0018, I20261018-0019-F01, I20261018-0019, I20260925-0011, I20260909-0007, I20261018-0016-F01, I20261018-0016-F02"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261018-0019, I20261018-0019-F01, I20260925-0011, I20260909-0007, I20261018-0016-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2025-671, R117-136, R36-152, R45-136, R19-136, R115-136, R103-136, R102-136, R101-136, R318-437, R293-474, R130-136, R100-136, R119-136, R116-136, R118-136, R1448-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R1974-466, R500-101, R2985-138, R1227-138, R209-138, R208-138, R210-138, R211-138, R150-138, R1213-138, R213-138, R188-138, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2025-671, R36-152, R318-437, R293-474, R119-136, R118-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R45-136, R19-136, R130-136, R1449-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R1974-466, R500-101, R1213-138, R213-138, R188-138, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -225,84 +225,15 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-18T18:50:00.000+0200",
-     "end": "2026-10-18T23:55:00.000+0200",
-     "lastUpdate": "2026-10-18T18:50:00.000+0200",
-     "resume": "2026-10-18T18:50:00.000+0200",
+     "end": "2026-10-18T20:35:00.000+0200",
+     "lastUpdate": "2026-10-18T20:35:00.000+0200",
+     "resume": "2026-10-18T20:35:00.000+0200",
      "start": "2026-10-18T17:57:00.000+0200"
     },
     "title": "16A: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "66A": "ptBusCity"
-     }
-    },
-    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Draschestraße 81",
-    "name": "I20261018-0016-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "466",
-       "lineName": "66A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-18T18:50:00.000+0200",
-     "end": "2026-10-18T19:44:00.000+0200",
-     "lastUpdate": "2026-10-18T19:44:00.000+0200",
-     "resume": "2026-10-18T19:44:00.000+0200",
-     "start": "2026-10-18T17:57:00.000+0200"
-    },
-    "title": "66A: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "5": "ptTram"
-     }
-    },
-    "description": "Linie 5: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "descriptionHTML": "Linie 5:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verunreinigung.",
-    "name": "I20261018-0018",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "105",
-       "lineName": "5",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-18T18:51:00.000+0200",
-     "end": "2026-10-18T19:44:00.000+0200",
-     "lastUpdate": "2026-10-18T19:44:00.000+0200",
-     "resume": "2026-10-18T19:44:00.000+0200",
-     "start": "2026-10-18T18:51:00.000+0200"
-    },
-    "title": "5: Verunreinigung"
    },
    {
     "attributes": {
@@ -364,12 +295,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-18T20:10:00.000+0200",
-     "end": "2026-10-18T23:55:00.000+0200",
-     "lastUpdate": "2026-10-18T20:10:00.000+0200",
-     "resume": "2026-10-18T20:10:00.000+0200",
+     "end": "2026-10-18T20:45:00.000+0200",
+     "lastUpdate": "2026-10-18T20:45:00.000+0200",
+     "resume": "2026-10-18T20:45:00.000+0200",
      "start": "2026-10-18T19:57:00.000+0200"
     },
     "title": "38: Verkehrsunfall"
@@ -551,24 +482,6 @@
     "time": {
      "end": "2026-10-18T21:01:00.000+0200",
      "start": "2026-10-18T20:02:07.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1227-138",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1227
-    ],
-    "time": {
-     "end": "2026-10-18T20:56:00.000+0200",
-     "start": "2026-10-18T19:58:07.000+0200"
     },
     "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
@@ -808,24 +721,6 @@
    },
    {
     "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R150-138",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     150
-    ],
-    "time": {
-     "end": "2026-10-18T20:59:00.000+0200",
-     "start": "2026-10-18T20:00:20.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
     "name": "R188-138",
     "owner": "WL",
     "priority": "1",
@@ -892,78 +787,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R208-138",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     208
-    ],
-    "time": {
-     "end": "2026-10-18T20:56:00.000+0200",
-     "start": "2026-10-18T19:58:20.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R209-138",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     209
-    ],
-    "time": {
-     "end": "2026-10-18T20:56:00.000+0200",
-     "start": "2026-10-18T19:58:20.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R210-138",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     210
-    ],
-    "time": {
-     "end": "2026-10-18T20:56:00.000+0200",
-     "start": "2026-10-18T19:58:20.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R211-138",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     211
-    ],
-    "time": {
-     "end": "2026-10-18T20:56:00.000+0200",
-     "start": "2026-10-18T19:58:20.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Fahrtbehinderung\nVerkehrsunfall",
@@ -1270,24 +1093,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2985-138",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     2985
-    ],
-    "time": {
-     "end": "2026-10-18T20:56:00.000+0200",
-     "start": "2026-10-18T19:57:52.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
