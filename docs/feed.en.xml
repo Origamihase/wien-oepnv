@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 19 Oct 2026 00:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 00:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[80A: ÖBB-construction works]]></title>
@@ -47,6 +47,18 @@
       <georss:line>48.197671 16.261209 48.185201 16.376296</georss:line>
       <description>Partial failure: From 18.10.2026 to 19.10.2026, the RJ 263 train cannot travel between Wien Hütteldorf station (U) and Wien Hbf (U). [Until Wed 21.10.]</description>
       <content:encoded><![CDATA[Partial failure: From 18.10.2026 to 19.10.2026, the RJ 263 train cannot travel between Wien Hütteldorf station (U) and Wien Hbf (U).<br/>[Until Wed 21.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N71: Track construction works, replacement service]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">cbaeb9add89e94f501dce883629cbda4e8b00aaf9f47f93a8e33ea51c4b85db2</guid>
+      <pubDate>Mon, 19 Oct 2026 00:25:03 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Fri, 16 Oct 2026 00:30:54 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 19 Oct 2026 00:25:03 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 19 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Track construction works: buses stop at Simmeringer Hauptstr. 157. Replacement service: buses stop at the stop of line N71. [Today]</description>
+      <content:encoded><![CDATA[Track construction works: buses stop at Simmeringer Hauptstr. 157. Replacement service: buses stop at the stop of line N71.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N71: Simmering S U]]></title>
@@ -123,19 +135,6 @@
       <georss:point>48.212312 16.369604</georss:point>
       <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation. [Until 31.03.2027]</description>
       <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation.<br/>[Until 31.03.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
-      <pubDate>Mon, 05 Oct 2026 15:40:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Mon, 05 Oct 2026 15:40:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <georss:point>48.140620 16.280393</georss:point>
-      <description>Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 … [Until 28.10.]</description>
-      <content:encoded><![CDATA[Anton-Krieger-Gasse before Rudolf-Zeller-Gasse → approx. 30 metres towards Mehlführergasse. Stop relocation of lines 66A towards Reumannplatz U or N66 …<br/>[Until 28.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
