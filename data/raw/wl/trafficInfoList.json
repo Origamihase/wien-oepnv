@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261018-0004, I20261018-0005-F01, I20261018-0005, I20260925-0011, I20260909-0007, I20261018-0006"
+    "trafficInfoNameList": "I20261018-0006, I20260917-0012, I20260922-0032, I20261018-0005-F01, I20261018-0005, I20260925-0011, I20261018-0006-F01, I20260909-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R1473-149, R5815-671, R1474-149, R1476-149, R1475-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R500-101, R1454-146, R1453-146, R568-146, R1452-146, R566-146, R1455-146, R565-146, R564-146, R1384-146, R1385-146, R1456-146, R1458-146, R3375-146, R1465-146, R1468-146, R1462-146, R1467-146, R3376-146, R1381-146, R1377-146, R1378-146, R1379-146, R1376-146, R1383-146, R1382-146, R1380-146, R1375-146, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R318-437, R36-152, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R500-101, R1384-146, R1385-146, R1468-146, R1465-146, R1462-146, R1467-146, R3376-146, R1378-146, R1376-146, R1383-146, R1382-146, R1381-146, R1380-146, R1377-146, R1379-146, R1375-146, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,40 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Betriebsstörung.",
-    "name": "I20261018-0004",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "301",
-       "lineName": "U1",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-18T07:11:00.000+0200",
-     "end": "2026-10-18T07:50:00.000+0200",
-     "lastUpdate": "2026-10-18T07:50:00.000+0200",
-     "resume": "2026-10-18T07:50:00.000+0200",
-     "start": "2026-10-18T07:11:00.000+0200"
-    },
-    "title": "U1: Betriebsstörung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "46": "ptTram"
      }
     },
@@ -329,11 +295,47 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-18T08:30:00.000+0200",
-     "end": "2026-10-18T23:55:00.000+0200",
-     "lastUpdate": "2026-10-18T08:30:00.000+0200",
+     "end": "2026-10-18T08:33:00.000+0200",
+     "lastUpdate": "2026-10-18T08:33:00.000+0200",
+     "resume": "2026-10-18T08:33:00.000+0200",
+     "start": "2026-10-18T08:27:00.000+0200"
+    },
+    "title": "56A: Feuerwehreinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "56A": "ptBusCity"
+     }
+    },
+    "description": "Linie 56A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 56A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Heudörfelgasse 70",
+    "name": "I20261018-0006-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "56A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "456",
+       "lineName": "56A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-18T08:33:00.000+0200",
+     "end": "2026-10-18T08:39:00.000+0200",
+     "lastUpdate": "2026-10-18T08:39:00.000+0200",
+     "resume": "2026-10-18T08:39:00.000+0200",
      "start": "2026-10-18T08:27:00.000+0200"
     },
     "title": "56A: Feuerwehreinsatz"
@@ -823,114 +825,6 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Lkw",
-    "name": "R1452-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1452
-    ],
-    "time": {
-     "end": "2026-10-18T08:49:00.000+0200",
-     "start": "2026-10-18T07:50:09.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Lkw"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Lkw",
-    "name": "R1453-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1453
-    ],
-    "time": {
-     "end": "2026-10-18T08:49:00.000+0200",
-     "start": "2026-10-18T07:50:09.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Lkw"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Lkw",
-    "name": "R1454-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1454
-    ],
-    "time": {
-     "end": "2026-10-18T08:49:00.000+0200",
-     "start": "2026-10-18T07:50:09.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Lkw"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Lkw",
-    "name": "R1455-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1455
-    ],
-    "time": {
-     "end": "2026-10-18T08:49:00.000+0200",
-     "start": "2026-10-18T07:50:09.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Lkw"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Lkw",
-    "name": "R1456-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1456
-    ],
-    "time": {
-     "end": "2026-10-18T09:00:00.000+0200",
-     "start": "2026-10-18T08:01:10.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Lkw"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Lkw",
-    "name": "R1458-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1458
-    ],
-    "time": {
-     "end": "2026-10-18T09:00:00.000+0200",
-     "start": "2026-10-18T08:01:10.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Lkw"
    },
    {
     "description": "Fahrtbehinderung\nSchadhafter Pkw",
@@ -1470,24 +1364,6 @@
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
    },
    {
-    "description": "Fahrtbehinderung\nSchadhafter Lkw",
-    "name": "R3375-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     3375
-    ],
-    "time": {
-     "end": "2026-10-18T09:00:00.000+0200",
-     "start": "2026-10-18T08:01:11.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Lkw"
-   },
-   {
     "description": "Fahrtbehinderung\nSchadhafter Pkw",
     "name": "R3376-146",
     "owner": "WL",
@@ -1558,78 +1434,6 @@
      "start": "2026-10-18T05:00:21.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Lkw",
-    "name": "R564-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     564
-    ],
-    "time": {
-     "end": "2026-10-18T08:49:00.000+0200",
-     "start": "2026-10-18T07:50:09.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Lkw"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Lkw",
-    "name": "R565-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     565
-    ],
-    "time": {
-     "end": "2026-10-18T08:49:00.000+0200",
-     "start": "2026-10-18T07:50:09.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Lkw"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Lkw",
-    "name": "R566-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     566
-    ],
-    "time": {
-     "end": "2026-10-18T08:49:00.000+0200",
-     "start": "2026-10-18T07:50:09.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Lkw"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Lkw",
-    "name": "R568-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     568
-    ],
-    "time": {
-     "end": "2026-10-18T08:49:00.000+0200",
-     "start": "2026-10-18T07:50:09.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Lkw"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
