@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_23, ftazW_370, ftazW_520, ftazW_283, ftazW_485, ftazW_369, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_4, ftazW_484, ftazW_368, ftazW_196, ftazW_1018061, ftazW_393, ftazW_15, ftazW_1032342, ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210, ftazW_352, ftazW_603, ftazW_19, ftazW_281, ftazW_1354391"
+    "trafficInfoNameList": "ftazW_485, ftazW_369, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_4, ftazW_484, ftazW_368, ftazW_196, ftazW_1018061, ftazW_393, ftazW_15, ftazW_1032342, ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210, ftazW_352, ftazW_603, ftazW_19, ftazW_281, ftazW_1354391"
    }
   ],
   "poiCategoryGroups": [
@@ -3390,37 +3390,6 @@
    },
    {
     "attributes": {
-     "ausBis": "19.10.2026 05:15",
-     "ausVon": "19.10.2026 01:15",
-     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Sechshauserstraße",
-     "rbls": [
-      4611
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Gumpendorfer Straße",
-     "status": "geplante Wartung",
-     "towards": "U6 Siebenhirten"
-    },
-    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Sechshauserstraße",
-    "name": "ftazW_23",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4611
-    ],
-    "time": {
-     "end": "2026-10-19T05:15:00.000+0200",
-     "start": "2026-10-19T01:15:00.000+0200"
-    },
-    "title": "Gumpendorfer Straße"
-   },
-   {
-    "attributes": {
      "ausBis": "22.10.2026 00:45",
      "ausVon": "21.10.2026 20:45",
      "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Währingerstraße, Volksoper",
@@ -3449,39 +3418,6 @@
      "start": "2026-10-21T20:45:00.000+0200"
     },
     "title": "Währinger Straße-Volksoper"
-   },
-   {
-    "attributes": {
-     "ausBis": "19.10.2026 05:15",
-     "ausVon": "19.10.2026 01:15",
-     "location": "U1 Mittelbahnsteig - Ausgang Anton Sattler Gasse",
-     "rbls": [
-      4127,
-      4102
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Kagran",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "U1 Mittelbahnsteig - Ausgang Anton Sattler Gasse",
-    "name": "ftazW_283",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4127,
-     4102
-    ],
-    "time": {
-     "end": "2026-10-19T05:15:00.000+0200",
-     "start": "2026-10-19T01:15:00.000+0200"
-    },
-    "title": "Kagran"
    },
    {
     "attributes": {
@@ -3565,32 +3501,6 @@
     "time": {
      "end": "2026-10-20T00:45:00.000+0200",
      "start": "2026-10-19T20:45:00.000+0200"
-    },
-    "title": "Zieglergasse"
-   },
-   {
-    "attributes": {
-     "ausBis": "19.10.2026 05:15",
-     "ausVon": "19.10.2026 01:15",
-     "location": "Zwischengeschoss - Ausgang Otto Bauer Gasse",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Zieglergasse",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Zwischengeschoss - Ausgang Otto Bauer Gasse",
-    "name": "ftazW_370",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "time": {
-     "end": "2026-10-19T05:15:00.000+0200",
-     "start": "2026-10-19T01:15:00.000+0200"
     },
     "title": "Zieglergasse"
    },
@@ -3807,37 +3717,6 @@
      "start": "2026-10-20T20:45:00.000+0200"
     },
     "title": "Alser Straße"
-   },
-   {
-    "attributes": {
-     "ausBis": "19.10.2026 05:15",
-     "ausVon": "19.10.2026 01:15",
-     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Engerthstraße",
-     "rbls": [
-      4648
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Handelskai",
-     "status": "geplante Wartung",
-     "towards": "U6 Siebenhirten"
-    },
-    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Engerthstraße",
-    "name": "ftazW_520",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4648
-    ],
-    "time": {
-     "end": "2026-10-19T05:15:00.000+0200",
-     "start": "2026-10-19T01:15:00.000+0200"
-    },
-    "title": "Handelskai"
    },
    {
     "attributes": {
