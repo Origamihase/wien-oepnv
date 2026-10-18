@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 18 Oct 2026 06:00:57 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2026 06:30:44 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[7A: Falschparker]]></title>
@@ -17,10 +17,10 @@
       <pubDate>Sun, 18 Oct 2026 05:32:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <ext:first_seen>Sun, 18 Oct 2026 05:32:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 18 Oct 2026 05:52:29 +0200</ext:starts_at>
+      <ext:starts_at>Sun, 18 Oct 2026 05:32:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 18 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung in Richtung Meidling Hauptstraße U. Grund: Falschparker im Bereich Rotenhofgasse / Sonnleithnergasse. [Seit 05:32]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Meidling Hauptstraße U. Grund: Falschparker im Bereich Rotenhofgasse / Sonnleithnergasse.<br/>[Seit 05:32]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 05:32]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 05:32]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[25/26: Rettungseinsatz]]></title>
