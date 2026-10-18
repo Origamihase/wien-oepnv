@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261018-0010, I20260922-0032, I20260925-0011, I20261018-0011, I20260909-0007"
+    "trafficInfoNameList": "I20260917-0012, I20261018-0012, I20260922-0032, I20261018-0010, I20260925-0011, I20261018-0011, I20260909-0007"
    },
    {
     "id": 3,
@@ -224,12 +224,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-18T14:45:00.000+0200",
-     "end": "2026-10-18T23:55:00.000+0200",
-     "lastUpdate": "2026-10-18T14:45:00.000+0200",
-     "resume": "2026-10-18T14:45:00.000+0200",
+     "end": "2026-10-18T15:50:00.000+0200",
+     "lastUpdate": "2026-10-18T15:50:00.000+0200",
+     "resume": "2026-10-18T15:50:00.000+0200",
      "start": "2026-10-18T14:45:00.000+0200"
     },
     "title": "60: Verunreinigung"
@@ -267,6 +267,40 @@
      "start": "2026-10-18T15:29:00.000+0200"
     },
     "title": "58B: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "63A": "ptBusCity"
+     }
+    },
+    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261018-0012",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "63A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "463",
+       "lineName": "63A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-18T15:34:00.000+0200",
+     "end": "2026-10-18T15:50:00.000+0200",
+     "lastUpdate": "2026-10-18T15:50:00.000+0200",
+     "resume": "2026-10-18T15:50:00.000+0200",
+     "start": "2026-10-18T15:34:00.000+0200"
+    },
+    "title": "63A: Verspätungen"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
