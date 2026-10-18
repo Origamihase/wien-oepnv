@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261018-0005-F01, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261018-0007, I20260909-0007"
    },
    {
     "id": 3,
@@ -203,37 +203,36 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "46": "ptTram"
+      "7A": "ptBusCity"
      }
     },
-    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Thaliastraße 109",
-    "name": "I20261018-0005-F01",
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
+    "name": "I20261018-0007",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "46"
+     "7A"
     ],
     "relatedLinesDetails": [
      [
       {
-       "lineId": "146",
-       "lineName": "46",
-       "vehicleType": "ptTram"
+       "lineId": "407",
+       "lineName": "7A",
+       "vehicleType": "ptBusCity"
       }
      ]
     ],
-    "status": "resolved",
+    "status": "active",
     "time": {
-     "created": "2026-10-18T08:25:00.000+0200",
-     "end": "2026-10-18T09:45:00.000+0200",
-     "lastUpdate": "2026-10-18T09:45:00.000+0200",
-     "resume": "2026-10-18T09:45:00.000+0200",
-     "start": "2026-10-18T07:47:00.000+0200"
+     "created": "2026-10-18T10:53:00.000+0200",
+     "end": "2026-10-18T23:55:00.000+0200",
+     "lastUpdate": "2026-10-18T10:53:00.000+0200",
+     "resume": "2026-10-18T10:52:00.000+0200",
+     "start": "2026-10-18T10:52:00.000+0200"
     },
-    "title": "46: Schadhafter LKW"
+    "title": "7A: Verspätungen"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
