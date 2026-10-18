@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261018-0013-F01, I20261018-0014, I20261018-0014-F01, I20260925-0011, I20260909-0007, I20261018-0016, I20261018-0015"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261018-0014-F01, I20261018-0017, I20261018-0016, I20260925-0011, I20260909-0007, I20261018-0013-F01, I20261018-0015"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2025-671, R318-437, R293-474, R130-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R19-136, R36-152, R45-136, R1473-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R1974-466, R500-101, R1819-466, R1927-466, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R115-136, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R2025-671, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R36-152, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1448-412, R5815-671, R1474-412, R1445-149, R1446-149, R1447-149, R2558-125, R2372-627, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R1974-466, R500-101, R1819-466, R1927-466, R1952-416, R3068-422, R3069-422, R998-422, R2930-416, R3190-416, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -225,50 +225,15 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-18T16:23:00.000+0200",
-     "end": "2026-10-18T23:55:00.000+0200",
-     "lastUpdate": "2026-10-18T16:23:00.000+0200",
-     "resume": "2026-10-18T16:23:00.000+0200",
+     "end": "2026-10-18T18:13:00.000+0200",
+     "lastUpdate": "2026-10-18T18:13:00.000+0200",
+     "resume": "2026-10-18T18:13:00.000+0200",
      "start": "2026-10-18T16:09:00.000+0200"
     },
     "title": "U2: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "46": "ptTram"
-     }
-    },
-    "description": "Linie 46: Umleitung in Richtung Parlament, U Volkstheater zwischen Ottakring S U und Schmerlingplatz, Volkstheater U über die Strecke der Linien 44 und 2. Voraussichtliche Dauer: 17:00 Uhr. Grund: Feuerwehreinsatz im Bereich Thaliastraße 111.",
-    "descriptionHTML": "Linie 46:<br>Umleitung in Richtung Parlament, U Volkstheater<br>zwischen Ottakring S U und Schmerlingplatz, Volkstheater U <br>über die Strecke der Linien 44 und 2.<br> <br>Voraussichtliche Dauer: 17:00 Uhr.<br><br>Grund: Feuerwehreinsatz im Bereich Thaliastraße 111.",
-    "location": "Thaliastraße 111",
-    "name": "I20261018-0014",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "146",
-       "lineName": "46",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-18T16:29:00.000+0200",
-     "end": "2026-10-18T16:57:00.000+0200",
-     "lastUpdate": "2026-10-18T16:57:00.000+0200",
-     "resume": "2026-10-18T16:57:00.000+0200",
-     "start": "2026-10-18T16:29:00.000+0200"
-    },
-    "title": "46: Feuerwehreinsatz"
    },
    {
     "attributes": {
@@ -342,23 +307,31 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "16A": "ptBusCity"
+      "16A": "ptBusCity",
+      "66A": "ptBusCity"
      }
     },
-    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "Linie 16A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Rettungseinsatz.",
+    "description": "Die Linie 16A wird in Richtung Hetzendorf S zwischen Wagner-Schönkirch-Gasse und Inzersdorf, Kirchenplatz über Laxenburger Straße - Vorarlberger Allee - Richard-Strauss-Straße und Sterngasse umgeleitet. Die Linie 66A wird in Richtung Liesing zwischen Kornauthgasse und Sterngasse über Sibeliusstraße - Neilreichgasse und Otto-Probst-Straße umgeleitet. Voraussichtliche Dauer: 19:10 Uhr. Grund: Rettungseinsatz im Bereich Draschestraße 81.",
+    "descriptionHTML": "Die Linie 16A wird in Richtung Hetzendorf S zwischen Wagner-Schönkirch-Gasse und Inzersdorf, Kirchenplatz über Laxenburger Straße - Vorarlberger Allee - Richard-Strauss-Straße und Sterngasse umgeleitet.<br>Die Linie 66A wird in Richtung Liesing zwischen Kornauthgasse und Sterngasse über Sibeliusstraße - Neilreichgasse und Otto-Probst-Straße umgeleitet.<br> <br>Voraussichtliche Dauer: 19:10 Uhr.<br><br>Grund: Rettungseinsatz im Bereich Draschestraße 81.",
+    "location": "Draschestraße 81",
     "name": "I20261018-0016",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "16A"
+     "16A",
+     "66A"
     ],
     "relatedLinesDetails": [
      [
       {
        "lineId": "416",
        "lineName": "16A",
+       "vehicleType": "ptBusCity"
+      },
+      {
+       "lineId": "466",
+       "lineName": "66A",
        "vehicleType": "ptBusCity"
       }
      ]
@@ -367,11 +340,44 @@
     "time": {
      "created": "2026-10-18T17:57:00.000+0200",
      "end": "2026-10-18T23:55:00.000+0200",
-     "lastUpdate": "2026-10-18T17:57:00.000+0200",
-     "resume": "2026-10-18T17:57:00.000+0200",
+     "lastUpdate": "2026-10-18T18:28:00.000+0200",
      "start": "2026-10-18T17:57:00.000+0200"
     },
-    "title": "16A: Rettungseinsatz"
+    "title": "16A, 66A: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "22A": "ptBusCity"
+     }
+    },
+    "description": "Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "Linie 22A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
+    "name": "I20261018-0017",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "22A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "422",
+       "lineName": "22A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-18T18:10:00.000+0200",
+     "end": "2026-10-18T23:55:00.000+0200",
+     "lastUpdate": "2026-10-18T18:10:00.000+0200",
+     "resume": "2026-10-18T18:09:00.000+0200",
+     "start": "2026-10-18T18:09:00.000+0200"
+    },
+    "title": "22A: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -824,6 +830,24 @@
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1952-416",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "16A"
+    ],
+    "relatedStops": [
+     1952
+    ],
+    "time": {
+     "end": "2026-10-18T19:01:00.000+0200",
+     "start": "2026-10-18T18:02:23.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-466",
     "owner": "WL",
@@ -1145,6 +1169,60 @@
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
    },
    {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2930-416",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "16A"
+    ],
+    "relatedStops": [
+     2930
+    ],
+    "time": {
+     "end": "2026-10-18T19:22:00.000+0200",
+     "start": "2026-10-18T18:22:13.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R3068-422",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "22A"
+    ],
+    "relatedStops": [
+     3068
+    ],
+    "time": {
+     "end": "2026-10-18T19:12:00.000+0200",
+     "start": "2026-10-18T18:12:41.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R3069-422",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "22A"
+    ],
+    "relatedStops": [
+     3069
+    ],
+    "time": {
+     "end": "2026-10-18T19:12:00.000+0200",
+     "start": "2026-10-18T18:12:41.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1161,6 +1239,24 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R3190-416",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "16A"
+    ],
+    "relatedStops": [
+     3190
+    ],
+    "time": {
+     "end": "2026-10-18T19:22:00.000+0200",
+     "start": "2026-10-18T18:22:15.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "description": "Züge halten\nbei Linien 6 und 18",
@@ -1230,6 +1326,24 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R998-422",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "22A"
+    ],
+    "relatedStops": [
+     998
+    ],
+    "time": {
+     "end": "2026-10-18T19:12:00.000+0200",
+     "start": "2026-10-18T18:13:10.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
