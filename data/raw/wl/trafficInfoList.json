@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261018-0018, I20260925-0011, I20260909-0007, I20261018-0016-F01, I20261018-0016-F02, I20261018-0017, I20261018-0016"
+    "trafficInfoNameList": "I20261018-0019, I20260917-0012, I20260922-0032, I20261018-0018, I20260925-0011, I20260909-0007, I20261018-0016-F01, I20261018-0017, I20261018-0016-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R36-152, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R2025-671, R318-437, R1472-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R130-136, R36-152, R318-437, R293-474, R118-136, R117-136, R116-136, R115-136, R119-136, R100-136, R101-136, R102-136, R103-136, R45-136, R19-136, R2025-671, R1449-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R1974-466, R500-101, R2985-138, R1227-138, R211-138, R208-138, R209-138, R210-138, R150-138, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,48 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "16A": "ptBusCity",
-      "66A": "ptBusCity"
-     }
-    },
-    "description": "Die Linie 16A wird in Richtung Hetzendorf S zwischen Wagner-Schönkirch-Gasse und Inzersdorf, Kirchenplatz über Laxenburger Straße - Vorarlberger Allee - Richard-Strauss-Straße und Sterngasse umgeleitet. Die Linie 66A wird in Richtung Liesing zwischen Kornauthgasse und Sterngasse über Sibeliusstraße - Neilreichgasse und Otto-Probst-Straße umgeleitet. Voraussichtliche Dauer: 19:10 Uhr. Grund: Rettungseinsatz im Bereich Draschestraße 81.",
-    "descriptionHTML": "Die Linie 16A wird in Richtung Hetzendorf S zwischen Wagner-Schönkirch-Gasse und Inzersdorf, Kirchenplatz über Laxenburger Straße - Vorarlberger Allee - Richard-Strauss-Straße und Sterngasse umgeleitet.<br>Die Linie 66A wird in Richtung Liesing zwischen Kornauthgasse und Sterngasse über Sibeliusstraße - Neilreichgasse und Otto-Probst-Straße umgeleitet.<br> <br>Voraussichtliche Dauer: 19:10 Uhr.<br><br>Grund: Rettungseinsatz im Bereich Draschestraße 81.",
-    "location": "Draschestraße 81",
-    "name": "I20261018-0016",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "16A",
-     "66A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "416",
-       "lineName": "16A",
-       "vehicleType": "ptBusCity"
-      },
-      {
-       "lineId": "466",
-       "lineName": "66A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-18T17:57:00.000+0200",
-     "end": "2026-10-18T18:50:00.000+0200",
-     "lastUpdate": "2026-10-18T18:50:00.000+0200",
-     "resume": "2026-10-18T18:50:00.000+0200",
-     "start": "2026-10-18T17:57:00.000+0200"
-    },
-    "title": "16A, 66A: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "16A": "ptBusCity"
      }
     },
@@ -302,12 +260,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-18T18:50:00.000+0200",
-     "end": "2026-10-18T23:55:00.000+0200",
-     "lastUpdate": "2026-10-18T18:50:00.000+0200",
-     "resume": "2026-10-18T18:50:00.000+0200",
+     "end": "2026-10-18T19:44:00.000+0200",
+     "lastUpdate": "2026-10-18T19:44:00.000+0200",
+     "resume": "2026-10-18T19:44:00.000+0200",
      "start": "2026-10-18T17:57:00.000+0200"
     },
     "title": "66A: Rettungseinsatz"
@@ -370,15 +328,49 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-18T18:51:00.000+0200",
-     "end": "2026-10-18T23:55:00.000+0200",
-     "lastUpdate": "2026-10-18T18:51:00.000+0200",
-     "resume": "2026-10-18T18:51:00.000+0200",
+     "end": "2026-10-18T19:44:00.000+0200",
+     "lastUpdate": "2026-10-18T19:44:00.000+0200",
+     "resume": "2026-10-18T19:44:00.000+0200",
      "start": "2026-10-18T18:51:00.000+0200"
     },
     "title": "5: Verunreinigung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "38": "ptTram"
+     }
+    },
+    "description": "Linie 38: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 20:20 Uhr. Grund: Verkehrsunfall im Bereich Billrothstraße 40.",
+    "descriptionHTML": "Linie 38:<br>Fahrtbehinderung in Richtung Schottentor U.<br> <br>Voraussichtliche Dauer: 20:20 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Billrothstraße 40.",
+    "location": "Billrothstraße 40",
+    "name": "I20261018-0019",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "138",
+       "lineName": "38",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-18T19:59:00.000+0200",
+     "end": "2026-10-18T23:55:00.000+0200",
+     "lastUpdate": "2026-10-18T19:59:00.000+0200",
+     "start": "2026-10-18T19:57:00.000+0200"
+    },
+    "title": "38: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -541,6 +533,24 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Züge halten in\nSchleife"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1227-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1227
+    ],
+    "time": {
+     "end": "2026-10-18T20:56:00.000+0200",
+     "start": "2026-10-18T19:58:07.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -777,6 +787,24 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
    },
    {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R150-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     150
+    ],
+    "time": {
+     "end": "2026-10-18T20:59:00.000+0200",
+     "start": "2026-10-18T20:00:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -826,6 +854,78 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R208-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     208
+    ],
+    "time": {
+     "end": "2026-10-18T20:56:00.000+0200",
+     "start": "2026-10-18T19:58:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R209-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     209
+    ],
+    "time": {
+     "end": "2026-10-18T20:56:00.000+0200",
+     "start": "2026-10-18T19:58:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R210-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     210
+    ],
+    "time": {
+     "end": "2026-10-18T20:56:00.000+0200",
+     "start": "2026-10-18T19:58:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R211-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     211
+    ],
+    "time": {
+     "end": "2026-10-18T20:56:00.000+0200",
+     "start": "2026-10-18T19:58:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
@@ -1114,6 +1214,24 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
+   },
+   {
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2985-138",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     2985
+    ],
+    "time": {
+     "end": "2026-10-18T20:56:00.000+0200",
+     "start": "2026-10-18T19:57:52.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",

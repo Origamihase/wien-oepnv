@@ -8,27 +8,27 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 18 Oct 2026 19:30:41 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2026 20:00:53 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[5: Verunreinigung]]></title>
+      <title><![CDATA[38: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">930f5ee29bb30c01764fdbe97d3582e7920149b9797eb9064be609813da6f3d1</guid>
-      <pubDate>Sun, 18 Oct 2026 18:51:00 +0200</pubDate>
+      <guid isPermaLink="false">31f255c87f5a1575177df04a76beabf6426a71727ee2fef75eb69ab752e4775f</guid>
+      <pubDate>Sun, 18 Oct 2026 19:57:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Sun, 18 Oct 2026 18:51:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 18 Oct 2026 18:51:00 +0200</ext:starts_at>
+      <ext:first_seen>Sun, 18 Oct 2026 19:57:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 18 Oct 2026 19:57:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 18 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung. [Seit 18:51]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.<br/>[Seit 18:51]]]></content:encoded>
+      <description>Fahrtbehinderung in Richtung Schottentor U. Voraussichtlich bis 20:20 Uhr. Grund: Verkehrsunfall im Bereich Billrothstraße 40. [Seit 19:57]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Schottentor U. Voraussichtlich bis 20:20 Uhr. Grund: Verkehrsunfall im Bereich Billrothstraße 40.<br/>[Seit 19:57]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[16A/66A: Rettungseinsatz]]></title>
+      <title><![CDATA[16A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107</guid>
+      <guid isPermaLink="false">5a34fd9d1d85761937e73cc1505db5c332e3d5fe85c5450ebb4c6466c12885ea</guid>
       <pubDate>Sun, 18 Oct 2026 17:57:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Sun, 18 Oct 2026 17:59:10 +0200</ext:first_seen>
+      <ext:first_seen>Sun, 18 Oct 2026 17:57:00 +0200</ext:first_seen>
       <ext:starts_at>Sun, 18 Oct 2026 17:57:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 18 Oct 2026 23:55:00 +0200</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:57]</description>
