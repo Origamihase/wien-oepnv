@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261018-0019, I20261018-0019-F01, I20260925-0011, I20260909-0007, I20261018-0016-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261018-0019-F01, I20260925-0011, I20261018-0021, I20260909-0007, I20261018-0016-F01, I20261018-0020-F01, I20261018-0020"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2025-671, R36-152, R318-437, R293-474, R119-136, R118-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R45-136, R19-136, R130-136, R1449-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R1974-466, R500-101, R1213-138, R213-138, R188-138, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R2025-671, R101-136, R318-437, R293-474, R36-152, R45-136, R19-136, R100-136, R1446-149, R1448-412, R1474-412, R1445-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R500-101, R462-106, R461-106, R464-106, R1445-152, R483-152, R1477-152, R484-109, R541-109, R462-118, R508-118, R464-118, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -241,41 +241,6 @@
       "38": "ptTram"
      }
     },
-    "description": "Linie 38: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 20:20 Uhr. Grund: Verkehrsunfall im Bereich Billrothstraße 40.",
-    "descriptionHTML": "Linie 38:<br>Fahrtbehinderung in Richtung Schottentor U.<br> <br>Voraussichtliche Dauer: 20:20 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Billrothstraße 40.",
-    "location": "Billrothstraße 40",
-    "name": "I20261018-0019",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "138",
-       "lineName": "38",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-18T19:59:00.000+0200",
-     "end": "2026-10-18T20:10:00.000+0200",
-     "lastUpdate": "2026-10-18T20:10:00.000+0200",
-     "resume": "2026-10-18T20:10:00.000+0200",
-     "start": "2026-10-18T19:57:00.000+0200"
-    },
-    "title": "38: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "38": "ptTram"
-     }
-    },
     "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "location": "Billrothstraße 40",
@@ -304,6 +269,131 @@
      "start": "2026-10-18T19:57:00.000+0200"
     },
     "title": "38: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "77A": "ptBusCity"
+     }
+    },
+    "description": "Linie 77A: Fahrtbehinderung in Richtung Rennweg S. Voraussichtliche Dauer: 21:45 Uhr. Grund: Falschparker im Bereich Rabengasse 12.",
+    "descriptionHTML": "Linie 77A:<br>Fahrtbehinderung in Richtung Rennweg S.<br> <br>Voraussichtliche Dauer: 21:45 Uhr.<br><br>Grund: Falschparker im Bereich Rabengasse 12.",
+    "location": "Rabengasse 12",
+    "name": "I20261018-0020",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "77A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "477",
+       "lineName": "77A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-18T21:10:00.000+0200",
+     "end": "2026-10-18T21:23:00.000+0200",
+     "lastUpdate": "2026-10-18T21:23:00.000+0200",
+     "resume": "2026-10-18T21:23:00.000+0200",
+     "start": "2026-10-18T21:10:00.000+0200"
+    },
+    "title": "77A: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "77A": "ptBusCity"
+     }
+    },
+    "description": "Linie 77A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 77A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Rabengasse 12",
+    "name": "I20261018-0020-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "77A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "477",
+       "lineName": "77A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-18T21:23:00.000+0200",
+     "end": "2026-10-18T23:55:00.000+0200",
+     "lastUpdate": "2026-10-18T21:23:00.000+0200",
+     "resume": "2026-10-18T21:23:00.000+0200",
+     "start": "2026-10-18T21:10:00.000+0200"
+    },
+    "title": "77A: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "18": "ptTram",
+      "52": "ptTram",
+      "6": "ptTram",
+      "9": "ptTram"
+     }
+    },
+    "description": "Linie 6: Betrieb nur zwischen Geiereckstraße und Westbahnhof S U. Linie 9: Betrieb nur zwischen Gersthof S und Urban-Loritz-Platz. Linie 18: Betrieb nur zwischen Stadion U und Westbahnhof S U. Die Linie 52 fährt derzeit nicht zwischen Westbahnhof S U und Urban-Loritz-Platz. Weichen Sie ersatzweise auf die Linie U6 aus. Voraussichtliche Dauer: 22:15 Uhr. Grund: Rettungseinsatz im Bereich Neubaugürtel.",
+    "descriptionHTML": "Linie 6:<br>Betrieb nur zwischen Geiereckstraße und Westbahnhof S U.<br>Linie 9:<br>Betrieb nur zwischen Gersthof S und Urban-Loritz-Platz.<br>Linie 18:<br>Betrieb nur zwischen Stadion U und Westbahnhof S U.<br>Die Linie 52 fährt derzeit nicht zwischen Westbahnhof S U und Urban-Loritz-Platz.<br> <br>Weichen Sie ersatzweise auf die Linie U6 aus.<br><br>Voraussichtliche Dauer: 22:15 Uhr.<br><br>Grund: Rettungseinsatz im Bereich Neubaugürtel.",
+    "location": "Neubaugürtel",
+    "name": "I20261018-0021",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "6",
+     "9",
+     "18",
+     "52"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "106",
+       "lineName": "6",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "118",
+       "lineName": "18",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "152",
+       "lineName": "52",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "109",
+       "lineName": "9",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-18T21:19:00.000+0200",
+     "end": "2026-10-18T23:55:00.000+0200",
+     "lastUpdate": "2026-10-18T21:22:00.000+0200",
+     "start": "2026-10-18T21:16:00.000+0200"
+    },
+    "title": "6, 18, 52, 9: Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -468,24 +558,6 @@
     "title": "Züge halten in\nSchleife"
    },
    {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1213-138",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1213
-    ],
-    "time": {
-     "end": "2026-10-18T21:01:00.000+0200",
-     "start": "2026-10-18T20:02:07.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R130-136",
     "owner": "WL",
@@ -520,6 +592,24 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Westbahnhof <>",
+    "name": "R1445-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1445
+    ],
+    "time": {
+     "end": "2026-10-18T22:19:00.000+0200",
+     "start": "2026-10-18T21:19:59.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Westbahnhof <>"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
@@ -720,22 +810,22 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
    },
    {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R188-138",
+    "description": "Züge halten in\nder Schleife",
+    "name": "R1477-152",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "38"
+     "52"
     ],
     "relatedStops": [
-     188
+     1477
     ],
     "time": {
-     "end": "2026-10-18T21:05:00.000+0200",
-     "start": "2026-10-18T20:06:21.000+0200"
+     "end": "2026-10-18T22:20:00.000+0200",
+     "start": "2026-10-18T21:21:00.000+0200"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Züge halten in\nder Schleife"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
@@ -787,24 +877,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
-   },
-   {
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R213-138",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     213
-    ],
-    "time": {
-     "end": "2026-10-18T21:05:00.000+0200",
-     "start": "2026-10-18T20:06:21.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
@@ -1149,6 +1221,132 @@
     "title": "Züge halten\nWipplingerstr 39"
    },
    {
+    "description": "Rettungseinsatz\nBetrieb ab Westbahnho <>",
+    "name": "R461-106",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     461
+    ],
+    "time": {
+     "end": "2026-10-18T22:17:00.000+0200",
+     "start": "2026-10-18T21:17:57.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Westbahnho <>"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Westbahnho <>",
+    "name": "R462-106",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     462
+    ],
+    "time": {
+     "end": "2026-10-18T22:17:00.000+0200",
+     "start": "2026-10-18T21:17:57.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Westbahnho <>"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Westbahnhof <>",
+    "name": "R462-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     462
+    ],
+    "time": {
+     "end": "2026-10-18T22:22:00.000+0200",
+     "start": "2026-10-18T21:22:27.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Westbahnhof <>"
+   },
+   {
+    "description": "Rettungseinsatz\nZüge halten gegenüber",
+    "name": "R464-106",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     464
+    ],
+    "time": {
+     "end": "2026-10-18T22:17:00.000+0200",
+     "start": "2026-10-18T21:19:27.000+0200"
+    },
+    "title": "Rettungseinsatz\nZüge halten gegenüber"
+   },
+   {
+    "description": "Rettungseinsatz\nZüge halten gegenüber",
+    "name": "R464-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     464
+    ],
+    "time": {
+     "end": "2026-10-18T22:22:00.000+0200",
+     "start": "2026-10-18T21:24:28.000+0200"
+    },
+    "title": "Rettungseinsatz\nZüge halten gegenüber"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Urban-Loritz-Platz",
+    "name": "R483-152",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     483
+    ],
+    "time": {
+     "end": "2026-10-18T22:19:00.000+0200",
+     "start": "2026-10-18T21:20:27.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Urban-Loritz-Platz"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Urban-Loritz-Platz",
+    "name": "R484-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     484
+    ],
+    "time": {
+     "end": "2026-10-18T22:21:00.000+0200",
+     "start": "2026-10-18T21:21:57.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Urban-Loritz-Platz"
+   },
+   {
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -1165,6 +1363,42 @@
      "start": "2026-10-18T05:00:21.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "description": "Rettungseinsatz\nBetrieb ab Westbahnhof <>",
+    "name": "R508-118",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     508
+    ],
+    "time": {
+     "end": "2026-10-18T22:22:00.000+0200",
+     "start": "2026-10-18T21:22:27.000+0200"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Westbahnhof <>"
+   },
+   {
+    "description": "Züge halten bei\nLinie 52",
+    "name": "R541-109",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     541
+    ],
+    "time": {
+     "end": "2026-10-18T22:21:00.000+0200",
+     "start": "2026-10-18T21:22:16.000+0200"
+    },
+    "title": "Züge halten bei\nLinie 52"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
