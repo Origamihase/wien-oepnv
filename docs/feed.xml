@@ -8,32 +8,8 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 18 Oct 2026 06:30:44 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2026 07:01:12 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[7A: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">77994cd70c8bd44acc7c6ae28c2d0cee63d1f01a0b2acaf969f56ecb941ab571</guid>
-      <pubDate>Sun, 18 Oct 2026 05:32:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Sun, 18 Oct 2026 05:32:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 18 Oct 2026 05:32:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 18 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 05:32]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 05:32]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25/26: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5ad871156e427d523784cb28867242cf1070538a7d455f2b56d31b9e1028dfac</guid>
-      <pubDate>Sun, 18 Oct 2026 05:12:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Sun, 18 Oct 2026 05:12:00 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 18 Oct 2026 05:12:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 18 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 05:12]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 05:12]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Wien Hütteldorf ↔ Wien Hauptbahnhof]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -135,6 +111,31 @@
       <georss:point>48.205482 16.348467</georss:point>
       <description>Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten. [Ab Mo 19.10.]</description>
       <content:encoded><![CDATA[Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten.<br/>[Ab Mo 19.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A/N66: Liesing, Schulzentrum]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2</guid>
+      <pubDate>Mon, 05 Oct 2026 15:40:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Mon, 05 Oct 2026 15:40:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 07 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <georss:point>48.140620 16.280393</georss:point>
+      <description>Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 … [Bis 28.10.]</description>
+      <content:encoded><![CDATA[Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse → etwa 30 Meter in Richtung Mehlführergasse. Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 …<br/>[Bis 28.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S80: ÖBB-Ersatzbus]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db</guid>
+      <pubDate>Sun, 18 Oct 2026 05:00:21 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Tue, 06 Oct 2026 00:30:03 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 18 Oct 2026 05:00:21 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 18 Oct 2026 23:00:00 +0200</ext:ends_at>
+      <description>Bhf. Hütteldorf [Heute]</description>
+      <content:encoded><![CDATA[Bhf. Hütteldorf<br/>[Heute]]]></content:encoded>
     </item>
   </channel>
 </rss>

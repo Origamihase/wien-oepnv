@@ -3,59 +3,10 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R1797-407|2026-10-18T05:35:27.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R1797-407",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-18T06:34:00.000+0200",
-   "incident": "I20261018-0003"
-  },
-  {
-   "key": "R1837-407|2026-10-18T05:52:28.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R1837-407",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-18T06:51:00.000+0200",
-   "incident": "I20261018-0003"
-  },
-  {
    "key": "R1848-407|2026-10-18T06:02:59.000+0200|Fahrtbehinderung\nFalschparker",
    "name": "R1848-407",
    "title": "Fahrtbehinderung\nFalschparker",
    "end": "2026-10-18T07:02:00.000+0200",
-   "incident": "I20261018-0003"
-  },
-  {
-   "key": "R1850-407|2026-10-18T05:52:28.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R1850-407",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-18T06:52:00.000+0200",
-   "incident": "I20261018-0003"
-  },
-  {
-   "key": "R3213-407|2026-10-18T05:52:29.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R3213-407",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-18T06:52:00.000+0200",
-   "incident": "I20261018-0003"
-  },
-  {
-   "key": "R720-407|2026-10-18T05:35:25.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R720-407",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-18T06:34:00.000+0200",
-   "incident": "I20261018-0003"
-  },
-  {
-   "key": "R721-407|2026-10-18T05:35:25.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R721-407",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-18T06:34:00.000+0200",
-   "incident": "I20261018-0003"
-  },
-  {
-   "key": "R780-407|2026-10-18T05:35:25.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R780-407",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-18T06:34:00.000+0200",
    "incident": "I20261018-0003"
   },
   {
@@ -70,13 +21,6 @@
    "name": "R807-407",
    "title": "Fahrtbehinderung\nFalschparker",
    "end": "2026-10-18T07:02:00.000+0200",
-   "incident": "I20261018-0003"
-  },
-  {
-   "key": "R814-407|2026-10-18T05:35:25.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R814-407",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-18T06:34:00.000+0200",
    "incident": "I20261018-0003"
   }
  ]
