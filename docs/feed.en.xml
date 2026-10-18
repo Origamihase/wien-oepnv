@@ -8,8 +8,20 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 18 Oct 2026 18:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2026 19:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[5: Contamination]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">930f5ee29bb30c01764fdbe97d3582e7920149b9797eb9064be609813da6f3d1</guid>
+      <pubDate>Sun, 18 Oct 2026 18:51:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Sun, 18 Oct 2026 18:51:00 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 18 Oct 2026 18:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 18 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: contamination. [Since 18:51]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 18:51]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[22A: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -25,14 +37,14 @@
     <item>
       <title><![CDATA[16A/66A: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5a34fd9d1d85761937e73cc1505db5c332e3d5fe85c5450ebb4c6466c12885ea</guid>
+      <guid isPermaLink="false">2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107</guid>
       <pubDate>Sun, 18 Oct 2026 17:57:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Sun, 18 Oct 2026 17:57:00 +0200</ext:first_seen>
+      <ext:first_seen>Sun, 18 Oct 2026 17:59:10 +0200</ext:first_seen>
       <ext:starts_at>Sun, 18 Oct 2026 17:57:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 18 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Diversions: 16A Wagner-Schönkirch-Gasse – Inzersdorf, Kirchenplatz; 66A Kornauthgasse – Sterngasse. Expected until 19:10. [Since 17:57]</description>
-      <content:encoded><![CDATA[Diversions: 16A Wagner-Schönkirch-Gasse – Inzersdorf, Kirchenplatz; 66A Kornauthgasse – Sterngasse. Expected until 19:10.<br/>[Since 17:57]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 17:57]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 17:57]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hütteldorf ↔ Wien Hauptbahnhof]]></title>
@@ -122,19 +134,6 @@
       <georss:point>48.212312 16.369604</georss:point>
       <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation. [Until 31.03.2027]</description>
       <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation.<br/>[Until 31.03.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: Neubaugasse, Neustiftgasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">d97a8a3d7d6328446c638ae8a1ccf0afc80a24b1828141a4b94ad0065074c2e5</guid>
-      <pubDate>Thu, 08 Oct 2026 15:10:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Thu, 08 Oct 2026 15:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 19 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 08 Oct 2027 11:11:00 +0200</ext:ends_at>
-      <georss:point>48.205482 16.348467</georss:point>
-      <description>Neustiftgasse 52 → Neustiftgasse 42-44. Stop relocation of line 48A towards Klinik Penzing. Reason: renovation work. [From Mon 19.10.]</description>
-      <content:encoded><![CDATA[Neustiftgasse 52 → Neustiftgasse 42-44. Stop relocation of line 48A towards Klinik Penzing. Reason: renovation work.<br/>[From Mon 19.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

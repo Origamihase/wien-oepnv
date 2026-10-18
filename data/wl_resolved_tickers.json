@@ -1,5 +1,27 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R1952-416|2026-10-18T18:02:23.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R1952-416",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-18T19:01:00.000+0200",
+   "incident": "I20261018-0016"
+  },
+  {
+   "key": "R2930-416|2026-10-18T18:22:13.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R2930-416",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-18T19:22:00.000+0200",
+   "incident": "I20261018-0016"
+  },
+  {
+   "key": "R3190-416|2026-10-18T18:22:15.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R3190-416",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-10-18T19:22:00.000+0200",
+   "incident": "I20261018-0016"
+  }
+ ]
 }
