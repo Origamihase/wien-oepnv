@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-18T11:01:11.582283+00:00",
- "built": "2026-10-18T13:01:06+02:00",
+ "updated": "2026-10-18T11:30:56.937516+00:00",
+ "built": "2026-10-18T13:30:48+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-18T13:01:06+02:00",
+  "built": "2026-10-18T13:30:48+02:00",
   "items": [
    {
     "title": "Wien Hütteldorf ↔ Wien Hauptbahnhof",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-11T11:01:25.166618+00:00",
-   "raw": {
-    "wl-stoerungen": 70,
-    "wl-hinweise": 101,
-    "oebb": 165,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 20,
-    "oebb": 141,
-    "baustellen": 69
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 106
-   }
-  },
   {
    "t": "2026-10-11T11:30:57.741878+00:00",
    "raw": {
@@ -6783,6 +6763,26 @@
    },
    "discarded": {
     "wl": 24,
+    "oebb": 135,
+    "baustellen": 69
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 98
+   }
+  },
+  {
+   "t": "2026-10-18T11:30:56.937516+00:00",
+   "raw": {
+    "wl-stoerungen": 58,
+    "wl-hinweise": 103,
+    "oebb": 158,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 23,
     "oebb": 135,
     "baustellen": 69
    },
