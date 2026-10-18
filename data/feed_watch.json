@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-18T07:00:56.976120+00:00",
- "built": "2026-10-18T09:00:48+02:00",
+ "updated": "2026-10-18T07:30:43.170114+00:00",
+ "built": "2026-10-18T09:30:38+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-18T09:00:48+02:00",
+  "built": "2026-10-18T09:30:38+02:00",
   "items": [
    {
     "title": "46: Schadhafter LKW",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-11T07:01:38.591922+00:00",
-   "raw": {
-    "wl-stoerungen": 84,
-    "wl-hinweise": 101,
-    "oebb": 164,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 22,
-    "oebb": 140,
-    "baustellen": 69
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 103
-   }
-  },
   {
    "t": "2026-10-11T07:30:54.420092+00:00",
    "raw": {
@@ -6784,6 +6764,26 @@
    "discarded": {
     "wl": 27,
     "oebb": 137,
+    "baustellen": 69
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 99
+   }
+  },
+  {
+   "t": "2026-10-18T07:30:43.170114+00:00",
+   "raw": {
+    "wl-stoerungen": 58,
+    "wl-hinweise": 103,
+    "oebb": 158,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 135,
     "baustellen": 69
    },
    "cache": {

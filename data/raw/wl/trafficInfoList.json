@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261018-0006, I20260917-0012, I20260922-0032, I20261018-0005-F01, I20261018-0005, I20260925-0011, I20261018-0006-F01, I20260909-0007"
+    "trafficInfoNameList": "I20261018-0006, I20260917-0012, I20260922-0032, I20260925-0011, I20261018-0006-F01, I20260909-0007, I20261018-0005-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R318-437, R36-152, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R500-101, R1384-146, R1385-146, R1468-146, R1465-146, R1462-146, R1467-146, R3376-146, R1378-146, R1376-146, R1383-146, R1382-146, R1381-146, R1380-146, R1377-146, R1379-146, R1375-146, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R36-152, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R2025-671, R318-437, R1472-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -206,41 +206,6 @@
       "46": "ptTram"
      }
     },
-    "description": "Liebe Fahrgäste! Die Linie 46 wird in Richtung Hütteldorf zwischen Ring, Volkstheater und Maroltingergasse über die Strecke der Linien 2 und 44 umgeleitet. Die Störung dauert voraussichtlich bis 09:00 Uhr. Grund dafür ist ein schadhafter LKW im Bereich Thaliastraße 109.",
-    "descriptionHTML": "<p>Liebe Fahrgäste!</p><p>Die Linie 46 wird in Richtung Hütteldorf zwischen Ring, Volkstheater und Maroltingergasse über die Strecke der Linien 2 und 44 umgeleitet.</p><p><br></p><p>Die Störung dauert voraussichtlich bis 09:00 Uhr.</p><p>Grund dafür ist ein schadhafter LKW im Bereich Thaliastraße 109.</p>",
-    "location": "Thaliastraße 109",
-    "name": "I20261018-0005",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "146",
-       "lineName": "46",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-18T07:49:00.000+0200",
-     "end": "2026-10-18T08:25:00.000+0200",
-     "lastUpdate": "2026-10-18T08:25:00.000+0200",
-     "resume": "2026-10-18T08:25:00.000+0200",
-     "start": "2026-10-18T07:47:00.000+0200"
-    },
-    "title": "46: Schadhafter LKW"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "46": "ptTram"
-     }
-    },
     "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "location": "Thaliastraße 109",
@@ -263,8 +228,8 @@
     "status": "active",
     "time": {
      "created": "2026-10-18T08:25:00.000+0200",
-     "end": "2026-10-18T23:55:00.000+0200",
-     "lastUpdate": "2026-10-18T08:25:00.000+0200",
+     "end": "2026-10-18T09:45:00.000+0200",
+     "lastUpdate": "2026-10-18T09:09:00.000+0200",
      "resume": "2026-10-18T08:25:00.000+0200",
      "start": "2026-10-18T07:47:00.000+0200"
     },
@@ -521,204 +486,6 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
    },
    {
-    "description": "Schadhafter Lkw\nUmleitung über Linien 2 und 44",
-    "name": "R1375-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1375
-    ],
-    "time": {
-     "end": "2026-10-18T09:20:00.000+0200",
-     "start": "2026-10-18T08:21:42.000+0200"
-    },
-    "title": "Schadhafter Lkw\nUmleitung über Linien 2 und 44"
-   },
-   {
-    "description": "Schadhafter Lkw\nBetrieb ab Maroltingergasse",
-    "name": "R1376-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1376
-    ],
-    "time": {
-     "end": "2026-10-18T09:20:00.000+0200",
-     "start": "2026-10-18T08:21:12.000+0200"
-    },
-    "title": "Schadhafter Lkw\nBetrieb ab Maroltingergasse"
-   },
-   {
-    "description": "Schadhafter Lkw\nBetrieb ab Maroltingergasse",
-    "name": "R1377-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1377
-    ],
-    "time": {
-     "end": "2026-10-18T09:20:00.000+0200",
-     "start": "2026-10-18T08:21:12.000+0200"
-    },
-    "title": "Schadhafter Lkw\nBetrieb ab Maroltingergasse"
-   },
-   {
-    "description": "Schadhafter Lkw\nBetrieb ab Maroltingergasse",
-    "name": "R1378-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1378
-    ],
-    "time": {
-     "end": "2026-10-18T09:20:00.000+0200",
-     "start": "2026-10-18T08:21:12.000+0200"
-    },
-    "title": "Schadhafter Lkw\nBetrieb ab Maroltingergasse"
-   },
-   {
-    "description": "Schadhafter Lkw\nBetrieb ab Maroltingergasse",
-    "name": "R1379-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1379
-    ],
-    "time": {
-     "end": "2026-10-18T09:20:00.000+0200",
-     "start": "2026-10-18T08:21:12.000+0200"
-    },
-    "title": "Schadhafter Lkw\nBetrieb ab Maroltingergasse"
-   },
-   {
-    "description": "Schadhafter Lkw\nBetrieb ab Maroltingergasse",
-    "name": "R1380-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1380
-    ],
-    "time": {
-     "end": "2026-10-18T09:20:00.000+0200",
-     "start": "2026-10-18T08:21:12.000+0200"
-    },
-    "title": "Schadhafter Lkw\nBetrieb ab Maroltingergasse"
-   },
-   {
-    "description": "Schadhafter Lkw\nBetrieb ab Maroltingergasse",
-    "name": "R1381-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1381
-    ],
-    "time": {
-     "end": "2026-10-18T09:20:00.000+0200",
-     "start": "2026-10-18T08:21:12.000+0200"
-    },
-    "title": "Schadhafter Lkw\nBetrieb ab Maroltingergasse"
-   },
-   {
-    "description": "Schadhafter Lkw\nBetrieb ab Maroltingergasse",
-    "name": "R1382-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1382
-    ],
-    "time": {
-     "end": "2026-10-18T09:20:00.000+0200",
-     "start": "2026-10-18T08:21:12.000+0200"
-    },
-    "title": "Schadhafter Lkw\nBetrieb ab Maroltingergasse"
-   },
-   {
-    "description": "Schadhafter Lkw\nBetrieb ab Maroltingergasse",
-    "name": "R1383-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1383
-    ],
-    "time": {
-     "end": "2026-10-18T09:20:00.000+0200",
-     "start": "2026-10-18T08:21:12.000+0200"
-    },
-    "title": "Schadhafter Lkw\nBetrieb ab Maroltingergasse"
-   },
-   {
-    "description": "Schadhafter Lkw\nBetrieb ab Maroltingergasse",
-    "name": "R1384-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1384
-    ],
-    "time": {
-     "end": "2026-10-18T09:20:00.000+0200",
-     "start": "2026-10-18T07:50:09.000+0200"
-    },
-    "title": "Schadhafter Lkw\nBetrieb ab Maroltingergasse"
-   },
-   {
-    "description": "Schadhafter Lkw\nZüge halten Thaliastraße",
-    "name": "R1385-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1385
-    ],
-    "time": {
-     "end": "2026-10-18T09:22:00.000+0200",
-     "start": "2026-10-18T07:50:09.000+0200"
-    },
-    "title": "Schadhafter Lkw\nZüge halten Thaliastraße"
-   },
-   {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
     "name": "R1445-149",
     "owner": "WL",
@@ -825,78 +592,6 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Pkw",
-    "name": "R1462-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1462
-    ],
-    "time": {
-     "end": "2026-10-18T09:12:00.000+0200",
-     "start": "2026-10-18T08:12:41.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Pkw"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Pkw",
-    "name": "R1465-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1465
-    ],
-    "time": {
-     "end": "2026-10-18T09:12:00.000+0200",
-     "start": "2026-10-18T08:12:41.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Pkw"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Pkw",
-    "name": "R1467-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1467
-    ],
-    "time": {
-     "end": "2026-10-18T09:12:00.000+0200",
-     "start": "2026-10-18T08:12:41.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Pkw"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Pkw",
-    "name": "R1468-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1468
-    ],
-    "time": {
-     "end": "2026-10-18T09:12:00.000+0200",
-     "start": "2026-10-18T08:12:41.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Pkw"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
@@ -1362,24 +1057,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "description": "Fahrtbehinderung\nSchadhafter Pkw",
-    "name": "R3376-146",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     3376
-    ],
-    "time": {
-     "end": "2026-10-18T09:12:00.000+0200",
-     "start": "2026-10-18T08:12:42.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Pkw"
    },
    {
     "description": "Züge halten\nbei Linien 6 und 18",
