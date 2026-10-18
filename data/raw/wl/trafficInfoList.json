@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261018-0009, I20260909-0007"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261018-0009"
    },
    {
     "id": 3,
@@ -239,11 +239,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-18T13:31:00.000+0200",
-     "end": "2026-10-18T23:55:00.000+0200",
-     "lastUpdate": "2026-10-18T13:32:00.000+0200",
+     "end": "2026-10-18T14:18:00.000+0200",
+     "lastUpdate": "2026-10-18T14:18:00.000+0200",
+     "resume": "2026-10-18T14:18:00.000+0200",
      "start": "2026-10-18T13:30:00.000+0200"
     },
     "title": "30A, 36B, 31A: Fremder Verkehrsunfall"
