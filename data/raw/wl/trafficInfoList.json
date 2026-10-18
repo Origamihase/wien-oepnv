@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261018-0003-F01, I20260925-0011, I20260909-0007, I20261018-0002-F02, I20261018-0004, I20261018-0002-F01"
+    "trafficInfoNameList": "I20261018-0005, I20260917-0012, I20260922-0032, I20261018-0003-F01, I20261018-0004, I20260925-0011, I20260909-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R45-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R36-152, R2025-671, R318-437, R1473-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R119-136, R36-152, R117-136, R116-136, R115-136, R103-136, R2025-671, R318-437, R293-474, R102-136, R101-136, R45-136, R100-136, R19-136, R118-136, R130-136, R1473-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R1974-466, R500-101, R1453-146, R1452-146, R568-146, R566-146, R565-146, R564-146, R1384-146, R1455-146, R1385-146, R1454-146, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,80 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "25": "ptTram"
-     }
-    },
-    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261018-0002-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "125",
-       "lineName": "25",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     2556
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-18T05:26:00.000+0200",
-     "end": "2026-10-18T06:43:00.000+0200",
-     "lastUpdate": "2026-10-18T06:43:00.000+0200",
-     "resume": "2026-10-18T06:43:00.000+0200",
-     "start": "2026-10-18T05:12:00.000+0200"
-    },
-    "title": "25: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "26": "ptTram"
-     }
-    },
-    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261018-0002-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "126",
-       "lineName": "26",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     2556
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-18T05:26:00.000+0200",
-     "end": "2026-10-18T06:43:00.000+0200",
-     "lastUpdate": "2026-10-18T06:43:00.000+0200",
-     "resume": "2026-10-18T06:43:00.000+0200",
-     "start": "2026-10-18T05:12:00.000+0200"
-    },
-    "title": "26: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "7A": "ptBusCity"
      }
     },
@@ -333,15 +259,49 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-18T07:11:00.000+0200",
-     "end": "2026-10-18T23:55:00.000+0200",
-     "lastUpdate": "2026-10-18T07:11:00.000+0200",
-     "resume": "2026-10-18T07:11:00.000+0200",
+     "end": "2026-10-18T07:50:00.000+0200",
+     "lastUpdate": "2026-10-18T07:50:00.000+0200",
+     "resume": "2026-10-18T07:50:00.000+0200",
      "start": "2026-10-18T07:11:00.000+0200"
     },
     "title": "U1: Betriebsstörung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "46": "ptTram"
+     }
+    },
+    "description": "Linie 46: Fahrtbehinderung in Richtung Hütteldorf. Voraussichtliche Dauer: 08:10 Uhr. Grund: Schadhafter LKW im Bereich Thaliastraße 109.",
+    "descriptionHTML": "Linie 46:<br>Fahrtbehinderung in Richtung Hütteldorf.<br> <br>Voraussichtliche Dauer: 08:10 Uhr.<br><br>Grund: Schadhafter LKW im Bereich Thaliastraße 109.",
+    "location": "Thaliastraße 109",
+    "name": "I20261018-0005",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "146",
+       "lineName": "46",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-18T07:49:00.000+0200",
+     "end": "2026-10-18T23:55:00.000+0200",
+     "lastUpdate": "2026-10-18T07:49:00.000+0200",
+     "start": "2026-10-18T07:47:00.000+0200"
+    },
+    "title": "46: Schadhafter LKW"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -524,6 +484,42 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
    },
    {
+    "description": "Fahrtbehinderung\nSchadhafter Lkw",
+    "name": "R1384-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1384
+    ],
+    "time": {
+     "end": "2026-10-18T08:49:00.000+0200",
+     "start": "2026-10-18T07:50:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Lkw"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Lkw",
+    "name": "R1385-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1385
+    ],
+    "time": {
+     "end": "2026-10-18T08:49:00.000+0200",
+     "start": "2026-10-18T07:50:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Lkw"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
     "name": "R1445-149",
     "owner": "WL",
@@ -630,6 +626,78 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Lkw",
+    "name": "R1452-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1452
+    ],
+    "time": {
+     "end": "2026-10-18T08:49:00.000+0200",
+     "start": "2026-10-18T07:50:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Lkw"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Lkw",
+    "name": "R1453-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1453
+    ],
+    "time": {
+     "end": "2026-10-18T08:49:00.000+0200",
+     "start": "2026-10-18T07:50:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Lkw"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Lkw",
+    "name": "R1454-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1454
+    ],
+    "time": {
+     "end": "2026-10-18T08:49:00.000+0200",
+     "start": "2026-10-18T07:50:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Lkw"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Lkw",
+    "name": "R1455-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1455
+    ],
+    "time": {
+     "end": "2026-10-18T08:49:00.000+0200",
+     "start": "2026-10-18T07:50:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Lkw"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
@@ -1149,6 +1217,78 @@
      "start": "2026-10-18T05:00:21.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Lkw",
+    "name": "R564-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     564
+    ],
+    "time": {
+     "end": "2026-10-18T08:49:00.000+0200",
+     "start": "2026-10-18T07:50:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Lkw"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Lkw",
+    "name": "R565-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     565
+    ],
+    "time": {
+     "end": "2026-10-18T08:49:00.000+0200",
+     "start": "2026-10-18T07:50:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Lkw"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Lkw",
+    "name": "R566-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     566
+    ],
+    "time": {
+     "end": "2026-10-18T08:49:00.000+0200",
+     "start": "2026-10-18T07:50:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Lkw"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Lkw",
+    "name": "R568-146",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     568
+    ],
+    "time": {
+     "end": "2026-10-18T08:49:00.000+0200",
+     "start": "2026-10-18T07:50:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Lkw"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
