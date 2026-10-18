@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261018-0019-F01, I20260925-0011, I20261018-0021, I20260909-0007, I20261018-0016-F01, I20261018-0020-F01, I20261018-0020"
+    "trafficInfoNameList": "I20261018-0021-F01, I20261018-0021-F02, I20261018-0021-F03, I20261018-0021-F04, I20260917-0012, I20260922-0032, I20260925-0011, I20261018-0021, I20260909-0007, I20261018-0020-F01, I20261018-0020"
    },
    {
     "id": 3,
@@ -203,76 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "16A": "ptBusCity"
-     }
-    },
-    "description": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Draschestraße 81",
-    "name": "I20261018-0016-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "16A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "416",
-       "lineName": "16A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-18T18:50:00.000+0200",
-     "end": "2026-10-18T20:35:00.000+0200",
-     "lastUpdate": "2026-10-18T20:35:00.000+0200",
-     "resume": "2026-10-18T20:35:00.000+0200",
-     "start": "2026-10-18T17:57:00.000+0200"
-    },
-    "title": "16A: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "38": "ptTram"
-     }
-    },
-    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Billrothstraße 40",
-    "name": "I20261018-0019-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "138",
-       "lineName": "38",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-18T20:10:00.000+0200",
-     "end": "2026-10-18T20:45:00.000+0200",
-     "lastUpdate": "2026-10-18T20:45:00.000+0200",
-     "resume": "2026-10-18T20:45:00.000+0200",
-     "start": "2026-10-18T19:57:00.000+0200"
-    },
-    "title": "38: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "77A": "ptBusCity"
      }
     },
@@ -357,10 +287,10 @@
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "6",
-     "9",
      "18",
-     "52"
+     "52",
+     "6",
+     "9"
     ],
     "relatedLinesDetails": [
      [
@@ -386,14 +316,155 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-18T21:19:00.000+0200",
-     "end": "2026-10-18T23:55:00.000+0200",
-     "lastUpdate": "2026-10-18T21:22:00.000+0200",
+     "end": "2026-10-18T21:37:00.000+0200",
+     "lastUpdate": "2026-10-18T21:37:00.000+0200",
+     "resume": "2026-10-18T21:37:00.000+0200",
      "start": "2026-10-18T21:16:00.000+0200"
     },
     "title": "6, 18, 52, 9: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "6": "ptTram"
+     }
+    },
+    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Neubaugürtel",
+    "name": "I20261018-0021-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "106",
+       "lineName": "6",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-18T21:37:00.000+0200",
+     "end": "2026-10-18T23:55:00.000+0200",
+     "lastUpdate": "2026-10-18T21:37:00.000+0200",
+     "resume": "2026-10-18T21:37:00.000+0200",
+     "start": "2026-10-18T21:16:00.000+0200"
+    },
+    "title": "6: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "18": "ptTram"
+     }
+    },
+    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Neubaugürtel",
+    "name": "I20261018-0021-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "118",
+       "lineName": "18",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-18T21:37:00.000+0200",
+     "end": "2026-10-18T23:55:00.000+0200",
+     "lastUpdate": "2026-10-18T21:37:00.000+0200",
+     "resume": "2026-10-18T21:37:00.000+0200",
+     "start": "2026-10-18T21:16:00.000+0200"
+    },
+    "title": "18: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "52": "ptTram"
+     }
+    },
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Neubaugürtel",
+    "name": "I20261018-0021-F03",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "152",
+       "lineName": "52",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-18T21:37:00.000+0200",
+     "end": "2026-10-18T23:55:00.000+0200",
+     "lastUpdate": "2026-10-18T21:37:00.000+0200",
+     "resume": "2026-10-18T21:37:00.000+0200",
+     "start": "2026-10-18T21:16:00.000+0200"
+    },
+    "title": "52: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "9": "ptTram"
+     }
+    },
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Neubaugürtel",
+    "name": "I20261018-0021-F04",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "109",
+       "lineName": "9",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-18T21:37:00.000+0200",
+     "end": "2026-10-18T23:55:00.000+0200",
+     "lastUpdate": "2026-10-18T21:37:00.000+0200",
+     "resume": "2026-10-18T21:37:00.000+0200",
+     "start": "2026-10-18T21:16:00.000+0200"
+    },
+    "title": "9: Rettungseinsatz"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",

@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_23, ftazW_370, ftazW_520, ftazW_283, ftazW_485, ftazW_369, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_4, ftazW_484, ftazW_368, ftazW_196, ftazW_1018061, ftazW_393, ftazW_15, ftazW_1032342, ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210"
+    "trafficInfoNameList": "ftazW_23, ftazW_370, ftazW_520, ftazW_283, ftazW_485, ftazW_369, ftazW_1018062, ftazW_521, ftazW_4, ftazW_484, ftazW_368, ftazW_196, ftazW_1018061, ftazW_393, ftazW_15, ftazW_1032342, ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210"
    }
   ],
   "poiCategoryGroups": [
@@ -3039,39 +3039,6 @@
      "start": "2026-10-19T20:45:00.000+0200"
     },
     "title": "Messe-Prater"
-   },
-   {
-    "attributes": {
-     "ausBis": "20.10.2026 00:45",
-     "ausVon": "19.10.2026 20:45",
-     "location": "U2 Mittelbahnsteig - Ausgang Hasibederstraße",
-     "rbls": [
-      4279,
-      4274
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Hausfeldstraße",
-     "status": "geplante Wartung",
-     "towards": "U2 beide Richtungen"
-    },
-    "description": "U2 Mittelbahnsteig - Ausgang Hasibederstraße",
-    "name": "ftazW_1032341",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4279,
-     4274
-    ],
-    "time": {
-     "end": "2026-10-20T00:45:00.000+0200",
-     "start": "2026-10-19T20:45:00.000+0200"
-    },
-    "title": "Hausfeldstraße"
    },
    {
     "attributes": {
