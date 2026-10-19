@@ -5,6 +5,17 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Einheitliches Bild je Meldung für graue TV-Folien (2026-10-19)**:
+  Michaels Wunsch zur EasySignage-Vorschau: „Der roter WL-Hintergrund sieht
+  nicht gut aus. Der graue Hintergrund gefällt mir besser.“ EasySignage nahm
+  mangels eigenem Bild das Vorschaubild der verlinkten Seite;
+  `wienerlinien.at/betriebsinfo` liefert dabei mal ein fehlendes „image.png“
+  (grau), mal das rote WL-Logo (rot). Jetzt trägt jede Meldung aller Quellen
+  in beiden Feeds dasselbe weiße Bild `docs/assets/feed-item.png` als
+  `<enclosure>` und `<media:content>` (Namensraum `media`). Links, Titel,
+  Texte und GUIDs bleiben gleich: Nachbau von 216 Feed-Ständen (15.–19.10.)
+  bis auf die Bild-Elemente identisch. Test `tests/test_item_image.py`;
+  `docs/architecture.md` §1 „Ein einheitliches Bild je Meldung“.
 * **Stationsverzeichnis ohne OpenStreetMap (2026-10-17)**: Michaels
   Entscheidung („Ja, bitte“ auf die Frage, die OSM-Koordinaten durch
   GeoNetz/WL zu ersetzen und den wöchentlichen OSM-Lauf keine Koordinaten
