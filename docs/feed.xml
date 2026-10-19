@@ -8,22 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 19 Oct 2026 15:30:45 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 16:01:12 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[Wien Liesing ↔ Mödling]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;920539</guid>
-      <pubDate>Mon, 19 Oct 2026 15:24:54 +0200</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
+      <title><![CDATA[80A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">3f7a7f7b8b3f9de12c85a091d1ed2338922b50f5fcb2d8dce95e5e6ee14524ab</guid>
+      <pubDate>Mon, 19 Oct 2026 15:52:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 19 Oct 2026 15:30:45 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 19 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 19 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <georss:line>48.135046 16.283967 48.085650 16.295359</georss:line>
-      <description>Wegen einer beschädigten Brücke durch einen Verkehrsunfall sind zwischen Wien Liesing Bahnhof und Mödling Bahnhof Zugfahrten bis voraussichtlich 16:00 Uhr nicht möglich. [Seit 15:24]</description>
-      <content:encoded><![CDATA[Wegen einer beschädigten Brücke durch einen Verkehrsunfall sind zwischen Wien Liesing Bahnhof und Mödling Bahnhof Zugfahrten bis voraussichtlich 16:00 Uhr nicht möglich.<br/>[Seit 15:24]]]></content:encoded>
+      <ext:first_seen>Mon, 19 Oct 2026 15:52:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 19 Oct 2026 15:52:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 15:52]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 15:52]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[4A: Verkehrsüberlastung]]></title>
@@ -96,6 +95,21 @@
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 14:46]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[Wien Liesing ↔ Mödling]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;920539</guid>
+      <pubDate>Mon, 19 Oct 2026 15:45:10 +0200</pubDate>
+      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 19 Oct 2026 15:30:45 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 19 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 19 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <georss:line>48.135046 16.283967 48.085650 16.295359</georss:line>
+      <description>Wegen einer beschädigten Brücke durch einen Verkehrsunfall waren bis 15:42 Uhr keine Fahrten möglich. Es kommt noch zu vereinzelten Zugausfällen und Verzögerungen. [Heute]</description>
+      <content:encoded><![CDATA[Wegen einer beschädigten Brücke durch einen Verkehrsunfall waren bis 15:42 Uhr keine Fahrten möglich. Es kommt noch zu vereinzelten Zugausfällen und Verzögerungen.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[80A: ÖBB-Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">5a68b1fc449f7041118da0ac6c6652cede40d8eb9c245e412fcac285c52db7c7</guid>
@@ -138,21 +152,6 @@
       <georss:point>48.205482 16.348467</georss:point>
       <description>Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten. [Seit heute]</description>
       <content:encoded><![CDATA[Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten.<br/>[Seit heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hütteldorf ↔ Wien Hauptbahnhof]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;901477</guid>
-      <pubDate>Thu, 03 Sep 2026 09:31:47 +0200</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 04 Aug 2026 14:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 17 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 19 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <georss:line>48.197671 16.261209 48.185201 16.376296</georss:line>
-      <description>Teilausfall: Von 18.10.2026 bis 19.10.2026 kann der Zug RJ 263 zwischen Wien Hütteldorf Bahnhof (U) und Wien Hbf (U) nicht fahren. [Heute]</description>
-      <content:encoded><![CDATA[Teilausfall: Von 18.10.2026 bis 19.10.2026 kann der Zug RJ 263 zwischen Wien Hütteldorf Bahnhof (U) und Wien Hbf (U) nicht fahren.<br/>[Heute]]]></content:encoded>
     </item>
   </channel>
 </rss>
