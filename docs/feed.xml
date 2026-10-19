@@ -8,31 +8,43 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 19 Oct 2026 10:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 11:00:41 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[38: Schadhaftes Fahrzeug]]></title>
+      <title><![CDATA[U4/U6: Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">c16184b68509899faf02a65c374d8c059400404774e2da3970444c5b92e08600</guid>
-      <pubDate>Mon, 19 Oct 2026 09:52:00 +0200</pubDate>
+      <guid isPermaLink="false">2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682</guid>
+      <pubDate>Mon, 19 Oct 2026 10:58:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Mon, 19 Oct 2026 09:52:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 19 Oct 2026 09:52:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 19 Oct 2026 10:37:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 09:52]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 09:52]]]></content:encoded>
+      <ext:first_seen>Mon, 19 Oct 2026 10:58:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 19 Oct 2026 10:58:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Seit 10:58]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 10:58]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U1: Schadhaftes Fahrzeug]]></title>
+      <title><![CDATA[17A: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7</guid>
-      <pubDate>Mon, 19 Oct 2026 08:11:00 +0200</pubDate>
+      <guid isPermaLink="false">5663fecbf675128e997aa265491bb433f2c1a3c40b9e5aa509f998b0c368932d</guid>
+      <pubDate>Mon, 19 Oct 2026 10:48:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Mon, 19 Oct 2026 08:11:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 19 Oct 2026 08:11:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 19 Oct 2026 10:35:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 08:11]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 08:11]]]></content:encoded>
+      <ext:first_seen>Mon, 19 Oct 2026 10:48:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 19 Oct 2026 10:48:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 10:48]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 10:48]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Rettungseinsatz, Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107</guid>
+      <pubDate>Mon, 19 Oct 2026 10:36:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Mon, 19 Oct 2026 10:36:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 19 Oct 2026 10:36:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 20 Oct 2026 01:00:00 +0200</ext:ends_at>
+      <description>Rettungseinsatz: Unregelmäßige Intervalle in beiden Richtungen. Bauarbeiten: Busse halten Salvatorianerplatz. [Bis Di 20.10.]</description>
+      <content:encoded><![CDATA[Rettungseinsatz: Unregelmäßige Intervalle in beiden Richtungen. Bauarbeiten: Busse halten Salvatorianerplatz.<br/>[Bis Di 20.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[80A: ÖBB-Bauarbeiten]]></title>
@@ -121,19 +133,6 @@
       <georss:point>48.210606 16.344038</georss:point>
       <description>Albertgasse 27 → Albertgasse 33 - 35. Haltestellenverlegung der Linien 5 und 12 in Richtung Westbahnhof U bzw. Josefstädter Straße U. Grund: Bauarbeiten. [Bis 03.11.]</description>
       <content:encoded><![CDATA[Albertgasse 27 → Albertgasse 33 - 35. Haltestellenverlegung der Linien 5 und 12 in Richtung Westbahnhof U bzw. Josefstädter Straße U. Grund: Bauarbeiten.<br/>[Bis 03.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A: Max-Mauermann-Gasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">56aa798cbb018fbaed4813a991f56c2470867f1f9a0ce034661ba2e01da13007</guid>
-      <pubDate>Wed, 07 Oct 2026 15:30:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Wed, 07 Oct 2026 15:30:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <georss:point>48.163113 16.409373</georss:point>
-      <description>Bitterlichstraße gegenüber Max-Mauermann-Gasse → Bitterlichstraße gegenüber Friedrich-Teller-Gasse. Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling … [Bis 25.12.]</description>
-      <content:encoded><![CDATA[Bitterlichstraße gegenüber Max-Mauermann-Gasse → Bitterlichstraße gegenüber Friedrich-Teller-Gasse. Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling …<br/>[Bis 25.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
