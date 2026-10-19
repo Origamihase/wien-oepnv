@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:georss="http://www.georss.org/georss" version="2.0">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:georss="http://www.georss.org/georss" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
   <channel>
     <title>Vienna Public Transport — Disruptions &amp; Commuter Info</title>
     <link>https://github.com/Origamihase/wien-oepnv</link>
@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 19 Oct 2026 14:01:14 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 14:22:08 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U1: Delays]]></title>
@@ -16,6 +16,8 @@
       <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
       <pubDate>Mon, 19 Oct 2026 13:12:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Mon, 19 Oct 2026 13:12:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 19 Oct 2026 13:12:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
@@ -28,6 +30,8 @@
       <guid isPermaLink="false">91f10f4182d7824836d33d2209e9cea486854f28d5216b1b2b5c5844beec8939</guid>
       <pubDate>Mon, 19 Oct 2026 13:08:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Mon, 19 Oct 2026 13:08:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 19 Oct 2026 13:08:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
@@ -40,6 +44,8 @@
       <guid isPermaLink="false">27097228e710414aa25dc5a1a05ce08e7df8f5739c3b291a99c867134fc9ecd2</guid>
       <pubDate>Mon, 19 Oct 2026 12:17:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Mon, 19 Oct 2026 12:17:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 19 Oct 2026 12:17:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
@@ -52,6 +58,8 @@
       <guid isPermaLink="false">dccbadcbf12162af2af610ce5d398d1d933ec7a7a29797ac278f17a4bdc47cb6</guid>
       <pubDate>Mon, 19 Oct 2026 11:35:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Mon, 19 Oct 2026 12:01:12 +0200</ext:first_seen>
       <ext:starts_at>Mon, 19 Oct 2026 11:35:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
@@ -64,6 +72,8 @@
       <guid isPermaLink="false">0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919</guid>
       <pubDate>Mon, 19 Oct 2026 11:35:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Mon, 19 Oct 2026 11:35:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 19 Oct 2026 11:35:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
@@ -76,6 +86,8 @@
       <guid isPermaLink="false">8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22</guid>
       <pubDate>Mon, 19 Oct 2026 13:12:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Mon, 19 Oct 2026 10:59:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 19 Oct 2026 13:12:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
@@ -88,6 +100,8 @@
       <guid isPermaLink="false">711bdd6742039946a988fc6856f5ba58cc852d11dc70306ccf9c11dcbf6587d7</guid>
       <pubDate>Mon, 19 Oct 2026 11:34:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Mon, 19 Oct 2026 11:34:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 19 Oct 2026 11:34:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 19 Oct 2026 23:59:59 +0200</ext:ends_at>
@@ -100,6 +114,8 @@
       <guid isPermaLink="false">5a68b1fc449f7041118da0ac6c6652cede40d8eb9c245e412fcac285c52db7c7</guid>
       <pubDate>Tue, 06 Oct 2026 14:00:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Mon, 19 Oct 2026 00:00:57 +0200</ext:first_seen>
       <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
@@ -112,6 +128,8 @@
       <guid isPermaLink="false">d26c6c6963612c560045052c175b1ec9ef04add4290e496a66c9625d2dde4a6e</guid>
       <pubDate>Mon, 19 Oct 2026 00:00:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Mon, 19 Oct 2026 00:00:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
@@ -125,6 +143,8 @@
       <guid isPermaLink="false">d97a8a3d7d6328446c638ae8a1ccf0afc80a24b1828141a4b94ad0065074c2e5</guid>
       <pubDate>Thu, 08 Oct 2026 15:10:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 08 Oct 2026 15:10:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 19 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 08 Oct 2027 11:11:00 +0200</ext:ends_at>
