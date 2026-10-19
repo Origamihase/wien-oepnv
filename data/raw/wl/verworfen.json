@@ -2,7 +2,15 @@
  "verworfen": [
   {
    "grund": "Kurzmeldung einer erledigten Störung",
+   "titel": "Fahrtbehinderung Verkehrsunfall"
+  },
+  {
+   "grund": "Kurzmeldung einer erledigten Störung",
    "titel": "Fahrtbehinderung wegen Rettungseinsatz"
+  },
+  {
+   "grund": "Status inaktiv",
+   "titel": "43: Verkehrsunfall"
   },
   {
    "grund": "Status inaktiv",
@@ -15,10 +23,6 @@
   {
    "grund": "Status inaktiv",
    "titel": "74A: Signalstörung"
-  },
-  {
-   "grund": "Status inaktiv",
-   "titel": "84A: Verspätungen"
   },
   {
    "grund": "außerhalb des Zeitraums",

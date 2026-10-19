@@ -3,6 +3,69 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
+   "key": "R1348-143|2026-10-19T16:38:20.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1348-143",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T18:16:00.000+0200",
+   "incident": "I20261019-0034"
+  },
+  {
+   "key": "R1349-143|2026-10-19T16:38:20.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1349-143",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T18:16:00.000+0200",
+   "incident": "I20261019-0034"
+  },
+  {
+   "key": "R1350-143|2026-10-19T16:38:20.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1350-143",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T18:16:00.000+0200",
+   "incident": "I20261019-0034"
+  },
+  {
+   "key": "R1351-143|2026-10-19T16:38:20.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1351-143",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T18:16:00.000+0200",
+   "incident": "I20261019-0034"
+  },
+  {
+   "key": "R1353-143|2026-10-19T16:44:20.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1353-143",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T17:44:00.000+0200",
+   "incident": "I20261019-0034"
+  },
+  {
+   "key": "R1354-143|2026-10-19T16:46:20.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1354-143",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T17:45:00.000+0200",
+   "incident": "I20261019-0034"
+  },
+  {
+   "key": "R1355-143|2026-10-19T16:47:21.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1355-143",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T17:46:00.000+0200",
+   "incident": "I20261019-0034"
+  },
+  {
+   "key": "R1356-143|2026-10-19T16:52:21.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1356-143",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T17:51:00.000+0200",
+   "incident": "I20261019-0034"
+  },
+  {
+   "key": "R1357-143|2026-10-19T16:52:21.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1357-143",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T17:51:00.000+0200",
+   "incident": "I20261019-0034"
+  },
+  {
    "key": "R1742-162|2026-10-19T16:42:18.000+0200|Fahrtbehinderung\nwegen Rettungseinsatz",
    "name": "R1742-162",
    "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
@@ -22,6 +85,20 @@
    "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
    "end": "2026-10-19T17:42:00.000+0200",
    "incident": "I20261019-0035"
+  },
+  {
+   "key": "R224-143|2026-10-19T16:38:22.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R224-143",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T17:37:00.000+0200",
+   "incident": "I20261019-0034"
+  },
+  {
+   "key": "R230-143|2026-10-19T16:55:54.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R230-143",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T17:55:00.000+0200",
+   "incident": "I20261019-0034"
   }
  ]
 }
