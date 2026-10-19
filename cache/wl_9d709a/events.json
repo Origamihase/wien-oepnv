@@ -822,22 +822,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A: Rettungseinsatz",
-    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "42fd134123a418e9ad9efe9206b8aec78f4828e1289887cd32b9a179ab2ed7cd",
-    "pubDate": "2026-10-19T18:52:00+02:00",
-    "starts_at": "2026-10-19T18:52:00+02:00",
-    "ends_at": "2026-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=11A|D=2026-10-19|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261019-0043"
-    ],
-    "_incident_start": "2026-10-19T18:52:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1094,22 +1078,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "63A: Betriebsstörung",
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "268fd410f5ef450f9c7a2a594e86bd0dc8db5b7815880b183dc553c14f663dfe",
-    "pubDate": "2026-10-19T18:19:00+02:00",
-    "starts_at": "2026-10-19T18:19:00+02:00",
-    "ends_at": "2026-10-19T19:34:00+02:00",
-    "_identity": "wl|störung|L=63A|D=2026-10-19|TK=63a betriebsstörung",
-    "_wl_ids": [
-      "I20261019-0040"
-    ],
-    "_incident_start": "2026-10-19T18:19:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1130,22 +1098,6 @@
     "starts_at": "2026-10-14T00:00:22+02:00",
     "ends_at": "2026-10-19T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-10-14|TK=einstieg leberstrasse vor s bahn gebäude"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7A: Polizeieinsatz",
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "64c168750858c631c7a91ad91fc35cce1827e9d8a3c84eff3d5bc5adb3221722",
-    "pubDate": "2026-10-19T19:27:00+02:00",
-    "starts_at": "2026-10-19T19:27:00+02:00",
-    "ends_at": "2026-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2026-10-19|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261019-0044"
-    ],
-    "_incident_start": "2026-10-19T19:27:00+02:00"
   },
   {
     "source": "Wiener Linien",
