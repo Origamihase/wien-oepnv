@@ -8,8 +8,20 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 19 Oct 2026 12:01:12 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 12:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[3A: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">27097228e710414aa25dc5a1a05ce08e7df8f5739c3b291a99c867134fc9ecd2</guid>
+      <pubDate>Mon, 19 Oct 2026 12:17:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Mon, 19 Oct 2026 12:17:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 19 Oct 2026 12:17:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 12:17]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 12:17]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[42: Falschparker]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -47,18 +59,6 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 11:35]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[17A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5663fecbf675128e997aa265491bb433f2c1a3c40b9e5aa509f998b0c368932d</guid>
-      <pubDate>Mon, 19 Oct 2026 10:48:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Mon, 19 Oct 2026 10:48:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 19 Oct 2026 10:48:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 10:48]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 10:48]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[12A: Rettungseinsatz, Gleisbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">711bdd6742039946a988fc6856f5ba58cc852d11dc70306ccf9c11dcbf6587d7</guid>
@@ -67,20 +67,8 @@
       <ext:first_seen>Mon, 19 Oct 2026 11:34:00 +0200</ext:first_seen>
       <ext:starts_at>Mon, 19 Oct 2026 11:34:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 19 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Rettungseinsatz: Die Linie 12A wird in Richtung Eichenstraße zwischen Auf der Schmelz und Johnstraße U über Oeverseestraße, Minciostraße, Schanzstraße umgeleitet. [Heute]</description>
-      <content:encoded><![CDATA[Rettungseinsatz: Die Linie 12A wird in Richtung Eichenstraße zwischen Auf der Schmelz und Johnstraße U über Oeverseestraße, Minciostraße, Schanzstraße umgeleitet.<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Rettungseinsatz, Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107</guid>
-      <pubDate>Mon, 19 Oct 2026 10:36:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Mon, 19 Oct 2026 10:36:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 19 Oct 2026 10:36:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 20 Oct 2026 01:00:00 +0200</ext:ends_at>
-      <description>Rettungseinsatz: Unregelmäßige Intervalle in beiden Richtungen. Bauarbeiten: Busse halten Salvatorianerplatz. [Bis Di 20.10.]</description>
-      <content:encoded><![CDATA[Rettungseinsatz: Unregelmäßige Intervalle in beiden Richtungen. Bauarbeiten: Busse halten Salvatorianerplatz.<br/>[Bis Di 20.10.]]]></content:encoded>
+      <description>Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21. [Heute]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[80A: ÖBB-Bauarbeiten]]></title>
@@ -93,6 +81,19 @@
       <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
       <description>Wegen der Neuerrichtung der ÖBB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Maßnahmen in Kraft. [Ab Di 20.10. bis 31.12.2027]</description>
       <content:encoded><![CDATA[Wegen der Neuerrichtung der ÖBB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Maßnahmen in Kraft.<br/>[Ab Di 20.10. bis 31.12.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[56A/56B/N62: Strampfergasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">d26c6c6963612c560045052c175b1ec9ef04add4290e496a66c9625d2dde4a6e</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Mon, 19 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <georss:point>48.167289 16.277365</georss:point>
+      <description>Hermesstraße nach Strampfergasse → etwa 50 Meter in Fahrtrichtung. Hermesstraße nach Strampfergasse → aufgelassen. Haltestellenverlegung bzw. -auflassung der Linien 56A, 56B … [Ab Di 20.10. bis 03.11.]</description>
+      <content:encoded><![CDATA[Hermesstraße nach Strampfergasse → etwa 50 Meter in Fahrtrichtung. Hermesstraße nach Strampfergasse → aufgelassen. Haltestellenverlegung bzw. -auflassung der Linien 56A, 56B …<br/>[Ab Di 20.10. bis 03.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[48A: Neubaugasse, Neustiftgasse]]></title>
