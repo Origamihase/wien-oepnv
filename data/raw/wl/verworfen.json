@@ -6,6 +6,10 @@
   },
   {
    "grund": "Kurzmeldung einer erledigten Störung",
+   "titel": "Fahrtbehinderung Schadhafter Zug"
+  },
+  {
+   "grund": "Kurzmeldung einer erledigten Störung",
    "titel": "Fahrtbehinderung wegen Polizeieinsatz"
   },
   {
@@ -21,20 +25,16 @@
    "titel": "Fremdunfall Züge halten bei Linie 9"
   },
   {
-   "grund": "Status inaktiv",
-   "titel": "10A: Verkehrsüberlastung"
+   "grund": "Kurzmeldung einer erledigten Störung",
+   "titel": "Schadhafter Zug Betrieb ab Hofwiesengasse"
   },
   {
    "grund": "Status inaktiv",
-   "titel": "11A: Falschparker"
+   "titel": "10: Fremder Verkehrsunfall"
   },
   {
    "grund": "Status inaktiv",
    "titel": "11A: Rettungseinsatz"
-  },
-  {
-   "grund": "Status inaktiv",
-   "titel": "2, 10: Fremder Verkehrsunfall"
   },
   {
    "grund": "Status inaktiv",
@@ -46,15 +46,7 @@
   },
   {
    "grund": "Status inaktiv",
-   "titel": "4A: Verkehrsüberlastung"
-  },
-  {
-   "grund": "Status inaktiv",
-   "titel": "5A: Falschparker"
-  },
-  {
-   "grund": "Status inaktiv",
-   "titel": "60A: Schadhaftes Fahrzeug"
+   "titel": "62: Schadhaftes Fahrzeug"
   },
   {
    "grund": "Status inaktiv",
@@ -63,10 +55,6 @@
   {
    "grund": "Status inaktiv",
    "titel": "7A: Polizeieinsatz"
-  },
-  {
-   "grund": "Status inaktiv",
-   "titel": "80A: Verkehrsüberlastung"
   },
   {
    "grund": "außerhalb des Zeitraums",

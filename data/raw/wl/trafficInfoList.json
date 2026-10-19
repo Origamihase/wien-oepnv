@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261019-0038-F01, I20261019-0038-F02, I20260917-0012, I20261019-0039, I20260922-0032, I20261019-0037-F01, I20261019-0043, I20260925-0011, I20261019-0027, I20261019-0041-F01, I20260909-0007, I20261019-0041-F02, I20261019-0044, I20261019-0029, I20261019-0024, I20261019-0042-F01, I20261019-0040, I20261019-0041"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261019-0037-F01, I20261019-0043, I20261019-0041-F02, I20260925-0011, I20261019-0041-F01, I20260909-0007, I20261019-0044, I20261019-0045-F01, I20261019-0045, I20261019-0042-F01, I20261019-0040"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R293-474, R1448-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1474-412, R5815-671, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R500-101, R586-110, R588-110, R587-110, R3468-110, R561-110, R562-110, R1366-102, R1367-102, R562-102, R561-102, R1368-102, R1371-144, R1345-144, R1372-144, R1373-144, R236-144, R237-144, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R36-152, R1475-149, R5815-671, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R500-101, R588-110, R587-110, R586-110, R561-110, R3468-110, R562-110, R1367-102, R1366-102, R562-102, R561-102, R1368-102, R1372-144, R1373-144, R1345-144, R1371-144, R236-144, R237-144, R1616-162, R1735-162, R1737-162, R1738-162, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,108 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "10A": "ptBusCity"
-     }
-    },
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
-    "name": "I20261019-0024",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "10A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "410",
-       "lineName": "10A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T14:46:00.000+0200",
-     "end": "2026-10-19T19:24:00.000+0200",
-     "lastUpdate": "2026-10-19T19:24:00.000+0200",
-     "resume": "2026-10-19T19:24:00.000+0200",
-     "start": "2026-10-19T14:46:00.000+0200"
-    },
-    "title": "10A: Verkehrsüberlastung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "4A": "ptBusCity"
-     }
-    },
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
-    "name": "I20261019-0027",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "4A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "404",
-       "lineName": "4A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T15:13:00.000+0200",
-     "end": "2026-10-19T19:03:00.000+0200",
-     "lastUpdate": "2026-10-19T19:03:00.000+0200",
-     "resume": "2026-10-19T19:03:00.000+0200",
-     "start": "2026-10-19T15:13:00.000+0200"
-    },
-    "title": "4A: Verkehrsüberlastung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "80A": "ptBusCity"
-     }
-    },
-    "description": "Linie 80A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "Linie 80A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
-    "name": "I20261019-0029",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "80A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "480",
-       "lineName": "80A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T15:53:00.000+0200",
-     "end": "2026-10-19T19:04:00.000+0200",
-     "lastUpdate": "2026-10-19T19:04:00.000+0200",
-     "resume": "2026-10-19T19:04:00.000+0200",
-     "start": "2026-10-19T15:52:00.000+0200"
-    },
-    "title": "80A: Verkehrsüberlastung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "27": "ptTram"
      }
     },
@@ -340,110 +238,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "5A": "ptBusCity"
-     }
-    },
-    "description": "Linie 5A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 5A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Friedrich-Engels-Platz  22",
-    "name": "I20261019-0038-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "5A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "405",
-       "lineName": "5A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T18:00:00.000+0200",
-     "end": "2026-10-19T19:02:00.000+0200",
-     "lastUpdate": "2026-10-19T19:02:00.000+0200",
-     "resume": "2026-10-19T19:02:00.000+0200",
-     "start": "2026-10-19T17:42:00.000+0200"
-    },
-    "title": "5A: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "11A": "ptBusCity"
-     }
-    },
-    "description": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Friedrich-Engels-Platz  22",
-    "name": "I20261019-0038-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "411",
-       "lineName": "11A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T18:00:00.000+0200",
-     "end": "2026-10-19T19:05:00.000+0200",
-     "lastUpdate": "2026-10-19T19:05:00.000+0200",
-     "resume": "2026-10-19T19:05:00.000+0200",
-     "start": "2026-10-19T17:42:00.000+0200"
-    },
-    "title": "11A: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "60A": "ptBusCity"
-     }
-    },
-    "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "Linie 60A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Schadhaftes Fahrzeug.",
-    "name": "I20261019-0039",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "460",
-       "lineName": "60A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T18:18:00.000+0200",
-     "end": "2026-10-19T19:25:00.000+0200",
-     "lastUpdate": "2026-10-19T19:25:00.000+0200",
-     "resume": "2026-10-19T19:25:00.000+0200",
-     "start": "2026-10-19T18:17:00.000+0200"
-    },
-    "title": "60A: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "63A": "ptBusCity"
      }
     },
@@ -474,48 +268,6 @@
      "start": "2026-10-19T18:19:00.000+0200"
     },
     "title": "63A: Betriebsstörung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "10": "ptTram",
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Umleitung in beiden Richtungen zwischen Dornbach und Johann-Nepomuk-Berger-Platz über die Strecke der Linien 43 und 9. Linie 10: Betrieb nur zwischen Unter St. Veit, Hummelgasse und Ottakring, Maroltingergasse. Voraussichtliche Dauer: 19:45 Uhr. Grund: Fremder Verkehrsunfall im Bereich Wilhelminenstraße # Sandleitengasse.",
-    "descriptionHTML": "Linie 2: <br>Umleitung in beiden Richtungen <br>zwischen Dornbach und Johann-Nepomuk-Berger-Platz <br>über die Strecke der Linien 43 und 9.<br>Linie 10:<br>Betrieb nur zwischen Unter St. Veit, Hummelgasse und Ottakring, Maroltingergasse.<br> <br>Voraussichtliche Dauer: 19:45 Uhr.<br><br>Grund: Fremder Verkehrsunfall im Bereich Wilhelminenstraße # Sandleitengasse.",
-    "location": "Wilhelminenstraße  / Sandleitengasse",
-    "name": "I20261019-0041",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2",
-     "10"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "102",
-       "lineName": "2",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "110",
-       "lineName": "10",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T18:33:00.000+0200",
-     "end": "2026-10-19T19:23:00.000+0200",
-     "lastUpdate": "2026-10-19T19:23:00.000+0200",
-     "resume": "2026-10-19T19:23:00.000+0200",
-     "start": "2026-10-19T18:31:00.000+0200"
-    },
-    "title": "2, 10: Fremder Verkehrsunfall"
    },
    {
     "attributes": {
@@ -577,12 +329,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-19T19:23:00.000+0200",
-     "end": "2026-10-19T23:55:00.000+0200",
-     "lastUpdate": "2026-10-19T19:23:00.000+0200",
-     "resume": "2026-10-19T19:23:00.000+0200",
+     "end": "2026-10-19T20:08:00.000+0200",
+     "lastUpdate": "2026-10-19T20:08:00.000+0200",
+     "resume": "2026-10-19T20:08:00.000+0200",
      "start": "2026-10-19T18:31:00.000+0200"
     },
     "title": "10: Fremder Verkehrsunfall"
@@ -691,6 +443,80 @@
      "start": "2026-10-19T19:27:00.000+0200"
     },
     "title": "7A: Polizeieinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "62": "ptTram"
+     }
+    },
+    "description": "Linie 62: Betrieb nur zwischen Oper, Karlsplatz U und Wattmanngasse. Voraussichtliche Dauer: 20:35 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Klinik Hietzing.",
+    "descriptionHTML": "Linie 62:<br>Betrieb nur zwischen Oper, Karlsplatz U und Wattmanngasse.<br> <br>Voraussichtliche Dauer: 20:35 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Klinik Hietzing.",
+    "name": "I20261019-0045",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "162",
+       "lineName": "62",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1730
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-19T20:05:00.000+0200",
+     "end": "2026-10-19T20:24:00.000+0200",
+     "lastUpdate": "2026-10-19T20:24:00.000+0200",
+     "resume": "2026-10-19T20:24:00.000+0200",
+     "start": "2026-10-19T20:04:00.000+0200"
+    },
+    "title": "62: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "62": "ptTram"
+     }
+    },
+    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "name": "I20261019-0045-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "162",
+       "lineName": "62",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "relatedStops": [
+     1730
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-19T20:24:00.000+0200",
+     "end": "2026-10-19T23:55:00.000+0200",
+     "lastUpdate": "2026-10-19T20:24:00.000+0200",
+     "resume": "2026-10-19T20:24:00.000+0200",
+     "start": "2026-10-19T20:04:00.000+0200"
+    },
+    "title": "62: Schadhaftes Fahrzeug"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1213,6 +1039,78 @@
      "start": "2026-10-14T00:00:23.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+   },
+   {
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1616-162",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1616
+    ],
+    "time": {
+     "end": "2026-10-19T21:08:00.000+0200",
+     "start": "2026-10-19T20:09:11.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb ab Hofwiesengasse",
+    "name": "R1735-162",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1735
+    ],
+    "time": {
+     "end": "2026-10-19T21:08:00.000+0200",
+     "start": "2026-10-19T20:09:40.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Hofwiesengasse"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb ab Hofwiesengasse",
+    "name": "R1737-162",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1737
+    ],
+    "time": {
+     "end": "2026-10-19T21:08:00.000+0200",
+     "start": "2026-10-19T20:09:40.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Hofwiesengasse"
+   },
+   {
+    "description": "Schadhafter Zug\nBetrieb ab Hofwiesengasse",
+    "name": "R1738-162",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1738
+    ],
+    "time": {
+     "end": "2026-10-19T21:08:00.000+0200",
+     "start": "2026-10-19T20:09:40.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Hofwiesengasse"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
