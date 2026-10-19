@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 19 Oct 2026 04:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 05:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[80A: ÖBB-construction works]]></title>
@@ -124,7 +124,7 @@
       <content:encoded><![CDATA[Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling …<br/>[Until 25.12.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[N8: Track construction works]]></title>
+      <title><![CDATA[N8: Buses stop at Aßmayergasse just after Flurschützstraße for line 59A]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">10b9a6d53b42f1dead1c688ecfaaf4e6a3c8058ce9e29c10c1d6b71e47353c17</guid>
       <pubDate>Mon, 19 Oct 2026 00:45:04 +0200</pubDate>
@@ -132,8 +132,8 @@
       <ext:first_seen>Sat, 10 Oct 2026 01:00:50 +0200</ext:first_seen>
       <ext:starts_at>Mon, 19 Oct 2026 00:45:04 +0200</ext:starts_at>
       <ext:ends_at>Mon, 19 Oct 2026 05:15:00 +0200</ext:ends_at>
-      <description>Buses stop at Aßmayergasse just after Flurschützstraße for line 59A, Aßmayergasse 48 for line 59A. [Today]</description>
-      <content:encoded><![CDATA[Buses stop at Aßmayergasse just after Flurschützstraße for line 59A, Aßmayergasse 48 for line 59A.<br/>[Today]]]></content:encoded>
+      <description>Reason: track construction works. [Today]</description>
+      <content:encoded><![CDATA[Reason: track construction works.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
