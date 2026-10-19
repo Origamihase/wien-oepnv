@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261019-0005-F01, I20261019-0008, I20260917-0012, I20260922-0032, I20261019-0007, I20260925-0011, I20261019-0009, I20261019-0011-F01, I20261019-0011, I20260909-0007, I20261019-0006-F01, I20261019-0010"
+    "trafficInfoNameList": "I20261019-0008, I20260917-0012, I20261019-0010, I20261019-0013, I20260922-0032, I20261019-0014, I20261019-0007, I20260925-0011, I20261019-0011, I20261019-0011-F01, I20260909-0007, I20261019-0009, I20261019-0014-F01, I20261019-0014-F02, I20261019-0012"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R36-152, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R2025-671, R318-437, R1472-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R115-136, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R2025-671, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R36-152, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R1448-412, R1474-412, R1445-149, R2558-125, R2372-627, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R1974-466, R500-101, R521-140, R192-141, R192-140, R193-141, R190-0, R177-0, R192-0, R189-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,80 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261019-0005-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "301",
-       "lineName": "U1",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4127
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T08:44:00.000+0200",
-     "end": "2026-10-19T10:35:00.000+0200",
-     "lastUpdate": "2026-10-19T10:35:00.000+0200",
-     "resume": "2026-10-19T10:35:00.000+0200",
-     "start": "2026-10-19T08:11:00.000+0200"
-    },
-    "title": "U1: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "38": "ptTram"
-     }
-    },
-    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261019-0006-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "138",
-       "lineName": "38",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "relatedStops": [
-     1217
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T09:56:00.000+0200",
-     "end": "2026-10-19T10:37:00.000+0200",
-     "lastUpdate": "2026-10-19T10:37:00.000+0200",
-     "resume": "2026-10-19T10:37:00.000+0200",
-     "start": "2026-10-19T09:52:00.000+0200"
-    },
-    "title": "38: Schadhaftes Fahrzeug"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "66A": "ptBusCity"
      }
     },
@@ -366,12 +292,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-19T10:59:00.000+0200",
-     "end": "2026-10-19T23:55:00.000+0200",
-     "lastUpdate": "2026-10-19T10:59:00.000+0200",
-     "resume": "2026-10-19T10:58:00.000+0200",
+     "end": "2026-10-19T11:32:00.000+0200",
+     "lastUpdate": "2026-10-19T11:32:00.000+0200",
+     "resume": "2026-10-19T11:32:00.000+0200",
      "start": "2026-10-19T10:58:00.000+0200"
     },
     "title": "U4: Betriebsstörung"
@@ -400,12 +326,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-19T11:00:00.000+0200",
-     "end": "2026-10-19T23:55:00.000+0200",
-     "lastUpdate": "2026-10-19T11:00:00.000+0200",
-     "resume": "2026-10-19T10:59:00.000+0200",
+     "end": "2026-10-19T11:32:00.000+0200",
+     "lastUpdate": "2026-10-19T11:32:00.000+0200",
+     "resume": "2026-10-19T11:32:00.000+0200",
      "start": "2026-10-19T10:59:00.000+0200"
     },
     "title": "U6: Betriebsstörung"
@@ -474,15 +400,197 @@
     "relatedStops": [
      4182
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-19T11:27:00.000+0200",
-     "end": "2026-10-19T23:55:00.000+0200",
-     "lastUpdate": "2026-10-19T11:27:00.000+0200",
-     "resume": "2026-10-19T11:27:00.000+0200",
+     "end": "2026-10-19T11:50:00.000+0200",
+     "lastUpdate": "2026-10-19T11:50:00.000+0200",
+     "resume": "2026-10-19T11:50:00.000+0200",
      "start": "2026-10-19T11:26:00.000+0200"
     },
     "title": "U1: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "12A": "ptBusCity"
+     }
+    },
+    "description": "Die Linie 12A wird in Richtung Eichenstraße zwischen Auf der Schmelz und Johnstraße U über Oeverseestraße , Minciostraße , Schanzstraße umgeleitet. Voraussichtliche Dauer: 12:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Akkonplatz.",
+    "descriptionHTML": "Die Linie 12A wird in Richtung Eichenstraße zwischen Auf der Schmelz und Johnstraße U über Oeverseestraße , Minciostraße , Schanzstraße umgeleitet.<br> <br>Voraussichtliche Dauer: 12:45 Uhr.<br><br>Grund: Rettungseinsatz im Haltestellenbereich Akkonplatz.",
+    "name": "I20261019-0012",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "412",
+       "lineName": "12A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "relatedStops": [
+     2885
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-19T11:35:00.000+0200",
+     "end": "2026-10-19T23:55:00.000+0200",
+     "lastUpdate": "2026-10-19T11:59:00.000+0200",
+     "start": "2026-10-19T11:34:00.000+0200"
+    },
+    "title": "12A: Rettungseinsatz"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "16A": "ptBusCity"
+     }
+    },
+    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "Linie 16A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsunfall.",
+    "name": "I20261019-0013",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "16A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "416",
+       "lineName": "16A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-19T11:36:00.000+0200",
+     "end": "2026-10-19T23:55:00.000+0200",
+     "lastUpdate": "2026-10-19T11:36:00.000+0200",
+     "resume": "2026-10-19T11:35:00.000+0200",
+     "start": "2026-10-19T11:35:00.000+0200"
+    },
+    "title": "16A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "40": "ptTram",
+      "41": "ptTram"
+     }
+    },
+    "description": "Linie 40: Umleitung in Richtung Gersthof, Herbeckstraße zwischen Währinger Straße, Volksoper U und Gersthof S über Michelbeuern-AKH U (Strecke Linien 42 und 9). Linie 41: Umleitung in Richtung Pötzleinsdorf zwischen Währinger Straße, Volksoper U und Gersthof S über Michelbeuern-AKH U (Strecke der Linien 42 und 9). Voraussichtliche Dauer: 12:15 Uhr. Grund: Falschparker im Bereich Gentzgasse 116.",
+    "descriptionHTML": "Linie 40:<br>Umleitung in Richtung Gersthof, Herbeckstraße <br>zwischen Währinger Straße, Volksoper U und Gersthof S <br>über Michelbeuern-AKH U (Strecke Linien 42 und 9).<br>Linie 41:<br>Umleitung in Richtung Pötzleinsdorf <br>zwischen Währinger Straße, Volksoper U und Gersthof S <br>über Michelbeuern-AKH U (Strecke der Linien 42 und 9).<br> <br>Voraussichtliche Dauer: 12:15 Uhr.<br><br>Grund: Falschparker im Bereich Gentzgasse 116.",
+    "location": "Gentzgasse  116",
+    "name": "I20261019-0014",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "40",
+     "41"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "140",
+       "lineName": "40",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "141",
+       "lineName": "41",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-19T11:36:00.000+0200",
+     "end": "2026-10-19T11:57:00.000+0200",
+     "lastUpdate": "2026-10-19T11:57:00.000+0200",
+     "resume": "2026-10-19T11:57:00.000+0200",
+     "start": "2026-10-19T11:35:00.000+0200"
+    },
+    "title": "40, 41: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "40": "ptTram"
+     }
+    },
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Gentzgasse  116",
+    "name": "I20261019-0014-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "140",
+       "lineName": "40",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-19T11:57:00.000+0200",
+     "end": "2026-10-19T23:55:00.000+0200",
+     "lastUpdate": "2026-10-19T11:57:00.000+0200",
+     "resume": "2026-10-19T11:57:00.000+0200",
+     "start": "2026-10-19T11:35:00.000+0200"
+    },
+    "title": "40: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "41": "ptTram"
+     }
+    },
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Gentzgasse  116",
+    "name": "I20261019-0014-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "141",
+       "lineName": "41",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-19T11:57:00.000+0200",
+     "end": "2026-10-19T23:55:00.000+0200",
+     "lastUpdate": "2026-10-19T11:57:00.000+0200",
+     "resume": "2026-10-19T11:57:00.000+0200",
+     "start": "2026-10-19T11:35:00.000+0200"
+    },
+    "title": "41: Falschparker"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -881,6 +989,36 @@
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
    },
    {
+    "description": "Falschparker\nBetrieb ab\nGersthof <\n(Umleitung)",
+    "name": "R177-0",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     177
+    ],
+    "time": {
+     "end": "2026-10-19T12:45:00.000+0200",
+     "start": "2026-10-19T11:45:52.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab\nGersthof <\n(Umleitung)"
+   },
+   {
+    "description": "Falschparker\nUmleitung\nEinstieg bei\nLinie 42",
+    "name": "R189-0",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     189
+    ],
+    "time": {
+     "end": "2026-10-19T12:45:00.000+0200",
+     "start": "2026-10-19T11:46:22.000+0200"
+    },
+    "title": "Falschparker\nUmleitung\nEinstieg bei\nLinie 42"
+   },
+   {
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -897,6 +1035,90 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
+   },
+   {
+    "description": "Falschparker\nBetrieb ab\nGersthof <\n(Umleitung)",
+    "name": "R190-0",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     190
+    ],
+    "time": {
+     "end": "2026-10-19T12:45:00.000+0200",
+     "start": "2026-10-19T11:45:52.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab\nGersthof <\n(Umleitung)"
+   },
+   {
+    "description": "Falschparker\nBetrieb ab\nGersthof <\n(Umleitung)",
+    "name": "R192-0",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     192
+    ],
+    "time": {
+     "end": "2026-10-19T12:45:00.000+0200",
+     "start": "2026-10-19T11:45:52.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab\nGersthof <\n(Umleitung)"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R192-140",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     192
+    ],
+    "time": {
+     "end": "2026-10-19T12:36:00.000+0200",
+     "start": "2026-10-19T11:36:51.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R192-141",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     192
+    ],
+    "time": {
+     "end": "2026-10-19T12:36:00.000+0200",
+     "start": "2026-10-19T11:36:51.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "description": "Falschparker\nEinstieg bei Linie 40",
+    "name": "R193-141",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     193
+    ],
+    "time": {
+     "end": "2026-10-19T12:46:00.000+0200",
+     "start": "2026-10-19T11:36:51.000+0200"
+    },
+    "title": "Falschparker\nEinstieg bei Linie 40"
    },
    {
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
@@ -1290,6 +1512,24 @@
      "start": "2026-10-19T05:00:11.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R521-140",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     521
+    ],
+    "time": {
+     "end": "2026-10-19T12:36:00.000+0200",
+     "start": "2026-10-19T11:36:50.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
