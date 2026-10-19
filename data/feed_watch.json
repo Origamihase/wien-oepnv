@@ -1,32 +1,28 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-19T15:31:12.120780+00:00",
- "built": "2026-10-19T17:30:56+02:00",
+ "updated": "2026-10-19T16:01:11.098562+00:00",
+ "built": "2026-10-19T18:00:59+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-19T17:30:56+02:00",
+  "built": "2026-10-19T18:00:59+02:00",
   "items": [
+   {
+    "title": "5A/11A: Falschparker",
+    "time_line": "Seit 17:42"
+   },
+   {
+    "title": "27: Verkehrsunfall",
+    "time_line": "Seit 17:33"
+   },
    {
     "title": "63A: Verkehrsüberlastung",
     "time_line": "Seit 17:05"
    },
    {
-    "title": "62: Rettungseinsatz",
-    "time_line": "Seit 16:41"
-   },
-   {
     "title": "43: Verkehrsunfall",
     "time_line": "Seit 16:35"
-   },
-   {
-    "title": "U3: Schadhaftes Fahrzeug",
-    "time_line": "Seit 16:34"
-   },
-   {
-    "title": "U2: Betriebsstörung",
-    "time_line": "Seit 16:20"
    },
    {
     "title": "59A: Verkehrsüberlastung",
@@ -47,6 +43,10 @@
    {
     "title": "10A: Verkehrsüberlastung",
     "time_line": "Seit 14:46"
+   },
+   {
+    "title": "80A: ÖBB-Bauarbeiten",
+    "time_line": "Ab Di 20.10. bis 31.12.2027"
    }
   ]
  },
@@ -6764,6 +6764,26 @@
    "discarded": {
     "wl": 28,
     "oebb": 141,
+    "baustellen": 69
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 108
+   }
+  },
+  {
+   "t": "2026-10-19T16:01:11.098562+00:00",
+   "raw": {
+    "wl-stoerungen": 97,
+    "wl-hinweise": 106,
+    "oebb": 165,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 30,
+    "oebb": 142,
     "baustellen": 69
    },
    "cache": {
