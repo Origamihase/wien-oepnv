@@ -1,20 +1,5 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": [
-  {
-   "key": "R2009-171|2026-10-19T07:42:27.000+0200|Verkehrsunfall\nEinstieg bei Linie 15A",
-   "name": "R2009-171",
-   "title": "Verkehrsunfall\nEinstieg bei Linie 15A",
-   "end": "2026-10-19T08:41:00.000+0200",
-   "incident": "I20261019-0003"
-  },
-  {
-   "key": "R2043-171|2026-10-19T07:43:28.000+0200|Verkehrsunfall\nEinstieg bei Linie 18 !",
-   "name": "R2043-171",
-   "title": "Verkehrsunfall\nEinstieg bei Linie 18 !",
-   "end": "2026-10-19T08:43:00.000+0200",
-   "incident": "I20261019-0003"
-  }
- ]
+ "tickers": []
 }
