@@ -725,6 +725,70 @@ def _oebb_title_route_first(sentences: list[str], title: str, *, oebb: bool) -> 
     return sentences
 
 
+_OEBB_SECTION_DATE_RE = re.compile(r"\b(\d{1,2})\.(\d{1,2})\.(\d{4})\b")
+
+
+def _oebb_lead_section_end(it: Any) -> datetime | None:
+    """The end of the ÖBB section that leads the shown text, when it ends sooner.
+
+    Operator decision 2026-10-19 (card "Ja, als Regel"): when
+    :func:`_oebb_title_route_first` moves a later section to the front
+    because it names the title's route, the end marker and the item's end
+    follow that section. Published 2026-10-19 from TRACKINFO 901477 (notice
+    17.10.–21.10. for works between Salzburg and Flughafen Wien)::
+
+        Wien Hütteldorf ↔ Wien Hauptbahnhof
+        Teilausfall: Von 18.10.2026 bis 19.10.2026 kann der Zug RJ 263
+        zwischen Wien Hütteldorf Bahnhof (U) und Wien Hbf (U) nicht fahren.
+        [Bis Mi 21.10.]
+
+    The text and the marker disagreed, and from 20.10. the slide would
+    have shown a cancellation already over. The section's last date counts
+    (end of that day, Vienna); it only ever shortens ``ends_at``, never
+    extends it, and a section without a date keeps the notice's end.
+    """
+    if it.get("source") != _OEBB_SOURCE:
+        return None
+    ends_at = it.get("ends_at")
+    if not isinstance(ends_at, datetime):
+        return None
+    raw_title, _ = _display_title_parts(it)
+    text, _ = _close_blocks(
+        html_to_text(it.get("description") or "", collapse_newlines=True, mark_block_ends=True),
+        raw_title,
+    )
+    text = _sanitize_text(text).strip()
+    text = _DATE_SINGLE_PREFIX_RE.sub("", _DATE_RANGE_PREFIX_RE.sub("", text))
+    text = _WHITESPACE_CLEANUP_RE.sub(" ", text.replace("•", " ")).strip()
+    sentences = [s.strip() for s in _SENTENCE_SPLIT_RE.split(text) if s.strip()]
+    lead = _oebb_title_route_first(sentences, raw_title, oebb=True)
+    if not lead or not sentences or lead[0] == sentences[0]:
+        return None
+    days: list[date] = []
+    for day, month, year in _OEBB_SECTION_DATE_RE.findall(lead[0]):
+        try:
+            days.append(date(int(year), int(month), int(day)))
+        except ValueError:
+            continue
+    if not days:
+        return None
+    last = max(days)
+    end = datetime(last.year, last.month, last.day, 23, 59, 59, tzinfo=_VIENNA_TZ)
+    starts_at = it.get("starts_at")
+    if isinstance(starts_at, datetime) and end < starts_at:
+        return None
+    return end if end < ends_at else None
+
+
+def _end_with_oebb_lead_section(items: list[FeedItem]) -> None:
+    """Shorten ``ends_at`` to the shown ÖBB section (:func:`_oebb_lead_section_end`)."""
+    for it in items:
+        if isinstance(it, dict):
+            end = _oebb_lead_section_end(it)
+            if end is not None:
+                it["ends_at"] = end
+
+
 def _with_second_sentence(first: str, second: str, *, oebb: bool, raw_title: str) -> str:
     """The summary's first sentence, with the second one when it may follow.
 
@@ -11552,6 +11616,8 @@ def _assemble_feed_items(
     # Before the age filter: it reads the same first_seen.
     _restart_recurring_occurrences(items, state, now)
     _note_announced_starts(items, state, now)
+    # The shown ÖBB section's end, before the age filter reads ``ends_at``.
+    _end_with_oebb_lead_section(items)
     items, dropped_ids = _drop_old_items(items, now, state)
     stats.dropped_ids = dropped_ids
     stats.filter_duration = perf_counter() - filter_start

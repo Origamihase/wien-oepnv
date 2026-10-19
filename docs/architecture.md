@@ -736,6 +736,21 @@ verdrängt eine andere Störung.
   „RJ 263“ oder „ÖBB“ bleiben. Replay über alle 589 ÖBB-Texte im Cache seit
   Mai: nur diese Meldung ändert sich (drei ihrer Fassungen), Titel und Zahl
   der Items bleiben gleich.
+  **Das Ende folgt dem gezeigten Abschnitt (seit 2026-10-19).** Rückt so ein
+  späterer Abschnitt nach vorn, gilt sein letztes Datum als Ende der Meldung
+  (Tagesende, Wiener Zeit): Zeitzeile und Verbleib im Feed folgen ihm,
+  Betreiberentscheidung vom 19.10. (Karte „Ja, als Regel“). Anlass war
+  dieselbe Meldung: Der Fernseher zeigte „Teilausfall: Von 18.10.2026 bis
+  19.10.2026 kann der Zug RJ 263 … nicht fahren. [Bis Mi 21.10.]“, die Marke
+  kam aus dem Zeitraum der ganzen Meldung, und ab 20.10. hätte die Folie einen
+  vorbeigegangenen Ausfall gezeigt. `_oebb_lead_section_end` kürzt `ends_at`
+  nur, verlängert nie; ein Abschnitt ohne Datum behält das Ende der Meldung.
+  `_end_with_oebb_lead_section` läuft in `_assemble_feed_items` vor dem
+  Altersfilter. Prüfung aller 925 ÖBB-Texte im Cache seit Mai: nur diese
+  Meldung ändert sich; Nachbau von 241 Feed-Ständen (15.–19.10.): nur ihre
+  Zeitzeile („[Heute]“ am 19.10. statt „[Bis Mi 21.10.]“), Reihenfolge und
+  State gleich; ein Nachbau für den 20.10. füllt ihren Platz mit der nächsten
+  Meldung.
 * **„Voraussichtlich bis 14:10 Uhr“ statt „Voraussichtliche Dauer: 14:10
   Uhr“ (seit 2026-10-06, Betreiberentscheidung „Dauer-Text anpassen“).**
   WLs Störungsvorlage nennt das erwartete Ende unter einem Dauer-Label. Auf

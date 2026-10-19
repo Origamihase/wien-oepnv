@@ -113,3 +113,63 @@ def test_only_labels_change_case() -> None:
     assert bf._oebb_section_labels_cased(
         "VORVERLEGTE ABFAHRTSZEITEN/GEÄNDERTE FAHRZEITEN: Der Zug RJ 263 der ÖBB: ACHTUNG: x"
     ) == "Vorverlegte Abfahrtszeiten/Geänderte Fahrzeiten: Der Zug RJ 263 der ÖBB: Achtung: x"
+
+
+# Operator decision 2026-10-19 (card "Ja, als Regel"): the end follows the
+# section that leads the shown text. The TV showed "Von 18.10.2026 bis
+# 19.10.2026 … [Bis Mi 21.10.]", and from 20.10. a cancellation already over.
+
+
+def _dated(item: FeedItem) -> dict[str, object]:
+    out: dict[str, object] = dict(item)
+    out["starts_at"] = datetime(2026, 10, 17, tzinfo=_VIENNA)
+    out["ends_at"] = datetime(2026, 10, 21, 23, 59, 59, tzinfo=_VIENNA)
+    return out
+
+
+def test_the_end_follows_the_leading_section() -> None:
+    item = _dated(HUETTELDORF)
+    assert bf._oebb_lead_section_end(item) == datetime(2026, 10, 19, 23, 59, 59, tzinfo=_VIENNA)
+    items = [item]
+    bf._end_with_oebb_lead_section(items)  # type: ignore[arg-type]
+    assert item["ends_at"] == datetime(2026, 10, 19, 23, 59, 59, tzinfo=_VIENNA)
+
+
+def test_the_end_stays_when_sentence_one_leads() -> None:
+    # Same notice, but titled with the route of sentence one: nothing moves.
+    item = _dated({**HUETTELDORF, "title": "Salzburg Hbf ↔ Flughafen Wien"})
+    assert bf._oebb_lead_section_end(item) is None
+
+
+def test_the_end_is_never_extended() -> None:
+    item = _dated(HUETTELDORF)
+    item["ends_at"] = datetime(2026, 10, 19, 12, 0, tzinfo=_VIENNA)
+    assert bf._oebb_lead_section_end(item) is None
+
+
+def test_a_section_without_date_keeps_the_end() -> None:
+    desc = str(HUETTELDORF["description"]).replace(
+        "Von <b>18.10.2026</b> bis <b>19.10.2026</b> kann", "Derzeit kann"
+    )
+    assert bf._oebb_lead_section_end(_dated({**HUETTELDORF, "description": desc})) is None
+
+
+def test_other_sources_keep_their_end() -> None:
+    assert bf._oebb_lead_section_end(_dated({**HUETTELDORF, "source": "Wiener Linien"})) is None
+
+
+def test_the_section_end_is_wired_into_the_build() -> None:
+    from datetime import UTC
+
+    item = _dated(HUETTELDORF)
+    item["guid"] = "oebb-901477"
+    item["pubDate"] = datetime(2026, 9, 3, 9, 31, tzinfo=_VIENNA)
+    now = datetime(2026, 10, 20, 6, 0, tzinfo=UTC)
+    kept = bf._assemble_feed_items([item], {}, now)  # type: ignore[list-item]
+    assert all(it.get("guid") != "oebb-901477" for it in kept)
+    # Still in the feed on its last day.
+    item = _dated(HUETTELDORF)
+    item["guid"] = "oebb-901477"
+    item["pubDate"] = datetime(2026, 9, 3, 9, 31, tzinfo=_VIENNA)
+    kept = bf._assemble_feed_items([item], {}, datetime(2026, 10, 19, 12, 0, tzinfo=UTC))  # type: ignore[list-item]
+    assert [it.get("guid") for it in kept] == ["oebb-901477"]

@@ -5,6 +5,16 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **ÖBB: Ende folgt dem gezeigten Abschnitt (2026-10-19)**: Michaels
+  Entscheidung (Karte „Ja, als Regel“). Rückt ein späterer ÖBB-Abschnitt nach
+  vorn, weil er die Titelstrecke nennt (`_oebb_title_route_first`), gilt sein
+  letztes Datum als Ende: Zeitzeile und Verbleib im Feed folgen ihm. Anlass:
+  „Teilausfall: Von 18.10.2026 bis 19.10.2026 kann der Zug RJ 263 … nicht
+  fahren. [Bis Mi 21.10.]“; die Marke stammte aus dem Zeitraum der ganzen
+  Meldung. `_oebb_lead_section_end` kürzt `ends_at` nur, nie länger. Von 925
+  ÖBB-Texten seit Mai ändert sich nur diese Meldung; Nachbau von 241
+  Feed-Ständen (15.–19.10.): nur ihre Zeitzeile. Tests in
+  `tests/test_oebb_titelstrecke_zuerst.py`; `docs/architecture.md`.
 * **Einheitliches Bild je Meldung für graue TV-Folien (2026-10-19)**:
   Michaels Wunsch zur EasySignage-Vorschau: „Der roter WL-Hintergrund sieht
   nicht gut aus. Der graue Hintergrund gefällt mir besser.“ EasySignage nahm
