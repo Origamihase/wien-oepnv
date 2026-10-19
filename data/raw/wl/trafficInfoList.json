@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261019-0001-F01, I20261019-0001, I20261019-0003-F01, I20261019-0003, I20261019-0002-F01, I20261019-0002"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261019-0005, I20261019-0003-F01, I20261019-0003, I20261019-0002-F01, I20261019-0002, I20261019-0004-F01, I20261019-0004, I20261019-0001-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R115-136, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R2025-671, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R36-152, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R1448-412, R1474-412, R1445-149, R2558-125, R2372-627, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R1974-466, R500-101, R2016-171, R2020-171, R2021-171, R2039-171, R2038-171, R2036-171, R2009-171, R2043-171, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R115-136, R45-136, R19-136, R130-136, R119-136, R2025-671, R118-136, R117-136, R116-136, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R36-152, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R2558-125, R2372-627, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R1974-466, R500-101, R2021-171, R2020-171, R2016-171, R2039-171, R2036-171, R2038-171, R2009-171, R2043-171, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -206,41 +206,6 @@
       "9": "ptTram"
      }
     },
-    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 07:15 Uhr. Grund: Falschparker im Bereich Hormayrgasse 17.",
-    "descriptionHTML": "Linie 9:<br>Fahrtbehinderung in Richtung Westbahnhof S U.<br> <br>Voraussichtliche Dauer: 07:15 Uhr.<br><br>Grund: Falschparker im Bereich Hormayrgasse 17.",
-    "location": "Hormayrgasse 17",
-    "name": "I20261019-0001",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "109",
-       "lineName": "9",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T06:45:00.000+0200",
-     "end": "2026-10-19T07:04:00.000+0200",
-     "lastUpdate": "2026-10-19T07:04:00.000+0200",
-     "resume": "2026-10-19T07:04:00.000+0200",
-     "start": "2026-10-19T06:44:00.000+0200"
-    },
-    "title": "9: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "9": "ptTram"
-     }
-    },
     "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "location": "Hormayrgasse 17",
@@ -263,8 +228,8 @@
     "status": "active",
     "time": {
      "created": "2026-10-19T07:04:00.000+0200",
-     "end": "2026-10-19T23:55:00.000+0200",
-     "lastUpdate": "2026-10-19T07:04:00.000+0200",
+     "end": "2026-10-19T08:50:00.000+0200",
+     "lastUpdate": "2026-10-19T08:26:00.000+0200",
      "resume": "2026-10-19T07:04:00.000+0200",
      "start": "2026-10-19T06:44:00.000+0200"
     },
@@ -409,6 +374,112 @@
      "start": "2026-10-19T07:35:00.000+0200"
     },
     "title": "71: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "98A": "ptBusCity"
+     }
+    },
+    "description": "Linie 98A: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 08:30 Uhr. Grund: Verkehrsunfall im Bereich Oberdorfstraße.",
+    "descriptionHTML": "Linie 98A:<br>Fahrtbehinderung in beiden Richtungen.<br> <br>Voraussichtliche Dauer: 08:30 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Oberdorfstraße.",
+    "location": "Oberdorfstraße",
+    "name": "I20261019-0004",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "98A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "498",
+       "lineName": "98A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-19T08:06:00.000+0200",
+     "end": "2026-10-19T08:09:00.000+0200",
+     "lastUpdate": "2026-10-19T08:09:00.000+0200",
+     "resume": "2026-10-19T08:09:00.000+0200",
+     "start": "2026-10-19T08:05:00.000+0200"
+    },
+    "title": "98A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "98A": "ptBusCity"
+     }
+    },
+    "description": "Linie 98A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 98A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Oberdorfstraße",
+    "name": "I20261019-0004-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "98A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "498",
+       "lineName": "98A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-19T08:09:00.000+0200",
+     "end": "2026-10-19T23:55:00.000+0200",
+     "lastUpdate": "2026-10-19T08:09:00.000+0200",
+     "resume": "2026-10-19T08:09:00.000+0200",
+     "start": "2026-10-19T08:05:00.000+0200"
+    },
+    "title": "98A: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Kagran und Kagraner Platz in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 08:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kagran.",
+    "descriptionHTML": "Die Linie U1 fährt derzeit zwischen den Stationen Kagran und Kagraner Platz in beiden Richtungen über Gleis 1.<br> <br>Voraussichtliche Dauer: 08:40 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kagran.",
+    "name": "I20261019-0005",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "301",
+       "lineName": "U1",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4127
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-19T08:12:00.000+0200",
+     "end": "2026-10-19T23:55:00.000+0200",
+     "lastUpdate": "2026-10-19T08:16:00.000+0200",
+     "start": "2026-10-19T08:11:00.000+0200"
+    },
+    "title": "U1: Schadhaftes Fahrzeug"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
