@@ -3,32 +3,95 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R1348-143|2026-10-19T16:38:20.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R1348-143",
+   "key": "R2172-127|2026-10-19T17:56:29.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2172-127",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-19T18:16:00.000+0200",
-   "incident": "I20261019-0034"
+   "end": "2026-10-19T18:56:00.000+0200",
+   "incident": "I20261019-0037"
   },
   {
-   "key": "R1349-143|2026-10-19T16:38:20.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R1349-143",
+   "key": "R2173-127|2026-10-19T17:56:29.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2173-127",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-19T18:16:00.000+0200",
-   "incident": "I20261019-0034"
+   "end": "2026-10-19T18:56:00.000+0200",
+   "incident": "I20261019-0037"
   },
   {
-   "key": "R1350-143|2026-10-19T16:38:20.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R1350-143",
+   "key": "R2175-127|2026-10-19T17:56:29.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2175-127",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-19T18:16:00.000+0200",
-   "incident": "I20261019-0034"
+   "end": "2026-10-19T18:56:00.000+0200",
+   "incident": "I20261019-0037"
   },
   {
-   "key": "R1351-143|2026-10-19T16:38:20.000+0200|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R1351-143",
+   "key": "R2176-127|2026-10-19T17:56:29.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2176-127",
    "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-10-19T18:16:00.000+0200",
-   "incident": "I20261019-0034"
+   "end": "2026-10-19T18:56:00.000+0200",
+   "incident": "I20261019-0037"
+  },
+  {
+   "key": "R2177-127|2026-10-19T17:56:29.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2177-127",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T18:56:00.000+0200",
+   "incident": "I20261019-0037"
+  },
+  {
+   "key": "R2178-127|2026-10-19T17:39:58.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2178-127",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T18:39:00.000+0200",
+   "incident": "I20261019-0037"
+  },
+  {
+   "key": "R2179-127|2026-10-19T17:39:58.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2179-127",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T18:39:00.000+0200",
+   "incident": "I20261019-0037"
+  },
+  {
+   "key": "R2183-127|2026-10-19T17:39:57.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2183-127",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T18:39:00.000+0200",
+   "incident": "I20261019-0037"
+  },
+  {
+   "key": "R2184-127|2026-10-19T17:39:57.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2184-127",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T18:39:00.000+0200",
+   "incident": "I20261019-0037"
+  },
+  {
+   "key": "R2185-127|2026-10-19T17:39:57.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2185-127",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T18:39:00.000+0200",
+   "incident": "I20261019-0037"
+  },
+  {
+   "key": "R2186-127|2026-10-19T17:39:57.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2186-127",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T18:39:00.000+0200",
+   "incident": "I20261019-0037"
+  },
+  {
+   "key": "R2188-127|2026-10-19T17:39:57.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2188-127",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T18:39:00.000+0200",
+   "incident": "I20261019-0037"
+  },
+  {
+   "key": "R2189-127|2026-10-19T17:39:57.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2189-127",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-19T18:39:00.000+0200",
+   "incident": "I20261019-0037"
   },
   {
    "key": "R2382-405|2026-10-19T17:51:28.000+0200|Fahrtbehinderung\nFalschparker",
