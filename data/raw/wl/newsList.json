@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_484, ftazW_368, ftazW_196, ftazW_1018061, ftazW_393, ftazW_15, ftazW_1032342, ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210, ftazW_352, ftazW_603, ftazW_19, ftazW_281, ftazW_1354391, ftazW_353, ftazW_282, ftazW_606, ftazW_1018092, ftazW_1018049, ftazW_477"
+    "trafficInfoNameList": "ftazW_484, ftazW_368, ftazW_196, ftazW_1018061, ftazW_393, ftazW_15, ftazW_1032342, ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210, ftazW_352, ftazW_603, ftazW_19, ftazW_281, ftazW_1354391, ftazW_353, ftazW_282, ftazW_606, ftazW_1018092, ftazW_1018049, ftazW_477, ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_572"
    }
   ],
   "poiCategoryGroups": [
@@ -4048,6 +4048,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "23.10.2026 00:45",
+     "ausVon": "22.10.2026 20:45",
+     "location": "U2 Mittelbahnsteig - Zwischengeschoss - Ausgang Taborstraße/Obere Augartenstraße",
+     "rbls": [
+      4261,
+      4262
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Taborstraße",
+     "status": "geplante Wartung",
+     "towards": "U2 beide Richtungen"
+    },
+    "description": "U2 Mittelbahnsteig - Zwischengeschoss - Ausgang Taborstraße/Obere Augartenstraße",
+    "elevatorId": "TB 01",
+    "name": "ftazW_1018058",
+    "parentName": "ftazW_1018058",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4261,
+     4262
+    ],
+    "time": {
+     "end": "2026-10-23T00:45:00.000+0200",
+     "start": "2026-10-22T20:45:00.000+0200"
+    },
+    "title": "Taborstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "20.10.2026 05:15",
      "ausVon": "20.10.2026 01:15",
      "location": "U2 Mittelbahnsteig - Ausgang Prater",
@@ -4680,6 +4719,82 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "23.10.2026 00:45",
+     "ausVon": "22.10.2026 20:45",
+     "location": "U3 Bahnsteig Richtung Ottakring - U3 Bahnsteig Richtung Simmering - Zwischengeschoss Aufgang Stiftgasse/Kirchengasse",
+     "rbls": [
+      4918,
+      4923
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Neubaugasse",
+     "status": "geplante Wartung",
+     "towards": "U3 Ottakring, U3 Simmering"
+    },
+    "description": "U3 Bahnsteig Richtung Ottakring - U3 Bahnsteig Richtung Simmering - Zwischengeschoss Aufgang Stiftgasse/Kirchengasse",
+    "elevatorId": "MA 04",
+    "name": "ftazW_355",
+    "parentName": "ftazW_355",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4918,
+     4923
+    ],
+    "time": {
+     "end": "2026-10-23T00:45:00.000+0200",
+     "start": "2026-10-22T20:45:00.000+0200"
+    },
+    "title": "Neubaugasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "23.10.2026 00:45",
+     "ausVon": "22.10.2026 20:45",
+     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Josefstädter Straße",
+     "rbls": [
+      4622
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Josefstädter Straße",
+     "status": "geplante Wartung",
+     "towards": "U6 Floridsdorf"
+    },
+    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Josefstädter Straße",
+    "elevatorId": "JS 01",
+    "name": "ftazW_36",
+    "parentName": "ftazW_36",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4622
+    ],
+    "time": {
+     "end": "2026-10-23T00:45:00.000+0200",
+     "start": "2026-10-22T20:45:00.000+0200"
+    },
+    "title": "Josefstädter Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "20.10.2026 05:15",
      "ausVon": "20.10.2026 01:15",
      "location": "Zwischengeschoss - Ausgang Schottenfeldgasse",
@@ -4926,6 +5041,82 @@
      "start": "2026-10-20T20:45:00.000+0200"
     },
     "title": "Alser Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "23.10.2026 00:45",
+     "ausVon": "22.10.2026 20:45",
+     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Morizgasse",
+     "rbls": [
+      4415
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Margaretengürtel",
+     "status": "geplante Wartung",
+     "towards": "U4 Heiligenstadt"
+    },
+    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Morizgasse",
+    "elevatorId": "MG 01",
+    "name": "ftazW_572",
+    "parentName": "ftazW_572",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4415
+    ],
+    "time": {
+     "end": "2026-10-23T00:45:00.000+0200",
+     "start": "2026-10-22T20:45:00.000+0200"
+    },
+    "title": "Margaretengürtel"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "23.10.2026 00:45",
+     "ausVon": "22.10.2026 20:45",
+     "location": "U4 beide Fahrtrichtungen - Passage",
+     "rbls": [
+      4401,
+      4436
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Hütteldorf",
+     "status": "geplante Wartung",
+     "towards": "U4 beide Richtungen"
+    },
+    "description": "U4 beide Fahrtrichtungen - Passage",
+    "elevatorId": "HF 01",
+    "name": "ftazW_576",
+    "parentName": "ftazW_576",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4401,
+     4436
+    ],
+    "time": {
+     "end": "2026-10-23T00:45:00.000+0200",
+     "start": "2026-10-22T20:45:00.000+0200"
+    },
+    "title": "Hütteldorf"
    },
    {
     "alertCause": "undefined alert cause",
