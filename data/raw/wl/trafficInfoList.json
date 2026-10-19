@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0001"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R100-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R2025-671, R101-136, R318-437, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R5815-671, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R1448-412, R1446-149, R1445-149, R1474-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R5815-671, R2034-571, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -211,6 +211,62 @@
      "start": "2026-09-25T08:55:00.000+0200"
     },
     "title": "26E: Gleisbauarbeiten"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "relatedLineTypes": {
+      "E4": "ptTram"
+     }
+    },
+    "description": "Linie E4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Testfall im Haltestellenbereich Augasse.",
+    "descriptionHTML": "<p>Linie E4:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Testfall im Haltestellenbereich Augasse.</p>",
+    "infoChannels": [
+     {
+      "tts": false
+     }
+    ],
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie E4:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Testfall im Haltestellenbereich Augasse.</p>",
+       "descriptionPlain": "Linie E4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Testfall im Haltestellenbereich Augasse.",
+       "title": "E4: Testfall"
+      }
+     }
+    ],
+    "name": "I20261020-0001",
+    "owner": "WL",
+    "parentName": "I20261020-0001",
+    "priority": "1",
+    "reasonId": 53,
+    "reasonName": "Testfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "E4"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 115,
+      "lineName": "E4",
+      "scenarioId": 1841,
+      "scenarioName": "Verspätung Beide FR",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     100
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-20T00:24:00.000+0200",
+     "end": "2026-10-20T00:28:00.000+0200",
+     "lastUpdate": "2026-10-20T00:28:00.000+0200",
+     "resume": "2026-10-20T00:28:00.000+0200",
+     "start": "2026-10-20T00:23:00.000+0200"
+    },
+    "title": "E4: Testfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -787,6 +843,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Simmeringer Hauptstr. 157",
+    "name": "R2034-571",
+    "owner": "WL",
+    "parentName": "R2034-571",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N71"
+    ],
+    "relatedStops": [
+     2034
+    ],
+    "time": {
+     "end": "2026-10-20T05:05:00.000+0200",
+     "start": "2026-10-20T00:25:08.000+0200"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Simmeringer Hauptstr. 157"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -1220,6 +1299,29 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
+    "name": "R500-101",
+    "owner": "WL",
+    "parentName": "R500-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     500
+    ],
+    "time": {
+     "end": "2026-10-20T04:59:00.000+0200",
+     "start": "2026-10-20T00:30:06.000+0200"
+    },
+    "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
     "alertCause": "undefined alert cause",
