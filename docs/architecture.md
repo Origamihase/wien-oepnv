@@ -1254,6 +1254,33 @@ behält ihren Link und bekommt keinen Tag. Titel, Texte, GUIDs und Reihenfolge
 ändern sich nicht; ob EasySignage den Tag anzeigt, sieht nur der Betreiber am
 Fernseher.
 
+### Ein einheitliches Bild je Meldung (seit 2026-10-19)
+
+Michael, 19.10.2026, zur EasySignage-Vorschau: „Der roter WL-Hintergrund sieht
+nicht gut aus. Der graue Hintergrund gefällt mir besser.“ Gewünscht sind
+einheitlich graue TV-Folien für alle Quellen.
+
+Hat eine Meldung kein eigenes Bild, zeigt EasySignage das Vorschaubild
+(`og:image`) der verlinkten Seite. `wienerlinien.at/betriebsinfo` liefert
+abwechselnd zwei Fassungen aus: meist mit `og:image` „image.png“, einer
+Adresse ohne Bild (graue Folie mit einem kleinen Symbol für ein fehlendes
+Bild), seltener mit dem roten WL-Logo (rote Folie). Die Linkziele der ÖBB-
+und Baustellen-Meldungen haben kein Vorschaubild.
+
+Darum trägt jede Meldung aller Quellen, im deutschen und im englischen Feed,
+dasselbe schlichte weiße Bild `docs/assets/feed-item.png` (1920 × 1080,
+veröffentlicht unter `https://origamihase.github.io/wien-oepnv/assets/feed-item.png`),
+als `<enclosure>` (RSS 2.0) und als `<media:content>` (Media RSS). Unter der
+dunklen Schicht von EasySignage erscheint Weiß als das gewählte Grau. Die
+Links bleiben beim Betreiber (Abschnitt oben). `_ITEM_IMAGE_BYTES` in
+`src/build_feed.py` ist die Dateigröße für das Pflichtattribut `length`;
+`tests/test_item_image.py` hält sie und die Maße gleich mit der Datei. Andere
+Feed-Leser können das Bild als weiße Vorschau anzeigen. Titel, Texte, GUIDs,
+Links und Reihenfolge ändern sich nicht (Nachbau von 216 Feed-Ständen
+15.–19.10.: bis auf die beiden Bild-Elemente identisch). Ob EasySignage das
+eigene Bild dem Vorschaubild vorzieht, sieht nur der Betreiber in der
+Vorschau und am Fernseher.
+
 ## 2. Die `request_safe`-Security-State-Machine
 
 `request_safe` ist ein einzelner 75-Zeilen-Orchestrator, der 14

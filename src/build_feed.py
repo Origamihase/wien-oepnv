@@ -104,6 +104,8 @@ ET.register_namespace("ext", "https://wien-oepnv.example/schema")
 ET.register_namespace("content", "http://purl.org/rss/1.0/modules/content/")
 GEORSS_NS = "http://www.georss.org/georss"
 ET.register_namespace("georss", GEORSS_NS)
+MEDIA_NS = "http://search.yahoo.com/mrss/"
+ET.register_namespace("media", MEDIA_NS)
 
 log = logging.getLogger("build_feed")
 
@@ -7949,6 +7951,36 @@ _ITEM_SOURCES: dict[str, _ItemSource] = {
 }
 
 
+# Michael, 19.10.2026: the TV slides (EasySignage) shall all look the same
+# grey; he does not like the red Wiener-Linien background. Without an image of
+# its own, EasySignage shows the preview image (og:image) of the item link, and
+# wienerlinien.at/betriebsinfo serves either a missing "image.png" (grey slide)
+# or the red WL logo (red slide), at random. So every item of every source
+# carries the same plain white image as ``<enclosure>`` and
+# ``<media:content>``; under EasySignage's dark layer it reads as the grey he
+# chose. The links stay with their operators (see ``_ITEM_SOURCES``).
+# ``_ITEM_IMAGE_BYTES`` is the file size RSS 2.0 asks for in ``length``;
+# tests/test_item_image.py keeps it equal to the file in docs/assets/.
+_ITEM_IMAGE_URL = "https://origamihase.github.io/wien-oepnv/assets/feed-item.png"
+_ITEM_IMAGE_BYTES = 3448
+_ITEM_IMAGE_WIDTH = 1920
+_ITEM_IMAGE_HEIGHT = 1080
+
+
+def _add_item_image(item: ET.Element) -> None:
+    """Attach the shared plain item image (see ``_ITEM_IMAGE_URL``)."""
+    enclosure = ET.SubElement(item, "enclosure")
+    enclosure.set("url", _ITEM_IMAGE_URL)
+    enclosure.set("length", str(_ITEM_IMAGE_BYTES))
+    enclosure.set("type", "image/png")
+    media = ET.SubElement(item, f"{{{MEDIA_NS}}}content")
+    media.set("url", _ITEM_IMAGE_URL)
+    media.set("type", "image/png")
+    media.set("medium", "image")
+    media.set("width", str(_ITEM_IMAGE_WIDTH))
+    media.set("height", str(_ITEM_IMAGE_HEIGHT))
+
+
 def _item_source(it: Any) -> _ItemSource | None:
     """Return the :class:`_ItemSource` for item ``it`` or ``None`` when unknown."""
     source = it.get("source")
@@ -11098,6 +11130,9 @@ def _emit_item(
         source_elem = ET.SubElement(item, "source")
         source_elem.text = item_source.name_en if lang == "en" else item_source.name_de
         source_elem.set("url", item_source.url)
+
+    # One plain image for every item, so TV slides stay uniformly grey.
+    _add_item_image(item)
 
     # Extensions
     ET.SubElement(item, "{https://wien-oepnv.example/schema}first_seen").text = _fmt_rfc2822(fs_dt)
