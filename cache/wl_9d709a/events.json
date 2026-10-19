@@ -806,62 +806,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2/10: Fremder Verkehrsunfall",
-    "description": "Linie 2: Umleitung in beiden Richtungen zwischen Dornbach und Johann-Nepomuk-Berger-Platz über die Strecke der Linien 43 und 9. Linie 10: Betrieb nur zwischen Unter St. Veit, Hummelgasse und Ottakring, Maroltingergasse. Voraussichtliche Dauer: 19:45 Uhr. Grund: Fremder Verkehrsunfall im Bereich Wilhelminenstraße # Sandleitengasse.",
+    "title": "10: Fremder Verkehrsunfall",
+    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "b1e7c767060afdb2fc178782e23534a92816cd2ac57ee7d583cc0ab708b82adf",
+    "guid": "a353875670c81bfb8e057d43db548115ca6c84c08a4b6f4e5ddfed91706f0a44",
     "pubDate": "2026-10-19T18:31:00+02:00",
     "starts_at": "2026-10-19T18:31:00+02:00",
     "ends_at": "2026-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=10,2|D=2026-10-19|TK=2 10 fremder verkehrsunfall",
+    "_identity": "wl|störung|L=10|D=2026-10-19|TK=10 fremder verkehrsunfall",
     "_wl_ids": [
       "I20261019-0041"
     ],
     "_incident_start": "2026-10-19T18:31:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10A: Verkehrsüberlastung",
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "132db5055970153595938fe1ef3cafd5080b443df40d6dfbacef3df29fdcd405",
-    "pubDate": "2026-10-19T14:46:00+02:00",
-    "starts_at": "2026-10-19T14:46:00+02:00",
-    "ends_at": "2026-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=10A|D=2026-10-19|TK=10a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261019-0024"
-    ],
-    "_incident_start": "2026-10-19T14:46:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10: Fremdunfall Betrieb ab Maroltingergasse",
-    "description": "Fremdunfall\nBetrieb ab Maroltingergasse",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "48318e15ba68624377f0a97dd4e56ea28e6e0aa438525d8d3557de750e18ff0c",
-    "pubDate": "2026-10-19T18:35:04+02:00",
-    "starts_at": "2026-10-19T18:35:04+02:00",
-    "ends_at": "2026-10-19T19:34:00+02:00",
-    "_identity": "wl|störung|L=10|D=2026-10-19|TK=fremdunfall betrieb ab maroltingergasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11A: Falschparker",
-    "description": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d639275fed205d39e9265cc9e6b073be44a4952e33d97ef0c1891f996a19ef98",
-    "pubDate": "2026-10-19T17:42:00+02:00",
-    "starts_at": "2026-10-19T17:42:00+02:00",
-    "ends_at": "2026-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=11A|D=2026-10-19|TK=falschparker",
-    "_wl_ids": [
-      "I20261019-0038"
-    ],
-    "_incident_start": "2026-10-19T17:42:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1082,42 +1038,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "27: Verkehrsunfall",
-    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "2: Fremder Verkehrsunfall",
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2944c0ef3d90e6a01626e659ff945114566768f92f2cfcb4aacd173962aa18ee",
-    "pubDate": "2026-10-19T17:33:00+02:00",
-    "starts_at": "2026-10-19T17:33:00+02:00",
+    "guid": "0749610181f65ab0658c177429fbd2fa37ffe19a156e13edf490d50626a4aa1b",
+    "pubDate": "2026-10-19T18:31:00+02:00",
+    "starts_at": "2026-10-19T18:31:00+02:00",
     "ends_at": "2026-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=27|D=2026-10-19|TK=27 verkehrsunfall",
+    "_identity": "wl|störung|L=2|D=2026-10-19|TK=2 fremder verkehrsunfall",
     "_wl_ids": [
-      "I20261019-0037"
+      "I20261019-0041"
     ],
-    "_incident_start": "2026-10-19T17:33:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fremdunfall Betrieb ab Mayssengasse",
-    "description": "Fremdunfall\nBetrieb ab Mayssengasse",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "f4be783be3024aa6b7da46345c0149da59d12fddaabc988f269215d6e5607c6e",
-    "pubDate": "2026-10-19T18:36:31+02:00",
-    "starts_at": "2026-10-19T18:36:34+02:00",
-    "ends_at": "2026-10-19T21:45:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-10-19|TK=fremdunfall betrieb ab mayssengasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fremdunfall Züge halten bei Linie 9",
-    "description": "Fremdunfall\nZüge halten bei Linie 9",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "17df447932620845469d381d0541d4e5c1127b49a9bac9840f94cdc298afe827",
-    "pubDate": "2026-10-19T18:37:01+02:00",
-    "starts_at": "2026-10-19T18:37:01+02:00",
-    "ends_at": "2026-10-19T21:00:00+02:00",
-    "_identity": "wl|störung|L=2|D=2026-10-19|TK=fremdunfall züge halten bei linie 9"
+    "_incident_start": "2026-10-19T18:31:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1130,22 +1062,6 @@
     "starts_at": "2026-10-14T00:00:22+02:00",
     "ends_at": "2026-10-19T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-10-14|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "44: Polizeieinsatz",
-    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3d45099415a09fd16e68303074ca0a8ff763363d08ba9a5db7f8979ee44a4201",
-    "pubDate": "2026-10-19T18:37:00+02:00",
-    "starts_at": "2026-10-19T18:37:00+02:00",
-    "ends_at": "2026-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=44|D=2026-10-19|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261019-0042"
-    ],
-    "_incident_start": "2026-10-19T18:37:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1166,22 +1082,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "4A: Verkehrsüberlastung",
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c56de491edf41d83da857f489a91726653fbe3100222ed7e7ce91bebf0b5453c",
-    "pubDate": "2026-10-19T15:13:00+02:00",
-    "starts_at": "2026-10-19T15:13:00+02:00",
-    "ends_at": "2026-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=4A|D=2026-10-19|TK=4a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261019-0027"
-    ],
-    "_incident_start": "2026-10-19T15:13:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "52: Züge halten bei Linien 6 und 18",
     "description": "Züge halten\nbei Linien 6 und 18",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1190,38 +1090,6 @@
     "starts_at": "2026-10-14T00:00:22+02:00",
     "ends_at": "2026-10-19T23:59:59+02:00",
     "_identity": "wl|störung|L=52|D=2026-10-14|TK=züge halten bei linien 6 und 18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5A: Falschparker",
-    "description": "Linie 5A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0fc2e9740a11c2fdb2585deda177aced33228979a6c815d3e7c3b062ec33869a",
-    "pubDate": "2026-10-19T17:42:00+02:00",
-    "starts_at": "2026-10-19T17:42:00+02:00",
-    "ends_at": "2026-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=5A|D=2026-10-19|TK=falschparker",
-    "_wl_ids": [
-      "I20261019-0038"
-    ],
-    "_incident_start": "2026-10-19T17:42:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60A: Schadhaftes Fahrzeug",
-    "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "56c20156cad0939cc97bb2d7c3be22da667fb8cd21abf47709462ab0a17ed326",
-    "pubDate": "2026-10-19T18:17:00+02:00",
-    "starts_at": "2026-10-19T18:17:00+02:00",
-    "ends_at": "2026-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=60A|D=2026-10-19|TK=60a schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261019-0039"
-    ],
-    "_incident_start": "2026-10-19T18:17:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1266,18 +1134,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "80A: Verkehrsüberlastung",
-    "description": "Linie 80A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "title": "7A: Polizeieinsatz",
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3f7a7f7b8b3f9de12c85a091d1ed2338922b50f5fcb2d8dce95e5e6ee14524ab",
-    "pubDate": "2026-10-19T15:52:00+02:00",
-    "starts_at": "2026-10-19T15:52:00+02:00",
+    "guid": "64c168750858c631c7a91ad91fc35cce1827e9d8a3c84eff3d5bc5adb3221722",
+    "pubDate": "2026-10-19T19:27:00+02:00",
+    "starts_at": "2026-10-19T19:27:00+02:00",
     "ends_at": "2026-10-19T23:55:00+02:00",
-    "_identity": "wl|störung|L=80A|D=2026-10-19|TK=80a verkehrsüberlastung",
+    "_identity": "wl|störung|L=7A|D=2026-10-19|TK=polizeieinsatz",
     "_wl_ids": [
-      "I20261019-0029"
+      "I20261019-0044"
     ],
-    "_incident_start": "2026-10-19T15:52:00+02:00"
+    "_incident_start": "2026-10-19T19:27:00+02:00"
   },
   {
     "source": "Wiener Linien",

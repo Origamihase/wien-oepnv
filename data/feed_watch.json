@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-19T17:01:17.073678+00:00",
- "built": "2026-10-19T19:01:02+02:00",
+ "updated": "2026-10-19T17:31:17.035137+00:00",
+ "built": "2026-10-19T19:31:01+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-19T19:01:02+02:00",
+  "built": "2026-10-19T19:31:01+02:00",
   "items": [
+   {
+    "title": "7A: Polizeieinsatz",
+    "time_line": "Seit 19:27"
+   },
    {
     "title": "2/10: Fremder Verkehrsunfall",
     "time_line": "Seit 18:31"
@@ -17,81 +21,37 @@
     "time_line": "Seit 18:52"
    },
    {
-    "title": "44: Polizeieinsatz",
-    "time_line": "Seit 18:37"
-   },
-   {
     "title": "63A: Betriebsstörung",
     "time_line": "Seit 18:19"
    },
    {
-    "title": "60A: Schadhaftes Fahrzeug",
-    "time_line": "Seit 18:17"
+    "title": "80A: ÖBB-Bauarbeiten",
+    "time_line": "Ab Di 20.10. bis 31.12.2027"
    },
    {
-    "title": "5A/11A: Falschparker",
-    "time_line": "Seit 17:42"
+    "title": "56A/56B/N62: Strampfergasse",
+    "time_line": "Ab Di 20.10. bis 03.11."
    },
    {
-    "title": "27: Verkehrsunfall",
-    "time_line": "Seit 17:33"
+    "title": "48A: Neubaugasse, Neustiftgasse",
+    "time_line": "Seit heute"
    },
    {
-    "title": "80A: Verkehrsüberlastung",
-    "time_line": "Seit 15:52"
+    "title": "Wien Hütteldorf ↔ Wien Hauptbahnhof",
+    "time_line": "Heute"
    },
    {
-    "title": "4A: Verkehrsüberlastung",
-    "time_line": "Seit 15:13"
+    "title": "N71: Simmering S U",
+    "time_line": "Bis Fr 23.10."
    },
    {
-    "title": "10A: Verkehrsüberlastung",
-    "time_line": "Seit 14:46"
+    "title": "64A: Liesing-Flur-Gasse",
+    "time_line": "Bis 28.10."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-12T17:01:19.185408+00:00",
-   "raw": {
-    "wl-stoerungen": 57,
-    "wl-hinweise": 102,
-    "oebb": 169,
-    "baustellen-linien": 52,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 21,
-    "oebb": 144,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 98
-   }
-  },
-  {
-   "t": "2026-10-12T17:30:51.595002+00:00",
-   "raw": {
-    "wl-stoerungen": 58,
-    "wl-hinweise": 102,
-    "oebb": 169,
-    "baustellen-linien": 52,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 22,
-    "oebb": 144,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 98
-   }
-  },
   {
    "t": "2026-10-12T18:01:10.147927+00:00",
    "raw": {
@@ -6790,6 +6750,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 111
+   }
+  },
+  {
+   "t": "2026-10-19T17:31:17.035137+00:00",
+   "raw": {
+    "wl-stoerungen": 91,
+    "wl-hinweise": 104,
+    "oebb": 165,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 36,
+    "oebb": 142,
+    "baustellen": 69
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 102
    }
   }
  ]
