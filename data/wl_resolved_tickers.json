@@ -3,13 +3,6 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R1345-144|2026-10-19T18:39:31.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
-   "name": "R1345-144",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
-   "end": "2026-10-19T21:15:00.000+0200",
-   "incident": "I20261019-0042-F01"
-  },
-  {
    "key": "R1366-102|2026-10-19T18:36:31.000+0200|Fremdunfall\nBetrieb ab Mayssengasse",
    "name": "R1366-102",
    "title": "Fremdunfall\nBetrieb ab Mayssengasse",
@@ -31,67 +24,25 @@
    "incident": "I20261019-0041"
   },
   {
-   "key": "R1371-144|2026-10-19T18:39:31.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
-   "name": "R1371-144",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
-   "end": "2026-10-19T21:15:00.000+0200",
-   "incident": "I20261019-0042-F01"
+   "key": "R1797-407|2026-10-19T21:05:18.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R1797-407",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-19T23:45:00.000+0200",
+   "incident": "I20261019-0048"
   },
   {
-   "key": "R1372-144|2026-10-19T18:39:31.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
-   "name": "R1372-144",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
-   "end": "2026-10-19T21:15:00.000+0200",
-   "incident": "I20261019-0042-F01"
+   "key": "R1837-407|2026-10-19T21:15:50.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R1837-407",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-19T22:15:00.000+0200",
+   "incident": "I20261019-0048"
   },
   {
-   "key": "R1373-144|2026-10-19T18:39:31.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
-   "name": "R1373-144",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
-   "end": "2026-10-19T21:15:00.000+0200",
-   "incident": "I20261019-0042-F01"
-  },
-  {
-   "key": "R1616-162|2026-10-19T20:09:11.000+0200|Fahrtbehinderung\nSchadhafter Zug",
-   "name": "R1616-162",
-   "title": "Fahrtbehinderung\nSchadhafter Zug",
-   "end": "2026-10-19T21:08:00.000+0200",
-   "incident": "I20261019-0045"
-  },
-  {
-   "key": "R1735-162|2026-10-19T20:09:40.000+0200|Schadhafter Zug\nBetrieb ab Hofwiesengasse",
-   "name": "R1735-162",
-   "title": "Schadhafter Zug\nBetrieb ab Hofwiesengasse",
-   "end": "2026-10-19T21:08:00.000+0200",
-   "incident": "I20261019-0045"
-  },
-  {
-   "key": "R1737-162|2026-10-19T20:09:40.000+0200|Schadhafter Zug\nBetrieb ab Hofwiesengasse",
-   "name": "R1737-162",
-   "title": "Schadhafter Zug\nBetrieb ab Hofwiesengasse",
-   "end": "2026-10-19T21:08:00.000+0200",
-   "incident": "I20261019-0045"
-  },
-  {
-   "key": "R1738-162|2026-10-19T20:09:40.000+0200|Schadhafter Zug\nBetrieb ab Hofwiesengasse",
-   "name": "R1738-162",
-   "title": "Schadhafter Zug\nBetrieb ab Hofwiesengasse",
-   "end": "2026-10-19T21:08:00.000+0200",
-   "incident": "I20261019-0045"
-  },
-  {
-   "key": "R236-144|2026-10-19T18:39:34.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
-   "name": "R236-144",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
-   "end": "2026-10-19T21:15:00.000+0200",
-   "incident": "I20261019-0042-F01"
-  },
-  {
-   "key": "R237-144|2026-10-19T18:39:34.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
-   "name": "R237-144",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
-   "end": "2026-10-19T21:15:00.000+0200",
-   "incident": "I20261019-0042-F01"
+   "key": "R2569-407|2026-10-19T21:05:17.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R2569-407",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-19T23:45:00.000+0200",
+   "incident": "I20261019-0048"
   },
   {
    "key": "R3468-110|2026-10-19T18:35:04.000+0200|Fremdunfall\nBetrieb ab Maroltingergasse",
@@ -150,6 +101,20 @@
    "incident": "I20261019-0041-F02"
   },
   {
+   "key": "R720-407|2026-10-19T21:05:17.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R720-407",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-19T23:45:00.000+0200",
+   "incident": "I20261019-0048"
+  },
+  {
+   "key": "R721-407|2026-10-19T21:05:17.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R721-407",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-19T23:45:00.000+0200",
+   "incident": "I20261019-0048"
+  },
+  {
    "key": "R754-414|2026-10-19T20:46:46.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
    "name": "R754-414",
    "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
@@ -190,6 +155,20 @@
    "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
    "end": "2026-10-19T21:46:00.000+0200",
    "incident": "I20261019-0046"
+  },
+  {
+   "key": "R780-407|2026-10-19T21:16:17.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R780-407",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-19T22:15:00.000+0200",
+   "incident": "I20261019-0048"
+  },
+  {
+   "key": "R814-407|2026-10-19T21:05:16.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R814-407",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-19T23:45:00.000+0200",
+   "incident": "I20261019-0048"
   }
  ]
 }
