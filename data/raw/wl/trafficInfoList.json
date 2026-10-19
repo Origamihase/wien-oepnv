@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261019-0049, I20260917-0012, I20260922-0032, I20261019-0048-F01, I20261019-0048, I20260925-0011, I20260909-0007, I20261019-0045-F01, I20261019-0041-F01, I20261019-0046, I20261019-0047-F01, I20261019-0047, I20261019-0046-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261019-0048-F01, I20261019-0048, I20260925-0011, I20260909-0007, I20261019-0045-F01, I20261019-0049-F01, I20261019-0049, I20261019-0041-F01, I20261019-0047-F01, I20261019-0046-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R36-152, R1473-149, R5815-671, R1476-149, R1475-149, R1474-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R500-101, R586-110, R588-110, R587-110, R562-110, R3468-110, R561-110, R1367-102, R1366-102, R562-102, R561-102, R1368-102, R756-414, R754-414, R757-414, R759-414, R761-414, R762-414, R814-407, R720-407, R2569-407, R721-407, R1797-407, R1837-407, R780-407, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R293-474, R1448-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1474-412, R5815-671, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R500-101, R588-110, R587-110, R586-110, R561-110, R3468-110, R562-110, R1366-102, R1367-102, R562-102, R561-102, R1368-102, R814-407, R721-407, R2569-407, R720-407, R1797-407, R1837-407, R780-407, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -278,41 +278,6 @@
       "14A": "ptBusCity"
      }
     },
-    "description": "Linie 14A: Fahrtbehinderung in Richtung Reumannplatz U. Voraussichtliche Dauer: 21:00 Uhr. Grund: Polizeieinsatz im Bereich Margaretenstraße # Reinprechtsdorfer Straße .",
-    "descriptionHTML": "Linie 14A:<br>Fahrtbehinderung in Richtung Reumannplatz U.<br> <br>Voraussichtliche Dauer: 21:00 Uhr.<br><br>Grund: Polizeieinsatz im Bereich Margaretenstraße # Reinprechtsdorfer Straße .",
-    "location": "Margaretenstraße  / Reinprechtsdorfer Straße ",
-    "name": "I20261019-0046",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "414",
-       "lineName": "14A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T20:45:00.000+0200",
-     "end": "2026-10-19T20:47:00.000+0200",
-     "lastUpdate": "2026-10-19T20:47:00.000+0200",
-     "resume": "2026-10-19T20:47:00.000+0200",
-     "start": "2026-10-19T20:44:00.000+0200"
-    },
-    "title": "14A: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "14A": "ptBusCity"
-     }
-    },
     "description": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "location": "Margaretenstraße  / Reinprechtsdorfer Straße ",
@@ -341,43 +306,6 @@
      "start": "2026-10-19T20:44:00.000+0200"
     },
     "title": "14A: Polizeieinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 21:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Gumpendorfer Straße.",
-    "descriptionHTML": "Linie U6:<br>Fahrtbehinderung in Richtung Floridsdorf.<br> <br>Voraussichtliche Dauer: 21:00 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Gumpendorfer Straße.",
-    "name": "I20261019-0047",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4618
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T20:45:00.000+0200",
-     "end": "2026-10-19T20:47:00.000+0200",
-     "lastUpdate": "2026-10-19T20:47:00.000+0200",
-     "resume": "2026-10-19T20:47:00.000+0200",
-     "start": "2026-10-19T20:42:00.000+0200"
-    },
-    "title": "U6: Schadhaftes Fahrzeug"
    },
    {
     "attributes": {
@@ -492,8 +420,8 @@
       "U1": "ptMetro"
      }
     },
-    "description": "Linie U1: Fahrtbehinderung in Richtung Leopoldau S U. Voraussichtliche Dauer: 21:45 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Taubstummengasse.",
-    "descriptionHTML": "Linie U1:<br>Fahrtbehinderung in Richtung Leopoldau S U.<br> <br>Voraussichtliche Dauer: 21:45 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Bereich Taubstummengasse.",
+    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Taubstummengasse und Nestroyplatz in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 22:00 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Taubstummengasse.",
+    "descriptionHTML": "Die Linie U1 fährt derzeit zwischen den Stationen Taubstummengasse und Nestroyplatz in beiden Richtungen über Gleis 2.<br> <br>Voraussichtliche Dauer: 22:00 Uhr.<br><br>Grund: Schadhaftes Fahrzeug im Bereich Taubstummengasse.",
     "location": "Taubstummengasse",
     "name": "I20261019-0049",
     "owner": "WL",
@@ -511,11 +439,47 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-19T21:23:00.000+0200",
+     "end": "2026-10-19T21:52:00.000+0200",
+     "lastUpdate": "2026-10-19T21:52:00.000+0200",
+     "resume": "2026-10-19T21:52:00.000+0200",
+     "start": "2026-10-19T21:21:00.000+0200"
+    },
+    "title": "U1: Schadhaftes Fahrzeug"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Taubstummengasse",
+    "name": "I20261019-0049-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "301",
+       "lineName": "U1",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-19T21:52:00.000+0200",
      "end": "2026-10-19T23:55:00.000+0200",
-     "lastUpdate": "2026-10-19T21:23:00.000+0200",
+     "lastUpdate": "2026-10-19T21:52:00.000+0200",
+     "resume": "2026-10-19T21:52:00.000+0200",
      "start": "2026-10-19T21:21:00.000+0200"
     },
     "title": "U1: Schadhaftes Fahrzeug"
@@ -1629,114 +1593,6 @@
      "start": "2026-10-19T21:05:17.000+0200"
     },
     "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R754-414",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedStops": [
-     754
-    ],
-    "time": {
-     "end": "2026-10-19T21:46:00.000+0200",
-     "start": "2026-10-19T20:46:46.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R756-414",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedStops": [
-     756
-    ],
-    "time": {
-     "end": "2026-10-19T21:46:00.000+0200",
-     "start": "2026-10-19T20:46:46.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R757-414",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedStops": [
-     757
-    ],
-    "time": {
-     "end": "2026-10-19T21:46:00.000+0200",
-     "start": "2026-10-19T20:46:46.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R759-414",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedStops": [
-     759
-    ],
-    "time": {
-     "end": "2026-10-19T21:46:00.000+0200",
-     "start": "2026-10-19T20:46:46.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R761-414",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedStops": [
-     761
-    ],
-    "time": {
-     "end": "2026-10-19T21:46:00.000+0200",
-     "start": "2026-10-19T20:46:46.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R762-414",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedStops": [
-     762
-    ],
-    "time": {
-     "end": "2026-10-19T21:46:00.000+0200",
-     "start": "2026-10-19T20:46:46.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "description": "Fahrtbehinderung\nFalschparker",
