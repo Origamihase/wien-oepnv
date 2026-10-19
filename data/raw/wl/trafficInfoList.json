@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261019-0023, I20261019-0026, I20260917-0012, I20260922-0032, I20261019-0019-F01, I20261019-0017, I20261019-0020, I20261019-0014-F02, I20261019-0021, I20261019-0022, I20261019-0024, I20261019-0025-F01, I20261019-0025, I20260925-0011, I20260909-0007, I20261019-0018-F01, I20261019-0020-F02, I20261019-0020-F01, I20261019-0012-F01, I20261019-0016, I20261019-0014-F01, I20261019-0015-F01, I20261019-0013"
+    "trafficInfoNameList": "I20261019-0026, I20261019-0028-F02, I20261019-0028, I20260917-0012, I20261019-0028-F01, I20260922-0032, I20261019-0022, I20261019-0024, I20261019-0025-F01, I20261019-0025, I20260925-0011, I20261019-0021-F01, I20261019-0027, I20260909-0007, I20261019-0018-F01, I20261019-0019-F01, I20261019-0023, I20261019-0013"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R1475-149, R5815-671, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R500-101, R272-105, R357-105, R363-105, R362-105, R361-105, R366-105, R357-112, R272-112, R356-112, R370-105, R364-105, R458-112, R374-105, R375-105, R530-109, R533-109, R532-109, R531-109, R556-109, R1475-109, R1476-109, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R19-136, R119-136, R118-136, R117-136, R116-136, R318-437, R293-474, R115-136, R130-136, R100-136, R101-136, R102-136, R103-136, R2025-671, R36-152, R45-136, R1472-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R2558-125, R2372-627, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R1974-466, R500-101, R533-109, R530-109, R532-109, R531-109, R556-109, R1475-109, R1476-109, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -203,43 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "12A": "ptBusCity"
-     }
-    },
-    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261019-0012-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "412",
-       "lineName": "12A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "relatedStops": [
-     2885
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T12:09:00.000+0200",
-     "end": "2026-10-19T14:23:00.000+0200",
-     "lastUpdate": "2026-10-19T14:23:00.000+0200",
-     "resume": "2026-10-19T14:23:00.000+0200",
-     "start": "2026-10-19T11:34:00.000+0200"
-    },
-    "title": "12A: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "16A": "ptBusCity"
      }
     },
@@ -274,179 +237,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "40": "ptTram"
-     }
-    },
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Gentzgasse  116",
-    "name": "I20261019-0014-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "140",
-       "lineName": "40",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T11:57:00.000+0200",
-     "end": "2026-10-19T14:21:00.000+0200",
-     "lastUpdate": "2026-10-19T14:21:00.000+0200",
-     "resume": "2026-10-19T14:21:00.000+0200",
-     "start": "2026-10-19T11:35:00.000+0200"
-    },
-    "title": "40: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Gentzgasse  116",
-    "name": "I20261019-0014-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "141",
-       "lineName": "41",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T11:57:00.000+0200",
-     "end": "2026-10-19T14:21:00.000+0200",
-     "lastUpdate": "2026-10-19T14:21:00.000+0200",
-     "resume": "2026-10-19T14:21:00.000+0200",
-     "start": "2026-10-19T11:35:00.000+0200"
-    },
-    "title": "41: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "3A": "ptBusCity"
-     }
-    },
-    "description": "Linie 3A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 3A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Salzgries ",
-    "name": "I20261019-0015-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "3A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "403",
-       "lineName": "3A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T12:20:00.000+0200",
-     "end": "2026-10-19T14:23:00.000+0200",
-     "lastUpdate": "2026-10-19T14:23:00.000+0200",
-     "resume": "2026-10-19T14:23:00.000+0200",
-     "start": "2026-10-19T12:17:00.000+0200"
-    },
-    "title": "3A: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "13A": "ptBusCity"
-     }
-    },
-    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "Linie 13A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Rettungseinsatz.",
-    "name": "I20261019-0016",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "413",
-       "lineName": "13A",
-       "vehicleType": "ptBusCity"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T12:45:00.000+0200",
-     "end": "2026-10-19T14:00:00.000+0200",
-     "lastUpdate": "2026-10-19T14:00:00.000+0200",
-     "resume": "2026-10-19T14:00:00.000+0200",
-     "start": "2026-10-19T12:44:00.000+0200"
-    },
-    "title": "13A: Rettungseinsatz"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "18": "ptTram"
-     }
-    },
-    "description": "Linie 18: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "Linie 18:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Betriebsstörung.",
-    "name": "I20261019-0017",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "118",
-       "lineName": "18",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T13:08:00.000+0200",
-     "end": "2026-10-19T14:08:00.000+0200",
-     "lastUpdate": "2026-10-19T14:08:00.000+0200",
-     "resume": "2026-10-19T14:08:00.000+0200",
-     "start": "2026-10-19T13:08:00.000+0200"
-    },
-    "title": "18: Betriebsstörung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U1": "ptMetro"
      }
     },
@@ -471,12 +261,12 @@
     "relatedStops": [
      4138
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-19T13:13:00.000+0200",
-     "end": "2026-10-19T23:55:00.000+0200",
-     "lastUpdate": "2026-10-19T13:13:00.000+0200",
-     "resume": "2026-10-19T13:13:00.000+0200",
+     "end": "2026-10-19T15:02:00.000+0200",
+     "lastUpdate": "2026-10-19T15:02:00.000+0200",
+     "resume": "2026-10-19T15:02:00.000+0200",
      "start": "2026-10-19T13:12:00.000+0200"
     },
     "title": "U1: Verspätungen"
@@ -508,57 +298,15 @@
     "relatedStops": [
      4641
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-19T13:20:00.000+0200",
-     "end": "2026-10-19T23:55:00.000+0200",
-     "lastUpdate": "2026-10-19T13:20:00.000+0200",
-     "resume": "2026-10-19T13:20:00.000+0200",
+     "end": "2026-10-19T15:03:00.000+0200",
+     "lastUpdate": "2026-10-19T15:03:00.000+0200",
+     "resume": "2026-10-19T15:03:00.000+0200",
      "start": "2026-10-19T13:12:00.000+0200"
     },
     "title": "U6: Betriebsstörung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "12": "ptTram",
-      "5": "ptTram"
-     }
-    },
-    "description": "Linie 5: Fahrtbehinderung in Richtung Westbahnhof S U. Linie 12: Fahrtbehinderung in Richtung Josefstädter Straße U. Voraussichtliche Dauer: 14:30 Uhr. Grund: Verkehrsunfall im Bereich Lange Gasse .",
-    "descriptionHTML": "Linie 5:<br>Fahrtbehinderung in Richtung Westbahnhof S U.<br>Linie 12:<br>Fahrtbehinderung in Richtung Josefstädter Straße U.<br> <br>Voraussichtliche Dauer: 14:30 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Lange Gasse .",
-    "location": "Lange Gasse ",
-    "name": "I20261019-0020",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "5",
-     "12"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "105",
-       "lineName": "5",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "112",
-       "lineName": "12",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T14:09:00.000+0200",
-     "end": "2026-10-19T14:14:00.000+0200",
-     "lastUpdate": "2026-10-19T14:14:00.000+0200",
-     "resume": "2026-10-19T14:14:00.000+0200",
-     "start": "2026-10-19T14:08:00.000+0200"
-    },
-    "title": "5, 12: Verkehrsunfall"
    },
    {
     "attributes": {
@@ -568,78 +316,8 @@
     },
     "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Lange Gasse ",
-    "name": "I20261019-0020-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "105",
-       "lineName": "5",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T14:14:00.000+0200",
-     "end": "2026-10-19T14:15:00.000+0200",
-     "lastUpdate": "2026-10-19T14:15:00.000+0200",
-     "resume": "2026-10-19T14:15:00.000+0200",
-     "start": "2026-10-19T14:08:00.000+0200"
-    },
-    "title": "5: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "12": "ptTram"
-     }
-    },
-    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Lange Gasse ",
-    "name": "I20261019-0020-F02",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "112",
-       "lineName": "12",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T14:14:00.000+0200",
-     "end": "2026-10-19T14:14:00.000+0200",
-     "lastUpdate": "2026-10-19T14:14:00.000+0200",
-     "resume": "2026-10-19T14:14:00.000+0200",
-     "start": "2026-10-19T14:08:00.000+0200"
-    },
-    "title": "12: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "5": "ptTram"
-     }
-    },
-    "description": "Linie 5: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 14:45 Uhr. Grund: Falschparker im Bereich Blindengasse 8.",
-    "descriptionHTML": "Linie 5:<br>Fahrtbehinderung in Richtung Westbahnhof S U.<br> <br>Voraussichtliche Dauer: 14:45 Uhr.<br><br>Grund: Falschparker im Bereich Blindengasse 8.",
     "location": "Blindengasse  8",
-    "name": "I20261019-0021",
+    "name": "I20261019-0021-F01",
     "owner": "WL",
     "priority": "1",
     "refTrafficInfoCategoryId": 2,
@@ -657,10 +335,10 @@
     ],
     "status": "resolved",
     "time": {
-     "created": "2026-10-19T14:11:00.000+0200",
-     "end": "2026-10-19T14:25:00.000+0200",
-     "lastUpdate": "2026-10-19T14:25:00.000+0200",
-     "resume": "2026-10-19T14:25:00.000+0200",
+     "created": "2026-10-19T14:25:00.000+0200",
+     "end": "2026-10-19T15:00:00.000+0200",
+     "lastUpdate": "2026-10-19T15:00:00.000+0200",
+     "resume": "2026-10-19T15:00:00.000+0200",
      "start": "2026-10-19T14:10:00.000+0200"
     },
     "title": "5: Falschparker"
@@ -726,12 +404,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-19T14:35:00.000+0200",
-     "end": "2026-10-19T23:55:00.000+0200",
-     "lastUpdate": "2026-10-19T14:35:00.000+0200",
-     "resume": "2026-10-19T14:35:00.000+0200",
+     "end": "2026-10-19T15:30:00.000+0200",
+     "lastUpdate": "2026-10-19T15:30:00.000+0200",
+     "resume": "2026-10-19T15:30:00.000+0200",
      "start": "2026-10-19T14:35:00.000+0200"
     },
     "title": "U3: Rettungseinsatz"
@@ -873,6 +551,152 @@
      "start": "2026-10-19T14:56:00.000+0200"
     },
     "title": "84A: Verspätungen"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "4A": "ptBusCity"
+     }
+    },
+    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
+    "name": "I20261019-0027",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "4A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "404",
+       "lineName": "4A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-19T15:13:00.000+0200",
+     "end": "2026-10-19T23:55:00.000+0200",
+     "lastUpdate": "2026-10-19T15:13:00.000+0200",
+     "resume": "2026-10-19T15:13:00.000+0200",
+     "start": "2026-10-19T15:13:00.000+0200"
+    },
+    "title": "4A: Verkehrsüberlastung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "10": "ptTram",
+      "46": "ptTram"
+     }
+    },
+    "description": "Linie 10: Fahrtbehinderung in Richtung Unter St. Veit, Hummelgasse. Linie 46: Fahrtbehinderung in Richtung Parlament, U Volkstheater Voraussichtliche Dauer: 15:35 Uhr. Grund: Verkehrsunfall im Bereich Wernhardtstraße .",
+    "descriptionHTML": "Linie 10:<br>Fahrtbehinderung in Richtung Unter St. Veit, Hummelgasse.<br>Linie 46:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater<br> <br>Voraussichtliche Dauer: 15:35 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Wernhardtstraße .",
+    "location": "Wernhardtstraße ",
+    "name": "I20261019-0028",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10",
+     "46"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "110",
+       "lineName": "10",
+       "vehicleType": "ptTram"
+      },
+      {
+       "lineId": "146",
+       "lineName": "46",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-19T15:13:00.000+0200",
+     "end": "2026-10-19T15:17:00.000+0200",
+     "lastUpdate": "2026-10-19T15:17:00.000+0200",
+     "resume": "2026-10-19T15:17:00.000+0200",
+     "start": "2026-10-19T15:11:00.000+0200"
+    },
+    "title": "10, 46: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "10": "ptTram"
+     }
+    },
+    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Wernhardtstraße ",
+    "name": "I20261019-0028-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "110",
+       "lineName": "10",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-19T15:17:00.000+0200",
+     "end": "2026-10-19T15:17:00.000+0200",
+     "lastUpdate": "2026-10-19T15:17:00.000+0200",
+     "resume": "2026-10-19T15:17:00.000+0200",
+     "start": "2026-10-19T15:11:00.000+0200"
+    },
+    "title": "10: Verkehrsunfall"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "46": "ptTram"
+     }
+    },
+    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Wernhardtstraße ",
+    "name": "I20261019-0028-F02",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "146",
+       "lineName": "46",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-19T15:17:00.000+0200",
+     "end": "2026-10-19T23:55:00.000+0200",
+     "lastUpdate": "2026-10-19T15:17:00.000+0200",
+     "resume": "2026-10-19T15:17:00.000+0200",
+     "start": "2026-10-19T15:11:00.000+0200"
+    },
+    "title": "46: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -1628,42 +1452,6 @@
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
    },
    {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R272-105",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     272
-    ],
-    "time": {
-     "end": "2026-10-19T15:10:00.000+0200",
-     "start": "2026-10-19T14:10:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R272-112",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     272
-    ],
-    "time": {
-     "end": "2026-10-19T15:12:00.000+0200",
-     "start": "2026-10-19T14:12:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1700,60 +1488,6 @@
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
    },
    {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R356-112",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     356
-    ],
-    "time": {
-     "end": "2026-10-19T15:12:00.000+0200",
-     "start": "2026-10-19T14:12:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R357-105",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     357
-    ],
-    "time": {
-     "end": "2026-10-19T15:10:00.000+0200",
-     "start": "2026-10-19T14:10:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R357-112",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     357
-    ],
-    "time": {
-     "end": "2026-10-19T15:12:00.000+0200",
-     "start": "2026-10-19T14:12:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
     "description": "Züge halten\nbei Linien 6 und 18",
     "name": "R36-152",
     "owner": "WL",
@@ -1772,150 +1506,6 @@
     "title": "Züge halten\nbei Linien 6 und 18"
    },
    {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R361-105",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     361
-    ],
-    "time": {
-     "end": "2026-10-19T15:10:00.000+0200",
-     "start": "2026-10-19T14:11:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R362-105",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     362
-    ],
-    "time": {
-     "end": "2026-10-19T15:10:00.000+0200",
-     "start": "2026-10-19T14:11:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R363-105",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     363
-    ],
-    "time": {
-     "end": "2026-10-19T15:10:00.000+0200",
-     "start": "2026-10-19T14:11:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R364-105",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     364
-    ],
-    "time": {
-     "end": "2026-10-19T15:18:00.000+0200",
-     "start": "2026-10-19T14:18:36.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R366-105",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     366
-    ],
-    "time": {
-     "end": "2026-10-19T15:10:00.000+0200",
-     "start": "2026-10-19T14:11:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R370-105",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     370
-    ],
-    "time": {
-     "end": "2026-10-19T15:18:00.000+0200",
-     "start": "2026-10-19T14:18:36.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R374-105",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     374
-    ],
-    "time": {
-     "end": "2026-10-19T15:21:00.000+0200",
-     "start": "2026-10-19T14:22:36.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R375-105",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     375
-    ],
-    "time": {
-     "end": "2026-10-19T15:22:00.000+0200",
-     "start": "2026-10-19T14:23:06.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
     "description": "Züge halten\nWipplingerstr 39",
     "name": "R45-136",
     "owner": "WL",
@@ -1932,24 +1522,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
-   },
-   {
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R458-112",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     458
-    ],
-    "time": {
-     "end": "2026-10-19T15:19:00.000+0200",
-     "start": "2026-10-19T14:20:36.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
