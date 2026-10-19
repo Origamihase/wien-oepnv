@@ -3,27 +3,6 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R192-140|2026-10-19T11:36:51.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R192-140",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-19T12:36:00.000+0200",
-   "incident": "I20261019-0014"
-  },
-  {
-   "key": "R192-141|2026-10-19T11:36:51.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R192-141",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-19T12:36:00.000+0200",
-   "incident": "I20261019-0014"
-  },
-  {
-   "key": "R193-141|2026-10-19T11:36:51.000+0200|Falschparker\nEinstieg bei Linie 40",
-   "name": "R193-141",
-   "title": "Falschparker\nEinstieg bei Linie 40",
-   "end": "2026-10-19T12:46:00.000+0200",
-   "incident": "I20261019-0014"
-  },
-  {
    "key": "R2915-403|2026-10-19T12:18:57.000+0200|Fahrtbehinderung\nFalschparker",
    "name": "R2915-403",
    "title": "Fahrtbehinderung\nFalschparker",
@@ -43,13 +22,6 @@
    "title": "Fahrtbehinderung\nFalschparker",
    "end": "2026-10-19T13:18:00.000+0200",
    "incident": "I20261019-0015"
-  },
-  {
-   "key": "R521-140|2026-10-19T11:36:50.000+0200|Fahrtbehinderung\nFalschparker",
-   "name": "R521-140",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-10-19T12:36:00.000+0200",
-   "incident": "I20261019-0014"
   }
  ]
 }
