@@ -8,78 +8,8 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 19 Oct 2026 23:31:04 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 00:00:45 +0200</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[9: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
-      <pubDate>Mon, 19 Oct 2026 22:33:55 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 19 Oct 2026 22:33:55 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 19 Oct 2026 22:33:56 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 19 Oct 2026 23:33:00 +0200</ext:ends_at>
-      <description>Fahrtbehinderung. [Seit 22:33]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 22:33]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7</guid>
-      <pubDate>Mon, 19 Oct 2026 21:21:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 19 Oct 2026 21:21:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 19 Oct 2026 21:21:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 21:21]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 21:21]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">77994cd70c8bd44acc7c6ae28c2d0cee63d1f01a0b2acaf969f56ecb941ab571</guid>
-      <pubDate>Mon, 19 Oct 2026 21:05:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 19 Oct 2026 21:05:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 19 Oct 2026 21:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 21:05]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 21:05]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd</guid>
-      <pubDate>Mon, 19 Oct 2026 20:42:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 19 Oct 2026 20:42:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 19 Oct 2026 20:42:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 20:42]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 20:42]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[80A: ÖBB-Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5a68b1fc449f7041118da0ac6c6652cede40d8eb9c245e412fcac285c52db7c7</guid>
-      <pubDate>Tue, 06 Oct 2026 14:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 19 Oct 2026 00:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
-      <description>Wegen der Neuerrichtung der ÖBB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Maßnahmen in Kraft. [Ab Di 20.10. bis 31.12.2027]</description>
-      <content:encoded><![CDATA[Wegen der Neuerrichtung der ÖBB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Maßnahmen in Kraft.<br/>[Ab Di 20.10. bis 31.12.2027]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[56B/56A/N62: Strampfergasse]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -92,8 +22,35 @@
       <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
       <georss:point>48.167289 16.277365</georss:point>
-      <description>Hermesstraße nach Strampfergasse → etwa 50 Meter in Richtung Dr.-Schober-Straße. Hermesstraße nach Strampfergasse → aufgelassen. Haltestellenverlegung bzw. -auflassung … [Ab Di 20.10. bis 03.11.]</description>
-      <content:encoded><![CDATA[Hermesstraße nach Strampfergasse → etwa 50 Meter in Richtung Dr.-Schober-Straße. Hermesstraße nach Strampfergasse → aufgelassen. Haltestellenverlegung bzw. -auflassung …<br/>[Ab Di 20.10. bis 03.11.]]]></content:encoded>
+      <description>Hermesstraße nach Strampfergasse → etwa 50 Meter in Richtung Dr.-Schober-Straße. Hermesstraße nach Strampfergasse → aufgelassen. Haltestellenverlegung bzw. -auflassung … [Bis 03.11.]</description>
+      <content:encoded><![CDATA[Hermesstraße nach Strampfergasse → etwa 50 Meter in Richtung Dr.-Schober-Straße. Hermesstraße nach Strampfergasse → aufgelassen. Haltestellenverlegung bzw. -auflassung …<br/>[Bis 03.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[80A: ÖBB-Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">5a68b1fc449f7041118da0ac6c6652cede40d8eb9c245e412fcac285c52db7c7</guid>
+      <pubDate>Tue, 06 Oct 2026 14:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 19 Oct 2026 00:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
+      <description>Wegen der Neuerrichtung der ÖBB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Maßnahmen in Kraft. [Bis 31.12.2027]</description>
+      <content:encoded><![CDATA[Wegen der Neuerrichtung der ÖBB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Maßnahmen in Kraft.<br/>[Bis 31.12.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[E4: Haltestellenverlegung]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">00a061425afb861926d36fb1978403529c5257a561a3fe70536ce323b86fc116</guid>
+      <pubDate>Mon, 19 Oct 2026 23:56:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 19 Oct 2026 23:56:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 19 Oct 2026 23:56:00 +0200</ext:starts_at>
+      <description>A → B. Haltestellenverlegung der Linie E4 in Richtung Testgasse. Haltestelle: Börsegasse. Grund: Test. [Seit 19.10.]</description>
+      <content:encoded><![CDATA[A → B. Haltestellenverlegung der Linie E4 in Richtung Testgasse. Haltestelle: Börsegasse. Grund: Test.<br/>[Seit 19.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[48A: Neubaugasse, Neustiftgasse]]></title>
@@ -107,8 +64,8 @@
       <ext:starts_at>Mon, 19 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 08 Oct 2027 11:11:00 +0200</ext:ends_at>
       <georss:point>48.205482 16.348467</georss:point>
-      <description>Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten. [Seit heute]</description>
-      <content:encoded><![CDATA[Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten.<br/>[Seit heute]]]></content:encoded>
+      <description>Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten. [Seit 19.10.]</description>
+      <content:encoded><![CDATA[Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten.<br/>[Seit 19.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hütteldorf ↔ Wien Hauptbahnhof]]></title>
@@ -122,8 +79,8 @@
       <ext:starts_at>Sat, 17 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 19 Oct 2026 23:59:59 +0200</ext:ends_at>
       <georss:line>48.197671 16.261209 48.185201 16.376296</georss:line>
-      <description>Teilausfall: Von 18.10.2026 bis 19.10.2026 kann der Zug RJ 263 zwischen Wien Hütteldorf Bahnhof (U) und Wien Hbf (U) nicht fahren. [Heute]</description>
-      <content:encoded><![CDATA[Teilausfall: Von 18.10.2026 bis 19.10.2026 kann der Zug RJ 263 zwischen Wien Hütteldorf Bahnhof (U) und Wien Hbf (U) nicht fahren.<br/>[Heute]]]></content:encoded>
+      <description>Teilausfall: Von 18.10.2026 bis 19.10.2026 kann der Zug RJ 263 zwischen Wien Hütteldorf Bahnhof (U) und Wien Hbf (U) nicht fahren. [Bis 19.10.]</description>
+      <content:encoded><![CDATA[Teilausfall: Von 18.10.2026 bis 19.10.2026 kann der Zug RJ 263 zwischen Wien Hütteldorf Bahnhof (U) und Wien Hbf (U) nicht fahren.<br/>[Bis 19.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N71: Simmering S U]]></title>
@@ -153,6 +110,50 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten. [Bis 28.10.]</description>
       <content:encoded><![CDATA[Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten.<br/>[Bis 28.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">615c7d9755493e3506136b4c89ccafaac30323c3c9774583bc4b55062576c7bb</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 09 Oct 2026 13:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 14 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet. [Bis 14.11.]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet.<br/>[Bis 14.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5/12: Albertgasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">3e5225e046a0df3ec11a86c99a2c68a57b90ba1f9c0a3a5c4fdf60d90cdf02e7</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 09 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <georss:point>48.210606 16.344038</georss:point>
+      <description>Albertgasse 27 → Albertgasse 33 - 35. Haltestellenverlegung der Linien 5 und 12 in Richtung Westbahnhof U bzw. Josefstädter Straße U. Grund: Bauarbeiten. [Bis 03.11.]</description>
+      <content:encoded><![CDATA[Albertgasse 27 → Albertgasse 33 - 35. Haltestellenverlegung der Linien 5 und 12 in Richtung Westbahnhof U bzw. Josefstädter Straße U. Grund: Bauarbeiten.<br/>[Bis 03.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A: Max-Mauermann-Gasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">56aa798cbb018fbaed4813a991f56c2470867f1f9a0ce034661ba2e01da13007</guid>
+      <pubDate>Wed, 07 Oct 2026 15:30:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 07 Oct 2026 15:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <georss:point>48.163113 16.409373</georss:point>
+      <description>Bitterlichstraße gegenüber Max-Mauermann-Gasse → Bitterlichstraße gegenüber Friedrich-Teller-Gasse. Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling … [Bis 25.12.]</description>
+      <content:encoded><![CDATA[Bitterlichstraße gegenüber Max-Mauermann-Gasse → Bitterlichstraße gegenüber Friedrich-Teller-Gasse. Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling …<br/>[Bis 25.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>

@@ -1,44 +1,47 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-19T21:31:18.513449+00:00",
- "built": "2026-10-19T23:31:04+02:00",
- "findings": [],
- "rules": {},
+ "updated": "2026-10-19T22:01:00.953969+00:00",
+ "built": "2026-10-20T00:00:45+02:00",
+ "findings": [
+  {
+   "rule": "ende-vorbei",
+   "title": "Zeitangabe schon vorbei",
+   "rank": "Rang 2",
+   "subject": "Wien Hütteldorf ↔ Wien Hauptbahnhof",
+   "text": "[Bis 19.10.] liegt vor heute"
+  }
+ ],
+ "rules": {
+  "ende-vorbei": {
+   "since": "2026-10-19T22:01:00.953969+00:00",
+   "last": "2026-10-19T22:01:00.953969+00:00",
+   "held_runs": 0,
+   "issue": 2044
+  }
+ },
  "previous_feed": {
-  "built": "2026-10-19T23:31:04+02:00",
+  "built": "2026-10-20T00:00:45+02:00",
   "items": [
    {
-    "title": "9: Falschparker",
-    "time_line": "Seit 22:33"
-   },
-   {
-    "title": "U1: Schadhaftes Fahrzeug",
-    "time_line": "Seit 21:21"
-   },
-   {
-    "title": "7A: Falschparker",
-    "time_line": "Seit 21:05"
-   },
-   {
-    "title": "U6: Schadhaftes Fahrzeug",
-    "time_line": "Seit 20:42"
+    "title": "56B/56A/N62: Strampfergasse",
+    "time_line": "Bis 03.11."
    },
    {
     "title": "80A: ÖBB-Bauarbeiten",
-    "time_line": "Ab Di 20.10. bis 31.12.2027"
+    "time_line": "Bis 31.12.2027"
    },
    {
-    "title": "56B/56A/N62: Strampfergasse",
-    "time_line": "Ab Di 20.10. bis 03.11."
+    "title": "E4: Haltestellenverlegung",
+    "time_line": "Seit 19.10."
    },
    {
     "title": "48A: Neubaugasse, Neustiftgasse",
-    "time_line": "Seit heute"
+    "time_line": "Seit 19.10."
    },
    {
     "title": "Wien Hütteldorf ↔ Wien Hauptbahnhof",
-    "time_line": "Heute"
+    "time_line": "Bis 19.10."
    },
    {
     "title": "N71: Simmering S U",
@@ -47,6 +50,18 @@
    {
     "title": "64A: Liesing-Flur-Gasse",
     "time_line": "Bis 28.10."
+   },
+   {
+    "title": "7A: Bauarbeiten",
+    "time_line": "Bis 14.11."
+   },
+   {
+    "title": "5/12: Albertgasse",
+    "time_line": "Bis 03.11."
+   },
+   {
+    "title": "15A: Max-Mauermann-Gasse",
+    "time_line": "Bis 25.12."
    }
   ]
  },
@@ -6770,6 +6785,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 100
+   }
+  },
+  {
+   "t": "2026-10-19T22:01:00.953969+00:00",
+   "raw": {
+    "wl-stoerungen": 54,
+    "wl-hinweise": 100,
+    "oebb": 163,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 21,
+    "oebb": 140,
+    "baustellen": 69
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 97
    }
   }
  ]
