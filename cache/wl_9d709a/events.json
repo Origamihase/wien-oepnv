@@ -1106,6 +1106,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "59A: Verkehrsüberlastung",
+    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
+    "pubDate": "2026-10-19T16:11:00+02:00",
+    "starts_at": "2026-10-19T16:11:00+02:00",
+    "ends_at": "2026-10-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=59A|D=2026-10-19|TK=59a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261019-0030"
+    ],
+    "_incident_start": "2026-10-19T16:11:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1130,6 +1146,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "74A: Signalstörung",
+    "description": "Linie 74A: Fahrtbehinderung in Richtung Stubentor U. Voraussichtliche Dauer: 16:45 Uhr. Grund: Signalstörung im Bereich Vordere Zollamtsstraße .",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e42a781836ec2814f0a4c06b6398c6abf7ac48b3b5c47aa27b1fc2a90ec45037",
+    "pubDate": "2026-10-19T16:29:00+02:00",
+    "starts_at": "2026-10-19T16:29:00+02:00",
+    "ends_at": "2026-10-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=74A|D=2026-10-19|TK=signalstörung",
+    "_wl_ids": [
+      "I20261019-0032"
+    ],
+    "_incident_start": "2026-10-19T16:29:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "80A: Verkehrsüberlastung",
     "description": "Linie 80A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1142,22 +1174,6 @@
       "I20261019-0029"
     ],
     "_incident_start": "2026-10-19T15:52:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "84A: Verspätungen",
-    "description": "Linie 84A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c7671bb72503b965126d9cf9744ed01ceb7940ff5886943f12fa224138389d83",
-    "pubDate": "2026-10-19T14:56:00+02:00",
-    "starts_at": "2026-10-19T14:56:00+02:00",
-    "ends_at": "2026-10-19T16:08:00+02:00",
-    "_identity": "wl|störung|L=84A|D=2026-10-19|TK=84a verspätungen",
-    "_wl_ids": [
-      "I20261019-0026"
-    ],
-    "_incident_start": "2026-10-19T14:56:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1250,6 +1266,22 @@
     "starts_at": "2026-10-14T00:00:23+02:00",
     "ends_at": "2026-10-19T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-14|TK=ersatzverkehr"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Betriebsstörung",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2026-10-19T16:20:00+02:00",
+    "starts_at": "2026-10-19T16:20:00+02:00",
+    "ends_at": "2026-10-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=U2|D=2026-10-19|TK=u2 betriebsstörung",
+    "_wl_ids": [
+      "I20261019-0031"
+    ],
+    "_incident_start": "2026-10-19T16:20:00+02:00"
   },
   {
     "source": "Wiener Linien",

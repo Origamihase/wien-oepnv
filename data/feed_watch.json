@@ -1,13 +1,21 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-19T14:01:24.756457+00:00",
- "built": "2026-10-19T16:01:12+02:00",
+ "updated": "2026-10-19T14:30:51.815780+00:00",
+ "built": "2026-10-19T16:30:39+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-19T16:01:12+02:00",
+  "built": "2026-10-19T16:30:39+02:00",
   "items": [
+   {
+    "title": "U2: Betriebsstörung",
+    "time_line": "Seit 16:20"
+   },
+   {
+    "title": "59A: Verkehrsüberlastung",
+    "time_line": "Seit 16:11"
+   },
    {
     "title": "80A: Verkehrsüberlastung",
     "time_line": "Seit 15:52"
@@ -21,10 +29,6 @@
     "time_line": "Seit 15:11"
    },
    {
-    "title": "84A: Verspätungen",
-    "time_line": "Seit 14:56"
-   },
-   {
     "title": "9: Falschparker",
     "time_line": "Seit 14:53"
    },
@@ -33,20 +37,16 @@
     "time_line": "Seit 14:46"
    },
    {
+    "title": "74A: Signalstörung, Bauarbeiten",
+    "time_line": "Heute"
+   },
+   {
     "title": "Wien Liesing ↔ Mödling",
     "time_line": "Heute"
    },
    {
     "title": "80A: ÖBB-Bauarbeiten",
     "time_line": "Ab Di 20.10. bis 31.12.2027"
-   },
-   {
-    "title": "56A/56B/N62: Strampfergasse",
-    "time_line": "Ab Di 20.10. bis 03.11."
-   },
-   {
-    "title": "48A: Neubaugasse, Neustiftgasse",
-    "time_line": "Seit heute"
    }
   ]
  },
@@ -6770,6 +6770,26 @@
     "baustellen": 4,
     "oebb": 11,
     "wl": 104
+   }
+  },
+  {
+   "t": "2026-10-19T14:30:51.815780+00:00",
+   "raw": {
+    "wl-stoerungen": 65,
+    "wl-hinweise": 106,
+    "oebb": 164,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 24,
+    "oebb": 140,
+    "baustellen": 69
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 11,
+    "wl": 106
    }
   }
  ]

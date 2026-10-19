@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261019-0026, I20261019-0028-F02, I20261019-0028, I20260917-0012, I20261019-0028-F01, I20261019-0029, I20260922-0032, I20261019-0024, I20261019-0025-F01, I20261019-0025, I20260925-0011, I20261019-0021-F01, I20261019-0027, I20260909-0007, I20261019-0018-F01, I20261019-0019-F01, I20261019-0023"
+    "trafficInfoNameList": "I20261019-0028-F02, I20260917-0012, I20261019-0029, I20260922-0032, I20261019-0030, I20261019-0032, I20261019-0024, I20261019-0025-F01, I20260925-0011, I20261019-0027, I20260909-0007, I20261019-0023, I20261019-0026, I20261019-0031"
    },
    {
     "id": 3,
@@ -203,115 +203,6 @@
    {
     "attributes": {
      "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261019-0018-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "301",
-       "lineName": "U1",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4138
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T13:13:00.000+0200",
-     "end": "2026-10-19T15:02:00.000+0200",
-     "lastUpdate": "2026-10-19T15:02:00.000+0200",
-     "resume": "2026-10-19T15:02:00.000+0200",
-     "start": "2026-10-19T13:12:00.000+0200"
-    },
-    "title": "U1: Verspätungen"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "name": "I20261019-0019-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "306",
-       "lineName": "U6",
-       "vehicleType": "ptMetro"
-      }
-     ]
-    ],
-    "relatedStops": [
-     4641
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T13:20:00.000+0200",
-     "end": "2026-10-19T15:03:00.000+0200",
-     "lastUpdate": "2026-10-19T15:03:00.000+0200",
-     "resume": "2026-10-19T15:03:00.000+0200",
-     "start": "2026-10-19T13:12:00.000+0200"
-    },
-    "title": "U6: Betriebsstörung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "5": "ptTram"
-     }
-    },
-    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Blindengasse  8",
-    "name": "I20261019-0021-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "105",
-       "lineName": "5",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T14:25:00.000+0200",
-     "end": "2026-10-19T15:00:00.000+0200",
-     "lastUpdate": "2026-10-19T15:00:00.000+0200",
-     "resume": "2026-10-19T15:00:00.000+0200",
-     "start": "2026-10-19T14:10:00.000+0200"
-    },
-    "title": "5: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
       "U3": "ptMetro"
      }
     },
@@ -383,41 +274,6 @@
       "9": "ptTram"
      }
     },
-    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 15:15 Uhr. Grund: Falschparker im Bereich Hormayrgasse 51.",
-    "descriptionHTML": "Linie 9:<br>Fahrtbehinderung in Richtung Westbahnhof S U.<br> <br>Voraussichtliche Dauer: 15:15 Uhr.<br><br>Grund: Falschparker im Bereich Hormayrgasse 51.",
-    "location": "Hormayrgasse  51",
-    "name": "I20261019-0025",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "109",
-       "lineName": "9",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T14:54:00.000+0200",
-     "end": "2026-10-19T14:57:00.000+0200",
-     "lastUpdate": "2026-10-19T14:57:00.000+0200",
-     "resume": "2026-10-19T14:57:00.000+0200",
-     "start": "2026-10-19T14:53:00.000+0200"
-    },
-    "title": "9: Falschparker"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "9": "ptTram"
-     }
-    },
     "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "location": "Hormayrgasse  51",
@@ -471,12 +327,12 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-19T14:58:00.000+0200",
      "end": "2026-10-19T16:08:00.000+0200",
-     "lastUpdate": "2026-10-19T14:58:00.000+0200",
-     "resume": "2026-10-19T14:56:00.000+0200",
+     "lastUpdate": "2026-10-19T16:08:00.000+0200",
+     "resume": "2026-10-19T16:08:00.000+0200",
      "start": "2026-10-19T14:56:00.000+0200"
     },
     "title": "84A: Verspätungen"
@@ -514,83 +370,6 @@
      "start": "2026-10-19T15:13:00.000+0200"
     },
     "title": "4A: Verkehrsüberlastung"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "10": "ptTram",
-      "46": "ptTram"
-     }
-    },
-    "description": "Linie 10: Fahrtbehinderung in Richtung Unter St. Veit, Hummelgasse. Linie 46: Fahrtbehinderung in Richtung Parlament, U Volkstheater Voraussichtliche Dauer: 15:35 Uhr. Grund: Verkehrsunfall im Bereich Wernhardtstraße .",
-    "descriptionHTML": "Linie 10:<br>Fahrtbehinderung in Richtung Unter St. Veit, Hummelgasse.<br>Linie 46:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater<br> <br>Voraussichtliche Dauer: 15:35 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Wernhardtstraße .",
-    "location": "Wernhardtstraße ",
-    "name": "I20261019-0028",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "10",
-     "46"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "110",
-       "lineName": "10",
-       "vehicleType": "ptTram"
-      },
-      {
-       "lineId": "146",
-       "lineName": "46",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T15:13:00.000+0200",
-     "end": "2026-10-19T15:17:00.000+0200",
-     "lastUpdate": "2026-10-19T15:17:00.000+0200",
-     "resume": "2026-10-19T15:17:00.000+0200",
-     "start": "2026-10-19T15:11:00.000+0200"
-    },
-    "title": "10, 46: Verkehrsunfall"
-   },
-   {
-    "attributes": {
-     "relatedLineTypes": {
-      "10": "ptTram"
-     }
-    },
-    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "location": "Wernhardtstraße ",
-    "name": "I20261019-0028-F01",
-    "owner": "WL",
-    "priority": "1",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedLinesDetails": [
-     [
-      {
-       "lineId": "110",
-       "lineName": "10",
-       "vehicleType": "ptTram"
-      }
-     ]
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-19T15:17:00.000+0200",
-     "end": "2026-10-19T15:17:00.000+0200",
-     "lastUpdate": "2026-10-19T15:17:00.000+0200",
-     "resume": "2026-10-19T15:17:00.000+0200",
-     "start": "2026-10-19T15:11:00.000+0200"
-    },
-    "title": "10: Verkehrsunfall"
    },
    {
     "attributes": {
@@ -660,6 +439,111 @@
      "start": "2026-10-19T15:52:00.000+0200"
     },
     "title": "80A: Verkehrsüberlastung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "59A": "ptBusCity"
+     }
+    },
+    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Verkehrsüberlastung.",
+    "name": "I20261019-0030",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "459",
+       "lineName": "59A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-19T16:12:00.000+0200",
+     "end": "2026-10-19T23:55:00.000+0200",
+     "lastUpdate": "2026-10-19T16:12:00.000+0200",
+     "resume": "2026-10-19T16:11:00.000+0200",
+     "start": "2026-10-19T16:11:00.000+0200"
+    },
+    "title": "59A: Verkehrsüberlastung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "descriptionHTML": "Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br>Grund: Betriebsstörung.",
+    "name": "I20261019-0031",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "302",
+       "lineName": "U2",
+       "vehicleType": "ptMetro"
+      }
+     ]
+    ],
+    "relatedStops": [
+     4258
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-19T16:21:00.000+0200",
+     "end": "2026-10-19T23:55:00.000+0200",
+     "lastUpdate": "2026-10-19T16:21:00.000+0200",
+     "resume": "2026-10-19T16:20:00.000+0200",
+     "start": "2026-10-19T16:20:00.000+0200"
+    },
+    "title": "U2: Betriebsstörung"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "74A": "ptBusCity"
+     }
+    },
+    "description": "Linie 74A: Fahrtbehinderung in Richtung Stubentor U. Voraussichtliche Dauer: 16:45 Uhr. Grund: Signalstörung im Bereich Vordere Zollamtsstraße .",
+    "descriptionHTML": "Linie 74A:<br>Fahrtbehinderung in Richtung Stubentor U.<br> <br>Voraussichtliche Dauer: 16:45 Uhr.<br><br>Grund: Signalstörung im Bereich Vordere Zollamtsstraße .",
+    "location": "Vordere Zollamtsstraße ",
+    "name": "I20261019-0032",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "74A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "474",
+       "lineName": "74A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-19T16:30:00.000+0200",
+     "end": "2026-10-19T23:55:00.000+0200",
+     "lastUpdate": "2026-10-19T16:30:00.000+0200",
+     "start": "2026-10-19T16:29:00.000+0200"
+    },
+    "title": "74A: Signalstörung"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
