@@ -8,8 +8,20 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 19 Oct 2026 07:00:53 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 07:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[39A: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">dfa3af5eacd7ecf6f3b864d15ccbe892b2dd7ed23dfedaca0a147c26955c5cc8</guid>
+      <pubDate>Mon, 19 Oct 2026 07:28:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Mon, 19 Oct 2026 07:28:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 19 Oct 2026 07:28:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Service obstruction towards Neustift, Agnesgasse. Expected until 07:40. Reason: traffic accident in the area of Agnesgasse / Ährengrubenweg. [Since 07:28]</description>
+      <content:encoded><![CDATA[Service obstruction towards Neustift, Agnesgasse. Expected until 07:40. Reason: traffic accident in the area of Agnesgasse / Ährengrubenweg.<br/>[Since 07:28]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[9: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -17,10 +29,10 @@
       <pubDate>Mon, 19 Oct 2026 06:44:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <ext:first_seen>Mon, 19 Oct 2026 06:44:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 19 Oct 2026 07:00:23 +0200</ext:starts_at>
+      <ext:starts_at>Mon, 19 Oct 2026 06:44:00 +0200</ext:starts_at>
       <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
-      <description>Service obstruction towards Westbahnhof S U. Expected until 07:15. Reason: illegally parked vehicle in the area of Hormayrgasse 17. [Since 06:44]</description>
-      <content:encoded><![CDATA[Service obstruction towards Westbahnhof S U. Expected until 07:15. Reason: illegally parked vehicle in the area of Hormayrgasse 17.<br/>[Since 06:44]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 06:44]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 06:44]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[80A: ÖBB-construction works]]></title>
@@ -122,19 +134,6 @@
       <georss:point>48.163113 16.409373</georss:point>
       <description>Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling … [Until 25.12.]</description>
       <content:encoded><![CDATA[Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling …<br/>[Until 25.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A/3A: Schwertgasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8e826a05334bacaf00c52d8a2230774e868655b74d3d813152577c71bbf07797</guid>
-      <pubDate>Wed, 07 Oct 2026 00:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Wed, 07 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 09 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 31 Mar 2027 23:59:00 +0200</ext:ends_at>
-      <georss:point>48.212312 16.369604</georss:point>
-      <description>Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation. [Until 31.03.2027]</description>
-      <content:encoded><![CDATA[Wipplingerstraße 14-16 → Wipplingerstraße 18. Stop relocation of lines 1A and 3A towards Schottentor U or Schottenring U. Reason: house renovation.<br/>[Until 31.03.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>

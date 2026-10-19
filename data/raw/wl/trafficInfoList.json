@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261019-0001"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261019-0002, I20261019-0001-F01, I20261019-0001"
    },
    {
     "id": 3,
@@ -225,14 +225,84 @@
       }
      ]
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-19T06:45:00.000+0200",
-     "end": "2026-10-19T23:55:00.000+0200",
-     "lastUpdate": "2026-10-19T06:45:00.000+0200",
+     "end": "2026-10-19T07:04:00.000+0200",
+     "lastUpdate": "2026-10-19T07:04:00.000+0200",
+     "resume": "2026-10-19T07:04:00.000+0200",
      "start": "2026-10-19T06:44:00.000+0200"
     },
     "title": "9: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "9": "ptTram"
+     }
+    },
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "location": "Hormayrgasse 17",
+    "name": "I20261019-0001-F01",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "109",
+       "lineName": "9",
+       "vehicleType": "ptTram"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-19T07:04:00.000+0200",
+     "end": "2026-10-19T23:55:00.000+0200",
+     "lastUpdate": "2026-10-19T07:04:00.000+0200",
+     "resume": "2026-10-19T07:04:00.000+0200",
+     "start": "2026-10-19T06:44:00.000+0200"
+    },
+    "title": "9: Falschparker"
+   },
+   {
+    "attributes": {
+     "relatedLineTypes": {
+      "39A": "ptBusCity"
+     }
+    },
+    "description": "Linie 39A: Fahrtbehinderung in Richtung Neustift, Agnesgasse. Voraussichtliche Dauer: 07:40 Uhr. Grund: Verkehrsunfall im Bereich Agnesgasse # Ährengrubenweg.",
+    "descriptionHTML": "Linie 39A:<br>Fahrtbehinderung in Richtung Neustift, Agnesgasse.<br> <br>Voraussichtliche Dauer: 07:40 Uhr.<br><br>Grund: Verkehrsunfall im Bereich Agnesgasse # Ährengrubenweg.",
+    "location": "Agnesgasse / Ährengrubenweg",
+    "name": "I20261019-0002",
+    "owner": "WL",
+    "priority": "1",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "39A"
+    ],
+    "relatedLinesDetails": [
+     [
+      {
+       "lineId": "439",
+       "lineName": "39A",
+       "vehicleType": "ptBusCity"
+      }
+     ]
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-19T07:29:00.000+0200",
+     "end": "2026-10-19T23:55:00.000+0200",
+     "lastUpdate": "2026-10-19T07:29:00.000+0200",
+     "start": "2026-10-19T07:28:00.000+0200"
+    },
+    "title": "39A: Verkehrsunfall"
    },
    {
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",

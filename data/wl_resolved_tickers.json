@@ -1,5 +1,69 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R1475-109|2026-10-19T07:00:23.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R1475-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-19T08:00:00.000+0200",
+   "incident": "I20261019-0001"
+  },
+  {
+   "key": "R1476-109|2026-10-19T07:00:23.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R1476-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-19T08:00:00.000+0200",
+   "incident": "I20261019-0001"
+  },
+  {
+   "key": "R223-109|2026-10-19T06:44:52.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R223-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-19T07:44:00.000+0200",
+   "incident": "I20261019-0001"
+  },
+  {
+   "key": "R526-109|2026-10-19T06:44:52.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R526-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-19T07:44:00.000+0200",
+   "incident": "I20261019-0001"
+  },
+  {
+   "key": "R530-109|2026-10-19T06:48:52.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R530-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-19T07:48:00.000+0200",
+   "incident": "I20261019-0001"
+  },
+  {
+   "key": "R531-109|2026-10-19T06:48:52.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R531-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-19T07:48:00.000+0200",
+   "incident": "I20261019-0001"
+  },
+  {
+   "key": "R532-109|2026-10-19T06:53:22.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R532-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-19T07:53:00.000+0200",
+   "incident": "I20261019-0001"
+  },
+  {
+   "key": "R533-109|2026-10-19T06:53:22.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R533-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-19T07:53:00.000+0200",
+   "incident": "I20261019-0001"
+  },
+  {
+   "key": "R556-109|2026-10-19T06:48:52.000+0200|Fahrtbehinderung\nFalschparker",
+   "name": "R556-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-10-19T07:48:00.000+0200",
+   "incident": "I20261019-0001"
+  }
+ ]
 }
