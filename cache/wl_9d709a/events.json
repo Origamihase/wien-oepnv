@@ -482,18 +482,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "63A: Umleitung wegen Kranarbeiten",
-    "description": "<h2>Kranarbeiten</h2> <p>Wegen Kranarbeiten im Bereich Kerschensteinergasse zwischen Kundratstra&szlig;e und L&auml;ngenfeldgasse wird die Linie 63A umgeleitet.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Von Montag, 05. Oktober 2026, auf Dauer von etwa vier Wochen, t&auml;glich von 20:00 Uhr bis 05:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 63A in Richtung Am Rosenh&uuml;gel:<br /></strong>Umleitung ab Eibesbrunnergasse # Unter-Meidlinger-Stra&szlig;e &uuml;ber Eibesbrunnergasse &ndash; Kerschensteinergasse &ndash; L&auml;ngenfeldgasse zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Ersatzlos aufgelassene Haltestellen w&auml;hrend der Umleitung:<br /></span>- Kastanienallee (Unter-Meidlinger-Stra&szlig;e vor Kastanienallee)<br />- Unfallkrankenhaus Meidling (Kundratstra&szlig;e 39 vor K&ouml;glergasse)</p>",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "4af5434c8e36b0a9cd81fc1f4654728561434a5ac02157e88c2a26f0ca46147b",
-    "pubDate": "2026-10-01T00:00:00+02:00",
-    "starts_at": "2026-10-05T00:00:00+02:00",
-    "ends_at": "2026-11-11T11:11:00+01:00",
-    "_identity": "wl|hinweis|L=63A|D=2026-10-05|TK=umleitung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "64A: An den Steinfeldern",
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> An den Steinfeldern</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Perfektastra&szlig;e 89</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> etwa 20 Meter in Richtung Eduard-Kittenberger-Gasse</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> ab 22. September 2026, etwa 08:30 Uhr, auf derzeit unbestimmte Zeit</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stra&szlig;enbauarbeiten</span></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -818,6 +806,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2/10: Fremder Verkehrsunfall",
+    "description": "Linie 2: Umleitung in beiden Richtungen zwischen Dornbach und Johann-Nepomuk-Berger-Platz über die Strecke der Linien 43 und 9. Linie 10: Betrieb nur zwischen Unter St. Veit, Hummelgasse und Ottakring, Maroltingergasse. Voraussichtliche Dauer: 19:45 Uhr. Grund: Fremder Verkehrsunfall im Bereich Wilhelminenstraße # Sandleitengasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b1e7c767060afdb2fc178782e23534a92816cd2ac57ee7d583cc0ab708b82adf",
+    "pubDate": "2026-10-19T18:31:00+02:00",
+    "starts_at": "2026-10-19T18:31:00+02:00",
+    "ends_at": "2026-10-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=10,2|D=2026-10-19|TK=2 10 fremder verkehrsunfall",
+    "_wl_ids": [
+      "I20261019-0041"
+    ],
+    "_incident_start": "2026-10-19T18:31:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "10A: Verkehrsüberlastung",
     "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -834,6 +838,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10: Fremdunfall Betrieb ab Maroltingergasse",
+    "description": "Fremdunfall\nBetrieb ab Maroltingergasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "48318e15ba68624377f0a97dd4e56ea28e6e0aa438525d8d3557de750e18ff0c",
+    "pubDate": "2026-10-19T18:35:04+02:00",
+    "starts_at": "2026-10-19T18:35:04+02:00",
+    "ends_at": "2026-10-19T19:34:00+02:00",
+    "_identity": "wl|störung|L=10|D=2026-10-19|TK=fremdunfall betrieb ab maroltingergasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "11A: Falschparker",
     "description": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -846,6 +862,22 @@
       "I20261019-0038"
     ],
     "_incident_start": "2026-10-19T17:42:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11A: Rettungseinsatz",
+    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "42fd134123a418e9ad9efe9206b8aec78f4828e1289887cd32b9a179ab2ed7cd",
+    "pubDate": "2026-10-19T18:52:00+02:00",
+    "starts_at": "2026-10-19T18:52:00+02:00",
+    "ends_at": "2026-10-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=11A|D=2026-10-19|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261019-0043"
+    ],
+    "_incident_start": "2026-10-19T18:52:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1066,6 +1098,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Fremdunfall Betrieb ab Mayssengasse",
+    "description": "Fremdunfall\nBetrieb ab Mayssengasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f4be783be3024aa6b7da46345c0149da59d12fddaabc988f269215d6e5607c6e",
+    "pubDate": "2026-10-19T18:36:31+02:00",
+    "starts_at": "2026-10-19T18:36:34+02:00",
+    "ends_at": "2026-10-19T21:45:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-10-19|TK=fremdunfall betrieb ab mayssengasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fremdunfall Züge halten bei Linie 9",
+    "description": "Fremdunfall\nZüge halten bei Linie 9",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "17df447932620845469d381d0541d4e5c1127b49a9bac9840f94cdc298afe827",
+    "pubDate": "2026-10-19T18:37:01+02:00",
+    "starts_at": "2026-10-19T18:37:01+02:00",
+    "ends_at": "2026-10-19T21:00:00+02:00",
+    "_identity": "wl|störung|L=2|D=2026-10-19|TK=fremdunfall züge halten bei linie 9"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1074,6 +1130,22 @@
     "starts_at": "2026-10-14T00:00:22+02:00",
     "ends_at": "2026-10-19T23:59:59+02:00",
     "_identity": "wl|störung|L=37A|D=2026-10-14|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Polizeieinsatz",
+    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "3d45099415a09fd16e68303074ca0a8ff763363d08ba9a5db7f8979ee44a4201",
+    "pubDate": "2026-10-19T18:37:00+02:00",
+    "starts_at": "2026-10-19T18:37:00+02:00",
+    "ends_at": "2026-10-19T23:55:00+02:00",
+    "_identity": "wl|störung|L=44|D=2026-10-19|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261019-0042"
+    ],
+    "_incident_start": "2026-10-19T18:37:00+02:00"
   },
   {
     "source": "Wiener Linien",
