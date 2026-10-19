@@ -8,8 +8,32 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 19 Oct 2026 13:01:06 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 13:31:00 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: Delays]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
+      <pubDate>Mon, 19 Oct 2026 13:12:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Mon, 19 Oct 2026 13:12:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 19 Oct 2026 13:12:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 13:12]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:12]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[18: Service disruption]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">91f10f4182d7824836d33d2209e9cea486854f28d5216b1b2b5c5844beec8939</guid>
+      <pubDate>Mon, 19 Oct 2026 13:08:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Mon, 19 Oct 2026 13:08:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 19 Oct 2026 13:08:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: service disruption. [Since 13:08]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[Since 13:08]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[13A: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -59,6 +83,18 @@
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 11:35]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[U6: Service disruption]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22</guid>
+      <pubDate>Mon, 19 Oct 2026 13:12:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <ext:first_seen>Mon, 19 Oct 2026 10:59:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 19 Oct 2026 13:12:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 19 Oct 2026 23:55:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 13:12]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:12]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[12A: Rescue operation, track construction works]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">711bdd6742039946a988fc6856f5ba58cc852d11dc70306ccf9c11dcbf6587d7</guid>
@@ -94,45 +130,6 @@
       <georss:point>48.167289 16.277365</georss:point>
       <description>Hermesstraße after Strampfergasse → approx. 50 metres towards Dr.-Schober-Straße. Hermesstraße after Strampfergasse → Discontinued. Stop relocation or … release [From Tue 20.10. until 03.11.]</description>
       <content:encoded><![CDATA[Hermesstraße after Strampfergasse → approx. 50 metres towards Dr.-Schober-Straße. Hermesstraße after Strampfergasse → Discontinued. Stop relocation or … release<br/>[From Tue 20.10. until 03.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: Neubaugasse, Neustiftgasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">d97a8a3d7d6328446c638ae8a1ccf0afc80a24b1828141a4b94ad0065074c2e5</guid>
-      <pubDate>Thu, 08 Oct 2026 15:10:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Thu, 08 Oct 2026 15:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 19 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 08 Oct 2027 11:11:00 +0200</ext:ends_at>
-      <georss:point>48.205482 16.348467</georss:point>
-      <description>Neustiftgasse 52 → Neustiftgasse 42-44. Stop relocation of line 48A towards Klinik Penzing. Reason: renovation work. [Since today]</description>
-      <content:encoded><![CDATA[Neustiftgasse 52 → Neustiftgasse 42-44. Stop relocation of line 48A towards Klinik Penzing. Reason: renovation work.<br/>[Since today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hütteldorf ↔ Wien Hauptbahnhof]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;901477</guid>
-      <pubDate>Thu, 03 Sep 2026 09:31:47 +0200</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
-      <ext:first_seen>Tue, 04 Aug 2026 14:01:06 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 17 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 21 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <georss:line>48.197671 16.261209 48.185201 16.376296</georss:line>
-      <description>Partial failure: From 18.10.2026 to 19.10.2026, the RJ 263 train cannot travel between Wien Hütteldorf station (U) and Wien Hbf (U). [Until Wed 21.10.]</description>
-      <content:encoded><![CDATA[Partial failure: From 18.10.2026 to 19.10.2026, the RJ 263 train cannot travel between Wien Hütteldorf station (U) and Wien Hbf (U).<br/>[Until Wed 21.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Simmering S U]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">c8f0b5a42164e2ff573973d0ebcbdf6fbd76b99aebfc2c85c8b8657ef7b9bb79</guid>
-      <pubDate>Wed, 14 Oct 2026 15:35:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <ext:first_seen>Wed, 14 Oct 2026 15:35:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 23 Oct 2026 05:05:00 +0200</ext:ends_at>
-      <georss:point>48.170159 16.420009</georss:point>
-      <description>Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 … [Until Fri 23.10.]</description>
-      <content:encoded><![CDATA[Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 …<br/>[Until Fri 23.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
