@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210, ftazW_352, ftazW_603, ftazW_19, ftazW_281, ftazW_1354391, ftazW_353, ftazW_282, ftazW_606, ftazW_1018092, ftazW_1018049, ftazW_477, ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_572, ftazW_22, ftazW_354"
+    "trafficInfoNameList": "ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210, ftazW_352, ftazW_603, ftazW_19, ftazW_281, ftazW_1354391, ftazW_353, ftazW_282, ftazW_606, ftazW_1018092, ftazW_1018049, ftazW_477, ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_572, ftazW_22, ftazW_354, ftazW_573"
    }
   ],
   "poiCategoryGroups": [
@@ -4810,6 +4810,43 @@
     "time": {
      "end": "2026-10-23T00:45:00.000+0200",
      "start": "2026-10-22T20:45:00.000+0200"
+    },
+    "title": "Margaretengürtel"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "23.10.2026 05:15",
+     "ausVon": "23.10.2026 01:15",
+     "location": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Morizgasse",
+     "rbls": [
+      4422
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Margaretengürtel",
+     "status": "geplante Wartung",
+     "towards": "U4 Hütteldorf"
+    },
+    "description": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Morizgasse",
+    "elevatorId": "MG 02",
+    "name": "ftazW_573",
+    "parentName": "ftazW_573",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4422
+    ],
+    "time": {
+     "end": "2026-10-23T05:15:00.000+0200",
+     "start": "2026-10-23T01:15:00.000+0200"
     },
     "title": "Margaretengürtel"
    },
