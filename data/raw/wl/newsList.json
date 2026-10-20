@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210, ftazW_352, ftazW_603, ftazW_19, ftazW_281, ftazW_1354391, ftazW_353, ftazW_282, ftazW_606, ftazW_1018092, ftazW_1018049, ftazW_477, ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_572, ftazW_22, ftazW_354, ftazW_573"
+    "trafficInfoNameList": "ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210, ftazW_352, ftazW_603, ftazW_19, ftazW_281, ftazW_1354391, ftazW_353, ftazW_282, ftazW_606, ftazW_1018092, ftazW_1018049, ftazW_477, ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_572, ftazW_22, ftazW_354, ftazW_573"
    }
   ],
   "poiCategoryGroups": [
@@ -4229,38 +4229,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "21.10.2026 00:45",
-     "ausVon": "20.10.2026 20:45",
-     "location": "Zwischengeschoss - Ausgang Erdbergstraße",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Erdberg",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Zwischengeschoss - Ausgang Erdbergstraße",
-    "elevatorId": "ED 01",
-    "name": "ftazW_17",
-    "parentName": "ftazW_17",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "time": {
-     "end": "2026-10-21T00:45:00.000+0200",
-     "start": "2026-10-20T20:45:00.000+0200"
-    },
-    "title": "Erdberg"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "21.10.2026 05:15",
      "ausVon": "21.10.2026 01:15",
      "location": "U3 Mittelbahnsteig - Ausgang Franzosengraben",
@@ -4334,43 +4302,6 @@
      "start": "2026-10-21T20:45:00.000+0200"
     },
     "title": "Erdberg"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "21.10.2026 00:45",
-     "ausVon": "20.10.2026 20:45",
-     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Nußdorfer Straße",
-     "rbls": [
-      4626
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Nußdorfer Straße",
-     "status": "geplante Wartung",
-     "towards": "U6 Floridsdorf"
-    },
-    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Nußdorfer Straße",
-    "elevatorId": "NS 01",
-    "name": "ftazW_209",
-    "parentName": "ftazW_209",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4626
-    ],
-    "time": {
-     "end": "2026-10-21T00:45:00.000+0200",
-     "start": "2026-10-20T20:45:00.000+0200"
-    },
-    "title": "Nußdorfer Straße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -4703,43 +4634,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "21.10.2026 00:45",
-     "ausVon": "20.10.2026 20:45",
-     "location": "U1 Bahnsteig Richtung Leopoldau - Ausgang Schüttaustraße",
-     "rbls": [
-      4123
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Kaisermühlen-VIC",
-     "status": "geplante Wartung",
-     "towards": "U1 Leopoldau"
-    },
-    "description": "U1 Bahnsteig Richtung Leopoldau - Ausgang Schüttaustraße",
-    "elevatorId": "KM 01",
-    "name": "ftazW_41",
-    "parentName": "ftazW_41",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4123
-    ],
-    "time": {
-     "end": "2026-10-21T00:45:00.000+0200",
-     "start": "2026-10-20T20:45:00.000+0200"
-    },
-    "title": "Kaisermühlen-VIC"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "21.10.2026 05:15",
      "ausVon": "21.10.2026 01:15",
      "location": "U1 Bahnsteig Richtung Oberlaa - Ausgang Schüttaustraße",
@@ -4809,43 +4703,6 @@
      "start": "2026-10-22T01:15:00.000+0200"
     },
     "title": "Am Schöpfwerk"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "21.10.2026 00:45",
-     "ausVon": "20.10.2026 20:45",
-     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Jörgerstraße, Hernalser Hauptstraße",
-     "rbls": [
-      4606
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Alser Straße",
-     "status": "geplante Wartung",
-     "towards": "U6 Siebenhirten"
-    },
-    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Jörgerstraße, Hernalser Hauptstraße",
-    "elevatorId": "AS 02",
-    "name": "ftazW_5",
-    "parentName": "ftazW_5",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4606
-    ],
-    "time": {
-     "end": "2026-10-21T00:45:00.000+0200",
-     "start": "2026-10-20T20:45:00.000+0200"
-    },
-    "title": "Alser Straße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -4959,45 +4816,6 @@
      "start": "2026-10-22T20:45:00.000+0200"
     },
     "title": "Hütteldorf"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "21.10.2026 00:45",
-     "ausVon": "20.10.2026 20:45",
-     "location": "U3 Mittelbahnsteig - Ausgang Kendlerstraße",
-     "rbls": [
-      4932,
-      4929
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Kendlerstraße",
-     "status": "geplante Wartung",
-     "towards": "U3 beide Richtungen"
-    },
-    "description": "U3 Mittelbahnsteig - Ausgang Kendlerstraße",
-    "elevatorId": "KR 01",
-    "name": "ftazW_599",
-    "parentName": "ftazW_599",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4932,
-     4929
-    ],
-    "time": {
-     "end": "2026-10-21T00:45:00.000+0200",
-     "start": "2026-10-20T20:45:00.000+0200"
-    },
-    "title": "Kendlerstraße"
    },
    {
     "alertCause": "undefined alert cause",

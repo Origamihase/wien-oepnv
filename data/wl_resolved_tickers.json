@@ -1,27 +1,5 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": [
-  {
-   "key": "R304-170|2026-10-20T19:47:51.000+0200|Feuerwehreinsatz\nUmleitung bis Rennweg S über Linie 18 und 71",
-   "name": "R304-170",
-   "title": "Feuerwehreinsatz\nUmleitung bis Rennweg S über Linie 18 und 71",
-   "end": "2026-10-20T20:46:00.000+0200",
-   "incident": "I20261020-0050"
-  },
-  {
-   "key": "R305-170|2026-10-20T19:47:51.000+0200|Feuerwehreinsatz\nUmleitung bis Rennweg S über Linie 18 und 71",
-   "name": "R305-170",
-   "title": "Feuerwehreinsatz\nUmleitung bis Rennweg S über Linie 18 und 71",
-   "end": "2026-10-20T20:46:00.000+0200",
-   "incident": "I20261020-0050"
-  },
-  {
-   "key": "R306-170|2026-10-20T19:48:51.000+0200|Feuerwehreinsatz\nZüge halten bei Linie 71",
-   "name": "R306-170",
-   "title": "Feuerwehreinsatz\nZüge halten bei Linie 71",
-   "end": "2026-10-20T20:48:00.000+0200",
-   "incident": "I20261020-0050"
-  }
- ]
+ "tickers": []
 }

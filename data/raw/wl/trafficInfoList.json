@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261020-0048-F01, I20260925-0011, I20261020-0050-F01, I20260909-0007, I20261020-0049-F01, I20261020-0029, I20261020-0045"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261020-0048-F01, I20260925-0011, I20260909-0007, I20261020-0029, I20261020-0045"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R19-136, R130-136, R119-136, R118-136, R117-136, R2025-671, R318-437, R293-474, R45-136, R100-136, R101-136, R102-136, R116-136, R115-136, R103-136, R36-152, R2558-125, R2371-125, R2359-125, R2343-125, R2343-626, R2378-627, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2370-125, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R5815-671, R3886-480, R1974-466, R500-101, R401-101, R1876-101, R1875-101, R1882-101, R1883-101, R1881-101, R1880-101, R1884-101, R232-143, R231-143, R233-143, R234-143, R235-143, R222-143, R221-143, R220-143, R219-143, R304-170, R305-170, R306-170, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R293-474, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1474-412, R1473-149, R1474-149, R1475-149, R1476-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1448-412, R5815-671, R3886-480, R1974-466, R500-101, R401-101, R1876-101, R1875-101, R1881-101, R1880-101, R1882-101, R1883-101, R1884-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -350,98 +350,6 @@
      "start": "2026-10-20T19:06:00.000+0200"
     },
     "title": "U6: Betriebsstörung"
-   },
-   {
-    "alertCause": "fire",
-    "alertCauseId": 5,
-    "attributes": {
-     "relatedLineTypes": {
-      "43": "ptTram"
-     }
-    },
-    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "43: Feuerwehreinsatz"
-      }
-     }
-    ],
-    "location": "Jörgerstraße",
-    "name": "I20261020-0049-F01",
-    "owner": "WL",
-    "parentName": "I20261020-0049",
-    "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 143,
-      "lineName": "43",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-20T20:04:00.000+0200",
-     "lastUpdate": "2026-10-20T20:04:00.000+0200",
-     "resume": "2026-10-20T20:04:00.000+0200",
-     "start": "2026-10-20T19:37:00.000+0200"
-    },
-    "title": "43: Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "fire",
-    "alertCauseId": 5,
-    "attributes": {
-     "relatedLineTypes": {
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "O: Feuerwehreinsatz"
-      }
-     }
-    ],
-    "location": "Fasangasse",
-    "name": "I20261020-0050-F01",
-    "owner": "WL",
-    "parentName": "I20261020-0050",
-    "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 170,
-      "lineName": "O",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-20T19:59:00.000+0200",
-     "lastUpdate": "2026-10-20T19:59:00.000+0200",
-     "resume": "2026-10-20T19:59:00.000+0200",
-     "start": "2026-10-20T19:41:00.000+0200"
-    },
-    "title": "O: Feuerwehreinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1179,190 +1087,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung bis Rosensteingasse",
-    "name": "R219-143",
-    "owner": "WL",
-    "parentName": "R219-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     219
-    ],
-    "time": {
-     "end": "2026-10-20T20:43:00.000+0200",
-     "start": "2026-10-20T19:44:20.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung bis Rosensteingasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung bis Rosensteingasse",
-    "name": "R220-143",
-    "owner": "WL",
-    "parentName": "R220-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     220
-    ],
-    "time": {
-     "end": "2026-10-20T20:43:00.000+0200",
-     "start": "2026-10-20T19:44:20.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung bis Rosensteingasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung bis Rosensteingasse",
-    "name": "R221-143",
-    "owner": "WL",
-    "parentName": "R221-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     221
-    ],
-    "time": {
-     "end": "2026-10-20T20:43:00.000+0200",
-     "start": "2026-10-20T19:44:20.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung bis Rosensteingasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung bis Rosensteingasse",
-    "name": "R222-143",
-    "owner": "WL",
-    "parentName": "R222-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     222
-    ],
-    "time": {
-     "end": "2026-10-20T20:43:00.000+0200",
-     "start": "2026-10-20T19:44:20.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung bis Rosensteingasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung bis Brünnlbadgasse über Linie 44",
-    "name": "R231-143",
-    "owner": "WL",
-    "parentName": "R231-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     231
-    ],
-    "time": {
-     "end": "2026-10-20T20:39:00.000+0200",
-     "start": "2026-10-20T19:42:20.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung bis Brünnlbadgasse über Linie 44"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung bis Brünnlbadgasse über Linie 44",
-    "name": "R232-143",
-    "owner": "WL",
-    "parentName": "R232-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     232
-    ],
-    "time": {
-     "end": "2026-10-20T20:39:00.000+0200",
-     "start": "2026-10-20T19:42:20.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung bis Brünnlbadgasse über Linie 44"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung bis Brünnlbadgasse über Linie 44",
-    "name": "R233-143",
-    "owner": "WL",
-    "parentName": "R233-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     233
-    ],
-    "time": {
-     "end": "2026-10-20T20:39:00.000+0200",
-     "start": "2026-10-20T19:42:20.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung bis Brünnlbadgasse über Linie 44"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung bis Brünnlbadgasse über Linie 44",
-    "name": "R234-143",
-    "owner": "WL",
-    "parentName": "R234-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     234
-    ],
-    "time": {
-     "end": "2026-10-20T20:39:00.000+0200",
-     "start": "2026-10-20T19:42:20.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung bis Brünnlbadgasse über Linie 44"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -1428,29 +1152,6 @@
      "start": "2026-10-14T00:00:25.000+0200"
     },
     "title": "Züge halten bei\nLinie 31"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nZüge halten Linie 44",
-    "name": "R235-143",
-    "owner": "WL",
-    "parentName": "R235-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     235
-    ],
-    "time": {
-     "end": "2026-10-20T20:42:00.000+0200",
-     "start": "2026-10-20T19:43:20.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nZüge halten Linie 44"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1750,75 +1451,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung bis Rennweg S über Linie 18 und 71",
-    "name": "R304-170",
-    "owner": "WL",
-    "parentName": "R304-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     304
-    ],
-    "time": {
-     "end": "2026-10-20T20:46:00.000+0200",
-     "start": "2026-10-20T19:47:51.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung bis Rennweg S über Linie 18 und 71"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung bis Rennweg S über Linie 18 und 71",
-    "name": "R305-170",
-    "owner": "WL",
-    "parentName": "R305-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     305
-    ],
-    "time": {
-     "end": "2026-10-20T20:46:00.000+0200",
-     "start": "2026-10-20T19:47:51.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung bis Rennweg S über Linie 18 und 71"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nZüge halten bei Linie 71",
-    "name": "R306-170",
-    "owner": "WL",
-    "parentName": "R306-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     306
-    ],
-    "time": {
-     "end": "2026-10-20T20:48:00.000+0200",
-     "start": "2026-10-20T19:48:51.000+0200"
-    },
-    "title": "Feuerwehreinsatz\nZüge halten bei Linie 71"
    },
    {
     "alertCause": "undefined alert cause",
