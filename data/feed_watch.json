@@ -1,17 +1,13 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-20T02:31:01.914725+00:00",
- "built": "2026-10-20T04:30:53+02:00",
+ "updated": "2026-10-20T03:01:23.615047+00:00",
+ "built": "2026-10-20T05:01:08+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-20T04:30:53+02:00",
+  "built": "2026-10-20T05:01:08+02:00",
   "items": [
-   {
-    "title": "N20: Schadhaftes Fahrzeug, Gleisbauarbeiten, Bauarbeiten",
-    "time_line": "Seit heute"
-   },
    {
     "title": "56B/56A/N62: Strampfergasse",
     "time_line": "Bis 03.11."
@@ -47,31 +43,15 @@
    {
     "title": "15A: Max-Mauermann-Gasse",
     "time_line": "Bis 25.12."
+   },
+   {
+    "title": "N8: Busse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
+    "time_line": "Heute"
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-13T03:00:48.431942+00:00",
-   "raw": {
-    "wl-stoerungen": 58,
-    "wl-hinweise": 96,
-    "oebb": 167,
-    "baustellen-linien": 52,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 19,
-    "oebb": 143,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 99
-   }
-  },
   {
    "t": "2026-10-13T03:30:55.999177+00:00",
    "raw": {
@@ -6770,6 +6750,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 108
+   }
+  },
+  {
+   "t": "2026-10-20T03:01:23.615047+00:00",
+   "raw": {
+    "wl-stoerungen": 60,
+    "wl-hinweise": 97,
+    "oebb": 163,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 20,
+    "oebb": 140,
+    "baustellen": 69
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 102
    }
   }
  ]
