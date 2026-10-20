@@ -8,20 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 20 Oct 2026 18:30:52 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 19:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[20A: Fire-brigade operation]]></title>
+      <title><![CDATA[62A: Third-party traffic accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">70f2c6e81ae7b54fa42a14e29f6b7593e302e5aa0659cc02843491ba7448dd3e</guid>
-      <pubDate>Tue, 20 Oct 2026 17:54:00 +0200</pubDate>
+      <guid isPermaLink="false">9ce0b6d5a30b4e1685f4f825dd39e70de43d9861235273eddc64d5a8feb1a4ff</guid>
+      <pubDate>Tue, 20 Oct 2026 18:00:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 20 Oct 2026 18:00:47 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 17:54:00 +0200</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 17:54]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 17:54]]]></content:encoded>
+      <ext:starts_at>Tue, 20 Oct 2026 18:02:46 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 20 Oct 2026 19:02:00 +0200</ext:ends_at>
+      <description>Service obstruction. [Since 18:02]</description>
+      <content:encoded><![CDATA[Service obstruction.<br/>[Since 18:02]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U4: Delays]]></title>
@@ -48,33 +49,6 @@
       <ext:starts_at>Tue, 20 Oct 2026 17:48:00 +0200</ext:starts_at>
       <description>Irregular intervals in both directions. Reason: service disruption. [Since 17:48]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[Since 17:48]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386</guid>
-      <pubDate>Tue, 20 Oct 2026 17:41:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 17:41:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 17:45:11 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 20 Oct 2026 18:44:00 +0200</ext:ends_at>
-      <description>Service obstruction. [Since 17:41]</description>
-      <content:encoded><![CDATA[Service obstruction.<br/>[Since 17:41]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62A: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">9ce0b6d5a30b4e1685f4f825dd39e70de43d9861235273eddc64d5a8feb1a4ff</guid>
-      <pubDate>Tue, 20 Oct 2026 18:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 18:00:47 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 18:00:00 +0200</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident. [Since today]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1: Track construction works]]></title>
@@ -148,6 +122,34 @@
       <georss:point>48.170159 16.420009</georss:point>
       <description>Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 … [Until Fri 23.10.]</description>
       <content:encoded><![CDATA[Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 …<br/>[Until Fri 23.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[64A: Liesing-Flur-Gasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">609517ab3ab98b5b38f0fe913f15e9bd18cd5a3d9005a51a2cb50d3fb227ddbd</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 14 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Perfektastraße after Liesinger-Flur-Gasse → Perfektastraße 77. Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse. Reason: roadworks. [Until 28.10.]</description>
+      <content:encoded><![CDATA[Perfektastraße after Liesinger-Flur-Gasse → Perfektastraße 77. Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse. Reason: roadworks.<br/>[Until 28.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Construction works]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">615c7d9755493e3506136b4c89ccafaac30323c3c9774583bc4b55062576c7bb</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 09 Oct 2026 13:30:44 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 14 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Due to construction works in the area of Neilreichgasse / Davidgasse, line 7A is redirected. [Until 14.11.]</description>
+      <content:encoded><![CDATA[Due to construction works in the area of Neilreichgasse / Davidgasse, line 7A is redirected.<br/>[Until 14.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
