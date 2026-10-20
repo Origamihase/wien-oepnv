@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 20 Oct 2026 03:01:07 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 03:30:40 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[N20: Defective vehicle, track construction works, construction works]]></title>
@@ -22,19 +22,6 @@
       <ext:starts_at>Tue, 20 Oct 2026 02:50:00 +0200</ext:starts_at>
       <description>Defective vehicle: irregular intervals in both directions. [Since today]</description>
       <content:encoded><![CDATA[Defective vehicle: irregular intervals in both directions.<br/>[Since today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N66: Police operation, construction works]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">61226b2ae8446ab184d18f5f3fd3a181783a5358bddb21635ca1ebbe708470c7</guid>
-      <pubDate>Tue, 20 Oct 2026 02:41:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 02:41:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 02:41:00 +0200</ext:starts_at>
-      <description>Police operation: Currently, there are irregular intervals on line N66 in both directions. Construction works: buses stop at Salvatorianerplatz. [Since today]</description>
-      <content:encoded><![CDATA[Police operation: Currently, there are irregular intervals on line N66 in both directions. Construction works: buses stop at Salvatorianerplatz.<br/>[Since today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[56B/56A/N62: Strampfergasse]]></title>
@@ -151,6 +138,21 @@
       <georss:point>48.210606 16.344038</georss:point>
       <description>Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works. [Until 03.11.]</description>
       <content:encoded><![CDATA[Albertgasse 27 → Albertgasse 33 - 35. Stop relocation of lines 5 and 12 towards Westbahnhof U or Josefstädter Straße U. Reason: construction works.<br/>[Until 03.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A: Max-Mauermann-Gasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">56aa798cbb018fbaed4813a991f56c2470867f1f9a0ce034661ba2e01da13007</guid>
+      <pubDate>Wed, 07 Oct 2026 15:30:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 07 Oct 2026 15:30:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 13 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 25 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <georss:point>48.163113 16.409373</georss:point>
+      <description>Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling … [Until 25.12.]</description>
+      <content:encoded><![CDATA[Bitterlichstraße opposite Max-Mauermann-Gasse → Bitterlichstraße opposite Friedrich-Teller-Gasse. Stop relocation of line 15A towards station Meidling …<br/>[Until 25.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
