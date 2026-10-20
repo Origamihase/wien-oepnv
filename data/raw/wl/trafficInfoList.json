@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261020-0041-F01, I20261020-0041-F02, I20260925-0011, I20261020-0038, I20260909-0007, I20261020-0029, I20261020-0031-F02"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261020-0041-F01, I20261020-0041-F02, I20261020-0038, I20260925-0011, I20260909-0007, I20261020-0029, I20261020-0031-F02, I20261020-0042-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R45-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R19-136, R293-474, R2025-671, R318-437, R36-152, R2558-125, R2372-627, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2345-127, R1474-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1475-149, R1476-149, R5815-671, R3886-480, R1974-466, R500-101, R1875-101, R401-101, R1876-101, R1883-101, R1880-101, R1881-101, R1882-101, R1884-101, R209-137, R207-137, R211-137, R210-137, R208-137, R2036-171, R2035-171, R2033-171, R2034-171, R2032-171, R2031-171, R2035-111, R2034-111, R2036-111, R2033-111, R2032-111, R2031-111, R2026-111, R2025-171, R2025-111, R2027-171, R2026-171, R2027-111, R4732-111, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R293-474, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1474-412, R1473-149, R1474-149, R1475-149, R1476-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1448-412, R5815-671, R3886-480, R1974-466, R500-101, R401-101, R1876-101, R1875-101, R1882-101, R1881-101, R1880-101, R1883-101, R1884-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -342,10 +342,11 @@
       "vehicleType": "ptMetro"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-20T15:52:00.000+0200",
-     "lastUpdate": "2026-10-20T15:52:00.000+0200",
+     "end": "2026-10-20T17:30:00.000+0200",
+     "lastUpdate": "2026-10-20T17:30:00.000+0200",
      "resume": "2026-10-20T15:51:00.000+0200",
      "start": "2026-10-20T15:51:00.000+0200"
     },
@@ -446,6 +447,54 @@
      "start": "2026-10-20T16:13:00.000+0200"
     },
     "title": "11: Rettungseinsatz"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "43": "ptTram"
+     }
+    },
+    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "43: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261020-0042-F01",
+    "owner": "WL",
+    "parentName": "I20261020-0042",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 143,
+      "lineName": "43",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     4737
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T17:14:00.000+0200",
+     "lastUpdate": "2026-10-20T17:14:00.000+0200",
+     "resume": "2026-10-20T17:14:00.000+0200",
+     "start": "2026-10-20T17:09:00.000+0200"
+    },
+    "title": "43: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1163,52 +1212,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2025-111",
-    "owner": "WL",
-    "parentName": "R2025-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2025
-    ],
-    "time": {
-     "end": "2026-10-20T17:23:00.000+0200",
-     "start": "2026-10-20T16:23:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2025-171",
-    "owner": "WL",
-    "parentName": "R2025-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2025
-    ],
-    "time": {
-     "end": "2026-10-20T17:23:00.000+0200",
-     "start": "2026-10-20T16:23:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "name": "R2025-671",
     "owner": "WL",
@@ -1225,489 +1228,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2026-111",
-    "owner": "WL",
-    "parentName": "R2026-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2026
-    ],
-    "time": {
-     "end": "2026-10-20T17:23:00.000+0200",
-     "start": "2026-10-20T16:23:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2026-171",
-    "owner": "WL",
-    "parentName": "R2026-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2026
-    ],
-    "time": {
-     "end": "2026-10-20T17:23:00.000+0200",
-     "start": "2026-10-20T16:23:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2027-111",
-    "owner": "WL",
-    "parentName": "R2027-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2027
-    ],
-    "time": {
-     "end": "2026-10-20T17:23:00.000+0200",
-     "start": "2026-10-20T16:23:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2027-171",
-    "owner": "WL",
-    "parentName": "R2027-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2027
-    ],
-    "time": {
-     "end": "2026-10-20T17:23:00.000+0200",
-     "start": "2026-10-20T16:23:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Fickeysstraße",
-    "name": "R2031-111",
-    "owner": "WL",
-    "parentName": "R2031-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2031
-    ],
-    "time": {
-     "end": "2026-10-20T17:18:00.000+0200",
-     "start": "2026-10-20T16:15:04.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Fickeysstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Fickeysstraße",
-    "name": "R2031-171",
-    "owner": "WL",
-    "parentName": "R2031-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2031
-    ],
-    "time": {
-     "end": "2026-10-20T17:17:00.000+0200",
-     "start": "2026-10-20T16:14:34.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Fickeysstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Fickeysstraße",
-    "name": "R2032-111",
-    "owner": "WL",
-    "parentName": "R2032-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2032
-    ],
-    "time": {
-     "end": "2026-10-20T17:18:00.000+0200",
-     "start": "2026-10-20T16:15:04.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Fickeysstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Fickeysstraße",
-    "name": "R2032-171",
-    "owner": "WL",
-    "parentName": "R2032-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2032
-    ],
-    "time": {
-     "end": "2026-10-20T17:17:00.000+0200",
-     "start": "2026-10-20T16:14:34.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Fickeysstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2033-111",
-    "owner": "WL",
-    "parentName": "R2033-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2033
-    ],
-    "time": {
-     "end": "2026-10-20T17:14:00.000+0200",
-     "start": "2026-10-20T16:15:03.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2033-171",
-    "owner": "WL",
-    "parentName": "R2033-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2033
-    ],
-    "time": {
-     "end": "2026-10-20T17:14:00.000+0200",
-     "start": "2026-10-20T16:14:33.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2034-111",
-    "owner": "WL",
-    "parentName": "R2034-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2034
-    ],
-    "time": {
-     "end": "2026-10-20T17:14:00.000+0200",
-     "start": "2026-10-20T16:15:03.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2034-171",
-    "owner": "WL",
-    "parentName": "R2034-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2034
-    ],
-    "time": {
-     "end": "2026-10-20T17:14:00.000+0200",
-     "start": "2026-10-20T16:14:33.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2035-111",
-    "owner": "WL",
-    "parentName": "R2035-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2035
-    ],
-    "time": {
-     "end": "2026-10-20T17:14:00.000+0200",
-     "start": "2026-10-20T16:15:03.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2035-171",
-    "owner": "WL",
-    "parentName": "R2035-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2035
-    ],
-    "time": {
-     "end": "2026-10-20T17:14:00.000+0200",
-     "start": "2026-10-20T16:14:33.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2036-111",
-    "owner": "WL",
-    "parentName": "R2036-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2036
-    ],
-    "time": {
-     "end": "2026-10-20T17:14:00.000+0200",
-     "start": "2026-10-20T16:15:03.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R2036-171",
-    "owner": "WL",
-    "parentName": "R2036-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2036
-    ],
-    "time": {
-     "end": "2026-10-20T17:14:00.000+0200",
-     "start": "2026-10-20T16:14:33.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R207-137",
-    "owner": "WL",
-    "parentName": "R207-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     207
-    ],
-    "time": {
-     "end": "2026-10-20T17:09:00.000+0200",
-     "start": "2026-10-20T16:10:00.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R208-137",
-    "owner": "WL",
-    "parentName": "R208-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     208
-    ],
-    "time": {
-     "end": "2026-10-20T17:09:00.000+0200",
-     "start": "2026-10-20T16:10:00.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R209-137",
-    "owner": "WL",
-    "parentName": "R209-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     209
-    ],
-    "time": {
-     "end": "2026-10-20T17:09:00.000+0200",
-     "start": "2026-10-20T16:10:00.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R210-137",
-    "owner": "WL",
-    "parentName": "R210-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     210
-    ],
-    "time": {
-     "end": "2026-10-20T17:09:00.000+0200",
-     "start": "2026-10-20T16:10:00.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R211-137",
-    "owner": "WL",
-    "parentName": "R211-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     211
-    ],
-    "time": {
-     "end": "2026-10-20T17:09:00.000+0200",
-     "start": "2026-10-20T16:10:00.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2149,7 +1669,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nKein Betrieb",
+    "description": "Gleisbauarbeiten\nUmleitung zum Reumannplatz >",
     "name": "R401-101",
     "owner": "WL",
     "parentName": "R401-101",
@@ -2167,7 +1687,7 @@
      "end": "2026-10-20T23:59:59.000+0200",
      "start": "2026-10-20T12:04:07.000+0200"
     },
-    "title": "Gleisbauarbeiten\nKein Betrieb"
+    "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz >"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2191,29 +1711,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R4732-111",
-    "owner": "WL",
-    "parentName": "R4732-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     4732
-    ],
-    "time": {
-     "end": "2026-10-20T17:26:00.000+0200",
-     "start": "2026-10-20T16:27:07.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",

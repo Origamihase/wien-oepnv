@@ -1,28 +1,24 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-20T15:01:14.845690+00:00",
- "built": "2026-10-20T17:01:00+02:00",
+ "updated": "2026-10-20T15:31:08.040916+00:00",
+ "built": "2026-10-20T17:30:51+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-20T17:01:00+02:00",
+  "built": "2026-10-20T17:30:51+02:00",
   "items": [
    {
-    "title": "71: Rettungseinsatz",
+    "title": "Wien Floridsdorf ↔ Wien Praterstern",
+    "time_line": "Seit 17:23"
+   },
+   {
+    "title": "43: Polizeieinsatz",
+    "time_line": "Seit 17:09"
+   },
+   {
+    "title": "11/71: Rettungseinsatz",
     "time_line": "Seit 16:13"
-   },
-   {
-    "title": "11: Rettungseinsatz",
-    "time_line": "Seit 16:13"
-   },
-   {
-    "title": "37: Falschparker",
-    "time_line": "Seit 16:10"
-   },
-   {
-    "title": "U1: Polizeieinsatz",
-    "time_line": "Seit 15:51"
    },
    {
     "title": "O: Verkehrsunfall",
@@ -47,31 +43,15 @@
    {
     "title": "N71: Simmering S U",
     "time_line": "Bis Fr 23.10."
+   },
+   {
+    "title": "64A: Liesing-Flur-Gasse",
+    "time_line": "Bis 28.10."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-13T15:30:52.846860+00:00",
-   "raw": {
-    "wl-stoerungen": 141,
-    "wl-hinweise": 102,
-    "oebb": 160,
-    "baustellen-linien": 52,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 22,
-    "oebb": 136,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 106
-   }
-  },
   {
    "t": "2026-10-13T16:01:11.974294+00:00",
    "raw": {
@@ -6769,6 +6749,26 @@
    "cache": {
     "baustellen": 4,
     "oebb": 10,
+    "wl": 107
+   }
+  },
+  {
+   "t": "2026-10-20T15:31:08.040916+00:00",
+   "raw": {
+    "wl-stoerungen": 70,
+    "wl-hinweise": 101,
+    "oebb": 165,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 141,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 11,
     "wl": 107
    }
   }
