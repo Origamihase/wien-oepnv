@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0051-F01, I20261020-0051, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0052-F01, I20261020-0052, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R117-136, R118-136, R119-136, R130-136, R116-136, R115-136, R2025-671, R103-136, R102-136, R36-152, R45-136, R19-136, R101-136, R100-136, R2558-125, R2370-125, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2359-125, R2343-125, R2343-626, R2378-627, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R5815-671, R3886-480, R1974-466, R500-101, R401-101, R1875-101, R1876-101, R1881-101, R1880-101, R1882-101, R1883-101, R1884-101, R2064-466, R1927-466, R1940-466, R1941-466, R1942-466, R1944-466, R1945-466, R1946-466, R1947-466, R1958-466, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R36-152, R19-136, R130-136, R119-136, R118-136, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R2025-671, R117-136, R116-136, R45-136, R2558-125, R2371-125, R2359-125, R2343-125, R2343-626, R2378-627, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2370-125, R1475-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1476-149, R5815-671, R3886-480, R1974-466, R500-101, R401-101, R1876-101, R1875-101, R1883-101, R1882-101, R1881-101, R1880-101, R1884-101, R2064-466, R1958-466, R1945-466, R1942-466, R1944-466, R1941-466, R1940-466, R1927-466, R1946-466, R1947-466, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -266,20 +266,20 @@
       "66A": "ptBusCity"
      }
     },
-    "description": "Linie 66A: Fahrtbehinderung in Richtung Liesing S. Voraussichtliche Dauer: 21:40 Uhr. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 66A:<br>Fahrtbehinderung in Richtung Liesing S.</p><p>Voraussichtliche Dauer: 21:40 Uhr.</p><p>Grund: Verkehrsunfall.</p>",
+    "description": "Linie 66A: Umleitung in Richtung Liesing S zwischen Reumannplatz und Laxenburger Straße, Troststraße über Davidgasse und Laxenburger Straße. Voraussichtliche Dauer: 22:20 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Reumannplatz U.",
+    "descriptionHTML": "<p>Linie 66A:<br>Umleitung in Richtung Liesing S<br>zwischen Reumannplatz und Laxenburger Straße, Troststraße über Davidgasse und Laxenburger Straße.</p><p>Voraussichtliche Dauer: 22:20 Uhr.</p><p>Grund: Verkehrsunfall im Haltestellenbereich Reumannplatz U.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 66A:<br>Fahrtbehinderung in Richtung Liesing S.</p><p>Voraussichtliche Dauer: 21:40 Uhr.</p><p>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 66A: Fahrtbehinderung in Richtung Liesing S. Voraussichtliche Dauer: 21:40 Uhr. Grund: Verkehrsunfall.",
+       "descriptionHtml": "<p>Linie 66A:<br>Umleitung in Richtung Liesing S<br>zwischen Reumannplatz und Laxenburger Straße, Troststraße über Davidgasse und Laxenburger Straße.</p><p>Voraussichtliche Dauer: 22:20 Uhr.</p><p>Grund: Verkehrsunfall im Haltestellenbereich Reumannplatz U.</p>",
+       "descriptionPlain": "Linie 66A: Umleitung in Richtung Liesing S zwischen Reumannplatz und Laxenburger Straße, Troststraße über Davidgasse und Laxenburger Straße. Voraussichtliche Dauer: 22:20 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Reumannplatz U.",
        "title": "66A: Verkehrsunfall"
       }
      }
     ],
-    "name": "I20261020-0051",
+    "name": "I20261020-0052",
     "owner": "WL",
-    "parentName": "I20261020-0051",
+    "parentName": "I20261020-0052",
     "priority": "1",
     "reasonId": 12,
     "reasonName": "Verkehrsunfall",
@@ -294,13 +294,16 @@
       "vehicleType": "ptBusCity"
      }
     ],
+    "relatedStops": [
+     2007
+    ],
     "status": "resolved",
     "time": {
-     "created": "2026-10-20T21:22:00.000+0200",
-     "end": "2026-10-20T21:29:00.000+0200",
-     "lastUpdate": "2026-10-20T21:29:00.000+0200",
-     "resume": "2026-10-20T21:29:00.000+0200",
-     "start": "2026-10-20T21:19:00.000+0200"
+     "created": "2026-10-20T21:56:00.000+0200",
+     "end": "2026-10-20T21:56:00.000+0200",
+     "lastUpdate": "2026-10-20T21:56:00.000+0200",
+     "resume": "2026-10-20T21:56:00.000+0200",
+     "start": "2026-10-20T21:55:00.000+0200"
     },
     "title": "66A: Verkehrsunfall"
    },
@@ -323,9 +326,9 @@
       }
      }
     ],
-    "name": "I20261020-0051-F01",
+    "name": "I20261020-0052-F01",
     "owner": "WL",
-    "parentName": "I20261020-0051",
+    "parentName": "I20261020-0052",
     "priority": "1",
     "reasonId": 12,
     "reasonName": "Verkehrsunfall",
@@ -340,12 +343,15 @@
       "vehicleType": "ptBusCity"
      }
     ],
+    "relatedStops": [
+     2007
+    ],
     "status": "active",
     "time": {
-     "created": "2026-10-20T21:29:00.000+0200",
-     "lastUpdate": "2026-10-20T21:29:00.000+0200",
-     "resume": "2026-10-20T21:29:00.000+0200",
-     "start": "2026-10-20T21:19:00.000+0200"
+     "created": "2026-10-20T21:56:00.000+0200",
+     "lastUpdate": "2026-10-20T21:56:00.000+0200",
+     "resume": "2026-10-20T21:56:00.000+0200",
+     "start": "2026-10-20T21:55:00.000+0200"
     },
     "title": "66A: Verkehrsunfall"
    },
