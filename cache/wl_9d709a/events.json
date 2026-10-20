@@ -870,6 +870,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "42361c021c385465a19789d8d9c5f102574e313db04341277686be20fe7d51fc",
+    "pubDate": "2026-10-20T12:04:07+02:00",
+    "starts_at": "2026-10-20T12:04:07+02:00",
+    "ends_at": "2026-10-20T13:03:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-10-20|TK=fahrtbehinderung gleisschaden"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Gleisschaden Betrieb ab Knöllgasse",
+    "description": "Gleisschaden\nBetrieb ab Knöllgasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c17ed37d4345167b3c6523f076e4bc04099d50e6bf9199b63801aa7632576d03",
+    "pubDate": "2026-10-20T12:05:38+02:00",
+    "starts_at": "2026-10-20T12:05:38+02:00",
+    "ends_at": "2026-10-20T13:04:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-10-20|TK=gleisschaden betrieb ab knöllgasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "25/26/27: Gleisbauarbeiten",
     "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse. Weiterfahrt über Linie 27 bis Aspern Nord S U. Linie 26: Betrieb nur zwischen Hausfeldstraße U und Josef-Baumann-Gasse. Weiterfahrt nach Kagran U. Linie 27: Betrieb nur zwischen Strebersdorf, Meriangasse und Floridsdorf S U. Weichen Sie daher nach Möglichkeit großräumig auf die U1 und S-Bahn über Leopoldau S U oder Praterstern S U aus. Zwischen Kagraner Platz U und Floridsdorf S U können Sie auch auf die Linien 31A und anschließend 29A/29B oder 31A und S-Bahn ausweichen. Zwischen Kagran U und Floridsdorf S U können Sie auch auf die Linien 27A und anschließend 29A/29B ausweichen. Zwischen Floridsdorf S U und Josef-Baumann-Gasse fährt der Ersatzbus 26E. Beachten Sie, der 26E hat nicht die gleichen Kapazitäten wie eine Straßenbahn. Voraussichtliche Dauer: Ende 2026. Grund: Gleisbauarbeiten im Bereich Donaufelder Straße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1038,22 +1062,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "34A: Verspätungen",
-    "description": "Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3da74a447e798004d7de0fe7954c3720d223a4088c9715bacf4e90c18d27e257",
-    "pubDate": "2026-10-20T10:20:00+02:00",
-    "starts_at": "2026-10-20T10:20:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=34A|D=2026-10-20|TK=34a verspätungen",
-    "_wl_ids": [
-      "I20261020-0024"
-    ],
-    "_incident_start": "2026-10-20T10:20:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1094,22 +1102,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60A: Rettungseinsatz",
-    "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7ea7b7e88e9d5c99b7507dbe5112c345878b2378b59599c67bf954ad52c6b36e",
-    "pubDate": "2026-10-20T11:04:00+02:00",
-    "starts_at": "2026-10-20T11:04:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=60A|D=2026-10-20|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261020-0027"
-    ],
-    "_incident_start": "2026-10-20T11:04:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1118,22 +1110,6 @@
     "starts_at": "2026-10-20T04:40:25+02:00",
     "ends_at": "2026-10-21T01:00:00+02:00",
     "_identity": "wl|störung|L=66A|D=2026-10-20|TK=busse halten salvatorianerplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Verkehrsunfall",
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7",
-    "pubDate": "2026-10-20T09:38:00+02:00",
-    "starts_at": "2026-10-20T09:38:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=71|D=2026-10-20|TK=71 verkehrsunfall",
-    "_wl_ids": [
-      "I20261020-0023"
-    ],
-    "_incident_start": "2026-10-20T09:38:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1234,6 +1210,22 @@
     "starts_at": "2026-10-20T00:00:12+02:00",
     "ends_at": "2026-10-20T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-20|TK=ersatzverkehr"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Feuerwehreinsatz",
+    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Reumannplatz und Altes Landgut in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 13:30 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Troststraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e938b804c9027f350eb7c9b5ec95f3fa4f3f1c5011ac2ba48fcf6c6fcde70d0c",
+    "pubDate": "2026-10-20T12:01:00+02:00",
+    "starts_at": "2026-10-20T12:01:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U1|D=2026-10-20|TK=feuerwehreinsatz",
+    "_wl_ids": [
+      "I20261020-0030"
+    ],
+    "_incident_start": "2026-10-20T12:01:00+02:00"
   },
   {
     "source": "Wiener Linien",

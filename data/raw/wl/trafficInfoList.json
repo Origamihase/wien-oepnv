@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261020-0029, I20260917-0012, I20260922-0032, I20261020-0023-F01, I20260925-0011, I20260909-0007, I20261020-0024, I20261020-0027, I20261020-0028-F01, I20261020-0028"
+    "trafficInfoNameList": "I20261020-0029, I20261020-0027, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0030, I20260909-0007, I20261020-0028-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2025-671, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R318-437, R293-474, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1448-412, R1447-149, R1446-149, R1445-149, R1474-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R5815-671, R3886-480, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R293-474, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1474-412, R1474-149, R1475-149, R1476-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1448-412, R5815-671, R3886-480, R1974-466, R500-101, R1876-101, R1875-101, R401-101, R1882-101, R1883-101, R1881-101, R1880-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -213,97 +213,6 @@
     "title": "26E: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "71": "ptTram"
-     }
-    },
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "71: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Simmeringer Hauptstraße",
-    "name": "I20261020-0023-F01",
-    "owner": "WL",
-    "parentName": "I20261020-0023",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 171,
-      "lineName": "71",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-20T10:16:00.000+0200",
-     "lastUpdate": "2026-10-20T10:16:00.000+0200",
-     "resume": "2026-10-20T10:16:00.000+0200",
-     "start": "2026-10-20T09:38:00.000+0200"
-    },
-    "title": "71: Verkehrsunfall"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "34A": "ptBusCity"
-     }
-    },
-    "description": "Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 34A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 34A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "34A: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261020-0024",
-    "owner": "WL",
-    "parentName": "I20261020-0024",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "34A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 434,
-      "lineName": "34A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-20T10:20:00.000+0200",
-     "lastUpdate": "2026-10-20T10:20:00.000+0200",
-     "resume": "2026-10-20T10:20:00.000+0200",
-     "start": "2026-10-20T10:20:00.000+0200"
-    },
-    "title": "34A: Verspätungen"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
@@ -339,61 +248,15 @@
       "vehicleType": "ptBusCity"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-20T11:05:00.000+0200",
-     "lastUpdate": "2026-10-20T11:05:00.000+0200",
+     "end": "2026-10-20T12:29:00.000+0200",
+     "lastUpdate": "2026-10-20T12:29:00.000+0200",
      "resume": "2026-10-20T11:04:00.000+0200",
      "start": "2026-10-20T11:04:00.000+0200"
     },
     "title": "60A: Rettungseinsatz"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Fahrtbehinderung in Richtung Dornbach. Voraussichtliche Dauer: 12:30 Uhr. Grund: Falschparker im Bereich Neulerchenfelder Straße 6.",
-    "descriptionHTML": "<p>Linie 2:<br>Fahrtbehinderung in Richtung Dornbach.</p><p>Voraussichtliche Dauer: 12:30 Uhr.</p><p>Grund: Falschparker im Bereich Neulerchenfelder Straße 6.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 2:<br>Fahrtbehinderung in Richtung Dornbach.</p><p>Voraussichtliche Dauer: 12:30 Uhr.</p><p>Grund: Falschparker im Bereich Neulerchenfelder Straße 6.</p>",
-       "descriptionPlain": "Linie 2: Fahrtbehinderung in Richtung Dornbach. Voraussichtliche Dauer: 12:30 Uhr. Grund: Falschparker im Bereich Neulerchenfelder Straße 6.",
-       "title": "2: Falschparker"
-      }
-     }
-    ],
-    "location": "Neulerchenfelder Straße 6",
-    "name": "I20261020-0028",
-    "owner": "WL",
-    "parentName": "I20261020-0028",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 102,
-      "lineName": "2",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-20T11:54:00.000+0200",
-     "end": "2026-10-20T11:58:00.000+0200",
-     "lastUpdate": "2026-10-20T11:58:00.000+0200",
-     "resume": "2026-10-20T11:58:00.000+0200",
-     "start": "2026-10-20T11:53:00.000+0200"
-    },
-    "title": "2: Falschparker"
    },
    {
     "alertCause": "vehicle on the line",
@@ -487,6 +350,53 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisschaden"
+   },
+   {
+    "alertCause": "fire",
+    "alertCauseId": 5,
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Reumannplatz und Altes Landgut in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 13:30 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Troststraße.",
+    "descriptionHTML": "<p>Die Linie U1 fährt derzeit zwischen den Stationen Reumannplatz und Altes Landgut in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 13:30 Uhr.</p><p>Grund: Feuerwehreinsatz im Haltestellenbereich Troststraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie U1 fährt derzeit zwischen den Stationen Reumannplatz und Altes Landgut in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 13:30 Uhr.</p><p>Grund: Feuerwehreinsatz im Haltestellenbereich Troststraße.</p>",
+       "descriptionPlain": "Die Linie U1 fährt derzeit zwischen den Stationen Reumannplatz und Altes Landgut in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 13:30 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Troststraße.",
+       "title": "U1: Feuerwehreinsatz"
+      }
+     }
+    ],
+    "name": "I20261020-0030",
+    "owner": "WL",
+    "parentName": "I20261020-0030",
+    "priority": "1",
+    "reasonId": 11,
+    "reasonName": "Feuerwehreinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4138
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T12:03:00.000+0200",
+     "lastUpdate": "2026-10-20T12:20:00.000+0200",
+     "start": "2026-10-20T12:01:00.000+0200"
+    },
+    "title": "U1: Feuerwehreinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -997,6 +907,144 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "name": "R1875-101",
+    "owner": "WL",
+    "parentName": "R1875-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1875
+    ],
+    "time": {
+     "end": "2026-10-20T13:03:00.000+0200",
+     "start": "2026-10-20T12:04:07.000+0200"
+    },
+    "title": "Fahrtbehinderung\nGleisschaden"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "name": "R1876-101",
+    "owner": "WL",
+    "parentName": "R1876-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1876
+    ],
+    "time": {
+     "end": "2026-10-20T13:03:00.000+0200",
+     "start": "2026-10-20T12:04:07.000+0200"
+    },
+    "title": "Fahrtbehinderung\nGleisschaden"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisschaden\nBetrieb ab Knöllgasse",
+    "name": "R1880-101",
+    "owner": "WL",
+    "parentName": "R1880-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1880
+    ],
+    "time": {
+     "end": "2026-10-20T13:04:00.000+0200",
+     "start": "2026-10-20T12:05:38.000+0200"
+    },
+    "title": "Gleisschaden\nBetrieb ab Knöllgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisschaden\nBetrieb ab Knöllgasse",
+    "name": "R1881-101",
+    "owner": "WL",
+    "parentName": "R1881-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1881
+    ],
+    "time": {
+     "end": "2026-10-20T13:04:00.000+0200",
+     "start": "2026-10-20T12:05:38.000+0200"
+    },
+    "title": "Gleisschaden\nBetrieb ab Knöllgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisschaden\nBetrieb ab Knöllgasse",
+    "name": "R1882-101",
+    "owner": "WL",
+    "parentName": "R1882-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1882
+    ],
+    "time": {
+     "end": "2026-10-20T13:04:00.000+0200",
+     "start": "2026-10-20T12:05:38.000+0200"
+    },
+    "title": "Gleisschaden\nBetrieb ab Knöllgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisschaden\nBetrieb ab Knöllgasse",
+    "name": "R1883-101",
+    "owner": "WL",
+    "parentName": "R1883-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1883
+    ],
+    "time": {
+     "end": "2026-10-20T13:04:00.000+0200",
+     "start": "2026-10-20T12:05:38.000+0200"
+    },
+    "title": "Gleisschaden\nBetrieb ab Knöllgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -1496,6 +1544,29 @@
      "start": "2026-10-20T03:04:52.000+0200"
     },
     "title": "Bauarbeiten\nBetrieb ab Vivariumstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "name": "R401-101",
+    "owner": "WL",
+    "parentName": "R401-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     401
+    ],
+    "time": {
+     "end": "2026-10-20T13:03:00.000+0200",
+     "start": "2026-10-20T12:04:07.000+0200"
+    },
+    "title": "Fahrtbehinderung\nGleisschaden"
    },
    {
     "alertCause": "undefined alert cause",
