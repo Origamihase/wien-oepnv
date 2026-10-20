@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261020-0054, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0053, I20261020-0029"
+    "trafficInfoNameList": "I20260917-0012, I20261020-0054, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
@@ -257,52 +257,6 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "14A": "ptBusCity"
-     }
-    },
-    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "14A: Rettungseinsatz"
-      }
-     }
-    ],
-    "location": "Ramperstorffergasse",
-    "name": "I20261020-0053",
-    "owner": "WL",
-    "parentName": "I20261020-0053",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 414,
-      "lineName": "14A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-20T22:55:00.000+0200",
-     "lastUpdate": "2026-10-20T22:55:00.000+0200",
-     "resume": "2026-10-20T22:51:00.000+0200",
-     "start": "2026-10-20T22:51:00.000+0200"
-    },
-    "title": "14A: Rettungseinsatz"
    },
    {
     "alertCause": "defective vehicle",
