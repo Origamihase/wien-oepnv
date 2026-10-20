@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261020-0029, I20261020-0027, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0030, I20260909-0007, I20261020-0028-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0030, I20261020-0029, I20260909-0007, I20261020-0028-F01, I20261020-0031-F01, I20261020-0031-F02, I20261020-0031-F03"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R293-474, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1474-412, R1474-149, R1475-149, R1476-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1448-412, R5815-671, R3886-480, R1974-466, R500-101, R1876-101, R1875-101, R401-101, R1882-101, R1883-101, R1881-101, R1880-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R115-136, R103-136, R102-136, R318-437, R293-474, R101-136, R100-136, R2025-671, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R2558-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2372-627, R1474-412, R1476-149, R1448-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R5815-671, R3886-480, R1974-466, R500-101, R401-101, R1876-101, R1875-101, R1881-101, R1880-101, R1883-101, R1882-101, R303-170, R293-118, R303-118, R304-170, R304-118, R305-170, R306-170, R307-170, R163-170, R161-170, R162-170, R834-118, R835-118, R2619-118, R1884-101, R339-162, R427-162, R847-162, R848-162, R849-162, R851-162, R831-118, R832-118, R833-118, R849-118, R848-118, R847-118, R341-170, R301-170, R302-170, R340-170, R303-0, R339-0, R851-118, R1717-162, R1718-162, R1933-170, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -213,52 +213,6 @@
     "title": "26E: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "60A": "ptBusCity"
-     }
-    },
-    "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 60A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "60A: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261020-0027",
-    "owner": "WL",
-    "parentName": "I20261020-0027",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 460,
-      "lineName": "60A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-20T11:05:00.000+0200",
-     "end": "2026-10-20T12:29:00.000+0200",
-     "lastUpdate": "2026-10-20T12:29:00.000+0200",
-     "resume": "2026-10-20T11:04:00.000+0200",
-     "start": "2026-10-20T11:04:00.000+0200"
-    },
-    "title": "60A: Rettungseinsatz"
-   },
-   {
     "alertCause": "vehicle on the line",
     "alertCauseId": 71,
     "attributes": {
@@ -312,13 +266,13 @@
       "1": "ptTram"
      }
     },
-    "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Voraussichtliche Dauer: 13:00 Uhr. Grund: Gleisschaden im Haltestellenbereich Stefan-Fadinger-Platz.",
-    "descriptionHTML": "<p>Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.</p><p>Voraussichtliche Dauer: 13:00 Uhr.</p><p>Grund: Gleisschaden im Haltestellenbereich Stefan-Fadinger-Platz.</p>",
+    "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A, 15A und 65A. Voraussichtliche Dauer: Nicht absehbar. Grund: Gleisschaden im Haltestellenbereich Stefan-Fadinger-Platz.",
+    "descriptionHTML": "<p>Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.</p><p>Ersatz: Linien 7A, 15A und 65A.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Gleisschaden im Haltestellenbereich Stefan-Fadinger-Platz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.</p><p>Voraussichtliche Dauer: 13:00 Uhr.</p><p>Grund: Gleisschaden im Haltestellenbereich Stefan-Fadinger-Platz.</p>",
-       "descriptionPlain": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Voraussichtliche Dauer: 13:00 Uhr. Grund: Gleisschaden im Haltestellenbereich Stefan-Fadinger-Platz.",
+       "descriptionHtml": "<p>Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.</p><p>Ersatz: Linien 7A, 15A und 65A.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Gleisschaden im Haltestellenbereich Stefan-Fadinger-Platz.</p>",
+       "descriptionPlain": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A, 15A und 65A. Voraussichtliche Dauer: Nicht absehbar. Grund: Gleisschaden im Haltestellenbereich Stefan-Fadinger-Platz.",
        "title": "1: Gleisschaden"
       }
      }
@@ -346,7 +300,7 @@
     "status": "active",
     "time": {
      "created": "2026-10-20T11:59:00.000+0200",
-     "lastUpdate": "2026-10-20T11:59:00.000+0200",
+     "lastUpdate": "2026-10-20T12:58:00.000+0200",
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisschaden"
@@ -393,10 +347,154 @@
     "status": "active",
     "time": {
      "created": "2026-10-20T12:03:00.000+0200",
-     "lastUpdate": "2026-10-20T12:20:00.000+0200",
+     "lastUpdate": "2026-10-20T12:45:00.000+0200",
      "start": "2026-10-20T12:01:00.000+0200"
     },
     "title": "U1: Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "18": "ptTram"
+     }
+    },
+    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 18: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 18: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "18: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261020-0031-F01",
+    "owner": "WL",
+    "parentName": "I20261020-0031",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 118,
+      "lineName": "18",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     303
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T12:49:00.000+0200",
+     "lastUpdate": "2026-10-20T12:49:00.000+0200",
+     "resume": "2026-10-20T12:49:00.000+0200",
+     "start": "2026-10-20T12:30:00.000+0200"
+    },
+    "title": "18: Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "O: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261020-0031-F02",
+    "owner": "WL",
+    "parentName": "I20261020-0031",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 170,
+      "lineName": "O",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     303
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T12:49:00.000+0200",
+     "lastUpdate": "2026-10-20T12:49:00.000+0200",
+     "resume": "2026-10-20T12:49:00.000+0200",
+     "start": "2026-10-20T12:30:00.000+0200"
+    },
+    "title": "O: Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "62": "ptTram"
+     }
+    },
+    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "62: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261020-0031-F03",
+    "owner": "WL",
+    "parentName": "I20261020-0031",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 162,
+      "lineName": "62",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     303
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T12:49:00.000+0200",
+     "lastUpdate": "2026-10-20T12:49:00.000+0200",
+     "resume": "2026-10-20T12:49:00.000+0200",
+     "start": "2026-10-20T12:30:00.000+0200"
+    },
+    "title": "62: Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -907,6 +1005,121 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R161-170",
+    "owner": "WL",
+    "parentName": "R161-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     161
+    ],
+    "time": {
+     "end": "2026-10-20T13:33:00.000+0200",
+     "start": "2026-10-20T12:34:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R162-170",
+    "owner": "WL",
+    "parentName": "R162-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     162
+    ],
+    "time": {
+     "end": "2026-10-20T13:33:00.000+0200",
+     "start": "2026-10-20T12:34:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R163-170",
+    "owner": "WL",
+    "parentName": "R163-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     163
+    ],
+    "time": {
+     "end": "2026-10-20T13:33:00.000+0200",
+     "start": "2026-10-20T12:34:09.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1717-162",
+    "owner": "WL",
+    "parentName": "R1717-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1717
+    ],
+    "time": {
+     "end": "2026-10-20T13:46:00.000+0200",
+     "start": "2026-10-20T12:46:42.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1718-162",
+    "owner": "WL",
+    "parentName": "R1718-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1718
+    ],
+    "time": {
+     "end": "2026-10-20T13:46:00.000+0200",
+     "start": "2026-10-20T12:46:42.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Fahrtbehinderung\nGleisschaden",
     "name": "R1875-101",
     "owner": "WL",
@@ -922,7 +1135,7 @@
      1875
     ],
     "time": {
-     "end": "2026-10-20T13:03:00.000+0200",
+     "end": "2026-10-20T20:45:00.000+0200",
      "start": "2026-10-20T12:04:07.000+0200"
     },
     "title": "Fahrtbehinderung\nGleisschaden"
@@ -945,7 +1158,7 @@
      1876
     ],
     "time": {
-     "end": "2026-10-20T13:03:00.000+0200",
+     "end": "2026-10-20T20:45:00.000+0200",
      "start": "2026-10-20T12:04:07.000+0200"
     },
     "title": "Fahrtbehinderung\nGleisschaden"
@@ -968,7 +1181,7 @@
      1880
     ],
     "time": {
-     "end": "2026-10-20T13:04:00.000+0200",
+     "end": "2026-10-20T23:30:00.000+0200",
      "start": "2026-10-20T12:05:38.000+0200"
     },
     "title": "Gleisschaden\nBetrieb ab Knöllgasse"
@@ -991,7 +1204,7 @@
      1881
     ],
     "time": {
-     "end": "2026-10-20T13:04:00.000+0200",
+     "end": "2026-10-20T23:30:00.000+0200",
      "start": "2026-10-20T12:05:38.000+0200"
     },
     "title": "Gleisschaden\nBetrieb ab Knöllgasse"
@@ -1014,7 +1227,7 @@
      1882
     ],
     "time": {
-     "end": "2026-10-20T13:04:00.000+0200",
+     "end": "2026-10-20T23:30:00.000+0200",
      "start": "2026-10-20T12:05:38.000+0200"
     },
     "title": "Gleisschaden\nBetrieb ab Knöllgasse"
@@ -1037,10 +1250,33 @@
      1883
     ],
     "time": {
-     "end": "2026-10-20T13:04:00.000+0200",
+     "end": "2026-10-20T23:30:00.000+0200",
      "start": "2026-10-20T12:05:38.000+0200"
     },
     "title": "Gleisschaden\nBetrieb ab Knöllgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisschaden\nEinstieg bei Linie 6",
+    "name": "R1884-101",
+    "owner": "WL",
+    "parentName": "R1884-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1884
+    ],
+    "time": {
+     "end": "2026-10-20T20:30:00.000+0200",
+     "start": "2026-10-20T12:37:41.000+0200"
+    },
+    "title": "Gleisschaden\nEinstieg bei Linie 6"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1064,6 +1300,29 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung bis Quartier Belvedere <",
+    "name": "R1933-170",
+    "owner": "WL",
+    "parentName": "R1933-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     1933
+    ],
+    "time": {
+     "end": "2026-10-20T13:45:00.000+0200",
+     "start": "2026-10-20T12:46:43.000+0200"
+    },
+    "title": "Verkehrsunfall\nUmleitung bis Quartier Belvedere <"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1456,6 +1715,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2619-118",
+    "owner": "WL",
+    "parentName": "R2619-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2619
+    ],
+    "time": {
+     "end": "2026-10-20T13:33:00.000+0200",
+     "start": "2026-10-20T12:34:13.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R293-118",
+    "owner": "WL",
+    "parentName": "R293-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     293
+    ],
+    "time": {
+     "end": "2026-10-20T13:33:00.000+0200",
+     "start": "2026-10-20T12:34:08.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1479,6 +1784,233 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Quartier Belvedere <",
+    "name": "R301-170",
+    "owner": "WL",
+    "parentName": "R301-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     301
+    ],
+    "time": {
+     "end": "2026-10-20T13:43:00.000+0200",
+     "start": "2026-10-20T12:43:40.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Quartier Belvedere <"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Quartier Belvedere <",
+    "name": "R302-170",
+    "owner": "WL",
+    "parentName": "R302-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     302
+    ],
+    "time": {
+     "end": "2026-10-20T13:43:00.000+0200",
+     "start": "2026-10-20T12:43:40.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Quartier Belvedere <"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nZüge halten\nbei Linie D\n",
+    "name": "R303-0",
+    "owner": "WL",
+    "parentName": "R303-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     303
+    ],
+    "time": {
+     "end": "2026-10-20T13:43:00.000+0200",
+     "start": "2026-10-20T12:44:10.000+0200"
+    },
+    "title": "Verkehrsunfall\nZüge halten\nbei Linie D\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R303-118",
+    "owner": "WL",
+    "parentName": "R303-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     303
+    ],
+    "time": {
+     "end": "2026-10-20T13:33:00.000+0200",
+     "start": "2026-10-20T12:34:08.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R303-170",
+    "owner": "WL",
+    "parentName": "R303-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     303
+    ],
+    "time": {
+     "end": "2026-10-20T13:33:00.000+0200",
+     "start": "2026-10-20T12:34:08.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R304-118",
+    "owner": "WL",
+    "parentName": "R304-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     304
+    ],
+    "time": {
+     "end": "2026-10-20T13:33:00.000+0200",
+     "start": "2026-10-20T12:34:08.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R304-170",
+    "owner": "WL",
+    "parentName": "R304-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     304
+    ],
+    "time": {
+     "end": "2026-10-20T13:33:00.000+0200",
+     "start": "2026-10-20T12:34:08.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R305-170",
+    "owner": "WL",
+    "parentName": "R305-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     305
+    ],
+    "time": {
+     "end": "2026-10-20T13:33:00.000+0200",
+     "start": "2026-10-20T12:34:08.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R306-170",
+    "owner": "WL",
+    "parentName": "R306-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     306
+    ],
+    "time": {
+     "end": "2026-10-20T13:33:00.000+0200",
+     "start": "2026-10-20T12:34:08.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R307-170",
+    "owner": "WL",
+    "parentName": "R307-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     307
+    ],
+    "time": {
+     "end": "2026-10-20T13:33:00.000+0200",
+     "start": "2026-10-20T12:34:08.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1498,6 +2030,95 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nZüge halten\nbei Linie D\n",
+    "name": "R339-0",
+    "owner": "WL",
+    "parentName": "R339-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     339
+    ],
+    "time": {
+     "end": "2026-10-20T13:43:00.000+0200",
+     "start": "2026-10-20T12:44:40.000+0200"
+    },
+    "title": "Verkehrsunfall\nZüge halten\nbei Linie D\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R339-162",
+    "owner": "WL",
+    "parentName": "R339-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     339
+    ],
+    "time": {
+     "end": "2026-10-20T13:39:00.000+0200",
+     "start": "2026-10-20T12:39:39.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Quellenplatz",
+    "name": "R340-170",
+    "owner": "WL",
+    "parentName": "R340-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     340
+    ],
+    "time": {
+     "end": "2026-10-20T13:43:00.000+0200",
+     "start": "2026-10-20T12:43:40.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Quellenplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Quellenplatz",
+    "name": "R341-170",
+    "owner": "WL",
+    "parentName": "R341-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     341
+    ],
+    "time": {
+     "end": "2026-10-20T13:43:00.000+0200",
+     "start": "2026-10-20T12:43:40.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Quellenplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1563,10 +2184,33 @@
      401
     ],
     "time": {
-     "end": "2026-10-20T13:03:00.000+0200",
+     "end": "2026-10-20T20:45:00.000+0200",
      "start": "2026-10-20T12:04:07.000+0200"
     },
     "title": "Fahrtbehinderung\nGleisschaden"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R427-162",
+    "owner": "WL",
+    "parentName": "R427-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     427
+    ],
+    "time": {
+     "end": "2026-10-20T13:39:00.000+0200",
+     "start": "2026-10-20T12:39:40.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1633,6 +2277,305 @@
      "start": "2026-10-20T00:00:12.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Quartier Belvedere <",
+    "name": "R831-118",
+    "owner": "WL",
+    "parentName": "R831-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     831
+    ],
+    "time": {
+     "end": "2026-10-20T13:42:00.000+0200",
+     "start": "2026-10-20T12:42:41.000+0200"
+    },
+    "title": "Veranstaltung\nBetrieb ab Quartier Belvedere <"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Quartier Belvedere <",
+    "name": "R832-118",
+    "owner": "WL",
+    "parentName": "R832-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     832
+    ],
+    "time": {
+     "end": "2026-10-20T13:42:00.000+0200",
+     "start": "2026-10-20T12:42:41.000+0200"
+    },
+    "title": "Veranstaltung\nBetrieb ab Quartier Belvedere <"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Quartier Belvedere <",
+    "name": "R833-118",
+    "owner": "WL",
+    "parentName": "R833-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     833
+    ],
+    "time": {
+     "end": "2026-10-20T13:42:00.000+0200",
+     "start": "2026-10-20T12:42:41.000+0200"
+    },
+    "title": "Veranstaltung\nBetrieb ab Quartier Belvedere <"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R834-118",
+    "owner": "WL",
+    "parentName": "R834-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     834
+    ],
+    "time": {
+     "end": "2026-10-20T13:33:00.000+0200",
+     "start": "2026-10-20T12:34:11.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R835-118",
+    "owner": "WL",
+    "parentName": "R835-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     835
+    ],
+    "time": {
+     "end": "2026-10-20T13:33:00.000+0200",
+     "start": "2026-10-20T12:34:11.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Matzleinsdorfer Platz <",
+    "name": "R847-118",
+    "owner": "WL",
+    "parentName": "R847-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     847
+    ],
+    "time": {
+     "end": "2026-10-20T13:42:00.000+0200",
+     "start": "2026-10-20T12:43:12.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Matzleinsdorfer Platz <"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R847-162",
+    "owner": "WL",
+    "parentName": "R847-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     847
+    ],
+    "time": {
+     "end": "2026-10-20T13:39:00.000+0200",
+     "start": "2026-10-20T12:39:41.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Matzleinsdorfer Platz <",
+    "name": "R848-118",
+    "owner": "WL",
+    "parentName": "R848-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     848
+    ],
+    "time": {
+     "end": "2026-10-20T13:42:00.000+0200",
+     "start": "2026-10-20T12:43:12.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Matzleinsdorfer Platz <"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R848-162",
+    "owner": "WL",
+    "parentName": "R848-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     848
+    ],
+    "time": {
+     "end": "2026-10-20T13:39:00.000+0200",
+     "start": "2026-10-20T12:39:41.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Matzleinsdorfer Platz <",
+    "name": "R849-118",
+    "owner": "WL",
+    "parentName": "R849-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     849
+    ],
+    "time": {
+     "end": "2026-10-20T13:42:00.000+0200",
+     "start": "2026-10-20T12:43:12.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Matzleinsdorfer Platz <"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R849-162",
+    "owner": "WL",
+    "parentName": "R849-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     849
+    ],
+    "time": {
+     "end": "2026-10-20T13:39:00.000+0200",
+     "start": "2026-10-20T12:39:41.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nEinstieg Steig B",
+    "name": "R851-118",
+    "owner": "WL",
+    "parentName": "R851-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     851
+    ],
+    "time": {
+     "end": "2026-10-20T13:44:00.000+0200",
+     "start": "2026-10-20T12:46:12.000+0200"
+    },
+    "title": "Verkehrsunfall\nEinstieg Steig B"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R851-162",
+    "owner": "WL",
+    "parentName": "R851-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     851
+    ],
+    "time": {
+     "end": "2026-10-20T13:39:00.000+0200",
+     "start": "2026-10-20T12:39:41.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
