@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261020-0010, I20260917-0012, I20260922-0032, I20261020-0007, I20261020-0009, I20260925-0011, I20260909-0007, I20261020-0008"
+    "trafficInfoNameList": "I20261020-0010, I20260917-0012, I20260922-0032, I20261020-0009, I20260925-0011, I20260909-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R45-136, R130-136, R119-136, R118-136, R293-474, R19-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R2025-671, R318-437, R36-152, R2558-125, R2370-125, R2343-125, R2343-626, R2378-627, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2359-125, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R5815-671, R3886-480, R1974-466, R500-101, R51-136, R50-136, R49-136, R47-136, R46-136, R18-136, R17-136, R15-136, R14-136, R13-136, R111-136, R109-136, R105-136, R81-136, R58-136, R57-136, R3431-136, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R45-136, R130-136, R119-136, R293-474, R19-136, R100-136, R101-136, R118-136, R102-136, R103-136, R115-136, R116-136, R117-136, R2025-671, R318-437, R36-152, R2558-125, R2370-125, R2343-125, R2343-626, R2378-627, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2359-125, R1447-149, R1448-412, R1474-412, R1445-149, R1446-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R3886-480, R1974-466, R500-101, R51-136, R50-136, R49-136, R47-136, R46-136, R18-136, R17-136, R15-136, R14-136, R13-136, R111-136, R109-136, R105-136, R81-136, R58-136, R57-136, R3431-136, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -213,117 +213,23 @@
     "title": "26E: Gleisbauarbeiten"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U3: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261020-0007",
-    "owner": "WL",
-    "parentName": "I20261020-0007",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4913
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-20T05:21:00.000+0200",
-     "lastUpdate": "2026-10-20T05:21:00.000+0200",
-     "resume": "2026-10-20T05:21:00.000+0200",
-     "start": "2026-10-20T05:21:00.000+0200"
-    },
-    "title": "U3: Verspätungen"
-   },
-   {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-       "title": "U1: Betriebsstörung"
-      }
-     }
-    ],
-    "name": "I20261020-0008",
-    "owner": "WL",
-    "parentName": "I20261020-0008",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 301,
-      "lineName": "U1",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-20T05:23:00.000+0200",
-     "lastUpdate": "2026-10-20T05:23:00.000+0200",
-     "resume": "2026-10-20T05:23:00.000+0200",
-     "start": "2026-10-20T05:23:00.000+0200"
-    },
-    "title": "U1: Betriebsstörung"
-   },
-   {
     "alertCause": "police activity",
     "alertCauseId": 3,
     "attributes": {
      "relatedLineTypes": {
       "1": "ptTram",
-      "2": "ptTram",
       "71": "ptTram",
       "D": "ptTram"
      }
     },
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "descriptionHTML": "<p>Linie 1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 2:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie D:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 71:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "<p>Linie 1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie D:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 71:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 2:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie D:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 71:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-       "descriptionPlain": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-       "title": "D, 71, 1, 2: Polizeieinsatz"
+       "descriptionHtml": "<p>Linie 1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie D:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 71:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+       "descriptionPlain": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+       "title": "D, 71, 1: Polizeieinsatz"
       }
      }
     ],
@@ -336,7 +242,6 @@
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
      "1",
-     "2",
      "D",
      "71"
     ],
@@ -344,11 +249,6 @@
      {
       "lineId": 101,
       "lineName": "1",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 102,
-      "lineName": "2",
       "vehicleType": "ptTram"
      },
      {
@@ -365,11 +265,11 @@
     "status": "active",
     "time": {
      "created": "2026-10-20T05:26:00.000+0200",
-     "lastUpdate": "2026-10-20T05:49:00.000+0200",
+     "lastUpdate": "2026-10-20T06:23:00.000+0200",
      "resume": "2026-10-20T05:24:00.000+0200",
      "start": "2026-10-20T05:24:00.000+0200"
     },
-    "title": "D, 71, 1, 2: Polizeieinsatz"
+    "title": "D, 71, 1: Polizeieinsatz"
    },
    {
     "alertCause": "defective vehicle",

@@ -806,14 +806,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/2/D/71: Polizeieinsatz",
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "title": "1/D/71: Polizeieinsatz",
+    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "267a8e3b3321c13064d9977d4136bb3889da268c74c1dfd263c0042928184bf5",
+    "guid": "84405bbd5612e1cb4ded18a66f6fe0fb08cf578e02936616cb401e0d7c5d4981",
     "pubDate": "2026-10-20T05:24:00+02:00",
     "starts_at": "2026-10-20T05:24:00+02:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=1,2,71,D|D=2026-10-20|TK=polizeieinsatz",
+    "_identity": "wl|störung|L=1,71,D|D=2026-10-20|TK=polizeieinsatz",
     "_wl_ids": [
       "I20261020-0009"
     ],
@@ -1170,38 +1170,6 @@
     "starts_at": "2026-10-20T00:00:12+02:00",
     "ends_at": "2026-10-20T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-20|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Betriebsstörung",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
-    "pubDate": "2026-10-20T05:23:00+02:00",
-    "starts_at": "2026-10-20T05:23:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U1|D=2026-10-20|TK=u1 betriebsstörung",
-    "_wl_ids": [
-      "I20261020-0008"
-    ],
-    "_incident_start": "2026-10-20T05:23:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-10-20T05:21:00+02:00",
-    "starts_at": "2026-10-20T05:21:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U3|D=2026-10-20|TK=u3 verspätungen",
-    "_wl_ids": [
-      "I20261020-0007"
-    ],
-    "_incident_start": "2026-10-20T05:21:00+02:00"
   },
   {
     "source": "Wiener Linien",
