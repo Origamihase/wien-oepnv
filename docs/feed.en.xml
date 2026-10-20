@@ -8,20 +8,47 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 20 Oct 2026 16:00:47 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 16:31:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[59A: Illegally parked vehicle]]></title>
+      <title><![CDATA[71: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">0edcef46ecbbea41f4d6233af3678b71095a5f24cac6ce1f322d629f59e9c5bb</guid>
-      <pubDate>Tue, 20 Oct 2026 15:54:00 +0200</pubDate>
+      <guid isPermaLink="false">2ff3864248c7d1ac649550e5b399000ef2be10af9fb7220ea72ea4db90bded5c</guid>
+      <pubDate>Tue, 20 Oct 2026 16:13:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 15:54:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 15:54:00 +0200</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 15:54]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 15:54]]]></content:encoded>
+      <ext:first_seen>Tue, 20 Oct 2026 16:13:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 16:13:00 +0200</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 16:13]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 16:13]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e</guid>
+      <pubDate>Tue, 20 Oct 2026 16:13:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 20 Oct 2026 16:13:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 16:27:07 +0200</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 16:13]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 16:13]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f</guid>
+      <pubDate>Tue, 20 Oct 2026 16:10:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 20 Oct 2026 16:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 16:10:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 20 Oct 2026 17:09:00 +0200</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 16:10]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 16:10]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Police operation]]></title>
@@ -37,19 +64,6 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: police operation.<br/>[Since 15:51]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40/41/42: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">37bec73a19247b078cbf365af82bb8464317bdc6936dbcf1051127ccb278e8d0</guid>
-      <pubDate>Tue, 20 Oct 2026 15:09:24 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 15:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 15:06:00 +0200</ext:starts_at>
-      <description>Lines 40 and 41 hold at line 42. After a service obstruction, there are irregular intervals. [Since 15:06]</description>
-      <content:encoded><![CDATA[Lines 40 and 41 hold at line 42. After a service obstruction, there are irregular intervals.<br/>[Since 15:06]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[O: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">2aa1df2c9f4ae19df070aff6c202cb045b5e46393e05c8496bd4773beeb1745f</guid>
@@ -63,7 +77,7 @@
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 12:30]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1: Track damage]]></title>
+      <title><![CDATA[1: Track construction works]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">8681a71896a38fa5cd0db22da3a40ed6cc4472d9266f99cbebaff20ab7d6d4e6</guid>
       <pubDate>Tue, 20 Oct 2026 11:58:00 +0200</pubDate>
@@ -72,8 +86,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 20 Oct 2026 11:58:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 20 Oct 2026 11:58:00 +0200</ext:starts_at>
-      <description>Service only between Prater Hauptallee and Knöllgasse. Continue to Reumannplatz U. Replacement: Lines 7A, 15A and 65A; boarding at the stop of line 6. Expected duration: not … [Since 11:58]</description>
-      <content:encoded><![CDATA[Service only between Prater Hauptallee and Knöllgasse. Continue to Reumannplatz U. Replacement: Lines 7A, 15A and 65A; boarding at the stop of line 6. Expected duration: not …<br/>[Since 11:58]]]></content:encoded>
+      <ext:ends_at>Sat, 05 Dec 2026 04:00:00 +0100</ext:ends_at>
+      <description>Due to track construction works on Stefan-Fadinger-Platz, there are restrictions on line 1. Measures: Line 1: service only between Prater Hauptallee and Knöllgasse. [Until 05.12.]</description>
+      <content:encoded><![CDATA[Due to track construction works on Stefan-Fadinger-Platz, there are restrictions on line 1. Measures: Line 1: service only between Prater Hauptallee and Knöllgasse.<br/>[Until 05.12.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[56B/56A/N62: Strampfergasse]]></title>
@@ -133,20 +148,6 @@
       <georss:point>48.170159 16.420009</georss:point>
       <description>Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 … [Until Fri 23.10.]</description>
       <content:encoded><![CDATA[Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 …<br/>[Until Fri 23.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A: Liesing-Flur-Gasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">609517ab3ab98b5b38f0fe913f15e9bd18cd5a3d9005a51a2cb50d3fb227ddbd</guid>
-      <pubDate>Wed, 14 Oct 2026 00:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 14 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Perfektastraße after Liesinger-Flur-Gasse → Perfektastraße 77. Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse. Reason: roadworks. [Until 28.10.]</description>
-      <content:encoded><![CDATA[Perfektastraße after Liesinger-Flur-Gasse → Perfektastraße 77. Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse. Reason: roadworks.<br/>[Until 28.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
