@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261020-0036, I20260917-0012, I20260922-0032, I20261020-0029, I20260925-0011, I20260909-0007, I20261020-0030-F01, I20261020-0031-F01, I20261020-0031-F02"
+    "trafficInfoNameList": "I20261020-0037, I20261020-0030-F01, I20260917-0012, I20260922-0032, I20261020-0029, I20260925-0011, I20260909-0007, I20261020-0036, I20261020-0031-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R293-474, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1449-149, R1447-149, R1446-149, R1448-412, R1473-149, R1472-149, R1448-149, R1445-149, R1476-149, R1475-149, R1474-149, R1474-412, R5815-671, R3886-480, R1974-466, R500-101, R401-101, R1876-101, R1875-101, R1880-101, R1881-101, R1883-101, R1882-101, R1884-101, R164-101, R165-101, R132-101, R164-170, R163-170, R333-170, R3450-170, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R293-474, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1448-412, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1445-149, R1474-412, R5815-671, R3886-480, R1974-466, R500-101, R1876-101, R401-101, R1875-101, R1881-101, R1880-101, R1883-101, R1882-101, R1884-101, R144-0, R187-0, R146-0, R147-0, R143-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -301,59 +301,11 @@
     "status": "active",
     "time": {
      "created": "2026-10-20T13:25:00.000+0200",
-     "lastUpdate": "2026-10-20T13:25:00.000+0200",
-     "resume": "2026-10-20T13:25:00.000+0200",
+     "end": "2026-10-20T15:45:00.000+0200",
+     "lastUpdate": "2026-10-20T15:28:00.000+0200",
      "start": "2026-10-20T12:01:00.000+0200"
     },
     "title": "U1: Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "18": "ptTram"
-     }
-    },
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 18: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 18: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "18: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261020-0031-F01",
-    "owner": "WL",
-    "parentName": "I20261020-0031",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 118,
-      "lineName": "18",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     303
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-20T12:49:00.000+0200",
-     "lastUpdate": "2026-10-20T12:49:00.000+0200",
-     "resume": "2026-10-20T12:49:00.000+0200",
-     "start": "2026-10-20T12:30:00.000+0200"
-    },
-    "title": "18: Verkehrsunfall"
    },
    {
     "alertCause": "accident",
@@ -442,11 +394,64 @@
     "status": "active",
     "time": {
      "created": "2026-10-20T14:22:00.000+0200",
-     "lastUpdate": "2026-10-20T14:22:00.000+0200",
+     "end": "2026-10-20T15:55:00.000+0200",
+     "lastUpdate": "2026-10-20T15:28:00.000+0200",
      "resume": "2026-10-20T14:21:00.000+0200",
      "start": "2026-10-20T14:21:00.000+0200"
     },
     "title": "U3: Verspätungen"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "40": "ptTram",
+      "41": "ptTram"
+     }
+    },
+    "description": "Linie 40: Umleitung in Richtung Schottentor U zwischen Gersthof S und Währinger Straße, Volksoper U über Michelbeuern-AKH U (Strecke Linien 9 und 42). Linie 41: Umleitung in Richtung Schottentor U zwischen Gersthof S und Währinger Straße, Volksoper U über Michelbeuern-AKH U (Strecke der Linien 9 und 42). Voraussichtliche Dauer: 15:40 Uhr. Grund: Verkehrsunfall im Bereich Währinger Straße 73.",
+    "descriptionHTML": "<p>Linie 40:<br>Umleitung in Richtung Schottentor U <br>zwischen Gersthof S und Währinger Straße, Volksoper U <br>über Michelbeuern-AKH U (Strecke Linien 9 und 42).<br>Linie 41:<br>Umleitung in Richtung Schottentor U <br>zwischen Gersthof S und Währinger Straße, Volksoper U <br>über Michelbeuern-AKH U (Strecke der Linien 9 und 42).</p><p>Voraussichtliche Dauer: 15:40 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Währinger Straße 73.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 40:<br>Umleitung in Richtung Schottentor U <br>zwischen Gersthof S und Währinger Straße, Volksoper U <br>über Michelbeuern-AKH U (Strecke Linien 9 und 42).<br>Linie 41:<br>Umleitung in Richtung Schottentor U <br>zwischen Gersthof S und Währinger Straße, Volksoper U <br>über Michelbeuern-AKH U (Strecke der Linien 9 und 42).</p><p>Voraussichtliche Dauer: 15:40 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Währinger Straße 73.</p>",
+       "descriptionPlain": "Linie 40: Umleitung in Richtung Schottentor U zwischen Gersthof S und Währinger Straße, Volksoper U über Michelbeuern-AKH U (Strecke Linien 9 und 42). Linie 41: Umleitung in Richtung Schottentor U zwischen Gersthof S und Währinger Straße, Volksoper U über Michelbeuern-AKH U (Strecke der Linien 9 und 42). Voraussichtliche Dauer: 15:40 Uhr. Grund: Verkehrsunfall im Bereich Währinger Straße 73.",
+       "title": "41, 40: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Währinger Straße 73",
+    "name": "I20261020-0037",
+    "owner": "WL",
+    "parentName": "I20261020-0037",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "40",
+     "41"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 140,
+      "lineName": "40",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 141,
+      "lineName": "41",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T15:08:00.000+0200",
+     "lastUpdate": "2026-10-20T15:08:00.000+0200",
+     "start": "2026-10-20T15:06:00.000+0200"
+    },
+    "title": "41, 40: Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -681,25 +686,42 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R132-101",
+    "description": "Verkehrsunfall\nUmleitung über\nMichelbeuern >\n\n\n",
+    "name": "R143-0",
     "owner": "WL",
-    "parentName": "R132-101",
+    "parentName": "R143-0",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
     "relatedStops": [
-     132
+     143
     ],
     "time": {
-     "end": "2026-10-20T15:12:00.000+0200",
-     "start": "2026-10-20T14:13:20.000+0200"
+     "end": "2026-10-20T16:08:00.000+0200",
+     "start": "2026-10-20T15:09:54.000+0200"
     },
-    "title": "Fahrtbehinderung\nFalschparker"
+    "title": "Verkehrsunfall\nUmleitung über\nMichelbeuern >\n\n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab \nWähringer Str.>\n(Umleitung)",
+    "name": "R144-0",
+    "owner": "WL",
+    "parentName": "R144-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     144
+    ],
+    "time": {
+     "end": "2026-10-20T16:07:00.000+0200",
+     "start": "2026-10-20T15:08:24.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab \nWähringer Str.>\n(Umleitung)"
    },
    {
     "alertCause": "undefined alert cause",
@@ -842,6 +864,46 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab \nWähringer Str.>\n(Umleitung)",
+    "name": "R146-0",
+    "owner": "WL",
+    "parentName": "R146-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     146
+    ],
+    "time": {
+     "end": "2026-10-20T16:07:00.000+0200",
+     "start": "2026-10-20T15:08:24.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab \nWähringer Str.>\n(Umleitung)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nLinien 40 und 41\nhalten bei\nLinie 42",
+    "name": "R147-0",
+    "owner": "WL",
+    "parentName": "R147-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     147
+    ],
+    "time": {
+     "end": "2026-10-20T16:08:00.000+0200",
+     "start": "2026-10-20T15:09:24.000+0200"
+    },
+    "title": "Verkehrsunfall\nLinien 40 und 41\nhalten bei\nLinie 42"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
     "name": "R1472-149",
     "owner": "WL",
@@ -980,94 +1042,22 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Praterstern <>",
-    "name": "R163-170",
+    "description": "Verkehrsunfall\nBetrieb ab \nWähringer Str.>\n(Umleitung)",
+    "name": "R187-0",
     "owner": "WL",
-    "parentName": "R163-170",
+    "parentName": "R187-0",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
     "relatedStops": [
-     163
+     187
     ],
     "time": {
-     "end": "2026-10-20T15:13:00.000+0200",
-     "start": "2026-10-20T14:13:48.000+0200"
+     "end": "2026-10-20T16:07:00.000+0200",
+     "start": "2026-10-20T15:08:24.000+0200"
     },
-    "title": "Falschparker\nBetrieb ab Praterstern <>"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R164-101",
-    "owner": "WL",
-    "parentName": "R164-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     164
-    ],
-    "time": {
-     "end": "2026-10-20T15:12:00.000+0200",
-     "start": "2026-10-20T14:13:18.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Praterstern <>",
-    "name": "R164-170",
-    "owner": "WL",
-    "parentName": "R164-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     164
-    ],
-    "time": {
-     "end": "2026-10-20T15:13:00.000+0200",
-     "start": "2026-10-20T14:13:48.000+0200"
-    },
-    "title": "Falschparker\nBetrieb ab Praterstern <>"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R165-101",
-    "owner": "WL",
-    "parentName": "R165-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     165
-    ],
-    "time": {
-     "end": "2026-10-20T15:12:00.000+0200",
-     "start": "2026-10-20T14:13:18.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
+    "title": "Verkehrsunfall\nBetrieb ab \nWähringer Str.>\n(Umleitung)"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1686,52 +1676,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Hintere Zollamtsstraße",
-    "name": "R333-170",
-    "owner": "WL",
-    "parentName": "R333-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     333
-    ],
-    "time": {
-     "end": "2026-10-20T15:13:00.000+0200",
-     "start": "2026-10-20T14:13:49.000+0200"
-    },
-    "title": "Falschparker\nBetrieb ab Hintere Zollamtsstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Hintere Zollamtsstraße",
-    "name": "R3450-170",
-    "owner": "WL",
-    "parentName": "R3450-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     3450
-    ],
-    "time": {
-     "end": "2026-10-20T15:14:00.000+0200",
-     "start": "2026-10-20T14:14:52.000+0200"
-    },
-    "title": "Falschparker\nBetrieb ab Hintere Zollamtsstraße"
    },
    {
     "alertCause": "undefined alert cause",

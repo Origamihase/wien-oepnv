@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 20 Oct 2026 15:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 15:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[40/41/42: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">37bec73a19247b078cbf365af82bb8464317bdc6936dbcf1051127ccb278e8d0</guid>
+      <pubDate>Tue, 20 Oct 2026 15:09:24 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 20 Oct 2026 15:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 15:06:00 +0200</ext:starts_at>
+      <description>Lines 40 and 41 stop at line 42. Diversion towards Schottentor U between Gersthof S and Währinger Straße, Volksoper U over Michelbeuern-AKH U … [Since 15:06]</description>
+      <content:encoded><![CDATA[Lines 40 and 41 stop at line 42. Diversion towards Schottentor U between Gersthof S and Währinger Straße, Volksoper U over Michelbeuern-AKH U …<br/>[Since 15:06]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U3: Delays]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,38 +33,12 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 20 Oct 2026 14:21:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 20 Oct 2026 14:21:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 20 Oct 2026 15:55:00 +0200</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 14:21]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 14:21]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[O: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">a90305646f013b3987fb55ef5dab8d20d35b0e58b3f412f792bb39c48c2fa5a8</guid>
-      <pubDate>Tue, 20 Oct 2026 14:13:48 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 14:13:48 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 14:14:52 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 20 Oct 2026 15:14:00 +0200</ext:ends_at>
-      <description>Service from Hintere Zollamtsstraße. Service from Praterstern [Since 14:13]</description>
-      <content:encoded><![CDATA[Service from Hintere Zollamtsstraße. Service from Praterstern<br/>[Since 14:13]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Illegally parked vehicle, track damage]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1</guid>
-      <pubDate>Tue, 20 Oct 2026 14:13:18 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 14:13:18 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 14:13:20 +0200</ext:starts_at>
-      <description>Illegally parked vehicle: service obstruction. Track damage: service only between Prater Hauptallee and Knöllgasse. [Since 14:13]</description>
-      <content:encoded><![CDATA[Illegally parked vehicle: service obstruction. Track damage: service only between Prater Hauptallee and Knöllgasse.<br/>[Since 14:13]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[18/O: Traffic accident]]></title>
+      <title><![CDATA[O: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">2aa1df2c9f4ae19df070aff6c202cb045b5e46393e05c8496bd4773beeb1745f</guid>
       <pubDate>Tue, 20 Oct 2026 12:30:00 +0200</pubDate>
@@ -73,8 +60,22 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 20 Oct 2026 12:01:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 20 Oct 2026 12:01:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 20 Oct 2026 15:45:00 +0200</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 12:01]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 12:01]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Track damage]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">8681a71896a38fa5cd0db22da3a40ed6cc4472d9266f99cbebaff20ab7d6d4e6</guid>
+      <pubDate>Tue, 20 Oct 2026 11:58:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 20 Oct 2026 11:58:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 11:58:00 +0200</ext:starts_at>
+      <description>Service only between Prater Hauptallee and Knöllgasse. Continue to Reumannplatz U. Replacement: Lines 7A, 15A and 65A; boarding at the stop of line 6. Expected duration: not … [Since 11:58]</description>
+      <content:encoded><![CDATA[Service only between Prater Hauptallee and Knöllgasse. Continue to Reumannplatz U. Replacement: Lines 7A, 15A and 65A; boarding at the stop of line 6. Expected duration: not …<br/>[Since 11:58]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[56B/56A/N62: Strampfergasse]]></title>
