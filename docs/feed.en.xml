@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 21 Oct 2026 01:00:40 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 01:30:42 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U3: Delays]]></title>
@@ -35,6 +35,19 @@
       <ext:starts_at>Tue, 20 Oct 2026 23:36:00 +0200</ext:starts_at>
       <description>After a service obstruction, there are irregular intervals. [Since 20.10.]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 20.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N66: Illegally parked vehicle, construction works]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">16972d1a10e51250a5f0e92fbec680f8d250621259e74e4a8c9fb440d49516aa</guid>
+      <pubDate>Wed, 21 Oct 2026 01:19:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 01:30:42 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 01:19:00 +0200</ext:starts_at>
+      <description>Construction works: buses stop at Salvatorianerplatz. [Since today]</description>
+      <content:encoded><![CDATA[Construction works: buses stop at Salvatorianerplatz.<br/>[Since today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1: Track construction works]]></title>
@@ -136,20 +149,6 @@
       <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Perfektastraße after Liesinger-Flur-Gasse → Perfektastraße 77. Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse. Reason: roadworks. [Until 28.10.]</description>
       <content:encoded><![CDATA[Perfektastraße after Liesinger-Flur-Gasse → Perfektastraße 77. Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse. Reason: roadworks.<br/>[Until 28.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Construction works]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">615c7d9755493e3506136b4c89ccafaac30323c3c9774583bc4b55062576c7bb</guid>
-      <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 09 Oct 2026 13:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 14 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <description>Due to construction works in the area of Neilreichgasse / Davidgasse, line 7A is redirected. [Until 14.11.]</description>
-      <content:encoded><![CDATA[Due to construction works in the area of Neilreichgasse / Davidgasse, line 7A is redirected.<br/>[Until 14.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210, ftazW_352, ftazW_603, ftazW_19, ftazW_281, ftazW_1354391, ftazW_353, ftazW_282, ftazW_606, ftazW_1018092, ftazW_1018049, ftazW_477, ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_572, ftazW_22, ftazW_354, ftazW_573"
+    "trafficInfoNameList": "ftazW_352, ftazW_603, ftazW_19, ftazW_281, ftazW_1354391, ftazW_282, ftazW_606, ftazW_1018092, ftazW_1018049, ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_572, ftazW_22, ftazW_354, ftazW_573"
    }
   ],
   "poiCategoryGroups": [
@@ -4121,45 +4121,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "21.10.2026 05:15",
-     "ausVon": "21.10.2026 01:15",
-     "location": "Bahnsteig Linie U2 - Ausgang Seestadtstraße, zu den Buslinien",
-     "rbls": [
-      4277,
-      4276
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Seestadt",
-     "status": "geplante Wartung",
-     "towards": "U2 beide Richtungen"
-    },
-    "description": "Bahnsteig Linie U2 - Ausgang Seestadtstraße, zu den Buslinien",
-    "elevatorId": "EE 03",
-    "name": "ftazW_1032355",
-    "parentName": "ftazW_1032355",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4277,
-     4276
-    ],
-    "time": {
-     "end": "2026-10-21T05:15:00.000+0200",
-     "start": "2026-10-21T01:15:00.000+0200"
-    },
-    "title": "Seestadt"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "22.10.2026 00:45",
      "ausVon": "21.10.2026 20:45",
      "location": "U4 Mittelbahnsteig - Ausgang Ruckergasse",
@@ -4187,82 +4148,6 @@
      "start": "2026-10-21T20:45:00.000+0200"
     },
     "title": "Meidling Hauptstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "21.10.2026 05:15",
-     "ausVon": "21.10.2026 01:15",
-     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Urban Loritz Platz",
-     "rbls": [
-      4609
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Burggasse-Stadthalle",
-     "status": "geplante Wartung",
-     "towards": "U6 Siebenhirten"
-    },
-    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Urban Loritz Platz",
-    "elevatorId": "BU 02",
-    "name": "ftazW_16",
-    "parentName": "ftazW_16",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4609
-    ],
-    "time": {
-     "end": "2026-10-21T05:15:00.000+0200",
-     "start": "2026-10-21T01:15:00.000+0200"
-    },
-    "title": "Burggasse-Stadthalle"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "21.10.2026 05:15",
-     "ausVon": "21.10.2026 01:15",
-     "location": "U3 Mittelbahnsteig - Ausgang Franzosengraben",
-     "rbls": [
-      4917,
-      4900
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Erdberg",
-     "status": "geplante Wartung",
-     "towards": "U3 beide Richtungen"
-    },
-    "description": "U3 Mittelbahnsteig - Ausgang Franzosengraben",
-    "elevatorId": "ED 02",
-    "name": "ftazW_18",
-    "parentName": "ftazW_18",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4917,
-     4900
-    ],
-    "time": {
-     "end": "2026-10-21T05:15:00.000+0200",
-     "start": "2026-10-21T01:15:00.000+0200"
-    },
-    "title": "Erdberg"
    },
    {
     "alertCause": "undefined alert cause",
@@ -4302,43 +4187,6 @@
      "start": "2026-10-21T20:45:00.000+0200"
     },
     "title": "Erdberg"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "21.10.2026 05:15",
-     "ausVon": "21.10.2026 01:15",
-     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Döblinger Hauptstraße",
-     "rbls": [
-      4603
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Nußdorfer Straße",
-     "status": "geplante Wartung",
-     "towards": "U6 Siebenhirten"
-    },
-    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Döblinger Hauptstraße",
-    "elevatorId": "NS 02",
-    "name": "ftazW_210",
-    "parentName": "ftazW_210",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4603
-    ],
-    "time": {
-     "end": "2026-10-21T05:15:00.000+0200",
-     "start": "2026-10-21T01:15:00.000+0200"
-    },
-    "title": "Nußdorfer Straße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -4487,45 +4335,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "22.10.2026 05:15",
-     "ausVon": "22.10.2026 01:15",
-     "location": "U3 Bahnsteig Richtung Ottakring - U3 Bahnsteig Richtung Simmering - Zwischengeschoss Aufgang Neubaugasse",
-     "rbls": [
-      4918,
-      4923
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Neubaugasse",
-     "status": "geplante Wartung",
-     "towards": "U3 Ottakring, U3 Simmering"
-    },
-    "description": "U3 Bahnsteig Richtung Ottakring - U3 Bahnsteig Richtung Simmering - Zwischengeschoss Aufgang Neubaugasse",
-    "elevatorId": "MA 02",
-    "name": "ftazW_353",
-    "parentName": "ftazW_353",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4918,
-     4923
-    ],
-    "time": {
-     "end": "2026-10-22T05:15:00.000+0200",
-     "start": "2026-10-22T01:15:00.000+0200"
-    },
-    "title": "Neubaugasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "23.10.2026 05:15",
      "ausVon": "23.10.2026 01:15",
      "location": "Zwischengeschoss - Ausgang Kirchengasse",
@@ -4629,80 +4438,6 @@
      "start": "2026-10-22T20:45:00.000+0200"
     },
     "title": "Josefstädter Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "21.10.2026 05:15",
-     "ausVon": "21.10.2026 01:15",
-     "location": "U1 Bahnsteig Richtung Oberlaa - Ausgang Schüttaustraße",
-     "rbls": [
-      4106
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Kaisermühlen-VIC",
-     "status": "geplante Wartung",
-     "towards": "U1 Oberlaa"
-    },
-    "description": "U1 Bahnsteig Richtung Oberlaa - Ausgang Schüttaustraße",
-    "elevatorId": "KM 02",
-    "name": "ftazW_42",
-    "parentName": "ftazW_42",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4106
-    ],
-    "time": {
-     "end": "2026-10-21T05:15:00.000+0200",
-     "start": "2026-10-21T01:15:00.000+0200"
-    },
-    "title": "Kaisermühlen-VIC"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "22.10.2026 05:15",
-     "ausVon": "22.10.2026 01:15",
-     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Am Schöpfwerk",
-     "rbls": [
-      4630
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Am Schöpfwerk",
-     "status": "geplante Wartung",
-     "towards": "U6 Siebenhirten"
-    },
-    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Am Schöpfwerk",
-    "elevatorId": "PW 02",
-    "name": "ftazW_477",
-    "parentName": "ftazW_477",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4630
-    ],
-    "time": {
-     "end": "2026-10-22T05:15:00.000+0200",
-     "start": "2026-10-22T01:15:00.000+0200"
-    },
-    "title": "Am Schöpfwerk"
    },
    {
     "alertCause": "undefined alert cause",
