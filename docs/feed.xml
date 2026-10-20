@@ -8,34 +8,47 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 20 Oct 2026 14:01:11 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 14:30:41 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[5: Verspätungen]]></title>
+      <title><![CDATA[U3: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">45e9fa055fa6de68f6d4b0b6fe8d6c7618eef983d2f63db426ccca192a040e62</guid>
-      <pubDate>Tue, 20 Oct 2026 13:44:00 +0200</pubDate>
+      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
+      <pubDate>Tue, 20 Oct 2026 14:21:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 13:44:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 13:44:00 +0200</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 13:44]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 13:44]]]></content:encoded>
+      <ext:first_seen>Tue, 20 Oct 2026 14:21:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 14:21:00 +0200</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 14:21]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 14:21]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[15A: Verkehrsunfall]]></title>
+      <title><![CDATA[O: Falschparker]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">91764a03accca09022cfcfba2c1aff91c5921476e6173724fe50d436a1200130</guid>
-      <pubDate>Tue, 20 Oct 2026 13:11:16 +0200</pubDate>
+      <guid isPermaLink="false">a90305646f013b3987fb55ef5dab8d20d35b0e58b3f412f792bb39c48c2fa5a8</guid>
+      <pubDate>Tue, 20 Oct 2026 14:13:48 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 13:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 13:11:16 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 20 Oct 2026 14:10:00 +0200</ext:ends_at>
-      <description>Einstieg bei Linie 15A. [Seit 13:11]</description>
-      <content:encoded><![CDATA[Einstieg bei Linie 15A.<br/>[Seit 13:11]]]></content:encoded>
+      <ext:first_seen>Tue, 20 Oct 2026 14:13:48 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 14:14:52 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 20 Oct 2026 15:14:00 +0200</ext:ends_at>
+      <description>Betrieb ab Hintere Zollamtsstraße. Betrieb ab Praterstern [Seit 14:13]</description>
+      <content:encoded><![CDATA[Betrieb ab Hintere Zollamtsstraße. Betrieb ab Praterstern<br/>[Seit 14:13]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Falschparker, Gleisschaden]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1</guid>
+      <pubDate>Tue, 20 Oct 2026 14:13:18 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 20 Oct 2026 14:13:18 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 14:13:20 +0200</ext:starts_at>
+      <description>Falschparker: Fahrtbehinderung. Gleisschaden: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. [Seit 14:13]</description>
+      <content:encoded><![CDATA[Falschparker: Fahrtbehinderung. Gleisschaden: Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br/>[Seit 14:13]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U2: Polizeieinsatz]]></title>
@@ -76,19 +89,6 @@
       <ext:starts_at>Tue, 20 Oct 2026 12:01:00 +0200</ext:starts_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 12:01]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 12:01]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Gleisschaden]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8681a71896a38fa5cd0db22da3a40ed6cc4472d9266f99cbebaff20ab7d6d4e6</guid>
-      <pubDate>Tue, 20 Oct 2026 11:58:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 11:58:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 11:58:00 +0200</ext:starts_at>
-      <description>Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A, 15A und 65A; Einstieg bei Linie 6. Voraussichtliche Dauer: nicht absehbar. [Seit 11:58]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A, 15A und 65A; Einstieg bei Linie 6. Voraussichtliche Dauer: nicht absehbar.<br/>[Seit 11:58]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[56B/56A/N62: Strampfergasse]]></title>
