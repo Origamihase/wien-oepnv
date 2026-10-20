@@ -806,22 +806,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/D/71: Polizeieinsatz",
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "84405bbd5612e1cb4ded18a66f6fe0fb08cf578e02936616cb401e0d7c5d4981",
-    "pubDate": "2026-10-20T05:24:00+02:00",
-    "starts_at": "2026-10-20T05:24:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=1,71,D|D=2026-10-20|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261020-0009"
-    ],
-    "_incident_start": "2026-10-20T05:24:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1170,22 +1154,6 @@
     "starts_at": "2026-10-20T00:00:12+02:00",
     "ends_at": "2026-10-20T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-20|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2026-10-20T05:39:00+02:00",
-    "starts_at": "2026-10-20T05:39:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U4|D=2026-10-20|TK=u4 verspätungen",
-    "_wl_ids": [
-      "I20261020-0010"
-    ],
-    "_incident_start": "2026-10-20T05:39:00+02:00"
   },
   {
     "source": "Wiener Linien",

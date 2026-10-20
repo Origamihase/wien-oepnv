@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261020-0010, I20260917-0012, I20260922-0032, I20261020-0009, I20260925-0011, I20260909-0007"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R45-136, R130-136, R119-136, R293-474, R19-136, R100-136, R101-136, R118-136, R102-136, R103-136, R115-136, R116-136, R117-136, R2025-671, R318-437, R36-152, R2558-125, R2370-125, R2343-125, R2343-626, R2378-627, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2359-125, R1447-149, R1448-412, R1474-412, R1445-149, R1446-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R3886-480, R1974-466, R500-101, R51-136, R50-136, R49-136, R47-136, R46-136, R18-136, R17-136, R15-136, R14-136, R13-136, R111-136, R109-136, R105-136, R81-136, R58-136, R57-136, R3431-136, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2025-671, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R318-437, R293-474, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1445-149, R1448-412, R1474-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R5815-671, R3886-480, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -213,110 +213,6 @@
     "title": "26E: Gleisbauarbeiten"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "1": "ptTram",
-      "71": "ptTram",
-      "D": "ptTram"
-     }
-    },
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "descriptionHTML": "<p>Linie 1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie D:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 71:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 1:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie D:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 71:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-       "descriptionPlain": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-       "title": "D, 71, 1: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261020-0009",
-    "owner": "WL",
-    "parentName": "I20261020-0009",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "1",
-     "D",
-     "71"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 101,
-      "lineName": "1",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 136,
-      "lineName": "D",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 171,
-      "lineName": "71",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-20T05:26:00.000+0200",
-     "lastUpdate": "2026-10-20T06:23:00.000+0200",
-     "resume": "2026-10-20T05:24:00.000+0200",
-     "start": "2026-10-20T05:24:00.000+0200"
-    },
-    "title": "D, 71, 1: Polizeieinsatz"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U4: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261020-0010",
-    "owner": "WL",
-    "parentName": "I20261020-0010",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-20T05:40:00.000+0200",
-     "lastUpdate": "2026-10-20T05:40:00.000+0200",
-     "resume": "2026-10-20T05:39:00.000+0200",
-     "start": "2026-10-20T05:39:00.000+0200"
-    },
-    "title": "U4: Verspätungen"
-   },
-   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -407,75 +303,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nDerzeit längere Wartezeiten",
-    "name": "R105-136",
-    "owner": "WL",
-    "parentName": "R105-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     105
-    ],
-    "time": {
-     "end": "2026-10-20T06:40:00.000+0200",
-     "start": "2026-10-20T05:41:30.000+0200"
-    },
-    "title": "Polizeieinsatz\nDerzeit längere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nDerzeit längere Wartezeiten",
-    "name": "R109-136",
-    "owner": "WL",
-    "parentName": "R109-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     109
-    ],
-    "time": {
-     "end": "2026-10-20T06:40:00.000+0200",
-     "start": "2026-10-20T05:41:30.000+0200"
-    },
-    "title": "Polizeieinsatz\nDerzeit längere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nDerzeit längere Wartezeiten",
-    "name": "R111-136",
-    "owner": "WL",
-    "parentName": "R111-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     111
-    ],
-    "time": {
-     "end": "2026-10-20T06:40:00.000+0200",
-     "start": "2026-10-20T05:41:30.000+0200"
-    },
-    "title": "Polizeieinsatz\nDerzeit längere Wartezeiten"
    },
    {
     "alertCause": "undefined alert cause",
@@ -595,29 +422,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Polizeieinsatz\nDerzeit längere Wartezeiten",
-    "name": "R13-136",
-    "owner": "WL",
-    "parentName": "R13-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     13
-    ],
-    "time": {
-     "end": "2026-10-20T06:40:00.000+0200",
-     "start": "2026-10-20T05:41:30.000+0200"
-    },
-    "title": "Polizeieinsatz\nDerzeit längere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R130-136",
     "owner": "WL",
@@ -637,29 +441,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nDerzeit längere Wartezeiten",
-    "name": "R14-136",
-    "owner": "WL",
-    "parentName": "R14-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     14
-    ],
-    "time": {
-     "end": "2026-10-20T06:40:00.000+0200",
-     "start": "2026-10-20T05:41:30.000+0200"
-    },
-    "title": "Polizeieinsatz\nDerzeit längere Wartezeiten"
    },
    {
     "alertCause": "undefined alert cause",
@@ -936,75 +717,6 @@
      "start": "2026-10-20T00:00:06.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nDerzeit längere Wartezeiten",
-    "name": "R15-136",
-    "owner": "WL",
-    "parentName": "R15-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     15
-    ],
-    "time": {
-     "end": "2026-10-20T06:40:00.000+0200",
-     "start": "2026-10-20T05:41:30.000+0200"
-    },
-    "title": "Polizeieinsatz\nDerzeit längere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nDerzeit längere Wartezeiten",
-    "name": "R17-136",
-    "owner": "WL",
-    "parentName": "R17-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     17
-    ],
-    "time": {
-     "end": "2026-10-20T06:40:00.000+0200",
-     "start": "2026-10-20T05:41:30.000+0200"
-    },
-    "title": "Polizeieinsatz\nDerzeit längere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nDerzeit längere Wartezeiten",
-    "name": "R18-136",
-    "owner": "WL",
-    "parentName": "R18-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     18
-    ],
-    "time": {
-     "end": "2026-10-20T06:40:00.000+0200",
-     "start": "2026-10-20T05:41:30.000+0200"
-    },
-    "title": "Polizeieinsatz\nDerzeit längere Wartezeiten"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1466,29 +1178,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Polizeieinsatz\nDerzeit längere Wartezeiten",
-    "name": "R3431-136",
-    "owner": "WL",
-    "parentName": "R3431-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     3431
-    ],
-    "time": {
-     "end": "2026-10-20T06:40:00.000+0200",
-     "start": "2026-10-20T05:41:32.000+0200"
-    },
-    "title": "Polizeieinsatz\nDerzeit längere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Züge halten\nbei Linien 6 und 18",
     "name": "R36-152",
     "owner": "WL",
@@ -1558,98 +1247,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Polizeieinsatz\nDerzeit längere Wartezeiten",
-    "name": "R46-136",
-    "owner": "WL",
-    "parentName": "R46-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     46
-    ],
-    "time": {
-     "end": "2026-10-20T06:40:00.000+0200",
-     "start": "2026-10-20T05:41:30.000+0200"
-    },
-    "title": "Polizeieinsatz\nDerzeit längere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nDerzeit längere Wartezeiten",
-    "name": "R47-136",
-    "owner": "WL",
-    "parentName": "R47-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     47
-    ],
-    "time": {
-     "end": "2026-10-20T06:40:00.000+0200",
-     "start": "2026-10-20T05:41:30.000+0200"
-    },
-    "title": "Polizeieinsatz\nDerzeit längere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nDerzeit längere Wartezeiten",
-    "name": "R49-136",
-    "owner": "WL",
-    "parentName": "R49-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     49
-    ],
-    "time": {
-     "end": "2026-10-20T06:40:00.000+0200",
-     "start": "2026-10-20T05:41:30.000+0200"
-    },
-    "title": "Polizeieinsatz\nDerzeit längere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nDerzeit längere Wartezeiten",
-    "name": "R50-136",
-    "owner": "WL",
-    "parentName": "R50-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     50
-    ],
-    "time": {
-     "end": "2026-10-20T06:40:00.000+0200",
-     "start": "2026-10-20T05:41:30.000+0200"
-    },
-    "title": "Polizeieinsatz\nDerzeit längere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -1673,75 +1270,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Polizeieinsatz\nDerzeit längere Wartezeiten",
-    "name": "R51-136",
-    "owner": "WL",
-    "parentName": "R51-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     51
-    ],
-    "time": {
-     "end": "2026-10-20T06:40:00.000+0200",
-     "start": "2026-10-20T05:41:30.000+0200"
-    },
-    "title": "Polizeieinsatz\nDerzeit längere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nDerzeit längere Wartezeiten",
-    "name": "R57-136",
-    "owner": "WL",
-    "parentName": "R57-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     57
-    ],
-    "time": {
-     "end": "2026-10-20T06:40:00.000+0200",
-     "start": "2026-10-20T05:41:30.000+0200"
-    },
-    "title": "Polizeieinsatz\nDerzeit längere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nDerzeit längere Wartezeiten",
-    "name": "R58-136",
-    "owner": "WL",
-    "parentName": "R58-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     58
-    ],
-    "time": {
-     "end": "2026-10-20T06:40:00.000+0200",
-     "start": "2026-10-20T05:41:30.000+0200"
-    },
-    "title": "Polizeieinsatz\nDerzeit längere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "name": "R5815-671",
     "owner": "WL",
@@ -1758,29 +1286,6 @@
      "start": "2026-10-20T00:00:12.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nDerzeit längere Wartezeiten",
-    "name": "R81-136",
-    "owner": "WL",
-    "parentName": "R81-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     81
-    ],
-    "time": {
-     "end": "2026-10-20T06:40:00.000+0200",
-     "start": "2026-10-20T05:41:30.000+0200"
-    },
-    "title": "Polizeieinsatz\nDerzeit längere Wartezeiten"
    },
    {
     "alertCause": "undefined alert cause",
