@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0052-F01, I20261020-0052, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0052-F01, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R36-152, R19-136, R130-136, R119-136, R118-136, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R2025-671, R117-136, R116-136, R45-136, R2558-125, R2371-125, R2359-125, R2343-125, R2343-626, R2378-627, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2370-125, R1475-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1476-149, R5815-671, R3886-480, R1974-466, R500-101, R401-101, R1876-101, R1875-101, R1883-101, R1882-101, R1881-101, R1880-101, R1884-101, R2064-466, R1958-466, R1945-466, R1942-466, R1944-466, R1941-466, R1940-466, R1927-466, R1946-466, R1947-466, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R293-474, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1448-412, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R5815-671, R3886-480, R1974-466, R500-101, R401-101, R1876-101, R1875-101, R1881-101, R1880-101, R1882-101, R1883-101, R1884-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -257,55 +257,6 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "66A": "ptBusCity"
-     }
-    },
-    "description": "Linie 66A: Umleitung in Richtung Liesing S zwischen Reumannplatz und Laxenburger Straße, Troststraße über Davidgasse und Laxenburger Straße. Voraussichtliche Dauer: 22:20 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Reumannplatz U.",
-    "descriptionHTML": "<p>Linie 66A:<br>Umleitung in Richtung Liesing S<br>zwischen Reumannplatz und Laxenburger Straße, Troststraße über Davidgasse und Laxenburger Straße.</p><p>Voraussichtliche Dauer: 22:20 Uhr.</p><p>Grund: Verkehrsunfall im Haltestellenbereich Reumannplatz U.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 66A:<br>Umleitung in Richtung Liesing S<br>zwischen Reumannplatz und Laxenburger Straße, Troststraße über Davidgasse und Laxenburger Straße.</p><p>Voraussichtliche Dauer: 22:20 Uhr.</p><p>Grund: Verkehrsunfall im Haltestellenbereich Reumannplatz U.</p>",
-       "descriptionPlain": "Linie 66A: Umleitung in Richtung Liesing S zwischen Reumannplatz und Laxenburger Straße, Troststraße über Davidgasse und Laxenburger Straße. Voraussichtliche Dauer: 22:20 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Reumannplatz U.",
-       "title": "66A: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261020-0052",
-    "owner": "WL",
-    "parentName": "I20261020-0052",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 466,
-      "lineName": "66A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     2007
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-20T21:56:00.000+0200",
-     "end": "2026-10-20T21:56:00.000+0200",
-     "lastUpdate": "2026-10-20T21:56:00.000+0200",
-     "resume": "2026-10-20T21:56:00.000+0200",
-     "start": "2026-10-20T21:55:00.000+0200"
-    },
-    "title": "66A: Verkehrsunfall"
    },
    {
     "alertCause": "accident",
@@ -1048,213 +999,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1927-466",
-    "owner": "WL",
-    "parentName": "R1927-466",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedStops": [
-     1927
-    ],
-    "time": {
-     "end": "2026-10-20T22:22:00.000+0200",
-     "start": "2026-10-20T21:23:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1940-466",
-    "owner": "WL",
-    "parentName": "R1940-466",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedStops": [
-     1940
-    ],
-    "time": {
-     "end": "2026-10-20T22:22:00.000+0200",
-     "start": "2026-10-20T21:23:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1941-466",
-    "owner": "WL",
-    "parentName": "R1941-466",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedStops": [
-     1941
-    ],
-    "time": {
-     "end": "2026-10-20T22:22:00.000+0200",
-     "start": "2026-10-20T21:23:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1942-466",
-    "owner": "WL",
-    "parentName": "R1942-466",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedStops": [
-     1942
-    ],
-    "time": {
-     "end": "2026-10-20T22:22:00.000+0200",
-     "start": "2026-10-20T21:23:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1944-466",
-    "owner": "WL",
-    "parentName": "R1944-466",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedStops": [
-     1944
-    ],
-    "time": {
-     "end": "2026-10-20T22:22:00.000+0200",
-     "start": "2026-10-20T21:23:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1945-466",
-    "owner": "WL",
-    "parentName": "R1945-466",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedStops": [
-     1945
-    ],
-    "time": {
-     "end": "2026-10-20T22:22:00.000+0200",
-     "start": "2026-10-20T21:23:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1946-466",
-    "owner": "WL",
-    "parentName": "R1946-466",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedStops": [
-     1946
-    ],
-    "time": {
-     "end": "2026-10-20T22:22:00.000+0200",
-     "start": "2026-10-20T21:23:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1947-466",
-    "owner": "WL",
-    "parentName": "R1947-466",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedStops": [
-     1947
-    ],
-    "time": {
-     "end": "2026-10-20T22:22:00.000+0200",
-     "start": "2026-10-20T21:23:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1958-466",
-    "owner": "WL",
-    "parentName": "R1958-466",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedStops": [
-     1958
-    ],
-    "time": {
-     "end": "2026-10-20T22:22:00.000+0200",
-     "start": "2026-10-20T21:23:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-466",
     "owner": "WL",
@@ -1294,29 +1038,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2064-466",
-    "owner": "WL",
-    "parentName": "R2064-466",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedStops": [
-     2064
-    ],
-    "time": {
-     "end": "2026-10-20T22:22:00.000+0200",
-     "start": "2026-10-20T21:23:03.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
