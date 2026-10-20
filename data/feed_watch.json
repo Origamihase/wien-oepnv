@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-20T16:01:01.973190+00:00",
- "built": "2026-10-20T18:00:47+02:00",
+ "updated": "2026-10-20T16:31:05.992669+00:00",
+ "built": "2026-10-20T18:30:52+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-20T18:00:47+02:00",
+  "built": "2026-10-20T18:30:52+02:00",
   "items": [
    {
     "title": "20A: Feuerwehreinsatz",
@@ -29,10 +29,6 @@
     "time_line": "Seit heute"
    },
    {
-    "title": "Wien Floridsdorf ↔ Wien Praterstern",
-    "time_line": "Heute"
-   },
-   {
     "title": "1: Gleisbauarbeiten",
     "time_line": "Bis 05.12."
    },
@@ -47,31 +43,15 @@
    {
     "title": "48A: Neubaugasse, Neustiftgasse",
     "time_line": "Seit 19.10."
+   },
+   {
+    "title": "N71: Simmering S U",
+    "time_line": "Bis Fr 23.10."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-13T16:01:11.974294+00:00",
-   "raw": {
-    "wl-stoerungen": 145,
-    "wl-hinweise": 101,
-    "oebb": 160,
-    "baustellen-linien": 52,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 30,
-    "oebb": 136,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 107
-   }
-  },
   {
    "t": "2026-10-13T16:31:12.090592+00:00",
    "raw": {
@@ -6790,6 +6770,26 @@
     "baustellen": 4,
     "oebb": 11,
     "wl": 108
+   }
+  },
+  {
+   "t": "2026-10-20T16:31:05.992669+00:00",
+   "raw": {
+    "wl-stoerungen": 79,
+    "wl-hinweise": 101,
+    "oebb": 164,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 21,
+    "oebb": 141,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 109
    }
   }
  ]
