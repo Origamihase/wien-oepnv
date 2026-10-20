@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261020-0037, I20261020-0030-F01, I20260917-0012, I20260922-0032, I20261020-0029, I20260925-0011, I20260909-0007, I20261020-0036, I20261020-0031-F02"
+    "trafficInfoNameList": "I20261020-0037-F01, I20261020-0037-F02, I20260917-0012, I20260922-0032, I20261020-0029, I20260925-0011, I20261020-0038, I20261020-0039-F01, I20261020-0039, I20260909-0007, I20261020-0031-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R293-474, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1448-412, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1445-149, R1474-412, R5815-671, R3886-480, R1974-466, R500-101, R1876-101, R401-101, R1875-101, R1881-101, R1880-101, R1883-101, R1882-101, R1884-101, R144-0, R187-0, R146-0, R147-0, R143-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R293-474, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1448-412, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1445-149, R1474-412, R5815-671, R3886-480, R1974-466, R500-101, R1875-101, R1876-101, R401-101, R1881-101, R1880-101, R1883-101, R1882-101, R1884-101, R187-0, R146-0, R144-0, R147-0, R143-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -260,54 +260,6 @@
     "title": "1: Gleisschaden"
    },
    {
-    "alertCause": "fire",
-    "alertCauseId": 5,
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U1: Feuerwehreinsatz"
-      }
-     }
-    ],
-    "name": "I20261020-0030-F01",
-    "owner": "WL",
-    "parentName": "I20261020-0030",
-    "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 301,
-      "lineName": "U1",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4138
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-20T13:25:00.000+0200",
-     "end": "2026-10-20T15:45:00.000+0200",
-     "lastUpdate": "2026-10-20T15:28:00.000+0200",
-     "start": "2026-10-20T12:01:00.000+0200"
-    },
-    "title": "U1: Feuerwehreinsatz"
-   },
-   {
     "alertCause": "accident",
     "alertCauseId": 77,
     "attributes": {
@@ -356,73 +308,26 @@
     "title": "O: Verkehrsunfall"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U3: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261020-0036",
-    "owner": "WL",
-    "parentName": "I20261020-0036",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-20T14:22:00.000+0200",
-     "end": "2026-10-20T15:55:00.000+0200",
-     "lastUpdate": "2026-10-20T15:28:00.000+0200",
-     "resume": "2026-10-20T14:21:00.000+0200",
-     "start": "2026-10-20T14:21:00.000+0200"
-    },
-    "title": "U3: Verspätungen"
-   },
-   {
     "alertCause": "accident",
     "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "40": "ptTram",
       "41": "ptTram"
      }
     },
-    "description": "Linie 40: Umleitung in Richtung Schottentor U zwischen Gersthof S und Währinger Straße, Volksoper U über Michelbeuern-AKH U (Strecke Linien 9 und 42). Linie 41: Umleitung in Richtung Schottentor U zwischen Gersthof S und Währinger Straße, Volksoper U über Michelbeuern-AKH U (Strecke der Linien 9 und 42). Voraussichtliche Dauer: 15:40 Uhr. Grund: Verkehrsunfall im Bereich Währinger Straße 73.",
-    "descriptionHTML": "<p>Linie 40:<br>Umleitung in Richtung Schottentor U <br>zwischen Gersthof S und Währinger Straße, Volksoper U <br>über Michelbeuern-AKH U (Strecke Linien 9 und 42).<br>Linie 41:<br>Umleitung in Richtung Schottentor U <br>zwischen Gersthof S und Währinger Straße, Volksoper U <br>über Michelbeuern-AKH U (Strecke der Linien 9 und 42).</p><p>Voraussichtliche Dauer: 15:40 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Währinger Straße 73.</p>",
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 40:<br>Umleitung in Richtung Schottentor U <br>zwischen Gersthof S und Währinger Straße, Volksoper U <br>über Michelbeuern-AKH U (Strecke Linien 9 und 42).<br>Linie 41:<br>Umleitung in Richtung Schottentor U <br>zwischen Gersthof S und Währinger Straße, Volksoper U <br>über Michelbeuern-AKH U (Strecke der Linien 9 und 42).</p><p>Voraussichtliche Dauer: 15:40 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Währinger Straße 73.</p>",
-       "descriptionPlain": "Linie 40: Umleitung in Richtung Schottentor U zwischen Gersthof S und Währinger Straße, Volksoper U über Michelbeuern-AKH U (Strecke Linien 9 und 42). Linie 41: Umleitung in Richtung Schottentor U zwischen Gersthof S und Währinger Straße, Volksoper U über Michelbeuern-AKH U (Strecke der Linien 9 und 42). Voraussichtliche Dauer: 15:40 Uhr. Grund: Verkehrsunfall im Bereich Währinger Straße 73.",
-       "title": "41, 40: Verkehrsunfall"
+       "descriptionHtml": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "41: Verkehrsunfall"
       }
      }
     ],
     "location": "Währinger Straße 73",
-    "name": "I20261020-0037",
+    "name": "I20261020-0037-F01",
     "owner": "WL",
     "parentName": "I20261020-0037",
     "priority": "1",
@@ -430,15 +335,9 @@
     "reasonName": "Verkehrsunfall",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "40",
      "41"
     ],
     "relatedLinesDetails": [
-     {
-      "lineId": 140,
-      "lineName": "40",
-      "vehicleType": "ptTram"
-     },
      {
       "lineId": 141,
       "lineName": "41",
@@ -447,11 +346,196 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-20T15:08:00.000+0200",
-     "lastUpdate": "2026-10-20T15:08:00.000+0200",
+     "created": "2026-10-20T15:51:00.000+0200",
+     "lastUpdate": "2026-10-20T15:51:00.000+0200",
+     "resume": "2026-10-20T15:51:00.000+0200",
      "start": "2026-10-20T15:06:00.000+0200"
     },
-    "title": "41, 40: Verkehrsunfall"
+    "title": "41: Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "40": "ptTram"
+     }
+    },
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "40: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Währinger Straße 73",
+    "name": "I20261020-0037-F02",
+    "owner": "WL",
+    "parentName": "I20261020-0037",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 140,
+      "lineName": "40",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T15:51:00.000+0200",
+     "lastUpdate": "2026-10-20T15:51:00.000+0200",
+     "resume": "2026-10-20T15:51:00.000+0200",
+     "start": "2026-10-20T15:06:00.000+0200"
+    },
+    "title": "40: Verkehrsunfall"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+       "title": "U1: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261020-0038",
+    "owner": "WL",
+    "parentName": "I20261020-0038",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T15:52:00.000+0200",
+     "lastUpdate": "2026-10-20T15:52:00.000+0200",
+     "resume": "2026-10-20T15:51:00.000+0200",
+     "start": "2026-10-20T15:51:00.000+0200"
+    },
+    "title": "U1: Polizeieinsatz"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "59A": "ptBusCity"
+     }
+    },
+    "description": "Linie 59A: Fahrtbehinderung in Richtung Oper, Karlsplatz U. Voraussichtliche Dauer: 16:25 Uhr. Grund: Falschparker im Bereich Preßgasse.",
+    "descriptionHTML": "<p>Linie 59A:<br>Fahrtbehinderung in Richtung Oper, Karlsplatz U.</p><p>Voraussichtliche Dauer: 16:25 Uhr.</p><p>Grund: Falschparker im Bereich Preßgasse.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 59A:<br>Fahrtbehinderung in Richtung Oper, Karlsplatz U.</p><p>Voraussichtliche Dauer: 16:25 Uhr.</p><p>Grund: Falschparker im Bereich Preßgasse.</p>",
+       "descriptionPlain": "Linie 59A: Fahrtbehinderung in Richtung Oper, Karlsplatz U. Voraussichtliche Dauer: 16:25 Uhr. Grund: Falschparker im Bereich Preßgasse.",
+       "title": "59A: Falschparker"
+      }
+     }
+    ],
+    "location": "Preßgasse",
+    "name": "I20261020-0039",
+    "owner": "WL",
+    "parentName": "I20261020-0039",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 459,
+      "lineName": "59A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-20T15:55:00.000+0200",
+     "end": "2026-10-20T15:57:00.000+0200",
+     "lastUpdate": "2026-10-20T15:57:00.000+0200",
+     "resume": "2026-10-20T15:57:00.000+0200",
+     "start": "2026-10-20T15:54:00.000+0200"
+    },
+    "title": "59A: Falschparker"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "59A": "ptBusCity"
+     }
+    },
+    "description": "Linie 59A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 59A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 59A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 59A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "59A: Falschparker"
+      }
+     }
+    ],
+    "location": "Preßgasse",
+    "name": "I20261020-0039-F01",
+    "owner": "WL",
+    "parentName": "I20261020-0039",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 459,
+      "lineName": "59A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T15:57:00.000+0200",
+     "lastUpdate": "2026-10-20T15:57:00.000+0200",
+     "resume": "2026-10-20T15:57:00.000+0200",
+     "start": "2026-10-20T15:54:00.000+0200"
+    },
+    "title": "59A: Falschparker"
    },
    {
     "alertCause": "undefined alert cause",

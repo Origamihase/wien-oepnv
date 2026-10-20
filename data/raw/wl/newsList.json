@@ -6,7 +6,7 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-2738, N20260209-3501, N20260209-3802, N20260209-4631, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260701-5989, N20260702-5991, N20260708-6004, N20260722-6034, N20260813-6092, N20260808-6085, N20260808-6083, N20260808-6084, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260831-6165, N20260901-6167, N20260903-6175, N20260908-6177, N20260910-6180, N20260911-6181, N20260915-6185, N20260916-6187, N20260918-6191, N20260921-6196, N20260922-6200, N20260923-6203, N20260930-6211, N20261005-6217, N20261005-6219, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261008-6263, N20261008-6266, N20261008-6267, N20261009-6271, N20261009-6270, N20261014-6275, N20261014-6276, N20261014-6277, N20261014-6278, N20261015-6279, N20261016-6281, N20261016-6280, N20261019-6285"
+    "trafficInfoNameList": "N20260209-0049, N20260209-2738, N20260209-3501, N20260209-3802, N20260209-4631, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260701-5989, N20260702-5991, N20260708-6004, N20260722-6034, N20260813-6092, N20260808-6085, N20260808-6084, N20260808-6083, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260831-6165, N20260901-6167, N20260903-6175, N20260908-6177, N20260910-6180, N20260911-6181, N20260915-6185, N20260916-6187, N20260918-6191, N20260921-6196, N20260922-6200, N20260923-6203, N20260930-6211, N20261005-6217, N20261005-6219, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261008-6263, N20261008-6266, N20261008-6267, N20261009-6271, N20261009-6270, N20261014-6275, N20261014-6276, N20261014-6277, N20261014-6278, N20261015-6279, N20261016-6281, N20261016-6280, N20261019-6285, N20261020-0003"
    },
    {
     "id": -1,
@@ -3933,6 +3933,59 @@
      "validFrom": "2026-10-19T12:16:00.000+0200"
     },
     "title": "56A, 56B, N62: Strampfergasse"
+   },
+   {
+    "alertCause": "construction work",
+    "alertCauseId": 45,
+    "description": "<h2>Bauarbeiten</h2><p></p><p>Aufgrund von Bauarbeiten in der Maxingstraße im Bereich <u>Am Platz</u>, müssen die Linien 58A und 58B umgeleitet werden.</p><p><span><strong><u>Zeitraum:</u></strong></span><br>Von 27. Oktober 2026 bis voraussichtlich vier Tage.</p><p><span><strong><u>Maßnahmen:</u></strong></span></p><p><strong>Linien 58A und 58B in Richtung Atzgersdorf:</strong><br>Umleitung ab Hietzinger Hauptstraße # Am Platz über Hietzinger Hauptstraße – Lainzer Straße – Gloriettegasse – Wattmanngasse</p><p><span><u>Haltestellenverlegungen:</u></span></p><ul><li><p>Tiroler Gasse verlegt nach Gloriettegasse 11-13</p></li><li><p>Am Platz nach Hietzinger Hauptstraße 18-20 (Linien 56A und 56B)</p></li></ul><p></p>",
+    "id": "N20261020-0003",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<h2>Bauarbeiten</h2><p></p><p>Aufgrund von Bauarbeiten in der Maxingstraße im Bereich <u>Am Platz</u>, müssen die Linien 58A und 58B umgeleitet werden.</p><p><span><strong><u>Zeitraum:</u></strong></span><br>Von 27. Oktober 2026 bis voraussichtlich vier Tage.</p><p><span><strong><u>Maßnahmen:</u></strong></span></p><p><strong>Linien 58A und 58B in Richtung Atzgersdorf:</strong><br>Umleitung ab Hietzinger Hauptstraße # Am Platz über Hietzinger Hauptstraße – Lainzer Straße – Gloriettegasse – Wattmanngasse</p><p><span><u>Haltestellenverlegungen:</u></span></p><ul><li><p>Tiroler Gasse verlegt nach Gloriettegasse 11-13</p></li><li><p>Am Platz nach Hietzinger Hauptstraße 18-20 (Linien 56A und 56B)</p></li></ul><p></p>",
+       "descriptionPlain": "Bauarbeiten Aufgrund von Bauarbeiten in der Maxingstraße im Bereich Am Platz, müssen die Linien 58A und 58B umgeleitet werden. Zeitraum: Von 27. Oktober 2026 bis voraussichtlich vier Tage. Maßnahmen: Linien 58A und 58B in Richtung Atzgersdorf: Umleitung ab Hietzinger Hauptstraße # Am Platz über Hietzinger Hauptstraße – Lainzer Straße – Gloriettegasse – Wattmanngasse Haltestellenverlegungen: Tiroler Gasse verlegt nach Gloriettegasse 11-13 Am Platz nach Hietzinger Hauptstraße 18-20 (Linien 56A und 56B)",
+       "title": "58A, 56B: Bauarbeiten ab 27.10.2026"
+      }
+     }
+    ],
+    "location": {
+     "properties": {
+      "attributes": {},
+      "coordName": "WGS84",
+      "type": "news"
+     },
+     "type": "Feature"
+    },
+    "name": "N20261020-0003",
+    "reasonId": 21,
+    "reasonName": "Bauarbeiten",
+    "refPoiCategoryId": 13296,
+    "relatedLines": [
+     "56B",
+     "58A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 256,
+      "lineName": "56B",
+      "vehicleType": "ptBusCity"
+     },
+     {
+      "lineId": 458,
+      "lineName": "58A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "relatedStops": [
+     8120,
+     8121
+    ],
+    "time": {
+     "end": "2026-11-20T11:11:00.000+0100",
+     "start": "2026-10-20T15:51:00.000+0200",
+     "validFrom": "2026-10-20T15:51:00.000+0200"
+    },
+    "title": "58A, 56B: Bauarbeiten ab 27.10.2026"
    },
    {
     "alertCause": "undefined alert cause",
