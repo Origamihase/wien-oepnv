@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-20T18:01:20.567265+00:00",
- "built": "2026-10-20T20:01:06+02:00",
+ "updated": "2026-10-20T18:31:14.874496+00:00",
+ "built": "2026-10-20T20:31:00+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-20T20:01:06+02:00",
+  "built": "2026-10-20T20:31:00+02:00",
   "items": [
    {
     "title": "43: Feuerwehreinsatz",
@@ -15,10 +15,6 @@
    {
     "title": "O: Feuerwehreinsatz",
     "time_line": "Seit 19:41"
-   },
-   {
-    "title": "88B: Falschparker",
-    "time_line": "Seit 19:21"
    },
    {
     "title": "U4: Verspätungen",
@@ -47,31 +43,15 @@
    {
     "title": "N71: Simmering S U",
     "time_line": "Bis Fr 23.10."
+   },
+   {
+    "title": "64A: Liesing-Flur-Gasse",
+    "time_line": "Bis 28.10."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-13T18:30:51.217035+00:00",
-   "raw": {
-    "wl-stoerungen": 78,
-    "wl-hinweise": 99,
-    "oebb": 159,
-    "baustellen-linien": 52,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 24,
-    "oebb": 135,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 98
-   }
-  },
   {
    "t": "2026-10-13T19:01:12.697600+00:00",
    "raw": {
@@ -6770,6 +6750,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 109
+   }
+  },
+  {
+   "t": "2026-10-20T18:31:14.874496+00:00",
+   "raw": {
+    "wl-stoerungen": 81,
+    "wl-hinweise": 101,
+    "oebb": 165,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 23,
+    "oebb": 142,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 108
    }
   }
  ]
