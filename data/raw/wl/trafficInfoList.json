@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261020-0013, I20260917-0012, I20261020-0018, I20260922-0032, I20260925-0011, I20261020-0019, I20260909-0007, I20261020-0012, I20261020-0015, I20261020-0016, I20261020-0017"
+    "trafficInfoNameList": "I20261020-0013, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0021-F01, I20260909-0007, I20261020-0012, I20261020-0015, I20261020-0016, I20261020-0017, I20261020-0019-F01, I20261020-0020-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2025-671, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R318-437, R293-474, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1448-412, R1447-149, R1446-149, R1445-149, R1474-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R5815-671, R3886-480, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R293-474, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1448-412, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1476-149, R1475-149, R1474-149, R5815-671, R3886-480, R1974-466, R500-101, R165-101, R172-101, R169-101, R173-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -443,66 +443,21 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U3: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261020-0018",
-    "owner": "WL",
-    "parentName": "I20261020-0018",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-20T08:11:00.000+0200",
-     "lastUpdate": "2026-10-20T08:11:00.000+0200",
-     "resume": "2026-10-20T08:11:00.000+0200",
-     "start": "2026-10-20T08:11:00.000+0200"
-    },
-    "title": "U3: Verspätungen"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
       "U1": "ptMetro"
      }
     },
-    "description": "Linie U1: Fahrtbehinderung in Richtung Oberlaa. Voraussichtliche Dauer: 08:35 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kagran.",
-    "descriptionHTML": "<p>Linie U1:<br>Fahrtbehinderung in Richtung Oberlaa.</p><p>Voraussichtliche Dauer: 08:35 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kagran.</p>",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U1:<br>Fahrtbehinderung in Richtung Oberlaa.</p><p>Voraussichtliche Dauer: 08:35 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kagran.</p>",
-       "descriptionPlain": "Linie U1: Fahrtbehinderung in Richtung Oberlaa. Voraussichtliche Dauer: 08:35 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kagran.",
+       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "U1: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261020-0019",
+    "name": "I20261020-0019-F01",
     "owner": "WL",
     "parentName": "I20261020-0019",
     "priority": "1",
@@ -524,11 +479,106 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-20T08:21:00.000+0200",
-     "lastUpdate": "2026-10-20T08:21:00.000+0200",
+     "created": "2026-10-20T08:33:00.000+0200",
+     "lastUpdate": "2026-10-20T08:33:00.000+0200",
+     "resume": "2026-10-20T08:33:00.000+0200",
      "start": "2026-10-20T08:21:00.000+0200"
     },
     "title": "U1: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram"
+     }
+    },
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "1: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Löwengasse",
+    "name": "I20261020-0020-F01",
+    "owner": "WL",
+    "parentName": "I20261020-0020",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 101,
+      "lineName": "1",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T08:54:00.000+0200",
+     "lastUpdate": "2026-10-20T08:54:00.000+0200",
+     "resume": "2026-10-20T08:54:00.000+0200",
+     "start": "2026-10-20T08:33:00.000+0200"
+    },
+    "title": "1: Verkehrsunfall"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U3: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261020-0021-F01",
+    "owner": "WL",
+    "parentName": "I20261020-0021",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4934
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T08:51:00.000+0200",
+     "lastUpdate": "2026-10-20T08:51:00.000+0200",
+     "resume": "2026-10-20T08:51:00.000+0200",
+     "start": "2026-10-20T08:50:00.000+0200"
+    },
+    "title": "U3: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1035,6 +1085,98 @@
      "start": "2026-10-20T00:00:06.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R165-101",
+    "owner": "WL",
+    "parentName": "R165-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     165
+    ],
+    "time": {
+     "end": "2026-10-20T09:34:00.000+0200",
+     "start": "2026-10-20T08:34:46.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Radetzkyplatz",
+    "name": "R169-101",
+    "owner": "WL",
+    "parentName": "R169-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     169
+    ],
+    "time": {
+     "end": "2026-10-20T09:40:00.000+0200",
+     "start": "2026-10-20T08:40:47.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Radetzkyplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Radetzkyplatz",
+    "name": "R172-101",
+    "owner": "WL",
+    "parentName": "R172-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     172
+    ],
+    "time": {
+     "end": "2026-10-20T09:40:00.000+0200",
+     "start": "2026-10-20T08:40:47.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Radetzkyplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nZüge halten bei Linie O",
+    "name": "R173-101",
+    "owner": "WL",
+    "parentName": "R173-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     173
+    ],
+    "time": {
+     "end": "2026-10-20T09:40:00.000+0200",
+     "start": "2026-10-20T08:45:17.000+0200"
+    },
+    "title": "Verkehrsunfall\nZüge halten bei Linie O"
    },
    {
     "alertCause": "undefined alert cause",
