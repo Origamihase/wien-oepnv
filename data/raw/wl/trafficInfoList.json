@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007"
+    "trafficInfoNameList": "I20261020-0013, I20260917-0012, I20260922-0032, I20261020-0011, I20260925-0011, I20261020-0014, I20260909-0007, I20261020-0012"
    },
    {
     "id": 3,
@@ -211,6 +211,186 @@
      "start": "2026-09-25T08:55:00.000+0200"
     },
     "title": "26E: Gleisbauarbeiten"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "4A": "ptBusCity"
+     }
+    },
+    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "descriptionHTML": "<p>Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Falschparker.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Falschparker.</p>",
+       "descriptionPlain": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+       "title": "4A: Falschparker"
+      }
+     }
+    ],
+    "name": "I20261020-0011",
+    "owner": "WL",
+    "parentName": "I20261020-0011",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "4A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 404,
+      "lineName": "4A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T07:08:00.000+0200",
+     "lastUpdate": "2026-10-20T07:08:00.000+0200",
+     "resume": "2026-10-20T07:07:00.000+0200",
+     "start": "2026-10-20T07:07:00.000+0200"
+    },
+    "title": "4A: Falschparker"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "65A": "ptBusCity"
+     }
+    },
+    "description": "Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. <br><br>Grund: Verkehrsunfall.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. <br><br>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Verkehrsunfall.",
+       "title": "65A: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261020-0012",
+    "owner": "WL",
+    "parentName": "I20261020-0012",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "65A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 465,
+      "lineName": "65A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T07:12:00.000+0200",
+     "lastUpdate": "2026-10-20T07:12:00.000+0200",
+     "resume": "2026-10-20T07:11:00.000+0200",
+     "start": "2026-10-20T07:11:00.000+0200"
+    },
+    "title": "65A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "14A": "ptBusCity"
+     }
+    },
+    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+       "title": "14A: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Quellenstraße 138",
+    "name": "I20261020-0013",
+    "owner": "WL",
+    "parentName": "I20261020-0013",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "14A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 414,
+      "lineName": "14A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T07:18:00.000+0200",
+     "lastUpdate": "2026-10-20T07:18:00.000+0200",
+     "resume": "2026-10-20T07:16:00.000+0200",
+     "start": "2026-10-20T07:16:00.000+0200"
+    },
+    "title": "14A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "17A": "ptBusCity"
+     }
+    },
+    "description": "Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Linie 17A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Verkehrsunfall.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 17A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+       "title": "17A: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261020-0014",
+    "owner": "WL",
+    "parentName": "I20261020-0014",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "17A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 417,
+      "lineName": "17A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T07:28:00.000+0200",
+     "lastUpdate": "2026-10-20T07:28:00.000+0200",
+     "start": "2026-10-20T07:28:00.000+0200"
+    },
+    "title": "17A: Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
