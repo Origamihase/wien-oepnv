@@ -1,19 +1,23 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-20T08:00:49.128219+00:00",
- "built": "2026-10-20T10:00:39+02:00",
+ "updated": "2026-10-20T08:31:10.746836+00:00",
+ "built": "2026-10-20T10:30:55+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-20T10:00:39+02:00",
+  "built": "2026-10-20T10:30:55+02:00",
   "items": [
    {
-    "title": "11/71: Verkehrsunfall",
+    "title": "34A: Verspätungen",
+    "time_line": "Seit 10:20"
+   },
+   {
+    "title": "71: Verkehrsunfall",
     "time_line": "Seit 09:38"
    },
    {
-    "title": "O: Schadhafter Zug",
+    "title": "O: Schadhaftes Fahrzeug",
     "time_line": "Seit 09:03"
    },
    {
@@ -29,69 +33,25 @@
     "time_line": "Seit 08:21"
    },
    {
-    "title": "63A: Verkehrsüberlastung",
-    "time_line": "Seit 08:10"
-   },
-   {
-    "title": "10A: Verkehrsüberlastung",
-    "time_line": "Seit 07:45"
-   },
-   {
-    "title": "46: Rettungseinsatz",
-    "time_line": "Seit 07:43"
-   },
-   {
-    "title": "14A: Verkehrsunfall",
-    "time_line": "Seit 07:16"
-   },
-   {
     "title": "65A: Verkehrsunfall",
     "time_line": "Seit 07:11"
+   },
+   {
+    "title": "11: Verkehrsunfall",
+    "time_line": "Seit heute"
+   },
+   {
+    "title": "56B/56A/N62: Strampfergasse",
+    "time_line": "Bis 03.11."
+   },
+   {
+    "title": "80A: ÖBB-Bauarbeiten",
+    "time_line": "Bis 31.12.2027"
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-13T08:01:00.890760+00:00",
-   "raw": {
-    "wl-stoerungen": 96,
-    "wl-hinweise": 101,
-    "oebb": 159,
-    "baustellen-linien": 52,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 32,
-    "oebb": 135,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 105
-   }
-  },
-  {
-   "t": "2026-10-13T08:30:59.663752+00:00",
-   "raw": {
-    "wl-stoerungen": 69,
-    "wl-hinweise": 101,
-    "oebb": 159,
-    "baustellen-linien": 52,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 26,
-    "oebb": 135,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 102
-   }
-  },
   {
    "t": "2026-10-13T09:01:12.440407+00:00",
    "raw": {
@@ -6790,6 +6750,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 114
+   }
+  },
+  {
+   "t": "2026-10-20T08:31:10.746836+00:00",
+   "raw": {
+    "wl-stoerungen": 86,
+    "wl-hinweise": 99,
+    "oebb": 165,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 21,
+    "oebb": 142,
+    "baustellen": 69
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 110
    }
   }
  ]

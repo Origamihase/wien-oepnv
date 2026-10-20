@@ -806,30 +806,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Verkehrsüberlastung",
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "title": "11: Verkehrsunfall",
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "132db5055970153595938fe1ef3cafd5080b443df40d6dfbacef3df29fdcd405",
-    "pubDate": "2026-10-20T07:45:00+02:00",
-    "starts_at": "2026-10-20T07:45:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=10A|D=2026-10-20|TK=10a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261020-0016"
-    ],
-    "_incident_start": "2026-10-20T07:45:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11/71: Verkehrsunfall",
-    "description": "Linie 11: Betrieb nur zwischen Otto-Probst-Platz und Fickeysstraße. Linie 71: Betrieb nur zwischen Schottenring U und Fickeysstraße. Ersatz: Linien 69A, 71A, 71B, und 73A. Voraussichtliche Dauer: 10:40 Uhr. Grund: Verkehrsunfall im Bereich Simmeringer Hauptstraße.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "86391c8be34130966c7c827325823dc399cbc11698fee4c737e503f64fff6dd7",
+    "guid": "e8e33c76113077bad68986b313e50b4fb03e2a76a6eda7c74d06c76b1a1f1f46",
     "pubDate": "2026-10-20T09:38:00+02:00",
     "starts_at": "2026-10-20T09:38:00+02:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=11,71|D=2026-10-20|TK=71 11 verkehrsunfall",
+    "_identity": "wl|störung|L=11|D=2026-10-20|TK=11 verkehrsunfall",
     "_wl_ids": [
       "I20261020-0023"
     ],
@@ -838,38 +822,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "title": "11: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e832b46eec6d19cd652e99a3efa00e678cd32779ad0f0da0378f515eb2651f68",
-    "pubDate": "2026-10-20T09:05:49+02:00",
-    "starts_at": "2026-10-20T09:05:51+02:00",
-    "ends_at": "2026-10-20T10:05:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-10-20|TK=fahrtbehinderung schadhafter zug"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Schadhafter Zug Betrieb ab Quellenplatz",
-    "description": "Schadhafter Zug\nBetrieb ab Quellenplatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "92f3d94704b2260065032defd784aec12f5dde1613d9a33f09f987c0b9aca4cb",
-    "pubDate": "2026-10-20T09:06:21+02:00",
-    "starts_at": "2026-10-20T09:06:22+02:00",
-    "ends_at": "2026-10-20T10:05:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-10-20|TK=schadhafter zug betrieb ab quellenplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Schadhafter Zug Einstieg bei Linie 6",
-    "description": "Schadhafter Zug\nEinstieg bei Linie 6",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9a1c6e580ab2839ab2a92b87f694ea8ce8bd99e64a721ded97819b5b7ce2b50b",
-    "pubDate": "2026-10-20T09:06:22+02:00",
-    "starts_at": "2026-10-20T09:06:22+02:00",
-    "ends_at": "2026-10-20T10:05:00+02:00",
-    "_identity": "wl|störung|L=11|D=2026-10-20|TK=schadhafter zug einstieg bei linie 6"
+    "guid": "faa2c75b2aaa3d9a162d6003d0bcec7e9a0d0132a2c6c3f2e5ebd42f317d3882",
+    "pubDate": "2026-10-20T09:40:55+02:00",
+    "starts_at": "2026-10-20T09:40:57+02:00",
+    "ends_at": "2026-10-20T10:39:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-10-20|TK=fahrtbehinderung verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -906,22 +866,6 @@
     "starts_at": "2026-10-20T00:00:06+02:00",
     "ends_at": "2026-10-20T23:59:59+02:00",
     "_identity": "wl|störung|L=12A|D=2026-10-20|TK=betrieb ab schweglerstrasse 19 21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "14A: Verkehrsunfall",
-    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "45135f0f9023593102b885c7d89c0c028d3a4d83421c93a8a39180b147612974",
-    "pubDate": "2026-10-20T07:16:00+02:00",
-    "starts_at": "2026-10-20T07:16:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=14A|D=2026-10-20|TK=14a verkehrsunfall",
-    "_wl_ids": [
-      "I20261020-0013"
-    ],
-    "_incident_start": "2026-10-20T07:16:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1118,6 +1062,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "34A: Verspätungen",
+    "description": "Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "3da74a447e798004d7de0fe7954c3720d223a4088c9715bacf4e90c18d27e257",
+    "pubDate": "2026-10-20T10:20:00+02:00",
+    "starts_at": "2026-10-20T10:20:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=34A|D=2026-10-20|TK=34a verspätungen",
+    "_wl_ids": [
+      "I20261020-0024"
+    ],
+    "_incident_start": "2026-10-20T10:20:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1146,22 +1106,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "46: Rettungseinsatz",
-    "description": "Linie 46: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e1715d10748fce73b172c45e54dd3e25af3065fc6c95c6e107df041384e060fc",
-    "pubDate": "2026-10-20T07:43:00+02:00",
-    "starts_at": "2026-10-20T07:43:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=46|D=2026-10-20|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261020-0015"
-    ],
-    "_incident_start": "2026-10-20T07:43:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "52: Züge halten bei Linien 6 und 18",
     "description": "Züge halten\nbei Linien 6 und 18",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1170,22 +1114,6 @@
     "starts_at": "2026-10-14T00:00:22+02:00",
     "ends_at": "2026-10-20T23:59:59+02:00",
     "_identity": "wl|störung|L=52|D=2026-10-14|TK=züge halten bei linien 6 und 18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "63A: Verkehrsüberlastung",
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e7e896d63b9b23989d8440713ce15b7c04d68a1b0098210082b12613484ee8b8",
-    "pubDate": "2026-10-20T08:10:00+02:00",
-    "starts_at": "2026-10-20T08:10:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=63A|D=2026-10-20|TK=63a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261020-0017"
-    ],
-    "_incident_start": "2026-10-20T08:10:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1214,6 +1142,46 @@
     "starts_at": "2026-10-20T04:40:25+02:00",
     "ends_at": "2026-10-21T01:00:00+02:00",
     "_identity": "wl|störung|L=66A|D=2026-10-20|TK=busse halten salvatorianerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Verkehrsunfall",
+    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7",
+    "pubDate": "2026-10-20T09:38:00+02:00",
+    "starts_at": "2026-10-20T09:38:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=71|D=2026-10-20|TK=71 verkehrsunfall",
+    "_wl_ids": [
+      "I20261020-0023"
+    ],
+    "_incident_start": "2026-10-20T09:38:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "12c122fd59c34caf7f02ba0225ce436dc57cac19067265e4e00cf01131a3ccaf",
+    "pubDate": "2026-10-20T09:40:55+02:00",
+    "starts_at": "2026-10-20T09:40:57+02:00",
+    "ends_at": "2026-10-20T10:39:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-10-20|TK=fahrtbehinderung verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Verkehrsunfall Betrieb ab Fickeysstraße",
+    "description": "Verkehrsunfall\nBetrieb ab Fickeysstraße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b33a1886fec1e3ab48b9a496457a7bfa481e2e6dcf824f03010485b3c04c3357",
+    "pubDate": "2026-10-20T09:40:55+02:00",
+    "starts_at": "2026-10-20T09:40:57+02:00",
+    "ends_at": "2026-10-20T10:40:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-10-20|TK=verkehrsunfall betrieb ab fickeysstrasse"
   },
   {
     "source": "Wiener Linien",
@@ -1318,18 +1286,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "42c7ec1755d18f088f1bee9c988057477b60893cc12ba04be1f16f2ef43191c7",
-    "pubDate": "2026-10-20T09:04:49+02:00",
-    "starts_at": "2026-10-20T09:04:51+02:00",
-    "ends_at": "2026-10-20T10:04:00+02:00",
-    "_identity": "wl|störung|L=O|D=2026-10-20|TK=fahrtbehinderung schadhafter zug"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "O: Schadhaftes Fahrzeug",
     "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1342,18 +1298,6 @@
       "I20261020-0022"
     ],
     "_incident_start": "2026-10-20T09:03:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Schadhafter Zug Betrieb ab Quellenplatz",
-    "description": "Schadhafter Zug\nBetrieb ab Quellenplatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3de9efa7641fddcefff08ab928c562f93ee9c1f967fe0050be51efec3167d0b9",
-    "pubDate": "2026-10-20T09:04:49+02:00",
-    "starts_at": "2026-10-20T09:04:51+02:00",
-    "ends_at": "2026-10-20T10:04:00+02:00",
-    "_identity": "wl|störung|L=O|D=2026-10-20|TK=schadhafter zug betrieb ab quellenplatz"
   },
   {
     "source": "Wiener Linien",
