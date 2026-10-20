@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210, ftazW_352, ftazW_603, ftazW_19, ftazW_281, ftazW_1354391, ftazW_353, ftazW_282, ftazW_606, ftazW_1018092, ftazW_1018049, ftazW_477, ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_572, ftazW_22, ftazW_354, ftazW_573, ftazW_1354337"
+    "trafficInfoNameList": "ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210, ftazW_352, ftazW_603, ftazW_19, ftazW_281, ftazW_1354391, ftazW_353, ftazW_282, ftazW_606, ftazW_1018092, ftazW_1018049, ftazW_477, ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_572, ftazW_22, ftazW_354, ftazW_573, ftazW_1354337"
    }
   ],
   "poiCategoryGroups": [
@@ -1150,10 +1150,19 @@
     "title": "16A, N65, U6E: Straßenbauarbeiten Am Schöpfwerk ab 03.08.2026"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "<h2>Bauarbeiten</h2>\r\n<p>Wegen Instandsetzungsarbeiten in der R&ouml;ntgengasse wird die Linie 44A kurzgef&uuml;hrt.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 3. August 2026, auf derzeit unbekannte Zeit.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie 44A:</strong><br />Kein Betrieb zwischen Heuberg und Mitterberg.</p>",
+    "alertCause": "construction work",
+    "alertCauseId": 45,
+    "description": "<h2>Bauarbeiten</h2><p>Wegen Instandsetzungsarbeiten in der Röntgengasse wird die Linie 44A kurzgeführt.</p><p><span><strong><u>Zeitraum:</u></strong></span><br>Montag, 3. August 2026, auf derzeit unbekannte Zeit.</p><p><span><strong><u>Maßnahmen:</u></strong></span><br><strong>Linie 44A:</strong><br>Betrieb zwischen Hernals S und Heuberg.</p>",
     "id": "N20260722-6034",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<h2>Bauarbeiten</h2><p>Wegen Instandsetzungsarbeiten in der Röntgengasse wird die Linie 44A kurzgeführt.</p><p><span><strong><u>Zeitraum:</u></strong></span><br>Montag, 3. August 2026, auf derzeit unbekannte Zeit.</p><p><span><strong><u>Maßnahmen:</u></strong></span><br><strong>Linie 44A:</strong><br>Betrieb zwischen Hernals S und Heuberg.</p>",
+       "descriptionPlain": "BauarbeitenWegen Instandsetzungsarbeiten in der Röntgengasse wird die Linie 44A kurzgeführt. Zeitraum: Montag, 3. August 2026, auf derzeit unbekannte Zeit. Maßnahmen: Linie 44A: Betrieb zwischen Hernals S und Heuberg.",
+       "title": "44A: Bauarbeiten"
+      }
+     }
+    ],
     "location": {
      "properties": {
       "attributes": {},
@@ -1163,8 +1172,8 @@
      "type": "Feature"
     },
     "name": "N20260722-6034",
-    "reasonId": 0,
-    "reasonName": "undefined",
+    "reasonId": 21,
+    "reasonName": "Bauarbeiten",
     "refPoiCategoryId": 13296,
     "relatedLines": [
      "44A"
@@ -1180,10 +1189,7 @@
      8880,
      8881,
      8882,
-     8884,
-     8885,
-     8886,
-     8887
+     8884
     ],
     "time": {
      "end": "2027-07-22T11:11:00.000+0200",
@@ -3870,10 +3876,19 @@
     "title": "D, 1, 2, 71: Veranstaltung"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung bzw. -auflassung der Linien 56A, 56B und N62</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Strampfergasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12pt; line-height: 17.12px; font-family: 'Segoe UI', sans-serif;\"><span style=\"text-decoration: underline;\"><strong>Fahrtrichtung:</strong></span> Bhf. Atzgersdorf S bzw. Lainzer Tor</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Hermesstra&szlig;e nach Strampfergasse</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> etwa 50 Meter in Richtung Dr.-Schober-Stra&szlig;e<br /><br /></span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12pt; line-height: 17.12px; font-family: 'Segoe UI', sans-serif;\"><span style=\"text-decoration: underline;\"><strong>Fahrtrichtung:</strong></span> Hietzing U bzw. Oper, Karlsplatz U</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Hermesstra&szlig;e nach Strampfergasse</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> aufgelassen<br /><br /></span></p>\r\n<p class=\"MsoNormal\">&nbsp;</p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 20. Oktober 2026, etwa 07:00 Uhr, f&uuml;r etwa eine Woche</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12pt; line-height: 17.12px; font-family: 'Segoe UI', sans-serif;\"><span style=\"text-decoration: underline;\"><strong>Grund:</strong></span> Stra&szlig;enbau</span></p>",
+    "alertCause": "unknown",
+    "alertCauseId": 0,
+    "description": "<p><span><strong><u>Haltestellenverlegung bzw. -auflassung der Linien 56A, 56B und N62</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Strampfergasse</span></p><p><span><strong><u>Fahrtrichtung:</u></strong> Bhf. Atzgersdorf S bzw. Lainzer Tor</span></p><p><span><strong><u>Von:</u></strong> Hermesstraße nach Strampfergasse</span></p><p><span><strong><u>Nach:</u></strong> etwa 100 Meter in Richtung Dr.-Schober-Straße<br><br></span></p><p><span><strong><u>Fahrtrichtung:</u></strong> Hietzing U bzw. Oper, Karlsplatz U</span></p><p><span><strong><u>Von:</u></strong> Hermesstraße nach Strampfergasse</span></p><p><span><strong><u>Nach:</u></strong> aufgelassen<br><br></span></p><p>&nbsp;</p><p><span><strong><u>Dauer:</u></strong> Ab 20. Oktober 2026, etwa 07:00 Uhr, für etwa eine Woche</span></p><p><span><strong><u>Grund:</u></strong> Straßenbau</span></p>",
     "id": "N20261019-6285",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><span><strong><u>Haltestellenverlegung bzw. -auflassung der Linien 56A, 56B und N62</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Strampfergasse</span></p><p><span><strong><u>Fahrtrichtung:</u></strong> Bhf. Atzgersdorf S bzw. Lainzer Tor</span></p><p><span><strong><u>Von:</u></strong> Hermesstraße nach Strampfergasse</span></p><p><span><strong><u>Nach:</u></strong> etwa 100 Meter in Richtung Dr.-Schober-Straße<br><br></span></p><p><span><strong><u>Fahrtrichtung:</u></strong> Hietzing U bzw. Oper, Karlsplatz U</span></p><p><span><strong><u>Von:</u></strong> Hermesstraße nach Strampfergasse</span></p><p><span><strong><u>Nach:</u></strong> aufgelassen<br><br></span></p><p>&nbsp;</p><p><span><strong><u>Dauer:</u></strong> Ab 20. Oktober 2026, etwa 07:00 Uhr, für etwa eine Woche</span></p><p><span><strong><u>Grund:</u></strong> Straßenbau</span></p>",
+       "descriptionPlain": "Haltestellenverlegung bzw. -auflassung der Linien 56A, 56B und N62 Haltestelle: Strampfergasse Fahrtrichtung: Bhf. Atzgersdorf S bzw. Lainzer Tor Von: Hermesstraße nach Strampfergasse Nach: etwa 100 Meter in Richtung Dr.-Schober-Straße Fahrtrichtung: Hietzing U bzw. Oper, Karlsplatz U Von: Hermesstraße nach Strampfergasse Nach: aufgelassen Dauer: Ab 20. Oktober 2026, etwa 07:00 Uhr, für etwa eine Woche Grund: Straßenbau",
+       "title": "Haltestellenverlegung"
+      }
+     }
+    ],
     "location": {
      "properties": {
       "attributes": {},
@@ -3883,8 +3898,8 @@
      "type": "Feature"
     },
     "name": "N20261019-6285",
-    "reasonId": 0,
-    "reasonName": "undefined",
+    "reasonId": 223,
+    "reasonName": "Haltestellenverlegung",
     "refPoiCategoryId": 13296,
     "relatedLines": [
      "56B",
@@ -4205,45 +4220,6 @@
     "time": {
      "end": "2026-10-21T00:45:00.000+0200",
      "start": "2026-10-20T20:45:00.000+0200"
-    },
-    "title": "Erdberg"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "21.10.2026 05:15",
-     "ausVon": "21.10.2026 01:15",
-     "location": "U3 Mittelbahnsteig - Ausgang Franzosengraben",
-     "rbls": [
-      4917,
-      4900
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Erdberg",
-     "status": "geplante Wartung",
-     "towards": "U3 beide Richtungen"
-    },
-    "description": "U3 Mittelbahnsteig - Ausgang Franzosengraben",
-    "elevatorId": "ED 02",
-    "name": "ftazW_18",
-    "parentName": "ftazW_18",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4917,
-     4900
-    ],
-    "time": {
-     "end": "2026-10-21T05:15:00.000+0200",
-     "start": "2026-10-21T01:15:00.000+0200"
     },
     "title": "Erdberg"
    },
