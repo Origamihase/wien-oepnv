@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_352, ftazW_603, ftazW_19, ftazW_1354391, ftazW_353, ftazW_282, ftazW_606, ftazW_1018092, ftazW_1018049, ftazW_477, ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_572"
+    "trafficInfoNameList": "ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_352, ftazW_603, ftazW_19, ftazW_281, ftazW_1354391, ftazW_353, ftazW_282, ftazW_606, ftazW_1018092, ftazW_1018049, ftazW_477, ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_572"
    }
   ],
   "poiCategoryGroups": [
@@ -4285,6 +4285,43 @@
      "start": "2026-10-20T20:45:00.000+0200"
     },
     "title": "Nußdorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "22.10.2026 00:45",
+     "ausVon": "21.10.2026 20:45",
+     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Währingerstraße, Volksoper",
+     "rbls": [
+      4625
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Währinger Straße-Volksoper",
+     "status": "geplante Wartung",
+     "towards": "U6 Floridsdorf"
+    },
+    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Währingerstraße, Volksoper",
+    "elevatorId": "WA 01",
+    "name": "ftazW_281",
+    "parentName": "ftazW_281",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4625
+    ],
+    "time": {
+     "end": "2026-10-22T00:45:00.000+0200",
+     "start": "2026-10-21T20:45:00.000+0200"
+    },
+    "title": "Währinger Straße-Volksoper"
    },
    {
     "alertCause": "undefined alert cause",
