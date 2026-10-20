@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0030, I20261020-0029, I20260909-0007, I20261020-0028-F01, I20261020-0031-F01, I20261020-0031-F02, I20261020-0031-F03"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261020-0029, I20261020-0032-F01, I20260925-0011, I20260909-0007, I20261020-0030-F01, I20261020-0028-F01, I20261020-0031-F01, I20261020-0031-F02, I20261020-0031-F03, I20261020-0033"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R115-136, R103-136, R102-136, R318-437, R293-474, R101-136, R100-136, R2025-671, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R2558-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2372-627, R1474-412, R1476-149, R1448-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R5815-671, R3886-480, R1974-466, R500-101, R401-101, R1876-101, R1875-101, R1881-101, R1880-101, R1883-101, R1882-101, R303-170, R293-118, R303-118, R304-170, R304-118, R305-170, R306-170, R307-170, R163-170, R161-170, R162-170, R834-118, R835-118, R2619-118, R1884-101, R339-162, R427-162, R847-162, R848-162, R849-162, R851-162, R831-118, R832-118, R833-118, R849-118, R848-118, R847-118, R341-170, R301-170, R302-170, R340-170, R303-0, R339-0, R851-118, R1717-162, R1718-162, R1933-170, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2025-671, R103-136, R102-136, R101-136, R318-437, R293-474, R115-136, R100-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R2558-125, R2345-127, R2372-627, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R5815-671, R3886-480, R1974-466, R500-101, R401-101, R1875-101, R1876-101, R1883-101, R1881-101, R1880-101, R1882-101, R293-118, R303-170, R303-118, R304-170, R304-118, R305-170, R306-170, R307-170, R163-170, R161-170, R162-170, R835-118, R834-118, R2619-118, R1884-101, R339-162, R427-162, R849-162, R851-162, R848-162, R847-162, R831-118, R832-118, R833-118, R849-118, R848-118, R847-118, R340-170, R302-170, R301-170, R341-170, R303-0, R339-0, R851-118, R1718-162, R1717-162, R1933-170, R2009-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -266,13 +266,13 @@
       "1": "ptTram"
      }
     },
-    "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A, 15A und 65A. Voraussichtliche Dauer: Nicht absehbar. Grund: Gleisschaden im Haltestellenbereich Stefan-Fadinger-Platz.",
-    "descriptionHTML": "<p>Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.</p><p>Ersatz: Linien 7A, 15A und 65A.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Gleisschaden im Haltestellenbereich Stefan-Fadinger-Platz.</p>",
+    "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A, 15A und 65A. Voraussichtliche Dauer: nicht absehbar. Grund: Gleisschaden im Haltestellenbereich Stefan-Fadinger-Platz.",
+    "descriptionHTML": "<p>Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.</p><p>Ersatz: Linien 7A, 15A und 65A.</p><p>Voraussichtliche Dauer: nicht absehbar.</p><p>Grund: Gleisschaden im Haltestellenbereich Stefan-Fadinger-Platz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.</p><p>Ersatz: Linien 7A, 15A und 65A.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Gleisschaden im Haltestellenbereich Stefan-Fadinger-Platz.</p>",
-       "descriptionPlain": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A, 15A und 65A. Voraussichtliche Dauer: Nicht absehbar. Grund: Gleisschaden im Haltestellenbereich Stefan-Fadinger-Platz.",
+       "descriptionHtml": "<p>Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.</p><p>Ersatz: Linien 7A, 15A und 65A.</p><p>Voraussichtliche Dauer: nicht absehbar.</p><p>Grund: Gleisschaden im Haltestellenbereich Stefan-Fadinger-Platz.</p>",
+       "descriptionPlain": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A, 15A und 65A. Voraussichtliche Dauer: nicht absehbar. Grund: Gleisschaden im Haltestellenbereich Stefan-Fadinger-Platz.",
        "title": "1: Gleisschaden"
       }
      }
@@ -300,7 +300,7 @@
     "status": "active",
     "time": {
      "created": "2026-10-20T11:59:00.000+0200",
-     "lastUpdate": "2026-10-20T12:58:00.000+0200",
+     "lastUpdate": "2026-10-20T13:11:00.000+0200",
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisschaden"
@@ -313,18 +313,18 @@
       "U1": "ptMetro"
      }
     },
-    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Reumannplatz und Altes Landgut in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 13:30 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Troststraße.",
-    "descriptionHTML": "<p>Die Linie U1 fährt derzeit zwischen den Stationen Reumannplatz und Altes Landgut in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 13:30 Uhr.</p><p>Grund: Feuerwehreinsatz im Haltestellenbereich Troststraße.</p>",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie U1 fährt derzeit zwischen den Stationen Reumannplatz und Altes Landgut in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 13:30 Uhr.</p><p>Grund: Feuerwehreinsatz im Haltestellenbereich Troststraße.</p>",
-       "descriptionPlain": "Die Linie U1 fährt derzeit zwischen den Stationen Reumannplatz und Altes Landgut in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 13:30 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Troststraße.",
+       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "U1: Feuerwehreinsatz"
       }
      }
     ],
-    "name": "I20261020-0030",
+    "name": "I20261020-0030-F01",
     "owner": "WL",
     "parentName": "I20261020-0030",
     "priority": "1",
@@ -346,8 +346,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-20T12:03:00.000+0200",
-     "lastUpdate": "2026-10-20T12:45:00.000+0200",
+     "created": "2026-10-20T13:25:00.000+0200",
+     "lastUpdate": "2026-10-20T13:25:00.000+0200",
+     "resume": "2026-10-20T13:25:00.000+0200",
      "start": "2026-10-20T12:01:00.000+0200"
     },
     "title": "U1: Feuerwehreinsatz"
@@ -495,6 +496,100 @@
      "start": "2026-10-20T12:30:00.000+0200"
     },
     "title": "62: Verkehrsunfall"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U2: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261020-0032-F01",
+    "owner": "WL",
+    "parentName": "I20261020-0032",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 302,
+      "lineName": "U2",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4258
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T13:19:00.000+0200",
+     "lastUpdate": "2026-10-20T13:19:00.000+0200",
+     "resume": "2026-10-20T13:19:00.000+0200",
+     "start": "2026-10-20T13:13:00.000+0200"
+    },
+    "title": "U2: Polizeieinsatz"
+   },
+   {
+    "alertCause": "fire",
+    "alertCauseId": 5,
+    "attributes": {
+     "relatedLineTypes": {
+      "1A": "ptBusCity"
+     }
+    },
+    "description": "Linie 1A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz.",
+    "descriptionHTML": "<p>Linie 1A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Feuerwehreinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 1A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Feuerwehreinsatz.</p>",
+       "descriptionPlain": "Linie 1A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz.",
+       "title": "1A: Feuerwehreinsatz"
+      }
+     }
+    ],
+    "location": "Habsburgergasse 2",
+    "name": "I20261020-0033",
+    "owner": "WL",
+    "parentName": "I20261020-0033",
+    "priority": "1",
+    "reasonId": 11,
+    "reasonName": "Feuerwehreinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 401,
+      "lineName": "1A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T13:18:00.000+0200",
+     "lastUpdate": "2026-10-20T13:18:00.000+0200",
+     "resume": "2026-10-20T13:16:00.000+0200",
+     "start": "2026-10-20T13:16:00.000+0200"
+    },
+    "title": "1A: Feuerwehreinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1346,6 +1441,26 @@
      "start": "2026-10-20T04:40:25.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nEinstieg bei Linie 15A\n\n",
+    "name": "R2009-0",
+    "owner": "WL",
+    "parentName": "R2009-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2009
+    ],
+    "time": {
+     "end": "2026-10-20T14:10:00.000+0200",
+     "start": "2026-10-20T13:11:16.000+0200"
+    },
+    "title": "Verkehrsunfall\nEinstieg bei Linie 15A\n\n"
    },
    {
     "alertCause": "undefined alert cause",
