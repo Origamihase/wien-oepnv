@@ -1,17 +1,13 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-20T22:31:07.744294+00:00",
- "built": "2026-10-21T00:30:51+02:00",
+ "updated": "2026-10-20T23:00:45.383038+00:00",
+ "built": "2026-10-21T01:00:40+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-21T00:30:51+02:00",
+  "built": "2026-10-21T01:00:40+02:00",
   "items": [
-   {
-    "title": "U1: Vandalismus",
-    "time_line": "Seit 00:18"
-   },
    {
     "title": "U3: Verspätungen",
     "time_line": "Seit 20.10."
@@ -47,31 +43,15 @@
    {
     "title": "64A: Liesing-Flur-Gasse",
     "time_line": "Bis 28.10."
+   },
+   {
+    "title": "7A: Bauarbeiten",
+    "time_line": "Bis 14.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-13T22:31:10.661824+00:00",
-   "raw": {
-    "wl-stoerungen": 67,
-    "wl-hinweise": 95,
-    "oebb": 159,
-    "baustellen-linien": 50,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 20,
-    "oebb": 135,
-    "baustellen": 67
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 97
-   }
-  },
   {
    "t": "2026-10-13T23:01:20.206622+00:00",
    "raw": {
@@ -6790,6 +6770,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 106
+   }
+  },
+  {
+   "t": "2026-10-20T23:00:45.383038+00:00",
+   "raw": {
+    "wl-stoerungen": 72,
+    "wl-hinweise": 96,
+    "oebb": 163,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 19,
+    "oebb": 141,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 110
    }
   }
  ]
