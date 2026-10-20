@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261020-0019-F01, I20260917-0012, I20260922-0032, I20261020-0023-F01, I20261020-0023-F02, I20261020-0026, I20261020-0025-F01, I20261020-0025, I20260925-0011, I20261020-0022-F01, I20260909-0007, I20261020-0024, I20261020-0021-F01"
+    "trafficInfoNameList": "I20261020-0026, I20260917-0012, I20260922-0032, I20261020-0023-F01, I20261020-0025-F01, I20261020-0022-F01, I20260925-0011, I20260909-0007, I20261020-0024, I20261020-0027"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R293-474, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1448-412, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R5815-671, R3886-480, R1974-466, R500-101, R2220-131, R2219-131, R2218-131, R2221-131, R2217-131, R2216-131, R2212-131, R2200-131, R2226-131, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R293-474, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1448-412, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R5815-671, R3886-480, R1974-466, R500-101, R2219-131, R2218-131, R2226-131, R2221-131, R2216-131, R2212-131, R2200-131, R2217-131, R2220-131, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -217,104 +217,6 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U1: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261020-0019-F01",
-    "owner": "WL",
-    "parentName": "I20261020-0019",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 301,
-      "lineName": "U1",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4127
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-20T08:33:00.000+0200",
-     "end": "2026-10-20T10:57:00.000+0200",
-     "lastUpdate": "2026-10-20T10:57:00.000+0200",
-     "resume": "2026-10-20T10:57:00.000+0200",
-     "start": "2026-10-20T08:21:00.000+0200"
-    },
-    "title": "U1: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U3: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261020-0021-F01",
-    "owner": "WL",
-    "parentName": "I20261020-0021",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4934
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-20T08:51:00.000+0200",
-     "end": "2026-10-20T10:57:00.000+0200",
-     "lastUpdate": "2026-10-20T10:57:00.000+0200",
-     "resume": "2026-10-20T10:57:00.000+0200",
-     "start": "2026-10-20T08:50:00.000+0200"
-    },
-    "title": "U3: Rettungseinsatz"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
       "O": "ptTram"
      }
     },
@@ -347,11 +249,12 @@
       "vehicleType": "ptTram"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-20T09:13:00.000+0200",
-     "lastUpdate": "2026-10-20T09:13:00.000+0200",
-     "resume": "2026-10-20T09:13:00.000+0200",
+     "end": "2026-10-20T11:30:00.000+0200",
+     "lastUpdate": "2026-10-20T11:30:00.000+0200",
+     "resume": "2026-10-20T11:30:00.000+0200",
      "start": "2026-10-20T09:03:00.000+0200"
     },
     "title": "O: Schadhaftes Fahrzeug"
@@ -403,52 +306,6 @@
     "title": "71: Verkehrsunfall"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "11": "ptTram"
-     }
-    },
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "11: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Simmeringer Hauptstraße",
-    "name": "I20261020-0023-F02",
-    "owner": "WL",
-    "parentName": "I20261020-0023",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 111,
-      "lineName": "11",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-20T10:16:00.000+0200",
-     "lastUpdate": "2026-10-20T10:16:00.000+0200",
-     "resume": "2026-10-20T10:16:00.000+0200",
-     "start": "2026-10-20T09:38:00.000+0200"
-    },
-    "title": "11: Verkehrsunfall"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -492,55 +349,6 @@
      "start": "2026-10-20T10:20:00.000+0200"
     },
     "title": "34A: Verspätungen"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Fahrtbehinderung in Richtung Heiligenstadt. Voraussichtliche Dauer: 11:20 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Ober St. Veit.",
-    "descriptionHTML": "<p>Linie U4:<br>Fahrtbehinderung in Richtung Heiligenstadt.</p><p>Voraussichtliche Dauer: 11:20 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Ober St. Veit.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U4:<br>Fahrtbehinderung in Richtung Heiligenstadt.</p><p>Voraussichtliche Dauer: 11:20 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Ober St. Veit.</p>",
-       "descriptionPlain": "Linie U4: Fahrtbehinderung in Richtung Heiligenstadt. Voraussichtliche Dauer: 11:20 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Ober St. Veit.",
-       "title": "U4: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261020-0025",
-    "owner": "WL",
-    "parentName": "I20261020-0025",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4403
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-20T10:56:00.000+0200",
-     "end": "2026-10-20T10:57:00.000+0200",
-     "lastUpdate": "2026-10-20T10:57:00.000+0200",
-     "resume": "2026-10-20T10:57:00.000+0200",
-     "start": "2026-10-20T10:55:00.000+0200"
-    },
-    "title": "U4: Polizeieinsatz"
    },
    {
     "alertCause": "police activity",
@@ -636,11 +444,57 @@
     "status": "active",
     "time": {
      "created": "2026-10-20T10:57:00.000+0200",
-     "lastUpdate": "2026-10-20T10:57:00.000+0200",
+     "end": "2026-10-20T11:45:00.000+0200",
+     "lastUpdate": "2026-10-20T11:29:00.000+0200",
      "resume": "2026-10-20T10:56:00.000+0200",
      "start": "2026-10-20T10:56:00.000+0200"
     },
     "title": "31, 30: Polizeieinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "60A": "ptBusCity"
+     }
+    },
+    "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 60A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 60A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "60A: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261020-0027",
+    "owner": "WL",
+    "parentName": "I20261020-0027",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 460,
+      "lineName": "60A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T11:05:00.000+0200",
+     "lastUpdate": "2026-10-20T11:05:00.000+0200",
+     "resume": "2026-10-20T11:04:00.000+0200",
+     "start": "2026-10-20T11:04:00.000+0200"
+    },
+    "title": "60A: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
