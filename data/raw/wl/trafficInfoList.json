@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261020-0041-F01, I20261020-0041-F02, I20261020-0041, I20261020-0037-F02, I20260925-0011, I20261020-0038, I20261020-0037-F01, I20260909-0007, I20261020-0040-F01, I20261020-0029, I20261008-0007, I20261020-0031-F02"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261020-0041-F01, I20261020-0041-F02, I20260925-0011, I20261020-0038, I20260909-0007, I20261020-0029, I20261020-0031-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R45-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R293-474, R318-437, R2025-671, R19-136, R36-152, R2558-125, R2372-627, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2345-127, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R5815-671, R3886-480, R1974-466, R500-101, R401-101, R1875-101, R1876-101, R1882-101, R1880-101, R1883-101, R1881-101, R1884-101, R207-137, R211-137, R210-137, R209-137, R208-137, R2036-171, R2035-171, R2034-171, R2033-171, R2032-171, R2031-171, R2035-111, R2036-111, R2033-111, R2034-111, R2032-111, R2031-111, R2025-171, R2025-111, R2026-111, R2026-171, R2027-111, R2027-171, R4732-111, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R45-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R19-136, R293-474, R2025-671, R318-437, R36-152, R2558-125, R2372-627, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2345-127, R1474-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1475-149, R1476-149, R5815-671, R3886-480, R1974-466, R500-101, R1875-101, R401-101, R1876-101, R1883-101, R1880-101, R1881-101, R1882-101, R1884-101, R209-137, R207-137, R211-137, R210-137, R208-137, R2036-171, R2035-171, R2033-171, R2034-171, R2032-171, R2031-171, R2035-111, R2034-111, R2036-111, R2033-111, R2032-111, R2031-111, R2026-111, R2025-171, R2025-111, R2027-171, R2026-171, R2027-111, R4732-111, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -220,60 +220,6 @@
       "1": "ptTram"
      }
     },
-    "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Weichen Sie ersatzweise auf die Linien 7A oder 65A aus. Voraussichtliche Dauer: Mitte Dezember 2026. Grund: Gleisbauarbeiten im Bereich Windtenstraße.",
-    "descriptionHTML": "Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.<br> <br>Weichen Sie ersatzweise auf die Linien 7A oder 65A aus.<br><br>Voraussichtliche Dauer: Mitte Dezember 2026.<br><br>Grund: Gleisbauarbeiten im Bereich Windtenstraße.",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.<br> <br>Weichen Sie ersatzweise auf die Linien 7A oder 65A aus.<br><br>Voraussichtliche Dauer: Mitte Dezember 2026.<br><br>Grund: Gleisbauarbeiten im Bereich Windtenstraße.",
-       "descriptionPlain": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Weichen Sie ersatzweise auf die Linien 7A oder 65A aus. Voraussichtliche Dauer: Mitte Dezember 2026. Grund: Gleisbauarbeiten im Bereich Windtenstraße.",
-       "title": "1: Gleisbauarbeiten"
-      }
-     }
-    ],
-    "location": "Windtenstraße",
-    "name": "I20261008-0007",
-    "owner": "WL",
-    "parentName": "I20261008-0007",
-    "pictures": [
-     {
-      "description": "Skizze",
-      "order": 0,
-      "url": "https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/1_Umleitung_Reumannplatz.png"
-     }
-    ],
-    "priority": "1",
-    "reasonId": 27,
-    "reasonName": "Gleisbauarbeiten",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 101,
-      "lineName": "1",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-08T07:52:00.000+0200",
-     "end": "2026-10-20T16:28:00.000+0200",
-     "lastUpdate": "2026-10-20T16:28:00.000+0200",
-     "resume": "2026-10-20T16:28:00.000+0200",
-     "start": "2026-10-27T04:00:00.000+0100"
-    },
-    "title": "1: Gleisbauarbeiten"
-   },
-   {
-    "alertCause": "construction work",
-    "alertCauseId": 45,
-    "attributes": {
-     "relatedLineTypes": {
-      "1": "ptTram"
-     }
-    },
     "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A und 65A. Voraussichtliche Dauer: Mitte Dezember 2026. Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.",
     "descriptionHTML": "<p>Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.</p><p>Ersatz: Linien 7A und 65A.</p><p>Voraussichtliche Dauer: Mitte Dezember 2026.</p><p>Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.</p>",
     "languages": [
@@ -361,100 +307,6 @@
     "title": "O: Verkehrsunfall"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "41: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Währinger Straße 73",
-    "name": "I20261020-0037-F01",
-    "owner": "WL",
-    "parentName": "I20261020-0037",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 141,
-      "lineName": "41",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-20T15:51:00.000+0200",
-     "end": "2026-10-20T16:30:00.000+0200",
-     "lastUpdate": "2026-10-20T16:30:00.000+0200",
-     "resume": "2026-10-20T16:30:00.000+0200",
-     "start": "2026-10-20T15:06:00.000+0200"
-    },
-    "title": "41: Verkehrsunfall"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "40": "ptTram"
-     }
-    },
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "40: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Währinger Straße 73",
-    "name": "I20261020-0037-F02",
-    "owner": "WL",
-    "parentName": "I20261020-0037",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 140,
-      "lineName": "40",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-20T15:51:00.000+0200",
-     "end": "2026-10-20T16:30:00.000+0200",
-     "lastUpdate": "2026-10-20T16:30:00.000+0200",
-     "resume": "2026-10-20T16:30:00.000+0200",
-     "start": "2026-10-20T15:06:00.000+0200"
-    },
-    "title": "40: Verkehrsunfall"
-   },
-   {
     "alertCause": "police activity",
     "alertCauseId": 3,
     "attributes": {
@@ -498,108 +350,6 @@
      "start": "2026-10-20T15:51:00.000+0200"
     },
     "title": "U1: Polizeieinsatz"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "37": "ptTram"
-     }
-    },
-    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 37: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 37: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "37: Falschparker"
-      }
-     }
-    ],
-    "location": "Döblinger Hauptstraße",
-    "name": "I20261020-0040-F01",
-    "owner": "WL",
-    "parentName": "I20261020-0040",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 137,
-      "lineName": "37",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-20T16:12:00.000+0200",
-     "end": "2026-10-20T16:40:00.000+0200",
-     "lastUpdate": "2026-10-20T16:26:00.000+0200",
-     "start": "2026-10-20T16:10:00.000+0200"
-    },
-    "title": "37: Falschparker"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "11": "ptTram",
-      "71": "ptTram"
-     }
-    },
-    "description": "Linie 11: Betrieb nur zwischen Otto-Probst-Platz und Fickeysstraße. Linie 71: Betrieb nur zwischen Schottenring U und Fickeysstraße. Voraussichtliche Dauer: 16:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Zentralfriedhof 1.Tor.",
-    "descriptionHTML": "<p>Linie 11:<br>Betrieb nur zwischen Otto-Probst-Platz und Fickeysstraße.<br>Linie 71:<br>Betrieb nur zwischen Schottenring U und Fickeysstraße.</p><p>Voraussichtliche Dauer: 16:45 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Zentralfriedhof 1.Tor.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 11:<br>Betrieb nur zwischen Otto-Probst-Platz und Fickeysstraße.<br>Linie 71:<br>Betrieb nur zwischen Schottenring U und Fickeysstraße.</p><p>Voraussichtliche Dauer: 16:45 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Zentralfriedhof 1.Tor.</p>",
-       "descriptionPlain": "Linie 11: Betrieb nur zwischen Otto-Probst-Platz und Fickeysstraße. Linie 71: Betrieb nur zwischen Schottenring U und Fickeysstraße. Voraussichtliche Dauer: 16:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Zentralfriedhof 1.Tor.",
-       "title": "71, 11: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261020-0041",
-    "owner": "WL",
-    "parentName": "I20261020-0041",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11",
-     "71"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 111,
-      "lineName": "11",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 171,
-      "lineName": "71",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     2027
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-20T16:14:00.000+0200",
-     "end": "2026-10-20T16:27:00.000+0200",
-     "lastUpdate": "2026-10-20T16:27:00.000+0200",
-     "resume": "2026-10-20T16:27:00.000+0200",
-     "start": "2026-10-20T16:13:00.000+0200"
-    },
-    "title": "71, 11: Rettungseinsatz"
    },
    {
     "alertCause": "emergency medical services",

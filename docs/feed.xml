@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 20 Oct 2026 16:31:02 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 17:01:00 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[71: Rettungseinsatz]]></title>
@@ -47,8 +47,8 @@
       <ext:first_seen>Tue, 20 Oct 2026 16:10:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 20 Oct 2026 16:10:00 +0200</ext:starts_at>
       <ext:ends_at>Tue, 20 Oct 2026 17:09:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 16:10]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 16:10]]]></content:encoded>
+      <description>Fahrtbehinderung. [Seit 16:10]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 16:10]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Polizeieinsatz]]></title>
