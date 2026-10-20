@@ -65,7 +65,7 @@
     },
     "total": 1917
   },
-  "generated_at": "2026-10-20T02:30:53+02:00",
+  "generated_at": "2026-10-20T03:01:20+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.98,
@@ -114,7 +114,7 @@
         "Meidling": {
           "last_seen": "2026-10-20T01:13:00+02:00",
           "peer_rows_since": 0,
-          "rows_in_window": 1188
+          "rows_in_window": 1187
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
@@ -124,7 +124,7 @@
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-10-20T02:30:47+02:00",
+        "last_success": "2026-10-20T03:01:06+02:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
@@ -145,7 +145,7 @@
       "00": 172,
       "01": 100,
       "02": 25,
-      "03": 20,
+      "03": 21,
       "04": 79,
       "05": 113,
       "06": 87,
@@ -170,11 +170,11 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 180,
       "VOR/VAO": 11,
-      "Wiener Linien": 3016,
+      "Wiener Linien": 3017,
       "ÖBB": 296
     },
     "by_weekday": {
-      "Di": 511,
+      "Di": 512,
       "Do": 567,
       "Fr": 554,
       "Mi": 538,
@@ -182,7 +182,7 @@
       "Sa": 420,
       "So": 429
     },
-    "total": 3503
+    "total": 3504
   },
   "year": 2026
 }
