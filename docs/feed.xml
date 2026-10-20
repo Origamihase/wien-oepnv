@@ -8,8 +8,34 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 20 Oct 2026 10:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 11:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[30/31: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">a4a5456005e574a0c5b4db4857e3ca6b45e6f0bbd0d807676f632c447c330e1a</guid>
+      <pubDate>Tue, 20 Oct 2026 10:56:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 20 Oct 2026 11:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 10:56:00 +0200</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Seit 10:56]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Seit 10:56]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a</guid>
+      <pubDate>Tue, 20 Oct 2026 10:55:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 20 Oct 2026 10:55:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 10:55:00 +0200</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 10:55]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 10:55]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[34A: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -24,7 +50,7 @@
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 10:20]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[71: Verkehrsunfall]]></title>
+      <title><![CDATA[11/71: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7</guid>
       <pubDate>Tue, 20 Oct 2026 09:38:00 +0200</pubDate>
@@ -33,8 +59,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 20 Oct 2026 09:38:00 +0200</ext:first_seen>
       <ext:starts_at>Tue, 20 Oct 2026 09:38:00 +0200</ext:starts_at>
-      <description>Betrieb ab Fickeysstraße. [Seit 09:38]</description>
-      <content:encoded><![CDATA[Betrieb ab Fickeysstraße.<br/>[Seit 09:38]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 09:38]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 09:38]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[O: Schadhaftes Fahrzeug]]></title>
@@ -48,72 +74,6 @@
       <ext:starts_at>Tue, 20 Oct 2026 09:03:00 +0200</ext:starts_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 09:03]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 09:03]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
-      <pubDate>Tue, 20 Oct 2026 08:50:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 08:50:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 08:50:00 +0200</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 08:50]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 08:50]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8</guid>
-      <pubDate>Tue, 20 Oct 2026 08:33:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 08:33:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 08:33:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 20 Oct 2026 10:54:00 +0200</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 08:33]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 08:33]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7</guid>
-      <pubDate>Tue, 20 Oct 2026 08:21:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 08:21:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 08:21:00 +0200</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 08:21]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 08:21]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[65A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">91604c6736684f0d22451554a67ed8dcf423dac3128aa0c83b7bcf4f50344a36</guid>
-      <pubDate>Tue, 20 Oct 2026 07:11:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 07:11:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 07:11:00 +0200</ext:starts_at>
-      <description>Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Verkehrsunfall. [Seit 07:11]</description>
-      <content:encoded><![CDATA[Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Verkehrsunfall.<br/>[Seit 07:11]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">86391c8be34130966c7c827325823dc399cbc11698fee4c737e503f64fff6dd7</guid>
-      <pubDate>Tue, 20 Oct 2026 09:38:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 10:00:39 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 09:38:00 +0200</ext:starts_at>
-      <description>Veranstaltung Betrieb ab Fickeysstraße. [Seit heute]</description>
-      <content:encoded><![CDATA[Veranstaltung Betrieb ab Fickeysstraße.<br/>[Seit heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[56B/56A/N62: Strampfergasse]]></title>
@@ -143,6 +103,50 @@
       <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
       <description>Wegen der Neuerrichtung der ÖBB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Maßnahmen in Kraft. [Bis 31.12.2027]</description>
       <content:encoded><![CDATA[Wegen der Neuerrichtung der ÖBB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Maßnahmen in Kraft.<br/>[Bis 31.12.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[48A: Neubaugasse, Neustiftgasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">d97a8a3d7d6328446c638ae8a1ccf0afc80a24b1828141a4b94ad0065074c2e5</guid>
+      <pubDate>Thu, 08 Oct 2026 15:10:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 08 Oct 2026 15:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 19 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 08 Oct 2027 11:11:00 +0200</ext:ends_at>
+      <georss:point>48.205482 16.348467</georss:point>
+      <description>Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten. [Seit 19.10.]</description>
+      <content:encoded><![CDATA[Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten.<br/>[Seit 19.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N71: Simmering S U]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">c8f0b5a42164e2ff573973d0ebcbdf6fbd76b99aebfc2c85c8b8657ef7b9bb79</guid>
+      <pubDate>Wed, 14 Oct 2026 15:35:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 14 Oct 2026 15:35:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 23 Oct 2026 05:05:00 +0200</ext:ends_at>
+      <georss:point>48.170159 16.420009</georss:point>
+      <description>Simmeringer Hauptstraße gegenüber 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, provisorische Haltestelle, Hauptfahrbahn. Haltestellenverlegung der Linie N71 … [Bis Fr 23.10.]</description>
+      <content:encoded><![CDATA[Simmeringer Hauptstraße gegenüber 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, provisorische Haltestelle, Hauptfahrbahn. Haltestellenverlegung der Linie N71 …<br/>[Bis Fr 23.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[64A: Liesing-Flur-Gasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">609517ab3ab98b5b38f0fe913f15e9bd18cd5a3d9005a51a2cb50d3fb227ddbd</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 14 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten. [Bis 28.10.]</description>
+      <content:encoded><![CDATA[Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten.<br/>[Bis 28.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

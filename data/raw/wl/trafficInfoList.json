@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261020-0023-F01, I20261020-0023-F02, I20260925-0011, I20261020-0021-F01, I20261020-0022-F01, I20260909-0007, I20261020-0024, I20261020-0012, I20261020-0019-F01, I20261020-0020-F01"
+    "trafficInfoNameList": "I20261020-0019-F01, I20260917-0012, I20260922-0032, I20261020-0023-F01, I20261020-0023-F02, I20261020-0026, I20261020-0025-F01, I20261020-0025, I20260925-0011, I20261020-0022-F01, I20260909-0007, I20261020-0024, I20261020-0021-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R130-136, R119-136, R118-136, R117-136, R116-136, R318-437, R293-474, R115-136, R103-136, R102-136, R101-136, R100-136, R36-152, R2025-671, R45-136, R19-136, R2558-125, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2370-125, R2373-127, R2373-125, R2372-125, R2359-125, R2343-125, R2343-626, R2371-125, R2378-627, R1474-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1475-149, R1476-149, R5815-671, R3886-480, R1974-466, R500-101, R2031-111, R2032-111, R2312-111, R2300-111, R2680-111, R4733-111, R2026-171, R2025-171, R2025-111, R2299-171, R2299-111, R2027-171, R2027-111, R2026-111, R2680-171, R2312-171, R2300-171, R2032-171, R2031-171, R4732-171, R4732-111, R4733-171, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2025-671, R293-474, R2558-125, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1448-412, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R5815-671, R3886-480, R1974-466, R500-101, R2220-131, R2219-131, R2218-131, R2221-131, R2217-131, R2216-131, R2212-131, R2200-131, R2226-131, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -213,51 +213,6 @@
     "title": "26E: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "65A": "ptBusCity"
-     }
-    },
-    "description": "Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. <br><br>Grund: Verkehrsunfall.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Verkehrsunfall.",
-       "title": "65A: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261020-0012",
-    "owner": "WL",
-    "parentName": "I20261020-0012",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "65A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 465,
-      "lineName": "65A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-20T07:12:00.000+0200",
-     "lastUpdate": "2026-10-20T07:12:00.000+0200",
-     "resume": "2026-10-20T07:11:00.000+0200",
-     "start": "2026-10-20T07:11:00.000+0200"
-    },
-    "title": "65A: Verkehrsunfall"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -296,60 +251,15 @@
     "relatedStops": [
      4127
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-20T08:33:00.000+0200",
-     "lastUpdate": "2026-10-20T08:33:00.000+0200",
-     "resume": "2026-10-20T08:33:00.000+0200",
+     "end": "2026-10-20T10:57:00.000+0200",
+     "lastUpdate": "2026-10-20T10:57:00.000+0200",
+     "resume": "2026-10-20T10:57:00.000+0200",
      "start": "2026-10-20T08:21:00.000+0200"
     },
     "title": "U1: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "1": "ptTram"
-     }
-    },
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "1: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Löwengasse",
-    "name": "I20261020-0020-F01",
-    "owner": "WL",
-    "parentName": "I20261020-0020",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 101,
-      "lineName": "1",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-20T08:54:00.000+0200",
-     "end": "2026-10-20T10:54:00.000+0200",
-     "lastUpdate": "2026-10-20T09:54:00.000+0200",
-     "start": "2026-10-20T08:33:00.000+0200"
-    },
-    "title": "1: Verkehrsunfall"
    },
    {
     "alertCause": "emergency medical services",
@@ -390,11 +300,12 @@
     "relatedStops": [
      4934
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-20T08:51:00.000+0200",
-     "lastUpdate": "2026-10-20T08:51:00.000+0200",
-     "resume": "2026-10-20T08:51:00.000+0200",
+     "end": "2026-10-20T10:57:00.000+0200",
+     "lastUpdate": "2026-10-20T10:57:00.000+0200",
+     "resume": "2026-10-20T10:57:00.000+0200",
      "start": "2026-10-20T08:50:00.000+0200"
     },
     "title": "U3: Rettungseinsatz"
@@ -581,6 +492,155 @@
      "start": "2026-10-20T10:20:00.000+0200"
     },
     "title": "34A: Verspätungen"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Fahrtbehinderung in Richtung Heiligenstadt. Voraussichtliche Dauer: 11:20 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Ober St. Veit.",
+    "descriptionHTML": "<p>Linie U4:<br>Fahrtbehinderung in Richtung Heiligenstadt.</p><p>Voraussichtliche Dauer: 11:20 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Ober St. Veit.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U4:<br>Fahrtbehinderung in Richtung Heiligenstadt.</p><p>Voraussichtliche Dauer: 11:20 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Ober St. Veit.</p>",
+       "descriptionPlain": "Linie U4: Fahrtbehinderung in Richtung Heiligenstadt. Voraussichtliche Dauer: 11:20 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Ober St. Veit.",
+       "title": "U4: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261020-0025",
+    "owner": "WL",
+    "parentName": "I20261020-0025",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 304,
+      "lineName": "U4",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4403
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-20T10:56:00.000+0200",
+     "end": "2026-10-20T10:57:00.000+0200",
+     "lastUpdate": "2026-10-20T10:57:00.000+0200",
+     "resume": "2026-10-20T10:57:00.000+0200",
+     "start": "2026-10-20T10:55:00.000+0200"
+    },
+    "title": "U4: Polizeieinsatz"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U4: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261020-0025-F01",
+    "owner": "WL",
+    "parentName": "I20261020-0025",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 304,
+      "lineName": "U4",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4403
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T10:57:00.000+0200",
+     "lastUpdate": "2026-10-20T10:57:00.000+0200",
+     "resume": "2026-10-20T10:57:00.000+0200",
+     "start": "2026-10-20T10:55:00.000+0200"
+    },
+    "title": "U4: Polizeieinsatz"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "30": "ptTram",
+      "31": "ptTram"
+     }
+    },
+    "description": "Linie 30: Unregelmäßige Intervalle in beiden Richtungen. Linie 31: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "<p>Linie 30:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 31:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 30:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 31:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+       "descriptionPlain": "Linie 30: Unregelmäßige Intervalle in beiden Richtungen. Linie 31: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+       "title": "31, 30: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261020-0026",
+    "owner": "WL",
+    "parentName": "I20261020-0026",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "30",
+     "31"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 130,
+      "lineName": "30",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 131,
+      "lineName": "31",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-20T10:57:00.000+0200",
+     "lastUpdate": "2026-10-20T10:57:00.000+0200",
+     "resume": "2026-10-20T10:56:00.000+0200",
+     "start": "2026-10-20T10:56:00.000+0200"
+    },
+    "title": "31, 30: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1137,52 +1197,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2025-111",
-    "owner": "WL",
-    "parentName": "R2025-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2025
-    ],
-    "time": {
-     "end": "2026-10-20T10:39:00.000+0200",
-     "start": "2026-10-20T09:40:55.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2025-171",
-    "owner": "WL",
-    "parentName": "R2025-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2025
-    ],
-    "time": {
-     "end": "2026-10-20T10:39:00.000+0200",
-     "start": "2026-10-20T09:40:55.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "name": "R2025-671",
     "owner": "WL",
@@ -1203,324 +1217,209 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2026-111",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2200-131",
     "owner": "WL",
-    "parentName": "R2026-111",
+    "parentName": "R2200-131",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "11"
+     "31"
     ],
     "relatedStops": [
-     2026
+     2200
     ],
     "time": {
-     "end": "2026-10-20T10:39:00.000+0200",
-     "start": "2026-10-20T09:40:55.000+0200"
+     "end": "2026-10-20T11:56:00.000+0200",
+     "start": "2026-10-20T10:56:32.000+0200"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2026-171",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2212-131",
     "owner": "WL",
-    "parentName": "R2026-171",
+    "parentName": "R2212-131",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "71"
+     "31"
     ],
     "relatedStops": [
-     2026
+     2212
     ],
     "time": {
-     "end": "2026-10-20T10:39:00.000+0200",
-     "start": "2026-10-20T09:40:55.000+0200"
+     "end": "2026-10-20T11:56:00.000+0200",
+     "start": "2026-10-20T10:56:32.000+0200"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2027-111",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2216-131",
     "owner": "WL",
-    "parentName": "R2027-111",
+    "parentName": "R2216-131",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "11"
+     "31"
     ],
     "relatedStops": [
-     2027
+     2216
     ],
     "time": {
-     "end": "2026-10-20T10:39:00.000+0200",
-     "start": "2026-10-20T09:40:55.000+0200"
+     "end": "2026-10-20T11:56:00.000+0200",
+     "start": "2026-10-20T10:56:32.000+0200"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2027-171",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2217-131",
     "owner": "WL",
-    "parentName": "R2027-171",
+    "parentName": "R2217-131",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "71"
+     "31"
     ],
     "relatedStops": [
-     2027
+     2217
     ],
     "time": {
-     "end": "2026-10-20T10:39:00.000+0200",
-     "start": "2026-10-20T09:40:55.000+0200"
+     "end": "2026-10-20T11:56:00.000+0200",
+     "start": "2026-10-20T10:56:32.000+0200"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Veranstaltung\nBetrieb ab Fickeysstraße",
-    "name": "R2031-111",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2218-131",
     "owner": "WL",
-    "parentName": "R2031-111",
+    "parentName": "R2218-131",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "11"
+     "31"
     ],
     "relatedStops": [
-     2031
+     2218
     ],
     "time": {
-     "end": "2026-10-20T10:39:00.000+0200",
-     "start": "2026-10-20T09:40:25.000+0200"
+     "end": "2026-10-20T11:56:00.000+0200",
+     "start": "2026-10-20T10:56:32.000+0200"
     },
-    "title": "Veranstaltung\nBetrieb ab Fickeysstraße"
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Fickeysstraße",
-    "name": "R2031-171",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2219-131",
     "owner": "WL",
-    "parentName": "R2031-171",
+    "parentName": "R2219-131",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "71"
+     "31"
     ],
     "relatedStops": [
-     2031
+     2219
     ],
     "time": {
-     "end": "2026-10-20T10:40:00.000+0200",
-     "start": "2026-10-20T09:40:55.000+0200"
+     "end": "2026-10-20T11:56:00.000+0200",
+     "start": "2026-10-20T10:56:32.000+0200"
     },
-    "title": "Verkehrsunfall\nBetrieb ab Fickeysstraße"
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Veranstaltung\nBetrieb ab Fickeysstraße",
-    "name": "R2032-111",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2220-131",
     "owner": "WL",
-    "parentName": "R2032-111",
+    "parentName": "R2220-131",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "11"
+     "31"
     ],
     "relatedStops": [
-     2032
+     2220
     ],
     "time": {
-     "end": "2026-10-20T10:39:00.000+0200",
-     "start": "2026-10-20T09:40:25.000+0200"
+     "end": "2026-10-20T11:56:00.000+0200",
+     "start": "2026-10-20T10:56:32.000+0200"
     },
-    "title": "Veranstaltung\nBetrieb ab Fickeysstraße"
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Fickeysstraße",
-    "name": "R2032-171",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2221-131",
     "owner": "WL",
-    "parentName": "R2032-171",
+    "parentName": "R2221-131",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "71"
+     "31"
     ],
     "relatedStops": [
-     2032
+     2221
     ],
     "time": {
-     "end": "2026-10-20T10:40:00.000+0200",
-     "start": "2026-10-20T09:40:55.000+0200"
+     "end": "2026-10-20T11:56:00.000+0200",
+     "start": "2026-10-20T10:56:32.000+0200"
     },
-    "title": "Verkehrsunfall\nBetrieb ab Fickeysstraße"
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2299-111",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2226-131",
     "owner": "WL",
-    "parentName": "R2299-111",
+    "parentName": "R2226-131",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "11"
+     "31"
     ],
     "relatedStops": [
-     2299
+     2226
     ],
     "time": {
-     "end": "2026-10-20T10:39:00.000+0200",
-     "start": "2026-10-20T09:40:55.000+0200"
+     "end": "2026-10-20T11:56:00.000+0200",
+     "start": "2026-10-20T10:56:32.000+0200"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2299-171",
-    "owner": "WL",
-    "parentName": "R2299-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2299
-    ],
-    "time": {
-     "end": "2026-10-20T10:39:00.000+0200",
-     "start": "2026-10-20T09:40:55.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Veranstaltung\nBetrieb ab Fickeysstraße",
-    "name": "R2300-111",
-    "owner": "WL",
-    "parentName": "R2300-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2300
-    ],
-    "time": {
-     "end": "2026-10-20T10:39:00.000+0200",
-     "start": "2026-10-20T09:40:25.000+0200"
-    },
-    "title": "Veranstaltung\nBetrieb ab Fickeysstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Fickeysstraße",
-    "name": "R2300-171",
-    "owner": "WL",
-    "parentName": "R2300-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2300
-    ],
-    "time": {
-     "end": "2026-10-20T10:40:00.000+0200",
-     "start": "2026-10-20T09:40:55.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Fickeysstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Veranstaltung\nBetrieb ab Fickeysstraße",
-    "name": "R2312-111",
-    "owner": "WL",
-    "parentName": "R2312-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2312
-    ],
-    "time": {
-     "end": "2026-10-20T10:39:00.000+0200",
-     "start": "2026-10-20T09:40:25.000+0200"
-    },
-    "title": "Veranstaltung\nBetrieb ab Fickeysstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Fickeysstraße",
-    "name": "R2312-171",
-    "owner": "WL",
-    "parentName": "R2312-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2312
-    ],
-    "time": {
-     "end": "2026-10-20T10:40:00.000+0200",
-     "start": "2026-10-20T09:40:55.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Fickeysstraße"
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1870,52 +1769,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Veranstaltung\nBetrieb ab Fickeysstraße",
-    "name": "R2680-111",
-    "owner": "WL",
-    "parentName": "R2680-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2680
-    ],
-    "time": {
-     "end": "2026-10-20T10:39:00.000+0200",
-     "start": "2026-10-20T09:40:25.000+0200"
-    },
-    "title": "Veranstaltung\nBetrieb ab Fickeysstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Fickeysstraße",
-    "name": "R2680-171",
-    "owner": "WL",
-    "parentName": "R2680-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2680
-    ],
-    "time": {
-     "end": "2026-10-20T10:40:00.000+0200",
-     "start": "2026-10-20T09:40:55.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Fickeysstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -2027,98 +1880,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R4732-111",
-    "owner": "WL",
-    "parentName": "R4732-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     4732
-    ],
-    "time": {
-     "end": "2026-10-20T10:39:00.000+0200",
-     "start": "2026-10-20T09:40:57.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R4732-171",
-    "owner": "WL",
-    "parentName": "R4732-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     4732
-    ],
-    "time": {
-     "end": "2026-10-20T10:39:00.000+0200",
-     "start": "2026-10-20T09:40:57.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Veranstaltung\nBetrieb ab Fickeysstraße",
-    "name": "R4733-111",
-    "owner": "WL",
-    "parentName": "R4733-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     4733
-    ],
-    "time": {
-     "end": "2026-10-20T10:39:00.000+0200",
-     "start": "2026-10-20T09:40:27.000+0200"
-    },
-    "title": "Veranstaltung\nBetrieb ab Fickeysstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Fickeysstraße",
-    "name": "R4733-171",
-    "owner": "WL",
-    "parentName": "R4733-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     4733
-    ],
-    "time": {
-     "end": "2026-10-20T10:40:00.000+0200",
-     "start": "2026-10-20T09:40:57.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Fickeysstraße"
    },
    {
     "alertCause": "undefined alert cause",
