@@ -822,18 +822,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Schadhaftes Fahrzeug",
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "11/71: Verkehrsunfall",
+    "description": "Linie 11: Betrieb nur zwischen Otto-Probst-Platz und Fickeysstraße. Linie 71: Betrieb nur zwischen Schottenring U und Fickeysstraße. Ersatz: Linien 69A, 71A, 71B, und 73A. Voraussichtliche Dauer: 10:40 Uhr. Grund: Verkehrsunfall im Bereich Simmeringer Hauptstraße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "139846b83acf18a69b923dc1f1f93aa6551cf6b0381d73ccb6f04a94a1059ba6",
-    "pubDate": "2026-10-20T09:03:00+02:00",
-    "starts_at": "2026-10-20T09:03:00+02:00",
+    "guid": "86391c8be34130966c7c827325823dc399cbc11698fee4c737e503f64fff6dd7",
+    "pubDate": "2026-10-20T09:38:00+02:00",
+    "starts_at": "2026-10-20T09:38:00+02:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=11|D=2026-10-20|TK=11 schadhaftes fahrzeug",
+    "_identity": "wl|störung|L=11,71|D=2026-10-20|TK=71 11 verkehrsunfall",
     "_wl_ids": [
-      "I20261020-0022"
+      "I20261020-0023"
     ],
-    "_incident_start": "2026-10-20T09:03:00+02:00"
+    "_incident_start": "2026-10-20T09:38:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -870,6 +870,18 @@
     "starts_at": "2026-10-20T09:06:22+02:00",
     "ends_at": "2026-10-20T10:05:00+02:00",
     "_identity": "wl|störung|L=11|D=2026-10-20|TK=schadhafter zug einstieg bei linie 6"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11: Veranstaltung Betrieb ab Fickeysstraße",
+    "description": "Veranstaltung\nBetrieb ab Fickeysstraße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "318aed2feb4f1cad71641542f415b53115789ffacc1d2e7d63cdf3f055a85199",
+    "pubDate": "2026-10-20T09:40:25+02:00",
+    "starts_at": "2026-10-20T09:40:27+02:00",
+    "ends_at": "2026-10-20T10:39:00+02:00",
+    "_identity": "wl|störung|L=11|D=2026-10-20|TK=veranstaltung"
   },
   {
     "source": "Wiener Linien",
@@ -932,7 +944,7 @@
     "guid": "6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8",
     "pubDate": "2026-10-20T08:33:00+02:00",
     "starts_at": "2026-10-20T08:33:00+02:00",
-    "ends_at": null,
+    "ends_at": "2026-10-20T10:54:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-10-20|TK=1 verkehrsunfall",
     "_wl_ids": [
       "I20261020-0020"
@@ -950,42 +962,6 @@
     "starts_at": "2026-10-20T05:00:25+02:00",
     "ends_at": "2026-10-20T23:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-10-20|TK=bhf hütteldorf öbb ersatzbus für 80"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e105ca57f2aa7daecce2d0c7b4277004ad37ec7461843c457618fc8980286aef",
-    "pubDate": "2026-10-20T08:34:46+02:00",
-    "starts_at": "2026-10-20T08:34:46+02:00",
-    "ends_at": "2026-10-20T09:34:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-10-20|TK=fahrtbehinderung verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Verkehrsunfall Betrieb ab Radetzkyplatz",
-    "description": "Verkehrsunfall\nBetrieb ab Radetzkyplatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "6b4c2d7c86160c3f3fb4e36caf756ca2f975f559fb2c51a20160d9326b7483d4",
-    "pubDate": "2026-10-20T08:40:47+02:00",
-    "starts_at": "2026-10-20T08:40:47+02:00",
-    "ends_at": "2026-10-20T09:40:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-10-20|TK=verkehrsunfall betrieb ab radetzkyplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Verkehrsunfall Züge halten bei Linie O",
-    "description": "Verkehrsunfall\nZüge halten bei Linie O",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "ea9b9fe8901817d19954f5cd4807767e92d3ef7e30b3469f47bc67a9da6081fd",
-    "pubDate": "2026-10-20T08:45:17+02:00",
-    "starts_at": "2026-10-20T08:45:17+02:00",
-    "ends_at": "2026-10-20T09:40:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-10-20|TK=verkehrsunfall züge halten bei linie o"
   },
   {
     "source": "Wiener Linien",

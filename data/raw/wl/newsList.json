@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210, ftazW_352, ftazW_603, ftazW_19, ftazW_281, ftazW_1354391, ftazW_353, ftazW_282, ftazW_606, ftazW_1018092, ftazW_1018049, ftazW_477, ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_572, ftazW_22, ftazW_354, ftazW_573"
+    "trafficInfoNameList": "ftazW_599, ftazW_5, ftazW_17, ftazW_209, ftazW_41, ftazW_18, ftazW_16, ftazW_42, ftazW_1032355, ftazW_210, ftazW_352, ftazW_603, ftazW_19, ftazW_281, ftazW_1354391, ftazW_353, ftazW_282, ftazW_606, ftazW_1018092, ftazW_1018049, ftazW_477, ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_22, ftazW_354, ftazW_573"
    }
   ],
   "poiCategoryGroups": [
@@ -4775,43 +4775,6 @@
      "start": "2026-10-20T20:45:00.000+0200"
     },
     "title": "Alser Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "23.10.2026 00:45",
-     "ausVon": "22.10.2026 20:45",
-     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Morizgasse",
-     "rbls": [
-      4415
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Margaretengürtel",
-     "status": "geplante Wartung",
-     "towards": "U4 Heiligenstadt"
-    },
-    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Morizgasse",
-    "elevatorId": "MG 01",
-    "name": "ftazW_572",
-    "parentName": "ftazW_572",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4415
-    ],
-    "time": {
-     "end": "2026-10-23T00:45:00.000+0200",
-     "start": "2026-10-22T20:45:00.000+0200"
-    },
-    "title": "Margaretengürtel"
    },
    {
     "alertCause": "undefined alert cause",

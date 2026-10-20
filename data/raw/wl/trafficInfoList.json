@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261020-0013, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0021-F01, I20261020-0022-F01, I20260909-0007, I20261020-0022-F02, I20261020-0012, I20261020-0015, I20261020-0016, I20261020-0017, I20261020-0019-F01, I20261020-0020-F01"
+    "trafficInfoNameList": "I20261020-0013, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0021-F01, I20261020-0022-F01, I20260909-0007, I20261020-0023, I20261020-0012, I20261020-0015, I20261020-0016, I20261020-0017, I20261020-0019-F01, I20261020-0020-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R19-136, R130-136, R119-136, R118-136, R103-136, R102-136, R101-136, R100-136, R45-136, R293-474, R117-136, R318-437, R116-136, R2025-671, R115-136, R36-152, R2558-125, R2371-125, R2359-125, R2343-125, R2343-626, R2378-627, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2370-125, R1449-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R5815-671, R3886-480, R1974-466, R500-101, R165-101, R169-101, R172-101, R173-101, R343-170, R299-170, R1926-170, R1931-170, R1930-170, R1925-170, R1932-170, R423-111, R1925-111, R2254-111, R1926-111, R2259-111, R2244-111, R2257-111, R2258-111, R2260-111, R2231-111, R2232-111, R1930-111, R1931-111, R1932-111, R1933-111, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R19-136, R36-152, R100-136, R2025-671, R101-136, R45-136, R102-136, R293-474, R318-437, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R2558-125, R2370-125, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2359-125, R2343-125, R2343-626, R2378-627, R1476-149, R1448-412, R1475-149, R1474-149, R1473-149, R1472-149, R1474-412, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R5815-671, R3886-480, R1974-466, R500-101, R299-170, R343-170, R1931-170, R1932-170, R1925-170, R1926-170, R1930-170, R423-111, R2254-111, R1925-111, R1926-111, R2244-111, R2257-111, R2258-111, R2259-111, R2260-111, R2232-111, R2231-111, R1930-111, R1931-111, R1933-111, R1932-111, R2680-111, R2032-111, R2031-111, R2312-111, R2300-111, R4733-111, R2025-171, R2025-111, R2027-171, R2026-111, R2299-111, R2299-171, R2027-111, R2026-171, R2680-171, R2312-171, R2300-171, R2031-171, R2032-171, R4732-111, R4732-171, R4733-171, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -526,8 +526,8 @@
     "status": "active",
     "time": {
      "created": "2026-10-20T08:54:00.000+0200",
-     "lastUpdate": "2026-10-20T08:54:00.000+0200",
-     "resume": "2026-10-20T08:54:00.000+0200",
+     "end": "2026-10-20T10:54:00.000+0200",
+     "lastUpdate": "2026-10-20T09:54:00.000+0200",
      "start": "2026-10-20T08:33:00.000+0200"
     },
     "title": "1: Verkehrsunfall"
@@ -627,50 +627,56 @@
     "title": "O: Schadhaftes Fahrzeug"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
+    "alertCause": "accident",
+    "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "11": "ptTram"
+      "11": "ptTram",
+      "71": "ptTram"
      }
     },
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 11: Betrieb nur zwischen Otto-Probst-Platz und Fickeysstraße. Linie 71: Betrieb nur zwischen Schottenring U und Fickeysstraße. Ersatz: Linien 69A, 71A, 71B, und 73A. Voraussichtliche Dauer: 10:40 Uhr. Grund: Verkehrsunfall im Bereich Simmeringer Hauptstraße.",
+    "descriptionHTML": "<p>Linie 11:<br>Betrieb nur zwischen Otto-Probst-Platz und Fickeysstraße.<br>Linie 71:<br>Betrieb nur zwischen Schottenring U und Fickeysstraße.</p><p>Ersatz: Linien 69A, 71A, 71B, und 73A.</p><p>Voraussichtliche Dauer: 10:40 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Simmeringer Hauptstraße.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "11: Schadhaftes Fahrzeug"
+       "descriptionHtml": "<p>Linie 11:<br>Betrieb nur zwischen Otto-Probst-Platz und Fickeysstraße.<br>Linie 71:<br>Betrieb nur zwischen Schottenring U und Fickeysstraße.</p><p>Ersatz: Linien 69A, 71A, 71B, und 73A.</p><p>Voraussichtliche Dauer: 10:40 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Simmeringer Hauptstraße.</p>",
+       "descriptionPlain": "Linie 11: Betrieb nur zwischen Otto-Probst-Platz und Fickeysstraße. Linie 71: Betrieb nur zwischen Schottenring U und Fickeysstraße. Ersatz: Linien 69A, 71A, 71B, und 73A. Voraussichtliche Dauer: 10:40 Uhr. Grund: Verkehrsunfall im Bereich Simmeringer Hauptstraße.",
+       "title": "71, 11: Verkehrsunfall"
       }
      }
     ],
-    "location": "Troststraße",
-    "name": "I20261020-0022-F02",
+    "location": "Simmeringer Hauptstraße",
+    "name": "I20261020-0023",
     "owner": "WL",
-    "parentName": "I20261020-0022",
+    "parentName": "I20261020-0023",
     "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "11"
+     "11",
+     "71"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 111,
       "lineName": "11",
       "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 171,
+      "lineName": "71",
+      "vehicleType": "ptTram"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-20T09:13:00.000+0200",
-     "lastUpdate": "2026-10-20T09:13:00.000+0200",
-     "resume": "2026-10-20T09:13:00.000+0200",
-     "start": "2026-10-20T09:03:00.000+0200"
+     "created": "2026-10-20T09:40:00.000+0200",
+     "lastUpdate": "2026-10-20T09:45:00.000+0200",
+     "start": "2026-10-20T09:38:00.000+0200"
     },
-    "title": "11: Schadhaftes Fahrzeug"
+    "title": "71, 11: Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1181,98 +1187,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R165-101",
-    "owner": "WL",
-    "parentName": "R165-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     165
-    ],
-    "time": {
-     "end": "2026-10-20T09:34:00.000+0200",
-     "start": "2026-10-20T08:34:46.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Radetzkyplatz",
-    "name": "R169-101",
-    "owner": "WL",
-    "parentName": "R169-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     169
-    ],
-    "time": {
-     "end": "2026-10-20T09:40:00.000+0200",
-     "start": "2026-10-20T08:40:47.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Radetzkyplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Radetzkyplatz",
-    "name": "R172-101",
-    "owner": "WL",
-    "parentName": "R172-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     172
-    ],
-    "time": {
-     "end": "2026-10-20T09:40:00.000+0200",
-     "start": "2026-10-20T08:40:47.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Radetzkyplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nZüge halten bei Linie O",
-    "name": "R173-101",
-    "owner": "WL",
-    "parentName": "R173-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     173
-    ],
-    "time": {
-     "end": "2026-10-20T09:40:00.000+0200",
-     "start": "2026-10-20T08:45:17.000+0200"
-    },
-    "title": "Verkehrsunfall\nZüge halten bei Linie O"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -1572,6 +1486,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2025-111",
+    "owner": "WL",
+    "parentName": "R2025-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2025
+    ],
+    "time": {
+     "end": "2026-10-20T10:39:00.000+0200",
+     "start": "2026-10-20T09:40:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2025-171",
+    "owner": "WL",
+    "parentName": "R2025-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2025
+    ],
+    "time": {
+     "end": "2026-10-20T10:39:00.000+0200",
+     "start": "2026-10-20T09:40:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "name": "R2025-671",
     "owner": "WL",
@@ -1588,6 +1548,190 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2026-111",
+    "owner": "WL",
+    "parentName": "R2026-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2026
+    ],
+    "time": {
+     "end": "2026-10-20T10:39:00.000+0200",
+     "start": "2026-10-20T09:40:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2026-171",
+    "owner": "WL",
+    "parentName": "R2026-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2026
+    ],
+    "time": {
+     "end": "2026-10-20T10:39:00.000+0200",
+     "start": "2026-10-20T09:40:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2027-111",
+    "owner": "WL",
+    "parentName": "R2027-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2027
+    ],
+    "time": {
+     "end": "2026-10-20T10:39:00.000+0200",
+     "start": "2026-10-20T09:40:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2027-171",
+    "owner": "WL",
+    "parentName": "R2027-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2027
+    ],
+    "time": {
+     "end": "2026-10-20T10:39:00.000+0200",
+     "start": "2026-10-20T09:40:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Fickeysstraße",
+    "name": "R2031-111",
+    "owner": "WL",
+    "parentName": "R2031-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2031
+    ],
+    "time": {
+     "end": "2026-10-20T10:39:00.000+0200",
+     "start": "2026-10-20T09:40:25.000+0200"
+    },
+    "title": "Veranstaltung\nBetrieb ab Fickeysstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Fickeysstraße",
+    "name": "R2031-171",
+    "owner": "WL",
+    "parentName": "R2031-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2031
+    ],
+    "time": {
+     "end": "2026-10-20T10:40:00.000+0200",
+     "start": "2026-10-20T09:40:55.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Fickeysstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Fickeysstraße",
+    "name": "R2032-111",
+    "owner": "WL",
+    "parentName": "R2032-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2032
+    ],
+    "time": {
+     "end": "2026-10-20T10:39:00.000+0200",
+     "start": "2026-10-20T09:40:25.000+0200"
+    },
+    "title": "Veranstaltung\nBetrieb ab Fickeysstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Fickeysstraße",
+    "name": "R2032-171",
+    "owner": "WL",
+    "parentName": "R2032-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2032
+    ],
+    "time": {
+     "end": "2026-10-20T10:40:00.000+0200",
+     "start": "2026-10-20T09:40:55.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Fickeysstraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1772,6 +1916,144 @@
      "start": "2026-10-20T09:06:21.000+0200"
     },
     "title": "Schadhafter Zug\nBetrieb ab Quellenplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2299-111",
+    "owner": "WL",
+    "parentName": "R2299-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2299
+    ],
+    "time": {
+     "end": "2026-10-20T10:39:00.000+0200",
+     "start": "2026-10-20T09:40:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2299-171",
+    "owner": "WL",
+    "parentName": "R2299-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2299
+    ],
+    "time": {
+     "end": "2026-10-20T10:39:00.000+0200",
+     "start": "2026-10-20T09:40:55.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Fickeysstraße",
+    "name": "R2300-111",
+    "owner": "WL",
+    "parentName": "R2300-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2300
+    ],
+    "time": {
+     "end": "2026-10-20T10:39:00.000+0200",
+     "start": "2026-10-20T09:40:25.000+0200"
+    },
+    "title": "Veranstaltung\nBetrieb ab Fickeysstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Fickeysstraße",
+    "name": "R2300-171",
+    "owner": "WL",
+    "parentName": "R2300-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2300
+    ],
+    "time": {
+     "end": "2026-10-20T10:40:00.000+0200",
+     "start": "2026-10-20T09:40:55.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Fickeysstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Fickeysstraße",
+    "name": "R2312-111",
+    "owner": "WL",
+    "parentName": "R2312-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2312
+    ],
+    "time": {
+     "end": "2026-10-20T10:39:00.000+0200",
+     "start": "2026-10-20T09:40:25.000+0200"
+    },
+    "title": "Veranstaltung\nBetrieb ab Fickeysstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Fickeysstraße",
+    "name": "R2312-171",
+    "owner": "WL",
+    "parentName": "R2312-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2312
+    ],
+    "time": {
+     "end": "2026-10-20T10:40:00.000+0200",
+     "start": "2026-10-20T09:40:55.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Fickeysstraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2121,6 +2403,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Fickeysstraße",
+    "name": "R2680-111",
+    "owner": "WL",
+    "parentName": "R2680-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2680
+    ],
+    "time": {
+     "end": "2026-10-20T10:39:00.000+0200",
+     "start": "2026-10-20T09:40:25.000+0200"
+    },
+    "title": "Veranstaltung\nBetrieb ab Fickeysstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Fickeysstraße",
+    "name": "R2680-171",
+    "owner": "WL",
+    "parentName": "R2680-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     2680
+    ],
+    "time": {
+     "end": "2026-10-20T10:40:00.000+0200",
+     "start": "2026-10-20T09:40:55.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Fickeysstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -2301,6 +2629,98 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R4732-111",
+    "owner": "WL",
+    "parentName": "R4732-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     4732
+    ],
+    "time": {
+     "end": "2026-10-20T10:39:00.000+0200",
+     "start": "2026-10-20T09:40:57.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R4732-171",
+    "owner": "WL",
+    "parentName": "R4732-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     4732
+    ],
+    "time": {
+     "end": "2026-10-20T10:39:00.000+0200",
+     "start": "2026-10-20T09:40:57.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Fickeysstraße",
+    "name": "R4733-111",
+    "owner": "WL",
+    "parentName": "R4733-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     4733
+    ],
+    "time": {
+     "end": "2026-10-20T10:39:00.000+0200",
+     "start": "2026-10-20T09:40:27.000+0200"
+    },
+    "title": "Veranstaltung\nBetrieb ab Fickeysstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Fickeysstraße",
+    "name": "R4733-171",
+    "owner": "WL",
+    "parentName": "R4733-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     4733
+    ],
+    "time": {
+     "end": "2026-10-20T10:40:00.000+0200",
+     "start": "2026-10-20T09:40:57.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Fickeysstraße"
    },
    {
     "alertCause": "undefined alert cause",

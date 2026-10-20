@@ -1,16 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-20T07:30:55.273509+00:00",
- "built": "2026-10-20T09:30:44+02:00",
+ "updated": "2026-10-20T08:00:49.128219+00:00",
+ "built": "2026-10-20T10:00:39+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-20T09:30:44+02:00",
+  "built": "2026-10-20T10:00:39+02:00",
   "items": [
    {
-    "title": "11: Schadhafter Zug",
-    "time_line": "Seit 09:03"
+    "title": "11/71: Verkehrsunfall",
+    "time_line": "Seit 09:38"
    },
    {
     "title": "O: Schadhafter Zug",
@@ -6770,6 +6770,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 116
+   }
+  },
+  {
+   "t": "2026-10-20T08:00:49.128219+00:00",
+   "raw": {
+    "wl-stoerungen": 110,
+    "wl-hinweise": 99,
+    "oebb": 165,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 21,
+    "oebb": 142,
+    "baustellen": 69
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 114
    }
   }
  ]
