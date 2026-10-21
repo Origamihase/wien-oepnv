@@ -1,24 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-21T11:31:13.945007+00:00",
- "built": "2026-10-21T13:30:59+02:00",
+ "updated": "2026-10-21T12:01:11.993907+00:00",
+ "built": "2026-10-21T14:01:01+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-21T13:30:59+02:00",
+  "built": "2026-10-21T14:01:01+02:00",
   "items": [
    {
-    "title": "U4: Vandalismus",
-    "time_line": "Seit 13:11"
-   },
-   {
-    "title": "31: Rettungseinsatz",
-    "time_line": "Seit 12:55"
-   },
-   {
-    "title": "5: Rettungseinsatz",
-    "time_line": "Seit 12:49"
+    "title": "25: Polizeieinsatz",
+    "time_line": "Seit 13:45"
    },
    {
     "title": "44: Gleisschaden",
@@ -47,6 +39,14 @@
    {
     "title": "48A: Neubaugasse, Neustiftgasse",
     "time_line": "Seit 19.10."
+   },
+   {
+    "title": "N71: Simmering S U",
+    "time_line": "Bis Fr 23.10."
+   },
+   {
+    "title": "64A: Liesing-Flur-Gasse",
+    "time_line": "Bis Do 22.10."
    }
   ]
  },
@@ -6770,6 +6770,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 113
+   }
+  },
+  {
+   "t": "2026-10-21T12:01:11.993907+00:00",
+   "raw": {
+    "wl-stoerungen": 80,
+    "wl-hinweise": 94,
+    "oebb": 163,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 16,
+    "oebb": 138,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 110
    }
   }
  ]

@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261021-0014, I20260917-0012, I20260922-0032, I20261021-0021-F01, I20260925-0011, I20261021-0022, I20260909-0007, I20261021-0021-F02, I20261020-0029"
+    "trafficInfoNameList": "I20261021-0014, I20260917-0012, I20260922-0032, I20260925-0011, I20261021-0023-F01, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R102-136, R101-136, R100-136, R318-437, R293-474, R36-152, R116-136, R115-136, R117-136, R118-136, R119-136, R103-136, R130-136, R19-136, R45-136, R1446-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1448-412, R1474-412, R1475-149, R1476-149, R1445-149, R1447-149, R401-101, R1880-101, R1882-101, R1881-101, R1883-101, R1876-101, R1875-101, R1884-101, R2371-125, R2343-626, R2343-125, R2372-125, R2359-125, R2370-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2025-671, R2378-627, R2558-125, R5815-671, R1974-466, R500-101, R1848-0, R1842-462, R277-144, R276-144, R242-144, R241-144, R245-144, R1387-144, R384-0, R385-0, R353-0, R352-0, R386-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R102-136, R101-136, R100-136, R19-136, R45-136, R318-437, R293-474, R36-152, R115-136, R116-136, R117-136, R118-136, R103-136, R119-136, R130-136, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1448-412, R1474-412, R1475-149, R1476-149, R401-101, R1876-101, R1881-101, R1880-101, R1882-101, R1883-101, R1875-101, R1884-101, R2372-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2025-671, R2378-627, R2558-125, R5815-671, R1974-466, R500-101, R1848-0, R1842-462, R277-144, R276-144, R241-144, R245-144, R242-144, R1387-144, R3183-125, R3184-125, R3185-125, R3186-125, R3187-125, R3069-125, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -304,141 +304,50 @@
     "title": "44: Gleisschaden"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
+    "alertCause": "police activity",
+    "alertCauseId": 3,
     "attributes": {
      "relatedLineTypes": {
-      "12": "ptTram"
+      "25": "ptTram"
      }
     },
-    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "12: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "25: Polizeieinsatz"
       }
      }
     ],
-    "location": "Wallensteinstraße",
-    "name": "I20261021-0021-F01",
+    "location": "Prinzgasse 2",
+    "name": "I20261021-0023-F01",
     "owner": "WL",
-    "parentName": "I20261021-0021",
+    "parentName": "I20261021-0023",
     "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "12"
+     "25"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 112,
-      "lineName": "12",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-21T13:00:00.000+0200",
-     "end": "2026-10-21T13:30:00.000+0200",
-     "lastUpdate": "2026-10-21T13:30:00.000+0200",
-     "resume": "2026-10-21T13:30:00.000+0200",
-     "start": "2026-10-21T12:49:00.000+0200"
-    },
-    "title": "12: Rettungseinsatz"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "5": "ptTram"
-     }
-    },
-    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "5: Rettungseinsatz"
-      }
-     }
-    ],
-    "location": "Wallensteinstraße",
-    "name": "I20261021-0021-F02",
-    "owner": "WL",
-    "parentName": "I20261021-0021",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 105,
-      "lineName": "5",
+      "lineId": 125,
+      "lineName": "25",
       "vehicleType": "ptTram"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-21T13:00:00.000+0200",
-     "end": "2026-10-21T13:41:00.000+0200",
-     "lastUpdate": "2026-10-21T13:16:00.000+0200",
-     "start": "2026-10-21T12:49:00.000+0200"
+     "created": "2026-10-21T13:53:00.000+0200",
+     "lastUpdate": "2026-10-21T13:53:00.000+0200",
+     "resume": "2026-10-21T13:53:00.000+0200",
+     "start": "2026-10-21T13:47:00.000+0200"
     },
-    "title": "5: Rettungseinsatz"
-   },
-   {
-    "alertCause": "vandalism",
-    "alertCauseId": 16,
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus.",
-    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Vandalismus.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Vandalismus.</p>",
-       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus.",
-       "title": "U4: Vandalismus"
-      }
-     }
-    ],
-    "name": "I20261021-0022",
-    "owner": "WL",
-    "parentName": "I20261021-0022",
-    "priority": "1",
-    "reasonId": 52,
-    "reasonName": "Vandalismus",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-21T13:12:00.000+0200",
-     "lastUpdate": "2026-10-21T13:12:00.000+0200",
-     "start": "2026-10-21T13:11:00.000+0200"
-    },
-    "title": "U4: Vandalismus"
+    "title": "25: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1725,6 +1634,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R3069-125",
+    "owner": "WL",
+    "parentName": "R3069-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3069
+    ],
+    "time": {
+     "end": "2026-10-21T14:44:00.000+0200",
+     "start": "2026-10-21T13:45:04.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1748,42 +1680,117 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab\nAlserbachstraße\n",
-    "name": "R352-0",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R3183-125",
     "owner": "WL",
-    "parentName": "R352-0",
+    "parentName": "R3183-125",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
     "relatedStops": [
-     352
+     3183
     ],
     "time": {
-     "end": "2026-10-21T13:53:00.000+0200",
-     "start": "2026-10-21T12:54:24.000+0200"
+     "end": "2026-10-21T14:44:00.000+0200",
+     "start": "2026-10-21T13:45:03.000+0200"
     },
-    "title": "Rettungseinsatz\nBetrieb ab\nAlserbachstraße\n"
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab\nAlserbachstraße\n",
-    "name": "R353-0",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R3184-125",
     "owner": "WL",
-    "parentName": "R353-0",
+    "parentName": "R3184-125",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
     "relatedStops": [
-     353
+     3184
     ],
     "time": {
-     "end": "2026-10-21T13:53:00.000+0200",
-     "start": "2026-10-21T12:54:24.000+0200"
+     "end": "2026-10-21T14:44:00.000+0200",
+     "start": "2026-10-21T13:45:03.000+0200"
     },
-    "title": "Rettungseinsatz\nBetrieb ab\nAlserbachstraße\n"
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R3185-125",
+    "owner": "WL",
+    "parentName": "R3185-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3185
+    ],
+    "time": {
+     "end": "2026-10-21T14:44:00.000+0200",
+     "start": "2026-10-21T13:45:03.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R3186-125",
+    "owner": "WL",
+    "parentName": "R3186-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3186
+    ],
+    "time": {
+     "end": "2026-10-21T14:44:00.000+0200",
+     "start": "2026-10-21T13:45:03.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R3187-125",
+    "owner": "WL",
+    "parentName": "R3187-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3187
+    ],
+    "time": {
+     "end": "2026-10-21T14:44:00.000+0200",
+     "start": "2026-10-21T13:45:03.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1807,66 +1814,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Züge halten\nbei Linien 6 und 18"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab\nKlosterneuburger\nStraße",
-    "name": "R384-0",
-    "owner": "WL",
-    "parentName": "R384-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     384
-    ],
-    "time": {
-     "end": "2026-10-21T13:52:00.000+0200",
-     "start": "2026-10-21T12:53:56.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab\nKlosterneuburger\nStraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab\nKlosterneuburger\nStraße",
-    "name": "R385-0",
-    "owner": "WL",
-    "parentName": "R385-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     385
-    ],
-    "time": {
-     "end": "2026-10-21T13:52:00.000+0200",
-     "start": "2026-10-21T12:53:56.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab\nKlosterneuburger\nStraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nZüge halten bei\nLinie 31\n",
-    "name": "R386-0",
-    "owner": "WL",
-    "parentName": "R386-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     386
-    ],
-    "time": {
-     "end": "2026-10-21T13:54:00.000+0200",
-     "start": "2026-10-21T12:55:26.000+0200"
-    },
-    "title": "Rettungseinsatz\nZüge halten bei\nLinie 31\n"
    },
    {
     "alertCause": "undefined alert cause",
