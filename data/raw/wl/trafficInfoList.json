@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261021-0014, I20260917-0012, I20260922-0032, I20261021-0027, I20260925-0011, I20261021-0026-F01, I20260909-0007, I20261021-0026-F02, I20261021-0026, I20261020-0029, I20261021-0024"
+    "trafficInfoNameList": "I20261021-0014, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R318-437, R293-474, R1448-149, R1447-149, R1448-412, R1475-149, R1476-149, R1445-149, R1446-149, R1474-149, R1473-149, R1472-149, R1449-149, R1474-412, R401-101, R1875-101, R1884-101, R1882-101, R1881-101, R1880-101, R1876-101, R1883-101, R2345-127, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2372-627, R2025-671, R2378-627, R2558-125, R5815-671, R1974-466, R500-101, R1848-0, R1842-462, R276-144, R277-144, R241-144, R242-144, R245-144, R1387-144, R402-106, R401-106, R402-101, R407-101, R403-101, R403-106, R425-101, R411-101, R423-101, R424-101, R2243-101, R411-106, R424-106, R425-106, R426-106, R189-0, R190-0, R192-0, R177-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R118-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R45-136, R19-136, R130-136, R318-437, R293-474, R36-152, R119-136, R117-136, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1448-412, R1475-149, R1474-412, R1445-149, R1476-149, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R2372-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2025-671, R2378-627, R2558-125, R5815-671, R1974-466, R1848-0, R1842-462, R277-144, R276-144, R245-144, R242-144, R241-144, R1387-144, R401-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -304,249 +304,6 @@
     "title": "44: Gleisschaden"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "1": "ptTram",
-      "6": "ptTram"
-     }
-    },
-    "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Matzleinsdorfer Platz. Weiterfahrt bis Bhf. Meidling S U, Dörfelstraße. Linie 6: Umleitung in beiden Richtungen zwischen Quellenplatz und Matzleinsdorfer Platz S über Hauptbahnhof S U. Voraussichtliche Dauer: 16:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Quellenstraße.",
-    "descriptionHTML": "<p>Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Matzleinsdorfer Platz.<br>Weiterfahrt bis Bhf. Meidling S U, Dörfelstraße.<br>Linie 6:<br>Umleitung in beiden Richtungen<br>zwischen Quellenplatz und Matzleinsdorfer Platz S<br>über Hauptbahnhof S U.</p><p>Voraussichtliche Dauer: 16:00 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Quellenstraße.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Matzleinsdorfer Platz.<br>Weiterfahrt bis Bhf. Meidling S U, Dörfelstraße.<br>Linie 6:<br>Umleitung in beiden Richtungen<br>zwischen Quellenplatz und Matzleinsdorfer Platz S<br>über Hauptbahnhof S U.</p><p>Voraussichtliche Dauer: 16:00 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Quellenstraße.</p>",
-       "descriptionPlain": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Matzleinsdorfer Platz. Weiterfahrt bis Bhf. Meidling S U, Dörfelstraße. Linie 6: Umleitung in beiden Richtungen zwischen Quellenplatz und Matzleinsdorfer Platz S über Hauptbahnhof S U. Voraussichtliche Dauer: 16:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Quellenstraße.",
-       "title": "6, 1: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Quellenstraße",
-    "name": "I20261021-0024",
-    "owner": "WL",
-    "parentName": "I20261021-0024",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "1",
-     "6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 101,
-      "lineName": "1",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 106,
-      "lineName": "6",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-21T15:05:00.000+0200",
-     "lastUpdate": "2026-10-21T15:16:00.000+0200",
-     "start": "2026-10-21T15:02:00.000+0200"
-    },
-    "title": "6, 1: Fremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "40": "ptTram",
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 40: Umleitung in Richtung Gersthof, Herbeckstraße zwischen Währinger Straße, Volksoper U und Gersthof S über Michelbeuern-AKH U (Strecke Linien 42 und 9). Linie 41: Umleitung in Richtung Pötzleinsdorf zwischen Währinger Straße, Volksoper U und Gersthof S über Michelbeuern-AKH U (Strecke der Linien 42 und 9). Voraussichtliche Dauer: 15:50 Uhr. Grund: Falschparker im Bereich Währinger Straße 89.",
-    "descriptionHTML": "<p>Linie 40:<br>Umleitung in Richtung Gersthof, Herbeckstraße <br>zwischen Währinger Straße, Volksoper U und Gersthof S <br>über Michelbeuern-AKH U (Strecke Linien 42 und 9).<br>Linie 41:<br>Umleitung in Richtung Pötzleinsdorf <br>zwischen Währinger Straße, Volksoper U und Gersthof S <br>über Michelbeuern-AKH U (Strecke der Linien 42 und 9).</p><p>Voraussichtliche Dauer: 15:50 Uhr.</p><p>Grund: Falschparker im Bereich Währinger Straße 89.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 40:<br>Umleitung in Richtung Gersthof, Herbeckstraße <br>zwischen Währinger Straße, Volksoper U und Gersthof S <br>über Michelbeuern-AKH U (Strecke Linien 42 und 9).<br>Linie 41:<br>Umleitung in Richtung Pötzleinsdorf <br>zwischen Währinger Straße, Volksoper U und Gersthof S <br>über Michelbeuern-AKH U (Strecke der Linien 42 und 9).</p><p>Voraussichtliche Dauer: 15:50 Uhr.</p><p>Grund: Falschparker im Bereich Währinger Straße 89.</p>",
-       "descriptionPlain": "Linie 40: Umleitung in Richtung Gersthof, Herbeckstraße zwischen Währinger Straße, Volksoper U und Gersthof S über Michelbeuern-AKH U (Strecke Linien 42 und 9). Linie 41: Umleitung in Richtung Pötzleinsdorf zwischen Währinger Straße, Volksoper U und Gersthof S über Michelbeuern-AKH U (Strecke der Linien 42 und 9). Voraussichtliche Dauer: 15:50 Uhr. Grund: Falschparker im Bereich Währinger Straße 89.",
-       "title": "40, 41: Falschparker"
-      }
-     }
-    ],
-    "location": "Währinger Straße 89",
-    "name": "I20261021-0026",
-    "owner": "WL",
-    "parentName": "I20261021-0026",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "40",
-     "41"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 140,
-      "lineName": "40",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 141,
-      "lineName": "41",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-21T15:20:00.000+0200",
-     "end": "2026-10-21T15:27:00.000+0200",
-     "lastUpdate": "2026-10-21T15:27:00.000+0200",
-     "resume": "2026-10-21T15:27:00.000+0200",
-     "start": "2026-10-21T15:19:00.000+0200"
-    },
-    "title": "40, 41: Falschparker"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "40": "ptTram"
-     }
-    },
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "40: Falschparker"
-      }
-     }
-    ],
-    "location": "Währinger Straße 89",
-    "name": "I20261021-0026-F01",
-    "owner": "WL",
-    "parentName": "I20261021-0026",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 140,
-      "lineName": "40",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-21T15:27:00.000+0200",
-     "lastUpdate": "2026-10-21T15:27:00.000+0200",
-     "resume": "2026-10-21T15:27:00.000+0200",
-     "start": "2026-10-21T15:19:00.000+0200"
-    },
-    "title": "40: Falschparker"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "41: Falschparker"
-      }
-     }
-    ],
-    "location": "Währinger Straße 89",
-    "name": "I20261021-0026-F02",
-    "owner": "WL",
-    "parentName": "I20261021-0026",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 141,
-      "lineName": "41",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-21T15:27:00.000+0200",
-     "lastUpdate": "2026-10-21T15:27:00.000+0200",
-     "resume": "2026-10-21T15:27:00.000+0200",
-     "start": "2026-10-21T15:19:00.000+0200"
-    },
-    "title": "41: Falschparker"
-   },
-   {
-    "alertCause": "signal failure",
-    "alertCauseId": 38,
-    "attributes": {
-     "relatedLineTypes": {
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.",
-    "descriptionHTML": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Signalstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Signalstörung.</p>",
-       "descriptionPlain": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.",
-       "title": "O: Signalstörung"
-      }
-     }
-    ],
-    "name": "I20261021-0027",
-    "owner": "WL",
-    "parentName": "I20261021-0027",
-    "priority": "1",
-    "reasonId": 30,
-    "reasonName": "Signalstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 170,
-      "lineName": "O",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-21T15:23:00.000+0200",
-     "lastUpdate": "2026-10-21T15:23:00.000+0200",
-     "resume": "2026-10-21T15:22:00.000+0200",
-     "start": "2026-10-21T15:22:00.000+0200"
-    },
-    "title": "O: Signalstörung"
-   },
-   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -794,7 +551,7 @@
      1387
     ],
     "time": {
-     "end": "2026-10-21T23:59:00.000+0200",
+     "end": "2026-10-21T23:59:59.000+0200",
      "start": "2026-10-21T10:05:40.000+0200"
     },
     "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
@@ -1078,26 +835,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Falschparker\nUmleitung bis\nGersthof < über\nLinien 42 und 9!",
-    "name": "R177-0",
-    "owner": "WL",
-    "parentName": "R177-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     177
-    ],
-    "time": {
-     "end": "2026-10-21T16:18:00.000+0200",
-     "start": "2026-10-21T15:19:10.000+0200"
-    },
-    "title": "Falschparker\nUmleitung bis\nGersthof < über\nLinien 42 und 9!"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Straßenbau\nHaltestelle verlegt zur Wienerbergbrücke vor Breitenfurter Straße",
     "name": "R1842-462",
     "owner": "WL",
@@ -1302,26 +1039,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Falschparker\nUmleitung bis\nGersthof < über\nLinien 42 und 9!",
-    "name": "R189-0",
-    "owner": "WL",
-    "parentName": "R189-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     189
-    ],
-    "time": {
-     "end": "2026-10-21T16:18:00.000+0200",
-     "start": "2026-10-21T15:19:10.000+0200"
-    },
-    "title": "Falschparker\nUmleitung bis\nGersthof < über\nLinien 42 und 9!"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -1341,46 +1058,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Falschparker\nUmleitung bis\nGersthof < über\nLinien 42 und 9!",
-    "name": "R190-0",
-    "owner": "WL",
-    "parentName": "R190-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     190
-    ],
-    "time": {
-     "end": "2026-10-21T16:18:00.000+0200",
-     "start": "2026-10-21T15:19:10.000+0200"
-    },
-    "title": "Falschparker\nUmleitung bis\nGersthof < über\nLinien 42 und 9!"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Falschparker\nUmleitung bis\nGersthof < über\nLinien 42 und 9!",
-    "name": "R192-0",
-    "owner": "WL",
-    "parentName": "R192-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     192
-    ],
-    "time": {
-     "end": "2026-10-21T16:18:00.000+0200",
-     "start": "2026-10-21T15:19:10.000+0200"
-    },
-    "title": "Falschparker\nUmleitung bis\nGersthof < über\nLinien 42 und 9!"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1424,29 +1101,6 @@
      "start": "2026-10-21T00:00:20.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Matzleinsdorfer Platz",
-    "name": "R2243-101",
-    "owner": "WL",
-    "parentName": "R2243-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     2243
-    ],
-    "time": {
-     "end": "2026-10-21T16:12:00.000+0200",
-     "start": "2026-10-21T15:13:41.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Matzleinsdorfer Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1788,7 +1442,7 @@
      241
     ],
     "time": {
-     "end": "2026-10-21T23:59:00.000+0200",
+     "end": "2026-10-21T23:59:59.000+0200",
      "start": "2026-10-21T10:05:37.000+0200"
     },
     "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
@@ -1811,7 +1465,7 @@
      242
     ],
     "time": {
-     "end": "2026-10-21T23:59:00.000+0200",
+     "end": "2026-10-21T23:59:59.000+0200",
      "start": "2026-10-21T10:05:37.000+0200"
     },
     "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
@@ -1834,7 +1488,7 @@
      245
     ],
     "time": {
-     "end": "2026-10-21T23:59:00.000+0200",
+     "end": "2026-10-21T23:59:59.000+0200",
      "start": "2026-10-21T10:05:37.000+0200"
     },
     "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
@@ -1880,7 +1534,7 @@
      276
     ],
     "time": {
-     "end": "2026-10-21T23:59:00.000+0200",
+     "end": "2026-10-21T23:59:59.000+0200",
      "start": "2026-10-21T10:05:08.000+0200"
     },
     "title": "Fahrtbehinderung\nGleisschaden"
@@ -1903,7 +1557,7 @@
      277
     ],
     "time": {
-     "end": "2026-10-21T23:59:00.000+0200",
+     "end": "2026-10-21T23:59:59.000+0200",
      "start": "2026-10-21T10:05:08.000+0200"
     },
     "title": "Fahrtbehinderung\nGleisschaden"
@@ -1980,7 +1634,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Gleisbauarbeiten\nUmleitung zum Reumannplatz >",
     "name": "R401-101",
     "owner": "WL",
     "parentName": "R401-101",
@@ -1995,332 +1649,10 @@
      401
     ],
     "time": {
-     "end": "2026-10-21T16:08:00.000+0200",
-     "start": "2026-10-20T12:04:07.000+0200"
+     "end": "2026-10-21T23:59:59.000+0200",
+     "start": "2026-10-21T16:08:14.000+0200"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R401-106",
-    "owner": "WL",
-    "parentName": "R401-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     401
-    ],
-    "time": {
-     "end": "2026-10-21T16:06:00.000+0200",
-     "start": "2026-10-21T15:07:08.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R402-101",
-    "owner": "WL",
-    "parentName": "R402-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     402
-    ],
-    "time": {
-     "end": "2026-10-21T16:08:00.000+0200",
-     "start": "2026-10-21T15:08:39.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Quellenplatz",
-    "name": "R402-106",
-    "owner": "WL",
-    "parentName": "R402-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     402
-    ],
-    "time": {
-     "end": "2026-10-21T16:06:00.000+0200",
-     "start": "2026-10-21T15:07:08.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Quellenplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R403-101",
-    "owner": "WL",
-    "parentName": "R403-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     403
-    ],
-    "time": {
-     "end": "2026-10-21T16:08:00.000+0200",
-     "start": "2026-10-21T15:08:39.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nZüge halten  bei Linie O",
-    "name": "R403-106",
-    "owner": "WL",
-    "parentName": "R403-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     403
-    ],
-    "time": {
-     "end": "2026-10-21T16:12:00.000+0200",
-     "start": "2026-10-21T15:12:39.000+0200"
-    },
-    "title": "Rettungseinsatz\nZüge halten  bei Linie O"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R407-101",
-    "owner": "WL",
-    "parentName": "R407-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     407
-    ],
-    "time": {
-     "end": "2026-10-21T16:08:00.000+0200",
-     "start": "2026-10-21T15:08:39.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Matzleinsdorfer Platz",
-    "name": "R411-101",
-    "owner": "WL",
-    "parentName": "R411-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     411
-    ],
-    "time": {
-     "end": "2026-10-21T16:12:00.000+0200",
-     "start": "2026-10-21T15:13:39.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Matzleinsdorfer Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Matzleinsdorfer Platz",
-    "name": "R411-106",
-    "owner": "WL",
-    "parentName": "R411-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     411
-    ],
-    "time": {
-     "end": "2026-10-21T17:00:00.000+0200",
-     "start": "2026-10-21T15:16:40.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Matzleinsdorfer Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Matzleinsdorfer Platz",
-    "name": "R423-101",
-    "owner": "WL",
-    "parentName": "R423-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     423
-    ],
-    "time": {
-     "end": "2026-10-21T16:12:00.000+0200",
-     "start": "2026-10-21T15:13:39.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Matzleinsdorfer Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Matzleinsdorfer Platz",
-    "name": "R424-101",
-    "owner": "WL",
-    "parentName": "R424-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     424
-    ],
-    "time": {
-     "end": "2026-10-21T16:12:00.000+0200",
-     "start": "2026-10-21T15:13:39.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Matzleinsdorfer Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Matzleinsdorfer Platz",
-    "name": "R424-106",
-    "owner": "WL",
-    "parentName": "R424-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     424
-    ],
-    "time": {
-     "end": "2026-10-21T17:00:00.000+0200",
-     "start": "2026-10-21T15:16:40.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Matzleinsdorfer Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Matzleinsdorfer Platz",
-    "name": "R425-101",
-    "owner": "WL",
-    "parentName": "R425-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     425
-    ],
-    "time": {
-     "end": "2026-10-21T16:12:00.000+0200",
-     "start": "2026-10-21T15:13:39.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Matzleinsdorfer Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Matzleinsdorfer Platz",
-    "name": "R425-106",
-    "owner": "WL",
-    "parentName": "R425-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     425
-    ],
-    "time": {
-     "end": "2026-10-21T17:00:00.000+0200",
-     "start": "2026-10-21T15:16:40.000+0200"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Matzleinsdorfer Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nZüge halten bei Linie 18 Richtung Burggasse",
-    "name": "R426-106",
-    "owner": "WL",
-    "parentName": "R426-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     426
-    ],
-    "time": {
-     "end": "2026-10-21T16:16:00.000+0200",
-     "start": "2026-10-21T15:17:40.000+0200"
-    },
-    "title": "Rettungseinsatz\nZüge halten bei Linie 18 Richtung Burggasse"
+    "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz >"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2344,29 +1676,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
-    "name": "R500-101",
-    "owner": "WL",
-    "parentName": "R500-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     500
-    ],
-    "time": {
-     "end": "2026-10-21T23:00:00.000+0200",
-     "start": "2026-10-21T05:00:08.000+0200"
-    },
-    "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
     "alertCause": "undefined alert cause",
