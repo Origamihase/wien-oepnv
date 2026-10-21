@@ -8,20 +8,74 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 21 Oct 2026 15:01:05 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 15:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[25: Polizeieinsatz]]></title>
+      <title><![CDATA[O: Signalstörung]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">a366c32c65098559124d9098d458131cf3e677c92ae8069e81b721bb4295db1a</guid>
-      <pubDate>Wed, 21 Oct 2026 13:45:03 +0200</pubDate>
+      <guid isPermaLink="false">a184874c95ca4c4e9a247c7ee5ba23c74f0e89560655076070c2ccfd6a4279cd</guid>
+      <pubDate>Wed, 21 Oct 2026 15:22:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 21 Oct 2026 13:45:03 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 21 Oct 2026 13:47:00 +0200</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße; Züge halten Donaufelder Straße 175-177. [Seit 13:45]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße; Züge halten Donaufelder Straße 175-177.<br/>[Seit 13:45]]]></content:encoded>
+      <ext:first_seen>Wed, 21 Oct 2026 15:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 15:22:00 +0200</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung. [Seit 15:22]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.<br/>[Seit 15:22]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/6: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">680dad20662e8afe5829ddce5e5d7689e370d370b2e5da2d253ceeda57d2af06</guid>
+      <pubDate>Wed, 21 Oct 2026 15:02:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 15:30:55 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 15:02:00 +0200</ext:starts_at>
+      <description>1: Betrieb nur Prater Hauptallee – Matzleinsdorfer Platz; 6: Umleitung Quellenplatz – Matzleinsdorfer Platz S. Voraussichtlich bis 16:00 Uhr. [Seit 15:02]</description>
+      <content:encoded><![CDATA[1: Betrieb nur Prater Hauptallee – Matzleinsdorfer Platz; 6: Umleitung Quellenplatz – Matzleinsdorfer Platz S. Voraussichtlich bis 16:00 Uhr.<br/>[Seit 15:02]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[42/9: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">d0306412af66249baa2e50a703d32bf283d9f6320fd3f4faaa25f07a5180723d</guid>
+      <pubDate>Wed, 21 Oct 2026 15:19:10 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 15:19:10 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 15:19:10 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 21 Oct 2026 16:18:00 +0200</ext:ends_at>
+      <description>Umleitung bis Gersthof über Linien 42 und 9! Umleitung bis Gersthof &amp;lt; über Linien 42 und 9! [Seit 15:19]</description>
+      <content:encoded><![CDATA[Umleitung bis Gersthof über Linien 42 und 9! Umleitung bis Gersthof &lt; über Linien 42 und 9!<br/>[Seit 15:19]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40/41: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919</guid>
+      <pubDate>Wed, 21 Oct 2026 15:19:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 15:19:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 15:19:00 +0200</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 15:19]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 15:19]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[6: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4</guid>
+      <pubDate>Wed, 21 Oct 2026 15:07:08 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 15:07:08 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 15:17:40 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 21 Oct 2026 17:00:00 +0200</ext:ends_at>
+      <description>Züge halten bei Linie 18 Richtung Burggasse. [Seit 15:07]</description>
+      <content:encoded><![CDATA[Züge halten bei Linie 18 Richtung Burggasse.<br/>[Seit 15:07]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44: Gleisschaden]]></title>
@@ -65,6 +119,20 @@
       <content:encoded><![CDATA[Perfektastraße 3 → Perfektastraße 9. Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa …<br/>[Ab Do 22.10.]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[1: Rettungseinsatz, Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">6e5c65020def5689151ed7679b555347c370e5da8cedf54fa1832014cdac643b</guid>
+      <pubDate>Tue, 20 Oct 2026 12:04:07 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 20 Oct 2026 12:04:07 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 15:13:41 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 21 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Rettungseinsatz: Betrieb ab Matzleinsdorfer Platz. Gleisbauarbeiten: Züge halten Quellenstraße 156 (Linie 6); Betrieb ab Knöllgasse; Kein Betrieb. [Heute]</description>
+      <content:encoded><![CDATA[Rettungseinsatz: Betrieb ab Matzleinsdorfer Platz. Gleisbauarbeiten: Züge halten Quellenstraße 156 (Linie 6); Betrieb ab Knöllgasse; Kein Betrieb.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[1: Gleisbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">8681a71896a38fa5cd0db22da3a40ed6cc4472d9266f99cbebaff20ab7d6d4e6</guid>
@@ -77,79 +145,6 @@
       <ext:ends_at>Sat, 05 Dec 2026 04:00:00 +0100</ext:ends_at>
       <description>Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1. Maßnahmen: Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. [Bis 05.12.]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1. Maßnahmen: Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br/>[Bis 05.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[56B/56A/N62: Strampfergasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">d26c6c6963612c560045052c175b1ec9ef04add4290e496a66c9625d2dde4a6e</guid>
-      <pubDate>Mon, 19 Oct 2026 00:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 19 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <georss:point>48.167289 16.277365</georss:point>
-      <description>Hermesstraße nach Strampfergasse → etwa 100 Meter in Richtung Dr.-Schober-Straße. Hermesstraße nach Strampfergasse → aufgelassen. Haltestellenverlegung bzw. -auflassung … [Bis 03.11.]</description>
-      <content:encoded><![CDATA[Hermesstraße nach Strampfergasse → etwa 100 Meter in Richtung Dr.-Schober-Straße. Hermesstraße nach Strampfergasse → aufgelassen. Haltestellenverlegung bzw. -auflassung …<br/>[Bis 03.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[80A: ÖBB-Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5a68b1fc449f7041118da0ac6c6652cede40d8eb9c245e412fcac285c52db7c7</guid>
-      <pubDate>Tue, 06 Oct 2026 14:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 19 Oct 2026 00:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
-      <description>Wegen der Neuerrichtung der ÖBB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Maßnahmen in Kraft. [Bis 31.12.2027]</description>
-      <content:encoded><![CDATA[Wegen der Neuerrichtung der ÖBB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Maßnahmen in Kraft.<br/>[Bis 31.12.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: Neubaugasse, Neustiftgasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">d97a8a3d7d6328446c638ae8a1ccf0afc80a24b1828141a4b94ad0065074c2e5</guid>
-      <pubDate>Thu, 08 Oct 2026 15:10:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 08 Oct 2026 15:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 19 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 08 Oct 2027 11:11:00 +0200</ext:ends_at>
-      <georss:point>48.205482 16.348467</georss:point>
-      <description>Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten. [Seit 19.10.]</description>
-      <content:encoded><![CDATA[Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten.<br/>[Seit 19.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Simmering S U]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">c8f0b5a42164e2ff573973d0ebcbdf6fbd76b99aebfc2c85c8b8657ef7b9bb79</guid>
-      <pubDate>Wed, 14 Oct 2026 15:35:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 14 Oct 2026 15:35:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 23 Oct 2026 05:05:00 +0200</ext:ends_at>
-      <georss:point>48.170159 16.420009</georss:point>
-      <description>Simmeringer Hauptstraße gegenüber 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, provisorische Haltestelle, Hauptfahrbahn. Haltestellenverlegung der Linie N71 … [Bis Fr 23.10.]</description>
-      <content:encoded><![CDATA[Simmeringer Hauptstraße gegenüber 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, provisorische Haltestelle, Hauptfahrbahn. Haltestellenverlegung der Linie N71 …<br/>[Bis Fr 23.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A: Liesing-Flur-Gasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">609517ab3ab98b5b38f0fe913f15e9bd18cd5a3d9005a51a2cb50d3fb227ddbd</guid>
-      <pubDate>Wed, 14 Oct 2026 00:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 14 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 22 Oct 2026 16:00:00 +0200</ext:ends_at>
-      <description>Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten. [Bis Do 22.10.]</description>
-      <content:encoded><![CDATA[Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten.<br/>[Bis Do 22.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
