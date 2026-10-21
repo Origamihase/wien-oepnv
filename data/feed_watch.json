@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-21T09:01:03.182225+00:00",
- "built": "2026-10-21T11:00:47+02:00",
+ "updated": "2026-10-21T09:31:19.380433+00:00",
+ "built": "2026-10-21T11:31:02+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-21T11:00:47+02:00",
+  "built": "2026-10-21T11:31:02+02:00",
   "items": [
+   {
+    "title": "49A: Polizeieinsatz",
+    "time_line": "Seit 11:15"
+   },
    {
     "title": "38: Fremder Verkehrsunfall",
     "time_line": "Seit 10:53"
@@ -43,55 +47,11 @@
    {
     "title": "64A/N64R: Haltestellenverlegung",
     "time_line": "Ab Do 22.10."
-   },
-   {
-    "title": "1: Gleisbauarbeiten",
-    "time_line": "Bis 05.12."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-14T09:01:20.104361+00:00",
-   "raw": {
-    "wl-stoerungen": 71,
-    "wl-hinweise": 92,
-    "oebb": 167,
-    "baustellen-linien": 50,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 21,
-    "oebb": 142,
-    "baustellen": 67
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 100
-   }
-  },
-  {
-   "t": "2026-10-14T09:31:13.225351+00:00",
-   "raw": {
-    "wl-stoerungen": 74,
-    "wl-hinweise": 92,
-    "oebb": 168,
-    "baustellen-linien": 50,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 21,
-    "oebb": 143,
-    "baustellen": 67
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 102
-   }
-  },
   {
    "t": "2026-10-14T10:00:57.247596+00:00",
    "raw": {
@@ -6790,6 +6750,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 119
+   }
+  },
+  {
+   "t": "2026-10-21T09:31:19.380433+00:00",
+   "raw": {
+    "wl-stoerungen": 85,
+    "wl-hinweise": 93,
+    "oebb": 161,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 15,
+    "oebb": 138,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 117
    }
   }
  ]

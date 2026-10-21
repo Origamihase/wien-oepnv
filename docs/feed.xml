@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 21 Oct 2026 11:00:47 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 11:31:02 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[49A: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">f91205e6f04d5464e5e80a7c68b04297d62853ccdc361d42ec39997a3cafc165</guid>
+      <pubDate>Wed, 21 Oct 2026 11:15:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 11:15:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 11:15:00 +0200</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Seit 11:15]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Seit 11:15]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[38: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -34,8 +47,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 21 Oct 2026 10:30:49 +0200</ext:first_seen>
       <ext:starts_at>Wed, 21 Oct 2026 10:10:00 +0200</ext:starts_at>
-      <description>Betrieb nur zwischen Schottenring U und Stephansplatz U. Voraussichtlich bis 11:20 Uhr. Grund: Schadhafter LKW im Bereich Wollzeile. [Seit 10:10]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Schottenring U und Stephansplatz U. Voraussichtlich bis 11:20 Uhr. Grund: Schadhafter LKW im Bereich Wollzeile.<br/>[Seit 10:10]]]></content:encoded>
+      <description>Betrieb nur zwischen Schottenring U und Stephansplatz U. Grund: Schadhafter LKW im Bereich Wollzeile. [Seit 10:10]</description>
+      <content:encoded><![CDATA[Betrieb nur zwischen Schottenring U und Stephansplatz U. Grund: Schadhafter LKW im Bereich Wollzeile.<br/>[Seit 10:10]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44: Gleisschaden]]></title>
@@ -47,8 +60,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 21 Oct 2026 10:30:49 +0200</ext:first_seen>
       <ext:starts_at>Wed, 21 Oct 2026 10:04:00 +0200</ext:starts_at>
-      <description>Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Grund: Gleisschaden im Haltestellenbereich Maroltingergasse. [Seit 10:04]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Grund: Gleisschaden im Haltestellenbereich Maroltingergasse.<br/>[Seit 10:04]]]></content:encoded>
+      <description>Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Voraussichtliche Dauer: Nicht absehbar. [Seit 10:04]</description>
+      <content:encoded><![CDATA[Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Voraussichtliche Dauer: Nicht absehbar.<br/>[Seit 10:04]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10: Fremder Verkehrsunfall]]></title>
@@ -72,7 +85,7 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 21 Oct 2026 09:26:05 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 21 Oct 2026 10:07:40 +0200</ext:starts_at>
+      <ext:starts_at>Wed, 21 Oct 2026 10:07:00 +0200</ext:starts_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 09:26]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 09:26]]]></content:encoded>
     </item>
@@ -128,20 +141,6 @@
       <ext:starts_at>Thu, 22 Oct 2026 00:00:00 +0200</ext:starts_at>
       <description>Perfektastraße 3 → Perfektastraße 9. Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa … [Ab Do 22.10.]</description>
       <content:encoded><![CDATA[Perfektastraße 3 → Perfektastraße 9. Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa …<br/>[Ab Do 22.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8681a71896a38fa5cd0db22da3a40ed6cc4472d9266f99cbebaff20ab7d6d4e6</guid>
-      <pubDate>Wed, 21 Oct 2026 06:50:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 11:58:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 11:58:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 05 Dec 2026 04:00:00 +0100</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1. Maßnahmen: Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. [Bis 05.12.]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1. Maßnahmen: Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br/>[Bis 05.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>

@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261021-0008-F01, I20260917-0012, I20261021-0012-F01, I20260922-0032, I20261021-0014, I20260925-0011, I20261021-0009-F01, I20261021-0009-F02, I20261021-0015-F01, I20260909-0007, I20261021-0016, I20261020-0029"
+    "trafficInfoNameList": "I20261021-0008-F01, I20260917-0012, I20261021-0012-F01, I20260922-0032, I20261021-0017, I20260925-0011, I20261021-0009-F01, I20261021-0009-F02, I20261021-0015-F01, I20260909-0007, I20261021-0016, I20261020-0029, I20261021-0014"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R293-474, R1474-412, R1475-149, R1476-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1448-412, R1474-149, R401-101, R1875-101, R1884-101, R1883-101, R1876-101, R1881-101, R1880-101, R1882-101, R2359-125, R2372-125, R2025-671, R2343-626, R2343-125, R2370-125, R2371-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2378-627, R2558-125, R5815-671, R1974-466, R500-101, R1848-0, R1842-462, R566-146, R565-146, R568-146, R277-144, R276-144, R241-144, R242-144, R245-144, R1387-144, R564-146, R1453-146, R3375-146, R1458-146, R1452-146, R1457-146, R1456-146, R1455-146, R1454-146, R2904-403, R2920-403, R2915-403, R218-144, R219-144, R217-144, R555-144, R1345-144, R1361-144, R1360-144, R208-138, R209-138, R1225-138, R1227-138, R2985-138, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R102-136, R101-136, R100-136, R318-437, R36-152, R293-474, R115-136, R116-136, R117-136, R118-136, R119-136, R103-136, R130-136, R19-136, R45-136, R1446-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1448-412, R1474-412, R1475-149, R1476-149, R1445-149, R1447-149, R401-101, R1883-101, R1882-101, R1881-101, R1880-101, R1884-101, R1876-101, R1875-101, R2025-671, R2372-125, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2378-627, R2558-125, R5815-671, R1974-466, R500-101, R1848-0, R1842-462, R276-144, R277-144, R241-144, R245-144, R242-144, R1387-144, R208-138, R209-138, R1225-138, R1227-138, R2985-138, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -450,13 +450,13 @@
       "44": "ptTram"
      }
     },
-    "description": "Linie 44: Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Voraussichtliche Dauer: 11:00 Uhr. Grund: Gleisschaden im Haltestellenbereich Maroltingergasse.",
-    "descriptionHTML": "<p>Linie 44:<br>Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Gleisschaden im Haltestellenbereich Maroltingergasse.</p>",
+    "description": "Linie 44: Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Voraussichtliche Dauer: Nicht absehbar. Grund: Gleisschaden im Haltestellenbereich Maroltingergasse.",
+    "descriptionHTML": "<p>Linie 44:<br>Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Gleisschaden im Haltestellenbereich Maroltingergasse.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 44:<br>Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Gleisschaden im Haltestellenbereich Maroltingergasse.</p>",
-       "descriptionPlain": "Linie 44: Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Voraussichtliche Dauer: 11:00 Uhr. Grund: Gleisschaden im Haltestellenbereich Maroltingergasse.",
+       "descriptionHtml": "<p>Linie 44:<br>Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Gleisschaden im Haltestellenbereich Maroltingergasse.</p>",
+       "descriptionPlain": "Linie 44: Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Voraussichtliche Dauer: Nicht absehbar. Grund: Gleisschaden im Haltestellenbereich Maroltingergasse.",
        "title": "44: Gleisschaden"
       }
      }
@@ -484,7 +484,7 @@
     "status": "active",
     "time": {
      "created": "2026-10-21T10:06:00.000+0200",
-     "lastUpdate": "2026-10-21T10:06:00.000+0200",
+     "lastUpdate": "2026-10-21T11:01:00.000+0200",
      "start": "2026-10-21T10:04:00.000+0200"
     },
     "title": "44: Gleisschaden"
@@ -581,6 +581,54 @@
      "start": "2026-10-21T10:10:00.000+0200"
     },
     "title": "3A: Schadhafter LKW"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "49A": "ptBusCity"
+     }
+    },
+    "description": "Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "<p>Linie 49A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 49A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+       "descriptionPlain": "Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+       "title": "49A: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261021-0017",
+    "owner": "WL",
+    "parentName": "I20261021-0017",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "49A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 449,
+      "lineName": "49A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "relatedStops": [
+     3264
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-21T11:16:00.000+0200",
+     "lastUpdate": "2026-10-21T11:16:00.000+0200",
+     "resume": "2026-10-21T11:15:00.000+0200",
+     "start": "2026-10-21T11:15:00.000+0200"
+    },
+    "title": "49A: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -861,75 +909,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb nur bis Johann-Nepomuk-Berger-Platz",
-    "name": "R1345-144",
-    "owner": "WL",
-    "parentName": "R1345-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1345
-    ],
-    "time": {
-     "end": "2026-10-21T11:25:00.000+0200",
-     "start": "2026-10-21T10:26:12.000+0200"
-    },
-    "title": "Gleisschaden\nBetrieb nur bis Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb nur bis Johann-Nepomuk-Berger-Platz",
-    "name": "R1360-144",
-    "owner": "WL",
-    "parentName": "R1360-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1360
-    ],
-    "time": {
-     "end": "2026-10-21T11:25:00.000+0200",
-     "start": "2026-10-21T10:26:12.000+0200"
-    },
-    "title": "Gleisschaden\nBetrieb nur bis Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb nur bis Johann-Nepomuk-Berger-Platz",
-    "name": "R1361-144",
-    "owner": "WL",
-    "parentName": "R1361-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1361
-    ],
-    "time": {
-     "end": "2026-10-21T11:25:00.000+0200",
-     "start": "2026-10-21T10:26:12.000+0200"
-    },
-    "title": "Gleisschaden\nBetrieb nur bis Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
     "name": "R1387-144",
     "owner": "WL",
@@ -1087,167 +1066,6 @@
      "start": "2026-10-20T00:00:06.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1452-146",
-    "owner": "WL",
-    "parentName": "R1452-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1452
-    ],
-    "time": {
-     "end": "2026-10-21T11:07:00.000+0200",
-     "start": "2026-10-21T10:07:40.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1453-146",
-    "owner": "WL",
-    "parentName": "R1453-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1453
-    ],
-    "time": {
-     "end": "2026-10-21T11:07:00.000+0200",
-     "start": "2026-10-21T10:07:40.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1454-146",
-    "owner": "WL",
-    "parentName": "R1454-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1454
-    ],
-    "time": {
-     "end": "2026-10-21T11:07:00.000+0200",
-     "start": "2026-10-21T10:07:40.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1455-146",
-    "owner": "WL",
-    "parentName": "R1455-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1455
-    ],
-    "time": {
-     "end": "2026-10-21T11:07:00.000+0200",
-     "start": "2026-10-21T10:07:40.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1456-146",
-    "owner": "WL",
-    "parentName": "R1456-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1456
-    ],
-    "time": {
-     "end": "2026-10-21T11:07:00.000+0200",
-     "start": "2026-10-21T10:07:40.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1457-146",
-    "owner": "WL",
-    "parentName": "R1457-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1457
-    ],
-    "time": {
-     "end": "2026-10-21T11:07:00.000+0200",
-     "start": "2026-10-21T10:07:40.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1458-146",
-    "owner": "WL",
-    "parentName": "R1458-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1458
-    ],
-    "time": {
-     "end": "2026-10-21T11:07:00.000+0200",
-     "start": "2026-10-21T10:07:40.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1702,75 +1520,6 @@
      "start": "2026-10-21T10:53:42.000+0200"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb nur bis Johann-Nepomuk-Berger-Platz",
-    "name": "R217-144",
-    "owner": "WL",
-    "parentName": "R217-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     217
-    ],
-    "time": {
-     "end": "2026-10-21T11:25:00.000+0200",
-     "start": "2026-10-21T10:26:09.000+0200"
-    },
-    "title": "Gleisschaden\nBetrieb nur bis Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb nur bis Johann-Nepomuk-Berger-Platz",
-    "name": "R218-144",
-    "owner": "WL",
-    "parentName": "R218-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     218
-    ],
-    "time": {
-     "end": "2026-10-21T11:25:00.000+0200",
-     "start": "2026-10-21T10:26:09.000+0200"
-    },
-    "title": "Gleisschaden\nBetrieb nur bis Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb nur bis Johann-Nepomuk-Berger-Platz",
-    "name": "R219-144",
-    "owner": "WL",
-    "parentName": "R219-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     219
-    ],
-    "time": {
-     "end": "2026-10-21T11:25:00.000+0200",
-     "start": "2026-10-21T10:26:09.000+0200"
-    },
-    "title": "Gleisschaden\nBetrieb nur bis Johann-Nepomuk-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2235,75 +1984,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsstörung",
-    "name": "R2904-403",
-    "owner": "WL",
-    "parentName": "R2904-403",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "3A"
-    ],
-    "relatedStops": [
-     2904
-    ],
-    "time": {
-     "end": "2026-10-21T11:13:00.000+0200",
-     "start": "2026-10-21T10:15:12.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter LKW",
-    "name": "R2915-403",
-    "owner": "WL",
-    "parentName": "R2915-403",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "3A"
-    ],
-    "relatedStops": [
-     2915
-    ],
-    "time": {
-     "end": "2026-10-21T11:20:00.000+0200",
-     "start": "2026-10-21T10:15:12.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter LKW"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter LKW",
-    "name": "R2920-403",
-    "owner": "WL",
-    "parentName": "R2920-403",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "3A"
-    ],
-    "relatedStops": [
-     2920
-    ],
-    "time": {
-     "end": "2026-10-21T11:19:00.000+0200",
-     "start": "2026-10-21T10:15:12.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter LKW"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -2369,29 +2049,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R3375-146",
-    "owner": "WL",
-    "parentName": "R3375-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     3375
-    ],
-    "time": {
-     "end": "2026-10-21T11:07:00.000+0200",
-     "start": "2026-10-21T10:07:40.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2484,121 +2141,6 @@
      "start": "2026-10-21T05:00:08.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb nur bis Johann-Nepomuk-Berger-Platz",
-    "name": "R555-144",
-    "owner": "WL",
-    "parentName": "R555-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     555
-    ],
-    "time": {
-     "end": "2026-10-21T11:25:00.000+0200",
-     "start": "2026-10-21T10:26:11.000+0200"
-    },
-    "title": "Gleisschaden\nBetrieb nur bis Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R564-146",
-    "owner": "WL",
-    "parentName": "R564-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     564
-    ],
-    "time": {
-     "end": "2026-10-21T11:07:00.000+0200",
-     "start": "2026-10-21T10:07:39.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R565-146",
-    "owner": "WL",
-    "parentName": "R565-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     565
-    ],
-    "time": {
-     "end": "2026-10-21T11:07:00.000+0200",
-     "start": "2026-10-21T09:26:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R566-146",
-    "owner": "WL",
-    "parentName": "R566-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     566
-    ],
-    "time": {
-     "end": "2026-10-21T11:07:00.000+0200",
-     "start": "2026-10-21T09:26:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R568-146",
-    "owner": "WL",
-    "parentName": "R568-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     568
-    ],
-    "time": {
-     "end": "2026-10-21T11:07:00.000+0200",
-     "start": "2026-10-21T09:26:05.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
