@@ -8,8 +8,22 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 21 Oct 2026 10:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 11:00:47 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[38: Third-party traffic accident]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">7ac7e1b509acf7bdaa50335522e14359cfb0162dadc105c4ced573d500dc7ab8</guid>
+      <pubDate>Wed, 21 Oct 2026 10:53:42 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 10:53:42 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 10:53:45 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 21 Oct 2026 11:53:00 +0200</ext:ends_at>
+      <description>Service obstruction. [Since 10:53]</description>
+      <content:encoded><![CDATA[Service obstruction.<br/>[Since 10:53]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[3A: Defective truck]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,8 +34,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 21 Oct 2026 10:30:49 +0200</ext:first_seen>
       <ext:starts_at>Wed, 21 Oct 2026 10:10:00 +0200</ext:starts_at>
-      <description>Service only between Schottenring U and Stephansplatz U. Expected until 10:50. Reason: defective truck in the area of Wollzeile. [Since 10:10]</description>
-      <content:encoded><![CDATA[Service only between Schottenring U and Stephansplatz U. Expected until 10:50. Reason: defective truck in the area of Wollzeile.<br/>[Since 10:10]]]></content:encoded>
+      <description>Service only between Schottenring U and Stephansplatz U. Expected until 11:20. Reason: defective truck in the area of Wollzeile. [Since 10:10]</description>
+      <content:encoded><![CDATA[Service only between Schottenring U and Stephansplatz U. Expected until 11:20. Reason: defective truck in the area of Wollzeile.<br/>[Since 10:10]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44: Track damage]]></title>
@@ -33,21 +47,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 21 Oct 2026 10:30:49 +0200</ext:first_seen>
       <ext:starts_at>Wed, 21 Oct 2026 10:04:00 +0200</ext:starts_at>
-      <description>Service only between Schottentor U and Johann-Nepomuk-Berger-Platz. Expected until 11:00. Reason: track damage in the stop area of Maroltingergasse. [Since 10:04]</description>
-      <content:encoded><![CDATA[Service only between Schottentor U and Johann-Nepomuk-Berger-Platz. Expected until 11:00. Reason: track damage in the stop area of Maroltingergasse.<br/>[Since 10:04]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[68B: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">57b3ae5bfbecd13d33fef6a3277db1a620b4210c9794181e36d22b7e856c4185</guid>
-      <pubDate>Wed, 21 Oct 2026 09:57:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 21 Oct 2026 10:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 21 Oct 2026 09:57:00 +0200</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 09:57]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 09:57]]]></content:encoded>
+      <description>Service only between Schottentor U and Johann-Nepomuk-Berger-Platz. Reason: track damage in the stop area of Maroltingergasse. [Since 10:04]</description>
+      <content:encoded><![CDATA[Service only between Schottentor U and Johann-Nepomuk-Berger-Platz. Reason: track damage in the stop area of Maroltingergasse.<br/>[Since 10:04]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10: Third-party traffic accident]]></title>

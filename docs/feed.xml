@@ -8,8 +8,22 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 21 Oct 2026 10:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 11:00:47 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[38: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">7ac7e1b509acf7bdaa50335522e14359cfb0162dadc105c4ced573d500dc7ab8</guid>
+      <pubDate>Wed, 21 Oct 2026 10:53:42 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 10:53:42 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 10:53:45 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 21 Oct 2026 11:53:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung. [Seit 10:53]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 10:53]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[3A: Schadhafter LKW]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,8 +34,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 21 Oct 2026 10:30:49 +0200</ext:first_seen>
       <ext:starts_at>Wed, 21 Oct 2026 10:10:00 +0200</ext:starts_at>
-      <description>Betrieb nur zwischen Schottenring U und Stephansplatz U. Voraussichtlich bis 10:50 Uhr. Grund: Schadhafter LKW im Bereich Wollzeile. [Seit 10:10]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Schottenring U und Stephansplatz U. Voraussichtlich bis 10:50 Uhr. Grund: Schadhafter LKW im Bereich Wollzeile.<br/>[Seit 10:10]]]></content:encoded>
+      <description>Betrieb nur zwischen Schottenring U und Stephansplatz U. Voraussichtlich bis 11:20 Uhr. Grund: Schadhafter LKW im Bereich Wollzeile. [Seit 10:10]</description>
+      <content:encoded><![CDATA[Betrieb nur zwischen Schottenring U und Stephansplatz U. Voraussichtlich bis 11:20 Uhr. Grund: Schadhafter LKW im Bereich Wollzeile.<br/>[Seit 10:10]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44: Gleisschaden]]></title>
@@ -33,21 +47,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 21 Oct 2026 10:30:49 +0200</ext:first_seen>
       <ext:starts_at>Wed, 21 Oct 2026 10:04:00 +0200</ext:starts_at>
-      <description>Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Voraussichtlich bis 11:00 Uhr. Grund: Gleisschaden im Haltestellenbereich Maroltingergasse. [Seit 10:04]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Voraussichtlich bis 11:00 Uhr. Grund: Gleisschaden im Haltestellenbereich Maroltingergasse.<br/>[Seit 10:04]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[68B: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">57b3ae5bfbecd13d33fef6a3277db1a620b4210c9794181e36d22b7e856c4185</guid>
-      <pubDate>Wed, 21 Oct 2026 09:57:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 21 Oct 2026 10:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 21 Oct 2026 09:57:00 +0200</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 09:57]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 09:57]]]></content:encoded>
+      <description>Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Grund: Gleisschaden im Haltestellenbereich Maroltingergasse. [Seit 10:04]</description>
+      <content:encoded><![CDATA[Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Grund: Gleisschaden im Haltestellenbereich Maroltingergasse.<br/>[Seit 10:04]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10: Fremder Verkehrsunfall]]></title>

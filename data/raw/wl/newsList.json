@@ -3072,8 +3072,17 @@
    {
     "alertCause": "construction work",
     "alertCauseId": 45,
-    "description": "<h2>Bauarbeiten</h2>\r\n<p>Wegen Bauarbeiten im Bereich Neilreichgasse # Davidgasse wird die Linie 7A umgeleitet.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Mittwoch, 14. Oktober 2026, Betriebsbeginn, f&uuml;r etwa 3 Wochen</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 7A in Richtung Meidling Hauptstra&szlig;e U<br /></strong>Umleitung ab Neilreichgasse # Davidgasse &uuml;ber Neilreichgasse &ndash; Rotenhofgasse - Sonnleithnergasse - Davidgasse zur Stammstrecke.</p>\r\n<p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>- Fernkorngasse (Davidgasse 64 vor Fernkorngasse)</p>\r\n<p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>- Fernkorngasse (Davidgasse 70 - 72, prov. Haltestelle)</p>",
+    "description": "<h2>Bauarbeiten</h2><p>Wegen Bauarbeiten im Bereich Neilreichgasse # Davidgasse wird die Linie 7A umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Ab Mittwoch, 14. Oktober 2026, Betriebsbeginn,  bis Mittwoch,  28 Oktober 2026, etwa 07:00 Uhr</p><p><strong><u>Maßnahmen:<br></u>Linie 7A in Richtung Meidling Hauptstraße U<br></strong>Umleitung ab Neilreichgasse # Davidgasse über Neilreichgasse – Rotenhofgasse - Sonnleithnergasse - Davidgasse zur Stammstrecke.</p><p><u>Aufgelassene Haltestellen:<br></u>- Fernkorngasse (Davidgasse 64 vor Fernkorngasse)</p><p><u>Ersatzhaltestellen:<br></u>- Fernkorngasse (Davidgasse 70 - 72, prov. Haltestelle)</p>",
     "id": "N20261009-6271",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<h2>Bauarbeiten</h2><p>Wegen Bauarbeiten im Bereich Neilreichgasse # Davidgasse wird die Linie 7A umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Ab Mittwoch, 14. Oktober 2026, Betriebsbeginn,  bis Mittwoch,  28 Oktober 2026, etwa 07:00 Uhr</p><p><strong><u>Maßnahmen:<br></u>Linie 7A in Richtung Meidling Hauptstraße U<br></strong>Umleitung ab Neilreichgasse # Davidgasse über Neilreichgasse – Rotenhofgasse - Sonnleithnergasse - Davidgasse zur Stammstrecke.</p><p><u>Aufgelassene Haltestellen:<br></u>- Fernkorngasse (Davidgasse 64 vor Fernkorngasse)</p><p><u>Ersatzhaltestellen:<br></u>- Fernkorngasse (Davidgasse 70 - 72, prov. Haltestelle)</p>",
+       "descriptionPlain": "BauarbeitenWegen Bauarbeiten im Bereich Neilreichgasse # Davidgasse wird die Linie 7A umgeleitet. Zeitraum: Ab Mittwoch, 14. Oktober 2026, Betriebsbeginn, bis Mittwoch, 28 Oktober 2026, etwa 07:00 Uhr Maßnahmen: Linie 7A in Richtung Meidling Hauptstraße U Umleitung ab Neilreichgasse # Davidgasse über Neilreichgasse – Rotenhofgasse - Sonnleithnergasse - Davidgasse zur Stammstrecke. Aufgelassene Haltestellen: - Fernkorngasse (Davidgasse 64 vor Fernkorngasse) Ersatzhaltestellen: - Fernkorngasse (Davidgasse 70 - 72, prov. Haltestelle)",
+       "title": "7A: Bauarbeiten"
+      }
+     }
+    ],
     "location": {
      "properties": {
       "attributes": {},

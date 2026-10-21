@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261021-0008-F01, I20260917-0012, I20261021-0012-F01, I20260922-0032, I20261021-0013-F01, I20261021-0014, I20260925-0011, I20261021-0009-F01, I20261021-0009-F02, I20261021-0015-F01, I20260909-0007, I20261020-0029, I20261021-0016"
+    "trafficInfoNameList": "I20261021-0008-F01, I20260917-0012, I20261021-0012-F01, I20260922-0032, I20261021-0014, I20260925-0011, I20261021-0009-F01, I20261021-0009-F02, I20261021-0015-F01, I20260909-0007, I20261021-0016, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R103-136, R102-136, R101-136, R100-136, R318-437, R293-474, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R1474-412, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1448-412, R1445-149, R1446-149, R401-101, R1875-101, R1884-101, R1883-101, R1876-101, R1881-101, R1880-101, R1882-101, R2373-127, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2025-671, R2378-627, R2558-125, R5815-671, R1974-466, R500-101, R1848-0, R1842-462, R565-146, R566-146, R568-146, R277-144, R276-144, R242-144, R241-144, R245-144, R1387-144, R564-146, R1455-146, R1452-146, R1453-146, R1458-146, R1457-146, R1456-146, R1454-146, R3375-146, R2904-403, R2920-403, R2915-403, R217-144, R218-144, R219-144, R555-144, R1345-144, R1360-144, R1361-144, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R293-474, R1474-412, R1475-149, R1476-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1448-412, R1474-149, R401-101, R1875-101, R1884-101, R1883-101, R1876-101, R1881-101, R1880-101, R1882-101, R2359-125, R2372-125, R2025-671, R2343-626, R2343-125, R2370-125, R2371-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2378-627, R2558-125, R5815-671, R1974-466, R500-101, R1848-0, R1842-462, R566-146, R565-146, R568-146, R277-144, R276-144, R241-144, R242-144, R245-144, R1387-144, R564-146, R1453-146, R3375-146, R1458-146, R1452-146, R1457-146, R1456-146, R1455-146, R1454-146, R2904-403, R2920-403, R2915-403, R218-144, R219-144, R217-144, R555-144, R1345-144, R1361-144, R1360-144, R208-138, R209-138, R1225-138, R1227-138, R2985-138, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -443,54 +443,6 @@
     "title": "10: Fremder Verkehrsunfall"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "68B": "ptBusCity"
-     }
-    },
-    "description": "Linie 68B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 68B: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 68B: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 68B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "68B: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261021-0013-F01",
-    "owner": "WL",
-    "parentName": "I20261021-0013",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "68B"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 268,
-      "lineName": "68B",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     2993
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-21T09:59:00.000+0200",
-     "lastUpdate": "2026-10-21T09:59:00.000+0200",
-     "resume": "2026-10-21T09:59:00.000+0200",
-     "start": "2026-10-21T09:57:00.000+0200"
-    },
-    "title": "68B: Rettungseinsatz"
-   },
-   {
     "alertCause": "roadway damage",
     "alertCauseId": 67,
     "attributes": {
@@ -593,13 +545,13 @@
       "3A": "ptBusCity"
      }
     },
-    "description": "Linie 3A: Betrieb nur zwischen Schottenring U und Stephansplatz U. Voraussichtliche Dauer: 10:50 Uhr. Grund: Schadhafter LKW im Bereich Wollzeile.",
-    "descriptionHTML": "<p>Linie 3A:<br>Betrieb nur zwischen Schottenring U und Stephansplatz U.</p><p>Voraussichtliche Dauer: 10:50 Uhr.</p><p>Grund: Schadhafter LKW im Bereich Wollzeile.</p>",
+    "description": "Linie 3A: Betrieb nur zwischen Schottenring U und Stephansplatz U. Voraussichtliche Dauer: 11:20 Uhr. Grund: Schadhafter LKW im Bereich Wollzeile.",
+    "descriptionHTML": "<p>Linie 3A:<br>Betrieb nur zwischen Schottenring U und Stephansplatz U.</p><p>Voraussichtliche Dauer: 11:20 Uhr.</p><p>Grund: Schadhafter LKW im Bereich Wollzeile.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 3A:<br>Betrieb nur zwischen Schottenring U und Stephansplatz U.</p><p>Voraussichtliche Dauer: 10:50 Uhr.</p><p>Grund: Schadhafter LKW im Bereich Wollzeile.</p>",
-       "descriptionPlain": "Linie 3A: Betrieb nur zwischen Schottenring U und Stephansplatz U. Voraussichtliche Dauer: 10:50 Uhr. Grund: Schadhafter LKW im Bereich Wollzeile.",
+       "descriptionHtml": "<p>Linie 3A:<br>Betrieb nur zwischen Schottenring U und Stephansplatz U.</p><p>Voraussichtliche Dauer: 11:20 Uhr.</p><p>Grund: Schadhafter LKW im Bereich Wollzeile.</p>",
+       "descriptionPlain": "Linie 3A: Betrieb nur zwischen Schottenring U und Stephansplatz U. Voraussichtliche Dauer: 11:20 Uhr. Grund: Schadhafter LKW im Bereich Wollzeile.",
        "title": "3A: Schadhafter LKW"
       }
      }
@@ -625,7 +577,7 @@
     "status": "active",
     "time": {
      "created": "2026-10-21T10:11:00.000+0200",
-     "lastUpdate": "2026-10-21T10:24:00.000+0200",
+     "lastUpdate": "2026-10-21T10:48:00.000+0200",
      "start": "2026-10-21T10:10:00.000+0200"
     },
     "title": "3A: Schadhafter LKW"
@@ -836,6 +788,52 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Züge halten in\nSchleife"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1225-138",
+    "owner": "WL",
+    "parentName": "R1225-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1225
+    ],
+    "time": {
+     "end": "2026-10-21T11:53:00.000+0200",
+     "start": "2026-10-21T10:53:44.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1227-138",
+    "owner": "WL",
+    "parentName": "R1227-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1227
+    ],
+    "time": {
+     "end": "2026-10-21T11:53:00.000+0200",
+     "start": "2026-10-21T10:53:44.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1662,6 +1660,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R208-138",
+    "owner": "WL",
+    "parentName": "R208-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     208
+    ],
+    "time": {
+     "end": "2026-10-21T11:53:00.000+0200",
+     "start": "2026-10-21T10:53:42.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R209-138",
+    "owner": "WL",
+    "parentName": "R209-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     209
+    ],
+    "time": {
+     "end": "2026-10-21T11:53:00.000+0200",
+     "start": "2026-10-21T10:53:42.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisschaden\nBetrieb nur bis Johann-Nepomuk-Berger-Platz",
     "name": "R217-144",
     "owner": "WL",
@@ -2279,6 +2323,29 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R2985-138",
+    "owner": "WL",
+    "parentName": "R2985-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     2985
+    ],
+    "time": {
+     "end": "2026-10-21T11:53:00.000+0200",
+     "start": "2026-10-21T10:53:45.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
