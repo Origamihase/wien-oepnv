@@ -8,20 +8,60 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 21 Oct 2026 12:30:47 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 13:00:52 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[36B: Rescue operation]]></title>
+      <title><![CDATA[31: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5c7757da43084f91dfe679a2ec1d858fd746d5d3b67b0243143ee01984b8ff75</guid>
-      <pubDate>Wed, 21 Oct 2026 12:21:00 +0200</pubDate>
+      <guid isPermaLink="false">93779f2373f8195241c5ab62df54f31689b7c4f93a9f65654658fd3b67c3a983</guid>
+      <pubDate>Wed, 21 Oct 2026 12:55:26 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 21 Oct 2026 12:21:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 21 Oct 2026 12:21:00 +0200</ext:starts_at>
-      <description>Irregular intervals in both directions. Expected until 13:00. Reason: rescue operation in the area of Trillergasse. [Since 12:21]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Expected until 13:00. Reason: rescue operation in the area of Trillergasse.<br/>[Since 12:21]]]></content:encoded>
+      <ext:first_seen>Wed, 21 Oct 2026 12:55:26 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 12:55:26 +0200</ext:starts_at>
+      <ext:ends_at>Wed, 21 Oct 2026 13:54:00 +0200</ext:ends_at>
+      <description>Trains stop at the stop of line 31. [Since 12:55]</description>
+      <content:encoded><![CDATA[Trains stop at the stop of line 31.<br/>[Since 12:55]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5/12: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">301231dd4b3d1424c578c356e1ad1eaef839db54dc847e98930e9441759060a5</guid>
+      <pubDate>Wed, 21 Oct 2026 12:49:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 12:49:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 12:49:00 +0200</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 12:49]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 12:49]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Service disruption]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4</guid>
+      <pubDate>Wed, 21 Oct 2026 12:43:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 12:43:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 12:43:00 +0200</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 12:43]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 12:43]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[4A: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">e1d8190e4bc45bff393bd68fe6c8835c135a2d0d02394cd2d5728969881d1559</guid>
+      <pubDate>Wed, 21 Oct 2026 12:32:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 12:32:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 12:32:00 +0200</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 12:32]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 12:32]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44: Track damage]]></title>
@@ -33,8 +73,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 21 Oct 2026 10:30:49 +0200</ext:first_seen>
       <ext:starts_at>Wed, 21 Oct 2026 10:04:00 +0200</ext:starts_at>
-      <description>Service only between Schottentor U and Johann-Nepomuk-Berger-Platz. Expected duration: Not foreseeable. [Since 10:04]</description>
-      <content:encoded><![CDATA[Service only between Schottentor U and Johann-Nepomuk-Berger-Platz. Expected duration: Not foreseeable.<br/>[Since 10:04]]]></content:encoded>
+      <description>Service only between Schottentor U and Johann-Nepomuk-Berger-Platz. Replacement: Lines 9 and 46. Expected duration: Not foreseeable. [Since 10:04]</description>
+      <content:encoded><![CDATA[Service only between Schottentor U and Johann-Nepomuk-Berger-Platz. Replacement: Lines 9 and 46. Expected duration: Not foreseeable.<br/>[Since 10:04]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Road construction stop moved to Wienerbergbrücke before Breitenfurter Straße]]></title>
@@ -105,50 +145,6 @@
       <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
       <description>Due to the re-establishment of the ÖBB railway viaducts in the area of Helenengasse and Stoffellagasse, measures will come into force on the 80A line. [Until 31.12.2027]</description>
       <content:encoded><![CDATA[Due to the re-establishment of the ÖBB railway viaducts in the area of Helenengasse and Stoffellagasse, measures will come into force on the 80A line.<br/>[Until 31.12.2027]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: Neubaugasse, Neustiftgasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">d97a8a3d7d6328446c638ae8a1ccf0afc80a24b1828141a4b94ad0065074c2e5</guid>
-      <pubDate>Thu, 08 Oct 2026 15:10:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 08 Oct 2026 15:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 19 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 08 Oct 2027 11:11:00 +0200</ext:ends_at>
-      <georss:point>48.205482 16.348467</georss:point>
-      <description>Neustiftgasse 52 → Neustiftgasse 42-44. Stop relocation of line 48A towards Klinik Penzing. Reason: renovation work. [Since 19.10.]</description>
-      <content:encoded><![CDATA[Neustiftgasse 52 → Neustiftgasse 42-44. Stop relocation of line 48A towards Klinik Penzing. Reason: renovation work.<br/>[Since 19.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Simmering S U]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">c8f0b5a42164e2ff573973d0ebcbdf6fbd76b99aebfc2c85c8b8657ef7b9bb79</guid>
-      <pubDate>Wed, 14 Oct 2026 15:35:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 14 Oct 2026 15:35:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 23 Oct 2026 05:05:00 +0200</ext:ends_at>
-      <georss:point>48.170159 16.420009</georss:point>
-      <description>Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 … [Until Fri 23.10.]</description>
-      <content:encoded><![CDATA[Simmeringer Hauptstraße opposite 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, temporary stop, main carriageway. Stop relocation of line N71 …<br/>[Until Fri 23.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A: Liesing-Flur-Gasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">609517ab3ab98b5b38f0fe913f15e9bd18cd5a3d9005a51a2cb50d3fb227ddbd</guid>
-      <pubDate>Wed, 14 Oct 2026 00:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 14 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 22 Oct 2026 16:00:00 +0200</ext:ends_at>
-      <description>Perfektastraße after Liesinger-Flur-Gasse → Perfektastraße 77. Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse. Reason: roadworks. [Until Thu 22.10.]</description>
-      <content:encoded><![CDATA[Perfektastraße after Liesinger-Flur-Gasse → Perfektastraße 77. Stop relocation of line 64A towards Atzgersdorf, Ziedlergasse. Reason: roadworks.<br/>[Until Thu 22.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
