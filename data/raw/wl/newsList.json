@@ -2950,7 +2950,7 @@
       "de": {
        "descriptionHtml": "<h2>Gleisbauarbeiten</h2><p>Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1.</p><p><span><strong><u>Zeitraum:</u></strong></span><br>Ab 20. Oktober 2026 bis Mitte Dezember 2026.<br>Aufgrund eines spontanen Gleisgebrechens müssen die Gleisbauarbeiten vorgezogen werden.</p><p><span><strong><u>Maßnahmen:</u></strong></span><br><strong>Linie 1:</strong><br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Die Züge werden ab Knöllgasse zum Reumannplatz umgeleitet.</p><p><span><strong><u>Ersatz:</u></strong></span><br>Weichen Sie ersatzweise auf die Linien 7A oder 65A aus.</p><p><span><strong><u>Skizze:</u></strong></span><br><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/1_Umleitung_Reumannplatz.png\" alt=\"\" width=\"1000\" height=\"1000\"></p>",
        "descriptionPlain": "GleisbauarbeitenWegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1. Zeitraum: Ab 20. Oktober 2026 bis Mitte Dezember 2026. Aufgrund eines spontanen Gleisgebrechens müssen die Gleisbauarbeiten vorgezogen werden. Maßnahmen: Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Die Züge werden ab Knöllgasse zum Reumannplatz umgeleitet. Ersatz: Weichen Sie ersatzweise auf die Linien 7A oder 65A aus. Skizze:",
-       "title": "1: Gleisbauarbeiten."
+       "title": "1: Gleisbauarbeiten"
       }
      }
     ],
@@ -3962,7 +3962,7 @@
       "de": {
        "descriptionHtml": "<h2>Bauarbeiten</h2><p></p><p>Aufgrund von Bauarbeiten in der Maxingstraße im Bereich <u>Am Platz</u>, müssen die Linien 58A und 58B umgeleitet werden.</p><p><span><strong><u>Zeitraum:</u></strong></span><br>Von 27. Oktober 2026 bis voraussichtlich vier Tage.</p><p><span><strong><u>Maßnahmen:</u></strong></span></p><p><strong>Linien 58A und 58B in Richtung Atzgersdorf:</strong><br>Umleitung ab Hietzinger Hauptstraße # Am Platz über Hietzinger Hauptstraße – Lainzer Straße – Gloriettegasse – Wattmanngasse</p><p><span><u>Haltestellenverlegungen:</u></span></p><ul><li><p>Tiroler Gasse verlegt nach Gloriettegasse 11-13</p></li><li><p>Am Platz nach Hietzinger Hauptstraße 18-20 (Linien 56A und 56B)</p></li></ul><p></p>",
        "descriptionPlain": "Bauarbeiten Aufgrund von Bauarbeiten in der Maxingstraße im Bereich Am Platz, müssen die Linien 58A und 58B umgeleitet werden. Zeitraum: Von 27. Oktober 2026 bis voraussichtlich vier Tage. Maßnahmen: Linien 58A und 58B in Richtung Atzgersdorf: Umleitung ab Hietzinger Hauptstraße # Am Platz über Hietzinger Hauptstraße – Lainzer Straße – Gloriettegasse – Wattmanngasse Haltestellenverlegungen: Tiroler Gasse verlegt nach Gloriettegasse 11-13 Am Platz nach Hietzinger Hauptstraße 18-20 (Linien 56A und 56B)",
-       "title": "58A, 56B: Bauarbeiten ab 27.10.2026"
+       "title": "58A, 58B: Bauarbeiten"
       }
      }
     ],
@@ -3979,18 +3979,18 @@
     "reasonName": "Bauarbeiten",
     "refPoiCategoryId": 13296,
     "relatedLines": [
-     "56B",
+     "58B",
      "58A"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 256,
-      "lineName": "56B",
+      "lineId": 458,
+      "lineName": "58A",
       "vehicleType": "ptBusCity"
      },
      {
-      "lineId": 458,
-      "lineName": "58A",
+      "lineId": 258,
+      "lineName": "58B",
       "vehicleType": "ptBusCity"
      }
     ],
@@ -4003,7 +4003,7 @@
      "start": "2026-10-20T15:51:00.000+0200",
      "validFrom": "2026-10-20T15:51:00.000+0200"
     },
-    "title": "58A, 56B: Bauarbeiten ab 27.10.2026"
+    "title": "58A, 58B: Bauarbeiten"
    },
    {
     "alertCause": "undefined alert cause",
