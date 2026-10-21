@@ -1,24 +1,28 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-21T21:30:43.280858+00:00",
- "built": "2026-10-21T23:30:38+02:00",
+ "updated": "2026-10-21T22:01:11.465510+00:00",
+ "built": "2026-10-22T00:00:58+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-21T23:30:38+02:00",
+  "built": "2026-10-22T00:00:58+02:00",
   "items": [
    {
     "title": "44: Gleisschaden",
-    "time_line": "Seit 10:04"
+    "time_line": "Seit 21.10."
    },
    {
     "title": "62A: Straßenbau Haltestelle verlegt zur Wienerbergbrücke vor Breitenfurter Straße",
-    "time_line": "Seit 07:20"
+    "time_line": "Heute"
+   },
+   {
+    "title": "11A/78A: Straßenbauarbeiten",
+    "time_line": "Ab Fr 23.10. bis 02.11."
    },
    {
     "title": "64A/N64R: Erlaaer Spitz",
-    "time_line": "Ab Do 22.10."
+    "time_line": "Seit heute"
    },
    {
     "title": "1: Gleisbauarbeiten",
@@ -42,36 +46,12 @@
    },
    {
     "title": "64A: Liesing-Flur-Gasse",
-    "time_line": "Bis Do 22.10."
-   },
-   {
-    "title": "7A: Bauarbeiten",
-    "time_line": "Bis 28.10."
+    "time_line": "Heute"
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-14T21:30:57.872800+00:00",
-   "raw": {
-    "wl-stoerungen": 59,
-    "wl-hinweise": 91,
-    "oebb": 167,
-    "baustellen-linien": 50,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 16,
-    "oebb": 143,
-    "baustellen": 67
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 103
-   }
-  },
   {
    "t": "2026-10-14T22:01:14.966031+00:00",
    "raw": {
@@ -6789,6 +6769,26 @@
    "cache": {
     "baustellen": 4,
     "oebb": 10,
+    "wl": 109
+   }
+  },
+  {
+   "t": "2026-10-21T22:01:11.465510+00:00",
+   "raw": {
+    "wl-stoerungen": 72,
+    "wl-hinweise": 90,
+    "oebb": 161,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 15,
+    "oebb": 137,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
     "wl": 109
    }
   }

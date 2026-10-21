@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 21 Oct 2026 23:30:38 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 00:00:58 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[44: Gleisschaden]]></title>
@@ -20,8 +20,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 21 Oct 2026 10:30:49 +0200</ext:first_seen>
       <ext:starts_at>Wed, 21 Oct 2026 10:04:00 +0200</ext:starts_at>
-      <description>Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Ersatz: Linien 9 und 46. Voraussichtliche Dauer: Nicht absehbar. [Seit 10:04]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Ersatz: Linien 9 und 46. Voraussichtliche Dauer: Nicht absehbar.<br/>[Seit 10:04]]]></content:encoded>
+      <description>Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Ersatz: Linien 9 und 46. Voraussichtliche Dauer: Nicht absehbar. [Seit 21.10.]</description>
+      <content:encoded><![CDATA[Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Ersatz: Linien 9 und 46. Voraussichtliche Dauer: Nicht absehbar.<br/>[Seit 21.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[62A: Straßenbau Haltestelle verlegt zur Wienerbergbrücke vor Breitenfurter Straße]]></title>
@@ -33,9 +33,23 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 21 Oct 2026 07:30:45 +0200</ext:first_seen>
       <ext:starts_at>Wed, 21 Oct 2026 07:20:54 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 21 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>[Seit 07:20]</description>
-      <content:encoded><![CDATA[[Seit 07:20]]]></content:encoded>
+      <ext:ends_at>Thu, 22 Oct 2026 17:00:00 +0200</ext:ends_at>
+      <description>[Heute]</description>
+      <content:encoded><![CDATA[[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A/78A: Straßenbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">829aed6b63ca00dc86bdde6d44ea64c5a4a23433aa5b8e7bb064705f27b2e81f</guid>
+      <pubDate>Wed, 14 Oct 2026 16:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 22 Oct 2026 00:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 23 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 02 Nov 2026 01:00:00 +0100</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten im Kreuzungsbereich Meiereistraße / Stephanie-Endres-Straße kommt es zu Umleitungen. [Ab Fr 23.10. bis 02.11.]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Kreuzungsbereich Meiereistraße / Stephanie-Endres-Straße kommt es zu Umleitungen.<br/>[Ab Fr 23.10. bis 02.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[64A/N64R: Erlaaer Spitz]]></title>
@@ -48,8 +62,8 @@
       <ext:first_seen>Wed, 21 Oct 2026 10:12:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 22 Oct 2026 00:00:00 +0200</ext:starts_at>
       <georss:point>48.137809 16.323970</georss:point>
-      <description>Perfektastraße 3 → Perfektastraße 9. Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa … [Ab Do 22.10.]</description>
-      <content:encoded><![CDATA[Perfektastraße 3 → Perfektastraße 9. Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa …<br/>[Ab Do 22.10.]]]></content:encoded>
+      <description>Perfektastraße 3 → Perfektastraße 9. Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa … [Seit heute]</description>
+      <content:encoded><![CDATA[Perfektastraße 3 → Perfektastraße 9. Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa …<br/>[Seit heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1: Gleisbauarbeiten]]></title>
@@ -135,22 +149,8 @@
       <ext:first_seen>Wed, 14 Oct 2026 00:00:00 +0200</ext:first_seen>
       <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Thu, 22 Oct 2026 16:00:00 +0200</ext:ends_at>
-      <description>Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten. [Bis Do 22.10.]</description>
-      <content:encoded><![CDATA[Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten.<br/>[Bis Do 22.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">615c7d9755493e3506136b4c89ccafaac30323c3c9774583bc4b55062576c7bb</guid>
-      <pubDate>Fri, 09 Oct 2026 00:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 09 Oct 2026 13:30:44 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 14 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Wed, 28 Oct 2026 07:00:00 +0100</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet. [Bis 28.10.]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Neilreichgasse / Davidgasse wird die Linie 7A umgeleitet.<br/>[Bis 28.10.]]]></content:encoded>
+      <description>Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten. [Heute]</description>
+      <content:encoded><![CDATA[Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbauarbeiten.<br/>[Heute]]]></content:encoded>
     </item>
   </channel>
 </rss>
