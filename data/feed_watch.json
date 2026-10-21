@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-21T18:01:50.260151+00:00",
- "built": "2026-10-21T20:01:45+02:00",
+ "updated": "2026-10-21T18:31:50.968511+00:00",
+ "built": "2026-10-21T20:31:46+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-21T20:01:45+02:00",
+  "built": "2026-10-21T20:31:46+02:00",
   "items": [
    {
     "title": "O: Signalstörung",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-14T18:31:03.596864+00:00",
-   "raw": {
-    "wl-stoerungen": 89,
-    "wl-hinweise": 95,
-    "oebb": 166,
-    "baustellen-linien": 50,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 29,
-    "oebb": 142,
-    "baustellen": 67
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 104
-   }
-  },
   {
    "t": "2026-10-14T19:00:58.722466+00:00",
    "raw": {
@@ -6754,6 +6734,26 @@
   },
   {
    "t": "2026-10-21T18:01:50.260151+00:00",
+   "raw": {
+    "wl-stoerungen": 97,
+    "wl-hinweise": 95,
+    "oebb": 167,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 17,
+    "oebb": 141,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 116
+   }
+  },
+  {
+   "t": "2026-10-21T18:31:50.968511+00:00",
    "raw": {
     "wl-stoerungen": 97,
     "wl-hinweise": 95,
