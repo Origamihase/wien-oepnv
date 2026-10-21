@@ -8,20 +8,20 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 21 Oct 2026 12:01:03 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 12:30:47 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[49A: Polizeieinsatz]]></title>
+      <title><![CDATA[36B: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">f91205e6f04d5464e5e80a7c68b04297d62853ccdc361d42ec39997a3cafc165</guid>
-      <pubDate>Wed, 21 Oct 2026 11:15:00 +0200</pubDate>
+      <guid isPermaLink="false">5c7757da43084f91dfe679a2ec1d858fd746d5d3b67b0243143ee01984b8ff75</guid>
+      <pubDate>Wed, 21 Oct 2026 12:21:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 21 Oct 2026 11:15:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 21 Oct 2026 11:15:00 +0200</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Seit 11:15]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Seit 11:15]]]></content:encoded>
+      <ext:first_seen>Wed, 21 Oct 2026 12:21:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 12:21:00 +0200</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Voraussichtlich bis 13:00 Uhr. Grund: Rettungseinsatz im Bereich Trillergasse. [Seit 12:21]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Voraussichtlich bis 13:00 Uhr. Grund: Rettungseinsatz im Bereich Trillergasse.<br/>[Seit 12:21]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44: Gleisschaden]]></title>

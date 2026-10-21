@@ -1094,6 +1094,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "36B: Rettungseinsatz",
+    "description": "Linie 36B: Unregelmäßige Intervalle in beiden Richtungen. Voraussichtliche Dauer: 13:00 Uhr. Grund: Rettungseinsatz im Bereich Trillergasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5c7757da43084f91dfe679a2ec1d858fd746d5d3b67b0243143ee01984b8ff75",
+    "pubDate": "2026-10-21T12:21:00+02:00",
+    "starts_at": "2026-10-21T12:21:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=36B|D=2026-10-21|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261021-0018"
+    ],
+    "_incident_start": "2026-10-21T12:21:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1158,22 +1174,6 @@
       "I20260917-0012"
     ],
     "_incident_start": "2026-09-18T04:30:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49A: Polizeieinsatz",
-    "description": "Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "f91205e6f04d5464e5e80a7c68b04297d62853ccdc361d42ec39997a3cafc165",
-    "pubDate": "2026-10-21T11:15:00+02:00",
-    "starts_at": "2026-10-21T11:15:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=49A|D=2026-10-21|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261021-0017"
-    ],
-    "_incident_start": "2026-10-21T11:15:00+02:00"
   },
   {
     "source": "Wiener Linien",

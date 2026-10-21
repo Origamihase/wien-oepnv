@@ -1,16 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-21T10:01:10.001086+00:00",
- "built": "2026-10-21T12:01:03+02:00",
+ "updated": "2026-10-21T10:31:02.206686+00:00",
+ "built": "2026-10-21T12:30:47+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-21T12:01:03+02:00",
+  "built": "2026-10-21T12:30:47+02:00",
   "items": [
    {
-    "title": "49A: Polizeieinsatz",
-    "time_line": "Seit 11:15"
+    "title": "36B: Rettungseinsatz",
+    "time_line": "Seit 12:21"
    },
    {
     "title": "44: Gleisschaden",
@@ -6754,6 +6754,26 @@
   },
   {
    "t": "2026-10-21T10:01:10.001086+00:00",
+   "raw": {
+    "wl-stoerungen": 74,
+    "wl-hinweise": 93,
+    "oebb": 162,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 15,
+    "oebb": 139,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 110
+   }
+  },
+  {
+   "t": "2026-10-21T10:31:02.206686+00:00",
    "raw": {
     "wl-stoerungen": 74,
     "wl-hinweise": 93,
