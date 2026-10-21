@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_352, ftazW_603, ftazW_19, ftazW_281, ftazW_1354391, ftazW_282, ftazW_606, ftazW_1018092, ftazW_1018049, ftazW_477, ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_572, ftazW_22, ftazW_354, ftazW_573"
+    "trafficInfoNameList": "ftazW_281, ftazW_1354391, ftazW_352, ftazW_603, ftazW_19, ftazW_1018049, ftazW_477, ftazW_353, ftazW_282, ftazW_606, ftazW_1018092, ftazW_572, ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_22, ftazW_354, ftazW_573"
    }
   ],
   "poiCategoryGroups": [
@@ -4328,6 +4328,45 @@
     "time": {
      "end": "2026-10-22T00:45:00.000+0200",
      "start": "2026-10-21T20:45:00.000+0200"
+    },
+    "title": "Neubaugasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "22.10.2026 05:15",
+     "ausVon": "22.10.2026 01:15",
+     "location": "U3 Bahnsteig Richtung Ottakring - U3 Bahnsteig Richtung Simmering - Zwischengeschoss Aufgang Neubaugasse",
+     "rbls": [
+      4918,
+      4923
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Neubaugasse",
+     "status": "geplante Wartung",
+     "towards": "U3 Ottakring, U3 Simmering"
+    },
+    "description": "U3 Bahnsteig Richtung Ottakring - U3 Bahnsteig Richtung Simmering - Zwischengeschoss Aufgang Neubaugasse",
+    "elevatorId": "MA 02",
+    "name": "ftazW_353",
+    "parentName": "ftazW_353",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4918,
+     4923
+    ],
+    "time": {
+     "end": "2026-10-22T05:15:00.000+0200",
+     "start": "2026-10-22T01:15:00.000+0200"
     },
     "title": "Neubaugasse"
    },
