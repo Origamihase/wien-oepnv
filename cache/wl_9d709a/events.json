@@ -399,7 +399,7 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "54B/54A: Bauarbeiten",
-    "description": "<p>Wegen <span>Straßenbauarbeiten im Bereich Einsiedeleigasse werden die Linien 54A und 54B umgeleitet.</span></p><p><span style=\"color: rgba(0, 0, 0, 0.87);\"><br></span></p><p><span><strong><u>Zeitraum:</u></strong></span><br>Ab Dienstag, 27. Oktober 2026, etwa 10:00 Uhr, bis Dienstag 10. November 2026 etwa 9:00 Uhr.</p><p><span><strong><u>Maßnahmen:</u></strong></span><strong><br></strong></p><p><strong>Linie 54A in Richtung Hörndlwald:</strong><br>Umleitung ab Vitusgasse # Erzbischofgasse über Erzbischofgasse – Schweizertalstraße – Hentschelgasse – Einsiedeleigasse zur Stammstrecke abgelenkt geführt.</p><p><strong>Linie 54B in Richtung Lainzer Tor:</strong><br>Umleitung ab Vitusgasse # Erzbischofgasse über Erzbischofgasse – Schweizertalstraße – Hentschelgasse – Einsiedeleigasse zur Stammstrecke abgelenkt geführt.</p><p></p>",
+    "description": "<p>Wegen Straßenbauarbeiten im Bereich Einsiedeleigasse werden die Linien 54A und 54B umgeleitet.</p><p><span style=\"color: rgba(0, 0, 0, 0.87);\"><br></span></p><p><strong><u>Zeitraum:</u></strong><br>Ab Dienstag, 27. Oktober 2026, etwa 10:00 Uhr, bis Dienstag 10. November 2026 etwa 9:00 Uhr.</p><p><strong><u>Maßnahmen:</u><br></strong></p><p><strong>Linie 54A in Richtung Hörndlwald:</strong><br>Umleitung ab Vitusgasse # Erzbischofgasse über Erzbischofgasse – Schweizertalstraße – Hentschelgasse – Einsiedeleigasse zur Stammstrecke abgelenkt geführt.</p><p><strong>Linie 54B in Richtung St. Veiter Tor:</strong><br>Umleitung ab Vitusgasse # Erzbischofgasse über Erzbischofgasse – Schweizertalstraße – Hentschelgasse – Einsiedeleigasse zur Stammstrecke abgelenkt geführt.</p><p></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "c879c0eb93c47cfaf8e8c207ba31d9583c4ed7e34d0436c9529b68f949c0a3eb",
     "pubDate": "2026-10-21T07:33:00+02:00",
@@ -1170,6 +1170,86 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "52: Schadhaftes Fahrzeug",
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7f0abf3e55e40782bd00f3c222b84c3ee7e95801297cf252add178a51bd1c806",
+    "pubDate": "2026-10-21T08:07:00+02:00",
+    "starts_at": "2026-10-21T08:07:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=52|D=2026-10-21|TK=52 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261021-0009"
+    ],
+    "_incident_start": "2026-10-21T08:07:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Schadhafter Zug Betrieb ab Westbahnhof",
+    "description": "Schadhafter Zug\nBetrieb ab Westbahnhof <>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b08191a658f260c74e75a3d88030fdbb72cb8c57a0bae86a9e15d401c0a6913d",
+    "pubDate": "2026-10-21T08:08:28+02:00",
+    "starts_at": "2026-10-21T08:08:28+02:00",
+    "ends_at": "2026-10-21T09:08:00+02:00",
+    "_identity": "wl|störung|L=52|D=2026-10-21|TK=schadhafter zug betrieb ab westbahnhof"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Schadhafter Zug Betrieb ab Winckelmannstraße",
+    "description": "Schadhafter Zug\nBetrieb ab Winckelmannstraße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "979d6a69ac3fada6e7c5109022d0a9dc7f374be452f3d37e4407e0c59d02de83",
+    "pubDate": "2026-10-21T08:08:57+02:00",
+    "starts_at": "2026-10-21T08:08:58+02:00",
+    "ends_at": "2026-10-21T09:08:00+02:00",
+    "_identity": "wl|störung|L=52|D=2026-10-21|TK=schadhafter zug betrieb ab winckelmannstrasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Schadhaftes Fahrzeug",
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b98153df7d0e60b82d0381b90b9ad92815df222d447546c78876ca54749e306a",
+    "pubDate": "2026-10-21T08:07:00+02:00",
+    "starts_at": "2026-10-21T08:07:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=60|D=2026-10-21|TK=60 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261021-0009"
+    ],
+    "_incident_start": "2026-10-21T08:07:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4ebfcdeecb63555a7d3eeda6e1144843992faaa428a94f9ee9f79f89dc91e33f",
+    "pubDate": "2026-10-21T08:09:28+02:00",
+    "starts_at": "2026-10-21T08:09:28+02:00",
+    "ends_at": "2026-10-21T09:09:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-10-21|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Schadhafter Bus Betrieb ab Winckelmannstraße",
+    "description": "Schadhafter Bus\nBetrieb ab Winckelmannstraße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "cbcf5d77907e783ea2da91085be2df3ea8c134c572a6ce9cb69d258ff8e038f3",
+    "pubDate": "2026-10-21T08:09:28+02:00",
+    "starts_at": "2026-10-21T08:09:28+02:00",
+    "ends_at": "2026-10-21T09:09:00+02:00",
+    "_identity": "wl|störung|L=60|D=2026-10-21|TK=schadhafter bus betrieb ab winckelmannstrasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Straßenbau Haltestelle verlegt zur Wienerbergbrücke vor Breitenfurter Straße",
     "description": "Straßenbau\nHaltestelle verlegt zur Wienerbergbrücke vor Breitenfurter Straße",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1278,22 +1358,6 @@
     "starts_at": "2026-10-21T00:00:24+02:00",
     "ends_at": "2026-10-21T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-21|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Verspätungen",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
-    "pubDate": "2026-10-21T07:05:00+02:00",
-    "starts_at": "2026-10-21T07:05:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-10-21|TK=u6 verspätungen",
-    "_wl_ids": [
-      "I20261021-0007"
-    ],
-    "_incident_start": "2026-10-21T07:05:00+02:00"
   },
   {
     "source": "Wiener Linien",

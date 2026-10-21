@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261021-0006-F01, I20261021-0008-F01, I20260917-0012, I20260922-0032, I20261021-0004-F01, I20260925-0011, I20260909-0007, I20261021-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260909-0007, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0029, I20261021-0004-F01, I20261021-0006-F01, I20261021-0008-F01, I20261021-0009-F01, I20261021-0009-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R19-136, R130-136, R103-136, R293-474, R102-136, R45-136, R318-437, R115-136, R36-152, R116-136, R117-136, R118-136, R119-136, R100-136, R101-136, R1475-149, R1474-412, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1476-149, R1448-412, R1445-149, R401-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1876-101, R1880-101, R2372-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2025-671, R2378-627, R2558-125, R5815-671, R1974-466, R500-101, R1848-0, R1842-462, R699-413, R698-413, R697-413, R773-413, R3527-413, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R115-136, R103-136, R102-136, R101-136, R100-136, R318-437, R293-474, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R1474-412, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1448-412, R1445-149, R1446-149, R1447-149, R401-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1876-101, R1880-101, R2345-127, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2372-627, R2025-671, R2378-627, R2558-125, R5815-671, R1974-466, R500-101, R1848-0, R1842-462, R773-413, R697-413, R699-413, R698-413, R3527-413, R1562-152, R1559-152, R464-152, R1535-152, R1548-152, R1532-152, R1562-160, R1531-160, R1532-160, R1535-160, R1548-160, R1559-160, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -355,51 +355,6 @@
     "title": "44: Rettungseinsatz"
    },
    {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-       "title": "U6: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261021-0007",
-    "owner": "WL",
-    "parentName": "I20261021-0007",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-21T07:05:00.000+0200",
-     "lastUpdate": "2026-10-21T07:05:00.000+0200",
-     "resume": "2026-10-21T07:05:00.000+0200",
-     "start": "2026-10-21T07:05:00.000+0200"
-    },
-    "title": "U6: Verspätungen"
-   },
-   {
     "alertCause": "vehicle on the line",
     "alertCauseId": 71,
     "attributes": {
@@ -444,6 +399,98 @@
      "start": "2026-10-21T07:46:00.000+0200"
     },
     "title": "13A: Falschparker"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "52": "ptTram"
+     }
+    },
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "52: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "location": "Mariahilfer Straße",
+    "name": "I20261021-0009-F01",
+    "owner": "WL",
+    "parentName": "I20261021-0009",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 152,
+      "lineName": "52",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-21T08:20:00.000+0200",
+     "lastUpdate": "2026-10-21T08:20:00.000+0200",
+     "resume": "2026-10-21T08:20:00.000+0200",
+     "start": "2026-10-21T08:07:00.000+0200"
+    },
+    "title": "52: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "60": "ptTram"
+     }
+    },
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "60: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "location": "Mariahilfer Straße",
+    "name": "I20261021-0009-F02",
+    "owner": "WL",
+    "parentName": "I20261021-0009",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 160,
+      "lineName": "60",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-21T08:20:00.000+0200",
+     "lastUpdate": "2026-10-21T08:20:00.000+0200",
+     "resume": "2026-10-21T08:20:00.000+0200",
+     "start": "2026-10-21T08:07:00.000+0200"
+    },
+    "title": "60: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -950,6 +997,259 @@
      "start": "2026-10-20T00:00:06.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Bus\nBetrieb ab Winckelmannstraße",
+    "name": "R1531-160",
+    "owner": "WL",
+    "parentName": "R1531-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1531
+    ],
+    "time": {
+     "end": "2026-10-21T09:09:00.000+0200",
+     "start": "2026-10-21T08:09:28.000+0200"
+    },
+    "title": "Schadhafter Bus\nBetrieb ab Winckelmannstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Winckelmannstraße",
+    "name": "R1532-152",
+    "owner": "WL",
+    "parentName": "R1532-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1532
+    ],
+    "time": {
+     "end": "2026-10-21T09:08:00.000+0200",
+     "start": "2026-10-21T08:08:58.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Winckelmannstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Bus\nBetrieb ab Winckelmannstraße",
+    "name": "R1532-160",
+    "owner": "WL",
+    "parentName": "R1532-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1532
+    ],
+    "time": {
+     "end": "2026-10-21T09:09:00.000+0200",
+     "start": "2026-10-21T08:09:28.000+0200"
+    },
+    "title": "Schadhafter Bus\nBetrieb ab Winckelmannstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Winckelmannstraße",
+    "name": "R1535-152",
+    "owner": "WL",
+    "parentName": "R1535-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1535
+    ],
+    "time": {
+     "end": "2026-10-21T09:08:00.000+0200",
+     "start": "2026-10-21T08:08:58.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Winckelmannstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Bus\nBetrieb ab Winckelmannstraße",
+    "name": "R1535-160",
+    "owner": "WL",
+    "parentName": "R1535-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1535
+    ],
+    "time": {
+     "end": "2026-10-21T09:09:00.000+0200",
+     "start": "2026-10-21T08:09:28.000+0200"
+    },
+    "title": "Schadhafter Bus\nBetrieb ab Winckelmannstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Winckelmannstraße",
+    "name": "R1548-152",
+    "owner": "WL",
+    "parentName": "R1548-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1548
+    ],
+    "time": {
+     "end": "2026-10-21T09:08:00.000+0200",
+     "start": "2026-10-21T08:08:58.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Winckelmannstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Bus\nBetrieb ab Winckelmannstraße",
+    "name": "R1548-160",
+    "owner": "WL",
+    "parentName": "R1548-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1548
+    ],
+    "time": {
+     "end": "2026-10-21T09:09:00.000+0200",
+     "start": "2026-10-21T08:09:28.000+0200"
+    },
+    "title": "Schadhafter Bus\nBetrieb ab Winckelmannstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Westbahnhof <>",
+    "name": "R1559-152",
+    "owner": "WL",
+    "parentName": "R1559-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1559
+    ],
+    "time": {
+     "end": "2026-10-21T09:08:00.000+0200",
+     "start": "2026-10-21T08:08:28.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Westbahnhof <>"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1559-160",
+    "owner": "WL",
+    "parentName": "R1559-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1559
+    ],
+    "time": {
+     "end": "2026-10-21T09:09:00.000+0200",
+     "start": "2026-10-21T08:09:28.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Westbahnhof <>",
+    "name": "R1562-152",
+    "owner": "WL",
+    "parentName": "R1562-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1562
+    ],
+    "time": {
+     "end": "2026-10-21T09:08:00.000+0200",
+     "start": "2026-10-21T08:08:28.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Westbahnhof <>"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1562-160",
+    "owner": "WL",
+    "parentName": "R1562-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1562
+    ],
+    "time": {
+     "end": "2026-10-21T09:09:00.000+0200",
+     "start": "2026-10-21T08:09:28.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1703,6 +2003,29 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Winckelmannstraße",
+    "name": "R464-152",
+    "owner": "WL",
+    "parentName": "R464-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     464
+    ],
+    "time": {
+     "end": "2026-10-21T09:08:00.000+0200",
+     "start": "2026-10-21T08:08:57.000+0200"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Winckelmannstraße"
    },
    {
     "alertCause": "undefined alert cause",

@@ -8,8 +8,34 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 21 Oct 2026 08:00:47 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 08:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[52: Schadhafter Zug]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">7f0abf3e55e40782bd00f3c222b84c3ee7e95801297cf252add178a51bd1c806</guid>
+      <pubDate>Wed, 21 Oct 2026 08:07:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 08:07:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 08:07:00 +0200</ext:starts_at>
+      <description>Betrieb ab Westbahnhof, Winckelmannstraße. Züge halten bei Linien 6 und 18. [Seit 08:07]</description>
+      <content:encoded><![CDATA[Betrieb ab Westbahnhof, Winckelmannstraße. Züge halten bei Linien 6 und 18.<br/>[Seit 08:07]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">b98153df7d0e60b82d0381b90b9ad92815df222d447546c78876ca54749e306a</guid>
+      <pubDate>Wed, 21 Oct 2026 08:07:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 08:07:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 08:07:00 +0200</ext:starts_at>
+      <description>Betrieb ab Winckelmannstraße. [Seit 08:07]</description>
+      <content:encoded><![CDATA[Betrieb ab Winckelmannstraße.<br/>[Seit 08:07]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[13A: Falschparker]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -36,19 +62,6 @@
       <ext:ends_at>Wed, 21 Oct 2026 23:59:59 +0200</ext:ends_at>
       <description>[Seit 07:20]</description>
       <content:encoded><![CDATA[[Seit 07:20]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e</guid>
-      <pubDate>Wed, 21 Oct 2026 07:05:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 21 Oct 2026 07:05:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 21 Oct 2026 07:05:00 +0200</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Seit 07:05]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 07:05]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[44: Rettungseinsatz]]></title>
@@ -133,21 +146,6 @@
       <georss:point>48.205482 16.348467</georss:point>
       <description>Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten. [Seit 19.10.]</description>
       <content:encoded><![CDATA[Neustiftgasse 52 → Neustiftgasse 42-44. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Sanierungsarbeiten.<br/>[Seit 19.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Simmering S U]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">c8f0b5a42164e2ff573973d0ebcbdf6fbd76b99aebfc2c85c8b8657ef7b9bb79</guid>
-      <pubDate>Wed, 14 Oct 2026 15:35:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 14 Oct 2026 15:35:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 16 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 23 Oct 2026 05:05:00 +0200</ext:ends_at>
-      <georss:point>48.170159 16.420009</georss:point>
-      <description>Simmeringer Hauptstraße gegenüber 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, provisorische Haltestelle, Hauptfahrbahn. Haltestellenverlegung der Linie N71 … [Bis Fr 23.10.]</description>
-      <content:encoded><![CDATA[Simmeringer Hauptstraße gegenüber 120-122, Gleiskörper → Simmeringer Hauptstraße 157-161, provisorische Haltestelle, Hauptfahrbahn. Haltestellenverlegung der Linie N71 …<br/>[Bis Fr 23.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
