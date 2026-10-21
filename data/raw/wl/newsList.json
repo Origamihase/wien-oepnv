@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_353, ftazW_282, ftazW_606, ftazW_1018092, ftazW_1018049, ftazW_477, ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_572, ftazW_22, ftazW_354, ftazW_573, ftazW_1354337"
+    "trafficInfoNameList": "ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_572, ftazW_22, ftazW_354, ftazW_573, ftazW_1354337"
    }
   ],
   "poiCategoryGroups": [
@@ -4166,38 +4166,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "22.10.2026 05:15",
-     "ausVon": "22.10.2026 01:15",
-     "location": "Zwischengeschoß - Ausgang Nottendorfergasse",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Erdberg",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Zwischengeschoß - Ausgang Nottendorfergasse",
-    "elevatorId": "ED 04",
-    "name": "ftazW_1018049",
-    "parentName": "ftazW_1018049",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "time": {
-     "end": "2026-10-22T05:15:00.000+0200",
-     "start": "2026-10-22T01:15:00.000+0200"
-    },
-    "title": "Erdberg"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "23.10.2026 00:45",
      "ausVon": "22.10.2026 20:45",
      "location": "U2 Mittelbahnsteig - Zwischengeschoss - Ausgang Taborstraße/Obere Augartenstraße",
@@ -4232,47 +4200,6 @@
      "start": "2026-10-22T20:45:00.000+0200"
     },
     "title": "Taborstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "22.10.2026 05:15",
-     "ausVon": "22.10.2026 01:15",
-     "location": "U2 Mittelbahnsteig - Ausgang Venediger Au/Ausstellungsstraße",
-     "rbls": [
-      4260,
-      4263
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2",
-      "U1"
-     ],
-     "station": "Praterstern",
-     "status": "geplante Wartung",
-     "towards": "U2 beide Richtungen"
-    },
-    "description": "U2 Mittelbahnsteig - Ausgang Venediger Au/Ausstellungsstraße",
-    "elevatorId": "PR 06",
-    "name": "ftazW_1018092",
-    "parentName": "ftazW_1018092",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2",
-     "U1"
-    ],
-    "relatedStops": [
-     4260,
-     4263
-    ],
-    "time": {
-     "end": "2026-10-22T05:15:00.000+0200",
-     "start": "2026-10-22T01:15:00.000+0200"
-    },
-    "title": "Praterstern"
    },
    {
     "alertCause": "undefined alert cause",
@@ -4347,82 +4274,6 @@
      "start": "2026-10-23T01:15:00.000+0200"
     },
     "title": "Gumpendorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "22.10.2026 05:15",
-     "ausVon": "22.10.2026 01:15",
-     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Währingerstraße, Gentzgasse",
-     "rbls": [
-      4604
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Währinger Straße-Volksoper",
-     "status": "geplante Wartung",
-     "towards": "U6 Siebenhirten"
-    },
-    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Währingerstraße, Gentzgasse",
-    "elevatorId": "WA 02",
-    "name": "ftazW_282",
-    "parentName": "ftazW_282",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4604
-    ],
-    "time": {
-     "end": "2026-10-22T05:15:00.000+0200",
-     "start": "2026-10-22T01:15:00.000+0200"
-    },
-    "title": "Währinger Straße-Volksoper"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "22.10.2026 05:15",
-     "ausVon": "22.10.2026 01:15",
-     "location": "U3 Bahnsteig Richtung Ottakring - U3 Bahnsteig Richtung Simmering - Zwischengeschoss Aufgang Neubaugasse",
-     "rbls": [
-      4918,
-      4923
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Neubaugasse",
-     "status": "geplante Wartung",
-     "towards": "U3 Ottakring, U3 Simmering"
-    },
-    "description": "U3 Bahnsteig Richtung Ottakring - U3 Bahnsteig Richtung Simmering - Zwischengeschoss Aufgang Neubaugasse",
-    "elevatorId": "MA 02",
-    "name": "ftazW_353",
-    "parentName": "ftazW_353",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4918,
-     4923
-    ],
-    "time": {
-     "end": "2026-10-22T05:15:00.000+0200",
-     "start": "2026-10-22T01:15:00.000+0200"
-    },
-    "title": "Neubaugasse"
    },
    {
     "alertCause": "undefined alert cause",
@@ -4536,43 +4387,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "22.10.2026 05:15",
-     "ausVon": "22.10.2026 01:15",
-     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Am Schöpfwerk",
-     "rbls": [
-      4630
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Am Schöpfwerk",
-     "status": "geplante Wartung",
-     "towards": "U6 Siebenhirten"
-    },
-    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Am Schöpfwerk",
-    "elevatorId": "PW 02",
-    "name": "ftazW_477",
-    "parentName": "ftazW_477",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4630
-    ],
-    "time": {
-     "end": "2026-10-22T05:15:00.000+0200",
-     "start": "2026-10-22T01:15:00.000+0200"
-    },
-    "title": "Am Schöpfwerk"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "23.10.2026 00:45",
      "ausVon": "22.10.2026 20:45",
      "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Morizgasse",
@@ -4681,43 +4495,6 @@
      "start": "2026-10-22T20:45:00.000+0200"
     },
     "title": "Hütteldorf"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "22.10.2026 05:15",
-     "ausVon": "22.10.2026 01:15",
-     "location": "U3 Bahnsteig Richtung Simmering - Ausgang Koppstraße",
-     "rbls": [
-      4931
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Ottakring",
-     "status": "geplante Wartung",
-     "towards": "U3 Simmering"
-    },
-    "description": "U3 Bahnsteig Richtung Simmering - Ausgang Koppstraße",
-    "elevatorId": "OK 04",
-    "name": "ftazW_606",
-    "parentName": "ftazW_606",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4931
-    ],
-    "time": {
-     "end": "2026-10-22T05:15:00.000+0200",
-     "start": "2026-10-22T01:15:00.000+0200"
-    },
-    "title": "Ottakring"
    }
   ]
  },
