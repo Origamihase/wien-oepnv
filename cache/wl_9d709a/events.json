@@ -163,7 +163,7 @@
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "c199b995f50a8d5b241235da3372e3b3c86fd17dc096d6c9910f31dfd4801428",
     "pubDate": "2026-10-08T10:20:00+02:00",
-    "starts_at": "2026-10-27T00:00:00+01:00",
+    "starts_at": "2026-10-21T06:50:00+02:00",
     "ends_at": "2026-12-05T04:00:00+01:00",
     "_identity": "wl|hinweis|L=1|D=2026-10-27|TK=1 gleisbauarbeiten"
   },
@@ -830,22 +830,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Verspätungen",
-    "description": "Linie 12: Unregelmäßige Intervalle in Richtung Josefstädter Straße U. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "8152569e3c97a3516c3d1e324d9792257f593704c09ec2b898cd21752e0f1c9a",
-    "pubDate": "2026-10-21T06:02:00+02:00",
-    "starts_at": "2026-10-21T06:02:00+02:00",
-    "ends_at": "2026-10-21T06:44:00+02:00",
-    "_identity": "wl|störung|L=12|D=2026-10-21|TK=12 verspätungen",
-    "_wl_ids": [
-      "I20261021-0003"
-    ],
-    "_incident_start": "2026-10-21T06:02:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1114,18 +1098,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "44: Rettungseinsatz",
-    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "44: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 44: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 07:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Familienplatz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "c14ad7374d16f14cd0154afd971ba66872a46e7f70c45ab6156ec3ada2b6a22a",
-    "pubDate": "2026-10-21T06:06:00+02:00",
-    "starts_at": "2026-10-21T06:06:00+02:00",
+    "pubDate": "2026-10-21T06:55:50+02:00",
+    "starts_at": "2026-10-21T06:56:00+02:00",
     "ends_at": null,
     "_identity": "wl|störung|L=44|D=2026-10-21|TK=rettungseinsatz",
     "_wl_ids": [
-      "I20261021-0004"
+      "I20261021-0006"
     ],
-    "_incident_start": "2026-10-21T06:06:00+02:00"
+    "_incident_start": "2026-10-21T06:56:00+02:00"
   },
   {
     "source": "Wiener Linien",

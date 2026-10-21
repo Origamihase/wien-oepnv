@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261021-0003, I20261021-0004-F01, I20261021-0004-F02, I20261021-0004, I20260925-0011, I20260909-0007, I20261020-0029, I20261021-0005"
+    "trafficInfoNameList": "I20261021-0004-F02, I20260917-0012, I20260922-0032, I20261021-0004-F01, I20261021-0006, I20260925-0011, I20260909-0007, I20261020-0029, I20261021-0005"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R36-152, R100-136, R102-136, R45-136, R19-136, R130-136, R101-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R318-437, R1449-149, R1473-149, R1474-149, R1475-149, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1472-149, R401-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2372-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2025-671, R2378-627, R2558-125, R5815-671, R1974-466, R500-101, R276-144, R277-144, R223-143, R222-143, R221-143, R220-143, R219-143, R218-143, R219-144, R555-144, R218-144, R1360-144, R1361-144, R224-143, R1351-143, R1350-143, R1348-143, R1349-143, R242-144, R241-144, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R100-136, R118-136, R119-136, R318-437, R293-474, R36-152, R45-136, R19-136, R102-136, R103-136, R130-136, R115-136, R116-136, R117-136, R101-136, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1448-412, R1474-412, R1445-149, R401-101, R1880-101, R1884-101, R1881-101, R1882-101, R1883-101, R1876-101, R1875-101, R2380-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2345-127, R2372-627, R2025-671, R2378-627, R2558-125, R5815-671, R1974-466, R500-101, R276-144, R277-144, R219-143, R221-143, R222-143, R223-143, R218-143, R220-143, R555-144, R218-144, R219-144, R1361-144, R1360-144, R224-143, R1351-143, R1350-143, R1349-143, R1348-143, R242-144, R241-144, R246-144, R245-144, R1373-144, R1371-144, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,108 +259,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "12": "ptTram"
-     }
-    },
-    "description": "Linie 12: Unregelmäßige Intervalle in Richtung Josefstädter Straße U. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 12:<br>Unregelmäßige Intervalle in Richtung Josefstädter Straße U. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 12:<br>Unregelmäßige Intervalle in Richtung Josefstädter Straße U. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 12: Unregelmäßige Intervalle in Richtung Josefstädter Straße U. Grund: Schadhaftes Fahrzeug.",
-       "title": "12: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261021-0003",
-    "owner": "WL",
-    "parentName": "I20261021-0003",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 112,
-      "lineName": "12",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-21T06:02:00.000+0200",
-     "end": "2026-10-21T06:44:00.000+0200",
-     "lastUpdate": "2026-10-21T06:03:00.000+0200",
-     "resume": "2026-10-21T06:02:00.000+0200",
-     "start": "2026-10-21T06:02:00.000+0200"
-    },
-    "title": "12: Verspätungen"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "43": "ptTram",
-      "44": "ptTram"
-     }
-    },
-    "description": "Linie 43: Fahrtbehinderung in Richtung Neuwaldegg. Linie 44: Fahrtbehinderung in Richtung Ottakring, Maroltingergasse. Voraussichtliche Dauer: 06:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Skodagasse.",
-    "descriptionHTML": "<p>Linie 43:<br>Fahrtbehinderung in Richtung Neuwaldegg.<br>Linie 44:<br>Fahrtbehinderung in Richtung Ottakring, Maroltingergasse.</p><p>Voraussichtliche Dauer: 06:30 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Skodagasse.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 43:<br>Fahrtbehinderung in Richtung Neuwaldegg.<br>Linie 44:<br>Fahrtbehinderung in Richtung Ottakring, Maroltingergasse.</p><p>Voraussichtliche Dauer: 06:30 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Skodagasse.</p>",
-       "descriptionPlain": "Linie 43: Fahrtbehinderung in Richtung Neuwaldegg. Linie 44: Fahrtbehinderung in Richtung Ottakring, Maroltingergasse. Voraussichtliche Dauer: 06:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Skodagasse.",
-       "title": "43, 44: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261021-0004",
-    "owner": "WL",
-    "parentName": "I20261021-0004",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "43",
-     "44"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 143,
-      "lineName": "43",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 144,
-      "lineName": "44",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     218
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-21T06:07:00.000+0200",
-     "end": "2026-10-21T06:26:00.000+0200",
-     "lastUpdate": "2026-10-21T06:26:00.000+0200",
-     "resume": "2026-10-21T06:26:00.000+0200",
-     "start": "2026-10-21T06:06:00.000+0200"
-    },
-    "title": "43, 44: Rettungseinsatz"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
@@ -447,11 +345,12 @@
     "relatedStops": [
      218
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-21T06:26:00.000+0200",
-     "lastUpdate": "2026-10-21T06:26:00.000+0200",
-     "resume": "2026-10-21T06:26:00.000+0200",
+     "end": "2026-10-21T06:56:00.000+0200",
+     "lastUpdate": "2026-10-21T06:56:00.000+0200",
+     "resume": "2026-10-21T06:56:00.000+0200",
      "start": "2026-10-21T06:06:00.000+0200"
     },
     "title": "44: Rettungseinsatz"
@@ -500,6 +399,53 @@
      "start": "2026-10-21T06:17:00.000+0200"
     },
     "title": "63A: Falschparker"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "44": "ptTram"
+     }
+    },
+    "description": "Linie 44: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 07:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Familienplatz.",
+    "descriptionHTML": "<p>Linie 44:<br>Fahrtbehinderung in Richtung Schottentor U.</p><p>Voraussichtliche Dauer: 07:20 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Familienplatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 44:<br>Fahrtbehinderung in Richtung Schottentor U.</p><p>Voraussichtliche Dauer: 07:20 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Familienplatz.</p>",
+       "descriptionPlain": "Linie 44: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 07:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Familienplatz.",
+       "title": "44: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261021-0006",
+    "owner": "WL",
+    "parentName": "I20261021-0006",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 144,
+      "lineName": "44",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     277
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-21T06:57:00.000+0200",
+     "lastUpdate": "2026-10-21T06:57:00.000+0200",
+     "start": "2026-10-21T06:56:00.000+0200"
+    },
+    "title": "44: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -866,6 +812,52 @@
     "time": {
      "end": "2026-10-21T07:06:00.000+0200",
      "start": "2026-10-21T06:06:16.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1371-144",
+    "owner": "WL",
+    "parentName": "R1371-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     1371
+    ],
+    "time": {
+     "end": "2026-10-21T07:55:00.000+0200",
+     "start": "2026-10-21T06:55:51.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1373-144",
+    "owner": "WL",
+    "parentName": "R1373-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     1373
+    ],
+    "time": {
+     "end": "2026-10-21T07:55:00.000+0200",
+     "start": "2026-10-21T06:55:51.000+0200"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
@@ -1944,6 +1936,52 @@
     "time": {
      "end": "2026-10-21T07:24:00.000+0200",
      "start": "2026-10-21T06:24:47.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R245-144",
+    "owner": "WL",
+    "parentName": "R245-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     245
+    ],
+    "time": {
+     "end": "2026-10-21T07:55:00.000+0200",
+     "start": "2026-10-21T06:55:50.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R246-144",
+    "owner": "WL",
+    "parentName": "R246-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     246
+    ],
+    "time": {
+     "end": "2026-10-21T07:55:00.000+0200",
+     "start": "2026-10-21T06:55:50.000+0200"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
