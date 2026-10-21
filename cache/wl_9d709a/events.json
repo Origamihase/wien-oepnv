@@ -854,22 +854,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Rettungseinsatz",
-    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "301231dd4b3d1424c578c356e1ad1eaef839db54dc847e98930e9441759060a5",
-    "pubDate": "2026-10-21T12:49:00+02:00",
-    "starts_at": "2026-10-21T12:49:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=12|D=2026-10-21|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261021-0021"
-    ],
-    "_incident_start": "2026-10-21T12:49:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1190,22 +1174,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "4A: Rettungseinsatz",
-    "description": "Linie 4A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e1d8190e4bc45bff393bd68fe6c8835c135a2d0d02394cd2d5728969881d1559",
-    "pubDate": "2026-10-21T12:32:00+02:00",
-    "starts_at": "2026-10-21T12:32:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=4A|D=2026-10-21|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261021-0019"
-    ],
-    "_incident_start": "2026-10-21T12:32:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "52: Züge halten bei Linien 6 und 18",
     "description": "Züge halten\nbei Linien 6 und 18",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1224,7 +1192,7 @@
     "guid": "3c0f04fc72c473debc1c3aced181d4782b1f08226a834b9859b95c38c56635f5",
     "pubDate": "2026-10-21T12:49:00+02:00",
     "starts_at": "2026-10-21T12:49:00+02:00",
-    "ends_at": null,
+    "ends_at": "2026-10-21T13:41:00+02:00",
     "_identity": "wl|störung|L=5|D=2026-10-21|TK=rettungseinsatz",
     "_wl_ids": [
       "I20261021-0021"
@@ -1346,18 +1314,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Betriebsstörung",
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "U4: Vandalismus",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
-    "pubDate": "2026-10-21T12:43:00+02:00",
-    "starts_at": "2026-10-21T12:43:00+02:00",
+    "guid": "d32077a1b2e894929e4e64d1f25d2b413063be9cce672144aa08efdd6b52ca50",
+    "pubDate": "2026-10-21T13:11:00+02:00",
+    "starts_at": "2026-10-21T13:11:00+02:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U2|D=2026-10-21|TK=u2 betriebsstörung",
+    "_identity": "wl|störung|L=U4|D=2026-10-21|TK=u4 vandalismus",
     "_wl_ids": [
-      "I20261021-0020"
+      "I20261021-0022"
     ],
-    "_incident_start": "2026-10-21T12:43:00+02:00"
+    "_incident_start": "2026-10-21T13:11:00+02:00"
   },
   {
     "source": "Wiener Linien",
