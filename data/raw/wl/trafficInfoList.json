@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0029, I20261021-0004-F01, I20261021-0006-F01, I20261021-0008-F01, I20261021-0009-F01, I20261021-0009-F02, I20261021-0010"
+    "trafficInfoNameList": "I20260909-0007, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0029, I20261021-0004-F01, I20261021-0006-F01, I20261021-0008-F01, I20261021-0009-F01, I20261021-0009-F02, I20261021-0010, I20261021-0011, I20261021-0012"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R100-136, R293-474, R318-437, R19-136, R36-152, R45-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R1475-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1476-149, R401-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1875-101, R1876-101, R2373-125, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2025-671, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-127, R2558-125, R5815-671, R1974-466, R500-101, R1848-0, R1842-462, R1562-152, R1559-152, R464-152, R1532-152, R1548-152, R1535-152, R1535-160, R1548-160, R1559-160, R1562-160, R1531-160, R1532-160, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R102-136, R101-136, R100-136, R318-437, R293-474, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1448-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R401-101, R1876-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1875-101, R2345-127, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2372-627, R2025-671, R2378-627, R2558-125, R5815-671, R1974-466, R500-101, R1848-0, R1842-462, R565-110, R566-110, R571-110, R570-110, R568-110, R579-110, R578-110, R577-110, R583-110, R581-110, R568-146, R566-146, R565-146, R583-146, R581-146, R1472-146, R1471-146, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -528,14 +528,112 @@
       "vehicleType": "ptBusCity"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-21T08:39:00.000+0200",
-     "lastUpdate": "2026-10-21T08:39:00.000+0200",
+     "end": "2026-10-21T09:29:00.000+0200",
+     "lastUpdate": "2026-10-21T09:29:00.000+0200",
      "resume": "2026-10-21T08:38:00.000+0200",
      "start": "2026-10-21T08:38:00.000+0200"
     },
     "title": "35A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U3: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261021-0011",
+    "owner": "WL",
+    "parentName": "I20261021-0011",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-21T09:18:00.000+0200",
+     "lastUpdate": "2026-10-21T09:18:00.000+0200",
+     "resume": "2026-10-21T09:18:00.000+0200",
+     "start": "2026-10-21T09:18:00.000+0200"
+    },
+    "title": "U3: Verspätungen"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "10": "ptTram",
+      "46": "ptTram"
+     }
+    },
+    "description": "Linie 10: Kein Betrieb zwischen Joachimsthalerplatz und Penzinger Straße. Linie 46: Kein Betrieb zwischen Breitensee S und Joachimsthalerplatz. Voraussichtliche Dauer: 10:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Wernhardtstraße.",
+    "descriptionHTML": "<p>Linie 10:<br>Kein Betrieb zwischen Joachimsthalerplatz und Penzinger Straße.<br>Linie 46:<br>Kein Betrieb zwischen Breitensee S und Joachimsthalerplatz.</p><p>Voraussichtliche Dauer: 10:00 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Wernhardtstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 10:<br>Kein Betrieb zwischen Joachimsthalerplatz und Penzinger Straße.<br>Linie 46:<br>Kein Betrieb zwischen Breitensee S und Joachimsthalerplatz.</p><p>Voraussichtliche Dauer: 10:00 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Wernhardtstraße.</p>",
+       "descriptionPlain": "Linie 10: Kein Betrieb zwischen Joachimsthalerplatz und Penzinger Straße. Linie 46: Kein Betrieb zwischen Breitensee S und Joachimsthalerplatz. Voraussichtliche Dauer: 10:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Wernhardtstraße.",
+       "title": "10, 46: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Wernhardtstraße",
+    "name": "I20261021-0012",
+    "owner": "WL",
+    "parentName": "I20261021-0012",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10",
+     "46"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 110,
+      "lineName": "10",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 146,
+      "lineName": "46",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-21T09:27:00.000+0200",
+     "lastUpdate": "2026-10-21T09:27:00.000+0200",
+     "start": "2026-10-21T09:26:00.000+0200"
+    },
+    "title": "10, 46: Fremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -908,6 +1006,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Joachimsthalerplatz",
+    "name": "R1471-146",
+    "owner": "WL",
+    "parentName": "R1471-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1471
+    ],
+    "time": {
+     "end": "2026-10-21T10:25:00.000+0200",
+     "start": "2026-10-21T09:26:36.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Joachimsthalerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Joachimsthalerplatz",
+    "name": "R1472-146",
+    "owner": "WL",
+    "parentName": "R1472-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1472
+    ],
+    "time": {
+     "end": "2026-10-21T10:25:00.000+0200",
+     "start": "2026-10-21T09:26:36.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Joachimsthalerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
     "name": "R1472-149",
     "owner": "WL",
@@ -1042,259 +1186,6 @@
      "start": "2026-10-20T00:00:06.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Bus\nBetrieb ab Winckelmannstraße",
-    "name": "R1531-160",
-    "owner": "WL",
-    "parentName": "R1531-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1531
-    ],
-    "time": {
-     "end": "2026-10-21T09:09:00.000+0200",
-     "start": "2026-10-21T08:09:28.000+0200"
-    },
-    "title": "Schadhafter Bus\nBetrieb ab Winckelmannstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Winckelmannstraße",
-    "name": "R1532-152",
-    "owner": "WL",
-    "parentName": "R1532-152",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1532
-    ],
-    "time": {
-     "end": "2026-10-21T09:08:00.000+0200",
-     "start": "2026-10-21T08:08:58.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Winckelmannstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Bus\nBetrieb ab Winckelmannstraße",
-    "name": "R1532-160",
-    "owner": "WL",
-    "parentName": "R1532-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1532
-    ],
-    "time": {
-     "end": "2026-10-21T09:09:00.000+0200",
-     "start": "2026-10-21T08:09:28.000+0200"
-    },
-    "title": "Schadhafter Bus\nBetrieb ab Winckelmannstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Winckelmannstraße",
-    "name": "R1535-152",
-    "owner": "WL",
-    "parentName": "R1535-152",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1535
-    ],
-    "time": {
-     "end": "2026-10-21T09:08:00.000+0200",
-     "start": "2026-10-21T08:08:58.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Winckelmannstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Bus\nBetrieb ab Winckelmannstraße",
-    "name": "R1535-160",
-    "owner": "WL",
-    "parentName": "R1535-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1535
-    ],
-    "time": {
-     "end": "2026-10-21T09:09:00.000+0200",
-     "start": "2026-10-21T08:09:28.000+0200"
-    },
-    "title": "Schadhafter Bus\nBetrieb ab Winckelmannstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Winckelmannstraße",
-    "name": "R1548-152",
-    "owner": "WL",
-    "parentName": "R1548-152",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1548
-    ],
-    "time": {
-     "end": "2026-10-21T09:08:00.000+0200",
-     "start": "2026-10-21T08:08:58.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Winckelmannstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Bus\nBetrieb ab Winckelmannstraße",
-    "name": "R1548-160",
-    "owner": "WL",
-    "parentName": "R1548-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1548
-    ],
-    "time": {
-     "end": "2026-10-21T09:09:00.000+0200",
-     "start": "2026-10-21T08:09:28.000+0200"
-    },
-    "title": "Schadhafter Bus\nBetrieb ab Winckelmannstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Westbahnhof <>",
-    "name": "R1559-152",
-    "owner": "WL",
-    "parentName": "R1559-152",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1559
-    ],
-    "time": {
-     "end": "2026-10-21T09:08:00.000+0200",
-     "start": "2026-10-21T08:08:28.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Westbahnhof <>"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1559-160",
-    "owner": "WL",
-    "parentName": "R1559-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1559
-    ],
-    "time": {
-     "end": "2026-10-21T09:09:00.000+0200",
-     "start": "2026-10-21T08:09:28.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Westbahnhof <>",
-    "name": "R1562-152",
-    "owner": "WL",
-    "parentName": "R1562-152",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1562
-    ],
-    "time": {
-     "end": "2026-10-21T09:08:00.000+0200",
-     "start": "2026-10-21T08:08:28.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Westbahnhof <>"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1562-160",
-    "owner": "WL",
-    "parentName": "R1562-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1562
-    ],
-    "time": {
-     "end": "2026-10-21T09:09:00.000+0200",
-     "start": "2026-10-21T08:09:28.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2029,29 +1920,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Winckelmannstraße",
-    "name": "R464-152",
-    "owner": "WL",
-    "parentName": "R464-152",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     464
-    ],
-    "time": {
-     "end": "2026-10-21T09:08:00.000+0200",
-     "start": "2026-10-21T08:08:57.000+0200"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Winckelmannstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -2075,6 +1943,305 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Penzinger Straße",
+    "name": "R565-110",
+    "owner": "WL",
+    "parentName": "R565-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     565
+    ],
+    "time": {
+     "end": "2026-10-21T10:23:00.000+0200",
+     "start": "2026-10-21T09:24:05.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Breitensee <",
+    "name": "R565-146",
+    "owner": "WL",
+    "parentName": "R565-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     565
+    ],
+    "time": {
+     "end": "2026-10-21T10:25:00.000+0200",
+     "start": "2026-10-21T09:26:05.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Breitensee <"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Penzinger Straße",
+    "name": "R566-110",
+    "owner": "WL",
+    "parentName": "R566-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     566
+    ],
+    "time": {
+     "end": "2026-10-21T10:23:00.000+0200",
+     "start": "2026-10-21T09:24:05.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Breitensee <",
+    "name": "R566-146",
+    "owner": "WL",
+    "parentName": "R566-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     566
+    ],
+    "time": {
+     "end": "2026-10-21T10:25:00.000+0200",
+     "start": "2026-10-21T09:26:05.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Breitensee <"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Penzinger Straße",
+    "name": "R568-110",
+    "owner": "WL",
+    "parentName": "R568-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     568
+    ],
+    "time": {
+     "end": "2026-10-21T10:23:00.000+0200",
+     "start": "2026-10-21T09:24:05.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Breitensee <",
+    "name": "R568-146",
+    "owner": "WL",
+    "parentName": "R568-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     568
+    ],
+    "time": {
+     "end": "2026-10-21T10:25:00.000+0200",
+     "start": "2026-10-21T09:26:05.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Breitensee <"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Penzinger Straße",
+    "name": "R570-110",
+    "owner": "WL",
+    "parentName": "R570-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     570
+    ],
+    "time": {
+     "end": "2026-10-21T10:23:00.000+0200",
+     "start": "2026-10-21T09:24:05.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Penzinger Straße",
+    "name": "R571-110",
+    "owner": "WL",
+    "parentName": "R571-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     571
+    ],
+    "time": {
+     "end": "2026-10-21T10:23:00.000+0200",
+     "start": "2026-10-21T09:24:05.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Joachimsthalerplatz",
+    "name": "R577-110",
+    "owner": "WL",
+    "parentName": "R577-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     577
+    ],
+    "time": {
+     "end": "2026-10-21T10:24:00.000+0200",
+     "start": "2026-10-21T09:24:35.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Joachimsthalerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Joachimsthalerplatz",
+    "name": "R578-110",
+    "owner": "WL",
+    "parentName": "R578-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     578
+    ],
+    "time": {
+     "end": "2026-10-21T10:24:00.000+0200",
+     "start": "2026-10-21T09:24:35.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Joachimsthalerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Joachimsthalerplatz",
+    "name": "R579-110",
+    "owner": "WL",
+    "parentName": "R579-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     579
+    ],
+    "time": {
+     "end": "2026-10-21T10:24:00.000+0200",
+     "start": "2026-10-21T09:24:35.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Joachimsthalerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Joachimsthalerplatz",
+    "name": "R581-110",
+    "owner": "WL",
+    "parentName": "R581-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     581
+    ],
+    "time": {
+     "end": "2026-10-21T10:24:00.000+0200",
+     "start": "2026-10-21T09:24:35.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Joachimsthalerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Joachimsthalerplatz",
+    "name": "R581-146",
+    "owner": "WL",
+    "parentName": "R581-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     581
+    ],
+    "time": {
+     "end": "2026-10-21T10:25:00.000+0200",
+     "start": "2026-10-21T09:26:35.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Joachimsthalerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "name": "R5815-671",
     "owner": "WL",
@@ -2091,6 +2258,52 @@
      "start": "2026-10-21T00:00:24.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Joachimsthalerplatz",
+    "name": "R583-110",
+    "owner": "WL",
+    "parentName": "R583-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     583
+    ],
+    "time": {
+     "end": "2026-10-21T10:24:00.000+0200",
+     "start": "2026-10-21T09:24:35.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Joachimsthalerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Joachimsthalerplatz",
+    "name": "R583-146",
+    "owner": "WL",
+    "parentName": "R583-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     583
+    ],
+    "time": {
+     "end": "2026-10-21T10:25:00.000+0200",
+     "start": "2026-10-21T09:26:35.000+0200"
+    },
+    "title": "Fremdunfall\nBetrieb ab Joachimsthalerplatz"
    },
    {
     "alertCause": "undefined alert cause",

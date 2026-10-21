@@ -1,23 +1,23 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-21T07:01:22.771054+00:00",
- "built": "2026-10-21T09:01:09+02:00",
+ "updated": "2026-10-21T07:31:17.518253+00:00",
+ "built": "2026-10-21T09:31:01+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-21T09:01:09+02:00",
+  "built": "2026-10-21T09:31:01+02:00",
   "items": [
    {
-    "title": "35A: Verkehrsunfall",
-    "time_line": "Seit 08:38"
+    "title": "10/46: Fremder Verkehrsunfall",
+    "time_line": "Seit 09:26"
    },
    {
-    "title": "52: Schadhafter Zug",
-    "time_line": "Seit 08:07"
+    "title": "U3: Verspätungen",
+    "time_line": "Seit 09:18"
    },
    {
-    "title": "60: Schadhaftes Fahrzeug",
+    "title": "52/60: Schadhaftes Fahrzeug",
     "time_line": "Seit 08:07"
    },
    {
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-14T07:30:49.579733+00:00",
-   "raw": {
-    "wl-stoerungen": 65,
-    "wl-hinweise": 91,
-    "oebb": 158,
-    "baustellen-linien": 50,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 21,
-    "oebb": 134,
-    "baustellen": 67
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 100
-   }
-  },
   {
    "t": "2026-10-14T08:01:05.509617+00:00",
    "raw": {
@@ -6770,6 +6750,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 115
+   }
+  },
+  {
+   "t": "2026-10-21T07:31:17.518253+00:00",
+   "raw": {
+    "wl-stoerungen": 91,
+    "wl-hinweise": 92,
+    "oebb": 163,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 16,
+    "oebb": 141,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 116
    }
   }
  ]

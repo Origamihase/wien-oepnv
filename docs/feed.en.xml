@@ -8,23 +8,36 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 21 Oct 2026 09:01:09 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 09:31:01 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[35A: Traffic accident]]></title>
+      <title><![CDATA[10/46: Third-party traffic accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">b0a24007474aab764828e2f63bdadfa9f2fa0506bb84bdfcd25263dd7bbb7dca</guid>
-      <pubDate>Wed, 21 Oct 2026 08:38:00 +0200</pubDate>
+      <guid isPermaLink="false">0fb6de619263fecdb8f0464d879a053a9b0222468f0bd61ada7c2c35122a16bc</guid>
+      <pubDate>Wed, 21 Oct 2026 09:26:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 21 Oct 2026 08:38:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 21 Oct 2026 08:38:00 +0200</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 08:38]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 08:38]]]></content:encoded>
+      <ext:first_seen>Wed, 21 Oct 2026 09:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 09:26:00 +0200</ext:starts_at>
+      <description>No service: 10 Joachimsthalerplatz – Penzinger Straße; 46 Breitensee S – Joachimsthalerplatz. Expected until 10:00. [Since 09:26]</description>
+      <content:encoded><![CDATA[No service: 10 Joachimsthalerplatz – Penzinger Straße; 46 Breitensee S – Joachimsthalerplatz. Expected until 10:00.<br/>[Since 09:26]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[52: Defective train]]></title>
+      <title><![CDATA[U3: Delays]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
+      <pubDate>Wed, 21 Oct 2026 09:18:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 09:18:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 09:18:00 +0200</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 09:18]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 09:18]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52/60: Defective vehicle]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">7f0abf3e55e40782bd00f3c222b84c3ee7e95801297cf252add178a51bd1c806</guid>
       <pubDate>Wed, 21 Oct 2026 08:07:00 +0200</pubDate>
@@ -33,21 +46,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 21 Oct 2026 08:07:00 +0200</ext:first_seen>
       <ext:starts_at>Wed, 21 Oct 2026 08:07:00 +0200</ext:starts_at>
-      <description>Service from Westbahnhof, Winckelmannstraße. Trains stop at the stops of lines 6 and 18. [Since 08:07]</description>
-      <content:encoded><![CDATA[Service from Westbahnhof, Winckelmannstraße. Trains stop at the stops of lines 6 and 18.<br/>[Since 08:07]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60: Defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">b98153df7d0e60b82d0381b90b9ad92815df222d447546c78876ca54749e306a</guid>
-      <pubDate>Wed, 21 Oct 2026 08:07:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 21 Oct 2026 08:07:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 21 Oct 2026 08:07:00 +0200</ext:starts_at>
-      <description>Service from Winckelmannstraße. [Since 08:07]</description>
-      <content:encoded><![CDATA[Service from Winckelmannstraße.<br/>[Since 08:07]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 08:07]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 08:07]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[13A: Illegally parked vehicle]]></title>

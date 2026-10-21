@@ -8,23 +8,36 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 21 Oct 2026 09:01:09 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 09:31:01 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[35A: Verkehrsunfall]]></title>
+      <title><![CDATA[10/46: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">b0a24007474aab764828e2f63bdadfa9f2fa0506bb84bdfcd25263dd7bbb7dca</guid>
-      <pubDate>Wed, 21 Oct 2026 08:38:00 +0200</pubDate>
+      <guid isPermaLink="false">0fb6de619263fecdb8f0464d879a053a9b0222468f0bd61ada7c2c35122a16bc</guid>
+      <pubDate>Wed, 21 Oct 2026 09:26:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 21 Oct 2026 08:38:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 21 Oct 2026 08:38:00 +0200</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 08:38]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 08:38]]]></content:encoded>
+      <ext:first_seen>Wed, 21 Oct 2026 09:31:01 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 09:26:00 +0200</ext:starts_at>
+      <description>Kein Betrieb: 10 Joachimsthalerplatz – Penzinger Straße; 46 Breitensee S – Joachimsthalerplatz. Voraussichtlich bis 10:00 Uhr. [Seit 09:26]</description>
+      <content:encoded><![CDATA[Kein Betrieb: 10 Joachimsthalerplatz – Penzinger Straße; 46 Breitensee S – Joachimsthalerplatz. Voraussichtlich bis 10:00 Uhr.<br/>[Seit 09:26]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[52: Schadhafter Zug]]></title>
+      <title><![CDATA[U3: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
+      <pubDate>Wed, 21 Oct 2026 09:18:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 09:18:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 09:18:00 +0200</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 09:18]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 09:18]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52/60: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">7f0abf3e55e40782bd00f3c222b84c3ee7e95801297cf252add178a51bd1c806</guid>
       <pubDate>Wed, 21 Oct 2026 08:07:00 +0200</pubDate>
@@ -33,21 +46,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 21 Oct 2026 08:07:00 +0200</ext:first_seen>
       <ext:starts_at>Wed, 21 Oct 2026 08:07:00 +0200</ext:starts_at>
-      <description>Betrieb ab Westbahnhof, Winckelmannstraße. Züge halten bei Linien 6 und 18. [Seit 08:07]</description>
-      <content:encoded><![CDATA[Betrieb ab Westbahnhof, Winckelmannstraße. Züge halten bei Linien 6 und 18.<br/>[Seit 08:07]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">b98153df7d0e60b82d0381b90b9ad92815df222d447546c78876ca54749e306a</guid>
-      <pubDate>Wed, 21 Oct 2026 08:07:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 21 Oct 2026 08:07:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 21 Oct 2026 08:07:00 +0200</ext:starts_at>
-      <description>Betrieb ab Winckelmannstraße. [Seit 08:07]</description>
-      <content:encoded><![CDATA[Betrieb ab Winckelmannstraße.<br/>[Seit 08:07]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 08:07]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 08:07]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[13A: Falschparker]]></title>
