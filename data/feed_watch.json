@@ -1,20 +1,24 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-21T07:31:17.518253+00:00",
- "built": "2026-10-21T09:31:01+02:00",
+ "updated": "2026-10-21T08:01:17.317078+00:00",
+ "built": "2026-10-21T10:01:02+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-21T09:31:01+02:00",
+  "built": "2026-10-21T10:01:02+02:00",
   "items": [
    {
-    "title": "10/46: Fremder Verkehrsunfall",
-    "time_line": "Seit 09:26"
+    "title": "68B: Rettungseinsatz",
+    "time_line": "Seit 09:57"
    },
    {
-    "title": "U3: Verspätungen",
-    "time_line": "Seit 09:18"
+    "title": "10: Fremdunfall",
+    "time_line": "Seit 09:24"
+   },
+   {
+    "title": "46: Fremdunfall",
+    "time_line": "Seit 09:26"
    },
    {
     "title": "52/60: Schadhaftes Fahrzeug",
@@ -43,35 +47,11 @@
    {
     "title": "56B/56A/N62: Strampfergasse",
     "time_line": "Bis 03.11."
-   },
-   {
-    "title": "80A: ÖBB-Bauarbeiten",
-    "time_line": "Bis 31.12.2027"
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-14T08:01:05.509617+00:00",
-   "raw": {
-    "wl-stoerungen": 68,
-    "wl-hinweise": 91,
-    "oebb": 166,
-    "baustellen-linien": 50,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 22,
-    "oebb": 141,
-    "baustellen": 67
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 101
-   }
-  },
   {
    "t": "2026-10-14T08:30:58.920240+00:00",
    "raw": {
@@ -6770,6 +6750,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 116
+   }
+  },
+  {
+   "t": "2026-10-21T08:01:17.317078+00:00",
+   "raw": {
+    "wl-stoerungen": 92,
+    "wl-hinweise": 92,
+    "oebb": 154,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 16,
+    "oebb": 131,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 117
    }
   }
  ]

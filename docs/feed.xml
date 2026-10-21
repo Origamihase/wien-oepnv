@@ -8,33 +8,46 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 21 Oct 2026 09:31:01 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 10:01:02 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[10/46: Fremder Verkehrsunfall]]></title>
+      <title><![CDATA[68B: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">57b3ae5bfbecd13d33fef6a3277db1a620b4210c9794181e36d22b7e856c4185</guid>
+      <pubDate>Wed, 21 Oct 2026 09:57:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 10:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 09:57:00 +0200</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 09:57]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 09:57]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10: Fremdunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">0fb6de619263fecdb8f0464d879a053a9b0222468f0bd61ada7c2c35122a16bc</guid>
-      <pubDate>Wed, 21 Oct 2026 09:26:00 +0200</pubDate>
+      <pubDate>Wed, 21 Oct 2026 09:24:05 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 21 Oct 2026 09:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 21 Oct 2026 09:26:00 +0200</ext:starts_at>
-      <description>Kein Betrieb: 10 Joachimsthalerplatz – Penzinger Straße; 46 Breitensee S – Joachimsthalerplatz. Voraussichtlich bis 10:00 Uhr. [Seit 09:26]</description>
-      <content:encoded><![CDATA[Kein Betrieb: 10 Joachimsthalerplatz – Penzinger Straße; 46 Breitensee S – Joachimsthalerplatz. Voraussichtlich bis 10:00 Uhr.<br/>[Seit 09:26]]]></content:encoded>
+      <ext:starts_at>Wed, 21 Oct 2026 09:24:05 +0200</ext:starts_at>
+      <description>Betrieb ab Penzinger Straße, Joachimsthalerplatz. [Seit 09:24]</description>
+      <content:encoded><![CDATA[Betrieb ab Penzinger Straße, Joachimsthalerplatz.<br/>[Seit 09:24]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U3: Verspätungen]]></title>
+      <title><![CDATA[46: Fremdunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
-      <pubDate>Wed, 21 Oct 2026 09:18:00 +0200</pubDate>
+      <guid isPermaLink="false">eed4ea629d44bb9f67a32b24760e7fc7e9fbb8fab9efd3a43457846fae26b28d</guid>
+      <pubDate>Wed, 21 Oct 2026 09:26:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 21 Oct 2026 09:18:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 21 Oct 2026 09:18:00 +0200</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 09:18]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 09:18]]]></content:encoded>
+      <ext:first_seen>Wed, 21 Oct 2026 09:26:00 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 09:26:00 +0200</ext:starts_at>
+      <description>Betrieb ab Breitensee, Joachimsthalerplatz. [Seit 09:26]</description>
+      <content:encoded><![CDATA[Betrieb ab Breitensee, Joachimsthalerplatz.<br/>[Seit 09:26]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[52/60: Schadhaftes Fahrzeug]]></title>
@@ -130,20 +143,6 @@
       <georss:point>48.167289 16.277365</georss:point>
       <description>Hermesstraße nach Strampfergasse → etwa 100 Meter in Richtung Dr.-Schober-Straße. Hermesstraße nach Strampfergasse → aufgelassen. Haltestellenverlegung bzw. -auflassung … [Bis 03.11.]</description>
       <content:encoded><![CDATA[Hermesstraße nach Strampfergasse → etwa 100 Meter in Richtung Dr.-Schober-Straße. Hermesstraße nach Strampfergasse → aufgelassen. Haltestellenverlegung bzw. -auflassung …<br/>[Bis 03.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[80A: ÖBB-Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5a68b1fc449f7041118da0ac6c6652cede40d8eb9c245e412fcac285c52db7c7</guid>
-      <pubDate>Tue, 06 Oct 2026 14:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 19 Oct 2026 00:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
-      <description>Wegen der Neuerrichtung der ÖBB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Maßnahmen in Kraft. [Bis 31.12.2027]</description>
-      <content:encoded><![CDATA[Wegen der Neuerrichtung der ÖBB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Maßnahmen in Kraft.<br/>[Bis 31.12.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
