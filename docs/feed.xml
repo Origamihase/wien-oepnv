@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:georss="http://www.georss.org/georss" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
   <channel>
     <title>ÖPNV Störungen Wien &amp; Pendler</title>
     <link>https://github.com/Origamihase/wien-oepnv</link>
@@ -8,8 +8,34 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 21 Oct 2026 10:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 10:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[3A: Schadhafter LKW]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">81c4e014a928c2c2a72b0d841b3672377280d1f75f23a5af455444908ad00165</guid>
+      <pubDate>Wed, 21 Oct 2026 10:10:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 10:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 10:10:00 +0200</ext:starts_at>
+      <description>Betrieb nur zwischen Schottenring U und Stephansplatz U. Voraussichtlich bis 10:50 Uhr. Grund: Schadhafter LKW im Bereich Wollzeile. [Seit 10:10]</description>
+      <content:encoded><![CDATA[Betrieb nur zwischen Schottenring U und Stephansplatz U. Voraussichtlich bis 10:50 Uhr. Grund: Schadhafter LKW im Bereich Wollzeile.<br/>[Seit 10:10]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[44: Gleisschaden]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">6e25dfd3d050e375ad5cfc00b7a2a28d272cfefc880dba24adb400574e2aa75a</guid>
+      <pubDate>Wed, 21 Oct 2026 10:04:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 10:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 10:04:00 +0200</ext:starts_at>
+      <description>Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Voraussichtlich bis 11:00 Uhr. Grund: Gleisschaden im Haltestellenbereich Maroltingergasse. [Seit 10:04]</description>
+      <content:encoded><![CDATA[Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Voraussichtlich bis 11:00 Uhr. Grund: Gleisschaden im Haltestellenbereich Maroltingergasse.<br/>[Seit 10:04]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[68B: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -24,7 +50,7 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 09:57]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[10: Fremdunfall]]></title>
+      <title><![CDATA[10: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">0fb6de619263fecdb8f0464d879a053a9b0222468f0bd61ada7c2c35122a16bc</guid>
       <pubDate>Wed, 21 Oct 2026 09:24:05 +0200</pubDate>
@@ -32,22 +58,22 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 21 Oct 2026 09:31:01 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 21 Oct 2026 09:24:05 +0200</ext:starts_at>
-      <description>Betrieb ab Penzinger Straße, Joachimsthalerplatz. [Seit 09:24]</description>
-      <content:encoded><![CDATA[Betrieb ab Penzinger Straße, Joachimsthalerplatz.<br/>[Seit 09:24]]]></content:encoded>
+      <ext:starts_at>Wed, 21 Oct 2026 09:26:00 +0200</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 09:24]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 09:24]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[46: Fremdunfall]]></title>
+      <title><![CDATA[46: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">eed4ea629d44bb9f67a32b24760e7fc7e9fbb8fab9efd3a43457846fae26b28d</guid>
-      <pubDate>Wed, 21 Oct 2026 09:26:00 +0200</pubDate>
+      <guid isPermaLink="false">e1715d10748fce73b172c45e54dd3e25af3065fc6c95c6e107df041384e060fc</guid>
+      <pubDate>Wed, 21 Oct 2026 09:26:05 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 21 Oct 2026 09:26:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 21 Oct 2026 09:26:00 +0200</ext:starts_at>
-      <description>Betrieb ab Breitensee, Joachimsthalerplatz. [Seit 09:26]</description>
-      <content:encoded><![CDATA[Betrieb ab Breitensee, Joachimsthalerplatz.<br/>[Seit 09:26]]]></content:encoded>
+      <ext:first_seen>Wed, 21 Oct 2026 09:26:05 +0200</ext:first_seen>
+      <ext:starts_at>Wed, 21 Oct 2026 10:07:40 +0200</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 09:26]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 09:26]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[52/60: Schadhaftes Fahrzeug]]></title>
@@ -90,30 +116,17 @@
       <content:encoded><![CDATA[[Seit 07:20]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[44: Rettungseinsatz]]></title>
+      <title><![CDATA[64A/N64R: Haltestellenverlegung]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">c14ad7374d16f14cd0154afd971ba66872a46e7f70c45ab6156ec3ada2b6a22a</guid>
-      <pubDate>Wed, 21 Oct 2026 06:55:50 +0200</pubDate>
+      <guid isPermaLink="false">34fb721ed77b1c62ef8b21d9f47cc7cff5964c42b25dfdb8faf2317946386747</guid>
+      <pubDate>Wed, 21 Oct 2026 10:12:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 21 Oct 2026 06:06:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 21 Oct 2026 06:56:00 +0200</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 06:55]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 06:55]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991</guid>
-      <pubDate>Wed, 21 Oct 2026 06:06:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 21 Oct 2026 06:06:00 +0200</ext:first_seen>
-      <ext:starts_at>Wed, 21 Oct 2026 06:06:00 +0200</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 06:06]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 06:06]]]></content:encoded>
+      <ext:first_seen>Wed, 21 Oct 2026 10:12:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <description>Perfektastraße 3 → Perfektastraße 9. Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa … [Ab Do 22.10.]</description>
+      <content:encoded><![CDATA[Perfektastraße 3 → Perfektastraße 9. Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa …<br/>[Ab Do 22.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1: Gleisbauarbeiten]]></title>
@@ -128,21 +141,6 @@
       <ext:ends_at>Sat, 05 Dec 2026 04:00:00 +0100</ext:ends_at>
       <description>Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1. Maßnahmen: Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. [Bis 05.12.]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1. Maßnahmen: Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br/>[Bis 05.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[56B/56A/N62: Strampfergasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">d26c6c6963612c560045052c175b1ec9ef04add4290e496a66c9625d2dde4a6e</guid>
-      <pubDate>Mon, 19 Oct 2026 00:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 19 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <georss:point>48.167289 16.277365</georss:point>
-      <description>Hermesstraße nach Strampfergasse → etwa 100 Meter in Richtung Dr.-Schober-Straße. Hermesstraße nach Strampfergasse → aufgelassen. Haltestellenverlegung bzw. -auflassung … [Bis 03.11.]</description>
-      <content:encoded><![CDATA[Hermesstraße nach Strampfergasse → etwa 100 Meter in Richtung Dr.-Schober-Straße. Hermesstraße nach Strampfergasse → aufgelassen. Haltestellenverlegung bzw. -auflassung …<br/>[Bis 03.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

@@ -1,23 +1,31 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-21T08:01:17.317078+00:00",
- "built": "2026-10-21T10:01:02+02:00",
+ "updated": "2026-10-21T08:31:06.745718+00:00",
+ "built": "2026-10-21T10:30:49+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-21T10:01:02+02:00",
+  "built": "2026-10-21T10:30:49+02:00",
   "items": [
+   {
+    "title": "3A: Schadhafter LKW",
+    "time_line": "Seit 10:10"
+   },
+   {
+    "title": "44: Gleisschaden",
+    "time_line": "Seit 10:04"
+   },
    {
     "title": "68B: Rettungseinsatz",
     "time_line": "Seit 09:57"
    },
    {
-    "title": "10: Fremdunfall",
+    "title": "10: Fremder Verkehrsunfall",
     "time_line": "Seit 09:24"
    },
    {
-    "title": "46: Fremdunfall",
+    "title": "46: Rettungseinsatz",
     "time_line": "Seit 09:26"
    },
    {
@@ -33,45 +41,17 @@
     "time_line": "Seit 07:20"
    },
    {
-    "title": "44: Rettungseinsatz",
-    "time_line": "Seit 06:55"
-   },
-   {
-    "title": "43: Rettungseinsatz",
-    "time_line": "Seit 06:06"
+    "title": "64A/N64R: Haltestellenverlegung",
+    "time_line": "Ab Do 22.10."
    },
    {
     "title": "1: Gleisbauarbeiten",
     "time_line": "Bis 05.12."
-   },
-   {
-    "title": "56B/56A/N62: Strampfergasse",
-    "time_line": "Bis 03.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-14T08:30:58.920240+00:00",
-   "raw": {
-    "wl-stoerungen": 73,
-    "wl-hinweise": 91,
-    "oebb": 166,
-    "baustellen-linien": 50,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 21,
-    "oebb": 141,
-    "baustellen": 67
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 101
-   }
-  },
   {
    "t": "2026-10-14T09:01:20.104361+00:00",
    "raw": {
@@ -6770,6 +6750,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 117
+   }
+  },
+  {
+   "t": "2026-10-21T08:31:06.745718+00:00",
+   "raw": {
+    "wl-stoerungen": 102,
+    "wl-hinweise": 93,
+    "oebb": 160,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 15,
+    "oebb": 137,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 10,
+    "wl": 119
    }
   }
  ]

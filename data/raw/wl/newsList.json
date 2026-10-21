@@ -6,7 +6,7 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-2738, N20260209-3501, N20260209-3802, N20260209-4631, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260701-5989, N20260702-5991, N20260708-6004, N20260722-6034, N20260813-6092, N20260808-6085, N20260808-6083, N20260808-6084, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260831-6165, N20260901-6167, N20260903-6175, N20260908-6177, N20260910-6180, N20260911-6181, N20260915-6185, N20260916-6187, N20260918-6191, N20260921-6196, N20260922-6200, N20260923-6203, N20260930-6211, N20261005-6217, N20261005-6219, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261008-6266, N20261008-6267, N20261009-6271, N20261009-6270, N20261014-6275, N20261014-6276, N20261014-6277, N20261014-6278, N20261015-6279, N20261016-6281, N20261016-6280, N20261019-6285, N20261020-0003, N20261021-0001, N20261021-0002"
+    "trafficInfoNameList": "N20260209-0049, N20260209-2738, N20260209-3501, N20260209-3802, N20260209-4631, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260701-5989, N20260702-5991, N20260708-6004, N20260722-6034, N20260813-6092, N20260808-6085, N20260808-6084, N20260808-6083, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260831-6165, N20260901-6167, N20260903-6175, N20260908-6177, N20260910-6180, N20260911-6181, N20260915-6185, N20260916-6187, N20260918-6191, N20260921-6196, N20260922-6200, N20260923-6203, N20260930-6211, N20261005-6217, N20261005-6219, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261008-6266, N20261008-6267, N20261009-6271, N20261009-6270, N20261014-6275, N20261014-6276, N20261014-6277, N20261014-6278, N20261015-6279, N20261016-6281, N20261016-6280, N20261019-6285, N20261020-0003, N20261021-0001, N20261021-0002, N20261021-0003"
    },
    {
     "id": -1,
@@ -3070,8 +3070,8 @@
     "title": "5, 12: Albertgasse"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
+    "alertCause": "construction work",
+    "alertCauseId": 45,
     "description": "<h2>Bauarbeiten</h2>\r\n<p>Wegen Bauarbeiten im Bereich Neilreichgasse # Davidgasse wird die Linie 7A umgeleitet.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Mittwoch, 14. Oktober 2026, Betriebsbeginn, f&uuml;r etwa 3 Wochen</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 7A in Richtung Meidling Hauptstra&szlig;e U<br /></strong>Umleitung ab Neilreichgasse # Davidgasse &uuml;ber Neilreichgasse &ndash; Rotenhofgasse - Sonnleithnergasse - Davidgasse zur Stammstrecke.</p>\r\n<p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>- Fernkorngasse (Davidgasse 64 vor Fernkorngasse)</p>\r\n<p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>- Fernkorngasse (Davidgasse 70 - 72, prov. Haltestelle)</p>",
     "id": "N20261009-6271",
     "location": {
@@ -3083,8 +3083,8 @@
      "type": "Feature"
     },
     "name": "N20261009-6271",
-    "reasonId": 0,
-    "reasonName": "undefined",
+    "reasonId": 21,
+    "reasonName": "Bauarbeiten",
     "refPoiCategoryId": 13296,
     "relatedLines": [
      "7A"
@@ -3097,55 +3097,48 @@
      }
     ],
     "relatedStops": [
-     517,
      689,
      701,
-     709,
      710,
      711,
      712,
      713,
      714,
      715,
-     717,
-     718,
-     719,
-     720,
-     721,
-     779,
-     780,
      781,
      790,
      807,
-     814,
-     1797,
      1798,
      1801,
      1802,
-     1832,
-     1837,
-     1838,
-     1847,
      1848,
      1850,
-     2569,
      2570,
      2578,
      2579,
      3213
     ],
     "time": {
-     "end": "2027-10-09T11:11:00.000+0200",
+     "end": "2026-10-28T07:00:00.000+0100",
      "start": "2026-10-09T00:00:00.000+0200",
      "validFrom": "2026-10-09T12:52:00.000+0200"
     },
     "title": "7A: Bauarbeiten ab 14.10.2026"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Liesing-Flur-Gasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Perfektastra&szlig;e nach Liesinger-Flur-Gasse</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Perfektastra&szlig;e 77</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab Mittwoch 14. Oktober 2026, etwa 15:00 Uhr, f&uuml;r voraussichtlich einer Woche</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stra&szlig;enbauarbeiten</span></p>",
+    "alertCause": "unknown",
+    "alertCauseId": 0,
+    "description": "<p><span><strong><u>Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Liesing-Flur-Gasse</span></p><p><span><strong><u>Von:</u></strong> Perfektastraße nach Liesinger-Flur-Gasse</span></p><p><span><strong><u>Nach:</u></strong> Perfektastraße 77</span></p><p><span><strong><u>Dauer:</u></strong> Ab Mittwoch 14. Oktober 2026, etwa 15:00 Uhr,  bis Donnerstag 22. Oktober 2026 etwa 16:00 Uhr</span></p><p><span><strong><u>Grund:</u></strong> Straßenbauarbeiten</span></p>",
     "id": "N20261014-6275",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><span><strong><u>Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Liesing-Flur-Gasse</span></p><p><span><strong><u>Von:</u></strong> Perfektastraße nach Liesinger-Flur-Gasse</span></p><p><span><strong><u>Nach:</u></strong> Perfektastraße 77</span></p><p><span><strong><u>Dauer:</u></strong> Ab Mittwoch 14. Oktober 2026, etwa 15:00 Uhr,  bis Donnerstag 22. Oktober 2026 etwa 16:00 Uhr</span></p><p><span><strong><u>Grund:</u></strong> Straßenbauarbeiten</span></p>",
+       "descriptionPlain": "Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse Haltestelle: Liesing-Flur-Gasse Von: Perfektastraße nach Liesinger-Flur-Gasse Nach: Perfektastraße 77 Dauer: Ab Mittwoch 14. Oktober 2026, etwa 15:00 Uhr, bis Donnerstag 22. Oktober 2026 etwa 16:00 Uhr Grund: Straßenbauarbeiten",
+       "title": "Haltestellenverlegung"
+      }
+     }
+    ],
     "location": {
      "properties": {
       "attributes": {},
@@ -3155,8 +3148,8 @@
      "type": "Feature"
     },
     "name": "N20261014-6275",
-    "reasonId": 0,
-    "reasonName": "undefined",
+    "reasonId": 223,
+    "reasonName": "Haltestellenverlegung",
     "refPoiCategoryId": 13296,
     "relatedLines": [
      "64A"
@@ -3172,7 +3165,7 @@
      1872
     ],
     "time": {
-     "end": "2026-11-11T11:11:00.000+0100",
+     "end": "2026-10-22T16:00:00.000+0200",
      "start": "2026-10-14T00:00:00.000+0200",
      "validFrom": "2026-10-14T10:38:00.000+0200"
     },
@@ -4053,6 +4046,57 @@
      "validFrom": "2026-10-27T10:00:00.000+0100"
     },
     "title": "54B, 54A: Bauarbeiten"
+   },
+   {
+    "alertCause": "unknown",
+    "alertCauseId": 0,
+    "description": "<p><strong><u>Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa U</u></strong></p><p><strong><u>Haltestelle:</u></strong> Erlaaer Spitz</p><p><strong><u>Von:</u></strong> Perfektastraße 3</p><p><strong><u>Nach:</u></strong> Perfektastraße 9</p><p><strong><u>Dauer:</u></strong> Ab Donnerstag 22. Oktober 2026, etwa 16:00 Uhr,  Dauer unbekannt</p><p><strong><u>Grund:</u></strong> Straßenbauarbeiten</p>",
+    "id": "N20261021-0003",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong><u>Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa U</u></strong></p><p><strong><u>Haltestelle:</u></strong> Erlaaer Spitz</p><p><strong><u>Von:</u></strong> Perfektastraße 3</p><p><strong><u>Nach:</u></strong> Perfektastraße 9</p><p><strong><u>Dauer:</u></strong> Ab Donnerstag 22. Oktober 2026, etwa 16:00 Uhr,  Dauer unbekannt</p><p><strong><u>Grund:</u></strong> Straßenbauarbeiten</p>",
+       "descriptionPlain": "Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa U Haltestelle: Erlaaer Spitz Von: Perfektastraße 3 Nach: Perfektastraße 9 Dauer: Ab Donnerstag 22. Oktober 2026, etwa 16:00 Uhr, Dauer unbekannt Grund: Straßenbauarbeiten",
+       "title": "Haltestellenverlegung"
+      }
+     }
+    ],
+    "location": {
+     "properties": {
+      "attributes": {},
+      "coordName": "WGS84",
+      "type": "news"
+     },
+     "type": "Feature"
+    },
+    "name": "N20261021-0003",
+    "reasonId": 223,
+    "reasonName": "Haltestellenverlegung",
+    "refPoiCategoryId": 13296,
+    "relatedLines": [
+     "64A",
+     "N64R"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 464,
+      "lineName": "64A",
+      "vehicleType": "ptBusCity"
+     },
+     {
+      "lineId": 864,
+      "lineName": "N64R",
+      "vehicleType": ""
+     }
+    ],
+    "relatedStops": [
+     1855
+    ],
+    "time": {
+     "start": "2026-10-21T10:12:00.000+0200",
+     "validFrom": "2026-10-22T16:00:00.000+0200"
+    },
+    "title": "Haltestellenverlegung"
    },
    {
     "alertCause": "undefined alert cause",
