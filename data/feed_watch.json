@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-21T22:01:11.465510+00:00",
- "built": "2026-10-22T00:00:58+02:00",
+ "updated": "2026-10-21T22:30:49.917611+00:00",
+ "built": "2026-10-22T00:30:42+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-22T00:00:58+02:00",
+  "built": "2026-10-22T00:30:42+02:00",
   "items": [
    {
     "title": "44: Gleisschaden",
@@ -41,37 +41,17 @@
     "time_line": "Seit 19.10."
    },
    {
-    "title": "N71: Simmering S U",
-    "time_line": "Bis Fr 23.10."
+    "title": "N71: Gleisbauarbeiten, Ersatzverkehr",
+    "time_line": "Heute"
    },
    {
-    "title": "64A: Liesing-Flur-Gasse",
-    "time_line": "Heute"
+    "title": "N71: Simmering S U",
+    "time_line": "Bis Fr 23.10."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-14T22:01:14.966031+00:00",
-   "raw": {
-    "wl-stoerungen": 59,
-    "wl-hinweise": 91,
-    "oebb": 166,
-    "baustellen-linien": 50,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 18,
-    "oebb": 142,
-    "baustellen": 67
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 101
-   }
-  },
   {
    "t": "2026-10-14T22:31:03.208704+00:00",
    "raw": {
@@ -6790,6 +6770,26 @@
     "baustellen": 4,
     "oebb": 9,
     "wl": 109
+   }
+  },
+  {
+   "t": "2026-10-21T22:30:49.917611+00:00",
+   "raw": {
+    "wl-stoerungen": 74,
+    "wl-hinweise": 90,
+    "oebb": 161,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 15,
+    "oebb": 137,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 111
    }
   }
  ]
