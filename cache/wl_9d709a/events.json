@@ -159,13 +159,13 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "1: Gleisbauarbeiten",
-    "description": "<h2>Gleisbauarbeiten</h2><p>Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1.</p><p><span><strong><u>Zeitraum:</u></strong></span><br>Ab 20. Oktober 2026 bis Mitte Dezember 2026.<br>Aufgrund eines spontanen Gleisgebrechens müssen die Gleisbauarbeiten vorgezogen werden.</p><p><span><strong><u>Maßnahmen:</u></strong></span><br><strong>Linie 1:</strong><br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Die Züge werden ab Knöllgasse zum Reumannplatz umgeleitet.</p><p><span><strong><u>Ersatz:</u></strong></span><br>Weichen Sie ersatzweise auf die Linien 7A oder 65A aus.</p><p><span><strong><u>Skizze:</u></strong></span><br><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/1_Umleitung_Reumannplatz.png\" alt=\"\" width=\"1000\" height=\"1000\"></p>",
+    "description": "<h2>Gleisbauarbeiten</h2><p>Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1.</p><p><strong><u>Zeitraum:</u></strong><br>Ab 20. Oktober 2026 bis Mitte Dezember 2026.<br>Aufgrund eines spontanen Gleisgebrechens müssen die Gleisbauarbeiten vorgezogen werden.</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie 1:</strong><br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Die Züge werden ab Knöllgasse zum Reumannplatz umgeleitet.</p><p><strong><u>Ersatz:</u></strong><br>Weichen Sie ersatzweise auf die Linien 7A oder 65A aus.</p><p><strong><u>Skizze:</u></strong><br><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/1_Umleitung_Reumannplatz.png\" alt=\"\" width=\"1000\" height=\"1000\"></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "c199b995f50a8d5b241235da3372e3b3c86fd17dc096d6c9910f31dfd4801428",
-    "pubDate": "2026-10-08T10:20:00+02:00",
+    "pubDate": "2026-10-21T06:50:00+02:00",
     "starts_at": "2026-10-21T06:50:00+02:00",
     "ends_at": "2026-12-05T04:00:00+01:00",
-    "_identity": "wl|hinweis|L=1|D=2026-10-27|TK=1 gleisbauarbeiten"
+    "_identity": "wl|hinweis|L=1|D=2026-10-21|TK=1 gleisbauarbeiten"
   },
   {
     "source": "Wiener Linien",
@@ -1099,7 +1099,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "44: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 44: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 07:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Familienplatz.",
+    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "c14ad7374d16f14cd0154afd971ba66872a46e7f70c45ab6156ec3ada2b6a22a",
     "pubDate": "2026-10-21T06:55:50+02:00",
@@ -1138,6 +1138,18 @@
     "starts_at": "2026-10-14T00:00:22+02:00",
     "ends_at": "2026-10-21T23:59:59+02:00",
     "_identity": "wl|störung|L=52|D=2026-10-14|TK=züge halten bei linien 6 und 18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62A: Straßenbau Haltestelle verlegt zur Wienerbergbrücke vor Breitenfurter Straße",
+    "description": "Straßenbau\nHaltestelle verlegt zur Wienerbergbrücke vor Breitenfurter Straße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "71988058016b2248f4f91d8193da50e1959d6cad3acf4e3b1e9cb0bc0ec0f8d1",
+    "pubDate": "2026-10-21T07:20:54+02:00",
+    "starts_at": "2026-10-21T07:20:54+02:00",
+    "ends_at": "2026-10-21T23:59:59+02:00",
+    "_identity": "wl|störung|L=62A|D=2026-10-21|TK=strassenbau haltestelle verlegt zur wienerbergbrücke vor breitenfurter strasse"
   },
   {
     "source": "Wiener Linien",
@@ -1258,6 +1270,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U6: Verspätungen",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2026-10-21T07:05:00+02:00",
+    "starts_at": "2026-10-21T07:05:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-10-21|TK=u6 verspätungen",
+    "_wl_ids": [
+      "I20261021-0007"
+    ],
+    "_incident_start": "2026-10-21T07:05:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1290,5 +1318,17 @@
     "starts_at": "2026-10-21T00:00:20+02:00",
     "ends_at": "2026-10-21T23:59:59+02:00",
     "_identity": "wl|störung|L=|D=2026-10-21|TK=ersatzverkehr"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Haltestelle aufgelassen Einstieg bei Wienerbergbrücke",
+    "description": "Haltestelle\naufgelassen\nEinstieg bei\nWienerbergbrücke",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c01e555d0a022948649a7096198bd6c7588d8c48464eb11f972b0e717a016f84",
+    "pubDate": "2026-10-21T07:19:54+02:00",
+    "starts_at": "2026-10-21T07:19:54+02:00",
+    "ends_at": "2026-10-21T23:59:59+02:00",
+    "_identity": "wl|störung|L=|D=2026-10-21|TK=haltestelle aufgelassen einstieg bei wienerbergbrücke"
   }
 ]
