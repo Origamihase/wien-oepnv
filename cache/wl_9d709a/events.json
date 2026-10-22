@@ -1106,22 +1106,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "30: Schadhaftes Fahrzeug",
-    "description": "Linie 30: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2079eed11fb52f3e5d3f26f767acfa075e513cdb0b512e1d46839b2866aa3029",
-    "pubDate": "2026-10-22T06:21:00+02:00",
-    "starts_at": "2026-10-22T06:21:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=30|D=2026-10-22|TK=30 schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261022-0003"
-    ],
-    "_incident_start": "2026-10-22T06:21:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1306,18 +1290,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Rettungseinsatz",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "title": "U3: Gegenstände im Gleis",
+    "description": "Linie U3: Streckenunterbrechung zwischen den Stationen Herrengasse und Landstraße, Bahnhof Wien Mitte. Bitte beachten Sie folgende Hinweise: - Pendelzug eingerichtet: Zwischen Herrengasse und Landstraße fährt ein Pendelzug in beiden Richtungen auf Gleis 2. - Umstieg erforderlich: In den Stationen Herrengasse und Landstraße müssen Sie den Zug verlassen und am gegenüberliegenden Gleis in den Anschlusszug umsteigen. - Bitte planen Sie mehr Zeit ein und weichen nach Möglichkeit auf andere Linien aus. Voraussichtliche Dauer: 08:40 Uhr. Grund: Gegenstände im Gleis im Haltestellenbereich Stephansplatz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
-    "pubDate": "2026-10-22T06:51:00+02:00",
-    "starts_at": "2026-10-22T06:51:00+02:00",
+    "guid": "c94bee17557b40d6932ad876af757f0e9d32993367d27b95b96fd3a98aaff333",
+    "pubDate": "2026-10-22T07:56:00+02:00",
+    "starts_at": "2026-10-22T07:56:00+02:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-10-22|TK=rettungseinsatz",
+    "_identity": "wl|störung|L=U3|D=2026-10-22|TK=u3 gegenstände im gleis",
     "_wl_ids": [
-      "I20261022-0005"
+      "I20261022-0013"
     ],
-    "_incident_start": "2026-10-22T06:51:00+02:00"
+    "_incident_start": "2026-10-22T07:56:00+02:00"
   },
   {
     "source": "Wiener Linien",
