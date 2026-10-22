@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 22 Oct 2026 18:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 19:00:48 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[26A: Fremder Verkehrsunfall]]></title>
@@ -19,7 +19,7 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 18:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 17:38:08 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 22 Oct 2026 17:42:00 +0200</ext:starts_at>
       <description>Die Linie 26A wird in beiden Richtungen zwischen Konstanziagasse und Siegesplatz über Langobardenstraße umgeleitet; Umleitung ab Konstanziagasse über Langobardenstraße. [Seit 17:38]</description>
       <content:encoded><![CDATA[Die Linie 26A wird in beiden Richtungen zwischen Konstanziagasse und Siegesplatz über Langobardenstraße umgeleitet; Umleitung ab Konstanziagasse über Langobardenstraße.<br/>[Seit 17:38]]]></content:encoded>
     </item>
@@ -58,7 +58,7 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 17:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 17:51:08 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 22 Oct 2026 17:48:00 +0200</ext:starts_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:48]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:48]]]></content:encoded>
     </item>
@@ -77,6 +77,32 @@
       <content:encoded><![CDATA[Fahrtbehinderung; Betrieb ab Johann-Nepomuk-Berger-Platz; Züge halten Taubergasse 5-7.<br/>[Seit 10:17]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[57A: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">96286a7f0df4710fd02917d4828da01c6be2f4262ae3bab0fc285406a2243348</guid>
+      <pubDate>Thu, 22 Oct 2026 18:49:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 22 Oct 2026 18:49:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 18:49:00 +0200</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration. [Seit heute]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.<br/>[Seit heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[48A: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">3bb4d7061d271d4f3809ed2eb99553cb577bc0fddb43c2c068b8947686e287e6</guid>
+      <pubDate>Thu, 22 Oct 2026 18:31:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 22 Oct 2026 18:31:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 18:31:00 +0200</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration. [Seit heute]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.<br/>[Seit heute]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[1/D/71: Demonstration]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">ad4814f762aa48c34e8d9de2b9afa12b616fbf72f49a5e925e4bb5b73034ef90</guid>
@@ -88,33 +114,6 @@
       <ext:starts_at>Thu, 22 Oct 2026 13:44:00 +0200</ext:starts_at>
       <description>1: Umleitung Kliebergasse – Hintere Zollamtsstraße; D: Umleitung Schwarzenbergplatz – Börse; 71: Betrieb nur Kaiserebersdorf – Schwarzenbergplatz. Voraussichtlich bis 20:00 Uhr. [Seit heute]</description>
       <content:encoded><![CDATA[1: Umleitung Kliebergasse – Hintere Zollamtsstraße; D: Umleitung Schwarzenbergplatz – Börse; 71: Betrieb nur Kaiserebersdorf – Schwarzenbergplatz. Voraussichtlich bis 20:00 Uhr.<br/>[Seit heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">07ee13646ae33c2da98a821de809b3136bb4fdc7e454840658ffc8afaccd1e5f</guid>
-      <pubDate>Thu, 22 Oct 2026 16:12:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 16:12:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 16:16:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 22 Oct 2026 22:00:00 +0200</ext:ends_at>
-      <description>Züge halten bei Li. 5 Ri. Westbahnhof S U. [Heute]</description>
-      <content:encoded><![CDATA[Züge halten bei Li. 5 Ri. Westbahnhof S U.<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">3629ca20a95831a63570d0cdaf8f90603b749ac7933bdfaee0e7e19c548af3ca</guid>
-      <pubDate>Thu, 22 Oct 2026 18:14:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 13:44:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 18:25:12 +0200</ext:starts_at>
-      <description>Betrieb nur bis Josefstädter Straße. Kein Betrieb zwischen Josefstädter Straße U und Schwedenplatz U. Voraussichtlich bis 20:00 Uhr. Grund: Demonstration. [Seit heute]</description>
-      <content:encoded><![CDATA[Betrieb nur bis Josefstädter Straße. Kein Betrieb zwischen Josefstädter Straße U und Schwedenplatz U. Voraussichtlich bis 20:00 Uhr. Grund: Demonstration.<br/>[Seit heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A/78A: Straßenbauarbeiten]]></title>
