@@ -8,21 +8,20 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 23 Oct 2026 00:01:02 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 00:30:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[59A: Rettungseinsatz]]></title>
+      <title><![CDATA[52/60: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8c03b8e895b2d4a0128c618aca988a64bddde574c9066f235d0fcf9f069b5e83</guid>
-      <pubDate>Thu, 22 Oct 2026 23:03:00 +0200</pubDate>
+      <guid isPermaLink="false">7f0abf3e55e40782bd00f3c222b84c3ee7e95801297cf252add178a51bd1c806</guid>
+      <pubDate>Thu, 22 Oct 2026 23:58:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 23:03:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 23:03:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 23 Oct 2026 00:04:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Hans-Mandl-Berufsschule. [Heute]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Hans-Mandl-Berufsschule.<br/>[Heute]]]></content:encoded>
+      <ext:first_seen>Thu, 22 Oct 2026 23:58:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 23:58:00 +0200</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 22.10.]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 22.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S2: Wien Leopoldau ↔ Mistelbach]]></title>
