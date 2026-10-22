@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 22 Oct 2026 12:01:07 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 12:30:40 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[14A: Rescue operation]]></title>
@@ -35,19 +35,6 @@
       <ext:starts_at>Thu, 22 Oct 2026 10:17:00 +0200</ext:starts_at>
       <description>Switch damage; service from Johann-Nepomuk-Berger-Platz; trains stop at Taubergasse 5-7. [Since 10:17]</description>
       <content:encoded><![CDATA[Switch damage; service from Johann-Nepomuk-Berger-Platz; trains stop at Taubergasse 5-7.<br/>[Since 10:17]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
-      <pubDate>Thu, 22 Oct 2026 09:54:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 09:54:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 09:54:00 +0200</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 09:54]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 09:54]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: State visit, track construction works]]></title>
@@ -145,6 +132,20 @@
       <georss:point>48.167289 16.277365</georss:point>
       <description>Hermesstraße after Strampfergasse → approx. 100 metres towards Dr.-Schober-Straße. Hermesstraße after Strampfergasse → Discontinued. Stop relocation or … release [Until 03.11.]</description>
       <content:encoded><![CDATA[Hermesstraße after Strampfergasse → approx. 100 metres towards Dr.-Schober-Straße. Hermesstraße after Strampfergasse → Discontinued. Stop relocation or … release<br/>[Until 03.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[80A: ÖBB-construction works]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">5a68b1fc449f7041118da0ac6c6652cede40d8eb9c245e412fcac285c52db7c7</guid>
+      <pubDate>Tue, 06 Oct 2026 14:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 19 Oct 2026 00:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
+      <description>Due to the re-establishment of the ÖBB railway viaducts in the area of Helenengasse and Stoffellagasse, measures will come into force on the 80A line. [Until 31.12.2027]</description>
+      <content:encoded><![CDATA[Due to the re-establishment of the ÖBB railway viaducts in the area of Helenengasse and Stoffellagasse, measures will come into force on the 80A line.<br/>[Until 31.12.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
