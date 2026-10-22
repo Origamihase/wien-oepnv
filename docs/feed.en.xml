@@ -8,20 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 22 Oct 2026 23:01:07 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 23:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[26A: Third-party traffic accident]]></title>
+      <title><![CDATA[59A: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">e6c1cb1b892fdece121e295371b995171940e3e9ea5a2486f36d8b6c1b48fd45</guid>
-      <pubDate>Thu, 22 Oct 2026 17:38:08 +0200</pubDate>
+      <guid isPermaLink="false">8c03b8e895b2d4a0128c618aca988a64bddde574c9066f235d0fcf9f069b5e83</guid>
+      <pubDate>Thu, 22 Oct 2026 23:03:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 18:00:56 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 17:42:00 +0200</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 17:38]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 17:38]]]></content:encoded>
+      <ext:first_seen>Thu, 22 Oct 2026 23:03:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 23:03:11 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 23 Oct 2026 00:04:00 +0200</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: rescue operation in the stop area of Hans-Mandl-Berufsschule. [Until Fri 23.10.]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation in the stop area of Hans-Mandl-Berufsschule.<br/>[Until Fri 23.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[9: Track damage]]></title>
@@ -38,18 +39,19 @@
       <content:encoded><![CDATA[Service obstruction; service from Johann-Nepomuk-Berger-Platz; trains stop at Taubergasse 5-7.<br/>[Since 10:17]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[2: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">3629ca20a95831a63570d0cdaf8f90603b749ac7933bdfaee0e7e19c548af3ca</guid>
-      <pubDate>Thu, 22 Oct 2026 13:45:43 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <title><![CDATA[Wien Simmering ↔ Wien Stadlau]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;921338</guid>
+      <pubDate>Thu, 22 Oct 2026 23:10:11 +0200</pubDate>
+      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 13:44:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 18:54:45 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 22 Oct 2026 23:15:00 +0200</ext:ends_at>
-      <description>No service possible. [Today]</description>
-      <content:encoded><![CDATA[No service possible.<br/>[Today]]]></content:encoded>
+      <ext:first_seen>Thu, 22 Oct 2026 23:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 22 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <georss:line>48.170132 16.419910 48.219255 16.448852</georss:line>
+      <description>Due to an interlocking failure at the station, no trains could run until 23:08. For now, allow up to 5 minutes of extra travel time. [Today]</description>
+      <content:encoded><![CDATA[Due to an interlocking failure at the station, no trains could run until 23:08. For now, allow up to 5 minutes of extra travel time.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A/78A: Roadworks]]></title>
