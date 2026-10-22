@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 22 Oct 2026 14:00:47 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 14:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[63A: Rettungseinsatz]]></title>
@@ -20,6 +20,7 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 13:51:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 22 Oct 2026 13:51:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 22 Oct 2026 14:49:00 +0200</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit 13:51]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 13:51]]]></content:encoded>
     </item>
@@ -49,6 +50,19 @@
       <ext:ends_at>Thu, 22 Oct 2026 23:45:00 +0200</ext:ends_at>
       <description>Fahrtbehinderung; Betrieb ab Johann-Nepomuk-Berger-Platz; Züge halten Taubergasse 5-7. [Seit 10:17]</description>
       <content:encoded><![CDATA[Fahrtbehinderung; Betrieb ab Johann-Nepomuk-Berger-Platz; Züge halten Taubergasse 5-7.<br/>[Seit 10:17]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[4A/74A: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">e888ad2bcc69a81bc522a0cae34e0a1872e1c8e287c1ace50ac26545f9eaf758</guid>
+      <pubDate>Thu, 22 Oct 2026 13:51:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 22 Oct 2026 14:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 13:51:00 +0200</ext:starts_at>
+      <description>Betrieb nur: 4A Wittelsbachstraße – Lisztstraße; 74A St. Marx S – Landstraße S U. Voraussichtlich bis 20:00 Uhr. [Seit heute]</description>
+      <content:encoded><![CDATA[Betrieb nur: 4A Wittelsbachstraße – Lisztstraße; 74A St. Marx S – Landstraße S U. Voraussichtlich bis 20:00 Uhr.<br/>[Seit heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2: Demonstration]]></title>
@@ -87,8 +101,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 07:30:58 +0200</ext:first_seen>
       <ext:starts_at>Thu, 22 Oct 2026 07:30:00 +0200</ext:starts_at>
-      <description>Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18); Linie 2: Kein … [Seit heute]</description>
-      <content:encoded><![CDATA[Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18); Linie 2: Kein …<br/>[Seit heute]]]></content:encoded>
+      <ext:ends_at>Thu, 22 Oct 2026 22:00:00 +0200</ext:ends_at>
+      <description>Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18); Linie 2: Kein … [Heute]</description>
+      <content:encoded><![CDATA[Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18); Linie 2: Kein …<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A/78A: Straßenbauarbeiten]]></title>
@@ -131,20 +146,6 @@
       <ext:ends_at>Thu, 22 Oct 2026 17:00:00 +0200</ext:ends_at>
       <description>[Heute]</description>
       <content:encoded><![CDATA[[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8681a71896a38fa5cd0db22da3a40ed6cc4472d9266f99cbebaff20ab7d6d4e6</guid>
-      <pubDate>Wed, 21 Oct 2026 06:50:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 11:58:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 11:58:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 05 Dec 2026 04:00:00 +0100</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1. Maßnahmen: Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. [Bis 05.12.]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1. Maßnahmen: Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br/>[Bis 05.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
