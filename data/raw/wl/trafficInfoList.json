@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261021-0014, I20261022-0002, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261021-0014, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
@@ -302,55 +302,6 @@
      "start": "2026-10-21T10:04:00.000+0200"
     },
     "title": "44: Gleisschaden"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "N25": "ptBusNight"
-     }
-    },
-    "description": "Linie N25: Fahrtbehinderung in Richtung Kai, Ring. Voraussichtliche Dauer: 02:45 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Schwedenplatz.",
-    "descriptionHTML": "<p>Linie N25:<br>Fahrtbehinderung in Richtung Kai, Ring.</p><p>Voraussichtliche Dauer: 02:45 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Schwedenplatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie N25:<br>Fahrtbehinderung in Richtung Kai, Ring.</p><p>Voraussichtliche Dauer: 02:45 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Schwedenplatz.</p>",
-       "descriptionPlain": "Linie N25: Fahrtbehinderung in Richtung Kai, Ring. Voraussichtliche Dauer: 02:45 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Schwedenplatz.",
-       "title": "N25: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261022-0002",
-    "owner": "WL",
-    "parentName": "I20261022-0002",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "N25"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 525,
-      "lineName": "N25",
-      "vehicleType": "ptBusNight"
-     }
-    ],
-    "relatedStops": [
-     5505
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-22T02:22:00.000+0200",
-     "end": "2026-10-22T02:26:00.000+0200",
-     "lastUpdate": "2026-10-22T02:26:00.000+0200",
-     "resume": "2026-10-22T02:21:00.000+0200",
-     "start": "2026-10-22T02:21:00.000+0200"
-    },
-    "title": "N25: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
