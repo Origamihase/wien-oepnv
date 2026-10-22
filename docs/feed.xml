@@ -8,8 +8,22 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 22 Oct 2026 08:01:08 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 08:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[35A: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">e01723d3d09d7a28df192342b8f386a6737bf9dd25fb97499f0a57428eb81540</guid>
+      <pubDate>Thu, 22 Oct 2026 08:07:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 22 Oct 2026 08:07:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 08:07:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 22 Oct 2026 09:07:00 +0200</ext:ends_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 08:07]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 08:07]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U3: Gegenstände im Gleis]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,8 +34,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 08:01:08 +0200</ext:first_seen>
       <ext:starts_at>Thu, 22 Oct 2026 07:56:00 +0200</ext:starts_at>
-      <description>Streckenunterbrechung zwischen den Stationen Herrengasse und Landstraße, Bahnhof Wien Mitte. [Seit 07:56]</description>
-      <content:encoded><![CDATA[Streckenunterbrechung zwischen den Stationen Herrengasse und Landstraße, Bahnhof Wien Mitte.<br/>[Seit 07:56]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 07:56]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 07:56]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U2: Verspätungen]]></title>
@@ -132,20 +146,6 @@
       <georss:point>48.167289 16.277365</georss:point>
       <description>Hermesstraße nach Strampfergasse → etwa 100 Meter in Richtung Dr.-Schober-Straße. Hermesstraße nach Strampfergasse → aufgelassen. Haltestellenverlegung bzw. -auflassung … [Bis 03.11.]</description>
       <content:encoded><![CDATA[Hermesstraße nach Strampfergasse → etwa 100 Meter in Richtung Dr.-Schober-Straße. Hermesstraße nach Strampfergasse → aufgelassen. Haltestellenverlegung bzw. -auflassung …<br/>[Bis 03.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[80A: ÖBB-Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5a68b1fc449f7041118da0ac6c6652cede40d8eb9c245e412fcac285c52db7c7</guid>
-      <pubDate>Tue, 06 Oct 2026 14:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 19 Oct 2026 00:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
-      <description>Wegen der Neuerrichtung der ÖBB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Maßnahmen in Kraft. [Bis 31.12.2027]</description>
-      <content:encoded><![CDATA[Wegen der Neuerrichtung der ÖBB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Maßnahmen in Kraft.<br/>[Bis 31.12.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
