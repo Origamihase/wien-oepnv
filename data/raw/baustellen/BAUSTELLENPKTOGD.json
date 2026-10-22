@@ -3,29 +3,6 @@
   {
    "geometry": {
     "first_position": [
-     16.44148065,
-     48.2102296
-    ],
-    "type": "Point"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Asfinag Service Center",
-    "ANSPRECHPERSON_TEL": "Tel.: 0800 400 12 400",
-    "ANTRAGSTELLER": "ASFINAG",
-    "BEHINDERUNGSART": "Straßenbau",
-    "BEZEICHNUNG": "A22 (Donauuferautobahn) von km 1.500 bis km 4.000 inkl. aller Rampen in diesem Bereich",
-    "BEZIRK": 22,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-10-04Z",
-    "OBJEKT_ENDE": "2026-10-22Z",
-    "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 23:00 bis 05:00 Uhr. Es werden wechselweise mehrere Fahrstreifen in beide Fahrtrichtungen je nach Erfordernis gesperrt. Mindestens ein Fahrstreifen bleibt aufrecht. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.Nähere Informationen finden Sie unter: routenplaner.asfinag.at",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
      16.4190058,
      48.19083531
     ],
@@ -296,29 +273,6 @@
     "OBJEKT_BEGINN": "2026-10-19Z",
     "OBJEKT_ENDE": "2026-10-30Z",
     "PRESSETEXT": "Ein Fahrstreifen je Fahrtrichtung bleibt aufrecht.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
-     16.35384203,
-     48.19469403
-    ],
-    "type": "Point"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Poststelle Wien Kanal",
-    "ANSPRECHPERSON_TEL": "Tel.: 01-4000-30030",
-    "ANTRAGSTELLER": null,
-    "BEHINDERUNGSART": "Kanalbau",
-    "BEZEICHNUNG": "Linke Wienzeile 90-92",
-    "BEZIRK": 6,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-05-19Z",
-    "OBJEKT_ENDE": "2026-10-22Z",
-    "PRESSETEXT": "Zur Einrichtung einerBaustellenfläche für Arbeiten im Wienfluss werden ab 20.05.2026 Bauarbeiten imBereich der Linken Wienzeile O.Nr. 86 96 durchgeführt. Zum Zwecke derOberflächenfreimachung erfolgt in der ersten Bauphase die Entfernung derVerkehrsinsel vor der Liegenschaft O.Nr. 90 92 (BP Tankstelle) ohneEinschränkungen für den Fließverkehr auf der Linken Wienzeile. In der Nacht von01.06.2026 auf 02.06.2026 erfolgen Bodenmarkierungsarbeiten für die bisJahresende 2026 andauernde Verkehrsführung auf der Linken Wienzeile imBaustellenbereich.<br>Ab 02.06.2026 wirdder Verkehr mittels zweispurigem Fahrbahnverschwenk an der Baustellevorbeigeführt.",
     "SE_ANNO_CAD_DATA": null
    }
   },

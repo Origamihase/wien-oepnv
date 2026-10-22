@@ -1,32 +1,36 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-22T21:31:00.379737+00:00",
- "built": "2026-10-22T23:30:50+02:00",
+ "updated": "2026-10-22T22:01:14.998539+00:00",
+ "built": "2026-10-23T00:01:02+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-22T23:30:50+02:00",
+  "built": "2026-10-23T00:01:02+02:00",
   "items": [
    {
     "title": "59A: Rettungseinsatz",
-    "time_line": "Bis Fr 23.10."
-   },
-   {
-    "title": "9: Gleisschaden",
-    "time_line": "Seit 10:17"
-   },
-   {
-    "title": "Wien Simmering ↔ Wien Stadlau",
     "time_line": "Heute"
    },
    {
+    "title": "S2: Wien Leopoldau ↔ Mistelbach",
+    "time_line": "Ab So 25.10. bis 01.11."
+   },
+   {
+    "title": "1/2/D/71: Veranstaltung",
+    "time_line": "Am So 25.10."
+   },
+   {
+    "title": "1/2/D/71: Nationalfeiertag",
+    "time_line": "Am Mo 26.10."
+   },
+   {
     "title": "11A/78A: Straßenbauarbeiten",
-    "time_line": "Ab Fr 23.10. bis 02.11."
+    "time_line": "Bis 02.11."
    },
    {
     "title": "64A/N64R: Erlaaer Spitz",
-    "time_line": "Seit heute"
+    "time_line": "Seit 22.10."
    },
    {
     "title": "1: Gleisbauarbeiten",
@@ -43,35 +47,11 @@
    {
     "title": "48A: Neubaugasse, Neustiftgasse",
     "time_line": "Seit 19.10."
-   },
-   {
-    "title": "N71: Simmering S U",
-    "time_line": "Bis Fr 23.10."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-15T22:01:14.681622+00:00",
-   "raw": {
-    "wl-stoerungen": 56,
-    "wl-hinweise": 78,
-    "oebb": 157,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 25
-   },
-   "discarded": {
-    "wl": 9,
-    "oebb": 134,
-    "baustellen": 72
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 99
-   }
-  },
   {
    "t": "2026-10-15T22:31:08.221891+00:00",
    "raw": {
@@ -6770,6 +6750,26 @@
     "baustellen": 4,
     "oebb": 10,
     "wl": 109
+   }
+  },
+  {
+   "t": "2026-10-22T22:01:14.998539+00:00",
+   "raw": {
+    "wl-stoerungen": 67,
+    "wl-hinweise": 79,
+    "oebb": 175,
+    "baustellen-linien": 56,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 7,
+    "oebb": 150,
+    "baustellen": 70
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 107
    }
   }
  ]
