@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 22 Oct 2026 16:30:48 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 17:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[30/31: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">70431730fb981673f00e9f6f9e9161c71d549913578700320c2123e9f0bc4885</guid>
+      <pubDate>Thu, 22 Oct 2026 16:49:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 22 Oct 2026 17:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 16:49:00 +0200</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit 16:49]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 16:49]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[7A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -51,6 +64,32 @@
       <content:encoded><![CDATA[Fahrtbehinderung; Betrieb ab Johann-Nepomuk-Berger-Platz; Züge halten Taubergasse 5-7.<br/>[Seit 10:17]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[43/44: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">176ee273e9652b25ddc2469fadf98bebe5c304aa8e214067d34a744585279d1e</guid>
+      <pubDate>Thu, 22 Oct 2026 16:45:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 22 Oct 2026 17:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 16:45:00 +0200</ext:starts_at>
+      <description>Betrieb nur: 43 Neuwaldegg – Alser Straße U; 44 Ottakring, Maroltingergasse – Johann-Nepomuk-Berger-Platz. Voraussichtlich bis 20:00 Uhr. [Seit heute]</description>
+      <content:encoded><![CDATA[Betrieb nur: 43 Neuwaldegg – Alser Straße U; 44 Ottakring, Maroltingergasse – Johann-Nepomuk-Berger-Platz. Voraussichtlich bis 20:00 Uhr.<br/>[Seit heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2A/3A: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">f53742344166c363496c08634cbf4496139279795628061d2c54b291cc331563</guid>
+      <pubDate>Thu, 22 Oct 2026 16:34:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 22 Oct 2026 17:01:01 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 16:34:00 +0200</ext:starts_at>
+      <description>Derzeit ist ein Betrieb der Linie 2A nicht möglich. Linie 3A: Betrieb nur zwischen Oper, Karlsplatz U und Hoher Markt. [Seit heute]</description>
+      <content:encoded><![CDATA[Derzeit ist ein Betrieb der Linie 2A nicht möglich. Linie 3A: Betrieb nur zwischen Oper, Karlsplatz U und Hoher Markt.<br/>[Seit heute]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[59A: Demonstration]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">8e057ee2fe0081e7a31658af9f02f64a8bc3b3040fd07f8f465aec6c93f0e1a9</guid>
@@ -60,21 +99,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 16:30:48 +0200</ext:first_seen>
       <ext:starts_at>Thu, 22 Oct 2026 16:18:02 +0200</ext:starts_at>
-      <description>Betrieb ab Bärenmühldurchgang. Betrieb nur zwischen Bahnhof Meidling S U und Bärenmühldurchgang. Voraussichtlich bis 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt. [Seit heute]</description>
-      <content:encoded><![CDATA[Betrieb ab Bärenmühldurchgang. Betrieb nur zwischen Bahnhof Meidling S U und Bärenmühldurchgang. Voraussichtlich bis 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.<br/>[Seit heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">07ee13646ae33c2da98a821de809b3136bb4fdc7e454840658ffc8afaccd1e5f</guid>
-      <pubDate>Thu, 22 Oct 2026 16:12:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 16:12:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 16:16:00 +0200</ext:starts_at>
-      <description>Züge halten bei Li. 5 Ri. Westbahnhof S U. Betrieb nur zwischen Stammersdorf und Klosterneuburger Straße, Wallensteinstraße. Weiterfahrt bis Wallensteinplatz. [Seit heute]</description>
-      <content:encoded><![CDATA[Züge halten bei Li. 5 Ri. Westbahnhof S U. Betrieb nur zwischen Stammersdorf und Klosterneuburger Straße, Wallensteinstraße. Weiterfahrt bis Wallensteinplatz.<br/>[Seit heute]]]></content:encoded>
+      <description>Betrieb ab Bärenmühldurchgang. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit heute]</description>
+      <content:encoded><![CDATA[Betrieb ab Bärenmühldurchgang. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12A: Falschparker, Gleisbauarbeiten]]></title>
@@ -88,19 +114,6 @@
       <ext:starts_at>Thu, 22 Oct 2026 15:53:00 +0200</ext:starts_at>
       <description>Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21. [Seit heute]</description>
       <content:encoded><![CDATA[Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21.<br/>[Seit heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[4A/74A: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">e888ad2bcc69a81bc522a0cae34e0a1872e1c8e287c1ace50ac26545f9eaf758</guid>
-      <pubDate>Thu, 22 Oct 2026 13:51:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 14:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 13:51:00 +0200</ext:starts_at>
-      <description>Betrieb nur: 4A Wittelsbachstraße – Lisztstraße; 74A St. Marx S – Landstraße S U. Voraussichtlich bis 20:00 Uhr. [Seit heute]</description>
-      <content:encoded><![CDATA[Betrieb nur: 4A Wittelsbachstraße – Lisztstraße; 74A St. Marx S – Landstraße S U. Voraussichtlich bis 20:00 Uhr.<br/>[Seit heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A/78A: Straßenbauarbeiten]]></title>
@@ -129,20 +142,6 @@
       <georss:point>48.137809 16.323970</georss:point>
       <description>Perfektastraße 3 → Perfektastraße 9. Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa … [Seit heute]</description>
       <content:encoded><![CDATA[Perfektastraße 3 → Perfektastraße 9. Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa …<br/>[Seit heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8681a71896a38fa5cd0db22da3a40ed6cc4472d9266f99cbebaff20ab7d6d4e6</guid>
-      <pubDate>Wed, 21 Oct 2026 06:50:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 11:58:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 11:58:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 05 Dec 2026 04:00:00 +0100</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1. Maßnahmen: Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. [Bis 05.12.]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1. Maßnahmen: Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br/>[Bis 05.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
