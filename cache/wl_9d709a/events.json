@@ -967,17 +967,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "1: Demonstration Züge halten bei Li. 18 Richtung Burggasse, Stadthalle",
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Demonstration\nZüge halten bei Li. 18 Richtung Burggasse, Stadthalle",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "8cc22bbfd84d131d38143c70f680c24d1c39fbf1fe455e06a3f50824d8ce8e3c",
-    "pubDate": "2026-10-22T13:44:00+02:00",
+    "pubDate": "2026-10-22T14:44:19+02:00",
     "starts_at": "2026-10-22T14:48:53+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=1|D=2026-10-22|TK=demonstration",
-    "_wl_ids": [
-      "I20261022-0031"
-    ],
-    "_incident_start": "2026-10-22T13:44:00+02:00"
+    "ends_at": "2026-10-22T22:00:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-10-22|TK=demonstration"
   },
   {
     "source": "Wiener Linien",
@@ -1242,6 +1238,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "64A: Fahrtbehinderung Falschparker",
+    "description": "Linie 64A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "efa70b7ed2b576bd417daacf2dd4d22efff11511fa169fcec09755fcbfdd1b72",
+    "pubDate": "2026-10-22T20:51:00+02:00",
+    "starts_at": "2026-10-22T20:57:57+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=64A|D=2026-10-22|TK=falschparker",
+    "_wl_ids": [
+      "I20261022-0055"
+    ],
+    "_incident_start": "2026-10-22T20:51:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1255,17 +1267,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "71: Demonstration Betrieb ab Schwarzenbergplatz",
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "c3bc1799723b116ebf4b83b471a9da3fca2e1fd490f9c8a631a88fa52b77863a",
-    "pubDate": "2026-10-22T13:44:00+02:00",
+    "pubDate": "2026-10-22T14:35:18+02:00",
     "starts_at": "2026-10-22T15:08:23+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=71|D=2026-10-22|TK=demonstration",
-    "_wl_ids": [
-      "I20261022-0031"
-    ],
-    "_incident_start": "2026-10-22T13:44:00+02:00"
+    "ends_at": "2026-10-22T22:00:00+02:00",
+    "_identity": "wl|störung|L=71|D=2026-10-22|TK=demonstration"
   },
   {
     "source": "Wiener Linien",
@@ -1414,22 +1422,6 @@
     "starts_at": "2026-10-21T00:00:24+02:00",
     "ends_at": "2026-10-22T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-21|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Schadhaftes Fahrzeug",
-    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a3ccf7c2ad3270af3ce0b5bff574b7e68e073f01c1a9bf875ba6186e69760114",
-    "pubDate": "2026-10-22T19:50:00+02:00",
-    "starts_at": "2026-10-22T19:50:00+02:00",
-    "ends_at": "2026-10-22T20:32:00+02:00",
-    "_identity": "wl|störung|L=O|D=2026-10-22|TK=o schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261022-0054"
-    ],
-    "_incident_start": "2026-10-22T19:50:00+02:00"
   },
   {
     "source": "Wiener Linien",

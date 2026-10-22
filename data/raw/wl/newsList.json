@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_36, ftazW_1018058, ftazW_355, ftazW_572, ftazW_22, ftazW_354, ftazW_573, ftazW_1354337"
+    "trafficInfoNameList": "ftazW_22, ftazW_354, ftazW_573, ftazW_1354337"
    }
   ],
   "poiCategoryGroups": [
@@ -3899,45 +3899,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "23.10.2026 00:45",
-     "ausVon": "22.10.2026 20:45",
-     "location": "U2 Mittelbahnsteig - Zwischengeschoss - Ausgang Taborstraße/Obere Augartenstraße",
-     "rbls": [
-      4261,
-      4262
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Taborstraße",
-     "status": "geplante Wartung",
-     "towards": "U2 beide Richtungen"
-    },
-    "description": "U2 Mittelbahnsteig - Zwischengeschoss - Ausgang Taborstraße/Obere Augartenstraße",
-    "elevatorId": "TB 01",
-    "name": "ftazW_1018058",
-    "parentName": "ftazW_1018058",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4261,
-     4262
-    ],
-    "time": {
-     "end": "2026-10-23T00:45:00.000+0200",
-     "start": "2026-10-22T20:45:00.000+0200"
-    },
-    "title": "Taborstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "23.10.2026 05:15",
      "ausVon": "23.10.2026 01:15",
      "location": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Florianigasse",
@@ -4039,119 +4000,6 @@
      "start": "2026-10-23T01:15:00.000+0200"
     },
     "title": "Neubaugasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "23.10.2026 00:45",
-     "ausVon": "22.10.2026 20:45",
-     "location": "U3 Bahnsteig Richtung Ottakring - U3 Bahnsteig Richtung Simmering - Zwischengeschoss Aufgang Stiftgasse/Kirchengasse",
-     "rbls": [
-      4918,
-      4923
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Neubaugasse",
-     "status": "geplante Wartung",
-     "towards": "U3 Ottakring, U3 Simmering"
-    },
-    "description": "U3 Bahnsteig Richtung Ottakring - U3 Bahnsteig Richtung Simmering - Zwischengeschoss Aufgang Stiftgasse/Kirchengasse",
-    "elevatorId": "MA 04",
-    "name": "ftazW_355",
-    "parentName": "ftazW_355",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4918,
-     4923
-    ],
-    "time": {
-     "end": "2026-10-23T00:45:00.000+0200",
-     "start": "2026-10-22T20:45:00.000+0200"
-    },
-    "title": "Neubaugasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "23.10.2026 00:45",
-     "ausVon": "22.10.2026 20:45",
-     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Josefstädter Straße",
-     "rbls": [
-      4622
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Josefstädter Straße",
-     "status": "geplante Wartung",
-     "towards": "U6 Floridsdorf"
-    },
-    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Josefstädter Straße",
-    "elevatorId": "JS 01",
-    "name": "ftazW_36",
-    "parentName": "ftazW_36",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4622
-    ],
-    "time": {
-     "end": "2026-10-23T00:45:00.000+0200",
-     "start": "2026-10-22T20:45:00.000+0200"
-    },
-    "title": "Josefstädter Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "23.10.2026 00:45",
-     "ausVon": "22.10.2026 20:45",
-     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Morizgasse",
-     "rbls": [
-      4415
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Margaretengürtel",
-     "status": "geplante Wartung",
-     "towards": "U4 Heiligenstadt"
-    },
-    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Morizgasse",
-    "elevatorId": "MG 01",
-    "name": "ftazW_572",
-    "parentName": "ftazW_572",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4415
-    ],
-    "time": {
-     "end": "2026-10-23T00:45:00.000+0200",
-     "start": "2026-10-22T20:45:00.000+0200"
-    },
-    "title": "Margaretengürtel"
    },
    {
     "alertCause": "undefined alert cause",

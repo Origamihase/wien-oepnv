@@ -3,13 +3,6 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R1007-426|2026-10-22T18:14:11.000+0200|Verkehrsunfall\nUmleitung ab Konstanziagasse über Langobardenstraße",
-   "name": "R1007-426",
-   "title": "Verkehrsunfall\nUmleitung ab Konstanziagasse über Langobardenstraße",
-   "end": "2026-10-22T20:45:00.000+0200",
-   "incident": "I20261022-0045"
-  },
-  {
    "key": "R1345-143|2026-10-22T16:41:02.000+0200|Demonstration\nBetrieb ab Alser Straße U ",
    "name": "R1345-143",
    "title": "Demonstration\nBetrieb ab Alser Straße U ",
@@ -87,13 +80,6 @@
    "incident": "I20261022-0033"
   },
   {
-   "key": "R2904-403|2026-10-22T16:39:03.000+0200|Fahrtbehinderung\nwegen Demonstration",
-   "name": "R2904-403",
-   "title": "Fahrtbehinderung\nwegen Demonstration",
-   "end": "2026-10-22T21:00:00.000+0200",
-   "incident": "I20261022-0041-F02"
-  },
-  {
    "key": "R2915-402|2026-10-22T16:38:03.000+0200|Demonstration\nkein Betrieb ",
    "name": "R2915-402",
    "title": "Demonstration\nkein Betrieb ",
@@ -106,27 +92,6 @@
    "title": "Demonstration\nkein Betrieb ",
    "end": "2026-10-22T22:00:00.000+0200",
    "incident": "I20261022-0041-F01"
-  },
-  {
-   "key": "R2940-403|2026-10-22T16:39:33.000+0200|Demonstration\nBetrieb ab Hoher Markt",
-   "name": "R2940-403",
-   "title": "Demonstration\nBetrieb ab Hoher Markt",
-   "end": "2026-10-22T21:00:00.000+0200",
-   "incident": "I20261022-0041-F02"
-  },
-  {
-   "key": "R2947-403|2026-10-22T16:39:03.000+0200|Fahrtbehinderung\nwegen Demonstration",
-   "name": "R2947-403",
-   "title": "Fahrtbehinderung\nwegen Demonstration",
-   "end": "2026-10-22T21:00:00.000+0200",
-   "incident": "I20261022-0041-F02"
-  },
-  {
-   "key": "R968-426|2026-10-22T18:14:11.000+0200|Verkehrsunfall\nUmleitung ab Konstanziagasse über Langobardenstraße",
-   "name": "R968-426",
-   "title": "Verkehrsunfall\nUmleitung ab Konstanziagasse über Langobardenstraße",
-   "end": "2026-10-22T20:45:00.000+0200",
-   "incident": "I20261022-0045"
   }
  ]
 }
