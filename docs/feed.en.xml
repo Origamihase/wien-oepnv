@@ -8,10 +8,23 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 22 Oct 2026 09:00:51 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 09:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[2/63A/O: Traffic congestion]]></title>
+      <title><![CDATA[O: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d</guid>
+      <pubDate>Thu, 22 Oct 2026 09:25:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 22 Oct 2026 09:25:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 09:25:00 +0200</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 09:25]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 09:25]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[63A: Traffic congestion]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">5c629c9ed855f9f8e760da8f56e9a32a4c1952af238d5dbc24d95e08f441db68</guid>
       <pubDate>Thu, 22 Oct 2026 08:46:00 +0200</pubDate>
@@ -19,7 +32,7 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 09:00:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 08:46:00 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 22 Oct 2026 08:49:00 +0200</ext:starts_at>
       <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 08:46]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 08:46]]]></content:encoded>
     </item>
@@ -33,11 +46,11 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 08:51:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 22 Oct 2026 08:51:00 +0200</ext:starts_at>
-      <description>No service between Kagran U and Donauspital U. Expected until 09:20. Reason: traffic accident in the area of Konstanziagasse 52. Replacement bus 26E holds … [Since 08:51]</description>
-      <content:encoded><![CDATA[No service between Kagran U and Donauspital U. Expected until 09:20. Reason: traffic accident in the area of Konstanziagasse 52. Replacement bus 26E holds …<br/>[Since 08:51]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. Replacement bus 26E stops at Karl-Waldbrunner-Platz before Schloßhofer Straße; trains stop at Donaufelder Straße … [Since 08:51]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals. Replacement bus 26E stops at Karl-Waldbrunner-Platz before Schloßhofer Straße; trains stop at Donaufelder Straße …<br/>[Since 08:51]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[43: Third-party traffic accident]]></title>
+      <title><![CDATA[43: Third-party accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">1205ac22f6bd4faf7c9d1128f045fd29146816a4bd3c883707a404d2c904cd86</guid>
       <pubDate>Thu, 22 Oct 2026 08:48:00 +0200</pubDate>
@@ -46,22 +59,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 08:48:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 22 Oct 2026 08:48:00 +0200</ext:starts_at>
-      <description>Diversion towards Schottentor U between Rosensteingasse and Brünnlbadgasse over lines 9 and 44; trains stop at the stop of line 44; service from Brünnlbadgasse … [Since 08:48]</description>
-      <content:encoded><![CDATA[Diversion towards Schottentor U between Rosensteingasse and Brünnlbadgasse over lines 9 and 44; trains stop at the stop of line 44; service from Brünnlbadgasse …<br/>[Since 08:48]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[35A: Defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">e01723d3d09d7a28df192342b8f386a6737bf9dd25fb97499f0a57428eb81540</guid>
-      <pubDate>Thu, 22 Oct 2026 08:07:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 08:07:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 08:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 22 Oct 2026 09:07:00 +0200</ext:ends_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 08:07]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 08:07]]]></content:encoded>
+      <description>Trains stop at the stop of line 44; service from Brünnlbadgasse; operation via line 9+44. [Since 08:48]</description>
+      <content:encoded><![CDATA[Trains stop at the stop of line 44; service from Brünnlbadgasse; operation via line 9+44.<br/>[Since 08:48]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Objects on the track]]></title>
@@ -90,17 +89,17 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 07:26]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[48A: Traffic accident]]></title>
+      <title><![CDATA[U6: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">00b15b6969938db3d2a3979ffcf1966869591a5c68663ff5373d31c8041e5033</guid>
-      <pubDate>Thu, 22 Oct 2026 07:10:00 +0200</pubDate>
+      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
+      <pubDate>Thu, 22 Oct 2026 09:13:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 07:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 07:10:00 +0200</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 07:10]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 07:10]]]></content:encoded>
+      <ext:first_seen>Thu, 22 Oct 2026 06:51:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 09:13:00 +0200</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: rescue operation. [Since 09:13]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 09:13]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/2/D/37/38/40/41/42/43/44/71/LB/2A/3A/4A/74A: Demonstration]]></title>

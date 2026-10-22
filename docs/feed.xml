@@ -8,10 +8,23 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 22 Oct 2026 09:00:51 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 09:30:48 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[2/63A/O: Verkehrsüberlastung]]></title>
+      <title><![CDATA[O: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d</guid>
+      <pubDate>Thu, 22 Oct 2026 09:25:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 22 Oct 2026 09:25:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 09:25:00 +0200</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 09:25]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 09:25]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[63A: Verkehrsüberlastung]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">5c629c9ed855f9f8e760da8f56e9a32a4c1952af238d5dbc24d95e08f441db68</guid>
       <pubDate>Thu, 22 Oct 2026 08:46:00 +0200</pubDate>
@@ -19,7 +32,7 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 09:00:51 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 08:46:00 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 22 Oct 2026 08:49:00 +0200</ext:starts_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 08:46]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 08:46]]]></content:encoded>
     </item>
@@ -33,11 +46,11 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 08:51:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 22 Oct 2026 08:51:00 +0200</ext:starts_at>
-      <description>Kein Betrieb zwischen Kagran U und Donauspital U. Voraussichtlich bis 09:20 Uhr. Grund: Verkehrsunfall im Bereich Konstanziagasse 52. Ersatzbus 26E hält … [Seit 08:51]</description>
-      <content:encoded><![CDATA[Kein Betrieb zwischen Kagran U und Donauspital U. Voraussichtlich bis 09:20 Uhr. Grund: Verkehrsunfall im Bereich Konstanziagasse 52. Ersatzbus 26E hält …<br/>[Seit 08:51]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße; Züge halten Donaufelder Straße 175-177. [Seit 08:51]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße; Züge halten Donaufelder Straße 175-177.<br/>[Seit 08:51]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[43: Fremder Verkehrsunfall]]></title>
+      <title><![CDATA[43: Fremdunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">1205ac22f6bd4faf7c9d1128f045fd29146816a4bd3c883707a404d2c904cd86</guid>
       <pubDate>Thu, 22 Oct 2026 08:48:00 +0200</pubDate>
@@ -46,22 +59,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 08:48:00 +0200</ext:first_seen>
       <ext:starts_at>Thu, 22 Oct 2026 08:48:00 +0200</ext:starts_at>
-      <description>Umleitung in Richtung Schottentor U zwischen Rosensteingasse und Brünnlbadgasse über die Strecke der Linien 9 und 44; Züge halten bei Li. 44; Betrieb ab Brünnlbadgasse … [Seit 08:48]</description>
-      <content:encoded><![CDATA[Umleitung in Richtung Schottentor U zwischen Rosensteingasse und Brünnlbadgasse über die Strecke der Linien 9 und 44; Züge halten bei Li. 44; Betrieb ab Brünnlbadgasse …<br/>[Seit 08:48]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[35A: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">e01723d3d09d7a28df192342b8f386a6737bf9dd25fb97499f0a57428eb81540</guid>
-      <pubDate>Thu, 22 Oct 2026 08:07:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 08:07:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 08:07:00 +0200</ext:starts_at>
-      <ext:ends_at>Thu, 22 Oct 2026 09:07:00 +0200</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 08:07]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 08:07]]]></content:encoded>
+      <description>Züge halten bei Li. 44; Betrieb ab Brünnlbadgasse; Betrieb über Li. 9+44. [Seit 08:48]</description>
+      <content:encoded><![CDATA[Züge halten bei Li. 44; Betrieb ab Brünnlbadgasse; Betrieb über Li. 9+44.<br/>[Seit 08:48]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Gegenstände im Gleis]]></title>
@@ -90,17 +89,17 @@
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 07:26]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[48A: Verkehrsunfall]]></title>
+      <title><![CDATA[U6: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">00b15b6969938db3d2a3979ffcf1966869591a5c68663ff5373d31c8041e5033</guid>
-      <pubDate>Thu, 22 Oct 2026 07:10:00 +0200</pubDate>
+      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
+      <pubDate>Thu, 22 Oct 2026 09:13:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 07:10:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 07:10:00 +0200</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 07:10]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 07:10]]]></content:encoded>
+      <ext:first_seen>Thu, 22 Oct 2026 06:51:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 09:13:00 +0200</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit 09:13]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 09:13]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/2/D/37/38/40/41/42/43/44/71/LB/2A/3A/4A/74A: Demonstration]]></title>
