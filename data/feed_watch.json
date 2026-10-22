@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-22T22:31:00.169704+00:00",
- "built": "2026-10-23T00:30:55+02:00",
+ "updated": "2026-10-22T23:01:04.103314+00:00",
+ "built": "2026-10-23T01:00:59+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-23T00:30:55+02:00",
+  "built": "2026-10-23T01:00:59+02:00",
   "items": [
    {
     "title": "52/60: Schadhaftes Fahrzeug",
@@ -52,46 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-15T22:31:08.221891+00:00",
-   "raw": {
-    "wl-stoerungen": 58,
-    "wl-hinweise": 78,
-    "oebb": 157,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 25
-   },
-   "discarded": {
-    "wl": 9,
-    "oebb": 134,
-    "baustellen": 72
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 101
-   }
-  },
-  {
-   "t": "2026-10-15T23:01:00.350174+00:00",
-   "raw": {
-    "wl-stoerungen": 71,
-    "wl-hinweise": 83,
-    "oebb": 157,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 25
-   },
-   "discarded": {
-    "wl": 15,
-    "oebb": 134,
-    "baustellen": 72
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 108
-   }
-  },
   {
    "t": "2026-10-15T23:31:01.703597+00:00",
    "raw": {
@@ -6790,6 +6750,26 @@
     "baustellen": 4,
     "oebb": 9,
     "wl": 112
+   }
+  },
+  {
+   "t": "2026-10-22T23:01:04.103314+00:00",
+   "raw": {
+    "wl-stoerungen": 111,
+    "wl-hinweise": 79,
+    "oebb": 175,
+    "baustellen-linien": 56,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 7,
+    "oebb": 150,
+    "baustellen": 70
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 117
    }
   }
  ]
