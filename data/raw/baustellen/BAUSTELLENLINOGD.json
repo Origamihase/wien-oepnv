@@ -88,7 +88,7 @@
     "GISCODE_TXT": "P90 Baustellen",
     "OBJEKT_BEGINN": "2026-09-21Z",
     "OBJEKT_ENDE": "2026-11-15Z",
-    "PRESSETEXT": "Bauphase 1 von 3 (22.09.2026 bis 11.10.2026): Die Althanstraße wird von Lichtentaler Gasse bis Badgasse als Einbahn geführt. Die Umleitung für die Fahrtrichtung stadteinwärts erfolgt über: Badgasse - Reznicekgasse - Wiesengasse - Fechtergasse. Eine großräumige Umfahrung über die Liechtensteinstraße oder Spittelauer Lände wird empfohlen. NEU: Bauphase 2 von 3 (11.09.2026 bis 25.10.2026): Die Althanstraße wird von Newaldgasse bis zur Einfahrt des Frachtenbahnhofs gesperrt. Die Newaldgasse wird von Althanstraße bis Liechtensteinstraße als Einbahn geführt. Die Umleitung für die Fahrtrichtung stadteinwärts erfolgt über: Newaldgasse- Liechtensteinstraße - Reznicekgasse - Badgasse. Die Umleitung für die Fahrtrichtung stadtauswärts erfolgt über: Fechtergasse - Badgasse - Reznicekgasse - Liechtensteinstraße.Eine großräumige Umfahrung über die Liechtensteinstraße oder Spittelauer Lände wird empfohlen.",
+    "PRESSETEXT": "Bauphase 2 von 3 (11.10.2026 bis 25.10.2026): Die Althanstraße wird von Newaldgasse bis zur Einfahrt des Frachtenbahnhofs gesperrt. Die Newaldgasse wird von Althanstraße bis Liechtensteinstraße als Einbahn geführt. Die Umleitung für die Fahrtrichtung stadteinwärts erfolgt über: Newaldgasse- Liechtensteinstraße - Reznicekgasse - Badgasse. Die Umleitung für die Fahrtrichtung stadtauswärts erfolgt über: Fechtergasse - Badgasse - Reznicekgasse - Liechtensteinstraße.Eine großräumige Umfahrung über die Liechtensteinstraße oder Spittelauer Lände wird empfohlen.NEU: Bauphase 3 von 3 (25.10.2026 bis 15.11.2026): Die Althanstraße wird von Reznicekgasse bis Newaldgassegesperrt. Die Newaldgasse wird von Althanstraße bis Liechtensteinstraße als Einbahn geführt. Die Umleitung für die Fahrtrichtung stadteinwärts erfolgt über: Newaldgasse- Liechtensteinstraße - Reznicekgasse - Badgasse. Die Umleitung für die Fahrtrichtung stadtauswärts erfolgt über: Badgasse - Reznicekgasse - Liechtensteinstraße. Eine großräumige Umfahrung über die Liechtensteinstraße oder Spittelauer Lände wird empfohlen.",
     "SE_ANNO_CAD_DATA": null
    }
   },
@@ -739,6 +739,29 @@
   {
    "geometry": {
     "first_position": [
+     16.30501307,
+     48.20886958
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Maroltingergasse von Joachimsthalerplatz bis Maroltingergasse 47",
+    "BEZIRK": 16,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-26Z",
+    "OBJEKT_ENDE": "2026-11-20Z",
+    "PRESSETEXT": "Die Arbeiten erfolgen in der Zeit von 20:00 Uhr bis 05:00 Uhr. In Fahrtrichtung Joachimsthalerplatz wird der rechte Fahrstreifen gesperrt. In Fahrtrichtung Thaliastraße wird die Maroltingergasse von Joachimsthalerplatz bis 54 gesperrt. Die Zufahrt bis zum gesperrten Bereich ist möglich. Außerhalb der Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.33972613,
      48.2189357
     ],
@@ -871,6 +894,29 @@
     "OBJEKT_BEGINN": "2026-06-22Z",
     "OBJEKT_ENDE": "2026-11-06Z",
     "PRESSETEXT": "Bauphase 1 von 2 (23.06.2026 bis 28.08.2026):Die Arbeiten erfolgen bei Sperre der Neilreichgasse von Gudrunstraße bis Buchengasse. Für die Arbeiten im Plateau Neilreichgasse und Quellenstraße wird die Quellenstraße von Eckertgasse bis Karmaschgasse für den Fahrzeugverkehr gesperrt.Eine Zufahrt bis zum gesperrten Bereich und zu den genehmigten Stellplätzen ist möglich.Die Umleitung in Fahrtrichtung Laxenburger Straße erfolgt über: Sonnleithnergasse - Buchengasse - Herzgasse.Die Umleitung in Fahrtrichtung Triester Straße erfolgt über: Eckertgasse - Pernerstorfergasse - Karmaschgasse. Bauphase 2 von 2 (31.08.2026 bis 06.11.2026): Die Arbeiten erfolgen im Abschnitt Buchengasse bis Davidgasse. Hierfür wird die Neilreichgasse von Buchengasse bis und in Richtung Rothenhofgasse als Einbahn geführt. Eine Zufahrt zu den genehmigten Stellplätzen ist möglich.Die Buslinie 7A wird in diesen Zeitraum über die Rothenhofgasse Sonnleithengasse - Davidgasse umgeleitet.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.36033255,
+     48.15809252
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundentelefon Wiener Linien",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-7909/100",
+    "ANTRAGSTELLER": "Wiener Linien GmbH & Co KG",
+    "BEHINDERUNGSART": "Gleisbau",
+    "BEZEICHNUNG": "Neilreichgasse von Wienerfeldgasse bis Starkegasse",
+    "BEZIRK": 10,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-25Z",
+    "OBJEKT_ENDE": "2026-11-29Z",
+    "PRESSETEXT": "DieArbeiten erfolgen in der Nacht von 20:00 Uhr bis 5:00 Uhr und an einzelnen Tagen. Im Kreuzungsbereich werden alle Fahrrelationen aufrecht gehalten. Die Nebenfahrbahn der Neilreichgasse von Wienerfeldgasse bis Starkegasse wird gesperrt. Die Zufahrt in die Nebenfahrbahn wird über die Starkegasse ermöglicht, welche als Einbahn in Fahrtrichtung Neilreichgasse Nebenfahrbahn geführt wird.<br>Mail 09.10.2026",
     "SE_ANNO_CAD_DATA": null
    }
   },
@@ -1147,6 +1193,29 @@
     "OBJEKT_BEGINN": "2026-05-18Z",
     "OBJEKT_ENDE": "2027-05-28Z",
     "PRESSETEXT": "In Fahrtrichtung stadteinwärts wird ein 3,50 m breiter Fahrstreifen aufrecht gehalten. Die Fahrtrichtung stadtauswärts wird über das richtungsführende Gleis oder die bestehende Nebenfahrbahn umgeleitet. Die Arbeiten werden abschnittsweise durchgeführt.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.38455157,
+     48.20896306
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Vordere Zollamtsstraße von 5 bis 3",
+    "BEZIRK": 3,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-23Z",
+    "OBJEKT_ENDE": "2026-11-01Z",
+    "PRESSETEXT": "Ein Fahrstreifen in Fahrtrichtung Radetzkybrücke bzw. Obere Weißgerberstraße wird gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten.",
     "SE_ANNO_CAD_DATA": null
    }
   },

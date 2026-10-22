@@ -197,6 +197,29 @@
     "ANSPRECHPERSON_TEL": "Tel.: 01-4000-30030",
     "ANTRAGSTELLER": "Wienkanal",
     "BEHINDERUNGSART": "Kanalbau",
+    "BEZEICHNUNG": "Hietzinger Kai Kreuzung Braunschweiggasse",
+    "BEZIRK": 13,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-26Z",
+    "OBJEKT_ENDE": "2026-11-01Z",
+    "PRESSETEXT": "Derrechte Fahrstreifen in Fahrtrichtung stadteinwärts wird gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten. Das Rechtsabbiegen in die Braunschweiggasse ist weiterhin möglich.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.29486264,
+     48.18947432
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Poststelle Wien Kanal",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000-30030",
+    "ANTRAGSTELLER": "Wienkanal",
+    "BEHINDERUNGSART": "Kanalbau",
     "BEZEICHNUNG": "Hietzinger Kai Kreuzung Hietzinger Kai und Braunschweiggasse",
     "BEZIRK": 13,
     "GISCODE": 1,
@@ -287,14 +310,14 @@
    "properties": {
     "ANSPRECHPERSON": "Poststelle Wien Kanal",
     "ANSPRECHPERSON_TEL": "Tel.: 01-4000-30030",
-    "ANTRAGSTELLER": "Wienkanal",
+    "ANTRAGSTELLER": null,
     "BEHINDERUNGSART": "Kanalbau",
     "BEZEICHNUNG": "Linke Wienzeile 90-92",
     "BEZIRK": 6,
     "GISCODE": 1,
     "GISCODE_TXT": "P90 Baustellen",
     "OBJEKT_BEGINN": "2026-05-19Z",
-    "OBJEKT_ENDE": "2026-12-18Z",
+    "OBJEKT_ENDE": "2026-10-22Z",
     "PRESSETEXT": "Zur Einrichtung einerBaustellenfläche für Arbeiten im Wienfluss werden ab 20.05.2026 Bauarbeiten imBereich der Linken Wienzeile O.Nr. 86 96 durchgeführt. Zum Zwecke derOberflächenfreimachung erfolgt in der ersten Bauphase die Entfernung derVerkehrsinsel vor der Liegenschaft O.Nr. 90 92 (BP Tankstelle) ohneEinschränkungen für den Fließverkehr auf der Linken Wienzeile. In der Nacht von01.06.2026 auf 02.06.2026 erfolgen Bodenmarkierungsarbeiten für die bisJahresende 2026 andauernde Verkehrsführung auf der Linken Wienzeile imBaustellenbereich.<br>Ab 02.06.2026 wirdder Verkehr mittels zweispurigem Fahrbahnverschwenk an der Baustellevorbeigeführt.",
     "SE_ANNO_CAD_DATA": null
    }
@@ -434,6 +457,29 @@
     "OBJEKT_BEGINN": "2026-08-02Z",
     "OBJEKT_ENDE": "2026-11-30Z",
     "PRESSETEXT": "Die Arbeiten erfolgen in der Nebenfahrbahn in der Nacht in der betriebslosen Zeit des betroffenen öffentlichen Verkehrsmittels sowie von Freitag 15:00 Uhr bis Montag 05:00 Uhr.Im Baustellenbereich wird ein Fahrstreifen mit einer Restfahrbahn von 3,50 m freigehalten. DerFußgängerverkehr kann aufrecht gehalten werden. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.40708498,
+     48.18266053
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Ma 31 Kundencenter",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-59959/31600",
+    "ANTRAGSTELLER": "MA31",
+    "BEHINDERUNGSART": "Zuleitungs- Schieber- Hydrantenarbeiten",
+    "BEZEICHNUNG": "Simmeringer Hauptstraße 19",
+    "BEZIRK": 11,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-27Z",
+    "OBJEKT_ENDE": "2026-11-13Z",
+    "PRESSETEXT": "DieArbeiten auf der Fahrbahn erfolgen in der Zeit von 20:00 bis 05:00 Uhr. ImBaustellenbereich wird ein Fahrstreifen mit 3,50 mfreigehalten und der Verkehr wechselweise mittels Personal durchgeschleust.",
     "SE_ANNO_CAD_DATA": null
    }
   },
