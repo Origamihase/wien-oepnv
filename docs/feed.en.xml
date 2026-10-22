@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:georss="http://www.georss.org/georss" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
   <channel>
     <title>Vienna Public Transport — Disruptions &amp; Commuter Info</title>
     <link>https://github.com/Origamihase/wien-oepnv</link>
@@ -8,8 +8,34 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 22 Oct 2026 17:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 18:00:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[26A: Third-party traffic accident]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">e6c1cb1b892fdece121e295371b995171940e3e9ea5a2486f36d8b6c1b48fd45</guid>
+      <pubDate>Thu, 22 Oct 2026 17:38:08 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 22 Oct 2026 18:00:56 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 17:38:08 +0200</ext:starts_at>
+      <description>Diversion towards Kagran U between Siegesplatz and Konstanziagasse via Langobardenstraße. [Since 17:38]</description>
+      <content:encoded><![CDATA[Diversion towards Kagran U between Siegesplatz and Konstanziagasse via Langobardenstraße.<br/>[Since 17:38]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4</guid>
+      <pubDate>Thu, 22 Oct 2026 17:56:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 22 Oct 2026 17:56:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 17:56:00 +0200</ext:starts_at>
+      <description>The U4 line currently operates at Friedensbrücke station in both directions on track 2. Expected until 18:30. Reason: defective vehicle in the stop area of … [Since 17:56]</description>
+      <content:encoded><![CDATA[The U4 line currently operates at Friedensbrücke station in both directions on track 2. Expected until 18:30. Reason: defective vehicle in the stop area of …<br/>[Since 17:56]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1/O: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -19,22 +45,22 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 17:30:49 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 17:26:00 +0200</ext:starts_at>
-      <description>Service obstruction in both directions. Expected until 18:00. Reason: traffic accident in the area of Radetzkyplatz. [Since 17:22]</description>
-      <content:encoded><![CDATA[Service obstruction in both directions. Expected until 18:00. Reason: traffic accident in the area of Radetzkyplatz.<br/>[Since 17:22]]]></content:encoded>
+      <ext:starts_at>Thu, 22 Oct 2026 17:22:05 +0200</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 17:22]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 17:22]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[30/31: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">70431730fb981673f00e9f6f9e9161c71d549913578700320c2123e9f0bc4885</guid>
-      <pubDate>Thu, 22 Oct 2026 16:49:00 +0200</pubDate>
+      <pubDate>Thu, 22 Oct 2026 17:48:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 17:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 16:49:00 +0200</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: rescue operation. [Since 16:49]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 16:49]]]></content:encoded>
+      <ext:starts_at>Thu, 22 Oct 2026 17:48:00 +0200</ext:starts_at>
+      <description>Service obstruction towards Stammersdorf. Expected until 18:15. Reason: rescue operation in the stop area of Brünner Straße S. [Since 17:48]</description>
+      <content:encoded><![CDATA[Service obstruction towards Stammersdorf. Expected until 18:15. Reason: rescue operation in the stop area of Brünner Straße S.<br/>[Since 17:48]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Rescue operation]]></title>
@@ -86,62 +112,35 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 17:30:49 +0200</ext:first_seen>
       <ext:starts_at>Thu, 22 Oct 2026 13:44:00 +0200</ext:starts_at>
-      <description>1: diversion Kliebergasse – Hintere Zollamtsstraße; D: service only Absberggasse – Schwarzenbergplatz; 71: service only Kaiserebersdorf – Schwarzenbergplatz. [Since today]</description>
-      <content:encoded><![CDATA[1: diversion Kliebergasse – Hintere Zollamtsstraße; D: service only Absberggasse – Schwarzenbergplatz; 71: service only Kaiserebersdorf – Schwarzenbergplatz.<br/>[Since today]]]></content:encoded>
+      <description>1: diversion Kliebergasse – Hintere Zollamtsstraße; D: diversion Schwarzenbergplatz – Börse; 71: service only Kaiserebersdorf – Schwarzenbergplatz. Expected until 20:00. [Since today]</description>
+      <content:encoded><![CDATA[1: diversion Kliebergasse – Hintere Zollamtsstraße; D: diversion Schwarzenbergplatz – Börse; 71: service only Kaiserebersdorf – Schwarzenbergplatz. Expected until 20:00.<br/>[Since today]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[43/44: Demonstration]]></title>
+      <title><![CDATA[59A: Demonstration]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">176ee273e9652b25ddc2469fadf98bebe5c304aa8e214067d34a744585279d1e</guid>
-      <pubDate>Thu, 22 Oct 2026 16:45:00 +0200</pubDate>
+      <guid isPermaLink="false">8e057ee2fe0081e7a31658af9f02f64a8bc3b3040fd07f8f465aec6c93f0e1a9</guid>
+      <pubDate>Thu, 22 Oct 2026 16:17:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 17:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 16:45:00 +0200</ext:starts_at>
-      <description>Service only: 43 Neuwaldegg – Alser Straße U; 44 Ottakring, Maroltingergasse – Johann-Nepomuk-Berger-Platz. Expected until 20:00. [Since today]</description>
-      <content:encoded><![CDATA[Service only: 43 Neuwaldegg – Alser Straße U; 44 Ottakring, Maroltingergasse – Johann-Nepomuk-Berger-Platz. Expected until 20:00.<br/>[Since today]]]></content:encoded>
+      <ext:first_seen>Thu, 22 Oct 2026 16:30:48 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 16:18:02 +0200</ext:starts_at>
+      <description>Service from Bärenmühldurchgang. After a service obstruction, there are irregular intervals. [Since today]</description>
+      <content:encoded><![CDATA[Service from Bärenmühldurchgang. After a service obstruction, there are irregular intervals.<br/>[Since today]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[3A: Demonstration]]></title>
+      <title><![CDATA[31: Demonstration]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">f53742344166c363496c08634cbf4496139279795628061d2c54b291cc331563</guid>
-      <pubDate>Thu, 22 Oct 2026 16:34:00 +0200</pubDate>
+      <guid isPermaLink="false">07ee13646ae33c2da98a821de809b3136bb4fdc7e454840658ffc8afaccd1e5f</guid>
+      <pubDate>Thu, 22 Oct 2026 16:12:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 17:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 16:39:33 +0200</ext:starts_at>
-      <description>Service from Hoher Markt. Service only between Oper, Karlsplatz U and Hoher Markt. Expected until 20:00. Reason: demonstration in the area of the Inner City. [Since today]</description>
-      <content:encoded><![CDATA[Service from Hoher Markt. Service only between Oper, Karlsplatz U and Hoher Markt. Expected until 20:00. Reason: demonstration in the area of the Inner City.<br/>[Since today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A/78A: Roadworks]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">829aed6b63ca00dc86bdde6d44ea64c5a4a23433aa5b8e7bb064705f27b2e81f</guid>
-      <pubDate>Wed, 14 Oct 2026 16:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 00:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 02 Nov 2026 01:00:00 +0100</ext:ends_at>
-      <description>Due to roadworks in Meiereistraße / Stephanie-Endres-Straße crossing area, diversions occurs. [From Fri 23.10. until 02.11.]</description>
-      <content:encoded><![CDATA[Due to roadworks in Meiereistraße / Stephanie-Endres-Straße crossing area, diversions occurs.<br/>[From Fri 23.10. until 02.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A/N64R: Erlaaer Spitz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">bd5f4b6cb6c11492266da898891314662b7d55f24a297565efab82ec83f4917c</guid>
-      <pubDate>Wed, 21 Oct 2026 10:12:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 21 Oct 2026 10:12:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <georss:point>48.137809 16.323970</georss:point>
-      <description>Perfektastraße 3 → Perfektastraße 9. Stop relocation of lines 64A and N64 call bus towards Atzgersdorf, Ziedlergasse, or Alterlaa … [Since today]</description>
-      <content:encoded><![CDATA[Perfektastraße 3 → Perfektastraße 9. Stop relocation of lines 64A and N64 call bus towards Atzgersdorf, Ziedlergasse, or Alterlaa …<br/>[Since today]]]></content:encoded>
+      <ext:first_seen>Thu, 22 Oct 2026 16:12:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 16:16:00 +0200</ext:starts_at>
+      <ext:ends_at>Thu, 22 Oct 2026 22:00:00 +0200</ext:ends_at>
+      <description>Trains stop at the stop of line 5 direction Westbahnhof S U. [Today]</description>
+      <content:encoded><![CDATA[Trains stop at the stop of line 5 direction Westbahnhof S U.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
