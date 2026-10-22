@@ -65,7 +65,7 @@
     },
     "total": 1918
   },
-  "generated_at": "2026-10-22T05:30:43+02:00",
+  "generated_at": "2026-10-22T06:01:08+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.97,
@@ -114,7 +114,7 @@
         "Meidling": {
           "last_seen": "2026-10-22T04:55:00+02:00",
           "peer_rows_since": 0,
-          "rows_in_window": 1177
+          "rows_in_window": 1176
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
@@ -124,15 +124,15 @@
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-10-22T05:30:37+02:00",
+        "last_success": "2026-10-22T06:01:00+02:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
       "window_days": 30
     },
     "live": {
-      "avg_delay_minutes": 0.0,
-      "observations": 1,
+      "avg_delay_minutes": null,
+      "observations": 0,
       "window_minutes": 60
     },
     "max_delay_minutes": 395.33,
