@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 22 Oct 2026 17:01:01 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 17:30:49 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[1/O: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">b6984d7df2c1a7383573dae6d706e9bf6366d469678f2e4a5372412c6b883c7a</guid>
+      <pubDate>Thu, 22 Oct 2026 17:22:05 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 22 Oct 2026 17:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 17:26:00 +0200</ext:starts_at>
+      <description>Service obstruction in both directions. Expected until 18:00. Reason: traffic accident in the area of Radetzkyplatz. [Since 17:22]</description>
+      <content:encoded><![CDATA[Service obstruction in both directions. Expected until 18:00. Reason: traffic accident in the area of Radetzkyplatz.<br/>[Since 17:22]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[30/31: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -32,7 +45,7 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 16:09:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 16:20:00 +0200</ext:starts_at>
+      <ext:starts_at>Thu, 22 Oct 2026 16:09:00 +0200</ext:starts_at>
       <description>After a service obstruction, there are irregular intervals. [Since 16:09]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 16:09]]]></content:encoded>
     </item>
@@ -64,6 +77,19 @@
       <content:encoded><![CDATA[Service obstruction; service from Johann-Nepomuk-Berger-Platz; trains stop at Taubergasse 5-7.<br/>[Since 10:17]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[1/D/71: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">ad4814f762aa48c34e8d9de2b9afa12b616fbf72f49a5e925e4bb5b73034ef90</guid>
+      <pubDate>Thu, 22 Oct 2026 13:44:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 22 Oct 2026 17:30:49 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 13:44:00 +0200</ext:starts_at>
+      <description>1: diversion Kliebergasse – Hintere Zollamtsstraße; D: service only Absberggasse – Schwarzenbergplatz; 71: service only Kaiserebersdorf – Schwarzenbergplatz. [Since today]</description>
+      <content:encoded><![CDATA[1: diversion Kliebergasse – Hintere Zollamtsstraße; D: service only Absberggasse – Schwarzenbergplatz; 71: service only Kaiserebersdorf – Schwarzenbergplatz.<br/>[Since today]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[43/44: Demonstration]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">176ee273e9652b25ddc2469fadf98bebe5c304aa8e214067d34a744585279d1e</guid>
@@ -77,7 +103,7 @@
       <content:encoded><![CDATA[Service only: 43 Neuwaldegg – Alser Straße U; 44 Ottakring, Maroltingergasse – Johann-Nepomuk-Berger-Platz. Expected until 20:00.<br/>[Since today]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[2A/3A: Demonstration]]></title>
+      <title><![CDATA[3A: Demonstration]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">f53742344166c363496c08634cbf4496139279795628061d2c54b291cc331563</guid>
       <pubDate>Thu, 22 Oct 2026 16:34:00 +0200</pubDate>
@@ -85,35 +111,9 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 17:01:01 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 16:34:00 +0200</ext:starts_at>
-      <description>Currently it is not possible to operate the 2A line. Line 3A: service only between Oper, Karlsplatz U and Hoher Markt. [Since today]</description>
-      <content:encoded><![CDATA[Currently it is not possible to operate the 2A line. Line 3A: service only between Oper, Karlsplatz U and Hoher Markt.<br/>[Since today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[59A: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8e057ee2fe0081e7a31658af9f02f64a8bc3b3040fd07f8f465aec6c93f0e1a9</guid>
-      <pubDate>Thu, 22 Oct 2026 16:17:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 16:30:48 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 16:18:02 +0200</ext:starts_at>
-      <description>Service from Bärenmühldurchgang. After a service obstruction, there are irregular intervals. [Since today]</description>
-      <content:encoded><![CDATA[Service from Bärenmühldurchgang. After a service obstruction, there are irregular intervals.<br/>[Since today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: Illegally parked vehicle, track construction works]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7</guid>
-      <pubDate>Thu, 22 Oct 2026 15:53:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 15:53:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 15:53:00 +0200</ext:starts_at>
-      <description>Track construction works: service from Johnstraße U, Schweglerstraße 19-21. [Since today]</description>
-      <content:encoded><![CDATA[Track construction works: service from Johnstraße U, Schweglerstraße 19-21.<br/>[Since today]]]></content:encoded>
+      <ext:starts_at>Thu, 22 Oct 2026 16:39:33 +0200</ext:starts_at>
+      <description>Service from Hoher Markt. Service only between Oper, Karlsplatz U and Hoher Markt. Expected until 20:00. Reason: demonstration in the area of the Inner City. [Since today]</description>
+      <content:encoded><![CDATA[Service from Hoher Markt. Service only between Oper, Karlsplatz U and Hoher Markt. Expected until 20:00. Reason: demonstration in the area of the Inner City.<br/>[Since today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A/78A: Roadworks]]></title>
