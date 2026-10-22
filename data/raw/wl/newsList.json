@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_36, ftazW_1018058, ftazW_355, ftazW_576, ftazW_572, ftazW_22, ftazW_354, ftazW_573, ftazW_1354337"
+    "trafficInfoNameList": "ftazW_36, ftazW_1018058, ftazW_355, ftazW_572, ftazW_22, ftazW_354, ftazW_573, ftazW_1354337"
    }
   ],
   "poiCategoryGroups": [
@@ -4322,45 +4322,6 @@
      "start": "2026-10-23T01:15:00.000+0200"
     },
     "title": "Margaretengürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "23.10.2026 00:45",
-     "ausVon": "22.10.2026 20:45",
-     "location": "U4 beide Fahrtrichtungen - Passage",
-     "rbls": [
-      4401,
-      4436
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Hütteldorf",
-     "status": "geplante Wartung",
-     "towards": "U4 beide Richtungen"
-    },
-    "description": "U4 beide Fahrtrichtungen - Passage",
-    "elevatorId": "HF 01",
-    "name": "ftazW_576",
-    "parentName": "ftazW_576",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4401,
-     4436
-    ],
-    "time": {
-     "end": "2026-10-23T00:45:00.000+0200",
-     "start": "2026-10-22T20:45:00.000+0200"
-    },
-    "title": "Hütteldorf"
    }
   ]
  },
