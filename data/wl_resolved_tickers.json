@@ -1,34 +1,5 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": [
-  {
-   "key": "R1012-125|2026-10-22T09:01:45.000+0200|Verkehrsunfall\nBetrieb ab Kagran U ",
-   "name": "R1012-125",
-   "title": "Verkehrsunfall\nBetrieb ab Kagran U ",
-   "end": "2026-10-22T10:01:00.000+0200",
-   "incident": "I20261022-0018"
-  },
-  {
-   "key": "R1015-125|2026-10-22T08:52:45.000+0200|Verkehrsunfall\nBetrieb ab Kagran U ",
-   "name": "R1015-125",
-   "title": "Verkehrsunfall\nBetrieb ab Kagran U ",
-   "end": "2026-10-22T10:01:00.000+0200",
-   "incident": "I20261022-0018"
-  },
-  {
-   "key": "R1021-125|2026-10-22T09:01:45.000+0200|Verkehrsunfall\nBetrieb ab Kagran U ",
-   "name": "R1021-125",
-   "title": "Verkehrsunfall\nBetrieb ab Kagran U ",
-   "end": "2026-10-22T10:01:00.000+0200",
-   "incident": "I20261022-0018"
-  },
-  {
-   "key": "R966-125|2026-10-22T08:52:45.000+0200|Verkehrsunfall\nBetrieb ab Kagran U ",
-   "name": "R966-125",
-   "title": "Verkehrsunfall\nBetrieb ab Kagran U ",
-   "end": "2026-10-22T10:01:00.000+0200",
-   "incident": "I20261022-0018"
-  }
- ]
+ "tickers": []
 }
