@@ -1000,7 +1000,7 @@
     "guid": "904ba03627e216651c3fe7a87850a5c4243041de296f0ebcb4c445c1842de781",
     "pubDate": "2026-10-22T08:51:00+02:00",
     "starts_at": "2026-10-22T08:51:00+02:00",
-    "ends_at": null,
+    "ends_at": "2026-10-22T11:08:00+02:00",
     "_identity": "wl|störung|L=25|D=2026-10-22|TK=25 verkehrsunfall",
     "_wl_ids": [
       "I20261022-0018"
@@ -1146,6 +1146,22 @@
       "I20260917-0012"
     ],
     "_incident_start": "2026-09-18T04:30:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "4A: Rettungseinsatz",
+    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e1d8190e4bc45bff393bd68fe6c8835c135a2d0d02394cd2d5728969881d1559",
+    "pubDate": "2026-10-22T10:59:00+02:00",
+    "starts_at": "2026-10-22T10:59:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=4A|D=2026-10-22|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261022-0024"
+    ],
+    "_incident_start": "2026-10-22T10:59:00+02:00"
   },
   {
     "source": "Wiener Linien",
