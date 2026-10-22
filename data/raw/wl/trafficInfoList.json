@@ -13,7 +13,7 @@
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R119-136, R130-136, R100-136, R19-136, R45-136, R36-152, R101-136, R102-136, R103-136, R115-136, R318-437, R293-474, R116-136, R117-136, R118-136, R1446-149, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1448-412, R1474-412, R1449-149, R1448-149, R1445-149, R1447-149, R1881-101, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R1880-101, R2371-125, R2372-627, R2345-127, R2380-627, R2378-627, R2025-671, R2343-626, R2343-125, R2359-125, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2370-125, R2558-125, R5815-671, R401-101, R1974-466, R500-101, R556-109, R531-109, R530-109, R533-109, R532-109, R1475-109, R1476-109, R484-109, R545-109, R546-109, R541-109, R544-109, R543-109, R1447-109, R1446-109, R547-109, R111-136, R49-102, R50-102, R53-102, R52-102, R51-102, R55-102, R54-102, R134-102, R22-102, R11-102, R12-102, R13-102, R9-102, R14-102, R10-102, R15-102, R1019-102, R328-102, R1020-102, R1001-102, R1002-102, R1003-102, R81-136, R113-136, R114-136, R57-136, R112-136, R3437-136, R3431-136, R3439-136, R247-102, R248-102, R249-102, R1366-102, R1367-102, R1368-102, R562-102, R556-102, R560-102, R561-102, R327-102, R324-102, R325-102, R326-102, R1022-102, R251-102, R272-102, R270-102, R269-102, R548-102, R588-102, R1365-102, R1363-102, R1362-102, R133-102, R1364-102, R319-102, R317-102, R316-102, R315-102, R314-102, R275-102, R274-102, R321-102, R322-102, R323-102, R320-102, R318-102, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R102-136, R103-136, R130-136, R115-136, R116-136, R119-136, R318-437, R36-152, R45-136, R293-474, R118-136, R117-136, R100-136, R101-136, R19-136, R1446-149, R1476-149, R1475-149, R1474-149, R1473-149, R1448-412, R1474-412, R1472-149, R1449-149, R1448-149, R1447-149, R1445-149, R1876-101, R1880-101, R1883-101, R1882-101, R1881-101, R1884-101, R1875-101, R2373-125, R2025-671, R2378-627, R2380-627, R2345-127, R2372-627, R2379-627, R2373-126, R2373-127, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2558-125, R5815-671, R401-101, R1974-466, R531-109, R530-109, R556-109, R533-109, R532-109, R1476-109, R1475-109, R541-109, R543-109, R545-109, R546-109, R484-109, R544-109, R1447-109, R1446-109, R547-109, R49-102, R55-102, R53-102, R54-102, R50-102, R51-102, R52-102, R134-102, R22-102, R14-102, R10-102, R11-102, R12-102, R13-102, R9-102, R15-102, R328-102, R1020-102, R1019-102, R1002-102, R1001-102, R1003-102, R247-102, R249-102, R248-102, R1366-102, R1368-102, R1367-102, R562-102, R556-102, R560-102, R561-102, R1022-102, R324-102, R325-102, R326-102, R327-102, R251-102, R272-102, R270-102, R269-102, R548-102, R588-102, R1362-102, R1365-102, R133-102, R1364-102, R1363-102, R318-102, R319-102, R320-102, R321-102, R322-102, R323-102, R275-102, R274-102, R314-102, R315-102, R316-102, R317-102, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -579,98 +579,6 @@
      "start": "2026-10-22T13:48:43.000+0200"
     },
     "title": "Demonstration\nKein Betrieb möglich"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai",
-    "name": "R111-136",
-    "owner": "WL",
-    "parentName": "R111-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     111
-    ],
-    "time": {
-     "end": "2026-10-22T22:45:00.000+0200",
-     "start": "2026-10-22T11:16:29.000+0200"
-    },
-    "title": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai",
-    "name": "R112-136",
-    "owner": "WL",
-    "parentName": "R112-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     112
-    ],
-    "time": {
-     "end": "2026-10-22T22:45:00.000+0200",
-     "start": "2026-10-22T17:46:07.000+0200"
-    },
-    "title": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai",
-    "name": "R113-136",
-    "owner": "WL",
-    "parentName": "R113-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     113
-    ],
-    "time": {
-     "end": "2026-10-22T22:45:00.000+0200",
-     "start": "2026-10-22T17:46:07.000+0200"
-    },
-    "title": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai",
-    "name": "R114-136",
-    "owner": "WL",
-    "parentName": "R114-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     114
-    ],
-    "time": {
-     "end": "2026-10-22T22:45:00.000+0200",
-     "start": "2026-10-22T17:46:07.000+0200"
-    },
-    "title": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2673,75 +2581,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai",
-    "name": "R3431-136",
-    "owner": "WL",
-    "parentName": "R3431-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     3431
-    ],
-    "time": {
-     "end": "2026-10-22T22:45:00.000+0200",
-     "start": "2026-10-22T17:46:10.000+0200"
-    },
-    "title": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai",
-    "name": "R3437-136",
-    "owner": "WL",
-    "parentName": "R3437-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     3437
-    ],
-    "time": {
-     "end": "2026-10-22T22:45:00.000+0200",
-     "start": "2026-10-22T17:46:10.000+0200"
-    },
-    "title": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai",
-    "name": "R3439-136",
-    "owner": "WL",
-    "parentName": "R3439-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     3439
-    ],
-    "time": {
-     "end": "2026-10-22T22:45:00.000+0200",
-     "start": "2026-10-22T17:46:10.000+0200"
-    },
-    "title": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Züge halten\nbei Linien 6 und 18",
     "name": "R36-152",
     "owner": "WL",
@@ -2876,29 +2715,6 @@
      "start": "2026-10-22T13:46:13.000+0200"
     },
     "title": "Demonstration\nKein Betrieb möglich"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
-    "name": "R500-101",
-    "owner": "WL",
-    "parentName": "R500-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     500
-    ],
-    "time": {
-     "end": "2026-10-22T23:00:00.000+0200",
-     "start": "2026-10-22T05:00:23.000+0200"
-    },
-    "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3386,29 +3202,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai",
-    "name": "R57-136",
-    "owner": "WL",
-    "parentName": "R57-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     57
-    ],
-    "time": {
-     "end": "2026-10-22T22:45:00.000+0200",
-     "start": "2026-10-22T17:46:07.000+0200"
-    },
-    "title": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "name": "R5815-671",
     "owner": "WL",
@@ -3448,29 +3241,6 @@
      "start": "2026-10-22T18:54:17.000+0200"
     },
     "title": "Demonstration\nKein Betrieb möglich"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai",
-    "name": "R81-136",
-    "owner": "WL",
-    "parentName": "R81-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     81
-    ],
-    "time": {
-     "end": "2026-10-22T22:45:00.000+0200",
-     "start": "2026-10-22T14:52:20.000+0200"
-    },
-    "title": "Demonstration\nUmleitung ab Schwarzenbergplatz über Franz-J.-Kai"
    },
    {
     "alertCause": "undefined alert cause",

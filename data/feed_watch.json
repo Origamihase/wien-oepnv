@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-22T20:31:08.732007+00:00",
- "built": "2026-10-22T22:30:54+02:00",
+ "updated": "2026-10-22T21:01:16.381705+00:00",
+ "built": "2026-10-22T23:01:07+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-22T22:30:54+02:00",
+  "built": "2026-10-22T23:01:07+02:00",
   "items": [
    {
     "title": "26A: Fremder Verkehrsunfall",
@@ -18,10 +18,6 @@
    },
    {
     "title": "2: Demonstration",
-    "time_line": "Heute"
-   },
-   {
-    "title": "D: Demonstration, Gleisbauarbeiten",
     "time_line": "Heute"
    },
    {
@@ -47,31 +43,15 @@
    {
     "title": "48A: Neubaugasse, Neustiftgasse",
     "time_line": "Seit 19.10."
+   },
+   {
+    "title": "N71: Simmering S U",
+    "time_line": "Bis Fr 23.10."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-15T21:01:06.232772+00:00",
-   "raw": {
-    "wl-stoerungen": 68,
-    "wl-hinweise": 78,
-    "oebb": 158,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 25
-   },
-   "discarded": {
-    "wl": 18,
-    "oebb": 134,
-    "baustellen": 73
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 99
-   }
-  },
   {
    "t": "2026-10-15T21:30:53.927643+00:00",
    "raw": {
@@ -6770,6 +6750,26 @@
     "baustellen": 4,
     "oebb": 9,
     "wl": 112
+   }
+  },
+  {
+   "t": "2026-10-22T21:01:16.381705+00:00",
+   "raw": {
+    "wl-stoerungen": 140,
+    "wl-hinweise": 79,
+    "oebb": 177,
+    "baustellen-linien": 56,
+    "baustellen-punkte": 24
+   },
+   "discarded": {
+    "wl": 7,
+    "oebb": 152,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 110
    }
   }
  ]
