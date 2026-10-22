@@ -8,23 +8,23 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 22 Oct 2026 11:30:39 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 12:01:07 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[4A: Rettungseinsatz]]></title>
+      <title><![CDATA[14A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">e1d8190e4bc45bff393bd68fe6c8835c135a2d0d02394cd2d5728969881d1559</guid>
-      <pubDate>Thu, 22 Oct 2026 10:59:00 +0200</pubDate>
+      <guid isPermaLink="false">84e4d671a35989861eaae0ffbdc51ac7176f80e2aad351517d17f4ba18c5e2ac</guid>
+      <pubDate>Thu, 22 Oct 2026 11:41:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 10:59:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 10:59:00 +0200</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit 10:59]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 10:59]]]></content:encoded>
+      <ext:first_seen>Thu, 22 Oct 2026 11:41:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 11:41:00 +0200</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit 11:41]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 11:41]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[9: Weichenschaden]]></title>
+      <title><![CDATA[9: Gleisschaden]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">6d67a695e02ee432cbb370b28c1d7d8a6dc7caada48b1ef7da318d59ad6b5d32</guid>
       <pubDate>Thu, 22 Oct 2026 10:17:00 +0200</pubDate>
@@ -33,8 +33,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 10:30:40 +0200</ext:first_seen>
       <ext:starts_at>Thu, 22 Oct 2026 10:17:00 +0200</ext:starts_at>
-      <description>Die Linie 9 fährt derzeit nur zwischen Gersthof S und Johann-Nepomuk-Berger-Platz. Die Züge werden im Anschluss zur Josefstädter Straße umgeleitet. [Seit 10:17]</description>
-      <content:encoded><![CDATA[Die Linie 9 fährt derzeit nur zwischen Gersthof S und Johann-Nepomuk-Berger-Platz. Die Züge werden im Anschluss zur Josefstädter Straße umgeleitet.<br/>[Seit 10:17]]]></content:encoded>
+      <description>Weichenschaden; Betrieb ab Johann-Nepomuk-Berger-Platz; Züge halten Taubergasse 5-7. [Seit 10:17]</description>
+      <content:encoded><![CDATA[Weichenschaden; Betrieb ab Johann-Nepomuk-Berger-Platz; Züge halten Taubergasse 5-7.<br/>[Seit 10:17]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Rettungseinsatz]]></title>
@@ -59,8 +59,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 22 Oct 2026 11:30:39 +0200</ext:first_seen>
       <ext:starts_at>Thu, 22 Oct 2026 11:15:00 +0200</ext:starts_at>
-      <description>Staatsbesuch: Kein Betrieb zwischen Börse und Quartier Belvedere S. Weiterfahrt über Linie 18 bis St. Marx S. Beachten Sie die baustellenbedingte Streckensperre … [Seit heute]</description>
-      <content:encoded><![CDATA[Staatsbesuch: Kein Betrieb zwischen Börse und Quartier Belvedere S. Weiterfahrt über Linie 18 bis St. Marx S. Beachten Sie die baustellenbedingte Streckensperre …<br/>[Seit heute]]]></content:encoded>
+      <description>Staatsbesuch: Betrieb über Li. 71+18. Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse. [Seit heute]</description>
+      <content:encoded><![CDATA[Staatsbesuch: Betrieb über Li. 71+18. Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.<br/>[Seit heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/2/D/37/38/40/41/42/43/44/71/LB/2A/3A/4A/74A: Demonstration]]></title>

@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261022-0022-F01, I20261022-0004, I20260917-0012, I20260922-0032, I20261022-0023, I20260925-0011, I20261022-0024, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261022-0022-F01, I20260917-0012, I20261022-0004-F01, I20260922-0032, I20260925-0011, I20261022-0023-F01, I20260909-0007, I20261022-0025, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R100-136, R101-136, R102-136, R293-474, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1880-101, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2371-125, R2370-125, R2343-125, R2359-125, R2343-626, R2025-671, R2378-627, R2372-125, R2373-125, R2373-127, R2558-125, R5815-671, R1848-0, R1842-462, R401-101, R1974-466, R500-101, R531-109, R533-109, R532-109, R530-109, R556-109, R1476-109, R1475-109, R541-109, R546-109, R545-109, R544-109, R543-109, R484-109, R1447-109, R1446-109, R547-109, R105-136, R111-136, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R100-136, R101-136, R102-136, R293-474, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1880-101, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2371-125, R2370-125, R2343-125, R2359-125, R2343-626, R2025-671, R2378-627, R2372-125, R2373-125, R2373-127, R2558-125, R5815-671, R1848-0, R1842-462, R401-101, R1974-466, R500-101, R531-109, R533-109, R532-109, R530-109, R556-109, R1476-109, R1475-109, R546-109, R545-109, R544-109, R541-109, R543-109, R484-109, R1447-109, R1446-109, R547-109, R105-136, R111-136, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -266,19 +266,19 @@
       "D": "ptTram"
      }
     },
-    "description": "Linie D: Kein Betrieb zwischen Börse und Quartier Belvedere S. Weiterfahrt über Linie 18 bis St. Marx S. Beachten Sie die baustellenbedingte Streckensperre der Linien D. Ersatz: Linie 71. Voraussichtliche Dauer: 12:00 Uhr. Grund: Staatsbesuch im Bereich Prinz-Eugen-Straße.",
-    "descriptionHTML": "<p>Linie D:<br>Kein Betrieb zwischen Börse und Quartier Belvedere S. <br>Weiterfahrt über Linie 18 bis St. Marx S.</p><p>Beachten Sie die baustellenbedingte Streckensperre der Linien D.</p><p>Ersatz: Linie 71.</p><p>Voraussichtliche Dauer: 12:00 Uhr.</p><p>Grund: Staatsbesuch im Bereich Prinz-Eugen-Straße.</p>",
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie D:<br>Kein Betrieb zwischen Börse und Quartier Belvedere S. <br>Weiterfahrt über Linie 18 bis St. Marx S.</p><p>Beachten Sie die baustellenbedingte Streckensperre der Linien D.</p><p>Ersatz: Linie 71.</p><p>Voraussichtliche Dauer: 12:00 Uhr.</p><p>Grund: Staatsbesuch im Bereich Prinz-Eugen-Straße.</p>",
-       "descriptionPlain": "Linie D: Kein Betrieb zwischen Börse und Quartier Belvedere S. Weiterfahrt über Linie 18 bis St. Marx S. Beachten Sie die baustellenbedingte Streckensperre der Linien D. Ersatz: Linie 71. Voraussichtliche Dauer: 12:00 Uhr. Grund: Staatsbesuch im Bereich Prinz-Eugen-Straße.",
+       "descriptionHtml": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "D: Staatsbesuch"
       }
      }
     ],
     "location": "Prinz-Eugen-Straße",
-    "name": "I20261022-0004",
+    "name": "I20261022-0004-F01",
     "owner": "WL",
     "parentName": "I20261022-0004",
     "priority": "1",
@@ -297,8 +297,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-22T06:50:00.000+0200",
-     "lastUpdate": "2026-10-22T11:28:00.000+0200",
+     "created": "2026-10-22T11:43:00.000+0200",
+     "lastUpdate": "2026-10-22T11:43:00.000+0200",
+     "resume": "2026-10-22T11:43:00.000+0200",
      "start": "2026-10-22T11:15:00.000+0200"
     },
     "title": "D: Staatsbesuch"
@@ -356,19 +357,19 @@
       "9": "ptTram"
      }
     },
-    "description": "Die Linie 9 fährt derzeit nur zwischen Gersthof S und Johann-Nepomuk-Berger-Platz. Die Züge werden im Anschluss zur Josefstädter Straße umgeleitet. Ersatz: Linien U6, 46 und 48A. Voraussichtliche Dauer: 14:00 Uhr. Grund: Weichenschaden im Bereich Johann-Nepomuk-Berger-Platz.",
-    "descriptionHTML": "<p>Die Linie 9 fährt derzeit nur zwischen Gersthof S und Johann-Nepomuk-Berger-Platz.</p><p>Die Züge werden im Anschluss zur Josefstädter Straße umgeleitet.</p><p>Ersatz: Linien U6, 46 und 48A.</p><p>Voraussichtliche Dauer: 14:00 Uhr.</p><p>Grund: Weichenschaden im Bereich Johann-Nepomuk-Berger-Platz.</p>",
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie 9 fährt derzeit nur zwischen Gersthof S und Johann-Nepomuk-Berger-Platz.</p><p>Die Züge werden im Anschluss zur Josefstädter Straße umgeleitet.</p><p>Ersatz: Linien U6, 46 und 48A.</p><p>Voraussichtliche Dauer: 14:00 Uhr.</p><p>Grund: Weichenschaden im Bereich Johann-Nepomuk-Berger-Platz.</p>",
-       "descriptionPlain": "Die Linie 9 fährt derzeit nur zwischen Gersthof S und Johann-Nepomuk-Berger-Platz. Die Züge werden im Anschluss zur Josefstädter Straße umgeleitet. Ersatz: Linien U6, 46 und 48A. Voraussichtliche Dauer: 14:00 Uhr. Grund: Weichenschaden im Bereich Johann-Nepomuk-Berger-Platz.",
+       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "9: Weichenschaden"
       }
      }
     ],
     "location": "Johann-Nepomuk-Berger-Platz",
-    "name": "I20261022-0023",
+    "name": "I20261022-0023-F01",
     "owner": "WL",
     "parentName": "I20261022-0023",
     "priority": "1",
@@ -387,8 +388,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-22T10:21:00.000+0200",
-     "lastUpdate": "2026-10-22T10:21:00.000+0200",
+     "created": "2026-10-22T11:37:00.000+0200",
+     "lastUpdate": "2026-10-22T11:37:00.000+0200",
+     "resume": "2026-10-22T11:37:00.000+0200",
      "start": "2026-10-22T10:17:00.000+0200"
     },
     "title": "9: Weichenschaden"
@@ -398,48 +400,45 @@
     "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "4A": "ptBusCity"
+      "14A": "ptBusCity"
      }
     },
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "4A: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "14A: Rettungseinsatz"
       }
      }
     ],
-    "name": "I20261022-0024",
+    "name": "I20261022-0025",
     "owner": "WL",
-    "parentName": "I20261022-0024",
+    "parentName": "I20261022-0025",
     "priority": "1",
     "reasonId": 9,
     "reasonName": "Rettungseinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "4A"
+     "14A"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 404,
-      "lineName": "4A",
+      "lineId": 414,
+      "lineName": "14A",
       "vehicleType": "ptBusCity"
      }
     ],
-    "relatedStops": [
-     1493
-    ],
     "status": "active",
     "time": {
-     "created": "2026-10-22T11:00:00.000+0200",
-     "lastUpdate": "2026-10-22T11:00:00.000+0200",
-     "resume": "2026-10-22T10:59:00.000+0200",
-     "start": "2026-10-22T10:59:00.000+0200"
+     "created": "2026-10-22T11:41:00.000+0200",
+     "lastUpdate": "2026-10-22T11:41:00.000+0200",
+     "resume": "2026-10-22T11:41:00.000+0200",
+     "start": "2026-10-22T11:41:00.000+0200"
     },
-    "title": "4A: Rettungseinsatz"
+    "title": "14A: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",

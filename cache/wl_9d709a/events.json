@@ -866,6 +866,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "14A: Rettungseinsatz",
+    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "84e4d671a35989861eaae0ffbdc51ac7176f80e2aad351517d17f4ba18c5e2ac",
+    "pubDate": "2026-10-22T11:41:00+02:00",
+    "starts_at": "2026-10-22T11:41:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=14A|D=2026-10-22|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261022-0025"
+    ],
+    "_incident_start": "2026-10-22T11:41:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1134,22 +1150,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "4A: Rettungseinsatz",
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e1d8190e4bc45bff393bd68fe6c8835c135a2d0d02394cd2d5728969881d1559",
-    "pubDate": "2026-10-22T10:59:00+02:00",
-    "starts_at": "2026-10-22T10:59:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=4A|D=2026-10-22|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261022-0024"
-    ],
-    "_incident_start": "2026-10-22T10:59:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "52: Züge halten bei Linien 6 und 18",
     "description": "Züge halten\nbei Linien 6 und 18",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1199,7 +1199,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "9: Weichenschaden",
-    "description": "Die Linie 9 fährt derzeit nur zwischen Gersthof S und Johann-Nepomuk-Berger-Platz. Die Züge werden im Anschluss zur Josefstädter Straße umgeleitet. Ersatz: Linien U6, 46 und 48A. Voraussichtliche Dauer: 14:00 Uhr. Grund: Weichenschaden im Bereich Johann-Nepomuk-Berger-Platz.",
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "6d67a695e02ee432cbb370b28c1d7d8a6dc7caada48b1ef7da318d59ad6b5d32",
     "pubDate": "2026-10-22T10:17:00+02:00",
@@ -1315,7 +1315,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "D: Staatsbesuch",
-    "description": "Linie D: Kein Betrieb zwischen Börse und Quartier Belvedere S. Weiterfahrt über Linie 18 bis St. Marx S. Beachten Sie die baustellenbedingte Streckensperre der Linien D. Ersatz: Linie 71. Voraussichtliche Dauer: 12:00 Uhr. Grund: Staatsbesuch im Bereich Prinz-Eugen-Straße.",
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "725c5250c60acec71a2b1fc654e2e1560bc396a74ad0b468d32af47b1d966802",
     "pubDate": "2026-10-22T11:15:00+02:00",
