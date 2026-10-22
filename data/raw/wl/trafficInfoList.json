@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261021-0014, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261021-0014, I20261022-0002, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R115-136, R293-474, R318-437, R100-136, R103-136, R116-136, R117-136, R118-136, R119-136, R1446-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1448-412, R1474-412, R1475-149, R1476-149, R1445-149, R1447-149, R1876-101, R1881-101, R1880-101, R1882-101, R1883-101, R1884-101, R1875-101, R2373-126, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2379-627, R2380-627, R2345-127, R2372-627, R2025-671, R2378-627, R2558-125, R5815-671, R1848-0, R1842-462, R401-101, R2034-571, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R1448-549, R1474-549, R2371-520, R2372-520, R2379-520, R2378-520, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R103-136, R102-136, R101-136, R318-437, R293-474, R100-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1448-412, R1474-412, R1474-149, R1475-149, R1476-149, R1445-149, R1446-149, R1876-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1875-101, R2372-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2025-671, R2378-627, R2558-125, R5815-671, R1848-0, R1842-462, R401-101, R2034-571, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R1448-549, R1474-549, R2371-520, R2372-520, R2378-520, R2379-520, R12-525, R10-525, R17-525, R18-525, R19-525, R15-525, R14-525, R5601-525, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -304,6 +304,78 @@
     "title": "44: Gleisschaden"
    },
    {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "N25": "ptBusNight"
+     }
+    },
+    "description": "Linie N25: Fahrtbehinderung in Richtung Kai, Ring. Voraussichtliche Dauer: 02:45 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Schwedenplatz.",
+    "descriptionHTML": "<p>Linie N25:<br>Fahrtbehinderung in Richtung Kai, Ring.</p><p>Voraussichtliche Dauer: 02:45 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Schwedenplatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie N25:<br>Fahrtbehinderung in Richtung Kai, Ring.</p><p>Voraussichtliche Dauer: 02:45 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Schwedenplatz.</p>",
+       "descriptionPlain": "Linie N25: Fahrtbehinderung in Richtung Kai, Ring. Voraussichtliche Dauer: 02:45 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Schwedenplatz.",
+       "title": "N25: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261022-0002",
+    "owner": "WL",
+    "parentName": "I20261022-0002",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "N25"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 525,
+      "lineName": "N25",
+      "vehicleType": "ptBusNight"
+     }
+    ],
+    "relatedStops": [
+     5505
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-22T02:22:00.000+0200",
+     "end": "2026-10-22T02:26:00.000+0200",
+     "lastUpdate": "2026-10-22T02:26:00.000+0200",
+     "resume": "2026-10-22T02:21:00.000+0200",
+     "start": "2026-10-22T02:21:00.000+0200"
+    },
+    "title": "N25: Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R10-525",
+    "owner": "WL",
+    "parentName": "R10-525",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N25"
+    ],
+    "relatedStops": [
+     10
+    ],
+    "time": {
+     "end": "2026-10-22T03:23:00.000+0200",
+     "start": "2026-10-22T02:23:45.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -513,6 +585,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R12-525",
+    "owner": "WL",
+    "parentName": "R12-525",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N25"
+    ],
+    "relatedStops": [
+     12
+    ],
+    "time": {
+     "end": "2026-10-22T03:23:00.000+0200",
+     "start": "2026-10-22T02:23:45.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R130-136",
     "owner": "WL",
@@ -532,6 +627,29 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R14-525",
+    "owner": "WL",
+    "parentName": "R14-525",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N25"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-22T03:23:00.000+0200",
+     "start": "2026-10-22T02:23:45.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -858,6 +976,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R15-525",
+    "owner": "WL",
+    "parentName": "R15-525",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N25"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-22T03:23:00.000+0200",
+     "start": "2026-10-22T02:23:45.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R17-525",
+    "owner": "WL",
+    "parentName": "R17-525",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N25"
+    ],
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-10-22T03:23:00.000+0200",
+     "start": "2026-10-22T02:23:45.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A",
     "name": "R1718-508",
     "owner": "WL",
@@ -900,6 +1064,29 @@
      "start": "2026-10-22T00:45:06.000+0200"
     },
     "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R18-525",
+    "owner": "WL",
+    "parentName": "R18-525",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N25"
+    ],
+    "relatedStops": [
+     18
+    ],
+    "time": {
+     "end": "2026-10-22T03:23:00.000+0200",
+     "start": "2026-10-22T02:23:45.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1127,6 +1314,29 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R19-525",
+    "owner": "WL",
+    "parentName": "R19-525",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N25"
+    ],
+    "relatedStops": [
+     19
+    ],
+    "time": {
+     "end": "2026-10-22T03:23:00.000+0200",
+     "start": "2026-10-22T02:23:45.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1814,6 +2024,29 @@
      "start": "2026-10-22T00:30:04.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R5601-525",
+    "owner": "WL",
+    "parentName": "R5601-525",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N25"
+    ],
+    "relatedStops": [
+     5601
+    ],
+    "time": {
+     "end": "2026-10-22T03:23:00.000+0200",
+     "start": "2026-10-22T02:23:48.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
