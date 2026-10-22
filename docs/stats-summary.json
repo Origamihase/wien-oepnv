@@ -65,12 +65,12 @@
     },
     "total": 1918
   },
-  "generated_at": "2026-10-22T15:31:04+02:00",
+  "generated_at": "2026-10-22T16:01:02+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.97,
     "by_direction": {
-      "Meidling": 6607,
+      "Meidling": 6608,
       "Praterstern": 3831
     },
     "by_hour_avg": {
@@ -101,7 +101,7 @@
     },
     "by_weekday_avg": {
       "Di": 1.02,
-      "Do": 0.94,
+      "Do": 0.93,
       "Fr": 0.94,
       "Mi": 1.23,
       "Mo": 1.32,
@@ -112,19 +112,19 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-10-22T15:25:00+02:00",
+          "last_seen": "2026-10-22T15:55:00+02:00",
           "peer_rows_since": 0,
           "rows_in_window": 1179
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 2757,
+          "peer_rows_since": 2758,
           "rows_in_window": 0
         }
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-10-22T15:30:47+02:00",
+        "last_success": "2026-10-22T16:00:49+02:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
@@ -138,7 +138,7 @@
     "max_delay_minutes": 395.33,
     "threshold_exceedances": 135,
     "threshold_minutes": 9.0,
-    "total_observations": 10438
+    "total_observations": 10439
   },
   "stoerungen": {
     "by_hour": {
@@ -158,7 +158,7 @@
       "13": 233,
       "14": 218,
       "15": 239,
-      "16": 224,
+      "16": 225,
       "17": 165,
       "18": 202,
       "19": 145,
@@ -170,19 +170,19 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 180,
       "VOR/VAO": 11,
-      "Wiener Linien": 3046,
+      "Wiener Linien": 3047,
       "ÖBB": 299
     },
     "by_weekday": {
       "Di": 524,
-      "Do": 576,
+      "Do": 577,
       "Fr": 554,
       "Mi": 549,
       "Mo": 484,
       "Sa": 420,
       "So": 429
     },
-    "total": 3536
+    "total": 3537
   },
   "year": 2026
 }
