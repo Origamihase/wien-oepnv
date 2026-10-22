@@ -1178,22 +1178,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37/38/40/41/42: Demonstration",
-    "description": "Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Linie 38: Betrieb nur zwischen Grinzing und Nußdorfer Straße U. Linie 40: Betrieb nur zwischen Gersthof, Herbeckstraße und Währinger Straße, Volksoper U. Linie 41: Betrieb nur zwischen Pötzleinsdorf und Währinger Straße, Volksoper U. Linie 42: Betrieb nur zwischen Antonigasse und Währinger Straße, Volksoper U. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "582325ad7d503c2aa0e3437b571e04758752963e3eb8126b6c5df10eeab18736",
-    "pubDate": "2026-10-22T20:00:00+02:00",
-    "starts_at": "2026-10-22T20:00:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=37,38,40,41,42|D=2026-10-22|TK=demonstration",
-    "_wl_ids": [
-      "I20261022-0010"
-    ],
-    "_incident_start": "2026-10-22T20:00:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1399,17 +1383,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "D: Demonstration Betrieb ab Quartier Belvedere S",
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Demonstration\nBetrieb ab Quartier Belvedere S",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "23617704b0adedf9ec79e6ea20280c4a9295bcef03cad548c5faed81118dda8e",
-    "pubDate": "2026-10-22T13:44:00+02:00",
+    "pubDate": "2026-10-22T11:15:59+02:00",
     "starts_at": "2026-10-22T14:52:50+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=D|D=2026-10-22|TK=demonstration",
-    "_wl_ids": [
-      "I20261022-0031"
-    ],
-    "_incident_start": "2026-10-22T13:44:00+02:00"
+    "ends_at": "2026-10-22T22:00:00+02:00",
+    "_identity": "wl|störung|L=D|D=2026-10-22|TK=demonstration"
   },
   {
     "source": "Wiener Linien",
@@ -1444,44 +1424,12 @@
     "guid": "a3ccf7c2ad3270af3ce0b5bff574b7e68e073f01c1a9bf875ba6186e69760114",
     "pubDate": "2026-10-22T19:50:00+02:00",
     "starts_at": "2026-10-22T19:50:00+02:00",
-    "ends_at": null,
+    "ends_at": "2026-10-22T20:32:00+02:00",
     "_identity": "wl|störung|L=O|D=2026-10-22|TK=o schadhaftes fahrzeug",
     "_wl_ids": [
       "I20261022-0054"
     ],
     "_incident_start": "2026-10-22T19:50:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2026-10-22T19:49:00+02:00",
-    "starts_at": "2026-10-22T19:49:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U4|D=2026-10-22|TK=u4 verspätungen",
-    "_wl_ids": [
-      "I20261022-0053"
-    ],
-    "_incident_start": "2026-10-22T19:49:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Verspätungen",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
-    "pubDate": "2026-10-22T19:27:00+02:00",
-    "starts_at": "2026-10-22T19:27:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-10-22|TK=u6 verspätungen",
-    "_wl_ids": [
-      "I20261022-0052"
-    ],
-    "_incident_start": "2026-10-22T19:27:00+02:00"
   },
   {
     "source": "Wiener Linien",
