@@ -878,18 +878,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/2/31/D/71: Demonstration",
-    "description": "Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18). Linie 2: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Schwedenplatz U über Schottentor - Schottenring. Haltestellen: Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. Schwedenplatz U in Richtung Dornbach: Kein Halt möglich. Gredlerstraße: Kein Halt möglich. Parlament, U Volkstheater in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach). Parlament, U Volkstheater in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament. Linie 31: Betrieb nur zwischen Stammersdorf und Klosterneuburger Straße, Wallensteinstraße. Weiterfahrt bis Wallensteinplatz. Die Linie D fährt derzeit nicht zwischen Quartier Belvedere S und Börse. Linie 71: Betrieb nur zwischen Kaiserebersdorf und St. Marx S. Weiterfahrt über Linie 18 bis Schlachthausgasse U. Beachten Sie die baustellenbedingten Streckensperren der Linie D und Linie 1. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
+    "title": "1/2/D/71: Demonstration",
+    "description": "Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18). Linie 2: Kein Betrieb zwischen Parlament, U Volkstheater und Heinestraße. Weiterfahrt ab Heinestraße bis Praterstern S U. Linie D: Kein Betrieb zwischen Börse und Quartier Belvedere S. Weiterfahrt über Linie 18 bis St. Marx S. Linie 71: Betrieb nur zwischen Kaiserebersdorf und St. Marx S. Weiterfahrt über Linie 18 bis Schlachthausgasse U. Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3a137cb8c62e3e15fc2dda314d3acf9e69da622edd2d54b4f8f3c23213141e61",
-    "pubDate": "2026-10-22T16:00:00+02:00",
-    "starts_at": "2026-10-22T16:00:00+02:00",
+    "guid": "bd71556f0b3999c4b9221f396e4a62b33873bc5ae8eb0b8775cbaad78170136b",
+    "pubDate": "2026-10-22T13:44:00+02:00",
+    "starts_at": "2026-10-22T13:44:00+02:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=1,2,31,71,D|D=2026-10-22|TK=demonstration",
+    "_identity": "wl|störung|L=1,2,71,D|D=2026-10-22|TK=demonstration",
     "_wl_ids": [
-      "I20261022-0029"
+      "I20261022-0031"
     ],
-    "_incident_start": "2026-10-22T16:00:00+02:00"
+    "_incident_start": "2026-10-22T13:44:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1006,18 +1006,6 @@
     "starts_at": "2026-10-22T05:00:23+02:00",
     "ends_at": "2026-10-22T23:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-10-22|TK=bhf hütteldorf öbb ersatzbus für 80"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1",
-    "pubDate": "2026-10-22T15:10:22+02:00",
-    "starts_at": "2026-10-22T15:10:22+02:00",
-    "ends_at": "2026-10-22T16:10:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-10-22|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
@@ -1174,6 +1162,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "31: Demonstration Züge halten bei Li. 5 Ri. Westbahnhof S U",
+    "description": "Linie 31: Betrieb nur zwischen Stammersdorf und Klosterneuburger Straße, Wallensteinstraße. Weiterfahrt bis Wallensteinplatz. Ersatz: Linien U4 und 5. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "07ee13646ae33c2da98a821de809b3136bb4fdc7e454840658ffc8afaccd1e5f",
+    "pubDate": "2026-10-22T16:12:00+02:00",
+    "starts_at": "2026-10-22T16:16:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=31|D=2026-10-22|TK=demonstration",
+    "_wl_ids": [
+      "I20261022-0039"
+    ],
+    "_incident_start": "2026-10-22T16:12:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1230,6 +1234,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "59A: Demonstration Betrieb ab Bärenmühldurchgang",
+    "description": "Linie 59A: Betrieb nur zwischen Bahnhof Meidling S U und Bärenmühldurchgang. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "8e057ee2fe0081e7a31658af9f02f64a8bc3b3040fd07f8f465aec6c93f0e1a9",
+    "pubDate": "2026-10-22T16:17:00+02:00",
+    "starts_at": "2026-10-22T16:18:02+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=59A|D=2026-10-22|TK=demonstration",
+    "_wl_ids": [
+      "I20261022-0040"
+    ],
+    "_incident_start": "2026-10-22T16:17:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62A: Straßenbau Haltestelle verlegt zur Wienerbergbrücke vor Breitenfurter Straße",
     "description": "Straßenbau\nHaltestelle verlegt zur Wienerbergbrücke vor Breitenfurter Straße",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1278,6 +1298,22 @@
     "starts_at": "2026-10-14T00:00:22+02:00",
     "ends_at": "2026-10-22T23:59:59+02:00",
     "_identity": "wl|störung|L=74A|D=2026-10-14|TK=einstieg leberstrasse vor s bahn gebäude"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "7A: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 7A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "be8d2380781f3f47e357b9d6eb7d4a923aff0407f16a0b34798f79852945fd54",
+    "pubDate": "2026-10-22T16:09:00+02:00",
+    "starts_at": "2026-10-22T16:20:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=7A|D=2026-10-22|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261022-0038"
+    ],
+    "_incident_start": "2026-10-22T16:09:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1342,18 +1378,6 @@
     "starts_at": "2026-10-14T00:00:22+02:00",
     "ends_at": "2026-10-22T23:59:59+02:00",
     "_identity": "wl|störung|L=D|D=2026-10-14|TK=betrieb ab augasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Betrieb ab Börse",
-    "description": "Gleisbauarbeiten\nBetrieb ab Börse",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "90216ce9a3141ea415e982acdbf2ac35ab5921c926996bf52a7ad7a52f539c0e",
-    "pubDate": "2026-10-14T00:00:22+02:00",
-    "starts_at": "2026-10-14T00:00:22+02:00",
-    "ends_at": "2026-10-22T23:59:59+02:00",
-    "_identity": "wl|störung|L=D|D=2026-10-14|TK=betrieb ab börse"
   },
   {
     "source": "Wiener Linien",
