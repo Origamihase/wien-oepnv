@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261022-0050, I20260917-0012, I20261022-0045, I20260922-0032, I20261022-0046-F02, I20261022-0044-F02, I20261022-0047-F01, I20260925-0011, I20261022-0031-F02, I20261022-0031-F03, I20261022-0031-F04, I20261022-0052, I20260909-0007, I20261022-0049, I20261022-0051-F01, I20261020-0029, I20261022-0046-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261022-0054, I20260925-0011, I20261022-0031-F02, I20261022-0031-F03, I20261022-0031-F04, I20261022-0052, I20260909-0007, I20261022-0045-F01, I20261022-0045, I20261022-0051-F01, I20261020-0029, I20261022-0053, I20261022-0010"
    },
    {
     "id": 3,
@@ -263,6 +263,80 @@
     "alertCauseId": 122,
     "attributes": {
      "relatedLineTypes": {
+      "37": "ptTram",
+      "38": "ptTram",
+      "40": "ptTram",
+      "41": "ptTram",
+      "42": "ptTram"
+     }
+    },
+    "description": "Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Linie 38: Betrieb nur zwischen Grinzing und Nußdorfer Straße U. Linie 40: Betrieb nur zwischen Gersthof, Herbeckstraße und Währinger Straße, Volksoper U. Linie 41: Betrieb nur zwischen Pötzleinsdorf und Währinger Straße, Volksoper U. Linie 42: Betrieb nur zwischen Antonigasse und Währinger Straße, Volksoper U. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
+    "descriptionHTML": "<p>Linie 37:<br>Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U.<br>Linie 38:<br>Betrieb nur zwischen Grinzing und Nußdorfer Straße U.<br>Linie 40:<br>Betrieb nur zwischen Gersthof, Herbeckstraße und Währinger Straße, Volksoper U.<br>Linie 41:<br>Betrieb nur zwischen Pötzleinsdorf und Währinger Straße, Volksoper U.<br>Linie 42:<br>Betrieb nur zwischen Antonigasse und Währinger Straße, Volksoper U.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Demonstration im Bereich der Inneren Stadt.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 37:<br>Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U.<br>Linie 38:<br>Betrieb nur zwischen Grinzing und Nußdorfer Straße U.<br>Linie 40:<br>Betrieb nur zwischen Gersthof, Herbeckstraße und Währinger Straße, Volksoper U.<br>Linie 41:<br>Betrieb nur zwischen Pötzleinsdorf und Währinger Straße, Volksoper U.<br>Linie 42:<br>Betrieb nur zwischen Antonigasse und Währinger Straße, Volksoper U.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Demonstration im Bereich der Inneren Stadt.</p>",
+       "descriptionPlain": "Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Linie 38: Betrieb nur zwischen Grinzing und Nußdorfer Straße U. Linie 40: Betrieb nur zwischen Gersthof, Herbeckstraße und Währinger Straße, Volksoper U. Linie 41: Betrieb nur zwischen Pötzleinsdorf und Währinger Straße, Volksoper U. Linie 42: Betrieb nur zwischen Antonigasse und Währinger Straße, Volksoper U. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
+       "title": "37, 38, 40, 41, 42: Demonstration"
+      }
+     }
+    ],
+    "location": "der Inneren Stadt",
+    "name": "I20261022-0010",
+    "owner": "WL",
+    "parentName": "I20261022-0010",
+    "priority": "1",
+    "reasonId": 22,
+    "reasonName": "Demonstration",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "37",
+     "38",
+     "40",
+     "41",
+     "42"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 137,
+      "lineName": "37",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 138,
+      "lineName": "38",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 140,
+      "lineName": "40",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 141,
+      "lineName": "41",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 142,
+      "lineName": "42",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-22T07:40:00.000+0200",
+     "lastUpdate": "2026-10-22T15:37:00.000+0200",
+     "resume": "2026-10-22T15:37:00.000+0200",
+     "start": "2026-10-22T20:00:00.000+0200"
+    },
+    "title": "37, 38, 40, 41, 42: Demonstration"
+   },
+   {
+    "alertCause": "demonstration",
+    "alertCauseId": 122,
+    "attributes": {
+     "relatedLineTypes": {
       "1": "ptTram"
      }
     },
@@ -401,63 +475,16 @@
     "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "O: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Radetzkyplatz",
-    "name": "I20261022-0044-F02",
-    "owner": "WL",
-    "parentName": "I20261022-0044",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 170,
-      "lineName": "O",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-22T17:41:00.000+0200",
-     "end": "2026-10-22T19:29:00.000+0200",
-     "lastUpdate": "2026-10-22T19:29:00.000+0200",
-     "resume": "2026-10-22T19:29:00.000+0200",
-     "start": "2026-10-22T17:26:00.000+0200"
-    },
-    "title": "O: Verkehrsunfall"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
       "26A": "ptBusCity"
      }
     },
-    "description": "Die Linie 26A wird in beiden Richtungen zwischen Konstanziagasse und Siegesplatz über Langobardenstraße umgeleitet. Voraussichtliche Dauer: 19:45 Uhr. Grund: Fremder Verkehrsunfall im Bereich Erzherzog-Karl-Straße.",
-    "descriptionHTML": "<p>Die Linie 26A wird in beiden Richtungen zwischen Konstanziagasse und Siegesplatz über Langobardenstraße umgeleitet.</p><p>Voraussichtliche Dauer: 19:45 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Erzherzog-Karl-Straße.</p>",
+    "description": "Linie 26A: Umleitung in Richtung Kagran U zwischen Siegesplatz und Konstanziagasse über die Langobardenstraße. Haltestelle: Konstanziagasse: Einstieg bei Linie 86A. Voraussichtliche Dauer: 20:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Erzherzog-Karl-Straße.",
+    "descriptionHTML": "<p>Linie 26A:<br>Umleitung in Richtung Kagran U <br>zwischen Siegesplatz und Konstanziagasse <br>über die Langobardenstraße.<br>Haltestelle:<br>Konstanziagasse: Einstieg bei Linie 86A.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Erzherzog-Karl-Straße.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie 26A wird in beiden Richtungen zwischen Konstanziagasse und Siegesplatz über Langobardenstraße umgeleitet.</p><p>Voraussichtliche Dauer: 19:45 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Erzherzog-Karl-Straße.</p>",
-       "descriptionPlain": "Die Linie 26A wird in beiden Richtungen zwischen Konstanziagasse und Siegesplatz über Langobardenstraße umgeleitet. Voraussichtliche Dauer: 19:45 Uhr. Grund: Fremder Verkehrsunfall im Bereich Erzherzog-Karl-Straße.",
+       "descriptionHtml": "<p>Linie 26A:<br>Umleitung in Richtung Kagran U <br>zwischen Siegesplatz und Konstanziagasse <br>über die Langobardenstraße.<br>Haltestelle:<br>Konstanziagasse: Einstieg bei Linie 86A.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Erzherzog-Karl-Straße.</p>",
+       "descriptionPlain": "Linie 26A: Umleitung in Richtung Kagran U zwischen Siegesplatz und Konstanziagasse über die Langobardenstraße. Haltestelle: Konstanziagasse: Einstieg bei Linie 86A. Voraussichtliche Dauer: 20:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Erzherzog-Karl-Straße.",
        "title": "26A: Fremder Verkehrsunfall"
       }
      }
@@ -480,249 +507,61 @@
       "vehicleType": "ptBusCity"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-22T17:43:00.000+0200",
-     "lastUpdate": "2026-10-22T19:22:00.000+0200",
+     "end": "2026-10-22T19:59:00.000+0200",
+     "lastUpdate": "2026-10-22T19:59:00.000+0200",
+     "resume": "2026-10-22T19:59:00.000+0200",
      "start": "2026-10-22T17:42:00.000+0200"
     },
     "title": "26A: Fremder Verkehrsunfall"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
+    "alertCause": "accident",
+    "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "30": "ptTram"
+      "26A": "ptBusCity"
      }
     },
-    "description": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 30: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 26A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 26A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 30: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "30: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie 26A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 26A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "26A: Fremder Verkehrsunfall"
       }
      }
     ],
-    "name": "I20261022-0046-F01",
+    "location": "Erzherzog-Karl-Straße",
+    "name": "I20261022-0045-F01",
     "owner": "WL",
-    "parentName": "I20261022-0046",
+    "parentName": "I20261022-0045",
     "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "30"
+     "26A"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 130,
-      "lineName": "30",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     2206
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-22T18:00:00.000+0200",
-     "end": "2026-10-22T19:29:00.000+0200",
-     "lastUpdate": "2026-10-22T19:29:00.000+0200",
-     "resume": "2026-10-22T19:29:00.000+0200",
-     "start": "2026-10-22T17:48:00.000+0200"
-    },
-    "title": "30: Rettungseinsatz"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "31": "ptTram"
-     }
-    },
-    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "31: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261022-0046-F02",
-    "owner": "WL",
-    "parentName": "I20261022-0046",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 131,
-      "lineName": "31",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     2206
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-22T18:00:00.000+0200",
-     "end": "2026-10-22T19:29:00.000+0200",
-     "lastUpdate": "2026-10-22T19:29:00.000+0200",
-     "resume": "2026-10-22T19:29:00.000+0200",
-     "start": "2026-10-22T17:48:00.000+0200"
-    },
-    "title": "31: Rettungseinsatz"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U4: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261022-0047-F01",
-    "owner": "WL",
-    "parentName": "I20261022-0047",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4433
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-22T18:12:00.000+0200",
-     "lastUpdate": "2026-10-22T18:12:00.000+0200",
-     "resume": "2026-10-22T18:12:00.000+0200",
-     "start": "2026-10-22T17:56:00.000+0200"
-    },
-    "title": "U4: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "demonstration",
-    "alertCauseId": 122,
-    "attributes": {
-     "relatedLineTypes": {
-      "48A": "ptBusCity"
-     }
-    },
-    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
-    "descriptionHTML": "<p>Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Demonstration.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Demonstration.</p>",
-       "descriptionPlain": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
-       "title": "48A: Demonstration"
-      }
-     }
-    ],
-    "name": "I20261022-0049",
-    "owner": "WL",
-    "parentName": "I20261022-0049",
-    "priority": "1",
-    "reasonId": 22,
-    "reasonName": "Demonstration",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 448,
-      "lineName": "48A",
+      "lineId": 426,
+      "lineName": "26A",
       "vehicleType": "ptBusCity"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-22T18:32:00.000+0200",
-     "lastUpdate": "2026-10-22T18:32:00.000+0200",
-     "resume": "2026-10-22T18:31:00.000+0200",
-     "start": "2026-10-22T18:31:00.000+0200"
+     "created": "2026-10-22T19:59:00.000+0200",
+     "lastUpdate": "2026-10-22T19:59:00.000+0200",
+     "resume": "2026-10-22T19:59:00.000+0200",
+     "start": "2026-10-22T17:42:00.000+0200"
     },
-    "title": "48A: Demonstration"
-   },
-   {
-    "alertCause": "demonstration",
-    "alertCauseId": 122,
-    "attributes": {
-     "relatedLineTypes": {
-      "57A": "ptBusCity"
-     }
-    },
-    "description": "Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
-    "descriptionHTML": "<p>Linie 57A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Demonstration.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 57A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Demonstration.</p>",
-       "descriptionPlain": "Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
-       "title": "57A: Demonstration"
-      }
-     }
-    ],
-    "name": "I20261022-0050",
-    "owner": "WL",
-    "parentName": "I20261022-0050",
-    "priority": "1",
-    "reasonId": 22,
-    "reasonName": "Demonstration",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "57A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 457,
-      "lineName": "57A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-22T18:50:00.000+0200",
-     "lastUpdate": "2026-10-22T18:50:00.000+0200",
-     "resume": "2026-10-22T18:49:00.000+0200",
-     "start": "2026-10-22T18:49:00.000+0200"
-    },
-    "title": "57A: Demonstration"
+    "title": "26A: Fremder Verkehrsunfall"
    },
    {
     "alertCause": "demonstration",
@@ -813,6 +652,96 @@
      "start": "2026-10-22T19:27:00.000+0200"
     },
     "title": "U6: Verspätungen"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U4: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261022-0053",
+    "owner": "WL",
+    "parentName": "I20261022-0053",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 304,
+      "lineName": "U4",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-22T19:49:00.000+0200",
+     "lastUpdate": "2026-10-22T19:49:00.000+0200",
+     "resume": "2026-10-22T19:49:00.000+0200",
+     "start": "2026-10-22T19:49:00.000+0200"
+    },
+    "title": "U4: Verspätungen"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "O: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261022-0054",
+    "owner": "WL",
+    "parentName": "I20261022-0054",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 170,
+      "lineName": "O",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-22T19:50:00.000+0200",
+     "lastUpdate": "2026-10-22T19:50:00.000+0200",
+     "resume": "2026-10-22T19:50:00.000+0200",
+     "start": "2026-10-22T19:50:00.000+0200"
+    },
+    "title": "O: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
