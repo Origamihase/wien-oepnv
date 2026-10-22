@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0029, I20261022-0027-F01, I20261022-0028"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261022-0034, I20260925-0011, I20260909-0007, I20261022-0031, I20261022-0033, I20261020-0029, I20261022-0030-F01, I20261022-0032"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R293-474, R1475-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1476-149, R1881-101, R1880-101, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R2343-125, R2343-626, R2025-671, R2378-627, R2345-127, R2372-627, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2558-125, R5815-671, R1848-0, R1842-462, R401-101, R1974-466, R500-101, R556-109, R533-109, R532-109, R531-109, R530-109, R1475-109, R1476-109, R546-109, R545-109, R544-109, R541-109, R484-109, R543-109, R1446-109, R1447-109, R547-109, R105-136, R111-136, R1602-110, R1599-110, R1603-110, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R318-437, R293-474, R100-136, R36-152, R45-136, R19-136, R130-136, R119-136, R1449-149, R1448-149, R1445-149, R1474-412, R1448-412, R1447-149, R1446-149, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1876-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1875-101, R2373-125, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2378-627, R2025-671, R2558-125, R5815-671, R1848-0, R1842-462, R401-101, R1974-466, R500-101, R531-109, R530-109, R556-109, R533-109, R532-109, R1475-109, R1476-109, R484-109, R546-109, R545-109, R544-109, R543-109, R541-109, R1446-109, R1447-109, R547-109, R105-136, R111-136, R49-102, R52-102, R55-102, R54-102, R53-102, R51-102, R50-102, R134-102, R22-102, R11-102, R12-102, R9-102, R10-102, R14-102, R13-102, R15-102, R268-474, R1490-404, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -263,94 +263,262 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "U1": "ptMetro"
+      "U6": "ptMetro"
      }
     },
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U1: Schadhaftes Fahrzeug"
+       "descriptionHtml": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U6: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261022-0027-F01",
+    "name": "I20261022-0030-F01",
     "owner": "WL",
-    "parentName": "I20261022-0027",
+    "parentName": "I20261022-0030",
     "priority": "1",
     "reasonId": 20,
     "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "U1"
+     "U6"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 301,
-      "lineName": "U1",
+      "lineId": 306,
+      "lineName": "U6",
       "vehicleType": "ptMetro"
      }
     ],
     "relatedStops": [
-     4119
+     4620
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-22T12:44:00.000+0200",
-     "lastUpdate": "2026-10-22T12:44:00.000+0200",
-     "resume": "2026-10-22T12:44:00.000+0200",
-     "start": "2026-10-22T12:38:00.000+0200"
+     "created": "2026-10-22T13:42:00.000+0200",
+     "lastUpdate": "2026-10-22T13:42:00.000+0200",
+     "resume": "2026-10-22T13:42:00.000+0200",
+     "start": "2026-10-22T13:34:00.000+0200"
     },
-    "title": "U1: Schadhaftes Fahrzeug"
+    "title": "U6: Schadhaftes Fahrzeug"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
+    "alertCause": "demonstration",
+    "alertCauseId": 122,
     "attributes": {
      "relatedLineTypes": {
-      "10": "ptTram"
+      "2": "ptTram"
      }
     },
-    "description": "Linie 10: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 10:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "description": "Linie 2: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Schwedenplatz U über Schottentor - Schottenring. Haltestellen: Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. Schwedenplatz U in Richtung Dornbach: Kein Halt möglich. Gredlerstraße: Kein Halt möglich. Parlament, U Volkstheater in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach). Parlament, U Volkstheater in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
+    "descriptionHTML": "<p>Linie 2: <br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Schwedenplatz U <br>über Schottentor - Schottenring.<br>Haltestellen:<br>Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. <br>Schwedenplatz U in Richtung Dornbach: Kein Halt möglich.<br>Gredlerstraße: Kein Halt möglich.<br>Parlament, U Volkstheater in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach).<br>Parlament, U Volkstheater in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament.</p><p>Ersatz: Linien U1, U2, U3 und U4.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Demonstration im Bereich der Inneren Stadt.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 10:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 10: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "10: Verkehrsunfall"
+       "descriptionHtml": "<p>Linie 2: <br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Schwedenplatz U <br>über Schottentor - Schottenring.<br>Haltestellen:<br>Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. <br>Schwedenplatz U in Richtung Dornbach: Kein Halt möglich.<br>Gredlerstraße: Kein Halt möglich.<br>Parlament, U Volkstheater in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach).<br>Parlament, U Volkstheater in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament.</p><p>Ersatz: Linien U1, U2, U3 und U4.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Demonstration im Bereich der Inneren Stadt.</p>",
+       "descriptionPlain": "Linie 2: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Schwedenplatz U über Schottentor - Schottenring. Haltestellen: Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. Schwedenplatz U in Richtung Dornbach: Kein Halt möglich. Gredlerstraße: Kein Halt möglich. Parlament, U Volkstheater in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach). Parlament, U Volkstheater in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
+       "title": "2: Demonstration"
       }
      }
     ],
-    "name": "I20261022-0028",
+    "location": "der Inneren Stadt",
+    "name": "I20261022-0031",
     "owner": "WL",
-    "parentName": "I20261022-0028",
+    "parentName": "I20261022-0031",
     "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
+    "reasonId": 22,
+    "reasonName": "Demonstration",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "10"
+     "2"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 110,
-      "lineName": "10",
+      "lineId": 102,
+      "lineName": "2",
       "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-22T13:46:00.000+0200",
+     "lastUpdate": "2026-10-22T13:46:00.000+0200",
+     "start": "2026-10-22T13:44:00.000+0200"
+    },
+    "title": "2: Demonstration"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "63A": "ptBusCity"
+     }
+    },
+    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "63A: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261022-0032",
+    "owner": "WL",
+    "parentName": "I20261022-0032",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "63A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 463,
+      "lineName": "63A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "relatedStops": [
+     1768
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-22T13:51:00.000+0200",
+     "lastUpdate": "2026-10-22T13:51:00.000+0200",
+     "resume": "2026-10-22T13:51:00.000+0200",
+     "start": "2026-10-22T13:51:00.000+0200"
+    },
+    "title": "63A: Rettungseinsatz"
+   },
+   {
+    "alertCause": "demonstration",
+    "alertCauseId": 122,
+    "attributes": {
+     "relatedLineTypes": {
+      "4A": "ptBusCity",
+      "74A": "ptBusCity"
+     }
+    },
+    "description": "Linie 4A: Betrieb nur zwischen Wittelsbachstraße und Lisztstraße. Linie 74A: Betrieb nur zwischen St. Marx S und Landstraße S U. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
+    "descriptionHTML": "<p>Linie 4A:<br>Betrieb nur zwischen Wittelsbachstraße und Lisztstraße.<br>Linie 74A:<br>Betrieb nur zwischen St. Marx S und Landstraße S U.</p><p>Ersatz: Linien U1, U2, U3 und U4.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Demonstration im Bereich der Inneren Stadt.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 4A:<br>Betrieb nur zwischen Wittelsbachstraße und Lisztstraße.<br>Linie 74A:<br>Betrieb nur zwischen St. Marx S und Landstraße S U.</p><p>Ersatz: Linien U1, U2, U3 und U4.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Demonstration im Bereich der Inneren Stadt.</p>",
+       "descriptionPlain": "Linie 4A: Betrieb nur zwischen Wittelsbachstraße und Lisztstraße. Linie 74A: Betrieb nur zwischen St. Marx S und Landstraße S U. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
+       "title": "4A, 74A: Demonstration"
+      }
+     }
+    ],
+    "location": "der Inneren Stadt",
+    "name": "I20261022-0033",
+    "owner": "WL",
+    "parentName": "I20261022-0033",
+    "priority": "1",
+    "reasonId": 22,
+    "reasonName": "Demonstration",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "4A",
+     "74A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 404,
+      "lineName": "4A",
+      "vehicleType": "ptBusCity"
+     },
+     {
+      "lineId": 474,
+      "lineName": "74A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-22T13:53:00.000+0200",
+     "lastUpdate": "2026-10-22T13:53:00.000+0200",
+     "start": "2026-10-22T13:51:00.000+0200"
+    },
+    "title": "4A, 74A: Demonstration"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "63A": "ptBusCity"
+     }
+    },
+    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "63A: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261022-0034",
+    "owner": "WL",
+    "parentName": "I20261022-0034",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "63A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 463,
+      "lineName": "63A",
+      "vehicleType": "ptBusCity"
      }
     ],
     "status": "resolved",
     "time": {
-     "created": "2026-10-22T12:43:00.000+0200",
-     "end": "2026-10-22T13:26:00.000+0200",
-     "lastUpdate": "2026-10-22T13:26:00.000+0200",
-     "resume": "2026-10-22T12:43:00.000+0200",
-     "start": "2026-10-22T12:43:00.000+0200"
+     "created": "2026-10-22T13:56:00.000+0200",
+     "end": "2026-10-22T13:56:00.000+0200",
+     "lastUpdate": "2026-10-22T13:56:00.000+0200",
+     "resume": "2026-10-22T13:55:00.000+0200",
+     "start": "2026-10-22T13:55:00.000+0200"
     },
-    "title": "10: Verkehrsunfall"
+    "title": "63A: Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Ring, Volkstheater U ",
+    "name": "R10-102",
+    "owner": "WL",
+    "parentName": "R10-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     10
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:48:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Ring, Volkstheater U "
    },
    {
     "alertCause": "undefined alert cause",
@@ -466,6 +634,29 @@
      "start": "2026-10-22T11:15:59.000+0200"
     },
     "title": "Staatsbesuch\nBetrieb über Li. 71+18"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Ring, Volkstheater U ",
+    "name": "R11-102",
+    "owner": "WL",
+    "parentName": "R11-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     11
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:48:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Ring, Volkstheater U "
    },
    {
     "alertCause": "undefined alert cause",
@@ -608,6 +799,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Ring, Volkstheater U ",
+    "name": "R12-102",
+    "owner": "WL",
+    "parentName": "R12-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     12
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:48:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Ring, Volkstheater U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Ring, Volkstheater U ",
+    "name": "R13-102",
+    "owner": "WL",
+    "parentName": "R13-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     13
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:48:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Ring, Volkstheater U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R130-136",
     "owner": "WL",
@@ -627,6 +864,52 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb über Schottenring",
+    "name": "R134-102",
+    "owner": "WL",
+    "parentName": "R134-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     134
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:46:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb über Schottenring"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Ring, Volkstheater U ",
+    "name": "R14-102",
+    "owner": "WL",
+    "parentName": "R14-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:48:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Ring, Volkstheater U "
    },
    {
     "alertCause": "undefined alert cause",
@@ -999,71 +1282,48 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1599-110",
+    "description": "Demonstration\nBetrieb ab Lisztstraße",
+    "name": "R1490-404",
     "owner": "WL",
-    "parentName": "R1599-110",
+    "parentName": "R1490-404",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "10"
+     "4A"
     ],
     "relatedStops": [
-     1599
+     1490
     ],
     "time": {
-     "end": "2026-10-22T13:31:00.000+0200",
-     "start": "2026-10-22T12:32:09.000+0200"
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:54:17.000+0200"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Demonstration\nBetrieb ab Lisztstraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1602-110",
+    "description": "Demonstration\nZüge halten beim Parlament",
+    "name": "R15-102",
     "owner": "WL",
-    "parentName": "R1602-110",
+    "parentName": "R15-102",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "10"
+     "2"
     ],
     "relatedStops": [
-     1602
+     15
     ],
     "time": {
-     "end": "2026-10-22T13:31:00.000+0200",
-     "start": "2026-10-22T12:32:09.000+0200"
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:49:13.000+0200"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1603-110",
-    "owner": "WL",
-    "parentName": "R1603-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     1603
-    ],
-    "time": {
-     "end": "2026-10-22T13:31:00.000+0200",
-     "start": "2026-10-22T12:32:09.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Demonstration\nZüge halten beim Parlament"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1334,6 +1594,29 @@
      "start": "2026-10-21T00:00:20.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nZüge halten am Mittelgleis",
+    "name": "R22-102",
+    "owner": "WL",
+    "parentName": "R22-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     22
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:48:13.000+0200"
+    },
+    "title": "Demonstration\nZüge halten am Mittelgleis"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1683,6 +1966,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Landstraße S U ",
+    "name": "R268-474",
+    "owner": "WL",
+    "parentName": "R268-474",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "74A"
+    ],
+    "relatedStops": [
+     268
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:50:14.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Landstraße S U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1821,6 +2127,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb über Schottenring",
+    "name": "R49-102",
+    "owner": "WL",
+    "parentName": "R49-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:45:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb über Schottenring"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwedenplatz U ",
+    "name": "R50-102",
+    "owner": "WL",
+    "parentName": "R50-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:46:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -1840,6 +2192,75 @@
      "start": "2026-10-22T05:00:23.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwedenplatz U ",
+    "name": "R51-102",
+    "owner": "WL",
+    "parentName": "R51-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:46:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwedenplatz U ",
+    "name": "R52-102",
+    "owner": "WL",
+    "parentName": "R52-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     52
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:46:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwedenplatz U ",
+    "name": "R53-102",
+    "owner": "WL",
+    "parentName": "R53-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     53
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:46:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz U "
    },
    {
     "alertCause": "undefined alert cause",
@@ -1932,6 +2353,29 @@
      "start": "2026-10-22T10:18:54.000+0200"
     },
     "title": "Fahrtbehinderung\nGleisschaden"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwedenplatz U ",
+    "name": "R54-102",
+    "owner": "WL",
+    "parentName": "R54-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     54
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:46:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz U "
    },
    {
     "alertCause": "undefined alert cause",
@@ -2074,6 +2518,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwedenplatz U ",
+    "name": "R55-102",
+    "owner": "WL",
+    "parentName": "R55-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     55
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:46:13.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwedenplatz U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Fahrtbehinderung\nGleisschaden",
     "name": "R556-109",
     "owner": "WL",
@@ -2113,6 +2580,29 @@
      "start": "2026-10-21T00:00:24.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Ring, Volkstheater U ",
+    "name": "R9-102",
+    "owner": "WL",
+    "parentName": "R9-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     9
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T13:48:43.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Ring, Volkstheater U "
    },
    {
     "alertCause": "undefined alert cause",

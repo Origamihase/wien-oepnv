@@ -326,6 +326,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "40A: Bauernfeldplatz",
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 40A in beiden Richtungen</u></strong></p><p><strong><u>Haltestelle:</u></strong> Bauernfeldplatz</p><p></p><p><strong><u>Fahrtrichtung:</u></strong> Döblinger Friedhof, Felix-Dahn-Straße</p><p><strong><u>Von:</u></strong> Liechtensteinstraße 42</p><p><strong><u>Nach:</u></strong> Liechtensteinstraße 38</p><p></p><p><strong><u>Fahrtrichtung:</u></strong> Schottentor U</p><p><strong><u>Von:</u></strong> Liechtensteinstraße 37a gegenüber Bauernfeldplatz</p><p><strong><u>Nach:</u></strong> Liechtensteinstraße 39</p><p></p><p><strong><u>Dauer:</u></strong> Ab 27. Oktober 2026, etwa 07:00 Uhr, Dauer unbekannt</p><p><strong><u>Grund:</u></strong> Kabelarbeiten</p>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1a8701132295c2998ee1771e7a46245b02b0b8abc95ee80038dbe79595a5ecf1",
+    "pubDate": "2026-10-22T13:48:00+02:00",
+    "starts_at": "2026-10-27T00:00:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|hinweis|L=40A|D=2026-10-27|TK=40a bauernfeldplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "44A: Kurzführung",
     "description": "<h2>Bauarbeiten</h2><p>Wegen Instandsetzungsarbeiten in der Röntgengasse wird die Linie 44A kurzgeführt.</p><p><span><strong><u>Zeitraum:</u></strong></span><br>Montag, 3. August 2026, auf derzeit unbekannte Zeit.</p><p><span><strong><u>Maßnahmen:</u></strong></span><br><strong>Linie 44A:</strong><br>Betrieb zwischen Hernals S und Heuberg.</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -555,12 +567,12 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "66A/N66: Liesing, Schulzentrum",
-    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 in Richtung Ring, Kai</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Liesing, Schulzentrum</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> etwa 30 Meter in Richtung Mehlf&uuml;hrergasse</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 07. Oktober 2026, etwa 11:00 Uhr, f&uuml;r etwa zwei Wochen</span></p>",
+    "description": "<p><strong><u>Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U bzw. N66 in Richtung Ring, Kai</u></strong></p><p><strong><u>Haltestelle:</u></strong> Liesing, Schulzentrum</p><p><strong><u>Von:</u></strong> Anton-Krieger-Gasse vor Rudolf-Zeller-Gasse</p><p><strong><u>Nach:</u></strong> etwa 30 Meter in Richtung Mehlführergasse</p><p><strong><u>Dauer:</u></strong> Ab 07. Oktober 2026, etwa 11:00 Uhr, bis 22. Oktober 2026 etwa 18:00 Uhr</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "e267770e577930c983bb9827e9bb3fd60d70eb3792ba0951cb8dd8f99e49d0e2",
     "pubDate": "2026-10-05T15:40:00+02:00",
     "starts_at": "2026-10-07T00:00:00+02:00",
-    "ends_at": "2026-10-28T23:59:00+01:00",
+    "ends_at": "2026-10-22T18:00:00+02:00",
     "_identity": "wl|hinweis|L=66A,N66|D=2026-10-07|TK=66a n66 liesing schulzentrum"
   },
   {
@@ -770,6 +782,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "N71: Rennweg S",
+    "description": "<p><strong><u>Haltestellenverlegung der Linie N71 in Richtung Kaiserebersdorf, Zinnergasse</u></strong></p><p><strong><u>Haltestelle:</u></strong> Rennweg S</p><p><strong><u>Von:</u></strong> Rennweg 20-24</p><p><strong><u>Nach:</u></strong> Rennweg 20-24, Hauptfahrbahn</p><p><strong><u>Dauer:</u></strong> 02. November 2026, etwa 17:00 Uhr, bis 06. November 2026, etwa 17:00 Uhr</p><p><strong><u>Grund:</u></strong> Gleisbau</p>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "545b26fc6225f467a79f5c211576287dcd43e912b8e94f87c126a93decfcd269",
+    "pubDate": "2026-10-22T13:54:00+02:00",
+    "starts_at": "2026-11-02T00:00:00+01:00",
+    "ends_at": "2026-11-06T17:00:00+01:00",
+    "_identity": "wl|hinweis|L=N71|D=2026-11-02|TK=n71 rennweg s"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "N81R/N81: Bauarbeiten",
     "description": "<h2>Bauarbeiten</h2> <p>Wegen Stra&szlig;enbauarbeiten im Bereich Meiereistra&szlig;e # Stephanie-Endres-Stra&szlig;e kommt es zu Umleitungen bei der Rufbuslinie N81.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Dienstag, 27. Oktober 2026, 00:30 Uhr bis Freitag, 30. Oktober 2026, 05:00 Uhr.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie N81 in Richtung Praterbr&uuml;cke:</strong><br />Umleitung ab Engerthstra&szlig;e # Sturgasse &uuml;ber Sturgasse - Handelskai - Marathonweg - Wehlistra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:</span><br />- Pensionistenwohnhaus Prater (Engerthstra&szlig;e 232-238, Stiege 9)<br />- Stadion (Stephanie-Endres-Stra&szlig;e nach Meiereistra&szlig;e)<br />- Marathonweg (Marathonweg vor Wehlistra&szlig;e)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:</span><br />- Stadion (Handelskai nach Meiereistra&szlig;e, provisorische Haltestelle)<br />- Marathonweg (Marathonweg vor Wehlistra&szlig;e, provisorische Haltestelle)</p> <p><strong>Linie N81 in Richtung Praterstern:</strong><br />Umleitung ab Wehlistra&szlig;e # Marathonweg &uuml;ber Marathonweg - Handelskai - Dr.-Natterer-Gasse - Engerthstra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:</span><br />- Stadion (Stephanie-Endres-Stra&szlig;e vor Meiereistra&szlig;e)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Dr.-Natterer-Gasse (Dr.-Natterer-Gasse gegen&uuml;ber 2-4, Haltestelle der Linie 18)</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -838,18 +862,6 @@
     "starts_at": "2026-09-14T00:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|hinweis|L=U6|D=2026-09-14|TK=u6 neue donau kein halt richtung floridsdorf"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7091f5ceb189603887edeb672707027ab0765bd9fd7a0fa2d67f934f96a2ae34",
-    "pubDate": "2026-10-22T12:32:09+02:00",
-    "starts_at": "2026-10-22T12:32:09+02:00",
-    "ends_at": "2026-10-22T13:31:00+02:00",
-    "_identity": "wl|störung|L=10|D=2026-10-22|TK=fahrtbehinderung verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -1118,6 +1130,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Demonstration Züge halten beim Parlament",
+    "description": "Linie 2: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Schwedenplatz U über Schottentor - Schottenring. Haltestellen: Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. Schwedenplatz U in Richtung Dornbach: Kein Halt möglich. Gredlerstraße: Kein Halt möglich. Parlament, U Volkstheater in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach). Parlament, U Volkstheater in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "3629ca20a95831a63570d0cdaf8f90603b749ac7933bdfaee0e7e19c548af3ca",
+    "pubDate": "2026-10-22T13:44:00+02:00",
+    "starts_at": "2026-10-22T13:49:13+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=2|D=2026-10-22|TK=demonstration",
+    "_wl_ids": [
+      "I20261022-0031"
+    ],
+    "_incident_start": "2026-10-22T13:44:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1146,6 +1174,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "4A/74A: Demonstration",
+    "description": "Linie 4A: Betrieb nur zwischen Wittelsbachstraße und Lisztstraße. Linie 74A: Betrieb nur zwischen St. Marx S und Landstraße S U. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e888ad2bcc69a81bc522a0cae34e0a1872e1c8e287c1ace50ac26545f9eaf758",
+    "pubDate": "2026-10-22T13:51:00+02:00",
+    "starts_at": "2026-10-22T13:51:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=4A,74A|D=2026-10-22|TK=demonstration",
+    "_wl_ids": [
+      "I20261022-0033"
+    ],
+    "_incident_start": "2026-10-22T13:51:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "52: Züge halten bei Linien 6 und 18",
     "description": "Züge halten\nbei Linien 6 und 18",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1166,6 +1210,22 @@
     "starts_at": "2026-10-21T07:20:54+02:00",
     "ends_at": "2026-10-22T17:00:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-10-21|TK=strassenbau haltestelle verlegt zur wienerbergbrücke vor breitenfurter strasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "63A: Rettungseinsatz",
+    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "91d669c1fbe32bfc275e4e4defa8ceccd4bb34a47aefba98017f28a1c74921ba",
+    "pubDate": "2026-10-22T13:51:00+02:00",
+    "starts_at": "2026-10-22T13:51:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=63A|D=2026-10-22|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261022-0032"
+    ],
+    "_incident_start": "2026-10-22T13:51:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1330,18 +1390,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Schadhaftes Fahrzeug",
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "U6: Schadhaftes Fahrzeug",
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
-    "pubDate": "2026-10-22T12:38:00+02:00",
-    "starts_at": "2026-10-22T12:38:00+02:00",
+    "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
+    "pubDate": "2026-10-22T13:34:00+02:00",
+    "starts_at": "2026-10-22T13:34:00+02:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U1|D=2026-10-22|TK=u1 schadhaftes fahrzeug",
+    "_identity": "wl|störung|L=U6|D=2026-10-22|TK=u6 schadhaftes fahrzeug",
     "_wl_ids": [
-      "I20261022-0027"
+      "I20261022-0030"
     ],
-    "_incident_start": "2026-10-22T12:38:00+02:00"
+    "_incident_start": "2026-10-22T13:34:00+02:00"
   },
   {
     "source": "Wiener Linien",
