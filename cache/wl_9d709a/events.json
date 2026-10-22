@@ -954,6 +954,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2/O: Verkehrsüberlastung",
+    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5c629c9ed855f9f8e760da8f56e9a32a4c1952af238d5dbc24d95e08f441db68",
+    "pubDate": "2026-10-22T08:46:00+02:00",
+    "starts_at": "2026-10-22T08:46:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=2,O|D=2026-10-22|TK=o 2 verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261022-0015"
+    ],
+    "_incident_start": "2026-10-22T08:46:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "25/26/27: Gleisbauarbeiten",
     "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse. Weiterfahrt über Linie 27 bis Aspern Nord S U. Linie 26: Betrieb nur zwischen Hausfeldstraße U und Josef-Baumann-Gasse. Weiterfahrt nach Kagran U. Linie 27: Betrieb nur zwischen Strebersdorf, Meriangasse und Floridsdorf S U. Weichen Sie daher nach Möglichkeit großräumig auf die U1 und S-Bahn über Leopoldau S U oder Praterstern S U aus. Zwischen Kagraner Platz U und Floridsdorf S U können Sie auch auf die Linien 31A und anschließend 29A/29B oder 31A und S-Bahn ausweichen. Zwischen Kagran U und Floridsdorf S U können Sie auch auf die Linien 27A und anschließend 29A/29B ausweichen. Zwischen Floridsdorf S U und Josef-Baumann-Gasse fährt der Ersatzbus 26E. Beachten Sie, der 26E hat nicht die gleichen Kapazitäten wie eine Straßenbahn. Voraussichtliche Dauer: Ende 2026. Grund: Gleisbauarbeiten im Bereich Donaufelder Straße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -990,6 +1006,34 @@
     "starts_at": "2026-10-21T00:00:20+02:00",
     "ends_at": "2026-10-22T23:59:59+02:00",
     "_identity": "wl|störung|L=25|D=2026-10-21|TK=züge halten donaufelder strasse 175 177"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Verkehrsunfall",
+    "description": "Linie 25: Kein Betrieb zwischen Kagran U und Donauspital U. Voraussichtliche Dauer: 09:20 Uhr. Grund: Verkehrsunfall im Bereich Konstanziagasse 52.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "904ba03627e216651c3fe7a87850a5c4243041de296f0ebcb4c445c1842de781",
+    "pubDate": "2026-10-22T08:51:00+02:00",
+    "starts_at": "2026-10-22T08:51:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=25|D=2026-10-22|TK=25 verkehrsunfall",
+    "_wl_ids": [
+      "I20261022-0018"
+    ],
+    "_incident_start": "2026-10-22T08:51:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "17410552b5076b6dbbd3ae46156043cd5032b22edde7e308e5b84105a85b76ff",
+    "pubDate": "2026-10-22T08:52:45+02:00",
+    "starts_at": "2026-10-22T08:52:45+02:00",
+    "ends_at": "2026-10-22T09:52:00+02:00",
+    "_identity": "wl|störung|L=25|D=2026-10-22|TK=fahrtbehinderung verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -1134,6 +1178,70 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "43: Fremder Verkehrsunfall",
+    "description": "Linie 43: Umleitung in Richtung Schottentor U zwischen Rosensteingasse und Brünnlbadgasse über die Strecke der Linien 9 und 44. Voraussichtliche Dauer: 09:15 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Alser Straße U.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1205ac22f6bd4faf7c9d1128f045fd29146816a4bd3c883707a404d2c904cd86",
+    "pubDate": "2026-10-22T08:48:00+02:00",
+    "starts_at": "2026-10-22T08:48:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=43|D=2026-10-22|TK=43 fremder verkehrsunfall",
+    "_wl_ids": [
+      "I20261022-0016"
+    ],
+    "_incident_start": "2026-10-22T08:48:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "23b9c583277406dc60337c1e88bbd08a95224f1276b1f732e47f71eae91dd112",
+    "pubDate": "2026-10-22T08:51:14+02:00",
+    "starts_at": "2026-10-22T08:51:14+02:00",
+    "ends_at": "2026-10-22T09:51:00+02:00",
+    "_identity": "wl|störung|L=43|D=2026-10-22|TK=fahrtbehinderung fremder verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Fremdunfall Betrieb ab Brünnlbadgasse",
+    "description": "Fremdunfall\nBetrieb ab Brünnlbadgasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d5ac1fc6bb008319358ec07a7ff741f02b33ac61359aa981514875094b99dcaf",
+    "pubDate": "2026-10-22T08:51:14+02:00",
+    "starts_at": "2026-10-22T08:55:14+02:00",
+    "ends_at": "2026-10-22T09:54:00+02:00",
+    "_identity": "wl|störung|L=43|D=2026-10-22|TK=fremdunfall betrieb ab brünnlbadgasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Fremdunfall Betrieb über Li. 9+44",
+    "description": "Fremdunfall\nBetrieb über Li. 9+44",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "3f90b62bc4eacf7b69446a1605e0d6c1520dc4f749703c2808062d4bef7379b0",
+    "pubDate": "2026-10-22T08:54:44+02:00",
+    "starts_at": "2026-10-22T08:54:44+02:00",
+    "ends_at": "2026-10-22T09:54:00+02:00",
+    "_identity": "wl|störung|L=43|D=2026-10-22|TK=fremdunfall betrieb über li 9 44"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Fremdunfall Züge halten bei Li. 44",
+    "description": "Fremdunfall\nZüge halten bei Li. 44",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4cc5d5699059f126a88657b2b868a3cb135b427c16d9e60b67101d9899a68547",
+    "pubDate": "2026-10-22T08:51:14+02:00",
+    "starts_at": "2026-10-22T08:51:14+02:00",
+    "ends_at": "2026-10-22T09:54:00+02:00",
+    "_identity": "wl|störung|L=43|D=2026-10-22|TK=fremdunfall züge halten bei li 44"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "46/49/52: Gleisbauarbeiten",
     "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1186,6 +1294,22 @@
     "starts_at": "2026-10-21T07:20:54+02:00",
     "ends_at": "2026-10-22T17:00:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-10-21|TK=strassenbau haltestelle verlegt zur wienerbergbrücke vor breitenfurter strasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "63A: Verkehrsüberlastung",
+    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e7e896d63b9b23989d8440713ce15b7c04d68a1b0098210082b12613484ee8b8",
+    "pubDate": "2026-10-22T08:49:00+02:00",
+    "starts_at": "2026-10-22T08:49:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=63A|D=2026-10-22|TK=63a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261022-0017"
+    ],
+    "_incident_start": "2026-10-22T08:49:00+02:00"
   },
   {
     "source": "Wiener Linien",
