@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261022-0001-F01, I20261021-0014, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261021-0014, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R101-136, R100-136, R318-437, R293-474, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R1448-412, R1475-149, R1476-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1474-412, R1445-149, R1446-149, R1876-101, R1875-101, R1883-101, R1884-101, R1881-101, R1880-101, R1882-101, R2372-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2025-671, R2378-627, R2558-125, R5815-671, R1848-0, R1842-462, R401-101, R2034-571, R500-101, R1754-562, R790-562, R807-562, R1753-562, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R1448-549, R1474-549, R2371-520, R2372-520, R2379-520, R2378-520, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R115-136, R293-474, R318-437, R100-136, R103-136, R116-136, R117-136, R118-136, R119-136, R1446-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1448-412, R1474-412, R1475-149, R1476-149, R1445-149, R1447-149, R1876-101, R1881-101, R1880-101, R1882-101, R1883-101, R1884-101, R1875-101, R2373-126, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2379-627, R2380-627, R2345-127, R2372-627, R2025-671, R2378-627, R2558-125, R5815-671, R1848-0, R1842-462, R401-101, R2034-571, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R1448-549, R1474-549, R2371-520, R2372-520, R2379-520, R2378-520, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -302,54 +302,6 @@
      "start": "2026-10-21T10:04:00.000+0200"
     },
     "title": "44: Gleisschaden"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "N62": "ptBusNight"
-     }
-    },
-    "description": "Linie N62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie N62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie N62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie N62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "N62: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261022-0001-F01",
-    "owner": "WL",
-    "parentName": "I20261022-0001",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "N62"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 562,
-      "lineName": "N62",
-      "vehicleType": "ptBusNight"
-     }
-    ],
-    "relatedStops": [
-     517
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-22T00:49:00.000+0200",
-     "lastUpdate": "2026-10-22T00:49:00.000+0200",
-     "resume": "2026-10-22T00:49:00.000+0200",
-     "start": "2026-10-22T00:35:00.000+0200"
-    },
-    "title": "N62: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -948,52 +900,6 @@
      "start": "2026-10-22T00:45:06.000+0200"
     },
     "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1753-562",
-    "owner": "WL",
-    "parentName": "R1753-562",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N62"
-    ],
-    "relatedStops": [
-     1753
-    ],
-    "time": {
-     "end": "2026-10-22T01:36:00.000+0200",
-     "start": "2026-10-22T00:36:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1754-562",
-    "owner": "WL",
-    "parentName": "R1754-562",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N62"
-    ],
-    "relatedStops": [
-     1754
-    ],
-    "time": {
-     "end": "2026-10-22T01:36:00.000+0200",
-     "start": "2026-10-22T00:36:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1928,52 +1834,6 @@
      "start": "2026-10-21T00:00:24.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R790-562",
-    "owner": "WL",
-    "parentName": "R790-562",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N62"
-    ],
-    "relatedStops": [
-     790
-    ],
-    "time": {
-     "end": "2026-10-22T01:36:00.000+0200",
-     "start": "2026-10-22T00:36:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R807-562",
-    "owner": "WL",
-    "parentName": "R807-562",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N62"
-    ],
-    "relatedStops": [
-     807
-    ],
-    "time": {
-     "end": "2026-10-22T01:36:00.000+0200",
-     "start": "2026-10-22T00:36:35.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
