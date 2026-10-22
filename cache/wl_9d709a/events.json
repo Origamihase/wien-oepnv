@@ -891,7 +891,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "1/2/D/71: Demonstration",
-    "description": "Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18). Die Linie 2 fährt derzeit nicht zwischen Heinestraße, Taborstraße und Parlament, U Volkstheater. Die Linie D fährt derzeit nicht zwischen Quartier Belvedere S und Börse. Linie 71: Betrieb nur zwischen Kaiserebersdorf und St. Marx S. Weiterfahrt über Linie 18 bis Schlachthausgasse U. Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
+    "description": "Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18). Linie 2: Kein Betrieb zwischen Parlament, U Volkstheater und Heinestraße. Weiterfahrt ab Heinestraße bis Praterstern S U. Linie D: Kein Betrieb zwischen Börse und Quartier Belvedere S. Weiterfahrt über Linie 18 bis St. Marx S. Linie 71: Betrieb nur zwischen Kaiserebersdorf und St. Marx S. Weiterfahrt über Linie 18 bis Schlachthausgasse U. Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "bd71556f0b3999c4b9221f396e4a62b33873bc5ae8eb0b8775cbaad78170136b",
     "pubDate": "2026-10-22T13:44:00+02:00",
@@ -970,18 +970,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Kein Betrieb",
-    "description": "Gleisbauarbeiten\nKein Betrieb",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "ec874d834c0a5c0aa688bd397a5e8471438bf598da32edc1550ce6a027f19df7",
-    "pubDate": "2026-10-21T00:00:19+02:00",
-    "starts_at": "2026-10-21T00:00:19+02:00",
-    "ends_at": "2026-10-22T23:59:59+02:00",
-    "_identity": "wl|störung|L=1|D=2026-10-21|TK=kein betrieb"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Umleitung zum Reumannplatz",
     "description": "Gleisbauarbeiten\nUmleitung zum Reumannplatz >",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1014,6 +1002,18 @@
     "starts_at": "2026-10-22T05:00:23+02:00",
     "ends_at": "2026-10-22T23:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-10-22|TK=bhf hütteldorf öbb ersatzbus für 80"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1",
+    "pubDate": "2026-10-22T15:10:22+02:00",
+    "starts_at": "2026-10-22T15:10:22+02:00",
+    "ends_at": "2026-10-22T16:10:00+02:00",
+    "_identity": "wl|störung|L=1|D=2026-10-22|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
@@ -1322,18 +1322,6 @@
     "starts_at": "2026-10-14T00:00:22+02:00",
     "ends_at": "2026-10-22T23:59:59+02:00",
     "_identity": "wl|störung|L=D|D=2026-10-14|TK=betrieb ab augasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Betrieb ab Börse",
-    "description": "Gleisbauarbeiten\nBetrieb ab Börse",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "90216ce9a3141ea415e982acdbf2ac35ab5921c926996bf52a7ad7a52f539c0e",
-    "pubDate": "2026-10-14T00:00:22+02:00",
-    "starts_at": "2026-10-14T00:00:22+02:00",
-    "ends_at": "2026-10-22T23:59:59+02:00",
-    "_identity": "wl|störung|L=D|D=2026-10-14|TK=betrieb ab börse"
   },
   {
     "source": "Wiener Linien",
