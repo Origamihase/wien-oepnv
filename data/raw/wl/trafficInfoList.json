@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261022-0017, I20261022-0019, I20260925-0011, I20260909-0007, I20261022-0013-F01, I20261022-0016-F01, I20261022-0020, I20261022-0007, I20261020-0029, I20261022-0018-F01, I20261022-0018"
+    "trafficInfoNameList": "I20261022-0022-F01, I20261022-0022, I20260917-0012, I20260922-0032, I20261022-0019, I20260925-0011, I20260909-0007, I20261022-0020, I20261022-0021, I20261022-0007, I20261020-0029, I20261022-0018-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R116-136, R115-136, R103-136, R102-136, R101-136, R318-437, R293-474, R100-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R1475-149, R1448-412, R1474-412, R1445-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1446-149, R1476-149, R1883-101, R1876-101, R1875-101, R1884-101, R1880-101, R1882-101, R1881-101, R2373-126, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2379-627, R2380-627, R2345-127, R2372-627, R2378-627, R2025-671, R2558-125, R5815-671, R1848-0, R1842-462, R401-101, R1974-466, R500-101, R236-143, R237-143, R234-143, R235-143, R1015-125, R966-125, R230-143, R233-143, R232-143, R231-143, R1010-125, R1008-125, R1007-125, R1006-125, R880-125, R1012-125, R1021-125, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R293-474, R1445-149, R1448-412, R1474-412, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1880-101, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R2343-125, R2373-125, R2380-627, R2345-127, R2372-627, R2379-627, R2373-126, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2378-627, R2025-671, R2373-127, R2558-125, R5815-671, R1848-0, R1842-462, R401-101, R1974-466, R500-101, R966-125, R1015-125, R1012-125, R1021-125, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -297,199 +297,11 @@
     "status": "active",
     "time": {
      "created": "2026-10-22T07:27:00.000+0200",
-     "lastUpdate": "2026-10-22T07:27:00.000+0200",
+     "lastUpdate": "2026-10-22T09:56:00.000+0200",
      "resume": "2026-10-22T07:26:00.000+0200",
      "start": "2026-10-22T07:26:00.000+0200"
     },
     "title": "U2: Verspätungen"
-   },
-   {
-    "alertCause": "object on the line",
-    "alertCauseId": 70,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U3: Gegenstände im Gleis"
-      }
-     }
-    ],
-    "name": "I20261022-0013-F01",
-    "owner": "WL",
-    "parentName": "I20261022-0013",
-    "priority": "1",
-    "reasonId": 43,
-    "reasonName": "Gegenstände im Gleis",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4911
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-22T08:25:00.000+0200",
-     "lastUpdate": "2026-10-22T08:25:00.000+0200",
-     "resume": "2026-10-22T08:25:00.000+0200",
-     "start": "2026-10-22T07:56:00.000+0200"
-    },
-    "title": "U3: Gegenstände im Gleis"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "43": "ptTram"
-     }
-    },
-    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "43: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261022-0016-F01",
-    "owner": "WL",
-    "parentName": "I20261022-0016",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 143,
-      "lineName": "43",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     220
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-22T09:06:00.000+0200",
-     "lastUpdate": "2026-10-22T09:06:00.000+0200",
-     "resume": "2026-10-22T09:06:00.000+0200",
-     "start": "2026-10-22T08:48:00.000+0200"
-    },
-    "title": "43: Fremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "63A": "ptBusCity"
-     }
-    },
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "63A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261022-0017",
-    "owner": "WL",
-    "parentName": "I20261022-0017",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "63A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 463,
-      "lineName": "63A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-22T08:50:00.000+0200",
-     "lastUpdate": "2026-10-22T08:50:00.000+0200",
-     "resume": "2026-10-22T08:49:00.000+0200",
-     "start": "2026-10-22T08:49:00.000+0200"
-    },
-    "title": "63A: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "25": "ptTram"
-     }
-    },
-    "description": "Linie 25: Kein Betrieb zwischen Kagran U und Donauspital U. Voraussichtliche Dauer: 09:40 Uhr. Grund: Verkehrsunfall im Bereich Konstanziagasse 52.",
-    "descriptionHTML": "<p>Linie 25:<br>Kein Betrieb zwischen Kagran U und Donauspital U.</p><p>Voraussichtliche Dauer: 09:40 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Konstanziagasse 52.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 25:<br>Kein Betrieb zwischen Kagran U und Donauspital U.</p><p>Voraussichtliche Dauer: 09:40 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Konstanziagasse 52.</p>",
-       "descriptionPlain": "Linie 25: Kein Betrieb zwischen Kagran U und Donauspital U. Voraussichtliche Dauer: 09:40 Uhr. Grund: Verkehrsunfall im Bereich Konstanziagasse 52.",
-       "title": "25: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Konstanziagasse 52",
-    "name": "I20261022-0018",
-    "owner": "WL",
-    "parentName": "I20261022-0018",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 125,
-      "lineName": "25",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-22T08:52:00.000+0200",
-     "end": "2026-10-22T09:28:00.000+0200",
-     "lastUpdate": "2026-10-22T09:28:00.000+0200",
-     "resume": "2026-10-22T09:28:00.000+0200",
-     "start": "2026-10-22T08:51:00.000+0200"
-    },
-    "title": "25: Verkehrsunfall"
    },
    {
     "alertCause": "accident",
@@ -573,10 +385,11 @@
       "vehicleType": "ptMetro"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-22T09:13:00.000+0200",
-     "lastUpdate": "2026-10-22T09:13:00.000+0200",
+     "end": "2026-10-22T09:57:00.000+0200",
+     "lastUpdate": "2026-10-22T09:57:00.000+0200",
      "resume": "2026-10-22T09:13:00.000+0200",
      "start": "2026-10-22T09:13:00.000+0200"
     },
@@ -628,6 +441,142 @@
     "title": "O: Verkehrsüberlastung"
    },
    {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "86A": "ptBusCity"
+     }
+    },
+    "description": "Linie 86A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Linie 86A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 86A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Linie 86A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+       "title": "86A: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261022-0021",
+    "owner": "WL",
+    "parentName": "I20261022-0021",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "86A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 486,
+      "lineName": "86A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-22T09:38:00.000+0200",
+     "lastUpdate": "2026-10-22T09:38:00.000+0200",
+     "resume": "2026-10-22T09:38:00.000+0200",
+     "start": "2026-10-22T09:38:00.000+0200"
+    },
+    "title": "86A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Fahrtbehinderung in Richtung Ottakring. Voraussichtliche Dauer: 10:20 Uhr. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie U3:<br>Fahrtbehinderung in Richtung Ottakring.</p><p>Voraussichtliche Dauer: 10:20 Uhr.</p><p>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3:<br>Fahrtbehinderung in Richtung Ottakring.</p><p>Voraussichtliche Dauer: 10:20 Uhr.</p><p>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie U3: Fahrtbehinderung in Richtung Ottakring. Voraussichtliche Dauer: 10:20 Uhr. Grund: Rettungseinsatz.",
+       "title": "U3: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261022-0022",
+    "owner": "WL",
+    "parentName": "I20261022-0022",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-22T09:55:00.000+0200",
+     "end": "2026-10-22T09:56:00.000+0200",
+     "lastUpdate": "2026-10-22T09:56:00.000+0200",
+     "resume": "2026-10-22T09:56:00.000+0200",
+     "start": "2026-10-22T09:54:00.000+0200"
+    },
+    "title": "U3: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U3: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261022-0022-F01",
+    "owner": "WL",
+    "parentName": "I20261022-0022",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-22T09:56:00.000+0200",
+     "lastUpdate": "2026-10-22T09:56:00.000+0200",
+     "resume": "2026-10-22T09:56:00.000+0200",
+     "start": "2026-10-22T09:54:00.000+0200"
+    },
+    "title": "U3: Rettungseinsatz"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -653,75 +602,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Smz-Ost",
-    "name": "R1006-125",
-    "owner": "WL",
-    "parentName": "R1006-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     1006
-    ],
-    "time": {
-     "end": "2026-10-22T10:00:00.000+0200",
-     "start": "2026-10-22T09:01:15.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Smz-Ost"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Smz-Ost",
-    "name": "R1007-125",
-    "owner": "WL",
-    "parentName": "R1007-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     1007
-    ],
-    "time": {
-     "end": "2026-10-22T10:00:00.000+0200",
-     "start": "2026-10-22T09:01:15.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Smz-Ost"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Smz-Ost",
-    "name": "R1008-125",
-    "owner": "WL",
-    "parentName": "R1008-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     1008
-    ],
-    "time": {
-     "end": "2026-10-22T10:00:00.000+0200",
-     "start": "2026-10-22T09:01:15.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Smz-Ost"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R101-136",
     "owner": "WL",
@@ -741,29 +621,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Smz-Ost",
-    "name": "R1010-125",
-    "owner": "WL",
-    "parentName": "R1010-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     1010
-    ],
-    "time": {
-     "end": "2026-10-22T10:00:00.000+0200",
-     "start": "2026-10-22T09:01:15.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Smz-Ost"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1567,121 +1424,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb über Li. 9+44",
-    "name": "R230-143",
-    "owner": "WL",
-    "parentName": "R230-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     230
-    ],
-    "time": {
-     "end": "2026-10-22T09:54:00.000+0200",
-     "start": "2026-10-22T08:54:44.000+0200"
-    },
-    "title": "Fremdunfall\nBetrieb über Li. 9+44"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Brünnlbadgasse",
-    "name": "R231-143",
-    "owner": "WL",
-    "parentName": "R231-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     231
-    ],
-    "time": {
-     "end": "2026-10-22T09:54:00.000+0200",
-     "start": "2026-10-22T08:55:14.000+0200"
-    },
-    "title": "Fremdunfall\nBetrieb ab Brünnlbadgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Brünnlbadgasse",
-    "name": "R232-143",
-    "owner": "WL",
-    "parentName": "R232-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     232
-    ],
-    "time": {
-     "end": "2026-10-22T09:54:00.000+0200",
-     "start": "2026-10-22T08:55:14.000+0200"
-    },
-    "title": "Fremdunfall\nBetrieb ab Brünnlbadgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Brünnlbadgasse",
-    "name": "R233-143",
-    "owner": "WL",
-    "parentName": "R233-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     233
-    ],
-    "time": {
-     "end": "2026-10-22T09:54:00.000+0200",
-     "start": "2026-10-22T08:55:14.000+0200"
-    },
-    "title": "Fremdunfall\nBetrieb ab Brünnlbadgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Brünnlbadgasse",
-    "name": "R234-143",
-    "owner": "WL",
-    "parentName": "R234-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     234
-    ],
-    "time": {
-     "end": "2026-10-22T09:54:00.000+0200",
-     "start": "2026-10-22T08:51:14.000+0200"
-    },
-    "title": "Fremdunfall\nBetrieb ab Brünnlbadgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -1751,29 +1493,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fremdunfall\nZüge halten bei Li. 44",
-    "name": "R235-143",
-    "owner": "WL",
-    "parentName": "R235-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     235
-    ],
-    "time": {
-     "end": "2026-10-22T09:54:00.000+0200",
-     "start": "2026-10-22T08:51:14.000+0200"
-    },
-    "title": "Fremdunfall\nZüge halten bei Li. 44"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
     "name": "R2359-125",
     "owner": "WL",
@@ -1793,52 +1512,6 @@
      "start": "2026-10-21T00:00:20.000+0200"
     },
     "title": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R236-143",
-    "owner": "WL",
-    "parentName": "R236-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     236
-    ],
-    "time": {
-     "end": "2026-10-22T09:51:00.000+0200",
-     "start": "2026-10-22T08:51:14.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R237-143",
-    "owner": "WL",
-    "parentName": "R237-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     237
-    ],
-    "time": {
-     "end": "2026-10-22T09:51:00.000+0200",
-     "start": "2026-10-22T08:51:14.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2250,29 +1923,6 @@
      "start": "2026-10-21T00:00:24.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Smz-Ost",
-    "name": "R880-125",
-    "owner": "WL",
-    "parentName": "R880-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     880
-    ],
-    "time": {
-     "end": "2026-10-22T10:00:00.000+0200",
-     "start": "2026-10-22T09:01:15.000+0200"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Smz-Ost"
    },
    {
     "alertCause": "undefined alert cause",

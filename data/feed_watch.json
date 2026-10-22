@@ -1,40 +1,32 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-22T07:31:03.660390+00:00",
- "built": "2026-10-22T09:30:48+02:00",
+ "updated": "2026-10-22T08:01:09.968379+00:00",
+ "built": "2026-10-22T10:00:55+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-22T09:30:48+02:00",
+  "built": "2026-10-22T10:00:55+02:00",
   "items": [
+   {
+    "title": "86A: Verkehrsunfall",
+    "time_line": "Seit 09:38"
+   },
+   {
+    "title": "U3: Rettungseinsatz",
+    "time_line": "Seit 09:54"
+   },
    {
     "title": "O: Verkehrsüberlastung",
     "time_line": "Seit 09:25"
-   },
-   {
-    "title": "63A: Verkehrsüberlastung",
-    "time_line": "Seit 08:46"
    },
    {
     "title": "25: Verkehrsunfall",
     "time_line": "Seit 08:51"
    },
    {
-    "title": "43: Fremdunfall",
-    "time_line": "Seit 08:48"
-   },
-   {
-    "title": "U3: Gegenstände im Gleis",
-    "time_line": "Seit 07:56"
-   },
-   {
     "title": "U2: Verspätungen",
     "time_line": "Seit 07:26"
-   },
-   {
-    "title": "U6: Rettungseinsatz",
-    "time_line": "Seit 09:13"
    },
    {
     "title": "1/2/D/37/38/40/41/42/43/44/71/LB/2A/3A/4A/74A: Demonstration",
@@ -47,6 +39,14 @@
    {
     "title": "64A/N64R: Erlaaer Spitz",
     "time_line": "Seit heute"
+   },
+   {
+    "title": "62A: Straßenbau Haltestelle verlegt zur Wienerbergbrücke vor Breitenfurter Straße",
+    "time_line": "Heute"
+   },
+   {
+    "title": "1: Gleisbauarbeiten",
+    "time_line": "Bis 05.12."
    }
   ]
  },
@@ -6770,6 +6770,26 @@
     "baustellen": 4,
     "oebb": 9,
     "wl": 118
+   }
+  },
+  {
+   "t": "2026-10-22T08:01:09.968379+00:00",
+   "raw": {
+    "wl-stoerungen": 77,
+    "wl-hinweise": 85,
+    "oebb": 171,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 13,
+    "oebb": 147,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 112
    }
   }
  ]
