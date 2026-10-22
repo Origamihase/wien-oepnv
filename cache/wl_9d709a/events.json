@@ -6,7 +6,7 @@
     "description": "<h2>Demonstration</h2><p>Wegen einer Demonstration in der Inneren Stadt kann es zu folgenden Verkehrsmaßnahmen kommen.</p><p><strong><u>Zeitraum:</u></strong><br>Donnerstag, 22. Oktober 2026, ab etwa 15:00 Uhr bis etwa 20:00 Uhr.</p><p><strong><u>Maßnahmen:</u></strong></p><p><u>Linie 1:</u><br>Umleitung in beiden Richtungen<br>zwischen Kliebergasse und Hintere Zollamtsstraße<br>über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18).<br><u>Linie 2:</u><br>Kein Betrieb zwischen Parlament, U Volkstheater und Heinestraße.<br>Weiterfahrt ab Heinestraße bis Praterstern S U.<br><u>Linie D:</u><br>Kein Betrieb zwischen Börse und Quartier Belvedere S.<br>Weiterfahrt über Linie 18 bis St. Marx S.<br><u>Linie 37:</u><br>Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U.<br><u>Linie 38:</u><br>Betrieb nur zwischen Grinzing und Nußdorfer Straße U.<br><u>Linie 40:</u><br>Betrieb nur zwischen Gersthof, Herbeckstraße und Währinger Straße, Volksoper U.<br><u>Linie 41:</u><br>Betrieb nur zwischen Pötzleinsdorf und Währinger Straße, Volksoper U.<br><u>Linie 42:</u><br>Betrieb nur zwischen Antonigasse und Währinger Straße, Volksoper U.<br><u>Linie 43:</u><br>Betrieb nur zwischen Neuwaldegg und Alser Straße U.<br><u>Linie 44:</u><br>Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz.<br><u>Linie 71:</u><br>Betrieb nur zwischen Kaiserebersdorf und St. Marx S.<br>Weiterfahrt über Linie 18 bis Schlachthausgasse U.<br><u>Badner Bahn:</u><br>Betrieb nur zwischen Baden und Aßmayergasse.<br><u>Linie 2A:</u><br>Kein Betrieb nicht möglich.<br><u>Linie 3A:</u><br>Betrieb nur zwischen Oper, Karlsplatz U und Hoher Markt.<br><u>Linie 4A:</u><br>Betrieb nur zwischen Wittelsbachstraße und Lisztstraße.<br><u>Linie 74A:</u><br>Betrieb nur zwischen St. Marx S und Landstraße S U.</p><p>Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1.</p><p><strong><u>Weiteres:</u></strong><br><span style=\"color: rgba(0, 0, 0, 0.87);\">Je nach Fortschritt der Veranstaltung und Freiwerden von Strecken werden die betroffenen Linien umgehend normalisiert. Beachten Sie daher unsere Lautsprecherdurchsagen, die Anzeigen in den Haltestellen sowie unsere Echtzeitinformationen in der WienMobil App und auf </span><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"http://www.wienerlinien.at\">www.wienerlinien.at</a><span style=\"color: rgba(0, 0, 0, 0.87);\">.</span></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "9d6708474d6403d2562d36f0fed8fb0a3386cafd5a30da32ea28cdfde42c7c90",
-    "pubDate": "2026-10-22T07:30:00+02:00",
+    "pubDate": "2026-10-14T00:00:22+02:00",
     "starts_at": "2026-10-22T07:30:00+02:00",
     "ends_at": "2026-10-22T22:00:00+02:00",
     "_identity": "wl|hinweis|L=1,2,2A,37,38,3A,40,41,42,43,44,4A,71,74A,D,LB|D=2026-10-22|TK=demonstration"
@@ -363,12 +363,12 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "44A: Kurzführung",
-    "description": "<h2>Bauarbeiten</h2><p>Wegen Instandsetzungsarbeiten in der Röntgengasse wird die Linie 44A kurzgeführt.</p><p><span><strong><u>Zeitraum:</u></strong></span><br>Montag, 3. August 2026, auf derzeit unbekannte Zeit.</p><p><span><strong><u>Maßnahmen:</u></strong></span><br><strong>Linie 44A:</strong><br>Betrieb zwischen Hernals S und Heuberg.</p>",
+    "description": "<h2>Bauarbeiten</h2><p>Wegen Instandsetzungsarbeiten in der Röntgengasse wird die Linie 44A kurzgeführt.</p><p><strong><u>Zeitraum:</u></strong><br>Montag, 3. August 2026 bis inklusive 30. Oktober 2026.</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie 44A:</strong><br>Betrieb zwischen Hernals S und Heuberg.</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "922b4af1b9331fff9893d877fea6430921e2756178e2670f0d01bb4f89a4e096",
     "pubDate": "2026-07-22T00:00:00+02:00",
     "starts_at": "2026-08-03T00:00:00+02:00",
-    "ends_at": "2027-07-22T11:11:00+02:00",
+    "ends_at": "2026-10-31T04:30:00+01:00",
     "_identity": "wl|hinweis|L=44A|D=2026-08-03|TK=kurzführung"
   },
   {
@@ -890,6 +890,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1/2/D/71: Demonstration",
+    "description": "Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18). Die Linie 2 fährt derzeit nicht zwischen Heinestraße, Taborstraße und Parlament, U Volkstheater. Die Linie D fährt derzeit nicht zwischen Quartier Belvedere S und Börse. Linie 71: Betrieb nur zwischen Kaiserebersdorf und St. Marx S. Weiterfahrt über Linie 18 bis Schlachthausgasse U. Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "bd71556f0b3999c4b9221f396e4a62b33873bc5ae8eb0b8775cbaad78170136b",
+    "pubDate": "2026-10-22T13:44:00+02:00",
+    "starts_at": "2026-10-22T13:44:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=1,2,71,D|D=2026-10-22|TK=demonstration",
+    "_wl_ids": [
+      "I20261022-0031"
+    ],
+    "_incident_start": "2026-10-22T13:44:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1154,22 +1170,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Demonstration Züge halten beim Parlament",
-    "description": "Linie 2: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Schwedenplatz U über Schottentor - Schottenring. Haltestellen: Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. Schwedenplatz U in Richtung Dornbach: Kein Halt möglich. Gredlerstraße: Kein Halt möglich. Parlament, U Volkstheater in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach). Parlament, U Volkstheater in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3629ca20a95831a63570d0cdaf8f90603b749ac7933bdfaee0e7e19c548af3ca",
-    "pubDate": "2026-10-22T13:44:00+02:00",
-    "starts_at": "2026-10-22T13:49:13+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=2|D=2026-10-22|TK=demonstration",
-    "_wl_ids": [
-      "I20261022-0031"
-    ],
-    "_incident_start": "2026-10-22T13:44:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1234,22 +1234,6 @@
     "starts_at": "2026-10-21T07:20:54+02:00",
     "ends_at": "2026-10-22T17:00:00+02:00",
     "_identity": "wl|störung|L=62A|D=2026-10-21|TK=strassenbau haltestelle verlegt zur wienerbergbrücke vor breitenfurter strasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "63A: Rettungseinsatz",
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "91d669c1fbe32bfc275e4e4defa8ceccd4bb34a47aefba98017f28a1c74921ba",
-    "pubDate": "2026-10-22T13:51:00+02:00",
-    "starts_at": "2026-10-22T13:51:00+02:00",
-    "ends_at": "2026-10-22T14:49:00+02:00",
-    "_identity": "wl|störung|L=63A|D=2026-10-22|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261022-0032"
-    ],
-    "_incident_start": "2026-10-22T13:51:00+02:00"
   },
   {
     "source": "Wiener Linien",
@@ -1366,42 +1350,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Züge halten Wipplingerstr 39",
-    "description": "Züge halten\nWipplingerstr 39",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c56c71bc29a5779ba2ce8098d4446a39181d58698141c72f9ba0190ba474ca24",
-    "pubDate": "2026-10-14T00:00:22+02:00",
-    "starts_at": "2026-10-14T00:00:22+02:00",
-    "ends_at": "2026-10-22T23:59:59+02:00",
-    "_identity": "wl|störung|L=D|D=2026-10-14|TK=züge halten wipplingerstr 39"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Staatsbesuch Betrieb über Li. 18+71",
-    "description": "Staatsbesuch\nBetrieb über Li. 18+71",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "4ebbcdc3503f7097ae2d14a87e680808a4a5ce9f30c24ee21638f81847928855",
-    "pubDate": "2026-10-22T11:16:29+02:00",
-    "starts_at": "2026-10-22T11:16:29+02:00",
-    "ends_at": "2026-10-22T17:00:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-10-22|TK=staatsbesuch betrieb über li 18 71"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Staatsbesuch Betrieb über Li. 71+18",
-    "description": "Staatsbesuch\nBetrieb über Li. 71+18",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "fa244b62f6519a7e68609c18ecbaf4d68d6dd6f7c514c341f1d1fcd0481b273c",
-    "pubDate": "2026-10-22T11:15:59+02:00",
-    "starts_at": "2026-10-22T11:15:59+02:00",
-    "ends_at": "2026-10-22T17:00:00+02:00",
-    "_identity": "wl|störung|L=D|D=2026-10-22|TK=staatsbesuch betrieb über li 71 18"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Ersatzverkehr Busse halten bei Haltestelle N71",
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1410,22 +1358,6 @@
     "starts_at": "2026-10-21T00:00:24+02:00",
     "ends_at": "2026-10-22T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-21|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Schadhaftes Fahrzeug",
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
-    "pubDate": "2026-10-22T13:34:00+02:00",
-    "starts_at": "2026-10-22T13:34:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-10-22|TK=u6 schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261022-0030"
-    ],
-    "_incident_start": "2026-10-22T13:34:00+02:00"
   },
   {
     "source": "Wiener Linien",

@@ -1161,13 +1161,13 @@
    {
     "alertCause": "construction work",
     "alertCauseId": 45,
-    "description": "<h2>Bauarbeiten</h2><p>Wegen Instandsetzungsarbeiten in der Röntgengasse wird die Linie 44A kurzgeführt.</p><p><span><strong><u>Zeitraum:</u></strong></span><br>Montag, 3. August 2026, auf derzeit unbekannte Zeit.</p><p><span><strong><u>Maßnahmen:</u></strong></span><br><strong>Linie 44A:</strong><br>Betrieb zwischen Hernals S und Heuberg.</p>",
+    "description": "<h2>Bauarbeiten</h2><p>Wegen Instandsetzungsarbeiten in der Röntgengasse wird die Linie 44A kurzgeführt.</p><p><strong><u>Zeitraum:</u></strong><br>Montag, 3. August 2026 bis inklusive 30. Oktober 2026.</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie 44A:</strong><br>Betrieb zwischen Hernals S und Heuberg.</p>",
     "id": "N20260722-6034",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<h2>Bauarbeiten</h2><p>Wegen Instandsetzungsarbeiten in der Röntgengasse wird die Linie 44A kurzgeführt.</p><p><span><strong><u>Zeitraum:</u></strong></span><br>Montag, 3. August 2026, auf derzeit unbekannte Zeit.</p><p><span><strong><u>Maßnahmen:</u></strong></span><br><strong>Linie 44A:</strong><br>Betrieb zwischen Hernals S und Heuberg.</p>",
-       "descriptionPlain": "BauarbeitenWegen Instandsetzungsarbeiten in der Röntgengasse wird die Linie 44A kurzgeführt. Zeitraum: Montag, 3. August 2026, auf derzeit unbekannte Zeit. Maßnahmen: Linie 44A: Betrieb zwischen Hernals S und Heuberg.",
+       "descriptionHtml": "<h2>Bauarbeiten</h2><p>Wegen Instandsetzungsarbeiten in der Röntgengasse wird die Linie 44A kurzgeführt.</p><p><strong><u>Zeitraum:</u></strong><br>Montag, 3. August 2026 bis inklusive 30. Oktober 2026.</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie 44A:</strong><br>Betrieb zwischen Hernals S und Heuberg.</p>",
+       "descriptionPlain": "BauarbeitenWegen Instandsetzungsarbeiten in der Röntgengasse wird die Linie 44A kurzgeführt. Zeitraum: Montag, 3. August 2026 bis inklusive 30. Oktober 2026. Maßnahmen: Linie 44A: Betrieb zwischen Hernals S und Heuberg.",
        "title": "44A: Bauarbeiten"
       }
      }
@@ -1201,7 +1201,7 @@
      8884
     ],
     "time": {
-     "end": "2027-07-22T11:11:00.000+0200",
+     "end": "2026-10-31T04:30:00.000+0100",
      "start": "2026-07-22T00:00:00.000+0200",
      "validFrom": "2026-07-22T16:22:00.000+0200"
     },

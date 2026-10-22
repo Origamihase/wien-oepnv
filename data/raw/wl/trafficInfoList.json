@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261022-0031, I20261022-0033, I20261020-0029, I20261022-0030-F01, I20261022-0032"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261022-0031, I20260925-0011, I20260909-0007, I20261022-0033, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R318-437, R293-474, R100-136, R36-152, R45-136, R19-136, R130-136, R119-136, R1449-149, R1448-149, R1445-149, R1474-412, R1448-412, R1447-149, R1446-149, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1876-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1875-101, R2373-125, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2025-671, R2378-627, R2558-125, R5815-671, R1848-0, R1842-462, R401-101, R1974-466, R500-101, R531-109, R530-109, R556-109, R533-109, R532-109, R1475-109, R1476-109, R484-109, R546-109, R545-109, R544-109, R543-109, R541-109, R1446-109, R1447-109, R547-109, R105-136, R111-136, R49-102, R52-102, R55-102, R54-102, R53-102, R51-102, R50-102, R134-102, R22-102, R11-102, R12-102, R9-102, R10-102, R14-102, R13-102, R15-102, R268-474, R1490-404, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R19-136, R45-136, R103-136, R119-136, R130-136, R36-152, R118-136, R117-136, R116-136, R293-474, R318-437, R115-136, R101-136, R100-136, R102-136, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R1884-101, R2373-127, R2373-126, R2378-627, R2025-671, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2380-627, R2345-127, R2372-627, R2379-627, R2558-125, R5815-671, R1848-0, R1842-462, R401-101, R1974-466, R500-101, R532-109, R533-109, R556-109, R530-109, R531-109, R1475-109, R1476-109, R484-109, R543-109, R546-109, R545-109, R544-109, R541-109, R1446-109, R1447-109, R547-109, R105-136, R111-136, R49-102, R52-102, R50-102, R51-102, R53-102, R54-102, R55-102, R134-102, R22-102, R11-102, R12-102, R13-102, R14-102, R9-102, R10-102, R15-102, R268-474, R1490-404, R15-171, R81-171, R17-171, R13-171, R18-171, R14-171, R19-171, R22-101, R13-101, R14-101, R831-101, R15-101, R17-101, R18-101, R19-101, R20-101, R23-101, R426-101, R4843-101, R1756-101, R1751-101, R1752-101, R1753-101, R1754-101, R174-101, R1712-101, R1713-101, R1714-101, R1709-101, R1711-101, R41-101, R51-101, R50-101, R49-101, R47-101, R46-101, R45-101, R44-101, R42-101, R1715-101, R1019-102, R1020-102, R328-102, R1001-102, R1002-102, R1003-102, R17-136, R18-136, R81-136, R13-136, R14-136, R15-136, R46-136, R50-136, R49-136, R47-136, R51-136, R49-171, R47-171, R46-171, R51-171, R50-171, R44-171, R45-171, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,69 +259,24 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U6: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261022-0030-F01",
-    "owner": "WL",
-    "parentName": "I20261022-0030",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4620
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-22T13:42:00.000+0200",
-     "lastUpdate": "2026-10-22T13:42:00.000+0200",
-     "resume": "2026-10-22T13:42:00.000+0200",
-     "start": "2026-10-22T13:34:00.000+0200"
-    },
-    "title": "U6: Schadhaftes Fahrzeug"
-   },
-   {
     "alertCause": "demonstration",
     "alertCauseId": 122,
     "attributes": {
      "relatedLineTypes": {
-      "2": "ptTram"
+      "1": "ptTram",
+      "2": "ptTram",
+      "71": "ptTram",
+      "D": "ptTram"
      }
     },
-    "description": "Linie 2: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Schwedenplatz U über Schottentor - Schottenring. Haltestellen: Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. Schwedenplatz U in Richtung Dornbach: Kein Halt möglich. Gredlerstraße: Kein Halt möglich. Parlament, U Volkstheater in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach). Parlament, U Volkstheater in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
-    "descriptionHTML": "<p>Linie 2: <br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Schwedenplatz U <br>über Schottentor - Schottenring.<br>Haltestellen:<br>Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. <br>Schwedenplatz U in Richtung Dornbach: Kein Halt möglich.<br>Gredlerstraße: Kein Halt möglich.<br>Parlament, U Volkstheater in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach).<br>Parlament, U Volkstheater in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament.</p><p>Ersatz: Linien U1, U2, U3 und U4.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Demonstration im Bereich der Inneren Stadt.</p>",
+    "description": "Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18). Die Linie 2 fährt derzeit nicht zwischen Heinestraße, Taborstraße und Parlament, U Volkstheater. Die Linie D fährt derzeit nicht zwischen Quartier Belvedere S und Börse. Linie 71: Betrieb nur zwischen Kaiserebersdorf und St. Marx S. Weiterfahrt über Linie 18 bis Schlachthausgasse U. Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
+    "descriptionHTML": "<p>Linie 1: <br>Umleitung in beiden Richtungen <br>zwischen Kliebergasse und Hintere Zollamtsstraße <br>über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18).<br>Die Linie 2 fährt derzeit nicht zwischen Heinestraße, Taborstraße und Parlament, U Volkstheater.<br>Die Linie D fährt derzeit nicht zwischen Quartier Belvedere S und Börse.<br>Linie 71:<br>Betrieb nur zwischen Kaiserebersdorf und St. Marx S.<br>Weiterfahrt über Linie 18 bis Schlachthausgasse U.</p><p>Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1.</p><p>Ersatz: Linien U1, U2, U3 und U4.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Demonstration im Bereich der Inneren Stadt.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 2: <br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Schwedenplatz U <br>über Schottentor - Schottenring.<br>Haltestellen:<br>Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. <br>Schwedenplatz U in Richtung Dornbach: Kein Halt möglich.<br>Gredlerstraße: Kein Halt möglich.<br>Parlament, U Volkstheater in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach).<br>Parlament, U Volkstheater in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament.</p><p>Ersatz: Linien U1, U2, U3 und U4.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Demonstration im Bereich der Inneren Stadt.</p>",
-       "descriptionPlain": "Linie 2: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Schwedenplatz U über Schottentor - Schottenring. Haltestellen: Schwedenplatz U In Richtung Friedrich-Engels-Platz: Einstieg am gegenüberliegenden Gleis. Schwedenplatz U in Richtung Dornbach: Kein Halt möglich. Gredlerstraße: Kein Halt möglich. Parlament, U Volkstheater in Richtung Friedrich-Engels-Platz: Einstieg am Innenring (Haltestelle Richtung Dornbach). Parlament, U Volkstheater in Richtung Dornbach: Einstiegstelle direkt vor dem Parlament. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
-       "title": "2: Demonstration"
+       "descriptionHtml": "<p>Linie 1: <br>Umleitung in beiden Richtungen <br>zwischen Kliebergasse und Hintere Zollamtsstraße <br>über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18).<br>Die Linie 2 fährt derzeit nicht zwischen Heinestraße, Taborstraße und Parlament, U Volkstheater.<br>Die Linie D fährt derzeit nicht zwischen Quartier Belvedere S und Börse.<br>Linie 71:<br>Betrieb nur zwischen Kaiserebersdorf und St. Marx S.<br>Weiterfahrt über Linie 18 bis Schlachthausgasse U.</p><p>Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1.</p><p>Ersatz: Linien U1, U2, U3 und U4.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Demonstration im Bereich der Inneren Stadt.</p>",
+       "descriptionPlain": "Linie 1: Umleitung in beiden Richtungen zwischen Kliebergasse und Hintere Zollamtsstraße über Landstraße S U und Hauptbahnhof S U (Strecke Linien O und 18). Die Linie 2 fährt derzeit nicht zwischen Heinestraße, Taborstraße und Parlament, U Volkstheater. Die Linie D fährt derzeit nicht zwischen Quartier Belvedere S und Börse. Linie 71: Betrieb nur zwischen Kaiserebersdorf und St. Marx S. Weiterfahrt über Linie 18 bis Schlachthausgasse U. Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich der Inneren Stadt.",
+       "title": "2, 1, D, 71: Demonstration"
       }
      }
     ],
@@ -334,71 +289,40 @@
     "reasonName": "Demonstration",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "2"
+     "1",
+     "2",
+     "D",
+     "71"
     ],
     "relatedLinesDetails": [
      {
+      "lineId": 101,
+      "lineName": "1",
+      "vehicleType": "ptTram"
+     },
+     {
       "lineId": 102,
       "lineName": "2",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 136,
+      "lineName": "D",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 171,
+      "lineName": "71",
       "vehicleType": "ptTram"
      }
     ],
     "status": "active",
     "time": {
      "created": "2026-10-22T13:46:00.000+0200",
-     "lastUpdate": "2026-10-22T13:46:00.000+0200",
+     "lastUpdate": "2026-10-22T14:45:00.000+0200",
      "start": "2026-10-22T13:44:00.000+0200"
     },
-    "title": "2: Demonstration"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "63A": "ptBusCity"
-     }
-    },
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "63A: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261022-0032",
-    "owner": "WL",
-    "parentName": "I20261022-0032",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "63A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 463,
-      "lineName": "63A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     1768
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-22T13:51:00.000+0200",
-     "end": "2026-10-22T14:49:00.000+0200",
-     "lastUpdate": "2026-10-22T14:30:00.000+0200",
-     "resume": "2026-10-22T13:51:00.000+0200",
-     "start": "2026-10-22T13:51:00.000+0200"
-    },
-    "title": "63A: Rettungseinsatz"
+    "title": "2, 1, D, 71: Demonstration"
    },
    {
     "alertCause": "demonstration",
@@ -501,6 +425,75 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Heinestraße",
+    "name": "R1001-102",
+    "owner": "WL",
+    "parentName": "R1001-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1001
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:51:22.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Heinestraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Heinestraße",
+    "name": "R1002-102",
+    "owner": "WL",
+    "parentName": "R1002-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1002
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:51:22.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Heinestraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nZüge halten Heinestraße",
+    "name": "R1003-102",
+    "owner": "WL",
+    "parentName": "R1003-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1003
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:51:52.000+0200"
+    },
+    "title": "Demonstration\nZüge halten Heinestraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R101-136",
     "owner": "WL",
@@ -520,6 +513,29 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Ring, Volkstheater U ",
+    "name": "R1019-102",
+    "owner": "WL",
+    "parentName": "R1019-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1019
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:49:51.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Ring, Volkstheater U "
    },
    {
     "alertCause": "undefined alert cause",
@@ -547,6 +563,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Ring, Volkstheater U ",
+    "name": "R1020-102",
+    "owner": "WL",
+    "parentName": "R1020-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1020
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:49:51.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Ring, Volkstheater U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R103-136",
     "owner": "WL",
@@ -570,7 +609,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Staatsbesuch\nBetrieb über Li. 71+18",
+    "description": "Demonstration\nBetrieb ab Quartier Belvedere S ",
     "name": "R105-136",
     "owner": "WL",
     "parentName": "R105-136",
@@ -585,10 +624,10 @@
      105
     ],
     "time": {
-     "end": "2026-10-22T17:00:00.000+0200",
+     "end": "2026-10-22T22:00:00.000+0200",
      "start": "2026-10-22T11:15:59.000+0200"
     },
-    "title": "Staatsbesuch\nBetrieb über Li. 71+18"
+    "title": "Demonstration\nBetrieb ab Quartier Belvedere S "
    },
    {
     "alertCause": "undefined alert cause",
@@ -616,7 +655,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Staatsbesuch\nBetrieb über Li. 18+71",
+    "description": "Fahrtbehinderung\nwegen Demonstration",
     "name": "R111-136",
     "owner": "WL",
     "parentName": "R111-136",
@@ -631,10 +670,10 @@
      111
     ],
     "time": {
-     "end": "2026-10-22T17:00:00.000+0200",
+     "end": "2026-10-22T22:00:00.000+0200",
      "start": "2026-10-22T11:16:29.000+0200"
     },
-    "title": "Staatsbesuch\nBetrieb über Li. 18+71"
+    "title": "Fahrtbehinderung\nwegen Demonstration"
    },
    {
     "alertCause": "undefined alert cause",
@@ -777,6 +816,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R13-101",
+    "owner": "WL",
+    "parentName": "R13-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     13
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:19.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Demonstration\nBetrieb ab Ring, Volkstheater U ",
     "name": "R13-102",
     "owner": "WL",
@@ -796,6 +858,52 @@
      "start": "2026-10-22T13:48:43.000+0200"
     },
     "title": "Demonstration\nBetrieb ab Ring, Volkstheater U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R13-136",
+    "owner": "WL",
+    "parentName": "R13-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     13
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:52:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R13-171",
+    "owner": "WL",
+    "parentName": "R13-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     13
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:35:18.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
    },
    {
     "alertCause": "undefined alert cause",
@@ -823,7 +931,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb über Schottenring",
+    "description": "Demonstration\nBetrieb ab Heinestraße",
     "name": "R134-102",
     "owner": "WL",
     "parentName": "R134-102",
@@ -841,7 +949,30 @@
      "end": "2026-10-22T22:00:00.000+0200",
      "start": "2026-10-22T13:46:43.000+0200"
     },
-    "title": "Demonstration\nBetrieb über Schottenring"
+    "title": "Demonstration\nBetrieb ab Heinestraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R14-101",
+    "owner": "WL",
+    "parentName": "R14-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:19.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -865,6 +996,52 @@
      "start": "2026-10-22T13:48:43.000+0200"
     },
     "title": "Demonstration\nBetrieb ab Ring, Volkstheater U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R14-136",
+    "owner": "WL",
+    "parentName": "R14-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:52:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R14-171",
+    "owner": "WL",
+    "parentName": "R14-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:35:18.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1260,7 +1437,30 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nZüge halten beim Parlament",
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R15-101",
+    "owner": "WL",
+    "parentName": "R15-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:19.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nZüge halten bei Li. 48A ",
     "name": "R15-102",
     "owner": "WL",
     "parentName": "R15-102",
@@ -1278,7 +1478,467 @@
      "end": "2026-10-22T22:00:00.000+0200",
      "start": "2026-10-22T13:49:13.000+0200"
     },
-    "title": "Demonstration\nZüge halten beim Parlament"
+    "title": "Demonstration\nZüge halten bei Li. 48A "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R15-136",
+    "owner": "WL",
+    "parentName": "R15-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:52:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R15-171",
+    "owner": "WL",
+    "parentName": "R15-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:35:18.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R17-101",
+    "owner": "WL",
+    "parentName": "R17-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:19.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R17-136",
+    "owner": "WL",
+    "parentName": "R17-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:52:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R17-171",
+    "owner": "WL",
+    "parentName": "R17-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:35:18.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R1709-101",
+    "owner": "WL",
+    "parentName": "R1709-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1709
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:48:23.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R1711-101",
+    "owner": "WL",
+    "parentName": "R1711-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1711
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:48:23.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R1712-101",
+    "owner": "WL",
+    "parentName": "R1712-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1712
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:48:23.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R1713-101",
+    "owner": "WL",
+    "parentName": "R1713-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1713
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:48:23.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R1714-101",
+    "owner": "WL",
+    "parentName": "R1714-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1714
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:48:23.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nZüge halten bei Li. 18 Richtung Burggasse, Stadthalle",
+    "name": "R1715-101",
+    "owner": "WL",
+    "parentName": "R1715-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1715
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:48:53.000+0200"
+    },
+    "title": "Demonstration\nZüge halten bei Li. 18 Richtung Burggasse, Stadthalle"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb über Li. O",
+    "name": "R174-101",
+    "owner": "WL",
+    "parentName": "R174-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     174
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:49.000+0200"
+    },
+    "title": "Demonstration\nBetrieb über Li. O"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R1751-101",
+    "owner": "WL",
+    "parentName": "R1751-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1751
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:22.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R1752-101",
+    "owner": "WL",
+    "parentName": "R1752-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1752
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:22.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R1753-101",
+    "owner": "WL",
+    "parentName": "R1753-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1753
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:22.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R1754-101",
+    "owner": "WL",
+    "parentName": "R1754-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1754
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:22.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R1756-101",
+    "owner": "WL",
+    "parentName": "R1756-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1756
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:22.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R18-101",
+    "owner": "WL",
+    "parentName": "R18-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     18
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:19.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R18-136",
+    "owner": "WL",
+    "parentName": "R18-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     18
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:52:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R18-171",
+    "owner": "WL",
+    "parentName": "R18-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     18
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:35:18.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1487,7 +2147,30 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R19-101",
+    "owner": "WL",
+    "parentName": "R19-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     19
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:19.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
     "name": "R19-136",
     "owner": "WL",
     "parentName": "R19-136",
@@ -1502,10 +2185,33 @@
      19
     ],
     "time": {
-     "end": "2026-10-22T23:59:59.000+0200",
+     "end": "2026-10-22T22:00:00.000+0200",
      "start": "2026-10-14T00:00:22.000+0200"
     },
-    "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R19-171",
+    "owner": "WL",
+    "parentName": "R19-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     19
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:35:18.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1533,6 +2239,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R20-101",
+    "owner": "WL",
+    "parentName": "R20-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     20
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:19.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "name": "R2025-671",
     "owner": "WL",
@@ -1553,7 +2282,30 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nZüge halten am Mittelgleis",
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R22-101",
+    "owner": "WL",
+    "parentName": "R22-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     22
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:19.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Ring, Volkstheater U ",
     "name": "R22-102",
     "owner": "WL",
     "parentName": "R22-102",
@@ -1571,7 +2323,30 @@
      "end": "2026-10-22T22:00:00.000+0200",
      "start": "2026-10-22T13:48:13.000+0200"
     },
-    "title": "Demonstration\nZüge halten am Mittelgleis"
+    "title": "Demonstration\nBetrieb ab Ring, Volkstheater U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R23-101",
+    "owner": "WL",
+    "parentName": "R23-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     23
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:19.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1990,6 +2765,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Ring, Volkstheater U ",
+    "name": "R328-102",
+    "owner": "WL",
+    "parentName": "R328-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     328
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:49:51.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Ring, Volkstheater U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Züge halten\nbei Linien 6 und 18",
     "name": "R36-152",
     "owner": "WL",
@@ -2036,7 +2834,145 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Züge halten\nWipplingerstr 39",
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R41-101",
+    "owner": "WL",
+    "parentName": "R41-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     41
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:48:49.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R42-101",
+    "owner": "WL",
+    "parentName": "R42-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     42
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:48:49.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R426-101",
+    "owner": "WL",
+    "parentName": "R426-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     426
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:21.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R44-101",
+    "owner": "WL",
+    "parentName": "R44-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     44
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:48:49.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R44-171",
+    "owner": "WL",
+    "parentName": "R44-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     44
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:54:20.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R45-101",
+    "owner": "WL",
+    "parentName": "R45-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     45
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:48:49.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Quartier Belvedere S ",
     "name": "R45-136",
     "owner": "WL",
     "parentName": "R45-136",
@@ -2051,10 +2987,171 @@
      45
     ],
     "time": {
-     "end": "2026-10-22T23:59:59.000+0200",
+     "end": "2026-10-22T22:00:00.000+0200",
      "start": "2026-10-14T00:00:22.000+0200"
     },
-    "title": "Züge halten\nWipplingerstr 39"
+    "title": "Demonstration\nBetrieb ab Quartier Belvedere S "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R45-171",
+    "owner": "WL",
+    "parentName": "R45-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     45
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:54:20.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R46-101",
+    "owner": "WL",
+    "parentName": "R46-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     46
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:48:49.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Quartier Belvedere S ",
+    "name": "R46-136",
+    "owner": "WL",
+    "parentName": "R46-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     46
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:52:50.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Quartier Belvedere S "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R46-171",
+    "owner": "WL",
+    "parentName": "R46-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     46
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:54:20.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R47-101",
+    "owner": "WL",
+    "parentName": "R47-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:48:49.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Quartier Belvedere S ",
+    "name": "R47-136",
+    "owner": "WL",
+    "parentName": "R47-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:52:50.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Quartier Belvedere S "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R47-171",
+    "owner": "WL",
+    "parentName": "R47-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:54:20.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2082,7 +3179,53 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb über Schottenring",
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R4843-101",
+    "owner": "WL",
+    "parentName": "R4843-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     4843
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:21.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R49-101",
+    "owner": "WL",
+    "parentName": "R49-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:48:49.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Heinestraße",
     "name": "R49-102",
     "owner": "WL",
     "parentName": "R49-102",
@@ -2100,12 +3243,81 @@
      "end": "2026-10-22T22:00:00.000+0200",
      "start": "2026-10-22T13:45:43.000+0200"
     },
-    "title": "Demonstration\nBetrieb über Schottenring"
+    "title": "Demonstration\nBetrieb ab Heinestraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Schwedenplatz U ",
+    "description": "Demonstration\nBetrieb ab Quartier Belvedere S ",
+    "name": "R49-136",
+    "owner": "WL",
+    "parentName": "R49-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:52:50.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Quartier Belvedere S "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R49-171",
+    "owner": "WL",
+    "parentName": "R49-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:54:20.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R50-101",
+    "owner": "WL",
+    "parentName": "R50-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:48:49.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Heinestraße",
     "name": "R50-102",
     "owner": "WL",
     "parentName": "R50-102",
@@ -2123,7 +3335,53 @@
      "end": "2026-10-22T22:00:00.000+0200",
      "start": "2026-10-22T13:46:13.000+0200"
     },
-    "title": "Demonstration\nBetrieb ab Schwedenplatz U "
+    "title": "Demonstration\nBetrieb ab Heinestraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Quartier Belvedere S ",
+    "name": "R50-136",
+    "owner": "WL",
+    "parentName": "R50-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:52:50.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Quartier Belvedere S "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R50-171",
+    "owner": "WL",
+    "parentName": "R50-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:54:20.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2151,7 +3409,30 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Schwedenplatz U ",
+    "description": "Demonstration\nBetrieb ab Kliebergasse",
+    "name": "R51-101",
+    "owner": "WL",
+    "parentName": "R51-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:48:49.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Kliebergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Heinestraße",
     "name": "R51-102",
     "owner": "WL",
     "parentName": "R51-102",
@@ -2169,12 +3450,58 @@
      "end": "2026-10-22T22:00:00.000+0200",
      "start": "2026-10-22T13:46:13.000+0200"
     },
-    "title": "Demonstration\nBetrieb ab Schwedenplatz U "
+    "title": "Demonstration\nBetrieb ab Heinestraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Schwedenplatz U ",
+    "description": "Demonstration\nBetrieb ab Quartier Belvedere S ",
+    "name": "R51-136",
+    "owner": "WL",
+    "parentName": "R51-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:52:50.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Quartier Belvedere S "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R51-171",
+    "owner": "WL",
+    "parentName": "R51-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:54:20.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Heinestraße",
     "name": "R52-102",
     "owner": "WL",
     "parentName": "R52-102",
@@ -2192,12 +3519,12 @@
      "end": "2026-10-22T22:00:00.000+0200",
      "start": "2026-10-22T13:46:13.000+0200"
     },
-    "title": "Demonstration\nBetrieb ab Schwedenplatz U "
+    "title": "Demonstration\nBetrieb ab Heinestraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Schwedenplatz U ",
+    "description": "Demonstration\nBetrieb ab Heinestraße",
     "name": "R53-102",
     "owner": "WL",
     "parentName": "R53-102",
@@ -2215,7 +3542,7 @@
      "end": "2026-10-22T22:00:00.000+0200",
      "start": "2026-10-22T13:46:13.000+0200"
     },
-    "title": "Demonstration\nBetrieb ab Schwedenplatz U "
+    "title": "Demonstration\nBetrieb ab Heinestraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2312,7 +3639,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Schwedenplatz U ",
+    "description": "Demonstration\nBetrieb ab Heinestraße",
     "name": "R54-102",
     "owner": "WL",
     "parentName": "R54-102",
@@ -2330,7 +3657,7 @@
      "end": "2026-10-22T22:00:00.000+0200",
      "start": "2026-10-22T13:46:13.000+0200"
     },
-    "title": "Demonstration\nBetrieb ab Schwedenplatz U "
+    "title": "Demonstration\nBetrieb ab Heinestraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2473,7 +3800,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Schwedenplatz U ",
+    "description": "Demonstration\nBetrieb ab Heinestraße",
     "name": "R55-102",
     "owner": "WL",
     "parentName": "R55-102",
@@ -2491,7 +3818,7 @@
      "end": "2026-10-22T22:00:00.000+0200",
      "start": "2026-10-22T13:46:13.000+0200"
     },
-    "title": "Demonstration\nBetrieb ab Schwedenplatz U "
+    "title": "Demonstration\nBetrieb ab Heinestraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2535,6 +3862,75 @@
      "start": "2026-10-21T00:00:24.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R81-136",
+    "owner": "WL",
+    "parentName": "R81-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     81
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:52:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R81-171",
+    "owner": "WL",
+    "parentName": "R81-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     81
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:35:18.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Hintere Zollamtsstraße",
+    "name": "R831-101",
+    "owner": "WL",
+    "parentName": "R831-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     831
+    ],
+    "time": {
+     "end": "2026-10-22T22:00:00.000+0200",
+     "start": "2026-10-22T14:44:19.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Hintere Zollamtsstraße"
    },
    {
     "alertCause": "undefined alert cause",

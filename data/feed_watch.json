@@ -1,21 +1,13 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-22T12:31:03.311016+00:00",
- "built": "2026-10-22T14:30:49+02:00",
+ "updated": "2026-10-22T13:01:23.382030+00:00",
+ "built": "2026-10-22T15:01:06+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-22T14:30:49+02:00",
+  "built": "2026-10-22T15:01:06+02:00",
   "items": [
-   {
-    "title": "63A: Rettungseinsatz",
-    "time_line": "Seit 13:51"
-   },
-   {
-    "title": "U6: Schadhaftes Fahrzeug",
-    "time_line": "Seit 13:34"
-   },
    {
     "title": "9: Gleisschaden",
     "time_line": "Seit 10:17"
@@ -25,12 +17,8 @@
     "time_line": "Seit heute"
    },
    {
-    "title": "2: Demonstration",
+    "title": "1/2/D/71: Demonstration",
     "time_line": "Seit heute"
-   },
-   {
-    "title": "D: Staatsbesuch, Gleisbauarbeiten",
-    "time_line": "Heute"
    },
    {
     "title": "1/2/D/37/38/40/41/42/43/44/71/LB/2A/3A/4A/74A: Demonstration",
@@ -47,31 +35,23 @@
    {
     "title": "62A: Straßenbau Haltestelle verlegt zur Wienerbergbrücke vor Breitenfurter Straße",
     "time_line": "Heute"
+   },
+   {
+    "title": "1: Gleisbauarbeiten",
+    "time_line": "Bis 05.12."
+   },
+   {
+    "title": "56B/56A/N62: Strampfergasse",
+    "time_line": "Bis 03.11."
+   },
+   {
+    "title": "80A: ÖBB-Bauarbeiten",
+    "time_line": "Bis 31.12.2027"
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-15T13:01:09.641046+00:00",
-   "raw": {
-    "wl-stoerungen": 63,
-    "wl-hinweise": 85,
-    "oebb": 159,
-    "baustellen-linien": 50,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 16,
-    "oebb": 134,
-    "baustellen": 67
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 11,
-    "wl": 102
-   }
-  },
   {
    "t": "2026-10-15T13:31:18.887983+00:00",
    "raw": {
@@ -6770,6 +6750,26 @@
     "baustellen": 4,
     "oebb": 9,
     "wl": 120
+   }
+  },
+  {
+   "t": "2026-10-22T13:01:23.382030+00:00",
+   "raw": {
+    "wl-stoerungen": 168,
+    "wl-hinweise": 87,
+    "oebb": 173,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 10,
+    "oebb": 148,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 115
    }
   }
  ]
