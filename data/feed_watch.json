@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-22T09:00:59.099726+00:00",
- "built": "2026-10-22T11:00:48+02:00",
+ "updated": "2026-10-22T09:30:49.510243+00:00",
+ "built": "2026-10-22T11:30:39+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-22T11:00:48+02:00",
+  "built": "2026-10-22T11:30:39+02:00",
   "items": [
    {
     "title": "4A: Rettungseinsatz",
@@ -21,8 +21,8 @@
     "time_line": "Seit 09:54"
    },
    {
-    "title": "25: Verkehrsunfall",
-    "time_line": "Seit 08:51"
+    "title": "D: Staatsbesuch, Gleisbauarbeiten",
+    "time_line": "Seit heute"
    },
    {
     "title": "1/2/D/37/38/40/41/42/43/44/71/LB/2A/3A/4A/74A: Demonstration",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-15T09:01:11.503326+00:00",
-   "raw": {
-    "wl-stoerungen": 68,
-    "wl-hinweise": 85,
-    "oebb": 158,
-    "baustellen-linien": 50,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 17,
-    "oebb": 134,
-    "baustellen": 67
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 103
-   }
-  },
   {
    "t": "2026-10-15T09:30:57.642975+00:00",
    "raw": {
@@ -6790,6 +6770,26 @@
     "baustellen": 4,
     "oebb": 9,
     "wl": 114
+   }
+  },
+  {
+   "t": "2026-10-22T09:30:49.510243+00:00",
+   "raw": {
+    "wl-stoerungen": 88,
+    "wl-hinweise": 85,
+    "oebb": 170,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 10,
+    "oebb": 146,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 116
    }
   }
  ]

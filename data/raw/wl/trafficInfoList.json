@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261022-0022-F01, I20261022-0018-F01, I20260917-0012, I20260922-0032, I20261022-0023, I20260925-0011, I20261022-0024, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261022-0022-F01, I20261022-0004, I20260917-0012, I20260922-0032, I20261022-0023, I20260925-0011, I20261022-0024, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R293-474, R1474-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1475-149, R1476-149, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R2373-126, R2359-125, R2343-125, R2025-671, R2373-127, R2370-125, R2371-125, R2378-627, R2343-626, R2372-125, R2373-125, R2372-627, R2345-127, R2380-627, R2379-627, R2558-125, R5815-671, R1848-0, R1842-462, R401-101, R1974-466, R500-101, R532-109, R556-109, R530-109, R533-109, R531-109, R1476-109, R1475-109, R543-109, R544-109, R545-109, R546-109, R541-109, R484-109, R1446-109, R1447-109, R547-109, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R100-136, R101-136, R102-136, R293-474, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1880-101, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2371-125, R2370-125, R2343-125, R2359-125, R2343-626, R2025-671, R2378-627, R2372-125, R2373-125, R2373-127, R2558-125, R5815-671, R1848-0, R1842-462, R401-101, R1974-466, R500-101, R531-109, R533-109, R532-109, R530-109, R556-109, R1476-109, R1475-109, R541-109, R546-109, R545-109, R544-109, R543-109, R484-109, R1447-109, R1446-109, R547-109, R105-136, R111-136, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,50 +259,49 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
+    "alertCause": "special event",
+    "alertCauseId": 120,
     "attributes": {
      "relatedLineTypes": {
-      "25": "ptTram"
+      "D": "ptTram"
      }
     },
-    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie D: Kein Betrieb zwischen Börse und Quartier Belvedere S. Weiterfahrt über Linie 18 bis St. Marx S. Beachten Sie die baustellenbedingte Streckensperre der Linien D. Ersatz: Linie 71. Voraussichtliche Dauer: 12:00 Uhr. Grund: Staatsbesuch im Bereich Prinz-Eugen-Straße.",
+    "descriptionHTML": "<p>Linie D:<br>Kein Betrieb zwischen Börse und Quartier Belvedere S. <br>Weiterfahrt über Linie 18 bis St. Marx S.</p><p>Beachten Sie die baustellenbedingte Streckensperre der Linien D.</p><p>Ersatz: Linie 71.</p><p>Voraussichtliche Dauer: 12:00 Uhr.</p><p>Grund: Staatsbesuch im Bereich Prinz-Eugen-Straße.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "25: Verkehrsunfall"
+       "descriptionHtml": "<p>Linie D:<br>Kein Betrieb zwischen Börse und Quartier Belvedere S. <br>Weiterfahrt über Linie 18 bis St. Marx S.</p><p>Beachten Sie die baustellenbedingte Streckensperre der Linien D.</p><p>Ersatz: Linie 71.</p><p>Voraussichtliche Dauer: 12:00 Uhr.</p><p>Grund: Staatsbesuch im Bereich Prinz-Eugen-Straße.</p>",
+       "descriptionPlain": "Linie D: Kein Betrieb zwischen Börse und Quartier Belvedere S. Weiterfahrt über Linie 18 bis St. Marx S. Beachten Sie die baustellenbedingte Streckensperre der Linien D. Ersatz: Linie 71. Voraussichtliche Dauer: 12:00 Uhr. Grund: Staatsbesuch im Bereich Prinz-Eugen-Straße.",
+       "title": "D: Staatsbesuch"
       }
      }
     ],
-    "location": "Konstanziagasse 52",
-    "name": "I20261022-0018-F01",
+    "location": "Prinz-Eugen-Straße",
+    "name": "I20261022-0004",
     "owner": "WL",
-    "parentName": "I20261022-0018",
+    "parentName": "I20261022-0004",
     "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
+    "reasonId": 31,
+    "reasonName": "Staatsbesuch",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "25"
+     "D"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 125,
-      "lineName": "25",
+      "lineId": 136,
+      "lineName": "D",
       "vehicleType": "ptTram"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-22T09:28:00.000+0200",
-     "end": "2026-10-22T11:08:00.000+0200",
-     "lastUpdate": "2026-10-22T10:34:00.000+0200",
-     "start": "2026-10-22T08:51:00.000+0200"
+     "created": "2026-10-22T06:50:00.000+0200",
+     "lastUpdate": "2026-10-22T11:28:00.000+0200",
+     "start": "2026-10-22T11:15:00.000+0200"
     },
-    "title": "25: Verkehrsunfall"
+    "title": "D: Staatsbesuch"
    },
    {
     "alertCause": "emergency medical services",
@@ -533,6 +532,52 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Staatsbesuch\nBetrieb über Li. 71+18",
+    "name": "R105-136",
+    "owner": "WL",
+    "parentName": "R105-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     105
+    ],
+    "time": {
+     "end": "2026-10-22T17:00:00.000+0200",
+     "start": "2026-10-22T11:15:59.000+0200"
+    },
+    "title": "Staatsbesuch\nBetrieb über Li. 71+18"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Staatsbesuch\nBetrieb über Li. 18+71",
+    "name": "R111-136",
+    "owner": "WL",
+    "parentName": "R111-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     111
+    ],
+    "time": {
+     "end": "2026-10-22T17:00:00.000+0200",
+     "start": "2026-10-22T11:16:29.000+0200"
+    },
+    "title": "Staatsbesuch\nBetrieb über Li. 18+71"
    },
    {
     "alertCause": "undefined alert cause",
