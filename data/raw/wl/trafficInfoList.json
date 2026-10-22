@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0029, I20261022-0023-F01, I20261022-0025, I20261022-0027-F01, I20261022-0028"
+    "trafficInfoNameList": "I20260909-0007, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0029, I20261022-0027-F01, I20261022-0028"
    },
    {
     "id": 3,
@@ -259,97 +259,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "roadway damage",
-    "alertCauseId": 67,
-    "attributes": {
-     "relatedLineTypes": {
-      "9": "ptTram"
-     }
-    },
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "9: Weichenschaden"
-      }
-     }
-    ],
-    "location": "Johann-Nepomuk-Berger-Platz",
-    "name": "I20261022-0023-F01",
-    "owner": "WL",
-    "parentName": "I20261022-0023",
-    "priority": "1",
-    "reasonId": 38,
-    "reasonName": "Weichenschaden",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 109,
-      "lineName": "9",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-22T11:37:00.000+0200",
-     "lastUpdate": "2026-10-22T11:37:00.000+0200",
-     "resume": "2026-10-22T11:37:00.000+0200",
-     "start": "2026-10-22T10:17:00.000+0200"
-    },
-    "title": "9: Weichenschaden"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "14A": "ptBusCity"
-     }
-    },
-    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "14A: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261022-0025",
-    "owner": "WL",
-    "parentName": "I20261022-0025",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 414,
-      "lineName": "14A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-22T11:41:00.000+0200",
-     "lastUpdate": "2026-10-22T11:41:00.000+0200",
-     "resume": "2026-10-22T11:41:00.000+0200",
-     "start": "2026-10-22T11:41:00.000+0200"
-    },
-    "title": "14A: Rettungseinsatz"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -433,10 +342,11 @@
       "vehicleType": "ptTram"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-22T12:43:00.000+0200",
-     "lastUpdate": "2026-10-22T12:43:00.000+0200",
+     "end": "2026-10-22T13:26:00.000+0200",
+     "lastUpdate": "2026-10-22T13:26:00.000+0200",
      "resume": "2026-10-22T12:43:00.000+0200",
      "start": "2026-10-22T12:43:00.000+0200"
     },
