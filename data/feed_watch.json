@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-23T08:01:12.202726+00:00",
- "built": "2026-10-23T10:00:55+02:00",
+ "updated": "2026-10-23T08:30:58.870972+00:00",
+ "built": "2026-10-23T10:30:47+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-23T10:00:55+02:00",
+  "built": "2026-10-23T10:30:47+02:00",
   "items": [
+   {
+    "title": "U6: Rettungseinsatz",
+    "time_line": "Seit 10:12"
+   },
    {
     "title": "60: Falschparker",
     "time_line": "Seit 09:55"
@@ -19,10 +23,6 @@
    {
     "title": "O: Rettungseinsatz",
     "time_line": "Seit 09:51"
-   },
-   {
-    "title": "52: Falschparker",
-    "time_line": "Seit 09:27"
    },
    {
     "title": "U3: Schadhaftes Fahrzeug",
@@ -52,46 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-16T08:01:23.977930+00:00",
-   "raw": {
-    "wl-stoerungen": 67,
-    "wl-hinweise": 83,
-    "oebb": 161,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 25
-   },
-   "discarded": {
-    "wl": 13,
-    "oebb": 136,
-    "baustellen": 72
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 11,
-    "wl": 103
-   }
-  },
-  {
-   "t": "2026-10-16T08:30:54.092974+00:00",
-   "raw": {
-    "wl-stoerungen": 72,
-    "wl-hinweise": 83,
-    "oebb": 161,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 25
-   },
-   "discarded": {
-    "wl": 14,
-    "oebb": 136,
-    "baustellen": 72
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 11,
-    "wl": 105
-   }
-  },
   {
    "t": "2026-10-16T09:00:55.003408+00:00",
    "raw": {
@@ -6789,6 +6749,26 @@
    "cache": {
     "baustellen": 4,
     "oebb": 10,
+    "wl": 113
+   }
+  },
+  {
+   "t": "2026-10-23T08:30:58.870972+00:00",
+   "raw": {
+    "wl-stoerungen": 82,
+    "wl-hinweise": 74,
+    "oebb": 178,
+    "baustellen-linien": 56,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 3,
+    "oebb": 153,
+    "baustellen": 70
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
     "wl": 113
    }
   }

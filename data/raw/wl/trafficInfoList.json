@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261023-0015, I20260917-0012, I20260922-0032, I20261023-0009, I20261023-0012-F01, I20261023-0013, I20260925-0011, I20260909-0007, I20261023-0014, I20261020-0029"
+    "trafficInfoNameList": "I20261023-0014-F01, I20260917-0012, I20260922-0032, I20261023-0009, I20261023-0012-F01, I20261023-0013-F01, I20260925-0011, I20261023-0016, I20260909-0007, I20261023-0015-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R119-136, R318-437, R293-474, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R36-152, R45-136, R19-136, R130-136, R1445-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1474-412, R1446-149, R1476-149, R1448-412, R1875-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1876-101, R2373-127, R2025-671, R2378-627, R2380-627, R2345-127, R2372-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-126, R2379-627, R2558-125, R5815-671, R401-101, R1974-466, R2420-411, R500-101, R1441-152, R464-152, R1486-152, R1445-152, R1444-152, R1443-152, R1442-152, R1925-170, R1924-170, R343-170, R339-170, R341-170, R340-170, R1639-160, R1559-160, R577-160, R576-160, R574-160, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R119-136, R318-437, R293-474, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R36-152, R45-136, R19-136, R130-136, R118-136, R1445-149, R1474-412, R1448-412, R1473-149, R1475-149, R1474-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1476-149, R1884-101, R1880-101, R1881-101, R1882-101, R1883-101, R1875-101, R1876-101, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2378-627, R2025-671, R2370-125, R2359-125, R2343-125, R2343-626, R2372-627, R2345-127, R2380-627, R2558-125, R5815-671, R401-101, R1974-466, R2420-411, R500-101, R1925-170, R1924-170, R343-170, R339-170, R341-170, R340-170, R1559-160, R574-160, R1639-160, R576-160, R577-160, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -359,18 +359,18 @@
       "O": "ptTram"
      }
     },
-    "description": "Linie O: Umleitung in Richtung Raxstraße zwischen Quartier Belvedere S und Quellenplatz über Hauptbahnhof Ost S und Reumannplatz U. Voraussichtliche Dauer: 10:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Columbusplatz.",
-    "descriptionHTML": "<p>Linie O:<br>Umleitung in Richtung Raxstraße<br>zwischen Quartier Belvedere S und Quellenplatz<br>über Hauptbahnhof Ost S und Reumannplatz U.</p><p>Voraussichtliche Dauer: 10:20 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Columbusplatz.</p>",
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie O:<br>Umleitung in Richtung Raxstraße<br>zwischen Quartier Belvedere S und Quellenplatz<br>über Hauptbahnhof Ost S und Reumannplatz U.</p><p>Voraussichtliche Dauer: 10:20 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Columbusplatz.</p>",
-       "descriptionPlain": "Linie O: Umleitung in Richtung Raxstraße zwischen Quartier Belvedere S und Quellenplatz über Hauptbahnhof Ost S und Reumannplatz U. Voraussichtliche Dauer: 10:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Columbusplatz.",
+       "descriptionHtml": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "O: Rettungseinsatz"
       }
      }
     ],
-    "name": "I20261023-0013",
+    "name": "I20261023-0013-F01",
     "owner": "WL",
     "parentName": "I20261023-0013",
     "priority": "1",
@@ -392,8 +392,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-23T09:53:00.000+0200",
-     "lastUpdate": "2026-10-23T09:56:00.000+0200",
+     "created": "2026-10-23T10:10:00.000+0200",
+     "lastUpdate": "2026-10-23T10:10:00.000+0200",
+     "resume": "2026-10-23T10:10:00.000+0200",
      "start": "2026-10-23T09:51:00.000+0200"
     },
     "title": "O: Rettungseinsatz"
@@ -406,18 +407,18 @@
       "U2": "ptMetro"
      }
     },
-    "description": "Die Linie U2 fährt derzeit in der Station Museumsquartier in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 10:10 Uhr. Grund: Betriebsstörung im Haltestellenbereich Museumsquartier.",
-    "descriptionHTML": "<p>Die Linie U2 fährt derzeit in der Station Museumsquartier in beiden Richtungen über Gleis 2.</p><p>Voraussichtliche Dauer: 10:10 Uhr.</p><p>Grund: Betriebsstörung im Haltestellenbereich Museumsquartier.</p>",
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie U2 fährt derzeit in der Station Museumsquartier in beiden Richtungen über Gleis 2.</p><p>Voraussichtliche Dauer: 10:10 Uhr.</p><p>Grund: Betriebsstörung im Haltestellenbereich Museumsquartier.</p>",
-       "descriptionPlain": "Die Linie U2 fährt derzeit in der Station Museumsquartier in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 10:10 Uhr. Grund: Betriebsstörung im Haltestellenbereich Museumsquartier.",
+       "descriptionHtml": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "U2: Betriebsstörung"
       }
      }
     ],
-    "name": "I20261023-0014",
+    "name": "I20261023-0014-F01",
     "owner": "WL",
     "parentName": "I20261023-0014",
     "priority": "1",
@@ -439,8 +440,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-23T09:54:00.000+0200",
-     "lastUpdate": "2026-10-23T09:54:00.000+0200",
+     "created": "2026-10-23T10:04:00.000+0200",
+     "lastUpdate": "2026-10-23T10:04:00.000+0200",
+     "resume": "2026-10-23T10:04:00.000+0200",
      "start": "2026-10-23T09:53:00.000+0200"
     },
     "title": "U2: Betriebsstörung"
@@ -453,19 +455,19 @@
       "60": "ptTram"
      }
     },
-    "description": "Linie 60: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 10:15 Uhr. Grund: Falschparker im Bereich Lainzer Straße 16.",
-    "descriptionHTML": "<p>Linie 60:<br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 10:15 Uhr.</p><p>Grund: Falschparker im Bereich Lainzer Straße 16.</p>",
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 60:<br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 10:15 Uhr.</p><p>Grund: Falschparker im Bereich Lainzer Straße 16.</p>",
-       "descriptionPlain": "Linie 60: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 10:15 Uhr. Grund: Falschparker im Bereich Lainzer Straße 16.",
+       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "60: Falschparker"
       }
      }
     ],
     "location": "Lainzer Straße 16",
-    "name": "I20261023-0015",
+    "name": "I20261023-0015-F01",
     "owner": "WL",
     "parentName": "I20261023-0015",
     "priority": "1",
@@ -484,11 +486,59 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-23T09:56:00.000+0200",
-     "lastUpdate": "2026-10-23T09:56:00.000+0200",
+     "created": "2026-10-23T10:02:00.000+0200",
+     "lastUpdate": "2026-10-23T10:02:00.000+0200",
+     "resume": "2026-10-23T10:02:00.000+0200",
      "start": "2026-10-23T09:55:00.000+0200"
     },
     "title": "60: Falschparker"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Die Linie U6 fährt derzeit in der Station Jägerstraße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 10:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Jägerstraße.",
+    "descriptionHTML": "<p>Die Linie U6 fährt derzeit in der Station Jägerstraße in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 10:45 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Jägerstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie U6 fährt derzeit in der Station Jägerstraße in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 10:45 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Jägerstraße.</p>",
+       "descriptionPlain": "Die Linie U6 fährt derzeit in der Station Jägerstraße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 10:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Jägerstraße.",
+       "title": "U6: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261023-0016",
+    "owner": "WL",
+    "parentName": "I20261023-0016",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4641
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-23T10:13:00.000+0200",
+     "lastUpdate": "2026-10-23T10:15:00.000+0200",
+     "start": "2026-10-23T10:12:00.000+0200"
+    },
+    "title": "U6: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -723,98 +773,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1441-152",
-    "owner": "WL",
-    "parentName": "R1441-152",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1441
-    ],
-    "time": {
-     "end": "2026-10-23T10:27:00.000+0200",
-     "start": "2026-10-23T09:27:30.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1442-152",
-    "owner": "WL",
-    "parentName": "R1442-152",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1442
-    ],
-    "time": {
-     "end": "2026-10-23T10:27:00.000+0200",
-     "start": "2026-10-23T09:27:30.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1443-152",
-    "owner": "WL",
-    "parentName": "R1443-152",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1443
-    ],
-    "time": {
-     "end": "2026-10-23T10:27:00.000+0200",
-     "start": "2026-10-23T09:27:30.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1444-152",
-    "owner": "WL",
-    "parentName": "R1444-152",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1444
-    ],
-    "time": {
-     "end": "2026-10-23T10:27:00.000+0200",
-     "start": "2026-10-23T09:27:30.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
     "name": "R1445-149",
     "owner": "WL",
@@ -834,29 +792,6 @@
      "start": "2026-10-20T00:00:06.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1445-152",
-    "owner": "WL",
-    "parentName": "R1445-152",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1445
-    ],
-    "time": {
-     "end": "2026-10-23T10:27:00.000+0200",
-     "start": "2026-10-23T09:27:30.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1110,29 +1045,6 @@
      "start": "2026-10-20T00:00:06.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1486-152",
-    "owner": "WL",
-    "parentName": "R1486-152",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1486
-    ],
-    "time": {
-     "end": "2026-10-23T10:27:00.000+0200",
-     "start": "2026-10-23T09:27:30.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2027,29 +1939,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R464-152",
-    "owner": "WL",
-    "parentName": "R464-152",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     464
-    ],
-    "time": {
-     "end": "2026-10-23T10:27:00.000+0200",
-     "start": "2026-10-23T09:27:30.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
