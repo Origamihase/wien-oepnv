@@ -1,5 +1,48 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R1221-138|2026-10-23T19:22:30.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1221-138",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-23T20:22:00.000+0200",
+   "incident": "I20261023-0044"
+  },
+  {
+   "key": "R1222-138|2026-10-23T19:22:30.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1222-138",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-23T20:22:00.000+0200",
+   "incident": "I20261023-0044"
+  },
+  {
+   "key": "R1223-138|2026-10-23T19:22:30.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1223-138",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-23T20:22:00.000+0200",
+   "incident": "I20261023-0044"
+  },
+  {
+   "key": "R1224-138|2026-10-23T19:22:30.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1224-138",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-23T20:22:00.000+0200",
+   "incident": "I20261023-0044"
+  },
+  {
+   "key": "R1225-138|2026-10-23T19:25:00.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1225-138",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-23T20:24:00.000+0200",
+   "incident": "I20261023-0044"
+  },
+  {
+   "key": "R1226-138|2026-10-23T19:25:00.000+0200|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1226-138",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-10-23T20:24:00.000+0200",
+   "incident": "I20261023-0044"
+  }
+ ]
 }
