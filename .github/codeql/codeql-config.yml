@@ -25,8 +25,23 @@
 # the project's separate ``scripts/scan_secrets.py`` step and by
 # bandit (both run before pytest in ``run_static_checks.py``).
 #
-# The other security-and-quality queries remain active. Only this
-# one query is filtered.
+# Exclude the ``py/import-and-import-from`` query.
+#
+# It is a style query (not a security query). Here it confuses the
+# standard-library ``logging`` module with the project's own
+# ``src/utils/logging.py`` / ``src/feed/logging.py``: a module that
+# does ``import logging`` and ``from src.utils.logging import ...``
+# imports two different modules, yet the query reports one module
+# imported both ways. 14 of its 15 current results were of that
+# kind; the 15th, a real but harmless double import of ``pathlib``
+# in ``tests/test_provider_plugins.py``, is cleaned up. Because code scanning recognises an
+# alert by the text around its line, every edit near one of these
+# import lines re-opened the same finding under a new alert number
+# (#1967 on 2026-10-06, #1988 on 2026-10-23). Decision by Michael,
+# 2026-10-23.
+#
+# The other security-and-quality queries remain active. Only these
+# two queries are filtered.
 
 name: "wien-oepnv CodeQL configuration"
 
@@ -36,3 +51,5 @@ queries:
 query-filters:
   - exclude:
       id: py/clear-text-storage-sensitive-data
+  - exclude:
+      id: py/import-and-import-from

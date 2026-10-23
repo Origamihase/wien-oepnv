@@ -5,6 +5,18 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **CodeQL: Stilregel `py/import-and-import-from` abgeschaltet (2026-10-23)**:
+  Michaels Entscheidung („ok“) nach der Prüfung der Meldung #1988. Die Regel
+  hält das Python-Modul `logging` und die eigenen Dateien
+  `src/utils/logging.py` bzw. `src/feed/logging.py` für dasselbe Modul; 14
+  der 15 aktuellen Treffer waren von dieser Art, der 15. (`pathlib` doppelt
+  importiert in `tests/test_provider_plugins.py`) ist aufgeräumt. Code scanning erkennt eine
+  Meldung am Text rund um ihre Zeile wieder, deshalb kam derselbe Befund nach
+  jeder Änderung nahe einer Import-Zeile mit neuer Nummer zurück (#1967 am
+  06.10., #1988 am 23.10. nach dem Entfernen von `import os` in
+  `scripts/update_station_directory.py`). Ausgeschlossen in
+  `.github/codeql/codeql-config.yml`; alle übrigen Regeln von
+  `security-and-quality` bleiben aktiv.
 * **Jules-Audits 15.–22.10. geprüft (2026-10-23)**: Zwei Funde bestätigt und
   als Klasse behoben. (1) WL-Anzeigepfeile mitten im Text: „<“/„>“ vor einem
   kleinen Wort oder einer Klammer fallen weg wie im Titel
