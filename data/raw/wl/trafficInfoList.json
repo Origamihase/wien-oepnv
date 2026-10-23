@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0029, I20261023-0017, I20261023-0018-F01, I20261023-0019, I20261023-0020, I20261023-0021-F01, I20261023-0025, I20261023-0026, I20261023-0026-F01"
+    "trafficInfoNameList": "I20260917-0012, I20261023-0020, I20260922-0032, I20261023-0021-F01, I20261023-0026-F02, I20260925-0011, I20260909-0007, I20261023-0027-F01, I20261020-0029, I20261023-0019, I20261023-0018-F01, I20261023-0025, I20261023-0026-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R293-474, R103-136, R102-136, R318-437, R101-136, R36-152, R45-136, R100-136, R1473-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1472-149, R1883-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1884-101, R2373-127, R2025-671, R2378-627, R2380-627, R2345-127, R2372-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-126, R2379-627, R2558-125, R5815-671, R401-101, R1974-466, R2420-411, R500-101, R90-136, R95-136, R94-136, R93-136, R92-136, R91-136, R99-136, R98-136, R97-136, R96-136, R500-462, R1844-462, R1952-462, R1848-462, R1842-462, R1744-462, R1660-462, R1907-466, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R318-437, R36-152, R45-136, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R2379-627, R2370-125, R2359-125, R2343-125, R2343-626, R2025-671, R2372-627, R2345-127, R2380-627, R2378-627, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2558-125, R5815-671, R401-101, R1974-466, R2420-411, R500-101, R99-136, R97-136, R98-136, R96-136, R500-462, R1848-462, R1842-462, R1952-462, R1844-462, R1660-462, R1744-462, R1907-466, R2327-462, R5592-462, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,51 +259,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "vandalism",
-    "alertCauseId": 16,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus.",
-    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Vandalismus.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Vandalismus.</p>",
-       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus.",
-       "title": "U3: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261023-0017",
-    "owner": "WL",
-    "parentName": "I20261023-0017",
-    "priority": "1",
-    "reasonId": 52,
-    "reasonName": "Vandalismus",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-23T12:06:00.000+0200",
-     "lastUpdate": "2026-10-23T12:06:00.000+0200",
-     "resume": "2026-10-23T12:04:00.000+0200",
-     "start": "2026-10-23T12:04:00.000+0200"
-    },
-    "title": "U3: Verspätungen"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -539,51 +494,6 @@
     "alertCauseId": 5,
     "attributes": {
      "relatedLineTypes": {
-      "62A": "ptBusCity"
-     }
-    },
-    "description": "Linie 62A: Fahrtbehinderung in Richtung Bahnhof Meidling S U, Eichenstraße. Voraussichtliche Dauer: 13:15 Uhr. Grund: Feuerwehreinsatz im Bereich Atzgersdorfer Platz.",
-    "descriptionHTML": "<p>Linie 62A:<br>Fahrtbehinderung in Richtung Bahnhof Meidling S U, Eichenstraße.</p><p>Voraussichtliche Dauer: 13:15 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Atzgersdorfer Platz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 62A:<br>Fahrtbehinderung in Richtung Bahnhof Meidling S U, Eichenstraße.</p><p>Voraussichtliche Dauer: 13:15 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Atzgersdorfer Platz.</p>",
-       "descriptionPlain": "Linie 62A: Fahrtbehinderung in Richtung Bahnhof Meidling S U, Eichenstraße. Voraussichtliche Dauer: 13:15 Uhr. Grund: Feuerwehreinsatz im Bereich Atzgersdorfer Platz.",
-       "title": "62A: Feuerwehreinsatz"
-      }
-     }
-    ],
-    "location": "Atzgersdorfer Platz",
-    "name": "I20261023-0026",
-    "owner": "WL",
-    "parentName": "I20261023-0026",
-    "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "62A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 462,
-      "lineName": "62A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-23T12:52:00.000+0200",
-     "lastUpdate": "2026-10-23T12:54:00.000+0200",
-     "start": "2026-10-23T12:49:00.000+0200"
-    },
-    "title": "62A: Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "fire",
-    "alertCauseId": 5,
-    "attributes": {
-     "relatedLineTypes": {
       "66A": "ptBusCity"
      }
     },
@@ -624,6 +534,100 @@
      "start": "2026-10-23T12:49:00.000+0200"
     },
     "title": "66A: Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "fire",
+    "alertCauseId": 5,
+    "attributes": {
+     "relatedLineTypes": {
+      "62A": "ptBusCity"
+     }
+    },
+    "description": "Linie 62A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 62A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 62A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 62A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "62A: Feuerwehreinsatz"
+      }
+     }
+    ],
+    "location": "Atzgersdorfer Platz",
+    "name": "I20261023-0026-F02",
+    "owner": "WL",
+    "parentName": "I20261023-0026",
+    "priority": "1",
+    "reasonId": 11,
+    "reasonName": "Feuerwehreinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "62A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 462,
+      "lineName": "62A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-23T13:22:00.000+0200",
+     "lastUpdate": "2026-10-23T13:22:00.000+0200",
+     "resume": "2026-10-23T13:22:00.000+0200",
+     "start": "2026-10-23T12:49:00.000+0200"
+    },
+    "title": "62A: Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U6: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261023-0027-F01",
+    "owner": "WL",
+    "parentName": "I20261023-0027",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4625
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-23T13:21:00.000+0200",
+     "lastUpdate": "2026-10-23T13:21:00.000+0200",
+     "resume": "2026-10-23T13:21:00.000+0200",
+     "start": "2026-10-23T13:13:00.000+0200"
+    },
+    "title": "U6: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1522,6 +1526,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Gregorygasse",
+    "name": "R2327-462",
+    "owner": "WL",
+    "parentName": "R2327-462",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62A"
+    ],
+    "relatedStops": [
+     2327
+    ],
+    "time": {
+     "end": "2026-10-23T14:03:00.000+0200",
+     "start": "2026-10-23T13:04:53.000+0200"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Gregorygasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -2051,6 +2078,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Brunner Straße, Erlaaer Straße",
+    "name": "R5592-462",
+    "owner": "WL",
+    "parentName": "R5592-462",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62A"
+    ],
+    "relatedStops": [
+     5592
+    ],
+    "time": {
+     "end": "2026-10-23T14:05:00.000+0200",
+     "start": "2026-10-23T13:08:22.000+0200"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Brunner Straße, Erlaaer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "name": "R5815-671",
     "owner": "WL",
@@ -2067,144 +2117,6 @@
      "start": "2026-10-21T00:00:24.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R90-136",
-    "owner": "WL",
-    "parentName": "R90-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     90
-    ],
-    "time": {
-     "end": "2026-10-23T13:29:00.000+0200",
-     "start": "2026-10-23T12:30:18.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R91-136",
-    "owner": "WL",
-    "parentName": "R91-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     91
-    ],
-    "time": {
-     "end": "2026-10-23T13:29:00.000+0200",
-     "start": "2026-10-23T12:30:18.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R92-136",
-    "owner": "WL",
-    "parentName": "R92-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     92
-    ],
-    "time": {
-     "end": "2026-10-23T13:29:00.000+0200",
-     "start": "2026-10-23T12:30:18.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R93-136",
-    "owner": "WL",
-    "parentName": "R93-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     93
-    ],
-    "time": {
-     "end": "2026-10-23T13:29:00.000+0200",
-     "start": "2026-10-23T12:30:18.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R94-136",
-    "owner": "WL",
-    "parentName": "R94-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     94
-    ],
-    "time": {
-     "end": "2026-10-23T13:29:00.000+0200",
-     "start": "2026-10-23T12:30:18.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R95-136",
-    "owner": "WL",
-    "parentName": "R95-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     95
-    ],
-    "time": {
-     "end": "2026-10-23T13:29:00.000+0200",
-     "start": "2026-10-23T12:30:18.000+0200"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
