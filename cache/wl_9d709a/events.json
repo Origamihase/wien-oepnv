@@ -50,6 +50,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "11: Haltestellenverlegung",
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 11 in Richtung Kaiserebersdorf, Zinnergasse</u></strong></p><p><strong><u>Haltestelle:</u></strong> Wienerfeldgasse</p><p><strong><u>Von:</u></strong> Neilreichgasse 139C - 141</p><p><strong><u>Nach:</u></strong> Neilreichgasse 139A- 139B</p><p><strong><u>Dauer:</u></strong> von 27.Oktober 2026 etwa 07:00 Uhr, bis 19. November 2026 etwa 07:00 Uhr</p><p><strong><u>Grund:</u></strong> Gleisbauarbeiten</p>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "cee7de03fd210cab2a224364f954bed6a6cde557a1d257b152748c34ab492edf",
+    "pubDate": "2026-10-23T08:25:00+02:00",
+    "starts_at": "2026-10-27T00:00:00+01:00",
+    "ends_at": "2026-11-19T07:00:00+01:00",
+    "_identity": "wl|hinweis|L=11|D=2026-10-27|TK=haltestellenverlegung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "5/12: Albertgasse",
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 5 und 12 in Richtung Westbahnhof U bzw. Josefst&auml;dter Stra&szlig;e U</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Albertgasse</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Albertgasse 27</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong> <span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">Albertgasse 33 - 35</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 13. Oktober 2026 etwa 09:00 Uhr, f&uuml;r voraussichtlich 2 Wochen</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Bauarbeiten</span></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1330,18 +1342,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Verspätungen",
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "U2: Schadhaftes Fahrzeug",
+    "description": "Linie U2: Fahrtbehinderung in Richtung Karlsplatz. Voraussichtliche Dauer: 08:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rathaus.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
-    "pubDate": "2026-10-23T07:29:00+02:00",
-    "starts_at": "2026-10-23T07:29:00+02:00",
+    "guid": "0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104",
+    "pubDate": "2026-10-23T08:27:00+02:00",
+    "starts_at": "2026-10-23T08:27:00+02:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U2|D=2026-10-23|TK=u2 verspätungen",
+    "_identity": "wl|störung|L=U2|D=2026-10-23|TK=u2 schadhaftes fahrzeug",
     "_wl_ids": [
-      "I20261023-0007"
+      "I20261023-0011"
     ],
-    "_incident_start": "2026-10-23T07:29:00+02:00"
+    "_incident_start": "2026-10-23T08:27:00+02:00"
   },
   {
     "source": "Wiener Linien",
