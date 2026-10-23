@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 23 Oct 2026 02:00:47 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 02:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N67: Level crossing fault]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">03cb2f8b4fd43afd050dc8c4c235e5ed9613eaf046cbe88ea169ca7eebef08b0</guid>
+      <pubDate>Fri, 23 Oct 2026 02:10:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 23 Oct 2026 02:10:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 23 Oct 2026 02:10:00 +0200</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 02:10]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 02:10]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[S2: Wien Leopoldau ↔ Mistelbach]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -138,20 +151,6 @@
       <georss:point>48.205482 16.348467</georss:point>
       <description>Neustiftgasse 52 → Neustiftgasse 42-44. Stop relocation of line 48A towards Klinik Penzing. Reason: renovation work. [Since 19.10.]</description>
       <content:encoded><![CDATA[Neustiftgasse 52 → Neustiftgasse 42-44. Stop relocation of line 48A towards Klinik Penzing. Reason: renovation work.<br/>[Since 19.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Track construction works, replacement service]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">cbaeb9add89e94f501dce883629cbda4e8b00aaf9f47f93a8e33ea51c4b85db2</guid>
-      <pubDate>Fri, 23 Oct 2026 00:25:18 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 16 Oct 2026 00:30:54 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 00:25:18 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 23 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Track construction works: buses stop at Simmeringer Hauptstr. 157. Replacement service: buses stop at the stop of line N71. [Today]</description>
-      <content:encoded><![CDATA[Track construction works: buses stop at Simmeringer Hauptstr. 157. Replacement service: buses stop at the stop of line N71.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
