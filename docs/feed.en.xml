@@ -8,34 +8,59 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 23 Oct 2026 15:30:59 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 16:01:04 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[2: Fire-brigade operation]]></title>
+      <title><![CDATA[31: Third-party accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">4d00cc47e799d1faf06f3f74607fcb22f477c1622fd19698ff935ae54e8b2557</guid>
-      <pubDate>Fri, 23 Oct 2026 15:20:05 +0200</pubDate>
+      <guid isPermaLink="false">33d8ecede983f3d00f33eb919f9df9473def53c4148c18b6542fc7873c6f83db</guid>
+      <pubDate>Fri, 23 Oct 2026 15:16:07 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 23 Oct 2026 15:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 15:27:36 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 23 Oct 2026 16:26:00 +0200</ext:ends_at>
-      <description>Service from Rebhanngasse; service obstruction illegally parked vehicle. [Since 15:20]</description>
-      <content:encoded><![CDATA[Service from Rebhanngasse; service obstruction illegally parked vehicle.<br/>[Since 15:20]]]></content:encoded>
+      <ext:first_seen>Fri, 23 Oct 2026 16:01:04 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 23 Oct 2026 15:26:38 +0200</ext:starts_at>
+      <description>Service from Floridsdorf, Wexstraße. [Since 15:16]</description>
+      <content:encoded><![CDATA[Service from Floridsdorf, Wexstraße.<br/>[Since 15:16]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[2/31: Third-party traffic accident]]></title>
+      <title><![CDATA[42: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">3edb60f5bb7e56cd058b80987e6a283965aeccacbd4dbce9784a0d62778f228c</guid>
+      <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
+      <pubDate>Fri, 23 Oct 2026 15:58:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 23 Oct 2026 15:58:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 23 Oct 2026 16:00:10 +0200</ext:starts_at>
+      <description>Service obstruction towards Antonigasse. Expected until 16:30. Reason: illegally parked vehicle in the area of Kreuzgasse 48. [Since 15:58]</description>
+      <content:encoded><![CDATA[Service obstruction towards Antonigasse. Expected until 16:30. Reason: illegally parked vehicle in the area of Kreuzgasse 48.<br/>[Since 15:58]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A: Police operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">71842f84405f237b1ca92ed099f0b8a763b7094e4c58c8d1a7947727dcdc5496</guid>
+      <pubDate>Fri, 23 Oct 2026 15:42:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 23 Oct 2026 15:42:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 23 Oct 2026 15:42:00 +0200</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: police operation. [Since 15:42]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: police operation.<br/>[Since 15:42]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2: Third-party traffic accident]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">4d00cc47e799d1faf06f3f74607fcb22f477c1622fd19698ff935ae54e8b2557</guid>
       <pubDate>Fri, 23 Oct 2026 15:14:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 23 Oct 2026 15:30:59 +0200</ext:first_seen>
       <ext:starts_at>Fri, 23 Oct 2026 15:14:00 +0200</ext:starts_at>
-      <description>2: service only Dornbach – Rebhanngasse; 31: no service Floridsdorf S U – Wexstraße. Expected until 16:00. [Since 15:14]</description>
-      <content:encoded><![CDATA[2: service only Dornbach – Rebhanngasse; 31: no service Floridsdorf S U – Wexstraße. Expected until 16:00.<br/>[Since 15:14]]]></content:encoded>
+      <description>Fire-brigade operation service from Rebhanngasse; service obstruction illegally parked vehicle. [Since 15:14]</description>
+      <content:encoded><![CDATA[Fire-brigade operation service from Rebhanngasse; service obstruction illegally parked vehicle.<br/>[Since 15:14]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12: Third-party accident]]></title>
@@ -64,33 +89,6 @@
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 15:04]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40/41: Third-party traffic accident]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">0860febc5e9df23aa7c2b7e11f49988c5e330f09ac2fc1fda85a5145582a1b8e</guid>
-      <pubDate>Fri, 23 Oct 2026 14:05:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 23 Oct 2026 14:30:50 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 14:05:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 23 Oct 2026 15:35:00 +0200</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 14:05]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 14:05]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">bc65efc0eaddbdf7e05327a802d1b0275625e76f2f1601244d8cb88fec910412</guid>
-      <pubDate>Fri, 23 Oct 2026 13:53:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 23 Oct 2026 13:53:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 13:53:00 +0200</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: rescue operation. [Since 13:53]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 13:53]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[62A/66A: Fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">41d1a622396976be035dc365e559dc36b96115c7d9d2333ae5cfbf1d41cbf71d</guid>
@@ -117,19 +115,6 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: fire-brigade operation.<br/>[Since 12:51]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[35A: Contamination]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">374ea805cfa530fcf8bc57d5762d181519c06643a2509c6cc694b8d6c92e56ff</guid>
-      <pubDate>Fri, 23 Oct 2026 12:24:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 23 Oct 2026 12:24:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 12:24:00 +0200</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: contamination. [Since 12:24]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 12:24]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[13A: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0</guid>
@@ -141,6 +126,19 @@
       <ext:starts_at>Fri, 23 Oct 2026 12:15:00 +0200</ext:starts_at>
       <description>Irregular intervals in both directions. Reason: rescue operation. [Since 12:15]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 12:15]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A: Police operation, track construction works]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">374069ccf0ff3be5104dd31d6813256c9eea30537579d930288c2ea1f81eccd9</guid>
+      <pubDate>Fri, 23 Oct 2026 13:59:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 23 Oct 2026 13:59:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 23 Oct 2026 13:59:00 +0200</ext:starts_at>
+      <description>Track construction works: service from Johnstraße U, Schweglerstraße 19-21. [Since today]</description>
+      <content:encoded><![CDATA[Track construction works: service from Johnstraße U, Schweglerstraße 19-21.<br/>[Since today]]]></content:encoded>
     </item>
   </channel>
 </rss>
