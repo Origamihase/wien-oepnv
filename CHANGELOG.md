@@ -5,6 +5,14 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Tests wieder grün: Pillow 13 (2026-10-23)**: Seit 21.10.2026 meldete
+  `pip-audit` in `scripts/run_static_checks.py` Sicherheitshinweise zu
+  Pillow 12.3.0 (8, am 23.10. 35 Einträge), behoben erst in Pillow 13.0.0.
+  Die Obergrenze `Pillow<13` in `requirements-dev.txt` ließ diese Version
+  nicht zu, deshalb schlug der Workflow „Tests“ auf `main` (21.10., 23.10.)
+  und in jedem PR fehl. Jetzt `Pillow>=13.0,<14`. Pillow nutzt nur das
+  manuelle `scripts/optimize_site_assets.py`; Feed-Bau und Update-Lauf
+  installieren es nicht, die Feeds bleiben unverändert.
 * **ÖBB: Ende folgt dem gezeigten Abschnitt (2026-10-19)**: Michaels
   Entscheidung (Karte „Ja, als Regel“). Rückt ein späterer ÖBB-Abschnitt nach
   vorn, weil er die Titelstrecke nennt (`_oebb_title_route_first`), gilt sein
