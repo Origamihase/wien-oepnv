@@ -7,6 +7,13 @@
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
     "trafficInfoNameList": "N20260209-0049, N20260209-2738, N20260209-3501, N20260209-3802, N20260209-4631, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260701-5989, N20260702-5991, N20260708-6004, N20260722-6034, N20260813-6092, N20260808-6085, N20260808-6084, N20260808-6083, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260831-6165, N20260901-6167, N20260903-6175, N20260908-6177, N20260910-6180, N20260911-6181, N20260915-6185, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20260930-6211, N20261005-6217, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261008-6266, N20261008-6267, N20261009-6271, N20261009-6270, N20261014-6277, N20261014-6278, N20261015-6279, N20261016-6281, N20261016-6280, N20261019-6285, N20261021-0001, N20261021-0002, N20261021-0003, N20261021-0004, N20261022-0002, N20261022-0003, N20261022-0004, N20261023-0001, N20261023-0002, N20260416-5694"
+   },
+   {
+    "id": -1,
+    "name": "aufzugsservice",
+    "refPoiCategoryGroupId": -1,
+    "title": "Aufzugsservice",
+    "trafficInfoNameList": "ftazW_1031899, ftazW_1018064"
    }
   ],
   "poiCategoryGroups": [
@@ -3987,6 +3994,82 @@
      "validFrom": "2026-10-23T17:12:00.000+0200"
     },
     "title": "18: Veranstaltung am 08.11.26"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "27.10.2026 00:45",
+     "ausVon": "26.10.2026 20:45",
+     "location": "U2 Mittelbahnsteig - Ausgang Krieau",
+     "rbls": [
+      4258,
+      4265
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Krieau",
+     "status": "geplante Wartung",
+     "towards": "U2 beide Richtungen"
+    },
+    "description": "U2 Mittelbahnsteig - Ausgang Krieau",
+    "elevatorId": "KI 02",
+    "name": "ftazW_1018064",
+    "parentName": "ftazW_1018064",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4258,
+     4265
+    ],
+    "time": {
+     "end": "2026-10-27T00:45:00.000+0100",
+     "start": "2026-10-26T20:45:00.000+0100"
+    },
+    "title": "Krieau"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "27.10.2026 00:45",
+     "ausVon": "26.10.2026 20:45",
+     "location": "Fahrtrichtung 18 Schlachthausgasse - Zugang ÖBB Bahnsteig - Ausgang Favoritenstraße",
+     "rbls": [
+      847
+     ],
+     "reason": "",
+     "relatedLines": [
+      "18"
+     ],
+     "station": "Südtiroler Platz-Hauptbahnhof",
+     "status": "geplante Wartung",
+     "towards": "18 Burggasse-Stadthalle"
+    },
+    "description": "Fahrtrichtung 18 Schlachthausgasse - Zugang ÖBB Bahnsteig - Ausgang Favoritenstraße",
+    "elevatorId": "SL 07",
+    "name": "ftazW_1031899",
+    "parentName": "ftazW_1031899",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     847
+    ],
+    "time": {
+     "end": "2026-10-27T00:45:00.000+0100",
+     "start": "2026-10-26T20:45:00.000+0100"
+    },
+    "title": "Südtiroler Platz-Hauptbahnhof"
    }
   ]
  },
