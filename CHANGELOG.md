@@ -5,6 +5,27 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **ÖBB-Abschnittsnamen im englischen Feed fest benannt (2026-10-23)**:
+  Michaels Wahl („ok“ zur Empfehlung vom 23.10.). Das Modell übersetzte
+  „Teilausfall:“ als „Partial failure:“ (RJ 263, 18.–19.10.). Jeder
+  Abschnittsname aus ÖBBs Texten hat jetzt einen festen englischen Namen
+  (`_OEBB_SECTION_LABELS_EN`: „Partial cancellation“, „Cancellation“,
+  „Cancelled stops“, „Replacement service“, „Rail replacement service“,
+  „Timetable changes“, „Please note“, „Note(s)“); zwei mit „/“ verbundene
+  Namen werden Teil für Teil nachgeschlagen. Erkannt wird der Name an seiner
+  Stelle am Satzanfang vor dem Doppelpunkt; der Rest des Satzes folgt seiner
+  Vorlage, sonst liest das Modell den Satz wie bisher, und nur sein Wort vor
+  dem Doppelpunkt wird ersetzt. Ein unbekannter Name bleibt beim Modell. Die
+  deutsche Fassung bleibt gleich. Ein englischer Cache-Wert ohne den
+  festen Namen wird neu übersetzt (`_oebb_section_label_defect`), die übrigen
+  Meldungen behalten ihre Übersetzung (keine neue Epoche). Test
+  `tests/test_oebb_abschnitt_en.py`; `docs/architecture.md` §8. Dazu trennt
+  die Satzzerlegung der ÖBB-Vorlagen nicht mehr nach „bzw.“, „Wr.“ und „b.“
+  (vorher wurde „… Wien Hbf bzw. Salzburg Hbf fahren …“ in zwei Hälften
+  übersetzt). Nachbau aller 926 ÖBB-Meldungen der Cache-Geschichte: Deutsch
+  gleich, Englisch ändert sich in vier Meldungsfassungen nur der Name
+  („Partial failure:“ → „Partial cancellation:“, „Modified journey times:“ →
+  „Timetable changes:“).
 * **Raufaser-Hintergrund auf den TV-Folien (2026-10-23)**: Michaels Wunsch:
   „Ich würde den grauen Hintergrund gerne mit einem Wallpaper aufhübschen.
   Eine Raufasertapete in Full HD und im selben Grauton würde mir gefallen.“
