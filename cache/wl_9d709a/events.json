@@ -1118,6 +1118,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "29B/29A: Verspätungen",
+    "description": "Linie 29B: Unregelmäßige Intervalle in beiden Richtungen. Linie 29A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "bbe5ef50c2240c914c3dce1d180ddae47d557fdcc203689af3890bc880dbf44d",
+    "pubDate": "2026-10-23T05:52:00+02:00",
+    "starts_at": "2026-10-23T05:52:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=29A,29B|D=2026-10-23|TK=29a 29b verspätungen",
+    "_wl_ids": [
+      "I20261023-0005"
+    ],
+    "_incident_start": "2026-10-23T05:52:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
