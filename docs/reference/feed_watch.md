@@ -100,12 +100,52 @@ am TV steht.
 | `hoeflichkeitssatz` | 2 | „Wir bitten um Entschuldigung“ im Text steht | #1993 |
 | `quelle-leer` | Quelle | der Cache eines Anbieters leer ist, obwohl er in den letzten sieben Tagen im Median mindestens fünf Meldungen hatte | — |
 | `quelle-einbruch` | Quelle | eine Rohantwort (`data/raw/`) weniger als die Hälfte ihres Medians der letzten sieben Tagen hat (Median mindestens 10) | — |
+| `quelle-ohne-antwort` | Quelle | WL, ÖBB oder Baustellen seit mindestens zwei Stunden keine brauchbare Antwort gaben (Exit-Code des Abrufs nicht 0, der Feed läuft mit der letzten guten Antwort) oder der Stammstrecken-Abruf bei der VAO seit mindestens zwei Stunden keinen Erfolg hatte (`cache/stammstrecke/poll_status.json`, `last_success`) | WL 21.10.2026, siehe unten |
 | `verwurf-sprung` | Quelle | der Anteil der beim Abruf verworfenen Meldungen (`data/raw/*/verworfen.json`) um mehr als 25 Prozentpunkte von seinem Median der letzten sieben Tage abweicht | — |
 | `feed-alter` | Betrieb | der Feed beim Lauf des Wächters älter als 90 Minuten ist | — |
 
-Die Quellen-Regeln brauchen mindestens 24 Läufe der letzten sieben Tage als
+Die Quellen-Regeln außer `quelle-ohne-antwort` brauchen mindestens 24 Läufe der letzten sieben Tage als
 Vergleich; nach dem ersten Lauf schweigen sie also rund zwölf Stunden.
 `seit-zu-frueh` braucht den vorigen Bau und greift ab dem zweiten Lauf.
+
+### Quelle ohne frische Antwort (seit 2026-10-23)
+
+Entscheidung des Betreibers (Michael, 2026-10-23, 18:42 Wiener Zeit, auf den
+Vorschlag aus der Prüfung der Workflows dieser Woche: „ja, bitte. Das klingt
+sehr gut und sinnvoll“). Anlass: Am 21.10.2026 antworteten die Wiener Linien
+von 16:00 bis 23:00 Wiener Zeit auf beiden Listen mit 502 Bad Gateway. Die 15
+Update-Läufe dieser Zeit blieben grün und bauten den Feed mit der letzten
+guten WL-Antwort von 15:30; neue und erledigte WL-Meldungen erschienen sieben
+Stunden lang nicht. Rot wurde nur der Health check um 18:49, weil er gerade
+in dieses Fenster fiel; GitHub startet ihn nur wenige Male am Tag, die
+Läufe um 13:22 und 23:23 waren grün. Der Update-Lauf dagegen kommt alle
+30 Minuten (IFTTT). Am selben Abend scheiterte von 17:31 bis 20:01 auch der
+Stammstrecken-Abruf bei der VAO.
+
+So liest die Regel ihre Quellen:
+
+* **WL, ÖBB, Baustellen:** Der Schritt „Refresh free-API caches in
+  parallel“ gibt die Exit-Codes der drei Abrufe als Ausgabe `exit_codes`
+  weiter (`wl=0 oebb=1 baustellen=0`), der Wächter liest sie aus
+  `FEED_WATCH_FETCH_EXIT`. 0 heißt frische Antwort; jeder andere Code (1, 2,
+  3, 124, 137) heißt, dass der Feed ganz oder teilweise mit der letzten guten
+  Antwort läuft. `data/feed_watch.json` hält unter `fetch` je Quelle die Zeit
+  der letzten frischen Antwort (`last_ok`). Fehlt ein Exit-Code (Schritt
+  abgebrochen, lokaler Lauf), bleibt der Stand unverändert und es gibt keinen
+  Fund. Scheitert eine Quelle schon, bevor der Wächter je eine frische
+  Antwort sah, zählt die Zeit ab ihrem ersten gescheiterten Lauf.
+* **Stammstrecke (VAO):** Der Abruf führt seinen Stand selbst in
+  `cache/stammstrecke/poll_status.json`; die Regel misst ab `last_success`.
+  Ein Lauf, der den Abruf wegen des Tageslimits auslässt, ändert die Datei
+  nicht, die Zeit läuft also weiter.
+
+Schwelle zwei Stunden: Vom 01. bis 23.10.2026 (1 087 Läufe mit Abruf) dauerte
+jeder andere Ausfall höchstens eine Stunde (WL 07.10. 13:30–14:00 mit
+Zeitüberschreitung, ÖBB 14.10. 15:00–15:30, sonst einzelne Läufe), der
+VAO-Abruf war außer am 21.10. nie länger als eine Stunde ohne Erfolg. Die
+Regel ist wie die übrigen nie rot und meldet über ein Issue; das Issue
+schließt sich, sobald die Quelle zwei Läufe in Folge wieder antwortet. Der
+Health check bleibt, wie er ist: rot, wenn sein eigener Abruf scheitert.
 
 ### Bewusst nicht geprüft
 
@@ -146,6 +186,14 @@ Zeit.
 | `quelle-leer`, `quelle-einbruch`, `verwurf-sprung` | nie (auch nicht beim Rückgang der Baustellen von 15 auf 2 am 06.10. durch #1972: Leer ist erst 0, und ein Cache mit weniger als fünf Meldungen zählt nicht) | — |
 
 Am 07., 08. und 10.10. war keine Regel verletzt.
+
+`quelle-ohne-antwort` (2026-10-23) lief über alle 1 087 Update-Läufe mit
+Abruf vom 01. bis 23.10.2026 (Exit-Codes aus den Annotationen der Läufe, der
+VAO-Stand aus der Git-Historie von `poll_status.json`, der Stand von Lauf zu
+Lauf weitergegeben): laut nur am 21.10., für die Wiener Linien in den Läufen
+von 18:02 bis 23:02 („seit 2 h 30 min keine brauchbare Antwort (Abruf endet
+mit Exit 1); der Feed nutzt die letzte gute Antwort von 21.10. 15:32“), für
+die VAO von 19:02 bis 20:02; in allen anderen Läufen still.
 
 Dazu lief `oebb-zweiter-satz` über die mit dem heutigen Code gebauten Texte
 aller 224 mehrsätzigen ÖBB-Meldungen im Cache seit Juni: ein Fund. „Wien

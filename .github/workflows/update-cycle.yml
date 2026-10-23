@@ -371,6 +371,7 @@ jobs:
       # ``continue-on-error: true`` raised an orange badge per failed
       # step; the warning emits the same operator-visible signal here.
       - name: Refresh free-API caches in parallel
+        id: fetch
         if: steps.freshness.outputs.should_run == 'true'
         # Defense-in-depth step ceiling. The per-process ``timeout 90``
         # wrappers below catch a single hung fetcher (their exit code
@@ -418,6 +419,11 @@ jobs:
           wait "$pid_wl";         rc_wl=$?
           wait "$pid_oebb";       rc_oebb=$?
           wait "$pid_baustellen"; rc_baustellen=$?
+
+          # Exit codes for the Feed-Wächter (rule "Quelle ohne frische
+          # Antwort", docs/reference/feed_watch.md): 0 = fresh answer,
+          # anything else = the feed keeps the source's last good answer.
+          echo "exit_codes=wl=${rc_wl} oebb=${rc_oebb} baustellen=${rc_baustellen}" >> "$GITHUB_OUTPUT"
 
           report() {
             local name=$1
@@ -567,8 +573,9 @@ jobs:
       # Feed-Wächter (docs/reference/feed_watch.md): checks the built German feed
       # against the rules learned since September 2026 (duplicates, an old
       # message counted as new, a "Seit" time before the incident, ÖBB's
-      # second sentence, the time line, text length) and compares what the
-      # sources delivered with the last seven days. Report only: it never
+      # second sentence, the time line, text length), compares what the
+      # sources delivered with the last seven days and notes a source that
+      # has given no fresh answer for two hours (exit codes of the fetch step). Report only: it never
       # changes the feed and never blocks the publish (exit 0 even on its own
       # error; ``continue-on-error`` and the time limit on top). Findings are
       # never red (operator decision 2026-10-10: red only when the fetch does
@@ -583,6 +590,7 @@ jobs:
         timeout-minutes: 2
         env:
           FEED_WATCH_ISSUES: '1'
+          FEED_WATCH_FETCH_EXIT: ${{ steps.fetch.outputs.exit_codes }}
           GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/feed_watch.py
 
