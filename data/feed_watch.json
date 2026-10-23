@@ -1,20 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-23T20:01:06.720208+00:00",
- "built": "2026-10-23T22:00:59+02:00",
+ "updated": "2026-10-23T20:31:05.544714+00:00",
+ "built": "2026-10-23T22:30:50+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-23T22:00:59+02:00",
+  "built": "2026-10-23T22:30:50+02:00",
   "items": [
    {
-    "title": "U3: Verspätungen",
-    "time_line": "Seit 21:17"
+    "title": "U4: Rettungseinsatz",
+    "time_line": "Seit 22:15"
    },
    {
-    "title": "9: Rettungseinsatz",
-    "time_line": "Seit 21:02"
+    "title": "11A: Falschparker, Bauarbeiten",
+    "time_line": "Heute"
    },
    {
     "title": "S2: Wien Leopoldau ↔ Mistelbach",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-16T20:01:09.959234+00:00",
-   "raw": {
-    "wl-stoerungen": 158,
-    "wl-hinweise": 84,
-    "oebb": 160,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 25
-   },
-   "discarded": {
-    "wl": 28,
-    "oebb": 136,
-    "baustellen": 72
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 109
-   }
-  },
   {
    "t": "2026-10-16T20:31:39.176339+00:00",
    "raw": {
@@ -6791,17 +6771,37 @@
     "oebb": 9,
     "wl": 109
    }
+  },
+  {
+   "t": "2026-10-23T20:31:05.544714+00:00",
+   "raw": {
+    "wl-stoerungen": 68,
+    "wl-hinweise": 76,
+    "oebb": 160,
+    "baustellen-linien": 56,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 4,
+    "oebb": 135,
+    "baustellen": 71
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 109
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-23T20:01:06.720208+00:00"
+   "last_ok": "2026-10-23T20:31:05.544714+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-23T20:01:06.720208+00:00"
+   "last_ok": "2026-10-23T20:31:05.544714+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-23T20:01:06.720208+00:00"
+   "last_ok": "2026-10-23T20:31:05.544714+00:00"
   }
  }
 }

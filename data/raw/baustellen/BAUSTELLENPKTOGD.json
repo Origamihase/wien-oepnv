@@ -486,6 +486,29 @@
   {
    "geometry": {
     "first_position": [
+     16.3851471,
+     48.21112529
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Gerhard Baumann",
+    "ANSPRECHPERSON_TEL": "Tel.: 050128/32740",
+    "ANTRAGSTELLER": "Wiener Netze - Bereich Gas",
+    "BEHINDERUNGSART": "Rohrlegung",
+    "BEZEICHNUNG": "Vordere Zollamtsstraße 1",
+    "BEZIRK": 3,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-26Z",
+    "OBJEKT_ENDE": "2026-11-02Z",
+    "PRESSETEXT": "In Fahrtrichtung Aspernbrücke wird der rechte Abbiegefahrstreifen gesperrt. In Fahrtrichtung Dampfschiffstraße wird der linke Abbiegefahrstreifen gesperrt. Die verbleibenden Abbiegefahrstreifen werden aufrechtgehalten.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.25804707,
      48.19735528
     ],
