@@ -98,7 +98,9 @@ jobs:
         # (workbook XLSX, OGD CSVs, VOR stop list, …). All four cache
         # writers in this project are by-contract non-sensitive — see
         # ``.github/codeql/codeql-config.yml`` for the rationale and
-        # the exact query-filter exclusion.
+        # the exact query-filter exclusion. The same file also filters
+        # the style query ``py/import-and-import-from`` (stdlib
+        # ``logging`` mistaken for ``src/utils/logging.py``).
         config-file: ./.github/codeql/codeql-config.yml
 
     # If the analyze step fails for one of the languages you are analyzing with

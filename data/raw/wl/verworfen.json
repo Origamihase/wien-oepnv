@@ -5,14 +5,6 @@
    "titel": "Fahrtbehinderung Schadhafter Bus"
   },
   {
-   "grund": "Kurzmeldung einer erledigten Störung",
-   "titel": "Fahrtbehinderung Verkehrsunfall"
-  },
-  {
-   "grund": "Status inaktiv",
-   "titel": "48A, 52: Schadhaftes Fahrzeug"
-  },
-  {
    "grund": "nur Aufgang/Ausgang",
    "titel": "U1: Nestroyplatz, Aufgangssperre ab 12.10.2026"
   },
@@ -23,6 +15,10 @@
   {
    "grund": "nur Aufzug/Fahrtreppe",
    "titel": "U4: Pilgramgasse - Kein Aufzug am Bahnsteig Richtung Hütteldorf"
+  },
+  {
+   "grund": "nur Klapprampe",
+   "titel": "U4: Klapprampensperre am 24.10.2026"
   }
  ]
 }

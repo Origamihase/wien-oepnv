@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261023-0045-F01, I20261023-0045-F02, I20261023-0045, I20261020-0029, I20261023-0044-F01"
+    "trafficInfoNameList": "I20261023-0046, I20260917-0012, I20260922-0032, I20261023-0047, I20260925-0011, I20260909-0007, I20261023-0045-F01, I20261023-0045-F02, I20261020-0029, I20261023-0044-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R318-437, R36-152, R45-136, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R2359-125, R2343-125, R2343-626, R2345-127, R2380-627, R2378-627, R2025-671, R2371-125, R2370-125, R2372-125, R2373-127, R2373-125, R2373-126, R2379-627, R2372-627, R2558-125, R5815-671, R401-101, R1974-466, R2420-411, R500-101, R1224-138, R1223-138, R1222-138, R1221-138, R1225-138, R1226-138, R1375-152, R1443-152, R1442-152, R1486-152, R1441-152, R1447-152, R1446-152, R1445-152, R1444-152, R1448-152, R1375-448, R1401-448, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R318-437, R36-152, R45-136, R1474-149, R1473-149, R1472-149, R1475-149, R1476-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1882-101, R1880-101, R1876-101, R1875-101, R1884-101, R1883-101, R1881-101, R2372-125, R2025-671, R2378-627, R2380-627, R2345-127, R2372-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2373-125, R2373-127, R2373-126, R2379-627, R2558-125, R5815-671, R401-101, R1974-466, R2420-411, R500-101, R1375-152, R1486-152, R1443-152, R1441-152, R1442-152, R1445-152, R1446-152, R1447-152, R1444-152, R1448-152, R1375-448, R1401-448, R12-102, R15-102, R14-102, R13-102, R11-102, R270-102, R269-102, R1022-102, R1019-102, R1020-102, R326-102, R325-102, R327-102, R328-102, R10-102, R9-102, R22-102, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -311,62 +311,6 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "48A": "ptBusCity",
-      "52": "ptTram"
-     }
-    },
-    "description": "Linie 52: Fahrtbehinderung in Richtung Parlament, U Volkstheater. Linie 48A: Fahrtbehinderung in Richtung Parlament, U Volkstheater. Voraussichtliche Dauer: 20:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Volkstheater U.",
-    "descriptionHTML": "<p>Linie 52:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater.<br>Linie 48A:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Volkstheater U.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 52:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater.<br>Linie 48A:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Volkstheater U.</p>",
-       "descriptionPlain": "Linie 52: Fahrtbehinderung in Richtung Parlament, U Volkstheater. Linie 48A: Fahrtbehinderung in Richtung Parlament, U Volkstheater. Voraussichtliche Dauer: 20:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Volkstheater U.",
-       "title": "48A, 52: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261023-0045",
-    "owner": "WL",
-    "parentName": "I20261023-0045",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "52",
-     "48A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 152,
-      "lineName": "52",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 448,
-      "lineName": "48A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     1401
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-23T19:47:00.000+0200",
-     "end": "2026-10-23T19:57:00.000+0200",
-     "lastUpdate": "2026-10-23T19:57:00.000+0200",
-     "resume": "2026-10-23T19:57:00.000+0200",
-     "start": "2026-10-23T19:45:00.000+0200"
-    },
-    "title": "48A, 52: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
       "48A": "ptBusCity"
      }
     },
@@ -459,6 +403,119 @@
     "title": "52: Schadhaftes Fahrzeug"
    },
    {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "2": "ptTram"
+     }
+    },
+    "description": "Linie 2: Umleitung in Richtung Dornbach zwischen Marienbrücke und Parlament, U Volkstheater über Schottenring. Haltestellen: Parlament, U Volkstheater: Einstiegstelle direkt vor dem Parlament. Voraussichtliche Dauer: 21:00 Uhr. Grund: Verkehrsunfall im Bereich Parkring # Liebenberggasse.",
+    "descriptionHTML": "<p>Linie 2: <br>Umleitung in Richtung Dornbach <br>zwischen Marienbrücke und Parlament, U Volkstheater<br>über Schottenring.<br>Haltestellen:<br>Parlament, U Volkstheater: Einstiegstelle direkt vor dem Parlament.</p><p>Voraussichtliche Dauer: 21:00 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Parkring # Liebenberggasse.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 2: <br>Umleitung in Richtung Dornbach <br>zwischen Marienbrücke und Parlament, U Volkstheater<br>über Schottenring.<br>Haltestellen:<br>Parlament, U Volkstheater: Einstiegstelle direkt vor dem Parlament.</p><p>Voraussichtliche Dauer: 21:00 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Parkring # Liebenberggasse.</p>",
+       "descriptionPlain": "Linie 2: Umleitung in Richtung Dornbach zwischen Marienbrücke und Parlament, U Volkstheater über Schottenring. Haltestellen: Parlament, U Volkstheater: Einstiegstelle direkt vor dem Parlament. Voraussichtliche Dauer: 21:00 Uhr. Grund: Verkehrsunfall im Bereich Parkring # Liebenberggasse.",
+       "title": "2: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Parkring / Liebenberggasse",
+    "name": "I20261023-0046",
+    "owner": "WL",
+    "parentName": "I20261023-0046",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-23T20:01:00.000+0200",
+     "lastUpdate": "2026-10-23T20:18:00.000+0200",
+     "start": "2026-10-23T20:00:00.000+0200"
+    },
+    "title": "2: Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "69A": "ptBusCity"
+     }
+    },
+    "description": "Linie 69A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Linie 69A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 69A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Linie 69A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+       "title": "69A: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261023-0047",
+    "owner": "WL",
+    "parentName": "I20261023-0047",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "69A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 469,
+      "lineName": "69A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-23T20:05:00.000+0200",
+     "lastUpdate": "2026-10-23T20:05:00.000+0200",
+     "resume": "2026-10-23T20:05:00.000+0200",
+     "start": "2026-10-23T20:05:00.000+0200"
+    },
+    "title": "69A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R10-102",
+    "owner": "WL",
+    "parentName": "R10-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     10
+    ],
+    "time": {
+     "end": "2026-10-23T21:10:00.000+0200",
+     "start": "2026-10-23T20:11:06.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -507,6 +564,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung ab Marienbrücke über Linie 1",
+    "name": "R1019-102",
+    "owner": "WL",
+    "parentName": "R1019-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1019
+    ],
+    "time": {
+     "end": "2026-10-23T21:08:00.000+0200",
+     "start": "2026-10-23T20:09:35.000+0200"
+    },
+    "title": "Verkehrsunfall\nUmleitung ab Marienbrücke über Linie 1"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R102-136",
     "owner": "WL",
@@ -530,6 +610,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung ab Marienbrücke über Linie 1",
+    "name": "R1020-102",
+    "owner": "WL",
+    "parentName": "R1020-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1020
+    ],
+    "time": {
+     "end": "2026-10-23T21:08:00.000+0200",
+     "start": "2026-10-23T20:09:35.000+0200"
+    },
+    "title": "Verkehrsunfall\nUmleitung ab Marienbrücke über Linie 1"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung ab Marienbrücke über Linie 1",
+    "name": "R1022-102",
+    "owner": "WL",
+    "parentName": "R1022-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1022
+    ],
+    "time": {
+     "end": "2026-10-23T21:08:00.000+0200",
+     "start": "2026-10-23T20:09:35.000+0200"
+    },
+    "title": "Verkehrsunfall\nUmleitung ab Marienbrücke über Linie 1"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R103-136",
     "owner": "WL",
@@ -549,6 +675,29 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Rathaus U",
+    "name": "R11-102",
+    "owner": "WL",
+    "parentName": "R11-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     11
+    ],
+    "time": {
+     "end": "2026-10-23T21:12:00.000+0200",
+     "start": "2026-10-23T20:01:05.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Rathaus U"
    },
    {
     "alertCause": "undefined alert cause",
@@ -668,140 +817,48 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1221-138",
+    "description": "Verkehrsunfall\nBetrieb ab Rathaus U",
+    "name": "R12-102",
     "owner": "WL",
-    "parentName": "R1221-138",
+    "parentName": "R12-102",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "38"
+     "2"
     ],
     "relatedStops": [
-     1221
+     12
     ],
     "time": {
-     "end": "2026-10-23T20:22:00.000+0200",
-     "start": "2026-10-23T19:22:30.000+0200"
+     "end": "2026-10-23T21:12:00.000+0200",
+     "start": "2026-10-23T20:01:05.000+0200"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Verkehrsunfall\nBetrieb ab Rathaus U"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1222-138",
+    "description": "Verkehrsunfall\nBetrieb ab Rathaus U",
+    "name": "R13-102",
     "owner": "WL",
-    "parentName": "R1222-138",
+    "parentName": "R13-102",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "38"
+     "2"
     ],
     "relatedStops": [
-     1222
+     13
     ],
     "time": {
-     "end": "2026-10-23T20:22:00.000+0200",
-     "start": "2026-10-23T19:22:30.000+0200"
+     "end": "2026-10-23T21:12:00.000+0200",
+     "start": "2026-10-23T20:01:05.000+0200"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1223-138",
-    "owner": "WL",
-    "parentName": "R1223-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1223
-    ],
-    "time": {
-     "end": "2026-10-23T20:22:00.000+0200",
-     "start": "2026-10-23T19:22:30.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1224-138",
-    "owner": "WL",
-    "parentName": "R1224-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1224
-    ],
-    "time": {
-     "end": "2026-10-23T20:22:00.000+0200",
-     "start": "2026-10-23T19:22:30.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1225-138",
-    "owner": "WL",
-    "parentName": "R1225-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1225
-    ],
-    "time": {
-     "end": "2026-10-23T20:24:00.000+0200",
-     "start": "2026-10-23T19:25:00.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1226-138",
-    "owner": "WL",
-    "parentName": "R1226-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1226
-    ],
-    "time": {
-     "end": "2026-10-23T20:24:00.000+0200",
-     "start": "2026-10-23T19:25:00.000+0200"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Verkehrsunfall\nBetrieb ab Rathaus U"
    },
    {
     "alertCause": "undefined alert cause",
@@ -871,6 +928,29 @@
      "start": "2026-10-23T19:56:03.000+0200"
     },
     "title": "Fahrtbehinderung\nSchadhafter Bus"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Rathaus U",
+    "name": "R14-102",
+    "owner": "WL",
+    "parentName": "R14-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-23T21:12:00.000+0200",
+     "start": "2026-10-23T20:01:05.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Rathaus U"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1381,6 +1461,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Rathaus U",
+    "name": "R15-102",
+    "owner": "WL",
+    "parentName": "R15-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-23T21:12:00.000+0200",
+     "start": "2026-10-23T20:01:05.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Rathaus U"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nKein Betrieb",
     "name": "R1875-101",
     "owner": "WL",
@@ -1604,6 +1707,29 @@
      "start": "2026-10-21T00:00:20.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Rathaus U",
+    "name": "R22-102",
+    "owner": "WL",
+    "parentName": "R22-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     22
+    ],
+    "time": {
+     "end": "2026-10-23T21:13:00.000+0200",
+     "start": "2026-10-23T20:14:06.000+0200"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Rathaus U"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1976,6 +2102,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R269-102",
+    "owner": "WL",
+    "parentName": "R269-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     269
+    ],
+    "time": {
+     "end": "2026-10-23T21:05:00.000+0200",
+     "start": "2026-10-23T20:06:06.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R270-102",
+    "owner": "WL",
+    "parentName": "R270-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     270
+    ],
+    "time": {
+     "end": "2026-10-23T21:05:00.000+0200",
+     "start": "2026-10-23T20:06:06.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -2018,6 +2190,98 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung ab Marienbrücke über Linie 1",
+    "name": "R325-102",
+    "owner": "WL",
+    "parentName": "R325-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     325
+    ],
+    "time": {
+     "end": "2026-10-23T21:08:00.000+0200",
+     "start": "2026-10-23T20:09:36.000+0200"
+    },
+    "title": "Verkehrsunfall\nUmleitung ab Marienbrücke über Linie 1"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung ab Marienbrücke über Linie 1",
+    "name": "R326-102",
+    "owner": "WL",
+    "parentName": "R326-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     326
+    ],
+    "time": {
+     "end": "2026-10-23T21:08:00.000+0200",
+     "start": "2026-10-23T20:09:36.000+0200"
+    },
+    "title": "Verkehrsunfall\nUmleitung ab Marienbrücke über Linie 1"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung ab Marienbrücke über Linie 1",
+    "name": "R327-102",
+    "owner": "WL",
+    "parentName": "R327-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     327
+    ],
+    "time": {
+     "end": "2026-10-23T21:08:00.000+0200",
+     "start": "2026-10-23T20:09:36.000+0200"
+    },
+    "title": "Verkehrsunfall\nUmleitung ab Marienbrücke über Linie 1"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung ab Marienbrücke über Linie 1",
+    "name": "R328-102",
+    "owner": "WL",
+    "parentName": "R328-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     328
+    ],
+    "time": {
+     "end": "2026-10-23T21:08:00.000+0200",
+     "start": "2026-10-23T20:09:36.000+0200"
+    },
+    "title": "Verkehrsunfall\nUmleitung ab Marienbrücke über Linie 1"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2130,6 +2394,29 @@
      "start": "2026-10-21T00:00:24.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R9-102",
+    "owner": "WL",
+    "parentName": "R9-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     9
+    ],
+    "time": {
+     "end": "2026-10-23T21:10:00.000+0200",
+     "start": "2026-10-23T20:11:06.000+0200"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
