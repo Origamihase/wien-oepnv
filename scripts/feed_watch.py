@@ -118,6 +118,25 @@ SOURCE_DROP_MIN_REFERENCE = 10
 DISCARD_SHARE_JUMP = 0.25
 EMPTY_CACHE_MIN_REFERENCE = 5
 
+# Source without a fresh answer: the feed has been built from a source's last
+# good answer for this long. From 2026-10-01 to 2026-10-23 (1,087 runs with a
+# fetch) every outage of WL, ÖBB and Baustellen lasted at most 1 h except WL on
+# 2026-10-21 (502 Bad Gateway from 16:00 to 23:00, Health check red only once,
+# at 18:49); the VAO poll never went longer than 1 h without a success except
+# the same evening (17:31-20:01). Two hours stay silent on every short outage
+# and speak at 18:00 (WL) and 19:01 (VAO) on 2026-10-21.
+SOURCE_STALE = timedelta(hours=2)
+# The free sources whose fetch exit code the Update run hands over
+# (``FEED_WATCH_FETCH_EXIT``); 0 = fresh answer, anything else = the feed keeps
+# the last good answer (1, 2, 3, 124, 137: see the fetch step in update-cycle.yml).
+FETCH_SOURCES = ("wl", "oebb", "baustellen")
+SOURCE_LABELS = {
+    "wl": "Wiener Linien",
+    "oebb": "ÖBB",
+    "baustellen": "Baustellen (Stadt Wien)",
+    "stammstrecke": "Stammstrecke (VAO)",
+}
+
 _NBSP = "\u00a0"
 _WEEKDAY = r"(?:Mo|Di|Mi|Do|Fr|Sa|So)"
 _DAY = rf"(?:{_WEEKDAY}{_NBSP})?\d{{2}}\.\d{{2}}\.(?:\d{{4}})?"
@@ -239,6 +258,14 @@ RULES: dict[str, Rule] = {
             "Quelle",
             "Die Rohantwort eines Anbieters hat weniger als die Hälfte der Meldungen, die sie "
             "in den letzten sieben Tagen üblicherweise hatte.",
+        ),
+        Rule(
+            "quelle-ohne-antwort",
+            "Quelle ohne frische Antwort",
+            "Quelle",
+            "Ein Anbieter antwortet seit mindestens zwei Stunden nicht brauchbar; der Feed "
+            "läuft mit seiner letzten guten Antwort weiter und zeigt neue oder erledigte "
+            "Meldungen nicht (Wiener Linien am 21.10.2026 von 16:00 bis 23:00, 502 Bad Gateway).",
         ),
         Rule(
             "verwurf-sprung",
@@ -806,6 +833,110 @@ def check_sources(sample: SourceSample, history: Sequence[Mapping[str, Any]], no
     return findings
 
 
+# --- source without a fresh answer -----------------------------------------------
+
+
+def parse_fetch_exit(value: str | None) -> dict[str, int]:
+    """``"wl=0 oebb=1 baustellen=0"`` → exit code per source; unknown parts are left out."""
+    out: dict[str, int] = {}
+    for part in re.split(r"[\s,]+", value or ""):
+        name, _, code = part.partition("=")
+        if name in FETCH_SOURCES and code.strip().isdigit():
+            out[name] = int(code)
+    return out
+
+
+def _fmt_hours(delta: timedelta) -> str:
+    minutes = int(delta.total_seconds() // 60)
+    hours, minutes = divmod(minutes, 60)
+    return f"{hours} h {minutes:02d} min" if hours else f"{minutes} min"
+
+
+@dataclass(frozen=True)
+class PollSample:
+    """The VAO poll as ``cache/stammstrecke/poll_status.json`` records it."""
+
+    last_attempt: datetime
+    last_result: str
+    last_error: str = ""
+    last_success: datetime | None = None
+
+
+def check_fresh_answers(
+    fetch_exit: Mapping[str, int] | None,
+    poll: PollSample | None,
+    previous: object,
+    now: datetime,
+) -> tuple[list[Finding], dict[str, Any]]:
+    """Every source the feed has taken from its last good answer for :data:`SOURCE_STALE`.
+
+    The free sources: the Update run hands over the fetch exit codes; the state
+    keeps the time of the last fresh answer per source. A source without an exit
+    code in this run (step killed, local run) keeps its state and gives no
+    finding. The VAO poll keeps its own last success in its status file.
+    """
+    old = previous if isinstance(previous, Mapping) else {}
+    findings: list[Finding] = []
+    state: dict[str, Any] = {}
+    codes = fetch_exit or {}
+    for source in FETCH_SOURCES:
+        raw = old.get(source)
+        entry = dict(raw) if isinstance(raw, Mapping) else {}
+        code = codes.get(source)
+        if code == 0:
+            entry = {"last_ok": now.isoformat()}
+        elif code is not None:
+            entry["last_exit"] = code
+            # Before the first fresh answer the watcher saw, count from the first failure.
+            entry.setdefault("failing_since", now.isoformat())
+            last_ok = _parse_iso(entry.get("last_ok")) or _parse_iso(entry.get("failing_since")) or now
+            if now - last_ok >= SOURCE_STALE:
+                good = (
+                    f"; der Feed nutzt die letzte gute Antwort von {_local(last_ok):%d.%m. %H:%M}"
+                    if "last_ok" in entry
+                    else ""
+                )
+                findings.append(
+                    Finding(
+                        "quelle-ohne-antwort",
+                        SOURCE_LABELS[source],
+                        f"seit {_fmt_hours(now - last_ok)} keine brauchbare Antwort "
+                        f"(Abruf endet mit Exit {code}){good}",
+                    )
+                )
+        if entry:
+            state[source] = entry
+    if poll is not None and poll.last_success is not None and now - poll.last_success >= SOURCE_STALE:
+        reason = f"{poll.last_result} {poll.last_error}".strip()
+        findings.append(
+            Finding(
+                "quelle-ohne-antwort",
+                SOURCE_LABELS["stammstrecke"],
+                f"letzter erfolgreicher Abruf {_local(poll.last_success):%d.%m. %H:%M}, vor "
+                f"{_fmt_hours(now - poll.last_success)}; letzter Versuch "
+                f"{_local(poll.last_attempt):%H:%M}: {reason}",
+            )
+        )
+    return findings, state
+
+
+def load_poll_sample(path: Path) -> PollSample | None:
+    payload = read_capped_json(path, MAX_SOURCE_BYTES, label="Stammstrecke-Abrufstatus", logger=LOGGER)
+    if not isinstance(payload, Mapping):
+        return None
+    attempt = _parse_iso(payload.get("last_attempt"))
+    result = payload.get("last_result")
+    if attempt is None or not isinstance(result, str):
+        return None
+    error = payload.get("last_error")
+    return PollSample(
+        last_attempt=attempt,
+        last_result=result,
+        last_error=error if isinstance(error, str) else "",
+        last_success=_parse_iso(payload.get("last_success")),
+    )
+
+
 # --- one run ---------------------------------------------------------------------
 
 
@@ -823,6 +954,8 @@ def evaluate(
     oebb_cache: Mapping[str, str],
     sources: SourceSample | None,
     max_items: int = DEFAULT_MAX_ITEMS,
+    fetch_exit: Mapping[str, int] | None = None,
+    poll: PollSample | None = None,
 ) -> Result:
     """Every finding of this run and the state for the next one. Pure: no I/O."""
     built = feed.built or now
@@ -856,6 +989,8 @@ def evaluate(
         samples.append(
             {"t": now.isoformat(), "raw": sources.raw, "discarded": sources.discarded, "cache": sources.cache}
         )
+    fresh_findings, fetch_state = check_fresh_answers(fetch_exit, poll, state.get("fetch"), now)
+    findings += fresh_findings
     kept = [
         dict(entry)
         for entry in samples
@@ -889,6 +1024,7 @@ def evaluate(
         },
         "seit_zu_frueh": keep,
         "samples": kept,
+        "fetch": fetch_state,
     }
     return Result(findings, new_state)
 
@@ -1183,6 +1319,8 @@ def run(args: argparse.Namespace, now: datetime) -> int:
         oebb_cache=load_oebb_cache(args.cache_dir),
         sources=read_sources(args.cache_dir, args.raw_dir),
         max_items=max_items,
+        fetch_exit=parse_fetch_exit(os.getenv("FEED_WATCH_FETCH_EXIT")),
+        poll=load_poll_sample(args.cache_dir / "stammstrecke" / "poll_status.json"),
     )
     _report(result.findings, now)
     # Written before the issue calls, so a step killed by its time limit still

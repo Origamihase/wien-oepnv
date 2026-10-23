@@ -5,6 +5,21 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Feed-Wächter: Quelle ohne frische Antwort (2026-10-23)**: Michaels
+  Entscheidung („ja, bitte. Das klingt sehr gut und sinnvoll“) auf den
+  Vorschlag aus der Prüfung der Workflows dieser Woche. Am 21.10.2026
+  antworteten die Wiener Linien von 16:00 bis 23:00 mit 502; die
+  Update-Läufe blieben grün und bauten mit der letzten guten Antwort von
+  15:30, rot wurde nur ein Health check um 18:49. Neue Regel
+  `quelle-ohne-antwort`: Gibt WL, ÖBB oder Baustellen seit zwei Stunden
+  keine brauchbare Antwort (Exit-Code des Abrufs, neu als Ausgabe
+  `exit_codes` des Abrufschritts in `update-cycle.yml`, gelesen über
+  `FEED_WATCH_FETCH_EXIT`) oder hat der VAO-Abruf der Stammstrecke seit zwei
+  Stunden keinen Erfolg (`poll_status.json`), öffnet der Wächter ein Issue;
+  nie rot, es schließt sich nach zwei guten Läufen. Rückprüfung über 1 087
+  Läufe vom 01. bis 23.10.: laut nur am 21.10. (WL ab 18:02, VAO ab 19:02).
+  Tests in `tests/test_feed_watch.py`; `docs/reference/feed_watch.md`,
+  `docs/architecture.md`.
 * **Tests wieder grün: Pillow 13 (2026-10-23)**: Seit 21.10.2026 meldete
   `pip-audit` in `scripts/run_static_checks.py` Sicherheitshinweise zu
   Pillow 12.3.0 (8, am 23.10. 35 Einträge), behoben erst in Pillow 13.0.0.

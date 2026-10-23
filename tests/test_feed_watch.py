@@ -449,6 +449,107 @@ def test_samples_are_kept_for_seven_days() -> None:
     assert result.state["samples"][-1]["t"] == NOW.isoformat()
 
 
+# --- source without a fresh answer ----------------------------------------------
+
+WL_DOWN = datetime(2026, 10, 21, 14, 0, tzinfo=UTC)  # 16:00 Vienna, WL answered 502 until 23:00
+
+
+def _ticks(codes: Sequence[Mapping[str, int]], start: datetime, state: object = None) -> list[list[fw.Finding]]:
+    """One check per half-hour tick, the state carried as in the Update cycle."""
+    out: list[list[fw.Finding]] = []
+    for n, tick in enumerate(codes):
+        findings, state = fw.check_fresh_answers(tick, None, state, start + timedelta(minutes=30 * n))
+        out.append(findings)
+    return out
+
+
+def test_parse_fetch_exit_reads_the_workflow_output() -> None:
+    assert fw.parse_fetch_exit("wl=1 oebb=0 baustellen=124") == {"wl": 1, "oebb": 0, "baustellen": 124}
+    assert fw.parse_fetch_exit("wl= oebb=x stammstrecke=1") == {}
+    assert fw.parse_fetch_exit(None) == {}
+
+
+def test_wl_outage_of_21_october_speaks_after_two_hours() -> None:
+    ok = {"wl": 0, "oebb": 0, "baustellen": 0}
+    down = {"wl": 1, "oebb": 0, "baustellen": 0}
+    found = _ticks([ok] + [down] * 6 + [ok, ok], WL_DOWN - timedelta(minutes=30))
+    assert [bool(f) for f in found] == [False, False, False, False, True, True, True, False, False]
+    first = found[4][0]
+    assert (first.rule_id, first.subject) == ("quelle-ohne-antwort", "Wiener Linien")
+    assert first.text == (
+        "seit 2 h 00 min keine brauchbare Antwort (Abruf endet mit Exit 1); "
+        "der Feed nutzt die letzte gute Antwort von 21.10. 15:30"
+    )
+
+
+def test_short_outages_and_runs_without_exit_codes_stay_silent() -> None:
+    ok = {"wl": 0, "oebb": 0, "baustellen": 0}
+    oebb_down = {"wl": 0, "oebb": 1, "baustellen": 0}
+    # ÖBB on 14.10.: two failed runs in a row, the longest outage besides 21.10.
+    assert not any(_ticks([ok, oebb_down, oebb_down, ok], WL_DOWN))
+    # A run whose fetch step gave no exit codes changes nothing.
+    _, state = fw.check_fresh_answers(ok, None, None, WL_DOWN)
+    findings, kept = fw.check_fresh_answers({}, None, state, WL_DOWN + timedelta(hours=5))
+    assert findings == [] and kept == state
+
+
+def test_a_source_failing_from_the_first_run_counts_from_its_first_failure() -> None:
+    down = {"wl": 0, "oebb": 0, "baustellen": 2}
+    found = _ticks([down] * 5, WL_DOWN)
+    assert [bool(f) for f in found] == [False, False, False, False, True]
+    assert found[4][0].text == "seit 2 h 00 min keine brauchbare Antwort (Abruf endet mit Exit 2)"
+
+
+def test_vao_poll_without_success_for_two_hours_is_found() -> None:
+    def poll(attempt: str, success: str) -> fw.PollSample:
+        return fw.PollSample(
+            last_attempt=datetime.fromisoformat(attempt),
+            last_result="error",
+            last_error="ValueError",
+            last_success=datetime.fromisoformat(success),
+        )
+
+    early = poll("2026-10-21T18:31:41+02:00", "2026-10-21T17:01:54+02:00")
+    late = poll("2026-10-21T19:01:41+02:00", "2026-10-21T17:01:54+02:00")
+    assert fw.check_fresh_answers({}, early, None, datetime.fromisoformat("2026-10-21T18:32:00+02:00"))[0] == []
+    findings, _ = fw.check_fresh_answers({}, late, None, datetime.fromisoformat("2026-10-21T19:02:00+02:00"))
+    assert [(f.rule_id, f.subject, f.text) for f in findings] == [
+        (
+            "quelle-ohne-antwort",
+            "Stammstrecke (VAO)",
+            "letzter erfolgreicher Abruf 21.10. 17:01, vor 2 h 00 min; letzter Versuch 19:01: error ValueError",
+        )
+    ]
+
+
+def test_poll_status_file_is_read(tmp_path: Path) -> None:
+    path = tmp_path / "poll_status.json"
+    path.write_text(
+        json.dumps(
+            {
+                "last_attempt": "2026-10-21T20:01:44+02:00",
+                "last_error": "ValueError",
+                "last_result": "error",
+                "last_success": "2026-10-21T17:01:54+02:00",
+            }
+        ),
+        encoding="utf-8",
+    )
+    sample = fw.load_poll_sample(path)
+    assert sample is not None and sample.last_result == "error"
+    assert sample.last_success == datetime.fromisoformat("2026-10-21T17:01:54+02:00")
+    assert fw.load_poll_sample(tmp_path / "missing.json") is None
+
+
+def test_evaluate_keeps_the_fetch_state() -> None:
+    feed = fw.parse_feed(_feed(_filler(10), built="Wed, 21 Oct 2026 16:00:00 +0200"))
+    first = fw.evaluate(feed, now=WL_DOWN, state={}, oebb_cache={}, sources=None, fetch_exit={"wl": 1})
+    assert first.state["fetch"]["wl"]["failing_since"] == WL_DOWN.isoformat()
+    later = WL_DOWN + timedelta(hours=2)
+    second = fw.evaluate(feed, now=later, state=first.state, oebb_cache={}, sources=None, fetch_exit={"wl": 1})
+    assert [f.rule_id for f in second.findings if f.rule_id == "quelle-ohne-antwort"] == ["quelle-ohne-antwort"]
+
+
 # --- issues ----------------------------------------------------------------------
 
 
