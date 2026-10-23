@@ -13,7 +13,7 @@
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R318-437, R36-152, R45-136, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R2378-627, R2379-627, R2025-671, R2372-627, R2345-127, R2380-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2558-125, R5815-671, R401-101, R2034-571, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R1448-549, R1474-549, R2371-520, R2372-520, R2378-520, R2379-520, R1933-566, R1939-566, R404-566, R2931-566, R2234-566, R2236-566, R2251-566, R2939-566, R806-566, R2579-566, R3190-566, R3170-566, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R115-136, R103-136, R102-136, R101-136, R100-136, R293-474, R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R1475-149, R1474-149, R1473-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1472-149, R1476-149, R1884-101, R1880-101, R1881-101, R1882-101, R1883-101, R1875-101, R1876-101, R2373-127, R2373-126, R2379-627, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2025-671, R2372-627, R2345-127, R2380-627, R2378-627, R2558-125, R5815-671, R401-101, R2034-571, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R1448-549, R1474-549, R2371-520, R2372-520, R2378-520, R2379-520, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -1043,52 +1043,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Signalstörung \nLängere Wartezeiten",
-    "name": "R1933-566",
-    "owner": "WL",
-    "parentName": "R1933-566",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     1933
-    ],
-    "time": {
-     "end": "2026-10-23T03:13:00.000+0200",
-     "start": "2026-10-23T02:14:28.000+0200"
-    },
-    "title": "Signalstörung \nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Signalstörung \nLängere Wartezeiten",
-    "name": "R1939-566",
-    "owner": "WL",
-    "parentName": "R1939-566",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     1939
-    ],
-    "time": {
-     "end": "2026-10-23T03:13:00.000+0200",
-     "start": "2026-10-23T02:14:28.000+0200"
-    },
-    "title": "Signalstörung \nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-566",
     "owner": "WL",
@@ -1151,75 +1105,6 @@
      "start": "2026-10-23T00:25:18.000+0200"
     },
     "title": "Gleisbauarbeiten\nBusse halten Simmeringer Hauptstr. 157"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Signalstörung \nLängere Wartezeiten",
-    "name": "R2234-566",
-    "owner": "WL",
-    "parentName": "R2234-566",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     2234
-    ],
-    "time": {
-     "end": "2026-10-23T03:13:00.000+0200",
-     "start": "2026-10-23T02:14:29.000+0200"
-    },
-    "title": "Signalstörung \nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Signalstörung \nLängere Wartezeiten",
-    "name": "R2236-566",
-    "owner": "WL",
-    "parentName": "R2236-566",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     2236
-    ],
-    "time": {
-     "end": "2026-10-23T03:13:00.000+0200",
-     "start": "2026-10-23T02:14:29.000+0200"
-    },
-    "title": "Signalstörung \nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Signalstörung \nLängere Wartezeiten",
-    "name": "R2251-566",
-    "owner": "WL",
-    "parentName": "R2251-566",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     2251
-    ],
-    "time": {
-     "end": "2026-10-23T03:13:00.000+0200",
-     "start": "2026-10-23T02:14:29.000+0200"
-    },
-    "title": "Signalstörung \nLängere Wartezeiten"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1661,29 +1546,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Signalstörung \nLängere Wartezeiten",
-    "name": "R2579-566",
-    "owner": "WL",
-    "parentName": "R2579-566",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     2579
-    ],
-    "time": {
-     "end": "2026-10-23T03:13:00.000+0200",
-     "start": "2026-10-23T02:14:33.000+0200"
-    },
-    "title": "Signalstörung \nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1707,75 +1569,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Signalstörung \nLängere Wartezeiten",
-    "name": "R2931-566",
-    "owner": "WL",
-    "parentName": "R2931-566",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     2931
-    ],
-    "time": {
-     "end": "2026-10-23T03:13:00.000+0200",
-     "start": "2026-10-23T02:14:29.000+0200"
-    },
-    "title": "Signalstörung \nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Signalstörung \nLängere Wartezeiten",
-    "name": "R2939-566",
-    "owner": "WL",
-    "parentName": "R2939-566",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     2939
-    ],
-    "time": {
-     "end": "2026-10-23T03:13:00.000+0200",
-     "start": "2026-10-23T02:14:29.000+0200"
-    },
-    "title": "Signalstörung \nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Signalstörung \nLängere Wartezeiten",
-    "name": "R3170-566",
-    "owner": "WL",
-    "parentName": "R3170-566",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     3170
-    ],
-    "time": {
-     "end": "2026-10-23T03:13:00.000+0200",
-     "start": "2026-10-23T02:14:33.000+0200"
-    },
-    "title": "Signalstörung \nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1795,29 +1588,6 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Signalstörung \nLängere Wartezeiten",
-    "name": "R3190-566",
-    "owner": "WL",
-    "parentName": "R3190-566",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     3190
-    ],
-    "time": {
-     "end": "2026-10-23T03:13:00.000+0200",
-     "start": "2026-10-23T02:14:33.000+0200"
-    },
-    "title": "Signalstörung \nLängere Wartezeiten"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1887,29 +1657,6 @@
      "start": "2026-10-23T00:55:20.000+0200"
     },
     "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Signalstörung \nLängere Wartezeiten",
-    "name": "R404-566",
-    "owner": "WL",
-    "parentName": "R404-566",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     404
-    ],
-    "time": {
-     "end": "2026-10-23T03:13:00.000+0200",
-     "start": "2026-10-23T02:14:28.000+0200"
-    },
-    "title": "Signalstörung \nLängere Wartezeiten"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1999,29 +1746,6 @@
      "start": "2026-10-21T00:00:24.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Signalstörung \nLängere Wartezeiten",
-    "name": "R806-566",
-    "owner": "WL",
-    "parentName": "R806-566",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     806
-    ],
-    "time": {
-     "end": "2026-10-23T03:13:00.000+0200",
-     "start": "2026-10-23T02:14:30.000+0200"
-    },
-    "title": "Signalstörung \nLängere Wartezeiten"
    },
    {
     "alertCause": "undefined alert cause",
