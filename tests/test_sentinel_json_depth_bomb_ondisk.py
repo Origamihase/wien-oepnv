@@ -44,12 +44,12 @@ from unittest.mock import patch
 import pytest
 
 
-DEEP_BOMB_STR = "[" * 5000 + "]" * 5000
+DEEP_BOMB_STR = "[" * 100_000 + "]" * 100_000
 
 
 def test_precondition_deep_bomb_raises_recursion_error() -> None:
     """Pin the precondition that ``json.loads`` raises ``RecursionError`` on
-    a 5000-deep nested array under Python's default 1000-frame stack budget.
+    a 100,000-deep nested array (5,000 parse on Python 3.12+).
     If a future Python release lifts the limit such that this payload parses
     successfully, every regression test below would silently pass even on
     unfixed code — so we pin the precondition first."""

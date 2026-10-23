@@ -159,8 +159,9 @@ _INCOMPLETE_TITLE_TAIL_RE = re.compile(
 # carries meaning; standalone at the end of the summary
 # (``Betrieb ab Schwedenplatz >``) it reads like a broken HTML tag
 # glyph or truncation artifact next to the ``[Am …]`` timeframe
-# bracket. We only strip the *trailing* form — mid-text occurrences
-# stay put.
+# bracket. This strips the *trailing* form for every source; a WL arrow
+# standing alone in front of a small word or a bracket goes as well
+# (``_STANDALONE_ARROW_RE``).
 # The characters a trailing WL direction marker is made of: the arrows
 # and the whitespace between and around them. WL's display boards write a
 # stop served in BOTH directions as ``< >`` — two arrows with a space —
@@ -171,6 +172,27 @@ _INCOMPLETE_TITLE_TAIL_RE = re.compile(
 # long run of arrows (CodeQL, PR #1850). Stripping a character set from
 # the end is what ``str.rstrip`` does, in one pass and without a regex.
 _TRAILING_DIRECTIONAL_CHARS = string.whitespace + "<>"
+
+# The same arrows standing ALONE inside a WL text, in front of a small word
+# or a bracket. There they point at nothing; every such text since July 2026
+# reads::
+#
+#     Betrieb ab Hütteldorfer Straße > mit Linie 46
+#     Kein Betrieb zwischen Landstraße <> und Schlachthausgasse >
+#     Umleitung bis Gersthof < über Linien 42 und 9!
+#     Betrieb ab Gersthof < (Umleitung)
+#
+# ``_tidy_title_wl`` drops them from the title, the text kept them: on the TV
+# they read as broken markup, and the text no longer matched its own title,
+# so the reader got the sentence twice (21.10.2026, "42/9: Falschparker":
+# "Umleitung bis Gersthof über Linien 42 und 9! Umleitung bis Gersthof <
+# über Linien 42 und 9!"). Only WL texts, and only a run with whitespace in
+# front and a lower-case word or a bracket behind it. An arrow before a
+# name stays ("Betrieb ab Schwedenplatz > Praterstern": it says where to),
+# so does a glyph glued to a word ("für <80", a literal "<b>" that
+# ``tests/test_description_html_injection.py`` carries as text); the
+# escaping of ``<description>`` is untouched.
+_STANDALONE_ARROW_RE = re.compile(r"(?<!\S)[<>]+(?=\s+[a-zäöüß(])")
 
 # The same glyph also turns up GLUED to the token after it, and there it
 # makes the two halves of ONE item disagree: ``_tidy_title_wl`` ends on
@@ -2412,7 +2434,12 @@ _TRANSLATION_MODEL_REVISION = "1a922f3b32a8e809e17a47d4b32142d8105924e5"
 #       sentence is no longer split after "St." ("in St. Pölten Hbf"), and
 #       its fixed follow-up sentences are written out. The source digests
 #       of the stop texts are unchanged, so only a bump evicts them.
-_TRANSLATION_CACHE_EPOCH = 25
+#  26 — Jules audits 18. and 22.10.2026: a relocation's place kept German
+#       words in English ("Gleiskörper", "Haltestelle Straßenbahn",
+#       "Parkanlage", "Richtung Ampel", …; ``_RECORD_VALUE_RULES``). Cached
+#       under 25: "Simmeringer Hauptstraße opposite 120-122, Gleiskörper →
+#       …"; the source digests are unchanged, so only a bump evicts them.
+_TRANSLATION_CACHE_EPOCH = 26
 
 # Static lookup for the German words of the bracketed ``[…]`` time line (see
 # ``format_local_times``). Translating these via the ML model would be
@@ -4306,6 +4333,9 @@ _RECORD_VALUE_RULES: tuple[tuple[str, str, bool], ...] = (
     # 2026-10-03: "Approx. 30 metres gegen die Fahrtrichtung" and a value
     # ending "auf Dauer" stayed German.
     (r"gegen die Fahrtrichtung", "against the direction of travel", False),
+    # "20 Meter in Fahrtrichtung Kagran": with a place after it the travel
+    # direction is that place's.
+    (r"in Fahrtrichtung(?=\s+[A-ZÄÖÜ])", "in the direction of", False),
     (r"in Fahrtrichtung", "in the direction of travel", False),
     (r"auf Dauer", "permanently", False),
     (r"gegen", "against", False),
@@ -4315,6 +4345,22 @@ _RECORD_VALUE_RULES: tuple[tuple[str, str, bool], ...] = (
     # 06.10.2026) stayed German behind the arrow.
     (r"zur Haltestelle", "to the stop", False),
     (r"Nebenfahrbahn", "service road", False),
+    # Where on the street a relocated stop stands. Every word that still
+    # reached the EN feed German, over the 101 relocations WL published from
+    # July to 23.10.2026 (Jules audits 18. and 22.10.: "Simmeringer
+    # Hauptstraße opposite 120-122, Gleiskörper → …"). "unter" only small:
+    # the record also holds names ("Unter-Laa").
+    (r"Haltestelle Straßenbahn", "tram stop", False),
+    (r"Gleiskörper", "track area", False),
+    (r"Zufahrt zum Campingplatz", "the campsite access road", False),
+    (r"Zufahrt", "access road", False),
+    (r"Parkanlage", "the park", False),
+    (r"Hauseinfahrt", "the building entrance", False),
+    (r"Einfahrt", "the driveway", False),
+    (r"Stiege", "staircase", False),
+    (r"Richtung", "towards", False),
+    (r"Ampel", "the traffic lights", False),
+    (r"(?-i:unter)", "under", False),
     (r"ab(?=\s+(?:\d|…))", "from", False),
     (r"am(?=\s+\d)", "on", False),
     (r"von(?=\s+(?:\d|etwa|ca\.))", "from", False),
@@ -10498,7 +10544,9 @@ def _summary_duplicates_title(summary: str, title_out: str) -> bool:
     # Hütteldorf, so the glyph may be a mangled ``S``; turning it into a
     # line number would be inventing data, and this feed has published an
     # invented ``14AX`` before.
-    stripped = _DIRECTIONAL_MARKER_RE.sub("", summary)
+    # Whitespace is levelled too: a glyph between two words leaves two
+    # spaces where the title has one.
+    stripped = " ".join(_DIRECTIONAL_MARKER_RE.sub("", summary).split())
     if stripped != summary and stripped.casefold() == title_body_compare.casefold():
         return True
     # Joiner-insensitive third attempt — the merge ``&`` against the plain
@@ -10792,6 +10840,8 @@ def _format_item_content(
     # space-anchored swap can't accidentally touch a hashtag inside
     # quoted strings or a URL fragment.
     summary = summary.replace(" # ", " / ")
+    if str(it.get("source") or "").strip().casefold() == "wiener linien":
+        summary = _STANDALONE_ARROW_RE.sub(" ", summary)
     summary = _WHITESPACE_CLEANUP_RE.sub(" ", summary).strip()
 
     # Doppelte Kategorie-Wortpräfixe entfernen (siehe Helper-Docstring).

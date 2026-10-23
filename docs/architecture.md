@@ -621,6 +621,14 @@ verdrängt eine andere Störung.
   „5 h“) ab, „27 b-27 c“ stand mit dem Pfeil sichtbar im Feed. Die Folge einer Kurzmeldung steht
   immer als Satz mit Punkt da („Busse halten bei Haltestelle N71.“), und
   ein doppelter Punkt aus der Quelle („umgeleitet..“) wird einer.
+  Die Pfeile der WL-Anzeigetafeln („<“, „>“) stehen nur dort im Text, wo
+  sie auf einen Ort zeigen („Betrieb ab Schwedenplatz > Praterstern“); vor
+  einem kleinen Wort oder einer Klammer und am Textende fallen sie weg, wie
+  im Titel (seit 2026-10-23, `_STANDALONE_ARROW_RE`). Vorher passte der
+  Text nicht mehr zu seinem Titel und der Satz stand doppelt da: „42/9:
+  Falschparker / Umleitung bis Gersthof über Linien 42 und 9! Umleitung bis
+  Gersthof < über Linien 42 und 9!“ (21.10.2026, Jules-Audit). Von 5.300
+  WL-Texten seit Juli ändern sich 8.
   Kürzt die 180-Zeichen-Grenze einen Text, endet er nie auf einem Wort,
   das nur auf Folgendes hinführt: Artikel, Präposition, Konjunktion,
   „Richtung“, „Linie(n)“ (`_DANGLING_TAIL_WORDS`, seit 2026-10-06). Auf
@@ -2553,7 +2561,12 @@ Nicht jeder Text gehört in ein NMT-Modell:
   →Wienerbergstraße27a. … 15A5X …“); seit Epoche 23 setzt
   `_render_wl_sentence` jeden Satz mit Pfeil wie früher den Record ohne
   Modell zusammen (`_render_record_table`: „Hartäckerstraße 65 → approx. 50
-  metres towards Borkowskigasse.“). Ein Satz endet dabei nicht hinter einer
+  metres towards Borkowskigasse.“). Die Lage am Ort bekommt dabei ihr
+  englisches Wort, für jedes Wort, das von Juli bis 23.10.2026 in den 101
+  Verlegungen deutsch blieb (Epoche 26, `_RECORD_VALUE_RULES`: „Gleiskörper“
+  → „track area“, „Haltestelle Straßenbahn“ → „tram stop“, „Parkanlage“,
+  „Einfahrt“, „Stiege“, „Richtung Ampel“, „unter“, „in Fahrtrichtung
+  Kagran“ → „in the direction of Kagran“). Ein Satz endet dabei nicht hinter einer
   Ordnungszahl am Adressanfang („1. Haidequerstraße“) oder einer Abkürzung
   („ggü. 40“, `_WL_SENTENCE_SPLIT_RE`).
 * **ÖBB-Sätze nach Vorlage.** ÖBB schreibt Störungen fast immer in einem

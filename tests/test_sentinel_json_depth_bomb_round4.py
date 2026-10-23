@@ -72,7 +72,7 @@ from unittest.mock import patch
 import pytest
 
 
-DEEP_BOMB_STR = "[" * 5000 + "]" * 5000
+DEEP_BOMB_STR = "[" * 100_000 + "]" * 100_000
 
 
 def test_precondition_deep_bomb_raises_recursion_error() -> None:

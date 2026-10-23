@@ -13,9 +13,10 @@ broken HTML tag glyph or a truncation artifact next to the
 ``[Am 16.05.2026]`` timeframe bracket.
 
 The fix strips trailing ``>``/``<`` (with optional surrounding
-whitespace) from the summary in ``_format_item_content``. Marker
-characters mid-text are preserved — only the trailing form (which
-has no semantic referent) is removed.
+whitespace) from the summary in ``_format_item_content``. A WL
+arrow standing alone in front of a small word goes too
+(``_STANDALONE_ARROW_RE``, see ``TestStandaloneArrowMidText``); one
+in front of a name or glued to a word stays.
 
 The strip happens BEFORE the title-body duplicate check (Bug 27A)
 so a summary like ``Betrieb ab Schwedenplatz >`` can match against
@@ -248,3 +249,67 @@ class TestNormalTitlesUntouched:
         desc = "Test\nBetrieb ab Foo <"
         _, out = _format(title, desc)
         assert "Foo <" not in out
+
+
+class TestStandaloneArrowMidText:
+    """A WL arrow between two words, the text kept it and the title did not.
+
+    Published 21.10.2026 15:19 (Jules audit of that day): the text did not
+    match its own title any more, so the reader got the sentence twice::
+
+        T: 42/9: Falschparker
+        D: Umleitung bis Gersthof über Linien 42 und 9! Umleitung bis
+           Gersthof < über Linien 42 und 9! [Seit 15:19]
+    """
+
+    def test_the_sentence_is_not_repeated(self) -> None:
+        short, out = _format(
+            "42/9: Falschparker Umleitung bis Gersthof über Linien 42 und 9!",
+            "Falschparker\nUmleitung bis\nGersthof < über\nLinien 42 und 9!",
+        )
+        assert short == "42/9: Falschparker"
+        assert out.startswith("Umleitung bis Gersthof über Linien 42 und 9! ["), out
+        assert out.count("Gersthof") == 1, out
+
+    def test_an_arrow_before_the_next_word_goes(self) -> None:
+        _, out = _format(
+            "49: Betrieb ab Hütteldorfer Straße mit Linie 46",
+            "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
+        )
+        assert out.startswith("Grund: Gleisbauarbeiten."), out
+        assert ">" not in out.replace("[", "")
+
+    def test_both_arrows_of_a_pair_go(self) -> None:
+        _, out = _format(
+            "U3: Störung Kein Betrieb zwischen Landstraße und Schlachthausgasse",
+            "Störung Kein Betrieb zwischen Landstraße <> und Schlachthausgasse > zur Info",
+        )
+        assert "<" not in out and ">" not in out, out
+        assert "Landstraße und Schlachthausgasse zur Info" in out, out
+
+    def test_an_arrow_before_a_bracket_goes(self) -> None:
+        # 19.10.2026: "Betrieb ab Gersthof (Umleitung). Betrieb ab Gersthof <
+        # (Umleitung)".
+        _, out = _format("Falschparker Betrieb ab Gersthof (Umleitung)", "Falschparker\nBetrieb ab Gersthof < (Umleitung)")
+        assert out.count("Gersthof") == 1, out
+        assert "<" not in out, out
+
+    def test_a_glyph_glued_to_a_word_stays(self) -> None:
+        _, out = _format("1: Bhf. Hütteldorf", "Hinweis\nBhf. Hütteldorf Fahrt für <80 ab heute")
+        assert "<80" in out, out
+
+    def test_other_sources_keep_their_text(self) -> None:
+        item = cast(
+            FeedItem,
+            {
+                "title": "Wien Meidling ↔ Wien Hbf",
+                "description": "Wert < 5 bleibt",
+                "source": "ÖBB",
+                "category": "Störung",
+                "guid": "test",
+                "link": "",
+            },
+        )
+        now = datetime(2026, 5, 16, 12, 0, tzinfo=UTC)
+        out = build_feed._format_item_content(item, ident="t", starts_at=now, ends_at=None)
+        assert "Wert < 5 bleibt" in out.desc_text_truncated
