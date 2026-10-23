@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029, I20261023-0044-F01, I20261023-0044"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261023-0045-F01, I20261023-0045-F02, I20261023-0045, I20261020-0029, I20261023-0044-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R293-474, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R2373-126, R2379-627, R2380-627, R2378-627, R2025-671, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2372-627, R2345-127, R2343-626, R2558-125, R5815-671, R401-101, R1974-466, R2420-411, R500-101, R1223-138, R1221-138, R1222-138, R1224-138, R1225-138, R1226-138, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R318-437, R36-152, R45-136, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R2359-125, R2343-125, R2343-626, R2345-127, R2380-627, R2378-627, R2025-671, R2371-125, R2370-125, R2372-125, R2373-127, R2373-125, R2373-126, R2379-627, R2372-627, R2558-125, R5815-671, R401-101, R1974-466, R2420-411, R500-101, R1224-138, R1223-138, R1222-138, R1221-138, R1225-138, R1226-138, R1375-152, R1443-152, R1442-152, R1486-152, R1441-152, R1447-152, R1446-152, R1445-152, R1444-152, R1448-152, R1375-448, R1401-448, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -266,55 +266,6 @@
       "38": "ptTram"
      }
     },
-    "description": "Linie 38: Fahrtbehinderung in Richtung Grinzing. Voraussichtliche Dauer: 19:35 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Paradisgasse.",
-    "descriptionHTML": "<p>Linie 38:<br>Fahrtbehinderung in Richtung Grinzing.</p><p>Voraussichtliche Dauer: 19:35 Uhr.</p><p>Grund: Verkehrsunfall im Haltestellenbereich Paradisgasse.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 38:<br>Fahrtbehinderung in Richtung Grinzing.</p><p>Voraussichtliche Dauer: 19:35 Uhr.</p><p>Grund: Verkehrsunfall im Haltestellenbereich Paradisgasse.</p>",
-       "descriptionPlain": "Linie 38: Fahrtbehinderung in Richtung Grinzing. Voraussichtliche Dauer: 19:35 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Paradisgasse.",
-       "title": "38: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261023-0044",
-    "owner": "WL",
-    "parentName": "I20261023-0044",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 138,
-      "lineName": "38",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     1218
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-23T19:12:00.000+0200",
-     "end": "2026-10-23T19:28:00.000+0200",
-     "lastUpdate": "2026-10-23T19:28:00.000+0200",
-     "resume": "2026-10-23T19:28:00.000+0200",
-     "start": "2026-10-23T19:12:00.000+0200"
-    },
-    "title": "38: Verkehrsunfall"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "38": "ptTram"
-     }
-    },
     "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "<p>Linie 38: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
@@ -354,6 +305,158 @@
      "start": "2026-10-23T19:12:00.000+0200"
     },
     "title": "38: Verkehrsunfall"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "48A": "ptBusCity",
+      "52": "ptTram"
+     }
+    },
+    "description": "Linie 52: Fahrtbehinderung in Richtung Parlament, U Volkstheater. Linie 48A: Fahrtbehinderung in Richtung Parlament, U Volkstheater. Voraussichtliche Dauer: 20:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Volkstheater U.",
+    "descriptionHTML": "<p>Linie 52:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater.<br>Linie 48A:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Volkstheater U.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 52:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater.<br>Linie 48A:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Volkstheater U.</p>",
+       "descriptionPlain": "Linie 52: Fahrtbehinderung in Richtung Parlament, U Volkstheater. Linie 48A: Fahrtbehinderung in Richtung Parlament, U Volkstheater. Voraussichtliche Dauer: 20:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Volkstheater U.",
+       "title": "48A, 52: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261023-0045",
+    "owner": "WL",
+    "parentName": "I20261023-0045",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "52",
+     "48A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 152,
+      "lineName": "52",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 448,
+      "lineName": "48A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "relatedStops": [
+     1401
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-23T19:47:00.000+0200",
+     "end": "2026-10-23T19:57:00.000+0200",
+     "lastUpdate": "2026-10-23T19:57:00.000+0200",
+     "resume": "2026-10-23T19:57:00.000+0200",
+     "start": "2026-10-23T19:45:00.000+0200"
+    },
+    "title": "48A, 52: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "48A": "ptBusCity"
+     }
+    },
+    "description": "Linie 48A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 48A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 48A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 48A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "48A: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261023-0045-F01",
+    "owner": "WL",
+    "parentName": "I20261023-0045",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 448,
+      "lineName": "48A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "relatedStops": [
+     1401
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-23T19:57:00.000+0200",
+     "lastUpdate": "2026-10-23T19:57:00.000+0200",
+     "resume": "2026-10-23T19:57:00.000+0200",
+     "start": "2026-10-23T19:45:00.000+0200"
+    },
+    "title": "48A: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "52": "ptTram"
+     }
+    },
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "52: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261023-0045-F02",
+    "owner": "WL",
+    "parentName": "I20261023-0045",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 152,
+      "lineName": "52",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     1401
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-23T19:57:00.000+0200",
+     "lastUpdate": "2026-10-23T19:57:00.000+0200",
+     "resume": "2026-10-23T19:57:00.000+0200",
+     "start": "2026-10-23T19:45:00.000+0200"
+    },
+    "title": "52: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -726,6 +829,167 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Bus",
+    "name": "R1375-152",
+    "owner": "WL",
+    "parentName": "R1375-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1375
+    ],
+    "time": {
+     "end": "2026-10-23T20:53:00.000+0200",
+     "start": "2026-10-23T19:50:03.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Bus"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Bus",
+    "name": "R1375-448",
+    "owner": "WL",
+    "parentName": "R1375-448",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedStops": [
+     1375
+    ],
+    "time": {
+     "end": "2026-10-23T20:55:00.000+0200",
+     "start": "2026-10-23T19:56:03.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Bus"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Bus",
+    "name": "R1401-448",
+    "owner": "WL",
+    "parentName": "R1401-448",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedStops": [
+     1401
+    ],
+    "time": {
+     "end": "2026-10-23T20:55:00.000+0200",
+     "start": "2026-10-23T19:56:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Bus"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Bus",
+    "name": "R1441-152",
+    "owner": "WL",
+    "parentName": "R1441-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1441
+    ],
+    "time": {
+     "end": "2026-10-23T20:53:00.000+0200",
+     "start": "2026-10-23T19:50:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Bus"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Bus",
+    "name": "R1442-152",
+    "owner": "WL",
+    "parentName": "R1442-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1442
+    ],
+    "time": {
+     "end": "2026-10-23T20:53:00.000+0200",
+     "start": "2026-10-23T19:50:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Bus"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Bus",
+    "name": "R1443-152",
+    "owner": "WL",
+    "parentName": "R1443-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1443
+    ],
+    "time": {
+     "end": "2026-10-23T20:53:00.000+0200",
+     "start": "2026-10-23T19:50:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Bus"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Bus",
+    "name": "R1444-152",
+    "owner": "WL",
+    "parentName": "R1444-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1444
+    ],
+    "time": {
+     "end": "2026-10-23T20:53:00.000+0200",
+     "start": "2026-10-23T19:54:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Bus"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
     "name": "R1445-149",
     "owner": "WL",
@@ -745,6 +1009,29 @@
      "start": "2026-10-20T00:00:06.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Bus",
+    "name": "R1445-152",
+    "owner": "WL",
+    "parentName": "R1445-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1445
+    ],
+    "time": {
+     "end": "2026-10-23T20:53:00.000+0200",
+     "start": "2026-10-23T19:54:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Bus"
    },
    {
     "alertCause": "undefined alert cause",
@@ -772,6 +1059,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Bus",
+    "name": "R1446-152",
+    "owner": "WL",
+    "parentName": "R1446-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1446
+    ],
+    "time": {
+     "end": "2026-10-23T20:53:00.000+0200",
+     "start": "2026-10-23T19:54:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Bus"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
     "name": "R1447-149",
     "owner": "WL",
@@ -795,6 +1105,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Bus",
+    "name": "R1447-152",
+    "owner": "WL",
+    "parentName": "R1447-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1447
+    ],
+    "time": {
+     "end": "2026-10-23T20:53:00.000+0200",
+     "start": "2026-10-23T19:54:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Bus"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
     "name": "R1448-149",
     "owner": "WL",
@@ -814,6 +1147,29 @@
      "start": "2026-10-20T00:00:06.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Bus",
+    "name": "R1448-152",
+    "owner": "WL",
+    "parentName": "R1448-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1448
+    ],
+    "time": {
+     "end": "2026-10-23T20:53:00.000+0200",
+     "start": "2026-10-23T19:54:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Bus"
    },
    {
     "alertCause": "undefined alert cause",
@@ -998,6 +1354,29 @@
      "start": "2026-10-20T00:00:06.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Bus",
+    "name": "R1486-152",
+    "owner": "WL",
+    "parentName": "R1486-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1486
+    ],
+    "time": {
+     "end": "2026-10-23T20:53:00.000+0200",
+     "start": "2026-10-23T19:50:05.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Bus"
    },
    {
     "alertCause": "undefined alert cause",
