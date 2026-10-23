@@ -1295,18 +1295,36 @@ Bild), seltener mit dem roten WL-Logo (rote Folie). Die Linkziele der ÖBB-
 und Baustellen-Meldungen haben kein Vorschaubild.
 
 Darum trägt jede Meldung aller Quellen, im deutschen und im englischen Feed,
-dasselbe schlichte weiße Bild `docs/assets/feed-item.png` (1920 × 1080,
-veröffentlicht unter `https://origamihase.github.io/wien-oepnv/assets/feed-item.png`),
+dasselbe eigene Bild (1920 × 1080; bis 23.10. das schlichte weiße
+`docs/assets/feed-item.png`, seither die Raufaser unten),
 als `<enclosure>` (RSS 2.0) und als `<media:content>` (Media RSS). Unter der
 dunklen Schicht von EasySignage erscheint Weiß als das gewählte Grau. Die
 Links bleiben beim Betreiber (Abschnitt oben). `_ITEM_IMAGE_BYTES` in
 `src/build_feed.py` ist die Dateigröße für das Pflichtattribut `length`;
 `tests/test_item_image.py` hält sie und die Maße gleich mit der Datei. Andere
-Feed-Leser können das Bild als weiße Vorschau anzeigen. Titel, Texte, GUIDs,
+Feed-Leser können das Bild als helle Vorschau anzeigen. Titel, Texte, GUIDs,
 Links und Reihenfolge ändern sich nicht (Nachbau von 216 Feed-Ständen
 15.–19.10.: bis auf die beiden Bild-Elemente identisch). Ob EasySignage das
 eigene Bild dem Vorschaubild vorzieht, sieht nur der Betreiber in der
 Vorschau und am Fernseher.
+
+**Raufaser statt Weiß (seit 2026-10-23).** Michael, 23.10.2026: „Ich würde den
+grauen Hintergrund gerne mit einem Wallpaper aufhübschen. Eine Raufasertapete
+in Full HD und im selben Grauton würde mir gefallen.“ Gemeint ist der
+Hintergrund der TV-Folien, nicht die Webseite. Seither ist das Bild jeder
+Meldung `docs/assets/feed-item-raufaser.jpg` (1920 × 1080, JPEG,
+`image/jpeg`): eine fast weiße Raufaser-Wand, die
+`scripts/make_feed_item_image.py` ohne Foto berechnet (kleine, zufällig
+gedrehte Holzspäne als Höhenkarte, weichgezeichnet, Licht von links oben;
+fester Startwert, also wiederholbar; das Skript braucht `numpy` und Pillow).
+EasySignage legt eine dunkle Schicht über das Bild und macht aus Weiß das
+Grau `#7d7d7d`. Weil der Median des Bildes fast Weiß ist (254, Mittel 250) und die
+Späne nur als weiche Schatten darunter liegen, bleibt die Folie im selben
+Grau; im Mittel wird sie um etwa zwei Stufen dunkler, die weiße und orange
+Schrift steht unverändert davor. Ein neuer Dateiname statt eines neuen
+Inhalts unter dem alten Namen, damit EasySignage das Bild nicht aus einem
+Zwischenspeicher nimmt. `feed-item.png` bleibt liegen, damit Folien, die
+noch die alte Adresse halten, nicht ohne Bild dastehen.
 
 ## 2. Die `request_safe`-Security-State-Machine
 

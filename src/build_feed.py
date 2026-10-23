@@ -8066,26 +8066,31 @@ _ITEM_SOURCES: dict[str, _ItemSource] = {
 # its own, EasySignage shows the preview image (og:image) of the item link, and
 # wienerlinien.at/betriebsinfo serves either a missing "image.png" (grey slide)
 # or the red WL logo (red slide), at random. So every item of every source
-# carries the same plain white image as ``<enclosure>`` and
-# ``<media:content>``; under EasySignage's dark layer it reads as the grey he
-# chose. The links stay with their operators (see ``_ITEM_SOURCES``).
+# carries the same image of our own as ``<enclosure>`` and ``<media:content>``;
+# under EasySignage's dark layer white reads as the grey he chose. The links
+# stay with their operators (see ``_ITEM_SOURCES``).
+# Michael, 23.10.2026: the grey gets a woodchip-wallpaper ("Raufaser") look in
+# Full HD, in the same grey. The image is a near-white woodchip wall computed
+# by scripts/make_feed_item_image.py (no photo); under the dark layer its
+# median is the former grey, the chips show as soft shadows.
 # ``_ITEM_IMAGE_BYTES`` is the file size RSS 2.0 asks for in ``length``;
 # tests/test_item_image.py keeps it equal to the file in docs/assets/.
-_ITEM_IMAGE_URL = "https://origamihase.github.io/wien-oepnv/assets/feed-item.png"
-_ITEM_IMAGE_BYTES = 3448
+_ITEM_IMAGE_URL = "https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg"
+_ITEM_IMAGE_BYTES = 281823
+_ITEM_IMAGE_TYPE = "image/jpeg"
 _ITEM_IMAGE_WIDTH = 1920
 _ITEM_IMAGE_HEIGHT = 1080
 
 
 def _add_item_image(item: ET.Element) -> None:
-    """Attach the shared plain item image (see ``_ITEM_IMAGE_URL``)."""
+    """Attach the shared item image (see ``_ITEM_IMAGE_URL``)."""
     enclosure = ET.SubElement(item, "enclosure")
     enclosure.set("url", _ITEM_IMAGE_URL)
     enclosure.set("length", str(_ITEM_IMAGE_BYTES))
-    enclosure.set("type", "image/png")
+    enclosure.set("type", _ITEM_IMAGE_TYPE)
     media = ET.SubElement(item, f"{{{MEDIA_NS}}}content")
     media.set("url", _ITEM_IMAGE_URL)
-    media.set("type", "image/png")
+    media.set("type", _ITEM_IMAGE_TYPE)
     media.set("medium", "image")
     media.set("width", str(_ITEM_IMAGE_WIDTH))
     media.set("height", str(_ITEM_IMAGE_HEIGHT))

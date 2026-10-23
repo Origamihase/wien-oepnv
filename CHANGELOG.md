@@ -5,6 +5,17 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Raufaser-Hintergrund auf den TV-Folien (2026-10-23)**: Michaels Wunsch:
+  „Ich würde den grauen Hintergrund gerne mit einem Wallpaper aufhübschen.
+  Eine Raufasertapete in Full HD und im selben Grauton würde mir gefallen.“
+  Das Bild jeder Meldung in beiden Feeds ist jetzt
+  `docs/assets/feed-item-raufaser.jpg` (1920 × 1080, `image/jpeg`): eine fast
+  weiße Raufaser-Wand, berechnet von `scripts/make_feed_item_image.py` (kein
+  Foto). Unter der dunklen Schicht von EasySignage bleibt der Median das
+  bisherige Grau `#7d7d7d`, die Späne zeigen sich als weiche Schatten. Titel,
+  Texte, Links, GUIDs und Reihenfolge bleiben gleich; die Webseite ist nicht
+  betroffen. Test `tests/test_item_image.py`; `docs/architecture.md` §1
+  „Ein einheitliches Bild je Meldung“.
 * **Jules-Audits 15.–22.10. geprüft (2026-10-23)**: Zwei Funde bestätigt und
   als Klasse behoben. (1) WL-Anzeigepfeile mitten im Text: „<“/„>“ vor einem
   kleinen Wort oder einer Klammer fallen weg wie im Titel
