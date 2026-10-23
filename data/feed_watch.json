@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-23T14:31:09.037847+00:00",
- "built": "2026-10-23T16:30:53+02:00",
+ "updated": "2026-10-23T15:01:21.842880+00:00",
+ "built": "2026-10-23T17:01:06+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-23T16:30:53+02:00",
+  "built": "2026-10-23T17:01:06+02:00",
   "items": [
+   {
+    "title": "63A: Falschparker",
+    "time_line": "Seit 16:46"
+   },
    {
     "title": "40/41/42: Polizeieinsatz",
     "time_line": "Seit 16:20"
@@ -21,7 +25,7 @@
     "time_line": "Seit 16:14"
    },
    {
-    "title": "40/41: Polizeieinsatz",
+    "title": "41: Polizeieinsatz",
     "time_line": "Seit 16:14"
    },
    {
@@ -31,10 +35,6 @@
    {
     "title": "42: Falschparker",
     "time_line": "Seit 16:14"
-   },
-   {
-    "title": "15A: Polizeieinsatz",
-    "time_line": "Seit 15:42"
    },
    {
     "title": "2/12: Fremder Verkehrsunfall",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-16T15:00:47.298169+00:00",
-   "raw": {
-    "wl-stoerungen": 142,
-    "wl-hinweise": 85,
-    "oebb": 162,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 25
-   },
-   "discarded": {
-    "wl": 15,
-    "oebb": 138,
-    "baustellen": 72
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 109
-   }
-  },
   {
    "t": "2026-10-16T15:30:53.880151+00:00",
    "raw": {
@@ -6770,6 +6750,26 @@
     "baustellen": 4,
     "oebb": 9,
     "wl": 124
+   }
+  },
+  {
+   "t": "2026-10-23T15:01:21.842880+00:00",
+   "raw": {
+    "wl-stoerungen": 114,
+    "wl-hinweise": 74,
+    "oebb": 161,
+    "baustellen-linien": 56,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 5,
+    "oebb": 136,
+    "baustellen": 70
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 122
    }
   }
  ]
