@@ -1,28 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-23T16:31:04.788633+00:00",
- "built": "2026-10-23T18:30:54+02:00",
+ "updated": "2026-10-23T17:01:05.271947+00:00",
+ "built": "2026-10-23T19:01:00+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-23T18:30:54+02:00",
+  "built": "2026-10-23T19:01:00+02:00",
   "items": [
-   {
-    "title": "40A: Falschparker",
-    "time_line": "Seit 18:25"
-   },
    {
     "title": "80A: Rettungseinsatz",
     "time_line": "Seit 17:41"
-   },
-   {
-    "title": "63A: Falschparker",
-    "time_line": "Seit 16:46"
-   },
-   {
-    "title": "7A: Falschparker",
-    "time_line": "Seit 17:58"
    },
    {
     "title": "S2: Wien Leopoldau ↔ Mistelbach",
@@ -47,31 +35,23 @@
    {
     "title": "1: Gleisbauarbeiten",
     "time_line": "Bis 05.12."
+   },
+   {
+    "title": "56B/56A/N62: Strampfergasse",
+    "time_line": "Bis 03.11."
+   },
+   {
+    "title": "80A: ÖBB-Bauarbeiten",
+    "time_line": "Bis 31.12.2027"
+   },
+   {
+    "title": "48A: Neubaugasse, Neustiftgasse",
+    "time_line": "Seit 19.10."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-16T17:01:01.668357+00:00",
-   "raw": {
-    "wl-stoerungen": 150,
-    "wl-hinweise": 85,
-    "oebb": 161,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 25
-   },
-   "discarded": {
-    "wl": 30,
-    "oebb": 137,
-    "baustellen": 72
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 107
-   }
-  },
   {
    "t": "2026-10-16T17:31:03.630331+00:00",
    "raw": {
@@ -6770,6 +6750,26 @@
     "baustellen": 4,
     "oebb": 9,
     "wl": 111
+   }
+  },
+  {
+   "t": "2026-10-23T17:01:05.271947+00:00",
+   "raw": {
+    "wl-stoerungen": 66,
+    "wl-hinweise": 75,
+    "oebb": 161,
+    "baustellen-linien": 56,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 3,
+    "oebb": 136,
+    "baustellen": 70
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 108
    }
   }
  ]
