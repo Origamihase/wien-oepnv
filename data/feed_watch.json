@@ -1,31 +1,23 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-23T15:01:21.842880+00:00",
- "built": "2026-10-23T17:01:06+02:00",
+ "updated": "2026-10-23T15:30:47.236729+00:00",
+ "built": "2026-10-23T17:30:37+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-23T17:01:06+02:00",
+  "built": "2026-10-23T17:30:37+02:00",
   "items": [
+   {
+    "title": "31A: Schadhafter PKW",
+    "time_line": "Seit 17:14"
+   },
    {
     "title": "63A: Falschparker",
     "time_line": "Seit 16:46"
    },
    {
-    "title": "40/41/42: Polizeieinsatz",
-    "time_line": "Seit 16:20"
-   },
-   {
-    "title": "38: Polizeieinsatz",
-    "time_line": "Seit 16:14"
-   },
-   {
-    "title": "37: Polizeieinsatz",
-    "time_line": "Seit 16:14"
-   },
-   {
-    "title": "41: Polizeieinsatz",
+    "title": "38/41: Polizeieinsatz",
     "time_line": "Seit 16:14"
    },
    {
@@ -33,20 +25,28 @@
     "time_line": "Seit 15:16"
    },
    {
-    "title": "42: Falschparker",
-    "time_line": "Seit 16:14"
-   },
-   {
-    "title": "2/12: Fremder Verkehrsunfall",
+    "title": "2: Fremder Verkehrsunfall",
     "time_line": "Seit 15:14"
-   },
-   {
-    "title": "7A: Falschparker",
-    "time_line": "Seit 15:04"
    },
    {
     "title": "62A/66A: Feuerwehreinsatz",
     "time_line": "Seit 12:49"
+   },
+   {
+    "title": "11A: Verkehrsunfall, Bauarbeiten",
+    "time_line": "Seit heute"
+   },
+   {
+    "title": "S2: Wien Leopoldau ↔ Mistelbach",
+    "time_line": "Ab So 25.10. bis 01.11."
+   },
+   {
+    "title": "1/2/D/71: Veranstaltung",
+    "time_line": "Am So 25.10."
+   },
+   {
+    "title": "1/2/D/71: Nationalfeiertag",
+    "time_line": "Am Mo 26.10."
    }
   ]
  },
@@ -6770,6 +6770,26 @@
     "baustellen": 4,
     "oebb": 9,
     "wl": 122
+   }
+  },
+  {
+   "t": "2026-10-23T15:30:47.236729+00:00",
+   "raw": {
+    "wl-stoerungen": 85,
+    "wl-hinweise": 75,
+    "oebb": 162,
+    "baustellen-linien": 56,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 3,
+    "oebb": 137,
+    "baustellen": 70
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 116
    }
   }
  ]
