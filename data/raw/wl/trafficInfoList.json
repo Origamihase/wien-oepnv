@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0029, I20261023-0052, I20261023-0053"
+    "trafficInfoNameList": "I20260909-0007, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0029, I20261023-0052, I20261023-0053-F01, I20261023-0053-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R1974-466, R3573-411, R3574-411, R2025-671, R2558-125, R401-101, R1537-152, R1536-152, R1535-152, R1542-152, R1539-152, R1540-152, R1541-152, R1538-152, R1610-411, R1535-411, R1536-411, R1537-411, R1449-149, R1448-149, R1447-149, R1473-149, R1474-149, R1475-149, R1476-149, R1474-412, R1448-412, R1445-149, R1446-149, R1472-149, R619-411, R2975-411, R623-411, R617-411, R620-411, R621-411, R625-411, R578-152, R579-152, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R36-152, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R293-474, R45-136, R318-437, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R1974-466, R3573-411, R3574-411, R2025-671, R2558-125, R401-101, R1540-152, R1541-152, R1537-152, R1536-152, R1535-152, R1542-152, R1538-152, R1539-152, R1535-411, R1536-411, R1537-411, R1610-411, R1448-149, R1474-149, R1473-149, R1476-149, R1475-149, R1446-149, R1445-149, R1474-412, R1472-149, R1449-149, R1447-149, R1448-412, R619-411, R2975-411, R620-411, R617-411, R621-411, R623-411, R625-411, R579-152, R578-152, R2420-411, R36-152, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R318-437, R293-474, R2345-127, R2372-627, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R594-411, R593-411, R595-411, R650-411, R3571-411, R3570-411, R2422-411, R1537-160, R1610-160, R1536-160, R1535-160, R5611-160, R1612-160, R1611-160, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -266,13 +266,13 @@
       "11A": "ptBusCity"
      }
     },
-    "description": "Linie 11A: Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U. Voraussichtliche Dauer: 00:05 Uhr. Grund: Falschparker im Bereich Offenbachgasse.",
-    "descriptionHTML": "<p>Linie 11A:<br>Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U.</p><p>Voraussichtliche Dauer: 00:05 Uhr.</p><p>Grund: Falschparker im Bereich Offenbachgasse.</p>",
+    "description": "Die Linie 11A fährt derzeit nur zwischen Bahnhof Heiligenstadt S U und Elderschplatz. Voraussichtliche Dauer: 00:45 Uhr. Grund: Falschparker im Bereich Offenbachgasse.",
+    "descriptionHTML": "<p>Die Linie 11A fährt derzeit nur zwischen Bahnhof Heiligenstadt S U und Elderschplatz.</p><p>Voraussichtliche Dauer: 00:45 Uhr.</p><p>Grund: Falschparker im Bereich Offenbachgasse.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 11A:<br>Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U.</p><p>Voraussichtliche Dauer: 00:05 Uhr.</p><p>Grund: Falschparker im Bereich Offenbachgasse.</p>",
-       "descriptionPlain": "Linie 11A: Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U. Voraussichtliche Dauer: 00:05 Uhr. Grund: Falschparker im Bereich Offenbachgasse.",
+       "descriptionHtml": "<p>Die Linie 11A fährt derzeit nur zwischen Bahnhof Heiligenstadt S U und Elderschplatz.</p><p>Voraussichtliche Dauer: 00:45 Uhr.</p><p>Grund: Falschparker im Bereich Offenbachgasse.</p>",
+       "descriptionPlain": "Die Linie 11A fährt derzeit nur zwischen Bahnhof Heiligenstadt S U und Elderschplatz. Voraussichtliche Dauer: 00:45 Uhr. Grund: Falschparker im Bereich Offenbachgasse.",
        "title": "11A: Falschparker"
       }
      }
@@ -298,7 +298,7 @@
     "status": "active",
     "time": {
      "created": "2026-10-23T23:37:00.000+0200",
-     "lastUpdate": "2026-10-23T23:37:00.000+0200",
+     "lastUpdate": "2026-10-24T00:26:00.000+0200",
      "start": "2026-10-23T23:37:00.000+0200"
     },
     "title": "11A: Falschparker"
@@ -308,23 +308,22 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "52": "ptTram",
-      "60": "ptTram"
+      "52": "ptTram"
      }
     },
-    "description": "Linie 52: Fahrtbehinderung in Richtung Baumgarten. Linie 60: Fahrtbehinderung in Richtung Rodaun. Voraussichtliche Dauer: 00:20 Uhr. Grund: Schadhafter PKW im Bereich Mariahilfer Straße 185.",
-    "descriptionHTML": "<p>Linie 52:<br>Fahrtbehinderung in Richtung Baumgarten.<br>Linie 60:<br>Fahrtbehinderung in Richtung Rodaun.</p><p>Voraussichtliche Dauer: 00:20 Uhr.</p><p>Grund: Schadhafter PKW im Bereich Mariahilfer Straße 185.</p>",
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 52:<br>Fahrtbehinderung in Richtung Baumgarten.<br>Linie 60:<br>Fahrtbehinderung in Richtung Rodaun.</p><p>Voraussichtliche Dauer: 00:20 Uhr.</p><p>Grund: Schadhafter PKW im Bereich Mariahilfer Straße 185.</p>",
-       "descriptionPlain": "Linie 52: Fahrtbehinderung in Richtung Baumgarten. Linie 60: Fahrtbehinderung in Richtung Rodaun. Voraussichtliche Dauer: 00:20 Uhr. Grund: Schadhafter PKW im Bereich Mariahilfer Straße 185.",
-       "title": "52, 60: Schadhafter PKW"
+       "descriptionHtml": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "52: Schadhafter PKW"
       }
      }
     ],
     "location": "Mariahilfer Straße 185",
-    "name": "I20261023-0053",
+    "name": "I20261023-0053-F01",
     "owner": "WL",
     "parentName": "I20261023-0053",
     "priority": "1",
@@ -332,15 +331,55 @@
     "reasonName": "Schadhafter PKW",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "52",
-     "60"
+     "52"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 152,
       "lineName": "52",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-24T00:08:00.000+0200",
+     "lastUpdate": "2026-10-24T00:08:00.000+0200",
+     "resume": "2026-10-24T00:08:00.000+0200",
+     "start": "2026-10-23T23:57:00.000+0200"
+    },
+    "title": "52: Schadhafter PKW"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "60": "ptTram"
+     }
+    },
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "60: Schadhafter PKW"
+      }
+     }
+    ],
+    "location": "Mariahilfer Straße 185",
+    "name": "I20261023-0053-F02",
+    "owner": "WL",
+    "parentName": "I20261023-0053",
+    "priority": "1",
+    "reasonId": 18,
+    "reasonName": "Schadhafter PKW",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 160,
       "lineName": "60",
@@ -349,11 +388,12 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-23T23:58:00.000+0200",
-     "lastUpdate": "2026-10-23T23:58:00.000+0200",
+     "created": "2026-10-24T00:08:00.000+0200",
+     "lastUpdate": "2026-10-24T00:08:00.000+0200",
+     "resume": "2026-10-24T00:08:00.000+0200",
      "start": "2026-10-23T23:57:00.000+0200"
     },
-    "title": "52, 60: Schadhafter PKW"
+    "title": "60: Schadhafter PKW"
    },
    {
     "alertCause": "undefined alert cause",
@@ -888,6 +928,29 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1535-160",
+    "owner": "WL",
+    "parentName": "R1535-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1535
+    ],
+    "time": {
+     "end": "2026-10-24T01:03:00.000+0200",
+     "start": "2026-10-24T00:04:28.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
     "name": "R1535-411",
     "owner": "WL",
     "parentName": "R1535-411",
@@ -934,6 +997,29 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1536-160",
+    "owner": "WL",
+    "parentName": "R1536-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1536
+    ],
+    "time": {
+     "end": "2026-10-24T01:03:00.000+0200",
+     "start": "2026-10-24T00:04:28.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
     "name": "R1536-411",
     "owner": "WL",
     "parentName": "R1536-411",
@@ -973,6 +1059,29 @@
     "time": {
      "end": "2026-10-24T00:56:00.000+0200",
      "start": "2026-10-24T00:00:28.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1537-160",
+    "owner": "WL",
+    "parentName": "R1537-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1537
+    ],
+    "time": {
+     "end": "2026-10-24T01:03:00.000+0200",
+     "start": "2026-10-24T00:04:28.000+0200"
     },
     "title": "Fahrtbehinderung\nSchadhafter PKW"
    },
@@ -1118,6 +1227,29 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1610-160",
+    "owner": "WL",
+    "parentName": "R1610-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1610
+    ],
+    "time": {
+     "end": "2026-10-24T01:03:00.000+0200",
+     "start": "2026-10-24T00:04:28.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
     "name": "R1610-411",
     "owner": "WL",
     "parentName": "R1610-411",
@@ -1134,6 +1266,52 @@
     "time": {
      "end": "2026-10-24T00:59:00.000+0200",
      "start": "2026-10-24T00:00:28.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1611-160",
+    "owner": "WL",
+    "parentName": "R1611-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1611
+    ],
+    "time": {
+     "end": "2026-10-24T01:04:00.000+0200",
+     "start": "2026-10-24T00:04:58.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1612-160",
+    "owner": "WL",
+    "parentName": "R1612-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1612
+    ],
+    "time": {
+     "end": "2026-10-24T01:04:00.000+0200",
+     "start": "2026-10-24T00:04:58.000+0200"
     },
     "title": "Fahrtbehinderung\nSchadhafter PKW"
    },
@@ -1689,7 +1867,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Bauarbeiten\nBusse halten Meiereistraße gegenüber 12",
+    "description": "Falschparker\nBetrieb ab Elderschplatz",
     "name": "R2420-411",
     "owner": "WL",
     "parentName": "R2420-411",
@@ -1704,10 +1882,33 @@
      2420
     ],
     "time": {
-     "end": "2026-10-24T23:59:59.000+0200",
+     "end": "2026-10-24T01:02:00.000+0200",
      "start": "2026-10-24T00:00:29.000+0200"
     },
-    "title": "Bauarbeiten\nBusse halten Meiereistraße gegenüber 12"
+    "title": "Falschparker\nBetrieb ab Elderschplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Elderschplatz",
+    "name": "R2422-411",
+    "owner": "WL",
+    "parentName": "R2422-411",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11A"
+    ],
+    "relatedStops": [
+     2422
+    ],
+    "time": {
+     "end": "2026-10-24T01:02:00.000+0200",
+     "start": "2026-10-24T00:03:29.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Elderschplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1800,6 +2001,52 @@
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb nur bis Elderschplatz",
+    "name": "R3570-411",
+    "owner": "WL",
+    "parentName": "R3570-411",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11A"
+    ],
+    "relatedStops": [
+     3570
+    ],
+    "time": {
+     "end": "2026-10-24T00:59:00.000+0200",
+     "start": "2026-10-24T00:01:00.000+0200"
+    },
+    "title": "Falschparker\nBetrieb nur bis Elderschplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb nur bis Elderschplatz",
+    "name": "R3571-411",
+    "owner": "WL",
+    "parentName": "R3571-411",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11A"
+    ],
+    "relatedStops": [
+     3571
+    ],
+    "time": {
+     "end": "2026-10-24T00:59:00.000+0200",
+     "start": "2026-10-24T00:01:00.000+0200"
+    },
+    "title": "Falschparker\nBetrieb nur bis Elderschplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1920,6 +2167,29 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R5611-160",
+    "owner": "WL",
+    "parentName": "R5611-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     5611
+    ],
+    "time": {
+     "end": "2026-10-24T01:04:00.000+0200",
+     "start": "2026-10-24T00:04:58.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
     "name": "R578-152",
     "owner": "WL",
     "parentName": "R578-152",
@@ -1981,6 +2251,75 @@
      "start": "2026-10-21T00:00:24.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb nur bis Elderschplatz",
+    "name": "R593-411",
+    "owner": "WL",
+    "parentName": "R593-411",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11A"
+    ],
+    "relatedStops": [
+     593
+    ],
+    "time": {
+     "end": "2026-10-24T00:59:00.000+0200",
+     "start": "2026-10-24T00:00:59.000+0200"
+    },
+    "title": "Falschparker\nBetrieb nur bis Elderschplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb nur bis Elderschplatz",
+    "name": "R594-411",
+    "owner": "WL",
+    "parentName": "R594-411",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11A"
+    ],
+    "relatedStops": [
+     594
+    ],
+    "time": {
+     "end": "2026-10-24T00:59:00.000+0200",
+     "start": "2026-10-24T00:00:59.000+0200"
+    },
+    "title": "Falschparker\nBetrieb nur bis Elderschplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb nur bis Elderschplatz",
+    "name": "R595-411",
+    "owner": "WL",
+    "parentName": "R595-411",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11A"
+    ],
+    "relatedStops": [
+     595
+    ],
+    "time": {
+     "end": "2026-10-24T00:59:00.000+0200",
+     "start": "2026-10-24T00:00:59.000+0200"
+    },
+    "title": "Falschparker\nBetrieb nur bis Elderschplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2119,6 +2458,29 @@
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb nur bis Elderschplatz",
+    "name": "R650-411",
+    "owner": "WL",
+    "parentName": "R650-411",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11A"
+    ],
+    "relatedStops": [
+     650
+    ],
+    "time": {
+     "end": "2026-10-24T00:59:00.000+0200",
+     "start": "2026-10-24T00:00:59.000+0200"
+    },
+    "title": "Falschparker\nBetrieb nur bis Elderschplatz"
    },
    {
     "alertCause": "undefined alert cause",
