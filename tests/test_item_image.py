@@ -1,25 +1,29 @@
-"""Every item carries the same plain white image.
+"""Every item carries the same image of our own.
 
 Michael, 19.10.2026: the red Wiener-Linien background on the TV slides does
 not look good, the grey one does. EasySignage shows the og:image of the item
 link when an item has no image of its own, and wienerlinien.at/betriebsinfo
 serves either a missing "image.png" (grey) or the red WL logo (red) at random.
-A white image of our own keeps every slide the same grey.
+An image of our own keeps every slide the same grey.
+
+Michael, 23.10.2026: the grey becomes a woodchip wallpaper ("Raufaser") in
+Full HD, in the same grey. The image is a near-white woodchip wall from
+scripts/make_feed_item_image.py; under EasySignage's dark layer (white becomes
+#7d7d7d) its median stays that grey.
 """
 
 from __future__ import annotations
 
-import struct
-import zlib
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import pytest
+from PIL import Image, ImageStat
 
 import src.build_feed as bf
 
 NOW = datetime(2026, 10, 19, 12, 0, tzinfo=UTC)
-IMAGE = Path(__file__).resolve().parents[1] / "docs" / "assets" / "feed-item.png"
+IMAGE = Path(__file__).resolve().parents[1] / "docs" / "assets" / "feed-item-raufaser.jpg"
 
 
 def _item(source: str) -> dict[str, object]:
@@ -45,33 +49,38 @@ def test_every_item_carries_the_plain_image(source: str, lang: str) -> None:
     assert enclosures[0].attrib == {
         "url": bf._ITEM_IMAGE_URL,
         "length": str(bf._ITEM_IMAGE_BYTES),
-        "type": "image/png",
+        "type": "image/jpeg",
     }
     media = elem.findall(f"{{{bf.MEDIA_NS}}}content")
     assert len(media) == 1
     assert media[0].get("url") == bf._ITEM_IMAGE_URL
+    assert media[0].get("type") == "image/jpeg"
     assert media[0].get("medium") == "image"
 
 
 def test_the_image_file_matches_the_feed_attributes() -> None:
     data = IMAGE.read_bytes()
     assert len(data) == bf._ITEM_IMAGE_BYTES
-    assert data[:8] == b"\x89PNG\r\n\x1a\n"
-    width, height = struct.unpack(">II", data[16:24])
-    assert (width, height) == (bf._ITEM_IMAGE_WIDTH, bf._ITEM_IMAGE_HEIGHT)
+    assert data[:3] == b"\xff\xd8\xff"
+    with Image.open(IMAGE) as image:
+        assert image.format == "JPEG"
+        assert image.size == (bf._ITEM_IMAGE_WIDTH, bf._ITEM_IMAGE_HEIGHT)
     assert bf._ITEM_IMAGE_URL.endswith("/assets/" + IMAGE.name)
 
 
-def test_the_image_is_plain_white() -> None:
-    data = IMAGE.read_bytes()
-    pos, idat = 8, b""
-    while pos < len(data):
-        length = struct.unpack(">I", data[pos : pos + 4])[0]
-        kind = data[pos + 4 : pos + 8]
-        if kind == b"IDAT":
-            idat += data[pos + 8 : pos + 8 + length]
-        pos += 12 + length
-    raw = zlib.decompress(idat)
-    rows = [raw[i : i + 1 + bf._ITEM_IMAGE_WIDTH] for i in range(0, len(raw), 1 + bf._ITEM_IMAGE_WIDTH)]
-    assert len(rows) == bf._ITEM_IMAGE_HEIGHT
-    assert all(row[1:] == b"\xff" * bf._ITEM_IMAGE_WIDTH for row in rows)
+def test_the_image_is_a_near_white_grey_woodchip_wall() -> None:
+    """Grey without a tint, mostly white, with visible relief.
+
+    Under EasySignage's dark layer white becomes the grey Michael chose, so
+    the median must stay (almost) white for the slides to keep that grey,
+    and the spread must show the woodchip relief without drowning the text.
+    """
+    with Image.open(IMAGE) as image:
+        rgb = image.convert("RGB")
+    red, green, blue = (ImageStat.Stat(band).mean[0] for band in rgb.split())
+    assert abs(red - green) < 1 and abs(green - blue) < 1
+    grey = rgb.convert("L")
+    stat = ImageStat.Stat(grey)
+    assert 248 <= stat.mean[0] <= 253
+    assert 4 <= stat.stddev[0] <= 14
+    assert stat.median[0] >= 250

@@ -137,7 +137,10 @@ Michael KI-generiert. Die ÖBB-Marken, die die Bilder zeigten
 (Logo, Schriftzug „cityjet“), sind seit 17.10.2026 entfernt, weil die
 Nutzungsbedingungen von oebb.at auch für Markennamen eine Genehmigung
 verlangen. Die übrigen Grafiken (`site-favicon.svg`, `og-default.svg`, das
-Logo im Seitenkopf) sind eigene Arbeiten.
+Logo im Seitenkopf) sind eigene Arbeiten. Das Bild jeder Feed-Meldung,
+`feed-item-raufaser.jpg` (Raufaser-Wand, 1920 × 1080), berechnet
+`scripts/make_feed_item_image.py` ohne Foto oder fremde Vorlage; das frühere
+weiße `feed-item.png` ist ebenfalls eigene Arbeit.
 
 Das Projekt ist **inoffiziell** und steht in keiner Verbindung zu Wiener
 Linien, ÖBB, Stadt Wien oder VOR/VAO; maßgeblich sind die verlinkten
