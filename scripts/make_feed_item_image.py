@@ -58,7 +58,8 @@ def _periodic_blur(field: np.ndarray, sigma: float) -> np.ndarray:
     fy = np.fft.fftfreq(field.shape[0])[:, None]
     fx = np.fft.rfftfreq(field.shape[1])[None, :]
     kernel = np.exp(-2.0 * (np.pi * sigma) ** 2 * (fx**2 + fy**2))
-    return np.fft.irfft2(np.fft.rfft2(field) * kernel, s=field.shape)
+    blurred: np.ndarray = np.fft.irfft2(np.fft.rfft2(field) * kernel, s=field.shape)
+    return blurred
 
 
 def height_map(rng: np.random.Generator) -> np.ndarray:
