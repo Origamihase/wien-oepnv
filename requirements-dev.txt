@@ -18,4 +18,6 @@ pre-commit>=4.6.0,<5
 # degrades gracefully if any of them is missing.
 rcssmin>=1.2.2,<2
 rjsmin>=1.2.5,<2
-Pillow>=10.0,<13
+# Pillow 13.0.0 (16.10.2026) fixes the advisories pip-audit reports for
+# 12.3.0 since 21.10.2026; the floor keeps every install on a fixed version.
+Pillow>=13.0,<14

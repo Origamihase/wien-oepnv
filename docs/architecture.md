@@ -1187,7 +1187,11 @@ und vor dem Veröffentlichen und prüft den fertigen deutschen Feed gegen die
 Regeln, die seit September aus Audits und Entscheidungen entstanden sind
 (doppelte Einträge, eine alte Meldung als neue Störung, eine „Seit“-Zeit vor
 der Störung, ÖBBs zweiter Satz, Zeitzeile, Länge), und die Mengen der
-Rohantworten und Verwürfe gegen die letzten sieben Tage. Er ändert den Feed
+Rohantworten und Verwürfe gegen die letzten sieben Tage; seit 2026-10-23
+meldet er auch eine Quelle (WL, ÖBB, Baustellen, VAO), die seit zwei Stunden
+keine brauchbare Antwort gab, während der Feed mit ihrer letzten guten
+Antwort weiterläuft (Regel `quelle-ohne-antwort`, Entscheidung des Betreibers
+vom 2026-10-23). Er ändert den Feed
 nie und blockiert die Veröffentlichung nie. Inhaltsfunde werden nie rot
 (Entscheidung des Betreibers vom 2026-10-10 für den Health check: rot nur,
 wenn der Abruf nicht funktioniert); sie stehen als `::warning` im

@@ -21,6 +21,29 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   5.000 Ebenen ohne `RecursionError` liest (CI läuft auf 3.11). Tests in
   `tests/test_trailing_directional_marker.py`,
   `tests/test_label_record_values_en.py`; `docs/architecture.md`.
+* **Feed-Wächter: Quelle ohne frische Antwort (2026-10-23)**: Michaels
+  Entscheidung („ja, bitte. Das klingt sehr gut und sinnvoll“) auf den
+  Vorschlag aus der Prüfung der Workflows dieser Woche. Am 21.10.2026
+  antworteten die Wiener Linien von 16:00 bis 23:00 mit 502; die
+  Update-Läufe blieben grün und bauten mit der letzten guten Antwort von
+  15:30, rot wurde nur ein Health check um 18:49. Neue Regel
+  `quelle-ohne-antwort`: Gibt WL, ÖBB oder Baustellen seit zwei Stunden
+  keine brauchbare Antwort (Exit-Code des Abrufs, neu als Ausgabe
+  `exit_codes` des Abrufschritts in `update-cycle.yml`, gelesen über
+  `FEED_WATCH_FETCH_EXIT`) oder hat der VAO-Abruf der Stammstrecke seit zwei
+  Stunden keinen Erfolg (`poll_status.json`), öffnet der Wächter ein Issue;
+  nie rot, es schließt sich nach zwei guten Läufen. Rückprüfung über 1 087
+  Läufe vom 01. bis 23.10.: laut nur am 21.10. (WL ab 18:02, VAO ab 19:02).
+  Tests in `tests/test_feed_watch.py`; `docs/reference/feed_watch.md`,
+  `docs/architecture.md`.
+* **Tests wieder grün: Pillow 13 (2026-10-23)**: Seit 21.10.2026 meldete
+  `pip-audit` in `scripts/run_static_checks.py` Sicherheitshinweise zu
+  Pillow 12.3.0 (8, am 23.10. 35 Einträge), behoben erst in Pillow 13.0.0.
+  Die Obergrenze `Pillow<13` in `requirements-dev.txt` ließ diese Version
+  nicht zu, deshalb schlug der Workflow „Tests“ auf `main` (21.10., 23.10.)
+  und in jedem PR fehl. Jetzt `Pillow>=13.0,<14`. Pillow nutzt nur das
+  manuelle `scripts/optimize_site_assets.py`; Feed-Bau und Update-Lauf
+  installieren es nicht, die Feeds bleiben unverändert.
 * **ÖBB: Ende folgt dem gezeigten Abschnitt (2026-10-19)**: Michaels
   Entscheidung (Karte „Ja, als Regel“). Rückt ein späterer ÖBB-Abschnitt nach
   vorn, weil er die Titelstrecke nennt (`_oebb_title_route_first`), gilt sein
