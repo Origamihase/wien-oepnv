@@ -1,7 +1,7 @@
 {
   "ausfaelle": {
     "by_direction": {
-      "Meidling": 1003,
+      "Meidling": 1004,
       "Praterstern": 916
     },
     "by_hour": {
@@ -13,7 +13,7 @@
       "05": 75,
       "06": 82,
       "07": 116,
-      "08": 138,
+      "08": 139,
       "09": 91,
       "10": 88,
       "11": 73,
@@ -44,7 +44,7 @@
       "REX3": 195,
       "REX92": 3,
       "S1": 429,
-      "S2": 300,
+      "S2": 301,
       "S27016": 1,
       "S28044": 1,
       "S28280": 1,
@@ -57,20 +57,20 @@
     "by_weekday": {
       "Di": 294,
       "Do": 330,
-      "Fr": 373,
+      "Fr": 374,
       "Mi": 307,
       "Mo": 295,
       "Sa": 153,
       "So": 167
     },
-    "total": 1919
+    "total": 1920
   },
-  "generated_at": "2026-10-23T08:31:04+02:00",
+  "generated_at": "2026-10-23T09:01:12+02:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.97,
     "by_direction": {
-      "Meidling": 6631,
+      "Meidling": 6632,
       "Praterstern": 3831
     },
     "by_hour_avg": {
@@ -112,33 +112,33 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-10-23T08:25:00+02:00",
+          "last_seen": "2026-10-23T08:55:00+02:00",
           "peer_rows_since": 0,
           "rows_in_window": 1186
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 2781,
+          "peer_rows_since": 2782,
           "rows_in_window": 0
         }
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-10-23T08:30:50+02:00",
+        "last_success": "2026-10-23T09:00:56+02:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
       "window_days": 30
     },
     "live": {
-      "avg_delay_minutes": 0.5,
+      "avg_delay_minutes": 1.5,
       "observations": 2,
       "window_minutes": 60
     },
     "max_delay_minutes": 395.33,
     "threshold_exceedances": 136,
     "threshold_minutes": 9.0,
-    "total_observations": 10462
+    "total_observations": 10463
   },
   "stoerungen": {
     "by_hour": {

@@ -50,14 +50,14 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "11: Haltestellenverlegung",
-    "description": "<p><strong><u>Haltestellenverlegung der Linie 11 in Richtung Kaiserebersdorf, Zinnergasse</u></strong></p><p><strong><u>Haltestelle:</u></strong> Wienerfeldgasse</p><p><strong><u>Von:</u></strong> Neilreichgasse 139C - 141</p><p><strong><u>Nach:</u></strong> Neilreichgasse 139A- 139B</p><p><strong><u>Dauer:</u></strong> von 27.Oktober 2026 etwa 07:00 Uhr, bis 19. November 2026 etwa 07:00 Uhr</p><p><strong><u>Grund:</u></strong> Gleisbauarbeiten</p>",
+    "title": "11: Wienerfeldgasse",
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 11 in Richtung Kaiserebersdorf, Zinnergasse</u></strong></p><p><strong><u>Haltestelle:</u></strong> Wienerfeldgasse</p><p><strong><u>Von:</u></strong> Neilreichgasse 139C - 141</p><p><strong><u>Nach:</u></strong> Neilreichgasse 139A- 139B</p><p><strong><u>Dauer:</u></strong> von 27. Oktober 2026 etwa 07:00 Uhr, bis 19. November 2026 etwa 07:00 Uhr</p><p><strong><u>Grund:</u></strong> Gleisbauarbeiten</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "cee7de03fd210cab2a224364f954bed6a6cde557a1d257b152748c34ab492edf",
+    "guid": "6fcb2dbdc801695dc786479b97e858eebba95bec899f518ed2c7d0bd66d9f3fa",
     "pubDate": "2026-10-23T08:25:00+02:00",
     "starts_at": "2026-10-27T00:00:00+01:00",
     "ends_at": "2026-11-19T07:00:00+01:00",
-    "_identity": "wl|hinweis|L=11|D=2026-10-27|TK=haltestellenverlegung"
+    "_identity": "wl|hinweis|L=11|D=2026-10-27|TK=11 wienerfeldgasse"
   },
   {
     "source": "Wiener Linien",
@@ -130,18 +130,6 @@
     "starts_at": "2026-08-03T00:00:00+02:00",
     "ends_at": "2026-10-28T04:00:00+01:00",
     "_identity": "wl|hinweis|L=16A,N65|D=2026-08-03|TK=16a n65 u6e strassenbauarbeiten am schöpfwerk"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
-    "title": "16A/N65: Am Schöpfwerk, Eibesbrunnergasse",
-    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 16A in Richtung Hetzendorf S bzw. N65 in Richtung Liesing</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Am Sch&ouml;pfwerk, Eibesbrunnergasse</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Am Sch&ouml;pfwerk 40</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Am Sch&ouml;pfwerk 34-36</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 29. September 2026, 07:00 Uhr, bis 23. Oktober 2026, etwa 09:00 Uhr</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stra&szlig;enbau</span></p>",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d83aadf33959172770cf0b88e10bbe4203e6cfd838c6c7a888d4efd12ce62c2a",
-    "pubDate": "2026-09-22T12:40:00+02:00",
-    "starts_at": "2026-09-29T00:00:00+02:00",
-    "ends_at": "2026-10-23T09:00:00+02:00",
-    "_identity": "wl|hinweis|L=16A|D=2026-09-29|TK=16a n65 am schöpfwerk eibesbrunnergasse"
   },
   {
     "source": "Wiener Linien",
@@ -1034,30 +1022,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "25: Rettungseinsatz",
     "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "7432174b0dd142a4728e8ba0144127ca655d49ae49e269a9660834d572eca3ab",
     "pubDate": "2026-10-23T07:30:00+02:00",
-    "starts_at": "2026-10-23T07:41:22+02:00",
+    "starts_at": "2026-10-23T07:30:00+02:00",
     "ends_at": null,
     "_identity": "wl|störung|L=25|D=2026-10-23|TK=rettungseinsatz",
     "_wl_ids": [
       "I20261023-0008"
     ],
     "_incident_start": "2026-10-23T07:30:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Rettungseinsatz Umleitung zur Hausfeldstraße",
-    "description": "Rettungseinsatz\nUmleitung zur Hausfeldstraße >",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "dcacd28c247ce03a2781e937b3cf037b6fa3c9f87da6686f8ac77cf8a4982a55",
-    "pubDate": "2026-10-23T07:45:21+02:00",
-    "starts_at": "2026-10-23T07:45:21+02:00",
-    "ends_at": "2026-10-23T08:44:00+02:00",
-    "_identity": "wl|störung|L=25|D=2026-10-23|TK=rettungseinsatz umleitung"
   },
   {
     "source": "Wiener Linien",
@@ -1150,30 +1126,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "26: Rettungseinsatz",
     "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "5ad871156e427d523784cb28867242cf1070538a7d455f2b56d31b9e1028dfac",
     "pubDate": "2026-10-23T07:30:00+02:00",
-    "starts_at": "2026-10-23T07:42:52+02:00",
+    "starts_at": "2026-10-23T07:30:00+02:00",
     "ends_at": null,
     "_identity": "wl|störung|L=26|D=2026-10-23|TK=rettungseinsatz",
     "_wl_ids": [
       "I20261023-0008"
     ],
     "_incident_start": "2026-10-23T07:30:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26: Rettungseinsatz Umleitung nach Aspern Nord",
-    "description": "Rettungseinsatz\nUmleitung nach Aspern Nord < >",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "b13452be8cd6cc541f7ba04a70a84d57d8af5f7007a8c37f84a6c9a1ba8b96aa",
-    "pubDate": "2026-10-23T07:42:52+02:00",
-    "starts_at": "2026-10-23T07:42:52+02:00",
-    "ends_at": "2026-10-23T08:42:00+02:00",
-    "_identity": "wl|störung|L=26|D=2026-10-23|TK=rettungseinsatz umleitung"
   },
   {
     "source": "Wiener Linien",
@@ -1343,7 +1307,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U2: Schadhaftes Fahrzeug",
-    "description": "Linie U2: Fahrtbehinderung in Richtung Karlsplatz. Voraussichtliche Dauer: 08:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rathaus.",
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104",
     "pubDate": "2026-10-23T08:27:00+02:00",
@@ -1354,6 +1318,22 @@
       "I20261023-0011"
     ],
     "_incident_start": "2026-10-23T08:27:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Schadhaftes Fahrzeug",
+    "description": "Die Linie U3 fährt derzeit zwischen den Stationen Schweglerstraße und Westbahnhof in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 09:20 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Schweglerstraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
+    "pubDate": "2026-10-23T08:50:00+02:00",
+    "starts_at": "2026-10-23T08:50:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U3|D=2026-10-23|TK=u3 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261023-0012"
+    ],
+    "_incident_start": "2026-10-23T08:50:00+02:00"
   },
   {
     "source": "Wiener Linien",
