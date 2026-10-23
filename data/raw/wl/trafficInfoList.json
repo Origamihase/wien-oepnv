@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261023-0033-F03, I20260917-0012, I20260922-0032, I20261023-0037-F04, I20261023-0026-F02, I20261023-0037-F02, I20260925-0011, I20261023-0040-F01, I20261023-0039-F01, I20260909-0007, I20261023-0034-F01, I20261023-0038, I20261020-0029, I20261023-0026-F01"
+    "trafficInfoNameList": "I20261023-0041, I20260917-0012, I20260922-0032, I20260925-0011, I20261023-0039-F01, I20260909-0007, I20261023-0037-F02, I20261020-0029, I20261023-0042"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R318-437, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2372-627, R2345-127, R2380-627, R2378-627, R2025-671, R2373-125, R2373-127, R2373-126, R2379-627, R2372-125, R2558-125, R5815-671, R401-101, R1974-466, R2420-411, R500-101, R1792-463, R1694-463, R1796-463, R1794-463, R1608-463, R1595-463, R1797-463, R814-463, R1762-463, R1685-463, R1766-463, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R318-437, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R2373-125, R2379-627, R2373-126, R2345-127, R2380-627, R2378-627, R2025-671, R2372-125, R2373-127, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2372-627, R2558-125, R5815-671, R401-101, R1974-466, R2420-411, R500-101, R1608-463, R1595-463, R1797-463, R1762-463, R814-463, R1766-463, R1685-463, R721-407, R720-407, R814-407, R1797-407, R2569-407, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,190 +259,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "fire",
-    "alertCauseId": 5,
-    "attributes": {
-     "relatedLineTypes": {
-      "66A": "ptBusCity"
-     }
-    },
-    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 66A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 66A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "66A: Feuerwehreinsatz"
-      }
-     }
-    ],
-    "location": "Atzgersdorfer Platz",
-    "name": "I20261023-0026-F01",
-    "owner": "WL",
-    "parentName": "I20261023-0026",
-    "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 466,
-      "lineName": "66A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-23T12:55:00.000+0200",
-     "lastUpdate": "2026-10-23T12:55:00.000+0200",
-     "resume": "2026-10-23T12:55:00.000+0200",
-     "start": "2026-10-23T12:49:00.000+0200"
-    },
-    "title": "66A: Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "fire",
-    "alertCauseId": 5,
-    "attributes": {
-     "relatedLineTypes": {
-      "62A": "ptBusCity"
-     }
-    },
-    "description": "Linie 62A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 62A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 62A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 62A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "62A: Feuerwehreinsatz"
-      }
-     }
-    ],
-    "location": "Atzgersdorfer Platz",
-    "name": "I20261023-0026-F02",
-    "owner": "WL",
-    "parentName": "I20261023-0026",
-    "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "62A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 462,
-      "lineName": "62A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-23T13:22:00.000+0200",
-     "lastUpdate": "2026-10-23T13:22:00.000+0200",
-     "resume": "2026-10-23T13:22:00.000+0200",
-     "start": "2026-10-23T12:49:00.000+0200"
-    },
-    "title": "62A: Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "2: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Höchstädtplatz / Dresdner Straße",
-    "name": "I20261023-0033-F03",
-    "owner": "WL",
-    "parentName": "I20261023-0033",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 102,
-      "lineName": "2",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-23T15:36:00.000+0200",
-     "end": "2026-10-23T17:51:00.000+0200",
-     "lastUpdate": "2026-10-23T17:00:00.000+0200",
-     "start": "2026-10-23T15:14:00.000+0200"
-    },
-    "title": "2: Fremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "31": "ptTram"
-     }
-    },
-    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "31: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Höchstädtplatz / Dresdner Straße",
-    "name": "I20261023-0034-F01",
-    "owner": "WL",
-    "parentName": "I20261023-0034",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 131,
-      "lineName": "31",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-23T15:51:00.000+0200",
-     "lastUpdate": "2026-10-23T15:51:00.000+0200",
-     "resume": "2026-10-23T15:51:00.000+0200",
-     "start": "2026-10-23T15:38:00.000+0200"
-    },
-    "title": "31: Fremder Verkehrsunfall"
-   },
-   {
     "alertCause": "police activity",
     "alertCauseId": 3,
     "attributes": {
@@ -479,105 +295,15 @@
       "vehicleType": "ptTram"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-23T16:25:00.000+0200",
      "end": "2026-10-23T17:58:00.000+0200",
-     "lastUpdate": "2026-10-23T17:13:00.000+0200",
+     "lastUpdate": "2026-10-23T17:58:00.000+0200",
+     "resume": "2026-10-23T17:58:00.000+0200",
      "start": "2026-10-23T16:14:00.000+0200"
     },
     "title": "38: Polizeieinsatz"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "41: Polizeieinsatz"
-      }
-     }
-    ],
-    "location": "Währinger Straße 46",
-    "name": "I20261023-0037-F04",
-    "owner": "WL",
-    "parentName": "I20261023-0037",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 141,
-      "lineName": "41",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-23T16:25:00.000+0200",
-     "lastUpdate": "2026-10-23T16:25:00.000+0200",
-     "resume": "2026-10-23T16:25:00.000+0200",
-     "start": "2026-10-23T16:14:00.000+0200"
-    },
-    "title": "41: Polizeieinsatz"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "11A": "ptBusCity"
-     }
-    },
-    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 11A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 11A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "11A: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261023-0038",
-    "owner": "WL",
-    "parentName": "I20261023-0038",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 411,
-      "lineName": "11A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-23T16:34:00.000+0200",
-     "lastUpdate": "2026-10-23T16:34:00.000+0200",
-     "resume": "2026-10-23T16:33:00.000+0200",
-     "start": "2026-10-23T16:33:00.000+0200"
-    },
-    "title": "11A: Verkehrsunfall"
    },
    {
     "alertCause": "vehicle on the line",
@@ -626,50 +352,94 @@
     "title": "63A: Falschparker"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "31A": "ptBusCity"
+      "80A": "ptBusCity"
      }
     },
-    "description": "Linie 31A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 31A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 80A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Bereich Böcklinstraße.",
+    "descriptionHTML": "<p>Linie 80A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Rettungseinsatz im Bereich Böcklinstraße.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 31A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 31A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "31A: Schadhafter PKW"
+       "descriptionHtml": "<p>Linie 80A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Rettungseinsatz im Bereich Böcklinstraße.</p>",
+       "descriptionPlain": "Linie 80A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Bereich Böcklinstraße.",
+       "title": "80A: Rettungseinsatz"
       }
      }
     ],
-    "location": "Eipeldauer Straße",
-    "name": "I20261023-0040-F01",
+    "location": "Böcklinstraße",
+    "name": "I20261023-0041",
     "owner": "WL",
-    "parentName": "I20261023-0040",
+    "parentName": "I20261023-0041",
     "priority": "1",
-    "reasonId": 18,
-    "reasonName": "Schadhafter PKW",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "31A"
+     "80A"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 431,
-      "lineName": "31A",
+      "lineId": 480,
+      "lineName": "80A",
       "vehicleType": "ptBusCity"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-23T17:20:00.000+0200",
-     "lastUpdate": "2026-10-23T17:20:00.000+0200",
-     "resume": "2026-10-23T17:20:00.000+0200",
-     "start": "2026-10-23T17:14:00.000+0200"
+     "created": "2026-10-23T17:41:00.000+0200",
+     "lastUpdate": "2026-10-23T17:41:00.000+0200",
+     "start": "2026-10-23T17:41:00.000+0200"
     },
-    "title": "31A: Schadhafter PKW"
+    "title": "80A: Rettungseinsatz"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "7A": "ptBusCity"
+     }
+    },
+    "description": "Linie 7A: Fahrtbehinderung in Richtung Meidling Hauptstraße U. Voraussichtliche Dauer: 18:20 Uhr. Grund: Falschparker im Bereich Davidgasse 75.",
+    "descriptionHTML": "<p>Linie 7A:<br>Fahrtbehinderung in Richtung Meidling Hauptstraße U.</p><p>Voraussichtliche Dauer: 18:20 Uhr.</p><p>Grund: Falschparker im Bereich Davidgasse 75.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 7A:<br>Fahrtbehinderung in Richtung Meidling Hauptstraße U.</p><p>Voraussichtliche Dauer: 18:20 Uhr.</p><p>Grund: Falschparker im Bereich Davidgasse 75.</p>",
+       "descriptionPlain": "Linie 7A: Fahrtbehinderung in Richtung Meidling Hauptstraße U. Voraussichtliche Dauer: 18:20 Uhr. Grund: Falschparker im Bereich Davidgasse 75.",
+       "title": "7A: Falschparker"
+      }
+     }
+    ],
+    "location": "Davidgasse 75",
+    "name": "I20261023-0042",
+    "owner": "WL",
+    "parentName": "I20261023-0042",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 407,
+      "lineName": "7A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-23T17:59:00.000+0200",
+     "lastUpdate": "2026-10-23T17:59:00.000+0200",
+     "start": "2026-10-23T17:58:00.000+0200"
+    },
+    "title": "7A: Falschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1250,29 +1020,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1694-463",
-    "owner": "WL",
-    "parentName": "R1694-463",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "63A"
-    ],
-    "relatedStops": [
-     1694
-    ],
-    "time": {
-     "end": "2026-10-23T17:50:00.000+0200",
-     "start": "2026-10-23T16:51:16.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
     "name": "R1762-463",
     "owner": "WL",
     "parentName": "R1762-463",
@@ -1319,68 +1066,22 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1792-463",
+    "name": "R1797-407",
     "owner": "WL",
-    "parentName": "R1792-463",
+    "parentName": "R1797-407",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "63A"
+     "7A"
     ],
     "relatedStops": [
-     1792
+     1797
     ],
     "time": {
-     "end": "2026-10-23T17:50:00.000+0200",
-     "start": "2026-10-23T16:51:16.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1794-463",
-    "owner": "WL",
-    "parentName": "R1794-463",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "63A"
-    ],
-    "relatedStops": [
-     1794
-    ],
-    "time": {
-     "end": "2026-10-23T17:50:00.000+0200",
-     "start": "2026-10-23T16:51:16.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1796-463",
-    "owner": "WL",
-    "parentName": "R1796-463",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "63A"
-    ],
-    "relatedStops": [
-     1796
-    ],
-    "time": {
-     "end": "2026-10-23T17:50:00.000+0200",
-     "start": "2026-10-23T16:51:16.000+0200"
+     "end": "2026-10-23T18:59:00.000+0200",
+     "start": "2026-10-23T18:00:23.000+0200"
     },
     "title": "Fahrtbehinderung\nFalschparker"
    },
@@ -2005,6 +1706,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2569-407",
+    "owner": "WL",
+    "parentName": "R2569-407",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedStops": [
+     2569
+    ],
+    "time": {
+     "end": "2026-10-23T18:59:00.000+0200",
+     "start": "2026-10-23T18:00:23.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -2159,6 +1883,75 @@
      "start": "2026-10-21T00:00:24.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R720-407",
+    "owner": "WL",
+    "parentName": "R720-407",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedStops": [
+     720
+    ],
+    "time": {
+     "end": "2026-10-23T18:59:00.000+0200",
+     "start": "2026-10-23T18:00:22.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R721-407",
+    "owner": "WL",
+    "parentName": "R721-407",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedStops": [
+     721
+    ],
+    "time": {
+     "end": "2026-10-23T18:59:00.000+0200",
+     "start": "2026-10-23T18:00:22.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R814-407",
+    "owner": "WL",
+    "parentName": "R814-407",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedStops": [
+     814
+    ],
+    "time": {
+     "end": "2026-10-23T18:59:00.000+0200",
+     "start": "2026-10-23T18:00:23.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
