@@ -5,6 +5,22 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Jules-Audits 15.–22.10. geprüft (2026-10-23)**: Zwei Funde bestätigt und
+  als Klasse behoben. (1) WL-Anzeigepfeile mitten im Text: „<“/„>“ vor einem
+  kleinen Wort oder einer Klammer fallen weg wie im Titel
+  (`_STANDALONE_ARROW_RE`); vorher stand der Satz doppelt da („42/9:
+  Falschparker“, 21.10.: „Umleitung bis Gersthof über Linien 42 und 9!
+  Umleitung bis Gersthof < über Linien 42 und 9!“). Ein Pfeil vor einem Ort
+  bleibt. Nachbau aller 5.300 WL-Texte seit Juli: 8 ändern sich, nur diese
+  Fälle. (2) Englische Haltestellen-Verlegungen: die Lage am Ort
+  („Gleiskörper“, „Haltestelle Straßenbahn“, „Parkanlage“, „Einfahrt“,
+  „Stiege“, „Richtung Ampel“, „unter“, „in Fahrtrichtung <Ort>“) wird ohne
+  Modell übersetzt; von 873 Record- und Verlegungssätzen ändern sich 10,
+  alle mit vorher deutschem Rest. Übersetzungs-Epoche 26. Dazu sind die
+  Tiefenbomben-Tests von 5.000 auf 100.000 Ebenen gesetzt, weil Python 3.12
+  5.000 Ebenen ohne `RecursionError` liest (CI läuft auf 3.11). Tests in
+  `tests/test_trailing_directional_marker.py`,
+  `tests/test_label_record_values_en.py`; `docs/architecture.md`.
 * **Feed-Wächter: Quelle ohne frische Antwort (2026-10-23)**: Michaels
   Entscheidung („ja, bitte. Das klingt sehr gut und sinnvoll“) auf den
   Vorschlag aus der Prüfung der Workflows dieser Woche. Am 21.10.2026

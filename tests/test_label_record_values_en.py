@@ -149,6 +149,58 @@ def test_from_to_shapes(value: str, expected: str) -> None:
     assert _render(value) == expected
 
 
+@pytest.mark.parametrize(
+    ("relocation", "expected"),
+    [
+        # Every relocation since July 2026 whose place stayed partly German
+        # in the EN feed (Jules audits 18. and 22.10.2026, "Gleiskörper").
+        (
+            "Simmeringer Hauptstraße gegenüber 120-122, Gleiskörper → Simmeringer Hauptstraße "
+            "157-161, provisorische Haltestelle, Hauptfahrbahn.",
+            "Simmeringer Hauptstraße opposite 120-122, track area → Simmeringer Hauptstraße "
+            "157-161, temporary stop, main carriageway.",
+        ),
+        (
+            "Donaufelder Straße 84, Hauptfahrbahn → Donaufelder Straße 80-84, Gleiskörper, "
+            "Haltestelle Straßenbahn.",
+            "Donaufelder Straße 84, main carriageway → Donaufelder Straße 80-84, track area, tram stop.",
+        ),
+        (
+            "Am Kaisermühlendamm vor Zufahrt zum Campingplatz → etwa 50 Meter gegen die Fahrtrichtung.",
+            "Am Kaisermühlendamm before the campsite access road → approx. 50 metres against the "
+            "direction of travel.",
+        ),
+        (
+            "Knotzenbachgasse gegenüber 40 vor Parkanlage → Knotzenbachgasse 35-45, vor Dirmhirngasse.",
+            "Knotzenbachgasse opposite 40 before the park → Knotzenbachgasse 35-45, before Dirmhirngasse.",
+        ),
+        ("Lerchenfelder Gürtel unter U6 → Kaiserstraße 106.", "Lerchenfelder Gürtel under U6 → Kaiserstraße 106."),
+        (
+            "Panethgasse 8 nach Einfahrt → Panethgasse gegenüber 63, 20 Meter in Fahrtrichtung Kagran.",
+            "Panethgasse 8 after the driveway → Panethgasse opposite 63, 20 metres in the direction of Kagran.",
+        ),
+        (
+            "Siebenbürgerstraße 28-48, Stiege 17 → Siebenbürgerstraße gegenüber 47A-49A.",
+            "Siebenbürgerstraße 28-48, staircase 17 → Siebenbürgerstraße opposite 47A-49A.",
+        ),
+        (
+            "Stiegerbrücke vor Linke Wienzeile → Längenfeldgasse 1 (nach Hauseinfahrt).",
+            "Stiegerbrücke before Linke Wienzeile → Längenfeldgasse 1 (after the building entrance).",
+        ),
+        (
+            "Wagramer Straße 5-9 → Wagramer Straße ggü. 8 (etwa 30 Meter Richtung Ampel).",
+            "Wagramer Straße 5-9 → Wagramer Straße opp. 8 (approx. 30 metres towards the traffic lights).",
+        ),
+    ],
+)
+def test_a_relocation_place_renders_in_english(relocation: str, expected: str) -> None:
+    assert _render(relocation) == expected
+
+
+def test_a_capitalised_unter_is_a_name() -> None:
+    assert _render("Von: Unter-Laa 3 Nach: Unter-Laa 5") == "From: Unter-Laa 3 To: Unter-Laa 5"
+
+
 def test_a_stop_name_starting_with_am_is_not_a_date() -> None:
     out = _render("Haltestelle: Am Schöpfwerk Von: Am Schöpfwerk 3 Dauer: Am 27. September 2026")
     assert "Stop: Am Schöpfwerk From: Am Schöpfwerk 3" in out
@@ -205,4 +257,4 @@ def test_the_two_phrases_did_enter_the_global_glossary() -> None:
 
 
 def test_translation_cache_epoch_was_bumped() -> None:
-    assert build_feed._TRANSLATION_CACHE_EPOCH >= 16
+    assert build_feed._TRANSLATION_CACHE_EPOCH >= 26

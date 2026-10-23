@@ -594,6 +594,6 @@ def test_read_capped_json_depth_bomb_returns_none(tmp_path: Path) -> None:
     from src.utils.files import read_capped_json
 
     target = tmp_path / "deep.json"
-    target.write_text("[" * 5000 + "1" + "]" * 5000, encoding="utf-8")
+    target.write_text("[" * 100_000 + "1" + "]" * 100_000, encoding="utf-8")
     result = read_capped_json(target)
     assert result is None

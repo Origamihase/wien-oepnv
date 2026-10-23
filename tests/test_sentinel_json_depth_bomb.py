@@ -34,13 +34,15 @@ import pytest
 import responses
 
 # Pre-fix sanity: verify that ``json.loads`` actually raises ``RecursionError``
-# on a 5000-deep nested array under Python's default 1000-frame stack budget.
-# If a future Python release lifts the recursion limit such that this payload
-# parses successfully, every test below would silently pass even on unfixed
-# code — so we pin the precondition first.
+# on a 100,000-deep nested array. If a future Python release lifts the
+# recursion limit such that this payload parses successfully, every test below
+# would silently pass even on unfixed code — so we pin the precondition first.
+# It happened: Python 3.12 parses 5,000 levels (the depth used until
+# 23.10.2026), so the precondition failed there; 100,000 exceeds the limit of
+# every interpreter from 3.11 to 3.13.
 
-DEEP_BOMB_BYTES = b"[" * 5000 + b"]" * 5000
-DEEP_BOMB_STR = "[" * 5000 + "]" * 5000
+DEEP_BOMB_BYTES = b"[" * 100_000 + b"]" * 100_000
+DEEP_BOMB_STR = "[" * 100_000 + "]" * 100_000
 
 
 def test_precondition_deep_bomb_raises_recursion_error() -> None:

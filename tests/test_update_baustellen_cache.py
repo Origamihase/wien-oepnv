@@ -831,7 +831,10 @@ def test_load_fallback_handles_json_depth_bomb(
     import logging
 
     poisoned = tmp_path / "poisoned.geojson"
-    poisoned.write_text("[" * 5000 + "]" * 5000, encoding="utf-8")
+    # 100,000 levels: Python 3.12+ parses 5,000 without a RecursionError
+    # (the fallback then fails as "kein JSON-Objekt"), so the depth must
+    # exceed every interpreter's limit for this test to reach its branch.
+    poisoned.write_text("[" * 100_000 + "]" * 100_000, encoding="utf-8")
 
     caplog.set_level(logging.ERROR, logger="update_baustellen_cache")
     result = update_baustellen_cache._load_fallback(poisoned)
