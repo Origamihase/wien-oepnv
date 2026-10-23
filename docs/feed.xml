@@ -8,10 +8,10 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 23 Oct 2026 04:30:51 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 05:00:55 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[N49: Verspätungen, Gleisbauarbeiten]]></title>
+      <title><![CDATA[N49: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">debec53179614475378b445e4aadfca4f963cb8b93ceb7e3eb1f6847c3d56a79</guid>
       <pubDate>Fri, 23 Oct 2026 04:07:00 +0200</pubDate>
@@ -21,8 +21,8 @@
       <ext:first_seen>Fri, 23 Oct 2026 04:07:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 23 Oct 2026 04:07:00 +0200</ext:starts_at>
       <ext:ends_at>Fri, 23 Oct 2026 05:11:00 +0200</ext:ends_at>
-      <description>Verspätungen: Derzeit kommt es bei der Linie N49 in beiden Richtungen zu unterschiedlichen Intervallen. Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße. [Heute]</description>
-      <content:encoded><![CDATA[Verspätungen: Derzeit kommt es bei der Linie N49 in beiden Richtungen zu unterschiedlichen Intervallen. Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße.<br/>[Heute]]]></content:encoded>
+      <description>Derzeit kommt es bei der Linie N49 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug. [Seit 04:07]</description>
+      <content:encoded><![CDATA[Derzeit kommt es bei der Linie N49 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 04:07]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S2: Wien Leopoldau ↔ Mistelbach]]></title>
