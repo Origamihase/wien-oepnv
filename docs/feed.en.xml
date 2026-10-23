@@ -8,13 +8,13 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 23 Oct 2026 06:00:51 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 06:30:41 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Liesing ↔ Mödling]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;921382</guid>
-      <pubDate>Fri, 23 Oct 2026 05:45:06 +0200</pubDate>
+      <pubDate>Fri, 23 Oct 2026 06:07:29 +0200</pubDate>
       <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
@@ -37,19 +37,6 @@
       <ext:starts_at>Fri, 23 Oct 2026 05:52:00 +0200</ext:starts_at>
       <description>Irregular intervals in both directions. Reason: service disruption. [Since 05:52]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[Since 05:52]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Delays]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1</guid>
-      <pubDate>Fri, 23 Oct 2026 05:05:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 23 Oct 2026 05:05:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 05:05:00 +0200</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 05:05]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 05:05]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S2: Wien Leopoldau ↔ Mistelbach]]></title>
@@ -150,6 +137,20 @@
       <georss:point>48.167289 16.277365</georss:point>
       <description>Hermesstraße after Strampfergasse → approx. 100 metres towards Dr.-Schober-Straße. Hermesstraße after Strampfergasse → Discontinued. Stop relocation or … release [Until 03.11.]</description>
       <content:encoded><![CDATA[Hermesstraße after Strampfergasse → approx. 100 metres towards Dr.-Schober-Straße. Hermesstraße after Strampfergasse → Discontinued. Stop relocation or … release<br/>[Until 03.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[80A: ÖBB-construction works]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">5a68b1fc449f7041118da0ac6c6652cede40d8eb9c245e412fcac285c52db7c7</guid>
+      <pubDate>Tue, 06 Oct 2026 14:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 19 Oct 2026 00:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
+      <description>Due to the re-establishment of the ÖBB railway viaducts in the area of Helenengasse and Stoffellagasse, measures will come into force on the 80A line. [Until 31.12.2027]</description>
+      <content:encoded><![CDATA[Due to the re-establishment of the ÖBB railway viaducts in the area of Helenengasse and Stoffellagasse, measures will come into force on the 80A line.<br/>[Until 31.12.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
