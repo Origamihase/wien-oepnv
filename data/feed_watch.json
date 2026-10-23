@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-23T12:00:59.813014+00:00",
- "built": "2026-10-23T14:00:45+02:00",
+ "updated": "2026-10-23T12:31:03.365404+00:00",
+ "built": "2026-10-23T14:30:50+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-23T14:00:45+02:00",
+  "built": "2026-10-23T14:30:50+02:00",
   "items": [
+   {
+    "title": "40/41/42: Fremder Verkehrsunfall",
+    "time_line": "Seit 14:05"
+   },
    {
     "title": "U4: Verspätungen",
     "time_line": "Seit 13:57"
@@ -21,7 +25,7 @@
     "time_line": "Seit 13:13"
    },
    {
-    "title": "62A: Feuerwehreinsatz",
+    "title": "62A/66A: Feuerwehreinsatz",
     "time_line": "Seit 12:49"
    },
    {
@@ -41,37 +45,13 @@
     "time_line": "Seit 12:08"
    },
    {
-    "title": "66A: Feuerwehreinsatz, Bauarbeiten",
-    "time_line": "Seit heute"
-   },
-   {
-    "title": "D: Schadhaftes Fahrzeug, Gleisbauarbeiten",
+    "title": "12A: Polizeieinsatz, Gleisbauarbeiten",
     "time_line": "Seit heute"
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-16T12:01:10.334521+00:00",
-   "raw": {
-    "wl-stoerungen": 84,
-    "wl-hinweise": 86,
-    "oebb": 162,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 25
-   },
-   "discarded": {
-    "wl": 20,
-    "oebb": 137,
-    "baustellen": 72
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 11,
-    "wl": 110
-   }
-  },
   {
    "t": "2026-10-16T12:31:08.125246+00:00",
    "raw": {
@@ -6790,6 +6770,26 @@
     "baustellen": 4,
     "oebb": 9,
     "wl": 116
+   }
+  },
+  {
+   "t": "2026-10-23T12:31:03.365404+00:00",
+   "raw": {
+    "wl-stoerungen": 112,
+    "wl-hinweise": 74,
+    "oebb": 161,
+    "baustellen-linien": 56,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 3,
+    "oebb": 136,
+    "baustellen": 70
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 123
    }
   }
  ]

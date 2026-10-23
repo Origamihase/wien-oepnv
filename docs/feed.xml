@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 23 Oct 2026 14:00:45 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 14:30:50 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[40/41/42: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">0860febc5e9df23aa7c2b7e11f49988c5e330f09ac2fc1fda85a5145582a1b8e</guid>
+      <pubDate>Fri, 23 Oct 2026 14:05:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 23 Oct 2026 14:30:50 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 23 Oct 2026 14:05:00 +0200</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 14:05]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 14:05]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U4: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -50,7 +63,7 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 13:13]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[62A: Feuerwehreinsatz]]></title>
+      <title><![CDATA[62A/66A: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">41d1a622396976be035dc365e559dc36b96115c7d9d2333ae5cfbf1d41cbf71d</guid>
       <pubDate>Fri, 23 Oct 2026 12:49:00 +0200</pubDate>
@@ -58,9 +71,9 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 23 Oct 2026 13:01:16 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 13:08:22 +0200</ext:starts_at>
-      <description>Betrieb ab Brunner Straße, Erlaaer Straße. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 12:49]</description>
-      <content:encoded><![CDATA[Betrieb ab Brunner Straße, Erlaaer Straße. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 12:49]]]></content:encoded>
+      <ext:starts_at>Fri, 23 Oct 2026 12:49:00 +0200</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 12:49]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 12:49]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[60A: Feuerwehreinsatz]]></title>
@@ -115,30 +128,17 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 12:08]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[66A: Feuerwehreinsatz, Bauarbeiten]]></title>
+      <title><![CDATA[12A: Polizeieinsatz, Gleisbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8ea54fcab09529320f6870516497c30d1589956fd93f89d46bebf628f127ec55</guid>
-      <pubDate>Fri, 23 Oct 2026 12:49:00 +0200</pubDate>
+      <guid isPermaLink="false">374069ccf0ff3be5104dd31d6813256c9eea30537579d930288c2ea1f81eccd9</guid>
+      <pubDate>Fri, 23 Oct 2026 13:59:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 23 Oct 2026 12:49:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 12:49:00 +0200</ext:starts_at>
-      <description>Bauarbeiten: Busse halten Salvatorianerplatz. [Seit heute]</description>
-      <content:encoded><![CDATA[Bauarbeiten: Busse halten Salvatorianerplatz.<br/>[Seit heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Schadhaftes Fahrzeug, Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">479d81556bc68dbdee0680cddad02646b0c604865221d4ea576921f46f65d96c</guid>
-      <pubDate>Fri, 23 Oct 2026 12:28:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 23 Oct 2026 12:28:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 12:28:00 +0200</ext:starts_at>
-      <description>Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse. [Seit heute]</description>
-      <content:encoded><![CDATA[Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.<br/>[Seit heute]]]></content:encoded>
+      <ext:first_seen>Fri, 23 Oct 2026 13:59:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 23 Oct 2026 13:59:00 +0200</ext:starts_at>
+      <description>Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21. [Seit heute]</description>
+      <content:encoded><![CDATA[Gleisbauarbeiten: Betrieb ab Johnstraße U, Schweglerstraße 19-21.<br/>[Seit heute]]]></content:encoded>
     </item>
   </channel>
 </rss>
