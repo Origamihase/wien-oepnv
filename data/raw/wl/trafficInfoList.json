@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0029, I20261023-0003"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029, I20261023-0004"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R318-437, R36-152, R45-136, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R2380-627, R2372-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2025-671, R2558-125, R5815-671, R401-101, R2034-571, R1749-508, R407-506, R402-506, R1455-549, R1453-549, R1454-549, R1452-549, R1462-549, R1461-549, R1458-549, R1457-549, R1456-549, R3375-549, R3241-549, R5698-549, R3869-549, R1974-466, R2420-411, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R115-136, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R1476-149, R1475-149, R1474-149, R1473-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1472-149, R1449-149, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R2378-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2372-627, R2345-127, R2380-627, R2025-671, R2558-125, R5815-671, R401-101, R1974-466, R2420-411, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -263,46 +263,45 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "N49": "ptBusNight"
+      "U2": "ptMetro"
      }
     },
-    "description": "Derzeit kommt es bei der Linie N49 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Derzeit kommt es bei der Linie N49 in beiden Richtungen zu unterschiedlichen Intervallen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Derzeit kommt es bei der Linie N49 in beiden Richtungen zu unterschiedlichen Intervallen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Derzeit kommt es bei der Linie N49 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.",
-       "title": "N49: Verspätungen"
+       "descriptionHtml": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U2: Verspätungen"
       }
      }
     ],
-    "name": "I20261023-0003",
+    "name": "I20261023-0004",
     "owner": "WL",
-    "parentName": "I20261023-0003",
+    "parentName": "I20261023-0004",
     "priority": "1",
     "reasonId": 20,
     "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "N49"
+     "U2"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 549,
-      "lineName": "N49",
-      "vehicleType": "ptBusNight"
+      "lineId": 302,
+      "lineName": "U2",
+      "vehicleType": "ptMetro"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-23T04:08:00.000+0200",
-     "end": "2026-10-23T05:11:00.000+0200",
-     "lastUpdate": "2026-10-23T04:08:00.000+0200",
-     "resume": "2026-10-23T04:07:00.000+0200",
-     "start": "2026-10-23T04:07:00.000+0200"
+     "created": "2026-10-23T05:05:00.000+0200",
+     "lastUpdate": "2026-10-23T05:05:00.000+0200",
+     "resume": "2026-10-23T05:05:00.000+0200",
+     "start": "2026-10-23T05:05:00.000+0200"
     },
-    "title": "N49: Verspätungen"
+    "title": "U2: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
@@ -675,213 +674,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Bus\nLängere Wartezeiten",
-    "name": "R1452-549",
-    "owner": "WL",
-    "parentName": "R1452-549",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N49"
-    ],
-    "relatedStops": [
-     1452
-    ],
-    "time": {
-     "end": "2026-10-23T05:09:00.000+0200",
-     "start": "2026-10-23T04:10:30.000+0200"
-    },
-    "title": "Schadhafter Bus\nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Bus\nLängere Wartezeiten",
-    "name": "R1453-549",
-    "owner": "WL",
-    "parentName": "R1453-549",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N49"
-    ],
-    "relatedStops": [
-     1453
-    ],
-    "time": {
-     "end": "2026-10-23T05:09:00.000+0200",
-     "start": "2026-10-23T04:10:30.000+0200"
-    },
-    "title": "Schadhafter Bus\nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Bus\nLängere Wartezeiten",
-    "name": "R1454-549",
-    "owner": "WL",
-    "parentName": "R1454-549",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N49"
-    ],
-    "relatedStops": [
-     1454
-    ],
-    "time": {
-     "end": "2026-10-23T05:09:00.000+0200",
-     "start": "2026-10-23T04:10:30.000+0200"
-    },
-    "title": "Schadhafter Bus\nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Bus\nLängere Wartezeiten",
-    "name": "R1455-549",
-    "owner": "WL",
-    "parentName": "R1455-549",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N49"
-    ],
-    "relatedStops": [
-     1455
-    ],
-    "time": {
-     "end": "2026-10-23T05:09:00.000+0200",
-     "start": "2026-10-23T04:10:30.000+0200"
-    },
-    "title": "Schadhafter Bus\nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Bus\nLängere Wartezeiten",
-    "name": "R1456-549",
-    "owner": "WL",
-    "parentName": "R1456-549",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N49"
-    ],
-    "relatedStops": [
-     1456
-    ],
-    "time": {
-     "end": "2026-10-23T05:09:00.000+0200",
-     "start": "2026-10-23T04:10:30.000+0200"
-    },
-    "title": "Schadhafter Bus\nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Bus\nLängere Wartezeiten",
-    "name": "R1457-549",
-    "owner": "WL",
-    "parentName": "R1457-549",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N49"
-    ],
-    "relatedStops": [
-     1457
-    ],
-    "time": {
-     "end": "2026-10-23T05:09:00.000+0200",
-     "start": "2026-10-23T04:10:30.000+0200"
-    },
-    "title": "Schadhafter Bus\nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Bus\nLängere Wartezeiten",
-    "name": "R1458-549",
-    "owner": "WL",
-    "parentName": "R1458-549",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N49"
-    ],
-    "relatedStops": [
-     1458
-    ],
-    "time": {
-     "end": "2026-10-23T05:09:00.000+0200",
-     "start": "2026-10-23T04:10:30.000+0200"
-    },
-    "title": "Schadhafter Bus\nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Bus\nLängere Wartezeiten",
-    "name": "R1461-549",
-    "owner": "WL",
-    "parentName": "R1461-549",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N49"
-    ],
-    "relatedStops": [
-     1461
-    ],
-    "time": {
-     "end": "2026-10-23T05:09:00.000+0200",
-     "start": "2026-10-23T04:10:30.000+0200"
-    },
-    "title": "Schadhafter Bus\nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Bus\nLängere Wartezeiten",
-    "name": "R1462-549",
-    "owner": "WL",
-    "parentName": "R1462-549",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N49"
-    ],
-    "relatedStops": [
-     1462
-    ],
-    "time": {
-     "end": "2026-10-23T05:09:00.000+0200",
-     "start": "2026-10-23T04:10:30.000+0200"
-    },
-    "title": "Schadhafter Bus\nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
     "name": "R1472-149",
     "owner": "WL",
@@ -1016,29 +808,6 @@
      "start": "2026-10-20T00:00:06.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
-    "name": "R1749-508",
-    "owner": "WL",
-    "parentName": "R1749-508",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N8"
-    ],
-    "relatedStops": [
-     1749
-    ],
-    "time": {
-     "end": "2026-10-23T05:15:00.000+0200",
-     "start": "2026-10-23T00:45:21.000+0200"
-    },
-    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1266,29 +1035,6 @@
      "start": "2026-10-21T00:00:20.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBusse halten Simmeringer Hauptstr. 157",
-    "name": "R2034-571",
-    "owner": "WL",
-    "parentName": "R2034-571",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N71"
-    ],
-    "relatedStops": [
-     2034
-    ],
-    "time": {
-     "end": "2026-10-23T05:05:00.000+0200",
-     "start": "2026-10-23T00:25:18.000+0200"
-    },
-    "title": "Gleisbauarbeiten\nBusse halten Simmeringer Hauptstr. 157"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1707,52 +1453,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Bus\nLängere Wartezeiten",
-    "name": "R3241-549",
-    "owner": "WL",
-    "parentName": "R3241-549",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N49"
-    ],
-    "relatedStops": [
-     3241
-    ],
-    "time": {
-     "end": "2026-10-23T05:09:00.000+0200",
-     "start": "2026-10-23T04:10:31.000+0200"
-    },
-    "title": "Schadhafter Bus\nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Bus\nLängere Wartezeiten",
-    "name": "R3375-549",
-    "owner": "WL",
-    "parentName": "R3375-549",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N49"
-    ],
-    "relatedStops": [
-     3375
-    ],
-    "time": {
-     "end": "2026-10-23T05:09:00.000+0200",
-     "start": "2026-10-23T04:10:31.000+0200"
-    },
-    "title": "Schadhafter Bus\nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Züge halten\nbei Linien 6 und 18",
     "name": "R36-152",
     "owner": "WL",
@@ -1776,29 +1476,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Bus\nLängere Wartezeiten",
-    "name": "R3869-549",
-    "owner": "WL",
-    "parentName": "R3869-549",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N49"
-    ],
-    "relatedStops": [
-     3869
-    ],
-    "time": {
-     "end": "2026-10-23T05:09:00.000+0200",
-     "start": "2026-10-23T04:10:32.000+0200"
-    },
-    "title": "Schadhafter Bus\nLängere Wartezeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nUmleitung zum Reumannplatz >",
     "name": "R401-101",
     "owner": "WL",
@@ -1818,52 +1495,6 @@
      "start": "2026-10-21T16:08:14.000+0200"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
-    "name": "R402-506",
-    "owner": "WL",
-    "parentName": "R402-506",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N6"
-    ],
-    "relatedStops": [
-     402
-    ],
-    "time": {
-     "end": "2026-10-23T05:05:00.000+0200",
-     "start": "2026-10-23T00:55:20.000+0200"
-    },
-    "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
-    "name": "R407-506",
-    "owner": "WL",
-    "parentName": "R407-506",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N6"
-    ],
-    "relatedStops": [
-     407
-    ],
-    "time": {
-     "end": "2026-10-23T05:04:00.000+0200",
-     "start": "2026-10-23T00:54:20.000+0200"
-    },
-    "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1910,29 +1541,6 @@
      "start": "2026-10-23T05:00:04.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Bus\nLängere Wartezeiten",
-    "name": "R5698-549",
-    "owner": "WL",
-    "parentName": "R5698-549",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N49"
-    ],
-    "relatedStops": [
-     5698
-    ],
-    "time": {
-     "end": "2026-10-23T05:09:00.000+0200",
-     "start": "2026-10-23T04:10:31.000+0200"
-    },
-    "title": "Schadhafter Bus\nLängere Wartezeiten"
    },
    {
     "alertCause": "undefined alert cause",

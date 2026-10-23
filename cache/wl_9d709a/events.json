@@ -758,18 +758,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "N71: Simmering S U",
-    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie N71 in Richtung Oper, Karlsplatz, bzw. Alser Stra&szlig;e, Skodagasse</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Simmering (S U)</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Simmeringer Hauptstra&szlig;e gegen&uuml;ber 120-122, Gleisk&ouml;rper</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Simmeringer Hauptstra&szlig;e 157-161, provisorische Haltestelle, Hauptfahrbahn</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 16. Oktober 2026, etwa 00:30 Uhr bis 23. Oktober 2026, etwa 05:00 Uhr</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Gleisbauarbeiten</span></p>",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c8f0b5a42164e2ff573973d0ebcbdf6fbd76b99aebfc2c85c8b8657ef7b9bb79",
-    "pubDate": "2026-10-14T15:35:00+02:00",
-    "starts_at": "2026-10-16T00:00:00+02:00",
-    "ends_at": "2026-10-23T05:05:00+02:00",
-    "_identity": "wl|hinweis|L=N71|D=2026-10-16|TK=n71 simmering s u"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "N71: Rennweg S",
     "description": "<p><strong><u>Haltestellenverlegung der Linie N71 in Richtung Kaiserebersdorf, Zinnergasse</u></strong></p><p><strong><u>Haltestelle:</u></strong> Rennweg S</p><p><strong><u>Von:</u></strong> Rennweg 20-24</p><p><strong><u>Nach:</u></strong> Rennweg 20-24, Hauptfahrbahn</p><p><strong><u>Dauer:</u></strong> 02. November 2026, etwa 17:00 Uhr, bis 06. November 2026, etwa 17:00 Uhr</p><p><strong><u>Grund:</u></strong> Gleisbau</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1258,58 +1246,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N49: Verspätungen",
-    "description": "Derzeit kommt es bei der Linie N49 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "debec53179614475378b445e4aadfca4f963cb8b93ceb7e3eb1f6847c3d56a79",
-    "pubDate": "2026-10-23T04:07:00+02:00",
-    "starts_at": "2026-10-23T04:07:00+02:00",
-    "ends_at": "2026-10-23T05:11:00+02:00",
-    "_identity": "wl|störung|L=N49|D=2026-10-23|TK=n49 verspätungen",
-    "_wl_ids": [
-      "I20261023-0003"
-    ],
-    "_incident_start": "2026-10-23T04:07:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N49: Schadhafter Bus Längere Wartezeiten",
-    "description": "Schadhafter Bus\nLängere Wartezeiten",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "574cf45ba2a83024b679a6a37cf7f34f01b497860fc357439888bae9da5ce23b",
-    "pubDate": "2026-10-23T04:10:30+02:00",
-    "starts_at": "2026-10-23T04:10:32+02:00",
-    "ends_at": "2026-10-23T05:09:00+02:00",
-    "_identity": "wl|störung|L=N49|D=2026-10-23|TK=schadhafter bus längere wartezeiten"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N6: Busse halten Neilreichgasse 20-22",
-    "description": "Bauarbeiten Busse halten Neilreichgasse 20-22",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "65ba91c9ad3212cf9699f4930b16f23c05c678ab5cf7575ab4e562f2f003cfbc",
-    "pubDate": "2026-10-23T00:55:20+02:00",
-    "starts_at": "2026-10-23T00:55:20+02:00",
-    "ends_at": "2026-10-23T05:05:00+02:00",
-    "_identity": "wl|störung|L=N6|D=2026-10-23|TK=busse halten neilreichgasse 20 22"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N6: Busse halten Quellenstraße 189",
-    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "702d63d7625c3038f025628d02f9115371cb86897a042af3fea6ba3fa90b5500",
-    "pubDate": "2026-10-23T00:54:20+02:00",
-    "starts_at": "2026-10-23T00:54:20+02:00",
-    "ends_at": "2026-10-23T05:04:00+02:00",
-    "_identity": "wl|störung|L=N6|D=2026-10-23|TK=busse halten quellenstrasse 189"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N71: Ersatzverkehr Busse halten bei Haltestelle N71",
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1322,26 +1258,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N71: Busse halten Simmeringer Hauptstr. 157",
-    "description": "Gleisbauarbeiten\nBusse halten Simmeringer Hauptstr. 157",
+    "title": "U2: Verspätungen",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "cbaeb9add89e94f501dce883629cbda4e8b00aaf9f47f93a8e33ea51c4b85db2",
-    "pubDate": "2026-10-23T00:25:18+02:00",
-    "starts_at": "2026-10-23T00:25:18+02:00",
-    "ends_at": "2026-10-23T05:05:00+02:00",
-    "_identity": "wl|störung|L=N71|D=2026-10-23|TK=busse halten simmeringer hauptstr 157"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N8: Busse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
-    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "10b9a6d53b42f1dead1c688ecfaaf4e6a3c8058ce9e29c10c1d6b71e47353c17",
-    "pubDate": "2026-10-23T00:45:21+02:00",
-    "starts_at": "2026-10-23T00:45:21+02:00",
-    "ends_at": "2026-10-23T05:15:00+02:00",
-    "_identity": "wl|störung|L=N8|D=2026-10-23|TK=busse halten assmayergasse nach flurschützstrasse bei linie 59a"
+    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
+    "pubDate": "2026-10-23T05:05:00+02:00",
+    "starts_at": "2026-10-23T05:05:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U2|D=2026-10-23|TK=u2 verspätungen",
+    "_wl_ids": [
+      "I20261023-0004"
+    ],
+    "_incident_start": "2026-10-23T05:05:00+02:00"
   },
   {
     "source": "Wiener Linien",
