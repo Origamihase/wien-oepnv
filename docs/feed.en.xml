@@ -8,8 +8,22 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 23 Oct 2026 09:00:59 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 09:30:56 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[52: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">a98ce5b1ad854c6ed3e45e2e7ba8501931ec19b9c65469df145fe9e064f76e2f</guid>
+      <pubDate>Fri, 23 Oct 2026 09:27:30 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 23 Oct 2026 09:27:30 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 23 Oct 2026 09:27:30 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 23 Oct 2026 10:27:00 +0200</ext:ends_at>
+      <description>Service obstruction illegally parked vehicle trains stop at the stops of lines 6 and 18. [Since 09:27]</description>
+      <content:encoded><![CDATA[Service obstruction illegally parked vehicle trains stop at the stops of lines 6 and 18.<br/>[Since 09:27]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U3: Defective vehicle]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,8 +34,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 23 Oct 2026 08:50:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 23 Oct 2026 08:50:00 +0200</ext:starts_at>
-      <description>The U3 line currently runs between the stations Schweglerstraße and Westbahnhof in both directions on track 2. Expected until 09:20. Reason: Harmful … [Since 08:50]</description>
-      <content:encoded><![CDATA[The U3 line currently runs between the stations Schweglerstraße and Westbahnhof in both directions on track 2. Expected until 09:20. Reason: Harmful …<br/>[Since 08:50]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 08:50]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 08:50]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U2: Defective vehicle]]></title>
@@ -48,49 +62,6 @@
       <ext:starts_at>Fri, 23 Oct 2026 07:57:00 +0200</ext:starts_at>
       <description>Irregular intervals in both directions. Reason: traffic accident. [Since 07:57]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 07:57]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Stadlau]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;921417</guid>
-      <pubDate>Fri, 23 Oct 2026 08:19:52 +0200</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 23 Oct 2026 07:30:59 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 23 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <georss:point>48.219255 16.448852</georss:point>
-      <description>Due to an interlocking failure at the station, trains can only run to a limited extent at Wien Stadlau station (U) at present. Allow up to 10 minutes of extra travel time. [Since 07:07]</description>
-      <content:encoded><![CDATA[Due to an interlocking failure at the station, trains can only run to a limited extent at Wien Stadlau station (U) at present. Allow up to 10 minutes of extra travel time.<br/>[Since 07:07]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25/26: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5ad871156e427d523784cb28867242cf1070538a7d455f2b56d31b9e1028dfac</guid>
-      <pubDate>Fri, 23 Oct 2026 07:30:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 23 Oct 2026 07:30:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 07:30:00 +0200</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 07:30]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 07:30]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hütteldorf ↔ Tullnerfeld]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;921441</guid>
-      <pubDate>Fri, 23 Oct 2026 08:17:40 +0200</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 23 Oct 2026 08:30:52 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 23 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <georss:line>48.197671 16.261209 48.295143 15.996440</georss:line>
-      <description>Due to an obstacle in the track area, trains could only run to a limited extent until 08:14. For now, allow up to 15 minutes of extra travel time. [Today]</description>
-      <content:encoded><![CDATA[Due to an obstacle in the track area, trains could only run to a limited extent until 08:14. For now, allow up to 15 minutes of extra travel time.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S2: Wien Leopoldau ↔ Mistelbach]]></title>
@@ -148,6 +119,34 @@
       <ext:ends_at>Mon, 02 Nov 2026 01:00:00 +0100</ext:ends_at>
       <description>Due to roadworks in Meiereistraße / Stephanie-Endres-Straße crossing area, diversions occurs. [Until 02.11.]</description>
       <content:encoded><![CDATA[Due to roadworks in Meiereistraße / Stephanie-Endres-Straße crossing area, diversions occurs.<br/>[Until 02.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[64A/N64R: Erlaaer Spitz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">bd5f4b6cb6c11492266da898891314662b7d55f24a297565efab82ec83f4917c</guid>
+      <pubDate>Wed, 21 Oct 2026 10:12:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 10:12:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <georss:point>48.137809 16.323970</georss:point>
+      <description>Perfektastraße 3 → Perfektastraße 9. Stop relocation of lines 64A and N64 call bus towards Atzgersdorf, Ziedlergasse, or Alterlaa … [Since 22.10.]</description>
+      <content:encoded><![CDATA[Perfektastraße 3 → Perfektastraße 9. Stop relocation of lines 64A and N64 call bus towards Atzgersdorf, Ziedlergasse, or Alterlaa …<br/>[Since 22.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Track construction works]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">8681a71896a38fa5cd0db22da3a40ed6cc4472d9266f99cbebaff20ab7d6d4e6</guid>
+      <pubDate>Wed, 21 Oct 2026 06:50:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 20 Oct 2026 11:58:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 11:58:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Dec 2026 04:00:00 +0100</ext:ends_at>
+      <description>Due to track construction works on Stefan-Fadinger-Platz, there are restrictions on line 1. Measures: Line 1: service only between Prater Hauptallee and Knöllgasse. [Until 05.12.]</description>
+      <content:encoded><![CDATA[Due to track construction works on Stefan-Fadinger-Platz, there are restrictions on line 1. Measures: Line 1: service only between Prater Hauptallee and Knöllgasse.<br/>[Until 05.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
