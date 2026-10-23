@@ -8,8 +8,34 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 23 Oct 2026 12:30:55 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 13:01:16 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[62A: Fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">41d1a622396976be035dc365e559dc36b96115c7d9d2333ae5cfbf1d41cbf71d</guid>
+      <pubDate>Fri, 23 Oct 2026 12:49:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 23 Oct 2026 13:01:16 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 23 Oct 2026 12:50:22 +0200</ext:starts_at>
+      <description>Service obstruction towards the station Meidling S U, Eichenstraße. Expected until 13:15. Reason: fire-brigade operation in the area of Atzgersdorfer Platz. [Since 12:49]</description>
+      <content:encoded><![CDATA[Service obstruction towards the station Meidling S U, Eichenstraße. Expected until 13:15. Reason: fire-brigade operation in the area of Atzgersdorfer Platz.<br/>[Since 12:49]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60A: Fire-brigade operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">6fff906190d24de7ff0bab120edcb9a23372ef45c19581e5b0b055218cae3990</guid>
+      <pubDate>Fri, 23 Oct 2026 12:51:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 23 Oct 2026 12:51:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 23 Oct 2026 12:51:00 +0200</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: fire-brigade operation. [Since 12:51]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: fire-brigade operation.<br/>[Since 12:51]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[35A: Contamination]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -46,8 +72,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 23 Oct 2026 12:08:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 23 Oct 2026 12:08:00 +0200</ext:starts_at>
-      <description>The U1 line is currently operating at Reumannplatz station in both directions on track 2. Reason: defective vehicle in the stop area of Reumannplatz. [Since 12:08]</description>
-      <content:encoded><![CDATA[The U1 line is currently operating at Reumannplatz station in both directions on track 2. Reason: defective vehicle in the stop area of Reumannplatz.<br/>[Since 12:08]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 12:08]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 12:08]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Delays]]></title>
@@ -63,17 +89,17 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: vandalism.<br/>[Since 12:04]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U6: Rescue operation]]></title>
+      <title><![CDATA[66A: Fire-brigade operation, construction works]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
-      <pubDate>Fri, 23 Oct 2026 10:12:00 +0200</pubDate>
+      <guid isPermaLink="false">8ea54fcab09529320f6870516497c30d1589956fd93f89d46bebf628f127ec55</guid>
+      <pubDate>Fri, 23 Oct 2026 12:49:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 23 Oct 2026 10:12:00 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 10:12:00 +0200</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 10:12]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 10:12]]]></content:encoded>
+      <ext:first_seen>Fri, 23 Oct 2026 12:49:00 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 23 Oct 2026 12:52:50 +0200</ext:starts_at>
+      <description>Fire-brigade operation: service obstruction. Construction works: buses stop at Salvatorianerplatz. [Since today]</description>
+      <content:encoded><![CDATA[Fire-brigade operation: service obstruction. Construction works: buses stop at Salvatorianerplatz.<br/>[Since today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: Defective vehicle, track construction works]]></title>
@@ -85,8 +111,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 23 Oct 2026 12:28:00 +0200</ext:first_seen>
       <ext:starts_at>Fri, 23 Oct 2026 12:28:00 +0200</ext:starts_at>
-      <description>Defective vehicle: service obstruction towards Augasse. Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse. [Since today]</description>
-      <content:encoded><![CDATA[Defective vehicle: service obstruction towards Augasse. Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse.<br/>[Since today]]]></content:encoded>
+      <description>Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse. [Since today]</description>
+      <content:encoded><![CDATA[Track construction works: trains stop in the loop, Wipplingerstr 39; service from Augasse, Börse.<br/>[Since today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S2: Wien Leopoldau ↔ Mistelbach]]></title>
@@ -116,34 +142,6 @@
       <ext:ends_at>Sun, 25 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Due to the Vienna security festival in the area of Rathausplatz, the following service changes apply. [On Sun 25.10.]</description>
       <content:encoded><![CDATA[Due to the Vienna security festival in the area of Rathausplatz, the following service changes apply.<br/>[On Sun 25.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2/D/71: National Day]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5ed1a558f4654252adcbde0d5b0507c31199017b815d336b01f7b063bfcb22b7</guid>
-      <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 23 Oct 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 26 Oct 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Due to an event in the area of Ringstraße, the following service changes apply. [On Mon 26.10.]</description>
-      <content:encoded><![CDATA[Due to an event in the area of Ringstraße, the following service changes apply.<br/>[On Mon 26.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A/78A: Roadworks]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">829aed6b63ca00dc86bdde6d44ea64c5a4a23433aa5b8e7bb064705f27b2e81f</guid>
-      <pubDate>Wed, 14 Oct 2026 16:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" length="3448" type="image/png" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item.png" type="image/png" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 00:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 02 Nov 2026 01:00:00 +0100</ext:ends_at>
-      <description>Due to roadworks in Meiereistraße / Stephanie-Endres-Straße crossing area, diversions occurs. [Until 02.11.]</description>
-      <content:encoded><![CDATA[Due to roadworks in Meiereistraße / Stephanie-Endres-Straße crossing area, diversions occurs.<br/>[Until 02.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

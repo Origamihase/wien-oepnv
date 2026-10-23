@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0029, I20261023-0016-F01, I20261023-0017, I20261023-0018, I20261023-0019, I20261023-0020, I20261023-0021"
+    "trafficInfoNameList": "I20260909-0007, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0029, I20261023-0017, I20261023-0018-F01, I20261023-0019, I20261023-0020, I20261023-0021-F01, I20261023-0025, I20261023-0026, I20261023-0026-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R293-474, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R2373-126, R2379-627, R2380-627, R2378-627, R2025-671, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2372-627, R2345-127, R2343-626, R2558-125, R5815-671, R401-101, R1974-466, R2420-411, R500-101, R95-136, R94-136, R93-136, R92-136, R91-136, R90-136, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R293-474, R103-136, R102-136, R318-437, R101-136, R36-152, R45-136, R100-136, R1473-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1472-149, R1883-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1884-101, R2373-127, R2025-671, R2378-627, R2380-627, R2345-127, R2372-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-126, R2379-627, R2558-125, R5815-671, R401-101, R1974-466, R2420-411, R500-101, R90-136, R95-136, R94-136, R93-136, R92-136, R91-136, R99-136, R98-136, R97-136, R96-136, R500-462, R1844-462, R1952-462, R1848-462, R1842-462, R1744-462, R1660-462, R1907-466, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,54 +259,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U6: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261023-0016-F01",
-    "owner": "WL",
-    "parentName": "I20261023-0016",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4641
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-23T10:44:00.000+0200",
-     "lastUpdate": "2026-10-23T10:44:00.000+0200",
-     "resume": "2026-10-23T10:44:00.000+0200",
-     "start": "2026-10-23T10:12:00.000+0200"
-    },
-    "title": "U6: Rettungseinsatz"
-   },
-   {
     "alertCause": "vandalism",
     "alertCauseId": 16,
     "attributes": {
@@ -359,18 +311,18 @@
       "U1": "ptMetro"
      }
     },
-    "description": "Die Linie U1 fährt derzeit in der Station Reumannplatz in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 12:30 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Reumannplatz.",
-    "descriptionHTML": "<p>Die Linie U1 fährt derzeit in der Station Reumannplatz in beiden Richtungen über Gleis 2.</p><p>Voraussichtliche Dauer: 12:30 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Reumannplatz.</p>",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie U1 fährt derzeit in der Station Reumannplatz in beiden Richtungen über Gleis 2.</p><p>Voraussichtliche Dauer: 12:30 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Reumannplatz.</p>",
-       "descriptionPlain": "Die Linie U1 fährt derzeit in der Station Reumannplatz in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 12:30 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Reumannplatz.",
+       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "U1: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261023-0018",
+    "name": "I20261023-0018-F01",
     "owner": "WL",
     "parentName": "I20261023-0018",
     "priority": "1",
@@ -392,8 +344,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-23T12:09:00.000+0200",
-     "lastUpdate": "2026-10-23T12:16:00.000+0200",
+     "created": "2026-10-23T12:41:00.000+0200",
+     "lastUpdate": "2026-10-23T12:41:00.000+0200",
+     "resume": "2026-10-23T12:41:00.000+0200",
      "start": "2026-10-23T12:08:00.000+0200"
     },
     "title": "U1: Schadhaftes Fahrzeug"
@@ -496,18 +449,18 @@
       "D": "ptTram"
      }
     },
-    "description": "Linie D: Fahrtbehinderung in Richtung Augasse. Voraussichtliche Dauer: 13:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Beethovengang.",
-    "descriptionHTML": "<p>Linie D:<br>Fahrtbehinderung in Richtung Augasse.</p><p>Voraussichtliche Dauer: 13:00 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Beethovengang.</p>",
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie D:<br>Fahrtbehinderung in Richtung Augasse.</p><p>Voraussichtliche Dauer: 13:00 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Beethovengang.</p>",
-       "descriptionPlain": "Linie D: Fahrtbehinderung in Richtung Augasse. Voraussichtliche Dauer: 13:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Beethovengang.",
+       "descriptionHtml": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "D: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261023-0021",
+    "name": "I20261023-0021-F01",
     "owner": "WL",
     "parentName": "I20261023-0021",
     "priority": "1",
@@ -529,11 +482,148 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-23T12:29:00.000+0200",
-     "lastUpdate": "2026-10-23T12:29:00.000+0200",
+     "created": "2026-10-23T12:53:00.000+0200",
+     "lastUpdate": "2026-10-23T12:53:00.000+0200",
+     "resume": "2026-10-23T12:53:00.000+0200",
      "start": "2026-10-23T12:28:00.000+0200"
     },
     "title": "D: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "fire",
+    "alertCauseId": 5,
+    "attributes": {
+     "relatedLineTypes": {
+      "60A": "ptBusCity"
+     }
+    },
+    "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz.",
+    "descriptionHTML": "<p>Linie 60A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Feuerwehreinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 60A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Feuerwehreinsatz.</p>",
+       "descriptionPlain": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz.",
+       "title": "60A: Feuerwehreinsatz"
+      }
+     }
+    ],
+    "name": "I20261023-0025",
+    "owner": "WL",
+    "parentName": "I20261023-0025",
+    "priority": "1",
+    "reasonId": 11,
+    "reasonName": "Feuerwehreinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 460,
+      "lineName": "60A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-23T12:51:00.000+0200",
+     "lastUpdate": "2026-10-23T12:51:00.000+0200",
+     "resume": "2026-10-23T12:51:00.000+0200",
+     "start": "2026-10-23T12:51:00.000+0200"
+    },
+    "title": "60A: Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "fire",
+    "alertCauseId": 5,
+    "attributes": {
+     "relatedLineTypes": {
+      "62A": "ptBusCity"
+     }
+    },
+    "description": "Linie 62A: Fahrtbehinderung in Richtung Bahnhof Meidling S U, Eichenstraße. Voraussichtliche Dauer: 13:15 Uhr. Grund: Feuerwehreinsatz im Bereich Atzgersdorfer Platz.",
+    "descriptionHTML": "<p>Linie 62A:<br>Fahrtbehinderung in Richtung Bahnhof Meidling S U, Eichenstraße.</p><p>Voraussichtliche Dauer: 13:15 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Atzgersdorfer Platz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 62A:<br>Fahrtbehinderung in Richtung Bahnhof Meidling S U, Eichenstraße.</p><p>Voraussichtliche Dauer: 13:15 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Atzgersdorfer Platz.</p>",
+       "descriptionPlain": "Linie 62A: Fahrtbehinderung in Richtung Bahnhof Meidling S U, Eichenstraße. Voraussichtliche Dauer: 13:15 Uhr. Grund: Feuerwehreinsatz im Bereich Atzgersdorfer Platz.",
+       "title": "62A: Feuerwehreinsatz"
+      }
+     }
+    ],
+    "location": "Atzgersdorfer Platz",
+    "name": "I20261023-0026",
+    "owner": "WL",
+    "parentName": "I20261023-0026",
+    "priority": "1",
+    "reasonId": 11,
+    "reasonName": "Feuerwehreinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "62A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 462,
+      "lineName": "62A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-23T12:52:00.000+0200",
+     "lastUpdate": "2026-10-23T12:54:00.000+0200",
+     "start": "2026-10-23T12:49:00.000+0200"
+    },
+    "title": "62A: Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "fire",
+    "alertCauseId": 5,
+    "attributes": {
+     "relatedLineTypes": {
+      "66A": "ptBusCity"
+     }
+    },
+    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 66A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 66A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "66A: Feuerwehreinsatz"
+      }
+     }
+    ],
+    "location": "Atzgersdorfer Platz",
+    "name": "I20261023-0026-F01",
+    "owner": "WL",
+    "parentName": "I20261023-0026",
+    "priority": "1",
+    "reasonId": 11,
+    "reasonName": "Feuerwehreinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "66A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 466,
+      "lineName": "66A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-23T12:55:00.000+0200",
+     "lastUpdate": "2026-10-23T12:55:00.000+0200",
+     "resume": "2026-10-23T12:55:00.000+0200",
+     "start": "2026-10-23T12:49:00.000+0200"
+    },
+    "title": "66A: Feuerwehreinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1044,6 +1134,121 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R1660-462",
+    "owner": "WL",
+    "parentName": "R1660-462",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62A"
+    ],
+    "relatedStops": [
+     1660
+    ],
+    "time": {
+     "end": "2026-10-23T13:49:00.000+0200",
+     "start": "2026-10-23T12:50:22.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R1744-462",
+    "owner": "WL",
+    "parentName": "R1744-462",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62A"
+    ],
+    "relatedStops": [
+     1744
+    ],
+    "time": {
+     "end": "2026-10-23T13:49:00.000+0200",
+     "start": "2026-10-23T12:50:22.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R1842-462",
+    "owner": "WL",
+    "parentName": "R1842-462",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62A"
+    ],
+    "relatedStops": [
+     1842
+    ],
+    "time": {
+     "end": "2026-10-23T13:49:00.000+0200",
+     "start": "2026-10-23T12:50:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R1844-462",
+    "owner": "WL",
+    "parentName": "R1844-462",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62A"
+    ],
+    "relatedStops": [
+     1844
+    ],
+    "time": {
+     "end": "2026-10-23T13:49:00.000+0200",
+     "start": "2026-10-23T12:50:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R1848-462",
+    "owner": "WL",
+    "parentName": "R1848-462",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62A"
+    ],
+    "relatedStops": [
+     1848
+    ],
+    "time": {
+     "end": "2026-10-23T13:49:00.000+0200",
+     "start": "2026-10-23T12:50:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nKein Betrieb",
     "name": "R1875-101",
     "owner": "WL",
@@ -1224,6 +1429,52 @@
      "start": "2026-10-14T00:00:22.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R1907-466",
+    "owner": "WL",
+    "parentName": "R1907-466",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "66A"
+    ],
+    "relatedStops": [
+     1907
+    ],
+    "time": {
+     "end": "2026-10-23T13:52:00.000+0200",
+     "start": "2026-10-23T12:52:50.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R1952-462",
+    "owner": "WL",
+    "parentName": "R1952-462",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62A"
+    ],
+    "relatedStops": [
+     1952
+    ],
+    "time": {
+     "end": "2026-10-23T13:49:00.000+0200",
+     "start": "2026-10-23T12:50:20.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1777,6 +2028,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R500-462",
+    "owner": "WL",
+    "parentName": "R500-462",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62A"
+    ],
+    "relatedStops": [
+     500
+    ],
+    "time": {
+     "end": "2026-10-23T13:49:00.000+0200",
+     "start": "2026-10-23T12:50:19.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "name": "R5815-671",
     "owner": "WL",
@@ -1929,6 +2203,98 @@
     "time": {
      "end": "2026-10-23T13:29:00.000+0200",
      "start": "2026-10-23T12:30:18.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R96-136",
+    "owner": "WL",
+    "parentName": "R96-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     96
+    ],
+    "time": {
+     "end": "2026-10-23T13:31:00.000+0200",
+     "start": "2026-10-23T12:37:49.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R97-136",
+    "owner": "WL",
+    "parentName": "R97-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     97
+    ],
+    "time": {
+     "end": "2026-10-23T13:31:00.000+0200",
+     "start": "2026-10-23T12:37:49.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R98-136",
+    "owner": "WL",
+    "parentName": "R98-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     98
+    ],
+    "time": {
+     "end": "2026-10-23T13:31:00.000+0200",
+     "start": "2026-10-23T12:37:49.000+0200"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R99-136",
+    "owner": "WL",
+    "parentName": "R99-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     99
+    ],
+    "time": {
+     "end": "2026-10-23T13:31:00.000+0200",
+     "start": "2026-10-23T12:37:49.000+0200"
     },
     "title": "Fahrtbehinderung\nSchadhafter Zug"
    },

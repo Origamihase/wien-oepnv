@@ -1,13 +1,21 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-23T10:31:15.372394+00:00",
- "built": "2026-10-23T12:30:55+02:00",
+ "updated": "2026-10-23T11:01:32.232734+00:00",
+ "built": "2026-10-23T13:01:16+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-23T12:30:55+02:00",
+  "built": "2026-10-23T13:01:16+02:00",
   "items": [
+   {
+    "title": "62A: Feuerwehreinsatz",
+    "time_line": "Seit 12:49"
+   },
+   {
+    "title": "60A: Feuerwehreinsatz",
+    "time_line": "Seit 12:51"
+   },
    {
     "title": "35A: Verunreinigung",
     "time_line": "Seit 12:24"
@@ -25,8 +33,8 @@
     "time_line": "Seit 12:04"
    },
    {
-    "title": "U6: Rettungseinsatz",
-    "time_line": "Seit 10:12"
+    "title": "66A: Feuerwehreinsatz, Bauarbeiten",
+    "time_line": "Seit heute"
    },
    {
     "title": "D: Schadhaftes Fahrzeug, Gleisbauarbeiten",
@@ -39,39 +47,11 @@
    {
     "title": "1/2/D/71: Veranstaltung",
     "time_line": "Am So 25.10."
-   },
-   {
-    "title": "1/2/D/71: Nationalfeiertag",
-    "time_line": "Am Mo 26.10."
-   },
-   {
-    "title": "11A/78A: Straßenbauarbeiten",
-    "time_line": "Bis 02.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-16T11:01:22.947035+00:00",
-   "raw": {
-    "wl-stoerungen": 70,
-    "wl-hinweise": 86,
-    "oebb": 160,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 25
-   },
-   "discarded": {
-    "wl": 19,
-    "oebb": 136,
-    "baustellen": 72
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 10,
-    "wl": 108
-   }
-  },
   {
    "t": "2026-10-16T11:30:56.922114+00:00",
    "raw": {
@@ -6770,6 +6750,26 @@
     "baustellen": 4,
     "oebb": 9,
     "wl": 113
+   }
+  },
+  {
+   "t": "2026-10-23T11:01:32.232734+00:00",
+   "raw": {
+    "wl-stoerungen": 91,
+    "wl-hinweise": 74,
+    "oebb": 161,
+    "baustellen-linien": 56,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 3,
+    "oebb": 136,
+    "baustellen": 70
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 115
    }
   }
  ]
