@@ -69,7 +69,7 @@ def height_map(rng: np.random.Generator) -> np.ndarray:
     ys = rng.integers(0, HEIGHT, chips)
     xs = rng.integers(0, WIDTH, chips)
     heights = rng.uniform(0.4, 1.0, chips).astype(np.float32)
-    for k, y, x, h in zip(picks, ys, xs, heights):
+    for k, y, x, h in zip(picks, ys, xs, heights, strict=True):
         stamp = stamps[k]
         rows = (np.arange(stamp.shape[0]) + y) % HEIGHT
         cols = (np.arange(stamp.shape[1]) + x) % WIDTH
