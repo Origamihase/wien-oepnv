@@ -52,8 +52,7 @@ def test_load_provider_plugins_not_called_on_import() -> None:
 
     assert "IMPORT SUCCESS" in result.stdout
     # Further ensure that load_provider_plugins() call is truly gone from the file text
-    import pathlib
-    providers_path = pathlib.Path("src/feed/providers.py")
+    providers_path = Path("src/feed/providers.py")
     content = providers_path.read_text()
     # The string 'load_provider_plugins()' should not appear as a top-level call.
     # It might appear in `__all__ = [...]`, so we look for the exact module-level call syntax.
