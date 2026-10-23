@@ -90,7 +90,8 @@ def shading(field: np.ndarray) -> np.ndarray:
     light = np.array([-1.0, -1.0, 1.4]) / np.linalg.norm([-1.0, -1.0, 1.4])
     lit = (nx * light[0] + ny * light[1] + nz * light[2]) / np.sqrt(nx**2 + ny**2 + nz**2)
     lit -= lit.mean()
-    return lit / (lit.std() + 1e-9)
+    normalised: np.ndarray = lit / (lit.std() + 1e-9)
+    return normalised
 
 
 def render(seed: int = SEED) -> Image.Image:
