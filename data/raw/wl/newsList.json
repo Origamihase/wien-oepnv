@@ -1819,10 +1819,19 @@
     "title": "78A: Marathonweg"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 48A in Richtung Parlament, U Volkstheater</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Neubaugasse, Burggasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Burggasse vor Neubaugasse</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Burggasse 69</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 08. September 2026, etwa 06:00 Uhr f&uuml;r etwa sechs Wochen</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Umbau der Haltestelle</span></p>",
+    "alertCause": "unknown",
+    "alertCauseId": 0,
+    "description": "<p><span><strong><u>Haltestellenverlegung der Linie 48A in Richtung Parlament, U Volkstheater</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Neubaugasse, Burggasse</span></p><p><span><strong><u>Von:</u></strong> Burggasse vor Neubaugasse</span></p><p><span><strong><u>Nach:</u></strong> Burggasse 69</span></p><p><span><strong><u>Dauer:</u></strong> 08. September 2026, etwa 06:00 Uhr, bis 29. Oktober 2026, etwa 18:00 Uhr</span></p><p><span><strong><u>Grund:</u></strong> Umbau der Haltestelle</span></p>",
     "id": "N20260831-6165",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><span><strong><u>Haltestellenverlegung der Linie 48A in Richtung Parlament, U Volkstheater</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Neubaugasse, Burggasse</span></p><p><span><strong><u>Von:</u></strong> Burggasse vor Neubaugasse</span></p><p><span><strong><u>Nach:</u></strong> Burggasse 69</span></p><p><span><strong><u>Dauer:</u></strong> 08. September 2026, etwa 06:00 Uhr, bis 29. Oktober 2026, etwa 18:00 Uhr</span></p><p><span><strong><u>Grund:</u></strong> Umbau der Haltestelle</span></p>",
+       "descriptionPlain": "Haltestellenverlegung der Linie 48A in Richtung Parlament, U Volkstheater Haltestelle: Neubaugasse, Burggasse Von: Burggasse vor Neubaugasse Nach: Burggasse 69 Dauer: 08. September 2026, etwa 06:00 Uhr, bis 29. Oktober 2026, etwa 18:00 Uhr Grund: Umbau der Haltestelle",
+       "title": "48A: Neubaugasse, Burggasse"
+      }
+     }
+    ],
     "location": {
      "properties": {
       "attributes": {},
@@ -1832,8 +1841,8 @@
      "type": "Feature"
     },
     "name": "N20260831-6165",
-    "reasonId": 0,
-    "reasonName": "undefined",
+    "reasonId": 223,
+    "reasonName": "Haltestellenverlegung",
     "refPoiCategoryId": 13296,
     "relatedLines": [
      "48A"
@@ -1849,7 +1858,7 @@
      1434
     ],
     "time": {
-     "end": "2027-08-31T11:11:00.000+0200",
+     "end": "2026-10-29T18:00:00.000+0100",
      "start": "2026-08-31T16:55:00.000+0200",
      "validFrom": "2026-08-31T16:50:00.000+0200"
     },
