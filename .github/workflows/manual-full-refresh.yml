@@ -36,7 +36,7 @@ jobs:
     # + feed compose + stats render. Healthy runs take 20-40 min depending on whether the
     # HF/pip cache is warm. 60 min gives ~1.5x headroom over the worst
     # legitimate cold-cache run while catching genuine hangs (stuck
-    # upstream API, runaway OSM Overpass round-trip) quickly. Without
+    # upstream API, runaway HAFAS retry loop) quickly. Without
     # the cap the workflow inherits GitHub's 360-min default. Mirrors
     # the canonical defence shape established in update-cycle.yml.
     timeout-minutes: 60

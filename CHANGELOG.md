@@ -5,6 +5,34 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **Unabhängige Prüfung der Umsetzungen seit dem 17.10. (2026-10-24)**:
+  Drei Fehler, je als Klasse behoben.
+  - *Mitternacht:* Die Kulanz `ENDS_AT_GRACE_MINUTES` (10 Minuten) reicht
+    nicht mehr über die Wiener Mitternacht nach dem Tag, den die Zeitzeile
+    nennt (`_drop_after`). Am 20.10. um 00:00 zeigte der Feed noch „Wien
+    Hütteldorf ↔ Wien Hauptbahnhof … [Bis 19.10.]“ (Feed-Wächter-Issue
+    #2044); jede ÖBB-Meldung mit Tagesende und jede Baustelle an ihrem
+    letzten Tag hätte ebenso bis 00:10 gestanden. Ein Ende früher am Tag
+    behält seine zehn Minuten. Test `tests/test_end_of_day_drop.py`.
+  - *ÖBB-Abschnitt mit offenem Ende:* Rückt ein Abschnitt nach vorn, dessen
+    Ende kein Datum ist („von 04.07.2026 bis voraussichtlich Ende 2027“,
+    „ab 04.07.2026“ ohne „bis“-Datum), behält die Meldung ihr Ende
+    (`_oebb_section_end_is_open`). Vorher galt sein Beginn als Ende, und eine
+    Sperre über ein Jahr hätte den Feed nach dem ersten Tag verlassen. Noch
+    kein echter Fall; die Regel vom 19.10. bleibt sonst gleich (Prüfung
+    aller 926 ÖBB-Meldungen: weiterhin nur TRACKINFO 901477 gekürzt).
+  - *EN „diversions occurs“:* Das Glossar setzte „Umleitungen“ überall fest
+    auf „diversions“, auch mitten im Satz; das Modell baute den Satz dann
+    ohne Nomen („Due to roadworks in … crossing area, diversions occurs.“,
+    im EN-Feed seit 22.10. 00:00). Fest ist jetzt nur der Kopf der Kurzform
+    „Umleitungen:“ → „diversions:“ (`src/feed/glossary.py`); Cache-Epoche
+    27, damit die gespeicherten Übersetzungen neu entstehen.
+  Dazu veraltete Kommentare zu OpenStreetMap in
+  `src/places/coordinate_consensus.py`, `src/places/osm_client.py` und
+  `manual-full-refresh.yml`. Nachbau von 74 Feed-Ständen (alle 34
+  Mitternachtsläufe seit 20.09. und 40 zufällige) alt gegen neu: Deutsch
+  ändert sich nur der Lauf vom 20.10. 00:00 (RJ 263 fällt heraus, „1A/3A:
+  Schwertgasse“ rückt nach), Englisch nur die Umleitungs-Meldung.
 * **ÖBB-Abschnittsnamen im englischen Feed fest benannt (2026-10-23)**:
   Michaels Wahl („ok“ zur Empfehlung vom 23.10.). Das Modell übersetzte
   „Teilausfall:“ als „Partial failure:“ (RJ 263, 18.–19.10.). Jeder
@@ -540,7 +568,8 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   zeigen, und Maßnahmen, die die Regel nicht kennt, bleiben unverändert;
   was nicht in 180 Zeichen passt, fällt linienweise mit „…“ weg. Replay
   über alle 4.899 WL-Texte seit Juli: 62 ändern sich, sonst nichts. EN:
-  Glossar „Umleitungen“ → „diversions“, „Betrieb nur“ → „service only“.
+  Glossar „Umleitungen“ → „diversions“ (seit 2026-10-24 nur noch der Kopf
+  „Umleitungen:“, siehe dort), „Betrieb nur“ → „service only“.
 * **Kurzmeldungen eines Vorfalls mehrerer Linien (2026-10-15)**: Am 11.10.
   von 11:30 bis 23:30 Uhr belegte ein Gasrohrbruch in der Brünner Straße
   vier der zehn Plätze: „30A/31A/36B: Gasrohrgebrechen“ und daneben je eine

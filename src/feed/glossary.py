@@ -479,8 +479,11 @@ _GLOSSARY_BASE: dict[str, str] = {
     "Betrieb nur zwischen": "service only between",
     # The heads of the short form of a disruption on several lines
     # (``_lines_in_short``): "Umleitungen: 36B A – B; 30A …", "37: Betrieb
-    # nur A – B; …".
-    "Umleitungen": "diversions",
+    # nur A – B; …". "Umleitungen" only with the colon of that head: as a
+    # noun inside a sentence the model has to build the verb around it, and
+    # a fixed "diversions" left it none ("kommt es zu Umleitungen" →
+    # "diversions occurs", on the EN feed until 2026-10-24).
+    "Umleitungen:": "diversions:",
     "Betrieb nur": "service only",
     "Fahrtbehinderung wegen": "service obstruction due to",
     "Züge halten in Schleife": "trains stop in the loop",

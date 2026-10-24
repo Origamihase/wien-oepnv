@@ -173,3 +173,41 @@ def test_the_section_end_is_wired_into_the_build() -> None:
     item["pubDate"] = datetime(2026, 9, 3, 9, 31, tzinfo=_VIENNA)
     kept = bf._assemble_feed_items([item], {}, datetime(2026, 10, 19, 12, 0, tzinfo=UTC))  # type: ignore[list-item]
     assert [it.get("guid") for it in kept] == ["oebb-901477"]
+
+
+# Independent check 2026-10-24: a leading section whose end is no date names
+# only its start; that day must not end a closure that runs on.
+
+
+def _with_section(section: str) -> dict[str, object]:
+    desc = str(HUETTELDORF["description"]).replace(
+        "Von <b>18.10.2026</b> bis <b>19.10.2026</b> kann", section
+    )
+    item = _dated({**HUETTELDORF, "description": desc})
+    item["ends_at"] = datetime(2027, 12, 31, 23, 59, 59, tzinfo=_VIENNA)
+    return item
+
+
+_OPEN_ENDS = (
+    "Von <b>18.10.2026</b> (ca. 02:00 Uhr) bis voraussichtlich Ende 2027 kann",
+    "Ab <b>18.10.2026</b> kann",
+    "Seit <b>18.10.2026</b> kann",
+    "Von <b>18.10.2026</b> bis auf Weiteres kann",
+)
+_DATED_ENDS = (
+    "Ab <b>18.10.2026</b> bis <b>19.10.2026</b> kann",
+    "Von <b>18.10.2026</b> (08:00 Uhr) bis <b>19.10.2026</b> (15:00 Uhr) kann",
+    "Am <b>19.10.2026</b> (von 01:10 Uhr bis 04:10 Uhr) kann",
+)
+
+
+def test_a_section_with_an_open_end_keeps_the_end() -> None:
+    for section in _OPEN_ENDS:
+        assert bf._oebb_lead_section_end(_with_section(section)) is None, section
+
+
+def test_a_section_with_a_dated_end_still_ends_the_item() -> None:
+    for section in _DATED_ENDS:
+        assert bf._oebb_lead_section_end(_with_section(section)) == datetime(
+            2026, 10, 19, 23, 59, 59, tzinfo=_VIENNA
+        ), section

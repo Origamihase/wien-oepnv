@@ -785,6 +785,27 @@ def _oebb_title_route_first(sentences: list[str], title: str, *, oebb: bool) -> 
 
 
 _OEBB_SECTION_DATE_RE = re.compile(r"\b(\d{1,2})\.(\d{1,2})\.(\d{4})\b")
+# A section whose end is no date: "bis" before anything but a date or a clock
+# time ("bis voraussichtlich Ende 2027", "bis auf Weiteres"), or a start date
+# ("ab 04.07.2026", "seit …") without a "bis" date. Its last date is where it
+# begins, not where it ends.
+_OEBB_SECTION_OPEN_END_RE = re.compile(
+    r"\bbis\s+(?!(?:voraussichtlich\s+)?(?:\d{1,2}\.\s?\d{1,2}\.|\d{1,2}:\d{2}|\d{1,2}\s+Uhr))",
+    re.IGNORECASE,
+)
+_OEBB_SECTION_OPEN_START_RE = re.compile(r"\b(?:ab|seit)\s+(?:dem\s+)?\d{1,2}\.\s?\d{1,2}\.", re.IGNORECASE)
+_OEBB_SECTION_BIS_DATE_RE = re.compile(
+    r"\bbis\s+(?:voraussichtlich\s+)?\d{1,2}\.\s?\d{1,2}\.", re.IGNORECASE
+)
+
+
+def _oebb_section_end_is_open(section: str) -> bool:
+    """Whether *section* ends without a date (see ``_OEBB_SECTION_OPEN_END_RE``)."""
+    if _OEBB_SECTION_OPEN_END_RE.search(section):
+        return True
+    return bool(
+        _OEBB_SECTION_OPEN_START_RE.search(section) and not _OEBB_SECTION_BIS_DATE_RE.search(section)
+    )
 
 
 def _oebb_lead_section_end(it: Any) -> datetime | None:
@@ -805,6 +826,12 @@ def _oebb_lead_section_end(it: Any) -> datetime | None:
     have shown a cancellation already over. The section's last date counts
     (end of that day, Vienna); it only ever shortens ``ends_at``, never
     extends it, and a section without a date keeps the notice's end.
+
+    So does a section whose end is no date (``_oebb_section_end_is_open``):
+    "Von 04.07.2026 (ca. 02:00 Uhr) bis voraussichtlich Ende 2027" or "Ab
+    04.07.2026" names only its start, and the start day as the end would
+    take a closure of a year off the feed after its first day (independent
+    check 2026-10-24; no such section has led an ÖBB text yet).
     """
     if it.get("source") != _OEBB_SOURCE:
         return None
@@ -822,6 +849,8 @@ def _oebb_lead_section_end(it: Any) -> datetime | None:
     sentences = [s.strip() for s in _SENTENCE_SPLIT_RE.split(text) if s.strip()]
     lead = _oebb_title_route_first(sentences, raw_title, oebb=True)
     if not lead or not sentences or lead[0] == sentences[0]:
+        return None
+    if _oebb_section_end_is_open(lead[0]):
         return None
     days: list[date] = []
     for day, month, year in _OEBB_SECTION_DATE_RE.findall(lead[0]):
@@ -2476,7 +2505,11 @@ _TRANSLATION_MODEL_REVISION = "1a922f3b32a8e809e17a47d4b32142d8105924e5"
 #       "Parkanlage", "Richtung Ampel", …; ``_RECORD_VALUE_RULES``). Cached
 #       under 25: "Simmeringer Hauptstraße opposite 120-122, Gleiskörper →
 #       …"; the source digests are unchanged, so only a bump evicts them.
-_TRANSLATION_CACHE_EPOCH = 26
+#  27 — independent check 2026-10-24: "Umleitungen" is a fixed term only as
+#       the head of the short form ("Umleitungen: 36B …"); inside a sentence
+#       the model got no noun to build on. Cached under 26: "Due to roadworks
+#       in … crossing area, diversions occurs."
+_TRANSLATION_CACHE_EPOCH = 27
 
 # Static lookup for the German words of the bracketed ``[…]`` time line (see
 # ``format_local_times``). Translating these via the ML model would be
@@ -7139,6 +7172,29 @@ def _valid_until(item: FeedItem) -> datetime | None:
     return datetime(next_day.year, next_day.month, next_day.day, tzinfo=_VIENNA_TZ)
 
 
+def _drop_after(item: FeedItem) -> datetime | None:
+    """The moment (UTC) after which *item* leaves the feed, from :func:`_valid_until`.
+
+    ``ENDS_AT_GRACE_MINUTES`` past the end, but never past the Vienna
+    midnight that ends the day the time line names. Without that bound an
+    end late in the day stayed over midnight with a date already over: on
+    2026-10-20 at 00:00 Vienna the feed showed "Wien Hütteldorf ↔ Wien
+    Hauptbahnhof … [Bis 19.10.]" (end 19.10. 23:59:59, Feed-Wächter issue
+    #2044), and every ÖBB end of day and every Baustelle on its last day
+    leaves the same way.
+    """
+    valid_until = _valid_until(item)
+    if valid_until is None:
+        return None
+    graced = _to_utc(valid_until) + timedelta(minutes=feed_config.ENDS_AT_GRACE_MINUTES)
+    ends_at = item.get("ends_at")
+    if not isinstance(ends_at, datetime):
+        return graced
+    shown_day = _to_utc(ends_at).astimezone(_VIENNA_TZ).date() + timedelta(days=1)
+    midnight = datetime(shown_day.year, shown_day.month, shown_day.day, tzinfo=_VIENNA_TZ)
+    return min(graced, _to_utc(midnight))
+
+
 def _drop_old_items(
     items: list[FeedItem],
     now: datetime,
@@ -7149,8 +7205,9 @@ def _drop_old_items(
     Zwei Regeln:
 
     1. **Ungültig → sofort raus:** ein ``ends_at`` in der Vergangenheit
-       (über die ``ENDS_AT_GRACE_MINUTES`` hinaus) bedeutet, die Störung ist
-       behoben → die Meldung macht sofort Platz. Ein reines Enddatum der
+       (über die ``ENDS_AT_GRACE_MINUTES`` hinaus, höchstens bis zur
+       Wiener Mitternacht nach dem Endtag, :func:`_drop_after`) bedeutet,
+       die Störung ist behoben → die Meldung macht sofort Platz. Ein reines Enddatum der
        Stadt-Wien-Baustellen gilt bis zum Ende dieses Tages
        (:func:`_valid_until`).
     2. **Alter → FIFO nach ``first_seen``:** das Alter zählt ab dem
@@ -7170,11 +7227,10 @@ def _drop_old_items(
         ident, state_entry = _lookup_state(it, state)
 
         ends_at = it.get("ends_at")
-        valid_until = _valid_until(it)
-        if valid_until is not None:
-            if _to_utc(valid_until) < now_utc - timedelta(minutes=feed_config.ENDS_AT_GRACE_MINUTES):
-                dropped.add(ident)
-                continue
+        drop_after = _drop_after(it)
+        if drop_after is not None and drop_after < now_utc:
+            dropped.add(ident)
+            continue
 
         # Age out by how long the item has been in the feed (first_seen) —
         # FIFO by appearance ("man kennt die Meldung schon"). The source

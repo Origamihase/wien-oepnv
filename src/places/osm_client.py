@@ -1,6 +1,8 @@
 """Client abstraction for the OpenStreetMap Overpass API.
 
-OSM is now the *primary* directory enrichment source for the project. The
+Since 2026-10-17 the station run uses no OSM data (``docs/architecture.md``,
+decision "keine OpenStreetMap-Stufe mehr"); the client stays with its tests
+and is called by no production workflow. The
 Overpass API is queried for nodes, ways and relations tagged with
 ``public_transport=station``, ``public_transport=stop_area``,
 ``railway=station`` or ``railway=halt`` strictly inside the Vienna

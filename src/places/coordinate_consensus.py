@@ -1,7 +1,10 @@
 """Coordinate consensus for the Austrian-source station directory.
 
-Implements the ``WL -> HAFAS -> OSM -> Google`` priority chain used by the
-weekly station-directory refresh (``scripts/update_wl_stations.py``).
+Implements the ``WL -> HAFAS`` priority chain used by the weekly
+station-directory refresh (``scripts/update_wl_stations.py``). The optional
+OSM arbiter below is no longer wired in: ``main()`` passes no OSM index since
+2026-10-17 (no OpenStreetMap data in the published directory), so a
+disagreement keeps WL.
 
 Wiener Linien is the authoritative source for a Vienna stop coordinate;
 HAFAS (ÖBB) is the second Austrian source. When both are present and
@@ -82,7 +85,7 @@ def resolve_at_coordinate(
     agree_tolerance_m: float = DEFAULT_AGREE_TOLERANCE_M,
     osm_sanity_radius_m: float = DEFAULT_OSM_SANITY_RADIUS_M,
 ) -> CoordinateDecision:
-    """Resolve a station coordinate per the WL→HAFAS→OSM→Google priority.
+    """Resolve a station coordinate per the WL→HAFAS(→OSM) priority.
 
     Args:
         wl: The authoritative Wiener-Linien coordinate. Required and must
