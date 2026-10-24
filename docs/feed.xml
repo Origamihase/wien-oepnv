@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 24 Oct 2026 06:30:49 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 07:01:03 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[Wien Floridsdorf]]></title>
@@ -37,19 +37,6 @@
       <ext:starts_at>Sat, 24 Oct 2026 04:26:00 +0200</ext:starts_at>
       <description>Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Thaliastraße U über die Strecke der Linien 2 und 5; Betrieb ab Thaliastraße; Kein Betrieb. [Seit 04:26]</description>
       <content:encoded><![CDATA[Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Thaliastraße U über die Strecke der Linien 2 und 5; Betrieb ab Thaliastraße; Kein Betrieb.<br/>[Seit 04:26]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Verspätungen, Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">1d3414b1e3cc28842526c11ed2f6bc808d703447c6c64603053764ec08ab1b50</guid>
-      <pubDate>Sat, 24 Oct 2026 05:51:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sat, 24 Oct 2026 05:51:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 24 Oct 2026 05:51:00 +0200</ext:starts_at>
-      <description>Verspätungen: Unregelmäßige Intervalle in beiden Richtungen. Gleisbauarbeiten: Umleitung zum Reumannplatz; Züge halten Quellenstraße 156 (Linie 6); Betrieb ab Knöllgasse. [Seit heute]</description>
-      <content:encoded><![CDATA[Verspätungen: Unregelmäßige Intervalle in beiden Richtungen. Gleisbauarbeiten: Umleitung zum Reumannplatz; Züge halten Quellenstraße 156 (Linie 6); Betrieb ab Knöllgasse.<br/>[Seit heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S1: Wien Leopoldau ↔ Deutsch Wagram]]></title>
@@ -150,6 +137,21 @@
       <ext:ends_at>Sat, 05 Dec 2026 04:00:00 +0100</ext:ends_at>
       <description>Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1. Maßnahmen: Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. [Bis 05.12.]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1. Maßnahmen: Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br/>[Bis 05.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[56B/56A/N62: Strampfergasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">d26c6c6963612c560045052c175b1ec9ef04add4290e496a66c9625d2dde4a6e</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 19 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <georss:point>48.167289 16.277365</georss:point>
+      <description>Hermesstraße nach Strampfergasse → etwa 100 Meter in Richtung Dr.-Schober-Straße. Hermesstraße nach Strampfergasse → aufgelassen. Haltestellenverlegung bzw. -auflassung … [Bis 03.11.]</description>
+      <content:encoded><![CDATA[Hermesstraße nach Strampfergasse → etwa 100 Meter in Richtung Dr.-Schober-Straße. Hermesstraße nach Strampfergasse → aufgelassen. Haltestellenverlegung bzw. -auflassung …<br/>[Bis 03.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

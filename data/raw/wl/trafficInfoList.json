@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0029, I20261024-0003, I20261024-0004"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261024-0003, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
@@ -266,13 +266,13 @@
       "46": "ptTram"
      }
     },
-    "description": "Linie 46: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Thaliastraße U über die Strecke der Linien 2 und 5. Voraussichtliche Dauer: 07:00 Uhr. Grund: Gasrohrgebrechen im Bereich Lerchenfelder Straße 128.",
-    "descriptionHTML": "<p>Linie 46:<br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Thaliastraße U <br>über die Strecke der Linien 2 und 5.</p><p>Voraussichtliche Dauer: 07:00 Uhr.</p><p>Grund: Gasrohrgebrechen im Bereich Lerchenfelder Straße 128.</p>",
+    "description": "Linie 46: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Thaliastraße U über die Strecke der Linien 2 und 5. Voraussichtliche Dauer: 08:00 Uhr. Grund: Gasrohrgebrechen im Bereich Lerchenfelder Straße 128.",
+    "descriptionHTML": "<p>Linie 46:<br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Thaliastraße U <br>über die Strecke der Linien 2 und 5.</p><p>Voraussichtliche Dauer: 08:00 Uhr.</p><p>Grund: Gasrohrgebrechen im Bereich Lerchenfelder Straße 128.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 46:<br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Thaliastraße U <br>über die Strecke der Linien 2 und 5.</p><p>Voraussichtliche Dauer: 07:00 Uhr.</p><p>Grund: Gasrohrgebrechen im Bereich Lerchenfelder Straße 128.</p>",
-       "descriptionPlain": "Linie 46: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Thaliastraße U über die Strecke der Linien 2 und 5. Voraussichtliche Dauer: 07:00 Uhr. Grund: Gasrohrgebrechen im Bereich Lerchenfelder Straße 128.",
+       "descriptionHtml": "<p>Linie 46:<br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Thaliastraße U <br>über die Strecke der Linien 2 und 5.</p><p>Voraussichtliche Dauer: 08:00 Uhr.</p><p>Grund: Gasrohrgebrechen im Bereich Lerchenfelder Straße 128.</p>",
+       "descriptionPlain": "Linie 46: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Thaliastraße U über die Strecke der Linien 2 und 5. Voraussichtliche Dauer: 08:00 Uhr. Grund: Gasrohrgebrechen im Bereich Lerchenfelder Straße 128.",
        "title": "46: Gasrohrgebrechen"
       }
      }
@@ -298,55 +298,10 @@
     "status": "active",
     "time": {
      "created": "2026-10-24T04:48:00.000+0200",
-     "lastUpdate": "2026-10-24T04:48:00.000+0200",
+     "lastUpdate": "2026-10-24T06:52:00.000+0200",
      "start": "2026-10-24T04:26:00.000+0200"
     },
     "title": "46: Gasrohrgebrechen"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "1": "ptTram"
-     }
-    },
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "1: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261024-0004",
-    "owner": "WL",
-    "parentName": "I20261024-0004",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 101,
-      "lineName": "1",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-24T05:51:00.000+0200",
-     "lastUpdate": "2026-10-24T05:51:00.000+0200",
-     "resume": "2026-10-24T05:51:00.000+0200",
-     "start": "2026-10-24T05:51:00.000+0200"
-    },
-    "title": "1: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
