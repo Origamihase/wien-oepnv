@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261024-0010, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261024-0009, I20261020-0029"
+    "trafficInfoNameList": "I20261024-0012-F01, I20261024-0012, I20260917-0012, I20260922-0032, I20260925-0011, I20261024-0011, I20260909-0007, I20261024-0009, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R2558-125, R401-101, R1449-149, R1472-149, R1473-149, R1448-412, R1474-412, R1445-149, R1446-149, R1475-149, R1474-149, R1447-149, R1476-149, R1448-149, R36-152, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R318-437, R293-474, R130-136, R19-136, R45-136, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R3886-480, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R2558-125, R401-101, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1449-149, R1472-149, R1474-149, R1473-149, R1448-149, R1447-149, R1446-149, R36-152, R2373-127, R2373-126, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R318-437, R293-474, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R3886-480, R1974-466, R500-101, R370-105, R367-105, R375-105, R374-105, R364-105, R377-105, R379-105, R383-105, R382-105, R381-105, R380-105, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -304,50 +304,146 @@
     "title": "U2: Betriebsstörung"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
+    "alertCause": "vandalism",
+    "alertCauseId": 16,
     "attributes": {
      "relatedLineTypes": {
-      "11": "ptTram"
+      "2": "ptTram"
      }
     },
-    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 11:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "descriptionHTML": "<p>Linie 2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 11:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "11: Verspätungen"
+       "descriptionHtml": "<p>Linie 2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+       "descriptionPlain": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+       "title": "2: Verunreinigung"
       }
      }
     ],
-    "name": "I20261024-0010",
+    "name": "I20261024-0011",
     "owner": "WL",
-    "parentName": "I20261024-0010",
+    "parentName": "I20261024-0011",
     "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
+    "reasonId": 36,
+    "reasonName": "Verunreinigung",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "11"
+     "2"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 111,
-      "lineName": "11",
+      "lineId": 102,
+      "lineName": "2",
       "vehicleType": "ptTram"
      }
     ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-24T11:12:00.000+0200",
+     "lastUpdate": "2026-10-24T11:12:00.000+0200",
+     "resume": "2026-10-24T11:12:00.000+0200",
+     "start": "2026-10-24T11:12:00.000+0200"
+    },
+    "title": "2: Verunreinigung"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "5": "ptTram"
+     }
+    },
+    "description": "Linie 5: Fahrtbehinderung in Richtung Praterstern S U. Voraussichtliche Dauer: 11:35 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Westbahnhof S U.",
+    "descriptionHTML": "<p>Linie 5:<br>Fahrtbehinderung in Richtung Praterstern S U.</p><p>Voraussichtliche Dauer: 11:35 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Westbahnhof S U.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 5:<br>Fahrtbehinderung in Richtung Praterstern S U.</p><p>Voraussichtliche Dauer: 11:35 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Westbahnhof S U.</p>",
+       "descriptionPlain": "Linie 5: Fahrtbehinderung in Richtung Praterstern S U. Voraussichtliche Dauer: 11:35 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Westbahnhof S U.",
+       "title": "5: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261024-0012",
+    "owner": "WL",
+    "parentName": "I20261024-0012",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 105,
+      "lineName": "5",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     370
+    ],
     "status": "resolved",
     "time": {
-     "created": "2026-10-24T10:50:00.000+0200",
-     "end": "2026-10-24T10:57:00.000+0200",
-     "lastUpdate": "2026-10-24T10:57:00.000+0200",
-     "resume": "2026-10-24T10:50:00.000+0200",
-     "start": "2026-10-24T10:50:00.000+0200"
+     "created": "2026-10-24T11:15:00.000+0200",
+     "end": "2026-10-24T11:26:00.000+0200",
+     "lastUpdate": "2026-10-24T11:26:00.000+0200",
+     "resume": "2026-10-24T11:26:00.000+0200",
+     "start": "2026-10-24T11:14:00.000+0200"
     },
-    "title": "11: Verspätungen"
+    "title": "5: Polizeieinsatz"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "5": "ptTram"
+     }
+    },
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "5: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261024-0012-F01",
+    "owner": "WL",
+    "parentName": "I20261024-0012",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 105,
+      "lineName": "5",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     370
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-24T11:26:00.000+0200",
+     "lastUpdate": "2026-10-24T11:26:00.000+0200",
+     "resume": "2026-10-24T11:26:00.000+0200",
+     "start": "2026-10-24T11:14:00.000+0200"
+    },
+    "title": "5: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1518,6 +1614,259 @@
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Züge halten\nbei Linien 6 und 18"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R364-105",
+    "owner": "WL",
+    "parentName": "R364-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     364
+    ],
+    "time": {
+     "end": "2026-10-24T12:16:00.000+0200",
+     "start": "2026-10-24T11:16:27.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R367-105",
+    "owner": "WL",
+    "parentName": "R367-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     367
+    ],
+    "time": {
+     "end": "2026-10-24T12:16:00.000+0200",
+     "start": "2026-10-24T11:16:27.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R370-105",
+    "owner": "WL",
+    "parentName": "R370-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     370
+    ],
+    "time": {
+     "end": "2026-10-24T12:16:00.000+0200",
+     "start": "2026-10-24T11:16:27.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R374-105",
+    "owner": "WL",
+    "parentName": "R374-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     374
+    ],
+    "time": {
+     "end": "2026-10-24T12:16:00.000+0200",
+     "start": "2026-10-24T11:16:27.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R375-105",
+    "owner": "WL",
+    "parentName": "R375-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     375
+    ],
+    "time": {
+     "end": "2026-10-24T12:16:00.000+0200",
+     "start": "2026-10-24T11:16:27.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R377-105",
+    "owner": "WL",
+    "parentName": "R377-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     377
+    ],
+    "time": {
+     "end": "2026-10-24T12:16:00.000+0200",
+     "start": "2026-10-24T11:16:28.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R379-105",
+    "owner": "WL",
+    "parentName": "R379-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     379
+    ],
+    "time": {
+     "end": "2026-10-24T12:24:00.000+0200",
+     "start": "2026-10-24T11:26:29.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R380-105",
+    "owner": "WL",
+    "parentName": "R380-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     380
+    ],
+    "time": {
+     "end": "2026-10-24T12:24:00.000+0200",
+     "start": "2026-10-24T11:26:29.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R381-105",
+    "owner": "WL",
+    "parentName": "R381-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     381
+    ],
+    "time": {
+     "end": "2026-10-24T12:24:00.000+0200",
+     "start": "2026-10-24T11:26:29.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R382-105",
+    "owner": "WL",
+    "parentName": "R382-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     382
+    ],
+    "time": {
+     "end": "2026-10-24T12:24:00.000+0200",
+     "start": "2026-10-24T11:26:29.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R383-105",
+    "owner": "WL",
+    "parentName": "R383-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     383
+    ],
+    "time": {
+     "end": "2026-10-24T12:24:00.000+0200",
+     "start": "2026-10-24T11:26:29.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",

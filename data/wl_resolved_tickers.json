@@ -1,5 +1,48 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R364-105|2026-10-24T11:16:27.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R364-105",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-24T12:16:00.000+0200",
+   "incident": "I20261024-0012"
+  },
+  {
+   "key": "R367-105|2026-10-24T11:16:27.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R367-105",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-24T12:16:00.000+0200",
+   "incident": "I20261024-0012"
+  },
+  {
+   "key": "R370-105|2026-10-24T11:16:27.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R370-105",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-24T12:16:00.000+0200",
+   "incident": "I20261024-0012"
+  },
+  {
+   "key": "R374-105|2026-10-24T11:16:27.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R374-105",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-24T12:16:00.000+0200",
+   "incident": "I20261024-0012"
+  },
+  {
+   "key": "R375-105|2026-10-24T11:16:27.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R375-105",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-24T12:16:00.000+0200",
+   "incident": "I20261024-0012"
+  },
+  {
+   "key": "R377-105|2026-10-24T11:16:28.000+0200|Fahrtbehinderung\nwegen Polizeieinsatz",
+   "name": "R377-105",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
+   "end": "2026-10-24T12:16:00.000+0200",
+   "incident": "I20261024-0012"
+  }
+ ]
 }

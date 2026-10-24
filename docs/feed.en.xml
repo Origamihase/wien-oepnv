@@ -8,13 +8,39 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 24 Oct 2026 11:00:49 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 11:30:43 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[5: Police operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">8f92fb936b7c740f0f8bc713737d2ddddc0101ed1972011221685e252f6f06f4</guid>
+      <pubDate>Sat, 24 Oct 2026 11:14:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sat, 24 Oct 2026 11:14:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 24 Oct 2026 11:26:29 +0200</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 11:14]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 11:14]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2: Contamination]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">b006aded318189d4a1ad796aeaa86ab95d007972ea3344db4b50a4fe019c54bc</guid>
+      <pubDate>Sat, 24 Oct 2026 11:12:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sat, 24 Oct 2026 11:12:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 24 Oct 2026 11:12:00 +0200</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: contamination. [Since 11:12]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 11:12]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Atzgersdorf ↔ Wien Hetzendorf]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;921693</guid>
-      <pubDate>Sat, 24 Oct 2026 10:52:26 +0200</pubDate>
+      <pubDate>Sat, 24 Oct 2026 11:08:36 +0200</pubDate>
       <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
@@ -22,8 +48,8 @@
       <ext:starts_at>Sat, 24 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sat, 24 Oct 2026 23:59:59 +0200</ext:ends_at>
       <georss:line>48.147083 16.288645 48.166827 16.315905</georss:line>
-      <description>Due to damage on the track, trains can only run to a limited extent at present. There are occasional train cancellations and delays of up to 10 minutes. [Since 10:52]</description>
-      <content:encoded><![CDATA[Due to damage on the track, trains can only run to a limited extent at present. There are occasional train cancellations and delays of up to 10 minutes.<br/>[Since 10:52]]]></content:encoded>
+      <description>Due to damage on the track, trains can only run to a limited extent until approx. 12:30. There are occasional train cancellations and delays of up to 10 minutes. [Since 10:52]</description>
+      <content:encoded><![CDATA[Due to damage on the track, trains can only run to a limited extent until approx. 12:30. There are occasional train cancellations and delays of up to 10 minutes.<br/>[Since 10:52]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U2: Service disruption]]></title>
@@ -123,35 +149,6 @@
       <georss:point>48.137809 16.323970</georss:point>
       <description>Perfektastraße 3 → Perfektastraße 9. Stop relocation of lines 64A and N64 call bus towards Atzgersdorf, Ziedlergasse, or Alterlaa … [Since 22.10.]</description>
       <content:encoded><![CDATA[Perfektastraße 3 → Perfektastraße 9. Stop relocation of lines 64A and N64 call bus towards Atzgersdorf, Ziedlergasse, or Alterlaa …<br/>[Since 22.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Track construction works]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8681a71896a38fa5cd0db22da3a40ed6cc4472d9266f99cbebaff20ab7d6d4e6</guid>
-      <pubDate>Wed, 21 Oct 2026 06:50:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 11:58:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 11:58:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 05 Dec 2026 04:00:00 +0100</ext:ends_at>
-      <description>Due to track construction works on Stefan-Fadinger-Platz, there are restrictions on line 1. Measures: Line 1: service only between Prater Hauptallee and Knöllgasse. [Until 05.12.]</description>
-      <content:encoded><![CDATA[Due to track construction works on Stefan-Fadinger-Platz, there are restrictions on line 1. Measures: Line 1: service only between Prater Hauptallee and Knöllgasse.<br/>[Until 05.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[56B/56A/N62: Strampfergasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">d26c6c6963612c560045052c175b1ec9ef04add4290e496a66c9625d2dde4a6e</guid>
-      <pubDate>Mon, 19 Oct 2026 00:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 19 Oct 2026 00:00:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <georss:point>48.167289 16.277365</georss:point>
-      <description>Hermesstraße after Strampfergasse → approx. 100 metres towards Dr.-Schober-Straße. Hermesstraße after Strampfergasse → Discontinued. Stop relocation or … release [Until 03.11.]</description>
-      <content:encoded><![CDATA[Hermesstraße after Strampfergasse → approx. 100 metres towards Dr.-Schober-Straße. Hermesstraße after Strampfergasse → Discontinued. Stop relocation or … release<br/>[Until 03.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
