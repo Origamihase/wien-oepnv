@@ -2511,7 +2511,11 @@ _TRANSLATION_MODEL_REVISION = "1a922f3b32a8e809e17a47d4b32142d8105924e5"
 #       the head of the short form ("Umleitungen: 36B …"); inside a sentence
 #       the model got no noun to build on. Cached under 26: "Due to roadworks
 #       in … crossing area, diversions occurs."
-_TRANSLATION_CACHE_EPOCH = 27
+#  28 — follow-up check 2026-10-24: "kommt es zu Umleitungen" is fixed as
+#       "there are diversions" (operator wish: one word for the same thing
+#       across sources). Cached under 27: "Due to roadworks in … intersection,
+#       there are redirections."
+_TRANSLATION_CACHE_EPOCH = 28
 
 # Static lookup for the German words of the bracketed ``[…]`` time line (see
 # ``format_local_times``). Translating these via the ML model would be

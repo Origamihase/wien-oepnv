@@ -659,7 +659,12 @@ verdrängt eine andere Störung.
   „diversions:“ (`src/feed/glossary.py`); nur mit seinem Doppelpunkt, denn
   als Wort im Satz ließ der feste Begriff dem Modell kein Nomen, um das es
   den Satz baut („kommt es zu Umleitungen“ → „diversions occurs“, bis
-  2026-10-24 im EN-Feed). Beginnt der Text mit einer Überschrift oder einem Feld, gilt die
+  2026-10-24 im EN-Feed). Dieser Satz selbst ist seit 2026-10-24 fest
+  „there are diversions“: Dem Modell überlassen hieß er „there are
+  redirections“, während jeder andere WL-Text „diversion“ sagt (Michael,
+  2026-10-24: „Der Feed soll ja mehrere Quellen vereinheitlichen.“). Für
+  WL ist dazu „im Kreuzungsbereich“ fest „at the intersection of“, sonst
+  rückte „intersection“ hinter den festen Ausdruck ans Satzende. Beginnt der Text mit einer Überschrift oder einem Feld, gilt die
   Zwei-Sätze-Regel nicht, sonst stünde „Haltestelle: Stammersdorf.“ ohne
   die neue Lage da: gezeigt werden die Felder bis zum ersten ganzen Satz,
   danach greift die 180-Zeichen-Grenze. Bei einer Haltestellenverlegung

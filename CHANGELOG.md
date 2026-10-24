@@ -29,6 +29,20 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
   steht unter „Oktober 2026“, und der Eintrag zu den Monatsüberschriften
   nennt die Größe des Abschnitts richtig (5.078 Zeilen, 252 Einträge; die
   Zahlen 5.144 und 268 galten für die ganze Datei).
+  - *EN „kommt es zu Umleitungen“:* Nach der Epoche 27 übersetzte das Modell
+    den Satz als „there are redirections“, jeder andere WL-Text sagt
+    „diversion“. Michael: „Der Feed soll ja mehrere Quellen
+    vereinheitlichen.“ Das Glossar setzt den ganzen Ausdruck jetzt fest auf
+    „there are diversions“ (alle acht solchen WL-Texte im Cache nutzen genau
+    diese Form, `src/feed/glossary.py`, Test
+    `tests/test_glossary_umleitungen.py`); Cache-Epoche 28. Für WL zudem
+    „im Kreuzungsbereich“ fest „at the intersection of“: Sonst schob das
+    Modell „intersection“ hinter den festen Ausdruck („… Stephanie-Endres-
+    Straße there are diversions intersection.“). Nur WL, denn die
+    Baustellentexte schreiben auch „Im Kreuzungsbereich werden …“ ohne
+    Straßen. Echtes Modell über 75 Texte (alle mit „Umleitungen“ oder
+    „Kreuzungsbereich“ und alle Kurzformen): 15 ändern sich, alle zu
+    „there are diversions“, die übrigen 60 bleiben gleich.
 * **VAO-API von v1.11.0 auf v1.13.0 angehoben (2026-10-24)**: Michael: „Wir
   können die VAO-Version gerne anheben“. v1.11.0 läuft am 31.05.2027 aus;
   `DEFAULT_VERSION` in `src/providers/vor.py` steht jetzt auf v1.13.0, die
