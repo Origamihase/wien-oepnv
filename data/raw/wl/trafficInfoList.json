@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261024-0021, I20260925-0011, I20261024-0019, I20260909-0007, I20261024-0017-F01, I20261024-0017-F02, I20261024-0020-F01, I20261024-0020, I20261020-0029, I20261024-0018"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261024-0019, I20260909-0007, I20261024-0020-F01, I20261020-0029, I20261024-0021-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R401-101, R2558-125, R1445-149, R1474-412, R1448-412, R1447-149, R1448-149, R1476-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1446-149, R36-152, R1884-101, R1875-101, R1876-101, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R318-437, R293-474, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R1880-101, R1881-101, R1882-101, R1883-101, R3886-480, R1974-466, R500-101, R1925-170, R1926-170, R343-170, R299-170, R1930-170, R1931-170, R1932-170, R1933-170, R367-105, R375-105, R374-105, R379-105, R380-105, R381-105, R377-105, R387-105, R382-105, R383-105, R384-105, R385-105, R386-105, R223-109, R533-109, R532-109, R531-109, R530-109, R526-109, R524-109, R556-109, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R401-101, R2558-125, R1476-149, R1474-149, R1473-149, R1449-149, R1472-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1475-149, R2373-125, R2372-125, R2371-125, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R2370-125, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R2359-125, R2343-125, R2343-626, R2378-627, R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2373-126, R2373-127, R293-474, R3886-480, R1974-466, R500-101, R343-170, R1925-170, R1926-170, R299-170, R1930-170, R1931-170, R1932-170, R1933-170, R367-105, R375-105, R374-105, R377-105, R379-105, R381-105, R380-105, R386-105, R387-105, R385-105, R384-105, R383-105, R382-105, R223-109, R524-109, R526-109, R530-109, R531-109, R532-109, R533-109, R556-109, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,151 +259,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "78A": "ptBusCity"
-     }
-    },
-    "description": "Linie 78A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 78A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 78A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 78A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "78A: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "location": "Handelskai / Wehlistraße",
-    "name": "I20261024-0017-F01",
-    "owner": "WL",
-    "parentName": "I20261024-0017",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "78A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 478,
-      "lineName": "78A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-24T14:04:00.000+0200",
-     "lastUpdate": "2026-10-24T14:04:00.000+0200",
-     "resume": "2026-10-24T14:04:00.000+0200",
-     "start": "2026-10-24T12:43:00.000+0200"
-    },
-    "title": "78A: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "79A": "ptBusCity"
-     }
-    },
-    "description": "Linie 79A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 79A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 79A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 79A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "79A: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "location": "Handelskai / Wehlistraße",
-    "name": "I20261024-0017-F02",
-    "owner": "WL",
-    "parentName": "I20261024-0017",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "79A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 479,
-      "lineName": "79A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-24T14:04:00.000+0200",
-     "lastUpdate": "2026-10-24T14:04:00.000+0200",
-     "resume": "2026-10-24T14:04:00.000+0200",
-     "start": "2026-10-24T12:43:00.000+0200"
-    },
-    "title": "79A: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "50A": "ptBusCity",
-      "50B": "ptBusCity"
-     }
-    },
-    "description": "Linie 50B: Unregelmäßige Intervalle in beiden Richtungen. Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
-    "descriptionHTML": "<p>Linie 50B:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 50A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Falschparker.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 50B:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 50A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Falschparker.</p>",
-       "descriptionPlain": "Linie 50B: Unregelmäßige Intervalle in beiden Richtungen. Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
-       "title": "50B, 50A: Falschparker"
-      }
-     }
-    ],
-    "location": "Zimbagasse",
-    "name": "I20261024-0018",
-    "owner": "WL",
-    "parentName": "I20261024-0018",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "50B",
-     "50A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 250,
-      "lineName": "50B",
-      "vehicleType": "ptBusCity"
-     },
-     {
-      "lineId": 450,
-      "lineName": "50A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-24T13:27:00.000+0200",
-     "lastUpdate": "2026-10-24T14:00:00.000+0200",
-     "resume": "2026-10-24T13:26:00.000+0200",
-     "start": "2026-10-24T13:26:00.000+0200"
-    },
-    "title": "50B, 50A: Falschparker"
-   },
-   {
     "alertCause": "roadway damage",
     "alertCauseId": 67,
     "attributes": {
@@ -447,53 +302,6 @@
      "start": "2026-10-24T13:40:00.000+0200"
     },
     "title": "O: Gleisschaden"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "5": "ptTram"
-     }
-    },
-    "description": "Linie 5: Betrieb nur zwischen Praterstern S U und Blindengasse. Weiterfahrt bis Josefstädter Straße U. Ersatz: Linie U6. Voraussichtliche Dauer: 14:50 Uhr. Grund: Falschparker im Bereich Kaiserstraße # Seidengasse.",
-    "descriptionHTML": "<p>Linie 5: <br>Betrieb nur zwischen Praterstern S U und Blindengasse.<br>Weiterfahrt bis Josefstädter Straße U.</p><p>Ersatz: Linie U6.</p><p>Voraussichtliche Dauer: 14:50 Uhr.</p><p>Grund: Falschparker im Bereich Kaiserstraße # Seidengasse.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 5: <br>Betrieb nur zwischen Praterstern S U und Blindengasse.<br>Weiterfahrt bis Josefstädter Straße U.</p><p>Ersatz: Linie U6.</p><p>Voraussichtliche Dauer: 14:50 Uhr.</p><p>Grund: Falschparker im Bereich Kaiserstraße # Seidengasse.</p>",
-       "descriptionPlain": "Linie 5: Betrieb nur zwischen Praterstern S U und Blindengasse. Weiterfahrt bis Josefstädter Straße U. Ersatz: Linie U6. Voraussichtliche Dauer: 14:50 Uhr. Grund: Falschparker im Bereich Kaiserstraße # Seidengasse.",
-       "title": "5: Falschparker"
-      }
-     }
-    ],
-    "location": "Kaiserstraße / Seidengasse",
-    "name": "I20261024-0020",
-    "owner": "WL",
-    "parentName": "I20261024-0020",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 105,
-      "lineName": "5",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-24T14:02:00.000+0200",
-     "end": "2026-10-24T14:26:00.000+0200",
-     "lastUpdate": "2026-10-24T14:26:00.000+0200",
-     "resume": "2026-10-24T14:26:00.000+0200",
-     "start": "2026-10-24T14:01:00.000+0200"
-    },
-    "title": "5: Falschparker"
    },
    {
     "alertCause": "vehicle on the line",
@@ -549,19 +357,19 @@
       "9": "ptTram"
      }
     },
-    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 15:00 Uhr. Grund: Verkehrsunfall im Bereich Vinzenzgasse # Antonigasse.",
-    "descriptionHTML": "<p>Linie 9:<br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 15:00 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Vinzenzgasse # Antonigasse.</p>",
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 9:<br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 15:00 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Vinzenzgasse # Antonigasse.</p>",
-       "descriptionPlain": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 15:00 Uhr. Grund: Verkehrsunfall im Bereich Vinzenzgasse # Antonigasse.",
+       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "9: Verkehrsunfall"
       }
      }
     ],
     "location": "Vinzenzgasse / Antonigasse",
-    "name": "I20261024-0021",
+    "name": "I20261024-0021-F01",
     "owner": "WL",
     "parentName": "I20261024-0021",
     "priority": "1",
@@ -580,8 +388,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-24T14:24:00.000+0200",
-     "lastUpdate": "2026-10-24T14:24:00.000+0200",
+     "created": "2026-10-24T14:35:00.000+0200",
+     "lastUpdate": "2026-10-24T14:35:00.000+0200",
+     "resume": "2026-10-24T14:35:00.000+0200",
      "start": "2026-10-24T14:23:00.000+0200"
     },
     "title": "9: Verkehrsunfall"
