@@ -5,6 +5,19 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+* **VAO-API von v1.11.0 auf v1.13.0 angehoben (2026-10-24)**: Michael: „Wir
+  können die VAO-Version gerne anheben“. v1.11.0 läuft am 31.05.2027 aus;
+  `DEFAULT_VERSION` in `src/providers/vor.py` steht jetzt auf v1.13.0, die
+  neueste Version, die die VAO listet (in Betrieb bis 30.06.2028; v1.12.0 endet
+  schon am 30.08.2027). Die Schnittstellenbeschreibungen (OpenAPI, WADL) zeigen
+  von v1.11.0 bis v1.13.0 nur zusätzliche Felder; dieselbe
+  `/departureBoard`-Abfrage an alle drei Versionen lieferte dieselben 28
+  Abfahrten und dieselben Stammstrecken-Beobachtungen (drei VAO-Abfragen im
+  Probelauf). Feed, Statistik und Abfragezahl bleiben gleich.
+  `docs/how-to/versions.md` beschrieb fälschlich, die VAO habe keine
+  Versionsliste; sie steht unter
+  `https://routenplaner.verkehrsauskunft.at/vao/restproxy` (Handbuch 4.2), und
+  der Leitfaden beschreibt jetzt das Vorgehen beim nächsten Umstieg.
 
 Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [September 2026](#september-2026) · [Juni 2026](#juni-2026) · [Mai 2026](#mai-2026).
 
