@@ -1,32 +1,28 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-24T17:01:00.924089+00:00",
- "built": "2026-10-24T19:00:49+02:00",
+ "updated": "2026-10-24T17:31:09.649290+00:00",
+ "built": "2026-10-24T19:30:51+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-24T19:00:49+02:00",
+  "built": "2026-10-24T19:30:51+02:00",
   "items": [
+   {
+    "title": "6/18: Polizeieinsatz",
+    "time_line": "Seit 19:08"
+   },
    {
     "title": "U3: Polizeieinsatz",
     "time_line": "Seit 18:27"
    },
    {
-    "title": "48A: Polizeieinsatz",
-    "time_line": "Seit 17:47"
-   },
-   {
-    "title": "11: Polizeieinsatz",
-    "time_line": "Seit 17:46"
-   },
-   {
-    "title": "41: Falschparker",
-    "time_line": "Seit 17:41"
+    "title": "12A: Falschparker, Gleisbauarbeiten",
+    "time_line": "Seit heute"
    },
    {
     "title": "1: Falschparker, Gleisbauarbeiten",
-    "time_line": "Seit heute"
+    "time_line": "Heute"
    },
    {
     "title": "D: Betriebsstörung, Gleisbauarbeiten",
@@ -47,51 +43,15 @@
    {
     "title": "1/2/D/71: Veranstaltung",
     "time_line": "Am So 25.10."
+   },
+   {
+    "title": "1/2/D/71: Nationalfeiertag",
+    "time_line": "Am Mo 26.10."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-17T17:01:08.271803+00:00",
-   "raw": {
-    "wl-stoerungen": 76,
-    "wl-hinweise": 93,
-    "oebb": 159,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 25,
-    "oebb": 136,
-    "baustellen": 69
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 107
-   }
-  },
-  {
-   "t": "2026-10-17T17:30:57.373620+00:00",
-   "raw": {
-    "wl-stoerungen": 72,
-    "wl-hinweise": 93,
-    "oebb": 159,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 24,
-    "oebb": 136,
-    "baustellen": 69
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 104
-   }
-  },
   {
    "t": "2026-10-17T18:01:14.781336+00:00",
    "raw": {
@@ -6791,17 +6751,37 @@
     "oebb": 9,
     "wl": 116
    }
+  },
+  {
+   "t": "2026-10-24T17:31:09.649290+00:00",
+   "raw": {
+    "wl-stoerungen": 121,
+    "wl-hinweise": 80,
+    "oebb": 158,
+    "baustellen-linien": 56,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 6,
+    "oebb": 134,
+    "baustellen": 71
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 117
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-24T17:01:00.924089+00:00"
+   "last_ok": "2026-10-24T17:31:09.649290+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-24T17:01:00.924089+00:00"
+   "last_ok": "2026-10-24T17:31:09.649290+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-24T17:01:00.924089+00:00"
+   "last_ok": "2026-10-24T17:31:09.649290+00:00"
   }
  }
 }
