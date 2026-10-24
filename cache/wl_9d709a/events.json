@@ -1318,22 +1318,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Gleisschaden",
-    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3ac503a168e1300c7444ccdbdc08aaed1509050cf45071646d22f8ec6716b1af",
-    "pubDate": "2026-10-24T13:40:00+02:00",
-    "starts_at": "2026-10-24T13:40:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=O|D=2026-10-24|TK=o gleisschaden",
-    "_wl_ids": [
-      "I20261024-0019"
-    ],
-    "_incident_start": "2026-10-24T13:40:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U1: Rettungseinsatz",
     "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",

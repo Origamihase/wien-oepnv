@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 24 Oct 2026 15:48:42 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 16:01:01 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U1: Rettungseinsatz]]></title>
@@ -38,7 +38,7 @@
       <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 15:06]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[O: Gleisschaden]]></title>
+      <title><![CDATA[O: Gleisschaden - Linie 11 benutzen]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">3ac503a168e1300c7444ccdbdc08aaed1509050cf45071646d22f8ec6716b1af</guid>
       <pubDate>Sat, 24 Oct 2026 13:40:00 +0200</pubDate>
@@ -46,9 +46,10 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 24 Oct 2026 14:01:11 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 24 Oct 2026 13:40:00 +0200</ext:starts_at>
-      <description>Fahrtbehinderung Gleisschaden - Linie 11 benutzen; Betrieb ab Gudrunstraße. [Seit 13:40]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung Gleisschaden - Linie 11 benutzen; Betrieb ab Gudrunstraße.<br/>[Seit 13:40]]]></content:encoded>
+      <ext:starts_at>Sat, 24 Oct 2026 13:48:42 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 24 Oct 2026 16:56:00 +0200</ext:ends_at>
+      <description>Fahrtbehinderung; Gleisschaden Betrieb ab Gudrunstraße. [Seit 13:40]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung; Gleisschaden Betrieb ab Gudrunstraße.<br/>[Seit 13:40]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Atzgersdorf ↔ Wien Hetzendorf]]></title>
