@@ -1174,6 +1174,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "50B: Falschparker",
+    "description": "Linie 50B: Fahrtbehinderung in Richtung Bahnhof Hütteldorf S U. Voraussichtliche Dauer: 13:55 Uhr. Grund: Falschparker im Bereich Zimbagasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5b926dab2dabcd7d2d95a89ec7ba911120ff897c6efb0cd83d0d5fbe76c97478",
+    "pubDate": "2026-10-24T13:26:00+02:00",
+    "starts_at": "2026-10-24T13:26:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=50B|D=2026-10-24|TK=falschparker",
+    "_wl_ids": [
+      "I20261024-0018"
+    ],
+    "_incident_start": "2026-10-24T13:26:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "52: Züge halten bei Linien 6 und 18",
     "description": "Züge halten\nbei Linien 6 und 18",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1211,7 +1227,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "78A/79A: Schadhaftes Fahrzeug ÖBB",
-    "description": "Die Linie 78A fährt derzeit nur zwischen Stadion U und Praterkai S.Derzeit ist ein Betrieb der Linie 79A nicht möglich.Voraussichtliche Dauer: 15:00 Uhr.Grund: Schadhaftes Fahrzeug der ÖBB im Bereich Handelskai # Wehlistraße.",
+    "description": "Die Linie 78A fährt derzeit nur zwischen Stadion U und Praterkai S.Die Linie 79A fährt derzeit nur zwischen Kaiserebersdorf, Zinnergasse und Praterkai S.Voraussichtliche Dauer: 15:00 Uhr.Grund: Schadhaftes Fahrzeug der ÖBB im Bereich Handelskai # Wehlistraße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "32286e6ac54cd9ce2ce2ad3d774c5152fe1297171c76c653edb0d6536aa958f8",
     "pubDate": "2026-10-24T12:43:00+02:00",
@@ -1326,22 +1342,6 @@
     "starts_at": "2026-10-21T00:00:24+02:00",
     "ends_at": "2026-10-24T23:59:59+02:00",
     "_identity": "wl|störung|L=N71|D=2026-10-21|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U2: Betriebsstörung",
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
-    "pubDate": "2026-10-24T09:36:00+02:00",
-    "starts_at": "2026-10-24T09:36:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U2|D=2026-10-24|TK=u2 betriebsstörung",
-    "_wl_ids": [
-      "I20261024-0009"
-    ],
-    "_incident_start": "2026-10-24T09:36:00+02:00"
   },
   {
     "source": "Wiener Linien",
