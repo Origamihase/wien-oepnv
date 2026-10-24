@@ -5,6 +5,25 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+
+Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [September 2026](#september-2026) · [Juni 2026](#juni-2026) · [Mai 2026](#mai-2026).
+
+### Oktober 2026
+
+* **Große Dateien geordnet: Monatsüberschriften und Inhaltsverzeichnis (2026-10-24)**:
+  Michaels Frage, ob beim Monolithen Handlungsbedarf besteht. Nachgemessen:
+  `src/build_feed.py` hat 12.105 Zeilen (11.275 nach #2017), die Tests
+  ersetzen Funktionen und Werte darin an 254 Stellen (241 vor der
+  Entscheidung vom 2026-10-15, gleiche Zählung). Der Code bleibt deshalb
+  ein Modul, wie am 2026-10-15 entschieden; reine Daten in nennenswerter
+  Menge stehen dort nicht mehr. Geändert wird nur die Dokumentation: Der
+  Abschnitt „[Unreleased]“ dieser Datei (5.144 Zeilen, 268 Einträge unter
+  einer Überschrift) ist nach Monaten gegliedert, kein Eintrag ist im
+  Wortlaut geändert. `docs/architecture.md` hat oben ein Inhaltsverzeichnis
+  aller Abschnitte; `tests/test_architecture_toc.py` hält es mit den
+  Überschriften gleich. Die Nachmessung steht in §1 („Eine Feed-Kette, ein
+  Modul“).
+
 * **Unabhängige Prüfung der Umsetzungen seit dem 17.10. (2026-10-24)**:
   Drei Fehler, je als Klasse behoben.
   - *Mitternacht:* Die Kulanz `ENDS_AT_GRACE_MINUTES` (10 Minuten) reicht
@@ -1887,6 +1906,9 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
     einmal (REX 41: 144 → 109 Zeichen).
   - **Rang 3, EN:** ein wiederholter Platzhalter-Index
     („Wien Franz-Josefs-Bahnhof0X“) wird repariert.
+
+### September 2026
+
 * **Dokumentation geprüft (2026-09-27)**: Die Regeln dafür, was im
   deutschen Feed steht (Ticker-Titel, „Ein Vorfall, ein Platz“,
   „Fahrtbehinderung <Ursache>“, „ÖBB-Ersatzbus“), stehen jetzt in
@@ -4068,6 +4090,9 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
     maskiert und das Substantiv übersetzbar zurücklässt.
   * `_TRANSLATION_CACHE_EPOCH` auf 4 angehoben, damit bereits gecachte
     EN-Übersetzungen durch die verbesserte Pipeline neu berechnet werden.
+
+### Juni 2026
+
 * **Bugfix: EN-Feed — verstümmelte Masking-Platzhalter beseitigt (2026-06-01)**:
   Im englischen Feed (`docs/feed.en.xml`) erschienen in manchen Item-Titeln rohe
   Masking-Sentinels (z. B. `XENT…X1X/XENT…X2X: XENT…X0X`) statt der übersetzten
@@ -4159,6 +4184,8 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
     Identitätsfelder (`bst_code`) akzeptieren `str | int` wie die
     Geschwister-Validatoren; ein ganzzahliger `bst_code` wird nicht mehr
     stillschweigend übersprungen (#8).
+
+### Mai 2026
 
 * **Dashboard: Wetter-Widget im Header (Wien, 2026-05-30)**:
   Der Header zeigt jetzt links neben der Marke ein kleines Wetter-Symbol
