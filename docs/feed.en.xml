@@ -8,10 +8,10 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 24 Oct 2026 21:00:58 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 21:30:45 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1/71: Demonstration]]></title>
+      <title><![CDATA[1: Demonstration, track construction works]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">23617704b0adedf9ec79e6ea20280c4a9295bcef03cad548c5faed81118dda8e</guid>
       <pubDate>Sat, 24 Oct 2026 17:30:00 +0200</pubDate>
@@ -20,8 +20,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 24 Oct 2026 17:30:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 24 Oct 2026 17:30:00 +0200</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since today]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since today]]]></content:encoded>
+      <ext:ends_at>Sat, 24 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Track construction works: diversion to Reumannplatz; trains stop at Quellenstraße 156 (line 6); service from Knöllgasse; no service. [Today]</description>
+      <content:encoded><![CDATA[Track construction works: diversion to Reumannplatz; trains stop at Quellenstraße 156 (line 6); service from Knöllgasse; no service.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S1: Wien Leopoldau ↔ Deutsch Wagram]]></title>
