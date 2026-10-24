@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0029"
+    "trafficInfoNameList": "I20260909-0007, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0029, I20261024-0003"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R401-101, R2558-125, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1446-149, R1445-149, R1448-149, R1474-412, R1448-412, R1447-149, R36-152, R2373-126, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R318-437, R293-474, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R500-101, R3886-480, R1718-508, R1749-508, R407-506, R402-506, R1448-549, R1474-549, R2371-520, R2372-520, R2378-520, R2379-520, R286-474, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R401-101, R2558-125, R1446-149, R1445-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1448-149, R1474-412, R1448-412, R1447-149, R36-152, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R318-437, R293-474, R3886-480, R1749-508, R407-506, R402-506, R286-474, R1974-466, R1375-146, R585-146, R586-146, R500-101, R1394-146, R1393-146, R1392-146, R1391-146, R1376-146, R1377-146, R1378-146, R1386-146, R1387-146, R1388-146, R1389-146, R1390-146, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,6 +259,51 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
+    "alertCause": "fire brigade order",
+    "alertCauseId": 10,
+    "attributes": {
+     "relatedLineTypes": {
+      "46": "ptTram"
+     }
+    },
+    "description": "Linie 46: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Thaliastraße U über die Strecke der Linien 2 und 5. Voraussichtliche Dauer: 07:00 Uhr. Grund: Gasrohrgebrechen im Bereich Lerchenfelder Straße 128.",
+    "descriptionHTML": "<p>Linie 46:<br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Thaliastraße U <br>über die Strecke der Linien 2 und 5.</p><p>Voraussichtliche Dauer: 07:00 Uhr.</p><p>Grund: Gasrohrgebrechen im Bereich Lerchenfelder Straße 128.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 46:<br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Thaliastraße U <br>über die Strecke der Linien 2 und 5.</p><p>Voraussichtliche Dauer: 07:00 Uhr.</p><p>Grund: Gasrohrgebrechen im Bereich Lerchenfelder Straße 128.</p>",
+       "descriptionPlain": "Linie 46: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Thaliastraße U über die Strecke der Linien 2 und 5. Voraussichtliche Dauer: 07:00 Uhr. Grund: Gasrohrgebrechen im Bereich Lerchenfelder Straße 128.",
+       "title": "46: Gasrohrgebrechen"
+      }
+     }
+    ],
+    "location": "Lerchenfelder Straße 128",
+    "name": "I20261024-0003",
+    "owner": "WL",
+    "parentName": "I20261024-0003",
+    "priority": "1",
+    "reasonId": 26,
+    "reasonName": "Gasrohrgebrechen",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 146,
+      "lineName": "46",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-24T04:48:00.000+0200",
+     "lastUpdate": "2026-10-24T04:48:00.000+0200",
+     "start": "2026-10-24T04:26:00.000+0200"
+    },
+    "title": "46: Gasrohrgebrechen"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -491,6 +536,305 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nUmleitung über Linien 2 und 5 bis Thaliastraße >",
+    "name": "R1375-146",
+    "owner": "WL",
+    "parentName": "R1375-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1375
+    ],
+    "time": {
+     "end": "2026-10-24T09:00:00.000+0200",
+     "start": "2026-10-24T04:55:20.000+0200"
+    },
+    "title": "Gasrohrgebrechen\nUmleitung über Linien 2 und 5 bis Thaliastraße >"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nBetrieb ab Thaliastraße >",
+    "name": "R1376-146",
+    "owner": "WL",
+    "parentName": "R1376-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1376
+    ],
+    "time": {
+     "end": "2026-10-24T09:00:00.000+0200",
+     "start": "2026-10-24T05:00:21.000+0200"
+    },
+    "title": "Gasrohrgebrechen\nBetrieb ab Thaliastraße >"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nBetrieb ab Thaliastraße >",
+    "name": "R1377-146",
+    "owner": "WL",
+    "parentName": "R1377-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1377
+    ],
+    "time": {
+     "end": "2026-10-24T09:00:00.000+0200",
+     "start": "2026-10-24T05:00:21.000+0200"
+    },
+    "title": "Gasrohrgebrechen\nBetrieb ab Thaliastraße >"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nBetrieb ab Thaliastraße >",
+    "name": "R1378-146",
+    "owner": "WL",
+    "parentName": "R1378-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1378
+    ],
+    "time": {
+     "end": "2026-10-24T09:00:00.000+0200",
+     "start": "2026-10-24T05:00:21.000+0200"
+    },
+    "title": "Gasrohrgebrechen\nBetrieb ab Thaliastraße >"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
+    "name": "R1386-146",
+    "owner": "WL",
+    "parentName": "R1386-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1386
+    ],
+    "time": {
+     "end": "2026-10-24T09:00:00.000+0200",
+     "start": "2026-10-24T05:00:21.000+0200"
+    },
+    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
+    "name": "R1387-146",
+    "owner": "WL",
+    "parentName": "R1387-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1387
+    ],
+    "time": {
+     "end": "2026-10-24T09:00:00.000+0200",
+     "start": "2026-10-24T05:00:21.000+0200"
+    },
+    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
+    "name": "R1388-146",
+    "owner": "WL",
+    "parentName": "R1388-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1388
+    ],
+    "time": {
+     "end": "2026-10-24T09:00:00.000+0200",
+     "start": "2026-10-24T05:00:21.000+0200"
+    },
+    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
+    "name": "R1389-146",
+    "owner": "WL",
+    "parentName": "R1389-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1389
+    ],
+    "time": {
+     "end": "2026-10-24T09:00:00.000+0200",
+     "start": "2026-10-24T05:00:21.000+0200"
+    },
+    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
+    "name": "R1390-146",
+    "owner": "WL",
+    "parentName": "R1390-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1390
+    ],
+    "time": {
+     "end": "2026-10-24T09:00:00.000+0200",
+     "start": "2026-10-24T05:00:21.000+0200"
+    },
+    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
+    "name": "R1391-146",
+    "owner": "WL",
+    "parentName": "R1391-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1391
+    ],
+    "time": {
+     "end": "2026-10-24T09:00:00.000+0200",
+     "start": "2026-10-24T05:00:21.000+0200"
+    },
+    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
+    "name": "R1392-146",
+    "owner": "WL",
+    "parentName": "R1392-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1392
+    ],
+    "time": {
+     "end": "2026-10-24T09:00:00.000+0200",
+     "start": "2026-10-24T05:00:21.000+0200"
+    },
+    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nKein Betrieb",
+    "name": "R1393-146",
+    "owner": "WL",
+    "parentName": "R1393-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1393
+    ],
+    "time": {
+     "end": "2026-10-24T09:00:00.000+0200",
+     "start": "2026-10-24T05:00:21.000+0200"
+    },
+    "title": "Gasrohrgebrechen\nKein Betrieb"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nKein Betrieb",
+    "name": "R1394-146",
+    "owner": "WL",
+    "parentName": "R1394-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1394
+    ],
+    "time": {
+     "end": "2026-10-24T09:00:00.000+0200",
+     "start": "2026-10-24T05:00:21.000+0200"
+    },
+    "title": "Gasrohrgebrechen\nKein Betrieb"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
     "name": "R1445-149",
     "owner": "WL",
@@ -600,29 +944,6 @@
     "time": {
      "end": "2026-10-24T23:59:59.000+0200",
      "start": "2026-10-24T00:00:28.000+0200"
-    },
-    "title": "Gleisbauarbeiten\nBetrieb ab Johnstraße U "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U ",
-    "name": "R1448-549",
-    "owner": "WL",
-    "parentName": "R1448-549",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N49"
-    ],
-    "relatedStops": [
-     1448
-    ],
-    "time": {
-     "end": "2026-10-24T04:50:00.000+0200",
-     "start": "2026-10-24T01:00:04.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Johnstraße U "
    },
@@ -744,29 +1065,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße ",
-    "name": "R1474-549",
-    "owner": "WL",
-    "parentName": "R1474-549",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N49"
-    ],
-    "relatedStops": [
-     1474
-    ],
-    "time": {
-     "end": "2026-10-24T05:00:00.000+0200",
-     "start": "2026-10-24T01:00:04.000+0200"
-    },
-    "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
     "name": "R1475-149",
     "owner": "WL",
@@ -809,29 +1107,6 @@
      "start": "2026-10-24T00:00:28.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A",
-    "name": "R1718-508",
-    "owner": "WL",
-    "parentName": "R1718-508",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N8"
-    ],
-    "relatedStops": [
-     1718
-    ],
-    "time": {
-     "end": "2026-10-24T04:45:00.000+0200",
-     "start": "2026-10-24T00:45:04.000+0200"
-    },
-    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1043,6 +1318,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
+    "name": "R1974-466",
+    "owner": "WL",
+    "parentName": "R1974-466",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "66A"
+    ],
+    "relatedStops": [
+     1974
+    ],
+    "time": {
+     "end": "2026-10-25T01:00:00.000+0200",
+     "start": "2026-10-24T04:40:19.000+0200"
+    },
+    "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "name": "R2025-671",
     "owner": "WL",
@@ -1201,29 +1499,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Bauarbeiten\nBusse halten Donaufelder Straße 40-42",
-    "name": "R2371-520",
-    "owner": "WL",
-    "parentName": "R2371-520",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N20"
-    ],
-    "relatedStops": [
-     2371
-    ],
-    "time": {
-     "end": "2026-10-24T04:50:00.000+0200",
-     "start": "2026-10-24T01:10:06.000+0200"
-    },
-    "title": "Bauarbeiten\nBusse halten Donaufelder Straße 40-42"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2372-125",
     "owner": "WL",
@@ -1243,29 +1518,6 @@
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn",
-    "name": "R2372-520",
-    "owner": "WL",
-    "parentName": "R2372-520",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N20"
-    ],
-    "relatedStops": [
-     2372
-    ],
-    "time": {
-     "end": "2026-10-24T04:52:00.000+0200",
-     "start": "2026-10-24T01:16:07.000+0200"
-    },
-    "title": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1362,29 +1614,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
-    "name": "R2378-520",
-    "owner": "WL",
-    "parentName": "R2378-520",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N20"
-    ],
-    "relatedStops": [
-     2378
-    ],
-    "time": {
-     "end": "2026-10-24T04:35:00.000+0200",
-     "start": "2026-10-24T01:30:09.000+0200"
-    },
-    "title": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Busse halten\nSatzingerweg 41",
     "name": "R2378-627",
     "owner": "WL",
@@ -1404,29 +1633,6 @@
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Busse halten\nSatzingerweg 41"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
-    "name": "R2379-520",
-    "owner": "WL",
-    "parentName": "R2379-520",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N20"
-    ],
-    "relatedStops": [
-     2379
-    ],
-    "time": {
-     "end": "2026-10-24T04:35:00.000+0200",
-     "start": "2026-10-24T01:30:09.000+0200"
-    },
-    "title": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1745,8 +1951,8 @@
      500
     ],
     "time": {
-     "end": "2026-10-24T04:59:00.000+0200",
-     "start": "2026-10-24T00:30:29.000+0200"
+     "end": "2026-10-24T23:00:00.000+0200",
+     "start": "2026-10-24T05:00:20.000+0200"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
@@ -1769,6 +1975,52 @@
      "start": "2026-10-21T00:00:24.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
+    "name": "R585-146",
+    "owner": "WL",
+    "parentName": "R585-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     585
+    ],
+    "time": {
+     "end": "2026-10-24T09:00:00.000+0200",
+     "start": "2026-10-24T05:00:20.000+0200"
+    },
+    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
+    "name": "R586-146",
+    "owner": "WL",
+    "parentName": "R586-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     586
+    ],
+    "time": {
+     "end": "2026-10-24T09:00:00.000+0200",
+     "start": "2026-10-24T05:00:20.000+0200"
+    },
+    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
    },
    {
     "alertCause": "undefined alert cause",
