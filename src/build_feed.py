@@ -415,21 +415,60 @@ _SENTENCE_SPLIT_RE: re.Pattern[str] = re.compile(
 # ``Linien 56A und 56B: …`` — at the text start or right after a sentence
 # end or a label colon (``Maßnahmen: Linie D: …``). Built on the shared
 # ``_WL_DESC_LINE_TOKEN`` so it recognises exactly the line codes the
-# other WL description rules do.
+# other WL description rules do. The label may carry what WL writes
+# between the lines and the colon — a note in brackets (``Linie 71
+# (ganztägig):``), the direction (``Linie 11A in Richtung Stadion U:``,
+# ``Linie N71 in beiden Richtungen:``) — and the days in front of it
+# (``Montag-Freitag, Linie 80A …:``, ``Samstag, Sonntag und Feiertag,
+# Linie 80A:``). Without them 19 notices in the cache since July showed only
+# "… kommt es zu folgenden Verkehrsmaßnahmen." (see ``_prefer_measures``).
+_WL_MEASURE_DAY = r"(?:Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag|Feiertag)"
+_WL_MEASURE_LABEL = (
+    rf"(?:{_WL_MEASURE_DAY}(?:\s*(?:-|–|,|und|bis)\s*{_WL_MEASURE_DAY}){{0,6}},\s+)?"
+    rf"Linien?\s+{_WL_DESC_LINE_TOKEN}"
+    rf"(?:\s*(?:,|und|/|\+)\s*{_WL_DESC_LINE_TOKEN}){{0,20}}"
+    r"(?:\s+\([^()]{1,40}\))?"
+    r"(?:\s+in\s+(?:beiden\s+Richtungen|Richtung\s+(?:(?:St|Bhf|Hbf|Dr|Str)\.|[^:.;]){1,80}?))?\s*:\s"
+)
 _WL_MEASURE_START_RE: re.Pattern[str] = re.compile(
-    rf"(?:^|(?<=[.!?:])\s+)(?=Linien?\s+{_WL_DESC_LINE_TOKEN}"
-    rf"(?:\s*(?:,|und|/|\+)\s*{_WL_DESC_LINE_TOKEN}){{0,20}}\s*:\s)"
+    rf"(?:^|(?<=[.!?:])\s+)(?={_WL_MEASURE_LABEL})"
 )
-_WL_MEASURE_JOIN_RE: re.Pattern[str] = re.compile(
-    rf"[.!?]\s+(?=Linien?\s+{_WL_DESC_LINE_TOKEN}"
-    rf"(?:\s*(?:,|und|/|\+)\s*{_WL_DESC_LINE_TOKEN}){{0,20}}\s*:\s)"
+_WL_MEASURE_JOIN_RE: re.Pattern[str] = re.compile(rf"[.!?]\s+(?={_WL_MEASURE_LABEL})")
+# WL also sets the line as a heading of its own, the measure on the next
+# line (``<u>Linie D</u><br>Umleitung …``), which reaches the summary as
+# ``Linie D • Umleitung …``: the colon form above, once the bullet becomes
+# the colon (``_wl_measure_labels_with_colon``).
+_WL_BULLET_LABEL_RE: re.Pattern[str] = re.compile(
+    rf"(?<=[.!?:]\s)(Linien?\s+{_WL_DESC_LINE_TOKEN}"
+    rf"(?:\s*(?:,|und|/|\+)\s*{_WL_DESC_LINE_TOKEN}){{0,20}}"
+    r"(?:\s+\([^()]{1,40}\))?)\s+•\s+"
 )
+
+
+# The cut behind a measure's label (``_truncate_summary_180``): what is left
+# of the ``;``-joined measure has no colon yet.
+_WL_BARE_MEASURE_LABEL_TAIL_RE: re.Pattern[str] = re.compile(
+    rf";\s*(?:{_WL_MEASURE_DAY}[^;:]*?,\s+)?Linien?\s+{_WL_DESC_LINE_TOKEN}[^;:]*$"
+)
+
+
+def _wl_measure_labels_with_colon(summary: str) -> str:
+    """``"Linie D • Umleitung …"`` → ``"Linie D: Umleitung …"`` (see above)."""
+    return _WL_BULLET_LABEL_RE.sub(r"\1: ", summary)
+
+
 # The sentence that only announces the list: ``… kommt es zu folgenden
-# Verkehrsmaßnahmen.`` The title already names the reason.
+# Verkehrsmaßnahmen.``, ``… treten bei der Linie 80A Maßnahmen in Kraft.``
+# The title already names the reason.
 _WL_ANNOUNCEMENT_RE: re.Pattern[str] = re.compile(
-    r"\bfolgenden\s+\w*(?:maßnahmen|änderungen|einschränkungen|umleitungen)\b",
+    r"\bfolgenden\s+\w*(?:maßnahmen|änderungen|einschränkungen|umleitungen)\b"
+    r"|\bMaßnahmen\s+in\s+Kraft\b",
     re.IGNORECASE,
 )
+# A request to the reader in front of the measures (``Beachten Sie bitte
+# die unterschiedlichen Maßnahmen werktags bzw. am Wochenende.``): the
+# measures themselves say it.
+_WL_REQUEST_SENTENCE_RE: re.Pattern[str] = re.compile(r"^(?:Bitte\s+)?[A-ZÄÖÜ]\w+en\s+Sie\b")
 # A bare label left over before the measures: ``Maßnahmen:``.
 _WL_LABEL_SENTENCE_RE: re.Pattern[str] = re.compile(r"^(?:\w+\s*){1,3}:$")
 
@@ -471,6 +510,7 @@ def _prefer_measures(summary: str) -> str:
         if sentence
         and not sentence.startswith("Zeitraum:")
         and not _WL_ANNOUNCEMENT_RE.search(sentence)
+        and not _WL_REQUEST_SENTENCE_RE.match(sentence)
         and not _WL_LABEL_SENTENCE_RE.match(sentence)
     ]
     return " ".join([*kept, measures])
@@ -664,6 +704,64 @@ _MEASURE_MIN_WORDS_SHOWN = 3
 # 2026-10-17 ("„Teilausfall“ gefällt mir besser als „TEILAUSFALL“"). Only a
 # capitals run in front of a colon is a label; "ÖBB" or "RJ 263" stay.
 _OEBB_SECTION_LABEL_RE = re.compile(r"\b([A-ZÄÖÜ]{4,}(?:[ /-][A-ZÄÖÜ]{2,})*)(?=\s*:)")
+
+
+# ÖBB sets the days of a notice that recurs as a list, one day or range per
+# line ("am 10.02.2026<br>am 10.03.2026<br>…<br>am 13.10.2026 und<br>am
+# 10.11.2026 (jeweils 14:00 Uhr - 22:00 Uhr) keine R95-Züge fahren."). The
+# line breaks became plain spaces, and the list kept the days that were
+# over: on 24.10.2026 the TV read "… am 10.02.2026 am 10.03.2026 am
+# 14.04.2026 am 12.05.2026 am 09.06.2026 am 14.07.2026 am 11.08.2026 …" —
+# eight past days, and the cut took the one still to come and what does not
+# run. 20 ÖBB notices since December 2025 have such a list. A day whose
+# last date is over (Vienna) now leaves the list, and the rest are joined as
+# a sentence ("am 10.11.2026 (jeweils …) keine R95-Züge fahren."; "von
+# 24.10.2026 bis 26.10.2026, von 31.10.2026 bis 01.11.2026 …"). Only a list
+# of at least two lines counts; a date in running text stays.
+_OEBB_DATE = r"\d{2}\.\d{2}\.\d{4}"
+_OEBB_DATE_NOTE = r"(?:\s*\([^()]{1,40}\))?"
+_OEBB_DATE_ENTRY = (
+    rf"(?:am|von)\s+{_OEBB_DATE}{_OEBB_DATE_NOTE}"
+    rf"(?:\s+bis\s+{_OEBB_DATE}{_OEBB_DATE_NOTE})?"
+    rf"(?:\s+und\s+{_OEBB_DATE}{_OEBB_DATE_NOTE})*"
+)
+_OEBB_DATE_SEPARATOR = r"(?:,|\s+und)?\s*•\s*"
+_OEBB_DATE_LIST_RE = re.compile(
+    rf"{_OEBB_DATE_ENTRY}(?:{_OEBB_DATE_SEPARATOR}{_OEBB_DATE_ENTRY})+"
+)
+_OEBB_DATE_ENTRY_RE = re.compile(_OEBB_DATE_ENTRY)
+_OEBB_DATE_VALUE_RE = re.compile(r"(\d{2})\.(\d{2})\.(\d{4})")
+# Behind the list the sentence goes on with "und" (a second route): the
+# list then takes commas only.
+_OEBB_DATE_LIST_AND_FOLLOWS_RE = re.compile(r"\s*(?:•\s*)?und\b")
+
+
+def _oebb_upcoming_dates(text: str) -> str:
+    """An ÖBB date list without its past days, joined as a sentence (see above)."""
+    today = datetime.now(_VIENNA_TZ).date()
+
+    def last_day(entry: str) -> date | None:
+        days = []
+        for day, month, year in _OEBB_DATE_VALUE_RE.findall(entry):
+            try:
+                days.append(date(int(year), int(month), int(day)))
+            except ValueError:
+                return None
+        return max(days) if days else None
+
+    def rewrite(match: re.Match[str]) -> str:
+        entries = [m[0] for m in _OEBB_DATE_ENTRY_RE.finditer(match[0])]
+        ends = [last_day(entry) for entry in entries]
+        if any(end is None for end in ends):
+            return match[0]
+        kept = [entry for entry, end in zip(entries, ends, strict=True) if end is not None and end >= today]
+        if not kept:
+            return match[0]
+        if len(kept) == 1 or _OEBB_DATE_LIST_AND_FOLLOWS_RE.match(text, match.end()):
+            return ", ".join(kept)
+        return f"{', '.join(kept[:-1])} und {kept[-1]}"
+
+    return _OEBB_DATE_LIST_RE.sub(rewrite, text)
 
 
 def _oebb_section_labels_cased(text: str) -> str:
@@ -10316,7 +10414,17 @@ _RELOCATION_FIELD_RE = re.compile(r"[^\W\d]+:\s")
 # Ersatzlos aufgelassen", 40A on 06.10.2026; 5A/5B Malzgasse in August), so
 # the old place takes a colon instead: "Hartäckerstraße 65: ersatzlos
 # aufgelassen".
-_RELOCATION_CLOSED_RE = re.compile(r"ersatzlos\s+aufgelassen\b", re.IGNORECASE)
+# WL also writes a bare "Nach: aufgelassen" (56A/56B/N62 Strampfergasse,
+# 20.10.2026).
+_RELOCATION_CLOSED_RE = re.compile(r"(?:ersatzlos\s+)?aufgelassen\b", re.IGNORECASE)
+# A notice for both directions of one stop sets each direction as a field of
+# its own, its "Von:" and "Nach:" below it ("Fahrtrichtung: Bhf. Atzgersdorf
+# S bzw. Lainzer Tor"). Both "Von:" can name the same place: on 24.10.2026
+# the TV read "Hermesstraße nach Strampfergasse → etwa 100 Meter in Richtung
+# Dr.-Schober-Straße. Hermesstraße nach Strampfergasse → aufgelassen." —
+# moved and closed at once. Each pair now leads with its direction, the
+# first destination WL names: "Richtung Bhf. Atzgersdorf S: … → …".
+_RELOCATION_DIRECTION = "Fahrtrichtung:"
 
 
 def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
@@ -10337,6 +10445,8 @@ def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
             <= title_words
         )
     ]
+    if sum(b.startswith(_RELOCATION_DIRECTION) for b in rest) >= 2:
+        return _relocation_by_direction(rest)
     if len(lead) <= 2:
         return _relocation_arrows(
             lead + [b for b in rest if not b.startswith((_RELOCATION_FROM, _RELOCATION_TO))]
@@ -10358,6 +10468,45 @@ def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
             group_start = len(ordered)
         ordered.append(block)
     return _relocation_arrows(ordered)
+
+
+def _relocation_by_direction(blocks: list[str]) -> list[str]:
+    """Each direction's ``Von:``/``Nach:`` as ``Richtung X: A → B``, in front (see above)."""
+    pairs: list[str] = []
+    others: list[str] = []
+    group: list[str] = []
+    direction = ""
+
+    def flush() -> None:
+        prefix = f"Richtung {direction}: " if direction else ""
+        pairs.extend(f"{prefix}{pair}" for pair in _relocation_arrows(group))
+        group.clear()
+
+    origins: set[str] = set()
+    for block in blocks:
+        if block.startswith(_RELOCATION_DIRECTION):
+            flush()
+            direction = re.split(r"\s+bzw\.\s+", block[len(_RELOCATION_DIRECTION):].strip(), maxsplit=1)[0]
+            direction = direction.rstrip(" .")
+        elif block.startswith(_RELOCATION_FROM):
+            origin = block[len(_RELOCATION_FROM):].strip().rstrip(".")
+            # The same old place as a direction before: said once.
+            if origin not in origins:
+                group.append(block)
+            origins.add(origin)
+        elif block.startswith(_RELOCATION_TO):
+            if group and group[-1].startswith(_RELOCATION_FROM):
+                group.append(block)
+                continue
+            target = block[len(_RELOCATION_TO):].strip()
+            if _RELOCATION_CLOSED_RE.match(target):
+                group.append(f"{target[0].lower()}{target[1:]}")
+            elif target:
+                group.append(f"{_RELOCATION_ARROW} {target}")
+        else:
+            others.append(block)
+    flush()
+    return pairs + others
 
 
 def _relocation_arrows(blocks: list[str]) -> list[str]:
@@ -10603,6 +10752,9 @@ def _truncate_summary_180(summary: str) -> str:
     if len(summary) <= 180:
         return summary
     truncated = summary[:175].rsplit(" ", 1)[0]
+    # A WL measure the cut left with its line label alone ("…; Linie N8")
+    # says nothing; the ellipsis stands behind the measure before it.
+    truncated = _WL_BARE_MEASURE_LABEL_TAIL_RE.sub("", truncated)
     truncated = _trim_truncation_tail(truncated)
     if truncated.count("(") > truncated.count(")"):
         last_open = truncated.rfind("(")
@@ -10991,7 +11143,10 @@ def _format_item_content(
     if it.get("source") == _OEBB_SOURCE:
         summary = _OEBB_COURTESY_RE.sub("", summary).strip() or summary
         summary = _oebb_section_labels_cased(summary)
+        summary = _oebb_upcoming_dates(summary)
 
+    if it.get("source") == "Wiener Linien":
+        summary = _wl_measure_labels_with_colon(summary)
     # Bulletpoints auflösen, um einen fließenden Satz zu bilden
     summary = summary.replace(" • ", " ").replace("•", " ")
     # WL uses ``#`` as an internal street-junction marker — real cache
