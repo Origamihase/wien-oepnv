@@ -224,8 +224,10 @@ def test_vor_module_env_override_falls_back_to_default_on_http(
     with caplog.at_level(logging.WARNING):
         importlib.reload(vor)
 
-    assert vor.VOR_BASE_URL == (
-        "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.11.0/"
+    # The rejected override falls back to the pinned default version.
+    assert vor.VOR_BASE_URL == vor.DEFAULT_BASE_URL
+    assert vor.DEFAULT_BASE_URL.startswith(
+        "https://routenplaner.verkehrsauskunft.at/vao/restproxy/"
     )
     assert "VOR_BASE_URL" in caplog.text
 

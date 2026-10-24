@@ -2458,6 +2458,14 @@ im Repository. Was er für dieses Projekt bedeutet:
   Stammstrecken-Meldung ist ein eigener Text. Der Quellen-Tag `<source>`
   VOR/VAO am Item bleibt. Endet der Vertrag, müssen diese Hinweise wieder
   entfernt werden (Punkt 7.7).
+* **API-Version:** seit 24.10.2026 v1.13.0 (`DEFAULT_VERSION` in
+  `src/providers/vor.py`), in Betrieb bis 30.06.2028; vorher v1.11.0, die am
+  31.05.2027 endet. Michael: „Wir können die VAO-Version gerne anheben“. Gewählt
+  ist die neueste Version, die die VAO unter
+  `https://routenplaner.verkehrsauskunft.at/vao/restproxy` listet, weil sie am
+  längsten läuft. Dieselbe `/departureBoard`-Abfrage an v1.11.0, v1.12.0 und
+  v1.13.0 lieferte dieselben Abfahrten und Beobachtungen. Vorgehen beim nächsten
+  Umstieg: `docs/how-to/versions.md`, „Version anheben“.
 * **Jede Quelle ihr eigener Hinweis:** Michael, 17.10.2026: „Bitte beachte,
   dass jede Quelle den passenden Quellenhinweis erhält. ÖBB für die ÖBB, WL
   für WL und VOR/VAO für VOR/VAO“, und „Am TV soll sich weiterhin nichts

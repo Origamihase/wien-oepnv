@@ -9,7 +9,23 @@ Dieser Leitfaden zeigt, wie sich die im Projekt aktive VAO ReST API-Version iden
 
 ## Hinweis zur Namensgebung
 
-Im Projekt-Code (`src/providers/vor.py`) sind `VOR_VERSION` (primär) und `VOR_VERSIONS` (Fallback-Alias) **beide Versions-Strings**, die in die Basis-URL eingebaut werden (z. B. `v1.11.0`), **keine URLs zu einem „/versions"-Endpunkt**. Eine zentrale „Liste aller aktiven API-Versionen" stellt die VAO-API selbst nicht als REST-Endpoint bereit; verbindliche Quelle bleibt das offizielle Handbuch der VAO ([Schnittstellen-Dokumentation](https://cloud.verkehrsauskunft.at/index.php/s/oXxTKf2tEH5fKJr), Kapitel 3).
+Im Projekt-Code (`src/providers/vor.py`) sind `VOR_VERSION` (primär) und `VOR_VERSIONS` (Fallback-Alias) **beide Versions-Strings**, die in die Basis-URL eingebaut werden (z. B. `v1.13.0`), **keine URLs**. Standard ist `DEFAULT_VERSION` im Code.
+
+## Welche Versionen die VAO betreibt
+
+Die VAO listet ihre Versionen mit Endpunkt und Abschaltdatum unter
+<https://routenplaner.verkehrsauskunft.at/vao/restproxy> (Handbuch Kapitel 3.2.2 und 4.2;
+der Aufruf braucht keine Access-ID und zählt nicht zum Tageskontingent):
+
+```bash
+curl -s https://routenplaner.verkehrsauskunft.at/vao/restproxy
+```
+
+Stand 24.10.2026: v1.9.0 bis 31.08.2026, v1.11.0 bis 31.05.2027, v1.12.0 bis
+30.08.2027, **v1.13.0 bis 30.06.2028** (im Projekt aktiv seit 24.10.2026). Das
+Handbuch vom 28.01.2026 kennt v1.13.0 noch nicht; die Schnittstelle jeder Version
+beschreiben `…/restproxy/<version>/api-doc` (OpenAPI) und `…/<version>/<service>?wadl`,
+ebenfalls ohne Access-ID.
 
 ## Voraussetzungen
 
@@ -37,9 +53,26 @@ Im Projekt-Code (`src/providers/vor.py`) sind `VOR_VERSION` (primär) und `VOR_V
    Die Antwort enthält keinen expliziten Versionswert, aber die Produkt- und Operator-Listen geben Aufschluss darüber, welche Daten in der aktuellen Version verfügbar sind. Details siehe [`docs/reference/datainfo.md`](../reference/datainfo.md).
 
 3. **Antwort interpretieren**
-   - Änderungen zwischen API-Versionen sind dem Handbuch Kapitel 3 zu entnehmen; bei Unsicherheiten: „TBD – siehe PDF".
+   - Strukturelle Änderungen kommen laut Handbuch Kapitel 3.1 nur mit neuen Versionen; Unterschiede zeigt der Vergleich von OpenAPI und WADL (unten).
 
-## Nächste Schritte
+## Version anheben
 
-- Falls eine neue Version aktiviert werden soll, `DEFAULT_VERSION` in `src/providers/vor.py` anheben (Default ist im Code gepinnt). Die Umgebungsvariable `VOR_VERSION` wirkt nur lokal: Seit 2026-10-16 reicht kein Workflow sie weiter, ein Repository-Secret dieses Namens bliebe also wirkungslos (`tests/test_workflow_secrets.py` lässt CI scheitern, sobald ein Workflow ein nicht registriertes Secret übergibt).
-- Referenzkapitel der PDF konsultieren, falls Parameter zwischen Versionen variieren.
+Vor dem Abschaltdatum der aktiven Version (heute v1.13.0, 30.06.2028):
+
+1. OpenAPI und WADL von alter und neuer Version vergleichen, mindestens für
+   `departureBoard`: die Request-Parameter aus
+   `scripts/update_stammstrecke_hbf.py` und die gelesenen Felder (`date`, `time`,
+   `rtDate`, `rtTime`, `track`/`rtTrack`, `cancelled`, `direction`, `Product`).
+2. Dieselbe `/departureBoard`-Abfrage an beide Versionen schicken und durch den
+   echten Parser laufen lassen; Abfahrten und Stammstrecken-Beobachtungen müssen
+   gleich sein. Jede Abfrage zählt zum Tageskontingent (100 pro Tag).
+3. `DEFAULT_VERSION` in `src/providers/vor.py` und `tests/test_vor_default_version.py`
+   anheben. Die Umgebungsvariable `VOR_VERSION` wirkt nur lokal: Seit 2026-10-16
+   reicht kein Workflow sie weiter, ein Repository-Secret dieses Namens bliebe
+   wirkungslos (`tests/test_workflow_secrets.py` lässt CI scheitern, sobald ein
+   Workflow ein nicht registriertes Secret übergibt).
+
+So lief der Umstieg von v1.11.0 auf v1.13.0 am 24.10.2026: Die Schnittstelle kam
+nur um Felder dazu (`DestinationStop`, `OriginStop`, `globalId`, `LineInfo`,
+`himId`), die Abfrage an alle drei Versionen lieferte dieselben 28 Abfahrten und
+dieselben Beobachtungen.
