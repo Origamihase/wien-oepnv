@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261024-0003-F01, I20260925-0011, I20260909-0007, I20261020-0029, I20261024-0005"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261024-0006, I20261024-0008, I20261020-0029, I20261024-0005, I20261024-0007-F01, I20261024-0007-F02, I20261024-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R2558-125, R401-101, R1475-149, R1474-149, R1449-149, R1472-149, R1473-149, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1881-101, R1883-101, R1884-101, R1875-101, R1876-101, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R2372-125, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2373-126, R2373-127, R318-437, R293-474, R2373-125, R1882-101, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R45-136, R19-136, R2371-125, R36-152, R130-136, R1880-101, R3886-480, R1974-466, R1375-146, R586-146, R585-146, R500-101, R1390-146, R1389-146, R1388-146, R1387-146, R1394-146, R1378-146, R1377-146, R1376-146, R1386-146, R1393-146, R1392-146, R1391-146, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R401-101, R2558-125, R1445-149, R1474-412, R1448-412, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1447-149, R1446-149, R36-152, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R318-437, R293-474, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R100-136, R3886-480, R1974-466, R500-101, R190-140, R192-140, R521-140, R192-141, R193-141, R190-141, R1316-141, R1315-141, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,53 +259,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "fire brigade order",
-    "alertCauseId": 10,
-    "attributes": {
-     "relatedLineTypes": {
-      "46": "ptTram"
-     }
-    },
-    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 46: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 46: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "46: Gasrohrgebrechen"
-      }
-     }
-    ],
-    "location": "Lerchenfelder Straße 128",
-    "name": "I20261024-0003-F01",
-    "owner": "WL",
-    "parentName": "I20261024-0003",
-    "priority": "1",
-    "reasonId": 26,
-    "reasonName": "Gasrohrgebrechen",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 146,
-      "lineName": "46",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-24T07:58:00.000+0200",
-     "end": "2026-10-24T08:28:00.000+0200",
-     "lastUpdate": "2026-10-24T08:28:00.000+0200",
-     "resume": "2026-10-24T08:28:00.000+0200",
-     "start": "2026-10-24T04:26:00.000+0200"
-    },
-    "title": "46: Gasrohrgebrechen"
-   },
-   {
     "alertCause": "vandalism",
     "alertCauseId": 16,
     "attributes": {
@@ -349,6 +302,242 @@
      "start": "2026-10-24T08:04:00.000+0200"
     },
     "title": "10A: Verunreinigung"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U4: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261024-0006",
+    "owner": "WL",
+    "parentName": "I20261024-0006",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 304,
+      "lineName": "U4",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-24T08:38:00.000+0200",
+     "lastUpdate": "2026-10-24T08:38:00.000+0200",
+     "resume": "2026-10-24T08:38:00.000+0200",
+     "start": "2026-10-24T08:38:00.000+0200"
+    },
+    "title": "U4: Verspätungen"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "40": "ptTram",
+      "41": "ptTram"
+     }
+    },
+    "description": "Linie 40: Umleitung in Richtung Gersthof, Herbeckstraße zwischen Währinger Straße, Volksoper U und Gersthof S über Michelbeuern-AKH U (Strecke Linien 42 und 9). Linie 41: Umleitung in Richtung Pötzleinsdorf zwischen Währinger Straße, Volksoper U und Gersthof S über Michelbeuern-AKH U (Strecke der Linien 42 und 9). Voraussichtliche Dauer: 09:10 Uhr. Grund: Falschparker im Bereich Währinger Straße 103.",
+    "descriptionHTML": "<p>Linie 40:<br>Umleitung in Richtung Gersthof, Herbeckstraße <br>zwischen Währinger Straße, Volksoper U und Gersthof S <br>über Michelbeuern-AKH U (Strecke Linien 42 und 9).<br>Linie 41:<br>Umleitung in Richtung Pötzleinsdorf <br>zwischen Währinger Straße, Volksoper U und Gersthof S <br>über Michelbeuern-AKH U (Strecke der Linien 42 und 9).</p><p>Voraussichtliche Dauer: 09:10 Uhr.</p><p>Grund: Falschparker im Bereich Währinger Straße 103.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 40:<br>Umleitung in Richtung Gersthof, Herbeckstraße <br>zwischen Währinger Straße, Volksoper U und Gersthof S <br>über Michelbeuern-AKH U (Strecke Linien 42 und 9).<br>Linie 41:<br>Umleitung in Richtung Pötzleinsdorf <br>zwischen Währinger Straße, Volksoper U und Gersthof S <br>über Michelbeuern-AKH U (Strecke der Linien 42 und 9).</p><p>Voraussichtliche Dauer: 09:10 Uhr.</p><p>Grund: Falschparker im Bereich Währinger Straße 103.</p>",
+       "descriptionPlain": "Linie 40: Umleitung in Richtung Gersthof, Herbeckstraße zwischen Währinger Straße, Volksoper U und Gersthof S über Michelbeuern-AKH U (Strecke Linien 42 und 9). Linie 41: Umleitung in Richtung Pötzleinsdorf zwischen Währinger Straße, Volksoper U und Gersthof S über Michelbeuern-AKH U (Strecke der Linien 42 und 9). Voraussichtliche Dauer: 09:10 Uhr. Grund: Falschparker im Bereich Währinger Straße 103.",
+       "title": "40, 41: Falschparker"
+      }
+     }
+    ],
+    "location": "Währinger Straße 103",
+    "name": "I20261024-0007",
+    "owner": "WL",
+    "parentName": "I20261024-0007",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "40",
+     "41"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 140,
+      "lineName": "40",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 141,
+      "lineName": "41",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-24T08:43:00.000+0200",
+     "end": "2026-10-24T08:57:00.000+0200",
+     "lastUpdate": "2026-10-24T08:57:00.000+0200",
+     "resume": "2026-10-24T08:57:00.000+0200",
+     "start": "2026-10-24T08:42:00.000+0200"
+    },
+    "title": "40, 41: Falschparker"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "40": "ptTram"
+     }
+    },
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "40: Falschparker"
+      }
+     }
+    ],
+    "location": "Währinger Straße 103",
+    "name": "I20261024-0007-F01",
+    "owner": "WL",
+    "parentName": "I20261024-0007",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 140,
+      "lineName": "40",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-24T08:57:00.000+0200",
+     "lastUpdate": "2026-10-24T08:57:00.000+0200",
+     "resume": "2026-10-24T08:57:00.000+0200",
+     "start": "2026-10-24T08:42:00.000+0200"
+    },
+    "title": "40: Falschparker"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "41": "ptTram"
+     }
+    },
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "41: Falschparker"
+      }
+     }
+    ],
+    "location": "Währinger Straße 103",
+    "name": "I20261024-0007-F02",
+    "owner": "WL",
+    "parentName": "I20261024-0007",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 141,
+      "lineName": "41",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-24T08:57:00.000+0200",
+     "lastUpdate": "2026-10-24T08:57:00.000+0200",
+     "resume": "2026-10-24T08:57:00.000+0200",
+     "start": "2026-10-24T08:42:00.000+0200"
+    },
+    "title": "41: Falschparker"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "58B": "ptBusCity"
+     }
+    },
+    "description": "Linie 58B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Linie 58B:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 58B:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Linie 58B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+       "title": "58B: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261024-0008",
+    "owner": "WL",
+    "parentName": "I20261024-0008",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "58B"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 258,
+      "lineName": "58B",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-24T08:56:00.000+0200",
+     "lastUpdate": "2026-10-24T08:56:00.000+0200",
+     "resume": "2026-10-24T08:56:00.000+0200",
+     "start": "2026-10-24T08:56:00.000+0200"
+    },
+    "title": "58B: Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -583,301 +772,48 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nUmleitung über Linien 2 und 5 bis Thaliastraße >",
-    "name": "R1375-146",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1315-141",
     "owner": "WL",
-    "parentName": "R1375-146",
+    "parentName": "R1315-141",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "46"
+     "41"
     ],
     "relatedStops": [
-     1375
+     1315
     ],
     "time": {
-     "end": "2026-10-24T09:00:00.000+0200",
-     "start": "2026-10-24T04:55:20.000+0200"
+     "end": "2026-10-24T09:48:00.000+0200",
+     "start": "2026-10-24T08:49:14.000+0200"
     },
-    "title": "Gasrohrgebrechen\nUmleitung über Linien 2 und 5 bis Thaliastraße >"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nBetrieb ab Thaliastraße >",
-    "name": "R1376-146",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1316-141",
     "owner": "WL",
-    "parentName": "R1376-146",
+    "parentName": "R1316-141",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "46"
+     "41"
     ],
     "relatedStops": [
-     1376
+     1316
     ],
     "time": {
-     "end": "2026-10-24T09:00:00.000+0200",
-     "start": "2026-10-24T05:00:21.000+0200"
+     "end": "2026-10-24T09:48:00.000+0200",
+     "start": "2026-10-24T08:49:14.000+0200"
     },
-    "title": "Gasrohrgebrechen\nBetrieb ab Thaliastraße >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nBetrieb ab Thaliastraße >",
-    "name": "R1377-146",
-    "owner": "WL",
-    "parentName": "R1377-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1377
-    ],
-    "time": {
-     "end": "2026-10-24T09:00:00.000+0200",
-     "start": "2026-10-24T05:00:21.000+0200"
-    },
-    "title": "Gasrohrgebrechen\nBetrieb ab Thaliastraße >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nBetrieb ab Thaliastraße >",
-    "name": "R1378-146",
-    "owner": "WL",
-    "parentName": "R1378-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1378
-    ],
-    "time": {
-     "end": "2026-10-24T09:00:00.000+0200",
-     "start": "2026-10-24T05:00:21.000+0200"
-    },
-    "title": "Gasrohrgebrechen\nBetrieb ab Thaliastraße >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
-    "name": "R1386-146",
-    "owner": "WL",
-    "parentName": "R1386-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1386
-    ],
-    "time": {
-     "end": "2026-10-24T09:00:00.000+0200",
-     "start": "2026-10-24T05:00:21.000+0200"
-    },
-    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
-    "name": "R1387-146",
-    "owner": "WL",
-    "parentName": "R1387-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1387
-    ],
-    "time": {
-     "end": "2026-10-24T09:00:00.000+0200",
-     "start": "2026-10-24T05:00:21.000+0200"
-    },
-    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
-    "name": "R1388-146",
-    "owner": "WL",
-    "parentName": "R1388-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1388
-    ],
-    "time": {
-     "end": "2026-10-24T09:00:00.000+0200",
-     "start": "2026-10-24T05:00:21.000+0200"
-    },
-    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
-    "name": "R1389-146",
-    "owner": "WL",
-    "parentName": "R1389-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1389
-    ],
-    "time": {
-     "end": "2026-10-24T09:00:00.000+0200",
-     "start": "2026-10-24T05:00:21.000+0200"
-    },
-    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
-    "name": "R1390-146",
-    "owner": "WL",
-    "parentName": "R1390-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1390
-    ],
-    "time": {
-     "end": "2026-10-24T09:00:00.000+0200",
-     "start": "2026-10-24T05:00:21.000+0200"
-    },
-    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
-    "name": "R1391-146",
-    "owner": "WL",
-    "parentName": "R1391-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1391
-    ],
-    "time": {
-     "end": "2026-10-24T09:00:00.000+0200",
-     "start": "2026-10-24T05:00:21.000+0200"
-    },
-    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
-    "name": "R1392-146",
-    "owner": "WL",
-    "parentName": "R1392-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1392
-    ],
-    "time": {
-     "end": "2026-10-24T09:00:00.000+0200",
-     "start": "2026-10-24T05:00:21.000+0200"
-    },
-    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nKein Betrieb",
-    "name": "R1393-146",
-    "owner": "WL",
-    "parentName": "R1393-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1393
-    ],
-    "time": {
-     "end": "2026-10-24T09:00:00.000+0200",
-     "start": "2026-10-24T05:00:21.000+0200"
-    },
-    "title": "Gasrohrgebrechen\nKein Betrieb"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nKein Betrieb",
-    "name": "R1394-146",
-    "owner": "WL",
-    "parentName": "R1394-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1394
-    ],
-    "time": {
-     "end": "2026-10-24T09:00:00.000+0200",
-     "start": "2026-10-24T05:00:21.000+0200"
-    },
-    "title": "Gasrohrgebrechen\nKein Betrieb"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1338,6 +1274,121 @@
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R190-140",
+    "owner": "WL",
+    "parentName": "R190-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     190
+    ],
+    "time": {
+     "end": "2026-10-24T09:41:00.000+0200",
+     "start": "2026-10-24T08:42:10.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R190-141",
+    "owner": "WL",
+    "parentName": "R190-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     190
+    ],
+    "time": {
+     "end": "2026-10-24T09:42:00.000+0200",
+     "start": "2026-10-24T08:42:40.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R192-140",
+    "owner": "WL",
+    "parentName": "R192-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     192
+    ],
+    "time": {
+     "end": "2026-10-24T09:41:00.000+0200",
+     "start": "2026-10-24T08:42:10.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R192-141",
+    "owner": "WL",
+    "parentName": "R192-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     192
+    ],
+    "time": {
+     "end": "2026-10-24T09:42:00.000+0200",
+     "start": "2026-10-24T08:42:40.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R193-141",
+    "owner": "WL",
+    "parentName": "R193-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     193
+    ],
+    "time": {
+     "end": "2026-10-24T09:42:00.000+0200",
+     "start": "2026-10-24T08:42:40.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1914,6 +1965,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R521-140",
+    "owner": "WL",
+    "parentName": "R521-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     521
+    ],
+    "time": {
+     "end": "2026-10-24T09:41:00.000+0200",
+     "start": "2026-10-24T08:42:12.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "name": "R5815-671",
     "owner": "WL",
@@ -1930,52 +2004,6 @@
      "start": "2026-10-21T00:00:24.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
-    "name": "R585-146",
-    "owner": "WL",
-    "parentName": "R585-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     585
-    ],
-    "time": {
-     "end": "2026-10-24T09:00:00.000+0200",
-     "start": "2026-10-24T05:00:20.000+0200"
-    },
-    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2",
-    "name": "R586-146",
-    "owner": "WL",
-    "parentName": "R586-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     586
-    ],
-    "time": {
-     "end": "2026-10-24T09:00:00.000+0200",
-     "start": "2026-10-24T05:00:20.000+0200"
-    },
-    "title": "Gasrohrgebrechen\nUmleitung ab Thaliastraße > über 5 und 2"
    },
    {
     "alertCause": "undefined alert cause",
