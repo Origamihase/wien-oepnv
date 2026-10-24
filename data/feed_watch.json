@@ -1,17 +1,13 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-24T23:01:17.085510+00:00",
- "built": "2026-10-25T01:00:59+02:00",
+ "updated": "2026-10-24T23:30:56.672913+00:00",
+ "built": "2026-10-25T01:30:48+02:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-25T01:00:59+02:00",
+  "built": "2026-10-25T01:30:48+02:00",
   "items": [
-   {
-    "title": "U1: Rettungseinsatz",
-    "time_line": "Seit 00:29"
-   },
    {
     "title": "S2: Wien Leopoldau ↔ Mistelbach",
     "time_line": "Bis 01.11."
@@ -47,6 +43,10 @@
    {
     "title": "80A: ÖBB-Bauarbeiten",
     "time_line": "Bis 31.12.2027"
+   },
+   {
+    "title": "48A: Neubaugasse, Neustiftgasse",
+    "time_line": "Seit 19.10."
    }
   ]
  },
@@ -6771,17 +6771,37 @@
     "oebb": 9,
     "wl": 115
    }
+  },
+  {
+   "t": "2026-10-24T23:30:56.672913+00:00",
+   "raw": {
+    "wl-stoerungen": 76,
+    "wl-hinweise": 82,
+    "oebb": 158,
+    "baustellen-linien": 56,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 8,
+    "oebb": 134,
+    "baustellen": 71
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 117
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-24T23:01:17.085510+00:00"
+   "last_ok": "2026-10-24T23:30:56.672913+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-24T23:01:17.085510+00:00"
+   "last_ok": "2026-10-24T23:30:56.672913+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-24T23:01:17.085510+00:00"
+   "last_ok": "2026-10-24T23:30:56.672913+00:00"
   }
  }
 }
