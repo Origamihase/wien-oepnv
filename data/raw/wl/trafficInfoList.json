@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261024-0025, I20261024-0026-F01, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261024-0025, I20260917-0012, I20260922-0032, I20261024-0030, I20261024-0028, I20260925-0011, I20261024-0027, I20260909-0007, I20261020-0029, I20261024-0029-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R401-101, R2558-125, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1449-149, R1448-149, R36-152, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R318-437, R293-474, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R3886-480, R1974-466, R500-101, R126-136, R125-136, R124-136, R123-136, R96-136, R90-136, R95-136, R93-136, R91-136, R94-136, R99-136, R98-136, R121-136, R120-136, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R401-101, R2558-125, R1476-149, R1449-149, R1448-412, R1472-149, R1445-149, R1446-149, R1447-149, R1448-149, R1474-412, R1473-149, R1474-149, R1475-149, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R1881-101, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2373-126, R2373-127, R2345-127, R2372-627, R2420-411, R293-474, R318-437, R1876-101, R1875-101, R1884-101, R1883-101, R1880-101, R1882-101, R2379-627, R2380-627, R3886-480, R1974-466, R500-101, R121-136, R120-136, R49-102, R50-136, R46-136, R51-136, R49-136, R47-136, R45-101, R46-101, R47-101, R49-101, R50-101, R51-101, R146-141, R187-141, R150-141, R143-141, R147-141, R148-141, R144-141, R81-171, R19-171, R18-171, R17-171, R15-171, R14-171, R13-171, R2260-111, R2232-111, R2257-111, R2258-111, R2259-111, R1930-111, R1931-111, R47-171, R51-171, R50-171, R49-171, R1933-111, R1932-111, R193-141, R1315-141, R1316-141, R45-171, R46-171, R15-102, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -306,50 +306,208 @@
     "title": "U3: Rettungseinsatz"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
+    "alertCause": "demonstration",
+    "alertCauseId": 122,
     "attributes": {
      "relatedLineTypes": {
+      "1": "ptTram",
+      "2": "ptTram",
+      "71": "ptTram",
       "D": "ptTram"
      }
     },
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 1: Umleitung in Richtung Reumannplatz U: Wende über Börse und Umleitung bis Resselgasse über Schwedenplatz U und Schwarzenbergplatz. Einstieg am Karlsplatz U (bei Linie 4A) möglich. Fahrgäste zwischen Börse und Schwedenplatz mit dem Ziel Prater Hauptallee müssen am Julius-Raab-Platz in einen anderen Zug der Linie 1 umsteigen. Linie 2: Umleitung in Richtung Friedrich-Engels-Platz zwischen Rathaus U und Parlament, U Volkstheater über die Reichsratsstraße. Im Bereich Parlament, U Volkstheater halten die Züge in der Bedarfshaltestelle am Burgring nach der Bellariastraße. Linie D: Umleitung in Richtung Absberggasse zwischen Börse und Schwarzenbergplatz über Schwedenplatz U und Stubentor U. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Voraussichtliche Dauer: 21:00 Uhr. Grund: Demonstration im Bereich Dr. Karl Renner-Ring.",
+    "descriptionHTML": "<p>Linie 1:<br>Umleitung in Richtung Reumannplatz U:<br>Wende über Börse und Umleitung bis Resselgasse<br>über Schwedenplatz U und Schwarzenbergplatz.<br>Einstieg am Karlsplatz U (bei Linie 4A) möglich.<br>Fahrgäste zwischen Börse und Schwedenplatz mit dem Ziel Prater Hauptallee müssen am Julius-Raab-Platz in einen anderen Zug der Linie 1 umsteigen.<br>Linie 2: <br>Umleitung in Richtung Friedrich-Engels-Platz <br>zwischen Rathaus U und Parlament, U Volkstheater<br>über die Reichsratsstraße.<br>Im Bereich Parlament, U Volkstheater halten die Züge in der Bedarfshaltestelle am Burgring nach der Bellariastraße.<br>Linie D:<br>Umleitung in Richtung Absberggasse<br>zwischen Börse und Schwarzenbergplatz <br>über Schwedenplatz U und Stubentor U.<br>Linie 71:<br>Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.</p><p>Voraussichtliche Dauer: 21:00 Uhr.</p><p>Grund: Demonstration im Bereich Dr. Karl Renner-Ring.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "D: Polizeieinsatz"
+       "descriptionHtml": "<p>Linie 1:<br>Umleitung in Richtung Reumannplatz U:<br>Wende über Börse und Umleitung bis Resselgasse<br>über Schwedenplatz U und Schwarzenbergplatz.<br>Einstieg am Karlsplatz U (bei Linie 4A) möglich.<br>Fahrgäste zwischen Börse und Schwedenplatz mit dem Ziel Prater Hauptallee müssen am Julius-Raab-Platz in einen anderen Zug der Linie 1 umsteigen.<br>Linie 2: <br>Umleitung in Richtung Friedrich-Engels-Platz <br>zwischen Rathaus U und Parlament, U Volkstheater<br>über die Reichsratsstraße.<br>Im Bereich Parlament, U Volkstheater halten die Züge in der Bedarfshaltestelle am Burgring nach der Bellariastraße.<br>Linie D:<br>Umleitung in Richtung Absberggasse<br>zwischen Börse und Schwarzenbergplatz <br>über Schwedenplatz U und Stubentor U.<br>Linie 71:<br>Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.</p><p>Voraussichtliche Dauer: 21:00 Uhr.</p><p>Grund: Demonstration im Bereich Dr. Karl Renner-Ring.</p>",
+       "descriptionPlain": "Linie 1: Umleitung in Richtung Reumannplatz U: Wende über Börse und Umleitung bis Resselgasse über Schwedenplatz U und Schwarzenbergplatz. Einstieg am Karlsplatz U (bei Linie 4A) möglich. Fahrgäste zwischen Börse und Schwedenplatz mit dem Ziel Prater Hauptallee müssen am Julius-Raab-Platz in einen anderen Zug der Linie 1 umsteigen. Linie 2: Umleitung in Richtung Friedrich-Engels-Platz zwischen Rathaus U und Parlament, U Volkstheater über die Reichsratsstraße. Im Bereich Parlament, U Volkstheater halten die Züge in der Bedarfshaltestelle am Burgring nach der Bellariastraße. Linie D: Umleitung in Richtung Absberggasse zwischen Börse und Schwarzenbergplatz über Schwedenplatz U und Stubentor U. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Voraussichtliche Dauer: 21:00 Uhr. Grund: Demonstration im Bereich Dr. Karl Renner-Ring.",
+       "title": "1, 2, D, 71: Demonstration"
       }
      }
     ],
-    "location": "Heiligenstädter Straße 36",
-    "name": "I20261024-0026-F01",
+    "location": "Dr. Karl Renner-Ring",
+    "name": "I20261024-0027",
     "owner": "WL",
-    "parentName": "I20261024-0026",
+    "parentName": "I20261024-0027",
     "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
+    "reasonId": 22,
+    "reasonName": "Demonstration",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "D"
+     "1",
+     "2",
+     "D",
+     "71"
     ],
     "relatedLinesDetails": [
      {
+      "lineId": 101,
+      "lineName": "1",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     },
+     {
       "lineId": 136,
       "lineName": "D",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 171,
+      "lineName": "71",
       "vehicleType": "ptTram"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-24T17:12:00.000+0200",
-     "lastUpdate": "2026-10-24T17:12:00.000+0200",
-     "resume": "2026-10-24T17:12:00.000+0200",
-     "start": "2026-10-24T16:48:00.000+0200"
+     "created": "2026-10-24T17:35:00.000+0200",
+     "lastUpdate": "2026-10-24T17:35:00.000+0200",
+     "start": "2026-10-24T17:30:00.000+0200"
     },
-    "title": "D: Polizeieinsatz"
+    "title": "1, 2, D, 71: Demonstration"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "41": "ptTram"
+     }
+    },
+    "description": "Linie 41: Betrieb nur zwischen Schottentor U und Gersthof S. Weiterfahrt über Linie 40 bis Gersthof, Herbeckstraße. Voraussichtliche Dauer: 18:25 Uhr. Grund: Falschparker im Bereich Gersthofer Straße 85.",
+    "descriptionHTML": "<p>Linie 41:<br>Betrieb nur zwischen Schottentor U und Gersthof S.<br>Weiterfahrt über Linie 40 bis Gersthof, Herbeckstraße.</p><p>Voraussichtliche Dauer: 18:25 Uhr.</p><p>Grund: Falschparker im Bereich Gersthofer Straße 85.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 41:<br>Betrieb nur zwischen Schottentor U und Gersthof S.<br>Weiterfahrt über Linie 40 bis Gersthof, Herbeckstraße.</p><p>Voraussichtliche Dauer: 18:25 Uhr.</p><p>Grund: Falschparker im Bereich Gersthofer Straße 85.</p>",
+       "descriptionPlain": "Linie 41: Betrieb nur zwischen Schottentor U und Gersthof S. Weiterfahrt über Linie 40 bis Gersthof, Herbeckstraße. Voraussichtliche Dauer: 18:25 Uhr. Grund: Falschparker im Bereich Gersthofer Straße 85.",
+       "title": "41: Falschparker"
+      }
+     }
+    ],
+    "location": "Gersthofer Straße 85",
+    "name": "I20261024-0028",
+    "owner": "WL",
+    "parentName": "I20261024-0028",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 141,
+      "lineName": "41",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-24T17:44:00.000+0200",
+     "lastUpdate": "2026-10-24T17:57:00.000+0200",
+     "start": "2026-10-24T17:41:00.000+0200"
+    },
+    "title": "41: Falschparker"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram"
+     }
+    },
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "11: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261024-0029-F01",
+    "owner": "WL",
+    "parentName": "I20261024-0029",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 111,
+      "lineName": "11",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     2232
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-24T17:51:00.000+0200",
+     "lastUpdate": "2026-10-24T17:51:00.000+0200",
+     "resume": "2026-10-24T17:51:00.000+0200",
+     "start": "2026-10-24T17:46:00.000+0200"
+    },
+    "title": "11: Polizeieinsatz"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "48A": "ptBusCity"
+     }
+    },
+    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "<p>Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+       "descriptionPlain": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+       "title": "48A: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261024-0030",
+    "owner": "WL",
+    "parentName": "I20261024-0030",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 448,
+      "lineName": "48A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-24T17:47:00.000+0200",
+     "lastUpdate": "2026-10-24T17:47:00.000+0200",
+     "resume": "2026-10-24T17:47:00.000+0200",
+     "start": "2026-10-24T17:47:00.000+0200"
+    },
+    "title": "48A: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -607,94 +765,25 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R123-136",
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R13-171",
     "owner": "WL",
-    "parentName": "R123-136",
+    "parentName": "R13-171",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "71"
     ],
     "relatedStops": [
-     123
+     13
     ],
     "time": {
-     "end": "2026-10-24T17:49:00.000+0200",
-     "start": "2026-10-24T16:49:31.000+0200"
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:45:36.000+0200"
     },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R124-136",
-    "owner": "WL",
-    "parentName": "R124-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     124
-    ],
-    "time": {
-     "end": "2026-10-24T17:49:00.000+0200",
-     "start": "2026-10-24T16:49:31.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R125-136",
-    "owner": "WL",
-    "parentName": "R125-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     125
-    ],
-    "time": {
-     "end": "2026-10-24T17:49:00.000+0200",
-     "start": "2026-10-24T16:49:31.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R126-136",
-    "owner": "WL",
-    "parentName": "R126-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     126
-    ],
-    "time": {
-     "end": "2026-10-24T17:49:00.000+0200",
-     "start": "2026-10-24T16:49:31.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+    "title": "Fahrtbehinderung\nwegen Demonstration"
    },
    {
     "alertCause": "undefined alert cause",
@@ -718,6 +807,121 @@
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Gersthof <",
+    "name": "R1315-141",
+    "owner": "WL",
+    "parentName": "R1315-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     1315
+    ],
+    "time": {
+     "end": "2026-10-24T18:49:00.000+0200",
+     "start": "2026-10-24T17:50:36.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Gersthof <"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Gersthof <",
+    "name": "R1316-141",
+    "owner": "WL",
+    "parentName": "R1316-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     1316
+    ],
+    "time": {
+     "end": "2026-10-24T18:49:00.000+0200",
+     "start": "2026-10-24T17:50:36.000+0200"
+    },
+    "title": "Falschparker\nBetrieb ab Gersthof <"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R14-171",
+    "owner": "WL",
+    "parentName": "R14-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:45:36.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R143-141",
+    "owner": "WL",
+    "parentName": "R143-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     143
+    ],
+    "time": {
+     "end": "2026-10-24T18:44:00.000+0200",
+     "start": "2026-10-24T17:45:04.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R144-141",
+    "owner": "WL",
+    "parentName": "R144-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     144
+    ],
+    "time": {
+     "end": "2026-10-24T18:44:00.000+0200",
+     "start": "2026-10-24T17:45:04.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -860,6 +1064,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R146-141",
+    "owner": "WL",
+    "parentName": "R146-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     146
+    ],
+    "time": {
+     "end": "2026-10-24T18:44:00.000+0200",
+     "start": "2026-10-24T17:45:04.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R147-141",
+    "owner": "WL",
+    "parentName": "R147-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     147
+    ],
+    "time": {
+     "end": "2026-10-24T18:44:00.000+0200",
+     "start": "2026-10-24T17:45:04.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
     "name": "R1472-149",
     "owner": "WL",
@@ -994,6 +1244,167 @@
      "start": "2026-10-24T00:00:28.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R148-141",
+    "owner": "WL",
+    "parentName": "R148-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     148
+    ],
+    "time": {
+     "end": "2026-10-24T18:44:00.000+0200",
+     "start": "2026-10-24T17:45:04.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nZüge halten bei Linien 52 und 48A",
+    "name": "R15-102",
+    "owner": "WL",
+    "parentName": "R15-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T18:00:07.000+0200"
+    },
+    "title": "Demonstration\nZüge halten bei Linien 52 und 48A"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R15-171",
+    "owner": "WL",
+    "parentName": "R15-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:45:36.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R150-141",
+    "owner": "WL",
+    "parentName": "R150-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     150
+    ],
+    "time": {
+     "end": "2026-10-24T18:44:00.000+0200",
+     "start": "2026-10-24T17:45:04.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R17-171",
+    "owner": "WL",
+    "parentName": "R17-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:45:36.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R18-171",
+    "owner": "WL",
+    "parentName": "R18-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     18
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:45:36.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R187-141",
+    "owner": "WL",
+    "parentName": "R187-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     187
+    ],
+    "time": {
+     "end": "2026-10-24T18:44:00.000+0200",
+     "start": "2026-10-24T17:45:04.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1182,6 +1593,144 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R19-171",
+    "owner": "WL",
+    "parentName": "R19-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     19
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:45:36.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R193-141",
+    "owner": "WL",
+    "parentName": "R193-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     193
+    ],
+    "time": {
+     "end": "2026-10-24T18:49:00.000+0200",
+     "start": "2026-10-24T17:50:04.000+0200"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1930-111",
+    "owner": "WL",
+    "parentName": "R1930-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1930
+    ],
+    "time": {
+     "end": "2026-10-24T18:46:00.000+0200",
+     "start": "2026-10-24T17:46:36.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1931-111",
+    "owner": "WL",
+    "parentName": "R1931-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1931
+    ],
+    "time": {
+     "end": "2026-10-24T18:46:00.000+0200",
+     "start": "2026-10-24T17:46:36.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1932-111",
+    "owner": "WL",
+    "parentName": "R1932-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1932
+    ],
+    "time": {
+     "end": "2026-10-24T18:47:00.000+0200",
+     "start": "2026-10-24T17:47:36.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1933-111",
+    "owner": "WL",
+    "parentName": "R1933-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1933
+    ],
+    "time": {
+     "end": "2026-10-24T18:47:00.000+0200",
+     "start": "2026-10-24T17:47:36.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-466",
     "owner": "WL",
@@ -1221,6 +1770,121 @@
      "start": "2026-10-24T00:00:26.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2232-111",
+    "owner": "WL",
+    "parentName": "R2232-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2232
+    ],
+    "time": {
+     "end": "2026-10-24T18:46:00.000+0200",
+     "start": "2026-10-24T17:46:35.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2257-111",
+    "owner": "WL",
+    "parentName": "R2257-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2257
+    ],
+    "time": {
+     "end": "2026-10-24T18:46:00.000+0200",
+     "start": "2026-10-24T17:46:35.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2258-111",
+    "owner": "WL",
+    "parentName": "R2258-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2258
+    ],
+    "time": {
+     "end": "2026-10-24T18:46:00.000+0200",
+     "start": "2026-10-24T17:46:35.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2259-111",
+    "owner": "WL",
+    "parentName": "R2259-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2259
+    ],
+    "time": {
+     "end": "2026-10-24T18:46:00.000+0200",
+     "start": "2026-10-24T17:46:35.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2260-111",
+    "owner": "WL",
+    "parentName": "R2260-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2260
+    ],
+    "time": {
+     "end": "2026-10-24T18:46:00.000+0200",
+     "start": "2026-10-24T17:46:35.000+0200"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1708,6 +2372,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Demonstration\nZüge halten gegenüber",
+    "name": "R45-101",
+    "owner": "WL",
+    "parentName": "R45-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     45
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:38:36.000+0200"
+    },
+    "title": "Demonstration\nZüge halten gegenüber"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Züge halten\nWipplingerstr 39",
     "name": "R45-136",
     "owner": "WL",
@@ -1727,6 +2414,328 @@
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R45-171",
+    "owner": "WL",
+    "parentName": "R45-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     45
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:51:37.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Resselgasse",
+    "name": "R46-101",
+    "owner": "WL",
+    "parentName": "R46-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     46
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:41:36.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Resselgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R46-136",
+    "owner": "WL",
+    "parentName": "R46-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     46
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:38:06.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R46-171",
+    "owner": "WL",
+    "parentName": "R46-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     46
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:51:37.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Resselgasse",
+    "name": "R47-101",
+    "owner": "WL",
+    "parentName": "R47-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:41:36.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Resselgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R47-136",
+    "owner": "WL",
+    "parentName": "R47-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:38:06.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R47-171",
+    "owner": "WL",
+    "parentName": "R47-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:47:06.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Resselgasse",
+    "name": "R49-101",
+    "owner": "WL",
+    "parentName": "R49-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:41:36.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Resselgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Züge halten \nnach Bellariastraße",
+    "name": "R49-102",
+    "owner": "WL",
+    "parentName": "R49-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:36:36.000+0200"
+    },
+    "title": "Züge halten \nnach Bellariastraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R49-136",
+    "owner": "WL",
+    "parentName": "R49-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:38:06.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R49-171",
+    "owner": "WL",
+    "parentName": "R49-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:47:06.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Resselgasse",
+    "name": "R50-101",
+    "owner": "WL",
+    "parentName": "R50-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:43:06.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Resselgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R50-136",
+    "owner": "WL",
+    "parentName": "R50-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:38:06.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R50-171",
+    "owner": "WL",
+    "parentName": "R50-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:47:06.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1754,6 +2763,75 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Resselgasse",
+    "name": "R51-101",
+    "owner": "WL",
+    "parentName": "R51-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:44:06.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Resselgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R51-136",
+    "owner": "WL",
+    "parentName": "R51-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:38:06.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
+    "name": "R51-171",
+    "owner": "WL",
+    "parentName": "R51-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:47:06.000+0200"
+    },
+    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "name": "R5815-671",
     "owner": "WL",
@@ -1774,186 +2852,25 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R90-136",
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R81-171",
     "owner": "WL",
-    "parentName": "R90-136",
+    "parentName": "R81-171",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "71"
     ],
     "relatedStops": [
-     90
+     81
     ],
     "time": {
-     "end": "2026-10-24T17:52:00.000+0200",
-     "start": "2026-10-24T16:53:01.000+0200"
+     "end": "2026-10-24T21:00:00.000+0200",
+     "start": "2026-10-24T17:45:36.000+0200"
     },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R91-136",
-    "owner": "WL",
-    "parentName": "R91-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     91
-    ],
-    "time": {
-     "end": "2026-10-24T17:52:00.000+0200",
-     "start": "2026-10-24T16:53:01.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R93-136",
-    "owner": "WL",
-    "parentName": "R93-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     93
-    ],
-    "time": {
-     "end": "2026-10-24T17:52:00.000+0200",
-     "start": "2026-10-24T16:53:01.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R94-136",
-    "owner": "WL",
-    "parentName": "R94-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     94
-    ],
-    "time": {
-     "end": "2026-10-24T17:52:00.000+0200",
-     "start": "2026-10-24T16:53:01.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R95-136",
-    "owner": "WL",
-    "parentName": "R95-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     95
-    ],
-    "time": {
-     "end": "2026-10-24T17:52:00.000+0200",
-     "start": "2026-10-24T16:53:01.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R96-136",
-    "owner": "WL",
-    "parentName": "R96-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     96
-    ],
-    "time": {
-     "end": "2026-10-24T17:52:00.000+0200",
-     "start": "2026-10-24T16:53:01.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R98-136",
-    "owner": "WL",
-    "parentName": "R98-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     98
-    ],
-    "time": {
-     "end": "2026-10-24T17:58:00.000+0200",
-     "start": "2026-10-24T16:59:32.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R99-136",
-    "owner": "WL",
-    "parentName": "R99-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     99
-    ],
-    "time": {
-     "end": "2026-10-24T17:58:00.000+0200",
-     "start": "2026-10-24T16:59:32.000+0200"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+    "title": "Fahrtbehinderung\nwegen Demonstration"
    },
    {
     "alertCause": "undefined alert cause",
