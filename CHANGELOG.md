@@ -5,6 +5,30 @@ Alle nennenswerten Änderungen an diesem Projekt werden in dieser Datei dokument
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+
+Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [September 2026](#september-2026) · [Juni 2026](#juni-2026) · [Mai 2026](#mai-2026).
+
+### Oktober 2026
+
+* **Nachprüfung der Umsetzungen vom 24.10. (2026-10-24)**: Die Regel
+  „ÖBB-Abschnitt mit offenem Ende“ (`_oebb_section_end_is_open`, Eintrag
+  „Unabhängige Prüfung der Umsetzungen seit dem 17.10.“ weiter unten) griff
+  zu weit: Jedes „bis“, auf das kein Datum folgte, machte das Ende offen,
+  auch eines im Wochentagsfenster („von 31.10.2026 bis
+  30.11.2026 (jeweils von Samstag 23:15 Uhr bis Sonntag 04:40 Uhr …)“), in
+  einer Strecke („nur bis Wien Meidling“) oder vor einem Datum („bis zum
+  21.10.“). Rückte ein solcher Abschnitt nach vorn, hätte die Zeitzeile
+  wieder das Ende der ganzen Meldung gezeigt. Jetzt beendet ein „bis“-Datum
+  irgendwo im Abschnitt ihn immer; offen ist ein Abschnitt nur, wenn sein
+  Zeitraum hinter dem Datum mit „bis“ ohne Datum weitergeht („bis
+  voraussichtlich Ende 2027“, „bis auf Weiteres“) oder er nur einen Beginn
+  nennt („ab“, „seit“). Von 152 datierten Sätzen der 926 ÖBB-Meldungen im
+  Cache galten vorher fünf als offen, vier davon zu Unrecht; jetzt nur
+  „bis voraussichtlich Ende 2027“. Die Enden aller 926 Meldungen bleiben
+  gleich (weiterhin nur TRACKINFO 901477 gekürzt). Dazu: Der VAO-Eintrag
+  steht unter „Oktober 2026“, und der Eintrag zu den Monatsüberschriften
+  nennt die Größe des Abschnitts richtig (5.078 Zeilen, 252 Einträge; die
+  Zahlen 5.144 und 268 galten für die ganze Datei).
 * **VAO-API von v1.11.0 auf v1.13.0 angehoben (2026-10-24)**: Michael: „Wir
   können die VAO-Version gerne anheben“. v1.11.0 läuft am 31.05.2027 aus;
   `DEFAULT_VERSION` in `src/providers/vor.py` steht jetzt auf v1.13.0, die
@@ -19,10 +43,6 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
   `https://routenplaner.verkehrsauskunft.at/vao/restproxy` (Handbuch 4.2), und
   der Leitfaden beschreibt jetzt das Vorgehen beim nächsten Umstieg.
 
-Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [September 2026](#september-2026) · [Juni 2026](#juni-2026) · [Mai 2026](#mai-2026).
-
-### Oktober 2026
-
 * **Große Dateien geordnet: Monatsüberschriften und Inhaltsverzeichnis (2026-10-24)**:
   Michaels Frage, ob beim Monolithen Handlungsbedarf besteht. Nachgemessen:
   `src/build_feed.py` hat 12.105 Zeilen (11.275 nach #2017), die Tests
@@ -30,7 +50,7 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
   Entscheidung vom 2026-10-15, gleiche Zählung). Der Code bleibt deshalb
   ein Modul, wie am 2026-10-15 entschieden; reine Daten in nennenswerter
   Menge stehen dort nicht mehr. Geändert wird nur die Dokumentation: Der
-  Abschnitt „[Unreleased]“ dieser Datei (5.144 Zeilen, 268 Einträge unter
+  Abschnitt „[Unreleased]“ dieser Datei (5.078 Zeilen, 252 Einträge unter
   einer Überschrift) ist nach Monaten gegliedert, kein Eintrag ist im
   Wortlaut geändert. `docs/architecture.md` hat oben ein Inhaltsverzeichnis
   aller Abschnitte; `tests/test_architecture_toc.py` hält es mit den

@@ -819,7 +819,12 @@ verdrängt eine andere Störung.
   voraussichtlich Ende 2027“, „ab 04.07.2026“ ohne „bis“-Datum,
   `_oebb_section_end_is_open`, seit 2026-10-24): sein letztes Datum ist sein
   Beginn, und eine Sperre über ein Jahr hätte den Feed nach dem ersten Tag
-  verlassen (unabhängige Prüfung 24.10., noch kein echter Fall).
+  verlassen (unabhängige Prüfung 24.10., noch kein echter Fall). Ein
+  „bis“-Datum irgendwo im Abschnitt beendet ihn immer: ein „bis“ ohne Datum
+  zählt nur direkt hinter dem Datum des Zeitraums, nicht im
+  Wochentagsfenster („(jeweils von Samstag 23:15 Uhr bis Sonntag 04:40
+  Uhr)“) oder in einer Strecke („nur bis Wien Meidling“; Nachprüfung
+  24.10.).
   `_end_with_oebb_lead_section` läuft in `_assemble_feed_items` vor dem
   Altersfilter. Prüfung aller 925 ÖBB-Texte im Cache seit Mai: nur diese
   Meldung ändert sich; Nachbau von 241 Feed-Ständen (15.–19.10.): nur ihre
