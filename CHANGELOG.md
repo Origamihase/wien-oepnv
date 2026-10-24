@@ -10,6 +10,36 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Prüfung des Feeds vom 24.10., 22:00 (2026-10-24)**: Drei Fehler im
+  Text, jeder als Klasse behoben (`docs/architecture.md`, „Titel und
+  Beschreibung im deutschen Feed“; Tests
+  `tests/test_feed_pruefung_2026_10_24.py`).
+  - *WL-Maßnahmen ohne Etikett „Linie D:“:* „1/2/D/71: Veranstaltung“ und
+    „1/2/D/71: Nationalfeiertag“ zeigten nur „… kommt es zu folgenden
+    Verkehrsmaßnahmen.“, „80A: ÖBB-Bauarbeiten“ nur „… treten bei der Linie
+    80A Maßnahmen in Kraft.“. WL setzt die Linie dort als eigene Zeile
+    („<u>Linie D</u><br>Umleitung …“), mit Richtung („Linie 11A in Richtung
+    Stadion U:“) oder mit Wochentagen davor („Montag-Freitag, Linie 80A
+    …:“); `_prefer_measures` erkennt diese Etiketten jetzt
+    (`_WL_MEASURE_LABEL`). Von 9.606 WL-Texten im Cache seit Juli ändern sich
+    die von 35 Meldungen, darunter alle 19, die nur die Ankündigung zeigten.
+  - *Haltestelle in zwei Richtungen:* „56B/56A/N62: Strampfergasse“ las
+    „Hermesstraße nach Strampfergasse → etwa 100 Meter … Hermesstraße nach
+    Strampfergasse → aufgelassen.“. Jetzt steht jedes Paar hinter seiner
+    Richtung, und „aufgelassen“ bekommt keinen Pfeil: „Richtung Bhf.
+    Atzgersdorf S: … → etwa 100 Meter in Richtung Dr.-Schober-Straße.
+    Richtung Hietzing U: aufgelassen.“ (`_relocation_by_direction`; betrifft
+    auch „40A: Bauernfeldplatz“ ab 27.10.).
+  - *ÖBB-Datumslisten:* Die Zeilen einer Liste von Tagen liefen ohne
+    Trennung ineinander, vergangene Tage blieben stehen („R95: … am
+    10.02.2026 am 10.03.2026 … am 11.08.2026 …“). Vergangene Tage fallen
+    jetzt weg, der Rest steht mit Kommas und „und“ da
+    (`_oebb_upcoming_dates`); 20 ÖBB-Meldungen seit Dezember 2025 haben eine
+    solche Liste.
+  Replay der echten Kette über 71 Feed-Stände vom 14. bis 24.10. und die
+  Morgen des 25. und 26.10.: Reihenfolge und Auswahl in allen Ständen
+  gleich, geändert nur die Texte der genannten Meldungen.
+
 * **Nachprüfung der Umsetzungen vom 24.10. (2026-10-24)**: Die Regel
   „ÖBB-Abschnitt mit offenem Ende“ (`_oebb_section_end_is_open`, Eintrag
   „Unabhängige Prüfung der Umsetzungen seit dem 17.10.“ weiter unten) griff

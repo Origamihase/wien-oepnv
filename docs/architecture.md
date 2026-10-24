@@ -636,7 +636,21 @@ verdrängt eine andere Störung.
   Wörter ihrer Maßnahme sichtbar bleiben (`_with_second_sentence`, seit
   2026-10-14; vorher stand bei der Demo am Ring am 13.10. nur „Wegen einer
   Demonstration kommt es zu einer Einschränkung des öffentlichen
-  Verkehrs.“). Eine WL-Störung mehrerer Linien zeigt jede Linie in
+  Verkehrs.“). Als Etikett einer Maßnahme zählt seit 2026-10-24 auch, was
+  WL zwischen Linie und Doppelpunkt schreibt, eine Klammer („Linie 71
+  (ganztägig):“) oder die Richtung („Linie 11A in Richtung Stadion U:“,
+  „in beiden Richtungen“), und die Wochentage davor („Montag-Freitag,
+  Linie 80A …:“); eine Linie als eigene Zeile über ihrer Maßnahme
+  („<u>Linie D</u><br>Umleitung …“) bekommt den Doppelpunkt
+  (`_WL_MEASURE_LABEL`, `_wl_measure_labels_with_colon`). Vorher fanden
+  die Regeln den Block nicht, und 19 WL-Meldungen im Cache seit Juli zeigten nur
+  „… kommt es zu folgenden Verkehrsmaßnahmen.“, am 24.10. das
+  Sicherheitsfest und der Nationalfeiertag (Linien 1, 2, D, 71). Als
+  Ankündigung fällt auch „… treten bei der Linie 80A Maßnahmen in Kraft.“
+  weg, ebenso eine Bitte an den Leser vor dem Block („Beachten Sie bitte
+  die unterschiedlichen Maßnahmen …“). Bleibt nach dem Schnitt von einer
+  Maßnahme nur ihr Etikett („…; Linie N8“), fällt es weg, und „…“ steht
+  hinter der Maßnahme davor. Eine WL-Störung mehrerer Linien zeigt jede Linie in
   Kurzform, wenn der Text sonst eine Linie verschweigen würde
   (`_lines_in_short`, seit 2026-10-15; Betreiberentscheidung „Kurzform je
   Linie“, Begründung: „Am TV sieht man sonst nur, was mit einer von drei
@@ -682,7 +696,17 @@ verdrängt eine andere Störung.
   aufgelassen“) bekommt keinen Pfeil, denn der heißt „verlegt nach“: sie
   steht als „Hartäckerstraße 65: ersatzlos aufgelassen“ da (seit
   2026-10-06; vorher „Hartäckerstraße 65 → Ersatzlos aufgelassen“ bei 40A,
-  im August bei 5A/5B Malzgasse). Hausnummern behalten ihren Buchstaben („27b“, „2a“, DIN 5008):
+  im August bei 5A/5B Malzgasse); ebenso ein bloßes „Nach: aufgelassen“.
+  Setzt WL beide Richtungen als eigene Felder („Fahrtrichtung: Bhf.
+  Atzgersdorf S bzw. Lainzer Tor“, darunter „Von:“ und „Nach:“), steht
+  jedes Paar hinter seiner Richtung, dem ersten Ziel, das WL nennt; ein
+  „Von:“, das schon bei der Richtung davor stand, steht nur einmal
+  (`_relocation_by_direction`, seit 2026-10-24): „Richtung Bhf.
+  Atzgersdorf S: Hermesstraße nach Strampfergasse → etwa 100 Meter in
+  Richtung Dr.-Schober-Straße. Richtung Hietzing U: aufgelassen.“ Vorher
+  stand auf dem TV „Hermesstraße nach Strampfergasse → etwa 100 Meter …
+  Hermesstraße nach Strampfergasse → aufgelassen.“, verlegt und
+  aufgelassen zugleich. Hausnummern behalten ihren Buchstaben („27b“, „2a“, DIN 5008):
   `html_to_text` trennt nur noch Einheiten aus einem Buchstaben („2 m“,
   „5 h“) ab, „27 b-27 c“ stand mit dem Pfeil sichtbar im Feed. Die Folge einer Kurzmeldung steht
   immer als Satz mit Punkt da („Busse halten bei Haltestelle N71.“), und
@@ -745,7 +769,18 @@ verdrängt eine andere Störung.
   Höflichkeitssätze („Wir bitten um Entschuldigung.“, am Ende von 310 der
   316 ÖBB-Texte seit Juni; „Sobald uns weitere Informationen vorliegen,
   informieren wir Sie.“, „Details finden Sie hier...“) sagen am Fernseher
-  nichts und fallen vorher weg (`_OEBB_COURTESY_RE`). Über alle 443
+  nichts und fallen vorher weg (`_OEBB_COURTESY_RE`). Eine Liste von
+  Tagen, die ÖBB Zeile für Zeile setzt („am 10.02.2026<br>am
+  10.03.2026<br>…“), verliert die Tage, die vorbei sind (Wiener Datum),
+  und steht als Satz da, mit Kommas und „und“ vor dem letzten
+  (`_oebb_upcoming_dates`, seit 2026-10-24). Am 24.10. las R95 „… am
+  10.02.2026 am 10.03.2026 am 14.04.2026 … am 11.08.2026 …“, acht
+  vergangene Tage, und der Schnitt nahm den 10.11. und was nicht fährt;
+  jetzt „… am 10.11.2026 (jeweils 14:00 Uhr - 22:00 Uhr) keine R95-Züge
+  fahren.“ Nur Listen aus mindestens zwei Zeilen zählen, ein Datum im
+  Fließtext bleibt; sind alle Tage vorbei, bleibt der Text wie er war
+  (die Meldung ist dann ohnehin abgelaufen). 20 ÖBB-Meldungen seit Dezember 2025
+  haben eine solche Liste. Über alle 443
   ÖBB-Texte im Cache seit Juni ändern sich 265: 251 behalten ihren
   zweiten Satz, die übrigen verlieren nur den Höflichkeitssatz. Rückblick:
   Eine Störung, die ÖBB als vorbei meldet („waren“), bleibt im Feed, weil

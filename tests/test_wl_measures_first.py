@@ -162,9 +162,13 @@ def test_texts_without_a_measure_block_are_untouched(text: str) -> None:
 
 
 def test_the_measure_patterns_reference_the_shared_line_token() -> None:
-    """Reuse, not a fourth copy — asserted on the source, not the pattern."""
+    """Reuse, not a fourth copy — asserted on the source, not the pattern.
+
+    The two patterns share one label (``_WL_MEASURE_LABEL``, 2026-10-24),
+    which in turn is built on the line token.
+    """
     source = pathlib.Path(build_feed.__file__).read_text(encoding="utf-8")
-    wanted = {"_WL_MEASURE_START_RE", "_WL_MEASURE_JOIN_RE"}
+    wanted = {"_WL_MEASURE_LABEL", "_WL_MEASURE_START_RE", "_WL_MEASURE_JOIN_RE"}
     found: set[str] = set()
     for node in ast.walk(ast.parse(source)):
         targets: list[ast.expr]
@@ -178,7 +182,8 @@ def test_the_measure_patterns_reference_the_shared_line_token() -> None:
         if names:
             segment = ast.get_source_segment(source, node)
             assert segment is not None
-            assert "_WL_DESC_LINE_TOKEN" in segment, segment
+            shared = "_WL_DESC_LINE_TOKEN" if "_WL_MEASURE_LABEL" in names else "_WL_MEASURE_LABEL"
+            assert shared in segment, segment
             found |= names
     assert found == wanted
 
