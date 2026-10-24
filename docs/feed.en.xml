@@ -8,10 +8,10 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 24 Oct 2026 18:41:27 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 19:00:49 +0200</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U3: Police operation, rescue operation]]></title>
+      <title><![CDATA[U3: Police operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182</guid>
       <pubDate>Sat, 24 Oct 2026 18:27:00 +0200</pubDate>
@@ -20,8 +20,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 24 Oct 2026 18:27:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 24 Oct 2026 18:27:00 +0200</ext:starts_at>
-      <description>Police operation: The U3 line currently only runs between Ottakring and Kardinal-Nagl-Platz or between Erdberg and Simmering. [Since 18:27]</description>
-      <content:encoded><![CDATA[Police operation: The U3 line currently only runs between Ottakring and Kardinal-Nagl-Platz or between Erdberg and Simmering.<br/>[Since 18:27]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 18:27]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 18:27]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[48A: Police operation]]></title>
@@ -45,7 +45,7 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 24 Oct 2026 17:46:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 24 Oct 2026 17:47:36 +0200</ext:starts_at>
+      <ext:starts_at>Sat, 24 Oct 2026 17:46:00 +0200</ext:starts_at>
       <description>After a service obstruction, there are irregular intervals. [Since 17:46]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 17:46]]]></content:encoded>
     </item>
@@ -58,9 +58,22 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 24 Oct 2026 17:41:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 24 Oct 2026 17:50:36 +0200</ext:starts_at>
-      <description>Service from Gersthof. After a service obstruction, there are irregular intervals. [Since 17:41]</description>
-      <content:encoded><![CDATA[Service from Gersthof. After a service obstruction, there are irregular intervals.<br/>[Since 17:41]]]></content:encoded>
+      <ext:starts_at>Sat, 24 Oct 2026 17:41:00 +0200</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 17:41]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 17:41]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Illegally parked vehicle, track construction works]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1</guid>
+      <pubDate>Sat, 24 Oct 2026 18:53:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sat, 24 Oct 2026 18:53:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 24 Oct 2026 18:59:11 +0200</ext:starts_at>
+      <description>Illegally parked vehicle: service only between Reumannplatz U and Radetzkyplatz; trains stop at the stop of line O. Track construction works: diversion to Reumannplatz … [Since today]</description>
+      <content:encoded><![CDATA[Illegally parked vehicle: service only between Reumannplatz U and Radetzkyplatz; trains stop at the stop of line O. Track construction works: diversion to Reumannplatz …<br/>[Since today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: Service disruption, track construction works]]></title>
@@ -132,20 +145,6 @@
       <ext:ends_at>Sun, 25 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Due to the Vienna security festival in the area of Rathausplatz, the following service changes apply. [On Sun 25.10.]</description>
       <content:encoded><![CDATA[Due to the Vienna security festival in the area of Rathausplatz, the following service changes apply.<br/>[On Sun 25.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2/D/71: National Day]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5ed1a558f4654252adcbde0d5b0507c31199017b815d336b01f7b063bfcb22b7</guid>
-      <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 23 Oct 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 26 Oct 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Due to an event in the area of Ringstraße, the following service changes apply. [On Mon 26.10.]</description>
-      <content:encoded><![CDATA[Due to an event in the area of Ringstraße, the following service changes apply.<br/>[On Mon 26.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
