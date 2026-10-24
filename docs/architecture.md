@@ -777,10 +777,15 @@ verdrängt eine andere Störung.
   10.02.2026 am 10.03.2026 am 14.04.2026 … am 11.08.2026 …“, acht
   vergangene Tage, und der Schnitt nahm den 10.11. und was nicht fährt;
   jetzt „… am 10.11.2026 (jeweils 14:00 Uhr - 22:00 Uhr) keine R95-Züge
-  fahren.“ Nur Listen aus mindestens zwei Zeilen zählen, ein Datum im
-  Fließtext bleibt; sind alle Tage vorbei, bleibt der Text wie er war
+  fahren.“ Eine Liste in einer Zeile zählt genauso („am 25.10.2026 und
+  01.11.2026 der S2-Zug 23360 nicht fahren“ hieße ab 26.10. weiter so;
+  jetzt „am 01.11.2026 der S2-Zug …“, Nachprüfung 25.10.): ein Tag ohne
+  eigenes „am“/„von“ übernimmt das seines Vorgängers, wenn der wegfällt.
+  Ein einzelner Tag oder Zeitraum bleibt, ebenso eine Liste ohne
+  vergangenen Tag; sind alle Tage vorbei, bleibt der Text wie er war
   (die Meldung ist dann ohnehin abgelaufen). 20 ÖBB-Meldungen seit Dezember 2025
-  haben eine solche Liste. Über alle 443
+  haben eine Liste über mehrere Zeilen, zwei (S2 Leopoldau–Mistelbach,
+  REX 51 Marchtrenk) eine in einer Zeile. Über alle 443
   ÖBB-Texte im Cache seit Juni ändern sich 265: 251 behalten ihren
   zweiten Satz, die übrigen verlieren nur den Höflichkeitssatz. Rückblick:
   Eine Störung, die ÖBB als vorbei meldet („waren“), bleibt im Feed, weil

@@ -190,3 +190,20 @@ def test_oebb_dates_outside_a_list_stay() -> None:
     assert _oebb_upcoming_dates(single, _TODAY) == single
     over = "am 10.02.2026 • am 10.03.2026 keine Züge"
     assert _oebb_upcoming_dates(over, _TODAY) == over
+
+
+def test_oebb_date_list_on_one_line_drops_past_days() -> None:
+    # Follow-up check 2026-10-25: S2 Leopoldau–Mistelbach from 26.10.
+    s2 = "am 25.10.2026 und 01.11.2026 der S2-Zug 23360 nicht fahren."
+    assert _oebb_upcoming_dates(s2, date(2026, 10, 26)) == "am 01.11.2026 der S2-Zug 23360 nicht fahren."
+    rex51 = "am 29.09.2026 (10:00 Uhr - 15:00 Uhr) und am 01.10.2026 (08:00 Uhr - 11:00 Uhr) keine"
+    assert _oebb_upcoming_dates(rex51, date(2026, 9, 30)) == "am 01.10.2026 (08:00 Uhr - 11:00 Uhr) keine"
+    several = "am 20.10.2026, 25.10.2026, 01.11.2026 und 08.11.2026 keine"
+    assert _oebb_upcoming_dates(several, date(2026, 10, 26)) == "am 01.11.2026 und 08.11.2026 keine"
+
+
+def test_oebb_date_list_on_one_line_without_past_day_stays() -> None:
+    text = "am 25.10.2026 und 01.11.2026 der S2-Zug"
+    assert _oebb_upcoming_dates(text, date(2026, 10, 25)) == text
+    commas = "am 01.11.2026, am 08.11.2026, am 15.11.2026 keine"
+    assert _oebb_upcoming_dates(commas, date(2026, 10, 25)) == commas
