@@ -854,6 +854,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10A: Verunreinigung",
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "017058dd074e4422c0c8dcb5495b900e2989ef189c6775d28f43f027ca4115e9",
+    "pubDate": "2026-10-24T08:04:00+02:00",
+    "starts_at": "2026-10-24T08:04:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=10A|D=2026-10-24|TK=10a verunreinigung",
+    "_wl_ids": [
+      "I20261024-0005"
+    ],
+    "_incident_start": "2026-10-24T08:04:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "11A: Busse halten Meiereistraße gegenüber 12",
     "description": "Bauarbeiten\nBusse halten Meiereistraße gegenüber 12",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1154,22 +1170,6 @@
       "I20260917-0012"
     ],
     "_incident_start": "2026-09-18T04:30:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "46: Gasrohrgebrechen",
-    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "f6eedde0d42473e14a335b702237df6f0d59629ed6c332da60eeb935ddfdd77d",
-    "pubDate": "2026-10-24T04:26:00+02:00",
-    "starts_at": "2026-10-24T04:26:00+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=46|D=2026-10-24|TK=46 gasrohrgebrechen",
-    "_wl_ids": [
-      "I20261024-0003"
-    ],
-    "_incident_start": "2026-10-24T04:26:00+02:00"
   },
   {
     "source": "Wiener Linien",

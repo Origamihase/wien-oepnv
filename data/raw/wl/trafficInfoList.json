@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261024-0003-F01, I20261024-0003, I20261020-0029"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261024-0003-F01, I20260925-0011, I20260909-0007, I20261020-0029, I20261024-0005"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R2558-125, R401-101, R1475-149, R1474-149, R1449-149, R1472-149, R1473-149, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1882-101, R1884-101, R1875-101, R1876-101, R130-136, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R2372-125, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2373-126, R2373-127, R318-437, R2373-125, R293-474, R1883-101, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R45-136, R19-136, R2371-125, R36-152, R1880-101, R1881-101, R3886-480, R1974-466, R1375-146, R586-146, R585-146, R500-101, R1390-146, R1389-146, R1388-146, R1387-146, R1394-146, R1378-146, R1377-146, R1376-146, R1386-146, R1393-146, R1392-146, R1391-146, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R2558-125, R401-101, R1475-149, R1474-149, R1449-149, R1472-149, R1473-149, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1881-101, R1883-101, R1884-101, R1875-101, R1876-101, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R2372-125, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R2373-126, R2373-127, R318-437, R293-474, R2373-125, R1882-101, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R45-136, R19-136, R2371-125, R36-152, R130-136, R1880-101, R3886-480, R1974-466, R1375-146, R586-146, R585-146, R500-101, R1390-146, R1389-146, R1388-146, R1387-146, R1394-146, R1378-146, R1377-146, R1376-146, R1386-146, R1393-146, R1392-146, R1391-146, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -266,53 +266,6 @@
       "46": "ptTram"
      }
     },
-    "description": "Linie 46: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Thaliastraße U über die Strecke der Linien 2 und 5. Voraussichtliche Dauer: 08:00 Uhr. Grund: Gasrohrgebrechen im Bereich Lerchenfelder Straße 128.",
-    "descriptionHTML": "<p>Linie 46:<br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Thaliastraße U <br>über die Strecke der Linien 2 und 5.</p><p>Voraussichtliche Dauer: 08:00 Uhr.</p><p>Grund: Gasrohrgebrechen im Bereich Lerchenfelder Straße 128.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 46:<br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Thaliastraße U <br>über die Strecke der Linien 2 und 5.</p><p>Voraussichtliche Dauer: 08:00 Uhr.</p><p>Grund: Gasrohrgebrechen im Bereich Lerchenfelder Straße 128.</p>",
-       "descriptionPlain": "Linie 46: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Thaliastraße U über die Strecke der Linien 2 und 5. Voraussichtliche Dauer: 08:00 Uhr. Grund: Gasrohrgebrechen im Bereich Lerchenfelder Straße 128.",
-       "title": "46: Gasrohrgebrechen"
-      }
-     }
-    ],
-    "location": "Lerchenfelder Straße 128",
-    "name": "I20261024-0003",
-    "owner": "WL",
-    "parentName": "I20261024-0003",
-    "priority": "1",
-    "reasonId": 26,
-    "reasonName": "Gasrohrgebrechen",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 146,
-      "lineName": "46",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-24T04:48:00.000+0200",
-     "end": "2026-10-24T07:58:00.000+0200",
-     "lastUpdate": "2026-10-24T07:58:00.000+0200",
-     "resume": "2026-10-24T07:58:00.000+0200",
-     "start": "2026-10-24T04:26:00.000+0200"
-    },
-    "title": "46: Gasrohrgebrechen"
-   },
-   {
-    "alertCause": "fire brigade order",
-    "alertCauseId": 10,
-    "attributes": {
-     "relatedLineTypes": {
-      "46": "ptTram"
-     }
-    },
     "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "<p>Linie 46: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
@@ -342,14 +295,60 @@
       "vehicleType": "ptTram"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-24T07:58:00.000+0200",
-     "lastUpdate": "2026-10-24T07:58:00.000+0200",
-     "resume": "2026-10-24T07:58:00.000+0200",
+     "end": "2026-10-24T08:28:00.000+0200",
+     "lastUpdate": "2026-10-24T08:28:00.000+0200",
+     "resume": "2026-10-24T08:28:00.000+0200",
      "start": "2026-10-24T04:26:00.000+0200"
     },
     "title": "46: Gasrohrgebrechen"
+   },
+   {
+    "alertCause": "vandalism",
+    "alertCauseId": 16,
+    "attributes": {
+     "relatedLineTypes": {
+      "10A": "ptBusCity"
+     }
+    },
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "descriptionHTML": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+       "descriptionPlain": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+       "title": "10A: Verunreinigung"
+      }
+     }
+    ],
+    "name": "I20261024-0005",
+    "owner": "WL",
+    "parentName": "I20261024-0005",
+    "priority": "1",
+    "reasonId": 36,
+    "reasonName": "Verunreinigung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 410,
+      "lineName": "10A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-24T08:04:00.000+0200",
+     "lastUpdate": "2026-10-24T08:04:00.000+0200",
+     "resume": "2026-10-24T08:04:00.000+0200",
+     "start": "2026-10-24T08:04:00.000+0200"
+    },
+    "title": "10A: Verunreinigung"
    },
    {
     "alertCause": "undefined alert cause",
