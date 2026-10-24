@@ -14,10 +14,8 @@
 
 from __future__ import annotations
 
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from typing import cast
-
-from freezegun import freeze_time
 
 from src import build_feed
 from src.build_feed import (
@@ -154,40 +152,41 @@ def test_stop_moved_one_way_and_closed_the_other_names_both_directions() -> None
     )
 
 
+# The day of the feed this module checks.
+_TODAY = date(2026, 10, 24)
+
+
 def test_oebb_date_list_drops_past_days() -> None:
-    with freeze_time("2026-10-24T20:00:40Z"):
-        text = (
-            "Wegen Bauarbeiten können • zwischen Wien Hbf (U) und Felixdorf Bahnhof • "
-            "am 10.02.2026 • am 10.03.2026 • am 13.10.2026 und • am 10.11.2026 "
-            "(jeweils 14:00 Uhr - 22:00 Uhr) keine R95-Züge fahren."
-        )
-        assert _oebb_upcoming_dates(text) == (
-            "Wegen Bauarbeiten können • zwischen Wien Hbf (U) und Felixdorf Bahnhof • "
-            "am 10.11.2026 (jeweils 14:00 Uhr - 22:00 Uhr) keine R95-Züge fahren."
-        )
+    text = (
+        "Wegen Bauarbeiten können • zwischen Wien Hbf (U) und Felixdorf Bahnhof • "
+        "am 10.02.2026 • am 10.03.2026 • am 13.10.2026 und • am 10.11.2026 "
+        "(jeweils 14:00 Uhr - 22:00 Uhr) keine R95-Züge fahren."
+    )
+    assert _oebb_upcoming_dates(text, _TODAY) == (
+        "Wegen Bauarbeiten können • zwischen Wien Hbf (U) und Felixdorf Bahnhof • "
+        "am 10.11.2026 (jeweils 14:00 Uhr - 22:00 Uhr) keine R95-Züge fahren."
+    )
 
 
 def test_oebb_date_list_reads_as_a_sentence() -> None:
-    with freeze_time("2026-10-24T20:00:40Z"):
-        text = (
-            "zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof • von 24.10.2026 "
-            "bis 26.10.2026 • von 31.10.2026 bis 01.11.2026 • am 28.11.2026 und • "
-            "zwischen Wien Leopoldau Bahnhst und Deutsch Wagram Bahnhof • am 25.10.2026 "
-            "und 01.11.2026 • der S1-Zug 23626 nicht fahren."
-        )
-        # A running range (24.-26.10.) stays; "und" behind the list: commas only.
-        assert _oebb_upcoming_dates(text).startswith(
-            "zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof • von 24.10.2026 "
-            "bis 26.10.2026, von 31.10.2026 bis 01.11.2026, am 28.11.2026 und • zwischen"
-        )
-        assert _oebb_upcoming_dates("am 31.10.2026, • am 07.11.2026 und • am 14.11.2026 keine") == (
-            "am 31.10.2026, am 07.11.2026 und am 14.11.2026 keine"
-        )
+    text = (
+        "zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof • von 24.10.2026 "
+        "bis 26.10.2026 • von 31.10.2026 bis 01.11.2026 • am 28.11.2026 und • "
+        "zwischen Wien Leopoldau Bahnhst und Deutsch Wagram Bahnhof • am 25.10.2026 "
+        "und 01.11.2026 • der S1-Zug 23626 nicht fahren."
+    )
+    # A running range (24.-26.10.) stays; "und" behind the list: commas only.
+    assert _oebb_upcoming_dates(text, _TODAY).startswith(
+        "zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof • von 24.10.2026 "
+        "bis 26.10.2026, von 31.10.2026 bis 01.11.2026, am 28.11.2026 und • zwischen"
+    )
+    assert _oebb_upcoming_dates("am 31.10.2026, • am 07.11.2026 und • am 14.11.2026 keine", _TODAY) == (
+        "am 31.10.2026, am 07.11.2026 und am 14.11.2026 keine"
+    )
 
 
 def test_oebb_dates_outside_a_list_stay() -> None:
-    with freeze_time("2026-10-24T20:00:40Z"):
-        single = "von 23.10.2026 (23:00 Uhr) bis 27.10.2026 (04:00 Uhr) keine Fernverkehrszüge"
-        assert _oebb_upcoming_dates(single) == single
-        over = "am 10.02.2026 • am 10.03.2026 keine Züge"
-        assert _oebb_upcoming_dates(over) == over
+    single = "von 23.10.2026 (23:00 Uhr) bis 27.10.2026 (04:00 Uhr) keine Fernverkehrszüge"
+    assert _oebb_upcoming_dates(single, _TODAY) == single
+    over = "am 10.02.2026 • am 10.03.2026 keine Züge"
+    assert _oebb_upcoming_dates(over, _TODAY) == over

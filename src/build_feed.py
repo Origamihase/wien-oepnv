@@ -736,9 +736,13 @@ _OEBB_DATE_VALUE_RE = re.compile(r"(\d{2})\.(\d{2})\.(\d{4})")
 _OEBB_DATE_LIST_AND_FOLLOWS_RE = re.compile(r"\s*(?:•\s*)?und\b")
 
 
-def _oebb_upcoming_dates(text: str) -> str:
-    """An ÖBB date list without its past days, joined as a sentence (see above)."""
-    today = datetime.now(_VIENNA_TZ).date()
+def _oebb_upcoming_dates(text: str, today: date | None = None) -> str:
+    """An ÖBB date list without its past days, joined as a sentence (see above).
+
+    *today* defaults to Vienna's date of the build.
+    """
+    if today is None:
+        today = datetime.now(_VIENNA_TZ).date()
 
     def last_day(entry: str) -> date | None:
         days = []
