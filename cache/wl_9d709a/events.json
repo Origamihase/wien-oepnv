@@ -1194,18 +1194,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "7A: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "77994cd70c8bd44acc7c6ae28c2d0cee63d1f01a0b2acaf969f56ecb941ab571",
-    "pubDate": "2026-10-24T15:06:20+02:00",
-    "starts_at": "2026-10-24T15:06:21+02:00",
-    "ends_at": "2026-10-24T16:06:00+02:00",
-    "_identity": "wl|störung|L=7A|D=2026-10-24|TK=falschparker"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "80A: Betrieb ab Vivariumstraße 2",
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1318,18 +1306,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Rettungseinsatz",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "title": "U3: Rettungseinsatz",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Hütteldorfer Straße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
-    "pubDate": "2026-10-24T15:19:00+02:00",
-    "starts_at": "2026-10-24T15:19:00+02:00",
+    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
+    "pubDate": "2026-10-24T16:19:00+02:00",
+    "starts_at": "2026-10-24T16:19:00+02:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U1|D=2026-10-24|TK=rettungseinsatz",
+    "_identity": "wl|störung|L=U3|D=2026-10-24|TK=rettungseinsatz",
     "_wl_ids": [
-      "I20261024-0023"
+      "I20261024-0025"
     ],
-    "_incident_start": "2026-10-24T15:19:00+02:00"
+    "_incident_start": "2026-10-24T16:19:00+02:00"
   },
   {
     "source": "Wiener Linien",
