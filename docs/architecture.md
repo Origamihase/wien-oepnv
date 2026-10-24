@@ -743,7 +743,8 @@ verdrängt eine andere Störung.
   besser als „TEILAUSFALL““, `_oebb_section_labels_cased`); Kürzel wie
   „RJ 263“ oder „ÖBB“ bleiben. Replay über alle 589 ÖBB-Texte im Cache seit
   Mai: nur diese Meldung ändert sich (drei ihrer Fassungen), Titel und Zahl
-  der Items bleiben gleich.
+  der Items bleiben gleich. Im EN-Feed haben diese Namen feste englische
+  Namen („Partial cancellation:“, §8, seit 2026-10-23).
   **Das Ende folgt dem gezeigten Abschnitt (seit 2026-10-19).** Rückt so ein
   späterer Abschnitt nach vorn, gilt sein letztes Datum als Ende der Meldung
   (Tagesende, Wiener Zeit): Zeitzeile und Verbleib im Feed folgen ihm,
@@ -2728,6 +2729,44 @@ Nicht jeder Text gehört in ein NMT-Modell:
   Nachgespielt mit dem echten Modell über alle 3.003 Texte: Nur Texte mit
   einer dieser Formen ändern sich; die übrigen Unterschiede sind das
   bekannte Rauschen der Wiederholung unter zufälliger Nonce.
+* **ÖBBs Abschnittsnamen auf Englisch (seit 2026-10-23).** Der
+  deutsche Feed schreibt ÖBBs Abschnittsnamen normal („Teilausfall:“, §1,
+  `_oebb_section_labels_cased`); das Modell machte daraus „Partial
+  failure:“ (RJ 263, 18.–19.10.2026). Michael wählte am 23.10. feste Namen
+  für alle Abschnittsnamen statt der Modellübersetzung. Steht ein solcher
+  Name am Satzanfang (`_OEBB_LABELLED_SENTENCE_RE`: großgeschriebene Wörter,
+  durch Leerzeichen oder „/“ verbunden, dann der Doppelpunkt), schreibt
+  `_render_oebb_sentence` ihn aus `_OEBB_SECTION_LABELS_EN`, und nur der Rest
+  des Satzes geht durch seine Vorlage oder das Modell. Die Liste enthält jeden
+  Abschnittsnamen der 926 ÖBB-Meldungen in der Cache-Geschichte: „Achtung“ →
+  „Please note“, „Ausfall“ → „Cancellation“, „Teilausfall“ → „Partial
+  cancellation“, „Haltausfall“ → „Cancelled stops“, „Ersatzbeförderung“ →
+  „Replacement service“, „Schienenersatzverkehr“ → „Rail replacement
+  service“, „Geänderte Fahrzeiten“ → „Timetable changes“, „Hinweis(e)“ →
+  „Note(s)“. Zwei Namen mit „/“ („Teilausfall/Schienenersatzverkehr“) werden
+  Teil für Teil nachgeschlagen („Partial cancellation/rail replacement
+  service“). Hat der Rest des Satzes eine ÖBB-Vorlage, wird er nach ihr
+  geschrieben; sonst bekommt das Modell den Satz wie bisher samt Namen, und
+  nur die Wörter vor seinem Doppelpunkt werden ersetzt. So liest das Modell
+  den Rest im selben Zusammenhang, und im englischen Text ändert sich nur
+  der Name. Ein unbekannter Name bleibt beim Modell wie bisher; andere
+  Quellen sind nicht betroffen. Dabei kam ein Fehler der Satztrennung heraus:
+  `_OEBB_SENTENCE_SPLIT_RE` trennte nach „bzw.“, „Wr.“ und „b.“ wie nach
+  einem Satzende („zwischen Budapest-Keleti und Wien Hbf bzw. Salzburg Hbf
+  fahren …“); diese Kürzel stehen vor einem Namen und trennen jetzt so wenig
+  wie „St.“. Nachgespielt mit allen 926 ÖBB-Meldungen der Cache-Geschichte:
+  die deutsche Fassung ist gleich; mit einem festen Echo-Modell ändern sich
+  im englischen Feed vier Meldungsfassungen (RJ 263 dreimal, „Geänderte
+  Fahrzeiten“ Budapest–Salzburg einmal), und zwar nur im Namen; mit dem
+  echten Modell ebenso („Partial failure:“ → „Partial cancellation:“,
+  „Modified journey times:“ → „Timetable changes:“). Von den 25 Sätzen mit
+  Abschnittsnamen in den vollen Texten behalten 22 ihren englischen Rest
+  wörtlich; zwei „Achtung: Ihre Reisezeit verlängert sich …“ bekommen die
+  feste Folgesatz-Vorlage („Your journey takes up to 15 minutes longer.“),
+  und der Budapest-Satz ist wieder ganz. Ein Wert im Übersetzungs-Cache, dem
+  der feste Name fehlt („Partial failure:“), gilt als Fehler und wird neu
+  übersetzt (`_oebb_section_label_defect` in `_cached_translation`, nur für
+  ÖBB); eine neue Epoche hätte jede Meldung neu übersetzt.
 * **Halte-Meldungen der WL.** Nach „Busse/Züge halten“ und „Ersatzbus hält“
   wählte das Modell die Präposition in jedem Lauf neu („Buses stop
   Salvatorianerplatz“, „Trains stop for lines 6 and 18“). Seit 2026-10-04

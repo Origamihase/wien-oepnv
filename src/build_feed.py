@@ -673,6 +673,43 @@ def _oebb_section_labels_cased(text: str) -> str:
     )
 
 
+# The English of ÖBB's section labels, fixed instead of left to the model,
+# which read "Teilausfall:" as "Partial failure:". Every label of the ÖBB
+# texts in the cache history (926 notices, 2025-09 to 2026-10); ÖBB joins two
+# of them with "/" ("TEILAUSFALL/SCHIENENERSATZVERKEHR:"), each part is looked
+# up on its own. A label not listed here goes through the model as before.
+_OEBB_SECTION_LABELS_EN: dict[str, str] = {
+    "achtung": "Please note",
+    "ausfall": "Cancellation",
+    "ersatzbeförderung": "Replacement service",
+    "geänderte fahrzeiten": "Timetable changes",
+    "haltausfall": "Cancelled stops",
+    "hinweis": "Note",
+    "hinweise": "Notes",
+    "schienenersatzverkehr": "Rail replacement service",
+    "teilausfall": "Partial cancellation",
+}
+
+# A sentence headed by a label in the form :func:`_oebb_section_labels_cased`
+# leaves it: capitalised words joined by a space or "/", then the colon.
+_OEBB_LABELLED_SENTENCE_RE = re.compile(
+    r"(?P<label>[A-ZÄÖÜ][a-zäöüß]+(?:[ /][A-ZÄÖÜa-zäöüß][a-zäöüß]+)*):\s+(?P<body>\S.*)",
+    re.DOTALL,
+)
+
+
+def _oebb_section_label_en(label: str) -> str | None:
+    """``"Teilausfall/Schienenersatzverkehr"`` → ``"Partial cancellation/rail
+    replacement service"``; ``None`` unless every part is a known label."""
+    english: list[str] = []
+    for part in label.split("/"):
+        name = _OEBB_SECTION_LABELS_EN.get(part.strip().casefold())
+        if name is None:
+            return None
+        english.append(name[0].lower() + name[1:] if english else name)
+    return "/".join(english)
+
+
 def _oebb_route_keys(text: str) -> set[frozenset[str]]:
     """The station pairs of every ``zwischen A und B`` route in *text*.
 
@@ -4865,8 +4902,14 @@ _OEBB_SLOT_NOT_A_NAME_RE: re.Pattern[str] = re.compile(
 )
 # "St." opens a name ("in St. Pölten Hbf", "[in St. Pankraz]"), never ends a
 # sentence: split there, the templated sentence went through the model in
-# two halves (42 of the 443 ÖBB texts in the cache on 2026-10-09).
-_OEBB_SENTENCE_SPLIT_RE: re.Pattern[str] = re.compile(r"(?<!\bSt\.)(?<=[.!])\s+(?=[A-ZÄÖÜ])")
+# two halves (42 of the 443 ÖBB texts in the cache on 2026-10-09). The same
+# holds for ÖBB's other abbreviations in front of a name: "bzw." ("zwischen
+# Budapest-Keleti und Wien Hbf bzw. Salzburg Hbf"), "Wr." ("Wr. Neustadt") and
+# "b." ("Gerasdorf b. Wien"); a section label in front of such a sentence
+# (``_OEBB_LABELLED_SENTENCE_RE``) kept only its first half.
+_OEBB_SENTENCE_SPLIT_RE: re.Pattern[str] = re.compile(
+    r"(?<!\bSt\.)(?<!\bbzw\.)(?<!\bWr\.)(?<!\bb\.)(?<=[.!])\s+(?=[A-ZÄÖÜ])"
+)
 _OEBB_STATION_SUFFIX_RE: re.Pattern[str] = re.compile(
     r" (?:Bahnhof|Bahnhst\.?)(?=(?: \(U\))?(?: \[[^\]]*\])?$)"
 )
@@ -5086,10 +5129,47 @@ def _oebb_slots_are_names(match: re.Match[str], *slots: str) -> bool:
     )
 
 
+def _render_oebb_labelled_sentence(
+    sentence: str, ident: str, source: str | None, category: str | None
+) -> str | None:
+    """Render a sentence headed by a known ÖBB section label; ``""`` otherwise.
+
+    The label is written out (``_OEBB_SECTION_LABELS_EN``). The rest goes
+    through its template, else the model gets the sentence as before, label
+    included, and only the words in front of its colon are replaced: the
+    model reads the rest in the same context, so only the label changes.
+    """
+    labelled = _OEBB_LABELLED_SENTENCE_RE.fullmatch(sentence)
+    head = _oebb_section_label_en(labelled["label"]) if labelled is not None else None
+    if labelled is None or head is None:
+        return ""
+    body = _render_oebb_sentence(labelled["body"], ident, source, category)
+    if body == "":
+        whole = _translate_text_attempt(
+            sentence, ident, source=source, category=category, oebb_templates=False,
+        )
+        if whole is None:
+            return None
+        # The model's label is a few words; a colon further in belongs to the
+        # body ("… Alternativverbindungen: U1 …").
+        model_head, colon, body = whole.partition(":")
+        if not colon or not body.strip() or len(model_head.split()) > 5:
+            body = _translate_text_attempt(
+                labelled["body"], ident, source=source, category=category,
+                oebb_templates=False,
+            )
+    if body is None:
+        return None
+    return f"{head}: {_capitalise_sentence_start(body.strip())}"
+
+
 def _render_oebb_sentence(
     sentence: str, ident: str, source: str | None, category: str | None
 ) -> str | None:
     """Render one templated ÖBB sentence; ``""`` when it has no template."""
+    labelled = _render_oebb_labelled_sentence(sentence, ident, source, category)
+    if labelled != "":
+        return labelled
     sentence = _HOUR_ONLY_CLOCK_RE.sub(
         lambda m: f"{m.group(1)}:{m.group(2) or '00'}", sentence
     )
@@ -5753,6 +5833,22 @@ def _cached_translation_defect(source: str, cached: str) -> str | None:
     return None
 
 
+def _oebb_section_label_defect(source: str, cached: str) -> str | None:
+    """``"section label"`` when *cached* lacks a fixed name *source* needs.
+
+    ÖBB's section labels have fixed English names since 2026-10-23
+    (``_OEBB_SECTION_LABELS_EN``); a value cached before reads "Partial
+    failure:". Only such an item is translated again, not every item, as an
+    epoch move would.
+    """
+    for sentence in _OEBB_SENTENCE_SPLIT_RE.split(source.strip()):
+        labelled = _OEBB_LABELLED_SENTENCE_RE.fullmatch(sentence)
+        head = _oebb_section_label_en(labelled["label"]) if labelled is not None else None
+        if head is not None and f"{head}:" not in cached:
+            return "section label"
+    return None
+
+
 def _cached_translation(
     text: str,
     field: str,
@@ -5831,6 +5927,8 @@ def _cached_translation(
         cached = None
     if isinstance(cached, str) and cached and cached != text:
         defect = _cached_translation_defect(text, cached)
+        if defect is None and source == _OEBB_SOURCE:
+            defect = _oebb_section_label_defect(text, cached)
         if defect is None:
             # Cached before "due to" was the one cause preposition
             # (``_cause_due_to``); the model's words are otherwise kept.
