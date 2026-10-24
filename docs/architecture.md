@@ -10,6 +10,42 @@ Wer das hier in einem Viewer ohne Mermaid-Unterstützung liest, findet
 zu jedem Diagramm dieselbe Information zusätzlich als Fließtext
 darunter.
 
+**Inhalt**
+
+- [1. Die Pipeline für den Abruf der Verkehrsdaten](#1-die-pipeline-für-den-abruf-der-verkehrsdaten)
+  - [Eine Feed-Kette, ein Modul (seit 2026-10-15)](#eine-feed-kette-ein-modul-seit-2026-10-15)
+  - [Titel und Beschreibung im deutschen Feed](#titel-und-beschreibung-im-deutschen-feed)
+  - [Zeitraum einer WL-Meldung: Plausibilitätsprüfung (seit 2026-10-02)](#zeitraum-einer-wl-meldung-plausibilitätsprüfung-seit-2026-10-02)
+  - [Rohdaten und Verwürfe des Abrufs (seit 2026-10-04)](#rohdaten-und-verwürfe-des-abrufs-seit-2026-10-04)
+  - [Ausfall einer Quelle (seit 2026-10-04)](#ausfall-einer-quelle-seit-2026-10-04)
+  - [Feed-Wächter (seit 2026-10-10)](#feed-wächter-seit-2026-10-10)
+  - [Geodaten im Feed: GeoRSS nur, wo der Ort sicher ist (seit 2026-10-16)](#geodaten-im-feed-georss-nur-wo-der-ort-sicher-ist-seit-2026-10-16)
+  - [Link und Quelle jeder Meldung (seit 2026-10-17)](#link-und-quelle-jeder-meldung-seit-2026-10-17)
+  - [Ein einheitliches Bild je Meldung (seit 2026-10-19)](#ein-einheitliches-bild-je-meldung-seit-2026-10-19)
+- [2. Die `request_safe`-Security-State-Machine](#2-die-request_safe-security-state-machine)
+- [3. Resilienz-Layer-Stack](#3-resilienz-layer-stack)
+- [4. Provider-Plugin-Vertrag](#4-provider-plugin-vertrag)
+- [5. Stationsverzeichnis-Anreicherung (GeoNetz → HAFAS)](#5-stationsverzeichnis-anreicherung-geonetz--hafas)
+  - [5a. Wiener-Linien-OGD-Merge (die vierte Quelle)](#5a-wiener-linien-ogd-merge-die-vierte-quelle)
+- [6. Statistik- und Dashboard-Pipeline](#6-statistik--und-dashboard-pipeline)
+  - [Architektur-Ziele](#architektur-ziele)
+  - [Resilienz-Schichten](#resilienz-schichten)
+  - [Test-Isolation](#test-isolation)
+  - [Woher das Live-Dashboard seine Zahlen nimmt](#woher-das-live-dashboard-seine-zahlen-nimmt)
+  - [Was das Dashboard beantwortet](#was-das-dashboard-beantwortet)
+  - [Gestaltung des Live-Dashboards (Kacheln, 2026-10-17)](#gestaltung-des-live-dashboards-kacheln-2026-10-17)
+  - [Bilder ohne Marken, Hinweis „inoffiziell“ (2026-10-17)](#bilder-ohne-marken-hinweis-inoffiziell-2026-10-17)
+- [7. VOR/VAO-API — Stammstrecke-only-Scope (2026-05-11)](#7-vorvao-api--stammstrecke-only-scope-2026-05-11)
+  - [Der VAO-„Start“-Vertrag (geprüft 2026-10-17)](#der-vao-start-vertrag-geprüft-2026-10-17)
+  - [Überwachung: Abruf kaputt oder keine Züge (seit 2026-10-10)](#überwachung-abruf-kaputt-oder-keine-züge-seit-2026-10-10)
+- [8. Der zweisprachige Feed (DE → EN)](#8-der-zweisprachige-feed-de--en)
+  - [Die beiden Invarianten](#die-beiden-invarianten)
+  - [Was am Modell vorbeigeht](#was-am-modell-vorbeigeht)
+  - [Die Platzhalter](#die-platzhalter)
+  - [Nachkontrollen](#nachkontrollen)
+  - [Betrieb](#betrieb)
+- [9. Querverweise](#9-querverweise)
+
 ---
 
 ## 1. Die Pipeline für den Abruf der Verkehrsdaten
@@ -136,15 +172,35 @@ mehr als einen Kettenschritt aufruft, also keine zweite Kette entsteht.
 umgesetzt werden nur die Feed-Kette als Funktion und die Auslagerung der
 reinen Glossar-Daten nach `src/feed/glossary.py` (siehe §8). Die vorgeschlagene
 Aufteilung in Übersetzer-, Text- und XML-Module wird **nicht** gemacht. Grund:
-Die Tests ersetzen Funktionen von `build_feed` 264-mal per
-`patch.object(bf, …)` (55-mal allein `_get_translation_pipeline`), und 216
-Testdateien importieren das Modul. Wandert eine Funktion in ein anderes
+Die Tests ersetzen Funktionen und Werte direkt in `build_feed`: am
+2026-10-24 an 254 Stellen (242 per `patch.object(bf, …)` oder
+`monkeypatch.setattr(bf, …)` am Modul, 12 über den Pfad
+`src.build_feed.…`; 58-mal allein `_get_translation_pipeline`), und 223
+Testdateien nennen das Modul. Nach derselben Zählung waren es vor der
+Entscheidung 241 Stellen (die Zählung vom 2026-10-15 nannte 264, weil sie
+die Ersetzungen in `bf.feed_config` mitzählte). Wandert eine Funktion in ein anderes
 Modul, ruft der Code dort seine eigene Kopie auf; ein Re-Export in
 `build_feed` hält den Import am Leben, aber die Attrappe läuft ins Leere, und
 ein Test bricht oder ruft still das echte Übersetzungsmodell. Am TV brächte die
 Aufteilung nichts, das Risiko trüge der deutsche Feed. Die Funktionen sind
 einzeln klein genug: Nur `_dedupe_items` steht auf der Liste des
 C901-Gates.
+
+Nachmessung vom 2026-10-24 (Michaels Frage, ob beim Monolithen
+Handlungsbedarf besteht): `build_feed.py` wuchs von 11.275 Zeilen nach
+#2017 auf 12.105 Zeilen, fast nur durch neue Regeln für den englischen Feed
+und die ÖBB-Texte; 307 Funktionen, die längste ist `_format_item_content`
+mit 251 Zeilen, `main()` hat 175. Ein zweiter großer Block reiner Daten wie
+das Glossar existiert nicht mehr: Die übrigen Daten verteilen sich auf 283
+kleine Zuweisungen mit zusammen rund 1.020 Zeilen (die größte,
+`_RECORD_VALUE_RULES`, hat 72 Zeilen), meist ein Suchmuster neben der
+Funktion, die es nutzt. Ein weiteres Datenmodul brächte deshalb wenig.
+`src/utils/secret_scanner.py` (3.059 Zeilen, davon 2.162 für die Liste
+`_KNOWN_TOKENS`, auf die die Tests 283-mal zugreifen) bleibt aus demselben
+Grund, wie es ist. Entscheidung: Der Code bleibt so; geordnet wurden nur
+die Dokumentation (Monatsüberschriften im CHANGELOG, Inhaltsverzeichnis
+oben in diesem Dokument). Die Größe von `build_feed.py` allein ist damit
+kein Befund für ein Audit.
 
 ### Titel und Beschreibung im deutschen Feed
 
