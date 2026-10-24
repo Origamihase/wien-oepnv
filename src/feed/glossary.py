@@ -484,6 +484,13 @@ _GLOSSARY_BASE: dict[str, str] = {
     # a fixed "diversions" left it none ("kommt es zu Umleitungen" →
     # "diversions occurs", on the EN feed until 2026-10-24).
     "Umleitungen:": "diversions:",
+    # WL's sentence for diversions without a head ("Wegen Bauarbeiten im
+    # Kreuzungsbereich … kommt es zu Umleitungen", all eight such texts in
+    # the cache history), verb and noun together so the model has nothing
+    # to build around. Left to the model it read "there are redirections"
+    # (2026-10-24), while every other WL text says "diversion"; operator
+    # wish 2026-10-24: "Der Feed soll ja mehrere Quellen vereinheitlichen."
+    "kommt es zu Umleitungen": "there are diversions",
     "Betrieb nur": "service only",
     "Fahrtbehinderung wegen": "service obstruction due to",
     "Züge halten in Schleife": "trains stop in the loop",
@@ -565,6 +572,14 @@ _GLOSSARY_BY_SOURCE: dict[str, dict[str, str]] = {
     # conduct" which is meaningless in transit English.
     "Wiener Linien": {
         "Kurzführung": "short-running service",
+        # WL names the crossing streets right after it ("im Kreuzungsbereich
+        # Meiereistraße / Stephanie-Endres-Straße", all five WL texts in the
+        # cache history). Left to the model, the "intersection" drifted
+        # behind a fixed term at the sentence end ("… Stephanie-Endres-Straße
+        # there are diversions intersection."). WL only: Stadt Wien's
+        # roadworks texts also write "Im Kreuzungsbereich werden …" without
+        # streets.
+        "im Kreuzungsbereich": "at the intersection of",
     },
     # Long-distance + regional rail. Scope: disruption-core
     # vocabulary only — train-type names (so the EN feed can phrase

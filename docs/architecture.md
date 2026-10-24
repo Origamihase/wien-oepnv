@@ -659,7 +659,12 @@ verdrängt eine andere Störung.
   „diversions:“ (`src/feed/glossary.py`); nur mit seinem Doppelpunkt, denn
   als Wort im Satz ließ der feste Begriff dem Modell kein Nomen, um das es
   den Satz baut („kommt es zu Umleitungen“ → „diversions occurs“, bis
-  2026-10-24 im EN-Feed). Beginnt der Text mit einer Überschrift oder einem Feld, gilt die
+  2026-10-24 im EN-Feed). Dieser Satz selbst ist seit 2026-10-24 fest
+  „there are diversions“: Dem Modell überlassen hieß er „there are
+  redirections“, während jeder andere WL-Text „diversion“ sagt (Michael,
+  2026-10-24: „Der Feed soll ja mehrere Quellen vereinheitlichen.“). Für
+  WL ist dazu „im Kreuzungsbereich“ fest „at the intersection of“, sonst
+  rückte „intersection“ hinter den festen Ausdruck ans Satzende. Beginnt der Text mit einer Überschrift oder einem Feld, gilt die
   Zwei-Sätze-Regel nicht, sonst stünde „Haltestelle: Stammersdorf.“ ohne
   die neue Lage da: gezeigt werden die Felder bis zum ersten ganzen Satz,
   danach greift die 180-Zeichen-Grenze. Bei einer Haltestellenverlegung
@@ -819,7 +824,12 @@ verdrängt eine andere Störung.
   voraussichtlich Ende 2027“, „ab 04.07.2026“ ohne „bis“-Datum,
   `_oebb_section_end_is_open`, seit 2026-10-24): sein letztes Datum ist sein
   Beginn, und eine Sperre über ein Jahr hätte den Feed nach dem ersten Tag
-  verlassen (unabhängige Prüfung 24.10., noch kein echter Fall).
+  verlassen (unabhängige Prüfung 24.10., noch kein echter Fall). Ein
+  „bis“-Datum irgendwo im Abschnitt beendet ihn immer: ein „bis“ ohne Datum
+  zählt nur direkt hinter dem Datum des Zeitraums, nicht im
+  Wochentagsfenster („(jeweils von Samstag 23:15 Uhr bis Sonntag 04:40
+  Uhr)“) oder in einer Strecke („nur bis Wien Meidling“; Nachprüfung
+  24.10.).
   `_end_with_oebb_lead_section` läuft in `_assemble_feed_items` vor dem
   Altersfilter. Prüfung aller 925 ÖBB-Texte im Cache seit Mai: nur diese
   Meldung ändert sich; Nachbau von 241 Feed-Ständen (15.–19.10.): nur ihre

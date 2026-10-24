@@ -785,27 +785,29 @@ def _oebb_title_route_first(sentences: list[str], title: str, *, oebb: bool) -> 
 
 
 _OEBB_SECTION_DATE_RE = re.compile(r"\b(\d{1,2})\.(\d{1,2})\.(\d{4})\b")
-# A section whose end is no date: "bis" before anything but a date or a clock
-# time ("bis voraussichtlich Ende 2027", "bis auf Weiteres"), or a start date
-# ("ab 04.07.2026", "seit …") without a "bis" date. Its last date is where it
-# begins, not where it ends.
+# A section whose end is no date: its date range runs on "bis" to anything
+# but a date ("von 04.07.2026 (ca. 02:00 Uhr) bis voraussichtlich Ende 2027",
+# "bis auf Weiteres"), or it names a start date ("ab 04.07.2026", "seit …")
+# and no end. Its last date is where it begins, not where it ends. A "bis"
+# date anywhere in the section ends it: a "bis" elsewhere belongs to a
+# weekday window ("von 31.10.2026 bis 30.11.2026 (jeweils von Samstag 23:15
+# Uhr bis Sonntag 04:40 Uhr …)"), a clock time or a route ("nur bis Wien
+# Meidling"), not to the range.
 _OEBB_SECTION_OPEN_END_RE = re.compile(
-    r"\bbis\s+(?!(?:voraussichtlich\s+)?(?:\d{1,2}\.\s?\d{1,2}\.|\d{1,2}:\d{2}|\d{1,2}\s+Uhr))",
-    re.IGNORECASE,
+    r"\b\d{1,2}\.\s?\d{1,2}\.(?:\d{4})?\s*(?:\([^)]*\)\s*)?bis\b", re.IGNORECASE
 )
 _OEBB_SECTION_OPEN_START_RE = re.compile(r"\b(?:ab|seit)\s+(?:dem\s+)?\d{1,2}\.\s?\d{1,2}\.", re.IGNORECASE)
+# "bis 19.10.2026", "bis zum 19.10.", "bis voraussichtlich Sonntag, 01.11.2026".
 _OEBB_SECTION_BIS_DATE_RE = re.compile(
-    r"\bbis\s+(?:voraussichtlich\s+)?\d{1,2}\.\s?\d{1,2}\.", re.IGNORECASE
+    r"\bbis\s+(?:[^\W\d]+\.?,?\s+){0,2}\d{1,2}\.\s?\d{1,2}\.", re.IGNORECASE
 )
 
 
 def _oebb_section_end_is_open(section: str) -> bool:
     """Whether *section* ends without a date (see ``_OEBB_SECTION_OPEN_END_RE``)."""
-    if _OEBB_SECTION_OPEN_END_RE.search(section):
-        return True
-    return bool(
-        _OEBB_SECTION_OPEN_START_RE.search(section) and not _OEBB_SECTION_BIS_DATE_RE.search(section)
-    )
+    if _OEBB_SECTION_BIS_DATE_RE.search(section):
+        return False
+    return bool(_OEBB_SECTION_OPEN_END_RE.search(section) or _OEBB_SECTION_OPEN_START_RE.search(section))
 
 
 def _oebb_lead_section_end(it: Any) -> datetime | None:
@@ -2509,7 +2511,11 @@ _TRANSLATION_MODEL_REVISION = "1a922f3b32a8e809e17a47d4b32142d8105924e5"
 #       the head of the short form ("Umleitungen: 36B …"); inside a sentence
 #       the model got no noun to build on. Cached under 26: "Due to roadworks
 #       in … crossing area, diversions occurs."
-_TRANSLATION_CACHE_EPOCH = 27
+#  28 — follow-up check 2026-10-24: "kommt es zu Umleitungen" is fixed as
+#       "there are diversions" (operator wish: one word for the same thing
+#       across sources). Cached under 27: "Due to roadworks in … intersection,
+#       there are redirections."
+_TRANSLATION_CACHE_EPOCH = 28
 
 # Static lookup for the German words of the bracketed ``[…]`` time line (see
 # ``format_local_times``). Translating these via the ML model would be

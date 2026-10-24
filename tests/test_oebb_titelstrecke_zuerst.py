@@ -193,11 +193,20 @@ _OPEN_ENDS = (
     "Ab <b>18.10.2026</b> kann",
     "Seit <b>18.10.2026</b> kann",
     "Von <b>18.10.2026</b> bis auf Weiteres kann",
+    "Ab <b>18.10.2026</b> jeweils von 20:00 Uhr bis 04:00 Uhr kann",
 )
 _DATED_ENDS = (
     "Ab <b>18.10.2026</b> bis <b>19.10.2026</b> kann",
     "Von <b>18.10.2026</b> (08:00 Uhr) bis <b>19.10.2026</b> (15:00 Uhr) kann",
     "Am <b>19.10.2026</b> (von 01:10 Uhr bis 04:10 Uhr) kann",
+    # A "bis" that is no end of the range: a weekday window, a route, words
+    # before the date (follow-up check 2026-10-24, four of the five real
+    # sections the open-end rule caught were of this kind).
+    "Von <b>18.10.2026</b> bis <b>19.10.2026</b> (jeweils von Samstag 23:15 Uhr bis Sonntag 04:40 Uhr) kann",
+    "Von <b>18.10.2026</b> bis <b>19.10.2026</b> (von Montag bis Donnerstag) kann",
+    "Am <b>19.10.2026</b> fahren die Züge nur bis Wien Meidling, und",
+    "Von <b>18.10.2026</b> bis zum <b>19.10.2026</b> kann",
+    "Von <b>18.10.2026</b> bis Montag, <b>19.10.2026</b> kann",
 )
 
 
