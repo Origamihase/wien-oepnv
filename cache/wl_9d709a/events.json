@@ -866,6 +866,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11: Polizeieinsatz",
+    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "84fb66f823fe0256bdb55c275e537630afbdb20e631f62ff4a78dbb9fd614ed6",
+    "pubDate": "2026-10-24T23:19:00+02:00",
+    "starts_at": "2026-10-24T23:19:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=11|D=2026-10-24|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261024-0036"
+    ],
+    "_incident_start": "2026-10-24T23:19:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/betriebsinfo",
