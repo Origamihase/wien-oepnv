@@ -1294,6 +1294,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N35: Polizeieinsatz Längere Wartezeiten",
+    "description": "Derzeit kommt es bei der Linie N35 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1b623b478f430760ae85dfe4cf1750c5db9b2599dd6c63d1b6d9f97d7fe7dec8",
+    "pubDate": "2026-10-24T02:24:00+02:00",
+    "starts_at": "2026-10-24T02:24:45+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=N35|D=2026-10-24|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261024-0002"
+    ],
+    "_incident_start": "2026-10-24T02:24:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N49: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/betriebsinfo",
