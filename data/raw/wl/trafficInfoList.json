@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261024-0009, I20261020-0029"
+    "trafficInfoNameList": "I20261024-0010, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261024-0009, I20261020-0029"
    },
    {
     "id": 3,
@@ -302,6 +302,52 @@
      "start": "2026-10-24T09:36:00.000+0200"
     },
     "title": "U2: Betriebsstörung"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram"
+     }
+    },
+    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie 11:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 11:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "11: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261024-0010",
+    "owner": "WL",
+    "parentName": "I20261024-0010",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 111,
+      "lineName": "11",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-10-24T10:50:00.000+0200",
+     "end": "2026-10-24T10:57:00.000+0200",
+     "lastUpdate": "2026-10-24T10:57:00.000+0200",
+     "resume": "2026-10-24T10:50:00.000+0200",
+     "start": "2026-10-24T10:50:00.000+0200"
+    },
+    "title": "11: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
