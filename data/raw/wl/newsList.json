@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1031899, ftazW_1018064"
+    "trafficInfoNameList": "ftazW_1031899, ftazW_1018064, ftazW_1031898, ftazW_1018063"
    }
   ],
   "poiCategoryGroups": [
@@ -3999,6 +3999,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "27.10.2026 05:15",
+     "ausVon": "27.10.2026 01:15",
+     "location": "U2 Mittelbahnsteig - Ausgang Sturgasse",
+     "rbls": [
+      4258,
+      4265
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Krieau",
+     "status": "geplante Wartung",
+     "towards": "U2 beide Richtungen"
+    },
+    "description": "U2 Mittelbahnsteig - Ausgang Sturgasse",
+    "elevatorId": "KI 01",
+    "name": "ftazW_1018063",
+    "parentName": "ftazW_1018063",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4258,
+     4265
+    ],
+    "time": {
+     "end": "2026-10-27T05:15:00.000+0100",
+     "start": "2026-10-27T01:15:00.000+0100"
+    },
+    "title": "Krieau"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "27.10.2026 00:45",
      "ausVon": "26.10.2026 20:45",
      "location": "U2 Mittelbahnsteig - Ausgang Krieau",
@@ -4033,6 +4072,45 @@
      "start": "2026-10-26T20:45:00.000+0100"
     },
     "title": "Krieau"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "27.10.2026 05:15",
+     "ausVon": "27.10.2026 01:15",
+     "location": "18 Bahnsteig Richtung Schlachthausgasse - Ausgang Laxenburger Straße",
+     "rbls": [
+      847
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1",
+      "18"
+     ],
+     "station": "Südtiroler Platz-Hauptbahnhof",
+     "status": "geplante Wartung",
+     "towards": "18 Burggasse-Stadthalle"
+    },
+    "description": "18 Bahnsteig Richtung Schlachthausgasse - Ausgang Laxenburger Straße",
+    "elevatorId": "SL 08",
+    "name": "ftazW_1031898",
+    "parentName": "ftazW_1031898",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1",
+     "18"
+    ],
+    "relatedStops": [
+     847
+    ],
+    "time": {
+     "end": "2026-10-27T05:15:00.000+0100",
+     "start": "2026-10-27T01:15:00.000+0100"
+    },
+    "title": "Südtiroler Platz-Hauptbahnhof"
    },
    {
     "alertCause": "undefined alert cause",
