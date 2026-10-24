@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261024-0027, I20261024-0034-F01, I20261024-0034-F02, I20260925-0011, I20260909-0007, I20261024-0031-F01, I20261020-0029, I20261024-0033-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261024-0027, I20261024-0034-F01, I20261024-0034-F02, I20260925-0011, I20260909-0007, I20261024-0031-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R2558-125, R401-101, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1449-149, R1472-149, R1448-149, R100-136, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2380-627, R1875-101, R1876-101, R2379-627, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R36-152, R45-136, R19-136, R130-136, R102-136, R101-136, R2345-127, R1882-101, R1883-101, R1884-101, R293-474, R318-437, R2420-411, R2372-627, R1880-101, R1881-101, R3886-480, R1974-466, R500-101, R49-102, R46-136, R47-136, R49-136, R50-136, R51-136, R45-101, R46-101, R49-101, R47-101, R50-101, R51-101, R18-171, R81-171, R19-171, R17-171, R15-171, R14-171, R13-171, R51-171, R50-171, R49-171, R47-171, R45-171, R46-171, R15-102, R18-136, R81-136, R17-136, R15-136, R14-136, R13-136, R14-101, R13-101, R15-101, R17-101, R18-101, R174-101, R172-101, R173-101, R42-101, R41-101, R165-101, R164-101, R1449-412, R483-0, R481-0, R430-0, R429-0, R428-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R401-101, R2558-125, R1445-149, R1474-412, R1448-412, R1447-149, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1446-149, R36-152, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R318-437, R293-474, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R1974-466, R500-101, R49-102, R47-136, R49-136, R46-136, R50-136, R51-136, R45-101, R47-101, R49-101, R46-101, R50-101, R51-101, R13-171, R81-171, R19-171, R18-171, R17-171, R14-171, R15-171, R50-171, R51-171, R49-171, R47-171, R46-171, R45-171, R15-102, R13-136, R15-136, R18-136, R17-136, R81-136, R14-136, R14-101, R13-101, R15-101, R18-101, R17-101, R1449-412, R430-0, R481-0, R483-0, R429-0, R428-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -368,52 +368,6 @@
      "start": "2026-10-24T18:27:00.000+0200"
     },
     "title": "U3: Polizeieinsatz"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "12A": "ptBusCity"
-     }
-    },
-    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 12A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 12A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "12A: Falschparker"
-      }
-     }
-    ],
-    "location": "Arnsteingasse 18",
-    "name": "I20261024-0033-F01",
-    "owner": "WL",
-    "parentName": "I20261024-0033",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 412,
-      "lineName": "12A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-24T19:18:00.000+0200",
-     "lastUpdate": "2026-10-24T19:18:00.000+0200",
-     "resume": "2026-10-24T19:18:00.000+0200",
-     "start": "2026-10-24T19:02:00.000+0200"
-    },
-    "title": "12A: Falschparker"
    },
    {
     "alertCause": "police activity",
@@ -1273,52 +1227,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Falschparker\nUmleitung zum Praterstern <>",
-    "name": "R164-101",
-    "owner": "WL",
-    "parentName": "R164-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     164
-    ],
-    "time": {
-     "end": "2026-10-24T19:59:00.000+0200",
-     "start": "2026-10-24T18:59:42.000+0200"
-    },
-    "title": "Falschparker\nUmleitung zum Praterstern <>"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R165-101",
-    "owner": "WL",
-    "parentName": "R165-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     165
-    ],
-    "time": {
-     "end": "2026-10-24T19:58:00.000+0200",
-     "start": "2026-10-24T18:59:11.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Demonstration\nBetrieb ab Börse",
     "name": "R17-101",
     "owner": "WL",
@@ -1384,75 +1292,6 @@
      "start": "2026-10-24T17:45:36.000+0200"
     },
     "title": "Fahrtbehinderung\nwegen Demonstration"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Radetzkyplatz",
-    "name": "R172-101",
-    "owner": "WL",
-    "parentName": "R172-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     172
-    ],
-    "time": {
-     "end": "2026-10-24T19:55:00.000+0200",
-     "start": "2026-10-24T18:53:11.000+0200"
-    },
-    "title": "Falschparker\nBetrieb ab Radetzkyplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Falschparker\nZüge halten bei Linie O",
-    "name": "R173-101",
-    "owner": "WL",
-    "parentName": "R173-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     173
-    ],
-    "time": {
-     "end": "2026-10-24T19:56:00.000+0200",
-     "start": "2026-10-24T18:53:11.000+0200"
-    },
-    "title": "Falschparker\nZüge halten bei Linie O"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R174-101",
-    "owner": "WL",
-    "parentName": "R174-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     174
-    ],
-    "time": {
-     "end": "2026-10-24T19:52:00.000+0200",
-     "start": "2026-10-24T18:53:11.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2255,52 +2094,6 @@
      "start": "2026-10-24T00:00:27.000+0200"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R41-101",
-    "owner": "WL",
-    "parentName": "R41-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     41
-    ],
-    "time": {
-     "end": "2026-10-24T19:52:00.000+0200",
-     "start": "2026-10-24T18:53:13.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R42-101",
-    "owner": "WL",
-    "parentName": "R42-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     42
-    ],
-    "time": {
-     "end": "2026-10-24T19:52:00.000+0200",
-     "start": "2026-10-24T18:53:13.000+0200"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",

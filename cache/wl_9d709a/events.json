@@ -907,17 +907,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "12A: Fahrtbehinderung Falschparker",
-    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
-    "pubDate": "2026-10-24T19:02:00+02:00",
+    "pubDate": "2026-10-24T19:03:45+02:00",
     "starts_at": "2026-10-24T19:03:45+02:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=12A|D=2026-10-24|TK=falschparker",
-    "_wl_ids": [
-      "I20261024-0033"
-    ],
-    "_incident_start": "2026-10-24T19:02:00+02:00"
+    "ends_at": "2026-10-24T20:03:00+02:00",
+    "_identity": "wl|störung|L=12A|D=2026-10-24|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
@@ -986,30 +982,6 @@
     "starts_at": "2026-10-24T05:00:20+02:00",
     "ends_at": "2026-10-24T23:00:00+02:00",
     "_identity": "wl|störung|L=1|D=2026-10-24|TK=bhf hütteldorf öbb ersatzbus für 80"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Falschparker Züge halten bei Linie O",
-    "description": "Falschparker\nBetrieb ab Radetzkyplatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1",
-    "pubDate": "2026-10-24T18:53:11+02:00",
-    "starts_at": "2026-10-24T18:59:11+02:00",
-    "ends_at": "2026-10-24T19:58:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-10-24|TK=falschparker"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Falschparker Umleitung zum Praterstern",
-    "description": "Falschparker\nUmleitung zum Praterstern <>",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c232a7b73f1482ffecc0c412d685f58d86cc05873e2de8790bbea8e5cf987a16",
-    "pubDate": "2026-10-24T18:59:42+02:00",
-    "starts_at": "2026-10-24T18:59:42+02:00",
-    "ends_at": "2026-10-24T19:59:00+02:00",
-    "_identity": "wl|störung|L=1|D=2026-10-24|TK=falschparker umleitung"
   },
   {
     "source": "Wiener Linien",
