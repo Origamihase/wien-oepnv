@@ -716,20 +716,22 @@ _OEBB_SECTION_LABEL_RE = re.compile(r"\b([A-ZÄÖÜ]{4,}(?:[ /-][A-ZÄÖÜ]{2,})
 # run. 20 ÖBB notices since December 2025 have such a list. A day whose
 # last date is over (Vienna) now leaves the list, and the rest are joined as
 # a sentence ("am 10.11.2026 (jeweils …) keine R95-Züge fahren."; "von
-# 24.10.2026 bis 26.10.2026, von 31.10.2026 bis 01.11.2026 …"). Only a list
-# of at least two lines counts; a date in running text stays.
+# 24.10.2026 bis 26.10.2026, von 31.10.2026 bis 01.11.2026 …"). A list on
+# one line counts the same: from 26.10.2026 the S2 would have read "am
+# 25.10.2026 und 01.11.2026 der S2-Zug 23360 nicht fahren", REX 51 "am
+# 29.09.2026 (…) und am 01.10.2026 (…)" on 30.09. (follow-up check
+# 2026-10-25). A day without its own "am"/"von" takes the one before it
+# when that one leaves ("am 01.11.2026 der S2-Zug …"). A single day or
+# range stays, and so does a list none of whose days is over.
 _OEBB_DATE = r"\d{2}\.\d{2}\.\d{4}"
 _OEBB_DATE_NOTE = r"(?:\s*\([^()]{1,40}\))?"
-_OEBB_DATE_ENTRY = (
-    rf"(?:am|von)\s+{_OEBB_DATE}{_OEBB_DATE_NOTE}"
-    rf"(?:\s+bis\s+{_OEBB_DATE}{_OEBB_DATE_NOTE})?"
-    rf"(?:\s+und\s+{_OEBB_DATE}{_OEBB_DATE_NOTE})*"
-)
-_OEBB_DATE_SEPARATOR = r"(?:,|\s+und)?\s*•\s*"
+_OEBB_DATE_DAY = rf"{_OEBB_DATE}{_OEBB_DATE_NOTE}(?:\s+bis\s+{_OEBB_DATE}{_OEBB_DATE_NOTE})?"
+_OEBB_DATE_ENTRY = rf"(?:am|von)\s+{_OEBB_DATE_DAY}"
+_OEBB_DATE_SEPARATOR = r"(?:(?:,|\s+und)?\s*•\s*|,\s*(?:und\s+)?|\s+und\s+)"
 _OEBB_DATE_LIST_RE = re.compile(
-    rf"{_OEBB_DATE_ENTRY}(?:{_OEBB_DATE_SEPARATOR}{_OEBB_DATE_ENTRY})+"
+    rf"{_OEBB_DATE_ENTRY}(?:{_OEBB_DATE_SEPARATOR}(?:(?:am|von)\s+)?{_OEBB_DATE_DAY})+"
 )
-_OEBB_DATE_ENTRY_RE = re.compile(_OEBB_DATE_ENTRY)
+_OEBB_DATE_ENTRY_RE = re.compile(rf"(?:(am|von)\s+)?{_OEBB_DATE_DAY}")
 _OEBB_DATE_VALUE_RE = re.compile(r"(\d{2})\.(\d{2})\.(\d{4})")
 # Behind the list the sentence goes on with "und" (a second route): the
 # list then takes commas only.
@@ -754,12 +756,26 @@ def _oebb_upcoming_dates(text: str, today: date | None = None) -> str:
         return max(days) if days else None
 
     def rewrite(match: re.Match[str]) -> str:
-        entries = [m[0] for m in _OEBB_DATE_ENTRY_RE.finditer(match[0])]
-        ends = [last_day(entry) for entry in entries]
-        if any(end is None for end in ends):
-            return match[0]
-        kept = [entry for entry, end in zip(entries, ends, strict=True) if end is not None and end >= today]
-        if not kept:
+        entries: list[str] = []
+        ends: list[date | None] = []
+        word = ""
+        dropped = False
+        for m in _OEBB_DATE_ENTRY_RE.finditer(match[0]):
+            end = last_day(m[0])
+            if end is None:
+                return match[0]
+            if end < today:
+                dropped = True
+            elif m[1] is None and ends[-1] is None:
+                # Its "am"/"von" left with the day before: it takes it along.
+                entries.append(f"{word} {m[0]}")
+                ends.append(end)
+                continue
+            word = m[1] or word
+            entries.append(m[0])
+            ends.append(end if end >= today else None)
+        kept = [entry for entry, end in zip(entries, ends, strict=True) if end is not None]
+        if not kept or (not dropped and "•" not in match[0]):
             return match[0]
         if len(kept) == 1 or _OEBB_DATE_LIST_AND_FOLLOWS_RE.match(text, match.end()):
             return ", ".join(kept)

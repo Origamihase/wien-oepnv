@@ -10,6 +10,26 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Nachprüfung der Umsetzungen vom 24.10. abends (2026-10-25)**: Geprüft
+  wurden #2055 und #2056, alle 10.694 WL-, ÖBB- und Baustellentexte im
+  Cache durch den Formatierer alt gegen neu.
+  - *ÖBB-Datumslisten in einer Zeile:* `_oebb_upcoming_dates` strich
+    vergangene Tage nur aus Listen über mehrere Zeilen. Eine Liste in
+    einer Zeile behielt sie: „S2: Wien Leopoldau ↔ Mistelbach“ hätte vom
+    26.10. bis 01.11. „am 25.10.2026 und 01.11.2026 der S2-Zug 23360 nicht
+    fahren“ gezeigt, „REX 51: … Marchtrenk“ las am 30.09. „am 29.09.2026
+    (10:00 Uhr - 15:00 Uhr) und am 01.10.2026 …“. Jetzt zählt jede Liste
+    aus mindestens zwei Tagen; ein Tag ohne eigenes „am“/„von“ übernimmt
+    das seines Vorgängers, wenn der wegfällt („am 01.11.2026 der S2-Zug
+    …“). Eine Liste ohne vergangenen Tag bleibt im Wortlaut. Nachbau aller
+    932 ÖBB-Texte an jedem Tag nach jedem Datum, das sie nennen (1.497
+    Stände): nur diese zwei Meldungen ändern sich; am Tag der Prüfung
+    ändert sich kein Text.
+  - *Zählung im Eintrag zu #2056:* „Von 9.606 WL-Texten … ändern sich die
+    von 35 Meldungen, darunter alle 19“ zählte einmal nach Meldungsnummer,
+    einmal nach Titel. Nach Titel sind es 38 und 19 (nach Meldungsnummer
+    35 und 17).
+
 * **Prüfung des Feeds vom 24.10., 22:00 (2026-10-24)**: Drei Fehler im
   Text, jeder als Klasse behoben (`docs/architecture.md`, „Titel und
   Beschreibung im deutschen Feed“; Tests
@@ -22,7 +42,8 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
     Stadion U:“) oder mit Wochentagen davor („Montag-Freitag, Linie 80A
     …:“); `_prefer_measures` erkennt diese Etiketten jetzt
     (`_WL_MEASURE_LABEL`). Von 9.606 WL-Texten im Cache seit Juli ändern sich
-    die von 35 Meldungen, darunter alle 19, die nur die Ankündigung zeigten.
+    die von 38 Meldungen (nach Titel), darunter alle 19, die nur die
+    Ankündigung zeigten.
   - *Haltestelle in zwei Richtungen:* „56B/56A/N62: Strampfergasse“ las
     „Hermesstraße nach Strampfergasse → etwa 100 Meter … Hermesstraße nach
     Strampfergasse → aufgelassen.“. Jetzt steht jedes Paar hinter seiner
