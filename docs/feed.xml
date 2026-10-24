@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 24 Oct 2026 18:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 18:30:57 +0200</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U3: Polizeieinsatz, Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182</guid>
+      <pubDate>Sat, 24 Oct 2026 18:27:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sat, 24 Oct 2026 18:27:00 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 24 Oct 2026 18:27:00 +0200</ext:starts_at>
+      <description>Polizeieinsatz: Die Linie U3 fährt derzeit nur zwischen Ottakring und Kardinal-Nagl-Platz beziehungsweise zwischen Erdberg und Simmering. [Seit 18:27]</description>
+      <content:encoded><![CDATA[Polizeieinsatz: Die Linie U3 fährt derzeit nur zwischen Ottakring und Kardinal-Nagl-Platz beziehungsweise zwischen Erdberg und Simmering.<br/>[Seit 18:27]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[48A: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -46,21 +59,22 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 24 Oct 2026 17:41:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 24 Oct 2026 17:50:36 +0200</ext:starts_at>
-      <description>Betrieb ab Gersthof. Betrieb nur zwischen Schottentor U und Gersthof S. Weiterfahrt über Linie 40 bis Gersthof, Herbeckstraße. [Seit 17:41]</description>
-      <content:encoded><![CDATA[Betrieb ab Gersthof. Betrieb nur zwischen Schottentor U und Gersthof S. Weiterfahrt über Linie 40 bis Gersthof, Herbeckstraße.<br/>[Seit 17:41]]]></content:encoded>
+      <description>Betrieb ab Gersthof. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:41]</description>
+      <content:encoded><![CDATA[Betrieb ab Gersthof. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:41]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U3: Rettungseinsatz]]></title>
+      <title><![CDATA[D: Betriebsstörung, Gleisbauarbeiten]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
-      <pubDate>Sat, 24 Oct 2026 16:19:00 +0200</pubDate>
+      <guid isPermaLink="false">e4ea8aacde43cecdf7f75a6d4fe1f5b28b6d8f81143e1c1769f3a8d6195d98a5</guid>
+      <pubDate>Sat, 24 Oct 2026 18:01:08 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sat, 24 Oct 2026 16:19:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 24 Oct 2026 16:19:00 +0200</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Hütteldorfer Straße. [Seit 16:19]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Hütteldorfer Straße.<br/>[Seit 16:19]]]></content:encoded>
+      <ext:first_seen>Sat, 24 Oct 2026 18:01:08 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 24 Oct 2026 18:01:08 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 24 Oct 2026 23:59:59 +0200</ext:ends_at>
+      <description>Betriebsstörung: Umleitung über Schwedenplatz. Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse. [Heute]</description>
+      <content:encoded><![CDATA[Betriebsstörung: Umleitung über Schwedenplatz. Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/2/D/71: Demonstration]]></title>
@@ -72,22 +86,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 24 Oct 2026 18:01:00 +0200</ext:first_seen>
       <ext:starts_at>Sat, 24 Oct 2026 17:30:00 +0200</ext:starts_at>
-      <description>Umleitung in Richtung Reumannplatz U: Wende über Börse und Umleitung bis Resselgasse über Schwedenplatz U und Schwarzenbergplatz. Einstieg am Karlsplatz U (bei Linie 4A) möglich. [Seit heute]</description>
-      <content:encoded><![CDATA[Umleitung in Richtung Reumannplatz U: Wende über Börse und Umleitung bis Resselgasse über Schwedenplatz U und Schwarzenbergplatz. Einstieg am Karlsplatz U (bei Linie 4A) möglich.<br/>[Seit heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Polizeieinsatz, Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">f1ccf4d6b1a6d1d510b41cb2c10a04e3bb077aef3d27f0c5f99cad2a9c11f584</guid>
-      <pubDate>Sat, 24 Oct 2026 16:48:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sat, 24 Oct 2026 16:48:00 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 24 Oct 2026 17:09:03 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 24 Oct 2026 23:59:59 +0200</ext:ends_at>
-      <description>Polizeieinsatz: Fahrtbehinderung. Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse. [Heute]</description>
-      <content:encoded><![CDATA[Polizeieinsatz: Fahrtbehinderung. Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.<br/>[Heute]]]></content:encoded>
+      <description>Umleitung in Richtung Reumannplatz U Wende über Börse und Umleitung bis Resselgasse über Schwedenplatz U und Schwarzenbergplatz. Einstieg am Karlsplatz U (bei Linie 4A) möglich. [Seit heute]</description>
+      <content:encoded><![CDATA[Umleitung in Richtung Reumannplatz U Wende über Börse und Umleitung bis Resselgasse über Schwedenplatz U und Schwarzenbergplatz. Einstieg am Karlsplatz U (bei Linie 4A) möglich.<br/>[Seit heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S1: Wien Leopoldau ↔ Deutsch Wagram]]></title>
