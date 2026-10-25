@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261025-0031-F01, I20260917-0012, I20260922-0032, I20261025-0032, I20260925-0011, I20260909-0007, I20261025-0033-F01, I20261020-0029, I20261025-0003"
+    "trafficInfoNameList": "I20261025-0003, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261025-0031-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R36-152, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2420-411, R2378-627, R2343-626, R2345-127, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2380-627, R2379-627, R2373-126, R2372-627, R2558-125, R1974-466, R49-171, R47-171, R46-171, R45-171, R51-171, R50-171, R44-171, R17-171, R14-171, R13-171, R19-171, R18-171, R15-171, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R36-152, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2372-627, R2420-411, R2378-627, R2343-626, R2380-627, R2345-127, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2379-627, R2373-126, R2558-125, R1974-466, R44-171, R50-171, R49-171, R47-171, R46-171, R45-171, R51-171, R18-171, R15-171, R14-171, R13-171, R17-171, R19-171, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -298,7 +298,8 @@
     "status": "active",
     "time": {
      "created": "2026-10-25T03:05:00.000+0100",
-     "lastUpdate": "2026-10-25T16:52:00.000+0100",
+     "end": "2026-10-26T00:32:00.000+0100",
+     "lastUpdate": "2026-10-26T00:07:00.000+0100",
      "start": "2026-10-25T05:00:00.000+0100"
     },
     "title": "71: Veranstaltung"
@@ -343,105 +344,11 @@
     "status": "active",
     "time": {
      "created": "2026-10-25T23:55:00.000+0100",
-     "lastUpdate": "2026-10-25T23:55:00.000+0100",
-     "resume": "2026-10-25T23:55:00.000+0100",
+     "end": "2026-10-26T00:32:00.000+0100",
+     "lastUpdate": "2026-10-26T00:06:00.000+0100",
      "start": "2026-10-25T23:04:00.000+0100"
     },
     "title": "11A: Falschparker"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "43": "ptTram"
-     }
-    },
-    "description": "Linie 43: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "descriptionHTML": "<p>Linie 43:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 43:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-       "descriptionPlain": "Linie 43: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-       "title": "43: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261025-0032",
-    "owner": "WL",
-    "parentName": "I20261025-0032",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 143,
-      "lineName": "43",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     1348
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-25T23:27:00.000+0100",
-     "lastUpdate": "2026-10-25T23:27:00.000+0100",
-     "resume": "2026-10-25T23:26:00.000+0100",
-     "start": "2026-10-25T23:26:00.000+0100"
-    },
-    "title": "43: Polizeieinsatz"
-   },
-   {
-    "alertCause": "fire",
-    "alertCauseId": 5,
-    "attributes": {
-     "relatedLineTypes": {
-      "12": "ptTram"
-     }
-    },
-    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "12: Feuerwehreinsatz"
-      }
-     }
-    ],
-    "location": "Dresdner Straße",
-    "name": "I20261025-0033-F01",
-    "owner": "WL",
-    "parentName": "I20261025-0033",
-    "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 112,
-      "lineName": "12",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-25T23:43:00.000+0100",
-     "lastUpdate": "2026-10-25T23:43:00.000+0100",
-     "resume": "2026-10-25T23:43:00.000+0100",
-     "start": "2026-10-25T23:36:00.000+0100"
-    },
-    "title": "12: Feuerwehreinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1957,6 +1864,29 @@
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
+    "name": "R500-101",
+    "owner": "WL",
+    "parentName": "R500-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     500
+    ],
+    "time": {
+     "end": "2026-10-26T04:59:00.000+0100",
+     "start": "2026-10-26T00:30:09.000+0100"
+    },
+    "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
     "alertCause": "undefined alert cause",
