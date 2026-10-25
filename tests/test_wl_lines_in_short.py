@@ -19,6 +19,7 @@ Mutations checked against this file (each one caught, by the test named):
 * the last lines are cut mid-word instead of whole → ``test_lines_that_do_not_fit_give_way_whole``.
 * the stripped first label loses its line → ``test_the_text_before_the_first_label_is_the_unnamed_line``.
 * "Badner Bahn:" is no label → ``test_badner_bahn_and_bare_measures``.
+* a place runs on into the next clause → ``test_a_place_ends_where_a_clause_begins``.
 """
 
 from __future__ import annotations
@@ -175,3 +176,21 @@ def test_badner_bahn_and_bare_measures() -> None:
 def test_other_sources_are_left_alone() -> None:
     item = cast(FeedItem, {**GAS, "source": "ÖBB"})
     assert not _summary(item, "2026-10-11T11:00:00+02:00").startswith("Umleitungen:")
+
+
+def test_a_place_ends_where_a_clause_begins() -> None:
+    # WL on 2026-05-10; the short form read "1: Betrieb nur
+    # Stefan-Fadinger-Platz – Radetzkyplatz und wird ab Kliebergasse …".
+    item = _wl(
+        "1/2/D: Laufveranstaltung",
+        "Die Linie 1 fährt nur zwischen Stefan-Fadinger-Platz und Radetzkyplatz und wird ab "
+        "Kliebergasse über die Linien 18 und O umgeleitet weiter zum Praterstern. Die Linie 2 "
+        "fährt derzeit nur zwischen Friedrich-Engels-Platz und Heinestraße, Taborstraße. Die "
+        "Linie D fährt derzeit nicht zwischen Augasse und Schwarzenbergplatz, die Züge fahren "
+        "weiter zum Hauptbahnhof. Grund dafür ist eine Laufveranstaltung im Bereich Ringstrasse.",
+    )
+    assert _summary(item, "2026-05-10T07:00:00+02:00").startswith(
+        "1: Betrieb nur Stefan-Fadinger-Platz – Radetzkyplatz; 2: Betrieb nur "
+        "Friedrich-Engels-Platz – Heinestraße, Taborstraße; D: Kein Betrieb Augasse – "
+        "Schwarzenbergplatz."
+    )

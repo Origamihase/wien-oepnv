@@ -24,6 +24,7 @@ Mutations checked against this file (each one caught, by the test named):
 * a detour goes behind WL's stock sentence → ``test_a_detour_goes_in_front_of_the_stock_sentence``.
 * a detour goes behind the cause → ``test_a_line_the_text_does_not_name_keeps_its_consequence``.
 * what tells a rider nothing to do is dropped → ``test_what_tells_a_rider_nothing_to_do_comes_last``.
+* the line of the stripped first label counts as unnamed → ``test_the_line_of_the_stripped_label_is_spoken_of``.
 """
 
 from __future__ import annotations
@@ -214,3 +215,28 @@ def test_what_tells_a_rider_nothing_to_do_comes_last() -> None:
                   "2026-10-11T11:04:44+02:00", "2026-10-11T23:45:00+02:00")
     ((_title, description),) = _shown([gas, waiting])
     assert description == f"{text} 31A: Längere Wartezeiten."
+
+
+def test_the_line_of_the_stripped_label_is_spoken_of() -> None:
+    # 2026-10-19 18:31: reading strips "Linie 2:", so the text names only the
+    # 10, yet its first sentence is the 2's detour; the display tickers of
+    # the 2 ("Betrieb ab Mayssengasse") add nothing to it.
+    accident = _wl("2/10: Fremder Verkehrsunfall",
+                   "Linie 2: Umleitung in beiden Richtungen zwischen Dornbach und Johann-Nepomuk-Berger-Platz "
+                   "über die Strecke der Linien 43 und 9. Linie 10: Betrieb nur zwischen Unter St. Veit, "
+                   "Hummelgasse und Ottakring, Maroltingergasse. Voraussichtliche Dauer: 19:45 Uhr. Grund: "
+                   "Fremder Verkehrsunfall im Bereich Wilhelminenstraße # Sandleitengasse.",
+                   "b1e7c767", "2026-10-19T18:31:00+02:00", "2026-10-19T23:55:00+02:00",
+                   number="I20261019-0041")
+    tickers = [
+        _wl("10: Fremdunfall Betrieb ab Maroltingergasse", "Fremdunfall\nBetrieb ab Maroltingergasse",
+            "48318e15", "2026-10-19T18:35:04+02:00", "2026-10-19T19:34:00+02:00"),
+        _wl("2: Fremdunfall Betrieb ab Mayssengasse", "Fremdunfall\nBetrieb ab Mayssengasse",
+            "f4be783b", "2026-10-19T18:36:31+02:00", "2026-10-19T21:45:00+02:00"),
+        _wl("2: Fremdunfall Züge halten bei Linie 9", "Fremdunfall\nZüge halten bei Linie 9",
+            "17df4479", "2026-10-19T18:37:01+02:00", "2026-10-19T21:00:00+02:00"),
+    ]
+    ((alone,),) = (_built([accident]),)
+    (item,) = _built([*tickers, accident])
+    assert item["description"] == alone["description"]
+    assert "Mayssengasse" not in item["description"]

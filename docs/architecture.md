@@ -397,8 +397,12 @@ verdrängt eine andere Störung.
     der Text der ausführlichen Meldung von der Linie („Die Linie 31A wird …
     umgeleitet“), steht dort WLs eigene Aussage, und die Kurzmeldung einer
     einzelnen Haltestellentafel fügt nichts hinzu; „31A: Kein Betrieb“
-    hätte ihr auf dem Bildschirm widersprochen. Was die Kurzmeldung einer
-    Linie ankündigt, die der Text nicht nennt, bleibt mit dem Linienkürzel
+    hätte ihr auf dem Bildschirm widersprochen. Das gilt auch für die Linie,
+    deren „Linie 2:“ das Einlesen vor der ersten Maßnahme gestrichen hat
+    (`_stripped_label_line`, seit 2026-10-25, Nachprüfung: am 19.10. hängte
+    „2/10: Fremder Verkehrsunfall“ hinter die Umleitung der 2 noch „2:
+    Betrieb ab Mayssengasse; Züge halten bei Linie 9.“). Was die
+    Kurzmeldung einer Linie ankündigt, die der Text nicht nennt, bleibt mit dem Linienkürzel
     stehen, platziert wie bei `_with_consequences` („14A: Umleitung über
     Gumpendorfer Str., Linke Wienzeile.“ vor WLs Standardsatz zu
     „13A/14A: Falschparker“, 06.10.). Die Kurzmeldungen werden Mitglieder
@@ -684,9 +688,13 @@ verdrängt eine andere Störung.
   „Umleitungen: 36B Berzeliusgasse – Brünner Straße S; 30A Berzeliusgasse
   – Gschweidlgasse; 31A Berzeliusgasse – Großjedlersdorf, Jochbergengasse.“
   Je Linie stehen die Maßnahme und ihre beiden Endpunkte, ohne Richtung
-  und Umleitungsstraßen; haben alle Linien dieselbe Maßnahme, steht sie
-  einmal vorn, sonst bei jeder Linie („25: Betrieb nur …; 30: Kein
-  Betrieb.“). Bekannt sind „Kein Betrieb“, „Betrieb nur“, „Umleitung“
+  und Umleitungsstraßen. Ein Endpunkt endet auch dort, wo ein eigener
+  Nebensatz beginnt, also bei „und“ oder einem Komma vor einem klein
+  geschriebenen Wort; was danach kommt, fällt weg wie „Weiterfahrt …“
+  (seit 2026-10-25, Nachprüfung: am 10.05. las die 1 „Betrieb nur
+  Stefan-Fadinger-Platz – Radetzkyplatz und wird ab Kliebergasse …“).
+  Haben alle Linien dieselbe Maßnahme, steht sie einmal vorn, sonst bei
+  jeder Linie („25: Betrieb nur …; 30: Kein Betrieb.“). Bekannt sind „Kein Betrieb“, „Betrieb nur“, „Umleitung“
   sowie „Fahrtbehinderung“, „Unregelmäßige Intervalle“ und „Verspätungen“
   ohne Orte; „Badner Bahn:“ ist die Linie LB. WLs „Voraussichtlich bis
   hh:mm Uhr.“ folgt, wenn es passt. Linien, die nicht in 180 Zeichen

@@ -10,6 +10,32 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Zweitprüfung der Umsetzungen #2012 bis #2014 und #2037 bis #2040
+  (2026-10-25)**: Alle 9.639 WL-Texte seit Juli durch den Formatierer, mit
+  und ohne Maßnahmenblock (#2012, 41 Texte ändern sich) und Kurzform je Linie
+  (#2014, 132); die Zusammenführung der Tafel-Kurzmeldungen (#2013) über alle
+  4.058 Feed-Stände seit 15.07., alt gegen neu (29 Stände ändern sich, echte
+  Fälle seit dem Merge am 16., 19., 20. und 23.10.). Der Neubau des Ticks vom
+  25.10. 20:01 Uhr ist gleich dem veröffentlichten Feed. Hinweise (VAO,
+  inoffizielles Projekt), Bilder, OSM- und AnachB-Koordinaten wie
+  beschrieben.
+  - *Kurzform:* Ein Endpunkt lief in den nächsten Nebensatz. Am 10.05. las
+    die 1 „Betrieb nur Stefan-Fadinger-Platz – Radetzkyplatz und wird ab
+    Kliebergasse …“. Ein Endpunkt endet jetzt auch bei „und“ oder einem
+    Komma vor einem klein geschriebenen Wort; der Text zeigt „1: Betrieb nur
+    Stefan-Fadinger-Platz – Radetzkyplatz; 2: Betrieb nur …“. Replay: nur
+    dieser Text ändert sich.
+  - *Kurzmeldungen:* Die Linie, deren „Linie 2:“ das Einlesen vor der
+    ersten Maßnahme streicht, galt als nicht genannt, und ihre Tafelmeldung
+    hing hinter WLs eigener Aussage („2/10: Fremder Verkehrsunfall“, 19.10.:
+    „… 2: Betrieb ab Mayssengasse; Züge halten bei Linie 9.“). Sie zählt jetzt
+    als genannt (`_stripped_label_line`). Am TV verdeckte die Kurzform das
+    bisher; alle 29 Stände bleiben gleich.
+  - *Doku:* `docs/development.md` nannte beim Komplettlauf
+    `manual-full-refresh.yml` noch die „OSM/HAFAS-Kaskade“.
+  Tests in `tests/test_wl_lines_in_short.py` und
+  `tests/test_wl_part_line_tickers.py`.
+
 * **Nachprüfung der Umsetzungen #2061 bis #2065 (2026-10-25)**: Geprüft
   wurden die Linienreihenfolge (#2061, gegen die WL-Liniendaten), die
   Workflows mit `ref: github.ref` (#2063, alle Läufe danach grün), das
