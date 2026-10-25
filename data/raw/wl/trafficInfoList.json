@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261020-0029, I20261025-0003, I20261025-0016, I20261025-0020, I20261025-0019, I20260917-0012, I20260922-0032, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261025-0019, I20261025-0020-F01, I20261025-0016, I20260925-0011, I20260909-0007, I20261025-0003-F01, I20261025-0003-F02, I20261025-0003-F03, I20261025-0021-F01, I20261025-0022, I20261020-0029, I20261025-0003"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R1446-149, R1447-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1448-149, R1448-412, R1474-412, R1445-149, R45-136, R100-136, R117-136, R118-136, R119-136, R130-136, R19-136, R36-152, R1875-101, R1884-101, R1883-101, R1882-101, R318-437, R293-474, R1881-101, R1880-101, R115-136, R1876-101, R116-136, R103-136, R102-136, R101-136, R3886-480, R401-101, R2343-626, R2373-126, R2345-127, R2420-411, R2379-627, R2380-627, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2372-627, R2378-627, R2558-125, R1974-466, R46-171, R45-171, R44-171, R51-171, R50-171, R49-171, R47-171, R500-101, R13-171, R14-171, R15-171, R17-171, R18-171, R19-171, R49-102, R15-102, R1756-101, R44-101, R13-136, R13-101, R14-136, R14-101, R15-136, R15-101, R17-136, R17-101, R18-136, R18-101, R19-101, R20-101, R22-101, R42-101, R45-101, R46-101, R46-136, R47-101, R47-136, R49-101, R49-136, R50-101, R50-136, R51-136, R343-170, R1926-170, R1925-170, R2244-111, R2232-111, R2231-111, R299-170, R1930-170, R1932-170, R1931-170, R1933-170, R1930-111, R2258-111, R2260-111, R2259-111, R1933-111, R1932-111, R1931-111, R531-109, R533-109, R1476-109, R1475-109, R532-109, R530-109, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R1476-149, R1448-412, R1448-149, R1447-149, R1446-149, R1474-412, R1449-149, R1472-149, R1473-149, R1474-149, R1445-149, R1475-149, R1875-101, R1876-101, R118-136, R117-136, R116-136, R115-136, R100-136, R102-136, R103-136, R1883-101, R119-136, R130-136, R19-136, R45-136, R36-152, R1882-101, R1884-101, R318-437, R293-474, R1881-101, R1880-101, R101-136, R3886-480, R401-101, R2345-127, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2372-627, R2420-411, R2359-125, R2343-626, R2378-627, R2343-125, R2379-627, R2380-627, R2373-126, R2558-125, R1974-466, R500-101, R45-171, R51-171, R50-171, R49-171, R47-171, R46-171, R44-171, R19-171, R14-171, R15-171, R18-171, R17-171, R13-171, R49-102, R15-102, R1756-101, R45-101, R13-136, R13-101, R14-136, R14-101, R15-136, R15-101, R17-136, R17-101, R18-136, R18-101, R19-101, R20-101, R22-101, R42-101, R44-101, R46-101, R46-136, R47-101, R47-136, R49-101, R49-136, R50-101, R50-136, R51-136, R343-170, R1926-170, R1925-170, R2232-111, R2244-111, R2231-111, R299-170, R1930-170, R1931-170, R1932-170, R1933-170, R2258-111, R1930-111, R2259-111, R2260-111, R1933-111, R1932-111, R1931-111, R530-109, R533-109, R532-109, R531-109, R1476-109, R1475-109, R541-109, R484-109, R1447-109, R1446-109, R556-109, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -263,20 +263,17 @@
     "alertCauseId": 120,
     "attributes": {
      "relatedLineTypes": {
-      "1": "ptTram",
-      "2": "ptTram",
-      "71": "ptTram",
-      "D": "ptTram"
+      "71": "ptTram"
      }
     },
-    "description": "Linie 1: Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor U und Schwarzenbergplatz. Linie 2: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Rathaus U über die Reichsratsstraße. Richtung Dornbach: Haltestelle Parlament, U Volkstheater: Die Züge halten in der Haltestelle der Linie 46. Richtung Friedrich-Engels-Platz: Parlament, U Volkstheater: Die Züge halten in der Bedarfshaltestelle am Burgring nach der Bellariastraße. Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Stubentor U und Schwedenplatz U. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 18.00 Uhr. Grund: Veranstaltung im Bereich Rathausplatz.",
-    "descriptionHTML": "<p>Linie 1: <br>Umleitung in beiden Richtungen <br>zwischen Julius-Raab-Platz und Karlsplatz U <br>über Stubentor U und Schwarzenbergplatz.<br>Linie 2: <br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Rathaus U <br>über die Reichsratsstraße.<br>Richtung Dornbach:<br>Haltestelle Parlament, U Volkstheater: Die Züge halten in der Haltestelle der Linie 46.<br>Richtung Friedrich-Engels-Platz:<br>Parlament, U Volkstheater: Die Züge halten in der Bedarfshaltestelle am Burgring nach der Bellariastraße.<br>Linie D:<br>Umleitung in beiden Richtungen<br>zwischen Schwarzenbergplatz und Börse<br>über Stubentor U und Schwedenplatz U.<br>Linie 71:<br>Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.</p><p>Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1.</p><p>Ersatz: Linien U1, U2, U3 und U4.</p><p>Voraussichtliche Dauer: 18.00 Uhr.</p><p>Grund: Veranstaltung im Bereich Rathausplatz.</p>",
+    "description": "Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Ersatz: Linien 1, 2 und D. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Veranstaltung im Bereich Rathausplatz.",
+    "descriptionHTML": "<p>Linie 71:<br>Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.</p><p>Ersatz: Linien 1, 2 und D.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Veranstaltung im Bereich Rathausplatz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 1: <br>Umleitung in beiden Richtungen <br>zwischen Julius-Raab-Platz und Karlsplatz U <br>über Stubentor U und Schwarzenbergplatz.<br>Linie 2: <br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Rathaus U <br>über die Reichsratsstraße.<br>Richtung Dornbach:<br>Haltestelle Parlament, U Volkstheater: Die Züge halten in der Haltestelle der Linie 46.<br>Richtung Friedrich-Engels-Platz:<br>Parlament, U Volkstheater: Die Züge halten in der Bedarfshaltestelle am Burgring nach der Bellariastraße.<br>Linie D:<br>Umleitung in beiden Richtungen<br>zwischen Schwarzenbergplatz und Börse<br>über Stubentor U und Schwedenplatz U.<br>Linie 71:<br>Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.</p><p>Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1.</p><p>Ersatz: Linien U1, U2, U3 und U4.</p><p>Voraussichtliche Dauer: 18.00 Uhr.</p><p>Grund: Veranstaltung im Bereich Rathausplatz.</p>",
-       "descriptionPlain": "Linie 1: Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor U und Schwarzenbergplatz. Linie 2: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Rathaus U über die Reichsratsstraße. Richtung Dornbach: Haltestelle Parlament, U Volkstheater: Die Züge halten in der Haltestelle der Linie 46. Richtung Friedrich-Engels-Platz: Parlament, U Volkstheater: Die Züge halten in der Bedarfshaltestelle am Burgring nach der Bellariastraße. Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Stubentor U und Schwedenplatz U. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 18.00 Uhr. Grund: Veranstaltung im Bereich Rathausplatz.",
-       "title": "D, 1, 2, 71: Veranstaltung"
+       "descriptionHtml": "<p>Linie 71:<br>Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.</p><p>Ersatz: Linien 1, 2 und D.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Veranstaltung im Bereich Rathausplatz.</p>",
+       "descriptionPlain": "Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Ersatz: Linien 1, 2 und D. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Veranstaltung im Bereich Rathausplatz.",
+       "title": "71: Veranstaltung"
       }
      }
     ],
@@ -289,27 +286,9 @@
     "reasonName": "Veranstaltung",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "1",
-     "2",
-     "D",
      "71"
     ],
     "relatedLinesDetails": [
-     {
-      "lineId": 101,
-      "lineName": "1",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 102,
-      "lineName": "2",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 136,
-      "lineName": "D",
-      "vehicleType": "ptTram"
-     },
      {
       "lineId": 171,
       "lineName": "71",
@@ -319,10 +298,148 @@
     "status": "active",
     "time": {
      "created": "2026-10-25T03:05:00.000+0100",
-     "lastUpdate": "2026-10-25T06:47:00.000+0100",
+     "lastUpdate": "2026-10-25T16:52:00.000+0100",
      "start": "2026-10-25T05:00:00.000+0100"
     },
-    "title": "D, 1, 2, 71: Veranstaltung"
+    "title": "71: Veranstaltung"
+   },
+   {
+    "alertCause": "special event",
+    "alertCauseId": 120,
+    "attributes": {
+     "relatedLineTypes": {
+      "D": "ptTram"
+     }
+    },
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "D: Veranstaltung"
+      }
+     }
+    ],
+    "location": "Rathausplatz",
+    "name": "I20261025-0003-F01",
+    "owner": "WL",
+    "parentName": "I20261025-0003",
+    "priority": "1",
+    "reasonId": 35,
+    "reasonName": "Veranstaltung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 136,
+      "lineName": "D",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-25T16:43:00.000+0100",
+     "lastUpdate": "2026-10-25T16:43:00.000+0100",
+     "resume": "2026-10-25T16:43:00.000+0100",
+     "start": "2026-10-25T05:00:00.000+0100"
+    },
+    "title": "D: Veranstaltung"
+   },
+   {
+    "alertCause": "special event",
+    "alertCauseId": 120,
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram"
+     }
+    },
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "1: Veranstaltung"
+      }
+     }
+    ],
+    "location": "Rathausplatz",
+    "name": "I20261025-0003-F02",
+    "owner": "WL",
+    "parentName": "I20261025-0003",
+    "priority": "1",
+    "reasonId": 35,
+    "reasonName": "Veranstaltung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 101,
+      "lineName": "1",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-25T16:43:00.000+0100",
+     "lastUpdate": "2026-10-25T16:43:00.000+0100",
+     "resume": "2026-10-25T16:43:00.000+0100",
+     "start": "2026-10-25T05:00:00.000+0100"
+    },
+    "title": "1: Veranstaltung"
+   },
+   {
+    "alertCause": "special event",
+    "alertCauseId": 120,
+    "attributes": {
+     "relatedLineTypes": {
+      "2": "ptTram"
+     }
+    },
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "2: Veranstaltung"
+      }
+     }
+    ],
+    "location": "Rathausplatz",
+    "name": "I20261025-0003-F03",
+    "owner": "WL",
+    "parentName": "I20261025-0003",
+    "priority": "1",
+    "reasonId": 35,
+    "reasonName": "Veranstaltung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-25T16:43:00.000+0100",
+     "lastUpdate": "2026-10-25T16:43:00.000+0100",
+     "resume": "2026-10-25T16:43:00.000+0100",
+     "start": "2026-10-25T05:00:00.000+0100"
+    },
+    "title": "2: Veranstaltung"
    },
    {
     "alertCause": "defective vehicle",
@@ -360,10 +477,11 @@
       "vehicleType": "ptMetro"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-25T13:28:00.000+0100",
-     "lastUpdate": "2026-10-25T13:28:00.000+0100",
+     "end": "2026-10-25T16:57:00.000+0100",
+     "lastUpdate": "2026-10-25T16:57:00.000+0100",
      "resume": "2026-10-25T13:27:00.000+0100",
      "start": "2026-10-25T13:27:00.000+0100"
     },
@@ -429,18 +547,18 @@
       "9": "ptTram"
      }
     },
-    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 16:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Feßtgasse.",
-    "descriptionHTML": "<p>Linie 9:<br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 16:40 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Feßtgasse.</p>",
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 9:<br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 16:40 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Feßtgasse.</p>",
-       "descriptionPlain": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 16:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Feßtgasse.",
+       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "9: Rettungseinsatz"
       }
      }
     ],
-    "name": "I20261025-0020",
+    "name": "I20261025-0020-F01",
     "owner": "WL",
     "parentName": "I20261025-0020",
     "priority": "1",
@@ -462,11 +580,103 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-25T16:18:00.000+0100",
-     "lastUpdate": "2026-10-25T16:18:00.000+0100",
+     "created": "2026-10-25T16:40:00.000+0100",
+     "lastUpdate": "2026-10-25T16:40:00.000+0100",
+     "resume": "2026-10-25T16:40:00.000+0100",
      "start": "2026-10-25T16:18:00.000+0100"
     },
     "title": "9: Rettungseinsatz"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "11A": "ptBusCity"
+     }
+    },
+    "description": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 11A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 11A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "11A: Falschparker"
+      }
+     }
+    ],
+    "location": "Offenbachgasse",
+    "name": "I20261025-0021-F01",
+    "owner": "WL",
+    "parentName": "I20261025-0021",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 411,
+      "lineName": "11A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-25T16:48:00.000+0100",
+     "lastUpdate": "2026-10-25T16:48:00.000+0100",
+     "resume": "2026-10-25T16:48:00.000+0100",
+     "start": "2026-10-25T16:46:00.000+0100"
+    },
+    "title": "11A: Falschparker"
+   },
+   {
+    "alertCause": "vandalism",
+    "alertCauseId": 16,
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+       "title": "U4: Verunreinigung"
+      }
+     }
+    ],
+    "name": "I20261025-0022",
+    "owner": "WL",
+    "parentName": "I20261025-0022",
+    "priority": "1",
+    "reasonId": 36,
+    "reasonName": "Verunreinigung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 304,
+      "lineName": "U4",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-25T16:57:00.000+0100",
+     "lastUpdate": "2026-10-25T16:57:00.000+0100",
+     "resume": "2026-10-25T16:57:00.000+0100",
+     "start": "2026-10-25T16:57:00.000+0100"
+    },
+    "title": "U4: Verunreinigung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -739,7 +949,7 @@
      13
     ],
     "time": {
-     "end": "2026-10-25T18:00:00.000+0100",
+     "end": "2026-10-25T23:59:59.000+0100",
      "start": "2026-10-25T05:30:15.000+0100"
     },
     "title": "Veranstaltung\nKein Betrieb"
@@ -831,7 +1041,7 @@
      14
     ],
     "time": {
-     "end": "2026-10-25T18:00:00.000+0100",
+     "end": "2026-10-25T23:59:59.000+0100",
      "start": "2026-10-25T05:30:15.000+0100"
     },
     "title": "Veranstaltung\nKein Betrieb"
@@ -862,6 +1072,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1446-109",
+    "owner": "WL",
+    "parentName": "R1446-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     1446
+    ],
+    "time": {
+     "end": "2026-10-25T17:32:00.000+0100",
+     "start": "2026-10-25T16:32:53.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
     "name": "R1446-149",
     "owner": "WL",
@@ -881,6 +1114,29 @@
      "start": "2026-10-24T00:00:28.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1447-109",
+    "owner": "WL",
+    "parentName": "R1447-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     1447
+    ],
+    "time": {
+     "end": "2026-10-25T17:32:00.000+0100",
+     "start": "2026-10-25T16:32:53.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1069,7 +1325,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz",
     "name": "R1475-109",
     "owner": "WL",
     "parentName": "R1475-109",
@@ -1087,7 +1343,7 @@
      "end": "2026-10-25T17:18:00.000+0100",
      "start": "2026-10-25T16:18:51.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1115,7 +1371,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz",
     "name": "R1476-109",
     "owner": "WL",
     "parentName": "R1476-109",
@@ -1133,7 +1389,7 @@
      "end": "2026-10-25T17:18:00.000+0100",
      "start": "2026-10-25T16:18:51.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1245,7 +1501,7 @@
      15
     ],
     "time": {
-     "end": "2026-10-25T18:00:00.000+0100",
+     "end": "2026-10-25T23:59:59.000+0100",
      "start": "2026-10-25T05:30:15.000+0100"
     },
     "title": "Veranstaltung\nKein Betrieb"
@@ -1314,7 +1570,7 @@
      17
     ],
     "time": {
-     "end": "2026-10-25T18:00:00.000+0100",
+     "end": "2026-10-25T23:59:59.000+0100",
      "start": "2026-10-25T05:30:15.000+0100"
     },
     "title": "Veranstaltung\nKein Betrieb"
@@ -1406,7 +1662,7 @@
      18
     ],
     "time": {
-     "end": "2026-10-25T18:00:00.000+0100",
+     "end": "2026-10-25T23:59:59.000+0100",
      "start": "2026-10-25T05:30:15.000+0100"
     },
     "title": "Veranstaltung\nKein Betrieb"
@@ -1636,7 +1892,7 @@
      19
     ],
     "time": {
-     "end": "2026-10-25T18:00:00.000+0100",
+     "end": "2026-10-25T23:59:59.000+0100",
      "start": "2026-10-25T05:30:15.000+0100"
     },
     "title": "Veranstaltung\nKein Betrieb"
@@ -2691,7 +2947,7 @@
      44
     ],
     "time": {
-     "end": "2026-10-25T18:00:00.000+0100",
+     "end": "2026-10-25T23:59:59.000+0100",
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz"
@@ -2722,7 +2978,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Veranstaltung\nZüge halten gegenüber (Umleitung via Schwedenplatz >)",
+    "description": "Züge halten\nWipplingerstr 39",
     "name": "R45-136",
     "owner": "WL",
     "parentName": "R45-136",
@@ -2737,10 +2993,10 @@
      45
     ],
     "time": {
-     "end": "2026-10-25T19:00:00.000+0100",
+     "end": "2026-10-25T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
-    "title": "Veranstaltung\nZüge halten gegenüber (Umleitung via Schwedenplatz >)"
+    "title": "Züge halten\nWipplingerstr 39"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2760,7 +3016,7 @@
      45
     ],
     "time": {
-     "end": "2026-10-25T18:00:00.000+0100",
+     "end": "2026-10-25T23:59:59.000+0100",
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz"
@@ -2829,7 +3085,7 @@
      46
     ],
     "time": {
-     "end": "2026-10-25T18:00:00.000+0100",
+     "end": "2026-10-25T23:59:59.000+0100",
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz"
@@ -2898,10 +3154,33 @@
      47
     ],
     "time": {
-     "end": "2026-10-25T18:00:00.000+0100",
+     "end": "2026-10-25T23:59:59.000+0100",
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R484-109",
+    "owner": "WL",
+    "parentName": "R484-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     484
+    ],
+    "time": {
+     "end": "2026-10-25T17:32:00.000+0100",
+     "start": "2026-10-25T16:32:52.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2990,7 +3269,7 @@
      49
     ],
     "time": {
-     "end": "2026-10-25T18:00:00.000+0100",
+     "end": "2026-10-25T23:59:59.000+0100",
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz"
@@ -3059,7 +3338,7 @@
      50
     ],
     "time": {
-     "end": "2026-10-25T18:00:00.000+0100",
+     "end": "2026-10-25T23:59:59.000+0100",
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz"
@@ -3128,7 +3407,7 @@
      51
     ],
     "time": {
-     "end": "2026-10-25T18:00:00.000+0100",
+     "end": "2026-10-25T23:59:59.000+0100",
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz"
@@ -3136,7 +3415,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz",
     "name": "R530-109",
     "owner": "WL",
     "parentName": "R530-109",
@@ -3154,12 +3433,12 @@
      "end": "2026-10-25T17:18:00.000+0100",
      "start": "2026-10-25T16:18:51.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz",
     "name": "R531-109",
     "owner": "WL",
     "parentName": "R531-109",
@@ -3177,12 +3456,12 @@
      "end": "2026-10-25T17:18:00.000+0100",
      "start": "2026-10-25T16:18:51.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz",
     "name": "R532-109",
     "owner": "WL",
     "parentName": "R532-109",
@@ -3200,12 +3479,12 @@
      "end": "2026-10-25T17:18:00.000+0100",
      "start": "2026-10-25T16:18:51.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz",
     "name": "R533-109",
     "owner": "WL",
     "parentName": "R533-109",
@@ -3222,6 +3501,52 @@
     "time": {
      "end": "2026-10-25T17:18:00.000+0100",
      "start": "2026-10-25T16:18:51.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R541-109",
+    "owner": "WL",
+    "parentName": "R541-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     541
+    ],
+    "time": {
+     "end": "2026-10-25T17:32:00.000+0100",
+     "start": "2026-10-25T16:32:52.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R556-109",
+    "owner": "WL",
+    "parentName": "R556-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     556
+    ],
+    "time": {
+     "end": "2026-10-25T17:33:00.000+0100",
+     "start": "2026-10-25T16:33:52.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },

@@ -6,10 +6,14 @@
     "description": "<h2>Veranstaltung</h2><p>Wegen des Wiener Sicherheitsfestes im Bereich Rathausplatz kommt es zu folgenden Verkehrsmaßnahmen.</p><p><strong><u>Zeitraum:</u></strong><br>Sonntag, 25. Oktober 2026, ab etwa 06:30 Uhr bis etwa 18:00 Uhr.</p><p><strong><u>Maßnahmen:</u></strong></p><p><u>Linie D</u><br>Umleitung in beiden Richtungen<br>zwischen Schwarzenbergplatz und Börse<br>über Schwedenplatz U.</p><p><u>Linie 1</u><br>Umleitung in beiden Richtungen<br>zwischen Karlsplatz U und Julius-Raab-Platz<br>über Schubertring und Stubenring.</p><p><u>Linie 2</u><br>Örtliche Umleitung zwischen Parlament, U Volkstheater und Rathaus U.<br>Alle Haltestellen werden eingehalten.</p><p><u>Linie 71 (ganztägig)</u><br>Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.</p><p><strong><u>Weiteres:</u></strong><br>Je nach Fortschritt der Veranstaltung und Freiwerden von Strecken werden die betroffenen Linien umgehend normalisiert. Beachten Sie daher unsere Lautsprecherdurchsagen, die Anzeigen in den Haltestellen sowie unsere Echtzeitinformationen in der WienMobil App und auf <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.wienerlinen.at\">www.wienerlinien.at</a>.</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "1acac282e18dc92068a8eb5280edc92ae7c9ca3dfc98d921be9bfc3456b550c3",
-    "pubDate": "2026-10-16T00:00:00+02:00",
+    "pubDate": "2026-10-25T05:00:00+01:00",
     "starts_at": "2026-10-25T00:00:00+02:00",
     "ends_at": "2026-10-25T23:59:00+01:00",
-    "_identity": "wl|hinweis|L=1,2,71,D|D=2026-10-25|TK=veranstaltung"
+    "_identity": "wl|hinweis|L=1,2,71,D|D=2026-10-25|TK=veranstaltung",
+    "_wl_ids": [
+      "I20261025-0003"
+    ],
+    "_incident_start": "2026-10-25T05:00:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -854,22 +858,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/2/71/D: Veranstaltung",
-    "description": "Linie 1: Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor U und Schwarzenbergplatz. Linie 2: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Rathaus U über die Reichsratsstraße. Richtung Dornbach: Haltestelle Parlament, U Volkstheater: Die Züge halten in der Haltestelle der Linie 46. Richtung Friedrich-Engels-Platz: Parlament, U Volkstheater: Die Züge halten in der Bedarfshaltestelle am Burgring nach der Bellariastraße. Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Stubentor U und Schwedenplatz U. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 18.00 Uhr. Grund: Veranstaltung im Bereich Rathausplatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3d9dc833154fb13a2a35439b5dec0828f5c1624ba8b8558e713d29e16154f7dd",
-    "pubDate": "2026-10-25T05:00:00+01:00",
-    "starts_at": "2026-10-25T05:00:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=1,2,71,D|D=2026-10-25|TK=veranstaltung",
-    "_wl_ids": [
-      "I20261025-0003"
-    ],
-    "_incident_start": "2026-10-25T05:00:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11/O: Gleisschaden",
     "description": "Linie 11: Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Quellenplatz. Linie O: Betrieb nur zwischen Bruno-Marek-Allee und Quellenplatz. Ersatz: Linien 7A, 14A, 15A, 16A, 65A und 66A. Voraussichtliche Dauer: Nicht absehbar. Grund: Gleisschaden im Bereich Neilreichgasse 97.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -894,6 +882,22 @@
     "starts_at": "2026-10-25T00:00:16+02:00",
     "ends_at": "2026-10-25T23:59:59+01:00",
     "_identity": "wl|störung|L=11A|D=2026-10-25|TK=busse halten meiereistrasse gegenüber 12"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "11A: Falschparker",
+    "description": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d639275fed205d39e9265cc9e6b073be44a4952e33d97ef0c1891f996a19ef98",
+    "pubDate": "2026-10-25T16:46:00+01:00",
+    "starts_at": "2026-10-25T16:46:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=11A|D=2026-10-25|TK=falschparker",
+    "_wl_ids": [
+      "I20261025-0021"
+    ],
+    "_incident_start": "2026-10-25T16:46:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1006,6 +1010,18 @@
     "starts_at": "2026-10-25T00:00:15+02:00",
     "ends_at": "2026-10-25T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-10-25|TK=umleitung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Veranstaltung Umleitung über Stubentor",
+    "description": "Veranstaltung\nUmleitung über Stubentor >",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a1ecb7338880e3ed9fa86dc0668f5c69e8c6747b6af85210d40d8afb6aa84103",
+    "pubDate": "2026-10-25T06:32:23+01:00",
+    "starts_at": "2026-10-25T06:32:23+01:00",
+    "ends_at": "2026-10-25T19:00:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-10-25|TK=umleitung veranstaltung"
   },
   {
     "source": "Wiener Linien",
@@ -1162,6 +1178,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Veranstaltung Züge halten nach der Kreuzung",
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "da06652192db50e60e2c0caf4aab16f97c75650e7ec7dbff93820040828b7b3c",
+    "pubDate": "2026-10-25T05:00:00+01:00",
+    "starts_at": "2026-10-25T06:32:21+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=2|D=2026-10-25|TK=veranstaltung",
+    "_wl_ids": [
+      "I20261025-0003"
+    ],
+    "_incident_start": "2026-10-25T05:00:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1214,6 +1246,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "71: Veranstaltung Betrieb ab Schwarzenbergplatz",
+    "description": "Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Ersatz: Linien 1, 2 und D. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Veranstaltung im Bereich Rathausplatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "eb5352749f5402b9be865827a7f6c82d7a9144a1198fd2eaa52624749c28d4eb",
+    "pubDate": "2026-10-25T05:00:00+01:00",
+    "starts_at": "2026-10-25T05:30:15+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=71|D=2026-10-25|TK=veranstaltung",
+    "_wl_ids": [
+      "I20261025-0003"
+    ],
+    "_incident_start": "2026-10-25T05:00:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1238,12 +1286,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 16:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Feßtgasse.",
+    "title": "9: Rettungseinsatz Betrieb ab Johann-Nepomuk-Berger-Platz",
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509",
     "pubDate": "2026-10-25T16:18:00+01:00",
-    "starts_at": "2026-10-25T16:18:51+01:00",
+    "starts_at": "2026-10-25T16:33:52+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=9|D=2026-10-25|TK=rettungseinsatz",
     "_wl_ids": [
@@ -1306,6 +1354,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "D: Züge halten Wipplingerstr 39",
+    "description": "Züge halten\nWipplingerstr 39",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c56c71bc29a5779ba2ce8098d4446a39181d58698141c72f9ba0190ba474ca24",
+    "pubDate": "2026-10-24T00:00:29+02:00",
+    "starts_at": "2026-10-24T00:00:29+02:00",
+    "ends_at": "2026-10-25T23:59:59+01:00",
+    "_identity": "wl|störung|L=D|D=2026-10-24|TK=züge halten wipplingerstr 39"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Veranstaltung Betrieb ab Augasse",
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "cbccd572c7698d5a413feb14d2019f15208b4d7edc264c044999337675e4f502",
+    "pubDate": "2026-10-25T05:00:00+01:00",
+    "starts_at": "2026-10-25T06:32:51+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=D|D=2026-10-25|TK=veranstaltung",
+    "_wl_ids": [
+      "I20261025-0003"
+    ],
+    "_incident_start": "2026-10-25T05:00:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "N71: Ersatzverkehr Busse halten bei Haltestelle N71",
     "description": "Ersatzverkehr\nBusse halten bei Haltestelle N71",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1318,18 +1394,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Verspätungen",
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "U4: Verunreinigung",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
-    "pubDate": "2026-10-25T13:27:00+01:00",
-    "starts_at": "2026-10-25T13:27:00+01:00",
+    "guid": "5718e5adfd8ff17a7b75efa1723cae5513a3a9e89e84929ae6d9338f8ba24e1d",
+    "pubDate": "2026-10-25T16:57:00+01:00",
+    "starts_at": "2026-10-25T16:57:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U2|D=2026-10-25|TK=u2 verspätungen",
+    "_identity": "wl|störung|L=U4|D=2026-10-25|TK=u4 verunreinigung",
     "_wl_ids": [
-      "I20261025-0016"
+      "I20261025-0022"
     ],
-    "_incident_start": "2026-10-25T13:27:00+01:00"
+    "_incident_start": "2026-10-25T16:57:00+01:00"
   },
   {
     "source": "Wiener Linien",
