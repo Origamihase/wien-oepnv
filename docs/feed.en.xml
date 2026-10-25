@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 25 Oct 2026 17:30:52 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 25 Oct 2026 17:51:35 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U4: Contamination]]></title>
@@ -127,8 +127,8 @@
       <ext:starts_at>Sun, 25 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 01 Nov 2026 23:59:59 +0100</ext:ends_at>
       <georss:line>48.277325 16.448371 48.565931 16.565113</georss:line>
-      <description>Construction works means that between Wien Leopoldau station (U) and Mistelbach/Zaya station at 25.10.2026 and 01.11.2026 the S2 train can't drive 23360. [Until 01.11.]</description>
-      <content:encoded><![CDATA[Construction works means that between Wien Leopoldau station (U) and Mistelbach/Zaya station at 25.10.2026 and 01.11.2026 the S2 train can't drive 23360.<br/>[Until 01.11.]]]></content:encoded>
+      <description>Due to construction works, the S2 train 23360 cannot run between Wien Leopoldau station (U) and Mistelbach/Zaya station on 25.10.2026 and 01.11.2026. [Until 01.11.]</description>
+      <content:encoded><![CDATA[Due to construction works, the S2 train 23360 cannot run between Wien Leopoldau station (U) and Mistelbach/Zaya station on 25.10.2026 and 01.11.2026.<br/>[Until 01.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/2/71/D: Event]]></title>
