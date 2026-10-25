@@ -5522,23 +5522,30 @@ def _render_oebb_sentence(
         return f"{cause}, no {match['trains']} trains can run{between}{dates}."
     parts = _oebb_cannot_run_parts(sentence)
     if parts is not None:
-        cause = _oebb_cause_en(parts.cause, ident, source, category)
-        if cause is None:
-            return None
-        if parts.rest is not None:
-            return f"{cause}, {parts.head}{parts.rest}"
-        # Routes or days outside the closed set: they alone go through the
-        # model, behind the colon the German sentence has there.
-        rest = _translate_text_attempt(
-            parts.middle, ident, source=source, category=category, oebb_templates=False
-        )
-        if rest is None:
-            return None
-        rest = rest.strip()
-        if rest.split(" ", 1)[0].casefold() in _WL_MAIN_CLAUSE_SMALL_WORDS:
-            rest = rest[:1].lower() + rest[1:]
-        return f"{cause}, {parts.head}: {rest}"
+        return _render_oebb_cannot_run(parts, ident, source, category)
     return _render_oebb_follow_up(sentence)
+
+
+def _render_oebb_cannot_run(
+    parts: _OebbCannotRun, ident: str, source: str | None, category: str | None
+) -> str | None:
+    """English for ÖBB's "… kann … nicht fahren." from its parts (see below)."""
+    cause = _oebb_cause_en(parts.cause, ident, source, category)
+    if cause is None:
+        return None
+    if parts.rest is not None:
+        return f"{cause}, {parts.head}{parts.rest}"
+    # Routes or days outside the closed set: they alone go through the
+    # model, behind the colon the German sentence has there.
+    rest = _translate_text_attempt(
+        parts.middle, ident, source=source, category=category, oebb_templates=False
+    )
+    if rest is None:
+        return None
+    rest = rest.strip()
+    if rest.split(" ", 1)[0].casefold() in _WL_MAIN_CLAUSE_SMALL_WORDS:
+        rest = rest[:1].lower() + rest[1:]
+    return f"{cause}, {parts.head}: {rest}"
 
 
 # ÖBB's sentence for trains that do not run: "Wegen Bauarbeiten kann zwischen
