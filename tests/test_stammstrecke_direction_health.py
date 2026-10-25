@@ -863,3 +863,42 @@ def test_site_js_and_python_agree_on_the_directions() -> None:
     assert match, "site.js no longer declares STAMMSTRECKE_DIRECTIONS"
     js_dirs = tuple(re.findall(r'"([^"]+)"', match.group(1)))
     assert js_dirs == tuple(STAMMSTRECKE_DIRECTIONS)
+
+
+def test_yearly_note_does_not_contradict_the_yearly_table() -> None:
+    """``docs/statistik.md`` shows the year, not the README's 30-day window.
+
+    On 25.10.2026 the dashboard said the figures below covered Meidling only,
+    right above a direction table with Praterstern 3,831: those rows are from
+    before 14.08.2026 and still part of the year. Judged against the year's
+    rows, the note says how far they reach instead.
+    """
+    from scripts.generate_markdown_stats import render_direction_coverage_note
+
+    southbound = _peer_run(NOW, "Meidling", 12, step_minutes=5)
+    northbound = _sm_row(datetime(2026, 8, 14, 13, 57, tzinfo=VIENNA), "Praterstern")
+    year = [northbound, *southbound]
+
+    note = render_direction_coverage_note(year, now=NOW, all_rows=year, yearly=True)
+
+    assert "(zuletzt am 14.08.2026)" in note
+    assert "Die Jahreszahlen unten enthalten Richtung **Praterstern** daher nur bis dahin." in note
+    assert "Korridor-Gesamtwert" not in note
+
+    # A direction absent from the whole year still gets the part-corridor caveat.
+    note = render_direction_coverage_note(
+        southbound, now=NOW, all_rows=year, yearly=True
+    )
+    assert "kein Korridor-Gesamtwert" in note
+
+
+def test_site_judges_the_caveat_against_the_yearly_figures() -> None:
+    """The page's figures are the year's too; its banner reads them, not the window."""
+    from pathlib import Path
+
+    js = (
+        Path(__file__).resolve().parents[1] / "docs" / "assets" / "site.js"
+    ).read_text(encoding="utf-8")
+    assert "renderCoverageNotice(stats.coverage, byDirection)" in js
+    assert "const rowsIn = (dir) => bucket(yearByDirection, dir);" in js
+    assert '"coverage-body-yearly"' in js

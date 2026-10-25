@@ -41,7 +41,7 @@ from src.utils.files import atomic_write, read_capped_text  # noqa: E402
 
 _INTRO = (
     "Der Wien ÖPNV Feed bündelt Störungs- und Baustellenmeldungen von "
-    "Wiener Linien, ÖBB und VOR zu einem konsolidierten RSS-Feed, ergänzt "
+    "Wiener Linien, ÖBB, Stadt Wien und VOR/VAO zu einem konsolidierten RSS-Feed, ergänzt "
     "um Dokumentation und reproduzierbare Open-Data-Workflows. Die "
     "folgenden Seiten sind die informationsdichtesten Einstiegspunkte."
 )

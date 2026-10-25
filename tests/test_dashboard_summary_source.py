@@ -367,7 +367,10 @@ def test_summary_carries_every_field_the_page_reads() -> None:
         assert accessor in js, f"site.js no longer reads {accessor}"
 
     assert "live.avg_delay_minutes" in js
-    assert "entry.rows_in_window" in js
+    # The banner's caveat is judged against the figures the page shows, the
+    # year's rows per direction (``rows_in_window`` is the 30-day window of
+    # the README and stays in the summary for it).
+    assert "renderCoverageNotice(stats.coverage, byDirection)" in js
     assert "entry.last_seen" in js
 
 

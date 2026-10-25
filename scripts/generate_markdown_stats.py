@@ -708,10 +708,11 @@ def _format_directions_section(
     # letting its absence pass as "no disruptions there". Two sources, in order
     # of precedence:
     #
-    #   1. ``coverage_note`` from the caller, derived from the recent 30-day
-    #      window. This is the one that fires in practice: the ANNUAL aggregate
-    #      still contains the pre-outage rows, so a direction that went silent
-    #      mid-year is present in ``by_direction`` and invisible here.
+    #   1. ``coverage_note`` from the caller (``yearly=True``: the silence is
+    #      read off the recent ledger, the caveat off the year's rows). This is
+    #      the one that fires in practice: the ANNUAL aggregate still contains
+    #      the pre-outage rows, so a direction that went silent mid-year is
+    #      present in ``by_direction`` and would be invisible here.
     #   2. A direction missing from the aggregate entirely (a direction that
     #      never reported in the whole year).
     #
@@ -1152,6 +1153,7 @@ def render_direction_coverage_note(
     all_rows: list[StammstreckeRow] | None = None,
     directions: tuple[str, ...] = STAMMSTRECKE_DIRECTIONS,
     fetch_working: bool = True,
+    yearly: bool = False,
 ) -> str:
     """Return a Markdown warning while a direction has no journeys.
 
@@ -1182,6 +1184,14 @@ def render_direction_coverage_note(
       part-corridor sample (some direction still reporting) or simply old
       (none is) — a reader needs different things from those two.
 
+    The caveat is judged against the rows the figures below are made of,
+    ``window_rows``: the 30-day window for the README blocks, the whole year
+    for ``docs/statistik.md`` (``yearly=True``). The yearly tables still hold
+    a direction that fell silent mid-year (Praterstern 3,831 rows up to
+    14.08.2026), so there the note says how far they reach instead of
+    claiming that they cover the other direction only, which the table right
+    under it contradicted.
+
     Returns an empty string when every direction has reported within the hour,
     and when no canonical direction was ever measured (a fresh clone has
     nothing to caveat).
@@ -1205,6 +1215,11 @@ def render_direction_coverage_note(
     present = {row.direction for row in window_rows}
     absent = [d for d in missing if d not in present]
     if not absent:
+        if yearly:
+            return (
+                f"{lead} Die Jahreszahlen unten enthalten Richtung "
+                f"{missing_txt} daher nur bis dahin.\n\n"
+            )
         return f"{lead}\n\n"
 
     covered = [d for d in directions if d in present]
@@ -2121,7 +2136,15 @@ def main(argv: list[str] | None = None) -> int:
             stammstrecke=sm_agg,
             stoerungen=st_agg,
             ausfaelle=au_agg,
-            coverage_note=coverage_note,
+            # The dashboard shows the whole year, so its caveat is judged
+            # against the year's rows, not the README's 30-day window.
+            coverage_note=render_direction_coverage_note(
+                sm_rows,
+                now=now,
+                all_rows=window_sm,
+                fetch_working=fetch_working,
+                yearly=True,
+            ),
         )
 
         try:

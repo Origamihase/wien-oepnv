@@ -8750,6 +8750,22 @@ def _add_item_image(item: ET.Element) -> None:
     media.set("height", str(_ITEM_IMAGE_HEIGHT))
 
 
+def _shown_end(it: FeedItem, ends_at: object) -> datetime | None:
+    """The end the item's time line names, or ``None``.
+
+    WL's 11:11 expiry date is no end when the text names none of its own
+    (:func:`wl_plausibility.end_unknown`, operator decision 2026-10-08). The
+    time line leaves it out, and so does ``ext:ends_at``, which the website
+    shows as "Bis": "48A: Neubaugasse, Neustiftgasse" read "[Seit 19.10.]" on
+    the TV and "Bis: 08.10.2027, 11:11" on the website. The item keeps the
+    date as its expiry inside the pipeline.
+    """
+    end = ends_at if isinstance(ends_at, datetime) else None
+    if _is_wl_notice(it) and end_unknown(str(it.get("description") or ""), end):
+        return None
+    return end
+
+
 def _item_source(it: Any) -> _ItemSource | None:
     """Return the :class:`_ItemSource` for item ``it`` or ``None`` when unknown."""
     source = it.get("source")
@@ -11658,10 +11674,8 @@ def _format_item_content(
     title_out = _WHITESPACE_RE.sub(" ", title_out).strip()
 
     # Line 2: Timeframe. WL's 11:11 expiry date is no end (see
-    # :func:`wl_plausibility.end_unknown`); the line then reads "Seit …".
-    shown_end = ends_at if isinstance(ends_at, datetime) else None
-    if _is_wl_notice(it) and end_unknown(str(it.get("description") or ""), shown_end):
-        shown_end = None
+    # :func:`_shown_end`); the line then reads "Seit …".
+    shown_end = _shown_end(it, ends_at)
     time_line = format_local_times(
         starts_at if isinstance(starts_at, datetime) else None,
         shown_end,
@@ -12001,8 +12015,9 @@ def _emit_item(
     if isinstance(starts_at, datetime):
         ET.SubElement(item, "{https://wien-oepnv.example/schema}starts_at").text = _fmt_rfc2822(starts_at)
 
-    if isinstance(ends_at, datetime):
-        ET.SubElement(item, "{https://wien-oepnv.example/schema}ends_at").text = _fmt_rfc2822(ends_at)
+    shown_end = _shown_end(it, ends_at)
+    if shown_end is not None:
+        ET.SubElement(item, "{https://wien-oepnv.example/schema}ends_at").text = _fmt_rfc2822(shown_end)
 
     # GeoRSS: one point or a line where the place is certain, else nothing
     # (see :func:`_item_geometry`). Language-independent, so DE and EN agree.

@@ -78,7 +78,7 @@
     // Document <head>
     "doc-title": "Vienna Public Transport – Live Dashboard | Disruptions, Trunk Line & Statistics",
     "meta-description":
-      "Live dashboard for Wiener Linien, ÖBB and VOR: current disruptions from the RSS " +
+      "Live dashboard for Wiener Linien, ÖBB, City of Vienna and VOR/VAO: current disruptions from the RSS " +
       "feed, yearly statistics of disruption reports plus delay and cancellation data " +
       "for the S-Bahn trunk line. Proper names (stations, operators) are kept in German.",
     // Header / navigation
@@ -98,7 +98,7 @@
     "hero-title": "Disruptions, delays & cancellations at a glance",
     "hero-lead-html":
       "Consolidated transit information from <strong>Wiener Linien</strong>, " +
-      "<strong>ÖBB</strong> and <strong>VOR/VAO</strong> – live from the " +
+      "<strong>ÖBB</strong>, <strong>City of Vienna</strong> and <strong>VOR/VAO</strong> – live from the " +
       "RSS feed, augmented with the latest yearly statistics for the " +
       "S-Bahn trunk line.",
     "status-loading": "Loading data …",
@@ -199,7 +199,7 @@
       "Verkehrsauskunft Österreich VAO GmbH. Details in " +
       "<a href=\"https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md\" rel=\"external noopener noreferrer\" target=\"_blank\">NOTICE.md</a>. " +
       "Feed update cadence: roughly every 30&nbsp;minutes. " +
-      "This dashboard fetches feed and statistics CSVs <em>directly in the browser</em> – " +
+      "This dashboard fetches feed and statistics data <em>directly in the browser</em> – " +
       "no trackers, no cookies, no third-party scripts. Proper names (stations, operators) " +
       "are kept in German on purpose; only the surrounding text is translated.",
     "footer-link-repo": "Repository on GitHub",
@@ -400,14 +400,15 @@
     "coverage-last-many": "zuletzt",
     "coverage-at": "am",
     // Three consequences, because the silence reaches the figures at a
-    // different pace than it reaches the present moment. A direction that
-    // fell quiet an hour ago still contributes thousands of rows to a
-    // 30-day window, so "live" states the observation and stops there;
-    // only once the direction really is absent from the window are the
-    // figures a PART-corridor sample ("partial") or simply OLD ("none").
-    "coverage-body-live": (missing, since) =>
+    // different pace than it reaches the present moment. The figures are the
+    // year's: while the silent direction still has rows in them, "yearly"
+    // says how far they reach; only a direction absent from the whole year
+    // makes them a PART-corridor sample ("partial"), or simply OLD ("none")
+    // when no direction is left.
+    "coverage-body-yearly": (missing, since) =>
       `Aktuell keine Fahrten von ${COVERAGE_ORIGIN} Richtung ${missing} ` +
-      `auf der Stammstrecke${since}.`,
+      `auf der Stammstrecke${since}. Die Jahreswerte enthalten Richtung ` +
+      `${missing} daher nur bis dahin.`,
     "coverage-body-partial": (missing, since, covered) =>
       `Aktuell keine Fahrten von ${COVERAGE_ORIGIN} Richtung ${missing} ` +
       `auf der Stammstrecke${since}. Die Kennzahlen decken daher nur ` +
@@ -422,9 +423,10 @@
     "coverage-last-one": "last seen",
     "coverage-last-many": "last seen:",
     "coverage-at": "on",
-    "coverage-body-live": (missing, since) =>
+    "coverage-body-yearly": (missing, since) =>
       `Currently no departures from ${COVERAGE_ORIGIN} towards ${missing} ` +
-      `on the Stammstrecke${since}.`,
+      `on the Stammstrecke${since}. The yearly figures therefore include ` +
+      `the ${missing} direction only up to then.`,
     "coverage-body-partial": (missing, since, covered) =>
       `Currently no departures from ${COVERAGE_ORIGIN} towards ${missing} ` +
       `on the Stammstrecke${since}. The figures therefore cover the ` +
@@ -536,9 +538,12 @@
     }
   }
 
+  // "Datenstand" is the feed's own ``lastBuildDate``: the moment the data
+  // were built, not the moment this browser fetched them. Showing the fetch
+  // time made a feed that had stopped updating read as current.
   function setLastUpdate(date) {
     const t = $("#last-update");
-    if (!t) return;
+    if (!t || !(date instanceof Date) || Number.isNaN(date.getTime())) return;
     const iso = date.toISOString();
     t.setAttribute("datetime", iso);
     const suffix = currentLang === "en" ? " (Europe/Vienna)" : " Uhr (Europe/Vienna)";
@@ -591,9 +596,9 @@
     // server replies ``304 Not Modified`` and the browser serves the
     // cached body — same freshness guarantee as the previous
     // ``no-store`` + per-minute cache-buster combo, but without
-    // redownloading the full feed/CSV each cycle. Both GitHub Pages
-    // (``feed.xml``) and ``raw.githubusercontent.com`` (the CSV mirror)
-    // emit strong ``ETag`` headers, so revalidation produces real
+    // redownloading the full feed or summary each cycle. GitHub Pages
+    // (``feed.xml``, ``stats-summary.json``) emits strong ``ETag``
+    // headers, so revalidation produces real
     // bandwidth savings on the 5-minute auto-refresh tick.
     const res = await fetch(url, {
       cache: "no-cache",
@@ -672,6 +677,7 @@
         guid: get("guid"),
         pubDate: get("pubDate"),
         description: get("description"),
+        sourceName: get("source"),
         firstSeen: ns("first_seen"),
         startsAt: ns("starts_at"),
         endsAt: ns("ends_at"),
@@ -711,16 +717,33 @@
 
   // ----- Feed rendering -----
 
+  // Every item carries an RSS ``<source>`` naming where it comes from
+  // (``_ITEM_SOURCES`` in src/build_feed.py, German and English names). It
+  // decides the tile, so the label says what the tag says: the Stammstrecke
+  // monitor links to the ÖBB route information but comes from VOR/VAO, and
+  // Stadt Wien construction works link to wien.gv.at. The link and title
+  // patterns below only serve an item without a known tag.
+  const SOURCE_TAGS = {
+    "wiener linien": "wienerlinien",
+    "öbb": "oebb",
+    "stadt wien": "baustellen",
+    "city of vienna": "baustellen",
+    "vor/vao": "vor",
+  };
+
   function detectSource(item) {
+    const tagged = SOURCE_TAGS[(item.sourceName || "").trim().toLowerCase()];
+    if (tagged) return tagged;
     const link = (item.link || "").toLowerCase();
     const haystack = `${item.link} ${item.title}`.toLowerCase();
     if (/(wienerlinien|wiener\s*linien|wl-disp|ogd_realtime)/.test(haystack)) return "wienerlinien";
     if (/(oebb|öbb|scotty)/.test(haystack)) return "oebb";
-    // City-of-Vienna construction dataset → fixed data.gv.at link. Keyed
+    // City-of-Vienna construction works → wien.gv.at/verkehr/baustellen
+    // (since 17.10.2026; the data.gv.at dataset link before). Keyed
     // on the link (not the combined haystack) so a WL/ÖBB report whose
     // title merely mentions "Baustelle" is not misclassified — those are
     // already returned above.
-    if (/data\.gv\.at\/[^ ]*baustellen/.test(link)) return "baustellen";
+    if (/(data\.gv\.at\/[^ ]*baustellen|wien\.gv\.at\/verkehr\/baustellen)/.test(link)) return "baustellen";
     if (/(vor\.at|verkehrsverbund|vao\.|anachb)/.test(haystack)) return "vor";
     return "other";
   }
@@ -729,11 +752,11 @@
     if (key === "wienerlinien") return "Wiener Linien";
     if (key === "oebb") return "ÖBB";
     if (key === "baustellen") return currentLang === "en" ? "Construction" : "Baustellen";
-    if (key === "vor") return "VOR / VAO";
+    if (key === "vor") return "VOR/VAO";
     return currentLang === "en" ? "Other" : "Andere";
   }
 
-  let feedState = { items: [], filter: "all" };
+  let feedState = { items: [], filter: "all", lastBuild: "" };
 
   function renderFeed() {
     const list = $("#feed-list");
@@ -817,19 +840,19 @@
     const labels = currentLang === "en"
       ? { begin: "Begin: ", until: "Until: ", firstSeen: "First seen: " }
       : { begin: "Beginn: ", until: "Bis: ", firstSeen: "Erstmals: " };
-    const pub = parseRfc2822(item.pubDate);
-    if (pub) {
+    const begin = itemBegin(item);
+    if (begin) {
       const d = document.createElement("div");
       d.append(el("dfn", { text: labels.begin }));
-      const t = el("time", { attrs: { datetime: pub.toISOString() }, text: dtfFull.format(pub) });
-      d.append(t);
+      const shown = isViennaMidnight(begin) ? dtfDate.format(begin) : dtfFull.format(begin);
+      d.append(el("time", { attrs: { datetime: begin.toISOString() }, text: shown }));
       meta.append(d);
     }
     const ends = parseRfc2822(item.endsAt);
     if (ends) {
       const d = document.createElement("div");
       d.append(el("dfn", { text: labels.until }));
-      d.append(el("time", { attrs: { datetime: ends.toISOString() }, text: dtfFull.format(ends) }));
+      d.append(el("time", { attrs: { datetime: ends.toISOString() }, text: dtfDate.format(ends) }));
       meta.append(d);
     }
     const seen = parseRfc2822(item.firstSeen);
@@ -843,6 +866,44 @@
 
     li.append(body);
     return li;
+  }
+
+  // "Beginn" and "Bis" say what the item's own time line says ("[Seit
+  // 22.10.]", "[Am Mo 26.10.]", "[Bis 02.11.]", see ``_time_line_text`` in
+  // src/build_feed.py), so a tile does not contradict its text.
+  //
+  // ``pubDate`` is not the begin: WL publishes planned events days ahead
+  // ("Nationalfeiertag", published 16.10. for 26.10.) and ÖBB moves it on
+  // with every update. ``starts_at`` is the begin. An earlier ``pubDate`` of
+  // the same Vienna day is the minute WL entered the incident, which the
+  // time line reads as its start too (``_since_time``), unless it sits on a
+  // full hour, the mark of a pre-entered measure (``_scheduled_clock``;
+  // Vienna's offsets are whole hours, so the UTC minute is Vienna's). A begin at 00:00
+  // Vienna time marks a day and shows as a date. An end shows as a date
+  // alone, like on the TV: its clock time is a buffer (23:59, 01:00, 04:00),
+  // not an announced time.
+  const dtfViennaDay = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Vienna", year: "numeric", month: "2-digit", day: "2-digit",
+  });
+  const dtfViennaClock = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Vienna", hour: "2-digit", minute: "2-digit", hourCycle: "h23",
+  });
+
+  function itemBegin(item) {
+    const start = parseRfc2822(item.startsAt);
+    const pub = parseRfc2822(item.pubDate);
+    if (!start) return pub;
+    if (
+      pub && pub < start && pub.getUTCMinutes() !== 0 &&
+      dtfViennaDay.format(pub) === dtfViennaDay.format(start)
+    ) {
+      return pub;
+    }
+    return start;
+  }
+
+  function isViennaMidnight(date) {
+    return dtfViennaClock.format(date) === "00:00";
   }
 
   function collapseWhitespace(s) {
@@ -998,7 +1059,7 @@
       sortedEntries(byDirection),
       { unit: "", formatValue: (v) => nfInt.format(v) });
 
-    renderCoverageNotice(stats.coverage);
+    renderCoverageNotice(stats.coverage, byDirection);
   }
 
   // Audit B.1: the northbound direction stopped reporting on 2026-08-14 while
@@ -1025,7 +1086,14 @@
   // peer is left — a corridor silence longer than any normal pause. Without
   // that gate the banner would appear every night, when the Stammstrecke
   // stops for about 3:41 h by timetable.
-  function renderCoverageNotice(coverage) {
+  //
+  // The figures this page shows are the year's (``by_direction`` and every
+  // KPI), so whether the silence reaches them is judged against the year's
+  // rows per direction, ``yearByDirection``; ``rows_in_window`` is the
+  // README's 30-day window. Judged against the window, the banner said the
+  // figures covered Meidling only, right above a direction chart that showed
+  // Praterstern with 3,831 observations.
+  function renderCoverageNotice(coverage, yearByDirection) {
     const node = $("#stammstrecke-coverage");
     if (!node) return;
     const hide = () => {
@@ -1040,10 +1108,7 @@
       numberOr(coverage && coverage.corridor_silence_hours, 8) * 3600000;
     const peerNeeded = numberOr(coverage && coverage.peer_rows_required, 6);
 
-    const rowsIn = (dir) => {
-      const entry = perDirection[dir];
-      return entry ? numberOr(entry.rows_in_window, 0) : 0;
-    };
+    const rowsIn = (dir) => bucket(yearByDirection, dir);
     const lastSeenOf = (dir) => {
       const entry = perDirection[dir];
       const stamp = entry && entry.last_seen ? Date.parse(entry.last_seen) : NaN;
@@ -1094,7 +1159,8 @@
     missing = STAMMSTRECKE_DIRECTIONS.filter((d) => missing.indexOf(d) !== -1);
 
     const joiner = currentLang === "en" ? " and " : " und ";
-    const onDate = (stamp) => buildDtf({}).format(new Date(stamp));
+    // Same date format as the tiles ("14.08.2026", "14 Aug 2026").
+    const onDate = (stamp) => dtfDate.format(new Date(stamp));
     // One silent direction gets the short form; several get one date each,
     // because a single date would otherwise stand for a sentence covering
     // all of them.
@@ -1115,9 +1181,8 @@
     const covered = STAMMSTRECKE_DIRECTIONS.filter((d) => rowsIn(d) > 0);
     let body;
     if (!absent.length) {
-      // Silent now, but still thousands of rows in the window: stating the
-      // observation is the whole of the honest claim.
-      body = cov("coverage-body-live")(missingTxt, since);
+      // Silent now, but still in the year's figures: say how far they reach.
+      body = cov("coverage-body-yearly")(missingTxt, since);
     } else if (covered.length) {
       body = cov("coverage-body-partial")(missingTxt, since, covered.join(joiner));
     } else {
@@ -1512,6 +1577,9 @@
   // ----- Loading orchestration -----
 
   let refreshTimer = null;
+  // When this page last fetched the feed successfully (for the refresh on
+  // returning to the tab); "Datenstand" shows the feed's own build time.
+  let lastFetchAt = 0;
   let currentAbort = null;
   let sectionObserver = null;
   // IDs of *lazy* statistic sections the user has revealed by scrolling
@@ -1541,16 +1609,14 @@
       loadFeed(ctrl.signal).then(
         () => {
           setStatus("ok", "status-ok");
-          setLastUpdate(new Date());
+          lastFetchAt = Date.now();
+          setLastUpdate(parseRfc2822(feedState.lastBuild));
         },
         () => {
           setStatus("error", "status-error");
         },
       ),
-      loadStammstrecke(ctrl.signal).then(
-        () => setLastUpdate(new Date()),
-        () => {},
-      ),
+      loadStammstrecke(ctrl.signal).then(() => {}, () => {}),
       // Weather is decoupled from the global status: a failed weather
       // fetch (API down, offline, blocked host) must not flip the feed
       // status to "error". On failure the widget simply keeps its last
@@ -1560,10 +1626,7 @@
     for (const id of loadedSections) {
       const loader = SECTION_LOADERS[id];
       if (!loader) continue;
-      tasks.push(loader(ctrl.signal).then(
-        () => setLastUpdate(new Date()),
-        () => {},
-      ));
+      tasks.push(loader(ctrl.signal).then(() => {}, () => {}));
     }
 
     await Promise.allSettled(tasks);
@@ -1577,6 +1640,7 @@
       const text = await fetchText(currentFeedUrl(), { signal });
       const feed = parseFeed(text);
       feedState.items = feed.items;
+      feedState.lastBuild = feed.lastBuild;
       renderFeed();
     } catch (err) {
       // Ein AbortError stammt vom Race aus loadAll() (neuer Refresh hat
@@ -1688,7 +1752,6 @@
     const signal = currentAbort ? currentAbort.signal : undefined;
     try {
       await loader(signal);
-      setLastUpdate(new Date());
     } catch {
       // showError already invoked inside the loader – nothing else to do
       // here; the global status keeps following the feed.
@@ -1718,9 +1781,7 @@
     if (btn) btn.addEventListener("click", () => loadAll());
     document.addEventListener("visibilitychange", () => {
       if (!document.hidden) {
-        const t = $("#last-update");
-        const stamp = t && t.getAttribute("datetime") ? Date.parse(t.getAttribute("datetime")) : 0;
-        if (!stamp || Date.now() - stamp > REFRESH_MS) loadAll();
+        if (!lastFetchAt || Date.now() - lastFetchAt > REFRESH_MS) loadAll();
       }
     });
   }
