@@ -3,31 +3,10 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R1925-170|2026-10-25T14:52:12.000+0100|Fahrtbehinderung\nGleisschaden",
-   "name": "R1925-170",
-   "title": "Fahrtbehinderung\nGleisschaden",
-   "end": "2026-10-25T18:45:00.000+0100",
-   "incident": "I20261025-0019"
-  },
-  {
-   "key": "R1926-170|2026-10-25T14:52:12.000+0100|Fahrtbehinderung\nGleisschaden",
-   "name": "R1926-170",
-   "title": "Fahrtbehinderung\nGleisschaden",
-   "end": "2026-10-25T18:45:00.000+0100",
-   "incident": "I20261025-0019"
-  },
-  {
    "key": "R1930-111|2026-10-25T15:12:14.000+0100|Gleisschaden\nBetrieb ab Quellenplatz",
    "name": "R1930-111",
    "title": "Gleisschaden\nBetrieb ab Quellenplatz",
    "end": "2026-10-25T19:30:00.000+0100",
-   "incident": "I20261025-0019"
-  },
-  {
-   "key": "R1930-170|2026-10-25T15:00:12.000+0100|Gleisschaden\nBetrieb ab Gudrunstraße",
-   "name": "R1930-170",
-   "title": "Gleisschaden\nBetrieb ab Gudrunstraße",
-   "end": "2026-10-25T19:00:00.000+0100",
    "incident": "I20261025-0019"
   },
   {
@@ -56,13 +35,6 @@
    "name": "R1932-170",
    "title": "Gleisschaden\nBetrieb ab Gudrunstraße",
    "end": "2026-10-25T19:45:00.000+0100",
-   "incident": "I20261025-0019"
-  },
-  {
-   "key": "R1933-111|2026-10-25T15:21:44.000+0100|Gleisschaden\nEinstieg bei Haltestelle Linie 6 (Richtung Geiereckstr.)",
-   "name": "R1933-111",
-   "title": "Gleisschaden\nEinstieg bei Haltestelle Linie 6 (Richtung Geiereckstr.)",
-   "end": "2026-10-25T19:00:00.000+0100",
    "incident": "I20261025-0019"
   },
   {
@@ -112,20 +84,6 @@
    "name": "R2260-111",
    "title": "Gleisschaden\nBetrieb ab Quellenplatz",
    "end": "2026-10-25T19:30:00.000+0100",
-   "incident": "I20261025-0019"
-  },
-  {
-   "key": "R299-170|2026-10-25T15:00:11.000+0100|Gleisschaden\nBetrieb ab Gudrunstraße",
-   "name": "R299-170",
-   "title": "Gleisschaden\nBetrieb ab Gudrunstraße",
-   "end": "2026-10-25T19:00:00.000+0100",
-   "incident": "I20261025-0019"
-  },
-  {
-   "key": "R343-170|2026-10-25T14:52:10.000+0100|Fahrtbehinderung\nGleisschaden",
-   "name": "R343-170",
-   "title": "Fahrtbehinderung\nGleisschaden",
-   "end": "2026-10-25T18:45:00.000+0100",
    "incident": "I20261025-0019"
   }
  ]
