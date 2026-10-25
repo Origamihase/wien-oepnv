@@ -189,9 +189,54 @@ def test_open_data_coordinate_never_falls_back_to_the_directory(
     assert real("Unknown") is None
 
 
+def test_open_data_coordinate_replaces_an_implausible_wl_ogd_value(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # WL OGD lists DIVA 60201956 (Wassermanngasse) in the Waldviertel: the
+    # WL GTFS stop answers instead, and without it there is no coordinate.
+    entries: dict[str, dict[str, Any]] = {
+        "Wassermanngasse": {"name": "Wassermanngasse", "wl_diva": "60201956"},
+        "Halblehenweg": {"name": "Halblehenweg", "wl_diva": "60201955"},
+    }
+    real = _REAL_OPEN_DATA_COORDINATE
+    monkeypatch.setattr(stations, "_entries_by_name", lambda: entries)
+    monkeypatch.setattr(stations, "_geonetz_coordinates", lambda: {})
+    monkeypatch.setattr(
+        stations,
+        "_wl_ogd_coordinates",
+        lambda: {"60201956": (48.6945799, 15.5786106), "60201955": (48.7235788, 15.0677477)},
+    )
+    monkeypatch.setattr(stations, "_wl_gtfs_coordinates", lambda: {"60201956": (48.268638, 16.452806)})
+    assert real("Wassermanngasse", prefer="wl") == stations.OpenCoordinate(48.268638, 16.452806, "wl_gtfs")
+    assert real("Halblehenweg", prefer="wl") is None
+
+
+def test_wl_gtfs_stops_map_to_divas(tmp_path: Any) -> None:
+    path = tmp_path / "stops.csv"
+    path.write_text(
+        "stop_id,stop_name,stop_lat,stop_lon,zone_id\n"
+        '"at:49:1956:0:1","Wassermanngasse","48.26863468","16.45290494","0100"\n'
+        '"at:49:1956:0:2","Wassermanngasse","48.26864065","16.45270731","0100"\n'
+        '"at:43:3121:0:1","Baden Josefsplatz","48.00598751","16.23376093","3045"\n'
+        '"at:49:9999:0:1","Waldviertel","48.6945799","15.5786106","0100"\n'
+        '"at:43:4302:0:1","No DIVA","bad","16.2","3045"\n',
+        encoding="utf-8",
+    )
+    table = stations.load_wl_gtfs_coordinates(path)
+    assert table == {
+        "60201956": (48.268638, 16.452806),
+        "60203121": (48.005988, 16.233761),
+    }
+
+
 def test_open_data_tables_load_from_the_repository() -> None:
     assert len(stations._geonetz_coordinates()) > 500
     assert len(stations._wl_ogd_coordinates()) > 1000
+    gtfs = stations._wl_gtfs_coordinates()
+    assert len(gtfs) > 1000
+    # The three Waldviertel DIVAs of the OGD list are in Vienna in GTFS.
+    for diva in ("60201954", "60201955", "60201956"):
+        assert stations.is_in_vienna(*gtfs[diva])
 
 
 @pytest.mark.parametrize(

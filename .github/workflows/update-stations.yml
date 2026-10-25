@@ -16,7 +16,12 @@ name: Update station directory
 #   the canonical Wiener Linien OGD host
 #   (``www.wienerlinien.at/ogd_realtime/doku/ogd/``) on every run
 #   (``--download`` default-on) with graceful fallback to the pinned
-#   local CSV on upstream outage; free open data, no auth.
+#   local CSV on upstream outage; free open data, no auth. The same script
+#   loads the WL GTFS ``stops.txt`` (``data/wienerlinien-gtfs-stops.csv``,
+#   CC BY 4.0), used only where every OGD stop of a DIVA lies outside the
+#   WL network. Every good answer (200/304) stamps ``checked_at`` into the
+#   file's ``.cache.json`` (the ÖBB workbook too); the health check turns
+#   red after 15 days without one.
 # * HAFAS (ÖBB Scotty) — ``_enrich_with_hafas`` runs ONLY for the
 #   subset of stations still missing coordinates
 #   (``_stations_missing_coordinates`` strict subset). There is no

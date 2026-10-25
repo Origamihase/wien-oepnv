@@ -26,6 +26,7 @@ import sys
 import unicodedata
 from copy import deepcopy
 from dataclasses import dataclass, field
+from datetime import UTC, datetime
 import zipfile
 from io import BytesIO
 from pathlib import Path
@@ -1539,8 +1540,27 @@ def download_workbook(
             cache_path,
             exc,
         )
+    _stamp_workbook_checked_at(cache_path)
 
     return BytesIO(content)
+
+
+def _stamp_workbook_checked_at(cache_path: Path) -> None:
+    """Record the time of this good download next to the cached workbook.
+
+    ``scripts/health_check.py`` reads ``checked_at`` from
+    ``<workbook>.cache.json`` and turns red when it grows too old: a failed
+    download falls back to the cached workbook and the run stays green, so
+    without the stamp a dead source would go unnoticed.
+    """
+    sidecar = cache_path.with_name(cache_path.name + ".cache.json")
+    payload = {"version": 1, "checked_at": datetime.now(UTC).isoformat(timespec="seconds")}
+    try:
+        with atomic_write(sidecar, mode="w", encoding="utf-8", permissions=0o644) as handle:
+            json.dump(payload, handle, ensure_ascii=True, sort_keys=True, indent=2, allow_nan=False)
+            handle.write("\n")
+    except OSError as exc:  # pragma: no cover - filesystem-dependent
+        logger.warning("Could not stamp %s (%s)", sidecar.name, exc)
 
 
 def _persist_workbook_snapshot(cache_path: Path, payload: bytes) -> None:

@@ -60,6 +60,14 @@ def _load_is_in_vienna() -> Callable[..., bool]:
     return cast(Callable[..., bool], module.is_in_vienna)
 
 
+def _load_station_helper(name: str) -> Callable[..., Any]:
+    base_dir = _project_root()
+    if str(base_dir) not in sys.path:
+        sys.path.insert(0, str(base_dir))
+    module = import_module("src.utils.stations")
+    return cast(Callable[..., Any], getattr(module, name))
+
+
 def _load_atomic_write() -> Callable[..., Any]:
     base_dir = _project_root()
     if str(base_dir) not in sys.path:
@@ -138,6 +146,8 @@ def _load_enrich_station_with_hafas() -> Callable[..., Any]:
 
 BASE_DIR = _project_root()
 is_in_vienna = _load_is_in_vienna()
+is_plausible_wl_coordinate = _load_station_helper("is_plausible_wl_coordinate")
+load_wl_gtfs_coordinates = _load_station_helper("load_wl_gtfs_coordinates")
 calculate_distance_meters = _load_calculate_distance_meters()
 atomic_write = _load_atomic_write()
 read_capped_json = _load_read_capped_json()
@@ -167,6 +177,7 @@ DEFAULT_HALTEPUNKTE = BASE_DIR / "data" / "wienerlinien-ogd-haltepunkte.csv"
 DEFAULT_HALTESTELLEN = BASE_DIR / "data" / "wienerlinien-ogd-haltestellen.csv"
 DEFAULT_LINIEN = BASE_DIR / "data" / "wienerlinien-ogd-linien.csv"
 DEFAULT_FAHRWEGVERLAEUFE = BASE_DIR / "data" / "wienerlinien-ogd-fahrwegverlaeufe.csv"
+DEFAULT_GTFS_STOPS = BASE_DIR / "data" / "wienerlinien-gtfs-stops.csv"
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 DEFAULT_VOR_MAPPING = BASE_DIR / "data" / "vor-haltestellen.mapping.json"
 
@@ -188,6 +199,11 @@ OGD_LINIEN_URL = "https://www.wienerlinien.at/ogd_realtime/doku/ogd/wienerlinien
 OGD_FAHRWEGVERLAEUFE_URL = (
     "https://www.wienerlinien.at/ogd_realtime/doku/ogd/wienerlinien-ogd-fahrwegverlaeufe.csv"
 )
+# The stops of the Wiener Linien GTFS timetable (data.gv.at "Wiener Linien –
+# Fahrplandaten GTFS Wien", CC BY 4.0). Used only for a station whose OGD
+# haltepunkte all fail ``_is_plausible_wl_stop``; until 2026-10-25 such
+# stations got their coordinate from a hand-written override instead.
+OGD_GTFS_STOPS_URL = "https://www.wienerlinien.at/ogd_realtime/doku/ogd/gtfs/stops.txt"
 OGD_DOWNLOAD_TIMEOUT_SECONDS = 30
 USER_AGENT = (
     "wien-oepnv station updater "
@@ -233,6 +249,12 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         type=Path,
         default=DEFAULT_FAHRWEGVERLAEUFE,
         help="Path to the fahrwegverlaeufe CSV export (optional, for wl_lines)",
+    )
+    parser.add_argument(
+        "--gtfs-stops",
+        type=Path,
+        default=DEFAULT_GTFS_STOPS,
+        help="Path to the WL GTFS stops.txt (fallback for implausible OGD coordinates)",
     )
     parser.add_argument(
         "--stations",
@@ -319,12 +341,39 @@ def _write_cache_validators(target: Path, headers: Mapping[str, str]) -> None:
     last_modified = headers.get("Last-Modified") or headers.get("last-modified")
     if not etag and not last_modified:
         return
+    now = datetime.now(UTC).isoformat(timespec="seconds")
     payload = {
         "version": 1,
         "etag": etag or "",
         "last_modified": last_modified or "",
-        "fetched_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "fetched_at": now,
+        "checked_at": now,
     }
+    _write_sidecar(target, payload)
+
+
+def _stamp_checked_at(target: Path) -> None:
+    """Record in the sidecar that the source answered ``304 Not Modified``.
+
+    ``checked_at`` is the last good answer of the source (200 or 304);
+    ``scripts/health_check.py`` turns red when it grows too old, because a
+    failed download keeps the previous file and would otherwise go
+    unnoticed. ``fetched_at`` stays the time of the last full download.
+    """
+    sidecar = _cache_sidecar_path(target)
+    payload = read_capped_json(
+        sidecar,
+        MAX_OGD_CACHE_SIDECAR_BYTES,
+        label="WL OGD cache sidecar",
+        logger=log,
+    )
+    if not isinstance(payload, dict):
+        return
+    payload["checked_at"] = datetime.now(UTC).isoformat(timespec="seconds")
+    _write_sidecar(target, payload)
+
+
+def _write_sidecar(target: Path, payload: Mapping[str, object]) -> None:
     sidecar = _cache_sidecar_path(target)
     try:
         sidecar.parent.mkdir(parents=True, exist_ok=True)
@@ -424,6 +473,7 @@ def _download_ogd_csv(url: str, target: Path) -> bool:
             "WL OGD not modified (304); keeping existing [path-sha256=%s]",
             _path_fingerprint(target),
         )
+        _stamp_checked_at(target)
         return True
 
     content = response.content
@@ -752,46 +802,16 @@ def _derive_station_label(platform_text: str, stops: Iterable[Haltepunkt]) -> st
 
 # Plausibility gate for a single Wiener-Linien stop coordinate, applied
 # where per-stop values become the station's authoritative coordinate.
-#
 # The existing gates (``_coerce_float``'s finiteness check and the WGS-84
 # range check on the VOR branch) only reject values that are not
-# coordinates at all. They cannot catch a well-formed coordinate that
-# points at the wrong place — and the WL OGD export does ship those.
-#
-# Measured on the 2026-09-13 snapshot (4581 stops): the furthest genuine
-# stop is the Badner-Bahn terminus at Leesdorf/Baden, 24.9 km from
-# Stephansplatz. Beyond that the distribution is empty until 76.2 km,
-# where six rows across three consecutive DIVAs (60201954 Leopoldine-
-# Padaurek-Straße, 60201955 Halblehenweg, 60201956 Wassermanngasse) sit
-# 76-112 km away in the Waldviertel while still declaring
-# ``Municipality=Wien``. Both OGD files agree on those values, so the
-# defect is upstream, not a local corruption.
-#
-# 50 km sits in that gap with ~2x headroom over the real network and a
-# 1.5x margin below the nearest bad value, so it separates the two
-# populations without any judgement call about individual stops.
-_WL_NETWORK_CENTRE_LAT: float = 48.2082
-_WL_NETWORK_CENTRE_LON: float = 16.3738
-MAX_WL_STOP_DISTANCE_M: float = 50_000.0
-
-
+# coordinates at all; this one catches a well-formed coordinate that points
+# at the wrong place. Threshold and measurements live with the shared helper
+# ``src.utils.stations.is_plausible_wl_coordinate``, which the GeoRSS
+# coordinate lookup uses as well.
 def _is_plausible_wl_stop(latitude: float, longitude: float) -> bool:
-    """Return ``True`` when a stop coordinate can belong to the WL network.
+    """Return ``True`` when a stop coordinate can belong to the WL network."""
 
-    Args:
-        latitude: WGS-84 latitude of the stop.
-        longitude: WGS-84 longitude of the stop.
-
-    Returns:
-        ``True`` while the point lies within :data:`MAX_WL_STOP_DISTANCE_M`
-        of the network centre, ``False`` for a well-formed coordinate that
-        cannot plausibly be a Wiener-Linien stop.
-    """
-
-    distance = calculate_distance_meters(
-        latitude, longitude, _WL_NETWORK_CENTRE_LAT, _WL_NETWORK_CENTRE_LON
-    )
-    return distance <= MAX_WL_STOP_DISTANCE_M
+    return bool(is_plausible_wl_coordinate(latitude, longitude))
 
 
 def _aggregate_coordinates(stops: Iterable[Haltepunkt]) -> tuple[float | None, float | None]:
@@ -955,6 +975,7 @@ def build_wl_entries(
     haltepunkte: Iterable[Haltepunkt],
     vor_mapping: Mapping[str, Mapping[str, object]] | None = None,
     lines_by_stop: Mapping[str, Iterable[str]] | None = None,
+    gtfs_coordinates: Mapping[str, tuple[float, float]] | None = None,
 ) -> list[dict[str, object]]:
     grouped: dict[str, list[Haltepunkt]] = {}
     for halt in haltepunkte:
@@ -1032,6 +1053,18 @@ def build_wl_entries(
         canonical = _canonical_name(display_label)
         aliases.add(canonical)
         latitude, longitude = _aggregate_coordinates(stops)
+        if latitude is None and gtfs_coordinates:
+            # Every OGD haltepunkt of this DIVA is missing or implausible:
+            # take the same stop from the WL GTFS timetable (same licensor,
+            # same licence). ``wl_stops`` keeps mirroring the OGD export.
+            fallback = gtfs_coordinates.get(str(station.diva or ""))
+            if fallback is not None:
+                latitude, longitude = fallback
+                log.info(
+                    "WL station %s (%s): coordinate from the WL GTFS stops",
+                    station.name,
+                    station_identifier,
+                )
         # Compute ``in_vienna`` from the aggregate (mean) coordinates
         # rather than any-stop-wins, so the flag stays consistent with
         # the coordinates that will land in the stations.json entry.
@@ -1963,6 +1996,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         _download_ogd_csv(OGD_HALTEPUNKTE_URL, args.haltepunkte)
         _download_ogd_csv(OGD_LINIEN_URL, args.linien)
         _download_ogd_csv(OGD_FAHRWEGVERLAEUFE_URL, args.fahrwegverlaeufe)
+        _download_ogd_csv(OGD_GTFS_STOPS_URL, args.gtfs_stops)
 
     log.info(
         "Reading haltestellen: [path-sha256=%s]",
@@ -2005,7 +2039,11 @@ def main(argv: Sequence[str] | None = None) -> int:
             "check the fahrwegverlaeufe CSV columns (LineID, StopID)"
         )
 
-    wl_entries = build_wl_entries(haltestellen, haltepunkte, vor_mapping, lines_by_stop)
+    gtfs_coordinates = load_wl_gtfs_coordinates(args.gtfs_stops)
+    log.info("Loaded WL GTFS stop coordinates for %d DIVAs", len(gtfs_coordinates))
+    wl_entries = build_wl_entries(
+        haltestellen, haltepunkte, vor_mapping, lines_by_stop, gtfs_coordinates
+    )
     log.info(
         "Prepared %d WL station entries (%d with wl_lines)",
         len(wl_entries),
