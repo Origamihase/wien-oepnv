@@ -1195,12 +1195,12 @@ def _post_filter_wl(items: list[Any]) -> list[Any]:
             # ``40/41: Betrieb ab Gersthof``). Only touches items where
             # ``_extract_prefix_lines`` recovers ≥1 line tokens AND the
             # rebuilt form differs from the cached title — leaves bodies
-            # without a prefix block untouched. Line order follows WL's
-            # original sequence in the title (``41E/10A:`` round-trips,
-            # ``40: 40+41:`` collapses to ``40/41:`` without reordering).
+            # without a prefix block untouched. The lines take WL's order
+            # (``line_order_key``) like every other prefix, also in a title
+            # cached before that order (``41: 40+41:`` → ``40/41:``).
             body, prefix_lines = _extract_prefix_lines(cleaned)
             if prefix_lines and body:
-                canonical = "/".join(prefix_lines)
+                canonical = "/".join(sorted(prefix_lines, key=line_order_key))
                 rebuilt = f"{canonical}: {body}"
                 if rebuilt != cleaned:
                     cleaned = rebuilt

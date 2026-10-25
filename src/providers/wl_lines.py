@@ -14,7 +14,9 @@ from ..utils.files import read_capped_text
 # WL's own order of its lines: the ``SortingHelp`` column of the open line
 # data (``data/wienerlinien-ogd-linien.csv``, refreshed weekly by
 # ``scripts/update_wl_stations.py``): U-Bahn, tram (D, O and LB after the
-# numbered ones), bus A, bus B, night and S-Bahn. Every line prefix of a
+# numbered ones), bus A, bus B, then night buses and S-Bahn by number
+# (S1, …, S4, N6, S7, …); an on-demand bus stands where WL ranks it (25BR
+# after the trams, 41AR with 41A, N17R among the B buses). Every line prefix of a
 # title follows it, whoever builds the prefix (the WL provider, the fuzzy
 # merge, a ticker joined into its incident). Before, a notice kept the
 # order WL happened to send in ``relatedLines`` while a merged incident
@@ -57,11 +59,16 @@ _LINE_SHAPE_RANKS: tuple[tuple[re.Pattern[str], int], ...] = (
 
 
 def line_order_key(token: str) -> tuple[int, int, list[str | int]]:
-    """Sort key for a line code in a title prefix (see above)."""
+    """Sort key for a line code in a title prefix (see above).
+
+    Some lines share a rank in the data (``41A`` and its on-demand bus
+    ``41AR``, night bus ``N60`` and S-Bahn ``S60``); the code then decides,
+    so the same lines read the same whichever came first.
+    """
     line = _clean_line_token(token)
     rank = _wl_line_ranks().get(line)
     if rank is not None:
-        return (0, rank, [])
+        return (0, rank, _number_keys(line))
     for pattern, base in _LINE_SHAPE_RANKS:
         match = pattern.fullmatch(line)
         if match:

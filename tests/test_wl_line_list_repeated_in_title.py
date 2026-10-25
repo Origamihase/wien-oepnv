@@ -61,8 +61,9 @@ def test_single_code_then_rufbus_is_folded() -> None:
 @pytest.mark.parametrize(
     ("cached", "expected"),
     [
-        # Verbatim from cache/wl_9d709a/events.json.
-        ("N66/N68R: N66, Rufbus N68: Quellenplatz", "N66/N68R: Quellenplatz"),
+        # Verbatim from cache/wl_9d709a/events.json; the prefix takes WL's
+        # line order like the provider's (N68R ranks among the B buses).
+        ("N66/N68R: N66, Rufbus N68: Quellenplatz", "N68R/N66: Quellenplatz"),
         ("4A/80A/N29: 4A. 80A, N29: Wittelsbachstraße", "4A/80A/N29: Wittelsbachstraße"),
         # The earlier fix for this family keeps working: no N61R in the
         # prefix, so the Rufbus line joins it.
