@@ -557,11 +557,19 @@ _SHORT_TAIL_RE: re.Pattern[str] = re.compile(
     r"\s+(?:Weichen Sie|Voraussichtlich bis|Voraussichtliche Dauer|Grund:)"
 )
 _SHORT_EXPECTED_END_RE: re.Pattern[str] = re.compile(r"Voraussichtlich bis [^.]*?\d{1,2}:\d{2} Uhr\.")
-# A place ends before "über", "örtlich", "umgeleitet", "in Richtung" or the
-# sentence end; WL's abbreviations ("Bhf.", "Str.", "St.", "Dr.-Adolf-…")
-# and ordinals ("Zentralfriedhof, 4. Tor") are part of it.
+# A place ends before "über", "örtlich", "umgeleitet", "in Richtung", the
+# sentence end or a clause of its own: "und" or a comma before a small word
+# (WL names its stops with capitals: "Heinestraße, Taborstraße"). On
+# 2026-05-10 the 1 "fährt nur zwischen Stefan-Fadinger-Platz und
+# Radetzkyplatz und wird ab Kliebergasse über die Linien 18 und O
+# umgeleitet", and the short form read "1: Betrieb nur Stefan-Fadinger-Platz
+# – Radetzkyplatz und wird ab Kliebergasse …". What follows the clause goes
+# the way of "Weiterfahrt …". WL's abbreviations ("Bhf.", "Str.", "St.",
+# "Dr.-Adolf-…") and ordinals ("Zentralfriedhof, 4. Tor") are part of it.
 _SHORT_PLACE = r"(?:Bhf\.|Str\.|St\.|Dr\.-?|\b\d{1,2}\.(?=\s)|[^.;])+?"
-_SHORT_PLACE_END = r"(?=\s+(?:über|örtlich|umgeleitet|in\s+Richtung)\b|[.;]|$)"
+_SHORT_PLACE_END = (
+    r"(?=\s+(?:über|örtlich|umgeleitet|in\s+Richtung)\b|(?:,|\s+und)\s+[a-zäöüß]|[.;]|$)"
+)
 _SHORT_MEASURES: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("Kein Betrieb", re.compile(
         rf"\b(?:fährt\s+(?:derzeit\s+)?nicht|[Kk]ein\s+Betrieb)\s+zwischen\s+(?P<a>{_SHORT_PLACE})\s+und\s+"
@@ -10083,10 +10091,12 @@ def _merge_wl_ticker_clusters(items: list[FeedItem]) -> list[FeedItem]:
 # ``wl_resolved``. A ticker of another cause keeps its slot ("43:
 # Falschparker" beside "43/44: Rettungseinsatz", 2026-10-09).
 #
-# A line the incident's text speaks of ("Die Linie 31A wird … umgeleitet")
-# has WL's own statement there; the ticker of one stop ("Kein Betrieb" at the
-# Brünner Straße display, while the 31A runs a detour) adds nothing to it and
-# would contradict it on the screen. What a ticker of a line the text does
+# A line the incident's text speaks of ("Die Linie 31A wird … umgeleitet",
+# or the measure in front of the first label, whose "Linie 2:" the reading
+# stripped: ``_stripped_label_line``) has WL's own statement there; the
+# ticker of one stop ("Kein Betrieb" at the Brünner Straße display, while
+# the 31A runs a detour) adds nothing to it and would contradict it on the
+# screen. What a ticker of a line the text does
 # not name announces is kept under its line ("37: Betrieb ab …").
 _TICKER_LEAD = timedelta(minutes=10)  # ``wl_resolved.TICKER_LEAD``
 
@@ -10101,6 +10111,24 @@ def _text_names_line(text: str, line: str) -> bool:
     return re.search(
         rf"\bLinien?\s+(?:[\w]+(?:,\s*|\s+und\s+|\s+sowie\s+))*{re.escape(line)}\b", text
     ) is not None
+
+
+def _stripped_label_line(text: str, lines: Sequence[str]) -> str | None:
+    """The line whose "Linie X:" ``_post_filter_wl`` stripped from the start of *text*, if any.
+
+    WL's "Linie 2: Umleitung … Linie 10: Betrieb nur …" reaches the merge as
+    "Umleitung … Linie 10: Betrieb nur …": the text speaks of the 2 without
+    naming it (2026-10-19, "2/10: Fremder Verkehrsunfall"). A text begins
+    with that line's measure when one line is unnamed and what stands in
+    front of the first label is a measure the short form knows
+    (:func:`_short_measure`); a cause sentence there is no line's.
+    """
+    unnamed = [line for line in lines if not _text_names_line(text, line)]
+    marker = _SHORT_LINE_MARKER_RE.search(text)
+    if len(unnamed) != 1 or marker is None or marker.start() == 0:
+        return None
+    lead = text[: marker.start()].strip()
+    return unnamed[0] if _short_measure(lead) is not None else None
 
 
 def _ticker_owner(ticker: FeedItem, incidents: Sequence[tuple[int, FeedItem]]) -> int | None:
@@ -10128,10 +10156,11 @@ def _with_line_tickers(entry: FeedItem, tickers: Sequence[FeedItem]) -> FeedItem
     text = _ticker_text(entry)
     said = _message_tokens(f"{_rendered_title(entry)} {text}")
     cause = _ticker_part(entry).cause.casefold()
+    stripped = _stripped_label_line(text, _ticker_line_tokens(entry))
     added: list[str] = []
     for ticker in tickers:
         lines = _ticker_line_tokens(ticker)
-        if all(_text_names_line(text, line) for line in lines):
+        if all(line == stripped or _text_names_line(text, line) for line in lines):
             continue
         part = _ticker_part(ticker)
         message = _without_cause(part.consequence or part.extra or part.body, cause).replace("*", "").strip(" .")
