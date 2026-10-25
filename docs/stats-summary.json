@@ -1,7 +1,7 @@
 {
   "ausfaelle": {
     "by_direction": {
-      "Meidling": 1012,
+      "Meidling": 1013,
       "Praterstern": 916
     },
     "by_hour": {
@@ -18,7 +18,7 @@
       "10": 88,
       "11": 75,
       "12": 67,
-      "13": 71,
+      "13": 72,
       "14": 77,
       "15": 114,
       "16": 91,
@@ -35,7 +35,7 @@
       "CJX2917": 1,
       "CJX2932": 1,
       "CJX2946": 1,
-      "CJX9": 400,
+      "CJX9": 401,
       "R3": 22,
       "R4": 1,
       "REX1": 156,
@@ -61,16 +61,16 @@
       "Mi": 307,
       "Mo": 295,
       "Sa": 160,
-      "So": 168
+      "So": 169
     },
-    "total": 1928
+    "total": 1929
   },
-  "generated_at": "2026-10-25T13:31:07+01:00",
+  "generated_at": "2026-10-25T14:01:00+01:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.96,
     "by_direction": {
-      "Meidling": 6726,
+      "Meidling": 6727,
       "Praterstern": 3831
     },
     "by_hour_avg": {
@@ -87,7 +87,7 @@
       "10": 0.92,
       "11": 0.62,
       "12": 0.7,
-      "13": 0.61,
+      "13": 0.6,
       "14": 0.73,
       "15": 1.25,
       "16": 0.92,
@@ -112,19 +112,19 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-10-25T13:17:00+01:00",
+          "last_seen": "2026-10-25T13:47:00+01:00",
           "peer_rows_since": 0,
           "rows_in_window": 1193
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 2876,
+          "peer_rows_since": 2877,
           "rows_in_window": 0
         }
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-10-25T13:30:52+01:00",
+        "last_success": "2026-10-25T14:00:44+01:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
@@ -138,7 +138,7 @@
     "max_delay_minutes": 395.33,
     "threshold_exceedances": 136,
     "threshold_minutes": 9.0,
-    "total_observations": 10557
+    "total_observations": 10558
   },
   "stoerungen": {
     "by_hour": {

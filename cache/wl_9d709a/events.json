@@ -982,6 +982,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Falschparker",
+    "description": "Linie 1: Fahrtbehinderung in Richtung Prater Hauptallee. Voraussichtliche Dauer: 14:05 Uhr. Grund: Falschparker im Bereich Löwengasse 44.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1",
+    "pubDate": "2026-10-25T13:45:00+01:00",
+    "starts_at": "2026-10-25T13:45:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=1|D=2026-10-25|TK=falschparker",
+    "_wl_ids": [
+      "I20261025-0017"
+    ],
+    "_incident_start": "2026-10-25T13:45:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Umleitung zum Reumannplatz",
     "description": "Gleisbauarbeiten\nUmleitung zum Reumannplatz >",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1154,18 +1170,6 @@
     "starts_at": "2026-10-24T00:00:29+02:00",
     "ends_at": "2026-10-25T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-10-24|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
-    "pubDate": "2026-10-25T12:46:29+01:00",
-    "starts_at": "2026-10-25T12:46:31+01:00",
-    "ends_at": "2026-10-25T13:46:00+01:00",
-    "_identity": "wl|störung|L=42|D=2026-10-25|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
