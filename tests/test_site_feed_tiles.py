@@ -54,9 +54,8 @@ def _run(expr: str) -> object:
     program = "\n".join(parts) + f"\nprocess.stdout.write(JSON.stringify({expr}));"
     assert NODE is not None
     # The program is assembled from site.js of this checkout, no outside input.
-    out = subprocess.run(  # noqa: S603
-        [NODE, "-e", program], capture_output=True, text=True, check=True, timeout=30
-    )
+    argv = [NODE, "-e", program]
+    out = subprocess.run(argv, capture_output=True, text=True, check=True, timeout=30)  # noqa: S603
     return json.loads(out.stdout)
 
 
