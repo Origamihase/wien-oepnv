@@ -25,6 +25,27 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
   scheitert dort jedes Mal, damit jeder Text den zweiten Versuch nimmt:
   DE, EN und State alt gegen neu identisch. Tests in
   `tests/test_en_placeholder_leftovers_2026_10_10.py`; `docs/architecture.md`.
+* **Fehlersuche nach der Zeitumstellung (2026-10-25)**: Die Nacht der
+  Zeitumstellung lief sauber (alle Läufe, Zeitstempel in Caches, Feed und
+  Wächter mit dem richtigen Versatz, kein Wächter-Issue). Zwei Fehler, je
+  als Klasse behoben:
+  - *Linien im Titel in der Reihenfolge der Wiener Linien*
+    (Betreiberentscheidung, `docs/architecture.md`, „Titel und
+    Beschreibung im deutschen Feed“; Tests `tests/test_line_order.py`):
+    Der Feed zeigte „1/2/71/D: Veranstaltung“ neben „1/2/D/71:
+    Nationalfeiertag“. Ein Hinweis übernahm die Reihenfolge aus
+    `relatedLines`, ein Vorfall mit Kurzmeldungen und die unscharfe
+    Zusammenführung sortierten nach Nummer. Jetzt folgt jedes Präfix der
+    Spalte `SortingHelp` der WL-Liniendaten (`line_order_key`). Nachbau
+    von 80 WL-Rohdaten-Ständen und 182 Feed-Ständen seit 26.09.: 22
+    Titel ändern nur die Reihenfolge im Präfix („12/5: Albertgasse“ →
+    „5/12: Albertgasse“), sonst nichts.
+  - *Datum auf der Website in Wiener Zeit:* Der Hinweis zur
+    Stammstrecken-Abdeckung („zuletzt am …“) und die Jahreszahl der
+    CSV-Dateinamen nahmen die Uhr des Besuchers; jetzt Europe/Vienna wie
+    alle anderen Zeiten der Seite (`docs/assets/site.js`).
+  - *Doku zu #2057:* Eine Liste über mehrere Zeilen ohne vergangenen Tag
+    wird zum Satz; nur eine in einer Zeile bleibt im Wortlaut.
 
 * **Nachprüfung der Umsetzungen vom 24.10. abends (2026-10-25)**: Geprüft
   wurden #2055 und #2056, alle 10.694 WL-, ÖBB- und Baustellentexte im
@@ -37,7 +58,8 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
     (10:00 Uhr - 15:00 Uhr) und am 01.10.2026 …“. Jetzt zählt jede Liste
     aus mindestens zwei Tagen; ein Tag ohne eigenes „am“/„von“ übernimmt
     das seines Vorgängers, wenn der wegfällt („am 01.11.2026 der S2-Zug
-    …“). Eine Liste ohne vergangenen Tag bleibt im Wortlaut. Nachbau aller
+    …“). Eine Liste in einer Zeile ohne vergangenen Tag bleibt im
+    Wortlaut (eine über mehrere Zeilen wird wie seit #2056 zum Satz). Nachbau aller
     932 ÖBB-Texte an jedem Tag nach jedem Datum, das sie nennen (1.497
     Stände): nur diese zwei Meldungen ändern sich; am Tag der Prüfung
     ändert sich kein Text.

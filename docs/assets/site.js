@@ -1094,7 +1094,7 @@
     missing = STAMMSTRECKE_DIRECTIONS.filter((d) => missing.indexOf(d) !== -1);
 
     const joiner = currentLang === "en" ? " and " : " und ";
-    const onDate = (stamp) => new Date(stamp).toLocaleDateString(localeTag());
+    const onDate = (stamp) => buildDtf({}).format(new Date(stamp));
     // One silent direction gets the short form; several get one date each,
     // because a single date would otherwise stand for a sentence covering
     // all of them.
@@ -1188,6 +1188,12 @@
   }
 
   // ----- Render primitives -----
+
+  // The CSV files are written per year in Vienna, so the year shown is
+  // Vienna's too, not the visitor's clock (around New Year abroad).
+  function viennaYear() {
+    return Number(buildDtf({ year: "numeric" }).format(new Date()));
+  }
 
   function setYearLabels(year) {
     for (const node of $$("[data-year-label]")) {
@@ -1810,7 +1816,7 @@
     // the year fill so dynamic ``code`` paths inside the translated
     // markup keep showing e.g. ``stoerungen_2026.csv`` instead of
     // ``stoerungen_–.csv``.
-    setYearLabels(new Date().getFullYear());
+    setYearLabels(viennaYear());
     // Live status / error refreshes — re-render with the new locale.
     const status = $("#status-text");
     if (status && status.dataset.statusKey) {
@@ -1879,7 +1885,7 @@
   }
 
   function init() {
-    setYearLabels(new Date().getFullYear());
+    setYearLabels(viennaYear());
     snapshotDefaultTexts();
     attachLangSwitch();
     attachFilterHandlers();

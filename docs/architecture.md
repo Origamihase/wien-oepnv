@@ -210,6 +210,26 @@ Feed läuft auf Info-Displays mit zehn Plätzen (`AGENTS.md`, „Priorität der
 Ausgaben“): Ein Titel muss für sich stehen, und ein doppelter Eintrag
 verdrängt eine andere Störung.
 
+* **Linien im Titel in der Reihenfolge der Wiener Linien (seit 2026-10-25,
+  Betreiberentscheidung).** Jedes Linienpräfix folgt der Spalte
+  `SortingHelp` der offenen WL-Liniendaten
+  (`data/wienerlinien-ogd-linien.csv`, vom wöchentlichen Stationslauf
+  aktualisiert): U-Bahn, Straßenbahn (D, O und LB nach den Nummern), Bus A,
+  Bus B, Nacht und S-Bahn (`line_order_key` in `src/providers/wl_lines.py`).
+  Das gilt für alle drei Stellen, die ein Präfix bauen: den WL-Abruf
+  (`_ensure_line_prefix`), die unscharfe Zusammenführung
+  (`deduplicate_fuzzy`) und den Vorfall mit seinen Kurzmeldungen
+  (`_union_prefix`, `_twin_labels`). Eine Linie, die die Daten (noch) nicht
+  kennen, steht nach ihrer Form an ihrem Platz („U5“ bei der U-Bahn, „3“
+  bei den Straßenbahnen); ÖBB-Züge und Ersatzbusse („REX 51“, „U6E“) stehen
+  am Ende. Anlass: Am 25.10. stand „1/2/71/D: Veranstaltung“ (Vorfall,
+  nach Nummer sortiert) neben „1/2/D/71: Nationalfeiertag“ (Hinweis in der
+  Reihenfolge, die WL in `relatedLines` schickte); seit 26.09. ändert sich
+  so das Präfix von 22 Titeln des WL-Abrufs, darunter „12/5: Albertgasse“, „56B/56A/N62:
+  Strampfergasse“ und dieselbe Meldung einmal als „56A/56B/58A/58B“, einmal
+  als „56B/58B/56A/58A“. Nachbau des WL-Abrufs aus 80 Rohdaten-Ständen seit
+  26.09. und der Feed-Kette aus 182 Ständen: Es ändert sich nur die
+  Reihenfolge im Präfix, Linien, Meldungen, GUIDs und Plätze bleiben gleich.
 * **Ticker-Titel: Ursache oben, Folge darunter (seit 2026-09-25).** Bei
   einer WL-Störung behält der Titel nur Linie und Ursache, die Folge wandert
   an den Anfang der Beschreibung (`_finish_reason_title`):
@@ -781,8 +801,9 @@ verdrängt eine andere Störung.
   01.11.2026 der S2-Zug 23360 nicht fahren“ hieße ab 26.10. weiter so;
   jetzt „am 01.11.2026 der S2-Zug …“, Nachprüfung 25.10.): ein Tag ohne
   eigenes „am“/„von“ übernimmt das seines Vorgängers, wenn der wegfällt.
-  Ein einzelner Tag oder Zeitraum bleibt, ebenso eine Liste ohne
-  vergangenen Tag; sind alle Tage vorbei, bleibt der Text wie er war
+  Ein einzelner Tag oder Zeitraum bleibt, ebenso eine Liste in einer Zeile
+  ohne vergangenen Tag (eine über mehrere Zeilen wird auch dann zum Satz);
+  sind alle Tage vorbei, bleibt der Text wie er war
   (die Meldung ist dann ohnehin abgelaufen). 20 ÖBB-Meldungen seit Dezember 2025
   haben eine Liste über mehrere Zeilen, zwei (S2 Leopoldau–Mistelbach,
   REX 51 Marchtrenk) eine in einer Zeile. Über alle 443

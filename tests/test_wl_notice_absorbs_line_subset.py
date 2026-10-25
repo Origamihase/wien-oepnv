@@ -137,7 +137,7 @@ def test_tickers_on_the_notice_lines_fold_into_the_notice(
     )
 
     assert sorted(e["title"] for e in events) == [
-        "1/2/2A/3A/4A/71/D: Demonstration am 19.09.2026",
+        "1/2/71/D/2A/3A/4A: Demonstration am 19.09.2026",
         "1: Züge halten bei Linie O",
         "2: Demonstration Züge halten Steig A",
         "31: Demonstration Betrieb ab Wallensteinstraße",
@@ -174,7 +174,7 @@ def test_a_line_outside_the_notice_keeps_its_ticker(
     events = _run(monkeypatch, [_TICKER_31], [_NOTICE])
 
     assert sorted(e["title"] for e in events) == [
-        "1/2/2A/3A/4A/71/D: Demonstration am 19.09.2026",
+        "1/2/71/D/2A/3A/4A: Demonstration am 19.09.2026",
         "31: Demonstration Betrieb ab Wallensteinstraße",
     ]
 

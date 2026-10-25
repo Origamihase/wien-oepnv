@@ -167,7 +167,7 @@ def test_a_disruption_keeps_its_own_dauer() -> None:
         (
             "62, Badner Bahn, 59A, 62A: Beschädigte Oberleitung",
             ["59A", "62", "62A", "LB"],
-            "59A/62/62A/LB: Beschädigte Oberleitung",
+            "62/LB/59A/62A: Beschädigte Oberleitung",
         ),
         ("3A Netzänderung Betrieb ab Riemergasse", ["3A"], "3A: Netzänderung Betrieb ab Riemergasse"),
         ("U1 Klapprampensperre am 13.09.2026", ["U1"], "U1: Klapprampensperre am 13.09.2026"),
@@ -187,7 +187,7 @@ def test_a_written_line_list_is_not_repeated(written: str, lines: list[str], tit
         ("U2 und U3 fahren", ["U2"], "U2: U2 und U3 fahren"),
         ("U2 oder U3", ["U2"], "U2: U2 oder U3"),
         ("5 Minuten Verspätung", ["5"], "5: 5 Minuten Verspätung"),
-        ("D, 1, 2, 71, 1A, 3A", ["D", "1", "2", "71", "1A", "3A"], "D/1/2/71/1A/3A: D, 1, 2, 71, 1A, 3A"),
+        ("D, 1, 2, 71, 1A, 3A", ["D", "1", "2", "71", "1A", "3A"], "1/2/71/D/1A/3A: D, 1, 2, 71, 1A, 3A"),
         ("Achtung: Sperre", ["U1"], "U1: Achtung: Sperre"),
         ("17:30 Verspätung", ["17"], "17: 17:30 Verspätung"),
         ("Ersatzbus 26E hält Karl-Waldbrunner-Platz", ["25"], "25: Ersatzbus 26E hält Karl-Waldbrunner-Platz"),
