@@ -137,7 +137,7 @@ def test_a_long_train_list_reads_as_its_count() -> None:
         "1110, IC 1113, IC 1115, IC 1118, IC 1119, IC 1142, IC 1143 und D 1141 nicht fahren."
     )
     assert bf._oebb_what_does_not_run_first(sentence) == (
-        "Wegen Bauarbeiten können 8 Züge nicht fahren: zwischen Wien Westbahnhof (U) und "
+        "Wegen Bauarbeiten können 8 Züge (IC und D) nicht fahren: zwischen Wien Westbahnhof (U) und "
         "Wien Hütteldorf Bahnhof (U) von 03.06.2026 (23:00 Uhr) bis 08.06.2026 (04:00 Uhr)."
     )
 
