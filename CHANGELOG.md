@@ -10,6 +10,21 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **ÖBB: „kann … nicht fahren“ bleibt sichtbar und liest richtig (2026-10-25)**:
+  Jules-Audit 2026-10-25, Michaels Auftrag „Wenn Jules echte Fehler gefunden
+  hat, sollten sie behoben werden“. DE: Ein ÖBB-Satz über 180 Zeichen nennt
+  zuerst die Züge und „nicht fahren“, Strecken und Tage folgen hinter einem
+  Doppelpunkt; drei oder mehr Zugnummern lesen als ihre Anzahl
+  (`_oebb_what_does_not_run_first`). S1 las „… an einzelnen Tagen der S1-Zug
+  …“, jetzt „Wegen Bauarbeiten kann der S1-Zug 23626 an einzelnen Tagen nicht
+  fahren: zwischen …“. Ein Satz, der passt, bleibt wie er ist. EN: der Satz
+  wird aus seinen Teilen geschrieben, nur die Ursache geht durch das Modell
+  (`_oebb_cannot_run_parts`): „the S2 train can't drive 23360“ → „the S2 train
+  23360 cannot run between …“; ein alter Cache-Wert wird neu übersetzt
+  (`_oebb_cannot_run_defect`). Replay über alle 932 ÖBB-Texte seit Dezember
+  2025: DE 57 Anzeigen anders, alle mit diesem Satzbau; EN 98 von 102
+  betroffenen anders, alle mit „cannot run“/„can run“; kein WL-Text. Feed-Neubau:
+  nur S1 (DE+EN) und S2 (EN) anders.
 * **ÖBB: lange Datumslisten lesen „an einzelnen Tagen“ (2026-10-25)**:
   Michaels Entscheidung „klingt gut. mach das bitte“ nach der Feedprüfung
   vom 24.10. Bleibt ein ÖBB-Satz mit den kommenden Tagen über 180 Zeichen,

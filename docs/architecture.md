@@ -827,7 +827,31 @@ verdrängt eine andere Störung.
   wenn der Satz noch nicht passt. Eine Liste, die passt, bleibt. Am 24.10.
   brach S1 Leopoldau–Deutsch Wagram nach der Liste ab, ohne zu sagen,
   was nicht fährt; jetzt „… an einzelnen Tagen der S1-Zug …“. Über alle
-  Cache-Texte seit Juni ändern sich 43 ÖBB-Texte, kein WL-Text. Über alle 443
+  Cache-Texte seit Juni ändern sich 43 ÖBB-Texte, kein WL-Text.
+  **Was nicht fährt, steht vorn (seit 2026-10-25).** ÖBB nennt die Züge und
+  „nicht fahren“ am Satzende, hinter Strecken und Tagen („Wegen Bauarbeiten
+  kann zwischen … und zwischen … an einzelnen Tagen der S1-Zug 23626 nicht
+  fahren.“). Bleibt der Satz auch mit „an einzelnen Tagen“ über 180
+  Zeichen, nahm der Schnitt genau das: Am 25.10. las S1 „… an einzelnen
+  Tagen der S1-Zug … [Bis 28.11.]“ (Jules-Audit 2026-10-25), 45 ÖBB-Anzeigen
+  seit Dezember 2025 endeten so („… von 31.10.2026 bis 30.11.2026 …“, „…
+  einige Nahverkehrszüge …“). Ein solcher erster Satz nennt jetzt zuerst die
+  Züge und das Verb, Strecken und Tage folgen hinter einem Doppelpunkt:
+  „Wegen Bauarbeiten kann der S1-Zug 23626 an einzelnen Tagen nicht fahren:
+  zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof und zwischen …“
+  (`_oebb_what_does_not_run_first`). Der Schnitt trifft dann das Ende der
+  Strecken und Tage, die Titel und Zeitzeile auch nennen. Es werden nur
+  ÖBBs eigene Wörter umgestellt; „an einzelnen Tagen“ am Ende der Strecken
+  geht mit dem Verb nach vorn. Eine Liste von drei oder mehr Zugnummern
+  liest dabei als ihre Anzahl („die Züge S1 (28632), …, S2 (28153)“ → „11
+  Züge“): elf Nummern füllten am 02.08.2026 die 180 Zeichen samt Strecke und
+  Verb. Ein Satz, der passt, behält ÖBBs Reihenfolge (S2 Leopoldau–Mistelbach);
+  ebenso einer mit zwei Subjekten („der Zug REX6 (7799) zwischen … der Zug
+  S60 …“) oder einem anderen Verb („werden … umgeleitet und können … nicht
+  halten“). Grundlage ist Michaels Auftrag vom 25.10. („Wenn Jules echte
+  Fehler gefunden hat, sollten sie behoben werden“). Replay über alle 932
+  ÖBB-Texte seit Dezember 2025: 57 Anzeigen ändern sich, alle mit diesem
+  Satzbau; im heutigen Feed nur S1. Über alle 443
   ÖBB-Texte im Cache seit Juni ändern sich 265: 251 behalten ihren
   zweiten Satz, die übrigen verlieren nur den Höflichkeitssatz. Rückblick:
   Eine Störung, die ÖBB als vorbei meldet („waren“), bleibt im Feed, weil
@@ -2933,6 +2957,33 @@ Nicht jeder Text gehört in ein NMT-Modell:
   der feste Name fehlt („Partial failure:“), gilt als Fehler und wird neu
   übersetzt (`_oebb_section_label_defect` in `_cached_translation`, nur für
   ÖBB); eine neue Epoche hätte jede Meldung neu übersetzt.
+* **ÖBBs „kann … nicht fahren“ auf Englisch (seit 2026-10-25).** Das Modell
+  verlor das Verb hinter Strecken und Tagen (Jules-Audit 2026-10-25, beide
+  aus dem EN-Feed): „… the S2 train can't drive 23360.“ und „Construction
+  works allows between … on individual days of the S1 train …“, als führe
+  der Zug. Über alle ÖBB-Texte seit Dezember 2025 las es diesen Satzbau oft
+  falsch („… can be used by 10.08.2026“, „… cannot drive R95 trains“). Der
+  Satz wird jetzt aus seinen Teilen geschrieben, in ÖBBs Reihenfolge wie in
+  der mit den Zügen vorn (§1): „Due to construction works, the S2 train 23360
+  cannot run between Wien Leopoldau station (U) and Mistelbach/Zaya station on
+  25.10.2026 and 01.11.2026.“ (`_oebb_cannot_run_parts`). Nur die Ursache geht
+  durch das Modell. Züge: „der S1-Zug 23626“ → „the S1 train 23626“, „der Zug
+  RJ 650“ → „train RJ 650“, „keine Nahverkehrszüge … fahren“ → „no local
+  trains can run“, „einige …“ → „some …“, „Fernverkehrszüge“ → „long-distance
+  trains“. Strecken und Tage aus einer festen Menge: „zwischen A und B“ (auch
+  „A bzw. B“ → „A or B“), „am …“ → „on …“, „von … bis …“ → „from … to …“,
+  „bis voraussichtlich Ende 2027“ → „until probably the end of 2027“, „an
+  einzelnen Tagen“ → „on certain days“, „(jeweils 08:45 Uhr - 14:45 Uhr)“ →
+  „(each day 08:45 - 14:45)“. Steht etwas anderes da („in der Nacht von …“,
+  „(jeweils Samstag, Sonntag und Feiertag)“), bleiben Züge und Verb fest, und
+  nur Strecken und Tage gehen hinter einem Doppelpunkt durch das Modell. Ein
+  vom Schnitt gekürzter Satz behält sein „…“. Ein Satz mit „Teilausfall:“
+  vorn oder einem anderen Satzbau bleibt beim bisherigen Weg. Ein Wert im
+  Übersetzungs-Cache ohne die feste Form gilt als Fehler und wird neu
+  übersetzt (`_oebb_cannot_run_defect`, nur ÖBB, keine neue Epoche).
+  Nachgespielt mit dem echten Modell über die 102 betroffenen ÖBB-Texte:
+  98 ändern sich, alle lesen jetzt „cannot run“ oder „can run“; der
+  Feed-Neubau vom 25.10. ändert nur S1 und S2.
 * **Halte-Meldungen der WL.** Nach „Busse/Züge halten“ und „Ersatzbus hält“
   wählte das Modell die Präposition in jedem Lauf neu („Buses stop
   Salvatorianerplatz“, „Trains stop for lines 6 and 18“). Seit 2026-10-04
