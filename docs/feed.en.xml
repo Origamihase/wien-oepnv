@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 25 Oct 2026 19:30:46 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 25 Oct 2026 19:57:10 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[43A: Third-party traffic accident]]></title>
@@ -48,34 +48,6 @@
       <ext:starts_at>Sun, 25 Oct 2026 16:57:00 +0100</ext:starts_at>
       <description>Irregular intervals in both directions. Reason: contamination. [Since 16:57]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 16:57]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[O: Track damage]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">1ef21baac093e72220388999cf84c29b32b0fe11c2b96d1700053d9b608f637b</guid>
-      <pubDate>Sun, 25 Oct 2026 14:49:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 25 Oct 2026 15:01:05 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 25 Oct 2026 14:49:00 +0100</ext:starts_at>
-      <ext:ends_at>Sun, 25 Oct 2026 19:38:00 +0100</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 14:49]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 14:49]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Rescue operation, construction works]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107</guid>
-      <pubDate>Sun, 25 Oct 2026 17:41:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 25 Oct 2026 17:41:00 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 25 Oct 2026 17:41:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 01:00:00 +0100</ext:ends_at>
-      <description>Rescue operation: irregular intervals in both directions. Construction works: buses stop at Salvatorianerplatz. [Until Mon 26.10.]</description>
-      <content:encoded><![CDATA[Rescue operation: irregular intervals in both directions. Construction works: buses stop at Salvatorianerplatz.<br/>[Until Mon 26.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[71: Event]]></title>
@@ -147,6 +119,34 @@
       <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Line D: diversion in both directions between Schwarzenbergplatz and Börse over Schwedenplatz U; Line 1: diversion in both directions between Karlsplatz U … [On Mon 26.10.]</description>
       <content:encoded><![CDATA[Line D: diversion in both directions between Schwarzenbergplatz and Börse over Schwedenplatz U; Line 1: diversion in both directions between Karlsplatz U …<br/>[On Mon 26.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11A/78A: Roadworks]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">829aed6b63ca00dc86bdde6d44ea64c5a4a23433aa5b8e7bb064705f27b2e81f</guid>
+      <pubDate>Wed, 14 Oct 2026 16:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 22 Oct 2026 00:00:58 +0200</ext:first_seen>
+      <ext:starts_at>Fri, 23 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 02 Nov 2026 01:00:00 +0100</ext:ends_at>
+      <description>Due to roadworks at the intersection of Meiereistraße / Stephanie-Endres-Straße there are diversions. [Until 02.11.]</description>
+      <content:encoded><![CDATA[Due to roadworks at the intersection of Meiereistraße / Stephanie-Endres-Straße there are diversions.<br/>[Until 02.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[64A/N64R: Erlaaer Spitz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">bd5f4b6cb6c11492266da898891314662b7d55f24a297565efab82ec83f4917c</guid>
+      <pubDate>Wed, 21 Oct 2026 10:12:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 21 Oct 2026 10:12:00 +0200</ext:first_seen>
+      <ext:starts_at>Thu, 22 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <georss:point>48.137809 16.323970</georss:point>
+      <description>Perfektastraße 3 → Perfektastraße 9. Stop relocation of lines 64A and N64 call bus towards Atzgersdorf, Ziedlergasse, or Alterlaa … [Since 22.10.]</description>
+      <content:encoded><![CDATA[Perfektastraße 3 → Perfektastraße 9. Stop relocation of lines 64A and N64 call bus towards Atzgersdorf, Ziedlergasse, or Alterlaa …<br/>[Since 22.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
