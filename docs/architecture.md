@@ -800,7 +800,12 @@ verdrängt eine andere Störung.
   Höflichkeitssätze („Wir bitten um Entschuldigung.“, am Ende von 310 der
   316 ÖBB-Texte seit Juni; „Sobald uns weitere Informationen vorliegen,
   informieren wir Sie.“, „Details finden Sie hier...“) sagen am Fernseher
-  nichts und fallen vorher weg (`_OEBB_COURTESY_RE`). Eine Liste von
+  nichts und fallen vorher weg (`_OEBB_COURTESY_RE`). Über alle 443
+  ÖBB-Texte im Cache seit Juni ändern sich 265: 251 behalten ihren
+  zweiten Satz, die übrigen verlieren nur den Höflichkeitssatz. Rückblick:
+  Eine Störung, die ÖBB als vorbei meldet („waren“), bleibt im Feed, weil
+  98 der 100 solchen Texte seit Juni noch Folgen nennen (Reisezeit,
+  Zugausfälle); der zweite Satz macht das jetzt sichtbar. Eine Liste von
   Tagen, die ÖBB Zeile für Zeile setzt („am 10.02.2026<br>am
   10.03.2026<br>…“), verliert die Tage, die vorbei sind (Wiener Datum),
   und steht als Satz da, mit Kommas und „und“ vor dem letzten
@@ -823,10 +828,17 @@ verdrängt eine andere Störung.
   (`_oebb_long_date_lists_in_words`, Michaels Entscheidung 2026-10-25
   „klingt gut. mach das bitte“). Eine Uhrzeitangabe „(jeweils …)“ der
   Liste bleibt, wenn der Satz mit ihr passt; ist eine Liste gegangen,
-  geht ein einzelner Tag einer zweiten Strecke im selben Satz ebenso,
-  wenn der Satz noch nicht passt. Eine Liste, die passt, bleibt. Am 24.10.
+  geht ein einzelner Tag oder Zeitraum einer zweiten Strecke im selben
+  Satz ebenso, wenn der Satz noch nicht passt. ÖBBs eigenes „an
+  einzelnen Tagen“ im Satz zählt dabei wie eine gegangene Liste: „von
+  13.04.2026 bis 28.05.2026 (jeweils an einzelnen Tagen, 23:20 Uhr - 04:20
+  Uhr)“ (Flughafen Wien–Wien Mitte, Frühjahr 2026) liest „(jeweils an
+  einzelnen Tagen, 23:20 Uhr - 04:20 Uhr)“, „von 02.04.2026 bis 07.04.2026
+  (an einzelnen Tagen) einige Nachtzüge“ (Wien–Innsbruck) liest „an
+  einzelnen Tagen einige Nachtzüge“ (Nachprüfung 25.10.). Eine Liste, die passt, bleibt. Am 24.10.
   brach S1 Leopoldau–Deutsch Wagram nach der Liste ab, ohne zu sagen,
-  was nicht fährt; jetzt „… an einzelnen Tagen der S1-Zug …“. Über alle
+  was nicht fährt; mit dieser Regel allein las sie „… an einzelnen Tagen
+  der S1-Zug …“, seit der nächsten steht vorn, was nicht fährt. Über alle
   Cache-Texte seit Juni ändern sich 43 ÖBB-Texte, kein WL-Text.
   **Was nicht fährt, steht vorn (seit 2026-10-25).** ÖBB nennt die Züge und
   „nicht fahren“ am Satzende, hinter Strecken und Tagen („Wegen Bauarbeiten
@@ -845,18 +857,17 @@ verdrängt eine andere Störung.
   geht mit dem Verb nach vorn. Eine Liste von drei oder mehr Zugnummern
   liest dabei als ihre Anzahl („die Züge S1 (28632), …, S2 (28153)“ → „11
   Züge“): elf Nummern füllten am 02.08.2026 die 180 Zeichen samt Strecke und
-  Verb. Ein Satz, der passt, behält ÖBBs Reihenfolge (S2 Leopoldau–Mistelbach);
+  Verb. Jeder Zug der Liste zählt einmal, auch einer mit kurzer Nummer
+  („EC 71“), und jede Nummer einer Gruppe („REX 1 (2334, 2338 und 2342)“
+  sind drei); bis zur Nachprüfung vom 25.10. zählten nur drei- bis
+  fünfstellige Nummern, die Südstrecke im Frühjahr 2026 las „11 Züge“
+  statt 13. Ein Satz, der passt, behält ÖBBs Reihenfolge (S2 Leopoldau–Mistelbach);
   ebenso einer mit zwei Subjekten („der Zug REX6 (7799) zwischen … der Zug
   S60 …“) oder einem anderen Verb („werden … umgeleitet und können … nicht
   halten“). Grundlage ist Michaels Auftrag vom 25.10. („Wenn Jules echte
   Fehler gefunden hat, sollten sie behoben werden“). Replay über alle 932
   ÖBB-Texte seit Dezember 2025: 57 Anzeigen ändern sich, alle mit diesem
-  Satzbau; im heutigen Feed nur S1. Über alle 443
-  ÖBB-Texte im Cache seit Juni ändern sich 265: 251 behalten ihren
-  zweiten Satz, die übrigen verlieren nur den Höflichkeitssatz. Rückblick:
-  Eine Störung, die ÖBB als vorbei meldet („waren“), bleibt im Feed, weil
-  98 der 100 solchen Texte seit Juni noch Folgen nennen (Reisezeit,
-  Zugausfälle); der zweite Satz macht das jetzt sichtbar.
+  Satzbau; im heutigen Feed nur S1.
   **Vollständig umgesetzt seit 2026-10-11** (dieselbe Entscheidung, keine
   neue): Der Feed-Wächter (Regel `oebb-zweiter-satz`) fand Texte, die den
   zweiten Satz trotzdem verloren, ein Replay über alle 563 ÖBB-Texte im

@@ -10,6 +10,27 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Nachprüfung der Umsetzungen #2061 bis #2065 (2026-10-25)**: Geprüft
+  wurden die Linienreihenfolge (#2061, gegen die WL-Liniendaten), die
+  Workflows mit `ref: github.ref` (#2063, alle Läufe danach grün), das
+  Jules-Audit (#2064), „an einzelnen Tagen“ (#2062) und „kann … nicht
+  fahren“ (#2065) samt Doku. Alle 932 ÖBB-Texte seit Dezember 2025 an zwölf
+  Stichtagen durch den Formatierer, alt gegen neu; Neubau nach #2062 und
+  #2065 gleich dem Tick bis auf die geplanten S1- und S2-Texte.
+  - *Zuganzahl:* `_oebb_what_does_not_run_first` zählte nur drei- bis
+    fünfstellige Nummern. Die Südstrecke (Wien Hbf–Graz, Frühjahr 2026) nennt
+    13 Züge, darunter „EC 71“ und „EC 79“, und las „11 Züge“. Jetzt zählt
+    jeder Zug der Liste einmal, jede Nummer einer Gruppe („REX 1 (2334, 2338
+    und 2342)“) auch. Replay: nur diese Meldung ändert sich („13 Züge“).
+  - *Doku:* `docs/architecture.md` beschreibt, dass ÖBBs eigenes „an
+    einzelnen Tagen“ („(jeweils an einzelnen Tagen, 23:20 Uhr - 04:20 Uhr)“)
+    wie eine gegangene Liste zählt und dann auch ein einzelner Zeitraum geht;
+    der Code tat das seit #2062, die Doku nannte nur einzelne Tage nach einer
+    Liste. Der Absatz zum zweiten ÖBB-Satz („Über alle 443 ÖBB-Texte …“)
+    stand hinter den Datumslisten und steht wieder bei seiner Regel; „jetzt
+    „… an einzelnen Tagen der S1-Zug …““ nennt den Stand vor #2065.
+  Tests in `tests/test_umsetzungen_pruefung_2026_10_25.py`.
+
 * **ÖBB: „kann … nicht fahren“ bleibt sichtbar und liest richtig (2026-10-25)**:
   Jules-Audit 2026-10-25, Michaels Auftrag „Wenn Jules echte Fehler gefunden
   hat, sollten sie behoben werden“. DE: Ein ÖBB-Satz über 180 Zeichen nennt
