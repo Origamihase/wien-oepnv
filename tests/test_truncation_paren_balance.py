@@ -47,7 +47,23 @@ def _format(raw_desc: str) -> str:
 
 class TestTruncationDropsUnbalancedParen:
     def test_jeweils_clause_dropped(self) -> None:
-        # The phrasing from cache item #1.
+        # The phrasing from cache item #1, cut directly: the dangling
+        # opening paren must not survive into the output.
+        raw = (
+            "Wegen Bauarbeiten zwischen Flughafen Wien Bahnhof und "
+            "Wolfsthal Bahnhof am 19.02.2026 am 19.03.2026 am 16.04.2026 "
+            "am 21.05.2026 und am 18.06.2026 (jeweils 08:45 Uhr - "
+            "14:45 Uhr) keine REX 7 Züge fahren."
+        )
+        out = build_feed._truncate_summary_180(raw)
+        assert "(jeweils" not in out
+        # Content before the paren is preserved.
+        assert "18.06.2026" in out
+
+    def test_jeweils_clause_whole_once_the_list_reads_in_words(self) -> None:
+        # Since 2026-10-25 the feed reads a date list that keeps the
+        # sentence over 180 characters as "an einzelnen Tagen", so the
+        # same notice now shows whole, with its time note balanced.
         raw = (
             "Wegen Bauarbeiten zwischen Flughafen Wien Bahnhof und "
             "Wolfsthal Bahnhof am 19.02.2026 am 19.03.2026 am 16.04.2026 "
@@ -55,10 +71,8 @@ class TestTruncationDropsUnbalancedParen:
             "14:45 Uhr) keine REX 7 Züge fahren."
         )
         out = _format(raw)
-        # The dangling opening paren must not survive into the output.
-        assert "(jeweils" not in out
-        # Content before the paren is preserved.
-        assert "18.06.2026" in out
+        assert "an einzelnen Tagen (jeweils 08:45 Uhr - 14:45 Uhr)" in out
+        assert "keine REX 7 Züge fahren." in out
 
     def test_time_paren_dropped(self) -> None:
         # The phrasing from cache item #6.

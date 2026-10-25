@@ -10,6 +10,21 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **ÖBB: lange Datumslisten lesen „an einzelnen Tagen“ (2026-10-25)**:
+  Michaels Entscheidung „klingt gut. mach das bitte“ nach der Feedprüfung
+  vom 24.10. Bleibt ein ÖBB-Satz mit den kommenden Tagen über 180 Zeichen,
+  ersetzt „an einzelnen Tagen“ die längste Liste, bis der Satz passt; die
+  Zeitzeile nennt den Zeitraum. Eine „(jeweils …)“-Uhrzeit bleibt, wenn sie
+  passt; ein einzelner Tag einer zweiten Strecke folgt seiner Liste, wenn
+  der Satz sonst nicht passt; Listen, die passen, bleiben
+  (`_oebb_long_date_lists_in_words`). Eine Liste, deren Zeilenumbrüche
+  schon fehlen („am 19.02.2026 am 19.03.2026“), zählt jetzt ebenfalls als
+  Liste. S1 Leopoldau–Deutsch Wagram brach nach der Liste ab; jetzt steht
+  „… an einzelnen Tagen der S1-Zug …“ da (die Zugnummer liegt weiter hinter dem
+  Schnitt). Replay: über alle Cache-Texte seit Juni ändern sich
+  43 ÖBB-Texte, kein WL-Text; die ganze Kette über neun Feed-Stände vom
+  20. bis 26.10. ändert nur die S1-Meldung, Auswahl und Reihenfolge gleich.
+
 * **EN: beide Richtungen einer Verlegung gleich benannt (2026-10-25)**: Abbau
   technischer Schulden auf Michaels Wunsch. Seit #2056 steht eine Verlegung
   für beide Richtungen als „Richtung X: A → B. Richtung Y: aufgelassen.“ da.

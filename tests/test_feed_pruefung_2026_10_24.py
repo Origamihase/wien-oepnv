@@ -19,6 +19,7 @@ from typing import cast
 
 from src import build_feed
 from src.build_feed import (
+    _oebb_long_date_lists_in_words,
     _oebb_upcoming_dates,
     _truncate_summary_180,
     _wl_measure_labels_with_colon,
@@ -207,3 +208,56 @@ def test_oebb_date_list_on_one_line_without_past_day_stays() -> None:
     assert _oebb_upcoming_dates(text, date(2026, 10, 25)) == text
     commas = "am 01.11.2026, am 08.11.2026, am 15.11.2026 keine"
     assert _oebb_upcoming_dates(commas, date(2026, 10, 25)) == commas
+
+
+# Operator decision 2026-10-25 ("klingt gut. mach das bitte"): a list that
+# keeps a sentence over the 180 characters reads "an einzelnen Tagen".
+_S1_SENTENCE = (
+    "Wegen Bauarbeiten kann zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof "
+    "von 24.10.2026 bis 26.10.2026, von 31.10.2026 bis 01.11.2026, von 14.11.2026 bis "
+    "15.11.2026, von 21.11.2026 bis 22.11.2026, am 28.11.2026 und zwischen Wien "
+    "Leopoldau Bahnhst und Deutsch Wagram Bahnhof am 25.10.2026 und 01.11.2026 der "
+    "S1-Zug 23626 nicht fahren."
+)
+
+
+def test_long_date_lists_read_in_words_once() -> None:
+    assert _oebb_long_date_lists_in_words(_S1_SENTENCE) == (
+        "Wegen Bauarbeiten kann zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof "
+        "und zwischen Wien Leopoldau Bahnhst und Deutsch Wagram Bahnhof an einzelnen "
+        "Tagen der S1-Zug 23626 nicht fahren."
+    )
+
+
+def test_a_single_day_of_the_other_route_follows_its_list() -> None:
+    # From 26.10. the second route has only the 01.11. left.
+    later = _S1_SENTENCE.replace("am 25.10.2026 und 01.11.2026", "am 01.11.2026")
+    assert _oebb_long_date_lists_in_words(later) == (
+        "Wegen Bauarbeiten kann zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof "
+        "und zwischen Wien Leopoldau Bahnhst und Deutsch Wagram Bahnhof an einzelnen "
+        "Tagen der S1-Zug 23626 nicht fahren."
+    )
+    single = "Wegen Bauarbeiten können am 01.11.2026 keine S45-Züge fahren."
+    assert _oebb_long_date_lists_in_words(single) == single
+
+
+def test_a_list_that_fits_stays() -> None:
+    fits = (
+        "Wegen Bauarbeiten kann zwischen Wien Leopoldau Bahnhst (U) und Mistelbach/Zaya "
+        "Bahnhof am 25.10.2026 und 01.11.2026 der S2-Zug 23360 nicht fahren."
+    )
+    assert _oebb_long_date_lists_in_words(fits) == fits
+
+
+def test_only_the_list_that_must_go_goes() -> None:
+    text = (
+        "Wegen Bauarbeiten können zwischen Flughafen Wien Bahnhof und Wolfsthal Bahnhof "
+        "am 19.02.2026 am 19.03.2026 am 16.04.2026 am 21.05.2026 und am 18.06.2026 "
+        "(jeweils 08:45 Uhr - 14:45 Uhr) keine REX 7 Züge fahren. Ein Schienenersatzverkehr "
+        "mit Autobussen wird für Sie eingerichtet."
+    )
+    assert _oebb_long_date_lists_in_words(text) == (
+        "Wegen Bauarbeiten können zwischen Flughafen Wien Bahnhof und Wolfsthal Bahnhof "
+        "an einzelnen Tagen (jeweils 08:45 Uhr - 14:45 Uhr) keine REX 7 Züge fahren. Ein "
+        "Schienenersatzverkehr mit Autobussen wird für Sie eingerichtet."
+    )
