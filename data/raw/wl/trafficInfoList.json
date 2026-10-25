@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261025-0003, I20260925-0011, I20260909-0007, I20261025-0004, I20261020-0029"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261025-0005, I20260925-0011, I20260909-0007, I20261025-0004, I20261020-0029, I20261025-0003"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1448-149, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R36-152, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2373-127, R2371-125, R2373-125, R2370-125, R2372-125, R2420-411, R2345-127, R2380-627, R2379-627, R2373-126, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2558-125, R1974-466, R47-171, R45-171, R44-171, R51-171, R50-171, R49-171, R46-171, R500-101, R19-171, R13-171, R14-171, R15-171, R17-171, R18-171, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R45-136, R100-136, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R318-437, R293-474, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R36-152, R3886-480, R401-101, R2372-627, R2420-411, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2343-125, R2343-626, R2378-627, R2379-627, R2380-627, R2345-127, R2558-125, R1974-466, R49-171, R50-171, R44-171, R47-171, R46-171, R45-171, R51-171, R500-101, R14-171, R19-171, R18-171, R17-171, R15-171, R13-171, R51-101, R15-102, R49-102, R1756-101, R50-136, R50-101, R49-136, R14-136, R14-101, R15-136, R15-101, R17-136, R17-101, R18-136, R18-101, R19-101, R20-101, R22-101, R42-101, R44-101, R45-101, R46-101, R46-136, R47-101, R47-136, R49-101, R13-136, R13-101, R51-136, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -263,17 +263,20 @@
     "alertCauseId": 120,
     "attributes": {
      "relatedLineTypes": {
-      "71": "ptTram"
+      "1": "ptTram",
+      "2": "ptTram",
+      "71": "ptTram",
+      "D": "ptTram"
      }
     },
-    "description": "Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 18.00 Uhr. Grund: Veranstaltung im Bereich Rathausplatz.",
-    "descriptionHTML": "<p>Linie 71:<br>Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.</p><p>Ersatz: Linien U1, U2, U3 und U4.</p><p>Voraussichtliche Dauer: 18.00 Uhr.</p><p>Grund: Veranstaltung im Bereich Rathausplatz.</p>",
+    "description": "Linie 1: Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor U und Schwarzenbergplatz. Linie 2: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Rathaus U über die Reichsratsstraße. Richtung Dornbach: Haltestelle Parlament, U Volkstheater: Die Züge halten in der Haltestelle der Linie 46. Richtung Friedrich-Engels-Platz: Parlament, U Volkstheater: Die Züge halten in der Bedarfshaltestelle am Burgring nach der Bellariastraße. Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Stubentor U und Schwedenplatz U. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 18.00 Uhr. Grund: Veranstaltung im Bereich Rathausplatz.",
+    "descriptionHTML": "<p>Linie 1: <br>Umleitung in beiden Richtungen <br>zwischen Julius-Raab-Platz und Karlsplatz U <br>über Stubentor U und Schwarzenbergplatz.<br>Linie 2: <br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Rathaus U <br>über die Reichsratsstraße.<br>Richtung Dornbach:<br>Haltestelle Parlament, U Volkstheater: Die Züge halten in der Haltestelle der Linie 46.<br>Richtung Friedrich-Engels-Platz:<br>Parlament, U Volkstheater: Die Züge halten in der Bedarfshaltestelle am Burgring nach der Bellariastraße.<br>Linie D:<br>Umleitung in beiden Richtungen<br>zwischen Schwarzenbergplatz und Börse<br>über Stubentor U und Schwedenplatz U.<br>Linie 71:<br>Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.</p><p>Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1.</p><p>Ersatz: Linien U1, U2, U3 und U4.</p><p>Voraussichtliche Dauer: 18.00 Uhr.</p><p>Grund: Veranstaltung im Bereich Rathausplatz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 71:<br>Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.</p><p>Ersatz: Linien U1, U2, U3 und U4.</p><p>Voraussichtliche Dauer: 18.00 Uhr.</p><p>Grund: Veranstaltung im Bereich Rathausplatz.</p>",
-       "descriptionPlain": "Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 18.00 Uhr. Grund: Veranstaltung im Bereich Rathausplatz.",
-       "title": "71: Veranstaltung"
+       "descriptionHtml": "<p>Linie 1: <br>Umleitung in beiden Richtungen <br>zwischen Julius-Raab-Platz und Karlsplatz U <br>über Stubentor U und Schwarzenbergplatz.<br>Linie 2: <br>Umleitung in beiden Richtungen <br>zwischen Parlament, U Volkstheater und Rathaus U <br>über die Reichsratsstraße.<br>Richtung Dornbach:<br>Haltestelle Parlament, U Volkstheater: Die Züge halten in der Haltestelle der Linie 46.<br>Richtung Friedrich-Engels-Platz:<br>Parlament, U Volkstheater: Die Züge halten in der Bedarfshaltestelle am Burgring nach der Bellariastraße.<br>Linie D:<br>Umleitung in beiden Richtungen<br>zwischen Schwarzenbergplatz und Börse<br>über Stubentor U und Schwedenplatz U.<br>Linie 71:<br>Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.</p><p>Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1.</p><p>Ersatz: Linien U1, U2, U3 und U4.</p><p>Voraussichtliche Dauer: 18.00 Uhr.</p><p>Grund: Veranstaltung im Bereich Rathausplatz.</p>",
+       "descriptionPlain": "Linie 1: Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor U und Schwarzenbergplatz. Linie 2: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Rathaus U über die Reichsratsstraße. Richtung Dornbach: Haltestelle Parlament, U Volkstheater: Die Züge halten in der Haltestelle der Linie 46. Richtung Friedrich-Engels-Platz: Parlament, U Volkstheater: Die Züge halten in der Bedarfshaltestelle am Burgring nach der Bellariastraße. Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Stubentor U und Schwedenplatz U. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Beachten Sie die baustellenbedingten Streckensperren der Linien D und 1. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 18.00 Uhr. Grund: Veranstaltung im Bereich Rathausplatz.",
+       "title": "D, 1, 2, 71: Veranstaltung"
       }
      }
     ],
@@ -286,9 +289,27 @@
     "reasonName": "Veranstaltung",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
+     "1",
+     "2",
+     "D",
      "71"
     ],
     "relatedLinesDetails": [
+     {
+      "lineId": 101,
+      "lineName": "1",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 136,
+      "lineName": "D",
+      "vehicleType": "ptTram"
+     },
      {
       "lineId": 171,
       "lineName": "71",
@@ -298,10 +319,10 @@
     "status": "active",
     "time": {
      "created": "2026-10-25T03:05:00.000+0100",
-     "lastUpdate": "2026-10-25T03:06:00.000+0100",
+     "lastUpdate": "2026-10-25T06:47:00.000+0100",
      "start": "2026-10-25T05:00:00.000+0100"
     },
-    "title": "71: Veranstaltung"
+    "title": "D, 1, 2, 71: Veranstaltung"
    },
    {
     "alertCause": "defective vehicle",
@@ -347,6 +368,53 @@
      "start": "2026-10-25T05:53:00.000+0100"
     },
     "title": "U3: Verspätungen"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Die Linie U2 fährt derzeit in der Station Seestadt in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 07:10 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Seestadt.",
+    "descriptionHTML": "<p>Die Linie U2 fährt derzeit in der Station Seestadt in beiden Richtungen über Gleis 2.</p><p>Voraussichtliche Dauer: 07:10 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Seestadt.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie U2 fährt derzeit in der Station Seestadt in beiden Richtungen über Gleis 2.</p><p>Voraussichtliche Dauer: 07:10 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Seestadt.</p>",
+       "descriptionPlain": "Die Linie U2 fährt derzeit in der Station Seestadt in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 07:10 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Seestadt.",
+       "title": "U2: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261025-0005",
+    "owner": "WL",
+    "parentName": "I20261025-0005",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 302,
+      "lineName": "U2",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4277
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-25T06:44:00.000+0100",
+     "lastUpdate": "2026-10-25T06:44:00.000+0100",
+     "start": "2026-10-25T06:43:00.000+0100"
+    },
+    "title": "U2: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -558,6 +626,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Julius-Raab-Platz",
+    "name": "R13-101",
+    "owner": "WL",
+    "parentName": "R13-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     13
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Augasse",
+    "name": "R13-136",
+    "owner": "WL",
+    "parentName": "R13-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     13
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Augasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Veranstaltung\nKein Betrieb",
     "name": "R13-171",
     "owner": "WL",
@@ -600,6 +714,52 @@
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Julius-Raab-Platz",
+    "name": "R14-101",
+    "owner": "WL",
+    "parentName": "R14-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Augasse",
+    "name": "R14-136",
+    "owner": "WL",
+    "parentName": "R14-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Augasse"
    },
    {
     "alertCause": "undefined alert cause",
@@ -903,6 +1063,75 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Julius-Raab-Platz",
+    "name": "R15-101",
+    "owner": "WL",
+    "parentName": "R15-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nZüge halten bei Linie 46",
+    "name": "R15-102",
+    "owner": "WL",
+    "parentName": "R15-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:21.000+0100"
+    },
+    "title": "Veranstaltung\nZüge halten bei Linie 46"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Augasse",
+    "name": "R15-136",
+    "owner": "WL",
+    "parentName": "R15-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Augasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Veranstaltung\nKein Betrieb",
     "name": "R15-171",
     "owner": "WL",
@@ -926,6 +1155,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Julius-Raab-Platz",
+    "name": "R17-101",
+    "owner": "WL",
+    "parentName": "R17-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Augasse",
+    "name": "R17-136",
+    "owner": "WL",
+    "parentName": "R17-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Augasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Veranstaltung\nKein Betrieb",
     "name": "R17-171",
     "owner": "WL",
@@ -945,6 +1220,75 @@
      "start": "2026-10-25T05:30:15.000+0100"
     },
     "title": "Veranstaltung\nKein Betrieb"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nUmleitung über Stubentor >",
+    "name": "R1756-101",
+    "owner": "WL",
+    "parentName": "R1756-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1756
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:23.000+0100"
+    },
+    "title": "Veranstaltung\nUmleitung über Stubentor >"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Julius-Raab-Platz",
+    "name": "R18-101",
+    "owner": "WL",
+    "parentName": "R18-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     18
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Augasse",
+    "name": "R18-136",
+    "owner": "WL",
+    "parentName": "R18-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     18
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Augasse"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1133,6 +1477,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Julius-Raab-Platz",
+    "name": "R19-101",
+    "owner": "WL",
+    "parentName": "R19-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     19
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -1202,6 +1569,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Julius-Raab-Platz",
+    "name": "R20-101",
+    "owner": "WL",
+    "parentName": "R20-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     20
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
     "name": "R2025-671",
     "owner": "WL",
@@ -1218,6 +1608,29 @@
      "start": "2026-10-24T00:00:26.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Julius-Raab-Platz",
+    "name": "R22-101",
+    "owner": "WL",
+    "parentName": "R22-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     22
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Julius-Raab-Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1705,6 +2118,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Karlsplatz >",
+    "name": "R42-101",
+    "owner": "WL",
+    "parentName": "R42-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     42
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Karlsplatz >"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Karlsplatz >",
+    "name": "R44-101",
+    "owner": "WL",
+    "parentName": "R44-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     44
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Karlsplatz >"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Veranstaltung\nBetrieb ab Schwarzenbergplatz",
     "name": "R44-171",
     "owner": "WL",
@@ -1728,7 +2187,30 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Züge halten\nWipplingerstr 39",
+    "description": "Veranstaltung\nBetrieb ab Karlsplatz >",
+    "name": "R45-101",
+    "owner": "WL",
+    "parentName": "R45-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     45
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Karlsplatz >"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nZüge halten gegenüber (Umleitung via Schwedenplatz >)",
     "name": "R45-136",
     "owner": "WL",
     "parentName": "R45-136",
@@ -1743,10 +2225,10 @@
      45
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-25T19:00:00.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
-    "title": "Züge halten\nWipplingerstr 39"
+    "title": "Veranstaltung\nZüge halten gegenüber (Umleitung via Schwedenplatz >)"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1774,6 +2256,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Karlsplatz >",
+    "name": "R46-101",
+    "owner": "WL",
+    "parentName": "R46-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     46
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Karlsplatz >"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Schwarzenbergplatz (Umleitung)",
+    "name": "R46-136",
+    "owner": "WL",
+    "parentName": "R46-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     46
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz (Umleitung)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Veranstaltung\nBetrieb ab Schwarzenbergplatz",
     "name": "R46-171",
     "owner": "WL",
@@ -1793,6 +2321,52 @@
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Karlsplatz >",
+    "name": "R47-101",
+    "owner": "WL",
+    "parentName": "R47-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Karlsplatz >"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Schwarzenbergplatz (Umleitung)",
+    "name": "R47-136",
+    "owner": "WL",
+    "parentName": "R47-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz (Umleitung)"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1820,6 +2394,75 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Karlsplatz >",
+    "name": "R49-101",
+    "owner": "WL",
+    "parentName": "R49-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Karlsplatz >"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nZüge halten nach der Kreuzung",
+    "name": "R49-102",
+    "owner": "WL",
+    "parentName": "R49-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:21.000+0100"
+    },
+    "title": "Veranstaltung\nZüge halten nach der Kreuzung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Schwarzenbergplatz (Umleitung)",
+    "name": "R49-136",
+    "owner": "WL",
+    "parentName": "R49-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz (Umleitung)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Veranstaltung\nBetrieb ab Schwarzenbergplatz",
     "name": "R49-171",
     "owner": "WL",
@@ -1839,6 +2482,52 @@
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Karlsplatz >",
+    "name": "R50-101",
+    "owner": "WL",
+    "parentName": "R50-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Karlsplatz >"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Schwarzenbergplatz (Umleitung)",
+    "name": "R50-136",
+    "owner": "WL",
+    "parentName": "R50-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz (Umleitung)"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1885,6 +2574,52 @@
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nEinstieg am Karlsplatz bei Linie 4A",
+    "name": "R51-101",
+    "owner": "WL",
+    "parentName": "R51-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-10-25T09:00:00.000+0100",
+     "start": "2026-10-25T06:32:21.000+0100"
+    },
+    "title": "Veranstaltung\nEinstieg am Karlsplatz bei Linie 4A"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Schwarzenbergplatz (Umleitung)",
+    "name": "R51-136",
+    "owner": "WL",
+    "parentName": "R51-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-10-25T19:00:00.000+0100",
+     "start": "2026-10-25T06:32:51.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz (Umleitung)"
    },
    {
     "alertCause": "undefined alert cause",
