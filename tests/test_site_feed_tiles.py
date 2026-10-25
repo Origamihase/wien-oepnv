@@ -18,7 +18,9 @@ import pytest
 
 SITE_JS = Path(__file__).resolve().parents[1] / "docs" / "assets" / "site.js"
 
-pytestmark = pytest.mark.skipif(shutil.which("node") is None, reason="needs node")
+NODE = shutil.which("node")
+
+pytestmark = pytest.mark.skipif(NODE is None, reason="needs node")
 
 
 def _block(js: str, start: str) -> str:
@@ -50,8 +52,10 @@ def _run(expr: str) -> object:
         _block(js, "function isViennaMidnight(date) {"),
     ]
     program = "\n".join(parts) + f"\nprocess.stdout.write(JSON.stringify({expr}));"
-    out = subprocess.run(
-        ["node", "-e", program], capture_output=True, text=True, check=True, timeout=30
+    assert NODE is not None
+    # The program is assembled from site.js of this checkout, no outside input.
+    out = subprocess.run(  # noqa: S603
+        [NODE, "-e", program], capture_output=True, text=True, check=True, timeout=30
     )
     return json.loads(out.stdout)
 
