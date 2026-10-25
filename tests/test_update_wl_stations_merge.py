@@ -118,6 +118,7 @@ def test_download_ogd_csv_writes_target_on_success(
     sidecar_payload = json.loads(sidecar.read_text(encoding="utf-8"))
     assert sidecar_payload["etag"] == '"abc123"'
     assert sidecar_payload["last_modified"] == "Wed, 01 Jan 2025 00:00:00 GMT"
+    assert sidecar_payload["checked_at"] == sidecar_payload["fetched_at"]
 
 
 def test_download_ogd_csv_sends_conditional_headers_when_sidecar_present(
@@ -154,9 +155,12 @@ def test_download_ogd_csv_sends_conditional_headers_when_sidecar_present(
     assert headers["If-Modified-Since"] == "Wed, 01 Jan 2025 00:00:00 GMT"
     # 304 leaves the existing target untouched (bytes-identical)
     assert target.read_bytes() == b'"HALTESTELLEN_ID";"NAME"\n'
-    # Sidecar is preserved as-is on 304
+    # The validators survive a 304; only ``checked_at`` records the good
+    # answer, so the health check can tell a quiet source from a dead one.
     sidecar_payload = json.loads(sidecar.read_text(encoding="utf-8"))
     assert sidecar_payload["etag"] == '"abc123"'
+    assert sidecar_payload["fetched_at"] == "2026-05-22T16:00:00+00:00"
+    assert sidecar_payload["checked_at"] > "2026-05-22T16:00:00+00:00"
 
 
 def test_download_ogd_csv_304_with_missing_target_clears_sidecar(
@@ -1104,3 +1108,38 @@ def test_aggregate_coordinates_still_skips_missing_coordinates() -> None:
 )
 def test_is_plausible_wl_stop(latitude: float, longitude: float, expected: bool) -> None:
     assert update_wl_stations._is_plausible_wl_stop(latitude, longitude) is expected
+
+
+def test_build_wl_entries_takes_gtfs_coordinate_when_every_stop_is_implausible() -> None:
+    """DIVA 60201956 (Wassermanngasse) sits in the Waldviertel in both OGD
+    files; the station gets the same stop's coordinate from the WL GTFS
+    stops instead of a hand-written override (2026-10-25)."""
+    haltestellen = {
+        "60201956": update_wl_stations.Haltestelle(
+            station_id="60201956", name="Wassermanngasse", diva="60201956"
+        )
+    }
+    haltepunkte = [_stop("3953", 48.6945799, 15.5787004), _stop("3954", 48.6945799, 15.5787903)]
+    gtfs = {"60201956": (48.268638, 16.452806)}
+
+    entry = update_wl_stations.build_wl_entries(haltestellen, haltepunkte, None, None, gtfs)[0]
+
+    assert (entry["latitude"], entry["longitude"]) == (48.268638, 16.452806)
+    assert entry["in_vienna"] is True
+    # ``wl_stops`` keeps mirroring the OGD export.
+    stops = cast(list[dict[str, object]], entry["wl_stops"])
+    assert {stop["latitude"] for stop in stops} == {48.6945799}
+
+
+def test_build_wl_entries_prefers_plausible_ogd_stops_over_gtfs() -> None:
+    haltestellen = {
+        "60201956": update_wl_stations.Haltestelle(
+            station_id="60201956", name="Wassermanngasse", diva="60201956"
+        )
+    }
+    haltepunkte = [_stop("1", 48.2600, 16.4200)]
+    gtfs = {"60201956": (48.268638, 16.452806)}
+
+    entry = update_wl_stations.build_wl_entries(haltestellen, haltepunkte, None, None, gtfs)[0]
+
+    assert (entry["latitude"], entry["longitude"]) == (48.26, 16.42)

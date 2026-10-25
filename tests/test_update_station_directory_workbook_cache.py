@@ -12,6 +12,7 @@ snapshot back on every successful download.
 """
 from __future__ import annotations
 
+import json
 from io import BytesIO
 from pathlib import Path
 from typing import Any
@@ -58,6 +59,9 @@ def test_download_workbook_writes_cache_on_success(
     assert buf.getvalue() == payload
     assert cache_path.exists()
     assert cache_path.read_bytes() == payload
+    # The good download is stamped for the health check (2026-10-25).
+    stamp = json.loads((tmp_path / "oebb-verkehrsstationen.xlsx.cache.json").read_text())
+    assert stamp["checked_at"]
 
 
 def test_download_workbook_falls_back_to_cache_on_network_failure(
@@ -96,6 +100,8 @@ def test_download_workbook_falls_back_to_cache_on_network_failure(
     )
 
     assert buf.getvalue() == cached_payload
+    # A fallback is no good answer: no stamp, so the health check sees it.
+    assert not (tmp_path / "oebb-verkehrsstationen.xlsx.cache.json").exists()
 
 
 def test_download_workbook_raises_when_neither_url_nor_cache(

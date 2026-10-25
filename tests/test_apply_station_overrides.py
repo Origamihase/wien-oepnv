@@ -518,8 +518,14 @@ def test_committed_overrides_file_schema() -> None:
 
 def test_committed_overrides_cover_the_known_drifts() -> None:
     """The committed overrides file targets exactly the known upstream
-    defects: the four 2026-05-16 audit DIVAs plus the Bad Fischau
-    geographic-duplicate fix (eva-keyed, 2026-05-24).
+    defects: the Roßkopfgasse duplicate DIVA, the Bad Fischau
+    geographic-duplicate fix (eva-keyed, 2026-05-24) and the Handelskai
+    EVA duplicate.
+
+    Since 2026-10-25 the three Waldviertel DIVAs (60201954-60201956) take
+    their coordinate from the Wiener Linien GTFS stops, not from an
+    override, and the Hummelgasse restore expired (WL lists a haltepunkt
+    for DIVA 60200558 again).
 
     If this set ever needs to change, update the assertion intentionally
     — silent drift in the override list is itself a regression.
@@ -537,9 +543,8 @@ def test_committed_overrides_cover_the_known_drifts() -> None:
         return f"eva:{str(o.get('eva_nr') or '').strip()}"
 
     by_op = {(o["op"], _ident(o)) for o in payload["overrides"]}
-    assert ("restore", "60200558") in by_op  # Hummelgasse
-    assert ("patch_coords", "60201955") in by_op  # Halblehenweg
-    assert ("patch_coords", "60201954") in by_op  # Leopoldine-Padaurek
-    assert ("remove", "60251359") in by_op  # Sofienalpenstraße, Roßkopfgasse
-    assert ("patch_coords", "eva:8100655") in by_op  # Bad Fischau geographic duplicate
-    assert ("remove", "bst_code:Nw  H2") in by_op  # Handelskai eva-duplicate
+    assert by_op == {
+        ("remove", "60251359"),  # Sofienalpenstraße, Roßkopfgasse
+        ("patch_coords", "eva:8100655"),  # Bad Fischau geographic duplicate
+        ("remove", "bst_code:Nw  H2"),  # Handelskai eva-duplicate
+    }

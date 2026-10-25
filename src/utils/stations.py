@@ -80,6 +80,13 @@ _GEONETZ_STOPS_PATH = Path(__file__).resolve().parents[2] / "data" / "oebb_geone
 _WL_OGD_STOPS_PATH = (
     Path(__file__).resolve().parents[2] / "data" / "wienerlinien-ogd-haltestellen.csv"
 )
+# The stops of the Wiener Linien GTFS timetable (``stops.txt``, same
+# licensor and licence as the OGD stop list). It answers only where the OGD
+# list carries a coordinate that cannot be a WL stop (see
+# :func:`is_plausible_wl_coordinate`).
+_WL_GTFS_STOPS_PATH = (
+    Path(__file__).resolve().parents[2] / "data" / "wienerlinien-gtfs-stops.csv"
+)
 _VIENNA_POLYGON_PATH = Path(__file__).resolve().parents[2] / "data" / "LANDESGRENZEOGD.json"
 
 # Security: defense-in-depth byte-size caps on the on-disk stations and
@@ -106,6 +113,24 @@ MAX_VIENNA_POLYGON_FILE_BYTES = 50 * 1024 * 1024
 MAX_STATION_LINES_FILE_BYTES = 50 * 1024 * 1024
 MAX_GEONETZ_STOPS_FILE_BYTES = 10 * 1024 * 1024
 MAX_WL_OGD_STOPS_FILE_BYTES = 10 * 1024 * 1024
+MAX_WL_GTFS_STOPS_FILE_BYTES = 10 * 1024 * 1024
+
+# Plausibility gate for a Wiener-Linien stop coordinate. The WL OGD export
+# ships well-formed coordinates that point at the wrong place: in the
+# 2026-09-13 snapshot three consecutive DIVAs (60201954 Leopoldine-
+# Padaurek-Straße, 60201955 Halblehenweg, 60201956 Wassermanngasse) sit
+# 76-112 km away in the Waldviertel while declaring ``Municipality=Wien``,
+# and they still do on 2026-10-25. The furthest genuine stop is the Badner-
+# Bahn terminus at Leesdorf/Baden, 24.9 km from Stephansplatz; 50 km sits
+# in the empty gap between the two populations.
+WL_NETWORK_CENTRE: tuple[float, float] = (48.2082, 16.3738)
+MAX_WL_STOP_DISTANCE_M: float = 50_000.0
+# GTFS ``stop_id`` of a WL stop: ``at:<state>:<n>:<area>:<platform>``,
+# where ``<n>`` is the DIVA number without its ``602`` prefix (DIVA
+# 60201956 → ``at:49:1956:0:1``; Badner-Bahn stops in Lower Austria carry
+# ``at:43``). Measured 2026-10-25: for the 1755 stations in both files the
+# GTFS mean lies a median 14 m and at most 229 m from the OGD coordinate.
+_WL_GTFS_STOP_ID_RE = re.compile(r"^at:\d{2}:(\d{1,5}):")
 
 Coordinate = tuple[float, float]
 Ring = tuple[Coordinate, ...]
@@ -1119,8 +1144,10 @@ class OpenCoordinate(NamedTuple):
 
     latitude: float
     longitude: float
-    # ``"oebb_geonetz"`` (ÖBB-Infrastruktur GeoNetz, CC BY 3.0 AT) or
-    # ``"wl_ogd"`` (Wiener Linien OGD Haltestellen, CC BY 4.0).
+    # ``"oebb_geonetz"`` (ÖBB-Infrastruktur GeoNetz, CC BY 3.0 AT),
+    # ``"wl_ogd"`` (Wiener Linien OGD Haltestellen, CC BY 4.0) or
+    # ``"wl_gtfs"`` (Wiener Linien GTFS stops, CC BY 4.0, only where the
+    # OGD coordinate is implausible).
     dataset: str
 
 
@@ -1184,6 +1211,62 @@ def _wl_ogd_coordinates() -> dict[str, tuple[float, float]]:
     return result
 
 
+def is_plausible_wl_coordinate(latitude: float, longitude: float) -> bool:
+    """Whether a coordinate can belong to a Wiener-Linien stop.
+
+    ``True`` while the point lies within :data:`MAX_WL_STOP_DISTANCE_M` of
+    the network centre, ``False`` for a well-formed coordinate that cannot
+    be a Wiener-Linien stop (the Waldviertel DIVAs above).
+    """
+
+    distance = calculate_distance_meters(
+        latitude, longitude, WL_NETWORK_CENTRE[0], WL_NETWORK_CENTRE[1]
+    )
+    return distance <= MAX_WL_STOP_DISTANCE_M
+
+
+def load_wl_gtfs_coordinates(path: Path | None = None) -> dict[str, tuple[float, float]]:
+    """Mean stop coordinate per DIVA from the Wiener Linien GTFS ``stops.txt``.
+
+    Only plausible points count (:func:`is_plausible_wl_coordinate`). A
+    missing or unreadable file yields ``{}``: the GTFS stops are a fallback
+    for broken OGD values, never required.
+    """
+
+    text = read_capped_text(
+        path or _WL_GTFS_STOPS_PATH,
+        MAX_WL_GTFS_STOPS_FILE_BYTES,
+        encoding="utf-8-sig",
+        label="WL GTFS stops",
+        logger=logger,
+    )
+    if text is None:
+        return {}
+    points: dict[str, list[tuple[float, float]]] = {}
+    for row in csv.DictReader(io.StringIO(text)):
+        match = _WL_GTFS_STOP_ID_RE.match((row.get("stop_id") or "").strip())
+        lat = _coerce_lat(row.get("stop_lat"))
+        lon = _coerce_lon(row.get("stop_lon"))
+        if match is None or lat is None or lon is None:
+            continue
+        if not is_plausible_wl_coordinate(lat, lon):
+            continue
+        diva = str(60200000 + int(match.group(1)))
+        points.setdefault(diva, []).append((lat, lon))
+    return {
+        diva: (
+            round(sum(p[0] for p in pts) / len(pts), 6),
+            round(sum(p[1] for p in pts) / len(pts), 6),
+        )
+        for diva, pts in points.items()
+    }
+
+
+@lru_cache(maxsize=1)
+def _wl_gtfs_coordinates() -> dict[str, tuple[float, float]]:
+    return load_wl_gtfs_coordinates()
+
+
 def _geonetz_coordinate(entry: dict[str, Any]) -> OpenCoordinate | None:
     table = _geonetz_coordinates()
     for prefix, field in (("eva", "eva_nr"), ("ifopt", "ifopt_id")):
@@ -1199,8 +1282,14 @@ def _wl_ogd_coordinate(entry: dict[str, Any]) -> OpenCoordinate | None:
     diva = entry.get("wl_diva")
     if diva is None:
         return None
-    hit = _wl_ogd_coordinates().get(str(diva).strip())
-    return OpenCoordinate(hit[0], hit[1], "wl_ogd") if hit else None
+    key = str(diva).strip()
+    hit = _wl_ogd_coordinates().get(key)
+    if hit and is_plausible_wl_coordinate(hit[0], hit[1]):
+        return OpenCoordinate(hit[0], hit[1], "wl_ogd")
+    # The OGD list misses the stop or places it outside the WL network: the
+    # same stop in the Wiener Linien GTFS timetable, else no coordinate.
+    fallback = _wl_gtfs_coordinates().get(key)
+    return OpenCoordinate(fallback[0], fallback[1], "wl_gtfs") if fallback else None
 
 
 def open_data_coordinate(name: str, *, prefer: str = "oebb") -> OpenCoordinate | None:

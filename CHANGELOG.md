@@ -10,6 +10,32 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Prüfung der Stationsdaten (2026-10-25)**: `data/stations.json` von den
+  Quellen bis zur Verwendung im Feed (2.242 Einträge, keine doppelte DIVA,
+  EVA-, Stellen- oder VOR-Nummer, kein `in_vienna`-Eintrag außerhalb Wiens).
+  - *Override-Koordinaten:* Drei Einträge in `data/stations_overrides.json`
+    setzten die Koordinate von Leopoldine-Padaurek-Straße, Halblehenweg und
+    Wassermanngasse (DIVA 60201954 bis 60201956), die die WL-OGD-Liste im
+    Waldviertel führt; zwei Werte waren nach OpenStreetMap bzw. Google Maps
+    bestimmt, entgegen der Regel „nur offen lizenzierte Koordinaten“. Jetzt
+    nimmt `update_wl_stations.py` für jede DIVA, deren OGD-Haltepunkte alle
+    außerhalb des WL-Netzes liegen, dieselbe Haltestelle aus den
+    GTFS-Fahrplandaten der Wiener Linien (`data/wienerlinien-gtfs-stops.csv`,
+    CC BY 4.0, wöchentlich geladen); die drei Overrides und der abgelaufene
+    für die Hummelgasse sind entfernt. Nachbau des Stationslaufs alt gegen
+    neu: nur diese drei Einträge ändern sich, um 5 bis 19 m.
+  - *GeoRSS:* `open_data_coordinate` nahm die OGD-Koordinate ungeprüft; eine
+    Verlegung an einer dieser drei Haltestellen hätte einen Punkt 80 bis
+    116 km entfernt bekommen (kam seit Juli nicht vor). Dieselbe
+    Plausibilitätsgrenze und derselbe GTFS-Ersatz gelten jetzt dort; für
+    alle anderen 4.462 Abfragen ist das Ergebnis gleich.
+  - *Tote Quellen:* Scheiterte ein Abruf im Stationslauf, rechnete er
+    still mit der letzten Kopie weiter. Der Health check hat die neue
+    Prüfung `Stationsquellen`, rot nach 15 Tagen ohne gültige Antwort
+    (`checked_at` in den `.cache.json`-Dateien neben den Kopien).
+  Details in `docs/architecture.md` (Stationskoordinaten, Geodaten im Feed)
+  und `docs/development.md` („Manuelle Station-Overrides“).
+
 * **Prüfung der Website und der Statistikseite (2026-10-25)**: Von den
   Daten bis zur Darstellung, live und gegen 109 Feed-Stände seit 04.10.
   - *Kacheln:* „Beginn“ zeigte das `pubDate`, „Bis“ ein Ende mit Uhrzeit. 37

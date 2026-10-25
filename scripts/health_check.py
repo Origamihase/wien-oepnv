@@ -41,6 +41,10 @@ It runs two complementary kinds of checks and shows a third:
      * ``data/stations_last_run.json`` — proves the weekly station-directory
        refresh still runs, every sub-script exited 0, and validation found no
        security issues.
+     * the ``.cache.json`` sidecars of the station sources under ``data/`` —
+       prove each source still answers; the station run falls back to its
+       last good copy, so a dead source would otherwise stay green
+       (:func:`check_station_sources`).
 
 Stammstrecke/VOR is deliberately NOT probed live: the VAO ReST API is capped at
 100 requests/day and a recurring health probe would burn that contractual
@@ -112,6 +116,11 @@ FEED_MAX_AGE_H = _env_float("HEALTH_FEED_MAX_AGE_HOURS", 4.0)
 # Stations: update-stations runs weekly (Sun 01:00 UTC). 8 days = one full
 # cycle + jitter; older means a weekly run was missed.
 STATIONS_MAX_AGE_H = _env_float("HEALTH_STATIONS_MAX_AGE_HOURS", 192.0)
+# Station sources: the weekly run downloads them and falls back to the copy
+# under data/ when a download fails, so a dead source would only show in the
+# log. 15 days = two weekly runs in a row without a good answer (one failed
+# run is tolerated, the station data changes slowly).
+STATION_SOURCE_MAX_AGE_H = _env_float("HEALTH_STATION_SOURCE_MAX_AGE_HOURS", 360.0)
 # Per-source live fetch ceiling (the updaters retry internally; this is the
 # hard wall so a hung source cannot stall the whole probe).
 FETCH_TIMEOUT_S = int(_env_float("HEALTH_FETCH_TIMEOUT_SECONDS", 120))
@@ -373,6 +382,57 @@ def check_stations(now: datetime) -> Check:
     age_txt = f"vor {_fmt_age(age_s)} " if age_s is not None else ""
     return Check(name, ok=True,
                  summary=f"OK — {age_txt}aktualisiert, alle Teilschritte sauber")
+
+
+# (display name, file under data/ whose ``.cache.json`` sidecar the weekly
+# station run writes after every good answer: ``checked_at``, or
+# ``fetched_at`` for a sidecar written before 2026-10-25).
+STATION_SOURCES: list[tuple[str, str]] = [
+    ("ÖBB Verkehrsstationen", "oebb-verkehrsstationen.xlsx"),
+    ("WL-OGD Haltestellen", "wienerlinien-ogd-haltestellen.csv"),
+    ("WL-OGD Haltepunkte", "wienerlinien-ogd-haltepunkte.csv"),
+    ("WL-OGD Linien", "wienerlinien-ogd-linien.csv"),
+    ("WL-OGD Fahrwegverläufe", "wienerlinien-ogd-fahrwegverlaeufe.csv"),
+    ("WL-GTFS Haltestellen", "wienerlinien-gtfs-stops.csv"),
+]
+
+
+def check_station_sources(now: datetime) -> Check:
+    """Red when a source of the weekly station run has stopped answering.
+
+    The station run keeps the last good copy when a download fails, so the
+    run stays green and ``stations_last_run.json`` looks healthy while the
+    directory silently ages. Each good answer (200 or 304) stamps the
+    file's sidecar; a stamp older than :data:`STATION_SOURCE_MAX_AGE_H`
+    means the source failed in two weekly runs in a row.
+    """
+    name = "Stationsquellen"
+    problems: list[str] = []
+    for label, filename in STATION_SOURCES:
+        sidecar = REPO_ROOT / "data" / f"{filename}.cache.json"
+        data = read_capped_json(sidecar, label=f"{filename} sidecar")
+        stamp = None
+        if isinstance(data, dict):
+            stamp = data.get("checked_at") or data.get("fetched_at")
+        if not stamp:
+            problems.append(f"{label}: kein Abrufzeitpunkt")
+            continue
+        try:
+            checked = datetime.fromisoformat(str(stamp))
+        except ValueError:
+            problems.append(f"{label}: Abrufzeitpunkt nicht lesbar")
+            continue
+        if checked.tzinfo is None:
+            checked = checked.replace(tzinfo=UTC)
+        age_s = (now - checked).total_seconds()
+        if age_s > STATION_SOURCE_MAX_AGE_H * 3600:
+            problems.append(f"{label} seit {_fmt_age(age_s)} ohne gültige Antwort")
+    if problems:
+        return Check(name, ok=False,
+                     summary=f"FEHLER — {problems[0]}",
+                     detail="; ".join(problems[1:]))
+    return Check(name, ok=True,
+                 summary=f"OK — alle {len(STATION_SOURCES)} Quellen des Stationslaufs antworten")
 
 
 def check_stammstrecke_abruf(now: datetime) -> Check:
@@ -691,6 +751,7 @@ def main() -> int:
     outputs = [
         check_feed_freshness(now),
         check_stations(now),
+        check_station_sources(now),
         check_stammstrecke_abruf(now),
         check_stammstrecke_directions(now),
         check_feed_watch(now),

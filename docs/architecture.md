@@ -1441,7 +1441,14 @@ Gleisverlauf.
 Bedingungen: ÖBB-Infrastruktur GeoNetz (CC BY 3.0 AT,
 `data/oebb_geonetz_stops.json`, über EVA- oder IFOPT-Nummer), Wiener Linien
 OGD Haltestellen (`data/wienerlinien-ogd-haltestellen.csv`, über die DIVA)
-und die Baustellen-Daten der Stadt Wien.
+und die Baustellen-Daten der Stadt Wien. Liegt die OGD-Koordinate einer
+DIVA außerhalb des WL-Netzes (mehr als 50 km vom Mittelpunkt,
+`is_plausible_wl_coordinate`), gilt dieselbe Haltestelle aus den
+GTFS-Fahrplandaten der Wiener Linien (`data/wienerlinien-gtfs-stops.csv`,
+CC BY 4.0, Datensatz `wl_gtfs`); fehlt sie dort, bleibt das Item ohne
+Geodaten. Seit 2026-10-25, davor hätte eine Verlegung an der
+Wassermanngasse, am Halblehenweg oder an der Leopoldine-Padaurek-Straße
+einen Punkt im Waldviertel bekommen (kam seit Juli nicht vor).
 `src.utils.stations.open_data_coordinate` liest nie die `latitude`/
 `longitude` des Verzeichnisses, weil diese auch aus ÖBB
 HAFAS zusammengeführt sind. Eine Station ohne offene Koordinate
@@ -1793,6 +1800,31 @@ in einer Warnung.
 > 198 Feed-Ständen (13.–17.10.2026) mit altem und neuem Verzeichnis war
 > identisch, ein Stationslauf mit dem neuen Code änderte außer Siebenhirten
 > kein `in_vienna` und kein `pendler`.
+
+> **Falsche WL-Koordinaten (seit 2026-10-25):** Die Regel „nur offen
+> lizenzierte Koordinaten“ gilt auch für die Korrekturschicht
+> `data/stations_overrides.json`. Drei ihrer Einträge setzten die
+> Koordinate der Haltestellen Leopoldine-Padaurek-Straße, Halblehenweg und
+> Wassermanngasse (DIVA 60201954 bis 60201956), die die WL-OGD-Liste seit
+> Mai im Waldviertel führt; zwei dieser Werte waren nach OpenStreetMap
+> bzw. Google Maps bestimmt. Sie sind entfernt. Stattdessen nimmt
+> `scripts/update_wl_stations.py` für jede DIVA, deren OGD-Haltepunkte alle
+> außerhalb des WL-Netzes liegen, dieselbe Haltestelle aus den
+> GTFS-Fahrplandaten der Wiener Linien (`data/wienerlinien-gtfs-stops.csv`,
+> CC BY 4.0, wöchentlich geladen). Das deckt jeden künftigen Fall dieser
+> Art ohne Handarbeit ab. Im Nachbau des Stationslaufs mit altem und neuem
+> Code änderten sich nur diese drei Einträge, um 5 bis 19 m, kein
+> `in_vienna`, kein `pendler`, keine Quarantäne.
+>
+> **Tote Stationsquellen fallen auf (seit 2026-10-25):** Scheitert ein
+> Abruf, rechnet der Stationslauf mit der letzten guten Kopie unter
+> `data/` weiter und bleibt grün. Jede gute Antwort (200 oder 304) stempelt
+> deshalb `checked_at` in die `.cache.json`-Datei neben der Kopie, und der
+> Health check („Stationsquellen“, `scripts/health_check.py`) wird rot,
+> wenn ein Stempel älter als 15 Tage ist, also zwei Wochenläufe in Folge
+> ohne Antwort blieben. Grund ist die Regel des Betreibers, dass eine
+> Quelle, die nicht mehr läuft, ihm auffallen muss (16.10.2026); eine
+> Warnung im Protokoll reicht nicht.
 
 > **Entscheidung 2026-10-16 (Michael): keine Google-Places-Stufe mehr.**
 > Bis dahin war Google Places die dritte Stufe für die Restmenge. Das
