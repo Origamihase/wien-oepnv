@@ -215,9 +215,14 @@ verdrängt eine andere Störung.
   `SortingHelp` der offenen WL-Liniendaten
   (`data/wienerlinien-ogd-linien.csv`, vom wöchentlichen Stationslauf
   aktualisiert): U-Bahn, Straßenbahn (D, O und LB nach den Nummern), Bus A,
-  Bus B, Nacht und S-Bahn (`line_order_key` in `src/providers/wl_lines.py`).
-  Das gilt für alle drei Stellen, die ein Präfix bauen: den WL-Abruf
-  (`_ensure_line_prefix`), die unscharfe Zusammenführung
+  Bus B, dann Nachtbus und S-Bahn gemeinsam nach der Nummer (S1 bis S4, N6,
+  S7, …); ein Rufbus steht, wo WL ihn einordnet (25BR nach den
+  Straßenbahnen, 41AR bei 41A). Teilen sich zwei Linien einen Rang (41A und
+  41AR, N60 und S60), entscheidet ihr Code, damit dieselben Linien immer
+  gleich dastehen (`line_order_key` in `src/providers/wl_lines.py`).
+  Das gilt für alle vier Stellen, die ein Präfix bauen: den WL-Abruf
+  (`_ensure_line_prefix`), den WL-Cache vor dem Bau (`_post_filter_wl`,
+  auch für einen Titel aus der Zeit davor), die unscharfe Zusammenführung
   (`deduplicate_fuzzy`) und den Vorfall mit seinen Kurzmeldungen
   (`_union_prefix`, `_twin_labels`). Eine Linie, die die Daten (noch) nicht
   kennen, steht nach ihrer Form an ihrem Platz („U5“ bei der U-Bahn, „3“

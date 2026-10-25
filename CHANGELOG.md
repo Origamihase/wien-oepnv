@@ -66,6 +66,38 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
   - *Doku zu #2057:* Eine Liste über mehrere Zeilen ohne vergangenen Tag
     wird zum Satz; nur eine in einer Zeile bleibt im Wortlaut.
 
+* **Nachprüfung der Umsetzungen #2058 bis #2060 (2026-10-25)**: Geprüft
+  wurden die Linienreihenfolge im Titel, die Wiener Zeit auf der Website,
+  die gemischte Platzhalter-Nonce und das „Towards“ beider Richtungen samt
+  Doku. Nachbau mit dem echten `main()` über 350 Feed-Stände seit 18.10.,
+  alt (vor #2058) gegen neu: es ändern sich nur vier Titelpräfixe der
+  unscharfen Zusammenführung („39A/71“ → „71/39A“, „48A/52“ → „52/48A“,
+  „2/63A/O“ → „2/O/63A“) und die Strampfergasse-Meldung im Englischen
+  („Towards Hietzing U: …“). Zwei Lücken der Linienreihenfolge, als Klasse
+  behoben:
+  - *Gleicher Rang:* WL gibt manchen Linien denselben `SortingHelp`-Wert
+    (41A und Rufbus 41AR, N60 und S60, 86A und 86AR). Dann entschied die
+    Reihenfolge der Eingabe, dieselben Linien konnten verschieden
+    dastehen. Jetzt entscheidet bei gleichem Rang der Code
+    (`line_order_key`).
+  - *WL-Cache vor dem Bau:* `_post_filter_wl` baut ein Präfix aus dem
+    zwischengespeicherten Titel neu (`41: 40+41:` → `40/41:`), behielt
+    dabei aber die Reihenfolge des Titels. Ein Titel aus der Zeit vor
+    #2058 (etwa nach einem gescheiterten WL-Abruf) blieb so „12/5:
+    Albertgasse“. Jetzt sortiert auch diese Stelle nach WL. Nachbau
+    derselben 350 Stände: nur die Reihenfolge in Präfixen alter Caches
+    ändert sich (14 verschiedene Titel, etwa „1/2/D/71: Veranstaltung“ →
+    „1/2/71/D: Veranstaltung“), Linien, Meldungen, GUIDs, Plätze und
+    State (außer den EN-Übersetzungen der Titel) bleiben gleich; der
+    heutige Feed ist schon sortiert. Ein Rufbus steht dabei, wo WL ihn
+    einordnet: „N66/N68R“ aus dem Cache liest „N68R/N66“ wie beim WL-Abruf
+    seit #2058 (N68R hat den Rang 568 bei den B-Bussen, N66 766).
+  - *Doku:* `docs/architecture.md` nannte drei statt vier Stellen, die ein
+    Präfix bauen, und fasste „Nacht und S-Bahn“ als Block zusammen; WL
+    ordnet beide gemeinsam nach der Nummer (S1 bis S4, N6, S7, …).
+  Tests in `tests/test_line_order.py`; vier Testfälle mit erfundenem
+  Präfix außerhalb der WL-Reihenfolge stehen jetzt in ihr.
+
 * **Nachprüfung der Umsetzungen vom 24.10. abends (2026-10-25)**: Geprüft
   wurden #2055 und #2056, alle 10.694 WL-, ÖBB- und Baustellentexte im
   Cache durch den Formatierer alt gegen neu.

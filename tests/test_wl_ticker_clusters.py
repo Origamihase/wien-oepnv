@@ -166,7 +166,7 @@ def test_another_cause_eleven_minutes_later_is_listed_beside_it() -> None:
     "other",
     [
         _wl("18: ÖBB Bauarbeiten Betrieb ab Stadion", "ÖBB Bauarbeiten\nBetrieb ab Stadion", 10),  # another line
-        _wl("62/18: ÖBB Bauarbeiten Kein Betrieb", "ÖBB Bauarbeiten\nKein Betrieb", 10),  # other lines
+        _wl("18/62: ÖBB Bauarbeiten Kein Betrieb", "ÖBB Bauarbeiten\nKein Betrieb", 10),  # other lines
         _wl("62: Gleisbauarbeiten Kliebergasse", "Wegen Bauarbeiten …", 10, category="Hinweis"),  # a notice
         _wl("62: Stammstrecke", "Umleitung", 10, source="ÖBB"),  # not WL
     ],

@@ -71,8 +71,8 @@ class TestIncompleteTitleDropped:
     def test_existing_newline_normalisation_still_works(self) -> None:
         # Round 13's whitespace fix must continue to work alongside.
         items: list[dict[str, Any]] = [
-            {"title": "41E/10A: Ersatzbus 41E\nhält beim 10A"}
+            {"title": "10A/41E: Ersatzbus 41E\nhält beim 10A"}
         ]
         out = _post_filter_wl(items)
         assert len(out) == 1
-        assert out[0]["title"] == "41E/10A: Ersatzbus 41E hält beim 10A"
+        assert out[0]["title"] == "10A/41E: Ersatzbus 41E hält beim 10A"

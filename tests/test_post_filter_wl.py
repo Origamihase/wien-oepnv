@@ -21,22 +21,22 @@ from src.build_feed import _post_filter_wl
 class TestPostFilterWlNormalisesTitles:
     def test_single_newline_collapsed(self) -> None:
         items: list[dict[str, Any]] = [
-            {"title": "41E/10A: Ersatzbus 41E\nhält beim 10A"}
+            {"title": "10A/41E: Ersatzbus 41E\nhält beim 10A"}
         ]
         out = _post_filter_wl(items)
-        assert out[0]["title"] == "41E/10A: Ersatzbus 41E hält beim 10A"
+        assert out[0]["title"] == "10A/41E: Ersatzbus 41E hält beim 10A"
 
     def test_multiple_newlines_collapsed(self) -> None:
         items: list[dict[str, Any]] = [
             {
                 "title": (
-                    "41E/200: Ersatzbus 41E\nhalten bei\nWähringer Str 200"
+                    "10A/41E: Ersatzbus 41E\nhalten bei\nWähringer Str 200"
                 )
             }
         ]
         out = _post_filter_wl(items)
         assert out[0]["title"] == (
-            "41E/200: Ersatzbus 41E halten bei Währinger Str 200"
+            "10A/41E: Ersatzbus 41E halten bei Währinger Str 200"
         )
 
     def test_carriage_return_and_tab_collapsed(self) -> None:
