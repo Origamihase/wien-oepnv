@@ -1,6 +1,6 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-10-18T05:29:18+00:00_
+_Erzeugt am: 2026-10-25T05:45:33+00:00_
 
 **Stationen: 2242 → 2242 (Δ +0)**
 
@@ -12,10 +12,11 @@ _Keine._
 
 _Keine._
 
-## Umbenannt (1)
+## Umbenannt (2)
 
-- `diva:60201237`: "Wien Kirchengasse \(WL\)" → "Wien Siebensterngasse \(WL\)"
+- `diva:60201237`: "Wien Siebensterngasse \(WL\)" → "Wien Kirchengasse \(WL\)"
+- `diva:60201800`: "Wien Höhenstraße, Rohrerwiese \(WL\)" → "Wien Rohrerwiese \(WL\)"
 
-## Koordinaten verschoben (≥ 100 m) (1)
+## Koordinaten verschoben (≥ 100 m) (0)
 
-- `bst:900100` — Wien Hauptbahnhof (181 m)
+_Keine._

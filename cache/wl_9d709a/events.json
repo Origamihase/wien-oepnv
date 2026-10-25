@@ -854,6 +854,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1/2/D/71: Veranstaltung",
+    "description": "Linie 1: Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor U und Schwarzenbergplatz. Linie 2: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Rathaus U über die Reichsratsstraße. Richtung Dornbach: Haltestelle Parlament, U Volkstheater: Die Züge halten in der Haltestelle der Linien 46, 49 und 48A, die Haltestelle Parlament kann nicht eingehalten werden. Richtung Friedrich-Engels-Platz: Parlament, U Volkstheater: Die Züge halten in der Bedarfshaltestelle am Burgring nach der Bellariastraße. Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Stubentor U und Schwedenplatz U. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Beachten Sie die Streckensperren der Linien D und 1. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 18.00 Uhr. Grund: Veranstaltung im Bereich Rathausplatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "3d9dc833154fb13a2a35439b5dec0828f5c1624ba8b8558e713d29e16154f7dd",
+    "pubDate": "2026-10-25T05:00:00+01:00",
+    "starts_at": "2026-10-25T05:00:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=1,2,71,D|D=2026-10-25|TK=veranstaltung",
+    "_wl_ids": [
+      "I20261025-0003"
+    ],
+    "_incident_start": "2026-10-25T05:00:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "11A: Busse halten Meiereistraße gegenüber 12",
     "description": "Bauarbeiten\nBusse halten Meiereistraße gegenüber 12",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1182,22 +1198,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Veranstaltung Betrieb ab Schwarzenbergplatz",
-    "description": "Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 18.00 Uhr. Grund: Veranstaltung im Bereich Rathausplatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "eb5352749f5402b9be865827a7f6c82d7a9144a1198fd2eaa52624749c28d4eb",
-    "pubDate": "2026-10-25T05:00:00+01:00",
-    "starts_at": "2026-10-25T05:30:15+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=71|D=2026-10-25|TK=veranstaltung",
-    "_wl_ids": [
-      "I20261025-0003"
-    ],
-    "_incident_start": "2026-10-25T05:00:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1270,18 +1270,6 @@
     "starts_at": "2026-10-24T00:00:29+02:00",
     "ends_at": "2026-10-25T23:59:59+01:00",
     "_identity": "wl|störung|L=D|D=2026-10-24|TK=züge halten in schleife"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Züge halten Wipplingerstr 39",
-    "description": "Züge halten\nWipplingerstr 39",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c56c71bc29a5779ba2ce8098d4446a39181d58698141c72f9ba0190ba474ca24",
-    "pubDate": "2026-10-24T00:00:29+02:00",
-    "starts_at": "2026-10-24T00:00:29+02:00",
-    "ends_at": "2026-10-25T23:59:59+01:00",
-    "_identity": "wl|störung|L=D|D=2026-10-24|TK=züge halten wipplingerstr 39"
   },
   {
     "source": "Wiener Linien",
