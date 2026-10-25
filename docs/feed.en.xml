@@ -8,21 +8,8 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 25 Oct 2026 10:17:59 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 25 Oct 2026 10:30:54 +0100</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[U1: Contamination]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">9779e7ace261e01ddc018942c222784a1d556276f8f642723bab39617b6cccfc</guid>
-      <pubDate>Sun, 25 Oct 2026 09:58:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 25 Oct 2026 09:58:00 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 25 Oct 2026 09:58:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: contamination. [Since 09:58]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 09:58]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[9: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -33,34 +20,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sun, 25 Oct 2026 09:30:00 +0100</ext:first_seen>
       <ext:starts_at>Sun, 25 Oct 2026 09:32:09 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 25 Oct 2026 10:43:00 +0100</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 09:30]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 09:30]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">77994cd70c8bd44acc7c6ae28c2d0cee63d1f01a0b2acaf969f56ecb941ab571</guid>
-      <pubDate>Sun, 25 Oct 2026 07:54:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 25 Oct 2026 07:54:00 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 25 Oct 2026 07:54:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 07:54]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 07:54]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
-      <pubDate>Sun, 25 Oct 2026 06:43:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 25 Oct 2026 06:43:00 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 25 Oct 2026 06:43:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 06:43]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 06:43]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S2: Wien Leopoldau ↔ Mistelbach]]></title>
@@ -106,7 +68,7 @@
       <content:encoded><![CDATA[Construction works allows between Deutsch Wagram station and Gänserndorf station from 24.10.2026 to 26.10.2026, from 31.10.2026 to 01.11.2026, from 14.11.2026 to 15.11.2026 …<br/>[Until 28.11.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1/2/D/71: National Day]]></title>
+      <title><![CDATA[1/2/71/D: National Day]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">5ed1a558f4654252adcbde0d5b0507c31199017b815d336b01f7b063bfcb22b7</guid>
       <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
@@ -146,6 +108,49 @@
       <georss:point>48.137809 16.323970</georss:point>
       <description>Perfektastraße 3 → Perfektastraße 9. Stop relocation of lines 64A and N64 call bus towards Atzgersdorf, Ziedlergasse, or Alterlaa … [Since 22.10.]</description>
       <content:encoded><![CDATA[Perfektastraße 3 → Perfektastraße 9. Stop relocation of lines 64A and N64 call bus towards Atzgersdorf, Ziedlergasse, or Alterlaa …<br/>[Since 22.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Track construction works]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">8681a71896a38fa5cd0db22da3a40ed6cc4472d9266f99cbebaff20ab7d6d4e6</guid>
+      <pubDate>Wed, 21 Oct 2026 06:50:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 20 Oct 2026 11:58:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 11:58:00 +0200</ext:starts_at>
+      <ext:ends_at>Sat, 05 Dec 2026 04:00:00 +0100</ext:ends_at>
+      <description>Due to track construction works on Stefan-Fadinger-Platz, there are restrictions on line 1. Measures: Line 1: service only between Prater Hauptallee and Knöllgasse. [Until 05.12.]</description>
+      <content:encoded><![CDATA[Due to track construction works on Stefan-Fadinger-Platz, there are restrictions on line 1. Measures: Line 1: service only between Prater Hauptallee and Knöllgasse.<br/>[Until 05.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[56A/56B/N62: Strampfergasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">d26c6c6963612c560045052c175b1ec9ef04add4290e496a66c9625d2dde4a6e</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 19 Oct 2026 00:00:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Tue, 03 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <georss:point>48.167289 16.277365</georss:point>
+      <description>Towards Bhf. Atzgersdorf S: Hermesstraße after Strampfergasse → approx. 100 metres towards Dr.-Schober-Straße. Direction Hietzing U: Discontinued. Stop relocation … [Until 03.11.]</description>
+      <content:encoded><![CDATA[Towards Bhf. Atzgersdorf S: Hermesstraße after Strampfergasse → approx. 100 metres towards Dr.-Schober-Straße. Direction Hietzing U: Discontinued. Stop relocation …<br/>[Until 03.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[80A: ÖBB-construction works]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">5a68b1fc449f7041118da0ac6c6652cede40d8eb9c245e412fcac285c52db7c7</guid>
+      <pubDate>Tue, 06 Oct 2026 14:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 19 Oct 2026 00:00:57 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
+      <description>Monday-Friday, line 80A towards Schlachthausgasse U: diversion from Praterstern / Franzensbrückenstraße via Praterstern - Hauptallee - Sportklubstraße. [Until 31.12.2027]</description>
+      <content:encoded><![CDATA[Monday-Friday, line 80A towards Schlachthausgasse U: diversion from Praterstern / Franzensbrückenstraße via Praterstern - Hauptallee - Sportklubstraße.<br/>[Until 31.12.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
