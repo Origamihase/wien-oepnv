@@ -1238,6 +1238,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "9: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 16:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Feßtgasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509",
+    "pubDate": "2026-10-25T16:18:00+01:00",
+    "starts_at": "2026-10-25T16:18:51+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=9|D=2026-10-25|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261025-0020"
+    ],
+    "_incident_start": "2026-10-25T16:18:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "D: Gleisbauarbeiten",
     "description": "Linie D: Kein Betrieb zwischen Börse und Augasse. Weichen Sie ersatzweise auf die Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A aus. Grund: Gleisbauarbeiten im Bereich Althanstraße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
