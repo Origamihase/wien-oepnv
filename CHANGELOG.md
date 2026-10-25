@@ -10,6 +10,25 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **EN: beide Richtungen einer Verlegung gleich benannt (2026-10-25)**: Abbau
+  technischer Schulden auf Michaels Wunsch. Seit #2056 steht eine Verlegung
+  für beide Richtungen als „Richtung X: A → B. Richtung Y: aufgelassen.“ da.
+  Die Pfeilzeile rendert `_render_wl_sentence` ohne Modell, die Zeile mit dem
+  bloßen „aufgelassen“ ging durchs Modell, weil `_RELOCATION_CLOSED_LINE_RE`
+  nur „ersatzlos aufgelassen“ kannte. Der EN-Feed las „Towards Bhf.
+  Atzgersdorf S: … Direction Hietzing U: Discontinued.“ (56A/56B/N62
+  Strampfergasse). Jetzt gilt auch das bloße „aufgelassen“ als Record-Zeile,
+  beide Überschriften lesen „Towards“. Dazu heißt WLs Überschrift
+  „Haltestellenverlegung bzw. -auflassung“ fest „stop relocation or
+  closure“; das Modell hatte „Stop relocation resp. release“ geschrieben.
+  Von 12.260 verschiedenen WL- und ÖBB-Texten im Cache ändern sich im
+  englischen Text genau die drei Strampfergasse-Fassungen. Ohne
+  Cache-Epoche: bereits übersetzte Meldungen behalten ihren Text, bis sie
+  enden (die laufende Strampfergasse-Meldung bis 03.11.). Michaels
+  Entscheidung („Ich folge deiner Empfehlung“): Eine neue Epoche übersetzt
+  den ganzen englischen Feed neu, und das Modell wählt dabei jedes Mal
+  manche Wörter anders. Tests in `tests/test_en_direction_heading_record.py`;
+  `docs/architecture.md`.
 * **Platzhalter-Nonce immer gemischt (2026-10-25)**: Abbau technischer
   Schulden auf Michaels Wunsch („Ich möchte technische Schulden gerne
   loswerden.“). `secrets.token_hex(8)` ergab etwa jede 1 800. Nonce nur aus

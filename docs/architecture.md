@@ -726,7 +726,13 @@ verdrängt eine andere Störung.
   Richtung Dr.-Schober-Straße. Richtung Hietzing U: aufgelassen.“ Vorher
   stand auf dem TV „Hermesstraße nach Strampfergasse → etwa 100 Meter …
   Hermesstraße nach Strampfergasse → aufgelassen.“, verlegt und
-  aufgelassen zugleich. Hausnummern behalten ihren Buchstaben („27b“, „2a“, DIN 5008):
+  aufgelassen zugleich. Im englischen Feed lesen beide Überschriften
+  „Towards …“: Auch der Satz mit dem bloßen „aufgelassen“ geht wie jede
+  Pfeilzeile ohne Modell (`_RELOCATION_CLOSED_LINE_RE`, seit 2026-10-25);
+  vorher stand „Towards Bhf. Atzgersdorf S: … Direction Hietzing U:
+  Discontinued.“ WLs Überschrift „Haltestellenverlegung bzw. -auflassung“
+  heißt fest „stop relocation or closure“ (vorher „Stop relocation resp.
+  release“). Hausnummern behalten ihren Buchstaben („27b“, „2a“, DIN 5008):
   `html_to_text` trennt nur noch Einheiten aus einem Buchstaben („2 m“,
   „5 h“) ab, „27 b-27 c“ stand mit dem Pfeil sichtbar im Feed. Die Folge einer Kurzmeldung steht
   immer als Satz mit Punkt da („Busse halten bei Haltestelle N71.“), und
