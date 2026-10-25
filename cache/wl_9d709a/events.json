@@ -1210,6 +1210,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "7A: Fahrtbehinderung Falschparker",
+    "description": "Linie 7A: Fahrtbehinderung in Richtung Meidling Hauptstraße U. Voraussichtliche Dauer: 08:20 Uhr. Grund: Falschparker im Bereich Sonnleithnergasse 49.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "77994cd70c8bd44acc7c6ae28c2d0cee63d1f01a0b2acaf969f56ecb941ab571",
+    "pubDate": "2026-10-25T07:54:00+01:00",
+    "starts_at": "2026-10-25T07:57:01+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=7A|D=2026-10-25|TK=falschparker",
+    "_wl_ids": [
+      "I20261025-0006"
+    ],
+    "_incident_start": "2026-10-25T07:54:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "80A: Betrieb ab Vivariumstraße 2",
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1287,7 +1303,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U2: Rettungseinsatz",
-    "description": "Die Linie U2 fährt derzeit nur zwischen Karlsplatz und Aspern Nord. Ersatz: Linie 84A. Voraussichtliche Dauer: 08:00 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Seestadt.",
+    "description": "Die Linie U2 fährt derzeit nur zwischen Karlsplatz und Aspern Nord. Ersatz: Linie 84A. Voraussichtliche Dauer: 08:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Seestadt.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
     "pubDate": "2026-10-25T06:43:00+01:00",
@@ -1298,22 +1314,6 @@
       "I20261025-0005"
     ],
     "_incident_start": "2026-10-25T06:43:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-10-25T05:53:00+01:00",
-    "starts_at": "2026-10-25T05:53:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U3|D=2026-10-25|TK=u3 verspätungen",
-    "_wl_ids": [
-      "I20261025-0004"
-    ],
-    "_incident_start": "2026-10-25T05:53:00+01:00"
   },
   {
     "source": "Wiener Linien",
