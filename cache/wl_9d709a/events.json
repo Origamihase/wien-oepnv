@@ -870,6 +870,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11/O: Gleisschaden",
+    "description": "Linie 11: Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Quellenplatz. Linie O: Betrieb nur zwischen Bruno-Marek-Allee und Quellenplatz. Ersatz: Linien 7A, 14A, 15A und 66A. Voraussichtliche Dauer: 16:30 Uhr. Grund: Gleisschaden im Bereich Neilreichgasse 97.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1ef21baac093e72220388999cf84c29b32b0fe11c2b96d1700053d9b608f637b",
+    "pubDate": "2026-10-25T14:49:00+01:00",
+    "starts_at": "2026-10-25T14:49:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=11,O|D=2026-10-25|TK=11 o gleisschaden",
+    "_wl_ids": [
+      "I20261025-0019"
+    ],
+    "_incident_start": "2026-10-25T14:49:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "11A: Busse halten Meiereistraße gegenüber 12",
     "description": "Bauarbeiten\nBusse halten Meiereistraße gegenüber 12",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1152,7 +1168,7 @@
     "guid": "b1b59ef91c7e5513a7a2362ffbc5f6ec21eb687935ff3e74c62591a531321745",
     "pubDate": "2026-10-25T14:12:00+01:00",
     "starts_at": "2026-10-25T14:12:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-10-25T15:13:00+01:00",
     "_identity": "wl|störung|L=31A|D=2026-10-25|TK=polizeieinsatz",
     "_wl_ids": [
       "I20261025-0018"
