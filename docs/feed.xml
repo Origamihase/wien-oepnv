@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 25 Oct 2026 11:08:54 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 25 Oct 2026 11:30:53 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U4: Polizeieinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a</guid>
+      <pubDate>Sun, 25 Oct 2026 11:20:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sun, 25 Oct 2026 11:20:00 +0100</ext:first_seen>
+      <ext:starts_at>Sun, 25 Oct 2026 11:20:00 +0100</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Seit 11:20]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Seit 11:20]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[7A: Falschparker]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -136,20 +149,6 @@
       <georss:point>48.167289 16.277365</georss:point>
       <description>Richtung Bhf. Atzgersdorf S: Hermesstraße nach Strampfergasse → etwa 100 Meter in Richtung Dr.-Schober-Straße. Richtung Hietzing U: aufgelassen. Haltestellenverlegung … [Bis 03.11.]</description>
       <content:encoded><![CDATA[Richtung Bhf. Atzgersdorf S: Hermesstraße nach Strampfergasse → etwa 100 Meter in Richtung Dr.-Schober-Straße. Richtung Hietzing U: aufgelassen. Haltestellenverlegung …<br/>[Bis 03.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[80A: ÖBB-Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5a68b1fc449f7041118da0ac6c6652cede40d8eb9c245e412fcac285c52db7c7</guid>
-      <pubDate>Tue, 06 Oct 2026 14:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 19 Oct 2026 00:00:57 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Fri, 31 Dec 2027 23:59:00 +0100</ext:ends_at>
-      <description>Montag-Freitag, Linie 80A in Richtung Schlachthausgasse U: Umleitung ab Praterstern / Franzensbrückenstraße über Praterstern - Hauptallee - Sportklubstraße. [Bis 31.12.2027]</description>
-      <content:encoded><![CDATA[Montag-Freitag, Linie 80A in Richtung Schlachthausgasse U: Umleitung ab Praterstern / Franzensbrückenstraße über Praterstern - Hauptallee - Sportklubstraße.<br/>[Bis 31.12.2027]]]></content:encoded>
     </item>
   </channel>
 </rss>
