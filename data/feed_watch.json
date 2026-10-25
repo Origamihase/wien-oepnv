@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-25T03:00:48.712691+00:00",
- "built": "2026-10-25T04:00:42+01:00",
+ "updated": "2026-10-25T03:30:48.787007+00:00",
+ "built": "2026-10-25T04:30:43+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-25T04:00:42+01:00",
+  "built": "2026-10-25T04:30:43+01:00",
   "items": [
    {
     "title": "S2: Wien Leopoldau ↔ Mistelbach",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-18T03:00:59.941131+00:00",
-   "raw": {
-    "wl-stoerungen": 59,
-    "wl-hinweise": 98,
-    "oebb": 159,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 20,
-    "oebb": 136,
-    "baustellen": 69
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 102
-   }
-  },
   {
    "t": "2026-10-18T03:31:19.755341+00:00",
    "raw": {
@@ -6791,17 +6771,37 @@
     "oebb": 9,
     "wl": 117
    }
+  },
+  {
+   "t": "2026-10-25T03:30:48.787007+00:00",
+   "raw": {
+    "wl-stoerungen": 75,
+    "wl-hinweise": 82,
+    "oebb": 158,
+    "baustellen-linien": 56,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 8,
+    "oebb": 134,
+    "baustellen": 71
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 116
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-25T03:00:48.712691+00:00"
+   "last_ok": "2026-10-25T03:30:48.787007+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-25T03:00:48.712691+00:00"
+   "last_ok": "2026-10-25T03:30:48.787007+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-25T03:00:48.712691+00:00"
+   "last_ok": "2026-10-25T03:30:48.787007+00:00"
   }
  }
 }
