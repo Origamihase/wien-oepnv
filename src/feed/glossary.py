@@ -177,6 +177,10 @@ _GLOSSARY_BASE: dict[str, str] = {
     # 4 of 563 WL items in the cache history carry it, 1 the plural.
     "Haltestellenauflassungen": "stop closures",
     "Haltestellenauflassung": "stop closure",
+    # Both in one, as WL heads a notice for both directions of a stop
+    # (56A/56B/N62 Strampfergasse, 20.10.2026). The EN feed read "Stop
+    # relocation resp. release of lines …": the closure became a "release".
+    "Haltestellenverlegung bzw. -auflassung": "stop relocation or closure",
     **{f"{de}:": f"{en}:" for de, en in _FIELD_LABEL_EN.items()},
     # The qualified label WL's incident template opens its record with (see
     # ``_split_label_record``), one capitalised label like the others.

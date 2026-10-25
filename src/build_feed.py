@@ -5505,9 +5505,14 @@ _WL_SENTENCE_SPLIT_RE: re.Pattern[str] = re.compile(
 
 
 # A closed stop's line from :func:`_relocation_arrows` ("Hartäckerstraße 65:
-# ersatzlos aufgelassen.") is the same record as an arrow line.
+# ersatzlos aufgelassen.") is the same record as an arrow line. So is the
+# bare closure under a direction heading (``_relocation_by_direction``,
+# "Richtung Hietzing U: aufgelassen."): it went through the model while the
+# arrow line before it did not, and one notice read "Towards Bhf.
+# Atzgersdorf S: … Direction Hietzing U: Discontinued." (EN feed
+# 2026-10-25). Both headings now read "Towards".
 _RELOCATION_CLOSED_LINE_RE: re.Pattern[str] = re.compile(
-    r"\S:\s+ersatzlos\s+aufgelassen\.?$"
+    r"\S:\s+(?:ersatzlos\s+)?aufgelassen\.?$"
 )
 
 
