@@ -24,6 +24,23 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
   Schnitt). Replay: über alle Cache-Texte seit Juni ändern sich
   43 ÖBB-Texte, kein WL-Text; die ganze Kette über neun Feed-Stände vom
   20. bis 26.10. ändert nur die S1-Meldung, Auswahl und Reihenfolge gleich.
+* **Veröffentlichende Workflows checken den aktuellen Stand aus (2026-10-25)**:
+  Prüfung der schreibenden Workflows auf Michaels Wunsch. `update-cycle.yml`,
+  `manual-full-refresh.yml`, `seo-guard.yml` und `update-stations.yml`
+  checkten den Commit aus, der den Lauf ausgelöst hatte (`github.sha`). Hielt
+  die Concurrency-Gruppe einen Lauf zurück, baute er auf dem älteren Stand,
+  und seine Zustandsdateien gewannen den Rebase-Konflikt in
+  `scripts/publish_to_main.sh` gegen die neueren. Einmal in 791 Update-Läufen
+  vom 10.10. bis 25.10.: am 17.10. um 08:30 UTC nach dem Rebuild zu #2034,
+  ohne verlorenen Eintrag. Jetzt checken alle fünf mit `ref: github.ref` den
+  Branch beim Jobstart aus, wie `build-feed.yml` seit 05.10. Geprüft und
+  unverändert: Ein fehlgeschlagener Checkout bricht den Lauf ab (der zweite
+  Versuch hat kein `continue-on-error`), ein fehlgeschlagener Abruf lässt den
+  letzten guten Cache stehen, ein fehlgeschlagener Feed-Build überspringt die
+  Veröffentlichung, und ein leerer oder kaputter Feed wird nie veröffentlicht.
+  Eine gemeinsame Concurrency-Gruppe für alle fünf bleibt aus (Begründung in
+  `docs/development.md`, „Veröffentlichen auf `main`“). Test in
+  `tests/test_publish_to_main.py`.
 
 * **EN: beide Richtungen einer Verlegung gleich benannt (2026-10-25)**: Abbau
   technischer Schulden auf Michaels Wunsch. Seit #2056 steht eine Verlegung

@@ -125,10 +125,21 @@ jobs:
       # Workaround for actions/checkout#2351 (sporadic includeIf credential
       # race on v6 → "could not read Username, terminal prompts disabled").
       # Two attempts; remove once v6.0.3+ is pinned.
+      #
+      # ``ref: github.ref`` checks out the branch as it is when the job
+      # starts, not the commit that triggered the run (``github.sha``). The
+      # concurrency lane holds this job while a rebuild (build-feed.yml), a
+      # full refresh or an earlier tick pushes; built on the older commit,
+      # its state files (first_seen, VAO counter, Wächter state) would win
+      # the rebase conflict in ``publish_to_main.sh`` over the newer ones.
+      # Seen once: 17.10.2026 08:30 UTC, the tick waited 57 s for the
+      # rebuild after the merge of #2034 (no entry lost that time). Same
+      # rule as build-feed.yml.
       - name: Check out repository (attempt 1/2)
         id: checkout
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
+          ref: ${{ github.ref }}
           # Shallow on purpose: the full history is ~55 MB and grows with
           # every committed cache/ledger version, while the tip alone is
           # ~7 MB and stays flat. ``git pull --rebase --autostash`` in the
@@ -143,6 +154,7 @@ jobs:
         if: steps.checkout.outcome == 'failure'
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
+          ref: ${{ github.ref }}
           fetch-depth: 1
 
       # Configure the bot git identity once, up front, so every later

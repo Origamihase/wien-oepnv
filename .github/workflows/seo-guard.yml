@@ -40,10 +40,18 @@ jobs:
       # Workaround for actions/checkout#2351 (sporadic includeIf credential
       # race on v6 → "could not read Username, terminal prompts disabled").
       # Two attempts; remove once v6.0.3+ is pinned.
+      #
+      # ``ref: github.ref`` checks out the branch as it is when the job
+      # starts, not the commit that triggered the run (``github.sha``): the
+      # concurrency lane holds a run while an earlier one pushes, and files
+      # built on the older commit would win a rebase conflict in
+      # ``publish_to_main.sh`` over the newer ones. Same rule as
+      # build-feed.yml.
       - name: Check out repository (attempt 1/2)
         id: checkout
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
+          ref: ${{ github.ref }}
           fetch-depth: 0
         continue-on-error: true
 
@@ -51,6 +59,7 @@ jobs:
         if: steps.checkout.outcome == 'failure'
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
+          ref: ${{ github.ref }}
           fetch-depth: 0
 
       - name: Set up Python
