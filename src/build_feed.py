@@ -834,6 +834,75 @@ def _oebb_long_date_lists_in_words(text: str) -> str:
     return " ".join(shorten(part) for part in _SENTENCE_SPLIT_RE.split(text))
 
 
+# ÖBB says what does not run at the very end of its sentence, behind the
+# routes and days: "Wegen Bauarbeiten kann zwischen … und zwischen … an
+# einzelnen Tagen der S1-Zug 23626 nicht fahren." A sentence that is still
+# over the 180 characters once its lists read in words lost exactly that to
+# the cut: on 25.10.2026 the TV read "… an einzelnen Tagen der S1-Zug …"
+# (Jules audit 2026-10-25), and 45 ÖBB notices since December 2025 ended
+# the same way ("… von 31.10.2026 bis 30.11.2026 …", "… einige
+# Nahverkehrszüge …"). Such a sentence now names the trains and what they
+# cannot do first, and the routes and days follow behind a colon: "Wegen
+# Bauarbeiten kann der S1-Zug 23626 nicht fahren: zwischen … an einzelnen
+# Tagen." The cut then takes the end of the routes and days, which the
+# title and the time line also name. Only ÖBB's own words are moved; a
+# sentence that fits keeps its order. A sentence with two subjects ("der
+# Zug REX6 (7799) zwischen … der Zug S60 …") or another verb ("werden …
+# umgeleitet und können … nicht halten") keeps its order too. A list of
+# three or more train numbers that keeps the sentence over the limit reads
+# as their count ("die Züge S1 (28632), S1 (28684), … und S2 (28153)" →
+# "11 Züge"): eleven numbers took the 180 characters on 02.08.2026, route
+# and "nicht fahren" included.
+_OEBB_TRAIN_NUMBER = (
+    r"(?:[A-Z]{1,4} ?\d{1,5}[A-Z]?(?: ?\(\d{2,5}\))?|\d{2,5}"
+    r"|\(\d{2,5}(?:, \d{2,5})*(?: und \d{2,5})?\))"
+)
+_OEBB_TRAINS = (
+    r"(?:der|die|keine|einige) (?:\S+ ){0,3}?\S*(?:Zug|[Zz]üge)"
+    rf"(?:(?:,? | und ){_OEBB_TRAIN_NUMBER})*"
+)
+_OEBB_CANNOT_RUN_RE = re.compile(
+    r"(?P<lead>(?:[A-ZÄÖÜ][a-zäöü]+: )?(?:Wegen|Von|Am|An|Ab|Aufgrund) [^.]*? (?:kann|können))"
+    rf" (?P<middle>.+?) (?P<trains>{_OEBB_TRAINS}) (?P<verb>(?:nicht )?fahren)\."
+)
+_OEBB_TRAINS_RE = re.compile(rf"\b{_OEBB_TRAINS}\b")
+_OEBB_TRAIN_NUMBERS_RE = re.compile(r"(?<![\d.])\d{3,5}(?![\d.])")
+_OEBB_LISTED_TRAINS_RE = re.compile(r"die (?P<noun>\S*[Zz]üge) ")
+_OEBB_OTHER_VERB_RE = re.compile(r"\b(?:wird|werden|ist|sind|war|waren)\b")
+
+
+def _oebb_what_does_not_run_first(sentence: str) -> str:
+    """An ÖBB sentence over 180 characters with its trains in front (see above)."""
+    if len(sentence) <= _OEBB_DAYS_IN_WORDS_LIMIT:
+        return sentence
+    match = _OEBB_CANNOT_RUN_RE.fullmatch(sentence)
+    if (
+        match is None
+        or _OEBB_OTHER_VERB_RE.search(match["lead"])
+        or _OEBB_TRAINS_RE.search(match["middle"])
+        or (match["verb"] == "fahren") != match["trains"].startswith("keine ")
+    ):
+        return sentence
+    trains, middle = match["trains"], match["middle"]
+    numbers = _OEBB_TRAIN_NUMBERS_RE.findall(trains)
+    listed = _OEBB_LISTED_TRAINS_RE.match(trains)
+    if len(numbers) >= 3 and listed is not None:
+        trains = f"{len(numbers)} {listed['noun']}"
+    # "an einzelnen Tagen" at the end of the routes says when the trains do
+    # not run: it goes with them ("kann der S1-Zug 23626 an einzelnen Tagen
+    # nicht fahren: zwischen …"), where the cut cannot take it.
+    days = ""
+    if middle.endswith(f" {_OEBB_DAYS_IN_WORDS}"):
+        middle, days = middle.removesuffix(f" {_OEBB_DAYS_IN_WORDS}"), _OEBB_DAYS_IN_WORDS
+    if not days:
+        head = f"{trains} {match['verb']}"
+    elif trains.startswith(("der ", "die ")):
+        head = f"{trains} {days} {match['verb']}"
+    else:
+        head = f"{days} {trains} {match['verb']}"
+    return f"{match['lead']} {head}: {middle}."
+
+
 def _oebb_section_labels_cased(text: str) -> str:
     """``"TEILAUSFALL: …"`` → ``"Teilausfall: …"``, every word of the label."""
     return _OEBB_SECTION_LABEL_RE.sub(
@@ -5451,7 +5520,196 @@ def _render_oebb_sentence(
             else ""
         )
         return f"{cause}, no {match['trains']} trains can run{between}{dates}."
+    parts = _oebb_cannot_run_parts(sentence)
+    if parts is not None:
+        cause = _oebb_cause_en(parts.cause, ident, source, category)
+        if cause is None:
+            return None
+        if parts.rest is not None:
+            return f"{cause}, {parts.head}{parts.rest}"
+        # Routes or days outside the closed set: they alone go through the
+        # model, behind the colon the German sentence has there.
+        rest = _translate_text_attempt(
+            parts.middle, ident, source=source, category=category, oebb_templates=False
+        )
+        if rest is None:
+            return None
+        rest = rest.strip()
+        if rest.split(" ", 1)[0].casefold() in _WL_MAIN_CLAUSE_SMALL_WORDS:
+            rest = rest[:1].lower() + rest[1:]
+        return f"{cause}, {parts.head}: {rest}"
     return _render_oebb_follow_up(sentence)
+
+
+# ÖBB's sentence for trains that do not run: "Wegen Bauarbeiten kann zwischen
+# Wien Leopoldau Bahnhst (U) und Mistelbach/Zaya Bahnhof am 25.10.2026 und
+# 01.11.2026 der S2-Zug 23360 nicht fahren." The model lost the verb at the
+# end behind the routes and days (Jules audit 2026-10-25, both from the EN
+# feed): "… the S2 train can't drive 23360." and "Construction works allows
+# between … on individual days of the S1 train …", as if the train ran. The
+# sentence is rendered from its parts, in ÖBB's order or in the one
+# :func:`_oebb_what_does_not_run_first` gives it: "Due to construction works,
+# the S2 train 23360 cannot run between Wien Leopoldau station (U) and
+# Mistelbach/Zaya station on 25.10.2026 and 01.11.2026." Only the cause goes
+# through the model. Routes and days are read from a closed set (zwischen A
+# und B, am …, von … bis …, an einzelnen Tagen, "(jeweils hh:mm Uhr - hh:mm
+# Uhr)"); a sentence with anything else ("in der Nacht von …", "(jeweils
+# Samstag, Sonntag und Feiertag)") keeps the rendered trains and verb, and
+# only its routes and days go through the model, behind a colon as in the
+# German. A German summary cut at the 180 characters ends in " …" and keeps
+# it.
+_OEBB_CANNOT_RUN_FRONT_RE = re.compile(
+    rf"Wegen (?P<cause>[^.:]+?) (?:kann|können)(?P<days1> {_OEBB_DAYS_IN_WORDS})?"
+    rf" (?P<trains>(?:\d{{1,3}} \S*[Zz]üge|{_OEBB_TRAINS}))(?P<days2> {_OEBB_DAYS_IN_WORDS})?"
+    r" (?P<verb>(?:nicht )?fahren): (?P<middle>.+?)(?:\.|(?P<cut> …))"
+)
+_OEBB_CANNOT_RUN_EN_TRAIN_NOUNS: dict[str, str] = {
+    "zug": "train",
+    "züge": "trains",
+    "nahverkehrszüge": "local trains",
+    "fernverkehrszüge": "long-distance trains",
+    "nachtzüge": "night trains",
+}
+_OEBB_EN_TIME = r"\d{1,2}:\d{2}"
+_OEBB_EN_NAME = r"[A-ZÄÖÜ][^,()\d…]*?(?: \(U\))?"
+_OEBB_EN_NAME_END = r"(?= und zwischen| bzw\. zwischen|, (?:und )?zwischen| (?:am|von|an)\b| \(|$)"
+_OEBB_EN_SEGMENT_RE = re.compile(
+    rf"zwischen (?P<a>{_OEBB_EN_NAME}(?: bzw\. {_OEBB_EN_NAME})?)"
+    rf" und (?P<b>{_OEBB_EN_NAME}(?: bzw\. {_OEBB_EN_NAME})?){_OEBB_EN_NAME_END}"
+    rf"|von (?P<d1>{_OEBB_DATE})(?: \((?P<c1>ca\. )?(?P<t1>{_OEBB_EN_TIME}) Uhr\))?"
+    rf" bis (?:(?P<d2>{_OEBB_DATE})(?: \((?P<c2>ca\. )?(?P<t2>{_OEBB_EN_TIME}) Uhr\))?"
+    rf"|voraussichtlich(?: Ende (?P<year>\d{{4}})|(?=$)))"
+    rf"|am (?P<on>{_OEBB_DATE}(?:(?:,| und)(?: am)? {_OEBB_DATE})*)"
+    rf"|(?P<days>{_OEBB_DAYS_IN_WORDS})"
+    rf"|\(jeweils (?P<e1>{_OEBB_EN_TIME}) Uhr - (?P<e2>{_OEBB_EN_TIME}) Uhr\)"
+)
+_OEBB_EN_JOINER_RE = re.compile(r"(?:,? und | bzw\. |, | )")
+# What the cut left of a last route: "zwischen Wien Leopoldau Bahnhst".
+_OEBB_EN_CUT_ROUTE_RE = re.compile(rf"zwischen (?P<a>{_OEBB_EN_NAME})(?: und (?P<b>{_OEBB_EN_NAME}))?")
+
+
+def _oebb_cannot_run_trains_en(trains: str, verb: str) -> str | None:
+    """``"der S1-Zug 23626"`` → ``"the S1 train 23626"``; ``None`` when unknown."""
+    article, rest = trains.split(" ", 1)
+    noun_match = re.search(r"(?P<pre>(?:\S+ )*?)(?P<noun>\S*?)(?P<word>Zug|[Zz]üge)\b(?P<tail>.*)", rest)
+    if noun_match is None:
+        return None
+    compound = (noun_match["noun"] + noun_match["word"]).casefold()
+    named = noun_match["noun"].removesuffix("-")
+    if compound in _OEBB_CANNOT_RUN_EN_TRAIN_NOUNS:
+        noun = _OEBB_CANNOT_RUN_EN_TRAIN_NOUNS[compound]
+    elif named and noun_match["noun"].endswith("-") and not named[0].islower():
+        noun = f"{named} {_OEBB_CANNOT_RUN_EN_TRAIN_NOUNS[noun_match['word'].casefold()]}"
+    else:
+        return None
+    pre = noun_match["pre"].replace("- und ", " and ").replace(" und ", " and ")
+    if pre and re.search(r"[a-zäöüß]{3}", pre.replace(" and ", " ")):
+        return None
+    tail = noun_match["tail"].replace(" und ", " and ")
+    lead = {"der": "the ", "die": "the ", "keine": "no ", "einige": "some "}.get(article)
+    if lead is None and article.isdigit():
+        lead = f"{article} "
+    if lead is None or (verb == "fahren") != (article == "keine"):
+        return None
+    if lead == "the " and not named and tail:
+        # "der Zug RJ 650", "die Züge IC 1110, …": the numbers name them.
+        lead = ""
+    return f"{lead}{pre}{noun}{tail}"
+
+
+def _oebb_cannot_run_middle_en(middle: str, *, cut: bool) -> str | None:
+    """The routes and days of the sentence in English; ``None`` when unknown."""
+    english: list[str] = []
+    pos = 0
+    while pos < len(middle):
+        if pos:
+            joiner = _OEBB_EN_JOINER_RE.match(middle, pos)
+            if joiner is None:
+                return None
+            word = joiner[0].strip(" ,")
+            english.append({"und": " and", "bzw.": " or"}.get(word, "," if "," in joiner[0] else ""))
+            pos = joiner.end()
+        segment = _OEBB_EN_SEGMENT_RE.match(middle, pos)
+        if segment is None and cut:
+            segment = _OEBB_EN_CUT_ROUTE_RE.fullmatch(middle, pos)
+        if segment is None:
+            return None
+        groups = segment.groupdict()
+        if groups.get("a") is not None:
+            names = [groups["a"], groups["b"]] if groups.get("b") else [groups["a"]]
+            alternatives = [name.split(" bzw. ") for name in names]
+            if any(_OEBB_SLOT_NOT_A_NAME_RE.search(n) for alt in alternatives for n in alt):
+                return None
+            english.append(" between " + " and ".join(
+                " or ".join(_oebb_station_en(n) for n in alt) for alt in alternatives
+            ))
+        elif groups.get("d1") is not None:
+            def at(day: str, approx: str | None, time: str | None) -> str:
+                return f"{day} ({'approx. ' if approx else ''}{time})" if time else day
+            if groups["year"] is not None:
+                until = f"until probably the end of {groups['year']}"
+            elif groups["d2"] is None:
+                until = "until probably"
+            else:
+                until = f"to {at(groups['d2'], groups['c2'], groups['t2'])}"
+            english.append(f" from {at(groups['d1'], groups['c1'], groups['t1'])} {until}")
+        elif groups.get("on") is not None:
+            days = re.split(r"(?:,| und)(?: am)? ", groups["on"])
+            english.append(" on " + (f"{', '.join(days[:-1])} and {days[-1]}" if len(days) > 1 else days[0]))
+        elif groups.get("days") is not None:
+            english.append(" on certain days")
+        else:
+            english.append(f" (each day {groups['e1']} - {groups['e2']})")
+        pos = segment.end()
+    return "".join(english)
+
+
+class _OebbCannotRun(NamedTuple):
+    """ÖBB's "… kann … nicht fahren." in parts (:func:`_oebb_cannot_run_parts`)."""
+
+    cause: str
+    # The English of the trains and the verb ("the S2 train 23360 cannot run").
+    head: str
+    # The English of the routes and days, ``None`` when outside the closed set.
+    rest: str | None
+    # Their German, for the model then.
+    middle: str
+
+
+def _oebb_cannot_run_parts(sentence: str) -> _OebbCannotRun | None:
+    """ÖBB's "… kann … nicht fahren." in parts (see above), ``None`` for any other.
+
+    The routes and days may be outside the closed set only in the order with
+    the trains first.
+    """
+    front = _OEBB_CANNOT_RUN_FRONT_RE.fullmatch(sentence)
+    if front is not None:
+        cause, trains, verb, middle = front["cause"], front["trains"], front["verb"], front["middle"]
+        days = bool(front["days1"] or front["days2"])
+        cut = bool(front["cut"])
+    else:
+        back = _OEBB_CANNOT_RUN_RE.fullmatch(sentence)
+        if back is None or not back["lead"].startswith("Wegen "):
+            return None
+        cause = back["lead"].removeprefix("Wegen ").rsplit(" ", 1)[0]
+        trains, verb, middle, days, cut = back["trains"], back["verb"], back["middle"], False, False
+    if _OEBB_OTHER_VERB_RE.search(cause) or _OEBB_TRAINS_RE.search(middle):
+        return None
+    trains_en = _oebb_cannot_run_trains_en(trains, verb)
+    if trains_en is None:
+        return None
+    middle_en = _oebb_cannot_run_middle_en(middle, cut=cut)
+    if middle_en is None and front is None:
+        return None
+    verb_en = "can run" if verb == "fahren" else "cannot run"
+    when = " on certain days" if days else ""
+    end = " …" if cut else "."
+    return _OebbCannotRun(
+        cause=cause,
+        head=f"{trains_en} {verb_en}{when}",
+        rest=None if middle_en is None else f"{middle_en}{end}",
+        middle=middle + end,
+    )
 
 
 # ÖBB's second sentence says what is still going on, in a handful of fixed
@@ -6083,6 +6341,21 @@ def _oebb_section_label_defect(source: str, cached: str) -> str | None:
     return None
 
 
+def _oebb_cannot_run_defect(source: str, cached: str) -> str | None:
+    """``"trains sentence"`` when *cached* lacks what the template says.
+
+    ÖBB's "… kann … nicht fahren." is rendered from its parts since
+    2026-10-25 (:func:`_oebb_cannot_run_parts`); a value cached before reads
+    "… the S2 train can't drive 23360." Only such an item is translated
+    again, not every item, as an epoch move would.
+    """
+    for sentence in _OEBB_SENTENCE_SPLIT_RE.split(source.strip()):
+        parts = _oebb_cannot_run_parts(sentence)
+        if parts is not None and parts.head not in cached:
+            return "trains sentence"
+    return None
+
+
 def _cached_translation(
     text: str,
     field: str,
@@ -6162,7 +6435,7 @@ def _cached_translation(
     if isinstance(cached, str) and cached and cached != text:
         defect = _cached_translation_defect(text, cached)
         if defect is None and source == _OEBB_SOURCE:
-            defect = _oebb_section_label_defect(text, cached)
+            defect = _oebb_section_label_defect(text, cached) or _oebb_cannot_run_defect(text, cached)
         if defect is None:
             # Cached before "due to" was the one cause preposition
             # (``_cause_due_to``); the model's words are otherwise kept.
@@ -11301,6 +11574,8 @@ def _format_item_content(
         if s.strip()
     ]
     sentences = _oebb_title_route_first(sentences, raw_title, oebb=it.get("source") == _OEBB_SOURCE)
+    if sentences and it.get("source") == _OEBB_SOURCE:
+        sentences[0] = _oebb_what_does_not_run_first(sentences[0])
     if sentences and not fragment_led:
         short_summary = sentences[0]
         # Append the second sentence whenever the combined length still
