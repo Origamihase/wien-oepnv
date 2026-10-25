@@ -484,6 +484,24 @@ def aggregate_stoerungen(rows: list[StoerungRow]) -> StoerungAggregate:
     )
 
 
+# A cancelled train whose VAO name is its train number, not a line: "S28700",
+# "CJX2932". Lines on the Stammstrecke have at most three digits (S45, R81,
+# REX92); ÖBB train numbers have four or five. Between 27.05. and 07.07.2026
+# VAO named eleven cancelled trains that way. Ten of them were given their
+# line from the timetable (the line leaving Wien Hbf in the same direction at
+# the same minute on the other days; Michael's yes 26.10.2026 00:23 Vienna);
+# S28700 (06.07. 05:57) stays, since that minute ran S3 six times and S2 five
+# times. A train number counts under this label instead of as a line of its
+# own; the ledger keeps the name VAO gave.
+NO_LINE_LABEL: Final = "ohne Linienangabe"
+_TRAIN_NUMBER_RE: Final = re.compile(r"^(?:S|REX|R|CJX)\d{4,}$")
+
+
+def ausfall_line_label(line: str) -> str:
+    """The line a cancellation counts under: ``line``, or :data:`NO_LINE_LABEL`."""
+    return NO_LINE_LABEL if _TRAIN_NUMBER_RE.match(line.strip()) else line
+
+
 def aggregate_ausfaelle(rows: list[AusfallRow]) -> AusfallAggregate:
     """Roll cancellation rows up into the dimensions the dashboard needs."""
     weekday_count: dict[str, int] = defaultdict(int)
@@ -495,7 +513,7 @@ def aggregate_ausfaelle(rows: list[AusfallRow]) -> AusfallAggregate:
         weekday_count[row.weekday] += 1
         hour_count[row.hour] += 1
         direction_count[row.direction] += 1
-        line_count[row.line] += 1
+        line_count[ausfall_line_label(row.line)] += 1
 
     return AusfallAggregate(
         by_weekday=dict(weekday_count),
@@ -1401,7 +1419,7 @@ def render_readme_ausfaelle_block(
     # block compact.
     line_count: dict[str, int] = defaultdict(int)
     for row in rows:
-        line_count[row.line] += 1
+        line_count[ausfall_line_label(row.line)] += 1
     top_lines = sorted(
         line_count.items(), key=lambda pair: (-pair[1], pair[0])
     )[:3]
