@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261025-0024-F01, I20261025-0019-F02, I20260917-0012, I20261025-0025, I20260922-0032, I20260925-0011, I20260909-0007, I20261025-0022, I20261025-0023, I20261020-0029, I20261025-0003"
+    "trafficInfoNameList": "I20261025-0024-F01, I20260917-0012, I20261025-0026-F01, I20260922-0032, I20260925-0011, I20261025-0025-F01, I20260909-0007, I20261025-0022, I20261020-0029, I20261025-0003"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R36-152, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2359-125, R2371-125, R2370-125, R2343-125, R2372-627, R2420-411, R2379-627, R2373-126, R2373-127, R2373-125, R2345-127, R2380-627, R2378-627, R2343-626, R2372-125, R2558-125, R1974-466, R500-101, R47-171, R46-171, R45-171, R44-171, R51-171, R50-171, R49-171, R17-171, R15-171, R14-171, R13-171, R19-171, R18-171, R1931-170, R1932-170, R1932-111, R1931-111, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R36-152, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2420-411, R2372-627, R2380-627, R2373-126, R2343-626, R2345-127, R2379-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2378-627, R2558-125, R1974-466, R500-101, R47-171, R46-171, R51-171, R44-171, R45-171, R50-171, R49-171, R15-171, R13-171, R17-171, R14-171, R19-171, R18-171, R1932-111, R1931-111, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -304,52 +304,6 @@
     "title": "71: Veranstaltung"
    },
    {
-    "alertCause": "roadway damage",
-    "alertCauseId": 67,
-    "attributes": {
-     "relatedLineTypes": {
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "O: Gleisschaden"
-      }
-     }
-    ],
-    "location": "Neilreichgasse 97",
-    "name": "I20261025-0019-F02",
-    "owner": "WL",
-    "parentName": "I20261025-0019",
-    "priority": "1",
-    "reasonId": 28,
-    "reasonName": "Gleisschaden",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 170,
-      "lineName": "O",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-25T17:30:00.000+0100",
-     "end": "2026-10-25T19:38:00.000+0100",
-     "lastUpdate": "2026-10-25T19:21:00.000+0100",
-     "start": "2026-10-25T14:49:00.000+0100"
-    },
-    "title": "O: Gleisschaden"
-   },
-   {
     "alertCause": "vandalism",
     "alertCauseId": 16,
     "attributes": {
@@ -393,52 +347,6 @@
      "start": "2026-10-25T16:57:00.000+0100"
     },
     "title": "U4: Verunreinigung"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "66A": "ptBusCity"
-     }
-    },
-    "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 66A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 66A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "66A: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261025-0023",
-    "owner": "WL",
-    "parentName": "I20261025-0023",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 466,
-      "lineName": "66A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-25T17:41:00.000+0100",
-     "end": "2026-10-25T19:38:00.000+0100",
-     "lastUpdate": "2026-10-25T19:25:00.000+0100",
-     "resume": "2026-10-25T17:41:00.000+0100",
-     "start": "2026-10-25T17:41:00.000+0100"
-    },
-    "title": "66A: Rettungseinsatz"
    },
    {
     "alertCause": "vehicle on the line",
@@ -494,19 +402,19 @@
       "43A": "ptBusCity"
      }
     },
-    "description": "Derzeit ist ein Betrieb der Linie 43A nicht möglich. Voraussichtliche Dauer: 20:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Höhenstraße.",
-    "descriptionHTML": "<p>Derzeit ist ein Betrieb der Linie 43A nicht möglich.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Höhenstraße.</p>",
+    "description": "Linie 43A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 43A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Derzeit ist ein Betrieb der Linie 43A nicht möglich.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Höhenstraße.</p>",
-       "descriptionPlain": "Derzeit ist ein Betrieb der Linie 43A nicht möglich. Voraussichtliche Dauer: 20:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Höhenstraße.",
+       "descriptionHtml": "<p>Linie 43A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 43A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "43A: Fremder Verkehrsunfall"
       }
      }
     ],
     "location": "Höhenstraße",
-    "name": "I20261025-0025",
+    "name": "I20261025-0025-F01",
     "owner": "WL",
     "parentName": "I20261025-0025",
     "priority": "1",
@@ -525,11 +433,58 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-25T19:29:00.000+0100",
-     "lastUpdate": "2026-10-25T19:29:00.000+0100",
+     "created": "2026-10-25T19:41:00.000+0100",
+     "lastUpdate": "2026-10-25T19:41:00.000+0100",
+     "resume": "2026-10-25T19:41:00.000+0100",
      "start": "2026-10-25T19:27:00.000+0100"
     },
     "title": "43A: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U2: Betriebsstörung"
+      }
+     }
+    ],
+    "location": "Praterstern",
+    "name": "I20261025-0026-F01",
+    "owner": "WL",
+    "parentName": "I20261025-0026",
+    "priority": "1",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 302,
+      "lineName": "U2",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-25T19:39:00.000+0100",
+     "lastUpdate": "2026-10-25T19:39:00.000+0100",
+     "resume": "2026-10-25T19:39:00.000+0100",
+     "start": "2026-10-25T19:35:00.000+0100"
+    },
+    "title": "U2: Betriebsstörung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1385,29 +1340,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Gudrunstraße",
-    "name": "R1931-170",
-    "owner": "WL",
-    "parentName": "R1931-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     1931
-    ],
-    "time": {
-     "end": "2026-10-25T19:45:00.000+0100",
-     "start": "2026-10-25T15:02:43.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Gudrunstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisschaden\nBetrieb ab Quellenplatz",
     "name": "R1932-111",
     "owner": "WL",
@@ -1427,29 +1359,6 @@
      "start": "2026-10-25T15:21:44.000+0100"
     },
     "title": "Gleisschaden\nBetrieb ab Quellenplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Gudrunstraße",
-    "name": "R1932-170",
-    "owner": "WL",
-    "parentName": "R1932-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     1932
-    ],
-    "time": {
-     "end": "2026-10-25T19:45:00.000+0100",
-     "start": "2026-10-25T15:02:43.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Gudrunstraße"
    },
    {
     "alertCause": "undefined alert cause",
