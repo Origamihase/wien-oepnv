@@ -241,3 +241,23 @@ def test_writers_hold_contents_write() -> None:
         doc = yaml.safe_load((WORKFLOWS / name).read_text(encoding="utf-8"))
         perms = [job.get("permissions", {}).get("contents") for job in doc["jobs"].values()]
         assert "write" in perms, name
+
+
+def test_publishers_check_out_the_branch_tip() -> None:
+    # Without ``ref`` actions/checkout fetches ``github.sha``, the commit at
+    # trigger time. A run its concurrency lane held back would build on that
+    # older commit and its state files would win the rebase conflict over the
+    # newer ones (update tick 17.10.2026 08:30 UTC behind the rebuild of #2034).
+    for name, steps in _workflow_runs().items():
+        if not any("scripts/publish_to_main.sh" in text for text in steps):
+            continue
+        doc = yaml.safe_load((WORKFLOWS / name).read_text(encoding="utf-8"))
+        checkouts = [
+            step
+            for job in doc["jobs"].values()
+            for step in job.get("steps", [])
+            if str(step.get("uses", "")).startswith("actions/checkout@")
+        ]
+        assert checkouts, name
+        for step in checkouts:
+            assert step.get("with", {}).get("ref") == "${{ github.ref }}", (name, step.get("name"))
