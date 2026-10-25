@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 25 Oct 2026 23:30:42 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 00:01:08 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[12: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">d8b6053648f051735d042f7aaa40102b1ea59f8da5ebcd3419e785b65458b45a</guid>
+      <pubDate>Sun, 25 Oct 2026 23:36:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sun, 25 Oct 2026 23:36:00 +0100</ext:first_seen>
+      <ext:starts_at>Sun, 25 Oct 2026 23:36:00 +0100</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 25.10.]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 25.10.]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[43: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,8 +33,64 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sun, 25 Oct 2026 20:54:00 +0100</ext:first_seen>
       <ext:starts_at>Sun, 25 Oct 2026 23:26:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Seit 23:26]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Seit 23:26]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Seit 25.10.]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Seit 25.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[54A/54B: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">c879c0eb93c47cfaf8e8c207ba31d9583c4ed7e34d0436c9529b68f949c0a3eb</guid>
+      <pubDate>Wed, 21 Oct 2026 07:33:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 26 Oct 2026 00:01:08 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 27 Oct 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Tue, 10 Nov 2026 09:00:00 +0100</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten im Bereich Einsiedeleigasse werden die Linien 54A und 54B umgeleitet. [Ab Di 27.10. bis 10.11.]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Einsiedeleigasse werden die Linien 54A und 54B umgeleitet.<br/>[Ab Di 27.10. bis 10.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[89A: Streckensperre]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">80106b09b7f157645c39c612d87a15a8b0a79e1d8a1e6a823f2d41e155216c64</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 26 Oct 2026 00:01:08 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 27 Oct 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 18:00:00 +0100</ext:ends_at>
+      <description>Wegen einer angeordneten Streckensperre des Algenwegs wird die Linie 89A umgeleitet. [Ab Di 27.10. bis Mi 28.10.]</description>
+      <content:encoded><![CDATA[Wegen einer angeordneten Streckensperre des Algenwegs wird die Linie 89A umgeleitet.<br/>[Ab Di 27.10. bis Mi 28.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N81R/N81: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">84342e7299cf2d1a256f7e6f2a7a8fcae415185eab7bcfd7d9344c3de0c12009</guid>
+      <pubDate>Wed, 14 Oct 2026 16:10:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 26 Oct 2026 00:01:08 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 27 Oct 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 30 Oct 2026 05:00:00 +0100</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten im Bereich Meiereistraße / Stephanie-Endres-Straße kommt es zu Umleitungen bei der Rufbuslinie N81. Maßnahmen: Linie N81 … [Ab Di 27.10. bis Fr 30.10.]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Meiereistraße / Stephanie-Endres-Straße kommt es zu Umleitungen bei der Rufbuslinie N81. Maßnahmen: Linie N81 …<br/>[Ab Di 27.10. bis Fr 30.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/2/71/D: Nationalfeiertag]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">5ed1a558f4654252adcbde0d5b0507c31199017b815d336b01f7b063bfcb22b7</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 23 Oct 2026 00:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Mon, 26 Oct 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <description>Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz U; Linie 1: Umleitung in beiden Richtungen zwischen Karlsplatz U … [Heute]</description>
+      <content:encoded><![CDATA[Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz U; Linie 1: Umleitung in beiden Richtungen zwischen Karlsplatz U …<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A: Falschparker, Bauarbeiten]]></title>
@@ -32,9 +101,9 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sun, 25 Oct 2026 23:04:00 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 25 Oct 2026 23:07:32 +0100</ext:starts_at>
-      <description>Falschparker: Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U. Bauarbeiten: Busse halten Meiereistraße gegenüber 12. [Seit heute]</description>
-      <content:encoded><![CDATA[Falschparker: Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U. Bauarbeiten: Busse halten Meiereistraße gegenüber 12.<br/>[Seit heute]]]></content:encoded>
+      <ext:starts_at>Sun, 25 Oct 2026 23:04:00 +0100</ext:starts_at>
+      <description>Bauarbeiten: Busse halten Meiereistraße gegenüber 12. [Seit 25.10.]</description>
+      <content:encoded><![CDATA[Bauarbeiten: Busse halten Meiereistraße gegenüber 12.<br/>[Seit 25.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[71: Veranstaltung]]></title>
@@ -46,8 +115,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sun, 25 Oct 2026 05:00:00 +0100</ext:first_seen>
       <ext:starts_at>Sun, 25 Oct 2026 05:30:15 +0100</ext:starts_at>
-      <description>Betrieb ab Schwarzenbergplatz. Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Ersatz: Linien 1, 2 und D. Voraussichtlich bis Betriebsschluss. [Seit heute]</description>
-      <content:encoded><![CDATA[Betrieb ab Schwarzenbergplatz. Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Ersatz: Linien 1, 2 und D. Voraussichtlich bis Betriebsschluss.<br/>[Seit heute]]]></content:encoded>
+      <description>Betrieb ab Schwarzenbergplatz. Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Ersatz: Linien 1, 2 und D. Voraussichtlich bis Betriebsschluss. [Seit 25.10.]</description>
+      <content:encoded><![CDATA[Betrieb ab Schwarzenbergplatz. Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Ersatz: Linien 1, 2 und D. Voraussichtlich bis Betriebsschluss.<br/>[Seit 25.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S2: Wien Leopoldau ↔ Mistelbach]]></title>
@@ -61,22 +130,8 @@
       <ext:starts_at>Sun, 25 Oct 2026 00:00:00 +0200</ext:starts_at>
       <ext:ends_at>Sun, 01 Nov 2026 23:59:59 +0100</ext:ends_at>
       <georss:line>48.277325 16.448371 48.565931 16.565113</georss:line>
-      <description>Wegen Bauarbeiten kann zwischen Wien Leopoldau Bahnhst (U) und Mistelbach/Zaya Bahnhof am 25.10.2026 und 01.11.2026 der S2-Zug 23360 nicht fahren. [Bis 01.11.]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten kann zwischen Wien Leopoldau Bahnhst (U) und Mistelbach/Zaya Bahnhof am 25.10.2026 und 01.11.2026 der S2-Zug 23360 nicht fahren.<br/>[Bis 01.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2/71/D: Veranstaltung]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">1acac282e18dc92068a8eb5280edc92ae7c9ca3dfc98d921be9bfc3456b550c3</guid>
-      <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 23 Oct 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 25 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 25 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz U; Linie 1: Umleitung in beiden Richtungen zwischen Karlsplatz U … [Heute]</description>
-      <content:encoded><![CDATA[Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz U; Linie 1: Umleitung in beiden Richtungen zwischen Karlsplatz U …<br/>[Heute]]]></content:encoded>
+      <description>Wegen Bauarbeiten kann zwischen Wien Leopoldau Bahnhst (U) und Mistelbach/Zaya Bahnhof am 01.11.2026 der S2-Zug 23360 nicht fahren. [Bis So 01.11.]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten kann zwischen Wien Leopoldau Bahnhst (U) und Mistelbach/Zaya Bahnhof am 01.11.2026 der S2-Zug 23360 nicht fahren.<br/>[Bis So 01.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S1: Wien Leopoldau ↔ Deutsch Wagram]]></title>
@@ -92,62 +147,6 @@
       <georss:line>48.277325 16.448371 48.302927 16.564668</georss:line>
       <description>Wegen Bauarbeiten kann der S1-Zug 23626 an einzelnen Tagen nicht fahren: zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof und zwischen Wien Leopoldau Bahnhst … [Bis 28.11.]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten kann der S1-Zug 23626 an einzelnen Tagen nicht fahren: zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof und zwischen Wien Leopoldau Bahnhst …<br/>[Bis 28.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2/71/D: Nationalfeiertag]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5ed1a558f4654252adcbde0d5b0507c31199017b815d336b01f7b063bfcb22b7</guid>
-      <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 23 Oct 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 26 Oct 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
-      <description>Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz U; Linie 1: Umleitung in beiden Richtungen zwischen Karlsplatz U … [Am Mo 26.10.]</description>
-      <content:encoded><![CDATA[Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz U; Linie 1: Umleitung in beiden Richtungen zwischen Karlsplatz U …<br/>[Am Mo 26.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A/78A: Straßenbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">829aed6b63ca00dc86bdde6d44ea64c5a4a23433aa5b8e7bb064705f27b2e81f</guid>
-      <pubDate>Wed, 14 Oct 2026 16:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 00:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 02 Nov 2026 01:00:00 +0100</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Kreuzungsbereich Meiereistraße / Stephanie-Endres-Straße kommt es zu Umleitungen. [Bis 02.11.]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Kreuzungsbereich Meiereistraße / Stephanie-Endres-Straße kommt es zu Umleitungen.<br/>[Bis 02.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A/N64R: Erlaaer Spitz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">bd5f4b6cb6c11492266da898891314662b7d55f24a297565efab82ec83f4917c</guid>
-      <pubDate>Wed, 21 Oct 2026 10:12:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 21 Oct 2026 10:12:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <georss:point>48.137809 16.323970</georss:point>
-      <description>Perfektastraße 3 → Perfektastraße 9. Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa … [Seit 22.10.]</description>
-      <content:encoded><![CDATA[Perfektastraße 3 → Perfektastraße 9. Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa …<br/>[Seit 22.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8681a71896a38fa5cd0db22da3a40ed6cc4472d9266f99cbebaff20ab7d6d4e6</guid>
-      <pubDate>Wed, 21 Oct 2026 06:50:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 20 Oct 2026 11:58:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 20 Oct 2026 11:58:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 05 Dec 2026 04:00:00 +0100</ext:ends_at>
-      <description>Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1. Maßnahmen: Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. [Bis 05.12.]</description>
-      <content:encoded><![CDATA[Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1. Maßnahmen: Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br/>[Bis 05.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>

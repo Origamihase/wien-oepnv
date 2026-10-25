@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261025-0032, I20260925-0011, I20260909-0007, I20261025-0030-F01, I20261020-0029, I20261025-0031, I20261025-0003"
+    "trafficInfoNameList": "I20261025-0031-F01, I20260917-0012, I20260922-0032, I20261025-0032, I20260925-0011, I20260909-0007, I20261025-0033-F01, I20261020-0029, I20261025-0003"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R36-152, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2371-125, R2378-627, R2343-626, R2379-627, R2380-627, R2370-125, R2359-125, R2373-126, R2372-627, R2420-411, R2373-127, R2372-125, R2345-127, R2373-125, R2343-125, R2558-125, R1974-466, R50-171, R44-171, R51-171, R49-171, R47-171, R46-171, R45-171, R13-171, R14-171, R15-171, R17-171, R18-171, R19-171, R789-415, R412-415, R3574-411, R3573-411, R2975-411, R619-411, R617-411, R620-411, R621-411, R623-411, R624-411, R625-411, R626-411, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R36-152, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2420-411, R2378-627, R2343-626, R2345-127, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2380-627, R2379-627, R2373-126, R2372-627, R2558-125, R1974-466, R49-171, R47-171, R46-171, R45-171, R51-171, R50-171, R44-171, R17-171, R14-171, R13-171, R19-171, R18-171, R15-171, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -304,55 +304,6 @@
     "title": "71: Veranstaltung"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "15A": "ptBusCity"
-     }
-    },
-    "description": "Linie 15A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 15A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 15A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 15A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "15A: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261025-0030-F01",
-    "owner": "WL",
-    "parentName": "I20261025-0030",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "15A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 415,
-      "lineName": "15A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     789
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-25T22:50:00.000+0100",
-     "end": "2026-10-25T23:30:00.000+0100",
-     "lastUpdate": "2026-10-25T23:30:00.000+0100",
-     "resume": "2026-10-25T23:30:00.000+0100",
-     "start": "2026-10-25T22:44:00.000+0100"
-    },
-    "title": "15A: Polizeieinsatz"
-   },
-   {
     "alertCause": "vehicle on the line",
     "alertCauseId": 71,
     "attributes": {
@@ -360,19 +311,19 @@
       "11A": "ptBusCity"
      }
     },
-    "description": "Linie 11A: Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U. Voraussichtliche Dauer: 23:30 Uhr. Grund: Falschparker im Bereich Vorgartenstraße # Offenbachgasse.",
-    "descriptionHTML": "<p>Linie 11A:<br>Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U.</p><p>Voraussichtliche Dauer: 23:30 Uhr.</p><p>Grund: Falschparker im Bereich Vorgartenstraße # Offenbachgasse.</p>",
+    "description": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 11A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 11A:<br>Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U.</p><p>Voraussichtliche Dauer: 23:30 Uhr.</p><p>Grund: Falschparker im Bereich Vorgartenstraße # Offenbachgasse.</p>",
-       "descriptionPlain": "Linie 11A: Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U. Voraussichtliche Dauer: 23:30 Uhr. Grund: Falschparker im Bereich Vorgartenstraße # Offenbachgasse.",
+       "descriptionHtml": "<p>Linie 11A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "11A: Falschparker"
       }
      }
     ],
     "location": "Vorgartenstraße / Offenbachgasse",
-    "name": "I20261025-0031",
+    "name": "I20261025-0031-F01",
     "owner": "WL",
     "parentName": "I20261025-0031",
     "priority": "1",
@@ -391,8 +342,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-25T23:06:00.000+0100",
-     "lastUpdate": "2026-10-25T23:06:00.000+0100",
+     "created": "2026-10-25T23:55:00.000+0100",
+     "lastUpdate": "2026-10-25T23:55:00.000+0100",
+     "resume": "2026-10-25T23:55:00.000+0100",
      "start": "2026-10-25T23:04:00.000+0100"
     },
     "title": "11A: Falschparker"
@@ -446,6 +398,52 @@
     "title": "43: Polizeieinsatz"
    },
    {
+    "alertCause": "fire",
+    "alertCauseId": 5,
+    "attributes": {
+     "relatedLineTypes": {
+      "12": "ptTram"
+     }
+    },
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "12: Feuerwehreinsatz"
+      }
+     }
+    ],
+    "location": "Dresdner Straße",
+    "name": "I20261025-0033-F01",
+    "owner": "WL",
+    "parentName": "I20261025-0033",
+    "priority": "1",
+    "reasonId": 11,
+    "reasonName": "Feuerwehreinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 112,
+      "lineName": "12",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-25T23:43:00.000+0100",
+     "lastUpdate": "2026-10-25T23:43:00.000+0100",
+     "resume": "2026-10-25T23:43:00.000+0100",
+     "start": "2026-10-25T23:36:00.000+0100"
+    },
+    "title": "12: Feuerwehreinsatz"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -463,7 +461,7 @@
      100
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -486,7 +484,7 @@
      101
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -509,7 +507,7 @@
      102
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -532,7 +530,7 @@
      103
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -555,7 +553,7 @@
      115
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -578,7 +576,7 @@
      116
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -601,7 +599,7 @@
      117
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -624,7 +622,7 @@
      118
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -647,7 +645,7 @@
      119
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Züge halten in\nSchleife"
@@ -670,7 +668,7 @@
      13
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T01:00:00.000+0100",
      "start": "2026-10-25T05:30:15.000+0100"
     },
     "title": "Veranstaltung\nKein Betrieb"
@@ -693,7 +691,7 @@
      130
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -716,7 +714,7 @@
      14
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T01:00:00.000+0100",
      "start": "2026-10-25T05:30:15.000+0100"
     },
     "title": "Veranstaltung\nKein Betrieb"
@@ -739,7 +737,7 @@
      1445
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:28.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
@@ -762,7 +760,7 @@
      1446
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:28.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
@@ -785,7 +783,7 @@
      1447
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:28.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
@@ -808,7 +806,7 @@
      1448
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:28.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
@@ -831,7 +829,7 @@
      1448
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:28.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Johnstraße U "
@@ -854,7 +852,7 @@
      1449
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:28.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
@@ -877,7 +875,7 @@
      1472
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:28.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
@@ -900,7 +898,7 @@
      1473
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:28.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
@@ -923,7 +921,7 @@
      1474
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:28.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
@@ -946,7 +944,7 @@
      1474
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:28.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21"
@@ -969,7 +967,7 @@
      1475
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:28.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
@@ -992,7 +990,7 @@
      1476
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:28.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
@@ -1015,7 +1013,7 @@
      15
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T01:00:00.000+0100",
      "start": "2026-10-25T05:30:15.000+0100"
     },
     "title": "Veranstaltung\nKein Betrieb"
@@ -1038,7 +1036,7 @@
      17
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T01:00:00.000+0100",
      "start": "2026-10-25T05:30:15.000+0100"
     },
     "title": "Veranstaltung\nKein Betrieb"
@@ -1061,7 +1059,7 @@
      18
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T01:00:00.000+0100",
      "start": "2026-10-25T05:30:15.000+0100"
     },
     "title": "Veranstaltung\nKein Betrieb"
@@ -1084,7 +1082,7 @@
      1875
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nKein Betrieb"
@@ -1107,7 +1105,7 @@
      1876
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nKein Betrieb"
@@ -1130,7 +1128,7 @@
      1880
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
@@ -1153,7 +1151,7 @@
      1881
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
@@ -1176,7 +1174,7 @@
      1882
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
@@ -1199,7 +1197,7 @@
      1883
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
@@ -1222,7 +1220,7 @@
      1884
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nZüge halten Quellenstraße 156 (Linie 6)"
@@ -1245,7 +1243,7 @@
      19
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -1268,7 +1266,7 @@
      19
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T01:00:00.000+0100",
      "start": "2026-10-25T05:30:15.000+0100"
     },
     "title": "Veranstaltung\nKein Betrieb"
@@ -1311,7 +1309,7 @@
      2025
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:26.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
@@ -1334,7 +1332,7 @@
      2343
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-25T00:00:16.000+0200"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
@@ -1357,7 +1355,7 @@
      2343
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-25T00:00:16.000+0200"
     },
     "title": "Ersatzbus\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
@@ -1380,7 +1378,7 @@
      2345
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-25T00:00:16.000+0200"
     },
     "title": "Züge halten bei\nLinie 31"
@@ -1403,7 +1401,7 @@
      2359
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-25T00:00:16.000+0200"
     },
     "title": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
@@ -1426,7 +1424,7 @@
      2370
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-25T00:00:16.000+0200"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
@@ -1449,7 +1447,7 @@
      2371
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-25T00:00:16.000+0200"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
@@ -1472,7 +1470,7 @@
      2372
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-25T00:00:16.000+0200"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
@@ -1495,7 +1493,7 @@
      2372
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-25T00:00:16.000+0200"
     },
     "title": "Busse halten auf\nHauptfahrbahn"
@@ -1518,7 +1516,7 @@
      2373
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-25T00:00:16.000+0200"
     },
     "title": "Züge halten\nDonaufelder Straße 175-177"
@@ -1541,7 +1539,7 @@
      2373
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-25T00:00:16.000+0200"
     },
     "title": "Züge halten in\nTokiostraße"
@@ -1564,7 +1562,7 @@
      2373
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-25T00:00:16.000+0200"
     },
     "title": "Linie 25 in\nTokiostraße benützen"
@@ -1587,7 +1585,7 @@
      2378
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-25T00:00:16.000+0200"
     },
     "title": "Busse halten\nSatzingerweg 41"
@@ -1610,7 +1608,7 @@
      2379
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-25T00:00:16.000+0200"
     },
     "title": "Busse halten\nBessemerstraße 1-3"
@@ -1633,7 +1631,7 @@
      2380
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-25T00:00:16.000+0200"
     },
     "title": "Busse halten\nHoßplatz 11"
@@ -1656,7 +1654,7 @@
      2420
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-25T00:00:16.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Meiereistraße gegenüber 12"
@@ -1679,7 +1677,7 @@
      2558
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-25T00:00:17.000+0200"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
@@ -1702,33 +1700,10 @@
      293
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R2975-411",
-    "owner": "WL",
-    "parentName": "R2975-411",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11A"
-    ],
-    "relatedStops": [
-     2975
-    ],
-    "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
-     "start": "2026-10-25T23:07:03.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1748,56 +1723,10 @@
      318
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R3573-411",
-    "owner": "WL",
-    "parentName": "R3573-411",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11A"
-    ],
-    "relatedStops": [
-     3573
-    ],
-    "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
-     "start": "2026-10-25T23:07:02.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R3574-411",
-    "owner": "WL",
-    "parentName": "R3574-411",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11A"
-    ],
-    "relatedStops": [
-     3574
-    ],
-    "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
-     "start": "2026-10-25T23:07:02.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1817,7 +1746,7 @@
      36
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Züge halten\nbei Linien 6 und 18"
@@ -1840,7 +1769,7 @@
      3886
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:40:37.000+0200"
     },
     "title": "Bauarbeiten\nBetrieb ab Vivariumstraße 2"
@@ -1863,33 +1792,10 @@
      401
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-25T00:00:15.000+0200"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R412-415",
-    "owner": "WL",
-    "parentName": "R412-415",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "15A"
-    ],
-    "relatedStops": [
-     412
-    ],
-    "time": {
-     "end": "2026-10-25T23:46:00.000+0100",
-     "start": "2026-10-25T22:46:58.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1909,7 +1815,7 @@
      44
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T01:00:00.000+0100",
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz"
@@ -1932,7 +1838,7 @@
      45
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
@@ -1955,7 +1861,7 @@
      45
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T01:00:00.000+0100",
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz"
@@ -1978,7 +1884,7 @@
      46
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T01:00:00.000+0100",
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz"
@@ -2001,7 +1907,7 @@
      47
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T01:00:00.000+0100",
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz"
@@ -2024,7 +1930,7 @@
      49
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T01:00:00.000+0100",
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz"
@@ -2047,7 +1953,7 @@
      50
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T01:00:00.000+0100",
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz"
@@ -2070,7 +1976,7 @@
      51
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T01:00:00.000+0100",
      "start": "2026-10-25T05:00:12.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Schwarzenbergplatz"
@@ -2090,217 +1996,10 @@
      5815
     ],
     "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
+     "end": "2026-10-26T23:59:59.000+0100",
      "start": "2026-10-21T00:00:24.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten bei Haltestelle N71"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R617-411",
-    "owner": "WL",
-    "parentName": "R617-411",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11A"
-    ],
-    "relatedStops": [
-     617
-    ],
-    "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
-     "start": "2026-10-25T23:07:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R619-411",
-    "owner": "WL",
-    "parentName": "R619-411",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11A"
-    ],
-    "relatedStops": [
-     619
-    ],
-    "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
-     "start": "2026-10-25T23:07:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R620-411",
-    "owner": "WL",
-    "parentName": "R620-411",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11A"
-    ],
-    "relatedStops": [
-     620
-    ],
-    "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
-     "start": "2026-10-25T23:07:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R621-411",
-    "owner": "WL",
-    "parentName": "R621-411",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11A"
-    ],
-    "relatedStops": [
-     621
-    ],
-    "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
-     "start": "2026-10-25T23:07:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R623-411",
-    "owner": "WL",
-    "parentName": "R623-411",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11A"
-    ],
-    "relatedStops": [
-     623
-    ],
-    "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
-     "start": "2026-10-25T23:07:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R624-411",
-    "owner": "WL",
-    "parentName": "R624-411",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11A"
-    ],
-    "relatedStops": [
-     624
-    ],
-    "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
-     "start": "2026-10-25T23:07:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R625-411",
-    "owner": "WL",
-    "parentName": "R625-411",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11A"
-    ],
-    "relatedStops": [
-     625
-    ],
-    "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
-     "start": "2026-10-25T23:07:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R626-411",
-    "owner": "WL",
-    "parentName": "R626-411",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11A"
-    ],
-    "relatedStops": [
-     626
-    ],
-    "time": {
-     "end": "2026-10-25T23:59:59.000+0100",
-     "start": "2026-10-25T23:07:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R789-415",
-    "owner": "WL",
-    "parentName": "R789-415",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "15A"
-    ],
-    "relatedStops": [
-     789
-    ],
-    "time": {
-     "end": "2026-10-25T23:45:00.000+0100",
-     "start": "2026-10-25T22:45:29.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",

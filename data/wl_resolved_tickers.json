@@ -1,20 +1,5 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": [
-  {
-   "key": "R412-415|2026-10-25T22:46:58.000+0100|Fahrtbehinderung\nwegen Polizeieinsatz",
-   "name": "R412-415",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
-   "end": "2026-10-25T23:46:00.000+0100",
-   "incident": "I20261025-0030-F01"
-  },
-  {
-   "key": "R789-415|2026-10-25T22:45:29.000+0100|Fahrtbehinderung\nwegen Polizeieinsatz",
-   "name": "R789-415",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz",
-   "end": "2026-10-25T23:45:00.000+0100",
-   "incident": "I20261025-0030-F01"
-  }
- ]
+ "tickers": []
 }
