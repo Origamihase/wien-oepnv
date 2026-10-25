@@ -57,12 +57,12 @@ def _titles(monkeypatch: pytest.MonkeyPatch, poi: dict[str, Any]) -> list[str]:
 
 def test_the_demonstration_notice_is_titled_by_its_heading(monkeypatch: pytest.MonkeyPatch) -> None:
     poi = _poi("D, 1, 2, 71, 1A, 3A", _DEMO_DESCRIPTION, _DEMO_LINES)
-    assert _titles(monkeypatch, poi) == ["D/1/2/71/1A/3A: Demonstration"]
+    assert _titles(monkeypatch, poi) == ["1/2/71/D/1A/3A: Demonstration"]
 
 
 def test_an_informative_title_stays(monkeypatch: pytest.MonkeyPatch) -> None:
     poi = _poi("Demonstration am Ring", _DEMO_DESCRIPTION, _DEMO_LINES)
-    assert _titles(monkeypatch, poi) == ["D/1/2/71/1A/3A: Demonstration am Ring"]
+    assert _titles(monkeypatch, poi) == ["1/2/71/D/1A/3A: Demonstration am Ring"]
 
 
 @pytest.mark.parametrize("title", ["D, 1, 2, 71, 1A, 3A", "U6", "13A und 14A", "U1/U2"])

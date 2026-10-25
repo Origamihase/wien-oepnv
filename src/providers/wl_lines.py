@@ -2,8 +2,71 @@
 
 from __future__ import annotations
 
+import csv
+import io
 import re
+from functools import lru_cache
+from pathlib import Path
 from typing import Any
+
+from ..utils.files import read_capped_text
+
+# WL's own order of its lines: the ``SortingHelp`` column of the open line
+# data (``data/wienerlinien-ogd-linien.csv``, refreshed weekly by
+# ``scripts/update_wl_stations.py``): U-Bahn, tram (D, O and LB after the
+# numbered ones), bus A, bus B, night and S-Bahn. Every line prefix of a
+# title follows it, whoever builds the prefix (the WL provider, the fuzzy
+# merge, a ticker joined into its incident). Before, a notice kept the
+# order WL happened to send in ``relatedLines`` while a merged incident
+# sorted by number, so on 25.10.2026 the feed showed "1/2/71/D:
+# Veranstaltung" next to "1/2/D/71: Nationalfeiertag" (decision
+# 2026-10-25).
+_WL_LINES_CSV = Path(__file__).resolve().parents[2] / "data" / "wienerlinien-ogd-linien.csv"
+
+
+@lru_cache(maxsize=1)
+def _wl_line_ranks() -> dict[str, int]:
+    ranks: dict[str, int] = {}
+    text = read_capped_text(_WL_LINES_CSV, label="WL line data")
+    for row in csv.DictReader(io.StringIO(text or ""), delimiter=";"):
+        line = _clean_line_token(row.get("LineText") or "")
+        try:
+            rank = int(row.get("SortingHelp") or "")
+        except ValueError:
+            continue
+        if line:
+            ranks[line] = min(rank, ranks.get(line, rank))
+    return ranks
+
+
+def _number_keys(text: str) -> list[str | int]:
+    return [int(c) if c.isdigit() else c for c in re.split(r"(\d+)", text)]
+
+
+# A line the data do not list (yet) takes the place its shape gives it in
+# that order (``U5`` with the U-Bahn, ``3`` with the trams, ``99C`` behind
+# the B buses); anything else (ÖBB, replacement buses) comes last.
+_LINE_SHAPE_RANKS: tuple[tuple[re.Pattern[str], int], ...] = (
+    (re.compile(r"U(\d+)"), 0),
+    (re.compile(r"(\d+)"), 100),
+    (re.compile(r"(\d+)A"), 400),
+    (re.compile(r"(\d+)B"), 500),
+    (re.compile(r"(\d+)[C-Z]"), 600),
+    (re.compile(r"[NS](\d+)"), 700),
+)
+
+
+def line_order_key(token: str) -> tuple[int, int, list[str | int]]:
+    """Sort key for a line code in a title prefix (see above)."""
+    line = _clean_line_token(token)
+    rank = _wl_line_ranks().get(line)
+    if rank is not None:
+        return (0, rank, [])
+    for pattern, base in _LINE_SHAPE_RANKS:
+        match = pattern.fullmatch(line)
+        if match:
+            return (0, base + int(match[1]), _number_keys(line))
+    return (1, 0, _number_keys(line))
 
 
 def _clean_line_token(s: str) -> str:
@@ -379,10 +442,7 @@ def _ensure_line_prefix(title: str, lines_disp: list[str]) -> str:
         return title
 
     # Union of provider-supplied lines and lines parsed from the title's
-    # leading prefix block(s). Preserve the order from ``lines_disp``
-    # first (typically already sorted by the caller) and append any
-    # extra lines from the existing prefix in their original title-order
-    # so ``41E/10A:`` round-trips unchanged.
+    # leading prefix block(s), then in WL's line order (``line_order_key``).
     seen: set[str] = set()
     merged: list[str] = []
     for tok in list(lines_disp) + list(existing_lines):
@@ -394,6 +454,7 @@ def _ensure_line_prefix(title: str, lines_disp: list[str]) -> str:
     if not merged:
         return body or title
 
+    merged.sort(key=line_order_key)
     wanted = "/".join(merged)
     return f"{wanted}: {body}" if body else wanted
 
@@ -567,6 +628,7 @@ def _line_display_from_pairs(pairs: list[tuple[str, str]]) -> list[str]:
 
 
 __all__ = [
+    "line_order_key",
     "_detect_line_pairs_from_text",
     "_make_line_pairs_from_related",
     "_merge_line_pairs",

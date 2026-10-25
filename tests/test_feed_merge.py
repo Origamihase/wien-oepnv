@@ -23,9 +23,8 @@ def test_fuzzy_merge_silvester() -> None:
     item = merged[0]
 
     # Check Title: All lines combined
-    # Lines: 1, 2, 71, 74A, D, U1, U3
-    # Sorted natural: 1, 2, 71, 74A, D, U1, U3
-    assert "1/2/71/74A/D/U1/U3" in item["title"]
+    # Lines in WL's order (``line_order_key``): U-Bahn, tram, bus
+    assert "U1/U3/1/2/71/D/74A" in item["title"]
     assert "Silvesterlauf" in item["title"]
     assert "Silvesterpfad" in item["title"]
 
