@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1031899, ftazW_1018064, ftazW_1031898, ftazW_1018063, ftazW_628, ftazW_1017627, ftazW_1018634"
+    "trafficInfoNameList": "ftazW_1031899, ftazW_1018064, ftazW_1031898, ftazW_1018063, ftazW_628, ftazW_1017627, ftazW_1018634, ftazW_629, ftazW_1017126, ftazW_1016611"
    }
   ],
   "poiCategoryGroups": [
@@ -3923,6 +3923,88 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "28.10.2026 05:15",
+     "ausVon": "28.10.2026 01:15",
+     "location": "U1 Mittelbahnsteig - Ausgang Favoritenstraße",
+     "rbls": [
+      4101,
+      4128
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Reumannplatz",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Ausgang Favoritenstraße",
+    "elevatorId": "RP 01",
+    "name": "ftazW_1016611",
+    "parentName": "ftazW_1016611",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4101,
+     4128
+    ],
+    "time": {
+     "end": "2026-10-28T05:15:00.000+0100",
+     "start": "2026-10-28T01:15:00.000+0100"
+    },
+    "title": "Reumannplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "28.10.2026 05:15",
+     "ausVon": "28.10.2026 01:15",
+     "location": "Bahnsteig Linie 1, 18, 62, Badner Bahn - Ausgang Matzleinsdorfer Platz",
+     "rbls": [
+      400
+     ],
+     "reason": "",
+     "relatedLines": [
+      "18",
+      "62",
+      "1",
+      "LB"
+     ],
+     "station": "Matzleinsdorfer Platz",
+     "status": "geplante Wartung",
+     "towards": "WLB Oper, Karlsplatz U"
+    },
+    "description": "Bahnsteig Linie 1, 18, 62, Badner Bahn - Ausgang Matzleinsdorfer Platz",
+    "elevatorId": "MP 01",
+    "name": "ftazW_1017126",
+    "parentName": "ftazW_1017126",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "18",
+     "62",
+     "1",
+     "LB"
+    ],
+    "relatedStops": [
+     400
+    ],
+    "time": {
+     "end": "2026-10-28T05:15:00.000+0100",
+     "start": "2026-10-28T01:15:00.000+0100"
+    },
+    "title": "Matzleinsdorfer Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "28.10.2026 00:45",
      "ausVon": "27.10.2026 20:45",
      "location": "1 Bahnsteig Richtung Prater Hauptallee, 18 Bahnsteig Richtung Schlachthausgasse, 62 und Badner Bahn Bahnsteig Richtung Oper, Karlsplatz - Ausgang Landgutgasse",
@@ -4195,6 +4277,43 @@
     "time": {
      "end": "2026-10-28T00:45:00.000+0100",
      "start": "2026-10-27T20:45:00.000+0100"
+    },
+    "title": "Kettenbrückengasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "28.10.2026 05:15",
+     "ausVon": "28.10.2026 01:15",
+     "location": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Wehrgasse",
+     "rbls": [
+      4418
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Kettenbrückengasse",
+     "status": "geplante Wartung",
+     "towards": "U4 Hütteldorf"
+    },
+    "description": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Wehrgasse",
+    "elevatorId": "KG 02",
+    "name": "ftazW_629",
+    "parentName": "ftazW_629",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4418
+    ],
+    "time": {
+     "end": "2026-10-28T05:15:00.000+0100",
+     "start": "2026-10-28T01:15:00.000+0100"
     },
     "title": "Kettenbrückengasse"
    }
