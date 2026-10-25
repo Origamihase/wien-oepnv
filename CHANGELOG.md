@@ -10,6 +10,22 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Platzhalter-Nonce immer gemischt (2026-10-25)**: Abbau technischer
+  Schulden auf Michaels Wunsch („Ich möchte technische Schulden gerne
+  loswerden.“). `secrets.token_hex(8)` ergab etwa jede 1 800. Nonce nur aus
+  Ziffern; ein Bruchstück davon, das das Modell im zweiten Versuch von einem
+  Platzhalter übrig ließ, hatte keinen Buchstaben, den die Nonce-Rest-Form von
+  `_CACHED_DEBRIS_RE` verlangt, und wäre veröffentlicht worden. Im Feed ist es
+  nicht vorgekommen; `test_a_mangled_nonce_placeholder_never_leaks` schlug in
+  solchen Läufen fehl. `_placeholder_nonce` zieht jetzt neu, bis keine sechs
+  Ziffern oder Buchstaben aufeinander folgen, für die Nonce des Laufs und des
+  zweiten Versuchs. Die Erkennung bleibt unverändert, denn eine reine Zahl ab
+  sechs Stellen wäre auch eine echte Zahl im Text. Nachbau mit dem echten
+  `main()` über 191 Feed-Stände (10.–25.10.), der erste Modelldurchlauf
+  scheitert dort jedes Mal, damit jeder Text den zweiten Versuch nimmt:
+  DE, EN und State alt gegen neu identisch. Tests in
+  `tests/test_en_placeholder_leftovers_2026_10_10.py`; `docs/architecture.md`.
+
 * **Nachprüfung der Umsetzungen vom 24.10. abends (2026-10-25)**: Geprüft
   wurden #2055 und #2056, alle 10.694 WL-, ÖBB- und Baustellentexte im
   Cache durch den Formatierer alt gegen neu.

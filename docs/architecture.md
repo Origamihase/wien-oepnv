@@ -2982,6 +2982,14 @@ Beide tragen einen **prozess-zufälligen Nonce** (`_PLACEHOLDER_NONCE`). Ohne
 ihn könnte ein Quelltext, der selbst `XENT0X` enthält, die Rückersetzung
 kapern oder zerstören. Das Format ist alphanumerisch und beginnt mit einem
 Buchstaben, weil der SentencePiece-Tokenizer sonst dazu neigt, es zu zerlegen.
+Jede Nonce, die des Laufs wie die des zweiten Versuchs, zieht
+`_placeholder_nonce`: 16 Hex-Zeichen, neu gezogen, bis keine sechs Ziffern und
+keine sechs Buchstaben aufeinander folgen (seit 2026-10-25). So trägt jedes
+Bruchstück ab sechs Zeichen eine Ziffer und einen Buchstaben, und die
+Nachkontrolle erkennt es als Nonce-Rest (siehe unten). Vorher kam etwa jede
+1 800. Ziehung nur aus Ziffern; verlor das Modell im zweiten Versuch Präfix
+und Index eines Platzhalters, blieb eine nackte Zahl stehen, die keine Regel
+sah.
 
 **Das Modell sieht die Platzhalter ohne Nonce (seit 2026-10-06).** Der erste
 Durchlauf zeigt dem Modell `XENT3X` und `XGLO0X` (`_to_short_placeholders`),
