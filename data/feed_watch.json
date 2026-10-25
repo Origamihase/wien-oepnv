@@ -1,24 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-25T11:31:26.146268+00:00",
- "built": "2026-10-25T12:31:13+01:00",
+ "updated": "2026-10-25T12:01:05.851309+00:00",
+ "built": "2026-10-25T13:00:59+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-25T12:31:13+01:00",
+  "built": "2026-10-25T13:00:59+01:00",
   "items": [
    {
     "title": "31A: Schadhaftes Fahrzeug",
     "time_line": "Seit 12:22"
    },
    {
-    "title": "U3: Verspätungen",
-    "time_line": "Seit 11:42"
-   },
-   {
     "title": "42: Falschparker",
-    "time_line": "Seit 11:36"
+    "time_line": "Seit 12:45"
    },
    {
     "title": "7A: Falschparker",
@@ -47,6 +43,10 @@
    {
     "title": "64A/N64R: Erlaaer Spitz",
     "time_line": "Seit 22.10."
+   },
+   {
+    "title": "1: Gleisbauarbeiten",
+    "time_line": "Bis 05.12."
    }
   ]
  },
@@ -6771,17 +6771,37 @@
     "oebb": 9,
     "wl": 112
    }
+  },
+  {
+   "t": "2026-10-25T12:01:05.851309+00:00",
+   "raw": {
+    "wl-stoerungen": 117,
+    "wl-hinweise": 85,
+    "oebb": 158,
+    "baustellen-linien": 56,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 10,
+    "oebb": 134,
+    "baustellen": 71
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 111
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-25T11:31:26.146268+00:00"
+   "last_ok": "2026-10-25T12:01:05.851309+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-25T11:31:26.146268+00:00"
+   "last_ok": "2026-10-25T12:01:05.851309+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-25T11:31:26.146268+00:00"
+   "last_ok": "2026-10-25T12:01:05.851309+00:00"
   }
  }
 }
