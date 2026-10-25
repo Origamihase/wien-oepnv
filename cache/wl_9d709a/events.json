@@ -1210,6 +1210,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "38A: Fahrtbehinderung Falschparker",
+    "description": "Die Linie 38A wird in Richtung Kahlenberg zwischen Armbrustergasse und Grinzing über Hohe Warte, Billrothstraße, Grinzinger Allee umgeleitet. Voraussichtliche Dauer: 19:00 Uhr. Grund: Falschparker im Bereich Sandgasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "361d72bca0cc84100f7195fc89fc1a03d6a8b18b8fa4cc578267b3f69d263e62",
+    "pubDate": "2026-10-25T18:12:00+01:00",
+    "starts_at": "2026-10-25T18:13:31+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=38A|D=2026-10-25|TK=falschparker",
+    "_wl_ids": [
+      "I20261025-0024"
+    ],
+    "_incident_start": "2026-10-25T18:12:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "46/49/52: Gleisbauarbeiten",
     "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
