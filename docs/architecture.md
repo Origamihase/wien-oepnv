@@ -34,6 +34,7 @@ darunter.
   - [Woher das Live-Dashboard seine Zahlen nimmt](#woher-das-live-dashboard-seine-zahlen-nimmt)
   - [Was das Dashboard beantwortet](#was-das-dashboard-beantwortet)
   - [Gestaltung des Live-Dashboards (Kacheln, 2026-10-17)](#gestaltung-des-live-dashboards-kacheln-2026-10-17)
+  - [Was eine Meldungskachel zeigt (2026-10-25)](#was-eine-meldungskachel-zeigt-2026-10-25)
   - [Bilder ohne Marken, Hinweis „inoffiziell“ (2026-10-17)](#bilder-ohne-marken-hinweis-inoffiziell-2026-10-17)
 - [7. VOR/VAO-API — Stammstrecke-only-Scope (2026-05-11)](#7-vorvao-api--stammstrecke-only-scope-2026-05-11)
   - [Der VAO-„Start“-Vertrag (geprüft 2026-10-17)](#der-vao-start-vertrag-geprüft-2026-10-17)
@@ -2456,6 +2457,51 @@ Geprüft vor dem Merge in Chromium (Desktop 1366 px hell/dunkel, Handy
 vorhanden, keine Konsolenfehler unter der strengen CSP. Wächter:
 `tests/test_site_css_tiles.py`. Wie das Ergebnis auf seinem eigenen Gerät
 wirkt (Bildschirm, Schrift, Bewegung), beurteilt Michael selbst.
+
+### Was eine Meldungskachel zeigt (2026-10-25)
+
+Die Kachel einer Meldung auf `site.html` sagt dasselbe wie ihr Text am TV:
+
+* **Quelle:** Etikett, Farbe und Filter-Chip folgen dem RSS-`<source>` der
+  Meldung (`_ITEM_SOURCES` in `src/build_feed.py`, deutsche und englische
+  Namen). Link und Titel entscheiden nur noch bei einer Meldung ohne
+  bekannten Tag. Vorher entschied der Link: Baustellen der Stadt Wien
+  verlinken seit 17.10.2026 auf `wien.gv.at/verkehr/baustellen` und wären
+  unter „Andere“ gelandet, die Stammstrecken-Meldung (Link zur
+  ÖBB-Streckeninformation, Tag „VOR/VAO“) unter „ÖBB“.
+* **Beginn** ist `ext:starts_at`, wie in der Zeitzeile; ein früheres
+  `pubDate` desselben Wiener Tages, das nicht auf einer vollen Stunde liegt,
+  ist die Minute, in der WL die Störung eingetragen hat, und gilt dann
+  (`_incident_since`). `pubDate` allein ist kein Beginn: WL veröffentlicht
+  geplante Ereignisse Tage vorher („1/2/71/D: Nationalfeiertag“, Beginn
+  bisher 16.10., Text „[Am Mo 26.10.]“), ÖBB rückt es bei jeder
+  Aktualisierung weiter. Ein Beginn um 00:00 Uhr steht als Datum da.
+* **Bis** ist ein Datum ohne Uhrzeit, wie am TV: Die Uhrzeit eines Endes ist
+  ein Puffer (23:59, 01:00, 04:00) oder WLs Standardwert, keine Ankündigung.
+  `ext:ends_at` trägt das Ende, das die Zeitzeile nennt (`_shown_end`);
+  WLs 11:11-Ablaufdatum ohne Ende im Text fehlt dort wie in der Zeitzeile
+  („48A: Neubaugasse, Neustiftgasse“: TV „[Seit 19.10.]“, Website bisher
+  „Bis: 08.10.2027, 11:11“). Im Cache bleibt es das Ablaufdatum der Meldung.
+* **Datenstand** im Kopf ist das `lastBuildDate` des Feeds, also der Stand
+  der Daten. Bisher stand dort die Uhrzeit, zu der der Browser geladen
+  hatte; ein Feed, der nicht mehr aktualisiert wurde, sah dadurch aktuell
+  aus.
+
+Der Abdeckungshinweis der Stammstrecke beurteilt die Kennzahlen an den
+Zeilen, aus denen sie bestehen: im README am 30-Tage-Fenster, auf der Website
+und in `docs/statistik.md` am ganzen Jahr. Die Jahreszahlen enthalten
+Praterstern bis 14.08.2026 (3.831 Beobachtungen); der Hinweis sagt deshalb
+„Die Jahreszahlen unten enthalten Richtung Praterstern daher nur bis dahin.“
+statt „decken nur Richtung Meidling ab“, was die Tabelle direkt darunter
+widerlegte (`render_direction_coverage_note(..., yearly=True)`,
+`renderCoverageNotice` in `site.js`).
+
+Replay vor dem Merge: 109 Feed-Stände seit 04.10. auf der alten und der
+neuen Seite (Chromium, Uhr auf den Stand eingefroren): 37 Kacheln, deren
+Beginn oder Bis der Zeitzeile widersprach, und 314 mit einer Uhrzeit beim
+Ende vorher, 0 nachher. 61 echte Stände durch `build_feed.main()`: Titel und
+Texte gleich, es fehlen nur die `ext:ends_at`-Zeilen mit 11:11-Ablaufdatum. Tests:
+`tests/test_site_feed_tiles.py`, `tests/test_stammstrecke_direction_health.py`.
 
 ### Bilder ohne Marken, Hinweis „inoffiziell“ (2026-10-17)
 

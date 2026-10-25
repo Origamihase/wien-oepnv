@@ -10,6 +10,30 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Prüfung der Website und der Statistikseite (2026-10-25)**: Von den
+  Daten bis zur Darstellung, live und gegen 109 Feed-Stände seit 04.10.
+  - *Kacheln:* „Beginn“ zeigte das `pubDate`, „Bis“ ein Ende mit Uhrzeit. 37
+    Kacheln widersprachen der Zeitzeile ihrer Meldung („64A/N64R: Erlaaer
+    Spitz“: Beginn 21.10., Text „[Seit 22.10.]“), 314 zeigten eine Uhrzeit
+    beim Ende, die der TV bewusst weglässt (WL-Störungen „Bis 23:55“).
+    Beginn folgt jetzt `ext:starts_at`, Bis ist ein Datum, und `ext:ends_at`
+    trägt nur das Ende, das die Zeitzeile nennt (WLs 11:11-Ablaufdatum fehlt
+    dort). Danach: 0 Widersprüche.
+  - *Quelle:* Etikett und Filter folgen dem RSS-`<source>`; Baustellen der
+    Stadt Wien wären seit dem neuen Link unter „Andere“ gestanden, die
+    Stammstrecken-Meldung unter „ÖBB“.
+  - *Datenstand:* zeigt das `lastBuildDate` des Feeds statt der Ladezeit des
+    Browsers.
+  - *Abdeckungshinweis:* Website und `docs/statistik.md` sagten über die
+    Jahreszahlen „decken nur Richtung Meidling ab“, direkt über Praterstern
+    mit 3.831 Beobachtungen. Er sagt jetzt, dass die Jahreszahlen Praterstern
+    nur bis 14.08.2026 enthalten; das README (30 Tage) bleibt.
+  - *Texte:* Einleitung, Beschreibung, strukturierte Daten und `llms.txt`
+    nennen Stadt Wien als Quelle; die Fußzeile sagt „Statistikdaten“ statt
+    „Statistik-CSVs“ (die Seite liest seit Audit E.3 `stats-summary.json`);
+    das Datum im Abdeckungshinweis hat das Format der Kacheln (14.08.2026).
+  Details in `docs/architecture.md`, „Was eine Meldungskachel zeigt“.
+
 * **Zweitprüfung der Umsetzungen #2012 bis #2014 und #2037 bis #2040
   (2026-10-25)**: Alle 9.639 WL-Texte seit Juli durch den Formatierer, mit
   und ohne Maßnahmenblock (#2012, 41 Texte ändern sich) und Kurzform je Linie
