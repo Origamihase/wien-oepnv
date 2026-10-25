@@ -728,7 +728,9 @@ _OEBB_DATE = r"\d{2}\.\d{2}\.\d{4}"
 _OEBB_DATE_NOTE = r"(?:\s*\([^()]{1,40}\))?"
 _OEBB_DATE_DAY = rf"{_OEBB_DATE}{_OEBB_DATE_NOTE}(?:\s+bis\s+{_OEBB_DATE}{_OEBB_DATE_NOTE})?"
 _OEBB_DATE_ENTRY = rf"(?:am|von)\s+{_OEBB_DATE_DAY}"
-_OEBB_DATE_SEPARATOR = r"(?:(?:,|\s+und)?\s*•\s*|,\s*(?:und\s+)?|\s+und\s+)"
+# A list whose line breaks are gone already ("am 19.02.2026 am 19.03.2026")
+# is one too: a space before the next "am"/"von".
+_OEBB_DATE_SEPARATOR = r"(?:(?:,|\s+und)?\s*•\s*|,\s*(?:und\s+)?|\s+und\s+|\s+(?=(?:am|von)\s))"
 _OEBB_DATE_LIST_RE = re.compile(
     rf"{_OEBB_DATE_ENTRY}(?:{_OEBB_DATE_SEPARATOR}(?:(?:am|von)\s+)?{_OEBB_DATE_DAY})+"
 )
@@ -783,6 +785,53 @@ def _oebb_upcoming_dates(text: str, today: date | None = None) -> str:
         return f"{', '.join(kept[:-1])} und {kept[-1]}"
 
     return _OEBB_DATE_LIST_RE.sub(rewrite, text)
+
+
+# A list that is still too long for the display after the past days left
+# takes the room of what the notice says: on 24.10.2026 the S1 read "…
+# zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof von 24.10.2026 bis
+# 26.10.2026, von 31.10.2026 bis 01.11.2026, von 14.11.2026 bis 15.11.2026
+# …", and the cut took "der S1-Zug 23626 nicht fahren" — on the TV the whole
+# route looked closed for one train. A sentence over the 180 characters now
+# says "an einzelnen Tagen" in place of its lists, longest first, until it
+# fits; the time line names the period. Two routes that both lost their
+# list share the one phrase behind the second ("zwischen A und B und
+# zwischen C und D an einzelnen Tagen der S1-Zug 23626 …"); once a list has
+# gone, a single day of another route in that sentence goes the same way
+# if the sentence still does not fit. A list that fits stays (operator decision 2026-10-25, "klingt gut. mach das bitte").
+_OEBB_DAYS_IN_WORDS = "an einzelnen Tagen"
+_OEBB_DAYS_IN_WORDS_LIMIT = 180
+_OEBB_EVERY_DAY_NOTE_RE = re.compile(r"\(jeweils\b[^()]*\)$")
+_OEBB_DATE_ENTRY_ONLY_RE = re.compile(_OEBB_DATE_ENTRY)
+
+
+def _oebb_long_date_lists_in_words(text: str) -> str:
+    """Every ÖBB sentence over 180 characters with its date lists in words (see above)."""
+
+    def shorten(sentence: str) -> str:
+        while len(sentence) > _OEBB_DAYS_IN_WORDS_LIMIT:
+            lists = list(_OEBB_DATE_LIST_RE.finditer(sentence))
+            if not lists and _OEBB_DAYS_IN_WORDS in sentence:
+                # A list went and it still does not fit: the single days of
+                # the other routes go too ("… und zwischen C und D am
+                # 01.11.2026 der S1-Zug …" once the 25.10. is over).
+                lists = list(_OEBB_DATE_ENTRY_ONLY_RE.finditer(sentence))
+            if not lists:
+                break
+            longest = max(lists, key=lambda m: len(m[0]))
+            head, tail = sentence[: longest.start()], sentence[longest.end():]
+            sentence = f"{head}{_OEBB_DAYS_IN_WORDS}{tail}"
+            # "(jeweils 08:45 Uhr - 14:45 Uhr)" is said of every day: it stays
+            # when the sentence still fits with it.
+            every_day = _OEBB_EVERY_DAY_NOTE_RE.search(longest[0])
+            with_note = f"{head}{_OEBB_DAYS_IN_WORDS} {every_day[0]}{tail}" if every_day else ""
+            if with_note and len(with_note) <= _OEBB_DAYS_IN_WORDS_LIMIT:
+                sentence = with_note
+            if sentence.count(_OEBB_DAYS_IN_WORDS) > 1:
+                sentence = sentence.replace(f" {_OEBB_DAYS_IN_WORDS}", "", 1)
+        return sentence
+
+    return " ".join(shorten(part) for part in _SENTENCE_SPLIT_RE.split(text))
 
 
 def _oebb_section_labels_cased(text: str) -> str:
@@ -11109,6 +11158,31 @@ def _apply_lang_overlay(
     )
 
 
+def _summary_as_one_line(summary: str, it: FeedItem) -> str:
+    """Bullets, junction marks and stray arrows resolved into one running line."""
+    if it.get("source") == "Wiener Linien":
+        summary = _wl_measure_labels_with_colon(summary)
+    # Bulletpoints auflösen, um einen fließenden Satz zu bilden
+    summary = summary.replace(" • ", " ").replace("•", " ")
+    # WL uses ``#`` as an internal street-junction marker — real cache
+    # text reads ``ab Engerthstraße # Elderschplatz über …`` meaning
+    # "starting from the Engerthstraße / Elderschplatz intersection".
+    # The bare ``#`` glyph looks like a stray hashtag to a feed
+    # subscriber, so swap it for ``/`` which mirrors WL's own
+    # ``40/41`` line-separator convention and reads as a junction
+    # marker without ambiguity. All 46 current cache occurrences
+    # carry whitespace on both sides (``\\s+#\\s+``), so the
+    # space-anchored swap can't accidentally touch a hashtag inside
+    # quoted strings or a URL fragment.
+    summary = summary.replace(" # ", " / ")
+    if str(it.get("source") or "").strip().casefold() == "wiener linien":
+        summary = _STANDALONE_ARROW_RE.sub(" ", summary)
+    summary = _WHITESPACE_CLEANUP_RE.sub(" ", summary).strip()
+    if it.get("source") == _OEBB_SOURCE:
+        summary = _oebb_long_date_lists_in_words(summary)
+    return summary
+
+
 def _format_item_content(
     it: FeedItem,
     ident: str,
@@ -11193,24 +11267,7 @@ def _format_item_content(
         summary = _oebb_section_labels_cased(summary)
         summary = _oebb_upcoming_dates(summary)
 
-    if it.get("source") == "Wiener Linien":
-        summary = _wl_measure_labels_with_colon(summary)
-    # Bulletpoints auflösen, um einen fließenden Satz zu bilden
-    summary = summary.replace(" • ", " ").replace("•", " ")
-    # WL uses ``#`` as an internal street-junction marker — real cache
-    # text reads ``ab Engerthstraße # Elderschplatz über …`` meaning
-    # "starting from the Engerthstraße / Elderschplatz intersection".
-    # The bare ``#`` glyph looks like a stray hashtag to a feed
-    # subscriber, so swap it for ``/`` which mirrors WL's own
-    # ``40/41`` line-separator convention and reads as a junction
-    # marker without ambiguity. All 46 current cache occurrences
-    # carry whitespace on both sides (``\\s+#\\s+``), so the
-    # space-anchored swap can't accidentally touch a hashtag inside
-    # quoted strings or a URL fragment.
-    summary = summary.replace(" # ", " / ")
-    if str(it.get("source") or "").strip().casefold() == "wiener linien":
-        summary = _STANDALONE_ARROW_RE.sub(" ", summary)
-    summary = _WHITESPACE_CLEANUP_RE.sub(" ", summary).strip()
+    summary = _summary_as_one_line(summary, it)
 
     # Doppelte Kategorie-Wortpräfixe entfernen (siehe Helper-Docstring).
     # Das Wort vorher merken: Bei WL-Kurzmeldungen ist es der Grund und

@@ -817,7 +817,17 @@ verdrängt eine andere Störung.
   sind alle Tage vorbei, bleibt der Text wie er war
   (die Meldung ist dann ohnehin abgelaufen). 20 ÖBB-Meldungen seit Dezember 2025
   haben eine Liste über mehrere Zeilen, zwei (S2 Leopoldau–Mistelbach,
-  REX 51 Marchtrenk) eine in einer Zeile. Über alle 443
+  REX 51 Marchtrenk) eine in einer Zeile. Bleibt ein Satz mit seinen
+  restlichen Tagen über 180 Zeichen, liest die längste Liste „an
+  einzelnen Tagen“, bis der Satz passt; die Zeitzeile nennt den Zeitraum
+  (`_oebb_long_date_lists_in_words`, Michaels Entscheidung 2026-10-25
+  „klingt gut. mach das bitte“). Eine Uhrzeitangabe „(jeweils …)“ der
+  Liste bleibt, wenn der Satz mit ihr passt; ist eine Liste gegangen,
+  geht ein einzelner Tag einer zweiten Strecke im selben Satz ebenso,
+  wenn der Satz noch nicht passt. Eine Liste, die passt, bleibt. Am 24.10.
+  brach S1 Leopoldau–Deutsch Wagram nach der Liste ab, ohne zu sagen,
+  was nicht fährt; jetzt „… an einzelnen Tagen der S1-Zug …“. Über alle
+  Cache-Texte seit Juni ändern sich 43 ÖBB-Texte, kein WL-Text. Über alle 443
   ÖBB-Texte im Cache seit Juni ändern sich 265: 251 behalten ihren
   zweiten Satz, die übrigen verlieren nur den Höflichkeitssatz. Rückblick:
   Eine Störung, die ÖBB als vorbei meldet („waren“), bleibt im Feed, weil
