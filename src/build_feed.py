@@ -814,7 +814,9 @@ def _oebb_long_date_lists_in_words(text: str) -> str:
             if not lists and _OEBB_DAYS_IN_WORDS in sentence:
                 # A list went and it still does not fit: the single days of
                 # the other routes go too ("… und zwischen C und D am
-                # 01.11.2026 der S1-Zug …" once the 25.10. is over).
+                # 01.11.2026 der S1-Zug …" once the 25.10. is over). ÖBB's
+                # own "(jeweils an einzelnen Tagen, …)" counts the same, and
+                # its period goes too.
                 lists = list(_OEBB_DATE_ENTRY_ONLY_RE.finditer(sentence))
             if not lists:
                 break
@@ -852,7 +854,9 @@ def _oebb_long_date_lists_in_words(text: str) -> str:
 # three or more train numbers that keeps the sentence over the limit reads
 # as their count ("die Züge S1 (28632), S1 (28684), … und S2 (28153)" →
 # "11 Züge"): eleven numbers took the 180 characters on 02.08.2026, route
-# and "nicht fahren" included.
+# and "nicht fahren" included. Every train of the list counts once, also one
+# with a short number ("EC 71") and each number of a group ("REX 1 (2334,
+# 2338 und 2342)" are three).
 _OEBB_TRAIN_NUMBER = (
     r"(?:[A-Z]{1,4} ?\d{1,5}[A-Z]?(?: ?\(\d{2,5}\))?|\d{2,5}"
     r"|\(\d{2,5}(?:, \d{2,5})*(?: und \d{2,5})?\))"
@@ -866,7 +870,10 @@ _OEBB_CANNOT_RUN_RE = re.compile(
     rf" (?P<middle>.+?) (?P<trains>{_OEBB_TRAINS}) (?P<verb>(?:nicht )?fahren)\."
 )
 _OEBB_TRAINS_RE = re.compile(rf"\b{_OEBB_TRAINS}\b")
-_OEBB_TRAIN_NUMBERS_RE = re.compile(r"(?<![\d.])\d{3,5}(?![\d.])")
+_OEBB_LISTED_TRAIN_RE = re.compile(
+    r"(?:[A-Z]{1,4} ?\d{1,5}[A-Z]? ?)?\((?P<group>\d{2,5}(?:, \d{2,5})*(?: und \d{2,5})?)\)"
+    r"|[A-Z]{1,4} ?\d{1,5}[A-Z]?|(?<![\d.])\d{2,5}(?![\d.])"
+)
 _OEBB_LISTED_TRAINS_RE = re.compile(r"die (?P<noun>\S*[Zz]üge) ")
 _OEBB_OTHER_VERB_RE = re.compile(r"\b(?:wird|werden|ist|sind|war|waren)\b")
 
@@ -884,10 +891,14 @@ def _oebb_what_does_not_run_first(sentence: str) -> str:
     ):
         return sentence
     trains, middle = match["trains"], match["middle"]
-    numbers = _OEBB_TRAIN_NUMBERS_RE.findall(trains)
     listed = _OEBB_LISTED_TRAINS_RE.match(trains)
-    if len(numbers) >= 3 and listed is not None:
-        trains = f"{len(numbers)} {listed['noun']}"
+    if listed is not None:
+        count = sum(
+            len(re.findall(r"\d+", entry["group"])) if entry["group"] else 1
+            for entry in _OEBB_LISTED_TRAIN_RE.finditer(trains, listed.end())
+        )
+        if count >= 3:
+            trains = f"{count} {listed['noun']}"
     # "an einzelnen Tagen" at the end of the routes says when the trains do
     # not run: it goes with them ("kann der S1-Zug 23626 an einzelnen Tagen
     # nicht fahren: zwischen …"), where the cut cannot take it.
