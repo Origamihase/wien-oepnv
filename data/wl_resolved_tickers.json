@@ -3,13 +3,6 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
  "tickers": [
   {
-   "key": "R1930-111|2026-10-25T15:12:14.000+0100|Gleisschaden\nBetrieb ab Quellenplatz",
-   "name": "R1930-111",
-   "title": "Gleisschaden\nBetrieb ab Quellenplatz",
-   "end": "2026-10-25T19:30:00.000+0100",
-   "incident": "I20261025-0019"
-  },
-  {
    "key": "R1931-111|2026-10-25T15:21:44.000+0100|Gleisschaden\nBetrieb ab Quellenplatz",
    "name": "R1931-111",
    "title": "Gleisschaden\nBetrieb ab Quellenplatz",
@@ -35,55 +28,6 @@
    "name": "R1932-170",
    "title": "Gleisschaden\nBetrieb ab Gudrunstraße",
    "end": "2026-10-25T19:45:00.000+0100",
-   "incident": "I20261025-0019"
-  },
-  {
-   "key": "R1933-170|2026-10-25T15:12:14.000+0100|Gleisschaden\nBetrieb ab Gudrunstraße",
-   "name": "R1933-170",
-   "title": "Gleisschaden\nBetrieb ab Gudrunstraße",
-   "end": "2026-10-25T19:15:00.000+0100",
-   "incident": "I20261025-0019"
-  },
-  {
-   "key": "R2231-111|2026-10-25T14:59:43.000+0100|Gleisschaden\nBetrieb ab Quellenplatz",
-   "name": "R2231-111",
-   "title": "Gleisschaden\nBetrieb ab Quellenplatz",
-   "end": "2026-10-25T19:15:00.000+0100",
-   "incident": "I20261025-0019"
-  },
-  {
-   "key": "R2232-111|2026-10-25T14:59:43.000+0100|Gleisschaden\nBetrieb ab Quellenplatz",
-   "name": "R2232-111",
-   "title": "Gleisschaden\nBetrieb ab Quellenplatz",
-   "end": "2026-10-25T19:15:00.000+0100",
-   "incident": "I20261025-0019"
-  },
-  {
-   "key": "R2244-111|2026-10-25T14:59:43.000+0100|Gleisschaden\nBetrieb ab Quellenplatz",
-   "name": "R2244-111",
-   "title": "Gleisschaden\nBetrieb ab Quellenplatz",
-   "end": "2026-10-25T19:15:00.000+0100",
-   "incident": "I20261025-0019"
-  },
-  {
-   "key": "R2258-111|2026-10-25T15:12:14.000+0100|Gleisschaden\nBetrieb ab Quellenplatz",
-   "name": "R2258-111",
-   "title": "Gleisschaden\nBetrieb ab Quellenplatz",
-   "end": "2026-10-25T19:30:00.000+0100",
-   "incident": "I20261025-0019"
-  },
-  {
-   "key": "R2259-111|2026-10-25T15:12:14.000+0100|Gleisschaden\nBetrieb ab Quellenplatz",
-   "name": "R2259-111",
-   "title": "Gleisschaden\nBetrieb ab Quellenplatz",
-   "end": "2026-10-25T19:30:00.000+0100",
-   "incident": "I20261025-0019"
-  },
-  {
-   "key": "R2260-111|2026-10-25T15:12:14.000+0100|Gleisschaden\nBetrieb ab Quellenplatz",
-   "name": "R2260-111",
-   "title": "Gleisschaden\nBetrieb ab Quellenplatz",
-   "end": "2026-10-25T19:30:00.000+0100",
    "incident": "I20261025-0019"
   }
  ]

@@ -866,38 +866,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A: Falschparker",
-    "description": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d639275fed205d39e9265cc9e6b073be44a4952e33d97ef0c1891f996a19ef98",
-    "pubDate": "2026-10-25T16:46:00+01:00",
-    "starts_at": "2026-10-25T16:46:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=11A|D=2026-10-25|TK=falschparker",
-    "_wl_ids": [
-      "I20261025-0021"
-    ],
-    "_incident_start": "2026-10-25T16:46:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11: Gleisschaden",
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "8ac82128f904a7fa58ecafa95c032722978fbab01a1f66c59f511f819537fbc0",
-    "pubDate": "2026-10-25T14:49:00+01:00",
-    "starts_at": "2026-10-25T14:49:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=11|D=2026-10-25|TK=11 gleisschaden",
-    "_wl_ids": [
-      "I20261025-0019"
-    ],
-    "_incident_start": "2026-10-25T14:49:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1174,18 +1142,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38A: Fahrtbehinderung Falschparker",
+    "title": "38A: Falschparker",
     "description": "Linie 38A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "361d72bca0cc84100f7195fc89fc1a03d6a8b18b8fa4cc578267b3f69d263e62",
     "pubDate": "2026-10-25T18:12:00+01:00",
-    "starts_at": "2026-10-25T18:13:31+01:00",
+    "starts_at": "2026-10-25T18:12:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=38A|D=2026-10-25|TK=falschparker",
     "_wl_ids": [
       "I20261025-0024"
     ],
     "_incident_start": "2026-10-25T18:12:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43A: Fremder Verkehrsunfall",
+    "description": "Derzeit ist ein Betrieb der Linie 43A nicht möglich. Voraussichtliche Dauer: 20:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Höhenstraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f5378020f4165fd2a9474e131224b06f0f5df1f062b9912dc69b688a62a70ea0",
+    "pubDate": "2026-10-25T19:27:00+01:00",
+    "starts_at": "2026-10-25T19:27:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=43A|D=2026-10-25|TK=43a fremder verkehrsunfall",
+    "_wl_ids": [
+      "I20261025-0025"
+    ],
+    "_incident_start": "2026-10-25T19:27:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1236,7 +1220,7 @@
     "guid": "2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107",
     "pubDate": "2026-10-25T17:41:00+01:00",
     "starts_at": "2026-10-25T17:41:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-10-25T19:38:00+01:00",
     "_identity": "wl|störung|L=66A|D=2026-10-25|TK=rettungseinsatz",
     "_wl_ids": [
       "I20261025-0023"
@@ -1282,22 +1266,6 @@
     "starts_at": "2026-10-24T00:40:37+02:00",
     "ends_at": "2026-10-25T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-10-24|TK=betrieb ab vivariumstrasse 2"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Rettungseinsatz",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509",
-    "pubDate": "2026-10-25T16:18:00+01:00",
-    "starts_at": "2026-10-25T16:18:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=9|D=2026-10-25|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261025-0020"
-    ],
-    "_incident_start": "2026-10-25T16:18:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1384,7 +1352,7 @@
     "guid": "3ac503a168e1300c7444ccdbdc08aaed1509050cf45071646d22f8ec6716b1af",
     "pubDate": "2026-10-25T14:49:00+01:00",
     "starts_at": "2026-10-25T14:49:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-10-25T19:38:00+01:00",
     "_identity": "wl|störung|L=O|D=2026-10-25|TK=o gleisschaden",
     "_wl_ids": [
       "I20261025-0019"
