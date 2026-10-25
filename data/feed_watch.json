@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-25T21:01:10.547077+00:00",
- "built": "2026-10-25T22:01:02+01:00",
+ "updated": "2026-10-25T21:30:58.275025+00:00",
+ "built": "2026-10-25T22:30:49+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-25T22:01:02+01:00",
+  "built": "2026-10-25T22:30:49+01:00",
   "items": [
    {
     "title": "71: Veranstaltung",
@@ -6771,17 +6771,37 @@
     "oebb": 9,
     "wl": 109
    }
+  },
+  {
+   "t": "2026-10-25T21:30:58.275025+00:00",
+   "raw": {
+    "wl-stoerungen": 80,
+    "wl-hinweise": 85,
+    "oebb": 159,
+    "baustellen-linien": 56,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 9,
+    "oebb": 135,
+    "baustellen": 71
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 109
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-25T21:01:10.547077+00:00"
+   "last_ok": "2026-10-25T21:30:58.275025+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-25T21:01:10.547077+00:00"
+   "last_ok": "2026-10-25T21:30:58.275025+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-25T21:01:10.547077+00:00"
+   "last_ok": "2026-10-25T21:30:58.275025+00:00"
   }
  }
 }
