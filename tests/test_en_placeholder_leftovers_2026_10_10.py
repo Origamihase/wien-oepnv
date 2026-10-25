@@ -29,6 +29,7 @@ Mutations checked against this file (each one caught):
 from __future__ import annotations
 
 import re
+import secrets
 from collections.abc import Callable
 from typing import Any
 
@@ -178,3 +179,52 @@ def test_ordinary_english_is_no_leftover() -> None:
         "Facade work at Glockengasse 12, see agent 7",
     ):
         assert not build_feed._leftover_placeholder(source, english), english
+
+
+# A nonce of one kind only: ``secrets.token_hex(8)`` gives all digits about
+# once in 1,800 draws, and a piece of it had no letter for the hex shape.
+_UNMIXED_DRAWS = ("4170352968031274", "abcdefabcdefabcd", "a1234567bcdef0ab", "1a2b3cfedcba9a8b")
+
+
+def _drawn(monkeypatch: pytest.MonkeyPatch, *draws: str) -> list[str]:
+    queue = list(draws)
+    monkeypatch.setattr(secrets, "token_hex", lambda _n=8: queue.pop(0))
+    return queue
+
+
+def test_an_unmixed_nonce_is_drawn_again(monkeypatch: pytest.MonkeyPatch) -> None:
+    good = "8d7a4459b316ac0e"
+    queue = _drawn(monkeypatch, *_UNMIXED_DRAWS, good)
+    assert build_feed._placeholder_nonce() == good
+    assert queue == []
+
+
+def test_every_piece_of_a_drawn_nonce_is_a_leftover() -> None:
+    source = "Wegen Bauarbeiten im Bereich Nord kommt es zu Verspätungen."
+    for _ in range(2000):
+        nonce = build_feed._placeholder_nonce()
+        assert re.fullmatch(r"[0-9a-f]{16}", nonce), nonce
+        for size in range(6, 17):
+            for start in range(17 - size):
+                piece = nonce[start : start + size]
+                english = f"Due to construction work in the area Nord {piece} there are delays."
+                assert build_feed._leftover_placeholder(source, english), (nonce, piece)
+
+
+@pytest.mark.parametrize("unmixed", _UNMIXED_DRAWS)
+def test_a_retry_after_an_unmixed_draw_still_refuses_a_bare_nonce(
+    monkeypatch: pytest.MonkeyPatch, unmixed: str
+) -> None:
+    # The case that failed once in about 1,800 runs: the retry nonce came out
+    # all digits and the model kept only that nonce of a placeholder.
+    _drawn(monkeypatch, unmixed, "8d7a4459b316ac0e")
+
+    def _model(shown: str) -> str:
+        if _NONCE_FORM.search(shown):
+            return "EN " + _mangle_nth(_NONCE_FORM, shown, 0, NONCE_MANGLES["prefix and index lost"])
+        return "EN " + shown.replace("XGLO", "XGLo").replace("XENT", "XENt")
+
+    calls = _install(monkeypatch, _model)
+    assert build_feed._translate_text_attempt(SUMMARY, ident="probe") is None
+    assert len(calls) == 2
+    assert "8d7a4459b316ac0e" in calls[1]

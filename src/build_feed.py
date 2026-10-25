@@ -3049,7 +3049,29 @@ _DATE_ENTITY_RE: re.Pattern[str] = re.compile(r"\b\d{1,2}\.\d{1,2}\.\d{4}\b")
 # both impossible (the source cannot predict it) while staying ``_``-free
 # for SentencePiece; the literal ``X`` separator before the index keeps the
 # regex unambiguous and leaves any old/foreign ``XENT<digits>X`` unmatched.
-_PLACEHOLDER_NONCE = secrets.token_hex(8)
+#
+# A nonce is drawn again until it holds no run of six digits or six letters.
+# What the model leaves of a placeholder whose prefix and index it dropped is
+# a bare piece of the nonce ("Nord8d74459316ab"), and the leftover rule sees
+# such a piece by its shape: six or more hex characters with a digit and a
+# letter among them (:data:`_CACHED_DEBRIS_RE`). ``secrets.token_hex(8)``
+# alone gives an all-digit nonce about once in 1,800 draws (10/16 to the 16th
+# power); a mangled retry under it left a bare number no check saw, and
+# ``test_a_mangled_nonce_placeholder_never_leaks`` failed in that run. With
+# the redraw every piece of six or more characters carries both a digit and
+# a letter, so the shape rule holds for each nonce instead of for most.
+_NONCE_UNMIXED_RUN_RE: re.Pattern[str] = re.compile(r"[0-9]{6}|[a-f]{6}")
+
+
+def _placeholder_nonce() -> str:
+    """A fresh placeholder nonce: 16 hex characters, no six of one kind in a row."""
+    while True:
+        nonce = secrets.token_hex(8)
+        if not _NONCE_UNMIXED_RUN_RE.search(nonce):
+            return nonce
+
+
+_PLACEHOLDER_NONCE = _placeholder_nonce()
 _ENTITY_PLACEHOLDER_FORMAT = "XENT" + _PLACEHOLDER_NONCE + "X{index}X"
 _ENTITY_PLACEHOLDER_RE: re.Pattern[str] = re.compile("XENT" + _PLACEHOLDER_NONCE + r"X\d+X")
 
@@ -5795,7 +5817,7 @@ def _translate_text_attempt(
         # fresh nonce, a different SentencePiece split of every placeholder:
         # before the short form, a bad nonce hit several texts of a build
         # (2026-09-26 17:01, nonce ``c3ed7873665b7570``, three summaries).
-        nonce = secrets.token_hex(8)
+        nonce = _placeholder_nonce()
         log.info(
             "Retrying translation for identity %s under a fresh placeholder nonce (%s).",
             sanitize_log_arg(ident or "<unknown>"),
