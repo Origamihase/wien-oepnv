@@ -866,6 +866,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11A: Falschparker",
+    "description": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d639275fed205d39e9265cc9e6b073be44a4952e33d97ef0c1891f996a19ef98",
+    "pubDate": "2026-10-25T20:14:00+01:00",
+    "starts_at": "2026-10-25T20:14:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=11A|D=2026-10-25|TK=falschparker",
+    "_wl_ids": [
+      "I20261025-0028"
+    ],
+    "_incident_start": "2026-10-25T20:14:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1142,38 +1158,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38A: Falschparker",
-    "description": "Linie 38A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "361d72bca0cc84100f7195fc89fc1a03d6a8b18b8fa4cc578267b3f69d263e62",
-    "pubDate": "2026-10-25T18:12:00+01:00",
-    "starts_at": "2026-10-25T18:12:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=38A|D=2026-10-25|TK=falschparker",
-    "_wl_ids": [
-      "I20261025-0024"
-    ],
-    "_incident_start": "2026-10-25T18:12:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "43A: Fremder Verkehrsunfall",
-    "description": "Linie 43A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "f5378020f4165fd2a9474e131224b06f0f5df1f062b9912dc69b688a62a70ea0",
-    "pubDate": "2026-10-25T19:27:00+01:00",
-    "starts_at": "2026-10-25T19:27:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=43A|D=2026-10-25|TK=43a fremder verkehrsunfall",
-    "_wl_ids": [
-      "I20261025-0025"
-    ],
-    "_incident_start": "2026-10-25T19:27:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "46/49/52: Gleisbauarbeiten",
     "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1254,6 +1238,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "94A: Verkehrsunfall",
+    "description": "Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f0d634e8c64b753a861add399e7138caa8409a34cbca6326b25b7324feb41ede",
+    "pubDate": "2026-10-25T20:11:00+01:00",
+    "starts_at": "2026-10-25T20:11:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=94A|D=2026-10-25|TK=94a verkehrsunfall",
+    "_wl_ids": [
+      "I20261025-0027"
+    ],
+    "_incident_start": "2026-10-25T20:11:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "D: Gleisbauarbeiten",
     "description": "Linie D: Kein Betrieb zwischen Börse und Augasse. Weichen Sie ersatzweise auf die Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A aus. Grund: Gleisbauarbeiten im Bereich Althanstraße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1326,38 +1326,6 @@
     "starts_at": "2026-10-21T00:00:24+02:00",
     "ends_at": "2026-10-25T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2026-10-21|TK=ersatzverkehr"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U2: Betriebsstörung",
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
-    "pubDate": "2026-10-25T19:35:00+01:00",
-    "starts_at": "2026-10-25T19:35:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U2|D=2026-10-25|TK=u2 betriebsstörung",
-    "_wl_ids": [
-      "I20261025-0026"
-    ],
-    "_incident_start": "2026-10-25T19:35:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Verunreinigung",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5718e5adfd8ff17a7b75efa1723cae5513a3a9e89e84929ae6d9338f8ba24e1d",
-    "pubDate": "2026-10-25T16:57:00+01:00",
-    "starts_at": "2026-10-25T16:57:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U4|D=2026-10-25|TK=u4 verunreinigung",
-    "_wl_ids": [
-      "I20261025-0022"
-    ],
-    "_incident_start": "2026-10-25T16:57:00+01:00"
   },
   {
     "source": "Wiener Linien",
