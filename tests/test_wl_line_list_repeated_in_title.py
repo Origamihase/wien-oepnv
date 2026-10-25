@@ -84,7 +84,7 @@ def test_the_build_repairs_the_published_titles(cached: str, expected: str) -> N
 @pytest.mark.parametrize(
     ("raw", "related", "expected"),
     [
-        ("N66, Rufbus N68: Quellenplatz", ["N66", "N68R"], "N66/N68R: Quellenplatz"),
+        ("N66, Rufbus N68: Quellenplatz", ["N66", "N68R"], "N68R/N66: Quellenplatz"),
         ("4A. 80A, N29: Wittelsbachstraße", ["4A", "80A", "N29"], "4A/80A/N29: Wittelsbachstraße"),
         # relatedLines without the R-twin: the Rufbus line is added as before.
         ("N66, Rufbus N68: Quellenplatz", ["N66"], "N66/N68: Quellenplatz"),

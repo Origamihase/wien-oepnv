@@ -135,11 +135,11 @@ class TestEnsureLinePrefixUnionsExistingPrefix:
         )
         assert result == "40/41: Betrieb ab Gersthof"
 
-    def test_existing_prefix_order_preserved(self) -> None:
-        # Real WL cache item: ``41E/10A: Ersatzbus`` must round-trip
-        # unchanged — the prefix order tracks WL's own rendering.
+    def test_existing_prefix_follows_wl_line_order(self) -> None:
+        # Real WL cache item ``41E/10A: Ersatzbus``: every prefix takes
+        # WL's line order (``line_order_key``), the A bus before the E bus.
         result = _ensure_line_prefix("41E/10A: Ersatzbus", [])
-        assert result == "41E/10A: Ersatzbus"
+        assert result == "10A/41E: Ersatzbus"
 
     def test_plus_collapses_to_slash_in_title_order(self) -> None:
         # ``9+40+41:`` collapses to ``9/40/41:`` (order from title).

@@ -4,6 +4,8 @@ from collections.abc import Mapping
 from datetime import datetime
 from typing import Any
 
+from ..providers.wl_lines import line_order_key
+
 # Line-prefix grammar tolerant of two real-world spellings:
 #
 #   "U6: …", "1/2: …", "13A/14A: …"   (WL-style — no internal whitespace)
@@ -327,11 +329,6 @@ def _has_significant_overlap_cached(
         return True
 
     return False
-
-
-def _natural_keys(text: str) -> list[str | int]:
-    """Helper for natural sorting of line numbers (e.g. U1, U2, U10)."""
-    return [int(c) if c.isdigit() else c for c in re.split(r'(\d+)', text)]
 
 
 # Helper for collapsing two merged names that share a substantial common
@@ -863,14 +860,8 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
                                 # long suffix, ÖBB ``↔`` chain).
                                 new_name = _join_merged_names(ex_name, name)
 
-                    # Reconstruct Title
-                    # Sort lines naturally (alphanumeric)?
-                    # They are strings. '1', '10', '2'. We might want numeric sort if possible.
-                    # But strict string sort is okay for now.
-                    # Better sort: U1, U2... 1, 2...
-                    # Existing build_feed doesn't seem to sort lines explicitly in title, just preserves them.
-                    # Let's try to sort numerically if possible.
-                    all_lines.sort(key=_natural_keys)
+                    # Reconstruct Title, lines in WL's order (``line_order_key``)
+                    all_lines.sort(key=line_order_key)
                     lines_part = "/".join(all_lines)
                     new_title = f"{lines_part}: {new_name}"
                     existing_copy["title"] = new_title

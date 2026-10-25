@@ -44,7 +44,7 @@ from .feed.glossary import (
     _GLOSSARY_BY_CATEGORY as _GLOSSARY_BY_CATEGORY,
     _GLOSSARY_BY_SOURCE as _GLOSSARY_BY_SOURCE,
 )
-from .feed.merge import _natural_keys, deduplicate_fuzzy, member_guids
+from .feed.merge import deduplicate_fuzzy, member_guids
 from .feed.logging import configure_logging
 from .feed.providers import (
     iter_providers,
@@ -82,6 +82,7 @@ from .providers.baustellen import (
     shares_address,
     site_street,
 )
+from .providers.wl_lines import line_order_key
 from .providers.wl_plausibility import end_unknown, incident_begin
 from .providers.wl_text import _MONTHS_DE, STOP_NOTICE_LEAD_RE
 from .utils.text import (
@@ -9139,7 +9140,7 @@ def _union_prefix(members: Sequence[FeedItem]) -> str | None:
     for member in members:
         for token in _ticker_line_tokens(member):
             tokens.setdefault(token.casefold(), token)
-    return "/".join(sorted(tokens.values(), key=_natural_keys)) + ": "
+    return "/".join(sorted(tokens.values(), key=line_order_key)) + ": "
 
 
 def _group_lines_key(members: Sequence[FeedItem]) -> str:
@@ -9164,7 +9165,7 @@ def _twin_labels(members: Sequence[FeedItem], union: str | None) -> tuple[list[F
             lines.setdefault(token.casefold(), token)
     kept = [item for item, _lines in shown.values()]
     labels = [
-        "" if set(lines) == all_lines else "/".join(sorted(lines.values(), key=_natural_keys)) + ": "
+        "" if set(lines) == all_lines else "/".join(sorted(lines.values(), key=line_order_key)) + ": "
         for _item, lines in shown.values()
     ]
     return kept, labels
