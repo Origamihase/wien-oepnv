@@ -1210,12 +1210,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "7A: Fahrtbehinderung Falschparker",
+    "title": "7A: Falschparker",
     "description": "Linie 7A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "77994cd70c8bd44acc7c6ae28c2d0cee63d1f01a0b2acaf969f56ecb941ab571",
     "pubDate": "2026-10-25T07:54:00+01:00",
-    "starts_at": "2026-10-25T07:57:01+01:00",
+    "starts_at": "2026-10-25T07:54:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=7A|D=2026-10-25|TK=falschparker",
     "_wl_ids": [
@@ -1314,6 +1314,22 @@
       "I20261025-0005"
     ],
     "_incident_start": "2026-10-25T06:43:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Rettungseinsatz",
+    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Perfektastraße und Erlaaer Straße in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 09:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Perfektastraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
+    "pubDate": "2026-10-25T08:47:00+01:00",
+    "starts_at": "2026-10-25T08:47:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-10-25|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261025-0007"
+    ],
+    "_incident_start": "2026-10-25T08:47:00+01:00"
   },
   {
     "source": "Wiener Linien",
