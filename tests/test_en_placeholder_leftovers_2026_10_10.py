@@ -29,6 +29,7 @@ Mutations checked against this file (each one caught):
 from __future__ import annotations
 
 import re
+import secrets
 from collections.abc import Callable
 from typing import Any
 
@@ -187,7 +188,7 @@ _UNMIXED_DRAWS = ("4170352968031274", "abcdefabcdefabcd", "a1234567bcdef0ab", "1
 
 def _drawn(monkeypatch: pytest.MonkeyPatch, *draws: str) -> list[str]:
     queue = list(draws)
-    monkeypatch.setattr(build_feed.secrets, "token_hex", lambda _n=8: queue.pop(0))
+    monkeypatch.setattr(secrets, "token_hex", lambda _n=8: queue.pop(0))
     return queue
 
 
