@@ -1,8 +1,8 @@
 {
   "ausfaelle": {
     "by_direction": {
-      "Meidling": 1015,
-      "Praterstern": 916
+      "Meidling": 1011,
+      "Praterstern": 911
     },
     "by_hour": {
       "00": 45,
@@ -10,57 +10,56 @@
       "02": 3,
       "03": 1,
       "04": 35,
-      "05": 76,
+      "05": 75,
       "06": 82,
       "07": 116,
-      "08": 139,
+      "08": 138,
       "09": 91,
       "10": 88,
-      "11": 75,
+      "11": 74,
       "12": 67,
       "13": 72,
-      "14": 77,
+      "14": 75,
       "15": 114,
-      "16": 91,
-      "17": 108,
+      "16": 90,
+      "17": 107,
       "18": 108,
       "19": 131,
-      "20": 108,
+      "20": 107,
       "21": 110,
       "22": 98,
-      "23": 86
+      "23": 85
     },
     "by_line": {
-      "CJX9": 406,
+      "CJX9": 403,
       "R3": 22,
       "R4": 1,
       "REX1": 156,
       "REX2": 6,
-      "REX3": 196,
+      "REX3": 195,
       "REX92": 3,
       "S1": 437,
       "S2": 302,
-      "S3": 250,
-      "S4": 151,
-      "ohne Linienangabe": 1
+      "S3": 248,
+      "S4": 149
     },
     "by_weekday": {
-      "Di": 294,
-      "Do": 330,
+      "Di": 291,
+      "Do": 329,
       "Fr": 374,
-      "Mi": 307,
-      "Mo": 296,
-      "Sa": 160,
-      "So": 170
+      "Mi": 306,
+      "Mo": 295,
+      "Sa": 159,
+      "So": 168
     },
-    "total": 1931
+    "total": 1922
   },
-  "generated_at": "2026-10-26T12:31:06+01:00",
+  "generated_at": "2026-10-26T13:01:49+01:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.96,
     "by_direction": {
-      "Meidling": 6769,
+      "Meidling": 6770,
       "Praterstern": 3831
     },
     "by_hour_avg": {
@@ -102,19 +101,19 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-10-26T12:17:00+01:00",
+          "last_seen": "2026-10-26T12:55:00+01:00",
           "peer_rows_since": 0,
           "rows_in_window": 1195
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 2919,
+          "peer_rows_since": 2920,
           "rows_in_window": 0
         }
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-10-26T12:30:52+01:00",
+        "last_success": "2026-10-26T13:01:37+01:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
@@ -128,7 +127,7 @@
     "max_delay_minutes": 395.33,
     "threshold_exceedances": 136,
     "threshold_minutes": 9.0,
-    "total_observations": 10600
+    "total_observations": 10601
   },
   "stoerungen": {
     "by_hour": {
