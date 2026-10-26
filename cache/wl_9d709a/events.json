@@ -1178,6 +1178,46 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "62: Fremder Verkehrsunfall",
+    "description": "Linie 62: Betrieb nur zwischen Quartier Belvedere S und Wattmanngasse. Voraussichtliche Dauer: 13:00 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Hofwiesengasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4c1e89a0a40bfb1e4f7ed705d39d58c43ececa41111e4527719df3c39d677104",
+    "pubDate": "2026-10-26T11:42:00+01:00",
+    "starts_at": "2026-10-26T11:42:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=62|D=2026-10-26|TK=62 fremder verkehrsunfall",
+    "_wl_ids": [
+      "I20261026-0011"
+    ],
+    "_incident_start": "2026-10-26T11:42:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2433896ff62c94da69d9b1693ccd39f2b29dc1d94f2450b0c7572b2d6c05f867",
+    "pubDate": "2026-10-26T11:42:38+01:00",
+    "starts_at": "2026-10-26T11:43:07+01:00",
+    "ends_at": "2026-10-26T12:42:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-10-26|TK=fahrtbehinderung fremder verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Fremdunfall Betrieb ab Wattmanngasse",
+    "description": "Fremdunfall\nBetrieb ab Wattmanngasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "785aecc7ef866a183b3f279ee213990f9c840c758b928a4a8f6564229a0bd266",
+    "pubDate": "2026-10-26T11:44:38+01:00",
+    "starts_at": "2026-10-26T11:44:38+01:00",
+    "ends_at": "2026-10-26T12:44:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-10-26|TK=fremdunfall betrieb ab wattmanngasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1274,6 +1314,38 @@
     "starts_at": "2026-10-21T00:00:24+02:00",
     "ends_at": "2026-10-26T23:59:59+01:00",
     "_identity": "wl|störung|L=N71|D=2026-10-21|TK=ersatzverkehr"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Rettungseinsatz",
+    "description": "Die Linie U4 fährt derzeit in der Station Landstraße in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 12:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Landstraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a",
+    "pubDate": "2026-10-26T11:48:00+01:00",
+    "starts_at": "2026-10-26T11:48:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U4|D=2026-10-26|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261026-0012"
+    ],
+    "_incident_start": "2026-10-26T11:48:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Polizeieinsatz",
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab",
+    "pubDate": "2026-10-26T11:35:00+01:00",
+    "starts_at": "2026-10-26T11:35:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-10-26|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261026-0010"
+    ],
+    "_incident_start": "2026-10-26T11:35:00+01:00"
   },
   {
     "source": "Wiener Linien",
