@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261026-0011-F01, I20260917-0012, I20260922-0032, I20260925-0011, I20261026-0004, I20260909-0007, I20261026-0012-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261026-0013-F01, I20261026-0013-F02, I20261026-0013-F03, I20260917-0012, I20260922-0032, I20260925-0011, I20261026-0004, I20260909-0007, I20261026-0012-F01, I20261026-0014, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R1448-149, R1474-149, R1475-149, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1473-149, R1472-149, R1449-149, R1447-149, R45-136, R103-136, R102-136, R101-136, R100-136, R36-152, R118-136, R119-136, R19-136, R130-136, R117-136, R116-136, R1880-101, R293-474, R115-136, R1876-101, R318-437, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R3886-480, R401-101, R2372-125, R2379-627, R2380-627, R2345-127, R2373-126, R2373-127, R2373-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2420-411, R2372-627, R2558-125, R1974-466, R50-171, R49-171, R47-171, R46-171, R45-171, R51-171, R44-171, R500-101, R19-171, R18-171, R13-171, R15-171, R14-171, R17-171, R15-101, R14-101, R13-101, R17-101, R18-101, R19-101, R20-101, R21-101, R22-101, R1756-101, R47-101, R42-101, R49-101, R50-101, R43-101, R44-101, R45-101, R46-101, R51-101, R12-102, R11-102, R14-102, R9-102, R22-102, R13-102, R10-102, R15-102, R55-102, R54-102, R53-102, R52-102, R51-102, R50-102, R49-102, R134-102, R46-136, R51-136, R50-136, R49-136, R47-136, R81-171, R1737-162, R1738-162, R1735-162, R1736-162, R1634-162, R1616-162, R1731-162, R1728-162, R1730-162, R2159-131, R321-131, R322-131, R2196-131, R2197-131, R2198-131, R2189-131, R2193-131, R2190-131, R2194-131, R2195-131, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R45-136, R19-136, R130-136, R119-136, R118-136, R101-136, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R117-136, R116-136, R115-136, R103-136, R102-136, R1876-101, R100-136, R36-152, R293-474, R318-437, R3886-480, R401-101, R2359-125, R2370-125, R2371-125, R2372-125, R2420-411, R2372-627, R2373-125, R2343-626, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2343-125, R2378-627, R2558-125, R1974-466, R47-171, R44-171, R45-171, R46-171, R49-171, R50-171, R51-171, R500-101, R13-171, R14-171, R15-171, R17-171, R18-171, R19-171, R20-101, R21-101, R22-101, R13-101, R14-101, R15-101, R17-101, R18-101, R19-101, R1756-101, R47-101, R51-101, R50-101, R49-101, R46-101, R45-101, R44-101, R43-101, R42-101, R11-102, R12-102, R13-102, R10-102, R9-102, R22-102, R14-102, R15-102, R53-102, R51-102, R50-102, R49-102, R52-102, R54-102, R55-102, R134-102, R47-136, R49-136, R50-136, R46-136, R51-136, R81-171, R1616-162, R1730-162, R1728-162, R1731-162, R2159-131, R321-131, R322-131, R2197-131, R2190-131, R2194-131, R2195-131, R2196-131, R2198-131, R2193-131, R2189-131, R2189-130, R2222-130, R2172-130, R3472-130, R2187-127, R2188-127, R2189-127, R2228-127, R2174-127, R2172-127, R2173-127, R2222-131, R2172-131, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -325,55 +325,6 @@
     "title": "D, 1, 2, 71: Veranstaltung"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "62": "ptTram"
-     }
-    },
-    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "62: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261026-0011-F01",
-    "owner": "WL",
-    "parentName": "I20261026-0011",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 162,
-      "lineName": "62",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     1728
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-26T13:08:00.000+0100",
-     "end": "2026-10-26T13:28:00.000+0100",
-     "lastUpdate": "2026-10-26T13:28:00.000+0100",
-     "resume": "2026-10-26T13:28:00.000+0100",
-     "start": "2026-10-26T11:42:00.000+0100"
-    },
-    "title": "62: Fremder Verkehrsunfall"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
@@ -420,6 +371,189 @@
      "start": "2026-10-26T11:48:00.000+0100"
     },
     "title": "U4: Rettungseinsatz"
+   },
+   {
+    "alertCause": "fire",
+    "alertCauseId": 5,
+    "attributes": {
+     "relatedLineTypes": {
+      "27": "ptTram"
+     }
+    },
+    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 27: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 27: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "27: Feuerwehreinsatz"
+      }
+     }
+    ],
+    "name": "I20261026-0013-F01",
+    "owner": "WL",
+    "parentName": "I20261026-0013",
+    "priority": "1",
+    "reasonId": 11,
+    "reasonName": "Feuerwehreinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 127,
+      "lineName": "27",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-26T13:43:00.000+0100",
+     "lastUpdate": "2026-10-26T13:43:00.000+0100",
+     "resume": "2026-10-26T13:43:00.000+0100",
+     "start": "2026-10-26T13:29:00.000+0100"
+    },
+    "title": "27: Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "fire",
+    "alertCauseId": 5,
+    "attributes": {
+     "relatedLineTypes": {
+      "30": "ptTram"
+     }
+    },
+    "description": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 30: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 30: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "30: Feuerwehreinsatz"
+      }
+     }
+    ],
+    "name": "I20261026-0013-F02",
+    "owner": "WL",
+    "parentName": "I20261026-0013",
+    "priority": "1",
+    "reasonId": 11,
+    "reasonName": "Feuerwehreinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "30"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 130,
+      "lineName": "30",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-26T13:43:00.000+0100",
+     "lastUpdate": "2026-10-26T13:43:00.000+0100",
+     "resume": "2026-10-26T13:43:00.000+0100",
+     "start": "2026-10-26T13:29:00.000+0100"
+    },
+    "title": "30: Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "fire",
+    "alertCauseId": 5,
+    "attributes": {
+     "relatedLineTypes": {
+      "31": "ptTram"
+     }
+    },
+    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "31: Feuerwehreinsatz"
+      }
+     }
+    ],
+    "name": "I20261026-0013-F03",
+    "owner": "WL",
+    "parentName": "I20261026-0013",
+    "priority": "1",
+    "reasonId": 11,
+    "reasonName": "Feuerwehreinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 131,
+      "lineName": "31",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-26T13:43:00.000+0100",
+     "lastUpdate": "2026-10-26T13:43:00.000+0100",
+     "resume": "2026-10-26T13:43:00.000+0100",
+     "start": "2026-10-26T13:29:00.000+0100"
+    },
+    "title": "31: Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Unregelmäßige Intervalle in Richtung Oberlaa. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in Richtung Oberlaa. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in Richtung Oberlaa. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in Richtung Oberlaa. Grund: Schadhaftes Fahrzeug.",
+       "title": "U1: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261026-0014",
+    "owner": "WL",
+    "parentName": "I20261026-0014",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4137
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-26T13:32:00.000+0100",
+     "lastUpdate": "2026-10-26T13:32:00.000+0100",
+     "resume": "2026-10-26T13:30:00.000+0100",
+     "start": "2026-10-26T13:30:00.000+0100"
+    },
+    "title": "U1: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1252,29 +1386,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Wattmanngasse",
-    "name": "R1634-162",
-    "owner": "WL",
-    "parentName": "R1634-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1634
-    ],
-    "time": {
-     "end": "2026-10-26T13:52:00.000+0100",
-     "start": "2026-10-26T12:52:44.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Wattmanngasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Veranstaltung\nUmleitung bis Julius-Raab-Platz über Stubentor",
     "name": "R17-101",
     "owner": "WL",
@@ -1386,98 +1497,6 @@
      "start": "2026-10-26T12:52:45.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Wattmanngasse",
-    "name": "R1735-162",
-    "owner": "WL",
-    "parentName": "R1735-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1735
-    ],
-    "time": {
-     "end": "2026-10-26T13:52:00.000+0100",
-     "start": "2026-10-26T12:00:40.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Wattmanngasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Wattmanngasse",
-    "name": "R1736-162",
-    "owner": "WL",
-    "parentName": "R1736-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1736
-    ],
-    "time": {
-     "end": "2026-10-26T13:52:00.000+0100",
-     "start": "2026-10-26T12:00:40.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Wattmanngasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Wattmanngasse",
-    "name": "R1737-162",
-    "owner": "WL",
-    "parentName": "R1737-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1737
-    ],
-    "time": {
-     "end": "2026-10-26T13:52:00.000+0100",
-     "start": "2026-10-26T12:00:40.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Wattmanngasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Wattmanngasse",
-    "name": "R1738-162",
-    "owner": "WL",
-    "parentName": "R1738-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1738
-    ],
-    "time": {
-     "end": "2026-10-26T13:52:00.000+0100",
-     "start": "2026-10-26T12:00:40.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Wattmanngasse"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1893,7 +1912,214 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Koloniestraße",
+    "name": "R2172-127",
+    "owner": "WL",
+    "parentName": "R2172-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2172
+    ],
+    "time": {
+     "end": "2026-10-26T14:31:00.000+0100",
+     "start": "2026-10-26T13:31:51.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Koloniestraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Floridsdorfer Markt",
+    "name": "R2172-130",
+    "owner": "WL",
+    "parentName": "R2172-130",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "30"
+    ],
+    "relatedStops": [
+     2172
+    ],
+    "time": {
+     "end": "2026-10-26T14:30:00.000+0100",
+     "start": "2026-10-26T13:30:51.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Floridsdorfer Markt"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Floridsdorfer Markt",
+    "name": "R2172-131",
+    "owner": "WL",
+    "parentName": "R2172-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2172
+    ],
+    "time": {
+     "end": "2026-10-26T14:33:00.000+0100",
+     "start": "2026-10-26T13:33:51.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Floridsdorfer Markt"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Koloniestraße",
+    "name": "R2173-127",
+    "owner": "WL",
+    "parentName": "R2173-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2173
+    ],
+    "time": {
+     "end": "2026-10-26T14:31:00.000+0100",
+     "start": "2026-10-26T13:31:51.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Koloniestraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Koloniestraße",
+    "name": "R2174-127",
+    "owner": "WL",
+    "parentName": "R2174-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2174
+    ],
+    "time": {
+     "end": "2026-10-26T14:31:00.000+0100",
+     "start": "2026-10-26T13:31:51.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Koloniestraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R2187-127",
+    "owner": "WL",
+    "parentName": "R2187-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2187
+    ],
+    "time": {
+     "end": "2026-10-26T14:30:00.000+0100",
+     "start": "2026-10-26T13:31:19.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R2188-127",
+    "owner": "WL",
+    "parentName": "R2188-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2188
+    ],
+    "time": {
+     "end": "2026-10-26T14:30:00.000+0100",
+     "start": "2026-10-26T13:31:19.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R2189-127",
+    "owner": "WL",
+    "parentName": "R2189-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2189
+    ],
+    "time": {
+     "end": "2026-10-26T14:30:00.000+0100",
+     "start": "2026-10-26T13:31:19.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R2189-130",
+    "owner": "WL",
+    "parentName": "R2189-130",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "30"
+    ],
+    "relatedStops": [
+     2189
+    ],
+    "time": {
+     "end": "2026-10-26T14:30:00.000+0100",
+     "start": "2026-10-26T13:30:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nZüge halten Linke Nordbahngasse 15",
     "name": "R2189-131",
     "owner": "WL",
     "parentName": "R2189-131",
@@ -1908,10 +2134,10 @@
      2189
     ],
     "time": {
-     "end": "2026-10-26T14:27:00.000+0100",
+     "end": "2026-10-26T14:32:00.000+0100",
      "start": "2026-10-26T13:27:49.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+    "title": "Feuerwehreinsatz\nZüge halten Linke Nordbahngasse 15"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2119,6 +2345,75 @@
      "start": "2026-10-26T06:28:05.000+0100"
     },
     "title": "Veranstaltung\nBetrieb ab Parlament, U Volkstheater"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R2222-130",
+    "owner": "WL",
+    "parentName": "R2222-130",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "30"
+    ],
+    "relatedStops": [
+     2222
+    ],
+    "time": {
+     "end": "2026-10-26T14:30:00.000+0100",
+     "start": "2026-10-26T13:30:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Floridsdorf <>",
+    "name": "R2222-131",
+    "owner": "WL",
+    "parentName": "R2222-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2222
+    ],
+    "time": {
+     "end": "2026-10-26T14:32:00.000+0100",
+     "start": "2026-10-26T13:32:50.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Floridsdorf <>"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Koloniestraße",
+    "name": "R2228-127",
+    "owner": "WL",
+    "parentName": "R2228-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2228
+    ],
+    "time": {
+     "end": "2026-10-26T14:31:00.000+0100",
+     "start": "2026-10-26T13:31:49.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Koloniestraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2579,6 +2874,29 @@
      "start": "2026-10-26T13:27:47.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Floridsdorfer Markt",
+    "name": "R3472-130",
+    "owner": "WL",
+    "parentName": "R3472-130",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "30"
+    ],
+    "relatedStops": [
+     3472
+    ],
+    "time": {
+     "end": "2026-10-26T14:30:00.000+0100",
+     "start": "2026-10-26T13:30:51.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Floridsdorfer Markt"
    },
    {
     "alertCause": "undefined alert cause",

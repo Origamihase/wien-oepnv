@@ -1,16 +1,28 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-26T12:31:06.329029+00:00",
- "built": "2026-10-26T13:30:51+01:00",
+ "updated": "2026-10-26T13:00:55.712032+00:00",
+ "built": "2026-10-26T14:00:45+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-26T13:30:51+01:00",
+  "built": "2026-10-26T14:00:45+01:00",
   "items": [
+   {
+    "title": "30: Feuerwehreinsatz",
+    "time_line": "Seit 13:29"
+   },
+   {
+    "title": "27: Feuerwehreinsatz",
+    "time_line": "Seit 13:29"
+   },
    {
     "title": "31: Feuerwehreinsatz",
     "time_line": "Seit 13:27"
+   },
+   {
+    "title": "U1: Verspätungen",
+    "time_line": "Seit 13:30"
    },
    {
     "title": "U4: Rettungseinsatz",
@@ -35,18 +47,6 @@
    {
     "title": "1/2/71/D: Nationalfeiertag",
     "time_line": "Heute"
-   },
-   {
-    "title": "S2: Wien Leopoldau ↔ Mistelbach",
-    "time_line": "Bis So 01.11."
-   },
-   {
-    "title": "S1: Wien Leopoldau ↔ Deutsch Wagram",
-    "time_line": "Bis 28.11."
-   },
-   {
-    "title": "11: Wienerfeldgasse",
-    "time_line": "Ab Di 27.10. bis 19.11."
    }
   ]
  },
@@ -6771,17 +6771,37 @@
     "oebb": 9,
     "wl": 108
    }
+  },
+  {
+   "t": "2026-10-26T13:00:55.712032+00:00",
+   "raw": {
+    "wl-stoerungen": 154,
+    "wl-hinweise": 88,
+    "oebb": 156,
+    "baustellen-linien": 55,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 12,
+    "oebb": 132,
+    "baustellen": 70
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 111
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-26T12:31:06.329029+00:00"
+   "last_ok": "2026-10-26T13:00:55.712032+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-26T12:31:06.329029+00:00"
+   "last_ok": "2026-10-26T13:00:55.712032+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-26T12:31:06.329029+00:00"
+   "last_ok": "2026-10-26T13:00:55.712032+00:00"
   }
  }
 }
