@@ -31,28 +31,18 @@
       "23": 86
     },
     "by_line": {
-      "CJX2904": 1,
-      "CJX2917": 1,
-      "CJX2932": 1,
-      "CJX2946": 1,
-      "CJX9": 402,
+      "CJX9": 406,
       "R3": 22,
       "R4": 1,
       "REX1": 156,
       "REX2": 6,
-      "REX2277": 1,
-      "REX3": 195,
+      "REX3": 196,
       "REX92": 3,
       "S1": 437,
-      "S2": 301,
-      "S27016": 1,
-      "S28044": 1,
-      "S28280": 1,
-      "S28449": 1,
-      "S28700": 1,
-      "S28809": 1,
-      "S3": 247,
-      "S4": 149
+      "S2": 302,
+      "S3": 249,
+      "S4": 151,
+      "ohne Linienangabe": 1
     },
     "by_weekday": {
       "Di": 294,
@@ -65,12 +55,12 @@
     },
     "total": 1930
   },
-  "generated_at": "2026-10-26T02:01:07+01:00",
+  "generated_at": "2026-10-26T02:30:55+01:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.96,
     "by_direction": {
-      "Meidling": 6750,
+      "Meidling": 6751,
       "Praterstern": 3831
     },
     "by_hour_avg": {
@@ -112,19 +102,19 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-10-26T01:42:00+01:00",
+          "last_seen": "2026-10-26T02:13:00+01:00",
           "peer_rows_since": 0,
           "rows_in_window": 1194
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 2900,
+          "peer_rows_since": 2901,
           "rows_in_window": 0
         }
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-10-26T02:01:00+01:00",
+        "last_success": "2026-10-26T02:30:48+01:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
@@ -138,7 +128,7 @@
     "max_delay_minutes": 395.33,
     "threshold_exceedances": 136,
     "threshold_minutes": 9.0,
-    "total_observations": 10581
+    "total_observations": 10582
   },
   "stoerungen": {
     "by_hour": {
