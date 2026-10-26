@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1031899, ftazW_1018064, ftazW_1031898, ftazW_1018063, ftazW_628, ftazW_1017627, ftazW_1018634, ftazW_629, ftazW_1017126, ftazW_1016611, ftazW_1016925, ftazW_1031301, ftazW_1016926, ftazW_1031302"
+    "trafficInfoNameList": "ftazW_1031898, ftazW_1018063, ftazW_628, ftazW_1017627, ftazW_1018634, ftazW_629, ftazW_1017126, ftazW_1016611, ftazW_1016925, ftazW_1031301, ftazW_1016926, ftazW_1031302"
    }
   ],
   "poiCategoryGroups": [
@@ -4058,45 +4058,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "27.10.2026 00:45",
-     "ausVon": "26.10.2026 20:45",
-     "location": "U2 Mittelbahnsteig - Ausgang Krieau",
-     "rbls": [
-      4258,
-      4265
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Krieau",
-     "status": "geplante Wartung",
-     "towards": "U2 beide Richtungen"
-    },
-    "description": "U2 Mittelbahnsteig - Ausgang Krieau",
-    "elevatorId": "KI 02",
-    "name": "ftazW_1018064",
-    "parentName": "ftazW_1018064",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4258,
-     4265
-    ],
-    "time": {
-     "end": "2026-10-27T00:45:00.000+0100",
-     "start": "2026-10-26T20:45:00.000+0100"
-    },
-    "title": "Krieau"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "28.10.2026 00:45",
      "ausVon": "27.10.2026 20:45",
      "location": "1 Bahnsteig Richtung Prater Hauptallee, 6 Bahnsteig Richtung Burggasse - Ausgang Matzleinsdorfer Platz",
@@ -4242,43 +4203,6 @@
     "time": {
      "end": "2026-10-27T05:15:00.000+0100",
      "start": "2026-10-27T01:15:00.000+0100"
-    },
-    "title": "Südtiroler Platz-Hauptbahnhof"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "27.10.2026 00:45",
-     "ausVon": "26.10.2026 20:45",
-     "location": "Fahrtrichtung 18 Schlachthausgasse - Zugang ÖBB Bahnsteig - Ausgang Favoritenstraße",
-     "rbls": [
-      847
-     ],
-     "reason": "",
-     "relatedLines": [
-      "18"
-     ],
-     "station": "Südtiroler Platz-Hauptbahnhof",
-     "status": "geplante Wartung",
-     "towards": "18 Burggasse-Stadthalle"
-    },
-    "description": "Fahrtrichtung 18 Schlachthausgasse - Zugang ÖBB Bahnsteig - Ausgang Favoritenstraße",
-    "elevatorId": "SL 07",
-    "name": "ftazW_1031899",
-    "parentName": "ftazW_1031899",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     847
-    ],
-    "time": {
-     "end": "2026-10-27T00:45:00.000+0100",
-     "start": "2026-10-26T20:45:00.000+0100"
     },
     "title": "Südtiroler Platz-Hauptbahnhof"
    },
