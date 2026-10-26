@@ -1,27 +1,19 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-26T08:30:58.597024+00:00",
- "built": "2026-10-26T09:30:46+01:00",
+ "updated": "2026-10-26T09:00:54.847092+00:00",
+ "built": "2026-10-26T10:00:46+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-26T09:30:46+01:00",
+  "built": "2026-10-26T10:00:46+01:00",
   "items": [
    {
     "title": "U1: Rettungseinsatz",
     "time_line": "Seit 09:07"
    },
    {
-    "title": "9: Polizeieinsatz",
-    "time_line": "Seit 08:38"
-   },
-   {
     "title": "1/2/71/D: Veranstaltung",
-    "time_line": "Seit heute"
-   },
-   {
-    "title": "11A: Falschparker, Bauarbeiten",
     "time_line": "Seit heute"
    },
    {
@@ -47,6 +39,14 @@
    {
     "title": "S1: Wien Leopoldau ↔ Deutsch Wagram",
     "time_line": "Bis 28.11."
+   },
+   {
+    "title": "11: Wienerfeldgasse",
+    "time_line": "Ab Di 27.10. bis 19.11."
+   },
+   {
+    "title": "11A/78A: Straßenbauarbeiten",
+    "time_line": "Bis 02.11."
    }
   ]
  },
@@ -6771,17 +6771,37 @@
     "oebb": 9,
     "wl": 109
    }
+  },
+  {
+   "t": "2026-10-26T09:00:54.847092+00:00",
+   "raw": {
+    "wl-stoerungen": 122,
+    "wl-hinweise": 88,
+    "oebb": 155,
+    "baustellen-linien": 55,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 11,
+    "oebb": 131,
+    "baustellen": 70
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 107
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-26T08:30:58.597024+00:00"
+   "last_ok": "2026-10-26T09:00:54.847092+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-26T08:30:58.597024+00:00"
+   "last_ok": "2026-10-26T09:00:54.847092+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-26T08:30:58.597024+00:00"
+   "last_ok": "2026-10-26T09:00:54.847092+00:00"
   }
  }
 }
