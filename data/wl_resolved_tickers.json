@@ -1,5 +1,69 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R1616-162|2026-10-26T12:52:44.000+0100|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R1616-162",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-26T20:00:00.000+0100",
+   "incident": "I20261026-0011-F01"
+  },
+  {
+   "key": "R1634-162|2026-10-26T12:52:44.000+0100|Fremdunfall\nBetrieb ab Wattmanngasse",
+   "name": "R1634-162",
+   "title": "Fremdunfall\nBetrieb ab Wattmanngasse",
+   "end": "2026-10-26T13:52:00.000+0100",
+   "incident": "I20261026-0011-F01"
+  },
+  {
+   "key": "R1728-162|2026-10-26T12:52:45.000+0100|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R1728-162",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-26T20:00:00.000+0100",
+   "incident": "I20261026-0011-F01"
+  },
+  {
+   "key": "R1730-162|2026-10-26T12:52:45.000+0100|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R1730-162",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-26T20:00:00.000+0100",
+   "incident": "I20261026-0011-F01"
+  },
+  {
+   "key": "R1731-162|2026-10-26T12:52:45.000+0100|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R1731-162",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-10-26T20:00:00.000+0100",
+   "incident": "I20261026-0011-F01"
+  },
+  {
+   "key": "R1735-162|2026-10-26T12:00:40.000+0100|Fremdunfall\nBetrieb ab Wattmanngasse",
+   "name": "R1735-162",
+   "title": "Fremdunfall\nBetrieb ab Wattmanngasse",
+   "end": "2026-10-26T13:52:00.000+0100",
+   "incident": "I20261026-0011-F01"
+  },
+  {
+   "key": "R1736-162|2026-10-26T12:00:40.000+0100|Fremdunfall\nBetrieb ab Wattmanngasse",
+   "name": "R1736-162",
+   "title": "Fremdunfall\nBetrieb ab Wattmanngasse",
+   "end": "2026-10-26T13:52:00.000+0100",
+   "incident": "I20261026-0011-F01"
+  },
+  {
+   "key": "R1737-162|2026-10-26T12:00:40.000+0100|Fremdunfall\nBetrieb ab Wattmanngasse",
+   "name": "R1737-162",
+   "title": "Fremdunfall\nBetrieb ab Wattmanngasse",
+   "end": "2026-10-26T13:52:00.000+0100",
+   "incident": "I20261026-0011-F01"
+  },
+  {
+   "key": "R1738-162|2026-10-26T12:00:40.000+0100|Fremdunfall\nBetrieb ab Wattmanngasse",
+   "name": "R1738-162",
+   "title": "Fremdunfall\nBetrieb ab Wattmanngasse",
+   "end": "2026-10-26T13:52:00.000+0100",
+   "incident": "I20261026-0011-F01"
+  }
+ ]
 }

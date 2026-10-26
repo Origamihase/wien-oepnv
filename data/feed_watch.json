@@ -1,20 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-26T12:01:50.795772+00:00",
- "built": "2026-10-26T13:01:38+01:00",
+ "updated": "2026-10-26T12:31:06.329029+00:00",
+ "built": "2026-10-26T13:30:51+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-26T13:01:38+01:00",
+  "built": "2026-10-26T13:30:51+01:00",
   "items": [
+   {
+    "title": "31: Feuerwehreinsatz",
+    "time_line": "Seit 13:27"
+   },
    {
     "title": "U4: Rettungseinsatz",
     "time_line": "Seit 11:48"
-   },
-   {
-    "title": "62: Fremder Verkehrsunfall",
-    "time_line": "Seit 11:42"
    },
    {
     "title": "1/2/71/D: Veranstaltung",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-19T12:31:02.585618+00:00",
-   "raw": {
-    "wl-stoerungen": 84,
-    "wl-hinweise": 106,
-    "oebb": 163,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 33,
-    "oebb": 140,
-    "baustellen": 69
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 104
-   }
-  },
   {
    "t": "2026-10-19T13:01:02.736701+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 9,
     "wl": 110
    }
+  },
+  {
+   "t": "2026-10-26T12:31:06.329029+00:00",
+   "raw": {
+    "wl-stoerungen": 143,
+    "wl-hinweise": 88,
+    "oebb": 156,
+    "baustellen-linien": 55,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 14,
+    "oebb": 132,
+    "baustellen": 70
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 108
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-26T12:01:50.795772+00:00"
+   "last_ok": "2026-10-26T12:31:06.329029+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-26T12:01:50.795772+00:00"
+   "last_ok": "2026-10-26T12:31:06.329029+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-26T12:01:50.795772+00:00"
+   "last_ok": "2026-10-26T12:31:06.329029+00:00"
   }
  }
 }
