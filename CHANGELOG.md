@@ -10,6 +10,14 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Ausfälle je Linie ohne Zugnummern (2026-10-26)**: Zwischen 27.05. und
+  07.07.2026 gab VAO bei elf ausgefallenen Zügen nur die Zugnummer an
+  („S28044“, „CJX2932“); `docs/statistik.md` führte jede als eigene Linie.
+  Zehn tragen jetzt im Ledger ihre Linie laut Fahrplan (S2, S3, S4, REX3,
+  CJX9; Zuordnung in `data/stats/README.md`), S28700 bleibt, weil zur
+  selben Minute S3 und S2 fuhren. Eine Zugnummer zählt künftig unter
+  „ohne Linienangabe“ (Website EN „no line given“). Tests:
+  `tests/test_ausfall_line_label.py`.
 * **ÖBB: eine lange Zugliste nennt ihre Linien (2026-10-25)**: Michaels
   Entscheidung „Nenne die Linien, nicht die Anzahl an Linien“ und „11 Züge
   der Linie S1 ist in Ordnung, aber nicht 3 Linien sind betroffen“ (Antwort

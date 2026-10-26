@@ -1201,6 +1201,12 @@
     node.hidden = false;
   }
 
+  // A cancelled train VAO named by its train number counts as "ohne
+  // Linienangabe" (``NO_LINE_LABEL`` in scripts/generate_markdown_stats.py);
+  // the label follows the page language like the source names do.
+  const lineLabel = (l) =>
+    l === "ohne Linienangabe" && currentLang === "en" ? "no line given" : l;
+
   function renderAusfaelleStats(year, stats) {
     setYearLabels(year);
     const byLine = stats.by_line || {};
@@ -1216,7 +1222,7 @@
         value: nfInt.format(numberOr(stats.total, 0)),
         sub: `${ct("sub-year")} ${year}` },
       { label: ct("kpi-top-line"),
-        value: topLine ? topLine[0] : ct("tile-em-dash"),
+        value: topLine ? lineLabel(topLine[0]) : ct("tile-em-dash"),
         sub: topLine ? `${nfInt.format(topLine[1])} ${ct("sub-ausfaelle")}` : ct("sub-no-data") },
       { label: ct("kpi-top-weekday"),
         value: topWeekday ? weekdayLong(topWeekday[0]) : ct("tile-em-dash"),
@@ -1224,7 +1230,7 @@
     ]);
 
     renderBars("#ausfaelle-line",
-      sortedEntries(byLine).slice(0, 10),
+      sortedEntries(byLine).slice(0, 10).map(([l, v]) => [lineLabel(l), v]),
       { unit: "", variant: "cancel", formatValue: (v) => nfInt.format(v) });
 
     renderBars("#ausfaelle-direction",
