@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 26 Oct 2026 05:30:46 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 06:00:54 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[11A: Falschparker, Bauarbeiten]]></title>
@@ -19,7 +19,7 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Mon, 26 Oct 2026 04:57:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 26 Oct 2026 04:58:29 +0100</ext:starts_at>
+      <ext:starts_at>Mon, 26 Oct 2026 04:57:00 +0100</ext:starts_at>
       <description>Falschparker: Die Linie 11A wird in Richtung Bahnhof Heiligenstadt S U zwischen Stadion U und Hillerstraße über die Vorgartenstraße und Elderschplatz umgeleitet. [Seit heute]</description>
       <content:encoded><![CDATA[Falschparker: Die Linie 11A wird in Richtung Bahnhof Heiligenstadt S U zwischen Stadion U und Hillerstraße über die Vorgartenstraße und Elderschplatz umgeleitet.<br/>[Seit heute]]]></content:encoded>
     </item>
@@ -75,22 +75,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 23 Oct 2026 00:01:02 +0200</ext:first_seen>
       <ext:starts_at>Mon, 26 Oct 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
+      <ext:ends_at>Mon, 26 Oct 2026 23:59:59 +0100</ext:ends_at>
       <description>Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz U; Linie 1: Umleitung in beiden Richtungen zwischen Karlsplatz U … [Heute]</description>
       <content:encoded><![CDATA[Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz U; Linie 1: Umleitung in beiden Richtungen zwischen Karlsplatz U …<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71: Veranstaltung]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">eb5352749f5402b9be865827a7f6c82d7a9144a1198fd2eaa52624749c28d4eb</guid>
-      <pubDate>Mon, 26 Oct 2026 05:00:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 25 Oct 2026 05:00:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 26 Oct 2026 05:30:00 +0100</ext:starts_at>
-      <description>Betrieb ab Schwarzenbergplatz. Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Ersatz: Linien D, 1, 2. Voraussichtlich bis Betriebsschluss. [Seit heute]</description>
-      <content:encoded><![CDATA[Betrieb ab Schwarzenbergplatz. Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Ersatz: Linien D, 1, 2. Voraussichtlich bis Betriebsschluss.<br/>[Seit heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S2: Wien Leopoldau ↔ Mistelbach]]></title>
@@ -150,6 +137,20 @@
       <ext:ends_at>Mon, 02 Nov 2026 01:00:00 +0100</ext:ends_at>
       <description>Wegen Straßenbauarbeiten im Kreuzungsbereich Meiereistraße / Stephanie-Endres-Straße kommt es zu Umleitungen. [Bis 02.11.]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Kreuzungsbereich Meiereistraße / Stephanie-Endres-Straße kommt es zu Umleitungen.<br/>[Bis 02.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Bauernfeldplatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">1a8701132295c2998ee1771e7a46245b02b0b8abc95ee80038dbe79595a5ecf1</guid>
+      <pubDate>Thu, 22 Oct 2026 13:48:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 22 Oct 2026 13:48:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 27 Oct 2026 00:00:00 +0100</ext:starts_at>
+      <georss:point>48.220878 16.360720</georss:point>
+      <description>Richtung Döblinger Friedhof, Felix-Dahn-Straße: Liechtensteinstraße 42 → Liechtensteinstraße 38. Richtung Schottentor U: Liechtensteinstraße 37a gegenüber Bauernfeldplatz → … [Ab Di 27.10.]</description>
+      <content:encoded><![CDATA[Richtung Döblinger Friedhof, Felix-Dahn-Straße: Liechtensteinstraße 42 → Liechtensteinstraße 38. Richtung Schottentor U: Liechtensteinstraße 37a gegenüber Bauernfeldplatz → …<br/>[Ab Di 27.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
