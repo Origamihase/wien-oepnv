@@ -132,7 +132,6 @@ timestamp,weekday,hour,direction,line
 2026-05-27T11:47:00+02:00,Mi,11,Meidling,S1
 2026-05-27T12:42:00+02:00,Mi,12,Praterstern,S1
 2026-05-27T14:17:00+02:00,Mi,14,Meidling,S1
-2026-05-27T14:57:00+02:00,Mi,14,Praterstern,S4
 2026-05-27T15:12:00+02:00,Mi,15,Praterstern,S1
 2026-05-27T16:17:00+02:00,Mi,16,Meidling,S1
 2026-05-27T16:42:00+02:00,Mi,16,Meidling,S2
@@ -560,7 +559,6 @@ timestamp,weekday,hour,direction,line
 2026-06-18T08:30:00+02:00,Do,08,Praterstern,S1
 2026-06-18T09:03:00+02:00,Do,09,Praterstern,CJX9
 2026-06-18T11:09:00+02:00,Do,11,Praterstern,S3
-2026-06-18T11:32:00+02:00,Do,11,Meidling,S3
 2026-06-18T11:32:00+02:00,Do,11,Meidling,S3
 2026-06-18T12:42:00+02:00,Do,12,Meidling,S2
 2026-06-18T12:39:00+02:00,Do,12,Praterstern,S3
@@ -1032,7 +1030,6 @@ timestamp,weekday,hour,direction,line
 2026-06-30T23:12:00+02:00,Di,23,Praterstern,S1
 2026-06-30T23:30:00+02:00,Di,23,Praterstern,REX1
 2026-06-30T23:39:00+02:00,Di,23,Meidling,REX3
-2026-06-30T23:39:00+02:00,Di,23,Meidling,REX3
 2026-07-01T07:47:00+02:00,Mi,07,Meidling,S1
 2026-07-01T08:20:00+02:00,Mi,08,Meidling,S3
 2026-07-01T08:09:00+02:00,Mi,08,Praterstern,S3
@@ -1169,15 +1166,11 @@ timestamp,weekday,hour,direction,line
 2026-07-04T01:00:00+02:00,Sa,01,Praterstern,REX1
 2026-07-04T07:03:00+02:00,Sa,07,Praterstern,CJX9
 2026-07-04T07:53:00+02:00,Sa,07,Meidling,CJX9
-2026-07-04T20:32:00+02:00,Sa,20,Meidling,S4
 2026-07-04T20:32:00+02:00,Sa,20,Meidling,S2
 2026-07-05T05:12:00+02:00,So,05,Meidling,S2
 2026-07-05T06:53:00+02:00,So,06,Meidling,CJX9
 2026-07-05T07:33:00+02:00,So,07,Praterstern,CJX9
-2026-07-05T08:23:00+02:00,So,08,Meidling,CJX9
-2026-07-05T16:27:00+02:00,So,16,Praterstern,S3
 2026-07-05T16:27:00+02:00,So,16,Praterstern,S2
-2026-07-06T05:57:00+02:00,Mo,05,Praterstern,S28700
 2026-07-06T06:12:00+02:00,Mo,06,Meidling,S2
 2026-07-06T07:15:00+02:00,Mo,07,Praterstern,S3
 2026-07-06T07:42:00+02:00,Mo,07,Meidling,S2
@@ -1187,9 +1180,7 @@ timestamp,weekday,hour,direction,line
 2026-07-07T08:15:00+02:00,Di,08,Praterstern,S3
 2026-07-07T08:42:00+02:00,Di,08,Meidling,S2
 2026-07-07T14:03:00+02:00,Di,14,Praterstern,CJX9
-2026-07-07T14:03:00+02:00,Di,14,Praterstern,CJX9
 2026-07-07T14:53:00+02:00,Di,14,Meidling,CJX9
-2026-07-07T17:33:00+02:00,Di,17,Praterstern,CJX9
 2026-07-07T17:33:00+02:00,Di,17,Praterstern,CJX9
 2026-07-07T18:23:00+02:00,Di,18,Meidling,CJX9
 2026-07-08T07:33:00+02:00,Mi,07,Praterstern,CJX9

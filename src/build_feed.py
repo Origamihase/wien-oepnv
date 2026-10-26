@@ -918,7 +918,64 @@ def _oebb_listed_trains_by_line(trains: str) -> str:
     return f"{count} {noun} ({names})"
 
 
-def _oebb_what_does_not_run_first(sentence: str) -> str:
+# A time window ÖBB puts behind the period ("von 31.10.2026 bis 30.11.2026
+# (jeweils von Samstag 23:15 Uhr bis Sonntag 04:40 Uhr und …)") says when
+# the trains do not run; cut off, "keine Nahverkehrszüge … von 31.10.2026
+# bis 30.11.2026 …" read as a month without trains (Wien Hbf–Gramatneusiedl,
+# weekend nights only). When the sentence does not fit, the route goes
+# first, since the title names it, then the period, when the time line ends
+# on its last day; the window stays (operator decision 2026-10-26: "Fenster
+# statt Strecke und Zeitraum"). "(an einigen Tagen)" goes with the trains
+# like "an einzelnen Tagen" (Südstrecke, spring 2026).
+_OEBB_PERIOD = (
+    r"(?:von \d{2}\.\d{2}\.\d{4}(?: \(\d{2}:\d{2} Uhr\))? bis (?P<end>\d{2}\.\d{2}\.\d{4})"
+    r"(?: \(\d{2}:\d{2} Uhr\))?|am (?P<day>\d{2}\.\d{2}\.\d{4}))"
+)
+_OEBB_WINDOW_MIDDLE_RE = re.compile(
+    rf"zwischen (?P<a>(?:(?!zwischen ).)+?) und (?P<b>(?:(?!zwischen ).)+?)"
+    rf" (?P<period>{_OEBB_PERIOD})(?: (?P<window>\(jeweils [^()]+\)))?"
+)
+_OEBB_SOME_DAYS = "an einigen Tagen"
+# Words of a station name that do not tell it apart ("Wien Hbf (U)",
+# "Flughafen Wien Bahnhof").
+_OEBB_ROUTE_FILLER = frozenset({"wien", "bahnhof", "bahnhst", "hbf", "hauptbahnhof", "(u)", "u"})
+
+
+def _oebb_title_names_station(station: str, title: str) -> bool:
+    """Whether *title* names *station* ("Gramatneusiedl Bahnhof" in "Wien Hauptbahnhof ↔ Gramatneusiedl").
+
+    One telling word is enough: ÖBB joins alternatives with "/"
+    ("Bruck/Mur Bahnhof/Graz Hbf" under "Wien Hauptbahnhof Graz").
+    """
+    words = [w for w in re.split(r"[\s/]+", station.casefold()) if w and w not in _OEBB_ROUTE_FILLER]
+    title_words = set(re.split(r"[\s/↔<>-]+", title.casefold()))
+    if not words:
+        # "Wien Hbf (U)": the title calls it "Wien Hauptbahnhof" or "Wien Hbf".
+        return bool({"hauptbahnhof", "hbf"} & title_words)
+    return any(w in title_words for w in words)
+
+
+def _oebb_window_kept(lead: str, head: str, middle: str, title: str, shown_end: date | None) -> str:
+    """*middle* without route and, if need be, period, so that the window fits (see above)."""
+    match = _OEBB_WINDOW_MIDDLE_RE.fullmatch(middle)
+    if match is None or not title or not (match["window"] or _OEBB_SOME_DAYS in head):
+        return middle
+    if not (_oebb_title_names_station(match["a"], title) and _oebb_title_names_station(match["b"], title)):
+        return middle
+    without_route = f"{match['period']} {match['window'] or ''}".rstrip()
+    if len(f"{lead} {head}: {without_route}.") <= _OEBB_DAYS_IN_WORDS_LIMIT:
+        return without_route
+    last = match["end"] or match["day"]
+    if not match["window"]:
+        return middle
+    if shown_end is None or last != shown_end.strftime("%d.%m.%Y"):
+        return middle
+    return match["window"][1:-1]
+
+
+def _oebb_what_does_not_run_first(
+    sentence: str, *, title: str = "", shown_end: date | None = None
+) -> str:
     """An ÖBB sentence over 180 characters with its trains in front (see above)."""
     if len(sentence) <= _OEBB_DAYS_IN_WORDS_LIMIT:
         return sentence
@@ -938,12 +995,16 @@ def _oebb_what_does_not_run_first(sentence: str) -> str:
     days = ""
     if middle.endswith(f" {_OEBB_DAYS_IN_WORDS}"):
         middle, days = middle.removesuffix(f" {_OEBB_DAYS_IN_WORDS}"), _OEBB_DAYS_IN_WORDS
+    elif middle.endswith(f" ({_OEBB_SOME_DAYS})"):
+        middle, days = middle.removesuffix(f" ({_OEBB_SOME_DAYS})"), _OEBB_SOME_DAYS
     if not days:
         head = f"{trains} {match['verb']}"
     elif trains.startswith(("der ", "die ")):
         head = f"{trains} {days} {match['verb']}"
     else:
         head = f"{days} {trains} {match['verb']}"
+    if len(f"{match['lead']} {head}: {middle}.") > _OEBB_DAYS_IN_WORDS_LIMIT:
+        middle = _oebb_window_kept(match["lead"], head, middle, title, shown_end)
     return f"{match['lead']} {head}: {middle}."
 
 
@@ -5613,9 +5674,10 @@ def _render_oebb_cannot_run(
 # "REX 1", "IC".
 _OEBB_LINE_CODE = r"[A-Z]{1,4}(?: ?\d{1,3})?"
 _OEBB_CANNOT_RUN_FRONT_RE = re.compile(
-    rf"Wegen (?P<cause>[^.:]+?) (?:kann|können)(?P<days1> {_OEBB_DAYS_IN_WORDS})?"
+    rf"Wegen (?P<cause>[^.:]+?) (?:kann|können)(?P<days1> (?:{_OEBB_DAYS_IN_WORDS}|{_OEBB_SOME_DAYS}))?"
     rf" (?P<trains>(?:\d{{1,3}} \S*[Zz]üge|\d{{1,3}} \S*[Zz]üge (?:der Linien? |\()"
-    rf"(?:{_OEBB_LINE_CODE}, )*(?:{_OEBB_LINE_CODE} und )?{_OEBB_LINE_CODE}\)?|{_OEBB_TRAINS}))(?P<days2> {_OEBB_DAYS_IN_WORDS})?"
+    rf"(?:{_OEBB_LINE_CODE}, )*(?:{_OEBB_LINE_CODE} und )?{_OEBB_LINE_CODE}\)?|{_OEBB_TRAINS}))"
+    rf"(?P<days2> (?:{_OEBB_DAYS_IN_WORDS}|{_OEBB_SOME_DAYS}))?"
     r" (?P<verb>(?:nicht )?fahren): (?P<middle>.+?)(?:\.|(?P<cut> …))"
 )
 _OEBB_CANNOT_RUN_EN_TRAIN_NOUNS: dict[str, str] = {
@@ -11668,7 +11730,12 @@ def _format_item_content(
     ]
     sentences = _oebb_title_route_first(sentences, raw_title, oebb=it.get("source") == _OEBB_SOURCE)
     if sentences and it.get("source") == _OEBB_SOURCE:
-        sentences[0] = _oebb_what_does_not_run_first(sentences[0])
+        end_shown = _shown_end(it, ends_at)
+        sentences[0] = _oebb_what_does_not_run_first(
+            sentences[0],
+            title=raw_title,
+            shown_end=end_shown.astimezone(_VIENNA_TZ).date() if end_shown else None,
+        )
     if sentences and not fragment_led:
         short_summary = sentences[0]
         # Append the second sentence whenever the combined length still

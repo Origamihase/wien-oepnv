@@ -459,7 +459,7 @@ Der Meldungsfeed sammelt offizielle Störungs- und Hinweisinformationen der Wien
 
 - **Anforderung**: VAO-Tagesbudget (100 Requests/Tag) wird seit 2026-05-11 ausschließlich vom S-Bahn-Stammstrecken-Monitor verbraucht. Seit der 2026-05-15-Migration auf `/departureBoard` am Wien Hauptbahnhof sind das **48 Calls/Tag** (1 Hbf-Call × ~48 Cycles statt vorher 2 `/trip`-Calls × 48 Cycles). Ein automatisiertes Disruption-Polling existiert nicht mehr (Operator-Policy "VOR nur für die Stammstrecke").
 - **Quelle**: VOR/VAO-ReST-API (`/departureBoard`-Endpunkt am Wien Hauptbahnhof), authentifiziert über Access Token.
-- **Persistenz**: keine eigene JSON-Cache-Datei mehr; der Stammstrecken-Monitor schreibt Beobachtungen direkt in zwei CSV-Ledgers: `data/stats/stammstrecke_<YYYY>.csv` (aggregierte Verspätungen pro Richtung und Tick) und `data/stats/ausfaelle_<YYYY>.csv` (eine Zeile pro entdecktem Ausfall, dedupliziert via Pending-Trip-Ledger unter `cache/stammstrecke/`). Siehe [`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md).
+- **Persistenz**: keine eigene JSON-Cache-Datei mehr; der Stammstrecken-Monitor schreibt Beobachtungen direkt in zwei CSV-Ledgers: `data/stats/stammstrecke_<YYYY>.csv` (aggregierte Verspätungen pro Richtung und Tick) und `data/stats/ausfaelle_<YYYY>.csv` (eine Zeile pro entdecktem Ausfall, dedupliziert via Pending-Trip-Ledger unter `cache/stammstrecke/` und je Abfahrt: ein Eintrag mit Zugnummer zur Minute eines Linieneintrags derselben Richtung ist derselbe Zug). Siehe [`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md).
 
 ### Stadt Wien – Baustellen
 

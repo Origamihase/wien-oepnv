@@ -33,9 +33,10 @@ def test_short_train_numbers_count() -> None:
         "1136, IC 1138 und D 1135 nicht fahren."
     )
     assert bf._oebb_what_does_not_run_first(sentence) == (
-        "Wegen Bauarbeiten können 13 Züge (EC, RJ, RJX, IC und D) nicht fahren: zwischen Wien Hbf und Bruck/Mur "
-        "Bahnhof / Graz Hbf von 14.03.2026 (22:00 Uhr) bis 29.05.2026 (05:00 Uhr) (an "
-        "einigen Tagen)."
+        # "(an einigen Tagen)" goes with the trains since 2026-10-26 (test_oebb_zeitfenster.py).
+        "Wegen Bauarbeiten können an einigen Tagen 13 Züge (EC, RJ, RJX, IC und D) nicht fahren: "
+        "zwischen Wien Hbf und Bruck/Mur Bahnhof / Graz Hbf von 14.03.2026 (22:00 Uhr) bis "
+        "29.05.2026 (05:00 Uhr)."
     )
 
 

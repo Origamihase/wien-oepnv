@@ -487,12 +487,14 @@ def aggregate_stoerungen(rows: list[StoerungRow]) -> StoerungAggregate:
 # A cancelled train whose VAO name is its train number, not a line: "S28700",
 # "CJX2932". Lines on the Stammstrecke have at most three digits (S45, R81,
 # REX92); ÖBB train numbers have four or five. Between 27.05. and 07.07.2026
-# VAO named eleven cancelled trains that way. Ten of them were given their
-# line from the timetable (the line leaving Wien Hbf in the same direction at
-# the same minute on the other days; Michael's yes 26.10.2026 00:23 Vienna);
-# S28700 (06.07. 05:57) stays, since that minute ran S3 six times and S2 five
-# times. A train number counts under this label instead of as a line of its
-# own; the ledger keeps the name VAO gave.
+# eleven cancellation rows carried such a name. Nine were the twin of a line
+# entry VAO listed at the same minute in the same direction, the same train
+# (``_without_train_number_twins`` in scripts/update_stammstrecke_hbf.py), and
+# left the ledger on 26.10.2026; the other two got their line from the
+# timetable (the line leaving Wien Hbf in the same direction at the same
+# minute on the other days; Michael's yes 26.10.2026 00:23 Vienna). A train
+# number counts under this label instead of as a line of its own; the ledger
+# keeps the name VAO gave.
 NO_LINE_LABEL: Final = "ohne Linienangabe"
 _TRAIN_NUMBER_RE: Final = re.compile(r"^(?:S|REX|R|CJX)\d{4,}$")
 

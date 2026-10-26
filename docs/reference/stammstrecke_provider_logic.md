@@ -147,6 +147,14 @@ der Pass die jeweils beste Beobachtung und schreibt eine CSV-Zeile;
 der Recently-Finalised-Schutz verhindert eine Doppelzählung, falls
 VAO denselben Zug in einem späteren Lookahead-Fenster nochmal listet.
 Legacy-Einträge ohne `cancelled`-Feld laden als `cancelled=False`.
+Weil der Name im Key steckt, zählte ein Zug doppelt, den VAO in einer
+Antwort zweimal listete: unter der Linie („S2“) und unter der
+Zugnummer („S28809“), zur selben Minute in dieselbe Richtung (19.05.
+bis 07.07.2026, 113 von 122 Zugnummer-Einträgen). Seit 2026-10-26
+steht beim Finalisieren der Linieneintrag für den Zug, ausgefallen oder
+nicht; der Zwilling mit der Zugnummer fällt weg
+(`_without_train_number_twins`). Eine Zugnummer ohne Zwilling bleibt
+und zählt in der Statistik unter „ohne Linienangabe“.
 
 ### Resilience und API Rate-Limit
 
