@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261026-0004, I20261026-0022, I20261020-0029"
+    "trafficInfoNameList": "I20261026-0023, I20260917-0012, I20260922-0032, I20261026-0022-F01, I20260925-0011, I20260909-0007, I20261026-0004, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1448-149, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R36-152, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R2343-626, R2378-627, R2558-125, R1974-466, R46-171, R47-171, R49-171, R50-171, R51-171, R44-171, R45-171, R500-101, R19-171, R14-171, R17-171, R13-171, R18-171, R15-171, R81-171, R565-146, R566-146, R564-146, R1384-146, R1385-146, R1379-146, R1380-146, R1381-146, R1382-146, R1383-146, R1376-146, R1378-146, R1377-146, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1448-149, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R36-152, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R2343-626, R2378-627, R2558-125, R1974-466, R44-171, R45-171, R46-171, R47-171, R49-171, R50-171, R51-171, R500-101, R14-171, R18-171, R15-171, R13-171, R19-171, R17-171, R81-171, R566-146, R564-146, R565-146, R1385-146, R1382-146, R1383-146, R1384-146, R1379-146, R1380-146, R1381-146, R1377-146, R1378-146, R1376-146, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -311,19 +311,19 @@
       "46": "ptTram"
      }
     },
-    "description": "Linie 46:Umleitung in Richtung Joachimsthalerplatz zwischen Parlament, Volkstheater U und Maroltingergasse über die Strecke der Linien 2 und 44.Voraussichtliche Dauer: 22:00 Uhr.Grund: Feuerwehreinsatz im Bereich Thaliastraße 2.",
-    "descriptionHTML": "<p>Linie 46:<br>Umleitung in Richtung Joachimsthalerplatz <br>zwischen Parlament, Volkstheater U und Maroltingergasse <br>über die Strecke der Linien 2 und 44.</p><p>Voraussichtliche Dauer: 22:00 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Thaliastraße 2.</p>",
+    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 46: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 46:<br>Umleitung in Richtung Joachimsthalerplatz <br>zwischen Parlament, Volkstheater U und Maroltingergasse <br>über die Strecke der Linien 2 und 44.</p><p>Voraussichtliche Dauer: 22:00 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Thaliastraße 2.</p>",
-       "descriptionPlain": "Linie 46:Umleitung in Richtung Joachimsthalerplatz zwischen Parlament, Volkstheater U und Maroltingergasse über die Strecke der Linien 2 und 44.Voraussichtliche Dauer: 22:00 Uhr.Grund: Feuerwehreinsatz im Bereich Thaliastraße 2.",
+       "descriptionHtml": "<p>Linie 46: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "46: Feuerwehreinsatz"
       }
      }
     ],
     "location": "Thaliastraße 2",
-    "name": "I20261026-0022",
+    "name": "I20261026-0022-F01",
     "owner": "WL",
     "parentName": "I20261026-0022",
     "priority": "1",
@@ -342,11 +342,57 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-26T20:53:00.000+0100",
-     "lastUpdate": "2026-10-26T20:58:00.000+0100",
+     "created": "2026-10-26T21:25:00.000+0100",
+     "lastUpdate": "2026-10-26T21:25:00.000+0100",
+     "resume": "2026-10-26T21:25:00.000+0100",
      "start": "2026-10-26T20:43:00.000+0100"
     },
     "title": "46: Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram"
+     }
+    },
+    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie 1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "1: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261026-0023",
+    "owner": "WL",
+    "parentName": "I20261026-0023",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 101,
+      "lineName": "1",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-26T21:16:00.000+0100",
+     "lastUpdate": "2026-10-26T21:16:00.000+0100",
+     "resume": "2026-10-26T21:15:00.000+0100",
+     "start": "2026-10-26T21:15:00.000+0100"
+    },
+    "title": "1: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
