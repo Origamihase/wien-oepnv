@@ -1294,6 +1294,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U1: Rettungseinsatz",
+    "description": "Linie U1: Unregelmäßige Intervalle in Richtung Oberlaa. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
+    "pubDate": "2026-10-26T09:07:00+01:00",
+    "starts_at": "2026-10-26T09:07:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U1|D=2026-10-26|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261026-0006"
+    ],
+    "_incident_start": "2026-10-26T09:07:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
