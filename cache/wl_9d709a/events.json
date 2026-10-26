@@ -1190,6 +1190,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "64A: Verkehrsunfall",
+    "description": "Linie 64A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2b43b2cf270ad0eb82141dcac02a8b63277141db79e08f4221106b9f3fd4836e",
+    "pubDate": "2026-10-26T21:41:00+01:00",
+    "starts_at": "2026-10-26T21:41:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=64A|D=2026-10-26|TK=64a verkehrsunfall",
+    "_wl_ids": [
+      "I20261026-0024"
+    ],
+    "_incident_start": "2026-10-26T21:41:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
