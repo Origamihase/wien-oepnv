@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:georss="http://www.georss.org/georss" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
   <channel>
     <title>ÖPNV Störungen Wien &amp; Pendler</title>
     <link>https://github.com/Origamihase/wien-oepnv</link>
@@ -8,20 +8,34 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 26 Oct 2026 14:00:45 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 14:30:44 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[30: Feuerwehreinsatz]]></title>
+      <title><![CDATA[10/60: Falschparker]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">82be4605b1a1375886be7d47b02f952c34fe6b50d0d0946ec3b838f56b4a18b9</guid>
-      <pubDate>Mon, 26 Oct 2026 13:29:00 +0100</pubDate>
+      <guid isPermaLink="false">110d939c5e96fc519ae430079a0da40d5d7ddf6fcb983e100f8157e568dbb16a</guid>
+      <pubDate>Mon, 26 Oct 2026 14:15:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 26 Oct 2026 14:00:45 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 26 Oct 2026 13:30:51 +0100</ext:starts_at>
-      <description>Betrieb ab Floridsdorfer Markt. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 13:29]</description>
-      <content:encoded><![CDATA[Betrieb ab Floridsdorfer Markt. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 13:29]]]></content:encoded>
+      <ext:first_seen>Mon, 26 Oct 2026 14:30:44 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 26 Oct 2026 14:15:00 +0100</ext:starts_at>
+      <description>Fahrtbehinderung: 10, 60. Voraussichtlich bis 15:00 Uhr. [Seit 14:15]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung: 10, 60. Voraussichtlich bis 15:00 Uhr.<br/>[Seit 14:15]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[36B: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">4cef41de20ffbeef4eb12e125ea27ca808cd23567039ec4f7933904bc796e761</guid>
+      <pubDate>Mon, 26 Oct 2026 14:28:53 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 26 Oct 2026 14:28:53 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 26 Oct 2026 14:28:58 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 26 Oct 2026 15:28:00 +0100</ext:ends_at>
+      <description>Fahrtbehinderung. [Seit 14:28]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 14:28]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[27: Feuerwehreinsatz]]></title>
@@ -46,34 +60,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Mon, 26 Oct 2026 13:30:51 +0100</ext:first_seen>
       <ext:starts_at>Mon, 26 Oct 2026 13:33:51 +0100</ext:starts_at>
-      <description>Züge halten Linke Nordbahngasse 15. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 13:27]</description>
-      <content:encoded><![CDATA[Züge halten Linke Nordbahngasse 15. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 13:27]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
-      <pubDate>Mon, 26 Oct 2026 13:30:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 26 Oct 2026 13:30:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 26 Oct 2026 13:30:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in Richtung Oberlaa. Grund: Schadhaftes Fahrzeug. [Seit 13:30]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Oberlaa. Grund: Schadhaftes Fahrzeug.<br/>[Seit 13:30]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a</guid>
-      <pubDate>Mon, 26 Oct 2026 11:48:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 26 Oct 2026 11:48:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 26 Oct 2026 11:48:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 11:48]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 11:48]]]></content:encoded>
+      <ext:ends_at>Mon, 26 Oct 2026 14:33:00 +0100</ext:ends_at>
+      <description>Züge halten Linke Nordbahngasse 15. Feuerwehreinsatz Betrieb ab Floridsdorf [Seit 13:27]</description>
+      <content:encoded><![CDATA[Züge halten Linke Nordbahngasse 15. Feuerwehreinsatz Betrieb ab Floridsdorf<br/>[Seit 13:27]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/2/71/D: Veranstaltung]]></title>
@@ -143,6 +132,21 @@
       <ext:ends_at>Mon, 26 Oct 2026 23:59:00 +0100</ext:ends_at>
       <description>Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz U; Linie 1: Umleitung in beiden Richtungen zwischen Karlsplatz U … [Heute]</description>
       <content:encoded><![CDATA[Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Schwedenplatz U; Linie 1: Umleitung in beiden Richtungen zwischen Karlsplatz U …<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S2: Wien Leopoldau ↔ Mistelbach]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;907728</guid>
+      <pubDate>Tue, 13 Oct 2026 08:49:17 +0200</pubDate>
+      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 23 Oct 2026 00:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 25 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 01 Nov 2026 23:59:59 +0100</ext:ends_at>
+      <georss:line>48.277325 16.448371 48.565931 16.565113</georss:line>
+      <description>Wegen Bauarbeiten kann zwischen Wien Leopoldau Bahnhst (U) und Mistelbach/Zaya Bahnhof am 01.11.2026 der S2-Zug 23360 nicht fahren. [Bis So 01.11.]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten kann zwischen Wien Leopoldau Bahnhst (U) und Mistelbach/Zaya Bahnhof am 01.11.2026 der S2-Zug 23360 nicht fahren.<br/>[Bis So 01.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
