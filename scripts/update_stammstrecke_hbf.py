@@ -156,7 +156,7 @@ import os
 import re
 import statistics
 import sys
-from collections.abc import Iterable, Mapping
+from collections.abc import Iterable, Mapping, Sequence
 from contextlib import ExitStack
 from dataclasses import dataclass
 from datetime import datetime, timedelta
@@ -1189,6 +1189,38 @@ def _emit_workflow_warning(title: str, message: str) -> None:
     print(f"::warning title={safe_title}::{safe_message}", flush=True)
 
 
+# A VAO entry named by its train number ("S28809", "CJX2932") instead of its
+# line. From 19.05. to 07.07.2026 the departure board listed trains twice
+# in the same answer: under the line ("S2") and under the number, at the
+# same minute in the same direction (113 of the 122 number entries). The
+# identity key holds the name, so both were finalised: six trains stood
+# twice in the cancellation ledger, three that ran (only their number entry
+# said cancelled) stood there once, and running pairs counted twice in the
+# mean delay of their tick.
+_TRAIN_NUMBER_NAME_RE = re.compile(r"^(?:S|REX|R|CJX)\d{4,}$")
+
+
+def _without_train_number_twins(trips: Sequence[Any]) -> list[Any]:
+    """*trips* without a train-number entry whose train a line entry already names.
+
+    One departure per minute and direction leaves Wien Hbf on the
+    Stammstrecke, so a train-number entry at the minute of a line entry is
+    the same train: the line entry stands for it, cancelled or running. A
+    train-number entry without such a twin stays (it counts under "ohne
+    Linienangabe" in the statistics).
+    """
+    lined = {
+        trip.scheduled
+        for trip in trips
+        if not _TRAIN_NUMBER_NAME_RE.match(trip.name.strip())
+    }
+    return [
+        trip
+        for trip in trips
+        if not (_TRAIN_NUMBER_NAME_RE.match(trip.name.strip()) and trip.scheduled in lined)
+    ]
+
+
 def _report_silent_directions(now: datetime) -> list[str]:
     """Warn loudly when one direction has gone silent while the other reports.
 
@@ -1351,6 +1383,9 @@ def main() -> int:
                         DIRECTION_LABEL_NORTHBOUND,
                     )
                     finalised = list(finalised) + list(legacy_finalised)
+            # Popped and registered in ``recently_finalised`` all the same,
+            # so a dropped twin cannot come back on the next tick.
+            finalised = _without_train_number_twins(finalised)
             if not finalised:
                 continue
             # Durably record the suppression set BEFORE writing any CSV row for
