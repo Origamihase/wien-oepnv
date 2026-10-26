@@ -1,32 +1,36 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-26T22:30:45.065776+00:00",
- "built": "2026-10-26T23:30:39+01:00",
+ "updated": "2026-10-26T23:01:11.262712+00:00",
+ "built": "2026-10-27T00:01:02+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-26T23:30:39+01:00",
+  "built": "2026-10-27T00:01:02+01:00",
   "items": [
    {
+    "title": "11: Wienerfeldgasse",
+    "time_line": "Bis 19.11."
+   },
+   {
+    "title": "40A: Bauernfeldplatz",
+    "time_line": "Seit heute"
+   },
+   {
     "title": "54A/54B: Bauarbeiten",
-    "time_line": "Ab Di 27.10. bis 10.11."
+    "time_line": "Bis 10.11."
    },
    {
     "title": "89A: Streckensperre",
-    "time_line": "Ab Di 27.10. bis Mi 28.10."
+    "time_line": "Bis Mi 28.10."
    },
    {
     "title": "N81R/N81: Bauarbeiten",
-    "time_line": "Ab Di 27.10. bis Fr 30.10."
-   },
-   {
-    "title": "1/2/71/D: Nationalfeiertag",
-    "time_line": "Heute"
+    "time_line": "Bis Fr 30.10."
    },
    {
     "title": "71: Veranstaltung",
-    "time_line": "Seit heute"
+    "time_line": "Seit 26.10."
    },
    {
     "title": "S2: Wien Leopoldau ↔ Mistelbach",
@@ -37,61 +41,17 @@
     "time_line": "Bis 28.11."
    },
    {
-    "title": "11: Wienerfeldgasse",
-    "time_line": "Ab Di 27.10. bis 19.11."
-   },
-   {
     "title": "11A/78A: Straßenbauarbeiten",
-    "time_line": "Bis 02.11."
+    "time_line": "Bis Mo 02.11."
    },
    {
-    "title": "40A: Bauernfeldplatz",
-    "time_line": "Ab Di 27.10."
+    "title": "64A/N64R: Erlaaer Spitz",
+    "time_line": "Seit 22.10."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-19T22:30:59.126575+00:00",
-   "raw": {
-    "wl-stoerungen": 57,
-    "wl-hinweise": 101,
-    "oebb": 163,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 23,
-    "oebb": 140,
-    "baustellen": 69
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 99
-   }
-  },
-  {
-   "t": "2026-10-19T23:01:00.636916+00:00",
-   "raw": {
-    "wl-stoerungen": 62,
-    "wl-hinweise": 106,
-    "oebb": 163,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 26,
-    "oebb": 140,
-    "baustellen": 69
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 105
-   }
-  },
   {
    "t": "2026-10-19T23:31:06.565075+00:00",
    "raw": {
@@ -6791,17 +6751,37 @@
     "oebb": 9,
     "wl": 107
    }
+  },
+  {
+   "t": "2026-10-26T23:01:11.262712+00:00",
+   "raw": {
+    "wl-stoerungen": 80,
+    "wl-hinweise": 85,
+    "oebb": 155,
+    "baustellen-linien": 55,
+    "baustellen-punkte": 23
+   },
+   "discarded": {
+    "wl": 11,
+    "oebb": 131,
+    "baustellen": 70
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 106
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-26T22:30:45.065776+00:00"
+   "last_ok": "2026-10-26T23:01:11.262712+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-26T22:30:45.065776+00:00"
+   "last_ok": "2026-10-26T23:01:11.262712+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-26T22:30:45.065776+00:00"
+   "last_ok": "2026-10-26T23:01:11.262712+00:00"
   }
  }
 }
