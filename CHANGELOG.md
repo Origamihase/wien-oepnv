@@ -37,7 +37,20 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
     der Tabelle und trennte die Zeile `stoerungen_YYYY.csv` von ihr; er
     steht jetzt unter der Tabelle. `docs/reference/stammstrecke_provider_logic.md`
     und `docs/development.md` nennen die Regel je Abfahrt.
-  Tests in `tests/test_ausfall_line_label.py`.
+  - *ÖBB-Zeitfenster (Michaels Entscheidung „Fenster statt Strecke und
+    Zeitraum“, 26.10.):* Beim Kürzen auf 180 Zeichen fiel ÖBBs „(jeweils …)“
+    hinter dem Zeitraum weg; Wien Hbf–Gramatneusiedl (ab 31.10., nur
+    Wochenendnächte) las wie ein Monat ohne Züge. Passt der Satz mit Fenster
+    nicht, fällt zuerst die Strecke weg (der Titel nennt sie), dann der
+    Zeitraum, wenn die Zeitzeile an seinem letzten Tag endet; das Fenster
+    bleibt. „(an einigen Tagen)“ geht mit den Zügen nach vorn, wie „an
+    einzelnen Tagen“; die längere Linienangabe aus #2070 hatte es bei der
+    Südstrecke abgeschnitten. Englisch: „cannot run on certain days“, das
+    Fenster übersetzt das Modell. Replay über alle 932 ÖBB-Texte an 13
+    Stichtagen: acht Anzeigen ändern sich (Gramatneusiedl, Floridsdorf–
+    Flughafen, S80 Aspern Nord, Südstrecke), alle anderen bleiben gleich.
+  Tests in `tests/test_ausfall_line_label.py` und
+  `tests/test_oebb_zeitfenster.py`.
 
 * **Ausfälle je Linie ohne Zugnummern (2026-10-26)**: Zwischen 27.05. und
   07.07.2026 gab VAO bei elf ausgefallenen Zügen nur die Zugnummer an
