@@ -864,13 +864,20 @@ verdrängt eine andere Störung.
   Strecken und Tage, die Titel und Zeitzeile auch nennen. Es werden nur
   ÖBBs eigene Wörter umgestellt; „an einzelnen Tagen“ am Ende der Strecken
   geht mit dem Verb nach vorn. Eine Liste von drei oder mehr Zugnummern
-  liest dabei als ihre Anzahl („die Züge S1 (28632), …, S2 (28153)“ → „11
-  Züge“): elf Nummern füllten am 02.08.2026 die 180 Zeichen samt Strecke und
-  Verb. Jeder Zug der Liste zählt einmal, auch einer mit kurzer Nummer
-  („EC 71“), und jede Nummer einer Gruppe („REX 1 (2334, 2338 und 2342)“
-  sind drei); bis zur Nachprüfung vom 25.10. zählten nur drei- bis
+  liest dabei als ihre Anzahl mit ihren Linien („die Züge S1 (28632), …,
+  S2 (28153)“ → „11 Züge der Linien S1, S2 und S3“; „die Züge IC 1110, …,
+  D 1141“ → „8 Züge (IC und D)“): elf Nummern füllten am 02.08.2026 die
+  180 Zeichen samt Strecke und Verb. Die Linien bleiben genannt, weil die
+  Zahl allein nicht sagt, welche Züge betroffen sind (Michaels
+  Entscheidung vom 25.10.: „Nenne die Linien, nicht die Anzahl an Linien“,
+  „11 Züge der Linie S1“ ist in Ordnung, „3 Linien sind betroffen“
+  nicht); bis dahin las die Liste „11 Züge“. Eine Liste nackter Nummern
+  nennt keine Linie und behält ihr Wort („34 Nahverkehrszüge“, „7
+  S4-Züge“). Jeder Zug der Liste zählt einmal, auch einer mit kurzer
+  Nummer („EC 71“), und jede Nummer einer Gruppe („REX 1 (2334, 2338 und
+  2342)“ sind drei); bis zur Nachprüfung vom 25.10. zählten nur drei- bis
   fünfstellige Nummern, die Südstrecke im Frühjahr 2026 las „11 Züge“
-  statt 13. Ein Satz, der passt, behält ÖBBs Reihenfolge (S2 Leopoldau–Mistelbach);
+  statt 13. Englisch: „11 trains on lines S1, S2 and S3 cannot run“. Ein Satz, der passt, behält ÖBBs Reihenfolge (S2 Leopoldau–Mistelbach);
   ebenso einer mit zwei Subjekten („der Zug REX6 (7799) zwischen … der Zug
   S60 …“) oder einem anderen Verb („werden … umgeleitet und können … nicht
   halten“). Grundlage ist Michaels Auftrag vom 25.10. („Wenn Jules echte
