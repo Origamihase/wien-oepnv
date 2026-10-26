@@ -842,6 +842,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1/2/D: Veranstaltung",
+    "description": "Linie 1: Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Karlsplatz U über Stubentor U und Schwarzenbergplatz. Linie 2: Kein Betrieb zwischen Parlament, U Volkstheater und Schwedenplatz U. Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Stubentor U und Schwedenplatz U. Ersatz: Linien U1, U2, U3 und U4. Voraussichtliche Dauer: 18:00 Uhr. Grund: Veranstaltung im Bereich der Ringstraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9b4de0ce6f3d1bd062fbe9ed16209daa8759c0885e409a453a8033123613cc7d",
+    "pubDate": "2026-10-26T06:27:00+01:00",
+    "starts_at": "2026-10-26T06:27:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=1,2,D|D=2026-10-26|TK=veranstaltung",
+    "_wl_ids": [
+      "I20261026-0004"
+    ],
+    "_incident_start": "2026-10-26T06:27:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "11A: Busse halten Meiereistraße gegenüber 12",
     "description": "Bauarbeiten\nBusse halten Meiereistraße gegenüber 12",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -855,7 +871,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "11A: Falschparker",
-    "description": "Die Linie 11A wird in Richtung Bahnhof Heiligenstadt S U zwischen Stadion U und Hillerstraße über die Vorgartenstraße und Elderschplatz umgeleitet. Voraussichtliche Dauer: 06:00 Uhr. Grund: Falschparker im Bereich Vorgartenstraße # Offenbachgasse.",
+    "description": "Die Linie 11A wird in Richtung Bahnhof Heiligenstadt S U zwischen Stadion U und Hillerstraße über die Vorgartenstraße und Elderschplatz umgeleitet. Voraussichtliche Dauer: 06:30 Uhr. Grund: Falschparker im Bereich Vorgartenstraße # Offenbachgasse.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "d639275fed205d39e9265cc9e6b073be44a4952e33d97ef0c1891f996a19ef98",
     "pubDate": "2026-10-26T04:57:00+01:00",
@@ -930,18 +946,6 @@
     "starts_at": "2026-10-24T00:00:29+02:00",
     "ends_at": "2026-10-26T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-10-24|TK=betrieb ab knöllgasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Kein Betrieb",
-    "description": "Gleisbauarbeiten\nKein Betrieb",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "ec874d834c0a5c0aa688bd397a5e8471438bf598da32edc1550ce6a027f19df7",
-    "pubDate": "2026-10-24T00:00:29+02:00",
-    "starts_at": "2026-10-24T00:00:29+02:00",
-    "ends_at": "2026-10-26T23:59:59+01:00",
-    "_identity": "wl|störung|L=1|D=2026-10-24|TK=kein betrieb"
   },
   {
     "source": "Wiener Linien",
