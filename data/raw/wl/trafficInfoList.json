@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261026-0003, I20260917-0012, I20260922-0032, I20260925-0011, I20261026-0002, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261026-0002, I20260909-0007, I20261026-0003, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R36-152, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2359-125, R2343-125, R2420-411, R2380-627, R2345-127, R2378-627, R2343-626, R2372-627, R2370-125, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2558-125, R1749-508, R407-506, R402-506, R1974-466, R625-411, R621-411, R620-411, R619-411, R617-411, R624-411, R623-411, R3573-411, R3574-411, R2975-411, R46-171, R47-171, R50-171, R51-171, R49-171, R44-171, R45-171, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R36-152, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2373-126, R2379-627, R2373-127, R2373-125, R2372-125, R2371-125, R2378-627, R2372-627, R2420-411, R2359-125, R2343-125, R2370-125, R2380-627, R2345-127, R2343-626, R2558-125, R1974-466, R620-411, R617-411, R619-411, R621-411, R623-411, R624-411, R625-411, R3573-411, R3574-411, R2975-411, R51-171, R44-171, R50-171, R45-171, R46-171, R47-171, R49-171, R500-101, R15-171, R14-171, R17-171, R18-171, R13-171, R19-171, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -311,13 +311,13 @@
       "11A": "ptBusCity"
      }
     },
-    "description": "Linie 11A: Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U. Voraussichtliche Dauer: 05:20 Uhr. Grund: Falschparker im Bereich Vorgartenstraße # Offenbachgasse.",
-    "descriptionHTML": "<p>Linie 11A:<br>Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U.</p><p>Voraussichtliche Dauer: 05:20 Uhr.</p><p>Grund: Falschparker im Bereich Vorgartenstraße # Offenbachgasse.</p>",
+    "description": "Die Linie 11A wird in Richtung Bahnhof Heiligenstadt S U zwischen Stadion U und Hillerstraße über die Vorgartenstraße und Elderschplatz umgeleitet. Voraussichtliche Dauer: 05:40 Uhr. Grund: Falschparker im Bereich Vorgartenstraße # Offenbachgasse.",
+    "descriptionHTML": "<p>Die Linie 11A wird in Richtung Bahnhof Heiligenstadt S U zwischen Stadion U und Hillerstraße über die Vorgartenstraße und Elderschplatz umgeleitet.</p><p>Voraussichtliche Dauer: 05:40 Uhr.</p><p>Grund: Falschparker im Bereich Vorgartenstraße # Offenbachgasse.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 11A:<br>Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U.</p><p>Voraussichtliche Dauer: 05:20 Uhr.</p><p>Grund: Falschparker im Bereich Vorgartenstraße # Offenbachgasse.</p>",
-       "descriptionPlain": "Linie 11A: Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U. Voraussichtliche Dauer: 05:20 Uhr. Grund: Falschparker im Bereich Vorgartenstraße # Offenbachgasse.",
+       "descriptionHtml": "<p>Die Linie 11A wird in Richtung Bahnhof Heiligenstadt S U zwischen Stadion U und Hillerstraße über die Vorgartenstraße und Elderschplatz umgeleitet.</p><p>Voraussichtliche Dauer: 05:40 Uhr.</p><p>Grund: Falschparker im Bereich Vorgartenstraße # Offenbachgasse.</p>",
+       "descriptionPlain": "Die Linie 11A wird in Richtung Bahnhof Heiligenstadt S U zwischen Stadion U und Hillerstraße über die Vorgartenstraße und Elderschplatz umgeleitet. Voraussichtliche Dauer: 05:40 Uhr. Grund: Falschparker im Bereich Vorgartenstraße # Offenbachgasse.",
        "title": "11A: Falschparker"
       }
      }
@@ -343,7 +343,7 @@
     "status": "active",
     "time": {
      "created": "2026-10-26T04:58:00.000+0100",
-     "lastUpdate": "2026-10-26T04:58:00.000+0100",
+     "lastUpdate": "2026-10-26T05:14:00.000+0100",
      "start": "2026-10-26T04:57:00.000+0100"
     },
     "title": "11A: Falschparker"
@@ -558,6 +558,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Veranstaltung\nKein Betrieb",
+    "name": "R13-171",
+    "owner": "WL",
+    "parentName": "R13-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     13
+    ],
+    "time": {
+     "end": "2026-10-26T23:59:59.000+0100",
+     "start": "2026-10-26T05:30:00.000+0100"
+    },
+    "title": "Veranstaltung\nKein Betrieb"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R130-136",
     "owner": "WL",
@@ -577,6 +600,29 @@
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nKein Betrieb",
+    "name": "R14-171",
+    "owner": "WL",
+    "parentName": "R14-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-10-26T23:59:59.000+0100",
+     "start": "2026-10-26T05:30:00.000+0100"
+    },
+    "title": "Veranstaltung\nKein Betrieb"
    },
    {
     "alertCause": "undefined alert cause",
@@ -857,25 +903,71 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
-    "name": "R1749-508",
+    "description": "Veranstaltung\nKein Betrieb",
+    "name": "R15-171",
     "owner": "WL",
-    "parentName": "R1749-508",
+    "parentName": "R15-171",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "N8"
+     "71"
     ],
     "relatedStops": [
-     1749
+     15
     ],
     "time": {
-     "end": "2026-10-26T05:15:00.000+0100",
-     "start": "2026-10-26T00:45:11.000+0100"
+     "end": "2026-10-26T23:59:59.000+0100",
+     "start": "2026-10-26T05:30:00.000+0100"
     },
-    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
+    "title": "Veranstaltung\nKein Betrieb"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nKein Betrieb",
+    "name": "R17-171",
+    "owner": "WL",
+    "parentName": "R17-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-10-26T23:59:59.000+0100",
+     "start": "2026-10-26T05:30:00.000+0100"
+    },
+    "title": "Veranstaltung\nKein Betrieb"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nKein Betrieb",
+    "name": "R18-171",
+    "owner": "WL",
+    "parentName": "R18-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     18
+    ],
+    "time": {
+     "end": "2026-10-26T23:59:59.000+0100",
+     "start": "2026-10-26T05:30:00.000+0100"
+    },
+    "title": "Veranstaltung\nKein Betrieb"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1060,6 +1152,29 @@
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nKein Betrieb",
+    "name": "R19-171",
+    "owner": "WL",
+    "parentName": "R19-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     19
+    ],
+    "time": {
+     "end": "2026-10-26T23:59:59.000+0100",
+     "start": "2026-10-26T05:30:00.000+0100"
+    },
+    "title": "Veranstaltung\nKein Betrieb"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1655,52 +1770,6 @@
      "start": "2026-10-25T00:00:15.000+0200"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
-    "name": "R402-506",
-    "owner": "WL",
-    "parentName": "R402-506",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N6"
-    ],
-    "relatedStops": [
-     402
-    ],
-    "time": {
-     "end": "2026-10-26T05:05:00.000+0100",
-     "start": "2026-10-26T00:55:11.000+0100"
-    },
-    "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
-    "name": "R407-506",
-    "owner": "WL",
-    "parentName": "R407-506",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N6"
-    ],
-    "relatedStops": [
-     407
-    ],
-    "time": {
-     "end": "2026-10-26T05:04:00.000+0100",
-     "start": "2026-10-26T00:54:11.000+0100"
-    },
-    "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
    },
    {
     "alertCause": "undefined alert cause",
