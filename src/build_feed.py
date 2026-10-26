@@ -859,12 +859,17 @@ def _oebb_long_date_lists_in_words(text: str) -> str:
 # sentence that fits keeps its order. A sentence with two subjects ("der
 # Zug REX6 (7799) zwischen … der Zug S60 …") or another verb ("werden …
 # umgeleitet und können … nicht halten") keeps its order too. A list of
-# three or more train numbers that keeps the sentence over the limit reads
-# as their count ("die Züge S1 (28632), S1 (28684), … und S2 (28153)" →
-# "11 Züge"): eleven numbers took the 180 characters on 02.08.2026, route
-# and "nicht fahren" included. Every train of the list counts once, also one
-# with a short number ("EC 71") and each number of a group ("REX 1 (2334,
-# 2338 und 2342)" are three).
+# three or more trains that keeps the sentence over the limit reads as their
+# count with their lines ("die Züge S1 (28632), S1 (28684), … und S2
+# (28153)" → "11 Züge der Linien S1, S2 und S3"; "die Züge IC 1110, …, D
+# 1141" → "8 Züge (IC und D)"): eleven numbers took the 180 characters on
+# 02.08.2026, route and "nicht fahren" included. Every train counts once,
+# also one with a short number ("EC 71") and each number of a group ("REX 1
+# (2334, 2338 und 2342)" are three). A list of bare numbers names no line
+# and keeps its noun ("34 Nahverkehrszüge", "7 S4-Züge"). The lines stay
+# named because the count alone did not say which trains (operator decision
+# 2026-10-25: "Nenne die Linien, nicht die Anzahl an Linien", "11 Züge der
+# Linie S1 ist in Ordnung, aber nicht 3 Linien sind betroffen").
 _OEBB_TRAIN_NUMBER = (
     r"(?:[A-Z]{1,4} ?\d{1,5}[A-Z]?(?: ?\(\d{2,5}\))?|\d{2,5}"
     r"|\(\d{2,5}(?:, \d{2,5})*(?: und \d{2,5})?\))"
@@ -886,6 +891,33 @@ _OEBB_LISTED_TRAINS_RE = re.compile(r"die (?P<noun>\S*[Zz]üge) ")
 _OEBB_OTHER_VERB_RE = re.compile(r"\b(?:wird|werden|ist|sind|war|waren)\b")
 
 
+def _oebb_listed_trains_by_line(trains: str) -> str:
+    """``"die Züge S1 (28632), …, S2 (28153)"`` → ``"11 Züge der Linien S1, S2 und S3"`` (see above)."""
+    listed = _OEBB_LISTED_TRAINS_RE.match(trains)
+    if listed is None:
+        return trains
+    count, lines = 0, []
+    for entry in _OEBB_LISTED_TRAIN_RE.finditer(trains, listed.end()):
+        count += len(re.findall(r"\d+", entry["group"])) if entry["group"] else 1
+        if entry["group"]:
+            lines.append(entry[0].split("(", 1)[0].strip())
+        else:
+            lines.append(re.sub(r"[^A-Z].*", "", entry[0]))
+    if count < 3:
+        return trains
+    noun = listed["noun"]
+    if not lines or not all(lines):
+        # Bare numbers name no line ("die Nahverkehrszüge 7713, …").
+        return f"{count} {noun}"
+    named = list(dict.fromkeys(lines))
+    names = named[0] if len(named) == 1 else ", ".join(named[:-1]) + f" und {named[-1]}"
+    if all(re.search(r"\d", line) for line in named):
+        # Lines of ÖBB's network: S1, REX 1.
+        return f"{count} {noun} der Linie{'n' if len(named) > 1 else ''} {names}"
+    # Train categories: EC, RJ, IC.
+    return f"{count} {noun} ({names})"
+
+
 def _oebb_what_does_not_run_first(sentence: str) -> str:
     """An ÖBB sentence over 180 characters with its trains in front (see above)."""
     if len(sentence) <= _OEBB_DAYS_IN_WORDS_LIMIT:
@@ -899,14 +931,7 @@ def _oebb_what_does_not_run_first(sentence: str) -> str:
     ):
         return sentence
     trains, middle = match["trains"], match["middle"]
-    listed = _OEBB_LISTED_TRAINS_RE.match(trains)
-    if listed is not None:
-        count = sum(
-            len(re.findall(r"\d+", entry["group"])) if entry["group"] else 1
-            for entry in _OEBB_LISTED_TRAIN_RE.finditer(trains, listed.end())
-        )
-        if count >= 3:
-            trains = f"{count} {listed['noun']}"
+    trains = _oebb_listed_trains_by_line(trains)
     # "an einzelnen Tagen" at the end of the routes says when the trains do
     # not run: it goes with them ("kann der S1-Zug 23626 an einzelnen Tagen
     # nicht fahren: zwischen …"), where the cut cannot take it.
@@ -5584,9 +5609,13 @@ def _render_oebb_cannot_run(
 # only its routes and days go through the model, behind a colon as in the
 # German. A German summary cut at the 180 characters ends in " …" and keeps
 # it.
+# A line or category the German names (_oebb_listed_trains_by_line): "S1",
+# "REX 1", "IC".
+_OEBB_LINE_CODE = r"[A-Z]{1,4}(?: ?\d{1,3})?"
 _OEBB_CANNOT_RUN_FRONT_RE = re.compile(
     rf"Wegen (?P<cause>[^.:]+?) (?:kann|können)(?P<days1> {_OEBB_DAYS_IN_WORDS})?"
-    rf" (?P<trains>(?:\d{{1,3}} \S*[Zz]üge|{_OEBB_TRAINS}))(?P<days2> {_OEBB_DAYS_IN_WORDS})?"
+    rf" (?P<trains>(?:\d{{1,3}} \S*[Zz]üge|\d{{1,3}} \S*[Zz]üge (?:der Linien? |\()"
+    rf"(?:{_OEBB_LINE_CODE}, )*(?:{_OEBB_LINE_CODE} und )?{_OEBB_LINE_CODE}\)?|{_OEBB_TRAINS}))(?P<days2> {_OEBB_DAYS_IN_WORDS})?"
     r" (?P<verb>(?:nicht )?fahren): (?P<middle>.+?)(?:\.|(?P<cut> …))"
 )
 _OEBB_CANNOT_RUN_EN_TRAIN_NOUNS: dict[str, str] = {
@@ -5632,6 +5661,7 @@ def _oebb_cannot_run_trains_en(trains: str, verb: str) -> str | None:
     if pre and re.search(r"[a-zäöüß]{3}", pre.replace(" and ", " ")):
         return None
     tail = noun_match["tail"].replace(" und ", " and ")
+    tail = tail.replace(" der Linien ", " on lines ").replace(" der Linie ", " on line ")
     lead = {"der": "the ", "die": "the ", "keine": "no ", "einige": "some "}.get(article)
     if lead is None and article.isdigit():
         lead = f"{article} "

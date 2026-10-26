@@ -10,6 +10,21 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **ÖBB: eine lange Zugliste nennt ihre Linien (2026-10-25)**: Michaels
+  Entscheidung „Nenne die Linien, nicht die Anzahl an Linien“ und „11 Züge
+  der Linie S1 ist in Ordnung, aber nicht 3 Linien sind betroffen“ (Antwort
+  auf die Nachprüfung von #2061 bis #2065). Seit #2065 las eine Liste von
+  drei oder mehr Zügen in einem zu langen ÖBB-Satz nur ihre Anzahl („11
+  Züge“), unter „S80: …“ ohne Hinweis, dass S1, S2 und S3 gemeint waren.
+  Jetzt „11 Züge der Linien S1, S2 und S3“, bei Fernverkehrskategorien „13
+  Züge (EC, RJ, RJX, IC und D)“; eine Liste nackter Nummern behält ihr Wort
+  („34 Nahverkehrszüge“). Englisch aus der Vorlage: „11 trains on lines S1,
+  S2 and S3 cannot run“; ein alter Cache-Wert wird neu übersetzt
+  (`_oebb_cannot_run_defect`). Replay über alle 932 ÖBB-Texte an zwölf
+  Stichtagen: nur diese drei Meldungen ändern sich (S80 vom 02.08.,
+  Westbahnhof–Hütteldorf im Juni, Südstrecke im Frühjahr), alle abgelaufen;
+  der heutige Feed bleibt gleich.
+
 * **Prüfung der Stationsdaten (2026-10-25)**: `data/stations.json` von den
   Quellen bis zur Verwendung im Feed (2.242 Einträge, keine doppelte DIVA,
   EVA-, Stellen- oder VOR-Nummer, kein `in_vienna`-Eintrag außerhalb Wiens).

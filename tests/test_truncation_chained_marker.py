@@ -66,14 +66,14 @@ class TestTruncationChainedMarker:
             "IC 1118, IC 1119, IC 1142, IC 1143 und D 1141 nicht fahren."
         )
         # Since 2026-10-25 the feed names the trains first in such a
-        # sentence (``_oebb_what_does_not_run_first``: "8 Züge nicht fahren:
+        # sentence (``_oebb_what_does_not_run_first``: "8 Züge (IC und D) nicht fahren:
         # …"), so the cut itself is checked on ÖBB's order.
         out = build_feed._truncate_summary_180(raw)
         # The dangling "IC …" tail must be gone.
         assert "IC …" not in out
         # The truncation lands on "Züge" (a real word) before the ellipsis.
         assert "Züge …" in out
-        assert _format(raw).startswith("Wegen Bauarbeiten können 8 Züge nicht fahren: ")
+        assert _format(raw).startswith("Wegen Bauarbeiten können 8 Züge (IC und D) nicht fahren: ")
 
     def test_real_content_word_not_dropped(self) -> None:
         # Even with a long-iteration loop, real German content words
