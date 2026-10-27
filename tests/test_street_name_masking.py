@@ -37,7 +37,12 @@ from __future__ import annotations
 
 import pytest
 
-from src.build_feed import _mask_entities
+from src.build_feed import (
+    _drop_article_before_street,
+    _mask_entities,
+    _street_names_nominative,
+    _unmask_entities,
+)
 
 
 def _unprotected(text: str) -> str:
@@ -188,6 +193,81 @@ def test_known_gap_bahnsteig_is_shielded_as_if_it_were_a_street() -> None:
     stops being shielded.
     """
     assert _unprotected("Bahnsteig") == "□"
+
+
+@pytest.mark.parametrize(
+    ("phrase", "name"),
+    [
+        # Live, Jules audits 26. and 27.10.2026: "Due to an ordered line
+        # closure of the algae path, line 89A is redirected."
+        ("Streckensperre des Algenwegs", "Algenwegs"),
+        ("im Bereich des Tesarekplatzes", "Tesarekplatzes"),
+        ("Sperre des Aumannplatzes", "Aumannplatzes"),
+        ("Nebenfahrbahn des Margaretengürtels", "Margaretengürtels"),
+        ("eine Sperre des Universitätsrings", "Universitätsrings"),
+        ("Sperre des Währinger Gürtels", "Währinger Gürtels"),
+        ("im Zuge des Floridsdorfer Marktes", "Floridsdorfer Marktes"),
+    ],
+)
+def test_genitive_street_names_are_shielded_whole(phrase: str, name: str) -> None:
+    """German declines the name; the ``\\b`` after the suffix let it through."""
+    masked, mapping = _mask_entities(phrase)
+    assert name in mapping.values(), f"{name!r} leaks: {_unprotected(phrase)!r}"
+
+
+@pytest.mark.parametrize(
+    "phrase",
+    [
+        # Common nouns in the genitive always reached the model and read
+        # right ("renovation of the platform", "a flea market").
+        "Wegen Sanierung des Bahnsteigs",
+        "Wegen eines Flohmarktes",
+        "im Bereich des Gehsteiges",
+        "im Bereich des Ersatzgehsteiges",
+        "Sperre des Bahnhofsvorplatzes",
+        "Sperre des Radweges",
+    ],
+)
+def test_genitive_common_nouns_stay_translatable(phrase: str) -> None:
+    assert "□" not in _unprotected(phrase), (
+        f"{phrase!r} was (partly) shielded: {_unprotected(phrase)!r}"
+    )
+
+
+@pytest.mark.parametrize(
+    ("surface", "base"),
+    [
+        ("Algenwegs", "Algenweg"),
+        ("Algenweges", "Algenweg"),
+        ("Tesarekplatzes", "Tesarekplatz"),
+        ("Margaretengürtels", "Margaretengürtel"),
+        ("Universitätsrings", "Universitätsring"),
+        ("Handelskais", "Handelskai"),
+        ("Rollerdammes", "Rollerdamm"),
+        ("Währinger Gürtels", "Währinger Gürtel"),
+        ("Floridsdorfer Marktes", "Floridsdorfer Markt"),
+        # Nominatives stay as they are.
+        ("Margaretengürtel", "Margaretengürtel"),
+        ("Hintere Zollamtsstr.", "Hintere Zollamtsstr."),
+        ("Ottakring", "Ottakring"),
+    ],
+)
+def test_english_restores_the_base_form(surface: str, base: str) -> None:
+    """The English text names the street as its sign does: "of Algenweg"."""
+    assert _street_names_nominative({"XENT0X": surface}) == {"XENT0X": base}
+
+
+def test_the_article_before_the_restored_name_drops() -> None:
+    """Model output "of the XENT0X" for "des Algenwegs" ends as "of Algenweg"."""
+    masked, mapping = _mask_entities("des Algenwegs")
+    (placeholder,) = mapping
+    restored = _unmask_entities(
+        f"Due to an ordered line closure of the {placeholder}, line 89A is redirected.",
+        _street_names_nominative(mapping),
+    )
+    assert _drop_article_before_street(restored) == (
+        "Due to an ordered line closure of Algenweg, line 89A is redirected."
+    )
 
 
 def test_translation_cache_epoch_was_bumped() -> None:

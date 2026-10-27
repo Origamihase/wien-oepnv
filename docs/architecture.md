@@ -3155,6 +3155,13 @@ Zwei Sorten, bewusst unterscheidbar:
   erste Wort als Namen; das kam in 9.965 echten Texten seit 01.07. nie vor
   (alle 48 Formen „Wien + Großwort“ sind Stationsnamen) und bleibt so,
   Betreiberentscheidung 2026-10-16 „So lassen“.
+  Seit den Jules-Audits vom 26. und 27.10. auch Straßennamen im Genitiv
+  („Streckensperre des Algenwegs“, vorher „closure of the algae path“;
+  ebenso „des Margaretengürtels“, „des Aumannplatzes“). Der englische Text
+  nennt sie in der Grundform, wie am Schild: „closure of Algenweg“
+  (`_street_names_nominative`). Gattungswörter mit Straßensuffix im
+  Genitiv („des Bahnsteigs“, „eines Flohmarktes“) bleiben übersetzbar
+  (geschlossene Liste `_STREET_COMMON_NOUNS`).
   Werden nach dem Modelllauf **wortgleich** zurückgesetzt. Ein Datum wird
   **vor** den Linienkennungen maskiert: sonst wäre nur sein Tag ein
   Platzhalter, der am Punkt klebt, und das Modell verliert den Punkt
