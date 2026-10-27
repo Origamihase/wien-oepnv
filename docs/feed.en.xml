@@ -8,10 +8,36 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 27 Oct 2026 06:30:44 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 07:01:07 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[46: Defective vehicle]]></title>
+      <title><![CDATA[U1: Delays]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42</guid>
+      <pubDate>Tue, 27 Oct 2026 06:48:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 27 Oct 2026 06:48:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 27 Oct 2026 06:48:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 06:48]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 06:48]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Delays]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
+      <pubDate>Tue, 27 Oct 2026 06:37:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 27 Oct 2026 06:37:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 27 Oct 2026 06:37:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 06:37]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 06:37]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46: Defective train]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">e5b46b439749eff145bc0f8f69b2b76f878961268018dcf811112325b9a176bf</guid>
       <pubDate>Tue, 27 Oct 2026 06:14:00 +0100</pubDate>
@@ -20,21 +46,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 27 Oct 2026 06:30:44 +0100</ext:first_seen>
       <ext:starts_at>Tue, 27 Oct 2026 06:14:00 +0100</ext:starts_at>
-      <description>Service only between Parlament, U Volkstheater and Baumgarten. [Since 06:14]</description>
-      <content:encoded><![CDATA[Service only between Parlament, U Volkstheater and Baumgarten.<br/>[Since 06:14]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Delays]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
-      <pubDate>Tue, 27 Oct 2026 05:54:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 27 Oct 2026 05:54:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 27 Oct 2026 05:54:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 05:54]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 05:54]]]></content:encoded>
+      <description>Service from Baumgarten. [Since 06:14]</description>
+      <content:encoded><![CDATA[Service from Baumgarten.<br/>[Since 06:14]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11: Wienerfeldgasse]]></title>
@@ -136,20 +149,6 @@
       <georss:line>48.277325 16.448371 48.302927 16.564668</georss:line>
       <description>Due to construction works, the S1 train 23626 cannot run on certain days between Deutsch Wagram station and Gänserndorf station and between Wien Leopoldau station … [Until 28.11.]</description>
       <content:encoded><![CDATA[Due to construction works, the S1 train 23626 cannot run on certain days between Deutsch Wagram station and Gänserndorf station and between Wien Leopoldau station …<br/>[Until 28.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A/78A: Roadworks]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">829aed6b63ca00dc86bdde6d44ea64c5a4a23433aa5b8e7bb064705f27b2e81f</guid>
-      <pubDate>Wed, 14 Oct 2026 16:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 00:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 02 Nov 2026 01:00:00 +0100</ext:ends_at>
-      <description>Due to roadworks at the intersection of Meiereistraße / Stephanie-Endres-Straße there are diversions. [Until Mon 02.11.]</description>
-      <content:encoded><![CDATA[Due to roadworks at the intersection of Meiereistraße / Stephanie-Endres-Straße there are diversions.<br/>[Until Mon 02.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

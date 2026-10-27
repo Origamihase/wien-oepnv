@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261027-0003, I20260925-0011, I20261027-0004, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261027-0006, I20260909-0007, I20261027-0005, I20261027-0004-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R1475-149, R1474-149, R1473-149, R1448-149, R1447-149, R1449-149, R1472-149, R1446-149, R1445-149, R1448-412, R1474-412, R1476-149, R36-152, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2378-627, R2372-627, R2345-127, R2380-627, R2379-627, R2420-411, R2343-626, R2558-125, R1974-466, R500-101, R3375-146, R1462-146, R3376-146, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R1475-149, R1474-149, R1473-149, R1448-149, R1447-149, R1449-149, R1472-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R36-152, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2378-627, R2372-627, R2345-127, R2380-627, R2379-627, R2420-411, R2343-626, R2558-125, R1974-466, R500-101, R3375-146, R1462-146, R3376-146, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -263,67 +263,22 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U4: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261027-0003",
-    "owner": "WL",
-    "parentName": "I20261027-0003",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-27T05:54:00.000+0100",
-     "lastUpdate": "2026-10-27T05:54:00.000+0100",
-     "resume": "2026-10-27T05:54:00.000+0100",
-     "start": "2026-10-27T05:54:00.000+0100"
-    },
-    "title": "U4: Verspätungen"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
       "46": "ptTram"
      }
     },
-    "description": "Linie 46: Betrieb nur zwischen Parlament, U Volkstheater und Baumgarten. Ersatz: Linien U4, 47B, 49A, 50A und 50B. Voraussichtliche Dauer: 06:45 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Hütteldorf, Bujattigasse.",
-    "descriptionHTML": "<p>Linie 46:<br>Betrieb nur zwischen Parlament, U Volkstheater und Baumgarten.</p><p>Ersatz: Linien U4, 47B, 49A, 50A und 50B.</p><p>Voraussichtliche Dauer: 06:45 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Bereich Hütteldorf, Bujattigasse.</p>",
+    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 46: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 46:<br>Betrieb nur zwischen Parlament, U Volkstheater und Baumgarten.</p><p>Ersatz: Linien U4, 47B, 49A, 50A und 50B.</p><p>Voraussichtliche Dauer: 06:45 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Bereich Hütteldorf, Bujattigasse.</p>",
-       "descriptionPlain": "Linie 46: Betrieb nur zwischen Parlament, U Volkstheater und Baumgarten. Ersatz: Linien U4, 47B, 49A, 50A und 50B. Voraussichtliche Dauer: 06:45 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Hütteldorf, Bujattigasse.",
+       "descriptionHtml": "<p>Linie 46: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "46: Schadhaftes Fahrzeug"
       }
      }
     ],
     "location": "Hütteldorf, Bujattigasse",
-    "name": "I20261027-0004",
+    "name": "I20261027-0004-F01",
     "owner": "WL",
     "parentName": "I20261027-0004",
     "priority": "1",
@@ -342,11 +297,102 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-27T06:16:00.000+0100",
-     "lastUpdate": "2026-10-27T06:16:00.000+0100",
+     "created": "2026-10-27T06:51:00.000+0100",
+     "lastUpdate": "2026-10-27T06:51:00.000+0100",
+     "resume": "2026-10-27T06:51:00.000+0100",
      "start": "2026-10-27T06:14:00.000+0100"
     },
     "title": "46: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U3: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261027-0005",
+    "owner": "WL",
+    "parentName": "I20261027-0005",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-27T06:37:00.000+0100",
+     "lastUpdate": "2026-10-27T06:37:00.000+0100",
+     "resume": "2026-10-27T06:37:00.000+0100",
+     "start": "2026-10-27T06:37:00.000+0100"
+    },
+    "title": "U3: Verspätungen"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U1: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261027-0006",
+    "owner": "WL",
+    "parentName": "I20261027-0006",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-27T06:48:00.000+0100",
+     "lastUpdate": "2026-10-27T06:48:00.000+0100",
+     "resume": "2026-10-27T06:48:00.000+0100",
+     "start": "2026-10-27T06:48:00.000+0100"
+    },
+    "title": "U1: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
