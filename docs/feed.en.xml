@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 27 Oct 2026 11:30:53 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 12:01:09 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[46: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">e1715d10748fce73b172c45e54dd3e25af3065fc6c95c6e107df041384e060fc</guid>
+      <pubDate>Tue, 27 Oct 2026 11:38:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 27 Oct 2026 11:38:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 27 Oct 2026 11:38:00 +0100</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 11:38]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 11:38]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[37: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,21 +33,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 27 Oct 2026 11:08:00 +0100</ext:first_seen>
       <ext:starts_at>Tue, 27 Oct 2026 11:18:32 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 11:08]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 11:08]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">91d669c1fbe32bfc275e4e4defa8ceccd4bb34a47aefba98017f28a1c74921ba</guid>
-      <pubDate>Tue, 27 Oct 2026 10:55:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 27 Oct 2026 10:55:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 27 Oct 2026 10:55:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 10:55]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 10:55]]]></content:encoded>
+      <ext:ends_at>Tue, 27 Oct 2026 12:18:00 +0100</ext:ends_at>
+      <description>Service obstruction. [Since 11:08]</description>
+      <content:encoded><![CDATA[Service obstruction.<br/>[Since 11:08]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[6/18: Rescue operation]]></title>
@@ -45,9 +46,9 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 27 Oct 2026 10:48:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 27 Oct 2026 10:56:59 +0100</ext:starts_at>
-      <description>Service from Eichenstraße. [Since 10:48]</description>
-      <content:encoded><![CDATA[Service from Eichenstraße.<br/>[Since 10:48]]]></content:encoded>
+      <ext:starts_at>Tue, 27 Oct 2026 10:48:00 +0100</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 10:48]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 10:48]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Rescue operation]]></title>
@@ -61,19 +62,6 @@
       <ext:starts_at>Tue, 27 Oct 2026 10:22:00 +0100</ext:starts_at>
       <description>After a service obstruction, there are irregular intervals. [Since 10:22]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 10:22]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27: Delays]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">405ffe0aa2098d8d6d582944507740bd3b2ff950f6553c25606e98f3e6b79d5e</guid>
-      <pubDate>Tue, 27 Oct 2026 09:52:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 27 Oct 2026 09:52:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 27 Oct 2026 09:52:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. Use 25 line in Tokiostraße; trains stop at the stop of line 31. [Since 09:52]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals. Use 25 line in Tokiostraße; trains stop at the stop of line 31.<br/>[Since 09:52]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[40A: Construction works]]></title>
@@ -145,6 +133,20 @@
       <ext:ends_at>Wed, 28 Oct 2026 18:00:00 +0100</ext:ends_at>
       <description>Due to an ordered line closure of the algae path, line 89A is redirected. [Until Wed 28.10.]</description>
       <content:encoded><![CDATA[Due to an ordered line closure of the algae path, line 89A is redirected.<br/>[Until Wed 28.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N81R/N81: Construction works]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">84342e7299cf2d1a256f7e6f2a7a8fcae415185eab7bcfd7d9344c3de0c12009</guid>
+      <pubDate>Wed, 14 Oct 2026 16:10:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 26 Oct 2026 00:01:08 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 27 Oct 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 30 Oct 2026 05:00:00 +0100</ext:ends_at>
+      <description>Due to roadworks in the area of Meiereistraße / Stephanie-Endres-Straße, there are diversions on the call bus line N81. Measures: Line N81 … [Until Fri 30.10.]</description>
+      <content:encoded><![CDATA[Due to roadworks in the area of Meiereistraße / Stephanie-Endres-Straße, there are diversions on the call bus line N81. Measures: Line N81 …<br/>[Until Fri 30.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
