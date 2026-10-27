@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261027-0032, I20260925-0011, I20260909-0007, I20261027-0034-F01, I20261027-0034, I20261020-0029, I20261027-0033-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261027-0035-F01, I20261027-0035-F02, I20260925-0011, I20260909-0007, I20261027-0034-F01, I20261020-0029, I20261027-0033-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R36-152, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2343-626, R2373-127, R2343-125, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R2373-125, R2372-125, R2378-627, R2371-125, R2370-125, R2359-125, R2558-125, R1974-466, R500-101, R1301-440, R1272-440, R2174-127, R2176-127, R2178-127, R2175-127, R2177-127, R2188-127, R2189-127, R2179-127, R2182-127, R2185-127, R2184-127, R2186-127, R2183-127, R2172-127, R574-160, R1636-160, R1635-160, R1637-160, R1638-160, R1639-160, R1633-160, R1634-160, R1615-160, R1618-160, R1617-160, R1616-160, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R36-152, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2420-411, R2380-627, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2345-127, R2558-125, R1974-466, R500-101, R1301-440, R1272-440, R574-160, R1637-160, R1635-160, R1639-160, R1638-160, R1636-160, R1633-160, R1634-160, R1617-160, R1615-160, R1618-160, R1616-160, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,51 +259,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "vandalism",
-    "alertCauseId": 16,
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-       "title": "U6: Verunreinigung"
-      }
-     }
-    ],
-    "name": "I20261027-0032",
-    "owner": "WL",
-    "parentName": "I20261027-0032",
-    "priority": "1",
-    "reasonId": 36,
-    "reasonName": "Verunreinigung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-27T18:18:00.000+0100",
-     "lastUpdate": "2026-10-27T18:18:00.000+0100",
-     "resume": "2026-10-27T18:17:00.000+0100",
-     "start": "2026-10-27T18:17:00.000+0100"
-    },
-    "title": "U6: Verunreinigung"
-   },
-   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
@@ -357,53 +312,6 @@
       "60": "ptTram"
      }
     },
-    "description": "Linie 60: Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse. Voraussichtliche Dauer: 20:00 Uhr. Grund: Falschparker im Bereich Speisinger Straße 69.",
-    "descriptionHTML": "<p>Linie 60:<br>Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Falschparker im Bereich Speisinger Straße 69.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60:<br>Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Falschparker im Bereich Speisinger Straße 69.</p>",
-       "descriptionPlain": "Linie 60: Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse. Voraussichtliche Dauer: 20:00 Uhr. Grund: Falschparker im Bereich Speisinger Straße 69.",
-       "title": "60: Falschparker"
-      }
-     }
-    ],
-    "location": "Speisinger Straße 69",
-    "name": "I20261027-0034",
-    "owner": "WL",
-    "parentName": "I20261027-0034",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-27T19:32:00.000+0100",
-     "end": "2026-10-27T19:56:00.000+0100",
-     "lastUpdate": "2026-10-27T19:56:00.000+0100",
-     "resume": "2026-10-27T19:56:00.000+0100",
-     "start": "2026-10-27T19:32:00.000+0100"
-    },
-    "title": "60: Falschparker"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "60": "ptTram"
-     }
-    },
     "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
@@ -441,6 +349,98 @@
      "start": "2026-10-27T19:32:00.000+0100"
     },
     "title": "60: Falschparker"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "99A": "ptBusCity"
+     }
+    },
+    "description": "Linie 99A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 99A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 99A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 99A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "99A: Rettungseinsatz"
+      }
+     }
+    ],
+    "location": "Schafflerhofstraße 1",
+    "name": "I20261027-0035-F01",
+    "owner": "WL",
+    "parentName": "I20261027-0035",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "99A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 499,
+      "lineName": "99A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-27T20:18:00.000+0100",
+     "lastUpdate": "2026-10-27T20:18:00.000+0100",
+     "resume": "2026-10-27T20:18:00.000+0100",
+     "start": "2026-10-27T20:08:00.000+0100"
+    },
+    "title": "99A: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "99B": "ptBusCity"
+     }
+    },
+    "description": "Linie 99B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 99B: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 99B: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 99B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "99B: Rettungseinsatz"
+      }
+     }
+    ],
+    "location": "Schafflerhofstraße 1",
+    "name": "I20261027-0035-F02",
+    "owner": "WL",
+    "parentName": "I20261027-0035",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "99B"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 299,
+      "lineName": "99B",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-27T20:18:00.000+0100",
+     "lastUpdate": "2026-10-27T20:18:00.000+0100",
+     "resume": "2026-10-27T20:18:00.000+0100",
+     "start": "2026-10-27T20:08:00.000+0100"
+    },
+    "title": "99B: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1473,328 +1473,6 @@
      "start": "2026-10-24T00:00:26.000+0200"
     },
     "title": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Stromstörung",
-    "name": "R2172-127",
-    "owner": "WL",
-    "parentName": "R2172-127",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedStops": [
-     2172
-    ],
-    "time": {
-     "end": "2026-10-27T20:19:00.000+0100",
-     "start": "2026-10-27T19:20:20.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Stromstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Stromstörung",
-    "name": "R2174-127",
-    "owner": "WL",
-    "parentName": "R2174-127",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedStops": [
-     2174
-    ],
-    "time": {
-     "end": "2026-10-27T20:13:00.000+0100",
-     "start": "2026-10-27T19:13:49.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Stromstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Stromstörung",
-    "name": "R2175-127",
-    "owner": "WL",
-    "parentName": "R2175-127",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedStops": [
-     2175
-    ],
-    "time": {
-     "end": "2026-10-27T20:13:00.000+0100",
-     "start": "2026-10-27T19:13:49.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Stromstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Stromstörung",
-    "name": "R2176-127",
-    "owner": "WL",
-    "parentName": "R2176-127",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedStops": [
-     2176
-    ],
-    "time": {
-     "end": "2026-10-27T20:13:00.000+0100",
-     "start": "2026-10-27T19:13:49.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Stromstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Stromstörung",
-    "name": "R2177-127",
-    "owner": "WL",
-    "parentName": "R2177-127",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedStops": [
-     2177
-    ],
-    "time": {
-     "end": "2026-10-27T20:13:00.000+0100",
-     "start": "2026-10-27T19:13:49.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Stromstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Stromstörung",
-    "name": "R2178-127",
-    "owner": "WL",
-    "parentName": "R2178-127",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedStops": [
-     2178
-    ],
-    "time": {
-     "end": "2026-10-27T20:13:00.000+0100",
-     "start": "2026-10-27T19:13:49.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Stromstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Stromstörung",
-    "name": "R2179-127",
-    "owner": "WL",
-    "parentName": "R2179-127",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedStops": [
-     2179
-    ],
-    "time": {
-     "end": "2026-10-27T20:15:00.000+0100",
-     "start": "2026-10-27T19:15:49.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Stromstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Stromstörung",
-    "name": "R2182-127",
-    "owner": "WL",
-    "parentName": "R2182-127",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedStops": [
-     2182
-    ],
-    "time": {
-     "end": "2026-10-27T20:19:00.000+0100",
-     "start": "2026-10-27T19:19:23.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Stromstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Stromstörung",
-    "name": "R2183-127",
-    "owner": "WL",
-    "parentName": "R2183-127",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedStops": [
-     2183
-    ],
-    "time": {
-     "end": "2026-10-27T20:19:00.000+0100",
-     "start": "2026-10-27T19:19:23.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Stromstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Stromstörung",
-    "name": "R2184-127",
-    "owner": "WL",
-    "parentName": "R2184-127",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedStops": [
-     2184
-    ],
-    "time": {
-     "end": "2026-10-27T20:19:00.000+0100",
-     "start": "2026-10-27T19:19:23.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Stromstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Stromstörung",
-    "name": "R2185-127",
-    "owner": "WL",
-    "parentName": "R2185-127",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedStops": [
-     2185
-    ],
-    "time": {
-     "end": "2026-10-27T20:19:00.000+0100",
-     "start": "2026-10-27T19:19:23.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Stromstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Stromstörung",
-    "name": "R2186-127",
-    "owner": "WL",
-    "parentName": "R2186-127",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedStops": [
-     2186
-    ],
-    "time": {
-     "end": "2026-10-27T20:19:00.000+0100",
-     "start": "2026-10-27T19:19:23.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Stromstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSignalstörung",
-    "name": "R2188-127",
-    "owner": "WL",
-    "parentName": "R2188-127",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedStops": [
-     2188
-    ],
-    "time": {
-     "end": "2026-10-27T20:14:00.000+0100",
-     "start": "2026-10-27T19:15:22.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSignalstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSignalstörung",
-    "name": "R2189-127",
-    "owner": "WL",
-    "parentName": "R2189-127",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedStops": [
-     2189
-    ],
-    "time": {
-     "end": "2026-10-27T20:14:00.000+0100",
-     "start": "2026-10-27T19:15:22.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSignalstörung"
    },
    {
     "alertCause": "undefined alert cause",
