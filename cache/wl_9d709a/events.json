@@ -930,22 +930,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Betriebsstörung",
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7e8bbbbb1be3a2c4d16075c9994f15cc7267e83a3cefbf3ba8d03a7b9f98bd26",
-    "pubDate": "2026-10-27T17:32:00+01:00",
-    "starts_at": "2026-10-27T17:32:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=1|D=2026-10-27|TK=1 betriebsstörung",
-    "_wl_ids": [
-      "I20261027-0029"
-    ],
-    "_incident_start": "2026-10-27T17:32:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1110,6 +1094,46 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "27: Beschädigte Oberleitung durch einen LKW",
+    "description": "Linie 27: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 20:00 Uhr. Grund: Fahrleitungsgebrechen durch LKW im Bereich Prager Straße # Nordbrücke.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b50e2caeb1b2394908f463b8ec59b4d62e011f546a015833fefab91132ec3d87",
+    "pubDate": "2026-10-27T19:15:00+01:00",
+    "starts_at": "2026-10-27T19:15:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=27|D=2026-10-27|TK=27 beschädigte oberleitung durch einen lkw",
+    "_wl_ids": [
+      "I20261027-0033"
+    ],
+    "_incident_start": "2026-10-27T19:15:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Fahrtbehinderung wegen Stromstörung",
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "deee1babf5dc7b811f812928e2030700a354c24599a97fdb5fb4b755a5527310",
+    "pubDate": "2026-10-27T19:13:49+01:00",
+    "starts_at": "2026-10-27T19:20:20+01:00",
+    "ends_at": "2026-10-27T20:19:00+01:00",
+    "_identity": "wl|störung|L=27|D=2026-10-27|TK=fahrtbehinderung wegen stromstörung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Fahrtbehinderung Signalstörung",
+    "description": "Fahrtbehinderung\nSignalstörung",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d181af5e303219e8a9902182bf958920050b8c374b8def743f51143ee197aff3",
+    "pubDate": "2026-10-27T19:15:22+01:00",
+    "starts_at": "2026-10-27T19:15:22+01:00",
+    "ends_at": "2026-10-27T20:14:00+01:00",
+    "_identity": "wl|störung|L=27|D=2026-10-27|TK=signalstörung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1162,22 +1186,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "4A: Betriebsstörung",
-    "description": "Linie 4A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "832357233e65bcaa6620e85e7746d1262fe141eabe0440ebadc3b495b4ad3714",
-    "pubDate": "2026-10-27T17:32:00+01:00",
-    "starts_at": "2026-10-27T17:32:00+01:00",
-    "ends_at": "2026-10-27T19:10:00+01:00",
-    "_identity": "wl|störung|L=4A|D=2026-10-27|TK=4a betriebsstörung",
-    "_wl_ids": [
-      "I20261027-0029"
-    ],
-    "_incident_start": "2026-10-27T17:32:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "52: Züge halten bei Linien 6 und 18",
     "description": "Züge halten\nbei Linien 6 und 18",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1191,7 +1199,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "60: Fremder Verkehrsunfall",
-    "description": "Linie 60: Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse. Voraussichtliche Dauer: 19:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Speisinger Straße 153.",
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "fa13a977753886fe597c353a144a3e24d7a3675a48c2729c300f9be73e720a96",
     "pubDate": "2026-10-27T17:49:00+01:00",

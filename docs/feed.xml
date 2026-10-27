@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 27 Oct 2026 19:00:59 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 19:30:48 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[27: Beschädigte Oberleitung durch einen LKW]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">deee1babf5dc7b811f812928e2030700a354c24599a97fdb5fb4b755a5527310</guid>
+      <pubDate>Tue, 27 Oct 2026 19:13:49 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 27 Oct 2026 19:30:48 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 27 Oct 2026 19:20:20 +0100</ext:starts_at>
+      <description>Fahrtbehinderung in beiden Richtungen. Voraussichtlich bis 20:00 Uhr. Grund: Fahrleitungsgebrechen durch LKW im Bereich Prager Straße / Nordbrücke. [Seit 19:13]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in beiden Richtungen. Voraussichtlich bis 20:00 Uhr. Grund: Fahrleitungsgebrechen durch LKW im Bereich Prager Straße / Nordbrücke.<br/>[Seit 19:13]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U6: Verunreinigung]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -33,21 +46,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 27 Oct 2026 17:49:00 +0100</ext:first_seen>
       <ext:starts_at>Tue, 27 Oct 2026 17:49:00 +0100</ext:starts_at>
-      <description>Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse. Grund: Fremder Verkehrsunfall im Bereich Speisinger Straße 153. [Seit 17:49]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse. Grund: Fremder Verkehrsunfall im Bereich Speisinger Straße 153.<br/>[Seit 17:49]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/4A: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">7e8bbbbb1be3a2c4d16075c9994f15cc7267e83a3cefbf3ba8d03a7b9f98bd26</guid>
-      <pubDate>Tue, 27 Oct 2026 17:32:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 27 Oct 2026 17:32:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 27 Oct 2026 17:32:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:32]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:32]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:49]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:49]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[40A: Bauarbeiten]]></title>
