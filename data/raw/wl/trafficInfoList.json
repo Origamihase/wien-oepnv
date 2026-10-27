@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261027-0007-F02, I20260909-0007, I20261020-0029, I20261027-0007-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R1445-149, R1474-412, R1448-412, R1449-149, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1447-149, R1448-149, R1446-149, R36-152, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2373-126, R2372-627, R2420-411, R2379-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2380-627, R2345-127, R2558-125, R1974-466, R500-101, R1301-440, R1272-440, R2172-130, R2189-130, R2159-131, R2190-131, R2189-131, R322-131, R321-131, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R1475-149, R1474-149, R1449-149, R1472-149, R1448-412, R1446-149, R1445-149, R1474-412, R1448-149, R1447-149, R1473-149, R1476-149, R36-152, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2420-411, R2372-627, R2345-127, R2373-126, R2380-627, R2379-627, R2378-627, R2343-125, R2343-626, R2558-125, R1974-466, R500-101, R1301-440, R1272-440, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -257,99 +257,6 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "30": "ptTram"
-     }
-    },
-    "description": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 30: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 30: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "30: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Brünner Straße / Weisselgasse",
-    "name": "I20261027-0007-F01",
-    "owner": "WL",
-    "parentName": "I20261027-0007",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "30"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 130,
-      "lineName": "30",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-27T08:30:00.000+0100",
-     "end": "2026-10-27T08:59:00.000+0100",
-     "lastUpdate": "2026-10-27T08:59:00.000+0100",
-     "resume": "2026-10-27T08:59:00.000+0100",
-     "start": "2026-10-27T08:21:00.000+0100"
-    },
-    "title": "30: Verkehrsunfall"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "31": "ptTram"
-     }
-    },
-    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "31: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Brünner Straße / Weisselgasse",
-    "name": "I20261027-0007-F02",
-    "owner": "WL",
-    "parentName": "I20261027-0007",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 131,
-      "lineName": "31",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-27T08:30:00.000+0100",
-     "end": "2026-10-27T09:21:00.000+0100",
-     "lastUpdate": "2026-10-27T08:48:00.000+0100",
-     "start": "2026-10-27T08:21:00.000+0100"
-    },
-    "title": "31: Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1133,121 +1040,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2159-131",
-    "owner": "WL",
-    "parentName": "R2159-131",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedStops": [
-     2159
-    ],
-    "time": {
-     "end": "2026-10-27T09:24:00.000+0100",
-     "start": "2026-10-27T08:24:46.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2172-130",
-    "owner": "WL",
-    "parentName": "R2172-130",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "30"
-    ],
-    "relatedStops": [
-     2172
-    ],
-    "time": {
-     "end": "2026-10-27T09:23:00.000+0100",
-     "start": "2026-10-27T08:24:16.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2189-130",
-    "owner": "WL",
-    "parentName": "R2189-130",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "30"
-    ],
-    "relatedStops": [
-     2189
-    ],
-    "time": {
-     "end": "2026-10-27T09:23:00.000+0100",
-     "start": "2026-10-27T08:24:17.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2189-131",
-    "owner": "WL",
-    "parentName": "R2189-131",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedStops": [
-     2189
-    ],
-    "time": {
-     "end": "2026-10-27T09:24:00.000+0100",
-     "start": "2026-10-27T08:24:47.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2190-131",
-    "owner": "WL",
-    "parentName": "R2190-131",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedStops": [
-     2190
-    ],
-    "time": {
-     "end": "2026-10-27T09:24:00.000+0100",
-     "start": "2026-10-27T08:24:47.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -1658,52 +1450,6 @@
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R321-131",
-    "owner": "WL",
-    "parentName": "R321-131",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedStops": [
-     321
-    ],
-    "time": {
-     "end": "2026-10-27T09:24:00.000+0100",
-     "start": "2026-10-27T08:25:14.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R322-131",
-    "owner": "WL",
-    "parentName": "R322-131",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedStops": [
-     322
-    ],
-    "time": {
-     "end": "2026-10-27T09:24:00.000+0100",
-     "start": "2026-10-27T08:25:14.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
