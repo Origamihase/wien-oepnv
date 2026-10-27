@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 27 Oct 2026 17:01:03 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 17:30:52 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[71: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7</guid>
+      <pubDate>Tue, 27 Oct 2026 17:16:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 27 Oct 2026 17:16:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 27 Oct 2026 17:16:00 +0100</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:16]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:16]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[62A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,6 +33,7 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 27 Oct 2026 16:56:00 +0100</ext:first_seen>
       <ext:starts_at>Tue, 27 Oct 2026 16:56:00 +0100</ext:starts_at>
+      <ext:ends_at>Tue, 27 Oct 2026 18:08:00 +0100</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Stachegasse. [Seit 16:56]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Stachegasse.<br/>[Seit 16:56]]]></content:encoded>
     </item>
@@ -137,20 +151,6 @@
       <georss:line>48.277325 16.448371 48.302927 16.564668</georss:line>
       <description>Wegen Bauarbeiten kann der S1-Zug 23626 an einzelnen Tagen nicht fahren: zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof und zwischen Wien Leopoldau Bahnhst … [Bis 28.11.]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten kann der S1-Zug 23626 an einzelnen Tagen nicht fahren: zwischen Deutsch Wagram Bahnhof und Gänserndorf Bahnhof und zwischen Wien Leopoldau Bahnhst …<br/>[Bis 28.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A/78A: Straßenbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">829aed6b63ca00dc86bdde6d44ea64c5a4a23433aa5b8e7bb064705f27b2e81f</guid>
-      <pubDate>Wed, 14 Oct 2026 16:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 00:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 02 Nov 2026 01:00:00 +0100</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Kreuzungsbereich Meiereistraße / Stephanie-Endres-Straße kommt es zu Umleitungen. [Bis Mo 02.11.]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Kreuzungsbereich Meiereistraße / Stephanie-Endres-Straße kommt es zu Umleitungen.<br/>[Bis Mo 02.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
