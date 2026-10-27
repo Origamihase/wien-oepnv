@@ -1,20 +1,24 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-27T13:31:09.919390+00:00",
- "built": "2026-10-27T14:30:55+01:00",
+ "updated": "2026-10-27T14:01:07.394491+00:00",
+ "built": "2026-10-27T15:00:51+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-27T14:30:55+01:00",
+  "built": "2026-10-27T15:00:51+01:00",
   "items": [
    {
-    "title": "4A: Verkehrsunfall",
-    "time_line": "Seit 13:45"
+    "title": "5: Polizeieinsatz",
+    "time_line": "Seit 14:42"
    },
    {
-    "title": "60: Rettungseinsatz",
-    "time_line": "Seit 13:32"
+    "title": "O: Stromstörung",
+    "time_line": "Seit 14:40"
+   },
+   {
+    "title": "U2: Rettungseinsatz",
+    "time_line": "Seit 14:30"
    },
    {
     "title": "U1: Rettungseinsatz",
@@ -43,35 +47,11 @@
    {
     "title": "N81R/N81: Bauarbeiten",
     "time_line": "Bis Fr 30.10."
-   },
-   {
-    "title": "S2: Wien Leopoldau ↔ Mistelbach",
-    "time_line": "Bis So 01.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-20T14:01:03.304871+00:00",
-   "raw": {
-    "wl-stoerungen": 76,
-    "wl-hinweise": 101,
-    "oebb": 164,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 22,
-    "oebb": 141,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 109
-   }
-  },
   {
    "t": "2026-10-20T14:31:18.516466+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 9,
     "wl": 111
    }
+  },
+  {
+   "t": "2026-10-27T14:01:07.394491+00:00",
+   "raw": {
+    "wl-stoerungen": 87,
+    "wl-hinweise": 91,
+    "oebb": 165,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 22
+   },
+   "discarded": {
+    "wl": 14,
+    "oebb": 140,
+    "baustellen": 67
+   },
+   "cache": {
+    "baustellen": 4,
+    "oebb": 9,
+    "wl": 113
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-27T13:31:09.919390+00:00"
+   "last_ok": "2026-10-27T14:01:07.394491+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-27T13:31:09.919390+00:00"
+   "last_ok": "2026-10-27T14:01:07.394491+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-27T13:31:09.919390+00:00"
+   "last_ok": "2026-10-27T14:01:07.394491+00:00"
   }
  }
 }
