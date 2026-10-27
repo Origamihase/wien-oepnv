@@ -878,22 +878,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Rettungseinsatz Betrieb ab Eichenstraße",
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
-    "pubDate": "2026-10-27T12:13:00+01:00",
-    "starts_at": "2026-10-27T12:16:37+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=18|D=2026-10-27|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261027-0015"
-    ],
-    "_incident_start": "2026-10-27T12:13:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Gleisbauarbeiten",
     "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A und 65A. Voraussichtliche Dauer: Mitte Dezember 2026. Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1198,22 +1182,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Rettungseinsatz Betrieb ab Eichenstraße",
-    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
-    "pubDate": "2026-10-27T12:13:00+01:00",
-    "starts_at": "2026-10-27T12:17:07+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=6|D=2026-10-27|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261027-0015"
-    ],
-    "_incident_start": "2026-10-27T12:13:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1232,7 +1200,7 @@
     "guid": "b1866dbda10de11cf3a1ffe8fa6fa879751a915b069299afcb4c2a0a6f3945d6",
     "pubDate": "2026-10-27T12:51:00+01:00",
     "starts_at": "2026-10-27T12:51:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-10-27T13:35:00+01:00",
     "_identity": "wl|störung|L=77A|D=2026-10-27|TK=77a verkehrsunfall",
     "_wl_ids": [
       "I20261027-0017"
@@ -1342,22 +1310,6 @@
       "I20261027-0016"
     ],
     "_incident_start": "2026-10-27T12:46:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Betriebsstörung",
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
-    "pubDate": "2026-10-27T12:07:00+01:00",
-    "starts_at": "2026-10-27T12:07:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U3|D=2026-10-27|TK=u3 betriebsstörung",
-    "_wl_ids": [
-      "I20261027-0014"
-    ],
-    "_incident_start": "2026-10-27T12:07:00+01:00"
   },
   {
     "source": "Wiener Linien",
