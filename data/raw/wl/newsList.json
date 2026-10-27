@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_628, ftazW_1017627, ftazW_1018634, ftazW_629, ftazW_1017126, ftazW_1016611, ftazW_1016925, ftazW_1031301, ftazW_1016926, ftazW_1031302, ftazW_166, ftazW_1017125, ftazW_1016923, ftazW_771, ftazW_735, ftazW_167, ftazW_772, ftazW_1016924"
+    "trafficInfoNameList": "ftazW_628, ftazW_1017627, ftazW_1018634, ftazW_629, ftazW_1017126, ftazW_1016611, ftazW_1016925, ftazW_1031301, ftazW_1016926, ftazW_1031302, ftazW_166, ftazW_1017125, ftazW_1016923, ftazW_735, ftazW_167, ftazW_772, ftazW_1016924"
    }
   ],
   "poiCategoryGroups": [
@@ -4311,43 +4311,6 @@
      "start": "2026-10-30T01:15:00.000+0100"
     },
     "title": "Nestroyplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "30.10.2026 00:45",
-     "ausVon": "29.10.2026 20:45",
-     "location": "Oberfläche - Passage - U2 Bahnsteig in Fahrtrichtung Karlsplatz",
-     "rbls": [
-      4211
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Museumsquartier",
-     "status": "geplante Wartung",
-     "towards": "U2 Karlsplatz"
-    },
-    "description": "Oberfläche - Passage - U2 Bahnsteig in Fahrtrichtung Karlsplatz",
-    "elevatorId": "BA 01",
-    "name": "ftazW_771",
-    "parentName": "ftazW_771",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4211
-    ],
-    "time": {
-     "end": "2026-10-30T00:45:00.000+0100",
-     "start": "2026-10-29T20:45:00.000+0100"
-    },
-    "title": "Museumsquartier"
    },
    {
     "alertCause": "undefined alert cause",
