@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-27T23:01:00.170081+00:00",
- "built": "2026-10-28T00:00:44+01:00",
+ "updated": "2026-10-27T23:30:57.873069+00:00",
+ "built": "2026-10-28T00:30:49+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-28T00:00:44+01:00",
+  "built": "2026-10-28T00:30:49+01:00",
   "items": [
    {
     "title": "11: Wienerfeldgasse",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-20T23:30:53.549187+00:00",
-   "raw": {
-    "wl-stoerungen": 90,
-    "wl-hinweise": 89,
-    "oebb": 163,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 16,
-    "oebb": 141,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 114
-   }
-  },
   {
    "t": "2026-10-21T00:01:02.839794+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 9,
     "wl": 102
    }
+  },
+  {
+   "t": "2026-10-27T23:30:57.873069+00:00",
+   "raw": {
+    "wl-stoerungen": 64,
+    "wl-hinweise": 88,
+    "oebb": 161,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 20
+   },
+   "discarded": {
+    "wl": 14,
+    "oebb": 136,
+    "baustellen": 66
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 103
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-27T23:01:00.170081+00:00"
+   "last_ok": "2026-10-27T23:30:57.873069+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-27T23:01:00.170081+00:00"
+   "last_ok": "2026-10-27T23:30:57.873069+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-27T23:01:00.170081+00:00"
+   "last_ok": "2026-10-27T23:30:57.873069+00:00"
   }
  }
 }
