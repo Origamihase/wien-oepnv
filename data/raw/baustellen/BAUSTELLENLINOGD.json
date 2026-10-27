@@ -256,29 +256,6 @@
   {
    "geometry": {
     "first_position": [
-     16.38146823,
-     48.23524325
-    ],
-    "type": "LineString"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Gerhard Baumann",
-    "ANSPRECHPERSON_TEL": "Tel.: 050128/32740",
-    "ANTRAGSTELLER": "Wiener Netze - Bereich Fernwärme",
-    "BEHINDERUNGSART": "Rohrlegung",
-    "BEZEICHNUNG": "Donaueschingenstraße von Dresdner Straße bis Leystraße",
-    "BEZIRK": 20,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-05-31Z",
-    "OBJEKT_ENDE": "2026-10-30Z",
-    "PRESSETEXT": "DieDonaueschingenstraße wird von Dresdner Straße bis und in Fahrtrichtung Pasettistraße zur Einbahn. DerFußgängerverkehr kann aufrecht gehalten werden.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
      16.41715199,
      48.25319766
     ],
@@ -572,29 +549,6 @@
     "OBJEKT_BEGINN": "2026-03-09Z",
     "OBJEKT_ENDE": "2027-08-31Z",
     "PRESSETEXT": "Die Straßenbauarbeiten (Radwegherstellung, Baumpflanzungen, etc.) im gegenständlichen Bereich der Landstraßer Hauptstraße werden in mehreren Bauphasen ausgeführt. In der ersten Bauphase, die bis Ende August 2026 andauert, gibt es für den Fließverkehr keine Behinderungen. Es wird lediglich die bestehende Bushaltestelle bei der Rabengasse örtlich verlegt. Für die nachfolgenden Bauphasen werden gesonderte Meldungen ausgesandt. NEU: Bauphase 2 (01.09.2026 bis 11.04.2027):Die Landstraßer Hauptstraße wird von Oberzellergasse bis und in Fahrtrichtung Schlachthausgasse zur Einbahn. Die Umleitung in Fahrtrichtung stadteinwärts erfolgt über: Schlachthausgasse - Rennweg - Oberzellergasse - Landstraßer Hauptstraße.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
-     16.36822664,
-     48.16477368
-    ],
-    "type": "LineString"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Gerhard Baumann",
-    "ANSPRECHPERSON_TEL": "Tel.: 050128/32740",
-    "ANTRAGSTELLER": "Wiener Netze - Bereich Fernwärme",
-    "BEHINDERUNGSART": "Rohrlegung",
-    "BEZEICHNUNG": "Laxenburger Straße 104-110 bis 149",
-    "BEZIRK": 10,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-07-12Z",
-    "OBJEKT_ENDE": "2026-10-31Z",
-    "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 20:00 bis 04:00 Uhr. Es wird abschnittsweise ein Fahrstreifen in Fahrtrichtung stadtauswärts sowie in Fahrtrichtung stadteinwärts gesperrt. Die restlichen Fahrstreifen werden aufrechtgehalten. An 5 Tagen wird in der Zeit von 9:00 Uhr bis 15:00 Uhr ein Fahrstreifen in Fahrtrichtung stadteinwärts für Betonierarbeiten gesperrt. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
     "SE_ANNO_CAD_DATA": null
    }
   },
