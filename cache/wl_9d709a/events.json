@@ -946,9 +946,9 @@
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
-    "pubDate": "2026-10-27T00:30:26+01:00",
-    "starts_at": "2026-10-27T00:30:26+01:00",
-    "ends_at": "2026-10-27T04:59:00+01:00",
+    "pubDate": "2026-10-27T05:00:23+01:00",
+    "starts_at": "2026-10-27T05:00:23+01:00",
+    "ends_at": "2026-10-27T23:00:00+01:00",
     "_identity": "wl|störung|L=1|D=2026-10-27|TK=bhf hütteldorf öbb ersatzbus für 80"
   },
   {
@@ -1146,6 +1146,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "66A: Busse halten Salvatorianerplatz",
+    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417",
+    "pubDate": "2026-10-27T04:40:23+01:00",
+    "starts_at": "2026-10-27T04:40:23+01:00",
+    "ends_at": "2026-10-28T01:00:00+01:00",
+    "_identity": "wl|störung|L=66A|D=2026-10-27|TK=busse halten salvatorianerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1234,66 +1246,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N20: Busse halten auf der Hauptfahrbahn",
-    "description": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2465b8f495aa09c30a1900425c8f402136474c4599d6f3677d4f46d051c9c4ae",
-    "pubDate": "2026-10-27T01:16:28+01:00",
-    "starts_at": "2026-10-27T01:16:28+01:00",
-    "ends_at": "2026-10-27T04:52:00+01:00",
-    "_identity": "wl|störung|L=N20|D=2026-10-27|TK=busse halten auf der hauptfahrbahn"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N20: Busse halten Bessemerstraße 1-3",
-    "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "f3142d4f32419f4772ec66186ea9d3101fb32548016973434774ef3660ca4236",
-    "pubDate": "2026-10-27T01:30:29+01:00",
-    "starts_at": "2026-10-27T01:30:29+01:00",
-    "ends_at": "2026-10-27T04:35:00+01:00",
-    "_identity": "wl|störung|L=N20|D=2026-10-27|TK=busse halten bessemerstrasse 1 3"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N20: Busse halten Donaufelder Straße 40-42",
-    "description": "Bauarbeiten\nBusse halten Donaufelder Straße 40-42",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "fbb2a8ec5e05f8147afc547298621b5aa410a4dd847efd2a4b79524c0dfd7460",
-    "pubDate": "2026-10-27T01:10:28+01:00",
-    "starts_at": "2026-10-27T01:10:28+01:00",
-    "ends_at": "2026-10-27T04:50:00+01:00",
-    "_identity": "wl|störung|L=N20|D=2026-10-27|TK=busse halten donaufelder strasse 40 42"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N49: Betrieb ab Johnstraße U",
-    "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "1963f82ac93d144e418b1738c647d7dac8d1d5dd078a20877ba74368c0ae79ae",
-    "pubDate": "2026-10-27T01:00:27+01:00",
-    "starts_at": "2026-10-27T01:00:27+01:00",
-    "ends_at": "2026-10-27T04:50:00+01:00",
-    "_identity": "wl|störung|L=N49|D=2026-10-27|TK=betrieb ab johnstrasse u"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N49: Betrieb ab Schweglerstraße",
-    "description": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2bb63e86a6366d616958e9c07d55e93631da5aea27e8aba60ef218fd8f38dca9",
-    "pubDate": "2026-10-27T01:00:27+01:00",
-    "starts_at": "2026-10-27T01:00:27+01:00",
-    "ends_at": "2026-10-27T05:00:00+01:00",
-    "_identity": "wl|störung|L=N49|D=2026-10-27|TK=betrieb ab schweglerstrasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N6: Busse halten Neilreichgasse 20-22",
     "description": "Bauarbeiten Busse halten Neilreichgasse 20-22",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1330,18 +1282,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N8: Busse halten Aßmayergasse 48 bei Linie 59A",
-    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "637f1a6ac83241b370a1aaf6804c2955c70ae12c21c23052d06685192de2962d",
-    "pubDate": "2026-10-27T00:45:25+01:00",
-    "starts_at": "2026-10-27T00:45:25+01:00",
-    "ends_at": "2026-10-27T04:45:00+01:00",
-    "_identity": "wl|störung|L=N8|D=2026-10-27|TK=busse halten assmayergasse 48 bei linie 59a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N8: Busse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
     "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1350,6 +1290,22 @@
     "starts_at": "2026-10-27T00:45:25+01:00",
     "ends_at": "2026-10-27T05:15:00+01:00",
     "_identity": "wl|störung|L=N8|D=2026-10-27|TK=busse halten assmayergasse nach flurschützstrasse bei linie 59a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Betriebsstörung",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
+    "pubDate": "2026-10-27T04:54:00+01:00",
+    "starts_at": "2026-10-27T04:54:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U4|D=2026-10-27|TK=u4 betriebsstörung",
+    "_wl_ids": [
+      "I20261027-0001"
+    ],
+    "_incident_start": "2026-10-27T04:54:00+01:00"
   },
   {
     "source": "Wiener Linien",
