@@ -1258,18 +1258,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Betriebsstörung",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "title": "U4: Verspätungen",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
-    "pubDate": "2026-10-27T04:54:00+01:00",
-    "starts_at": "2026-10-27T04:54:00+01:00",
+    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
+    "pubDate": "2026-10-27T05:54:00+01:00",
+    "starts_at": "2026-10-27T05:54:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U4|D=2026-10-27|TK=u4 betriebsstörung",
+    "_identity": "wl|störung|L=U4|D=2026-10-27|TK=u4 verspätungen",
     "_wl_ids": [
-      "I20261027-0001"
+      "I20261027-0003"
     ],
-    "_incident_start": "2026-10-27T04:54:00+01:00"
+    "_incident_start": "2026-10-27T05:54:00+01:00"
   },
   {
     "source": "Wiener Linien",
