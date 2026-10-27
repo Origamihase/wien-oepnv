@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1031898, ftazW_1018063, ftazW_628, ftazW_1017627, ftazW_1018634, ftazW_629, ftazW_1017126, ftazW_1016611, ftazW_1016925, ftazW_1031301, ftazW_1016926, ftazW_1031302"
+    "trafficInfoNameList": "ftazW_1031898, ftazW_1018063, ftazW_628, ftazW_1017627, ftazW_1018634, ftazW_629, ftazW_1017126, ftazW_1016611, ftazW_1016925, ftazW_1031301, ftazW_1016926, ftazW_1031302, ftazW_166, ftazW_1017125, ftazW_1016923, ftazW_771"
    }
   ],
   "poiCategoryGroups": [
@@ -3696,6 +3696,51 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "30.10.2026 00:45",
+     "ausVon": "29.10.2026 20:45",
+     "location": "1 Bahnsteig Richtung Prater Hauptallee, 62 und Badner Bahn Bahnsteig Richtung Oper, Karlsplatz - Ausgang Laurenzgasse",
+     "rbls": [
+      1751,
+      1751,
+      1714
+     ],
+     "reason": "",
+     "relatedLines": [
+      "62",
+      "1",
+      "LB"
+     ],
+     "station": "Laurenzgasse",
+     "status": "geplante Wartung",
+     "towards": "1 Prater Hauptallee, 62 Kärntner Ring, Oper/Karlsplatz U, WLB Baden"
+    },
+    "description": "1 Bahnsteig Richtung Prater Hauptallee, 62 und Badner Bahn Bahnsteig Richtung Oper, Karlsplatz - Ausgang Laurenzgasse",
+    "elevatorId": "LG 01",
+    "name": "ftazW_1016923",
+    "parentName": "ftazW_1016923",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "62",
+     "1",
+     "LB"
+    ],
+    "relatedStops": [
+     1751,
+     1751,
+     1714
+    ],
+    "time": {
+     "end": "2026-10-30T00:45:00.000+0100",
+     "start": "2026-10-29T20:45:00.000+0100"
+    },
+    "title": "Laurenzgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "29.10.2026 00:45",
      "ausVon": "28.10.2026 20:45",
      "location": "6 Bahnsteig Richtung Geiereckstraße, 18 Bahnsteig Richtung Schlachthausgasse, 62 und Badner Bahn Bahnsteig Richtung Kärnter Ring / Oper - Ausgang Eichenstraße",
@@ -3789,6 +3834,42 @@
      "start": "2026-10-29T01:15:00.000+0100"
     },
     "title": "Eichenstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "30.10.2026 00:45",
+     "ausVon": "29.10.2026 20:45",
+     "location": "Passage - Ausgang Secession",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U2",
+      "U1",
+      "U4"
+     ],
+     "station": "Karlsplatz",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Passage - Ausgang Secession",
+    "elevatorId": "KP 07",
+    "name": "ftazW_1017125",
+    "parentName": "ftazW_1017125",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2",
+     "U1",
+     "U4"
+    ],
+    "time": {
+     "end": "2026-10-30T00:45:00.000+0100",
+     "start": "2026-10-29T20:45:00.000+0100"
+    },
+    "title": "Karlsplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -4077,6 +4158,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "30.10.2026 00:45",
+     "ausVon": "29.10.2026 20:45",
+     "location": "U3 Mittelbahnsteig - Zwischengeschoss - Ausgang Markhofgasse",
+     "rbls": [
+      4916,
+      4901
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Schlachthausgasse",
+     "status": "geplante Wartung",
+     "towards": "U3 beide Richtungen"
+    },
+    "description": "U3 Mittelbahnsteig - Zwischengeschoss - Ausgang Markhofgasse",
+    "elevatorId": "SG 01",
+    "name": "ftazW_166",
+    "parentName": "ftazW_166",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4916,
+     4901
+    ],
+    "time": {
+     "end": "2026-10-30T00:45:00.000+0100",
+     "start": "2026-10-29T20:45:00.000+0100"
+    },
+    "title": "Schlachthausgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "28.10.2026 00:45",
      "ausVon": "27.10.2026 20:45",
      "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Wehrgasse",
@@ -4146,6 +4266,43 @@
      "start": "2026-10-28T01:15:00.000+0100"
     },
     "title": "Kettenbrückengasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "30.10.2026 00:45",
+     "ausVon": "29.10.2026 20:45",
+     "location": "Oberfläche - Passage - U2 Bahnsteig in Fahrtrichtung Karlsplatz",
+     "rbls": [
+      4211
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Museumsquartier",
+     "status": "geplante Wartung",
+     "towards": "U2 Karlsplatz"
+    },
+    "description": "Oberfläche - Passage - U2 Bahnsteig in Fahrtrichtung Karlsplatz",
+    "elevatorId": "BA 01",
+    "name": "ftazW_771",
+    "parentName": "ftazW_771",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4211
+    ],
+    "time": {
+     "end": "2026-10-30T00:45:00.000+0100",
+     "start": "2026-10-29T20:45:00.000+0100"
+    },
+    "title": "Museumsquartier"
    }
   ]
  },
