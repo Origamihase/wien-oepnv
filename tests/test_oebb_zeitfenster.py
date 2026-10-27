@@ -19,6 +19,8 @@ from __future__ import annotations
 
 from datetime import date
 
+import pytest
+
 from src import build_feed as bf
 
 GRAMATNEUSIEDL = (
@@ -77,3 +79,18 @@ def test_some_days_go_with_the_trains() -> None:
     )
     parts = bf._oebb_cannot_run_parts(out)
     assert parts is not None and parts.head.endswith("cannot run on certain days")
+
+
+@pytest.mark.parametrize(
+    ("model", "published"),
+    [
+        # The model's rendering of "(jeweils Samstag, Sonntag und Feiertag)".
+        ("from 01.06.2026 to 19.06.2026 (saturday, Sunday and holiday).",
+         "from 01.06.2026 to 19.06.2026 (Saturday, Sunday and holiday)."),
+        ("from monday to friday", "from Monday to Friday"),
+        # Lower-case months are English words; they stay.
+        ("trains may run", "trains may run"),
+    ],
+)
+def test_english_weekdays_take_a_capital(model: str, published: str) -> None:
+    assert bf._english_weekdays_capitalised(model) == published

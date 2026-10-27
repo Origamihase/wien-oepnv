@@ -3158,10 +3158,25 @@ _STREET_GENITIVE_SUFFIX = (
 #: ``test_known_gap_bahnsteig_is_shielded_as_if_it_were_a_street``): WL
 #: schreibt Haltestellen wie ``Cobenzl, Parkplatz``, die das
 #: Stationsverzeichnis nicht kennt und nur dieser Schutz heil lässt.
+#:
+#: Seit der Zweitprüfung vom 27.10.2026 auch die Gattungswörter, die WL in
+#: der Grundform schreibt (``Einstieg`` in 327 Texten seit Juli, ``Zustieg``,
+#: ``Umstieg``, ``Bussteig``, ``Campingplatz``), die übrigen Wörter auf
+#: ``-stieg`` mit einer Präposition davor, häufige Gattungswörter auf
+#: ``-platz``, ``-weg``, ``-markt`` und ``-damm`` und die Adverbien auf
+#: ``-wegs``: Im Genitiv las das Modell sie richtig ("closure of entry",
+#: "edge of the playground"), geschützt stand das deutsche Wort im
+#: englischen Text ("closure of Einstieg").
 _STREET_COMMON_NOUNS = (
-    r"[Bb]ahnsteig|[Gg]ehsteig|[Rr]adweg|[Gg]ehweg|[Ff]u(?:ß|ss)weg|[Uu]mweg"
-    r"|[Vv]orplatz|[Pp]arkplatz|[Ff]lohmarkt|[Bb]aumarkt|[Ww]eihnachtsmarkt"
-    r"|[Aa]dventmarkt|[Cc]hristkindlmarkt"
+    r"[Bb]ahnsteig|[Gg]ehsteig|[Bb]ussteig|[Rr]adweg|[Gg]ehweg|[Ff]u(?:ß|ss)weg|[Uu]mweg"
+    r"|(?:[Ee]in|[Aa]us|[Uu]m|[Zz]u|[Aa]uf|[Aa]b|[Üü]ber)stieg"
+    r"|[Rr]ettungsweg|[Ff]luchtweg|[Ss]chulweg|[Ff]ahrweg|[Zz]ufahrtsweg|[Zz]ugangsweg"
+    r"|[Ll]ieferweg|[Ss]eitenweg"
+    r"|[Vv]orplatz|[Pp]arkplatz|[Ss]tellplatz|[Aa]bstellplatz|[Hh]alteplatz"
+    r"|[Ss]pielplatz|[Ss]portplatz|[Aa]rbeitsplatz|[Cc]ampingplatz"
+    r"|[Ff]lohmarkt|[Bb]aumarkt|[Ss]upermarkt|[Ww]eihnachtsmarkt"
+    r"|[Aa]dventmarkt|[Cc]hristkindlmarkt|[Bb]ahndamm"
+    r"|[Uu]nterweg|[Dd]urchweg|[Kk]einesweg|[Hh]albweg|[Gg]eradeweg"
 )
 _STREET_NAME_BODY = (
     r"[A-ZÄÖÜ][A-Za-zÄÖÜäöüß\-.]{1,30}(?:" + _STREET_SUFFIX_CORE + r")\b"
@@ -5142,6 +5157,22 @@ def _cause_due_to(english: str) -> str:
     )
 
 
+# English writes its weekdays with a capital. The model now and then does
+# not: "(jeweils Samstag, Sonntag und Feiertag)" came back "(saturday, Sunday
+# and holiday)" (ÖBB, Wien Floridsdorf–Flughafen, June 2026; second check of
+# #2072 on 27.10.2026, since ÖBB's time window stays in the sentence). Only
+# the seven weekday names: lower-case "may" or "march" are English words.
+# Cached values get the same treatment on the way out, like ``_cause_due_to``.
+_LOWER_WEEKDAY_EN_RE: re.Pattern[str] = re.compile(
+    r"\b(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b"
+)
+
+
+def _english_weekdays_capitalised(english: str) -> str:
+    """*english* with "saturday" as "Saturday"."""
+    return _LOWER_WEEKDAY_EN_RE.sub(lambda m: m.group(0).capitalize(), english)
+
+
 def _respace_glued_placeholders(translated: str, masked_text: str) -> str:
     """A space between two placeholders the model glued that the source kept apart.
 
@@ -5245,7 +5276,7 @@ def _model_pass(
             nonce or "<kurz>",
         )
         return None, True
-    unmasked = _cause_due_to(_redirected_towards(
+    unmasked = _english_weekdays_capitalised(_cause_due_to(_redirected_towards(
         masked_text,
         _drop_article_before_street(
             _drop_article_before_line(
@@ -5255,7 +5286,7 @@ def _model_pass(
                 )
             )
         ),
-    ))
+    )))
     if _leftover_placeholder(german, unmasked):
         # The model mangled a placeholder so badly the exact-nonce unmask could
         # not restore it (dropped/translated nonce chars, lower-cased prefix,
@@ -6621,7 +6652,7 @@ def _cached_translation(
         if defect is None:
             # Cached before "due to" was the one cause preposition
             # (``_cause_due_to``); the model's words are otherwise kept.
-            return _cause_due_to(cached), True
+            return _english_weekdays_capitalised(_cause_due_to(cached)), True
         # Self-heal: a value persisted by an earlier build is unfit to serve
         # (see ``_cached_translation_defect``). Treat the hit as a MISS and
         # re-translate below so the defect is never served from cache.
