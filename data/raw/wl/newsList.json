@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_628, ftazW_1017627, ftazW_1018634, ftazW_629, ftazW_1017126, ftazW_1016611, ftazW_1016925, ftazW_1031301, ftazW_1016926, ftazW_1031302, ftazW_166, ftazW_1017125, ftazW_1016923, ftazW_771"
+    "trafficInfoNameList": "ftazW_628, ftazW_1017627, ftazW_1018634, ftazW_629, ftazW_1017126, ftazW_1016611, ftazW_1016925, ftazW_1031301, ftazW_1016926, ftazW_1031302, ftazW_166, ftazW_1017125, ftazW_1016923, ftazW_771, ftazW_735, ftazW_167, ftazW_772, ftazW_1016924"
    }
   ],
   "poiCategoryGroups": [
@@ -3741,6 +3741,51 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "30.10.2026 05:15",
+     "ausVon": "30.10.2026 01:15",
+     "location": "1 Bahnsteig Richtung Stefan Fadinger Platz, 62 Bahnsteig Richtung Lainz, Badner Bahn Bahnsteig Richtung Baden - Ausgang Wiedner Hauptstraße",
+     "rbls": [
+      1714,
+      1714,
+      1751
+     ],
+     "reason": "",
+     "relatedLines": [
+      "62",
+      "1",
+      "LB"
+     ],
+     "station": "Laurenzgasse",
+     "status": "geplante Wartung",
+     "towards": "62 Lainz, Wolkersbergenstraße, 1 Stefan-Fadinger-Platz, WLB Oper, Karlsplatz U"
+    },
+    "description": "1 Bahnsteig Richtung Stefan Fadinger Platz, 62 Bahnsteig Richtung Lainz, Badner Bahn Bahnsteig Richtung Baden - Ausgang Wiedner Hauptstraße",
+    "elevatorId": "LG 02",
+    "name": "ftazW_1016924",
+    "parentName": "ftazW_1016924",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "62",
+     "1",
+     "LB"
+    ],
+    "relatedStops": [
+     1714,
+     1714,
+     1751
+    ],
+    "time": {
+     "end": "2026-10-30T05:15:00.000+0100",
+     "start": "2026-10-30T01:15:00.000+0100"
+    },
+    "title": "Laurenzgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "29.10.2026 00:45",
      "ausVon": "28.10.2026 20:45",
      "location": "6 Bahnsteig Richtung Geiereckstraße, 18 Bahnsteig Richtung Schlachthausgasse, 62 und Badner Bahn Bahnsteig Richtung Kärnter Ring / Oper - Ausgang Eichenstraße",
@@ -3845,8 +3890,8 @@
      "rbls": [],
      "reason": "",
      "relatedLines": [
-      "U1",
       "U2",
+      "U1",
       "U4"
      ],
      "station": "Karlsplatz",
@@ -3861,8 +3906,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U1",
      "U2",
+     "U1",
      "U4"
     ],
     "time": {
@@ -4119,6 +4164,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "30.10.2026 05:15",
+     "ausVon": "30.10.2026 01:15",
+     "location": "U3 Mittelbahnsteig - Ausgang Schlachthausgasse - Ausgang Hainburger Weg",
+     "rbls": [
+      4916,
+      4901
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Schlachthausgasse",
+     "status": "geplante Wartung",
+     "towards": "U3 beide Richtungen"
+    },
+    "description": "U3 Mittelbahnsteig - Ausgang Schlachthausgasse - Ausgang Hainburger Weg",
+    "elevatorId": "SG 02",
+    "name": "ftazW_167",
+    "parentName": "ftazW_167",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4916,
+     4901
+    ],
+    "time": {
+     "end": "2026-10-30T05:15:00.000+0100",
+     "start": "2026-10-30T01:15:00.000+0100"
+    },
+    "title": "Schlachthausgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "28.10.2026 00:45",
      "ausVon": "27.10.2026 20:45",
      "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Wehrgasse",
@@ -4193,6 +4277,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "30.10.2026 05:15",
+     "ausVon": "30.10.2026 01:15",
+     "location": "U1 Mittelbahnsteig - Ausgang Praterstraße",
+     "rbls": [
+      4115,
+      4114
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Nestroyplatz",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Ausgang Praterstraße",
+    "elevatorId": "NP 01",
+    "name": "ftazW_735",
+    "parentName": "ftazW_735",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4115,
+     4114
+    ],
+    "time": {
+     "end": "2026-10-30T05:15:00.000+0100",
+     "start": "2026-10-30T01:15:00.000+0100"
+    },
+    "title": "Nestroyplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "30.10.2026 00:45",
      "ausVon": "29.10.2026 20:45",
      "location": "Oberfläche - Passage - U2 Bahnsteig in Fahrtrichtung Karlsplatz",
@@ -4223,6 +4346,43 @@
     "time": {
      "end": "2026-10-30T00:45:00.000+0100",
      "start": "2026-10-29T20:45:00.000+0100"
+    },
+    "title": "Museumsquartier"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "30.10.2026 05:15",
+     "ausVon": "30.10.2026 01:15",
+     "location": "Oberfläche - Passage - U2 Bahnsteig in Fahrtrichtung Seestadt",
+     "rbls": [
+      4204
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Museumsquartier",
+     "status": "geplante Wartung",
+     "towards": "U2 Seestadt"
+    },
+    "description": "Oberfläche - Passage - U2 Bahnsteig in Fahrtrichtung Seestadt",
+    "elevatorId": "BA 02",
+    "name": "ftazW_772",
+    "parentName": "ftazW_772",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4204
+    ],
+    "time": {
+     "end": "2026-10-30T05:15:00.000+0100",
+     "start": "2026-10-30T01:15:00.000+0100"
     },
     "title": "Museumsquartier"
    }
