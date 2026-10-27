@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_628, ftazW_1017627, ftazW_1018634, ftazW_629, ftazW_1017126, ftazW_1016611, ftazW_1016925, ftazW_1031301, ftazW_1016926, ftazW_1031302, ftazW_166, ftazW_1017125, ftazW_1016923, ftazW_771, ftazW_735, ftazW_167, ftazW_772, ftazW_1016924"
+    "trafficInfoNameList": "ftazW_629, ftazW_1017126, ftazW_1016611, ftazW_1016925, ftazW_1031301, ftazW_1016926, ftazW_1031302, ftazW_166, ftazW_1017125, ftazW_1016923, ftazW_771, ftazW_735, ftazW_167, ftazW_772, ftazW_1016924"
    }
   ],
   "poiCategoryGroups": [
@@ -3940,94 +3940,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "28.10.2026 00:45",
-     "ausVon": "27.10.2026 20:45",
-     "location": "1 Bahnsteig Richtung Prater Hauptallee, 18 Bahnsteig Richtung Schlachthausgasse, 62 und Badner Bahn Bahnsteig Richtung Oper, Karlsplatz - Ausgang Landgutgasse",
-     "rbls": [
-      1715,
-      849,
-      831,
-      831
-     ],
-     "reason": "",
-     "relatedLines": [
-      "18",
-      "62",
-      "1",
-      "LB"
-     ],
-     "station": "Kliebergasse",
-     "status": "geplante Wartung",
-     "towards": "WLB Baden, 18 Burggasse-Stadthalle, 62 Kärntner Ring, Oper/Karlsplatz U, 1 Prater Hauptallee"
-    },
-    "description": "1 Bahnsteig Richtung Prater Hauptallee, 18 Bahnsteig Richtung Schlachthausgasse, 62 und Badner Bahn Bahnsteig Richtung Oper, Karlsplatz - Ausgang Landgutgasse",
-    "elevatorId": "KL 03",
-    "name": "ftazW_1017627",
-    "parentName": "ftazW_1017627",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "18",
-     "62",
-     "1",
-     "LB"
-    ],
-    "relatedStops": [
-     1715,
-     849,
-     831,
-     831
-    ],
-    "time": {
-     "end": "2026-10-28T00:45:00.000+0100",
-     "start": "2026-10-27T20:45:00.000+0100"
-    },
-    "title": "Kliebergasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "28.10.2026 00:45",
-     "ausVon": "27.10.2026 20:45",
-     "location": "1 Bahnsteig Richtung Prater Hauptallee, 6 Bahnsteig Richtung Burggasse - Ausgang Matzleinsdorfer Platz",
-     "rbls": [
-      426
-     ],
-     "reason": "",
-     "relatedLines": [
-      "6",
-      "1"
-     ],
-     "station": "Matzleinsdorfer Platz",
-     "status": "geplante Wartung",
-     "towards": "6 Geiereckstraße, 1 Prater Hauptallee"
-    },
-    "description": "1 Bahnsteig Richtung Prater Hauptallee, 6 Bahnsteig Richtung Burggasse - Ausgang Matzleinsdorfer Platz",
-    "elevatorId": "MP 04",
-    "name": "ftazW_1018634",
-    "parentName": "ftazW_1018634",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "6",
-     "1"
-    ],
-    "relatedStops": [
-     426
-    ],
-    "time": {
-     "end": "2026-10-28T00:45:00.000+0100",
-     "start": "2026-10-27T20:45:00.000+0100"
-    },
-    "title": "Matzleinsdorfer Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "29.10.2026 00:45",
      "ausVon": "28.10.2026 20:45",
      "location": "18 Bahnsteig Richtung Schlachthausgasse - Ausgang Äußerer Wiedner Gürtel",
@@ -4175,43 +4087,6 @@
      "start": "2026-10-30T01:15:00.000+0100"
     },
     "title": "Schlachthausgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "28.10.2026 00:45",
-     "ausVon": "27.10.2026 20:45",
-     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Wehrgasse",
-     "rbls": [
-      4419
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Kettenbrückengasse",
-     "status": "geplante Wartung",
-     "towards": "U4 Heiligenstadt"
-    },
-    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Wehrgasse",
-    "elevatorId": "KG 01",
-    "name": "ftazW_628",
-    "parentName": "ftazW_628",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4419
-    ],
-    "time": {
-     "end": "2026-10-28T00:45:00.000+0100",
-     "start": "2026-10-27T20:45:00.000+0100"
-    },
-    "title": "Kettenbrückengasse"
    },
    {
     "alertCause": "undefined alert cause",
