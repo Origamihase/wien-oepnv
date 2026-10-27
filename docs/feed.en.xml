@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 27 Oct 2026 10:00:59 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 10:30:47 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U6: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
+      <pubDate>Tue, 27 Oct 2026 10:22:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 27 Oct 2026 10:22:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 27 Oct 2026 10:22:00 +0100</ext:starts_at>
+      <description>The U6 line currently runs between the stations Michelbeuern - AKH and Währinger Straße - Volksoper in both directions on track 2. Expected until 10:50 … [Since 10:22]</description>
+      <content:encoded><![CDATA[The U6 line currently runs between the stations Michelbeuern - AKH and Währinger Straße - Volksoper in both directions on track 2. Expected until 10:50 …<br/>[Since 10:22]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[27: Delays]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,8 +33,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 27 Oct 2026 09:52:00 +0100</ext:first_seen>
       <ext:starts_at>Tue, 27 Oct 2026 09:52:00 +0100</ext:starts_at>
-      <description>Service obstruction towards Strebersdorf, Meriangasse. Expected until 10:30. Reason: defective vehicle in the stop area of Koloniestraße. [Since 09:52]</description>
-      <content:encoded><![CDATA[Service obstruction towards Strebersdorf, Meriangasse. Expected until 10:30. Reason: defective vehicle in the stop area of Koloniestraße.<br/>[Since 09:52]]]></content:encoded>
+      <description>Service obstruction defective train. Use line 25 in Tokiostraße; trains stop at the stop of line 31. [Since 09:52]</description>
+      <content:encoded><![CDATA[Service obstruction defective train. Use line 25 in Tokiostraße; trains stop at the stop of line 31.<br/>[Since 09:52]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[40A: Construction works]]></title>
@@ -137,20 +150,6 @@
       <georss:line>48.277325 16.448371 48.302927 16.564668</georss:line>
       <description>Due to construction works, the S1 train 23626 cannot run on certain days between Deutsch Wagram station and Gänserndorf station and between Wien Leopoldau station … [Until 28.11.]</description>
       <content:encoded><![CDATA[Due to construction works, the S1 train 23626 cannot run on certain days between Deutsch Wagram station and Gänserndorf station and between Wien Leopoldau station …<br/>[Until 28.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A/78A: Roadworks]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">829aed6b63ca00dc86bdde6d44ea64c5a4a23433aa5b8e7bb064705f27b2e81f</guid>
-      <pubDate>Wed, 14 Oct 2026 16:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 00:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 02 Nov 2026 01:00:00 +0100</ext:ends_at>
-      <description>Due to roadworks at the intersection of Meiereistraße / Stephanie-Endres-Straße there are diversions. [Until Mon 02.11.]</description>
-      <content:encoded><![CDATA[Due to roadworks at the intersection of Meiereistraße / Stephanie-Endres-Straße there are diversions.<br/>[Until Mon 02.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
