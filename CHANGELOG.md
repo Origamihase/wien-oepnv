@@ -10,6 +10,26 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Jules-Audits 26. und 27.10.2026: Straßennamen im Genitiv (2026-10-27)**:
+  Beide Audits melden denselben Fund, er stimmt: „Wegen einer angeordneten
+  Streckensperre des Algenwegs wird die Linie 89A umgeleitet.“ stand im
+  EN-Feed als „… line closure of the algae path …“. Das `\b` hinter dem
+  Straßensuffix ließ die Genitiv-Endung („-s“, „-es“) nicht zu, der Name
+  blieb ungeschützt. Über alle 13.999 Quelltexte seit Juli betrifft das
+  fünf Namen in zwölf Texten (Algenwegs, Aumannplatzes, Tesarekplatzes,
+  Margaretengürtels, Universitätsrings), im veröffentlichten Feed nur die
+  89A-Meldung. Neu: Ein Genitiv-Zweig im Straßenmuster schützt den Namen,
+  der englische Text nennt ihn in der Grundform („closure of Algenweg“,
+  `_street_names_nominative`). Gattungswörter mit Straßensuffix im Genitiv
+  („Sanierung des Bahnsteigs“ → „renovation of the platform“, „eines
+  Flohmarktes“) bleiben übersetzbar wie bisher (`_STREET_COMMON_NOUNS`);
+  die Grundform dieser Wörter bleibt unverändert geschützt, weil WL
+  Haltestellen wie „Cobenzl, Parkplatz“ schreibt. Übersetzungs-Epoche 29.
+  Abgleich alt gegen neu: Modelleingaben aller Quell- und 5.269 Feedtexte
+  seit Juli ändern sich nur an diesen Namen; das echte Modell liest in
+  allen acht betroffenen Sätzen den Namen richtig; der Neubau aus dem
+  Cache ändert im DE-Feed nichts und im EN-Feed nur die 89A-Meldung.
+
 * **Zweitprüfung der Umsetzungen #2066 bis #2071 (2026-10-26)**: Alle
   9.654 WL-, 932 ÖBB- und 156 Baustellen-Texte seit Juli durch den
   Formatierer, Stand vor #2066 gegen heute: es ändern sich nur die

@@ -2857,7 +2857,13 @@ _TRANSLATION_MODEL_REVISION = "1a922f3b32a8e809e17a47d4b32142d8105924e5"
 #       "there are diversions" (operator wish: one word for the same thing
 #       across sources). Cached under 27: "Due to roadworks in … intersection,
 #       there are redirections."
-_TRANSLATION_CACHE_EPOCH = 28
+#  29 — Jules audits 26. and 27.10.2026: a street name in the genitive
+#       ("Streckensperre des Algenwegs") was not shielded and went through
+#       the model; it is now shielded and restored in its base form. Cached
+#       under 28: "Due to an ordered line closure of the algae path, line 89A
+#       is redirected."; the source digest is unchanged, so only a bump
+#       evicts it.
+_TRANSLATION_CACHE_EPOCH = 29
 
 # Static lookup for the German words of the bracketed ``[…]`` time line (see
 # ``format_local_times``). Translating these via the ML model would be
@@ -3131,8 +3137,36 @@ _STREET_ATTRIBUTE = (
 #: meist ein Leerzeichen, und zwischen zwei Nicht-Wort-Zeichen gibt es
 #: keine Wortgrenze — ein nachgestelltes ``\b`` würde den Zweig nie greifen
 #: lassen.
+#:
+#: Der Genitiv der männlichen und sächlichen Suffixe (``Algenwegs``,
+#: ``Aumannplatzes``, ``Margaretengürtels``) ist ein eigener Zweig: Das
+#: ``\b`` hinter dem Suffix ließ ``des Algenwegs`` ungeschützt, das Modell
+#: schrieb "of the algae path" (89A, Jules-Audits 26. und 27.10.2026).
+#: :func:`_street_names_nominative` stellt im englischen Text den Namen in
+#: der Grundform wieder her, wie er am Straßenschild steht.
+_STREET_GENITIVE_SUFFIX = (
+    r"(?:[Ww]eg|[Pp]latz|[Mm]arkt|[Rr]ing|[Ss]tieg|[Ss]teig|[Dd]amm)(?:es|s)"
+    r"|(?:[Kk]ai|[Gg]raben|[Gg]ürtel)s"
+)
+#: Gattungswörter mit einem Straßensuffix: ``Bahnsteig``, ``Gehsteig``,
+#: ``Radweg``, ``Flohmarkt``, ``Bahnhofsvorplatz``. Im Genitiv gingen sie
+#: schon immer durchs Modell und lasen richtig ("Sanierung des Bahnsteigs"
+#: → "renovation of the platform", "eines Flohmarktes" → "a flea market");
+#: der Genitiv-Zweig lässt sie dort, auch am Ende eines Kompositums
+#: (``Ersatzgehsteiges``). Eine GESCHLOSSENE Liste wie
+#: ``_STREET_ER_EXCLUDED``. Die Grundform bleibt, wie sie war (siehe
+#: ``test_known_gap_bahnsteig_is_shielded_as_if_it_were_a_street``): WL
+#: schreibt Haltestellen wie ``Cobenzl, Parkplatz``, die das
+#: Stationsverzeichnis nicht kennt und nur dieser Schutz heil lässt.
+_STREET_COMMON_NOUNS = (
+    r"[Bb]ahnsteig|[Gg]ehsteig|[Rr]adweg|[Gg]ehweg|[Ff]u(?:ß|ss)weg|[Uu]mweg"
+    r"|[Vv]orplatz|[Pp]arkplatz|[Ff]lohmarkt|[Bb]aumarkt|[Ww]eihnachtsmarkt"
+    r"|[Aa]dventmarkt|[Cc]hristkindlmarkt"
+)
 _STREET_NAME_BODY = (
     r"[A-ZÄÖÜ][A-Za-zÄÖÜäöüß\-.]{1,30}(?:" + _STREET_SUFFIX_CORE + r")\b"
+    r"|(?!(?:[A-ZÄÖÜ][a-zäöüß]*)?(?:" + _STREET_COMMON_NOUNS + r")(?:es|s)\b)"
+    r"[A-ZÄÖÜ][A-Za-zÄÖÜäöüß\-.]{1,30}(?:" + _STREET_GENITIVE_SUFFIX + r")\b"
     r"|[A-ZÄÖÜ][A-Za-zÄÖÜäöüß\-]{1,30}[Ss]tr\b\.?"
 )
 #: Ein freistehender Straßenname mit einem Ortsadjektiv auf ``-er`` davor:
@@ -3148,6 +3182,9 @@ _STREET_NAME_BODY = (
 _STREET_WORD = (
     r"(?:Straße|Strasse|Gasse|Platz|Gürtel|Ring|Allee|Weg|Brücke|Kai|Lände"
     r"|Zeile|Markt|Damm|Berg|Anger|Promenade|Graben|Steig|Schleife)\b|Str\."
+    # Genitive after an "-er" name: "des Währinger Gürtels", "des
+    # Floridsdorfer Marktes".
+    r"|(?:Platz|Ring|Weg|Markt|Damm|Steig)(?:es|s)\b|(?:Gürtel|Kai|Graben)s\b"
 )
 _STREET_ER_EXCLUDED = (
     r"Der|Dieser|Jener|Jeder|Welcher|Mancher|Solcher|Aller|Keiner|Einer"
@@ -4322,6 +4359,30 @@ _ARTICLE_BEFORE_STREET_RE: re.Pattern[str] = re.compile(
 )
 
 
+# German declines its street names, English does not: "Streckensperre des
+# Algenwegs" is "closure of Algenweg", the name as the street sign spells it.
+# The masker shields the genitive form whole (``_STREET_GENITIVE_SUFFIX``),
+# so the restore hands back the base form. Only a surface whose base form is
+# itself a street name by :data:`_STREET_SUFFIX_RE` changes.
+_STREET_GENITIVE_END_RE: re.Pattern[str] = re.compile(
+    r"(?:(?<=[Ww]eg)|(?<=[Mm]arkt)|(?<=[Ss]tieg)|(?<=[Ss]teig)|(?<=[Dd]amm)"
+    r"|(?<=[Rr]ing))(?:es|s)$|(?<=[Pp]latz)es$"
+    r"|(?:(?<=[Kk]ai)|(?<=[Gg]raben)|(?<=[Gg]ürtel))s$"
+)
+
+
+def _street_names_nominative(mapping: dict[str, str]) -> dict[str, str]:
+    """Return *mapping* with genitive street names in their base form."""
+    result = dict(mapping)
+    for placeholder, surface in mapping.items():
+        if not placeholder.startswith("XENT") or not _STREET_SUFFIX_RE.fullmatch(surface):
+            continue
+        base = _STREET_GENITIVE_END_RE.sub("", surface)
+        if base != surface and _STREET_SUFFIX_RE.fullmatch(base):
+            result[placeholder] = base
+    return result
+
+
 def _drop_article_before_street(text: str) -> str:
     """Drop the definite article in front of a German street or square name."""
     return _ARTICLE_BEFORE_STREET_RE.sub("", text)
@@ -5188,7 +5249,10 @@ def _model_pass(
         masked_text,
         _drop_article_before_street(
             _drop_article_before_line(
-                _fix_glossary_articles(_unmask_entities(translated, mapping), mapping)
+                _fix_glossary_articles(
+                    _unmask_entities(translated, _street_names_nominative(mapping)),
+                    mapping,
+                )
             )
         ),
     ))
