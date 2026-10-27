@@ -1095,7 +1095,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "27: Beschädigte Oberleitung durch einen LKW",
-    "description": "Linie 27: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 20:00 Uhr. Grund: Fahrleitungsgebrechen durch LKW im Bereich Prager Straße # Nordbrücke.",
+    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "b50e2caeb1b2394908f463b8ec59b4d62e011f546a015833fefab91132ec3d87",
     "pubDate": "2026-10-27T19:15:00+01:00",
@@ -1198,18 +1198,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60: Fremder Verkehrsunfall",
+    "title": "60: Falschparker",
     "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "fa13a977753886fe597c353a144a3e24d7a3675a48c2729c300f9be73e720a96",
-    "pubDate": "2026-10-27T17:49:00+01:00",
-    "starts_at": "2026-10-27T17:49:00+01:00",
+    "guid": "0c6fac2a8f34464f42aa5982eb08b79eef732903ec1dc89348c10739df0b8093",
+    "pubDate": "2026-10-27T19:32:00+01:00",
+    "starts_at": "2026-10-27T19:32:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=60|D=2026-10-27|TK=60 fremder verkehrsunfall",
+    "_identity": "wl|störung|L=60|D=2026-10-27|TK=falschparker",
     "_wl_ids": [
-      "I20261027-0030"
+      "I20261027-0034"
     ],
-    "_incident_start": "2026-10-27T17:49:00+01:00"
+    "_incident_start": "2026-10-27T19:32:00+01:00"
   },
   {
     "source": "Wiener Linien",

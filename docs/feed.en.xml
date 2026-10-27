@@ -8,10 +8,23 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 27 Oct 2026 19:30:48 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 20:01:00 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[27: Damaged overhead line by a truck]]></title>
+      <title><![CDATA[60: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">0c6fac2a8f34464f42aa5982eb08b79eef732903ec1dc89348c10739df0b8093</guid>
+      <pubDate>Tue, 27 Oct 2026 19:32:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 27 Oct 2026 19:32:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 27 Oct 2026 19:32:00 +0100</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 19:32]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 19:32]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[27: Power failure]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">deee1babf5dc7b811f812928e2030700a354c24599a97fdb5fb4b755a5527310</guid>
       <pubDate>Tue, 27 Oct 2026 19:13:49 +0100</pubDate>
@@ -20,8 +33,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 27 Oct 2026 19:30:48 +0100</ext:first_seen>
       <ext:starts_at>Tue, 27 Oct 2026 19:20:20 +0100</ext:starts_at>
-      <description>Service obstruction in both directions. Expected until 20:00. Reason: overhead-line fault by truck in the area of Prager Straße / Nordbrücke. [Since 19:13]</description>
-      <content:encoded><![CDATA[Service obstruction in both directions. Expected until 20:00. Reason: overhead-line fault by truck in the area of Prager Straße / Nordbrücke.<br/>[Since 19:13]]]></content:encoded>
+      <description>Damaged overhead line by a truck; service obstruction signal disruption. Use line 25 in Tokiostraße; trains stop at the stop of line 31. [Since 19:13]</description>
+      <content:encoded><![CDATA[Damaged overhead line by a truck; service obstruction signal disruption. Use line 25 in Tokiostraße; trains stop at the stop of line 31.<br/>[Since 19:13]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Contamination]]></title>
@@ -35,19 +48,6 @@
       <ext:starts_at>Tue, 27 Oct 2026 18:17:00 +0100</ext:starts_at>
       <description>Irregular intervals in both directions. Reason: contamination. [Since 18:17]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 18:17]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60: Third-party traffic accident]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">fa13a977753886fe597c353a144a3e24d7a3675a48c2729c300f9be73e720a96</guid>
-      <pubDate>Tue, 27 Oct 2026 17:49:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 27 Oct 2026 17:49:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 27 Oct 2026 17:49:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 17:49]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 17:49]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[40A: Construction works]]></title>
