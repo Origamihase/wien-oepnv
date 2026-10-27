@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261008-0007, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R5815-671, R2025-671, R1474-412, R1448-412, R1472-149, R1449-149, R1476-149, R1475-149, R1474-149, R1473-149, R1448-149, R1446-149, R1447-149, R1445-149, R36-152, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2373-127, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R2373-126, R2378-627, R2558-125, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R1448-549, R1474-549, R2371-520, R2372-520, R2379-520, R2378-520, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R5815-671, R2025-671, R1445-149, R1474-412, R1448-412, R1472-149, R1476-149, R1475-149, R1449-149, R1474-149, R1473-149, R1447-149, R1448-149, R1446-149, R36-152, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2372-125, R2373-127, R2373-126, R2380-627, R2345-127, R2372-627, R2420-411, R2379-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2373-125, R2558-125, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1448-549, R1474-549, R2371-520, R2372-520, R2379-520, R2378-520, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -211,60 +211,6 @@
      "start": "2026-09-25T08:55:00.000+0200"
     },
     "title": "26E: Gleisbauarbeiten"
-   },
-   {
-    "alertCause": "construction work",
-    "alertCauseId": 45,
-    "attributes": {
-     "relatedLineTypes": {
-      "1": "ptTram"
-     }
-    },
-    "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Weichen Sie ersatzweise auf die Linien 7A oder 65A aus. Voraussichtliche Dauer: Mitte Dezember 2026. Grund: Gleisbauarbeiten im Bereich Windtenstraße.",
-    "descriptionHTML": "Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.<br> <br>Weichen Sie ersatzweise auf die Linien 7A oder 65A aus.<br><br>Voraussichtliche Dauer: Mitte Dezember 2026.<br><br>Grund: Gleisbauarbeiten im Bereich Windtenstraße.",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.<br> <br>Weichen Sie ersatzweise auf die Linien 7A oder 65A aus.<br><br>Voraussichtliche Dauer: Mitte Dezember 2026.<br><br>Grund: Gleisbauarbeiten im Bereich Windtenstraße.",
-       "descriptionPlain": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Weichen Sie ersatzweise auf die Linien 7A oder 65A aus. Voraussichtliche Dauer: Mitte Dezember 2026. Grund: Gleisbauarbeiten im Bereich Windtenstraße.",
-       "title": "1: Gleisbauarbeiten"
-      }
-     }
-    ],
-    "location": "Windtenstraße",
-    "name": "I20261008-0007",
-    "owner": "WL",
-    "parentName": "I20261008-0007",
-    "pictures": [
-     {
-      "description": "Skizze",
-      "order": 0,
-      "url": "https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/1_Umleitung_Reumannplatz.png"
-     }
-    ],
-    "priority": "1",
-    "reasonId": 27,
-    "reasonName": "Gleisbauarbeiten",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 101,
-      "lineName": "1",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-08T07:52:00.000+0200",
-     "end": "2026-12-05T01:00:00.000+0100",
-     "lastUpdate": "2026-10-20T16:28:00.000+0200",
-     "resume": "2026-10-20T16:28:00.000+0200",
-     "start": "2026-10-27T04:00:00.000+0100"
-    },
-    "title": "1: Gleisbauarbeiten"
    },
    {
     "alertCause": "construction work",
@@ -1093,29 +1039,6 @@
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
-    "name": "R1974-566",
-    "owner": "WL",
-    "parentName": "R1974-566",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N66"
-    ],
-    "relatedStops": [
-     1974
-    ],
-    "time": {
-     "end": "2026-10-27T04:20:00.000+0100",
-     "start": "2026-10-27T01:00:26.000+0100"
-    },
-    "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
    {
     "alertCause": "undefined alert cause",
