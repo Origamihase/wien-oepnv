@@ -10,6 +10,39 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Zweitprüfung der Umsetzungen #2072 bis #2075 (2026-10-27)**: Alle
+  933 ÖBB-Texte an 14 Stichtagen, Stand vor #2072 gegen heute: es ändern
+  sich die acht Anzeigen, die #2072 nennt, sonst keine. Die Modelleingaben
+  aller 13.999 Quelltexte seit Juli, Stand vor #2075 gegen heute: zwölf
+  Texte mit den fünf Namen aus #2075. Die neun gestrichenen Ausfallzeilen
+  gegen den Verlauf von `pending_trips.json` und `recently_finalised.json`:
+  122 Zugnummer-Einträge vom 19.05. bis 07.07.2026, 113 mit Linieneintrag
+  zur selben Minute in dieselbe Richtung, alle neun Zeilen Zwillinge. Der
+  Neubau aus dem Cache ist gleich dem Neubau mit `main`.
+  - *Gattungswörter im Genitiv:* Der Genitiv-Zweig aus #2075 schützte jedes
+    Wort auf „-wegs“, „-platzes“, „-stiegs“ usw., das nicht in der
+    geschlossenen Liste stand. Das echte Modell las „Sperre des Einstiegs“
+    als „closure of entry“, geschützt stand „closure of Einstieg“ im
+    englischen Text, ebenso „of Spielplatz“, „along Bahndamm“, „of Bussteig
+    B“. Die Liste `_STREET_COMMON_NOUNS` nennt jetzt auch die Wörter, die WL
+    in der Grundform schreibt (Einstieg in 327 Texten seit Juli, Zustieg,
+    Umstieg, Bussteig, Campingplatz), die übrigen Wörter auf „-stieg“ mit
+    einer Präposition davor, häufige Gattungswörter auf „-platz“, „-weg“,
+    „-markt“ und „-damm“ und die Adverbien auf „-wegs“. Kein Quelltext seit
+    Juli ändert seine Modelleingabe; die Grundform bleibt geschützt wie
+    bisher.
+  - *Wochentage klein:* Seit #2072 bleibt ÖBBs Zeitfenster im Satz, und das
+    Modell schrieb „(jeweils Samstag, Sonntag und Feiertag)“ als „(saturday,
+    Sunday and holiday)“ (Wien Floridsdorf–Flughafen, Juni 2026). Die sieben
+    englischen Wochentage stehen nach dem Modell und beim Lesen aus dem
+    Cache groß (`_english_weekdays_capitalised`); kleine Monatsnamen bleiben,
+    „may“ ist ein englisches Wort. Im EN-Feed seit Juli stand nie ein
+    kleiner Wochentag, daher kein Epoch-Bump. Gramatneusiedl (ab 31.10.)
+    liest im echten Modell „no local trains can run: from Saturday 23:15 to
+    Sunday 04:40 and from Sunday 23:15 to Monday 04:40.“
+  Tests in `tests/test_street_name_masking.py` und
+  `tests/test_oebb_zeitfenster.py`.
+
 * **Jules-Audits 26. und 27.10.2026: Straßennamen im Genitiv (2026-10-27)**:
   Beide Audits melden denselben Fund, er stimmt: „Wegen einer angeordneten
   Streckensperre des Algenwegs wird die Linie 89A umgeleitet.“ stand im

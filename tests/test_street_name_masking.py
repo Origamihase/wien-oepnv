@@ -226,6 +226,18 @@ def test_genitive_street_names_are_shielded_whole(phrase: str, name: str) -> Non
         "im Bereich des Ersatzgehsteiges",
         "Sperre des Bahnhofsvorplatzes",
         "Sperre des Radweges",
+        # Second check of #2075 (27.10.2026): words WL writes in the base
+        # form, and frequent common nouns; shielded, the English kept the
+        # German word ("closure of Einstieg", "edge of Spielplatz").
+        "Wegen einer Sperre des Einstiegs",
+        "Sperre des Zustiegs",
+        "im Bereich des Bussteigs B",
+        "am Rand des Spielplatzes",
+        "im Bereich des Arbeitsplatzes",
+        "entlang des Bahndamms",
+        "Sperre des Rettungsweges",
+        "vor dem Eingang des Supermarktes",
+        "Unterwegs",
     ],
 )
 def test_genitive_common_nouns_stay_translatable(phrase: str) -> None:
