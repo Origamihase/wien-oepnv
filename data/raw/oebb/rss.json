@@ -1233,11 +1233,19 @@
    "{http://purl.org/dc/elements/1.1/}creator": ""
   },
   {
-   "description": "28.10.2026<br/><br/>Wegen eines Rettungseinsatzes sind zwischen Kufstein Bahnhof und Salzburg Hbf derzeit keine Fahrten möglich. Einzelne Fernverkehrszüge werden über Zell am See umgeleitet. Planen Sie in diesem Bereich derzeit 90 Minuten mehr Reisezeit ein. Wir bitten um Entschuldigung. ",
+   "description": "28.10.2026<br/><br/>Wegen eines Rettungseinsatzes <b>waren</b> zwischen Kufstein Bahnhof und Salzburg Hbf <b>bis </b><b>20:01 Uhr</b> keine Fahrten möglich. Planen Sie derzeit noch bis zu<b> 30 Minuten </b>mehr Reisezeit ein.<br>Wir bitten um Entschuldigung. ",
    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&922626",
    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
-   "pubDate": "Wed, 28 Oct 2026 19:58:13 +0100",
-   "title": "Update 1 (28.10.2026 19:58) Streckenunterbrechung Deutsches Eck: Salzburg Hbf - Freilassing (Oberbayern) Bahnhof",
+   "pubDate": "Wed, 28 Oct 2026 20:04:54 +0100",
+   "title": "Update 2 (28.10.2026 20:04) Aufhebung Streckenunterbrechung: Salzburg Hbf - Freilassing (Oberbayern) Bahnhof",
+   "{http://purl.org/dc/elements/1.1/}creator": ""
+  },
+  {
+   "description": "28.10.2026<br/><br/>Wegen eines Hindernisses im Gleisbereich sind zwischen <b>Mauerkirchen Bahnhof</b> und <b>Braunau/Inn Bahnhof</b> <b>derzeit keine Fahrten</b> möglich. Über die Dauer der Unterbrechung kann derzeit noch keine Angabe gemacht werden. Die <b>Züge warten</b> die Sperre <b>vorerst ab</b>.<br>Sobald uns weitere Informationen vorliegen, informieren wir Sie.<br>Wir bitten um Entschuldigung. ",
+   "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&922638",
+   "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+   "pubDate": "Wed, 28 Oct 2026 20:14:30 +0100",
+   "title": "Streckenunterbrechung: Mauerkirchen Bahnhof - Braunau/Inn Bahnhof",
    "{http://purl.org/dc/elements/1.1/}creator": ""
   }
  ]
