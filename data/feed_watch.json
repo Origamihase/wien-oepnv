@@ -1,12 +1,27 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-28T15:01:26.598734+00:00",
- "built": "2026-10-28T16:01:13+01:00",
- "findings": [],
- "rules": {},
+ "updated": "2026-10-28T15:31:00.854907+00:00",
+ "built": "2026-10-28T16:30:47+01:00",
+ "findings": [
+  {
+   "rule": "quelle-ohne-antwort",
+   "title": "Quelle ohne frische Antwort",
+   "rank": "Quelle",
+   "subject": "Stammstrecke (VAO)",
+   "text": "letzter erfolgreicher Abruf 28.10. 14:30, vor 2 h 00 min; letzter Versuch 16:30: error ValueError"
+  }
+ ],
+ "rules": {
+  "quelle-ohne-antwort": {
+   "since": "2026-10-28T15:31:00.854907+00:00",
+   "last": "2026-10-28T15:31:00.854907+00:00",
+   "held_runs": 0,
+   "issue": 2080
+  }
+ },
  "previous_feed": {
-  "built": "2026-10-28T16:01:13+01:00",
+  "built": "2026-10-28T16:30:47+01:00",
   "items": [
    {
     "title": "60: Verkehrsunfall",
@@ -52,26 +67,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-21T15:02:12.154400+00:00",
-   "raw": {
-    "wl-stoerungen": 97,
-    "wl-hinweise": 95,
-    "oebb": 167,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 17,
-    "oebb": 140,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 11,
-    "wl": 116
-   }
-  },
   {
    "t": "2026-10-21T15:32:03.271159+00:00",
    "raw": {
@@ -6791,17 +6786,37 @@
     "oebb": 9,
     "wl": 110
    }
+  },
+  {
+   "t": "2026-10-28T15:31:00.854907+00:00",
+   "raw": {
+    "wl-stoerungen": 90,
+    "wl-hinweise": 82,
+    "oebb": 156,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 19
+   },
+   "discarded": {
+    "wl": 11,
+    "oebb": 131,
+    "baustellen": 65
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 111
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-28T15:01:26.598734+00:00"
+   "last_ok": "2026-10-28T15:31:00.854907+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-28T15:01:26.598734+00:00"
+   "last_ok": "2026-10-28T15:31:00.854907+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-28T15:01:26.598734+00:00"
+   "last_ok": "2026-10-28T15:31:00.854907+00:00"
   }
  }
 }

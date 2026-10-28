@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261028-0020-F01, I20260917-0012, I20260922-0032, I20260925-0011, I20261028-0019, I20261028-0021, I20260909-0007, I20261028-0015-F02, I20261020-0029"
+    "trafficInfoNameList": "I20261028-0020-F01, I20260917-0012, I20260922-0032, I20260925-0011, I20261028-0019, I20260909-0007, I20261028-0015-F02, I20261020-0029, I20261028-0021-F01"
    },
    {
     "id": 3,
@@ -406,19 +406,19 @@
       "60": "ptTram"
      }
     },
-    "description": "Linie 60: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 16:20 Uhr. Grund: Verkehrsunfall im Bereich Speisinger Straße.",
-    "descriptionHTML": "<p>Linie 60:<br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 16:20 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Speisinger Straße.</p>",
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 60:<br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 16:20 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Speisinger Straße.</p>",
-       "descriptionPlain": "Linie 60: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 16:20 Uhr. Grund: Verkehrsunfall im Bereich Speisinger Straße.",
+       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "60: Verkehrsunfall"
       }
      }
     ],
     "location": "Speisinger Straße",
-    "name": "I20261028-0021",
+    "name": "I20261028-0021-F01",
     "owner": "WL",
     "parentName": "I20261028-0021",
     "priority": "1",
@@ -437,8 +437,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-28T15:57:00.000+0100",
-     "lastUpdate": "2026-10-28T15:57:00.000+0100",
+     "created": "2026-10-28T16:04:00.000+0100",
+     "lastUpdate": "2026-10-28T16:04:00.000+0100",
+     "resume": "2026-10-28T16:04:00.000+0100",
      "start": "2026-10-28T15:56:00.000+0100"
     },
     "title": "60: Verkehrsunfall"
