@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261028-0027-F01, I20260917-0012, I20260922-0032, I20261028-0029-F01, I20260925-0011, I20260909-0007, I20261028-0028, I20261028-0030, I20261020-0029, I20261028-0026-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261028-0029-F01, I20260925-0011, I20260909-0007, I20261028-0028, I20261028-0030, I20261020-0029, I20261028-0026-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1449-149, R1472-149, R1445-149, R1448-149, R1447-149, R1446-149, R36-152, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2420-411, R2372-627, R2345-127, R2380-627, R2373-126, R2379-627, R2378-627, R2343-125, R2343-626, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1446-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1447-149, R1448-412, R1474-412, R1445-149, R1881-101, R1882-101, R1883-101, R1884-101, R115-136, R103-136, R102-136, R101-136, R100-136, R293-474, R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R1875-101, R1876-101, R1880-101, R3886-480, R401-101, R2420-411, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2372-627, R2345-127, R2380-627, R2379-627, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R1797-463, R1796-463, R1794-463, R1694-463, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -305,52 +305,6 @@
      "start": "2026-10-28T17:22:00.000+0100"
     },
     "title": "U6: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "37": "ptTram"
-     }
-    },
-    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 37: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 37: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "37: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Hohe Warte / Barawitzkagasse",
-    "name": "I20261028-0027-F01",
-    "owner": "WL",
-    "parentName": "I20261028-0027",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 137,
-      "lineName": "37",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-28T17:44:00.000+0100",
-     "lastUpdate": "2026-10-28T17:44:00.000+0100",
-     "resume": "2026-10-28T17:44:00.000+0100",
-     "start": "2026-10-28T17:23:00.000+0100"
-    },
-    "title": "37: Fremder Verkehrsunfall"
    },
    {
     "alertCause": "defective vehicle",
@@ -1039,6 +993,98 @@
      "start": "2026-10-24T00:00:28.000+0200"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1694-463",
+    "owner": "WL",
+    "parentName": "R1694-463",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "63A"
+    ],
+    "relatedStops": [
+     1694
+    ],
+    "time": {
+     "end": "2026-10-28T19:47:00.000+0100",
+     "start": "2026-10-28T18:47:32.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1794-463",
+    "owner": "WL",
+    "parentName": "R1794-463",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "63A"
+    ],
+    "relatedStops": [
+     1794
+    ],
+    "time": {
+     "end": "2026-10-28T19:47:00.000+0100",
+     "start": "2026-10-28T18:47:30.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1796-463",
+    "owner": "WL",
+    "parentName": "R1796-463",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "63A"
+    ],
+    "relatedStops": [
+     1796
+    ],
+    "time": {
+     "end": "2026-10-28T19:47:00.000+0100",
+     "start": "2026-10-28T18:47:30.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1797-463",
+    "owner": "WL",
+    "parentName": "R1797-463",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "63A"
+    ],
+    "relatedStops": [
+     1797
+    ],
+    "time": {
+     "end": "2026-10-28T19:47:00.000+0100",
+     "start": "2026-10-28T18:47:30.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
