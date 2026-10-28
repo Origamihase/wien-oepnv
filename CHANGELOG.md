@@ -10,6 +10,15 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **VAO-API auf v1.12.0, weil die VAO v1.13.0 zurückzog (2026-10-28)**: Seit
+  28.10. 15:00 scheiterte jeder Stammstrecken-Abruf (letzter guter 14:30,
+  Feed-Wächter-Issue #2080). Die neue Fehlerzeile der CI-Probe zeigte den
+  Grund: `404 Client Error: Not Found` für `…/restproxy/v1.13.0/location.name`.
+  Die Versionsliste der VAO nennt nur noch v1.11.0 (bis 31.05.2027) und
+  v1.12.0 (bis 30.08.2027). `DEFAULT_VERSION` steht jetzt auf v1.12.0, der
+  neuesten gelisteten Version (Regel vom 24.10.: „Wir können die VAO-Version
+  gerne anheben“, gewählt wird die neueste); die Probe vom 24.10. hatte für
+  v1.12.0 dieselben Abfahrten und Beobachtungen ergeben.
 * **Nebenschritte im Health check, Grund im Stammstrecken-Log (2026-10-28)**:
   Folgen der Prüfung der Hilfsskripte vom selben Tag.
   - *Nebenschritte werden rot:* Statistik, Linienprüfung und Feed-Wächter im

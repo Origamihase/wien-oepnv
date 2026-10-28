@@ -263,7 +263,7 @@ def test_verify_script_names_the_reason_and_masks_the_key(
     def _refused(*args: object, **kwargs: object) -> bytes:
         raise requests.HTTPError(
             "403 Client Error: Forbidden for url: https://routenplaner.verkehrsauskunft.at"
-            f"/vao/restproxy/v1.13.0/location.name?input=Wien&accessId={secret}"
+            f"/vao/restproxy/v1.12.0/location.name?input=Wien&accessId={secret}"
         )
 
     monkeypatch.setattr(verify, "fetch_content_safe", _refused)

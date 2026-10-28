@@ -19,8 +19,8 @@ def test_default_vor_version() -> None:
         for key in original:
             os.environ.pop(key, None)
         reloaded = importlib.reload(module)
-        assert reloaded.VOR_VERSION == "v1.13.0"
-        assert reloaded.VOR_BASE_URL == "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.13.0/"
+        assert reloaded.VOR_VERSION == "v1.12.0"
+        assert reloaded.VOR_BASE_URL == "https://routenplaner.verkehrsauskunft.at/vao/restproxy/v1.12.0/"
     finally:
         _restore_env(original)
         importlib.reload(module)

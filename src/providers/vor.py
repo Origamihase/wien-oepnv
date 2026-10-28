@@ -55,13 +55,15 @@ BASE_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = BASE_DIR / "data"
 
 # VAO API version (Michael, 24.10.2026: "Wir können die VAO-Version gerne
-# anheben"). v1.13.0 is the newest version the VAO lists at
-# https://routenplaner.verkehrsauskunft.at/vao/restproxy, in service until
-# 30.06.2028 (v1.11.0 ends 31.05.2027, v1.12.0 on 30.08.2027). The same
-# /departureBoard query against v1.11.0, v1.12.0 and v1.13.0 gave identical
-# departures and Stammstrecke observations; the schema change is additive.
+# anheben"): the newest version the VAO lists at
+# https://routenplaner.verkehrsauskunft.at/vao/restproxy. That was v1.13.0
+# from 24.10.2026 until the VAO withdrew it on 28.10.2026 between 14:30 and
+# 15:00 (Vienna): since then the list holds v1.11.0 (until 31.05.2027) and
+# v1.12.0 (until 30.08.2027), and every v1.13.0 request answers HTTP 404. The
+# same /departureBoard query against v1.11.0, v1.12.0 and v1.13.0 gave
+# identical departures and Stammstrecke observations on 24.10.2026.
 # Upgrade before the end-of-life date: docs/how-to/versions.md.
-DEFAULT_VERSION = "v1.13.0"
+DEFAULT_VERSION = "v1.12.0"
 DEFAULT_BASE = "https://routenplaner.verkehrsauskunft.at/vao/restproxy"
 DEFAULT_BASE_URL = f"{DEFAULT_BASE}/{DEFAULT_VERSION}/"
 DEFAULT_USER_AGENT = "wien-oepnv/1.0 (+https://github.com/Origamihase/wien-oepnv)"
