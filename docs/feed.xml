@@ -8,20 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 28 Oct 2026 05:30:49 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 06:00:40 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U3: Verspätungen]]></title>
+      <title><![CDATA[62: Schadhafter Zug]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
-      <pubDate>Wed, 28 Oct 2026 05:10:00 +0100</pubDate>
+      <guid isPermaLink="false">11dae11dafaf0878f07d1e1c010007790105e67c155ad06ba2cd6c87388c9e93</guid>
+      <pubDate>Wed, 28 Oct 2026 05:35:12 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 28 Oct 2026 05:10:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 28 Oct 2026 05:10:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Seit 05:10]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 05:10]]]></content:encoded>
+      <ext:first_seen>Wed, 28 Oct 2026 05:35:12 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 28 Oct 2026 05:44:43 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 06:44:00 +0100</ext:ends_at>
+      <description>Fahrtbehinderung. [Seit 05:35]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 05:35]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[40A: Bauarbeiten]]></title>

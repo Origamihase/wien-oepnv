@@ -1146,6 +1146,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "62: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "11dae11dafaf0878f07d1e1c010007790105e67c155ad06ba2cd6c87388c9e93",
+    "pubDate": "2026-10-28T05:35:12+01:00",
+    "starts_at": "2026-10-28T05:44:43+01:00",
+    "ends_at": "2026-10-28T06:44:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-10-28|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1242,22 +1254,6 @@
     "starts_at": "2026-10-24T00:00:29+02:00",
     "ends_at": "2026-10-28T23:59:59+01:00",
     "_identity": "wl|störung|L=D|D=2026-10-24|TK=züge halten wipplingerstr 39"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-10-28T05:10:00+01:00",
-    "starts_at": "2026-10-28T05:10:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U3|D=2026-10-28|TK=u3 verspätungen",
-    "_wl_ids": [
-      "I20261028-0003"
-    ],
-    "_incident_start": "2026-10-28T05:10:00+01:00"
   },
   {
     "source": "Wiener Linien",
