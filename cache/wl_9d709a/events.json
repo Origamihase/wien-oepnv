@@ -858,6 +858,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "18: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b5c18c502bca3e563ccf2d3da3d06868790f6d4f4fe3fd3fc1429807b9bed37f",
+    "pubDate": "2026-10-28T11:18:15+01:00",
+    "starts_at": "2026-10-28T11:18:18+01:00",
+    "ends_at": "2026-10-28T12:17:00+01:00",
+    "_identity": "wl|störung|L=18|D=2026-10-28|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Gleisbauarbeiten",
     "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A und 65A. Voraussichtliche Dauer: Mitte Dezember 2026. Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1170,18 +1182,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "50A: Falschparker",
-    "description": "Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "title": "50B: Falschparker",
+    "description": "Linie 50B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d8237ec6ad4aa37e360bd01d080083b93bf5aad5bba8399c6b4e72de49b31dd8",
-    "pubDate": "2026-10-28T10:25:00+01:00",
-    "starts_at": "2026-10-28T10:25:00+01:00",
+    "guid": "5b926dab2dabcd7d2d95a89ec7ba911120ff897c6efb0cd83d0d5fbe76c97478",
+    "pubDate": "2026-10-28T11:23:00+01:00",
+    "starts_at": "2026-10-28T11:23:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=50A|D=2026-10-28|TK=falschparker",
+    "_identity": "wl|störung|L=50B|D=2026-10-28|TK=falschparker",
     "_wl_ids": [
-      "I20261028-0010"
+      "I20261028-0013"
     ],
-    "_incident_start": "2026-10-28T10:25:00+01:00"
+    "_incident_start": "2026-10-28T11:23:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1294,6 +1306,22 @@
     "starts_at": "2026-10-24T00:00:29+02:00",
     "ends_at": "2026-10-28T23:59:59+01:00",
     "_identity": "wl|störung|L=D|D=2026-10-24|TK=züge halten wipplingerstr 39"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Verspätungen",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
+    "pubDate": "2026-10-28T11:02:00+01:00",
+    "starts_at": "2026-10-28T11:02:00+01:00",
+    "ends_at": "2026-10-28T11:40:00+01:00",
+    "_identity": "wl|störung|L=U2|D=2026-10-28|TK=u2 verspätungen",
+    "_wl_ids": [
+      "I20261028-0012"
+    ],
+    "_incident_start": "2026-10-28T11:02:00+01:00"
   },
   {
     "source": "Wiener Linien",
