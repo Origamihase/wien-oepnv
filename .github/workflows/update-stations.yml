@@ -129,6 +129,7 @@ jobs:
         run: python scripts/update_all_stations.py --verbose
 
       - name: Refresh ÖBB station lines (HAFAS)
+        id: hafas_lines
         # Stage 2 of the line plausibility check (audit 2026-09-25, A.14):
         # the rail lines serving each ÖBB station in Vienna and the commuter
         # belt, from HAFAS departure boards, kept with a "last seen" date in
@@ -141,6 +142,22 @@ jobs:
 
       - name: Regenerate validation report
         run: python -m src.cli stations validate --output docs/stations_validation_report.md
+
+      # The HAFAS step never blocks the commit, so its failure left only an
+      # orange annotation. Operator decision 2026-10-28 (Michael): a side step
+      # that cannot run turns the Health check red, "denn ein Fehler sollte
+      # auffallen". Its ``outcome`` (``conclusion`` reads ``success`` under
+      # ``continue-on-error``) goes to ``data/side_steps/update-stations.json``
+      # for ``scripts/health_check.py`` (check "Nebenschritte").
+      - name: Record side-step outcomes
+        continue-on-error: true
+        timeout-minutes: 1
+        env:
+          HAFAS_LINES_OUTCOME: ${{ steps.hafas_lines.outcome }}
+        run: >-
+          python scripts/record_side_steps.py
+          --state data/side_steps/update-stations.json
+          "ÖBB-Stationslinien (HAFAS)=$HAFAS_LINES_OUTCOME"
 
       # Publish through ``scripts/publish_to_main.sh``, the publish path
       # shared by every workflow that writes to ``main`` (since 2026-10-10):

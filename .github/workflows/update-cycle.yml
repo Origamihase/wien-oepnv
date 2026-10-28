@@ -545,6 +545,7 @@ jobs:
       # one day; the next day's tick catches up. The README markers
       # are unaffected.
       - name: Refresh statistics dashboard and README snapshot
+        id: stats
         if: steps.freshness.outputs.should_run == 'true'
         # Cosmetic and non-critical: the README markers + yearly dashboard
         # are nice-to-have, NOT the deliverable (``docs/feed.xml`` is).
@@ -577,6 +578,7 @@ jobs:
       # second; ``continue-on-error`` and the 1-minute limit keep a failure or
       # a hang from blocking the feed.
       - name: Check feed lines (report only)
+        id: lines
         if: steps.freshness.outputs.should_run == 'true'
         continue-on-error: true
         timeout-minutes: 1
@@ -597,6 +599,7 @@ jobs:
       # closes itself once the rule holds again. ``issues: write`` above
       # exists for this step only.
       - name: Feed-Wächter (report only)
+        id: watch
         if: steps.freshness.outputs.should_run == 'true'
         continue-on-error: true
         timeout-minutes: 2
@@ -605,6 +608,30 @@ jobs:
           FEED_WATCH_FETCH_EXIT: ${{ steps.fetch.outputs.exit_codes }}
           GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/feed_watch.py
+
+      # The three side steps above never block the publish, so a failure left
+      # only an orange annotation in a green run. Operator decision 2026-10-28
+      # (Michael): a side step that cannot run turns the Health check red, "denn
+      # ein Fehler sollte auffallen". This step writes each one's ``outcome``
+      # (``conclusion`` reads ``success`` under ``continue-on-error``) to
+      # ``data/side_steps/update-cycle.json``, which rides this run's commit;
+      # ``scripts/health_check.py`` (check "Nebenschritte") reads it, and a
+      # record older than 4 h is red there as well. ``!cancelled()`` so it
+      # also runs after a failed side step; it never blocks the publish.
+      - name: Record side-step outcomes
+        if: ${{ !cancelled() && steps.freshness.outputs.should_run == 'true' }}
+        continue-on-error: true
+        timeout-minutes: 1
+        env:
+          STATS_OUTCOME: ${{ steps.stats.outcome }}
+          LINES_OUTCOME: ${{ steps.lines.outcome }}
+          WATCH_OUTCOME: ${{ steps.watch.outcome }}
+        run: >-
+          python scripts/record_side_steps.py
+          --state data/side_steps/update-cycle.json
+          "Statistik=$STATS_OUTCOME"
+          "Linienprüfung=$LINES_OUTCOME"
+          "Feed-Wächter=$WATCH_OUTCOME"
 
       # ----- Validate + single atomic publish ----------------------------
 

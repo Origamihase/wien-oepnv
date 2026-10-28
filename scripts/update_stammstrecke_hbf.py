@@ -497,7 +497,7 @@ def _query_departure_board(
         # ``ValueError`` so the caller's error-isolation branch runs
         # without propagating the BaseException-rooted failure.
         raise ValueError(
-            f"VAO /departureBoard returned unparseable JSON: {type(exc).__name__}"
+            f"VAO /departureBoard returned unparseable JSON: {type(exc).__name__}: {exc}"
         ) from exc
 
     if not isinstance(payload, dict):
@@ -1021,13 +1021,37 @@ class _TickTally:
     """What one poll saw, for ``cache/stammstrecke/poll_status.json``.
 
     Filled by :func:`_process_tick` when the caller passes one. ``error``
-    is a short, leak-safe reason (HTTP code or exception type, never a
-    message that could carry the ``accessId``-bearing URL).
+    is a short, leak-safe reason: the HTTP code, or the exception type with
+    its masked message (:func:`_failure_reason`).
     """
 
     departures: int = 0
     trains: int = 0
     error: str = ""
+
+
+# Long enough for the messages this script and ``request_safe`` raise (an
+# ``errorCode`` with its ``errorText``, a wrong Content-Type), short enough
+# for one log line and the Feed-Wächter issue.
+_FAILURE_REASON_MAX_CHARS: Final = 240
+
+
+def _failure_reason(exc: BaseException) -> str:
+    """The exception type and its message, masked for log and poll status.
+
+    The type alone ("ValueError") cannot tell an ``errorCode`` envelope from
+    a wrong Content-Type or a broken JSON body: on 21.10.2026 17:31-20:01 and
+    from 28.10.2026 15:00 the log showed nothing else. ``VorAuth`` puts the
+    ``accessId`` into the prepared URL and a ``RequestException`` can carry
+    that URL, so the message goes through the VOR sanitizer, which masks the
+    secret itself and every credential-named query parameter.
+    """
+
+    message = vor_provider._sanitize_message(str(exc)).strip()
+    reason = f"{type(exc).__name__}: {message}" if message else type(exc).__name__
+    if len(reason) > _FAILURE_REASON_MAX_CHARS:
+        reason = reason[: _FAILURE_REASON_MAX_CHARS - 1] + "…"
+    return reason
 
 
 def _count_readable_departures(departures: Iterable[Any]) -> int:
@@ -1118,12 +1142,10 @@ def _process_tick(
         # Security: ``VorAuth`` injects the ``accessId`` into the URL
         # before the prepared request leaves the session, so a
         # ``RequestException`` may carry that URL in its message —
-        # logging the exception type alone is leak-safe.
-        LOGGER.warning(
-            "Stammstrecke (Hbf): /departureBoard fehlgeschlagen: %s.",
-            type(exc).__name__,
-        )
-        tally.error = type(exc).__name__
+        # :func:`_failure_reason` masks it.
+        reason = _failure_reason(exc)
+        LOGGER.warning("Stammstrecke (Hbf): /departureBoard fehlgeschlagen: %s.", reason)
+        tally.error = reason
         return "error"
 
     tally.departures = len(departures)
@@ -1188,7 +1210,7 @@ def _record_poll_outcome(when: datetime, result: str, tally: _TickTally) -> None
     except Exception as exc:  # pragma: no cover - observability must not crash the tick
         LOGGER.warning(
             "Stammstrecke (Hbf): Abrufstatus nicht gespeichert: %s.",
-            type(exc).__name__,
+            _failure_reason(exc),
         )
 
 
@@ -1328,11 +1350,12 @@ def main() -> int:
             try:
                 session = _build_session(stack)
             except Exception as exc:  # pragma: no cover - defensive
+                reason = _failure_reason(exc)
                 LOGGER.error(
                     "Stammstrecke (Hbf): VOR-Session konnte nicht erstellt werden: %s.",
-                    type(exc).__name__,
+                    reason,
                 )
-                _record_poll_outcome(when, "error", _TickTally(error=type(exc).__name__))
+                _record_poll_outcome(when, "error", _TickTally(error=reason))
                 return 1
 
             try:

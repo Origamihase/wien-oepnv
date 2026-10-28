@@ -10,6 +10,30 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Nebenschritte im Health check, Grund im Stammstrecken-Log (2026-10-28)**:
+  Folgen der Prüfung der Hilfsskripte vom selben Tag.
+  - *Nebenschritte werden rot:* Statistik, Linienprüfung und Feed-Wächter im
+    Update-Lauf und die ÖBB-Stationslinien (HAFAS) im Stationslauf laufen
+    mit `continue-on-error`, ihr Scheitern hinterließ nur eine orange
+    Annotation in einem grünen Lauf. Betreiberentscheidung (Michael,
+    2026-10-28): „Ich tendiere zu ‚er soll rot werden‘, denn ein Fehler
+    sollte auffallen.“ Für Nebenschritte ersetzt das die Regel „rot nur, wenn
+    der Abruf nicht funktioniert“ (2026-10-10, #1939, #1999); die Schwellen
+    für Quellen bleiben, ein Inhaltsfund des Wächters bleibt ein Hinweis.
+    `scripts/record_side_steps.py` schreibt am Ende jedes Laufs das Ergebnis
+    (`steps.<id>.outcome`) nach `data/side_steps/`; die neue Prüfung
+    `Nebenschritte` ist rot, solange der letzte Lauf eines Schritts
+    scheiterte oder die Aufzeichnung älter ist als die Grenze ihres
+    Workflows. Die Prüfung `Feed-Wächter` ist rot, wenn der Wächter nicht
+    prüfen konnte. Rückprüfung gegen die Update-Läufe seit 01.09. und die
+    Stationsläufe seit 01.01.2026: kein Nebenschritt scheiterte, keine
+    falsche Rotmeldung.
+  - *Grund im Stammstrecken-Log:* Ein gescheiterter Abruf stand in Log und
+    `cache/stammstrecke/poll_status.json` nur als „ValueError“ (21.10.
+    17:31–20:01, ab 28.10. 15:00); eine falsche Antwortart, eine
+    `errorCode`-Hülle und ein kaputter Text sahen gleich aus. Jetzt stehen
+    dort Typ und Meldung, durch den VOR-Filter maskiert (der `accessId` und
+    jeder Parameter mit Zugangsnamen) und auf 240 Zeichen begrenzt.
 * **Prüfung der Testsuite und der Hilfsskripte (2026-10-28)**: Nur Tests,
   Doku und `requirements-dev.txt`, kein Produktivcode. Die Tests jedes
   Fix-PRs seit 04.10. scheitern am Code vor dem Fix (92 von 95, die übrigen
