@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261028-0036-F01, I20260925-0011, I20260909-0007, I20261020-0029, I20261028-0035-F01, I20261028-0036"
+    "trafficInfoNameList": "I20260917-0012, I20261028-0036-F01, I20261020-0029, I20260922-0032, I20261028-0037, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
@@ -259,103 +259,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U6: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261028-0035-F01",
-    "owner": "WL",
-    "parentName": "I20261028-0035",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4639
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-28T21:45:00.000+0100",
-     "lastUpdate": "2026-10-28T21:45:00.000+0100",
-     "resume": "2026-10-28T21:45:00.000+0100",
-     "start": "2026-10-28T21:44:00.000+0100"
-    },
-    "title": "U6: Rettungseinsatz"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "60A": "ptBusCity"
-     }
-    },
-    "description": "Linie 60A: Fahrtbehinderung in Richtung Alterlaa U. Voraussichtliche Dauer: 23:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Willerbrücke.",
-    "descriptionHTML": "<p>Linie 60A:<br>Fahrtbehinderung in Richtung Alterlaa U.</p><p>Voraussichtliche Dauer: 23:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Willerbrücke.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60A:<br>Fahrtbehinderung in Richtung Alterlaa U.</p><p>Voraussichtliche Dauer: 23:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Willerbrücke.</p>",
-       "descriptionPlain": "Linie 60A: Fahrtbehinderung in Richtung Alterlaa U. Voraussichtliche Dauer: 23:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Willerbrücke.",
-       "title": "60A: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261028-0036",
-    "owner": "WL",
-    "parentName": "I20261028-0036",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 460,
-      "lineName": "60A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     2333
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-28T22:38:00.000+0100",
-     "end": "2026-10-28T22:58:00.000+0100",
-     "lastUpdate": "2026-10-28T22:58:00.000+0100",
-     "resume": "2026-10-28T22:58:00.000+0100",
-     "start": "2026-10-28T22:37:00.000+0100"
-    },
-    "title": "60A: Polizeieinsatz"
-   },
-   {
     "alertCause": "police activity",
     "alertCauseId": 3,
     "attributes": {
@@ -402,6 +305,53 @@
      "start": "2026-10-28T22:37:00.000+0100"
     },
     "title": "60A: Polizeieinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Längenfeldgasse und Niederhofstraße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 00:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Niederhofstraße.",
+    "descriptionHTML": "<p>Die Linie U6 fährt derzeit zwischen den Stationen Längenfeldgasse und Niederhofstraße in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 00:15 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Niederhofstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie U6 fährt derzeit zwischen den Stationen Längenfeldgasse und Niederhofstraße in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 00:15 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Niederhofstraße.</p>",
+       "descriptionPlain": "Die Linie U6 fährt derzeit zwischen den Stationen Längenfeldgasse und Niederhofstraße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 00:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Niederhofstraße.",
+       "title": "U6: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261028-0037",
+    "owner": "WL",
+    "parentName": "I20261028-0037",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4616
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-28T23:20:00.000+0100",
+     "lastUpdate": "2026-10-28T23:23:00.000+0100",
+     "start": "2026-10-28T23:19:00.000+0100"
+    },
+    "title": "U6: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",

@@ -54,12 +54,12 @@
     },
     "total": 1928
   },
-  "generated_at": "2026-10-28T23:01:56+01:00",
+  "generated_at": "2026-10-28T23:31:11+01:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.91,
     "by_direction": {
-      "Meidling": 6854,
+      "Meidling": 6855,
       "Praterstern": 3830
     },
     "by_hour_avg": {
@@ -101,33 +101,33 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-10-28T14:55:00+01:00",
+          "last_seen": "2026-10-28T23:17:00+01:00",
           "peer_rows_since": 0,
           "rows_in_window": 1176
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 3004,
+          "peer_rows_since": 3005,
           "rows_in_window": 0
         }
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-10-28T23:01:42+01:00",
+        "last_success": "2026-10-28T23:30:55+01:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
       "window_days": 30
     },
     "live": {
-      "avg_delay_minutes": null,
-      "observations": 0,
+      "avg_delay_minutes": 0.0,
+      "observations": 1,
       "window_minutes": 60
     },
     "max_delay_minutes": 203.0,
     "threshold_exceedances": 135,
     "threshold_minutes": 9.0,
-    "total_observations": 10684
+    "total_observations": 10685
   },
   "stoerungen": {
     "by_hour": {
