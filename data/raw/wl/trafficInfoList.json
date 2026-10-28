@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029, I20261028-0006-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261028-0007, I20261020-0029, I20261028-0006-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1446-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1448-149, R1447-149, R1448-412, R1474-412, R1445-149, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R103-136, R100-136, R318-437, R293-474, R102-136, R101-136, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R1875-101, R1876-101, R3886-480, R401-101, R2372-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2345-127, R2380-627, R2379-627, R2420-411, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R1616-162, R1728-162, R1738-162, R1737-162, R1735-162, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R36-152, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2380-627, R2345-127, R2373-126, R2378-627, R2343-626, R2420-411, R2372-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2379-627, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R1616-162, R1728-162, R1737-162, R1738-162, R1735-162, R270-102, R269-102, R272-102, R251-102, R249-102, R357-112, R272-112, R356-112, R379-112, R458-112, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -303,6 +303,58 @@
      "start": "2026-10-28T07:59:00.000+0100"
     },
     "title": "62: Beschädigte Oberleitung"
+   },
+   {
+    "alertCause": "fire",
+    "alertCauseId": 5,
+    "attributes": {
+     "relatedLineTypes": {
+      "12": "ptTram",
+      "2": "ptTram"
+     }
+    },
+    "description": "Linie 2: Kein Betrieb zwischen Josefstädter Straße U und Parlament, U Volkstheater. Linie 12: Betrieb nur zwischen Hillerstraße und Lange Gasse. Weiterfahrt bis Alser Straße U. Ersatz: Linie 5. Voraussichtliche Dauer: 10:00 Uhr. Grund: Feuerwehreinsatz im Bereich Josefstädter Straße.",
+    "descriptionHTML": "<p>Linie 2: <br>Kein Betrieb zwischen Josefstädter Straße U und Parlament, U Volkstheater.<br>Linie 12:<br>Betrieb nur zwischen Hillerstraße und Lange Gasse.<br>Weiterfahrt bis Alser Straße U.</p><p>Ersatz: Linie 5.</p><p>Voraussichtliche Dauer: 10:00 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Josefstädter Straße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 2: <br>Kein Betrieb zwischen Josefstädter Straße U und Parlament, U Volkstheater.<br>Linie 12:<br>Betrieb nur zwischen Hillerstraße und Lange Gasse.<br>Weiterfahrt bis Alser Straße U.</p><p>Ersatz: Linie 5.</p><p>Voraussichtliche Dauer: 10:00 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Josefstädter Straße.</p>",
+       "descriptionPlain": "Linie 2: Kein Betrieb zwischen Josefstädter Straße U und Parlament, U Volkstheater. Linie 12: Betrieb nur zwischen Hillerstraße und Lange Gasse. Weiterfahrt bis Alser Straße U. Ersatz: Linie 5. Voraussichtliche Dauer: 10:00 Uhr. Grund: Feuerwehreinsatz im Bereich Josefstädter Straße.",
+       "title": "12, 2: Feuerwehreinsatz"
+      }
+     }
+    ],
+    "location": "Josefstädter Straße",
+    "name": "I20261028-0007",
+    "owner": "WL",
+    "parentName": "I20261028-0007",
+    "priority": "1",
+    "reasonId": 11,
+    "reasonName": "Feuerwehreinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2",
+     "12"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 112,
+      "lineName": "12",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-28T09:26:00.000+0100",
+     "lastUpdate": "2026-10-28T09:27:00.000+0100",
+     "start": "2026-10-28T09:21:00.000+0100"
+    },
+    "title": "12, 2: Feuerwehreinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1526,6 +1578,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Volkstheater",
+    "name": "R249-102",
+    "owner": "WL",
+    "parentName": "R249-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     249
+    ],
+    "time": {
+     "end": "2026-10-28T13:00:00.000+0100",
+     "start": "2026-10-28T09:28:04.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Volkstheater"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Volkstheater",
+    "name": "R251-102",
+    "owner": "WL",
+    "parentName": "R251-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     251
+    ],
+    "time": {
+     "end": "2026-10-28T13:00:00.000+0100",
+     "start": "2026-10-28T09:28:04.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Volkstheater"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -1545,6 +1643,98 @@
      "start": "2026-10-25T00:00:17.000+0200"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Josefstädter Straße",
+    "name": "R269-102",
+    "owner": "WL",
+    "parentName": "R269-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     269
+    ],
+    "time": {
+     "end": "2026-10-28T14:30:00.000+0100",
+     "start": "2026-10-28T09:27:35.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Josefstädter Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Josefstädter Straße",
+    "name": "R270-102",
+    "owner": "WL",
+    "parentName": "R270-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     270
+    ],
+    "time": {
+     "end": "2026-10-28T14:30:00.000+0100",
+     "start": "2026-10-28T09:27:35.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Josefstädter Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Josefstädter Straße",
+    "name": "R272-102",
+    "owner": "WL",
+    "parentName": "R272-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     272
+    ],
+    "time": {
+     "end": "2026-10-28T14:30:00.000+0100",
+     "start": "2026-10-28T09:27:35.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Josefstädter Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R272-112",
+    "owner": "WL",
+    "parentName": "R272-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     272
+    ],
+    "time": {
+     "end": "2026-10-28T13:00:00.000+0100",
+     "start": "2026-10-28T09:28:35.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1595,6 +1785,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R356-112",
+    "owner": "WL",
+    "parentName": "R356-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     356
+    ],
+    "time": {
+     "end": "2026-10-28T13:00:00.000+0100",
+     "start": "2026-10-28T09:28:35.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R357-112",
+    "owner": "WL",
+    "parentName": "R357-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     357
+    ],
+    "time": {
+     "end": "2026-10-28T13:00:00.000+0100",
+     "start": "2026-10-28T09:28:35.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Züge halten\nbei Linien 6 und 18",
     "name": "R36-152",
     "owner": "WL",
@@ -1614,6 +1850,29 @@
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Züge halten\nbei Linien 6 und 18"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Langegasse",
+    "name": "R379-112",
+    "owner": "WL",
+    "parentName": "R379-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     379
+    ],
+    "time": {
+     "end": "2026-10-28T12:15:00.000+0100",
+     "start": "2026-10-28T09:29:05.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Langegasse"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1683,6 +1942,29 @@
      "start": "2026-10-24T00:00:29.000+0200"
     },
     "title": "Züge halten\nWipplingerstr 39"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Langegasse",
+    "name": "R458-112",
+    "owner": "WL",
+    "parentName": "R458-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     458
+    ],
+    "time": {
+     "end": "2026-10-28T12:15:00.000+0100",
+     "start": "2026-10-28T09:29:05.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Langegasse"
    },
    {
     "alertCause": "undefined alert cause",
