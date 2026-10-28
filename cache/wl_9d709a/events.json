@@ -866,6 +866,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "18: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "75c314f681fe756a41036cc506d4e269bf917e5d515c978c03f60c4402399a79",
+    "pubDate": "2026-10-28T17:01:19+01:00",
+    "starts_at": "2026-10-28T17:01:22+01:00",
+    "ends_at": "2026-10-28T18:00:00+01:00",
+    "_identity": "wl|störung|L=18|D=2026-10-28|TK=fahrtbehinderung verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Gleisbauarbeiten",
     "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A und 65A. Voraussichtliche Dauer: Mitte Dezember 2026. Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1106,6 +1118,46 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "37: Fremder Verkehrsunfall",
+    "description": "Linie 37: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Weiterfahrt über die Linie 38 bis Grinzing. Ersatz: Linien 10A, 38A und 39A. Voraussichtliche Dauer: 17:45 Uhr. Grund: Fremder Verkehrsunfall im Bereich Hohe Warte # Barawitzkagasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c5967a225000cfa70f0360204f0e15a3823fbe67437b4556e2214a6146b37072",
+    "pubDate": "2026-10-28T17:23:00+01:00",
+    "starts_at": "2026-10-28T17:23:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=37|D=2026-10-28|TK=37 fremder verkehrsunfall",
+    "_wl_ids": [
+      "I20261028-0027"
+    ],
+    "_incident_start": "2026-10-28T17:23:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "89120d0470ea18b91557ad7fb1b2bbd655bec5746442fac646a071a183fbd310",
+    "pubDate": "2026-10-28T17:27:21+01:00",
+    "starts_at": "2026-10-28T17:27:21+01:00",
+    "ends_at": "2026-10-28T18:26:00+01:00",
+    "_identity": "wl|störung|L=37|D=2026-10-28|TK=fahrtbehinderung fremder verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Fremdunfall Betrieb ab Glatzgasse",
+    "description": "Fremdunfall\nBetrieb ab Glatzgasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ee9a4ed8b79848ddab136f490c90a0135ee88169d4e98970ae301f8b00e3778a",
+    "pubDate": "2026-10-28T17:23:50+01:00",
+    "starts_at": "2026-10-28T17:27:51+01:00",
+    "ends_at": "2026-10-28T18:27:00+01:00",
+    "_identity": "wl|störung|L=37|D=2026-10-28|TK=fremdunfall betrieb ab glatzgasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "40A: Busse halten Liechtensteinstraße 38",
     "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 38",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1294,34 +1346,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Polizeieinsatz",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "title": "U6: Schadhaftes Fahrzeug",
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49",
-    "pubDate": "2026-10-28T15:32:00+01:00",
-    "starts_at": "2026-10-28T15:32:00+01:00",
-    "ends_at": "2026-10-28T17:20:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2026-10-28|TK=polizeieinsatz",
+    "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
+    "pubDate": "2026-10-28T17:22:00+01:00",
+    "starts_at": "2026-10-28T17:22:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-10-28|TK=u6 schadhaftes fahrzeug",
     "_wl_ids": [
-      "I20261028-0019"
+      "I20261028-0026"
     ],
-    "_incident_start": "2026-10-28T15:32:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Polizeieinsatz",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab",
-    "pubDate": "2026-10-28T16:32:00+01:00",
-    "starts_at": "2026-10-28T16:32:00+01:00",
-    "ends_at": "2026-10-28T17:10:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2026-10-28|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261028-0023"
-    ],
-    "_incident_start": "2026-10-28T16:32:00+01:00"
+    "_incident_start": "2026-10-28T17:22:00+01:00"
   },
   {
     "source": "Wiener Linien",
