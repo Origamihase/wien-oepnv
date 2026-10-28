@@ -1,0 +1,249 @@
+"""The paths by which an outage reaches the operator: a red health check.
+
+A red run is what makes GitHub mail the maintainer, so every rule that turns
+a check red, and ``main()``'s exit code, needs a test that fails when the rule
+breaks. The test-suite audit of 2026-10-28 broke seven rules one at a time:
+five left the whole suite green (a failed fetch, exit 1, read as OK; a feed
+without a new build for 4 h; a station run older than 8 days or with a failed
+sub-script; ``main()`` returning 0 with a red check). Both red health checks
+between 14.10. and 28.10.2026 (Wiener Linien 21.10., ÖBB 27.10.) were exit 1.
+"""
+
+from __future__ import annotations
+
+import json
+from datetime import UTC, datetime, timedelta
+from email.utils import format_datetime
+from pathlib import Path
+
+import pytest
+
+import scripts.health_check as hc
+
+_NOW = datetime(2026, 10, 28, 12, 0, tzinfo=UTC)
+
+
+@pytest.fixture
+def repo(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
+    monkeypatch.setattr(hc, "REPO_ROOT", tmp_path)
+    (tmp_path / "scripts").mkdir()
+    (tmp_path / "docs").mkdir()
+    (tmp_path / "data").mkdir()
+    return tmp_path
+
+
+def _updater(repo: Path, name: str, exit_code: int, output: str = "") -> str:
+    """A stand-in updater that prints *output* and exits with *exit_code*."""
+    script = repo / "scripts" / name
+    script.write_text(
+        f"import sys\nprint({output!r})\nsys.exit({exit_code})\n", encoding="utf-8"
+    )
+    return name
+
+
+# --- Quellen: the exit code of the real updater decides ------------------
+
+
+def test_exit_0_is_green_and_names_the_count(repo: Path) -> None:
+    script = _updater(repo, "ok.py", 0, "Updated ÖBB cache with 17 events.")
+    check = hc.check_source("ÖBB", script)
+    assert check.ok
+    assert "17 Datensätze" in check.summary
+
+
+def test_exit_1_a_failed_fetch_is_red_and_names_the_reason(repo: Path) -> None:
+    """The common real case: WL 21.10.2026, ÖBB 27.10.2026."""
+    script = _updater(
+        repo,
+        "wl.py",
+        1,
+        "2026-10-21 17:31:04,986 ERROR src.providers.wl_fetch: Verbindung zu "
+        "https://www.wienerlinien.at/ogd_realtime/trafficInfoList schlug nach 3 "
+        "Versuchen endgültig fehl: 502 Server Error: Bad Gateway",
+    )
+    check = hc.check_source("Wiener Linien", script)
+    assert not check.ok
+    assert "exit 1" in check.summary
+    assert "502 Server Error" in check.detail
+
+
+def test_exit_2_demo_data_is_red(repo: Path) -> None:
+    check = hc.check_source("Baustellen (OGD)", _updater(repo, "bst.py", 2))
+    assert not check.ok
+    assert "FALLBACK" in check.summary
+
+
+@pytest.mark.parametrize("exit_code", [4, 124, 137])
+def test_any_other_non_zero_exit_is_red(repo: Path, exit_code: int) -> None:
+    """124/137 are what ``timeout`` returns for a killed fetcher."""
+    check = hc.check_source("ÖBB", _updater(repo, "other.py", exit_code))
+    assert not check.ok
+    assert f"exit {exit_code}" in check.summary
+
+
+def test_a_hung_updater_is_red(repo: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    script = repo / "scripts" / "hang.py"
+    script.write_text("import time\ntime.sleep(30)\n", encoding="utf-8")
+    monkeypatch.setattr(hc, "FETCH_TIMEOUT_S", 1)
+    check = hc.check_source("ÖBB", "hang.py")
+    assert not check.ok
+    assert "Zeitüberschreitung" in check.summary
+
+
+# --- Feed-Build: a stalled update cycle -----------------------------------
+
+
+def _feed(repo: Path, built: datetime) -> None:
+    (repo / "docs" / "feed.xml").write_text(
+        "<rss><channel><lastBuildDate>"
+        f"{format_datetime(built)}"
+        "</lastBuildDate></channel></rss>",
+        encoding="utf-8",
+    )
+
+
+def test_a_fresh_feed_is_green(repo: Path) -> None:
+    _feed(repo, _NOW - timedelta(minutes=30))
+    assert hc.check_feed_freshness(_NOW).ok
+
+
+def test_a_feed_just_inside_the_limit_is_green(repo: Path) -> None:
+    _feed(repo, _NOW - timedelta(hours=hc.FEED_MAX_AGE_H) + timedelta(minutes=1))
+    assert hc.check_feed_freshness(_NOW).ok
+
+
+def test_a_feed_past_the_limit_is_red(repo: Path) -> None:
+    _feed(repo, _NOW - timedelta(hours=hc.FEED_MAX_AGE_H) - timedelta(minutes=1))
+    check = hc.check_feed_freshness(_NOW)
+    assert not check.ok
+    assert "kein neuer Build" in check.summary
+
+
+@pytest.mark.parametrize(
+    "content",
+    ["", "<rss><channel></channel></rss>", "<rss><lastBuildDate>gestern</lastBuildDate></rss>"],
+    ids=["empty", "no-lastBuildDate", "unparseable"],
+)
+def test_a_broken_feed_is_red(repo: Path, content: str) -> None:
+    (repo / "docs" / "feed.xml").write_text(content, encoding="utf-8")
+    assert not hc.check_feed_freshness(_NOW).ok
+
+
+def test_a_missing_feed_is_red(repo: Path) -> None:
+    assert not hc.check_feed_freshness(_NOW).ok
+
+
+# --- Stationsverzeichnis: the weekly station run --------------------------
+
+
+def _last_run(repo: Path, **fields: object) -> None:
+    payload: dict[str, object] = {
+        "timestamp": (_NOW - timedelta(days=3)).isoformat(),
+        "sub_scripts": [
+            {"name": "update_station_directory.py", "exit_code": 0},
+            {"name": "update_wl_stations.py", "exit_code": 0},
+        ],
+        "validation": {"security_issues": 0},
+    }
+    payload.update(fields)
+    (repo / "data" / "stations_last_run.json").write_text(json.dumps(payload), encoding="utf-8")
+
+
+def test_a_clean_recent_station_run_is_green(repo: Path) -> None:
+    _last_run(repo)
+    assert hc.check_stations(_NOW).ok
+
+
+def test_a_failed_sub_script_is_red_and_named(repo: Path) -> None:
+    _last_run(
+        repo,
+        sub_scripts=[
+            {"name": "update_station_directory.py", "exit_code": 0},
+            {"name": "update_wl_stations.py", "exit_code": 1},
+        ],
+    )
+    check = hc.check_stations(_NOW)
+    assert not check.ok
+    assert "update_wl_stations.py exit 1" in check.summary
+
+
+def test_a_station_run_past_the_limit_is_red(repo: Path) -> None:
+    stale = _NOW - timedelta(hours=hc.STATIONS_MAX_AGE_H) - timedelta(minutes=1)
+    _last_run(repo, timestamp=stale.isoformat())
+    check = hc.check_stations(_NOW)
+    assert not check.ok
+    assert "keine Aktualisierung" in check.summary
+
+
+def test_a_station_run_just_inside_the_limit_is_green(repo: Path) -> None:
+    recent = _NOW - timedelta(hours=hc.STATIONS_MAX_AGE_H) + timedelta(minutes=1)
+    _last_run(repo, timestamp=recent.isoformat())
+    assert hc.check_stations(_NOW).ok
+
+
+def test_security_issues_in_the_validation_are_red(repo: Path) -> None:
+    _last_run(repo, validation={"security_issues": 2})
+    assert not hc.check_stations(_NOW).ok
+
+
+def test_a_missing_run_report_is_red(repo: Path) -> None:
+    assert not hc.check_stations(_NOW).ok
+
+
+# --- main(): a red check must make the run red ----------------------------
+
+
+def _all_green(monkeypatch: pytest.MonkeyPatch) -> None:
+    healthy = hc.Check("OK", ok=True, summary="OK")
+    monkeypatch.setattr(hc, "check_source", lambda *_a, **_kw: healthy)
+    for name in (
+        "check_feed_freshness",
+        "check_stations",
+        "check_station_sources",
+        "check_stammstrecke_abruf",
+        "check_stammstrecke_directions",
+        "check_feed_watch",
+    ):
+        monkeypatch.setattr(hc, name, lambda _now: healthy)
+    monkeypatch.setattr(hc, "check_secrets", lambda: healthy)
+    monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
+
+
+def test_main_is_green_when_every_check_is_green(monkeypatch: pytest.MonkeyPatch) -> None:
+    _all_green(monkeypatch)
+    assert hc.main() == 0
+
+
+@pytest.mark.parametrize(
+    "target",
+    [
+        "check_source",
+        "check_feed_freshness",
+        "check_stations",
+        "check_station_sources",
+        "check_stammstrecke_abruf",
+        "check_secrets",
+    ],
+)
+def test_main_is_red_when_one_check_is_red(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str], target: str
+) -> None:
+    _all_green(monkeypatch)
+    red = hc.Check("Kaputt", ok=False, summary="FEHLER — kaputt")
+    monkeypatch.setattr(hc, target, lambda *_a, **_kw: red)
+    assert hc.main() == 1
+    out = capsys.readouterr().out
+    assert "::error title=Health: Kaputt::FEHLER — kaputt" in out
+    assert "ERGEBNIS: " in out and "Kaputt" in out
+
+
+def test_main_stays_green_for_a_note(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """A note (Feed-Wächter, Stammstrecke direction) never turns the run red."""
+    _all_green(monkeypatch)
+    note = hc.Check("Hinweis", ok=True, note=True, summary="HINWEIS — nur ein Hinweis")
+    monkeypatch.setattr(hc, "check_feed_watch", lambda _now: note)
+    assert hc.main() == 0
+    assert "::warning title=Health: Hinweis::HINWEIS" in capsys.readouterr().out
+

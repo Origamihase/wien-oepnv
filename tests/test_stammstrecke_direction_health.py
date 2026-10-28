@@ -223,6 +223,13 @@ def test_health_check_note_keeps_the_run_green(
     monkeypatch.setattr(f"{target}.check_stations", lambda _now: healthy)
     monkeypatch.setattr(f"{target}.check_stammstrecke_abruf", lambda _now: healthy)
     monkeypatch.setattr(f"{target}.check_stammstrecke_directions", lambda _now: note)
+    # The remaining checks read the real repository and the environment: the
+    # test passed only while an earlier test left ``VOR_ACCESS_ID`` set
+    # (test-suite audit 2026-10-28), and a real Feed-Wächter finding or an
+    # aged station source would have decided it too.
+    monkeypatch.setattr(f"{target}.check_station_sources", lambda _now: healthy)
+    monkeypatch.setattr(f"{target}.check_feed_watch", lambda _now: healthy)
+    monkeypatch.setattr(f"{target}.check_secrets", lambda: healthy)
     monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
 
     assert health_check_main() == 0

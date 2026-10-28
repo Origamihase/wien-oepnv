@@ -555,8 +555,8 @@ die Datensätze stabil und schema-konform bleiben.
 `data/stations.json` vereint ÖBB-, Wiener-Linien-, VOR- und manuell
 gepflegte Auslandsknoten in einer Datei. Das Format ist als JSON Schema
 unter [`docs/schema/stations.schema.json`](schema/stations.schema.json)
-formal definiert; ein Pin-Test (`tests/test_stations_schema.py`)
-verhindert Drift.
+formal definiert; ein Pin-Test (`tests/test_stations_schema.py`, braucht
+`jsonschema` aus `requirements-dev.txt`) verhindert Drift.
 
 ### Felder pro Eintrag
 
@@ -863,12 +863,14 @@ Das öffentliche Live-Dashboard (`docs/site.html`) ist zweisprachig: **Deutsch i
 
 ## Entwicklung & Qualitätssicherung
 
-- **Tests**: `python -m pytest` führt über 11 000 Unit- und Integrationstests in rund 640 Modulen unter `tests/` aus (Stand 2026-10-10).
+- **Tests**: `python -m pytest` führt rund 11 900 Unit- und Integrationstests in rund 650 Modulen unter `tests/` aus (Stand 2026-10-28).
 - **Test-Isolation**: Autouse-Fixtures in `tests/conftest.py` halten jeden Test von echten Dateien und der Umgebung fern:
   - `isolate_stats_writes` und `isolate_episode_starts_writes` leiten die Statistik-Ledger und `cache/stammstrecke/episode_starts.json` nach `tmp_path` um.
   - `reset_vor_request_count` tut das für den VAO-Zähler.
   - `forget_resolved_tickers` leert das Gedächtnis von `src/providers/wl_resolved.py` vor und nach jedem Test und leitet `data/wl_resolved_tickers.json` nach `tmp_path` um; vorher leerte ein Test, der `update_wl_cache.main()` ausführt, die echte Datei (Gegenprüfung 2026-10-05).
   - `reset_build_feed_state` und `reset_circuit_breakers` setzen Modulzustand zurück.
+  - `_environment_stays` stellt nach jedem Test `os.environ` wieder her. `load_env_file` schreibt selbst in die Umgebung, und `monkeypatch.delenv(..., raising=False)` merkt sich eine fehlende Variable nicht; bis 2026-10-28 liefen deshalb alle Tests nach `tests/test_env_loader.py` mit `VOR_ACCESS_ID=token`, und ein Health-Check-Test bestand nur dadurch.
+  - `_cache_dir_stays` leitet `_CACHE_DIR` beider Modulkopien von `utils.cache` (`src.utils.cache` und `utils.cache`) nach `tmp_path` um. `write_cache` räumt nach dem Schreiben das Verzeichnis seiner Quelle nach Dateialter auf; zwei Baustellen-Tests lenkten nur `_cache_file` um und löschten so den echten `cache/baustellen_*/events.json`, sobald dessen Datei älter als 48 Stunden war (älterer Klon, Sandbox; Prüfung 2026-10-28).
   - `_without_host_proxy` entfernt Proxy-Variablen, damit die Suite in einer Sandbox mit Proxy dasselbe Ergebnis liefert wie in der CI (`PROXY_TRUSTED_HOSTS`).
   - `_health_report_stays_untouched` lässt jeden Test scheitern, der `docs/feed-health.*` anlegt oder ändert (Audit 2026-09-25, A.7).
   - `_no_real_dns` beantwortet jede DNS-Abfrage mit einer festen öffentlichen Adresse (`STUB_PUBLIC_IP`); kein Test fragt das echte DNS. Wer eine andere Antwort braucht, patcht `dns.resolver.Resolver.resolve` oder `_resolve_hostname_safe` selbst.
@@ -878,7 +880,7 @@ Das öffentliche Live-Dashboard (`docs/site.html`) ist zweisprachig: **Deutsch i
   - Hypothesis läuft ohne Zeitlimit pro Beispiel (Profil `wien-oepnv`); Hänger fängt `pytest-timeout`.
   - Das Streckendaten-Sample unter `data/streckendaten/` legt die Session-Fixture `streckendaten_dataset` an. Mit `pytest-xdist` teilen sich die Worker diesen festen Pfad: Ein Dateilock im Temp-Verzeichnis serialisiert Anlegen und Aufräumen, und erst der letzte Worker räumt auf. Vorher las ein Worker das halb geschriebene Archiv oder fand es gelöscht, und alle Tests dieses Workers scheiterten im Setup (Prüfung 2026-10-04: 4.190 Fehler in einem Lauf mit `-n 4 -p randomly`).
 
-  Die Suite besteht in beliebiger Reihenfolge, seriell wie parallel (`pytest -n 4`), ohne Netz, in jeder Zeitzone des Rechners und mit jedem heutigen Datum (Prüfung 2026-10-04: Zufallsreihenfolge mit `pytest-randomly`, Lauf ohne Netz per `unshare -rn`, Uhr mit `time-machine` auf beide Zeitumstellungen, Silvester, Neujahr, Schalttag 2028 und 2030 gestellt, `TZ` auf New York und Kiribati). Ausnahme beim verstellten Datum: Tests, die Dateien schreiben und deren Alter am Dateisystem messen (Cache-Bereinigung), oder Unterprozesse starten, sehen die echte Uhr des Dateisystems bzw. des Unterprozesses.
+  Die Suite besteht in beliebiger Reihenfolge, seriell wie parallel (`pytest -n 4`), ohne Netz, in jeder Zeitzone des Rechners, mit jedem heutigen Datum und in einer Arbeitskopie, deren Dateien Tage alt sind (Prüfung 2026-10-04: Zufallsreihenfolge mit `pytest-randomly`, Lauf ohne Netz per `unshare -rn`, Uhr mit `time-machine` auf beide Zeitumstellungen, Silvester, Neujahr, Schalttag 2028 und 2030 gestellt, `TZ` auf New York und Kiribati; wiederholt 2026-10-28 mit zwei Zufallsreihenfolgen, ohne Netz, Uhr auf 01.11.2026, Wiener Mitternacht, Neujahr und Sommerzeit 2027 sowie allen Dateien unter `cache/`, `data/`, `docs/`, `log/` zehn Tage alt). Ausnahme beim verstellten Datum: Tests, die Dateien schreiben und deren Alter am Dateisystem messen (Cache-Bereinigung), oder Unterprozesse starten, sehen die echte Uhr des Dateisystems bzw. des Unterprozesses. CI und alle Workflows laufen mit Python 3.11; unter Python 3.13 sind drei Tests rot, weil Python sich geändert hat (Unicode 15.1 kennt sieben neue Formatzeichen, die `_INVISIBLE_DANGEROUS_RE` nicht enthält; `Path.resolve()` meldet Symlink-Schleifen nicht mehr als Fehler).
 
   Tests, die `main()` ausführen, leiten `OUT_PATH`, `STATE_FILE`, `FEED_HEALTH_PATH` und `FEED_HEALTH_JSON_PATH` nach `tmp_path` um. Sie patchen am Modulobjekt (`patch.object(bf, …)`), nicht über den String-Pfad `"src.build_feed.…"`: Einige Tests laden das Modul neu, und der String-Patch träfe dann ein anderes Modul als das, dessen `main()` läuft.
 - **Kontinuierliche Tests**: Die GitHub Action `test.yml` automatisiert die im Audit empfohlene regelmäßige Testausführung und bricht Builds bei fehlschlagender Test-Suite ab.

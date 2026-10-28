@@ -6,6 +6,9 @@ pip-audit>=2.7,<3
 hypothesis>=6.152.4
 pytest>=9.0.3
 responses>=0.26.1,<1
+# The schema pin tests (tests/test_stations_schema.py and two more) skip
+# without it; until 28.10.2026 it was missing here and all seven skipped in CI.
+jsonschema>=4.26,<5
 pytest-timeout>=2.4.0,<3
 pytest-cov>=7.1.0,<8
 pre-commit>=4.6.0,<5
