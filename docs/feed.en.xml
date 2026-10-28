@@ -8,33 +8,20 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 28 Oct 2026 10:00:43 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 10:30:47 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[46: Police operation]]></title>
+      <title><![CDATA[50A: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">17245375550a341367d59df402e880c1611e9fbb35634da6ea980f6f056c6c9b</guid>
-      <pubDate>Wed, 28 Oct 2026 09:37:00 +0100</pubDate>
+      <guid isPermaLink="false">d8237ec6ad4aa37e360bd01d080083b93bf5aad5bba8399c6b4e72de49b31dd8</guid>
+      <pubDate>Wed, 28 Oct 2026 10:25:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 28 Oct 2026 10:00:43 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 28 Oct 2026 09:37:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: police operation. [Since 09:37]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: police operation.<br/>[Since 09:37]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[10A: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">a4037eb177f53feada9cd8d5d413f9865f66b30fafc51c7e633db6ca36d431e5</guid>
-      <pubDate>Wed, 28 Oct 2026 09:34:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 28 Oct 2026 09:34:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 28 Oct 2026 09:34:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 09:34]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 09:34]]]></content:encoded>
+      <ext:first_seen>Wed, 28 Oct 2026 10:25:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 28 Oct 2026 10:25:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: illegally parked vehicle. [Since 10:25]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: illegally parked vehicle.<br/>[Since 10:25]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[12: Fire-brigade operation]]></title>
@@ -75,6 +62,20 @@
       <ext:ends_at>Wed, 28 Oct 2026 11:00:00 +0100</ext:ends_at>
       <description>Service from Hofwiesengasse. [Since 07:59]</description>
       <content:encoded><![CDATA[Service from Hofwiesengasse.<br/>[Since 07:59]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[16A: Zanaschkagasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">469f77182fa423712b041dfb4460fea290136152fd9b8a51dd8269c59d5f3b2e</guid>
+      <pubDate>Wed, 28 Oct 2026 10:01:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 28 Oct 2026 10:01:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 28 Oct 2026 10:01:00 +0100</ext:starts_at>
+      <georss:point>48.157210 16.328758</georss:point>
+      <description>Lichtensterngasse before Zanaschkagasse → Zanaschkagasse after Lichtensterngasse. Stop relocation of line 16A towards Alaudagasse U. Reason: Parked original stop. [Since today]</description>
+      <content:encoded><![CDATA[Lichtensterngasse before Zanaschkagasse → Zanaschkagasse after Lichtensterngasse. Stop relocation of line 16A towards Alaudagasse U. Reason: Parked original stop.<br/>[Since today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[40A: Construction works]]></title>

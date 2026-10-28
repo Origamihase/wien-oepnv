@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261028-0008, I20260925-0011, I20260909-0007, I20261028-0009, I20261020-0029, I20261028-0007-F01, I20261028-0007-F02"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261028-0010, I20261020-0029, I20261028-0007-F01, I20261028-0007-F02"
    },
    {
     "id": 3,
@@ -351,94 +351,49 @@
     "title": "2: Feuerwehreinsatz"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
     "attributes": {
      "relatedLineTypes": {
-      "10A": "ptBusCity"
+      "50A": "ptBusCity"
      }
     },
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "description": "Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "descriptionHTML": "<p>Linie 50A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Falschparker.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "10A: Verkehrsunfall"
+       "descriptionHtml": "<p>Linie 50A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Falschparker.</p>",
+       "descriptionPlain": "Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+       "title": "50A: Falschparker"
       }
      }
     ],
-    "name": "I20261028-0008",
+    "name": "I20261028-0010",
     "owner": "WL",
-    "parentName": "I20261028-0008",
+    "parentName": "I20261028-0010",
     "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "10A"
+     "50A"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 410,
-      "lineName": "10A",
+      "lineId": 450,
+      "lineName": "50A",
       "vehicleType": "ptBusCity"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-28T09:35:00.000+0100",
-     "lastUpdate": "2026-10-28T09:35:00.000+0100",
-     "resume": "2026-10-28T09:34:00.000+0100",
-     "start": "2026-10-28T09:34:00.000+0100"
+     "created": "2026-10-28T10:25:00.000+0100",
+     "lastUpdate": "2026-10-28T10:25:00.000+0100",
+     "resume": "2026-10-28T10:25:00.000+0100",
+     "start": "2026-10-28T10:25:00.000+0100"
     },
-    "title": "10A: Verkehrsunfall"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "46": "ptTram"
-     }
-    },
-    "description": "Linie 46: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "descriptionHTML": "<p>Linie 46:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 46:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-       "descriptionPlain": "Linie 46: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-       "title": "46: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261028-0009",
-    "owner": "WL",
-    "parentName": "I20261028-0009",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 146,
-      "lineName": "46",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-28T09:38:00.000+0100",
-     "lastUpdate": "2026-10-28T09:38:00.000+0100",
-     "resume": "2026-10-28T09:37:00.000+0100",
-     "start": "2026-10-28T09:37:00.000+0100"
-    },
-    "title": "46: Polizeieinsatz"
+    "title": "50A: Falschparker"
    },
    {
     "alertCause": "undefined alert cause",

@@ -86,6 +86,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "16A: Zanaschkagasse",
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 16A in Richtung Alaudagasse U</u></strong></p><p><strong><u>Haltestelle:</u></strong> Zanaschkagasse</p><p><strong><u>Von:</u></strong> Lichtensterngasse vor Zanaschkagasse</p><p><strong><u>Nach:</u></strong> Zanaschkagasse nach Lichtensterngasse</p><p><strong><u>Dauer:</u></strong> 28. Oktober 2026, 05:00 Uhr, voraussichtlich bis 29. Oktober 2026, 05:00 Uhr</p><p><strong><u>Grund:</u></strong> Verparkte Originalhaltestelle</p>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "469f77182fa423712b041dfb4460fea290136152fd9b8a51dd8269c59d5f3b2e",
+    "pubDate": "2026-10-28T10:01:00+01:00",
+    "starts_at": "2026-10-28T10:01:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|hinweis|L=16A|D=2026-10-28|TK=16a zanaschkagasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "18: Veranstaltung am 08.11.26",
     "description": "<h2><strong>Veranstaltung</strong></h2><p>Wegen einer Veranstaltung im Bereich der Prater Hauptallee wird die Linie 18 <strong>kurzgeführt</strong>.</p><p><strong><u>Zeitraum:</u></strong><br>Sonntag, 08. November 2026, von ca. 09:15 Uhr bis ca. 12:30 Uhr.</p><p><strong><u>Maßnahme:</u></strong></p><p><strong>Linie 18:</strong></p><p>Kurzführung in Richtung Stadion U bis Schlachthausgasse U, und wieder zurück in Richtung Burggasse, Stadthalle U.</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -782,22 +794,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Verkehrsunfall",
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a4037eb177f53feada9cd8d5d413f9865f66b30fafc51c7e633db6ca36d431e5",
-    "pubDate": "2026-10-28T09:34:00+01:00",
-    "starts_at": "2026-10-28T09:34:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=10A|D=2026-10-28|TK=10a verkehrsunfall",
-    "_wl_ids": [
-      "I20261028-0008"
-    ],
-    "_incident_start": "2026-10-28T09:34:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11A: Busse halten Meiereistraße gegenüber 12",
     "description": "Bauarbeiten\nBusse halten Meiereistraße gegenüber 12",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1158,18 +1154,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "46: Polizeieinsatz",
-    "description": "Linie 46: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "title": "50A: Falschparker",
+    "description": "Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "17245375550a341367d59df402e880c1611e9fbb35634da6ea980f6f056c6c9b",
-    "pubDate": "2026-10-28T09:37:00+01:00",
-    "starts_at": "2026-10-28T09:37:00+01:00",
+    "guid": "d8237ec6ad4aa37e360bd01d080083b93bf5aad5bba8399c6b4e72de49b31dd8",
+    "pubDate": "2026-10-28T10:25:00+01:00",
+    "starts_at": "2026-10-28T10:25:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=46|D=2026-10-28|TK=polizeieinsatz",
+    "_identity": "wl|störung|L=50A|D=2026-10-28|TK=falschparker",
     "_wl_ids": [
-      "I20261028-0009"
+      "I20261028-0010"
     ],
-    "_incident_start": "2026-10-28T09:37:00+01:00"
+    "_incident_start": "2026-10-28T10:25:00+01:00"
   },
   {
     "source": "Wiener Linien",
