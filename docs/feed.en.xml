@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 28 Oct 2026 10:30:47 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 11:00:58 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[38A: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">67cf05ce8846177e4f3d143c88b0e0c7b91c475498b9731a9668e78e4fae4a88</guid>
+      <pubDate>Wed, 28 Oct 2026 10:40:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 28 Oct 2026 10:40:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 28 Oct 2026 10:40:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: rescue operation. [Since 10:40]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 10:40]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[50A: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -48,20 +61,6 @@
       <ext:starts_at>Wed, 28 Oct 2026 09:28:04 +0100</ext:starts_at>
       <description>Service from Josefstädter Straße. After a service obstruction, there are irregular intervals. [Since 09:21]</description>
       <content:encoded><![CDATA[Service from Josefstädter Straße. After a service obstruction, there are irregular intervals.<br/>[Since 09:21]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62: Impairment of the overhead line]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">6a60c3c3bb6e94ab36f2a36946e72c99747c72a8c52e393d187fc2c3e5ed0e7e</guid>
-      <pubDate>Wed, 28 Oct 2026 07:59:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 28 Oct 2026 08:32:13 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 28 Oct 2026 08:03:57 +0100</ext:starts_at>
-      <ext:ends_at>Wed, 28 Oct 2026 11:00:00 +0100</ext:ends_at>
-      <description>Service from Hofwiesengasse. [Since 07:59]</description>
-      <content:encoded><![CDATA[Service from Hofwiesengasse.<br/>[Since 07:59]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[16A: Zanaschkagasse]]></title>
