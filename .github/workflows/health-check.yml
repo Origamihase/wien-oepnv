@@ -3,7 +3,7 @@ name: Health check
 # Standalone watchdog for the data pipeline. It is intentionally ALLOWED to go
 # red: a failed scheduled run makes GitHub e-mail the maintainer (see the repo's
 # Watch / Actions notification settings — GitHub notifies the user who owns the
-# scheduled workflow). The readable diagnosis is printed in the run log and the
+# scheduled workflow, and for a run started by the Update run its actor). The readable diagnosis is printed in the run log and the
 # job summary, so the linked run tells you immediately WHAT broke.
 #
 # This workflow is fully independent of update-cycle.yml:
@@ -21,6 +21,18 @@ on:
     # e-mails while an outage persists (GitHub mails on every failed run,
     # there is no built-in dedupe).
     - cron: '0 */6 * * *'
+  # Once an hour, started by the Update run (operator decision 2026-10-28,
+  # card "Linie, Issue als Frühwarnung"): on 28.10.2026 GitHub started no
+  # scheduled run between 13:19 and 23:19 Vienna time, so the Stammstrecke
+  # outage from 15:00 never turned red. The Update run itself is carried by
+  # IFTTT every 30 minutes; the ``gate`` job below lets the first one of each
+  # hour through. A failed run started this way mails the actor of the Update
+  # run (the repository owner, who owns the IFTTT dispatch token). The cron
+  # above stays as the fallback when the Update run stops. While an outage
+  # lasts, a red run mails once an hour.
+  workflow_run:
+    workflows: ["Update cycle"]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -31,8 +43,34 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Two Update runs an hour, one Health check: an Update run that completes in
+  # the second half of the hour (UTC minute 30-59) is skipped. Schedule and
+  # manual runs always pass.
+  gate:
+    name: Once an hour
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    outputs:
+      run: ${{ steps.gate.outputs.run }}
+    steps:
+      - name: Decide
+        id: gate
+        env:
+          EVENT: ${{ github.event_name }}
+        run: |
+          minute=$(date -u +%M)
+          minute=${minute#0}
+          if [ "$EVENT" = "workflow_run" ] && [ "$minute" -ge 30 ]; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Second Update run of this hour (UTC minute $minute): no Health check."
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
   health:
     name: Probe sources & output freshness
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
     # Generous ceiling: three live source fetches (each retried internally,
     # hard-capped at HEALTH_FETCH_TIMEOUT_SECONDS=120s) plus two file reads

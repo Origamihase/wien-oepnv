@@ -219,6 +219,7 @@ def test_health_check_note_keeps_the_run_green(
     healthy = Check("Quelle", ok=True, summary="OK")
     target = "scripts.health_check"
     monkeypatch.setattr(f"{target}.check_source", lambda *_a, **_kw: healthy)
+    monkeypatch.setattr(f"{target}.assess_source", lambda probe, *_a: probe)
     monkeypatch.setattr(f"{target}.check_feed_freshness", lambda _now: healthy)
     monkeypatch.setattr(f"{target}.check_stations", lambda _now: healthy)
     monkeypatch.setattr(f"{target}.check_stammstrecke_abruf", lambda _now: healthy)

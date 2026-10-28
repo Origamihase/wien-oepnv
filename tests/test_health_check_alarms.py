@@ -196,6 +196,7 @@ def test_a_missing_run_report_is_red(repo: Path) -> None:
 def _all_green(monkeypatch: pytest.MonkeyPatch) -> None:
     healthy = hc.Check("OK", ok=True, summary="OK")
     monkeypatch.setattr(hc, "check_source", lambda *_a, **_kw: healthy)
+    monkeypatch.setattr(hc, "assess_source", lambda probe, *_a: probe)
     for name in (
         "check_feed_freshness",
         "check_stations",
@@ -339,3 +340,115 @@ def test_one_record_missing_is_a_note_beside_a_green_one(side_steps: Path) -> No
     check = hc.check_side_steps(_NOW)
     assert check.ok and check.note
     assert "Stationslauf: noch kein Stand" in check.detail
+
+
+# --- Quellen: three hours without a usable answer (decision 2026-10-28) ---
+
+
+def _watch_state(repo: Path, monkeypatch: pytest.MonkeyPatch, **fields: object) -> None:
+    state: dict[str, object] = {"updated": (_NOW - timedelta(minutes=5)).isoformat(), "fetch": {}}
+    state.update(fields)
+    path = repo / "data" / "feed_watch.json"
+    path.write_text(json.dumps(state), encoding="utf-8")
+    monkeypatch.setattr(hc, "FEED_WATCH_STATE", path)
+
+
+_OK_PROBE = hc.Check("Wiener Linien", ok=True, summary="OK — 105 Datensätze geholt")
+_BAD_PROBE = hc.Check("Wiener Linien", ok=False, summary="FEHLER — Abruf fehlgeschlagen (exit 1)",
+                      detail="502 Server Error: Bad Gateway")
+
+
+def test_a_source_without_an_answer_for_three_hours_is_red(
+    repo: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """WL 21.10.2026: 502 from 16:01 to 23:01; red from 19:01, whatever the probe sees."""
+    last_ok = _NOW - timedelta(hours=hc.SOURCE_STALE_H) - timedelta(minutes=1)
+    _watch_state(repo, monkeypatch, fetch={"wl": {"last_ok": last_ok.isoformat(), "last_exit": 1}})
+    for probe in (_BAD_PROBE, _OK_PROBE):
+        check = hc.assess_source(probe, "update_wl_cache.py", _NOW)
+        assert not check.ok
+        assert check.summary == (
+            "FEHLER — seit 3h 1m keine brauchbare Antwort im Update-Lauf (Grenze 3h 0m)"
+        )
+        assert check.detail.startswith("Stichprobe jetzt: ")
+
+
+def test_a_failed_probe_inside_three_hours_is_a_note(
+    repo: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A blip the next Update run already got past must not send a mail."""
+    last_ok = _NOW - timedelta(hours=hc.SOURCE_STALE_H) + timedelta(minutes=1)
+    _watch_state(repo, monkeypatch, fetch={"wl": {"last_ok": last_ok.isoformat()}})
+    check = hc.assess_source(_BAD_PROBE, "update_wl_cache.py", _NOW)
+    assert check.ok and check.note
+    assert "Stichprobe gescheitert" in check.summary
+    assert "502 Server Error" in check.detail
+
+
+def test_a_good_probe_and_a_fresh_record_stay_green(
+    repo: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _watch_state(repo, monkeypatch, fetch={"oebb": {"last_ok": _NOW.isoformat()}})
+    probe = hc.Check("ÖBB", ok=True, summary="OK — 9 Datensätze geholt")
+    assert hc.assess_source(probe, "update_oebb_cache.py", _NOW) == probe
+
+
+def test_failing_since_counts_before_the_first_good_answer(
+    repo: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    since = _NOW - timedelta(hours=4)
+    _watch_state(repo, monkeypatch, fetch={"baustellen": {"failing_since": since.isoformat(), "last_exit": 1}})
+    assert not hc.assess_source(_OK_PROBE, "update_baustellen_cache.py", _NOW).ok
+
+
+@pytest.mark.parametrize(
+    "fields",
+    [
+        {"error": "ValueError: x"},
+        {"updated": (_NOW - timedelta(hours=hc.FEED_MAX_AGE_H, minutes=1)).isoformat()},
+        {"fetch": {}},
+    ],
+    ids=["watcher-error", "stale-state", "no-entry"],
+)
+def test_without_a_trusted_record_the_probe_decides(
+    repo: Path, monkeypatch: pytest.MonkeyPatch, fields: dict[str, object]
+) -> None:
+    old = (_NOW - timedelta(hours=5)).isoformat()
+    _watch_state(repo, monkeypatch, **({"fetch": {"wl": {"last_ok": old}}} | fields))
+    assert hc.assess_source(_BAD_PROBE, "update_wl_cache.py", _NOW) == _BAD_PROBE
+    assert hc.assess_source(_OK_PROBE, "update_wl_cache.py", _NOW) == _OK_PROBE
+
+
+def test_main_judges_every_source_by_its_record(
+    repo: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """main() passes every probe through :func:`assess_source`."""
+    real_assess = hc.assess_source
+    _all_green(monkeypatch)
+    monkeypatch.setattr(hc, "assess_source", real_assess)
+    stale = (datetime.now(UTC) - timedelta(hours=5)).isoformat()
+    fresh = datetime.now(UTC).isoformat()
+    path = repo / "data" / "feed_watch.json"
+    path.write_text(json.dumps({"updated": fresh, "fetch": {
+        "wl": {"last_ok": stale, "last_exit": 1}, "oebb": {"last_ok": fresh}, "baustellen": {"last_ok": fresh},
+    }}), encoding="utf-8")
+    monkeypatch.setattr(hc, "FEED_WATCH_STATE", path)
+    assert hc.main() == 1
+    out = capsys.readouterr().out
+    assert "::error title=Health: OK::FEHLER — seit 5h 0m keine brauchbare Antwort" in out
+    assert out.count("::error") == 1
+
+
+def test_the_update_run_starts_the_health_check_once_an_hour() -> None:
+    """28.10.2026: no scheduled run from 13:19 to 23:19 Vienna, the outage never turned red."""
+    workflow = (Path(__file__).resolve().parents[1] / ".github/workflows/health-check.yml").read_text(
+        encoding="utf-8"
+    )
+    assert 'workflow_run:\n    workflows: ["Update cycle"]\n    types: [completed]' in workflow
+    assert "- cron: '0 */6 * * *'" in workflow  # fallback when the Update run stops
+    assert 'if [ "$EVENT" = "workflow_run" ] && [ "$minute" -ge 30 ]; then' in workflow
+    assert "needs: gate\n    if: needs.gate.outputs.run == 'true'" in workflow
+    cycle = (Path(__file__).resolve().parents[1] / ".github/workflows/update-cycle.yml").read_text(
+        encoding="utf-8"
+    )
+    assert cycle.startswith("name: Update cycle\n")

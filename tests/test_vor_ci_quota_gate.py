@@ -235,8 +235,15 @@ def test_health_check_never_calls_vao() -> None:
                    "_charge_one_request", "VorAuth", "accessId"):
         assert marker not in script, marker
     workflow = _strip_comments((WORKFLOW_DIR / "health-check.yml").read_text(encoding="utf-8"))
-    run_lines = [line.strip() for line in workflow.splitlines() if line.strip().startswith("run:")]
-    assert run_lines == ["run: python scripts/health_check.py"]
+    run_lines = [
+        line.strip()
+        for line in workflow.splitlines()
+        if line.strip().startswith("run:") and "${{" not in line  # not the gate's job output
+    ]
+    # Besides the check itself only the hourly gate (a shell clock test, 2026-10-28).
+    assert run_lines == ["run: |", "run: python scripts/health_check.py"]
+    for tool in ("curl", "wget", "python -c", "gh "):
+        assert tool not in workflow, tool
 
 
 def test_verify_script_names_the_reason_and_masks_the_key(

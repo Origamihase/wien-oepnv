@@ -40,6 +40,7 @@ darunter.
   - [Der VAO-„Start“-Vertrag (geprüft 2026-10-17)](#der-vao-start-vertrag-geprüft-2026-10-17)
   - [Überwachung: Abruf kaputt oder keine Züge (seit 2026-10-10)](#überwachung-abruf-kaputt-oder-keine-züge-seit-2026-10-10)
   - [Überwachung: Nebenschritte (seit 2026-10-28)](#überwachung-nebenschritte-seit-2026-10-28)
+  - [Alarmwege: rot, Issue, Hinweis (seit 2026-10-28)](#alarmwege-rot-issue-hinweis-seit-2026-10-28)
 - [8. Der zweisprachige Feed (DE → EN)](#8-der-zweisprachige-feed-de--en)
   - [Die beiden Invarianten](#die-beiden-invarianten)
   - [Was am Modell vorbeigeht](#was-am-modell-vorbeigeht)
@@ -2647,9 +2648,14 @@ Zukunft enger werden, sind die niedrig hängenden Hebel:
   API-Effekt, aber kleinere Antwort-Payloads).
 * Operating-Hours-Cadence im IFTTT-Applet (nur 04–23 Uhr statt
   ganztägig) — die Stammstrecke fährt zwischen 00:30 und 04:00 nur
-  ausgedünnt, das Monitoring liefert dort kaum Signal. Dann muss
-  `POLL_STALE_HOURS` (unten) über die nächtliche Pause gehoben werden,
-  sonst färbt die Pause den Health check rot.
+  ausgedünnt, das Monitoring liefert dort kaum Signal. Seit 2026-10-28
+  hängen daran alle Dauerschwellen, nicht nur `POLL_STALE_HOURS` (unten):
+  die drei Stunden aller vier Quellen und die vier Stunden Feed-Alter im
+  Health check, `quelle-ohne-antwort` (2 h) und `feed-alter` (90 min) im
+  Feed-Wächter. Ohne nächtliche Läufe startet auch der stündliche Health
+  check nicht, und der Rückfall-Cron fände einen alten Stand. Jede dieser
+  Regeln bräuchte eine Ausnahme für die Pause, sonst färbt sie den Health
+  check jede Nacht rot („Alarmwege“ in diesem Abschnitt).
 
 ### Der VAO-„Start“-Vertrag (geprüft 2026-10-17)
 
@@ -2810,6 +2816,73 @@ schickte keine Mail. Gemessen ist keiner gescheitert (Update-Läufe seit
   (Feld `error` in `data/feed_watch.json`); er endet in diesem Fall mit
   Exit-Code 0, damit die Veröffentlichung weiterläuft, und sein Schritt
   zählt deshalb als sauber.
+
+### Alarmwege: rot, Issue, Hinweis (seit 2026-10-28)
+
+Betreiberentscheidung (Michael, 2026-10-28, Karte „Linie, Issue als
+Frühwarnung“, auf seine Bitte „Finde eine klare Linie, damit dies in der
+Zukunft ein klares System hat“). Jede Prüfung beantwortet genau eine der
+drei Fragen und hat damit genau einen Weg:
+
+| Weg | Frage | Wer meldet | Fälle |
+| --- | --- | --- | --- |
+| **Rot** (GitHub-Mail) | Arbeitet die Technik nicht, und zwar anhaltend? | Health check (`scripts/health_check.py`), stündlich | Eine Quelle (WL, ÖBB, Baustellen, Stammstrecke) gab den Update-Läufen seit **3 h** keine brauchbare Antwort; der Feed ist seit **4 h** nicht neu gebaut; der Stationslauf ist älter als 8 Tage, ein Teilschritt scheiterte oder die Validierung fand Sicherheitsprobleme; eine Quelle des Stationslaufs antwortete seit 15 Tagen nicht; ein Nebenschritt scheiterte im letzten Lauf oder seine Aufzeichnung ist veraltet; der Feed-Wächter konnte nicht prüfen; ein Pflicht-Secret ist leer. |
+| **Issue** (Lauf bleibt grün) | Arbeitet die Technik, aber Feed-Inhalt oder Quelle sehen falsch aus? | Feed-Wächter (`scripts/feed_watch.py`), jeder Update-Lauf; je Regel ein Issue, das sich nach zwei sauberen Läufen selbst schließt | Die Inhaltsregeln (doppelter Eintrag, Anzahl, alte Meldung als neu, „Seit“ zu früh, ÖBB-Zweitsatz, Zeitzeile, Zeit vorbei, Länge, Höflichkeitssatz) und die Quellenregeln (`quelle-leer`, `quelle-einbruch`, `verwurf-sprung`). |
+| **Hinweis** (ℹ️, `::warning`) | Ist die Lage bekannt und verlangt nichts? | Health check | Eine stille Stammstrecken-Richtung, ein Korridor ohne Züge (die Website meldet ihn), eine gescheiterte Stichprobe, während die Update-Läufe noch Antworten bekommen, eine Aufzeichnung, die vor dem ersten Lauf noch fehlt. |
+
+**Frühwarnung:** Zwei Technikfälle melden zusätzlich früher ein Issue, bevor
+sie rot werden: `quelle-ohne-antwort` nach 2 h (rot nach 3 h) und
+`feed-alter` nach 90 min (rot nach 4 h). Andere Technikfälle bekommen kein
+Issue. Ein Inhaltsfund wird nie rot.
+
+**Für eine neue Prüfung:** Fragt sie, ob die Technik läuft, wird sie rot,
+mit einer Dauerschwelle, damit ein einzelner Aussetzer keine Mail
+auslöst. Fragt sie, ob das Ergebnis stimmt, wird sie eine Feed-Wächter-Regel
+mit Issue. Beschreibt sie eine bekannte Lage ohne Handlung, wird sie ein
+Hinweis. Die Frühwarnung bleibt den Technikfällen vorbehalten, die später
+rot werden.
+
+Umgesetzt mit dieser Entscheidung:
+
+* **Gleiche Regel für alle Quellen.** Vorher wurden WL, ÖBB und Baustellen
+  nur rot, wenn die eigene Stichprobe des Health checks im Moment seines
+  Laufs scheiterte: ein einzelner Aussetzer reichte, ein siebenstündiger
+  Ausfall (WL, 21.10.2026) wurde einmal rot, weil zufällig ein Lauf in ihn
+  fiel. Jetzt entscheidet, wann die Update-Läufe zuletzt eine brauchbare
+  Antwort bekamen (Exit-Code 0 des Abrufs, festgehalten vom Feed-Wächter in
+  `data/feed_watch.json` → `fetch`, `assess_source` in
+  `scripts/health_check.py`). Die Stichprobe entscheidet allein nur noch,
+  wenn dieser Stand nicht taugt (fehlt, veraltet, Wächter mit Fehler).
+* **Stündlicher Health check.** GitHub stellt den Cron des Health checks
+  unzuverlässig zu: Am 28.10.2026 lief er zwischen 13:19 und 23:19 nicht,
+  der Stammstrecken-Ausfall von 15:00 bis 23:00 wurde deshalb nie rot.
+  `health-check.yml` startet jetzt zusätzlich nach jedem Update-Lauf
+  (`workflow_run`); der Job `gate` lässt den ersten jeder Stunde durch
+  (UTC-Minute unter 30). Der Cron bleibt als Rückfall, falls der Update-Lauf
+  ausfällt. Während eines anhaltenden Ausfalls kommt jede Stunde eine Mail.
+
+Rückprüfung 01.09.–28.10.2026 (2 776 Update-Läufe mit Abruf, 1 388
+simulierte stündliche Prüfungen): Nach der neuen Regel wären es zehn rote
+Stunden gewesen, alle in den zwei echten langen Ausfällen: WL am 21.10.
+von 19:00 bis 23:00 und die Stammstrecke am 28.10. von 18:00 bis 22:00. Eine
+stündliche Stichprobe nach der alten Regel hätte 29-mal rot gemeldet, davon
+24-mal für Aussetzer, die der nächste Update-Lauf schon hinter sich hatte
+(ÖBB 15-mal, WL 8-mal, Baustellen einmal).
+
+**Nächtliche Betriebspause** (auf Michaels Hinweis „Vergiss die
+Betriebspause in der Nacht nicht“, 2026-10-28): Sie macht keine Prüfung
+rot, denn jede Regel misst die Antwort der Quelle, nie die Zahl der Züge
+oder Meldungen. Nachgemessen über die Läufe seit September: Die
+Stammstrecken-Abfrage bekam auch nachts alle 30 Minuten eine Antwort; von
+01:00 bis 03:00 war die Tafel 35-mal leer, was nach der Entscheidung vom
+2026-10-10 ein funktionierender Abruf ist (die Website nennt den Korridor
+ohne Züge). Die Update-Läufe kamen in 58 Nächten ohne Lücke über 45
+Minuten. WL und ÖBB lieferten nie eine leere Liste (mindestens 68 bzw. 9
+Meldungen im Cache). Eine leere Liste zählt beim Abruf als unbrauchbar
+(Exit 1) und würde nach 3 h rot; das passt, weil beide Quellen auch nachts
+Dauermeldungen führen. Die Richtungsprüfung der Stammstrecke vergleicht die
+Richtungen miteinander und ist deshalb nachts ruhig (siehe oben). Fällt eine
+Quelle nachts wirklich aus, kommt die Mail wie tagsüber jede Stunde.
 
 ---
 

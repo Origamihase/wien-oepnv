@@ -10,6 +10,34 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Eine Linie für rot, Issue und Hinweis; Health check stündlich
+  (2026-10-28)**: Auf Michaels Bitte „Finde eine klare Linie, damit dies in
+  der Zukunft ein klares System hat“ wählte er die Karte „Linie, Issue als
+  Frühwarnung“. Rot heißt: Die Technik arbeitet anhaltend nicht. Ein Issue
+  des Feed-Wächters heißt: Die Technik arbeitet, aber Inhalt oder Quelle
+  sehen falsch aus. Ein Hinweis beschreibt eine bekannte Lage. Tabelle und
+  Regel für neue Prüfungen: `docs/architecture.md`, §7, „Alarmwege: rot,
+  Issue, Hinweis“.
+  - *Gleiche Regel für alle Quellen:* WL, ÖBB und Baustellen werden wie die
+    Stammstrecke rot, wenn die Update-Läufe seit drei Stunden keine
+    brauchbare Antwort bekamen (`assess_source` in
+    `scripts/health_check.py`, Abrufstand aus `data/feed_watch.json`).
+    Vorher entschied die Stichprobe im Moment des Health checks: ein
+    einzelner Aussetzer wurde rot, der siebenstündige WL-Ausfall vom 21.10.
+    nur einmal. Eine gescheiterte Stichprobe innerhalb der drei Stunden ist
+    jetzt ein Hinweis.
+  - *Stündlich:* `health-check.yml` startet zusätzlich nach dem ersten
+    Update-Lauf jeder Stunde (`workflow_run`, Job `gate`). Am 28.10. kam
+    zwischen 13:19 und 23:19 kein geplanter Lauf, der Stammstrecken-Ausfall
+    ab 15:00 wurde deshalb nie rot. Der Cron bleibt als Rückfall.
+  - *Frühwarnung:* `quelle-ohne-antwort` (2 h) und `feed-alter` (90 min)
+    bleiben Issues vor dem Rot.
+  - *Rückprüfung* 01.09.–28.10. (2 776 Update-Läufe, 1 388 stündliche
+    Prüfungen): zehn rote Stunden, alle in den zwei echten langen Ausfällen
+    (WL 21.10. 19:00–23:00, Stammstrecke 28.10. 18:00–22:00). Die nächtliche
+    Betriebspause macht nichts rot (auf Michaels Hinweis nachgemessen): Die
+    Quellen antworten auch nachts alle 30 Minuten, eine leere
+    Stammstrecken-Tafel zählt als funktionierender Abruf.
 * **VAO-API auf v1.12.0, weil die VAO v1.13.0 zurückzog (2026-10-28)**: Seit
   28.10. 15:00 scheiterte jeder Stammstrecken-Abruf (letzter guter 14:30,
   Feed-Wächter-Issue #2080). Die neue Fehlerzeile der CI-Probe zeigte den
