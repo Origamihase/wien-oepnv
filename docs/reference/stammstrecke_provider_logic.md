@@ -131,6 +131,12 @@ ISO 8601 `Europe/Vienna`).
   ausgeschlossen (sie zählen ausschließlich in `ausfaelle_<YYYY>.csv`).
 * Departures ohne `rtTime` werden vom Aggregat ausgeschlossen — `0`
   einzusetzen würde den Mittelwert systematisch nach unten ziehen.
+* Eine Echtzeit zwölf Stunden oder mehr neben dem Plan gilt als keine
+  Echtzeit (`IMPLAUSIBLE_DELAY`, seit 27.10.2026): Am 08.06.2026 um
+  20:00 gab VAO drei Zügen Richtung Praterstern eine Echtzeit am
+  Folgetag (1160 bis 1199 Minuten); ihre Tickzeile mit 395,33 Minuten
+  war das Jahresmaximum auf der Website und ist aus dem Ledger
+  gestrichen. Der Zug behält die Lesung eines früheren Ticks.
 * Pures `0`-Delay aus tatsächlich verspätungsfreien Fahrten zählt
   vollwertig.
 

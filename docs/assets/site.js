@@ -139,7 +139,7 @@
     "stoerungen-sub-html":
       "Yearly ledger from " +
       "<code>data/stats/stoerungen_<span data-year-label>–</span>.csv</code> " +
-      "– one row per newly recognised event identity. " +
+      "– one row per occurrence of a notice in the feed. " +
       "Sources: Wiener Linien, ÖBB, City of Vienna and VOR/VAO, each notice under its own.",
     "aria-stoerungen-kpis": "Disruption key figures",
     "card-by-provider": "Distribution by source",

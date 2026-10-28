@@ -265,3 +265,60 @@ def test_an_incident_after_the_night_is_still_a_new_occurrence() -> None:
     state = {"gu4": _entry(_NIGHT_FIRST, last_seen=datetime(2026, 10, 2, 22, 31, tzinfo=UTC))}
     moved = bf._restart_recurring_occurrences([item], state, _NIGHT_PUB + timedelta(minutes=20))
     assert moved == 1
+
+
+def test_a_new_occurrence_is_counted_once_when_it_reaches_the_feed() -> None:
+    # 25.10.2026: "U6: Rettungseinsatz" (07:47) carried the guid of the U6
+    # rescue of 23.10.; the feed showed it as new, the statistics did not count it.
+    pub = NOW - timedelta(minutes=18)
+    state = {"gu6": _entry(datetime(2026, 9, 23, 8, 12, tzinfo=UTC))}
+    item = _item("U6: Rettungseinsatz", "gu6", pub)
+
+    bf._restart_recurring_occurrences([item], state, NOW)
+    with patch.object(bf, "append_disruption_row") as append:
+        bf._update_item_state(item, NOW, state)
+        bf._update_item_state(item, NOW, state)  # the English pass
+        bf._update_item_state(item, NOW + timedelta(minutes=30), state)
+
+    assert append.call_count == 1
+    assert "new_occurrence" not in state["gu6"]
+
+
+def test_a_continuing_occurrence_is_not_counted_again() -> None:
+    pub = datetime(2026, 9, 22, 22, 0, 28, tzinfo=UTC)
+    first = datetime(2026, 9, 14, 2, 30, tzinfo=UTC)
+    state = {"g25": _entry(first, last_seen=pub - timedelta(minutes=30))}
+    item = _item("25: Linie 26E hält Donaufelder Straße 148", "g25", pub)
+
+    bf._restart_recurring_occurrences([item], state, NOW)
+    with patch.object(bf, "append_disruption_row") as append:
+        bf._update_item_state(item, NOW, state)
+
+    assert append.call_count == 0
+
+
+def test_a_restarted_occurrence_off_the_feed_is_counted_when_shown() -> None:
+    # Restarted while below the ten slots: counted on its first emission,
+    # not lost and not counted twice by a later build.
+    pub = NOW - timedelta(minutes=18)
+    state = {"g12": _entry(datetime(2026, 9, 20, 18, 1, tzinfo=UTC))}
+    item = _item("12: Feuerwehreinsatz", "g12", pub)
+
+    bf._restart_recurring_occurrences([item], state, NOW)
+    bf._restart_recurring_occurrences([item], state, NOW + timedelta(minutes=30))
+    with patch.object(bf, "append_disruption_row") as append:
+        bf._update_item_state(item, NOW + timedelta(hours=1), state)
+        bf._update_item_state(item, NOW + timedelta(hours=2), state)
+
+    assert append.call_count == 1
+
+
+def test_a_strictly_new_disruption_is_still_counted() -> None:
+    state: dict[str, dict[str, Any]] = {}
+    item = _item("13A: Falschparker", "g13", NOW - timedelta(minutes=5))
+
+    with patch.object(bf, "append_disruption_row") as append:
+        bf._update_item_state(item, NOW, state)
+        bf._update_item_state(item, NOW, state)
+
+    assert append.call_count == 1

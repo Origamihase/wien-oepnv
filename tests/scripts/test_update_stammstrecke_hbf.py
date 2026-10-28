@@ -173,6 +173,48 @@ def test_departure_delay_minutes_truncates_seconds() -> None:
     assert script._departure_delay_minutes(dep) == 0.0
 
 
+def test_departure_delay_minutes_refuses_a_reading_a_day_off() -> None:
+    """08.06.2026 20:00: REX3 20:20 with a real time 1199 minutes later.
+
+    A reading twelve hours or more from the plan is no delay; the train keeps
+    the reading of an earlier tick instead of a 395-minute tick mean.
+    """
+
+    dep = {
+        "date": "2026-06-08",
+        "time": "20:20:00",
+        "rtDate": "2026-06-09",
+        "rtTime": "16:19:00",
+    }
+    assert script._departure_delay_minutes(dep) is None
+    dep_early = {
+        "date": "2026-06-08",
+        "time": "20:20:00",
+        "rtDate": "2026-06-08",
+        "rtTime": "08:20:00",
+    }
+    assert script._departure_delay_minutes(dep_early) is None
+
+
+def test_departure_delay_minutes_keeps_a_long_real_delay() -> None:
+    """The largest plausible reading of the year (85 min) and far more stay."""
+
+    dep = {
+        "date": "2026-09-06",
+        "time": "01:12:00",
+        "rtDate": "2026-09-06",
+        "rtTime": "02:37:00",
+    }
+    assert script._departure_delay_minutes(dep) == 85.0
+    dep_long = {
+        "date": "2026-06-08",
+        "time": "20:20:00",
+        "rtDate": "2026-06-09",
+        "rtTime": "08:19:00",
+    }
+    assert script._departure_delay_minutes(dep_long) == 719.0
+
+
 def test_departure_delay_minutes_skips_when_rttime_missing() -> None:
     """No realtime signal → ``None`` (NOT zero — that would bias the sample)."""
 

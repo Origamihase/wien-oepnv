@@ -269,6 +269,10 @@ HAUPTBAHNHOF_VOR_ID: Final = "490134900"
 # not a script-tuning issue.
 DEPARTURE_BOARD_DURATION_MIN: Final = 45
 
+# A real-time reading at least this far from the plan is no delay reading
+# (see :func:`_departure_delay_minutes`).
+IMPLAUSIBLE_DELAY: Final = timedelta(hours=12)
+
 # ---- Stammstrecke platform (Bahnsteig) filter -----------------------------
 #
 # Wien Hauptbahnhof's track layout dedicates two platforms to the S-Bahn
@@ -723,6 +727,19 @@ def _departure_delay_minutes(dep: Mapping[str, Any]) -> float | None:
     # true small negative value (≈ −11 min) instead of ~+1429 min.
     elif rt_date_explicit is None and (actual - scheduled) > timedelta(hours=12):
         actual = actual - timedelta(days=1)
+
+    # A real-time reading twelve hours or more from the plan is not this
+    # train's delay; the same twelve hours the wrap above uses to tell a
+    # small early or late departure from another day. On 08.06.2026 the
+    # 20:00 board gave three Praterstern trains (S2 20:15, REX3 20:20,
+    # S3 20:27) a real time about 20 hours after the plan (1160, 1199 and
+    # 1196 minutes), with the next day as ``rtDate``; their tick row read
+    # 395.33 minutes, the year's maximum on the website, and lifted the
+    # 20h and Monday means. The largest reading besides them was 85
+    # minutes. Such an entry counts as one without a real-time reading:
+    # the train keeps the last plausible reading of an earlier tick.
+    if abs(actual - scheduled) >= IMPLAUSIBLE_DELAY:
+        return None
 
     return _elapsed_minutes(scheduled, actual)
 
@@ -1497,6 +1514,7 @@ __all__ = [
     "DIRECTION_LABEL_SOUTHBOUND",
     "HAUPTBAHNHOF_VOR_ID",
     "HBF_REFERENCE_LATITUDE",
+    "IMPLAUSIBLE_DELAY",
     "LEGACY_DIRECTION_LABEL_NORTHBOUND",
     "STAMMSTRECKE_HBF_TRACK_TRUNKS",
     "main",
