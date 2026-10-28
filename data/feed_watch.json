@@ -1,13 +1,25 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-28T13:31:02.379502+00:00",
- "built": "2026-10-28T14:30:53+01:00",
+ "updated": "2026-10-28T14:01:18.447423+00:00",
+ "built": "2026-10-28T15:01:03+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-28T14:30:53+01:00",
+  "built": "2026-10-28T15:01:03+01:00",
   "items": [
+   {
+    "title": "25/59A: Verkehrsüberlastung",
+    "time_line": "Seit 14:57"
+   },
+   {
+    "title": "10: Fremder Verkehrsunfall",
+    "time_line": "Seit 14:31"
+   },
+   {
+    "title": "46: Fremder Verkehrsunfall",
+    "time_line": "Seit 14:31"
+   },
    {
     "title": "16A: Zanaschkagasse",
     "time_line": "Seit heute"
@@ -35,43 +47,11 @@
    {
     "title": "N81R/N81: Bauarbeiten",
     "time_line": "Bis Fr 30.10."
-   },
-   {
-    "title": "S2: Wien Leopoldau ↔ Mistelbach",
-    "time_line": "Bis So 01.11."
-   },
-   {
-    "title": "S1: Wien Leopoldau ↔ Deutsch Wagram",
-    "time_line": "Bis 28.11."
-   },
-   {
-    "title": "11A/78A: Straßenbauarbeiten",
-    "time_line": "Bis Mo 02.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-21T13:31:16.137980+00:00",
-   "raw": {
-    "wl-stoerungen": 97,
-    "wl-hinweise": 95,
-    "oebb": 165,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 17,
-    "oebb": 140,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 116
-   }
-  },
   {
    "t": "2026-10-21T14:01:53.471752+00:00",
    "raw": {
@@ -6791,17 +6771,37 @@
     "oebb": 9,
     "wl": 102
    }
+  },
+  {
+   "t": "2026-10-28T14:01:18.447423+00:00",
+   "raw": {
+    "wl-stoerungen": 94,
+    "wl-hinweise": 81,
+    "oebb": 154,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 19
+   },
+   "discarded": {
+    "wl": 11,
+    "oebb": 129,
+    "baustellen": 65
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 112
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-28T13:31:02.379502+00:00"
+   "last_ok": "2026-10-28T14:01:18.447423+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-28T13:31:02.379502+00:00"
+   "last_ok": "2026-10-28T14:01:18.447423+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-28T13:31:02.379502+00:00"
+   "last_ok": "2026-10-28T14:01:18.447423+00:00"
   }
  }
 }

@@ -782,6 +782,58 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10: Fremder Verkehrsunfall",
+    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a353875670c81bfb8e057d43db548115ca6c84c08a4b6f4e5ddfed91706f0a44",
+    "pubDate": "2026-10-28T14:31:00+01:00",
+    "starts_at": "2026-10-28T14:31:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=10|D=2026-10-28|TK=10 fremder verkehrsunfall",
+    "_wl_ids": [
+      "I20261028-0015"
+    ],
+    "_incident_start": "2026-10-28T14:31:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "537e1c6887b1c4413eea88250c3abf02adc575a540ab895807090cae43d76a2a",
+    "pubDate": "2026-10-28T14:33:04+01:00",
+    "starts_at": "2026-10-28T14:33:04+01:00",
+    "ends_at": "2026-10-28T15:32:00+01:00",
+    "_identity": "wl|störung|L=10|D=2026-10-28|TK=fahrtbehinderung fremder verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Fremdunfall Betrieb ab Joachimsthalerplatz",
+    "description": "Fremdunfall\nBetrieb ab Joachimsthalerplatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "913a28ccae617036ff2b170673fe1d372358b09ec0e813dfd6cd047c8e18ed3b",
+    "pubDate": "2026-10-28T14:33:04+01:00",
+    "starts_at": "2026-10-28T14:39:35+01:00",
+    "ends_at": "2026-10-28T18:15:00+01:00",
+    "_identity": "wl|störung|L=10|D=2026-10-28|TK=fremdunfall betrieb ab joachimsthalerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Fremdunfall Betrieb ab Schloss Schönbrunn",
+    "description": "Fremdunfall\nBetrieb ab Schloss Schönbrunn",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "78d046015e276d53d4ff727e96ca38403166a0929d6bbddb75c43771454dd3cd",
+    "pubDate": "2026-10-28T14:40:05+01:00",
+    "starts_at": "2026-10-28T14:40:05+01:00",
+    "ends_at": "2026-10-28T17:45:00+01:00",
+    "_identity": "wl|störung|L=10|D=2026-10-28|TK=fremdunfall betrieb ab schloss schönbrunn"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "11A: Busse halten Meiereistraße gegenüber 12",
     "description": "Bauarbeiten\nBusse halten Meiereistraße gegenüber 12",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -942,6 +994,22 @@
     "starts_at": "2026-10-25T00:00:16+02:00",
     "ends_at": "2026-10-28T23:59:59+01:00",
     "_identity": "wl|störung|L=25|D=2026-10-25|TK=züge halten donaufelder strasse 175 177"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Verkehrsüberlastung",
+    "description": "Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "62c5e9c1c0c655ea521db3e316a70d2b887413d4b6dbdb0b6a2672ae4379c799",
+    "pubDate": "2026-10-28T14:57:00+01:00",
+    "starts_at": "2026-10-28T14:57:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=25|D=2026-10-28|TK=25 verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261028-0016"
+    ],
+    "_incident_start": "2026-10-28T14:57:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1110,6 +1178,58 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "46: Fremder Verkehrsunfall",
+    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "eed4ea629d44bb9f67a32b24760e7fc7e9fbb8fab9efd3a43457846fae26b28d",
+    "pubDate": "2026-10-28T14:31:00+01:00",
+    "starts_at": "2026-10-28T14:31:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=46|D=2026-10-28|TK=46 fremder verkehrsunfall",
+    "_wl_ids": [
+      "I20261028-0015"
+    ],
+    "_incident_start": "2026-10-28T14:31:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "46: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ca3f320972243b037074321441d828580185f68cae3de0b8d41ea5abc0bd3d31",
+    "pubDate": "2026-10-28T14:34:04+01:00",
+    "starts_at": "2026-10-28T14:34:05+01:00",
+    "ends_at": "2026-10-28T15:33:00+01:00",
+    "_identity": "wl|störung|L=46|D=2026-10-28|TK=fahrtbehinderung fremder verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "46: Fremdunfall Betrieb ab Breitensee",
+    "description": "Fremdunfall\nBetrieb ab Breitensee",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0a101c80ca3318c37cd50df2baf56e7157dda99a0b67ecb7e3498b0f4d502abb",
+    "pubDate": "2026-10-28T14:37:35+01:00",
+    "starts_at": "2026-10-28T14:37:35+01:00",
+    "ends_at": "2026-10-28T18:30:00+01:00",
+    "_identity": "wl|störung|L=46|D=2026-10-28|TK=fremdunfall betrieb ab breitensee"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "46: Fremdunfall Betrieb ab Joachimsthalerplatz",
+    "description": "Fremdunfall\nBetrieb ab Joachimsthalerplatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1e6454d47a337c0a1c2dac7a280534da56bf62cdd8a1bd71eaf236830b92c4f9",
+    "pubDate": "2026-10-28T14:34:04+01:00",
+    "starts_at": "2026-10-28T14:38:06+01:00",
+    "ends_at": "2026-10-28T18:15:00+01:00",
+    "_identity": "wl|störung|L=46|D=2026-10-28|TK=fremdunfall betrieb ab joachimsthalerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "52: Züge halten bei Linien 6 und 18",
     "description": "Züge halten\nbei Linien 6 und 18",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1118,6 +1238,22 @@
     "starts_at": "2026-10-24T00:00:29+02:00",
     "ends_at": "2026-10-28T23:59:59+01:00",
     "_identity": "wl|störung|L=52|D=2026-10-24|TK=züge halten bei linien 6 und 18"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "59A: Verkehrsüberlastung",
+    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
+    "pubDate": "2026-10-28T14:58:00+01:00",
+    "starts_at": "2026-10-28T14:58:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=59A|D=2026-10-28|TK=59a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261028-0017"
+    ],
+    "_incident_start": "2026-10-28T14:58:00+01:00"
   },
   {
     "source": "Wiener Linien",

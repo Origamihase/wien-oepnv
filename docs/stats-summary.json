@@ -54,12 +54,12 @@
     },
     "total": 1928
   },
-  "generated_at": "2026-10-28T14:31:00+01:00",
+  "generated_at": "2026-10-28T15:01:16+01:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.91,
     "by_direction": {
-      "Meidling": 6853,
+      "Meidling": 6854,
       "Praterstern": 3830
     },
     "by_hour_avg": {
@@ -92,7 +92,7 @@
       "Di": 0.99,
       "Do": 0.92,
       "Fr": 0.93,
-      "Mi": 1.22,
+      "Mi": 1.21,
       "Mo": 1.02,
       "Sa": 0.66,
       "So": 0.68
@@ -101,13 +101,13 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-10-28T14:25:00+01:00",
+          "last_seen": "2026-10-28T14:55:00+01:00",
           "peer_rows_since": 0,
           "rows_in_window": 1192
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 3003,
+          "peer_rows_since": 3004,
           "rows_in_window": 0
         }
       },
@@ -127,7 +127,7 @@
     "max_delay_minutes": 203.0,
     "threshold_exceedances": 135,
     "threshold_minutes": 9.0,
-    "total_observations": 10683
+    "total_observations": 10684
   },
   "stoerungen": {
     "by_hour": {
@@ -146,7 +146,7 @@
       "12": 289,
       "13": 303,
       "14": 286,
-      "15": 313,
+      "15": 316,
       "16": 303,
       "17": 231,
       "18": 277,
@@ -159,19 +159,19 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 180,
       "VOR/VAO": 11,
-      "Wiener Linien": 4171,
+      "Wiener Linien": 4174,
       "ÖBB": 306
     },
     "by_weekday": {
       "Di": 716,
       "Do": 718,
       "Fr": 757,
-      "Mi": 693,
+      "Mi": 696,
       "Mo": 657,
       "Sa": 586,
       "So": 541
     },
-    "total": 4668
+    "total": 4671
   },
   "year": 2026
 }
