@@ -109,6 +109,13 @@ am TV steht.
 | `verwurf-sprung` | Quelle | der Anteil der beim Abruf verworfenen Meldungen (`data/raw/*/verworfen.json`) um mehr als 25 Prozentpunkte von seinem Median der letzten sieben Tage abweicht | — |
 | `feed-alter` | Betrieb | der Feed beim Lauf des Wächters älter als 90 Minuten ist | — |
 
+`quelle-ohne-antwort` und `feed-alter` sind Frühwarnungen (Betreiberentscheidung 2026-10-28, Karte
+„Linie, Issue als Frühwarnung“): Ihr Issue kommt vor dem Rot des Health checks, der eine Quelle nach
+drei Stunden ohne brauchbare Antwort und einen Feed nach vier Stunden ohne Bau rot färbt. Der Health
+check liest dafür den Abrufstand, den der Wächter in `data/feed_watch.json` unter `fetch` festhält.
+Alle anderen Regeln prüfen Inhalt oder Quelle und werden nie rot. Die ganze Linie (rot, Issue,
+Hinweis): [`architecture.md`](../architecture.md), §7, „Alarmwege: rot, Issue, Hinweis“.
+
 Die Quellen-Regeln außer `quelle-ohne-antwort` brauchen mindestens 24 Läufe der letzten sieben Tage als
 Vergleich; nach dem ersten Lauf schweigen sie also rund zwölf Stunden.
 `seit-zu-frueh` braucht den vorigen Bau und greift ab dem zweiten Lauf.

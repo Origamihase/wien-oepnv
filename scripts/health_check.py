@@ -31,6 +31,12 @@ It runs two complementary kinds of checks and shows a third:
    The updaters write into the ephemeral runner checkout's ``cache/`` dir;
    nothing is committed (the workflow has ``contents: read``).
 
+   Since 2026-10-28 the probe alone no longer turns a source red: red is a
+   source the Update runs got no usable answer from for three hours, as
+   recorded by the Feed-Wächter (:func:`assess_source`); a failed probe
+   inside that window is a note. The probe decides alone only when that
+   record cannot be trusted.
+
 2. **Aktualität der Outputs (Frische).** Reads the committed artefacts and
    verifies they are still being refreshed. A dead source alone does NOT trip
    the freshness check (the build happily reuses the last cache — exactly why
@@ -137,6 +143,17 @@ UPDATERS: list[tuple[str, str]] = [
     ("ÖBB", "update_oebb_cache.py"),
     ("Baustellen (OGD)", "update_baustellen_cache.py"),
 ]
+# Key of each updater in the Feed-Wächter's record of the Update runs'
+# fetch exit codes (``data/feed_watch.json`` → ``fetch``).
+FETCH_KEYS: dict[str, str] = {
+    "update_wl_cache.py": "wl",
+    "update_oebb_cache.py": "oebb",
+    "update_baustellen_cache.py": "baustellen",
+}
+# A source is red once the Update runs have had no usable answer from it for
+# this long: the same three hours as the Stammstrecke poll (operator decision
+# 2026-10-28, see :func:`assess_source`).
+SOURCE_STALE_H = _env_float("HEALTH_SOURCE_STALE_HOURS", 3.0)
 
 # Pull the item count out of either updater's success line:
 #   "Updated ÖBB cache with 17 events."  /  "Cache mit 27 Einträgen aktualisiert."
@@ -297,6 +314,70 @@ def check_source(name: str, script: str) -> Check:
         summary=f"FEHLER — Abruf fehlgeschlagen (exit {rc})",
         detail=_extract_reason(output),
     )
+
+
+def _fetch_record(key: str | None, now: datetime) -> datetime | None:
+    """Last usable answer the Update runs got from a source, or ``None``.
+
+    Read from the Feed-Wächter's record of the fetch exit codes (exit 0 =
+    usable answer). ``None`` when the record cannot be trusted: no key, no
+    readable state, a watcher that could not check, or a state older than
+    :data:`FEED_MAX_AGE_H` (then ``Feed-Build`` or ``Feed-Wächter`` is red on
+    its own). Before the first usable answer the watcher saw, the time of the
+    first failure stands in, as in the watcher's own rule.
+    """
+    if key is None:
+        return None
+    data = read_capped_json(FEED_WATCH_STATE, label="feed_watch")
+    if not isinstance(data, dict) or data.get("error"):
+        return None
+    updated = _parse_utc(data.get("updated"))
+    if updated is None or (now - updated).total_seconds() > FEED_MAX_AGE_H * 3600:
+        return None
+    fetch = data.get("fetch")
+    entry = fetch.get(key) if isinstance(fetch, dict) else None
+    if not isinstance(entry, dict):
+        return None
+    return _parse_utc(entry.get("last_ok")) or _parse_utc(entry.get("failing_since"))
+
+
+def assess_source(probe: Check, script: str, now: datetime) -> Check:
+    """Red when the Update runs got no usable answer for :data:`SOURCE_STALE_H`.
+
+    Operator decision 2026-10-28 (card "Linie, Issue als Frühwarnung"): red
+    means the technology does not work, and every source gets the same
+    three-hour rule as the Stammstrecke poll. Before, Wiener Linien, ÖBB and
+    Baustellen were red only when this check's own probe failed at the very
+    moment it ran: a seven-hour WL outage on 21.10.2026 turned one run red by
+    chance, a short blip could do the same. Now the probe decides only when
+    the Update runs' record cannot be trusted (:func:`_fetch_record`); a
+    failed probe within the three hours is a note. The Feed-Wächter still
+    opens its issue "Quelle ohne frische Antwort" after two hours, as the
+    early warning.
+    """
+    last_ok = _fetch_record(FETCH_KEYS.get(script), now)
+    if last_ok is None:
+        return probe
+    age_s = (now - last_ok).total_seconds()
+    probe_text = probe.summary + (f" — {probe.detail}" if probe.detail else "")
+    if age_s >= SOURCE_STALE_H * 3600:
+        return Check(
+            probe.name,
+            ok=False,
+            summary=f"FEHLER — seit {_fmt_age(age_s)} keine brauchbare Antwort im "
+            f"Update-Lauf (Grenze {_fmt_age(SOURCE_STALE_H * 3600)})",
+            detail=f"Stichprobe jetzt: {probe_text}",
+        )
+    if not probe.ok:
+        return Check(
+            probe.name,
+            ok=True,
+            note=True,
+            summary=f"HINWEIS — Stichprobe gescheitert, letzte brauchbare Antwort im "
+            f"Update-Lauf vor {_fmt_age(age_s)}",
+            detail=probe_text,
+        )
+    return probe
 
 
 def _fmt_age(seconds: float) -> str:
@@ -839,7 +920,7 @@ def _render_markdown(
 def main() -> int:
     now = datetime.now(UTC)
 
-    sources = [check_source(name, script) for name, script in UPDATERS]
+    sources = [assess_source(check_source(name, script), script, now) for name, script in UPDATERS]
     outputs = [
         check_feed_freshness(now),
         check_stations(now),
