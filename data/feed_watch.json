@@ -1,28 +1,32 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-28T16:31:22.054401+00:00",
- "built": "2026-10-28T17:31:04+01:00",
+ "updated": "2026-10-28T17:01:06.294667+00:00",
+ "built": "2026-10-28T18:00:51+01:00",
  "findings": [
   {
    "rule": "quelle-ohne-antwort",
    "title": "Quelle ohne frische Antwort",
    "rank": "Quelle",
    "subject": "Stammstrecke (VAO)",
-   "text": "letzter erfolgreicher Abruf 28.10. 14:30, vor 3 h 00 min; letzter Versuch 17:31: error ValueError"
+   "text": "letzter erfolgreicher Abruf 28.10. 14:30, vor 3 h 30 min; letzter Versuch 18:00: error ValueError"
   }
  ],
  "rules": {
   "quelle-ohne-antwort": {
    "since": "2026-10-28T15:31:00.854907+00:00",
-   "last": "2026-10-28T16:31:22.054401+00:00",
+   "last": "2026-10-28T17:01:06.294667+00:00",
    "held_runs": 0,
    "issue": 2080
   }
  },
  "previous_feed": {
-  "built": "2026-10-28T17:31:04+01:00",
+  "built": "2026-10-28T18:00:51+01:00",
   "items": [
+   {
+    "title": "O: Verspätungen",
+    "time_line": "Seit 17:45"
+   },
    {
     "title": "37: Fremder Verkehrsunfall",
     "time_line": "Seit 17:23"
@@ -30,14 +34,6 @@
    {
     "title": "U6: Schadhaftes Fahrzeug",
     "time_line": "Seit 17:22"
-   },
-   {
-    "title": "18: Verkehrsunfall",
-    "time_line": "Seit 17:01"
-   },
-   {
-    "title": "60: Verkehrsunfall",
-    "time_line": "Seit 15:56"
    },
    {
     "title": "10/46: Fremdunfall",
@@ -62,31 +58,15 @@
    {
     "title": "40A: Bauernfeldplatz",
     "time_line": "Seit 27.10."
+   },
+   {
+    "title": "N81R/N81: Bauarbeiten",
+    "time_line": "Bis Fr 30.10."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-21T16:31:51.133539+00:00",
-   "raw": {
-    "wl-stoerungen": 97,
-    "wl-hinweise": 95,
-    "oebb": 167,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 17,
-    "oebb": 141,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 116
-   }
-  },
   {
    "t": "2026-10-21T17:01:50.701412+00:00",
    "raw": {
@@ -6806,17 +6786,37 @@
     "oebb": 9,
     "wl": 113
    }
+  },
+  {
+   "t": "2026-10-28T17:01:06.294667+00:00",
+   "raw": {
+    "wl-stoerungen": 91,
+    "wl-hinweise": 82,
+    "oebb": 157,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 19
+   },
+   "discarded": {
+    "wl": 11,
+    "oebb": 132,
+    "baustellen": 65
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 110
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-28T16:31:22.054401+00:00"
+   "last_ok": "2026-10-28T17:01:06.294667+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-28T16:31:22.054401+00:00"
+   "last_ok": "2026-10-28T17:01:06.294667+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-28T16:31:22.054401+00:00"
+   "last_ok": "2026-10-28T17:01:06.294667+00:00"
   }
  }
 }
