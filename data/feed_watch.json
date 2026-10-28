@@ -1,17 +1,13 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-28T06:01:12.017826+00:00",
- "built": "2026-10-28T07:01:00+01:00",
+ "updated": "2026-10-28T06:30:51.333569+00:00",
+ "built": "2026-10-28T07:30:46+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-28T07:01:00+01:00",
+  "built": "2026-10-28T07:30:46+01:00",
   "items": [
-   {
-    "title": "62: Verspätungen",
-    "time_line": "Seit 05:56"
-   },
    {
     "title": "40A: Bauarbeiten",
     "time_line": "Heute"
@@ -47,6 +43,10 @@
    {
     "title": "11A/78A: Straßenbauarbeiten",
     "time_line": "Bis Mo 02.11."
+   },
+   {
+    "title": "64A/N64R: Erlaaer Spitz",
+    "time_line": "Seit 22.10."
    }
   ]
  },
@@ -6771,17 +6771,37 @@
     "oebb": 9,
     "wl": 104
    }
+  },
+  {
+   "t": "2026-10-28T06:30:51.333569+00:00",
+   "raw": {
+    "wl-stoerungen": 66,
+    "wl-hinweise": 83,
+    "oebb": 161,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 20
+   },
+   "discarded": {
+    "wl": 11,
+    "oebb": 136,
+    "baustellen": 66
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 103
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-28T06:01:12.017826+00:00"
+   "last_ok": "2026-10-28T06:30:51.333569+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-28T06:01:12.017826+00:00"
+   "last_ok": "2026-10-28T06:30:51.333569+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-28T06:01:12.017826+00:00"
+   "last_ok": "2026-10-28T06:30:51.333569+00:00"
   }
  }
 }
