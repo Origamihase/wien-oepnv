@@ -602,18 +602,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "7A: Bauarbeiten",
-    "description": "<h2>Bauarbeiten</h2><p>Wegen Bauarbeiten im Bereich Neilreichgasse # Davidgasse wird die Linie 7A umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Ab Mittwoch, 14. Oktober 2026, Betriebsbeginn, bis Mittwoch, 28 Oktober 2026, etwa 07:00 Uhr</p><p><strong><u>Maßnahmen:<br></u>Linie 7A in Richtung Meidling Hauptstraße U<br></strong>Umleitung ab Neilreichgasse # Davidgasse über Neilreichgasse – Rotenhofgasse - Sonnleithnergasse - Davidgasse zur Stammstrecke.</p><p><u>Aufgelassene Haltestellen:<br></u>- Fernkorngasse (Davidgasse 64 vor Fernkorngasse)</p><p><u>Ersatzhaltestellen:<br></u>- Fernkorngasse (Davidgasse 70 - 72, prov. Haltestelle)</p>",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "615c7d9755493e3506136b4c89ccafaac30323c3c9774583bc4b55062576c7bb",
-    "pubDate": "2026-10-09T00:00:00+02:00",
-    "starts_at": "2026-10-14T00:00:00+02:00",
-    "ends_at": "2026-10-28T07:00:00+01:00",
-    "_identity": "wl|hinweis|L=7A|D=2026-10-14|TK=7a bauarbeiten"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "80A: ÖBB-Bauarbeiten",
     "description": "<h2>Bauarbeiten</h2> <p>Wegen der Neuerrichtung der &Ouml;BB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Ma&szlig;nahmen in Kraft. Beachten Sie bitte die unterschiedlichen Ma&szlig;nahmen werktags bzw. am Wochenende.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Von Dienstag, 20. Oktober 2026 bis etwa September 2027.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Montag-Freitag, Linie 80A in Richtung Schlachthausgasse U:</strong><br />Umleitung ab Praterstern # Franzensbr&uuml;ckenstra&szlig;e &uuml;ber Praterstern - Hauptallee - Sportklubstra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:</span><br />- Vivariumstra&szlig;e (Vivariumstra&szlig;e 6)<br /><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Vivariumstra&szlig;e (Sportklubstra&szlig;e nach Vivariumstra&szlig;e)</p> <p><strong>Samstag, Sonntag und Feiertag, Linie 80A:</strong><br />Betrieb nur zwischen Schlachthausgasse U und Franzensbr&uuml;cke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen in Richtung Schlachthausgasse:</span><br />- Praterstern (Praterstern, 3. Haltestelleinsel unter dem Bahnhofsvordach)<br />- Vivariumstra&szlig;e (Vivariumstra&szlig;e 6)<br /><span style=\"text-decoration: underline;\">Ersatzhaltestellen:</span><br />- Franzensbr&uuml;cke (Vivariumstra&szlig;e 2, provisorische End- und Anfangshaltestelle an Sa, So, Fei)<br />- Vivariumstra&szlig;e (Sportklubstra&szlig;e nach Vivariumstra&szlig;e)</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1162,18 +1150,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "11dae11dafaf0878f07d1e1c010007790105e67c155ad06ba2cd6c87388c9e93",
-    "pubDate": "2026-10-28T05:35:12+01:00",
-    "starts_at": "2026-10-28T05:44:43+01:00",
-    "ends_at": "2026-10-28T06:44:00+01:00",
-    "_identity": "wl|störung|L=62|D=2026-10-28|TK=fahrtbehinderung schadhafter zug"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1270,22 +1246,6 @@
     "starts_at": "2026-10-24T00:00:29+02:00",
     "ends_at": "2026-10-28T23:59:59+01:00",
     "_identity": "wl|störung|L=D|D=2026-10-24|TK=züge halten wipplingerstr 39"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U2: Polizeieinsatz",
-    "description": "Derzeit können die Züge der Linie U2 die Station Aspern Nord in beiden Richtungen nicht einhalten. Voraussichtliche Dauer: 06:45 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Aspern Nord.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3dd0ec36f6dc8594c9e37e23580bdcf5f82555521c07875e9f83c718912578fc",
-    "pubDate": "2026-10-28T06:13:00+01:00",
-    "starts_at": "2026-10-28T06:13:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U2|D=2026-10-28|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261028-0005"
-    ],
-    "_incident_start": "2026-10-28T06:13:00+01:00"
   },
   {
     "source": "Wiener Linien",

@@ -1,19 +1,15 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-28T05:31:06.714316+00:00",
- "built": "2026-10-28T06:30:49+01:00",
+ "updated": "2026-10-28T06:01:12.017826+00:00",
+ "built": "2026-10-28T07:01:00+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-28T06:30:49+01:00",
+  "built": "2026-10-28T07:01:00+01:00",
   "items": [
    {
-    "title": "U2: Polizeieinsatz",
-    "time_line": "Seit 06:13"
-   },
-   {
-    "title": "62: Verspätungen, Schadhafter Zug",
+    "title": "62: Verspätungen",
     "time_line": "Seit 05:56"
    },
    {
@@ -47,31 +43,15 @@
    {
     "title": "S1: Wien Leopoldau ↔ Deutsch Wagram",
     "time_line": "Bis 28.11."
+   },
+   {
+    "title": "11A/78A: Straßenbauarbeiten",
+    "time_line": "Bis Mo 02.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-21T06:00:53.691353+00:00",
-   "raw": {
-    "wl-stoerungen": 75,
-    "wl-hinweise": 91,
-    "oebb": 163,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 14,
-    "oebb": 141,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 109
-   }
-  },
   {
    "t": "2026-10-21T06:31:10.302099+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 9,
     "wl": 107
    }
+  },
+  {
+   "t": "2026-10-28T06:01:12.017826+00:00",
+   "raw": {
+    "wl-stoerungen": 68,
+    "wl-hinweise": 83,
+    "oebb": 161,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 20
+   },
+   "discarded": {
+    "wl": 12,
+    "oebb": 136,
+    "baustellen": 66
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 104
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-28T05:31:06.714316+00:00"
+   "last_ok": "2026-10-28T06:01:12.017826+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-28T05:31:06.714316+00:00"
+   "last_ok": "2026-10-28T06:01:12.017826+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-28T05:31:06.714316+00:00"
+   "last_ok": "2026-10-28T06:01:12.017826+00:00"
   }
  }
 }
