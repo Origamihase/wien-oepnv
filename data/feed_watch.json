@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-28T14:01:18.447423+00:00",
- "built": "2026-10-28T15:01:03+01:00",
+ "updated": "2026-10-28T14:30:56.437118+00:00",
+ "built": "2026-10-28T15:30:51+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-28T15:01:03+01:00",
+  "built": "2026-10-28T15:30:51+01:00",
   "items": [
    {
     "title": "25/59A: Verkehrsüberlastung",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-21T14:01:53.471752+00:00",
-   "raw": {
-    "wl-stoerungen": 97,
-    "wl-hinweise": 95,
-    "oebb": 165,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 17,
-    "oebb": 140,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 116
-   }
-  },
   {
    "t": "2026-10-21T14:31:38.558842+00:00",
    "raw": {
@@ -6791,17 +6771,37 @@
     "oebb": 9,
     "wl": 112
    }
+  },
+  {
+   "t": "2026-10-28T14:30:56.437118+00:00",
+   "raw": {
+    "wl-stoerungen": 94,
+    "wl-hinweise": 82,
+    "oebb": 155,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 19
+   },
+   "discarded": {
+    "wl": 11,
+    "oebb": 130,
+    "baustellen": 65
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 112
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-28T14:01:18.447423+00:00"
+   "last_ok": "2026-10-28T14:30:56.437118+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-28T14:01:18.447423+00:00"
+   "last_ok": "2026-10-28T14:30:56.437118+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-28T14:01:18.447423+00:00"
+   "last_ok": "2026-10-28T14:30:56.437118+00:00"
   }
  }
 }

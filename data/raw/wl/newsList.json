@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1016925, ftazW_1031301, ftazW_1016926, ftazW_1031302, ftazW_1017125, ftazW_1016923, ftazW_771, ftazW_735, ftazW_167, ftazW_772, ftazW_1016924"
+    "trafficInfoNameList": "ftazW_1016925, ftazW_1031301, ftazW_1016926, ftazW_1031302, ftazW_166, ftazW_1017125, ftazW_1016923, ftazW_771, ftazW_735, ftazW_167, ftazW_772, ftazW_1016924"
    }
   ],
   "poiCategoryGroups": [
@@ -3747,6 +3747,45 @@
      "start": "2026-10-29T01:15:00.000+0100"
     },
     "title": "Blechturmgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "30.10.2026 00:45",
+     "ausVon": "29.10.2026 20:45",
+     "location": "U3 Mittelbahnsteig - Zwischengeschoss - Ausgang Markhofgasse",
+     "rbls": [
+      4916,
+      4901
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Schlachthausgasse",
+     "status": "geplante Wartung",
+     "towards": "U3 beide Richtungen"
+    },
+    "description": "U3 Mittelbahnsteig - Zwischengeschoss - Ausgang Markhofgasse",
+    "elevatorId": "SG 01",
+    "name": "ftazW_166",
+    "parentName": "ftazW_166",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4916,
+     4901
+    ],
+    "time": {
+     "end": "2026-10-30T00:45:00.000+0100",
+     "start": "2026-10-29T20:45:00.000+0100"
+    },
+    "title": "Schlachthausgasse"
    },
    {
     "alertCause": "undefined alert cause",
