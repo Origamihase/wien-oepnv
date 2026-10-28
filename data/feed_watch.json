@@ -1,20 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-28T22:31:13.824643+00:00",
- "built": "2026-10-28T23:30:57+01:00",
+ "updated": "2026-10-28T23:01:07.513863+00:00",
+ "built": "2026-10-29T00:00:58+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-28T23:30:57+01:00",
+  "built": "2026-10-29T00:00:58+01:00",
   "items": [
    {
-    "title": "60A: Polizeieinsatz",
-    "time_line": "Seit 22:37"
-   },
-   {
     "title": "U6: Rettungseinsatz",
-    "time_line": "Seit 23:19"
+    "time_line": "Seit 28.10."
    },
    {
     "title": "54A/54B: Bauarbeiten",
@@ -22,11 +18,7 @@
    },
    {
     "title": "16A: Zanaschkagasse",
-    "time_line": "Seit heute"
-   },
-   {
-    "title": "40A: Bauarbeiten",
-    "time_line": "Heute"
+    "time_line": "Seit 28.10."
    },
    {
     "title": "11: Wienerfeldgasse",
@@ -47,6 +39,14 @@
    {
     "title": "S1: Wien Leopoldau ↔ Deutsch Wagram",
     "time_line": "Bis 28.11."
+   },
+   {
+    "title": "11A/78A: Straßenbauarbeiten",
+    "time_line": "Bis Mo 02.11."
+   },
+   {
+    "title": "64A/N64R: Erlaaer Spitz",
+    "time_line": "Seit 22.10."
    }
   ]
  },
@@ -6771,17 +6771,37 @@
     "oebb": 9,
     "wl": 103
    }
+  },
+  {
+   "t": "2026-10-28T23:01:07.513863+00:00",
+   "raw": {
+    "wl-stoerungen": 64,
+    "wl-hinweise": 80,
+    "oebb": 153,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 19
+   },
+   "discarded": {
+    "wl": 11,
+    "oebb": 128,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 100
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-28T22:31:13.824643+00:00"
+   "last_ok": "2026-10-28T23:01:07.513863+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-28T22:31:13.824643+00:00"
+   "last_ok": "2026-10-28T23:01:07.513863+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-28T22:31:13.824643+00:00"
+   "last_ok": "2026-10-28T23:01:07.513863+00:00"
   }
  }
 }
