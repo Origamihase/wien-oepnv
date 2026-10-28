@@ -615,7 +615,48 @@ def _without_host_proxy(monkeypatch: pytest.MonkeyPatch) -> None:
         monkeypatch.delenv(name, raising=False)
 
 
-_HEALTH_REPORTS = (root / "docs" / "feed-health.md", root / "docs" / "feed-health.json")
+@pytest.fixture(autouse=True)
+def _environment_stays() -> Iterator[None]:
+    """Give every test back the environment it started with.
+
+    ``load_env_file`` and friends write into ``os.environ`` themselves, and
+    ``monkeypatch.delenv(name, raising=False)`` on a variable that is not set
+    remembers nothing, so a variable the code sets afterwards stays. Nine
+    tests left 14 variables behind, among them ``VOR_ACCESS_ID=token`` and
+    ``VOR_BASE_URL=https://example/`` for the rest of the run; one health
+    check test passed only because of them and was red on its own, in random
+    order, with ``-n 4`` and without network (test-suite audit 2026-10-28).
+    """
+    before = dict(os.environ)
+    yield
+    for name in [name for name in os.environ if name not in before]:
+        del os.environ[name]
+    for name, value in before.items():
+        if os.environ.get(name) != value:
+            os.environ[name] = value
+
+
+@pytest.fixture(autouse=True)
+def _cache_dir_stays(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Point ``utils.cache`` at a per-test ``cache/`` directory.
+
+    ``write_cache`` prunes its provider's directory after writing, by file
+    age. Two Baustellen tests redirected only ``_cache_file``, so the prune
+    ran on the real ``cache/`` and deleted ``cache/baustellen_*/events.json``
+    whenever the checkout's copy was older than 48 hours (an older clone or
+    sandbox; CI checks out fresh). The scripts import the module as
+    ``utils.cache``, ``src`` as ``src.utils.cache``: both copies are patched.
+    A test that needs its own directory still patches ``_CACHE_DIR`` itself.
+    """
+    from src.utils import cache as cache_module
+
+    target = tmp_path / "cache"
+    for module in {cache_module, sys.modules.get("utils.cache")}:
+        if module is not None:
+            monkeypatch.setattr(module, "_CACHE_DIR", target)
+
+
+_HEALTH_REPORTS =(root / "docs" / "feed-health.md", root / "docs" / "feed-health.json")
 
 
 def _stamp(path: Path) -> tuple[int, int] | None:

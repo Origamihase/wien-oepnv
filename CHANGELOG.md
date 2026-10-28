@@ -10,6 +10,37 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Prüfung der Testsuite und der Hilfsskripte (2026-10-28)**: Nur Tests,
+  Doku und `requirements-dev.txt`, kein Produktivcode. Die Tests jedes
+  Fix-PRs seit 04.10. scheitern am Code vor dem Fix (92 von 95, die übrigen
+  drei ändern kein Verhalten); fünf Mängel waren echt.
+  - *Health-Check-Alarme:* Von sieben verfälschten Regeln ließen fünf die
+    Suite grün: ein gescheiterter Abruf (exit 1) als OK, ein Feed ohne neuen
+    Build seit 4 Stunden, ein Stationslauf älter als 8 Tage oder mit
+    gescheitertem Teilschritt, und ein `main()`, das trotz roter Prüfung 0
+    zurückgibt. Ein roter Lauf ist das, was die Mail auslöst; beide roten
+    Health-Checks seit 14.10. (Wiener Linien 21.10., ÖBB 27.10.) liefen über
+    exit 1. `tests/test_health_check_alarms.py` prüft jetzt jede dieser
+    Regeln an der Grenze; alle sieben Verfälschungen machen die Suite rot.
+  - *Umgebungsvariablen:* Neun Tests ließen 14 Variablen stehen, darunter
+    `VOR_ACCESS_ID=token`; `test_health_check_note_keeps_the_run_green`
+    bestand nur dadurch und war allein, in Zufallsreihenfolge, mit `-n 4`
+    und ohne Netz rot (der Test, der in Sandboxen rot war). Die autouse-Fixture
+    `_environment_stays` stellt die Umgebung nach jedem Test wieder her, der
+    Test ersetzt die übrigen Prüfungen selbst.
+  - *Echter Cache:* Zwei Baustellen-Tests lenkten nur `_cache_file` um; die
+    Bereinigung in `write_cache` löschte dann `cache/baustellen_*/events.json`
+    im Repository, sobald die Datei älter als 48 Stunden war (älterer Klon,
+    Sandbox; die CI checkt frisch aus). `_cache_dir_stays` leitet das
+    Cache-Verzeichnis für jeden Test um.
+  - *Schema-Tests:* `jsonschema` fehlte in `requirements-dev.txt`, die
+    sieben Schema-Tests (u. a. `tests/test_stations_schema.py`) übersprangen
+    sich in jeder CI. Jetzt installiert, alle sieben bestehen.
+  - *Doku:* `docs/development.md` (Isolation, Reihenfolge, Python-Version)
+    und `tests/README.md` (Zahl der autouse-Fixtures, OSM) richtiggestellt.
+  Bericht und Proben: `reports/testsuite-skripte-2026-10-28.md` im
+  Projektordner.
+
 * **Prüfung der Statistikseite (2026-10-27)**: Von der Quelle bis zur
   Anzeige, Website, `docs/statistik.md`, `stats-summary.json` und die drei
   Ledger.

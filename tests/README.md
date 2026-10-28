@@ -4,10 +4,10 @@ Dieses Verzeichnis enthält die automatisierte Test-Suite, basierend auf `pytest
 
 ## Struktur
 
-- **`conftest.py`**: Enthält globale Fixtures, darunter vier autouse-Fixtures für deterministische Test-Reihenfolge: `reset_vor_request_count` (frischer VOR-Quota-Counter pro Test), `reset_build_feed_state` (modul-globaler State von `src/build_feed.py`), `isolate_stats_writes` (CSV-Ledger-Writer schreiben pro Test in `tmp_path`) und `reset_circuit_breakers` (alle projekt-eigenen Breaker zurück auf CLOSED).
+- **`conftest.py`**: Enthält globale Fixtures, darunter 15 autouse-Fixtures, die jeden Test von echten Dateien, dem Netz und dem Zustand früherer Tests fernhalten (umgeleitete Ledger, Caches und Zähler, zurückgesetzter Modulzustand, wiederhergestellte Umgebungsvariablen, kein echtes DNS). Die vollständige Liste mit Begründung steht in [`docs/development.md`](../docs/development.md) unter „Test-Isolation“.
 - **`test_*.py`**: Die eigentlichen Testdateien. Sie sind meist nach dem Modul benannt, das sie testen (`test_build_feed_atom.py`, `test_build_feed_cache.py`, … decken jeweils einen Aspekt von `src/build_feed.py` ab; das Pendant zu `src/build_feed.py` ist also kein einzelnes Modul, sondern eine Familie themenspezifischer Dateien).
 - **Unterverzeichnisse** für strukturierte Test-Suites:
-  - `tests/places/` — Stationsverzeichnis-Pipeline (OSM, HAFAS-Fallback; die Google-Places-Stufe wurde am 2026-10-16 entfernt).
+  - `tests/places/` — Stationsverzeichnis-Pipeline (HAFAS; der OSM-Client hat seit 2026-10-17 keinen Aufruf im Produktivlauf mehr, die Google-Places-Stufe wurde am 2026-10-16 entfernt).
   - `tests/providers/` — WL- und ÖBB-Provider-Adapter.
   - `tests/scripts/` — Wartungsskripte (`update_stammstrecke_*`, `update_station_directory`, `generate_markdown_stats`, …).
 
