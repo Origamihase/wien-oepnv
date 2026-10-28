@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 28 Oct 2026 08:01:04 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 08:32:13 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[62: Fahrleitungsschaden]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">6a60c3c3bb6e94ab36f2a36946e72c99747c72a8c52e393d187fc2c3e5ed0e7e</guid>
+      <pubDate>Wed, 28 Oct 2026 07:59:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 28 Oct 2026 08:32:13 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 28 Oct 2026 07:59:00 +0100</ext:starts_at>
+      <description>Beschädigte Oberleitung; Betrieb ab Hofwiesengasse. [Seit 07:59]</description>
+      <content:encoded><![CDATA[Beschädigte Oberleitung; Betrieb ab Hofwiesengasse.<br/>[Seit 07:59]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[40A: Bauarbeiten]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -138,20 +151,6 @@
       <ext:ends_at>Mon, 02 Nov 2026 01:00:00 +0100</ext:ends_at>
       <description>Wegen Straßenbauarbeiten im Kreuzungsbereich Meiereistraße / Stephanie-Endres-Straße kommt es zu Umleitungen. [Bis Mo 02.11.]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Kreuzungsbereich Meiereistraße / Stephanie-Endres-Straße kommt es zu Umleitungen.<br/>[Bis Mo 02.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A/N64R: Erlaaer Spitz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">bd5f4b6cb6c11492266da898891314662b7d55f24a297565efab82ec83f4917c</guid>
-      <pubDate>Wed, 21 Oct 2026 10:12:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 21 Oct 2026 10:12:00 +0200</ext:first_seen>
-      <ext:starts_at>Thu, 22 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <georss:point>48.137809 16.323970</georss:point>
-      <description>Perfektastraße 3 → Perfektastraße 9. Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa … [Seit 22.10.]</description>
-      <content:encoded><![CDATA[Perfektastraße 3 → Perfektastraße 9. Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa …<br/>[Seit 22.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>

@@ -2997,14 +2997,14 @@
    {
     "alertCause": "unknown",
     "alertCauseId": 0,
-    "description": "<p><span><strong><u>Haltestellenverlegung bzw. -auflassung der Linien 56A, 56B und N62</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Strampfergasse</span></p><p><span><strong><u>Fahrtrichtung:</u></strong> Bhf. Atzgersdorf S bzw. Lainzer Tor</span></p><p><span><strong><u>Von:</u></strong> Hermesstraße nach Strampfergasse</span></p><p><span><strong><u>Nach:</u></strong> etwa 100 Meter in Richtung Dr.-Schober-Straße<br><br></span></p><p><span><strong><u>Fahrtrichtung:</u></strong> Hietzing U bzw. Oper, Karlsplatz U</span></p><p><span><strong><u>Von:</u></strong> Hermesstraße nach Strampfergasse</span></p><p><span><strong><u>Nach:</u></strong> aufgelassen<br><br></span></p><p>&nbsp;</p><p><span><strong><u>Dauer:</u></strong> Ab 20. Oktober 2026, etwa 07:00 Uhr, für etwa eine Woche</span></p><p><span><strong><u>Grund:</u></strong> Straßenbau</span></p>",
+    "description": "<p><strong><u>Haltestellenverlegung bzw. -auflassung der Linien 56A, 56B und N62</u></strong></p><p><strong><u>Haltestelle:</u></strong> Strampfergasse</p><p><strong><u>Fahrtrichtung:</u></strong> Bhf. Atzgersdorf S bzw. Lainzer Tor</p><p><strong><u>Von:</u></strong> Hermesstraße nach Strampfergasse</p><p><strong><u>Nach:</u></strong> etwa 100 Meter in Richtung Dr.-Schober-Straße<br><br></p><p><strong><u>Fahrtrichtung:</u></strong> Hietzing U bzw. Oper, Karlsplatz U</p><p><strong><u>Von:</u></strong> Hermesstraße nach Strampfergasse</p><p><strong><u>Nach:</u></strong> aufgelassen<br><br></p><p>&nbsp;</p><p><strong><u>Dauer:</u></strong> Ab 20. Oktober 2026, etwa 07:00 Uhr bis 28. Oktober 2026, etwa 09:00 Uhr</p><p><strong><u>Grund:</u></strong> Straßenbau</p>",
     "id": "N20261019-6285",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p><span><strong><u>Haltestellenverlegung bzw. -auflassung der Linien 56A, 56B und N62</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Strampfergasse</span></p><p><span><strong><u>Fahrtrichtung:</u></strong> Bhf. Atzgersdorf S bzw. Lainzer Tor</span></p><p><span><strong><u>Von:</u></strong> Hermesstraße nach Strampfergasse</span></p><p><span><strong><u>Nach:</u></strong> etwa 100 Meter in Richtung Dr.-Schober-Straße<br><br></span></p><p><span><strong><u>Fahrtrichtung:</u></strong> Hietzing U bzw. Oper, Karlsplatz U</span></p><p><span><strong><u>Von:</u></strong> Hermesstraße nach Strampfergasse</span></p><p><span><strong><u>Nach:</u></strong> aufgelassen<br><br></span></p><p>&nbsp;</p><p><span><strong><u>Dauer:</u></strong> Ab 20. Oktober 2026, etwa 07:00 Uhr, für etwa eine Woche</span></p><p><span><strong><u>Grund:</u></strong> Straßenbau</span></p>",
-       "descriptionPlain": "Haltestellenverlegung bzw. -auflassung der Linien 56A, 56B und N62 Haltestelle: Strampfergasse Fahrtrichtung: Bhf. Atzgersdorf S bzw. Lainzer Tor Von: Hermesstraße nach Strampfergasse Nach: etwa 100 Meter in Richtung Dr.-Schober-Straße Fahrtrichtung: Hietzing U bzw. Oper, Karlsplatz U Von: Hermesstraße nach Strampfergasse Nach: aufgelassen Dauer: Ab 20. Oktober 2026, etwa 07:00 Uhr, für etwa eine Woche Grund: Straßenbau",
-       "title": "56A, 56B, N62: Strampfergasse"
+       "descriptionHtml": "<p><strong><u>Haltestellenverlegung bzw. -auflassung der Linien 56A, 56B und N62</u></strong></p><p><strong><u>Haltestelle:</u></strong> Strampfergasse</p><p><strong><u>Fahrtrichtung:</u></strong> Bhf. Atzgersdorf S bzw. Lainzer Tor</p><p><strong><u>Von:</u></strong> Hermesstraße nach Strampfergasse</p><p><strong><u>Nach:</u></strong> etwa 100 Meter in Richtung Dr.-Schober-Straße<br><br></p><p><strong><u>Fahrtrichtung:</u></strong> Hietzing U bzw. Oper, Karlsplatz U</p><p><strong><u>Von:</u></strong> Hermesstraße nach Strampfergasse</p><p><strong><u>Nach:</u></strong> aufgelassen<br><br></p><p>&nbsp;</p><p><strong><u>Dauer:</u></strong> Ab 20. Oktober 2026, etwa 07:00 Uhr bis 28. Oktober 2026, etwa 09:00 Uhr</p><p><strong><u>Grund:</u></strong> Straßenbau</p>",
+       "descriptionPlain": "Haltestellenverlegung bzw. -auflassung der Linien 56A, 56B und N62 Haltestelle: Strampfergasse Fahrtrichtung: Bhf. Atzgersdorf S bzw. Lainzer Tor Von: Hermesstraße nach Strampfergasse Nach: etwa 100 Meter in Richtung Dr.-Schober-Straße Fahrtrichtung: Hietzing U bzw. Oper, Karlsplatz U Von: Hermesstraße nach Strampfergasse Nach: aufgelassen Dauer: Ab 20. Oktober 2026, etwa 07:00 Uhr bis 28. Oktober 2026, etwa 09:00 Uhr Grund: Straßenbau",
+       "title": "Haltestellenverlegung"
       }
      }
     ],
@@ -3047,7 +3047,7 @@
      3772
     ],
     "time": {
-     "end": "2027-10-20T11:11:00.000+0200",
+     "end": "2026-10-28T09:00:00.000+0100",
      "start": "2026-10-19T00:00:00.000+0200",
      "validFrom": "2026-10-19T12:16:00.000+0200"
     },
