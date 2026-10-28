@@ -10,6 +10,34 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Prüfung der Statistikseite (2026-10-27)**: Von der Quelle bis zur
+  Anzeige, Website, `docs/statistik.md`, `stats-summary.json` und die drei
+  Ledger.
+  - *Störungen je Auftreten:* Eine Zeile in `stoerungen_2026.csv` entstand
+    nur, wenn eine Meldung noch keinen Zustandseintrag hatte. Die WL-guid
+    trägt kein Datum, und seit 25.09. stellt der Feed eine wiederkehrende
+    WL-Meldung („U6: Rettungseinsatz“ an einem anderen Tag) als neues
+    Auftreten nach vorn (`_restart_recurring_occurrences`); gezählt wurde
+    sie nicht. Im Nachbau aller 1.690 Feed-Läufe vom 25.09. bis 27.10. (echter
+    Cache, Zustand aus dem Lauf davor) zählte die alte Regel 348 Meldungen,
+    1.060 Auftreten fehlten. Jetzt markiert der Neustart den Eintrag
+    (`new_occurrence`), und `_update_item_state` schreibt die Zeile, sobald
+    das Auftreten zum ersten Mal im Feed steht; DE, EN und Zustand bleiben in
+    allen 1.690 Läufen gleich. Die 1.060 Zeilen sind nachgetragen (Michael
+    27.10.2026 22:04 MEZ: „Nachtragen aus der Historie“), die Jahreszahl
+    steigt von 3.593 auf 4.653. Website-Untertitel: „eine Zeile pro Auftreten
+    einer Meldung im Feed“.
+  - *Verspätung am Folgetag:* Am 08.06.2026 20:00 gab VAO drei Zügen Richtung
+    Praterstern eine Echtzeit etwa 20 Stunden nach dem Plan (1160, 1199 und
+    1196 Minuten). Ihre Tickzeile mit 395,33 Minuten war die „Max.
+    Verspätung“ der Website und hob den Schnitt um 20 Uhr von 1,1 auf 1,9
+    Minuten und den Montag von 1,0 auf 1,3. Eine Echtzeit zwölf Stunden oder
+    mehr neben dem Plan gilt jetzt als keine Echtzeit (`IMPLAUSIBLE_DELAY`,
+    dieselben zwölf Stunden wie beim Mitternachtswechsel); die größte echte
+    Lesung des Jahres waren 85 Minuten. Die Zeile ist gestrichen, das
+    Maximum ist jetzt 203 Minuten (13.08. 15:15, eine S2, während die
+    übrigen Züge dieser Richtung ausfielen).
+
 * **Zweitprüfung der Umsetzungen #2072 bis #2075 (2026-10-27)**: Alle
   933 ÖBB-Texte an 14 Stichtagen, Stand vor #2072 gegen heute: es ändern
   sich die acht Anzeigen, die #2072 nennt, sonst keine. Die Modelleingaben
