@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261028-0013, I20261020-0029"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R36-152, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2371-125, R2373-125, R2345-127, R2378-627, R2343-626, R2380-627, R2379-627, R2373-127, R2343-125, R2359-125, R2370-125, R2372-125, R2373-126, R2420-411, R2372-627, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R269-102, R272-102, R270-102, R251-102, R249-102, R357-112, R272-112, R356-112, R458-112, R379-112, R844-118, R845-118, R846-118, R284-118, R2620-118, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R36-152, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R318-437, R293-474, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2373-127, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R2373-126, R2378-627, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R269-102, R272-102, R270-102, R249-102, R251-102, R272-112, R357-112, R356-112, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -257,52 +257,6 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "50B": "ptBusCity"
-     }
-    },
-    "description": "Linie 50B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
-    "descriptionHTML": "<p>Linie 50B:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Falschparker.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 50B:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Falschparker.</p>",
-       "descriptionPlain": "Linie 50B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
-       "title": "50B: Falschparker"
-      }
-     }
-    ],
-    "name": "I20261028-0013",
-    "owner": "WL",
-    "parentName": "I20261028-0013",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "50B"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 250,
-      "lineName": "50B",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-28T11:24:00.000+0100",
-     "end": "2026-10-28T11:56:00.000+0100",
-     "lastUpdate": "2026-10-28T11:56:00.000+0100",
-     "resume": "2026-10-28T11:23:00.000+0100",
-     "start": "2026-10-28T11:23:00.000+0100"
-    },
-    "title": "50B: Falschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1480,29 +1434,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R2620-118",
-    "owner": "WL",
-    "parentName": "R2620-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     2620
-    ],
-    "time": {
-     "end": "2026-10-28T12:17:00.000+0100",
-     "start": "2026-10-28T11:18:18.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Feuerwehreinsatz\nBetrieb ab Josefstädter Straße",
     "name": "R269-102",
     "owner": "WL",
@@ -1591,29 +1522,6 @@
      "start": "2026-10-28T09:28:35.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R284-118",
-    "owner": "WL",
-    "parentName": "R284-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     284
-    ],
-    "time": {
-     "end": "2026-10-28T12:17:00.000+0100",
-     "start": "2026-10-28T11:18:16.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1733,29 +1641,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Langegasse",
-    "name": "R379-112",
-    "owner": "WL",
-    "parentName": "R379-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     379
-    ],
-    "time": {
-     "end": "2026-10-28T12:15:00.000+0100",
-     "start": "2026-10-28T09:29:05.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Langegasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "name": "R3886-480",
     "owner": "WL",
@@ -1825,29 +1710,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Langegasse",
-    "name": "R458-112",
-    "owner": "WL",
-    "parentName": "R458-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     458
-    ],
-    "time": {
-     "end": "2026-10-28T12:15:00.000+0100",
-     "start": "2026-10-28T09:29:05.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Langegasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -1867,75 +1729,6 @@
      "start": "2026-10-28T05:00:08.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R844-118",
-    "owner": "WL",
-    "parentName": "R844-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     844
-    ],
-    "time": {
-     "end": "2026-10-28T12:17:00.000+0100",
-     "start": "2026-10-28T11:18:15.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R845-118",
-    "owner": "WL",
-    "parentName": "R845-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     845
-    ],
-    "time": {
-     "end": "2026-10-28T12:17:00.000+0100",
-     "start": "2026-10-28T11:18:15.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R846-118",
-    "owner": "WL",
-    "parentName": "R846-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     846
-    ],
-    "time": {
-     "end": "2026-10-28T12:17:00.000+0100",
-     "start": "2026-10-28T11:18:15.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
