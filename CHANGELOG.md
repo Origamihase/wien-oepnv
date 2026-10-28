@@ -25,7 +25,9 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
     das Auftreten zum ersten Mal im Feed steht; DE, EN und Zustand bleiben in
     allen 1.690 Läufen gleich. Die 1.060 Zeilen sind nachgetragen (Michael
     27.10.2026 22:04 MEZ: „Nachtragen aus der Historie“), die Jahreszahl
-    steigt von 3.593 auf 4.653. Website-Untertitel: „eine Zeile pro Auftreten
+    steigt von 3.593 auf 4.653. Die 14 Läufe zwischen Nachtrag und Merge
+    (28.10. 02:30 bis 09:00 MEZ) liefen noch mit der alten Regel; ihr
+    Nachbau ergab vier weitere Zeilen, nachgetragen in einem eigenen PR. Website-Untertitel: „eine Zeile pro Auftreten
     einer Meldung im Feed“.
   - *Verspätung am Folgetag:* Am 08.06.2026 20:00 gab VAO drei Zügen Richtung
     Praterstern eine Echtzeit etwa 20 Stunden nach dem Plan (1160, 1199 und

@@ -24,7 +24,10 @@ Zustand jeweils aus dem Lauf davor, einmal mit alter und einmal mit neuer
 Zählregel; jede Zeile trägt die Bauzeit des Laufs, in dem das Auftreten zum
 ersten Mal im Feed stand, und den Ort, den `extract_location_name` dort
 liefert. Feed und Zustand waren in allen Läufen gleich, nur die Zeilen kamen
-hinzu.
+hinzu. Zwischen dem Nachtrag und dem Merge der neuen Regel (28.10.2026 02:30
+bis 09:00 MEZ) liefen noch 14 Läufe mit der alten; ihr Nachbau auf dieselbe
+Weise ergab vier weitere Auftreten ohne Zeile (05:30 bis 06:30 MEZ), die
+ebenfalls nachgetragen sind.
 
 In `stammstrecke_2026.csv` fehlt die Tickzeile vom 08.06.2026 20:30 Richtung
 Praterstern (395,33 Minuten): VAO gab drei Zügen eine Echtzeit am Folgetag
