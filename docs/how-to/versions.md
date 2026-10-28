@@ -9,7 +9,7 @@ Dieser Leitfaden zeigt, wie sich die im Projekt aktive VAO ReST API-Version iden
 
 ## Hinweis zur Namensgebung
 
-Im Projekt-Code (`src/providers/vor.py`) sind `VOR_VERSION` (primär) und `VOR_VERSIONS` (Fallback-Alias) **beide Versions-Strings**, die in die Basis-URL eingebaut werden (z. B. `v1.13.0`), **keine URLs**. Standard ist `DEFAULT_VERSION` im Code.
+Im Projekt-Code (`src/providers/vor.py`) sind `VOR_VERSION` (primär) und `VOR_VERSIONS` (Fallback-Alias) **beide Versions-Strings**, die in die Basis-URL eingebaut werden (z. B. `v1.12.0`), **keine URLs**. Standard ist `DEFAULT_VERSION` im Code.
 
 ## Welche Versionen die VAO betreibt
 
@@ -21,9 +21,11 @@ der Aufruf braucht keine Access-ID und zählt nicht zum Tageskontingent):
 curl -s https://routenplaner.verkehrsauskunft.at/vao/restproxy
 ```
 
-Stand 24.10.2026: v1.9.0 bis 31.08.2026, v1.11.0 bis 31.05.2027, v1.12.0 bis
-30.08.2027, **v1.13.0 bis 30.06.2028** (im Projekt aktiv seit 24.10.2026). Das
-Handbuch vom 28.01.2026 kennt v1.13.0 noch nicht; die Schnittstelle jeder Version
+Stand 28.10.2026: v1.11.0 bis 31.05.2027, **v1.12.0 bis 30.08.2027** (im
+Projekt aktiv seit 28.10.2026). Am 24.10.2026 stand dort noch v1.13.0 bis
+30.06.2028; die VAO nahm sie am 28.10.2026 zwischen 14:30 und 15:00 aus der
+Liste, seitdem antwortet jede v1.13.0-Anfrage mit HTTP 404. Die Liste kann sich
+also auch vor einem Abschaltdatum ändern. Die Schnittstelle jeder Version
 beschreiben `…/restproxy/<version>/api-doc` (OpenAPI) und `…/<version>/<service>?wadl`,
 ebenfalls ohne Access-ID.
 
@@ -57,7 +59,7 @@ ebenfalls ohne Access-ID.
 
 ## Version anheben
 
-Vor dem Abschaltdatum der aktiven Version (heute v1.13.0, 30.06.2028):
+Vor dem Abschaltdatum der aktiven Version (heute v1.12.0, 30.08.2027) oder sobald sie aus der Liste verschwindet:
 
 1. OpenAPI und WADL von alter und neuer Version vergleichen, mindestens für
    `departureBoard`: die Request-Parameter aus
@@ -75,4 +77,5 @@ Vor dem Abschaltdatum der aktiven Version (heute v1.13.0, 30.06.2028):
 So lief der Umstieg von v1.11.0 auf v1.13.0 am 24.10.2026: Die Schnittstelle kam
 nur um Felder dazu (`DestinationStop`, `OriginStop`, `globalId`, `LineInfo`,
 `himId`), die Abfrage an alle drei Versionen lieferte dieselben 28 Abfahrten und
-dieselben Beobachtungen.
+dieselben Beobachtungen. Am 28.10.2026 ging es auf v1.12.0 zurück, weil die VAO
+v1.13.0 zurückzog; v1.12.0 hatte die Probe vom 24.10. schon mit abgedeckt.

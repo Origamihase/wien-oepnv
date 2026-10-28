@@ -40,8 +40,13 @@ haben funktioniert. Darum
   immer mit Exit-Code 0, auch wenn er selbst scheitert (dann steht der Fehler
   im Feld `error` seines Stands); der Workflow-Schritt hat zusätzlich
   `continue-on-error` und ein Zeitlimit von zwei Minuten;
-* zeigt der Health check seinen Stand nur als Hinweis (ℹ️, `::warning`), nie
-  als Fehler (Prüfung `Feed-Wächter` in `scripts/health_check.py`);
+* zeigt der Health check seine Funde nur als Hinweis (ℹ️, `::warning`), nie
+  als Fehler (Prüfung `Feed-Wächter` in `scripts/health_check.py`). Konnte der
+  Wächter selbst nicht prüfen (Feld `error`), ist die Prüfung seit 2026-10-28
+  rot, ebenso die Prüfung `Nebenschritte`, wenn sein Schritt scheiterte (etwa
+  am Zeitlimit): Ein Nebenschritt, der nicht laufen kann, soll auffallen
+  (Michael, 2026-10-28: „Ich tendiere zu ‚er soll rot werden‘, denn ein Fehler
+  sollte auffallen.“). Ein Inhaltsfund bleibt ein Hinweis;
 * bleibt der Update-Lauf grün; Funde erscheinen als gelbe Annotation.
 
 Wer später einen Wächter-Fund rot machen will, ändert diese Entscheidung und

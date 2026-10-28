@@ -55,13 +55,15 @@ BASE_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = BASE_DIR / "data"
 
 # VAO API version (Michael, 24.10.2026: "Wir können die VAO-Version gerne
-# anheben"). v1.13.0 is the newest version the VAO lists at
-# https://routenplaner.verkehrsauskunft.at/vao/restproxy, in service until
-# 30.06.2028 (v1.11.0 ends 31.05.2027, v1.12.0 on 30.08.2027). The same
-# /departureBoard query against v1.11.0, v1.12.0 and v1.13.0 gave identical
-# departures and Stammstrecke observations; the schema change is additive.
+# anheben"): the newest version the VAO lists at
+# https://routenplaner.verkehrsauskunft.at/vao/restproxy. That was v1.13.0
+# from 24.10.2026 until the VAO withdrew it on 28.10.2026 between 14:30 and
+# 15:00 (Vienna): since then the list holds v1.11.0 (until 31.05.2027) and
+# v1.12.0 (until 30.08.2027), and every v1.13.0 request answers HTTP 404. The
+# same /departureBoard query against v1.11.0, v1.12.0 and v1.13.0 gave
+# identical departures and Stammstrecke observations on 24.10.2026.
 # Upgrade before the end-of-life date: docs/how-to/versions.md.
-DEFAULT_VERSION = "v1.13.0"
+DEFAULT_VERSION = "v1.12.0"
 DEFAULT_BASE = "https://routenplaner.verkehrsauskunft.at/vao/restproxy"
 DEFAULT_BASE_URL = f"{DEFAULT_BASE}/{DEFAULT_VERSION}/"
 DEFAULT_USER_AGENT = "wien-oepnv/1.0 (+https://github.com/Origamihase/wien-oepnv)"
@@ -138,6 +140,33 @@ def _sanitize_message(text: str) -> str:
         )
 
     return sanitized
+
+
+# Long enough for the messages ``request_safe`` and the VAO scripts raise (an
+# ``errorCode`` with its ``errorText``, a wrong Content-Type, an HTTP status
+# line), short enough for one log line and the Feed-Wächter issue.
+FAILURE_REASON_MAX_CHARS = 240
+
+
+def describe_failure(exc: BaseException) -> str:
+    """The exception type and its message, masked, for a log line or status.
+
+    The type alone ("ValueError", "HTTPError") cannot tell an ``errorCode``
+    envelope from a wrong Content-Type, a refused key from a server error: on
+    21.10.2026 17:31-20:01 and from 28.10.2026 15:00 the Stammstrecke log
+    showed nothing else (operator decision 2026-10-28: show the reason).
+    ``VorAuth`` puts the ``accessId`` into the prepared URL and a
+    ``RequestException`` can carry that URL, so the message goes through
+    :func:`_sanitize_message`, which masks the secret itself and every
+    credential-named query parameter, and is cut to
+    :data:`FAILURE_REASON_MAX_CHARS`.
+    """
+
+    message = _sanitize_message(str(exc)).strip()
+    reason = f"{type(exc).__name__}: {message}" if message else type(exc).__name__
+    if len(reason) > FAILURE_REASON_MAX_CHARS:
+        reason = reason[: FAILURE_REASON_MAX_CHARS - 1] + "…"
+    return reason
 
 
 def _sanitize_arg(arg: Any) -> Any:

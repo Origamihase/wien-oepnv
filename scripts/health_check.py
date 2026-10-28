@@ -55,8 +55,14 @@ only when the fetch is broken, never because no train runs).
 
 3. **Feed-Wächter** (``data/feed_watch.json``, written by
    ``scripts/feed_watch.py`` at the end of every Update run): the rules the
-   German feed broke in the last run. Always a note, never red (see
-   :func:`check_feed_watch`).
+   German feed broke in the last run. A finding is a note, never red; a
+   watcher that could not check is red (see :func:`check_feed_watch`).
+
+   **Nebenschritte** (``data/side_steps/``, written by
+   ``scripts/record_side_steps.py``): statistics, line check, Feed-Wächter
+   and HAFAS station lines run with ``continue-on-error``. Red while the last
+   run of one of them failed (operator decision 2026-10-28: "ein Fehler
+   sollte auffallen"; see :func:`check_side_steps`).
 
 4. **Zugangsdaten (Secrets).** Every repository secret a workflow passes on is
    listed in :data:`WORKFLOW_SECRETS`. A secret the feed pipeline needs that
@@ -641,15 +647,17 @@ FEED_WATCH_STATE = REPO_ROOT / "data" / "feed_watch.json"
 
 
 def check_feed_watch(now: datetime) -> Check:
-    """Show what the Feed-Wächter found in the last Update run, as a note.
+    """Show what the Feed-Wächter found in the last Update run.
 
-    Never red (operator decision 2026-10-10, Michael: red only when the fetch
-    does not work). A rule the German feed breaks is content: the fetch, the
-    build and the publish worked. The watcher reports it in the job log and
-    as a GitHub issue; here it shows as a note (``ℹ️`` and a ``::warning``).
-    A missing or stale state is a note too: a dead Update run already turns
-    ``Feed-Build`` red, and a watcher that could not check says so in its
-    ``error`` field.
+    A finding is never red (operator decision 2026-10-10, Michael: red only
+    when the fetch does not work). A rule the German feed breaks is content:
+    the fetch, the build and the publish worked. The watcher reports it in the
+    job log and as a GitHub issue; here it shows as a note (``ℹ️`` and a
+    ``::warning``). A watcher that could not check (its ``error`` field) is
+    red since 2026-10-28: a side step that cannot run must be noticed
+    (:func:`check_side_steps`). A missing or stale state stays a note: a dead
+    Update run already turns ``Feed-Build`` red, and a watcher step killed by
+    its time limit shows under ``Nebenschritte``.
     """
     name = "Feed-Wächter"
     data = read_capped_json(FEED_WATCH_STATE, label="feed_watch")
@@ -667,8 +675,8 @@ def check_feed_watch(now: datetime) -> Check:
     age = f"vor {_fmt_age((now - updated).total_seconds())}" if updated else "Zeitpunkt unbekannt"
     error = data.get("error")
     if error:
-        return Check(name, ok=True, note=True,
-                     summary=f"HINWEIS — Wächter konnte nicht prüfen ({age})",
+        return Check(name, ok=False,
+                     summary=f"FEHLER — Wächter konnte nicht prüfen ({age})",
                      detail=str(error)[:200])
     if updated is None or (now - updated).total_seconds() > FEED_MAX_AGE_H * 3600:
         return Check(name, ok=True, note=True,
@@ -689,6 +697,90 @@ def check_feed_watch(now: datetime) -> Check:
         summary=f"HINWEIS — {len(titles)} Regel(n) verletzt: {', '.join(titles)} (Stand {age})",
         detail=f"{first.get('subject', '')}: {first.get('text', '')}"[:200],
     )
+
+
+# One record per workflow, written by ``scripts/record_side_steps.py`` at the
+# end of the run (file name, workflow, oldest age before the record itself
+# counts as missing: the workflow's own freshness limit).
+SIDE_STEP_RECORDS: list[tuple[str, str, float]] = [
+    ("update-cycle.json", "Update-Lauf", FEED_MAX_AGE_H),
+    ("update-stations.json", "Stationslauf", STATIONS_MAX_AGE_H),
+]
+SIDE_STEP_DIR = REPO_ROOT / "data" / "side_steps"
+
+
+def _vienna_hhmm(moment: datetime) -> str:
+    local = moment.astimezone(_VIENNA) if _VIENNA is not None else moment
+    return local.strftime("%d.%m. %H:%M")
+
+
+def _parse_utc(raw: object) -> datetime | None:
+    try:
+        moment = datetime.fromisoformat(str(raw))
+    except ValueError:
+        return None
+    return moment if moment.tzinfo is not None else moment.replace(tzinfo=UTC)
+
+
+def check_side_steps(now: datetime) -> Check:
+    """Red while the last run of a side step failed (operator decision 2026-10-28).
+
+    The side steps run with ``continue-on-error`` so they never block the
+    publish: statistics, line check and Feed-Wächter in the Update run, the
+    HAFAS station lines in the station run. Michael on 2026-10-28: "Ich
+    tendiere zu ‚er soll rot werden', denn ein Fehler sollte auffallen." For
+    side steps this replaces the earlier "red only when the fetch fails"
+    (2026-10-10); a source outage keeps its own thresholds. A record older
+    than its workflow's limit is red too: the recorder could not run, so a
+    failure would go unseen again. A record that does not exist yet (before
+    the first run with the recorder) is a note.
+    """
+    name = "Nebenschritte"
+    problems: list[str] = []
+    notes: list[str] = []
+    counted = 0
+    for file_name, workflow, max_age_h in SIDE_STEP_RECORDS:
+        path = SIDE_STEP_DIR / file_name
+        if not path.exists():
+            notes.append(f"{workflow}: noch kein Stand ({path.name})")
+            continue
+        data = read_capped_json(path, label="side_steps")
+        steps = data.get("steps") if isinstance(data, dict) else None
+        if not isinstance(steps, dict):
+            problems.append(f"{workflow}: {path.name} ist unlesbar")
+            continue
+        updated = _parse_utc(data.get("updated"))
+        if updated is None or (now - updated).total_seconds() > max_age_h * 3600:
+            age = f"seit {_fmt_age((now - updated).total_seconds())}" if updated else "nie"
+            problems.append(f"{workflow}: Nebenschritte {age} nicht erfasst")
+        for label, entry in sorted(steps.items()):
+            if not isinstance(entry, dict):
+                continue
+            counted += 1
+            if entry.get("outcome") != "failure":
+                continue
+            at = _parse_utc(entry.get("at"))
+            last_ok = _parse_utc(entry.get("last_success"))
+            text = f"{label} ({workflow}) gescheitert"
+            if at is not None:
+                text += f" am {_vienna_hhmm(at)}"
+            text += (
+                f", zuletzt sauber am {_vienna_hhmm(last_ok)}" if last_ok else ", noch nie sauber"
+            )
+            if entry.get("run"):
+                text += f" — {entry['run']}"
+            problems.append(text)
+    if problems:
+        return Check(name, ok=False, summary=f"FEHLER — {problems[0]}",
+                     detail="; ".join(problems[1:] + notes))
+    if notes and not counted:
+        return Check(name, ok=True, note=True,
+                     summary="HINWEIS — noch kein Stand der Nebenschritte",
+                     detail="; ".join(notes))
+    summary = f"OK — alle {counted} Nebenschritte liefen zuletzt sauber"
+    if notes:
+        return Check(name, ok=True, note=True, summary=summary, detail="; ".join(notes))
+    return Check(name, ok=True, summary=summary)
 
 
 def _render_plain(
@@ -755,6 +847,7 @@ def main() -> int:
         check_stammstrecke_abruf(now),
         check_stammstrecke_directions(now),
         check_feed_watch(now),
+        check_side_steps(now),
     ]
     config = [check_secrets()]
     all_checks = sources + outputs + config

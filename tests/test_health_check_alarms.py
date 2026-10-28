@@ -203,6 +203,7 @@ def _all_green(monkeypatch: pytest.MonkeyPatch) -> None:
         "check_stammstrecke_abruf",
         "check_stammstrecke_directions",
         "check_feed_watch",
+        "check_side_steps",
     ):
         monkeypatch.setattr(hc, name, lambda _now: healthy)
     monkeypatch.setattr(hc, "check_secrets", lambda: healthy)
@@ -222,6 +223,8 @@ def test_main_is_green_when_every_check_is_green(monkeypatch: pytest.MonkeyPatch
         "check_stations",
         "check_station_sources",
         "check_stammstrecke_abruf",
+        "check_feed_watch",
+        "check_side_steps",
         "check_secrets",
     ],
 )
@@ -247,3 +250,92 @@ def test_main_stays_green_for_a_note(
     assert hc.main() == 0
     assert "::warning title=Health: Hinweis::HINWEIS" in capsys.readouterr().out
 
+
+
+# --- Nebenschritte: a side step that cannot run (decision 2026-10-28) -----
+
+
+def _record(repo: Path, file_name: str, updated: datetime, **steps: dict[str, str]) -> None:
+    folder = repo / "data" / "side_steps"
+    folder.mkdir(parents=True, exist_ok=True)
+    payload = {"updated": updated.isoformat(), "steps": steps}
+    (folder / file_name).write_text(json.dumps(payload), encoding="utf-8")
+
+
+@pytest.fixture
+def side_steps(repo: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
+    monkeypatch.setattr(hc, "SIDE_STEP_DIR", repo / "data" / "side_steps")
+    return repo
+
+
+def _ok(at: datetime) -> dict[str, str]:
+    return {"outcome": "success", "at": at.isoformat(), "last_success": at.isoformat()}
+
+
+def test_side_steps_all_clean_is_green(side_steps: Path) -> None:
+    tick = _NOW - timedelta(minutes=20)
+    _record(side_steps, "update-cycle.json", tick, Statistik=_ok(tick), Linienprüfung=_ok(tick))
+    _record(side_steps, "update-stations.json", _NOW - timedelta(days=3),
+            **{"ÖBB-Stationslinien (HAFAS)": _ok(_NOW - timedelta(days=3))})
+    check = hc.check_side_steps(_NOW)
+    assert check.ok and not check.note
+    assert "alle 3 Nebenschritte" in check.summary
+
+
+def test_a_failed_side_step_is_red_and_named(side_steps: Path) -> None:
+    tick = _NOW - timedelta(minutes=20)
+    failed = {
+        "outcome": "failure",
+        "at": tick.isoformat(),
+        "last_success": (tick - timedelta(minutes=30)).isoformat(),
+        "run": "https://github.com/o/r/actions/runs/42",
+    }
+    _record(side_steps, "update-cycle.json", tick, Statistik=failed, Linienprüfung=_ok(tick))
+    _record(side_steps, "update-stations.json", _NOW, **{"ÖBB-Stationslinien (HAFAS)": _ok(_NOW)})
+    check = hc.check_side_steps(_NOW)
+    assert not check.ok
+    assert check.summary == (
+        "FEHLER — Statistik (Update-Lauf) gescheitert am 28.10. 12:40, zuletzt sauber am "
+        "28.10. 12:10 — https://github.com/o/r/actions/runs/42"
+    )
+
+
+def test_a_side_step_that_never_worked_says_so(side_steps: Path) -> None:
+    _record(side_steps, "update-stations.json", _NOW,
+            **{"ÖBB-Stationslinien (HAFAS)": {"outcome": "failure", "at": _NOW.isoformat()}})
+    check = hc.check_side_steps(_NOW)
+    assert not check.ok
+    assert "ÖBB-Stationslinien (HAFAS) (Stationslauf) gescheitert" in check.summary
+    assert "noch nie sauber" in check.summary
+
+
+def test_a_stale_record_is_red(side_steps: Path) -> None:
+    """The recorder itself could not run: a failure would go unseen again."""
+    old = _NOW - timedelta(hours=hc.FEED_MAX_AGE_H) - timedelta(minutes=1)
+    _record(side_steps, "update-cycle.json", old, Statistik=_ok(old))
+    _record(side_steps, "update-stations.json", _NOW, **{"ÖBB-Stationslinien (HAFAS)": _ok(_NOW)})
+    check = hc.check_side_steps(_NOW)
+    assert not check.ok
+    assert "Update-Lauf: Nebenschritte seit 4h 1m nicht erfasst" in check.summary
+
+
+def test_an_unreadable_record_is_red(side_steps: Path) -> None:
+    folder = side_steps / "data" / "side_steps"
+    folder.mkdir(parents=True)
+    (folder / "update-cycle.json").write_text("{", encoding="utf-8")
+    assert not hc.check_side_steps(_NOW).ok
+
+
+def test_no_record_yet_is_a_note(side_steps: Path) -> None:
+    """Before the first run with the recorder."""
+    check = hc.check_side_steps(_NOW)
+    assert check.ok and check.note
+    assert "noch kein Stand" in check.summary
+
+
+def test_one_record_missing_is_a_note_beside_a_green_one(side_steps: Path) -> None:
+    tick = _NOW - timedelta(minutes=20)
+    _record(side_steps, "update-cycle.json", tick, Statistik=_ok(tick))
+    check = hc.check_side_steps(_NOW)
+    assert check.ok and check.note
+    assert "Stationslauf: noch kein Stand" in check.detail

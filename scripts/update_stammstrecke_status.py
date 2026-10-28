@@ -1045,7 +1045,7 @@ def _query_trips(
         # the caller's per-direction error-isolation branch runs without
         # propagating the BaseException-rooted recursion failure further.
         raise ValueError(
-            f"VAO /trip returned unparseable JSON: {type(exc).__name__}"
+            f"VAO /trip returned unparseable JSON: {type(exc).__name__}: {exc}"
         ) from exc
     if not isinstance(payload, dict):
         raise TypeError(
@@ -2028,12 +2028,11 @@ def _process_direction(
         # Security: never log the full exception via ``%s`` / ``exc_info``
         # — ``VorAuth`` injected the ``accessId`` into the prepared
         # request URL, and ``RequestException`` may carry that URL in
-        # its message. Logging the class name only suppresses the leak
-        # while preserving the failure-mode diagnostic.
+        # its message. ``describe_failure`` masks it (2026-10-28).
         LOGGER.warning(
             "Stammstrecke: Abfrage Richtung %s fehlgeschlagen: %s.",
             direction.target_label,
-            type(exc).__name__,
+            vor_provider.describe_failure(exc),
         )
         return "error"
 
@@ -2114,7 +2113,7 @@ def main() -> int:
             except Exception as exc:  # pragma: no cover - defensive
                 LOGGER.error(
                     "Stammstrecke: VOR-Session konnte nicht erstellt werden: %s.",
-                    type(exc).__name__,
+                    vor_provider.describe_failure(exc),
                 )
                 return 1
 

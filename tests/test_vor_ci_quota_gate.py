@@ -237,3 +237,37 @@ def test_health_check_never_calls_vao() -> None:
     workflow = _strip_comments((WORKFLOW_DIR / "health-check.yml").read_text(encoding="utf-8"))
     run_lines = [line.strip() for line in workflow.splitlines() if line.strip().startswith("run:")]
     assert run_lines == ["run: python scripts/health_check.py"]
+
+
+def test_verify_script_names_the_reason_and_masks_the_key(
+    monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
+    """28.10.2026: the CI probe logged only "HTTPError" while the VAO refused
+    every request; a 403 and a 503 looked the same. The status line is shown,
+    the ``accessId`` in the URL stays masked."""
+    import logging
+
+    import requests
+
+    import src.providers.vor as vor
+
+    import scripts.verify_vor_access_id as verify
+
+    secret = "s3cr3t-access-0815"
+    monkeypatch.setattr(vor, "refresh_base_configuration", lambda: "")
+    monkeypatch.setattr(vor, "refresh_access_credentials", lambda: secret)
+    monkeypatch.setattr(vor, "VOR_ACCESS_ID", secret)
+    monkeypatch.setattr(vor, "reserve_request_slot", lambda: (True, 1))
+    monkeypatch.setattr(verify, "_configure_logging", lambda: None)
+
+    def _refused(*args: object, **kwargs: object) -> bytes:
+        raise requests.HTTPError(
+            "403 Client Error: Forbidden for url: https://routenplaner.verkehrsauskunft.at"
+            f"/vao/restproxy/v1.12.0/location.name?input=Wien&accessId={secret}"
+        )
+
+    monkeypatch.setattr(verify, "fetch_content_safe", _refused)
+    with caplog.at_level(logging.ERROR, logger=verify.LOGGER.name):
+        assert verify.main([]) == 1
+    assert "VOR verification request failed: HTTPError: 403 Client Error: Forbidden" in caplog.text
+    assert secret not in caplog.text

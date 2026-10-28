@@ -497,7 +497,7 @@ def _query_departure_board(
         # ``ValueError`` so the caller's error-isolation branch runs
         # without propagating the BaseException-rooted failure.
         raise ValueError(
-            f"VAO /departureBoard returned unparseable JSON: {type(exc).__name__}"
+            f"VAO /departureBoard returned unparseable JSON: {type(exc).__name__}: {exc}"
         ) from exc
 
     if not isinstance(payload, dict):
@@ -1021,13 +1021,19 @@ class _TickTally:
     """What one poll saw, for ``cache/stammstrecke/poll_status.json``.
 
     Filled by :func:`_process_tick` when the caller passes one. ``error``
-    is a short, leak-safe reason (HTTP code or exception type, never a
-    message that could carry the ``accessId``-bearing URL).
+    is a short, leak-safe reason: the HTTP code, or the exception type with
+    its masked message (:func:`_failure_reason`).
     """
 
     departures: int = 0
     trains: int = 0
     error: str = ""
+
+
+def _failure_reason(exc: BaseException) -> str:
+    """Type and masked message of a failed poll (:func:`vor.describe_failure`)."""
+
+    return vor_provider.describe_failure(exc)
 
 
 def _count_readable_departures(departures: Iterable[Any]) -> int:
@@ -1118,12 +1124,10 @@ def _process_tick(
         # Security: ``VorAuth`` injects the ``accessId`` into the URL
         # before the prepared request leaves the session, so a
         # ``RequestException`` may carry that URL in its message —
-        # logging the exception type alone is leak-safe.
-        LOGGER.warning(
-            "Stammstrecke (Hbf): /departureBoard fehlgeschlagen: %s.",
-            type(exc).__name__,
-        )
-        tally.error = type(exc).__name__
+        # :func:`_failure_reason` masks it.
+        reason = _failure_reason(exc)
+        LOGGER.warning("Stammstrecke (Hbf): /departureBoard fehlgeschlagen: %s.", reason)
+        tally.error = reason
         return "error"
 
     tally.departures = len(departures)
@@ -1188,7 +1192,7 @@ def _record_poll_outcome(when: datetime, result: str, tally: _TickTally) -> None
     except Exception as exc:  # pragma: no cover - observability must not crash the tick
         LOGGER.warning(
             "Stammstrecke (Hbf): Abrufstatus nicht gespeichert: %s.",
-            type(exc).__name__,
+            _failure_reason(exc),
         )
 
 
@@ -1328,11 +1332,12 @@ def main() -> int:
             try:
                 session = _build_session(stack)
             except Exception as exc:  # pragma: no cover - defensive
+                reason = _failure_reason(exc)
                 LOGGER.error(
                     "Stammstrecke (Hbf): VOR-Session konnte nicht erstellt werden: %s.",
-                    type(exc).__name__,
+                    reason,
                 )
-                _record_poll_outcome(when, "error", _TickTally(error=type(exc).__name__))
+                _record_poll_outcome(when, "error", _TickTally(error=reason))
                 return 1
 
             try:

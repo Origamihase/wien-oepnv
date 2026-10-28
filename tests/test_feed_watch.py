@@ -672,30 +672,38 @@ def test_main_survives_a_forbidden_state_path(tmp_path: Path) -> None:
 
 
 @pytest.mark.parametrize(
-    ("state", "note", "summary"),
+    ("state", "ok", "note", "summary"),
     [
-        (None, True, "noch kein Stand"),
-        ({"updated": "2026-10-10T19:30:00+00:00", "findings": []}, False, "OK — alle Regeln halten"),
+        (None, True, True, "noch kein Stand"),
+        ({"updated": "2026-10-10T19:30:00+00:00", "findings": []}, True, False, "OK — alle Regeln halten"),
         (
             {
                 "updated": "2026-10-10T19:30:00+00:00",
                 "findings": [{"rule": "seit-zu-frueh", "title": "„Seit“-Zeit früher als die Störung", "subject": "2/71", "text": "x"}],
             },
             True,
+            True,
             "HINWEIS — 1 Regel(n) verletzt",
         ),
-        ({"updated": "2026-10-10T19:30:00+00:00", "error": "ParseError: x"}, True, "konnte nicht prüfen"),
-        ({"updated": "2026-10-09T10:00:00+00:00", "findings": []}, True, "kein aktueller Stand"),
+        # A watcher that could not check is a side step that cannot run: red
+        # since 2026-10-28 (operator decision, "ein Fehler sollte auffallen").
+        ({"updated": "2026-10-10T19:30:00+00:00", "error": "ParseError: x"}, False, False, "FEHLER — Wächter konnte nicht prüfen"),
+        ({"updated": "2026-10-09T10:00:00+00:00", "findings": []}, True, True, "kein aktueller Stand"),
     ],
 )
-def test_health_check_shows_the_watcher_as_a_note_never_red(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, state: dict[str, Any] | None, note: bool, summary: str
+def test_health_check_shows_findings_as_a_note_and_a_broken_watcher_red(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    state: dict[str, Any] | None,
+    ok: bool,
+    note: bool,
+    summary: str,
 ) -> None:
     path = tmp_path / "feed_watch.json"
     if state is not None:
         path.write_text(json.dumps(state), encoding="utf-8")
     monkeypatch.setattr(health_check, "FEED_WATCH_STATE", path)
     check = health_check.check_feed_watch(datetime(2026, 10, 10, 19, 45, tzinfo=UTC))
-    assert check.ok is True
+    assert check.ok is ok
     assert check.note is note
     assert summary in check.summary

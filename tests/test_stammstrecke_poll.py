@@ -16,6 +16,7 @@ These tests pin the split between the two cases:
 from __future__ import annotations
 
 import json
+import logging
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, cast
@@ -26,6 +27,7 @@ from zoneinfo import ZoneInfo
 
 from scripts import update_stammstrecke_hbf as monitor
 from scripts import update_stammstrecke_status as legacy
+from src.providers import vor as vor_provider
 from src.utils import stammstrecke_poll as poll_mod
 from src.utils.stammstrecke_poll import (
     POLL_STALE_HOURS,
@@ -180,7 +182,68 @@ def test_tick_broken_answer_is_an_error(monkeypatch: pytest.MonkeyPatch) -> None
 
     result, tally = _tick(monkeypatch, query)
     assert result == "error"
-    assert tally.error == "ValueError"
+    assert tally.error == "ValueError: VAO /departureBoard returned unparseable JSON"
+
+
+def test_tick_names_the_reason_of_a_failure(
+    monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
+    """21.10.2026 17:31-20:01 and 28.10.2026 from 15:00 the log said only
+    "ValueError": an errorCode envelope, a wrong Content-Type and a broken
+    body looked the same."""
+
+    def query(*_a: Any, **_kw: Any) -> list[Any]:
+        raise ValueError(
+            "Invalid Content-Type: text/html (expected ('application/json',))"
+        )
+
+    with caplog.at_level(logging.WARNING, logger=monitor.LOGGER.name):
+        result, tally = _tick(monkeypatch, query)
+    assert result == "error"
+    assert tally.error == "ValueError: Invalid Content-Type: text/html (expected ('application/json',))"
+    assert "fehlgeschlagen: ValueError: Invalid Content-Type: text/html" in caplog.text
+
+
+def test_tick_reason_masks_the_access_id(
+    monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
+    """``VorAuth`` puts the accessId into the URL a RequestException carries."""
+    secret = "s3cr3t-access-0815"
+    monkeypatch.setattr(vor_provider, "VOR_ACCESS_ID", secret)
+
+    def query(*_a: Any, **_kw: Any) -> list[Any]:
+        raise requests.ConnectionError(
+            "HTTPSConnectionPool(host='routenplaner.verkehrsauskunft.at', port=443): "
+            f"Max retries exceeded with url: /vao/restproxy/v1.11.0/departureBoard?accessId={secret}"
+            f"&id=490134900 (Caused by NameResolutionError({secret}))"
+        )
+
+    with caplog.at_level(logging.WARNING, logger=monitor.LOGGER.name):
+        result, tally = _tick(monkeypatch, query)
+    assert result == "error"
+    assert tally.error.startswith("ConnectionError: HTTPSConnectionPool(")
+    assert "Max retries exceeded" in tally.error
+    assert secret not in tally.error
+    assert secret not in caplog.text
+    assert "Max retries exceeded" in caplog.text
+
+
+def test_tick_reason_stays_one_short_line(monkeypatch: pytest.MonkeyPatch) -> None:
+    def query(*_a: Any, **_kw: Any) -> list[Any]:
+        raise ValueError("VAO /departureBoard returned errorCode 'X' ('" + "a\nb " * 200 + "')")
+
+    _result, tally = _tick(monkeypatch, query)
+    assert len(tally.error) == vor_provider.FAILURE_REASON_MAX_CHARS
+    assert tally.error.endswith("…")
+    assert "\n" not in tally.error
+
+
+def test_tick_reason_of_an_empty_message_is_the_type(monkeypatch: pytest.MonkeyPatch) -> None:
+    def query(*_a: Any, **_kw: Any) -> list[Any]:
+        raise requests.Timeout()
+
+    _result, tally = _tick(monkeypatch, query)
+    assert tally.error == "Timeout"
 
 
 def test_tick_empty_board_is_a_working_fetch(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -262,7 +325,7 @@ def test_monitor_main_records_a_failed_poll(
     status = load_poll_status(status_path)
     assert status is not None
     assert status.last_result == "error"
-    assert status.last_error == "ConnectionError"
+    assert status.last_error == "ConnectionError: down"
     assert status.last_success is None
 
 

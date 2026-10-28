@@ -39,6 +39,7 @@ darunter.
 - [7. VOR/VAO-API — Stammstrecke-only-Scope (2026-05-11)](#7-vorvao-api--stammstrecke-only-scope-2026-05-11)
   - [Der VAO-„Start“-Vertrag (geprüft 2026-10-17)](#der-vao-start-vertrag-geprüft-2026-10-17)
   - [Überwachung: Abruf kaputt oder keine Züge (seit 2026-10-10)](#überwachung-abruf-kaputt-oder-keine-züge-seit-2026-10-10)
+  - [Überwachung: Nebenschritte (seit 2026-10-28)](#überwachung-nebenschritte-seit-2026-10-28)
 - [8. Der zweisprachige Feed (DE → EN)](#8-der-zweisprachige-feed-de--en)
   - [Die beiden Invarianten](#die-beiden-invarianten)
   - [Was am Modell vorbeigeht](#was-am-modell-vorbeigeht)
@@ -1404,7 +1405,8 @@ Antwort weiterläuft (Regel `quelle-ohne-antwort`, Entscheidung des Betreibers
 vom 2026-10-23). Er ändert den Feed
 nie und blockiert die Veröffentlichung nie. Inhaltsfunde werden nie rot
 (Entscheidung des Betreibers vom 2026-10-10 für den Health check: rot nur,
-wenn der Abruf nicht funktioniert); sie stehen als `::warning` im
+wenn der Abruf nicht funktioniert); ein Wächter, der nicht prüfen konnte, ist
+seit 2026-10-28 rot („Überwachung: Nebenschritte“ in §7). Die Funde stehen als `::warning` im
 Protokoll, in `data/feed_watch.json` (der Health check zeigt sie als
 Hinweis) und je Regel als GitHub-Issue, das sich selbst schließt (dafür
 `issues: write` im Update-Lauf, Entscheidung des Betreibers vom
@@ -2678,13 +2680,15 @@ im Repository. Was er für dieses Projekt bedeutet:
   Stammstrecken-Meldung ist ein eigener Text. Der Quellen-Tag `<source>`
   VOR/VAO am Item bleibt. Endet der Vertrag, müssen diese Hinweise wieder
   entfernt werden (Punkt 7.7).
-* **API-Version:** seit 24.10.2026 v1.13.0 (`DEFAULT_VERSION` in
-  `src/providers/vor.py`), in Betrieb bis 30.06.2028; vorher v1.11.0, die am
-  31.05.2027 endet. Michael: „Wir können die VAO-Version gerne anheben“. Gewählt
-  ist die neueste Version, die die VAO unter
-  `https://routenplaner.verkehrsauskunft.at/vao/restproxy` listet, weil sie am
-  längsten läuft. Dieselbe `/departureBoard`-Abfrage an v1.11.0, v1.12.0 und
-  v1.13.0 lieferte dieselben Abfahrten und Beobachtungen. Vorgehen beim nächsten
+* **API-Version:** seit 28.10.2026 v1.12.0 (`DEFAULT_VERSION` in
+  `src/providers/vor.py`), in Betrieb bis 30.08.2027. Michael, 24.10.2026: „Wir
+  können die VAO-Version gerne anheben“. Gewählt ist die neueste Version, die
+  die VAO unter `https://routenplaner.verkehrsauskunft.at/vao/restproxy`
+  listet, weil sie am längsten läuft. Das war vom 24.10. an v1.13.0, bis die
+  VAO sie am 28.10.2026 zwischen 14:30 und 15:00 zurückzog: Seitdem antwortet
+  jede v1.13.0-Anfrage mit HTTP 404, und jeder Stammstrecken-Abruf scheiterte
+  bis zum Wechsel. Dieselbe `/departureBoard`-Abfrage an v1.11.0, v1.12.0 und
+  v1.13.0 lieferte am 24.10. dieselben Abfahrten und Beobachtungen. Vorgehen beim nächsten
   Umstieg: `docs/how-to/versions.md`, „Version anheben“.
 * **Jede Quelle ihr eigener Hinweis:** Michael, 17.10.2026: „Bitte beachte,
   dass jede Quelle den passenden Quellenhinweis erhält. ÖBB für die ÖBB, WL
@@ -2751,6 +2755,61 @@ Wer die Regel liest:
   Richtung mit Nachweis aus der Gegenrichtung, acht Stunden für den
   ganzen Korridor) bleiben, ebenso der Hinweis für eine einzelne stille
   Richtung.
+
+Seit 2026-10-28 schreibt der Monitor zu einem gescheiterten Abruf den Grund
+in Log und `poll_status.json` (`last_error`), nicht nur den Namen der
+Ausnahme: etwa `ValueError: Invalid Content-Type: text/html (expected
+('application/json',))` oder die `errorCode`-Hülle mit ihrem `errorText`.
+Am 21.10.2026 von 17:31 bis 20:01 und ab 28.10.2026 15:00 stand dort nur
+„ValueError“, eine falsche Antwortart, eine `errorCode`-Hülle und ein
+kaputter Text sahen gleich aus. `describe_failure` in
+`src/providers/vor.py` schickt die Meldung durch den VOR-Filter, der den
+`accessId` selbst und jeden Parameter mit Zugangsnamen maskiert, und kürzt
+sie auf 240 Zeichen; der Feed-Wächter und der Health check zeigen sie mit.
+Dieselbe Funktion nutzen die CI-Probe `scripts/verify_vor_access_id.py`
+(dort stand am 28.10.2026 nur „HTTPError“, ein 403 und ein 503 sahen gleich
+aus) und der frühere `/trip`-Monitor.
+
+### Überwachung: Nebenschritte (seit 2026-10-28)
+
+Betreiberentscheidung (Michael, 2026-10-28, auf die Frage, ob ein
+Nebenschritt, der nicht laufen kann, den Health check rot machen soll):
+„Ich tendiere zu ‚er soll rot werden‘, denn ein Fehler sollte auffallen.“
+Für Nebenschritte ersetzt das die Regel vom 2026-10-10 („rot nur, wenn der
+Abruf nicht funktioniert“, #1939, #1999). Die Schwellen für Quellen bleiben:
+Die Stammstrecke wird erst nach drei Stunden ohne erfolgreichen Abruf rot,
+die Richtungsprüfung nie, ein Inhaltsfund des Feed-Wächters bleibt ein
+Hinweis.
+
+Nebenschritte sind die Schritte mit `continue-on-error`, die die
+Veröffentlichung nie aufhalten dürfen: Statistik
+(`generate_markdown_stats.py`), Linienprüfung (`check_feed_lines.py`) und
+Feed-Wächter (`feed_watch.py`) im Update-Lauf, ÖBB-Stationslinien
+(`update_oebb_station_lines.py`) im Stationslauf. Bis 2026-10-28 hinterließ
+ihr Scheitern nur eine orange Annotation in einem grünen Lauf, und GitHub
+schickte keine Mail. Gemessen ist keiner gescheitert (Update-Läufe seit
+01.09.2026, Stationsläufe seit 01.01.2026), der Mangel war latent.
+
+* Der letzte Schritt vor der Veröffentlichung (`Record side-step outcomes`)
+  ruft `scripts/record_side_steps.py` mit dem Ergebnis jedes Nebenschritts
+  auf. Er liest `steps.<id>.outcome`, nicht `conclusion`: Unter
+  `continue-on-error` heißt die `conclusion` eines gescheiterten Schritts
+  `success`. Das Ergebnis landet in `data/side_steps/update-cycle.json` bzw.
+  `data/side_steps/update-stations.json` (eine Datei je Workflow, damit zwei
+  gleichzeitige Veröffentlichungen nie dieselbe Datei schreiben) und fährt
+  im Commit des Laufs mit. Ein übersprungener oder abgebrochener Schritt
+  ändert seinen Eintrag nicht.
+* Die Prüfung `Nebenschritte` in `scripts/health_check.py` ist rot, solange
+  der letzte Lauf eines Nebenschritts scheiterte, und nennt Schritt,
+  Zeitpunkt, letzten sauberen Lauf und den Link zum Lauf. Rot ist sie auch,
+  wenn eine Aufzeichnung älter ist als die Grenze ihres Workflows (4 h für
+  den Update-Lauf, 192 h für den Stationslauf): Dann konnte die
+  Aufzeichnung selbst nicht laufen. Fehlt eine Datei noch (vor dem ersten
+  Lauf mit der Aufzeichnung), ist das ein Hinweis.
+* Die Prüfung `Feed-Wächter` ist rot, wenn der Wächter nicht prüfen konnte
+  (Feld `error` in `data/feed_watch.json`); er endet in diesem Fall mit
+  Exit-Code 0, damit die Veröffentlichung weiterläuft, und sein Schritt
+  zählt deshalb als sauber.
 
 ---
 
