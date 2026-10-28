@@ -8063,6 +8063,10 @@ _OCCURRENCE_GAP = timedelta(hours=2)
 # 370 of 387 German feed versions, 441 slots (66A alone 286), although it
 # had been in the feed since 28.08. Unplanned incidents keep the two hours.
 _PLANNED_OCCURRENCE_GAP = timedelta(hours=36)
+# Set by :func:`_restart_recurring_occurrences` on an entry whose message
+# begins a new occurrence; :func:`_update_item_state` writes its statistics
+# row the first time the occurrence is shown and removes the mark.
+_NEW_OCCURRENCE_KEY = "new_occurrence"
 
 
 def _restart_recurring_occurrences(
@@ -8121,6 +8125,9 @@ def _restart_recurring_occurrences(
                 last_seen is None or last_seen < pub_utc - gap
             ):
                 entry["first_seen"] = pub_utc.isoformat()
+                # Counted in the statistics once it reaches the feed
+                # (:func:`_update_item_state`), like a disruption never seen.
+                entry[_NEW_OCCURRENCE_KEY] = True
                 restarted += 1
         entry["last_seen"] = stamp
     if restarted:
@@ -9043,6 +9050,14 @@ def _update_item_state(it: FeedItem, now: datetime, state: dict[str, dict[str, A
     is_strictly_new = not st
     if not st:
         st = {"first_seen": _initial_first_seen(it, _to_utc(now)).isoformat()}
+    # A recurring WL disruption keeps its entry (the guid holds no date) but
+    # begins a new occurrence (:func:`_restart_recurring_occurrences`). It is
+    # a new disruption for the statistics too: "U6: Rettungseinsatz" on
+    # 25.10. is not the one of 23.10. From 25.09. (when the restart came) to
+    # 27.10.2026 1,060 such occurrences reached the feed uncounted, the old rule
+    # counted 348 in the same replay of all 1,690 builds); the rows were added to
+    # the ledger afterwards (data/stats/README.md).
+    is_new_occurrence = is_strictly_new or bool(st.pop(_NEW_OCCURRENCE_KEY, False))
     state[ident] = st
     _note_announced_starts([it], state, now)
     # Legacy-key migration cleanup: ``_lookup_state`` returns the modern
@@ -9066,15 +9081,14 @@ def _update_item_state(it: FeedItem, now: datetime, state: dict[str, dict[str, A
         fs_dt = _to_utc(now)
         st["first_seen"] = fs_dt.isoformat()
 
-    # Stats: log the very first observation of a disruption identity into
-    # ``data/stats/stoerungen_YYYY.csv``. We deliberately key on the
-    # *strict* state-cache miss above (i.e. neither ``ident`` nor ``guid``
-    # had a prior entry) so reruns of the same incident — a long-lived
-    # ÖBB Streckeninformation that survives many feed builds — only
-    # record a single occurrence in the dashboard. Best-effort: any
-    # I/O failure inside ``append_disruption_row`` is logged and
-    # swallowed so the feed build itself never blocks on stats I/O.
-    if is_strictly_new:
+    # Stats: log the first appearance of each occurrence of a disruption
+    # into ``data/stats/stoerungen_YYYY.csv``: a state-cache miss above
+    # (neither ``ident`` nor ``guid`` had a prior entry) or an entry marked
+    # as a new occurrence. Reruns of the same occurrence — a long-lived ÖBB
+    # Streckeninformation that survives many feed builds — record a single
+    # row. Best-effort: any I/O failure inside ``append_disruption_row`` is
+    # logged and swallowed so the feed build itself never blocks on stats I/O.
+    if is_new_occurrence:
         try:
             append_disruption_row(
                 timestamp=_to_utc(now),
