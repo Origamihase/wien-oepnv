@@ -106,6 +106,7 @@ am TV steht.
 | `quelle-leer` | Quelle | der Cache eines Anbieters leer ist, obwohl er in den letzten sieben Tagen im Median mindestens fünf Meldungen hatte | — |
 | `quelle-einbruch` | Quelle | eine Rohantwort (`data/raw/`) weniger als die Hälfte ihres Medians der letzten sieben Tagen hat (Median mindestens 10) | — |
 | `quelle-ohne-antwort` | Quelle | WL, ÖBB oder Baustellen seit mindestens zwei Stunden keine brauchbare Antwort gaben (Exit-Code des Abrufs nicht 0, der Feed läuft mit der letzten guten Antwort) oder der Stammstrecken-Abruf bei der VAO seit mindestens zwei Stunden keinen Erfolg hatte (`cache/stammstrecke/poll_status.json`, `last_success`) | WL 21.10.2026, siehe unten |
+| `vao-version` | Quelle | der Stammstrecken-Monitor in den letzten 45 Minuten die VAO-Version gewechselt hat (`cache/stammstrecke/vao_version.json`, `previous` → `version`, automatische Wahl seit 29.10.2026); meldet so den Lauf des Wechsels und den nächsten | v1.13.0 → v1.12.0 am 28.10.2026 |
 | `verwurf-sprung` | Quelle | der Anteil der beim Abruf verworfenen Meldungen (`data/raw/*/verworfen.json`) um mehr als 25 Prozentpunkte von seinem Median der letzten sieben Tage abweicht | — |
 | `feed-alter` | Betrieb | der Feed beim Lauf des Wächters älter als 90 Minuten ist | — |
 

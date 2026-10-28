@@ -2696,6 +2696,30 @@ im Repository. Was er für dieses Projekt bedeutet:
   bis zum Wechsel. Dieselbe `/departureBoard`-Abfrage an v1.11.0, v1.12.0 und
   v1.13.0 lieferte am 24.10. dieselben Abfahrten und Beobachtungen. Vorgehen beim nächsten
   Umstieg: `docs/how-to/versions.md`, „Version anheben“.
+* **Automatische Wahl der Version (seit 29.10.2026):** Michael, 29.10.2026:
+  „Eine dynamische und automatische Wahl für ein Fallback klingt für mich
+  besser“ (ein Wechsel per PR bräuchte jedes Mal seinen Merge) und „Lies
+  automatisch aus, was die neuste Version ist. Wenn sie nicht funktioniert,
+  nimm automatisch die davor“. Jeder Stammstrecken-Abruf liest zuerst die
+  Versionsliste der VAO (ohne Access-ID, zählt nicht zum Tageskontingent) und
+  fragt die neueste Version, deren Abschaltdatum noch nicht vorbei ist.
+  Antwortet sie nicht brauchbar, fragt derselbe Abruf die nächstältere. Eine
+  gescheiterte Version kommt 24 Stunden lang erst nach den anderen dran:
+  Scheitert jede Version (abgelehnter Schlüssel, Ausfall der VAO), kostet ein
+  Abruf so einen Platz im Kontingent, nicht einen je Version. Ist die Liste
+  nicht lesbar, gilt die zuletzt funktionierende Version, sonst
+  `DEFAULT_VERSION`. Die Wahl steht in `cache/stammstrecke/vao_version.json`
+  und kommt mit dem Update-Lauf ins Repository. Die CI-Probe
+  (`verify_vor_access_id.py`) und `check_vor_auth.py` fragen dieselbe
+  Version. Setzt die Umgebung `VOR_VERSION` oder `VOR_BASE_URL`, gilt diese
+  Vorgabe ohne Wahl. Jeder Wechsel öffnet die Feed-Wächter-Regel
+  `vao-version` als Issue, das sich nach zwei Läufen selbst schließt. Code:
+  `src/utils/vao_version.py`, `_poll_listed_versions` in
+  `scripts/update_stammstrecke_hbf.py`. Nachgespielt mit den echten
+  Abrufzeiten des 28.10.2026: Ab 15:01 hätte jeder Abruf v1.12.0 gefragt und
+  funktioniert. Nennt die Liste die kaputte Version weiter, kostet der Wechsel
+  einen Platz mehr (20 statt 19 Plätze von 14:00 bis 23:01). Bis dahin
+  scheiterten 16 Abrufe von 15:00 bis 22:30.
 * **Jede Quelle ihr eigener Hinweis:** Michael, 17.10.2026: „Bitte beachte,
   dass jede Quelle den passenden Quellenhinweis erhält. ÖBB für die ÖBB, WL
   für WL und VOR/VAO für VOR/VAO“, und „Am TV soll sich weiterhin nichts
@@ -2827,7 +2851,7 @@ drei Fragen und hat damit genau einen Weg:
 | Weg | Frage | Wer meldet | Fälle |
 | --- | --- | --- | --- |
 | **Rot** (GitHub-Mail) | Arbeitet die Technik nicht, und zwar anhaltend? | Health check (`scripts/health_check.py`), stündlich | Eine Quelle (WL, ÖBB, Baustellen, Stammstrecke) gab den Update-Läufen seit **3 h** keine brauchbare Antwort; der Feed ist seit **4 h** nicht neu gebaut; der Stationslauf ist älter als 8 Tage, ein Teilschritt scheiterte oder die Validierung fand Sicherheitsprobleme; eine Quelle des Stationslaufs antwortete seit 15 Tagen nicht; ein Nebenschritt scheiterte im letzten Lauf oder seine Aufzeichnung ist veraltet; der Feed-Wächter konnte nicht prüfen; ein Pflicht-Secret ist leer. |
-| **Issue** (Lauf bleibt grün) | Arbeitet die Technik, aber Feed-Inhalt oder Quelle sehen falsch aus? | Feed-Wächter (`scripts/feed_watch.py`), jeder Update-Lauf; je Regel ein Issue, das sich nach zwei sauberen Läufen selbst schließt | Die Inhaltsregeln (doppelter Eintrag, Anzahl, alte Meldung als neu, „Seit“ zu früh, ÖBB-Zweitsatz, Zeitzeile, Zeit vorbei, Länge, Höflichkeitssatz) und die Quellenregeln (`quelle-leer`, `quelle-einbruch`, `verwurf-sprung`). |
+| **Issue** (Lauf bleibt grün) | Arbeitet die Technik, aber Feed-Inhalt oder Quelle sehen falsch aus? | Feed-Wächter (`scripts/feed_watch.py`), jeder Update-Lauf; je Regel ein Issue, das sich nach zwei sauberen Läufen selbst schließt | Die Inhaltsregeln (doppelter Eintrag, Anzahl, alte Meldung als neu, „Seit“ zu früh, ÖBB-Zweitsatz, Zeitzeile, Zeit vorbei, Länge, Höflichkeitssatz) und die Quellenregeln (`quelle-leer`, `quelle-einbruch`, `verwurf-sprung`, seit 2026-10-29 `vao-version`: die automatisch gewählte VAO-Version hat gewechselt). |
 | **Hinweis** (ℹ️, `::warning`) | Ist die Lage bekannt und verlangt nichts? | Health check | Eine stille Stammstrecken-Richtung, ein Korridor ohne Züge (die Website meldet ihn), eine gescheiterte Stichprobe, während die Update-Läufe noch Antworten bekommen, eine Aufzeichnung, die vor dem ersten Lauf noch fehlt. |
 
 **Frühwarnung:** Zwei Technikfälle melden zusätzlich früher ein Issue, bevor

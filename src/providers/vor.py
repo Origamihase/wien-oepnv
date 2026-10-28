@@ -42,12 +42,15 @@ from requests.auth import AuthBase
 from zoneinfo import ZoneInfo
 
 from ..utils.env import read_secret
-from ..utils.files import atomic_write, read_capped_json
+from ..utils.files import atomic_write, loads_finite, read_capped_json
 from ..utils.http import (
+    request_safe,
+    session_with_retries,
     validate_http_url,
 )
 from ..utils.locking import file_lock
 from ..utils.logging import sanitize_log_arg, sanitize_log_message
+from ..utils.vao_version import ListedVersion, is_version, load_state, parse_version_list
 
 log = logging.getLogger(__name__)
 
@@ -62,9 +65,16 @@ DATA_DIR = BASE_DIR / "data"
 # v1.12.0 (until 30.08.2027), and every v1.13.0 request answers HTTP 404. The
 # same /departureBoard query against v1.11.0, v1.12.0 and v1.13.0 gave
 # identical departures and Stammstrecke observations on 24.10.2026.
-# Upgrade before the end-of-life date: docs/how-to/versions.md.
+# Since 2026-10-29 the Stammstrecke monitor picks the version from the VAO
+# list on every poll (src/utils/vao_version.py, operator decision: "Lies
+# automatisch aus, was die neuste Version ist. Wenn sie nicht funktioniert,
+# nimm automatisch die davor"); this default only serves a checkout without
+# cache/stammstrecke/vao_version.json and a poll that cannot read the list.
 DEFAULT_VERSION = "v1.12.0"
 DEFAULT_BASE = "https://routenplaner.verkehrsauskunft.at/vao/restproxy"
+#: The VAO version list: JSON, no access key, not counted against the budget.
+VERSION_LIST_URL = DEFAULT_BASE
+VERSION_LIST_TIMEOUT = 15.0
 DEFAULT_BASE_URL = f"{DEFAULT_BASE}/{DEFAULT_VERSION}/"
 DEFAULT_USER_AGENT = "wien-oepnv/1.0 (+https://github.com/Origamihase/wien-oepnv)"
 
@@ -498,6 +508,64 @@ def refresh_base_configuration() -> str:
 VOR_BASE_URL = DEFAULT_BASE_URL
 VOR_VERSION = DEFAULT_VERSION
 refresh_base_configuration()
+
+
+def version_pinned_by_env() -> bool:
+    """True when ``VOR_BASE_URL``, ``VOR_BASE`` or ``VOR_VERSION`` sets the version.
+
+    An operator pin wins over the automatic choice from the VAO list.
+    """
+    return any(_get_env(name) for name in ("VOR_BASE_URL", "VOR_BASE", "VOR_VERSION", "VOR_VERSIONS"))
+
+
+def use_version(version: str) -> str:
+    """Point :data:`VOR_BASE_URL` at *version* of the official VAO endpoint.
+
+    Ignored when the environment pins the version or *version* is not a
+    version string; returns the version in use afterwards.
+    """
+    global VOR_BASE_URL, VOR_VERSION
+    if version_pinned_by_env() or not is_version(version):
+        return VOR_VERSION
+    VOR_BASE_URL = f"{DEFAULT_BASE.rstrip('/')}/{version}/"
+    VOR_VERSION = version
+    return VOR_VERSION
+
+
+def use_stored_version(path: Path | None = None) -> str:
+    """Use the version the Stammstrecke monitor chose last (``cache/stammstrecke/vao_version.json``).
+
+    For the probes outside the monitor (``verify_vor_access_id.py``,
+    ``check_vor_auth.py``), so they ask the version the monitor polls.
+    """
+    version = load_state(path).version
+    return use_version(version) if version is not None else VOR_VERSION
+
+
+def fetch_version_list(timeout: float = VERSION_LIST_TIMEOUT) -> list[ListedVersion] | None:
+    """The versions the VAO lists, newest first; ``None`` when the list cannot be read.
+
+    A plain session without :class:`VorAuth`: the list needs no access key, so
+    the key never travels and the request does not count against the budget.
+    """
+    try:
+        with session_with_retries(VOR_USER_AGENT, **VOR_RETRY_OPTIONS) as session:
+            response = request_safe(
+                session,
+                VERSION_LIST_URL,
+                timeout=timeout,
+                allowed_content_types=("application/json",),
+                headers={"Accept": "application/json"},
+            )
+            payload = loads_finite(response.content)
+    except Exception as exc:
+        _log_warning("VAO-Versionsliste nicht lesbar: %s", describe_failure(exc))
+        return None
+    listed = parse_version_list(payload)
+    if not listed:
+        _log_warning("VAO-Versionsliste ohne gültige Version.")
+        return None
+    return listed
 
 
 def _normalise_access_token(raw: str) -> tuple[str, str]:

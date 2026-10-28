@@ -10,6 +10,19 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **VAO-Version automatisch aus der Liste der VAO (2026-10-29)**: Michael:
+  „Eine dynamische und automatische Wahl für ein Fallback klingt für mich
+  besser“ und „Lies automatisch aus, was die neuste Version ist. Wenn sie nicht
+  funktioniert, nimm automatisch die davor“. Jeder Stammstrecken-Abruf liest die
+  Versionsliste (ohne Access-ID, nicht im Kontingent) und fragt die neueste
+  Version vor ihrem Abschaltdatum, bei einem Fehlschlag im selben Abruf die
+  nächstältere. Eine gescheiterte Version kommt 24 h lang zuletzt dran, damit
+  ein Fehler aller Versionen nur einen Platz je Abruf kostet. Die Wahl steht in
+  `cache/stammstrecke/vao_version.json`. Die CI-Probe fragt dieselbe Version,
+  ein Wechsel öffnet die neue Feed-Wächter-Regel `vao-version`.
+  Nachgespielt mit den Abrufzeiten des 28.10.: ab 15:01 jeder Abruf
+  erfolgreich auf v1.12.0 statt 16 gescheiterter Abrufe bis 22:30
+  (`src/utils/vao_version.py`, `tests/test_vao_version_choice.py`).
 * **Eine Linie für rot, Issue und Hinweis; Health check stündlich
   (2026-10-28)**: Auf Michaels Bitte „Finde eine klare Linie, damit dies in
   der Zukunft ein klares System hat“ wählte er die Karte „Linie, Issue als
