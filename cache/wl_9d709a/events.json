@@ -818,6 +818,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "14A: Fremder Verkehrsunfall",
+    "description": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "42270d028cd443977f582a2b48222c38c0603b64b1f2d3ae98143b310e12046e",
+    "pubDate": "2026-10-28T20:36:00+01:00",
+    "starts_at": "2026-10-28T20:36:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=14A|D=2026-10-28|TK=14a fremder verkehrsunfall",
+    "_wl_ids": [
+      "I20261028-0033"
+    ],
+    "_incident_start": "2026-10-28T20:36:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1158,22 +1174,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "94A: Rettungseinsatz",
-    "description": "Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "1d0635c7febf380986c89915a0f350754c30c7f6785128a6cb8f7be16717737a",
-    "pubDate": "2026-10-28T18:19:00+01:00",
-    "starts_at": "2026-10-28T18:19:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=94A|D=2026-10-28|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261028-0030"
-    ],
-    "_incident_start": "2026-10-28T18:19:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "D: Gleisbauarbeiten",
     "description": "Linie D: Kein Betrieb zwischen Börse und Augasse. Weichen Sie ersatzweise auf die Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A aus. Grund: Gleisbauarbeiten im Bereich Althanstraße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1238,34 +1238,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Verspätungen",
-    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "U3: Rettungseinsatz",
+    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "178cf2e06d6bf9e3207e789e31504019ebfed19bf91191929c7996b4b8b6d1a7",
-    "pubDate": "2026-10-28T17:45:00+01:00",
-    "starts_at": "2026-10-28T17:45:00+01:00",
+    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
+    "pubDate": "2026-10-28T20:40:00+01:00",
+    "starts_at": "2026-10-28T20:40:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=O|D=2026-10-28|TK=o verspätungen",
+    "_identity": "wl|störung|L=U3|D=2026-10-28|TK=rettungseinsatz",
     "_wl_ids": [
-      "I20261028-0028"
+      "I20261028-0034"
     ],
-    "_incident_start": "2026-10-28T17:45:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Polizeieinsatz",
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
-    "pubDate": "2026-10-28T18:01:00+01:00",
-    "starts_at": "2026-10-28T18:01:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U4|D=2026-10-28|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261028-0029"
-    ],
-    "_incident_start": "2026-10-28T18:01:00+01:00"
+    "_incident_start": "2026-10-28T20:40:00+01:00"
   },
   {
     "source": "Wiener Linien",
