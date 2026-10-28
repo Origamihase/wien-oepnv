@@ -33,7 +33,10 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
     17:31–20:01, ab 28.10. 15:00); eine falsche Antwortart, eine
     `errorCode`-Hülle und ein kaputter Text sahen gleich aus. Jetzt stehen
     dort Typ und Meldung, durch den VOR-Filter maskiert (der `accessId` und
-    jeder Parameter mit Zugangsnamen) und auf 240 Zeichen begrenzt.
+    jeder Parameter mit Zugangsnamen) und auf 240 Zeichen begrenzt
+    (`describe_failure` in `src/providers/vor.py`). Dieselbe Funktion nutzen
+    die CI-Probe `scripts/verify_vor_access_id.py`, die nur „HTTPError“
+    schrieb, und der frühere `/trip`-Monitor.
 * **Prüfung der Testsuite und der Hilfsskripte (2026-10-28)**: Nur Tests,
   Doku und `requirements-dev.txt`, kein Produktivcode. Die Tests jedes
   Fix-PRs seit 04.10. scheitern am Code vor dem Fix (92 von 95, die übrigen

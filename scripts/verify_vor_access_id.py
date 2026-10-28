@@ -129,9 +129,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         # CI-runner output (clear-text-logging dataflow, mirrors the
         # 2026-05-08 fix in scripts/update_vor_stations.py:587 and
         # scripts/update_vor_cache.py:173). Logging only the exception
-        # class name suppresses the URL while preserving the
-        # failure-mode diagnostic.
-        LOGGER.error("VOR verification request failed: %s", type(exc).__name__)
+        # class name suppressed the URL but hid the reason (an HTTP 403
+        # and a 503 looked the same); ``describe_failure`` masks the
+        # ``accessId`` and keeps the status line (2026-10-28).
+        LOGGER.error("VOR verification request failed: %s", vor_module.describe_failure(exc))
         return 1
 
     try:

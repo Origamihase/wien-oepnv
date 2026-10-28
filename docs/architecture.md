@@ -2760,10 +2760,13 @@ Ausnahme: etwa `ValueError: Invalid Content-Type: text/html (expected
 ('application/json',))` oder die `errorCode`-Hülle mit ihrem `errorText`.
 Am 21.10.2026 von 17:31 bis 20:01 und ab 28.10.2026 15:00 stand dort nur
 „ValueError“, eine falsche Antwortart, eine `errorCode`-Hülle und ein
-kaputter Text sahen gleich aus. Die Meldung läuft durch den VOR-Filter
-(`_sanitize_message` in `src/providers/vor.py`), der den `accessId` selbst
-und jeden Parameter mit Zugangsnamen maskiert, und ist auf 240 Zeichen
-begrenzt; der Feed-Wächter und der Health check zeigen sie mit.
+kaputter Text sahen gleich aus. `describe_failure` in
+`src/providers/vor.py` schickt die Meldung durch den VOR-Filter, der den
+`accessId` selbst und jeden Parameter mit Zugangsnamen maskiert, und kürzt
+sie auf 240 Zeichen; der Feed-Wächter und der Health check zeigen sie mit.
+Dieselbe Funktion nutzen die CI-Probe `scripts/verify_vor_access_id.py`
+(dort stand am 28.10.2026 nur „HTTPError“, ein 403 und ein 503 sahen gleich
+aus) und der frühere `/trip`-Monitor.
 
 ### Überwachung: Nebenschritte (seit 2026-10-28)
 

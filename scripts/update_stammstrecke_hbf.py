@@ -1030,28 +1030,10 @@ class _TickTally:
     error: str = ""
 
 
-# Long enough for the messages this script and ``request_safe`` raise (an
-# ``errorCode`` with its ``errorText``, a wrong Content-Type), short enough
-# for one log line and the Feed-Wächter issue.
-_FAILURE_REASON_MAX_CHARS: Final = 240
-
-
 def _failure_reason(exc: BaseException) -> str:
-    """The exception type and its message, masked for log and poll status.
+    """Type and masked message of a failed poll (:func:`vor.describe_failure`)."""
 
-    The type alone ("ValueError") cannot tell an ``errorCode`` envelope from
-    a wrong Content-Type or a broken JSON body: on 21.10.2026 17:31-20:01 and
-    from 28.10.2026 15:00 the log showed nothing else. ``VorAuth`` puts the
-    ``accessId`` into the prepared URL and a ``RequestException`` can carry
-    that URL, so the message goes through the VOR sanitizer, which masks the
-    secret itself and every credential-named query parameter.
-    """
-
-    message = vor_provider._sanitize_message(str(exc)).strip()
-    reason = f"{type(exc).__name__}: {message}" if message else type(exc).__name__
-    if len(reason) > _FAILURE_REASON_MAX_CHARS:
-        reason = reason[: _FAILURE_REASON_MAX_CHARS - 1] + "…"
-    return reason
+    return vor_provider.describe_failure(exc)
 
 
 def _count_readable_departures(departures: Iterable[Any]) -> int:

@@ -233,7 +233,7 @@ def test_tick_reason_stays_one_short_line(monkeypatch: pytest.MonkeyPatch) -> No
         raise ValueError("VAO /departureBoard returned errorCode 'X' ('" + "a\nb " * 200 + "')")
 
     _result, tally = _tick(monkeypatch, query)
-    assert len(tally.error) == monitor._FAILURE_REASON_MAX_CHARS
+    assert len(tally.error) == vor_provider.FAILURE_REASON_MAX_CHARS
     assert tally.error.endswith("…")
     assert "\n" not in tally.error
 
