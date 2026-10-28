@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261028-0020-F01, I20260917-0012, I20260922-0032, I20260925-0011, I20261028-0019, I20260909-0007, I20261028-0015-F02, I20261020-0029, I20261028-0021-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261028-0023, I20260925-0011, I20261028-0019, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
@@ -259,52 +259,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "46": "ptTram"
-     }
-    },
-    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 46: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 46: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "46: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Huttengasse",
-    "name": "I20261028-0015-F02",
-    "owner": "WL",
-    "parentName": "I20261028-0015",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 146,
-      "lineName": "46",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-28T14:48:00.000+0100",
-     "lastUpdate": "2026-10-28T14:48:00.000+0100",
-     "resume": "2026-10-28T14:48:00.000+0100",
-     "start": "2026-10-28T14:31:00.000+0100"
-    },
-    "title": "46: Fremder Verkehrsunfall"
-   },
-   {
     "alertCause": "police activity",
     "alertCauseId": 3,
     "attributes": {
@@ -346,103 +300,58 @@
     "status": "active",
     "time": {
      "created": "2026-10-28T15:34:00.000+0100",
-     "lastUpdate": "2026-10-28T15:34:00.000+0100",
+     "end": "2026-10-28T17:20:00.000+0100",
+     "lastUpdate": "2026-10-28T16:55:00.000+0100",
      "resume": "2026-10-28T15:32:00.000+0100",
      "start": "2026-10-28T15:32:00.000+0100"
     },
     "title": "U1: Polizeieinsatz"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
+    "alertCause": "police activity",
+    "alertCauseId": 3,
     "attributes": {
      "relatedLineTypes": {
-      "48A": "ptBusCity"
+      "U6": "ptMetro"
      }
     },
-    "description": "Linie 48A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 48A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 48A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 48A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "48A: Fremder Verkehrsunfall"
+       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+       "title": "U6: Polizeieinsatz"
       }
      }
     ],
-    "location": "Flötzersteig",
-    "name": "I20261028-0020-F01",
+    "name": "I20261028-0023",
     "owner": "WL",
-    "parentName": "I20261028-0020",
+    "parentName": "I20261028-0023",
     "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "48A"
+     "U6"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 448,
-      "lineName": "48A",
-      "vehicleType": "ptBusCity"
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-28T15:48:00.000+0100",
-     "lastUpdate": "2026-10-28T15:48:00.000+0100",
-     "resume": "2026-10-28T15:48:00.000+0100",
-     "start": "2026-10-28T15:45:00.000+0100"
+     "created": "2026-10-28T16:32:00.000+0100",
+     "end": "2026-10-28T17:10:00.000+0100",
+     "lastUpdate": "2026-10-28T16:55:00.000+0100",
+     "resume": "2026-10-28T16:32:00.000+0100",
+     "start": "2026-10-28T16:32:00.000+0100"
     },
-    "title": "48A: Fremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "60": "ptTram"
-     }
-    },
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "60: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Speisinger Straße",
-    "name": "I20261028-0021-F01",
-    "owner": "WL",
-    "parentName": "I20261028-0021",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-28T16:04:00.000+0100",
-     "lastUpdate": "2026-10-28T16:04:00.000+0100",
-     "resume": "2026-10-28T16:04:00.000+0100",
-     "start": "2026-10-28T15:56:00.000+0100"
-    },
-    "title": "60: Verkehrsunfall"
+    "title": "U6: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",

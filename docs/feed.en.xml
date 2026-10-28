@@ -8,8 +8,22 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 28 Oct 2026 16:30:47 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 17:01:03 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U6: Police operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab</guid>
+      <pubDate>Wed, 28 Oct 2026 16:32:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 28 Oct 2026 16:32:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 28 Oct 2026 16:32:00 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 17:10:00 +0100</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: police operation. [Since 16:32]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: police operation.<br/>[Since 16:32]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[60: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -19,22 +33,10 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 28 Oct 2026 15:56:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 28 Oct 2026 15:56:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 15:56]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 15:56]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: Third-party traffic accident]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">7da5c613b2d12a20d7869dc68a2b28443932b3386ce707fa25728d82068a8310</guid>
-      <pubDate>Wed, 28 Oct 2026 15:45:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 28 Oct 2026 15:45:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 28 Oct 2026 15:45:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 15:45]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 15:45]]]></content:encoded>
+      <ext:starts_at>Wed, 28 Oct 2026 15:57:13 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 18:00:00 +0100</ext:ends_at>
+      <description>Service obstruction. [Since 15:56]</description>
+      <content:encoded><![CDATA[Service obstruction.<br/>[Since 15:56]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Police operation]]></title>
@@ -46,11 +48,12 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 28 Oct 2026 15:32:00 +0100</ext:first_seen>
       <ext:starts_at>Wed, 28 Oct 2026 15:32:00 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 28 Oct 2026 17:20:00 +0100</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: police operation. [Since 15:32]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: police operation.<br/>[Since 15:32]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[10: Third-party accident]]></title>
+      <title><![CDATA[10/46: Third-party accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">a353875670c81bfb8e057d43db548115ca6c84c08a4b6f4e5ddfed91706f0a44</guid>
       <pubDate>Wed, 28 Oct 2026 14:31:00 +0100</pubDate>
@@ -59,22 +62,23 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 28 Oct 2026 14:31:00 +0100</ext:first_seen>
       <ext:starts_at>Wed, 28 Oct 2026 14:39:35 +0100</ext:starts_at>
-      <ext:ends_at>Wed, 28 Oct 2026 18:15:00 +0100</ext:ends_at>
-      <description>Service from Joachimsthalerplatz, Schloss Schönbrunn. [Since 14:31]</description>
-      <content:encoded><![CDATA[Service from Joachimsthalerplatz, Schloss Schönbrunn.<br/>[Since 14:31]]]></content:encoded>
+      <ext:ends_at>Wed, 28 Oct 2026 18:30:00 +0100</ext:ends_at>
+      <description>Service from Joachimsthalerplatz; 46: service from Breitensee; 10: service from Schloss Schönbrunn. [Since 14:31]</description>
+      <content:encoded><![CDATA[Service from Joachimsthalerplatz; 46: service from Breitensee; 10: service from Schloss Schönbrunn.<br/>[Since 14:31]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[46: Third-party accident]]></title>
+      <title><![CDATA[54A/54B: Construction works]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">eed4ea629d44bb9f67a32b24760e7fc7e9fbb8fab9efd3a43457846fae26b28d</guid>
-      <pubDate>Wed, 28 Oct 2026 14:31:00 +0100</pubDate>
+      <guid isPermaLink="false">368e944a9eb2af06010f464af138f6047466adea7e5bb23fd6f4ce14094d53dc</guid>
+      <pubDate>Wed, 21 Oct 2026 07:33:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 28 Oct 2026 14:31:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 28 Oct 2026 14:31:00 +0100</ext:starts_at>
-      <description>Service from Joachimsthalerplatz, Breitensee. [Since 14:31]</description>
-      <content:encoded><![CDATA[Service from Joachimsthalerplatz, Breitensee.<br/>[Since 14:31]]]></content:encoded>
+      <ext:first_seen>Wed, 28 Oct 2026 17:01:03 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 27 Oct 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 30 Oct 2026 15:00:00 +0100</ext:ends_at>
+      <description>Due to roadworks in the area of Einsiedeleigasse, lines 54A and 54B are redirected. [Until Fri 30.10.]</description>
+      <content:encoded><![CDATA[Due to roadworks in the area of Einsiedeleigasse, lines 54A and 54B are redirected.<br/>[Until Fri 30.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[16A: Zanaschkagasse]]></title>
@@ -134,18 +138,18 @@
       <content:encoded><![CDATA[Towards Döblinger Friedhof, Felix-Dahn-Straße: Liechtensteinstraße 42 → Liechtensteinstraße 38. Towards Schottentor U: Liechtensteinstraße 37a opposite Bauernfeldplatz → …<br/>[Since 27.10.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[54A/54B: Construction works]]></title>
+      <title><![CDATA[89A: Line closure]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">c879c0eb93c47cfaf8e8c207ba31d9583c4ed7e34d0436c9529b68f949c0a3eb</guid>
-      <pubDate>Wed, 21 Oct 2026 07:33:00 +0200</pubDate>
+      <guid isPermaLink="false">80106b09b7f157645c39c612d87a15a8b0a79e1d8a1e6a823f2d41e155216c64</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0200</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Mon, 26 Oct 2026 00:01:08 +0100</ext:first_seen>
       <ext:starts_at>Tue, 27 Oct 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Tue, 10 Nov 2026 09:00:00 +0100</ext:ends_at>
-      <description>Due to roadworks in the area of Einsiedeleigasse, lines 54A and 54B are redirected. [Until 10.11.]</description>
-      <content:encoded><![CDATA[Due to roadworks in the area of Einsiedeleigasse, lines 54A and 54B are redirected.<br/>[Until 10.11.]]]></content:encoded>
+      <ext:ends_at>Wed, 28 Oct 2026 18:00:00 +0100</ext:ends_at>
+      <description>Due to an ordered line closure of Algenweg, line 89A is redirected. [Today]</description>
+      <content:encoded><![CDATA[Due to an ordered line closure of Algenweg, line 89A is redirected.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
