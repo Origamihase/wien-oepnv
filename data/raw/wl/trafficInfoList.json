@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261029-0034-F01, I20261029-0034-F02, I20261029-0034-F03, I20261029-0035-F01, I20260925-0011, I20260909-0007, I20261029-0030, I20261029-0032-F01, I20261020-0029, I20261029-0029"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261029-0037, I20260909-0007, I20261029-0036, I20261029-0038, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R45-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R36-152, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R100-136, R101-136, R102-136, R103-136, R115-136, R2378-627, R318-437, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R2359-125, R401-101, R2343-626, R293-474, R2343-125, R3886-480, R1974-466, R1272-440, R1301-440, R500-101, R1247-435, R1232-435, R1231-435, R1230-435, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1884-101, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R2558-125, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R293-474, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R401-101, R318-437, R3886-480, R1974-466, R1272-440, R1301-440, R500-101, R1338-142, R524-142, R235-143, R237-143, R236-143, R234-143, R231-143, R230-143, R1354-143, R1355-143, R1356-143, R1357-143, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,329 +259,140 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "15A": "ptBusCity"
-     }
-    },
-    "description": "Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 15A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 15A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "15A: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261029-0029",
-    "owner": "WL",
-    "parentName": "I20261029-0029",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "15A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 415,
-      "lineName": "15A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-29T17:20:00.000+0100",
-     "lastUpdate": "2026-10-29T17:20:00.000+0100",
-     "resume": "2026-10-29T17:19:00.000+0100",
-     "start": "2026-10-29T17:19:00.000+0100"
-    },
-    "title": "15A: Verkehrsunfall"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "7A": "ptBusCity"
-     }
-    },
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "7A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261029-0030",
-    "owner": "WL",
-    "parentName": "I20261029-0030",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "7A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 407,
-      "lineName": "7A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-29T17:34:00.000+0100",
-     "lastUpdate": "2026-10-29T17:34:00.000+0100",
-     "resume": "2026-10-29T17:34:00.000+0100",
-     "start": "2026-10-29T17:34:00.000+0100"
-    },
-    "title": "7A: Verkehrsüberlastung"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "11": "ptTram"
+      "7B": "ptBusCity"
      }
     },
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 7B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Bereich Unter-Meidlinger Straße.",
+    "descriptionHTML": "<p>Linie 7B:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Rettungseinsatz im Bereich Unter-Meidlinger Straße.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "11: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie 7B:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Rettungseinsatz im Bereich Unter-Meidlinger Straße.</p>",
+       "descriptionPlain": "Linie 7B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Bereich Unter-Meidlinger Straße.",
+       "title": "7B: Rettungseinsatz"
       }
      }
     ],
-    "name": "I20261029-0032-F01",
+    "location": "Unter-Meidlinger Straße",
+    "name": "I20261029-0036",
     "owner": "WL",
-    "parentName": "I20261029-0032",
+    "parentName": "I20261029-0036",
     "priority": "1",
     "reasonId": 9,
     "reasonName": "Rettungseinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "11"
+     "7B"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 111,
-      "lineName": "11",
-      "vehicleType": "ptTram"
+      "lineId": 207,
+      "lineName": "7B",
+      "vehicleType": "ptBusCity"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-29T18:23:00.000+0100",
-     "lastUpdate": "2026-10-29T18:23:00.000+0100",
-     "resume": "2026-10-29T18:23:00.000+0100",
-     "start": "2026-10-29T18:15:00.000+0100"
+     "created": "2026-10-29T19:44:00.000+0100",
+     "lastUpdate": "2026-10-29T19:44:00.000+0100",
+     "resume": "2026-10-29T19:43:00.000+0100",
+     "start": "2026-10-29T19:43:00.000+0100"
     },
-    "title": "11: Rettungseinsatz"
+    "title": "7B: Rettungseinsatz"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
     "attributes": {
      "relatedLineTypes": {
-      "1": "ptTram"
+      "42": "ptTram"
      }
     },
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 20:20 Uhr. Grund: Falschparker im Bereich Kreuzgasse 43.",
+    "descriptionHTML": "<p>Linie 42:<br>Fahrtbehinderung in Richtung Antonigasse.</p><p>Voraussichtliche Dauer: 20:20 Uhr.</p><p>Grund: Falschparker im Bereich Kreuzgasse 43.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "1: Polizeieinsatz"
+       "descriptionHtml": "<p>Linie 42:<br>Fahrtbehinderung in Richtung Antonigasse.</p><p>Voraussichtliche Dauer: 20:20 Uhr.</p><p>Grund: Falschparker im Bereich Kreuzgasse 43.</p>",
+       "descriptionPlain": "Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 20:20 Uhr. Grund: Falschparker im Bereich Kreuzgasse 43.",
+       "title": "42: Falschparker"
       }
      }
     ],
-    "name": "I20261029-0034-F01",
+    "location": "Kreuzgasse 43",
+    "name": "I20261029-0037",
     "owner": "WL",
-    "parentName": "I20261029-0034",
+    "parentName": "I20261029-0037",
     "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "1"
+     "42"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 101,
-      "lineName": "1",
+      "lineId": 142,
+      "lineName": "42",
       "vehicleType": "ptTram"
      }
     ],
-    "relatedStops": [
-     49
-    ],
     "status": "active",
     "time": {
-     "created": "2026-10-29T18:24:00.000+0100",
-     "lastUpdate": "2026-10-29T18:24:00.000+0100",
-     "resume": "2026-10-29T18:24:00.000+0100",
-     "start": "2026-10-29T18:19:00.000+0100"
+     "created": "2026-10-29T19:50:00.000+0100",
+     "lastUpdate": "2026-10-29T19:50:00.000+0100",
+     "start": "2026-10-29T19:49:00.000+0100"
     },
-    "title": "1: Polizeieinsatz"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "2: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261029-0034-F02",
-    "owner": "WL",
-    "parentName": "I20261029-0034",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 102,
-      "lineName": "2",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     49
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-29T18:24:00.000+0100",
-     "lastUpdate": "2026-10-29T18:24:00.000+0100",
-     "resume": "2026-10-29T18:24:00.000+0100",
-     "start": "2026-10-29T18:19:00.000+0100"
-    },
-    "title": "2: Polizeieinsatz"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "71": "ptTram"
-     }
-    },
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "71: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261029-0034-F03",
-    "owner": "WL",
-    "parentName": "I20261029-0034",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 171,
-      "lineName": "71",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     49
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-29T18:24:00.000+0100",
-     "lastUpdate": "2026-10-29T18:24:00.000+0100",
-     "resume": "2026-10-29T18:24:00.000+0100",
-     "start": "2026-10-29T18:19:00.000+0100"
-    },
-    "title": "71: Polizeieinsatz"
+    "title": "42: Falschparker"
    },
    {
     "alertCause": "accident",
     "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "35A": "ptBusCity"
+      "43": "ptTram"
      }
     },
-    "description": "Linie 35A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 35A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 43: Umleitung in Richtung Schottentor U zwischen Rosensteingasse und Brünnlbadgasse über die Strecke der Linien 9 und 44. Voraussichtliche Dauer: 20:25 Uhr. Grund: Fremder Verkehrsunfall im Bereich Alser Straße.",
+    "descriptionHTML": "<p>Linie 43:<br>Umleitung in Richtung Schottentor U <br>zwischen Rosensteingasse und Brünnlbadgasse <br>über die Strecke der Linien 9 und 44.</p><p>Voraussichtliche Dauer: 20:25 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Alser Straße.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 35A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 35A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "35A: Fremder Verkehrsunfall"
+       "descriptionHtml": "<p>Linie 43:<br>Umleitung in Richtung Schottentor U <br>zwischen Rosensteingasse und Brünnlbadgasse <br>über die Strecke der Linien 9 und 44.</p><p>Voraussichtliche Dauer: 20:25 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Alser Straße.</p>",
+       "descriptionPlain": "Linie 43: Umleitung in Richtung Schottentor U zwischen Rosensteingasse und Brünnlbadgasse über die Strecke der Linien 9 und 44. Voraussichtliche Dauer: 20:25 Uhr. Grund: Fremder Verkehrsunfall im Bereich Alser Straße.",
+       "title": "43: Fremder Verkehrsunfall"
       }
      }
     ],
-    "location": "Billrothstraße",
-    "name": "I20261029-0035-F01",
+    "location": "Alser Straße",
+    "name": "I20261029-0038",
     "owner": "WL",
-    "parentName": "I20261029-0035",
+    "parentName": "I20261029-0038",
     "priority": "1",
     "reasonId": 13,
     "reasonName": "Fremder Verkehrsunfall",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "35A"
+     "43"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 435,
-      "lineName": "35A",
-      "vehicleType": "ptBusCity"
+      "lineId": 143,
+      "lineName": "43",
+      "vehicleType": "ptTram"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-29T19:04:00.000+0100",
-     "lastUpdate": "2026-10-29T19:04:00.000+0100",
-     "resume": "2026-10-29T19:04:00.000+0100",
-     "start": "2026-10-29T18:40:00.000+0100"
+     "created": "2026-10-29T19:54:00.000+0100",
+     "lastUpdate": "2026-10-29T19:54:00.000+0100",
+     "start": "2026-10-29T19:53:00.000+0100"
     },
-    "title": "35A: Fremder Verkehrsunfall"
+    "title": "43: Fremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -793,98 +604,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nUmleitung ab Hardtgasse über  Chimanistraße ",
-    "name": "R1230-435",
-    "owner": "WL",
-    "parentName": "R1230-435",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "35A"
-    ],
-    "relatedStops": [
-     1230
-    ],
-    "time": {
-     "end": "2026-10-29T19:40:00.000+0100",
-     "start": "2026-10-29T18:09:08.000+0100"
-    },
-    "title": "Verkehrsunfall\nUmleitung ab Hardtgasse über  Chimanistraße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nUmleitung ab Hardtgasse über  Chimanistraße ",
-    "name": "R1231-435",
-    "owner": "WL",
-    "parentName": "R1231-435",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "35A"
-    ],
-    "relatedStops": [
-     1231
-    ],
-    "time": {
-     "end": "2026-10-29T19:40:00.000+0100",
-     "start": "2026-10-29T18:09:08.000+0100"
-    },
-    "title": "Verkehrsunfall\nUmleitung ab Hardtgasse über  Chimanistraße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nUmleitung ab Hardtgasse über  Chimanistraße ",
-    "name": "R1232-435",
-    "owner": "WL",
-    "parentName": "R1232-435",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "35A"
-    ],
-    "relatedStops": [
-     1232
-    ],
-    "time": {
-     "end": "2026-10-29T19:40:00.000+0100",
-     "start": "2026-10-29T18:09:08.000+0100"
-    },
-    "title": "Verkehrsunfall\nUmleitung ab Hardtgasse über  Chimanistraße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nUmleitung ab Hardtgasse über  Chimanistraße ",
-    "name": "R1247-435",
-    "owner": "WL",
-    "parentName": "R1247-435",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "35A"
-    ],
-    "relatedStops": [
-     1247
-    ],
-    "time": {
-     "end": "2026-10-29T19:40:00.000+0100",
-     "start": "2026-10-29T18:09:08.000+0100"
-    },
-    "title": "Verkehrsunfall\nUmleitung ab Hardtgasse über  Chimanistraße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 38",
     "name": "R1272-440",
     "owner": "WL",
@@ -950,6 +669,121 @@
      "start": "2026-10-29T04:45:18.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Liechtensteinstraße 39"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1338-142",
+    "owner": "WL",
+    "parentName": "R1338-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     1338
+    ],
+    "time": {
+     "end": "2026-10-29T20:49:00.000+0100",
+     "start": "2026-10-29T19:50:16.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung ab Rosensteingasse über Linien 9 und 44",
+    "name": "R1354-143",
+    "owner": "WL",
+    "parentName": "R1354-143",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedStops": [
+     1354
+    ],
+    "time": {
+     "end": "2026-10-29T20:53:00.000+0100",
+     "start": "2026-10-29T19:54:17.000+0100"
+    },
+    "title": "Verkehrsunfall\nUmleitung ab Rosensteingasse über Linien 9 und 44"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung ab Rosensteingasse über Linien 9 und 44",
+    "name": "R1355-143",
+    "owner": "WL",
+    "parentName": "R1355-143",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedStops": [
+     1355
+    ],
+    "time": {
+     "end": "2026-10-29T20:53:00.000+0100",
+     "start": "2026-10-29T19:54:17.000+0100"
+    },
+    "title": "Verkehrsunfall\nUmleitung ab Rosensteingasse über Linien 9 und 44"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung ab Rosensteingasse über Linien 9 und 44",
+    "name": "R1356-143",
+    "owner": "WL",
+    "parentName": "R1356-143",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedStops": [
+     1356
+    ],
+    "time": {
+     "end": "2026-10-29T20:53:00.000+0100",
+     "start": "2026-10-29T19:54:17.000+0100"
+    },
+    "title": "Verkehrsunfall\nUmleitung ab Rosensteingasse über Linien 9 und 44"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung ab Rosensteingasse über Linien 9 und 44",
+    "name": "R1357-143",
+    "owner": "WL",
+    "parentName": "R1357-143",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedStops": [
+     1357
+    ],
+    "time": {
+     "end": "2026-10-29T20:53:00.000+0100",
+     "start": "2026-10-29T19:54:17.000+0100"
+    },
+    "title": "Verkehrsunfall\nUmleitung ab Rosensteingasse über Linien 9 und 44"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1437,6 +1271,75 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung ab Rosensteingasse über Linien 9 und 44",
+    "name": "R230-143",
+    "owner": "WL",
+    "parentName": "R230-143",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedStops": [
+     230
+    ],
+    "time": {
+     "end": "2026-10-29T20:53:00.000+0100",
+     "start": "2026-10-29T19:54:16.000+0100"
+    },
+    "title": "Verkehrsunfall\nUmleitung ab Rosensteingasse über Linien 9 und 44"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung ab Rosensteingasse über Linien 9 und 44",
+    "name": "R231-143",
+    "owner": "WL",
+    "parentName": "R231-143",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedStops": [
+     231
+    ],
+    "time": {
+     "end": "2026-10-29T20:53:00.000+0100",
+     "start": "2026-10-29T19:54:16.000+0100"
+    },
+    "title": "Verkehrsunfall\nUmleitung ab Rosensteingasse über Linien 9 und 44"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Bründlbadgasse",
+    "name": "R234-143",
+    "owner": "WL",
+    "parentName": "R234-143",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedStops": [
+     234
+    ],
+    "time": {
+     "end": "2026-10-29T20:54:00.000+0100",
+     "start": "2026-10-29T19:52:46.000+0100"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Bründlbadgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -1506,6 +1409,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R235-143",
+    "owner": "WL",
+    "parentName": "R235-143",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedStops": [
+     235
+    ],
+    "time": {
+     "end": "2026-10-29T20:52:00.000+0100",
+     "start": "2026-10-29T19:52:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
     "name": "R2359-125",
     "owner": "WL",
@@ -1525,6 +1451,52 @@
      "start": "2026-10-29T00:00:01.000+0100"
     },
     "title": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R236-143",
+    "owner": "WL",
+    "parentName": "R236-143",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedStops": [
+     236
+    ],
+    "time": {
+     "end": "2026-10-29T20:52:00.000+0100",
+     "start": "2026-10-29T19:52:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R237-143",
+    "owner": "WL",
+    "parentName": "R237-143",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedStops": [
+     237
+    ],
+    "time": {
+     "end": "2026-10-29T20:52:00.000+0100",
+     "start": "2026-10-29T19:52:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1962,6 +1934,29 @@
      "start": "2026-10-29T05:00:19.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R524-142",
+    "owner": "WL",
+    "parentName": "R524-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     524
+    ],
+    "time": {
+     "end": "2026-10-29T20:51:00.000+0100",
+     "start": "2026-10-29T19:52:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",

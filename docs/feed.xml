@@ -8,72 +8,46 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 29 Oct 2026 19:30:50 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 20:00:47 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1/2/71: Polizeieinsatz]]></title>
+      <title><![CDATA[43: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">0a8aa8f7231d98faa38de820cfb27484955a1529c285e8a8472318b330368561</guid>
-      <pubDate>Thu, 29 Oct 2026 18:18:38 +0100</pubDate>
+      <guid isPermaLink="false">cc281c6508ba062820ee6ec97a11514a795c1ba829397c43d3f8f6719026c771</guid>
+      <pubDate>Thu, 29 Oct 2026 19:52:46 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 29 Oct 2026 18:18:38 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 29 Oct 2026 18:19:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 18:18]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 18:18]]]></content:encoded>
+      <ext:first_seen>Thu, 29 Oct 2026 20:00:47 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 29 Oct 2026 19:52:46 +0100</ext:starts_at>
+      <description>Umleitung in Richtung Schottentor U zwischen Rosensteingasse und Brünnlbadgasse über die Strecke der Linien 9 und 44; Betrieb ab Bründlbadgasse. [Seit 19:52]</description>
+      <content:encoded><![CDATA[Umleitung in Richtung Schottentor U zwischen Rosensteingasse und Brünnlbadgasse über die Strecke der Linien 9 und 44; Betrieb ab Bründlbadgasse.<br/>[Seit 19:52]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[11: Rettungseinsatz]]></title>
+      <title><![CDATA[7B: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e</guid>
-      <pubDate>Thu, 29 Oct 2026 18:15:00 +0100</pubDate>
+      <guid isPermaLink="false">9d5b86e449f39c0ff2a1198a75b7a2cf5eb7c515849902c883b2777fc7d5987d</guid>
+      <pubDate>Thu, 29 Oct 2026 19:43:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 29 Oct 2026 18:15:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 29 Oct 2026 18:15:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 18:15]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 18:15]]]></content:encoded>
+      <ext:first_seen>Thu, 29 Oct 2026 20:00:47 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 29 Oct 2026 19:43:00 +0100</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Bereich Unter-Meidlinger Straße. [Seit 19:43]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Bereich Unter-Meidlinger Straße.<br/>[Seit 19:43]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[35A: Verkehrsunfall]]></title>
+      <title><![CDATA[42: Falschparker]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">e3bca4d6cb6ad19f29f525414c5e28df3fcf0033cdb23bfe953a03ee56156faf</guid>
-      <pubDate>Thu, 29 Oct 2026 18:09:08 +0100</pubDate>
+      <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
+      <pubDate>Thu, 29 Oct 2026 19:49:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 29 Oct 2026 17:48:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 29 Oct 2026 18:09:08 +0100</ext:starts_at>
-      <description>Umleitung ab Hardtgasse über Chimanistraße. [Seit 18:09]</description>
-      <content:encoded><![CDATA[Umleitung ab Hardtgasse über Chimanistraße.<br/>[Seit 18:09]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc</guid>
-      <pubDate>Thu, 29 Oct 2026 17:34:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 29 Oct 2026 17:34:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 29 Oct 2026 17:34:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 17:34]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 17:34]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">b22dfbbf389bb0a8ea03be177b6fa20b16f32c05b0828f6ae785106649e64f7b</guid>
-      <pubDate>Thu, 29 Oct 2026 17:19:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 29 Oct 2026 17:19:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 29 Oct 2026 17:19:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 17:19]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 17:19]]]></content:encoded>
+      <ext:first_seen>Thu, 29 Oct 2026 19:49:00 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 29 Oct 2026 19:52:17 +0100</ext:starts_at>
+      <description>Fahrtbehinderung in Richtung Antonigasse. Voraussichtlich bis 20:20 Uhr. Grund: Falschparker im Bereich Kreuzgasse 43. [Seit 19:49]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Antonigasse. Voraussichtlich bis 20:20 Uhr. Grund: Falschparker im Bereich Kreuzgasse 43.<br/>[Seit 19:49]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[5A/5B/N31: Obere Augartenstraße]]></title>
@@ -146,6 +120,35 @@
       <georss:point>48.220878 16.360720</georss:point>
       <description>Richtung Döblinger Friedhof, Felix-Dahn-Straße: Liechtensteinstraße 42 → Liechtensteinstraße 38. Richtung Schottentor U: Liechtensteinstraße 37a gegenüber Bauernfeldplatz → … [Seit 27.10.]</description>
       <content:encoded><![CDATA[Richtung Döblinger Friedhof, Felix-Dahn-Straße: Liechtensteinstraße 42 → Liechtensteinstraße 38. Richtung Schottentor U: Liechtensteinstraße 37a gegenüber Bauernfeldplatz → …<br/>[Seit 27.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[N81R/N81: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">84342e7299cf2d1a256f7e6f2a7a8fcae415185eab7bcfd7d9344c3de0c12009</guid>
+      <pubDate>Wed, 14 Oct 2026 16:10:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 26 Oct 2026 00:01:08 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 27 Oct 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 30 Oct 2026 05:00:00 +0100</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten im Bereich Meiereistraße / Stephanie-Endres-Straße kommt es zu Umleitungen bei der Rufbuslinie N81. Maßnahmen: Linie N81 … [Bis Fr 30.10.]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Meiereistraße / Stephanie-Endres-Straße kommt es zu Umleitungen bei der Rufbuslinie N81. Maßnahmen: Linie N81 …<br/>[Bis Fr 30.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[S2: Wien Leopoldau ↔ Mistelbach]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;907728</guid>
+      <pubDate>Tue, 13 Oct 2026 08:49:17 +0200</pubDate>
+      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 23 Oct 2026 00:01:02 +0200</ext:first_seen>
+      <ext:starts_at>Sun, 25 Oct 2026 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Sun, 01 Nov 2026 23:59:59 +0100</ext:ends_at>
+      <georss:line>48.277325 16.448371 48.565931 16.565113</georss:line>
+      <description>Wegen Bauarbeiten kann zwischen Wien Leopoldau Bahnhst (U) und Mistelbach/Zaya Bahnhof am 01.11.2026 der S2-Zug 23360 nicht fahren. [Bis So 01.11.]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten kann zwischen Wien Leopoldau Bahnhst (U) und Mistelbach/Zaya Bahnhof am 01.11.2026 der S2-Zug 23360 nicht fahren.<br/>[Bis So 01.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
