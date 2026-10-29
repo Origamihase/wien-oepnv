@@ -1150,6 +1150,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "77A: Polizeieinsatz",
+    "description": "Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e5fe69c6a82a23092354319cf5b7365c8370f1cbc29c8f66643e43707b287199",
+    "pubDate": "2026-10-29T13:58:00+01:00",
+    "starts_at": "2026-10-29T13:58:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=77A|D=2026-10-29|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261029-0019"
+    ],
+    "_incident_start": "2026-10-29T13:58:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "80A: Betrieb ab Vivariumstraße 2",
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "link": "https://www.wienerlinien.at/betriebsinfo",

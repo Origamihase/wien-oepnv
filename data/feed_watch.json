@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-29T12:31:00.556756+00:00",
- "built": "2026-10-29T13:30:45+01:00",
+ "updated": "2026-10-29T13:01:25.871310+00:00",
+ "built": "2026-10-29T14:01:10+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-29T13:30:45+01:00",
+  "built": "2026-10-29T14:01:10+01:00",
   "items": [
+   {
+    "title": "77A: Polizeieinsatz",
+    "time_line": "Seit 13:58"
+   },
    {
     "title": "13A: Polizeieinsatz",
     "time_line": "Seit 13:13"
@@ -43,55 +47,11 @@
    {
     "title": "11A/78A: Straßenbauarbeiten",
     "time_line": "Bis Mo 02.11."
-   },
-   {
-    "title": "64A/N64R: Erlaaer Spitz",
-    "time_line": "Seit 22.10."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-22T12:31:03.311016+00:00",
-   "raw": {
-    "wl-stoerungen": 106,
-    "wl-hinweise": 87,
-    "oebb": 172,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 10,
-    "oebb": 147,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 120
-   }
-  },
-  {
-   "t": "2026-10-22T13:01:23.382030+00:00",
-   "raw": {
-    "wl-stoerungen": 168,
-    "wl-hinweise": 87,
-    "oebb": 173,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 10,
-    "oebb": 148,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 115
-   }
-  },
   {
    "t": "2026-10-22T13:31:06.362220+00:00",
    "raw": {
@@ -6791,17 +6751,37 @@
     "oebb": 9,
     "wl": 102
    }
+  },
+  {
+   "t": "2026-10-29T13:01:25.871310+00:00",
+   "raw": {
+    "wl-stoerungen": 68,
+    "wl-hinweise": 77,
+    "oebb": 158,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 19
+   },
+   "discarded": {
+    "wl": 9,
+    "oebb": 133,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 103
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-29T12:31:00.556756+00:00"
+   "last_ok": "2026-10-29T13:01:25.871310+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-29T12:31:00.556756+00:00"
+   "last_ok": "2026-10-29T13:01:25.871310+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-29T12:31:00.556756+00:00"
+   "last_ok": "2026-10-29T13:01:25.871310+00:00"
   }
  }
 }
