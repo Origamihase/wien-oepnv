@@ -1070,6 +1070,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "38: Verunreinigung",
+    "description": "Linie 38: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "41ef2f441b36cf9b86d33ea984915d0d1b23359809c8899da043e7143237a68f",
+    "pubDate": "2026-10-29T15:36:00+01:00",
+    "starts_at": "2026-10-29T15:36:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=38|D=2026-10-29|TK=38 verunreinigung",
+    "_wl_ids": [
+      "I20261029-0025"
+    ],
+    "_incident_start": "2026-10-29T15:36:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "3A: Verspätungen",
     "description": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1255,17 +1271,17 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U3: Betriebsstörung",
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
-    "pubDate": "2026-10-29T15:05:00+01:00",
-    "starts_at": "2026-10-29T15:05:00+01:00",
+    "pubDate": "2026-10-29T15:59:00+01:00",
+    "starts_at": "2026-10-29T15:59:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=U3|D=2026-10-29|TK=u3 betriebsstörung",
     "_wl_ids": [
-      "I20261029-0024"
+      "I20261029-0026"
     ],
-    "_incident_start": "2026-10-29T15:05:00+01:00"
+    "_incident_start": "2026-10-29T15:59:00+01:00"
   },
   {
     "source": "Wiener Linien",
