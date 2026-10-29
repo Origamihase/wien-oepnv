@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261029-0006, I20261020-0029"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261029-0007-F01, I20261020-0029"
    },
    {
     "id": 3,
@@ -263,45 +263,48 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "52": "ptTram"
+      "U2": "ptMetro"
      }
     },
-    "description": "Linie 52: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 52:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 52:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 52: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "52: Verspätungen"
+       "descriptionHtml": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U2: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261029-0006",
+    "name": "I20261029-0007-F01",
     "owner": "WL",
-    "parentName": "I20261029-0006",
+    "parentName": "I20261029-0007",
     "priority": "1",
     "reasonId": 20,
     "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "52"
+     "U2"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 152,
-      "lineName": "52",
-      "vehicleType": "ptTram"
+      "lineId": 302,
+      "lineName": "U2",
+      "vehicleType": "ptMetro"
      }
+    ],
+    "relatedStops": [
+     4261
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-29T07:48:00.000+0100",
-     "lastUpdate": "2026-10-29T07:48:00.000+0100",
-     "resume": "2026-10-29T07:47:00.000+0100",
-     "start": "2026-10-29T07:47:00.000+0100"
+     "created": "2026-10-29T08:49:00.000+0100",
+     "lastUpdate": "2026-10-29T08:49:00.000+0100",
+     "resume": "2026-10-29T08:49:00.000+0100",
+     "start": "2026-10-29T08:46:00.000+0100"
     },
-    "title": "52: Verspätungen"
+    "title": "U2: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
