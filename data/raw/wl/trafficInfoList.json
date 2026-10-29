@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261029-0012, I20260925-0011, I20260909-0007, I20261020-0029, I20261029-0016"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261029-0017-F01, I20261020-0029, I20261029-0016"
    },
    {
     "id": 3,
@@ -259,55 +259,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "U2": "ptMetro"
-     }
-    },
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-       "title": "U2: Betriebsstörung"
-      }
-     }
-    ],
-    "name": "I20261029-0012",
-    "owner": "WL",
-    "parentName": "I20261029-0012",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 302,
-      "lineName": "U2",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4257
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-29T10:53:00.000+0100",
-     "end": "2026-10-29T12:35:00.000+0100",
-     "lastUpdate": "2026-10-29T12:09:00.000+0100",
-     "resume": "2026-10-29T10:53:00.000+0100",
-     "start": "2026-10-29T10:53:00.000+0100"
-    },
-    "title": "U2: Betriebsstörung"
-   },
-   {
     "alertCause": "accident",
     "alertCauseId": 77,
     "attributes": {
@@ -351,6 +302,52 @@
      "start": "2026-10-29T11:51:00.000+0100"
     },
     "title": "11A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "60A": "ptBusCity"
+     }
+    },
+    "description": "Linie 60A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 60A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 60A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 60A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "60A: Falschparker"
+      }
+     }
+    ],
+    "location": "Fabergasse / Lehmanngasse",
+    "name": "I20261029-0017-F01",
+    "owner": "WL",
+    "parentName": "I20261029-0017",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 460,
+      "lineName": "60A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-29T12:48:00.000+0100",
+     "lastUpdate": "2026-10-29T12:48:00.000+0100",
+     "resume": "2026-10-29T12:48:00.000+0100",
+     "start": "2026-10-29T12:42:00.000+0100"
+    },
+    "title": "60A: Falschparker"
    },
    {
     "alertCause": "undefined alert cause",

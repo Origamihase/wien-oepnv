@@ -1,16 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-29T11:30:57.164373+00:00",
- "built": "2026-10-29T12:30:48+01:00",
+ "updated": "2026-10-29T12:01:23.550328+00:00",
+ "built": "2026-10-29T13:01:08+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-29T12:30:48+01:00",
+  "built": "2026-10-29T13:01:08+01:00",
   "items": [
    {
-    "title": "U2: Betriebsstörung",
-    "time_line": "Seit 10:53"
+    "title": "60A: Falschparker",
+    "time_line": "Seit 12:42"
    },
    {
     "title": "11A: Verkehrsunfall, Bauarbeiten",
@@ -52,46 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-22T11:31:06.908602+00:00",
-   "raw": {
-    "wl-stoerungen": 89,
-    "wl-hinweise": 85,
-    "oebb": 172,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 11,
-    "oebb": 147,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 114
-   }
-  },
-  {
-   "t": "2026-10-22T12:00:59.004467+00:00",
-   "raw": {
-    "wl-stoerungen": 107,
-    "wl-hinweise": 86,
-    "oebb": 173,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 11,
-    "oebb": 148,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 118
-   }
-  },
   {
    "t": "2026-10-22T12:31:03.311016+00:00",
    "raw": {
@@ -6791,17 +6751,37 @@
     "oebb": 9,
     "wl": 103
    }
+  },
+  {
+   "t": "2026-10-29T12:01:23.550328+00:00",
+   "raw": {
+    "wl-stoerungen": 68,
+    "wl-hinweise": 77,
+    "oebb": 159,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 19
+   },
+   "discarded": {
+    "wl": 9,
+    "oebb": 134,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 103
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-29T11:30:57.164373+00:00"
+   "last_ok": "2026-10-29T12:01:23.550328+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-29T11:30:57.164373+00:00"
+   "last_ok": "2026-10-29T12:01:23.550328+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-29T11:30:57.164373+00:00"
+   "last_ok": "2026-10-29T12:01:23.550328+00:00"
   }
  }
 }
