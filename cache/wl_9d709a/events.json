@@ -770,6 +770,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11A: Verkehrsunfall",
+    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "49173de64aa2215d87e8e544f1df8b7687c6e8172327e8cd9174b3c727005709",
+    "pubDate": "2026-10-29T11:51:00+01:00",
+    "starts_at": "2026-10-29T11:51:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=11A|D=2026-10-29|TK=11a verkehrsunfall",
+    "_wl_ids": [
+      "I20261029-0016"
+    ],
+    "_incident_start": "2026-10-29T11:51:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "11A: Busse halten Meiereistraße gegenüber 12",
     "description": "Bauarbeiten\nBusse halten Meiereistraße gegenüber 12",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1110,22 +1126,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Verkehrsunfall",
-    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "eed493b84b991f4fbb293a881224825ca49d2be64d70010ef16dbd19919e838a",
-    "pubDate": "2026-10-29T09:50:00+01:00",
-    "starts_at": "2026-10-29T09:50:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=62|D=2026-10-29|TK=62 verkehrsunfall",
-    "_wl_ids": [
-      "I20261029-0010"
-    ],
-    "_incident_start": "2026-10-29T09:50:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1258,30 +1258,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Schadhaftes Fahrzeug",
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "U6: Polizeieinsatz",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
-    "pubDate": "2026-10-29T11:06:00+01:00",
-    "starts_at": "2026-10-29T11:06:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U4|D=2026-10-29|TK=u4 schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261029-0014"
-    ],
-    "_incident_start": "2026-10-29T11:06:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Betriebsstörung",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
+    "guid": "2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab",
     "pubDate": "2026-10-29T11:29:00+01:00",
     "starts_at": "2026-10-29T11:29:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-10-29|TK=u6 betriebsstörung",
+    "_identity": "wl|störung|L=U6|D=2026-10-29|TK=polizeieinsatz",
     "_wl_ids": [
       "I20261029-0015"
     ],
