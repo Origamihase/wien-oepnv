@@ -1198,6 +1198,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-10-29T23:05:00+01:00",
+    "starts_at": "2026-10-29T23:05:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U1|D=2026-10-29|TK=u1 verspätungen",
+    "_wl_ids": [
+      "I20261029-0043"
+    ],
+    "_incident_start": "2026-10-29T23:05:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Rettungseinsatz",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Ottakring.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
+    "pubDate": "2026-10-29T23:29:00+01:00",
+    "starts_at": "2026-10-29T23:29:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U3|D=2026-10-29|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261029-0044"
+    ],
+    "_incident_start": "2026-10-29T23:29:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
