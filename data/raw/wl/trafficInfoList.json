@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261029-0001, I20261020-0029"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029, I20261029-0001-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1881-101, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R2558-125, R1884-101, R1883-101, R1882-101, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R1875-101, R1876-101, R1880-101, R293-474, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R401-101, R318-437, R3886-480, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1448-549, R1474-549, R1974-566, R2371-520, R2372-520, R1930-565, R2254-565, R1933-565, R717-565, R404-565, R2579-565, R1925-565, R1926-565, R2379-520, R2378-520, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1881-101, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R100-136, R101-136, R102-136, R103-136, R115-136, R1448-412, R2558-125, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R1884-101, R1883-101, R1882-101, R1875-101, R1876-101, R1880-101, R293-474, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R401-101, R318-437, R3886-480, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1448-549, R1474-549, R1974-566, R2371-520, R2372-520, R1930-565, R2254-565, R1933-565, R717-565, R404-565, R2579-565, R1926-565, R1925-565, R2379-520, R2378-520, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -266,19 +266,19 @@
       "N65": "ptBusNight"
      }
     },
-    "description": "Die Linie N65 ist derzeit in Richtung Quellenplatz an der Weiterfahrt gehindert. Voraussichtliche Dauer: 01:35 Uhr. Grund: Falschparker im Bereich An den Eisteichen # Zanaschkagasse.",
-    "descriptionHTML": "<p>Die Linie N65 ist derzeit in Richtung Quellenplatz an der Weiterfahrt gehindert.</p><p>Voraussichtliche Dauer: 01:35 Uhr.</p><p>Grund: Falschparker im Bereich An den Eisteichen # Zanaschkagasse.</p>",
+    "description": "Linie N65: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie N65: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie N65 ist derzeit in Richtung Quellenplatz an der Weiterfahrt gehindert.</p><p>Voraussichtliche Dauer: 01:35 Uhr.</p><p>Grund: Falschparker im Bereich An den Eisteichen # Zanaschkagasse.</p>",
-       "descriptionPlain": "Die Linie N65 ist derzeit in Richtung Quellenplatz an der Weiterfahrt gehindert. Voraussichtliche Dauer: 01:35 Uhr. Grund: Falschparker im Bereich An den Eisteichen # Zanaschkagasse.",
+       "descriptionHtml": "<p>Linie N65: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie N65: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "N65: Falschparker"
       }
      }
     ],
     "location": "An den Eisteichen / Zanaschkagasse",
-    "name": "I20261029-0001",
+    "name": "I20261029-0001-F01",
     "owner": "WL",
     "parentName": "I20261029-0001",
     "priority": "1",
@@ -297,8 +297,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-29T01:17:00.000+0100",
-     "lastUpdate": "2026-10-29T01:17:00.000+0100",
+     "created": "2026-10-29T01:46:00.000+0100",
+     "lastUpdate": "2026-10-29T01:46:00.000+0100",
+     "resume": "2026-10-29T01:46:00.000+0100",
      "start": "2026-10-29T01:16:00.000+0100"
     },
     "title": "N65: Falschparker"

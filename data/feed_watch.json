@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-29T00:31:09.456607+00:00",
- "built": "2026-10-29T01:30:52+01:00",
+ "updated": "2026-10-29T01:01:06.800152+00:00",
+ "built": "2026-10-29T02:00:53+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-29T01:30:52+01:00",
+  "built": "2026-10-29T02:00:53+01:00",
   "items": [
    {
     "title": "N65: Falschparker",
@@ -6771,17 +6771,37 @@
     "oebb": 9,
     "wl": 110
    }
+  },
+  {
+   "t": "2026-10-29T01:01:06.800152+00:00",
+   "raw": {
+    "wl-stoerungen": 83,
+    "wl-hinweise": 78,
+    "oebb": 154,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 19
+   },
+   "discarded": {
+    "wl": 9,
+    "oebb": 129,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 110
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-29T00:31:09.456607+00:00"
+   "last_ok": "2026-10-29T01:01:06.800152+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-29T00:31:09.456607+00:00"
+   "last_ok": "2026-10-29T01:01:06.800152+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-29T00:31:09.456607+00:00"
+   "last_ok": "2026-10-29T01:01:06.800152+00:00"
   }
  }
 }
