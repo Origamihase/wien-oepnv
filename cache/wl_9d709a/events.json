@@ -86,18 +86,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "16A: Zanaschkagasse",
-    "description": "<p><strong><u>Haltestellenverlegung der Linie 16A in Richtung Alaudagasse U</u></strong></p><p><strong><u>Haltestelle:</u></strong> Zanaschkagasse</p><p><strong><u>Von:</u></strong> Lichtensterngasse vor Zanaschkagasse</p><p><strong><u>Nach:</u></strong> Zanaschkagasse nach Lichtensterngasse</p><p><strong><u>Dauer:</u></strong> 28. Oktober 2026, 05:00 Uhr, voraussichtlich bis 29. Oktober 2026, 05:00 Uhr</p><p><strong><u>Grund:</u></strong> Verparkte Originalhaltestelle</p>",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "469f77182fa423712b041dfb4460fea290136152fd9b8a51dd8269c59d5f3b2e",
-    "pubDate": "2026-10-28T10:01:00+01:00",
-    "starts_at": "2026-10-28T10:01:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|hinweis|L=16A|D=2026-10-28|TK=16a zanaschkagasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "18: Veranstaltung am 08.11.26",
     "description": "<h2><strong>Veranstaltung</strong></h2><p>Wegen einer Veranstaltung im Bereich der Prater Hauptallee wird die Linie 18 <strong>kurzgeführt</strong>.</p><p><strong><u>Zeitraum:</u></strong><br>Sonntag, 08. November 2026, von ca. 09:15 Uhr bis ca. 12:30 Uhr.</p><p><strong><u>Maßnahme:</u></strong></p><p><strong>Linie 18:</strong></p><p>Kurzführung in Richtung Stadion U bis Schlachthausgasse U, und wieder zurück in Richtung Burggasse, Stadthalle U.</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1122,6 +1110,58 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "62: Verkehrsunfall",
+    "description": "Linie 62: Kein Betrieb zwischen Wattmanngasse und Matzleinsdorfer Platz S. Weiterfahrt ab Matzleinsdorfer Platz S zum Stefan-Fadinger-Platz. Voraussichtliche Dauer: 10:30 Uhr. Grund: Verkehrsunfall im Bereich Breitenfurter Straße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "eed493b84b991f4fbb293a881224825ca49d2be64d70010ef16dbd19919e838a",
+    "pubDate": "2026-10-29T09:50:00+01:00",
+    "starts_at": "2026-10-29T09:50:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=62|D=2026-10-29|TK=62 verkehrsunfall",
+    "_wl_ids": [
+      "I20261029-0010"
+    ],
+    "_incident_start": "2026-10-29T09:50:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7e08fef7a7a5e4e78803806a9283786290110d4bee42668fa711e0f9efd8fa35",
+    "pubDate": "2026-10-29T09:52:18+01:00",
+    "starts_at": "2026-10-29T09:52:18+01:00",
+    "ends_at": "2026-10-29T10:51:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-10-29|TK=fahrtbehinderung verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Verkehrsunfall Betrieb ab Dörfelstraße",
+    "description": "Verkehrsunfall\nBetrieb ab Dörfelstraße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "bae588f21af8170288fd55b0cb06810e77e6603e9fbcb536dd9cd5e8646ffa3a",
+    "pubDate": "2026-10-29T09:58:19+01:00",
+    "starts_at": "2026-10-29T09:58:19+01:00",
+    "ends_at": "2026-10-29T10:57:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-10-29|TK=verkehrsunfall betrieb ab dörfelstrasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Verkehrsunfall Betrieb ab Hofwiesengasse",
+    "description": "Verkehrsunfall\nBetrieb ab Hofwiesengasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "96400e19b526921566716fff2f643adff569a07ebd227486860cb8ca10dedee1",
+    "pubDate": "2026-10-29T09:52:18+01:00",
+    "starts_at": "2026-10-29T09:56:49+01:00",
+    "ends_at": "2026-10-29T10:55:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-10-29|TK=verkehrsunfall betrieb ab hofwiesengasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1154,6 +1194,22 @@
     "starts_at": "2026-10-29T00:00:02+01:00",
     "ends_at": "2026-10-29T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-10-29|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "93A: Schadhaftes Fahrzeug",
+    "description": "Linie 93A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "64cc072ad9d1a0ad60b9ebe7312d7e42831ceb16de6a508c9dcea12e28fa44d6",
+    "pubDate": "2026-10-29T09:41:00+01:00",
+    "starts_at": "2026-10-29T09:41:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=93A|D=2026-10-29|TK=93a schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261029-0009"
+    ],
+    "_incident_start": "2026-10-29T09:41:00+01:00"
   },
   {
     "source": "Wiener Linien",

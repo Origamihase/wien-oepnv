@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260917-0012, I20261029-0009, I20260922-0032, I20261029-0010, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2345-127, R2420-411, R401-101, R2373-127, R2373-126, R2379-627, R2380-627, R2372-627, R318-437, R293-474, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R3886-480, R1974-466, R1272-440, R1301-440, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2558-125, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1448-412, R293-474, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R401-101, R318-437, R2378-627, R2343-626, R2343-125, R3886-480, R1974-466, R1301-440, R1272-440, R500-101, R1728-162, R1723-162, R1724-162, R477-162, R1720-162, R1742-162, R1744-162, R1743-162, R470-162, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -257,6 +257,96 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "93A": "ptBusCity"
+     }
+    },
+    "description": "Linie 93A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie 93A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 93A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie 93A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "93A: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261029-0009",
+    "owner": "WL",
+    "parentName": "I20261029-0009",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "93A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 493,
+      "lineName": "93A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-29T09:42:00.000+0100",
+     "lastUpdate": "2026-10-29T09:42:00.000+0100",
+     "resume": "2026-10-29T09:41:00.000+0100",
+     "start": "2026-10-29T09:41:00.000+0100"
+    },
+    "title": "93A: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "62": "ptTram"
+     }
+    },
+    "description": "Linie 62: Kein Betrieb zwischen Wattmanngasse und Matzleinsdorfer Platz S. Weiterfahrt ab Matzleinsdorfer Platz S zum Stefan-Fadinger-Platz. Voraussichtliche Dauer: 10:30 Uhr. Grund: Verkehrsunfall im Bereich Breitenfurter Straße.",
+    "descriptionHTML": "<p>Linie 62:<br>Kein Betrieb zwischen Wattmanngasse und Matzleinsdorfer Platz S. <br>Weiterfahrt ab Matzleinsdorfer Platz S zum Stefan-Fadinger-Platz.</p><p>Voraussichtliche Dauer: 10:30 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Breitenfurter Straße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 62:<br>Kein Betrieb zwischen Wattmanngasse und Matzleinsdorfer Platz S. <br>Weiterfahrt ab Matzleinsdorfer Platz S zum Stefan-Fadinger-Platz.</p><p>Voraussichtliche Dauer: 10:30 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Breitenfurter Straße.</p>",
+       "descriptionPlain": "Linie 62: Kein Betrieb zwischen Wattmanngasse und Matzleinsdorfer Platz S. Weiterfahrt ab Matzleinsdorfer Platz S zum Stefan-Fadinger-Platz. Voraussichtliche Dauer: 10:30 Uhr. Grund: Verkehrsunfall im Bereich Breitenfurter Straße.",
+       "title": "62: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Breitenfurter Straße",
+    "name": "I20261029-0010",
+    "owner": "WL",
+    "parentName": "I20261029-0010",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 162,
+      "lineName": "62",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-29T09:51:00.000+0100",
+     "lastUpdate": "2026-10-29T09:56:00.000+0100",
+     "start": "2026-10-29T09:50:00.000+0100"
+    },
+    "title": "62: Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -809,6 +899,167 @@
      "start": "2026-10-29T00:00:00.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Hofwiesengasse",
+    "name": "R1720-162",
+    "owner": "WL",
+    "parentName": "R1720-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1720
+    ],
+    "time": {
+     "end": "2026-10-29T10:55:00.000+0100",
+     "start": "2026-10-29T09:56:49.000+0100"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Hofwiesengasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Hofwiesengasse",
+    "name": "R1723-162",
+    "owner": "WL",
+    "parentName": "R1723-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1723
+    ],
+    "time": {
+     "end": "2026-10-29T10:55:00.000+0100",
+     "start": "2026-10-29T09:52:18.000+0100"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Hofwiesengasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Hofwiesengasse",
+    "name": "R1724-162",
+    "owner": "WL",
+    "parentName": "R1724-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1724
+    ],
+    "time": {
+     "end": "2026-10-29T10:55:00.000+0100",
+     "start": "2026-10-29T09:52:18.000+0100"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Hofwiesengasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1728-162",
+    "owner": "WL",
+    "parentName": "R1728-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1728
+    ],
+    "time": {
+     "end": "2026-10-29T10:51:00.000+0100",
+     "start": "2026-10-29T09:52:18.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Dörfelstraße",
+    "name": "R1742-162",
+    "owner": "WL",
+    "parentName": "R1742-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1742
+    ],
+    "time": {
+     "end": "2026-10-29T10:57:00.000+0100",
+     "start": "2026-10-29T09:58:19.000+0100"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Dörfelstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Dörfelstraße",
+    "name": "R1743-162",
+    "owner": "WL",
+    "parentName": "R1743-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1743
+    ],
+    "time": {
+     "end": "2026-10-29T10:57:00.000+0100",
+     "start": "2026-10-29T09:58:19.000+0100"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Dörfelstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Dörfelstraße",
+    "name": "R1744-162",
+    "owner": "WL",
+    "parentName": "R1744-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1744
+    ],
+    "time": {
+     "end": "2026-10-29T10:57:00.000+0100",
+     "start": "2026-10-29T09:58:19.000+0100"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1522,6 +1773,52 @@
      "start": "2026-10-29T00:00:00.000+0100"
     },
     "title": "Züge halten\nWipplingerstr 39"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Dörfelstraße",
+    "name": "R470-162",
+    "owner": "WL",
+    "parentName": "R470-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     470
+    ],
+    "time": {
+     "end": "2026-10-29T10:57:00.000+0100",
+     "start": "2026-10-29T09:58:19.000+0100"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Dörfelstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Hofwiesengasse",
+    "name": "R477-162",
+    "owner": "WL",
+    "parentName": "R477-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     477
+    ],
+    "time": {
+     "end": "2026-10-29T10:55:00.000+0100",
+     "start": "2026-10-29T09:56:48.000+0100"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Hofwiesengasse"
    },
    {
     "alertCause": "undefined alert cause",
