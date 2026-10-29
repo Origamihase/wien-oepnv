@@ -1,16 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-29T09:30:56.056428+00:00",
- "built": "2026-10-29T10:30:46+01:00",
+ "updated": "2026-10-29T10:01:08.485547+00:00",
+ "built": "2026-10-29T11:00:56+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-29T10:30:46+01:00",
+  "built": "2026-10-29T11:00:56+01:00",
   "items": [
    {
-    "title": "U6: Polizeieinsatz",
-    "time_line": "Seit 10:03"
+    "title": "U2: Betriebsstörung",
+    "time_line": "Seit 10:53"
    },
    {
     "title": "62: Verkehrsunfall",
@@ -6771,17 +6771,37 @@
     "oebb": 9,
     "wl": 103
    }
+  },
+  {
+   "t": "2026-10-29T10:01:08.485547+00:00",
+   "raw": {
+    "wl-stoerungen": 69,
+    "wl-hinweise": 77,
+    "oebb": 161,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 19
+   },
+   "discarded": {
+    "wl": 10,
+    "oebb": 135,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 10,
+    "wl": 103
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-29T09:30:56.056428+00:00"
+   "last_ok": "2026-10-29T10:01:08.485547+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-29T09:30:56.056428+00:00"
+   "last_ok": "2026-10-29T10:01:08.485547+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-29T09:30:56.056428+00:00"
+   "last_ok": "2026-10-29T10:01:08.485547+00:00"
   }
  }
 }
