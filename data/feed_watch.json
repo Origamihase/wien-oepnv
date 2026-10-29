@@ -1,20 +1,39 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-29T22:31:06.390387+00:00",
- "built": "2026-10-29T23:30:50+01:00",
- "findings": [],
- "rules": {},
+ "updated": "2026-10-29T23:01:00.019052+00:00",
+ "built": "2026-10-30T00:00:46+01:00",
+ "findings": [
+  {
+   "rule": "alte-meldung-als-neu",
+   "title": "Alte Meldung als neue Störung",
+   "rank": "Rang 1",
+   "subject": "54A/54B: Bauarbeiten",
+   "text": "Meldung vom 21.10. 07:33, im Feed erstmals 28.10. 17:01, Zeitzeile [Heute]"
+  }
+ ],
+ "rules": {
+  "alte-meldung-als-neu": {
+   "since": "2026-10-29T23:01:00.019052+00:00",
+   "last": "2026-10-29T23:01:00.019052+00:00",
+   "held_runs": 0,
+   "issue": 2086
+  }
+ },
  "previous_feed": {
-  "built": "2026-10-29T23:30:50+01:00",
+  "built": "2026-10-30T00:00:46+01:00",
   "items": [
    {
     "title": "U3: Rettungseinsatz",
-    "time_line": "Seit 23:29"
+    "time_line": "Seit 29.10."
    },
    {
     "title": "U1: Verspätungen",
-    "time_line": "Seit 23:05"
+    "time_line": "Seit 29.10."
+   },
+   {
+    "title": "38B/39B: Allerheiligenverkehr 01.11.2026",
+    "time_line": "Am So 01.11."
    },
    {
     "title": "5A/5B/N31: Obere Augartenstraße",
@@ -22,10 +41,6 @@
    },
    {
     "title": "54A/54B: Bauarbeiten",
-    "time_line": "Bis Fr 30.10."
-   },
-   {
-    "title": "40A: Bauarbeiten",
     "time_line": "Heute"
    },
    {
@@ -38,7 +53,7 @@
    },
    {
     "title": "N81R/N81: Bauarbeiten",
-    "time_line": "Bis Fr 30.10."
+    "time_line": "Heute"
    },
    {
     "title": "S2: Wien Leopoldau ↔ Mistelbach",
@@ -6771,17 +6786,37 @@
     "oebb": 9,
     "wl": 102
    }
+  },
+  {
+   "t": "2026-10-29T23:01:00.019052+00:00",
+   "raw": {
+    "wl-stoerungen": 65,
+    "wl-hinweise": 74,
+    "oebb": 159,
+    "baustellen-linien": 59,
+    "baustellen-punkte": 20
+   },
+   "discarded": {
+    "wl": 8,
+    "oebb": 134,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 100
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-29T22:31:06.390387+00:00"
+   "last_ok": "2026-10-29T23:01:00.019052+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-29T22:31:06.390387+00:00"
+   "last_ok": "2026-10-29T23:01:00.019052+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-29T22:31:06.390387+00:00"
+   "last_ok": "2026-10-29T23:01:00.019052+00:00"
   }
  }
 }

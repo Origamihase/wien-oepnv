@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 29 Oct 2026 23:30:50 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 00:00:46 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U3: Rescue operation]]></title>
@@ -20,8 +20,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 29 Oct 2026 23:29:00 +0100</ext:first_seen>
       <ext:starts_at>Thu, 29 Oct 2026 23:29:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: rescue operation in the stop area of Ottakring. [Since 23:29]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation in the stop area of Ottakring.<br/>[Since 23:29]]]></content:encoded>
+      <description>Irregular intervals in both directions. Reason: rescue operation in the stop area of Ottakring. [Since 29.10.]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation in the stop area of Ottakring.<br/>[Since 29.10.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Delays]]></title>
@@ -33,8 +33,22 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 29 Oct 2026 23:05:00 +0100</ext:first_seen>
       <ext:starts_at>Thu, 29 Oct 2026 23:05:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 23:05]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 23:05]]]></content:encoded>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 29.10.]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 29.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[38B/39B: All Saints' Worship 01.11.2026]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">6f9b1807cf0978b7b95b8bc183dc89ea212bab6281ff0ea60d0187953f17ad94</guid>
+      <pubDate>Mon, 05 Oct 2026 13:40:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 30 Oct 2026 00:00:46 +0100</ext:first_seen>
+      <ext:starts_at>Sun, 01 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 01 Nov 2026 18:00:00 +0100</ext:ends_at>
+      <description>Start-up of bus lines. On the occasion of the holiday of All Saints, the bus lines 38B and 39B are put into operation and various lines to cemeteries are reinforced … [On Sun 01.11.]</description>
+      <content:encoded><![CDATA[Start-up of bus lines. On the occasion of the holiday of All Saints, the bus lines 38B and 39B are put into operation and various lines to cemeteries are reinforced …<br/>[On Sun 01.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[5A/5B/N31: Obere Augartenstraße]]></title>
@@ -62,22 +76,8 @@
       <ext:first_seen>Wed, 28 Oct 2026 17:01:03 +0100</ext:first_seen>
       <ext:starts_at>Tue, 27 Oct 2026 00:00:00 +0100</ext:starts_at>
       <ext:ends_at>Fri, 30 Oct 2026 15:00:00 +0100</ext:ends_at>
-      <description>Due to roadworks in the area of Einsiedeleigasse, lines 54A and 54B are redirected. [Until Fri 30.10.]</description>
-      <content:encoded><![CDATA[Due to roadworks in the area of Einsiedeleigasse, lines 54A and 54B are redirected.<br/>[Until Fri 30.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Construction works]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">93371941ed2a77831506b5ca1da3430a69522eb8164a20b23e0a844d0de929c4</guid>
-      <pubDate>Thu, 29 Oct 2026 04:45:18 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 27 Oct 2026 07:31:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 29 Oct 2026 04:45:18 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 29 Oct 2026 23:59:59 +0100</ext:ends_at>
-      <description>Buses stop at Liechtensteinstraße 39, Liechtensteinstraße 38. [Today]</description>
-      <content:encoded><![CDATA[Buses stop at Liechtensteinstraße 39, Liechtensteinstraße 38.<br/>[Today]]]></content:encoded>
+      <description>Due to roadworks in the area of Einsiedeleigasse, lines 54A and 54B are redirected. [Today]</description>
+      <content:encoded><![CDATA[Due to roadworks in the area of Einsiedeleigasse, lines 54A and 54B are redirected.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11: Wienerfeldgasse]]></title>
@@ -119,8 +119,8 @@
       <ext:first_seen>Mon, 26 Oct 2026 00:01:08 +0100</ext:first_seen>
       <ext:starts_at>Tue, 27 Oct 2026 00:00:00 +0100</ext:starts_at>
       <ext:ends_at>Fri, 30 Oct 2026 05:00:00 +0100</ext:ends_at>
-      <description>Due to roadworks in the area of Meiereistraße / Stephanie-Endres-Straße, there are diversions on the call bus line N81. Measures: Line N81 … [Until Fri 30.10.]</description>
-      <content:encoded><![CDATA[Due to roadworks in the area of Meiereistraße / Stephanie-Endres-Straße, there are diversions on the call bus line N81. Measures: Line N81 …<br/>[Until Fri 30.10.]]]></content:encoded>
+      <description>Due to roadworks in the area of Meiereistraße / Stephanie-Endres-Straße, there are diversions on the call bus line N81. Measures: Line N81 … [Today]</description>
+      <content:encoded><![CDATA[Due to roadworks in the area of Meiereistraße / Stephanie-Endres-Straße, there are diversions on the call bus line N81. Measures: Line N81 …<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[S2: Wien Leopoldau ↔ Mistelbach]]></title>
