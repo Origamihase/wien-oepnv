@@ -51,13 +51,13 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "12A: Henriettenplatz",
-    "description": "<p><strong><u>Haltestellenauflassung der Linie 12A in Richtung Eichenstraße</u></strong></p><p><strong><u>Haltestelle:</u></strong> Henriettenplatz</p><p><strong><u>Dauer:</u></strong> Ab 03. November 2026, etwa 07:00 Uhr, für etwa 1-2 Tage</p><p><strong><u>Grund:</u></strong> Grabungsarbeiten</p>",
+    "description": "<p><strong><u>Haltestellenauflassung der Linie 12A in Richtung Eichenstraße</u></strong></p><p><strong><u>Haltestelle:</u></strong> Henriettenplatz</p><p><strong><u>Dauer:</u></strong> Ab 04. November 2026, etwa 07:00 Uhr, Dauer unbekannt</p><p><strong><u>Grund:</u></strong> Grabungsarbeiten</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "a6cf4b6dfdd6a30caa130293fcef872955167da368915b5ee81ce366e6071172",
     "pubDate": "2026-10-28T16:52:00+01:00",
-    "starts_at": "2026-11-03T00:00:00+01:00",
+    "starts_at": "2026-11-04T00:00:00+01:00",
     "ends_at": null,
-    "_identity": "wl|hinweis|L=12A|D=2026-11-03|TK=12a henriettenplatz"
+    "_identity": "wl|hinweis|L=12A|D=2026-11-04|TK=12a henriettenplatz"
   },
   {
     "source": "Wiener Linien",
@@ -458,6 +458,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "5A/N31: Obere Augartenstraße",
+    "description": "<p><strong><u>Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf</u></strong></p><p><strong><u>Haltestelle:</u></strong> Obere Augartenstraße</p><p><strong><u>Von:</u></strong> Untere Augartenstraße 40</p><p><strong><u>Nach:</u></strong> Untere Augartenstraße 42</p><p><strong><u>Dauer:</u></strong> Von 07.11.2026 ca. 05:00 Uhr bis 09.11.2026 ca. 07:00 Uhr</p><p><strong><u>Grund:</u></strong> Demontage eines Turmdrehkrans</p>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4b133e0a2bf2849867177ba0646eb9eec8984fee0146b9475c8c15c934464586",
+    "pubDate": "2026-10-29T14:00:00+01:00",
+    "starts_at": "2026-11-07T00:00:00+01:00",
+    "ends_at": "2026-11-09T07:00:00+01:00",
+    "_identity": "wl|hinweis|L=5A,N31|D=2026-11-07|TK=5a n31 obere augartenstrasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "60A: Bhf. Atzgersdorf S, Knotzenbachgasse",
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 60A in Richtung Alterlaa U</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Bhf. Atzgersdorf S, Knotzenbachgasse</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Knotzenbachgasse gegen&uuml;ber 40 vor Parkanlage</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Knotzenbachgasse 35-45, vor Dirmhirngasse</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 01. Juli 2026, etwa 12:00 Uhr bis voraussichtlich Ende Oktober 2026</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rohrleitungsarbeiten</span></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -806,22 +818,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Polizeieinsatz",
-    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71",
-    "pubDate": "2026-10-29T13:13:00+01:00",
-    "starts_at": "2026-10-29T13:13:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=13A|D=2026-10-29|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261029-0018"
-    ],
-    "_incident_start": "2026-10-29T13:13:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1062,6 +1058,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "31: Fahrtbehinderung Falschparker",
+    "description": "Linie 31: Fahrtbehinderung in Richtung Schottenring U. Voraussichtliche Dauer: 15:00 Uhr. Grund: Falschparker im Bereich Klosterneuburger Straße 11.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7fc5dec6c1828e780870a54d956a3e47494ba66068f3920d342fbe84b2c28065",
+    "pubDate": "2026-10-29T14:28:00+01:00",
+    "starts_at": "2026-10-29T14:29:47+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=31|D=2026-10-29|TK=falschparker",
+    "_wl_ids": [
+      "I20261029-0021"
+    ],
+    "_incident_start": "2026-10-29T14:28:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1070,6 +1082,22 @@
     "starts_at": "2026-10-29T00:00:01+01:00",
     "ends_at": "2026-10-29T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-10-29|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "3A: Verspätungen",
+    "description": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9d358731bdd90c07601bb9665d1fe894e602b065f0c6bead2062210847affb87",
+    "pubDate": "2026-10-29T14:22:00+01:00",
+    "starts_at": "2026-10-29T14:22:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=3A|D=2026-10-29|TK=3a verspätungen",
+    "_wl_ids": [
+      "I20261029-0020"
+    ],
+    "_incident_start": "2026-10-29T14:22:00+01:00"
   },
   {
     "source": "Wiener Linien",

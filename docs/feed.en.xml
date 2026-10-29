@@ -8,8 +8,34 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 29 Oct 2026 14:01:10 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 14:30:56 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[31: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">7fc5dec6c1828e780870a54d956a3e47494ba66068f3920d342fbe84b2c28065</guid>
+      <pubDate>Thu, 29 Oct 2026 14:28:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 29 Oct 2026 14:28:00 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 29 Oct 2026 14:29:47 +0100</ext:starts_at>
+      <description>Service obstruction towards Schottenring U. Expected until 15:00. Reason: illegally parked vehicle in the area of Klosterneuburger Straße 11. [Since 14:28]</description>
+      <content:encoded><![CDATA[Service obstruction towards Schottenring U. Expected until 15:00. Reason: illegally parked vehicle in the area of Klosterneuburger Straße 11.<br/>[Since 14:28]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[3A: Delays]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">9d358731bdd90c07601bb9665d1fe894e602b065f0c6bead2062210847affb87</guid>
+      <pubDate>Thu, 29 Oct 2026 14:22:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 29 Oct 2026 14:22:00 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 29 Oct 2026 14:22:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 14:22]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 14:22]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[77A: Police operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -24,17 +50,19 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: police operation.<br/>[Since 13:58]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[13A: Police operation]]></title>
+      <title><![CDATA[5A/5B/N31: Obere Augartenstraße]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71</guid>
-      <pubDate>Thu, 29 Oct 2026 13:13:00 +0100</pubDate>
+      <guid isPermaLink="false">5cd26b46e3d83d83054e14525825191f05326ae3f22d63f0dcf5a305c21f2157</guid>
+      <pubDate>Thu, 29 Oct 2026 14:00:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 29 Oct 2026 13:13:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 29 Oct 2026 13:13:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: police operation. [Since 13:13]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: police operation.<br/>[Since 13:13]]]></content:encoded>
+      <ext:first_seen>Thu, 29 Oct 2026 14:00:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 30 Sep 2025 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 09 Nov 2026 07:00:00 +0100</ext:ends_at>
+      <georss:point>48.222757 16.375308</georss:point>
+      <description>Untere Augartenstraße 40 → Untere Augartenstraße 42. Stop relocation of lines 5A towards Griegstraße, 5B towards Heiligenstadt S U and N31 … [Until 09.11.]</description>
+      <content:encoded><![CDATA[Untere Augartenstraße 40 → Untere Augartenstraße 42. Stop relocation of lines 5A towards Griegstraße, 5B towards Heiligenstadt S U and N31 …<br/>[Until 09.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[54A/54B: Construction works]]></title>
@@ -121,35 +149,6 @@
       <georss:line>48.277325 16.448371 48.565931 16.565113</georss:line>
       <description>Due to construction works, the S2 train 23360 cannot run between Wien Leopoldau station (U) and Mistelbach/Zaya station on 01.11.2026. [Until Sun 01.11.]</description>
       <content:encoded><![CDATA[Due to construction works, the S2 train 23360 cannot run between Wien Leopoldau station (U) and Mistelbach/Zaya station on 01.11.2026.<br/>[Until Sun 01.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S1: Wien Leopoldau ↔ Deutsch Wagram]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;907513</guid>
-      <pubDate>Tue, 06 Oct 2026 07:44:09 +0200</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 26 Aug 2026 15:31:05 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 24 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sat, 28 Nov 2026 23:59:59 +0100</ext:ends_at>
-      <georss:line>48.277325 16.448371 48.302927 16.564668</georss:line>
-      <description>Due to construction works, the S1 train 23626 cannot run on certain days between Deutsch Wagram station and Gänserndorf station and between Wien Leopoldau station … [Until 28.11.]</description>
-      <content:encoded><![CDATA[Due to construction works, the S1 train 23626 cannot run on certain days between Deutsch Wagram station and Gänserndorf station and between Wien Leopoldau station …<br/>[Until 28.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11A/78A: Roadworks]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">829aed6b63ca00dc86bdde6d44ea64c5a4a23433aa5b8e7bb064705f27b2e81f</guid>
-      <pubDate>Wed, 14 Oct 2026 16:00:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 00:00:58 +0200</ext:first_seen>
-      <ext:starts_at>Fri, 23 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Mon, 02 Nov 2026 01:00:00 +0100</ext:ends_at>
-      <description>Due to roadworks at the intersection of Meiereistraße / Stephanie-Endres-Straße there are diversions. [Until Mon 02.11.]</description>
-      <content:encoded><![CDATA[Due to roadworks at the intersection of Meiereistraße / Stephanie-Endres-Straße there are diversions.<br/>[Until Mon 02.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
