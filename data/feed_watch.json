@@ -1,32 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-29T15:31:09.036917+00:00",
- "built": "2026-10-29T16:30:54+01:00",
+ "updated": "2026-10-29T16:01:07.444069+00:00",
+ "built": "2026-10-29T17:00:56+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-29T16:30:54+01:00",
+  "built": "2026-10-29T17:00:56+01:00",
   "items": [
+   {
+    "title": "17A: Polizeieinsatz",
+    "time_line": "Seit 16:58"
+   },
    {
     "title": "11: Polizeieinsatz",
     "time_line": "Seit 16:25"
-   },
-   {
-    "title": "38: Verunreinigung",
-    "time_line": "Seit 15:36"
-   },
-   {
-    "title": "U3: Betriebsstörung",
-    "time_line": "Seit 15:59"
-   },
-   {
-    "title": "46B: Verkehrsunfall",
-    "time_line": "Seit 14:56"
-   },
-   {
-    "title": "3A: Verspätungen",
-    "time_line": "Seit 14:22"
    },
    {
     "title": "5A/5B/N31: Obere Augartenstraße",
@@ -47,6 +35,18 @@
    {
     "title": "40A: Bauernfeldplatz",
     "time_line": "Seit 27.10."
+   },
+   {
+    "title": "N81R/N81: Bauarbeiten",
+    "time_line": "Bis Fr 30.10."
+   },
+   {
+    "title": "S2: Wien Leopoldau ↔ Mistelbach",
+    "time_line": "Bis So 01.11."
+   },
+   {
+    "title": "S1: Wien Leopoldau ↔ Deutsch Wagram",
+    "time_line": "Bis 28.11."
    }
   ]
  },
@@ -6771,17 +6771,37 @@
     "oebb": 9,
     "wl": 107
    }
+  },
+  {
+   "t": "2026-10-29T16:01:07.444069+00:00",
+   "raw": {
+    "wl-stoerungen": 74,
+    "wl-hinweise": 79,
+    "oebb": 161,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 19
+   },
+   "discarded": {
+    "wl": 9,
+    "oebb": 136,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 104
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-29T15:31:09.036917+00:00"
+   "last_ok": "2026-10-29T16:01:07.444069+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-29T15:31:09.036917+00:00"
+   "last_ok": "2026-10-29T16:01:07.444069+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-29T15:31:09.036917+00:00"
+   "last_ok": "2026-10-29T16:01:07.444069+00:00"
   }
  }
 }

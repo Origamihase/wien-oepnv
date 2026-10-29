@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261029-0022, I20261029-0025, I20261029-0026, I20260909-0007, I20261029-0020, I20261020-0029, I20261029-0027"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261029-0028, I20260925-0011, I20261029-0027-F01, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
@@ -259,187 +259,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "3A": "ptBusCity"
-     }
-    },
-    "description": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 3A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 3A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "3A: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261029-0020",
-    "owner": "WL",
-    "parentName": "I20261029-0020",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "3A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 403,
-      "lineName": "3A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-29T14:22:00.000+0100",
-     "lastUpdate": "2026-10-29T14:22:00.000+0100",
-     "resume": "2026-10-29T14:22:00.000+0100",
-     "start": "2026-10-29T14:22:00.000+0100"
-    },
-    "title": "3A: Verspätungen"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "46B": "ptBusCity"
-     }
-    },
-    "description": "Linie 46B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 46B:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 46B:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 46B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "46B: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261029-0022",
-    "owner": "WL",
-    "parentName": "I20261029-0022",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "46B"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 246,
-      "lineName": "46B",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-29T14:57:00.000+0100",
-     "lastUpdate": "2026-10-29T14:57:00.000+0100",
-     "resume": "2026-10-29T14:56:00.000+0100",
-     "start": "2026-10-29T14:56:00.000+0100"
-    },
-    "title": "46B: Verkehrsunfall"
-   },
-   {
-    "alertCause": "vandalism",
-    "alertCauseId": 16,
-    "attributes": {
-     "relatedLineTypes": {
-      "38": "ptTram"
-     }
-    },
-    "description": "Linie 38: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "descriptionHTML": "<p>Linie 38:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 38:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-       "descriptionPlain": "Linie 38: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-       "title": "38: Verunreinigung"
-      }
-     }
-    ],
-    "name": "I20261029-0025",
-    "owner": "WL",
-    "parentName": "I20261029-0025",
-    "priority": "1",
-    "reasonId": 36,
-    "reasonName": "Verunreinigung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 138,
-      "lineName": "38",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-29T15:37:00.000+0100",
-     "lastUpdate": "2026-10-29T15:37:00.000+0100",
-     "resume": "2026-10-29T15:36:00.000+0100",
-     "start": "2026-10-29T15:36:00.000+0100"
-    },
-    "title": "38: Verunreinigung"
-   },
-   {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-       "title": "U3: Betriebsstörung"
-      }
-     }
-    ],
-    "name": "I20261029-0026",
-    "owner": "WL",
-    "parentName": "I20261029-0026",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-29T15:59:00.000+0100",
-     "end": "2026-10-29T16:45:00.000+0100",
-     "lastUpdate": "2026-10-29T16:18:00.000+0100",
-     "resume": "2026-10-29T15:59:00.000+0100",
-     "start": "2026-10-29T15:59:00.000+0100"
-    },
-    "title": "U3: Betriebsstörung"
-   },
-   {
     "alertCause": "police activity",
     "alertCauseId": 3,
     "attributes": {
@@ -447,18 +266,18 @@
       "11": "ptTram"
      }
     },
-    "description": "Linie 11: Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. Voraussichtliche Dauer: 17:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Raxstraße.",
-    "descriptionHTML": "<p>Linie 11:<br>Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse.</p><p>Voraussichtliche Dauer: 17:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Raxstraße.</p>",
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 11:<br>Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse.</p><p>Voraussichtliche Dauer: 17:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Raxstraße.</p>",
-       "descriptionPlain": "Linie 11: Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. Voraussichtliche Dauer: 17:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Raxstraße.",
+       "descriptionHtml": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "11: Polizeieinsatz"
       }
      }
     ],
-    "name": "I20261029-0027",
+    "name": "I20261029-0027-F01",
     "owner": "WL",
     "parentName": "I20261029-0027",
     "priority": "1",
@@ -480,11 +299,57 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-29T16:27:00.000+0100",
-     "lastUpdate": "2026-10-29T16:27:00.000+0100",
+     "created": "2026-10-29T16:38:00.000+0100",
+     "lastUpdate": "2026-10-29T16:38:00.000+0100",
+     "resume": "2026-10-29T16:38:00.000+0100",
      "start": "2026-10-29T16:25:00.000+0100"
     },
     "title": "11: Polizeieinsatz"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "17A": "ptBusCity"
+     }
+    },
+    "description": "Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "<p>Linie 17A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 17A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+       "descriptionPlain": "Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+       "title": "17A: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261029-0028",
+    "owner": "WL",
+    "parentName": "I20261029-0028",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "17A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 417,
+      "lineName": "17A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-29T16:58:00.000+0100",
+     "lastUpdate": "2026-10-29T16:58:00.000+0100",
+     "resume": "2026-10-29T16:58:00.000+0100",
+     "start": "2026-10-29T16:58:00.000+0100"
+    },
+    "title": "17A: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
