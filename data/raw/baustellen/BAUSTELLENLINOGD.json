@@ -26,6 +26,52 @@
   {
    "geometry": {
     "first_position": [
+     16.40843587,
+     48.19837539
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Poststelle",
+    "ANSPRECHPERSON_TEL": "Tel.: 01/4000-96915",
+    "ANTRAGSTELLER": "MA29",
+    "BEHINDERUNGSART": "Brückenbau",
+    "BEZEICHNUNG": "A4 Unterführung Stadionbrücke stadtauswärts",
+    "BEZIRK": 3,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-03Z",
+    "OBJEKT_ENDE": "2026-11-05Z",
+    "PRESSETEXT": "Die Arbeiten erfolgen in der Zeit von 22:00 bis 05:00 Uhr. Die A4 wird ab der Lechnerstraße bis zum Ende der Unterführung der Stadionbrücke für den gesamten Fahrzeugverkehr gesperrt. Der Fahrzeugverkehr wird während der nächtlichen Sperrstunden lokal über die Lechnerstraße und Erdberger Lände (Rampe A4)umgeleitet. Außerhalb der Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.41112626,
+     48.19673204
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Poststelle",
+    "ANSPRECHPERSON_TEL": "Tel.: 01/4000-96915",
+    "ANTRAGSTELLER": "MA29",
+    "BEHINDERUNGSART": "Brückenbau",
+    "BEZEICHNUNG": "A4 Unterführung Stadionbrücke stadteinwärts",
+    "BEZIRK": 2,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-04Z",
+    "OBJEKT_ENDE": "2026-11-06Z",
+    "PRESSETEXT": "Die Arbeiten erfolgen in der Zeit von 22:00 bis 05:00 Uhr. Die A4 wird ab Beginn der Unterführung der Stadionbrücke für den gesamten Fahrzeugverkehr gesperrt. Der Fahrzeugverkehr wird während der nächtlichen Sperrstunden lokal über die Stadionbrücke und Schüttelstraße umgeleitet. Außerhalb der Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.34376235,
      48.21524155
     ],
@@ -112,29 +158,6 @@
     "OBJEKT_BEGINN": "2026-06-07Z",
     "OBJEKT_ENDE": "2027-03-31Z",
     "PRESSETEXT": "Die Arbeiten erfolgen in der Zeit von 20.00 Uhr bis 05.00 Uhr. Ein Fahrstreifen je Fahrtrichtung bleibt aufrecht. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
-     16.33809651,
-     48.17792956
-    ],
-    "type": "LineString"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Kundentelefon Wiener Linien",
-    "ANSPRECHPERSON_TEL": "Tel.: 01-7909/100",
-    "ANTRAGSTELLER": "Wiener Linien GmbH & Co KG",
-    "BEHINDERUNGSART": "Gleisbau",
-    "BEZEICHNUNG": "Aßmayergasse 56 bis 74",
-    "BEZIRK": 12,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-10-11Z",
-    "OBJEKT_ENDE": "2026-12-18Z",
-    "PRESSETEXT": "Bauphase 1 (12.10.2026 bis 25.10.2026): DieArbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Ein Fahrstreifen je Fahrtrichtung bleibt aufrecht. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
     "SE_ANNO_CAD_DATA": null
    }
   },
@@ -279,6 +302,29 @@
   {
    "geometry": {
     "first_position": [
+     16.26471652,
+     48.14157033
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Dreiständegasse von Kreuzung Rudolf-Waisenhorn-Gasse und Silvester-Früchtl-Gasse bis Kreuzung Anton-",
+    "BEZIRK": 23,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-03Z",
+    "OBJEKT_ENDE": "2026-11-27Z",
+    "PRESSETEXT": "Die Dreiständegasse wird von Rudolf-Waisenhorn-Gasse bis und in Fahrtrichtung Anton-Krieger-Gasse zur Einbahn. Die Umleitung in Fahrtrichtung Rudolf-Waisenhorn-Gasse erfolgt über: Dreiständegasse - Anton-Krieger-Gasse Silverster-Früchtl-Gasse - Rudolf-Waisenhorn-Gasse.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.41189035,
      48.19247486
     ],
@@ -417,6 +463,29 @@
   {
    "geometry": {
     "first_position": [
+     16.35770241,
+     48.23739621
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Heiligenstädter Straße 28 bis 50-52",
+    "BEZIRK": 19,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-02Z",
+    "OBJEKT_ENDE": "2026-11-13Z",
+    "PRESSETEXT": "Die Arbeiten erfolgen bei Nacht. Außerhalb der Arbeitszeit bleibt der Verkehr unbehindert. Die Arbeiten erfolgen abschnittsweise im Fahrbahnbereich und der Verkehr wird über das richtungsführende Gleis umgeleitet.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.35274158,
      48.19980248
     ],
@@ -457,6 +526,52 @@
     "OBJEKT_BEGINN": "2026-06-28Z",
     "OBJEKT_ENDE": "2026-11-27Z",
     "PRESSETEXT": "DieKnotzenbachgasse wird von Khemetergasse bis und in Fahrtrichtung Dirmhirngasse zur Einbahn. Die Arbeiten im Kreuzungsplateau Dirmhirngasse werden von 20:00 Uhr bis 5:00 Uhr durchgeführt und der Verkehr wechselweise mittels Personal durchgeschleust.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.32746373,
+     48.227819
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Poststelle",
+    "ANSPRECHPERSON_TEL": "Tel.: 01/4000-96915",
+    "ANTRAGSTELLER": "MA29",
+    "BEHINDERUNGSART": "Brückenbau",
+    "BEZEICHNUNG": "Kreuzgassenbrücke von Czartoryskigasse und Gersthofer Straße bis Kreuzgasse und Simonygasse",
+    "BEZIRK": 17,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-01Z",
+    "OBJEKT_ENDE": "2026-11-27Z",
+    "PRESSETEXT": "Ein Fahrstreifen je Fahrtrichtung bleibt aufrecht. Das Linksabbiegen kommend von der Kreuzgasse in Fahrtrichtung Gersthofer Straße weiterführend Lidlgasse ist nicht mehr möglich. Die Umleitung in Fahrtrichtung Gersthofer Straße weiterführend Lidlgasse erfolgt über: Gersthofer Straße - Scheidlstraße - Salierergasse - Czartoryskigasse - Gersthofer Straße.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.29763667,
+     48.18594026
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Gerhard Baumann",
+    "ANSPRECHPERSON_TEL": "Tel.: 050128/32740",
+    "ANTRAGSTELLER": "Wiener Netze - Bereich Gas",
+    "BEHINDERUNGSART": "Rohrlegung",
+    "BEZEICHNUNG": "Lainzer Straße von Altgasse bis Gloriettegasse",
+    "BEZIRK": 13,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-01Z",
+    "OBJEKT_ENDE": "2027-03-28Z",
+    "PRESSETEXT": "Die Arbeiten erfolgen am Tag im Parkstreifen ohne Behinderung des Fließverkehrs. Die notwendigen Arbeiten im Fahrbahnbereich werden in der Nacht bei wechselweiser Durschleusung des Verkehrs mittels Personal durchgeführt.",
     "SE_ANNO_CAD_DATA": null
    }
   },
@@ -572,6 +687,29 @@
     "OBJEKT_BEGINN": "2026-07-13Z",
     "OBJEKT_ENDE": "2027-09-17Z",
     "PRESSETEXT": "Die Arbeiten erfolgen im Schatten der Baustelle der MA28 im Kreuzungsbereich Lidlgasse und Gersthofer Straße (Herstellung eines Kreisverkehrs). Ab Anfang September 2026, nach Fertigstellung der Arbeiten der MA28, wird je Fahrtrichtung ein Fahrstreifen aufrecht gehalten. DerFußgänger- und Radverkehr kann auf Seiten des Christine-Nöstlinger-Park aufrecht gehalten werden.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.33425014,
+     48.18492605
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Gerhard Baumann",
+    "ANSPRECHPERSON_TEL": "Tel.: 050128/32740",
+    "ANTRAGSTELLER": "Wiener Netze - Bereich Strom",
+    "BEHINDERUNGSART": "Kabellegung",
+    "BEZEICHNUNG": "Linke Wienzeile 224 bis 236",
+    "BEZIRK": 15,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-01Z",
+    "OBJEKT_ENDE": "2026-12-18Z",
+    "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Derrechte Fahrstreifen wird in Fahrtrichtung stadtauswärts gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
     "SE_ANNO_CAD_DATA": null
    }
   },
@@ -1101,6 +1239,29 @@
     "OBJEKT_BEGINN": "2026-05-18Z",
     "OBJEKT_ENDE": "2027-05-28Z",
     "PRESSETEXT": "In Fahrtrichtung stadteinwärts wird ein 3,50 m breiter Fahrstreifen aufrecht gehalten. Die Fahrtrichtung stadtauswärts wird über das richtungsführende Gleis oder die bestehende Nebenfahrbahn umgeleitet. Die Arbeiten werden abschnittsweise durchgeführt.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.40668518,
+     48.27293639
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Trillergasse von Brünner Straße bis Jedlersdorfer Straße",
+    "BEZIRK": 21,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-02Z",
+    "OBJEKT_ENDE": "2026-11-20Z",
+    "PRESSETEXT": "DerVerkehr wird in Fahrtrichtung Jedlersdorfer Straße über den angrenzenden Parkstreifen geführt. Vor der Kreuzung Jedlersdorfer Straße wird ein Fahrstreifen gesperrt unter Aufrechterhaltung aller Fahrrelationen.",
     "SE_ANNO_CAD_DATA": null
    }
   },

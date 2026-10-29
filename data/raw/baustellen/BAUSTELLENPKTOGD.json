@@ -302,6 +302,29 @@
   {
    "geometry": {
     "first_position": [
+     16.3254718,
+     48.21414931
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Poststelle Wien Kanal",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000-30030",
+    "ANTRAGSTELLER": "Wienkanal",
+    "BEHINDERUNGSART": "Kanalbau",
+    "BEZEICHNUNG": "Rosensteingasse 4",
+    "BEZIRK": 17,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-01Z",
+    "OBJEKT_ENDE": "2027-03-31Z",
+    "PRESSETEXT": "DerVerkehr wird in Fahrtrichtung Johann-Nepomuk-Berger-Platz über das richtungsführende Gleis geführt.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.36507792,
      48.21513596
     ],
