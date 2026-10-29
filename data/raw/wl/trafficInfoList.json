@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261029-0027-F01, I20260925-0011, I20260909-0007, I20261020-0029, I20261029-0029"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261029-0031, I20260925-0011, I20260909-0007, I20261029-0030, I20261020-0029, I20261029-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R36-152, R130-136, R19-136, R45-136, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R401-101, R318-437, R293-474, R2378-627, R2343-626, R2343-125, R3886-480, R1974-466, R1272-440, R1301-440, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R45-136, R118-136, R119-136, R130-136, R19-136, R36-152, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R2359-125, R2420-411, R401-101, R318-437, R293-474, R2378-627, R2343-626, R2343-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R3886-480, R1974-466, R1272-440, R1301-440, R500-101, R1233-435, R1250-435, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,55 +259,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "11": "ptTram"
-     }
-    },
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "11: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261029-0027-F01",
-    "owner": "WL",
-    "parentName": "I20261029-0027",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 111,
-      "lineName": "11",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     2260
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-29T16:38:00.000+0100",
-     "end": "2026-10-29T17:28:00.000+0100",
-     "lastUpdate": "2026-10-29T17:28:00.000+0100",
-     "resume": "2026-10-29T17:28:00.000+0100",
-     "start": "2026-10-29T16:25:00.000+0100"
-    },
-    "title": "11: Polizeieinsatz"
-   },
-   {
     "alertCause": "accident",
     "alertCauseId": 77,
     "attributes": {
@@ -351,6 +302,96 @@
      "start": "2026-10-29T17:19:00.000+0100"
     },
     "title": "15A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "7A": "ptBusCity"
+     }
+    },
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "7A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261029-0030",
+    "owner": "WL",
+    "parentName": "I20261029-0030",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 407,
+      "lineName": "7A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-29T17:34:00.000+0100",
+     "lastUpdate": "2026-10-29T17:34:00.000+0100",
+     "resume": "2026-10-29T17:34:00.000+0100",
+     "start": "2026-10-29T17:34:00.000+0100"
+    },
+    "title": "7A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "35A": "ptBusCity"
+     }
+    },
+    "description": "Linie 35A: Fahrtbehinderung in Richtung Salmannsdorf. Voraussichtliche Dauer: 18:20 Uhr. Grund: Fremder Verkehrsunfall im Bereich Billrothstraße.",
+    "descriptionHTML": "<p>Linie 35A:<br>Fahrtbehinderung in Richtung Salmannsdorf.</p><p>Voraussichtliche Dauer: 18:20 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Billrothstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 35A:<br>Fahrtbehinderung in Richtung Salmannsdorf.</p><p>Voraussichtliche Dauer: 18:20 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Billrothstraße.</p>",
+       "descriptionPlain": "Linie 35A: Fahrtbehinderung in Richtung Salmannsdorf. Voraussichtliche Dauer: 18:20 Uhr. Grund: Fremder Verkehrsunfall im Bereich Billrothstraße.",
+       "title": "35A: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Billrothstraße",
+    "name": "I20261029-0031",
+    "owner": "WL",
+    "parentName": "I20261029-0031",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "35A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 435,
+      "lineName": "35A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-29T17:50:00.000+0100",
+     "lastUpdate": "2026-10-29T17:56:00.000+0100",
+     "start": "2026-10-29T17:48:00.000+0100"
+    },
+    "title": "35A: Fremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -558,6 +599,52 @@
      "start": "2026-10-29T00:00:00.000+0100"
     },
     "title": "Züge halten in\nSchleife"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1233-435",
+    "owner": "WL",
+    "parentName": "R1233-435",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "35A"
+    ],
+    "relatedStops": [
+     1233
+    ],
+    "time": {
+     "end": "2026-10-29T18:52:00.000+0100",
+     "start": "2026-10-29T17:52:37.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1250-435",
+    "owner": "WL",
+    "parentName": "R1250-435",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "35A"
+    ],
+    "relatedStops": [
+     1250
+    ],
+    "time": {
+     "end": "2026-10-29T18:59:00.000+0100",
+     "start": "2026-10-29T17:59:37.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
