@@ -1,15 +1,31 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-29T17:01:14.848713+00:00",
- "built": "2026-10-29T18:01:01+01:00",
+ "updated": "2026-10-29T17:31:13.987892+00:00",
+ "built": "2026-10-29T18:30:57+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-29T18:01:01+01:00",
+  "built": "2026-10-29T18:30:57+01:00",
   "items": [
    {
-    "title": "35A: Fremder Verkehrsunfall",
+    "title": "14A: Polizeieinsatz",
+    "time_line": "Seit 18:19"
+   },
+   {
+    "title": "1/2: Polizeieinsatz",
+    "time_line": "Seit 18:18"
+   },
+   {
+    "title": "11: Rettungseinsatz",
+    "time_line": "Seit 18:15"
+   },
+   {
+    "title": "71: Rettungseinsatz",
+    "time_line": "Seit 18:10"
+   },
+   {
+    "title": "35A: Verkehrsunfall",
     "time_line": "Seit 17:48"
    },
    {
@@ -21,32 +37,16 @@
     "time_line": "Seit 17:19"
    },
    {
+    "title": "D: Polizeieinsatz, Gleisbauarbeiten",
+    "time_line": "Heute"
+   },
+   {
     "title": "5A/5B/N31: Obere Augartenstraße",
     "time_line": "Bis 09.11."
    },
    {
     "title": "54A/54B: Bauarbeiten",
     "time_line": "Bis Fr 30.10."
-   },
-   {
-    "title": "40A: Bauarbeiten",
-    "time_line": "Heute"
-   },
-   {
-    "title": "11: Wienerfeldgasse",
-    "time_line": "Bis 19.11."
-   },
-   {
-    "title": "40A: Bauernfeldplatz",
-    "time_line": "Seit 27.10."
-   },
-   {
-    "title": "N81R/N81: Bauarbeiten",
-    "time_line": "Bis Fr 30.10."
-   },
-   {
-    "title": "S2: Wien Leopoldau ↔ Mistelbach",
-    "time_line": "Bis So 01.11."
    }
   ]
  },
@@ -6771,17 +6771,37 @@
     "oebb": 9,
     "wl": 104
    }
+  },
+  {
+   "t": "2026-10-29T17:31:13.987892+00:00",
+   "raw": {
+    "wl-stoerungen": 121,
+    "wl-hinweise": 78,
+    "oebb": 159,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 19
+   },
+   "discarded": {
+    "wl": 9,
+    "oebb": 134,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 113
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-29T17:01:14.848713+00:00"
+   "last_ok": "2026-10-29T17:31:13.987892+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-29T17:01:14.848713+00:00"
+   "last_ok": "2026-10-29T17:31:13.987892+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-29T17:01:14.848713+00:00"
+   "last_ok": "2026-10-29T17:31:13.987892+00:00"
   }
  }
 }
