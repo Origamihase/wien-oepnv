@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261029-0031-F01, I20261029-0034-F01, I20261029-0034-F02, I20261029-0034-F03, I20260925-0011, I20260909-0007, I20261029-0030, I20261029-0032-F01, I20261029-0032-F02, I20261020-0029, I20261029-0029, I20261029-0033"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261029-0034-F01, I20261029-0034-F02, I20261029-0034-F03, I20261029-0035, I20260925-0011, I20260909-0007, I20261029-0030, I20261029-0032-F01, I20261020-0029, I20261029-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R19-136, R2558-125, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R1448-412, R45-136, R36-152, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1474-412, R2343-125, R2378-627, R293-474, R2359-125, R2343-626, R318-437, R401-101, R2420-411, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R3886-480, R1974-466, R1272-440, R1301-440, R500-101, R1233-435, R1250-435, R1257-435, R1232-435, R1247-435, R1231-435, R1230-435, R4732-171, R2299-171, R2024-171, R2027-171, R2028-171, R2025-171, R2026-171, R640-435, R1264-435, R1227-435, R2985-435, R4732-111, R2025-111, R2024-111, R2026-111, R2027-111, R2028-111, R52-102, R51-102, R50-102, R49-102, R1709-101, R49-101, R50-101, R51-101, R1714-101, R1713-101, R1712-101, R1711-101, R50-136, R49-136, R105-136, R51-136, R51-171, R105-171, R49-171, R50-171, R2640-171, R2012-171, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1875-101, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R100-136, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R2558-125, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R293-474, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R401-101, R318-437, R3886-480, R1974-466, R1301-440, R1272-440, R500-101, R1257-435, R1230-435, R1247-435, R1232-435, R1231-435, R4732-171, R2299-171, R2026-171, R2024-171, R2025-171, R2027-171, R2028-171, R640-435, R1264-435, R1227-435, R2985-435, R4732-111, R2027-111, R2024-111, R2025-111, R2026-111, R2028-111, R49-102, R52-102, R51-102, R50-102, R49-101, R51-101, R1714-101, R1713-101, R1712-101, R1711-101, R1709-101, R50-101, R51-136, R50-136, R49-136, R105-136, R51-171, R49-171, R105-171, R50-171, R2640-171, R2012-171, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -349,52 +349,6 @@
     "title": "7A: Verkehrsüberlastung"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "35A": "ptBusCity"
-     }
-    },
-    "description": "Linie 35A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 35A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 35A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 35A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "35A: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Billrothstraße",
-    "name": "I20261029-0031-F01",
-    "owner": "WL",
-    "parentName": "I20261029-0031",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "35A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 435,
-      "lineName": "35A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-29T18:14:00.000+0100",
-     "lastUpdate": "2026-10-29T18:14:00.000+0100",
-     "resume": "2026-10-29T18:14:00.000+0100",
-     "start": "2026-10-29T17:48:00.000+0100"
-    },
-    "title": "35A: Fremder Verkehrsunfall"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
@@ -438,96 +392,6 @@
      "start": "2026-10-29T18:15:00.000+0100"
     },
     "title": "11: Rettungseinsatz"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "71": "ptTram"
-     }
-    },
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "71: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261029-0032-F02",
-    "owner": "WL",
-    "parentName": "I20261029-0032",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 171,
-      "lineName": "71",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-29T18:23:00.000+0100",
-     "lastUpdate": "2026-10-29T18:23:00.000+0100",
-     "resume": "2026-10-29T18:23:00.000+0100",
-     "start": "2026-10-29T18:15:00.000+0100"
-    },
-    "title": "71: Rettungseinsatz"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "14A": "ptBusCity"
-     }
-    },
-    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "descriptionHTML": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-       "descriptionPlain": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-       "title": "14A: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261029-0033",
-    "owner": "WL",
-    "parentName": "I20261029-0033",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "14A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 414,
-      "lineName": "14A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-29T18:19:00.000+0100",
-     "lastUpdate": "2026-10-29T18:19:00.000+0100",
-     "resume": "2026-10-29T18:19:00.000+0100",
-     "start": "2026-10-29T18:19:00.000+0100"
-    },
-    "title": "14A: Polizeieinsatz"
    },
    {
     "alertCause": "police activity",
@@ -672,6 +536,51 @@
      "start": "2026-10-29T18:19:00.000+0100"
     },
     "title": "71: Polizeieinsatz"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "35A": "ptBusCity"
+     }
+    },
+    "description": "Die Linie 35A wird in Richtung Salmannsdorf zwischen Hardtgasse und Krottenbachstraße S über Chimanistraße umgeleitet. Voraussichtliche Dauer: 19:15 Uhr. Grund: Fremder Verkehrsunfall im Bereich Billrothstraße.",
+    "descriptionHTML": "<p>Die Linie 35A wird in Richtung Salmannsdorf zwischen Hardtgasse und Krottenbachstraße S über Chimanistraße umgeleitet.</p><p>Voraussichtliche Dauer: 19:15 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Billrothstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie 35A wird in Richtung Salmannsdorf zwischen Hardtgasse und Krottenbachstraße S über Chimanistraße umgeleitet.</p><p>Voraussichtliche Dauer: 19:15 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Billrothstraße.</p>",
+       "descriptionPlain": "Die Linie 35A wird in Richtung Salmannsdorf zwischen Hardtgasse und Krottenbachstraße S über Chimanistraße umgeleitet. Voraussichtliche Dauer: 19:15 Uhr. Grund: Fremder Verkehrsunfall im Bereich Billrothstraße.",
+       "title": "35A: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Billrothstraße",
+    "name": "I20261029-0035",
+    "owner": "WL",
+    "parentName": "I20261029-0035",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "35A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 435,
+      "lineName": "35A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-29T18:41:00.000+0100",
+     "lastUpdate": "2026-10-29T18:41:00.000+0100",
+     "start": "2026-10-29T18:40:00.000+0100"
+    },
+    "title": "35A: Fremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -952,7 +861,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nUmleitung ab Hardtgasse über Chimanistraße ",
+    "description": "Verkehrsunfall\nUmleitung ab Hardtgasse über  Chimanistraße ",
     "name": "R1230-435",
     "owner": "WL",
     "parentName": "R1230-435",
@@ -967,15 +876,15 @@
      1230
     ],
     "time": {
-     "end": "2026-10-29T19:08:00.000+0100",
+     "end": "2026-10-29T19:40:00.000+0100",
      "start": "2026-10-29T18:09:08.000+0100"
     },
-    "title": "Verkehrsunfall\nUmleitung ab Hardtgasse über Chimanistraße "
+    "title": "Verkehrsunfall\nUmleitung ab Hardtgasse über  Chimanistraße "
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nUmleitung ab Hardtgasse über Chimanistraße ",
+    "description": "Verkehrsunfall\nUmleitung ab Hardtgasse über  Chimanistraße ",
     "name": "R1231-435",
     "owner": "WL",
     "parentName": "R1231-435",
@@ -990,15 +899,15 @@
      1231
     ],
     "time": {
-     "end": "2026-10-29T19:08:00.000+0100",
+     "end": "2026-10-29T19:40:00.000+0100",
      "start": "2026-10-29T18:09:08.000+0100"
     },
-    "title": "Verkehrsunfall\nUmleitung ab Hardtgasse über Chimanistraße "
+    "title": "Verkehrsunfall\nUmleitung ab Hardtgasse über  Chimanistraße "
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nUmleitung ab Hardtgasse über Chimanistraße ",
+    "description": "Verkehrsunfall\nUmleitung ab Hardtgasse über  Chimanistraße ",
     "name": "R1232-435",
     "owner": "WL",
     "parentName": "R1232-435",
@@ -1013,38 +922,15 @@
      1232
     ],
     "time": {
-     "end": "2026-10-29T19:08:00.000+0100",
+     "end": "2026-10-29T19:40:00.000+0100",
      "start": "2026-10-29T18:09:08.000+0100"
     },
-    "title": "Verkehrsunfall\nUmleitung ab Hardtgasse über Chimanistraße "
+    "title": "Verkehrsunfall\nUmleitung ab Hardtgasse über  Chimanistraße "
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1233-435",
-    "owner": "WL",
-    "parentName": "R1233-435",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "35A"
-    ],
-    "relatedStops": [
-     1233
-    ],
-    "time": {
-     "end": "2026-10-29T18:52:00.000+0100",
-     "start": "2026-10-29T17:52:37.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nUmleitung ab Hardtgasse über Chimanistraße ",
+    "description": "Verkehrsunfall\nUmleitung ab Hardtgasse über  Chimanistraße ",
     "name": "R1247-435",
     "owner": "WL",
     "parentName": "R1247-435",
@@ -1059,33 +945,10 @@
      1247
     ],
     "time": {
-     "end": "2026-10-29T19:08:00.000+0100",
+     "end": "2026-10-29T19:40:00.000+0100",
      "start": "2026-10-29T18:09:08.000+0100"
     },
-    "title": "Verkehrsunfall\nUmleitung ab Hardtgasse über Chimanistraße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1250-435",
-    "owner": "WL",
-    "parentName": "R1250-435",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "35A"
-    ],
-    "relatedStops": [
-     1250
-    ],
-    "time": {
-     "end": "2026-10-29T18:59:00.000+0100",
-     "start": "2026-10-29T17:59:37.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Verkehrsunfall\nUmleitung ab Hardtgasse über  Chimanistraße "
    },
    {
     "alertCause": "undefined alert cause",

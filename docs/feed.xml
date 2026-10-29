@@ -8,21 +8,8 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 29 Oct 2026 18:30:57 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 19:00:55 +0100</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[14A: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">179a7c148b25707367c2e6e69b6d5b9759f57f1e4e64a3e9f11e542c069016fc</guid>
-      <pubDate>Thu, 29 Oct 2026 18:19:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 29 Oct 2026 18:19:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 29 Oct 2026 18:19:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Seit 18:19]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Seit 18:19]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[1/2: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -58,22 +45,22 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 29 Oct 2026 18:10:39 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 29 Oct 2026 18:15:00 +0100</ext:starts_at>
+      <ext:starts_at>Thu, 29 Oct 2026 18:10:41 +0100</ext:starts_at>
       <description>Fahrtbehinderung wegen Polizeieinsatz. [Seit 18:10]</description>
       <content:encoded><![CDATA[Fahrtbehinderung wegen Polizeieinsatz.<br/>[Seit 18:10]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[35A: Verkehrsunfall]]></title>
+      <title><![CDATA[35A: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">e3bca4d6cb6ad19f29f525414c5e28df3fcf0033cdb23bfe953a03ee56156faf</guid>
-      <pubDate>Thu, 29 Oct 2026 17:48:00 +0100</pubDate>
+      <pubDate>Thu, 29 Oct 2026 18:40:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 29 Oct 2026 17:48:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 29 Oct 2026 17:48:00 +0100</ext:starts_at>
-      <description>Umleitung ab Hardtgasse über Chimanistraße. [Seit 17:48]</description>
-      <content:encoded><![CDATA[Umleitung ab Hardtgasse über Chimanistraße.<br/>[Seit 17:48]]]></content:encoded>
+      <ext:starts_at>Thu, 29 Oct 2026 18:40:00 +0100</ext:starts_at>
+      <description>Die Linie 35A wird in Richtung Salmannsdorf zwischen Hardtgasse und Krottenbachstraße S über Chimanistraße umgeleitet; Umleitung ab Hardtgasse über Chimanistraße. [Seit 18:40]</description>
+      <content:encoded><![CDATA[Die Linie 35A wird in Richtung Salmannsdorf zwischen Hardtgasse und Krottenbachstraße S über Chimanistraße umgeleitet; Umleitung ab Hardtgasse über Chimanistraße.<br/>[Seit 18:40]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[7A: Verkehrsüberlastung]]></title>
@@ -143,6 +130,20 @@
       <ext:ends_at>Fri, 30 Oct 2026 15:00:00 +0100</ext:ends_at>
       <description>Wegen Straßenbauarbeiten im Bereich Einsiedeleigasse werden die Linien 54A und 54B umgeleitet. [Bis Fr 30.10.]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Einsiedeleigasse werden die Linien 54A und 54B umgeleitet.<br/>[Bis Fr 30.10.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">93371941ed2a77831506b5ca1da3430a69522eb8164a20b23e0a844d0de929c4</guid>
+      <pubDate>Thu, 29 Oct 2026 04:45:18 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 27 Oct 2026 07:31:00 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 29 Oct 2026 04:45:18 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 29 Oct 2026 23:59:59 +0100</ext:ends_at>
+      <description>Busse halten Liechtensteinstraße 39, Liechtensteinstraße 38. [Heute]</description>
+      <content:encoded><![CDATA[Busse halten Liechtensteinstraße 39, Liechtensteinstraße 38.<br/>[Heute]]]></content:encoded>
     </item>
   </channel>
 </rss>
