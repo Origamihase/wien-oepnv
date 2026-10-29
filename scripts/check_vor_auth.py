@@ -52,6 +52,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     load_default_env_files()
 
     vor_module.refresh_base_configuration()
+    # The version the Stammstrecke monitor chose from the VAO list (2026-10-29).
+    vor_module.use_stored_version()
     access_id = vor_module.refresh_access_credentials()
     auth_header = vor_module._VOR_AUTHORIZATION_HEADER
 

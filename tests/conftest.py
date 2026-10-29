@@ -656,6 +656,22 @@ def _cache_dir_stays(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
             monkeypatch.setattr(module, "_CACHE_DIR", target)
 
 
+@pytest.fixture(autouse=True)
+def _vao_version_stays(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Keep the VAO version choice off the network and out of the real ``cache/``.
+
+    Since 2026-10-29 every Stammstrecke poll reads the VAO version list and
+    writes its choice to ``cache/stammstrecke/vao_version.json``
+    (``src/utils/vao_version.py``). A test sees no list unless it patches
+    ``fetch_version_list`` itself, and the choice lands in ``tmp_path``.
+    """
+    from src.providers import vor as vor_module
+    from src.utils import vao_version as version_module
+
+    monkeypatch.setattr(version_module, "VERSION_STATE_PATH", tmp_path / "vao_version.json")
+    monkeypatch.setattr(vor_module, "fetch_version_list", lambda *_a, **_kw: None)
+
+
 _HEALTH_REPORTS =(root / "docs" / "feed-health.md", root / "docs" / "feed-health.json")
 
 

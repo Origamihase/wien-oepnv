@@ -178,6 +178,7 @@ from src.utils.circuit_breaker import (  # noqa: E402
 from src.utils.files import loads_finite  # noqa: E402
 from src.utils.http import request_safe  # noqa: E402
 from src.utils import logging as utils_logging  # noqa: E402
+from src.utils import vao_version  # noqa: E402
 from src.utils.stations import station_info  # noqa: E402
 from src.utils.stammstrecke_poll import (  # noqa: E402
     POLL_STATUS_PATH,
@@ -1175,6 +1176,57 @@ def _process_tick(
     return "ok"
 
 
+def _poll_listed_versions(
+    session: requests.Session,
+    state: dict[Any, Any],
+    *,
+    when: datetime,
+    recently_finalised: Mapping[str, datetime] | None,
+    tally: _TickTally,
+    version_path: Path | None = None,
+) -> str:
+    """Poll the newest VAO version in service; when it fails, the one before.
+
+    Operator decision 2026-10-29 (Michael): "Lies automatisch aus, was die
+    neuste Version ist. Wenn sie nicht funktioniert, nimm automatisch die
+    davor". The order, the 24-hour back seat of a failed version and the
+    stored choice: :mod:`src.utils.vao_version`. A version pinned by the
+    environment is polled as it is. Returns the outcome of the last attempt.
+    """
+    if vor_provider.version_pinned_by_env():
+        return _process_tick(session, state, when=when,
+                             recently_finalised=recently_finalised, tally=tally)
+    listed = vor_provider.fetch_version_list()
+    choice = vao_version.load_state(version_path)
+    before = choice.version
+    order = vao_version.candidates(listed, choice, default=vor_provider.DEFAULT_VERSION, now=when)
+    status = "error"
+    for attempt, version in enumerate(order):
+        if attempt:
+            LOGGER.warning(
+                "Stammstrecke (Hbf): VAO-Version %s antwortet nicht brauchbar (%s) — versuche %s.",
+                order[attempt - 1],
+                tally.error,
+                version,
+            )
+            tally.departures, tally.trains, tally.error = 0, 0, ""
+        vor_provider.use_version(version)
+        status = _process_tick(session, state, when=when,
+                               recently_finalised=recently_finalised, tally=tally)
+        if status == "quota_exceeded":
+            break
+        vao_version.record_outcome(choice, version=version, worked=status == "ok",
+                                   now=when, listed=listed)
+        if status == "ok":
+            break
+    if before is not None and choice.version != before:
+        message = f"VAO-Version gewechselt: {before} → {choice.version}"
+        LOGGER.warning("Stammstrecke (Hbf): %s.", message)
+        _emit_workflow_warning("VAO-Version gewechselt", message)
+    vao_version.save_state(choice, version_path)
+    return status
+
+
 def _record_poll_outcome(when: datetime, result: str, tally: _TickTally) -> None:
     """Fold this poll into ``cache/stammstrecke/poll_status.json`` (best-effort)."""
 
@@ -1341,7 +1393,7 @@ def main() -> int:
                 return 1
 
             try:
-                status = _process_tick(
+                status = _poll_listed_versions(
                     session,
                     state,
                     when=when,

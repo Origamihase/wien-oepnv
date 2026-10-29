@@ -57,9 +57,26 @@ ebenfalls ohne Access-ID.
 3. **Antwort interpretieren**
    - Strukturelle Änderungen kommen laut Handbuch Kapitel 3.1 nur mit neuen Versionen; Unterschiede zeigt der Vergleich von OpenAPI und WADL (unten).
 
+## Automatische Wahl (seit 29.10.2026)
+
+Der Stammstrecken-Monitor wählt die Version selbst. Jeder Abruf liest die Liste
+oben und fragt die neueste Version vor ihrem Abschaltdatum; scheitert sie, im selben
+Abruf die nächstältere. Eine gescheiterte Version kommt 24 Stunden lang nach den
+anderen. Die Wahl steht in `cache/stammstrecke/vao_version.json` (`version`,
+`previous`, `changed_at`, `listed`, `failed`), ein Wechsel öffnet das
+Feed-Wächter-Issue `vao-version`. Entscheidung und Regeln: `docs/architecture.md`,
+§7, „Automatische Wahl der Version“. Ein PR ist für einen Wechsel nicht nötig.
+
+```bash
+cat cache/stammstrecke/vao_version.json
+```
+
 ## Version anheben
 
-Vor dem Abschaltdatum der aktiven Version (heute v1.12.0, 30.08.2027) oder sobald sie aus der Liste verschwindet:
+`DEFAULT_VERSION` gilt nur noch für einen Checkout ohne
+`cache/stammstrecke/vao_version.json` und für einen Abruf, der die Liste nicht
+lesen kann. Ihn anheben, wenn die Version im Code abgeschaltet ist (heute v1.12.0,
+30.08.2027) oder eine neue Version die Felder des Parsers ändert:
 
 1. OpenAPI und WADL von alter und neuer Version vergleichen, mindestens für
    `departureBoard`: die Request-Parameter aus

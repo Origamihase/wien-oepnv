@@ -61,6 +61,7 @@ from src.feed.logging_safe import setup_script_logging
 from src.utils.files import atomic_write, read_capped_json, read_capped_text
 from src.utils.logging import sanitize_log_arg
 from src.utils.serialize import scrub_trojan_source_primitives
+from src.utils.vao_version import VersionState, load_state as load_vao_version
 
 LOGGER = getLogger("feed_watch")
 
@@ -126,6 +127,9 @@ EMPTY_CACHE_MIN_REFERENCE = 5
 # the same evening (17:31-20:01). Two hours stay silent on every short outage
 # and speak at 18:00 (WL) and 19:01 (VAO) on 2026-10-21.
 SOURCE_STALE = timedelta(hours=2)
+# A version change of the VAO API is reported in the run that made it and the
+# next one (two Update runs), so the issue opens once and closes itself.
+VAO_VERSION_REPORT = timedelta(minutes=45)
 # The free sources whose fetch exit code the Update run hands over
 # (``FEED_WATCH_FETCH_EXIT``); 0 = fresh answer, anything else = the feed keeps
 # the last good answer (1, 2, 3, 124, 137: see the fetch step in update-cycle.yml).
@@ -266,6 +270,15 @@ RULES: dict[str, Rule] = {
             "Ein Anbieter antwortet seit mindestens zwei Stunden nicht brauchbar; der Feed "
             "läuft mit seiner letzten guten Antwort weiter und zeigt neue oder erledigte "
             "Meldungen nicht (Wiener Linien am 21.10.2026 von 16:00 bis 23:00, 502 Bad Gateway).",
+        ),
+        Rule(
+            "vao-version",
+            "VAO-Version gewechselt",
+            "Quelle",
+            "Die Stammstrecke fragt eine andere VAO-Version als vorher: Die bisherige "
+            "antwortete nicht mehr brauchbar oder die VAO listet eine neuere "
+            "(automatische Wahl seit 29.10.2026; am 28.10.2026 zog die VAO v1.13.0 zurück). "
+            "Nur zur Kenntnis, nichts zu tun.",
         ),
         Rule(
             "verwurf-sprung",
@@ -920,6 +933,22 @@ def check_fresh_answers(
     return findings, state
 
 
+def check_vao_version(choice: VersionState | None, now: datetime) -> list[Finding]:
+    """The Stammstrecke monitor changed its VAO version shortly before this run."""
+    if choice is None or choice.previous is None or choice.version is None or choice.changed_at is None:
+        return []
+    if not timedelta(0) <= now - choice.changed_at <= VAO_VERSION_REPORT:
+        return []
+    return [
+        Finding(
+            "vao-version",
+            SOURCE_LABELS["stammstrecke"],
+            f"{choice.previous} → {choice.version} am {_local(choice.changed_at):%d.%m. %H:%M}; "
+            f"die VAO listet {', '.join(choice.listed) or 'keine lesbare Liste'}",
+        )
+    ]
+
+
 def load_poll_sample(path: Path) -> PollSample | None:
     payload = read_capped_json(path, MAX_SOURCE_BYTES, label="Stammstrecke-Abrufstatus", logger=LOGGER)
     if not isinstance(payload, Mapping):
@@ -956,6 +985,7 @@ def evaluate(
     max_items: int = DEFAULT_MAX_ITEMS,
     fetch_exit: Mapping[str, int] | None = None,
     poll: PollSample | None = None,
+    vao: VersionState | None = None,
 ) -> Result:
     """Every finding of this run and the state for the next one. Pure: no I/O."""
     built = feed.built or now
@@ -991,6 +1021,7 @@ def evaluate(
         )
     fresh_findings, fetch_state = check_fresh_answers(fetch_exit, poll, state.get("fetch"), now)
     findings += fresh_findings
+    findings += check_vao_version(vao, now)
     kept = [
         dict(entry)
         for entry in samples
@@ -1321,6 +1352,7 @@ def run(args: argparse.Namespace, now: datetime) -> int:
         max_items=max_items,
         fetch_exit=parse_fetch_exit(os.getenv("FEED_WATCH_FETCH_EXIT")),
         poll=load_poll_sample(args.cache_dir / "stammstrecke" / "poll_status.json"),
+        vao=load_vao_version(args.cache_dir / "stammstrecke" / "vao_version.json"),
     )
     _report(result.findings, now)
     # Written before the issue calls, so a step killed by its time limit still
