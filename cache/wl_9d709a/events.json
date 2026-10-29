@@ -1111,17 +1111,29 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "46: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Linie 46: Fahrtbehinderung in Richtung Parlament, U Volkstheater Voraussichtliche Dauer: 08:00 Uhr. Grund: Feuerwehreinsatz im Bereich Thaliastraße 73.",
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "f2b645137cda0dc8e65fd59fe08a52f86b8221f6047ae3dd576ce22c78a73be4",
-    "pubDate": "2026-10-29T07:26:00+01:00",
+    "pubDate": "2026-10-29T07:27:34+01:00",
     "starts_at": "2026-10-29T07:27:34+01:00",
+    "ends_at": "2026-10-29T08:27:00+01:00",
+    "_identity": "wl|störung|L=46|D=2026-10-29|TK=feuerwehreinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Verspätungen",
+    "description": "Linie 52: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "347bf9ad635bed065df985f7e527768d84656a8f32637791368fa2d47a92883c",
+    "pubDate": "2026-10-29T07:47:00+01:00",
+    "starts_at": "2026-10-29T07:47:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=46|D=2026-10-29|TK=feuerwehreinsatz",
+    "_identity": "wl|störung|L=52|D=2026-10-29|TK=52 verspätungen",
     "_wl_ids": [
-      "I20261029-0005"
+      "I20261029-0006"
     ],
-    "_incident_start": "2026-10-29T07:26:00+01:00"
+    "_incident_start": "2026-10-29T07:47:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1170,22 +1182,6 @@
     "starts_at": "2026-10-29T00:00:02+01:00",
     "ends_at": "2026-10-29T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-10-29|TK=betrieb ab vivariumstrasse 2"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Verspätungen",
-    "description": "Linie 9: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "31a26903d85084ee959631a5114ee24e12feca42c93cb008a7a19a3e9dad3628",
-    "pubDate": "2026-10-29T06:54:00+01:00",
-    "starts_at": "2026-10-29T06:54:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=9|D=2026-10-29|TK=9 verspätungen",
-    "_wl_ids": [
-      "I20261029-0004"
-    ],
-    "_incident_start": "2026-10-29T06:54:00+01:00"
   },
   {
     "source": "Wiener Linien",
