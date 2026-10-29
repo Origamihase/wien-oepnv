@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261029-0023-F01, I20260922-0032, I20261029-0026, I20260925-0011, I20261029-0022, I20261029-0025, I20260909-0007, I20261029-0020, I20261020-0029, I20261029-0024-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261029-0022, I20261029-0025, I20261029-0026, I20260909-0007, I20261029-0020, I20261020-0029, I20261029-0027"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R36-152, R130-136, R19-136, R45-136, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R401-101, R318-437, R293-474, R2378-627, R2343-626, R2343-125, R3886-480, R1974-466, R1272-440, R1301-440, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R36-152, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R100-136, R101-136, R102-136, R2343-626, R2371-125, R2370-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R401-101, R318-437, R293-474, R2378-627, R2343-125, R2359-125, R3886-480, R1974-466, R1272-440, R1301-440, R500-101, R404-111, R2260-111, R1933-111, R1932-111, R1930-111, R1931-111, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -349,103 +349,6 @@
     "title": "46B: Verkehrsunfall"
    },
    {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U4: Betriebsstörung"
-      }
-     }
-    ],
-    "name": "I20261029-0023-F01",
-    "owner": "WL",
-    "parentName": "I20261029-0023",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4425
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-29T15:07:00.000+0100",
-     "lastUpdate": "2026-10-29T15:07:00.000+0100",
-     "resume": "2026-10-29T15:07:00.000+0100",
-     "start": "2026-10-29T15:03:00.000+0100"
-    },
-    "title": "U4: Betriebsstörung"
-   },
-   {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U3: Betriebsstörung"
-      }
-     }
-    ],
-    "name": "I20261029-0024-F01",
-    "owner": "WL",
-    "parentName": "I20261029-0024",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4910
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-29T15:07:00.000+0100",
-     "end": "2026-10-29T15:59:00.000+0100",
-     "lastUpdate": "2026-10-29T15:59:00.000+0100",
-     "resume": "2026-10-29T15:59:00.000+0100",
-     "start": "2026-10-29T15:05:00.000+0100"
-    },
-    "title": "U3: Betriebsstörung"
-   },
-   {
     "alertCause": "vandalism",
     "alertCauseId": 16,
     "attributes": {
@@ -529,11 +432,59 @@
     "status": "active",
     "time": {
      "created": "2026-10-29T15:59:00.000+0100",
-     "lastUpdate": "2026-10-29T15:59:00.000+0100",
+     "end": "2026-10-29T16:45:00.000+0100",
+     "lastUpdate": "2026-10-29T16:18:00.000+0100",
      "resume": "2026-10-29T15:59:00.000+0100",
      "start": "2026-10-29T15:59:00.000+0100"
     },
     "title": "U3: Betriebsstörung"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram"
+     }
+    },
+    "description": "Linie 11: Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. Voraussichtliche Dauer: 17:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Raxstraße.",
+    "descriptionHTML": "<p>Linie 11:<br>Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse.</p><p>Voraussichtliche Dauer: 17:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Raxstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 11:<br>Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse.</p><p>Voraussichtliche Dauer: 17:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Raxstraße.</p>",
+       "descriptionPlain": "Linie 11: Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. Voraussichtliche Dauer: 17:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Raxstraße.",
+       "title": "11: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261029-0027",
+    "owner": "WL",
+    "parentName": "I20261029-0027",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 111,
+      "lineName": "11",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     2260
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-29T16:27:00.000+0100",
+     "lastUpdate": "2026-10-29T16:27:00.000+0100",
+     "start": "2026-10-29T16:25:00.000+0100"
+    },
+    "title": "11: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1274,6 +1225,98 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1930-111",
+    "owner": "WL",
+    "parentName": "R1930-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1930
+    ],
+    "time": {
+     "end": "2026-10-29T17:28:00.000+0100",
+     "start": "2026-10-29T16:28:31.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1931-111",
+    "owner": "WL",
+    "parentName": "R1931-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1931
+    ],
+    "time": {
+     "end": "2026-10-29T17:28:00.000+0100",
+     "start": "2026-10-29T16:28:31.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1932-111",
+    "owner": "WL",
+    "parentName": "R1932-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1932
+    ],
+    "time": {
+     "end": "2026-10-29T17:28:00.000+0100",
+     "start": "2026-10-29T16:28:31.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1933-111",
+    "owner": "WL",
+    "parentName": "R1933-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1933
+    ],
+    "time": {
+     "end": "2026-10-29T17:28:00.000+0100",
+     "start": "2026-10-29T16:28:31.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-466",
     "owner": "WL",
@@ -1293,6 +1336,29 @@
      "start": "2026-10-29T04:40:18.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2260-111",
+    "owner": "WL",
+    "parentName": "R2260-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2260
+    ],
+    "time": {
+     "end": "2026-10-29T17:28:00.000+0100",
+     "start": "2026-10-29T16:28:29.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1776,6 +1842,29 @@
      "start": "2026-10-29T00:00:01.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R404-111",
+    "owner": "WL",
+    "parentName": "R404-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     404
+    ],
+    "time": {
+     "end": "2026-10-29T17:28:00.000+0100",
+     "start": "2026-10-29T16:28:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
