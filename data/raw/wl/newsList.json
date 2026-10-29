@@ -6,7 +6,7 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-2738, N20260209-3501, N20260209-3802, N20260209-4631, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260702-5991, N20260722-6034, N20260813-6092, N20260808-6083, N20260808-6084, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260831-6165, N20260901-6167, N20260903-6175, N20260908-6177, N20260910-6180, N20260911-6181, N20260915-6185, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20260930-6211, N20261005-6217, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261008-6266, N20261008-6267, N20261009-6270, N20261014-6277, N20261014-6278, N20261021-0001, N20261021-0002, N20261021-0003, N20261021-0004, N20261022-0002, N20261022-0003, N20261022-0004, N20261023-0001, N20261023-0002, N20261027-0001, N20261028-0003"
+    "trafficInfoNameList": "N20260209-0049, N20260209-2738, N20260209-3501, N20260209-3802, N20260209-4631, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260702-5991, N20260722-6034, N20260813-6092, N20260808-6083, N20260808-6084, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260831-6165, N20260901-6167, N20260903-6175, N20260908-6177, N20260910-6180, N20260911-6181, N20260915-6185, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20260930-6211, N20261005-6217, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261008-6266, N20261008-6267, N20261009-6270, N20261014-6277, N20261014-6278, N20261021-0001, N20261021-0002, N20261021-0003, N20261021-0004, N20261022-0002, N20261022-0003, N20261022-0004, N20261023-0001, N20261023-0002, N20261027-0001, N20261028-0003, N20261029-0001"
    },
    {
     "id": -1,
@@ -3409,6 +3409,58 @@
      "validFrom": "2026-11-03T07:00:00.000+0100"
     },
     "title": "12A: Henriettenplatz"
+   },
+   {
+    "alertCause": "unknown",
+    "alertCauseId": 0,
+    "description": "<p><strong><u>Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf</u></strong></p><p><strong><u>Haltestelle:</u></strong> Obere Augartenstraße</p><p><strong><u>Von:</u></strong> Untere Augartenstraße 40</p><p><strong><u>Nach:</u></strong> Untere Augartenstraße 42</p><p><strong><u>Dauer:</u></strong> Von 31.10.2026 ca. 05:00 Uhr bis 02.11.2026 ca. 07:00 Uhr</p><p><strong><u>Grund:</u></strong> Demontage eines Turmdrehkrans</p>",
+    "id": "N20261029-0001",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong><u>Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf</u></strong></p><p><strong><u>Haltestelle:</u></strong> Obere Augartenstraße</p><p><strong><u>Von:</u></strong> Untere Augartenstraße 40</p><p><strong><u>Nach:</u></strong> Untere Augartenstraße 42</p><p><strong><u>Dauer:</u></strong> Von 31.10.2026 ca. 05:00 Uhr bis 02.11.2026 ca. 07:00 Uhr</p><p><strong><u>Grund:</u></strong> Demontage eines Turmdrehkrans</p>",
+       "descriptionPlain": "Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf Haltestelle: Obere Augartenstraße Von: Untere Augartenstraße 40 Nach: Untere Augartenstraße 42 Dauer: Von 31.10.2026 ca. 05:00 Uhr bis 02.11.2026 ca. 07:00 Uhr Grund: Demontage eines Turmdrehkrans",
+       "title": "5A, N31: Obere Augartenstraße"
+      }
+     }
+    ],
+    "location": {
+     "properties": {
+      "attributes": {},
+      "coordName": "WGS84",
+      "type": "news"
+     },
+     "type": "Feature"
+    },
+    "name": "N20261029-0001",
+    "reasonId": 223,
+    "reasonName": "Haltestellenverlegung",
+    "refPoiCategoryId": 13296,
+    "relatedLines": [
+     "5A",
+     "N31"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 405,
+      "lineName": "5A",
+      "vehicleType": "ptBusCity"
+     },
+     {
+      "lineId": 531,
+      "lineName": "N31",
+      "vehicleType": "ptBusNight"
+     }
+    ],
+    "relatedStops": [
+     2399
+    ],
+    "time": {
+     "end": "2026-11-02T07:00:00.000+0100",
+     "start": "2026-10-29T13:18:00.000+0100",
+     "validFrom": "2026-10-29T13:16:00.000+0100"
+    },
+    "title": "5A, N31: Obere Augartenstraße"
    },
    {
     "alertCause": "undefined alert cause",
