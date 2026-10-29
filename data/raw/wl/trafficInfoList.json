@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261029-0037, I20260909-0007, I20261029-0036, I20261029-0038, I20261020-0029"
+    "trafficInfoNameList": "I20261029-0039, I20260917-0012, I20261029-0041, I20261029-0038-F01, I20260922-0032, I20260925-0011, I20261029-0040-F01, I20261029-0042, I20260909-0007, I20261029-0036, I20261029-0037-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1884-101, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R1448-412, R2558-125, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R293-474, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R401-101, R318-437, R3886-480, R1974-466, R1272-440, R1301-440, R500-101, R1338-142, R524-142, R235-143, R237-143, R236-143, R234-143, R231-143, R230-143, R1354-143, R1355-143, R1356-143, R1357-143, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R19-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R45-136, R36-152, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R2371-125, R2359-125, R2370-125, R2343-626, R2378-627, R293-474, R318-437, R2343-125, R401-101, R2420-411, R2372-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R3886-480, R1974-466, R1301-440, R1272-440, R500-101, R1338-142, R524-142, R236-143, R237-143, R234-143, R235-143, R230-143, R231-143, R1354-143, R1357-143, R1356-143, R1355-143, R217-143, R1345-143, R219-143, R218-143, R1542-152, R579-152, R578-152, R1537-152, R1535-152, R1532-152, R1539-152, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -312,19 +312,19 @@
       "42": "ptTram"
      }
     },
-    "description": "Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 20:20 Uhr. Grund: Falschparker im Bereich Kreuzgasse 43.",
-    "descriptionHTML": "<p>Linie 42:<br>Fahrtbehinderung in Richtung Antonigasse.</p><p>Voraussichtliche Dauer: 20:20 Uhr.</p><p>Grund: Falschparker im Bereich Kreuzgasse 43.</p>",
+    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 42: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 42:<br>Fahrtbehinderung in Richtung Antonigasse.</p><p>Voraussichtliche Dauer: 20:20 Uhr.</p><p>Grund: Falschparker im Bereich Kreuzgasse 43.</p>",
-       "descriptionPlain": "Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 20:20 Uhr. Grund: Falschparker im Bereich Kreuzgasse 43.",
+       "descriptionHtml": "<p>Linie 42: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "42: Falschparker"
       }
      }
     ],
     "location": "Kreuzgasse 43",
-    "name": "I20261029-0037",
+    "name": "I20261029-0037-F01",
     "owner": "WL",
     "parentName": "I20261029-0037",
     "priority": "1",
@@ -343,8 +343,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-29T19:50:00.000+0100",
-     "lastUpdate": "2026-10-29T19:50:00.000+0100",
+     "created": "2026-10-29T20:03:00.000+0100",
+     "lastUpdate": "2026-10-29T20:03:00.000+0100",
+     "resume": "2026-10-29T20:03:00.000+0100",
      "start": "2026-10-29T19:49:00.000+0100"
     },
     "title": "42: Falschparker"
@@ -357,19 +358,19 @@
       "43": "ptTram"
      }
     },
-    "description": "Linie 43: Umleitung in Richtung Schottentor U zwischen Rosensteingasse und Brünnlbadgasse über die Strecke der Linien 9 und 44. Voraussichtliche Dauer: 20:25 Uhr. Grund: Fremder Verkehrsunfall im Bereich Alser Straße.",
-    "descriptionHTML": "<p>Linie 43:<br>Umleitung in Richtung Schottentor U <br>zwischen Rosensteingasse und Brünnlbadgasse <br>über die Strecke der Linien 9 und 44.</p><p>Voraussichtliche Dauer: 20:25 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Alser Straße.</p>",
+    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 43:<br>Umleitung in Richtung Schottentor U <br>zwischen Rosensteingasse und Brünnlbadgasse <br>über die Strecke der Linien 9 und 44.</p><p>Voraussichtliche Dauer: 20:25 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Alser Straße.</p>",
-       "descriptionPlain": "Linie 43: Umleitung in Richtung Schottentor U zwischen Rosensteingasse und Brünnlbadgasse über die Strecke der Linien 9 und 44. Voraussichtliche Dauer: 20:25 Uhr. Grund: Fremder Verkehrsunfall im Bereich Alser Straße.",
+       "descriptionHtml": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "43: Fremder Verkehrsunfall"
       }
      }
     ],
     "location": "Alser Straße",
-    "name": "I20261029-0038",
+    "name": "I20261029-0038-F01",
     "owner": "WL",
     "parentName": "I20261029-0038",
     "priority": "1",
@@ -388,11 +389,194 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-29T19:54:00.000+0100",
-     "lastUpdate": "2026-10-29T19:54:00.000+0100",
+     "created": "2026-10-29T20:21:00.000+0100",
+     "lastUpdate": "2026-10-29T20:21:00.000+0100",
+     "resume": "2026-10-29T20:21:00.000+0100",
      "start": "2026-10-29T19:53:00.000+0100"
     },
     "title": "43: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "26": "ptTram"
+     }
+    },
+    "description": "Linie 26: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 26:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 26:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 26: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "26: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261029-0039",
+    "owner": "WL",
+    "parentName": "I20261029-0039",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 126,
+      "lineName": "26",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-29T20:01:00.000+0100",
+     "lastUpdate": "2026-10-29T20:01:00.000+0100",
+     "resume": "2026-10-29T20:00:00.000+0100",
+     "start": "2026-10-29T20:00:00.000+0100"
+    },
+    "title": "26: Rettungseinsatz"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U2: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261029-0040-F01",
+    "owner": "WL",
+    "parentName": "I20261029-0040",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 302,
+      "lineName": "U2",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4279
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-29T20:11:00.000+0100",
+     "lastUpdate": "2026-10-29T20:11:00.000+0100",
+     "resume": "2026-10-29T20:11:00.000+0100",
+     "start": "2026-10-29T20:04:00.000+0100"
+    },
+    "title": "U2: Polizeieinsatz"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "52": "ptTram"
+     }
+    },
+    "description": "Linie 52: Betrieb nur zwischen Westbahnhof S U und Reinlgasse. Weiterfahrt über die Linie 10 bis Joachimsthalerplatz. Voraussichtliche Dauer: 20:45 Uhr. Grund: Fremder Verkehrsunfall.",
+    "descriptionHTML": "<p>Linie 52:<br>Betrieb nur zwischen Westbahnhof S U und Reinlgasse.<br>Weiterfahrt über die Linie 10 bis Joachimsthalerplatz.</p><p>Voraussichtliche Dauer: 20:45 Uhr.</p><p>Grund: Fremder Verkehrsunfall.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 52:<br>Betrieb nur zwischen Westbahnhof S U und Reinlgasse.<br>Weiterfahrt über die Linie 10 bis Joachimsthalerplatz.</p><p>Voraussichtliche Dauer: 20:45 Uhr.</p><p>Grund: Fremder Verkehrsunfall.</p>",
+       "descriptionPlain": "Linie 52: Betrieb nur zwischen Westbahnhof S U und Reinlgasse. Weiterfahrt über die Linie 10 bis Joachimsthalerplatz. Voraussichtliche Dauer: 20:45 Uhr. Grund: Fremder Verkehrsunfall.",
+       "title": "52: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261029-0041",
+    "owner": "WL",
+    "parentName": "I20261029-0041",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 152,
+      "lineName": "52",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-29T20:13:00.000+0100",
+     "lastUpdate": "2026-10-29T20:13:00.000+0100",
+     "start": "2026-10-29T20:12:00.000+0100"
+    },
+    "title": "52: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "U3: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261029-0042",
+    "owner": "WL",
+    "parentName": "I20261029-0042",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-29T20:23:00.000+0100",
+     "lastUpdate": "2026-10-29T20:23:00.000+0100",
+     "resume": "2026-10-29T20:23:00.000+0100",
+     "start": "2026-10-29T20:23:00.000+0100"
+    },
+    "title": "U3: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -692,6 +876,29 @@
      "start": "2026-10-29T19:50:16.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung ab Brünlbadgasse über 44 und 9",
+    "name": "R1345-143",
+    "owner": "WL",
+    "parentName": "R1345-143",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedStops": [
+     1345
+    ],
+    "time": {
+     "end": "2026-10-29T21:02:00.000+0100",
+     "start": "2026-10-29T20:03:47.000+0100"
+    },
+    "title": "Verkehrsunfall\nUmleitung ab Brünlbadgasse über 44 und 9"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1064,6 +1271,121 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Reinlgasse zum Joachimsthalerplatz",
+    "name": "R1532-152",
+    "owner": "WL",
+    "parentName": "R1532-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1532
+    ],
+    "time": {
+     "end": "2026-10-29T21:13:00.000+0100",
+     "start": "2026-10-29T20:14:51.000+0100"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Reinlgasse zum Joachimsthalerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Reinlgasse zum Joachimsthalerplatz",
+    "name": "R1535-152",
+    "owner": "WL",
+    "parentName": "R1535-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1535
+    ],
+    "time": {
+     "end": "2026-10-29T21:13:00.000+0100",
+     "start": "2026-10-29T20:14:51.000+0100"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Reinlgasse zum Joachimsthalerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Reinlgasse zum Joachimsthalerplatz",
+    "name": "R1537-152",
+    "owner": "WL",
+    "parentName": "R1537-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1537
+    ],
+    "time": {
+     "end": "2026-10-29T21:13:00.000+0100",
+     "start": "2026-10-29T20:14:51.000+0100"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Reinlgasse zum Joachimsthalerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1539-152",
+    "owner": "WL",
+    "parentName": "R1539-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1539
+    ],
+    "time": {
+     "end": "2026-10-29T21:14:00.000+0100",
+     "start": "2026-10-29T20:14:51.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1542-152",
+    "owner": "WL",
+    "parentName": "R1542-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1542
+    ],
+    "time": {
+     "end": "2026-10-29T21:12:00.000+0100",
+     "start": "2026-10-29T20:13:21.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nKein Betrieb",
     "name": "R1875-101",
     "owner": "WL",
@@ -1271,6 +1593,75 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung ab Brünlbadgasse über 44 und 9",
+    "name": "R217-143",
+    "owner": "WL",
+    "parentName": "R217-143",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedStops": [
+     217
+    ],
+    "time": {
+     "end": "2026-10-29T21:02:00.000+0100",
+     "start": "2026-10-29T20:03:47.000+0100"
+    },
+    "title": "Verkehrsunfall\nUmleitung ab Brünlbadgasse über 44 und 9"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung ab Brünlbadgasse über 44 und 9",
+    "name": "R218-143",
+    "owner": "WL",
+    "parentName": "R218-143",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedStops": [
+     218
+    ],
+    "time": {
+     "end": "2026-10-29T21:02:00.000+0100",
+     "start": "2026-10-29T20:03:47.000+0100"
+    },
+    "title": "Verkehrsunfall\nUmleitung ab Brünlbadgasse über 44 und 9"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung ab Brünlbadgasse über 44 und 9",
+    "name": "R219-143",
+    "owner": "WL",
+    "parentName": "R219-143",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedStops": [
+     219
+    ],
+    "time": {
+     "end": "2026-10-29T21:02:00.000+0100",
+     "start": "2026-10-29T20:03:47.000+0100"
+    },
+    "title": "Verkehrsunfall\nUmleitung ab Brünlbadgasse über 44 und 9"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Verkehrsunfall\nUmleitung ab Rosensteingasse über Linien 9 und 44",
     "name": "R230-143",
     "owner": "WL",
@@ -1409,7 +1800,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "description": "Verkehrsunfall\nZüge halten bei Linie 44",
     "name": "R235-143",
     "owner": "WL",
     "parentName": "R235-143",
@@ -1424,10 +1815,10 @@
      235
     ],
     "time": {
-     "end": "2026-10-29T20:52:00.000+0100",
+     "end": "2026-10-29T20:54:00.000+0100",
      "start": "2026-10-29T19:52:46.000+0100"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Verkehrsunfall\nZüge halten bei Linie 44"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1957,6 +2348,52 @@
      "start": "2026-10-29T19:52:17.000+0100"
     },
     "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Reinlgasse zum Joachimsthalerplatz",
+    "name": "R578-152",
+    "owner": "WL",
+    "parentName": "R578-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     578
+    ],
+    "time": {
+     "end": "2026-10-29T21:13:00.000+0100",
+     "start": "2026-10-29T20:14:48.000+0100"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Reinlgasse zum Joachimsthalerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nBetrieb ab Reinlgasse zum Joachimsthalerplatz",
+    "name": "R579-152",
+    "owner": "WL",
+    "parentName": "R579-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     579
+    ],
+    "time": {
+     "end": "2026-10-29T21:13:00.000+0100",
+     "start": "2026-10-29T20:14:48.000+0100"
+    },
+    "title": "Verkehrsunfall\nBetrieb ab Reinlgasse zum Joachimsthalerplatz"
    },
    {
     "alertCause": "undefined alert cause",
