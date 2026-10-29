@@ -1,13 +1,21 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-29T04:31:11.658765+00:00",
- "built": "2026-10-29T05:31:03+01:00",
+ "updated": "2026-10-29T05:01:15.377210+00:00",
+ "built": "2026-10-29T06:00:59+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-29T05:31:03+01:00",
+  "built": "2026-10-29T06:00:59+01:00",
   "items": [
+   {
+    "title": "10: Rettungseinsatz",
+    "time_line": "Seit 05:53"
+   },
+   {
+    "title": "46: Rettungseinsatz",
+    "time_line": "Seit 05:47"
+   },
    {
     "title": "54A/54B: Bauarbeiten",
     "time_line": "Bis Fr 30.10."
@@ -39,14 +47,6 @@
    {
     "title": "S1: Wien Leopoldau ↔ Deutsch Wagram",
     "time_line": "Bis 28.11."
-   },
-   {
-    "title": "11A/78A: Straßenbauarbeiten",
-    "time_line": "Bis Mo 02.11."
-   },
-   {
-    "title": "64A/N64R: Erlaaer Spitz",
-    "time_line": "Seit 22.10."
    }
   ]
  },
@@ -6771,17 +6771,37 @@
     "oebb": 9,
     "wl": 102
    }
+  },
+  {
+   "t": "2026-10-29T05:01:15.377210+00:00",
+   "raw": {
+    "wl-stoerungen": 75,
+    "wl-hinweise": 78,
+    "oebb": 154,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 19
+   },
+   "discarded": {
+    "wl": 9,
+    "oebb": 129,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 104
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-29T04:31:11.658765+00:00"
+   "last_ok": "2026-10-29T05:01:15.377210+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-29T04:31:11.658765+00:00"
+   "last_ok": "2026-10-29T05:01:15.377210+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-29T04:31:11.658765+00:00"
+   "last_ok": "2026-10-29T05:01:15.377210+00:00"
   }
  }
 }
