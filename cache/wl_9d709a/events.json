@@ -1226,50 +1226,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Betriebsstörung",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
-    "pubDate": "2026-10-29T11:05:00+01:00",
-    "starts_at": "2026-10-29T11:05:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U1|D=2026-10-29|TK=u1 betriebsstörung",
-    "_wl_ids": [
-      "I20261029-0013"
-    ],
-    "_incident_start": "2026-10-29T11:05:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U2: Betriebsstörung",
     "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
     "pubDate": "2026-10-29T10:53:00+01:00",
     "starts_at": "2026-10-29T10:53:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-10-29T12:35:00+01:00",
     "_identity": "wl|störung|L=U2|D=2026-10-29|TK=u2 betriebsstörung",
     "_wl_ids": [
       "I20261029-0012"
     ],
     "_incident_start": "2026-10-29T10:53:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Polizeieinsatz",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab",
-    "pubDate": "2026-10-29T11:29:00+01:00",
-    "starts_at": "2026-10-29T11:29:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-10-29|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261029-0015"
-    ],
-    "_incident_start": "2026-10-29T11:29:00+01:00"
   },
   {
     "source": "Wiener Linien",
