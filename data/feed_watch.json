@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-28T23:31:12.084546+00:00",
- "built": "2026-10-29T00:31:01+01:00",
+ "updated": "2026-10-29T00:01:02.282028+00:00",
+ "built": "2026-10-29T01:00:53+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-29T00:31:01+01:00",
+  "built": "2026-10-29T01:00:53+01:00",
   "items": [
    {
     "title": "54A/54B: Bauarbeiten",
@@ -6771,17 +6771,37 @@
     "oebb": 9,
     "wl": 100
    }
+  },
+  {
+   "t": "2026-10-29T00:01:02.282028+00:00",
+   "raw": {
+    "wl-stoerungen": 70,
+    "wl-hinweise": 80,
+    "oebb": 153,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 19
+   },
+   "discarded": {
+    "wl": 11,
+    "oebb": 128,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 106
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-28T23:31:12.084546+00:00"
+   "last_ok": "2026-10-29T00:01:02.282028+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-28T23:31:12.084546+00:00"
+   "last_ok": "2026-10-29T00:01:02.282028+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-28T23:31:12.084546+00:00"
+   "last_ok": "2026-10-29T00:01:02.282028+00:00"
   }
  }
 }
