@@ -1110,6 +1110,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "46: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Linie 46: Fahrtbehinderung in Richtung Parlament, U Volkstheater Voraussichtliche Dauer: 08:00 Uhr. Grund: Feuerwehreinsatz im Bereich Thaliastraße 73.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f2b645137cda0dc8e65fd59fe08a52f86b8221f6047ae3dd576ce22c78a73be4",
+    "pubDate": "2026-10-29T07:26:00+01:00",
+    "starts_at": "2026-10-29T07:27:34+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=46|D=2026-10-29|TK=feuerwehreinsatz",
+    "_wl_ids": [
+      "I20261029-0005"
+    ],
+    "_incident_start": "2026-10-29T07:26:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "52: Züge halten bei Linien 6 und 18",
     "description": "Züge halten\nbei Linien 6 und 18",
     "link": "https://www.wienerlinien.at/betriebsinfo",
