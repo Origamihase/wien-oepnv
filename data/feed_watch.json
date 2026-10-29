@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-29T21:30:53.802653+00:00",
- "built": "2026-10-29T22:30:47+01:00",
+ "updated": "2026-10-29T22:00:58.764847+00:00",
+ "built": "2026-10-29T23:00:53+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-29T22:30:47+01:00",
+  "built": "2026-10-29T23:00:53+01:00",
   "items": [
    {
     "title": "5A/5B/N31: Obere Augartenstraße",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-22T21:31:00.379737+00:00",
-   "raw": {
-    "wl-stoerungen": 82,
-    "wl-hinweise": 79,
-    "oebb": 178,
-    "baustellen-linien": 56,
-    "baustellen-punkte": 24
-   },
-   "discarded": {
-    "wl": 7,
-    "oebb": 152,
-    "baustellen": 72
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 109
-   }
-  },
   {
    "t": "2026-10-22T22:01:14.998539+00:00",
    "raw": {
@@ -6791,17 +6771,37 @@
     "oebb": 9,
     "wl": 101
    }
+  },
+  {
+   "t": "2026-10-29T22:00:58.764847+00:00",
+   "raw": {
+    "wl-stoerungen": 65,
+    "wl-hinweise": 74,
+    "oebb": 159,
+    "baustellen-linien": 59,
+    "baustellen-punkte": 20
+   },
+   "discarded": {
+    "wl": 8,
+    "oebb": 134,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 100
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-29T21:30:53.802653+00:00"
+   "last_ok": "2026-10-29T22:00:58.764847+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-29T21:30:53.802653+00:00"
+   "last_ok": "2026-10-29T22:00:58.764847+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-29T21:30:53.802653+00:00"
+   "last_ok": "2026-10-29T22:00:58.764847+00:00"
   }
  }
 }
