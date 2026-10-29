@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1016926, ftazW_1031302, ftazW_166, ftazW_1017125, ftazW_1016923, ftazW_771, ftazW_735, ftazW_167, ftazW_772, ftazW_1016924"
+    "trafficInfoNameList": "ftazW_166, ftazW_1017125, ftazW_1016923, ftazW_771, ftazW_735, ftazW_167, ftazW_772, ftazW_1016924"
    }
   ],
   "poiCategoryGroups": [
@@ -3546,63 +3546,14 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "29.10.2026 05:15",
-     "ausVon": "29.10.2026 01:15",
-     "location": "6,18 Bahnsteig Richtung Burggasse, 62 Bahnsteig Richtung Lainz, Badner Bahn Bahnsteig Richtung Baden - Ausgang Eichenstraße",
-     "rbls": [
-      399,
-      427,
-      399,
-      399
-     ],
-     "reason": "",
-     "relatedLines": [
-      "18",
-      "62",
-      "6",
-      "LB"
-     ],
-     "station": "Eichenstraße",
-     "status": "geplante Wartung",
-     "towards": "6 Geiereckstraße, 62 Lainz, Wolkersbergenstraße, 18 Schlachthausgasse, WLB Oper, Karlsplatz U"
-    },
-    "description": "6,18 Bahnsteig Richtung Burggasse, 62 Bahnsteig Richtung Lainz, Badner Bahn Bahnsteig Richtung Baden - Ausgang Eichenstraße",
-    "elevatorId": "EI 02",
-    "name": "ftazW_1016926",
-    "parentName": "ftazW_1016926",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "18",
-     "62",
-     "6",
-     "LB"
-    ],
-    "relatedStops": [
-     399,
-     427,
-     399,
-     399
-    ],
-    "time": {
-     "end": "2026-10-29T05:15:00.000+0100",
-     "start": "2026-10-29T01:15:00.000+0100"
-    },
-    "title": "Eichenstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "30.10.2026 00:45",
      "ausVon": "29.10.2026 20:45",
      "location": "Passage - Ausgang Secession",
      "rbls": [],
      "reason": "",
      "relatedLines": [
-      "U1",
       "U2",
+      "U1",
       "U4"
      ],
      "station": "Karlsplatz",
@@ -3617,8 +3568,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U1",
      "U2",
+     "U1",
      "U4"
     ],
     "time": {
@@ -3626,43 +3577,6 @@
      "start": "2026-10-29T20:45:00.000+0100"
     },
     "title": "Karlsplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "29.10.2026 05:15",
-     "ausVon": "29.10.2026 01:15",
-     "location": "18 Bahnsteig Richtung Burggasse - Ausgang Innerer Wiedner Gürtel",
-     "rbls": [
-      832
-     ],
-     "reason": "",
-     "relatedLines": [
-      "18"
-     ],
-     "station": "Blechturmgasse",
-     "status": "geplante Wartung",
-     "towards": "18 Schlachthausgasse"
-    },
-    "description": "18 Bahnsteig Richtung Burggasse - Ausgang Innerer Wiedner Gürtel",
-    "elevatorId": "BL 02",
-    "name": "ftazW_1031302",
-    "parentName": "ftazW_1031302",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     832
-    ],
-    "time": {
-     "end": "2026-10-29T05:15:00.000+0100",
-     "start": "2026-10-29T01:15:00.000+0100"
-    },
-    "title": "Blechturmgasse"
    },
    {
     "alertCause": "undefined alert cause",
