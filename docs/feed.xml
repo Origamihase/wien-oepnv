@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 29 Oct 2026 14:30:56 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 15:01:08 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[46B: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">bdda258636f7e663d5c3aa1f6412cf1b1cbaf41b11f6d24c6ff003e6f9d0af67</guid>
+      <pubDate>Thu, 29 Oct 2026 14:56:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 29 Oct 2026 15:01:08 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 29 Oct 2026 14:56:00 +0100</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 14:56]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 14:56]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[31: Falschparker]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,8 +33,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 29 Oct 2026 14:28:00 +0100</ext:first_seen>
       <ext:starts_at>Thu, 29 Oct 2026 14:29:47 +0100</ext:starts_at>
-      <description>Fahrtbehinderung in Richtung Schottenring U. Voraussichtlich bis 15:00 Uhr. Grund: Falschparker im Bereich Klosterneuburger Straße 11. [Seit 14:28]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Schottenring U. Voraussichtlich bis 15:00 Uhr. Grund: Falschparker im Bereich Klosterneuburger Straße 11.<br/>[Seit 14:28]]]></content:encoded>
+      <ext:ends_at>Thu, 29 Oct 2026 15:29:00 +0100</ext:ends_at>
+      <description>Fahrtbehinderung. [Seit 14:28]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 14:28]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[3A: Verspätungen]]></title>
@@ -35,19 +49,6 @@
       <ext:starts_at>Thu, 29 Oct 2026 14:22:00 +0100</ext:starts_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 14:22]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 14:22]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[77A: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">e5fe69c6a82a23092354319cf5b7365c8370f1cbc29c8f66643e43707b287199</guid>
-      <pubDate>Thu, 29 Oct 2026 13:58:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 29 Oct 2026 14:01:10 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 29 Oct 2026 13:58:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Seit 13:58]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Seit 13:58]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[5A/5B/N31: Obere Augartenstraße]]></title>

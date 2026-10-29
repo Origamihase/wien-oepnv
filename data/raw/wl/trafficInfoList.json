@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261029-0019, I20261029-0021, I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261029-0020, I20261020-0029"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261029-0022, I20260909-0007, I20261029-0020, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R36-152, R119-136, R130-136, R19-136, R45-136, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R401-101, R318-437, R293-474, R2378-627, R2343-626, R2343-125, R3886-480, R1974-466, R1301-440, R1272-440, R500-101, R2198-131, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R130-136, R119-136, R19-136, R45-136, R36-152, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R2359-125, R401-101, R318-437, R293-474, R2378-627, R2343-626, R2343-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R3886-480, R1974-466, R1272-440, R1301-440, R500-101, R2198-131, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,51 +259,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "77A": "ptBusCity"
-     }
-    },
-    "description": "Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "descriptionHTML": "<p>Linie 77A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 77A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-       "descriptionPlain": "Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-       "title": "77A: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261029-0019",
-    "owner": "WL",
-    "parentName": "I20261029-0019",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "77A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 477,
-      "lineName": "77A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-29T13:59:00.000+0100",
-     "lastUpdate": "2026-10-29T13:59:00.000+0100",
-     "resume": "2026-10-29T13:58:00.000+0100",
-     "start": "2026-10-29T13:58:00.000+0100"
-    },
-    "title": "77A: Polizeieinsatz"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -349,49 +304,49 @@
     "title": "3A: Verspätungen"
    },
    {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
+    "alertCause": "accident",
+    "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "31": "ptTram"
+      "46B": "ptBusCity"
      }
     },
-    "description": "Linie 31: Fahrtbehinderung in Richtung Schottenring U. Voraussichtliche Dauer: 15:00 Uhr. Grund: Falschparker im Bereich Klosterneuburger Straße 11.",
-    "descriptionHTML": "<p>Linie 31:<br>Fahrtbehinderung in Richtung Schottenring U.</p><p>Voraussichtliche Dauer: 15:00 Uhr.</p><p>Grund: Falschparker im Bereich Klosterneuburger Straße 11.</p>",
+    "description": "Linie 46B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Linie 46B:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 31:<br>Fahrtbehinderung in Richtung Schottenring U.</p><p>Voraussichtliche Dauer: 15:00 Uhr.</p><p>Grund: Falschparker im Bereich Klosterneuburger Straße 11.</p>",
-       "descriptionPlain": "Linie 31: Fahrtbehinderung in Richtung Schottenring U. Voraussichtliche Dauer: 15:00 Uhr. Grund: Falschparker im Bereich Klosterneuburger Straße 11.",
-       "title": "31: Falschparker"
+       "descriptionHtml": "<p>Linie 46B:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Linie 46B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+       "title": "46B: Verkehrsunfall"
       }
      }
     ],
-    "location": "Klosterneuburger Straße 11",
-    "name": "I20261029-0021",
+    "name": "I20261029-0022",
     "owner": "WL",
-    "parentName": "I20261029-0021",
+    "parentName": "I20261029-0022",
     "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "31"
+     "46B"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 131,
-      "lineName": "31",
-      "vehicleType": "ptTram"
+      "lineId": 246,
+      "lineName": "46B",
+      "vehicleType": "ptBusCity"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-29T14:29:00.000+0100",
-     "lastUpdate": "2026-10-29T14:29:00.000+0100",
-     "start": "2026-10-29T14:28:00.000+0100"
+     "created": "2026-10-29T14:57:00.000+0100",
+     "lastUpdate": "2026-10-29T14:57:00.000+0100",
+     "resume": "2026-10-29T14:56:00.000+0100",
+     "start": "2026-10-29T14:56:00.000+0100"
     },
-    "title": "31: Falschparker"
+    "title": "46B: Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
