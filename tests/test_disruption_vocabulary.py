@@ -174,3 +174,27 @@ def test_translation_cache_epoch_was_bumped() -> None:
     Sticky-German guard nor the entity guard would ever evict it.
     """
     assert build_feed._TRANSLATION_CACHE_EPOCH >= 12
+
+
+@pytest.mark.parametrize(
+    ("german", "english", "model_said"),
+    [
+        # The reasons WL gives a stop relocation, with the real model's
+        # reading (probe 29.10.2026); the first stood in the EN feed.
+        ("Grund: Verparkte Originalhaltestelle", "stop blocked by parked cars", "Parked original stop"),
+        ("Grund: Spontangebrechen", "sudden pipe burst", "Spontaneous Breaking"),
+        ("Grund: Rohrgebrechen", "burst pipe", "pipe fractures"),
+        ("Grund: Fernkältearbeiten", "district cooling works", "Refrigeration"),
+        ("Grund: Dachgeschossausbau", "loft conversion", "Attic development"),
+        ("Grund: Kabelarbeiten", "cable works", "Cable works"),
+        ("Grund: Straßenbau", "roadworks", "Road construction"),
+    ],
+)
+def test_relocation_reasons_resolve(german: str, english: str, model_said: str) -> None:
+    assert _glossed(german).endswith(english)
+
+
+def test_a_relocation_reason_inside_a_longer_compound_is_left_alone() -> None:
+    """``Gleisbau`` must not take the front of ``Gleisbauarbeiten``."""
+    assert _glossed("Grund: Gleisbauarbeiten").endswith("track construction works")
+    assert "Hausbaustelle" in _glossed("Die Hausbaustelle")

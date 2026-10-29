@@ -10,6 +10,40 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Jules-Audits 28. und 29.10.2026: übersehene Doppelmeldung und
+  EN-Namen (2026-10-29)**: Beide Audits melden „No display errors found“.
+  Kopfzahlen und Nachbau stimmen; die GUID-Spalte vom 29.10. stimmt in neun
+  von zehn Zeilen nicht mit `docs/feed.xml` überein. Drei Funde, die beide
+  Audits als „OK“ führten:
+  - *Doppelt im deutschen Feed:* „40A: Bauarbeiten“ („Busse halten
+    Liechtensteinstraße 39, Liechtensteinstraße 38.“) stand vom 27. bis
+    29.10. in rund 100 Feed-Ständen neben „40A: Bauernfeldplatz“, der
+    Haltestellenverlegung zu genau diesen Adressen. Neu geht eine
+    Tafel-Meldung, die nur „Busse/Züge halten <Adresse>“ sagt, in die
+    laufende Verlegung derselben Linie auf, wenn jede Adresse ein „Nach:“
+    des Hinweises ist und dessen Kurztext sie zeigt
+    (`_relocated_stops_shown`, `docs/architecture.md`, §1). Seit Juli
+    sechs solche Paare; 13A, 12A/14A, 7A/N65/N66, 3A und N20 gehen so auf.
+    Bei 40A schneidet die 180-Zeichen-Grenze „Liechtensteinstraße 39“ ab
+    („… gegenüber Bauernfeldplatz → …“), die Tafel-Meldung ist dort die
+    einzige Stelle mit dieser Haltestelle und bleibt.
+  - *Straßennamen im EN-Feed übersetzt:* „im Bereich An den Eisteichen“ →
+    „At the ice ponds“, „Unter-Meidlinger Straße“ → „Under-Meidlinger
+    Straße“. Mitten im Satz großgeschriebene Präpositionen öffnen einen
+    Namen (`_PREPOSITION_NAME_RE`), ein per Bindestrich vorangestelltes
+    Großwort gehört zum Namen (`_absorb_hyphen_prefixes`).
+  - *Gründe einer Haltestellenverlegung im EN-Feed:* „Verparkte
+    Originalhaltestelle“ stand in 98 EN-Feed-Ständen als „Reason: Parked
+    original stop.“. Alle Verlegungsgründe seit Juli liefen durch das
+    echte Modell; die fehlenden (darunter „Spontangebrechen“ → „Spontaneous
+    Breaking“, „Fernkältearbeiten“ → „Refrigeration“) stehen jetzt im
+    Glossar, kleingeschrieben wie die übrigen Gründe.
+  Übersetzungs-Epoche 30. Nachgespielt: 254 Feed-Stände seit 25.10., der
+  deutsche Feed bleibt in allen gleich; Modelleingaben aller 8.841
+  Quelltexte seit Juli ändern sich nur an den genannten Namen und Gründen.
+  Tests: `tests/test_wl_stop_tickers_join_the_relocation.py`,
+  `tests/test_street_name_masking.py`, `tests/test_disruption_vocabulary.py`.
+
 * **VAO-Version automatisch aus der Liste der VAO (2026-10-29)**: Michael:
   „Eine dynamische und automatische Wahl für ein Fallback klingt für mich
   besser“ und „Lies automatisch aus, was die neuste Version ist. Wenn sie nicht

@@ -292,4 +292,61 @@ def test_translation_cache_epoch_was_bumped() -> None:
     """
     from src.build_feed import _TRANSLATION_CACHE_EPOCH
 
-    assert _TRANSLATION_CACHE_EPOCH >= 7
+    assert _TRANSLATION_CACHE_EPOCH >= 30
+
+
+@pytest.mark.parametrize(
+    ("phrase", "name"),
+    [
+        # Live, Jules audits 28. and 29.10.2026: "in the area of At the ice ponds".
+        ("Grund: Falschparker im Bereich An den Eisteichen / Zanaschkagasse.", "An den Eisteichen"),
+        ("Umleitung ab Sagedergasse # An den Eisteichen über An den Eisteichen - Zanaschkagasse", "An den Eisteichen"),
+        ("Am Schöpfwerk (An den Eisteichen nach Hetzendorfer Straße)", "An den Eisteichen"),
+        ("Umleitung ab Schüttaustraße # Moissigasse über Moissigasse – Am Kaisermühlendamm.", "Am Kaisermühlendamm"),
+        ("Floridsdorfer Brücke von Am Rollerdamm bis Friedrich-Engels-Platz", "Am Rollerdamm"),
+    ],
+)
+def test_street_names_with_a_preposition_are_shielded_whole(phrase: str, name: str) -> None:
+    """Inside a sentence a capitalised preposition opens a name."""
+    masked, mapping = _mask_entities(phrase)
+    assert name in mapping.values(), f"{name!r} leaks: {_unprotected(phrase)!r}"
+
+
+@pytest.mark.parametrize(
+    "phrase",
+    [
+        "Am Samstag fährt die Linie 13A nicht.",
+        "Zeitraum: Am 1. November 2026",
+        "Im Zeitraum von 20:00 bis 23:00 Uhr",
+        "Linie 5: Unregelmäßige Intervalle. Im Anschluss fährt die Linie wieder.",
+        # A capitalised slip in front of a street that names itself.
+        "wird In der Volksgartenstraße zwischen der Hansenstraße",
+        "Wegen Bauarbeiten am Montag Am Montag",
+    ],
+)
+def test_a_preposition_that_opens_a_sentence_stays_translatable(phrase: str) -> None:
+    masked, mapping = _mask_entities(phrase)
+    assert not any(v.split()[0] in {"Am", "Im", "In"} for v in mapping.values()), mapping
+
+
+@pytest.mark.parametrize(
+    ("phrase", "name"),
+    [
+        # Live, WL 7B, 29.10.2026: "in the area of Under-Meidlinger Straße".
+        ("Grund: Rettungseinsatz im Bereich Unter-Meidlinger Straße.", "Unter-Meidlinger Straße"),
+        ("Linie 30A: Fahrtbehinderung in Richtung Neu-Leopoldau.", "Neu-Leopoldau"),
+        ("Umleitung über Groß-Enzersdorfer Straße", "Groß-Enzersdorfer Straße"),
+        ("Wegen einer Veranstaltung im Ernst-Happel-Stadion", "Ernst-Happel-Stadion"),
+    ],
+)
+def test_a_hyphenated_prefix_stays_with_its_name(phrase: str, name: str) -> None:
+    masked, mapping = _mask_entities(phrase)
+    assert name in mapping.values(), f"{name!r} leaks: {_unprotected(phrase)!r}"
+    assert _unmask_entities(masked, mapping) == phrase
+
+
+def test_a_line_keeps_no_prefix() -> None:
+    """"U6-Station" is a line and a noun, not one name."""
+    masked, mapping = _mask_entities("U6-Station Neue Donau")
+    assert "U6" in mapping.values()
+    assert _unmask_entities(masked, mapping) == "U6-Station Neue Donau"
