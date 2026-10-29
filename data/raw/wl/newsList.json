@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_735, ftazW_167, ftazW_772, ftazW_1016924"
+    "trafficInfoNameList": "ftazW_167, ftazW_772, ftazW_1016924"
    }
   ],
   "poiCategoryGroups": [
@@ -3542,45 +3542,6 @@
      "start": "2026-10-30T01:15:00.000+0100"
     },
     "title": "Schlachthausgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "30.10.2026 05:15",
-     "ausVon": "30.10.2026 01:15",
-     "location": "U1 Mittelbahnsteig - Ausgang Praterstraße",
-     "rbls": [
-      4115,
-      4114
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Nestroyplatz",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "U1 Mittelbahnsteig - Ausgang Praterstraße",
-    "elevatorId": "NP 01",
-    "name": "ftazW_735",
-    "parentName": "ftazW_735",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4115,
-     4114
-    ],
-    "time": {
-     "end": "2026-10-30T05:15:00.000+0100",
-     "start": "2026-10-30T01:15:00.000+0100"
-    },
-    "title": "Nestroyplatz"
    },
    {
     "alertCause": "undefined alert cause",
