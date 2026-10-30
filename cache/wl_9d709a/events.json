@@ -1030,6 +1030,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "38A: Polizeieinsatz",
+    "description": "Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Voraussichtliche Dauer: 18:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Kahlenberg.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "dded550fba663cf534f9fd553a582a61f5261229fb6341636d30aa082e91657d",
+    "pubDate": "2026-10-30T17:51:00+01:00",
+    "starts_at": "2026-10-30T17:51:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=38A|D=2026-10-30|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261030-0035"
+    ],
+    "_incident_start": "2026-10-30T17:51:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "40A: Busse halten Liechtensteinstraße 38",
     "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 38",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1066,6 +1082,22 @@
       "I20260917-0012"
     ],
     "_incident_start": "2026-09-18T04:30:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49A: Verkehrsunfall",
+    "description": "Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "dfaa9d88c8ae83e03aae752baeab2e3ccba45658ce6dcc93ce200de99e7024cd",
+    "pubDate": "2026-10-30T17:50:00+01:00",
+    "starts_at": "2026-10-30T17:50:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=49A|D=2026-10-30|TK=49a verkehrsunfall",
+    "_wl_ids": [
+      "I20261030-0034"
+    ],
+    "_incident_start": "2026-10-30T17:50:00+01:00"
   },
   {
     "source": "Wiener Linien",
