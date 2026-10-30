@@ -8,10 +8,10 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 30 Oct 2026 11:30:48 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 12:01:16 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[2: Rescue operation, fire-brigade operation]]></title>
+      <title><![CDATA[2: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b</guid>
       <pubDate>Fri, 30 Oct 2026 11:15:00 +0100</pubDate>
@@ -20,8 +20,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 30 Oct 2026 11:15:00 +0100</ext:first_seen>
       <ext:starts_at>Fri, 30 Oct 2026 11:19:37 +0100</ext:starts_at>
-      <description>Rescue operation: trains stop in Paschinggasse. Fire-brigade operation: service from Parlament/ Folktheter. [Since 11:15]</description>
-      <content:encoded><![CDATA[Rescue operation: trains stop in Paschinggasse. Fire-brigade operation: service from Parlament/ Folktheter.<br/>[Since 11:15]]]></content:encoded>
+      <description>Trains stop in Paschinggasse. After a service obstruction, there are irregular intervals. [Since 11:15]</description>
+      <content:encoded><![CDATA[Trains stop in Paschinggasse. After a service obstruction, there are irregular intervals.<br/>[Since 11:15]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Delays]]></title>
@@ -45,23 +45,22 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 30 Oct 2026 10:52:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 30 Oct 2026 10:59:35 +0100</ext:starts_at>
+      <ext:starts_at>Fri, 30 Oct 2026 10:52:00 +0100</ext:starts_at>
       <description>After a service obstruction, there are irregular intervals. Replacement bus 26E stops at Karl-Waldbrunner-Platz before Schloßhofer Straße; trains stop at Donaufelder Straße … [Since 10:52]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals. Replacement bus 26E stops at Karl-Waldbrunner-Platz before Schloßhofer Straße; trains stop at Donaufelder Straße …<br/>[Since 10:52]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[12: Diversion to Westbahnhof]]></title>
+      <title><![CDATA[12: Fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8197ecc1d5e132b0518259b9864122b4c6d7c6c5003678b5f8243507485dfd73</guid>
-      <pubDate>Fri, 30 Oct 2026 10:42:05 +0100</pubDate>
+      <guid isPermaLink="false">f2966cf53f37809847d4a3e60e295c6b13638d2451ea76e51e3953ac4386a5ce</guid>
+      <pubDate>Fri, 30 Oct 2026 10:39:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 30 Oct 2026 10:42:05 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 30 Oct 2026 10:42:05 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 30 Oct 2026 11:41:00 +0100</ext:ends_at>
-      <description>[Since 10:42]</description>
-      <content:encoded><![CDATA[[Since 10:42]]]></content:encoded>
+      <ext:first_seen>Fri, 30 Oct 2026 10:39:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 30 Oct 2026 10:39:00 +0100</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 10:39]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 10:39]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[52: Track damage]]></title>
@@ -73,8 +72,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 30 Oct 2026 08:30:40 +0100</ext:first_seen>
       <ext:starts_at>Fri, 30 Oct 2026 08:17:00 +0100</ext:starts_at>
-      <description>Service only between Baumgarten and Urban-Loritz-Platz. Replacement: lines U3, U6 and 48A. Expected until 12:00. Reason: track damage in the area of Siebensterngasse. [Since 08:17]</description>
-      <content:encoded><![CDATA[Service only between Baumgarten and Urban-Loritz-Platz. Replacement: lines U3, U6 and 48A. Expected until 12:00. Reason: track damage in the area of Siebensterngasse.<br/>[Since 08:17]]]></content:encoded>
+      <description>Service only between Baumgarten and Urban-Loritz-Platz. Replacement: lines U3, U6 and 48A. Expected until 13:00. Reason: track damage in the area of Siebensterngasse. [Since 08:17]</description>
+      <content:encoded><![CDATA[Service only between Baumgarten and Urban-Loritz-Platz. Replacement: lines U3, U6 and 48A. Expected until 13:00. Reason: track damage in the area of Siebensterngasse.<br/>[Since 08:17]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Liesing ↔ Wien Meidling]]></title>
