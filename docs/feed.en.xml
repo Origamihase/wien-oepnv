@@ -8,8 +8,34 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 30 Oct 2026 08:00:48 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 08:30:40 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[52: Track damage]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">48ce0723f92b833303c436b0437ec3f6db23eb2593374a984f32bea8d4301280</guid>
+      <pubDate>Fri, 30 Oct 2026 08:17:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 30 Oct 2026 08:30:40 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 30 Oct 2026 08:17:00 +0100</ext:starts_at>
+      <description>Service only between Baumgarten and Urban-Loritz-Platz. Replacement: lines U3 and 48A. Expected until 10:00. Reason: track damage in the area of Siebensterngasse. [Since 08:17]</description>
+      <content:encoded><![CDATA[Service only between Baumgarten and Urban-Loritz-Platz. Replacement: lines U3 and 48A. Expected until 10:00. Reason: track damage in the area of Siebensterngasse.<br/>[Since 08:17]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">eb95adf873b18dcc90582141fd8b881d6f58540f5e3144fe72be528eb86b24d6</guid>
+      <pubDate>Fri, 30 Oct 2026 08:28:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 30 Oct 2026 08:28:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 30 Oct 2026 08:28:00 +0100</ext:starts_at>
+      <description>Service only between Praterstern S U and Blindengasse. [Since 08:28]</description>
+      <content:encoded><![CDATA[Service only between Praterstern S U and Blindengasse.<br/>[Since 08:28]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U4: Defective vehicle]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -22,20 +48,6 @@
       <ext:starts_at>Fri, 30 Oct 2026 07:27:00 +0100</ext:starts_at>
       <description>After a service obstruction, there are irregular intervals. [Since 07:27]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 07:27]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">77994cd70c8bd44acc7c6ae28c2d0cee63d1f01a0b2acaf969f56ecb941ab571</guid>
-      <pubDate>Fri, 30 Oct 2026 07:26:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 30 Oct 2026 07:26:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 30 Oct 2026 07:30:48 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 30 Oct 2026 08:30:00 +0100</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 07:26]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 07:26]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U2: Defective vehicle]]></title>
@@ -135,21 +147,6 @@
       <georss:point>48.220878 16.360720</georss:point>
       <description>Towards Döblinger Friedhof, Felix-Dahn-Straße: Liechtensteinstraße 42 → Liechtensteinstraße 38. Towards Schottentor U: Liechtensteinstraße 37a opposite Bauernfeldplatz → … [Since 27.10.]</description>
       <content:encoded><![CDATA[Towards Döblinger Friedhof, Felix-Dahn-Straße: Liechtensteinstraße 42 → Liechtensteinstraße 38. Towards Schottentor U: Liechtensteinstraße 37a opposite Bauernfeldplatz → …<br/>[Since 27.10.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[S2: Wien Leopoldau ↔ Mistelbach]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;907728</guid>
-      <pubDate>Tue, 13 Oct 2026 08:49:17 +0200</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 23 Oct 2026 00:01:02 +0200</ext:first_seen>
-      <ext:starts_at>Sun, 25 Oct 2026 00:00:00 +0200</ext:starts_at>
-      <ext:ends_at>Sun, 01 Nov 2026 23:59:59 +0100</ext:ends_at>
-      <georss:line>48.277325 16.448371 48.565931 16.565113</georss:line>
-      <description>Due to construction works, the S2 train 23360 cannot run between Wien Leopoldau station (U) and Mistelbach/Zaya station on 01.11.2026. [Until Sun 01.11.]</description>
-      <content:encoded><![CDATA[Due to construction works, the S2 train 23360 cannot run between Wien Leopoldau station (U) and Mistelbach/Zaya station on 01.11.2026.<br/>[Until Sun 01.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
