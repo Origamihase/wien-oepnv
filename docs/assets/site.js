@@ -351,6 +351,7 @@
     "sub-all-observations": "alle Beobachtungen",
     "sub-tick-value": "Tickwert",
     "tile-na": "N/A",
+    "tile-no-trains": "Keine Fahrten",
     "tile-em-dash": "–",
   };
   const CHART_TEXT_EN = {
@@ -371,6 +372,7 @@
     "sub-all-observations": "all observations",
     "sub-tick-value": "tick value",
     "tile-na": "N/A",
+    "tile-no-trains": "No trains",
     "tile-em-dash": "–",
   };
   function ct(key) {
@@ -1005,13 +1007,28 @@
   // browser was recomputing a window over data that only ever changed
   // on the tick. The value now arrives pre-computed from the tick that
   // appended the newest sample — the same freshness, 705 KB cheaper.
-  function renderStammstreckeLiveTile(live) {
+  //
+  // An empty window says "Keine Fahrten" only while the monitor's last
+  // successful fetch lies inside that window (``coverage.poll``): then the
+  // fetch worked and no train ran, e.g. every train of the hour cancelled
+  // (track damage Meidling–Liesing, 30.10.2026) or the night pause. Without
+  // such a fetch nothing was measured and the tile keeps "N/A". Operator
+  // decision 2026-10-30; mirrors ``_live_fetch_covers`` in
+  // ``scripts/generate_markdown_stats.py``.
+  function renderStammstreckeLiveTile(live, poll) {
     const node = $("#stammstrecke-live-avg");
     if (!node) return;
     const avg = live ? live.avg_delay_minutes : undefined;
     // ``null`` is the generator's explicit "window held no sample" and
-    // must render as n/a, never as a zero-minute delay.
-    node.textContent = Number.isFinite(avg) ? `${nf1.format(avg)} min` : ct("tile-na");
+    // must never render as a zero-minute delay.
+    if (Number.isFinite(avg)) {
+      node.textContent = `${nf1.format(avg)} min`;
+      return;
+    }
+    const windowMs = numberOr(live && live.window_minutes, 60) * 60000;
+    const lastOk = poll && poll.last_success ? Date.parse(poll.last_success) : NaN;
+    const fetchCovers = Number.isFinite(lastOk) && Date.now() - lastOk <= windowMs;
+    node.textContent = ct(fetchCovers ? "tile-no-trains" : "tile-na");
   }
 
   function resetStammstreckeLiveTile(text) {
@@ -1022,7 +1039,7 @@
   function renderStammstreckeStats(year, stats) {
     setYearLabels(year);
 
-    renderStammstreckeLiveTile(stats.live);
+    renderStammstreckeLiveTile(stats.live, stats.coverage && stats.coverage.poll);
 
     const avgByWeekday = stats.by_weekday_avg || {};
     const avgByHour = stats.by_hour_avg || {};

@@ -1261,11 +1261,19 @@ def render_readme_stammstrecke_live_block(
     rows: list[StammstreckeRow],
     *,
     now: datetime,
+    fetch_covers_window: bool = False,
 ) -> str:
     """Render the inner content of the ``STATS:STAMMSTRECKE_LIVE`` README block.
 
     Returns the body that goes *between* the two HTML-comment markers,
     terminated by a newline so the closing marker stays on its own line.
+
+    An empty window reads "Keine Fahrten" only when *fetch_covers_window*
+    says the monitor's fetch worked inside it (:func:`_live_fetch_covers`);
+    otherwise "N/A". Operator decision 2026-10-30: on 30.10. every train
+    of the hour was cancelled (track damage Meidling–Liesing) and "N/A"
+    read like a broken fetch. Mirrors ``renderStammstreckeLiveTile`` in
+    ``docs/assets/site.js``.
     """
     threshold_label = (
         f"{DELAY_THRESHOLD_MINUTES:.0f}"
@@ -1282,7 +1290,9 @@ def render_readme_stammstrecke_live_block(
         return (
             header
             + "| Beobachtungen (gesamt) | 0 |\n"
-            + "| Durchschnittliche Verspätung | N/A |\n"
+            + "| Durchschnittliche Verspätung | "
+            + ("Keine Fahrten" if fetch_covers_window else "N/A")
+            + " |\n"
             + f"| Kritische Verspätungen (> {threshold_label} min) | 0 |\n"
             + f"| Letzte Aktualisierung | {now.strftime('%Y-%m-%d %H:%M %Z')} |\n"
         )
@@ -1622,6 +1632,25 @@ def _live_window_delay(
     if not delays:
         return (None, 0)
     return (statistics.fmean(delays), len(delays))
+
+
+def _live_fetch_covers(
+    status: PollStatus | None,
+    *,
+    now: datetime,
+    minutes: int = LIVE_WINDOW_MINUTES,
+) -> bool:
+    """Did the monitor's fetch work inside the trailing live window?
+
+    Only then does an empty window mean that no train ran ("Keine
+    Fahrten"); without a successful fetch in the window it means nothing
+    was measured ("N/A"). The bound is the live window itself, not the
+    health check's three hours: a fetch two hours old says nothing about
+    the last 60 minutes.
+    """
+    if status is None or status.last_success is None:
+        return False
+    return now - status.last_success <= timedelta(minutes=minutes)
 
 
 def _direction_coverage(
@@ -2225,6 +2254,7 @@ def main(argv: list[str] | None = None) -> int:
     sections["STAMMSTRECKE_LIVE"] = render_readme_stammstrecke_live_block(
         sm_live_window,
         now=now,
+        fetch_covers_window=_live_fetch_covers(poll_status, now=now),
     )
     # Cancellation snapshots: always render — an explicit ``0`` is the
     # operationally-meaningful "stable service" signal, so the README

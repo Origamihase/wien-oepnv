@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import sys
 from collections.abc import Sequence
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -723,3 +723,42 @@ def test_render_markdown_names_vao_start_as_basis() -> None:
         "eigenen Quelle – Wiener Linien, ÖBB, Stadt Wien (Baustellen) und "
         "VOR/VAO (Stammstrecke).\n" in md
     )
+
+
+def test_render_readme_stammstrecke_live_block_empty_window_wording() -> None:
+    """An empty live window reads "Keine Fahrten" only behind a working fetch.
+
+    Operator decision 2026-10-30: on 30.10. every train of the hour was
+    cancelled and "N/A" read like a broken fetch. Without a fetch inside
+    the window nothing was measured, so "N/A" stays.
+    """
+    now = datetime(2026, 10, 30, 16, 1, tzinfo=VIENNA_TZ)
+    ran_none = script.render_readme_stammstrecke_live_block(
+        [], now=now, fetch_covers_window=True
+    )
+    unmeasured = script.render_readme_stammstrecke_live_block([], now=now)
+    assert "| Durchschnittliche Verspätung | Keine Fahrten |" in ran_none
+    assert "| Durchschnittliche Verspätung | N/A |" in unmeasured
+
+
+def test_live_fetch_covers_is_bound_to_the_live_window() -> None:
+    """The fetch must have worked inside the 60-minute window, not just in 3 h."""
+    now = datetime(2026, 10, 30, 16, 1, tzinfo=VIENNA_TZ)
+
+    def status(minutes_ago: int | None) -> script.PollStatus:
+        last = None if minutes_ago is None else now - timedelta(minutes=minutes_ago)
+        return script.PollStatus(
+            last_attempt=now,
+            last_result="ok" if last else "error",
+            last_error="",
+            last_success=last,
+            last_success_departures=39,
+            last_success_trains=2,
+            last_train_seen=last,
+        )
+
+    assert script._live_fetch_covers(status(1), now=now)
+    assert script._live_fetch_covers(status(60), now=now)
+    assert not script._live_fetch_covers(status(61), now=now)
+    assert not script._live_fetch_covers(status(None), now=now)
+    assert not script._live_fetch_covers(None, now=now)
