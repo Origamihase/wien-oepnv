@@ -58,6 +58,16 @@ def test_feed_tiles_take_the_colour_of_their_source() -> None:
     assert "background: var(--src)" in _rule(css, ".feed-item__source")
 
 
+def test_source_pill_carries_no_dot() -> None:
+    # Michael 2026-10-30: "Bitte entferne den Punkt aus den 'Pillen'". The
+    # source label shows its name only; the filter chips keep their dot.
+    css = _css()
+    assert ".feed-item__source::before" not in css
+    assert "background: var(--src)" in _rule(
+        css, '.chip[data-filter]:not([data-filter="all"])::before'
+    )
+
+
 def test_dark_mode_source_colours_keep_white_pill_text_readable() -> None:
     # The pastel dark-mode tokens give white pill text only 2.7-2.9:1; the
     # darker brand variants must stay the tile colour in dark mode.

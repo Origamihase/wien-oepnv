@@ -741,7 +741,7 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
   justify-content: center;
   gap: 0.45rem;
   /* Reserve enough horizontal room for the widest source label
-   * ("WIENER LINIEN" – 13 uppercase chars at 0.7rem/700 plus its dot) so
+   * ("WIENER LINIEN" – 13 uppercase chars at 0.7rem/700) so
    * every pill across the feed renders at the same width. Previously the
    * 100 px floor only sufficed for shorter labels ("ÖBB",
    * "ANDERE"), which let "WIENER LINIEN" inflate its own pill and
@@ -765,15 +765,9 @@ a.weather:focus-visible { border-color: var(--c-text-subtle); }
     0 2px 6px -2px color-mix(in srgb, var(--src) 70%, transparent);
   white-space: nowrap;
 }
-.feed-item__source::before {
-  content: "";
-  width: 0.4rem;
-  height: 0.4rem;
-  border-radius: 50%;
-  flex: none;
-  background: currentColor;
-  opacity: 0.85;
-}
+/* No dot inside the pill: Michael asked on 2026-10-30 to drop it
+ * ("Bitte entferne den Punkt aus den 'Pillen'"); the label text alone
+ * names the source. The coloured dot of the filter chips stays. */
 /* Baustellen is the only pill with dark text on a yellow ground (a
  * deliberate "construction sign" look). Black on the ``--c-baustellen``
  * yellow clears WCAG-AAA in both schemes, so it needs no dark-mode
