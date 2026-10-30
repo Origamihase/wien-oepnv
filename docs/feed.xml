@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 30 Oct 2026 22:30:52 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 23:00:59 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[2/10: Schadhaftes Fahrzeug]]></title>
@@ -20,8 +20,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 30 Oct 2026 22:30:52 +0100</ext:first_seen>
       <ext:starts_at>Fri, 30 Oct 2026 22:22:00 +0100</ext:starts_at>
-      <description>2: Umleitung Johann-Nepomuk-Berger-Platz – Dornbach; 10: Betrieb nur Unter St. Veit, Hummelgasse – Ottakring, Maroltingergasse. Voraussichtlich bis 22:50 Uhr. [Seit 22:22]</description>
-      <content:encoded><![CDATA[2: Umleitung Johann-Nepomuk-Berger-Platz – Dornbach; 10: Betrieb nur Unter St. Veit, Hummelgasse – Ottakring, Maroltingergasse. Voraussichtlich bis 22:50 Uhr.<br/>[Seit 22:22]]]></content:encoded>
+      <description>2: Umleitung Johann-Nepomuk-Berger-Platz – Dornbach; 10: Betrieb nur Unter St. Veit, Hummelgasse – Ottakring, Maroltingergasse. [Seit 22:22]</description>
+      <content:encoded><![CDATA[2: Umleitung Johann-Nepomuk-Berger-Platz – Dornbach; 10: Betrieb nur Unter St. Veit, Hummelgasse – Ottakring, Maroltingergasse.<br/>[Seit 22:22]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[59A: Feuerwehreinsatz]]></title>
@@ -48,8 +48,8 @@
       <ext:first_seen>Fri, 30 Oct 2026 22:00:41 +0100</ext:first_seen>
       <ext:starts_at>Fri, 30 Oct 2026 20:20:00 +0100</ext:starts_at>
       <ext:ends_at>Mon, 02 Nov 2026 01:00:00 +0100</ext:ends_at>
-      <description>Wegen Bauarbeiten im Bereich Rechte Nordbahnhgasse kommt es zu Verkehrsmaßnahmnen bei den Linien 29A, 29B, 33A und N31. Maßnahmen: Linien 29A und 29B: Kurzführung … [Bis Mo 02.11.]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Rechte Nordbahnhgasse kommt es zu Verkehrsmaßnahmnen bei den Linien 29A, 29B, 33A und N31. Maßnahmen: Linien 29A und 29B: Kurzführung …<br/>[Bis Mo 02.11.]]]></content:encoded>
+      <description>Wegen Bauarbeiten im Bereich Rechte Nordbahngasse kommt es zu Verkehrsmaßnahmen bei den Linien 29A, 29B, 33A und N31. Maßnahmen: Linien 29A und 29B: Kurzführung … [Bis Mo 02.11.]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Rechte Nordbahngasse kommt es zu Verkehrsmaßnahmen bei den Linien 29A, 29B, 33A und N31. Maßnahmen: Linien 29A und 29B: Kurzführung …<br/>[Bis Mo 02.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[33A: Kranarbeiten]]></title>

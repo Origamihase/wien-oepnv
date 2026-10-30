@@ -13,7 +13,7 @@
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1446-149, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1448-412, R1474-412, R1445-149, R103-136, R102-136, R101-136, R100-136, R293-474, R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R2343-125, R2378-627, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2420-411, R2372-627, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R3886-480, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R1689-459, R1686-459, R1688-459, R1684-459, R1687-459, R2639-459, R1125-229, R1125-429, R2343-229, R2343-433, R2343-429, R588-0, R1365-0, R585-110, R582-110, R581-110, R580-110, R586-110, R559-110, R579-110, R578-110, R584-110, R583-110, R562-110, R561-110, R3468-110, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R103-136, R102-136, R101-136, R100-136, R293-474, R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2420-411, R2372-627, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R3886-480, R2558-125, R1974-466, R1301-440, R1272-440, R1689-459, R1687-459, R1686-459, R1684-459, R1688-459, R2639-459, R1125-429, R1125-229, R2343-433, R2343-229, R2343-429, R588-0, R1365-0, R578-110, R559-110, R586-110, R585-110, R584-110, R583-110, R582-110, R581-110, R580-110, R579-110, R561-110, R3468-110, R562-110, R1364-102, R1363-102, R1362-102, R274-102, R275-102, R270-102, R272-102, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -631,6 +631,75 @@
      "start": "2026-10-30T04:45:00.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Liechtensteinstraße 39"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1362-102",
+    "owner": "WL",
+    "parentName": "R1362-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1362
+    ],
+    "time": {
+     "end": "2026-10-30T23:32:00.000+0100",
+     "start": "2026-10-30T22:32:16.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1363-102",
+    "owner": "WL",
+    "parentName": "R1363-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1363
+    ],
+    "time": {
+     "end": "2026-10-30T23:32:00.000+0100",
+     "start": "2026-10-30T22:32:16.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1364-102",
+    "owner": "WL",
+    "parentName": "R1364-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1364
+    ],
+    "time": {
+     "end": "2026-10-30T23:32:00.000+0100",
+     "start": "2026-10-30T22:32:16.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1713,6 +1782,98 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Schadhafter Zug\nUmleitung ab Johann-N.-Berger-Platz über 9+43",
+    "name": "R270-102",
+    "owner": "WL",
+    "parentName": "R270-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     270
+    ],
+    "time": {
+     "end": "2026-10-30T23:32:00.000+0100",
+     "start": "2026-10-30T22:33:44.000+0100"
+    },
+    "title": "Schadhafter Zug\nUmleitung ab Johann-N.-Berger-Platz über 9+43"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nUmleitung ab Johann-N.-Berger-Platz über 9+43",
+    "name": "R272-102",
+    "owner": "WL",
+    "parentName": "R272-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     272
+    ],
+    "time": {
+     "end": "2026-10-30T23:32:00.000+0100",
+     "start": "2026-10-30T22:33:44.000+0100"
+    },
+    "title": "Schadhafter Zug\nUmleitung ab Johann-N.-Berger-Platz über 9+43"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nUmleitung ab Johann-N.-Berger-Platz über 9+43",
+    "name": "R274-102",
+    "owner": "WL",
+    "parentName": "R274-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     274
+    ],
+    "time": {
+     "end": "2026-10-30T23:32:00.000+0100",
+     "start": "2026-10-30T22:33:44.000+0100"
+    },
+    "title": "Schadhafter Zug\nUmleitung ab Johann-N.-Berger-Platz über 9+43"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nUmleitung ab Johann-N.-Berger-Platz über 9+43",
+    "name": "R275-102",
+    "owner": "WL",
+    "parentName": "R275-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     275
+    ],
+    "time": {
+     "end": "2026-10-30T23:32:00.000+0100",
+     "start": "2026-10-30T22:33:44.000+0100"
+    },
+    "title": "Schadhafter Zug\nUmleitung ab Johann-N.-Berger-Platz über 9+43"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1870,29 +2031,6 @@
      "start": "2026-10-30T00:00:12.000+0100"
     },
     "title": "Züge halten\nWipplingerstr 39"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
-    "name": "R500-101",
-    "owner": "WL",
-    "parentName": "R500-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     500
-    ],
-    "time": {
-     "end": "2026-10-30T23:00:00.000+0100",
-     "start": "2026-10-30T05:00:00.000+0100"
-    },
-    "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
     "alertCause": "undefined alert cause",
