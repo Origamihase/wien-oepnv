@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260917-0012, I20260922-0032, I20260925-0011, I20261020-0029, I20261030-0031, I20261030-0033, I20261030-0034, I20261030-0035"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261030-0036-F01, I20261020-0029, I20261030-0031"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1476-149, R1475-149, R1474-149, R1473-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1472-149, R1449-149, R103-136, R100-136, R101-136, R102-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R318-437, R293-474, R1881-101, R1882-101, R1883-101, R1884-101, R2345-127, R2420-411, R2372-627, R1875-101, R1876-101, R1880-101, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R3886-480, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1448-412, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1449-149, R102-136, R100-136, R101-136, R293-474, R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2371-125, R2343-626, R2343-125, R2359-125, R2370-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2420-411, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2372-627, R2378-627, R3886-480, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R1640-459, R1692-459, R1685-459, R1683-459, R1687-459, R1686-459, R1684-459, R1689-459, R1688-459, R2639-459, R1694-459, R1693-459, R1691-459, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -304,141 +304,52 @@
     "title": "16A: Verkehrsüberlastung"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
+    "alertCause": "fire",
+    "alertCauseId": 5,
     "attributes": {
      "relatedLineTypes": {
-      "11A": "ptBusCity"
+      "59A": "ptBusCity"
      }
     },
-    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "descriptionHTML": "<p>Linie 11A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+    "description": "Linie 59A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 59A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 11A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-       "descriptionPlain": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-       "title": "11A: Polizeieinsatz"
+       "descriptionHtml": "<p>Linie 59A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 59A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "59A: Feuerwehreinsatz"
       }
      }
     ],
-    "name": "I20261030-0033",
+    "name": "I20261030-0036-F01",
     "owner": "WL",
-    "parentName": "I20261030-0033",
+    "parentName": "I20261030-0036",
     "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
+    "reasonId": 11,
+    "reasonName": "Feuerwehreinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "11A"
+     "59A"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 411,
-      "lineName": "11A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-30T17:04:00.000+0100",
-     "lastUpdate": "2026-10-30T17:04:00.000+0100",
-     "resume": "2026-10-30T17:04:00.000+0100",
-     "start": "2026-10-30T17:04:00.000+0100"
-    },
-    "title": "11A: Polizeieinsatz"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "49A": "ptBusCity"
-     }
-    },
-    "description": "Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 49A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Verkehrsunfall.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 49A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "49A: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261030-0034",
-    "owner": "WL",
-    "parentName": "I20261030-0034",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "49A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 449,
-      "lineName": "49A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-30T17:51:00.000+0100",
-     "lastUpdate": "2026-10-30T17:51:00.000+0100",
-     "resume": "2026-10-30T17:50:00.000+0100",
-     "start": "2026-10-30T17:50:00.000+0100"
-    },
-    "title": "49A: Verkehrsunfall"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "38A": "ptBusCity"
-     }
-    },
-    "description": "Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Voraussichtliche Dauer: 18:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Kahlenberg.",
-    "descriptionHTML": "<p>Linie 38A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Voraussichtliche Dauer: 18:30 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Kahlenberg.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 38A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Voraussichtliche Dauer: 18:30 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Kahlenberg.</p>",
-       "descriptionPlain": "Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Voraussichtliche Dauer: 18:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Kahlenberg.",
-       "title": "38A: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261030-0035",
-    "owner": "WL",
-    "parentName": "I20261030-0035",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "38A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 438,
-      "lineName": "38A",
+      "lineId": 459,
+      "lineName": "59A",
       "vehicleType": "ptBusCity"
      }
     ],
     "relatedStops": [
-     1564
+     1690
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-30T17:52:00.000+0100",
-     "lastUpdate": "2026-10-30T17:52:00.000+0100",
-     "start": "2026-10-30T17:51:00.000+0100"
+     "created": "2026-10-30T18:22:00.000+0100",
+     "lastUpdate": "2026-10-30T18:22:00.000+0100",
+     "resume": "2026-10-30T18:22:00.000+0100",
+     "start": "2026-10-30T18:14:00.000+0100"
     },
-    "title": "38A: Polizeieinsatz"
+    "title": "59A: Feuerwehreinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -991,6 +902,282 @@
      "start": "2026-10-30T00:00:11.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R1640-459",
+    "owner": "WL",
+    "parentName": "R1640-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1640
+    ],
+    "time": {
+     "end": "2026-10-30T19:14:00.000+0100",
+     "start": "2026-10-30T18:15:19.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nUmleitung ab Hans.-M.-Berufschule über Längenfeldg. - Gürtel",
+    "name": "R1683-459",
+    "owner": "WL",
+    "parentName": "R1683-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1683
+    ],
+    "time": {
+     "end": "2026-10-30T19:18:00.000+0100",
+     "start": "2026-10-30T18:15:22.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nUmleitung ab Hans.-M.-Berufschule über Längenfeldg. - Gürtel"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr.",
+    "name": "R1684-459",
+    "owner": "WL",
+    "parentName": "R1684-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1684
+    ],
+    "time": {
+     "end": "2026-10-30T23:30:00.000+0100",
+     "start": "2026-10-30T18:18:52.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr."
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R1685-459",
+    "owner": "WL",
+    "parentName": "R1685-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1685
+    ],
+    "time": {
+     "end": "2026-10-30T19:14:00.000+0100",
+     "start": "2026-10-30T18:15:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr.",
+    "name": "R1686-459",
+    "owner": "WL",
+    "parentName": "R1686-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1686
+    ],
+    "time": {
+     "end": "2026-10-30T23:30:00.000+0100",
+     "start": "2026-10-30T18:18:52.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr."
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr.",
+    "name": "R1687-459",
+    "owner": "WL",
+    "parentName": "R1687-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1687
+    ],
+    "time": {
+     "end": "2026-10-30T23:30:00.000+0100",
+     "start": "2026-10-30T18:18:52.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr."
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr.",
+    "name": "R1688-459",
+    "owner": "WL",
+    "parentName": "R1688-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1688
+    ],
+    "time": {
+     "end": "2026-10-30T23:30:00.000+0100",
+     "start": "2026-10-30T18:18:52.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr."
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr.",
+    "name": "R1689-459",
+    "owner": "WL",
+    "parentName": "R1689-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1689
+    ],
+    "time": {
+     "end": "2026-10-30T23:30:00.000+0100",
+     "start": "2026-10-30T18:18:52.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr."
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nUmleitung ab Hans.-M.-Berufschule über Längenfeldg. - Gürtel",
+    "name": "R1691-459",
+    "owner": "WL",
+    "parentName": "R1691-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1691
+    ],
+    "time": {
+     "end": "2026-10-30T19:18:00.000+0100",
+     "start": "2026-10-30T18:21:22.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nUmleitung ab Hans.-M.-Berufschule über Längenfeldg. - Gürtel"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R1692-459",
+    "owner": "WL",
+    "parentName": "R1692-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1692
+    ],
+    "time": {
+     "end": "2026-10-30T19:14:00.000+0100",
+     "start": "2026-10-30T18:15:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nUmleitung ab Hans.-M.-Berufschule über Längenfeldg. - Gürtel",
+    "name": "R1693-459",
+    "owner": "WL",
+    "parentName": "R1693-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1693
+    ],
+    "time": {
+     "end": "2026-10-30T19:18:00.000+0100",
+     "start": "2026-10-30T18:21:22.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nUmleitung ab Hans.-M.-Berufschule über Längenfeldg. - Gürtel"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nUmleitung ab Hans.-M.-Berufschule über Längenfeldg. - Gürtel",
+    "name": "R1694-459",
+    "owner": "WL",
+    "parentName": "R1694-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1694
+    ],
+    "time": {
+     "end": "2026-10-30T19:18:00.000+0100",
+     "start": "2026-10-30T18:21:22.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nUmleitung ab Hans.-M.-Berufschule über Längenfeldg. - Gürtel"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1566,6 +1753,29 @@
      "start": "2026-10-30T00:00:18.000+0100"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr.",
+    "name": "R2639-459",
+    "owner": "WL",
+    "parentName": "R2639-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     2639
+    ],
+    "time": {
+     "end": "2026-10-30T23:30:00.000+0100",
+     "start": "2026-10-30T18:18:53.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr."
    },
    {
     "alertCause": "undefined alert cause",
