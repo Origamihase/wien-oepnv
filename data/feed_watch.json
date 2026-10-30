@@ -1,8 +1,8 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-30T10:01:15.417692+00:00",
- "built": "2026-10-30T11:00:58+01:00",
+ "updated": "2026-10-30T10:31:07.660847+00:00",
+ "built": "2026-10-30T11:30:48+01:00",
  "findings": [
   {
    "rule": "alte-meldung-als-neu",
@@ -15,14 +15,22 @@
  "rules": {
   "alte-meldung-als-neu": {
    "since": "2026-10-29T23:01:00.019052+00:00",
-   "last": "2026-10-30T10:01:15.417692+00:00",
+   "last": "2026-10-30T10:31:07.660847+00:00",
    "held_runs": 0,
    "issue": 2086
   }
  },
  "previous_feed": {
-  "built": "2026-10-30T11:00:58+01:00",
+  "built": "2026-10-30T11:30:48+01:00",
   "items": [
+   {
+    "title": "2: Rettungseinsatz, Feuerwehreinsatz",
+    "time_line": "Seit 11:15"
+   },
+   {
+    "title": "U3: Verspätungen",
+    "time_line": "Seit 11:05"
+   },
    {
     "title": "25: Polizeieinsatz",
     "time_line": "Seit 10:52"
@@ -32,20 +40,12 @@
     "time_line": "Seit 10:42"
    },
    {
-    "title": "2/12: Feuerwehreinsatz",
-    "time_line": "Seit 10:39"
-   },
-   {
-    "title": "47A: Rettungseinsatz",
-    "time_line": "Seit 10:37"
+    "title": "52: Gleisschaden",
+    "time_line": "Seit 08:17"
    },
    {
     "title": "Wien Liesing ↔ Wien Meidling",
-    "time_line": "Seit 09:59"
-   },
-   {
-    "title": "52: Gleisschaden",
-    "time_line": "Seit 08:17"
+    "time_line": "Heute"
    },
    {
     "title": "38B/39B: Allerheiligenverkehr 01.11.2026",
@@ -6786,17 +6786,37 @@
     "oebb": 10,
     "wl": 104
    }
+  },
+  {
+   "t": "2026-10-30T10:31:07.660847+00:00",
+   "raw": {
+    "wl-stoerungen": 90,
+    "wl-hinweise": 68,
+    "oebb": 159,
+    "baustellen-linien": 59,
+    "baustellen-punkte": 20
+   },
+   "discarded": {
+    "wl": 4,
+    "oebb": 134,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 10,
+    "wl": 106
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-30T10:01:15.417692+00:00"
+   "last_ok": "2026-10-30T10:31:07.660847+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-30T10:01:15.417692+00:00"
+   "last_ok": "2026-10-30T10:31:07.660847+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-30T10:01:15.417692+00:00"
+   "last_ok": "2026-10-30T10:31:07.660847+00:00"
   }
  }
 }
