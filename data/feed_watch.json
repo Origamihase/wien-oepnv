@@ -1,8 +1,8 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-30T03:30:58.797712+00:00",
- "built": "2026-10-30T04:30:50+01:00",
+ "updated": "2026-10-30T04:01:20.886537+00:00",
+ "built": "2026-10-30T05:01:05+01:00",
  "findings": [
   {
    "rule": "alte-meldung-als-neu",
@@ -15,14 +15,18 @@
  "rules": {
   "alte-meldung-als-neu": {
    "since": "2026-10-29T23:01:00.019052+00:00",
-   "last": "2026-10-30T03:30:58.797712+00:00",
+   "last": "2026-10-30T04:01:20.886537+00:00",
    "held_runs": 0,
    "issue": 2086
   }
  },
  "previous_feed": {
-  "built": "2026-10-30T04:30:50+01:00",
+  "built": "2026-10-30T05:01:05+01:00",
   "items": [
+   {
+    "title": "46: Verspätungen",
+    "time_line": "Seit 04:48"
+   },
    {
     "title": "38B/39B: Allerheiligenverkehr 01.11.2026",
     "time_line": "Am So 01.11."
@@ -36,16 +40,16 @@
     "time_line": "Heute"
    },
    {
+    "title": "40A: Bauarbeiten",
+    "time_line": "Heute"
+   },
+   {
     "title": "11: Wienerfeldgasse",
     "time_line": "Bis 19.11."
    },
    {
     "title": "40A: Bauernfeldplatz",
     "time_line": "Seit 27.10."
-   },
-   {
-    "title": "N81R/N81: Bauarbeiten",
-    "time_line": "Heute"
    },
    {
     "title": "S2: Wien Leopoldau ↔ Mistelbach",
@@ -58,35 +62,11 @@
    {
     "title": "11A/78A: Straßenbauarbeiten",
     "time_line": "Bis Mo 02.11."
-   },
-   {
-    "title": "N71: Rennweg S",
-    "time_line": "Ab Mo 02.11. bis 06.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-23T04:01:05.099213+00:00",
-   "raw": {
-    "wl-stoerungen": 67,
-    "wl-hinweise": 74,
-    "oebb": 178,
-    "baustellen-linien": 56,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 3,
-    "oebb": 152,
-    "baustellen": 70
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 10,
-    "wl": 108
-   }
-  },
   {
    "t": "2026-10-23T04:30:46.919299+00:00",
    "raw": {
@@ -6786,17 +6766,37 @@
     "oebb": 9,
     "wl": 106
    }
+  },
+  {
+   "t": "2026-10-30T04:01:20.886537+00:00",
+   "raw": {
+    "wl-stoerungen": 70,
+    "wl-hinweise": 68,
+    "oebb": 158,
+    "baustellen-linien": 59,
+    "baustellen-punkte": 20
+   },
+   "discarded": {
+    "wl": 4,
+    "oebb": 134,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 103
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-30T03:30:58.797712+00:00"
+   "last_ok": "2026-10-30T04:01:20.886537+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-30T03:30:58.797712+00:00"
+   "last_ok": "2026-10-30T04:01:20.886537+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-30T03:30:58.797712+00:00"
+   "last_ok": "2026-10-30T04:01:20.886537+00:00"
   }
  }
 }
