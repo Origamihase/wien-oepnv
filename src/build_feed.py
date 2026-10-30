@@ -2863,7 +2863,13 @@ _TRANSLATION_MODEL_REVISION = "1a922f3b32a8e809e17a47d4b32142d8105924e5"
 #       under 28: "Due to an ordered line closure of the algae path, line 89A
 #       is redirected."; the source digest is unchanged, so only a bump
 #       evicts it.
-_TRANSLATION_CACHE_EPOCH = 29
+#  30 — Jules audits 28. and 29.10.2026: street names with a preposition
+#       ("An den Eisteichen") or a hyphenated prefix ("Unter-Meidlinger
+#       Straße") are shielded whole, and WL's relocation reasons are in the
+#       glossary. Cached under 29: "in the area of At the ice ponds", "Under-
+#       Meidlinger Straße", "Reason: Parked original stop."; the source
+#       digests are unchanged, so only a bump evicts them.
+_TRANSLATION_CACHE_EPOCH = 30
 
 # Static lookup for the German words of the bracketed ``[…]`` time line (see
 # ``format_local_times``). Translating these via the ML model would be
@@ -3262,6 +3268,27 @@ _PLACE_NAME_ENTITY_RE: re.Pattern[str] = re.compile(
     r"(?<![\w-])(?:" + "|".join(re.escape(name) for name in _PLACE_NAME_ENTITIES) + r")(?![\w-])"
 )
 
+# A street named with a preposition: "An den Eisteichen", "Am Kaisermühlendamm",
+# "Auf der Schmelz". No suffix marks it, and the directory knows only the ones
+# that are stops ("Am Schöpfwerk"); "Falschparker im Bereich An den Eisteichen /
+# Zanaschkagasse" read "in the area of At the ice ponds" (Jules audits 28. and
+# 29.10.2026, 58 WL texts since July). Inside a sentence German writes a
+# preposition in lower case, so a capitalised one there opens a name. At the
+# start of a sentence, a field or a list item ("Am Samstag …", "Zeitraum: Am
+# 1. November") it is an ordinary preposition and stays with the model.
+_PREPOSITION_NAME_RE: re.Pattern[str] = re.compile(
+    r"(?P<lead>[^\s.:!?;] |\()"
+    r"(?P<name>(?:Am|An der|An den|An dem|Auf der|Auf dem|Auf den|In der|In den"
+    r"|Im|Zum|Zur|Unter den|Hinter der|Bei der|Beim|Vor dem|Neben der)"
+    r" (?!(?:Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag|Wochenende)\b)"
+    r"(?:[A-ZÄÖÜ][a-zäöüß]+(?:en|er|e) )?[A-ZÄÖÜ][a-zäöüß]+(?:-[A-ZÄÖÜ][a-zäöüß]+)*)(?![\w-])"
+    # A street with its own suffix is the name already: "wird In der
+    # Volksgartenstraße …" (Stadt Wien) is a capitalised slip, not "In der" +
+    # name. "Am Kaisermühlendamm", "Am Rollerdamm" keep the preposition.
+    r"(?<!straße)(?<!strasse)(?<!gasse)"
+)
+
+
 # The place a WL line runs towards is a stop's name, never a word to
 # translate. The directory and the street rules above know most of them; a
 # bare one-word name they miss went through the model, typos included
@@ -3349,6 +3376,15 @@ def _placeholder_nonce() -> str:
 _PLACEHOLDER_NONCE = _placeholder_nonce()
 _ENTITY_PLACEHOLDER_FORMAT = "XENT" + _PLACEHOLDER_NONCE + "X{index}X"
 _ENTITY_PLACEHOLDER_RE: re.Pattern[str] = re.compile("XENT" + _PLACEHOLDER_NONCE + r"X\d+X")
+
+# A name an earlier pass shielded only in part, because a capitalised word
+# joined by a hyphen stands in front: "Unter-Meidlinger Straße" (the street
+# pass took "Meidlinger Straße"), "Neu-Leopoldau", "Groß-Enzersdorfer Straße".
+# The model saw the prefix alone and wrote "Under-Meidlinger Straße" (WL 7B,
+# 29.10.2026). Glued to the name, the prefix belongs to it.
+_HYPHEN_PREFIX_RE: re.Pattern[str] = re.compile(
+    r"(?<![\w-])(?:[A-ZÄÖÜ][a-zäöüß]+-)+(?=" + _ENTITY_PLACEHOLDER_RE.pattern + r")"
+)
 
 # "Wien" as part of a stop's name: "Wien Schedifkaplatz" (Badner Bahn),
 # "Wien St.Marx Bahnhst", "Purkersdorf b.Wien Zentrum Bahnhst",
@@ -3700,6 +3736,10 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
     # ``XENT…X0X/D`` and the slash context the tram letters are recognised
     # by is still intact — placeholders keep the separators in place.
     working = _TRAM_LETTER_LINE_RE.sub(_replace, working)
+    # Before the street passes, so "Am Kaisermühlendamm" stays one name.
+    working = _PREPOSITION_NAME_RE.sub(
+        lambda m: m.group("lead") + _register(m.group("name")), working
+    )
     working = _SPACED_STREET_NAME_RE.sub(_replace, working)
     working = _STREET_SUFFIX_RE.sub(_replace, working)
     # After the street pass, so "Währinger Gürtel" stays one name.
@@ -3709,7 +3749,46 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
     # Last, so that the name behind "Wien" is already masked by whichever
     # pass knows it ("Wien Schedifkaplatz": the street pass).
     working = _absorb_wien_into_names(working, mapping, _register)
+    working = _absorb_hyphen_prefixes(working, mapping, _register)
     return working, mapping
+
+
+def _absorb_hyphen_prefixes(
+    working: str,
+    mapping: dict[str, str],
+    register: Callable[[str], str],
+) -> str:
+    """Shield a hyphenated prefix together with the name it is glued to (``_HYPHEN_PREFIX_RE``).
+
+    Like :func:`_absorb_wien_into_names`: a placeholder the text uses only
+    here takes the prefix into its own surface, one used elsewhere too stays
+    as it is there, and the whole name gets a new one. A line or a brand
+    ("U6", "ÖBB") is no name a prefix belongs to.
+    """
+    counts = Counter(_ENTITY_PLACEHOLDER_RE.findall(working))
+
+    out: list[str] = []
+    position = 0
+    for match in _HYPHEN_PREFIX_RE.finditer(working):
+        found = _ENTITY_PLACEHOLDER_RE.match(working, match.end())
+        if found is None:
+            continue
+        placeholder = found.group(0)
+        surface = mapping.get(placeholder, "")
+        if not surface[:1].isupper() or surface in _BRAND_ENTITIES or _LINE_ENTITY_RE.fullmatch(surface):
+            continue
+        whole = match.group(0) + surface
+        if counts[placeholder] == 1:
+            mapping[placeholder] = whole
+            out.append(working[position:match.start()] + placeholder)
+        else:
+            out.append(working[position:match.start()] + register(whole))
+        position = found.end()
+    out.append(working[position:])
+    working = "".join(out)
+    for placeholder in [p for p in mapping if p.startswith("XENT") and p not in working]:
+        del mapping[placeholder]
+    return working
 
 
 def _absorb_wien_into_names(
@@ -10513,21 +10592,79 @@ def _within(inner: FeedItem, outer: FeedItem) -> bool:
     return span[1] is not None and span[1] <= works[1] + _WORKS_SPAN_SLACK
 
 
+# --- Stop tickers of a relocation (2026-10-29) -------------------------------
+#
+# WL shows a relocated stop on the displays as well: "40A: Busse halten
+# Liechtensteinstraße 39" and "… 38", every day from 27.10.2026, beside the
+# notice "40A: Bauernfeldplatz" that moves the stop there ("Nach:
+# Liechtensteinstraße 38", "Nach: Liechtensteinstraße 39"). A relocation's
+# title names the stop, not the cause, and the board said "Bauarbeiten" where
+# the notice says "Kabelarbeiten", so the rule above never matched: the German
+# feed showed the same new stop twice in about 100 versions of 27.–29.10.
+# (Jules audits 28. and 29.10. took both as correct). The WL cache since July
+# holds six such pairs (13A, 12A/14A, 7A/N65/N66, 3A, N20, 40A). A ticker that
+# says nothing but "Busse/Züge halten <Adresse>", every address one the notice
+# moves the stop to, goes up in the notice while it is in force — as long as
+# the notice's own short text still shows each address. "40A: Bauernfeldplatz"
+# loses "Liechtensteinstraße 39" behind the 180 cut ("… gegenüber
+# Bauernfeldplatz → …"); there the ticker is the only place the new stop is
+# read, and it keeps its slot.
+_STOP_TICKER_RE = re.compile(r"(?:Busse|Züge|Straßenbahnen) halten (?P<places>.+)")
+_RELOCATION_TARGET_RE = re.compile(r"^Nach:\s*(?P<place>.+?)\s*$", re.MULTILINE)
+
+
+def _same_place(shown: str, target: str) -> bool:
+    """Whether the board's *shown* address is the notice's *target* ("Kärntner Ring 5" of "Kärntner Ring 5, Nebenfahrbahn")."""
+    shown, target = " ".join(shown.casefold().split()), " ".join(target.casefold().split())
+    return target == shown or (target.startswith(shown) and target[len(shown)] in " ,(")
+
+
+def _relocated_stops_shown(item: FeedItem, notice: FeedItem) -> bool:
+    """Whether the WL ticker *item* only shows the stops *notice* relocates."""
+    targets = _RELOCATION_TARGET_RE.findall(html_to_text(str(notice.get("description") or "")))
+    if not targets:
+        return False
+    part = _ticker_part(item)
+    text = (part.extra or part.consequence).rstrip(".").strip()
+    text = _without_cause(text, part.cause)
+    messages = [m.strip() for m in text.split(";") if m.strip()]
+    if not messages:
+        return False
+    shown_places: list[str] = []
+    for message in messages:
+        match = _STOP_TICKER_RE.fullmatch(message)
+        if match is None:
+            return False
+        places = [p.strip() for p in match["places"].split(",") if p.strip()]
+        if not places or not all(any(_same_place(p, t) for t in targets) for p in places):
+            return False
+        shown_places.extend(places)
+    shown = _format_item_content(
+        notice,
+        str(notice.get("guid") or ""),
+        _parse_datetime(notice.get("starts_at")),
+        _parse_datetime(notice.get("ends_at")),
+        lang="de",
+    ).desc_text_truncated.casefold()
+    return all(
+        re.search(rf"(?<![\w-]){re.escape(place.casefold())}(?![\w-])", shown) for place in shown_places
+    )
+
+
 def _works_shown(item: FeedItem, notices: Sequence[FeedItem]) -> FeedItem | None:
-    """The notice whose planned works the WL disruption *item* only shows, if any."""
+    """The notice whose planned works or relocated stops the WL disruption *item* only shows, if any."""
     if not _is_wl_ticker(item):
         return None
     cause = _cause_key(_ticker_part(item).cause)
     lines = set(_ticker_lines(item).split("/")) - {""}
-    if not cause or not lines:
+    if not lines:
         return None
     for notice in notices:
-        if (
-            lines <= set(_ticker_lines(notice).split("/"))
-            and _notice_names_cause(notice, cause)
-            and _within(item, notice)
-            and _shares_a_street(item, notice)
-        ):
+        if not lines <= set(_ticker_lines(notice).split("/")) or not _within(item, notice):
+            continue
+        if cause and _notice_names_cause(notice, cause) and _shares_a_street(item, notice):
+            return notice
+        if _relocated_stops_shown(item, notice):
             return notice
     return None
 
@@ -10600,7 +10737,7 @@ def _drop_baustellen_twins(items: list[FeedItem], now: datetime) -> list[FeedIte
 
 
 def _absorb_works_tickers(items: list[FeedItem]) -> list[FeedItem]:
-    """Drop the WL disruptions that only show a notice's planned works (see above)."""
+    """Drop the WL disruptions that only show a notice's planned works or relocated stops (see above)."""
     notices = [item for item in items if _is_wl_notice(item)]
     if not notices:
         return items
@@ -11061,10 +11198,66 @@ _RELOCATION_CLOSED_RE = re.compile(r"(?:ersatzlos\s+)?aufgelassen\b", re.IGNOREC
 _RELOCATION_DIRECTION = "Fahrtrichtung:"
 
 
+# Two destinations do not always fit the 180 characters: "40A: Bauernfeldplatz"
+# read "Richtung Döblinger Friedhof, Felix-Dahn-Straße: Liechtensteinstraße 42 →
+# Liechtensteinstraße 38. Richtung Schottentor U: Liechtensteinstraße 37a
+# gegenüber Bauernfeldplatz → …" (27.–29.10.2026, Jules audits 28./29.10.), the
+# new stop towards Schottentor U was cut. When a destination would fall behind
+# the cut, the old places go and every destination keeps its arrow: "Richtung
+# Schottentor U: → Liechtensteinstraße 39." (operator decision 2026-10-29, "Von
+# weglassen, wenn zu lang"). A text that shows every destination stays as it is.
+_RELOCATION_DISPLAY_LIMIT = 180
+
+
+def _relocation_targets_shown(blocks: list[str], targets: Sequence[str]) -> int:
+    """How many of *targets* the 180 characters of *blocks*, closed as sentences, show whole."""
+    text = " ".join(b if b.endswith(tuple(_BLOCK_TERMINAL_PUNCT)) else f"{b}." for b in blocks)
+    shown = 0
+    for target in targets:
+        index = text.find(target)
+        if index >= 0 and index + len(target) <= _RELOCATION_DISPLAY_LIMIT:
+            shown += 1
+    return shown
+
+
+def _without_origins(blocks: list[str]) -> list[str]:
+    """*blocks* without their ``Von:`` fields, each ``Nach:`` as ``→ B`` (see above)."""
+    out: list[str] = []
+    for block in blocks:
+        if block.startswith(_RELOCATION_FROM):
+            continue
+        if block.startswith(_RELOCATION_TO):
+            target = block[len(_RELOCATION_TO):].strip()
+            if not target:
+                continue
+            if _RELOCATION_CLOSED_RE.match(target):
+                block = f"{target[0].lower()}{target[1:]}"
+            else:
+                block = f"{_RELOCATION_ARROW} {target}"
+        out.append(block)
+    return out
+
+
 def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
-    """Put a relocation's ``Von:`` and ``Nach:`` fields in front."""
+    """Put a relocation's ``Von:`` and ``Nach:`` fields in front; old places go if a destination would be cut."""
     if not any(block.startswith(_RELOCATION_TO) for block in blocks):
         return blocks
+    ordered = _relocation_ordered(blocks, title_words)
+    targets = list(dict.fromkeys(
+        b[len(_RELOCATION_TO):].strip() for b in blocks if b.startswith(_RELOCATION_TO)
+    ))
+    targets = [t for t in targets if t and not _RELOCATION_CLOSED_RE.match(t)]
+    shown = _relocation_targets_shown(ordered, targets)
+    if shown >= len(targets):
+        return ordered
+    short = _without_origins(_relocation_ordered(blocks, title_words, keep_origins=False))
+    return short if _relocation_targets_shown(short, targets) > shown else ordered
+
+
+def _relocation_ordered(blocks: list[str], title_words: set[str], *, keep_origins: bool = True) -> list[str]:
+    """``Von:``/``Nach:`` in front of their directions; without origins only the destinations."""
+    if not keep_origins:
+        blocks = [b for b in blocks if not b.startswith(_RELOCATION_FROM)]
     # One notice can list the same stop for two lines ("12A" and "N8" at
     # Längenfeldgasse U): their "Von:" and "Nach:" are the same words.
     lead = list(dict.fromkeys(
@@ -11081,7 +11274,8 @@ def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
     ]
     if sum(b.startswith(_RELOCATION_DIRECTION) for b in rest) >= 2:
         return _relocation_by_direction(rest)
-    if len(lead) <= 2:
+    # Without its "Von:" a destination stays in front of its own direction.
+    if len(lead) <= 2 and keep_origins:
         return _relocation_arrows(
             lead + [b for b in rest if not b.startswith((_RELOCATION_FROM, _RELOCATION_TO))]
         )

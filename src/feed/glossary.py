@@ -201,6 +201,30 @@ _GLOSSARY_BASE: dict[str, str] = {
     "Kranarbeiten": "crane works",
     "Rohrleitungsarbeiten": "pipeline works",
     "Straßenbauarbeiten": "roadworks",
+    # The reasons WL gives a stop relocation ("Grund: Kabelarbeiten"),
+    # measured over every relocation since July 2026 (Jules audits 28. and
+    # 29.10.2026). The model rendered them capitalised beside the glossary's
+    # lower-case reasons, and some wrongly: "Verparkte Originalhaltestelle"
+    # (the stop is blocked by parked cars) → "Parked original stop" in 98 EN
+    # feed versions of 28./29.10., "Spontangebrechen" → "Spontaneous
+    # Breaking", "Rohrgebrechen" → "pipe fractures", "Fernkältearbeiten" →
+    # "Refrigeration".
+    "Straßenbau": "roadworks",
+    "Gleisbau": "track construction works",
+    "Kabelarbeiten": "cable works",
+    "Grabungsarbeiten": "excavation works",
+    "Instandsetzungsarbeiten": "repair works",
+    "Fassadenarbeiten": "facade works",
+    "Mobilkranarbeiten": "mobile crane works",
+    "Fernkältearbeiten": "district cooling works",
+    "Hausbau": "building construction",
+    "Hausneubau": "building construction",
+    "Haussanierung": "building renovation",
+    "Dachgeschossausbau": "loft conversion",
+    "Baustelleneinrichtung": "site set-up",
+    "Rohrgebrechen": "burst pipe",
+    "Spontangebrechen": "sudden pipe burst",
+    "Verparkte Originalhaltestelle": "stop blocked by parked cars",
     # --- Time / expectancy adverbs ----------------------------------
     # Marian translates "voraussichtlich" as "presumably" which reads
     # awkwardly in a disruption / construction timeline. The transit
