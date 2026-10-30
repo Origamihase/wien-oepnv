@@ -49,29 +49,6 @@
   {
    "geometry": {
     "first_position": [
-     16.35383861,
-     48.20412073
-    ],
-    "type": "Point"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Kundenzentrum",
-    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
-    "ANTRAGSTELLER": "MA28",
-    "BEHINDERUNGSART": "Straßenbau",
-    "BEZEICHNUNG": "Burggasse 25 bis 45",
-    "BEZIRK": 7,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-07-27Z",
-    "OBJEKT_ENDE": "2026-10-30Z",
-    "PRESSETEXT": "Derrechte Fahrstreifen wird in Fahrtrichtung stadteinwärts gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten. DerFußgänger- und Radverkehr kann aufrecht gehalten werden.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
      16.28541147,
      48.14733017
     ],
@@ -411,29 +388,6 @@
     "OBJEKT_BEGINN": "2021-02-28Z",
     "OBJEKT_ENDE": "2029-12-31Z",
     "PRESSETEXT": "Zur Abwicklung des Baustellenverkehrs für den U-Bahnbau wird In der Volksgartenstraße zwischen der Hansenstraße und der Museumstraße eine Fahrspur gesperrt. Detaillierte Informationen über das Bauvorhaben U2 / U5 können über die Ombudsstelle des jeweils betroffenen U-Bahnabschnittes eingeholt werden.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
-     16.3851471,
-     48.21112529
-    ],
-    "type": "Point"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Gerhard Baumann",
-    "ANSPRECHPERSON_TEL": "Tel.: 050128/32740",
-    "ANTRAGSTELLER": "Wiener Netze - Bereich Gas",
-    "BEHINDERUNGSART": "Rohrlegung",
-    "BEZEICHNUNG": "Vordere Zollamtsstraße 1",
-    "BEZIRK": 3,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-10-26Z",
-    "OBJEKT_ENDE": "2026-11-02Z",
-    "PRESSETEXT": "In Fahrtrichtung Aspernbrücke wird der rechte Abbiegefahrstreifen gesperrt. In Fahrtrichtung Dampfschiffstraße wird der linke Abbiegefahrstreifen gesperrt. Die verbleibenden Abbiegefahrstreifen werden aufrechtgehalten.",
     "SE_ANNO_CAD_DATA": null
    }
   },
