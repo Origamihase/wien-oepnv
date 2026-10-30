@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261030-0002, I20261020-0029"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261030-0004, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1448-412, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1449-149, R102-136, R100-136, R101-136, R293-474, R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R2372-125, R2371-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R3886-480, R2558-125, R500-101, R1692-459, R1718-508, R1749-508, R1013-125, R1012-125, R1015-125, R1021-125, R966-125, R407-506, R402-506, R1448-549, R1474-549, R1974-566, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1474-149, R1476-149, R1475-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1449-149, R1472-149, R1473-149, R103-136, R102-136, R101-136, R100-136, R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R293-474, R116-136, R115-136, R2372-125, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R2420-411, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2378-627, R3886-480, R2558-125, R500-101, R1692-459, R1749-508, R1718-508, R1021-125, R1012-125, R1013-125, R1015-125, R966-125, R407-506, R402-506, R1448-549, R1474-549, R1974-566, R2371-520, R2372-520, R2378-520, R2379-520, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,51 +259,51 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
+    "alertCause": "fire",
+    "alertCauseId": 5,
     "attributes": {
      "relatedLineTypes": {
-      "25": "ptTram"
+      "N8": "ptBusNight"
      }
     },
-    "description": "Linie 25: Fahrtbehinderung Richtung Aspern Nord S U. Voraussichtliche Dauer: 01:10 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Oberdorfstraße.",
-    "descriptionHTML": "<p>Linie 25:<br>Fahrtbehinderung Richtung Aspern Nord S U.</p><p>Voraussichtliche Dauer: 01:10 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Oberdorfstraße.</p>",
+    "description": "Die Linie N8 wird in beiden Richtungen zwischen Bhf. Meidling S U, Schedifkaplatz und Hans-Mandl-Berufsschule über Eichenstraße und Längenfeldgasse umgeleitet. Voraussichtliche Dauer: Nicht absehbar. Grund: Feuerwehreinsatz im Haltestellenbereich Hans-Mandl-Berufsschule.",
+    "descriptionHTML": "<p>Die Linie N8 wird in beiden Richtungen zwischen Bhf. Meidling S U, Schedifkaplatz und Hans-Mandl-Berufsschule über Eichenstraße und Längenfeldgasse umgeleitet.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Feuerwehreinsatz im Haltestellenbereich Hans-Mandl-Berufsschule.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 25:<br>Fahrtbehinderung Richtung Aspern Nord S U.</p><p>Voraussichtliche Dauer: 01:10 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Oberdorfstraße.</p>",
-       "descriptionPlain": "Linie 25: Fahrtbehinderung Richtung Aspern Nord S U. Voraussichtliche Dauer: 01:10 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Oberdorfstraße.",
-       "title": "25: Rettungseinsatz"
+       "descriptionHtml": "<p>Die Linie N8 wird in beiden Richtungen zwischen Bhf. Meidling S U, Schedifkaplatz und Hans-Mandl-Berufsschule über Eichenstraße und Längenfeldgasse umgeleitet.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Feuerwehreinsatz im Haltestellenbereich Hans-Mandl-Berufsschule.</p>",
+       "descriptionPlain": "Die Linie N8 wird in beiden Richtungen zwischen Bhf. Meidling S U, Schedifkaplatz und Hans-Mandl-Berufsschule über Eichenstraße und Längenfeldgasse umgeleitet. Voraussichtliche Dauer: Nicht absehbar. Grund: Feuerwehreinsatz im Haltestellenbereich Hans-Mandl-Berufsschule.",
+       "title": "N8: Feuerwehreinsatz"
       }
      }
     ],
-    "name": "I20261030-0002",
+    "name": "I20261030-0004",
     "owner": "WL",
-    "parentName": "I20261030-0002",
+    "parentName": "I20261030-0004",
     "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
+    "reasonId": 11,
+    "reasonName": "Feuerwehreinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "25"
+     "N8"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 125,
-      "lineName": "25",
-      "vehicleType": "ptTram"
+      "lineId": 508,
+      "lineName": "N8",
+      "vehicleType": "ptBusNight"
      }
     ],
     "relatedStops": [
-     2595
+     5620
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-30T00:51:00.000+0100",
-     "lastUpdate": "2026-10-30T00:51:00.000+0100",
-     "start": "2026-10-30T00:51:00.000+0100"
+     "created": "2026-10-30T01:28:00.000+0100",
+     "lastUpdate": "2026-10-30T01:28:00.000+0100",
+     "start": "2026-10-30T01:26:00.000+0100"
     },
-    "title": "25: Rettungseinsatz"
+    "title": "N8: Feuerwehreinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -975,7 +975,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A",
+    "description": "Feuerwehreinsatz\nBetrieb ab Bhf. Meidling",
     "name": "R1718-508",
     "owner": "WL",
     "parentName": "R1718-508",
@@ -990,10 +990,10 @@
      1718
     ],
     "time": {
-     "end": "2026-10-30T04:45:00.000+0100",
+     "end": "2026-10-30T05:30:00.000+0100",
      "start": "2026-10-30T00:45:16.000+0100"
     },
-    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A"
+    "title": "Feuerwehreinsatz\nBetrieb ab Bhf. Meidling"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1366,6 +1366,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Bauarbeiten\nBusse halten Donaufelder Straße 40-42",
+    "name": "R2371-520",
+    "owner": "WL",
+    "parentName": "R2371-520",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N20"
+    ],
+    "relatedStops": [
+     2371
+    ],
+    "time": {
+     "end": "2026-10-30T04:50:00.000+0100",
+     "start": "2026-10-30T01:10:19.000+0100"
+    },
+    "title": "Bauarbeiten\nBusse halten Donaufelder Straße 40-42"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2372-125",
     "owner": "WL",
@@ -1385,6 +1408,29 @@
      "start": "2026-10-30T00:00:13.000+0100"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn",
+    "name": "R2372-520",
+    "owner": "WL",
+    "parentName": "R2372-520",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N20"
+    ],
+    "relatedStops": [
+     2372
+    ],
+    "time": {
+     "end": "2026-10-30T04:52:00.000+0100",
+     "start": "2026-10-30T01:16:19.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1481,6 +1527,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
+    "name": "R2378-520",
+    "owner": "WL",
+    "parentName": "R2378-520",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N20"
+    ],
+    "relatedStops": [
+     2378
+    ],
+    "time": {
+     "end": "2026-10-30T04:35:00.000+0100",
+     "start": "2026-10-30T01:30:21.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Busse halten\nSatzingerweg 41",
     "name": "R2378-627",
     "owner": "WL",
@@ -1500,6 +1569,29 @@
      "start": "2026-10-30T00:00:13.000+0100"
     },
     "title": "Busse halten\nSatzingerweg 41"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
+    "name": "R2379-520",
+    "owner": "WL",
+    "parentName": "R2379-520",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N20"
+    ],
+    "relatedStops": [
+     2379
+    ],
+    "time": {
+     "end": "2026-10-30T04:35:00.000+0100",
+     "start": "2026-10-30T01:30:21.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3"
    },
    {
     "alertCause": "undefined alert cause",

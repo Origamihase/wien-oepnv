@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 30 Oct 2026 01:00:56 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 01:30:45 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[59A: Feuerwehreinsatz]]></title>
@@ -34,8 +34,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 30 Oct 2026 00:51:00 +0100</ext:first_seen>
       <ext:starts_at>Fri, 30 Oct 2026 00:51:19 +0100</ext:starts_at>
-      <description>Fahrtbehinderung Richtung Aspern Nord S U. Voraussichtlich bis 01:10 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Oberdorfstraße. [Seit 00:51]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung Richtung Aspern Nord S U. Voraussichtlich bis 01:10 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Oberdorfstraße.<br/>[Seit 00:51]]]></content:encoded>
+      <ext:ends_at>Fri, 30 Oct 2026 01:50:00 +0100</ext:ends_at>
+      <description>Fahrtbehinderung wegen Rettungseinsatz Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße; Züge halten Donaufelder Straße 175-177. [Seit 00:51]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung wegen Rettungseinsatz Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße; Züge halten Donaufelder Straße 175-177.<br/>[Seit 00:51]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[38B/39B: Allerheiligenverkehr 01.11.2026]]></title>
