@@ -1102,6 +1102,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "62A: Fahrtbehinderung Falschparker",
+    "description": "Linie 62A: Fahrtbehinderung in Richtung Bahnhof Meidling S U, Eichenstraße. Voraussichtliche Dauer: 13:55 Uhr. Grund: Falschparker im Haltestellenbereich Liesing S.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "825b50d24d93ab2a4845414652c8f71a29e68d6097567a412b438ef95fd16c0f",
+    "pubDate": "2026-10-30T13:22:00+01:00",
+    "starts_at": "2026-10-30T13:27:23+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=62A|D=2026-10-30|TK=falschparker",
+    "_wl_ids": [
+      "I20261030-0024"
+    ],
+    "_incident_start": "2026-10-30T13:22:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1202,18 +1218,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Betriebsstörung",
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
-    "pubDate": "2026-10-30T12:06:00+01:00",
-    "starts_at": "2026-10-30T12:06:00+01:00",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-10-30T13:13:00+01:00",
+    "starts_at": "2026-10-30T13:13:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U1|D=2026-10-30|TK=u1 betriebsstörung",
+    "_identity": "wl|störung|L=U1|D=2026-10-30|TK=u1 verspätungen",
     "_wl_ids": [
-      "I20261030-0020"
+      "I20261030-0023"
     ],
-    "_incident_start": "2026-10-30T12:06:00+01:00"
+    "_incident_start": "2026-10-30T13:13:00+01:00"
   },
   {
     "source": "Wiener Linien",
