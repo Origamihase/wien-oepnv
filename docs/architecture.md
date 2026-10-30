@@ -2497,8 +2497,11 @@ generisch aus.“ Daraus folgt, was bleibt und was neu ist:
   `site.min.css`).
 * **Neu: Jede Kachel trägt die Farbe dessen, wofür sie steht.** Eine Meldung
   hat die Farbe ihrer Quelle als `--src` (Randstreifen links, ein Hauch der
-  Farbe hinter dem Etikett, das Etikett selbst mit Punkt; derselbe Punkt
-  steht im passenden Filter-Chip). Im Dunkelmodus sind das die dunkleren
+  Farbe hinter dem Etikett, das Etikett selbst in der Quellfarbe; ein
+  farbiger Punkt steht im passenden Filter-Chip). Das Etikett trägt seit
+  dem 30.10.2026 keinen Punkt mehr (Michael: „Bitte entferne den Punkt aus
+  den 'Pillen'“), nur noch den Namen der Quelle; der Punkt im Filter-Chip
+  bleibt. Im Dunkelmodus sind das die dunkleren
   Markenrot-Varianten, die schon vorher für die weiße Etikettschrift galten
   (Kontrast ≥ 6:1).
 * **Neu: Jede Statistik-Sektion hat einen Ton** (`--tone`): Störungen Blau,

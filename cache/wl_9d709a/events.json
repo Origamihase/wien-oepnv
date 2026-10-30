@@ -710,22 +710,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Verkehrsüberlastung",
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "132db5055970153595938fe1ef3cafd5080b443df40d6dfbacef3df29fdcd405",
-    "pubDate": "2026-10-30T15:07:00+01:00",
-    "starts_at": "2026-10-30T15:07:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=10A|D=2026-10-30|TK=10a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261030-0029"
-    ],
-    "_incident_start": "2026-10-30T15:07:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11A: Busse halten Meiereistraße gegenüber 12",
     "description": "Bauarbeiten\nBusse halten Meiereistraße gegenüber 12",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -758,22 +742,6 @@
     "starts_at": "2026-10-30T00:00:11+01:00",
     "ends_at": "2026-10-30T23:59:59+01:00",
     "_identity": "wl|störung|L=12A|D=2026-10-30|TK=betrieb ab schweglerstrasse 19 21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Rettungseinsatz",
-    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
-    "pubDate": "2026-10-30T14:05:00+01:00",
-    "starts_at": "2026-10-30T14:05:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=13A|D=2026-10-30|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261030-0028"
-    ],
-    "_incident_start": "2026-10-30T14:05:00+01:00"
   },
   {
     "source": "Wiener Linien",

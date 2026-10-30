@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261030-0028, I20260925-0011, I20261030-0023, I20260909-0007, I20261030-0029, I20261020-0029, I20261030-0024-F01, I20261030-0031"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261030-0023, I20260909-0007, I20261020-0029, I20261030-0024-F01, I20261030-0031"
    },
    {
     "id": 3,
@@ -350,99 +350,6 @@
      "start": "2026-10-30T13:22:00.000+0100"
     },
     "title": "62A: Falschparker"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "13A": "ptBusCity"
-     }
-    },
-    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 13A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 13A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "13A: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261030-0028",
-    "owner": "WL",
-    "parentName": "I20261030-0028",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 413,
-      "lineName": "13A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     682
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-30T14:06:00.000+0100",
-     "lastUpdate": "2026-10-30T14:06:00.000+0100",
-     "resume": "2026-10-30T14:05:00.000+0100",
-     "start": "2026-10-30T14:05:00.000+0100"
-    },
-    "title": "13A: Rettungseinsatz"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "10A": "ptBusCity"
-     }
-    },
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "10A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261030-0029",
-    "owner": "WL",
-    "parentName": "I20261030-0029",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "10A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 410,
-      "lineName": "10A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-30T15:08:00.000+0100",
-     "lastUpdate": "2026-10-30T15:08:00.000+0100",
-     "resume": "2026-10-30T15:07:00.000+0100",
-     "start": "2026-10-30T15:07:00.000+0100"
-    },
-    "title": "10A: Verkehrsüberlastung"
    },
    {
     "alertCause": "heavy traffic",
