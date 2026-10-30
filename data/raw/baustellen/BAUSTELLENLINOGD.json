@@ -325,6 +325,29 @@
   {
    "geometry": {
     "first_position": [
+     16.41189035,
+     48.19247486
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Erdbergstraße 192-196 bis 202",
+    "BEZIRK": 3,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-10-18Z",
+    "OBJEKT_ENDE": "2026-12-11Z",
+    "PRESSETEXT": "Die Arbeiten werden in der Nacht von 20:00-05:00 Uhr durchgeführt. Der Fahrzeugverkehr wird mittels Verkehrszeichen wechselweise durch den Arbeitsbereich geschleust. Der Fußgängerverkehr wird in geeigneter und sicherer Weise aufrecht gehalten.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.37537409,
      48.18121198
     ],
