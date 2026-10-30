@@ -1,8 +1,8 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-30T00:31:01.796721+00:00",
- "built": "2026-10-30T01:30:45+01:00",
+ "updated": "2026-10-30T01:01:00.317412+00:00",
+ "built": "2026-10-30T02:00:49+01:00",
  "findings": [
   {
    "rule": "alte-meldung-als-neu",
@@ -15,22 +15,14 @@
  "rules": {
   "alte-meldung-als-neu": {
    "since": "2026-10-29T23:01:00.019052+00:00",
-   "last": "2026-10-30T00:31:01.796721+00:00",
+   "last": "2026-10-30T01:01:00.317412+00:00",
    "held_runs": 0,
    "issue": 2086
   }
  },
  "previous_feed": {
-  "built": "2026-10-30T01:30:45+01:00",
+  "built": "2026-10-30T02:00:49+01:00",
   "items": [
-   {
-    "title": "59A: Feuerwehreinsatz",
-    "time_line": "Seit 00:42"
-   },
-   {
-    "title": "25: Rettungseinsatz",
-    "time_line": "Seit 00:51"
-   },
    {
     "title": "38B/39B: Allerheiligenverkehr 01.11.2026",
     "time_line": "Am So 01.11."
@@ -62,6 +54,14 @@
    {
     "title": "S1: Wien Leopoldau ↔ Deutsch Wagram",
     "time_line": "Bis 28.11."
+   },
+   {
+    "title": "11A/78A: Straßenbauarbeiten",
+    "time_line": "Bis Mo 02.11."
+   },
+   {
+    "title": "N71: Rennweg S",
+    "time_line": "Ab Mo 02.11. bis 06.11."
    }
   ]
  },
@@ -6786,17 +6786,37 @@
     "oebb": 9,
     "wl": 109
    }
+  },
+  {
+   "t": "2026-10-30T01:01:00.317412+00:00",
+   "raw": {
+    "wl-stoerungen": 76,
+    "wl-hinweise": 69,
+    "oebb": 157,
+    "baustellen-linien": 59,
+    "baustellen-punkte": 20
+   },
+   "discarded": {
+    "wl": 5,
+    "oebb": 133,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 108
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-30T00:31:01.796721+00:00"
+   "last_ok": "2026-10-30T01:01:00.317412+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-30T00:31:01.796721+00:00"
+   "last_ok": "2026-10-30T01:01:00.317412+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-30T00:31:01.796721+00:00"
+   "last_ok": "2026-10-30T01:01:00.317412+00:00"
   }
  }
 }
