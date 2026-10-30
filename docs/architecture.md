@@ -3272,6 +3272,37 @@ Nicht jeder Text gehört in ein NMT-Modell:
   Nachgespielt mit dem echten Modell über die 102 betroffenen ÖBB-Texte:
   98 ändern sich, alle lesen jetzt „cannot run“ oder „can run“; der
   Feed-Neubau vom 25.10. ändert nur S1 und S2.
+* **„<Anlass>verkehr“ bei WL und ÖBB (seit 2026-10-30).** Das Modell kennt
+  solche Komposita nicht und verliert den Kopf oder den Sinn: „38B/39B:
+  Allerheiligenverkehr 01.11.2026“ stand als „38B/39B: All Saints' Worship
+  01.11.2026“ im EN-Feed (Jules-Audit 2026-10-30), „Feiertagsverkehr“ wird
+  „Public holidays“, „Konzertverkehr“ „Concertation“. Den Anlass allein
+  übersetzt es richtig („Allerheiligen“ → „All Saints“, „Fronleichnam“ →
+  „Corpus Christi“, „Silvester“ → „New Year's Eve“). Schreibt ein Betreiber
+  über seine Linien, ist „Verkehr“ am Ende eines Kompositums sein Angebot.
+  Darum ersetzt `_mask_service_compounds` (nach dem Glossar, vor dem
+  Maskieren) in WL- und ÖBB-Texten jedes „<Anlass>verkehr“ (auch mit
+  Fugen-s, Endung „-s“/„-es“ oder „-Verkehr“) durch einen Glossar-Platzhalter:
+  den Anlass, allein durch das Modell übersetzt (`_service_modifier_en`, pro
+  Lauf einmal je Anlass), plus „service“, also „All Saints service“. Ein
+  gebeugtes Glossar-Kompositum („des Schienenersatzverkehres“) bekommt das
+  Englisch seiner Grundform. Beim Modell wie bisher bleiben Komposita, deren
+  erster Teil Straßenverkehr, ein Verkehrsmittel, ein Gebiet oder eine
+  Tageszeit nennt, die das Modell allein falsch liest
+  (`_SERVICE_COMPOUND_KEEP`: „Kreisverkehr“ → „roundabout“,
+  „Gesamtverkehr“, „Individualverkehr“, „Pendelbusverkehr“ → „shuttle bus
+  service“, „Straßenbahnverkehr“, „Regionalverkehr“, „Morgenverkehr“, weil
+  „Morgen“ allein „Tomorrow“ wird). Ebenso ein Anlass, dessen Übersetzung
+  leer, länger als vier Wörter oder noch deutsch ist. Baustellen-Texte
+  handeln vom Straßenverkehr und bleiben unberührt. Ein Wert im
+  Übersetzungs-Cache, dem das feste Englisch eines Anlasses fehlt, gilt als
+  Fehler und wird neu übersetzt (`_service_compound_defect`, keine neue
+  Epoche).
+  Nachgespielt mit dem echten Modell über alle 281 WL- und ÖBB-Meldungen
+  der Cache-Geschichte mit einem solchen Kompositum: Im Feed ändert sich nur
+  der Titel „38B/39B: Allerheiligenverkehr 01.11.2026“ („All Saints'
+  Worship“ → „All Saints service“); der Feed-Neubau vom 30.10. mit dem
+  Übersetzungs-Cache ebenso, der deutsche Feed ist gleich.
 * **Halte-Meldungen der WL.** Nach „Busse/Züge halten“ und „Ersatzbus hält“
   wählte das Modell die Präposition in jedem Lauf neu („Buses stop
   Salvatorianerplatz“, „Trains stop for lines 6 and 18“). Seit 2026-10-04
