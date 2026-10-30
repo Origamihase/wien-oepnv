@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261030-0006, I20261020-0029"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261030-0007-F01, I20261020-0029"
    },
    {
     "id": 3,
@@ -263,45 +263,48 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "U1": "ptMetro"
+      "U2": "ptMetro"
      }
     },
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U1: Schadhaftes Fahrzeug"
+       "descriptionHtml": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U2: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261030-0006",
+    "name": "I20261030-0007-F01",
     "owner": "WL",
-    "parentName": "I20261030-0006",
+    "parentName": "I20261030-0007",
     "priority": "1",
     "reasonId": 20,
     "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "U1"
+     "U2"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 301,
-      "lineName": "U1",
+      "lineId": 302,
+      "lineName": "U2",
       "vehicleType": "ptMetro"
      }
     ],
+    "relatedStops": [
+     4278
+    ],
     "status": "active",
     "time": {
-     "created": "2026-10-30T05:56:00.000+0100",
-     "lastUpdate": "2026-10-30T05:56:00.000+0100",
-     "resume": "2026-10-30T05:55:00.000+0100",
-     "start": "2026-10-30T05:55:00.000+0100"
+     "created": "2026-10-30T06:40:00.000+0100",
+     "lastUpdate": "2026-10-30T06:40:00.000+0100",
+     "resume": "2026-10-30T06:40:00.000+0100",
+     "start": "2026-10-30T06:33:00.000+0100"
     },
-    "title": "U1: Schadhaftes Fahrzeug"
+    "title": "U2: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",

@@ -54,12 +54,12 @@
     },
     "total": 1929
   },
-  "generated_at": "2026-10-30T06:30:55+01:00",
+  "generated_at": "2026-10-30T07:01:04+01:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.91,
     "by_direction": {
-      "Meidling": 6898,
+      "Meidling": 6899,
       "Praterstern": 3830
     },
     "by_hour_avg": {
@@ -101,33 +101,33 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-10-30T05:25:00+01:00",
+          "last_seen": "2026-10-30T06:55:00+01:00",
           "peer_rows_since": 0,
           "rows_in_window": 1172
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 3048,
+          "peer_rows_since": 3049,
           "rows_in_window": 0
         }
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-10-30T06:30:47+01:00",
+        "last_success": "2026-10-30T07:00:59+01:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
       "window_days": 30
     },
     "live": {
-      "avg_delay_minutes": null,
-      "observations": 0,
+      "avg_delay_minutes": 0.0,
+      "observations": 1,
       "window_minutes": 60
     },
     "max_delay_minutes": 203.0,
     "threshold_exceedances": 135,
     "threshold_minutes": 9.0,
-    "total_observations": 10728
+    "total_observations": 10729
   },
   "stoerungen": {
     "by_hour": {
@@ -138,7 +138,7 @@
       "04": 86,
       "05": 142,
       "06": 141,
-      "07": 157,
+      "07": 158,
       "08": 234,
       "09": 242,
       "10": 243,
@@ -159,19 +159,19 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 180,
       "VOR/VAO": 11,
-      "Wiener Linien": 4244,
+      "Wiener Linien": 4245,
       "ÖBB": 306
     },
     "by_weekday": {
       "Di": 716,
       "Do": 763,
-      "Fr": 763,
+      "Fr": 764,
       "Mi": 715,
       "Mo": 657,
       "Sa": 586,
       "So": 541
     },
-    "total": 4741
+    "total": 4742
   },
   "year": 2026
 }
