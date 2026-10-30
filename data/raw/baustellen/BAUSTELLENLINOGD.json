@@ -601,29 +601,6 @@
   {
    "geometry": {
     "first_position": [
-     16.367746,
-     48.18153081
-    ],
-    "type": "LineString"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Kundenzentrum",
-    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
-    "ANTRAGSTELLER": "MA28",
-    "BEHINDERUNGSART": "Straßenbau",
-    "BEZEICHNUNG": "Landgutgasse von Herzgasse und Karl-Merkatz-Gasse bis Margaretengürtel und Kliebergasse",
-    "BEZIRK": 10,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-10-15Z",
-    "OBJEKT_ENDE": "2026-10-29Z",
-    "PRESSETEXT": "Während der Aufstellung der den Radweg abgrenzenden Betonleitwände wird die Fahrbahn örtlich eingeengt, der Verkehr wird durch geschultes Personal an der Arbeitsstelle vorbeigeschleust.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
      16.39587332,
      48.19676823
     ],
@@ -1331,29 +1308,6 @@
     "OBJEKT_BEGINN": "2026-09-14Z",
     "OBJEKT_ENDE": "2027-01-31Z",
     "PRESSETEXT": "ImBaustellenbereich wird eine Restfahrbahn mit 3,50 mfreigehalten. Die Wittelsbachstraße wird von Schüttelstraße bis Böcklinstraße zur Einbahn, welche abhängig vom Baufortschritt die Fahrtrichtung wechselt. Die Arbeiten im Kreuzungsplateau Wittelsbachstraße und Böcklinstraße werden in der Zeit von 20:00 Uhr bis 5:00 Uhr durchgeführt. DerFußgänger- und Radverkehr kann aufrecht gehalten werden.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
-     16.35913788,
-     48.18784747
-    ],
-    "type": "LineString"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Gerhard Baumann",
-    "ANSPRECHPERSON_TEL": "Tel.: 050128/32740",
-    "ANTRAGSTELLER": "Wiener Netze - Bereich Gas",
-    "BEHINDERUNGSART": "Rohrlegung",
-    "BEZEICHNUNG": "Zentagasse 22 bis 46",
-    "BEZIRK": 5,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-08-31Z",
-    "OBJEKT_ENDE": "2026-10-30Z",
-    "PRESSETEXT": "Es wir ein Fahrstreifen mit einer Restfahrbahn von 3,00 m aufrecht gehalten.",
     "SE_ANNO_CAD_DATA": null
    }
   }
