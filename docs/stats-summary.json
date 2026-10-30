@@ -1,7 +1,7 @@
 {
   "ausfaelle": {
     "by_direction": {
-      "Meidling": 1018,
+      "Meidling": 1019,
       "Praterstern": 911
     },
     "by_hour": {
@@ -15,7 +15,7 @@
       "07": 117,
       "08": 139,
       "09": 93,
-      "10": 88,
+      "10": 89,
       "11": 74,
       "12": 67,
       "13": 72,
@@ -38,7 +38,7 @@
       "REX2": 6,
       "REX3": 195,
       "REX92": 3,
-      "S1": 439,
+      "S1": 440,
       "S2": 302,
       "S3": 248,
       "S4": 149
@@ -46,15 +46,15 @@
     "by_weekday": {
       "Di": 295,
       "Do": 330,
-      "Fr": 374,
+      "Fr": 375,
       "Mi": 308,
       "Mo": 295,
       "Sa": 159,
       "So": 168
     },
-    "total": 1929
+    "total": 1930
   },
-  "generated_at": "2026-10-30T10:01:17+01:00",
+  "generated_at": "2026-10-30T10:30:40+01:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.91,
@@ -113,7 +113,7 @@
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-10-30T10:01:05+01:00",
+        "last_success": "2026-10-30T10:30:35+01:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
@@ -121,7 +121,7 @@
     },
     "live": {
       "avg_delay_minutes": 0.0,
-      "observations": 2,
+      "observations": 1,
       "window_minutes": 60
     },
     "max_delay_minutes": 203.0,
