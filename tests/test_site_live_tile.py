@@ -50,7 +50,7 @@ def _tile(live: object, poll: object, lang: str = "de") -> str:
     # The program is assembled from site.js of this checkout, no outside input.
     argv = [NODE, "-e", program]
     out = subprocess.run(argv, capture_output=True, text=True, check=True, timeout=30)  # noqa: S603
-    return json.loads(out.stdout)
+    return str(json.loads(out.stdout))
 
 
 EMPTY = {"avg_delay_minutes": None, "observations": 0, "window_minutes": 60}

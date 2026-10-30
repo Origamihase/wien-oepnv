@@ -745,9 +745,11 @@ def test_live_fetch_covers_is_bound_to_the_live_window() -> None:
     """The fetch must have worked inside the 60-minute window, not just in 3 h."""
     now = datetime(2026, 10, 30, 16, 1, tzinfo=VIENNA_TZ)
 
-    def status(minutes_ago: int | None) -> script.PollStatus:
+    from src.utils.stammstrecke_poll import PollStatus
+
+    def status(minutes_ago: int | None) -> PollStatus:
         last = None if minutes_ago is None else now - timedelta(minutes=minutes_ago)
-        return script.PollStatus(
+        return PollStatus(
             last_attempt=now,
             last_result="ok" if last else "error",
             last_error="",
