@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261030-0008, I20260909-0007, I20261030-0007-F01, I20261020-0029, I20261030-0009"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261030-0008-F01, I20260925-0011, I20260909-0007, I20261030-0007-F01, I20261020-0029, I20261030-0009-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1473-149, R1474-149, R1475-149, R1476-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R1448-149, R1472-149, R1449-149, R117-136, R119-136, R118-136, R293-474, R318-437, R36-152, R45-136, R19-136, R130-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R2373-127, R2420-411, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R3886-480, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R715-407, R714-407, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1448-412, R1474-412, R1445-149, R1447-149, R1446-149, R101-136, R100-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R36-152, R318-437, R293-474, R2420-411, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-627, R1875-101, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R3886-480, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R714-407, R715-407, R2579-407, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -314,19 +314,19 @@
       "7A": "ptBusCity"
      }
     },
-    "description": "Linie 7A: Fahrtbehinderung in Richtung Reumannplatz U. Voraussichtliche Dauer: 08:00 Uhr. Grund: Falschparker im Bereich Inzersdorfer Straße 97.",
-    "descriptionHTML": "<p>Linie 7A:<br>Fahrtbehinderung in Richtung Reumannplatz U.</p><p>Voraussichtliche Dauer: 08:00 Uhr.</p><p>Grund: Falschparker im Bereich Inzersdorfer Straße 97.</p>",
+    "description": "Linie 7A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 7A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 7A:<br>Fahrtbehinderung in Richtung Reumannplatz U.</p><p>Voraussichtliche Dauer: 08:00 Uhr.</p><p>Grund: Falschparker im Bereich Inzersdorfer Straße 97.</p>",
-       "descriptionPlain": "Linie 7A: Fahrtbehinderung in Richtung Reumannplatz U. Voraussichtliche Dauer: 08:00 Uhr. Grund: Falschparker im Bereich Inzersdorfer Straße 97.",
+       "descriptionHtml": "<p>Linie 7A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 7A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "7A: Falschparker"
       }
      }
     ],
     "location": "Inzersdorfer Straße 97",
-    "name": "I20261030-0008",
+    "name": "I20261030-0008-F01",
     "owner": "WL",
     "parentName": "I20261030-0008",
     "priority": "1",
@@ -345,8 +345,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-30T07:26:00.000+0100",
-     "lastUpdate": "2026-10-30T07:26:00.000+0100",
+     "created": "2026-10-30T07:42:00.000+0100",
+     "end": "2026-10-30T08:07:00.000+0100",
+     "lastUpdate": "2026-10-30T07:49:00.000+0100",
      "start": "2026-10-30T07:26:00.000+0100"
     },
     "title": "7A: Falschparker"
@@ -359,18 +360,18 @@
       "U4": "ptMetro"
      }
     },
-    "description": "Die Linie U4 fährt derzeit zwischen den Stationen Pilgramgasse und Kettenbrückengasse in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 07:50 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Pilgramgasse.",
-    "descriptionHTML": "<p>Die Linie U4 fährt derzeit zwischen den Stationen Pilgramgasse und Kettenbrückengasse in beiden Richtungen über Gleis 2.</p><p>Voraussichtliche Dauer: 07:50 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Pilgramgasse.</p>",
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie U4 fährt derzeit zwischen den Stationen Pilgramgasse und Kettenbrückengasse in beiden Richtungen über Gleis 2.</p><p>Voraussichtliche Dauer: 07:50 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Pilgramgasse.</p>",
-       "descriptionPlain": "Die Linie U4 fährt derzeit zwischen den Stationen Pilgramgasse und Kettenbrückengasse in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 07:50 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Pilgramgasse.",
+       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "U4: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261030-0009",
+    "name": "I20261030-0009-F01",
     "owner": "WL",
     "parentName": "I20261030-0009",
     "priority": "1",
@@ -392,8 +393,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-30T07:28:00.000+0100",
-     "lastUpdate": "2026-10-30T07:28:00.000+0100",
+     "created": "2026-10-30T07:48:00.000+0100",
+     "lastUpdate": "2026-10-30T07:48:00.000+0100",
+     "resume": "2026-10-30T07:48:00.000+0100",
      "start": "2026-10-30T07:27:00.000+0100"
     },
     "title": "U4: Schadhaftes Fahrzeug"
@@ -1524,6 +1526,29 @@
      "start": "2026-10-30T00:00:18.000+0100"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2579-407",
+    "owner": "WL",
+    "parentName": "R2579-407",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedStops": [
+     2579
+    ],
+    "time": {
+     "end": "2026-10-30T08:30:00.000+0100",
+     "start": "2026-10-30T07:30:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
