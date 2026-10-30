@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261030-0045, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261030-0045-F01, I20261030-0045-F02, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1448-412, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1474-412, R103-136, R102-136, R101-136, R100-136, R293-474, R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2420-411, R2372-627, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R3886-480, R2558-125, R1974-466, R1301-440, R1272-440, R1689-459, R1687-459, R1686-459, R1684-459, R1688-459, R2639-459, R1125-429, R1125-229, R2343-433, R2343-229, R2343-429, R588-0, R1365-0, R578-110, R559-110, R586-110, R585-110, R584-110, R583-110, R582-110, R581-110, R580-110, R579-110, R561-110, R3468-110, R562-110, R1364-102, R1363-102, R1362-102, R274-102, R275-102, R270-102, R272-102, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1448-412, R1474-412, R36-152, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R318-437, R293-474, R2372-125, R2373-126, R2379-627, R2380-627, R2345-127, R2420-411, R2372-627, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R2373-127, R1884-101, R2373-125, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R3886-480, R2558-125, R1974-466, R1272-440, R1301-440, R1125-229, R1125-429, R2343-429, R2343-229, R2343-433, R1364-102, R1362-102, R1363-102, R274-102, R272-102, R275-102, R270-102, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -263,23 +263,22 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "10": "ptTram",
-      "2": "ptTram"
+      "10": "ptTram"
      }
     },
-    "description": "Linie 2: Umleitung in Richtung Dornbach zwischen Johann-Nepomuk-Berger-Platz und Dornbach über die Strecke der Linien 9 und 43. Linie 10: Betrieb nur zwischen Unter St. Veit, Hummelgasse und Ottakring, Maroltingergasse. Voraussichtliche Dauer: 22:50 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Sandleitengasse 58.",
-    "descriptionHTML": "<p>Linie 2: <br>Umleitung in Richtung Dornbach <br>zwischen Johann-Nepomuk-Berger-Platz und Dornbach <br>über die Strecke der Linien 9 und 43.<br>Linie 10:<br>Betrieb nur zwischen Unter St. Veit, Hummelgasse und Ottakring, Maroltingergasse.</p><p>Voraussichtliche Dauer: 22:50 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Bereich Sandleitengasse 58.</p>",
+    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 2: <br>Umleitung in Richtung Dornbach <br>zwischen Johann-Nepomuk-Berger-Platz und Dornbach <br>über die Strecke der Linien 9 und 43.<br>Linie 10:<br>Betrieb nur zwischen Unter St. Veit, Hummelgasse und Ottakring, Maroltingergasse.</p><p>Voraussichtliche Dauer: 22:50 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Bereich Sandleitengasse 58.</p>",
-       "descriptionPlain": "Linie 2: Umleitung in Richtung Dornbach zwischen Johann-Nepomuk-Berger-Platz und Dornbach über die Strecke der Linien 9 und 43. Linie 10: Betrieb nur zwischen Unter St. Veit, Hummelgasse und Ottakring, Maroltingergasse. Voraussichtliche Dauer: 22:50 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Sandleitengasse 58.",
-       "title": "10, 2: Schadhaftes Fahrzeug"
+       "descriptionHtml": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "10: Schadhaftes Fahrzeug"
       }
      }
     ],
     "location": "Sandleitengasse 58",
-    "name": "I20261030-0045",
+    "name": "I20261030-0045-F01",
     "owner": "WL",
     "parentName": "I20261030-0045",
     "priority": "1",
@@ -287,15 +286,9 @@
     "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "2",
      "10"
     ],
     "relatedLinesDetails": [
-     {
-      "lineId": 102,
-      "lineName": "2",
-      "vehicleType": "ptTram"
-     },
      {
       "lineId": 110,
       "lineName": "10",
@@ -304,11 +297,58 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-30T22:25:00.000+0100",
-     "lastUpdate": "2026-10-30T22:25:00.000+0100",
+     "created": "2026-10-30T23:13:00.000+0100",
+     "lastUpdate": "2026-10-30T23:13:00.000+0100",
+     "resume": "2026-10-30T23:13:00.000+0100",
      "start": "2026-10-30T22:22:00.000+0100"
     },
-    "title": "10, 2: Schadhaftes Fahrzeug"
+    "title": "10: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "2": "ptTram"
+     }
+    },
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "2: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "location": "Sandleitengasse 58",
+    "name": "I20261030-0045-F02",
+    "owner": "WL",
+    "parentName": "I20261030-0045",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-30T23:13:00.000+0100",
+     "lastUpdate": "2026-10-30T23:13:00.000+0100",
+     "resume": "2026-10-30T23:13:00.000+0100",
+     "start": "2026-10-30T22:22:00.000+0100"
+    },
+    "title": "2: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -704,26 +744,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1365-0",
-    "owner": "WL",
-    "parentName": "R1365-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1365
-    ],
-    "time": {
-     "end": "2026-10-30T23:26:00.000+0100",
-     "start": "2026-10-30T22:26:46.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
     "name": "R1445-149",
     "owner": "WL",
@@ -996,121 +1016,6 @@
      "start": "2026-10-30T00:00:11.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr.",
-    "name": "R1684-459",
-    "owner": "WL",
-    "parentName": "R1684-459",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedStops": [
-     1684
-    ],
-    "time": {
-     "end": "2026-10-30T23:30:00.000+0100",
-     "start": "2026-10-30T18:18:52.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr."
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr.",
-    "name": "R1686-459",
-    "owner": "WL",
-    "parentName": "R1686-459",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedStops": [
-     1686
-    ],
-    "time": {
-     "end": "2026-10-30T23:30:00.000+0100",
-     "start": "2026-10-30T18:18:52.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr."
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr.",
-    "name": "R1687-459",
-    "owner": "WL",
-    "parentName": "R1687-459",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedStops": [
-     1687
-    ],
-    "time": {
-     "end": "2026-10-30T23:30:00.000+0100",
-     "start": "2026-10-30T18:18:52.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr."
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr.",
-    "name": "R1688-459",
-    "owner": "WL",
-    "parentName": "R1688-459",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedStops": [
-     1688
-    ],
-    "time": {
-     "end": "2026-10-30T23:30:00.000+0100",
-     "start": "2026-10-30T18:18:52.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr."
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr.",
-    "name": "R1689-459",
-    "owner": "WL",
-    "parentName": "R1689-459",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedStops": [
-     1689
-    ],
-    "time": {
-     "end": "2026-10-30T23:30:00.000+0100",
-     "start": "2026-10-30T18:18:52.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr."
    },
    {
     "alertCause": "undefined alert cause",
@@ -1759,29 +1664,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr.",
-    "name": "R2639-459",
-    "owner": "WL",
-    "parentName": "R2639-459",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedStops": [
-     2639
-    ],
-    "time": {
-     "end": "2026-10-30T23:30:00.000+0100",
-     "start": "2026-10-30T18:18:53.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr."
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Schadhafter Zug\nUmleitung ab Johann-N.-Berger-Platz über 9+43",
     "name": "R270-102",
     "owner": "WL",
@@ -1920,29 +1802,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Maroltingergasse",
-    "name": "R3468-110",
-    "owner": "WL",
-    "parentName": "R3468-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     3468
-    ],
-    "time": {
-     "end": "2026-10-30T23:29:00.000+0100",
-     "start": "2026-10-30T22:30:14.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Maroltingergasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Züge halten\nbei Linien 6 und 18",
     "name": "R36-152",
     "owner": "WL",
@@ -2031,302 +1890,6 @@
      "start": "2026-10-30T00:00:12.000+0100"
     },
     "title": "Züge halten\nWipplingerstr 39"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse",
-    "name": "R559-110",
-    "owner": "WL",
-    "parentName": "R559-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     559
-    ],
-    "time": {
-     "end": "2026-10-30T23:28:00.000+0100",
-     "start": "2026-10-30T22:29:44.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Maroltingergasse",
-    "name": "R561-110",
-    "owner": "WL",
-    "parentName": "R561-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     561
-    ],
-    "time": {
-     "end": "2026-10-30T23:29:00.000+0100",
-     "start": "2026-10-30T22:30:14.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Maroltingergasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Maroltingergasse",
-    "name": "R562-110",
-    "owner": "WL",
-    "parentName": "R562-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     562
-    ],
-    "time": {
-     "end": "2026-10-30T23:29:00.000+0100",
-     "start": "2026-10-30T22:30:14.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Maroltingergasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse",
-    "name": "R578-110",
-    "owner": "WL",
-    "parentName": "R578-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     578
-    ],
-    "time": {
-     "end": "2026-10-30T23:28:00.000+0100",
-     "start": "2026-10-30T22:29:44.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse",
-    "name": "R579-110",
-    "owner": "WL",
-    "parentName": "R579-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     579
-    ],
-    "time": {
-     "end": "2026-10-30T23:28:00.000+0100",
-     "start": "2026-10-30T22:29:44.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse",
-    "name": "R580-110",
-    "owner": "WL",
-    "parentName": "R580-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     580
-    ],
-    "time": {
-     "end": "2026-10-30T23:28:00.000+0100",
-     "start": "2026-10-30T22:29:44.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse",
-    "name": "R581-110",
-    "owner": "WL",
-    "parentName": "R581-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     581
-    ],
-    "time": {
-     "end": "2026-10-30T23:28:00.000+0100",
-     "start": "2026-10-30T22:29:44.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse",
-    "name": "R582-110",
-    "owner": "WL",
-    "parentName": "R582-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     582
-    ],
-    "time": {
-     "end": "2026-10-30T23:28:00.000+0100",
-     "start": "2026-10-30T22:29:44.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse",
-    "name": "R583-110",
-    "owner": "WL",
-    "parentName": "R583-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     583
-    ],
-    "time": {
-     "end": "2026-10-30T23:28:00.000+0100",
-     "start": "2026-10-30T22:29:44.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse",
-    "name": "R584-110",
-    "owner": "WL",
-    "parentName": "R584-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     584
-    ],
-    "time": {
-     "end": "2026-10-30T23:28:00.000+0100",
-     "start": "2026-10-30T22:29:44.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse",
-    "name": "R585-110",
-    "owner": "WL",
-    "parentName": "R585-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     585
-    ],
-    "time": {
-     "end": "2026-10-30T23:28:00.000+0100",
-     "start": "2026-10-30T22:29:44.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse",
-    "name": "R586-110",
-    "owner": "WL",
-    "parentName": "R586-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     586
-    ],
-    "time": {
-     "end": "2026-10-30T23:28:00.000+0100",
-     "start": "2026-10-30T22:29:44.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb nur bis Maroltingergasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R588-0",
-    "owner": "WL",
-    "parentName": "R588-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     588
-    ],
-    "time": {
-     "end": "2026-10-30T23:26:00.000+0100",
-     "start": "2026-10-30T22:26:44.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
