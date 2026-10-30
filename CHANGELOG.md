@@ -10,6 +10,15 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Website: kein Punkt mehr im Quellen-Etikett (2026-10-30)**: Auf
+  Michaels Wunsch („Bitte entferne den Punkt aus den 'Pillen'“) zeigen die
+  Etiketten der Meldungskacheln auf `site.html` („WIENER LINIEN“, „ÖBB“,
+  „BAUSTELLEN“, „VOR/VAO“, „ANDERE“) nur noch den Namen der Quelle. Sonst bleibt das
+  Design gleich, auch der farbige Punkt in den Filter-Chips. Änderung in
+  `docs/assets/site.css` (dazu `site.min.css` und der Hash in `site.html`),
+  Wächter in `tests/test_site_css_tiles.py`, beschrieben in
+  `docs/architecture.md` (Gestaltung des Live-Dashboards).
+
 * **Jules-Audits 28. und 29.10.2026: übersehene Doppelmeldung und
   EN-Namen (2026-10-29)**: Beide Audits melden „No display errors found“.
   Kopfzahlen und Nachbau stimmen; die GUID-Spalte vom 29.10. stimmt in neun
