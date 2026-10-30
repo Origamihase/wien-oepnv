@@ -1,8 +1,8 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-30T04:30:52.259498+00:00",
- "built": "2026-10-30T05:30:45+01:00",
+ "updated": "2026-10-30T05:01:09.827509+00:00",
+ "built": "2026-10-30T06:00:55+01:00",
  "findings": [
   {
    "rule": "alte-meldung-als-neu",
@@ -15,17 +15,17 @@
  "rules": {
   "alte-meldung-als-neu": {
    "since": "2026-10-29T23:01:00.019052+00:00",
-   "last": "2026-10-30T04:30:52.259498+00:00",
+   "last": "2026-10-30T05:01:09.827509+00:00",
    "held_runs": 0,
    "issue": 2086
   }
  },
  "previous_feed": {
-  "built": "2026-10-30T05:30:45+01:00",
+  "built": "2026-10-30T06:00:55+01:00",
   "items": [
    {
-    "title": "46: Verspätungen",
-    "time_line": "Seit 04:48"
+    "title": "U1: Schadhaftes Fahrzeug",
+    "time_line": "Seit 05:55"
    },
    {
     "title": "38B/39B: Allerheiligenverkehr 01.11.2026",
@@ -6786,17 +6786,37 @@
     "oebb": 9,
     "wl": 100
    }
+  },
+  {
+   "t": "2026-10-30T05:01:09.827509+00:00",
+   "raw": {
+    "wl-stoerungen": 67,
+    "wl-hinweise": 68,
+    "oebb": 158,
+    "baustellen-linien": 59,
+    "baustellen-punkte": 20
+   },
+   "discarded": {
+    "wl": 4,
+    "oebb": 134,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 100
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-30T04:30:52.259498+00:00"
+   "last_ok": "2026-10-30T05:01:09.827509+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-30T04:30:52.259498+00:00"
+   "last_ok": "2026-10-30T05:01:09.827509+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-30T04:30:52.259498+00:00"
+   "last_ok": "2026-10-30T05:01:09.827509+00:00"
   }
  }
 }

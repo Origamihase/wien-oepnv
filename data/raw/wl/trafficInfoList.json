@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20261030-0005, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261030-0006, I20261020-0029"
    },
    {
     "id": 3,
@@ -263,46 +263,45 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "46": "ptTram"
+      "U1": "ptMetro"
      }
     },
-    "description": "Linie 46: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 46:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 46:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 46: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "46: Verspätungen"
+       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U1: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261030-0005",
+    "name": "I20261030-0006",
     "owner": "WL",
-    "parentName": "I20261030-0005",
+    "parentName": "I20261030-0006",
     "priority": "1",
     "reasonId": 20,
     "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "46"
+     "U1"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 146,
-      "lineName": "46",
-      "vehicleType": "ptTram"
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-30T04:49:00.000+0100",
-     "end": "2026-10-30T05:35:00.000+0100",
-     "lastUpdate": "2026-10-30T05:01:00.000+0100",
-     "resume": "2026-10-30T04:48:00.000+0100",
-     "start": "2026-10-30T04:48:00.000+0100"
+     "created": "2026-10-30T05:56:00.000+0100",
+     "lastUpdate": "2026-10-30T05:56:00.000+0100",
+     "resume": "2026-10-30T05:55:00.000+0100",
+     "start": "2026-10-30T05:55:00.000+0100"
     },
-    "title": "46: Verspätungen"
+    "title": "U1: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
