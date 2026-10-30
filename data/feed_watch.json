@@ -1,8 +1,8 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-30T09:30:42.236985+00:00",
- "built": "2026-10-30T10:30:37+01:00",
+ "updated": "2026-10-30T10:01:15.417692+00:00",
+ "built": "2026-10-30T11:00:58+01:00",
  "findings": [
   {
    "rule": "alte-meldung-als-neu",
@@ -15,25 +15,33 @@
  "rules": {
   "alte-meldung-als-neu": {
    "since": "2026-10-29T23:01:00.019052+00:00",
-   "last": "2026-10-30T09:30:42.236985+00:00",
+   "last": "2026-10-30T10:01:15.417692+00:00",
    "held_runs": 0,
    "issue": 2086
   }
  },
  "previous_feed": {
-  "built": "2026-10-30T10:30:37+01:00",
+  "built": "2026-10-30T11:00:58+01:00",
   "items": [
+   {
+    "title": "25: Polizeieinsatz",
+    "time_line": "Seit 10:52"
+   },
+   {
+    "title": "12: Umleitung zum Westbahnhof",
+    "time_line": "Seit 10:42"
+   },
+   {
+    "title": "2/12: Feuerwehreinsatz",
+    "time_line": "Seit 10:39"
+   },
+   {
+    "title": "47A: Rettungseinsatz",
+    "time_line": "Seit 10:37"
+   },
    {
     "title": "Wien Liesing ↔ Wien Meidling",
     "time_line": "Seit 09:59"
-   },
-   {
-    "title": "62A: Fremder Verkehrsunfall",
-    "time_line": "Seit 09:39"
-   },
-   {
-    "title": "62: Rettungseinsatz",
-    "time_line": "Seit 09:23"
    },
    {
     "title": "52: Gleisschaden",
@@ -52,61 +60,13 @@
     "time_line": "Heute"
    },
    {
-    "title": "40A: Bauarbeiten",
-    "time_line": "Heute"
-   },
-   {
     "title": "11: Wienerfeldgasse",
     "time_line": "Bis 19.11."
-   },
-   {
-    "title": "40A: Bauernfeldplatz",
-    "time_line": "Seit 27.10."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-23T09:30:57.327479+00:00",
-   "raw": {
-    "wl-stoerungen": 68,
-    "wl-hinweise": 74,
-    "oebb": 178,
-    "baustellen-linien": 56,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 3,
-    "oebb": 153,
-    "baustellen": 70
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 109
-   }
-  },
-  {
-   "t": "2026-10-23T10:00:43.926874+00:00",
-   "raw": {
-    "wl-stoerungen": 68,
-    "wl-hinweise": 74,
-    "oebb": 175,
-    "baustellen-linien": 56,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 3,
-    "oebb": 150,
-    "baustellen": 70
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 109
-   }
-  },
   {
    "t": "2026-10-23T10:31:15.372394+00:00",
    "raw": {
@@ -6806,17 +6766,37 @@
     "oebb": 10,
     "wl": 102
    }
+  },
+  {
+   "t": "2026-10-30T10:01:15.417692+00:00",
+   "raw": {
+    "wl-stoerungen": 83,
+    "wl-hinweise": 68,
+    "oebb": 160,
+    "baustellen-linien": 59,
+    "baustellen-punkte": 20
+   },
+   "discarded": {
+    "wl": 4,
+    "oebb": 135,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 10,
+    "wl": 104
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-30T09:30:42.236985+00:00"
+   "last_ok": "2026-10-30T10:01:15.417692+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-30T09:30:42.236985+00:00"
+   "last_ok": "2026-10-30T10:01:15.417692+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-30T09:30:42.236985+00:00"
+   "last_ok": "2026-10-30T10:01:15.417692+00:00"
   }
  }
 }
