@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261030-0037-F01, I20260917-0012, I20261030-0040, I20260922-0032, I20260925-0011, I20261030-0039-F01, I20260909-0007, I20261030-0036-F01, I20261020-0029, I20261030-0038-F01, I20261030-0031"
+    "trafficInfoNameList": "I20260917-0012, I20261030-0040, I20260922-0032, I20261030-0041, I20260925-0011, I20261030-0039-F01, I20261030-0042, I20260909-0007, I20261020-0029, I20261030-0038-F01, I20261030-0031"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-149, R1447-149, R1446-149, R1445-149, R1448-412, R1474-412, R117-136, R293-474, R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R118-136, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R1876-101, R2359-125, R2343-125, R2343-626, R2378-627, R1875-101, R2372-627, R2420-411, R2345-127, R2380-627, R2379-627, R2373-126, R3886-480, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R1640-459, R1692-459, R1685-459, R1683-459, R1687-459, R1688-459, R1689-459, R1684-459, R1686-459, R2639-459, R1691-459, R1694-459, R1693-459, R339-170, R341-170, R340-170, R337-170, R2645-170, R161-170, R163-170, R162-170, R305-170, R308-170, R307-170, R306-170, R343-170, R346-170, R311-170, R3445-170, R1925-170, R1926-170, R1375-146, R3447-170, R3446-170, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1448-149, R1476-149, R1475-149, R1474-149, R1473-149, R1472-149, R1449-149, R1448-412, R1474-412, R1445-149, R1446-149, R1447-149, R103-136, R102-136, R101-136, R100-136, R293-474, R318-437, R36-152, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R2343-125, R2378-627, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2420-411, R2372-627, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R3886-480, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R1688-459, R1687-459, R1686-459, R1684-459, R1689-459, R2639-459, R337-170, R341-170, R340-170, R339-170, R2645-170, R161-170, R163-170, R162-170, R307-170, R306-170, R305-170, R308-170, R343-170, R3445-170, R346-170, R311-170, R1925-170, R1926-170, R1375-146, R3446-170, R3447-170, R22-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -304,100 +304,6 @@
     "title": "16A: Verkehrsüberlastung"
    },
    {
-    "alertCause": "fire",
-    "alertCauseId": 5,
-    "attributes": {
-     "relatedLineTypes": {
-      "59A": "ptBusCity"
-     }
-    },
-    "description": "Linie 59A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 59A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 59A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 59A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "59A: Feuerwehreinsatz"
-      }
-     }
-    ],
-    "name": "I20261030-0036-F01",
-    "owner": "WL",
-    "parentName": "I20261030-0036",
-    "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 459,
-      "lineName": "59A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     1690
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-30T18:22:00.000+0100",
-     "lastUpdate": "2026-10-30T18:22:00.000+0100",
-     "resume": "2026-10-30T18:22:00.000+0100",
-     "start": "2026-10-30T18:14:00.000+0100"
-    },
-    "title": "59A: Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "28A": "ptBusCity"
-     }
-    },
-    "description": "Linie 28A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 28A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 28A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 28A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "28A: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Aderklaaer Straße",
-    "name": "I20261030-0037-F01",
-    "owner": "WL",
-    "parentName": "I20261030-0037",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "28A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 428,
-      "lineName": "28A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-30T18:40:00.000+0100",
-     "lastUpdate": "2026-10-30T18:40:00.000+0100",
-     "resume": "2026-10-30T18:40:00.000+0100",
-     "start": "2026-10-30T18:31:00.000+0100"
-    },
-    "title": "28A: Fremder Verkehrsunfall"
-   },
-   {
     "alertCause": "police activity",
     "alertCauseId": 3,
     "attributes": {
@@ -533,6 +439,99 @@
      "start": "2026-10-30T18:55:00.000+0100"
     },
     "title": "11: Polizeieinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "32A": "ptBusCity"
+     }
+    },
+    "description": "Linie 32A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 32A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 32A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 32A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "32A: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261030-0041",
+    "owner": "WL",
+    "parentName": "I20261030-0041",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "32A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 432,
+      "lineName": "32A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "relatedStops": [
+     1164
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-30T19:25:00.000+0100",
+     "lastUpdate": "2026-10-30T19:25:00.000+0100",
+     "resume": "2026-10-30T19:25:00.000+0100",
+     "start": "2026-10-30T19:25:00.000+0100"
+    },
+    "title": "32A: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram"
+     }
+    },
+    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "1: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261030-0042",
+    "owner": "WL",
+    "parentName": "I20261030-0042",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 101,
+      "lineName": "1",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-30T19:29:00.000+0100",
+     "lastUpdate": "2026-10-30T19:29:00.000+0100",
+     "resume": "2026-10-30T19:29:00.000+0100",
+     "start": "2026-10-30T19:29:00.000+0100"
+    },
+    "title": "1: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1181,52 +1180,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R1640-459",
-    "owner": "WL",
-    "parentName": "R1640-459",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedStops": [
-     1640
-    ],
-    "time": {
-     "end": "2026-10-30T19:14:00.000+0100",
-     "start": "2026-10-30T18:15:19.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung ab Hans.-M.-Berufschule über Längenfeldg. - Gürtel",
-    "name": "R1683-459",
-    "owner": "WL",
-    "parentName": "R1683-459",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedStops": [
-     1683
-    ],
-    "time": {
-     "end": "2026-10-30T19:18:00.000+0100",
-     "start": "2026-10-30T18:15:22.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung ab Hans.-M.-Berufschule über Längenfeldg. - Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr.",
     "name": "R1684-459",
     "owner": "WL",
@@ -1246,29 +1199,6 @@
      "start": "2026-10-30T18:18:52.000+0100"
     },
     "title": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr."
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R1685-459",
-    "owner": "WL",
-    "parentName": "R1685-459",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedStops": [
-     1685
-    ],
-    "time": {
-     "end": "2026-10-30T19:14:00.000+0100",
-     "start": "2026-10-30T18:15:22.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1361,98 +1291,6 @@
      "start": "2026-10-30T18:18:52.000+0100"
     },
     "title": "Feuerwehreinsatz\nUmleitung ab Arbeitergasse über Gürtel - Flurschützstr."
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung ab Hans.-M.-Berufschule über Längenfeldg. - Gürtel",
-    "name": "R1691-459",
-    "owner": "WL",
-    "parentName": "R1691-459",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedStops": [
-     1691
-    ],
-    "time": {
-     "end": "2026-10-30T19:18:00.000+0100",
-     "start": "2026-10-30T18:21:22.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung ab Hans.-M.-Berufschule über Längenfeldg. - Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R1692-459",
-    "owner": "WL",
-    "parentName": "R1692-459",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedStops": [
-     1692
-    ],
-    "time": {
-     "end": "2026-10-30T19:14:00.000+0100",
-     "start": "2026-10-30T18:15:22.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung ab Hans.-M.-Berufschule über Längenfeldg. - Gürtel",
-    "name": "R1693-459",
-    "owner": "WL",
-    "parentName": "R1693-459",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedStops": [
-     1693
-    ],
-    "time": {
-     "end": "2026-10-30T19:18:00.000+0100",
-     "start": "2026-10-30T18:21:22.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung ab Hans.-M.-Berufschule über Längenfeldg. - Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nUmleitung ab Hans.-M.-Berufschule über Längenfeldg. - Gürtel",
-    "name": "R1694-459",
-    "owner": "WL",
-    "parentName": "R1694-459",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedStops": [
-     1694
-    ],
-    "time": {
-     "end": "2026-10-30T19:18:00.000+0100",
-     "start": "2026-10-30T18:21:22.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nUmleitung ab Hans.-M.-Berufschule über Längenfeldg. - Gürtel"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1706,6 +1544,26 @@
      "start": "2026-10-30T04:40:29.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nZüge halten im Mittelgleis\n\n",
+    "name": "R22-0",
+    "owner": "WL",
+    "parentName": "R22-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     22
+    ],
+    "time": {
+     "end": "2026-10-30T20:29:00.000+0100",
+     "start": "2026-10-30T19:29:56.000+0100"
+    },
+    "title": "Rettungseinsatz\nZüge halten im Mittelgleis\n\n"
    },
    {
     "alertCause": "undefined alert cause",
