@@ -8,9 +8,9 @@ the two display tickers WL republishes every morning). The board says
 "Bauarbeiten", the notice "Kabelarbeiten", and a relocation's title names the
 stop, so the works rule of ``_absorb_works_tickers`` never matched. A ticker
 that only names the stops the notice moves the stop to now goes up in it, as
-long as the notice's short text still shows each of them. The live 40A
-notice loses "Liechtensteinstraße 39" behind the 180 cut, so there the
-ticker keeps its slot: it is the only place the feed reads that stop.
+long as the notice's short text still shows each of them; where the 180 cut
+hides one, the ticker is the only place the feed reads that stop and keeps
+its slot.
 
 The shapes are the entries of ``cache/wl_9d709a/events.json`` of 29.10.2026.
 """
@@ -46,6 +46,21 @@ NOTICE_3A = (
     "<p><strong><u>Von:</u></strong> Kärntner Ring, Nebenfahrbahn vor Kärntner Straße</p>"
     "<p><strong><u>Nach:</u></strong> Kärntner Ring 5, Nebenfahrbahn</p>"
     "<p><strong><u>Grund:</u></strong> Haussanierung</p>"
+)
+
+NOTICE_15A = (
+    "<p><strong><u>Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, "
+    "Grillgasse und N62 in Richtung Oper, Karlsplatz (U)</u></strong></p>"
+    "<p><strong><u>Haltestelle:</u></strong> Eibesbrunnergasse</p>"
+    "<p><strong><u>Von:</u></strong> Wienerbergstraße 27b-27c</p>"
+    "<p><strong><u>Nach:</u></strong> Wienerbergstraße 27a</p>"
+    "<p><strong><u>Grund:</u></strong> Instandsetzungsarbeiten</p>"
+    "<p><strong><u>Haltestellenverlegung der Linien 7A in Richtung Meidling Hauptstraße U, 15A in Richtung "
+    "Bhf. Meidling S U, Schedifkaplatz und N62 in Richtung Lainzer Tor</u></strong></p>"
+    "<p><strong><u>Haltestelle:</u></strong> Eibesbrunnergasse</p>"
+    "<p><strong><u>Von:</u></strong> Wienerbergstraße 12, Stiege 21-22</p>"
+    "<p><strong><u>Nach:</u></strong> Wienerbergstraße 14-14A</p>"
+    "<p><strong><u>Grund:</u></strong> Instandsetzungsarbeiten</p>"
 )
 
 DAY = datetime(2026, 10, 29, 3, 45, 18, tzinfo=UTC)  # 04:45:18 in Vienna
@@ -91,19 +106,23 @@ def test_a_stop_ticker_the_notice_shows_goes_up_in_it() -> None:
     assert (item["guid"], item["title"]) == ("38dbe79595a5ecf1", "40A: Bauernfeldplatz")
 
 
-def test_a_stop_the_cut_hides_keeps_its_ticker() -> None:
-    """Live 29.10.: "… gegenüber Bauernfeldplatz → …" hides "Liechtensteinstraße 39"."""
+def test_both_live_40a_tickers_go_up_once_the_notice_shows_both_stops() -> None:
+    """Since 2026-10-29 the notice reads "Richtung Schottentor U: → Liechtensteinstraße 39"."""
     items = [
         _notice(),
         _ticker("40A: Busse halten Liechtensteinstraße 38", "Bauarbeiten\nBusse halten Liechtensteinstraße 38", "08dab1d1a5c0"),
         _ticker("40A: Busse halten Liechtensteinstraße 39", "Bauarbeiten\nBusse halten Liechtensteinstraße 39", "844d0de929c4"),
     ]
-    assert len(_built(items)) == 2
+    assert [i["guid"] for i in _built(items)] == ["38dbe79595a5ecf1"]
+
+
+def test_a_stop_the_cut_hides_keeps_its_ticker() -> None:
+    """15A/7A/N62 (06.10.2026): the second stop stands behind three lines and their directions."""
     items = [
-        _notice(),
-        _ticker("40A: Busse halten Liechtensteinstraße 39", "Bauarbeiten\nBusse halten Liechtensteinstraße 39", "844d0de929c4"),
+        _wl("15A/7A/N62: Eibesbrunnergasse beide Fahrtrichtungen", NOTICE_15A, "Hinweis", NOTICE_START, None, "15a-notice"),
+        _ticker("7A: Busse halten Wienerbergstraße 14-14A", "Bauarbeiten\nBusse halten Wienerbergstraße 14-14A", "ticker"),
     ]
-    assert len(_built(items)) == 2
+    assert sorted(i["guid"] for i in _built(items)) == ["15a-notice", "ticker"]
 
 
 def test_the_board_may_shorten_the_notice_address() -> None:

@@ -406,4 +406,7 @@ def test_relocation_house_number_suffix_stays_compact() -> None:
              "Wienerbergstra&szlig;e 12, Stiege 21-22", "Wienerbergstra&szlig;e 14-14A"),
         ),
     )
-    assert desc.startswith("Wienerbergstraße 27b-27c → Wienerbergstraße 27a. Haltestellenverlegung")
+    # Both destinations fit only without the old places (operator decision
+    # 2026-10-29, "Von weglassen, wenn zu lang"); "14-14A" stays compact.
+    assert desc.startswith("→ Wienerbergstraße 27a. Haltestellenverlegung")
+    assert "→ Wienerbergstraße 14-14A." in desc

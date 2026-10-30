@@ -11198,10 +11198,66 @@ _RELOCATION_CLOSED_RE = re.compile(r"(?:ersatzlos\s+)?aufgelassen\b", re.IGNOREC
 _RELOCATION_DIRECTION = "Fahrtrichtung:"
 
 
+# Two destinations do not always fit the 180 characters: "40A: Bauernfeldplatz"
+# read "Richtung Döblinger Friedhof, Felix-Dahn-Straße: Liechtensteinstraße 42 →
+# Liechtensteinstraße 38. Richtung Schottentor U: Liechtensteinstraße 37a
+# gegenüber Bauernfeldplatz → …" (27.–29.10.2026, Jules audits 28./29.10.), the
+# new stop towards Schottentor U was cut. When a destination would fall behind
+# the cut, the old places go and every destination keeps its arrow: "Richtung
+# Schottentor U: → Liechtensteinstraße 39." (operator decision 2026-10-29, "Von
+# weglassen, wenn zu lang"). A text that shows every destination stays as it is.
+_RELOCATION_DISPLAY_LIMIT = 180
+
+
+def _relocation_targets_shown(blocks: list[str], targets: Sequence[str]) -> int:
+    """How many of *targets* the 180 characters of *blocks*, closed as sentences, show whole."""
+    text = " ".join(b if b.endswith(tuple(_BLOCK_TERMINAL_PUNCT)) else f"{b}." for b in blocks)
+    shown = 0
+    for target in targets:
+        index = text.find(target)
+        if index >= 0 and index + len(target) <= _RELOCATION_DISPLAY_LIMIT:
+            shown += 1
+    return shown
+
+
+def _without_origins(blocks: list[str]) -> list[str]:
+    """*blocks* without their ``Von:`` fields, each ``Nach:`` as ``→ B`` (see above)."""
+    out: list[str] = []
+    for block in blocks:
+        if block.startswith(_RELOCATION_FROM):
+            continue
+        if block.startswith(_RELOCATION_TO):
+            target = block[len(_RELOCATION_TO):].strip()
+            if not target:
+                continue
+            if _RELOCATION_CLOSED_RE.match(target):
+                block = f"{target[0].lower()}{target[1:]}"
+            else:
+                block = f"{_RELOCATION_ARROW} {target}"
+        out.append(block)
+    return out
+
+
 def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
-    """Put a relocation's ``Von:`` and ``Nach:`` fields in front."""
+    """Put a relocation's ``Von:`` and ``Nach:`` fields in front; old places go if a destination would be cut."""
     if not any(block.startswith(_RELOCATION_TO) for block in blocks):
         return blocks
+    ordered = _relocation_ordered(blocks, title_words)
+    targets = list(dict.fromkeys(
+        b[len(_RELOCATION_TO):].strip() for b in blocks if b.startswith(_RELOCATION_TO)
+    ))
+    targets = [t for t in targets if t and not _RELOCATION_CLOSED_RE.match(t)]
+    shown = _relocation_targets_shown(ordered, targets)
+    if shown >= len(targets):
+        return ordered
+    short = _without_origins(_relocation_ordered(blocks, title_words, keep_origins=False))
+    return short if _relocation_targets_shown(short, targets) > shown else ordered
+
+
+def _relocation_ordered(blocks: list[str], title_words: set[str], *, keep_origins: bool = True) -> list[str]:
+    """``Von:``/``Nach:`` in front of their directions; without origins only the destinations."""
+    if not keep_origins:
+        blocks = [b for b in blocks if not b.startswith(_RELOCATION_FROM)]
     # One notice can list the same stop for two lines ("12A" and "N8" at
     # Längenfeldgasse U): their "Von:" and "Nach:" are the same words.
     lead = list(dict.fromkeys(
@@ -11218,7 +11274,8 @@ def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
     ]
     if sum(b.startswith(_RELOCATION_DIRECTION) for b in rest) >= 2:
         return _relocation_by_direction(rest)
-    if len(lead) <= 2:
+    # Without its "Von:" a destination stays in front of its own direction.
+    if len(lead) <= 2 and keep_origins:
         return _relocation_arrows(
             lead + [b for b in rest if not b.startswith((_RELOCATION_FROM, _RELOCATION_TO))]
         )

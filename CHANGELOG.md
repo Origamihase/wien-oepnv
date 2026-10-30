@@ -13,7 +13,7 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 * **Jules-Audits 28. und 29.10.2026: übersehene Doppelmeldung und
   EN-Namen (2026-10-29)**: Beide Audits melden „No display errors found“.
   Kopfzahlen und Nachbau stimmen; die GUID-Spalte vom 29.10. stimmt in neun
-  von zehn Zeilen nicht mit `docs/feed.xml` überein. Drei Funde, die beide
+  von zehn Zeilen nicht mit `docs/feed.xml` überein. Vier Funde, die beide
   Audits als „OK“ führten:
   - *Doppelt im deutschen Feed:* „40A: Bauarbeiten“ („Busse halten
     Liechtensteinstraße 39, Liechtensteinstraße 38.“) stand vom 27. bis
@@ -23,10 +23,15 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
     laufende Verlegung derselben Linie auf, wenn jede Adresse ein „Nach:“
     des Hinweises ist und dessen Kurztext sie zeigt
     (`_relocated_stops_shown`, `docs/architecture.md`, §1). Seit Juli
-    sechs solche Paare; 13A, 12A/14A, 7A/N65/N66, 3A und N20 gehen so auf.
-    Bei 40A schneidet die 180-Zeichen-Grenze „Liechtensteinstraße 39“ ab
-    („… gegenüber Bauernfeldplatz → …“), die Tafel-Meldung ist dort die
-    einzige Stelle mit dieser Haltestelle und bleibt.
+    sechs solche Paare.
+  - *Zweites Ziel einer Verlegung abgeschnitten:* „40A: Bauernfeldplatz“
+    endete mit „Richtung Schottentor U: Liechtensteinstraße 37a gegenüber
+    Bauernfeldplatz → …“. Michael wählte am 29.10. „Von weglassen, wenn zu
+    lang“: Fiele ein Ziel hinter die 180-Zeichen-Grenze, entfallen die
+    alten Orte, jedes Ziel behält seinen Pfeil vor seiner Richtung
+    („Richtung Schottentor U: → Liechtensteinstraße 39.“, `_relocation_first`).
+    Über alle 6.067 WL-Texte seit Juli ändern sich nur 40A Bauernfeldplatz
+    und 17A Josef-Enslein-Platz.
   - *Straßennamen im EN-Feed übersetzt:* „im Bereich An den Eisteichen“ →
     „At the ice ponds“, „Unter-Meidlinger Straße“ → „Under-Meidlinger
     Straße“. Mitten im Satz großgeschriebene Präpositionen öffnen einen
