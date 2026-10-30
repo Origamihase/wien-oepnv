@@ -2433,6 +2433,21 @@ Seite weiterhin verlinkt. `SUMMARY_SCHEMA_VERSION` versioniert das
 Format; die Seite verweigert ein unbekanntes, statt eine halbe
 Auswertung zu rendern.
 
+**Leeres Live-Fenster: „Keine Fahrten“ oder „N/A“ (Entscheidung Michael,
+2026-10-30).** Die Live-Kachel „Ø Verspätung Stammstrecke“ und der
+README-Block `STATS:STAMMSTRECKE_LIVE` zeigen den Mittelwert der letzten
+60 Minuten. Liegt darin keine Beobachtung, zeigen beide „Keine Fahrten“
+(EN „No trains“), wenn der letzte erfolgreiche Abruf des Monitors
+(`coverage.poll.last_success`) im selben 60-Minuten-Fenster liegt: Der
+Abruf lief, gefahren ist kein Zug (Nachtpause oder alle Züge der Stunde
+ausgefallen, so am 30.10. 15:00–16:00 bei einem Gleisschaden zwischen
+Meidling und Liesing). Ohne einen solchen Abruf wurde nichts gemessen, und
+die Anzeige bleibt „N/A“. Die Grenze ist das Live-Fenster, nicht die drei
+Stunden des Health Checks. Python (`_live_fetch_covers`) und Seite
+(`renderStammstreckeLiveTile`) prüfen dieselbe Regel; die Seite misst gegen
+die Uhr des Browsers, damit ein liegengebliebener Stand nicht weiter
+„Keine Fahrten“ behauptet.
+
 ### Was das Dashboard beantwortet
 
 | Frage | Sektion in `docs/statistik.md` |

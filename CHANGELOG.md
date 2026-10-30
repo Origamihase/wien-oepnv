@@ -10,6 +10,17 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Live-Kachel Stammstrecke: „Keine Fahrten“ statt „N/A“ bei
+  funktionierendem Abruf (2026-10-30)**: Am 30.10. zeigte die Kachel
+  „Ø Verspätung Stammstrecke“ von 16:01 an „N/A“, obwohl Health Check und
+  Workflows grün waren. Ursache war keine Störung der Technik: Wegen eines
+  Gleisschadens zwischen Wien Meidling und Wien Liesing führte VAO alle fünf
+  Züge Richtung Meidling von 14:55 bis 15:55 als ausgefallen (CJX9 und S1,
+  alle in `ausfaelle_2026.csv`), das 60-Minuten-Fenster blieb leer.
+  Michael wählte „Keine Fahrten“: Ein leeres Fenster zeigt das (EN „No
+  trains“) auf der Seite und im README-Block, wenn der letzte erfolgreiche
+  Abruf im Fenster liegt; sonst bleibt „N/A“ (`renderStammstreckeLiveTile`,
+  `_live_fetch_covers`, `docs/architecture.md`, §6).
 * **Website: kein Punkt mehr im Quellen-Etikett (2026-10-30)**: Auf
   Michaels Wunsch („Bitte entferne den Punkt aus den 'Pillen'“) zeigen die
   Etiketten der Meldungskacheln auf `site.html` („WIENER LINIEN“, „ÖBB“,
