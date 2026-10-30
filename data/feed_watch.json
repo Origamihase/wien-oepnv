@@ -1,8 +1,8 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-30T11:31:10.855861+00:00",
- "built": "2026-10-30T12:30:53+01:00",
+ "updated": "2026-10-30T12:00:59.717671+00:00",
+ "built": "2026-10-30T13:00:47+01:00",
  "findings": [
   {
    "rule": "alte-meldung-als-neu",
@@ -15,14 +15,18 @@
  "rules": {
   "alte-meldung-als-neu": {
    "since": "2026-10-29T23:01:00.019052+00:00",
-   "last": "2026-10-30T11:31:10.855861+00:00",
+   "last": "2026-10-30T12:00:59.717671+00:00",
    "held_runs": 0,
    "issue": 2086
   }
  },
  "previous_feed": {
-  "built": "2026-10-30T12:30:53+01:00",
+  "built": "2026-10-30T13:00:47+01:00",
   "items": [
+   {
+    "title": "U6: Rettungseinsatz",
+    "time_line": "Seit 12:57"
+   },
    {
     "title": "U1: Betriebsstörung",
     "time_line": "Seit 12:06"
@@ -34,10 +38,6 @@
    {
     "title": "U3: Verspätungen",
     "time_line": "Seit 11:05"
-   },
-   {
-    "title": "52: Gleisschaden",
-    "time_line": "Seit 08:17"
    },
    {
     "title": "Wien Liesing ↔ Wien Meidling",
@@ -6786,17 +6786,39 @@
     "oebb": 10,
     "wl": 105
    }
+  },
+  {
+   "t": "2026-10-30T12:00:59.717671+00:00",
+   "raw": {
+    "wl-stoerungen": 71,
+    "wl-hinweise": 68,
+    "oebb": 157,
+    "baustellen-linien": 59,
+    "baustellen-punkte": 20
+   },
+   "discarded": {
+    "wl": 5,
+    "oebb": 132,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 10,
+    "wl": 103
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-30T11:31:10.855861+00:00"
+   "last_ok": "2026-10-30T12:00:59.717671+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-30T11:31:10.855861+00:00"
+   "last_ok": "2026-10-30T11:31:10.855861+00:00",
+   "last_exit": 1,
+   "failing_since": "2026-10-30T12:00:59.717671+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-30T11:31:10.855861+00:00"
+   "last_ok": "2026-10-30T12:00:59.717671+00:00"
   }
  }
 }
