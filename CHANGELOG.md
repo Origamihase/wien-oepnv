@@ -10,6 +10,19 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **EN-Feed: „<Anlass>verkehr“ bei WL und ÖBB (2026-10-30)**: Das
+  Jules-Audit vom 30.10. fand „38B/39B: All Saints' Worship 01.11.2026“ im
+  englischen Feed; gemeint ist der Allerheiligenverkehr. Das
+  Übersetzungsmodell kennt solche Komposita nicht („Feiertagsverkehr“ →
+  „Public holidays“, „Konzertverkehr“ → „Concertation“), den Anlass allein
+  aber schon. In WL- und ÖBB-Texten wird ein „<Anlass>verkehr“ jetzt aus
+  seinen Teilen geschrieben: Anlass durch das Modell, dazu „service“
+  („All Saints service“). Komposita für Straßenverkehr, Verkehrsmittel und
+  Gebiete („Kreisverkehr“, „Pendelbusverkehr“, „Regionalverkehr“) bleiben
+  beim Modell, Baustellen-Texte unberührt; ein zwischengespeicherter Wert
+  ohne das feste Englisch wird neu übersetzt (`_mask_service_compounds`,
+  `_service_compound_defect`, `docs/architecture.md` §8). Nachgespielt über
+  281 Meldungen mit dem echten Modell: Nur dieser Titel ändert sich.
 * **Live-Kachel Stammstrecke: „Keine Fahrten“ statt „N/A“ bei
   funktionierendem Abruf (2026-10-30)**: Am 30.10. zeigte die Kachel
   „Ø Verspätung Stammstrecke“ von 16:01 an „N/A“, obwohl Health Check und

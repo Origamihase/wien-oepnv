@@ -4364,6 +4364,164 @@ def _apply_domain_glossary(
     return processed, mapping
 
 
+# Service compounds: ``<Anlass>verkehr`` in a Wiener Linien or ÖBB text.
+# When an operator writes about its own lines, ``Verkehr`` at the end of a
+# compound is that operator's service for an occasion. The model does not
+# know such compounds and loses the head or the whole sense (real model,
+# 2026-10-30)::
+#
+#     38B/39B: Allerheiligenverkehr 01.11.2026  ->  All Saints' Worship
+#     Feiertagsverkehr                          ->  Public holidays
+#     Konzertverkehr                            ->  Concertation
+#     Donauinselfestverkehr                     ->  Donauinselfestverkehr
+#
+# The occasion alone it knows ("Allerheiligen" -> "All Saints",
+# "Fronleichnam" -> "Corpus Christi", "Silvester" -> "New Year's Eve"). So
+# the compound is rendered from its parts: the occasion through the model
+# alone, the head as "service". An inflected glossary compound
+# ("des Schienenersatzverkehres") takes the glossary's English for its
+# uninflected form. Kept to the model as before are compounds whose first
+# part names road traffic, a mode, an area or a time of day the model
+# misreads alone ("Morgen" -> "Tomorrow"); there ``Verkehr`` is traffic or
+# the compound is a fixed term the model knows ("Kreisverkehr" ->
+# "roundabout", "Pendelbusverkehr" -> "shuttle bus service"). Stadt Wien
+# Baustellen texts are about road traffic and stay untouched.
+_SERVICE_COMPOUND_SOURCES: frozenset[str] = frozenset({"Wiener Linien", "ÖBB"})
+_SERVICE_COMPOUND_RE: re.Pattern[str] = re.compile(
+    r"(?<![\w-])(?P<modifier>[A-ZÄÖÜ][\w-]*?[^\W\d_])(?:-V|v)erkehr(?:es|s)?(?!\w)"
+)
+# First parts (casefolded, compared by their end) that keep the model.
+_SERVICE_COMPOUND_KEEP: tuple[str, ...] = (
+    # road traffic
+    "kreis", "gesamt", "individual", "gegen", "fließ", "liefer", "rad",
+    "fußgänger", "fußgängerinnen", "fahrzeug", "kfz", "pkw", "lkw", "auto",
+    "abbiege", "umleitung", "umleitungs", "baustelle", "baustellen",
+    "anrainer", "durchzug", "ziel", "quell", "straße", "straßen", "schwer",
+    "transit", "beruf", "stoß", "pendler", "reise", "urlaub",
+    # modes and areas
+    "bahn", "bus", "zug", "tram", "schiff", "flug", "luft", "güter",
+    "personen", "fahrgast", "regional", "nah", "fern", "stadt", "ort",
+    "linien", "takt", "verstärker", "pendel", "shuttle",
+    # time of day the model misreads alone
+    "morgen",
+)
+_SERVICE_MODIFIER_EN: dict[tuple[int, str], str | None] = {}
+
+
+def _service_modifier_en(modifier: str) -> str | None:
+    """The model's English for an occasion alone, or ``None`` when unusable.
+
+    Memoised per model and occasion: an occasion recurs across title and description
+    and across the items of a build. Unusable is a failed call, an empty or
+    long answer, or one with German letters left in it. The occasion echoed
+    back is fine: "Advent" and "Marathon" are English too.
+    """
+    pipe = _get_translation_pipeline()
+    key = (id(pipe), modifier)
+    if key in _SERVICE_MODIFIER_EN:
+        return _SERVICE_MODIFIER_EN[key]
+    english: str | None = None
+    if pipe is not None:
+        try:
+            result = pipe(modifier, max_length=64, truncation=True)
+            raw = result[0]["translation_text"]
+        except Exception:
+            raw = None
+        if isinstance(raw, str):
+            candidate = raw.strip().rstrip(".").strip()
+            if (
+                candidate
+                and len(candidate.split()) <= 4
+                and not re.search(r"[äöüÄÖÜß]", candidate)
+            ):
+                english = candidate
+    _SERVICE_MODIFIER_EN[key] = english
+    return english
+
+
+def _service_compound_en(
+    match: re.Match[str],
+    *,
+    source: str | None,
+    category: str | None,
+    occasions_only: bool = False,
+) -> str | None:
+    """English for one ``<Anlass>verkehr`` match, ``None`` to keep the model.
+
+    *occasions_only* skips inflected glossary compounds: the ÖBB templates
+    render those sentences themselves, in their own words.
+    """
+    modifier = match["modifier"].rstrip("-")
+    uninflected = f"{modifier}verkehr"
+    glossary = _resolve_glossary(source, category)
+    for key, value in glossary.items():
+        if key.casefold() == uninflected.casefold():
+            return None if occasions_only else value
+    # Fugen-s ("Feiertagsverkehr", "Fronleichnamsverkehr"), not the s of a
+    # word ("Busverkehr").
+    if (
+        len(modifier) > 3
+        and modifier.endswith("s")
+        and modifier[-2] not in "aeiouäöüys"
+    ):
+        modifier = modifier[:-1]
+    if modifier.casefold().endswith(_SERVICE_COMPOUND_KEEP):
+        return None
+    occasion = _service_modifier_en(modifier)
+    return f"{occasion} service" if occasion else None
+
+
+def _mask_service_compounds(
+    text: str,
+    mapping: dict[str, str],
+    *,
+    source: str | None,
+    category: str | None,
+) -> str:
+    """Replace each ``<Anlass>verkehr`` of a WL/ÖBB text by a glossary placeholder.
+
+    Runs after :func:`_apply_domain_glossary` and adds to its *mapping*, so
+    the placeholders share its format and numbering.
+    """
+    if source not in _SERVICE_COMPOUND_SOURCES or not text:
+        return text
+    surface_to_placeholder: dict[str, str] = {}
+
+    def _replace(match: re.Match[str]) -> str:
+        surface = match.group(0)
+        cached = surface_to_placeholder.get(surface)
+        if cached is not None:
+            return cached
+        english = _service_compound_en(match, source=source, category=category)
+        if english is None:
+            return surface
+        placeholder = _GLOSSARY_PLACEHOLDER_FORMAT.format(index=len(mapping))
+        mapping[placeholder] = english
+        surface_to_placeholder[surface] = placeholder
+        return placeholder
+
+    return _SERVICE_COMPOUND_RE.sub(_replace, text)
+
+
+def _service_compound_defect(
+    source_text: str, cached: str, *, source: str | None, category: str | None
+) -> str | None:
+    """``"service compound"`` when *cached* lacks a compound's fixed English.
+
+    A value cached before 2026-10-30 reads "All Saints' Worship"; only such an
+    item is translated again, not every item, as an epoch move would.
+    """
+    if source not in _SERVICE_COMPOUND_SOURCES:
+        return None
+    for match in _SERVICE_COMPOUND_RE.finditer(source_text):
+        english = _service_compound_en(
+            match, source=source, category=category, occasions_only=True
+        )
+        if english is not None and english.casefold() not in cached.casefold():
+            return "service compound"
+    return None
+
+
 def _unmask_entities(text: str, mapping: dict[str, str]) -> str:
     """Restore entity surface forms in ``text`` using ``mapping``.
 
@@ -6396,6 +6554,9 @@ def _translate_text_attempt(
     glossary_processed, glossary_mapping = _apply_domain_glossary(
         _normalise_for_translation(text), source=source, category=category,
     )
+    glossary_processed = _mask_service_compounds(
+        glossary_processed, glossary_mapping, source=source, category=category,
+    )
     masked_text, entity_mapping = _mask_entities(glossary_processed)
     combined_mapping = {**glossary_mapping, **entity_mapping}
     # Entity-only fast path: when masking leaves nothing translatable (a title
@@ -6728,6 +6889,10 @@ def _cached_translation(
         defect = _cached_translation_defect(text, cached)
         if defect is None and source == _OEBB_SOURCE:
             defect = _oebb_section_label_defect(text, cached) or _oebb_cannot_run_defect(text, cached)
+        if defect is None:
+            defect = _service_compound_defect(
+                text, cached, source=source, category=category
+            )
         if defect is None:
             # Cached before "due to" was the one cause preposition
             # (``_cause_due_to``); the model's words are otherwise kept.
