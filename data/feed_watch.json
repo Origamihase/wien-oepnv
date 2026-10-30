@@ -1,8 +1,8 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-29T23:30:51.504187+00:00",
- "built": "2026-10-30T00:30:44+01:00",
+ "updated": "2026-10-30T00:01:12.228731+00:00",
+ "built": "2026-10-30T01:00:56+01:00",
  "findings": [
   {
    "rule": "alte-meldung-als-neu",
@@ -15,17 +15,21 @@
  "rules": {
   "alte-meldung-als-neu": {
    "since": "2026-10-29T23:01:00.019052+00:00",
-   "last": "2026-10-29T23:30:51.504187+00:00",
+   "last": "2026-10-30T00:01:12.228731+00:00",
    "held_runs": 0,
    "issue": 2086
   }
  },
  "previous_feed": {
-  "built": "2026-10-30T00:30:44+01:00",
+  "built": "2026-10-30T01:00:56+01:00",
   "items": [
    {
-    "title": "U3: Rettungseinsatz",
-    "time_line": "Seit 29.10."
+    "title": "59A: Feuerwehreinsatz",
+    "time_line": "Seit 00:42"
+   },
+   {
+    "title": "25: Rettungseinsatz",
+    "time_line": "Seit 00:51"
    },
    {
     "title": "38B/39B: Allerheiligenverkehr 01.11.2026",
@@ -58,55 +62,11 @@
    {
     "title": "S1: Wien Leopoldau ↔ Deutsch Wagram",
     "time_line": "Bis 28.11."
-   },
-   {
-    "title": "11A/78A: Straßenbauarbeiten",
-    "time_line": "Bis Mo 02.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-22T23:31:06.004104+00:00",
-   "raw": {
-    "wl-stoerungen": 75,
-    "wl-hinweise": 75,
-    "oebb": 175,
-    "baustellen-linien": 56,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 3,
-    "oebb": 150,
-    "baustellen": 70
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 116
-   }
-  },
-  {
-   "t": "2026-10-23T00:00:51.676629+00:00",
-   "raw": {
-    "wl-stoerungen": 75,
-    "wl-hinweise": 75,
-    "oebb": 175,
-    "baustellen-linien": 56,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 3,
-    "oebb": 150,
-    "baustellen": 70
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 116
-   }
-  },
   {
    "t": "2026-10-23T00:30:59.750694+00:00",
    "raw": {
@@ -6806,17 +6766,37 @@
     "oebb": 9,
     "wl": 99
    }
+  },
+  {
+   "t": "2026-10-30T00:01:12.228731+00:00",
+   "raw": {
+    "wl-stoerungen": 77,
+    "wl-hinweise": 73,
+    "oebb": 158,
+    "baustellen-linien": 59,
+    "baustellen-punkte": 20
+   },
+   "discarded": {
+    "wl": 8,
+    "oebb": 134,
+    "baustellen": 72
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 106
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-29T23:30:51.504187+00:00"
+   "last_ok": "2026-10-30T00:01:12.228731+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-29T23:30:51.504187+00:00"
+   "last_ok": "2026-10-30T00:01:12.228731+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-29T23:30:51.504187+00:00"
+   "last_ok": "2026-10-30T00:01:12.228731+00:00"
   }
  }
 }
