@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20261030-0023, I20260909-0007, I20261020-0029, I20261030-0024-F01, I20261030-0031"
+    "trafficInfoNameList": "I20261030-0032, I20260917-0012, I20260922-0032, I20260925-0011, I20261030-0023, I20260909-0007, I20261020-0029, I20261030-0031"
    },
    {
     "id": 3,
@@ -304,54 +304,6 @@
     "title": "U1: Verspätungen"
    },
    {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "62A": "ptBusCity"
-     }
-    },
-    "description": "Linie 62A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 62A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 62A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 62A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "62A: Falschparker"
-      }
-     }
-    ],
-    "name": "I20261030-0024-F01",
-    "owner": "WL",
-    "parentName": "I20261030-0024",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "62A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 462,
-      "lineName": "62A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     1660
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-30T13:40:00.000+0100",
-     "lastUpdate": "2026-10-30T13:40:00.000+0100",
-     "resume": "2026-10-30T13:40:00.000+0100",
-     "start": "2026-10-30T13:22:00.000+0100"
-    },
-    "title": "62A: Falschparker"
-   },
-   {
     "alertCause": "heavy traffic",
     "alertCauseId": 60,
     "attributes": {
@@ -395,6 +347,51 @@
      "start": "2026-10-30T15:42:00.000+0100"
     },
     "title": "16A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "vandalism",
+    "alertCauseId": 16,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+       "title": "U3: Verunreinigung"
+      }
+     }
+    ],
+    "name": "I20261030-0032",
+    "owner": "WL",
+    "parentName": "I20261030-0032",
+    "priority": "1",
+    "reasonId": 36,
+    "reasonName": "Verunreinigung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-30T16:32:00.000+0100",
+     "lastUpdate": "2026-10-30T16:32:00.000+0100",
+     "resume": "2026-10-30T16:32:00.000+0100",
+     "start": "2026-10-30T16:32:00.000+0100"
+    },
+    "title": "U3: Verunreinigung"
    },
    {
     "alertCause": "undefined alert cause",
