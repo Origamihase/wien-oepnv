@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261030-0028, I20261030-0030, I20260925-0011, I20261030-0023, I20260909-0007, I20261030-0029, I20261020-0029, I20261030-0024-F01"
+    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20261030-0028, I20260925-0011, I20261030-0023, I20260909-0007, I20261030-0029, I20261020-0029, I20261030-0024-F01, I20261030-0031"
    },
    {
     "id": 3,
@@ -449,45 +449,45 @@
     "alertCauseId": 60,
     "attributes": {
      "relatedLineTypes": {
-      "63A": "ptBusCity"
+      "16A": "ptBusCity"
      }
     },
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 16A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "63A: Verkehrsüberlastung"
+       "descriptionHtml": "<p>Linie 16A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "16A: Verkehrsüberlastung"
       }
      }
     ],
-    "name": "I20261030-0030",
+    "name": "I20261030-0031",
     "owner": "WL",
-    "parentName": "I20261030-0030",
+    "parentName": "I20261030-0031",
     "priority": "1",
     "reasonId": 46,
     "reasonName": "Verkehrsüberlastung",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "63A"
+     "16A"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 463,
-      "lineName": "63A",
+      "lineId": 416,
+      "lineName": "16A",
       "vehicleType": "ptBusCity"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-30T15:27:00.000+0100",
-     "lastUpdate": "2026-10-30T15:27:00.000+0100",
-     "resume": "2026-10-30T15:26:00.000+0100",
-     "start": "2026-10-30T15:26:00.000+0100"
+     "created": "2026-10-30T15:43:00.000+0100",
+     "lastUpdate": "2026-10-30T15:43:00.000+0100",
+     "resume": "2026-10-30T15:42:00.000+0100",
+     "start": "2026-10-30T15:42:00.000+0100"
     },
-    "title": "63A: Verkehrsüberlastung"
+    "title": "16A: Verkehrsüberlastung"
    },
    {
     "alertCause": "undefined alert cause",

@@ -48,10 +48,10 @@ Mehr Statistiken findest du hier:
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Beobachtungen (gesamt) | 1 |
-| Durchschnittliche Verspätung | 3.0 min |
+| Beobachtungen (gesamt) | 0 |
+| Durchschnittliche Verspätung | N/A |
 | Kritische Verspätungen (> 9 min) | 0 |
-| Letzte Aktualisierung | 2026-10-30 15:31 CET |
+| Letzte Aktualisierung | 2026-10-30 16:01 CET |
 <!-- STATS:STAMMSTRECKE_LIVE:END -->
 
 <!-- STATS:STAMMSTRECKE:BEGIN -->
@@ -61,10 +61,10 @@ Mehr Statistiken findest du hier:
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Beobachtungen (gesamt) | 1.172 |
+| Beobachtungen (gesamt) | 1.171 |
 | Durchschnittliche Verspätung | 0.3 min |
 | Kritische Verspätungen (> 9 min) | 12 |
-| Letzte Aktualisierung | 2026-10-30 15:31 CET |
+| Letzte Aktualisierung | 2026-10-30 16:01 CET |
 <!-- STATS:STAMMSTRECKE:END -->
 
 ### Ausfälle auf der S-Bahn-Stammstrecke
@@ -74,8 +74,8 @@ Mehr Statistiken findest du hier:
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Ausfälle (gesamt) | 3 |
-| Letzte Aktualisierung | 2026-10-30 15:31 CET |
+| Ausfälle (gesamt) | 4 |
+| Letzte Aktualisierung | 2026-10-30 16:01 CET |
 <!-- STATS:AUSFAELLE_LIVE:END -->
 
 <!-- STATS:AUSFAELLE:BEGIN -->
@@ -85,9 +85,9 @@ Mehr Statistiken findest du hier:
 
 | Kennzahl | Wert |
 | -------- | ---- |
-| Ausfälle (gesamt) | 77 |
-| Häufigste Linien | S1 (40), CJX9 (34), S3 (2) |
-| Letzte Aktualisierung | 2026-10-30 15:31 CET |
+| Ausfälle (gesamt) | 79 |
+| Häufigste Linien | S1 (41), CJX9 (35), S3 (2) |
+| Letzte Aktualisierung | 2026-10-30 16:01 CET |
 <!-- STATS:AUSFAELLE:END -->
 
 > **Hinweis:** Die zugrunde liegenden Roh-Ledger im CSV-Format liegen unter [`data/stats/`](data/stats/) (Zeitstempel in `Europe/Vienna`).
