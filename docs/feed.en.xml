@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 31 Oct 2026 15:30:53 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 31 Oct 2026 16:01:02 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[O: Illegally parked vehicle]]></title>
@@ -25,19 +25,6 @@
       <content:encoded><![CDATA[Service obstruction.<br/>[Since 15:13]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[42: Service disruption]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">4c07566c7a23fb7d996fff4b5c40565da92b6f9eb8a156734b6725e899186170</guid>
-      <pubDate>Sat, 31 Oct 2026 14:37:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sat, 31 Oct 2026 15:00:58 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 31 Oct 2026 14:37:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 14:37]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 14:37]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[1/2: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc</guid>
@@ -47,8 +34,22 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 31 Oct 2026 14:01:00 +0100</ext:first_seen>
       <ext:starts_at>Sat, 31 Oct 2026 14:01:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 31 Oct 2026 16:42:00 +0100</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 14:01]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 14:01]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A: Rescue operation, track construction works]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">711bdd6742039946a988fc6856f5ba58cc852d11dc70306ccf9c11dcbf6587d7</guid>
+      <pubDate>Sat, 31 Oct 2026 15:52:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sat, 31 Oct 2026 15:52:00 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 31 Oct 2026 15:52:00 +0100</ext:starts_at>
+      <description>Rescue operation: service only between Schmelz, Gablenzgasse and Fendigasse. Track construction works: service from Johnstraße U, Schweglerstraße 19-21. [Since today]</description>
+      <content:encoded><![CDATA[Rescue operation: service only between Schmelz, Gablenzgasse and Fendigasse. Track construction works: service from Johnstraße U, Schweglerstraße 19-21.<br/>[Since today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N31: Crane works]]></title>

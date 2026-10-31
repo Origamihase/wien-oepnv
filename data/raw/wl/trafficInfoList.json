@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260922-0032, I20261031-0014-F01, I20260925-0011, I20261031-0014-F02, I20260909-0007, I20261031-0016-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261031-0016-F01, I20260922-0032, I20260925-0011, I20261031-0014-F02, I20260909-0007, I20261031-0014-F01, I20261031-0018, I20261020-0029"
    },
    {
     "id": 3,
@@ -247,8 +247,8 @@
     "status": "active",
     "time": {
      "created": "2026-10-31T14:38:00.000+0100",
-     "lastUpdate": "2026-10-31T14:38:00.000+0100",
-     "resume": "2026-10-31T14:38:00.000+0100",
+     "end": "2026-10-31T16:42:00.000+0100",
+     "lastUpdate": "2026-10-31T15:44:00.000+0100",
      "start": "2026-10-31T14:01:00.000+0100"
     },
     "title": "1: Verkehrsunfall"
@@ -338,14 +338,60 @@
     "relatedStops": [
      455
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-10-31T14:40:00.000+0100",
-     "lastUpdate": "2026-10-31T14:40:00.000+0100",
-     "resume": "2026-10-31T14:40:00.000+0100",
+     "end": "2026-10-31T15:58:00.000+0100",
+     "lastUpdate": "2026-10-31T15:58:00.000+0100",
+     "resume": "2026-10-31T15:58:00.000+0100",
      "start": "2026-10-31T14:37:00.000+0100"
     },
     "title": "42: Betriebsstörung"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "12A": "ptBusCity"
+     }
+    },
+    "description": "Linie 12A: Betrieb nur zwischen Schmelz, Gablenzgasse und Fendigasse. Voraussichtliche Dauer: 16:30 Uhr. Grund: Rettungseinsatz im Bereich Embelgasse.",
+    "descriptionHTML": "<p>Linie 12A:<br>Betrieb nur zwischen Schmelz, Gablenzgasse und Fendigasse.</p><p>Voraussichtliche Dauer: 16:30 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Embelgasse.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 12A:<br>Betrieb nur zwischen Schmelz, Gablenzgasse und Fendigasse.</p><p>Voraussichtliche Dauer: 16:30 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Embelgasse.</p>",
+       "descriptionPlain": "Linie 12A: Betrieb nur zwischen Schmelz, Gablenzgasse und Fendigasse. Voraussichtliche Dauer: 16:30 Uhr. Grund: Rettungseinsatz im Bereich Embelgasse.",
+       "title": "12A: Rettungseinsatz"
+      }
+     }
+    ],
+    "location": "Embelgasse",
+    "name": "I20261031-0018",
+    "owner": "WL",
+    "parentName": "I20261031-0018",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 412,
+      "lineName": "12A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-31T15:53:00.000+0100",
+     "lastUpdate": "2026-10-31T15:55:00.000+0100",
+     "start": "2026-10-31T15:52:00.000+0100"
+    },
+    "title": "12A: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
