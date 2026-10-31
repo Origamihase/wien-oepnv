@@ -1,18 +1,26 @@
 {
-  "Meidling|S2|2026-10-31T03:43:00+01:00": {
-    "cancelled": false,
-    "direction": "Meidling",
-    "last_seen_at": "2026-10-31T03:30:48.500417+01:00",
-    "latest_delay_minutes": 0.0,
-    "name": "S2",
-    "scheduled": "2026-10-31T03:43:00+01:00"
-  },
   "Meidling|S2|2026-10-31T04:13:00+01:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-10-31T03:30:48.500417+01:00",
+    "last_seen_at": "2026-10-31T04:00:57.423121+01:00",
     "latest_delay_minutes": 0.0,
     "name": "S2",
     "scheduled": "2026-10-31T04:13:00+01:00"
+  },
+  "Meidling|S2|2026-10-31T04:42:00+01:00": {
+    "cancelled": false,
+    "direction": "Meidling",
+    "last_seen_at": "2026-10-31T04:00:57.423121+01:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S2",
+    "scheduled": "2026-10-31T04:42:00+01:00"
+  },
+  "Meidling|S3|2026-10-31T04:32:00+01:00": {
+    "cancelled": false,
+    "direction": "Meidling",
+    "last_seen_at": "2026-10-31T04:00:57.423121+01:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S3",
+    "scheduled": "2026-10-31T04:32:00+01:00"
   }
 }

@@ -1158,18 +1158,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N29: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "61a774d9179846a506d191b6366c3953867954c9bab2f9d03ccfcfa105080967",
-    "pubDate": "2026-10-31T02:51:14+01:00",
-    "starts_at": "2026-10-31T02:51:43+01:00",
-    "ends_at": "2026-10-31T03:50:00+01:00",
-    "_identity": "wl|störung|L=N29|D=2026-10-31|TK=rettungseinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "N31: Kranarbeiten Busse halten bei Franz-Jonas-Platz 7-8 (34A)",
     "description": "Kranarbeiten\nBusse halten bei Franz-Jonas-Platz 7-8 (34A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1262,22 +1250,6 @@
     "starts_at": "2026-10-31T00:45:01+01:00",
     "ends_at": "2026-10-31T05:15:00+01:00",
     "_identity": "wl|störung|L=N8|D=2026-10-31|TK=busse halten assmayergasse nach flurschützstrasse bei linie 59a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Verunreinigung",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6",
-    "pubDate": "2026-10-31T02:35:00+01:00",
-    "starts_at": "2026-10-31T02:35:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U3|D=2026-10-31|TK=u3 verunreinigung",
-    "_wl_ids": [
-      "I20261031-0002"
-    ],
-    "_incident_start": "2026-10-31T02:35:00+01:00"
   },
   {
     "source": "Wiener Linien",
