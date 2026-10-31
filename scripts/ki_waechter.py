@@ -109,9 +109,10 @@ GEMINI_KEY_ENV = "GEMINI_API_KEY"
 GEMINI_TIMEOUT = (10.0, 600.0)
 # Free-tier limits (Michael 2026-10-31: "sorge auch hier dafür, dass das
 # API-Limit nicht überschritten wird"). A quota answer (429) is never
-# repeated. Only an overloaded model (500, 502, 503, 504; on 2026-10-31 every
-# first request got "503 ... high demand") is asked again after one and after
-# three minutes, and only as often as ``--max-requests`` allows: the gate of
+# repeated. Only an overloaded model (500, 502, 503, 504; on 2026-10-31 all
+# ten requests to Gemini 3.8 Flash got "503 ... high demand" within an hour)
+# hands over to the fallback model at once and is asked again after a minute,
+# and only as often as ``--max-requests`` allows: the gate of
 # ``ki-waechter.yml`` hands each audit its share of the daily budget
 # ``KI_WAECHTER_MAX_REQUESTS`` and counts the requests of the day from the
 # annotation ``Gemini-Anfragen`` every audit leaves. The input is capped below
@@ -691,39 +692,46 @@ def ask_gemini(
 ) -> Answer:
     """Send the prompt; again only while the model is overloaded and ``max_requests`` allows.
 
-    The key travels in a header, never in the URL or a log line.
+    ``model`` may name fallbacks, comma-separated (``gemini-3.8-flash,gemini-3.6-flash``):
+    an overloaded model hands over to the next one at once (each model has its
+    own free-tier quota), a model already asked gets the next request only
+    after a wait. The key travels in a header, never in the URL or a log line.
     """
-    if not re.fullmatch(r"[a-z0-9.-]{3,60}", model):
+    models = [m.strip() for m in model.split(",") if m.strip()]
+    if not models or not all(re.fullmatch(r"[a-z0-9.-]{3,60}", m) for m in models):
         raise ValueError("ungültiger Modellname")
     if len(prompt) > MAX_PROMPT_CHARS:
-        return Answer(False, model, error=(
+        return Answer(False, models[0], error=(
             f"Eingabe zu groß ({len(prompt)} Zeichen, Grenze {MAX_PROMPT_CHARS}); nicht gesendet"
         ))
-    url = GEMINI_URL.format(model=model)
     body = json.dumps(gemini_request(prompt), ensure_ascii=True, allow_nan=False)
     headers = {"Content-Type": "application/json", "x-goog-api-key": key}
     started = time.monotonic()
     limit = max(0, min(max_requests, MAX_REQUESTS_PER_AUDIT))
     sent = 0
-    answer = Answer(False, model, error="kein Anfragebudget")
+    answer = Answer(False, models[0], error="kein Anfragebudget")
     # total=0: the session itself never repeats a request; this loop counts every one.
     with session_with_retries("wien-oepnv-ki-waechter", timeout=GEMINI_TIMEOUT, total=0) as session:
         while sent < limit:
+            current = models[sent % len(models)]
             if sent:
-                wait = OVERLOAD_WAIT_S[min(sent, len(OVERLOAD_WAIT_S)) - 1]
-                print(f"Gemini überlastet, neuer Versuch in {wait} s ({sent + 1}. von höchstens {limit} Anfragen)")
-                sleep(wait)
+                rounds = sent // len(models)
+                wait = OVERLOAD_WAIT_S[min(rounds, len(OVERLOAD_WAIT_S)) - 1] if sent % len(models) == 0 else 0
+                print(f"Gemini überlastet, {sent + 1}. von höchstens {limit} Anfragen an {current}"
+                      + (f" in {wait} s" if wait else ""))
+                if wait:
+                    sleep(wait)
             sent += 1
             try:
                 response = request_safe(
-                    session, url, method="POST", data=body, headers=headers,
+                    session, GEMINI_URL.format(model=current), method="POST", data=body, headers=headers,
                     timeout=GEMINI_TIMEOUT, max_bytes=MAX_ANSWER_BYTES,
                     allowed_content_types=("application/json",), raise_for_status=False,
                 )
             except (requests.RequestException, ValueError) as exc:
-                answer = Answer(False, model, error=f"Gemini nicht erreichbar ({type(exc).__name__})")
+                answer = Answer(False, current, error=f"Gemini nicht erreichbar ({type(exc).__name__})")
                 break
-            answer = _answer_from(response, model)
+            answer = _answer_from(response, current)
             if response.status_code not in OVERLOAD_STATUS:
                 break
     answer.requests = sent

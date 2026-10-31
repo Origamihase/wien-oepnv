@@ -62,8 +62,10 @@ concurrency:
 
 env:
   # Gemini model of the audit: the newest stable model in the free tier of
-  # the Gemini API (https://ai.google.dev/gemini-api/docs/pricing).
-  KI_WAECHTER_MODEL: gemini-3.8-flash
+  # the Gemini API (https://ai.google.dev/gemini-api/docs/pricing), then the
+  # fallback the audit asks at once when the first is overloaded (each has
+  # its own quota; on 2026-10-31 Gemini 3.8 Flash answered 503 for hours).
+  KI_WAECHTER_MODEL: gemini-3.8-flash,gemini-3.6-flash
   # First Vienna hour of the day in which the audit runs.
   KI_WAECHTER_START_HOUR: "15"
   # Gemini requests per day at most (free tier, day from 0:00 Pacific

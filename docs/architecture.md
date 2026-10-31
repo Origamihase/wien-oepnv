@@ -1470,8 +1470,9 @@ Bedarf), und das API-Limit darf nicht überschritten werden.
   im Feed standen). Alles andere steht als „Nicht belegt“ im Bericht, zählt
   aber nicht (Michael, 2026-10-30: „Falsche Funde stören mich am meisten“).
 * Gratis-Kontingent: ein Prüflauf sendet eine Anfrage; erschöpftes
-  Kontingent (429) wird nie wiederholt, nur ein überlastetes Modell (5xx)
-  nach einer und drei Minuten, höchstens dreimal. Höchstens 10 Anfragen am
+  Kontingent (429) wird nie wiederholt; antwortet das Modell überlastet
+  (5xx), fragt er sofort Gemini 3.6 Flash und nach einer Minute wieder
+  3.8 Flash, höchstens dreimal. Höchstens 10 Anfragen am
   Tag (Tag ab 0:00 Uhr Pazifikzeit): der Job `gate` zählt sie aus der
   Anmerkung „Gemini-Anfragen“ jedes Prüflaufs und gibt jedem neuen Prüflauf
   nur seinen Anteil am Rest; die letzte bleibt dem täglichen Lauf. Die

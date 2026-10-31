@@ -30,7 +30,8 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
   Feed und Quelle stehen (Doppelungen nur bei gleichzeitig sichtbaren
   Meldungen). Höchstens 10 Anfragen am Tag, gezählt aus den Läufen selbst;
   kein neuer Versuch bei erschöpftem Kontingent, bei überlastetem Modell
-  höchstens zwei innerhalb des Tagesbudgets; Eingabe höchstens 450.000
+  (am 31.10. antwortete Gemini 3.8 Flash stundenlang mit 503) höchstens zwei
+  innerhalb des Tagesbudgets, zuerst an das Ausweichmodell Gemini 3.6 Flash; Eingabe höchstens 450.000
   Zeichen. Bericht
   `docs/archive/audits/ki-waechter-YYYY-MM-DD.md`, belegte Funde als Issue
   (Label `ki-waechter`), ein Lauf, der nicht prüfen konnte, macht den
