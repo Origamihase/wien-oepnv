@@ -8,8 +8,49 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 31 Oct 2026 20:00:47 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 31 Oct 2026 20:30:47 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[29A: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">ec25a5329192107eee26784e17b80c2aaf5146f5517c3c566d064cc3d7517ca4</guid>
+      <pubDate>Sat, 31 Oct 2026 20:18:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sat, 31 Oct 2026 20:30:47 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 31 Oct 2026 20:18:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 31 Oct 2026 20:41:00 +0100</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 20:18]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 20:18]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Switch fault]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">861eb589822612a9402ffcc15457641ff4cf74d6a9632da81a7b59b0d8e8dda0</guid>
+      <pubDate>Sat, 31 Oct 2026 20:23:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sat, 31 Oct 2026 20:23:00 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 31 Oct 2026 20:23:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: switch fault. [Since 20:23]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: switch fault.<br/>[Since 20:23]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46: Third-party traffic accident]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">ca3f320972243b037074321441d828580185f68cae3de0b8d41ea5abc0bd3d31</guid>
+      <pubDate>Sat, 31 Oct 2026 20:07:44 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sat, 31 Oct 2026 20:07:44 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 31 Oct 2026 20:07:44 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 31 Oct 2026 21:07:00 +0100</ext:ends_at>
+      <description>Service obstruction. [Since 20:07]</description>
+      <content:encoded><![CDATA[Service obstruction.<br/>[Since 20:07]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[38A: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -19,9 +60,9 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 31 Oct 2026 19:57:00 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 31 Oct 2026 19:58:43 +0100</ext:starts_at>
-      <description>Service obstruction direction Heiligenstadt S U. Expected until 20:20. Reason: illegally parked vehicle in the area of Grinzinger Straße 36. [Since 19:57]</description>
-      <content:encoded><![CDATA[Service obstruction direction Heiligenstadt S U. Expected until 20:20. Reason: illegally parked vehicle in the area of Grinzinger Straße 36.<br/>[Since 19:57]]]></content:encoded>
+      <ext:starts_at>Sat, 31 Oct 2026 20:20:46 +0100</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 19:57]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 19:57]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[9: Illegally parked vehicle]]></title>
@@ -33,8 +74,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 31 Oct 2026 19:34:00 +0100</ext:first_seen>
       <ext:starts_at>Sat, 31 Oct 2026 19:43:41 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 19:34]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 19:34]]]></content:encoded>
+      <ext:ends_at>Sat, 31 Oct 2026 20:43:00 +0100</ext:ends_at>
+      <description>Service obstruction. [Since 19:34]</description>
+      <content:encoded><![CDATA[Service obstruction.<br/>[Since 19:34]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Wien Stadlau]]></title>
@@ -108,48 +150,6 @@
       <ext:ends_at>Mon, 02 Nov 2026 05:00:00 +0100</ext:ends_at>
       <description>Due to construction works in the area of Rechte Nordbahngasse, there are service changes on lines 29A, 29B, 33A and N31. Measures: Lines 29A and 29B: short-running service … [Until Mon 02.11.]</description>
       <content:encoded><![CDATA[Due to construction works in the area of Rechte Nordbahngasse, there are service changes on lines 29A, 29B, 33A and N31. Measures: Lines 29A and 29B: short-running service …<br/>[Until Mon 02.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[33A: Crane works]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">576eeb34fe4c44f00bd6cb64c653ed4d141b5a4bd56ebc400073b82726c85fde</guid>
-      <pubDate>Sat, 31 Oct 2026 00:00:27 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 30 Oct 2026 21:00:53 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 31 Oct 2026 00:00:27 +0100</ext:starts_at>
-      <ext:ends_at>Sat, 31 Oct 2026 21:00:00 +0100</ext:ends_at>
-      <description>Buses stop at Franz-Jonas-Platz 5-6 (34A). [Today]</description>
-      <content:encoded><![CDATA[Buses stop at Franz-Jonas-Platz 5-6 (34A).<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29A/29B: Crane works]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">481985865b3ca8fc88d3a172d3bb06ecd67edb9450d5ea380d1b88b5d82472fa</guid>
-      <pubDate>Sat, 31 Oct 2026 00:00:24 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 30 Oct 2026 21:00:53 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 31 Oct 2026 00:00:27 +0100</ext:starts_at>
-      <ext:ends_at>Sat, 31 Oct 2026 23:59:59 +0100</ext:ends_at>
-      <description>Buses stop at Schloßhofer Straße 25-31. [Today]</description>
-      <content:encoded><![CDATA[Buses stop at Schloßhofer Straße 25-31.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38B/39B: All Saints service 01.11.2026]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">6f9b1807cf0978b7b95b8bc183dc89ea212bab6281ff0ea60d0187953f17ad94</guid>
-      <pubDate>Mon, 05 Oct 2026 13:40:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 30 Oct 2026 00:00:46 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 01 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Sun, 01 Nov 2026 18:00:00 +0100</ext:ends_at>
-      <description>Start-up of bus lines. On the occasion of the holiday of All Saints, the bus lines 38B and 39B are put into operation and various lines to cemeteries are reinforced … [On Sun 01.11.]</description>
-      <content:encoded><![CDATA[Start-up of bus lines. On the occasion of the holiday of All Saints, the bus lines 38B and 39B are put into operation and various lines to cemeteries are reinforced …<br/>[On Sun 01.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

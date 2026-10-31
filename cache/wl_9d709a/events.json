@@ -950,6 +950,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "29A: Falschparker",
+    "description": "Linie 29A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ec25a5329192107eee26784e17b80c2aaf5146f5517c3c566d064cc3d7517ca4",
+    "pubDate": "2026-10-31T20:18:00+01:00",
+    "starts_at": "2026-10-31T20:18:00+01:00",
+    "ends_at": "2026-10-31T20:41:00+01:00",
+    "_identity": "wl|störung|L=29A|D=2026-10-31|TK=falschparker",
+    "_wl_ids": [
+      "I20261031-0031"
+    ],
+    "_incident_start": "2026-10-31T20:18:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "29A: Kranarbeiten Busse halten bei Schloßhofer Straße 25-31",
     "description": "Kranarbeiten\nBusse halten bei Schloßhofer Straße 25-31",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -999,11 +1015,11 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "38A: Fahrtbehinderung Falschparker",
-    "description": "Linie 38A: Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U. Voraussichtliche Dauer: 20:20 Uhr. Grund: Falschparker im Bereich Grinzinger Straße 36.",
+    "description": "Linie 38A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "361d72bca0cc84100f7195fc89fc1a03d6a8b18b8fa4cc578267b3f69d263e62",
     "pubDate": "2026-10-31T19:57:00+01:00",
-    "starts_at": "2026-10-31T19:58:43+01:00",
+    "starts_at": "2026-10-31T20:20:46+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=38A|D=2026-10-31|TK=falschparker",
     "_wl_ids": [
@@ -1034,6 +1050,18 @@
     "starts_at": "2026-10-31T04:45:12+01:00",
     "ends_at": "2026-10-31T23:59:59+01:00",
     "_identity": "wl|störung|L=40A|D=2026-10-31|TK=busse halten liechtensteinstrasse 39"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "46: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ca3f320972243b037074321441d828580185f68cae3de0b8d41ea5abc0bd3d31",
+    "pubDate": "2026-10-31T20:07:44+01:00",
+    "starts_at": "2026-10-31T20:07:44+01:00",
+    "ends_at": "2026-10-31T21:07:00+01:00",
+    "_identity": "wl|störung|L=46|D=2026-10-31|TK=fahrtbehinderung fremder verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -1075,17 +1103,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "9: Fahrtbehinderung Falschparker",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-10-31T19:34:00+01:00",
+    "pubDate": "2026-10-31T19:42:09+01:00",
     "starts_at": "2026-10-31T19:43:41+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=9|D=2026-10-31|TK=falschparker",
-    "_wl_ids": [
-      "I20261031-0028"
-    ],
-    "_incident_start": "2026-10-31T19:34:00+01:00"
+    "ends_at": "2026-10-31T20:43:00+01:00",
+    "_identity": "wl|störung|L=9|D=2026-10-31|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
@@ -1162,6 +1186,22 @@
     "starts_at": "2026-10-31T01:05:04+01:00",
     "ends_at": "2026-10-31T23:59:59+01:00",
     "_identity": "wl|störung|L=N31|D=2026-10-31|TK=kranarbeiten busse halten bei franz jonas platz 7 8 34a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Weichenstörung",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "861eb589822612a9402ffcc15457641ff4cf74d6a9632da81a7b59b0d8e8dda0",
+    "pubDate": "2026-10-31T20:23:00+01:00",
+    "starts_at": "2026-10-31T20:23:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-10-31|TK=u6 weichenstörung",
+    "_wl_ids": [
+      "I20261031-0032"
+    ],
+    "_incident_start": "2026-10-31T20:23:00+01:00"
   },
   {
     "source": "Wiener Linien",
