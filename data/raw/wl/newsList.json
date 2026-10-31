@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1016542, ftazW_265, ftazW_1031289"
+    "trafficInfoNameList": "ftazW_1016542, ftazW_265, ftazW_1031289, ftazW_1016543, ftazW_1016957, ftazW_1031290, ftazW_266"
    }
   ],
   "poiCategoryGroups": [
@@ -3098,6 +3098,82 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "03.11.2026 05:15",
+     "ausVon": "03.11.2026 01:15",
+     "location": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Hietzinger Kai, Hadikgasse",
+     "rbls": [
+      4432
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Unter St.Veit",
+     "status": "geplante Wartung",
+     "towards": "U4 Hütteldorf"
+    },
+    "description": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Hietzinger Kai, Hadikgasse",
+    "elevatorId": "UV 02",
+    "name": "ftazW_1016543",
+    "parentName": "ftazW_1016543",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4432
+    ],
+    "time": {
+     "end": "2026-11-03T05:15:00.000+0100",
+     "start": "2026-11-03T01:15:00.000+0100"
+    },
+    "title": "Unter St.Veit"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "03.11.2026 05:15",
+     "ausVon": "03.11.2026 01:15",
+     "location": "U1 Mittelbahnsteig - Ausgang Tilgnerstraße",
+     "rbls": [
+      4107,
+      4122
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Taubstummengasse",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Ausgang Tilgnerstraße",
+    "elevatorId": "TA 01",
+    "name": "ftazW_1016957",
+    "parentName": "ftazW_1016957",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4107,
+     4122
+    ],
+    "time": {
+     "end": "2026-11-03T05:15:00.000+0100",
+     "start": "2026-11-03T01:15:00.000+0100"
+    },
+    "title": "Taubstummengasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "03.11.2026 00:45",
      "ausVon": "02.11.2026 20:45",
      "location": "U2 Mittelbahnsteig - Ausgang Aspernstraße",
@@ -3137,6 +3213,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "03.11.2026 05:15",
+     "ausVon": "03.11.2026 01:15",
+     "location": "U2 Mittelbahnsteig - Ausgang Erzherzog Karl Straße",
+     "rbls": [
+      4251,
+      4272
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Aspernstraße",
+     "status": "geplante Wartung",
+     "towards": "U2 beide Richtungen"
+    },
+    "description": "U2 Mittelbahnsteig - Ausgang Erzherzog Karl Straße",
+    "elevatorId": "AP 02",
+    "name": "ftazW_1031290",
+    "parentName": "ftazW_1031290",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4251,
+     4272
+    ],
+    "time": {
+     "end": "2026-11-03T05:15:00.000+0100",
+     "start": "2026-11-03T01:15:00.000+0100"
+    },
+    "title": "Aspernstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "03.11.2026 00:45",
      "ausVon": "02.11.2026 20:45",
      "location": "Zwischengeschoss Zugang zur U3 und U4 - ÖBB Bahnsteig Richtung Floridsdorf",
@@ -3157,6 +3272,33 @@
     "time": {
      "end": "2026-11-03T00:45:00.000+0100",
      "start": "2026-11-02T20:45:00.000+0100"
+    },
+    "title": "Landstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "03.11.2026 05:15",
+     "ausVon": "03.11.2026 01:15",
+     "location": "Zwischengeschoss Zugang zur U3 und U4 - ÖBB Bahnsteig Richtung Meidling und Flughafen",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [],
+     "station": "Landstraße",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Zwischengeschoss Zugang zur U3 und U4 - ÖBB Bahnsteig Richtung Meidling und Flughafen",
+    "elevatorId": "LA 05",
+    "name": "ftazW_266",
+    "parentName": "ftazW_266",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "time": {
+     "end": "2026-11-03T05:15:00.000+0100",
+     "start": "2026-11-03T01:15:00.000+0100"
     },
     "title": "Landstraße"
    }
