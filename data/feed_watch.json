@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-30T23:30:56.599305+00:00",
- "built": "2026-10-31T00:30:45+01:00",
+ "updated": "2026-10-31T00:01:02.329670+00:00",
+ "built": "2026-10-31T01:00:50+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-31T00:30:45+01:00",
+  "built": "2026-10-31T01:00:50+01:00",
   "items": [
+   {
+    "title": "52: Rettungseinsatz",
+    "time_line": "Seit 00:32"
+   },
    {
     "title": "R40/REX41/REX4/S40: Wien Franz-Josefs-Bahnhof ↔ Tulln an der Donau",
     "time_line": "Bis Mi 04.11."
@@ -43,55 +47,11 @@
    {
     "title": "11: Wienerfeldgasse",
     "time_line": "Bis 19.11."
-   },
-   {
-    "title": "40A: Bauernfeldplatz",
-    "time_line": "Seit 27.10."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-23T23:30:59.484277+00:00",
-   "raw": {
-    "wl-stoerungen": 76,
-    "wl-hinweise": 78,
-    "oebb": 159,
-    "baustellen-linien": 56,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 6,
-    "oebb": 135,
-    "baustellen": 71
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 117
-   }
-  },
-  {
-   "t": "2026-10-24T00:00:50.653627+00:00",
-   "raw": {
-    "wl-stoerungen": 76,
-    "wl-hinweise": 78,
-    "oebb": 158,
-    "baustellen-linien": 56,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 6,
-    "oebb": 134,
-    "baustellen": 71
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 117
-   }
-  },
   {
    "t": "2026-10-24T00:30:55.263937+00:00",
    "raw": {
@@ -6791,17 +6751,37 @@
     "oebb": 9,
     "wl": 97
    }
+  },
+  {
+   "t": "2026-10-31T00:01:02.329670+00:00",
+   "raw": {
+    "wl-stoerungen": 73,
+    "wl-hinweise": 69,
+    "oebb": 155,
+    "baustellen-linien": 57,
+    "baustellen-punkte": 18
+   },
+   "discarded": {
+    "wl": 7,
+    "oebb": 131,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 102
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-30T23:30:56.599305+00:00"
+   "last_ok": "2026-10-31T00:01:02.329670+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-30T23:30:56.599305+00:00"
+   "last_ok": "2026-10-31T00:01:02.329670+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-30T23:30:56.599305+00:00"
+   "last_ok": "2026-10-31T00:01:02.329670+00:00"
   }
  }
 }

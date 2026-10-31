@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260917-0012, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260922-0032, I20260925-0011, I20260909-0007, I20261031-0001-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R36-152, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R45-136, R19-136, R130-136, R119-136, R1974-466, R1448-149, R1445-149, R1446-149, R1447-149, R1449-149, R1472-149, R1473-149, R1474-149, R1475-149, R1476-149, R1474-412, R1448-412, R318-437, R293-474, R1125-229, R1125-429, R1882-101, R1883-101, R2558-125, R1884-101, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R2343-433, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2420-411, R2343-229, R2343-429, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R117-136, R45-136, R19-136, R130-136, R119-136, R118-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R1474-412, R318-437, R1448-412, R293-474, R1125-229, R1125-429, R1875-101, R2558-125, R1884-101, R1883-101, R3886-480, R1882-101, R1881-101, R1880-101, R1876-101, R2343-433, R2373-126, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2379-627, R2380-627, R2345-127, R2420-411, R2343-229, R2343-429, R500-101, R1444-152, R1487-152, R1486-152, R1443-152, R1442-152, R1441-152, R1375-152, R1445-152, R1532-152, R1548-152, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R1448-549, R1474-549, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -86,57 +86,6 @@
      "start": "2026-09-14T04:30:00.000+0200"
     },
     "title": "25, 26, 27: Gleisbauarbeiten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "relatedLineTypes": {
-      "46": "ptTram",
-      "49": "ptTram",
-      "52": "ptTram"
-     }
-    },
-    "description": "Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert. Linie 49: Kein Betrieb. Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert. Weitere Alternativen: U3, 9, 12A. Dauer: Bis 30.10.2026 Betriebsschluss. Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.",
-    "descriptionHTML": "<p>Linie 46: Wird ab Joachimsthalerplatz über die Strecke der Linien 10 und 49 nach Hütteldorf, Bujattigasse verlängert.</p><p><br></p><p>Linie 49: Kein Betrieb.</p><p><br></p><p>Linie 52: Wird ab Westbahnhof über die Strecke der Linien 18 und 49 nach Parlament, U Volkstheater verlängert.</p><p><br></p><p>Weitere Alternativen:</p><p>U3, 9, 12A.</p><p><br></p><p>Dauer: Bis 30.10.2026 Betriebsschluss.</p><p><br></p><p>Grund: Gleisbauarbeiten im Bereich Märzstraße # Huglgasse.</p>",
-    "location": "Märzstraße / Huglgasse ",
-    "name": "I20260917-0012",
-    "owner": "WL",
-    "parentName": "I20260917-0012",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "46",
-     "49",
-     "52"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 146,
-      "lineName": "46",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 149,
-      "lineName": "49",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 152,
-      "lineName": "52",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-09-17T12:25:00.000+0200",
-     "end": "2026-10-31T01:00:00.000+0100",
-     "lastUpdate": "2026-09-17T16:07:00.000+0200",
-     "start": "2026-09-18T04:30:00.000+0200"
-    },
-    "title": "46, 49, 52: Gleisbauarbeiten"
    },
    {
     "alertCause": "undefined alert cause",
@@ -257,6 +206,52 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "52": "ptTram"
+     }
+    },
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "52: Rettungseinsatz"
+      }
+     }
+    ],
+    "location": "Siebensterngasse",
+    "name": "I20261031-0001-F01",
+    "owner": "WL",
+    "parentName": "I20261031-0001",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 152,
+      "lineName": "52",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-31T00:39:00.000+0100",
+     "end": "2026-10-31T01:09:00.000+0100",
+     "lastUpdate": "2026-10-31T00:45:00.000+0100",
+     "start": "2026-10-31T00:32:00.000+0100"
+    },
+    "title": "52: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -537,94 +532,140 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
-    "name": "R1445-149",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1375-152",
     "owner": "WL",
-    "parentName": "R1445-149",
+    "parentName": "R1375-152",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "49"
+     "52"
+    ],
+    "relatedStops": [
+     1375
+    ],
+    "time": {
+     "end": "2026-10-31T01:32:00.000+0100",
+     "start": "2026-10-31T00:32:59.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1441-152",
+    "owner": "WL",
+    "parentName": "R1441-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1441
+    ],
+    "time": {
+     "end": "2026-10-31T01:32:00.000+0100",
+     "start": "2026-10-31T00:32:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1442-152",
+    "owner": "WL",
+    "parentName": "R1442-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1442
+    ],
+    "time": {
+     "end": "2026-10-31T01:32:00.000+0100",
+     "start": "2026-10-31T00:32:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1443-152",
+    "owner": "WL",
+    "parentName": "R1443-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1443
+    ],
+    "time": {
+     "end": "2026-10-31T01:32:00.000+0100",
+     "start": "2026-10-31T00:32:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1444-152",
+    "owner": "WL",
+    "parentName": "R1444-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1444
+    ],
+    "time": {
+     "end": "2026-10-31T01:32:00.000+0100",
+     "start": "2026-10-31T00:32:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1445-152",
+    "owner": "WL",
+    "parentName": "R1445-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
     ],
     "relatedStops": [
      1445
     ],
     "time": {
-     "end": "2026-10-31T01:00:00.000+0100",
-     "start": "2026-10-31T00:00:23.000+0100"
+     "end": "2026-10-31T01:36:00.000+0100",
+     "start": "2026-10-31T00:36:57.000+0100"
     },
-    "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
-    "name": "R1446-149",
-    "owner": "WL",
-    "parentName": "R1446-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1446
-    ],
-    "time": {
-     "end": "2026-10-31T01:00:00.000+0100",
-     "start": "2026-10-31T00:00:23.000+0100"
-    },
-    "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
-    "name": "R1447-149",
-    "owner": "WL",
-    "parentName": "R1447-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1447
-    ],
-    "time": {
-     "end": "2026-10-31T01:00:00.000+0100",
-     "start": "2026-10-31T00:00:23.000+0100"
-    },
-    "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
-    "name": "R1448-149",
-    "owner": "WL",
-    "parentName": "R1448-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1448
-    ],
-    "time": {
-     "end": "2026-10-31T01:00:00.000+0100",
-     "start": "2026-10-31T00:00:23.000+0100"
-    },
-    "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -652,94 +693,25 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46",
-    "name": "R1449-149",
+    "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U ",
+    "name": "R1448-549",
     "owner": "WL",
-    "parentName": "R1449-149",
+    "parentName": "R1448-549",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "49"
+     "N49"
     ],
     "relatedStops": [
-     1449
+     1448
     ],
     "time": {
-     "end": "2026-10-31T01:00:00.000+0100",
-     "start": "2026-10-31T00:00:23.000+0100"
+     "end": "2026-10-31T04:50:00.000+0100",
+     "start": "2026-10-31T01:00:29.000+0100"
     },
-    "title": "Gleisbauarbeiten\nBetrieb ab Hütteldorfer Straße > mit Linie 46"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
-    "name": "R1472-149",
-    "owner": "WL",
-    "parentName": "R1472-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1472
-    ],
-    "time": {
-     "end": "2026-10-31T01:00:00.000+0100",
-     "start": "2026-10-31T00:00:23.000+0100"
-    },
-    "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
-    "name": "R1473-149",
-    "owner": "WL",
-    "parentName": "R1473-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1473
-    ],
-    "time": {
-     "end": "2026-10-31T01:00:00.000+0100",
-     "start": "2026-10-31T00:00:23.000+0100"
-    },
-    "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
-    "name": "R1474-149",
-    "owner": "WL",
-    "parentName": "R1474-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1474
-    ],
-    "time": {
-     "end": "2026-10-31T01:00:00.000+0100",
-     "start": "2026-10-31T00:00:23.000+0100"
-    },
-    "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+    "title": "Gleisbauarbeiten\nBetrieb ab Johnstraße U "
    },
    {
     "alertCause": "undefined alert cause",
@@ -767,48 +739,163 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
-    "name": "R1475-149",
+    "description": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße ",
+    "name": "R1474-549",
     "owner": "WL",
-    "parentName": "R1475-149",
+    "parentName": "R1474-549",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "49"
+     "N49"
     ],
     "relatedStops": [
-     1475
+     1474
     ],
     "time": {
-     "end": "2026-10-31T01:00:00.000+0100",
-     "start": "2026-10-31T00:00:23.000+0100"
+     "end": "2026-10-31T05:00:00.000+0100",
+     "start": "2026-10-31T01:00:29.000+0100"
     },
-    "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+    "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße "
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52",
-    "name": "R1476-149",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1486-152",
     "owner": "WL",
-    "parentName": "R1476-149",
+    "parentName": "R1486-152",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "49"
+     "52"
     ],
     "relatedStops": [
-     1476
+     1486
     ],
     "time": {
-     "end": "2026-10-31T01:00:00.000+0100",
-     "start": "2026-10-31T00:00:23.000+0100"
+     "end": "2026-10-31T01:32:00.000+0100",
+     "start": "2026-10-31T00:32:56.000+0100"
     },
-    "title": "Gleisbauarbeiten\nBetrieb ab Urban-Loritz-Platz mit Linie 52"
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1487-152",
+    "owner": "WL",
+    "parentName": "R1487-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1487
+    ],
+    "time": {
+     "end": "2026-10-31T01:32:00.000+0100",
+     "start": "2026-10-31T00:32:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1532-152",
+    "owner": "WL",
+    "parentName": "R1532-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1532
+    ],
+    "time": {
+     "end": "2026-10-31T01:37:00.000+0100",
+     "start": "2026-10-31T00:37:28.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1548-152",
+    "owner": "WL",
+    "parentName": "R1548-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1548
+    ],
+    "time": {
+     "end": "2026-10-31T01:37:00.000+0100",
+     "start": "2026-10-31T00:37:28.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A",
+    "name": "R1718-508",
+    "owner": "WL",
+    "parentName": "R1718-508",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N8"
+    ],
+    "relatedStops": [
+     1718
+    ],
+    "time": {
+     "end": "2026-10-31T04:45:00.000+0100",
+     "start": "2026-10-31T00:45:01.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
+    "name": "R1749-508",
+    "owner": "WL",
+    "parentName": "R1749-508",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N8"
+    ],
+    "relatedStops": [
+     1749
+    ],
+    "time": {
+     "end": "2026-10-31T05:15:00.000+0100",
+     "start": "2026-10-31T00:45:01.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
    },
    {
     "alertCause": "undefined alert cause",
@@ -998,22 +1085,22 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
-    "name": "R1974-466",
+    "name": "R1974-566",
     "owner": "WL",
-    "parentName": "R1974-466",
+    "parentName": "R1974-566",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "66A"
+     "N66"
     ],
     "relatedStops": [
      1974
     ],
     "time": {
-     "end": "2026-10-31T01:00:00.000+0100",
-     "start": "2026-10-30T04:40:29.000+0100"
+     "end": "2026-10-31T04:20:00.000+0100",
+     "start": "2026-10-31T01:00:01.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
@@ -1480,29 +1567,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Züge halten\nbei Linien 6 und 18",
-    "name": "R36-152",
-    "owner": "WL",
-    "parentName": "R36-152",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     36
-    ],
-    "time": {
-     "end": "2026-10-31T01:00:00.000+0100",
-     "start": "2026-10-30T00:00:12.000+0100"
-    },
-    "title": "Züge halten\nbei Linien 6 und 18"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "name": "R3886-480",
     "owner": "WL",
@@ -1545,6 +1609,52 @@
      "start": "2026-10-30T00:00:10.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
+    "name": "R402-506",
+    "owner": "WL",
+    "parentName": "R402-506",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     402
+    ],
+    "time": {
+     "end": "2026-10-31T05:05:00.000+0100",
+     "start": "2026-10-31T00:55:27.000+0100"
+    },
+    "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
+    "name": "R407-506",
+    "owner": "WL",
+    "parentName": "R407-506",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     407
+    ],
+    "time": {
+     "end": "2026-10-31T05:04:00.000+0100",
+     "start": "2026-10-31T00:54:27.000+0100"
+    },
+    "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
    },
    {
     "alertCause": "undefined alert cause",
