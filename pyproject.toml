@@ -39,6 +39,7 @@ ignore = [
 "scripts/check_complexity.py" = ["S603", "S607"]
 "scripts/generate_sitemap.py" = ["S603", "S607"]
 "scripts/run_static_checks.py" = ["S603"]
+"scripts/ki_waechter.py" = ["S603"]
 # Health watchdog runs the production cache updaters via a static
 # ``[sys.executable, <script>]`` arg list — never user input.
 "scripts/health_check.py" = ["S603"]
