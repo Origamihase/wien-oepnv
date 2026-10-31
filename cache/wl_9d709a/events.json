@@ -722,6 +722,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "13A: Polizeieinsatz",
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71",
+    "pubDate": "2026-10-31T23:06:00+01:00",
+    "starts_at": "2026-10-31T23:06:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=13A|D=2026-10-31|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261031-0040"
+    ],
+    "_incident_start": "2026-10-31T23:06:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -998,22 +1014,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Verunreinigung",
-    "description": "Linie 43: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "318023342a9559b96085172ef55276409fffbd4da889200a6a26c818a626b008",
-    "pubDate": "2026-10-31T22:22:00+01:00",
-    "starts_at": "2026-10-31T22:22:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=43|D=2026-10-31|TK=43 verunreinigung",
-    "_wl_ids": [
-      "I20261031-0039"
-    ],
-    "_incident_start": "2026-10-31T22:22:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1138,22 +1138,6 @@
       "I20261031-0036"
     ],
     "_incident_start": "2026-10-31T21:13:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U2: Betriebsstörung",
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
-    "pubDate": "2026-10-31T20:41:00+01:00",
-    "starts_at": "2026-10-31T20:41:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U2|D=2026-10-31|TK=u2 betriebsstörung",
-    "_wl_ids": [
-      "I20261031-0033"
-    ],
-    "_incident_start": "2026-10-31T20:41:00+01:00"
   },
   {
     "source": "Wiener Linien",

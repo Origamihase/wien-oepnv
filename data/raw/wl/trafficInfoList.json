@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260922-0032, I20261031-0036-F01, I20260925-0011, I20261031-0033-F01, I20260909-0007, I20261020-0029, I20261031-0039"
+    "trafficInfoNameList": "I20261031-0040, I20260922-0032, I20261031-0036-F01, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
@@ -208,54 +208,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "U2": "ptMetro"
-     }
-    },
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U2: Betriebsstörung"
-      }
-     }
-    ],
-    "name": "I20261031-0033-F01",
-    "owner": "WL",
-    "parentName": "I20261031-0033",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 302,
-      "lineName": "U2",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4205
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-31T20:58:00.000+0100",
-     "lastUpdate": "2026-10-31T20:58:00.000+0100",
-     "resume": "2026-10-31T20:58:00.000+0100",
-     "start": "2026-10-31T20:41:00.000+0100"
-    },
-    "title": "U2: Betriebsstörung"
-   },
-   {
     "alertCause": "fire",
     "alertCauseId": 5,
     "attributes": {
@@ -301,49 +253,49 @@
     "title": "O: Feuerwehreinsatz"
    },
    {
-    "alertCause": "vandalism",
-    "alertCauseId": 16,
+    "alertCause": "police activity",
+    "alertCauseId": 3,
     "attributes": {
      "relatedLineTypes": {
-      "43": "ptTram"
+      "13A": "ptBusCity"
      }
     },
-    "description": "Linie 43: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "descriptionHTML": "<p>Linie 43:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "<p>Linie 13A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 43:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-       "descriptionPlain": "Linie 43: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-       "title": "43: Verunreinigung"
+       "descriptionHtml": "<p>Linie 13A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+       "descriptionPlain": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+       "title": "13A: Polizeieinsatz"
       }
      }
     ],
-    "name": "I20261031-0039",
+    "name": "I20261031-0040",
     "owner": "WL",
-    "parentName": "I20261031-0039",
+    "parentName": "I20261031-0040",
     "priority": "1",
-    "reasonId": 36,
-    "reasonName": "Verunreinigung",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "43"
+     "13A"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 143,
-      "lineName": "43",
-      "vehicleType": "ptTram"
+      "lineId": 413,
+      "lineName": "13A",
+      "vehicleType": "ptBusCity"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-31T22:23:00.000+0100",
-     "lastUpdate": "2026-10-31T22:23:00.000+0100",
-     "resume": "2026-10-31T22:22:00.000+0100",
-     "start": "2026-10-31T22:22:00.000+0100"
+     "created": "2026-10-31T23:08:00.000+0100",
+     "lastUpdate": "2026-10-31T23:08:00.000+0100",
+     "resume": "2026-10-31T23:06:00.000+0100",
+     "start": "2026-10-31T23:06:00.000+0100"
     },
-    "title": "43: Verunreinigung"
+    "title": "13A: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
