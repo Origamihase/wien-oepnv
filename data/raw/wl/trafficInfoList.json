@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260922-0032, I20261031-0011, I20260925-0011, I20260909-0007, I20261020-0029, I20261031-0010-F01"
+    "trafficInfoNameList": "I20260922-0032, I20261031-0011, I20261031-0013, I20260925-0011, I20260909-0007, I20261020-0029, I20261031-0012"
    },
    {
     "id": 3,
@@ -208,54 +208,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "D": "ptTram"
-     }
-    },
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "D: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261031-0010-F01",
-    "owner": "WL",
-    "parentName": "I20261031-0010",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 136,
-      "lineName": "D",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     94
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-31T11:42:00.000+0100",
-     "lastUpdate": "2026-10-31T11:42:00.000+0100",
-     "resume": "2026-10-31T11:42:00.000+0100",
-     "start": "2026-10-31T11:16:00.000+0100"
-    },
-    "title": "D: Rettungseinsatz"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -299,6 +251,96 @@
      "start": "2026-10-31T12:38:00.000+0100"
     },
     "title": "3A: Verspätungen"
+   },
+   {
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
+    "attributes": {
+     "relatedLineTypes": {
+      "5B": "ptBusCity"
+     }
+    },
+    "description": "Linie 5B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "descriptionHTML": "<p>Linie 5B:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 5B:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+       "descriptionPlain": "Linie 5B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+       "title": "5B: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261031-0012",
+    "owner": "WL",
+    "parentName": "I20261031-0012",
+    "priority": "1",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "5B"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 205,
+      "lineName": "5B",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-31T13:16:00.000+0100",
+     "lastUpdate": "2026-10-31T13:16:00.000+0100",
+     "resume": "2026-10-31T13:16:00.000+0100",
+     "start": "2026-10-31T13:16:00.000+0100"
+    },
+    "title": "5B: Verspätungen"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "O: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261031-0013",
+    "owner": "WL",
+    "parentName": "I20261031-0013",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 170,
+      "lineName": "O",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-31T13:28:00.000+0100",
+     "lastUpdate": "2026-10-31T13:28:00.000+0100",
+     "resume": "2026-10-31T13:28:00.000+0100",
+     "start": "2026-10-31T13:28:00.000+0100"
+    },
+    "title": "O: Verkehrsüberlastung"
    },
    {
     "alertCause": "undefined alert cause",
