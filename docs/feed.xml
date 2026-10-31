@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 31 Oct 2026 19:00:59 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 31 Oct 2026 19:30:42 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[49: Falschparker]]></title>
@@ -20,23 +20,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 31 Oct 2026 18:50:00 +0100</ext:first_seen>
       <ext:starts_at>Sat, 31 Oct 2026 18:52:37 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 18:50]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 18:50]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Floridsdorf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;923357</guid>
-      <pubDate>Sat, 31 Oct 2026 18:40:09 +0100</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sat, 31 Oct 2026 18:30:59 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 31 Oct 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Sat, 31 Oct 2026 23:59:59 +0100</ext:ends_at>
-      <georss:point>48.257018 16.400172</georss:point>
-      <description>Wegen einer Weichenstörung sind in Wien Floridsdorf Bahnhof (U) Zugfahrten bis voraussichtlich 19:00 Uhr nur eingeschränkt möglich. Planen Sie bis zu 10 Minuten mehr Reisezeit ein. [Seit 18:27]</description>
-      <content:encoded><![CDATA[Wegen einer Weichenstörung sind in Wien Floridsdorf Bahnhof (U) Zugfahrten bis voraussichtlich 19:00 Uhr nur eingeschränkt möglich. Planen Sie bis zu 10 Minuten mehr Reisezeit ein.<br/>[Seit 18:27]]]></content:encoded>
+      <ext:ends_at>Sat, 31 Oct 2026 19:52:00 +0100</ext:ends_at>
+      <description>Fahrtbehinderung. [Seit 18:50]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 18:50]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[38: Polizeieinsatz]]></title>
@@ -47,9 +33,9 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 31 Oct 2026 18:25:00 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 31 Oct 2026 18:28:05 +0100</ext:starts_at>
-      <description>Betrieb ab Nußdorfer Straße; Umleitung Linie 37. [Seit 18:25]</description>
-      <content:encoded><![CDATA[Betrieb ab Nußdorfer Straße; Umleitung Linie 37.<br/>[Seit 18:25]]]></content:encoded>
+      <ext:starts_at>Sat, 31 Oct 2026 18:25:00 +0100</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 18:25]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 18:25]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[38A: Polizeieinsatz]]></title>
@@ -61,6 +47,7 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 31 Oct 2026 18:08:00 +0100</ext:first_seen>
       <ext:starts_at>Sat, 31 Oct 2026 18:08:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 31 Oct 2026 19:55:00 +0100</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 18:08]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 18:08]]]></content:encoded>
     </item>
@@ -149,6 +136,20 @@
       <ext:ends_at>Sat, 31 Oct 2026 23:59:59 +0100</ext:ends_at>
       <description>Busse halten bei Schloßhofer Straße 25-31. [Heute]</description>
       <content:encoded><![CDATA[Busse halten bei Schloßhofer Straße 25-31.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[38B/39B: Allerheiligenverkehr 01.11.2026]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">6f9b1807cf0978b7b95b8bc183dc89ea212bab6281ff0ea60d0187953f17ad94</guid>
+      <pubDate>Mon, 05 Oct 2026 13:40:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 30 Oct 2026 00:00:46 +0100</ext:first_seen>
+      <ext:starts_at>Sun, 01 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 01 Nov 2026 18:00:00 +0100</ext:ends_at>
+      <description>Inbetriebnahme von Autobuslinien. Anlässlich des Feiertages Allerheiligen werden die Autobuslinien 38B und 39B in Betrieb genommen und diverse Linien zu Friedhöfen verstärkt … [Am So 01.11.]</description>
+      <content:encoded><![CDATA[Inbetriebnahme von Autobuslinien. Anlässlich des Feiertages Allerheiligen werden die Autobuslinien 38B und 39B in Betrieb genommen und diverse Linien zu Friedhöfen verstärkt …<br/>[Am So 01.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

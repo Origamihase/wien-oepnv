@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260922-0032, I20261031-0027-F01, I20260925-0011, I20260909-0007, I20261031-0026-F01, I20261020-0029, I20261031-0025-F01"
+    "trafficInfoNameList": "I20260922-0032, I20260925-0011, I20260909-0007, I20261031-0026-F01, I20261031-0025-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R101-136, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R100-136, R1474-412, R318-437, R293-474, R1448-412, R1125-229, R1125-429, R2558-125, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R1884-101, R3886-480, R2343-433, R2373-126, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2379-627, R2380-627, R2345-127, R2420-411, R2343-229, R2343-429, R2343-531, R1974-466, R1272-440, R1301-440, R500-101, R1221-138, R1224-138, R1225-138, R1226-138, R1227-138, R1223-138, R2985-138, R1215-138, R1214-138, R1217-138, R1216-138, R2964-138, R216-138, R1452-149, R1449-149, R1448-149, R1454-149, R1455-149, R1456-149, R1458-149, R1453-149, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R101-136, R117-136, R116-136, R115-136, R103-136, R100-136, R102-136, R45-136, R19-136, R130-136, R119-136, R118-136, R1474-412, R318-437, R293-474, R1448-412, R1125-229, R1125-429, R2558-125, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2343-433, R2343-429, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2343-229, R2420-411, R2343-531, R1974-466, R1272-440, R1301-440, R500-101, R1458-149, R1456-149, R1455-149, R1454-149, R1453-149, R1452-149, R1449-149, R1448-149, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -247,8 +247,8 @@
     "status": "active",
     "time": {
      "created": "2026-10-31T18:39:00.000+0100",
-     "lastUpdate": "2026-10-31T18:39:00.000+0100",
-     "resume": "2026-10-31T18:39:00.000+0100",
+     "end": "2026-10-31T19:55:00.000+0100",
+     "lastUpdate": "2026-10-31T19:15:00.000+0100",
      "start": "2026-10-31T18:08:00.000+0100"
     },
     "title": "38A: Polizeieinsatz"
@@ -300,52 +300,6 @@
      "start": "2026-10-31T18:25:00.000+0100"
     },
     "title": "38: Polizeieinsatz"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "49": "ptTram"
-     }
-    },
-    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 49: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 49: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "49: Falschparker"
-      }
-     }
-    ],
-    "location": "Märzstraße 56",
-    "name": "I20261031-0027-F01",
-    "owner": "WL",
-    "parentName": "I20261031-0027",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 149,
-      "lineName": "49",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-31T18:53:00.000+0100",
-     "lastUpdate": "2026-10-31T18:53:00.000+0100",
-     "resume": "2026-10-31T18:53:00.000+0100",
-     "start": "2026-10-31T18:50:00.000+0100"
-    },
-    "title": "49: Falschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -599,236 +553,6 @@
      "start": "2026-10-30T00:00:12.000+0100"
     },
     "title": "Züge halten in\nSchleife"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1214-138",
-    "owner": "WL",
-    "parentName": "R1214-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1214
-    ],
-    "time": {
-     "end": "2026-10-31T19:27:00.000+0100",
-     "start": "2026-10-31T18:28:03.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1215-138",
-    "owner": "WL",
-    "parentName": "R1215-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1215
-    ],
-    "time": {
-     "end": "2026-10-31T19:27:00.000+0100",
-     "start": "2026-10-31T18:28:03.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1216-138",
-    "owner": "WL",
-    "parentName": "R1216-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1216
-    ],
-    "time": {
-     "end": "2026-10-31T19:27:00.000+0100",
-     "start": "2026-10-31T18:28:03.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1217-138",
-    "owner": "WL",
-    "parentName": "R1217-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1217
-    ],
-    "time": {
-     "end": "2026-10-31T19:27:00.000+0100",
-     "start": "2026-10-31T18:28:03.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Nußdorfer Straße ",
-    "name": "R1221-138",
-    "owner": "WL",
-    "parentName": "R1221-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1221
-    ],
-    "time": {
-     "end": "2026-10-31T19:27:00.000+0100",
-     "start": "2026-10-31T18:27:33.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Nußdorfer Straße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Nußdorfer Straße ",
-    "name": "R1223-138",
-    "owner": "WL",
-    "parentName": "R1223-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1223
-    ],
-    "time": {
-     "end": "2026-10-31T19:27:00.000+0100",
-     "start": "2026-10-31T18:27:33.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Nußdorfer Straße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Nußdorfer Straße ",
-    "name": "R1224-138",
-    "owner": "WL",
-    "parentName": "R1224-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1224
-    ],
-    "time": {
-     "end": "2026-10-31T19:27:00.000+0100",
-     "start": "2026-10-31T18:27:33.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Nußdorfer Straße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Nußdorfer Straße ",
-    "name": "R1225-138",
-    "owner": "WL",
-    "parentName": "R1225-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1225
-    ],
-    "time": {
-     "end": "2026-10-31T19:27:00.000+0100",
-     "start": "2026-10-31T18:27:33.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Nußdorfer Straße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Nußdorfer Straße ",
-    "name": "R1226-138",
-    "owner": "WL",
-    "parentName": "R1226-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1226
-    ],
-    "time": {
-     "end": "2026-10-31T19:27:00.000+0100",
-     "start": "2026-10-31T18:27:33.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Nußdorfer Straße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Nußdorfer Straße ",
-    "name": "R1227-138",
-    "owner": "WL",
-    "parentName": "R1227-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1227
-    ],
-    "time": {
-     "end": "2026-10-31T19:27:00.000+0100",
-     "start": "2026-10-31T18:27:33.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Nußdorfer Straße "
    },
    {
     "alertCause": "undefined alert cause",
@@ -1339,29 +1063,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Polizeieinsatz\nUmleitung Linie 37",
-    "name": "R216-138",
-    "owner": "WL",
-    "parentName": "R216-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     216
-    ],
-    "time": {
-     "end": "2026-10-31T19:30:00.000+0100",
-     "start": "2026-10-31T18:32:03.000+0100"
-    },
-    "title": "Polizeieinsatz\nUmleitung Linie 37"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -1818,52 +1519,6 @@
      "start": "2026-10-31T00:00:23.000+0100"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2964-138",
-    "owner": "WL",
-    "parentName": "R2964-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     2964
-    ],
-    "time": {
-     "end": "2026-10-31T19:27:00.000+0100",
-     "start": "2026-10-31T18:28:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Nußdorfer Straße ",
-    "name": "R2985-138",
-    "owner": "WL",
-    "parentName": "R2985-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     2985
-    ],
-    "time": {
-     "end": "2026-10-31T19:27:00.000+0100",
-     "start": "2026-10-31T18:27:35.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Nußdorfer Straße "
    },
    {
     "alertCause": "undefined alert cause",
