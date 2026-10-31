@@ -10,7 +10,6 @@ import logging
 import math
 import os
 import re
-import unicodedata
 from enum import IntEnum
 from functools import lru_cache
 from itertools import pairwise
@@ -20,6 +19,7 @@ from collections.abc import Iterable
 
 from .files import _reject_non_finite_constant, _reject_non_finite_float, read_capped_text
 from .geo import calculate_distance_meters
+from .text import strip_accents
 
 __all__ = [
     "canonical_name",
@@ -137,14 +137,6 @@ Ring = tuple[Coordinate, ...]
 Polygon = tuple[Ring, ...]
 
 
-def _strip_accents(value: str) -> str:
-    """Return *value* without diacritic marks."""
-
-    return "".join(
-        ch for ch in unicodedata.normalize("NFKD", value) if not unicodedata.combining(ch)
-    )
-
-
 def _normalize_token(value: str) -> str:
     """Produce a canonical lookup token for a station alias.
 
@@ -158,7 +150,7 @@ def _normalize_token(value: str) -> str:
     if not value:
         return ""
 
-    text = _strip_accents(value)
+    text = strip_accents(value)
     text = text.replace("ß", "ss")
     text = text.casefold()
     text = re.sub(r"\ba\s*(?:[./]\s*)?d(?:[./]\s*)?\b", "an der ", text)

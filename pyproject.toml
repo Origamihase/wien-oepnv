@@ -49,6 +49,9 @@ ignore = [
 # A file-specific ignore is version-robust (ruff 0.4.x vs newer anchor the
 # S603 range to different lines, so an inline ``# noqa`` cannot satisfy both).
 "tests/scripts/test_generate_sitemap_lastmod.py" = ["S603", "S607"]
+# Imports each script in a child interpreter via a static
+# ``[sys.executable, "-c", …]`` arg list, never user input.
+"tests/test_scripts_import_src_only.py" = ["S603"]
 "tests/**/*.py" = [
   "S101", "S113", "S314", "S105", "S108", "S110", "S310", "F841",
   # bugbear rules deliberately allowed in tests:

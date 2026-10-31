@@ -24,14 +24,15 @@ and ``_dump_changes``) were removed together with that script on
 2026-10-16 (Google Places stage dropped); the numbering below is kept
 stable so the section headers still match the Round-13 checklist.
 
-3. ``scripts/update_all_stations.py:_write_stations_payload``
-   (line ~529) — writes ``{"stations": [...]}`` to the orchestrator's
-   temp file which is then copy-back'd to ``data/stations.json``
-   (this is the file the weekly cron commits).
-4. ``scripts/enrich_station_aliases.py`` — extracts the inline
-   ``json.dump`` write into a new ``_write_stations_payload`` helper
-   so the scrubber can run uniformly at the ingestion boundary
-   (writes ``data/stations.json`` after alias enrichment).
+3. ``scripts/update_all_stations.py`` — writes ``{"stations": [...]}``
+   to the orchestrator's temp file which is then copy-back'd to
+   ``data/stations.json`` (this is the file the weekly cron commits).
+4. ``scripts/enrich_station_aliases.py`` — writes ``data/stations.json``
+   after alias enrichment. Both scripts write through
+   ``src/places/merge.py:write_stations_payload`` (one function since the
+   code audit of 2026-10-31; before, each script carried its own
+   ``_write_stations_payload`` copy), so the scrubber runs uniformly at the
+   ingestion boundary.
 5. ``scripts/update_station_directory.py:write_json`` (line ~1762) —
    writes ``{"stations": [...]}`` to ``data/stations.json`` after the
    OEBB ``Verzeichnis der Verkehrsstationen`` Excel extraction.
@@ -153,15 +154,18 @@ _RLO_UTF8 = b"\xe2\x80\xae"
 
 
 # ---------------------------------------------------------------------
-# Sink 3: ``scripts/update_all_stations.py:_write_stations_payload``
+# Sinks 3 and 4: ``src/places/merge.py:write_stations_payload`` — the
+# writer of ``scripts/update_all_stations.py`` (orchestrator temp file,
+# copied back to ``data/stations.json``) and of
+# ``scripts/enrich_station_aliases.py``; one function since the code
+# audit of 2026-10-31, before it each script carried its own copy.
 # ---------------------------------------------------------------------
 
 
-def test_update_all_stations_write_payload_no_rlo_leak(tmp_path: Path) -> None:
-    """The orchestrator's temp-file writer is the file that the
-    weekly ``update-stations.yml`` cron copies back to
-    ``data/stations.json`` and then commits to ``main``."""
-    from scripts.update_all_stations import _write_stations_payload
+def test_write_stations_payload_no_rlo_leak(tmp_path: Path) -> None:
+    """The weekly ``update-stations.yml`` cron copies the written file
+    back to ``data/stations.json`` and commits it to ``main``."""
+    from src.places.merge import write_stations_payload
 
     target = tmp_path / "stations.json"
     stations = [
@@ -172,20 +176,20 @@ def test_update_all_stations_write_payload_no_rlo_leak(tmp_path: Path) -> None:
             "longitude": 16.38,
         }
     ]
-    _write_stations_payload(target, stations)
+    write_stations_payload(target, stations)
 
     raw = target.read_bytes()
     assert _RLO_UTF8 not in raw, (
-        "U+202E leaked via _write_stations_payload — the orchestrator's "
+        "U+202E leaked via write_stations_payload — the orchestrator's "
         "temp file gets copy-back'd to data/stations.json and committed."
     )
 
 
 @pytest.mark.parametrize("primitive", _TROJAN_SOURCE_PRIMITIVES)
-def test_update_all_stations_write_payload_strips_every_primitive(
+def test_write_stations_payload_strips_every_primitive(
     tmp_path: Path, primitive: str
 ) -> None:
-    from scripts.update_all_stations import _write_stations_payload
+    from src.places.merge import write_stations_payload
 
     target = tmp_path / f"stations-{ord(primitive):04x}.json"
     stations = [
@@ -197,94 +201,38 @@ def test_update_all_stations_write_payload_strips_every_primitive(
             "longitude": 16.38,
         }
     ]
-    _write_stations_payload(target, stations)
+    write_stations_payload(target, stations)
 
     raw = target.read_bytes()
     expected = _UTF8_BYTES[primitive]
     assert expected not in raw, (
         f"Trojan-Source primitive U+{ord(primitive):04X} leaked via "
-        f"_write_stations_payload as raw UTF-8 bytes ({expected!r})."
+        f"write_stations_payload as raw UTF-8 bytes ({expected!r})."
     )
 
 
-def test_update_all_stations_write_payload_preserves_umlauts(tmp_path: Path) -> None:
-    from scripts.update_all_stations import _write_stations_payload
+def test_write_stations_payload_preserves_umlauts(tmp_path: Path) -> None:
+    from src.places.merge import write_stations_payload
 
     target = tmp_path / "stations.json"
     stations = [
         {"name": "Wien Hütteldorf", "aliases": ["Floridsdorfer Brücke"], "bst_id": "1"}
     ]
-    _write_stations_payload(target, stations)
+    write_stations_payload(target, stations)
 
     text = target.read_text(encoding="utf-8")
     assert "Hütteldorf" in text
     assert "\\u00fc" not in text
 
 
-# ---------------------------------------------------------------------
-# Sink 4: ``scripts/enrich_station_aliases.py`` writer
-# ---------------------------------------------------------------------
+def test_scripts_bind_the_shared_writer() -> None:
+    """Both scripts write through the shared function, so the sinks above are theirs."""
+    import importlib
 
+    from src.places.merge import write_stations_payload
 
-def test_enrich_station_aliases_writer_no_rlo_leak(tmp_path: Path) -> None:
-    """The alias enrichment script writes ``data/stations.json`` after
-    enrichment. Its inline ``json.dump`` write is extracted into a
-    ``_write_stations_payload`` helper so the scrubber can run uniformly
-    at the ingestion boundary."""
-    from scripts.enrich_station_aliases import _write_stations_payload
-
-    target = tmp_path / "stations.json"
-    stations: list[dict[str, Any]] = [
-        {
-            "name": "Westbahnhof‮moc.live",
-            "aliases": ["Hbf‮.evil"],
-            "bst_id": "12345",
-        }
-    ]
-    _write_stations_payload(target, stations)
-
-    raw = target.read_bytes()
-    assert _RLO_UTF8 not in raw, (
-        "U+202E leaked via enrich_station_aliases._write_stations_payload."
-    )
-
-
-@pytest.mark.parametrize("primitive", _TROJAN_SOURCE_PRIMITIVES)
-def test_enrich_station_aliases_writer_strips_every_primitive(
-    tmp_path: Path, primitive: str
-) -> None:
-    from scripts.enrich_station_aliases import _write_stations_payload
-
-    target = tmp_path / f"stations-{ord(primitive):04x}.json"
-    stations: list[dict[str, Any]] = [
-        {
-            "name": f"evil{primitive}.example",
-            "aliases": [f"alias{primitive}evil"],
-            "bst_id": "12345",
-        }
-    ]
-    _write_stations_payload(target, stations)
-
-    raw = target.read_bytes()
-    expected = _UTF8_BYTES[primitive]
-    assert expected not in raw, (
-        f"Trojan-Source primitive U+{ord(primitive):04X} leaked via "
-        f"enrich_station_aliases as raw UTF-8 bytes ({expected!r})."
-    )
-
-
-def test_enrich_station_aliases_writer_preserves_umlauts(tmp_path: Path) -> None:
-    from scripts.enrich_station_aliases import _write_stations_payload
-
-    target = tmp_path / "stations.json"
-    stations: list[dict[str, Any]] = [
-        {"name": "Wien Hütteldorf", "aliases": ["Floridsdorfer Brücke"], "bst_id": "1"}
-    ]
-    _write_stations_payload(target, stations)
-
-    text = target.read_text(encoding="utf-8")
-    assert "Hütteldorf" in text
-    assert "\\u00fc" not in text
+    for name in ("scripts.update_all_stations", "scripts.enrich_station_aliases"):
+        assert importlib.import_module(name).write_stations_payload is write_stations_payload
 
 
 # ---------------------------------------------------------------------
@@ -431,23 +379,24 @@ def test_update_wl_merge_into_stations_preserves_umlauts(tmp_path: Path) -> None
 
 
 def test_all_script_writers_use_shared_scrubber_helper() -> None:
-    """Every script-level station writer must import
+    """Every script-level station writer must scrub through
     ``scrub_trojan_source_primitives`` from ``src.utils.serialize`` so
     the canonical attack-byte union stays single-sourced across the
-    project. A future script-level writer that re-implements the
-    primitive set would silently drift away from the canonical floor
-    pinned in ``src/utils/serialize.py``."""
-    targets = [
-        "scripts/update_all_stations.py",
-        "scripts/enrich_station_aliases.py",
-        "scripts/update_station_directory.py",
-        "scripts/update_wl_stations.py",
-    ]
-    for rel in targets:
+    project: directly, or through ``write_stations_payload`` of
+    ``src/places/merge.py``, which calls it. A future script-level writer
+    that re-implements the primitive set would silently drift away from
+    the canonical floor pinned in ``src/utils/serialize.py``."""
+    targets = {
+        "scripts/update_all_stations.py": "write_stations_payload",
+        "scripts/enrich_station_aliases.py": "write_stations_payload",
+        "scripts/update_station_directory.py": "scrub_trojan_source_primitives",
+        "scripts/update_wl_stations.py": "scrub_trojan_source_primitives",
+        "src/places/merge.py": "scrub_trojan_source_primitives",
+    }
+    for rel, marker in targets.items():
         path = REPO_ROOT / rel
         text = path.read_text(encoding="utf-8")
-        assert "scrub_trojan_source_primitives" in text, (
-            f"{rel} does not import scrub_trojan_source_primitives — "
-            f"the canonical CVE-2021-42574 attack-byte union is no "
-            f"longer single-sourced across the project."
+        assert marker in text, (
+            f"{rel} does not use {marker} — the canonical CVE-2021-42574 "
+            f"attack-byte union is no longer single-sourced across the project."
         )

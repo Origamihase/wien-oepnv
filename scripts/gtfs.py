@@ -15,10 +15,7 @@ DEFAULT_GTFS_STOP_PATH = BASE_DIR / "data" / "gtfs" / "stops.txt"
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-try:
-    from src.utils.files import read_capped_text
-except ModuleNotFoundError:  # pragma: no cover - fallback path
-    from utils.files import read_capped_text  # type: ignore[no-redef]
+from src.utils.files import read_capped_text  # noqa: E402
 
 # CSV size-bomb axis: ``read_gtfs_stops`` previously fed the operator-
 # supplied ``stops.txt`` into ``csv.DictReader(handle)`` directly,

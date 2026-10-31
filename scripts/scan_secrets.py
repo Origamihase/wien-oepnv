@@ -8,17 +8,10 @@ import sys
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parents[1]
-SRC_DIR = BASE_DIR / "src"
-if str(SRC_DIR) not in sys.path:
-    sys.path.insert(0, str(SRC_DIR))
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
 
-try:  # pragma: no cover - executed both as script and module
-    from utils.secret_scanner import load_ignore_file, scan_repository
-except ModuleNotFoundError:  # pragma: no cover
-    from src.utils.secret_scanner import (
-        load_ignore_file,
-        scan_repository,
-    )
+from src.utils.secret_scanner import load_ignore_file, scan_repository  # noqa: E402
 
 
 def _parse_paths(values: list[str], base_dir: Path) -> list[Path]:

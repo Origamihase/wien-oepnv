@@ -805,6 +805,8 @@ meisten werden auch über die einheitliche CLI (`python -m src.cli …`)
 gekapselt; ein Direktaufruf bleibt jedoch sinnvoll, wenn Sondermodi
 benötigt werden (z. B. `--no-download` für die WL-OGD-CSVs).
 
+Skripte importieren Projektmodule nur über das Paket `src` (`from src.utils.cache import …`); auf `sys.path` kommt dafür allein das Repository-Wurzelverzeichnis. Lag zusätzlich `src/` selbst auf dem Pfad, lud Python dieselbe Datei zweimal, als `utils.cache` und als `src.utils.cache`, mit getrenntem Modulzustand: Ein am einen Modul registrierter Alarm-Hook sah einen Alarm aus dem anderen nicht, der HTTP-Sitzungs-Cache hielt zwei Aufräum-Threads, und mypy prüfte die nackt importierten Namen gar nicht (`ignore_missing_imports`), weshalb zwei überflüssige Casts und eine ungeprüfte Verzweigung im Health check erst mit der Umstellung auffielen (Code-Audit vom 31.10.2026, Fund A; Entscheidung des Betreibers am selben Tag). `tests/test_scripts_import_src_only.py` prüft die Regel für jedes Skript; die früheren Import-Rückfälle auf nackte Modulnamen (`except ModuleNotFoundError: from utils… import …`) sind entfallen, weil sie nie liefen. `scripts/update_wl_stations.py` lädt seine `src`-Helfer weiterhin erst beim Aufruf, damit es ohne Pfad-Vorbereitung importierbar bleibt. Weil `src/__init__.py` den Feed-Builder importiert, starten `scan_secrets.py` und `configure_feed.py` seit der Umstellung etwa 0,3 s später und laufen wie jedes Skript mit `src`-Importen aus dem Repository-Wurzelverzeichnis (der Pfad-Wächter in `src/feed/config.py` prüft `LOG_DIR` schon beim Import).
+
 ### Provider-Caches & Feed-Daten
 
 | Skript | Aufgabe |

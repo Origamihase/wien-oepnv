@@ -93,21 +93,18 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SRC_DIR = REPO_ROOT / "src"
-# Resolve the canonical size-/depth-capped file helpers regardless of how the
-# script is launched. Both ``src`` (for ``from utils.…``) and the repo root go
-# on the path, mirroring scripts/update_baustellen_cache.py. Using the capped
-# helpers (instead of ``Path.read_text`` / ``json.loads``) is mandatory: the
-# repo-wide audit-walker tests reject bare reads/parses in src/ and scripts/.
-if str(SRC_DIR) not in sys.path:
-    sys.path.insert(0, str(SRC_DIR))
+# Only the repository root goes on the path: every project module is
+# imported once, as ``src.…`` (docs/development.md, "Skripte im Überblick").
+# Using the capped file helpers (instead of ``Path.read_text`` /
+# ``json.loads``) is mandatory: the repo-wide audit-walker tests reject bare
+# reads/parses in src/ and scripts/.
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from config.defaults import DEFAULT_PAGES_BASE_URL  # noqa: E402
-from utils.files import loads_finite, read_capped_json, read_capped_text  # noqa: E402
-from utils.http import fetch_content_safe, session_with_retries  # noqa: E402
-from utils.logging import sanitize_log_arg  # noqa: E402
+from src.config.defaults import DEFAULT_PAGES_BASE_URL  # noqa: E402
+from src.utils.files import loads_finite, read_capped_json, read_capped_text  # noqa: E402
+from src.utils.http import fetch_content_safe, session_with_retries  # noqa: E402
+from src.utils.logging import sanitize_log_arg  # noqa: E402
 
 try:  # Vienna local time is a nice-to-have header detail; tzdata may be absent.
     _VIENNA: ZoneInfo | None = ZoneInfo("Europe/Vienna")
@@ -279,13 +276,12 @@ def _extract_reason(output: str) -> str:
 def _subprocess_env() -> dict[str, str]:
     """Env for the updater subprocesses.
 
-    The updaters mix import styles (``from src.…`` needs the repo root on the
-    path, ``from utils.…`` needs ``src/``), so expose both — mirrors what
-    update-cycle.yml achieves via ``PYTHONPATH: src`` plus each script's own
-    ``REPO_ROOT`` insertion.
+    Only the repository root goes on ``PYTHONPATH``: the updaters import
+    ``src.…`` (docs/development.md, "Skripte im Überblick"), and ``src/`` on
+    the path would load their modules a second time as ``utils.…``.
     """
     env = dict(os.environ)
-    extra = os.pathsep.join([str(REPO_ROOT), str(REPO_ROOT / "src")])
+    extra = str(REPO_ROOT)
     existing = env.get("PYTHONPATH", "")
     env["PYTHONPATH"] = f"{extra}{os.pathsep}{existing}" if existing else extra
     return env
@@ -960,7 +956,7 @@ def check_side_steps(now: datetime) -> Check:
             continue
         data = read_capped_json(path, label="side_steps")
         steps = data.get("steps") if isinstance(data, dict) else None
-        if not isinstance(steps, dict):
+        if not isinstance(data, dict) or not isinstance(steps, dict):
             problems.append(f"{workflow}: {path.name} ist unlesbar")
             continue
         updated = _parse_utc(data.get("updated"))

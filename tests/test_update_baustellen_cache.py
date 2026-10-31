@@ -47,8 +47,8 @@ def _patch_http_layer_bypass(monkeypatch: pytest.MonkeyPatch) -> None:
 
     * ``validate_http_url`` — patched on the **caller's namespace**
       (``update_baustellen_cache``) because the script does
-      ``from utils.http import validate_http_url`` at import time,
-      so patching only ``sys.modules['utils.http'].validate_http_url``
+      ``from src.utils.http import validate_http_url`` at import time,
+      so patching only ``sys.modules['src.utils.http'].validate_http_url``
       would leave the script's local binding pointing at the
       original function.
     * ``verify_response_ip`` — patched on the **provider module**.
@@ -111,16 +111,11 @@ def _patch_http_layer_bypass(monkeypatch: pytest.MonkeyPatch) -> None:
     # 2) The provider-module attributes — these are looked up at call
     # time by the HTTP machinery itself, so patching the module
     # attribute is sufficient.
-    for module_name in ("src.utils.http", "utils.http"):
-        if module_name not in sys.modules:
-            continue
-        module = sys.modules[module_name]
-        monkeypatch.setattr(module, "validate_http_url", lambda url, **kw: url)
-        monkeypatch.setattr(module, "verify_response_ip", lambda _: None)
-        monkeypatch.setattr(
-            module, "_resolve_hostname_safe", _guarded_resolve
-        )
-        monkeypatch.setattr(module, "is_ip_safe", lambda _ip, **_kw: True)
+    module = sys.modules["src.utils.http"]
+    monkeypatch.setattr(module, "validate_http_url", lambda url, **kw: url)
+    monkeypatch.setattr(module, "verify_response_ip", lambda _: None)
+    monkeypatch.setattr(module, "_resolve_hostname_safe", _guarded_resolve)
+    monkeypatch.setattr(module, "is_ip_safe", lambda _ip, **_kw: True)
 
 
 SAMPLE_PATH = Path(__file__).resolve().parents[1] / "data" / "samples" / "baustellen_sample.geojson"
@@ -877,7 +872,7 @@ def test_main_keeps_the_cache_when_the_city_delivers_no_site(
 
 
 def _real_cache_file(monkeypatch: pytest.MonkeyPatch, target: Path) -> None:
-    """Point the updater's own ``write_cache`` (imported as ``utils.cache``) at *target*."""
+    """Point the updater's own ``write_cache`` (``src.utils.cache``) at *target*."""
     module = sys.modules[update_baustellen_cache.__dict__["write_cache"].__module__]
     monkeypatch.setattr(module, "_cache_file", lambda provider: target)
 
