@@ -582,7 +582,9 @@ def _parse_datetime(value: str | float | int | None) -> datetime | None:
         except ValueError:
             return None
     try:
-        parsed = dtparser.parse(candidate)
+        # Annotated so the result is a ``datetime`` for mypy with and without
+        # the dateutil stubs (CI has none: ``parse`` returns ``Any`` there).
+        parsed: datetime = dtparser.parse(candidate)
     except (ValueError, OverflowError):
         return None
     if not parsed.tzinfo:
