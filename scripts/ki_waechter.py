@@ -777,6 +777,9 @@ def render_report(prep: Prepared, verdict: Verdict, now: datetime, model: str, r
     caches = ", ".join(f"{_CACHE_NAMES.get(k, k)} {v}" for k, v in sorted(prep.cache_counts.items()))
     first, last = prep.versions[0], prep.versions[-1]
     window = f"{_vienna(first.built_de, '%d.%m.%Y %H:%M')} bis {_vienna(last.built_de, '%d.%m.%Y %H:%M')}"
+    # The first line is always this heading, never front matter ("---"):
+    # GitHub Pages then copies the report as a static file and does not run
+    # Jekyll/Liquid over quoted feed or model text (``{{`` would break it).
     out = [
         f"# KI-Wächter {local:%d.%m.%Y}",
         "",

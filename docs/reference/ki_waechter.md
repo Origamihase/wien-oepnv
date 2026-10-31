@@ -68,7 +68,11 @@ bevor er zählt:
 
 Ein Fund, der eine Prüfung nicht besteht, steht unter „Nicht belegt“ im
 Bericht und öffnet kein Issue. Kopf, Zahlen, GUIDs, Zeiten und die Tabelle der
-geprüften Meldungen schreibt das Skript, nicht das Modell.
+geprüften Meldungen schreibt das Skript, nicht das Modell. Der Bericht beginnt
+immer mit der Überschrift „# KI-Wächter TT.MM.JJJJ“, nie mit Front Matter
+(`---`): So kopiert GitHub Pages ihn wie die übrigen Dateien in
+`docs/archive/audits/` unverändert, statt ihn mit Jekyll zu rendern, und ein
+zitiertes `{{` kann den Pages-Build nicht stören.
 
 ## Gratis-Kontingent
 

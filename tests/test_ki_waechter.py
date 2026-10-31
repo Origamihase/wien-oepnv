@@ -161,7 +161,10 @@ def test_report_comes_from_the_script(prep: kw.Prepared) -> None:
         "nr": 2, "klasse": "F6", "feed": "EN", "feed_zitat": "algae path", "erwartet": "Algenweg", "begruendung": "b",
     }, geprueft=(1, 2)), prep)
     report = kw.render_report(prep, verdict, datetime(2026, 10, 31, 14, 5, tzinfo=UTC), "m", "")
-    assert "# KI-Wächter 31.10.2026" in report
+    # No front matter: GitHub Pages copies docs/archive/audits/ as static
+    # files only while a report does not start with "---"; with front matter
+    # Jekyll would render it and "{{" in a quoted text could break the build.
+    assert report.startswith("# KI-Wächter 31.10.2026\n")
     assert "31.10.2026 15:05 Wiener Zeit, Commit abc1234, Modell m" in report
     assert "Feed gebaut 27.10.2026 16:00 bis 27.10.2026 16:00 Wiener Zeit, 1 Fassung, 3 verschiedene" in report
     assert "| 2 | 89A: Streckensperre | g2 | 27.10. 16:00 (zuletzt im Feed) | 89A: Streckensperre | Fund 1 |" in report
