@@ -723,7 +723,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "12A: Rettungseinsatz",
-    "description": "Linie 12A: Betrieb nur zwischen Schmelz, Gablenzgasse und Fendigasse. Voraussichtliche Dauer: 16:30 Uhr. Grund: Rettungseinsatz im Bereich Embelgasse.",
+    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "711bdd6742039946a988fc6856f5ba58cc852d11dc70306ccf9c11dcbf6587d7",
     "pubDate": "2026-10-31T15:52:00+01:00",
@@ -1006,22 +1006,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Verkehrsunfall",
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc",
-    "pubDate": "2026-10-31T14:01:00+01:00",
-    "starts_at": "2026-10-31T14:01:00+01:00",
-    "ends_at": "2026-10-31T16:19:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-10-31|TK=2 verkehrsunfall",
-    "_wl_ids": [
-      "I20261031-0014"
-    ],
-    "_incident_start": "2026-10-31T14:01:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "33A: Kranarbeiten Busse halten bei Franz-Jonas-Platz 5-6 (34A)",
     "description": "Kranarbeiten\nBusse halten bei Franz-Jonas-Platz 5-6 (34A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1030,6 +1014,38 @@
     "starts_at": "2026-10-31T00:00:27+01:00",
     "ends_at": "2026-10-31T21:00:00+01:00",
     "_identity": "wl|störung|L=33A|D=2026-10-31|TK=kranarbeiten busse halten bei franz jonas platz 5 6 34a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "36A: Fahrtbehinderung Falschparker",
+    "description": "Linie 36A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a7f6783cec819d802976a3d6f9f27ab627f5e35b56cf703230c756aefc51060f",
+    "pubDate": "2026-10-31T16:11:00+01:00",
+    "starts_at": "2026-10-31T16:14:21+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=36A|D=2026-10-31|TK=falschparker",
+    "_wl_ids": [
+      "I20261031-0019"
+    ],
+    "_incident_start": "2026-10-31T16:11:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "36B: Fahrtbehinderung Falschparker",
+    "description": "Linie 36B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "bcd1112437c0cbb2c7682b24fb7aa3ea00327ead9d421d9bbb21ba2478c27a7c",
+    "pubDate": "2026-10-31T16:10:54+01:00",
+    "starts_at": "2026-10-31T16:14:51+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=36B|D=2026-10-31|TK=falschparker",
+    "_wl_ids": [
+      "I20261031-0019"
+    ],
+    "_incident_start": "2026-10-31T16:11:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1178,18 +1194,6 @@
     "starts_at": "2026-10-31T01:05:04+01:00",
     "ends_at": "2026-10-31T23:59:59+01:00",
     "_identity": "wl|störung|L=N31|D=2026-10-31|TK=kranarbeiten busse halten bei franz jonas platz 7 8 34a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a90305646f013b3987fb55ef5dab8d20d35b0e58b3f412f792bb39c48c2fa5a8",
-    "pubDate": "2026-10-31T15:13:13+01:00",
-    "starts_at": "2026-10-31T15:17:43+01:00",
-    "ends_at": "2026-10-31T16:17:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-10-31|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
