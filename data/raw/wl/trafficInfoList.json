@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261031-0032, I20261031-0036, I20261031-0033-F01, I20261031-0035-F01, I20261031-0037, I20261020-0029, I20260922-0032, I20261031-0038, I20260909-0007, I20261031-0035-F02, I20260925-0011"
+    "trafficInfoNameList": "I20260922-0032, I20261031-0036-F01, I20260925-0011, I20261031-0033-F01, I20260909-0007, I20261031-0037-F01, I20261031-0037-F02, I20261020-0029, I20261031-0038-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R116-136, R115-136, R103-136, R102-136, R101-136, R45-136, R100-136, R19-136, R130-136, R119-136, R118-136, R117-136, R1474-412, R1448-412, R293-474, R318-437, R1125-429, R1125-229, R1880-101, R2558-125, R1884-101, R1883-101, R1882-101, R1881-101, R1876-101, R1875-101, R3886-480, R2380-627, R2345-127, R2420-411, R2343-229, R2343-429, R2373-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2379-627, R2373-126, R2343-531, R1974-466, R1301-440, R1272-440, R500-101, R392-170, R176-170, R174-170, R3450-170, R3448-170, R3449-170, R3447-170, R346-170, R311-170, R3445-170, R3446-170, R148-0, R147-0, R150-0, R1212-0, R1213-0, R188-0, R189-0, R192-0, R177-0, R521-0, R190-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R100-136, R101-136, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R102-136, R103-136, R293-474, R1448-412, R318-437, R1474-412, R1125-229, R1125-429, R2558-125, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2373-125, R2373-126, R2379-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-127, R2343-429, R2343-229, R2420-411, R2345-127, R2380-627, R2343-531, R1974-466, R1301-440, R1272-440, R500-101, R392-170, R174-170, R176-170, R3450-170, R3447-170, R3449-170, R3448-170, R346-170, R311-170, R3445-170, R3446-170, R147-0, R148-0, R150-0, R1212-0, R1213-0, R189-0, R188-0, R192-0, R190-0, R177-0, R521-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -208,54 +208,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "roadway damage",
-    "alertCauseId": 67,
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung.",
-    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Weichenstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Weichenstörung.</p>",
-       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung.",
-       "title": "U6: Weichenstörung"
-      }
-     }
-    ],
-    "name": "I20261031-0032",
-    "owner": "WL",
-    "parentName": "I20261031-0032",
-    "priority": "1",
-    "reasonId": 39,
-    "reasonName": "Weichenstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4635
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-31T20:24:00.000+0100",
-     "lastUpdate": "2026-10-31T20:24:00.000+0100",
-     "resume": "2026-10-31T20:23:00.000+0100",
-     "start": "2026-10-31T20:23:00.000+0100"
-    },
-    "title": "U6: Weichenstörung"
-   },
-   {
     "alertCause": "miscellaneous",
     "alertCauseId": 137,
     "attributes": {
@@ -304,98 +256,6 @@
     "title": "U2: Betriebsstörung"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "5A": "ptBusCity"
-     }
-    },
-    "description": "Linie 5A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 5A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 5A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 5A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "5A: Polizeieinsatz"
-      }
-     }
-    ],
-    "location": "Pasettistraße 77",
-    "name": "I20261031-0035-F01",
-    "owner": "WL",
-    "parentName": "I20261031-0035",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "5A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 405,
-      "lineName": "5A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-31T21:10:00.000+0100",
-     "lastUpdate": "2026-10-31T21:10:00.000+0100",
-     "resume": "2026-10-31T21:10:00.000+0100",
-     "start": "2026-10-31T21:06:00.000+0100"
-    },
-    "title": "5A: Polizeieinsatz"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "37A": "ptBusCity"
-     }
-    },
-    "description": "Linie 37A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 37A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 37A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 37A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "37A: Polizeieinsatz"
-      }
-     }
-    ],
-    "location": "Pasettistraße 77",
-    "name": "I20261031-0035-F02",
-    "owner": "WL",
-    "parentName": "I20261031-0035",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "37A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 437,
-      "lineName": "37A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-31T21:10:00.000+0100",
-     "lastUpdate": "2026-10-31T21:10:00.000+0100",
-     "resume": "2026-10-31T21:10:00.000+0100",
-     "start": "2026-10-31T21:06:00.000+0100"
-    },
-    "title": "37A: Polizeieinsatz"
-   },
-   {
     "alertCause": "fire",
     "alertCauseId": 5,
     "attributes": {
@@ -403,18 +263,18 @@
       "O": "ptTram"
      }
     },
-    "description": "Linie O: Betrieb nur zwischen Raxstraße und Praterstern S U. Ersatz: Linien 5 und 12. Voraussichtliche Dauer: 21:45 Uhr. Grund: Feuerwehreinsatz.",
-    "descriptionHTML": "<p>Linie O:<br>Betrieb nur zwischen Raxstraße und Praterstern S U.</p><p>Ersatz: Linien 5 und 12.</p><p>Voraussichtliche Dauer: 21:45 Uhr.</p><p>Grund: Feuerwehreinsatz.</p>",
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie O:<br>Betrieb nur zwischen Raxstraße und Praterstern S U.</p><p>Ersatz: Linien 5 und 12.</p><p>Voraussichtliche Dauer: 21:45 Uhr.</p><p>Grund: Feuerwehreinsatz.</p>",
-       "descriptionPlain": "Linie O: Betrieb nur zwischen Raxstraße und Praterstern S U. Ersatz: Linien 5 und 12. Voraussichtliche Dauer: 21:45 Uhr. Grund: Feuerwehreinsatz.",
+       "descriptionHtml": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "O: Feuerwehreinsatz"
       }
      }
     ],
-    "name": "I20261031-0036",
+    "name": "I20261031-0036-F01",
     "owner": "WL",
     "parentName": "I20261031-0036",
     "priority": "1",
@@ -433,8 +293,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-31T21:13:00.000+0100",
-     "lastUpdate": "2026-10-31T21:17:00.000+0100",
+     "created": "2026-10-31T21:31:00.000+0100",
+     "lastUpdate": "2026-10-31T21:31:00.000+0100",
+     "resume": "2026-10-31T21:31:00.000+0100",
      "start": "2026-10-31T21:13:00.000+0100"
     },
     "title": "O: Feuerwehreinsatz"
@@ -444,23 +305,22 @@
     "alertCauseId": 71,
     "attributes": {
      "relatedLineTypes": {
-      "40": "ptTram",
-      "41": "ptTram"
+      "40": "ptTram"
      }
     },
-    "description": "Linie 40: Fahrtbehinderung in Richtung Schottentor U. Linie 41: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 21:45 Uhr. Grund: Falschparker im Bereich Währinger Straße 79.",
-    "descriptionHTML": "<p>Linie 40:<br>Fahrtbehinderung in Richtung Schottentor U.<br>Linie 41:<br>Fahrtbehinderung in Richtung Schottentor U.</p><p>Voraussichtliche Dauer: 21:45 Uhr.</p><p>Grund: Falschparker im Bereich Währinger Straße 79.</p>",
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 40:<br>Fahrtbehinderung in Richtung Schottentor U.<br>Linie 41:<br>Fahrtbehinderung in Richtung Schottentor U.</p><p>Voraussichtliche Dauer: 21:45 Uhr.</p><p>Grund: Falschparker im Bereich Währinger Straße 79.</p>",
-       "descriptionPlain": "Linie 40: Fahrtbehinderung in Richtung Schottentor U. Linie 41: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 21:45 Uhr. Grund: Falschparker im Bereich Währinger Straße 79.",
-       "title": "40, 41: Falschparker"
+       "descriptionHtml": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "40: Falschparker"
       }
      }
     ],
     "location": "Währinger Straße 79",
-    "name": "I20261031-0037",
+    "name": "I20261031-0037-F01",
     "owner": "WL",
     "parentName": "I20261031-0037",
     "priority": "1",
@@ -468,15 +328,55 @@
     "reasonName": "Falschparker",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "40",
-     "41"
+     "40"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 140,
       "lineName": "40",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-31T21:34:00.000+0100",
+     "lastUpdate": "2026-10-31T21:34:00.000+0100",
+     "resume": "2026-10-31T21:34:00.000+0100",
+     "start": "2026-10-31T21:15:00.000+0100"
+    },
+    "title": "40: Falschparker"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "41": "ptTram"
+     }
+    },
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "41: Falschparker"
+      }
+     }
+    ],
+    "location": "Währinger Straße 79",
+    "name": "I20261031-0037-F02",
+    "owner": "WL",
+    "parentName": "I20261031-0037",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 141,
       "lineName": "41",
@@ -485,11 +385,12 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-31T21:16:00.000+0100",
-     "lastUpdate": "2026-10-31T21:16:00.000+0100",
+     "created": "2026-10-31T21:34:00.000+0100",
+     "lastUpdate": "2026-10-31T21:34:00.000+0100",
+     "resume": "2026-10-31T21:34:00.000+0100",
      "start": "2026-10-31T21:15:00.000+0100"
     },
-    "title": "40, 41: Falschparker"
+    "title": "41: Falschparker"
    },
    {
     "alertCause": "police activity",
@@ -499,18 +400,18 @@
       "U4": "ptMetro"
      }
     },
-    "description": "Die Linie U4 fährt derzeit nur zwischen Hütteldorf und Spittelau. Ersatz: Linie D. Voraussichtliche Dauer: 22:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Heiligenstadt.",
-    "descriptionHTML": "<p>Die Linie U4 fährt derzeit nur zwischen Hütteldorf und Spittelau.</p><p>Ersatz: Linien D.</p><p>Voraussichtliche Dauer: 22:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Heiligenstadt.</p>",
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie U4 fährt derzeit nur zwischen Hütteldorf und Spittelau.</p><p>Ersatz: Linien D.</p><p>Voraussichtliche Dauer: 22:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Heiligenstadt.</p>",
-       "descriptionPlain": "Die Linie U4 fährt derzeit nur zwischen Hütteldorf und Spittelau. Ersatz: Linie D. Voraussichtliche Dauer: 22:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Heiligenstadt.",
+       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "U4: Polizeieinsatz"
       }
      }
     ],
-    "name": "I20261031-0038",
+    "name": "I20261031-0038-F01",
     "owner": "WL",
     "parentName": "I20261031-0038",
     "priority": "1",
@@ -532,8 +433,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-10-31T21:22:00.000+0100",
-     "lastUpdate": "2026-10-31T21:22:00.000+0100",
+     "created": "2026-10-31T21:42:00.000+0100",
+     "lastUpdate": "2026-10-31T21:42:00.000+0100",
+     "resume": "2026-10-31T21:42:00.000+0100",
      "start": "2026-10-31T21:21:00.000+0100"
     },
     "title": "U4: Polizeieinsatz"
