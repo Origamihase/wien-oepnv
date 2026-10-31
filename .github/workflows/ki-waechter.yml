@@ -11,14 +11,15 @@ name: KI-Wächter
 # of the Gemini API (secret GEMINI_API_KEY; a key without billing cannot
 # cost anything). Details: docs/reference/ki_waechter.md.
 #
-# When: once a day, on the first successful Update cycle from 15:00 Vienna
-# time. GitHub's own cron fires only a few of its slots a day here
+# When: once a day, on the first successful Update cycle from 9:00 Vienna
+# time; after a failure again two hours later, while the daily budget of
+# Gemini requests lasts. GitHub's own cron fires only a few of its slots a day here
 # (docs/architecture.md, Workflows), the IFTTT-driven Update cycle every
 # 30 minutes, so this workflow hangs off ``workflow_run`` of that cycle.
-# The ``gate`` job ends in seconds on every other tick: before 15:00, after
-# a failed cycle, or when today's run is already recorded in
-# ``data/side_steps/ki-waechter.json`` (also after a failure: no retries
-# that day, the Health check is red instead and a manual run is possible).
+# The ``gate`` job ends in seconds on every other tick: before 9:00, after
+# a failed cycle, when today's audit succeeded (``last_success`` in
+# ``data/side_steps/ki-waechter.json``), or within two hours of a failed one
+# (the Health check is red until an audit succeeds).
 #
 # How: ``scripts/ki_waechter.py prepare`` writes the input (every feed
 # version of 24 hours from the git history, the English feed, the source
@@ -66,8 +67,14 @@ env:
   # fallback the audit asks at once when the first is overloaded (each has
   # its own quota; on 2026-10-31 Gemini 3.8 Flash answered 503 for hours).
   KI_WAECHTER_MODEL: gemini-3.8-flash,gemini-3.6-flash
-  # First Vienna hour of the day in which the audit runs.
-  KI_WAECHTER_START_HOUR: "15"
+  # First Vienna hour of the day in which the audit runs: the free-tier day
+  # of the Gemini API begins at 0:00 Pacific time (9:00 Vienna, 8:00 in the
+  # weeks between the European and the US clock change), so the audit runs
+  # first thing in a fresh quota day and has the day left for another try
+  # (Michael 2026-10-31, after Gemini 3.8 Flash answered 503 all afternoon).
+  KI_WAECHTER_START_HOUR: "9"
+  # Hours between a failed audit and the next try on the same day.
+  KI_WAECHTER_RETRY_HOURS: "2"
   # Gemini requests per day at most (free tier, day from 0:00 Pacific
   # time). The gate counts the requests of the day (annotation
   # "Gemini-Anfragen" of every audit) and gives each audit of this run its
@@ -166,11 +173,18 @@ jobs:
               if (( hour < KI_WAECHTER_START_HOUR )); then
                 echo "${hour}:xx Vienna time, audit starts at ${KI_WAECHTER_START_HOUR}:00."; out "run=false"; exit 0
               fi
-              last="$(gh api "repos/${OWNER_REPO}/contents/data/side_steps/ki-waechter.json?ref=main" \
-                        -H "Accept: application/vnd.github.raw" 2>/dev/null \
-                      | jq -r '.steps["KI-Wächter"].at // empty' 2>/dev/null || true)"
-              if [[ -n "${last}" && "$(TZ=Europe/Vienna date -d "${last}" +%F)" == "${today}" ]]; then
-                echo "Today's audit already ran (${last})."; out "run=false"; exit 0
+              record="$(gh api "repos/${OWNER_REPO}/contents/data/side_steps/ki-waechter.json?ref=main" \
+                          -H "Accept: application/vnd.github.raw" 2>/dev/null || true)"
+              last="$(jq -r '.steps["KI-Wächter"].at // empty' <<<"${record}" 2>/dev/null || true)"
+              good="$(jq -r '.steps["KI-Wächter"].last_success // empty' <<<"${record}" 2>/dev/null || true)"
+              if [[ -n "${good}" && "$(TZ=Europe/Vienna date -d "${good}" +%F)" == "${today}" ]]; then
+                echo "Today's audit already ran (${good})."; out "run=false"; exit 0
+              fi
+              # A failed audit (an overloaded model, mostly) gets another
+              # try on a later tick the same day, while the budget lasts.
+              if [[ -n "${last}" && "$(TZ=Europe/Vienna date -d "${last}" +%F)" == "${today}" ]] \
+                 && (( $(date +%s) - $(date -d "${last}" +%s) < KI_WAECHTER_RETRY_HOURS * 3600 )); then
+                echo "Today's audit failed at ${last}; next try ${KI_WAECHTER_RETRY_HOURS} h later."; out "run=false"; exit 0
               fi
               # The daily audit may use the last request of the budget,
               # pull requests and manual runs leave it free.

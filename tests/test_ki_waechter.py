@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import json
 import subprocess
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -424,7 +424,9 @@ def test_prompt_names_its_input_and_not_the_backtest_cases() -> None:
 # --- the daily request budget of the gate ------------------------------------------
 
 
-def _run_gate(tmp_path: Path, event: str, jobs: list[str], extra: dict[str, str] | None = None) -> dict[str, str]:
+def _run_gate(
+    tmp_path: Path, event: str, jobs: list[str], extra: dict[str, str] | None = None, record: str = ""
+) -> dict[str, str]:
     """Run the gate script with a fake ``gh``: one earlier run today with these audit jobs.
 
     Each job is "<id> <status> <conclusion> <annotation>"; the annotation
@@ -439,9 +441,11 @@ def _run_gate(tmp_path: Path, event: str, jobs: list[str], extra: dict[str, str]
         f'  *"/check-runs/{j.split()[0]}/annotations"*) echo "{"" if j.split()[3] == "-" else j.split()[3]}" ;;\n'
         for j in jobs
     )
+    (tmp_path / "record.json").write_text(record, encoding="utf-8")
     (fake / "gh").write_text(
         "#!/bin/bash\n"
         'case "$2" in\n'
+        f'  *"/contents/data/side_steps/ki-waechter.json"*) cat "{tmp_path / "record.json"}" ;;\n'
         '  *"/runs?created="*) echo 11 ;;\n'
         f'  *"/runs/11/jobs?"*) printf "{lines}\\n" ;;\n'
         + notes
@@ -463,6 +467,7 @@ def _run_gate(tmp_path: Path, event: str, jobs: list[str], extra: dict[str, str]
         "KI_WAECHTER_MAX_REQUESTS": str(doc["env"]["KI_WAECHTER_MAX_REQUESTS"]),
         "MAX_PER_AUDIT": doc["jobs"]["gate"]["steps"][0]["env"]["MAX_PER_AUDIT"],
         "KI_WAECHTER_START_HOUR": "0",
+        "KI_WAECHTER_RETRY_HOURS": doc["env"]["KI_WAECHTER_RETRY_HOURS"],
         **(extra or {}),
     }
     subprocess.run(["bash", "-c", script], env=env, check=True, capture_output=True)
@@ -504,3 +509,30 @@ def test_each_audit_gets_its_share_of_the_daily_budget(
         assert "Kein Aufruf" in (tmp_path / "summary").read_text(encoding="utf-8")
     else:
         assert out["run"] == "true" and out["per_job"] == per_job
+
+
+def _record(outcome: str, hours_ago: float, success_hours_ago: float | None = None) -> str:
+    now = datetime.now(UTC)
+    entry: dict[str, str] = {"outcome": outcome, "at": (now - timedelta(hours=hours_ago)).isoformat()}
+    if success_hours_ago is not None:
+        entry["last_success"] = (now - timedelta(hours=success_hours_ago)).isoformat()
+    return json.dumps({"steps": {"KI-Wächter": entry}})
+
+
+def test_the_daily_audit_starts_with_the_quota_day_and_tries_again_after_a_failure(tmp_path: Path) -> None:
+    doc = yaml.safe_load((REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8"))
+    assert doc["env"]["KI_WAECHTER_START_HOUR"] == "9" and doc["env"]["KI_WAECHTER_RETRY_HOURS"] == "2"
+    cycle = {"CYCLE_CONCLUSION": "success", "CYCLE_BRANCH": "main"}
+    hour = datetime.now(UTC).astimezone(kw.VIENNA).hour
+    if hour < 3:  # "today" in Vienna must still hold three hours back
+        pytest.skip("too close to midnight in Vienna")
+    # Not yet today: runs.
+    assert _run_gate(tmp_path / "a", "workflow_run", [], cycle, _record("success", 30, 30))["run"] == "true"
+    # Succeeded today: done for the day.
+    assert _run_gate(tmp_path / "b", "workflow_run", [], cycle, _record("success", 0.5, 0.5))["run"] == "false"
+    # Failed an hour ago: waits; failed three hours ago: tries again.
+    assert _run_gate(tmp_path / "c", "workflow_run", [], cycle, _record("failure", 1, 30))["run"] == "false"
+    assert _run_gate(tmp_path / "d", "workflow_run", [], cycle, _record("failure", 2.5, 30))["run"] == "true"
+    # Before the start hour nothing runs.
+    late = {**cycle, "KI_WAECHTER_START_HOUR": "24"}
+    assert _run_gate(tmp_path / "e", "workflow_run", [], late, _record("success", 30, 30))["run"] == "false"

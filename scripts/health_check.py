@@ -129,8 +129,9 @@ FEED_MAX_AGE_H = _env_float("HEALTH_FEED_MAX_AGE_HOURS", 4.0)
 # Stations: update-stations runs weekly (Sun 01:00 UTC). 8 days = one full
 # cycle + jitter; older means a weekly run was missed.
 STATIONS_MAX_AGE_H = _env_float("HEALTH_STATIONS_MAX_AGE_HOURS", 192.0)
-# The KI-Wächter runs once a day from 15:00 Vienna time; 36 h leaves room
-# for a late first Update cycle of the next day.
+# The KI-Wächter runs once a day from 9:00 Vienna time (again two hours
+# after a failure); 36 h leaves room for a late first Update cycle of the
+# next day.
 KI_WAECHTER_MAX_AGE_H = _env_float("HEALTH_KI_WAECHTER_MAX_AGE_HOURS", 36.0)
 # Station sources: the weekly run downloads them and falls back to the copy
 # under data/ when a download fails, so a dead source would only show in the

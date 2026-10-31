@@ -22,7 +22,9 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
   Meldungstexte der letzten 24 Stunden, das Modell ist Gemini über das
   Gratis-Kontingent der Gemini API (Secret `GEMINI_API_KEY`), und das
   API-Limit darf nicht überschritten werden. Neu: `ki-waechter.yml` läuft
-  nach dem ersten erfolgreichen Update-Lauf ab 15:00 Wiener Zeit;
+  nach dem ersten erfolgreichen Update-Lauf ab 9:00 Wiener Zeit, gleich
+  nach dem Beginn des Kontingent-Tags, und nach einem Fehler zwei Stunden
+  später noch einmal;
   `scripts/ki_waechter.py` liest die Feed-Fassungen der 24 Stunden aus der
   Git-Historie, schickt sie mit `scripts/ki_waechter_prompt.md` (Fundklassen
   F1 bis F6 wie im Jules-Prompt vom 30.10.) in einer Anfrage ohne Werkzeuge

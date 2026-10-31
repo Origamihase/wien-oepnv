@@ -1448,9 +1448,11 @@ Review der Meldungen der letzten 24h wäre besser“), das Modell ist Gemini
 Bedarf), und das API-Limit darf nicht überschritten werden.
 
 * `ki-waechter.yml` läuft einmal am Tag nach dem ersten erfolgreichen
-  Update-Lauf ab 15:00 Wiener Zeit (`workflow_run`; GitHubs eigener Cron
-  feuert hier nur wenige seiner Termine). Ein Lauf am selben Tag, auch ein
-  gescheiterter, beendet jeden weiteren Versuch dieses Tages.
+  Update-Lauf ab 9:00 Wiener Zeit, gleich nach dem Beginn des
+  Kontingent-Tags der Gemini API (`workflow_run`; GitHubs eigener Cron
+  feuert hier nur wenige seiner Termine). Ein erfolgreicher Lauf beendet den
+  Tag; nach einem gescheiterten versucht er es frühestens zwei Stunden
+  später noch einmal, solange das Tagesbudget reicht.
 * `scripts/ki_waechter.py prepare` liest jede Fassung des Feeds aus den
   24 Stunden davor aus der Git-Historie (jeder Update-Lauf committet Feed und
   Caches zusammen) und macht jeden verschiedenen Meldungstext zu einer

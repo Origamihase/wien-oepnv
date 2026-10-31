@@ -17,7 +17,7 @@ Messung dazu stehen in [`architecture.md`](../architecture.md), Abschnitt
 
 | Schritt | Wer | Was |
 | --- | --- | --- |
-| Auslöser | `.github/workflows/ki-waechter.yml`, Job `gate` | nach jedem Update-Lauf; weiter nur, wenn er erfolgreich war, es 15:00 Wiener Zeit oder später ist, heute noch kein Lauf in `data/side_steps/ki-waechter.json` steht und das Tagesbudget eine Anfrage hergibt |
+| Auslöser | `.github/workflows/ki-waechter.yml`, Job `gate` | nach jedem Update-Lauf; weiter nur, wenn er erfolgreich war, es 9:00 Wiener Zeit oder später ist, heute noch kein erfolgreicher Prüflauf in `data/side_steps/ki-waechter.json` steht, ein gescheiterter von heute mindestens zwei Stunden zurückliegt und das Tagesbudget eine Anfrage hergibt |
 | Eingabe | `scripts/ki_waechter.py prepare` | jede Fassung von `docs/feed.xml` und `docs/feed.en.xml` der 24 Stunden vor dem Commit (jeder Update-Lauf schreibt eine) und die `cache/*/events.json` derselben Commits; jeder verschiedene Meldungstext wird eine Nummer, mit der Zeit im Feed, den gleichzeitig sichtbaren Meldungen, dem eigenen Cache-Ereignis (beim ersten und letzten Auftreten) und bis zu sechs Ereignissen derselben Linien; jede Quelle steht einmal ganz da, danach mit ihrer Kennung (Q…); schreibt `.ki-waechter/eingabe.md` und `eingabe.json` |
 | Lesen | `scripts/ki_waechter.py ask` | ein Aufruf der Gemini API (Modell `KI_WAECHTER_MODEL`, derzeit `gemini-3.8-flash`) mit Prompt `scripts/ki_waechter_prompt.md` und Eingabe; keine Werkzeuge; Antwort im festen JSON-Schema; schreibt `antwort.json` |
 | Prüfen | `scripts/ki_waechter.py verify` | jedes Zitat wörtlich gegen Feed und Quellen; schreibt den Bericht und `ergebnis.json` |
@@ -98,8 +98,11 @@ Modelle zusammen gezählt:
   ihre Zahl, höchstens drei; bleibt keiner, startet er nichts. Pull Requests
   und Läufe von Hand rechnen nur bis 9; die letzte Anfrage bleibt dem
   täglichen Lauf.
-- Der tägliche Lauf startet am selben Tag nicht noch einmal von selbst, auch
-  nicht nach einem Fehler.
+- Der tägliche Lauf beginnt um 9:00 Uhr Wiener Zeit, gleich nach dem Beginn
+  des Kontingent-Tags (Michael, 31.10.2026, nachdem Gemini 3.8 Flash den
+  ganzen Nachmittag mit 503 antwortete). Scheitert er, versucht er es
+  frühestens zwei Stunden später noch einmal, solange das Tagesbudget
+  reicht; nach einem erfolgreichen Lauf ruht er bis zum nächsten Tag.
 - Die Eingabe ist auf 450.000 Zeichen begrenzt (etwa 130.000 Tokens). Eine
   größere Eingabe wird nicht gesendet, der Lauf ist rot.
 - Die Läufe eines Pull Requests laufen nacheinander (`max-parallel: 1`).
@@ -125,8 +128,10 @@ den öffentlichen Texten des Feeds und der Betreiber.
 Kann der Wächter nicht prüfen (Schlüssel leer oder abgelehnt, Kontingent
 erschöpft, Modell bricht ab, Antwort ohne JSON), ist der Lauf rot, und die
 Prüfung `Nebenschritte` im Health check wird rot. Rot wird sie auch, wenn
-36 Stunden kein Lauf aufgezeichnet wurde. Am selben Tag startet er nicht noch
-einmal von selbst; von Hand geht es, solange das Tagesbudget reicht.
+36 Stunden kein Lauf aufgezeichnet wurde. Zwei Stunden später versucht er es
+von selbst noch einmal, solange das Tagesbudget reicht; ein erfolgreicher
+Lauf macht die Prüfung wieder grün. Von Hand geht es ebenso innerhalb des
+Budgets.
 
 ## Probelauf im Pull Request
 
