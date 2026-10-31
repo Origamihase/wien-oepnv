@@ -1,24 +1,24 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-10-31T18:30:53.954015+00:00",
- "built": "2026-10-31T19:30:42+01:00",
+ "updated": "2026-10-31T19:00:58.272751+00:00",
+ "built": "2026-10-31T20:00:47+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-10-31T19:30:42+01:00",
+  "built": "2026-10-31T20:00:47+01:00",
   "items": [
    {
-    "title": "49: Falschparker",
-    "time_line": "Seit 18:50"
+    "title": "38A: Falschparker",
+    "time_line": "Seit 19:57"
    },
    {
-    "title": "38: Polizeieinsatz",
-    "time_line": "Seit 18:25"
+    "title": "9: Falschparker",
+    "time_line": "Seit 19:34"
    },
    {
-    "title": "38A: Polizeieinsatz",
-    "time_line": "Seit 18:08"
+    "title": "Wien Hauptbahnhof ↔ Wien Stadlau",
+    "time_line": "Heute"
    },
    {
     "title": "N31: Kranarbeiten",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-24T18:31:09.002911+00:00",
-   "raw": {
-    "wl-stoerungen": 108,
-    "wl-hinweise": 80,
-    "oebb": 158,
-    "baustellen-linien": 56,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 6,
-    "oebb": 134,
-    "baustellen": 71
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 115
-   }
-  },
   {
    "t": "2026-10-24T19:01:18.110690+00:00",
    "raw": {
@@ -6791,17 +6771,37 @@
     "oebb": 10,
     "wl": 98
    }
+  },
+  {
+   "t": "2026-10-31T19:00:58.272751+00:00",
+   "raw": {
+    "wl-stoerungen": 69,
+    "wl-hinweise": 70,
+    "oebb": 157,
+    "baustellen-linien": 57,
+    "baustellen-punkte": 18
+   },
+   "discarded": {
+    "wl": 8,
+    "oebb": 131,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 11,
+    "wl": 97
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-10-31T18:30:53.954015+00:00"
+   "last_ok": "2026-10-31T19:00:58.272751+00:00"
   },
   "oebb": {
-   "last_ok": "2026-10-31T18:30:53.954015+00:00"
+   "last_ok": "2026-10-31T19:00:58.272751+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-10-31T18:30:53.954015+00:00"
+   "last_ok": "2026-10-31T19:00:58.272751+00:00"
   }
  }
 }
