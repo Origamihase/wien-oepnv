@@ -1158,6 +1158,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U4: Schadhaftes Fahrzeug",
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
+    "pubDate": "2026-10-31T10:36:00+01:00",
+    "starts_at": "2026-10-31T10:36:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U4|D=2026-10-31|TK=u4 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261031-0009"
+    ],
+    "_incident_start": "2026-10-31T10:36:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
