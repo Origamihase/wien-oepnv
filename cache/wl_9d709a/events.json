@@ -998,6 +998,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "3A: Verspätungen",
+    "description": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9d358731bdd90c07601bb9665d1fe894e602b065f0c6bead2062210847affb87",
+    "pubDate": "2026-10-31T12:38:00+01:00",
+    "starts_at": "2026-10-31T12:38:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=3A|D=2026-10-31|TK=3a verspätungen",
+    "_wl_ids": [
+      "I20261031-0011"
+    ],
+    "_incident_start": "2026-10-31T12:38:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "40A: Busse halten Liechtensteinstraße 38",
     "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 38",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1122,12 +1138,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "D: Rettungseinsatz",
     "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "503f2614edc1f49ae02220776891f538836aa9ccc5c25846de28738f02266106",
     "pubDate": "2026-10-31T11:16:00+01:00",
-    "starts_at": "2026-10-31T11:41:22+01:00",
+    "starts_at": "2026-10-31T11:16:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=D|D=2026-10-31|TK=rettungseinsatz",
     "_wl_ids": [
