@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261031-0014-F02, I20261031-0016-F01, I20261031-0014-F01, I20261031-0017, I20261020-0029, I20260922-0032, I20260909-0007, I20260925-0011, I20261031-0015"
+    "trafficInfoNameList": "I20260922-0032, I20261031-0014-F01, I20260925-0011, I20261031-0014-F02, I20260909-0007, I20261031-0016-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R45-136, R19-136, R293-474, R1474-412, R1448-412, R318-437, R1125-429, R1125-229, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1875-101, R3886-480, R1876-101, R2343-433, R2378-627, R2343-125, R2343-626, R2343-429, R2343-229, R2420-411, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-531, R1974-466, R1301-440, R1272-440, R500-101, R165-101, R132-101, R23-101, R12-102, R10-102, R9-102, R13-102, R11-102, R22-102, R14-102, R22-101, R18-101, R15-101, R14-101, R13-101, R19-101, R20-101, R17-101, R1756-101, R44-101, R43-101, R42-101, R45-101, R46-101, R41-101, R49-102, R47-101, R50-102, R51-102, R49-101, R52-102, R50-101, R1570-457, R1573-457, R1574-457, R1577-457, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R115-136, R117-136, R100-136, R101-136, R102-136, R103-136, R116-136, R45-136, R19-136, R130-136, R119-136, R118-136, R1448-412, R1474-412, R318-437, R293-474, R1125-229, R1125-429, R2558-125, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2343-433, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2420-411, R2343-229, R2343-429, R2378-627, R2343-531, R1974-466, R1301-440, R1272-440, R500-101, R335-170, R336-170, R337-170, R2645-170, R339-170, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -293,59 +293,11 @@
     "status": "active",
     "time": {
      "created": "2026-10-31T14:38:00.000+0100",
-     "lastUpdate": "2026-10-31T14:38:00.000+0100",
-     "resume": "2026-10-31T14:38:00.000+0100",
+     "end": "2026-10-31T16:19:00.000+0100",
+     "lastUpdate": "2026-10-31T15:29:00.000+0100",
      "start": "2026-10-31T14:01:00.000+0100"
     },
     "title": "2: Verkehrsunfall"
-   },
-   {
-    "alertCause": "vandalism",
-    "alertCauseId": 16,
-    "attributes": {
-     "relatedLineTypes": {
-      "9": "ptTram"
-     }
-    },
-    "description": "Linie 9: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "descriptionHTML": "<p>Linie 9:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 9:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-       "descriptionPlain": "Linie 9: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-       "title": "9: Verunreinigung"
-      }
-     }
-    ],
-    "name": "I20261031-0015",
-    "owner": "WL",
-    "parentName": "I20261031-0015",
-    "priority": "1",
-    "reasonId": 36,
-    "reasonName": "Verunreinigung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 109,
-      "lineName": "9",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     143
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-31T14:28:00.000+0100",
-     "lastUpdate": "2026-10-31T14:28:00.000+0100",
-     "resume": "2026-10-31T14:27:00.000+0100",
-     "start": "2026-10-31T14:27:00.000+0100"
-    },
-    "title": "9: Verunreinigung"
    },
    {
     "alertCause": "miscellaneous",
@@ -394,74 +346,6 @@
      "start": "2026-10-31T14:37:00.000+0100"
     },
     "title": "42: Betriebsstörung"
-   },
-   {
-    "alertCause": "demonstration",
-    "alertCauseId": 122,
-    "attributes": {
-     "relatedLineTypes": {
-      "57A": "ptBusCity"
-     }
-    },
-    "description": "Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
-    "descriptionHTML": "<p>Linie 57A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Demonstration.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 57A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Demonstration.</p>",
-       "descriptionPlain": "Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
-       "title": "57A: Demonstration"
-      }
-     }
-    ],
-    "name": "I20261031-0017",
-    "owner": "WL",
-    "parentName": "I20261031-0017",
-    "priority": "1",
-    "reasonId": 22,
-    "reasonName": "Demonstration",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "57A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 457,
-      "lineName": "57A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-31T14:43:00.000+0100",
-     "lastUpdate": "2026-10-31T14:43:00.000+0100",
-     "resume": "2026-10-31T14:43:00.000+0100",
-     "start": "2026-10-31T14:43:00.000+0100"
-    },
-    "title": "57A: Demonstration"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Parlament, Volkstheater",
-    "name": "R10-102",
-    "owner": "WL",
-    "parentName": "R10-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     10
-    ],
-    "time": {
-     "end": "2026-10-31T15:05:00.000+0100",
-     "start": "2026-10-31T14:02:06.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Parlament, Volkstheater"
    },
    {
     "alertCause": "undefined alert cause",
@@ -554,29 +438,6 @@
      "start": "2026-10-30T00:00:12.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Parlament, Volkstheater",
-    "name": "R11-102",
-    "owner": "WL",
-    "parentName": "R11-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     11
-    ],
-    "time": {
-     "end": "2026-10-31T15:05:00.000+0100",
-     "start": "2026-10-31T14:02:06.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Parlament, Volkstheater"
    },
    {
     "alertCause": "undefined alert cause",
@@ -742,29 +603,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Parlament, Volkstheater",
-    "name": "R12-102",
-    "owner": "WL",
-    "parentName": "R12-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     12
-    ],
-    "time": {
-     "end": "2026-10-31T15:05:00.000+0100",
-     "start": "2026-10-31T14:02:06.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Parlament, Volkstheater"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 38",
     "name": "R1272-440",
     "owner": "WL",
@@ -784,52 +622,6 @@
      "start": "2026-10-31T04:45:12.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Liechtensteinstraße 38"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Julius-Raab-Platz",
-    "name": "R13-101",
-    "owner": "WL",
-    "parentName": "R13-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     13
-    ],
-    "time": {
-     "end": "2026-10-31T15:04:00.000+0100",
-     "start": "2026-10-31T14:05:07.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Julius-Raab-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Parlament, Volkstheater",
-    "name": "R13-102",
-    "owner": "WL",
-    "parentName": "R13-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     13
-    ],
-    "time": {
-     "end": "2026-10-31T15:05:00.000+0100",
-     "start": "2026-10-31T14:02:06.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Parlament, Volkstheater"
    },
    {
     "alertCause": "undefined alert cause",
@@ -880,75 +672,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R132-101",
-    "owner": "WL",
-    "parentName": "R132-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     132
-    ],
-    "time": {
-     "end": "2026-10-31T15:01:00.000+0100",
-     "start": "2026-10-31T14:01:36.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Julius-Raab-Platz",
-    "name": "R14-101",
-    "owner": "WL",
-    "parentName": "R14-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     14
-    ],
-    "time": {
-     "end": "2026-10-31T15:04:00.000+0100",
-     "start": "2026-10-31T14:05:07.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Julius-Raab-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Parlament, Volkstheater",
-    "name": "R14-102",
-    "owner": "WL",
-    "parentName": "R14-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     14
-    ],
-    "time": {
-     "end": "2026-10-31T15:05:00.000+0100",
-     "start": "2026-10-31T14:03:37.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Parlament, Volkstheater"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U ",
     "name": "R1448-412",
     "owner": "WL",
@@ -991,213 +714,6 @@
      "start": "2026-10-31T00:00:23.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Julius-Raab-Platz",
-    "name": "R15-101",
-    "owner": "WL",
-    "parentName": "R15-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     15
-    ],
-    "time": {
-     "end": "2026-10-31T15:04:00.000+0100",
-     "start": "2026-10-31T14:05:07.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Julius-Raab-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Demonstration",
-    "name": "R1570-457",
-    "owner": "WL",
-    "parentName": "R1570-457",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "57A"
-    ],
-    "relatedStops": [
-     1570
-    ],
-    "time": {
-     "end": "2026-10-31T15:25:00.000+0100",
-     "start": "2026-10-31T14:26:08.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Demonstration"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Demonstration",
-    "name": "R1573-457",
-    "owner": "WL",
-    "parentName": "R1573-457",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "57A"
-    ],
-    "relatedStops": [
-     1573
-    ],
-    "time": {
-     "end": "2026-10-31T15:25:00.000+0100",
-     "start": "2026-10-31T14:26:08.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Demonstration"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Demonstration",
-    "name": "R1574-457",
-    "owner": "WL",
-    "parentName": "R1574-457",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "57A"
-    ],
-    "relatedStops": [
-     1574
-    ],
-    "time": {
-     "end": "2026-10-31T15:25:00.000+0100",
-     "start": "2026-10-31T14:26:08.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Demonstration"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Demonstration",
-    "name": "R1577-457",
-    "owner": "WL",
-    "parentName": "R1577-457",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "57A"
-    ],
-    "relatedStops": [
-     1577
-    ],
-    "time": {
-     "end": "2026-10-31T15:25:00.000+0100",
-     "start": "2026-10-31T14:26:08.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Demonstration"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R165-101",
-    "owner": "WL",
-    "parentName": "R165-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     165
-    ],
-    "time": {
-     "end": "2026-10-31T15:01:00.000+0100",
-     "start": "2026-10-31T14:01:35.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Julius-Raab-Platz",
-    "name": "R17-101",
-    "owner": "WL",
-    "parentName": "R17-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     17
-    ],
-    "time": {
-     "end": "2026-10-31T15:04:00.000+0100",
-     "start": "2026-10-31T14:05:07.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Julius-Raab-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nUmleitung über Schwarzenbergplatz und Linie 2",
-    "name": "R1756-101",
-    "owner": "WL",
-    "parentName": "R1756-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     1756
-    ],
-    "time": {
-     "end": "2026-10-31T15:06:00.000+0100",
-     "start": "2026-10-31T14:05:08.000+0100"
-    },
-    "title": "Verkehrsunfall\nUmleitung über Schwarzenbergplatz und Linie 2"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Julius-Raab-Platz",
-    "name": "R18-101",
-    "owner": "WL",
-    "parentName": "R18-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     18
-    ],
-    "time": {
-     "end": "2026-10-31T15:04:00.000+0100",
-     "start": "2026-10-31T14:05:07.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Julius-Raab-Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1363,29 +879,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Julius-Raab-Platz",
-    "name": "R19-101",
-    "owner": "WL",
-    "parentName": "R19-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     19
-    ],
-    "time": {
-     "end": "2026-10-31T15:04:00.000+0100",
-     "start": "2026-10-31T14:05:07.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Julius-Raab-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -1428,98 +921,6 @@
      "start": "2026-10-31T04:40:12.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Julius-Raab-Platz",
-    "name": "R20-101",
-    "owner": "WL",
-    "parentName": "R20-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     20
-    ],
-    "time": {
-     "end": "2026-10-31T15:04:00.000+0100",
-     "start": "2026-10-31T14:05:07.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Julius-Raab-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nUmleitung über Linie1 und Schottenring",
-    "name": "R22-101",
-    "owner": "WL",
-    "parentName": "R22-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     22
-    ],
-    "time": {
-     "end": "2026-10-31T15:05:00.000+0100",
-     "start": "2026-10-31T14:04:37.000+0100"
-    },
-    "title": "Verkehrsunfall\nUmleitung über Linie1 und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nZustieg ab Marienbrücke möglich",
-    "name": "R22-102",
-    "owner": "WL",
-    "parentName": "R22-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     22
-    ],
-    "time": {
-     "end": "2026-10-31T15:16:00.000+0100",
-     "start": "2026-10-31T14:02:06.000+0100"
-    },
-    "title": "Verkehrsunfall\nZustieg ab Marienbrücke möglich"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R23-101",
-    "owner": "WL",
-    "parentName": "R23-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     23
-    ],
-    "time": {
-     "end": "2026-10-31T15:01:00.000+0100",
-     "start": "2026-10-31T14:01:36.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1961,6 +1362,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2645-170",
+    "owner": "WL",
+    "parentName": "R2645-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     2645
+    ],
+    "time": {
+     "end": "2026-10-31T16:15:00.000+0100",
+     "start": "2026-10-31T15:15:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -2003,6 +1427,98 @@
      "start": "2026-10-31T00:00:23.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R335-170",
+    "owner": "WL",
+    "parentName": "R335-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     335
+    ],
+    "time": {
+     "end": "2026-10-31T16:13:00.000+0100",
+     "start": "2026-10-31T15:13:13.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R336-170",
+    "owner": "WL",
+    "parentName": "R336-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     336
+    ],
+    "time": {
+     "end": "2026-10-31T16:13:00.000+0100",
+     "start": "2026-10-31T15:13:13.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R337-170",
+    "owner": "WL",
+    "parentName": "R337-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     337
+    ],
+    "time": {
+     "end": "2026-10-31T16:13:00.000+0100",
+     "start": "2026-10-31T15:13:13.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R339-170",
+    "owner": "WL",
+    "parentName": "R339-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     339
+    ],
+    "time": {
+     "end": "2026-10-31T16:17:00.000+0100",
+     "start": "2026-10-31T15:17:43.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2053,121 +1569,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nUmleitung über Linie 2 und Schwarzenbergplatz",
-    "name": "R41-101",
-    "owner": "WL",
-    "parentName": "R41-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     41
-    ],
-    "time": {
-     "end": "2026-10-31T15:08:00.000+0100",
-     "start": "2026-10-31T14:08:37.000+0100"
-    },
-    "title": "Verkehrsunfall\nUmleitung über Linie 2 und Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Resselgasse",
-    "name": "R42-101",
-    "owner": "WL",
-    "parentName": "R42-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     42
-    ],
-    "time": {
-     "end": "2026-10-31T15:07:00.000+0100",
-     "start": "2026-10-31T14:08:07.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Resselgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Resselgasse",
-    "name": "R43-101",
-    "owner": "WL",
-    "parentName": "R43-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     43
-    ],
-    "time": {
-     "end": "2026-10-31T15:07:00.000+0100",
-     "start": "2026-10-31T14:08:07.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Resselgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Resselgasse",
-    "name": "R44-101",
-    "owner": "WL",
-    "parentName": "R44-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     44
-    ],
-    "time": {
-     "end": "2026-10-31T15:07:00.000+0100",
-     "start": "2026-10-31T14:08:07.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Resselgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Resselgasse",
-    "name": "R45-101",
-    "owner": "WL",
-    "parentName": "R45-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     45
-    ],
-    "time": {
-     "end": "2026-10-31T15:07:00.000+0100",
-     "start": "2026-10-31T14:08:07.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Resselgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Züge halten\nWipplingerstr 39",
     "name": "R45-136",
     "owner": "WL",
@@ -2191,144 +1592,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Resselgasse",
-    "name": "R46-101",
-    "owner": "WL",
-    "parentName": "R46-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     46
-    ],
-    "time": {
-     "end": "2026-10-31T15:07:00.000+0100",
-     "start": "2026-10-31T14:08:07.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Resselgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Resselgasse",
-    "name": "R47-101",
-    "owner": "WL",
-    "parentName": "R47-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     47
-    ],
-    "time": {
-     "end": "2026-10-31T15:09:00.000+0100",
-     "start": "2026-10-31T14:10:07.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Resselgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Resselgasse",
-    "name": "R49-101",
-    "owner": "WL",
-    "parentName": "R49-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     49
-    ],
-    "time": {
-     "end": "2026-10-31T15:11:00.000+0100",
-     "start": "2026-10-31T14:11:37.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Resselgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nZüge halten gegenüber",
-    "name": "R49-102",
-    "owner": "WL",
-    "parentName": "R49-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     49
-    ],
-    "time": {
-     "end": "2026-10-31T15:08:00.000+0100",
-     "start": "2026-10-31T14:09:07.000+0100"
-    },
-    "title": "Verkehrsunfall\nZüge halten gegenüber"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Resselgasse",
-    "name": "R50-101",
-    "owner": "WL",
-    "parentName": "R50-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     50
-    ],
-    "time": {
-     "end": "2026-10-31T15:12:00.000+0100",
-     "start": "2026-10-31T14:13:38.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Resselgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Schwedenplatz >",
-    "name": "R50-102",
-    "owner": "WL",
-    "parentName": "R50-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     50
-    ],
-    "time": {
-     "end": "2026-10-31T15:10:00.000+0100",
-     "start": "2026-10-31T14:10:37.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Schwedenplatz >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -2348,75 +1611,6 @@
      "start": "2026-10-31T05:00:12.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Schwedenplatz >",
-    "name": "R51-102",
-    "owner": "WL",
-    "parentName": "R51-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     51
-    ],
-    "time": {
-     "end": "2026-10-31T15:10:00.000+0100",
-     "start": "2026-10-31T14:10:37.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Schwedenplatz >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Schwedenplatz >",
-    "name": "R52-102",
-    "owner": "WL",
-    "parentName": "R52-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     52
-    ],
-    "time": {
-     "end": "2026-10-31T15:12:00.000+0100",
-     "start": "2026-10-31T14:13:08.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Schwedenplatz >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Parlament, Volkstheater",
-    "name": "R9-102",
-    "owner": "WL",
-    "parentName": "R9-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     9
-    ],
-    "time": {
-     "end": "2026-10-31T15:05:00.000+0100",
-     "start": "2026-10-31T14:02:06.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Parlament, Volkstheater"
    },
    {
     "alertCause": "undefined alert cause",
