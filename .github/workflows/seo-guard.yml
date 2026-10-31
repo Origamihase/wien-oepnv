@@ -133,6 +133,73 @@ jobs:
           fi
           echo "llms.txt verification passed (${link_count} links)."
 
+      - name: Update repository metadata via PAT (description & homepage)
+        env:
+          ADMIN_TOKEN: ${{ secrets.REPO_ADMIN_TOKEN }}
+          SITE_BASE: ${{ env.SITE_BASE }}
+          DESC: ${{ env.DESC }}
+          # Security: pipe github.repository through env, not direct
+          # ``${{ … }}`` interpolation, so the value can never escape
+          # the shell context as a metacharacter (defence-in-depth — the
+          # GitHub-provided slug is grammar-constrained, but every
+          # template expansion in a shell ``run:`` block is a latent
+          # injection vector if a future change ever hands user input to
+          # this step).
+          OWNER_REPO: ${{ github.repository }}
+        # Nebenschritt (Architektur-Review 2026-10-31, Fund B): Bis dahin
+        # endete der Schritt bei leerem Token mit Exit 0 und einer Zeile auf
+        # stderr, ein abgelaufener oder gelöschter REPO_ADMIN_TOKEN blieb
+        # unsichtbar. Jetzt scheitert er bei leerem Token und bei einer
+        # abgelehnten Anfrage (``curl -f``); ``continue-on-error`` hält die
+        # Veröffentlichung von sitemap.xml und llms.txt nicht auf, das
+        # Ergebnis fährt über ``record_side_steps.py`` in
+        # ``data/side_steps/seo-guard.json`` mit und der Health check wird
+        # rot (Prüfung ``Nebenschritte``, Betreiberentscheidung 2026-10-28).
+        id: metadata
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "${ADMIN_TOKEN:-}" ]]; then
+            echo "::error title=Repository-Metadaten::REPO_ADMIN_TOKEN ist leer oder nicht hinterlegt – Beschreibung und Homepage des Repositorys können nicht gesetzt werden."
+            exit 1
+          fi
+          # Build the JSON body with jq so values containing quotes,
+          # backslashes or other special characters are escaped according
+          # to JSON rules (printf %q produces shell-quoted output, not
+          # JSON-quoted, and would break on values like O'Reilly).
+          body="$(jq -nc \
+            --arg description "${DESC}" \
+            --arg homepage "${SITE_BASE}/" \
+            '{description: $description, homepage: $homepage}')"
+          # ``-f``: eine abgelehnte Anfrage (401 bei abgelaufenem Token, 403
+          # ohne Recht) lässt den Schritt scheitern statt still zu enden.
+          if ! curl -fsS -H "Authorization: Bearer ${ADMIN_TOKEN}" \
+               -H "Accept: application/vnd.github+json" \
+               -X PATCH "https://api.github.com/repos/${OWNER_REPO}" \
+               -d "$body" >/dev/null; then
+            echo "::error title=Repository-Metadaten::GitHub hat die Anfrage mit REPO_ADMIN_TOKEN abgelehnt (Token abgelaufen oder ohne Recht)."
+            exit 1
+          fi
+          echo "Repository-Metadaten gesetzt."
+
+      # Ergebnis des Nebenschritts für den Health check (``outcome``, nicht
+      # ``conclusion``: unter ``continue-on-error`` heißt die conclusion eines
+      # gescheiterten Schritts ``success``). Läuft vor der Veröffentlichung,
+      # damit die Datei im selben Commit mitfährt; nur auf ``main``, wo
+      # veröffentlicht wird.
+      - name: Record side-step outcomes
+        if: ${{ !cancelled() && github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
+        continue-on-error: true
+        timeout-minutes: 1
+        env:
+          METADATA_OUTCOME: ${{ steps.metadata.outcome }}
+        run: >-
+          python scripts/record_side_steps.py
+          --state data/side_steps/seo-guard.json
+          "Repository-Metadaten=$METADATA_OUTCOME"
+
+
       # Publish through ``scripts/publish_to_main.sh``, the publish path
       # shared by every workflow that writes to ``main``: a PLAIN push (no
       # ``--force-with-lease``; on 2026-09-11 that lease, re-armed by the
@@ -150,7 +217,7 @@ jobs:
         run: >-
           bash scripts/publish_to_main.sh --label seo-publish
           --message "chore(seo): refresh sitemap.xml & llms.txt [skip ci]"
-          -- docs/sitemap.xml docs/llms.txt
+          -- docs/sitemap.xml docs/llms.txt data/side_steps/seo-guard.json
 
       - name: Verify feed file (repo) – exactly one self & one alternate
         shell: bash
@@ -217,39 +284,6 @@ jobs:
             exit 1
           fi
           echo "robots.txt verification passed."
-
-      - name: Update repository metadata via PAT (description & homepage)
-        env:
-          ADMIN_TOKEN: ${{ secrets.REPO_ADMIN_TOKEN }}
-          SITE_BASE: ${{ env.SITE_BASE }}
-          DESC: ${{ env.DESC }}
-          # Security: pipe github.repository through env, not direct
-          # ``${{ … }}`` interpolation, so the value can never escape
-          # the shell context as a metacharacter (defence-in-depth — the
-          # GitHub-provided slug is grammar-constrained, but every
-          # template expansion in a shell ``run:`` block is a latent
-          # injection vector if a future change ever hands user input to
-          # this step).
-          OWNER_REPO: ${{ github.repository }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          if [[ -z "${ADMIN_TOKEN:-}" ]]; then
-            echo "REPO_ADMIN_TOKEN fehlt – Metadaten können nicht gesetzt werden." >&2
-            exit 0
-          fi
-          # Build the JSON body with jq so values containing quotes,
-          # backslashes or other special characters are escaped according
-          # to JSON rules (printf %q produces shell-quoted output, not
-          # JSON-quoted, and would break on values like O'Reilly).
-          body="$(jq -nc \
-            --arg description "${DESC}" \
-            --arg homepage "${SITE_BASE}/" \
-            '{description: $description, homepage: $homepage}')"
-          curl -sS -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-               -H "Accept: application/vnd.github+json" \
-               -X PATCH "https://api.github.com/repos/${OWNER_REPO}" \
-               -d "$body" >/dev/null
 
       - name: Verify published feed (best-effort; allow Pages delay)
         # Security: re-export the workflow-level SITE_BASE into a step env

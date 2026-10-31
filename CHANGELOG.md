@@ -10,6 +10,26 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Health check: Werkzeug-Secrets fallen auf, wenn sie nicht mehr tragen
+  (2026-10-31)**: Fund B des Architektur-Reviews vom 31.10. (Michael: „ja,
+  bau das bitte“). `CLAUDE_CODE_OAUTH_TOKEN` und `REPO_ADMIN_TOKEN` gehen als
+  `tooling` nicht an den Health check, und ihre Schritte liefen so, dass ein
+  abgelaufenes Token nichts hinterließ: das Code-Review mit
+  `continue-on-error` (grüner Check ohne Kommentare), die
+  Repository-Metadaten im SEO-Lauf mit Exit 0 bei leerem Token. Jetzt
+  scheitert der Metadaten-Schritt bei leerem oder abgelehntem Token
+  (`curl -f`) und wird als Nebenschritt nach `data/side_steps/seo-guard.json`
+  aufgezeichnet (rot im Health check, Grenze 48 h,
+  `HEALTH_SEO_MAX_AGE_HOURS`); der Review-Schritt darf scheitern (kein
+  `continue-on-error` mehr, kein Pflicht-Check, hält keinen Merge auf), und
+  die neue Prüfung `Werkzeuge` liest über die Actions-API (`actions: read`)
+  das Ergebnis des letzten Review-Laufs: rot, solange er scheiterte. Pull
+  Requests aus Forks werden wie Dependabot übersprungen (keine Secrets).
+  Dazu zwei Absätze in `docs/development.md` aus dem Review: Zustand, der nur
+  im Commit eines Laufs überlebt (Fund C), und der IFTTT-Auslöser mit
+  persönlichem Token, den nur der Betreiber sieht (Fund D).
+  `docs/architecture.md` §7 „Überwachung: Werkzeuge“.
+
 * **Health check: Prüfung „Veröffentlichung“, Live-Feeds gegen das Repo
   (2026-10-31)**: Der Architektur-Review vom 31.10. fand die eine Stufe der
   Kette ohne eigene Prüfung: Zwischen dem Commit und dem Fernseher liegt der
