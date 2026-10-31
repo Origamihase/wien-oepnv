@@ -100,6 +100,18 @@ def test_the_workflows_record_every_side_step() -> None:
     assert "${{ steps.hafas_lines.outcome }}" in stations
     assert "--state data/side_steps/update-stations.json" in stations
     assert stations.index("Record side-step outcomes") < stations.index("Commit and push changes")
+    # seo-guard.yml (Architektur-Review 2026-10-31, Fund B): the metadata step
+    # fails on an empty or rejected REPO_ADMIN_TOKEN, its outcome is recorded
+    # before the publish and rides the same commit.
+    seo = (REPO / ".github/workflows/seo-guard.yml").read_text(encoding="utf-8")
+    assert "id: metadata\n" in seo
+    assert "${{ steps.metadata.outcome }}" in seo
+    assert "--state data/side_steps/seo-guard.json" in seo
+    assert seo.index("Record side-step outcomes") < seo.index("Publish sitemap.xml and llms.txt")
+    assert "data/side_steps/seo-guard.json" in seo.split("Publish sitemap.xml and llms.txt", 1)[1].split("- name:", 1)[0]
+    metadata_step = seo.split("id: metadata", 1)[1].split("- name:", 1)[0]
+    assert 'if [[ -z "${ADMIN_TOKEN:-}" ]]' in metadata_step and "exit 1" in metadata_step
+    assert "curl -fsS" in metadata_step
     files = {name for name, _workflow, _age in hc.SIDE_STEP_RECORDS}
-    assert files == {"update-cycle.json", "update-stations.json"}
+    assert files == {"update-cycle.json", "update-stations.json", "seo-guard.json"}
 

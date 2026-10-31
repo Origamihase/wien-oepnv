@@ -37,6 +37,9 @@ on:
 
 permissions:
   contents: read
+  # Prüfung ``Werkzeuge`` (seit 2026-10-31): liest das Ergebnis des letzten
+  # Laufs von claude-code-review.yml über die Actions-API.
+  actions: read
 
 concurrency:
   group: health-check
@@ -116,4 +119,6 @@ jobs:
         env:
           VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
           VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
+          # Nur lesend (``actions: read``), für die Prüfung ``Werkzeuge``.
+          GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/health_check.py

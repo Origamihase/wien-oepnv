@@ -89,6 +89,7 @@ from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from email.utils import parsedate_to_datetime
 from pathlib import Path
+from typing import Any
 from zoneinfo import ZoneInfo
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -104,7 +105,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from config.defaults import DEFAULT_PAGES_BASE_URL  # noqa: E402
-from utils.files import read_capped_json, read_capped_text  # noqa: E402
+from utils.files import loads_finite, read_capped_json, read_capped_text  # noqa: E402
 from utils.http import fetch_content_safe, session_with_retries  # noqa: E402
 from utils.logging import sanitize_log_arg  # noqa: E402
 
@@ -155,6 +156,10 @@ LIVE_FEED_CONTENT_TYPES = ("application/xml", "application/rss+xml", "text/xml")
 # Stations: update-stations runs weekly (Sun 01:00 UTC). 8 days = one full
 # cycle + jitter; older means a weekly run was missed.
 STATIONS_MAX_AGE_H = _env_float("HEALTH_STATIONS_MAX_AGE_HOURS", 192.0)
+# SEO run (seo-guard.yml): daily cron, which GitHub delivers hours late (see
+# docs/development.md, "Geplante Läufe"), plus every push touching docs/.
+# 48 h = two days without any run before its side-step record counts as stale.
+SEO_MAX_AGE_H = _env_float("HEALTH_SEO_MAX_AGE_HOURS", 48.0)
 # Station sources: the weekly run downloads them and falls back to the copy
 # under data/ when a download fails, so a dead source would only show in the
 # log. 15 days = two weekly runs in a row without a good answer (one failed
@@ -807,6 +812,10 @@ WORKFLOW_SECRETS: tuple[WorkflowSecret, ...] = (
                    "Stammstrecken-Monitor (VOR/VAO ReST API)"),
     WorkflowSecret("VOR_BASE_URL", "optional",
                    "VAO-Host, Standard in src/providers/vor.py"),
+    # ``tooling`` secrets are not passed to the Health check; whether they
+    # still work shows in ``Werkzeuge`` (latest run of claude-code-review.yml)
+    # and ``Nebenschritte`` (Repository-Metadaten in seo-guard.yml), since
+    # 2026-10-31 (Architektur-Review, Fund B).
     WorkflowSecret("CLAUDE_CODE_OAUTH_TOKEN", "tooling",
                    "Claude-Workflows (Code-Review, @claude)"),
     WorkflowSecret("REPO_ADMIN_TOKEN", "tooling",
@@ -908,6 +917,8 @@ def check_feed_watch(now: datetime) -> Check:
 SIDE_STEP_RECORDS: list[tuple[str, str, float]] = [
     ("update-cycle.json", "Update-Lauf", FEED_MAX_AGE_H),
     ("update-stations.json", "Stationslauf", STATIONS_MAX_AGE_H),
+    # Repository-Metadaten via REPO_ADMIN_TOKEN (Architektur-Review 2026-10-31, Fund B).
+    ("seo-guard.json", "SEO-Lauf", SEO_MAX_AGE_H),
 ]
 SIDE_STEP_DIR = REPO_ROOT / "data" / "side_steps"
 
@@ -986,6 +997,108 @@ def check_side_steps(now: datetime) -> Check:
     return Check(name, ok=True, summary=summary)
 
 
+# Workflows that run on pull requests and therefore cannot record a side step
+# into ``data/side_steps/`` (no write to ``main``): the Health check reads the
+# conclusion of their latest completed run from the Actions API instead
+# (file name, label). Architektur-Review 2026-10-31, Fund B: until then the
+# review step ran with ``continue-on-error`` and an expired
+# ``CLAUDE_CODE_OAUTH_TOKEN`` left no trace but a green check without comments.
+TOOLING_WORKFLOWS: tuple[tuple[str, str], ...] = (
+    ("claude-code-review.yml", "Code-Review"),
+)
+GITHUB_API_MAX_BYTES = 1024 * 1024
+
+
+def _github_api_json(path: str) -> Any:
+    """GET ``/repos/<GITHUB_REPOSITORY><path>`` from the GitHub API as JSON.
+
+    Read-only, with the run's own ``GITHUB_TOKEN`` (``actions: read``). Raises
+    on a missing token or repository, on an HTTP error and on bad JSON; the
+    caller turns every exception into a note.
+    """
+    token = os.environ.get("GITHUB_TOKEN", "").strip()
+    repository = os.environ.get("GITHUB_REPOSITORY", "").strip()
+    if not token or not repository:
+        raise RuntimeError("GITHUB_TOKEN oder GITHUB_REPOSITORY fehlt")
+    api = os.environ.get("GITHUB_API_URL", "").strip().rstrip("/") or "https://api.github.com"
+    url = f"{api}/repos/{repository}{path}"
+    with session_with_retries("wien-oepnv-health-check", timeout=LIVE_FETCH_TIMEOUT_S) as session:
+        session.headers.update(
+            {
+                "Accept": "application/vnd.github+json",
+                "Authorization": f"Bearer {token}",
+                "X-GitHub-Api-Version": "2022-11-28",
+            }
+        )
+        content: bytes = fetch_content_safe(
+            session,
+            url,
+            max_bytes=GITHUB_API_MAX_BYTES,
+            timeout=LIVE_FETCH_TIMEOUT_S,
+            allowed_content_types=("application/json",),
+        )
+    return loads_finite(content)
+
+
+def check_tooling_runs(now: datetime) -> Check:
+    """Red while the latest run of a tooling workflow failed.
+
+    Same rule as ``Nebenschritte`` (operator decision 2026-10-28, "ein Fehler
+    sollte auffallen"), for the workflows that run on pull requests and so
+    cannot write a record into ``data/side_steps/``: the Code-Review
+    (``claude-code-review.yml``) with ``CLAUDE_CODE_OAUTH_TOKEN``. Its step
+    ran with ``continue-on-error`` until 2026-10-31, so an expired token left
+    only a green check without comments (Architektur-Review 2026-10-31,
+    Fund B). Now the run fails, and this check reads the conclusion of the
+    latest completed run: ``success`` is green, a cancelled or skipped run is
+    a note, every other conclusion (``failure``, ``timed_out``,
+    ``startup_failure``) is red and names the run. An API that cannot be
+    asked, or a workflow that never ran, is a note: nothing says the tool is
+    broken.
+    """
+    name = "Werkzeuge"
+    problems: list[str] = []
+    notes: list[str] = []
+    oks: list[str] = []
+    for file_name, label in TOOLING_WORKFLOWS:
+        try:
+            data = _github_api_json(
+                f"/actions/workflows/{file_name}/runs?status=completed&per_page=1"
+            )
+        except Exception as exc:
+            reason = str(sanitize_log_arg(str(exc)))[:120]
+            notes.append(f"{label}: Actions-API nicht abgefragt ({type(exc).__name__}: {reason})")
+            continue
+        runs = data.get("workflow_runs") if isinstance(data, dict) else None
+        run = runs[0] if isinstance(runs, list) and runs and isinstance(runs[0], dict) else None
+        if run is None:
+            notes.append(f"{label}: noch kein abgeschlossener Lauf")
+            continue
+        conclusion = str(run.get("conclusion") or "")
+        finished = _parse_utc(run.get("updated_at"))
+        when = f" am {_vienna_hhmm(finished)}" if finished is not None else ""
+        link = str(run.get("html_url") or "")
+        if conclusion == "success":
+            oks.append(f"{label} zuletzt sauber{when}")
+        elif conclusion in {"cancelled", "skipped", "neutral"}:
+            notes.append(f"{label}: letzter Lauf {conclusion}{when}")
+        else:
+            text = f"{label} gescheitert{when} ({conclusion or 'ohne Ergebnis'})"
+            if link:
+                text += f" — {link}"
+            problems.append(text)
+    if problems:
+        return Check(name, ok=False, summary=f"FEHLER — {problems[0]}",
+                     detail="; ".join(problems[1:] + notes + oks))
+    if notes and not oks:
+        return Check(name, ok=True, note=True,
+                     summary="HINWEIS — " + "; ".join(notes))
+    summary = "OK — " + ", ".join(oks)
+    if notes:
+        return Check(name, ok=True, note=True, summary=summary, detail="; ".join(notes))
+    return Check(name, ok=True, summary=summary)
+
+
 def _render_plain(
     now: datetime, sources: list[Check], outputs: list[Check], config: list[Check]
 ) -> str:
@@ -1052,6 +1165,7 @@ def main() -> int:
         check_stammstrecke_directions(now),
         check_feed_watch(now),
         check_side_steps(now),
+        check_tooling_runs(now),
     ]
     config = [check_secrets()]
     all_checks = sources + outputs + config
